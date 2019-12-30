@@ -1,0 +1,14 @@
+#!/bin/bash
+
+PRODUCT_DIR=$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.app
+
+if [ "$CONFIGURATION" == "Release" ]; then
+    cp -Rf $PRODUCT_DIR/GoogleService-Info-Release.plist $PRODUCT_DIR/GoogleService-Info.plist
+    echo "Release info plist copied"
+else
+    cp -Rf $PRODUCT_DIR/GoogleService-Info-Debug.plist $PRODUCT_DIR/GoogleService-Info.plist
+    echo "Debug info plist copied"
+fi
+
+rm $PRODUCT_DIR/GoogleService-Info-Debug.plist
+rm $PRODUCT_DIR/GoogleService-Info-Release.plist
