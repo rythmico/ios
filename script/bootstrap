@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if ! command -v git-crypt >/dev/null 2>&1; then
+    brew install git-crypt
+fi
+
+git-crypt unlock
