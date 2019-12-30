@@ -13,7 +13,6 @@
 		03341B4523ABB1E8009AE8A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4423ABB1E8009AE8A8 /* Assets.xcassets */; };
 		03341B4823ABB1E8009AE8A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4723ABB1E8009AE8A8 /* Preview Assets.xcassets */; };
 		03341B4B23ABB1E8009AE8A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */; };
-		D509896323B9637300C19300 /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509896223B9637300C19300 /* GoogleService-Info-Debug.plist */; };
 		D509897223B963B700C19300 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896523B963B700C19300 /* FirebaseAuth.framework */; };
 		D509897323B963B700C19300 /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896623B963B700C19300 /* GoogleDataTransport.framework */; };
 		D509897423B963B700C19300 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896723B963B700C19300 /* GTMSessionFetcher.framework */; };
@@ -29,6 +28,7 @@
 		D509897E23B963B700C19300 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509897123B963B700C19300 /* nanopb.framework */; };
 		D509898023B969B700C19300 /* GoogleService-Info-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */; };
 		D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898423B9B5C100C19300 /* GoogleService-Info.plist */; };
+		D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +41,6 @@
 		03341B4A23ABB1E8009AE8A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03341B4C23ABB1E8009AE8A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D50668DA23B946330044E553 /* Rythmico.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rythmico.entitlements; sourceTree = "<group>"; };
-		D509896223B9637300C19300 /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
 		D509896523B963B700C19300 /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Carthage/Build/iOS/FirebaseAuth.framework; sourceTree = "<group>"; };
 		D509896623B963B700C19300 /* GoogleDataTransport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleDataTransport.framework; path = Carthage/Build/iOS/GoogleDataTransport.framework; sourceTree = "<group>"; };
 		D509896723B963B700C19300 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = Carthage/Build/iOS/GTMSessionFetcher.framework; sourceTree = "<group>"; };
@@ -57,6 +56,7 @@
 		D509897123B963B700C19300 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Carthage/Build/iOS/nanopb.framework; sourceTree = "<group>"; };
 		D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Release.plist"; sourceTree = "<group>"; };
 		D509898423B9B5C100C19300 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +110,7 @@
 				03341B4423ABB1E8009AE8A8 /* Assets.xcassets */,
 				03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */,
 				03341B4C23ABB1E8009AE8A8 /* Info.plist */,
-				D509896223B9637300C19300 /* GoogleService-Info-Debug.plist */,
+				D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */,
 				D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */,
 				D509898423B9B5C100C19300 /* GoogleService-Info.plist */,
 				03341B4623ABB1E8009AE8A8 /* Preview Content */,
@@ -207,10 +207,10 @@
 			files = (
 				D509898023B969B700C19300 /* GoogleService-Info-Release.plist in Resources */,
 				03341B4B23ABB1E8009AE8A8 /* LaunchScreen.storyboard in Resources */,
-				D509896323B9637300C19300 /* GoogleService-Info-Debug.plist in Resources */,
 				03341B4823ABB1E8009AE8A8 /* Preview Assets.xcassets in Resources */,
 				03341B4523ABB1E8009AE8A8 /* Assets.xcassets in Resources */,
 				D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */,
+				D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
