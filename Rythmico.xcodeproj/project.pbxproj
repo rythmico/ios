@@ -17,7 +17,6 @@
 		D509897323B963B700C19300 /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896623B963B700C19300 /* GoogleDataTransport.framework */; };
 		D509897423B963B700C19300 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896723B963B700C19300 /* GTMSessionFetcher.framework */; };
 		D509897523B963B700C19300 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896823B963B700C19300 /* FirebaseInstanceID.framework */; };
-		D509897623B963B700C19300 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896923B963B700C19300 /* Firebase.framework */; };
 		D509897723B963B700C19300 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896A23B963B700C19300 /* GoogleUtilities.framework */; };
 		D509897823B963B700C19300 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896B23B963B700C19300 /* FirebaseAnalytics.framework */; };
 		D509897923B963B700C19300 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896C23B963B700C19300 /* FIRAnalyticsConnector.framework */; };
@@ -68,7 +67,6 @@
 				D509897323B963B700C19300 /* GoogleDataTransport.framework in Frameworks */,
 				D509897423B963B700C19300 /* GTMSessionFetcher.framework in Frameworks */,
 				D509897523B963B700C19300 /* FirebaseInstanceID.framework in Frameworks */,
-				D509897623B963B700C19300 /* Firebase.framework in Frameworks */,
 				D509897723B963B700C19300 /* GoogleUtilities.framework in Frameworks */,
 				D509897823B963B700C19300 /* FirebaseAnalytics.framework in Frameworks */,
 				D509897923B963B700C19300 /* FIRAnalyticsConnector.framework in Frameworks */,
