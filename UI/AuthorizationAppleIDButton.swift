@@ -1,7 +1,11 @@
 import SwiftUI
 import AuthenticationServices
 
-struct AppleAuthorizationButton: View {
+struct AuthorizationAppleIDButton: View {
+    private enum Const {
+        static let defaultHeight: CGFloat = 44
+    }
+
     @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
@@ -14,10 +18,11 @@ struct AppleAuthorizationButton: View {
                 Representable()
             }
         }
+        .frame(height: Const.defaultHeight)
     }
 }
 
-extension AppleAuthorizationButton {
+extension AuthorizationAppleIDButton {
     private struct Representable: UIViewRepresentable {
         func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
             switch context.environment.colorScheme {
@@ -34,15 +39,14 @@ extension AppleAuthorizationButton {
     }
 }
 
-struct AppleAuthorizationButton_Preview: PreviewProvider {
+struct AuthorizationAppleIDButton_Preview: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.blue.edgesIgnoringSafeArea(.all)
             VStack {
                 ForEach(ColorScheme.allCases, id: \.self) {
-                    AppleAuthorizationButton()
+                    AuthorizationAppleIDButton()
                         .environment(\.colorScheme, $0)
-                        .frame(height: 44)
                         .padding()
                 }
             }
