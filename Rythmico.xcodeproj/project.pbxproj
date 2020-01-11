@@ -29,6 +29,7 @@
 		D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898423B9B5C100C19300 /* GoogleService-Info.plist */; };
 		D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */; };
 		D509898F23BA79D600C19300 /* AppleAuthorizationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509898E23BA79D600C19300 /* AppleAuthorizationButton.swift */; };
+		D50E4BC023C689BA00B6FCB1 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BBF23C689BA00B6FCB1 /* Typealiases.swift */; };
 		D5E04B1923BED80700A161BB /* FontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* FontModifier.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		D509898423B9B5C100C19300 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
 		D509898E23BA79D600C19300 /* AppleAuthorizationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationButton.swift; sourceTree = "<group>"; };
+		D50E4BBF23C689BA00B6FCB1 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		D5E04B1823BED80700A161BB /* FontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +111,7 @@
 				03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */,
 				03341B4023ABB1E7009AE8A8 /* SceneDelegate.swift */,
 				D5E04B1823BED80700A161BB /* FontModifier.swift */,
+				D50E4BBF23C689BA00B6FCB1 /* Typealiases.swift */,
 				03341B4223ABB1E7009AE8A8 /* ContentView.swift */,
 				03341B4423ABB1E8009AE8A8 /* Assets.xcassets */,
 				03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */,
@@ -255,6 +258,7 @@
 			files = (
 				03341B3F23ABB1E7009AE8A8 /* AppDelegate.swift in Sources */,
 				03341B4123ABB1E7009AE8A8 /* SceneDelegate.swift in Sources */,
+				D50E4BC023C689BA00B6FCB1 /* Typealiases.swift in Sources */,
 				D5E04B1923BED80700A161BB /* FontModifier.swift in Sources */,
 				03341B4323ABB1E7009AE8A8 /* ContentView.swift in Sources */,
 				D509898F23BA79D600C19300 /* AppleAuthorizationButton.swift in Sources */,
