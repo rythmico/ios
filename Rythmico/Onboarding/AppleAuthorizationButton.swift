@@ -1,8 +1,8 @@
 import SwiftUI
 import AuthenticationServices
 
-struct AuthorizationAppleIDButton: View {
-    @Environment(\.colorScheme) var colorScheme
+struct AppleAuthorizationButton: View {
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         Group {
@@ -17,7 +17,7 @@ struct AuthorizationAppleIDButton: View {
     }
 }
 
-extension AuthorizationAppleIDButton {
+extension AppleAuthorizationButton {
     struct Representable: UIViewRepresentable {
         func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
             switch context.environment.colorScheme {
