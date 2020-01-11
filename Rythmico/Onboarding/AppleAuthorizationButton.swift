@@ -18,7 +18,7 @@ struct AppleAuthorizationButton: View {
 }
 
 extension AppleAuthorizationButton {
-    struct Representable: UIViewRepresentable {
+    private struct Representable: UIViewRepresentable {
         func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
             switch context.environment.colorScheme {
             case .light:
@@ -31,5 +31,21 @@ extension AppleAuthorizationButton {
         }
 
         func updateUIView(_ uiView: ASAuthorizationAppleIDButton, context: Context) {}
+    }
+}
+
+struct AppleAuthorizationButton_Preview: PreviewProvider {
+    static var previews: some View {
+        ZStack {
+            Color.blue.edgesIgnoringSafeArea(.all)
+            VStack {
+                ForEach(ColorScheme.allCases, id: \.self) {
+                    AppleAuthorizationButton()
+                        .environment(\.colorScheme, $0)
+                        .frame(height: 44)
+                        .padding()
+                }
+            }
+        }
     }
 }
