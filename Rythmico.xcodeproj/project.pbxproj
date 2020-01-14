@@ -39,6 +39,9 @@
 		D54A560F23CD384300BC8485 /* AppleAuthorizationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560E23CD384300BC8485 /* AppleAuthorizationServiceTests.swift */; };
 		D54A561123CD457800BC8485 /* AppleAuthorizationCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561023CD457800BC8485 /* AppleAuthorizationCredential.swift */; };
 		D54A561323CD4B2C00BC8485 /* AppleAuthorizationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561223CD4B2C00BC8485 /* AppleAuthorizationResponse.swift */; };
+		D54A561723CD577800BC8485 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561623CD577800BC8485 /* main.swift */; };
+		D54A561923CD5C0100BC8485 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561823CD5C0100BC8485 /* TestingAppDelegate.swift */; };
+		D54A561B23CD5CDD00BC8485 /* TestingSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561A23CD5CDD00BC8485 /* TestingSceneDelegate.swift */; };
 		D5E04B1923BED80700A161BB /* FontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* FontModifier.swift */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +94,9 @@
 		D54A560E23CD384300BC8485 /* AppleAuthorizationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationServiceTests.swift; sourceTree = "<group>"; };
 		D54A561023CD457800BC8485 /* AppleAuthorizationCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredential.swift; sourceTree = "<group>"; };
 		D54A561223CD4B2C00BC8485 /* AppleAuthorizationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationResponse.swift; sourceTree = "<group>"; };
+		D54A561623CD577800BC8485 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		D54A561823CD5C0100BC8485 /* TestingAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
+		D54A561A23CD5CDD00BC8485 /* TestingSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingSceneDelegate.swift; sourceTree = "<group>"; };
 		D5E04B1823BED80700A161BB /* FontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,8 +155,11 @@
 			isa = PBXGroup;
 			children = (
 				D50668DA23B946330044E553 /* Rythmico.entitlements */,
+				D54A561623CD577800BC8485 /* main.swift */,
 				03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */,
+				D54A561823CD5C0100BC8485 /* TestingAppDelegate.swift */,
 				03341B4023ABB1E7009AE8A8 /* SceneDelegate.swift */,
+				D54A561A23CD5CDD00BC8485 /* TestingSceneDelegate.swift */,
 				03341B4223ABB1E7009AE8A8 /* ContentView.swift */,
 				03341B4423ABB1E8009AE8A8 /* Assets.xcassets */,
 				03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */,
@@ -365,6 +374,8 @@
 				D54A560C23CD342E00BC8485 /* AppleAuthorizationControllerSpy.swift in Sources */,
 				D54A560823CD02CE00BC8485 /* CryptoKit+Sugar.swift in Sources */,
 				D54A561323CD4B2C00BC8485 /* AppleAuthorizationResponse.swift in Sources */,
+				D54A561923CD5C0100BC8485 /* TestingAppDelegate.swift in Sources */,
+				D54A561B23CD5CDD00BC8485 /* TestingSceneDelegate.swift in Sources */,
 				D50E4BC023C689BA00B6FCB1 /* Typealiases.swift in Sources */,
 				D5E04B1923BED80700A161BB /* FontModifier.swift in Sources */,
 				D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */,
@@ -372,6 +383,7 @@
 				D54A561123CD457800BC8485 /* AppleAuthorizationCredential.swift in Sources */,
 				D54A560A23CD27A800BC8485 /* AppleAuthorizationController.swift in Sources */,
 				D509899123BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift in Sources */,
+				D54A561723CD577800BC8485 /* main.swift in Sources */,
 				D50E4BC223C69D0400B6FCB1 /* AppleAuthorizationService.swift in Sources */,
 				D54A560623CA937800BC8485 /* AppleAuthorizationServiceFake.swift in Sources */,
 			);
