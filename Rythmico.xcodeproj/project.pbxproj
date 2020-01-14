@@ -29,10 +29,28 @@
 		D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898423B9B5C100C19300 /* GoogleService-Info.plist */; };
 		D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */; };
 		D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */; };
+		D509899123BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509899023BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift */; };
 		D50E4BC023C689BA00B6FCB1 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BBF23C689BA00B6FCB1 /* Typealiases.swift */; };
+		D50E4BC223C69D0400B6FCB1 /* AppleAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BC123C69D0400B6FCB1 /* AppleAuthorizationService.swift */; };
+		D54A560623CA937800BC8485 /* AppleAuthorizationServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560523CA937800BC8485 /* AppleAuthorizationServiceFake.swift */; };
 		D54A560823CD02CE00BC8485 /* CryptoKit+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560723CD02CE00BC8485 /* CryptoKit+Sugar.swift */; };
+		D54A560A23CD27A800BC8485 /* AppleAuthorizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */; };
+		D54A560C23CD342E00BC8485 /* AppleAuthorizationControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560B23CD342E00BC8485 /* AppleAuthorizationControllerSpy.swift */; };
+		D54A560F23CD384300BC8485 /* AppleAuthorizationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560E23CD384300BC8485 /* AppleAuthorizationServiceTests.swift */; };
+		D54A561123CD457800BC8485 /* AppleAuthorizationCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561023CD457800BC8485 /* AppleAuthorizationCredential.swift */; };
+		D54A561323CD4B2C00BC8485 /* AppleAuthorizationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561223CD4B2C00BC8485 /* AppleAuthorizationResponse.swift */; };
 		D5E04B1923BED80700A161BB /* FontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* FontModifier.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D54A55FE23CA8C9000BC8485 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03341B3323ABB1E7009AE8A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 03341B3A23ABB1E7009AE8A8;
+			remoteInfo = Rythmico;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		03341B3B23ABB1E7009AE8A8 /* Rythmico.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rythmico.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,8 +79,18 @@
 		D509898423B9B5C100C19300 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
 		D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationAppleIDButton.swift; sourceTree = "<group>"; };
+		D509899023BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCompletionDelegate.swift; sourceTree = "<group>"; };
 		D50E4BBF23C689BA00B6FCB1 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
+		D50E4BC123C69D0400B6FCB1 /* AppleAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationService.swift; sourceTree = "<group>"; };
+		D54A55F923CA8C9000BC8485 /* ServicesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ServicesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D54A55FD23CA8C9000BC8485 /* Info-Tests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Tests.plist"; sourceTree = "<group>"; };
+		D54A560523CA937800BC8485 /* AppleAuthorizationServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationServiceFake.swift; sourceTree = "<group>"; };
 		D54A560723CD02CE00BC8485 /* CryptoKit+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CryptoKit+Sugar.swift"; sourceTree = "<group>"; };
+		D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationController.swift; sourceTree = "<group>"; };
+		D54A560B23CD342E00BC8485 /* AppleAuthorizationControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationControllerSpy.swift; sourceTree = "<group>"; };
+		D54A560E23CD384300BC8485 /* AppleAuthorizationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationServiceTests.swift; sourceTree = "<group>"; };
+		D54A561023CD457800BC8485 /* AppleAuthorizationCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredential.swift; sourceTree = "<group>"; };
+		D54A561223CD4B2C00BC8485 /* AppleAuthorizationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationResponse.swift; sourceTree = "<group>"; };
 		D5E04B1823BED80700A161BB /* FontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,12 +114,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D54A55F623CA8C9000BC8485 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		03341B3223ABB1E7009AE8A8 = {
 			isa = PBXGroup;
 			children = (
+				D59A804223CA88DB006DD0D1 /* Services */,
 				D59A804123CA8746006DD0D1 /* Sugar */,
 				D50E4BDC23CA82E000B6FCB1 /* UI */,
 				03341B3D23ABB1E7009AE8A8 /* Rythmico */,
@@ -104,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				03341B3B23ABB1E7009AE8A8 /* Rythmico.app */,
+				D54A55F923CA8C9000BC8485 /* ServicesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -161,12 +198,22 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		D54A560D23CD36C500BC8485 /* Authorization */ = {
 		D50E4BDC23CA82E000B6FCB1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				D54A561223CD4B2C00BC8485 /* AppleAuthorizationResponse.swift */,
+				D54A561023CD457800BC8485 /* AppleAuthorizationCredential.swift */,
+				D50E4BC123C69D0400B6FCB1 /* AppleAuthorizationService.swift */,
+				D54A560E23CD384300BC8485 /* AppleAuthorizationServiceTests.swift */,
+				D54A560523CA937800BC8485 /* AppleAuthorizationServiceFake.swift */,
+				D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */,
+				D54A560B23CD342E00BC8485 /* AppleAuthorizationControllerSpy.swift */,
 				D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */,
 				D5E04B1823BED80700A161BB /* FontModifier.swift */,
+				D509899023BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift */,
 			);
+			path = Authorization;
 			path = UI;
 			sourceTree = "<group>";
 		};
@@ -177,6 +224,15 @@
 				D50E4BBF23C689BA00B6FCB1 /* Typealiases.swift */,
 			);
 			path = Sugar;
+			sourceTree = "<group>";
+		};
+		D59A804223CA88DB006DD0D1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D54A560D23CD36C500BC8485 /* Authorization */,
+				D54A55FD23CA8C9000BC8485 /* Info-Tests.plist */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,18 +256,41 @@
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D54A55F823CA8C9000BC8485 /* ServicesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D54A560223CA8C9000BC8485 /* Build configuration list for PBXNativeTarget "ServicesTests" */;
+			buildPhases = (
+				D54A55F523CA8C9000BC8485 /* Sources */,
+				D54A55F623CA8C9000BC8485 /* Frameworks */,
+				D54A55F723CA8C9000BC8485 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D54A55FF23CA8C9000BC8485 /* PBXTargetDependency */,
+			);
+			name = ServicesTests;
+			productName = ServicesTests;
+			productReference = D54A55F923CA8C9000BC8485 /* ServicesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		03341B3323ABB1E7009AE8A8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1120;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "David Roman";
 				TargetAttributes = {
 					03341B3A23ABB1E7009AE8A8 = {
 						CreatedOnToolsVersion = 11.2.1;
+					};
+					D54A55F823CA8C9000BC8485 = {
+						CreatedOnToolsVersion = 11.3;
+						LastSwiftMigration = 1130;
+						TestTargetID = 03341B3A23ABB1E7009AE8A8;
 					};
 				};
 			};
@@ -229,6 +308,7 @@
 			projectRoot = "";
 			targets = (
 				03341B3A23ABB1E7009AE8A8 /* Rythmico */,
+				D54A55F823CA8C9000BC8485 /* ServicesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -244,6 +324,13 @@
 				03341B4523ABB1E8009AE8A8 /* Assets.xcassets in Resources */,
 				D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */,
 				D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D54A55F723CA8C9000BC8485 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,14 +364,38 @@
 			files = (
 				03341B3F23ABB1E7009AE8A8 /* AppDelegate.swift in Sources */,
 				03341B4123ABB1E7009AE8A8 /* SceneDelegate.swift in Sources */,
+				D54A560C23CD342E00BC8485 /* AppleAuthorizationControllerSpy.swift in Sources */,
+				D54A560823CD02CE00BC8485 /* CryptoKit+Sugar.swift in Sources */,
+				D54A561323CD4B2C00BC8485 /* AppleAuthorizationResponse.swift in Sources */,
 				D50E4BC023C689BA00B6FCB1 /* Typealiases.swift in Sources */,
 				D5E04B1923BED80700A161BB /* FontModifier.swift in Sources */,
 				D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */,
 				03341B4323ABB1E7009AE8A8 /* ContentView.swift in Sources */,
+				D54A561123CD457800BC8485 /* AppleAuthorizationCredential.swift in Sources */,
+				D54A560A23CD27A800BC8485 /* AppleAuthorizationController.swift in Sources */,
+				D509899123BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift in Sources */,
+				D50E4BC223C69D0400B6FCB1 /* AppleAuthorizationService.swift in Sources */,
+				D54A560623CA937800BC8485 /* AppleAuthorizationServiceFake.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D54A55F523CA8C9000BC8485 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D54A560F23CD384300BC8485 /* AppleAuthorizationServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D54A55FF23CA8C9000BC8485 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 03341B3A23ABB1E7009AE8A8 /* Rythmico */;
+			targetProxy = D54A55FE23CA8C9000BC8485 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */ = {
@@ -465,6 +576,51 @@
 			};
 			name = Release;
 		};
+		D54A560023CA8C9000BC8485 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 72N659HYBR;
+				INFOPLIST_FILE = "Services/Info-Tests.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.ServicesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rythmico.app/Rythmico";
+			};
+			name = Debug;
+		};
+		D54A560123CA8C9000BC8485 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 72N659HYBR;
+				INFOPLIST_FILE = "Services/Info-Tests.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.ServicesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rythmico.app/Rythmico";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -482,6 +638,15 @@
 			buildConfigurations = (
 				03341B5023ABB1E8009AE8A8 /* Debug */,
 				03341B5123ABB1E8009AE8A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D54A560223CA8C9000BC8485 /* Build configuration list for PBXNativeTarget "ServicesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D54A560023CA8C9000BC8485 /* Debug */,
+				D54A560123CA8C9000BC8485 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
