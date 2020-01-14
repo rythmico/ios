@@ -191,15 +191,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D50E4BC323C69D6E00B6FCB1 /* Onboarding */ = {
+		D50E4BDC23CA82E000B6FCB1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */,
+				D5E04B1823BED80700A161BB /* FontModifier.swift */,
 			);
-			path = Onboarding;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		D54A560D23CD36C500BC8485 /* Authorization */ = {
-		D50E4BDC23CA82E000B6FCB1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				D54A561223CD4B2C00BC8485 /* AppleAuthorizationResponse.swift */,
@@ -209,12 +210,9 @@
 				D54A560523CA937800BC8485 /* AppleAuthorizationServiceFake.swift */,
 				D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */,
 				D54A560B23CD342E00BC8485 /* AppleAuthorizationControllerSpy.swift */,
-				D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */,
-				D5E04B1823BED80700A161BB /* FontModifier.swift */,
 				D509899023BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift */,
 			);
 			path = Authorization;
-			path = UI;
 			sourceTree = "<group>";
 		};
 		D59A804123CA8746006DD0D1 /* Sugar */ = {
