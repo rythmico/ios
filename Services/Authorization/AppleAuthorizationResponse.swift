@@ -1,4 +1,9 @@
-struct AppleAuthorizationResponse: Equatable {
-    var identityToken: String
-    var nonce: String
+import AuthenticationServices
+
+typealias AppleAuthorizationResponse = ASAuthorizationAppleIDCredential
+
+protocol AppleAuthorizationResponseProtocol {
+    var identityToken: Data? { get }
 }
+
+extension AppleAuthorizationResponse: AppleAuthorizationResponseProtocol {}
