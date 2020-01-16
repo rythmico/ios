@@ -2,9 +2,9 @@ import AuthenticationServices
 import CryptoKit
 
 protocol AppleAuthorizationServiceProtocol {
-    typealias Response = AppleAuthorizationResponse
+    typealias Credential = AppleAuthorizationCredential
     typealias Error = ASAuthorizationError
-    typealias AuthorizationResult = Result<Response, Error>
+    typealias AuthorizationResult = Result<Credential, Error>
 
     func requestAuthorization(nonce: String, completionHandler: @escaping Handler<AuthorizationResult>)
 }
@@ -38,7 +38,7 @@ final class AppleAuthorizationService: AppleAuthorizationServiceProtocol {
                     return
                 }
                 let identityTokenString = String(decoding: identityToken, as: UTF8.self)
-                let credential = Response(identityToken: identityTokenString, nonce: nonce)
+                let credential = Credential(identityToken: identityTokenString, nonce: nonce)
                 completionHandler(.success(credential))
             case .failure(let error):
                 completionHandler(.failure(error))

@@ -1,9 +1,4 @@
-import AuthenticationServices
-
-typealias AppleAuthorizationCredential = ASAuthorizationAppleIDCredential
-
-protocol AppleAuthorizationCredentialProtocol {
-    var identityToken: Data? { get }
+struct AppleAuthorizationCredential: Equatable {
+    var identityToken: String
+    var nonce: String
 }
-
-extension AppleAuthorizationCredential: AppleAuthorizationCredentialProtocol {}

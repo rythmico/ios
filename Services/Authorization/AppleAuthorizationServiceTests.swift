@@ -3,7 +3,7 @@ import XCTest
 import class AuthenticationServices.ASAuthorizationAppleIDRequest
 import struct CryptoKit.SHA256
 
-private struct AppleAuthorizationCredentialFake: AppleAuthorizationCredentialProtocol {
+private struct AppleAuthorizationResponseFake: AppleAuthorizationResponseProtocol {
     var identityToken: Data?
 
     init(identityToken: String?) {
@@ -70,7 +70,7 @@ final class AppleAuthorizationServiceTests: XCTestCase {
                     XCTFail("Delegate is not of expected type AppleAuthorizationCompletionDelegate")
                     return
                 }
-                let credential = AppleAuthorizationCredentialFake(identityToken: identityToken)
+                let credential = AppleAuthorizationResponseFake(identityToken: identityToken)
                 delegate.authorizationCompletionHandler(.success(credential))
             }
         }
@@ -80,7 +80,7 @@ final class AppleAuthorizationServiceTests: XCTestCase {
             switch result {
             case .success(let response):
                 expectation.fulfill()
-                let expectedResponse = AppleAuthorizationService.Response(
+                let expectedResponse = AppleAuthorizationService.Credential(
                     identityToken: identityToken,
                     nonce: nonce
                 )
@@ -129,7 +129,7 @@ final class AppleAuthorizationServiceTests: XCTestCase {
                     XCTFail("Delegate is not of expected type AppleAuthorizationCompletionDelegate")
                     return
                 }
-                let credential = AppleAuthorizationCredentialFake(identityToken: nil)
+                let credential = AppleAuthorizationResponseFake(identityToken: nil)
                 delegate.authorizationCompletionHandler(.success(credential))
             }
         }
