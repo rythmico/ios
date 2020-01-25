@@ -1,4 +1,4 @@
-final class AppleAuthorizationServiceFake: AppleAuthorizationServiceProtocol {
+final class AppleAuthorizationServiceStub: AppleAuthorizationServiceProtocol {
     var expectedResult: AuthorizationResult
 
     init(expectedResult: AuthorizationResult) {
