@@ -31,14 +31,19 @@ final class AppleAuthorizationService: AppleAuthorizationServiceProtocol {
         let controller = controllerType.init(authorizationRequests: [request])
         delegate = AppleAuthorizationCompletionDelegate { result in
             switch result {
-            case .success(let credential):
-                guard let identityToken = credential.identityToken else {
+            case .success(let response):
+                guard let identityToken = response.identityToken else {
                     let error = ASAuthorizationError(.invalidResponse, userInfo: ["details": "Credential of type ASAuthorizationAppleIDCredential returned unexpected nil value for identityToken property."])
                     completionHandler(.failure(error))
                     return
                 }
-                let identityTokenString = String(decoding: identityToken, as: UTF8.self)
-                let credential = Credential(identityToken: identityTokenString, nonce: nonce)
+                let credential = Credential(
+                    userId: response.userId,
+                    fullName: response.fullName.map(PersonNameComponentsFormatter().string(from:)),
+                    email: response.email,
+                    identityToken: String(decoding: identityToken, as: UTF8.self),
+                    nonce: nonce
+                )
                 completionHandler(.success(credential))
             case .failure(let error):
                 completionHandler(.failure(error))

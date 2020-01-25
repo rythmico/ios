@@ -3,14 +3,6 @@ import XCTest
 import class AuthenticationServices.ASAuthorizationAppleIDRequest
 import struct CryptoKit.SHA256
 
-private struct AppleAuthorizationResponseFake: AppleAuthorizationResponseProtocol {
-    var identityToken: Data?
-
-    init(identityToken: String?) {
-        self.identityToken = (identityToken?.utf8).map(Data.init(_:))
-    }
-}
-
 final class AppleAuthorizationServiceTests: XCTestCase {
     func testRequestAuthorization_createsControllerAndRequestWithCorrectScopesAndHashedNonce() throws {
         let expectationA = self.expectation(description: "AppleAuthorizationController is initialized")
@@ -61,8 +53,13 @@ final class AppleAuthorizationServiceTests: XCTestCase {
     func testRequestAuthorization_completionHandlerIsSuccess_forControllerDelegateSuccessCallback() throws {
         let expectation = self.expectation(description: "Request completes successfully")
 
-        let nonce = "NONCE123"
+        let userId = "USER_ID"
+        var fullName = PersonNameComponents()
+        fullName.givenName = "David"
+        fullName.familyName = "Roman Aguirre"
+        let email = "d@vidroman.dev"
         let identityToken = "IDTOKEN123"
+        let nonce = "NONCE123"
 
         AppleAuthorizationControllerSpy.didInit = { controller in
             controller.didSetDelegate = { delegate in
@@ -70,7 +67,7 @@ final class AppleAuthorizationServiceTests: XCTestCase {
                     XCTFail("Delegate is not of expected type AppleAuthorizationCompletionDelegate")
                     return
                 }
-                let credential = AppleAuthorizationResponseFake(identityToken: identityToken)
+                let credential = AppleAuthorizationResponseStub(userId: userId, fullName: fullName, email: email, identityToken: identityToken)
                 delegate.authorizationCompletionHandler(.success(credential))
             }
         }
@@ -78,13 +75,16 @@ final class AppleAuthorizationServiceTests: XCTestCase {
         let service = AppleAuthorizationService(controllerType: AppleAuthorizationControllerSpy.self)
         service.requestAuthorization(nonce: nonce) { result in
             switch result {
-            case .success(let response):
+            case .success(let credential):
                 expectation.fulfill()
-                let expectedResponse = AppleAuthorizationService.Credential(
+                let expectedCredential = AppleAuthorizationService.Credential(
+                    userId: userId,
+                    fullName: "David Roman Aguirre",
+                    email: "d@vidroman.dev",
                     identityToken: identityToken,
                     nonce: nonce
                 )
-                XCTAssertEqual(expectedResponse, response)
+                XCTAssertEqual(expectedCredential, credential)
             case .failure(let error):
                 XCTFail("Should not fail with error \(error)")
             }
@@ -129,8 +129,7 @@ final class AppleAuthorizationServiceTests: XCTestCase {
                     XCTFail("Delegate is not of expected type AppleAuthorizationCompletionDelegate")
                     return
                 }
-                let credential = AppleAuthorizationResponseFake(identityToken: nil)
-                delegate.authorizationCompletionHandler(.success(credential))
+                delegate.authorizationCompletionHandler(.success(AppleAuthorizationResponseDummy()))
             }
         }
 
