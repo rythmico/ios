@@ -41,6 +41,7 @@
 		D535547323DF2AE2005A20EB /* NotificationCenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547223DF2AE2005A20EB /* NotificationCenterSpy.swift */; };
 		D535547723DF3A19005A20EB /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = D535547623DF3A19005A20EB /* Valet */; };
 		D535547923DF3A7C005A20EB /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547823DF3A7C005A20EB /* Keychain.swift */; };
+		D535547C23DF4D30005A20EB /* DeauthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547B23DF4D30005A20EB /* DeauthenticationService.swift */; };
 		D54A560623CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */; };
 		D54A560823CD02CE00BC8485 /* CryptoKit+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560723CD02CE00BC8485 /* CryptoKit+Sugar.swift */; };
 		D54A560A23CD27A800BC8485 /* AppleAuthorizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */; };
@@ -107,6 +108,7 @@
 		D535547023DF2A40005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialRevocationObserverTests.swift; sourceTree = "<group>"; };
 		D535547223DF2AE2005A20EB /* NotificationCenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterSpy.swift; sourceTree = "<group>"; };
 		D535547823DF3A7C005A20EB /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		D535547B23DF4D30005A20EB /* DeauthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeauthenticationService.swift; sourceTree = "<group>"; };
 		D54A55F923CA8C9000BC8485 /* ServicesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ServicesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54A55FD23CA8C9000BC8485 /* Info-Tests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Tests.plist"; sourceTree = "<group>"; };
 		D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationServiceDoubles.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 			children = (
 				D54A561F23CE92AE00BC8485 /* AuthenticationError.swift */,
 				D50E4BC423C7AAA900B6FCB1 /* AuthenticationService.swift */,
+				D535547B23DF4D30005A20EB /* DeauthenticationService.swift */,
 				D5B13B2D23D125E6006CBC46 /* AuthenticationServiceDoubles.swift */,
 				D5B13B2B23D12520006CBC46 /* AuthenticationAccessTokenProvider.swift */,
 				D5B13B2F23D1265F006CBC46 /* AuthenticationAccessTokenProviderDoubles.swift */,
@@ -454,6 +457,7 @@
 				D535547323DF2AE2005A20EB /* NotificationCenterSpy.swift in Sources */,
 				D5BA170A23D671FD00954D50 /* AuthenticationAccessTokenProviderBroadcast.swift in Sources */,
 				D509899123BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift in Sources */,
+				D535547C23DF4D30005A20EB /* DeauthenticationService.swift in Sources */,
 				D5B13B2E23D125E6006CBC46 /* AuthenticationServiceDoubles.swift in Sources */,
 				D54A561723CD577800BC8485 /* main.swift in Sources */,
 				D50E4BC223C69D0400B6FCB1 /* AppleAuthorizationService.swift in Sources */,
