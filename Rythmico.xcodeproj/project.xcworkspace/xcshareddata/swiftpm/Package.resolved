@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Valet",
+        "repositoryURL": "https://github.com/Square/Valet",
+        "state": {
+          "branch": null,
+          "revision": "7447d1661d938643b0004084367e7bdcb94fdcc4",
+          "version": "3.2.8"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

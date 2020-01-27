@@ -3,15 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		03341B3F23ABB1E7009AE8A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */; };
-		03341B4323ABB1E7009AE8A8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03341B4223ABB1E7009AE8A8 /* ContentView.swift */; };
+		03341B4323ABB1E7009AE8A8 /* MainTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03341B4223ABB1E7009AE8A8 /* MainTabViewModel.swift */; };
 		03341B4523ABB1E8009AE8A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4423ABB1E8009AE8A8 /* Assets.xcassets */; };
 		03341B4823ABB1E8009AE8A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4723ABB1E8009AE8A8 /* Preview Assets.xcassets */; };
 		03341B4B23ABB1E8009AE8A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */; };
+		037A516123D877A900134C14 /* RootViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A516023D877A900134C14 /* RootViewData.swift */; };
 		D509897223B963B700C19300 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896523B963B700C19300 /* FirebaseAuth.framework */; };
 		D509897323B963B700C19300 /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896623B963B700C19300 /* GoogleDataTransport.framework */; };
 		D509897423B963B700C19300 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896723B963B700C19300 /* GTMSessionFetcher.framework */; };
@@ -38,6 +39,7 @@
 		D535546F23DF2698005A20EB /* NotificationCenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546E23DF2698005A20EB /* NotificationCenterProtocol.swift */; };
 		D535547123DF2A40005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547023DF2A40005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift */; };
 		D535547323DF2AE2005A20EB /* NotificationCenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547223DF2AE2005A20EB /* NotificationCenterSpy.swift */; };
+		D535547723DF3A19005A20EB /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = D535547623DF3A19005A20EB /* Valet */; };
 		D54A560623CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */; };
 		D54A560823CD02CE00BC8485 /* CryptoKit+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560723CD02CE00BC8485 /* CryptoKit+Sugar.swift */; };
 		D54A560A23CD27A800BC8485 /* AppleAuthorizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */; };
@@ -140,6 +142,7 @@
 				D509897B23B963B700C19300 /* FirebaseCoreDiagnostics.framework in Frameworks */,
 				D509897C23B963B700C19300 /* FirebaseCore.framework in Frameworks */,
 				D509897D23B963B700C19300 /* GoogleDataTransportCCTSupport.framework in Frameworks */,
+				D535547723DF3A19005A20EB /* Valet in Frameworks */,
 				D509897E23B963B700C19300 /* nanopb.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +306,9 @@
 			dependencies = (
 			);
 			name = Rythmico;
+			packageProductDependencies = (
+				D535547623DF3A19005A20EB /* Valet */,
+			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
 			productType = "com.apple.product-type.application";
@@ -354,6 +360,9 @@
 				Base,
 			);
 			mainGroup = 03341B3223ABB1E7009AE8A8;
+			packageReferences = (
+				D535547523DF3A19005A20EB /* XCRemoteSwiftPackageReference "Valet" */,
+			);
 			productRefGroup = 03341B3C23ABB1E7009AE8A8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -719,6 +728,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D535547523DF3A19005A20EB /* XCRemoteSwiftPackageReference "Valet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Square/Valet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.8;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D535547623DF3A19005A20EB /* Valet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D535547523DF3A19005A20EB /* XCRemoteSwiftPackageReference "Valet" */;
+			productName = Valet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 03341B3323ABB1E7009AE8A8 /* Project object */;
 }
