@@ -12,7 +12,6 @@
 		03341B4523ABB1E8009AE8A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4423ABB1E8009AE8A8 /* Assets.xcassets */; };
 		03341B4823ABB1E8009AE8A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4723ABB1E8009AE8A8 /* Preview Assets.xcassets */; };
 		03341B4B23ABB1E8009AE8A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */; };
-		037A516123D877A900134C14 /* RootViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037A516023D877A900134C14 /* RootViewData.swift */; };
 		D509897223B963B700C19300 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896523B963B700C19300 /* FirebaseAuth.framework */; };
 		D509897323B963B700C19300 /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896623B963B700C19300 /* GoogleDataTransport.framework */; };
 		D509897423B963B700C19300 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896723B963B700C19300 /* GTMSessionFetcher.framework */; };
@@ -28,6 +27,7 @@
 		D509898023B969B700C19300 /* GoogleService-Info-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */; };
 		D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898423B9B5C100C19300 /* GoogleService-Info.plist */; };
 		D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */; };
+		D509898D23BA787500C19300 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509898C23BA787500C19300 /* OnboardingViewModel.swift */; };
 		D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */; };
 		D509899123BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509899023BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift */; };
 		D50E4BC023C689BA00B6FCB1 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BBF23C689BA00B6FCB1 /* Typealiases.swift */; };
@@ -60,7 +60,12 @@
 		D5BA170823D66AF500954D50 /* AuthenticationAccessTokenProviderObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170723D66AF500954D50 /* AuthenticationAccessTokenProviderObserverTests.swift */; };
 		D5BA170A23D671FD00954D50 /* AuthenticationAccessTokenProviderBroadcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170923D671FD00954D50 /* AuthenticationAccessTokenProviderBroadcast.swift */; };
 		D5BA170C23D6725B00954D50 /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170B23D6725B00954D50 /* AuthenticationAccessTokenProviderBroadcastDoubles.swift */; };
+		D5BA171023D7A18900954D50 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170F23D7A18900954D50 /* RootView.swift */; };
+		D5BA171223D7AB3B00954D50 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA171123D7AB3B00954D50 /* MainTabView.swift */; };
+		D5BA171423D7C82C00954D50 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA171323D7C82C00954D50 /* ViewModel.swift */; };
 		D5E04B1923BED80700A161BB /* FontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* FontModifier.swift */; };
+		D5E04B1B23BEE01B00A161BB /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1A23BEE01B00A161BB /* RootViewModel.swift */; };
+		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +81,7 @@
 /* Begin PBXFileReference section */
 		03341B3B23ABB1E7009AE8A8 /* Rythmico.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rythmico.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		03341B4223ABB1E7009AE8A8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		03341B4223ABB1E7009AE8A8 /* MainTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewModel.swift; sourceTree = "<group>"; };
 		03341B4423ABB1E8009AE8A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03341B4723ABB1E8009AE8A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		03341B4A23ABB1E8009AE8A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -98,6 +103,7 @@
 		D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Release.plist"; sourceTree = "<group>"; };
 		D509898423B9B5C100C19300 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
+		D509898C23BA787500C19300 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationAppleIDButton.swift; sourceTree = "<group>"; };
 		D509899023BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCompletionDelegate.swift; sourceTree = "<group>"; };
 		D50E4BBF23C689BA00B6FCB1 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
@@ -130,7 +136,12 @@
 		D5BA170723D66AF500954D50 /* AuthenticationAccessTokenProviderObserverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderObserverTests.swift; sourceTree = "<group>"; };
 		D5BA170923D671FD00954D50 /* AuthenticationAccessTokenProviderBroadcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderBroadcast.swift; sourceTree = "<group>"; };
 		D5BA170B23D6725B00954D50 /* AuthenticationAccessTokenProviderBroadcastDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderBroadcastDoubles.swift; sourceTree = "<group>"; };
+		D5BA170F23D7A18900954D50 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		D5BA171123D7AB3B00954D50 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		D5BA171323D7C82C00954D50 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		D5E04B1823BED80700A161BB /* FontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontModifier.swift; sourceTree = "<group>"; };
+		D5E04B1A23BEE01B00A161BB /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,7 +203,13 @@
 				D50668DA23B946330044E553 /* Rythmico.entitlements */,
 				D54A561623CD577800BC8485 /* main.swift */,
 				03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */,
-				03341B4223ABB1E7009AE8A8 /* ContentView.swift */,
+				D5BA171323D7C82C00954D50 /* ViewModel.swift */,
+				D5BA170F23D7A18900954D50 /* RootView.swift */,
+				D5E04B1A23BEE01B00A161BB /* RootViewModel.swift */,
+				D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */,
+				D509898C23BA787500C19300 /* OnboardingViewModel.swift */,
+				D5BA171123D7AB3B00954D50 /* MainTabView.swift */,
+				03341B4223ABB1E7009AE8A8 /* MainTabViewModel.swift */,
 				03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */,
 				03341B4423ABB1E8009AE8A8 /* Assets.xcassets */,
 				03341B4C23ABB1E8009AE8A8 /* Info.plist */,
@@ -445,30 +462,36 @@
 			files = (
 				03341B3F23ABB1E7009AE8A8 /* AppDelegate.swift in Sources */,
 				D54A560C23CD342E00BC8485 /* AppleAuthorizationControllerDoubles.swift in Sources */,
+				D5BA171223D7AB3B00954D50 /* MainTabView.swift in Sources */,
 				D54A560823CD02CE00BC8485 /* CryptoKit+Sugar.swift in Sources */,
 				D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */,
 				D54A561323CD4B2C00BC8485 /* AppleAuthorizationCredential.swift in Sources */,
+				D5BA171023D7A18900954D50 /* RootView.swift in Sources */,
 				D535546D23DF212C005A20EB /* AppleAuthorizationCredentialRevocationObserver.swift in Sources */,
+				D5BA171423D7C82C00954D50 /* ViewModel.swift in Sources */,
 				D50E4BC023C689BA00B6FCB1 /* Typealiases.swift in Sources */,
 				D5BA170C23D6725B00954D50 /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */,
 				D535546923DCB03E005A20EB /* AppleAuthorizationResponseDoubles.swift in Sources */,
 				D50E4BC523C7AAA900B6FCB1 /* AuthenticationService.swift in Sources */,
+				D509898D23BA787500C19300 /* OnboardingViewModel.swift in Sources */,
 				D54A562023CE92AE00BC8485 /* AuthenticationError.swift in Sources */,
 				D5B13B2C23D12520006CBC46 /* AuthenticationAccessTokenProvider.swift in Sources */,
+				D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */,
 				D535546F23DF2698005A20EB /* NotificationCenterProtocol.swift in Sources */,
 				D535546B23DCB65A005A20EB /* AppleAuthorizationCredentialStateProvider.swift in Sources */,
 				D5E04B1923BED80700A161BB /* FontModifier.swift in Sources */,
 				D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */,
 				D54A561123CD457800BC8485 /* AppleAuthorizationResponse.swift in Sources */,
-				03341B4323ABB1E7009AE8A8 /* ContentView.swift in Sources */,
 				D54A560A23CD27A800BC8485 /* AppleAuthorizationController.swift in Sources */,
 				D535547323DF2AE2005A20EB /* NotificationCenterSpy.swift in Sources */,
 				D5BA170A23D671FD00954D50 /* AuthenticationAccessTokenProviderBroadcast.swift in Sources */,
 				D509899123BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift in Sources */,
 				D535547C23DF4D30005A20EB /* DeauthenticationService.swift in Sources */,
 				D5B13B2E23D125E6006CBC46 /* AuthenticationServiceDoubles.swift in Sources */,
+				03341B4323ABB1E7009AE8A8 /* MainTabViewModel.swift in Sources */,
 				D54A561723CD577800BC8485 /* main.swift in Sources */,
 				D50E4BC223C69D0400B6FCB1 /* AppleAuthorizationService.swift in Sources */,
+				D5E04B1B23BEE01B00A161BB /* RootViewModel.swift in Sources */,
 				D5B13B3023D1265F006CBC46 /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
 				D5A32DBD23D139C000F3903C /* AuthenticationAccessTokenProviderObserver.swift in Sources */,
 				D54A560623CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift in Sources */,
