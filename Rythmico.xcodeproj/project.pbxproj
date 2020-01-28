@@ -43,6 +43,7 @@
 		D535547923DF3A7C005A20EB /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547823DF3A7C005A20EB /* Keychain.swift */; };
 		D535547C23DF4D30005A20EB /* DeauthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547B23DF4D30005A20EB /* DeauthenticationService.swift */; };
 		D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547D23DF4F44005A20EB /* KeychainDoubles.swift */; };
+		D535548123E0E7C1005A20EB /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = D535548023E0E7C1005A20EB /* SFSafeSymbols */; };
 		D54A560623CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */; };
 		D54A560823CD02CE00BC8485 /* CryptoKit+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560723CD02CE00BC8485 /* CryptoKit+Sugar.swift */; };
 		D54A560A23CD27A800BC8485 /* AppleAuthorizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */; };
@@ -147,6 +148,7 @@
 				D509897A23B963B700C19300 /* GoogleAppMeasurement.framework in Frameworks */,
 				D509897B23B963B700C19300 /* FirebaseCoreDiagnostics.framework in Frameworks */,
 				D509897C23B963B700C19300 /* FirebaseCore.framework in Frameworks */,
+				D535548123E0E7C1005A20EB /* SFSafeSymbols in Frameworks */,
 				D509897D23B963B700C19300 /* GoogleDataTransportCCTSupport.framework in Frameworks */,
 				D535547723DF3A19005A20EB /* Valet in Frameworks */,
 				D509897E23B963B700C19300 /* nanopb.framework in Frameworks */,
@@ -325,6 +327,7 @@
 			name = Rythmico;
 			packageProductDependencies = (
 				D535547623DF3A19005A20EB /* Valet */,
+				D535548023E0E7C1005A20EB /* SFSafeSymbols */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -379,6 +382,7 @@
 			mainGroup = 03341B3223ABB1E7009AE8A8;
 			packageReferences = (
 				D535547523DF3A19005A20EB /* XCRemoteSwiftPackageReference "Valet" */,
+				D535547F23E0E7C1005A20EB /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 			);
 			productRefGroup = 03341B3C23ABB1E7009AE8A8 /* Products */;
 			projectDirPath = "";
@@ -442,6 +446,7 @@
 				03341B3F23ABB1E7009AE8A8 /* AppDelegate.swift in Sources */,
 				D54A560C23CD342E00BC8485 /* AppleAuthorizationControllerDoubles.swift in Sources */,
 				D54A560823CD02CE00BC8485 /* CryptoKit+Sugar.swift in Sources */,
+				D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */,
 				D54A561323CD4B2C00BC8485 /* AppleAuthorizationCredential.swift in Sources */,
 				D535546D23DF212C005A20EB /* AppleAuthorizationCredentialRevocationObserver.swift in Sources */,
 				D50E4BC023C689BA00B6FCB1 /* Typealiases.swift in Sources */,
@@ -756,6 +761,14 @@
 				minimumVersion = 3.2.8;
 			};
 		};
+		D535547F23E0E7C1005A20EB /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/piknotech/SFSafeSymbols";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -763,6 +776,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D535547523DF3A19005A20EB /* XCRemoteSwiftPackageReference "Valet" */;
 			productName = Valet;
+		};
+		D535548023E0E7C1005A20EB /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D535547F23E0E7C1005A20EB /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
