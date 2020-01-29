@@ -1,19 +1,20 @@
 import Foundation
 import FirebaseAuth
+import Sugar
 
-protocol AuthenticationServiceProtocol {
+public protocol AuthenticationServiceProtocol {
     typealias Response = AuthenticationAccessTokenProvider
     typealias Error = AuthenticationAPIError
     typealias AuthenticationResult = Result<Response, Error>
     func authenticateAppleAccount(with credential: AppleAuthorizationCredential, completionHandler: @escaping Handler<AuthenticationResult>)
 }
 
-func AuthenticationService() -> _AuthenticationService { Auth.auth() }
+public func AuthenticationService() -> _AuthenticationService { Auth.auth() }
 
-typealias _AuthenticationService = FirebaseAuth.Auth
+public typealias _AuthenticationService = FirebaseAuth.Auth
 
 extension _AuthenticationService: AuthenticationServiceProtocol {
-    func authenticateAppleAccount(with credential: AppleAuthorizationCredential, completionHandler: @escaping Handler<AuthenticationResult>) {
+    public func authenticateAppleAccount(with credential: AppleAuthorizationCredential, completionHandler: @escaping Handler<AuthenticationResult>) {
         let oauthCredential = OAuthProvider.credential(
             withProviderID: "apple.com",
             idToken: credential.identityToken,

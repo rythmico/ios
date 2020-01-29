@@ -1,15 +1,15 @@
 import Foundation
 
-final class NotificationCenterSpy: NotificationCenterProtocol {
-    var notificationName: NSNotification.Name?
-    var observerBlock: ((Notification) -> Void)?
-    var returnedToken: Int
+public final class NotificationCenterSpy: NotificationCenterProtocol {
+    public var notificationName: NSNotification.Name?
+    public var observerBlock: ((Notification) -> Void)?
+    public var returnedToken: Int
 
-    init(returnedToken: Int) {
+    public init(returnedToken: Int) {
         self.returnedToken = returnedToken
     }
 
-    func addObserver(forName name: NSNotification.Name?, object obj: Any?, queue: OperationQueue?, using block: @escaping (Notification) -> Void) -> NSObjectProtocol {
+    public func addObserver(forName name: NSNotification.Name?, object obj: Any?, queue: OperationQueue?, using block: @escaping (Notification) -> Void) -> NSObjectProtocol {
         notificationName = name
         observerBlock = block
         return NSNumber(value: returnedToken)

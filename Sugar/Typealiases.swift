@@ -1,9 +1,9 @@
 import Swift
 
-typealias Action = () -> Void
-typealias Handler<T> = (T) -> Void
+public typealias Action = () -> Void
+public typealias Handler<T> = (T) -> Void
 
-typealias ResultHandler<V, E: Error> = Handler<Result<V, E>>
+public typealias ResultHandler<V, E: Error> = Handler<Result<V, E>>
 
-typealias SimpleResult<V> = Result<V, Error>
-typealias SimpleResultHandler<V> = Handler<SimpleResult<V>>
+public typealias SimpleResult<V> = Result<V, Error>
+public typealias SimpleResultHandler<V> = Handler<SimpleResult<V>>

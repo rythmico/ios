@@ -1,3 +1,5 @@
+import Sugar
+
 final class AppleAuthorizationControllerSpy: AppleAuthorizationControllerProtocol {
     static var didInit: Handler<AppleAuthorizationControllerSpy>?
 
