@@ -1,10 +1,16 @@
 import SwiftUI
 import Auth
+import Sugar
 
 struct OnboardingViewData {
+    struct ErrorAlertViewData: Identifiable {
+        var id = UUID()
+        var message: String
+    }
+
     var isLoading: Bool = false
     var isAppleAuthorizationButtonEnabled: Bool { !isLoading }
-    var errorMessage: String? = nil
+    var errorAlertViewData: ErrorAlertViewData? = nil
 }
 
 struct OnboardingView: View, ViewModelable {
@@ -28,11 +34,14 @@ struct OnboardingView: View, ViewModelable {
                 }
                 Spacer()
                 AuthorizationAppleIDButton()
-                    .onTapGesture(perform: viewModel.showAppleAuthenticationSheet)
+                    .onTapGesture(perform: viewModel.authenticateWithApple)
                     .opacity(viewData.isAppleAuthorizationButtonEnabled ? 1 : 0.3)
                     .disabled(!viewData.isAppleAuthorizationButtonEnabled)
             }
             .padding()
+        }
+        .alert(item: Binding(get: { self.viewData.errorAlertViewData }, set: { _ in self.viewModel.dismissErrorAlert() })) { viewData in
+            Alert(title: Text("An error ocurred"), message: Text(viewData.message))
         }
     }
 }
@@ -72,7 +81,8 @@ struct OnboardingView_Preview: PreviewProvider {
     }
 
     private static var authenticationService: AuthenticationServiceProtocol {
-        AuthenticationServiceStub(expectedResult: .success(authenticationAccessTokenProvider))
+//        AuthenticationServiceStub(expectedResult: .success(authenticationAccessTokenProvider))
+        AuthenticationServiceStub(expectedResult: .failure(.init(reasonCode: .invalidEmail, localizedDescription: "Something went ooopsie!")))
     }
 
     private static var keychain: KeychainProtocol {
