@@ -11,3 +11,9 @@ public final class AuthenticationServiceStub: AuthenticationServiceProtocol {
         completionHandler(expectedResult)
     }
 }
+
+public final class AuthenticationServiceDummy: AuthenticationServiceProtocol {
+    public init() {}
+
+    public func authenticateAppleAccount(with credential: AppleAuthorizationCredential, completionHandler: @escaping Handler<AuthenticationResult>) {}
+}

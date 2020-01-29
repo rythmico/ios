@@ -1,8 +1,9 @@
 import Foundation
 
 public final class NotificationCenterSpy: NotificationCenterProtocol {
-    public var notificationName: NSNotification.Name?
-    public var observerBlock: ((Notification) -> Void)?
+    public private(set) var notificationName: NSNotification.Name?
+    public private(set) var observerBlock: ((Notification) -> Void)?
+
     public var returnedToken: Int
 
     public init(returnedToken: Int) {
