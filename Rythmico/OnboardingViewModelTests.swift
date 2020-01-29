@@ -32,10 +32,10 @@ final class OnboardingViewModelTests: XCTestCase {
             dispatchQueue: nil
         )
 
-        viewModel.showAppleAuthenticationSheet()
+        viewModel.authenticateWithApple()
 
         XCTAssertFalse(viewModel.viewData.isLoading)
-        XCTAssertNil(viewModel.viewData.errorMessage)
+        XCTAssertNil(viewModel.viewData.errorAlertViewData)
         XCTAssert(keychain.inMemoryStorage.isEmpty)
     }
 
@@ -49,12 +49,16 @@ final class OnboardingViewModelTests: XCTestCase {
             dispatchQueue: nil
         )
 
-        viewModel.showAppleAuthenticationSheet()
+        viewModel.authenticateWithApple()
 
         XCTAssertFalse(viewModel.viewData.isLoading)
-        XCTAssertEqual(viewModel.viewData.errorMessage, "Whooopsie (17004)")
+        XCTAssertEqual(viewModel.viewData.errorAlertViewData?.message, "Whooopsie (17004)")
         XCTAssertEqual(keychain.inMemoryStorage.values.count, 1)
         XCTAssertEqual(keychain.inMemoryStorage.values.first, "USER_ID")
+
+        viewModel.dismissErrorAlert()
+
+        XCTAssertNil(viewModel.viewData.errorAlertViewData)
     }
 
     func testSuccessfulAuthentication() {
@@ -67,10 +71,10 @@ final class OnboardingViewModelTests: XCTestCase {
             dispatchQueue: nil
         )
 
-        viewModel.showAppleAuthenticationSheet()
+        viewModel.authenticateWithApple()
 
         XCTAssertFalse(viewModel.viewData.isLoading)
-        XCTAssertNil(viewModel.viewData.errorMessage)
+        XCTAssertNil(viewModel.viewData.errorAlertViewData)
         XCTAssertEqual(keychain.inMemoryStorage.values.count, 1)
         XCTAssertEqual(keychain.inMemoryStorage.values.first, "USER_ID")
     }

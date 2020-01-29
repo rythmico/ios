@@ -3,7 +3,7 @@ import Combine
 import Auth
 
 protocol OnboardingViewModelProtocol: ViewModel where ViewData == OnboardingViewData {
-    func showAppleAuthenticationSheet()
+    func authenticateWithApple()
 }
 
 final class OnboardingViewModel: OnboardingViewModelProtocol {
@@ -30,7 +30,7 @@ final class OnboardingViewModel: OnboardingViewModelProtocol {
         self.dispatchQueue = dispatchQueue
     }
 
-    func showAppleAuthenticationSheet() {
+    func authenticateWithApple() {
         appleAuthorizationService.requestAuthorization { result in
             switch result {
             case .success(let credential):
@@ -55,6 +55,10 @@ final class OnboardingViewModel: OnboardingViewModelProtocol {
         }
     }
 
+    func dismissErrorAlert() {
+        viewData.errorAlertViewData = nil
+    }
+
     private func handleAuthorizationError(_ error: AppleAuthorizationService.Error) {
         switch error.code {
         case .notHandled:
@@ -67,7 +71,7 @@ final class OnboardingViewModel: OnboardingViewModelProtocol {
     }
 
     private func handleAuthenticationError(_ error: AuthenticationServiceProtocol.Error) {
-        let errorMessage: String?
+        let errorMessage: String
         switch error.reasonCode {
         case .invalidAPIKey,
              .appNotAuthorized,
@@ -83,6 +87,6 @@ final class OnboardingViewModel: OnboardingViewModelProtocol {
              .missingOrInvalidNonce:
             errorMessage = "\(error.localizedDescription) (\(error.reasonCode.rawValue))"
         }
-        viewData.errorMessage = errorMessage
+        viewData.errorAlertViewData = OnboardingViewData.ErrorAlertViewData(message: errorMessage)
     }
 }
