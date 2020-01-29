@@ -17,3 +17,11 @@ final class KeychainFake: KeychainProtocol {
         return true
     }
 }
+
+final class KeychainDummy: KeychainProtocol {
+    func set(string: String, forKey key: String) -> Bool { false }
+
+    func string(forKey key: String) -> String? { nil }
+
+    func removeObject(forKey key: String) -> Bool { false }
+}

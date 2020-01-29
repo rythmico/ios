@@ -11,3 +11,9 @@ public final class AppleAuthorizationServiceStub: AppleAuthorizationServiceProto
         completionHandler(expectedResult)
     }
 }
+
+public final class AppleAuthorizationServiceDummy: AppleAuthorizationServiceProtocol {
+    public init() {}
+
+    public func requestAuthorization(nonce: String, completionHandler: @escaping Handler<AuthorizationResult>) {}
+}

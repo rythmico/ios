@@ -40,6 +40,9 @@ final class RootViewModel: RootViewModelProtocol {
         self.dispatchQueue = dispatchQueue
 
         self.authenticationAccessTokenProviderObserving.statusDidChangeHandler = { provider in
+            if provider == nil {
+                keychain.appleAuthorizationUserId = nil
+            }
             self.viewData = viewData(for: provider)
         }
 

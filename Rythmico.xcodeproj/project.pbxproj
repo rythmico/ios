@@ -68,6 +68,11 @@
 		D535552523E104B1005A20EB /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896723B963B700C19300 /* GTMSessionFetcher.framework */; };
 		D535552623E104B1005A20EB /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509897123B963B700C19300 /* nanopb.framework */; };
 		D535553623E105A5005A20EB /* OnboardingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553523E105A5005A20EB /* OnboardingViewModelTests.swift */; };
+		D535553823E116C9005A20EB /* RootViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553723E116C9005A20EB /* RootViewModelTests.swift */; };
+		D535553B23E1DD1A005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553A23E1DD1A005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift */; };
+		D535553D23E1DE15005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553C23E1DE15005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift */; };
+		D535554123E1DF8B005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554023E1DF8B005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift */; };
+		D535554323E1DFEC005A20EB /* DeauthenticationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554223E1DFEC005A20EB /* DeauthenticationServiceDoubles.swift */; };
 		D54A561723CD577800BC8485 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561623CD577800BC8485 /* main.swift */; };
 		D5BA171023D7A18900954D50 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170F23D7A18900954D50 /* RootView.swift */; };
 		D5BA171223D7AB3B00954D50 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA171123D7AB3B00954D50 /* MainTabView.swift */; };
@@ -172,6 +177,11 @@
 		D53554F823E0FD77005A20EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D535552B23E10557005A20EB /* RythmicoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RythmicoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D535553523E105A5005A20EB /* OnboardingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelTests.swift; sourceTree = "<group>"; };
+		D535553723E116C9005A20EB /* RootViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModelTests.swift; sourceTree = "<group>"; };
+		D535553A23E1DD1A005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialStateProviderDoubles.swift; sourceTree = "<group>"; };
+		D535553C23E1DE15005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialRevocationObserverDoubles.swift; sourceTree = "<group>"; };
+		D535554023E1DF8B005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderObserverDoubles.swift; sourceTree = "<group>"; };
+		D535554223E1DFEC005A20EB /* DeauthenticationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeauthenticationServiceDoubles.swift; sourceTree = "<group>"; };
 		D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationServiceDoubles.swift; sourceTree = "<group>"; };
 		D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HashFunction+Helpers.swift"; sourceTree = "<group>"; };
 		D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationController.swift; sourceTree = "<group>"; };
@@ -286,6 +296,7 @@
 				D5BA171323D7C82C00954D50 /* ViewModel.swift */,
 				D5BA170F23D7A18900954D50 /* RootView.swift */,
 				D5E04B1A23BEE01B00A161BB /* RootViewModel.swift */,
+				D535553723E116C9005A20EB /* RootViewModelTests.swift */,
 				D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */,
 				D509898C23BA787500C19300 /* OnboardingViewModel.swift */,
 				D535553523E105A5005A20EB /* OnboardingViewModelTests.swift */,
@@ -346,10 +357,12 @@
 				D54A561F23CE92AE00BC8485 /* AuthenticationError.swift */,
 				D50E4BC423C7AAA900B6FCB1 /* AuthenticationService.swift */,
 				D535547B23DF4D30005A20EB /* DeauthenticationService.swift */,
+				D535554223E1DFEC005A20EB /* DeauthenticationServiceDoubles.swift */,
 				D5B13B2D23D125E6006CBC46 /* AuthenticationServiceDoubles.swift */,
 				D5B13B2B23D12520006CBC46 /* AuthenticationAccessTokenProvider.swift */,
 				D5B13B2F23D1265F006CBC46 /* AuthenticationAccessTokenProviderDoubles.swift */,
 				D5A32DBC23D139C000F3903C /* AuthenticationAccessTokenProviderObserver.swift */,
+				D535554023E1DF8B005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift */,
 				D5BA170723D66AF500954D50 /* AuthenticationAccessTokenProviderObserverTests.swift */,
 				D5BA170923D671FD00954D50 /* AuthenticationAccessTokenProviderBroadcast.swift */,
 				D5BA170B23D6725B00954D50 /* AuthenticationAccessTokenProviderBroadcastDoubles.swift */,
@@ -395,7 +408,9 @@
 			children = (
 				D54A561223CD4B2C00BC8485 /* AppleAuthorizationCredential.swift */,
 				D535546A23DCB65A005A20EB /* AppleAuthorizationCredentialStateProvider.swift */,
+				D535553A23E1DD1A005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift */,
 				D535546C23DF212C005A20EB /* AppleAuthorizationCredentialRevocationObserver.swift */,
+				D535553C23E1DE15005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift */,
 				D535547023DF2A40005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift */,
 				D54A561023CD457800BC8485 /* AppleAuthorizationResponse.swift */,
 				D535546823DCB03E005A20EB /* AppleAuthorizationResponseDoubles.swift */,
@@ -674,17 +689,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				D53554C723E0FAC0005A20EB /* AuthenticationAccessTokenProviderBroadcast.swift in Sources */,
+				D535554123E1DF8B005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */,
 				D53554C523E0FAC0005A20EB /* AuthenticationAccessTokenProviderObserver.swift in Sources */,
 				D53554C323E0FAC0005A20EB /* AuthenticationAccessTokenProvider.swift in Sources */,
 				D53554C023E0FAC0005A20EB /* AuthenticationService.swift in Sources */,
+				D535553B23E1DD1A005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
 				D53554C223E0FAC0005A20EB /* AuthenticationServiceDoubles.swift in Sources */,
 				D53554BF23E0FAC0005A20EB /* AuthenticationError.swift in Sources */,
 				D53554D923E0FBE4005A20EB /* AppleAuthorizationResponse.swift in Sources */,
+				D535553D23E1DE15005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,
 				D53554DD23E0FBE4005A20EB /* AppleAuthorizationServiceDoubles.swift in Sources */,
 				D53554C423E0FAC0005A20EB /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
 				D53554D723E0FBE4005A20EB /* AppleAuthorizationCredentialRevocationObserver.swift in Sources */,
 				D535550623E0FE78005A20EB /* HashFunction+Helpers.swift in Sources */,
 				D53554D623E0FBE4005A20EB /* AppleAuthorizationCredentialStateProvider.swift in Sources */,
+				D535554323E1DFEC005A20EB /* DeauthenticationServiceDoubles.swift in Sources */,
 				D53554DA23E0FBE4005A20EB /* AppleAuthorizationResponseDoubles.swift in Sources */,
 				D53554C123E0FAC0005A20EB /* DeauthenticationService.swift in Sources */,
 				D53554DE23E0FBE4005A20EB /* AppleAuthorizationController.swift in Sources */,
@@ -720,6 +739,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D535553823E116C9005A20EB /* RootViewModelTests.swift in Sources */,
 				D535553623E105A5005A20EB /* OnboardingViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
