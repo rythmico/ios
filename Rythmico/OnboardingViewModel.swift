@@ -58,7 +58,7 @@ final class OnboardingViewModel: OnboardingViewModelProtocol {
     private func handleAuthorizationError(_ error: AppleAuthorizationService.Error) {
         switch error.code {
         case .notHandled:
-            fatalError(error.localizedDescription)
+            preconditionFailure(error.localizedDescription)
         case .canceled, .failed, .invalidResponse, .unknown:
             break
         @unknown default:
@@ -69,16 +69,15 @@ final class OnboardingViewModel: OnboardingViewModelProtocol {
     private func handleAuthenticationError(_ error: AuthenticationServiceProtocol.Error) {
         let errorMessage: String?
         switch error.reasonCode {
-        case .unknown,
-             .networkError,
-             .tooManyRequests:
-            errorMessage = nil
         case .invalidAPIKey,
              .appNotAuthorized,
              .internalError,
              .operationNotAllowed:
-            fatalError("\(error.localizedDescription) (\(error.reasonCode.rawValue))")
-        case .invalidCredential,
+            preconditionFailure("\(error.localizedDescription) (\(error.reasonCode.rawValue))")
+        case .unknown,
+             .networkError,
+             .tooManyRequests,
+             .invalidCredential,
              .userDisabled,
              .invalidEmail,
              .missingOrInvalidNonce:

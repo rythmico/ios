@@ -32,17 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D54A55F823CA8C9000BC8485"
-               BuildableName = "ServicesTests.xctest"
-               BlueprintName = "ServicesTests"
-               ReferencedContainer = "container:Rythmico.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D535548723E0F50F005A20EB"
+               BlueprintIdentifier = "D535552A23E10557005A20EB"
                BuildableName = "RythmicoTests.xctest"
                BlueprintName = "RythmicoTests"
                ReferencedContainer = "container:Rythmico.xcodeproj">

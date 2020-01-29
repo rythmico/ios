@@ -1,7 +1,7 @@
 import Foundation
 
 final class KeychainFake: KeychainProtocol {
-    private var inMemoryStorage: [String: String] = [:]
+    var inMemoryStorage: [String: String] = [:]
 
     func set(string: String, forKey key: String) -> Bool {
         inMemoryStorage[key] = string
