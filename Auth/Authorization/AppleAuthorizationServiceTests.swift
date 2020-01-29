@@ -1,5 +1,5 @@
 import XCTest
-@testable import Rythmico
+@testable import Auth
 import class AuthenticationServices.ASAuthorizationAppleIDRequest
 import struct CryptoKit.SHA256
 

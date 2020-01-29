@@ -1,4 +1,5 @@
 import SwiftUI
+import Auth
 
 struct OnboardingViewData {
     var isLoading: Bool = false
@@ -62,6 +63,8 @@ struct OnboardingView_Preview: PreviewProvider {
     private static var authorizationService: AppleAuthorizationServiceProtocol {
         let credentials = AppleAuthorizationServiceStub.Credential(
             userId: "USER_ID",
+            fullName: nil,
+            email: nil,
             identityToken: "IDENTITY_TOKEN",
             nonce: "NONCE"
         )

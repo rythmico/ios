@@ -1,4 +1,5 @@
 import AuthenticationServices
+import Sugar
 
 /// Type-safe, closure-based `ASAuthorizationControllerDelegate` wrapper to be used only internally by `AppleAuthorizationService`.
 final class AppleAuthorizationCompletionDelegate: NSObject {

@@ -1,7 +1,8 @@
 import Foundation
 import FirebaseAuth
+import Sugar
 
-protocol AuthenticationAccessTokenProviderBroadcastProtocol {
+public protocol AuthenticationAccessTokenProviderBroadcastProtocol {
     typealias ListenerBlock = Handler<AuthenticationAccessTokenProvider?>
     typealias ListenerToken = NSObjectProtocol
     var currentProvider: AuthenticationAccessTokenProvider? { get }
@@ -9,16 +10,16 @@ protocol AuthenticationAccessTokenProviderBroadcastProtocol {
     func removeStateDidChangeListener(_ listenerToken: ListenerToken)
 }
 
-func AuthenticationAccessTokenProviderBroadcast() -> _AuthenticationAccessTokenProviderBroadcast { Auth.auth() }
+public func AuthenticationAccessTokenProviderBroadcast() -> _AuthenticationAccessTokenProviderBroadcast { Auth.auth() }
 
-typealias _AuthenticationAccessTokenProviderBroadcast = FirebaseAuth.Auth
+public typealias _AuthenticationAccessTokenProviderBroadcast = FirebaseAuth.Auth
 
 extension Auth: AuthenticationAccessTokenProviderBroadcastProtocol {
-    var currentProvider: AuthenticationAccessTokenProvider? {
+    public var currentProvider: AuthenticationAccessTokenProvider? {
         currentUser
     }
 
-    func addStateDidChangeListener(_ listener: @escaping ListenerBlock) -> ListenerToken {
+    public func addStateDidChangeListener(_ listener: @escaping ListenerBlock) -> ListenerToken {
         addStateDidChangeListener { (_: Auth, user: User?) in
             listener(user)
         }

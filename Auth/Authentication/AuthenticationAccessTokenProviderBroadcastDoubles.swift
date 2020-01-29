@@ -1,4 +1,5 @@
 import Foundation
+import Sugar
 
 final class AuthenticationAccessTokenProviderBroadcastSpy: AuthenticationAccessTokenProviderBroadcastProtocol {
     var currentProvider: AuthenticationAccessTokenProvider?

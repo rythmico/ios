@@ -1,6 +1,7 @@
 import SwiftUI
 import FirebaseAuth
 import SFSafeSymbols
+import Auth
 
 // TODO
 

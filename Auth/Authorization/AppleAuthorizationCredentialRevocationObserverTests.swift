@@ -1,6 +1,7 @@
 import XCTest
-@testable import Rythmico
+@testable import Auth
 import class AuthenticationServices.ASAuthorizationAppleIDProvider
+import Sugar
 
 final class AppleAuthorizationCredentialRevocationObserverTests: XCTestCase {
     func testRevocationHandlerNotificationCenterProperlySetUpAndHandled() {

@@ -1,6 +1,6 @@
 import Foundation
-import AuthenticationServices
 import Combine
+import Auth
 
 protocol RootViewModelProtocol: ViewModel where ViewData == RootViewData {}
 
