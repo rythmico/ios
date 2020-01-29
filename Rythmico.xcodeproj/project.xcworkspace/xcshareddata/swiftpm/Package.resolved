@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SFSafeSymbols",
+        "repositoryURL": "https://github.com/piknotech/SFSafeSymbols",
+        "state": {
+          "branch": null,
+          "revision": "318238d817cca9e932154bb6103866e266d0c65e",
+          "version": "1.1.1"
+        }
+      },
+      {
+        "package": "Valet",
+        "repositoryURL": "https://github.com/Square/Valet",
+        "state": {
+          "branch": null,
+          "revision": "7447d1661d938643b0004084367e7bdcb94fdcc4",
+          "version": "3.2.8"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
