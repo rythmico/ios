@@ -14,4 +14,3 @@ extension _DeauthenticationService: DeauthenticationServiceProtocol {
         try? signOut()
     }
 }
-
