@@ -18,7 +18,7 @@ extension FirebaseAuth.User: AuthenticationAccessTokenProvider {
             case let (_, (nsError as NSError)?):
                 completionHandler(.failure(.init(nsError: nsError)))
             case (nil, nil):
-                fatalError("No token or error received from Firebase")
+                preconditionFailure("No token or error received from Firebase")
             }
         }
     }
