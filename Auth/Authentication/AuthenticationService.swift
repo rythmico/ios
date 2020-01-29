@@ -40,7 +40,7 @@ extension _AuthenticationService: AuthenticationServiceProtocol {
             case let (_, (nsError as NSError)?):
                 completionHandler(.failure(.init(nsError: nsError)))
             case (nil, nil):
-                fatalError("No authResult or error received from Firebase")
+                preconditionFailure("No authResult or error received from Firebase")
             }
         }
     }
