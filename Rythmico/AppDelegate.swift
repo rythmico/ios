@@ -2,13 +2,20 @@ import UIKit
 import class Firebase.FirebaseApp
 import class SwiftUI.UIHostingController
 import Auth
+import Then
 
 final class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    private enum Const {
+        static let defaultNavigationBarLargeTitleLeadingInset: CGFloat = 20
+    }
 
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+
+        configureGlobalStyles()
 
         let rootView = RootView(
             viewModel: RootViewModel(
@@ -36,5 +43,26 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 
         return true
+    }
+
+    // Hopefully to be deleted someday if SwiftUI allows for better customization.
+    private func configureGlobalStyles() {
+        UINavigationBar.appearance().do {
+            $0.isTranslucent = false
+            $0.barTintColor = .systemBackground
+            $0.backgroundColor = .systemBackground
+            $0.largeTitleTextAttributes = [.font: UIFont.rythmicoFont(.largeTitle)]
+            $0.titleTextAttributes = [.font: UIFont.rythmicoFont(.headline)]
+            $0.layoutMargins.left = Const.defaultNavigationBarLargeTitleLeadingInset
+            $0.layoutMargins.right = Const.defaultNavigationBarLargeTitleLeadingInset
+        }
+
+        UITableView.appearance().do {
+            $0.backgroundColor = .clear
+        }
+
+        UITabBarItem.appearance().do {
+            $0.setTitleTextAttributes([.font: UIFont.rythmicoFont(.caption)], for: .normal)
+        }
     }
 }

@@ -73,12 +73,13 @@
 		D535553D23E1DE15005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553C23E1DE15005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift */; };
 		D535554123E1DF8B005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554023E1DF8B005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift */; };
 		D535554323E1DFEC005A20EB /* DeauthenticationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554223E1DFEC005A20EB /* DeauthenticationServiceDoubles.swift */; };
+		D535554723E20076005A20EB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554623E20076005A20EB /* Colors.swift */; };
 		D535554C23E23EA7005A20EB /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = D535554B23E23EA7005A20EB /* Then */; };
 		D54A561723CD577800BC8485 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561623CD577800BC8485 /* main.swift */; };
 		D5BA171023D7A18900954D50 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170F23D7A18900954D50 /* RootView.swift */; };
 		D5BA171223D7AB3B00954D50 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA171123D7AB3B00954D50 /* MainTabView.swift */; };
 		D5BA171423D7C82C00954D50 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA171323D7C82C00954D50 /* ViewModel.swift */; };
-		D5E04B1923BED80700A161BB /* FontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* FontModifier.swift */; };
+		D5E04B1923BED80700A161BB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* Fonts.swift */; };
 		D5E04B1B23BEE01B00A161BB /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1A23BEE01B00A161BB /* RootViewModel.swift */; };
 		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
 /* End PBXBuildFile section */
@@ -183,6 +184,7 @@
 		D535553C23E1DE15005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialRevocationObserverDoubles.swift; sourceTree = "<group>"; };
 		D535554023E1DF8B005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderObserverDoubles.swift; sourceTree = "<group>"; };
 		D535554223E1DFEC005A20EB /* DeauthenticationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeauthenticationServiceDoubles.swift; sourceTree = "<group>"; };
+		D535554623E20076005A20EB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationServiceDoubles.swift; sourceTree = "<group>"; };
 		D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HashFunction+Helpers.swift"; sourceTree = "<group>"; };
 		D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationController.swift; sourceTree = "<group>"; };
@@ -202,7 +204,7 @@
 		D5BA170F23D7A18900954D50 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		D5BA171123D7AB3B00954D50 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		D5BA171323D7C82C00954D50 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		D5E04B1823BED80700A161BB /* FontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontModifier.swift; sourceTree = "<group>"; };
+		D5E04B1823BED80700A161BB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		D5E04B1A23BEE01B00A161BB /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -348,7 +350,8 @@
 			isa = PBXGroup;
 			children = (
 				D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */,
-				D5E04B1823BED80700A161BB /* FontModifier.swift */,
+				D5E04B1823BED80700A161BB /* Fonts.swift */,
+				D535554623E20076005A20EB /* Colors.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -675,11 +678,12 @@
 				03341B3F23ABB1E7009AE8A8 /* AppDelegate.swift in Sources */,
 				D5BA171223D7AB3B00954D50 /* MainTabView.swift in Sources */,
 				D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */,
+				D535554723E20076005A20EB /* Colors.swift in Sources */,
 				D5BA171023D7A18900954D50 /* RootView.swift in Sources */,
 				D5BA171423D7C82C00954D50 /* ViewModel.swift in Sources */,
 				D509898D23BA787500C19300 /* OnboardingViewModel.swift in Sources */,
 				D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */,
-				D5E04B1923BED80700A161BB /* FontModifier.swift in Sources */,
+				D5E04B1923BED80700A161BB /* Fonts.swift in Sources */,
 				D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */,
 				03341B4323ABB1E7009AE8A8 /* MainTabViewModel.swift in Sources */,
 				D54A561723CD577800BC8485 /* main.swift in Sources */,
@@ -907,6 +911,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Rythmico/Rythmico.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Rythmico/Preview Content\"";
 				DEVELOPMENT_TEAM = 72N659HYBR;
 				ENABLE_PREVIEWS = YES;
@@ -934,6 +939,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Rythmico/Rythmico.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Rythmico/Preview Content\"";
 				DEVELOPMENT_TEAM = 72N659HYBR;
 				ENABLE_PREVIEWS = YES;
@@ -958,7 +964,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 72N659HYBR;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -990,7 +995,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 72N659HYBR;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1062,7 +1066,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 72N659HYBR;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1090,7 +1093,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 72N659HYBR;
 				DYLIB_COMPATIBILITY_VERSION = 1;
