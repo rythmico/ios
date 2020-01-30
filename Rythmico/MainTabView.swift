@@ -35,17 +35,16 @@ struct MainTabView: View {
             }
 
             NavigationView {
-                List {
+                Form {
                     Button(action: { try! Auth.auth().signOut() }) {
                         HStack {
                             Spacer()
-                            Text("Log out").rythmicoFont(.body).foregroundColor(.red)
+                            Text("Log out").rythmicoFont(.body).foregroundColor(.rythmicoRed)
                             Spacer()
                         }
                     }
-                    .frame(minHeight: 38)
+                    .frame(minHeight: 35)
                 }
-                .listStyle(GroupedListStyle())
                 .navigationBarTitle(Text("Profile"), displayMode: .large)
             }
             .tabItem {
