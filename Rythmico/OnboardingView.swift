@@ -22,18 +22,24 @@ struct OnboardingView: View, ViewModelable {
 
     var body: some View {
         ZStack {
-            Color.green.edgesIgnoringSafeArea(.all)
+            Color.rythmicoPurple.edgesIgnoringSafeArea(.all)
             VStack(spacing: 16) {
                 Spacer()
-                Text("Rythmico").rythmicoFont(.largeTitle)
+                Text("Rythmico")
+                    .rythmicoFont(.largeTitle)
+                    .foregroundColor(.white)
                 Text("Turning kids into the festival headliners of tomorrow")
                     .rythmicoFont(.headline)
                     .multilineTextAlignment(.center)
+                    .foregroundColor(.white)
                 if viewData.isLoading {
                     Text("Loading...")
+                        .rythmicoFont(.footnote)
+                        .foregroundColor(.white)
                 }
                 Spacer()
                 AuthorizationAppleIDButton()
+                    .environment(\.colorScheme, .dark)
                     .onTapGesture(perform: viewModel.authenticateWithApple)
                     .opacity(viewData.isAppleAuthorizationButtonEnabled ? 1 : 0.3)
                     .disabled(!viewData.isAppleAuthorizationButtonEnabled)
