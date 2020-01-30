@@ -3,10 +3,11 @@ import FirebaseAuth
 import SFSafeSymbols
 import Auth
 
-// TODO
-
 struct MainTabView: View {
-    @State private var selection = 0
+    private enum Const {
+        static let verticalPadding: CGFloat = 12
+        static let horizontalPadding: CGFloat = 28
+    }
 
     private let viewModel: MainTabViewModel
 
@@ -15,34 +16,44 @@ struct MainTabView: View {
     }
 
     var body: some View {
-        TabView(selection: $selection) {
+        TabView {
             NavigationView {
                 Color.clear
-                    .navigationBarTitle("Lessons")
+                    .navigationBarTitle("Lessons", displayMode: .large)
+                    .navigationBarItems(
+                        trailing: Button(action: { print("hey") }) {
+                            Image(systemSymbol: .plusCircleFill).font(.system(size: 24))
+                                .padding(.vertical, Const.verticalPadding)
+                                .padding(.horizontal, Const.horizontalPadding)
+                                .offset(x: Const.horizontalPadding)
+                        }
+                    )
             }
             .tabItem {
-                VStack {
-                    Image(systemSymbol: .calendar).font(Font.system(size: 21))
-                    Text("LESSONS")
-                }
+                Image(systemSymbol: .calendar).font(Font.system(size: 21, weight: .medium))
+                Text("LESSONS")
             }
-            .tag(0)
 
             NavigationView {
-                VStack {
-                    Button("Sign out", action: { try! Auth.auth().signOut() })
-                }
-                .navigationBarTitle("David Roman")
-            }
-
-                .tabItem {
-                    VStack {
-                        Image(systemSymbol: .person).font(Font.system(size: 21))
-                        Text("PROFILE")
+                List {
+                    Button(action: { try! Auth.auth().signOut() }) {
+                        HStack {
+                            Spacer()
+                            Text("Log out").rythmicoFont(.body).foregroundColor(.red)
+                            Spacer()
+                        }
                     }
+                    .frame(minHeight: 38)
                 }
-                .tag(1)
+                .listStyle(GroupedListStyle())
+                .navigationBarTitle(Text("Profile"), displayMode: .large)
+            }
+            .tabItem {
+                Image(systemSymbol: .person).font(Font.system(size: 21, weight: .semibold))
+                Text("PROFILE")
+            }
         }
+        .accentColor(.rythmicoPurple)
     }
 }
 
