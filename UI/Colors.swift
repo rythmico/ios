@@ -1,6 +1,10 @@
 import SwiftUI
 
 extension Color {
+    static var rythmicoRed: Color {
+        Color(base256Red: 193, green: 54, blue: 78)
+    }
+
     static var rythmicoPurple: Color {
         Color(base256Red: 93, green: 97, blue: 241)
     }
