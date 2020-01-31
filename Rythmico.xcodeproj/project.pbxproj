@@ -76,6 +76,7 @@
 		D535554723E20076005A20EB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554623E20076005A20EB /* Colors.swift */; };
 		D535554C23E23EA7005A20EB /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = D535554B23E23EA7005A20EB /* Then */; };
 		D535554E23E38763005A20EB /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554D23E38763005A20EB /* Window.swift */; };
+		D535555023E4AB9A005A20EB /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */; };
 		D54A561723CD577800BC8485 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561623CD577800BC8485 /* main.swift */; };
 		D5BA171023D7A18900954D50 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170F23D7A18900954D50 /* RootView.swift */; };
 		D5BA171223D7AB3B00954D50 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA171123D7AB3B00954D50 /* MainTabView.swift */; };
@@ -187,6 +188,7 @@
 		D535554223E1DFEC005A20EB /* DeauthenticationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeauthenticationServiceDoubles.swift; sourceTree = "<group>"; };
 		D535554623E20076005A20EB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D535554D23E38763005A20EB /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
+		D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationServiceDoubles.swift; sourceTree = "<group>"; };
 		D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HashFunction+Helpers.swift"; sourceTree = "<group>"; };
 		D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationController.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 		D50E4BDC23CA82E000B6FCB1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */,
 				D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */,
 				D5E04B1823BED80700A161BB /* Fonts.swift */,
 				D535554623E20076005A20EB /* Colors.swift */,
@@ -690,6 +693,7 @@
 				D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */,
 				03341B4323ABB1E7009AE8A8 /* MainTabViewModel.swift in Sources */,
 				D535554E23E38763005A20EB /* Window.swift in Sources */,
+				D535555023E4AB9A005A20EB /* ActivityIndicator.swift in Sources */,
 				D54A561723CD577800BC8485 /* main.swift in Sources */,
 				D5E04B1B23BEE01B00A161BB /* RootViewModel.swift in Sources */,
 				D535547923DF3A7C005A20EB /* Keychain.swift in Sources */,
