@@ -25,28 +25,36 @@ struct OnboardingView: View, ViewModelable {
             Color.rythmicoPurple.edgesIgnoringSafeArea(.all)
             VStack(spacing: 16) {
                 Spacer()
-                Text("Rythmico")
-                    .rythmicoFont(.largeTitle)
-                    .foregroundColor(.white)
-                Text("Turning kids into the festival headliners of tomorrow")
-                    .rythmicoFont(.headline)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.white)
+                VStack(spacing: 16) {
+                    Text("Rythmico")
+                        .rythmicoFont(.largeTitle)
+                        .foregroundColor(.white)
+                    Text("Turning kids into the festival headliners of tomorrow")
+                        .rythmicoFont(.headline)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.white)
+                }
+                .accessibilityElement(children: .combine)
+                Spacer()
                 if viewData.isLoading {
                     ActivityIndicator(style: .medium)
+                        .frame(width: 44, height: 44)
+                } else {
+                    AuthorizationAppleIDButton()
+                        .environment(\.colorScheme, .dark)
+                        .accessibility(hint: Text("Double tap to sign in with your Apple ID"))
+                        .onTapGesture(perform: viewModel.authenticateWithApple)
+                        .disabled(!viewData.isAppleAuthorizationButtonEnabled)
                 }
-                Spacer()
-                AuthorizationAppleIDButton()
-                    .environment(\.colorScheme, .dark)
-                    .onTapGesture(perform: viewModel.authenticateWithApple)
-                    .opacity(viewData.isAppleAuthorizationButtonEnabled ? 1 : 0.3)
-                    .disabled(!viewData.isAppleAuthorizationButtonEnabled)
             }
             .padding()
             .animation(.easeInOut(duration: 0.35), value: viewData.isLoading)
         }
         .alert(item: Binding(get: { self.viewData.errorAlertViewData }, set: { _ in self.viewModel.dismissErrorAlert() })) { viewData in
             Alert(title: Text("An error ocurred"), message: Text(viewData.message))
+        }
+        .onDisappear {
+            UIAccessibility.post(notification: .announcement, argument: "Welcome")
         }
     }
 }

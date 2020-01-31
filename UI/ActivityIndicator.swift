@@ -7,11 +7,18 @@ struct ActivityIndicator: UIViewRepresentable {
     var color: UIColor? = nil
 
     func makeUIView(context: UIViewRepresentableContext<ActivityIndicator>) -> UIActivityIndicatorView {
-        UIActivityIndicatorView(style: style).then {
+        NonAccessibleUIActivityIndicatorView(style: style).then {
             $0.color = color ?? $0.color
             $0.startAnimating()
         }
     }
 
     func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicator>) {}
+}
+
+private final class NonAccessibleUIActivityIndicatorView: UIActivityIndicatorView {
+    override var accessibilityLabel: String? {
+        get { "Loading" }
+        set {}
+    }
 }
