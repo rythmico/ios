@@ -27,6 +27,8 @@ struct MainTabView: View {
                                 .padding(.horizontal, Const.horizontalPadding)
                                 .offset(x: Const.horizontalPadding)
                         }
+                        .accessibility(label: Text("Request lessons"))
+                        .accessibility(hint: Text("Double tap to request a lesson plan"))
                     )
             }
             .tabItem {
@@ -44,6 +46,7 @@ struct MainTabView: View {
                         }
                     }
                     .frame(minHeight: 35)
+                    .accessibility(hint: Text("Double tap to log out of your account"))
                 }
                 .navigationBarTitle(Text("Profile"), displayMode: .large)
             }
