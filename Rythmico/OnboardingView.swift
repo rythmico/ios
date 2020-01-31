@@ -33,9 +33,7 @@ struct OnboardingView: View, ViewModelable {
                     .multilineTextAlignment(.center)
                     .foregroundColor(.white)
                 if viewData.isLoading {
-                    Text("Loading...")
-                        .rythmicoFont(.footnote)
-                        .foregroundColor(.white)
+                    ActivityIndicator(style: .medium)
                 }
                 Spacer()
                 AuthorizationAppleIDButton()
@@ -45,6 +43,7 @@ struct OnboardingView: View, ViewModelable {
                     .disabled(!viewData.isAppleAuthorizationButtonEnabled)
             }
             .padding()
+            .animation(.easeInOut(duration: 0.35), value: viewData.isLoading)
         }
         .alert(item: Binding(get: { self.viewData.errorAlertViewData }, set: { _ in self.viewModel.dismissErrorAlert() })) { viewData in
             Alert(title: Text("An error ocurred"), message: Text(viewData.message))

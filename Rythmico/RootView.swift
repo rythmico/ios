@@ -31,6 +31,6 @@ struct RootView: View, ViewModelable {
             viewData.onboardingView.zIndex(1).transition(AnyTransition.move(edge: .leading))
             viewData.mainTabView.zIndex(2).transition(AnyTransition.move(edge: .trailing))
         }
-        .animation(.easeInOut(duration: 0.35), value: viewData.onboardingView == nil)
+        .animation(.easeInOut(duration: 0.35), value: viewData.mainTabView != nil)
     }
 }
