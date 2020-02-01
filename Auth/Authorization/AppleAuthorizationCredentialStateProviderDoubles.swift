@@ -1,11 +1,11 @@
-public final class AppleAuthorizationCredentialStateFetcherStub: AppleAuthorizationCredentialStateProvider {
-    public var expectedState: State
+final class AppleAuthorizationCredentialStateFetcherStub: AppleAuthorizationCredentialStateProvider {
+    var expectedState: State
 
-    public init(expectedState: State) {
+    init(expectedState: State) {
         self.expectedState = expectedState
     }
 
-    public func getCredentialState(forUserID userID: String, completion: @escaping StateHandler) {
+    func getCredentialState(forUserID userID: String, completion: @escaping StateHandler) {
         completion(expectedState)
     }
 }

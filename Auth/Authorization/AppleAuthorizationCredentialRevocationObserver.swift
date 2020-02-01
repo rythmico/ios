@@ -2,21 +2,21 @@ import Foundation
 import class AuthenticationServices.ASAuthorizationAppleIDProvider
 import Sugar
 
-public protocol AppleAuthorizationCredentialRevocationObserving: AnyObject {
+protocol AppleAuthorizationCredentialRevocationObserving: AnyObject {
     var revocationHandler: Action? { get set }
 }
 
-public final class AppleAuthorizationCredentialRevocationObserver: AppleAuthorizationCredentialRevocationObserving {
+final class AppleAuthorizationCredentialRevocationObserver: AppleAuthorizationCredentialRevocationObserving {
     private let notificationCenter: NotificationCenterProtocol
     private var token: NSObjectProtocol?
 
-    public var revocationHandler: Action? {
+    var revocationHandler: Action? {
         didSet {
             handlerDidChange()
         }
     }
 
-    public init(notificationCenter: NotificationCenterProtocol) {
+    init(notificationCenter: NotificationCenterProtocol) {
         self.notificationCenter = notificationCenter
     }
 

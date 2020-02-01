@@ -15,12 +15,8 @@ struct AppleAuthorizationResponseStub: AppleAuthorizationResponseProtocol {
 }
 
 struct AppleAuthorizationResponseDummy: AppleAuthorizationResponseProtocol {
-    var userId: String
+    var userId: String = ""
     var fullName: PersonNameComponents?
     var email: String?
     var identityToken: Data?
-
-    init() {
-        userId = ""
-    }
 }

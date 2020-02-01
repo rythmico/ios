@@ -1,6 +1,5 @@
 import Foundation
 import Combine
-import Auth
 
 protocol OnboardingViewModelProtocol: ViewModel where ViewData == OnboardingViewData {
     func authenticateWithApple()

@@ -2,7 +2,7 @@ import AuthenticationServices
 import CryptoKit
 import Sugar
 
-public protocol AppleAuthorizationServiceProtocol {
+protocol AppleAuthorizationServiceProtocol {
     typealias Credential = AppleAuthorizationCredential
     typealias Error = ASAuthorizationError
     typealias AuthorizationResult = Result<Credential, Error>
@@ -11,20 +11,20 @@ public protocol AppleAuthorizationServiceProtocol {
 }
 
 extension AppleAuthorizationServiceProtocol {
-    public func requestAuthorization(completionHandler: @escaping Handler<AuthorizationResult>) {
+    func requestAuthorization(completionHandler: @escaping Handler<AuthorizationResult>) {
         requestAuthorization(nonce: UUID().uuidString, completionHandler: completionHandler)
     }
 }
 
-public final class AppleAuthorizationService: AppleAuthorizationServiceProtocol {
+final class AppleAuthorizationService: AppleAuthorizationServiceProtocol {
     private var delegate: AppleAuthorizationCompletionDelegate!
     private let controllerType: AppleAuthorizationControllerProtocol.Type
 
-    public init(controllerType: AppleAuthorizationControllerProtocol.Type) {
+    init(controllerType: AppleAuthorizationControllerProtocol.Type) {
         self.controllerType = controllerType
     }
 
-    public func requestAuthorization(nonce: String, completionHandler: @escaping Handler<AuthorizationResult>) {
+    func requestAuthorization(nonce: String, completionHandler: @escaping Handler<AuthorizationResult>) {
         let request = ASAuthorizationAppleIDProvider().createRequest()
         request.requestedScopes = [.fullName, .email]
         request.nonce = SHA256.hashString(utf8String: nonce)

@@ -1,16 +1,16 @@
 import Foundation
 import FirebaseAuth
 
-public protocol DeauthenticationServiceProtocol {
+protocol DeauthenticationServiceProtocol {
     func deauthenticate()
 }
 
-public func DeauthenticationService() -> _DeauthenticationService { Auth.auth() }
+func DeauthenticationService() -> _DeauthenticationService { Auth.auth() }
 
-public typealias _DeauthenticationService = FirebaseAuth.Auth
+typealias _DeauthenticationService = FirebaseAuth.Auth
 
 extension _DeauthenticationService: DeauthenticationServiceProtocol {
-    public func deauthenticate() {
+    func deauthenticate() {
         try? signOut()
     }
 }

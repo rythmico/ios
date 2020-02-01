@@ -1,7 +1,6 @@
 import UIKit
-import class Firebase.FirebaseApp
+import Firebase
 import class SwiftUI.UIHostingController
-import Auth
 import Then
 
 final class AppDelegate: UIResponder, UIApplicationDelegate {

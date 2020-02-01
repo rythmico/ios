@@ -1,13 +1,13 @@
-public final class AuthenticationAccessTokenProviderObserverStub: AuthenticationAccessTokenProviderObserving {
-    public let expectedProvider: AuthenticationAccessTokenProvider?
+final class AuthenticationAccessTokenProviderObserverStub: AuthenticationAccessTokenProviderObserving {
+    let expectedProvider: AuthenticationAccessTokenProvider?
 
-    public var statusDidChangeHandler: StatusDidChangeHandler? {
+    var statusDidChangeHandler: StatusDidChangeHandler? {
         didSet {
             statusDidChangeHandler?(expectedProvider)
         }
     }
 
-    public init(expectedProvider: AuthenticationAccessTokenProvider?) {
+    init(expectedProvider: AuthenticationAccessTokenProvider?) {
         self.expectedProvider = expectedProvider
     }
 }

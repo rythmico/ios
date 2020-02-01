@@ -1,5 +1,5 @@
 import XCTest
-@testable import Auth
+@testable import Rythmico
 
 final class AuthenticationAccessTokenProviderObserverTests: XCTestCase {
     func testInit() {

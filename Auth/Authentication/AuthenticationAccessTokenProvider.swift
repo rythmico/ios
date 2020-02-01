@@ -2,7 +2,7 @@ import Foundation
 import FirebaseAuth
 import Sugar
 
-public protocol AuthenticationAccessTokenProvider {
+protocol AuthenticationAccessTokenProvider {
     typealias AccessToken = String
     typealias Error = AuthenticationCommonError
     typealias AccessTokenResult = Result<AccessToken, Error>
@@ -10,7 +10,7 @@ public protocol AuthenticationAccessTokenProvider {
 }
 
 extension FirebaseAuth.User: AuthenticationAccessTokenProvider {
-    public func getAccessToken(completionHandler: @escaping Handler<AccessTokenResult>) {
+    func getAccessToken(completionHandler: @escaping Handler<AccessTokenResult>) {
         getIDToken { token, error in
             switch (token, error) {
             case let (token?, _):
