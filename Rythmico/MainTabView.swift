@@ -56,6 +56,10 @@ struct MainTabView: View {
             }
         }
         .accentColor(.rythmicoPurple)
+        // TODO: remove
+        .onTapGesture(count: 5) {
+            fatalError("Blah blah 123")
+        }
     }
 }
 
