@@ -1,8 +1,8 @@
 import AuthenticationServices
 
-public typealias AppleAuthorizationController = ASAuthorizationController
+typealias AppleAuthorizationController = ASAuthorizationController
 
-public protocol AppleAuthorizationControllerProtocol: AnyObject {
+protocol AppleAuthorizationControllerProtocol: AnyObject {
     typealias Request = ASAuthorizationRequest
     typealias Delegate = ASAuthorizationControllerDelegate
 

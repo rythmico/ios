@@ -1,5 +1,4 @@
 import SwiftUI
-import Auth
 import Sugar
 
 struct OnboardingViewData {

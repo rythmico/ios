@@ -3,7 +3,7 @@ import Foundation
 // If/when https://bugs.swift.org/browse/SR-3170 is implemented, look into abstracting AuthenticationError.ReasonCode
 // into AuthenticationErrorCommonReasonCodeProtocol and AuthenticationErrorSignInReasonCodeProtocol to merge error types.
 
-public protocol AuthenticationErrorProtocol: Error {
+protocol AuthenticationErrorProtocol: Error {
     associatedtype ReasonCode: RawRepresentable where ReasonCode.RawValue == Int
     static var defaultReasonCode: ReasonCode { get }
     var reasonCode: ReasonCode { get }
@@ -13,34 +13,29 @@ public protocol AuthenticationErrorProtocol: Error {
 }
 
 extension AuthenticationErrorProtocol {
-    public init(nsError: NSError) {
+    init(nsError: NSError) {
         let reasonCode = ReasonCode(rawValue: nsError.code) ?? Self.defaultReasonCode
         let localizedDescription = nsError.localizedDescription
         self.init(reasonCode: reasonCode, localizedDescription: localizedDescription)
     }
 }
 
-public struct AuthenticationCommonError: AuthenticationErrorProtocol {
-    public enum ReasonCode: Int {
+struct AuthenticationCommonError: AuthenticationErrorProtocol {
+    enum ReasonCode: Int {
         // Common
         case unknown = -1, networkError = 17020, tooManyRequests = 17010
         // Fatal!
         case invalidAPIKey = 17023, appNotAuthorized = 17028, internalError = 17999, operationNotAllowed = 17006
     }
 
-    public static var defaultReasonCode: ReasonCode { .unknown }
+    static var defaultReasonCode: ReasonCode { .unknown }
 
-    public var reasonCode: ReasonCode
-    public var localizedDescription: String
-
-    public init(reasonCode: ReasonCode, localizedDescription: String) {
-        self.reasonCode = reasonCode
-        self.localizedDescription = localizedDescription
-    }
+    var reasonCode: ReasonCode
+    var localizedDescription: String
 }
 
-public struct AuthenticationAPIError: AuthenticationErrorProtocol {
-    public enum ReasonCode: Int {
+struct AuthenticationAPIError: AuthenticationErrorProtocol {
+    enum ReasonCode: Int {
         // Common
         case unknown = -1, networkError = 17020, tooManyRequests = 17010
         // Fatal!
@@ -49,13 +44,8 @@ public struct AuthenticationAPIError: AuthenticationErrorProtocol {
         case invalidCredential = 17004, userDisabled = 17005, invalidEmail = 17008, missingOrInvalidNonce = 17094
     }
 
-    public static var defaultReasonCode: ReasonCode { .unknown }
+    static var defaultReasonCode: ReasonCode { .unknown }
 
-    public var reasonCode: ReasonCode
-    public var localizedDescription: String
-
-    public init(reasonCode: ReasonCode, localizedDescription: String) {
-        self.reasonCode = reasonCode
-        self.localizedDescription = localizedDescription
-    }
+    var reasonCode: ReasonCode
+    var localizedDescription: String
 }

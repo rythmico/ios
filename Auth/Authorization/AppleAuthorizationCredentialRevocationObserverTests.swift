@@ -1,5 +1,5 @@
 import XCTest
-@testable import Auth
+@testable import Rythmico
 import class AuthenticationServices.ASAuthorizationAppleIDProvider
 import Sugar
 

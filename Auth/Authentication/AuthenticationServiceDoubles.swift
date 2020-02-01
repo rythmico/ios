@@ -1,19 +1,17 @@
 import Sugar
 
-public final class AuthenticationServiceStub: AuthenticationServiceProtocol {
-    public var expectedResult: AuthenticationResult
+final class AuthenticationServiceStub: AuthenticationServiceProtocol {
+    var expectedResult: AuthenticationResult
 
-    public init(expectedResult: AuthenticationResult) {
+    init(expectedResult: AuthenticationResult) {
         self.expectedResult = expectedResult
     }
 
-    public func authenticateAppleAccount(with credential: AppleAuthorizationCredential, completionHandler: @escaping Handler<AuthenticationResult>) {
+    func authenticateAppleAccount(with credential: AppleAuthorizationCredential, completionHandler: @escaping Handler<AuthenticationResult>) {
         completionHandler(expectedResult)
     }
 }
 
-public final class AuthenticationServiceDummy: AuthenticationServiceProtocol {
-    public init() {}
-
-    public func authenticateAppleAccount(with credential: AppleAuthorizationCredential, completionHandler: @escaping Handler<AuthenticationResult>) {}
+final class AuthenticationServiceDummy: AuthenticationServiceProtocol {
+    func authenticateAppleAccount(with credential: AppleAuthorizationCredential, completionHandler: @escaping Handler<AuthenticationResult>) {}
 }

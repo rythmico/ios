@@ -1,6 +1,5 @@
 import XCTest
 @testable import Rythmico
-import Auth
 import AuthenticationServices
 
 final class RootViewModelTests: XCTestCase {

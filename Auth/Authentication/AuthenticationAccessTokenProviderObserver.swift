@@ -1,22 +1,22 @@
 import Foundation
 import Sugar
 
-public protocol AuthenticationAccessTokenProviderObserving: AnyObject {
+protocol AuthenticationAccessTokenProviderObserving: AnyObject {
     typealias StatusDidChangeHandler = Handler<AuthenticationAccessTokenProvider?>
     var statusDidChangeHandler: StatusDidChangeHandler? { get set }
 }
 
-public final class AuthenticationAccessTokenProviderObserver: AuthenticationAccessTokenProviderObserving {
+final class AuthenticationAccessTokenProviderObserver: AuthenticationAccessTokenProviderObserving {
     private let broadcast: AuthenticationAccessTokenProviderBroadcastProtocol
     private var token: AuthenticationAccessTokenProviderBroadcastProtocol.ListenerToken?
 
-    public var statusDidChangeHandler: StatusDidChangeHandler? {
+    var statusDidChangeHandler: StatusDidChangeHandler? {
         didSet {
             handlerDidChange()
         }
     }
 
-    public init(broadcast: AuthenticationAccessTokenProviderBroadcastProtocol) {
+    init(broadcast: AuthenticationAccessTokenProviderBroadcastProtocol) {
         self.broadcast = broadcast
     }
 

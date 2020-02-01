@@ -21,82 +21,65 @@
 		D535547923DF3A7C005A20EB /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547823DF3A7C005A20EB /* Keychain.swift */; };
 		D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547D23DF4F44005A20EB /* KeychainDoubles.swift */; };
 		D535548123E0E7C1005A20EB /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = D535548023E0E7C1005A20EB /* SFSafeSymbols */; };
-		D53554A023E0FA4B005A20EB /* Auth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535549723E0FA4A005A20EB /* Auth.framework */; };
-		D53554A923E0FA4B005A20EB /* Auth.h in Headers */ = {isa = PBXBuildFile; fileRef = D535549923E0FA4A005A20EB /* Auth.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D53554AC23E0FA4B005A20EB /* Auth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535549723E0FA4A005A20EB /* Auth.framework */; };
-		D53554AD23E0FA4B005A20EB /* Auth.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D535549723E0FA4A005A20EB /* Auth.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D53554B523E0FAA8005A20EB /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170B23D6725B00954D50 /* AuthenticationAccessTokenProviderBroadcastDoubles.swift */; };
-		D53554BF23E0FAC0005A20EB /* AuthenticationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561F23CE92AE00BC8485 /* AuthenticationError.swift */; };
-		D53554C023E0FAC0005A20EB /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BC423C7AAA900B6FCB1 /* AuthenticationService.swift */; };
-		D53554C123E0FAC0005A20EB /* DeauthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547B23DF4D30005A20EB /* DeauthenticationService.swift */; };
-		D53554C223E0FAC0005A20EB /* AuthenticationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B13B2D23D125E6006CBC46 /* AuthenticationServiceDoubles.swift */; };
-		D53554C323E0FAC0005A20EB /* AuthenticationAccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B13B2B23D12520006CBC46 /* AuthenticationAccessTokenProvider.swift */; };
-		D53554C423E0FAC0005A20EB /* AuthenticationAccessTokenProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B13B2F23D1265F006CBC46 /* AuthenticationAccessTokenProviderDoubles.swift */; };
-		D53554C523E0FAC0005A20EB /* AuthenticationAccessTokenProviderObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A32DBC23D139C000F3903C /* AuthenticationAccessTokenProviderObserver.swift */; };
-		D53554C723E0FAC0005A20EB /* AuthenticationAccessTokenProviderBroadcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170923D671FD00954D50 /* AuthenticationAccessTokenProviderBroadcast.swift */; };
-		D53554C823E0FBD1005A20EB /* AuthenticationAccessTokenProviderObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170723D66AF500954D50 /* AuthenticationAccessTokenProviderObserverTests.swift */; };
-		D53554D523E0FBE4005A20EB /* AppleAuthorizationCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561223CD4B2C00BC8485 /* AppleAuthorizationCredential.swift */; };
-		D53554D623E0FBE4005A20EB /* AppleAuthorizationCredentialStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546A23DCB65A005A20EB /* AppleAuthorizationCredentialStateProvider.swift */; };
-		D53554D723E0FBE4005A20EB /* AppleAuthorizationCredentialRevocationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546C23DF212C005A20EB /* AppleAuthorizationCredentialRevocationObserver.swift */; };
-		D53554D923E0FBE4005A20EB /* AppleAuthorizationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561023CD457800BC8485 /* AppleAuthorizationResponse.swift */; };
-		D53554DA23E0FBE4005A20EB /* AppleAuthorizationResponseDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546823DCB03E005A20EB /* AppleAuthorizationResponseDoubles.swift */; };
-		D53554DB23E0FBE4005A20EB /* AppleAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BC123C69D0400B6FCB1 /* AppleAuthorizationService.swift */; };
-		D53554DD23E0FBE4005A20EB /* AppleAuthorizationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */; };
-		D53554DE23E0FBE4005A20EB /* AppleAuthorizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */; };
-		D53554DF23E0FBE4005A20EB /* AppleAuthorizationControllerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560B23CD342E00BC8485 /* AppleAuthorizationControllerDoubles.swift */; };
-		D53554E023E0FBE4005A20EB /* AppleAuthorizationCompletionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509899023BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift */; };
-		D53554E123E0FBE8005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547023DF2A40005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift */; };
-		D53554E223E0FBED005A20EB /* AppleAuthorizationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560E23CD384300BC8485 /* AppleAuthorizationServiceTests.swift */; };
 		D53554F923E0FD77005A20EB /* Sugar.h in Headers */ = {isa = PBXBuildFile; fileRef = D53554F723E0FD77005A20EB /* Sugar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D53554FC23E0FD77005A20EB /* Sugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53554F523E0FD77005A20EB /* Sugar.framework */; };
 		D53554FD23E0FD77005A20EB /* Sugar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D53554F523E0FD77005A20EB /* Sugar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D535550123E0FD9F005A20EB /* NotificationCenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546E23DF2698005A20EB /* NotificationCenterProtocol.swift */; };
 		D535550223E0FD9F005A20EB /* NotificationCenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547223DF2AE2005A20EB /* NotificationCenterSpy.swift */; };
 		D535550323E0FD9F005A20EB /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BBF23C689BA00B6FCB1 /* Typealiases.swift */; };
-		D535550523E0FE14005A20EB /* Sugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53554F523E0FD77005A20EB /* Sugar.framework */; };
-		D535550623E0FE78005A20EB /* HashFunction+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */; };
-		D535551A23E104B1005A20EB /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896C23B963B700C19300 /* FIRAnalyticsConnector.framework */; };
-		D535551C23E104B1005A20EB /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896B23B963B700C19300 /* FirebaseAnalytics.framework */; };
-		D535551D23E104B1005A20EB /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896523B963B700C19300 /* FirebaseAuth.framework */; };
-		D535551E23E104B1005A20EB /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896F23B963B700C19300 /* FirebaseCore.framework */; };
-		D535551F23E104B1005A20EB /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896E23B963B700C19300 /* FirebaseCoreDiagnostics.framework */; };
-		D535552023E104B1005A20EB /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896823B963B700C19300 /* FirebaseInstanceID.framework */; };
-		D535552123E104B1005A20EB /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896D23B963B700C19300 /* GoogleAppMeasurement.framework */; };
-		D535552223E104B1005A20EB /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896623B963B700C19300 /* GoogleDataTransport.framework */; };
-		D535552323E104B1005A20EB /* GoogleDataTransportCCTSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509897023B963B700C19300 /* GoogleDataTransportCCTSupport.framework */; };
-		D535552423E104B1005A20EB /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896A23B963B700C19300 /* GoogleUtilities.framework */; };
-		D535552523E104B1005A20EB /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896723B963B700C19300 /* GTMSessionFetcher.framework */; };
-		D535552623E104B1005A20EB /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509897123B963B700C19300 /* nanopb.framework */; };
 		D535553623E105A5005A20EB /* OnboardingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553523E105A5005A20EB /* OnboardingViewModelTests.swift */; };
 		D535553823E116C9005A20EB /* RootViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553723E116C9005A20EB /* RootViewModelTests.swift */; };
-		D535553B23E1DD1A005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553A23E1DD1A005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift */; };
-		D535553D23E1DE15005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553C23E1DE15005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift */; };
-		D535554123E1DF8B005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554023E1DF8B005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift */; };
-		D535554323E1DFEC005A20EB /* DeauthenticationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554223E1DFEC005A20EB /* DeauthenticationServiceDoubles.swift */; };
 		D535554723E20076005A20EB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554623E20076005A20EB /* Colors.swift */; };
 		D535554C23E23EA7005A20EB /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = D535554B23E23EA7005A20EB /* Then */; };
 		D535554E23E38763005A20EB /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554D23E38763005A20EB /* Window.swift */; };
 		D535555023E4AB9A005A20EB /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */; };
-		D535555123E4F8BE005A20EB /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896C23B963B700C19300 /* FIRAnalyticsConnector.framework */; };
-		D535555323E4F8BE005A20EB /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896B23B963B700C19300 /* FirebaseAnalytics.framework */; };
-		D535555423E4F8BE005A20EB /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896523B963B700C19300 /* FirebaseAuth.framework */; };
-		D535555523E4F8BE005A20EB /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896F23B963B700C19300 /* FirebaseCore.framework */; };
-		D535555623E4F8BE005A20EB /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896E23B963B700C19300 /* FirebaseCoreDiagnostics.framework */; };
-		D535555723E4F8BE005A20EB /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896823B963B700C19300 /* FirebaseInstanceID.framework */; };
-		D535555823E4F8BE005A20EB /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896D23B963B700C19300 /* GoogleAppMeasurement.framework */; };
-		D535555923E4F8BE005A20EB /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896623B963B700C19300 /* GoogleDataTransport.framework */; };
-		D535555A23E4F8BE005A20EB /* GoogleDataTransportCCTSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509897023B963B700C19300 /* GoogleDataTransportCCTSupport.framework */; };
-		D535555B23E4F8BE005A20EB /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896A23B963B700C19300 /* GoogleUtilities.framework */; };
-		D535555C23E4F8BE005A20EB /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896723B963B700C19300 /* GTMSessionFetcher.framework */; };
-		D535555D23E4F8BE005A20EB /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509897123B963B700C19300 /* nanopb.framework */; };
-		D535556623E4F8BF005A20EB /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535555E23E4F8BE005A20EB /* GoogleToolboxForMac.framework */; };
-		D535556723E4F8BF005A20EB /* FirebaseInstallations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535555F23E4F8BE005A20EB /* FirebaseInstallations.framework */; };
-		D535556823E4F8BF005A20EB /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556023E4F8BE005A20EB /* Protobuf.framework */; };
-		D535556923E4F8BF005A20EB /* FirebaseABTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556123E4F8BE005A20EB /* FirebaseABTesting.framework */; };
-		D535556A23E4F8BF005A20EB /* FirebaseRemoteConfig.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556223E4F8BE005A20EB /* FirebaseRemoteConfig.framework */; };
-		D535556B23E4F8BF005A20EB /* PromisesObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556323E4F8BF005A20EB /* PromisesObjC.framework */; };
-		D535556C23E4F8BF005A20EB /* FirebaseCrashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556423E4F8BF005A20EB /* FirebaseCrashlytics.framework */; };
-		D535556D23E4F8BF005A20EB /* FirebasePerformance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556523E4F8BF005A20EB /* FirebasePerformance.framework */; };
+		D53555B523E53699005A20EB /* AuthenticationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561F23CE92AE00BC8485 /* AuthenticationError.swift */; };
+		D53555B623E53699005A20EB /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BC423C7AAA900B6FCB1 /* AuthenticationService.swift */; };
+		D53555B723E53699005A20EB /* DeauthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547B23DF4D30005A20EB /* DeauthenticationService.swift */; };
+		D53555B823E53699005A20EB /* DeauthenticationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554223E1DFEC005A20EB /* DeauthenticationServiceDoubles.swift */; };
+		D53555B923E53699005A20EB /* AuthenticationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B13B2D23D125E6006CBC46 /* AuthenticationServiceDoubles.swift */; };
+		D53555BA23E53699005A20EB /* AuthenticationAccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B13B2B23D12520006CBC46 /* AuthenticationAccessTokenProvider.swift */; };
+		D53555BB23E53699005A20EB /* AuthenticationAccessTokenProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B13B2F23D1265F006CBC46 /* AuthenticationAccessTokenProviderDoubles.swift */; };
+		D53555BC23E53699005A20EB /* AuthenticationAccessTokenProviderObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A32DBC23D139C000F3903C /* AuthenticationAccessTokenProviderObserver.swift */; };
+		D53555BD23E53699005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554023E1DF8B005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift */; };
+		D53555BF23E53699005A20EB /* AuthenticationAccessTokenProviderBroadcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170923D671FD00954D50 /* AuthenticationAccessTokenProviderBroadcast.swift */; };
+		D53555C023E53699005A20EB /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170B23D6725B00954D50 /* AuthenticationAccessTokenProviderBroadcastDoubles.swift */; };
+		D53555C123E536A6005A20EB /* AuthenticationAccessTokenProviderObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170723D66AF500954D50 /* AuthenticationAccessTokenProviderObserverTests.swift */; };
+		D53555C223E536AE005A20EB /* AppleAuthorizationCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561223CD4B2C00BC8485 /* AppleAuthorizationCredential.swift */; };
+		D53555C323E536AE005A20EB /* AppleAuthorizationCredentialStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546A23DCB65A005A20EB /* AppleAuthorizationCredentialStateProvider.swift */; };
+		D53555C423E536AE005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553A23E1DD1A005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift */; };
+		D53555C523E536AE005A20EB /* AppleAuthorizationCredentialRevocationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546C23DF212C005A20EB /* AppleAuthorizationCredentialRevocationObserver.swift */; };
+		D53555C623E536AE005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553C23E1DE15005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift */; };
+		D53555C823E536AE005A20EB /* AppleAuthorizationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561023CD457800BC8485 /* AppleAuthorizationResponse.swift */; };
+		D53555C923E536AE005A20EB /* AppleAuthorizationResponseDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546823DCB03E005A20EB /* AppleAuthorizationResponseDoubles.swift */; };
+		D53555CA23E536AE005A20EB /* AppleAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BC123C69D0400B6FCB1 /* AppleAuthorizationService.swift */; };
+		D53555CC23E536AE005A20EB /* AppleAuthorizationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */; };
+		D53555CD23E536AE005A20EB /* AppleAuthorizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */; };
+		D53555CE23E536AE005A20EB /* AppleAuthorizationControllerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560B23CD342E00BC8485 /* AppleAuthorizationControllerDoubles.swift */; };
+		D53555CF23E536AE005A20EB /* AppleAuthorizationCompletionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509899023BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift */; };
+		D53555D023E536B5005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547023DF2A40005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift */; };
+		D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */; };
+		D53555D223E53704005A20EB /* FirebaseABTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556123E4F8BE005A20EB /* FirebaseABTesting.framework */; };
+		D53555D323E53704005A20EB /* FirebaseCrashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556423E4F8BF005A20EB /* FirebaseCrashlytics.framework */; };
+		D53555D423E53704005A20EB /* FirebaseInstallations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535555F23E4F8BE005A20EB /* FirebaseInstallations.framework */; };
+		D53555D523E53704005A20EB /* FirebasePerformance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556523E4F8BF005A20EB /* FirebasePerformance.framework */; };
+		D53555D623E53704005A20EB /* FirebaseRemoteConfig.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556223E4F8BE005A20EB /* FirebaseRemoteConfig.framework */; };
+		D53555D723E53704005A20EB /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535555E23E4F8BE005A20EB /* GoogleToolboxForMac.framework */; };
+		D53555D823E53704005A20EB /* PromisesObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556323E4F8BF005A20EB /* PromisesObjC.framework */; };
+		D53555D923E53704005A20EB /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556023E4F8BE005A20EB /* Protobuf.framework */; };
+		D53555DA23E53704005A20EB /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896C23B963B700C19300 /* FIRAnalyticsConnector.framework */; };
+		D53555DB23E53704005A20EB /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896B23B963B700C19300 /* FirebaseAnalytics.framework */; };
+		D53555DC23E53704005A20EB /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896523B963B700C19300 /* FirebaseAuth.framework */; };
+		D53555DD23E53704005A20EB /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896F23B963B700C19300 /* FirebaseCore.framework */; };
+		D53555DE23E53704005A20EB /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896E23B963B700C19300 /* FirebaseCoreDiagnostics.framework */; };
+		D53555DF23E53704005A20EB /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896823B963B700C19300 /* FirebaseInstanceID.framework */; };
+		D53555E023E53704005A20EB /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896D23B963B700C19300 /* GoogleAppMeasurement.framework */; };
+		D53555E123E53704005A20EB /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896623B963B700C19300 /* GoogleDataTransport.framework */; };
+		D53555E223E53704005A20EB /* GoogleDataTransportCCTSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509897023B963B700C19300 /* GoogleDataTransportCCTSupport.framework */; };
+		D53555E323E53704005A20EB /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896A23B963B700C19300 /* GoogleUtilities.framework */; };
+		D53555E423E53704005A20EB /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896723B963B700C19300 /* GTMSessionFetcher.framework */; };
+		D53555E523E53704005A20EB /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509897123B963B700C19300 /* nanopb.framework */; };
+		D53555E623E5383C005A20EB /* AppleAuthorizationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560E23CD384300BC8485 /* AppleAuthorizationServiceTests.swift */; };
 		D54A561723CD577800BC8485 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561623CD577800BC8485 /* main.swift */; };
 		D5BA171023D7A18900954D50 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170F23D7A18900954D50 /* RootView.swift */; };
 		D5BA171223D7AB3B00954D50 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA171123D7AB3B00954D50 /* MainTabView.swift */; };
@@ -107,20 +90,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D53554A123E0FA4B005A20EB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03341B3323ABB1E7009AE8A8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D535549623E0FA4A005A20EB;
-			remoteInfo = Auth;
-		};
-		D53554AA23E0FA4B005A20EB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03341B3323ABB1E7009AE8A8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D535549623E0FA4A005A20EB;
-			remoteInfo = Auth;
-		};
 		D53554FA23E0FD77005A20EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 03341B3323ABB1E7009AE8A8 /* Project object */;
@@ -144,7 +113,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D53554AD23E0FA4B005A20EB /* Auth.framework in Embed Frameworks */,
 				D53554FD23E0FD77005A20EB /* Sugar.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -165,7 +133,6 @@
 		D509896623B963B700C19300 /* GoogleDataTransport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleDataTransport.framework; path = Carthage/Build/iOS/GoogleDataTransport.framework; sourceTree = "<group>"; };
 		D509896723B963B700C19300 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = Carthage/Build/iOS/GTMSessionFetcher.framework; sourceTree = "<group>"; };
 		D509896823B963B700C19300 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Carthage/Build/iOS/FirebaseInstanceID.framework; sourceTree = "<group>"; };
-		D509896923B963B700C19300 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Carthage/Build/iOS/Firebase.framework; sourceTree = "<group>"; };
 		D509896A23B963B700C19300 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Carthage/Build/iOS/GoogleUtilities.framework; sourceTree = "<group>"; };
 		D509896B23B963B700C19300 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Carthage/Build/iOS/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		D509896C23B963B700C19300 /* FIRAnalyticsConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FIRAnalyticsConnector.framework; path = Carthage/Build/iOS/FIRAnalyticsConnector.framework; sourceTree = "<group>"; };
@@ -192,10 +159,6 @@
 		D535547823DF3A7C005A20EB /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		D535547B23DF4D30005A20EB /* DeauthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeauthenticationService.swift; sourceTree = "<group>"; };
 		D535547D23DF4F44005A20EB /* KeychainDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainDoubles.swift; sourceTree = "<group>"; };
-		D535549723E0FA4A005A20EB /* Auth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Auth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D535549923E0FA4A005A20EB /* Auth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Auth.h; sourceTree = "<group>"; };
-		D535549A23E0FA4A005A20EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D535549F23E0FA4B005A20EB /* AuthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D53554F523E0FD77005A20EB /* Sugar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Sugar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D53554F723E0FD77005A20EB /* Sugar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sugar.h; sourceTree = "<group>"; };
 		D53554F823E0FD77005A20EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -247,58 +210,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				D535554C23E23EA7005A20EB /* Then in Frameworks */,
-				D53554AC23E0FA4B005A20EB /* Auth.framework in Frameworks */,
 				D53554FC23E0FD77005A20EB /* Sugar.framework in Frameworks */,
 				D535548123E0E7C1005A20EB /* SFSafeSymbols in Frameworks */,
 				D535547723DF3A19005A20EB /* Valet in Frameworks */,
-				D535556623E4F8BF005A20EB /* GoogleToolboxForMac.framework in Frameworks */,
-				D535556723E4F8BF005A20EB /* FirebaseInstallations.framework in Frameworks */,
-				D535556823E4F8BF005A20EB /* Protobuf.framework in Frameworks */,
-				D535556923E4F8BF005A20EB /* FirebaseABTesting.framework in Frameworks */,
-				D535556A23E4F8BF005A20EB /* FirebaseRemoteConfig.framework in Frameworks */,
-				D535556B23E4F8BF005A20EB /* PromisesObjC.framework in Frameworks */,
-				D535556C23E4F8BF005A20EB /* FirebaseCrashlytics.framework in Frameworks */,
-				D535556D23E4F8BF005A20EB /* FirebasePerformance.framework in Frameworks */,
-				D535555123E4F8BE005A20EB /* FIRAnalyticsConnector.framework in Frameworks */,
-				D535555323E4F8BE005A20EB /* FirebaseAnalytics.framework in Frameworks */,
-				D535555423E4F8BE005A20EB /* FirebaseAuth.framework in Frameworks */,
-				D535555523E4F8BE005A20EB /* FirebaseCore.framework in Frameworks */,
-				D535555623E4F8BE005A20EB /* FirebaseCoreDiagnostics.framework in Frameworks */,
-				D535555723E4F8BE005A20EB /* FirebaseInstanceID.framework in Frameworks */,
-				D535555823E4F8BE005A20EB /* GoogleAppMeasurement.framework in Frameworks */,
-				D535555923E4F8BE005A20EB /* GoogleDataTransport.framework in Frameworks */,
-				D535555A23E4F8BE005A20EB /* GoogleDataTransportCCTSupport.framework in Frameworks */,
-				D535555B23E4F8BE005A20EB /* GoogleUtilities.framework in Frameworks */,
-				D535555C23E4F8BE005A20EB /* GTMSessionFetcher.framework in Frameworks */,
-				D535555D23E4F8BE005A20EB /* nanopb.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D535549423E0FA4A005A20EB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D535550523E0FE14005A20EB /* Sugar.framework in Frameworks */,
-				D535551A23E104B1005A20EB /* FIRAnalyticsConnector.framework in Frameworks */,
-				D535551C23E104B1005A20EB /* FirebaseAnalytics.framework in Frameworks */,
-				D535551D23E104B1005A20EB /* FirebaseAuth.framework in Frameworks */,
-				D535551E23E104B1005A20EB /* FirebaseCore.framework in Frameworks */,
-				D535551F23E104B1005A20EB /* FirebaseCoreDiagnostics.framework in Frameworks */,
-				D535552023E104B1005A20EB /* FirebaseInstanceID.framework in Frameworks */,
-				D535552123E104B1005A20EB /* GoogleAppMeasurement.framework in Frameworks */,
-				D535552223E104B1005A20EB /* GoogleDataTransport.framework in Frameworks */,
-				D535552323E104B1005A20EB /* GoogleDataTransportCCTSupport.framework in Frameworks */,
-				D535552423E104B1005A20EB /* GoogleUtilities.framework in Frameworks */,
-				D535552523E104B1005A20EB /* GTMSessionFetcher.framework in Frameworks */,
-				D535552623E104B1005A20EB /* nanopb.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D535549C23E0FA4B005A20EB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D53554A023E0FA4B005A20EB /* Auth.framework in Frameworks */,
+				D53555D223E53704005A20EB /* FirebaseABTesting.framework in Frameworks */,
+				D53555D323E53704005A20EB /* FirebaseCrashlytics.framework in Frameworks */,
+				D53555D423E53704005A20EB /* FirebaseInstallations.framework in Frameworks */,
+				D53555D523E53704005A20EB /* FirebasePerformance.framework in Frameworks */,
+				D53555D623E53704005A20EB /* FirebaseRemoteConfig.framework in Frameworks */,
+				D53555D723E53704005A20EB /* GoogleToolboxForMac.framework in Frameworks */,
+				D53555D823E53704005A20EB /* PromisesObjC.framework in Frameworks */,
+				D53555D923E53704005A20EB /* Protobuf.framework in Frameworks */,
+				D53555DA23E53704005A20EB /* FIRAnalyticsConnector.framework in Frameworks */,
+				D53555DB23E53704005A20EB /* FirebaseAnalytics.framework in Frameworks */,
+				D53555DC23E53704005A20EB /* FirebaseAuth.framework in Frameworks */,
+				D53555DD23E53704005A20EB /* FirebaseCore.framework in Frameworks */,
+				D53555DE23E53704005A20EB /* FirebaseCoreDiagnostics.framework in Frameworks */,
+				D53555DF23E53704005A20EB /* FirebaseInstanceID.framework in Frameworks */,
+				D53555E023E53704005A20EB /* GoogleAppMeasurement.framework in Frameworks */,
+				D53555E123E53704005A20EB /* GoogleDataTransport.framework in Frameworks */,
+				D53555E223E53704005A20EB /* GoogleDataTransportCCTSupport.framework in Frameworks */,
+				D53555E323E53704005A20EB /* GoogleUtilities.framework in Frameworks */,
+				D53555E423E53704005A20EB /* GTMSessionFetcher.framework in Frameworks */,
+				D53555E523E53704005A20EB /* nanopb.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,8 +269,6 @@
 			isa = PBXGroup;
 			children = (
 				03341B3B23ABB1E7009AE8A8 /* Rythmico.app */,
-				D535549723E0FA4A005A20EB /* Auth.framework */,
-				D535549F23E0FA4B005A20EB /* AuthTests.xctest */,
 				D53554F523E0FD77005A20EB /* Sugar.framework */,
 				D535552B23E10557005A20EB /* RythmicoTests.xctest */,
 			);
@@ -391,7 +323,6 @@
 				D535556323E4F8BF005A20EB /* PromisesObjC.framework */,
 				D535556023E4F8BE005A20EB /* Protobuf.framework */,
 				D509896C23B963B700C19300 /* FIRAnalyticsConnector.framework */,
-				D509896923B963B700C19300 /* Firebase.framework */,
 				D509896B23B963B700C19300 /* FirebaseAnalytics.framework */,
 				D509896523B963B700C19300 /* FirebaseAuth.framework */,
 				D509896F23B963B700C19300 /* FirebaseCore.framework */,
@@ -449,11 +380,9 @@
 		D535549823E0FA4A005A20EB /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				D535549923E0FA4A005A20EB /* Auth.h */,
 				D535547423DF33AA005A20EB /* Authentication */,
 				D54A560D23CD36C500BC8485 /* Authorization */,
 				D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */,
-				D535549A23E0FA4A005A20EB /* Info.plist */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -494,14 +423,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		D535549223E0FA4A005A20EB /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D53554A923E0FA4B005A20EB /* Auth.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D53554F023E0FD77005A20EB /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -526,7 +447,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				D53554AB23E0FA4B005A20EB /* PBXTargetDependency */,
 				D53554FB23E0FD77005A20EB /* PBXTargetDependency */,
 			);
 			name = Rythmico;
@@ -538,42 +458,6 @@
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
 			productType = "com.apple.product-type.application";
-		};
-		D535549623E0FA4A005A20EB /* Auth */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D53554AE23E0FA4B005A20EB /* Build configuration list for PBXNativeTarget "Auth" */;
-			buildPhases = (
-				D535549223E0FA4A005A20EB /* Headers */,
-				D535549323E0FA4A005A20EB /* Sources */,
-				D535549423E0FA4A005A20EB /* Frameworks */,
-				D535549523E0FA4A005A20EB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Auth;
-			productName = Auth;
-			productReference = D535549723E0FA4A005A20EB /* Auth.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		D535549E23E0FA4B005A20EB /* AuthTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D53554B223E0FA4B005A20EB /* Build configuration list for PBXNativeTarget "AuthTests" */;
-			buildPhases = (
-				D535549B23E0FA4B005A20EB /* Sources */,
-				D535549C23E0FA4B005A20EB /* Frameworks */,
-				D535549D23E0FA4B005A20EB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D53554A223E0FA4B005A20EB /* PBXTargetDependency */,
-			);
-			name = AuthTests;
-			productName = AuthTests;
-			productReference = D535549F23E0FA4B005A20EB /* AuthTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		D53554F423E0FD77005A20EB /* Sugar */ = {
 			isa = PBXNativeTarget;
@@ -624,12 +508,6 @@
 					03341B3A23ABB1E7009AE8A8 = {
 						CreatedOnToolsVersion = 11.2.1;
 					};
-					D535549623E0FA4A005A20EB = {
-						CreatedOnToolsVersion = 11.3.1;
-					};
-					D535549E23E0FA4B005A20EB = {
-						CreatedOnToolsVersion = 11.3.1;
-					};
 					D53554F423E0FD77005A20EB = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
@@ -660,8 +538,6 @@
 			targets = (
 				03341B3A23ABB1E7009AE8A8 /* Rythmico */,
 				D535552A23E10557005A20EB /* RythmicoTests */,
-				D535549623E0FA4A005A20EB /* Auth */,
-				D535549E23E0FA4B005A20EB /* AuthTests */,
 				D53554F423E0FD77005A20EB /* Sugar */,
 			);
 		};
@@ -678,20 +554,6 @@
 				03341B4523ABB1E8009AE8A8 /* Assets.xcassets in Resources */,
 				D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */,
 				D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D535549523E0FA4A005A20EB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D535549D23E0FA4B005A20EB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -738,62 +600,45 @@
 			buildActionMask = 2147483647;
 			files = (
 				03341B3F23ABB1E7009AE8A8 /* AppDelegate.swift in Sources */,
+				D53555C023E53699005A20EB /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */,
 				D5BA171223D7AB3B00954D50 /* MainTabView.swift in Sources */,
+				D53555CF23E536AE005A20EB /* AppleAuthorizationCompletionDelegate.swift in Sources */,
 				D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */,
+				D53555C623E536AE005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,
+				D53555BD23E53699005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */,
+				D53555C323E536AE005A20EB /* AppleAuthorizationCredentialStateProvider.swift in Sources */,
+				D53555B623E53699005A20EB /* AuthenticationService.swift in Sources */,
+				D53555BB23E53699005A20EB /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
+				D53555C223E536AE005A20EB /* AppleAuthorizationCredential.swift in Sources */,
+				D53555C923E536AE005A20EB /* AppleAuthorizationResponseDoubles.swift in Sources */,
+				D53555B723E53699005A20EB /* DeauthenticationService.swift in Sources */,
 				D535554723E20076005A20EB /* Colors.swift in Sources */,
+				D53555B923E53699005A20EB /* AuthenticationServiceDoubles.swift in Sources */,
 				D5BA171023D7A18900954D50 /* RootView.swift in Sources */,
 				D5BA171423D7C82C00954D50 /* ViewModel.swift in Sources */,
 				D509898D23BA787500C19300 /* OnboardingViewModel.swift in Sources */,
+				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
+				D53555CE23E536AE005A20EB /* AppleAuthorizationControllerDoubles.swift in Sources */,
 				D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */,
+				D53555C523E536AE005A20EB /* AppleAuthorizationCredentialRevocationObserver.swift in Sources */,
+				D53555C823E536AE005A20EB /* AppleAuthorizationResponse.swift in Sources */,
 				D5E04B1923BED80700A161BB /* Fonts.swift in Sources */,
 				D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */,
 				03341B4323ABB1E7009AE8A8 /* MainTabViewModel.swift in Sources */,
+				D53555C423E536AE005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
+				D53555CD23E536AE005A20EB /* AppleAuthorizationController.swift in Sources */,
+				D53555BA23E53699005A20EB /* AuthenticationAccessTokenProvider.swift in Sources */,
+				D53555BC23E53699005A20EB /* AuthenticationAccessTokenProviderObserver.swift in Sources */,
 				D535554E23E38763005A20EB /* Window.swift in Sources */,
 				D535555023E4AB9A005A20EB /* ActivityIndicator.swift in Sources */,
+				D53555B823E53699005A20EB /* DeauthenticationServiceDoubles.swift in Sources */,
+				D53555B523E53699005A20EB /* AuthenticationError.swift in Sources */,
+				D53555CA23E536AE005A20EB /* AppleAuthorizationService.swift in Sources */,
 				D54A561723CD577800BC8485 /* main.swift in Sources */,
+				D53555CC23E536AE005A20EB /* AppleAuthorizationServiceDoubles.swift in Sources */,
 				D5E04B1B23BEE01B00A161BB /* RootViewModel.swift in Sources */,
 				D535547923DF3A7C005A20EB /* Keychain.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D535549323E0FA4A005A20EB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D53554C723E0FAC0005A20EB /* AuthenticationAccessTokenProviderBroadcast.swift in Sources */,
-				D535554123E1DF8B005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */,
-				D53554C523E0FAC0005A20EB /* AuthenticationAccessTokenProviderObserver.swift in Sources */,
-				D53554C323E0FAC0005A20EB /* AuthenticationAccessTokenProvider.swift in Sources */,
-				D53554C023E0FAC0005A20EB /* AuthenticationService.swift in Sources */,
-				D535553B23E1DD1A005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
-				D53554C223E0FAC0005A20EB /* AuthenticationServiceDoubles.swift in Sources */,
-				D53554BF23E0FAC0005A20EB /* AuthenticationError.swift in Sources */,
-				D53554D923E0FBE4005A20EB /* AppleAuthorizationResponse.swift in Sources */,
-				D535553D23E1DE15005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,
-				D53554DD23E0FBE4005A20EB /* AppleAuthorizationServiceDoubles.swift in Sources */,
-				D53554C423E0FAC0005A20EB /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
-				D53554D723E0FBE4005A20EB /* AppleAuthorizationCredentialRevocationObserver.swift in Sources */,
-				D535550623E0FE78005A20EB /* HashFunction+Helpers.swift in Sources */,
-				D53554D623E0FBE4005A20EB /* AppleAuthorizationCredentialStateProvider.swift in Sources */,
-				D535554323E1DFEC005A20EB /* DeauthenticationServiceDoubles.swift in Sources */,
-				D53554DA23E0FBE4005A20EB /* AppleAuthorizationResponseDoubles.swift in Sources */,
-				D53554C123E0FAC0005A20EB /* DeauthenticationService.swift in Sources */,
-				D53554DE23E0FBE4005A20EB /* AppleAuthorizationController.swift in Sources */,
-				D53554B523E0FAA8005A20EB /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */,
-				D53554DF23E0FBE4005A20EB /* AppleAuthorizationControllerDoubles.swift in Sources */,
-				D53554DB23E0FBE4005A20EB /* AppleAuthorizationService.swift in Sources */,
-				D53554D523E0FBE4005A20EB /* AppleAuthorizationCredential.swift in Sources */,
-				D53554E023E0FBE4005A20EB /* AppleAuthorizationCompletionDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D535549B23E0FA4B005A20EB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D53554C823E0FBD1005A20EB /* AuthenticationAccessTokenProviderObserverTests.swift in Sources */,
-				D53554E123E0FBE8005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift in Sources */,
-				D53554E223E0FBED005A20EB /* AppleAuthorizationServiceTests.swift in Sources */,
+				D53555BF23E53699005A20EB /* AuthenticationAccessTokenProviderBroadcast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -812,23 +657,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				D535553823E116C9005A20EB /* RootViewModelTests.swift in Sources */,
+				D53555E623E5383C005A20EB /* AppleAuthorizationServiceTests.swift in Sources */,
 				D535553623E105A5005A20EB /* OnboardingViewModelTests.swift in Sources */,
+				D53555C123E536A6005A20EB /* AuthenticationAccessTokenProviderObserverTests.swift in Sources */,
+				D53555D023E536B5005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D53554A223E0FA4B005A20EB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D535549623E0FA4A005A20EB /* Auth */;
-			targetProxy = D53554A123E0FA4B005A20EB /* PBXContainerItemProxy */;
-		};
-		D53554AB23E0FA4B005A20EB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D535549623E0FA4A005A20EB /* Auth */;
-			targetProxy = D53554AA23E0FA4B005A20EB /* PBXContainerItemProxy */;
-		};
 		D53554FB23E0FD77005A20EB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D53554F423E0FD77005A20EB /* Sugar */;
@@ -989,6 +827,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.student;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1015,109 +857,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.student;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		D53554AF23E0FA4B005A20EB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 72N659HYBR;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = Auth/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.Auth;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		D53554B023E0FA4B005A20EB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 72N659HYBR;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = Auth/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.Auth;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		D53554B323E0FA4B005A20EB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 72N659HYBR;
-				INFOPLIST_FILE = Auth/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.AuthTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		D53554B423E0FA4B005A20EB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 72N659HYBR;
-				INFOPLIST_FILE = Auth/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.AuthTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1240,24 +984,6 @@
 			buildConfigurations = (
 				03341B5023ABB1E8009AE8A8 /* Debug */,
 				03341B5123ABB1E8009AE8A8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D53554AE23E0FA4B005A20EB /* Build configuration list for PBXNativeTarget "Auth" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D53554AF23E0FA4B005A20EB /* Debug */,
-				D53554B023E0FA4B005A20EB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D53554B223E0FA4B005A20EB /* Build configuration list for PBXNativeTarget "AuthTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D53554B323E0FA4B005A20EB /* Debug */,
-				D53554B423E0FA4B005A20EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

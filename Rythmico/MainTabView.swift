@@ -1,7 +1,6 @@
 import SwiftUI
 import FirebaseAuth
 import SFSafeSymbols
-import Auth
 
 struct MainTabView: View {
     private enum Const {
