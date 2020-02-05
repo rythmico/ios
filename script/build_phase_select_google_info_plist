@@ -1,14 +1,10 @@
 #!/bin/bash
 
 PRODUCT_DIR=$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.app
+PRODUCT_CONFIG=$([ "$CONFIGURATION" == "Release" ] && echo Release || echo Debug)
 
-if [ "$CONFIGURATION" == "Release" ]; then
-    cp -Rf $PRODUCT_DIR/GoogleService-Info-Release.plist $PRODUCT_DIR/GoogleService-Info.plist
-    echo "Release info plist copied"
-else
-    cp -Rf $PRODUCT_DIR/GoogleService-Info-Debug.plist $PRODUCT_DIR/GoogleService-Info.plist
-    echo "Debug info plist copied"
-fi
+cp -Rf $PRODUCT_DIR/GoogleService-Info-$PRODUCT_CONFIG.plist $PRODUCT_DIR/GoogleService-Info.plist
+echo "$PRODUCT_CONFIG info plist copied"
 
 rm $PRODUCT_DIR/GoogleService-Info-Debug.plist
 rm $PRODUCT_DIR/GoogleService-Info-Release.plist
