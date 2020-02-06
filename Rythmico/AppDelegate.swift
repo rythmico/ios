@@ -53,8 +53,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
                 onboardingViewModel: OnboardingViewModel(
                     appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
                     authenticationService: AuthenticationService(),
-                    keychain: Keychain.localKeychain,
-                    dispatchQueue: .main
+                    keychain: Keychain.localKeychain
                 ),
                 authorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
                 authorizationCredentialRevocationObserving: AppleAuthorizationCredentialRevocationObserver(
@@ -63,8 +62,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
                 authenticationAccessTokenProviderObserving: AuthenticationAccessTokenProviderObserver(
                     broadcast: AuthenticationAccessTokenProviderBroadcast()
                 ),
-                deauthenticationService: DeauthenticationService(),
-                dispatchQueue: .main
+                deauthenticationService: DeauthenticationService()
             )
         )
     }

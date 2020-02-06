@@ -1,32 +1,20 @@
 import Foundation
-import Combine
+@testable import ViewModel
 
-protocol OnboardingViewModelProtocol: ViewModel where ViewData == OnboardingViewData {
-    func authenticateWithApple()
-}
-
-final class OnboardingViewModel: OnboardingViewModelProtocol {
-    let objectWillChange = ObservableObjectPublisher()
-
-    private(set) var viewData = OnboardingViewData() {
-        willSet { dispatchQueue?.async(execute: objectWillChange.send) ?? objectWillChange.send() }
-    }
-
+final class OnboardingViewModel: ViewModelObject<OnboardingViewData> {
     private let appleAuthorizationService: AppleAuthorizationServiceProtocol
     private let authenticationService: AuthenticationServiceProtocol
     private let keychain: KeychainProtocol
-    private let dispatchQueue: DispatchQueue?
 
     init(
         appleAuthorizationService: AppleAuthorizationServiceProtocol,
         authenticationService: AuthenticationServiceProtocol,
-        keychain: KeychainProtocol,
-        dispatchQueue: DispatchQueue?
+        keychain: KeychainProtocol
     ) {
         self.appleAuthorizationService = appleAuthorizationService
         self.authenticationService = authenticationService
         self.keychain = keychain
-        self.dispatchQueue = dispatchQueue
+        super.init(viewData: .init())
     }
 
     func authenticateWithApple() {

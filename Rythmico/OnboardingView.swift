@@ -1,5 +1,6 @@
 import SwiftUI
 import Sugar
+import ViewModel
 
 struct OnboardingViewData {
     struct ErrorAlertViewData: Identifiable {
@@ -76,8 +77,7 @@ struct OnboardingView_Preview: PreviewProvider {
         OnboardingViewModel(
             appleAuthorizationService: authorizationService,
             authenticationService: authenticationService,
-            keychain: keychain,
-            dispatchQueue: nil
+            keychain: keychain
         )
     }
 

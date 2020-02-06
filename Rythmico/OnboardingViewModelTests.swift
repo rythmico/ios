@@ -27,8 +27,7 @@ final class OnboardingViewModelTests: XCTestCase {
         let viewModel = OnboardingViewModel(
             appleAuthorizationService: authorizationService(withErrorCode: .failed),
             authenticationService: AuthenticationServiceDummy(),
-            keychain: keychain,
-            dispatchQueue: nil
+            keychain: keychain
         )
 
         viewModel.authenticateWithApple()
@@ -44,8 +43,7 @@ final class OnboardingViewModelTests: XCTestCase {
         let viewModel = OnboardingViewModel(
             appleAuthorizationService: AppleAuthorizationServiceStub(expectedResult: .success(credential)),
             authenticationService: authenticationService(withErrorCode: .invalidCredential),
-            keychain: keychain,
-            dispatchQueue: nil
+            keychain: keychain
         )
 
         viewModel.authenticateWithApple()
@@ -66,8 +64,7 @@ final class OnboardingViewModelTests: XCTestCase {
         let viewModel = OnboardingViewModel(
             appleAuthorizationService: AppleAuthorizationServiceStub(expectedResult: .success(credential)),
             authenticationService: AuthenticationServiceStub(expectedResult: .success(AuthenticationAccessTokenProviderDummy())),
-            keychain: keychain,
-            dispatchQueue: nil
+            keychain: keychain
         )
 
         viewModel.authenticateWithApple()
