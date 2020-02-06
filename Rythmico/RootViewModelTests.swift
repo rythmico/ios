@@ -7,8 +7,7 @@ final class RootViewModelTests: XCTestCase {
         OnboardingViewModel(
             appleAuthorizationService: AppleAuthorizationServiceDummy(),
             authenticationService: AuthenticationServiceDummy(),
-            keychain: KeychainDummy(),
-            dispatchQueue: nil
+            keychain: KeychainDummy()
         )
     }
 
@@ -25,8 +24,7 @@ final class RootViewModelTests: XCTestCase {
             authorizationCredentialStateProvider: credentialStateProvider,
             authorizationCredentialRevocationObserving: credentialRevocationObserver,
             authenticationAccessTokenProviderObserving: accessTokenProviderObserver,
-            deauthenticationService: deauthenticationService,
-            dispatchQueue: nil
+            deauthenticationService: deauthenticationService
         )
 
         XCTAssertNotNil(viewModel.viewData.onboardingView)
@@ -48,8 +46,7 @@ final class RootViewModelTests: XCTestCase {
             authorizationCredentialStateProvider: credentialStateProvider,
             authorizationCredentialRevocationObserving: credentialRevocationObserver,
             authenticationAccessTokenProviderObserving: accessTokenProviderObserver,
-            deauthenticationService: deauthenticationService,
-            dispatchQueue: nil
+            deauthenticationService: deauthenticationService
         )
 
         keychain.appleAuthorizationUserId = "USER_ID"
@@ -73,8 +70,7 @@ final class RootViewModelTests: XCTestCase {
             authorizationCredentialStateProvider: credentialStateProvider,
             authorizationCredentialRevocationObserving: credentialRevocationObserver,
             authenticationAccessTokenProviderObserving: accessTokenProviderObserver,
-            deauthenticationService: deauthenticationService,
-            dispatchQueue: nil
+            deauthenticationService: deauthenticationService
         )
 
         XCTAssertNotNil(viewModel.viewData.onboardingView)
@@ -97,8 +93,7 @@ final class RootViewModelTests: XCTestCase {
             authorizationCredentialStateProvider: credentialStateProvider,
             authorizationCredentialRevocationObserving: credentialRevocationObserver,
             authenticationAccessTokenProviderObserving: accessTokenProviderObserver,
-            deauthenticationService: deauthenticationService,
-            dispatchQueue: nil
+            deauthenticationService: deauthenticationService
         )
 
         credentialRevocationObserver.revocationHandler?()
@@ -123,8 +118,7 @@ final class RootViewModelTests: XCTestCase {
             authorizationCredentialStateProvider: credentialStateProvider,
             authorizationCredentialRevocationObserving: credentialRevocationObserver,
             authenticationAccessTokenProviderObserving: accessTokenProviderObserver,
-            deauthenticationService: deauthenticationService,
-            dispatchQueue: nil
+            deauthenticationService: deauthenticationService
         )
 
         accessTokenProviderObserver.statusDidChangeHandler?(nil)
@@ -149,8 +143,7 @@ final class RootViewModelTests: XCTestCase {
             authorizationCredentialStateProvider: credentialStateProvider,
             authorizationCredentialRevocationObserving: credentialRevocationObserver,
             authenticationAccessTokenProviderObserving: accessTokenProviderObserver,
-            deauthenticationService: deauthenticationService,
-            dispatchQueue: nil
+            deauthenticationService: deauthenticationService
         )
 
         deauthenticationService.deauthenticate()

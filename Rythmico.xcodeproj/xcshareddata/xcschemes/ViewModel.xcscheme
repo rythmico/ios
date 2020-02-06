@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D535549623E0FA4A005A20EB"
-               BuildableName = "Auth.framework"
-               BlueprintName = "Auth"
+               BlueprintIdentifier = "D52BFADA23ECB651009F4498"
+               BuildableName = "ViewModel.framework"
+               BlueprintName = "ViewModel"
                ReferencedContainer = "container:Rythmico.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D535549E23E0FA4B005A20EB"
-               BuildableName = "AuthTests.xctest"
-               BlueprintName = "AuthTests"
+               BlueprintIdentifier = "D52BFAE223ECB651009F4498"
+               BuildableName = "ViewModelTests.xctest"
+               BlueprintName = "ViewModelTests"
                ReferencedContainer = "container:Rythmico.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -60,9 +60,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D535549623E0FA4A005A20EB"
-            BuildableName = "Auth.framework"
-            BlueprintName = "Auth"
+            BlueprintIdentifier = "D52BFADA23ECB651009F4498"
+            BuildableName = "ViewModel.framework"
+            BlueprintName = "ViewModel"
             ReferencedContainer = "container:Rythmico.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

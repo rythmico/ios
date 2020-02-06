@@ -1,19 +1,10 @@
 import Foundation
-import Combine
+@testable import ViewModel
 
-protocol RootViewModelProtocol: ViewModel where ViewData == RootViewData {}
-
-final class RootViewModel: RootViewModelProtocol {
-    let objectWillChange = ObservableObjectPublisher()
-
-    private(set) var viewData: RootViewData {
-        willSet { dispatchQueue?.async(execute: objectWillChange.send) ?? objectWillChange.send() }
-    }
-
+final class RootViewModel: ViewModelObject<RootViewData> {
     private let authorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider
     private let authorizationCredentialRevocationObserving: AppleAuthorizationCredentialRevocationObserving
     private let authenticationAccessTokenProviderObserving: AuthenticationAccessTokenProviderObserving
-    private let dispatchQueue: DispatchQueue?
 
     init(
         keychain: KeychainProtocol,
@@ -21,8 +12,7 @@ final class RootViewModel: RootViewModelProtocol {
         authorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider,
         authorizationCredentialRevocationObserving: AppleAuthorizationCredentialRevocationObserving,
         authenticationAccessTokenProviderObserving: AuthenticationAccessTokenProviderObserving,
-        deauthenticationService: DeauthenticationServiceProtocol,
-        dispatchQueue: DispatchQueue?
+        deauthenticationService: DeauthenticationServiceProtocol
     ) {
         func viewData(for provider: AuthenticationAccessTokenProvider?) -> ViewData {
             if let provider = provider {
@@ -32,11 +22,10 @@ final class RootViewModel: RootViewModelProtocol {
             }
         }
 
-        self.viewData = viewData(for: nil)
         self.authorizationCredentialStateProvider = authorizationCredentialStateProvider
         self.authorizationCredentialRevocationObserving = authorizationCredentialRevocationObserving
         self.authenticationAccessTokenProviderObserving = authenticationAccessTokenProviderObserving
-        self.dispatchQueue = dispatchQueue
+        super.init(viewData: viewData(for: nil))
 
         self.authenticationAccessTokenProviderObserving.statusDidChangeHandler = { provider in
             if provider == nil {
