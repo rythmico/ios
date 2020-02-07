@@ -8,6 +8,8 @@ struct LessonRequestView: View, Identifiable {
 
     let id = UUID()
 
+    @Environment(\.betterSheetPresentationMode) var presentationMode
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -17,13 +19,13 @@ struct LessonRequestView: View, Identifiable {
             }
             .navigationBarTitle("Choose Instrument", displayMode: .large)
             .navigationBarItems(
-                trailing: Button(action: {}) {
+                trailing: Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
                     Image(systemSymbol: .xmark).font(.system(size: 21, weight: .semibold))
                         .padding(.vertical, Const.verticalPadding)
                         .padding(.horizontal, Const.horizontalPadding)
                         .offset(x: Const.horizontalPadding)
                 }
-                .accentColor(.rythmicoDarkGray)
+                .accentColor(.rythmicoGray90)
                 .accessibility(label: Text("Close lesson request screen"))
                 .accessibility(hint: Text("Double tap to return to main screen"))
             )
