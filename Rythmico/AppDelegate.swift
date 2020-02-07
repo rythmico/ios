@@ -2,6 +2,7 @@ import UIKit
 import Firebase
 import class SwiftUI.UIHostingController
 import Then
+import BetterSheet
 
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     private enum Const {
@@ -41,7 +42,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     private func configureWindow() {
         window = Window().then {
             $0.traitCollectionDidChange = { _ in self.configureGlobalStyles() }
-            $0.rootViewController = UIHostingController(rootView: rootView)
+            $0.rootViewController = UIHostingController.withBetterSheetSupport(rootView: rootView)
             $0.makeKeyAndVisible()
         }
     }
