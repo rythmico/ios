@@ -9,6 +9,10 @@ extension Color {
         Color(base256Red: 93, green: 97, blue: 241)
     }
 
+    static var rythmicoDarkGray: Color {
+        Color(base256Red: 75, green: 93, blue: 107)
+    }
+
     static var rythmicoForeground: Color {
         Color(lightModeVariant: .black, darkModeVariant: .white)
     }
