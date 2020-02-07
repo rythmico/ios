@@ -24,7 +24,7 @@ private extension Font.TextStyle {
     var fontSize: CGFloat {
         switch self {
         case .largeTitle:
-            return 33
+            return 30
         case .title:
             return 24
         case .headline:
