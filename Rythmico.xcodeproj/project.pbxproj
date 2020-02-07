@@ -88,6 +88,7 @@
 		D53555E523E53704005A20EB /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509897123B963B700C19300 /* nanopb.framework */; };
 		D53555E623E5383C005A20EB /* AppleAuthorizationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560E23CD384300BC8485 /* AppleAuthorizationServiceTests.swift */; };
 		D54A561723CD577800BC8485 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561623CD577800BC8485 /* main.swift */; };
+		D5AAF7CB23ED850E00E410F2 /* BetterSheet in Frameworks */ = {isa = PBXBuildFile; productRef = D5AAF7CA23ED850E00E410F2 /* BetterSheet */; };
 		D5BA171023D7A18900954D50 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170F23D7A18900954D50 /* RootView.swift */; };
 		D5BA171223D7AB3B00954D50 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA171123D7AB3B00954D50 /* MainTabView.swift */; };
 		D5E04B1923BED80700A161BB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* Fonts.swift */; };
@@ -253,6 +254,7 @@
 				D53555D523E53704005A20EB /* FirebasePerformance.framework in Frameworks */,
 				D53555D623E53704005A20EB /* FirebaseRemoteConfig.framework in Frameworks */,
 				D53555D723E53704005A20EB /* GoogleToolboxForMac.framework in Frameworks */,
+				D5AAF7CB23ED850E00E410F2 /* BetterSheet in Frameworks */,
 				D53555D823E53704005A20EB /* PromisesObjC.framework in Frameworks */,
 				D53555D923E53704005A20EB /* Protobuf.framework in Frameworks */,
 				D53555DA23E53704005A20EB /* FIRAnalyticsConnector.framework in Frameworks */,
@@ -527,6 +529,7 @@
 				D535547623DF3A19005A20EB /* Valet */,
 				D535548023E0E7C1005A20EB /* SFSafeSymbols */,
 				D535554B23E23EA7005A20EB /* Then */,
+				D5AAF7CA23ED850E00E410F2 /* BetterSheet */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -1321,6 +1324,14 @@
 				minimumVersion = 2.6.0;
 			};
 		};
+		D5AAF7C923ED850E00E410F2 /* XCRemoteSwiftPackageReference "BetterSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/egeniq/BetterSheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1338,6 +1349,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D535554A23E23EA7005A20EB /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		D5AAF7CA23ED850E00E410F2 /* BetterSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5AAF7C923ED850E00E410F2 /* XCRemoteSwiftPackageReference "BetterSheet" */;
+			productName = BetterSheet;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
