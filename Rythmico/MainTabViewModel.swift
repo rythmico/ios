@@ -10,7 +10,7 @@ final class MainTabViewModel: ViewModelObject<MainTabViewData> {
     }
 
     func presentRequestLessonFlow() {
-        viewData.lessonRequestView = RequestLessonPlanView(viewModel: .init())
+        viewData.lessonRequestView = RequestLessonPlanView(viewModel: .init(instrumentProvider: InstrumentProviderFake()))
     }
 
     func dismissRequestLessonFlow() {
