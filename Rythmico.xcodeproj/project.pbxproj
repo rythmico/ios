@@ -12,6 +12,7 @@
 		03341B4523ABB1E8009AE8A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4423ABB1E8009AE8A8 /* Assets.xcassets */; };
 		03341B4823ABB1E8009AE8A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4723ABB1E8009AE8A8 /* Preview Assets.xcassets */; };
 		03341B4B23ABB1E8009AE8A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */; };
+		D50811E423FB72A3008103D8 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E323FB72A3008103D8 /* StepBar.swift */; };
 		D509898023B969B700C19300 /* GoogleService-Info-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */; };
 		D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898423B9B5C100C19300 /* GoogleService-Info.plist */; };
 		D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */; };
@@ -103,6 +104,7 @@
 		D5E04B1923BED80700A161BB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* Fonts.swift */; };
 		D5E04B1B23BEE01B00A161BB /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1A23BEE01B00A161BB /* RootViewModel.swift */; };
 		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
+		D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF88B523FB706C0072BD03 /* ProgressBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +169,7 @@
 		03341B4A23ABB1E8009AE8A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03341B4C23ABB1E8009AE8A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D50668DA23B946330044E553 /* Rythmico.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rythmico.entitlements; sourceTree = "<group>"; };
+		D50811E323FB72A3008103D8 /* StepBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
 		D509896523B963B700C19300 /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Carthage/Build/iOS/FirebaseAuth.framework; sourceTree = "<group>"; };
 		D509896623B963B700C19300 /* GoogleDataTransport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleDataTransport.framework; path = Carthage/Build/iOS/GoogleDataTransport.framework; sourceTree = "<group>"; };
 		D509896723B963B700C19300 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = Carthage/Build/iOS/GTMSessionFetcher.framework; sourceTree = "<group>"; };
@@ -255,6 +258,7 @@
 		D5E04B1823BED80700A161BB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		D5E04B1A23BEE01B00A161BB /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		D5EF88B523FB706C0072BD03 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -425,7 +429,9 @@
 				D5AAF7DA23FB347C00E410F2 /* CollectionView.swift */,
 				D5E04B1823BED80700A161BB /* Fonts.swift */,
 				D535554623E20076005A20EB /* Colors.swift */,
+				D5EF88B523FB706C0072BD03 /* ProgressBar.swift */,
 				D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */,
+				D50811E323FB72A3008103D8 /* StepBar.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -784,6 +790,7 @@
 				D5AAF7DF23FB444500E410F2 /* RoundedShadowContainer.swift in Sources */,
 				D535554723E20076005A20EB /* Colors.swift in Sources */,
 				D53555B923E53699005A20EB /* AuthenticationServiceDoubles.swift in Sources */,
+				D50811E423FB72A3008103D8 /* StepBar.swift in Sources */,
 				D5AAF7D523F9E1F900E410F2 /* InstrumentProvider.swift in Sources */,
 				D5BA171023D7A18900954D50 /* RootView.swift in Sources */,
 				D509898D23BA787500C19300 /* OnboardingViewModel.swift in Sources */,
@@ -812,6 +819,7 @@
 				D5AAF7DB23FB347C00E410F2 /* CollectionView.swift in Sources */,
 				D5E04B1B23BEE01B00A161BB /* RootViewModel.swift in Sources */,
 				D535547923DF3A7C005A20EB /* Keychain.swift in Sources */,
+				D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */,
 				D53555BF23E53699005A20EB /* AuthenticationAccessTokenProviderBroadcast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
