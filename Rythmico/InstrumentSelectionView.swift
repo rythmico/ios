@@ -6,13 +6,16 @@ struct InstrumentSelectionViewData {
 }
 
 struct InstrumentSelectionView: View, ViewModelable {
+    private enum Const {
+        static let horizontalPadding: CGFloat = 22
+    }
 
     @ObservedObject var viewModel: InstrumentSelectionViewModel
 
     var body: some View {
         VStack {
             CollectionView(viewData.instruments, id: \.name) {
-                InstrumentView(viewData: $0).padding(.horizontal, 22)
+                InstrumentView(viewData: $0).padding(.horizontal, Const.horizontalPadding)
             }
         }
     }
