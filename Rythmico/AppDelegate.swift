@@ -25,7 +25,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.barTintColor = .systemBackground
             $0.backgroundColor = .systemBackground
             $0.largeTitleTextAttributes = [.font: UIFont.rythmicoFont(.largeTitle)]
-            $0.titleTextAttributes = [.font: UIFont.rythmicoFont(.headline)]
+            $0.titleTextAttributes = [.font: UIFont.rythmicoFont(.subheadline)]
             $0.layoutMargins.left = Const.defaultNavigationBarLargeTitleLeadingInset
             $0.layoutMargins.right = Const.defaultNavigationBarLargeTitleLeadingInset
         }

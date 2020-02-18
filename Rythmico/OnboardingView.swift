@@ -30,7 +30,7 @@ struct OnboardingView: View, ViewModelable {
                         .rythmicoFont(.largeTitle)
                         .foregroundColor(.white)
                     Text("Turning kids into the festival headliners of tomorrow")
-                        .rythmicoFont(.headline)
+                        .rythmicoFont(.subheadline)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.white)
                 }
