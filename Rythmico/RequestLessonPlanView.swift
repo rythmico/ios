@@ -72,6 +72,6 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
 
 struct RequestLessonPlanView_Preview: PreviewProvider {
     static var previews: some View {
-        RequestLessonPlanView(viewModel: RequestLessonPlanViewModel())
+        RequestLessonPlanView(viewModel: RequestLessonPlanViewModel(instrumentProvider: InstrumentProviderFake()))
     }
 }
