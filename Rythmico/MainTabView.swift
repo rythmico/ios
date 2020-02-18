@@ -4,7 +4,7 @@ import SFSafeSymbols
 import ViewModel
 
 struct MainTabViewData {
-    var lessonRequestView: LessonRequestView? = nil
+    var lessonRequestView: RequestLessonPlanView? = nil
 }
 
 struct MainTabView: View, ViewModelable {
