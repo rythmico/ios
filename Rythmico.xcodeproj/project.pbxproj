@@ -90,6 +90,8 @@
 		D54A561723CD577800BC8485 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561623CD577800BC8485 /* main.swift */; };
 		D5AAF7C823ECC87000E410F2 /* LessonRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7C723ECC87000E410F2 /* LessonRequestView.swift */; };
 		D5AAF7CB23ED850E00E410F2 /* BetterSheet in Frameworks */ = {isa = PBXBuildFile; productRef = D5AAF7CA23ED850E00E410F2 /* BetterSheet */; };
+		D5AAF7D123F9ACFA00E410F2 /* InstrumentSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D023F9ACFA00E410F2 /* InstrumentSelectionView.swift */; };
+		D5AAF7D323F9E0AD00E410F2 /* InstrumentSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D223F9E0AD00E410F2 /* InstrumentSelectionViewModel.swift */; };
 		D5AAF7D523F9E1F900E410F2 /* InstrumentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D423F9E1F900E410F2 /* InstrumentProvider.swift */; };
 		D5AAF7D723F9E20C00E410F2 /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D623F9E20C00E410F2 /* Instrument.swift */; };
 		D5AAF7D923F9EB1200E410F2 /* InstrumentProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D823F9EB1200E410F2 /* InstrumentProviderDoubles.swift */; };
@@ -234,6 +236,8 @@
 		D54A561F23CE92AE00BC8485 /* AuthenticationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationError.swift; sourceTree = "<group>"; };
 		D5A32DBC23D139C000F3903C /* AuthenticationAccessTokenProviderObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderObserver.swift; sourceTree = "<group>"; };
 		D5AAF7C723ECC87000E410F2 /* LessonRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonRequestView.swift; sourceTree = "<group>"; };
+		D5AAF7D023F9ACFA00E410F2 /* InstrumentSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionView.swift; sourceTree = "<group>"; };
+		D5AAF7D223F9E0AD00E410F2 /* InstrumentSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionViewModel.swift; sourceTree = "<group>"; };
 		D5AAF7D423F9E1F900E410F2 /* InstrumentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentProvider.swift; sourceTree = "<group>"; };
 		D5AAF7D623F9E20C00E410F2 /* Instrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instrument.swift; sourceTree = "<group>"; };
 		D5AAF7D823F9EB1200E410F2 /* InstrumentProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentProviderDoubles.swift; sourceTree = "<group>"; };
@@ -360,6 +364,8 @@
 				D5BA171123D7AB3B00954D50 /* MainTabView.swift */,
 				03341B4223ABB1E7009AE8A8 /* MainTabViewModel.swift */,
 				D5AAF7C723ECC87000E410F2 /* LessonRequestView.swift */,
+				D5AAF7D023F9ACFA00E410F2 /* InstrumentSelectionView.swift */,
+				D5AAF7D223F9E0AD00E410F2 /* InstrumentSelectionViewModel.swift */,
 				D5AAF7DC23FB431E00E410F2 /* InstrumentView.swift */,
 				D5AAF7D423F9E1F900E410F2 /* InstrumentProvider.swift */,
 				D5AAF7D823F9EB1200E410F2 /* InstrumentProviderDoubles.swift */,
@@ -762,12 +768,14 @@
 				03341B3F23ABB1E7009AE8A8 /* AppDelegate.swift in Sources */,
 				D53555C023E53699005A20EB /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */,
 				D5AAF7C823ECC87000E410F2 /* LessonRequestView.swift in Sources */,
+				D5AAF7D323F9E0AD00E410F2 /* InstrumentSelectionViewModel.swift in Sources */,
 				D5BA171223D7AB3B00954D50 /* MainTabView.swift in Sources */,
 				D53555CF23E536AE005A20EB /* AppleAuthorizationCompletionDelegate.swift in Sources */,
 				D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */,
 				D53555C623E536AE005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,
 				D53555BD23E53699005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */,
 				D53555C323E536AE005A20EB /* AppleAuthorizationCredentialStateProvider.swift in Sources */,
+				D5AAF7D123F9ACFA00E410F2 /* InstrumentSelectionView.swift in Sources */,
 				D53555B623E53699005A20EB /* AuthenticationService.swift in Sources */,
 				D53555BB23E53699005A20EB /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
 				D53555C223E536AE005A20EB /* AppleAuthorizationCredential.swift in Sources */,
