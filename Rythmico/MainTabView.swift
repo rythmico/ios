@@ -1,14 +1,19 @@
 import SwiftUI
 import FirebaseAuth
 import SFSafeSymbols
+import ViewModel
 
-struct MainTabView: View {
+struct MainTabViewData {
+    var lessonRequestView: RequestLessonPlanView? = nil
+}
+
+struct MainTabView: View, ViewModelable {
     private enum Const {
-        static let verticalPadding: CGFloat = 12
-        static let horizontalPadding: CGFloat = 28
+        static let requestLessonButtonImageVerticalPadding: CGFloat = 12
+        static let requestLessonButtonImageHorizontalPadding: CGFloat = 28
     }
 
-    private let viewModel: MainTabViewModel
+    @ObservedObject var viewModel: MainTabViewModel
 
     init(viewModel: MainTabViewModel) {
         self.viewModel = viewModel
@@ -20,11 +25,11 @@ struct MainTabView: View {
                 Color.clear
                     .navigationBarTitle("Lessons", displayMode: .large)
                     .navigationBarItems(
-                        trailing: Button(action: { print("hey") }) {
+                        trailing: Button(action: viewModel.presentRequestLessonFlow) {
                             Image(systemSymbol: .plusCircleFill).font(.system(size: 24))
-                                .padding(.vertical, Const.verticalPadding)
-                                .padding(.horizontal, Const.horizontalPadding)
-                                .offset(x: Const.horizontalPadding)
+                                .padding(.vertical, Const.requestLessonButtonImageVerticalPadding)
+                                .padding(.horizontal, Const.requestLessonButtonImageHorizontalPadding)
+                                .offset(x: Const.requestLessonButtonImageHorizontalPadding)
                         }
                         .accessibility(label: Text("Request lessons"))
                         .accessibility(hint: Text("Double tap to request a lesson plan"))
@@ -55,9 +60,8 @@ struct MainTabView: View {
             }
         }
         .accentColor(.rythmicoPurple)
-        // TODO: remove
-        .onTapGesture(count: 5) {
-            fatalError("Blah blah 123")
+        .betterSheet(item: Binding(get: { self.viewData.lessonRequestView }, set: { _ in self.viewModel.dismissRequestLessonFlow() })) {
+            $0.betterSheetIsModalInPresentation(true)
         }
     }
 }

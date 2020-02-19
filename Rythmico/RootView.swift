@@ -1,4 +1,5 @@
 import SwiftUI
+import ViewModel
 
 enum RootViewData {
     case unauthenticated(OnboardingView)

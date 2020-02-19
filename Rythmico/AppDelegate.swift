@@ -2,6 +2,7 @@ import UIKit
 import Firebase
 import class SwiftUI.UIHostingController
 import Then
+import BetterSheet
 
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     private enum Const {
@@ -24,7 +25,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.barTintColor = .systemBackground
             $0.backgroundColor = .systemBackground
             $0.largeTitleTextAttributes = [.font: UIFont.rythmicoFont(.largeTitle)]
-            $0.titleTextAttributes = [.font: UIFont.rythmicoFont(.headline)]
+            $0.titleTextAttributes = [.font: UIFont.rythmicoFont(.subheadline)]
             $0.layoutMargins.left = Const.defaultNavigationBarLargeTitleLeadingInset
             $0.layoutMargins.right = Const.defaultNavigationBarLargeTitleLeadingInset
         }
@@ -41,7 +42,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     private func configureWindow() {
         window = Window().then {
             $0.traitCollectionDidChange = { _ in self.configureGlobalStyles() }
-            $0.rootViewController = UIHostingController(rootView: rootView)
+            $0.rootViewController = UIHostingController.withBetterSheetSupport(rootView: rootView)
             $0.makeKeyAndVisible()
         }
     }
@@ -53,8 +54,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
                 onboardingViewModel: OnboardingViewModel(
                     appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
                     authenticationService: AuthenticationService(),
-                    keychain: Keychain.localKeychain,
-                    dispatchQueue: .main
+                    keychain: Keychain.localKeychain
                 ),
                 authorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
                 authorizationCredentialRevocationObserving: AppleAuthorizationCredentialRevocationObserver(
@@ -63,8 +63,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
                 authenticationAccessTokenProviderObserving: AuthenticationAccessTokenProviderObserver(
                     broadcast: AuthenticationAccessTokenProviderBroadcast()
                 ),
-                deauthenticationService: DeauthenticationService(),
-                dispatchQueue: .main
+                deauthenticationService: DeauthenticationService()
             )
         )
     }
