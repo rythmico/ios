@@ -15,6 +15,7 @@
 		D50811E423FB72A3008103D8 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E323FB72A3008103D8 /* StepBar.swift */; };
 		D50811E623FB769D008103D8 /* RequestLessonPlanViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E523FB769D008103D8 /* RequestLessonPlanViewModelTests.swift */; };
 		D50811E823FD73F0008103D8 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E723FD73F0008103D8 /* Assets.swift */; };
+		D50811EA23FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E923FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift */; };
 		D509898023B969B700C19300 /* GoogleService-Info-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */; };
 		D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898423B9B5C100C19300 /* GoogleService-Info.plist */; };
 		D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */; };
@@ -175,6 +176,7 @@
 		D50811E323FB72A3008103D8 /* StepBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
 		D50811E523FB769D008103D8 /* RequestLessonPlanViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanViewModelTests.swift; sourceTree = "<group>"; };
 		D50811E723FD73F0008103D8 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		D50811E923FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionViewModelTests.swift; sourceTree = "<group>"; };
 		D509896523B963B700C19300 /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Carthage/Build/iOS/FirebaseAuth.framework; sourceTree = "<group>"; };
 		D509896623B963B700C19300 /* GoogleDataTransport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleDataTransport.framework; path = Carthage/Build/iOS/GoogleDataTransport.framework; sourceTree = "<group>"; };
 		D509896723B963B700C19300 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = Carthage/Build/iOS/GTMSessionFetcher.framework; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 				D50811E523FB769D008103D8 /* RequestLessonPlanViewModelTests.swift */,
 				D5AAF7D023F9ACFA00E410F2 /* InstrumentSelectionView.swift */,
 				D5AAF7D223F9E0AD00E410F2 /* InstrumentSelectionViewModel.swift */,
+				D50811E923FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift */,
 				D5AAF7DC23FB431E00E410F2 /* InstrumentView.swift */,
 				D5AAF7D423F9E1F900E410F2 /* InstrumentProvider.swift */,
 				D5AAF7D823F9EB1200E410F2 /* InstrumentProviderDoubles.swift */,
@@ -872,6 +875,7 @@
 				D50811E623FB769D008103D8 /* RequestLessonPlanViewModelTests.swift in Sources */,
 				D53555C123E536A6005A20EB /* AuthenticationAccessTokenProviderObserverTests.swift in Sources */,
 				D53555D023E536B5005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift in Sources */,
+				D50811EA23FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
