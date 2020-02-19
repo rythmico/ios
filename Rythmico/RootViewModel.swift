@@ -1,5 +1,5 @@
 import Foundation
-@testable import ViewModel
+import ViewModel
 
 final class RootViewModel: ViewModelObject<RootViewData> {
     private let authorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider

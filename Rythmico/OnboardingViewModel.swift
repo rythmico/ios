@@ -1,5 +1,5 @@
 import Foundation
-@testable import ViewModel
+import ViewModel
 
 final class OnboardingViewModel: ViewModelObject<OnboardingViewData> {
     private let appleAuthorizationService: AppleAuthorizationServiceProtocol
