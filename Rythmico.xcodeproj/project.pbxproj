@@ -382,7 +382,6 @@
 				D5AAF7D623F9E20C00E410F2 /* Instrument.swift */,
 				03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */,
 				D535547A23DF3E81005A20EB /* Keychain */,
-				03341B4423ABB1E8009AE8A8 /* Assets.xcassets */,
 				03341B4C23ABB1E8009AE8A8 /* Info.plist */,
 				D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */,
 				D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */,
@@ -430,6 +429,7 @@
 		D50E4BDC23CA82E000B6FCB1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				03341B4423ABB1E8009AE8A8 /* Assets.xcassets */,
 				D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */,
 				D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */,
 				D5AAF7DA23FB347C00E410F2 /* CollectionView.swift */,
