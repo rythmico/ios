@@ -11,7 +11,7 @@ struct CollectionView<Data: RandomAccessCollection, ID: Hashable, Content: View>
         _ data: Data,
         id: KeyPath<Data.Element, ID>,
         topPadding: CGFloat? = 12,
-        spacing: CGFloat? = 16,
+        spacing: CGFloat? = 12,
         @ViewBuilder content: @escaping (Data.Element) -> Content
     ) {
         self.data = data
