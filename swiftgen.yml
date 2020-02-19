@@ -1,0 +1,5 @@
+xcassets:
+  inputs: UI/Assets.xcassets
+  outputs:
+    templateName: swift4
+    output: UI/Assets.swift
