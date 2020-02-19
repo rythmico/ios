@@ -24,19 +24,19 @@ private extension Font.TextStyle {
     var fontSize: CGFloat {
         switch self {
         case .largeTitle:
-            return 33
+            return 30
         case .title:
             return 24
         case .headline:
             return 18
         case .subheadline:
-            return 16
+            return 17
         case .body:
             return 15
         case .callout:
-            return 15
-        case .footnote:
             return 12
+        case .footnote:
+            return 11
         case .caption:
             return 10
         @unknown default:
@@ -47,13 +47,17 @@ private extension Font.TextStyle {
     func weight(for legibilityWeight: LegibilityWeight?) -> Font.Weight {
         switch self {
         case .largeTitle:
-            return legibilityWeight == .bold ? .black : .semibold
+            return legibilityWeight == .bold ? .black : .bold
         case .headline:
+            return legibilityWeight == .bold ? .heavy : .bold
+        case .subheadline:
             return legibilityWeight == .bold ? .heavy : .semibold
         case .body:
             return legibilityWeight == .bold ? .semibold : .regular
+        case .callout:
+            return .medium
         case .footnote:
-            return .semibold
+            return legibilityWeight == .bold ? .black : .bold
         case .caption:
             return legibilityWeight == .bold ? .black : .bold
         default:

@@ -2,11 +2,36 @@ import SwiftUI
 
 extension Color {
     static var rythmicoRed: Color {
-        Color(base256Red: 193, green: 54, blue: 78)
+        Color(base256Red: 176, green: 0, blue: 32)
     }
 
     static var rythmicoPurple: Color {
-        Color(base256Red: 93, green: 97, blue: 241)
+        Color(
+            lightModeVariant: .init(base256Red: 93, green: 97, blue: 241),
+            darkModeVariant: .init(base256Red: 83, green: 87, blue: 216)
+        )
+    }
+
+    static var rythmicoGray90: Color {
+        Color(
+            lightModeVariant: .init(base256Red: 75, green: 93, blue: 107),
+            darkModeVariant: .init(base256Red: 165, green: 174, blue: 181)
+        )
+    }
+
+    static var rythmicoGray10: Color {
+        Color(
+            lightModeVariant: rythmicoGray10LightModeVariant,
+            darkModeVariant: .init(base256Red: 48, green: 48, blue: 49)
+        )
+    }
+
+    static var rythmicoWhite: Color {
+        Color(lightModeVariant: .white, darkModeVariant: rythmicoGray10LightModeVariant)
+    }
+
+    private static var rythmicoGray10LightModeVariant: UIColor {
+        UIColor(base256Red: 240, green: 244, blue: 247)
     }
 
     static var rythmicoForeground: Color {

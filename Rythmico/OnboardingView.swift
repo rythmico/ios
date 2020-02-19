@@ -1,5 +1,6 @@
 import SwiftUI
 import Sugar
+import ViewModel
 
 struct OnboardingViewData {
     struct ErrorAlertViewData: Identifiable {
@@ -29,7 +30,7 @@ struct OnboardingView: View, ViewModelable {
                         .rythmicoFont(.largeTitle)
                         .foregroundColor(.white)
                     Text("Turning kids into the festival headliners of tomorrow")
-                        .rythmicoFont(.headline)
+                        .rythmicoFont(.subheadline)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.white)
                 }
@@ -76,8 +77,7 @@ struct OnboardingView_Preview: PreviewProvider {
         OnboardingViewModel(
             appleAuthorizationService: authorizationService,
             authenticationService: authenticationService,
-            keychain: keychain,
-            dispatchQueue: nil
+            keychain: keychain
         )
     }
 
