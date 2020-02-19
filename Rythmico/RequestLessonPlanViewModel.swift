@@ -1,5 +1,5 @@
 import Foundation
-@testable import ViewModel
+import ViewModel
 
 final class RequestLessonPlanViewModel: ViewModelObject<RequestLessonPlanViewData> {
     init(instrumentProvider: InstrumentProviderProtocol) {

@@ -1,5 +1,5 @@
 import Foundation
-@testable import ViewModel
+import ViewModel
 
 final class MainTabViewModel: ViewModelObject<MainTabViewData> {
     private let accessTokenProvider: AuthenticationAccessTokenProvider

@@ -13,7 +13,7 @@ open class ViewModelObject<ViewData>: ViewModel {
     public let objectWillChange = ObservableObjectPublisher()
 
     // protected(set) is direly needed here *sigh*
-    public internal(set) var viewData: ViewData {
+    public var viewData: ViewData {
         willSet { DispatchQueue.main.async(execute: objectWillChange.send) }
     }
 
