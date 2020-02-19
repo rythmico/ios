@@ -29,10 +29,10 @@ struct InstrumentView: View {
 struct InstrumentView_Preview: PreviewProvider {
     static var previews: some View {
         VStack {
-            InstrumentView(viewData: .init(name: "Guitar", icon: Image(decorative: "instrument-icon-guitar")))
-            InstrumentView(viewData: .init(name: "Drums", icon: Image(decorative: "instrument-icon-drums")))
-            InstrumentView(viewData: .init(name: "Piano", icon: Image(decorative: "instrument-icon-piano")))
-            InstrumentView(viewData: .init(name: "Singing", icon: Image(decorative: "instrument-icon-singing")))
+            InstrumentView(viewData: .init(name: "Guitar", icon: Image(decorative: Asset.instrumentIconGuitar.name)))
+            InstrumentView(viewData: .init(name: "Drums", icon: Image(decorative: Asset.instrumentIconDrums.name)))
+            InstrumentView(viewData: .init(name: "Piano", icon: Image(decorative: Asset.instrumentIconPiano.name)))
+            InstrumentView(viewData: .init(name: "Singing", icon: Image(decorative: Asset.instrumentIconSinging.name)))
         }.padding(.horizontal, 20)
     }
 }
