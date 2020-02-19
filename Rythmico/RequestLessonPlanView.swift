@@ -1,21 +1,6 @@
 import SwiftUI
 import ViewModel
 
-typealias StudentDetailsView = AnyView
-typealias AddressDetailsView = AnyView
-typealias SchedulingView = AnyView
-typealias PrivateNoteView = AnyView
-typealias ReviewProposalView = AnyView
-
-struct RequestLessonPlanViewData {
-    var instrumentSelectionView: InstrumentSelectionView?
-    var studentDetailsView: StudentDetailsView?
-    var addressDetailsView: AddressDetailsView?
-    var schedulingView: SchedulingView?
-    var privateNoteView: PrivateNoteView?
-    var reviewProposalView: ReviewProposalView?
-}
-
 struct RequestLessonPlanView: View, Identifiable, ViewModelable {
     private enum Const {
         static let closeButtonImageVerticalPadding: CGFloat = 12
@@ -59,12 +44,12 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
             .padding(.horizontal, Const.horizontalPadding)
 
             ZStack {
-                viewData.instrumentSelectionView
-                viewData.studentDetailsView
-                viewData.addressDetailsView
-                viewData.schedulingView
-                viewData.privateNoteView
-                viewData.reviewProposalView
+                viewData.currentStep.instrumentSelectionView?.tag(0)
+                viewData.currentStep.studentDetailsView?.tag(1)
+                viewData.currentStep.addressDetailsView?.tag(2)
+                viewData.currentStep.schedulingView?.tag(3)
+                viewData.currentStep.privateNoteView?.tag(4)
+                viewData.currentStep.reviewProposalView?.tag(5)
             }
         }
     }
