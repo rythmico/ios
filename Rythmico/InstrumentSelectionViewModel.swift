@@ -1,5 +1,5 @@
 import Foundation
-@testable import ViewModel
+import ViewModel
 
 final class InstrumentSelectionViewModel: ViewModelObject<InstrumentSelectionViewData> {
     private let instrumentProvider: InstrumentProviderProtocol
