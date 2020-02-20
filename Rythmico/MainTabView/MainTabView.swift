@@ -60,9 +60,7 @@ struct MainTabView: View, ViewModelable {
             }
         }
         .accentColor(.rythmicoPurple)
-        .betterSheet(item: Binding(get: { self.viewData.lessonRequestView }, set: { _ in self.viewModel.dismissRequestLessonFlow() })) {
-            $0.betterSheetIsModalInPresentation(true)
-        }
+        .betterSheet(item: Binding(get: { self.viewData.lessonRequestView }, set: { _ in self.viewModel.dismissRequestLessonFlow() })) { $0 }
     }
 }
 
