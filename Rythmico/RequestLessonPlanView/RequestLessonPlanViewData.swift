@@ -1,6 +1,5 @@
 import SwiftUI
 
-typealias StudentDetailsView = AnyView
 typealias AddressDetailsView = AnyView
 typealias SchedulingView = AnyView
 typealias PrivateNoteView = AnyView

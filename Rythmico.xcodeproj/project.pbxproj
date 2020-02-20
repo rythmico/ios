@@ -22,6 +22,8 @@
 		D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */; };
 		D509898D23BA787500C19300 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509898C23BA787500C19300 /* OnboardingViewModel.swift */; };
 		D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */; };
+		D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */; };
+		D5200E3B23FDCF35007168E0 /* StudentDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3A23FDCF35007168E0 /* StudentDetailsViewModel.swift */; };
 		D5200E4023FDE460007168E0 /* MultiWeightText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3F23FDE460007168E0 /* MultiWeightText.swift */; };
 		D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */; };
 		D52BFAE423ECB651009F4498 /* ViewModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D52BFADB23ECB651009F4498 /* ViewModel.framework */; };
@@ -203,6 +205,8 @@
 		D50E4BBF23C689BA00B6FCB1 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		D50E4BC123C69D0400B6FCB1 /* AppleAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationService.swift; sourceTree = "<group>"; };
 		D50E4BC423C7AAA900B6FCB1 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailsView.swift; sourceTree = "<group>"; };
+		D5200E3A23FDCF35007168E0 /* StudentDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailsViewModel.swift; sourceTree = "<group>"; };
 		D5200E3F23FDE460007168E0 /* MultiWeightText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiWeightText.swift; sourceTree = "<group>"; };
 		D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleView.swift; sourceTree = "<group>"; };
 		D52BFADB23ECB651009F4498 /* ViewModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ViewModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -381,6 +385,8 @@
 				D54317ED23FDB00700CB1493 /* RequestLessonPlanView */,
 				D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */,
 				D54317EE23FDB01700CB1493 /* InstrumentSelectionView */,
+				D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */,
+				D5200E3A23FDCF35007168E0 /* StudentDetailsViewModel.swift */,
 				D5AAF7DC23FB431E00E410F2 /* InstrumentView.swift */,
 				D54317EF23FDB02600CB1493 /* InstrumentProvider */,
 				D5AAF7D623F9E20C00E410F2 /* Instrument.swift */,
@@ -845,6 +851,7 @@
 			files = (
 				03341B3F23ABB1E7009AE8A8 /* AppDelegate.swift in Sources */,
 				D53555C023E53699005A20EB /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */,
+				D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */,
 				D5AAF7D323F9E0AD00E410F2 /* InstrumentSelectionViewModel.swift in Sources */,
 				D5AAF7C823ECC87000E410F2 /* RequestLessonPlanView.swift in Sources */,
 				D5BA171223D7AB3B00954D50 /* MainTabView.swift in Sources */,
@@ -880,6 +887,7 @@
 				D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */,
 				D5AAF7D923F9EB1200E410F2 /* InstrumentProviderDoubles.swift in Sources */,
 				03341B4323ABB1E7009AE8A8 /* MainTabViewModel.swift in Sources */,
+				D5200E3B23FDCF35007168E0 /* StudentDetailsViewModel.swift in Sources */,
 				D50811E823FD73F0008103D8 /* Assets.swift in Sources */,
 				D53555C423E536AE005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
 				D53555CD23E536AE005A20EB /* AppleAuthorizationController.swift in Sources */,
