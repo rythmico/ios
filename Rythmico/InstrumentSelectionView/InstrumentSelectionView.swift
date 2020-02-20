@@ -7,13 +7,14 @@ struct InstrumentSelectionViewData {
 
 struct InstrumentSelectionView: View, ViewModelable {
     private enum Const {
-        static let horizontalPadding: CGFloat = 22
+        static let horizontalPadding: CGFloat = 20
     }
 
     @ObservedObject var viewModel: InstrumentSelectionViewModel
 
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
+            TitleSubtitleView(title: "Choose Instrument", subtitle: "Select one instrument")
             CollectionView(viewData.instruments, id: \.name) {
                 InstrumentView(viewData: $0).padding(.horizontal, Const.horizontalPadding)
             }
