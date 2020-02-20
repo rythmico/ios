@@ -23,6 +23,7 @@
 		D509898D23BA787500C19300 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509898C23BA787500C19300 /* OnboardingViewModel.swift */; };
 		D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */; };
 		D5200E4023FDE460007168E0 /* MultiWeightText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3F23FDE460007168E0 /* MultiWeightText.swift */; };
+		D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */; };
 		D52BFAE423ECB651009F4498 /* ViewModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D52BFADB23ECB651009F4498 /* ViewModel.framework */; };
 		D52BFAED23ECB651009F4498 /* ViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D52BFADD23ECB651009F4498 /* ViewModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D52BFAF023ECB651009F4498 /* ViewModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D52BFADB23ECB651009F4498 /* ViewModel.framework */; };
@@ -202,6 +203,7 @@
 		D50E4BC123C69D0400B6FCB1 /* AppleAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationService.swift; sourceTree = "<group>"; };
 		D50E4BC423C7AAA900B6FCB1 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		D5200E3F23FDE460007168E0 /* MultiWeightText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiWeightText.swift; sourceTree = "<group>"; };
+		D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleView.swift; sourceTree = "<group>"; };
 		D52BFADB23ECB651009F4498 /* ViewModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ViewModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D52BFADD23ECB651009F4498 /* ViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewModel.h; sourceTree = "<group>"; };
 		D52BFADE23ECB651009F4498 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 				D5E04B1823BED80700A161BB /* Fonts.swift */,
 				D535554623E20076005A20EB /* Colors.swift */,
 				D5200E3F23FDE460007168E0 /* MultiWeightText.swift */,
+				D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */,
 				D5EF88B523FB706C0072BD03 /* ProgressBar.swift */,
 				D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */,
 				D50811E323FB72A3008103D8 /* StepBar.swift */,
@@ -862,6 +865,7 @@
 				D50811E423FB72A3008103D8 /* StepBar.swift in Sources */,
 				D5AAF7D523F9E1F900E410F2 /* InstrumentProvider.swift in Sources */,
 				D5BA171023D7A18900954D50 /* RootView.swift in Sources */,
+				D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */,
 				D509898D23BA787500C19300 /* OnboardingViewModel.swift in Sources */,
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
 				D53555CE23E536AE005A20EB /* AppleAuthorizationControllerDoubles.swift in Sources */,
