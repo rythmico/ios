@@ -62,13 +62,16 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
     }
 
     private var pageTransitionForCurrentContext: AnyTransition {
-        guard let direction = viewData.direction else {
-            return .move(edge: .leading)
+        let transition: AnyTransition
+        if let direction = viewData.direction {
+            transition = .asymmetric(
+                insertion: .move(edge: direction == .next ? .trailing : .leading),
+                removal: .move(edge: direction == .back ? .leading : .trailing)
+            )
+        } else {
+            transition = .move(edge: .leading)
         }
-        return .asymmetric(
-            insertion: .move(edge: direction == .next ? .trailing : .leading),
-            removal: .move(edge: direction == .back ? .leading : .trailing)
-        )
+        return transition.combined(with: .opacity)
     }
 }
 
