@@ -18,6 +18,7 @@ struct AuthorizationAppleIDButton: View {
                 Representable()
             }
         }
+        .frame(maxWidth: 350)
         .frame(height: Const.defaultHeight)
     }
 }
