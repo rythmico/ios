@@ -94,6 +94,7 @@
 		D53555E423E53704005A20EB /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896723B963B700C19300 /* GTMSessionFetcher.framework */; };
 		D53555E523E53704005A20EB /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509897123B963B700C19300 /* nanopb.framework */; };
 		D53555E623E5383C005A20EB /* AppleAuthorizationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560E23CD384300BC8485 /* AppleAuthorizationServiceTests.swift */; };
+		D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */; };
 		D54A561723CD577800BC8485 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561623CD577800BC8485 /* main.swift */; };
 		D5AAF7C823ECC87000E410F2 /* RequestLessonPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */; };
 		D5AAF7CB23ED850E00E410F2 /* BetterSheet in Frameworks */ = {isa = PBXBuildFile; productRef = D5AAF7CA23ED850E00E410F2 /* BetterSheet */; };
@@ -241,6 +242,7 @@
 		D535556323E4F8BF005A20EB /* PromisesObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromisesObjC.framework; path = Carthage/Build/iOS/PromisesObjC.framework; sourceTree = "<group>"; };
 		D535556423E4F8BF005A20EB /* FirebaseCrashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCrashlytics.framework; path = Carthage/Build/iOS/FirebaseCrashlytics.framework; sourceTree = "<group>"; };
 		D535556523E4F8BF005A20EB /* FirebasePerformance.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebasePerformance.framework; path = Carthage/Build/iOS/FirebasePerformance.framework; sourceTree = "<group>"; };
+		D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanContext.swift; sourceTree = "<group>"; };
 		D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationServiceDoubles.swift; sourceTree = "<group>"; };
 		D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HashFunction+Helpers.swift"; sourceTree = "<group>"; };
 		D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationController.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				D54317F123FDB03F00CB1493 /* OnboardingView */,
 				D54317F023FDB03300CB1493 /* MainTabView */,
 				D54317ED23FDB00700CB1493 /* RequestLessonPlanView */,
+				D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */,
 				D54317EE23FDB01700CB1493 /* InstrumentSelectionView */,
 				D5AAF7DC23FB431E00E410F2 /* InstrumentView.swift */,
 				D54317EF23FDB02600CB1493 /* InstrumentProvider */,
@@ -891,6 +894,7 @@
 				D54A561723CD577800BC8485 /* main.swift in Sources */,
 				D53555CC23E536AE005A20EB /* AppleAuthorizationServiceDoubles.swift in Sources */,
 				D5AAF7DB23FB347C00E410F2 /* CollectionView.swift in Sources */,
+				D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */,
 				D5E04B1B23BEE01B00A161BB /* RootViewModel.swift in Sources */,
 				D535547923DF3A7C005A20EB /* Keychain.swift in Sources */,
 				D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */,
