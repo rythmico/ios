@@ -1,5 +1,5 @@
 import SwiftUI
-import FirebaseAuth
+import class FirebaseAuth.Auth
 import SFSafeSymbols
 import ViewModel
 
