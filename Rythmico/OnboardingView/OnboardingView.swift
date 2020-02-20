@@ -37,7 +37,7 @@ struct OnboardingView: View, ViewModelable {
                 .accessibilityElement(children: .combine)
                 Spacer()
                 if viewData.isLoading {
-                    ActivityIndicator(style: .medium)
+                    ActivityIndicator(style: .medium, color: .lightGray)
                         .frame(width: 44, height: 44)
                 } else {
                     AuthorizationAppleIDButton()
