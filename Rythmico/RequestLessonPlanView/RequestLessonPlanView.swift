@@ -70,6 +70,7 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
                 }
                 .onEnded { _ in self.didRecognizeBackGesture = false }
         )
+        .betterSheetIsModalInPresentation(viewData.shouldShowBackButton)
     }
 
     private var pageTransitionForCurrentContext: AnyTransition {
