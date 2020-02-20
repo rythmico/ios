@@ -15,6 +15,7 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
     let id = UUID()
 
     @Environment(\.betterSheetPresentationMode) private var presentationMode
+    @State private var didRecognizeBackGesture: Bool = false
 
     @ObservedObject var viewModel: RequestLessonPlanViewModel
 
@@ -59,6 +60,16 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
             }
             .animation(.easeInOut(duration: 0.3), value: viewData.currentStepNumber)
         }
+        .gesture(
+            DragGesture()
+                .onChanged { value in
+                    if !self.didRecognizeBackGesture, value.startLocation.x <= 40, value.translation.width > 20 {
+                        self.didRecognizeBackGesture = true
+                        self.viewModel.back()
+                    }
+                }
+                .onEnded { _ in self.didRecognizeBackGesture = false }
+        )
     }
 
     private var pageTransitionForCurrentContext: AnyTransition {
