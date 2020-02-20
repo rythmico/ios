@@ -1,8 +1,10 @@
 import SwiftUI
+import Sugar
 
 struct InstrumentViewData {
     var name: String
     var icon: Image
+    var action: Action
 }
 
 struct InstrumentView: View {
@@ -13,14 +15,16 @@ struct InstrumentView: View {
     }
 
     var body: some View {
-        HStack {
-            Text(viewData.name)
-                .rythmicoFont(.headline)
-                .foregroundColor(.black)
-                .padding(.leading, 22)
-                .padding(.vertical, 22)
-            Spacer()
-            viewData.icon.padding(.trailing, 20)
+        Button(action: viewData.action) {
+            HStack {
+                Text(viewData.name)
+                    .rythmicoFont(.headline)
+                    .foregroundColor(.black)
+                    .padding(.leading, 22)
+                    .padding(.vertical, 22)
+                Spacer()
+                viewData.icon.renderingMode(.original).padding(.trailing, 20)
+            }
         }
         .modifier(RoundedShadowContainer())
     }
@@ -29,10 +33,10 @@ struct InstrumentView: View {
 struct InstrumentView_Preview: PreviewProvider {
     static var previews: some View {
         VStack {
-            InstrumentView(viewData: .init(name: "Guitar", icon: Image(decorative: Asset.instrumentIconGuitar.name)))
-            InstrumentView(viewData: .init(name: "Drums", icon: Image(decorative: Asset.instrumentIconDrums.name)))
-            InstrumentView(viewData: .init(name: "Piano", icon: Image(decorative: Asset.instrumentIconPiano.name)))
-            InstrumentView(viewData: .init(name: "Singing", icon: Image(decorative: Asset.instrumentIconSinging.name)))
+            InstrumentView(viewData: .init(name: "Guitar", icon: Image(decorative: Asset.instrumentIconGuitar.name), action: {}))
+            InstrumentView(viewData: .init(name: "Drums", icon: Image(decorative: Asset.instrumentIconDrums.name), action: {}))
+            InstrumentView(viewData: .init(name: "Piano", icon: Image(decorative: Asset.instrumentIconPiano.name), action: {}))
+            InstrumentView(viewData: .init(name: "Singing", icon: Image(decorative: Asset.instrumentIconSinging.name), action: {}))
         }.padding(.horizontal, 20)
     }
 }
