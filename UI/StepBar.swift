@@ -12,7 +12,10 @@ struct StepBar: View {
     var body: some View {
         HStack(spacing: 10) {
             ProgressBar(progress: Double(currentStep) / Double(totalSteps))
-            Text("\(currentStep) / \(totalSteps)").rythmicoFont(.footnote).foregroundColor(.rythmicoGray90)
+                .animation(.easeInOut(duration: 0.3))
+            Text("\(currentStep) / \(totalSteps)")
+                .rythmicoFont(.footnote)
+                .foregroundColor(.rythmicoGray90)
         }
     }
 }
