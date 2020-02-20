@@ -6,8 +6,8 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
         static let closeButtonImageVerticalPadding: CGFloat = 12
         static let closeButtonImageHorizontalPadding: CGFloat = 28
 
-        static let closeButtonTopPadding: CGFloat = 10
-        static let closeButtonTrailingPadding: CGFloat = 16
+        static let navigationButtonsTopPadding: CGFloat = 10
+        static let navigationButtonsHorizontalPadding: CGFloat = 16
 
         static let horizontalPadding: CGFloat = 20
     }
@@ -21,6 +21,16 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack {
+                if viewData.shouldShowBackButton {
+                    Button(action: viewModel.back) {
+                        HStack {
+                            Image(systemSymbol: .chevronLeft).font(.system(size: 21, weight: .semibold))
+                            Text("Back").rythmicoFont(.callout)
+                        }
+                    }
+                    .foregroundColor(.rythmicoGray90)
+                    .transition(.opacity)
+                }
                 Spacer()
                 Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
                     Image(systemSymbol: .xmark).font(.system(size: 21, weight: .semibold))
@@ -32,31 +42,42 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
                 .accessibility(label: Text("Close lesson request screen"))
                 .accessibility(hint: Text("Double tap to return to main screen"))
             }
-            .padding(.top, Const.closeButtonTopPadding)
-            .padding(.trailing, Const.closeButtonTrailingPadding)
+            .padding(.top, Const.navigationButtonsTopPadding)
+            .padding(.horizontal, Const.navigationButtonsHorizontalPadding)
+            .animation(.easeInOut(duration: 0.15), value: viewData.shouldShowBackButton)
 
-            StepBar(1, of: 6).padding(.horizontal, Const.horizontalPadding)
-
-            VStack(alignment: .leading, spacing: 16) {
-                Text("Choose Instrument").rythmicoFont(.largeTitle)
-                Text("Select one instrument").rythmicoFont(.body).foregroundColor(.rythmicoGray90)
-            }
-            .padding(.horizontal, Const.horizontalPadding)
+            StepBar(viewData.currentStepNumber, of: viewData.stepCount)
+                .padding(.horizontal, Const.horizontalPadding)
 
             ZStack {
-                viewData.currentStep.instrumentSelectionView?.tag(0)
-                viewData.currentStep.studentDetailsView?.tag(1)
-                viewData.currentStep.addressDetailsView?.tag(2)
-                viewData.currentStep.schedulingView?.tag(3)
-                viewData.currentStep.privateNoteView?.tag(4)
-                viewData.currentStep.reviewProposalView?.tag(5)
+                viewData.currentStep.instrumentSelectionView?.tag(0).transition(pageTransitionForCurrentContext)
+                viewData.currentStep.studentDetailsView?.tag(1).transition(pageTransitionForCurrentContext)
+                viewData.currentStep.addressDetailsView?.tag(2).transition(pageTransitionForCurrentContext)
+                viewData.currentStep.schedulingView?.tag(3).transition(pageTransitionForCurrentContext)
+                viewData.currentStep.privateNoteView?.tag(4).transition(pageTransitionForCurrentContext)
+                viewData.currentStep.reviewProposalView?.tag(5).transition(pageTransitionForCurrentContext)
             }
+            .animation(.easeInOut(duration: 0.3), value: viewData.currentStepNumber)
         }
+    }
+
+    private var pageTransitionForCurrentContext: AnyTransition {
+        guard let direction = viewData.direction else {
+            return .move(edge: .leading)
+        }
+        return .asymmetric(
+            insertion: .move(edge: direction == .next ? .trailing : .leading),
+            removal: .move(edge: direction == .back ? .leading : .trailing)
+        )
     }
 }
 
 struct RequestLessonPlanView_Preview: PreviewProvider {
     static var previews: some View {
-        RequestLessonPlanView(viewModel: RequestLessonPlanViewModel(instrumentProvider: InstrumentProviderFake()))
+        RequestLessonPlanView(
+            viewModel: RequestLessonPlanViewModel(
+                instrumentProvider: InstrumentProviderFake()
+            )
+        )
     }
 }
