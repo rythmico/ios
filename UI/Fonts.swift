@@ -59,7 +59,7 @@ extension Font.TextStyle {
         case .body:
             return legibilityWeight == .bold ? .bold : .regular
         case .callout:
-            return legibilityWeight == .bold ? .bold : .medium
+            return legibilityWeight == .bold ? .heavy : .bold
         case .footnote:
             return legibilityWeight == .bold ? .black : .bold
         case .caption:
