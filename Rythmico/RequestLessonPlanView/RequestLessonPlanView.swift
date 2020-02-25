@@ -23,7 +23,7 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
                         .offset(x: .spacingExtraLarge)
                 }
                 .accentColor(.rythmicoGray90)
-                .accessibility(label: Text("Close lesson request screen"))
+                .accessibility(label: Text("Close"))
                 .accessibility(hint: Text("Double tap to return to main screen"))
             }
             .padding(.top, .spacingExtraSmall)
