@@ -13,14 +13,7 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
         VStack(alignment: .leading, spacing: .spacingSmall) {
             HStack {
                 if viewData.shouldShowBackButton {
-                    Button(action: viewModel.back) {
-                        HStack {
-                            Image(systemSymbol: .chevronLeft).font(.system(size: 21, weight: .semibold))
-                            Text("Back").rythmicoFont(.callout)
-                        }
-                    }
-                    .foregroundColor(.rythmicoGray90)
-                    .transition(.opacity)
+                    BackButton(action: viewModel.back).transition(.opacity)
                 }
                 Spacer()
                 Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
