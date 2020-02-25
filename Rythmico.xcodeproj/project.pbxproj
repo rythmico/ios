@@ -118,6 +118,8 @@
 		D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5065C23FF16AA00CA4094 /* BackButton.swift */; };
 		D5F506652400619600CA4094 /* UIApplication+EndEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506642400619600CA4094 /* UIApplication+EndEditing.swift */; };
 		D5F5066E24006CDD00CA4094 /* KeyboardObserver in Frameworks */ = {isa = PBXBuildFile; productRef = D5F5066D24006CDD00CA4094 /* KeyboardObserver */; };
+		D5F50683240452BC00CA4094 /* TextField+ViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F50682240452BC00CA4094 /* TextField+ViewData.swift */; };
+		D5F50685240452D800CA4094 /* DatePicker+ViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F50684240452D700CA4094 /* DatePicker+ViewData.swift */; };
 		D5F5068C24046B1400CA4094 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5068B24046B1400CA4094 /* Spacing.swift */; };
 		D5F506B02405A6A900CA4094 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506AF2405A6A900CA4094 /* Duration.swift */; };
 /* End PBXBuildFile section */
@@ -286,6 +288,8 @@
 		D5EF88B523FB706C0072BD03 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D5F5065C23FF16AA00CA4094 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		D5F506642400619600CA4094 /* UIApplication+EndEditing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+EndEditing.swift"; sourceTree = "<group>"; };
+		D5F50682240452BC00CA4094 /* TextField+ViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+ViewData.swift"; sourceTree = "<group>"; };
+		D5F50684240452D700CA4094 /* DatePicker+ViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePicker+ViewData.swift"; sourceTree = "<group>"; };
 		D5F5068B24046B1400CA4094 /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 		D5F506AF2405A6A900CA4094 /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -455,11 +459,13 @@
 				D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */,
 				D5F5065C23FF16AA00CA4094 /* BackButton.swift */,
 				D5AAF7DA23FB347C00E410F2 /* CollectionView.swift */,
+				D5F50684240452D700CA4094 /* DatePicker+ViewData.swift */,
 				D5E04B1823BED80700A161BB /* Fonts.swift */,
 				D535554623E20076005A20EB /* Colors.swift */,
 				D5200E3F23FDE460007168E0 /* MultiWeightText.swift */,
 				D5F5068B24046B1400CA4094 /* Spacing.swift */,
 				D5F506AF2405A6A900CA4094 /* Duration.swift */,
+				D5F50682240452BC00CA4094 /* TextField+ViewData.swift */,
 				D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */,
 				D5EF88B523FB706C0072BD03 /* ProgressBar.swift */,
 				D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */,
@@ -875,6 +881,7 @@
 				D50811EC23FDA883008103D8 /* RequestLessonPlanViewData.swift in Sources */,
 				D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */,
 				D53555C623E536AE005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,
+				D5F50685240452D800CA4094 /* DatePicker+ViewData.swift in Sources */,
 				D53555BD23E53699005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */,
 				D5AAF7CF23F08FB200E410F2 /* RequestLessonPlanViewModel.swift in Sources */,
 				D53555C323E536AE005A20EB /* AppleAuthorizationCredentialStateProvider.swift in Sources */,
