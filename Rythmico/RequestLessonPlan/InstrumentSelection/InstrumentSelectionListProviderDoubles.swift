@@ -2,7 +2,7 @@ import Foundation
 import Sugar
 import struct SwiftUI.Image
 
-final class InstrumentProviderFake: InstrumentProviderProtocol {
+final class InstrumentSelectionListProviderFake: InstrumentSelectionListProviderProtocol {
     func instruments(completion: Handler<[Instrument]>) {
         let instruments = [
             Instrument(id: "GUITAR", name: "Guitar", icon: Image(decorative: Asset.instrumentIconGuitar.name)),
@@ -14,7 +14,7 @@ final class InstrumentProviderFake: InstrumentProviderProtocol {
     }
 }
 
-final class InstrumentProviderStub: InstrumentProviderProtocol {
+final class InstrumentSelectionListProviderStub: InstrumentSelectionListProviderProtocol {
     var instruments: [Instrument]
 
     init(instruments: [Instrument]) {

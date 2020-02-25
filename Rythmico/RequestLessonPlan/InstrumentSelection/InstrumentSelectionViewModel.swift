@@ -3,11 +3,11 @@ import ViewModel
 
 final class InstrumentSelectionViewModel: ViewModelObject<InstrumentSelectionViewData> {
     private let context: RequestLessonPlanContextProtocol
-    private let instrumentProvider: InstrumentProviderProtocol
+    private let instrumentProvider: InstrumentSelectionListProviderProtocol
 
     init(
         context: RequestLessonPlanContextProtocol,
-        instrumentProvider: InstrumentProviderProtocol
+        instrumentProvider: InstrumentSelectionListProviderProtocol
     ) {
         self.context = context
         self.instrumentProvider = instrumentProvider

@@ -4,9 +4,9 @@ import ViewModel
 
 final class RequestLessonPlanViewModel: ViewModelObject<RequestLessonPlanViewData> {
     private let context: RequestLessonPlanContextProtocol
-    private let instrumentProvider: InstrumentProviderProtocol
+    private let instrumentProvider: InstrumentSelectionListProviderProtocol
 
-    init(instrumentProvider: InstrumentProviderProtocol) {
+    init(instrumentProvider: InstrumentSelectionListProviderProtocol) {
         self.instrumentProvider = instrumentProvider
         let context = RequestLessonPlanContext()
         self.context = context
@@ -42,7 +42,7 @@ final class RequestLessonPlanViewModel: ViewModelObject<RequestLessonPlanViewDat
     }
 }
 
-private func instrumentSelectionStep(context: RequestLessonPlanContextProtocol, instrumentProvider: InstrumentProviderProtocol) -> RequestLessonPlanViewData.Step {
+private func instrumentSelectionStep(context: RequestLessonPlanContextProtocol, instrumentProvider: InstrumentSelectionListProviderProtocol) -> RequestLessonPlanViewData.Step {
     .instrumentSelection(
         InstrumentSelectionView(
             viewModel: InstrumentSelectionViewModel(
