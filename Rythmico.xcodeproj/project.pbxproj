@@ -24,7 +24,7 @@
 		D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */; };
 		D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */; };
 		D5200E3B23FDCF35007168E0 /* StudentDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3A23FDCF35007168E0 /* StudentDetailsViewModel.swift */; };
-		D5200E4023FDE460007168E0 /* MultiWeightText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3F23FDE460007168E0 /* MultiWeightText.swift */; };
+		D5200E4023FDE460007168E0 /* MultiStyleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3F23FDE460007168E0 /* MultiStyleText.swift */; };
 		D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */; };
 		D52BFAE423ECB651009F4498 /* ViewModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D52BFADB23ECB651009F4498 /* ViewModel.framework */; };
 		D52BFAED23ECB651009F4498 /* ViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D52BFADD23ECB651009F4498 /* ViewModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -116,6 +116,7 @@
 		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
 		D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF88B523FB706C0072BD03 /* ProgressBar.swift */; };
 		D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5065C23FF16AA00CA4094 /* BackButton.swift */; };
+		D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */; };
 		D5F506652400619600CA4094 /* UIApplication+EndEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506642400619600CA4094 /* UIApplication+EndEditing.swift */; };
 		D5F5066E24006CDD00CA4094 /* KeyboardObserver in Frameworks */ = {isa = PBXBuildFile; productRef = D5F5066D24006CDD00CA4094 /* KeyboardObserver */; };
 		D5F50683240452BC00CA4094 /* TextField+ViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F50682240452BC00CA4094 /* TextField+ViewData.swift */; };
@@ -214,7 +215,7 @@
 		D50E4BC423C7AAA900B6FCB1 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailsView.swift; sourceTree = "<group>"; };
 		D5200E3A23FDCF35007168E0 /* StudentDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailsViewModel.swift; sourceTree = "<group>"; };
-		D5200E3F23FDE460007168E0 /* MultiWeightText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiWeightText.swift; sourceTree = "<group>"; };
+		D5200E3F23FDE460007168E0 /* MultiStyleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStyleText.swift; sourceTree = "<group>"; };
 		D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleView.swift; sourceTree = "<group>"; };
 		D52BFADB23ECB651009F4498 /* ViewModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ViewModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D52BFADD23ECB651009F4498 /* ViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewModel.h; sourceTree = "<group>"; };
@@ -287,6 +288,7 @@
 		D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D5EF88B523FB706C0072BD03 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D5F5065C23FF16AA00CA4094 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleContentView.swift; sourceTree = "<group>"; };
 		D5F506642400619600CA4094 /* UIApplication+EndEditing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+EndEditing.swift"; sourceTree = "<group>"; };
 		D5F50682240452BC00CA4094 /* TextField+ViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+ViewData.swift"; sourceTree = "<group>"; };
 		D5F50684240452D700CA4094 /* DatePicker+ViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePicker+ViewData.swift"; sourceTree = "<group>"; };
@@ -462,11 +464,12 @@
 				D5F50684240452D700CA4094 /* DatePicker+ViewData.swift */,
 				D5E04B1823BED80700A161BB /* Fonts.swift */,
 				D535554623E20076005A20EB /* Colors.swift */,
-				D5200E3F23FDE460007168E0 /* MultiWeightText.swift */,
 				D5F5068B24046B1400CA4094 /* Spacing.swift */,
 				D5F506AF2405A6A900CA4094 /* Duration.swift */,
+				D5200E3F23FDE460007168E0 /* MultiStyleText.swift */,
 				D5F50682240452BC00CA4094 /* TextField+ViewData.swift */,
 				D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */,
+				D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */,
 				D5EF88B523FB706C0072BD03 /* ProgressBar.swift */,
 				D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */,
 				D50811E323FB72A3008103D8 /* StepBar.swift */,
@@ -891,13 +894,15 @@
 				D53555C223E536AE005A20EB /* AppleAuthorizationCredential.swift in Sources */,
 				D53555C923E536AE005A20EB /* AppleAuthorizationResponseDoubles.swift in Sources */,
 				D53555B723E53699005A20EB /* DeauthenticationService.swift in Sources */,
-				D5200E4023FDE460007168E0 /* MultiWeightText.swift in Sources */,
+				D5200E4023FDE460007168E0 /* MultiStyleText.swift in Sources */,
 				D5AAF7DF23FB444500E410F2 /* RoundedShadowContainer.swift in Sources */,
 				D535554723E20076005A20EB /* Colors.swift in Sources */,
 				D53555B923E53699005A20EB /* AuthenticationServiceDoubles.swift in Sources */,
 				D50811E423FB72A3008103D8 /* StepBar.swift in Sources */,
+				D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */,
 				D5AAF7D523F9E1F900E410F2 /* InstrumentProvider.swift in Sources */,
 				D5BA171023D7A18900954D50 /* RootView.swift in Sources */,
+				D5F50683240452BC00CA4094 /* TextField+ViewData.swift in Sources */,
 				D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */,
 				D509898D23BA787500C19300 /* OnboardingViewModel.swift in Sources */,
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,

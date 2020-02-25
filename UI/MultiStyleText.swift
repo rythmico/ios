@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MultiWeightText: View {
+struct MultiStyleText: View {
     @Environment(\.sizeCategory) private var sizeCategory
     @Environment(\.legibilityWeight) private var legibilityWeight
 
@@ -15,7 +15,7 @@ struct MultiWeightText: View {
                     weight: weight(for: part, systemLegibilityWeight: legibilityWeight),
                     design: .rounded
                 )
-            )
+            ).foregroundColor(part.color)
         }
         .lineSpacing(6)
     }
@@ -28,25 +28,16 @@ struct MultiWeightText: View {
     }
 }
 
-extension MultiWeightText {
-    enum Part {
-        case regular(String)
-        case bold(String)
+extension MultiStyleText {
+    struct Part {
+        var string: String
+        var weight: LegibilityWeight
+        var color: Color?
 
-        fileprivate var weight: LegibilityWeight {
-            switch self {
-            case .regular:
-                return .regular
-            case .bold:
-                return .bold
-            }
-        }
-
-        fileprivate var string: String {
-            switch self {
-            case .regular(let string), .bold(let string):
-                return string
-            }
+        init(_ string: String, weight: LegibilityWeight = .regular, color: Color? = nil) {
+            self.string = string
+            self.weight = weight
+            self.color = color
         }
     }
 }
