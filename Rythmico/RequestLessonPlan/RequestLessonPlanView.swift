@@ -10,28 +10,29 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
     @ObservedObject var viewModel: RequestLessonPlanViewModel
 
     var body: some View {
-        VStack(alignment: .leading, spacing: .spacingSmall) {
-            HStack {
-                if viewData.shouldShowBackButton {
-                    BackButton(action: viewModel.back).transition(.opacity)
+        VStack(spacing: .spacingSmall) {
+            VStack(spacing: 0) {
+                HStack {
+                    if viewData.shouldShowBackButton {
+                        BackButton(action: viewModel.back).transition(.opacity)
+                    }
+                    Spacer()
+                    Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
+                        Image(systemSymbol: .xmark).font(.system(size: 21, weight: .semibold))
+                            .padding(.horizontal, .spacingExtraLarge)
+                            .offset(x: .spacingExtraLarge)
+                    }
+                    .accentColor(.rythmicoGray90)
+                    .accessibility(label: Text("Close"))
+                    .accessibility(hint: Text("Double tap to return to main screen"))
                 }
-                Spacer()
-                Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
-                    Image(systemSymbol: .xmark).font(.system(size: 21, weight: .semibold))
-                        .padding(.vertical, .spacingExtraSmall)
-                        .padding(.horizontal, .spacingExtraLarge)
-                        .offset(x: .spacingExtraLarge)
-                }
-                .accentColor(.rythmicoGray90)
-                .accessibility(label: Text("Close"))
-                .accessibility(hint: Text("Double tap to return to main screen"))
-            }
-            .padding(.top, .spacingExtraSmall)
-            .padding(.horizontal, .spacingSmall)
-            .animation(.easeInOut(duration: .durationShort), value: viewData.shouldShowBackButton)
+                .frame(minHeight: 64)
+                .padding(.horizontal, .spacingSmall)
+                .animation(.easeInOut(duration: .durationShort), value: viewData.shouldShowBackButton)
 
-            StepBar(viewData.currentStepNumber, of: viewData.stepCount)
-                .padding(.horizontal, .spacingMedium)
+                StepBar(viewData.currentStepNumber, of: viewData.stepCount)
+                    .padding(.horizontal, .spacingMedium)
+            }
 
             ZStack {
                 viewData.currentStep.instrumentSelectionView?.tag(0).transition(pageTransitionForCurrentContext)
