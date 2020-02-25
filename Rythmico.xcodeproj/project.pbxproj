@@ -116,6 +116,7 @@
 		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
 		D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF88B523FB706C0072BD03 /* ProgressBar.swift */; };
 		D5F506652400619600CA4094 /* UIApplication+EndEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506642400619600CA4094 /* UIApplication+EndEditing.swift */; };
+		D5F5066E24006CDD00CA4094 /* KeyboardObserver in Frameworks */ = {isa = PBXBuildFile; productRef = D5F5066D24006CDD00CA4094 /* KeyboardObserver */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -289,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D535554C23E23EA7005A20EB /* Then in Frameworks */,
+				D5F5066E24006CDD00CA4094 /* KeyboardObserver in Frameworks */,
 				D53554FC23E0FD77005A20EB /* Sugar.framework in Frameworks */,
 				D535548123E0E7C1005A20EB /* SFSafeSymbols in Frameworks */,
 				D535547723DF3A19005A20EB /* Valet in Frameworks */,
@@ -644,6 +646,7 @@
 				D535548023E0E7C1005A20EB /* SFSafeSymbols */,
 				D535554B23E23EA7005A20EB /* Then */,
 				D5AAF7CA23ED850E00E410F2 /* BetterSheet */,
+				D5F5066D24006CDD00CA4094 /* KeyboardObserver */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -768,6 +771,7 @@
 				D535547F23E0E7C1005A20EB /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				D535554A23E23EA7005A20EB /* XCRemoteSwiftPackageReference "Then" */,
 				D5AAF7C923ED850E00E410F2 /* XCRemoteSwiftPackageReference "BetterSheet" */,
+				D5F5066C24006CDD00CA4094 /* XCRemoteSwiftPackageReference "KeyboardObserver" */,
 			);
 			productRefGroup = 03341B3C23ABB1E7009AE8A8 /* Products */;
 			projectDirPath = "";
@@ -1469,6 +1473,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		D5F5066C24006CDD00CA4094 /* XCRemoteSwiftPackageReference "KeyboardObserver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/timdonnelly/KeyboardObserver";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1491,6 +1503,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5AAF7C923ED850E00E410F2 /* XCRemoteSwiftPackageReference "BetterSheet" */;
 			productName = BetterSheet;
+		};
+		D5F5066D24006CDD00CA4094 /* KeyboardObserver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5F5066C24006CDD00CA4094 /* XCRemoteSwiftPackageReference "KeyboardObserver" */;
+			productName = KeyboardObserver;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
