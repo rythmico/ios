@@ -74,7 +74,7 @@ struct RequestLessonPlanView_Preview: PreviewProvider {
     static var previews: some View {
         RequestLessonPlanView(
             viewModel: RequestLessonPlanViewModel(
-                instrumentProvider: InstrumentProviderFake()
+                instrumentProvider: InstrumentSelectionListProviderFake()
             )
         )
     }
