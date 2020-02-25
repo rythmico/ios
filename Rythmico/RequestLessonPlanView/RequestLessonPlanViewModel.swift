@@ -32,7 +32,13 @@ final class RequestLessonPlanViewModel: ViewModelObject<RequestLessonPlanViewDat
             return instrumentSelectionStep(context: context, instrumentProvider: instrumentProvider)
         }
 
-        return .studentDetails(StudentDetailsView(viewModel: StudentDetailsViewModel(context: context, instrument: instrument)))
+        return .studentDetails(
+            StudentDetailsView(viewModel: StudentDetailsViewModel(
+                context: context,
+                instrument: instrument,
+                editingCoordinator: UIApplication.shared
+            ))
+        )
     }
 }
 

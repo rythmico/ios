@@ -116,13 +116,16 @@
 		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
 		D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF88B523FB706C0072BD03 /* ProgressBar.swift */; };
 		D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5065C23FF16AA00CA4094 /* BackButton.swift */; };
+		D5F5065F240055E800CA4094 /* TitleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5065E240055E800CA4094 /* TitleContentView.swift */; };
 		D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */; };
+		D5F50663240056FA00CA4094 /* RoundedThinOutlineContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F50662240056FA00CA4094 /* RoundedThinOutlineContainer.swift */; };
 		D5F506652400619600CA4094 /* UIApplication+EndEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506642400619600CA4094 /* UIApplication+EndEditing.swift */; };
 		D5F5066E24006CDD00CA4094 /* KeyboardObserver in Frameworks */ = {isa = PBXBuildFile; productRef = D5F5066D24006CDD00CA4094 /* KeyboardObserver */; };
 		D5F5067B2400788400CA4094 /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5067A2400788400CA4094 /* MultilineTextField.swift */; };
 		D5F50683240452BC00CA4094 /* TextField+ViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F50682240452BC00CA4094 /* TextField+ViewData.swift */; };
 		D5F50685240452D800CA4094 /* DatePicker+ViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F50684240452D700CA4094 /* DatePicker+ViewData.swift */; };
 		D5F5068C24046B1400CA4094 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5068B24046B1400CA4094 /* Spacing.swift */; };
+		D5F5068E240473CB00CA4094 /* FloatingDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5068D240473CB00CA4094 /* FloatingDatePicker.swift */; };
 		D5F506B02405A6A900CA4094 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506AF2405A6A900CA4094 /* Duration.swift */; };
 /* End PBXBuildFile section */
 
@@ -289,12 +292,15 @@
 		D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D5EF88B523FB706C0072BD03 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D5F5065C23FF16AA00CA4094 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		D5F5065E240055E800CA4094 /* TitleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleContentView.swift; sourceTree = "<group>"; };
 		D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleContentView.swift; sourceTree = "<group>"; };
+		D5F50662240056FA00CA4094 /* RoundedThinOutlineContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedThinOutlineContainer.swift; sourceTree = "<group>"; };
 		D5F506642400619600CA4094 /* UIApplication+EndEditing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+EndEditing.swift"; sourceTree = "<group>"; };
 		D5F5067A2400788400CA4094 /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
 		D5F50682240452BC00CA4094 /* TextField+ViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+ViewData.swift"; sourceTree = "<group>"; };
 		D5F50684240452D700CA4094 /* DatePicker+ViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePicker+ViewData.swift"; sourceTree = "<group>"; };
 		D5F5068B24046B1400CA4094 /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
+		D5F5068D240473CB00CA4094 /* FloatingDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingDatePicker.swift; sourceTree = "<group>"; };
 		D5F506AF2405A6A900CA4094 /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -464,6 +470,7 @@
 				D5F5065C23FF16AA00CA4094 /* BackButton.swift */,
 				D5AAF7DA23FB347C00E410F2 /* CollectionView.swift */,
 				D5F50684240452D700CA4094 /* DatePicker+ViewData.swift */,
+				D5F5068D240473CB00CA4094 /* FloatingDatePicker.swift */,
 				D5E04B1823BED80700A161BB /* Fonts.swift */,
 				D535554623E20076005A20EB /* Colors.swift */,
 				D5F5068B24046B1400CA4094 /* Spacing.swift */,
@@ -473,8 +480,10 @@
 				D5F5067A2400788400CA4094 /* MultilineTextField.swift */,
 				D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */,
 				D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */,
+				D5F5065E240055E800CA4094 /* TitleContentView.swift */,
 				D5EF88B523FB706C0072BD03 /* ProgressBar.swift */,
 				D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */,
+				D5F50662240056FA00CA4094 /* RoundedThinOutlineContainer.swift */,
 				D50811E323FB72A3008103D8 /* StepBar.swift */,
 				D5F506642400619600CA4094 /* UIApplication+EndEditing.swift */,
 			);
@@ -880,6 +889,7 @@
 				03341B3F23ABB1E7009AE8A8 /* AppDelegate.swift in Sources */,
 				D53555C023E53699005A20EB /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */,
 				D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */,
+				D5F5068E240473CB00CA4094 /* FloatingDatePicker.swift in Sources */,
 				D5AAF7D323F9E0AD00E410F2 /* InstrumentSelectionViewModel.swift in Sources */,
 				D5AAF7C823ECC87000E410F2 /* RequestLessonPlanView.swift in Sources */,
 				D5BA171223D7AB3B00954D50 /* MainTabView.swift in Sources */,
@@ -924,6 +934,8 @@
 				D5F5067B2400788400CA4094 /* MultilineTextField.swift in Sources */,
 				D5200E3B23FDCF35007168E0 /* StudentDetailsViewModel.swift in Sources */,
 				D50811E823FD73F0008103D8 /* Assets.swift in Sources */,
+				D5F5065F240055E800CA4094 /* TitleContentView.swift in Sources */,
+				D5F50663240056FA00CA4094 /* RoundedThinOutlineContainer.swift in Sources */,
 				D53555C423E536AE005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
 				D53555CD23E536AE005A20EB /* AppleAuthorizationController.swift in Sources */,
 				D53555BA23E53699005A20EB /* AuthenticationAccessTokenProvider.swift in Sources */,
