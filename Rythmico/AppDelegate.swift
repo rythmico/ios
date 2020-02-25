@@ -5,10 +5,6 @@ import Then
 import BetterSheet
 
 final class AppDelegate: UIResponder, UIApplicationDelegate {
-    private enum Const {
-        static let defaultNavigationBarLargeTitleLeadingInset: CGFloat = 20
-    }
-
     var window: Window?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -26,8 +22,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.backgroundColor = .systemBackground
             $0.largeTitleTextAttributes = [.font: UIFont.rythmicoFont(.largeTitle)]
             $0.titleTextAttributes = [.font: UIFont.rythmicoFont(.subheadline)]
-            $0.layoutMargins.left = Const.defaultNavigationBarLargeTitleLeadingInset
-            $0.layoutMargins.right = Const.defaultNavigationBarLargeTitleLeadingInset
+            $0.layoutMargins.left = .spacingMedium
+            $0.layoutMargins.right = .spacingMedium
         }
 
         UITableView.appearance().do {

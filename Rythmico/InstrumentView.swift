@@ -20,10 +20,10 @@ struct InstrumentView: View {
                 Text(viewData.name)
                     .rythmicoFont(.headline)
                     .foregroundColor(.black)
-                    .padding(.leading, 22)
-                    .padding(.vertical, 22)
+                    .padding(.leading, .spacingMedium)
+                    .padding(.vertical, .spacingMedium)
                 Spacer()
-                viewData.icon.renderingMode(.original).padding(.trailing, 20)
+                viewData.icon.renderingMode(.original).padding(.trailing, .spacingMedium)
             }
         }
         .modifier(RoundedShadowContainer())

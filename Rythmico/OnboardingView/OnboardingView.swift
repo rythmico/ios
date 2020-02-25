@@ -23,9 +23,9 @@ struct OnboardingView: View, ViewModelable {
     var body: some View {
         ZStack {
             Color.rythmicoPurple.edgesIgnoringSafeArea(.all)
-            VStack(spacing: 16) {
+            VStack(spacing: .spacingSmall) {
                 Spacer()
-                VStack(spacing: 16) {
+                VStack(spacing: .spacingSmall) {
                     Text("Rythmico")
                         .rythmicoFont(.largeTitle)
                         .foregroundColor(.white)
@@ -48,7 +48,7 @@ struct OnboardingView: View, ViewModelable {
                 }
             }
             .padding()
-            .animation(.easeInOut(duration: 0.35), value: viewData.isLoading)
+            .animation(.easeInOut(duration: .durationMedium), value: viewData.isLoading)
         }
         .alert(item: Binding(get: { self.viewData.errorAlertViewData }, set: { _ in self.viewModel.dismissErrorAlert() })) { viewData in
             Alert(title: Text("An error ocurred"), message: Text(viewData.message))
@@ -93,7 +93,6 @@ struct OnboardingView_Preview: PreviewProvider {
     }
 
     private static var authenticationService: AuthenticationServiceProtocol {
-//        AuthenticationServiceStub(expectedResult: .success(authenticationAccessTokenProvider))
         AuthenticationServiceStub(expectedResult: .failure(.init(reasonCode: .invalidEmail, localizedDescription: "Something went ooopsie!")))
     }
 

@@ -8,11 +8,6 @@ struct MainTabViewData {
 }
 
 struct MainTabView: View, ViewModelable {
-    private enum Const {
-        static let requestLessonButtonImageVerticalPadding: CGFloat = 12
-        static let requestLessonButtonImageHorizontalPadding: CGFloat = 28
-    }
-
     @ObservedObject var viewModel: MainTabViewModel
 
     init(viewModel: MainTabViewModel) {
@@ -27,9 +22,9 @@ struct MainTabView: View, ViewModelable {
                     .navigationBarItems(
                         trailing: Button(action: viewModel.presentRequestLessonFlow) {
                             Image(systemSymbol: .plusCircleFill).font(.system(size: 24))
-                                .padding(.vertical, Const.requestLessonButtonImageVerticalPadding)
-                                .padding(.horizontal, Const.requestLessonButtonImageHorizontalPadding)
-                                .offset(x: Const.requestLessonButtonImageHorizontalPadding)
+                                .padding(.vertical, .spacingExtraSmall)
+                                .padding(.horizontal, .spacingExtraLarge)
+                                .offset(x: .spacingExtraLarge)
                         }
                         .accessibility(label: Text("Request lessons"))
                         .accessibility(hint: Text("Double tap to request a lesson plan"))
