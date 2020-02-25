@@ -1,6 +1,10 @@
 import SwiftUI
 
 struct ProgressBar: View {
+    private enum Const {
+        static let height: CGFloat = 8
+    }
+
     private let progress: Double
 
     init(progress: Double) {
@@ -16,6 +20,6 @@ struct ProgressBar: View {
                     .frame(width: metrics.size.width * CGFloat(self.progress))
             }
         }
-        .frame(height: 8)
+        .frame(height: Const.height)
     }
 }

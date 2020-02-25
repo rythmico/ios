@@ -2,16 +2,6 @@ import SwiftUI
 import ViewModel
 
 struct RequestLessonPlanView: View, Identifiable, ViewModelable {
-    private enum Const {
-        static let closeButtonImageVerticalPadding: CGFloat = 12
-        static let closeButtonImageHorizontalPadding: CGFloat = 28
-
-        static let navigationButtonsTopPadding: CGFloat = 10
-        static let navigationButtonsHorizontalPadding: CGFloat = 16
-
-        static let horizontalPadding: CGFloat = 20
-    }
-
     let id = UUID()
 
     @Environment(\.betterSheetPresentationMode) private var presentationMode
@@ -20,7 +10,7 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
     @ObservedObject var viewModel: RequestLessonPlanViewModel
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: .spacingSmall) {
             HStack {
                 if viewData.shouldShowBackButton {
                     Button(action: viewModel.back) {
@@ -35,20 +25,20 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
                 Spacer()
                 Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
                     Image(systemSymbol: .xmark).font(.system(size: 21, weight: .semibold))
-                        .padding(.vertical, Const.closeButtonImageVerticalPadding)
-                        .padding(.horizontal, Const.closeButtonImageHorizontalPadding)
-                        .offset(x: Const.closeButtonImageHorizontalPadding)
+                        .padding(.vertical, .spacingExtraSmall)
+                        .padding(.horizontal, .spacingExtraLarge)
+                        .offset(x: .spacingExtraLarge)
                 }
                 .accentColor(.rythmicoGray90)
                 .accessibility(label: Text("Close lesson request screen"))
                 .accessibility(hint: Text("Double tap to return to main screen"))
             }
-            .padding(.top, Const.navigationButtonsTopPadding)
-            .padding(.horizontal, Const.navigationButtonsHorizontalPadding)
-            .animation(.easeInOut(duration: 0.15), value: viewData.shouldShowBackButton)
+            .padding(.top, .spacingExtraSmall)
+            .padding(.horizontal, .spacingSmall)
+            .animation(.easeInOut(duration: .durationShort), value: viewData.shouldShowBackButton)
 
             StepBar(viewData.currentStepNumber, of: viewData.stepCount)
-                .padding(.horizontal, Const.horizontalPadding)
+                .padding(.horizontal, .spacingMedium)
 
             ZStack {
                 viewData.currentStep.instrumentSelectionView?.tag(0).transition(pageTransitionForCurrentContext)
@@ -58,7 +48,7 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
                 viewData.currentStep.privateNoteView?.tag(4).transition(pageTransitionForCurrentContext)
                 viewData.currentStep.reviewProposalView?.tag(5).transition(pageTransitionForCurrentContext)
             }
-            .animation(.easeInOut(duration: 0.3), value: viewData.currentStepNumber)
+            .animation(.easeInOut(duration: .durationMedium), value: viewData.currentStepNumber)
         }
         .gesture(
             DragGesture()
