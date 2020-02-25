@@ -4,7 +4,7 @@ import Sugar
 struct InstrumentViewData {
     var name: String
     var icon: Image
-    var action: Action
+    var action: Action?
 }
 
 struct InstrumentView: View {
@@ -15,7 +15,7 @@ struct InstrumentView: View {
     }
 
     var body: some View {
-        Button(action: viewData.action) {
+        Button(action: { self.viewData.action?() }) {
             HStack {
                 Text(viewData.name)
                     .rythmicoFont(.headline)
@@ -27,6 +27,8 @@ struct InstrumentView: View {
             }
         }
         .modifier(RoundedShadowContainer())
+        .disabled(viewData.action == nil)
+        .accessibility(hint: Text(viewData.action != nil ? "Double tap to select this instrument" : ""))
     }
 }
 
