@@ -17,7 +17,7 @@ struct TitleSubtitleView: View {
         VStack(alignment: .leading, spacing: .spacingSmall) {
             Text(title)
                 .lineLimit(1)
-                .minimumScaleFactor(0.7)
+                .minimumScaleFactor(0.65)
                 .rythmicoFont(.largeTitle)
                 .accessibility(addTraits: .isHeader)
             MultiStyleText(style: .body, parts: subtitle).foregroundColor(.rythmicoGray90)
