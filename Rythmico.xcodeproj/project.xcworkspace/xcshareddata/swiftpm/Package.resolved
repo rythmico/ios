@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "KeyboardObserver",
+        "repositoryURL": "https://github.com/timdonnelly/KeyboardObserver",
+        "state": {
+          "branch": null,
+          "revision": "95167aa393f2d35d6fb424a20fbebeb29a4b40e1",
+          "version": "0.1.2"
+        }
+      },
+      {
         "package": "SFSafeSymbols",
         "repositoryURL": "https://github.com/piknotech/SFSafeSymbols",
         "state": {
