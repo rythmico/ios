@@ -43,7 +43,7 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
             }
             .animation(.easeInOut(duration: .durationMedium), value: viewData.currentStepNumber)
         }
-        .gesture(
+        .highPriorityGesture(
             DragGesture()
                 .onChanged { value in
                     if !self.didRecognizeBackGesture, value.startLocation.x <= 40, value.translation.width > 20 {
