@@ -44,7 +44,7 @@ final class StudentDetailsViewModel: ViewModelObject<StudentDetailsViewData> {
                     get: { self.name ?? "" },
                     set: { self.name = $0 }
                 ),
-                onEditingChanged: { if $0 { self.endEditingDateOfBirth() } }
+                onEditingChanged: self.textFieldEditingChanged
             ),
             dateOfBirthTextFieldViewData: TextFieldViewData(
                 placeholder: dateFormatter.string(from: dateOfBirthPlaceholder),
@@ -70,9 +70,17 @@ final class StudentDetailsViewModel: ViewModelObject<StudentDetailsViewData> {
                     get: { self.about ?? "" },
                     set: { self.about = $0 }
                 ),
-                onEditingChanged: { if $0 { self.endEditingDateOfBirth() } }
-            )
+                onEditingChanged: self.textFieldEditingChanged
+            ),
+            isEditing: false
         )
+    }
+
+    private func textFieldEditingChanged(_ isEditing: Bool) {
+        if isEditing {
+            self.endEditingDateOfBirth()
+        }
+        viewData.isEditing = isEditing
     }
 
     private var aboutNameTextPart: MultiStyleText.Part {
@@ -94,6 +102,8 @@ final class StudentDetailsViewModel: ViewModelObject<StudentDetailsViewData> {
             displayedComponents: .date
         )
 
+        viewData.isEditing = true
+
         // set date of birth to initial value on first edit
         if dateOfBirth == nil {
             dateOfBirth = dateOfBirthPlaceholder
@@ -102,5 +112,6 @@ final class StudentDetailsViewModel: ViewModelObject<StudentDetailsViewData> {
 
     func endEditingDateOfBirth() {
         viewData.datePickerViewData = nil
+        viewData.isEditing = false
     }
 }

@@ -10,6 +10,7 @@ struct StudentDetailsViewData {
     var genderSelection: Binding<Gender?>
     var aboutNameTextPart: MultiStyleText.Part
     var aboutTextFieldViewData: TextFieldViewData
+    var isEditing: Bool
 }
 
 struct StudentDetailsView: View, ViewModelable {
@@ -19,7 +20,7 @@ struct StudentDetailsView: View, ViewModelable {
         ZStack {
             TitleSubtitleContentView(
                 title: "Student Details",
-                subtitle: [.init("Enter the details of the student who will learn "), .init(viewData.selectedInstrumentName, weight: .bold)]
+                subtitle: !viewData.isEditing ? subtitle : []
             ) {
                 VStack(spacing: 0) {
                     ScrollView(showsIndicators: false) {
@@ -59,8 +60,13 @@ struct StudentDetailsView: View, ViewModelable {
                 }
                 .animation(.easeInOut(duration: .durationMedium), value: self.viewData.datePickerViewData != nil)
             }
+            .animation(.easeInOut(duration: .durationMedium), value: viewData.isEditing)
         }
         .onDisappear(perform: UIApplication.shared.endEditing)
+    }
+
+    var subtitle: [MultiStyleText.Part] {
+        [.init("Enter the details of the student who will learn "), .init(viewData.selectedInstrumentName, weight: .bold)]
     }
 }
 

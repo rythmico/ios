@@ -8,16 +8,22 @@ struct MultiStyleText: View {
     var parts: [Part]
 
     var body: some View {
-        parts.reduce(Text("")) { text, part in
-            text + Text(part.string).font(
-                Font.system(
-                    size: style.fontSize(for: sizeCategory),
-                    weight: weight(for: part, systemLegibilityWeight: legibilityWeight),
-                    design: .rounded
-                )
-            ).foregroundColor(part.color)
+        Group {
+            if parts.isEmpty {
+                EmptyView()
+            } else {
+                parts.reduce(Text("")) { text, part in
+                    text + Text(part.string).font(
+                        Font.system(
+                            size: style.fontSize(for: sizeCategory),
+                            weight: weight(for: part, systemLegibilityWeight: legibilityWeight),
+                            design: .rounded
+                        )
+                    ).foregroundColor(part.color)
+                }
+                .lineSpacing(6)
+            }
         }
-        .lineSpacing(6)
     }
 
     private func weight(for part: Part, systemLegibilityWeight: LegibilityWeight?) -> Font.Weight {
