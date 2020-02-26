@@ -12,9 +12,9 @@ struct RequestLessonPlanViewData {
     }
     var shouldShowBackButton: Bool { currentStep.index > 0 }
     var currentStepNumber: Int { currentStep.index + 1 }
-    var direction: Direction?
-    var stepCount: Int { Step.count }
+    var direction: Direction = .next
     var currentStep: Step
+    var stepCount: Int { currentStep.allViews.count }
 }
 
 extension RequestLessonPlanViewData {
@@ -25,29 +25,28 @@ extension RequestLessonPlanViewData {
         case scheduling(SchedulingView)
         case privateNote(PrivateNoteView)
         case reviewProposal(ReviewProposalView)
+
+        var allViews: [AnyView?] {
+            [
+                instrumentSelectionView.map(AnyView.init),
+                studentDetailsView.map(AnyView.init),
+                addressDetailsView.map(AnyView.init),
+                schedulingView.map(AnyView.init),
+                privateNoteView.map(AnyView.init),
+                reviewProposalView.map(AnyView.init)
+            ]
+        }
+
+        var index: Int {
+            guard let index = allViews.firstIndex(where: { $0 != nil }) else {
+                preconditionFailure("RequestLessonPlanViewData.Step enum cases and allViews array are not in sync")
+            }
+            return index
+        }
     }
 }
 
-extension RequestLessonPlanViewData.Step {
-    fileprivate var index: Int {
-        allCases.enumerated().first { $0.element != nil }?.offset ?? 0
-    }
-
-    fileprivate static var count: Int { 6 }
-
-    private var allCases: [Any?] {
-        [
-            instrumentSelectionView,
-            studentDetailsView,
-            addressDetailsView,
-            schedulingView,
-            privateNoteView,
-            reviewProposalView
-        ]
-    }
-}
-
-extension RequestLessonPlanViewData.Step {
+private extension RequestLessonPlanViewData.Step {
     var instrumentSelectionView: InstrumentSelectionView? {
         guard case .instrumentSelection(let view) = self else {
             return nil
