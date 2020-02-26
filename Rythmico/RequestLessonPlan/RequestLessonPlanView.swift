@@ -4,9 +4,11 @@ import ViewModel
 struct RequestLessonPlanView: View, Identifiable, ViewModelable {
     let id = UUID()
 
+    @ObservedObject var viewModel: RequestLessonPlanViewModel
+
     @Environment(\.betterSheetPresentationMode) private var presentationMode
 
-    @ObservedObject var viewModel: RequestLessonPlanViewModel
+    @State private var didRecognizeGesture: Bool = false
 
     var body: some View {
         VStack(spacing: .spacingSmall) {
@@ -35,13 +37,11 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
 
             ZStack {
                 ForEach(0..<viewData.currentStep.allViews.count) { index in
-                    self.viewData.currentStep.allViews[index]
-                        .tag(index)
-                        .transition(self.pageTransition(forStepIndex: index))
-                        .highPriorityGesture(EdgeSwipeGesture(action: self.viewModel.back))
+                    self.viewData.currentStep.allViews[index].tag(index).transition(self.pageTransition(forStepIndex: index))
                 }
             }
             .animation(.easeInOut(duration: .durationMedium), value: viewData.currentStepNumber)
+            .highPriorityGesture(EdgeSwipeGesture(self.$didRecognizeGesture, action: self.viewModel.back))
         }
         .betterSheetIsModalInPresentation(viewData.shouldShowBackButton)
     }
