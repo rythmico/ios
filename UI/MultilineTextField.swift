@@ -128,7 +128,7 @@ struct MultilineTextField: View {
     var placeholderView: some View {
         Group {
             if showingPlaceholder {
-                Text(placeholder).rythmicoFont(.body).foregroundColor(.rythmicoGray20)
+                Text(placeholder).rythmicoFont(.body).foregroundColor(.rythmicoGray30)
             }
         }
     }
