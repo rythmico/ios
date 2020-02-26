@@ -15,6 +15,11 @@ final class RequestLessonPlanViewModel: ViewModelObject<RequestLessonPlanViewDat
     }
 
     func back() {
+        guard context.student == nil else {
+            context.student = nil
+            return
+        }
+
         guard context.instrument == nil else {
             context.instrument = nil
             return
@@ -32,13 +37,17 @@ final class RequestLessonPlanViewModel: ViewModelObject<RequestLessonPlanViewDat
             return instrumentSelectionStep(context: context, instrumentProvider: instrumentProvider)
         }
 
-        return .studentDetails(
-            StudentDetailsView(viewModel: StudentDetailsViewModel(
-                context: context,
-                instrument: instrument,
-                editingCoordinator: UIApplication.shared
-            ))
-        )
+        guard let student = context.student else {
+            return .studentDetails(
+                StudentDetailsView(viewModel: StudentDetailsViewModel(
+                    context: context,
+                    instrument: instrument,
+                    editingCoordinator: UIApplication.shared
+                ))
+            )
+        }
+
+        return .addressDetails(AddressDetailsView())
     }
 }
 

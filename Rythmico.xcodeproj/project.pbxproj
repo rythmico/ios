@@ -131,6 +131,7 @@
 		D5F506B62406360900CA4094 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B52406360900CA4094 /* Student.swift */; };
 		D5F506B82406363600CA4094 /* GenderSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B72406363600CA4094 /* GenderSelectionView.swift */; };
 		D5F506BA240637F400CA4094 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B9240637F400CA4094 /* FloatingButton.swift */; };
+		D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */; };
 		D5F506BE2406E49A00CA4094 /* EdgeSwipeGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506BD2406E49A00CA4094 /* EdgeSwipeGesture.swift */; };
 /* End PBXBuildFile section */
 
@@ -311,6 +312,7 @@
 		D5F506B52406360900CA4094 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		D5F506B72406363600CA4094 /* GenderSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectionView.swift; sourceTree = "<group>"; };
 		D5F506B9240637F400CA4094 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
+		D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetailsView.swift; sourceTree = "<group>"; };
 		D5F506BD2406E49A00CA4094 /* EdgeSwipeGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeSwipeGesture.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -563,6 +565,7 @@
 				D54317EE23FDB01700CB1493 /* InstrumentSelection */,
 				D54317EF23FDB02600CB1493 /* Instrument */,
 				D5F506B12405B5AA00CA4094 /* StudentDetails */,
+				D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */,
 				D5F506B52406360900CA4094 /* Student.swift */,
 			);
 			path = RequestLessonPlan;
@@ -949,6 +952,7 @@
 				D5BA171023D7A18900954D50 /* RootView.swift in Sources */,
 				D5F50683240452BC00CA4094 /* TextField+ViewData.swift in Sources */,
 				D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */,
+				D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */,
 				D509898D23BA787500C19300 /* OnboardingViewModel.swift in Sources */,
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
 				D53555CE23E536AE005A20EB /* AppleAuthorizationControllerDoubles.swift in Sources */,

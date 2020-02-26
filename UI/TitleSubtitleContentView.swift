@@ -16,7 +16,7 @@ struct TitleSubtitleContentView<Content: View>: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: .spacingExtraLarge) {
+        VStack(spacing: .spacingExtraLarge) {
             TitleSubtitleView(title: title, subtitle: subtitle)
             content()
         }.padding(.horizontal, .spacingMedium)
