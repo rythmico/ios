@@ -7,6 +7,7 @@ struct StudentDetailsViewData {
     var nameTextFieldViewData: TextFieldViewData
     var dateOfBirthTextFieldViewData: TextFieldViewData
     var datePickerViewData: DatePickerViewData?
+    var genderSelection: Binding<Gender?>
     var aboutNameTextPart: MultiStyleText.Part
     var aboutTextFieldViewData: TextFieldViewData
 }
@@ -35,6 +36,9 @@ struct StudentDetailsView: View, ViewModelable {
                                 TextField(self.viewData.dateOfBirthTextFieldViewData)
                                     .rythmicoFont(.body)
                                     .modifier(RoundedThinOutlineContainer())
+                            }
+                            TitleContentView(title: "Gender") {
+                                GenderSelectionView(selection: self.viewData.genderSelection)
                             }
                             TitleContentView(title: [.init("About "), self.viewData.aboutNameTextPart]) {
                                 MultilineTextField(self.viewData.aboutTextFieldViewData)
