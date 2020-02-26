@@ -30,6 +30,11 @@ extension Color {
 
     static let rythmicoBackground = Color(lightModeVariant: .white, darkModeVariant: .black)
 
+    static let rythmicoBackgroundSecondary = Color(
+        lightModeVariant: .white,
+        darkModeVariant: .init(base256Red: 28, green: 28, blue: 30)
+    )
+
     static let systemLightGray = Color(
         lightModeVariant: .init(base256Red: 246, green: 246, blue: 246),
         darkModeVariant: .init(base256Red: 40, green: 40, blue: 41)
