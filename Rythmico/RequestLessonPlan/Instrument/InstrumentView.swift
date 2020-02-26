@@ -26,6 +26,7 @@ struct InstrumentView: View {
                 viewData.icon.renderingMode(.original).padding(.trailing, .spacingMedium)
             }
         }
+        .frame(minHeight: 70)
         .modifier(RoundedShadowContainer())
         .disabled(viewData.action == nil)
         .accessibility(hint: Text(viewData.action != nil ? "Double tap to select this instrument" : ""))
