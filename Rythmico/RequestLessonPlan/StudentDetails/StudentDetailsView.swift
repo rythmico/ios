@@ -55,7 +55,7 @@ struct StudentDetailsView: View, ViewModelable {
                     }
                     .avoidingKeyboard()
 
-                    ZStack {
+                    ZStack(alignment: .bottom) {
                         self.viewData.nextButtonAction.map {
                             FloatingButton(title: "Next", action: $0)
                             .padding(.horizontal, -.spacingMedium)
