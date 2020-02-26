@@ -21,7 +21,7 @@ struct FloatingButton: View {
             .padding(.vertical, .spacingExtraSmall)
             .padding(.horizontal, .spacingMedium)
         }
-        .background(Color.rythmicoBackground.edgesIgnoringSafeArea(.bottom))
+        .background(Color.rythmicoBackgroundSecondary.edgesIgnoringSafeArea(.bottom))
         .transition(.move(edge: .bottom))
     }
 }
