@@ -1,8 +1,10 @@
 import SwiftUI
 import ViewModel
 import KeyboardObserver
+import Sugar
 
 struct StudentDetailsViewData {
+    var isEditing: Bool
     var selectedInstrumentName: String
     var nameTextFieldViewData: TextFieldViewData
     var dateOfBirthTextFieldViewData: TextFieldViewData
@@ -10,7 +12,7 @@ struct StudentDetailsViewData {
     var genderSelection: Binding<Gender?>
     var aboutNameTextPart: MultiStyleText.Part
     var aboutTextFieldViewData: TextFieldViewData
-    var isEditing: Bool
+    var nextButtonAction: Action?
 }
 
 struct StudentDetailsView: View, ViewModelable {
@@ -24,41 +26,52 @@ struct StudentDetailsView: View, ViewModelable {
             ) {
                 VStack(spacing: 0) {
                     ScrollView(showsIndicators: false) {
-                        VStack(alignment: .leading, spacing: .spacingLarge) {
-                            TitleContentView(title: "Full Name") {
-                                TextField(self.viewData.nameTextFieldViewData)
-                                    .textContentType(.name)
-                                    .autocapitalization(.words)
-                                    .rythmicoFont(.body)
-                                    .accentColor(.rythmicoPurple)
-                                    .modifier(RoundedThinOutlineContainer())
+                        VStack(spacing: 0) {
+                            VStack(alignment: .leading, spacing: .spacingLarge) {
+                                TitleContentView(title: "Full Name") {
+                                    TextField(self.viewData.nameTextFieldViewData)
+                                        .textContentType(.name)
+                                        .autocapitalization(.words)
+                                        .rythmicoFont(.body)
+                                        .accentColor(.rythmicoPurple)
+                                        .modifier(RoundedThinOutlineContainer())
+                                }
+                                TitleContentView(title: "Date of Birth") {
+                                    TextField(self.viewData.dateOfBirthTextFieldViewData)
+                                        .rythmicoFont(.body)
+                                        .modifier(RoundedThinOutlineContainer())
+                                }
+                                TitleContentView(title: "Gender") {
+                                    GenderSelectionView(selection: self.viewData.genderSelection)
+                                }
+                                TitleContentView(title: [.init("About "), self.viewData.aboutNameTextPart]) {
+                                    MultilineTextField(self.viewData.aboutTextFieldViewData)
+                                        .accentColor(.rythmicoPurple)
+                                        .modifier(RoundedThinOutlineContainer())
+                                }
                             }
-                            TitleContentView(title: "Date of Birth") {
-                                TextField(self.viewData.dateOfBirthTextFieldViewData)
-                                    .rythmicoFont(.body)
-                                    .modifier(RoundedThinOutlineContainer())
-                            }
-                            TitleContentView(title: "Gender") {
-                                GenderSelectionView(selection: self.viewData.genderSelection)
-                            }
-                            TitleContentView(title: [.init("About "), self.viewData.aboutNameTextPart]) {
-                                MultilineTextField(self.viewData.aboutTextFieldViewData)
-                                    .accentColor(.rythmicoPurple)
-                                    .modifier(RoundedThinOutlineContainer())
-                            }
+                            Rectangle().fill(Color.clear).frame(height: .spacingMedium)
                         }
                     }
                     .avoidingKeyboard()
 
-                    self.viewData.datePickerViewData.map {
-                        FloatingDatePicker(
-                            viewData: $0,
-                            doneButtonAction: self.viewModel.endEditingDateOfBirth
-                        )
-                        .padding(.horizontal, -.spacingMedium)
+                    ZStack {
+                        self.viewData.nextButtonAction.map {
+                            FloatingButton(title: "Next", action: $0)
+                            .padding(.horizontal, -.spacingMedium)
+                        }
+
+                        self.viewData.datePickerViewData.map {
+                            FloatingDatePicker(
+                                viewData: $0,
+                                doneButtonAction: self.viewModel.endEditingDateOfBirth
+                            )
+                            .padding(.horizontal, -.spacingMedium)
+                        }
                     }
                 }
                 .animation(.easeInOut(duration: .durationMedium), value: self.viewData.datePickerViewData != nil)
+                .animation(.easeInOut(duration: .durationShort), value: self.viewData.nextButtonAction != nil)
             }
             .animation(.easeInOut(duration: .durationMedium), value: viewData.isEditing)
         }

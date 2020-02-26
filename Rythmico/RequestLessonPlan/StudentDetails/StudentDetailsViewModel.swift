@@ -11,7 +11,10 @@ final class StudentDetailsViewModel: ViewModelObject<StudentDetailsViewData> {
     }
 
     private var name: String? {
-        didSet { viewData.aboutNameTextPart = aboutNameTextPart }
+        didSet {
+            viewData.aboutNameTextPart = aboutNameTextPart
+            studentDetailsChanged()
+        }
     }
 
     private var dateOfBirth: Date? {
@@ -19,12 +22,15 @@ final class StudentDetailsViewModel: ViewModelObject<StudentDetailsViewData> {
             dateOfBirth.map {
                 viewData.dateOfBirthTextFieldViewData.text = .constant(dateFormatter.string(from: $0))
             }
+            studentDetailsChanged()
         }
     }
 
     private let dateOfBirthPlaceholder = Date().addingTimeInterval(-10 * 365 * 24 * 3600) // 10-year-old students on average
 
-    private var gender: Gender?
+    private var gender: Gender? {
+        didSet { studentDetailsChanged() }
+    }
 
     private var about: String?
 
@@ -37,6 +43,7 @@ final class StudentDetailsViewModel: ViewModelObject<StudentDetailsViewData> {
         super.init()
 
         self.viewData = ViewData(
+            isEditing: false,
             selectedInstrumentName: instrument.name,
             nameTextFieldViewData: TextFieldViewData(
                 placeholder: "Enter Name...",
@@ -71,8 +78,7 @@ final class StudentDetailsViewModel: ViewModelObject<StudentDetailsViewData> {
                     set: { self.about = $0 }
                 ),
                 onEditingChanged: self.textFieldEditingChanged
-            ),
-            isEditing: false
+            )
         )
     }
 
@@ -113,5 +119,20 @@ final class StudentDetailsViewModel: ViewModelObject<StudentDetailsViewData> {
     func endEditingDateOfBirth() {
         viewData.datePickerViewData = nil
         viewData.isEditing = false
+    }
+
+    private func studentDetailsChanged() {
+        guard
+            let name = name?.trimmingCharacters(in: .whitespacesAndNewlines),
+            !name.isEmpty,
+            let dateOfBirth = dateOfBirth,
+            let gender = gender
+        else {
+            viewData.nextButtonAction = nil
+            return
+        }
+
+        // TODO
+        viewData.nextButtonAction = {}
     }
 }
