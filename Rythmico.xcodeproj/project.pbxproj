@@ -128,6 +128,8 @@
 		D5F5068E240473CB00CA4094 /* FloatingDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5068D240473CB00CA4094 /* FloatingDatePicker.swift */; };
 		D5F506B02405A6A900CA4094 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506AF2405A6A900CA4094 /* Duration.swift */; };
 		D5F506B42405ED9300CA4094 /* RoundedThickOutlineContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */; };
+		D5F506B62406360900CA4094 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B52406360900CA4094 /* Student.swift */; };
+		D5F506B82406363600CA4094 /* GenderSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B72406363600CA4094 /* GenderSelectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -304,6 +306,8 @@
 		D5F5068D240473CB00CA4094 /* FloatingDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingDatePicker.swift; sourceTree = "<group>"; };
 		D5F506AF2405A6A900CA4094 /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
 		D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedThickOutlineContainer.swift; sourceTree = "<group>"; };
+		D5F506B52406360900CA4094 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		D5F506B72406363600CA4094 /* GenderSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -553,6 +557,7 @@
 				D54317EE23FDB01700CB1493 /* InstrumentSelection */,
 				D54317EF23FDB02600CB1493 /* Instrument */,
 				D5F506B12405B5AA00CA4094 /* StudentDetails */,
+				D5F506B52406360900CA4094 /* Student.swift */,
 			);
 			path = RequestLessonPlan;
 			sourceTree = "<group>";
@@ -634,6 +639,7 @@
 		D5F506B12405B5AA00CA4094 /* StudentDetails */ = {
 			isa = PBXGroup;
 			children = (
+				D5F506B72406363600CA4094 /* GenderSelectionView.swift */,
 				D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */,
 				D5200E3A23FDCF35007168E0 /* StudentDetailsViewModel.swift */,
 			);
@@ -947,6 +953,7 @@
 				D53555C523E536AE005A20EB /* AppleAuthorizationCredentialRevocationObserver.swift in Sources */,
 				D53555C823E536AE005A20EB /* AppleAuthorizationResponse.swift in Sources */,
 				D5E04B1923BED80700A161BB /* Fonts.swift in Sources */,
+				D5F506B82406363600CA4094 /* GenderSelectionView.swift in Sources */,
 				D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */,
 				D5F506B02405A6A900CA4094 /* Duration.swift in Sources */,
 				D5AAF7D923F9EB1200E410F2 /* InstrumentSelectionListProviderDoubles.swift in Sources */,
@@ -974,6 +981,7 @@
 				D5E04B1B23BEE01B00A161BB /* RootViewModel.swift in Sources */,
 				D535547923DF3A7C005A20EB /* Keychain.swift in Sources */,
 				D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */,
+				D5F506B62406360900CA4094 /* Student.swift in Sources */,
 				D53555BF23E53699005A20EB /* AuthenticationAccessTokenProviderBroadcast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

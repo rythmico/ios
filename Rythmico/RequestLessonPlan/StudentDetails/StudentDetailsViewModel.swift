@@ -24,6 +24,8 @@ final class StudentDetailsViewModel: ViewModelObject<StudentDetailsViewData> {
 
     private let dateOfBirthPlaceholder = Date().addingTimeInterval(-10 * 365 * 24 * 3600) // 10-year-old students on average
 
+    private var gender: Gender?
+
     private var about: String?
 
     init(
@@ -57,6 +59,10 @@ final class StudentDetailsViewModel: ViewModelObject<StudentDetailsViewData> {
                 }
             ),
             datePickerViewData: nil,
+            genderSelection: Binding(
+                get: { self.gender },
+                set: { self.gender = $0 }
+            ),
             aboutNameTextPart: aboutNameTextPart,
             aboutTextFieldViewData: TextFieldViewData(
                 placeholder: "Existing instrument prowess etc.",
