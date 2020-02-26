@@ -5,7 +5,6 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
     let id = UUID()
 
     @Environment(\.betterSheetPresentationMode) private var presentationMode
-    @State private var didRecognizeBackGesture: Bool = false
 
     @ObservedObject var viewModel: RequestLessonPlanViewModel
 
@@ -35,39 +34,25 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
             }
 
             ZStack {
-                viewData.currentStep.instrumentSelectionView?.tag(0).transition(pageTransitionForCurrentContext)
-                viewData.currentStep.studentDetailsView?.tag(1).transition(pageTransitionForCurrentContext)
-                viewData.currentStep.addressDetailsView?.tag(2).transition(pageTransitionForCurrentContext)
-                viewData.currentStep.schedulingView?.tag(3).transition(pageTransitionForCurrentContext)
-                viewData.currentStep.privateNoteView?.tag(4).transition(pageTransitionForCurrentContext)
-                viewData.currentStep.reviewProposalView?.tag(5).transition(pageTransitionForCurrentContext)
+                ForEach(0..<viewData.currentStep.allViews.count) { index in
+                    self.viewData.currentStep.allViews[index]
+                        .tag(index)
+                        .transition(self.pageTransition(forStepIndex: index))
+                        .highPriorityGesture(EdgeSwipeGesture(action: self.viewModel.back))
+                }
             }
             .animation(.easeInOut(duration: .durationMedium), value: viewData.currentStepNumber)
         }
-        .highPriorityGesture(
-            DragGesture()
-                .onChanged { value in
-                    if !self.didRecognizeBackGesture, value.startLocation.x <= 40, value.translation.width > 20 {
-                        self.didRecognizeBackGesture = true
-                        self.viewModel.back()
-                    }
-                }
-                .onEnded { _ in self.didRecognizeBackGesture = false }
-        )
         .betterSheetIsModalInPresentation(viewData.shouldShowBackButton)
     }
 
-    private var pageTransitionForCurrentContext: AnyTransition {
-        let transition: AnyTransition
-        if let direction = viewData.direction {
-            transition = .asymmetric(
-                insertion: .move(edge: direction == .next ? .trailing : .leading),
-                removal: .move(edge: direction == .back ? .leading : .trailing)
-            )
-        } else {
-            transition = .move(edge: .leading)
-        }
-        return transition.combined(with: .opacity)
+    private func pageTransition(forStepIndex index: Int) -> AnyTransition {
+        AnyTransition.move(
+            edge: index == viewData.currentStep.index
+                ? viewData.direction == .next ? .trailing : .leading
+                : viewData.direction == .next ? .leading : .trailing
+        )
+        .combined(with: .opacity)
     }
 }
 
