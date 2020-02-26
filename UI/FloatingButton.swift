@@ -14,8 +14,8 @@ struct FloatingButton: View {
                     Text(title).rythmicoFont(.callout).foregroundColor(.rythmicoWhite)
                     Spacer()
                 }
-                .padding(.vertical, .spacingSmall)
-                .frame(minHeight: 44)
+                .padding(.vertical, .spacingExtraSmall)
+                .frame(minHeight: 48)
                 .background(Color.rythmicoPurple.cornerRadius(4))
             }
             .padding(.vertical, .spacingExtraSmall)
