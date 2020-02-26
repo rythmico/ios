@@ -12,10 +12,10 @@ struct RoundedThickOutlineContainer: ViewModifier {
             .background(
                 ZStack {
                     RoundedRectangle(cornerRadius: 9, style: .continuous)
-                    .fill(backgroundColor)
-                    .opacity(0.1)
+                        .fill(backgroundColor)
+                        .opacity(0.1)
                     RoundedRectangle(cornerRadius: 9, style: .continuous)
-                    .strokeBorder(borderColor, lineWidth: 2)
+                        .strokeBorder(borderColor, lineWidth: 2)
                 }
             )
     }
