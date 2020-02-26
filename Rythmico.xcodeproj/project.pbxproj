@@ -132,7 +132,7 @@
 		D5F506B82406363600CA4094 /* GenderSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B72406363600CA4094 /* GenderSelectionView.swift */; };
 		D5F506BA240637F400CA4094 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B9240637F400CA4094 /* FloatingButton.swift */; };
 		D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */; };
-		D5F506BE2406E49A00CA4094 /* EdgeSwipeGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506BD2406E49A00CA4094 /* EdgeSwipeGesture.swift */; };
+		D5F506BE2406E49A00CA4094 /* EdgeSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506BD2406E49A00CA4094 /* EdgeSwipeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -313,7 +313,7 @@
 		D5F506B72406363600CA4094 /* GenderSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectionView.swift; sourceTree = "<group>"; };
 		D5F506B9240637F400CA4094 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetailsView.swift; sourceTree = "<group>"; };
-		D5F506BD2406E49A00CA4094 /* EdgeSwipeGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeSwipeGesture.swift; sourceTree = "<group>"; };
+		D5F506BD2406E49A00CA4094 /* EdgeSwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeSwipeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -469,7 +469,7 @@
 				D5F5065C23FF16AA00CA4094 /* BackButton.swift */,
 				D5AAF7DA23FB347C00E410F2 /* CollectionView.swift */,
 				D5F50684240452D700CA4094 /* DatePicker+ViewData.swift */,
-				D5F506BD2406E49A00CA4094 /* EdgeSwipeGesture.swift */,
+				D5F506BD2406E49A00CA4094 /* EdgeSwipeView.swift */,
 				D5F5068D240473CB00CA4094 /* FloatingDatePicker.swift */,
 				D5F506B9240637F400CA4094 /* FloatingButton.swift */,
 				D5E04B1823BED80700A161BB /* Fonts.swift */,
@@ -986,7 +986,7 @@
 				D54A561723CD577800BC8485 /* main.swift in Sources */,
 				D5F506BA240637F400CA4094 /* FloatingButton.swift in Sources */,
 				D53555CC23E536AE005A20EB /* AppleAuthorizationServiceDoubles.swift in Sources */,
-				D5F506BE2406E49A00CA4094 /* EdgeSwipeGesture.swift in Sources */,
+				D5F506BE2406E49A00CA4094 /* EdgeSwipeView.swift in Sources */,
 				D5AAF7DB23FB347C00E410F2 /* CollectionView.swift in Sources */,
 				D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */,
 				D5F5068C24046B1400CA4094 /* Spacing.swift in Sources */,

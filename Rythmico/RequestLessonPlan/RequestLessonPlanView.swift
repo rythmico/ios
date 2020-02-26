@@ -8,8 +8,6 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
 
     @Environment(\.betterSheetPresentationMode) private var presentationMode
 
-    @State private var didRecognizeGesture: Bool = false
-
     var body: some View {
         VStack(spacing: .spacingSmall) {
             VStack(spacing: 0) {
@@ -41,7 +39,7 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
                 }
             }
             .animation(.easeInOut(duration: .durationMedium), value: viewData.currentStepNumber)
-            .highPriorityGesture(EdgeSwipeGesture(self.$didRecognizeGesture, action: self.viewModel.back))
+            .onEdgeSwipe(edges: .left, perform: self.viewModel.back)
         }
         .betterSheetIsModalInPresentation(viewData.shouldShowBackButton)
     }
