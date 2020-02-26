@@ -10,7 +10,9 @@ extension Color {
         darkModeVariant: .init(base256Red: 165, green: 174, blue: 181)
     )
 
-    static let rythmicoGray20 = Color(.rythmicoGray20)
+    static let rythmicoGray30 = Color(.rythmicoGray30)
+
+    static let rythmicoGray20 = Color(base256Red: 213, green: 214, blue: 215)
 
     static let rythmicoGray10 = Color(
         lightModeVariant: rythmicoGray10LightModeVariant,
@@ -37,7 +39,7 @@ extension UIColor {
         darkModeVariant: .init(base256Red: 83, green: 87, blue: 216)
     )
 
-    static let rythmicoGray20 = UIColor(
+    static let rythmicoGray30 = UIColor(
         lightModeVariant: .init(base256Red: 195, green: 196, blue: 197),
         darkModeVariant: .init(base256Red: 90, green: 90, blue: 94)
     )
