@@ -132,7 +132,13 @@ final class StudentDetailsViewModel: ViewModelObject<StudentDetailsViewData> {
             return
         }
 
-        // TODO
-        viewData.nextButtonAction = {}
+        viewData.nextButtonAction = {
+            self.context.student = Student(
+                name: name,
+                dateOfBirth: dateOfBirth,
+                gender: gender,
+                about: self.about
+            )
+        }
     }
 }
