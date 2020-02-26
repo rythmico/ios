@@ -39,10 +39,8 @@ struct GenderSelectionView: View {
 
     private func containerModifier(for gender: Gender) -> RoundedThickOutlineContainer {
         selection == gender
-            ?
-        RoundedThickOutlineContainer(backgroundColor: .rythmicoPurple, borderColor: .rythmicoPurple)
-            :
-        RoundedThickOutlineContainer()
+            ? RoundedThickOutlineContainer(backgroundColor: .rythmicoPurple, borderColor: .rythmicoPurple)
+            : RoundedThickOutlineContainer()
     }
 }
 

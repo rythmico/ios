@@ -1,5 +1,6 @@
 import SwiftUI
 import Sugar
+import Then
 
 extension View {
     func onEdgeSwipe(edges: UIRectEdge, perform action: @escaping () -> Void) -> some View {
@@ -27,17 +28,18 @@ private final class EdgeSwipeUIView: UIView {
         self.backgroundColor = .clear
         self.isUserInteractionEnabled = true
 
-        let recognizer = UIScreenEdgePanGestureRecognizer(
-            target: self,
-            action: #selector(didRecognizeEdgeSwipe)
+        addGestureRecognizer(
+            UIScreenEdgePanGestureRecognizer().then {
+                $0.addTarget(self, action: #selector(didRecognizeEdgeSwipe))
+                $0.edges = egdes
+                $0.cancelsTouchesInView = false
+            }
         )
-        recognizer.edges = egdes
-        recognizer.cancelsTouchesInView = false
-        addGestureRecognizer(recognizer)
     }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("Storyboards are doodoo")
     }
 
     @objc private func didRecognizeEdgeSwipe() {
