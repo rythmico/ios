@@ -93,7 +93,7 @@ final class StudentDetailsViewModel: ViewModelObject<StudentDetailsViewData> {
         return .init(
             firstName ?? "Student",
             weight: .regular,
-            color: firstName.map { _ in .rythmicoPurple }
+            color: firstName != nil ? .rythmicoPurple : .rythmicoForeground
         )
     }
 

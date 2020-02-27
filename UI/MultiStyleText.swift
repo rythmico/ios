@@ -38,9 +38,9 @@ extension MultiStyleText {
     struct Part {
         var string: String
         var weight: LegibilityWeight
-        var color: Color?
+        var color: Color
 
-        init(_ string: String, weight: LegibilityWeight = .regular, color: Color? = nil) {
+        init(_ string: String, weight: LegibilityWeight = .regular, color: Color = .rythmicoForeground) {
             self.string = string
             self.weight = weight
             self.color = color

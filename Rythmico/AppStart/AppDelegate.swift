@@ -20,8 +20,14 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.isTranslucent = false
             $0.barTintColor = .systemBackground
             $0.backgroundColor = .systemBackground
-            $0.largeTitleTextAttributes = [.font: UIFont.rythmicoFont(.largeTitle)]
-            $0.titleTextAttributes = [.font: UIFont.rythmicoFont(.subheadline)]
+            $0.largeTitleTextAttributes = [
+                .foregroundColor: UIColor.rythmicoForeground,
+                .font: UIFont.rythmicoFont(.largeTitle)
+            ]
+            $0.titleTextAttributes = [
+                .foregroundColor: UIColor.rythmicoForeground,
+                .font: UIFont.rythmicoFont(.subheadline)
+            ]
             $0.layoutMargins.left = .spacingMedium
             $0.layoutMargins.right = .spacingMedium
         }
@@ -32,6 +38,14 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UITabBarItem.appearance().do {
             $0.setTitleTextAttributes([.font: UIFont.rythmicoFont(.caption)], for: .normal)
+        }
+
+        UITabBar.appearance().do {
+            $0.unselectedItemTintColor = .rythmicoGray90
+        }
+
+        UISwitch.appearance().do {
+            $0.onTintColor = .rythmicoPurple
         }
     }
 
