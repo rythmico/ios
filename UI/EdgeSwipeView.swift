@@ -42,7 +42,10 @@ private final class EdgeSwipeUIView: UIView {
         fatalError("Storyboards are doodoo")
     }
 
-    @objc private func didRecognizeEdgeSwipe() {
+    @objc private func didRecognizeEdgeSwipe(gestureRecognizer: UIScreenEdgePanGestureRecognizer) {
+        guard gestureRecognizer.state == .ended else {
+            return
+        }
         action()
     }
 }
