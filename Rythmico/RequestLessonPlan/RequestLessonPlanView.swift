@@ -39,7 +39,7 @@ struct RequestLessonPlanView: View, Identifiable, ViewModelable {
                 }
             }
             .animation(.easeInOut(duration: .durationMedium), value: viewData.currentStepNumber)
-            .onEdgeSwipe(edges: .left, perform: self.viewModel.back)
+            .onEdgeSwipe(.left, perform: self.viewModel.back)
         }
         .betterSheetIsModalInPresentation(viewData.shouldShowBackButton)
     }
