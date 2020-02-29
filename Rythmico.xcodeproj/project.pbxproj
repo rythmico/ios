@@ -134,6 +134,7 @@
 		D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */; };
 		D5F506BE2406E49A00CA4094 /* EdgeSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506BD2406E49A00CA4094 /* EdgeSwipeView.swift */; };
 		D5FD6F1224096FB5008C5AD4 /* Collection+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD6F1124096FB5008C5AD4 /* Collection+Sugar.swift */; };
+		D5FD6F14240985D3008C5AD4 /* View+Inset.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD6F13240985D3008C5AD4 /* View+Inset.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -316,6 +317,7 @@
 		D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetailsView.swift; sourceTree = "<group>"; };
 		D5F506BD2406E49A00CA4094 /* EdgeSwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeSwipeView.swift; sourceTree = "<group>"; };
 		D5FD6F1124096FB5008C5AD4 /* Collection+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Sugar.swift"; sourceTree = "<group>"; };
+		D5FD6F13240985D3008C5AD4 /* View+Inset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Inset.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -490,6 +492,7 @@
 				D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */,
 				D50811E323FB72A3008103D8 /* StepBar.swift */,
 				D5F506642400619600CA4094 /* UIApplication+EndEditing.swift */,
+				D5FD6F13240985D3008C5AD4 /* View+Inset.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -975,6 +978,7 @@
 				D5200E3B23FDCF35007168E0 /* StudentDetailsViewModel.swift in Sources */,
 				D50811E823FD73F0008103D8 /* Assets.swift in Sources */,
 				D5F5065F240055E800CA4094 /* TitleContentView.swift in Sources */,
+				D5FD6F14240985D3008C5AD4 /* View+Inset.swift in Sources */,
 				D5F50663240056FA00CA4094 /* RoundedThinOutlineContainer.swift in Sources */,
 				D53555C423E536AE005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
 				D53555CD23E536AE005A20EB /* AppleAuthorizationController.swift in Sources */,
