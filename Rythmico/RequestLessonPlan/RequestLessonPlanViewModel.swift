@@ -3,6 +3,8 @@ import SwiftUI
 import ViewModel
 
 final class RequestLessonPlanViewModel: ViewModelObject<RequestLessonPlanViewData> {
+    typealias Step = RequestLessonPlanViewData.Step
+
     private let context: RequestLessonPlanContextProtocol
     private let instrumentProvider: InstrumentSelectionListProviderProtocol
 
@@ -32,22 +34,12 @@ final class RequestLessonPlanViewModel: ViewModelObject<RequestLessonPlanViewDat
         viewData.direction = viewData.currentStepNumber > previousStepNumber ? .next : .back
     }
 
-    private func step(for context: RequestLessonPlanContextProtocol) -> RequestLessonPlanViewData.Step {
-        guard let instrument = context.instrument else {
-            return instrumentSelectionStep(context: context, instrumentProvider: instrumentProvider)
-        }
-
-        guard let student = context.student else {
-            return .studentDetails(
-                StudentDetailsView(viewModel: StudentDetailsViewModel(
-                    context: context,
-                    instrument: instrument,
-                    editingCoordinator: UIApplication.shared
-                ))
-            )
-        }
-
-        return .addressDetails(AddressDetailsView())
+    private func step(for context: RequestLessonPlanContextProtocol) -> Step {
+        [
+            AddressDetailsView(context: context).map(Step.addressDetails),
+            StudentDetailsView(context: context, editingCoordinator: UIApplication.shared).map(Step.studentDetails)
+        ]
+        .lazy.compactMap { $0 }.first ?? instrumentSelectionStep(context: context, instrumentProvider: instrumentProvider)
     }
 }
 

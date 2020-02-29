@@ -11,4 +11,12 @@ final class RequestLessonPlanContext: RequestLessonPlanContextProtocol {
     var instrument: Instrument? { didSet { updateHandler?(self) } }
     var student: Student? { didSet { updateHandler?(self) } }
     var updateHandler: Handler<RequestLessonPlanContextProtocol>?
+
+    init(
+        instrument: Instrument? = nil,
+        student: Student? = nil
+    ) {
+        self.instrument = instrument
+        self.student = student
+    }
 }

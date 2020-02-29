@@ -45,6 +45,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
         if uiView.text != self.text {
             uiView.text = self.text
         }
+        uiView.font = .rythmicoFont(.body)
         UITextViewWrapper.recalculateHeight(view: uiView, placeholder: placeholder, result: $calculatedHeight)
     }
 
@@ -131,11 +132,5 @@ struct MultilineTextField: View {
                 Text(placeholder).rythmicoFont(.body).foregroundColor(.rythmicoGray30)
             }
         }
-    }
-}
-
-extension MultilineTextField {
-    init(_ viewData: TextFieldViewData) {
-        self.init(viewData.placeholder, text: viewData.text, onEditingChanged: viewData.onEditingChanged)
     }
 }

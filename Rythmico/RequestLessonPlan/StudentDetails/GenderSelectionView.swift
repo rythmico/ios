@@ -2,7 +2,6 @@ import SwiftUI
 
 struct GenderSelectionView: View {
     @Binding var selection: Gender?
-    @State private var selectionChangeUpdater = false
 
     var body: some View {
         HStack(spacing: 10) {
@@ -11,22 +10,23 @@ struct GenderSelectionView: View {
                     Text(gender.name)
                         .rythmicoFont(self.textStyle(for: gender))
                         .foregroundColor(self.textColor(for: gender))
+                        .animation(.none)
                     Spacer()
                     gender.icon
                         .renderingMode(.template)
                         .foregroundColor(self.iconColor(for: gender))
                 }
-                .modifier(self.containerModifier(for: gender).animation(.easeInOut(duration: .durationShort)))
-                .onTapGesture {
-                    self.selection = gender
-                    self.selectionChangeUpdater.toggle()
-                }
+                .modifier(
+                    self.containerModifier(for: gender)
+                        .animation(.easeInOut(duration: .durationShort))
+                )
+                .onTapGesture { self.selection = gender }
             }
         }
     }
 
     private func textColor(for gender: Gender) -> Color {
-        selection == gender ? .rythmicoPurple : .rythmicoForeground
+        selection == gender ? .accentColor : .rythmicoForeground
     }
 
     private func textStyle(for gender: Gender) -> Font.TextStyle {
@@ -34,12 +34,12 @@ struct GenderSelectionView: View {
     }
 
     private func iconColor(for gender: Gender) -> Color {
-        selection == gender ? .rythmicoPurple : .rythmicoGray90
+        selection == gender ? .accentColor : .rythmicoGray90
     }
 
     private func containerModifier(for gender: Gender) -> RoundedThickOutlineContainer {
         selection == gender
-            ? RoundedThickOutlineContainer(backgroundColor: .rythmicoPurple, borderColor: .rythmicoPurple)
+            ? RoundedThickOutlineContainer(backgroundColor: .accentColor, borderColor: .accentColor)
             : RoundedThickOutlineContainer()
     }
 }

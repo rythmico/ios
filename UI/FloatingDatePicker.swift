@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct FloatingDatePicker: View {
-    var viewData: DatePickerViewData
+    var selection: Binding<Date>
     var doneButtonAction: () -> Void
 
     var body: some View {
@@ -15,7 +15,11 @@ struct FloatingDatePicker: View {
                 .padding(.horizontal, .spacingMedium)
                 .padding(.top, .spacingExtraSmall)
             }
-            DatePicker(viewData).labelsHidden()
+            DatePicker(
+                "",
+                selection: self.selection,
+                displayedComponents: .date
+            ).labelsHidden()
         }
         .background(Color.systemLightGray.edgesIgnoringSafeArea(.bottom))
         .transition(.move(edge: .bottom))
