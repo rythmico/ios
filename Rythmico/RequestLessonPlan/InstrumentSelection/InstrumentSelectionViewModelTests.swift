@@ -5,7 +5,7 @@ import struct SwiftUI.Image
 final class InstrumentSelectionViewModelTests: XCTestCase {
     func testInstrumentsProvidedAppear() {
         let context = RequestLessonPlanContext()
-        let instrumentProvider = InstrumentProviderStub(instruments: [
+        let instrumentProvider = InstrumentSelectionListProviderStub(instruments: [
             Instrument(id: "ABC", name: "Violin", icon: Image(systemSymbol: ._00Circle)),
             Instrument(id: "DEF", name: "Guitar", icon: Image(systemSymbol: ._00CircleFill))
         ])
