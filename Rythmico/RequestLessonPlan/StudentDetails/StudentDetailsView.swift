@@ -2,95 +2,188 @@ import SwiftUI
 import ViewModel
 import KeyboardObserver
 import Sugar
+import Then
 
-struct StudentDetailsViewData {
-    var isEditing: Bool
-    var selectedInstrumentName: String
-    var nameTextFieldViewData: TextFieldViewData
-    var dateOfBirthTextFieldViewData: TextFieldViewData
-    var datePickerViewData: DatePickerViewData?
-    var genderSelection: Binding<Gender?>
-    var aboutNameTextPart: MultiStyleText.Part
-    var aboutTextFieldViewData: TextFieldViewData
-    var nextButtonAction: Action?
-}
-
-struct StudentDetailsView: View, ViewModelable {
-    @ObservedObject var viewModel: StudentDetailsViewModel
-
-    var body: some View {
-        ZStack {
-            TitleSubtitleContentView(
-                title: "Student Details",
-                subtitle: !viewData.isEditing ? subtitle : []
-            ) {
-                VStack(spacing: 0) {
-                    ScrollView(showsIndicators: false) {
-                        VStack(spacing: 0) {
-                            VStack(alignment: .leading, spacing: .spacingLarge) {
-                                TitleContentView(title: "Full Name") {
-                                    TextField(self.viewData.nameTextFieldViewData)
-                                        .textContentType(.name)
-                                        .autocapitalization(.words)
-                                        .rythmicoFont(.body)
-                                        .accentColor(.rythmicoPurple)
-                                        .modifier(RoundedThinOutlineContainer())
-                                }
-                                TitleContentView(title: "Date of Birth") {
-                                    TextField(self.viewData.dateOfBirthTextFieldViewData)
-                                        .rythmicoFont(.body)
-                                        .modifier(RoundedThinOutlineContainer())
-                                }
-                                TitleContentView(title: "Gender") {
-                                    GenderSelectionView(selection: self.viewData.genderSelection)
-                                }
-                                TitleContentView(title: [.init("About "), self.viewData.aboutNameTextPart]) {
-                                    MultilineTextField(self.viewData.aboutTextFieldViewData)
-                                        .accentColor(.rythmicoPurple)
-                                        .modifier(RoundedThinOutlineContainer())
-                                }
-                            }
-                            Rectangle().fill(Color.clear).frame(height: .spacingMedium)
-                        }
-                    }
-                    .avoidingKeyboard()
-
-                    ZStack(alignment: .bottom) {
-                        self.viewData.nextButtonAction.map {
-                            FloatingButton(title: "Next", action: $0)
-                            .padding(.horizontal, -.spacingMedium)
-                        }
-
-                        self.viewData.datePickerViewData.map {
-                            FloatingDatePicker(
-                                viewData: $0,
-                                doneButtonAction: self.viewModel.endEditingDateOfBirth
-                            )
-                            .padding(.horizontal, -.spacingMedium)
-                        }
-                    }
-                }
-                .animation(.easeInOut(duration: .durationMedium), value: self.viewData.datePickerViewData != nil)
-                .animation(.easeInOut(duration: .durationShort), value: self.viewData.nextButtonAction != nil)
-            }
-            .animation(.easeInOut(duration: .durationMedium), value: viewData.isEditing)
-        }
-        .onDisappear(perform: UIApplication.shared.endEditing)
+struct StudentDetailsView: View {
+    private enum Const {
+        // 10 years old
+        static let averageStudentAge: TimeInterval = 10 * 365 * 24 * 3600
     }
 
+    private let context: RequestLessonPlanContextProtocol
+    private let instrument: Instrument
+    private let editingCoordinator: EditingCoordinator
+    private let dateFormatter = DateFormatter().then { $0.dateStyle = .long }
+
+    init?(
+        context: RequestLessonPlanContextProtocol,
+        editingCoordinator: EditingCoordinator
+    ) {
+        guard let instrument = context.instrument else {
+            return nil
+        }
+        self.context = context
+        self.instrument = instrument
+        self.editingCoordinator = editingCoordinator
+    }
+
+    // MARK: - Subtitle -
+    var selectedInstrumentName: String { instrument.name }
     var subtitle: [MultiStyleText.Part] {
-        [.init("Enter the details of the student who will learn "), .init(viewData.selectedInstrumentName, weight: .bold)]
+        !isEditing
+            ? [
+                .init("Enter the details of the student who will learn "),
+                .init(selectedInstrumentName, weight: .bold)
+            ]
+            : []
+    }
+
+    @State private var isEditing = false
+
+    // MARK: - Name -
+    @State var name = ""
+
+    func textFieldEditingChanged(_ isEditing: Bool) {
+        if isEditing {
+            self.endEditingDateOfBirth()
+        }
+        self.isEditing = isEditing
+    }
+
+    // MARK: - Date of Birth -
+    @State
+    var dateOfBirth: Date?
+    var dateOfBirthText: String? { dateOfBirth.map(dateFormatter.string(from:)) }
+    var dateOfBirthPlaceholderText: String { dateFormatter.string(from: dateOfBirthPlaceholder) }
+
+    func startEditingDateOfBirth() {
+        editingCoordinator.endEditing()
+        isDateOfBirthPickerHidden = false
+        isEditing = true
+
+        // set date of birth to initial value on first edit
+        if dateOfBirth == nil {
+            dateOfBirth = dateOfBirthPlaceholder
+        }
+    }
+
+    func endEditingDateOfBirth() {
+        isDateOfBirthPickerHidden = true
+        isEditing = false
+    }
+
+    @State
+    private var isDateOfBirthPickerHidden = true
+    private let dateOfBirthPlaceholder = Date().addingTimeInterval(-Const.averageStudentAge)
+    private func dateFieldEditingChanged(_ isEditing: Bool) { if isEditing { startEditingDateOfBirth() } }
+
+    // MARK: - Gender -
+    @State var gender: Gender?
+
+    // MARK: - About -
+    @State
+    var about = ""
+    var aboutNameTextPart: MultiStyleText.Part {
+        let firstNameComponent = name
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .components(separatedBy: " ")
+            .first?
+            .nilIfEmpty
+
+        return .init(
+            firstNameComponent ?? "Student",
+            weight: .regular,
+            color: firstNameComponent != nil ? .rythmicoPurple : .rythmicoForeground
+        )
+    }
+
+    // MARK: - Next Button -
+    var nextButtonAction: Action? {
+        guard
+            let name = name.trimmingCharacters(in: .whitespacesAndNewlines).nilIfEmpty,
+            let dateOfBirth = dateOfBirth,
+            let gender = gender
+        else {
+            return nil
+        }
+
+        return {
+            self.context.student = Student(
+                name: name,
+                dateOfBirth: dateOfBirth,
+                gender: gender,
+                about: self.about
+            )
+        }
+    }
+
+    // MARK: - Body -
+    var body: some View {
+        TitleSubtitleContentView(title: "Student Details", subtitle: subtitle) {
+            VStack(spacing: 0) {
+                ScrollView(showsIndicators: false) {
+                    VStack(alignment: .leading, spacing: .spacingLarge) {
+                        TitleContentView(title: "Full Name") {
+                            TextField("Enter Name...", text: $name, onEditingChanged: textFieldEditingChanged)
+                                .textContentType(.name)
+                                .autocapitalization(.words)
+                                .modifier(RoundedThinOutlineContainer())
+                        }
+                        TitleContentView(title: "Date of Birth") {
+                            TextField(
+                                dateOfBirthPlaceholderText,
+                                text: .constant(dateOfBirthText ?? ""),
+                                onEditingChanged: dateFieldEditingChanged
+                            ).modifier(RoundedThinOutlineContainer())
+                        }
+                        TitleContentView(title: "Gender") {
+                            GenderSelectionView(selection: $gender)
+                        }
+                        TitleContentView(title: [.init("About "), aboutNameTextPart]) {
+                            MultilineTextField(
+                                "Existing instrument prowess etc.",
+                                text: $about,
+                                onEditingChanged: textFieldEditingChanged
+                            ).modifier(RoundedThinOutlineContainer())
+                        }
+                    }
+                    .rythmicoFont(.body)
+                    .accentColor(.rythmicoPurple)
+                    .inset(.bottom, .spacingMedium)
+                }
+                .avoidingKeyboard()
+
+                ZStack(alignment: .bottom) {
+                    nextButtonAction.map {
+                        FloatingButton(title: "Next", action: $0).padding(.horizontal, -.spacingMedium)
+                    }
+
+                    if !isDateOfBirthPickerHidden {
+                        FloatingDatePicker(
+                            selection: Binding(
+                                get: { self.dateOfBirth ?? self.dateOfBirthPlaceholder },
+                                set: { self.dateOfBirth = $0 }
+                            ),
+                            doneButtonAction: endEditingDateOfBirth
+                        ).padding(.horizontal, -.spacingMedium)
+                    }
+                }
+            }
+            .animation(.easeInOut(duration: .durationMedium), value: isDateOfBirthPickerHidden)
+            .animation(.easeInOut(duration: .durationShort), value: nextButtonAction != nil)
+        }
+        .animation(.easeInOut(duration: .durationMedium), value: isEditing)
+        .onDisappear(perform: editingCoordinator.endEditing)
     }
 }
 
 struct StudentDetailsView_Preview: PreviewProvider {
     static var previews: some View {
         StudentDetailsView(
-            viewModel: StudentDetailsViewModel(
-                context: RequestLessonPlanContext(),
-                instrument: Instrument(id: "Piano", name: "Piano", icon: Image(decorative: Asset.instrumentIconPiano.name)),
-                editingCoordinator: UIApplication.shared
-            )
+            context: RequestLessonPlanContext(
+                instrument: Instrument(id: "Piano", name: "Piano", icon: Image(decorative: Asset.instrumentIconPiano.name))
+            ),
+            editingCoordinator: UIApplication.shared
         )
     }
 }
