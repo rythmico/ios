@@ -37,7 +37,7 @@ final class RequestLessonPlanViewModel: ViewModelObject<RequestLessonPlanViewDat
     private func step(for context: RequestLessonPlanContextProtocol) -> Step {
         [
             AddressDetailsView(context: context).map(Step.addressDetails),
-            StudentDetailsView(context: context, editingCoordinator: UIApplication.shared).map(Step.studentDetails)
+            StudentDetailsView(context: context, editingCoordinator: UIApplication.shared, dispatchQueue: .main).map(Step.studentDetails)
         ]
         .lazy.compactMap { $0 }.first ?? instrumentSelectionStep(context: context, instrumentProvider: instrumentProvider)
     }

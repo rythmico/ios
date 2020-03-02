@@ -1,10 +1,9 @@
 import SwiftUI
-import ViewModel
 import KeyboardObserver
 import Sugar
 import Then
 
-struct StudentDetailsView: View {
+struct StudentDetailsView: View, TestableView {
     private enum Const {
         // 10 years old
         static let averageStudentAge: TimeInterval = 10 * 365 * 24 * 3600
@@ -14,10 +13,12 @@ struct StudentDetailsView: View {
     private let instrument: Instrument
     private let editingCoordinator: EditingCoordinator
     private let dateFormatter = DateFormatter().then { $0.dateStyle = .long }
+    private let dispatchQueue: DispatchQueue?
 
     init?(
         context: RequestLessonPlanContextProtocol,
-        editingCoordinator: EditingCoordinator
+        editingCoordinator: EditingCoordinator,
+        dispatchQueue: DispatchQueue?
     ) {
         guard let instrument = context.instrument else {
             return nil
@@ -25,7 +26,10 @@ struct StudentDetailsView: View {
         self.context = context
         self.instrument = instrument
         self.editingCoordinator = editingCoordinator
+        self.dispatchQueue = dispatchQueue
     }
+
+    var didAppear: Handler<Self>?
 
     // MARK: - Subtitle -
     var selectedInstrumentName: String { instrument.name }
@@ -57,8 +61,13 @@ struct StudentDetailsView: View {
     var dateOfBirthPlaceholderText: String { dateFormatter.string(from: dateOfBirthPlaceholder) }
 
     func startEditingDateOfBirth() {
-        editingCoordinator.endEditing()
-        isDateOfBirthPickerHidden = false
+        let showDateOfBirthPicker = {
+            self.editingCoordinator.endEditing()
+            self.isDateOfBirthPickerHidden = false
+        }
+
+        dispatchQueue?.async(execute: showDateOfBirthPicker) ?? showDateOfBirthPicker()
+
         isEditing = true
 
         // set date of birth to initial value on first edit
@@ -174,6 +183,7 @@ struct StudentDetailsView: View {
         }
         .animation(.easeInOut(duration: .durationMedium), value: isEditing)
         .onDisappear(perform: editingCoordinator.endEditing)
+        .onAppear { self.didAppear?(self) }
     }
 }
 
@@ -183,7 +193,8 @@ struct StudentDetailsView_Preview: PreviewProvider {
             context: RequestLessonPlanContext(
                 instrument: Instrument(id: "Piano", name: "Piano", icon: Image(decorative: Asset.instrumentIconPiano.name))
             ),
-            editingCoordinator: UIApplication.shared
+            editingCoordinator: UIApplication.shared,
+            dispatchQueue: .main
         )
     }
 }
