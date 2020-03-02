@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "KeyboardObserver",
+        "repositoryURL": "https://github.com/timdonnelly/KeyboardObserver",
+        "state": {
+          "branch": null,
+          "revision": "95167aa393f2d35d6fb424a20fbebeb29a4b40e1",
+          "version": "0.1.2"
+        }
+      },
+      {
         "package": "SFSafeSymbols",
         "repositoryURL": "https://github.com/piknotech/SFSafeSymbols",
         "state": {
@@ -35,6 +44,15 @@
           "branch": null,
           "revision": "7447d1661d938643b0004084367e7bdcb94fdcc4",
           "version": "3.2.8"
+        }
+      },
+      {
+        "package": "ViewInspector",
+        "repositoryURL": "https://github.com/nalexn/ViewInspector",
+        "state": {
+          "branch": null,
+          "revision": "ec943ed718cd293b95f17a2b81e8917d6ed70752",
+          "version": "0.3.8"
         }
       }
     ]

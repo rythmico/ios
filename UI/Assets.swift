@@ -18,6 +18,8 @@
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
+  internal static let genderSignFemale = ImageAsset(name: "gender-sign-female")
+  internal static let genderSignMale = ImageAsset(name: "gender-sign-male")
   internal static let instrumentIconDrums = ImageAsset(name: "instrument-icon-drums")
   internal static let instrumentIconGuitar = ImageAsset(name: "instrument-icon-guitar")
   internal static let instrumentIconPiano = ImageAsset(name: "instrument-icon-piano")

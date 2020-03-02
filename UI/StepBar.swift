@@ -12,7 +12,13 @@ struct StepBar: View {
     var body: some View {
         HStack(spacing: 10) {
             ProgressBar(progress: Double(currentStep) / Double(totalSteps))
-            Text("\(currentStep) / \(totalSteps)").rythmicoFont(.footnote).foregroundColor(.rythmicoGray90)
+                .animation(.easeInOut(duration: .durationMedium))
+            Text("\(currentStep) / \(totalSteps)")
+                .rythmicoFont(.footnote)
+                .foregroundColor(.rythmicoGray90)
         }
+        .accessibilityElement()
+        .accessibility(label: Text("Step indicator"))
+        .accessibility(value: Text("\(currentStep) out of \(totalSteps) steps completed"))
     }
 }

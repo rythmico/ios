@@ -13,15 +13,19 @@ struct FontModifier: ViewModifier {
     let textStyle: Font.TextStyle
 
     func body(content: Content) -> some View {
-        let size = textStyle.fontSize * sizeCategory.fontFactor
+        let size = textStyle.fontSize(for: sizeCategory)
         let weight = textStyle.weight(for: legibilityWeight)
         let font = Font.system(size: size, weight: weight, design: .rounded)
         return content.font(font)
     }
 }
 
-private extension Font.TextStyle {
-    var fontSize: CGFloat {
+extension Font.TextStyle {
+    func fontSize(for sizeCategory: ContentSizeCategory) -> CGFloat {
+        regularFontSize * sizeCategory.fontFactor
+    }
+
+    private var regularFontSize: CGFloat {
         switch self {
         case .largeTitle:
             return 30
@@ -34,13 +38,13 @@ private extension Font.TextStyle {
         case .body:
             return 15
         case .callout:
-            return 12
+            return 15
         case .footnote:
             return 11
         case .caption:
             return 10
         @unknown default:
-            return Font.TextStyle.body.fontSize
+            return Font.TextStyle.body.regularFontSize
         }
     }
 
@@ -53,9 +57,9 @@ private extension Font.TextStyle {
         case .subheadline:
             return legibilityWeight == .bold ? .heavy : .semibold
         case .body:
-            return legibilityWeight == .bold ? .semibold : .regular
+            return legibilityWeight == .bold ? .bold : .regular
         case .callout:
-            return .medium
+            return legibilityWeight == .bold ? .heavy : .bold
         case .footnote:
             return legibilityWeight == .bold ? .black : .bold
         case .caption:
@@ -109,7 +113,7 @@ extension UIFont {
             .preferredFontDescriptor(withTextStyle: UIFont.TextStyle(textStyle))
             .addingAttributes(attributes)
             .withDesign(.rounded)!
-        return UIFont(descriptor: descriptor, size: textStyle.fontSize * contentSizeCategory.fontFactor)
+        return UIFont(descriptor: descriptor, size: textStyle.fontSize(for: contentSizeCategory))
     }
 }
 

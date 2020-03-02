@@ -3,7 +3,8 @@ import AuthenticationServices
 
 struct AuthorizationAppleIDButton: View {
     private enum Const {
-        static let defaultHeight: CGFloat = 44
+        static let maxWidth: CGFloat = 350
+        static let height: CGFloat = 44
     }
 
     @Environment(\.colorScheme) private var colorScheme
@@ -18,7 +19,8 @@ struct AuthorizationAppleIDButton: View {
                 Representable()
             }
         }
-        .frame(height: Const.defaultHeight)
+        .frame(maxWidth: Const.maxWidth)
+        .frame(height: Const.height)
     }
 }
 
