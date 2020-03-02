@@ -48,10 +48,9 @@ extension UIColor {
         darkModeVariant: .init(base256Red: 74, green: 75, blue: 75)
     )
 
-    // FIXME: when TextField support placeholder custom colors, use real value rgb(154, 163, 170).
     static let rythmicoGray30 = UIColor(
-        lightModeVariant: .init(base256Red: 195, green: 196, blue: 197),
-        darkModeVariant: .init(base256Red: 90, green: 90, blue: 94)
+        lightModeVariant: .init(base256Red: 154, green: 163, blue: 170),
+        darkModeVariant: .init(base256Red: 77, green: 81, blue: 85)
     )
 
     static let rythmicoGray90 = UIColor(
