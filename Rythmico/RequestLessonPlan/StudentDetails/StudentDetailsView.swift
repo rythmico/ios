@@ -133,14 +133,18 @@ struct StudentDetailsView: View, TestableView {
                 ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading, spacing: .spacingLarge) {
                         TitleContentView(title: "Full Name") {
-                            TextField("Enter Name...", text: $name, onEditingChanged: textFieldEditingChanged)
-                                .textContentType(.name)
-                                .autocapitalization(.words)
-                                .modifier(RoundedThinOutlineContainer())
+                            CustomTextField(
+                                Text("Enter Name...").foregroundColor(.rythmicoGray30),
+                                text: $name,
+                                onEditingChanged: textFieldEditingChanged
+                            )
+                            .textContentType(.name)
+                            .autocapitalization(.words)
+                            .modifier(RoundedThinOutlineContainer())
                         }
                         TitleContentView(title: "Date of Birth") {
-                            TextField(
-                                dateOfBirthPlaceholderText,
+                            CustomTextField(
+                                Text(dateOfBirthPlaceholderText).foregroundColor(.rythmicoGray30),
                                 text: .constant(dateOfBirthText ?? ""),
                                 onEditingChanged: dateFieldEditingChanged
                             ).modifier(RoundedThinOutlineContainer())
