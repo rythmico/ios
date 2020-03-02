@@ -1,0 +1,106 @@
+import SwiftUI
+import Sugar
+import ViewModel
+
+struct OnboardingViewData {
+    struct ErrorAlertViewData: Identifiable {
+        var id = UUID()
+        var message: String
+    }
+
+    var isLoading: Bool = false
+    var isAppleAuthorizationButtonEnabled: Bool { !isLoading }
+    var errorAlertViewData: ErrorAlertViewData? = nil
+}
+
+struct OnboardingView: View, ViewModelable {
+    @ObservedObject var viewModel: OnboardingViewModel
+
+    init(viewModel: OnboardingViewModel) {
+        self.viewModel = viewModel
+    }
+
+    var body: some View {
+        ZStack {
+            Color.rythmicoPurple.edgesIgnoringSafeArea(.all)
+            VStack(spacing: .spacingSmall) {
+                Spacer()
+                VStack(spacing: .spacingSmall) {
+                    Text("Rythmico")
+                        .rythmicoFont(.largeTitle)
+                        .foregroundColor(.white)
+                    Text("Turning kids into the festival headliners of tomorrow")
+                        .rythmicoFont(.subheadline)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.white)
+                }
+                .accessibilityElement(children: .combine)
+                Spacer()
+                if viewData.isLoading {
+                    ActivityIndicator(style: .medium, color: .lightGray)
+                        .frame(width: 44, height: 44)
+                } else {
+                    AuthorizationAppleIDButton()
+                        .environment(\.colorScheme, .dark)
+                        .accessibility(hint: Text("Double tap to sign in with your Apple ID"))
+                        .onTapGesture(perform: viewModel.authenticateWithApple)
+                        .disabled(!viewData.isAppleAuthorizationButtonEnabled)
+                }
+            }
+            .padding()
+            .animation(.easeInOut(duration: .durationMedium), value: viewData.isLoading)
+        }
+        .alert(item: Binding(get: { self.viewData.errorAlertViewData }, set: { _ in self.viewModel.dismissErrorAlert() })) { viewData in
+            Alert(title: Text("An error ocurred"), message: Text(viewData.message))
+        }
+        .onDisappear {
+            UIAccessibility.post(notification: .announcement, argument: "Welcome")
+        }
+    }
+}
+
+struct OnboardingView_Preview: PreviewProvider {
+    static var previewCategorySizes: [ContentSizeCategory] {
+        [
+            ContentSizeCategory.allCases.dropFirst(2).first,
+            ContentSizeCategory.allCases.last
+        ].compactMap { $0 }
+    }
+
+    static var previews: some View {
+        ForEach(previewCategorySizes, id: \.self) {
+            OnboardingView(viewModel: onboardingViewModel).environment(\.sizeCategory, $0)
+        }
+    }
+
+    private static var onboardingViewModel: OnboardingViewModel {
+        OnboardingViewModel(
+            appleAuthorizationService: authorizationService,
+            authenticationService: authenticationService,
+            keychain: keychain
+        )
+    }
+
+    private static var authorizationService: AppleAuthorizationServiceProtocol {
+        let credentials = AppleAuthorizationServiceStub.Credential(
+            userId: "USER_ID",
+            fullName: nil,
+            email: nil,
+            identityToken: "IDENTITY_TOKEN",
+            nonce: "NONCE"
+        )
+        return AppleAuthorizationServiceStub(expectedResult: .success(credentials))
+    }
+
+    private static var authenticationService: AuthenticationServiceProtocol {
+        AuthenticationServiceStub(expectedResult: .failure(.init(reasonCode: .invalidEmail, localizedDescription: "Something went ooopsie!")))
+    }
+
+    private static var keychain: KeychainProtocol {
+        KeychainFake()
+    }
+
+    private static var authenticationAccessTokenProvider: AuthenticationAccessTokenProvider {
+        AuthenticationAccessTokenProviderStub(expectedResult: .success("ACCESS_TOKEN"))
+    }
+}

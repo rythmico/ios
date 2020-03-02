@@ -10,8 +10,8 @@ struct CollectionView<Data: RandomAccessCollection, ID: Hashable, Content: View>
     init(
         _ data: Data,
         id: KeyPath<Data.Element, ID>,
-        topPadding: CGFloat? = 12,
-        spacing: CGFloat? = 12,
+        topPadding: CGFloat? = .spacingExtraSmall,
+        spacing: CGFloat? = .spacingSmall,
         @ViewBuilder content: @escaping (Data.Element) -> Content
     ) {
         self.data = data
