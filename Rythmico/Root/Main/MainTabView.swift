@@ -1,17 +1,22 @@
 import SwiftUI
 import class FirebaseAuth.Auth
 import SFSafeSymbols
-import ViewModel
 
-struct MainTabViewData {
-    var lessonRequestView: RequestLessonPlanView? = nil
-}
+struct MainTabView: View, TestableView {
+    private let accessTokenProvider: AuthenticationAccessTokenProvider
 
-struct MainTabView: View, ViewModelable {
-    @ObservedObject var viewModel: MainTabViewModel
+    @State private(set) var lessonRequestView: RequestLessonPlanView?
 
-    init(viewModel: MainTabViewModel) {
-        self.viewModel = viewModel
+    var didAppear: ((Self) -> Void)?
+
+    func presentRequestLessonFlow() {
+        lessonRequestView = RequestLessonPlanView(
+            viewModel: .init(instrumentProvider: InstrumentSelectionListProviderFake())
+        )
+    }
+
+    init(accessTokenProvider: AuthenticationAccessTokenProvider) {
+        self.accessTokenProvider = accessTokenProvider
     }
 
     var body: some View {
@@ -20,7 +25,7 @@ struct MainTabView: View, ViewModelable {
                 Color.clear
                     .navigationBarTitle("Lessons", displayMode: .large)
                     .navigationBarItems(
-                        trailing: Button(action: viewModel.presentRequestLessonFlow) {
+                        trailing: Button(action: presentRequestLessonFlow) {
                             Image(systemSymbol: .plusCircleFill).font(.system(size: 24))
                                 .padding(.vertical, .spacingExtraSmall)
                                 .padding(.horizontal, .spacingExtraLarge)
@@ -55,12 +60,13 @@ struct MainTabView: View, ViewModelable {
             }
         }
         .accentColor(.rythmicoPurple)
-        .betterSheet(item: Binding(get: { self.viewData.lessonRequestView }, set: { _ in self.viewModel.dismissRequestLessonFlow() })) { $0 }
+        .betterSheet(item: $lessonRequestView, content: { $0 })
+        .onAppear { self.didAppear?(self) }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView(viewModel: MainTabViewModel(accessTokenProvider: AuthenticationAccessTokenProviderDummy()))
+        MainTabView(accessTokenProvider: AuthenticationAccessTokenProviderDummy())
     }
 }
