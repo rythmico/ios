@@ -1,5 +1,4 @@
 import SwiftUI
-import ViewModel
 
 struct AddressDetailsView: View {
     private let context: RequestLessonPlanContextProtocol
