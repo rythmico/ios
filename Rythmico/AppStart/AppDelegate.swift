@@ -65,7 +65,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
                 keychain: Keychain.localKeychain
             ),
             authorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
-            authorizationCredentialRevocationObserving: AppleAuthorizationCredentialRevocationObserver(
+            authorizationCredentialRevocationNotifying: AppleAuthorizationCredentialRevocationNotifier(
                 notificationCenter: NotificationCenter.default
             ),
             authenticationAccessTokenProviderObserving: AuthenticationAccessTokenProviderObserver(

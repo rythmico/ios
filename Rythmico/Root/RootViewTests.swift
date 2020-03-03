@@ -14,7 +14,7 @@ final class RootViewTests: XCTestCase {
     func testInitialState() {
         let keychain = KeychainFake()
         let credentialStateProvider = AppleAuthorizationCredentialStateFetcherStub(expectedState: .notFound)
-        let credentialRevocationObserver = AppleAuthorizationCredentialRevocationObserverFake()
+        let credentialRevocationNotifier = AppleAuthorizationCredentialRevocationNotifierFake()
         let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(currentProvider: nil)
         let deauthenticationService = DeauthenticationServiceSpy(accessTokenProviderObserver: accessTokenProviderObserver)
 
@@ -22,7 +22,7 @@ final class RootViewTests: XCTestCase {
             keychain: keychain,
             onboardingViewModel: onboardingViewModelDummy,
             authorizationCredentialStateProvider: credentialStateProvider,
-            authorizationCredentialRevocationObserving: credentialRevocationObserver,
+            authorizationCredentialRevocationNotifying: credentialRevocationNotifier,
             authenticationAccessTokenProviderObserving: accessTokenProviderObserver,
             deauthenticationService: deauthenticationService
         )
@@ -39,7 +39,7 @@ final class RootViewTests: XCTestCase {
         let keychain = KeychainFake()
         keychain.appleAuthorizationUserId = "USER_ID"
         let credentialStateProvider = AppleAuthorizationCredentialStateFetcherStub(expectedState: .notFound)
-        let credentialRevocationObserver = AppleAuthorizationCredentialRevocationObserverFake()
+        let credentialRevocationNotifier = AppleAuthorizationCredentialRevocationNotifierFake()
         let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(currentProvider: AuthenticationAccessTokenProviderDummy())
         let deauthenticationService = DeauthenticationServiceSpy(accessTokenProviderObserver: accessTokenProviderObserver)
 
@@ -47,7 +47,7 @@ final class RootViewTests: XCTestCase {
             keychain: keychain,
             onboardingViewModel: onboardingViewModelDummy,
             authorizationCredentialStateProvider: credentialStateProvider,
-            authorizationCredentialRevocationObserving: credentialRevocationObserver,
+            authorizationCredentialRevocationNotifying: credentialRevocationNotifier,
             authenticationAccessTokenProviderObserving: accessTokenProviderObserver,
             deauthenticationService: deauthenticationService
         )
@@ -63,7 +63,7 @@ final class RootViewTests: XCTestCase {
         let keychain = KeychainFake()
         keychain.appleAuthorizationUserId = "USER_ID"
         let credentialStateProvider = AppleAuthorizationCredentialStateFetcherStub(expectedState: .revoked)
-        let credentialRevocationObserver = AppleAuthorizationCredentialRevocationObserverFake()
+        let credentialRevocationNotifier = AppleAuthorizationCredentialRevocationNotifierFake()
         let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(currentProvider: AuthenticationAccessTokenProviderDummy())
         let deauthenticationService = DeauthenticationServiceSpy(accessTokenProviderObserver: accessTokenProviderObserver)
 
@@ -71,7 +71,7 @@ final class RootViewTests: XCTestCase {
             keychain: keychain,
             onboardingViewModel: onboardingViewModelDummy,
             authorizationCredentialStateProvider: credentialStateProvider,
-            authorizationCredentialRevocationObserving: credentialRevocationObserver,
+            authorizationCredentialRevocationNotifying: credentialRevocationNotifier,
             authenticationAccessTokenProviderObserving: accessTokenProviderObserver,
             deauthenticationService: deauthenticationService
         )
@@ -88,7 +88,7 @@ final class RootViewTests: XCTestCase {
         let keychain = KeychainFake()
         keychain.appleAuthorizationUserId = "USER_ID"
         let credentialStateProvider = AppleAuthorizationCredentialStateFetcherStub(expectedState: .authorized)
-        let credentialRevocationObserver = AppleAuthorizationCredentialRevocationObserverFake()
+        let credentialRevocationNotifier = AppleAuthorizationCredentialRevocationNotifierFake()
         let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(currentProvider: AuthenticationAccessTokenProviderDummy())
         let deauthenticationService = DeauthenticationServiceSpy(accessTokenProviderObserver: accessTokenProviderObserver)
 
@@ -96,13 +96,13 @@ final class RootViewTests: XCTestCase {
             keychain: keychain,
             onboardingViewModel: onboardingViewModelDummy,
             authorizationCredentialStateProvider: credentialStateProvider,
-            authorizationCredentialRevocationObserving: credentialRevocationObserver,
+            authorizationCredentialRevocationNotifying: credentialRevocationNotifier,
             authenticationAccessTokenProviderObserving: accessTokenProviderObserver,
             deauthenticationService: deauthenticationService
         )
 
         XCTAssertView(view) { view in
-            credentialRevocationObserver.revocationHandler?()
+            credentialRevocationNotifier.revocationHandler?()
             XCTAssertNotNil(view.state.onboardingView)
             XCTAssertNil(view.state.mainTabView)
             XCTAssertNil(keychain.appleAuthorizationUserId)
@@ -114,7 +114,7 @@ final class RootViewTests: XCTestCase {
         let keychain = KeychainFake()
         keychain.appleAuthorizationUserId = "USER_ID"
         let credentialStateProvider = AppleAuthorizationCredentialStateFetcherStub(expectedState: .authorized)
-        let credentialRevocationObserver = AppleAuthorizationCredentialRevocationObserverFake()
+        let credentialRevocationNotifier = AppleAuthorizationCredentialRevocationNotifierFake()
         let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(currentProvider: AuthenticationAccessTokenProviderDummy())
         let deauthenticationService = DeauthenticationServiceSpy(accessTokenProviderObserver: accessTokenProviderObserver)
 
@@ -122,7 +122,7 @@ final class RootViewTests: XCTestCase {
             keychain: keychain,
             onboardingViewModel: onboardingViewModelDummy,
             authorizationCredentialStateProvider: credentialStateProvider,
-            authorizationCredentialRevocationObserving: credentialRevocationObserver,
+            authorizationCredentialRevocationNotifying: credentialRevocationNotifier,
             authenticationAccessTokenProviderObserving: accessTokenProviderObserver,
             deauthenticationService: deauthenticationService
         )
@@ -140,7 +140,7 @@ final class RootViewTests: XCTestCase {
         let keychain = KeychainFake()
         keychain.appleAuthorizationUserId = "USER_ID"
         let credentialStateProvider = AppleAuthorizationCredentialStateFetcherStub(expectedState: .authorized)
-        let credentialRevocationObserver = AppleAuthorizationCredentialRevocationObserverFake()
+        let credentialRevocationNotifier = AppleAuthorizationCredentialRevocationNotifierFake()
         let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(currentProvider: AuthenticationAccessTokenProviderDummy())
         let deauthenticationService = DeauthenticationServiceSpy(accessTokenProviderObserver: accessTokenProviderObserver)
 
@@ -148,7 +148,7 @@ final class RootViewTests: XCTestCase {
             keychain: keychain,
             onboardingViewModel: onboardingViewModelDummy,
             authorizationCredentialStateProvider: credentialStateProvider,
-            authorizationCredentialRevocationObserving: credentialRevocationObserver,
+            authorizationCredentialRevocationNotifying: credentialRevocationNotifier,
             authenticationAccessTokenProviderObserving: accessTokenProviderObserver,
             deauthenticationService: deauthenticationService
         )

@@ -2,11 +2,11 @@ import Foundation
 import class AuthenticationServices.ASAuthorizationAppleIDProvider
 import Sugar
 
-protocol AppleAuthorizationCredentialRevocationObserving: AnyObject {
+protocol AppleAuthorizationCredentialRevocationNotifying: AnyObject {
     var revocationHandler: Action? { get set }
 }
 
-final class AppleAuthorizationCredentialRevocationObserver: AppleAuthorizationCredentialRevocationObserving {
+final class AppleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifying {
     private let notificationCenter: NotificationCenterProtocol
     private var token: NSObjectProtocol?
 
