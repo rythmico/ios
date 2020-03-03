@@ -1,6 +1,5 @@
-import UIKit
+import SwiftUI
 import Firebase
-import class SwiftUI.UIHostingController
 import Then
 import BetterSheet
 
@@ -57,7 +56,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    private var rootView: RootView {
+    private var rootView: some View {
         RootView(
             keychain: Keychain.localKeychain,
             onboardingViewModel: OnboardingViewModel(
