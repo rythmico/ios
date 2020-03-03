@@ -16,7 +16,7 @@ final class RootViewModel: ViewModelObject<RootViewData> {
     ) {
         func viewData(for provider: AuthenticationAccessTokenProvider?) -> ViewData {
             if let provider = provider {
-                return .authenticated(MainTabView(viewModel: MainTabViewModel(accessTokenProvider: provider)))
+                return .authenticated(MainTabView(accessTokenProvider: provider))
             } else {
                 return .unauthenticated(OnboardingView(viewModel: onboardingViewModel))
             }
