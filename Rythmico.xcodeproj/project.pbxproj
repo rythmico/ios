@@ -46,7 +46,7 @@
 		D535550223E0FD9F005A20EB /* NotificationCenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547223DF2AE2005A20EB /* NotificationCenterSpy.swift */; };
 		D535550323E0FD9F005A20EB /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BBF23C689BA00B6FCB1 /* Typealiases.swift */; };
 		D535553623E105A5005A20EB /* OnboardingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553523E105A5005A20EB /* OnboardingViewModelTests.swift */; };
-		D535553823E116C9005A20EB /* RootViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553723E116C9005A20EB /* RootViewModelTests.swift */; };
+		D535553823E116C9005A20EB /* RootViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553723E116C9005A20EB /* RootViewTests.swift */; };
 		D535554723E20076005A20EB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554623E20076005A20EB /* Colors.swift */; };
 		D535554C23E23EA7005A20EB /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = D535554B23E23EA7005A20EB /* Then */; };
 		D535554E23E38763005A20EB /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554D23E38763005A20EB /* Window.swift */; };
@@ -116,7 +116,6 @@
 		D5C23A74240EFDCB007DED63 /* MainTabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03341B4223ABB1E7009AE8A8 /* MainTabViewTests.swift */; };
 		D5C23A76240F0186007DED63 /* TestDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C23A75240F0186007DED63 /* TestDelegate.swift */; };
 		D5E04B1923BED80700A161BB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* Fonts.swift */; };
-		D5E04B1B23BEE01B00A161BB /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1A23BEE01B00A161BB /* RootViewModel.swift */; };
 		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
 		D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF88B523FB706C0072BD03 /* ProgressBar.swift */; };
 		D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5065C23FF16AA00CA4094 /* BackButton.swift */; };
@@ -255,7 +254,7 @@
 		D53554F823E0FD77005A20EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D535552B23E10557005A20EB /* RythmicoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RythmicoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D535553523E105A5005A20EB /* OnboardingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelTests.swift; sourceTree = "<group>"; };
-		D535553723E116C9005A20EB /* RootViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModelTests.swift; sourceTree = "<group>"; };
+		D535553723E116C9005A20EB /* RootViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewTests.swift; sourceTree = "<group>"; };
 		D535553A23E1DD1A005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialStateProviderDoubles.swift; sourceTree = "<group>"; };
 		D535553C23E1DE15005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialRevocationObserverDoubles.swift; sourceTree = "<group>"; };
 		D535554023E1DF8B005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderObserverDoubles.swift; sourceTree = "<group>"; };
@@ -302,7 +301,6 @@
 		D5BA171123D7AB3B00954D50 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		D5C23A75240F0186007DED63 /* TestDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDelegate.swift; sourceTree = "<group>"; };
 		D5E04B1823BED80700A161BB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
-		D5E04B1A23BEE01B00A161BB /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D5EF88B523FB706C0072BD03 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D5F5065C23FF16AA00CA4094 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
@@ -628,8 +626,7 @@
 			isa = PBXGroup;
 			children = (
 				D5BA170F23D7A18900954D50 /* RootView.swift */,
-				D5E04B1A23BEE01B00A161BB /* RootViewModel.swift */,
-				D535553723E116C9005A20EB /* RootViewModelTests.swift */,
+				D535553723E116C9005A20EB /* RootViewTests.swift */,
 				D54317F123FDB03F00CB1493 /* Onboarding */,
 				D54317F023FDB03300CB1493 /* Main */,
 				D535547A23DF3E81005A20EB /* Keychain */,
@@ -1008,7 +1005,6 @@
 				D5AAF7DB23FB347C00E410F2 /* CollectionView.swift in Sources */,
 				D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */,
 				D5F5068C24046B1400CA4094 /* Spacing.swift in Sources */,
-				D5E04B1B23BEE01B00A161BB /* RootViewModel.swift in Sources */,
 				D535547923DF3A7C005A20EB /* Keychain.swift in Sources */,
 				D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */,
 				D5F506B62406360900CA4094 /* Student.swift in Sources */,
@@ -1048,7 +1044,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D535553823E116C9005A20EB /* RootViewModelTests.swift in Sources */,
+				D535553823E116C9005A20EB /* RootViewTests.swift in Sources */,
 				D5C23A74240EFDCB007DED63 /* MainTabViewTests.swift in Sources */,
 				D53555E623E5383C005A20EB /* AppleAuthorizationServiceTests.swift in Sources */,
 				D514750F240C96F0002EE20C /* XCTAssertView.swift in Sources */,
