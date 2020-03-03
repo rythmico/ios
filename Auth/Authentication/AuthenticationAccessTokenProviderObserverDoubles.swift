@@ -1,13 +1,9 @@
+import Combine
+
 final class AuthenticationAccessTokenProviderObserverStub: AuthenticationAccessTokenProviderObserving {
-    let expectedProvider: AuthenticationAccessTokenProvider?
+    @Published var currentProvider: AuthenticationAccessTokenProvider?
 
-    var statusDidChangeHandler: StatusDidChangeHandler? {
-        didSet {
-            statusDidChangeHandler?(expectedProvider)
-        }
-    }
-
-    init(expectedProvider: AuthenticationAccessTokenProvider?) {
-        self.expectedProvider = expectedProvider
+    init(currentProvider: AuthenticationAccessTokenProvider?) {
+        self.currentProvider = currentProvider
     }
 }

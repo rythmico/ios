@@ -1,41 +1,30 @@
 import Foundation
+import Combine
 import Sugar
 
-protocol AuthenticationAccessTokenProviderObserving: AnyObject {
-    typealias StatusDidChangeHandler = Handler<AuthenticationAccessTokenProvider?>
-    var statusDidChangeHandler: StatusDidChangeHandler? { get set }
+protocol AuthenticationAccessTokenProviderObserving: ObservableObject {
+    var currentProvider: AuthenticationAccessTokenProvider? { get }
 }
 
 final class AuthenticationAccessTokenProviderObserver: AuthenticationAccessTokenProviderObserving {
     private let broadcast: AuthenticationAccessTokenProviderBroadcastProtocol
     private var token: AuthenticationAccessTokenProviderBroadcastProtocol.ListenerToken?
 
-    var statusDidChangeHandler: StatusDidChangeHandler? {
-        didSet {
-            handlerDidChange()
-        }
-    }
+    @Published private(set) var currentProvider: AuthenticationAccessTokenProvider?
 
     init(broadcast: AuthenticationAccessTokenProviderBroadcastProtocol) {
         self.broadcast = broadcast
+        self.currentProvider = broadcast.currentProvider
+        subscribeToBroadcast()
     }
 
-    private func handlerDidChange() {
-        removeExistingTokenizedHandlerIfNeeded()
-        statusDidChangeHandler?(broadcast.currentProvider)
-        token = broadcast.addStateDidChangeListener { [weak self] provider in
-            self?.statusDidChangeHandler?(provider)
+    private func subscribeToBroadcast() {
+        token = broadcast.addStateDidChangeListener { provider in
+            self.currentProvider = provider
         }
-    }
-
-    private func removeExistingTokenizedHandlerIfNeeded() {
-        guard let token = token else {
-            return
-        }
-        broadcast.removeStateDidChangeListener(token)
     }
 
     deinit {
-        removeExistingTokenizedHandlerIfNeeded()
+        token.map(broadcast.removeStateDidChangeListener)
     }
 }

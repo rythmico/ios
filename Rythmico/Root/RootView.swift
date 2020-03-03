@@ -22,22 +22,32 @@ extension RootView {
     }
 }
 
-struct RootView: View, TestableView {
+struct RootView<AccessTokenProviderObserving>: View, TestableView where
+    AccessTokenProviderObserving: AuthenticationAccessTokenProviderObserving
+{
     private let keychain: KeychainProtocol
     private let onboardingViewModel: OnboardingViewModel
     private let authorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider
     private let authorizationCredentialRevocationObserving: AppleAuthorizationCredentialRevocationObserving
-    private let authenticationAccessTokenProviderObserving: AuthenticationAccessTokenProviderObserving
+    @ObservedObject
+    private var authenticationAccessTokenProviderObserving: AccessTokenProviderObserving
     private let deauthenticationService: DeauthenticationServiceProtocol
 
-    @State private(set) var state: UserState
+    var state: UserState {
+        if let provider = authenticationAccessTokenProviderObserving.currentProvider {
+            return .authenticated(MainTabView(accessTokenProvider: provider))
+        } else {
+            self.keychain.appleAuthorizationUserId = nil
+            return .unauthenticated(OnboardingView(viewModel: self.onboardingViewModel))
+        }
+    }
 
     init(
         keychain: KeychainProtocol,
         onboardingViewModel: OnboardingViewModel,
         authorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider,
         authorizationCredentialRevocationObserving: AppleAuthorizationCredentialRevocationObserving,
-        authenticationAccessTokenProviderObserving: AuthenticationAccessTokenProviderObserving,
+        authenticationAccessTokenProviderObserving: AccessTokenProviderObserving,
         deauthenticationService: DeauthenticationServiceProtocol
     ) {
         self.keychain = keychain
@@ -46,8 +56,6 @@ struct RootView: View, TestableView {
         self.authorizationCredentialRevocationObserving = authorizationCredentialRevocationObserving
         self.authenticationAccessTokenProviderObserving = authenticationAccessTokenProviderObserving
         self.deauthenticationService = deauthenticationService
-
-        self._state = State(initialValue: .unauthenticated(OnboardingView(viewModel: onboardingViewModel)))
     }
 
     var didAppear: Handler<Self>?
@@ -62,15 +70,6 @@ struct RootView: View, TestableView {
     }
 
     private func onAppear() {
-        authenticationAccessTokenProviderObserving.statusDidChangeHandler = { provider in
-            if let provider = provider {
-                self.state = .authenticated(MainTabView(accessTokenProvider: provider))
-            } else {
-                self.keychain.appleAuthorizationUserId = nil
-                self.state = .unauthenticated(OnboardingView(viewModel: self.onboardingViewModel))
-            }
-        }
-
         if let authorizationUserId = keychain.appleAuthorizationUserId {
             authorizationCredentialStateProvider.getCredentialState(forUserID: authorizationUserId) { state in
                 switch state {

@@ -15,7 +15,7 @@ final class RootViewTests: XCTestCase {
         let keychain = KeychainFake()
         let credentialStateProvider = AppleAuthorizationCredentialStateFetcherStub(expectedState: .notFound)
         let credentialRevocationObserver = AppleAuthorizationCredentialRevocationObserverFake()
-        let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(expectedProvider: nil)
+        let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(currentProvider: nil)
         let deauthenticationService = DeauthenticationServiceSpy(accessTokenProviderObserver: accessTokenProviderObserver)
 
         let view = RootView(
@@ -40,7 +40,7 @@ final class RootViewTests: XCTestCase {
         keychain.appleAuthorizationUserId = "USER_ID"
         let credentialStateProvider = AppleAuthorizationCredentialStateFetcherStub(expectedState: .notFound)
         let credentialRevocationObserver = AppleAuthorizationCredentialRevocationObserverFake()
-        let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(expectedProvider: AuthenticationAccessTokenProviderDummy())
+        let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(currentProvider: AuthenticationAccessTokenProviderDummy())
         let deauthenticationService = DeauthenticationServiceSpy(accessTokenProviderObserver: accessTokenProviderObserver)
 
         let view = RootView(
@@ -64,7 +64,7 @@ final class RootViewTests: XCTestCase {
         keychain.appleAuthorizationUserId = "USER_ID"
         let credentialStateProvider = AppleAuthorizationCredentialStateFetcherStub(expectedState: .revoked)
         let credentialRevocationObserver = AppleAuthorizationCredentialRevocationObserverFake()
-        let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(expectedProvider: AuthenticationAccessTokenProviderDummy())
+        let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(currentProvider: AuthenticationAccessTokenProviderDummy())
         let deauthenticationService = DeauthenticationServiceSpy(accessTokenProviderObserver: accessTokenProviderObserver)
 
         let view = RootView(
@@ -89,7 +89,7 @@ final class RootViewTests: XCTestCase {
         keychain.appleAuthorizationUserId = "USER_ID"
         let credentialStateProvider = AppleAuthorizationCredentialStateFetcherStub(expectedState: .authorized)
         let credentialRevocationObserver = AppleAuthorizationCredentialRevocationObserverFake()
-        let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(expectedProvider: AuthenticationAccessTokenProviderDummy())
+        let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(currentProvider: AuthenticationAccessTokenProviderDummy())
         let deauthenticationService = DeauthenticationServiceSpy(accessTokenProviderObserver: accessTokenProviderObserver)
 
         let view = RootView(
@@ -115,7 +115,7 @@ final class RootViewTests: XCTestCase {
         keychain.appleAuthorizationUserId = "USER_ID"
         let credentialStateProvider = AppleAuthorizationCredentialStateFetcherStub(expectedState: .authorized)
         let credentialRevocationObserver = AppleAuthorizationCredentialRevocationObserverFake()
-        let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(expectedProvider: AuthenticationAccessTokenProviderDummy())
+        let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(currentProvider: AuthenticationAccessTokenProviderDummy())
         let deauthenticationService = DeauthenticationServiceSpy(accessTokenProviderObserver: accessTokenProviderObserver)
 
         let view = RootView(
@@ -128,7 +128,7 @@ final class RootViewTests: XCTestCase {
         )
 
         XCTAssertView(view) { view in
-            accessTokenProviderObserver.statusDidChangeHandler?(nil)
+            accessTokenProviderObserver.currentProvider = nil
             XCTAssertNotNil(view.state.onboardingView)
             XCTAssertNil(view.state.mainTabView)
             XCTAssertNil(keychain.appleAuthorizationUserId)
@@ -141,7 +141,7 @@ final class RootViewTests: XCTestCase {
         keychain.appleAuthorizationUserId = "USER_ID"
         let credentialStateProvider = AppleAuthorizationCredentialStateFetcherStub(expectedState: .authorized)
         let credentialRevocationObserver = AppleAuthorizationCredentialRevocationObserverFake()
-        let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(expectedProvider: AuthenticationAccessTokenProviderDummy())
+        let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(currentProvider: AuthenticationAccessTokenProviderDummy())
         let deauthenticationService = DeauthenticationServiceSpy(accessTokenProviderObserver: accessTokenProviderObserver)
 
         let view = RootView(
