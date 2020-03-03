@@ -1,25 +1,29 @@
 import SwiftUI
 import Sugar
-import ViewModel
 
-struct OnboardingViewData {
-    struct ErrorAlertViewData: Identifiable {
-        var id = UUID()
-        var message: String
-    }
+struct OnboardingView: View, TestableView {
+    private let appleAuthorizationService: AppleAuthorizationServiceProtocol
+    private let authenticationService: AuthenticationServiceProtocol
+    private let keychain: KeychainProtocol
 
+    @State
     var isLoading: Bool = false
     var isAppleAuthorizationButtonEnabled: Bool { !isLoading }
-    var errorAlertViewData: ErrorAlertViewData? = nil
-}
 
-struct OnboardingView: View, ViewModelable {
-    @ObservedObject var viewModel: OnboardingViewModel
+    @State
+    var errorMessage: String?
 
-    init(viewModel: OnboardingViewModel) {
-        self.viewModel = viewModel
+    init(
+        appleAuthorizationService: AppleAuthorizationServiceProtocol,
+        authenticationService: AuthenticationServiceProtocol,
+        keychain: KeychainProtocol
+    ) {
+        self.appleAuthorizationService = appleAuthorizationService
+        self.authenticationService = authenticationService
+        self.keychain = keychain
     }
 
+    var didAppear: Handler<Self>?
     var body: some View {
         ZStack {
             Color.rythmicoPurple.edgesIgnoringSafeArea(.all)
@@ -36,25 +40,80 @@ struct OnboardingView: View, ViewModelable {
                 }
                 .accessibilityElement(children: .combine)
                 Spacer()
-                if viewData.isLoading {
+                if isLoading {
                     ActivityIndicator(style: .medium, color: .lightGray)
                         .frame(width: 44, height: 44)
                 } else {
                     AuthorizationAppleIDButton()
                         .environment(\.colorScheme, .dark)
                         .accessibility(hint: Text("Double tap to sign in with your Apple ID"))
-                        .onTapGesture(perform: viewModel.authenticateWithApple)
-                        .disabled(!viewData.isAppleAuthorizationButtonEnabled)
+                        .onTapGesture(perform: authenticateWithApple)
+                        .disabled(!isAppleAuthorizationButtonEnabled)
                 }
             }
             .padding()
-            .animation(.easeInOut(duration: .durationMedium), value: viewData.isLoading)
+            .animation(.easeInOut(duration: .durationMedium), value: isLoading)
         }
-        .alert(item: Binding(get: { self.viewData.errorAlertViewData }, set: { _ in self.viewModel.dismissErrorAlert() })) { viewData in
-            Alert(title: Text("An error ocurred"), message: Text(viewData.message))
+        .alert(item: $errorMessage) {
+            Alert(title: Text("An error ocurred"), message: Text($0))
         }
         .onDisappear {
             UIAccessibility.post(notification: .announcement, argument: "Welcome")
+        }
+        .onAppear { self.didAppear?(self) }
+    }
+
+    func authenticateWithApple() {
+        appleAuthorizationService.requestAuthorization { result in
+            switch result {
+            case .success(let credential):
+                self.keychain.appleAuthorizationUserId = credential.userId
+                self.isLoading = true
+                self.authenticationService.authenticateAppleAccount(with: credential) { result in
+                    self.isLoading = false
+                    switch result {
+                    case .success:
+                        // Firebase's Auth singleton makes this line redundant since it notifies listeners
+                        // about user changes upon sign in. However if services are changed there's
+                        // a chance this line might be needed.
+                        // self.authenticationStatusObserver.statusDidChangeHandler(accessTokenProvider)
+                        break
+                    case .failure(let error):
+                        self.handleAuthenticationError(error)
+                    }
+                }
+            case .failure(let error):
+                self.handleAuthorizationError(error)
+            }
+        }
+    }
+
+    private func handleAuthorizationError(_ error: AppleAuthorizationService.Error) {
+        switch error.code {
+        case .notHandled:
+            preconditionFailure(error.localizedDescription)
+        case .canceled, .failed, .invalidResponse, .unknown:
+            break
+        @unknown default:
+            break
+        }
+    }
+
+    private func handleAuthenticationError(_ error: AuthenticationServiceProtocol.Error) {
+        switch error.reasonCode {
+        case .invalidAPIKey,
+             .appNotAuthorized,
+             .internalError,
+             .operationNotAllowed:
+            preconditionFailure("\(error.localizedDescription) (\(error.reasonCode.rawValue))")
+        case .unknown,
+             .networkError,
+             .tooManyRequests,
+             .invalidCredential,
+             .userDisabled,
+             .invalidEmail,
+             .missingOrInvalidNonce:
+            errorMessage = "\(error.localizedDescription) (\(error.reasonCode.rawValue))"
         }
     }
 }
@@ -69,27 +128,24 @@ struct OnboardingView_Preview: PreviewProvider {
 
     static var previews: some View {
         ForEach(previewCategorySizes, id: \.self) {
-            OnboardingView(viewModel: onboardingViewModel).environment(\.sizeCategory, $0)
+            OnboardingView(
+                appleAuthorizationService: authorizationService,
+                authenticationService: authenticationService,
+                keychain: keychain
+            ).environment(\.sizeCategory, $0)
         }
     }
 
-    private static var onboardingViewModel: OnboardingViewModel {
-        OnboardingViewModel(
-            appleAuthorizationService: authorizationService,
-            authenticationService: authenticationService,
-            keychain: keychain
-        )
-    }
-
     private static var authorizationService: AppleAuthorizationServiceProtocol {
-        let credentials = AppleAuthorizationServiceStub.Credential(
-            userId: "USER_ID",
-            fullName: nil,
-            email: nil,
-            identityToken: "IDENTITY_TOKEN",
-            nonce: "NONCE"
-        )
-        return AppleAuthorizationServiceStub(expectedResult: .success(credentials))
+        AppleAuthorizationServiceStub(expectedResult: .success(
+            AppleAuthorizationServiceStub.Credential(
+                userId: "USER_ID",
+                fullName: nil,
+                email: nil,
+                identityToken: "IDENTITY_TOKEN",
+                nonce: "NONCE"
+            )
+        ))
     }
 
     private static var authenticationService: AuthenticationServiceProtocol {
