@@ -2,7 +2,7 @@ import XCTest
 @testable import Rythmico
 import AuthenticationServices
 
-final class RootViewModelTests: XCTestCase {
+final class RootViewTests: XCTestCase {
     var onboardingViewModelDummy: OnboardingViewModel {
         OnboardingViewModel(
             appleAuthorizationService: AppleAuthorizationServiceDummy(),
@@ -18,7 +18,7 @@ final class RootViewModelTests: XCTestCase {
         let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(expectedProvider: nil)
         let deauthenticationService = DeauthenticationServiceSpy(accessTokenProviderObserver: accessTokenProviderObserver)
 
-        let viewModel = RootViewModel(
+        let view = RootView(
             keychain: keychain,
             onboardingViewModel: onboardingViewModelDummy,
             authorizationCredentialStateProvider: credentialStateProvider,
@@ -27,20 +27,23 @@ final class RootViewModelTests: XCTestCase {
             deauthenticationService: deauthenticationService
         )
 
-        XCTAssertNotNil(viewModel.viewData.onboardingView)
-        XCTAssertNil(viewModel.viewData.mainTabView)
-        XCTAssert(keychain.inMemoryStorage.isEmpty)
-        XCTAssertEqual(deauthenticationService.deauthenticationCount, 0)
+        XCTAssertView(view) { view in
+            XCTAssertNotNil(view.state.onboardingView)
+            XCTAssertNil(view.state.mainTabView)
+            XCTAssert(keychain.inMemoryStorage.isEmpty)
+            XCTAssertEqual(deauthenticationService.deauthenticationCount, 0)
+        }
     }
 
     func testAuthenticationShowsMainTabView() {
         let keychain = KeychainFake()
+        keychain.appleAuthorizationUserId = "USER_ID"
         let credentialStateProvider = AppleAuthorizationCredentialStateFetcherStub(expectedState: .notFound)
         let credentialRevocationObserver = AppleAuthorizationCredentialRevocationObserverFake()
         let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(expectedProvider: AuthenticationAccessTokenProviderDummy())
         let deauthenticationService = DeauthenticationServiceSpy(accessTokenProviderObserver: accessTokenProviderObserver)
 
-        let viewModel = RootViewModel(
+        let view = RootView(
             keychain: keychain,
             onboardingViewModel: onboardingViewModelDummy,
             authorizationCredentialStateProvider: credentialStateProvider,
@@ -49,11 +52,11 @@ final class RootViewModelTests: XCTestCase {
             deauthenticationService: deauthenticationService
         )
 
-        keychain.appleAuthorizationUserId = "USER_ID"
-
-        XCTAssertNil(viewModel.viewData.onboardingView)
-        XCTAssertNotNil(viewModel.viewData.mainTabView)
-        XCTAssertEqual(deauthenticationService.deauthenticationCount, 0)
+        XCTAssertView(view) { view in
+            XCTAssertNil(view.state.onboardingView)
+            XCTAssertNotNil(view.state.mainTabView)
+            XCTAssertEqual(deauthenticationService.deauthenticationCount, 0)
+        }
     }
 
     func testDeauthorizationWhileClosedShowsOnboardingView() {
@@ -64,7 +67,7 @@ final class RootViewModelTests: XCTestCase {
         let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(expectedProvider: AuthenticationAccessTokenProviderDummy())
         let deauthenticationService = DeauthenticationServiceSpy(accessTokenProviderObserver: accessTokenProviderObserver)
 
-        let viewModel = RootViewModel(
+        let view = RootView(
             keychain: keychain,
             onboardingViewModel: onboardingViewModelDummy,
             authorizationCredentialStateProvider: credentialStateProvider,
@@ -73,10 +76,12 @@ final class RootViewModelTests: XCTestCase {
             deauthenticationService: deauthenticationService
         )
 
-        XCTAssertNotNil(viewModel.viewData.onboardingView)
-        XCTAssertNil(viewModel.viewData.mainTabView)
-        XCTAssertNil(keychain.appleAuthorizationUserId)
-        XCTAssertEqual(deauthenticationService.deauthenticationCount, 1)
+        XCTAssertView(view) { view in
+            XCTAssertNotNil(view.state.onboardingView)
+            XCTAssertNil(view.state.mainTabView)
+            XCTAssertNil(keychain.appleAuthorizationUserId)
+            XCTAssertEqual(deauthenticationService.deauthenticationCount, 1)
+        }
     }
 
     func testDeauthorizationWhileOpenShowsOnboardingView() {
@@ -87,7 +92,7 @@ final class RootViewModelTests: XCTestCase {
         let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(expectedProvider: AuthenticationAccessTokenProviderDummy())
         let deauthenticationService = DeauthenticationServiceSpy(accessTokenProviderObserver: accessTokenProviderObserver)
 
-        let viewModel = RootViewModel(
+        let view = RootView(
             keychain: keychain,
             onboardingViewModel: onboardingViewModelDummy,
             authorizationCredentialStateProvider: credentialStateProvider,
@@ -96,12 +101,13 @@ final class RootViewModelTests: XCTestCase {
             deauthenticationService: deauthenticationService
         )
 
-        credentialRevocationObserver.revocationHandler?()
-
-        XCTAssertNotNil(viewModel.viewData.onboardingView)
-        XCTAssertNil(viewModel.viewData.mainTabView)
-        XCTAssertNil(keychain.appleAuthorizationUserId)
-        XCTAssertEqual(deauthenticationService.deauthenticationCount, 1)
+        XCTAssertView(view) { view in
+            credentialRevocationObserver.revocationHandler?()
+            XCTAssertNotNil(view.state.onboardingView)
+            XCTAssertNil(view.state.mainTabView)
+            XCTAssertNil(keychain.appleAuthorizationUserId)
+            XCTAssertEqual(deauthenticationService.deauthenticationCount, 1)
+        }
     }
 
     func testDeauthenticationByProviderShowsOnboardingView() {
@@ -112,7 +118,7 @@ final class RootViewModelTests: XCTestCase {
         let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(expectedProvider: AuthenticationAccessTokenProviderDummy())
         let deauthenticationService = DeauthenticationServiceSpy(accessTokenProviderObserver: accessTokenProviderObserver)
 
-        let viewModel = RootViewModel(
+        let view = RootView(
             keychain: keychain,
             onboardingViewModel: onboardingViewModelDummy,
             authorizationCredentialStateProvider: credentialStateProvider,
@@ -121,12 +127,13 @@ final class RootViewModelTests: XCTestCase {
             deauthenticationService: deauthenticationService
         )
 
-        accessTokenProviderObserver.statusDidChangeHandler?(nil)
-
-        XCTAssertNotNil(viewModel.viewData.onboardingView)
-        XCTAssertNil(viewModel.viewData.mainTabView)
-        XCTAssertNil(keychain.appleAuthorizationUserId)
-        XCTAssertEqual(deauthenticationService.deauthenticationCount, 0)
+        XCTAssertView(view) { view in
+            accessTokenProviderObserver.statusDidChangeHandler?(nil)
+            XCTAssertNotNil(view.state.onboardingView)
+            XCTAssertNil(view.state.mainTabView)
+            XCTAssertNil(keychain.appleAuthorizationUserId)
+            XCTAssertEqual(deauthenticationService.deauthenticationCount, 0)
+        }
     }
 
     func testDeauthenticationByUserShowsOnboardingView() {
@@ -137,7 +144,7 @@ final class RootViewModelTests: XCTestCase {
         let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(expectedProvider: AuthenticationAccessTokenProviderDummy())
         let deauthenticationService = DeauthenticationServiceSpy(accessTokenProviderObserver: accessTokenProviderObserver)
 
-        let viewModel = RootViewModel(
+        let view = RootView(
             keychain: keychain,
             onboardingViewModel: onboardingViewModelDummy,
             authorizationCredentialStateProvider: credentialStateProvider,
@@ -146,11 +153,12 @@ final class RootViewModelTests: XCTestCase {
             deauthenticationService: deauthenticationService
         )
 
-        deauthenticationService.deauthenticate()
-
-        XCTAssertNotNil(viewModel.viewData.onboardingView)
-        XCTAssertNil(viewModel.viewData.mainTabView)
-        XCTAssertNil(keychain.appleAuthorizationUserId)
-        XCTAssertEqual(deauthenticationService.deauthenticationCount, 1)
+        XCTAssertView(view) { view in
+            deauthenticationService.deauthenticate()
+            XCTAssertNotNil(view.state.onboardingView)
+            XCTAssertNil(view.state.mainTabView)
+            XCTAssertNil(keychain.appleAuthorizationUserId)
+            XCTAssertEqual(deauthenticationService.deauthenticationCount, 1)
+        }
     }
 }

@@ -59,22 +59,20 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private var rootView: RootView {
         RootView(
-            viewModel: RootViewModel(
-                keychain: Keychain.localKeychain,
-                onboardingViewModel: OnboardingViewModel(
-                    appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
-                    authenticationService: AuthenticationService(),
-                    keychain: Keychain.localKeychain
-                ),
-                authorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
-                authorizationCredentialRevocationObserving: AppleAuthorizationCredentialRevocationObserver(
-                    notificationCenter: NotificationCenter.default
-                ),
-                authenticationAccessTokenProviderObserving: AuthenticationAccessTokenProviderObserver(
-                    broadcast: AuthenticationAccessTokenProviderBroadcast()
-                ),
-                deauthenticationService: DeauthenticationService()
-            )
+            keychain: Keychain.localKeychain,
+            onboardingViewModel: OnboardingViewModel(
+                appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
+                authenticationService: AuthenticationService(),
+                keychain: Keychain.localKeychain
+            ),
+            authorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
+            authorizationCredentialRevocationObserving: AppleAuthorizationCredentialRevocationObserver(
+                notificationCenter: NotificationCenter.default
+            ),
+            authenticationAccessTokenProviderObserving: AuthenticationAccessTokenProviderObserver(
+                broadcast: AuthenticationAccessTokenProviderBroadcast()
+            ),
+            deauthenticationService: DeauthenticationService()
         )
     }
 }
