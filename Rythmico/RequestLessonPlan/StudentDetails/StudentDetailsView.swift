@@ -45,6 +45,8 @@ struct StudentDetailsView: View, TestableView {
     // MARK: - Name -
     @State var name = ""
 
+    private var sanitizedName: String? { name.trimmingCharacters(in: .whitespacesAndNewlines).nilIfEmpty }
+
     func textFieldEditingChanged(_ isEditing: Bool) {
         if isEditing {
             self.endEditingDateOfBirth()
@@ -91,11 +93,9 @@ struct StudentDetailsView: View, TestableView {
     @State
     var about = ""
     var aboutNameTextPart: MultiStyleText.Part {
-        let firstNameComponent = name
-            .trimmingCharacters(in: .whitespacesAndNewlines)
+        let firstNameComponent = sanitizedName?
             .components(separatedBy: " ")
-            .first?
-            .nilIfEmpty
+            .first
 
         return .init(
             firstNameComponent ?? "Student",
@@ -107,7 +107,7 @@ struct StudentDetailsView: View, TestableView {
     // MARK: - Next Button -
     var nextButtonAction: Action? {
         guard
-            let name = name.trimmingCharacters(in: .whitespacesAndNewlines).nilIfEmpty,
+            let name = sanitizedName,
             let dateOfBirth = dateOfBirth,
             let gender = gender
         else {
