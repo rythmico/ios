@@ -59,11 +59,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     private var rootView: some View {
         RootView(
             keychain: Keychain.localKeychain,
-            onboardingViewModel: OnboardingViewModel(
-                appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
-                authenticationService: AuthenticationService(),
-                keychain: Keychain.localKeychain
-            ),
+            appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
+            authenticationService: AuthenticationService(),
             authorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
             authorizationCredentialRevocationNotifying: AppleAuthorizationCredentialRevocationNotifier(
                 notificationCenter: NotificationCenter.default

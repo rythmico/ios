@@ -26,7 +26,8 @@ struct RootView<AccessTokenProviderObserving>: View, TestableView where
     AccessTokenProviderObserving: AuthenticationAccessTokenProviderObserving
 {
     private let keychain: KeychainProtocol
-    private let onboardingViewModel: OnboardingViewModel
+    private let appleAuthorizationService: AppleAuthorizationServiceProtocol
+    private let authenticationService: AuthenticationServiceProtocol
     private let authorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider
     private let authorizationCredentialRevocationNotifying: AppleAuthorizationCredentialRevocationNotifying
     @ObservedObject
@@ -38,20 +39,30 @@ struct RootView<AccessTokenProviderObserving>: View, TestableView where
             return .authenticated(MainTabView(accessTokenProvider: provider))
         } else {
             self.keychain.appleAuthorizationUserId = nil
-            return .unauthenticated(OnboardingView(viewModel: self.onboardingViewModel))
+            return .unauthenticated(onboardingView)
         }
+    }
+
+    private var onboardingView: OnboardingView {
+        OnboardingView(
+            appleAuthorizationService: appleAuthorizationService,
+            authenticationService: authenticationService,
+            keychain: keychain
+        )
     }
 
     init(
         keychain: KeychainProtocol,
-        onboardingViewModel: OnboardingViewModel,
+        appleAuthorizationService: AppleAuthorizationServiceProtocol,
+        authenticationService: AuthenticationServiceProtocol,
         authorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider,
         authorizationCredentialRevocationNotifying: AppleAuthorizationCredentialRevocationNotifying,
         authenticationAccessTokenProviderObserving: AccessTokenProviderObserving,
         deauthenticationService: DeauthenticationServiceProtocol
     ) {
         self.keychain = keychain
-        self.onboardingViewModel = onboardingViewModel
+        self.appleAuthorizationService = appleAuthorizationService
+        self.authenticationService = authenticationService
         self.authorizationCredentialStateProvider = authorizationCredentialStateProvider
         self.authorizationCredentialRevocationNotifying = authorizationCredentialRevocationNotifying
         self.authenticationAccessTokenProviderObserving = authenticationAccessTokenProviderObserving
