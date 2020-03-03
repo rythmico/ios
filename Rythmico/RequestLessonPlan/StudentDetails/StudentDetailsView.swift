@@ -29,8 +29,6 @@ struct StudentDetailsView: View, TestableView {
         self.dispatchQueue = dispatchQueue
     }
 
-    var didAppear: Handler<Self>?
-
     // MARK: - Subtitle -
     var selectedInstrumentName: String { instrument.name }
     var subtitle: [MultiStyleText.Part] {
@@ -127,6 +125,7 @@ struct StudentDetailsView: View, TestableView {
     }
 
     // MARK: - Body -
+    var didAppear: Handler<Self>?
     var body: some View {
         TitleSubtitleContentView(title: "Student Details", subtitle: subtitle) {
             VStack(spacing: 0) {

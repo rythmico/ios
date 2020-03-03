@@ -1,13 +1,12 @@
 import SwiftUI
 import class FirebaseAuth.Auth
 import SFSafeSymbols
+import Sugar
 
 struct MainTabView: View, TestableView {
     private let accessTokenProvider: AuthenticationAccessTokenProvider
 
     @State private(set) var lessonRequestView: RequestLessonPlanView?
-
-    var didAppear: ((Self) -> Void)?
 
     func presentRequestLessonFlow() {
         lessonRequestView = RequestLessonPlanView(
@@ -19,6 +18,7 @@ struct MainTabView: View, TestableView {
         self.accessTokenProvider = accessTokenProvider
     }
 
+    var didAppear: Handler<Self>?
     var body: some View {
         TabView {
             NavigationView {
