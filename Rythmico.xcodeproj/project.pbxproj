@@ -66,7 +66,7 @@
 		D53555C223E536AE005A20EB /* AppleAuthorizationCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561223CD4B2C00BC8485 /* AppleAuthorizationCredential.swift */; };
 		D53555C323E536AE005A20EB /* AppleAuthorizationCredentialStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546A23DCB65A005A20EB /* AppleAuthorizationCredentialStateProvider.swift */; };
 		D53555C423E536AE005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553A23E1DD1A005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift */; };
-		D53555C523E536AE005A20EB /* AppleAuthorizationCredentialRevocationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546C23DF212C005A20EB /* AppleAuthorizationCredentialRevocationObserver.swift */; };
+		D53555C523E536AE005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546C23DF212C005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift */; };
 		D53555C623E536AE005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553C23E1DE15005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift */; };
 		D53555C823E536AE005A20EB /* AppleAuthorizationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561023CD457800BC8485 /* AppleAuthorizationResponse.swift */; };
 		D53555C923E536AE005A20EB /* AppleAuthorizationResponseDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546823DCB03E005A20EB /* AppleAuthorizationResponseDoubles.swift */; };
@@ -242,7 +242,7 @@
 		D52BFAFC23ECBD10009F4498 /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTests.swift; sourceTree = "<group>"; };
 		D535546823DCB03E005A20EB /* AppleAuthorizationResponseDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationResponseDoubles.swift; sourceTree = "<group>"; };
 		D535546A23DCB65A005A20EB /* AppleAuthorizationCredentialStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialStateProvider.swift; sourceTree = "<group>"; };
-		D535546C23DF212C005A20EB /* AppleAuthorizationCredentialRevocationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialRevocationObserver.swift; sourceTree = "<group>"; };
+		D535546C23DF212C005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialRevocationNotifier.swift; sourceTree = "<group>"; };
 		D535546E23DF2698005A20EB /* NotificationCenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterProtocol.swift; sourceTree = "<group>"; };
 		D535547023DF2A40005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialRevocationObserverTests.swift; sourceTree = "<group>"; };
 		D535547223DF2AE2005A20EB /* NotificationCenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterSpy.swift; sourceTree = "<group>"; };
@@ -640,7 +640,7 @@
 				D54A561223CD4B2C00BC8485 /* AppleAuthorizationCredential.swift */,
 				D535546A23DCB65A005A20EB /* AppleAuthorizationCredentialStateProvider.swift */,
 				D535553A23E1DD1A005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift */,
-				D535546C23DF212C005A20EB /* AppleAuthorizationCredentialRevocationObserver.swift */,
+				D535546C23DF212C005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift */,
 				D535553C23E1DE15005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift */,
 				D535547023DF2A40005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift */,
 				D54A561023CD457800BC8485 /* AppleAuthorizationResponse.swift */,
@@ -974,7 +974,7 @@
 				D5F506652400619600CA4094 /* UIApplication+EndEditing.swift in Sources */,
 				D5AAF7D723F9E20C00E410F2 /* Instrument.swift in Sources */,
 				D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */,
-				D53555C523E536AE005A20EB /* AppleAuthorizationCredentialRevocationObserver.swift in Sources */,
+				D53555C523E536AE005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
 				D53555C823E536AE005A20EB /* AppleAuthorizationResponse.swift in Sources */,
 				D5147508240C8E69002EE20C /* TestableView.swift in Sources */,
 				D5E04B1923BED80700A161BB /* Fonts.swift in Sources */,

@@ -28,7 +28,7 @@ struct RootView<AccessTokenProviderObserving>: View, TestableView where
     private let keychain: KeychainProtocol
     private let onboardingViewModel: OnboardingViewModel
     private let authorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider
-    private let authorizationCredentialRevocationObserving: AppleAuthorizationCredentialRevocationObserving
+    private let authorizationCredentialRevocationNotifying: AppleAuthorizationCredentialRevocationNotifying
     @ObservedObject
     private var authenticationAccessTokenProviderObserving: AccessTokenProviderObserving
     private let deauthenticationService: DeauthenticationServiceProtocol
@@ -46,14 +46,14 @@ struct RootView<AccessTokenProviderObserving>: View, TestableView where
         keychain: KeychainProtocol,
         onboardingViewModel: OnboardingViewModel,
         authorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider,
-        authorizationCredentialRevocationObserving: AppleAuthorizationCredentialRevocationObserving,
+        authorizationCredentialRevocationNotifying: AppleAuthorizationCredentialRevocationNotifying,
         authenticationAccessTokenProviderObserving: AccessTokenProviderObserving,
         deauthenticationService: DeauthenticationServiceProtocol
     ) {
         self.keychain = keychain
         self.onboardingViewModel = onboardingViewModel
         self.authorizationCredentialStateProvider = authorizationCredentialStateProvider
-        self.authorizationCredentialRevocationObserving = authorizationCredentialRevocationObserving
+        self.authorizationCredentialRevocationNotifying = authorizationCredentialRevocationNotifying
         self.authenticationAccessTokenProviderObserving = authenticationAccessTokenProviderObserving
         self.deauthenticationService = deauthenticationService
     }
@@ -84,7 +84,7 @@ struct RootView<AccessTokenProviderObserving>: View, TestableView where
             }
         }
 
-        authorizationCredentialRevocationObserving.revocationHandler = {
+        authorizationCredentialRevocationNotifying.revocationHandler = {
             self.deauthenticationService.deauthenticate()
             self.keychain.appleAuthorizationUserId = nil
         }

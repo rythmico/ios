@@ -1,5 +1,5 @@
 import Sugar
 
-final class AppleAuthorizationCredentialRevocationObserverFake: AppleAuthorizationCredentialRevocationObserving {
+final class AppleAuthorizationCredentialRevocationNotifierFake: AppleAuthorizationCredentialRevocationNotifying {
     var revocationHandler: Action?
 }
