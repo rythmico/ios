@@ -27,7 +27,7 @@ final class AuthenticationAccessTokenProviderObserverTests: XCTestCase {
             expectation.fulfill()
         }
 
-        let observer = AuthenticationAccessTokenProviderObserver(broadcast: broadcastSpy)
+        _ = AuthenticationAccessTokenProviderObserver(broadcast: broadcastSpy)
 
         waiter.wait(for: [expectation], timeout: 1)
     }
