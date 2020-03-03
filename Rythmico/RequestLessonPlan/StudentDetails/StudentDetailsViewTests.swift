@@ -15,9 +15,10 @@ final class StudentDetailsViewTests: XCTestCase {
     }
 
     func testInitialValues() {
-        let (_, editingCoordinator, view) = studentDetailsView
+        let (context, editingCoordinator, view) = studentDetailsView
 
         XCTAssertView(view) { view in
+            XCTAssertNil(context.student)
             XCTAssertEqual(editingCoordinator.endEditingCount, 0)
 
             XCTAssertFalse(view.subtitle.isEmpty)
@@ -130,6 +131,29 @@ final class StudentDetailsViewTests: XCTestCase {
             view.gender = .male
 
             XCTAssertNotNil(view.nextButtonAction)
+        }
+    }
+
+    func testNextButtonSetsStudentDetailsInContext() throws {
+        let (context, _, view) = studentDetailsView
+
+        XCTAssertView(view) { view in
+            let date = Date()
+
+            view.name = "David"
+            view.dateOfBirth = date
+            view.gender = .male
+            view.nextButtonAction?()
+
+            XCTAssertEqual(
+                context.student,
+                Student(
+                    name: "David",
+                    dateOfBirth: date,
+                    gender: .male,
+                    about: ""
+                )
+            )
         }
     }
 }
