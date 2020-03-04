@@ -70,6 +70,7 @@ struct CustomTextField: UIViewRepresentable {
         textField.textContentType = textContentType
         textField.autocapitalizationType = autocapitalizationType
         textField.delegate = context.coordinator
+        textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return textField
     }
 
