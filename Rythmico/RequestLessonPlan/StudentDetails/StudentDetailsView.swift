@@ -45,7 +45,17 @@ struct StudentDetailsView: View, TestableView {
     // MARK: - Name -
     @State var name = ""
 
-    private var sanitizedName: String? { name.trimmingCharacters(in: .whitespacesAndNewlines).nilIfEmpty }
+    private var sanitizedName: String? {
+        name
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+
+            // removes repeated whitespaces and newlines
+            .components(separatedBy: .whitespacesAndNewlines)
+            .filter(\.isEmpty.not)
+            .joined(separator: " ")
+
+            .nilIfEmpty
+    }
 
     func textFieldEditingChanged(_ isEditing: Bool) {
         if isEditing {
@@ -90,8 +100,6 @@ struct StudentDetailsView: View, TestableView {
     @State var gender: Gender?
 
     // MARK: - About -
-    @State
-    var about = ""
     var aboutNameTextPart: MultiStyleText.Part {
         let firstNameComponent = sanitizedName?
             .components(separatedBy: " ")
@@ -102,6 +110,24 @@ struct StudentDetailsView: View, TestableView {
             weight: .regular,
             color: firstNameComponent != nil ? .rythmicoPurple : .rythmicoForeground
         )
+    }
+
+    @State
+    var about = ""
+
+    private var sanitizedAbout: String {
+        about
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+
+            // removes repeated whitespaces
+            .components(separatedBy: .whitespaces)
+            .filter(\.isEmpty.not)
+            .joined(separator: " ")
+
+            // removes repeated newlines
+            .components(separatedBy: .newlines)
+            .filter(\.isEmpty.not)
+            .joined(separator: "\n\n")
     }
 
     // MARK: - Next Button -
@@ -119,7 +145,7 @@ struct StudentDetailsView: View, TestableView {
                 name: name,
                 dateOfBirth: dateOfBirth,
                 gender: gender,
-                about: self.about
+                about: self.sanitizedAbout
             )
         }
     }
