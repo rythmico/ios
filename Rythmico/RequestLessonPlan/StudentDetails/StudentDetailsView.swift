@@ -3,28 +3,30 @@ import KeyboardObserver
 import Sugar
 import Then
 
+protocol StudentDetailsContext {
+    func setStudent(_ student: Student)
+}
+
 struct StudentDetailsView: View, TestableView {
     private enum Const {
         // 10 years old
         static let averageStudentAge: TimeInterval = 10 * 365 * 24 * 3600
     }
 
-    private let context: RequestLessonPlanContextProtocol
     private let instrument: Instrument
+    private let context: StudentDetailsContext
     private let editingCoordinator: EditingCoordinator
     private let dateFormatter = DateFormatter().then { $0.dateStyle = .long }
     private let dispatchQueue: DispatchQueue?
 
-    init?(
-        context: RequestLessonPlanContextProtocol,
+    init(
+        instrument: Instrument,
+        context: StudentDetailsContext,
         editingCoordinator: EditingCoordinator,
         dispatchQueue: DispatchQueue?
     ) {
-        guard let instrument = context.instrument else {
-            return nil
-        }
-        self.context = context
         self.instrument = instrument
+        self.context = context
         self.editingCoordinator = editingCoordinator
         self.dispatchQueue = dispatchQueue
     }
@@ -141,11 +143,13 @@ struct StudentDetailsView: View, TestableView {
         }
 
         return {
-            self.context.student = Student(
-                name: name,
-                dateOfBirth: dateOfBirth,
-                gender: gender,
-                about: self.sanitizedAbout
+            self.context.setStudent(
+                Student(
+                    name: name,
+                    dateOfBirth: dateOfBirth,
+                    gender: gender,
+                    about: self.sanitizedAbout
+                )
             )
         }
     }
@@ -219,9 +223,12 @@ struct StudentDetailsView: View, TestableView {
 struct StudentDetailsView_Preview: PreviewProvider {
     static var previews: some View {
         StudentDetailsView(
-            context: RequestLessonPlanContext(
-                instrument: Instrument(id: "Piano", name: "Piano", icon: Image(decorative: Asset.instrumentIconPiano.name))
+            instrument: Instrument(
+                id: "Piano",
+                name: "Piano",
+                icon: Image(decorative: Asset.instrumentIconPiano.name)
             ),
+            context: RequestLessonPlanContext(),
             editingCoordinator: UIApplication.shared,
             dispatchQueue: .main
         )
