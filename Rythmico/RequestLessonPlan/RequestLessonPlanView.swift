@@ -9,6 +9,8 @@ struct RequestLessonPlanView: View, Identifiable {
     @Environment(\.betterSheetPresentationMode)
     private var presentationMode
 
+    private let studentDetailsViewState = StudentDetailsView.ViewState()
+
     @ObservedObject
     private var context: RequestLessonPlanContext
     private let instrumentProvider: InstrumentSelectionListProviderProtocol
@@ -121,7 +123,13 @@ extension RequestLessonPlanView {
         guard case let .studentDetails(instrument) = context.currentStep else {
             return nil
         }
-        return StudentDetailsView(instrument: instrument, context: context, editingCoordinator: UIApplication.shared, dispatchQueue: .main)
+        return StudentDetailsView(
+            instrument: instrument,
+            state: studentDetailsViewState,
+            context: context,
+            editingCoordinator: UIApplication.shared,
+            dispatchQueue: .main
+        )
     }
 
     var addressDetailsView: AddressDetailsView? {

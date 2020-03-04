@@ -13,6 +13,13 @@ struct StudentDetailsView: View, TestableView {
         static let averageStudentAge: TimeInterval = 10 * 365 * 24 * 3600
     }
 
+    final class ViewState: ObservableObject {
+        @Published var name = ""
+        @Published var dateOfBirth: Date?
+        @Published var gender: Gender?
+        @Published var about = ""
+    }
+
     private let instrument: Instrument
     private let context: StudentDetailsContext
     private let editingCoordinator: EditingCoordinator
@@ -21,15 +28,20 @@ struct StudentDetailsView: View, TestableView {
 
     init(
         instrument: Instrument,
+        state: ViewState,
         context: StudentDetailsContext,
         editingCoordinator: EditingCoordinator,
         dispatchQueue: DispatchQueue?
     ) {
         self.instrument = instrument
+        self.state = state
         self.context = context
         self.editingCoordinator = editingCoordinator
         self.dispatchQueue = dispatchQueue
     }
+
+    // MARK: - ViewState -
+    @ObservedObject var state: ViewState
 
     // MARK: - Subtitle -
     var selectedInstrumentName: String { instrument.name }
@@ -45,10 +57,8 @@ struct StudentDetailsView: View, TestableView {
     @State private var isEditing = false
 
     // MARK: - Name -
-    @State var name = ""
-
     private var sanitizedName: String? {
-        name
+        state.name
             .trimmingCharacters(in: .whitespacesAndNewlines)
 
             // removes repeated whitespaces and newlines
@@ -67,9 +77,7 @@ struct StudentDetailsView: View, TestableView {
     }
 
     // MARK: - Date of Birth -
-    @State
-    var dateOfBirth: Date?
-    var dateOfBirthText: String? { dateOfBirth.map(dateFormatter.string(from:)) }
+    var dateOfBirthText: String? { state.dateOfBirth.map(dateFormatter.string(from:)) }
     var dateOfBirthPlaceholderText: String { dateFormatter.string(from: dateOfBirthPlaceholder) }
 
     func startEditingDateOfBirth() {
@@ -83,8 +91,8 @@ struct StudentDetailsView: View, TestableView {
         isEditing = true
 
         // set date of birth to initial value on first edit
-        if dateOfBirth == nil {
-            dateOfBirth = dateOfBirthPlaceholder
+        if state.dateOfBirth == nil {
+            state.dateOfBirth = dateOfBirthPlaceholder
         }
     }
 
@@ -97,9 +105,6 @@ struct StudentDetailsView: View, TestableView {
     private var isDateOfBirthPickerHidden = true
     private let dateOfBirthPlaceholder = Date().addingTimeInterval(-Const.averageStudentAge)
     private func dateFieldEditingChanged(_ isEditing: Bool) { if isEditing { startEditingDateOfBirth() } }
-
-    // MARK: - Gender -
-    @State var gender: Gender?
 
     // MARK: - About -
     var aboutNameTextPart: MultiStyleText.Part {
@@ -114,11 +119,8 @@ struct StudentDetailsView: View, TestableView {
         )
     }
 
-    @State
-    var about = ""
-
     private var sanitizedAbout: String {
-        about
+        state.about
             .trimmingCharacters(in: .whitespacesAndNewlines)
 
             // removes repeated whitespaces
@@ -136,8 +138,8 @@ struct StudentDetailsView: View, TestableView {
     var nextButtonAction: Action? {
         guard
             let name = sanitizedName,
-            let dateOfBirth = dateOfBirth,
-            let gender = gender
+            let dateOfBirth = state.dateOfBirth,
+            let gender = state.gender
         else {
             return nil
         }
@@ -164,7 +166,7 @@ struct StudentDetailsView: View, TestableView {
                         TitleContentView(title: "Full Name") {
                             CustomTextField(
                                 Text("Enter Name...").foregroundColor(.rythmicoGray30),
-                                text: $name,
+                                text: $state.name,
                                 onEditingChanged: textFieldEditingChanged
                             )
                             .textContentType(.name)
@@ -179,12 +181,12 @@ struct StudentDetailsView: View, TestableView {
                             ).modifier(RoundedThinOutlineContainer())
                         }
                         TitleContentView(title: "Gender") {
-                            GenderSelectionView(selection: $gender)
+                            GenderSelectionView(selection: $state.gender)
                         }
                         TitleContentView(title: [.init("About "), aboutNameTextPart]) {
                             MultilineTextField(
                                 "Existing instrument prowess etc.",
-                                text: $about,
+                                text: $state.about,
                                 onEditingChanged: textFieldEditingChanged
                             ).modifier(RoundedThinOutlineContainer())
                         }
@@ -203,8 +205,8 @@ struct StudentDetailsView: View, TestableView {
                     if !isDateOfBirthPickerHidden {
                         FloatingDatePicker(
                             selection: Binding(
-                                get: { self.dateOfBirth ?? self.dateOfBirthPlaceholder },
-                                set: { self.dateOfBirth = $0 }
+                                get: { self.state.dateOfBirth ?? self.dateOfBirthPlaceholder },
+                                set: { self.state.dateOfBirth = $0 }
                             ),
                             doneButtonAction: endEditingDateOfBirth
                         ).padding(.horizontal, -.spacingMedium)
@@ -228,6 +230,7 @@ struct StudentDetailsView_Preview: PreviewProvider {
                 name: "Piano",
                 icon: Image(decorative: Asset.instrumentIconPiano.name)
             ),
+            state: StudentDetailsView.ViewState(),
             context: RequestLessonPlanContext(),
             editingCoordinator: UIApplication.shared,
             dispatchQueue: .main
