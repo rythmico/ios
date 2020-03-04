@@ -2,7 +2,7 @@ import XCTest
 @testable import Rythmico
 import AuthenticationServices
 
-final class OnboardingViewModelTests: XCTestCase {
+final class OnboardingViewTests: XCTestCase {
     func authorizationService(withErrorCode code: ASAuthorizationError.Code) -> AppleAuthorizationServiceStub {
         AppleAuthorizationServiceStub(expectedResult: .failure(ASAuthorizationError(code)))
     }
@@ -24,54 +24,54 @@ final class OnboardingViewModelTests: XCTestCase {
     func testFailedAuthorization() {
         let keychain = KeychainFake()
 
-        let viewModel = OnboardingViewModel(
+        let view = OnboardingView(
             appleAuthorizationService: authorizationService(withErrorCode: .failed),
             authenticationService: AuthenticationServiceDummy(),
             keychain: keychain
         )
 
-        viewModel.authenticateWithApple()
-
-        XCTAssertFalse(viewModel.viewData.isLoading)
-        XCTAssertNil(viewModel.viewData.errorAlertViewData)
-        XCTAssert(keychain.inMemoryStorage.isEmpty)
+        XCTAssertView(view) { view in
+            view.authenticateWithApple()
+            XCTAssertFalse(view.isLoading)
+            XCTAssertNil(view.errorMessage)
+            XCTAssert(keychain.inMemoryStorage.isEmpty)
+        }
     }
 
     func testFailedAuthentication() {
         let keychain = KeychainFake()
 
-        let viewModel = OnboardingViewModel(
+        let view = OnboardingView(
             appleAuthorizationService: AppleAuthorizationServiceStub(expectedResult: .success(credential)),
             authenticationService: authenticationService(withErrorCode: .invalidCredential),
             keychain: keychain
         )
 
-        viewModel.authenticateWithApple()
+        XCTAssertView(view) { view in
+            view.authenticateWithApple()
 
-        XCTAssertFalse(viewModel.viewData.isLoading)
-        XCTAssertEqual(viewModel.viewData.errorAlertViewData?.message, "Whooopsie (17004)")
-        XCTAssertEqual(keychain.inMemoryStorage.values.count, 1)
-        XCTAssertEqual(keychain.inMemoryStorage.values.first, "USER_ID")
-
-        viewModel.dismissErrorAlert()
-
-        XCTAssertNil(viewModel.viewData.errorAlertViewData)
+            XCTAssertFalse(view.isLoading)
+            XCTAssertEqual(view.errorMessage, "Whooopsie (17004)")
+            XCTAssertEqual(keychain.inMemoryStorage.values.count, 1)
+            XCTAssertEqual(keychain.inMemoryStorage.values.first, "USER_ID")
+        }
     }
 
     func testSuccessfulAuthentication() {
         let keychain = KeychainFake()
 
-        let viewModel = OnboardingViewModel(
+        let view = OnboardingView(
             appleAuthorizationService: AppleAuthorizationServiceStub(expectedResult: .success(credential)),
             authenticationService: AuthenticationServiceStub(expectedResult: .success(AuthenticationAccessTokenProviderDummy())),
             keychain: keychain
         )
 
-        viewModel.authenticateWithApple()
-
-        XCTAssertFalse(viewModel.viewData.isLoading)
-        XCTAssertNil(viewModel.viewData.errorAlertViewData)
-        XCTAssertEqual(keychain.inMemoryStorage.values.count, 1)
-        XCTAssertEqual(keychain.inMemoryStorage.values.first, "USER_ID")
+        XCTAssertView(view) { view in
+            view.authenticateWithApple()
+            XCTAssertFalse(view.isLoading)
+            XCTAssertNil(view.errorMessage)
+            XCTAssertEqual(keychain.inMemoryStorage.values.count, 1)
+            XCTAssertEqual(keychain.inMemoryStorage.values.first, "USER_ID")
+        }
     }
 }

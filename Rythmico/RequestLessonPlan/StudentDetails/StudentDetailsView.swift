@@ -3,33 +3,33 @@ import KeyboardObserver
 import Sugar
 import Then
 
+protocol StudentDetailsContext {
+    func setStudent(_ student: Student)
+}
+
 struct StudentDetailsView: View, TestableView {
     private enum Const {
         // 10 years old
         static let averageStudentAge: TimeInterval = 10 * 365 * 24 * 3600
     }
 
-    private let context: RequestLessonPlanContextProtocol
     private let instrument: Instrument
+    private let context: StudentDetailsContext
     private let editingCoordinator: EditingCoordinator
     private let dateFormatter = DateFormatter().then { $0.dateStyle = .long }
     private let dispatchQueue: DispatchQueue?
 
-    init?(
-        context: RequestLessonPlanContextProtocol,
+    init(
+        instrument: Instrument,
+        context: StudentDetailsContext,
         editingCoordinator: EditingCoordinator,
         dispatchQueue: DispatchQueue?
     ) {
-        guard let instrument = context.instrument else {
-            return nil
-        }
-        self.context = context
         self.instrument = instrument
+        self.context = context
         self.editingCoordinator = editingCoordinator
         self.dispatchQueue = dispatchQueue
     }
-
-    var didAppear: Handler<Self>?
 
     // MARK: - Subtitle -
     var selectedInstrumentName: String { instrument.name }
@@ -46,6 +46,18 @@ struct StudentDetailsView: View, TestableView {
 
     // MARK: - Name -
     @State var name = ""
+
+    private var sanitizedName: String? {
+        name
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+
+            // removes repeated whitespaces and newlines
+            .components(separatedBy: .whitespacesAndNewlines)
+            .filter(\.isEmpty.not)
+            .joined(separator: " ")
+
+            .nilIfEmpty
+    }
 
     func textFieldEditingChanged(_ isEditing: Bool) {
         if isEditing {
@@ -90,14 +102,10 @@ struct StudentDetailsView: View, TestableView {
     @State var gender: Gender?
 
     // MARK: - About -
-    @State
-    var about = ""
     var aboutNameTextPart: MultiStyleText.Part {
-        let firstNameComponent = name
-            .trimmingCharacters(in: .whitespacesAndNewlines)
+        let firstNameComponent = sanitizedName?
             .components(separatedBy: " ")
-            .first?
-            .nilIfEmpty
+            .first
 
         return .init(
             firstNameComponent ?? "Student",
@@ -106,10 +114,28 @@ struct StudentDetailsView: View, TestableView {
         )
     }
 
+    @State
+    var about = ""
+
+    private var sanitizedAbout: String {
+        about
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+
+            // removes repeated whitespaces
+            .components(separatedBy: .whitespaces)
+            .filter(\.isEmpty.not)
+            .joined(separator: " ")
+
+            // removes repeated newlines
+            .components(separatedBy: .newlines)
+            .filter(\.isEmpty.not)
+            .joined(separator: "\n\n")
+    }
+
     // MARK: - Next Button -
     var nextButtonAction: Action? {
         guard
-            let name = name.trimmingCharacters(in: .whitespacesAndNewlines).nilIfEmpty,
+            let name = sanitizedName,
             let dateOfBirth = dateOfBirth,
             let gender = gender
         else {
@@ -117,16 +143,19 @@ struct StudentDetailsView: View, TestableView {
         }
 
         return {
-            self.context.student = Student(
-                name: name,
-                dateOfBirth: dateOfBirth,
-                gender: gender,
-                about: self.about
+            self.context.setStudent(
+                Student(
+                    name: name,
+                    dateOfBirth: dateOfBirth,
+                    gender: gender,
+                    about: self.sanitizedAbout
+                )
             )
         }
     }
 
     // MARK: - Body -
+    var didAppear: Handler<Self>?
     var body: some View {
         TitleSubtitleContentView(title: "Student Details", subtitle: subtitle) {
             VStack(spacing: 0) {
@@ -194,9 +223,12 @@ struct StudentDetailsView: View, TestableView {
 struct StudentDetailsView_Preview: PreviewProvider {
     static var previews: some View {
         StudentDetailsView(
-            context: RequestLessonPlanContext(
-                instrument: Instrument(id: "Piano", name: "Piano", icon: Image(decorative: Asset.instrumentIconPiano.name))
+            instrument: Instrument(
+                id: "Piano",
+                name: "Piano",
+                icon: Image(decorative: Asset.instrumentIconPiano.name)
             ),
+            context: RequestLessonPlanContext(),
             editingCoordinator: UIApplication.shared,
             dispatchQueue: .main
         )

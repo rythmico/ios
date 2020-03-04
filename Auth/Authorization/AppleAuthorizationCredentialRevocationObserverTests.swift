@@ -3,12 +3,12 @@ import XCTest
 import class AuthenticationServices.ASAuthorizationAppleIDProvider
 import Sugar
 
-final class AppleAuthorizationCredentialRevocationObserverTests: XCTestCase {
+final class AppleAuthorizationCredentialRevocationNotifierTests: XCTestCase {
     func testRevocationHandlerNotificationCenterProperlySetUpAndHandled() {
         let expectation = self.expectation(description: "Revocation handler called")
 
         let center = NotificationCenterSpy(returnedToken: 1)
-        let observer = AppleAuthorizationCredentialRevocationObserver(notificationCenter: center)
+        let observer = AppleAuthorizationCredentialRevocationNotifier(notificationCenter: center)
 
         XCTAssertNil(center.notificationName)
         XCTAssertNil(center.observerBlock)
@@ -30,7 +30,7 @@ final class AppleAuthorizationCredentialRevocationObserverTests: XCTestCase {
         let expectationB = self.expectation(description: "Revocation handler called once")
 
         let center = NotificationCenterSpy(returnedToken: 1)
-        let observer = AppleAuthorizationCredentialRevocationObserver(notificationCenter: center)
+        let observer = AppleAuthorizationCredentialRevocationNotifier(notificationCenter: center)
 
         observer.revocationHandler = {
             expectationA.fulfill()

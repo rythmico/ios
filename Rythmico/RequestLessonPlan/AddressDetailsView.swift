@@ -1,16 +1,15 @@
 import SwiftUI
-import ViewModel
 
 struct AddressDetailsView: View {
-    private let context: RequestLessonPlanContextProtocol
     private let student: Student
+    private let instrument: Instrument
 
-    init?(context: RequestLessonPlanContextProtocol) {
-        guard let student = context.student else {
-            return nil
-        }
-        self.context = context
+    init(
+        student: Student,
+        instrument: Instrument
+    ) {
         self.student = student
+        self.instrument = instrument
     }
 
     var body: some View {
