@@ -82,7 +82,7 @@ final class StudentDetailsViewTests: XCTestCase {
             view.name = "David"
             XCTAssertEqual(view.aboutNameTextPart.string, "David")
 
-            view.name = "Jesse Bildner"
+            view.name = "  Jesse Bildner \n   "
             XCTAssertEqual(view.aboutNameTextPart.string, "Jesse")
 
             XCTAssertNil(view.nextButtonAction)
@@ -140,18 +140,35 @@ final class StudentDetailsViewTests: XCTestCase {
         XCTAssertView(view) { view in
             let date = Date()
 
-            view.name = "David"
+            view.name = "  David    Roman  "
             view.dateOfBirth = date
             view.gender = .male
+            view.about = """
+               David is an exceptional piano student, however    whitespaces are not his thing.    Like at all.
+
+
+            Anyway we can help    him out a bit   with this.
+
+            Teach him how whitespaces and newlines are properly done, please.
+
+
+
+            """
             view.nextButtonAction?()
 
             XCTAssertEqual(
                 context.student,
                 Student(
-                    name: "David",
+                    name: "David Roman",
                     dateOfBirth: date,
                     gender: .male,
-                    about: ""
+                    about: """
+                    David is an exceptional piano student, however whitespaces are not his thing. Like at all.
+
+                    Anyway we can help him out a bit with this.
+
+                    Teach him how whitespaces and newlines are properly done, please.
+                    """
                 )
             )
         }
