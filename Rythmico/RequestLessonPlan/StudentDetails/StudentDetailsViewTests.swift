@@ -10,7 +10,13 @@ final class StudentDetailsViewTests: XCTestCase {
         return (
             context,
             editingCoordinator,
-            StudentDetailsView(instrument: instrument, context: context, editingCoordinator: editingCoordinator, dispatchQueue: .none)
+            StudentDetailsView(
+                instrument: instrument,
+                state: .init(),
+                context: context,
+                editingCoordinator: editingCoordinator,
+                dispatchQueue: .none
+            )
         )
     }
 
@@ -24,16 +30,16 @@ final class StudentDetailsViewTests: XCTestCase {
             XCTAssertFalse(view.subtitle.isEmpty)
             XCTAssertEqual(view.selectedInstrumentName, "Violin")
 
-            XCTAssertEqual(view.name, "")
+            XCTAssertEqual(view.state.name, "")
 
-            XCTAssertNil(view.dateOfBirth)
+            XCTAssertNil(view.state.dateOfBirth)
             XCTAssertNil(view.dateOfBirthText)
             XCTAssertFalse(view.dateOfBirthPlaceholderText.isEmpty)
 
-            XCTAssertNil(view.gender)
+            XCTAssertNil(view.state.gender)
 
             XCTAssertEqual(view.aboutNameTextPart.string, "Student")
-            XCTAssertEqual(view.about, "")
+            XCTAssertEqual(view.state.about, "")
 
             XCTAssertNil(view.nextButtonAction)
         }
@@ -79,10 +85,10 @@ final class StudentDetailsViewTests: XCTestCase {
         let (_, _, view) = studentDetailsView
 
         XCTAssertView(view) { view in
-            view.name = "David"
+            view.state.name = "David"
             XCTAssertEqual(view.aboutNameTextPart.string, "David")
 
-            view.name = "  Jesse Bildner \n   "
+            view.state.name = "  Jesse Bildner \n   "
             XCTAssertEqual(view.aboutNameTextPart.string, "Jesse")
 
             XCTAssertNil(view.nextButtonAction)
@@ -93,7 +99,7 @@ final class StudentDetailsViewTests: XCTestCase {
         let (_, _, view) = studentDetailsView
 
         XCTAssertView(view) { view in
-            view.dateOfBirth = Date()
+            view.state.dateOfBirth = Date()
             XCTAssertNotNil(view.dateOfBirthText)
 
             XCTAssertNil(view.nextButtonAction)
@@ -104,8 +110,8 @@ final class StudentDetailsViewTests: XCTestCase {
         let (_, _, view) = studentDetailsView
 
         XCTAssertView(view) { view in
-            view.gender = .male
-            XCTAssertEqual(view.gender, .male)
+            view.state.gender = .male
+            XCTAssertEqual(view.state.gender, .male)
 
             XCTAssertNil(view.nextButtonAction)
         }
@@ -115,8 +121,8 @@ final class StudentDetailsViewTests: XCTestCase {
         let (_, _, view) = studentDetailsView
 
         XCTAssertView(view) { view in
-            view.about = "Something"
-            XCTAssertEqual(view.about, "Something")
+            view.state.about = "Something"
+            XCTAssertEqual(view.state.about, "Something")
 
             XCTAssertNil(view.nextButtonAction)
         }
@@ -126,9 +132,9 @@ final class StudentDetailsViewTests: XCTestCase {
         let (_, _, view) = studentDetailsView
 
         XCTAssertView(view) { view in
-            view.name = "David"
-            view.dateOfBirth = Date()
-            view.gender = .male
+            view.state.name = "David"
+            view.state.dateOfBirth = Date()
+            view.state.gender = .male
 
             XCTAssertNotNil(view.nextButtonAction)
         }
@@ -140,10 +146,10 @@ final class StudentDetailsViewTests: XCTestCase {
         XCTAssertView(view) { view in
             let date = Date()
 
-            view.name = "  David    Roman  "
-            view.dateOfBirth = date
-            view.gender = .male
-            view.about = """
+            view.state.name = "  David    Roman  "
+            view.state.dateOfBirth = date
+            view.state.gender = .male
+            view.state.about = """
                David is an exceptional piano student, however    whitespaces are not his thing.    Like at all.
 
 
