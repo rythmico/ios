@@ -9,7 +9,7 @@ final class RequestLessonPlanContext: ObservableObject {
         willSet { previousStep = currentStep }
     }
 
-    var previousStep: Step?
+    private(set) var previousStep: Step?
 }
 
 extension RequestLessonPlanContext {
@@ -21,7 +21,11 @@ extension RequestLessonPlanContext {
         case privateNote
         case reviewProposal
 
-        var index: Int {
+        static func < (lhs: Self, rhs: Self) -> Bool {
+            lhs.index < rhs.index
+        }
+
+        private var index: Int {
             switch self {
             case .instrumentSelection:
                 return 0
@@ -37,17 +41,10 @@ extension RequestLessonPlanContext {
                 return 5
             }
         }
+    }
 
-        static func < (lhs: Self, rhs: Self) -> Bool {
-            lhs.index < rhs.index
-        }
-
-        static func > (lhs: Self, rhs: Self?) -> Bool {
-            guard let rhs = rhs else {
-                return true
-            }
-            return lhs > rhs
-        }
+    enum Direction {
+        case forward, backward
     }
 
     var currentStep: Step {
@@ -60,6 +57,13 @@ extension RequestLessonPlanContext {
         }
 
         return .addressDetails(instrument, student)
+    }
+
+    var direction: Direction {
+        guard let previousStep = previousStep else {
+            return .forward
+        }
+        return currentStep > previousStep ? .forward : .backward
     }
 }
 

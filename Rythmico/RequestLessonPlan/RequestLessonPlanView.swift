@@ -6,18 +6,19 @@ typealias PrivateNoteView = AnyView
 typealias ReviewProposalView = AnyView
 
 struct RequestLessonPlanView: View, Identifiable {
+    @Environment(\.betterSheetPresentationMode)
+    private var presentationMode
+
     @ObservedObject
     private var context: RequestLessonPlanContext
     private let instrumentProvider: InstrumentSelectionListProviderProtocol
 
-    let id = UUID()
-    @Environment(\.betterSheetPresentationMode) private var presentationMode
-
     init(instrumentProvider: InstrumentSelectionListProviderProtocol) {
         self.instrumentProvider = instrumentProvider
         self.context = RequestLessonPlanContext()
-
     }
+
+    let id = UUID()
 
     var shouldShowBackButton: Bool {
         switch context.currentStep {
@@ -25,6 +26,18 @@ struct RequestLessonPlanView: View, Identifiable {
             return false
         default:
             return true
+        }
+    }
+
+    func back() {
+        guard context.student == nil else {
+            context.student = nil
+            return
+        }
+
+        guard context.instrument == nil else {
+            context.instrument = nil
+            return
         }
     }
 
@@ -67,22 +80,10 @@ struct RequestLessonPlanView: View, Identifiable {
     private func pageTransition(forStepIndex index: Int) -> AnyTransition {
         AnyTransition.move(
             edge: index == currentStepViewIndex
-                ? context.currentStep > context.previousStep ? .trailing : .leading
-                : context.currentStep > context.previousStep ? .leading : .trailing
+                ? context.direction == .forward ? .trailing : .leading
+                : context.direction == .forward ? .leading : .trailing
         )
         .combined(with: .opacity)
-    }
-
-    func back() {
-        guard context.student == nil else {
-            context.student = nil
-            return
-        }
-
-        guard context.instrument == nil else {
-            context.instrument = nil
-            return
-        }
     }
 }
 
