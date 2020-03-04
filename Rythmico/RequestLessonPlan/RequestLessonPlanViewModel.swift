@@ -12,7 +12,7 @@ final class RequestLessonPlanViewModel: ViewModelObject<RequestLessonPlanViewDat
         self.instrumentProvider = instrumentProvider
         let context = RequestLessonPlanContext()
         self.context = context
-        super.init(viewData: .init(currentStep: instrumentSelectionStep(context: context, instrumentProvider: instrumentProvider)))
+        super.init(viewData: .init(currentStep: .instrumentSelection(InstrumentSelectionView(context: context, instrumentProvider: instrumentProvider))))
         context.updateHandler = contextDidUpdate
     }
 
@@ -39,17 +39,6 @@ final class RequestLessonPlanViewModel: ViewModelObject<RequestLessonPlanViewDat
             AddressDetailsView(context: context).map(Step.addressDetails),
             StudentDetailsView(context: context, editingCoordinator: UIApplication.shared, dispatchQueue: .main).map(Step.studentDetails)
         ]
-        .lazy.compactMap { $0 }.first ?? instrumentSelectionStep(context: context, instrumentProvider: instrumentProvider)
+        .lazy.compactMap { $0 }.first ?? .instrumentSelection(InstrumentSelectionView(context: context, instrumentProvider: instrumentProvider))
     }
-}
-
-private func instrumentSelectionStep(context: RequestLessonPlanContextProtocol, instrumentProvider: InstrumentSelectionListProviderProtocol) -> RequestLessonPlanViewData.Step {
-    .instrumentSelection(
-        InstrumentSelectionView(
-            viewModel: InstrumentSelectionViewModel(
-                context: context,
-                instrumentProvider: instrumentProvider
-            )
-        )
-    )
 }
