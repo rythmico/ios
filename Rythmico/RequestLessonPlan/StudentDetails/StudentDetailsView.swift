@@ -165,20 +165,20 @@ struct StudentDetailsView: View, TestableView {
                     VStack(alignment: .leading, spacing: .spacingLarge) {
                         TitleContentView(title: "Full Name") {
                             CustomTextField(
-                                Text("Enter Name...").foregroundColor(.rythmicoGray30),
+                                "Enter Name...",
                                 text: $state.name,
+                                textContentType: .name,
+                                autocapitalizationType: .words,
                                 onEditingChanged: textFieldEditingChanged
-                            )
-                            .textContentType(.name)
-                            .autocapitalization(.words)
-                            .modifier(RoundedThinOutlineContainer())
+                            ).modifier(RoundedThinOutlineContainer(padded: false))
                         }
                         TitleContentView(title: "Date of Birth") {
                             CustomTextField(
-                                Text(dateOfBirthPlaceholderText).foregroundColor(.rythmicoGray30),
+                                dateOfBirthPlaceholderText,
                                 text: .constant(dateOfBirthText ?? ""),
+                                isSelectable: false,
                                 onEditingChanged: dateFieldEditingChanged
-                            ).modifier(RoundedThinOutlineContainer())
+                            ).modifier(RoundedThinOutlineContainer(padded: false))
                         }
                         TitleContentView(title: "Gender") {
                             GenderSelectionView(selection: $state.gender)
@@ -188,7 +188,7 @@ struct StudentDetailsView: View, TestableView {
                                 "Existing instrument prowess etc.",
                                 text: $state.about,
                                 onEditingChanged: textFieldEditingChanged
-                            ).modifier(RoundedThinOutlineContainer())
+                            ).modifier(RoundedThinOutlineContainer(padded: false))
                         }
                     }
                     .rythmicoFont(.body)

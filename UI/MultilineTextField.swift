@@ -17,7 +17,12 @@ private struct UITextViewWrapper: UIViewRepresentable {
         textField.isUserInteractionEnabled = true
         textField.isScrollEnabled = false
         textField.backgroundColor = .clear
-        textField.textContainerInset = .zero
+        textField.textContainerInset = UIEdgeInsets(
+            top: 15,
+            left: .spacingSmall,
+            bottom: 15,
+            right: .spacingSmall
+        )
         textField.textContainer.lineFragmentPadding = 0
 
         // add done button tooltip
@@ -123,13 +128,16 @@ struct MultilineTextField: View {
     var body: some View {
         UITextViewWrapper(placeholder: placeholder, text: internalText, calculatedHeight: $dynamicHeight, onEditingChanged: onEditingChanged)
             .frame(minHeight: dynamicHeight, maxHeight: dynamicHeight)
-            .background(placeholderView, alignment: .topLeading)
+            .background(placeholderView, alignment: .leading)
     }
 
     var placeholderView: some View {
         Group {
             if showingPlaceholder {
-                Text(placeholder).rythmicoFont(.body).foregroundColor(.rythmicoGray30)
+                Text(placeholder)
+                    .rythmicoFont(.body)
+                    .foregroundColor(.rythmicoGray30)
+                    .padding(.horizontal, .spacingSmall)
             }
         }
     }
