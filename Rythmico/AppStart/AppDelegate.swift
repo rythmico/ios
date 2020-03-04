@@ -1,6 +1,5 @@
-import UIKit
+import SwiftUI
 import Firebase
-import class SwiftUI.UIHostingController
 import Then
 import BetterSheet
 
@@ -57,24 +56,19 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    private var rootView: RootView {
+    private var rootView: some View {
         RootView(
-            viewModel: RootViewModel(
-                keychain: Keychain.localKeychain,
-                onboardingViewModel: OnboardingViewModel(
-                    appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
-                    authenticationService: AuthenticationService(),
-                    keychain: Keychain.localKeychain
-                ),
-                authorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
-                authorizationCredentialRevocationObserving: AppleAuthorizationCredentialRevocationObserver(
-                    notificationCenter: NotificationCenter.default
-                ),
-                authenticationAccessTokenProviderObserving: AuthenticationAccessTokenProviderObserver(
-                    broadcast: AuthenticationAccessTokenProviderBroadcast()
-                ),
-                deauthenticationService: DeauthenticationService()
-            )
+            keychain: Keychain.localKeychain,
+            appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
+            authenticationService: AuthenticationService(),
+            authorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
+            authorizationCredentialRevocationNotifying: AppleAuthorizationCredentialRevocationNotifier(
+                notificationCenter: NotificationCenter.default
+            ),
+            authenticationAccessTokenProviderObserving: AuthenticationAccessTokenProviderObserver(
+                broadcast: AuthenticationAccessTokenProviderBroadcast()
+            ),
+            deauthenticationService: DeauthenticationService()
         )
     }
 }

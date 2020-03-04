@@ -3,14 +3,14 @@ import Sugar
 final class DeauthenticationServiceSpy: DeauthenticationServiceProtocol {
     var deauthenticationCount = 0
 
-    private let accessTokenProviderObserver: AuthenticationAccessTokenProviderObserving
+    private let accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverStub
 
-    init(accessTokenProviderObserver: AuthenticationAccessTokenProviderObserving) {
+    init(accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverStub) {
         self.accessTokenProviderObserver = accessTokenProviderObserver
     }
 
     func deauthenticate() {
         deauthenticationCount += 1
-        accessTokenProviderObserver.statusDidChangeHandler?(nil)
+        accessTokenProviderObserver.currentProvider = nil
     }
 }

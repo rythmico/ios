@@ -3,21 +3,22 @@ import SwiftUI
 @testable import Rythmico
 
 final class StudentDetailsViewTests: XCTestCase {
-    var studentDetailsView: (RequestLessonPlanContextProtocol, EditingCoordinatorSpy, StudentDetailsView) {
+    var studentDetailsView: (RequestLessonPlanContext, EditingCoordinatorSpy, StudentDetailsView) {
         let instrument = Instrument(id: "ABC", name: "Violin", icon: Image(systemSymbol: ._00Circle))
-        let context = RequestLessonPlanContext(instrument: instrument, student: nil)
+        let context = RequestLessonPlanContext()
         let editingCoordinator = EditingCoordinatorSpy()
         return (
             context,
             editingCoordinator,
-            StudentDetailsView(context: context, editingCoordinator: editingCoordinator, dispatchQueue: .none)!
+            StudentDetailsView(instrument: instrument, context: context, editingCoordinator: editingCoordinator, dispatchQueue: .none)
         )
     }
 
     func testInitialValues() {
-        let (_, editingCoordinator, view) = studentDetailsView
+        let (context, editingCoordinator, view) = studentDetailsView
 
         XCTAssertView(view) { view in
+            XCTAssertNil(context.student)
             XCTAssertEqual(editingCoordinator.endEditingCount, 0)
 
             XCTAssertFalse(view.subtitle.isEmpty)
@@ -81,7 +82,7 @@ final class StudentDetailsViewTests: XCTestCase {
             view.name = "David"
             XCTAssertEqual(view.aboutNameTextPart.string, "David")
 
-            view.name = "Jesse Bildner"
+            view.name = "  Jesse Bildner \n   "
             XCTAssertEqual(view.aboutNameTextPart.string, "Jesse")
 
             XCTAssertNil(view.nextButtonAction)
@@ -130,6 +131,46 @@ final class StudentDetailsViewTests: XCTestCase {
             view.gender = .male
 
             XCTAssertNotNil(view.nextButtonAction)
+        }
+    }
+
+    func testNextButtonSetsStudentDetailsInContext() throws {
+        let (context, _, view) = studentDetailsView
+
+        XCTAssertView(view) { view in
+            let date = Date()
+
+            view.name = "  David    Roman  "
+            view.dateOfBirth = date
+            view.gender = .male
+            view.about = """
+               David is an exceptional piano student, however    whitespaces are not his thing.    Like at all.
+
+
+            Anyway we can help    him out a bit   with this.
+
+            Teach him how whitespaces and newlines are properly done, please.
+
+
+
+            """
+            view.nextButtonAction?()
+
+            XCTAssertEqual(
+                context.student,
+                Student(
+                    name: "David Roman",
+                    dateOfBirth: date,
+                    gender: .male,
+                    about: """
+                    David is an exceptional piano student, however whitespaces are not his thing. Like at all.
+
+                    Anyway we can help him out a bit with this.
+
+                    Teach him how whitespaces and newlines are properly done, please.
+                    """
+                )
+            )
         }
     }
 }
