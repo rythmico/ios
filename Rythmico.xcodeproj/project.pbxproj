@@ -360,14 +360,10 @@
 		03341B3D23ABB1E7009AE8A8 /* Rythmico */ = {
 			isa = PBXGroup;
 			children = (
-				D50668DA23B946330044E553 /* Rythmico.entitlements */,
 				D5F506B22405B6A700CA4094 /* AppStart */,
 				D54317F223FDB04E00CB1493 /* Root */,
 				D54317ED23FDB00700CB1493 /* RequestLessonPlan */,
-				03341B4C23ABB1E8009AE8A8 /* Info.plist */,
-				D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */,
-				D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */,
-				D509898423B9B5C100C19300 /* GoogleService-Info.plist */,
+				D52677CB241019B60074FDEF /* Supporting Files */,
 				03341B4623ABB1E8009AE8A8 /* Preview Content */,
 			);
 			path = Rythmico;
@@ -441,6 +437,18 @@
 				D5147507240C8E69002EE20C /* XCTAssertView.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		D52677CB241019B60074FDEF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D50668DA23B946330044E553 /* Rythmico.entitlements */,
+				03341B4C23ABB1E8009AE8A8 /* Info.plist */,
+				D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */,
+				D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */,
+				D509898423B9B5C100C19300 /* GoogleService-Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		D535547423DF33AA005A20EB /* Authentication */ = {
@@ -1043,7 +1051,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Rythmico/Rythmico.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Rythmico/Supporting Files/Rythmico.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Rythmico/Preview Content\"";
 				DEVELOPMENT_TEAM = 72N659HYBR;
@@ -1052,7 +1060,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Rythmico/Info.plist;
+				INFOPLIST_FILE = "Rythmico/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1073,7 +1081,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Rythmico/Rythmico.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Rythmico/Supporting Files/Rythmico.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Rythmico/Preview Content\"";
 				DEVELOPMENT_TEAM = 72N659HYBR;
@@ -1082,7 +1090,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Rythmico/Info.plist;
+				INFOPLIST_FILE = "Rythmico/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
