@@ -103,7 +103,6 @@
 		D5AAF7CB23ED850E00E410F2 /* BetterSheet in Frameworks */ = {isa = PBXBuildFile; productRef = D5AAF7CA23ED850E00E410F2 /* BetterSheet */; };
 		D5AAF7CF23F08FB200E410F2 /* RequestLessonPlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7CE23F08FB200E410F2 /* RequestLessonPlanViewModel.swift */; };
 		D5AAF7D123F9ACFA00E410F2 /* InstrumentSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D023F9ACFA00E410F2 /* InstrumentSelectionView.swift */; };
-		D5AAF7D323F9E0AD00E410F2 /* InstrumentSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D223F9E0AD00E410F2 /* InstrumentSelectionViewModel.swift */; };
 		D5AAF7D523F9E1F900E410F2 /* InstrumentSelectionListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D423F9E1F900E410F2 /* InstrumentSelectionListProvider.swift */; };
 		D5AAF7D723F9E20C00E410F2 /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D623F9E20C00E410F2 /* Instrument.swift */; };
 		D5AAF7D923F9EB1200E410F2 /* InstrumentSelectionListProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D823F9EB1200E410F2 /* InstrumentSelectionListProviderDoubles.swift */; };
@@ -283,7 +282,6 @@
 		D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanView.swift; sourceTree = "<group>"; };
 		D5AAF7CE23F08FB200E410F2 /* RequestLessonPlanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanViewModel.swift; sourceTree = "<group>"; };
 		D5AAF7D023F9ACFA00E410F2 /* InstrumentSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionView.swift; sourceTree = "<group>"; };
-		D5AAF7D223F9E0AD00E410F2 /* InstrumentSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionViewModel.swift; sourceTree = "<group>"; };
 		D5AAF7D423F9E1F900E410F2 /* InstrumentSelectionListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionListProvider.swift; sourceTree = "<group>"; };
 		D5AAF7D623F9E20C00E410F2 /* Instrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instrument.swift; sourceTree = "<group>"; };
 		D5AAF7D823F9EB1200E410F2 /* InstrumentSelectionListProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionListProviderDoubles.swift; sourceTree = "<group>"; };
@@ -589,7 +587,6 @@
 				D5AAF7D423F9E1F900E410F2 /* InstrumentSelectionListProvider.swift */,
 				D5AAF7D823F9EB1200E410F2 /* InstrumentSelectionListProviderDoubles.swift */,
 				D5AAF7D023F9ACFA00E410F2 /* InstrumentSelectionView.swift */,
-				D5AAF7D223F9E0AD00E410F2 /* InstrumentSelectionViewModel.swift */,
 				D50811E923FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift */,
 			);
 			path = InstrumentSelection;
@@ -939,7 +936,6 @@
 				D53555C023E53699005A20EB /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */,
 				D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */,
 				D5F5068E240473CB00CA4094 /* FloatingDatePicker.swift in Sources */,
-				D5AAF7D323F9E0AD00E410F2 /* InstrumentSelectionViewModel.swift in Sources */,
 				D5AAF7C823ECC87000E410F2 /* RequestLessonPlanView.swift in Sources */,
 				D5BA171223D7AB3B00954D50 /* MainTabView.swift in Sources */,
 				D53555CF23E536AE005A20EB /* AppleAuthorizationCompletionDelegate.swift in Sources */,
