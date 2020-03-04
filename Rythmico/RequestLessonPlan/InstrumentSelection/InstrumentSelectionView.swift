@@ -1,14 +1,18 @@
 import SwiftUI
 import Sugar
 
+protocol InstrumentSelectionContext {
+    func setInstrument(_ instrument: Instrument)
+}
+
 struct InstrumentSelectionView: View, TestableView {
-    private let context: RequestLessonPlanContextProtocol
+    private let context: InstrumentSelectionContext
     private let instrumentProvider: InstrumentSelectionListProviderProtocol
 
     @State var instruments: [InstrumentViewData] = []
 
     init(
-        context: RequestLessonPlanContextProtocol,
+        context: InstrumentSelectionContext,
         instrumentProvider: InstrumentSelectionListProviderProtocol
     ) {
         self.context = context
@@ -29,12 +33,14 @@ struct InstrumentSelectionView: View, TestableView {
 
     private func onAppear() {
         instrumentProvider.instruments { instruments in
-            self.instruments = instruments
-                .map { instrument in
-                    InstrumentViewData(name: instrument.name, icon: instrument.icon, action: {
-                        self.context.instrument = instrument
-                    })
-                }
+            withAnimation(.none) {
+                self.instruments = instruments
+                    .map { instrument in
+                        InstrumentViewData(name: instrument.name, icon: instrument.icon, action: {
+                            self.context.setInstrument(instrument)
+                        })
+                    }
+            }
         }
     }
 }
