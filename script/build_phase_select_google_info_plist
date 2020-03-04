@@ -1,10 +1,5 @@
 #!/bin/bash
 
 PRODUCT_DIR=$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.app
-PRODUCT_CONFIG=$([ "$CONFIGURATION" == "Release" ] && echo Release || echo Debug)
-
-cp -Rf $PRODUCT_DIR/GoogleService-Info-$PRODUCT_CONFIG.plist $PRODUCT_DIR/GoogleService-Info.plist
-echo "$PRODUCT_CONFIG info plist copied"
-
-rm $PRODUCT_DIR/GoogleService-Info-Debug.plist
-rm $PRODUCT_DIR/GoogleService-Info-Release.plist
+cp -Rf $PRODUCT_DIR/GoogleService-Info-$CONFIGURATION.plist $PRODUCT_DIR/GoogleService-Info.plist
+rm -rf $PRODUCT_DIR/GoogleService-Info-*.plist
