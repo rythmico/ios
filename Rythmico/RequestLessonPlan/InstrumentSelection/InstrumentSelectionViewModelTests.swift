@@ -9,7 +9,8 @@ final class InstrumentSelectionViewTests: XCTestCase {
             Instrument(id: "ABC", name: "Violin", icon: Image(systemSymbol: ._00Circle)),
             Instrument(id: "DEF", name: "Guitar", icon: Image(systemSymbol: ._00CircleFill))
         ]
-        let view = InstrumentSelectionView(context: context, instrumentProvider: InstrumentSelectionListProviderStub(instruments: instruments))
+        let instrumentProvider = InstrumentSelectionListProviderStub(instruments: instruments)
+        let view = InstrumentSelectionView(state: .init(), context: context, instrumentProvider: instrumentProvider)
 
         return (context, instruments, view)
     }
@@ -18,13 +19,13 @@ final class InstrumentSelectionViewTests: XCTestCase {
         let (_, instruments, view) = instrumentSelectionView
 
         XCTAssertView(view) { view in
-            XCTAssertEqual(view.instruments.count, 2)
+            XCTAssertEqual(view.state.instruments.count, 2)
 
-            XCTAssertEqual(view.instruments[0].name, instruments[0].name)
-            XCTAssertEqual(view.instruments[0].icon, instruments[0].icon)
+            XCTAssertEqual(view.state.instruments[0].name, instruments[0].name)
+            XCTAssertEqual(view.state.instruments[0].icon, instruments[0].icon)
 
-            XCTAssertEqual(view.instruments[1].name, instruments[1].name)
-            XCTAssertEqual(view.instruments[1].icon, instruments[1].icon)
+            XCTAssertEqual(view.state.instruments[1].name, instruments[1].name)
+            XCTAssertEqual(view.state.instruments[1].icon, instruments[1].icon)
         }
     }
 
@@ -34,10 +35,10 @@ final class InstrumentSelectionViewTests: XCTestCase {
         XCTAssertView(view) { view in
             XCTAssertNil(context.instrument)
 
-            view.instruments[0].action?()
+            view.state.instruments[0].action?()
             XCTAssertEqual(context.instrument, instruments[0])
 
-            view.instruments[1].action?()
+            view.state.instruments[1].action?()
             XCTAssertEqual(context.instrument, instruments[1])
         }
     }
