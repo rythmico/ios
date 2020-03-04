@@ -3,14 +3,14 @@ import SwiftUI
 @testable import Rythmico
 
 final class StudentDetailsViewTests: XCTestCase {
-    var studentDetailsView: (RequestLessonPlanContextProtocol, EditingCoordinatorSpy, StudentDetailsView) {
+    var studentDetailsView: (RequestLessonPlanContext, EditingCoordinatorSpy, StudentDetailsView) {
         let instrument = Instrument(id: "ABC", name: "Violin", icon: Image(systemSymbol: ._00Circle))
-        let context = RequestLessonPlanContext(instrument: instrument, student: nil)
+        let context = RequestLessonPlanContext()
         let editingCoordinator = EditingCoordinatorSpy()
         return (
             context,
             editingCoordinator,
-            StudentDetailsView(context: context, editingCoordinator: editingCoordinator, dispatchQueue: .none)!
+            StudentDetailsView(instrument: instrument, context: context, editingCoordinator: editingCoordinator, dispatchQueue: .none)
         )
     }
 
