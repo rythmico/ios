@@ -194,6 +194,7 @@ struct StudentDetailsView: View, TestableView {
                     .rythmicoFont(.body)
                     .accentColor(.rythmicoPurple)
                     .inset(.bottom, .spacingMedium)
+                    .onBackgroundTapGesture(perform: endEditingAllFields)
                 }
                 .avoidingKeyboard()
 
@@ -219,6 +220,11 @@ struct StudentDetailsView: View, TestableView {
         .animation(.easeInOut(duration: .durationMedium), value: isEditing)
         .onDisappear(perform: editingCoordinator.endEditing)
         .onAppear { self.didAppear?(self) }
+    }
+
+    private func endEditingAllFields() {
+        editingCoordinator.endEditing()
+        endEditingDateOfBirth()
     }
 }
 
