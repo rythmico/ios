@@ -106,6 +106,7 @@
 		D5C23A76240F0186007DED63 /* TestDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C23A75240F0186007DED63 /* TestDelegate.swift */; };
 		D5C23A78240F1C1E007DED63 /* String+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C23A77240F1C1E007DED63 /* String+Sugar.swift */; };
 		D5C23A7A240F2DEB007DED63 /* Bool+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C23A79240F2DEB007DED63 /* Bool+Sugar.swift */; };
+		D5C23A7C240FEF30007DED63 /* TapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C23A7B240FEF30007DED63 /* TapView.swift */; };
 		D5E04B1923BED80700A161BB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* Fonts.swift */; };
 		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
 		D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF88B523FB706C0072BD03 /* ProgressBar.swift */; };
@@ -260,6 +261,7 @@
 		D5C23A75240F0186007DED63 /* TestDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDelegate.swift; sourceTree = "<group>"; };
 		D5C23A77240F1C1E007DED63 /* String+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Sugar.swift"; sourceTree = "<group>"; };
 		D5C23A79240F2DEB007DED63 /* Bool+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Sugar.swift"; sourceTree = "<group>"; };
+		D5C23A7B240FEF30007DED63 /* TapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapView.swift; sourceTree = "<group>"; };
 		D5E04B1823BED80700A161BB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D5EF88B523FB706C0072BD03 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 				D5F50662240056FA00CA4094 /* RoundedThinOutlineContainer.swift */,
 				D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */,
 				D50811E323FB72A3008103D8 /* StepBar.swift */,
+				D5C23A7B240FEF30007DED63 /* TapView.swift */,
 				D5F506642400619600CA4094 /* UIApplication+EndEditing.swift */,
 				D5FD6F13240985D3008C5AD4 /* View+Inset.swift */,
 				D5147507240C8E69002EE20C /* XCTAssertView.swift */,
@@ -831,6 +834,7 @@
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
 				D53555CE23E536AE005A20EB /* AppleAuthorizationControllerDoubles.swift in Sources */,
 				D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */,
+				D5C23A7C240FEF30007DED63 /* TapView.swift in Sources */,
 				D5F506652400619600CA4094 /* UIApplication+EndEditing.swift in Sources */,
 				D5AAF7D723F9E20C00E410F2 /* Instrument.swift in Sources */,
 				D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */,
