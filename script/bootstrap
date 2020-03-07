@@ -5,3 +5,6 @@ if ! command -v git-crypt >/dev/null 2>&1; then
 fi
 
 git-crypt unlock
+
+SCRIPT_DIR=$(dirname $0)
+$SCRIPT_DIR/build_phase_generate_asset_symbols
