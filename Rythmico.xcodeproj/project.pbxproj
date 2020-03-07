@@ -633,6 +633,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03341B4F23ABB1E8009AE8A8 /* Build configuration list for PBXNativeTarget "Rythmico" */;
 			buildPhases = (
+				D5B57A612414516700BE9B4F /* Generate Asset Symbols */,
 				03341B3723ABB1E7009AE8A8 /* Sources */,
 				03341B3823ABB1E7009AE8A8 /* Frameworks */,
 				D53554B123E0FA4B005A20EB /* Embed Frameworks */,
@@ -794,6 +795,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${SRCROOT}/script/build_phase_select_google_info_plist\n";
+		};
+		D5B57A612414516700BE9B4F /* Generate Asset Symbols */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Asset Symbols";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/script/build_phase_generate_asset_symbols\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
