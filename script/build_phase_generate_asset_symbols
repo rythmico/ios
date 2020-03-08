@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if ! which swiftgen > /dev/null; then
+    brew install swiftgen
+fi
+
+swiftgen

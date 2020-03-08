@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if ! which sourcery > /dev/null; then
+    brew install sourcery
+fi
+
+sourcery \
+    --sources UI \
+    --sources Rythmico \
+    --templates Rythmico/Supporting\ Files/EnumProperties.stencil \
+    --output Rythmico/Supporting\ Files

@@ -114,55 +114,37 @@ extension RequestLessonPlanView {
     }
 
     var instrumentSelectionView: InstrumentSelectionView? {
-        guard case .instrumentSelection = context.currentStep else {
-            return nil
-        }
-        return InstrumentSelectionView(
-            state: instrumentSelectionViewState,
-            context: context,
-            instrumentProvider: instrumentProvider
-        )
+        context.currentStep.isInstrumentSelection
+            ? InstrumentSelectionView(state: instrumentSelectionViewState, context: context, instrumentProvider: instrumentProvider)
+            : nil
     }
 
     var studentDetailsView: StudentDetailsView? {
-        guard case let .studentDetails(instrument) = context.currentStep else {
-            return nil
+        context.currentStep.studentDetails.map {
+            StudentDetailsView(
+                instrument: $0,
+                state: studentDetailsViewState,
+                context: context,
+                editingCoordinator: UIApplication.shared,
+                dispatchQueue: .main
+            )
         }
-        return StudentDetailsView(
-            instrument: instrument,
-            state: studentDetailsViewState,
-            context: context,
-            editingCoordinator: UIApplication.shared,
-            dispatchQueue: .main
-        )
     }
 
     var addressDetailsView: AddressDetailsView? {
-        guard case let .addressDetails(instrument, student) = context.currentStep else {
-            return nil
-        }
-        return AddressDetailsView(student: student, instrument: instrument)
+        context.currentStep.addressDetails.map { AddressDetailsView(student: $0.1, instrument: $0.0) }
     }
 
     var schedulingView: SchedulingView? {
-        guard case .scheduling = context.currentStep else {
-            return nil
-        }
-        return SchedulingView(EmptyView())
+        context.currentStep.isScheduling ? SchedulingView(EmptyView()) : nil
     }
 
     var privateNoteView: PrivateNoteView? {
-        guard case .privateNote = context.currentStep else {
-            return nil
-        }
-        return PrivateNoteView(EmptyView())
+        context.currentStep.isPrivateNote ? PrivateNoteView(EmptyView()) : nil
     }
 
     var reviewProposalView: ReviewProposalView? {
-        guard case .reviewProposal = context.currentStep else {
-            return nil
-        }
-        return ReviewProposalView(EmptyView())
+        context.currentStep.isReviewProposal ? ReviewProposalView(EmptyView()) : nil
     }
 }
 

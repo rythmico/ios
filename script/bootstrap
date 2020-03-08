@@ -1,7 +1,12 @@
 #!/bin/bash
 
-if ! command -v git-crypt >/dev/null 2>&1; then
+if ! which git-crypt > /dev/null; then
     brew install git-crypt
 fi
 
-git-crypt unlock
+PRIVATE_KEY=$1
+git-crypt unlock $PRIVATE_KEY
+
+SCRIPT_DIR=$(dirname $0)
+$SCRIPT_DIR/build_phase_generate_asset_symbols
+$SCRIPT_DIR/build_phase_generate_enum_properties

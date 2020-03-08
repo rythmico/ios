@@ -5,20 +5,6 @@ extension RootView {
     enum UserState {
         case unauthenticated(OnboardingView)
         case authenticated(MainTabView)
-
-        var onboardingView: OnboardingView? {
-            guard case .unauthenticated(let onboardingView) = self else {
-                return nil
-            }
-            return onboardingView
-        }
-
-        var mainTabView: MainTabView? {
-            guard case .authenticated(let mainTabView) = self else {
-                return nil
-            }
-            return mainTabView
-        }
     }
 }
 
@@ -72,10 +58,10 @@ struct RootView<AccessTokenProviderObserving>: View, TestableView where
     var didAppear: Handler<Self>?
     var body: some View {
         ZStack {
-            state.onboardingView.zIndex(1).transition(.move(edge: .leading))
-            state.mainTabView.zIndex(2).transition(.move(edge: .trailing))
+            state.unauthenticated.zIndex(1).transition(.move(edge: .leading))
+            state.authenticated.zIndex(2).transition(.move(edge: .trailing))
         }
-        .animation(.easeInOut(duration: .durationMedium), value: state.mainTabView != nil)
+        .animation(.easeInOut(duration: .durationMedium), value: state.authenticated != nil)
         .onAppear { self.didAppear?(self) }
         .onAppear(perform: onAppear)
     }
