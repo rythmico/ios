@@ -13,7 +13,6 @@
 		03341B4B23ABB1E8009AE8A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */; };
 		D50811E423FB72A3008103D8 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E323FB72A3008103D8 /* StepBar.swift */; };
 		D50811E623FB769D008103D8 /* RequestLessonPlanViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E523FB769D008103D8 /* RequestLessonPlanViewTests.swift */; };
-		D50811E823FD73F0008103D8 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E723FD73F0008103D8 /* Assets.swift */; };
 		D50811EA23FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E923FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift */; };
 		D509898023B969B700C19300 /* GoogleService-Info-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */; };
 		D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898423B9B5C100C19300 /* GoogleService-Info.plist */; };
@@ -100,6 +99,7 @@
 		D5AAF7DB23FB347C00E410F2 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7DA23FB347C00E410F2 /* CollectionView.swift */; };
 		D5AAF7DD23FB431E00E410F2 /* InstrumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7DC23FB431E00E410F2 /* InstrumentView.swift */; };
 		D5AAF7DF23FB444500E410F2 /* RoundedShadowContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */; };
+		D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A64241479F300BE9B4F /* Assets.generated.swift */; };
 		D5BA171023D7A18900954D50 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170F23D7A18900954D50 /* RootView.swift */; };
 		D5BA171223D7AB3B00954D50 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA171123D7AB3B00954D50 /* MainTabView.swift */; };
 		D5C23A74240EFDCB007DED63 /* MainTabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03341B4223ABB1E7009AE8A8 /* MainTabViewTests.swift */; };
@@ -173,7 +173,6 @@
 		D50668DA23B946330044E553 /* Rythmico.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rythmico.entitlements; sourceTree = "<group>"; };
 		D50811E323FB72A3008103D8 /* StepBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
 		D50811E523FB769D008103D8 /* RequestLessonPlanViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanViewTests.swift; sourceTree = "<group>"; };
-		D50811E723FD73F0008103D8 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		D50811E923FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionViewModelTests.swift; sourceTree = "<group>"; };
 		D509896523B963B700C19300 /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Carthage/Build/iOS/FirebaseAuth.framework; sourceTree = "<group>"; };
 		D509896623B963B700C19300 /* GoogleDataTransport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleDataTransport.framework; path = Carthage/Build/iOS/GoogleDataTransport.framework; sourceTree = "<group>"; };
@@ -253,6 +252,7 @@
 		D5B13B2B23D12520006CBC46 /* AuthenticationAccessTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProvider.swift; sourceTree = "<group>"; };
 		D5B13B2D23D125E6006CBC46 /* AuthenticationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceDoubles.swift; sourceTree = "<group>"; };
 		D5B13B2F23D1265F006CBC46 /* AuthenticationAccessTokenProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderDoubles.swift; sourceTree = "<group>"; };
+		D5B57A64241479F300BE9B4F /* Assets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.generated.swift; sourceTree = "<group>"; };
 		D5BA170723D66AF500954D50 /* AuthenticationAccessTokenProviderObserverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderObserverTests.swift; sourceTree = "<group>"; };
 		D5BA170923D671FD00954D50 /* AuthenticationAccessTokenProviderBroadcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderBroadcast.swift; sourceTree = "<group>"; };
 		D5BA170B23D6725B00954D50 /* AuthenticationAccessTokenProviderBroadcastDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderBroadcastDoubles.swift; sourceTree = "<group>"; };
@@ -409,8 +409,6 @@
 		D50E4BDC23CA82E000B6FCB1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				03341B4423ABB1E8009AE8A8 /* Assets.xcassets */,
-				D50811E723FD73F0008103D8 /* Assets.swift */,
 				D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */,
 				D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */,
 				D5F5065C23FF16AA00CA4094 /* BackButton.swift */,
@@ -445,6 +443,8 @@
 		D52677CB241019B60074FDEF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				03341B4423ABB1E8009AE8A8 /* Assets.xcassets */,
+				D5B57A64241479F300BE9B4F /* Assets.generated.swift */,
 				D50668DA23B946330044E553 /* Rythmico.entitlements */,
 				03341B4C23ABB1E8009AE8A8 /* Info.plist */,
 				D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */,
@@ -866,7 +866,6 @@
 				D5F506B02405A6A900CA4094 /* Duration.swift in Sources */,
 				D5AAF7D923F9EB1200E410F2 /* InstrumentSelectionListProviderDoubles.swift in Sources */,
 				D5F5067B2400788400CA4094 /* MultilineTextField.swift in Sources */,
-				D50811E823FD73F0008103D8 /* Assets.swift in Sources */,
 				D5F5065F240055E800CA4094 /* TitleContentView.swift in Sources */,
 				D5FD6F14240985D3008C5AD4 /* View+Inset.swift in Sources */,
 				D5F50663240056FA00CA4094 /* RoundedThinOutlineContainer.swift in Sources */,
@@ -886,6 +885,7 @@
 				D53555CC23E536AE005A20EB /* AppleAuthorizationServiceDoubles.swift in Sources */,
 				D5F506BE2406E49A00CA4094 /* EdgeSwipeView.swift in Sources */,
 				D5AAF7DB23FB347C00E410F2 /* CollectionView.swift in Sources */,
+				D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */,
 				D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */,
 				D5F5068C24046B1400CA4094 /* Spacing.swift in Sources */,
 				D535547923DF3A7C005A20EB /* Keychain.swift in Sources */,

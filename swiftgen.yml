@@ -1,5 +1,5 @@
 xcassets:
-  inputs: UI/Assets.xcassets
+  inputs: Rythmico/Supporting Files/Assets.xcassets
   outputs:
     templateName: swift4
-    output: UI/Assets.swift
+    output: Rythmico/Supporting Files/Assets.generated.swift
