@@ -58,10 +58,10 @@ struct RootView<AccessTokenProviderObserving>: View, TestableView where
     var didAppear: Handler<Self>?
     var body: some View {
         ZStack {
-            state.unauthenticated.zIndex(1).transition(.move(edge: .leading))
-            state.authenticated.zIndex(2).transition(.move(edge: .trailing))
+            state.unauthenticatedValue.zIndex(1).transition(.move(edge: .leading))
+            state.authenticatedValue.zIndex(2).transition(.move(edge: .trailing))
         }
-        .animation(.easeInOut(duration: .durationMedium), value: state.authenticated != nil)
+        .animation(.easeInOut(duration: .durationMedium), value: state.isAuthenticated)
         .onAppear { self.didAppear?(self) }
         .onAppear(perform: onAppear)
     }

@@ -41,7 +41,7 @@ import Foundation
     {% if case.associatedValues.count == 1 and case.associatedValues.first.isOptional%}
         @available(*, unavailable, message:"Optional associated value is not supported yet")
     {%endif%}
-    var {{case.name}}: {% if case.associatedValues.count > 1 %}{% call associatedValueVarMultiType case %}{% else %}{% call associatedValueVarUnitType case %}{% endif %} {
+    var {{case.name}}Value: {% if case.associatedValues.count > 1 %}{% call associatedValueVarMultiType case %}{% else %}{% call associatedValueVarUnitType case %}{% endif %} {
         guard case let .{{ case.name }}({{ case.name }}) = self else { return nil }
         return {{case.name}}
     }
@@ -62,6 +62,7 @@ import Foundation
             {% for case in enum.cases %}
                 {% if case.hasAssociatedValue %}
                     {% call associatedValueVar case %}
+                    {% call simpleVar case %}
                 {% else %}
                     {% call simpleVar case %}
                 {% endif %}
