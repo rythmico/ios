@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if ! which sourcery > /dev/null; then
+    echo "error: Sourcery is missing. Run brew install sourcery."
+    exit 1
+fi
+
+sourcery \
+    --sources UI \
+    --sources Rythmico \
+    --templates Rythmico/Supporting\ Files/EnumProperties.stencil \
+    --output Rythmico/Supporting\ Files
