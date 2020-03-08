@@ -1,8 +1,7 @@
 #!/bin/bash
 
 if ! which swiftgen > /dev/null; then
-    echo "error: SwiftGen is missing. Run brew install swiftgen."
-    exit 1
+    brew install swiftgen
 fi
 
 swiftgen
