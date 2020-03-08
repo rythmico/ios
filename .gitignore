@@ -106,3 +106,4 @@ iOSInjectionProject/
 
 # SwiftGen
 UI/Assets.swift
+*.generated.swift
