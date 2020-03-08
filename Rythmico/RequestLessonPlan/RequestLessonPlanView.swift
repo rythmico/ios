@@ -120,7 +120,7 @@ extension RequestLessonPlanView {
     }
 
     var studentDetailsView: StudentDetailsView? {
-        context.currentStep.studentDetails.map {
+        context.currentStep.studentDetailsValue.map {
             StudentDetailsView(
                 instrument: $0,
                 state: studentDetailsViewState,
@@ -132,7 +132,7 @@ extension RequestLessonPlanView {
     }
 
     var addressDetailsView: AddressDetailsView? {
-        context.currentStep.addressDetails.map { AddressDetailsView(student: $0.1, instrument: $0.0) }
+        context.currentStep.addressDetailsValue.map { AddressDetailsView(student: $0.1, instrument: $0.0) }
     }
 
     var schedulingView: SchedulingView? {
