@@ -42,8 +42,8 @@ final class RootViewTests: XCTestCase {
         )
 
         XCTAssertView(view) { view in
-            XCTAssertNotNil(view.state.unauthenticated)
-            XCTAssertNil(view.state.authenticated)
+            XCTAssertTrue(view.state.isUnauthenticated)
+            XCTAssertFalse(view.state.isAuthenticated)
             XCTAssert(keychain.inMemoryStorage.isEmpty)
             XCTAssertEqual(deauthenticationService.deauthenticationCount, 0)
         }
@@ -57,8 +57,8 @@ final class RootViewTests: XCTestCase {
         )
 
         XCTAssertView(view) { view in
-            XCTAssertNil(view.state.unauthenticated)
-            XCTAssertNotNil(view.state.authenticated)
+            XCTAssertFalse(view.state.isUnauthenticated)
+            XCTAssertTrue(view.state.isAuthenticated)
             XCTAssertEqual(deauthenticationService.deauthenticationCount, 0)
         }
     }
@@ -71,8 +71,8 @@ final class RootViewTests: XCTestCase {
         )
 
         XCTAssertView(view) { view in
-            XCTAssertNotNil(view.state.unauthenticated)
-            XCTAssertNil(view.state.authenticated)
+            XCTAssertTrue(view.state.isUnauthenticated)
+            XCTAssertFalse(view.state.isAuthenticated)
             XCTAssertNil(keychain.appleAuthorizationUserId)
             XCTAssertEqual(deauthenticationService.deauthenticationCount, 1)
         }
@@ -87,8 +87,8 @@ final class RootViewTests: XCTestCase {
 
         XCTAssertView(view) { view in
             credentialRevocationNotifier.revocationHandler?()
-            XCTAssertNotNil(view.state.unauthenticated)
-            XCTAssertNil(view.state.authenticated)
+            XCTAssertTrue(view.state.isUnauthenticated)
+            XCTAssertFalse(view.state.isAuthenticated)
             XCTAssertNil(keychain.appleAuthorizationUserId)
             XCTAssertEqual(deauthenticationService.deauthenticationCount, 1)
         }
@@ -103,8 +103,8 @@ final class RootViewTests: XCTestCase {
 
         XCTAssertView(view) { view in
             accessTokenProviderObserver.currentProvider = nil
-            XCTAssertNotNil(view.state.unauthenticated)
-            XCTAssertNil(view.state.authenticated)
+            XCTAssertTrue(view.state.isUnauthenticated)
+            XCTAssertFalse(view.state.isAuthenticated)
             XCTAssertNil(keychain.appleAuthorizationUserId)
             XCTAssertEqual(deauthenticationService.deauthenticationCount, 0)
         }
@@ -119,8 +119,8 @@ final class RootViewTests: XCTestCase {
 
         XCTAssertView(view) { view in
             deauthenticationService.deauthenticate()
-            XCTAssertNotNil(view.state.unauthenticated)
-            XCTAssertNil(view.state.authenticated)
+            XCTAssertTrue(view.state.isUnauthenticated)
+            XCTAssertFalse(view.state.isAuthenticated)
             XCTAssertNil(keychain.appleAuthorizationUserId)
             XCTAssertEqual(deauthenticationService.deauthenticationCount, 1)
         }
