@@ -1,8 +1,7 @@
 #!/bin/bash
 
 if ! which sourcery > /dev/null; then
-    echo "error: Sourcery is missing. Run brew install sourcery."
-    exit 1
+    brew install sourcery
 fi
 
 sourcery \
