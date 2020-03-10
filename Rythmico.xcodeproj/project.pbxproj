@@ -385,6 +385,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		0365F6F12417E95200F452AC /* AddressDetails */ = {
+			isa = PBXGroup;
+			children = (
+				D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */,
+			);
+			path = AddressDetails;
+			sourceTree = "<group>";
+		};
 		D509896423B963B700C19300 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,8 +532,8 @@
 				D54317EE23FDB01700CB1493 /* InstrumentSelection */,
 				D54317EF23FDB02600CB1493 /* Instrument */,
 				D5F506B12405B5AA00CA4094 /* StudentDetails */,
-				D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */,
 				D5F506B52406360900CA4094 /* Student.swift */,
+				0365F6F12417E95200F452AC /* AddressDetails */,
 				0365F6EF2417E79000F452AC /* Address.swift */,
 			);
 			path = RequestLessonPlan;
