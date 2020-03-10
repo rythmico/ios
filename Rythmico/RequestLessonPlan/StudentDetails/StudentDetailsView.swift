@@ -14,10 +14,10 @@ struct StudentDetailsView: View, TestableView {
     }
 
     final class ViewState: ObservableObject {
-        @Published var name = ""
+        @Published var name = String()
         @Published var dateOfBirth: Date?
         @Published var gender: Gender?
-        @Published var about = ""
+        @Published var about = String()
     }
 
     private let instrument: Instrument
@@ -64,7 +64,7 @@ struct StudentDetailsView: View, TestableView {
             // removes repeated whitespaces and newlines
             .components(separatedBy: .whitespacesAndNewlines)
             .filter(\.isEmpty.not)
-            .joined(separator: " ")
+            .joined(separator: .whitespace)
 
             .nilIfEmpty
     }
@@ -109,8 +109,9 @@ struct StudentDetailsView: View, TestableView {
     // MARK: - About -
     var aboutNameTextPart: MultiStyleText.Part {
         let firstNameComponent = sanitizedName?
-            .components(separatedBy: " ")
+            .split(separator: .whitespace)
             .first
+            .map(String.init)
 
         return .init(
             firstNameComponent ?? "Student",
@@ -124,14 +125,14 @@ struct StudentDetailsView: View, TestableView {
             .trimmingCharacters(in: .whitespacesAndNewlines)
 
             // removes repeated whitespaces
-            .components(separatedBy: .whitespaces)
+            .split(separator: .whitespace)
             .filter(\.isEmpty.not)
-            .joined(separator: " ")
+            .joined(separator: .whitespace)
 
             // removes repeated newlines
-            .components(separatedBy: .newlines)
+            .split(separator: .newline)
             .filter(\.isEmpty.not)
-            .joined(separator: "\n\n")
+            .joined(separator: Character.newline.repeated())
     }
 
     // MARK: - Next Button -
@@ -175,7 +176,7 @@ struct StudentDetailsView: View, TestableView {
                         TitleContentView(title: "Date of Birth") {
                             CustomTextField(
                                 dateOfBirthPlaceholderText,
-                                text: .constant(dateOfBirthText ?? ""),
+                                text: .constant(dateOfBirthText ?? .empty),
                                 isSelectable: false,
                                 onEditingChanged: dateFieldEditingChanged
                             ).modifier(RoundedThinOutlineContainer(padded: false))
