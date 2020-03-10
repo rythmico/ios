@@ -1,5 +1,6 @@
 import XCTest
 import SwiftUI
+import Sugar
 @testable import Rythmico
 
 final class StudentDetailsViewTests: XCTestCase {
@@ -30,7 +31,7 @@ final class StudentDetailsViewTests: XCTestCase {
             XCTAssertFalse(view.subtitle.isEmpty)
             XCTAssertEqual(view.selectedInstrumentName, "Violin")
 
-            XCTAssertEqual(view.state.name, "")
+            XCTAssertEqual(view.state.name, .empty)
 
             XCTAssertNil(view.state.dateOfBirth)
             XCTAssertNil(view.dateOfBirthText)
@@ -39,7 +40,7 @@ final class StudentDetailsViewTests: XCTestCase {
             XCTAssertNil(view.state.gender)
 
             XCTAssertEqual(view.aboutNameTextPart.string, "Student")
-            XCTAssertEqual(view.state.about, "")
+            XCTAssertEqual(view.state.about, .empty)
 
             XCTAssertNil(view.nextButtonAction)
         }

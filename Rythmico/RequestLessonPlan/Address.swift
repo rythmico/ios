@@ -1,4 +1,5 @@
 import Foundation
+import Sugar
 
 struct Address {
     var latitude: Double
@@ -22,6 +23,6 @@ extension Address {
             city,
             postcode,
             country,
-        ].filter(\.isEmpty.not).joined(separator: "\n")
+        ].filter(\.isEmpty.not).joined(separator: .newline)
     }
 }
