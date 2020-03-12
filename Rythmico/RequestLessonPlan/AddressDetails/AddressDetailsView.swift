@@ -93,7 +93,6 @@ struct AddressDetailsView: View {
                     } ?? AnyView(Spacer())
                 }
                 .accentColor(.rythmicoPurple)
-                .onBackgroundTapGesture(perform: editingCoordinator.endEditing)
 
                 nextButtonAction.map {
                     FloatingButton(title: "Next", action: $0).padding(.horizontal, -.spacingMedium)
@@ -107,8 +106,24 @@ struct AddressDetailsView: View {
 }
 
 struct AddressDetailsViewPreview: PreviewProvider {
+    static var mockAddress: Address {
+        Address(
+            latitude: 0,
+            longitude: 0,
+            line1: "Apartment 22",
+            line2: "321 Holloway Road",
+            line3: "",
+            line4: "",
+            city: "London",
+            postcode: "N7 9FU",
+            country: "England"
+        )
+    }
+
     static var previews: some View {
-        AddressDetailsView(
+        let state = AddressDetailsView.ViewState()
+        state.addresses = [mockAddress]
+        return AddressDetailsView(
             student: Student(
                 name: "David",
                 dateOfBirth: Date(),
@@ -120,23 +135,12 @@ struct AddressDetailsViewPreview: PreviewProvider {
                 name: "Guitar",
                 icon: Image(systemSymbol: ._00Circle)
             ),
-            state: .init(),
+            state: state,
             context: RequestLessonPlanContext(),
-            addressProvider: AddressProviderStub(result: .success([
-                Address(
-                    latitude: 0,
-                    longitude: 0,
-                    line1: "Apartment 22",
-                    line2: "321 Holloway Road",
-                    line3: "",
-                    line4: "",
-                    city: "London",
-                    postcode: "N7 9FU",
-                    country: "England"
-                )
-            ])),
+            addressProvider: AddressProviderStub(result: .success([mockAddress])),
             editingCoordinator: UIApplication.shared,
             dispatchQueue: nil
         )
+        .environment(\.sizeCategory, .accessibilityExtraExtraLarge)
     }
 }

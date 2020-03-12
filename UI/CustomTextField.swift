@@ -22,6 +22,7 @@ struct CustomTextField: UIViewRepresentable {
 
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             textField.resignFirstResponder()
+            onCommit()
             return true
         }
 
@@ -31,7 +32,6 @@ struct CustomTextField: UIViewRepresentable {
 
         func textFieldDidEndEditing(_ textField: UITextField) {
             onEditingChanged(false)
-            onCommit()
         }
     }
 
@@ -78,7 +78,6 @@ struct CustomTextField: UIViewRepresentable {
         textField.autocapitalizationType = autocapitalizationType
         textField.returnKeyType = returnKeyType
         textField.delegate = context.coordinator
-        textField.returnKeyType = .done
         textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         textField.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return textField
