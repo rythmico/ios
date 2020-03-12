@@ -2,7 +2,6 @@ import SwiftUI
 import Combine
 import Sugar
 
-typealias SchedulingView = AnyView
 typealias PrivateNoteView = AnyView
 typealias ReviewProposalView = AnyView
 
@@ -142,7 +141,7 @@ extension RequestLessonPlanView {
     }
 
     var schedulingView: SchedulingView? {
-        context.currentStep.isScheduling ? SchedulingView(EmptyView()) : nil
+        context.currentStep.isScheduling ? SchedulingView() : nil
     }
 
     var privateNoteView: PrivateNoteView? {
