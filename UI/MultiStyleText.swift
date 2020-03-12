@@ -35,7 +35,7 @@ struct MultiStyleText: View {
 }
 
 extension MultiStyleText {
-    struct Part {
+    struct Part: ExpressibleByStringLiteral {
         var string: String
         var weight: LegibilityWeight
         var color: Color
@@ -44,6 +44,10 @@ extension MultiStyleText {
             self.string = string
             self.weight = weight
             self.color = color
+        }
+
+        init(stringLiteral value: String) {
+            self.init(value)
         }
     }
 }

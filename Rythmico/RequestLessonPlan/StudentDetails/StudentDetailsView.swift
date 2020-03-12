@@ -48,7 +48,7 @@ struct StudentDetailsView: View, TestableView {
     var subtitle: [MultiStyleText.Part] {
         !isEditing
             ? [
-                .init("Enter the details of the student who will learn "),
+                "Enter the details of the student who will learn ",
                 .init(selectedInstrumentName, weight: .bold)
             ]
             : []
