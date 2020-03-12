@@ -4,13 +4,16 @@ struct CustomTextField: UIViewRepresentable {
     final class Coordinator: NSObject, UITextFieldDelegate {
         @Binding var text: String
         var onEditingChanged: (Bool) -> Void
+        var onCommit: () -> Void
 
         init(
             text: Binding<String>,
-            onEditingChanged: @escaping (Bool) -> Void
+            onEditingChanged: @escaping (Bool) -> Void,
+            onCommit: @escaping () -> Void
         ) {
             _text = text
             self.onEditingChanged = onEditingChanged
+            self.onCommit = onCommit
         }
 
         func textFieldDidChangeSelection(_ textField: UITextField) {
@@ -28,6 +31,7 @@ struct CustomTextField: UIViewRepresentable {
 
         func textFieldDidEndEditing(_ textField: UITextField) {
             onEditingChanged(false)
+            onCommit()
         }
     }
 
@@ -35,6 +39,7 @@ struct CustomTextField: UIViewRepresentable {
     @Binding var text: String
     var textContentType: UITextContentType?
     var autocapitalizationType: UITextAutocapitalizationType
+    var returnKeyType: UIReturnKeyType
     var isSelectable: Bool
     var onEditingChanged: (Bool) -> Void
     var onCommit: () -> Void
@@ -44,6 +49,7 @@ struct CustomTextField: UIViewRepresentable {
         text: Binding<String>,
         textContentType: UITextContentType? = nil,
         autocapitalizationType: UITextAutocapitalizationType = .none,
+        returnKeyType: UIReturnKeyType = .done,
         isSelectable: Bool = true,
         onEditingChanged: @escaping (Bool) -> Void = { _ in },
         onCommit: @escaping () -> Void = {}
@@ -52,6 +58,7 @@ struct CustomTextField: UIViewRepresentable {
         self._text = text
         self.textContentType = textContentType
         self.autocapitalizationType = autocapitalizationType
+        self.returnKeyType = returnKeyType
         self.isSelectable = isSelectable
         self.onEditingChanged = onEditingChanged
         self.onCommit = onCommit
@@ -69,14 +76,16 @@ struct CustomTextField: UIViewRepresentable {
         textField.font = .rythmicoFont(.body)
         textField.textContentType = textContentType
         textField.autocapitalizationType = autocapitalizationType
+        textField.returnKeyType = returnKeyType
         textField.delegate = context.coordinator
         textField.returnKeyType = .done
         textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        textField.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return textField
     }
 
     func makeCoordinator() -> CustomTextField.Coordinator {
-        return Coordinator(text: $text, onEditingChanged: onEditingChanged)
+        return Coordinator(text: $text, onEditingChanged: onEditingChanged, onCommit: onCommit)
     }
 
     func updateUIView(_ uiView: UITextField, context: UIViewRepresentableContext<CustomTextField>) {
