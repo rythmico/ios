@@ -51,3 +51,9 @@ extension MultiStyleText {
         }
     }
 }
+
+extension Array where Element == MultiStyleText.Part {
+    var string: String {
+        map(\.string).reduce(.empty, +)
+    }
+}

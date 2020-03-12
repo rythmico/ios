@@ -44,12 +44,11 @@ struct StudentDetailsView: View, TestableView {
     @ObservedObject var state: ViewState
 
     // MARK: - Subtitle -
-    var selectedInstrumentName: String { instrument.name }
     var subtitle: [MultiStyleText.Part] {
         !isEditing
             ? [
                 "Enter the details of the student who will learn ",
-                .init(selectedInstrumentName, weight: .bold)
+                .init(instrument.name, weight: .bold)
             ]
             : []
     }
