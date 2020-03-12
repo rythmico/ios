@@ -8,8 +8,8 @@ protocol AddressDetailsContext {
 struct AddressDetailsView: View {
     final class ViewState: ObservableObject {
         @Published var postcode = String()
-        @Published var selectedAddress: Address?
         @Published var addresses: [Address]?
+        @Published var selectedAddress: Address?
     }
 
     private let student: Student
@@ -20,6 +20,7 @@ struct AddressDetailsView: View {
     private let dispatchQueue: DispatchQueue?
 
     @ObservedObject var state: ViewState
+    @State var isLoading = false
     @State var errorMessage: String?
 
     init(
@@ -45,8 +46,10 @@ struct AddressDetailsView: View {
     }
 
     func searchAddresses() {
+        isLoading = true
         addressProvider.addresses(withPostcode: state.postcode) { result in
             let showResult = {
+                self.isLoading = false
                 switch result {
                 case .success(let addresses):
                     self.state.addresses = addresses
@@ -69,14 +72,26 @@ struct AddressDetailsView: View {
             VStack(spacing: 0) {
                 VStack(alignment: .leading, spacing: .spacingExtraLarge) {
                     TitleContentView(title: "Post Code") {
-                        CustomTextField(
-                            "NW1 7FB",
-                            text: $state.postcode,
-                            textContentType: .postalCode,
-                            autocapitalizationType: .allCharacters,
-                            returnKeyType: .search,
-                            onCommit: searchAddresses
-                        ).modifier(RoundedThinOutlineContainer(padded: false))
+                        ZStack(alignment: .trailing) {
+                            CustomTextField(
+                                "NW1 7FB",
+                                text: $state.postcode,
+                                textContentType: .postalCode,
+                                autocapitalizationType: .allCharacters,
+                                returnKeyType: .search,
+                                onCommit: searchAddresses
+                            ).modifier(RoundedThinOutlineContainer(padded: false))
+                            if isLoading {
+                                ActivityIndicator(style: .medium, color: .rythmicoGray90)
+                                    .padding(.trailing, .spacingSmall)
+                                    .transition(
+                                        AnyTransition
+                                            .scale
+                                            .combined(with: .opacity)
+                                            .animation(.interpolatingSpring(mass: 5, stiffness: 950, damping: 55))
+                                    )
+                            }
+                        }
                     }
                     state.addresses.map { addresses in
                         AnyView(
@@ -122,7 +137,7 @@ struct AddressDetailsViewPreview: PreviewProvider {
 
     static var previews: some View {
         let state = AddressDetailsView.ViewState()
-        state.addresses = [mockAddress]
+//        state.addresses = [mockAddress]
         return AddressDetailsView(
             student: Student(
                 name: "David",
@@ -137,10 +152,9 @@ struct AddressDetailsViewPreview: PreviewProvider {
             ),
             state: state,
             context: RequestLessonPlanContext(),
-            addressProvider: AddressProviderStub(result: .success([mockAddress])),
+            addressProvider: AddressProviderStub(result: .success([mockAddress]), delay: 5),
             editingCoordinator: UIApplication.shared,
             dispatchQueue: nil
-        )
-        .environment(\.sizeCategory, .accessibilityExtraExtraLarge)
+        ).environment(\.sizeCategory, .accessibilityExtraExtraLarge)
     }
 }
