@@ -49,8 +49,9 @@ final class AddressSearchService: AddressProviderProtocol {
                 preconditionFailure("If error is nil, data and response objects must exist")
             }
             guard !(400..<600).contains(response.statusCode) else {
-                let errorDescription = HTTPURLResponse.localizedString(forStatusCode: response.statusCode).localizedCapitalized
-                let error = NSError(domain: NSURLErrorDomain, code: response.statusCode, userInfo: [NSLocalizedDescriptionKey: errorDescription])
+                let error = (try? JSONDecoder().decode(Error.self, from: data)) ?? Error(
+                    message: HTTPURLResponse.localizedString(forStatusCode: response.statusCode).localizedCapitalized
+                )
                 completion(.failure(error))
                 return
             }
@@ -101,5 +102,14 @@ extension AddressSearchService {
         var latitude: Double
         var longitude: Double
         var addresses: [Address]
+    }
+
+    private struct Error: LocalizedError, Decodable {
+        var message: String
+        var errorDescription: String? { message }
+
+        private enum CodingKeys: String, CodingKey {
+            case message = "Message"
+        }
     }
 }
