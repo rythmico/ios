@@ -1,5 +1,6 @@
 import SwiftUI
 import Combine
+import Sugar
 
 typealias SchedulingView = AnyView
 typealias PrivateNoteView = AnyView
@@ -33,15 +34,9 @@ struct RequestLessonPlanView: View, Identifiable {
     }
 
     func back() {
-        guard context.student == nil else {
-            context.student = nil
-            return
-        }
-
-        guard context.instrument == nil else {
-            context.instrument = nil
-            return
-        }
+        if context.address.nilifiedIfSome() { return }
+        if context.student.nilifiedIfSome() { return }
+        if context.instrument.nilifiedIfSome() { return }
     }
 
     var body: some View {

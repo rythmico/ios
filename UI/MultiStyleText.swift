@@ -52,8 +52,23 @@ extension MultiStyleText {
     }
 }
 
+extension String {
+    var bold: MultiStyleText.Part {
+        .init(self, weight: .bold)
+    }
+}
+
 extension Array where Element == MultiStyleText.Part {
+    static var empty: Self { [] }
+
     var string: String {
         map(\.string).reduce(.empty, +)
     }
 }
+
+typealias MSTP = MultiStyleText.Part
+
+func + (lhs: MSTP, rhs: MSTP) -> [MSTP] { [lhs, rhs] }
+func + (lhs: MSTP, rhs: MSTP?) -> [MSTP] { [lhs, rhs].compactMap { $0 } }
+func + (lhs: [MSTP], rhs: MSTP) -> [MSTP] { lhs + [rhs] }
+func + (lhs: [MSTP], rhs: MSTP?) -> [MSTP] { rhs.map { lhs + [$0] } ?? lhs }

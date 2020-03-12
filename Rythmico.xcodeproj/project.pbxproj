@@ -105,6 +105,7 @@
 		D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A64241479F300BE9B4F /* Assets.generated.swift */; };
 		D5B57A6724147F5100BE9B4F /* EnumProperties.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6624147F5100BE9B4F /* EnumProperties.generated.swift */; };
 		D5B57A6B2419B95D00BE9B4F /* AddressProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6A2419B95D00BE9B4F /* AddressProviderDoubles.swift */; };
+		D5B57A6F2419E22300BE9B4F /* Optional+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6E2419E22300BE9B4F /* Optional+Sugar.swift */; };
 		D5BA171023D7A18900954D50 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170F23D7A18900954D50 /* RootView.swift */; };
 		D5BA171223D7AB3B00954D50 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA171123D7AB3B00954D50 /* MainTabView.swift */; };
 		D5C23A74240EFDCB007DED63 /* MainTabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03341B4223ABB1E7009AE8A8 /* MainTabViewTests.swift */; };
@@ -263,6 +264,7 @@
 		D5B57A64241479F300BE9B4F /* Assets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.generated.swift; sourceTree = "<group>"; };
 		D5B57A6624147F5100BE9B4F /* EnumProperties.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumProperties.generated.swift; sourceTree = "<group>"; };
 		D5B57A6A2419B95D00BE9B4F /* AddressProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressProviderDoubles.swift; sourceTree = "<group>"; };
+		D5B57A6E2419E22300BE9B4F /* Optional+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Sugar.swift"; sourceTree = "<group>"; };
 		D5BA170723D66AF500954D50 /* AuthenticationAccessTokenProviderObserverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderObserverTests.swift; sourceTree = "<group>"; };
 		D5BA170923D671FD00954D50 /* AuthenticationAccessTokenProviderBroadcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderBroadcast.swift; sourceTree = "<group>"; };
 		D5BA170B23D6725B00954D50 /* AuthenticationAccessTokenProviderBroadcastDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderBroadcastDoubles.swift; sourceTree = "<group>"; };
@@ -515,6 +517,7 @@
 			isa = PBXGroup;
 			children = (
 				D53554F723E0FD77005A20EB /* Sugar.h */,
+				D5B57A6E2419E22300BE9B4F /* Optional+Sugar.swift */,
 				D5C23A79240F2DEB007DED63 /* Bool+Sugar.swift */,
 				D5FD6F1124096FB5008C5AD4 /* Collection+Sugar.swift */,
 				D5C23A77240F1C1E007DED63 /* String+Sugar.swift */,
@@ -947,6 +950,7 @@
 			files = (
 				D5C23A78240F1C1E007DED63 /* String+Sugar.swift in Sources */,
 				D535550223E0FD9F005A20EB /* NotificationCenterSpy.swift in Sources */,
+				D5B57A6F2419E22300BE9B4F /* Optional+Sugar.swift in Sources */,
 				D5C23A7A240F2DEB007DED63 /* Bool+Sugar.swift in Sources */,
 				D535550123E0FD9F005A20EB /* NotificationCenterProtocol.swift in Sources */,
 				D5FD6F1224096FB5008C5AD4 /* Collection+Sugar.swift in Sources */,
