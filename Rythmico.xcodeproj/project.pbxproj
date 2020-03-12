@@ -105,6 +105,7 @@
 		D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A64241479F300BE9B4F /* Assets.generated.swift */; };
 		D5B57A6724147F5100BE9B4F /* EnumProperties.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6624147F5100BE9B4F /* EnumProperties.generated.swift */; };
 		D5B57A6B2419B95D00BE9B4F /* AddressProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6A2419B95D00BE9B4F /* AddressProviderDoubles.swift */; };
+		D5B57A6D2419DA5B00BE9B4F /* AddressSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6C2419DA5B00BE9B4F /* AddressSelectionView.swift */; };
 		D5B57A6F2419E22300BE9B4F /* Optional+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6E2419E22300BE9B4F /* Optional+Sugar.swift */; };
 		D5B57A712419F79700BE9B4F /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A702419F79700BE9B4F /* SectionHeaderView.swift */; };
 		D5B57A73241A000C00BE9B4F /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A72241A000C00BE9B4F /* Secrets.swift */; };
@@ -266,6 +267,7 @@
 		D5B57A64241479F300BE9B4F /* Assets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.generated.swift; sourceTree = "<group>"; };
 		D5B57A6624147F5100BE9B4F /* EnumProperties.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumProperties.generated.swift; sourceTree = "<group>"; };
 		D5B57A6A2419B95D00BE9B4F /* AddressProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressProviderDoubles.swift; sourceTree = "<group>"; };
+		D5B57A6C2419DA5B00BE9B4F /* AddressSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSelectionView.swift; sourceTree = "<group>"; };
 		D5B57A6E2419E22300BE9B4F /* Optional+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Sugar.swift"; sourceTree = "<group>"; };
 		D5B57A702419F79700BE9B4F /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		D5B57A72241A000C00BE9B4F /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 			children = (
 				0365F6F42417F1E900F452AC /* AddressProvider.swift */,
 				D5B57A6A2419B95D00BE9B4F /* AddressProviderDoubles.swift */,
+				D5B57A6C2419DA5B00BE9B4F /* AddressSelectionView.swift */,
 				D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */,
 			);
 			path = AddressDetails;
@@ -872,6 +875,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5B57A6D2419DA5B00BE9B4F /* AddressSelectionView.swift in Sources */,
 				03341B3F23ABB1E7009AE8A8 /* AppDelegate.swift in Sources */,
 				D53555C023E53699005A20EB /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */,
 				D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */,

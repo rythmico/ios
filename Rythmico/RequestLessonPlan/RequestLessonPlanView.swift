@@ -12,6 +12,7 @@ struct RequestLessonPlanView: View, Identifiable {
 
     private let instrumentSelectionViewState = InstrumentSelectionView.ViewState()
     private let studentDetailsViewState = StudentDetailsView.ViewState()
+    private let addressDetailsViewState = AddressDetailsView.ViewState()
 
     @ObservedObject
     private var context: RequestLessonPlanContext
@@ -127,7 +128,17 @@ extension RequestLessonPlanView {
     }
 
     var addressDetailsView: AddressDetailsView? {
-        context.currentStep.addressDetailsValue.map { AddressDetailsView(student: $0.1, instrument: $0.0) }
+        context.currentStep.addressDetailsValue.map { values in
+            AddressDetailsView(
+                student: values.1,
+                instrument: values.0,
+                state: addressDetailsViewState,
+                context: context,
+                addressProvider: AddressSearchService(),
+                editingCoordinator: UIApplication.shared,
+                dispatchQueue: .main
+            )
+        }
     }
 
     var schedulingView: SchedulingView? {
