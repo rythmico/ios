@@ -398,6 +398,8 @@
 		0365F6F12417E95200F452AC /* AddressDetails */ = {
 			isa = PBXGroup;
 			children = (
+				0365F6F42417F1E900F452AC /* AddressProvider.swift */,
+				D5B57A6A2419B95D00BE9B4F /* AddressProviderDoubles.swift */,
 				D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */,
 			);
 			path = AddressDetails;
@@ -547,8 +549,6 @@
 				D5F506B12405B5AA00CA4094 /* StudentDetails */,
 				D5F506B52406360900CA4094 /* Student.swift */,
 				0365F6F12417E95200F452AC /* AddressDetails */,
-				0365F6F42417F1E900F452AC /* AddressProvider.swift */,
-				D5B57A6A2419B95D00BE9B4F /* AddressProviderDoubles.swift */,
 				0365F6EF2417E79000F452AC /* Address.swift */,
 			);
 			path = RequestLessonPlan;
