@@ -28,8 +28,10 @@ final class StudentDetailsViewTests: XCTestCase {
             XCTAssertNil(context.student)
             XCTAssertEqual(editingCoordinator.endEditingCount, 0)
 
-            XCTAssertFalse(view.subtitle.isEmpty)
-            XCTAssertEqual(view.selectedInstrumentName, "Violin")
+            XCTAssertEqual(
+                view.subtitle.string,
+                "Enter the details of the student who will learn Violin"
+            )
 
             XCTAssertEqual(view.state.name, .empty)
 
