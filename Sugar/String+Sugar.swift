@@ -15,3 +15,13 @@ extension String {
         String(repeating: self, count: count)
     }
 }
+
+extension String {
+    public var firstWord: String? {
+        self.trimmingCharacters(in: .whitespacesAndNewlines)
+            .lazy
+            .split(separator: .whitespace)
+            .first
+            .map(String.init)
+    }
+}

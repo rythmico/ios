@@ -45,12 +45,7 @@ struct StudentDetailsView: View, TestableView {
 
     // MARK: - Subtitle -
     var subtitle: [MultiStyleText.Part] {
-        !isEditing
-            ? [
-                "Enter the details of the student who will learn ",
-                .init(instrument.name, weight: .bold)
-            ]
-            : []
+        !isEditing ? "Enter the details of the student who will learn " + instrument.name.bold : .empty
     }
 
     @State private var isEditing = false
@@ -107,15 +102,11 @@ struct StudentDetailsView: View, TestableView {
 
     // MARK: - About -
     var aboutNameTextPart: MultiStyleText.Part {
-        let firstNameComponent = sanitizedName?
-            .split(separator: .whitespace)
-            .first
-            .map(String.init)
-
+        let firstName = sanitizedName?.firstWord
         return .init(
-            firstNameComponent ?? "Student",
+            firstName ?? "Student",
             weight: .regular,
-            color: firstNameComponent != nil ? .rythmicoPurple : .rythmicoForeground
+            color: firstName != nil ? .rythmicoPurple : .rythmicoForeground
         )
     }
 
