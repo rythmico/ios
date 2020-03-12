@@ -5,9 +5,10 @@ extension String: Identifiable {
 }
 
 extension String {
+    public static var empty: String { "" }
     public static var whitespace: String { " " }
     public static var newline: String { "\n" }
-    public static var empty: String { "" }
+    public static var comma: String { "," }
 }
 
 extension String {
