@@ -121,38 +121,15 @@ struct AddressDetailsView: View {
 }
 
 struct AddressDetailsViewPreview: PreviewProvider {
-    static var mockAddress: Address {
-        Address(
-            latitude: 0,
-            longitude: 0,
-            line1: "Apartment 22",
-            line2: "321 Holloway Road",
-            line3: "",
-            line4: "",
-            city: "London",
-            postcode: "N7 9FU",
-            country: "England"
-        )
-    }
-
     static var previews: some View {
         let state = AddressDetailsView.ViewState()
-//        state.addresses = [mockAddress]
+//        state.addresses = [.stub]
         return AddressDetailsView(
-            student: Student(
-                name: "David",
-                dateOfBirth: Date(),
-                gender: .male,
-                about: ""
-            ),
-            instrument: Instrument(
-                id: "",
-                name: "Guitar",
-                icon: Image(systemSymbol: ._00Circle)
-            ),
+            student: .stub,
+            instrument: .guitarStub,
             state: state,
             context: RequestLessonPlanContext(),
-            addressProvider: AddressProviderStub(result: .success([mockAddress]), delay: 5),
+            addressProvider: AddressProviderStub(result: .success([.stub]), delay: 5),
             editingCoordinator: UIApplication.shared,
             dispatchQueue: nil
         ).environment(\.sizeCategory, .accessibilityExtraExtraLarge)
