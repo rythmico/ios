@@ -72,7 +72,7 @@ struct AddressDetailsView: View {
             VStack(spacing: 0) {
                 VStack(alignment: .leading, spacing: .spacingExtraLarge) {
                     TitleContentView(title: "Post Code") {
-                        ZStack(alignment: .trailing) {
+                        ZStack {
                             CustomTextField(
                                 "NW1 7FB",
                                 text: $state.postcode,
@@ -81,15 +81,22 @@ struct AddressDetailsView: View {
                                 returnKeyType: .search,
                                 onCommit: searchAddresses
                             ).modifier(RoundedThinOutlineContainer(padded: false))
-                            if isLoading {
-                                ActivityIndicator(style: .medium, color: .rythmicoGray90)
-                                    .padding(.trailing, .spacingSmall)
+                            HStack {
+                                Spacer()
+                                if isLoading {
+                                    ActivityIndicator(style: .medium, color: .rythmicoGray90)
                                     .transition(
                                         AnyTransition
                                             .scale
                                             .combined(with: .opacity)
-                                            .animation(.interpolatingSpring(mass: 5, stiffness: 950, damping: 55))
+                                            .animation(
+                                                Animation
+                                                    .interpolatingSpring(mass: 5, stiffness: 950, damping: 55)
+                                                    .speed(2)
+                                            )
                                     )
+                                }
+                                Spacer().frame(width: .spacingExtraSmall)
                             }
                         }
                     }
@@ -129,7 +136,7 @@ struct AddressDetailsViewPreview: PreviewProvider {
             instrument: .guitarStub,
             state: state,
             context: RequestLessonPlanContext(),
-            addressProvider: AddressProviderStub(result: .success([.stub]), delay: 5),
+            addressProvider: AddressProviderStub(result: .success([.stub]), delay: 3),
             editingCoordinator: UIApplication.shared,
             dispatchQueue: nil
         ).environment(\.sizeCategory, .accessibilityExtraExtraLarge)
