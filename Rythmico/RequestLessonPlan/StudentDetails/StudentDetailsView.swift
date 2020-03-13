@@ -222,11 +222,7 @@ struct StudentDetailsView: View, TestableView {
 struct StudentDetailsView_Preview: PreviewProvider {
     static var previews: some View {
         StudentDetailsView(
-            instrument: Instrument(
-                id: "Piano",
-                name: "Piano",
-                icon: Image(decorative: Asset.instrumentIconPiano.name)
-            ),
+            instrument: .pianoStub,
             state: StudentDetailsView.ViewState(),
             context: RequestLessonPlanContext(),
             editingCoordinator: UIApplication.shared,

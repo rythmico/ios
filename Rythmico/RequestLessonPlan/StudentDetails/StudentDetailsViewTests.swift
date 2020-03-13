@@ -5,7 +5,7 @@ import Sugar
 
 final class StudentDetailsViewTests: XCTestCase {
     var studentDetailsView: (RequestLessonPlanContext, EditingCoordinatorSpy, StudentDetailsView) {
-        let instrument = Instrument(id: "ABC", name: "Violin", icon: Image(systemSymbol: ._00Circle))
+        let instrument = Instrument.singingStub
         let context = RequestLessonPlanContext()
         let editingCoordinator = EditingCoordinatorSpy()
         return (
@@ -30,7 +30,7 @@ final class StudentDetailsViewTests: XCTestCase {
 
             XCTAssertEqual(
                 view.subtitle.string,
-                "Enter the details of the student who will learn Violin"
+                "Enter the details of the student who will learn Singing"
             )
 
             XCTAssertEqual(view.state.name, .empty)

@@ -25,12 +25,7 @@ struct RequestLessonPlanView: View, Identifiable {
     let id = UUID()
 
     var shouldShowBackButton: Bool {
-        switch context.currentStep {
-        case .instrumentSelection:
-            return false
-        default:
-            return true
-        }
+        !context.currentStep.isInstrumentSelection
     }
 
     func back() {
