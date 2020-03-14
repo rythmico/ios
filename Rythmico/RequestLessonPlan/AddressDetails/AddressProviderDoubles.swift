@@ -20,3 +20,20 @@ final class AddressProviderStub: AddressProviderProtocol {
         }
     }
 }
+
+final class AddressProviderSpy: AddressProviderProtocol {
+    var result: SimpleResult<[Address]>
+
+    private(set) var latestPostcode: String?
+    private(set) var searchCount = 0
+
+    init(result: SimpleResult<[Address]>) {
+        self.result = result
+    }
+
+    func addresses(withPostcode postcode: String, completion: @escaping CompletionHandler) {
+        latestPostcode = postcode
+        searchCount += 1
+        completion(result)
+    }
+}

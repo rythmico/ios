@@ -94,6 +94,7 @@
 		D53555E523E53704005A20EB /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509897123B963B700C19300 /* nanopb.framework */; };
 		D53555E623E5383C005A20EB /* AppleAuthorizationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560E23CD384300BC8485 /* AppleAuthorizationServiceTests.swift */; };
 		D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */; };
+		D5473C9F241AC3CB00D66775 /* AddressDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5473C9D241AC3B800D66775 /* AddressDetailsViewTests.swift */; };
 		D5473CA1241AC4A000D66775 /* AddressDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5473CA0241AC4A000D66775 /* AddressDoubles.swift */; };
 		D54A561723CD577800BC8485 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561623CD577800BC8485 /* main.swift */; };
 		D5AAF7C823ECC87000E410F2 /* RequestLessonPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */; };
@@ -249,6 +250,7 @@
 		D535556423E4F8BF005A20EB /* FirebaseCrashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCrashlytics.framework; path = Carthage/Build/iOS/FirebaseCrashlytics.framework; sourceTree = "<group>"; };
 		D535556523E4F8BF005A20EB /* FirebasePerformance.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebasePerformance.framework; path = Carthage/Build/iOS/FirebasePerformance.framework; sourceTree = "<group>"; };
 		D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanContext.swift; sourceTree = "<group>"; };
+		D5473C9D241AC3B800D66775 /* AddressDetailsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetailsViewTests.swift; sourceTree = "<group>"; };
 		D5473CA0241AC4A000D66775 /* AddressDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDoubles.swift; sourceTree = "<group>"; };
 		D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationServiceDoubles.swift; sourceTree = "<group>"; };
 		D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HashFunction+Helpers.swift"; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 				D5B57A6A2419B95D00BE9B4F /* AddressProviderDoubles.swift */,
 				D5B57A6C2419DA5B00BE9B4F /* AddressSelectionView.swift */,
 				D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */,
+				D5473C9D241AC3B800D66775 /* AddressDetailsViewTests.swift */,
 			);
 			path = AddressDetails;
 			sourceTree = "<group>";
@@ -995,6 +998,7 @@
 				D5C23A74240EFDCB007DED63 /* MainTabViewTests.swift in Sources */,
 				D53555E623E5383C005A20EB /* AppleAuthorizationServiceTests.swift in Sources */,
 				D514750F240C96F0002EE20C /* XCTAssertView.swift in Sources */,
+				D5473C9F241AC3CB00D66775 /* AddressDetailsViewTests.swift in Sources */,
 				D535553623E105A5005A20EB /* OnboardingViewTests.swift in Sources */,
 				D5FD6F16240AF535008C5AD4 /* StudentDetailsViewTests.swift in Sources */,
 				D50811E623FB769D008103D8 /* RequestLessonPlanViewTests.swift in Sources */,
