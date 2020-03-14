@@ -8,6 +8,9 @@ final class RequestLessonPlanContext: ObservableObject {
     @Published var student: Student? {
         willSet { previousStep = currentStep }
     }
+    @Published var address: Address? {
+        willSet { previousStep = currentStep }
+    }
 
     private(set) var previousStep: Step?
 }
@@ -56,7 +59,11 @@ extension RequestLessonPlanContext {
             return .studentDetails(instrument)
         }
 
-        return .addressDetails(instrument, student)
+        guard let _ = address else {
+            return .addressDetails(instrument, student)
+        }
+
+        return .scheduling
     }
 
     var direction: Direction {
@@ -73,4 +80,8 @@ extension RequestLessonPlanContext: InstrumentSelectionContext {
 
 extension RequestLessonPlanContext: StudentDetailsContext {
     func setStudent(_ student: Student) { self.student = student }
+}
+
+extension RequestLessonPlanContext: AddressDetailsContext {
+    func setAddress(_ address: Address) { self.address = address }
 }

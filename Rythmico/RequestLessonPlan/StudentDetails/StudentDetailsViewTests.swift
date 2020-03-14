@@ -1,10 +1,11 @@
 import XCTest
 import SwiftUI
+import Sugar
 @testable import Rythmico
 
 final class StudentDetailsViewTests: XCTestCase {
     var studentDetailsView: (RequestLessonPlanContext, EditingCoordinatorSpy, StudentDetailsView) {
-        let instrument = Instrument(id: "ABC", name: "Violin", icon: Image(systemSymbol: ._00Circle))
+        let instrument = Instrument.singingStub
         let context = RequestLessonPlanContext()
         let editingCoordinator = EditingCoordinatorSpy()
         return (
@@ -27,10 +28,12 @@ final class StudentDetailsViewTests: XCTestCase {
             XCTAssertNil(context.student)
             XCTAssertEqual(editingCoordinator.endEditingCount, 0)
 
-            XCTAssertFalse(view.subtitle.isEmpty)
-            XCTAssertEqual(view.selectedInstrumentName, "Violin")
+            XCTAssertEqual(
+                view.subtitle.string,
+                "Enter the details of the student who will learn Singing"
+            )
 
-            XCTAssertEqual(view.state.name, "")
+            XCTAssertEqual(view.state.name, .empty)
 
             XCTAssertNil(view.state.dateOfBirth)
             XCTAssertNil(view.dateOfBirthText)
@@ -39,7 +42,7 @@ final class StudentDetailsViewTests: XCTestCase {
             XCTAssertNil(view.state.gender)
 
             XCTAssertEqual(view.aboutNameTextPart.string, "Student")
-            XCTAssertEqual(view.state.about, "")
+            XCTAssertEqual(view.state.about, .empty)
 
             XCTAssertNil(view.nextButtonAction)
         }

@@ -14,10 +14,10 @@ struct StudentDetailsView: View, TestableView {
     }
 
     final class ViewState: ObservableObject {
-        @Published var name = ""
+        @Published var name = String()
         @Published var dateOfBirth: Date?
         @Published var gender: Gender?
-        @Published var about = ""
+        @Published var about = String()
     }
 
     private let instrument: Instrument
@@ -44,14 +44,8 @@ struct StudentDetailsView: View, TestableView {
     @ObservedObject var state: ViewState
 
     // MARK: - Subtitle -
-    var selectedInstrumentName: String { instrument.name }
     var subtitle: [MultiStyleText.Part] {
-        !isEditing
-            ? [
-                .init("Enter the details of the student who will learn "),
-                .init(selectedInstrumentName, weight: .bold)
-            ]
-            : []
+        !isEditing ? "Enter the details of the student who will learn " + instrument.name.bold : .empty
     }
 
     @State private var isEditing = false
@@ -64,7 +58,7 @@ struct StudentDetailsView: View, TestableView {
             // removes repeated whitespaces and newlines
             .components(separatedBy: .whitespacesAndNewlines)
             .filter(\.isEmpty.not)
-            .joined(separator: " ")
+            .joined(separator: .whitespace)
 
             .nilIfEmpty
     }
@@ -108,14 +102,11 @@ struct StudentDetailsView: View, TestableView {
 
     // MARK: - About -
     var aboutNameTextPart: MultiStyleText.Part {
-        let firstNameComponent = sanitizedName?
-            .components(separatedBy: " ")
-            .first
-
+        let firstName = sanitizedName?.firstWord
         return .init(
-            firstNameComponent ?? "Student",
+            firstName ?? "Student",
             weight: .regular,
-            color: firstNameComponent != nil ? .rythmicoPurple : .rythmicoForeground
+            color: firstName != nil ? .rythmicoPurple : .rythmicoForeground
         )
     }
 
@@ -124,14 +115,14 @@ struct StudentDetailsView: View, TestableView {
             .trimmingCharacters(in: .whitespacesAndNewlines)
 
             // removes repeated whitespaces
-            .components(separatedBy: .whitespaces)
+            .split(separator: .whitespace)
             .filter(\.isEmpty.not)
-            .joined(separator: " ")
+            .joined(separator: .whitespace)
 
             // removes repeated newlines
-            .components(separatedBy: .newlines)
+            .split(separator: .newline)
             .filter(\.isEmpty.not)
-            .joined(separator: "\n\n")
+            .joined(separator: Character.newline.repeated())
     }
 
     // MARK: - Next Button -
@@ -175,7 +166,7 @@ struct StudentDetailsView: View, TestableView {
                         TitleContentView(title: "Date of Birth") {
                             CustomTextField(
                                 dateOfBirthPlaceholderText,
-                                text: .constant(dateOfBirthText ?? ""),
+                                text: .constant(dateOfBirthText ?? .empty),
                                 isSelectable: false,
                                 onEditingChanged: dateFieldEditingChanged
                             ).modifier(RoundedThinOutlineContainer(padded: false))
@@ -231,11 +222,7 @@ struct StudentDetailsView: View, TestableView {
 struct StudentDetailsView_Preview: PreviewProvider {
     static var previews: some View {
         StudentDetailsView(
-            instrument: Instrument(
-                id: "Piano",
-                name: "Piano",
-                icon: Image(decorative: Asset.instrumentIconPiano.name)
-            ),
+            instrument: .pianoStub,
             state: StudentDetailsView.ViewState(),
             context: RequestLessonPlanContext(),
             editingCoordinator: UIApplication.shared,
