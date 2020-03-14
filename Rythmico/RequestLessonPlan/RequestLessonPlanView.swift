@@ -1,7 +1,7 @@
 import SwiftUI
 import Combine
+import Sugar
 
-typealias SchedulingView = AnyView
 typealias PrivateNoteView = AnyView
 typealias ReviewProposalView = AnyView
 
@@ -11,6 +11,7 @@ struct RequestLessonPlanView: View, Identifiable {
 
     private let instrumentSelectionViewState = InstrumentSelectionView.ViewState()
     private let studentDetailsViewState = StudentDetailsView.ViewState()
+    private let addressDetailsViewState = AddressDetailsView.ViewState()
 
     @ObservedObject
     private var context: RequestLessonPlanContext
@@ -24,24 +25,13 @@ struct RequestLessonPlanView: View, Identifiable {
     let id = UUID()
 
     var shouldShowBackButton: Bool {
-        switch context.currentStep {
-        case .instrumentSelection:
-            return false
-        default:
-            return true
-        }
+        !context.currentStep.isInstrumentSelection
     }
 
     func back() {
-        guard context.student == nil else {
-            context.student = nil
-            return
-        }
-
-        guard context.instrument == nil else {
-            context.instrument = nil
-            return
-        }
+        if context.address.nilifiedIfSome() { return }
+        if context.student.nilifiedIfSome() { return }
+        if context.instrument.nilifiedIfSome() { return }
     }
 
     var body: some View {
@@ -132,11 +122,21 @@ extension RequestLessonPlanView {
     }
 
     var addressDetailsView: AddressDetailsView? {
-        context.currentStep.addressDetailsValue.map { AddressDetailsView(student: $0.1, instrument: $0.0) }
+        context.currentStep.addressDetailsValue.map { values in
+            AddressDetailsView(
+                student: values.1,
+                instrument: values.0,
+                state: addressDetailsViewState,
+                context: context,
+                addressProvider: AddressSearchService(),
+                editingCoordinator: UIApplication.shared,
+                dispatchQueue: .main
+            )
+        }
     }
 
     var schedulingView: SchedulingView? {
-        context.currentStep.isScheduling ? SchedulingView(EmptyView()) : nil
+        context.currentStep.isScheduling ? SchedulingView() : nil
     }
 
     var privateNoteView: PrivateNoteView? {
