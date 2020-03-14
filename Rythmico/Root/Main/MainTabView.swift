@@ -9,7 +9,10 @@ struct MainTabView: View, TestableView {
     @State private(set) var lessonRequestView: RequestLessonPlanView?
 
     func presentRequestLessonFlow() {
-        lessonRequestView = RequestLessonPlanView(instrumentProvider: InstrumentSelectionListProviderFake())
+        lessonRequestView = RequestLessonPlanView(
+            context: RequestLessonPlanContext(),
+            instrumentProvider: InstrumentSelectionListProviderFake()
+        )
     }
 
     init(accessTokenProvider: AuthenticationAccessTokenProvider) {
