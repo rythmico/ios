@@ -13,7 +13,7 @@ final class AddressSearchService: AddressProviderProtocol {
         do {
             let session = Session(adapter: URLSessionAdapter(configuration: sessionConfiguration))
             let request = try AddressSearchRequest(postcode: postcode)
-            session.send(request) { result in
+            session.send(request, callbackQueue: .main) { result in
                 completion(result.map([Address].init).mapError { $0 as Error })
             }
         } catch {

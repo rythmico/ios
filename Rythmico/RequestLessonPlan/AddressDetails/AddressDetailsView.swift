@@ -17,7 +17,6 @@ struct AddressDetailsView: View, TestableView {
     private let addressProvider: AddressProviderProtocol
     private let context: AddressDetailsContext
     private let editingCoordinator: EditingCoordinator
-    private let dispatchQueue: DispatchQueue?
 
     var didAppear: Handler<Self>?
 
@@ -31,8 +30,7 @@ struct AddressDetailsView: View, TestableView {
         state: ViewState,
         context: AddressDetailsContext,
         addressProvider: AddressProviderProtocol,
-        editingCoordinator: EditingCoordinator,
-        dispatchQueue: DispatchQueue?
+        editingCoordinator: EditingCoordinator
     ) {
         self.student = student
         self.instrument = instrument
@@ -40,7 +38,6 @@ struct AddressDetailsView: View, TestableView {
         self.context = context
         self.addressProvider = addressProvider
         self.editingCoordinator = editingCoordinator
-        self.dispatchQueue = dispatchQueue
     }
 
     var subtitle: [MultiStyleText.Part] {
@@ -50,16 +47,13 @@ struct AddressDetailsView: View, TestableView {
     func searchAddresses() {
         isLoading = true
         addressProvider.addresses(withPostcode: state.postcode) { result in
-            let showResult = {
-                self.isLoading = false
-                switch result {
-                case .success(let addresses):
-                    self.state.addresses = addresses
-                case .failure(let error):
-                    self.errorMessage = error.localizedDescription
-                }
+            self.isLoading = false
+            switch result {
+            case .success(let addresses):
+                self.state.addresses = addresses
+            case .failure(let error):
+                self.errorMessage = error.localizedDescription
             }
-            self.dispatchQueue?.async(execute: showResult) ?? showResult()
         }
     }
 
@@ -140,8 +134,7 @@ struct AddressDetailsViewPreview: PreviewProvider {
             state: state,
             context: RequestLessonPlanContext(),
             addressProvider: AddressProviderStub(result: .success([.stub]), delay: 3),
-            editingCoordinator: UIApplication.shared,
-            dispatchQueue: nil
+            editingCoordinator: UIApplication.shared
         ).environment(\.sizeCategory, .accessibilityExtraExtraLarge)
     }
 }
