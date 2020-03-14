@@ -423,6 +423,24 @@
 			path = AddressDetails;
 			sourceTree = "<group>";
 		};
+		03B71325241D84B400DED025 /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				0365F6EF2417E79000F452AC /* Address.swift */,
+				D5473CA0241AC4A000D66775 /* AddressDoubles.swift */,
+			);
+			path = Address;
+			sourceTree = "<group>";
+		};
+		03B71326241D84F300DED025 /* Student */ = {
+			isa = PBXGroup;
+			children = (
+				D5F506B52406360900CA4094 /* Student.swift */,
+				03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */,
+			);
+			path = Student;
+			sourceTree = "<group>";
+		};
 		D509896423B963B700C19300 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -566,11 +584,9 @@
 				D54317EE23FDB01700CB1493 /* InstrumentSelection */,
 				D54317EF23FDB02600CB1493 /* Instrument */,
 				D5F506B12405B5AA00CA4094 /* StudentDetails */,
-				D5F506B52406360900CA4094 /* Student.swift */,
-				03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */,
+				03B71326241D84F300DED025 /* Student */,
 				0365F6F12417E95200F452AC /* AddressDetails */,
-				0365F6EF2417E79000F452AC /* Address.swift */,
-				D5473CA0241AC4A000D66775 /* AddressDoubles.swift */,
+				03B71325241D84B400DED025 /* Address */,
 				D5B57A74241A018900BE9B4F /* SchedulingView.swift */,
 			);
 			path = RequestLessonPlan;
