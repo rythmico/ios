@@ -114,8 +114,7 @@ extension RequestLessonPlanView {
                 state: addressDetailsViewState,
                 context: context,
                 addressProvider: AddressSearchService(),
-                editingCoordinator: UIApplication.shared,
-                dispatchQueue: .main
+                editingCoordinator: UIApplication.shared
             )
         }
     }
