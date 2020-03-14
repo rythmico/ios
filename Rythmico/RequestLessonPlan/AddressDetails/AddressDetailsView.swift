@@ -5,7 +5,7 @@ protocol AddressDetailsContext {
     func setAddress(_ address: Address)
 }
 
-struct AddressDetailsView: View {
+struct AddressDetailsView: View, TestableView {
     final class ViewState: ObservableObject {
         @Published var postcode = String()
         @Published var addresses: [Address]?
@@ -18,6 +18,8 @@ struct AddressDetailsView: View {
     private let context: AddressDetailsContext
     private let editingCoordinator: EditingCoordinator
     private let dispatchQueue: DispatchQueue?
+
+    var didAppear: Handler<Self>?
 
     @ObservedObject var state: ViewState
     @State var isLoading = false
@@ -124,6 +126,7 @@ struct AddressDetailsView: View {
         }
         .alert(item: $errorMessage) { Alert(title: Text("Error"), message: Text($0)) }
         .onDisappear(perform: editingCoordinator.endEditing)
+        .onAppear { self.didAppear?(self) }
     }
 }
 
