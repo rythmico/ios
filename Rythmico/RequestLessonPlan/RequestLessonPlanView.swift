@@ -1,11 +1,10 @@
 import SwiftUI
-import Combine
 import Sugar
 
 typealias PrivateNoteView = AnyView
 typealias ReviewProposalView = AnyView
 
-struct RequestLessonPlanView: View, Identifiable {
+struct RequestLessonPlanView: View, Identifiable, TestableView {
     @Environment(\.betterSheetPresentationMode)
     private var presentationMode
 
@@ -17,12 +16,16 @@ struct RequestLessonPlanView: View, Identifiable {
     private var context: RequestLessonPlanContext
     private let instrumentProvider: InstrumentSelectionListProviderProtocol
 
-    init(instrumentProvider: InstrumentSelectionListProviderProtocol) {
+    init(
+        context: RequestLessonPlanContext,
+        instrumentProvider: InstrumentSelectionListProviderProtocol
+    ) {
+        self.context = context
         self.instrumentProvider = instrumentProvider
-        self.context = RequestLessonPlanContext()
     }
 
     let id = UUID()
+    var didAppear: Handler<Self>?
 
     var shouldShowBackButton: Bool {
         !context.currentStep.isInstrumentSelection
@@ -68,6 +71,7 @@ struct RequestLessonPlanView: View, Identifiable {
             .onEdgeSwipe(.left, perform: back)
         }
         .betterSheetIsModalInPresentation(shouldShowBackButton)
+        .onAppear { self.didAppear?(self) }
     }
 
     private func pageTransition(forStepIndex index: Int) -> AnyTransition {
@@ -81,27 +85,8 @@ struct RequestLessonPlanView: View, Identifiable {
 }
 
 extension RequestLessonPlanView {
-    var allStepViews: [AnyView?] {
-        [
-            instrumentSelectionView.map(AnyView.init),
-            studentDetailsView.map(AnyView.init),
-            addressDetailsView.map(AnyView.init),
-            schedulingView.map(AnyView.init),
-            privateNoteView.map(AnyView.init),
-            reviewProposalView.map(AnyView.init)
-        ]
-    }
-
-    var stepCount: Int { allStepViews.count }
-
     var currentStepNumber: Int { currentStepViewIndex + 1 }
-
-    var currentStepViewIndex: Int {
-        guard let index = allStepViews.firstIndex(where: { $0 != nil }) else {
-            preconditionFailure("RequestLessonPlanContext.Step enum cases and RequestLessonPlanView.allStepViews array are not in sync")
-        }
-        return index
-    }
+    var stepCount: Int { allStepViews.count }
 
     var instrumentSelectionView: InstrumentSelectionView? {
         context.currentStep.isInstrumentSelection
@@ -146,10 +131,31 @@ extension RequestLessonPlanView {
     var reviewProposalView: ReviewProposalView? {
         context.currentStep.isReviewProposal ? ReviewProposalView(EmptyView()) : nil
     }
+
+    private var allStepViews: [AnyView?] {
+        [
+            instrumentSelectionView.map(AnyView.init),
+            studentDetailsView.map(AnyView.init),
+            addressDetailsView.map(AnyView.init),
+            schedulingView.map(AnyView.init),
+            privateNoteView.map(AnyView.init),
+            reviewProposalView.map(AnyView.init)
+        ]
+    }
+
+    private var currentStepViewIndex: Int {
+        guard let index = allStepViews.firstIndex(where: { $0 != nil }) else {
+            preconditionFailure("RequestLessonPlanContext.Step enum cases and RequestLessonPlanView.allStepViews array are not in sync")
+        }
+        return index
+    }
 }
 
 struct RequestLessonPlanView_Preview: PreviewProvider {
     static var previews: some View {
-        RequestLessonPlanView(instrumentProvider: InstrumentSelectionListProviderFake())
+        RequestLessonPlanView(
+            context: .init(),
+            instrumentProvider: InstrumentSelectionListProviderFake()
+        )
     }
 }
