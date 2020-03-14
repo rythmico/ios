@@ -1,7 +1,7 @@
 import Foundation
 
 extension Student {
-    static var stub: Student {
+    static var davidStub: Student {
         .init(
             name: "David Roman",
             dateOfBirth: Date(),
