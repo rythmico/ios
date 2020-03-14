@@ -16,6 +16,8 @@
 		0365F6F52417F1E900F452AC /* AddressProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6F42417F1E900F452AC /* AddressProvider.swift */; };
 		03A8116E241D1DAF0091B9ED /* StudentDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */; };
 		03A81170241D1DFB0091B9ED /* InstrumentDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A8116F241D1DFB0091B9ED /* InstrumentDoubles.swift */; };
+		03B71324241D71B600DED025 /* Error+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B71323241D71B600DED025 /* Error+Sugar.swift */; };
+		03FA2D7B241D51BD004140DE /* APIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 03FA2D7A241D51BD004140DE /* APIKit */; };
 		D50811E423FB72A3008103D8 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E323FB72A3008103D8 /* StepBar.swift */; };
 		D50811E623FB769D008103D8 /* RequestLessonPlanViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E523FB769D008103D8 /* RequestLessonPlanViewTests.swift */; };
 		D50811EA23FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E923FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift */; };
@@ -189,6 +191,7 @@
 		0365F6F42417F1E900F452AC /* AddressProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressProvider.swift; sourceTree = "<group>"; };
 		03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDoubles.swift; sourceTree = "<group>"; };
 		03A8116F241D1DFB0091B9ED /* InstrumentDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentDoubles.swift; sourceTree = "<group>"; };
+		03B71323241D71B600DED025 /* Error+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Sugar.swift"; sourceTree = "<group>"; };
 		D50668DA23B946330044E553 /* Rythmico.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rythmico.entitlements; sourceTree = "<group>"; };
 		D50811E323FB72A3008103D8 /* StepBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
 		D50811E523FB769D008103D8 /* RequestLessonPlanViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanViewTests.swift; sourceTree = "<group>"; };
@@ -344,6 +347,7 @@
 				D53555E323E53704005A20EB /* GoogleUtilities.framework in Frameworks */,
 				D53555E423E53704005A20EB /* GTMSessionFetcher.framework in Frameworks */,
 				D53555E523E53704005A20EB /* nanopb.framework in Frameworks */,
+				03FA2D7B241D51BD004140DE /* APIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +544,7 @@
 			children = (
 				D53554F723E0FD77005A20EB /* Sugar.h */,
 				D5B57A6E2419E22300BE9B4F /* Optional+Sugar.swift */,
+				03B71323241D71B600DED025 /* Error+Sugar.swift */,
 				D5C23A79240F2DEB007DED63 /* Bool+Sugar.swift */,
 				D5FD6F1124096FB5008C5AD4 /* Collection+Sugar.swift */,
 				D5C23A77240F1C1E007DED63 /* String+Sugar.swift */,
@@ -703,6 +708,7 @@
 				D535554B23E23EA7005A20EB /* Then */,
 				D5AAF7CA23ED850E00E410F2 /* BetterSheet */,
 				D5F5066D24006CDD00CA4094 /* KeyboardObserver */,
+				03FA2D7A241D51BD004140DE /* APIKit */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -786,6 +792,7 @@
 				D5AAF7C923ED850E00E410F2 /* XCRemoteSwiftPackageReference "BetterSheet" */,
 				D5F5066C24006CDD00CA4094 /* XCRemoteSwiftPackageReference "KeyboardObserver" */,
 				D514750B240C90DE002EE20C /* XCRemoteSwiftPackageReference "ViewInspector" */,
+				03FA2D79241D51BD004140DE /* XCRemoteSwiftPackageReference "APIKit" */,
 			);
 			productRefGroup = 03341B3C23ABB1E7009AE8A8 /* Products */;
 			projectDirPath = "";
@@ -983,6 +990,7 @@
 				D535550223E0FD9F005A20EB /* NotificationCenterSpy.swift in Sources */,
 				D5B57A6F2419E22300BE9B4F /* Optional+Sugar.swift in Sources */,
 				D5C23A7A240F2DEB007DED63 /* Bool+Sugar.swift in Sources */,
+				03B71324241D71B600DED025 /* Error+Sugar.swift in Sources */,
 				D535550123E0FD9F005A20EB /* NotificationCenterProtocol.swift in Sources */,
 				D5FD6F1224096FB5008C5AD4 /* Collection+Sugar.swift in Sources */,
 				D535550323E0FD9F005A20EB /* Typealiases.swift in Sources */,
@@ -1353,6 +1361,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		03FA2D79241D51BD004140DE /* XCRemoteSwiftPackageReference "APIKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/davdroman/APIKit";
+			requirement = {
+				branch = "davdroman-improvements";
+				kind = branch;
+			};
+		};
 		D514750B240C90DE002EE20C /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nalexn/ViewInspector";
@@ -1404,6 +1420,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		03FA2D7A241D51BD004140DE /* APIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 03FA2D79241D51BD004140DE /* XCRemoteSwiftPackageReference "APIKit" */;
+			productName = APIKit;
+		};
 		D514750C240C90DE002EE20C /* ViewInspector */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D514750B240C90DE002EE20C /* XCRemoteSwiftPackageReference "ViewInspector" */;
