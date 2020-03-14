@@ -21,7 +21,7 @@ final class AddressDetailsViewTests: XCTestCase {
             context,
             addressProvider,
             AddressDetailsView(
-                student: .stub,
+                student: .davidStub,
                 instrument: .guitarStub,
                 state: .init(),
                 context: context,

@@ -133,9 +133,9 @@ struct AddressDetailsView: View, TestableView {
 struct AddressDetailsViewPreview: PreviewProvider {
     static var previews: some View {
         let state = AddressDetailsView.ViewState()
-//        state.addresses = [.stub]
+//        state.addresses = [.davidStub]
         return AddressDetailsView(
-            student: .stub,
+            student: .davidStub,
             instrument: .guitarStub,
             state: state,
             context: RequestLessonPlanContext(),
