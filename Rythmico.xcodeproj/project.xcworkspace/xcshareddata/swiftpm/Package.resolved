@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "APIKit",
+        "repositoryURL": "https://github.com/davdroman/APIKit",
+        "state": {
+          "branch": "davdroman-improvements",
+          "revision": "2bca1f733c12022c4f20018e7c287234d3a5cc0f",
+          "version": null
+        }
+      },
+      {
         "package": "BetterSheet",
         "repositoryURL": "https://github.com/egeniq/BetterSheet",
         "state": {
