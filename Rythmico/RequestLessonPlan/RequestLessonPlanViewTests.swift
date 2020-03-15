@@ -6,7 +6,11 @@ final class RequestLessonPlanViewTests: XCTestCase {
     var requestLessonPlanView: (RequestLessonPlanContext, RequestLessonPlanView) {
         let context = RequestLessonPlanContext()
         let instrumentProvider = InstrumentSelectionListProviderStub(instruments: [.guitarStub, .pianoStub])
-        let view = RequestLessonPlanView(context: context, instrumentProvider: instrumentProvider)
+        let view = RequestLessonPlanView(
+            context: context,
+            accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
+            instrumentProvider: instrumentProvider
+        )
         return (context, view)
     }
 
