@@ -11,6 +11,7 @@ struct MainTabView: View, TestableView {
     func presentRequestLessonFlow() {
         lessonRequestView = RequestLessonPlanView(
             context: RequestLessonPlanContext(),
+            accessTokenProvider: accessTokenProvider,
             instrumentProvider: InstrumentSelectionListProviderFake()
         )
     }
