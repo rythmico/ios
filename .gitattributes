@@ -1,2 +1,1 @@
-Secrets.swift filter=git-crypt diff=git-crypt
 GoogleService-Info-*.plist filter=git-crypt diff=git-crypt
