@@ -14,13 +14,16 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
 
     @ObservedObject
     private var context: RequestLessonPlanContext
+    private let accessTokenProvider: AuthenticationAccessTokenProvider
     private let instrumentProvider: InstrumentSelectionListProviderProtocol
 
     init(
         context: RequestLessonPlanContext,
+        accessTokenProvider: AuthenticationAccessTokenProvider,
         instrumentProvider: InstrumentSelectionListProviderProtocol
     ) {
         self.context = context
+        self.accessTokenProvider = accessTokenProvider
         self.instrumentProvider = instrumentProvider
     }
 
@@ -113,9 +116,8 @@ extension RequestLessonPlanView {
                 instrument: values.0,
                 state: addressDetailsViewState,
                 context: context,
-                addressProvider: AddressSearchService(),
-                editingCoordinator: UIApplication.shared,
-                dispatchQueue: .main
+                addressProvider: AddressSearchService(accessTokenProvider: accessTokenProvider),
+                editingCoordinator: UIApplication.shared
             )
         }
     }
@@ -155,6 +157,7 @@ struct RequestLessonPlanView_Preview: PreviewProvider {
     static var previews: some View {
         RequestLessonPlanView(
             context: .init(),
+            accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
             instrumentProvider: InstrumentSelectionListProviderFake()
         )
     }
