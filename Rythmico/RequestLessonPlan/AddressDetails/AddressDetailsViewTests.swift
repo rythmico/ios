@@ -26,8 +26,7 @@ final class AddressDetailsViewTests: XCTestCase {
                 state: .init(),
                 context: context,
                 addressProvider: addressProvider,
-                editingCoordinator: EditingCoordinatorSpy(),
-                dispatchQueue: .none
+                editingCoordinator: EditingCoordinatorSpy()
             )
         )
     }

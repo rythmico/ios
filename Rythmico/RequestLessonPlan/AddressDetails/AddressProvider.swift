@@ -7,17 +7,29 @@ protocol AddressProviderProtocol: AnyObject {
 }
 
 final class AddressSearchService: AddressProviderProtocol {
+    private let accessTokenProvider: AuthenticationAccessTokenProvider
     private let sessionConfiguration = URLSessionConfiguration.ephemeral
 
+    init(accessTokenProvider: AuthenticationAccessTokenProvider) {
+        self.accessTokenProvider = accessTokenProvider
+    }
+
     func addresses(withPostcode postcode: String, completion: @escaping CompletionHandler) {
-        do {
-            let session = Session(adapter: URLSessionAdapter(configuration: sessionConfiguration))
-            let request = try AddressSearchRequest(postcode: postcode)
-            session.send(request) { result in
-                completion(result.map([Address].init).mapError { $0 as Error })
+        accessTokenProvider.getAccessToken { result in
+            switch result {
+            case .success(let accessToken):
+                do {
+                    let session = Session(adapter: URLSessionAdapter(configuration: self.sessionConfiguration))
+                    let request = try AddressSearchRequest(accessToken: accessToken, postcode: postcode)
+                    session.send(request, callbackQueue: .main) { result in
+                        completion(result.map([Address].init).mapError { $0 as Error })
+                    }
+                } catch {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
             }
-        } catch {
-            completion(.failure(error))
         }
     }
 }
@@ -38,10 +50,11 @@ private extension Array where Element == Address {
     }
 }
 
-private struct AddressSearchRequest: DecodableJSONRequest {
+private struct AddressSearchRequest: RythmicoAPIRequest {
+    let accessToken: String
     let postcode: String
 
-    init(postcode: String) throws {
+    init(accessToken: String, postcode: String) throws {
         let sanitizedPostcode = postcode
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .replacingOccurrences(of: String.whitespace, with: String.empty)
@@ -51,17 +64,12 @@ private struct AddressSearchRequest: DecodableJSONRequest {
             throw Error(message: "Postcode must not be empty")
         }
 
+        self.accessToken = accessToken
         self.postcode = sanitizedPostcode
     }
 
-    let host = "api.getAddress.io"
     let method: HTTPMethod = .get
-    var path: String { "/find/" + postcode }
-    let parameters: Any? = [
-        "api-key": Secret.addressSearchServiceAPIToken,
-        "expand": "true",
-        "sort": "true",
-    ]
+    var path: String { "/address-lookup/" + postcode }
 
     func intercept(urlRequest: URLRequest) throws -> URLRequest {
         var urlRequest = urlRequest
