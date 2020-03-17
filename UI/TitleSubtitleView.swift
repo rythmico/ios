@@ -26,7 +26,12 @@ struct TitleSubtitleView: View {
                     style: .body,
                     parts: subtitle.map { .init($0.string, weight: $0.weight, color: .rythmicoGray90) }
                 )
-                .transition(AnyTransition.opacity.combined(with: .offset(y: -50)))
+                .transition(
+                    AnyTransition
+                        .opacity
+                        .combined(with: .offset(y: -50)
+                    )
+                )
             }
             Spacer()
         }
