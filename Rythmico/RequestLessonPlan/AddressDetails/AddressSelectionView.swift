@@ -6,7 +6,7 @@ struct AddressSelectionView: View {
 
     var body: some View {
         VStack(spacing: .spacingExtraSmall) {
-            ForEach(addresses) { address in
+            ForEach(_addresses) { address in
                 HStack {
                     Text(address.singleLineFormattedString)
                         .rythmicoFont(self.textStyle(for: address))
@@ -22,6 +22,13 @@ struct AddressSelectionView: View {
                 .onTapGesture { self.selection = address }
             }
         }
+    }
+
+    private var _addresses: [Address] {
+        if let selectedAddress = selection, !addresses.contains(selectedAddress) {
+            selection = nil
+        }
+        return addresses
     }
 
     private func textColor(for address: Address) -> Color {
