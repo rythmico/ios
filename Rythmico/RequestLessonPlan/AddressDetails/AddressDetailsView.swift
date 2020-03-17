@@ -97,18 +97,26 @@ struct AddressDetailsView: View, TestableView {
                         }
                     }
                     state.addresses.map { addresses in
-                        AnyView(
-                            SectionHeaderContentView(title: "Select Address") {
-                                ScrollView(showsIndicators: false) {
-                                    AddressSelectionView(
-                                        addresses: addresses,
-                                        selection: $state.selectedAddress
-                                    )
-                                    .inset(.bottom, .spacingMedium)
-                                }
+                        SectionHeaderContentView(title: "Select Address") {
+                            ScrollView(showsIndicators: false) {
+                                AddressSelectionView(
+                                    addresses: addresses,
+                                    selection: $state.selectedAddress
+                                )
+                                .inset(.bottom, .spacingMedium)
                             }
+                        }
+                        .transition(
+                            AnyTransition
+                                .opacity
+                                .combined(with: .offset(x: 0, y: 25)
+                            )
                         )
-                    } ?? AnyView(Spacer())
+                    }
+
+                    if state.addresses == nil {
+                        Spacer()
+                    }
                 }
                 .accentColor(.rythmicoPurple)
 
@@ -116,6 +124,7 @@ struct AddressDetailsView: View, TestableView {
                     FloatingButton(title: "Next", action: $0).padding(.horizontal, -.spacingMedium)
                 }
             }
+            .animation(.easeInOut(duration: .durationMedium), value: state.addresses)
             .animation(.easeInOut(duration: .durationMedium), value: nextButtonAction != nil)
         }
         .alert(item: $errorMessage) { Alert(title: Text("Error"), message: Text($0)) }
@@ -133,7 +142,7 @@ struct AddressDetailsViewPreview: PreviewProvider {
             instrument: .guitarStub,
             state: state,
             context: RequestLessonPlanContext(),
-            addressProvider: AddressProviderStub(result: .success([.stub]), delay: 3),
+            addressProvider: AddressProviderStub(result: .success([.stub, .stub, .stub, .stub]), delay: 1),
             editingCoordinator: UIApplication.shared
         ).environment(\.sizeCategory, .accessibilityExtraExtraLarge)
     }
