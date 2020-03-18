@@ -1,0 +1,16 @@
+#!/bin/bash
+
+SSH_PATH=$1
+GIT_URL=$2
+
+GIT_SSH_COMMAND="ssh -i $SSH_PATH" \
+fastlane match development \
+--git_url "$GIT_URL" \
+--app_identifier "com.rythmico.student" \
+--readonly
+
+GIT_SSH_COMMAND="ssh -i $SSH_PATH" \
+fastlane match appstore \
+--git_url "$GIT_URL" \
+--app_identifier "com.rythmico.student" \
+--readonly

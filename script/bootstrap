@@ -8,5 +8,8 @@ PRIVATE_KEY=$1
 git-crypt unlock $PRIVATE_KEY
 
 SCRIPT_DIR=$(dirname $0)
+SSH_PATH=$2
+GIT_URL=$3
+$SCRIPT_DIR/fetch_certificates $SSH_PATH $GIT_URL
 $SCRIPT_DIR/build_phase_generate_asset_symbols
 $SCRIPT_DIR/build_phase_generate_enum_properties
