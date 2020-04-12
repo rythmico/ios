@@ -59,6 +59,8 @@ import Foundation
 {% for enum in types.enums %}
     {% if enum.cases.count > 0 and enum.accessLevel != 'private' %}
         {{ enum.accessLevel }} extension {{ enum.name }} {
+            static var count: Int { {{ enum.cases.count }} }
+
             {% for case in enum.cases %}
                 {% if case.hasAssociatedValue %}
                     {% call associatedValueVar case %}

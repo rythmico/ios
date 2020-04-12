@@ -1,7 +1,7 @@
 import Foundation
 
 extension Optional {
-    public mutating func nilifiedIfSome() -> Bool {
+    public mutating func nilifyIfSome() -> Bool {
         switch self {
         case .some:
             self = nil
