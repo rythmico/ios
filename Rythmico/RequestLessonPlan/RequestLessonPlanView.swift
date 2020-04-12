@@ -35,9 +35,9 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
     }
 
     func back() {
-        if context.address.nilifiedIfSome() { return }
-        if context.student.nilifiedIfSome() { return }
-        if context.instrument.nilifiedIfSome() { return }
+        if context.address.nilifyIfSome() { return }
+        if context.student.nilifyIfSome() { return }
+        if context.instrument.nilifyIfSome() { return }
     }
 
     var body: some View {
@@ -66,11 +66,14 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
             }
 
             ZStack {
-                ForEach(0..<allStepViews.count) { index in
-                    self.allStepViews[index].tag(index).transition(self.pageTransition(forStepIndex: index))
-                }
+                instrumentSelectionView.transition(pageTransition(forStepIndex: 0))
+                studentDetailsView.transition(pageTransition(forStepIndex: 1))
+                addressDetailsView.transition(pageTransition(forStepIndex: 2))
+                schedulingView.transition(pageTransition(forStepIndex: 3))
+                privateNoteView.transition(pageTransition(forStepIndex: 4))
+                reviewProposalView.transition(pageTransition(forStepIndex: 5))
             }
-            .animation(.easeInOut(duration: .durationMedium), value: currentStepViewIndex)
+            .animation(.easeInOut(duration: .durationMedium), value: context.currentStep.index)
             .onEdgeSwipe(.left, perform: back)
         }
         .betterSheetIsModalInPresentation(shouldShowBackButton)
@@ -79,7 +82,7 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
 
     private func pageTransition(forStepIndex index: Int) -> AnyTransition {
         AnyTransition.move(
-            edge: index == currentStepViewIndex
+            edge: index == context.currentStep.index
                 ? context.direction == .forward ? .trailing : .leading
                 : context.direction == .forward ? .leading : .trailing
         )
@@ -88,8 +91,8 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
 }
 
 extension RequestLessonPlanView {
-    var currentStepNumber: Int { currentStepViewIndex + 1 }
-    var stepCount: Int { allStepViews.count }
+    var currentStepNumber: Int { context.currentStep.index + 1 }
+    var stepCount: Int { RequestLessonPlanContext.Step.count }
 
     var instrumentSelectionView: InstrumentSelectionView? {
         context.currentStep.isInstrumentSelection
@@ -132,24 +135,6 @@ extension RequestLessonPlanView {
 
     var reviewProposalView: ReviewProposalView? {
         context.currentStep.isReviewProposal ? ReviewProposalView(EmptyView()) : nil
-    }
-
-    private var allStepViews: [AnyView?] {
-        [
-            instrumentSelectionView.map(AnyView.init),
-            studentDetailsView.map(AnyView.init),
-            addressDetailsView.map(AnyView.init),
-            schedulingView.map(AnyView.init),
-            privateNoteView.map(AnyView.init),
-            reviewProposalView.map(AnyView.init)
-        ]
-    }
-
-    private var currentStepViewIndex: Int {
-        guard let index = allStepViews.firstIndex(where: { $0 != nil }) else {
-            preconditionFailure("RequestLessonPlanContext.Step enum cases and RequestLessonPlanView.allStepViews array are not in sync")
-        }
-        return index
     }
 }
 

@@ -28,7 +28,7 @@ extension RequestLessonPlanContext {
             lhs.index < rhs.index
         }
 
-        private var index: Int {
+        var index: Int {
             switch self {
             case .instrumentSelection:
                 return 0
