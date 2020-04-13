@@ -17,7 +17,7 @@ final class AuthenticationAccessTokenProviderObserverTests: XCTestCase {
     }
 
     func testDeinit() {
-        // Using waiter because it tracks deinitialized objects as opposed to just calling `self.wait`
+        // Using waiter because it tracks deinitialized objects, unlike `self.wait`
         let waiter = XCTWaiter()
         let expectation = self.expectation(description: "Listener is removed from broadcast upon deinit")
 

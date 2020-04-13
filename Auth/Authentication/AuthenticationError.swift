@@ -1,6 +1,6 @@
 import Foundation
 
-// If/when https://bugs.swift.org/browse/SR-3170 is implemented, look into abstracting AuthenticationError.ReasonCode
+// TODO: if/when https://bugs.swift.org/browse/SR-3170 is implemented, look into abstracting AuthenticationError.ReasonCode
 // into AuthenticationErrorCommonReasonCodeProtocol and AuthenticationErrorSignInReasonCodeProtocol to merge error types.
 
 protocol AuthenticationErrorProtocol: Error {
