@@ -15,32 +15,48 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // Hopefully to be deleted someday if SwiftUI allows for better customization.
     private func configureGlobalStyles() {
-        UINavigationBar.appearance().do {
-            $0.isTranslucent = false
-            $0.barTintColor = .systemBackground
-            $0.backgroundColor = .systemBackground
-            $0.largeTitleTextAttributes = [
-                .foregroundColor: UIColor.rythmicoForeground,
-                .font: UIFont.rythmicoFont(.largeTitle)
-            ]
-            $0.titleTextAttributes = [
-                .foregroundColor: UIColor.rythmicoForeground,
-                .font: UIFont.rythmicoFont(.subheadline)
-            ]
-            $0.layoutMargins.left = .spacingMedium
-            $0.layoutMargins.right = .spacingMedium
+        UINavigationBar.appearance().do { bar in
+            UINavigationBarAppearance().do {
+                $0.configureWithOpaqueBackground()
+                $0.largeTitleTextAttributes = [
+                    .foregroundColor: UIColor.rythmicoForeground,
+                    .font: UIFont.rythmicoFont(.largeTitle)
+                ]
+                $0.titleTextAttributes = [
+                    .foregroundColor: UIColor.rythmicoForeground,
+                    .font: UIFont.rythmicoFont(.subheadline)
+                ]
+                $0.shadowColor = nil
+                bar.standardAppearance = $0
+                bar.compactAppearance = $0
+                bar.scrollEdgeAppearance = $0
+
+                bar.isTranslucent = false
+
+                bar.layoutMargins.left = .spacingMedium
+                bar.layoutMargins.right = .spacingMedium
+            }
         }
 
         UITableView.appearance().do {
             $0.backgroundColor = .clear
         }
 
-        UITabBarItem.appearance().do {
-            $0.setTitleTextAttributes([.font: UIFont.rythmicoFont(.caption)], for: .normal)
-        }
-
-        UITabBar.appearance().do {
-            $0.unselectedItemTintColor = .rythmicoGray90
+        UITabBar.appearance().do { bar in
+            UITabBarAppearance().do {
+                [
+                    $0.compactInlineLayoutAppearance,
+                    $0.inlineLayoutAppearance,
+                    $0.stackedLayoutAppearance
+                ].forEach {
+                    $0.normal.iconColor = .rythmicoGray90
+                    $0.normal.titleTextAttributes = [
+                        .font: UIFont.rythmicoFont(.caption),
+                        .foregroundColor: UIColor.rythmicoGray90
+                    ]
+                }
+                bar.standardAppearance = $0
+            }
         }
 
         UISwitch.appearance().do {
