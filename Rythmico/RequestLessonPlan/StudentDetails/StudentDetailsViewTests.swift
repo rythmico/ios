@@ -15,8 +15,7 @@ final class StudentDetailsViewTests: XCTestCase {
                 instrument: instrument,
                 state: .init(),
                 context: context,
-                keyboardDismisser: editingCoordinator,
-                dispatchQueue: .none
+                keyboardDismisser: editingCoordinator
             )
         )
     }
@@ -173,9 +172,7 @@ final class StudentDetailsViewTests: XCTestCase {
                     gender: .male,
                     about: """
                     David is an exceptional piano student, however whitespaces are not his thing. Like at all.
-
                     Anyway we can help him out a bit with this.
-
                     Teach him how whitespaces and newlines are properly done, please.
                     """
                 )
