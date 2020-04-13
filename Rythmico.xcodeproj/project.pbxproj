@@ -18,6 +18,7 @@
 		03A094622443D8E1008B4BD6 /* EditingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */; };
 		03A8116E241D1DAF0091B9ED /* StudentDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */; };
 		03A81170241D1DFB0091B9ED /* InstrumentDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A8116F241D1DFB0091B9ED /* InstrumentDoubles.swift */; };
+		03AAF66C2444FFCC002D8F5B /* FloatingPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF66B2444FFCC002D8F5B /* FloatingPicker.swift */; };
 		03B71324241D71B600DED025 /* Error+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B71323241D71B600DED025 /* Error+Sugar.swift */; };
 		03FA2D7B241D51BD004140DE /* APIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 03FA2D7A241D51BD004140DE /* APIKit */; };
 		D50811E423FB72A3008103D8 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E323FB72A3008103D8 /* StepBar.swift */; };
@@ -194,6 +195,7 @@
 		03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingCoordinator.swift; sourceTree = "<group>"; };
 		03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDoubles.swift; sourceTree = "<group>"; };
 		03A8116F241D1DFB0091B9ED /* InstrumentDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentDoubles.swift; sourceTree = "<group>"; };
+		03AAF66B2444FFCC002D8F5B /* FloatingPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPicker.swift; sourceTree = "<group>"; };
 		03B71323241D71B600DED025 /* Error+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Sugar.swift"; sourceTree = "<group>"; };
 		D50668DA23B946330044E553 /* Rythmico.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rythmico.entitlements; sourceTree = "<group>"; };
 		D50811E323FB72A3008103D8 /* StepBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
@@ -482,6 +484,7 @@
 				D5147510240C99A9002EE20C /* CustomTextField.swift */,
 				D5F506BD2406E49A00CA4094 /* EdgeSwipeView.swift */,
 				D5F5068D240473CB00CA4094 /* FloatingDatePicker.swift */,
+				03AAF66B2444FFCC002D8F5B /* FloatingPicker.swift */,
 				D5F506B9240637F400CA4094 /* FloatingButton.swift */,
 				D5E04B1823BED80700A161BB /* Fonts.swift */,
 				D535554623E20076005A20EB /* Colors.swift */,
@@ -921,6 +924,7 @@
 				D53555C023E53699005A20EB /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */,
 				D5473CA1241AC4A000D66775 /* AddressDoubles.swift in Sources */,
 				D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */,
+				03AAF66C2444FFCC002D8F5B /* FloatingPicker.swift in Sources */,
 				D5F5068E240473CB00CA4094 /* FloatingDatePicker.swift in Sources */,
 				D5AAF7C823ECC87000E410F2 /* RequestLessonPlanView.swift in Sources */,
 				D5BA171223D7AB3B00954D50 /* MainTabView.swift in Sources */,
