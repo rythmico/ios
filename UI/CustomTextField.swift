@@ -40,7 +40,7 @@ struct CustomTextField: UIViewRepresentable {
     var textContentType: UITextContentType?
     var autocapitalizationType: UITextAutocapitalizationType
     var returnKeyType: UIReturnKeyType
-    var isSelectable: Bool
+    var isEditable: Bool
     var onEditingChanged: (Bool) -> Void
     var onCommit: () -> Void
 
@@ -50,7 +50,7 @@ struct CustomTextField: UIViewRepresentable {
         textContentType: UITextContentType? = nil,
         autocapitalizationType: UITextAutocapitalizationType = .none,
         returnKeyType: UIReturnKeyType = .done,
-        isSelectable: Bool = true,
+        isEditable: Bool = true,
         onEditingChanged: @escaping (Bool) -> Void = { _ in },
         onCommit: @escaping () -> Void = {}
     ) {
@@ -59,7 +59,7 @@ struct CustomTextField: UIViewRepresentable {
         self.textContentType = textContentType
         self.autocapitalizationType = autocapitalizationType
         self.returnKeyType = returnKeyType
-        self.isSelectable = isSelectable
+        self.isEditable = isEditable
         self.onEditingChanged = onEditingChanged
         self.onCommit = onCommit
     }
@@ -77,6 +77,7 @@ struct CustomTextField: UIViewRepresentable {
         textField.textContentType = textContentType
         textField.autocapitalizationType = autocapitalizationType
         textField.returnKeyType = returnKeyType
+        textField.isUserInteractionEnabled = isEditable
         textField.delegate = context.coordinator
         textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         textField.setContentHuggingPriority(.defaultHigh, for: .vertical)

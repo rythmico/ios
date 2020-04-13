@@ -4,10 +4,10 @@ import Sugar
 @testable import Rythmico
 
 final class StudentDetailsViewTests: XCTestCase {
-    var studentDetailsView: (RequestLessonPlanContext, EditingCoordinatorSpy, StudentDetailsView) {
+    var studentDetailsView: (RequestLessonPlanContext, KeyboardDismisserSpy, StudentDetailsView) {
         let instrument = Instrument.singingStub
         let context = RequestLessonPlanContext()
-        let editingCoordinator = EditingCoordinatorSpy()
+        let editingCoordinator = KeyboardDismisserSpy()
         return (
             context,
             editingCoordinator,
@@ -15,18 +15,18 @@ final class StudentDetailsViewTests: XCTestCase {
                 instrument: instrument,
                 state: .init(),
                 context: context,
-                editingCoordinator: editingCoordinator,
+                keyboardDismisser: editingCoordinator,
                 dispatchQueue: .none
             )
         )
     }
 
     func testInitialValues() {
-        let (context, editingCoordinator, view) = studentDetailsView
+        let (context, keyboardDismisser, view) = studentDetailsView
 
         XCTAssertView(view) { view in
             XCTAssertNil(context.student)
-            XCTAssertEqual(editingCoordinator.endEditingCount, 0)
+            XCTAssertEqual(keyboardDismisser.dismissKeyboardCount, 0)
 
             XCTAssertEqual(
                 view.subtitle.string,
@@ -49,7 +49,7 @@ final class StudentDetailsViewTests: XCTestCase {
     }
 
     func testEditingHidesSubtitle() {
-        let (_, editingCoordinator, view) = studentDetailsView
+        let (_, keyboardDismisser, view) = studentDetailsView
 
         XCTAssertView(view) { view in
             view.textFieldEditingChanged(true)
@@ -57,30 +57,30 @@ final class StudentDetailsViewTests: XCTestCase {
             view.textFieldEditingChanged(false)
             XCTAssertFalse(view.subtitle.isEmpty)
 
-            view.startEditingDateOfBirth()
+            view.dateOfBirthEditingChanged(true)
             XCTAssertTrue(view.subtitle.isEmpty)
-            view.endEditingDateOfBirth()
+            view.dateOfBirthEditingChanged(false)
             XCTAssertFalse(view.subtitle.isEmpty)
 
-            XCTAssertEqual(editingCoordinator.endEditingCount, 1)
+            XCTAssertEqual(keyboardDismisser.dismissKeyboardCount, 1)
 
             view.textFieldEditingChanged(true)
-            view.startEditingDateOfBirth()
+            view.dateOfBirthEditingChanged(true)
             XCTAssertTrue(view.subtitle.isEmpty)
             view.textFieldEditingChanged(false)
-            view.endEditingDateOfBirth()
+            view.dateOfBirthEditingChanged(false)
             XCTAssertFalse(view.subtitle.isEmpty)
 
-            XCTAssertEqual(editingCoordinator.endEditingCount, 2)
+            XCTAssertEqual(keyboardDismisser.dismissKeyboardCount, 2)
 
-            view.startEditingDateOfBirth()
+            view.dateOfBirthEditingChanged(true)
             view.textFieldEditingChanged(true)
             XCTAssertTrue(view.subtitle.isEmpty)
-            view.endEditingDateOfBirth()
+            view.dateOfBirthEditingChanged(false)
             view.textFieldEditingChanged(false)
             XCTAssertFalse(view.subtitle.isEmpty)
 
-            XCTAssertEqual(editingCoordinator.endEditingCount, 3)
+            XCTAssertEqual(keyboardDismisser.dismissKeyboardCount, 3)
         }
     }
 

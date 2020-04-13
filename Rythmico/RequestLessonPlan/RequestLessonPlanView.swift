@@ -106,8 +106,7 @@ extension RequestLessonPlanView {
                 instrument: $0,
                 state: studentDetailsViewState,
                 context: context,
-                editingCoordinator: UIApplication.shared,
-                dispatchQueue: .main
+                keyboardDismisser: UIApplication.shared
             )
         }
     }
@@ -120,7 +119,7 @@ extension RequestLessonPlanView {
                 state: addressDetailsViewState,
                 context: context,
                 addressProvider: AddressSearchService(accessTokenProvider: accessTokenProvider),
-                editingCoordinator: UIApplication.shared
+                keyboardDismisser: UIApplication.shared
             )
         }
     }
