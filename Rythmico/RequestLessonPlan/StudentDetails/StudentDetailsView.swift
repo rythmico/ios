@@ -87,7 +87,7 @@ struct StudentDetailsView: View, TestableView {
         state.about
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .removingRepetitionOf(.whitespace)
-            .repeating(.newline, count: 2) // FIXME: set line spacing instead
+            .removingRepetitionOf(.newline)
     }
 
     // MARK: - Next Button -
@@ -199,9 +199,10 @@ struct StudentDetailsView: View, TestableView {
 
 struct StudentDetailsView_Preview: PreviewProvider {
     static var previews: some View {
-        StudentDetailsView(
+        let state = StudentDetailsView.ViewState()
+        return StudentDetailsView(
             instrument: .pianoStub,
-            state: StudentDetailsView.ViewState(),
+            state: state,
             context: RequestLessonPlanContext(),
             keyboardDismisser: UIApplication.shared
         )
