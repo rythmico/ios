@@ -1,8 +1,11 @@
 import SwiftUI
 
-struct FloatingDatePicker: View {
-    var selection: Binding<Date>
-    var displayedComponents: DatePickerComponents = .date
+protocol PickableOption: CaseIterable, RawRepresentable, Hashable where AllCases: RandomAccessCollection, RawValue: Hashable {
+    var title: String { get }
+}
+
+struct FloatingPicker<Selection: PickableOption>: View {
+    var selection: Binding<Selection>
     var doneButtonAction: () -> Void
 
     var body: some View {
@@ -16,11 +19,13 @@ struct FloatingDatePicker: View {
                 .padding(.horizontal, .spacingMedium)
                 .padding(.top, .spacingExtraSmall)
             }
-            DatePicker(
-                "",
-                selection: selection,
-                displayedComponents: displayedComponents
-            ).labelsHidden()
+            Picker("", selection: selection) {
+                ForEach(Selection.allCases, id: \.rawValue) {
+                    Text($0.title).tag($0)
+                }
+            }
+            .labelsHidden()
+            .pickerStyle(WheelPickerStyle())
         }
         .background(Color.systemLightGray.edgesIgnoringSafeArea(.bottom))
         .transition(.move(edge: .bottom))

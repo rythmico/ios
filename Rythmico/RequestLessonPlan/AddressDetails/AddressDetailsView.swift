@@ -16,7 +16,7 @@ struct AddressDetailsView: View, TestableView {
     private let instrument: Instrument
     private let addressProvider: AddressProviderProtocol
     private let context: AddressDetailsContext
-    private let editingCoordinator: EditingCoordinator
+    private let keyboardDismisser: KeyboardDismisser
 
     var didAppear: Handler<Self>?
 
@@ -30,14 +30,14 @@ struct AddressDetailsView: View, TestableView {
         state: ViewState,
         context: AddressDetailsContext,
         addressProvider: AddressProviderProtocol,
-        editingCoordinator: EditingCoordinator
+        keyboardDismisser: KeyboardDismisser
     ) {
         self.student = student
         self.instrument = instrument
         self.state = state
         self.context = context
         self.addressProvider = addressProvider
-        self.editingCoordinator = editingCoordinator
+        self.keyboardDismisser = keyboardDismisser
     }
 
     var subtitle: [MultiStyleText.Part] {
@@ -128,7 +128,7 @@ struct AddressDetailsView: View, TestableView {
             .animation(.easeInOut(duration: .durationMedium), value: nextButtonAction != nil)
         }
         .alert(item: $errorMessage) { Alert(title: Text("Error"), message: Text($0)) }
-        .onDisappear(perform: editingCoordinator.endEditing)
+        .onDisappear(perform: keyboardDismisser.dismissKeyboard)
         .onAppear { self.didAppear?(self) }
     }
 }
@@ -143,7 +143,7 @@ struct AddressDetailsViewPreview: PreviewProvider {
             state: state,
             context: RequestLessonPlanContext(),
             addressProvider: AddressProviderStub(result: .success([.stub, .stub, .stub, .stub]), delay: 1),
-            editingCoordinator: UIApplication.shared
+            keyboardDismisser: UIApplication.shared
         ).environment(\.sizeCategory, .accessibilityExtraExtraLarge)
     }
 }

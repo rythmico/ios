@@ -2,17 +2,31 @@ import SwiftUI
 import Then
 
 private struct UITextViewWrapper: UIViewRepresentable {
+    final class UITextViewPrimitive: UITextView {
+        override func caretRect(for position: UITextPosition) -> CGRect {
+            var superRect = super.caretRect(for: position)
+            guard let font = self.font else {
+                return superRect
+            }
+
+            // "descender" is expressed as a negative value,
+            // so to add its height you must subtract its value
+            superRect.size.height = font.pointSize - font.descender
+            return superRect
+        }
+    }
+
     var placeholder: String
     @Binding var text: String
     @Binding var calculatedHeight: CGFloat
     var onEditingChanged: (Bool) -> Void
 
     func makeUIView(context: Context) -> UITextView {
-        let textField = UITextView()
+        let textField = UITextViewPrimitive()
         textField.delegate = context.coordinator
 
-        textField.isEditable = true
         textField.font = .rythmicoFont(.body)
+        textField.isEditable = true
         textField.isSelectable = true
         textField.isUserInteractionEnabled = true
         textField.isScrollEnabled = false
@@ -47,8 +61,8 @@ private struct UITextViewWrapper: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: UITextView, context: Context) {
-        if uiView.text != self.text {
-            uiView.text = self.text
+        if uiView.rythmicoText != self.text {
+            uiView.rythmicoText = self.text
         }
         uiView.font = .rythmicoFont(.body)
         UITextViewWrapper.recalculateHeight(view: uiView, placeholder: placeholder, result: $calculatedHeight)
@@ -56,8 +70,8 @@ private struct UITextViewWrapper: UIViewRepresentable {
 
     private static func recalculateHeight(view: UITextView, placeholder: String, result: Binding<CGFloat>) {
         let oldText = view.text
-        if view.text.isEmpty {
-            view.text = placeholder
+        if view.rythmicoText.isEmpty {
+            view.rythmicoText = placeholder
         }
         let newSize = view.sizeThatFits(CGSize(width: view.frame.size.width, height: CGFloat.greatestFiniteMagnitude))
         view.text = oldText
@@ -139,6 +153,24 @@ struct MultilineTextField: View {
                     .foregroundColor(.rythmicoGray30)
                     .padding(.horizontal, .spacingSmall)
             }
+        }
+    }
+}
+
+private extension UITextView {
+    var rythmicoText: String {
+        get { attributedText.string }
+        set {
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.paragraphSpacing = .spacingSmall
+
+            attributedText = NSAttributedString(
+                string: newValue,
+                attributes: [
+                    .paragraphStyle: paragraphStyle,
+                    .font: UIFont.rythmicoFont(.body)
+                ]
+            )
         }
     }
 }

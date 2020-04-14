@@ -15,6 +15,16 @@ extension String {
     public func repeated(_ count: Int = 2) -> String {
         String(repeating: self, count: count)
     }
+
+    public func repeating(_ character: Character, count: Int) -> String {
+        self.split(separator: character)
+            .filter(\.isEmpty.not)
+            .joined(separator: character.repeated(count))
+    }
+
+    public func removingRepetitionOf(_ character: Character) -> String {
+        repeating(character, count: 1)
+    }
 }
 
 extension String {
