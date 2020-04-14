@@ -67,7 +67,22 @@ final class RequestLessonPlanViewTests: XCTestCase {
         }
     }
 
-    // TODO: testPrivateNoteViewPresentation
+    func testPrivateNoteViewPresentation() {
+        let (context, view) = requestLessonPlanView
+
+        XCTAssertView(view) { view in
+            context.instrument = .guitarStub
+            context.student = .davidStub
+            context.address = .stub
+            context.schedule = .stub
+
+            XCTAssertTrue(view.shouldShowBackButton)
+            XCTAssertEqual(view.currentStepNumber, 5)
+            XCTAssertEqual(view.stepCount, 6)
+            XCTAssertNotNil(view.privateNoteView)
+        }
+    }
+
     // TODO: testReviewProposalViewPresentation
     // TODO: testRequestConfirmationViewPresentation
 }

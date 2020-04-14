@@ -11,6 +11,7 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
     private let instrumentSelectionViewState = InstrumentSelectionView.ViewState()
     private let studentDetailsViewState = StudentDetailsView.ViewState()
     private let addressDetailsViewState = AddressDetailsView.ViewState()
+    private let schedulingViewState = SchedulingView.ViewState()
 
     @ObservedObject
     private var context: RequestLessonPlanContext
@@ -35,9 +36,7 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
     }
 
     func back() {
-        if context.address.nilifyIfSome() { return }
-        if context.student.nilifyIfSome() { return }
-        if context.instrument.nilifyIfSome() { return }
+        context.unwindLatestStep()
     }
 
     var body: some View {
@@ -125,11 +124,27 @@ extension RequestLessonPlanView {
     }
 
     var schedulingView: SchedulingView? {
-        context.currentStep.isScheduling ? SchedulingView() : nil
+        context.currentStep.schedulingValue.map {
+            SchedulingView(
+                instrument: $0,
+                state: schedulingViewState,
+                context: context
+            )
+        }
     }
 
     var privateNoteView: PrivateNoteView? {
-        context.currentStep.isPrivateNote ? PrivateNoteView(EmptyView()) : nil
+        context.currentStep.isPrivateNote
+            ? PrivateNoteView(
+                TitleSubtitleContentView(title: "Private Note", subtitle: []) {
+                    VStack {
+                        Spacer()
+                        Text("Coming next!").rythmicoFont(.body)
+                        Spacer()
+                    }
+                }
+            )
+            : nil
     }
 
     var reviewProposalView: ReviewProposalView? {
@@ -139,10 +154,15 @@ extension RequestLessonPlanView {
 
 struct RequestLessonPlanView_Preview: PreviewProvider {
     static var previews: some View {
-        RequestLessonPlanView(
-            context: .init(),
+        let context = RequestLessonPlanContext()
+        context.instrument = .guitarStub
+        context.student = .davidStub
+        context.address = .stub
+        context.schedule = .stub
+        return RequestLessonPlanView(
+            context: context,
             accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
             instrumentProvider: InstrumentSelectionListProviderFake()
-        )
+        ).environment(\.locale, Locale(identifier: "en_GB"))
     }
 }
