@@ -13,7 +13,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    // Hopefully to be deleted someday if SwiftUI allows for better customization.
+    // TODO: hopefully to be deleted someday if SwiftUI allows for better customization.
     private func configureGlobalStyles() {
         UINavigationBar.appearance().do { bar in
             UINavigationBarAppearance().do {

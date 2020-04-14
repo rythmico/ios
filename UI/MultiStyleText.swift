@@ -52,9 +52,29 @@ extension MultiStyleText {
     }
 }
 
-extension String {
+protocol MultiStyleTextPartConvertible {
+    var part: MultiStyleText.Part { get }
+}
+
+extension String: MultiStyleTextPartConvertible {
+    var part: MultiStyleText.Part { .init(self) }
+}
+
+extension MultiStyleText.Part: MultiStyleTextPartConvertible {
+    var part: MultiStyleText.Part { self }
+}
+
+extension MultiStyleTextPartConvertible {
     var bold: MultiStyleText.Part {
-        .init(self, weight: .bold)
+        var part = self.part
+        part.weight = .bold
+        return part
+    }
+
+    func color(_ color: Color) -> MultiStyleText.Part {
+        var part = self.part
+        part.color = color
+        return part
     }
 }
 

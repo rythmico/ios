@@ -20,109 +20,74 @@ struct StudentDetailsView: View, TestableView {
         @Published var about = String()
     }
 
+    @ObservedObject var state: ViewState
+
+    enum EditingFocus: EditingFocusEnum {
+        // TODO: remove with Swift 5.3
+        static var none: Self { ._none }
+        static var textField: Self { ._textField }
+        var isNone: Bool { is_none }
+        var isTextField: Bool { is_textField }
+        case _none
+        case _textField
+        case dateOfBirth
+    }
+
+    @ObservedObject
+    private var editingCoordinator: EditingCoordinator<EditingFocus>
+    private var editingFocus: EditingFocus {
+        get { editingCoordinator.focus }
+        nonmutating set { editingCoordinator.focus = newValue }
+    }
+
     private let instrument: Instrument
     private let context: StudentDetailsContext
-    private let editingCoordinator: EditingCoordinator
-    private let dateFormatter = DateFormatter().then { $0.dateStyle = .long }
-    private let dispatchQueue: DispatchQueue?
 
     init(
         instrument: Instrument,
         state: ViewState,
         context: StudentDetailsContext,
-        editingCoordinator: EditingCoordinator,
-        dispatchQueue: DispatchQueue?
+        keyboardDismisser: KeyboardDismisser
     ) {
         self.instrument = instrument
         self.state = state
         self.context = context
-        self.editingCoordinator = editingCoordinator
-        self.dispatchQueue = dispatchQueue
+        self.editingCoordinator = EditingCoordinator(keyboardDismisser: keyboardDismisser)
     }
-
-    // MARK: - ViewState -
-    @ObservedObject var state: ViewState
 
     // MARK: - Subtitle -
     var subtitle: [MultiStyleText.Part] {
-        !isEditing ? "Enter the details of the student who will learn " + instrument.name.bold : .empty
+        editingFocus.isNone
+            ? "Enter the details of the student who will learn " + instrument.name.bold
+            : .empty
     }
-
-    @State private var isEditing = false
 
     // MARK: - Name -
     private var sanitizedName: String? {
         state.name
             .trimmingCharacters(in: .whitespacesAndNewlines)
-
-            // removes repeated whitespaces and newlines
-            .components(separatedBy: .whitespacesAndNewlines)
-            .filter(\.isEmpty.not)
-            .joined(separator: .whitespace)
-
+            .removingRepetitionOf(.whitespace)
+            .removingAll(.newline)
             .nilIfEmpty
-    }
-
-    func textFieldEditingChanged(_ isEditing: Bool) {
-        if isEditing {
-            self.endEditingDateOfBirth()
-        }
-        self.isEditing = isEditing
     }
 
     // MARK: - Date of Birth -
     var dateOfBirthText: String? { state.dateOfBirth.map(dateFormatter.string(from:)) }
     var dateOfBirthPlaceholderText: String { dateFormatter.string(from: dateOfBirthPlaceholder) }
 
-    func startEditingDateOfBirth() {
-        let showDateOfBirthPicker = {
-            self.editingCoordinator.endEditing()
-            self.isDateOfBirthPickerHidden = false
-        }
-
-        dispatchQueue?.async(execute: showDateOfBirthPicker) ?? showDateOfBirthPicker()
-
-        isEditing = true
-
-        // set date of birth to initial value on first edit
-        if state.dateOfBirth == nil {
-            state.dateOfBirth = dateOfBirthPlaceholder
-        }
-    }
-
-    func endEditingDateOfBirth() {
-        isDateOfBirthPickerHidden = true
-        isEditing = false
-    }
-
-    @State
-    private var isDateOfBirthPickerHidden = true
+    private let dateFormatter = DateFormatter().then { $0.dateStyle = .long }
     private let dateOfBirthPlaceholder = Date().addingTimeInterval(-Const.averageStudentAge)
-    private func dateFieldEditingChanged(_ isEditing: Bool) { if isEditing { startEditingDateOfBirth() } }
 
     // MARK: - About -
     var aboutNameTextPart: MultiStyleText.Part {
-        let firstName = sanitizedName?.firstWord
-        return .init(
-            firstName ?? "Student",
-            weight: .regular,
-            color: firstName != nil ? .rythmicoPurple : .rythmicoForeground
-        )
+        sanitizedName?.firstWord.map { $0.color(.rythmicoPurple) } ?? "Student"
     }
 
     private var sanitizedAbout: String {
         state.about
             .trimmingCharacters(in: .whitespacesAndNewlines)
-
-            // removes repeated whitespaces
-            .split(separator: .whitespace)
-            .filter(\.isEmpty.not)
-            .joined(separator: .whitespace)
-
-            // removes repeated newlines
-            .split(separator: .newline)
-            .filter(\.isEmpty.not)
-            .joined(separator: Character.newline.repeated())
+            .removingRepetitionOf(.whitespace)
+            .removingRepetitionOf(.newline)
     }
 
     // MARK: - Next Button -
@@ -167,14 +132,15 @@ struct StudentDetailsView: View, TestableView {
                             CustomTextField(
                                 dateOfBirthPlaceholderText,
                                 text: .constant(dateOfBirthText ?? .empty),
-                                isSelectable: false,
-                                onEditingChanged: dateFieldEditingChanged
-                            ).modifier(RoundedThinOutlineContainer(padded: false))
+                                isEditable: false
+                            )
+                            .modifier(RoundedThinOutlineContainer(padded: false))
+                            .onTapGesture { self.dateOfBirthEditingChanged(true) }
                         }
                         TitleContentView(title: "Gender") {
                             GenderSelectionView(selection: $state.gender)
                         }
-                        TitleContentView(title: [.init("About "), aboutNameTextPart]) {
+                        TitleContentView(title: "About " + aboutNameTextPart) {
                             MultilineTextField(
                                 "Existing instrument prowess etc.",
                                 text: $state.about,
@@ -194,39 +160,51 @@ struct StudentDetailsView: View, TestableView {
                         FloatingButton(title: "Next", action: $0).padding(.horizontal, -.spacingMedium)
                     }
 
-                    if !isDateOfBirthPickerHidden {
+                    if editingFocus.isDateOfBirth {
                         FloatingDatePicker(
                             selection: Binding(
                                 get: { self.state.dateOfBirth ?? self.dateOfBirthPlaceholder },
                                 set: { self.state.dateOfBirth = $0 }
                             ),
-                            doneButtonAction: endEditingDateOfBirth
+                            doneButtonAction: { self.dateOfBirthEditingChanged(false) }
                         ).padding(.horizontal, -.spacingMedium)
                     }
                 }
             }
-            .animation(.easeInOut(duration: .durationMedium), value: isDateOfBirthPickerHidden)
+            .animation(.easeInOut(duration: .durationMedium), value: editingFocus)
             .animation(.easeInOut(duration: .durationShort), value: nextButtonAction != nil)
         }
-        .animation(.easeInOut(duration: .durationMedium), value: isEditing)
-        .onDisappear(perform: editingCoordinator.endEditing)
+        .animation(.easeInOut(duration: .durationMedium), value: editingFocus)
+        .onDisappear(perform: endEditingAllFields)
         .onAppear { self.didAppear?(self) }
     }
 
-    private func endEditingAllFields() {
-        editingCoordinator.endEditing()
-        endEditingDateOfBirth()
+    func textFieldEditingChanged(_ isEditing: Bool) {
+        editingFocus = isEditing ? .textField : .none
+    }
+
+    func dateOfBirthEditingChanged(_ isEditing: Bool) {
+        editingFocus = isEditing ? .dateOfBirth : .none
+
+        // set date of birth to initial value on first edit
+        if isEditing, state.dateOfBirth == nil {
+            state.dateOfBirth = dateOfBirthPlaceholder
+        }
+    }
+
+    func endEditingAllFields() {
+        editingFocus = .none
     }
 }
 
 struct StudentDetailsView_Preview: PreviewProvider {
     static var previews: some View {
-        StudentDetailsView(
+        let state = StudentDetailsView.ViewState()
+        return StudentDetailsView(
             instrument: .pianoStub,
-            state: StudentDetailsView.ViewState(),
+            state: state,
             context: RequestLessonPlanContext(),
-            editingCoordinator: UIApplication.shared,
-            dispatchQueue: .main
+            keyboardDismisser: UIApplication.shared
         )
     }
 }
