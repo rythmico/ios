@@ -39,8 +39,6 @@ struct SchedulingView: View, TestableView {
     private let timeFormatter = DateFormatter().then { $0.dateFormat = Const.fieldTimeFormat }
     private let availableDates = [Date](byAdding: 1, .day, from: Date() + (1, .day), times: 182)
     private let availableTimes = [Date](byAdding: 30, .minute, from: Const.earliestStartTime, times: 22)
-    private var availablePickableDates: [PickableDate] { availableDates.map(dateToPickableDate) }
-    private var availablePickableTimes: [PickableDate] { availableTimes.map(timeToPickableDate) }
 
     init(
         instrument: Instrument,
@@ -58,7 +56,7 @@ struct SchedulingView: View, TestableView {
 
     var startDateText: String { state.startDate.map(dateFormatter.string(from:)) ?? .empty }
     var startTimeText: String { state.startTime.map(timeFormatter.string(from:)) ?? .empty }
-    var durationText: String { state.duration?.optionTitle ?? .empty }
+    var durationText: String { state.duration.map { "\($0) minutes" } ?? .empty }
 
     var nextButtonAction: Action? {
         guard
@@ -132,22 +130,24 @@ struct SchedulingView: View, TestableView {
 
                     if editingFocus.isStartDate {
                         FloatingPicker(
-                            options: availablePickableDates,
+                            options: availableDates,
                             selection: Binding(
-                                get: { self.state.startDate.map(dateToPickableDate) ?? self.availablePickableDates[0] },
-                                set: { self.state.startDate = $0.date }
+                                get: { self.state.startDate ?? self.availableDates[0] },
+                                set: { self.state.startDate = $0 }
                             ),
+                            formatter: { self.dateFormatter.string(from: $0) },
                             doneButtonAction: { self.startDateEditingChanged(false) }
                         ).padding(.horizontal, -.spacingMedium)
                     }
 
                     if editingFocus.isStartTime {
                         FloatingPicker(
-                            options: availablePickableTimes,
+                            options: availableTimes,
                             selection: Binding(
-                                get: { self.state.startTime.map(timeToPickableDate) ?? self.availablePickableTimes[0] },
-                                set: { self.state.startTime = $0.date }
+                                get: { self.state.startTime ?? self.availableTimes[0] },
+                                set: { self.state.startTime = $0 }
                             ),
+                            formatter: { self.timeFormatter.string(from: $0) },
                             doneButtonAction: { self.startDateEditingChanged(false) }
                         ).padding(.horizontal, -.spacingMedium)
                     }
@@ -158,6 +158,7 @@ struct SchedulingView: View, TestableView {
                                 get: { self.state.duration ?? .fortyFiveMinutes },
                                 set: { self.state.duration = $0 }
                             ),
+                            formatter: { "\($0.rawValue) minutes" },
                             doneButtonAction: { self.durationEditingChanged(false) }
                         ).padding(.horizontal, -.spacingMedium)
                     }
@@ -195,14 +196,6 @@ struct SchedulingView: View, TestableView {
     func endEditingAllFields() {
         editingFocus = .none
     }
-}
-
-private func dateToPickableDate(_ date: Date) -> PickableDate {
-    PickableDate(date: date, format: SchedulingView.Const.pickerDateFormat)
-}
-
-private func timeToPickableDate(_ time: Date) -> PickableDate {
-    PickableDate(date: time, format: SchedulingView.Const.pickerTimeFormat)
 }
 
 struct SchedulingViewPreview: PreviewProvider {
