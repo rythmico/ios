@@ -9,7 +9,7 @@ protocol PickableOption: Hashable {
 // - Implement FloatingInputView<Content: View> (gray background)
 // - FloatingButton -> FloatingView<Button> (make button styling a modifier)
 // - FloatingDatePickerPicker -> FloatingInputView<DatePicker>
-// - FloatingPicker -> FloatingInputView<Picker> (extract FloatingPicker generics and apply to Picker alone)
+// - FloatingPicker -> FloatingInputView<BetterPicker> (extract FloatingPicker's picker into BetterPicker with existing generics)
 struct FloatingPicker<Options: RandomAccessCollection, Selection: PickableOption>: View where Options.Element == Selection {
     var options: Options
     var selection: Binding<Selection>
