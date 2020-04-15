@@ -37,8 +37,8 @@ struct SchedulingView: View, TestableView {
     private let context: SchedulingContext
     private let dateFormatter = DateFormatter().then { $0.dateFormat = Const.fieldDateFormat }
     private let timeFormatter = DateFormatter().then { $0.dateFormat = Const.fieldTimeFormat }
-    private let availableDates: [Date]
-    private let availableTimes: [Date]
+    private let availableDates = [Date](byAdding: 1, .day, from: Date() + (1, .day), times: 182)
+    private let availableTimes = [Date](byAdding: 30, .minute, from: Const.earliestStartTime, times: 22)
     private var availablePickableDates: [PickableDate] { availableDates.map(dateToPickableDate) }
     private var availablePickableTimes: [PickableDate] { availableTimes.map(timeToPickableDate) }
 
@@ -50,21 +50,6 @@ struct SchedulingView: View, TestableView {
         self.instrument = instrument
         self.state = state
         self.context = context
-
-        let availableTimes = [Date](byAdding: 30, .minute, from: Const.earliestStartTime, times: 22)
-        let todayOrTomorrow: Date = {
-            let now = Date()
-            guard
-                let latestAvailableTime = availableTimes.last,
-                let latestAvailableDateAndTime = Date(date: now, time: latestAvailableTime)
-            else {
-                return now
-            }
-            return now < latestAvailableDateAndTime ? now : now + (1, .day)
-        }()
-
-        self.availableDates = [Date](byAdding: 1, .day, from: todayOrTomorrow, times: 182)
-        self.availableTimes = availableTimes
     }
 
     var subtitle: [MultiStyleText.Part] {
