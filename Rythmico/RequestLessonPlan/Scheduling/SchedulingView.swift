@@ -117,8 +117,8 @@ struct SchedulingView: View, TestableView {
 
                         VStack(alignment: .leading, spacing: .spacingExtraSmall) {
                             Text("Please note:").rythmicoFont(.callout)
-                            Text("Monday-Friday lessons £60 per 45-60 min.").rythmicoFont(.body)
-                            Text("Weekend lessons £65 per 45-60 min.").rythmicoFont(.body)
+                            Text("Monday-Friday lessons £60 for 45-60 min.").rythmicoFont(.body)
+                            Text("Weekend lessons £65 for 45-60 min.").rythmicoFont(.body)
                         }
                     }
                     .inset(.bottom, .spacingMedium)
