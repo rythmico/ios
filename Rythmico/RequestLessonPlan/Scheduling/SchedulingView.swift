@@ -5,9 +5,20 @@ protocol SchedulingContext {
     func setSchedule(_ schedule: Schedule)
 }
 
+// TODO: refactor date logic into a manager class from
+// which to observe available dates and times, with injectable calendar.
 struct SchedulingView: View, TestableView {
+    fileprivate enum Const {
+        static let earliestStartTime = Date(timeIntervalSinceReferenceDate: 0).setting(hour: 8) // 08:00
+        static let fieldDateFormat = "EEEE d MMMM"
+        static let fieldTimeFormat = "H:mm"
+        static let pickerDateFormat = "E d MMM yyyy"
+        static let pickerTimeFormat = "H:mm"
+    }
+
     final class ViewState: ObservableObject {
         @Published var startDate: Date?
+        @Published var startTime: Date?
         @Published var duration: Duration?
     }
 
@@ -24,8 +35,12 @@ struct SchedulingView: View, TestableView {
 
     private let instrument: Instrument
     private let context: SchedulingContext
-    private let dateFormatter = DateFormatter().then { $0.dateFormat = "EEEE d MMMM" }
-    private let timeFormatter = DateFormatter().then { $0.dateFormat = "H:mm" }
+    private let dateFormatter = DateFormatter().then { $0.dateFormat = Const.fieldDateFormat }
+    private let timeFormatter = DateFormatter().then { $0.dateFormat = Const.fieldTimeFormat }
+    private let availableDates: [Date]
+    private let availableTimes: [Date]
+    private var availablePickableDates: [PickableDate] { availableDates.map(dateToPickableDate) }
+    private var availablePickableTimes: [PickableDate] { availableTimes.map(timeToPickableDate) }
 
     init(
         instrument: Instrument,
@@ -35,6 +50,21 @@ struct SchedulingView: View, TestableView {
         self.instrument = instrument
         self.state = state
         self.context = context
+
+        let availableTimes = [Date](byAdding: 30, .minute, from: Const.earliestStartTime, times: 22)
+        let todayOrTomorrow: Date = {
+            let now = Date()
+            guard
+                let latestAvailableTime = availableTimes.last,
+                let latestAvailableDateAndTime = Date(date: now, time: latestAvailableTime)
+            else {
+                return now
+            }
+            return now < latestAvailableDateAndTime ? now : now + (1, .day)
+        }()
+
+        self.availableDates = [Date](byAdding: 1, .day, from: todayOrTomorrow, times: 182)
+        self.availableTimes = availableTimes
     }
 
     var subtitle: [MultiStyleText.Part] {
@@ -42,12 +72,14 @@ struct SchedulingView: View, TestableView {
     }
 
     var startDateText: String { state.startDate.map(dateFormatter.string(from:)) ?? .empty }
-    var startTimeText: String { state.startDate.map(timeFormatter.string(from:)) ?? .empty }
-    var durationText: String { state.duration?.title ?? .empty }
+    var startTimeText: String { state.startTime.map(timeFormatter.string(from:)) ?? .empty }
+    var durationText: String { state.duration?.optionTitle ?? .empty }
 
     var nextButtonAction: Action? {
         guard
             let startDate = state.startDate,
+            let startTime = state.startTime,
+            let startDateAndTime = Date(date: startDate, time: startTime),
             let duration = state.duration
         else {
             return nil
@@ -55,7 +87,7 @@ struct SchedulingView: View, TestableView {
 
         return {
             self.context.setSchedule(
-                Schedule(startDate: startDate, duration: duration)
+                Schedule(startDate: startDateAndTime, duration: duration)
             )
         }
     }
@@ -114,23 +146,23 @@ struct SchedulingView: View, TestableView {
                     }
 
                     if editingFocus.isStartDate {
-                        FloatingDatePicker(
+                        FloatingPicker(
+                            options: availablePickableDates,
                             selection: Binding(
-                                get: { self.state.startDate ?? Date() },
-                                set: { self.state.startDate = $0 }
+                                get: { self.state.startDate.map(dateToPickableDate) ?? self.availablePickableDates[0] },
+                                set: { self.state.startDate = $0.date }
                             ),
-                            displayedComponents: [.date, .hourAndMinute],
                             doneButtonAction: { self.startDateEditingChanged(false) }
                         ).padding(.horizontal, -.spacingMedium)
                     }
 
                     if editingFocus.isStartTime {
-                        FloatingDatePicker(
+                        FloatingPicker(
+                            options: availablePickableTimes,
                             selection: Binding(
-                                get: { self.state.startDate ?? Date() },
-                                set: { self.state.startDate = $0 }
+                                get: { self.state.startTime.map(timeToPickableDate) ?? self.availablePickableTimes[0] },
+                                set: { self.state.startTime = $0.date }
                             ),
-                            displayedComponents: .hourAndMinute,
                             doneButtonAction: { self.startDateEditingChanged(false) }
                         ).padding(.horizontal, -.spacingMedium)
                     }
@@ -155,15 +187,15 @@ struct SchedulingView: View, TestableView {
         editingFocus = isEditing ? .startDate : .none
 
         if isEditing, state.startDate == nil {
-            state.startDate = Date()
+            state.startDate = availableDates[0]
         }
     }
 
     func startTimeEditingChanged(_ isEditing: Bool) {
         editingFocus = isEditing ? .startTime : .none
 
-        if isEditing, state.startDate == nil {
-            state.startDate = Date()
+        if isEditing, state.startTime == nil {
+            state.startTime = availableTimes[0]
         }
     }
 
@@ -178,6 +210,14 @@ struct SchedulingView: View, TestableView {
     func endEditingAllFields() {
         editingFocus = .none
     }
+}
+
+private func dateToPickableDate(_ date: Date) -> PickableDate {
+    PickableDate(date: date, format: SchedulingView.Const.pickerDateFormat)
+}
+
+private func timeToPickableDate(_ time: Date) -> PickableDate {
+    PickableDate(date: time, format: SchedulingView.Const.pickerTimeFormat)
 }
 
 struct SchedulingViewPreview: PreviewProvider {
