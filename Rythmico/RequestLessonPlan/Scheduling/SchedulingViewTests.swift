@@ -44,7 +44,7 @@ final class SchedulingViewTests: XCTestCase {
         let (_, state, view) = schedulingView
 
         XCTAssertView(view) { view in
-            view.startDateEditingChanged(true)
+            view.beginEditingStartDate()
 
             XCTAssertNotNil(state.startDate)
             XCTAssertNil(state.startTime)
@@ -64,7 +64,7 @@ final class SchedulingViewTests: XCTestCase {
         let (_, state, view) = schedulingView
 
         XCTAssertView(view) { view in
-            view.startTimeEditingChanged(true)
+            view.beginEditingStartTime()
 
             XCTAssertNil(state.startDate)
             XCTAssertNotNil(state.startTime)
@@ -84,7 +84,7 @@ final class SchedulingViewTests: XCTestCase {
         let (_, state, view) = schedulingView
 
         XCTAssertView(view) { view in
-            view.durationEditingChanged(true)
+            view.beginEditingDuration()
 
             XCTAssertNil(state.startDate)
             XCTAssertNil(state.startTime)
@@ -94,7 +94,7 @@ final class SchedulingViewTests: XCTestCase {
 
             XCTAssertTrue(view.startDateText.isEmpty)
             XCTAssertTrue(view.startTimeText.isEmpty)
-            XCTAssertFalse(view.durationText.isEmpty)
+            XCTAssertEqual(view.durationText, "45 minutes")
 
             XCTAssertNil(view.nextButtonAction)
         }
@@ -104,8 +104,8 @@ final class SchedulingViewTests: XCTestCase {
         let (_, _, view) = schedulingView
 
         XCTAssertView(view) { view in
-            view.startDateEditingChanged(true)
-            view.endEditingAllFields()
+            view.beginEditingStartDate()
+            view.endEditing()
             XCTAssertTrue(view.editingFocus.isNone)
         }
     }

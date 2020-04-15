@@ -117,7 +117,7 @@ struct StudentDetailsView: View, TestableView {
     var body: some View {
         TitleSubtitleContentView(title: "Student Details", subtitle: subtitle) {
             VStack(spacing: 0) {
-                ScrollView(showsIndicators: false) {
+                ScrollView {
                     VStack(alignment: .leading, spacing: .spacingLarge) {
                         TitleContentView(title: "Full Name") {
                             CustomTextField(
@@ -150,24 +150,27 @@ struct StudentDetailsView: View, TestableView {
                     }
                     .rythmicoFont(.body)
                     .accentColor(.rythmicoPurple)
-                    .inset(.bottom, .spacingMedium)
+                    .padding([.horizontal, .bottom], .spacingMedium)
                     .onBackgroundTapGesture(perform: endEditingAllFields)
                 }
                 .avoidingKeyboard()
 
                 ZStack(alignment: .bottom) {
-                    nextButtonAction.map {
-                        FloatingButton(title: "Next", action: $0).padding(.horizontal, -.spacingMedium)
+                    nextButtonAction.map { action in
+                        FloatingView {
+                            Button("Next", style: PrimaryButtonStyle(), action: action)
+                        }
                     }
 
                     if editingFocus.isDateOfBirth {
-                        FloatingDatePicker(
-                            selection: Binding(
-                                get: { self.state.dateOfBirth ?? self.dateOfBirthPlaceholder },
-                                set: { self.state.dateOfBirth = $0 }
-                            ),
-                            doneButtonAction: { self.dateOfBirthEditingChanged(false) }
-                        ).padding(.horizontal, -.spacingMedium)
+                        FloatingInputView(doneAction: { self.dateOfBirthEditingChanged(false) }) {
+                            LabelessDatePicker(
+                                selection: Binding(
+                                    get: { self.state.dateOfBirth ?? self.dateOfBirthPlaceholder },
+                                    set: { self.state.dateOfBirth = $0 }
+                                )
+                            )
+                        }
                     }
                 }
             }

@@ -18,16 +18,22 @@ struct SectionHeaderView: View {
 
 struct SectionHeaderContentView<Content: View>: View {
     var title: String
+    var padding: EdgeInsets
     var content: Content
 
-    init(title: String, @ViewBuilder content: () -> Content) {
+    init(
+        title: String,
+        padding: EdgeInsets = .zero,
+        @ViewBuilder content: () -> Content
+    ) {
         self.title = title
+        self.padding = padding
         self.content = content()
     }
 
     var body: some View {
         VStack(spacing: .spacingSmall) {
-            SectionHeaderView(title: title)
+            SectionHeaderView(title: title).padding(padding)
             content
         }
     }
