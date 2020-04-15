@@ -18,8 +18,6 @@ struct AddressDetailsView: View, TestableView {
     private let context: AddressDetailsContext
     private let keyboardDismisser: KeyboardDismisser
 
-    var didAppear: Handler<Self>?
-
     @ObservedObject var state: ViewState
     @State var isLoading = false
     @State var errorMessage: String?
@@ -63,6 +61,7 @@ struct AddressDetailsView: View, TestableView {
         }
     }
 
+    var didAppear: Handler<Self>?
     var body: some View {
         TitleSubtitleContentView(title: "Address Details", subtitle: subtitle) {
             VStack(spacing: 0) {
@@ -96,14 +95,18 @@ struct AddressDetailsView: View, TestableView {
                             }
                         }
                     }
+                    .padding(.horizontal, .spacingMedium)
+
                     state.addresses.map { addresses in
-                        SectionHeaderContentView(title: "Select Address") {
-                            ScrollView(showsIndicators: false) {
+                        SectionHeaderContentView(
+                            title: "Select Address",
+                            padding: .init(horizontal: .spacingMedium)
+                        ) {
+                            ScrollView {
                                 AddressSelectionView(
                                     addresses: addresses,
                                     selection: $state.selectedAddress
-                                )
-                                .inset(.bottom, .spacingMedium)
+                                ).padding(.horizontal, .spacingMedium)
                             }
                         }
                         .transition(
@@ -120,8 +123,10 @@ struct AddressDetailsView: View, TestableView {
                 }
                 .accentColor(.rythmicoPurple)
 
-                nextButtonAction.map {
-                    FloatingButton(title: "Next", action: $0).padding(.horizontal, -.spacingMedium)
+                nextButtonAction.map { action in
+                    FloatingView {
+                        Button("Next", style: PrimaryButtonStyle(), action: action)
+                    }
                 }
             }
             .animation(.easeInOut(duration: .durationMedium), value: state.addresses)
@@ -136,14 +141,15 @@ struct AddressDetailsView: View, TestableView {
 struct AddressDetailsViewPreview: PreviewProvider {
     static var previews: some View {
         let state = AddressDetailsView.ViewState()
-//        state.addresses = [.davidStub]
+        state.addresses = [.stub, .stub, .stub, .stub, .stub, .stub, .stub]
         return AddressDetailsView(
             student: .davidStub,
             instrument: .guitarStub,
             state: state,
             context: RequestLessonPlanContext(),
-            addressProvider: AddressProviderStub(result: .success([.stub, .stub, .stub, .stub]), delay: 1),
+            addressProvider: AddressProviderStub(result: .success([.stub, .stub, .stub, .stub, .stub, .stub, .stub]), delay: 1),
             keyboardDismisser: UIApplication.shared
-        ).environment(\.sizeCategory, .accessibilityExtraExtraLarge)
+        )
+        .environment(\.sizeCategory, .accessibilityExtraExtraLarge)
     }
 }

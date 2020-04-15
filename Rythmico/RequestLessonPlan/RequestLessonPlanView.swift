@@ -60,8 +60,7 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
                 .padding(.horizontal, .spacingSmall)
                 .animation(.easeInOut(duration: .durationShort), value: shouldShowBackButton)
 
-                StepBar(currentStepNumber, of: stepCount)
-                    .padding(.horizontal, .spacingMedium)
+                StepBar(currentStepNumber, of: stepCount).padding(.horizontal, .spacingMedium)
             }
 
             ZStack {
@@ -157,8 +156,8 @@ struct RequestLessonPlanView_Preview: PreviewProvider {
         let context = RequestLessonPlanContext()
         context.instrument = .guitarStub
         context.student = .davidStub
-        context.address = .stub
-        context.schedule = .stub
+//        context.address = .stub
+//        context.schedule = .stub
         return RequestLessonPlanView(
             context: context,
             accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
