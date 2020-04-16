@@ -13,8 +13,6 @@ struct LabelessDatePicker: View {
     }
 }
 
-// TODO: generalize components
-// - Implement FloatingViewContainer<Content: View> and helper View.floatingViewContainer function.
 struct BetterPicker<Options: RandomAccessCollection, Selection: Hashable>: View where Options.Element == Selection {
     var options: Options
     var selection: Binding<Selection>
