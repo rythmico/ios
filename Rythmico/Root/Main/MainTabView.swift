@@ -12,7 +12,8 @@ struct MainTabView: View, TestableView {
         lessonRequestView = RequestLessonPlanView(
             context: RequestLessonPlanContext(),
             accessTokenProvider: accessTokenProvider,
-            instrumentProvider: InstrumentSelectionListProviderFake()
+            instrumentProvider: InstrumentSelectionListProviderFake(),
+            keyboardDismisser: UIApplication.shared
         )
     }
 

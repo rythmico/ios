@@ -17,15 +17,18 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
     private var context: RequestLessonPlanContext
     private let accessTokenProvider: AuthenticationAccessTokenProvider
     private let instrumentProvider: InstrumentSelectionListProviderProtocol
+    private let keyboardDismisser: KeyboardDismisser
 
     init(
         context: RequestLessonPlanContext,
         accessTokenProvider: AuthenticationAccessTokenProvider,
-        instrumentProvider: InstrumentSelectionListProviderProtocol
+        instrumentProvider: InstrumentSelectionListProviderProtocol,
+        keyboardDismisser: KeyboardDismisser
     ) {
         self.context = context
         self.accessTokenProvider = accessTokenProvider
         self.instrumentProvider = instrumentProvider
+        self.keyboardDismisser = keyboardDismisser
     }
 
     let id = UUID()
@@ -36,6 +39,7 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
     }
 
     func back() {
+        keyboardDismisser.dismissKeyboard()
         context.unwindLatestStep()
     }
 
@@ -116,8 +120,7 @@ extension RequestLessonPlanView {
                 instrument: values.0,
                 state: addressDetailsViewState,
                 context: context,
-                addressProvider: AddressSearchService(accessTokenProvider: accessTokenProvider),
-                keyboardDismisser: UIApplication.shared
+                addressProvider: AddressSearchService(accessTokenProvider: accessTokenProvider)
             )
         }
     }
@@ -161,7 +164,8 @@ struct RequestLessonPlanView_Preview: PreviewProvider {
         let view = RequestLessonPlanView(
             context: context,
             accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
-            instrumentProvider: InstrumentSelectionListProviderFake()
+            instrumentProvider: InstrumentSelectionListProviderFake(),
+            keyboardDismisser: UIApplication.shared
         )
 
         view.instrumentSelectionViewState.instruments = [

@@ -16,7 +16,6 @@ struct AddressDetailsView: View, TestableView {
     private let instrument: Instrument
     private let addressProvider: AddressProviderProtocol
     private let context: AddressDetailsContext
-    private let keyboardDismisser: KeyboardDismisser
 
     @ObservedObject var state: ViewState
     @State var isLoading = false
@@ -27,15 +26,13 @@ struct AddressDetailsView: View, TestableView {
         instrument: Instrument,
         state: ViewState,
         context: AddressDetailsContext,
-        addressProvider: AddressProviderProtocol,
-        keyboardDismisser: KeyboardDismisser
+        addressProvider: AddressProviderProtocol
     ) {
         self.student = student
         self.instrument = instrument
         self.state = state
         self.context = context
         self.addressProvider = addressProvider
-        self.keyboardDismisser = keyboardDismisser
     }
 
     var subtitle: [MultiStyleText.Part] {
@@ -130,7 +127,6 @@ struct AddressDetailsView: View, TestableView {
             .animation(.rythmicoSpring(duration: .durationMedium), value: nextButtonAction != nil)
         }
         .alert(item: $errorMessage) { Alert(title: Text("Error"), message: Text($0)) }
-        .onDisappear(perform: keyboardDismisser.dismissKeyboard)
         .onAppear { self.didAppear?(self) }
     }
 }
@@ -147,8 +143,7 @@ struct AddressDetailsViewPreview: PreviewProvider {
             addressProvider: AddressProviderStub(
                 result: .success([.stub, .stub, .stub, .stub, .stub, .stub, .stub]),
                 delay: 2
-            ),
-            keyboardDismisser: UIApplication.shared
+            )
         )
         .previewDevices()
     }

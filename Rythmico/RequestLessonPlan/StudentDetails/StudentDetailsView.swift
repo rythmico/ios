@@ -179,7 +179,6 @@ struct StudentDetailsView: View, TestableView {
             .animation(.rythmicoSpring(duration: .durationShort), value: nextButtonAction != nil)
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: editingFocus)
-        .onDisappear(perform: endEditingAllFields)
         .onAppear { self.didAppear?(self) }
     }
 
