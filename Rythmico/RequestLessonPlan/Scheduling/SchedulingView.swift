@@ -39,8 +39,6 @@ struct SchedulingView: View, TestableView {
     private let timeFormatter = DateFormatter().then { $0.dateFormat = Const.fieldTimeFormat }
     private let availableDates = [Date](byAdding: 1, .day, from: Date() + (1, .day), times: 182)
     private let availableTimes = [Date](byAdding: 30, .minute, from: Const.earliestStartTime, times: 22)
-    private var availablePickableDates: [PickableDate] { availableDates.map(dateToPickableDate) }
-    private var availablePickableTimes: [PickableDate] { availableTimes.map(timeToPickableDate) }
 
     init(
         instrument: Instrument,
@@ -53,12 +51,14 @@ struct SchedulingView: View, TestableView {
     }
 
     var subtitle: [MultiStyleText.Part] {
-        "Enter when you want the " + "\(instrument.name) lessons".bold + " to commence and for how long"
+        UIScreen.main.isLarge || editingFocus.isNone
+            ? "Enter when you want the " + "\(instrument.name) lessons".bold + " to commence and for how long"
+            : .empty
     }
 
     var startDateText: String { state.startDate.map(dateFormatter.string(from:)) ?? .empty }
     var startTimeText: String { state.startTime.map(timeFormatter.string(from:)) ?? .empty }
-    var durationText: String { state.duration?.optionTitle ?? .empty }
+    var durationText: String { state.duration.map { "\($0.rawValue) minutes" } ?? .empty }
 
     var nextButtonAction: Action? {
         guard
@@ -81,7 +81,7 @@ struct SchedulingView: View, TestableView {
     var body: some View {
         TitleSubtitleContentView(title: "Lesson Schedule", subtitle: subtitle) {
             VStack(spacing: 0) {
-                ScrollView(showsIndicators: false) {
+                ScrollView {
                     VStack(alignment: .leading, spacing: .spacingLarge) {
                         TitleContentView(title: "Start Date") {
                             CustomTextField(
@@ -90,7 +90,7 @@ struct SchedulingView: View, TestableView {
                                 isEditable: false
                             )
                             .modifier(RoundedThinOutlineContainer(padded: false))
-                            .onTapGesture { self.startDateEditingChanged(true) }
+                            .onTapGesture(perform: beginEditingStartDate)
                         }
 
                         HStack(spacing: .spacingExtraSmall) {
@@ -101,7 +101,7 @@ struct SchedulingView: View, TestableView {
                                     isEditable: false
                                 )
                                 .modifier(RoundedThinOutlineContainer(padded: false))
-                                .onTapGesture { self.startTimeEditingChanged(true) }
+                                .onTapGesture(perform: beginEditingStartTime)
                             }
 
                             TitleContentView(title: "Duration") {
@@ -111,98 +111,103 @@ struct SchedulingView: View, TestableView {
                                     isEditable: false
                                 )
                                 .modifier(RoundedThinOutlineContainer(padded: false))
-                                .onTapGesture { self.durationEditingChanged(true) }
+                                .onTapGesture(perform: beginEditingDuration)
                             }
                         }
 
                         VStack(alignment: .leading, spacing: .spacingExtraSmall) {
                             Text("Please note:").rythmicoFont(.callout)
-                            Text("Monday-Friday lessons £60 per 45-60 min.").rythmicoFont(.body)
-                            Text("Weekend lessons £65 per 45-60 min.").rythmicoFont(.body)
+                            Text("Mon-Fri lessons £60 for 45-60 min.").rythmicoFont(.body)
+                            Text("Weekend lessons £65 for 45-60 min.").rythmicoFont(.body)
                         }
                     }
-                    .inset(.bottom, .spacingMedium)
-                    .onBackgroundTapGesture(perform: endEditingAllFields)
+                    .padding([.trailing, .bottom], .spacingMedium)
+                    .onBackgroundTapGesture(perform: endEditing)
                 }
+                .padding(.leading, .spacingMedium)
 
                 ZStack(alignment: .bottom) {
-                    nextButtonAction.map {
-                        FloatingButton(title: "Next", action: $0).padding(.horizontal, -.spacingMedium)
+                    nextButtonAction.map { action in
+                        FloatingView {
+                            Button("Next", style: PrimaryButtonStyle(), action: action)
+                        }
+                        .zIndex(0)
                     }
 
                     if editingFocus.isStartDate {
-                        FloatingPicker(
-                            options: availablePickableDates,
-                            selection: Binding(
-                                get: { self.state.startDate.map(dateToPickableDate) ?? self.availablePickableDates[0] },
-                                set: { self.state.startDate = $0.date }
-                            ),
-                            doneButtonAction: { self.startDateEditingChanged(false) }
-                        ).padding(.horizontal, -.spacingMedium)
+                        FloatingInputView(doneAction: endEditing) {
+                            BetterPicker(
+                                options: availableDates,
+                                selection: Binding(
+                                    get: { self.state.startDate ?? self.availableDates[0] },
+                                    set: { self.state.startDate = $0 }
+                                ),
+                                formatter: { self.dateFormatter.string(from: $0) }
+                            )
+                        }
+                        .zIndex(1)
                     }
 
                     if editingFocus.isStartTime {
-                        FloatingPicker(
-                            options: availablePickableTimes,
-                            selection: Binding(
-                                get: { self.state.startTime.map(timeToPickableDate) ?? self.availablePickableTimes[0] },
-                                set: { self.state.startTime = $0.date }
-                            ),
-                            doneButtonAction: { self.startDateEditingChanged(false) }
-                        ).padding(.horizontal, -.spacingMedium)
+                        FloatingInputView(doneAction: endEditing) {
+                            BetterPicker(
+                                options: availableTimes,
+                                selection: Binding(
+                                    get: { self.state.startTime ?? self.availableTimes[0] },
+                                    set: { self.state.startTime = $0 }
+                                ),
+                                formatter: { self.timeFormatter.string(from: $0) }
+                            )
+                        }
+                        .zIndex(1)
                     }
 
                     if editingFocus.isDuration {
-                        FloatingPicker(
-                            selection: Binding(
-                                get: { self.state.duration ?? .fortyFiveMinutes },
-                                set: { self.state.duration = $0 }
-                            ),
-                            doneButtonAction: { self.durationEditingChanged(false) }
-                        ).padding(.horizontal, -.spacingMedium)
+                        FloatingInputView(doneAction: endEditing) {
+                            BetterPicker(
+                                selection: Binding(
+                                    get: { self.state.duration ?? .fortyFiveMinutes },
+                                    set: { self.state.duration = $0 }
+                                ),
+                                formatter: { "\($0.rawValue) minutes" }
+                            )
+                        }
+                        .zIndex(1)
                     }
                 }
             }
-            .animation(.easeInOut(duration: .durationMedium), value: editingFocus)
         }
+        .animation(.rythmicoSpring(duration: .durationMedium), value: editingFocus)
         .onAppear { self.didAppear?(self) }
     }
 
-    func startDateEditingChanged(_ isEditing: Bool) {
-        editingFocus = isEditing ? .startDate : .none
+    func beginEditingStartDate() {
+        editingFocus = .startDate
 
-        if isEditing, state.startDate == nil {
+        if state.startDate == nil {
             state.startDate = availableDates[0]
         }
     }
 
-    func startTimeEditingChanged(_ isEditing: Bool) {
-        editingFocus = isEditing ? .startTime : .none
+    func beginEditingStartTime() {
+        editingFocus = .startTime
 
-        if isEditing, state.startTime == nil {
+        if state.startTime == nil {
             state.startTime = availableTimes[0]
         }
     }
 
-    func durationEditingChanged(_ isEditing: Bool) {
-        editingFocus = isEditing ? .duration : .none
+    func beginEditingDuration() {
+        editingFocus = .duration
 
-        if isEditing, state.duration == nil {
+        if state.duration == nil {
             state.duration = .fortyFiveMinutes
         }
     }
 
-    func endEditingAllFields() {
+    func endEditing() {
         editingFocus = .none
     }
-}
-
-private func dateToPickableDate(_ date: Date) -> PickableDate {
-    PickableDate(date: date, format: SchedulingView.Const.pickerDateFormat)
-}
-
-private func timeToPickableDate(_ time: Date) -> PickableDate {
-    PickableDate(date: time, format: SchedulingView.Const.pickerTimeFormat)
 }
 
 struct SchedulingViewPreview: PreviewProvider {
@@ -211,6 +216,8 @@ struct SchedulingViewPreview: PreviewProvider {
             instrument: .guitarStub,
             state: .init(),
             context: RequestLessonPlanContext()
-        ).environment(\.locale, .init(identifier: "en_GB"))
+        )
+        .environment(\.locale, .init(identifier: "en_GB"))
+        .previewDevices()
     }
 }

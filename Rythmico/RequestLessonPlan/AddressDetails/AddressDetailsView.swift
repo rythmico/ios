@@ -16,9 +16,6 @@ struct AddressDetailsView: View, TestableView {
     private let instrument: Instrument
     private let addressProvider: AddressProviderProtocol
     private let context: AddressDetailsContext
-    private let keyboardDismisser: KeyboardDismisser
-
-    var didAppear: Handler<Self>?
 
     @ObservedObject var state: ViewState
     @State var isLoading = false
@@ -29,19 +26,19 @@ struct AddressDetailsView: View, TestableView {
         instrument: Instrument,
         state: ViewState,
         context: AddressDetailsContext,
-        addressProvider: AddressProviderProtocol,
-        keyboardDismisser: KeyboardDismisser
+        addressProvider: AddressProviderProtocol
     ) {
         self.student = student
         self.instrument = instrument
         self.state = state
         self.context = context
         self.addressProvider = addressProvider
-        self.keyboardDismisser = keyboardDismisser
     }
 
     var subtitle: [MultiStyleText.Part] {
-        "Enter the address where " + student.name.firstWord?.bold + " will have the " + "\(instrument.name) lessons".bold
+        UIScreen.main.isLarge || state.addresses?.isEmpty != false
+            ? "Enter the address where " + student.name.firstWord?.bold + " will have the " + "\(instrument.name) lessons".bold
+            : .empty
     }
 
     func searchAddresses() {
@@ -63,6 +60,7 @@ struct AddressDetailsView: View, TestableView {
         }
     }
 
+    var didAppear: Handler<Self>?
     var body: some View {
         TitleSubtitleContentView(title: "Address Details", subtitle: subtitle) {
             VStack(spacing: 0) {
@@ -84,27 +82,27 @@ struct AddressDetailsView: View, TestableView {
                                     .transition(
                                         AnyTransition
                                             .scale
-                                            .combined(with: .opacity)
-                                            .animation(
-                                                Animation
-                                                    .interpolatingSpring(mass: 5, stiffness: 950, damping: 55)
-                                                    .speed(2)
-                                            )
+                                            .animation(.rythmicoSpring(duration: .durationShort, type: .damping))
                                     )
                                 }
                                 Spacer().frame(width: .spacingExtraSmall)
                             }
                         }
                     }
+                    .padding(.horizontal, .spacingMedium)
+
                     state.addresses.map { addresses in
-                        SectionHeaderContentView(title: "Select Address") {
-                            ScrollView(showsIndicators: false) {
+                        SectionHeaderContentView(
+                            title: "Select Address",
+                            padding: .init(horizontal: .spacingMedium)
+                        ) {
+                            ScrollView {
                                 AddressSelectionView(
                                     addresses: addresses,
                                     selection: $state.selectedAddress
-                                )
-                                .inset(.bottom, .spacingMedium)
+                                ).padding([.trailing, .bottom], .spacingMedium)
                             }
+                            .padding(.leading, .spacingMedium)
                         }
                         .transition(
                             AnyTransition
@@ -120,15 +118,16 @@ struct AddressDetailsView: View, TestableView {
                 }
                 .accentColor(.rythmicoPurple)
 
-                nextButtonAction.map {
-                    FloatingButton(title: "Next", action: $0).padding(.horizontal, -.spacingMedium)
+                nextButtonAction.map { action in
+                    FloatingView {
+                        Button("Next", style: PrimaryButtonStyle(), action: action)
+                    }
                 }
             }
-            .animation(.easeInOut(duration: .durationMedium), value: state.addresses)
-            .animation(.easeInOut(duration: .durationMedium), value: nextButtonAction != nil)
+            .animation(.rythmicoSpring(duration: .durationMedium), value: state.addresses)
+            .animation(.rythmicoSpring(duration: .durationMedium), value: nextButtonAction != nil)
         }
         .alert(item: $errorMessage) { Alert(title: Text("Error"), message: Text($0)) }
-        .onDisappear(perform: keyboardDismisser.dismissKeyboard)
         .onAppear { self.didAppear?(self) }
     }
 }
@@ -136,14 +135,17 @@ struct AddressDetailsView: View, TestableView {
 struct AddressDetailsViewPreview: PreviewProvider {
     static var previews: some View {
         let state = AddressDetailsView.ViewState()
-//        state.addresses = [.davidStub]
+//        state.addresses = [.stub, .stub, .stub, .stub, .stub, .stub, .stub]
         return AddressDetailsView(
             student: .davidStub,
             instrument: .guitarStub,
             state: state,
             context: RequestLessonPlanContext(),
-            addressProvider: AddressProviderStub(result: .success([.stub, .stub, .stub, .stub]), delay: 1),
-            keyboardDismisser: UIApplication.shared
-        ).environment(\.sizeCategory, .accessibilityExtraExtraLarge)
+            addressProvider: AddressProviderStub(
+                result: .success([.stub, .stub, .stub, .stub, .stub, .stub, .stub]),
+                delay: 2
+            )
+        )
+        .previewDevices()
     }
 }

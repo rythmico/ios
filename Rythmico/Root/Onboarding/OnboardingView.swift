@@ -52,7 +52,7 @@ struct OnboardingView: View, TestableView {
                 }
             }
             .padding()
-            .animation(.easeInOut(duration: .durationMedium), value: isLoading)
+            .animation(.rythmicoSpring(duration: .durationMedium), value: isLoading)
         }
         .alert(item: $errorMessage) {
             Alert(title: Text("An error ocurred"), message: Text($0))

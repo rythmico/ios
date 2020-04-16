@@ -61,7 +61,7 @@ struct RootView<AccessTokenProviderObserving>: View, TestableView where
             state.unauthenticatedValue.zIndex(1).transition(.move(edge: .leading))
             state.authenticatedValue.zIndex(2).transition(.move(edge: .trailing))
         }
-        .animation(.easeInOut(duration: .durationMedium), value: state.isAuthenticated)
+        .animation(.rythmicoSpring(duration: .durationMedium), value: state.isAuthenticated)
         .onAppear { self.didAppear?(self) }
         .onAppear(perform: onAppear)
     }
