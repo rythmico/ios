@@ -1,4 +1,4 @@
-import Foundation
+import SwiftUI
 
 {# Creates value type of the form (foo: Type1, boo: Type2) with given case #}
 {% macro associatedValueVarMultiType case %}

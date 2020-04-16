@@ -8,10 +8,10 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
     @Environment(\.betterSheetPresentationMode)
     private var presentationMode
 
-    private let instrumentSelectionViewState = InstrumentSelectionView.ViewState()
-    private let studentDetailsViewState = StudentDetailsView.ViewState()
-    private let addressDetailsViewState = AddressDetailsView.ViewState()
-    private let schedulingViewState = SchedulingView.ViewState()
+    fileprivate let instrumentSelectionViewState = InstrumentSelectionView.ViewState()
+    fileprivate let studentDetailsViewState = StudentDetailsView.ViewState()
+    fileprivate let addressDetailsViewState = AddressDetailsView.ViewState()
+    fileprivate let schedulingViewState = SchedulingView.ViewState()
 
     @ObservedObject
     private var context: RequestLessonPlanContext
@@ -58,7 +58,7 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
                 }
                 .frame(minHeight: 64)
                 .padding(.horizontal, .spacingSmall)
-                .animation(.easeInOut(duration: .durationShort), value: shouldShowBackButton)
+                .animation(.rythmicoSpring(duration: .durationShort), value: shouldShowBackButton)
 
                 StepBar(currentStepNumber, of: stepCount).padding(.horizontal, .spacingMedium)
             }
@@ -71,7 +71,7 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
                 privateNoteView.transition(pageTransition(forStepIndex: 4))
                 reviewProposalView.transition(pageTransition(forStepIndex: 5))
             }
-            .animation(.easeInOut(duration: .durationMedium), value: context.currentStep.index)
+            .animation(.rythmicoSpring(duration: .durationMedium), value: context.currentStep.index)
             .onEdgeSwipe(.left, perform: back)
         }
         .betterSheetIsModalInPresentation(shouldShowBackButton)
@@ -154,14 +154,26 @@ extension RequestLessonPlanView {
 struct RequestLessonPlanView_Preview: PreviewProvider {
     static var previews: some View {
         let context = RequestLessonPlanContext()
-        context.instrument = .guitarStub
-        context.student = .davidStub
+//        context.instrument = .guitarStub
+//        context.student = .davidStub
 //        context.address = .stub
 //        context.schedule = .stub
-        return RequestLessonPlanView(
+        let view = RequestLessonPlanView(
             context: context,
             accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
             instrumentProvider: InstrumentSelectionListProviderFake()
-        ).environment(\.locale, Locale(identifier: "en_GB"))
+        )
+
+        view.instrumentSelectionViewState.instruments = [
+            .init(name: Instrument.guitarStub.name, icon: Instrument.guitarStub.icon, action: nil)
+        ]
+
+//        view.addressDetailsViewState.addresses = [
+//            .stub, .stub, .stub, .stub, .stub, .stub, .stub, .stub
+//        ]
+
+        return view
+            .environment(\.locale, Locale(identifier: "en_GB"))
+            .previewDevices()
     }
 }

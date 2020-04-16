@@ -65,15 +65,15 @@ extension Address {
         ].filter(\.isEmpty.not).joined(separator: .newline)
     }
 
-    var singleLineFormattedString: String {
+    var condensedFormattedString: String {
         [
-            line1,
-            line2,
-            line3,
-            line4,
-            city,
-            postcode,
-            country,
-        ].filter(\.isEmpty.not).joined(separator: .comma + .whitespace)
+            [line1, line2],
+            [line3, line4],
+            [city, postcode]
+        ]
+            .map { $0.filter(\.isEmpty.not) }
+            .filter(\.isEmpty.not)
+            .map { $0.joined(separator: .comma + .whitespace) }
+            .joined(separator: .newline)
     }
 }

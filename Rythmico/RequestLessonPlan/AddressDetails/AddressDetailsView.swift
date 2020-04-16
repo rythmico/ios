@@ -39,7 +39,9 @@ struct AddressDetailsView: View, TestableView {
     }
 
     var subtitle: [MultiStyleText.Part] {
-        "Enter the address where " + student.name.firstWord?.bold + " will have the " + "\(instrument.name) lessons".bold
+        UIScreen.main.isLarge || state.addresses?.isEmpty != false
+            ? "Enter the address where " + student.name.firstWord?.bold + " will have the " + "\(instrument.name) lessons".bold
+            : .empty
     }
 
     func searchAddresses() {
@@ -83,12 +85,7 @@ struct AddressDetailsView: View, TestableView {
                                     .transition(
                                         AnyTransition
                                             .scale
-                                            .combined(with: .opacity)
-                                            .animation(
-                                                Animation
-                                                    .interpolatingSpring(mass: 5, stiffness: 950, damping: 55)
-                                                    .speed(2)
-                                            )
+                                            .animation(.rythmicoSpring(duration: .durationShort, type: .damping))
                                     )
                                 }
                                 Spacer().frame(width: .spacingExtraSmall)
@@ -106,7 +103,7 @@ struct AddressDetailsView: View, TestableView {
                                 AddressSelectionView(
                                     addresses: addresses,
                                     selection: $state.selectedAddress
-                                ).padding(.horizontal, .spacingMedium)
+                                ).padding([.horizontal, .bottom], .spacingMedium)
                             }
                         }
                         .transition(
@@ -129,8 +126,8 @@ struct AddressDetailsView: View, TestableView {
                     }
                 }
             }
-            .animation(.easeInOut(duration: .durationMedium), value: state.addresses)
-            .animation(.easeInOut(duration: .durationMedium), value: nextButtonAction != nil)
+            .animation(.rythmicoSpring(duration: .durationMedium), value: state.addresses)
+            .animation(.rythmicoSpring(duration: .durationMedium), value: nextButtonAction != nil)
         }
         .alert(item: $errorMessage) { Alert(title: Text("Error"), message: Text($0)) }
         .onDisappear(perform: keyboardDismisser.dismissKeyboard)
@@ -141,15 +138,18 @@ struct AddressDetailsView: View, TestableView {
 struct AddressDetailsViewPreview: PreviewProvider {
     static var previews: some View {
         let state = AddressDetailsView.ViewState()
-        state.addresses = [.stub, .stub, .stub, .stub, .stub, .stub, .stub]
+//        state.addresses = [.stub, .stub, .stub, .stub, .stub, .stub, .stub]
         return AddressDetailsView(
             student: .davidStub,
             instrument: .guitarStub,
             state: state,
             context: RequestLessonPlanContext(),
-            addressProvider: AddressProviderStub(result: .success([.stub, .stub, .stub, .stub, .stub, .stub, .stub]), delay: 1),
+            addressProvider: AddressProviderStub(
+                result: .success([.stub, .stub, .stub, .stub, .stub, .stub, .stub]),
+                delay: 2
+            ),
             keyboardDismisser: UIApplication.shared
         )
-        .environment(\.sizeCategory, .accessibilityExtraExtraLarge)
+        .previewDevices()
     }
 }

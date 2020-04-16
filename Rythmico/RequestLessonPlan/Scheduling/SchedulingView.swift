@@ -51,7 +51,9 @@ struct SchedulingView: View, TestableView {
     }
 
     var subtitle: [MultiStyleText.Part] {
-        "Enter when you want the " + "\(instrument.name) lessons".bold + " to commence and for how long"
+        UIScreen.main.isLarge || editingFocus.isNone
+            ? "Enter when you want the " + "\(instrument.name) lessons".bold + " to commence and for how long"
+            : .empty
     }
 
     var startDateText: String { state.startDate.map(dateFormatter.string(from:)) ?? .empty }
@@ -128,6 +130,7 @@ struct SchedulingView: View, TestableView {
                         FloatingView {
                             Button("Next", style: PrimaryButtonStyle(), action: action)
                         }
+                        .zIndex(0)
                     }
 
                     if editingFocus.isStartDate {
@@ -141,6 +144,7 @@ struct SchedulingView: View, TestableView {
                                 formatter: { self.dateFormatter.string(from: $0) }
                             )
                         }
+                        .zIndex(1)
                     }
 
                     if editingFocus.isStartTime {
@@ -154,6 +158,7 @@ struct SchedulingView: View, TestableView {
                                 formatter: { self.timeFormatter.string(from: $0) }
                             )
                         }
+                        .zIndex(1)
                     }
 
                     if editingFocus.isDuration {
@@ -166,11 +171,12 @@ struct SchedulingView: View, TestableView {
                                 formatter: { "\($0.rawValue) minutes" }
                             )
                         }
+                        .zIndex(1)
                     }
                 }
             }
-            .animation(.easeInOut(duration: .durationMedium), value: editingFocus)
         }
+        .animation(.rythmicoSpring(duration: .durationMedium), value: editingFocus)
         .onAppear { self.didAppear?(self) }
     }
 
