@@ -135,7 +135,7 @@ struct StudentDetailsView: View, TestableView {
                                 isEditable: false
                             )
                             .modifier(RoundedThinOutlineContainer(padded: false))
-                            .onTapGesture { self.dateOfBirthEditingChanged(true) }
+                            .onTapGesture(perform: beginEditingDateOfBirth)
                         }
                         TitleContentView(title: "Gender") {
                             GenderSelectionView(selection: $state.gender)
@@ -151,7 +151,7 @@ struct StudentDetailsView: View, TestableView {
                     .rythmicoFont(.body)
                     .accentColor(.rythmicoPurple)
                     .padding([.trailing, .bottom], .spacingMedium)
-                    .onBackgroundTapGesture(perform: endEditingAllFields)
+                    .onBackgroundTapGesture(perform: endEditing)
                 }
                 .padding(.leading, .spacingMedium)
                 .avoidingKeyboard()
@@ -165,7 +165,7 @@ struct StudentDetailsView: View, TestableView {
                     }
 
                     if editingFocus.isDateOfBirth {
-                        FloatingInputView(doneAction: { self.dateOfBirthEditingChanged(false) }) {
+                        FloatingInputView(doneAction: endEditing) {
                             LabelessDatePicker(
                                 selection: Binding(
                                     get: { self.state.dateOfBirth ?? self.dateOfBirthPlaceholder },
@@ -187,16 +187,16 @@ struct StudentDetailsView: View, TestableView {
         editingFocus = isEditing ? .textField : .none
     }
 
-    func dateOfBirthEditingChanged(_ isEditing: Bool) {
-        editingFocus = isEditing ? .dateOfBirth : .none
+    func beginEditingDateOfBirth() {
+        editingFocus = .dateOfBirth
 
         // set date of birth to initial value on first edit
-        if isEditing, state.dateOfBirth == nil {
+        if state.dateOfBirth == nil {
             state.dateOfBirth = dateOfBirthPlaceholder
         }
     }
 
-    func endEditingAllFields() {
+    func endEditing() {
         editingFocus = .none
     }
 }
