@@ -100,8 +100,9 @@ struct AddressDetailsView: View, TestableView {
                                 AddressSelectionView(
                                     addresses: addresses,
                                     selection: $state.selectedAddress
-                                ).padding([.horizontal, .bottom], .spacingMedium)
+                                ).padding([.trailing, .bottom], .spacingMedium)
                             }
+                            .padding(.leading, .spacingMedium)
                         }
                         .transition(
                             AnyTransition

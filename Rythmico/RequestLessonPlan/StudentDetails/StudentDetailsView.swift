@@ -150,9 +150,10 @@ struct StudentDetailsView: View, TestableView {
                     }
                     .rythmicoFont(.body)
                     .accentColor(.rythmicoPurple)
-                    .padding([.horizontal, .bottom], .spacingMedium)
+                    .padding([.trailing, .bottom], .spacingMedium)
                     .onBackgroundTapGesture(perform: endEditingAllFields)
                 }
+                .padding(.leading, .spacingMedium)
                 .avoidingKeyboard()
 
                 ZStack(alignment: .bottom) {

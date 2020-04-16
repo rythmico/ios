@@ -121,9 +121,10 @@ struct SchedulingView: View, TestableView {
                             Text("Weekend lessons £65 for 45-60 min.").rythmicoFont(.body)
                         }
                     }
-                    .padding([.horizontal, .bottom], .spacingMedium)
+                    .padding([.trailing, .bottom], .spacingMedium)
                     .onBackgroundTapGesture(perform: endEditing)
                 }
+                .padding(.leading, .spacingMedium)
 
                 ZStack(alignment: .bottom) {
                     nextButtonAction.map { action in
