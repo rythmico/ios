@@ -8,7 +8,7 @@ struct AddressSelectionView: View {
         VStack(spacing: .spacingExtraSmall) {
             ForEach(_addresses) { address in
                 HStack {
-                    Text(address.singleLineFormattedString)
+                    Text(address.condensedFormattedString)
                         .rythmicoFont(self.textStyle(for: address))
                         .foregroundColor(self.textColor(for: address))
                         .animation(.none)
@@ -16,7 +16,7 @@ struct AddressSelectionView: View {
                 }
                 .modifier(
                     self.containerModifier(for: address)
-                        .animation(.easeInOut(duration: .durationShort))
+                        .animation(.rythmicoSpring(duration: .durationShort))
                 )
                 .contentShape(Rectangle())
                 .onTapGesture { self.selection = address }

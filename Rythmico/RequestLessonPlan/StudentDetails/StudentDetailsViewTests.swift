@@ -47,42 +47,6 @@ final class StudentDetailsViewTests: XCTestCase {
         }
     }
 
-    func testEditingHidesSubtitle() {
-        let (_, keyboardDismisser, view) = studentDetailsView
-
-        XCTAssertView(view) { view in
-            view.textFieldEditingChanged(true)
-            XCTAssertTrue(view.subtitle.isEmpty)
-            view.textFieldEditingChanged(false)
-            XCTAssertFalse(view.subtitle.isEmpty)
-
-            view.dateOfBirthEditingChanged(true)
-            XCTAssertTrue(view.subtitle.isEmpty)
-            view.dateOfBirthEditingChanged(false)
-            XCTAssertFalse(view.subtitle.isEmpty)
-
-            XCTAssertEqual(keyboardDismisser.dismissKeyboardCount, 1)
-
-            view.textFieldEditingChanged(true)
-            view.dateOfBirthEditingChanged(true)
-            XCTAssertTrue(view.subtitle.isEmpty)
-            view.textFieldEditingChanged(false)
-            view.dateOfBirthEditingChanged(false)
-            XCTAssertFalse(view.subtitle.isEmpty)
-
-            XCTAssertEqual(keyboardDismisser.dismissKeyboardCount, 2)
-
-            view.dateOfBirthEditingChanged(true)
-            view.textFieldEditingChanged(true)
-            XCTAssertTrue(view.subtitle.isEmpty)
-            view.dateOfBirthEditingChanged(false)
-            view.textFieldEditingChanged(false)
-            XCTAssertFalse(view.subtitle.isEmpty)
-
-            XCTAssertEqual(keyboardDismisser.dismissKeyboardCount, 3)
-        }
-    }
-
     func testEditingName() throws {
         let (_, _, view) = studentDetailsView
 

@@ -57,7 +57,7 @@ struct StudentDetailsView: View, TestableView {
 
     // MARK: - Subtitle -
     var subtitle: [MultiStyleText.Part] {
-        editingFocus.isNone
+        UIScreen.main.isLarge || editingFocus.isNone
             ? "Enter the details of the student who will learn " + instrument.name.bold
             : .empty
     }
@@ -160,6 +160,7 @@ struct StudentDetailsView: View, TestableView {
                         FloatingView {
                             Button("Next", style: PrimaryButtonStyle(), action: action)
                         }
+                        .zIndex(0)
                     }
 
                     if editingFocus.isDateOfBirth {
@@ -171,13 +172,13 @@ struct StudentDetailsView: View, TestableView {
                                 )
                             )
                         }
+                        .zIndex(1)
                     }
                 }
             }
-            .animation(.easeInOut(duration: .durationMedium), value: editingFocus)
-            .animation(.easeInOut(duration: .durationShort), value: nextButtonAction != nil)
+            .animation(.rythmicoSpring(duration: .durationShort), value: nextButtonAction != nil)
         }
-        .animation(.easeInOut(duration: .durationMedium), value: editingFocus)
+        .animation(.rythmicoSpring(duration: .durationMedium), value: editingFocus)
         .onDisappear(perform: endEditingAllFields)
         .onAppear { self.didAppear?(self) }
     }
@@ -208,6 +209,6 @@ struct StudentDetailsView_Preview: PreviewProvider {
             state: state,
             context: RequestLessonPlanContext(),
             keyboardDismisser: UIApplication.shared
-        )
+        ).previewDevices()
     }
 }

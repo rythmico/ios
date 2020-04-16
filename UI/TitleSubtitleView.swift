@@ -39,6 +39,9 @@ struct TitleSubtitleView: View {
 
 struct TitleSubtitleView_Previews: PreviewProvider {
     static var previews: some View {
-        TitleSubtitleView(title: "Title", subtitle: "Subtitle").background(Color.blue)
+        Group {
+            TitleSubtitleView(title: "Title", subtitle: "Subtitle").background(Color.blue)
+            TitleSubtitleView(title: "Title", subtitle: []).background(Color.blue)
+        }
     }
 }

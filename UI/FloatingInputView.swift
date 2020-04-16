@@ -27,11 +27,13 @@ struct FloatingInputView<Content: View>: View {
                 .padding(.top, .spacingExtraSmall)
             }
             content
-//                .padding(.vertical, .spacingExtraSmall)
-//                .padding(.horizontal, .spacingMedium)
         }
         .background(Color.systemLightGray.edgesIgnoringSafeArea(.bottom))
-        .transition(.move(edge: .bottom))
+        .transition(
+            AnyTransition
+                .move(edge: .bottom)
+                .combined(with: .offset(y: UIApplication.shared.windows[0].safeAreaInsets.bottom)) // TODO: remove when SwiftUI respects edgesIgnoringSafeArea.
+        )
         .onAppear(perform: UIApplication.shared.dismissKeyboard)
     }
 }

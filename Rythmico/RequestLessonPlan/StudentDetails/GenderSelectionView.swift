@@ -18,7 +18,7 @@ struct GenderSelectionView: View {
                 }
                 .modifier(
                     self.containerModifier(for: gender)
-                        .animation(.easeInOut(duration: .durationShort))
+                        .animation(.rythmicoSpring(duration: .durationShort))
                 )
                 .contentShape(Rectangle())
                 .onTapGesture { self.selection = gender }
