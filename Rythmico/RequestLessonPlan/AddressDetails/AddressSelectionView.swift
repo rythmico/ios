@@ -5,21 +5,20 @@ struct AddressSelectionView: View {
     @Binding var selection: Address?
 
     var body: some View {
-        VStack(spacing: .spacingExtraSmall) {
+        VStack(alignment: .leading, spacing: .spacingExtraSmall) {
             ForEach(_addresses) { address in
-                HStack {
-                    Text(address.condensedFormattedString)
-                        .rythmicoFont(self.textStyle(for: address))
-                        .foregroundColor(self.textColor(for: address))
-                        .animation(.none)
-                    Spacer()
-                }
-                .modifier(
-                    self.containerModifier(for: address)
-                        .animation(.rythmicoSpring(duration: .durationShort))
-                )
-                .contentShape(Rectangle())
-                .onTapGesture { self.selection = address }
+                Text(address.condensedFormattedString)
+                    .rythmicoFont(self.textStyle(for: address))
+                    .foregroundColor(self.textColor(for: address))
+                    .minimumScaleFactor(0.9)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .animation(.none)
+                    .modifier(
+                        self.containerModifier(for: address)
+                            .animation(.rythmicoSpring(duration: .durationShort))
+                    )
+                    .contentShape(Rectangle())
+                    .onTapGesture { self.selection = address }
             }
         }
     }
