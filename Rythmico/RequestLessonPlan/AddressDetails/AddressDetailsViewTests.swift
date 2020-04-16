@@ -25,8 +25,7 @@ final class AddressDetailsViewTests: XCTestCase {
                 instrument: .guitarStub,
                 state: .init(),
                 context: context,
-                addressProvider: addressProvider,
-                keyboardDismisser: KeyboardDismisserSpy()
+                addressProvider: addressProvider
             )
         )
     }
