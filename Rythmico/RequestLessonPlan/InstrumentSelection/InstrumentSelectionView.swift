@@ -28,10 +28,13 @@ struct InstrumentSelectionView: View, TestableView {
     var didAppear: Handler<Self>?
     var body: some View {
         TitleSubtitleContentView(title: "Choose Instrument", subtitle: "Select one instrument") {
-            CollectionView(state.instruments, id: \.name) {
+            CollectionView(
+                state.instruments,
+                id: \.name,
+                padding: .init(top: 7, bottom: .spacingMedium)
+            ) {
                 InstrumentView(viewData: $0).padding(.horizontal, .spacingMedium)
             }
-            .padding(.horizontal, -.spacingMedium)
         }
         .onAppear { self.didAppear?(self) }
         .onAppear(perform: onAppear)

@@ -9,7 +9,8 @@ final class RequestLessonPlanViewTests: XCTestCase {
         let view = RequestLessonPlanView(
             context: context,
             accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
-            instrumentProvider: instrumentProvider
+            instrumentProvider: instrumentProvider,
+            keyboardDismisser: KeyboardDismisserSpy()
         )
         return (context, view)
     }

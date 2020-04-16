@@ -29,11 +29,19 @@ struct TitleSubtitleView: View {
                 .transition(
                     AnyTransition
                         .opacity
-                        .combined(with: .offset(y: -50)
-                    )
+                        .combined(with: .offset(y: -50))
                 )
             }
             Spacer()
+        }
+    }
+}
+
+struct TitleSubtitleView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            TitleSubtitleView(title: "Title", subtitle: "Subtitle").background(Color.blue)
+            TitleSubtitleView(title: "Title", subtitle: []).background(Color.blue)
         }
     }
 }

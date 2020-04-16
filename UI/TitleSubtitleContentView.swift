@@ -17,8 +17,16 @@ struct TitleSubtitleContentView<Content: View>: View {
 
     var body: some View {
         VStack(spacing: .spacingExtraLarge) {
-            TitleSubtitleView(title: title, subtitle: subtitle)
+            TitleSubtitleView(title: title, subtitle: subtitle).padding(.horizontal, .spacingMedium)
             content
-        }.padding(.horizontal, .spacingMedium)
+        }
+    }
+}
+
+struct TitleSubtitleContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        TitleSubtitleContentView(title: "Title", subtitle: "Subtitle") {
+            Color.red
+        }
     }
 }

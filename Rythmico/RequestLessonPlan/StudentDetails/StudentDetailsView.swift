@@ -57,7 +57,7 @@ struct StudentDetailsView: View, TestableView {
 
     // MARK: - Subtitle -
     var subtitle: [MultiStyleText.Part] {
-        editingFocus.isNone
+        UIScreen.main.isLarge || editingFocus.isNone
             ? "Enter the details of the student who will learn " + instrument.name.bold
             : .empty
     }
@@ -117,7 +117,7 @@ struct StudentDetailsView: View, TestableView {
     var body: some View {
         TitleSubtitleContentView(title: "Student Details", subtitle: subtitle) {
             VStack(spacing: 0) {
-                ScrollView(showsIndicators: false) {
+                ScrollView {
                     VStack(alignment: .leading, spacing: .spacingLarge) {
                         TitleContentView(title: "Full Name") {
                             CustomTextField(
@@ -135,7 +135,7 @@ struct StudentDetailsView: View, TestableView {
                                 isEditable: false
                             )
                             .modifier(RoundedThinOutlineContainer(padded: false))
-                            .onTapGesture { self.dateOfBirthEditingChanged(true) }
+                            .onTapGesture(perform: beginEditingDateOfBirth)
                         }
                         TitleContentView(title: "Gender") {
                             GenderSelectionView(selection: $state.gender)
@@ -150,32 +150,36 @@ struct StudentDetailsView: View, TestableView {
                     }
                     .rythmicoFont(.body)
                     .accentColor(.rythmicoPurple)
-                    .inset(.bottom, .spacingMedium)
-                    .onBackgroundTapGesture(perform: endEditingAllFields)
+                    .padding([.trailing, .bottom], .spacingMedium)
+                    .onBackgroundTapGesture(perform: endEditing)
                 }
+                .padding(.leading, .spacingMedium)
                 .avoidingKeyboard()
 
                 ZStack(alignment: .bottom) {
-                    nextButtonAction.map {
-                        FloatingButton(title: "Next", action: $0).padding(.horizontal, -.spacingMedium)
+                    nextButtonAction.map { action in
+                        FloatingView {
+                            Button("Next", style: PrimaryButtonStyle(), action: action)
+                        }
+                        .zIndex(0)
                     }
 
                     if editingFocus.isDateOfBirth {
-                        FloatingDatePicker(
-                            selection: Binding(
-                                get: { self.state.dateOfBirth ?? self.dateOfBirthPlaceholder },
-                                set: { self.state.dateOfBirth = $0 }
-                            ),
-                            doneButtonAction: { self.dateOfBirthEditingChanged(false) }
-                        ).padding(.horizontal, -.spacingMedium)
+                        FloatingInputView(doneAction: endEditing) {
+                            LabelessDatePicker(
+                                selection: Binding(
+                                    get: { self.state.dateOfBirth ?? self.dateOfBirthPlaceholder },
+                                    set: { self.state.dateOfBirth = $0 }
+                                )
+                            )
+                        }
+                        .zIndex(1)
                     }
                 }
             }
-            .animation(.easeInOut(duration: .durationMedium), value: editingFocus)
-            .animation(.easeInOut(duration: .durationShort), value: nextButtonAction != nil)
+            .animation(.rythmicoSpring(duration: .durationShort), value: nextButtonAction != nil)
         }
-        .animation(.easeInOut(duration: .durationMedium), value: editingFocus)
-        .onDisappear(perform: endEditingAllFields)
+        .animation(.rythmicoSpring(duration: .durationMedium), value: editingFocus)
         .onAppear { self.didAppear?(self) }
     }
 
@@ -183,16 +187,16 @@ struct StudentDetailsView: View, TestableView {
         editingFocus = isEditing ? .textField : .none
     }
 
-    func dateOfBirthEditingChanged(_ isEditing: Bool) {
-        editingFocus = isEditing ? .dateOfBirth : .none
+    func beginEditingDateOfBirth() {
+        editingFocus = .dateOfBirth
 
         // set date of birth to initial value on first edit
-        if isEditing, state.dateOfBirth == nil {
+        if state.dateOfBirth == nil {
             state.dateOfBirth = dateOfBirthPlaceholder
         }
     }
 
-    func endEditingAllFields() {
+    func endEditing() {
         editingFocus = .none
     }
 }
@@ -205,6 +209,6 @@ struct StudentDetailsView_Preview: PreviewProvider {
             state: state,
             context: RequestLessonPlanContext(),
             keyboardDismisser: UIApplication.shared
-        )
+        ).previewDevices()
     }
 }
