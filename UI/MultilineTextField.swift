@@ -18,6 +18,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
 
     var placeholder: String
     @Binding var text: String
+    var minHeight: CGFloat
     @Binding var calculatedHeight: CGFloat
     var onEditingChanged: (Bool) -> Void
 
@@ -65,43 +66,68 @@ private struct UITextViewWrapper: UIViewRepresentable {
             uiView.rythmicoText = self.text
         }
         uiView.font = .rythmicoFont(.body)
-        UITextViewWrapper.recalculateHeight(view: uiView, placeholder: placeholder, result: $calculatedHeight)
+        UITextViewWrapper.recalculateHeight(
+            view: uiView,
+            placeholder: placeholder,
+            minHeight: minHeight,
+            result: $calculatedHeight
+        )
     }
 
-    private static func recalculateHeight(view: UITextView, placeholder: String, result: Binding<CGFloat>) {
+    private static func recalculateHeight(view: UITextView, placeholder: String, minHeight: CGFloat, result: Binding<CGFloat>) {
         let oldText = view.text
         if view.rythmicoText.isEmpty {
             view.rythmicoText = placeholder
         }
         let newSize = view.sizeThatFits(CGSize(width: view.frame.size.width, height: CGFloat.greatestFiniteMagnitude))
+        let newHeight = max(minHeight, newSize.height)
         view.text = oldText
-        if result.wrappedValue != newSize.height {
+        if result.wrappedValue != newHeight {
             DispatchQueue.main.async {
-                result.wrappedValue = newSize.height // !! must be called asynchronously
+                result.wrappedValue = newHeight // !! must be called asynchronously
             }
         }
     }
 
     func makeCoordinator() -> Coordinator {
-        return Coordinator(placeholder: placeholder, text: $text, height: $calculatedHeight, onEditingChanged: onEditingChanged)
+        Coordinator(
+            placeholder: placeholder,
+            text: $text,
+            minHeight: minHeight,
+            height: $calculatedHeight,
+            onEditingChanged: onEditingChanged
+        )
     }
 
     final class Coordinator: NSObject, UITextViewDelegate {
         var placeholder: String
         var text: Binding<String>
+        var minHeight: CGFloat
         var calculatedHeight: Binding<CGFloat>
         var onEditingChanged: (Bool) -> Void
 
-        init(placeholder: String, text: Binding<String>, height: Binding<CGFloat>, onEditingChanged: @escaping (Bool) -> Void) {
+        init(
+            placeholder: String,
+            text: Binding<String>,
+            minHeight: CGFloat,
+            height: Binding<CGFloat>,
+            onEditingChanged: @escaping (Bool) -> Void
+        ) {
             self.placeholder = placeholder
             self.text = text
+            self.minHeight = minHeight
             self.calculatedHeight = height
             self.onEditingChanged = onEditingChanged
         }
 
         func textViewDidChange(_ uiView: UITextView) {
             text.wrappedValue = uiView.text
-            UITextViewWrapper.recalculateHeight(view: uiView, placeholder: placeholder, result: calculatedHeight)
+            UITextViewWrapper.recalculateHeight(
+                view: uiView,
+                placeholder: placeholder,
+                minHeight: minHeight,
+                result: calculatedHeight
+            )
         }
 
         func textViewDidBeginEditing(_ textView: UITextView) {
@@ -116,6 +142,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
 
 struct MultilineTextField: View {
     private var placeholder: String
+    private var minHeight: CGFloat
     private var onEditingChanged: (Bool) -> Void
 
     @Binding private var text: String
@@ -132,17 +159,29 @@ struct MultilineTextField: View {
     @State private var dynamicHeight: CGFloat = 100
     @State private var showingPlaceholder = false
 
-    init(_ placeholder: String = "", text: Binding<String>, onEditingChanged: @escaping (Bool) -> Void) {
+    init(
+        _ placeholder: String = "",
+        text: Binding<String>,
+        minHeight: CGFloat? = nil,
+        onEditingChanged: @escaping (Bool) -> Void
+    ) {
         self.placeholder = placeholder
-        self.onEditingChanged = onEditingChanged
         self._text = text
+        self.minHeight = minHeight ?? 0
+        self.onEditingChanged = onEditingChanged
         self._showingPlaceholder = State(initialValue: self.text.isEmpty)
     }
 
     var body: some View {
-        UITextViewWrapper(placeholder: placeholder, text: internalText, calculatedHeight: $dynamicHeight, onEditingChanged: onEditingChanged)
-            .frame(minHeight: dynamicHeight, maxHeight: dynamicHeight)
-            .background(placeholderView, alignment: .leading)
+        UITextViewWrapper(
+            placeholder: placeholder,
+            text: internalText,
+            minHeight: minHeight,
+            calculatedHeight: $dynamicHeight,
+            onEditingChanged: onEditingChanged
+        )
+        .frame(minHeight: dynamicHeight, maxHeight: dynamicHeight, alignment: .topLeading)
+        .background(placeholderView, alignment: .topLeading)
     }
 
     var placeholderView: some View {
@@ -151,7 +190,8 @@ struct MultilineTextField: View {
                 Text(placeholder)
                     .rythmicoFont(.body)
                     .foregroundColor(.rythmicoGray30)
-                    .padding(.horizontal, .spacingSmall)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.spacingSmall)
             }
         }
     }
