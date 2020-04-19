@@ -16,6 +16,8 @@ struct SchedulingView: View, TestableView {
         static let pickerTimeFormat = "H:mm"
     }
 
+    @Environment(\.sizeCategory) var sizeCategory: ContentSizeCategory
+
     final class ViewState: ObservableObject {
         @Published var startDate: Date?
         @Published var startTime: Date?
@@ -51,7 +53,7 @@ struct SchedulingView: View, TestableView {
     }
 
     var subtitle: [MultiStyleText.Part] {
-        UIScreen.main.isLarge || editingFocus.isNone
+        (UIScreen.main.isLarge && !sizeCategory._isAccessibilityCategory) || editingFocus.isNone
             ? "Enter when you want the " + "\(instrument.name) lessons".bold + " to commence and for how long"
             : .empty
     }
