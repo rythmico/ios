@@ -419,7 +419,6 @@
 				D54317ED23FDB00700CB1493 /* RequestLessonPlan */,
 				0336D62B241EAAF6006CFC1F /* APIRequest.swift */,
 				03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */,
-				03A3F6EB2447D3FD00F6391D /* UIScreen+Sugar.swift */,
 				D52677CB241019B60074FDEF /* Supporting Files */,
 				03341B4623ABB1E8009AE8A8 /* Preview Content */,
 			);
@@ -542,6 +541,7 @@
 				D50811E323FB72A3008103D8 /* StepBar.swift */,
 				D5C23A7B240FEF30007DED63 /* TapView.swift */,
 				D5F506642400619600CA4094 /* UIApplication+KeyboardDismisser.swift */,
+				03A3F6EB2447D3FD00F6391D /* UIScreen+Sugar.swift */,
 				03A3F6E42447B7BD00F6391D /* SwiftUIPreviews+Sugar.swift */,
 				D5147507240C8E69002EE20C /* XCTAssertView.swift */,
 			);
