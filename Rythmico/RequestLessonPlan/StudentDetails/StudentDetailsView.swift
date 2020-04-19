@@ -21,6 +21,7 @@ struct StudentDetailsView: View, TestableView {
     }
 
     @ObservedObject var state: ViewState
+    @Environment(\.sizeCategory) var sizeCategory: ContentSizeCategory
 
     enum EditingFocus: EditingFocusEnum {
         // TODO: remove with Swift 5.3
@@ -57,7 +58,7 @@ struct StudentDetailsView: View, TestableView {
 
     // MARK: - Subtitle -
     var subtitle: [MultiStyleText.Part] {
-        UIScreen.main.isLarge || editingFocus.isNone
+        (UIScreen.main.isLarge && !sizeCategory._isAccessibilityCategory) || editingFocus.isNone
             ? "Enter the details of the student who will learn " + instrument.name.bold
             : .empty
     }
