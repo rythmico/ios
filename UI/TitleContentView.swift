@@ -2,10 +2,16 @@ import SwiftUI
 
 struct TitleContentView<Content: View>: View {
     var title: [MultiStyleText.Part]
+    var style: Font.TextStyle
     var content: Content
 
-    init(title: [MultiStyleText.Part], @ViewBuilder content: () -> Content) {
+    init(
+        title: [MultiStyleText.Part],
+        style: Font.TextStyle = .callout,
+        @ViewBuilder content: () -> Content
+    ) {
         self.title = title
+        self.style = style
         self.content = content()
     }
 
@@ -15,7 +21,7 @@ struct TitleContentView<Content: View>: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: .spacingExtraSmall) {
-            MultiStyleText(style: .callout, parts: title)
+            MultiStyleText(style: style, parts: title)
             content
         }
     }
