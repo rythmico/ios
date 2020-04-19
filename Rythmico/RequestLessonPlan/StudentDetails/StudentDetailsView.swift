@@ -159,7 +159,7 @@ struct StudentDetailsView: View, TestableView {
                 ZStack(alignment: .bottom) {
                     nextButtonAction.map { action in
                         FloatingView {
-                            Button("Next", style: PrimaryButtonStyle(), action: action)
+                            Button("Next", action: action).primaryStyle()
                         }
                         .zIndex(0)
                     }

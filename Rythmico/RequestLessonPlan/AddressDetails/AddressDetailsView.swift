@@ -120,7 +120,7 @@ struct AddressDetailsView: View, TestableView {
 
                 nextButtonAction.map { action in
                     FloatingView {
-                        Button("Next", style: PrimaryButtonStyle(), action: action)
+                        Button("Next", action: action).primaryStyle()
                     }
                 }
             }

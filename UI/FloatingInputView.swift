@@ -28,7 +28,7 @@ struct FloatingInputView<Content: View>: View {
             }
             content
         }
-        .background(Color.systemLightGray.edgesIgnoringSafeArea(.bottom))
+        .background(Color.systemTooltipGray.edgesIgnoringSafeArea(.bottom))
         .transition(.move(edgeWithSafeArea: .bottom))
         .onAppear(perform: UIApplication.shared.dismissKeyboard)
     }
