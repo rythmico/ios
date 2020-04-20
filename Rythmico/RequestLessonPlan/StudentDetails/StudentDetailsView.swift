@@ -86,7 +86,7 @@ struct StudentDetailsView: View, TestableView {
 
     private var sanitizedAbout: String {
         state.about
-            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .trimmingLineCharacters(in: .whitespacesAndNewlines)
             .removingRepetitionOf(.whitespace)
             .removingRepetitionOf(.newline)
     }
