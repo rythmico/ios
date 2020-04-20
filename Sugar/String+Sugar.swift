@@ -25,6 +25,12 @@ extension String {
     public func removingRepetitionOf(_ character: Character) -> String {
         repeating(character, count: 1)
     }
+
+    public func trimmingLineCharacters(in set: CharacterSet) -> String {
+        self.split(separator: .newline)
+            .map { $0.trimmingCharacters(in: set) }
+            .joined(separator: .newline)
+    }
 }
 
 extension String {

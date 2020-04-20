@@ -21,6 +21,7 @@ struct StudentDetailsView: View, TestableView {
     }
 
     @ObservedObject var state: ViewState
+    @Environment(\.sizeCategory) var sizeCategory: ContentSizeCategory
 
     enum EditingFocus: EditingFocusEnum {
         // TODO: remove with Swift 5.3
@@ -57,7 +58,7 @@ struct StudentDetailsView: View, TestableView {
 
     // MARK: - Subtitle -
     var subtitle: [MultiStyleText.Part] {
-        UIScreen.main.isLarge || editingFocus.isNone
+        (UIScreen.main.isLarge && !sizeCategory._isAccessibilityCategory) || editingFocus.isNone
             ? "Enter the details of the student who will learn " + instrument.name.bold
             : .empty
     }
@@ -85,7 +86,7 @@ struct StudentDetailsView: View, TestableView {
 
     private var sanitizedAbout: String {
         state.about
-            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .trimmingLineCharacters(in: .whitespacesAndNewlines)
             .removingRepetitionOf(.whitespace)
             .removingRepetitionOf(.newline)
     }
@@ -159,7 +160,7 @@ struct StudentDetailsView: View, TestableView {
                 ZStack(alignment: .bottom) {
                     nextButtonAction.map { action in
                         FloatingView {
-                            Button("Next", style: PrimaryButtonStyle(), action: action)
+                            Button("Next", action: action).primaryStyle()
                         }
                         .zIndex(0)
                     }
