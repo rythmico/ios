@@ -16,6 +16,7 @@
 		0365F6F32417EE4100F452AC /* Character+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6F22417EE4100F452AC /* Character+Sugar.swift */; };
 		0365F6F52417F1E900F452AC /* AddressProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6F42417F1E900F452AC /* AddressProvider.swift */; };
 		0392A9CF244D09FF001E97AE /* ContentSizeCategory+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0392A9CE244D09FF001E97AE /* ContentSizeCategory+Sugar.swift */; };
+		0392A9D3244D184F001E97AE /* PrivateNoteViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0392A9D0244D181E001E97AE /* PrivateNoteViewTests.swift */; };
 		039C3EB52448A7CD0036959A /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039C3EB42448A7CD0036959A /* Transitions.swift */; };
 		03A094622443D8E1008B4BD6 /* EditingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */; };
 		03A3F6E32447880A00F6391D /* FloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6E22447880A00F6391D /* FloatingView.swift */; };
@@ -28,6 +29,7 @@
 		03AAF6712445E0FB002D8F5B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF6702445E0FB002D8F5B /* Schedule.swift */; };
 		03AAF6732445E11A002D8F5B /* ScheduleDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF6722445E11A002D8F5B /* ScheduleDoubles.swift */; };
 		03AAF6752445E16A002D8F5B /* SchedulingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF66D2445E03B002D8F5B /* SchedulingViewTests.swift */; };
+		03AB22F3244CB13200DAC7DF /* PrivateNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AB22F2244CB13200DAC7DF /* PrivateNoteView.swift */; };
 		03B4A32224468758004282F4 /* Date+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B4A32124468758004282F4 /* Date+Sugar.swift */; };
 		03B71324241D71B600DED025 /* Error+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B71323241D71B600DED025 /* Error+Sugar.swift */; };
 		03FA2D7B241D51BD004140DE /* APIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 03FA2D7A241D51BD004140DE /* APIKit */; };
@@ -202,6 +204,7 @@
 		0365F6F22417EE4100F452AC /* Character+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+Sugar.swift"; sourceTree = "<group>"; };
 		0365F6F42417F1E900F452AC /* AddressProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressProvider.swift; sourceTree = "<group>"; };
 		0392A9CE244D09FF001E97AE /* ContentSizeCategory+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentSizeCategory+Sugar.swift"; sourceTree = "<group>"; };
+		0392A9D0244D181E001E97AE /* PrivateNoteViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateNoteViewTests.swift; sourceTree = "<group>"; };
 		039C3EB42448A7CD0036959A /* Transitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transitions.swift; sourceTree = "<group>"; };
 		03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingCoordinator.swift; sourceTree = "<group>"; };
 		03A3F6E22447880A00F6391D /* FloatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingView.swift; sourceTree = "<group>"; };
@@ -214,6 +217,7 @@
 		03AAF66D2445E03B002D8F5B /* SchedulingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulingViewTests.swift; sourceTree = "<group>"; };
 		03AAF6702445E0FB002D8F5B /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		03AAF6722445E11A002D8F5B /* ScheduleDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDoubles.swift; sourceTree = "<group>"; };
+		03AB22F2244CB13200DAC7DF /* PrivateNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateNoteView.swift; sourceTree = "<group>"; };
 		03B4A32124468758004282F4 /* Date+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Sugar.swift"; sourceTree = "<group>"; };
 		03B71323241D71B600DED025 /* Error+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Sugar.swift"; sourceTree = "<group>"; };
 		D50668DA23B946330044E553 /* Rythmico.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rythmico.entitlements; sourceTree = "<group>"; };
@@ -447,6 +451,15 @@
 			path = AddressDetails;
 			sourceTree = "<group>";
 		};
+		0392A9D2244D1824001E97AE /* PrivateNote */ = {
+			isa = PBXGroup;
+			children = (
+				03AB22F2244CB13200DAC7DF /* PrivateNoteView.swift */,
+				0392A9D0244D181E001E97AE /* PrivateNoteViewTests.swift */,
+			);
+			path = PrivateNote;
+			sourceTree = "<group>";
+		};
 		03AAF66F2445E041002D8F5B /* Scheduling */ = {
 			isa = PBXGroup;
 			children = (
@@ -637,6 +650,7 @@
 				03B71325241D84B400DED025 /* Address */,
 				03AAF66F2445E041002D8F5B /* Scheduling */,
 				03AAF6742445E123002D8F5B /* Schedule */,
+				0392A9D2244D1824001E97AE /* PrivateNote */,
 			);
 			path = RequestLessonPlan;
 			sourceTree = "<group>";
@@ -1025,6 +1039,7 @@
 				D5F5067B2400788400CA4094 /* MultilineTextField.swift in Sources */,
 				03AAF6732445E11A002D8F5B /* ScheduleDoubles.swift in Sources */,
 				D5F5065F240055E800CA4094 /* TitleContentView.swift in Sources */,
+				03AB22F3244CB13200DAC7DF /* PrivateNoteView.swift in Sources */,
 				D5F50663240056FA00CA4094 /* RoundedThinOutlineContainer.swift in Sources */,
 				D53555C423E536AE005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
 				D53555CD23E536AE005A20EB /* AppleAuthorizationController.swift in Sources */,
@@ -1085,6 +1100,7 @@
 				D514750F240C96F0002EE20C /* XCTAssertView.swift in Sources */,
 				D5473C9F241AC3CB00D66775 /* AddressDetailsViewTests.swift in Sources */,
 				D535553623E105A5005A20EB /* OnboardingViewTests.swift in Sources */,
+				0392A9D3244D184F001E97AE /* PrivateNoteViewTests.swift in Sources */,
 				D5FD6F16240AF535008C5AD4 /* StudentDetailsViewTests.swift in Sources */,
 				D50811E623FB769D008103D8 /* RequestLessonPlanViewTests.swift in Sources */,
 				03AAF6752445E16A002D8F5B /* SchedulingViewTests.swift in Sources */,
