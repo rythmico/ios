@@ -71,7 +71,7 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
                 addressDetailsView.transition(pageTransition(forStepIndex: 2))
                 schedulingView.transition(pageTransition(forStepIndex: 3))
                 privateNoteView.transition(pageTransition(forStepIndex: 4))
-                reviewProposalView.transition(pageTransition(forStepIndex: 5))
+                reviewRequestView.transition(pageTransition(forStepIndex: 5))
             }
             .animation(.rythmicoSpring(duration: .durationMedium), value: context.currentStep.index)
             .onEdgeSwipe(.left, perform: back)
@@ -143,9 +143,9 @@ extension RequestLessonPlanView {
             : nil
     }
 
-    var reviewProposalView: ReviewProposalView? {
-        context.currentStep.reviewProposalValue.map {
-            ReviewProposalView(
+    var reviewRequestView: ReviewRequestView? {
+        context.currentStep.reviewRequestValue.map {
+            ReviewRequestView(
                 context: context,
                 instrument: $0.0,
                 student: $0.1,
