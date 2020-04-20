@@ -84,7 +84,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
         }
     }
 
-    func testReviewProposalViewPresentation() {
+    func testReviewRequestViewPresentation() {
         let (context, view) = requestLessonPlanView
 
         XCTAssertView(view) { view in
@@ -97,7 +97,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
             XCTAssertTrue(view.shouldShowBackButton)
             XCTAssertEqual(view.currentStepNumber, 6)
             XCTAssertEqual(view.stepCount, 6)
-            XCTAssertNotNil(view.reviewProposalView)
+            XCTAssertNotNil(view.reviewRequestView)
         }
     }
 
