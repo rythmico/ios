@@ -46,15 +46,6 @@ struct GenderSelectionView: View {
 }
 
 private extension Gender {
-    var name: String {
-        switch self {
-        case .male:
-            return "Male"
-        case .female:
-            return "Female"
-        }
-    }
-
     var icon: Image {
         switch self {
         case .male:
