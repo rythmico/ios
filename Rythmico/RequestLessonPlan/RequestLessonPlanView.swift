@@ -1,7 +1,6 @@
 import SwiftUI
 import Sugar
 
-typealias PrivateNoteView = AnyView
 typealias ReviewProposalView = AnyView
 
 struct RequestLessonPlanView: View, Identifiable, TestableView {
@@ -12,6 +11,7 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
     fileprivate let studentDetailsViewState = StudentDetailsView.ViewState()
     fileprivate let addressDetailsViewState = AddressDetailsView.ViewState()
     fileprivate let schedulingViewState = SchedulingView.ViewState()
+    fileprivate let privateNoteViewState = PrivateNoteView.ViewState()
 
     @ObservedObject
     private var context: RequestLessonPlanContext
@@ -138,7 +138,17 @@ extension RequestLessonPlanView {
     var privateNoteView: PrivateNoteView? {
         context.currentStep.isPrivateNote
             ? PrivateNoteView(
-                TitleSubtitleContentView(title: "Private Note", subtitle: []) {
+                state: privateNoteViewState,
+                context: context,
+                keyboardDismisser: UIApplication.shared
+            )
+            : nil
+    }
+
+    var reviewProposalView: ReviewProposalView? {
+        context.currentStep.isReviewProposal
+            ? ReviewProposalView(
+                TitleSubtitleContentView(title: "Review Proposal", subtitle: []) {
                     VStack {
                         Spacer()
                         Text("Coming next!").rythmicoFont(.body)
@@ -147,10 +157,6 @@ extension RequestLessonPlanView {
                 }
             )
             : nil
-    }
-
-    var reviewProposalView: ReviewProposalView? {
-        context.currentStep.isReviewProposal ? ReviewProposalView(EmptyView()) : nil
     }
 }
 
@@ -161,6 +167,7 @@ struct RequestLessonPlanView_Preview: PreviewProvider {
 //        context.student = .davidStub
 //        context.address = .stub
 //        context.schedule = .stub
+//        context.privateNote = "Note"
         let view = RequestLessonPlanView(
             context: context,
             accessTokenProvider: AuthenticationAccessTokenProviderDummy(),

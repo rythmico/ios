@@ -14,6 +14,9 @@ final class RequestLessonPlanContext: ObservableObject {
     @Published var schedule: Schedule? {
         willSet { previousStep = currentStep }
     }
+    @Published var privateNote: String? {
+        willSet { previousStep = currentStep }
+    }
 
     private(set) var previousStep: Step?
 }
@@ -70,7 +73,11 @@ extension RequestLessonPlanContext {
             return .scheduling(instrument)
         }
 
-        return .privateNote
+        guard let _ = privateNote else {
+            return .privateNote
+        }
+
+        return .reviewProposal
     }
 
     var direction: Direction {
@@ -81,6 +88,7 @@ extension RequestLessonPlanContext {
     }
 
     func unwindLatestStep() {
+        if privateNote.nilifyIfSome() { return }
         if schedule.nilifyIfSome() { return }
         if address.nilifyIfSome() { return }
         if student.nilifyIfSome() { return }
@@ -102,4 +110,8 @@ extension RequestLessonPlanContext: AddressDetailsContext {
 
 extension RequestLessonPlanContext: SchedulingContext {
     func setSchedule(_ schedule: Schedule) { self.schedule = schedule }
+}
+
+extension RequestLessonPlanContext: PrivateNoteContext {
+    func setPrivateNote(_ note: String) { self.privateNote = note }
 }
