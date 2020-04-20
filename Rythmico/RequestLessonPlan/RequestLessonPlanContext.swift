@@ -28,7 +28,7 @@ extension RequestLessonPlanContext {
         case addressDetails(Instrument, Student)
         case scheduling(Instrument)
         case privateNote
-        case reviewProposal
+        case reviewProposal(Instrument, Student, Address, Schedule, String)
 
         static func < (lhs: Self, rhs: Self) -> Bool {
             lhs.index < rhs.index
@@ -65,19 +65,19 @@ extension RequestLessonPlanContext {
             return .studentDetails(instrument)
         }
 
-        guard let _ = address else {
+        guard let address = address else {
             return .addressDetails(instrument, student)
         }
 
-        guard let _ = schedule else {
+        guard let schedule = schedule else {
             return .scheduling(instrument)
         }
 
-        guard let _ = privateNote else {
+        guard let privateNote = privateNote else {
             return .privateNote
         }
 
-        return .reviewProposal
+        return .reviewProposal(instrument, student, address, schedule, privateNote)
     }
 
     var direction: Direction {
