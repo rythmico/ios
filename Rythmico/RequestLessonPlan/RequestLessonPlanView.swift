@@ -1,8 +1,6 @@
 import SwiftUI
 import Sugar
 
-typealias ReviewProposalView = AnyView
-
 struct RequestLessonPlanView: View, Identifiable, TestableView {
     @Environment(\.betterSheetPresentationMode)
     private var presentationMode
@@ -146,28 +144,27 @@ extension RequestLessonPlanView {
     }
 
     var reviewProposalView: ReviewProposalView? {
-        context.currentStep.isReviewProposal
-            ? ReviewProposalView(
-                TitleSubtitleContentView(title: "Review Proposal", subtitle: []) {
-                    VStack {
-                        Spacer()
-                        Text("Coming next!").rythmicoFont(.body)
-                        Spacer()
-                    }
-                }
+        context.currentStep.reviewProposalValue.map {
+            ReviewProposalView(
+                context: context,
+                instrument: $0.0,
+                student: $0.1,
+                address: $0.2,
+                schedule: $0.3,
+                privateNote: $0.4
             )
-            : nil
+        }
     }
 }
 
 struct RequestLessonPlanView_Preview: PreviewProvider {
     static var previews: some View {
         let context = RequestLessonPlanContext()
-//        context.instrument = .guitarStub
-//        context.student = .davidStub
-//        context.address = .stub
-//        context.schedule = .stub
-//        context.privateNote = "Note"
+        context.instrument = .guitarStub
+        context.student = .davidStub
+        context.address = .stub
+        context.schedule = .stub
+        context.privateNote = "Note"
         let view = RequestLessonPlanView(
             context: context,
             accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
