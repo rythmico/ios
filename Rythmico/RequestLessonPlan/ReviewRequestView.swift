@@ -1,7 +1,7 @@
 import SwiftUI
 import Sugar
 
-struct ReviewProposalView: View, TestableView {
+struct ReviewRequestView: View, TestableView {
     private enum Const {
         static let headerPadding = EdgeInsets(bottom: .spacingUnit * 2)
         static let lineSpacing: CGFloat = .spacingUnit * 2
@@ -191,9 +191,9 @@ struct ReviewProposalView: View, TestableView {
     }
 }
 
-struct ReviewProposalView_Previews: PreviewProvider {
+struct ReviewRequestView_Previews: PreviewProvider {
     static var previews: some View {
-        ReviewProposalView(
+        ReviewRequestView(
             context: .init(),
             instrument: .guitarStub,
             student: .davidStub,
