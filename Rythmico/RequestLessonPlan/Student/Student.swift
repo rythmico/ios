@@ -10,4 +10,13 @@ struct Student: Equatable {
 enum Gender: Equatable, CaseIterable {
     case male
     case female
+
+    var name: String {
+        switch self {
+        case .male:
+            return "Male"
+        case .female:
+            return "Female"
+        }
+    }
 }
