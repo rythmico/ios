@@ -32,7 +32,7 @@ struct ReviewProposalView: View, TestableView {
 
     private var confirmButtonAction: Action {
         {
-
+            // TODO
         }
     }
 
