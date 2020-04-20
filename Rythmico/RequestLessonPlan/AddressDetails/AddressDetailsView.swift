@@ -12,6 +12,8 @@ struct AddressDetailsView: View, TestableView {
         @Published var selectedAddress: Address?
     }
 
+    @Environment(\.sizeCategory) var sizeCategory: ContentSizeCategory
+
     private let student: Student
     private let instrument: Instrument
     private let addressProvider: AddressProviderProtocol
@@ -36,7 +38,7 @@ struct AddressDetailsView: View, TestableView {
     }
 
     var subtitle: [MultiStyleText.Part] {
-        UIScreen.main.isLarge || state.addresses?.isEmpty != false
+        (UIScreen.main.isLarge && !sizeCategory._isAccessibilityCategory) || state.addresses?.isEmpty != false
             ? "Enter the address where " + student.name.firstWord?.bold + " will have the " + "\(instrument.name) lessons".bold
             : .empty
     }
@@ -120,13 +122,13 @@ struct AddressDetailsView: View, TestableView {
 
                 nextButtonAction.map { action in
                     FloatingView {
-                        Button("Next", style: PrimaryButtonStyle(), action: action)
+                        Button("Next", action: action).primaryStyle()
                     }
                 }
             }
-            .animation(.rythmicoSpring(duration: .durationMedium), value: state.addresses)
             .animation(.rythmicoSpring(duration: .durationMedium), value: nextButtonAction != nil)
         }
+        .animation(.rythmicoSpring(duration: .durationMedium), value: state.addresses)
         .alert(item: $errorMessage) { Alert(title: Text("Error"), message: Text($0)) }
         .onAppear { self.didAppear?(self) }
     }

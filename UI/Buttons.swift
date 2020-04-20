@@ -2,23 +2,23 @@ import SwiftUI
 import Sugar
 
 extension Button {
-    init<LabelModifier: ViewModifier>(
-        _ title: String,
-        style: LabelModifier,
-        action: @escaping Action
-    ) where Label == ModifiedContent<AnyView, LabelModifier> {
-        self.init(action: action) {
-            AnyView(Text(title)).modifier(style)
-        }
+    func primaryStyle() -> some View {
+        buttonStyle(PrimaryButtonStyle())
     }
 }
 
-struct PrimaryButtonStyle: ViewModifier {
-    func body(content: Content) -> some View {
-        content
+struct PrimaryButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
             .rythmicoFont(.callout)
             .foregroundColor(.rythmicoWhite)
             .frame(maxWidth: .infinity, minHeight: 48)
-            .background(Color.rythmicoPurple.cornerRadius(4))
+            .background(backgroundColor(for: configuration).cornerRadius(4))
+    }
+
+    func backgroundColor(for configuration: Configuration) -> Color {
+        configuration.isPressed
+            ? Color.rythmicoHighlightPurple
+            : Color.rythmicoPurple
     }
 }

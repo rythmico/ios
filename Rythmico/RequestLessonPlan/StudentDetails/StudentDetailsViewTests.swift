@@ -121,7 +121,7 @@ final class StudentDetailsViewTests: XCTestCase {
 
             Anyway we can help    him out a bit   with this.
 
-            Teach him how whitespaces and newlines are properly done, please.
+              Teach him how whitespaces and newlines are properly done, please.
 
 
 

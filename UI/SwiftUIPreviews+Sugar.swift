@@ -3,7 +3,7 @@ import SwiftUI
 extension PreviewDevice {
     enum Name: String, CaseIterable {
         case iphoneSE = "iPhone SE"
-        case iphone6s = "iPhone 6s"
+        case iphoneSE2 = "iPhone SE (2nd generation)"
         case iphone11Pro = "iPhone 11 Pro"
     }
 }

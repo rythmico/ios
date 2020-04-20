@@ -16,10 +16,6 @@ struct FloatingView<Content: View>: View {
                 .padding(.horizontal, .spacingMedium)
         }
         .background(Color.rythmicoBackgroundSecondary.edgesIgnoringSafeArea(.bottom))
-        .transition(
-            AnyTransition
-                .move(edge: .bottom)
-                .combined(with: .offset(y: UIApplication.shared.windows[0].safeAreaInsets.bottom)) // TODO: remove when SwiftUI respects edgesIgnoringSafeArea.
-        )
+        .transition(.move(edgeWithSafeArea: .bottom))
     }
 }
