@@ -35,8 +35,17 @@ struct BetterPicker<Options: RandomAccessCollection, Selection: Hashable>: View 
     }
 }
 
-extension BetterPicker where Selection: CaseIterable, Selection.AllCases == Options {
+protocol CasePickable {
+    associatedtype PickableCases: Collection where PickableCases.Element == Self
+    static var pickableCases: PickableCases { get }
+}
+
+extension CasePickable where Self: CaseIterable, PickableCases == AllCases {
+    static var pickableCases: PickableCases { allCases }
+}
+
+extension BetterPicker where Selection: CasePickable, Selection.PickableCases == Options {
     init(selection: Binding<Selection>, formatter: @escaping (Selection) -> String) {
-        self.init(options: Selection.allCases, selection: selection, formatter: formatter)
+        self.init(options: Selection.pickableCases, selection: selection, formatter: formatter)
     }
 }
