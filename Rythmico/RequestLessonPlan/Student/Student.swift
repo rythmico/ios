@@ -7,9 +7,9 @@ struct Student: Equatable {
     var about: String
 }
 
-enum Gender: Equatable, CaseIterable {
-    case male
-    case female
+enum Gender: String, Equatable, CaseIterable {
+    case male = "MALE"
+    case female = "FEMALE"
 
     var name: String {
         switch self {
