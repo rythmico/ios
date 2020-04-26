@@ -6,7 +6,7 @@ struct AddressSelectionView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: .spacingExtraSmall) {
-            ForEach(_addresses) { address in
+            ForEach(_addresses, id: \.hashValue) { address in
                 AddressItemView(
                     title: address.condensedFormattedString,
                     isSelected: self.selection == address
