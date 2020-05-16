@@ -1,11 +1,11 @@
 import Foundation
 
-struct Schedule: Equatable {
+struct Schedule: Equatable, Codable {
     var startDate: Date
     var duration: Duration
 }
 
-enum Duration: Int, Equatable, CasePickable, CaseIterable {
+enum Duration: Int, Equatable, Codable, CasePickable, CaseIterable {
     // NOTE: do not EVER remove any existing cases.
     // To modify picker options, instead explicitly specify
     // which cases you want to show on a picker by declaring

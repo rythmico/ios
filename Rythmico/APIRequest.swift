@@ -1,4 +1,5 @@
 import APIKit
+import Foundation
 
 protocol AuthorizedAPIRequest: Request {
     var accessToken: String { get }
@@ -18,4 +19,8 @@ extension RythmicoAPIRequest {
     #endif
 
     var pathPrefix: String { "/v1" }
+}
+
+struct RythmicoAPIError: LocalizedError, Decodable {
+    var errorDescription: String?
 }
