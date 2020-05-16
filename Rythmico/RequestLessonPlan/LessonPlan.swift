@@ -49,11 +49,11 @@ struct LessonPlan: Equatable, Decodable {
     }
 
     private enum CodingKeys: String, CodingKey {
+        case status
         case instrument
         case student
         case address
         case schedule
         case privateNote
-        case status
     }
 }
