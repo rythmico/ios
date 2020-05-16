@@ -2,10 +2,10 @@ import Foundation
 import Sugar
 
 final class AddressProviderStub: AddressProviderProtocol {
-    var result: SimpleResult<[Address]>
+    var result: SimpleResult<[AddressDetails]>
     var delay: TimeInterval?
 
-    init(result: SimpleResult<[Address]>, delay: TimeInterval? = nil) {
+    init(result: SimpleResult<[AddressDetails]>, delay: TimeInterval? = nil) {
         self.result = result
         self.delay = delay
     }
@@ -22,12 +22,12 @@ final class AddressProviderStub: AddressProviderProtocol {
 }
 
 final class AddressProviderSpy: AddressProviderProtocol {
-    var result: SimpleResult<[Address]>
+    var result: SimpleResult<[AddressDetails]>
 
     private(set) var latestPostcode: String?
     private(set) var searchCount = 0
 
-    init(result: SimpleResult<[Address]>) {
+    init(result: SimpleResult<[AddressDetails]>) {
         self.result = result
     }
 
