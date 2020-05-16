@@ -1,8 +1,8 @@
 import Foundation
 
-extension Address {
-    static var stub: Address {
-        Address(
+extension AddressDetails {
+    static var stub: AddressDetails {
+        AddressDetails(
             latitude: 0,
             longitude: 0,
             line1: "Apartment 30",

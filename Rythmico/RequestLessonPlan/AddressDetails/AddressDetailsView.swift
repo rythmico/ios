@@ -2,14 +2,14 @@ import SwiftUI
 import Sugar
 
 protocol AddressDetailsContext {
-    func setAddress(_ address: Address)
+    func setAddress(_ address: AddressDetails)
 }
 
 struct AddressDetailsView: View, TestableView {
     final class ViewState: ObservableObject {
         @Published var postcode = String()
-        @Published var addresses: [Address]?
-        @Published var selectedAddress: Address?
+        @Published var addresses: [AddressDetails]?
+        @Published var selectedAddress: AddressDetails?
     }
 
     @Environment(\.sizeCategory) var sizeCategory: ContentSizeCategory
