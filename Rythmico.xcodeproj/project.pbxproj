@@ -30,9 +30,9 @@
 		03AAF6732445E11A002D8F5B /* ScheduleDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF6722445E11A002D8F5B /* ScheduleDoubles.swift */; };
 		03AAF6752445E16A002D8F5B /* SchedulingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF66D2445E03B002D8F5B /* SchedulingViewTests.swift */; };
 		03AB22F3244CB13200DAC7DF /* PrivateNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AB22F2244CB13200DAC7DF /* PrivateNoteView.swift */; };
+		03B19837247053F5005529EB /* APIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 03B19836247053F5005529EB /* APIKit */; };
 		03B4A32224468758004282F4 /* Date+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B4A32124468758004282F4 /* Date+Sugar.swift */; };
 		03B71324241D71B600DED025 /* Error+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B71323241D71B600DED025 /* Error+Sugar.swift */; };
-		03FA2D7B241D51BD004140DE /* APIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 03FA2D7A241D51BD004140DE /* APIKit */; };
 		03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE818F244E169200C5C184 /* ReviewRequestView.swift */; };
 		03FE8192244E204900C5C184 /* AddressItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE8191244E204900C5C184 /* AddressItemView.swift */; };
 		D50811E423FB72A3008103D8 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E323FB72A3008103D8 /* StepBar.swift */; };
@@ -377,7 +377,7 @@
 				D53555E323E53704005A20EB /* GoogleUtilities.framework in Frameworks */,
 				D53555E423E53704005A20EB /* GTMSessionFetcher.framework in Frameworks */,
 				D53555E523E53704005A20EB /* nanopb.framework in Frameworks */,
-				03FA2D7B241D51BD004140DE /* APIKit in Frameworks */,
+				03B19837247053F5005529EB /* APIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,7 +793,7 @@
 				D535554B23E23EA7005A20EB /* Then */,
 				D5AAF7CA23ED850E00E410F2 /* BetterSheet */,
 				D5F5066D24006CDD00CA4094 /* KeyboardObserver */,
-				03FA2D7A241D51BD004140DE /* APIKit */,
+				03B19836247053F5005529EB /* APIKit */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -877,7 +877,7 @@
 				D5AAF7C923ED850E00E410F2 /* XCRemoteSwiftPackageReference "BetterSheet" */,
 				D5F5066C24006CDD00CA4094 /* XCRemoteSwiftPackageReference "KeyboardObserver" */,
 				D514750B240C90DE002EE20C /* XCRemoteSwiftPackageReference "ViewInspector" */,
-				03FA2D79241D51BD004140DE /* XCRemoteSwiftPackageReference "APIKit" */,
+				03B19835247053F5005529EB /* XCRemoteSwiftPackageReference "APIKit" */,
 			);
 			productRefGroup = 03341B3C23ABB1E7009AE8A8 /* Products */;
 			projectDirPath = "";
@@ -1479,7 +1479,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		03FA2D79241D51BD004140DE /* XCRemoteSwiftPackageReference "APIKit" */ = {
+		03B19835247053F5005529EB /* XCRemoteSwiftPackageReference "APIKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/davdroman/APIKit";
 			requirement = {
@@ -1538,9 +1538,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		03FA2D7A241D51BD004140DE /* APIKit */ = {
+		03B19836247053F5005529EB /* APIKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 03FA2D79241D51BD004140DE /* XCRemoteSwiftPackageReference "APIKit" */;
+			package = 03B19835247053F5005529EB /* XCRemoteSwiftPackageReference "APIKit" */;
 			productName = APIKit;
 		};
 		D514750C240C90DE002EE20C /* ViewInspector */ = {
