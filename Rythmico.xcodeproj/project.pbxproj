@@ -43,6 +43,10 @@
 		03B1984B2471B098005529EB /* FirebaseMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B1984A2471B098005529EB /* FirebaseMessaging.framework */; };
 		03B1984E2471B9AA005529EB /* AppDelegate+Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984D2471B9AA005529EB /* AppDelegate+Window.swift */; };
 		03B198502471B9F7005529EB /* AppDelegate+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984F2471B9F7005529EB /* AppDelegate+Appearance.swift */; };
+		03B198542471BBE8005529EB /* AppDelegate+PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198532471BBE8005529EB /* AppDelegate+PushNotifications.swift */; };
+		03B198562471BD6C005529EB /* PushNotificationAuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198552471BD6C005529EB /* PushNotificationAuthorizationManager.swift */; };
+		03B198582471BD82005529EB /* RequestLessonPlanConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198572471BD82005529EB /* RequestLessonPlanConfirmationView.swift */; };
+		03B1985A2471C325005529EB /* PushNotificationAuthorizationManagerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198592471C325005529EB /* PushNotificationAuthorizationManagerDoubles.swift */; };
 		03B4A32224468758004282F4 /* Date+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B4A32124468758004282F4 /* Date+Sugar.swift */; };
 		03B71324241D71B600DED025 /* Error+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B71323241D71B600DED025 /* Error+Sugar.swift */; };
 		03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE818F244E169200C5C184 /* ReviewRequestView.swift */; };
@@ -244,6 +248,10 @@
 		03B1984A2471B098005529EB /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseMessaging.framework; path = Carthage/Build/iOS/FirebaseMessaging.framework; sourceTree = "<group>"; };
 		03B1984D2471B9AA005529EB /* AppDelegate+Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Window.swift"; sourceTree = "<group>"; };
 		03B1984F2471B9F7005529EB /* AppDelegate+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Appearance.swift"; sourceTree = "<group>"; };
+		03B198532471BBE8005529EB /* AppDelegate+PushNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+PushNotifications.swift"; sourceTree = "<group>"; };
+		03B198552471BD6C005529EB /* PushNotificationAuthorizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationAuthorizationManager.swift; sourceTree = "<group>"; };
+		03B198572471BD82005529EB /* RequestLessonPlanConfirmationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanConfirmationView.swift; sourceTree = "<group>"; };
+		03B198592471C325005529EB /* PushNotificationAuthorizationManagerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationAuthorizationManagerDoubles.swift; sourceTree = "<group>"; };
 		03B4A32124468758004282F4 /* Date+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Sugar.swift"; sourceTree = "<group>"; };
 		03B71323241D71B600DED025 /* Error+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Sugar.swift"; sourceTree = "<group>"; };
 		03FE818F244E169200C5C184 /* ReviewRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestView.swift; sourceTree = "<group>"; };
@@ -454,6 +462,8 @@
 				D54317ED23FDB00700CB1493 /* RequestLessonPlan */,
 				0336D62B241EAAF6006CFC1F /* APIRequest.swift */,
 				03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */,
+				03B198552471BD6C005529EB /* PushNotificationAuthorizationManager.swift */,
+				03B198592471C325005529EB /* PushNotificationAuthorizationManagerDoubles.swift */,
 				D52677CB241019B60074FDEF /* Supporting Files */,
 				03341B4623ABB1E8009AE8A8 /* Preview Content */,
 			);
@@ -682,6 +692,7 @@
 				03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */,
 				D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */,
 				03B1984424719105005529EB /* RequestLessonPlanLoadingView.swift */,
+				03B198572471BD82005529EB /* RequestLessonPlanConfirmationView.swift */,
 				D54317EE23FDB01700CB1493 /* InstrumentSelection */,
 				D54317EF23FDB02600CB1493 /* Instrument */,
 				D5F506B12405B5AA00CA4094 /* StudentDetails */,
@@ -785,6 +796,7 @@
 				D54A561623CD577800BC8485 /* main.swift */,
 				03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */,
 				03B1984F2471B9F7005529EB /* AppDelegate+Appearance.swift */,
+				03B198532471BBE8005529EB /* AppDelegate+PushNotifications.swift */,
 				03B1984D2471B9AA005529EB /* AppDelegate+Window.swift */,
 				D5C23A75240F0186007DED63 /* TestDelegate.swift */,
 				D535554D23E38763005A20EB /* Window.swift */,
@@ -1068,6 +1080,7 @@
 				D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */,
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
 				D53555CE23E536AE005A20EB /* AppleAuthorizationControllerDoubles.swift in Sources */,
+				03B198542471BBE8005529EB /* AppDelegate+PushNotifications.swift in Sources */,
 				D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */,
 				D5C23A7C240FEF30007DED63 /* TapView.swift in Sources */,
 				D5F506652400619600CA4094 /* UIApplication+KeyboardDismisser.swift in Sources */,
@@ -1078,6 +1091,7 @@
 				03A3F6EC2447D3FD00F6391D /* UIScreen+Sugar.swift in Sources */,
 				D53555C523E536AE005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
 				D53555C823E536AE005A20EB /* AppleAuthorizationResponse.swift in Sources */,
+				03B198582471BD82005529EB /* RequestLessonPlanConfirmationView.swift in Sources */,
 				D5147508240C8E69002EE20C /* TestableView.swift in Sources */,
 				D5E04B1923BED80700A161BB /* Fonts.swift in Sources */,
 				D5B57A6724147F5100BE9B4F /* EnumProperties.generated.swift in Sources */,
@@ -1086,6 +1100,7 @@
 				D5F506B02405A6A900CA4094 /* Duration.swift in Sources */,
 				D5AAF7D923F9EB1200E410F2 /* InstrumentSelectionListProviderDoubles.swift in Sources */,
 				0365F6F52417F1E900F452AC /* AddressProvider.swift in Sources */,
+				03B198562471BD6C005529EB /* PushNotificationAuthorizationManager.swift in Sources */,
 				D5F5067B2400788400CA4094 /* MultilineTextField.swift in Sources */,
 				03AAF6732445E11A002D8F5B /* ScheduleDoubles.swift in Sources */,
 				D5F5065F240055E800CA4094 /* TitleContentView.swift in Sources */,
@@ -1111,6 +1126,7 @@
 				D5B57A6B2419B95D00BE9B4F /* AddressProviderDoubles.swift in Sources */,
 				0365F6F02417E79000F452AC /* Address.swift in Sources */,
 				D5F506BA240637F400CA4094 /* Buttons.swift in Sources */,
+				03B1985A2471C325005529EB /* PushNotificationAuthorizationManagerDoubles.swift in Sources */,
 				D53555CC23E536AE005A20EB /* AppleAuthorizationServiceDoubles.swift in Sources */,
 				D5F506BE2406E49A00CA4094 /* EdgeSwipeView.swift in Sources */,
 				D5AAF7DB23FB347C00E410F2 /* CollectionView.swift in Sources */,

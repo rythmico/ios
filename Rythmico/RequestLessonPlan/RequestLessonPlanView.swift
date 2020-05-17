@@ -2,20 +2,22 @@ import SwiftUI
 import Sugar
 
 typealias RequestLessonPlanFailureView = Alert
-typealias RequestLessonPlanConfirmationView = AnyView // TODO
 
 struct RequestLessonPlanView: View, Identifiable, TestableView {
     @ObservedObject
     private var coordinator: RequestLessonPlanCoordinator
-    private let context: RequestLessonPlanContext
+    @ObservedObject
+    private var context: RequestLessonPlanContext
     private let _formView: RequestLessonPlanFormView
+    private let notificationsAuthorizationManager: PushNotificationAuthorizationManagerProtocol
 
     init(
         coordinator: RequestLessonPlanCoordinator,
         context: RequestLessonPlanContext,
         accessTokenProvider: AuthenticationAccessTokenProvider,
         instrumentProvider: InstrumentSelectionListProviderProtocol,
-        keyboardDismisser: KeyboardDismisser
+        keyboardDismisser: KeyboardDismisser,
+        notificationsAuthorizationManager: PushNotificationAuthorizationManagerProtocol
     ) {
         self.coordinator = coordinator
         self.context = context
@@ -26,6 +28,7 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
             instrumentProvider: instrumentProvider,
             keyboardDismisser: keyboardDismisser
         )
+        self.notificationsAuthorizationManager = notificationsAuthorizationManager
     }
 
     let id = UUID()
@@ -72,8 +75,11 @@ extension RequestLessonPlanView {
     }
 
     var confirmationView: RequestLessonPlanConfirmationView? {
-        coordinator.state.successValue.map { _ in
-            RequestLessonPlanConfirmationView(Text("Success"))
+        coordinator.state.successValue.map {
+            RequestLessonPlanConfirmationView(
+                lessonPlan: $0,
+                notificationsAuthorizationManager: notificationsAuthorizationManager
+            )
         }
     }
 }
@@ -95,7 +101,11 @@ struct RequestLessonPlanView_Preview: PreviewProvider {
             context: context,
             accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
             instrumentProvider: InstrumentSelectionListProviderFake(),
-            keyboardDismisser: UIApplication.shared
+            keyboardDismisser: UIApplication.shared,
+            notificationsAuthorizationManager: PushNotificationAuthorizationManagerStub(
+                authorizationStatus: .notDetermined,
+                requestAuthorizationResult: .success(true)
+            )
         )
 
         return view

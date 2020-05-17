@@ -16,7 +16,10 @@ struct MainTabView: View, TestableView {
             context: RequestLessonPlanContext(),
             accessTokenProvider: accessTokenProvider,
             instrumentProvider: InstrumentSelectionListProviderFake(),
-            keyboardDismisser: UIApplication.shared
+            keyboardDismisser: UIApplication.shared,
+            notificationsAuthorizationManager: PushNotificationAuthorizationManager(
+                center: .current()
+            )
         )
     }
 
