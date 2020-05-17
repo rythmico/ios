@@ -37,18 +37,21 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
 
     var body: some View {
         ZStack {
-            formView.transition(stateTransition).alert(item: errorMessageBinding) {
+            formView.transition(stateTransition(scale: 0.9)).alert(item: errorMessageBinding) {
                 RequestLessonPlanFailureView(title: Text("An error ocurred"), message: Text($0))
             }
-            loadingView.transition(stateTransition)
-            confirmationView.transition(stateTransition)
+            loadingView.transition(stateTransition(scale: 0.7))
+            confirmationView.transition(stateTransition(scale: 0.7))
         }
         .betterSheetIsModalInPresentation(!swipeDownToDismissEnabled)
         .onAppear { self.didAppear?(self) }
     }
 
-    var stateTransition: AnyTransition {
-        AnyTransition.opacity.animation(.rythmicoSpring(duration: .durationMedium))
+    func stateTransition(scale: CGFloat) -> AnyTransition {
+        AnyTransition
+            .opacity
+            .combined(with: .scale(scale: scale))
+            .animation(.rythmicoSpring(duration: .durationShort))
     }
 
     var errorMessageBinding: Binding<String?> {
