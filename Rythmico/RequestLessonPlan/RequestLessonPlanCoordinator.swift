@@ -6,19 +6,6 @@ enum RequestLessonPlanCoordinatorState {
     case loading
     case failure(Error)
     case success(LessonPlan)
-
-    var index: Int {
-        switch self {
-        case .idle:
-            return 0
-        case .loading:
-            return 1
-        case .failure:
-            return 2
-        case .success:
-            return 3
-        }
-    }
 }
 
 final class RequestLessonPlanCoordinator: ObservableObject {
