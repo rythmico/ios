@@ -18,6 +18,7 @@ struct MainTabView: View, TestableView {
             instrumentProvider: InstrumentSelectionListProviderFake(),
             keyboardDismisser: UIApplication.shared,
             notificationsAuthorizationManager: PushNotificationAuthorizationManager(
+                application: .shared,
                 center: .current()
             )
         )

@@ -1,3 +1,4 @@
+import UIKit
 import UserNotifications
 import Sugar
 
@@ -16,9 +17,11 @@ protocol PushNotificationAuthorizationManagerProtocol {
 }
 
 final class PushNotificationAuthorizationManager: PushNotificationAuthorizationManagerProtocol {
+    private let application: UIApplication
     private let center: UNUserNotificationCenter
 
-    init(center: UNUserNotificationCenter) {
+    init(application: UIApplication, center: UNUserNotificationCenter) {
+        self.application = application
         self.center = center
     }
 
@@ -39,10 +42,15 @@ final class PushNotificationAuthorizationManager: PushNotificationAuthorizationM
 
     func requestAuthorization(completion: @escaping RequestCompletionHandler) {
         center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            if let error = error {
-                completion(.failure(error))
-            } else {
-                completion(.success(granted))
+            DispatchQueue.main.async {
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    if granted {
+                        self.application.registerForRemoteNotifications()
+                    }
+                    completion(.success(granted))
+                }
             }
         }
     }

@@ -1,10 +1,15 @@
 import UIKit
 import FirebaseMessaging
 
-extension AppDelegate: MessagingDelegate {
-    func configurePushNotifications() {
+extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
+    func configurePushNotifications(for application: UIApplication) {
         Messaging.messaging().delegate = self
+        UNUserNotificationCenter.current().delegate = self
+        application.registerForRemoteNotifications()
+    }
 
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        application.registerForRemoteNotifications()
     }
 
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
