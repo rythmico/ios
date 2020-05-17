@@ -10,6 +10,9 @@ struct MainTabView: View, TestableView {
 
     func presentRequestLessonFlow() {
         lessonRequestView = RequestLessonPlanView(
+            coordinator: RequestLessonPlanCoordinator(
+                service: RequestLessonPlanService(accessTokenProvider: accessTokenProvider)
+            ),
             context: RequestLessonPlanContext(),
             accessTokenProvider: accessTokenProvider,
             instrumentProvider: InstrumentSelectionListProviderFake(),

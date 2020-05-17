@@ -2,12 +2,13 @@ import XCTest
 @testable import Rythmico
 import struct SwiftUI.Image
 
-final class RequestLessonPlanViewTests: XCTestCase {
-    var requestLessonPlanView: (RequestLessonPlanContext, RequestLessonPlanView) {
+final class RequestLessonPlanFormViewTests: XCTestCase {
+    var requestLessonPlanView: (RequestLessonPlanContext, RequestLessonPlanFormView) {
         let context = RequestLessonPlanContext()
         let instrumentProvider = InstrumentSelectionListProviderStub(instruments: [.guitarStub, .pianoStub])
-        let view = RequestLessonPlanView(
+        let view = RequestLessonPlanFormView(
             context: context,
+            coordinator: RequestLessonPlanCoordinator(service: RequestLessonPlanServiceDummy()),
             accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
             instrumentProvider: instrumentProvider,
             keyboardDismisser: KeyboardDismisserSpy()

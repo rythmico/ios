@@ -7,6 +7,7 @@ struct ReviewRequestView: View, TestableView {
         static let lineSpacing: CGFloat = .spacingUnit * 2
     }
 
+    private let coordinator: RequestLessonPlanCoordinator
     private let context: RequestLessonPlanContext
     private let instrument: Instrument
     private let student: Student
@@ -15,6 +16,7 @@ struct ReviewRequestView: View, TestableView {
     private let privateNote: String
 
     init(
+        coordinator: RequestLessonPlanCoordinator,
         context: RequestLessonPlanContext,
         instrument: Instrument,
         student: Student,
@@ -22,6 +24,7 @@ struct ReviewRequestView: View, TestableView {
         schedule: Schedule,
         privateNote: String
     ) {
+        self.coordinator = coordinator
         self.context = context
         self.instrument = instrument
         self.student = student
@@ -32,7 +35,15 @@ struct ReviewRequestView: View, TestableView {
 
     private var confirmButtonAction: Action {
         {
-            // TODO
+            self.coordinator.requestLessonPlan(
+                RequestLessonPlanBody(
+                    instrument: self.instrument,
+                    student: self.student,
+                    address: self.address,
+                    schedule: self.schedule,
+                    privateNote: self.privateNote
+                )
+            )
         }
     }
 
@@ -194,6 +205,9 @@ struct ReviewRequestView: View, TestableView {
 struct ReviewRequestView_Previews: PreviewProvider {
     static var previews: some View {
         ReviewRequestView(
+            coordinator: RequestLessonPlanCoordinator(
+                service: RequestLessonPlanServiceDummy()
+            ),
             context: .init(),
             instrument: .guitarStub,
             student: .davidStub,
