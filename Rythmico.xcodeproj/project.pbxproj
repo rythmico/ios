@@ -40,6 +40,7 @@
 		03B1984124717AE8005529EB /* AddressDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984024717AE8005529EB /* AddressDoubles.swift */; };
 		03B19843247181B3005529EB /* RequestLessonPlanFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */; };
 		03B1984524719105005529EB /* RequestLessonPlanLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984424719105005529EB /* RequestLessonPlanLoadingView.swift */; };
+		03B1984B2471B098005529EB /* FirebaseMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B1984A2471B098005529EB /* FirebaseMessaging.framework */; };
 		03B4A32224468758004282F4 /* Date+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B4A32124468758004282F4 /* Date+Sugar.swift */; };
 		03B71324241D71B600DED025 /* Error+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B71323241D71B600DED025 /* Error+Sugar.swift */; };
 		03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE818F244E169200C5C184 /* ReviewRequestView.swift */; };
@@ -238,6 +239,7 @@
 		03B1984024717AE8005529EB /* AddressDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDoubles.swift; sourceTree = "<group>"; };
 		03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanFormView.swift; sourceTree = "<group>"; };
 		03B1984424719105005529EB /* RequestLessonPlanLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanLoadingView.swift; sourceTree = "<group>"; };
+		03B1984A2471B098005529EB /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseMessaging.framework; path = Carthage/Build/iOS/FirebaseMessaging.framework; sourceTree = "<group>"; };
 		03B4A32124468758004282F4 /* Date+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Sugar.swift"; sourceTree = "<group>"; };
 		03B71323241D71B600DED025 /* Error+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Sugar.swift"; sourceTree = "<group>"; };
 		03FE818F244E169200C5C184 /* ReviewRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestView.swift; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 				D53555DF23E53704005A20EB /* FirebaseInstanceID.framework in Frameworks */,
 				D53555E023E53704005A20EB /* GoogleAppMeasurement.framework in Frameworks */,
 				D53555E123E53704005A20EB /* GoogleDataTransport.framework in Frameworks */,
+				03B1984B2471B098005529EB /* FirebaseMessaging.framework in Frameworks */,
 				D53555E223E53704005A20EB /* GoogleDataTransportCCTSupport.framework in Frameworks */,
 				D53555E323E53704005A20EB /* GoogleUtilities.framework in Frameworks */,
 				D53555E423E53704005A20EB /* GTMSessionFetcher.framework in Frameworks */,
@@ -524,26 +527,27 @@
 		D509896423B963B700C19300 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D535556123E4F8BE005A20EB /* FirebaseABTesting.framework */,
-				D535556423E4F8BF005A20EB /* FirebaseCrashlytics.framework */,
-				D535555F23E4F8BE005A20EB /* FirebaseInstallations.framework */,
-				D535556523E4F8BF005A20EB /* FirebasePerformance.framework */,
-				D535556223E4F8BE005A20EB /* FirebaseRemoteConfig.framework */,
-				D535555E23E4F8BE005A20EB /* GoogleToolboxForMac.framework */,
-				D535556323E4F8BF005A20EB /* PromisesObjC.framework */,
-				D535556023E4F8BE005A20EB /* Protobuf.framework */,
 				D509896C23B963B700C19300 /* FIRAnalyticsConnector.framework */,
+				D535556123E4F8BE005A20EB /* FirebaseABTesting.framework */,
 				D509896B23B963B700C19300 /* FirebaseAnalytics.framework */,
 				D509896523B963B700C19300 /* FirebaseAuth.framework */,
 				D509896F23B963B700C19300 /* FirebaseCore.framework */,
 				D509896E23B963B700C19300 /* FirebaseCoreDiagnostics.framework */,
+				D535556423E4F8BF005A20EB /* FirebaseCrashlytics.framework */,
+				D535555F23E4F8BE005A20EB /* FirebaseInstallations.framework */,
 				D509896823B963B700C19300 /* FirebaseInstanceID.framework */,
+				03B1984A2471B098005529EB /* FirebaseMessaging.framework */,
+				D535556523E4F8BF005A20EB /* FirebasePerformance.framework */,
+				D535556223E4F8BE005A20EB /* FirebaseRemoteConfig.framework */,
 				D509896D23B963B700C19300 /* GoogleAppMeasurement.framework */,
 				D509896623B963B700C19300 /* GoogleDataTransport.framework */,
 				D509897023B963B700C19300 /* GoogleDataTransportCCTSupport.framework */,
+				D535555E23E4F8BE005A20EB /* GoogleToolboxForMac.framework */,
 				D509896A23B963B700C19300 /* GoogleUtilities.framework */,
 				D509896723B963B700C19300 /* GTMSessionFetcher.framework */,
 				D509897123B963B700C19300 /* nanopb.framework */,
+				D535556323E4F8BF005A20EB /* PromisesObjC.framework */,
+				D535556023E4F8BE005A20EB /* Protobuf.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
