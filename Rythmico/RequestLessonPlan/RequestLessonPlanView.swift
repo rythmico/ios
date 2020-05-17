@@ -1,7 +1,6 @@
 import SwiftUI
 import Sugar
 
-typealias RequestLessonPlanLoadingView = AnyView // TODO
 typealias RequestLessonPlanFailureView = Alert
 typealias RequestLessonPlanConfirmationView = AnyView // TODO
 
@@ -66,7 +65,7 @@ extension RequestLessonPlanView {
     }
 
     var loadingView: RequestLessonPlanLoadingView? {
-        coordinator.state.isLoading ? RequestLessonPlanLoadingView(Text("Loading")) : nil
+        coordinator.state.isLoading ? RequestLessonPlanLoadingView() : nil
     }
 
     var confirmationView: RequestLessonPlanConfirmationView? {
@@ -79,7 +78,7 @@ extension RequestLessonPlanView {
 struct RequestLessonPlanView_Preview: PreviewProvider {
     static var previews: some View {
         let service = RequestLessonPlanServiceStub(result: .success(.stub), delay: 3)
-        service.result = .failure(RythmicoAPIError.init(errorDescription: "something"))
+//        service.result = .failure(RythmicoAPIError.init(errorDescription: "something"))
 
         let context = RequestLessonPlanContext()
         context.instrument = .guitarStub

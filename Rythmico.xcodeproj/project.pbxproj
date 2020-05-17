@@ -39,6 +39,7 @@
 		03B1983F24717A90005529EB /* LessonPlanDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1983E24717A90005529EB /* LessonPlanDoubles.swift */; };
 		03B1984124717AE8005529EB /* AddressDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984024717AE8005529EB /* AddressDoubles.swift */; };
 		03B19843247181B3005529EB /* RequestLessonPlanFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */; };
+		03B1984524719105005529EB /* RequestLessonPlanLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984424719105005529EB /* RequestLessonPlanLoadingView.swift */; };
 		03B4A32224468758004282F4 /* Date+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B4A32124468758004282F4 /* Date+Sugar.swift */; };
 		03B71324241D71B600DED025 /* Error+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B71323241D71B600DED025 /* Error+Sugar.swift */; };
 		03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE818F244E169200C5C184 /* ReviewRequestView.swift */; };
@@ -236,6 +237,7 @@
 		03B1983E24717A90005529EB /* LessonPlanDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanDoubles.swift; sourceTree = "<group>"; };
 		03B1984024717AE8005529EB /* AddressDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDoubles.swift; sourceTree = "<group>"; };
 		03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanFormView.swift; sourceTree = "<group>"; };
+		03B1984424719105005529EB /* RequestLessonPlanLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanLoadingView.swift; sourceTree = "<group>"; };
 		03B4A32124468758004282F4 /* Date+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Sugar.swift"; sourceTree = "<group>"; };
 		03B71323241D71B600DED025 /* Error+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Sugar.swift"; sourceTree = "<group>"; };
 		03FE818F244E169200C5C184 /* ReviewRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestView.swift; sourceTree = "<group>"; };
@@ -671,6 +673,7 @@
 				D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */,
 				03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */,
 				D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */,
+				03B1984424719105005529EB /* RequestLessonPlanLoadingView.swift */,
 				D54317EE23FDB01700CB1493 /* InstrumentSelection */,
 				D54317EF23FDB02600CB1493 /* Instrument */,
 				D5F506B12405B5AA00CA4094 /* StudentDetails */,
@@ -1044,6 +1047,7 @@
 				D5AAF7D523F9E1F900E410F2 /* InstrumentSelectionListProvider.swift in Sources */,
 				03B1983D247179F6005529EB /* RequestLessonPlanServiceDoubles.swift in Sources */,
 				03A3F6EE2447DFF900F6391D /* Animation.swift in Sources */,
+				03B1984524719105005529EB /* RequestLessonPlanLoadingView.swift in Sources */,
 				D5BA171023D7A18900954D50 /* RootView.swift in Sources */,
 				D5C23A76240F0186007DED63 /* TestDelegate.swift in Sources */,
 				03080EEB2466FDD9008715EE /* RequestLessonPlanService.swift in Sources */,
