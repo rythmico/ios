@@ -41,6 +41,8 @@
 		03B19843247181B3005529EB /* RequestLessonPlanFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */; };
 		03B1984524719105005529EB /* RequestLessonPlanLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984424719105005529EB /* RequestLessonPlanLoadingView.swift */; };
 		03B1984B2471B098005529EB /* FirebaseMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B1984A2471B098005529EB /* FirebaseMessaging.framework */; };
+		03B1984E2471B9AA005529EB /* AppDelegate+Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984D2471B9AA005529EB /* AppDelegate+Window.swift */; };
+		03B198502471B9F7005529EB /* AppDelegate+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984F2471B9F7005529EB /* AppDelegate+Appearance.swift */; };
 		03B4A32224468758004282F4 /* Date+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B4A32124468758004282F4 /* Date+Sugar.swift */; };
 		03B71324241D71B600DED025 /* Error+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B71323241D71B600DED025 /* Error+Sugar.swift */; };
 		03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE818F244E169200C5C184 /* ReviewRequestView.swift */; };
@@ -240,6 +242,8 @@
 		03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanFormView.swift; sourceTree = "<group>"; };
 		03B1984424719105005529EB /* RequestLessonPlanLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanLoadingView.swift; sourceTree = "<group>"; };
 		03B1984A2471B098005529EB /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseMessaging.framework; path = Carthage/Build/iOS/FirebaseMessaging.framework; sourceTree = "<group>"; };
+		03B1984D2471B9AA005529EB /* AppDelegate+Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Window.swift"; sourceTree = "<group>"; };
+		03B1984F2471B9F7005529EB /* AppDelegate+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Appearance.swift"; sourceTree = "<group>"; };
 		03B4A32124468758004282F4 /* Date+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Sugar.swift"; sourceTree = "<group>"; };
 		03B71323241D71B600DED025 /* Error+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Sugar.swift"; sourceTree = "<group>"; };
 		03FE818F244E169200C5C184 /* ReviewRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestView.swift; sourceTree = "<group>"; };
@@ -780,6 +784,8 @@
 				03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */,
 				D54A561623CD577800BC8485 /* main.swift */,
 				03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */,
+				03B1984F2471B9F7005529EB /* AppDelegate+Appearance.swift */,
+				03B1984D2471B9AA005529EB /* AppDelegate+Window.swift */,
 				D5C23A75240F0186007DED63 /* TestDelegate.swift */,
 				D535554D23E38763005A20EB /* Window.swift */,
 			);
@@ -1057,6 +1063,7 @@
 				03080EEB2466FDD9008715EE /* RequestLessonPlanService.swift in Sources */,
 				D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */,
 				0336D62C241EAAF6006CFC1F /* APIRequest.swift in Sources */,
+				03B1984E2471B9AA005529EB /* AppDelegate+Window.swift in Sources */,
 				03A094622443D8E1008B4BD6 /* EditingCoordinator.swift in Sources */,
 				D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */,
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
@@ -1110,6 +1117,7 @@
 				D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */,
 				03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */,
 				03B19843247181B3005529EB /* RequestLessonPlanFormView.swift in Sources */,
+				03B198502471B9F7005529EB /* AppDelegate+Appearance.swift in Sources */,
 				D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */,
 				D5F5068C24046B1400CA4094 /* Spacing.swift in Sources */,
 				D535547923DF3A7C005A20EB /* Keychain.swift in Sources */,
