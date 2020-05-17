@@ -9,7 +9,7 @@ final class AddressDetailsViewTests: XCTestCase {
     }
 
     func addressDetailsView(
-        result: SimpleResult<[Address]>
+        result: SimpleResult<[AddressDetails]>
     ) -> (
         RequestLessonPlanContext,
         AddressProviderSpy,
