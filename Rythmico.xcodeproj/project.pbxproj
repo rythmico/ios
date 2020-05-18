@@ -472,10 +472,6 @@
 				D54317ED23FDB00700CB1493 /* RequestLessonPlan */,
 				0336D62B241EAAF6006CFC1F /* APIRequest.swift */,
 				03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */,
-				03BB5C902472D85A00B44692 /* PushNotificationRegistrationService.swift */,
-				03BB5C932472FEA900B44692 /* PushNotificationRegistrationServiceDoubles.swift */,
-				03B198552471BD6C005529EB /* PushNotificationAuthorizationManager.swift */,
-				03B198592471C325005529EB /* PushNotificationAuthorizationManagerDoubles.swift */,
 				D52677CB241019B60074FDEF /* Supporting Files */,
 				03341B4623ABB1E8009AE8A8 /* Preview Content */,
 			);
@@ -557,6 +553,58 @@
 				03BB5C952473070C00B44692 /* ReviewRequestViewTests.swift */,
 			);
 			path = ReviewRequest;
+			sourceTree = "<group>";
+		};
+		03BB5C9C247345BE00B44692 /* Confirmation */ = {
+			isa = PBXGroup;
+			children = (
+				03B198572471BD82005529EB /* RequestLessonPlanConfirmationView.swift */,
+				03BB5C9924733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift */,
+			);
+			path = Confirmation;
+			sourceTree = "<group>";
+		};
+		03BB5C9D247345E200B44692 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				03B1984424719105005529EB /* RequestLessonPlanLoadingView.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		03BB5C9E2473463200B44692 /* LessonPlan */ = {
+			isa = PBXGroup;
+			children = (
+				03080EEC2466FE21008715EE /* LessonPlan.swift */,
+				03B1983E24717A90005529EB /* LessonPlanDoubles.swift */,
+			);
+			path = LessonPlan;
+			sourceTree = "<group>";
+		};
+		03BB5C9F2473465800B44692 /* LessonPlanRequestFlow */ = {
+			isa = PBXGroup;
+			children = (
+				D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */,
+				D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */,
+				03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */,
+				D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */,
+				03B1983A247175BE005529EB /* RequestLessonPlanCoordinator.swift */,
+				03BB5C972473357300B44692 /* RequestLessonPlanCoordinatorDoubles.swift */,
+				03080EEA2466FDD9008715EE /* RequestLessonPlanService.swift */,
+				03B1983C247179F6005529EB /* RequestLessonPlanServiceDoubles.swift */,
+			);
+			path = LessonPlanRequestFlow;
+			sourceTree = "<group>";
+		};
+		03BB5CA02473467500B44692 /* PushNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				03B198552471BD6C005529EB /* PushNotificationAuthorizationManager.swift */,
+				03B198592471C325005529EB /* PushNotificationAuthorizationManagerDoubles.swift */,
+				03BB5C902472D85A00B44692 /* PushNotificationRegistrationService.swift */,
+				03BB5C932472FEA900B44692 /* PushNotificationRegistrationServiceDoubles.swift */,
+			);
+			path = PushNotifications;
 			sourceTree = "<group>";
 		};
 		D509896423B963B700C19300 /* Frameworks */ = {
@@ -703,19 +751,8 @@
 		D54317ED23FDB00700CB1493 /* RequestLessonPlan */ = {
 			isa = PBXGroup;
 			children = (
-				03080EEC2466FE21008715EE /* LessonPlan.swift */,
-				03B1983E24717A90005529EB /* LessonPlanDoubles.swift */,
-				03B1983A247175BE005529EB /* RequestLessonPlanCoordinator.swift */,
-				03BB5C972473357300B44692 /* RequestLessonPlanCoordinatorDoubles.swift */,
-				03080EEA2466FDD9008715EE /* RequestLessonPlanService.swift */,
-				03B1983C247179F6005529EB /* RequestLessonPlanServiceDoubles.swift */,
-				D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */,
-				D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */,
-				03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */,
-				D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */,
-				03B1984424719105005529EB /* RequestLessonPlanLoadingView.swift */,
-				03B198572471BD82005529EB /* RequestLessonPlanConfirmationView.swift */,
-				03BB5C9924733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift */,
+				03BB5C9F2473465800B44692 /* LessonPlanRequestFlow */,
+				03BB5C9E2473463200B44692 /* LessonPlan */,
 				D54317EE23FDB01700CB1493 /* InstrumentSelection */,
 				D54317EF23FDB02600CB1493 /* Instrument */,
 				D5F506B12405B5AA00CA4094 /* StudentDetails */,
@@ -726,6 +763,9 @@
 				03AAF6742445E123002D8F5B /* Schedule */,
 				0392A9D2244D1824001E97AE /* PrivateNote */,
 				03BB5C9B24733F6C00B44692 /* ReviewRequest */,
+				03BB5C9D247345E200B44692 /* Loading */,
+				03BB5C9C247345BE00B44692 /* Confirmation */,
+				03BB5CA02473467500B44692 /* PushNotifications */,
 			);
 			path = RequestLessonPlan;
 			sourceTree = "<group>";
