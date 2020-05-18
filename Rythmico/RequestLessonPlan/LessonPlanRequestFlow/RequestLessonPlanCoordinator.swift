@@ -9,6 +9,8 @@ enum RequestLessonPlanCoordinatorState {
 }
 
 class RequestLessonPlanCoordinatorBase: ObservableObject {
+    @available(*, unavailable) init() {}
+
     @Published
     var state: RequestLessonPlanCoordinatorState = .idle
     func requestLessonPlan(_ body: RequestLessonPlanBody) {}
