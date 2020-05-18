@@ -6,12 +6,12 @@ protocol AuthorizedAPIRequest: Request {
 }
 
 extension AuthorizedAPIRequest {
-    var headerFields: [String : String] { ["Authorization": "Bearer " + accessToken] }
+    var headerFields: [String: String] { ["Authorization": "Bearer " + accessToken] }
 }
 
-protocol RythmicoAPIRequest: DecodableJSONRequest, AuthorizedAPIRequest {}
+protocol RythmicoAPIRequestCore: AuthorizedAPIRequest {}
 
-extension RythmicoAPIRequest {
+extension RythmicoAPIRequestCore {
     #if DEBUG
     var host: String { "dev.api.rythmico.com" }
     #else
@@ -19,6 +19,18 @@ extension RythmicoAPIRequest {
     #endif
 
     var pathPrefix: String { "/v1" }
+}
+
+protocol RythmicoAPIRequest: RythmicoAPIRequestCore, DecodableJSONRequest {}
+
+protocol RythmicoAPIRequestNoResponse: RythmicoAPIRequestCore where Response == Void, DataParser == JSONRawDataParser {}
+
+extension RythmicoAPIRequestNoResponse {
+    func response(from object: DataParser.Parsed, urlResponse: HTTPURLResponse) throws -> Response {
+        ()
+    }
+
+    var dataParser: DataParser { JSONRawDataParser() }
 }
 
 struct RythmicoAPIError: LocalizedError, Decodable {
