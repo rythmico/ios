@@ -1,6 +1,7 @@
 import SwiftUI
+import Sugar
 
-struct RequestLessonPlanConfirmationView: View {
+struct RequestLessonPlanConfirmationView: View, TestableView {
     @Environment(\.betterSheetPresentationMode)
     private var presentationMode
 
@@ -29,6 +30,7 @@ struct RequestLessonPlanConfirmationView: View {
     @State
     var errorMessage: String?
 
+    var didAppear: Handler<Self>?
     var body: some View {
         VStack(spacing: 0) {
             Spacer()
@@ -77,10 +79,11 @@ struct RequestLessonPlanConfirmationView: View {
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: shouldShowEnableNotificationsButton)
         .alert(item: $errorMessage) { Alert(title: Text("An error ocurred"), message: Text($0)) }
+        .onAppear { self.didAppear?(self) }
         .onAppear { self.fetchNotificationAuthorizationStatus() }
     }
 
-    func fetchNotificationAuthorizationStatus() {
+    private func fetchNotificationAuthorizationStatus() {
         notificationsAuthorizationManager.getAuthorizationStatus { status in
             self.shouldShowEnableNotificationsButton = status == .notDetermined
         }
