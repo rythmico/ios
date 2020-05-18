@@ -49,6 +49,8 @@
 		03B1985A2471C325005529EB /* PushNotificationAuthorizationManagerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198592471C325005529EB /* PushNotificationAuthorizationManagerDoubles.swift */; };
 		03B4A32224468758004282F4 /* Date+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B4A32124468758004282F4 /* Date+Sugar.swift */; };
 		03B71324241D71B600DED025 /* Error+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B71323241D71B600DED025 /* Error+Sugar.swift */; };
+		03BB5C912472D85A00B44692 /* PushNotificationRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C902472D85A00B44692 /* PushNotificationRegistrationService.swift */; };
+		03BB5C942472FEA900B44692 /* PushNotificationRegistrationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C932472FEA900B44692 /* PushNotificationRegistrationServiceDoubles.swift */; };
 		03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE818F244E169200C5C184 /* ReviewRequestView.swift */; };
 		03FE8192244E204900C5C184 /* AddressItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE8191244E204900C5C184 /* AddressItemView.swift */; };
 		D50811E423FB72A3008103D8 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E323FB72A3008103D8 /* StepBar.swift */; };
@@ -254,6 +256,8 @@
 		03B198592471C325005529EB /* PushNotificationAuthorizationManagerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationAuthorizationManagerDoubles.swift; sourceTree = "<group>"; };
 		03B4A32124468758004282F4 /* Date+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Sugar.swift"; sourceTree = "<group>"; };
 		03B71323241D71B600DED025 /* Error+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Sugar.swift"; sourceTree = "<group>"; };
+		03BB5C902472D85A00B44692 /* PushNotificationRegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationRegistrationService.swift; sourceTree = "<group>"; };
+		03BB5C932472FEA900B44692 /* PushNotificationRegistrationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationRegistrationServiceDoubles.swift; sourceTree = "<group>"; };
 		03FE818F244E169200C5C184 /* ReviewRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestView.swift; sourceTree = "<group>"; };
 		03FE8191244E204900C5C184 /* AddressItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressItemView.swift; sourceTree = "<group>"; };
 		D50668DA23B946330044E553 /* Rythmico.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rythmico.entitlements; sourceTree = "<group>"; };
@@ -462,6 +466,8 @@
 				D54317ED23FDB00700CB1493 /* RequestLessonPlan */,
 				0336D62B241EAAF6006CFC1F /* APIRequest.swift */,
 				03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */,
+				03BB5C902472D85A00B44692 /* PushNotificationRegistrationService.swift */,
+				03BB5C932472FEA900B44692 /* PushNotificationRegistrationServiceDoubles.swift */,
 				03B198552471BD6C005529EB /* PushNotificationAuthorizationManager.swift */,
 				03B198592471C325005529EB /* PushNotificationAuthorizationManagerDoubles.swift */,
 				D52677CB241019B60074FDEF /* Supporting Files */,
@@ -1106,6 +1112,7 @@
 				D5F5065F240055E800CA4094 /* TitleContentView.swift in Sources */,
 				03AB22F3244CB13200DAC7DF /* PrivateNoteView.swift in Sources */,
 				D5F50663240056FA00CA4094 /* RoundedThinOutlineContainer.swift in Sources */,
+				03BB5C912472D85A00B44692 /* PushNotificationRegistrationService.swift in Sources */,
 				03B1983F24717A90005529EB /* LessonPlanDoubles.swift in Sources */,
 				03B1983924705894005529EB /* AddressDetails.swift in Sources */,
 				03B1983B247175BE005529EB /* RequestLessonPlanCoordinator.swift in Sources */,
@@ -1133,6 +1140,7 @@
 				D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */,
 				03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */,
 				03B19843247181B3005529EB /* RequestLessonPlanFormView.swift in Sources */,
+				03BB5C942472FEA900B44692 /* PushNotificationRegistrationServiceDoubles.swift in Sources */,
 				03B198502471B9F7005529EB /* AppDelegate+Appearance.swift in Sources */,
 				D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */,
 				D5F5068C24046B1400CA4094 /* Spacing.swift in Sources */,
