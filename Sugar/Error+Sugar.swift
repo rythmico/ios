@@ -1,5 +1,5 @@
 import Foundation
 
-public extension Error where Self: RawRepresentable, RawValue == String {
-    var localizedDescription: String { rawValue }
+extension String: LocalizedError {
+    public var errorDescription: String? { self }
 }
