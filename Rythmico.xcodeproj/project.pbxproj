@@ -548,6 +548,15 @@
 			path = Student;
 			sourceTree = "<group>";
 		};
+		03BB5C9B24733F6C00B44692 /* ReviewRequest */ = {
+			isa = PBXGroup;
+			children = (
+				03FE818F244E169200C5C184 /* ReviewRequestView.swift */,
+				03BB5C952473070C00B44692 /* ReviewRequestViewTests.swift */,
+			);
+			path = ReviewRequest;
+			sourceTree = "<group>";
+		};
 		D509896423B963B700C19300 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -713,8 +722,7 @@
 				03AAF66F2445E041002D8F5B /* Scheduling */,
 				03AAF6742445E123002D8F5B /* Schedule */,
 				0392A9D2244D1824001E97AE /* PrivateNote */,
-				03FE818F244E169200C5C184 /* ReviewRequestView.swift */,
-				03BB5C952473070C00B44692 /* ReviewRequestViewTests.swift */,
+				03BB5C9B24733F6C00B44692 /* ReviewRequest */,
 			);
 			path = RequestLessonPlan;
 			sourceTree = "<group>";
