@@ -21,3 +21,13 @@ final class PushNotificationAuthorizationManagerStub: PushNotificationAuthorizat
         completion(requestAuthorizationResult)
     }
 }
+
+final class PushNotificationAuthorizationManagerDummy: PushNotificationAuthorizationManagerProtocol {
+    func getAuthorizationStatus(completion: @escaping GetCompletionHandler) {
+        // NO-OP
+    }
+
+    func requestAuthorization(completion: @escaping RequestCompletionHandler) {
+        // NO-OP
+    }
+}

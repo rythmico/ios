@@ -50,14 +50,14 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
         .onAppear { self.didAppear?(self) }
     }
 
-    func stateTransition(scale: CGFloat) -> AnyTransition {
+    private func stateTransition(scale: CGFloat) -> AnyTransition {
         AnyTransition
             .opacity
             .combined(with: .scale(scale: scale))
             .animation(.rythmicoSpring(duration: .durationShort))
     }
 
-    var errorMessageBinding: Binding<String?> {
+    private var errorMessageBinding: Binding<String?> {
         Binding(
             get: { self.coordinator.state.failureValue?.localizedDescription },
             set: { if $0 == nil { self.coordinator.state = .idle } }
