@@ -8,7 +8,7 @@ final class RequestLessonPlanConfirmationViewTests: XCTestCase {
         requestAuthorizationResult: SimpleResult<Bool>
     ) -> (PushNotificationAuthorizationManagerStub, RequestLessonPlanConfirmationView) {
         let notificationsAuthorizationManager = PushNotificationAuthorizationManagerStub(
-            authorizationStatus: notificationsStatus,
+            status: notificationsStatus,
             requestAuthorizationResult: requestAuthorizationResult
         )
         return (
@@ -27,7 +27,7 @@ final class RequestLessonPlanConfirmationViewTests: XCTestCase {
         )
 
         XCTAssertView(view) { view in
-            XCTAssertTrue(view.shouldShowEnableNotificationsButton)
+            XCTAssertNotNil(view.enablePushNotificationsButtonAction)
             XCTAssertNil(view.errorMessage)
         }
     }
@@ -39,7 +39,7 @@ final class RequestLessonPlanConfirmationViewTests: XCTestCase {
         )
 
         XCTAssertView(view) { view in
-            XCTAssertFalse(view.shouldShowEnableNotificationsButton)
+            XCTAssertNil(view.enablePushNotificationsButtonAction)
             XCTAssertNil(view.errorMessage)
         }
     }
@@ -51,7 +51,7 @@ final class RequestLessonPlanConfirmationViewTests: XCTestCase {
         )
 
         XCTAssertView(view) { view in
-            XCTAssertFalse(view.shouldShowEnableNotificationsButton)
+            XCTAssertNil(view.enablePushNotificationsButtonAction)
             XCTAssertNil(view.errorMessage)
         }
     }
@@ -63,8 +63,8 @@ final class RequestLessonPlanConfirmationViewTests: XCTestCase {
         )
 
         XCTAssertView(view) { view in
-            view.enablePushNotifications()
-            XCTAssertFalse(view.shouldShowEnableNotificationsButton)
+            view.enablePushNotificationsButtonAction?()
+            XCTAssertNil(view.enablePushNotificationsButtonAction)
         }
     }
 
@@ -75,8 +75,8 @@ final class RequestLessonPlanConfirmationViewTests: XCTestCase {
         )
 
         XCTAssertView(view) { view in
-            view.enablePushNotifications()
-            XCTAssertFalse(view.shouldShowEnableNotificationsButton)
+            view.enablePushNotificationsButtonAction?()
+            XCTAssertNil(view.enablePushNotificationsButtonAction)
         }
     }
 
@@ -87,8 +87,8 @@ final class RequestLessonPlanConfirmationViewTests: XCTestCase {
         )
 
         XCTAssertView(view) { view in
-            view.enablePushNotifications()
-            XCTAssertTrue(view.shouldShowEnableNotificationsButton)
+            view.enablePushNotificationsButtonAction?()
+            XCTAssertNotNil(view.enablePushNotificationsButtonAction)
         }
     }
 }

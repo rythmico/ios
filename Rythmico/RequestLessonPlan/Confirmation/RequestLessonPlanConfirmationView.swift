@@ -6,11 +6,12 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
     private var presentationMode
 
     private let lessonPlan: LessonPlan
-    private let notificationsAuthorizationManager: PushNotificationAuthorizationManagerProtocol
+    @ObservedObject
+    private var notificationsAuthorizationManager: PushNotificationAuthorizationManagerBase
 
     init(
         lessonPlan: LessonPlan,
-        notificationsAuthorizationManager: PushNotificationAuthorizationManagerProtocol
+        notificationsAuthorizationManager: PushNotificationAuthorizationManagerBase
     ) {
         self.lessonPlan = lessonPlan
         self.notificationsAuthorizationManager = notificationsAuthorizationManager
@@ -24,8 +25,16 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta odio dolor, eget sodales turpis mollis semper."
     }
 
-    @State
-    var shouldShowEnableNotificationsButton = true
+    var enablePushNotificationsButtonAction: Action? {
+        guard notificationsAuthorizationManager.status == .notDetermined else {
+            return nil
+        }
+        return {
+            self.notificationsAuthorizationManager.requestAuthorization { error in
+                self.errorMessage = error.localizedDescription
+            }
+        }
+    }
 
     @State
     var errorMessage: String?
@@ -60,8 +69,8 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
                     }
                 }
 
-                if shouldShowEnableNotificationsButton {
-                    Button("Enable Push Notifications", action: enablePushNotifications)
+                enablePushNotificationsButtonAction.map {
+                    Button("Enable Push Notifications", action: $0)
                         .secondaryStyle()
                         .frame(maxWidth: 236)
                         .frame(height: 40)
@@ -77,27 +86,10 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
                 Button("Continue", action: doContinue).primaryStyle()
             }
         }
-        .animation(.rythmicoSpring(duration: .durationMedium), value: shouldShowEnableNotificationsButton)
+        .animation(.rythmicoSpring(duration: .durationMedium), value: enablePushNotificationsButtonAction != nil)
         .alert(item: $errorMessage) { Alert(title: Text("An error ocurred"), message: Text($0)) }
         .onAppear { self.didAppear?(self) }
-        .onAppear { self.fetchNotificationAuthorizationStatus() }
-    }
-
-    private func fetchNotificationAuthorizationStatus() {
-        notificationsAuthorizationManager.getAuthorizationStatus { status in
-            self.shouldShowEnableNotificationsButton = status == .notDetermined
-        }
-    }
-
-    func enablePushNotifications() {
-        notificationsAuthorizationManager.requestAuthorization { result in
-            switch result {
-            case .success:
-                self.shouldShowEnableNotificationsButton = false
-            case .failure(let error):
-                self.errorMessage = error.localizedDescription
-            }
-        }
+        .onAppear(perform: notificationsAuthorizationManager.refreshAuthorizationStatus)
     }
 
     func doContinue() {
@@ -108,13 +100,13 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
 struct RequestLessonPlanConfirmationView_Previews: PreviewProvider {
     static var previews: some View {
         let manager = PushNotificationAuthorizationManagerStub(
-            authorizationStatus: .authorized,
+            status: .authorized,
             requestAuthorizationResult: .success(true)
         )
         return RequestLessonPlanConfirmationView(
             lessonPlan: .stub,
             notificationsAuthorizationManager: manager
         )
-//        .previewDevices()
+        .previewDevices()
     }
 }
