@@ -1,4 +1,5 @@
 import UIKit
+import Combine
 import UserNotifications
 import Sugar
 
@@ -8,48 +9,52 @@ enum PushNotificationAuthorizationStatus {
     case authorized
 }
 
-protocol PushNotificationAuthorizationManagerProtocol {
-    typealias GetCompletionHandler = (PushNotificationAuthorizationStatus) -> Void
-    func getAuthorizationStatus(completion: @escaping GetCompletionHandler)
+class PushNotificationAuthorizationManagerBase: ObservableObject {
+    @Published
+    var status: PushNotificationAuthorizationStatus = .notDetermined
 
-    typealias RequestCompletionHandler = SimpleResultHandler<Bool>
-    func requestAuthorization(completion: @escaping RequestCompletionHandler)
+    func refreshAuthorizationStatus() {}
+    func requestAuthorization(errorHandler: @escaping Handler<Error>) {}
 }
 
-final class PushNotificationAuthorizationManager: PushNotificationAuthorizationManagerProtocol {
+final class PushNotificationAuthorizationManager: PushNotificationAuthorizationManagerBase {
     private let application: UIApplication
     private let center: UNUserNotificationCenter
 
     init(application: UIApplication, center: UNUserNotificationCenter) {
         self.application = application
         self.center = center
+        super.init()
+        refreshAuthorizationStatus()
     }
 
-    func getAuthorizationStatus(completion: @escaping GetCompletionHandler) {
+    override func refreshAuthorizationStatus() {
         center.getNotificationSettings { settings in
             switch settings.authorizationStatus {
             case .notDetermined:
-                completion(.notDetermined)
+                self.status = .notDetermined
             case .denied:
-                completion(.denied)
+                self.status = .denied
             case .authorized, .provisional:
-                completion(.authorized)
+                self.status = .authorized
             @unknown default:
-                completion(.notDetermined)
+                self.status = .notDetermined
             }
         }
     }
 
-    func requestAuthorization(completion: @escaping RequestCompletionHandler) {
+    override func requestAuthorization(errorHandler: @escaping Handler<Error>) {
         center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             DispatchQueue.main.async {
                 if let error = error {
-                    completion(.failure(error))
+                    errorHandler(error)
                 } else {
                     if granted {
+                        self.status = .authorized
                         self.application.registerForRemoteNotifications()
+                    } else {
+                        self.status = .denied
                     }
-                    completion(.success(granted))
                 }
             }
         }

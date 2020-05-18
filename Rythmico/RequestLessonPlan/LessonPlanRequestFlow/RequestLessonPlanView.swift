@@ -9,7 +9,7 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
     @ObservedObject
     private var context: RequestLessonPlanContext
     private let _formView: RequestLessonPlanFormView
-    private let notificationsAuthorizationManager: PushNotificationAuthorizationManagerProtocol
+    private let notificationsAuthorizationManager: PushNotificationAuthorizationManagerBase
 
     init(
         coordinator: RequestLessonPlanCoordinatorBase,
@@ -17,7 +17,7 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
         accessTokenProvider: AuthenticationAccessTokenProvider,
         instrumentProvider: InstrumentSelectionListProviderProtocol,
         keyboardDismisser: KeyboardDismisser,
-        notificationsAuthorizationManager: PushNotificationAuthorizationManagerProtocol
+        notificationsAuthorizationManager: PushNotificationAuthorizationManagerBase
     ) {
         self.coordinator = coordinator
         self.context = context
@@ -99,16 +99,18 @@ struct RequestLessonPlanView_Preview: PreviewProvider {
         let coordinator = RequestLessonPlanCoordinatorStub(expectedState: .success(.stub), delay: 1.5)
 //        coordinator.expectedState = .failure("something went wrong")
 
+        let manager = PushNotificationAuthorizationManagerStub(
+            status: .authorized,
+            requestAuthorizationResult: .success(true)
+        )
+
         let view = RequestLessonPlanView(
             coordinator: coordinator,
             context: context,
             accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
             instrumentProvider: InstrumentSelectionListProviderFake(),
             keyboardDismisser: UIApplication.shared,
-            notificationsAuthorizationManager: PushNotificationAuthorizationManagerStub(
-                authorizationStatus: .notDetermined,
-                requestAuthorizationResult: .success(true)
-            )
+            notificationsAuthorizationManager: manager
         )
 
         return view

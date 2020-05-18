@@ -1,33 +1,32 @@
 import Foundation
 import Sugar
 
-final class PushNotificationAuthorizationManagerStub: PushNotificationAuthorizationManagerProtocol {
-    var authorizationStatus: PushNotificationAuthorizationStatus
+final class PushNotificationAuthorizationManagerStub: PushNotificationAuthorizationManagerBase {
     var requestAuthorizationResult: SimpleResult<Bool>
 
     init(
-        authorizationStatus: PushNotificationAuthorizationStatus,
+        status: PushNotificationAuthorizationStatus,
         requestAuthorizationResult: SimpleResult<Bool>
     ) {
-        self.authorizationStatus = authorizationStatus
         self.requestAuthorizationResult = requestAuthorizationResult
+        super.init()
+        self.status = status
     }
 
-    func getAuthorizationStatus(completion: @escaping GetCompletionHandler) {
-        completion(authorizationStatus)
+    override func refreshAuthorizationStatus() {
+        // NO-OP
     }
 
-    func requestAuthorization(completion: @escaping RequestCompletionHandler) {
-        completion(requestAuthorizationResult)
+    override func requestAuthorization(errorHandler: @escaping Handler<Error>) {
+        switch requestAuthorizationResult {
+        case .success(let granted):
+            self.status = granted ? .authorized : .denied
+        case .failure(let error):
+            errorHandler(error)
+        }
     }
 }
 
-final class PushNotificationAuthorizationManagerDummy: PushNotificationAuthorizationManagerProtocol {
-    func getAuthorizationStatus(completion: @escaping GetCompletionHandler) {
-        // NO-OP
-    }
-
-    func requestAuthorization(completion: @escaping RequestCompletionHandler) {
-        // NO-OP
-    }
+final class PushNotificationAuthorizationManagerDummy: PushNotificationAuthorizationManagerBase {
+    init(_ noop: Void = ()) {}
 }
