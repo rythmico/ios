@@ -8,16 +8,20 @@ enum RequestLessonPlanCoordinatorState {
     case success(LessonPlan)
 }
 
-final class RequestLessonPlanCoordinator: ObservableObject {
-    @Published var state: RequestLessonPlanCoordinatorState = .idle
+class RequestLessonPlanCoordinatorBase: ObservableObject {
+    @Published
+    var state: RequestLessonPlanCoordinatorState = .idle
+    func requestLessonPlan(_ body: RequestLessonPlanBody) {}
+}
 
+final class RequestLessonPlanCoordinator: RequestLessonPlanCoordinatorBase {
     private let service: RequestLessonPlanServiceProtocol
 
     init(service: RequestLessonPlanServiceProtocol) {
         self.service = service
     }
 
-    func requestLessonPlan(_ body: RequestLessonPlanBody) {
+    override func requestLessonPlan(_ body: RequestLessonPlanBody) {
         state = .loading
         service.requestLessonPlan(body) { result in
             switch result {

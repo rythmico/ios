@@ -13,14 +13,14 @@ struct RequestLessonPlanFormView: View, TestableView {
 
     @ObservedObject
     private var context: RequestLessonPlanContext
-    private let coordinator: RequestLessonPlanCoordinator
+    private let coordinator: RequestLessonPlanCoordinatorBase
     private let accessTokenProvider: AuthenticationAccessTokenProvider
     private let instrumentProvider: InstrumentSelectionListProviderProtocol
     private let keyboardDismisser: KeyboardDismisser
 
     init(
         context: RequestLessonPlanContext,
-        coordinator: RequestLessonPlanCoordinator,
+        coordinator: RequestLessonPlanCoordinatorBase,
         accessTokenProvider: AuthenticationAccessTokenProvider,
         instrumentProvider: InstrumentSelectionListProviderProtocol,
         keyboardDismisser: KeyboardDismisser

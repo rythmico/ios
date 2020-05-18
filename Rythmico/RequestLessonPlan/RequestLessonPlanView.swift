@@ -5,14 +5,14 @@ typealias RequestLessonPlanFailureView = Alert
 
 struct RequestLessonPlanView: View, Identifiable, TestableView {
     @ObservedObject
-    private var coordinator: RequestLessonPlanCoordinator
+    private var coordinator: RequestLessonPlanCoordinatorBase
     @ObservedObject
     private var context: RequestLessonPlanContext
     private let _formView: RequestLessonPlanFormView
     private let notificationsAuthorizationManager: PushNotificationAuthorizationManagerProtocol
 
     init(
-        coordinator: RequestLessonPlanCoordinator,
+        coordinator: RequestLessonPlanCoordinatorBase,
         context: RequestLessonPlanContext,
         accessTokenProvider: AuthenticationAccessTokenProvider,
         instrumentProvider: InstrumentSelectionListProviderProtocol,
@@ -87,7 +87,7 @@ extension RequestLessonPlanView {
 struct RequestLessonPlanView_Preview: PreviewProvider {
     static var previews: some View {
         let service = RequestLessonPlanServiceStub(result: .success(.stub), delay: 3)
-//        service.result = .failure(RythmicoAPIError.init(errorDescription: "something"))
+//        service.result = .failure("something")
 
         let context = RequestLessonPlanContext()
         context.instrument = .guitarStub
@@ -96,8 +96,11 @@ struct RequestLessonPlanView_Preview: PreviewProvider {
         context.schedule = .stub
         context.privateNote = "Note"
 
+        let coordinator = RequestLessonPlanCoordinatorStub(expectedState: .success(.stub), delay: 1.5)
+//        coordinator.expectedState = .failure("something went wrong")
+
         let view = RequestLessonPlanView(
-            coordinator: RequestLessonPlanCoordinator(service: service),
+            coordinator: coordinator,
             context: context,
             accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
             instrumentProvider: InstrumentSelectionListProviderFake(),

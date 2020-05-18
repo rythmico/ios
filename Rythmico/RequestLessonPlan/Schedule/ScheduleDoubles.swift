@@ -1,7 +1,9 @@
 import Foundation
 
 extension Schedule {
+    private static let startDate = Date()
+
     static var stub: Schedule {
-        .init(startDate: Date(), duration: .fortyFiveMinutes)
+        .init(startDate: startDate, duration: .fortyFiveMinutes)
     }
 }
