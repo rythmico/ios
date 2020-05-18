@@ -22,7 +22,15 @@ struct RootView<AccessTokenProviderObserving>: View, TestableView where
 
     var state: UserState {
         if let provider = authenticationAccessTokenProviderObserving.currentProvider {
-            return .authenticated(MainTabView(accessTokenProvider: provider))
+            return .authenticated(
+                MainTabView(
+                    accessTokenProvider: provider,
+                    pushNotificationRegistrationService: PushNotificationRegistrationService(
+                        manager: .instanceID(),
+                        accessTokenProvider: provider
+                    )
+                )
+            )
         } else {
             self.keychain.appleAuthorizationUserId = nil
             return .unauthenticated(onboardingView)
@@ -33,7 +41,8 @@ struct RootView<AccessTokenProviderObserving>: View, TestableView where
         OnboardingView(
             appleAuthorizationService: appleAuthorizationService,
             authenticationService: authenticationService,
-            keychain: keychain
+            keychain: keychain,
+            pushNotificationUnregistrationService: PushNotificationUnregistrationService(manager: .instanceID())
         )
     }
 
