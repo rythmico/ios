@@ -3,7 +3,7 @@ import XCTest
 import struct SwiftUI.Image
 
 final class RequestLessonPlanFormViewTests: XCTestCase {
-    var requestLessonPlanView: (RequestLessonPlanContext, RequestLessonPlanFormView) {
+    var formView: (RequestLessonPlanContext, RequestLessonPlanFormView) {
         let context = RequestLessonPlanContext()
         let instrumentProvider = InstrumentSelectionListProviderStub(instruments: [.guitarStub, .pianoStub])
         let view = RequestLessonPlanFormView(
@@ -17,7 +17,7 @@ final class RequestLessonPlanFormViewTests: XCTestCase {
     }
 
     func testInitialValues() {
-        let (_, view) = requestLessonPlanView
+        let (_, view) = formView
 
         XCTAssertView(view) { view in
             XCTAssertFalse(view.shouldShowBackButton)
@@ -28,7 +28,7 @@ final class RequestLessonPlanFormViewTests: XCTestCase {
     }
 
     func testStudentDetailsPresentation() {
-        let (context, view) = requestLessonPlanView
+        let (context, view) = formView
 
         XCTAssertView(view) { view in
             context.instrument = .guitarStub
@@ -41,7 +41,7 @@ final class RequestLessonPlanFormViewTests: XCTestCase {
     }
 
     func testAddressDetailsPresentation() {
-        let (context, view) = requestLessonPlanView
+        let (context, view) = formView
 
         XCTAssertView(view) { view in
             context.instrument = .guitarStub
@@ -55,7 +55,7 @@ final class RequestLessonPlanFormViewTests: XCTestCase {
     }
 
     func testSchedulingViewPresentation() {
-        let (context, view) = requestLessonPlanView
+        let (context, view) = formView
 
         XCTAssertView(view) { view in
             context.instrument = .guitarStub
@@ -70,7 +70,7 @@ final class RequestLessonPlanFormViewTests: XCTestCase {
     }
 
     func testPrivateNoteViewPresentation() {
-        let (context, view) = requestLessonPlanView
+        let (context, view) = formView
 
         XCTAssertView(view) { view in
             context.instrument = .guitarStub
@@ -86,7 +86,7 @@ final class RequestLessonPlanFormViewTests: XCTestCase {
     }
 
     func testReviewRequestViewPresentation() {
-        let (context, view) = requestLessonPlanView
+        let (context, view) = formView
 
         XCTAssertView(view) { view in
             context.instrument = .guitarStub
