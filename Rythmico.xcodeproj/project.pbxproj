@@ -53,6 +53,7 @@
 		03BB5C942472FEA900B44692 /* PushNotificationRegistrationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C932472FEA900B44692 /* PushNotificationRegistrationServiceDoubles.swift */; };
 		03BB5C962473070C00B44692 /* ReviewRequestViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C952473070C00B44692 /* ReviewRequestViewTests.swift */; };
 		03BB5C982473357300B44692 /* RequestLessonPlanCoordinatorDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C972473357300B44692 /* RequestLessonPlanCoordinatorDoubles.swift */; };
+		03BB5C9A24733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C9924733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift */; };
 		03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE818F244E169200C5C184 /* ReviewRequestView.swift */; };
 		03FE8192244E204900C5C184 /* AddressItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE8191244E204900C5C184 /* AddressItemView.swift */; };
 		D50811E423FB72A3008103D8 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E323FB72A3008103D8 /* StepBar.swift */; };
@@ -262,6 +263,7 @@
 		03BB5C932472FEA900B44692 /* PushNotificationRegistrationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationRegistrationServiceDoubles.swift; sourceTree = "<group>"; };
 		03BB5C952473070C00B44692 /* ReviewRequestViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestViewTests.swift; sourceTree = "<group>"; };
 		03BB5C972473357300B44692 /* RequestLessonPlanCoordinatorDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanCoordinatorDoubles.swift; sourceTree = "<group>"; };
+		03BB5C9924733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanConfirmationViewTests.swift; sourceTree = "<group>"; };
 		03FE818F244E169200C5C184 /* ReviewRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestView.swift; sourceTree = "<group>"; };
 		03FE8191244E204900C5C184 /* AddressItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressItemView.swift; sourceTree = "<group>"; };
 		D50668DA23B946330044E553 /* Rythmico.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rythmico.entitlements; sourceTree = "<group>"; };
@@ -713,6 +715,7 @@
 				D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */,
 				03B1984424719105005529EB /* RequestLessonPlanLoadingView.swift */,
 				03B198572471BD82005529EB /* RequestLessonPlanConfirmationView.swift */,
+				03BB5C9924733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift */,
 				D54317EE23FDB01700CB1493 /* InstrumentSelection */,
 				D54317EF23FDB02600CB1493 /* Instrument */,
 				D5F506B12405B5AA00CA4094 /* StudentDetails */,
@@ -1198,6 +1201,7 @@
 				D535553623E105A5005A20EB /* OnboardingViewTests.swift in Sources */,
 				0392A9D3244D184F001E97AE /* PrivateNoteViewTests.swift in Sources */,
 				D5FD6F16240AF535008C5AD4 /* StudentDetailsViewTests.swift in Sources */,
+				03BB5C9A24733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift in Sources */,
 				D50811E623FB769D008103D8 /* RequestLessonPlanFormViewTests.swift in Sources */,
 				03AAF6752445E16A002D8F5B /* SchedulingViewTests.swift in Sources */,
 				D53555C123E536A6005A20EB /* AuthenticationAccessTokenProviderObserverTests.swift in Sources */,
