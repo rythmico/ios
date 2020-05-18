@@ -21,6 +21,14 @@ final class RequestLessonPlanServiceStub: RequestLessonPlanServiceProtocol {
     }
 }
 
+final class RequestLessonPlanServiceSpy: RequestLessonPlanServiceProtocol {
+    var requestCount = 0
+
+    func requestLessonPlan(_ body: RequestLessonPlanBody, completion: @escaping CompletionHandler) {
+        requestCount += 1
+    }
+}
+
 final class RequestLessonPlanServiceDummy: RequestLessonPlanServiceProtocol {
     func requestLessonPlan(_ body: RequestLessonPlanBody, completion: @escaping CompletionHandler) {
         // NO-OP

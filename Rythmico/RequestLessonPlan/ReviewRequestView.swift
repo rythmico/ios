@@ -7,7 +7,7 @@ struct ReviewRequestView: View, TestableView {
         static let lineSpacing: CGFloat = .spacingUnit * 2
     }
 
-    private let coordinator: RequestLessonPlanCoordinator
+    private let coordinator: RequestLessonPlanCoordinatorBase
     private let context: RequestLessonPlanContext
     private let instrument: Instrument
     private let student: Student
@@ -16,7 +16,7 @@ struct ReviewRequestView: View, TestableView {
     private let privateNote: String
 
     init(
-        coordinator: RequestLessonPlanCoordinator,
+        coordinator: RequestLessonPlanCoordinatorBase,
         context: RequestLessonPlanContext,
         instrument: Instrument,
         student: Student,
@@ -33,18 +33,16 @@ struct ReviewRequestView: View, TestableView {
         self.privateNote = privateNote
     }
 
-    private var confirmButtonAction: Action {
-        {
-            self.coordinator.requestLessonPlan(
-                RequestLessonPlanBody(
-                    instrument: self.instrument,
-                    student: self.student,
-                    address: self.address,
-                    schedule: self.schedule,
-                    privateNote: self.privateNote
-                )
+    func submitRequest() {
+        self.coordinator.requestLessonPlan(
+            RequestLessonPlanBody(
+                instrument: self.instrument,
+                student: self.student,
+                address: self.address,
+                schedule: self.schedule,
+                privateNote: self.privateNote
             )
-        }
+        )
     }
 
     var didAppear: Handler<Self>?
@@ -143,7 +141,7 @@ struct ReviewRequestView: View, TestableView {
                 }
 
                 FloatingView {
-                    Button("Confirm Details", action: confirmButtonAction).primaryStyle()
+                    Button("Confirm Details", action: submitRequest).primaryStyle()
                 }
             }
         }
@@ -205,9 +203,7 @@ struct ReviewRequestView: View, TestableView {
 struct ReviewRequestView_Previews: PreviewProvider {
     static var previews: some View {
         ReviewRequestView(
-            coordinator: RequestLessonPlanCoordinator(
-                service: RequestLessonPlanServiceDummy()
-            ),
+            coordinator: RequestLessonPlanCoordinatorDummy(),
             context: .init(),
             instrument: .guitarStub,
             student: .davidStub,

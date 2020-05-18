@@ -8,7 +8,7 @@ final class RequestLessonPlanFormViewTests: XCTestCase {
         let instrumentProvider = InstrumentSelectionListProviderStub(instruments: [.guitarStub, .pianoStub])
         let view = RequestLessonPlanFormView(
             context: context,
-            coordinator: RequestLessonPlanCoordinator(service: RequestLessonPlanServiceDummy()),
+            coordinator: RequestLessonPlanCoordinatorDummy(),
             accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
             instrumentProvider: instrumentProvider,
             keyboardDismisser: KeyboardDismisserSpy()
@@ -101,6 +101,4 @@ final class RequestLessonPlanFormViewTests: XCTestCase {
             XCTAssertNotNil(view.reviewRequestView)
         }
     }
-
-    // TODO: testRequestConfirmationViewPresentation
 }
