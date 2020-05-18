@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		03080EEB2466FDD9008715EE /* RequestLessonPlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03080EEA2466FDD9008715EE /* RequestLessonPlanService.swift */; };
 		03080EED2466FE21008715EE /* LessonPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03080EEC2466FE21008715EE /* LessonPlan.swift */; };
+		03306F74247347570074AA98 /* RequestLessonPlanViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03306F73247347570074AA98 /* RequestLessonPlanViewTests.swift */; };
 		03341B3F23ABB1E7009AE8A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */; };
 		03341B4523ABB1E8009AE8A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4423ABB1E8009AE8A8 /* Assets.xcassets */; };
 		03341B4823ABB1E8009AE8A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4723ABB1E8009AE8A8 /* Preview Assets.xcassets */; };
@@ -217,6 +218,7 @@
 /* Begin PBXFileReference section */
 		03080EEA2466FDD9008715EE /* RequestLessonPlanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanService.swift; sourceTree = "<group>"; };
 		03080EEC2466FE21008715EE /* LessonPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlan.swift; sourceTree = "<group>"; };
+		03306F73247347570074AA98 /* RequestLessonPlanViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanViewTests.swift; sourceTree = "<group>"; };
 		03341B3B23ABB1E7009AE8A8 /* Rythmico.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rythmico.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03341B4223ABB1E7009AE8A8 /* MainTabViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewTests.swift; sourceTree = "<group>"; };
@@ -585,6 +587,7 @@
 			isa = PBXGroup;
 			children = (
 				D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */,
+				03306F73247347570074AA98 /* RequestLessonPlanViewTests.swift */,
 				D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */,
 				03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */,
 				D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */,
@@ -1234,6 +1237,7 @@
 			files = (
 				D535553823E116C9005A20EB /* RootViewTests.swift in Sources */,
 				D5C23A74240EFDCB007DED63 /* MainTabViewTests.swift in Sources */,
+				03306F74247347570074AA98 /* RequestLessonPlanViewTests.swift in Sources */,
 				03BB5C962473070C00B44692 /* ReviewRequestViewTests.swift in Sources */,
 				D53555E623E5383C005A20EB /* AppleAuthorizationServiceTests.swift in Sources */,
 				D514750F240C96F0002EE20C /* XCTAssertView.swift in Sources */,
