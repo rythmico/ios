@@ -26,13 +26,11 @@ extension _AuthenticationService: AuthenticationServiceProtocol {
                 // This is an affordance that does not belong here, violates SRP,
                 // and should be extracted to its own class in charge of updating user details.
                 // For now, impact is small enough that I can justify leaving it here.
-                if let fullName = credential.fullName, let email = credential.email {
+                if let fullName = credential.fullName {
                     let userProfileChangeRequest = authResult.user.createProfileChangeRequest()
                     userProfileChangeRequest.displayName = fullName
                     userProfileChangeRequest.commitChanges { _ in
-                        authResult.user.updateEmail(to: email) { _ in
-                            completionHandler(.success(authResult.user))
-                        }
+                        completionHandler(.success(authResult.user))
                     }
                 } else {
                     completionHandler(.success(authResult.user))

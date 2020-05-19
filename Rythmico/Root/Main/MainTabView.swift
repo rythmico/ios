@@ -5,20 +5,32 @@ import Sugar
 
 struct MainTabView: View, TestableView {
     private let accessTokenProvider: AuthenticationAccessTokenProvider
+    private let pushNotificationRegistrationService: PushNotificationRegistrationServiceProtocol
 
     @State private(set) var lessonRequestView: RequestLessonPlanView?
 
     func presentRequestLessonFlow() {
         lessonRequestView = RequestLessonPlanView(
+            coordinator: RequestLessonPlanCoordinator(
+                service: RequestLessonPlanService(accessTokenProvider: accessTokenProvider)
+            ),
             context: RequestLessonPlanContext(),
             accessTokenProvider: accessTokenProvider,
             instrumentProvider: InstrumentSelectionListProviderFake(),
-            keyboardDismisser: UIApplication.shared
+            keyboardDismisser: UIApplication.shared,
+            notificationsAuthorizationManager: PushNotificationAuthorizationManager(
+                application: .shared,
+                center: .current()
+            )
         )
     }
 
-    init(accessTokenProvider: AuthenticationAccessTokenProvider) {
+    init(
+        accessTokenProvider: AuthenticationAccessTokenProvider,
+        pushNotificationRegistrationService: PushNotificationRegistrationServiceProtocol
+    ) {
         self.accessTokenProvider = accessTokenProvider
+        self.pushNotificationRegistrationService = pushNotificationRegistrationService
     }
 
     var didAppear: Handler<Self>?
@@ -65,11 +77,15 @@ struct MainTabView: View, TestableView {
         .accentColor(.rythmicoPurple)
         .betterSheet(item: $lessonRequestView, content: { $0 })
         .onAppear { self.didAppear?(self) }
+        .onAppear(perform: pushNotificationRegistrationService.registerForPushNotifications)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView(accessTokenProvider: AuthenticationAccessTokenProviderDummy())
+        MainTabView(
+            accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
+            pushNotificationRegistrationService: PushNotificationRegistrationServiceDummy()
+        )
     }
 }

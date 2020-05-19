@@ -3,6 +3,7 @@ import Foundation
 extension Address {
     static var stub: Address {
         Address(
+            id: "ABC",
             latitude: 0,
             longitude: 0,
             line1: "Apartment 30",
