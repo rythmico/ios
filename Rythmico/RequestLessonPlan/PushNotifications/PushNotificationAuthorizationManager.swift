@@ -30,15 +30,17 @@ final class PushNotificationAuthorizationManager: PushNotificationAuthorizationM
 
     override func refreshAuthorizationStatus() {
         center.getNotificationSettings { settings in
-            switch settings.authorizationStatus {
-            case .notDetermined:
-                self.status = .notDetermined
-            case .denied:
-                self.status = .denied
-            case .authorized, .provisional:
-                self.status = .authorized
-            @unknown default:
-                self.status = .notDetermined
+            DispatchQueue.main.async {
+                switch settings.authorizationStatus {
+                case .notDetermined:
+                    self.status = .notDetermined
+                case .denied:
+                    self.status = .denied
+                case .authorized, .provisional:
+                    self.status = .authorized
+                @unknown default:
+                    self.status = .notDetermined
+                }
             }
         }
     }
