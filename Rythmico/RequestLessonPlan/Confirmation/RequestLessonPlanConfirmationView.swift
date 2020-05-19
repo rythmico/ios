@@ -18,7 +18,7 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
     }
 
     var title: String {
-        lessonPlan.instrument.name + " Lessons\nRequest Submitted!"
+        ["\(lessonPlan.instrument.name) Lessons", "Request Submitted!"].joined(separator: "\n")
     }
 
     var subtitle: String {
