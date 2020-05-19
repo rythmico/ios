@@ -22,7 +22,7 @@ final class AddressDetailsViewTests: XCTestCase {
             addressProvider,
             AddressDetailsView(
                 student: .davidStub,
-                instrument: .guitarStub,
+                instrument: .guitar,
                 state: .init(),
                 context: context,
                 addressProvider: addressProvider

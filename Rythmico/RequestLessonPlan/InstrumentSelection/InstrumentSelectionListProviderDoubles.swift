@@ -4,7 +4,7 @@ import struct SwiftUI.Image
 
 final class InstrumentSelectionListProviderFake: InstrumentSelectionListProviderProtocol {
     func instruments(completion: Handler<[Instrument]>) {
-        completion(.allInstrumentsStub)
+        completion(Instrument.allCases)
     }
 }
 

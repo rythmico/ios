@@ -27,7 +27,6 @@
 		03A3F6EC2447D3FD00F6391D /* UIScreen+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6EB2447D3FD00F6391D /* UIScreen+Sugar.swift */; };
 		03A3F6EE2447DFF900F6391D /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6ED2447DFF900F6391D /* Animation.swift */; };
 		03A8116E241D1DAF0091B9ED /* StudentDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */; };
-		03A81170241D1DFB0091B9ED /* InstrumentDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A8116F241D1DFB0091B9ED /* InstrumentDoubles.swift */; };
 		03AAF66C2444FFCC002D8F5B /* Pickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF66B2444FFCC002D8F5B /* Pickers.swift */; };
 		03AAF6712445E0FB002D8F5B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF6702445E0FB002D8F5B /* Schedule.swift */; };
 		03AAF6732445E11A002D8F5B /* ScheduleDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF6722445E11A002D8F5B /* ScheduleDoubles.swift */; };
@@ -239,7 +238,6 @@
 		03A3F6EB2447D3FD00F6391D /* UIScreen+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Sugar.swift"; sourceTree = "<group>"; };
 		03A3F6ED2447DFF900F6391D /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDoubles.swift; sourceTree = "<group>"; };
-		03A8116F241D1DFB0091B9ED /* InstrumentDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentDoubles.swift; sourceTree = "<group>"; };
 		03AAF66B2444FFCC002D8F5B /* Pickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pickers.swift; sourceTree = "<group>"; };
 		03AAF66D2445E03B002D8F5B /* SchedulingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulingViewTests.swift; sourceTree = "<group>"; };
 		03AAF6702445E0FB002D8F5B /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
@@ -788,7 +786,6 @@
 			isa = PBXGroup;
 			children = (
 				D5AAF7D623F9E20C00E410F2 /* Instrument.swift */,
-				03A8116F241D1DFB0091B9ED /* InstrumentDoubles.swift */,
 				D5AAF7DC23FB431E00E410F2 /* InstrumentView.swift */,
 			);
 			path = Instrument;
@@ -1119,7 +1116,6 @@
 				D5B57A712419F79700BE9B4F /* SectionHeaderView.swift in Sources */,
 				D53555C323E536AE005A20EB /* AppleAuthorizationCredentialStateProvider.swift in Sources */,
 				D5AAF7D123F9ACFA00E410F2 /* InstrumentSelectionView.swift in Sources */,
-				03A81170241D1DFB0091B9ED /* InstrumentDoubles.swift in Sources */,
 				D53555B623E53699005A20EB /* AuthenticationService.swift in Sources */,
 				D53555BB23E53699005A20EB /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
 				D53555C223E536AE005A20EB /* AppleAuthorizationCredential.swift in Sources */,

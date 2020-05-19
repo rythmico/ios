@@ -140,7 +140,7 @@ struct AddressDetailsViewPreview: PreviewProvider {
 //        state.addresses = [.stub, .stub, .stub, .stub, .stub, .stub, .stub]
         return AddressDetailsView(
             student: .davidStub,
-            instrument: .guitarStub,
+            instrument: .guitar,
             state: state,
             context: RequestLessonPlanContext(),
             addressProvider: AddressProviderStub(

@@ -90,7 +90,7 @@ struct RequestLessonPlanView_Preview: PreviewProvider {
 //        service.result = .failure("something")
 
         let context = RequestLessonPlanContext()
-        context.instrument = .guitarStub
+        context.instrument = .guitar
         context.student = .davidStub
         context.address = .stub
         context.schedule = .stub

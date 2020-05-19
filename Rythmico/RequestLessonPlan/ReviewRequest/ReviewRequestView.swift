@@ -205,7 +205,7 @@ struct ReviewRequestView_Previews: PreviewProvider {
         ReviewRequestView(
             coordinator: RequestLessonPlanCoordinatorDummy(),
             context: .init(),
-            instrument: .guitarStub,
+            instrument: .guitar,
             student: .davidStub,
             address: .stub,
             schedule: .stub,
