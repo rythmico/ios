@@ -5,7 +5,7 @@ import struct SwiftUI.Image
 final class InstrumentSelectionViewTests: XCTestCase {
     var instrumentSelectionView: (RequestLessonPlanContext, [Instrument], InstrumentSelectionView) {
         let context = RequestLessonPlanContext()
-        let instruments: [Instrument] = [.guitarStub, .singingStub]
+        let instruments: [Instrument] = [.guitar, .singing]
         let instrumentProvider = InstrumentSelectionListProviderStub(instruments: instruments)
         let view = InstrumentSelectionView(state: .init(), context: context, instrumentProvider: instrumentProvider)
 

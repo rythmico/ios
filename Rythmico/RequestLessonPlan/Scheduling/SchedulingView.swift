@@ -215,7 +215,7 @@ struct SchedulingView: View, TestableView {
 struct SchedulingViewPreview: PreviewProvider {
     static var previews: some View {
         SchedulingView(
-            instrument: .guitarStub,
+            instrument: .guitar,
             state: .init(),
             context: RequestLessonPlanContext()
         )

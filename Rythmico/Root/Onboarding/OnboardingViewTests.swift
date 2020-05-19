@@ -21,13 +21,29 @@ final class OnboardingViewTests: XCTestCase {
         )
     }
 
+    func testPushNotificationsUnregistrationOnAppear() {
+        let spy = PushNotificationUnregistrationServiceSpy()
+
+        let view = OnboardingView(
+            appleAuthorizationService: authorizationService(withErrorCode: .failed),
+            authenticationService: AuthenticationServiceDummy(),
+            keychain: KeychainFake(),
+            pushNotificationUnregistrationService: spy
+        )
+
+        XCTAssertView(view) { view in
+            XCTAssertEqual(spy.unregisterCount, 1)
+        }
+    }
+
     func testFailedAuthorization() {
         let keychain = KeychainFake()
 
         let view = OnboardingView(
             appleAuthorizationService: authorizationService(withErrorCode: .failed),
             authenticationService: AuthenticationServiceDummy(),
-            keychain: keychain
+            keychain: keychain,
+            pushNotificationUnregistrationService: PushNotificationUnregistrationServiceDummy()
         )
 
         XCTAssertView(view) { view in
@@ -44,7 +60,8 @@ final class OnboardingViewTests: XCTestCase {
         let view = OnboardingView(
             appleAuthorizationService: AppleAuthorizationServiceStub(expectedResult: .success(credential)),
             authenticationService: authenticationService(withErrorCode: .invalidCredential),
-            keychain: keychain
+            keychain: keychain,
+            pushNotificationUnregistrationService: PushNotificationUnregistrationServiceDummy()
         )
 
         XCTAssertView(view) { view in
@@ -63,7 +80,8 @@ final class OnboardingViewTests: XCTestCase {
         let view = OnboardingView(
             appleAuthorizationService: AppleAuthorizationServiceStub(expectedResult: .success(credential)),
             authenticationService: AuthenticationServiceStub(expectedResult: .success(AuthenticationAccessTokenProviderDummy())),
-            keychain: keychain
+            keychain: keychain,
+            pushNotificationUnregistrationService: PushNotificationUnregistrationServiceDummy()
         )
 
         XCTAssertView(view) { view in

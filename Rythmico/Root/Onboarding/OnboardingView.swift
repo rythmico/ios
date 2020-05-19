@@ -5,6 +5,7 @@ struct OnboardingView: View, TestableView {
     private let appleAuthorizationService: AppleAuthorizationServiceProtocol
     private let authenticationService: AuthenticationServiceProtocol
     private let keychain: KeychainProtocol
+    private let pushNotificationUnregistrationService: PushNotificationUnregistrationServiceProtocol
 
     @State
     var isLoading: Bool = false
@@ -16,11 +17,13 @@ struct OnboardingView: View, TestableView {
     init(
         appleAuthorizationService: AppleAuthorizationServiceProtocol,
         authenticationService: AuthenticationServiceProtocol,
-        keychain: KeychainProtocol
+        keychain: KeychainProtocol,
+        pushNotificationUnregistrationService: PushNotificationUnregistrationServiceProtocol
     ) {
         self.appleAuthorizationService = appleAuthorizationService
         self.authenticationService = authenticationService
         self.keychain = keychain
+        self.pushNotificationUnregistrationService = pushNotificationUnregistrationService
     }
 
     var didAppear: Handler<Self>?
@@ -61,6 +64,7 @@ struct OnboardingView: View, TestableView {
             UIAccessibility.post(notification: .announcement, argument: "Welcome")
         }
         .onAppear { self.didAppear?(self) }
+        .onAppear(perform: pushNotificationUnregistrationService.unregisterForPushNotifications)
     }
 
     func authenticateWithApple() {
@@ -131,7 +135,8 @@ struct OnboardingView_Preview: PreviewProvider {
             OnboardingView(
                 appleAuthorizationService: authorizationService,
                 authenticationService: authenticationService,
-                keychain: keychain
+                keychain: keychain,
+                pushNotificationUnregistrationService: PushNotificationUnregistrationServiceDummy()
             ).environment(\.sizeCategory, $0)
         }
     }

@@ -2,7 +2,7 @@ import APIKit
 import Sugar
 
 protocol AddressProviderProtocol: AnyObject {
-    typealias CompletionHandler = SimpleResultHandler<[Address]>
+    typealias CompletionHandler = SimpleResultHandler<[AddressDetails]>
     func addresses(withPostcode postcode: String, completion: @escaping CompletionHandler)
 }
 
@@ -22,7 +22,7 @@ final class AddressSearchService: AddressProviderProtocol {
                     let session = Session(adapter: URLSessionAdapter(configuration: self.sessionConfiguration))
                     let request = try AddressSearchRequest(accessToken: accessToken, postcode: postcode)
                     session.send(request, callbackQueue: .main) { result in
-                        completion(result.map([Address].init).mapError { $0 as Error })
+                        completion(result.map([AddressDetails].init).mapError { $0 as Error })
                     }
                 } catch {
                     completion(.failure(error))
@@ -34,10 +34,10 @@ final class AddressSearchService: AddressProviderProtocol {
     }
 }
 
-private extension Array where Element == Address {
+private extension Array where Element == AddressDetails {
     init(_ response: AddressSearchRequest.Response) {
         self = response.addresses.map {
-            Address(
+            AddressDetails(
                 latitude: response.latitude,
                 longitude: response.longitude,
                 line1: $0.line1, line2: $0.line2,

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03080EEB2466FDD9008715EE /* RequestLessonPlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03080EEA2466FDD9008715EE /* RequestLessonPlanService.swift */; };
+		03080EED2466FE21008715EE /* LessonPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03080EEC2466FE21008715EE /* LessonPlan.swift */; };
+		03306F74247347570074AA98 /* RequestLessonPlanViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03306F73247347570074AA98 /* RequestLessonPlanViewTests.swift */; };
 		03341B3F23ABB1E7009AE8A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */; };
 		03341B4523ABB1E8009AE8A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4423ABB1E8009AE8A8 /* Assets.xcassets */; };
 		03341B4823ABB1E8009AE8A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4723ABB1E8009AE8A8 /* Preview Assets.xcassets */; };
@@ -24,19 +27,37 @@
 		03A3F6EC2447D3FD00F6391D /* UIScreen+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6EB2447D3FD00F6391D /* UIScreen+Sugar.swift */; };
 		03A3F6EE2447DFF900F6391D /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6ED2447DFF900F6391D /* Animation.swift */; };
 		03A8116E241D1DAF0091B9ED /* StudentDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */; };
-		03A81170241D1DFB0091B9ED /* InstrumentDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A8116F241D1DFB0091B9ED /* InstrumentDoubles.swift */; };
 		03AAF66C2444FFCC002D8F5B /* Pickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF66B2444FFCC002D8F5B /* Pickers.swift */; };
 		03AAF6712445E0FB002D8F5B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF6702445E0FB002D8F5B /* Schedule.swift */; };
 		03AAF6732445E11A002D8F5B /* ScheduleDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF6722445E11A002D8F5B /* ScheduleDoubles.swift */; };
 		03AAF6752445E16A002D8F5B /* SchedulingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF66D2445E03B002D8F5B /* SchedulingViewTests.swift */; };
 		03AB22F3244CB13200DAC7DF /* PrivateNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AB22F2244CB13200DAC7DF /* PrivateNoteView.swift */; };
+		03B19837247053F5005529EB /* APIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 03B19836247053F5005529EB /* APIKit */; };
+		03B1983924705894005529EB /* AddressDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1983824705894005529EB /* AddressDetails.swift */; };
+		03B1983B247175BE005529EB /* RequestLessonPlanCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1983A247175BE005529EB /* RequestLessonPlanCoordinator.swift */; };
+		03B1983D247179F6005529EB /* RequestLessonPlanServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1983C247179F6005529EB /* RequestLessonPlanServiceDoubles.swift */; };
+		03B1983F24717A90005529EB /* LessonPlanDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1983E24717A90005529EB /* LessonPlanDoubles.swift */; };
+		03B1984124717AE8005529EB /* AddressDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984024717AE8005529EB /* AddressDoubles.swift */; };
+		03B19843247181B3005529EB /* RequestLessonPlanFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */; };
+		03B1984524719105005529EB /* RequestLessonPlanLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984424719105005529EB /* RequestLessonPlanLoadingView.swift */; };
+		03B1984B2471B098005529EB /* FirebaseMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B1984A2471B098005529EB /* FirebaseMessaging.framework */; };
+		03B1984E2471B9AA005529EB /* AppDelegate+Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984D2471B9AA005529EB /* AppDelegate+Window.swift */; };
+		03B198502471B9F7005529EB /* AppDelegate+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984F2471B9F7005529EB /* AppDelegate+Appearance.swift */; };
+		03B198542471BBE8005529EB /* AppDelegate+PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198532471BBE8005529EB /* AppDelegate+PushNotifications.swift */; };
+		03B198562471BD6C005529EB /* PushNotificationAuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198552471BD6C005529EB /* PushNotificationAuthorizationManager.swift */; };
+		03B198582471BD82005529EB /* RequestLessonPlanConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198572471BD82005529EB /* RequestLessonPlanConfirmationView.swift */; };
+		03B1985A2471C325005529EB /* PushNotificationAuthorizationManagerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198592471C325005529EB /* PushNotificationAuthorizationManagerDoubles.swift */; };
 		03B4A32224468758004282F4 /* Date+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B4A32124468758004282F4 /* Date+Sugar.swift */; };
 		03B71324241D71B600DED025 /* Error+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B71323241D71B600DED025 /* Error+Sugar.swift */; };
-		03FA2D7B241D51BD004140DE /* APIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 03FA2D7A241D51BD004140DE /* APIKit */; };
+		03BB5C912472D85A00B44692 /* PushNotificationRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C902472D85A00B44692 /* PushNotificationRegistrationService.swift */; };
+		03BB5C942472FEA900B44692 /* PushNotificationRegistrationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C932472FEA900B44692 /* PushNotificationRegistrationServiceDoubles.swift */; };
+		03BB5C962473070C00B44692 /* ReviewRequestViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C952473070C00B44692 /* ReviewRequestViewTests.swift */; };
+		03BB5C982473357300B44692 /* RequestLessonPlanCoordinatorDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C972473357300B44692 /* RequestLessonPlanCoordinatorDoubles.swift */; };
+		03BB5C9A24733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C9924733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift */; };
 		03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE818F244E169200C5C184 /* ReviewRequestView.swift */; };
 		03FE8192244E204900C5C184 /* AddressItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE8191244E204900C5C184 /* AddressItemView.swift */; };
 		D50811E423FB72A3008103D8 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E323FB72A3008103D8 /* StepBar.swift */; };
-		D50811E623FB769D008103D8 /* RequestLessonPlanViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E523FB769D008103D8 /* RequestLessonPlanViewTests.swift */; };
+		D50811E623FB769D008103D8 /* RequestLessonPlanFormViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */; };
 		D50811EA23FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E923FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift */; };
 		D509898023B969B700C19300 /* GoogleService-Info-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */; };
 		D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898423B9B5C100C19300 /* GoogleService-Info.plist */; };
@@ -114,7 +135,7 @@
 		D53555E623E5383C005A20EB /* AppleAuthorizationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560E23CD384300BC8485 /* AppleAuthorizationServiceTests.swift */; };
 		D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */; };
 		D5473C9F241AC3CB00D66775 /* AddressDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5473C9D241AC3B800D66775 /* AddressDetailsViewTests.swift */; };
-		D5473CA1241AC4A000D66775 /* AddressDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5473CA0241AC4A000D66775 /* AddressDoubles.swift */; };
+		D5473CA1241AC4A000D66775 /* AddressDetailsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5473CA0241AC4A000D66775 /* AddressDetailsDoubles.swift */; };
 		D54A561723CD577800BC8485 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561623CD577800BC8485 /* main.swift */; };
 		D5AAF7C823ECC87000E410F2 /* RequestLessonPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */; };
 		D5AAF7CB23ED850E00E410F2 /* BetterSheet in Frameworks */ = {isa = PBXBuildFile; productRef = D5AAF7CA23ED850E00E410F2 /* BetterSheet */; };
@@ -194,6 +215,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03080EEA2466FDD9008715EE /* RequestLessonPlanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanService.swift; sourceTree = "<group>"; };
+		03080EEC2466FE21008715EE /* LessonPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlan.swift; sourceTree = "<group>"; };
+		03306F73247347570074AA98 /* RequestLessonPlanViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanViewTests.swift; sourceTree = "<group>"; };
 		03341B3B23ABB1E7009AE8A8 /* Rythmico.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rythmico.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03341B4223ABB1E7009AE8A8 /* MainTabViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewTests.swift; sourceTree = "<group>"; };
@@ -214,19 +238,37 @@
 		03A3F6EB2447D3FD00F6391D /* UIScreen+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Sugar.swift"; sourceTree = "<group>"; };
 		03A3F6ED2447DFF900F6391D /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDoubles.swift; sourceTree = "<group>"; };
-		03A8116F241D1DFB0091B9ED /* InstrumentDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentDoubles.swift; sourceTree = "<group>"; };
 		03AAF66B2444FFCC002D8F5B /* Pickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pickers.swift; sourceTree = "<group>"; };
 		03AAF66D2445E03B002D8F5B /* SchedulingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulingViewTests.swift; sourceTree = "<group>"; };
 		03AAF6702445E0FB002D8F5B /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		03AAF6722445E11A002D8F5B /* ScheduleDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDoubles.swift; sourceTree = "<group>"; };
 		03AB22F2244CB13200DAC7DF /* PrivateNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateNoteView.swift; sourceTree = "<group>"; };
+		03B1983824705894005529EB /* AddressDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetails.swift; sourceTree = "<group>"; };
+		03B1983A247175BE005529EB /* RequestLessonPlanCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanCoordinator.swift; sourceTree = "<group>"; };
+		03B1983C247179F6005529EB /* RequestLessonPlanServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanServiceDoubles.swift; sourceTree = "<group>"; };
+		03B1983E24717A90005529EB /* LessonPlanDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanDoubles.swift; sourceTree = "<group>"; };
+		03B1984024717AE8005529EB /* AddressDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDoubles.swift; sourceTree = "<group>"; };
+		03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanFormView.swift; sourceTree = "<group>"; };
+		03B1984424719105005529EB /* RequestLessonPlanLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanLoadingView.swift; sourceTree = "<group>"; };
+		03B1984A2471B098005529EB /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseMessaging.framework; path = Carthage/Build/iOS/FirebaseMessaging.framework; sourceTree = "<group>"; };
+		03B1984D2471B9AA005529EB /* AppDelegate+Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Window.swift"; sourceTree = "<group>"; };
+		03B1984F2471B9F7005529EB /* AppDelegate+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Appearance.swift"; sourceTree = "<group>"; };
+		03B198532471BBE8005529EB /* AppDelegate+PushNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+PushNotifications.swift"; sourceTree = "<group>"; };
+		03B198552471BD6C005529EB /* PushNotificationAuthorizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationAuthorizationManager.swift; sourceTree = "<group>"; };
+		03B198572471BD82005529EB /* RequestLessonPlanConfirmationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanConfirmationView.swift; sourceTree = "<group>"; };
+		03B198592471C325005529EB /* PushNotificationAuthorizationManagerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationAuthorizationManagerDoubles.swift; sourceTree = "<group>"; };
 		03B4A32124468758004282F4 /* Date+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Sugar.swift"; sourceTree = "<group>"; };
 		03B71323241D71B600DED025 /* Error+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Sugar.swift"; sourceTree = "<group>"; };
+		03BB5C902472D85A00B44692 /* PushNotificationRegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationRegistrationService.swift; sourceTree = "<group>"; };
+		03BB5C932472FEA900B44692 /* PushNotificationRegistrationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationRegistrationServiceDoubles.swift; sourceTree = "<group>"; };
+		03BB5C952473070C00B44692 /* ReviewRequestViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestViewTests.swift; sourceTree = "<group>"; };
+		03BB5C972473357300B44692 /* RequestLessonPlanCoordinatorDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanCoordinatorDoubles.swift; sourceTree = "<group>"; };
+		03BB5C9924733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanConfirmationViewTests.swift; sourceTree = "<group>"; };
 		03FE818F244E169200C5C184 /* ReviewRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestView.swift; sourceTree = "<group>"; };
 		03FE8191244E204900C5C184 /* AddressItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressItemView.swift; sourceTree = "<group>"; };
 		D50668DA23B946330044E553 /* Rythmico.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rythmico.entitlements; sourceTree = "<group>"; };
 		D50811E323FB72A3008103D8 /* StepBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
-		D50811E523FB769D008103D8 /* RequestLessonPlanViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanViewTests.swift; sourceTree = "<group>"; };
+		D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanFormViewTests.swift; sourceTree = "<group>"; };
 		D50811E923FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionViewModelTests.swift; sourceTree = "<group>"; };
 		D509896523B963B700C19300 /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Carthage/Build/iOS/FirebaseAuth.framework; sourceTree = "<group>"; };
 		D509896623B963B700C19300 /* GoogleDataTransport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleDataTransport.framework; path = Carthage/Build/iOS/GoogleDataTransport.framework; sourceTree = "<group>"; };
@@ -286,7 +328,7 @@
 		D535556523E4F8BF005A20EB /* FirebasePerformance.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebasePerformance.framework; path = Carthage/Build/iOS/FirebasePerformance.framework; sourceTree = "<group>"; };
 		D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanContext.swift; sourceTree = "<group>"; };
 		D5473C9D241AC3B800D66775 /* AddressDetailsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetailsViewTests.swift; sourceTree = "<group>"; };
-		D5473CA0241AC4A000D66775 /* AddressDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDoubles.swift; sourceTree = "<group>"; };
+		D5473CA0241AC4A000D66775 /* AddressDetailsDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetailsDoubles.swift; sourceTree = "<group>"; };
 		D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationServiceDoubles.swift; sourceTree = "<group>"; };
 		D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HashFunction+Helpers.swift"; sourceTree = "<group>"; };
 		D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationController.swift; sourceTree = "<group>"; };
@@ -373,11 +415,12 @@
 				D53555DF23E53704005A20EB /* FirebaseInstanceID.framework in Frameworks */,
 				D53555E023E53704005A20EB /* GoogleAppMeasurement.framework in Frameworks */,
 				D53555E123E53704005A20EB /* GoogleDataTransport.framework in Frameworks */,
+				03B1984B2471B098005529EB /* FirebaseMessaging.framework in Frameworks */,
 				D53555E223E53704005A20EB /* GoogleDataTransportCCTSupport.framework in Frameworks */,
 				D53555E323E53704005A20EB /* GoogleUtilities.framework in Frameworks */,
 				D53555E423E53704005A20EB /* GTMSessionFetcher.framework in Frameworks */,
 				D53555E523E53704005A20EB /* nanopb.framework in Frameworks */,
-				03FA2D7B241D51BD004140DE /* APIKit in Frameworks */,
+				03B19837247053F5005529EB /* APIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,7 +529,9 @@
 			isa = PBXGroup;
 			children = (
 				0365F6EF2417E79000F452AC /* Address.swift */,
-				D5473CA0241AC4A000D66775 /* AddressDoubles.swift */,
+				03B1984024717AE8005529EB /* AddressDoubles.swift */,
+				03B1983824705894005529EB /* AddressDetails.swift */,
+				D5473CA0241AC4A000D66775 /* AddressDetailsDoubles.swift */,
 				03FE8191244E204900C5C184 /* AddressItemView.swift */,
 			);
 			path = Address;
@@ -501,29 +546,92 @@
 			path = Student;
 			sourceTree = "<group>";
 		};
+		03BB5C9B24733F6C00B44692 /* ReviewRequest */ = {
+			isa = PBXGroup;
+			children = (
+				03FE818F244E169200C5C184 /* ReviewRequestView.swift */,
+				03BB5C952473070C00B44692 /* ReviewRequestViewTests.swift */,
+			);
+			path = ReviewRequest;
+			sourceTree = "<group>";
+		};
+		03BB5C9C247345BE00B44692 /* Confirmation */ = {
+			isa = PBXGroup;
+			children = (
+				03B198572471BD82005529EB /* RequestLessonPlanConfirmationView.swift */,
+				03BB5C9924733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift */,
+			);
+			path = Confirmation;
+			sourceTree = "<group>";
+		};
+		03BB5C9D247345E200B44692 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				03B1984424719105005529EB /* RequestLessonPlanLoadingView.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		03BB5C9E2473463200B44692 /* LessonPlan */ = {
+			isa = PBXGroup;
+			children = (
+				03080EEC2466FE21008715EE /* LessonPlan.swift */,
+				03B1983E24717A90005529EB /* LessonPlanDoubles.swift */,
+			);
+			path = LessonPlan;
+			sourceTree = "<group>";
+		};
+		03BB5C9F2473465800B44692 /* LessonPlanRequestFlow */ = {
+			isa = PBXGroup;
+			children = (
+				D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */,
+				03306F73247347570074AA98 /* RequestLessonPlanViewTests.swift */,
+				D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */,
+				03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */,
+				D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */,
+				03B1983A247175BE005529EB /* RequestLessonPlanCoordinator.swift */,
+				03BB5C972473357300B44692 /* RequestLessonPlanCoordinatorDoubles.swift */,
+				03080EEA2466FDD9008715EE /* RequestLessonPlanService.swift */,
+				03B1983C247179F6005529EB /* RequestLessonPlanServiceDoubles.swift */,
+			);
+			path = LessonPlanRequestFlow;
+			sourceTree = "<group>";
+		};
+		03BB5CA02473467500B44692 /* PushNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				03B198552471BD6C005529EB /* PushNotificationAuthorizationManager.swift */,
+				03B198592471C325005529EB /* PushNotificationAuthorizationManagerDoubles.swift */,
+				03BB5C902472D85A00B44692 /* PushNotificationRegistrationService.swift */,
+				03BB5C932472FEA900B44692 /* PushNotificationRegistrationServiceDoubles.swift */,
+			);
+			path = PushNotifications;
+			sourceTree = "<group>";
+		};
 		D509896423B963B700C19300 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D535556123E4F8BE005A20EB /* FirebaseABTesting.framework */,
-				D535556423E4F8BF005A20EB /* FirebaseCrashlytics.framework */,
-				D535555F23E4F8BE005A20EB /* FirebaseInstallations.framework */,
-				D535556523E4F8BF005A20EB /* FirebasePerformance.framework */,
-				D535556223E4F8BE005A20EB /* FirebaseRemoteConfig.framework */,
-				D535555E23E4F8BE005A20EB /* GoogleToolboxForMac.framework */,
-				D535556323E4F8BF005A20EB /* PromisesObjC.framework */,
-				D535556023E4F8BE005A20EB /* Protobuf.framework */,
 				D509896C23B963B700C19300 /* FIRAnalyticsConnector.framework */,
+				D535556123E4F8BE005A20EB /* FirebaseABTesting.framework */,
 				D509896B23B963B700C19300 /* FirebaseAnalytics.framework */,
 				D509896523B963B700C19300 /* FirebaseAuth.framework */,
 				D509896F23B963B700C19300 /* FirebaseCore.framework */,
 				D509896E23B963B700C19300 /* FirebaseCoreDiagnostics.framework */,
+				D535556423E4F8BF005A20EB /* FirebaseCrashlytics.framework */,
+				D535555F23E4F8BE005A20EB /* FirebaseInstallations.framework */,
 				D509896823B963B700C19300 /* FirebaseInstanceID.framework */,
+				03B1984A2471B098005529EB /* FirebaseMessaging.framework */,
+				D535556523E4F8BF005A20EB /* FirebasePerformance.framework */,
+				D535556223E4F8BE005A20EB /* FirebaseRemoteConfig.framework */,
 				D509896D23B963B700C19300 /* GoogleAppMeasurement.framework */,
 				D509896623B963B700C19300 /* GoogleDataTransport.framework */,
 				D509897023B963B700C19300 /* GoogleDataTransportCCTSupport.framework */,
+				D535555E23E4F8BE005A20EB /* GoogleToolboxForMac.framework */,
 				D509896A23B963B700C19300 /* GoogleUtilities.framework */,
 				D509896723B963B700C19300 /* GTMSessionFetcher.framework */,
 				D509897123B963B700C19300 /* nanopb.framework */,
+				D535556323E4F8BF005A20EB /* PromisesObjC.framework */,
+				D535556023E4F8BE005A20EB /* Protobuf.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -644,9 +752,8 @@
 		D54317ED23FDB00700CB1493 /* RequestLessonPlan */ = {
 			isa = PBXGroup;
 			children = (
-				D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */,
-				D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */,
-				D50811E523FB769D008103D8 /* RequestLessonPlanViewTests.swift */,
+				03BB5C9F2473465800B44692 /* LessonPlanRequestFlow */,
+				03BB5C9E2473463200B44692 /* LessonPlan */,
 				D54317EE23FDB01700CB1493 /* InstrumentSelection */,
 				D54317EF23FDB02600CB1493 /* Instrument */,
 				D5F506B12405B5AA00CA4094 /* StudentDetails */,
@@ -656,7 +763,10 @@
 				03AAF66F2445E041002D8F5B /* Scheduling */,
 				03AAF6742445E123002D8F5B /* Schedule */,
 				0392A9D2244D1824001E97AE /* PrivateNote */,
-				03FE818F244E169200C5C184 /* ReviewRequestView.swift */,
+				03BB5C9B24733F6C00B44692 /* ReviewRequest */,
+				03BB5C9D247345E200B44692 /* Loading */,
+				03BB5C9C247345BE00B44692 /* Confirmation */,
+				03BB5CA02473467500B44692 /* PushNotifications */,
 			);
 			path = RequestLessonPlan;
 			sourceTree = "<group>";
@@ -676,7 +786,6 @@
 			isa = PBXGroup;
 			children = (
 				D5AAF7D623F9E20C00E410F2 /* Instrument.swift */,
-				03A8116F241D1DFB0091B9ED /* InstrumentDoubles.swift */,
 				D5AAF7DC23FB431E00E410F2 /* InstrumentView.swift */,
 			);
 			path = Instrument;
@@ -749,6 +858,9 @@
 				03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */,
 				D54A561623CD577800BC8485 /* main.swift */,
 				03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */,
+				03B1984F2471B9F7005529EB /* AppDelegate+Appearance.swift */,
+				03B198532471BBE8005529EB /* AppDelegate+PushNotifications.swift */,
+				03B1984D2471B9AA005529EB /* AppDelegate+Window.swift */,
 				D5C23A75240F0186007DED63 /* TestDelegate.swift */,
 				D535554D23E38763005A20EB /* Window.swift */,
 			);
@@ -793,7 +905,7 @@
 				D535554B23E23EA7005A20EB /* Then */,
 				D5AAF7CA23ED850E00E410F2 /* BetterSheet */,
 				D5F5066D24006CDD00CA4094 /* KeyboardObserver */,
-				03FA2D7A241D51BD004140DE /* APIKit */,
+				03B19836247053F5005529EB /* APIKit */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -845,7 +957,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "David Roman";
 				TargetAttributes = {
 					03341B3A23ABB1E7009AE8A8 = {
@@ -877,7 +989,7 @@
 				D5AAF7C923ED850E00E410F2 /* XCRemoteSwiftPackageReference "BetterSheet" */,
 				D5F5066C24006CDD00CA4094 /* XCRemoteSwiftPackageReference "KeyboardObserver" */,
 				D514750B240C90DE002EE20C /* XCRemoteSwiftPackageReference "ViewInspector" */,
-				03FA2D79241D51BD004140DE /* XCRemoteSwiftPackageReference "APIKit" */,
+				03B19835247053F5005529EB /* XCRemoteSwiftPackageReference "APIKit" */,
 			);
 			productRefGroup = 03341B3C23ABB1E7009AE8A8 /* Products */;
 			projectDirPath = "";
@@ -987,21 +1099,23 @@
 				D5B57A6D2419DA5B00BE9B4F /* AddressSelectionView.swift in Sources */,
 				03341B3F23ABB1E7009AE8A8 /* AppDelegate.swift in Sources */,
 				D53555C023E53699005A20EB /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */,
-				D5473CA1241AC4A000D66775 /* AddressDoubles.swift in Sources */,
+				D5473CA1241AC4A000D66775 /* AddressDetailsDoubles.swift in Sources */,
 				D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */,
 				03AAF66C2444FFCC002D8F5B /* Pickers.swift in Sources */,
 				D5F5068E240473CB00CA4094 /* FloatingInputView.swift in Sources */,
 				0392A9CF244D09FF001E97AE /* ContentSizeCategory+Sugar.swift in Sources */,
 				D5AAF7C823ECC87000E410F2 /* RequestLessonPlanView.swift in Sources */,
 				D5BA171223D7AB3B00954D50 /* MainTabView.swift in Sources */,
+				03080EED2466FE21008715EE /* LessonPlan.swift in Sources */,
 				D53555CF23E536AE005A20EB /* AppleAuthorizationCompletionDelegate.swift in Sources */,
 				D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */,
 				D53555C623E536AE005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,
+				03BB5C982473357300B44692 /* RequestLessonPlanCoordinatorDoubles.swift in Sources */,
+				03B1984124717AE8005529EB /* AddressDoubles.swift in Sources */,
 				D53555BD23E53699005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */,
 				D5B57A712419F79700BE9B4F /* SectionHeaderView.swift in Sources */,
 				D53555C323E536AE005A20EB /* AppleAuthorizationCredentialStateProvider.swift in Sources */,
 				D5AAF7D123F9ACFA00E410F2 /* InstrumentSelectionView.swift in Sources */,
-				03A81170241D1DFB0091B9ED /* InstrumentDoubles.swift in Sources */,
 				D53555B623E53699005A20EB /* AuthenticationService.swift in Sources */,
 				D53555BB23E53699005A20EB /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
 				D53555C223E536AE005A20EB /* AppleAuthorizationCredential.swift in Sources */,
@@ -1016,15 +1130,20 @@
 				D50811E423FB72A3008103D8 /* StepBar.swift in Sources */,
 				D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */,
 				D5AAF7D523F9E1F900E410F2 /* InstrumentSelectionListProvider.swift in Sources */,
+				03B1983D247179F6005529EB /* RequestLessonPlanServiceDoubles.swift in Sources */,
 				03A3F6EE2447DFF900F6391D /* Animation.swift in Sources */,
+				03B1984524719105005529EB /* RequestLessonPlanLoadingView.swift in Sources */,
 				D5BA171023D7A18900954D50 /* RootView.swift in Sources */,
 				D5C23A76240F0186007DED63 /* TestDelegate.swift in Sources */,
+				03080EEB2466FDD9008715EE /* RequestLessonPlanService.swift in Sources */,
 				D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */,
 				0336D62C241EAAF6006CFC1F /* APIRequest.swift in Sources */,
+				03B1984E2471B9AA005529EB /* AppDelegate+Window.swift in Sources */,
 				03A094622443D8E1008B4BD6 /* EditingCoordinator.swift in Sources */,
 				D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */,
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
 				D53555CE23E536AE005A20EB /* AppleAuthorizationControllerDoubles.swift in Sources */,
+				03B198542471BBE8005529EB /* AppDelegate+PushNotifications.swift in Sources */,
 				D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */,
 				D5C23A7C240FEF30007DED63 /* TapView.swift in Sources */,
 				D5F506652400619600CA4094 /* UIApplication+KeyboardDismisser.swift in Sources */,
@@ -1035,6 +1154,7 @@
 				03A3F6EC2447D3FD00F6391D /* UIScreen+Sugar.swift in Sources */,
 				D53555C523E536AE005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
 				D53555C823E536AE005A20EB /* AppleAuthorizationResponse.swift in Sources */,
+				03B198582471BD82005529EB /* RequestLessonPlanConfirmationView.swift in Sources */,
 				D5147508240C8E69002EE20C /* TestableView.swift in Sources */,
 				D5E04B1923BED80700A161BB /* Fonts.swift in Sources */,
 				D5B57A6724147F5100BE9B4F /* EnumProperties.generated.swift in Sources */,
@@ -1043,11 +1163,16 @@
 				D5F506B02405A6A900CA4094 /* Duration.swift in Sources */,
 				D5AAF7D923F9EB1200E410F2 /* InstrumentSelectionListProviderDoubles.swift in Sources */,
 				0365F6F52417F1E900F452AC /* AddressProvider.swift in Sources */,
+				03B198562471BD6C005529EB /* PushNotificationAuthorizationManager.swift in Sources */,
 				D5F5067B2400788400CA4094 /* MultilineTextField.swift in Sources */,
 				03AAF6732445E11A002D8F5B /* ScheduleDoubles.swift in Sources */,
 				D5F5065F240055E800CA4094 /* TitleContentView.swift in Sources */,
 				03AB22F3244CB13200DAC7DF /* PrivateNoteView.swift in Sources */,
 				D5F50663240056FA00CA4094 /* RoundedThinOutlineContainer.swift in Sources */,
+				03BB5C912472D85A00B44692 /* PushNotificationRegistrationService.swift in Sources */,
+				03B1983F24717A90005529EB /* LessonPlanDoubles.swift in Sources */,
+				03B1983924705894005529EB /* AddressDetails.swift in Sources */,
+				03B1983B247175BE005529EB /* RequestLessonPlanCoordinator.swift in Sources */,
 				D53555C423E536AE005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
 				D53555CD23E536AE005A20EB /* AppleAuthorizationController.swift in Sources */,
 				D53555BA23E53699005A20EB /* AuthenticationAccessTokenProvider.swift in Sources */,
@@ -1065,11 +1190,15 @@
 				D5B57A6B2419B95D00BE9B4F /* AddressProviderDoubles.swift in Sources */,
 				0365F6F02417E79000F452AC /* Address.swift in Sources */,
 				D5F506BA240637F400CA4094 /* Buttons.swift in Sources */,
+				03B1985A2471C325005529EB /* PushNotificationAuthorizationManagerDoubles.swift in Sources */,
 				D53555CC23E536AE005A20EB /* AppleAuthorizationServiceDoubles.swift in Sources */,
 				D5F506BE2406E49A00CA4094 /* EdgeSwipeView.swift in Sources */,
 				D5AAF7DB23FB347C00E410F2 /* CollectionView.swift in Sources */,
 				D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */,
 				03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */,
+				03B19843247181B3005529EB /* RequestLessonPlanFormView.swift in Sources */,
+				03BB5C942472FEA900B44692 /* PushNotificationRegistrationServiceDoubles.swift in Sources */,
+				03B198502471B9F7005529EB /* AppDelegate+Appearance.swift in Sources */,
 				D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */,
 				D5F5068C24046B1400CA4094 /* Spacing.swift in Sources */,
 				D535547923DF3A7C005A20EB /* Keychain.swift in Sources */,
@@ -1104,13 +1233,16 @@
 			files = (
 				D535553823E116C9005A20EB /* RootViewTests.swift in Sources */,
 				D5C23A74240EFDCB007DED63 /* MainTabViewTests.swift in Sources */,
+				03306F74247347570074AA98 /* RequestLessonPlanViewTests.swift in Sources */,
+				03BB5C962473070C00B44692 /* ReviewRequestViewTests.swift in Sources */,
 				D53555E623E5383C005A20EB /* AppleAuthorizationServiceTests.swift in Sources */,
 				D514750F240C96F0002EE20C /* XCTAssertView.swift in Sources */,
 				D5473C9F241AC3CB00D66775 /* AddressDetailsViewTests.swift in Sources */,
 				D535553623E105A5005A20EB /* OnboardingViewTests.swift in Sources */,
 				0392A9D3244D184F001E97AE /* PrivateNoteViewTests.swift in Sources */,
 				D5FD6F16240AF535008C5AD4 /* StudentDetailsViewTests.swift in Sources */,
-				D50811E623FB769D008103D8 /* RequestLessonPlanViewTests.swift in Sources */,
+				03BB5C9A24733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift in Sources */,
+				D50811E623FB769D008103D8 /* RequestLessonPlanFormViewTests.swift in Sources */,
 				03AAF6752445E16A002D8F5B /* SchedulingViewTests.swift in Sources */,
 				D53555C123E536A6005A20EB /* AuthenticationAccessTokenProviderObserverTests.swift in Sources */,
 				D53555D023E536B5005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift in Sources */,
@@ -1329,7 +1461,7 @@
 		D53554FF23E0FD77005A20EB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 72N659HYBR;
@@ -1359,7 +1491,7 @@
 		D535550023E0FD77005A20EB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 72N659HYBR;
@@ -1479,7 +1611,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		03FA2D79241D51BD004140DE /* XCRemoteSwiftPackageReference "APIKit" */ = {
+		03B19835247053F5005529EB /* XCRemoteSwiftPackageReference "APIKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/davdroman/APIKit";
 			requirement = {
@@ -1538,9 +1670,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		03FA2D7A241D51BD004140DE /* APIKit */ = {
+		03B19836247053F5005529EB /* APIKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 03FA2D79241D51BD004140DE /* XCRemoteSwiftPackageReference "APIKit" */;
+			package = 03B19835247053F5005529EB /* XCRemoteSwiftPackageReference "APIKit" */;
 			productName = APIKit;
 		};
 		D514750C240C90DE002EE20C /* ViewInspector */ = {

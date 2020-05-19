@@ -2,8 +2,23 @@ import XCTest
 @testable import Rythmico
 
 final class MainTabViewTests: XCTestCase {
+    func testPushNotificationRegistrationOnAppear() {
+        let spy = PushNotificationRegistrationServiceSpy()
+        let view = MainTabView(
+            accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
+            pushNotificationRegistrationService: spy
+        )
+
+        XCTAssertView(view) { view in
+            XCTAssertEqual(spy.registerCount, 1)
+        }
+    }
+
     func testPresentRequestLessonFlow() {
-        let view = MainTabView(accessTokenProvider: AuthenticationAccessTokenProviderDummy())
+        let view = MainTabView(
+            accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
+            pushNotificationRegistrationService: PushNotificationRegistrationServiceDummy()
+        )
 
         XCTAssertView(view) { view in
             XCTAssertNil(view.lessonRequestView)
