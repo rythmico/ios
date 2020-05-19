@@ -5,7 +5,7 @@ import struct SwiftUI.Image
 final class RequestLessonPlanFormViewTests: XCTestCase {
     var formView: (RequestLessonPlanContext, RequestLessonPlanFormView) {
         let context = RequestLessonPlanContext()
-        let instrumentProvider = InstrumentSelectionListProviderStub(instruments: [.guitarStub, .pianoStub])
+        let instrumentProvider = InstrumentSelectionListProviderStub(instruments: [.guitar, .piano])
         let view = RequestLessonPlanFormView(
             context: context,
             coordinator: RequestLessonPlanCoordinatorDummy(),
@@ -31,7 +31,7 @@ final class RequestLessonPlanFormViewTests: XCTestCase {
         let (context, view) = formView
 
         XCTAssertView(view) { view in
-            context.instrument = .guitarStub
+            context.instrument = .guitar
 
             XCTAssertTrue(view.shouldShowBackButton)
             XCTAssertEqual(view.currentStepNumber, 2)
@@ -44,7 +44,7 @@ final class RequestLessonPlanFormViewTests: XCTestCase {
         let (context, view) = formView
 
         XCTAssertView(view) { view in
-            context.instrument = .guitarStub
+            context.instrument = .guitar
             context.student = .davidStub
 
             XCTAssertTrue(view.shouldShowBackButton)
@@ -58,7 +58,7 @@ final class RequestLessonPlanFormViewTests: XCTestCase {
         let (context, view) = formView
 
         XCTAssertView(view) { view in
-            context.instrument = .guitarStub
+            context.instrument = .guitar
             context.student = .davidStub
             context.address = .stub
 
@@ -73,7 +73,7 @@ final class RequestLessonPlanFormViewTests: XCTestCase {
         let (context, view) = formView
 
         XCTAssertView(view) { view in
-            context.instrument = .guitarStub
+            context.instrument = .guitar
             context.student = .davidStub
             context.address = .stub
             context.schedule = .stub
@@ -89,7 +89,7 @@ final class RequestLessonPlanFormViewTests: XCTestCase {
         let (context, view) = formView
 
         XCTAssertView(view) { view in
-            context.instrument = .guitarStub
+            context.instrument = .guitar
             context.student = .davidStub
             context.address = .stub
             context.schedule = .stub

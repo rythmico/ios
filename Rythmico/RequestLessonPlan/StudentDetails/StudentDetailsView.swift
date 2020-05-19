@@ -206,7 +206,7 @@ struct StudentDetailsView_Preview: PreviewProvider {
     static var previews: some View {
         let state = StudentDetailsView.ViewState()
         return StudentDetailsView(
-            instrument: .pianoStub,
+            instrument: .piano,
             state: state,
             context: RequestLessonPlanContext(),
             keyboardDismisser: UIApplication.shared

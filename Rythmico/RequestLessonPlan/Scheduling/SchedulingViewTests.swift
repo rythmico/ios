@@ -9,7 +9,7 @@ final class SchedulingViewTests: XCTestCase {
             context,
             state,
             SchedulingView(
-                instrument: .guitarStub,
+                instrument: .guitar,
                 state: state,
                 context: context
             )

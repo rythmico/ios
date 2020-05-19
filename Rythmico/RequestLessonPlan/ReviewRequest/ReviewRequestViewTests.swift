@@ -10,7 +10,7 @@ final class ReviewRequestViewTests: XCTestCase {
             ReviewRequestView(
                 coordinator: coordinator,
                 context: context,
-                instrument: .drumsStub,
+                instrument: .drums,
                 student: .davidStub,
                 address: .stub,
                 schedule: .stub,
@@ -27,7 +27,7 @@ final class ReviewRequestViewTests: XCTestCase {
             XCTAssertNil(coordinator.latestRequestBody)
             view.submitRequest()
             XCTAssertEqual(coordinator.requestCount, 1)
-            XCTAssertEqual(coordinator.latestRequestBody?.instrument, .drumsStub)
+            XCTAssertEqual(coordinator.latestRequestBody?.instrument, .drums)
             XCTAssertEqual(coordinator.latestRequestBody?.student, .davidStub)
             XCTAssertEqual(coordinator.latestRequestBody?.address, .stub)
             XCTAssertEqual(coordinator.latestRequestBody?.schedule, .stub)

@@ -4,7 +4,7 @@ extension LessonPlan {
     static var stub: LessonPlan {
         LessonPlan(
             status: .pending,
-            instrument: .guitarStub,
+            instrument: .guitar,
             student: .davidStub,
             address: .stub,
             schedule: .stub,

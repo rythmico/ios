@@ -5,7 +5,7 @@ import Sugar
 
 final class StudentDetailsViewTests: XCTestCase {
     var studentDetailsView: (RequestLessonPlanContext, KeyboardDismisserSpy, StudentDetailsView) {
-        let instrument = Instrument.singingStub
+        let instrument = Instrument.singing
         let context = RequestLessonPlanContext()
         let editingCoordinator = KeyboardDismisserSpy()
         return (
