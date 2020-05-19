@@ -30,9 +30,12 @@ struct PrimaryButtonStyle: ButtonStyle {
 struct SecondaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
+            .lineLimit(1)
+            .minimumScaleFactor(0.6)
+            .padding(.horizontal, .spacingMedium)
             .rythmicoFont(.callout)
             .foregroundColor(foregroundColor(for: configuration))
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .frame(height: 40)
             .overlay(
                 RoundedRectangle(cornerRadius: 4)
                     .stroke(Color.rythmicoGray30, lineWidth: 2)
