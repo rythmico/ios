@@ -179,7 +179,7 @@ struct SchedulingView: View, TestableView {
                 }
             }
         }
-        .animation(.rythmicoSpring(duration: .durationMedium), value: editingFocus)
+        .animation(.easeInOut(duration: .durationMedium), value: editingFocus)
         .onAppear { self.didAppear?(self) }
     }
 
