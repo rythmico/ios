@@ -46,10 +46,8 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
 
             VStack(spacing: .spacingUnit * 8) {
                 VStack(spacing: .spacingLarge) {
-                    lessonPlan.instrument.icon
+                    lessonPlan.instrument.largeIcon
                         .renderingMode(.template)
-                        .resizable()
-                        .frame(width: 48, height: 48)
                         .foregroundColor(.rythmicoForeground)
 
                     VStack(spacing: .spacingSmall) {

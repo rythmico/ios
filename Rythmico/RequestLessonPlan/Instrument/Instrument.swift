@@ -38,4 +38,17 @@ extension Instrument {
             return Image(decorative: Asset.instrumentIconSinging.name)
         }
     }
+
+    var largeIcon: Image {
+        switch self {
+        case .guitar:
+            return Image(decorative: Asset.instrumentIconGuitarLarge.name)
+        case .drums:
+            return Image(decorative: Asset.instrumentIconDrumsLarge.name)
+        case .piano:
+            return Image(decorative: Asset.instrumentIconPianoLarge.name)
+        case .singing:
+            return Image(decorative: Asset.instrumentIconSingingLarge.name)
+        }
+    }
 }
