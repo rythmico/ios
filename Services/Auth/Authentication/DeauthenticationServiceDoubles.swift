@@ -14,3 +14,9 @@ final class DeauthenticationServiceSpy: DeauthenticationServiceProtocol {
         accessTokenProviderObserver.currentProvider = nil
     }
 }
+
+final class DeauthenticationServiceDummy: DeauthenticationServiceProtocol {
+    init() {}
+
+    func deauthenticate() {}
+}

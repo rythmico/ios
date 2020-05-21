@@ -28,7 +28,12 @@ struct RootView<AccessTokenProviderObserving>: View, TestableView where
                     pushNotificationRegistrationService: PushNotificationRegistrationService(
                         manager: .instanceID(),
                         accessTokenProvider: provider
-                    )
+                    ),
+                    pushNotificationAuthorizationManager: PushNotificationAuthorizationManager(
+                        application: .shared,
+                        center: .current()
+                    ),
+                    deauthenticationService: DeauthenticationService()
                 )
             )
         } else {

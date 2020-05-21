@@ -1,11 +1,12 @@
 import SwiftUI
-import class FirebaseAuth.Auth
 import SFSafeSymbols
 import Sugar
 
 struct MainTabView: View, TestableView {
     private let accessTokenProvider: AuthenticationAccessTokenProvider
     private let pushNotificationRegistrationService: PushNotificationRegistrationServiceProtocol
+    private let pushNotificationAuthorizationManager: PushNotificationAuthorizationManagerBase
+    private let deauthenticationService: DeauthenticationServiceProtocol
 
     @State private(set) var lessonRequestView: RequestLessonPlanView?
 
@@ -18,19 +19,20 @@ struct MainTabView: View, TestableView {
             accessTokenProvider: accessTokenProvider,
             instrumentProvider: InstrumentSelectionListProviderFake(),
             keyboardDismisser: UIApplication.shared,
-            notificationsAuthorizationManager: PushNotificationAuthorizationManager(
-                application: .shared,
-                center: .current()
-            )
+            notificationsAuthorizationManager: pushNotificationAuthorizationManager
         )
     }
 
     init(
         accessTokenProvider: AuthenticationAccessTokenProvider,
-        pushNotificationRegistrationService: PushNotificationRegistrationServiceProtocol
+        pushNotificationRegistrationService: PushNotificationRegistrationServiceProtocol,
+        pushNotificationAuthorizationManager: PushNotificationAuthorizationManagerBase,
+        deauthenticationService: DeauthenticationServiceProtocol
     ) {
         self.accessTokenProvider = accessTokenProvider
         self.pushNotificationRegistrationService = pushNotificationRegistrationService
+        self.pushNotificationAuthorizationManager = pushNotificationAuthorizationManager
+        self.deauthenticationService = deauthenticationService
     }
 
     var didAppear: Handler<Self>?
@@ -56,18 +58,10 @@ struct MainTabView: View, TestableView {
             }
 
             NavigationView {
-                Form {
-                    Button(action: { try! Auth.auth().signOut() }) {
-                        HStack {
-                            Spacer()
-                            Text("Log out").rythmicoFont(.body).foregroundColor(.rythmicoRed)
-                            Spacer()
-                        }
-                    }
-                    .frame(minHeight: 35)
-                    .accessibility(hint: Text("Double tap to log out of your account"))
-                }
-                .navigationBarTitle(Text("Profile"), displayMode: .large)
+                ProfileView(
+                    notificationsAuthorizationManager: pushNotificationAuthorizationManager,
+                    deauthenticationService: deauthenticationService
+                )
             }
             .tabItem {
                 Image(systemSymbol: .person).font(Font.system(size: 21, weight: .semibold))
@@ -85,7 +79,9 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         MainTabView(
             accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
-            pushNotificationRegistrationService: PushNotificationRegistrationServiceDummy()
+            pushNotificationRegistrationService: PushNotificationRegistrationServiceDummy(),
+            pushNotificationAuthorizationManager: PushNotificationAuthorizationManagerDummy(),
+            deauthenticationService: DeauthenticationServiceDummy()
         )
     }
 }
