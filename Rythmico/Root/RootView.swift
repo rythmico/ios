@@ -33,7 +33,7 @@ struct RootView<AccessTokenProviderObserving>: View, TestableView where
                         application: .shared,
                         center: .current()
                     ),
-                    deauthenticationService: DeauthenticationService()
+                    deauthenticationService: deauthenticationService
                 )
             )
         } else {
