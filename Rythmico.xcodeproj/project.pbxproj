@@ -494,6 +494,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		033D47CB247774CE0096C50F /* URLOpener */ = {
+			isa = PBXGroup;
+			children = (
+				03EDA67C24776C6C00FBE527 /* URLOpener.swift */,
+				03EDA67E24776CEC00FBE527 /* URLOpenerDoubles.swift */,
+			);
+			path = URLOpener;
+			sourceTree = "<group>";
+		};
 		0365F6F12417E95200F452AC /* AddressDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -619,10 +628,9 @@
 				0336D62B241EAAF6006CFC1F /* APIRequest.swift */,
 				D535549823E0FA4A005A20EB /* Auth */,
 				03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */,
-				03EDA67C24776C6C00FBE527 /* URLOpener.swift */,
-				03EDA67E24776CEC00FBE527 /* URLOpenerDoubles.swift */,
 				D535547A23DF3E81005A20EB /* Keychain */,
 				03BB5CA02473467500B44692 /* PushNotifications */,
+				033D47CB247774CE0096C50F /* URLOpener */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1103,6 +1111,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Rythmico/Supporting Files/Assets.xcassets",
 			);
 			name = "Generate Asset Symbols";
 			outputFileListPaths = (
