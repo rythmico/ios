@@ -6,7 +6,9 @@ final class MainTabViewTests: XCTestCase {
         let spy = PushNotificationRegistrationServiceSpy()
         let view = MainTabView(
             accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
-            pushNotificationRegistrationService: spy
+            pushNotificationRegistrationService: spy,
+            pushNotificationAuthorizationManager: PushNotificationAuthorizationManagerDummy(),
+            deauthenticationService: DeauthenticationServiceDummy()
         )
 
         XCTAssertView(view) { view in
@@ -17,7 +19,9 @@ final class MainTabViewTests: XCTestCase {
     func testPresentRequestLessonFlow() {
         let view = MainTabView(
             accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
-            pushNotificationRegistrationService: PushNotificationRegistrationServiceDummy()
+            pushNotificationRegistrationService: PushNotificationRegistrationServiceDummy(),
+            pushNotificationAuthorizationManager: PushNotificationAuthorizationManagerDummy(),
+            deauthenticationService: DeauthenticationServiceDummy()
         )
 
         XCTAssertView(view) { view in

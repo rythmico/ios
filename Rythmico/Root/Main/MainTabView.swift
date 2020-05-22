@@ -60,6 +60,7 @@ struct MainTabView: View, TestableView {
             NavigationView {
                 ProfileView(
                     notificationsAuthorizationManager: pushNotificationAuthorizationManager,
+                    urlOpener: UIApplication.shared,
                     deauthenticationService: deauthenticationService
                 )
             }

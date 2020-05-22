@@ -2,32 +2,35 @@ import SwiftUI
 import class FirebaseAuth.Auth
 import Sugar
 
-struct ProfileView: View {
+struct ProfileView: View, TestableView {
     private enum Const {
         static let horizontalMargins: CGFloat = 6
     }
 
-    @State private var pushNotificationsEnabled = false
+    @State private var pushNotificationsAuthorizationPrompted = false
 
     @ObservedObject
     private var notificationsAuthorizationManager: PushNotificationAuthorizationManagerBase
+    private let urlOpener: URLOpener
     private let deauthenticationService: DeauthenticationServiceProtocol
 
     init(
         notificationsAuthorizationManager: PushNotificationAuthorizationManagerBase,
+        urlOpener: URLOpener,
         deauthenticationService: DeauthenticationServiceProtocol
     ) {
         self.notificationsAuthorizationManager = notificationsAuthorizationManager
+        self.urlOpener = urlOpener
         self.deauthenticationService = deauthenticationService
     }
 
-    var pushNotificationsAction: Action? {
+    var enablePushNotificationsAction: Action? {
         guard notificationsAuthorizationManager.status == .notDetermined else {
             return nil
         }
         return {
             self.notificationsAuthorizationManager.requestAuthorization { error in
-                self.pushNotificationsEnabled = false
+                self.pushNotificationsAuthorizationPrompted = false
                 self.errorMessage = error.localizedDescription
             }
         }
@@ -37,34 +40,34 @@ struct ProfileView: View {
         guard notificationsAuthorizationManager.status != .notDetermined else {
             return nil
         }
-        return {
-            UIApplication.shared.open(
-                URL(string: UIApplication.openSettingsURLString)!,
-                options: [:],
-                completionHandler: nil
-            )
-        }
+        return { self.urlOpener.open(UIApplication.openSettingsURLString) }
+    }
+
+    func logOut() {
+        deauthenticationService.deauthenticate()
     }
 
     @State
     var errorMessage: String?
 
+    var didAppear: Handler<Self>?
     var body: some View {
         Form {
             Section(header: header("Notifications")) {
                 cell(
                     "Push Notifications",
-                    disclosure: pushNotificationsAction == nil,
+                    disclosure: enablePushNotificationsAction == nil,
                     action: goToPushNotificationsSettingsAction
                 ) {
-                    pushNotificationsAction.map {
-                        Toggle("", isOn: $pushNotificationsEnabled).onTapGesture(perform: $0)
+                    enablePushNotificationsAction.map {
+                        Toggle("", isOn: $pushNotificationsAuthorizationPrompted)
+                            .onTapGesture(perform: $0)
                     }
                 }
 
             }
             Section {
-                Button(action: deauthenticationService.deauthenticate) {
+                Button(action: logOut) {
                     HStack(alignment: .center) {
                         Text("Log out")
                             .rythmicoFont(.body)
@@ -79,9 +82,10 @@ struct ProfileView: View {
         }
         .alert(item: $errorMessage) { Alert(title: Text("An error ocurred"), message: Text($0)) }
         .navigationBarTitle(Text("Profile"), displayMode: .large)
+        .onAppear { self.didAppear?(self) }
     }
 
-    func header(_ title: String) -> some View {
+    private func header(_ title: String) -> some View {
         Text(title)
             .rythmicoFont(.headline)
             .foregroundColor(.rythmicoForeground)
@@ -89,14 +93,14 @@ struct ProfileView: View {
             .padding(.bottom, .spacingUnit * 2)
     }
 
-    func cell<Content: View>(
+    private func cell<Content: View>(
         _ title: String,
         disclosure: Bool = false
     ) -> some View {
         cell(title, disclosure: disclosure) { EmptyView() }
     }
 
-    func cell<Content: View>(
+    private func cell<Content: View>(
         _ title: String,
         disclosure: Bool = false,
         action: Action? = nil,
@@ -132,6 +136,7 @@ struct ProfileView_Previews: PreviewProvider {
         )
         return ProfileView(
             notificationsAuthorizationManager: manager,
+            urlOpener: URLOpenerSpy(),
             deauthenticationService: DeauthenticationServiceDummy()
         )
     }
