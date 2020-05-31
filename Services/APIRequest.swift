@@ -13,9 +13,9 @@ protocol RythmicoAPIRequestCore: AuthorizedAPIRequest {}
 
 extension RythmicoAPIRequestCore {
     #if DEBUG
-    var host: String { "dev.api.rythmico.com" }
+    var host: String { "rythmico-dev.web.app" }
     #else
-    var host: String { "api.rythmico.com" }
+    var host: String { "rythmico-prod.web.app" }
     #endif
 
     var pathPrefix: String { "/v1" }
