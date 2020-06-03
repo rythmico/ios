@@ -25,14 +25,10 @@ final class RequestLessonPlanCoordinatorSpy: RequestLessonPlanCoordinatorBase {
     var requestCount = 0
     var latestRequestBody: RequestLessonPlanBody?
 
-    init(_ noop: Void = ()) {}
-
     override func requestLessonPlan(_ body: RequestLessonPlanBody) {
         requestCount += 1
         latestRequestBody = body
     }
 }
 
-final class RequestLessonPlanCoordinatorDummy: RequestLessonPlanCoordinatorBase {
-    init(_ noop: Void = ()) {}
-}
+final class RequestLessonPlanCoordinatorDummy: RequestLessonPlanCoordinatorBase {}
