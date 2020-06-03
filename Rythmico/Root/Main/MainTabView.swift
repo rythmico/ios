@@ -57,7 +57,7 @@ struct MainTabView: View, TestableView {
                     )
             }
             .tabItem {
-                Image(systemSymbol: .calendar).font(Font.system(size: 21, weight: .medium))
+                Image(systemSymbol: .calendar).font(.system(size: 21, weight: .medium))
                 Text("LESSONS")
             }
 
@@ -69,7 +69,7 @@ struct MainTabView: View, TestableView {
                 )
             }
             .tabItem {
-                Image(systemSymbol: .person).font(Font.system(size: 21, weight: .semibold))
+                Image(systemSymbol: .person).font(.system(size: 21, weight: .semibold))
                 Text("PROFILE")
             }
         }
