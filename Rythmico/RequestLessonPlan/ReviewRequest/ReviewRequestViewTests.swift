@@ -2,8 +2,8 @@ import XCTest
 @testable import Rythmico
 
 final class ReviewRequestViewTests: XCTestCase {
-    var reviewRequestView: (RequestLessonPlanCoordinatorSpy, ReviewRequestView) {
-        let coordinator = RequestLessonPlanCoordinatorSpy()
+    var reviewRequestView: (LessonPlanRequestCoordinatorSpy, ReviewRequestView) {
+        let coordinator = LessonPlanRequestCoordinatorSpy()
         let context = RequestLessonPlanContext()
         return (
             coordinator,

@@ -1,29 +1,29 @@
 import Foundation
 import Combine
 
-enum RequestLessonPlanCoordinatorState {
+enum LessonPlanRequestCoordinatorState {
     case idle
     case loading
     case failure(Error)
     case success(LessonPlan)
 }
 
-class RequestLessonPlanCoordinatorBase: ObservableObject {
+class LessonPlanRequestCoordinatorBase: ObservableObject {
     @Published
-    var state: RequestLessonPlanCoordinatorState = .idle
-    func requestLessonPlan(_ body: RequestLessonPlanBody) {}
+    var state: LessonPlanRequestCoordinatorState = .idle
+    func requestLessonPlan(_ body: LessonPlanRequestBody) {}
 }
 
-final class RequestLessonPlanCoordinator: RequestLessonPlanCoordinatorBase {
-    private let service: RequestLessonPlanServiceProtocol
+final class LessonPlanRequestCoordinator: LessonPlanRequestCoordinatorBase {
+    private let service: LessonPlanRequestServiceProtocol
     private let repository: LessonPlanRepository
 
-    init(service: RequestLessonPlanServiceProtocol, repository: LessonPlanRepository) {
+    init(service: LessonPlanRequestServiceProtocol, repository: LessonPlanRepository) {
         self.service = service
         self.repository = repository
     }
 
-    override func requestLessonPlan(_ body: RequestLessonPlanBody) {
+    override func requestLessonPlan(_ body: LessonPlanRequestBody) {
         state = .loading
         service.requestLessonPlan(body) { result in
             switch result {

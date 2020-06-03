@@ -1,19 +1,19 @@
 import APIKit
 import Sugar
 
-protocol RequestLessonPlanServiceProtocol: AnyObject {
+protocol LessonPlanRequestServiceProtocol: AnyObject {
     typealias CompletionHandler = SimpleResultHandler<LessonPlan>
-    func requestLessonPlan(_ body: RequestLessonPlanBody, completion: @escaping CompletionHandler)
+    func requestLessonPlan(_ body: LessonPlanRequestBody, completion: @escaping CompletionHandler)
 }
 
-final class RequestLessonPlanService: RequestLessonPlanServiceProtocol {
+final class LessonPlanRequestService: LessonPlanRequestServiceProtocol {
     private let accessTokenProvider: AuthenticationAccessTokenProvider
 
     init(accessTokenProvider: AuthenticationAccessTokenProvider) {
         self.accessTokenProvider = accessTokenProvider
     }
 
-    func requestLessonPlan(_ body: RequestLessonPlanBody, completion: @escaping CompletionHandler) {
+    func requestLessonPlan(_ body: LessonPlanRequestBody, completion: @escaping CompletionHandler) {
         accessTokenProvider.getAccessToken { result in
             switch result {
             case .success(let accessToken):
@@ -29,7 +29,7 @@ final class RequestLessonPlanService: RequestLessonPlanServiceProtocol {
     }
 }
 
-struct RequestLessonPlanBody: Encodable {
+struct LessonPlanRequestBody: Encodable {
     var instrument: Instrument
     var student: Student
     var address: AddressDetails
@@ -39,7 +39,7 @@ struct RequestLessonPlanBody: Encodable {
 
 private struct CreateLessonPlanRequest: RythmicoAPIRequest {
     let accessToken: String
-    let body: RequestLessonPlanBody
+    let body: LessonPlanRequestBody
 
     let method: HTTPMethod = .post
     let path: String = "/lesson-plans"

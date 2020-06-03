@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03080EEB2466FDD9008715EE /* RequestLessonPlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03080EEA2466FDD9008715EE /* RequestLessonPlanService.swift */; };
+		03080EEB2466FDD9008715EE /* LessonPlanRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03080EEA2466FDD9008715EE /* LessonPlanRequestService.swift */; };
 		03080EED2466FE21008715EE /* LessonPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03080EEC2466FE21008715EE /* LessonPlan.swift */; };
 		03306F74247347570074AA98 /* RequestLessonPlanViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03306F73247347570074AA98 /* RequestLessonPlanViewTests.swift */; };
 		03341B3F23ABB1E7009AE8A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */; };
@@ -35,8 +35,8 @@
 		03AB22F3244CB13200DAC7DF /* PrivateNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AB22F2244CB13200DAC7DF /* PrivateNoteView.swift */; };
 		03B19837247053F5005529EB /* APIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 03B19836247053F5005529EB /* APIKit */; };
 		03B1983924705894005529EB /* AddressDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1983824705894005529EB /* AddressDetails.swift */; };
-		03B1983B247175BE005529EB /* RequestLessonPlanCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1983A247175BE005529EB /* RequestLessonPlanCoordinator.swift */; };
-		03B1983D247179F6005529EB /* RequestLessonPlanServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1983C247179F6005529EB /* RequestLessonPlanServiceDoubles.swift */; };
+		03B1983B247175BE005529EB /* LessonPlanRequestCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1983A247175BE005529EB /* LessonPlanRequestCoordinator.swift */; };
+		03B1983D247179F6005529EB /* LessonPlanRequestServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1983C247179F6005529EB /* LessonPlanRequestServiceDoubles.swift */; };
 		03B1983F24717A90005529EB /* LessonPlanDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1983E24717A90005529EB /* LessonPlanDoubles.swift */; };
 		03B1984124717AE8005529EB /* AddressDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984024717AE8005529EB /* AddressDoubles.swift */; };
 		03B19843247181B3005529EB /* RequestLessonPlanFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */; };
@@ -53,7 +53,7 @@
 		03BB5C912472D85A00B44692 /* PushNotificationRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C902472D85A00B44692 /* PushNotificationRegistrationService.swift */; };
 		03BB5C942472FEA900B44692 /* PushNotificationRegistrationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C932472FEA900B44692 /* PushNotificationRegistrationServiceDoubles.swift */; };
 		03BB5C962473070C00B44692 /* ReviewRequestViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C952473070C00B44692 /* ReviewRequestViewTests.swift */; };
-		03BB5C982473357300B44692 /* RequestLessonPlanCoordinatorDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C972473357300B44692 /* RequestLessonPlanCoordinatorDoubles.swift */; };
+		03BB5C982473357300B44692 /* LessonPlanRequestCoordinatorDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C972473357300B44692 /* LessonPlanRequestCoordinatorDoubles.swift */; };
 		03BB5C9A24733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C9924733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift */; };
 		03C08E742487F663007D1724 /* LessonPlanRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C08E732487F663007D1724 /* LessonPlanRepository.swift */; };
 		03EDA6792476F2CB00FBE527 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA6782476F2CB00FBE527 /* ProfileView.swift */; };
@@ -221,7 +221,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		03080EEA2466FDD9008715EE /* RequestLessonPlanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanService.swift; sourceTree = "<group>"; };
+		03080EEA2466FDD9008715EE /* LessonPlanRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanRequestService.swift; sourceTree = "<group>"; };
 		03080EEC2466FE21008715EE /* LessonPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlan.swift; sourceTree = "<group>"; };
 		03306F73247347570074AA98 /* RequestLessonPlanViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanViewTests.swift; sourceTree = "<group>"; };
 		03341B3B23ABB1E7009AE8A8 /* Rythmico.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rythmico.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -251,8 +251,8 @@
 		03AAF6722445E11A002D8F5B /* ScheduleDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDoubles.swift; sourceTree = "<group>"; };
 		03AB22F2244CB13200DAC7DF /* PrivateNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateNoteView.swift; sourceTree = "<group>"; };
 		03B1983824705894005529EB /* AddressDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetails.swift; sourceTree = "<group>"; };
-		03B1983A247175BE005529EB /* RequestLessonPlanCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanCoordinator.swift; sourceTree = "<group>"; };
-		03B1983C247179F6005529EB /* RequestLessonPlanServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanServiceDoubles.swift; sourceTree = "<group>"; };
+		03B1983A247175BE005529EB /* LessonPlanRequestCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanRequestCoordinator.swift; sourceTree = "<group>"; };
+		03B1983C247179F6005529EB /* LessonPlanRequestServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanRequestServiceDoubles.swift; sourceTree = "<group>"; };
 		03B1983E24717A90005529EB /* LessonPlanDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanDoubles.swift; sourceTree = "<group>"; };
 		03B1984024717AE8005529EB /* AddressDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDoubles.swift; sourceTree = "<group>"; };
 		03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanFormView.swift; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 		03BB5C902472D85A00B44692 /* PushNotificationRegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationRegistrationService.swift; sourceTree = "<group>"; };
 		03BB5C932472FEA900B44692 /* PushNotificationRegistrationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationRegistrationServiceDoubles.swift; sourceTree = "<group>"; };
 		03BB5C952473070C00B44692 /* ReviewRequestViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestViewTests.swift; sourceTree = "<group>"; };
-		03BB5C972473357300B44692 /* RequestLessonPlanCoordinatorDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanCoordinatorDoubles.swift; sourceTree = "<group>"; };
+		03BB5C972473357300B44692 /* LessonPlanRequestCoordinatorDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanRequestCoordinatorDoubles.swift; sourceTree = "<group>"; };
 		03BB5C9924733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanConfirmationViewTests.swift; sourceTree = "<group>"; };
 		03C08E732487F663007D1724 /* LessonPlanRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanRepository.swift; sourceTree = "<group>"; };
 		03EDA6782476F2CB00FBE527 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -510,6 +510,10 @@
 		033D47D4247ABF5C0096C50F /* LessonPlans */ = {
 			isa = PBXGroup;
 			children = (
+				03B1983A247175BE005529EB /* LessonPlanRequestCoordinator.swift */,
+				03BB5C972473357300B44692 /* LessonPlanRequestCoordinatorDoubles.swift */,
+				03080EEA2466FDD9008715EE /* LessonPlanRequestService.swift */,
+				03B1983C247179F6005529EB /* LessonPlanRequestServiceDoubles.swift */,
 				033D47D5247ABF6B0096C50F /* LessonPlanProvider.swift */,
 				03C08E732487F663007D1724 /* LessonPlanRepository.swift */,
 			);
@@ -615,10 +619,6 @@
 				D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */,
 				03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */,
 				D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */,
-				03B1983A247175BE005529EB /* RequestLessonPlanCoordinator.swift */,
-				03BB5C972473357300B44692 /* RequestLessonPlanCoordinatorDoubles.swift */,
-				03080EEA2466FDD9008715EE /* RequestLessonPlanService.swift */,
-				03B1983C247179F6005529EB /* RequestLessonPlanServiceDoubles.swift */,
 			);
 			path = LessonPlanRequestFlow;
 			sourceTree = "<group>";
@@ -1177,7 +1177,7 @@
 				D53555CF23E536AE005A20EB /* AppleAuthorizationCompletionDelegate.swift in Sources */,
 				D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */,
 				D53555C623E536AE005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,
-				03BB5C982473357300B44692 /* RequestLessonPlanCoordinatorDoubles.swift in Sources */,
+				03BB5C982473357300B44692 /* LessonPlanRequestCoordinatorDoubles.swift in Sources */,
 				03B1984124717AE8005529EB /* AddressDoubles.swift in Sources */,
 				D53555BD23E53699005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */,
 				D5B57A712419F79700BE9B4F /* SectionHeaderView.swift in Sources */,
@@ -1197,12 +1197,12 @@
 				D50811E423FB72A3008103D8 /* StepBar.swift in Sources */,
 				D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */,
 				D5AAF7D523F9E1F900E410F2 /* InstrumentSelectionListProvider.swift in Sources */,
-				03B1983D247179F6005529EB /* RequestLessonPlanServiceDoubles.swift in Sources */,
+				03B1983D247179F6005529EB /* LessonPlanRequestServiceDoubles.swift in Sources */,
 				03A3F6EE2447DFF900F6391D /* Animation.swift in Sources */,
 				03B1984524719105005529EB /* RequestLessonPlanLoadingView.swift in Sources */,
 				D5BA171023D7A18900954D50 /* RootView.swift in Sources */,
 				D5C23A76240F0186007DED63 /* TestDelegate.swift in Sources */,
-				03080EEB2466FDD9008715EE /* RequestLessonPlanService.swift in Sources */,
+				03080EEB2466FDD9008715EE /* LessonPlanRequestService.swift in Sources */,
 				03EDA6792476F2CB00FBE527 /* ProfileView.swift in Sources */,
 				03EDA67F24776CEC00FBE527 /* URLOpenerDoubles.swift in Sources */,
 				D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */,
@@ -1242,7 +1242,7 @@
 				03BB5C912472D85A00B44692 /* PushNotificationRegistrationService.swift in Sources */,
 				03B1983F24717A90005529EB /* LessonPlanDoubles.swift in Sources */,
 				03B1983924705894005529EB /* AddressDetails.swift in Sources */,
-				03B1983B247175BE005529EB /* RequestLessonPlanCoordinator.swift in Sources */,
+				03B1983B247175BE005529EB /* LessonPlanRequestCoordinator.swift in Sources */,
 				D53555C423E536AE005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
 				D53555CD23E536AE005A20EB /* AppleAuthorizationController.swift in Sources */,
 				D53555BA23E53699005A20EB /* AuthenticationAccessTokenProvider.swift in Sources */,

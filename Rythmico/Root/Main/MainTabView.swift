@@ -13,8 +13,8 @@ struct MainTabView: View, TestableView {
 
     func presentRequestLessonFlow() {
         lessonRequestView = RequestLessonPlanView(
-            coordinator: RequestLessonPlanCoordinator(
-                service: RequestLessonPlanService(accessTokenProvider: accessTokenProvider),
+            coordinator: LessonPlanRequestCoordinator(
+                service: LessonPlanRequestService(accessTokenProvider: accessTokenProvider),
                 repository: lessonPlanRepository
             ),
             context: RequestLessonPlanContext(),
