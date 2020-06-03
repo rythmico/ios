@@ -25,6 +25,7 @@ struct RootView<AccessTokenProviderObserving>: View, TestableView where
             return .authenticated(
                 MainTabView(
                     accessTokenProvider: provider,
+                    lessonPlanRepository: LessonPlanRepository(),
                     pushNotificationRegistrationService: PushNotificationRegistrationService(
                         manager: .instanceID(),
                         accessTokenProvider: provider

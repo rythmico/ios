@@ -4,6 +4,7 @@ import Sugar
 
 struct MainTabView: View, TestableView {
     private let accessTokenProvider: AuthenticationAccessTokenProvider
+    private let lessonPlanRepository: LessonPlanRepository
     private let pushNotificationRegistrationService: PushNotificationRegistrationServiceProtocol
     private let pushNotificationAuthorizationManager: PushNotificationAuthorizationManagerBase
     private let deauthenticationService: DeauthenticationServiceProtocol
@@ -13,7 +14,8 @@ struct MainTabView: View, TestableView {
     func presentRequestLessonFlow() {
         lessonRequestView = RequestLessonPlanView(
             coordinator: RequestLessonPlanCoordinator(
-                service: RequestLessonPlanService(accessTokenProvider: accessTokenProvider)
+                service: RequestLessonPlanService(accessTokenProvider: accessTokenProvider),
+                repository: lessonPlanRepository
             ),
             context: RequestLessonPlanContext(),
             accessTokenProvider: accessTokenProvider,
@@ -25,11 +27,13 @@ struct MainTabView: View, TestableView {
 
     init(
         accessTokenProvider: AuthenticationAccessTokenProvider,
+        lessonPlanRepository: LessonPlanRepository,
         pushNotificationRegistrationService: PushNotificationRegistrationServiceProtocol,
         pushNotificationAuthorizationManager: PushNotificationAuthorizationManagerBase,
         deauthenticationService: DeauthenticationServiceProtocol
     ) {
         self.accessTokenProvider = accessTokenProvider
+        self.lessonPlanRepository = lessonPlanRepository
         self.pushNotificationRegistrationService = pushNotificationRegistrationService
         self.pushNotificationAuthorizationManager = pushNotificationAuthorizationManager
         self.deauthenticationService = deauthenticationService
@@ -80,6 +84,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         MainTabView(
             accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
+            lessonPlanRepository: LessonPlanRepository(),
             pushNotificationRegistrationService: PushNotificationRegistrationServiceDummy(),
             pushNotificationAuthorizationManager: PushNotificationAuthorizationManagerDummy(),
             deauthenticationService: DeauthenticationServiceDummy()
