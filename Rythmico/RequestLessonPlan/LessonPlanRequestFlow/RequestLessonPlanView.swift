@@ -5,14 +5,14 @@ typealias RequestLessonPlanFailureView = Alert
 
 struct RequestLessonPlanView: View, Identifiable, TestableView {
     @ObservedObject
-    private var coordinator: RequestLessonPlanCoordinatorBase
+    private var coordinator: LessonPlanRequestCoordinatorBase
     @ObservedObject
     private var context: RequestLessonPlanContext
     private let _formView: RequestLessonPlanFormView
     private let notificationsAuthorizationManager: PushNotificationAuthorizationManagerBase
 
     init(
-        coordinator: RequestLessonPlanCoordinatorBase,
+        coordinator: LessonPlanRequestCoordinatorBase,
         context: RequestLessonPlanContext,
         accessTokenProvider: AuthenticationAccessTokenProvider,
         instrumentProvider: InstrumentSelectionListProviderProtocol,
@@ -86,7 +86,7 @@ extension RequestLessonPlanView {
 
 struct RequestLessonPlanView_Preview: PreviewProvider {
     static var previews: some View {
-        let service = RequestLessonPlanServiceStub(result: .success(.stub), delay: 3)
+        let service = LessonPlanRequestServiceStub(result: .success(.stub), delay: 3)
 //        service.result = .failure("something")
 
         let context = RequestLessonPlanContext()
@@ -96,7 +96,7 @@ struct RequestLessonPlanView_Preview: PreviewProvider {
         context.schedule = .stub
         context.privateNote = "Note"
 
-        let coordinator = RequestLessonPlanCoordinatorStub(expectedState: .success(.stub), delay: 1.5)
+        let coordinator = LessonPlanRequestCoordinatorStub(expectedState: .success(.stub), delay: 1.5)
 //        coordinator.expectedState = .failure("something went wrong")
 
         let manager = PushNotificationAuthorizationManagerStub(
