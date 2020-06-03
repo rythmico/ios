@@ -1,12 +1,12 @@
 import APIKit
 import Sugar
 
-protocol LessonPlanProviderProtocol: AnyObject {
+protocol LessonPlanFetchingServiceProtocol: AnyObject {
     typealias CompletionHandler = SimpleResultHandler<[LessonPlan]>
     func lessonPlans(completion: @escaping CompletionHandler)
 }
 
-final class LessonPlanProvidingService: LessonPlanProviderProtocol {
+final class LessonPlanFetchingService: LessonPlanFetchingServiceProtocol {
     private let accessTokenProvider: AuthenticationAccessTokenProvider
 
     init(accessTokenProvider: AuthenticationAccessTokenProvider) {
