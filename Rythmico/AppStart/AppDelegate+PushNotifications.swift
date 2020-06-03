@@ -12,10 +12,6 @@ extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
         application.registerForRemoteNotifications()
     }
 
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        print(fcmToken) // TODO: post token to /v1/devices
-    }
-
     // Show notifications in-app (without sound/vibration or badge).
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert])
