@@ -49,6 +49,22 @@ struct LessonPlan: Equatable, Decodable {
     var schedule: Schedule
     var privateNote: String
 
+    init(
+        status: Status,
+        instrument: Instrument,
+        student: Student,
+        address: Address,
+        schedule: Schedule,
+        privateNote: String
+    ) {
+        self.status = status
+        self.instrument = instrument
+        self.student = student
+        self.address = address
+        self.schedule = schedule
+        self.privateNote = privateNote
+    }
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.status = try Status(from: decoder)
