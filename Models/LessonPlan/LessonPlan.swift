@@ -1,6 +1,6 @@
 import Foundation
 
-struct LessonPlan: Equatable, Decodable {
+struct LessonPlan: Equatable, Decodable, Identifiable {
     enum Status: Equatable, Decodable {
         case pending
         case reviewing([Tutor])
@@ -42,6 +42,7 @@ struct LessonPlan: Equatable, Decodable {
         var reason: Reason
     }
 
+    var id: String
     var status: Status
     var instrument: Instrument
     var student: Student
@@ -50,6 +51,7 @@ struct LessonPlan: Equatable, Decodable {
     var privateNote: String
 
     init(
+        id: String,
         status: Status,
         instrument: Instrument,
         student: Student,
@@ -57,6 +59,7 @@ struct LessonPlan: Equatable, Decodable {
         schedule: Schedule,
         privateNote: String
     ) {
+        self.id = id
         self.status = status
         self.instrument = instrument
         self.student = student
@@ -67,6 +70,7 @@ struct LessonPlan: Equatable, Decodable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(String.self, forKey: .id)
         self.status = try Status(from: decoder)
         self.instrument = try container.decode(Instrument.self, forKey: .instrument)
         self.student = try container.decode(Student.self, forKey: .student)
@@ -76,6 +80,8 @@ struct LessonPlan: Equatable, Decodable {
     }
 
     private enum CodingKeys: String, CodingKey {
+        case id
+
         // Status
         case applicants
         case tutor
