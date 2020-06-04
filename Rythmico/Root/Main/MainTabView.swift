@@ -61,13 +61,11 @@ struct MainTabView: View, TestableView {
                 Text("LESSONS")
             }
 
-            NavigationView {
-                ProfileView(
-                    notificationsAuthorizationManager: pushNotificationAuthorizationManager,
-                    urlOpener: UIApplication.shared,
-                    deauthenticationService: deauthenticationService
-                )
-            }
+            ProfileView(
+                notificationsAuthorizationManager: pushNotificationAuthorizationManager,
+                urlOpener: UIApplication.shared,
+                deauthenticationService: deauthenticationService
+            )
             .tabItem {
                 Image(systemSymbol: .person).font(.system(size: 21, weight: .semibold))
                 Text("PROFILE")
