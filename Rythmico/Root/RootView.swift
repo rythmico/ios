@@ -22,25 +22,27 @@ struct RootView<AccessTokenProviderObserving>: View, TestableView where
 
     var state: UserState {
         if let provider = authenticationAccessTokenProviderObserving.currentProvider {
-            return .authenticated(
-                MainTabView(
-                    accessTokenProvider: provider,
-                    lessonPlanRepository: LessonPlanRepository(),
-                    pushNotificationRegistrationService: PushNotificationRegistrationService(
-                        manager: .instanceID(),
-                        accessTokenProvider: provider
-                    ),
-                    pushNotificationAuthorizationManager: PushNotificationAuthorizationManager(
-                        application: .shared,
-                        center: .current()
-                    ),
-                    deauthenticationService: deauthenticationService
-                )
-            )
+            return .authenticated(mainTabView(provider))
         } else {
             self.keychain.appleAuthorizationUserId = nil
             return .unauthenticated(onboardingView)
         }
+    }
+
+    private func mainTabView(_ provider: AuthenticationAccessTokenProvider) -> MainTabView {
+        MainTabView(
+            accessTokenProvider: provider,
+            lessonPlanRepository: .shared,
+            pushNotificationRegistrationService: PushNotificationRegistrationService(
+                manager: .instanceID(),
+                accessTokenProvider: provider
+            ),
+            pushNotificationAuthorizationManager: PushNotificationAuthorizationManager(
+                application: .shared,
+                center: .current()
+            ),
+            deauthenticationService: deauthenticationService
+        )
     }
 
     private var onboardingView: OnboardingView {
