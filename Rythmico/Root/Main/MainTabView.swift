@@ -15,6 +15,7 @@ struct MainTabView: View, TestableView {
     private let pushNotificationAuthorizationManager: PushNotificationAuthorizationManagerBase
     private let deauthenticationService: DeauthenticationServiceProtocol
 
+    @State private var tabSelection: TabSelection = .lessons
 
     init(
         accessTokenProvider: AuthenticationAccessTokenProvider,
@@ -36,13 +37,14 @@ struct MainTabView: View, TestableView {
 
     var didAppear: Handler<Self>?
     var body: some View {
-        TabView {
+        TabView(selection: $tabSelection) {
             LessonsView(
                 accessTokenProvider: accessTokenProvider,
                 pushNotificationAuthorizationManager: pushNotificationAuthorizationManager,
                 lessonPlanFetchingCoordinator: lessonPlanFetchingCoordinator,
                 lessonPlanRepository: lessonPlanRepository
             )
+            .tag(TabSelection.lessons)
             .tabItem {
                 Image(systemSymbol: .calendar).font(.system(size: 21, weight: .medium))
                 Text("LESSONS")
@@ -53,6 +55,7 @@ struct MainTabView: View, TestableView {
                 urlOpener: UIApplication.shared,
                 deauthenticationService: deauthenticationService
             )
+            .tag(TabSelection.profile)
             .tabItem {
                 Image(systemSymbol: .person).font(.system(size: 21, weight: .semibold))
                 Text("PROFILE")
