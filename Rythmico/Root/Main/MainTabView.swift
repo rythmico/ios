@@ -3,27 +3,18 @@ import SFSafeSymbols
 import Sugar
 
 struct MainTabView: View, TestableView {
+    enum TabSelection: Hashable {
+        case lessons
+        case profile
+    }
+
     private let accessTokenProvider: AuthenticationAccessTokenProvider
+    private let lessonPlanFetchingCoordinator: LessonPlanFetchingCoordinatorBase
     private let lessonPlanRepository: LessonPlanRepository
     private let pushNotificationRegistrationService: PushNotificationRegistrationServiceProtocol
     private let pushNotificationAuthorizationManager: PushNotificationAuthorizationManagerBase
     private let deauthenticationService: DeauthenticationServiceProtocol
 
-    @State private(set) var lessonRequestView: RequestLessonPlanView?
-
-    func presentRequestLessonFlow() {
-        lessonRequestView = RequestLessonPlanView(
-            coordinator: LessonPlanRequestCoordinator(
-                service: LessonPlanRequestService(accessTokenProvider: accessTokenProvider),
-                repository: lessonPlanRepository
-            ),
-            context: RequestLessonPlanContext(),
-            accessTokenProvider: accessTokenProvider,
-            instrumentProvider: InstrumentSelectionListProviderFake(),
-            keyboardDismisser: UIApplication.shared,
-            notificationsAuthorizationManager: pushNotificationAuthorizationManager
-        )
-    }
 
     init(
         accessTokenProvider: AuthenticationAccessTokenProvider,
@@ -33,6 +24,10 @@ struct MainTabView: View, TestableView {
         deauthenticationService: DeauthenticationServiceProtocol
     ) {
         self.accessTokenProvider = accessTokenProvider
+        self.lessonPlanFetchingCoordinator = LessonPlanFetchingCoordinator(
+            service: LessonPlanFetchingService(accessTokenProvider: accessTokenProvider),
+            repository: lessonPlanRepository
+        )
         self.lessonPlanRepository = lessonPlanRepository
         self.pushNotificationRegistrationService = pushNotificationRegistrationService
         self.pushNotificationAuthorizationManager = pushNotificationAuthorizationManager
@@ -42,20 +37,12 @@ struct MainTabView: View, TestableView {
     var didAppear: Handler<Self>?
     var body: some View {
         TabView {
-            NavigationView {
-                Color.clear
-                    .navigationBarTitle("Lessons", displayMode: .large)
-                    .navigationBarItems(
-                        trailing: Button(action: presentRequestLessonFlow) {
-                            Image(systemSymbol: .plusCircleFill).font(.system(size: 24))
-                                .padding(.vertical, .spacingExtraSmall)
-                                .padding(.horizontal, .spacingExtraLarge)
-                                .offset(x: .spacingExtraLarge)
-                        }
-                        .accessibility(label: Text("Request lessons"))
-                        .accessibility(hint: Text("Double tap to request a lesson plan"))
-                    )
-            }
+            LessonsView(
+                accessTokenProvider: accessTokenProvider,
+                pushNotificationAuthorizationManager: pushNotificationAuthorizationManager,
+                lessonPlanFetchingCoordinator: lessonPlanFetchingCoordinator,
+                lessonPlanRepository: lessonPlanRepository
+            )
             .tabItem {
                 Image(systemSymbol: .calendar).font(.system(size: 21, weight: .medium))
                 Text("LESSONS")
@@ -72,7 +59,6 @@ struct MainTabView: View, TestableView {
             }
         }
         .accentColor(.rythmicoPurple)
-        .betterSheet(item: $lessonRequestView, content: { $0 })
         .onAppear { self.didAppear?(self) }
         .onAppear(perform: pushNotificationRegistrationService.registerForPushNotifications)
     }
