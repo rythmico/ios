@@ -17,6 +17,7 @@
 		03341B4823ABB1E8009AE8A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4723ABB1E8009AE8A8 /* Preview Assets.xcassets */; };
 		03341B4B23ABB1E8009AE8A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */; };
 		0336D62C241EAAF6006CFC1F /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336D62B241EAAF6006CFC1F /* APIRequest.swift */; };
+		033D47D1247777100096C50F /* LessonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033D47D0247777100096C50F /* LessonsView.swift */; };
 		033D47D324784A3E0096C50F /* LessonPlanFetchingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033D47D224784A3E0096C50F /* LessonPlanFetchingCoordinator.swift */; };
 		033D47D6247ABF6B0096C50F /* LessonPlanFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033D47D5247ABF6B0096C50F /* LessonPlanFetchingService.swift */; };
 		0365F6F02417E79000F452AC /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6EF2417E79000F452AC /* Address.swift */; };
@@ -237,6 +238,7 @@
 		03341B4A23ABB1E8009AE8A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03341B4C23ABB1E8009AE8A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0336D62B241EAAF6006CFC1F /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		033D47D0247777100096C50F /* LessonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsView.swift; sourceTree = "<group>"; };
 		033D47D224784A3E0096C50F /* LessonPlanFetchingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanFetchingCoordinator.swift; sourceTree = "<group>"; };
 		033D47D5247ABF6B0096C50F /* LessonPlanFetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanFetchingService.swift; sourceTree = "<group>"; };
 		0365F6EF2417E79000F452AC /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
@@ -488,6 +490,7 @@
 			children = (
 				D5F506B22405B6A700CA4094 /* AppStart */,
 				D54317F223FDB04E00CB1493 /* Root */,
+				033D47CF247777040096C50F /* Lessons */,
 				03EDA6772476F2BB00FBE527 /* Profile */,
 				D54317ED23FDB00700CB1493 /* RequestLessonPlan */,
 				D52677CB241019B60074FDEF /* Supporting Files */,
@@ -516,6 +519,7 @@
 		033D47CF247777040096C50F /* Lessons */ = {
 			isa = PBXGroup;
 			children = (
+				033D47D0247777100096C50F /* LessonsView.swift */,
 				03021C4E248A769200C0C57E /* LessonPlanSummaryCell.swift */,
 			);
 			path = Lessons;
@@ -1254,6 +1258,7 @@
 				0365F6F52417F1E900F452AC /* AddressProvider.swift in Sources */,
 				03B198562471BD6C005529EB /* PushNotificationAuthorizationManager.swift in Sources */,
 				D5F5067B2400788400CA4094 /* MultilineTextField.swift in Sources */,
+				033D47D1247777100096C50F /* LessonsView.swift in Sources */,
 				03AAF6732445E11A002D8F5B /* ScheduleDoubles.swift in Sources */,
 				D5F5065F240055E800CA4094 /* TitleContentView.swift in Sources */,
 				03AB22F3244CB13200DAC7DF /* PrivateNoteView.swift in Sources */,
