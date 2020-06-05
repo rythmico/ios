@@ -2,9 +2,9 @@ import XCTest
 @testable import Rythmico
 
 final class LessonsViewTests: XCTestCase {
-    var lessonsView: (LessonPlanFetchingCoordinatorBase, LessonPlanRepository, LessonsView) {
+    var lessonsView: (LessonPlanFetchingCoordinatorSpy, LessonPlanRepository, LessonsView) {
         let repository = LessonPlanRepository()
-        let coordinator = LessonPlanFetchingCoordinatorStub(result: .success([.stub, .stub, .stub]), repository: repository)
+        let coordinator = LessonPlanFetchingCoordinatorSpy()
         return (
             coordinator,
             repository,
@@ -15,6 +15,20 @@ final class LessonsViewTests: XCTestCase {
                 lessonPlanRepository: repository
             )
         )
+    }
+
+    func testInitialState() {
+        let (coordinator, _, _) = lessonsView
+        XCTAssertEqual(coordinator.fetchCount, 0)
+        XCTAssertNil(coordinator.error)
+    }
+
+    func testLessonPlansLoadingOnAppear() {
+        let (coordinator, _, view) = lessonsView
+
+        XCTAssertView(view) { view in
+            XCTAssertEqual(coordinator.fetchCount, 1)
+        }
     }
 
     func testPresentRequestLessonFlow() {

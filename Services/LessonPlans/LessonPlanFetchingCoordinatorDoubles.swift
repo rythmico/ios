@@ -29,3 +29,11 @@ final class LessonPlanFetchingCoordinatorStub: LessonPlanFetchingCoordinatorBase
         }
     }
 }
+
+final class LessonPlanFetchingCoordinatorSpy: LessonPlanFetchingCoordinatorBase {
+    var fetchCount = 0
+
+    override func fetchLessonPlans() {
+        fetchCount += 1
+    }
+}
