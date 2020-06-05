@@ -19,11 +19,13 @@ struct InstrumentView: View {
             HStack {
                 Text(viewData.name)
                     .rythmicoFont(.headline)
-                    .foregroundColor(.rythmicoForegroundLightModeVariant)
+                    .foregroundColor(.rythmicoForeground)
                     .padding(.leading, .spacingMedium)
                     .padding(.vertical, .spacingMedium)
                 Spacer()
-                viewData.icon.renderingMode(.original).padding(.trailing, .spacingMedium)
+                viewData.icon.renderingMode(.template)
+                    .accentColor(.rythmicoForeground)
+                    .padding(.trailing, .spacingMedium)
             }
         }
         .frame(minHeight: 70)
