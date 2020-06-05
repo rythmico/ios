@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		03021C4F248A769200C0C57E /* LessonPlanSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03021C4E248A769200C0C57E /* LessonPlanSummaryCell.swift */; };
+		03021C51248A799200C0C57E /* LessonsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03021C50248A799200C0C57E /* LessonsViewTests.swift */; };
 		0304CCAC2489A698009FDA05 /* LessonPlanFetchingCoordinatorDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304CCAB2489A698009FDA05 /* LessonPlanFetchingCoordinatorDoubles.swift */; };
 		03080EEB2466FDD9008715EE /* LessonPlanRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03080EEA2466FDD9008715EE /* LessonPlanRequestService.swift */; };
 		03080EED2466FE21008715EE /* LessonPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03080EEC2466FE21008715EE /* LessonPlan.swift */; };
@@ -226,6 +227,7 @@
 
 /* Begin PBXFileReference section */
 		03021C4E248A769200C0C57E /* LessonPlanSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanSummaryCell.swift; sourceTree = "<group>"; };
+		03021C50248A799200C0C57E /* LessonsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsViewTests.swift; sourceTree = "<group>"; };
 		0304CCAB2489A698009FDA05 /* LessonPlanFetchingCoordinatorDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanFetchingCoordinatorDoubles.swift; sourceTree = "<group>"; };
 		03080EEA2466FDD9008715EE /* LessonPlanRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanRequestService.swift; sourceTree = "<group>"; };
 		03080EEC2466FE21008715EE /* LessonPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlan.swift; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 			isa = PBXGroup;
 			children = (
 				033D47D0247777100096C50F /* LessonsView.swift */,
+				03021C50248A799200C0C57E /* LessonsViewTests.swift */,
 				03021C4E248A769200C0C57E /* LessonPlanSummaryCell.swift */,
 			);
 			path = Lessons;
@@ -1333,6 +1336,7 @@
 				03BB5C962473070C00B44692 /* ReviewRequestViewTests.swift in Sources */,
 				D53555E623E5383C005A20EB /* AppleAuthorizationServiceTests.swift in Sources */,
 				D514750F240C96F0002EE20C /* XCTAssertView.swift in Sources */,
+				03021C51248A799200C0C57E /* LessonsViewTests.swift in Sources */,
 				D5473C9F241AC3CB00D66775 /* AddressDetailsViewTests.swift in Sources */,
 				D535553623E105A5005A20EB /* OnboardingViewTests.swift in Sources */,
 				0392A9D3244D184F001E97AE /* PrivateNoteViewTests.swift in Sources */,
