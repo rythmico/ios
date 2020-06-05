@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03021C4F248A769200C0C57E /* LessonPlanSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03021C4E248A769200C0C57E /* LessonPlanSummaryCell.swift */; };
 		0304CCAC2489A698009FDA05 /* LessonPlanFetchingCoordinatorDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304CCAB2489A698009FDA05 /* LessonPlanFetchingCoordinatorDoubles.swift */; };
 		03080EEB2466FDD9008715EE /* LessonPlanRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03080EEA2466FDD9008715EE /* LessonPlanRequestService.swift */; };
 		03080EED2466FE21008715EE /* LessonPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03080EEC2466FE21008715EE /* LessonPlan.swift */; };
@@ -223,6 +224,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03021C4E248A769200C0C57E /* LessonPlanSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanSummaryCell.swift; sourceTree = "<group>"; };
 		0304CCAB2489A698009FDA05 /* LessonPlanFetchingCoordinatorDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanFetchingCoordinatorDoubles.swift; sourceTree = "<group>"; };
 		03080EEA2466FDD9008715EE /* LessonPlanRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanRequestService.swift; sourceTree = "<group>"; };
 		03080EEC2466FE21008715EE /* LessonPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlan.swift; sourceTree = "<group>"; };
@@ -509,6 +511,14 @@
 				03EDA67E24776CEC00FBE527 /* URLOpenerDoubles.swift */,
 			);
 			path = URLOpener;
+			sourceTree = "<group>";
+		};
+		033D47CF247777040096C50F /* Lessons */ = {
+			isa = PBXGroup;
+			children = (
+				03021C4E248A769200C0C57E /* LessonPlanSummaryCell.swift */,
+			);
+			path = Lessons;
 			sourceTree = "<group>";
 		};
 		033D47D4247ABF5C0096C50F /* LessonPlans */ = {
@@ -1204,6 +1214,7 @@
 				D50811E423FB72A3008103D8 /* StepBar.swift in Sources */,
 				033D47D324784A3E0096C50F /* LessonPlanFetchingCoordinator.swift in Sources */,
 				D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */,
+				03021C4F248A769200C0C57E /* LessonPlanSummaryCell.swift in Sources */,
 				D5AAF7D523F9E1F900E410F2 /* InstrumentSelectionListProvider.swift in Sources */,
 				03B1983D247179F6005529EB /* LessonPlanRequestServiceDoubles.swift in Sources */,
 				03A3F6EE2447DFF900F6391D /* Animation.swift in Sources */,
