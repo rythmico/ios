@@ -52,37 +52,39 @@ struct ProfileView: View, TestableView {
 
     var didAppear: Handler<Self>?
     var body: some View {
-        Form {
-            Section(header: header("Notifications")) {
-                cell(
-                    "Push Notifications",
-                    disclosure: enablePushNotificationsAction == nil,
-                    action: goToPushNotificationsSettingsAction
-                ) {
-                    enablePushNotificationsAction.map {
-                        Toggle("", isOn: $pushNotificationsAuthorizationPrompted)
-                            .onTapGesture(perform: $0)
+        NavigationView {
+            Form {
+                Section(header: header("Notifications")) {
+                    cell(
+                        "Push Notifications",
+                        disclosure: enablePushNotificationsAction == nil,
+                        action: goToPushNotificationsSettingsAction
+                    ) {
+                        enablePushNotificationsAction.map {
+                            Toggle("", isOn: $pushNotificationsAuthorizationPrompted)
+                                .onTapGesture(perform: $0)
+                        }
                     }
-                }
 
-            }
-            Section {
-                Button(action: logOut) {
-                    HStack(alignment: .center) {
-                        Text("Log out")
-                            .rythmicoFont(.body)
-                            .foregroundColor(.rythmicoRed)
-                            .frame(maxWidth: .infinity)
-                            .multilineTextAlignment(.center)
-                    }
                 }
-                .frame(minHeight: 35)
-                .accessibility(hint: Text("Double tap to log out of your account"))
+                Section {
+                    Button(action: logOut) {
+                        HStack(alignment: .center) {
+                            Text("Log out")
+                                .rythmicoFont(.body)
+                                .foregroundColor(.rythmicoRed)
+                                .frame(maxWidth: .infinity)
+                                .multilineTextAlignment(.center)
+                        }
+                    }
+                    .frame(minHeight: 35)
+                    .accessibility(hint: Text("Double tap to log out of your account"))
+                }
             }
+            .alert(item: $errorMessage) { Alert(title: Text("An error ocurred"), message: Text($0)) }
+            .navigationBarTitle(Text("Profile"), displayMode: .large)
+            .onAppear { self.didAppear?(self) }
         }
-        .alert(item: $errorMessage) { Alert(title: Text("An error ocurred"), message: Text($0)) }
-        .navigationBarTitle(Text("Profile"), displayMode: .large)
-        .onAppear { self.didAppear?(self) }
     }
 
     private func header(_ title: String) -> some View {

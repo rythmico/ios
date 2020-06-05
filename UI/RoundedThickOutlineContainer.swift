@@ -10,13 +10,13 @@ struct RoundedThickOutlineContainer: ViewModifier {
             .padding(.horizontal, .spacingSmall)
             .frame(minHeight: 56, maxHeight: .infinity)
             .background(
-                ZStack {
-                    RoundedRectangle(cornerRadius: 9, style: .continuous)
-                        .fill(backgroundColor)
-                        .opacity(0.07)
-                    RoundedRectangle(cornerRadius: 9, style: .continuous)
-                        .strokeBorder(borderColor, lineWidth: 2)
-                }
+                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                    .fill(backgroundColor)
+                    .opacity(0.07)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8, style: .continuous)
+                            .strokeBorder(borderColor, lineWidth: 2)
+                    )
             )
     }
 }

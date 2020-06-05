@@ -21,10 +21,25 @@ struct CollectionView<Data: RandomAccessCollection, ID: Hashable, Content: View>
     var body: some View {
         ScrollView {
             VStack(spacing: .spacingSmall) {
-                ForEach(data, id: id, content: content)
+                // Needed cause otherwise SwiftUI does not refresh ScrollView. Sigh.
+                if data.isEmpty {
+                    Color.clear
+                } else {
+                    ForEach(data, id: id, content: content)
+                }
             }
             .padding(padding)
         }
+    }
+}
+
+extension CollectionView where Data.Element: Identifiable, ID == Data.Element.ID {
+    init(
+        _ data: Data,
+        padding: EdgeInsets = .zero,
+        @ViewBuilder content: @escaping (Data.Element) -> Content
+    ) {
+        self.init(data, id: \.id, padding: padding, content: content)
     }
 }
 
