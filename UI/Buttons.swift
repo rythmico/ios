@@ -17,7 +17,10 @@ struct PrimaryButtonStyle: ButtonStyle {
             .rythmicoFont(.callout)
             .foregroundColor(.rythmicoWhite)
             .frame(maxWidth: .infinity, minHeight: 48)
-            .background(backgroundColor(for: configuration).cornerRadius(4))
+            .background(
+                RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    .fill(backgroundColor(for: configuration))
+            )
     }
 
     func backgroundColor(for configuration: Configuration) -> Color {
@@ -36,12 +39,13 @@ struct SecondaryButtonStyle: ButtonStyle {
             .rythmicoFont(.callout)
             .foregroundColor(foregroundColor(for: configuration))
             .frame(height: 40)
-            .overlay(
-                RoundedRectangle(cornerRadius: 4)
-                    .stroke(Color.rythmicoGray30, lineWidth: 2)
-            )
             .background(
-                backgroundColor(for: configuration).cornerRadius(4)
+                RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    .fill(backgroundColor(for: configuration))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 4, style: .continuous)
+                            .stroke(Color.rythmicoGray30, lineWidth: 2)
+                    )
             )
     }
 
@@ -55,5 +59,15 @@ struct SecondaryButtonStyle: ButtonStyle {
         configuration.isPressed
             ? Color.rythmicoGray30
             : Color.clear
+    }
+}
+
+struct Buttons_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack(spacing: 20) {
+            Button("Next", action: {}).primaryStyle()
+            Button("Next", action: {}).secondaryStyle()
+        }
+        .padding()
     }
 }
