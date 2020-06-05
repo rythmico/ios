@@ -2,8 +2,12 @@ import SwiftUI
 
 extension Color {
     static let rythmicoRed = Color(.rythmicoRed)
+
+    static let rythmicoLightPurple = Color(.rythmicoLightPurple)
     static let rythmicoPurple = Color(.rythmicoPurple)
     static let rythmicoHighlightPurple = Color(.rythmicoHighlightPurple)
+    static let rythmicoDarkPurple = Color(.rythmicoDarkPurple)
+
     static let rythmicoWhite = Color(.rythmicoWhite)
 
     static let rythmicoGray10 = Color(.rythmicoGray10)
@@ -16,16 +20,15 @@ extension Color {
     static let rythmicoBackgroundSecondary = Color(.rythmicoBackgroundSecondary)
 }
 
-extension Color {
-    // TODO: remove when InstrumentView dark mode style is defined.
-    // NOTE: do not use directly elsewhere.
-    static let rythmicoForegroundLightModeVariant = Color(.rythmicoForegroundLightModeVariant)
-}
-
 extension UIColor {
     static let rythmicoRed = UIColor(
         lightModeVariant: .init(hex: 0xB00020),
         darkModeVariant: .init(hex: 0x9E001C)
+    )
+
+    static let rythmicoLightPurple = UIColor(
+        lightModeVariant: .init(hex: 0xE8DAFF),
+        darkModeVariant: .init(hex: 0xd0c4e5)
     )
 
     static let rythmicoPurple = UIColor(
@@ -38,6 +41,11 @@ extension UIColor {
         darkModeVariant: .init(hex: 0x766CED)
     )
 
+    static let rythmicoDarkPurple = UIColor(
+        lightModeVariant: .init(hex: 0x6929C4),
+        darkModeVariant: .init(hex: 0x5e24b0)
+    )
+
     static let rythmicoWhite = UIColor(
         lightModeVariant: .white,
         darkModeVariant: .rythmicoForegroundDarkModeVariant
@@ -45,7 +53,7 @@ extension UIColor {
 
     static let rythmicoGray10 = UIColor(
         lightModeVariant: .init(hex: 0xF0F4F7),
-        darkModeVariant: .init(hex: 0x303030)
+        darkModeVariant: .init(hex: 0x363637)
     )
 
     static let rythmicoGray20 = UIColor(
@@ -70,7 +78,7 @@ extension UIColor {
 
     static let rythmicoBackground = UIColor(
         lightModeVariant: .white,
-        darkModeVariant: .black
+        darkModeVariant: .init(hex: 0x232323)
     )
 
     static let rythmicoBackgroundSecondary = UIColor(
@@ -80,9 +88,7 @@ extension UIColor {
 
     // Shared colors.
 
-    // TODO: privatize when InstrumentView dark mode style is defined.
-    // NOTE: do not use directly elsewhere.
-    static let rythmicoForegroundLightModeVariant = UIColor(hex: 0x1B1D22)
+    private static let rythmicoForegroundLightModeVariant = UIColor(hex: 0x1B1D22)
     private static let rythmicoForegroundDarkModeVariant = UIColor(hex: 0xe8e8e8)
 }
 

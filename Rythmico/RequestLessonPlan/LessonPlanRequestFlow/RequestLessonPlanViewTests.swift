@@ -4,10 +4,10 @@ import struct SwiftUI.Image
 
 final class RequestLessonPlanViewTests: XCTestCase {
     func requestLessonPlanView(
-        state: RequestLessonPlanCoordinatorState,
+        state: LessonPlanRequestCoordinatorState,
         context: RequestLessonPlanContext
     ) -> (RequestLessonPlanView) {
-        let coordinator = RequestLessonPlanCoordinatorDummy()
+        let coordinator = LessonPlanRequestCoordinatorDummy()
         coordinator.state = state
         let view = RequestLessonPlanView(
             coordinator: coordinator,

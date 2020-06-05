@@ -7,7 +7,7 @@ struct ReviewRequestView: View, TestableView {
         static let lineSpacing: CGFloat = .spacingUnit * 2
     }
 
-    private let coordinator: RequestLessonPlanCoordinatorBase
+    private let coordinator: LessonPlanRequestCoordinatorBase
     private let context: RequestLessonPlanContext
     private let instrument: Instrument
     private let student: Student
@@ -16,7 +16,7 @@ struct ReviewRequestView: View, TestableView {
     private let privateNote: String
 
     init(
-        coordinator: RequestLessonPlanCoordinatorBase,
+        coordinator: LessonPlanRequestCoordinatorBase,
         context: RequestLessonPlanContext,
         instrument: Instrument,
         student: Student,
@@ -35,7 +35,7 @@ struct ReviewRequestView: View, TestableView {
 
     func submitRequest() {
         self.coordinator.requestLessonPlan(
-            RequestLessonPlanBody(
+            LessonPlanRequestBody(
                 instrument: self.instrument,
                 student: self.student,
                 address: self.address,
@@ -203,7 +203,7 @@ struct ReviewRequestView: View, TestableView {
 struct ReviewRequestView_Previews: PreviewProvider {
     static var previews: some View {
         ReviewRequestView(
-            coordinator: RequestLessonPlanCoordinatorDummy(),
+            coordinator: LessonPlanRequestCoordinatorDummy(),
             context: .init(),
             instrument: .guitar,
             student: .davidStub,

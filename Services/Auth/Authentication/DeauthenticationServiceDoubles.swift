@@ -16,7 +16,5 @@ final class DeauthenticationServiceSpy: DeauthenticationServiceProtocol {
 }
 
 final class DeauthenticationServiceDummy: DeauthenticationServiceProtocol {
-    init() {}
-
     func deauthenticate() {}
 }

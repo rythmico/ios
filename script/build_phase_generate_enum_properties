@@ -6,6 +6,7 @@ if ! which sourcery > /dev/null; then
 fi
 
 sourcery \
+    --sources Services \
     --sources UI \
     --sources Rythmico \
     --templates Rythmico/Supporting\ Files/EnumProperties.stencil \

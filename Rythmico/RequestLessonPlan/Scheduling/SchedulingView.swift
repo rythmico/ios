@@ -20,7 +20,7 @@ struct SchedulingView: View, TestableView {
 
     final class ViewState: ObservableObject {
         @Published var startDate: Date?
-        @Published var startTime: Date?
+        @Published var startTime: Date? // TODO: make Time struct
         @Published var duration: Duration?
     }
 

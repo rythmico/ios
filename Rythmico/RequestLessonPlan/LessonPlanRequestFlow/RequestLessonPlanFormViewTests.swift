@@ -8,7 +8,7 @@ final class RequestLessonPlanFormViewTests: XCTestCase {
         let instrumentProvider = InstrumentSelectionListProviderStub(instruments: [.guitar, .piano])
         let view = RequestLessonPlanFormView(
             context: context,
-            coordinator: RequestLessonPlanCoordinatorDummy(),
+            coordinator: LessonPlanRequestCoordinatorDummy(),
             accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
             instrumentProvider: instrumentProvider,
             keyboardDismisser: KeyboardDismisserSpy()
