@@ -20,7 +20,7 @@ final class LessonsViewTests: XCTestCase {
     func testInitialState() {
         let (coordinator, _, _) = lessonsView
         XCTAssertEqual(coordinator.fetchCount, 0)
-        XCTAssertNil(coordinator.error)
+        XCTAssertTrue(coordinator.state.isIdle)
     }
 
     func testLessonPlansLoadingOnAppear() {
@@ -28,6 +28,7 @@ final class LessonsViewTests: XCTestCase {
 
         XCTAssertView(view) { view in
             XCTAssertEqual(coordinator.fetchCount, 1)
+            XCTAssertTrue(coordinator.state.isIdle)
         }
     }
 

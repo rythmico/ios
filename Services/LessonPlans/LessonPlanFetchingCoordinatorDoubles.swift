@@ -16,11 +16,14 @@ final class LessonPlanFetchingCoordinatorStub: LessonPlanFetchingCoordinatorBase
         let completion = {
             switch self.result {
             case .success(let lessonPlans):
+                self.state = .idle
                 self.repository.lessonPlans = lessonPlans
             case .failure(let error):
-                self.error = error
+                self.state = .failure(error)
             }
         }
+
+        state = .loading
 
         if let delay = delay {
             DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: completion)
