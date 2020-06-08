@@ -48,6 +48,11 @@ struct LessonsView: View, TestableView {
             }
             .navigationBarTitle("Lessons", displayMode: .large)
             .navigationBarItems(
+                leading: Group {
+                    if fetchingCoordinator.state.isLoading {
+                        ActivityIndicator(style: .medium, color: .rythmicoGray90)
+                    }
+                },
                 trailing: Button(action: presentRequestLessonFlow) {
                     Image(systemSymbol: .plusCircleFill).font(.system(size: 24))
                         .padding(.vertical, .spacingExtraSmall)
@@ -59,8 +64,8 @@ struct LessonsView: View, TestableView {
             )
             .alert(
                 item: Binding(
-                    get: { self.fetchingCoordinator.error?.localizedDescription },
-                    set: { self.fetchingCoordinator.error = $0 }
+                    get: { self.fetchingCoordinator.state.failureValue?.localizedDescription },
+                    set: { if $0 == nil { self.fetchingCoordinator.dismissError() } }
                 )
             ) {
                 Alert(title: Text("An error ocurred"), message: Text($0.localizedDescription))
@@ -91,7 +96,8 @@ struct LessonsView_Previews: PreviewProvider {
             pushNotificationAuthorizationManager: PushNotificationAuthorizationManagerDummy(),
             lessonPlanFetchingCoordinator: LessonPlanFetchingCoordinatorStub(
                 result: .success([.stub, .stub, .stub, .stub]),
-                delay: 1,
+//                result: .failure("some"),
+                delay: 4,
                 repository: repository
             ),
             lessonPlanRepository: repository

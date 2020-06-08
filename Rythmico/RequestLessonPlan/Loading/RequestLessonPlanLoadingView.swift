@@ -3,7 +3,7 @@ import SwiftUI
 struct RequestLessonPlanLoadingView: View {
     var body: some View {
         HStack(spacing: .spacingExtraSmall) {
-            ActivityIndicator(style: .medium, color: .rythmicoForeground)
+            ActivityIndicator(style: .medium, color: .rythmicoGray90)
             Text("Submitting proposal...")
                 .rythmicoFont(.subheadline)
                 .foregroundColor(.rythmicoForeground)
