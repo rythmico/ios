@@ -37,7 +37,7 @@ struct OnboardingView: View, TestableView {
                         .disabled(!isAppleAuthorizationButtonEnabled)
                 }
             }
-            .padding()
+            .padding(.spacingLarge)
             .animation(.rythmicoSpring(duration: .durationMedium), value: isLoading)
         }
         .alert(item: $errorMessage) {

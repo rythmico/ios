@@ -72,7 +72,7 @@ struct RootView: View, TestableView {
 #if DEBUG
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
-        Current.userAuthenticated()
+//        Current.userAuthenticated()
 
         Current.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
         Current.authenticationService = AuthenticationServiceStub(
@@ -89,7 +89,7 @@ struct RootView_Previews: PreviewProvider {
             delay: 2
         )
 
-        return RootView()
+        return RootView().previewDevices()
     }
 }
 #endif
