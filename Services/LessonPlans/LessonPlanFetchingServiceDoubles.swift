@@ -11,19 +11,16 @@ final class LessonPlanFetchingServiceStub: LessonPlanFetchingServiceProtocol {
         self.delay = delay
     }
 
-    func lessonPlans(accessToken: String, completion: @escaping CompletionHandler) -> SessionTask? {
+    func lessonPlans(accessToken: String, completion: @escaping CompletionHandler) {
         let work = { completion(self.result) }
         if let delay = delay {
             DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: work)
         } else {
             work()
         }
-        return nil
     }
 }
 
 final class LessonPlanFetchingServiceDummy: LessonPlanFetchingServiceProtocol {
-    func lessonPlans(accessToken: String, completion: @escaping CompletionHandler) -> SessionTask? {
-        nil
-    }
+    func lessonPlans(accessToken: String, completion: @escaping CompletionHandler) {}
 }
