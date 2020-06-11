@@ -87,6 +87,7 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
     }
 }
 
+#if DEBUG
 struct RequestLessonPlanConfirmationView_Previews: PreviewProvider {
     static var previews: some View {
         Current.userAuthenticated()
@@ -108,3 +109,4 @@ struct RequestLessonPlanConfirmationView_Previews: PreviewProvider {
 //            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }
+#endif

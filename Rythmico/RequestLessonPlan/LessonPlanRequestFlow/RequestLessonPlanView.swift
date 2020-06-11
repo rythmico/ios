@@ -65,6 +65,7 @@ extension RequestLessonPlanView {
     }
 }
 
+#if DEBUG
 struct RequestLessonPlanView_Preview: PreviewProvider {
     static var previews: some View {
         Current.userAuthenticated()
@@ -105,3 +106,4 @@ struct RequestLessonPlanView_Preview: PreviewProvider {
         return RequestLessonPlanView(context: context)
     }
 }
+#endif

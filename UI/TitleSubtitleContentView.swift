@@ -23,6 +23,7 @@ struct TitleSubtitleContentView<Content: View>: View {
     }
 }
 
+#if DEBUG
 struct TitleSubtitleContentView_Previews: PreviewProvider {
     static var previews: some View {
         TitleSubtitleContentView(title: "Title", subtitle: "Subtitle") {
@@ -30,3 +31,4 @@ struct TitleSubtitleContentView_Previews: PreviewProvider {
         }
     }
 }
+#endif

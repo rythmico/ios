@@ -41,6 +41,7 @@ extension AuthorizationAppleIDButton {
     }
 }
 
+#if DEBUG
 struct AuthorizationAppleIDButton_Preview: PreviewProvider {
     static var previews: some View {
         ZStack {
@@ -55,3 +56,4 @@ struct AuthorizationAppleIDButton_Preview: PreviewProvider {
         }
     }
 }
+#endif

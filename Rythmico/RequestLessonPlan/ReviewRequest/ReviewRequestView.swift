@@ -200,6 +200,7 @@ struct ReviewRequestView: View, TestableView {
     }
 }
 
+#if DEBUG
 struct ReviewRequestView_Previews: PreviewProvider {
     static var previews: some View {
         Current.userAuthenticated()
@@ -216,3 +217,4 @@ struct ReviewRequestView_Previews: PreviewProvider {
         .previewDevices()
     }
 }
+#endif

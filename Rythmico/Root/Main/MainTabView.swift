@@ -50,6 +50,7 @@ struct MainTabView: View, TestableView {
     }
 }
 
+#if DEBUG
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
         Current.userAuthenticated()
@@ -61,3 +62,4 @@ struct MainTabView_Previews: PreviewProvider {
         return MainTabView()
     }
 }
+#endif

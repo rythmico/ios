@@ -37,6 +37,7 @@ struct TitleSubtitleView: View {
     }
 }
 
+#if DEBUG
 struct TitleSubtitleView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -45,3 +46,4 @@ struct TitleSubtitleView_Previews: PreviewProvider {
         }
     }
 }
+#endif

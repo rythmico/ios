@@ -35,6 +35,7 @@ struct InstrumentView: View {
     }
 }
 
+#if DEBUG
 struct InstrumentView_Preview: PreviewProvider {
     static var previews: some View {
         VStack {
@@ -45,3 +46,4 @@ struct InstrumentView_Preview: PreviewProvider {
         }.padding(.horizontal, 20)
     }
 }
+#endif

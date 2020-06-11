@@ -105,6 +105,7 @@ struct OnboardingView: View, TestableView {
     }
 }
 
+#if DEBUG
 struct OnboardingView_Preview: PreviewProvider {
     static var previews: some View {
         Current.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
@@ -123,3 +124,4 @@ struct OnboardingView_Preview: PreviewProvider {
         }
     }
 }
+#endif

@@ -127,6 +127,7 @@ struct AddressDetailsView: View, TestableView {
     }
 }
 
+#if DEBUG
 struct AddressDetailsViewPreview: PreviewProvider {
     static var previews: some View {
         Current.userAuthenticated()
@@ -147,3 +148,4 @@ struct AddressDetailsViewPreview: PreviewProvider {
         .previewDevices()
     }
 }
+#endif

@@ -69,6 +69,7 @@ struct RootView: View, TestableView {
     }
 }
 
+#if DEBUG
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         Current.userAuthenticated()
@@ -91,3 +92,4 @@ struct RootView_Previews: PreviewProvider {
         return RootView()
     }
 }
+#endif

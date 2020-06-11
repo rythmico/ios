@@ -62,6 +62,7 @@ struct SecondaryButtonStyle: ButtonStyle {
     }
 }
 
+#if DEBUG
 struct Buttons_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 20) {
@@ -71,3 +72,4 @@ struct Buttons_Previews: PreviewProvider {
         .padding()
     }
 }
+#endif

@@ -108,6 +108,7 @@ struct ProfileView: View, TestableView {
     }
 }
 
+#if DEBUG
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         Current.userAuthenticated()
@@ -125,3 +126,4 @@ struct ProfileView_Previews: PreviewProvider {
         return ProfileView()
     }
 }
+#endif

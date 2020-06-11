@@ -43,6 +43,7 @@ extension CollectionView where Data.Element: Identifiable, ID == Data.Element.ID
     }
 }
 
+#if DEBUG
 struct CollectionView_Previews: PreviewProvider {
     static var previews: some View {
         CollectionView(["ss"], id: \.self) { title in
@@ -53,3 +54,4 @@ struct CollectionView_Previews: PreviewProvider {
         }
     }
 }
+#endif

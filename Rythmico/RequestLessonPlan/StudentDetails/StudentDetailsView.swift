@@ -196,6 +196,7 @@ struct StudentDetailsView: View, TestableView {
     }
 }
 
+#if DEBUG
 struct StudentDetailsView_Preview: PreviewProvider {
     static var previews: some View {
         let state = StudentDetailsView.ViewState()
@@ -211,3 +212,4 @@ struct StudentDetailsView_Preview: PreviewProvider {
         ).previewDevices()
     }
 }
+#endif
