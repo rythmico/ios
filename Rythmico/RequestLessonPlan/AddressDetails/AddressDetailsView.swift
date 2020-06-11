@@ -16,9 +16,9 @@ struct AddressDetailsView: View, TestableView {
     private let student: Student
     private let instrument: Instrument
     @ObservedObject
-    private var state: ViewState
+    private(set) var state: ViewState
     @ObservedObject
-    private var coordinator: AddressSearchCoordinator
+    private(set) var coordinator: AddressSearchCoordinator
     private let context: AddressDetailsContext
 
     init(
@@ -41,9 +41,9 @@ struct AddressDetailsView: View, TestableView {
             : .empty
     }
 
-    private var addresses: [AddressDetails]? {
-        coordinator.state.successValue
-    }
+    var addresses: [AddressDetails]? { coordinator.state.successValue }
+    var isLoading: Bool { coordinator.state.isLoading }
+    var errorMessage: String? { coordinator.state.failureValue?.localizedDescription }
 
     func searchAddresses() {
         coordinator.searchAddresses(withPostcode: state.postcode)
@@ -72,7 +72,7 @@ struct AddressDetailsView: View, TestableView {
                             ).modifier(RoundedThinOutlineContainer(padded: false))
                             HStack {
                                 Spacer()
-                                if coordinator.state.isLoading {
+                                if isLoading {
                                     ActivityIndicator(style: .medium, color: .rythmicoGray90)
                                     .transition(
                                         AnyTransition
@@ -122,7 +122,7 @@ struct AddressDetailsView: View, TestableView {
             .animation(.rythmicoSpring(duration: .durationMedium), value: nextButtonAction != nil)
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: addresses)
-        .alert(error: self.coordinator.state.failureValue, dismiss: coordinator.dismissError)
+        .alert(error: self.errorMessage, dismiss: coordinator.dismissError)
         .onAppear { self.didAppear?(self) }
     }
 }

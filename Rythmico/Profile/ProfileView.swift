@@ -10,6 +10,10 @@ struct ProfileView: View, TestableView {
     @ObservedObject
     private var notificationAuthorizationCoordinator = Current.pushNotificationAuthorizationCoordinator
 
+    var errorMessage: String? {
+        notificationAuthorizationCoordinator.status.failedValue?.localizedDescription
+    }
+
     var enablePushNotificationsAction: Action? {
         notificationAuthorizationCoordinator.status.isDetermined
             ? nil
@@ -56,10 +60,7 @@ struct ProfileView: View, TestableView {
                     .accessibility(hint: Text("Double tap to log out of your account"))
                 }
             }
-            .alert(
-                error: self.notificationAuthorizationCoordinator.status.failedValue,
-                dismiss: notificationAuthorizationCoordinator.dismissFailure
-            )
+            .alert(error: self.errorMessage, dismiss: notificationAuthorizationCoordinator.dismissFailure)
             .navigationBarTitle(Text("Profile"), displayMode: .large)
             .onAppear { self.didAppear?(self) }
         }

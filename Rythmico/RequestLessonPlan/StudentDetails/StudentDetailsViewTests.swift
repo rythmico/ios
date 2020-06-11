@@ -7,15 +7,15 @@ final class StudentDetailsViewTests: XCTestCase {
     var studentDetailsView: (RequestLessonPlanContext, KeyboardDismisserSpy, StudentDetailsView) {
         let instrument = Instrument.singing
         let context = RequestLessonPlanContext()
-        let editingCoordinator = KeyboardDismisserSpy()
+        let keyboardDismisser = KeyboardDismisserSpy()
+        Current.keyboardDismisser = keyboardDismisser
         return (
             context,
-            editingCoordinator,
+            keyboardDismisser,
             StudentDetailsView(
                 instrument: instrument,
                 state: .init(),
-                context: context,
-                keyboardDismisser: editingCoordinator
+                context: context
             )
         )
     }

@@ -5,7 +5,7 @@ typealias RequestLessonPlanFailureView = Alert
 
 struct RequestLessonPlanView: View, Identifiable, TestableView {
     @ObservedObject
-    private var coordinator: LessonPlanRequestCoordinator
+    private(set) var coordinator: LessonPlanRequestCoordinator
     @ObservedObject
     private var context: RequestLessonPlanContext
     private let _formView: RequestLessonPlanFormView
@@ -29,11 +29,13 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
         coordinator.state.isIdle && context.currentStep.index == 0
     }
 
+    var errorMessage: String? {
+        coordinator.state.failureValue?.localizedDescription
+    }
+
     var body: some View {
         ZStack {
-            formView.transition(stateTransition(scale: 0.9)).alert(item: errorMessageBinding) {
-                RequestLessonPlanFailureView(title: Text("An error ocurred"), message: Text($0))
-            }
+            formView.transition(stateTransition(scale: 0.9)).alert(error: self.errorMessage, dismiss: coordinator.dismissFailure)
             loadingView.transition(stateTransition(scale: 0.7))
             confirmationView.transition(stateTransition(scale: 0.7))
         }
@@ -47,13 +49,6 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
             .combined(with: .scale(scale: scale))
             .animation(.rythmicoSpring(duration: .durationShort))
     }
-
-    private var errorMessageBinding: Binding<String?> {
-        Binding(
-            get: { self.coordinator.state.failureValue?.localizedDescription },
-            set: { if $0 == nil { self.coordinator.state = .idle } }
-        )
-    }
 }
 
 extension RequestLessonPlanView {
@@ -66,9 +61,7 @@ extension RequestLessonPlanView {
     }
 
     var confirmationView: RequestLessonPlanConfirmationView? {
-        coordinator.state.successValue.map {
-            RequestLessonPlanConfirmationView(lessonPlan: $0)
-        }
+        coordinator.state.successValue.map(RequestLessonPlanConfirmationView.init)
     }
 }
 

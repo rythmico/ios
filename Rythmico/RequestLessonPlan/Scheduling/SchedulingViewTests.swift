@@ -2,6 +2,10 @@ import XCTest
 @testable import Rythmico
 
 final class SchedulingViewTests: XCTestCase {
+    override func setUp() {
+        Current = .dummy
+    }
+
     var schedulingView: (RequestLessonPlanContext, SchedulingView.ViewState, SchedulingView) {
         let context = RequestLessonPlanContext()
         let state = SchedulingView.ViewState()

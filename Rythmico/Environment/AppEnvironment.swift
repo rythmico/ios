@@ -112,9 +112,10 @@ extension AppEnvironment {
     )
 }
 
+let isRunningPreviews = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
+
 #if DEBUG
-let isRunningSwiftUIPreviews = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
-var Current = isRunningSwiftUIPreviews ? AppEnvironment.dummy : AppEnvironment.live
+var Current = isRunningTests || isRunningPreviews ? AppEnvironment.dummy : AppEnvironment.live
 #else
 let Current = AppEnvironment.live
 #endif
