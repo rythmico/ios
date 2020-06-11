@@ -51,7 +51,7 @@ struct LessonPlanSummaryCell: View {
         HStack(spacing: 0) {
             VStack(alignment: .leading, spacing: .spacingExtraSmall) {
                 Text(title)
-                    .rythmicoFont(.headline)
+                    .rythmicoFont(.subheadlineBold)
                     .foregroundColor(.rythmicoForeground)
                 Text(subtitle)
                     .rythmicoFont(.body)

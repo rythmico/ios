@@ -37,7 +37,7 @@ struct AddressDetailsView: View, TestableView {
 
     var subtitle: [MultiStyleText.Part] {
         (UIScreen.main.isLarge && !sizeCategory._isAccessibilityCategory) || addresses?.isEmpty != false
-            ? "Enter the address where " + student.name.firstWord?.bold + " will have the " + "\(instrument.name) lessons".bold
+            ? "Enter the address where " + student.name.firstWord?.style(.bodyBold) + " will have the " + "\(instrument.name) lessons".style(.bodyBold)
             : .empty
     }
 

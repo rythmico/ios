@@ -18,7 +18,7 @@ struct InstrumentView: View {
         Button(action: { self.viewData.action?() }) {
             HStack {
                 Text(viewData.name)
-                    .rythmicoFont(.headline)
+                    .rythmicoFont(.subheadlineBold)
                     .foregroundColor(.rythmicoForeground)
                     .padding(.leading, .spacingMedium)
                     .padding(.vertical, .spacingMedium)
