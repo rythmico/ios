@@ -112,8 +112,6 @@ extension AppEnvironment {
     )
 }
 
-let isRunningPreviews = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
-
 #if DEBUG
 var Current = isRunningTests || isRunningPreviews ? AppEnvironment.dummy : AppEnvironment.live
 #else
