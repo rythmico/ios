@@ -4,51 +4,53 @@ import Sugar
 @testable import Rythmico
 
 final class AddressDetailsViewTests: XCTestCase {
-    private enum ErrorStub: Swift.Error {
-        case stub
+    override func setUp() {
+        Current = .dummy
+        Current.userAuthenticated()
     }
 
     func addressDetailsView(
         result: SimpleResult<[AddressDetails]>
-    ) -> (
+    ) throws -> (
         RequestLessonPlanContext,
-        AddressProviderSpy,
+        AddressSearchServiceSpy,
         AddressDetailsView
     ) {
-        let addressProvider = AddressProviderSpy(result: result)
+        let addressSearchService = AddressSearchServiceSpy(result: result)
+        Current.addressSearchService = addressSearchService
         let context = RequestLessonPlanContext()
-        return (
+        return try (
             context,
-            addressProvider,
+            addressSearchService,
             AddressDetailsView(
                 student: .davidStub,
                 instrument: .guitar,
                 state: .init(),
-                context: context,
-                addressProvider: addressProvider
+                searchCoordinator: XCTUnwrap(Current.addressSearchCoordinator()),
+                context: context
             )
         )
     }
 
-    func testInitialValues() {
-        let (context, _, view) = addressDetailsView(result: .success([.stub]))
+    func testInitialValues() throws {
+        let (context, _, view) = try addressDetailsView(result: .success([.stub]))
 
         XCTAssertView(view) { view in
             XCTAssertNil(context.address)
 
             XCTAssertEqual(view.subtitle.string, "Enter the address where David will have the Guitar lessons")
             XCTAssertTrue(view.state.postcode.isEmpty)
-            XCTAssertNil(view.state.addresses)
             XCTAssertNil(view.state.selectedAddress)
 
+            XCTAssertNil(view.addresses)
             XCTAssertFalse(view.isLoading)
             XCTAssertNil(view.errorMessage)
             XCTAssertNil(view.nextButtonAction)
         }
     }
 
-    func testSearchAddresses_failure() {
-        let (_, provider, view) = addressDetailsView(result: .failure(ErrorStub.stub))
+    func testSearchAddresses_failure() throws {
+        let (_, provider, view) = try addressDetailsView(result: .failure("Something"))
 
         XCTAssertView(view) { view in
             view.state.postcode = "N7"
@@ -58,14 +60,14 @@ final class AddressDetailsViewTests: XCTestCase {
             XCTAssertEqual(provider.searchCount, 1)
             XCTAssertEqual(provider.latestPostcode, "")
 
-            XCTAssertNotNil(view.errorMessage)
-            XCTAssertNil(view.state.addresses)
+            XCTAssertEqual(view.errorMessage, "Something")
+            XCTAssertNil(view.addresses)
             XCTAssertNil(view.state.selectedAddress)
         }
     }
 
-    func testSearchAddresses_success() {
-        let (_, provider, view) = addressDetailsView(result: .success([.stub]))
+    func testSearchAddresses_success() throws {
+        let (_, provider, view) = try addressDetailsView(result: .success([.stub]))
 
         XCTAssertView(view) { view in
             view.state.postcode = "N7"
@@ -76,13 +78,13 @@ final class AddressDetailsViewTests: XCTestCase {
             XCTAssertEqual(provider.latestPostcode, "N7 9FU")
 
             XCTAssertNil(view.errorMessage)
-            XCTAssert(view.state.addresses?.isEmpty == false)
+            XCTAssert(view.addresses?.isEmpty == false)
             XCTAssertNil(view.state.selectedAddress)
         }
     }
 
-    func testAddressSelectionEnablesNextButton() {
-        let (_, _, view) = addressDetailsView(result: .success([.stub]))
+    func testAddressSelectionEnablesNextButton() throws {
+        let (_, _, view) = try addressDetailsView(result: .success([.stub]))
 
         XCTAssertView(view) { view in
             view.searchAddresses()
@@ -91,8 +93,8 @@ final class AddressDetailsViewTests: XCTestCase {
         }
     }
 
-    func testNextButtonSetsAddressDetailsInContext() {
-        let (context, _, view) = addressDetailsView(result: .success([.stub]))
+    func testNextButtonSetsAddressDetailsInContext() throws {
+        let (context, _, view) = try addressDetailsView(result: .success([.stub]))
 
         XCTAssertView(view) { view in
             view.searchAddresses()

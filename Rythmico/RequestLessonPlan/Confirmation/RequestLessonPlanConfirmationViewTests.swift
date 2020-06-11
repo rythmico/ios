@@ -1,29 +1,33 @@
 import XCTest
 @testable import Rythmico
+import enum UserNotifications.UNAuthorizationStatus
 import Sugar
 
 final class RequestLessonPlanConfirmationViewTests: XCTestCase {
+    override func setUp() {
+        Current = .dummy
+        Current.userAuthenticated()
+    }
+
     func confirmationView(
-        notificationsStatus: PushNotificationAuthorizationStatus,
-        requestAuthorizationResult: SimpleResult<Bool>
-    ) -> (PushNotificationAuthorizationManagerStub, RequestLessonPlanConfirmationView) {
-        let notificationsAuthorizationManager = PushNotificationAuthorizationManagerStub(
-            status: notificationsStatus,
-            requestAuthorizationResult: requestAuthorizationResult
+        authorizationStatus: UNAuthorizationStatus,
+        authorizationRequestResult: (Bool, Error?)
+    ) -> RequestLessonPlanConfirmationView {
+        Current.pushNotificationAuthorizationCoordinator = PushNotificationAuthorizationCoordinator(
+            center: UNUserNotificationCenterStub(
+                authorizationStatus: authorizationStatus,
+                authorizationRequestResult: authorizationRequestResult
+            ),
+            registerService: PushNotificationRegisterServiceDummy(),
+            queue: nil
         )
-        return (
-            notificationsAuthorizationManager,
-            RequestLessonPlanConfirmationView(
-                lessonPlan: .stub,
-                notificationsAuthorizationManager: notificationsAuthorizationManager
-            )
-        )
+        return RequestLessonPlanConfirmationView(lessonPlan: .stub)
     }
 
     func testEnableNotificationsButtonShown_whenStatusNotDetermined() {
-        let (_, view) = confirmationView(
-            notificationsStatus: .notDetermined,
-            requestAuthorizationResult: .success(true)
+        let view = confirmationView(
+            authorizationStatus: .notDetermined,
+            authorizationRequestResult: (true, nil)
         )
 
         XCTAssertView(view) { view in
@@ -33,9 +37,9 @@ final class RequestLessonPlanConfirmationViewTests: XCTestCase {
     }
 
     func testEnableNotificationsButtonShown_whenStatusDenied() {
-        let (_, view) = confirmationView(
-            notificationsStatus: .denied,
-            requestAuthorizationResult: .success(true)
+        let view = confirmationView(
+            authorizationStatus: .denied,
+            authorizationRequestResult: (true, nil)
         )
 
         XCTAssertView(view) { view in
@@ -45,9 +49,9 @@ final class RequestLessonPlanConfirmationViewTests: XCTestCase {
     }
 
     func testEnableNotificationsButtonShown_whenStatusAuthorized() {
-        let (_, view) = confirmationView(
-            notificationsStatus: .authorized,
-            requestAuthorizationResult: .success(true)
+        let view = confirmationView(
+            authorizationStatus: .authorized,
+            authorizationRequestResult: (true, nil)
         )
 
         XCTAssertView(view) { view in
@@ -57,9 +61,9 @@ final class RequestLessonPlanConfirmationViewTests: XCTestCase {
     }
 
     func testEnableNotifications_authorized() {
-        let (_, view) = confirmationView(
-            notificationsStatus: .notDetermined,
-            requestAuthorizationResult: .success(true)
+        let view = confirmationView(
+            authorizationStatus: .notDetermined,
+            authorizationRequestResult: (true, nil)
         )
 
         XCTAssertView(view) { view in
@@ -69,9 +73,9 @@ final class RequestLessonPlanConfirmationViewTests: XCTestCase {
     }
 
     func testEnableNotifications_denied() {
-        let (_, view) = confirmationView(
-            notificationsStatus: .notDetermined,
-            requestAuthorizationResult: .success(false)
+        let view = confirmationView(
+            authorizationStatus: .notDetermined,
+            authorizationRequestResult: (false, nil)
         )
 
         XCTAssertView(view) { view in
@@ -81,14 +85,15 @@ final class RequestLessonPlanConfirmationViewTests: XCTestCase {
     }
 
     func testEnableNotifications_failure() {
-        let (_, view) = confirmationView(
-            notificationsStatus: .notDetermined,
-            requestAuthorizationResult: .failure("error")
+        let view = confirmationView(
+            authorizationStatus: .notDetermined,
+            authorizationRequestResult: (false, "Something")
         )
 
         XCTAssertView(view) { view in
             view.enablePushNotificationsButtonAction?()
             XCTAssertNotNil(view.enablePushNotificationsButtonAction)
+            XCTAssertEqual(view.errorMessage, "Something")
         }
     }
 }

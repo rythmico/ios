@@ -8,69 +8,12 @@ extension RootView {
     }
 }
 
-struct RootView<AccessTokenProviderObserving>: View, TestableView where
-    AccessTokenProviderObserving: AuthenticationAccessTokenProviderObserving
-{
-    private let keychain: KeychainProtocol
-    private let appleAuthorizationService: AppleAuthorizationServiceProtocol
-    private let authenticationService: AuthenticationServiceProtocol
-    private let authorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider
-    private let authorizationCredentialRevocationNotifying: AppleAuthorizationCredentialRevocationNotifying
+struct RootView: View, TestableView {
     @ObservedObject
-    private var authenticationAccessTokenProviderObserving: AccessTokenProviderObserving
-    private let deauthenticationService: DeauthenticationServiceProtocol
+    private var accessTokenProviderObserver = Current.accessTokenProviderObserver
 
-    var state: UserState {
-        if let provider = authenticationAccessTokenProviderObserving.currentProvider {
-            return .authenticated(mainTabView(provider))
-        } else {
-            self.keychain.appleAuthorizationUserId = nil
-            return .unauthenticated(onboardingView)
-        }
-    }
-
-    private func mainTabView(_ provider: AuthenticationAccessTokenProvider) -> MainTabView {
-        MainTabView(
-            accessTokenProvider: provider,
-            lessonPlanRepository: .shared,
-            pushNotificationRegistrationService: PushNotificationRegistrationService(
-                manager: .instanceID(),
-                accessTokenProvider: provider
-            ),
-            pushNotificationAuthorizationManager: PushNotificationAuthorizationManager(
-                application: .shared,
-                center: .current()
-            ),
-            deauthenticationService: deauthenticationService
-        )
-    }
-
-    private var onboardingView: OnboardingView {
-        OnboardingView(
-            appleAuthorizationService: appleAuthorizationService,
-            authenticationService: authenticationService,
-            keychain: keychain,
-            pushNotificationUnregistrationService: PushNotificationUnregistrationService(manager: .instanceID())
-        )
-    }
-
-    init(
-        keychain: KeychainProtocol,
-        appleAuthorizationService: AppleAuthorizationServiceProtocol,
-        authenticationService: AuthenticationServiceProtocol,
-        authorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider,
-        authorizationCredentialRevocationNotifying: AppleAuthorizationCredentialRevocationNotifying,
-        authenticationAccessTokenProviderObserving: AccessTokenProviderObserving,
-        deauthenticationService: DeauthenticationServiceProtocol
-    ) {
-        self.keychain = keychain
-        self.appleAuthorizationService = appleAuthorizationService
-        self.authenticationService = authenticationService
-        self.authorizationCredentialStateProvider = authorizationCredentialStateProvider
-        self.authorizationCredentialRevocationNotifying = authorizationCredentialRevocationNotifying
-        self.authenticationAccessTokenProviderObserving = authenticationAccessTokenProviderObserving
-        self.deauthenticationService = deauthenticationService
-    }
+    @State
+    private(set) var state = Self.freshState
 
     var didAppear: Handler<Self>?
     var body: some View {
@@ -79,17 +22,18 @@ struct RootView<AccessTokenProviderObserving>: View, TestableView where
             state.authenticatedValue.zIndex(2).transition(.move(edge: .trailing))
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: state.isAuthenticated)
+        .onReceive(accessTokenProviderObserver.$currentProvider.receive(on: RunLoop.main), perform: refreshState)
         .onAppear { self.didAppear?(self) }
         .onAppear(perform: onAppear)
     }
 
     private func onAppear() {
-        if let authorizationUserId = keychain.appleAuthorizationUserId {
-            authorizationCredentialStateProvider.getCredentialState(forUserID: authorizationUserId) { state in
+        if let authorizationUserId = Current.keychain.appleAuthorizationUserId {
+            Current.appleAuthorizationCredentialStateProvider.getCredentialState(forUserID: authorizationUserId) { state in
                 switch state {
                 case .revoked, .transferred:
-                    self.deauthenticationService.deauthenticate()
-                    self.keychain.appleAuthorizationUserId = nil
+                    Current.deauthenticationService.deauthenticate()
+                    Current.keychain.appleAuthorizationUserId = nil
                 case .authorized, .notFound:
                     break
                 @unknown default:
@@ -98,9 +42,52 @@ struct RootView<AccessTokenProviderObserving>: View, TestableView where
             }
         }
 
-        authorizationCredentialRevocationNotifying.revocationHandler = {
-            self.deauthenticationService.deauthenticate()
-            self.keychain.appleAuthorizationUserId = nil
+        Current.appleAuthorizationCredentialRevocationNotifier.revocationHandler = {
+            Current.deauthenticationService.deauthenticate()
+            Current.keychain.appleAuthorizationUserId = nil
         }
+    }
+
+    private func refreshState(with provider: AuthenticationAccessTokenProvider?) {
+        if provider == nil {
+            // TODO: potentially refactor to put all-things-authentication into coordinator
+            // that takes care of flushing keychain upon logout etc.
+            Current.keychain.appleAuthorizationUserId = nil
+        }
+
+        let freshState = Self.freshState
+        switch (freshState, self.state) {
+        case (.authenticated, .unauthenticated), (.unauthenticated, .authenticated):
+            self.state = freshState
+        default:
+            break
+        }
+    }
+
+    private static var freshState: UserState {
+        MainTabView().flatMap(UserState.authenticated) ?? .unauthenticated(OnboardingView())
+    }
+}
+
+struct RootView_Previews: PreviewProvider {
+    static var previews: some View {
+        Current.userAuthenticated()
+
+        Current.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
+        Current.authenticationService = AuthenticationServiceStub(
+            result: .success(AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))),
+            delay: 2,
+            accessTokenProviderObserver: Current.accessTokenProviderObserver
+        )
+        Current.deauthenticationService = DeauthenticationServiceStub(
+            accessTokenProviderObserver: Current.accessTokenProviderObserver
+        )
+
+        Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(
+            result: .success([.stub]),
+            delay: 2
+        )
+
+        return RootView()
     }
 }

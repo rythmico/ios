@@ -6,8 +6,8 @@ final class InstrumentSelectionViewTests: XCTestCase {
     var instrumentSelectionView: (RequestLessonPlanContext, [Instrument], InstrumentSelectionView) {
         let context = RequestLessonPlanContext()
         let instruments: [Instrument] = [.guitar, .singing]
-        let instrumentProvider = InstrumentSelectionListProviderStub(instruments: instruments)
-        let view = InstrumentSelectionView(state: .init(), context: context, instrumentProvider: instrumentProvider)
+        Current.instrumentSelectionListProvider = InstrumentSelectionListProviderStub(instruments: instruments)
+        let view = InstrumentSelectionView(state: .init(), context: context)
 
         return (context, instruments, view)
     }

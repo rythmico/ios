@@ -3,28 +3,15 @@ import Sugar
 
 protocol LessonPlanFetchingServiceProtocol: AnyObject {
     typealias CompletionHandler = SimpleResultHandler<[LessonPlan]>
-    func lessonPlans(completion: @escaping CompletionHandler)
+    func lessonPlans(accessToken: String, completion: @escaping CompletionHandler)
 }
 
 final class LessonPlanFetchingService: LessonPlanFetchingServiceProtocol {
-    private let accessTokenProvider: AuthenticationAccessTokenProvider
-
-    init(accessTokenProvider: AuthenticationAccessTokenProvider) {
-        self.accessTokenProvider = accessTokenProvider
-    }
-
-    func lessonPlans(completion: @escaping CompletionHandler) {
-        accessTokenProvider.getAccessToken { result in
-            switch result {
-            case .success(let accessToken):
-                let session = Session(adapter: URLSessionAdapter(configuration: .ephemeral))
-                let request = GetLessonPlansRequest(accessToken: accessToken)
-                session.send(request, callbackQueue: .main) { result in
-                    completion(result.mapError { $0 as Error })
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
+    func lessonPlans(accessToken: String, completion: @escaping CompletionHandler) {
+        let session = Session(adapter: URLSessionAdapter(configuration: .ephemeral))
+        let request = GetLessonPlansRequest(accessToken: accessToken)
+        session.send(request, callbackQueue: .main) { result in
+            completion(result.mapError { $0 as Error })
         }
     }
 }

@@ -35,7 +35,7 @@ struct StudentDetailsView: View, TestableView {
     }
 
     @ObservedObject
-    private var editingCoordinator: EditingCoordinator<EditingFocus>
+    private var editingCoordinator = EditingCoordinator<EditingFocus>(keyboardDismisser: Current.keyboardDismisser)
     private var editingFocus: EditingFocus {
         get { editingCoordinator.focus }
         nonmutating set { editingCoordinator.focus = newValue }
@@ -44,16 +44,10 @@ struct StudentDetailsView: View, TestableView {
     private let instrument: Instrument
     private let context: StudentDetailsContext
 
-    init(
-        instrument: Instrument,
-        state: ViewState,
-        context: StudentDetailsContext,
-        keyboardDismisser: KeyboardDismisser
-    ) {
+    init(instrument: Instrument, state: ViewState, context: StudentDetailsContext) {
         self.instrument = instrument
         self.state = state
         self.context = context
-        self.editingCoordinator = EditingCoordinator(keyboardDismisser: keyboardDismisser)
     }
 
     // MARK: - Subtitle -
@@ -205,11 +199,15 @@ struct StudentDetailsView: View, TestableView {
 struct StudentDetailsView_Preview: PreviewProvider {
     static var previews: some View {
         let state = StudentDetailsView.ViewState()
+        state.name = "David"
+        state.dateOfBirth = Date()
+        state.gender = .male
+        state.about = "Something"
+
         return StudentDetailsView(
             instrument: .piano,
             state: state,
-            context: RequestLessonPlanContext(),
-            keyboardDismisser: UIApplication.shared
+            context: RequestLessonPlanContext()
         ).previewDevices()
     }
 }

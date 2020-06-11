@@ -3,42 +3,40 @@ import XCTest
 import AuthenticationServices
 
 final class RootViewTests: XCTestCase {
+    override func setUp() {
+        Current = .dummy
+    }
+
     func rootView(
         appleAuthorizationUserId: String?,
         credentialState: AppleAuthorizationCredentialStateFetcher.CredentialState,
-        accessTokenProvider: AuthenticationAccessTokenProvider?
+        userAuthenticated: Bool
     ) -> (
         KeychainFake,
-        AppleAuthorizationCredentialRevocationNotifierFake,
-        AuthenticationAccessTokenProviderObserverStub,
         DeauthenticationServiceSpy,
-        RootView<AuthenticationAccessTokenProviderObserverStub>
+        RootView
     ) {
         let keychain = KeychainFake()
         keychain.appleAuthorizationUserId = appleAuthorizationUserId
         let credentialStateProvider = AppleAuthorizationCredentialStateFetcherStub(expectedState: credentialState)
-        let credentialRevocationNotifier = AppleAuthorizationCredentialRevocationNotifierFake()
-        let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(currentProvider: accessTokenProvider)
+        let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(
+            currentProvider: userAuthenticated ? AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN")) : nil
+        )
         let deauthenticationService = DeauthenticationServiceSpy(accessTokenProviderObserver: accessTokenProviderObserver)
 
-        let view = RootView(
-            keychain: keychain,
-            appleAuthorizationService: AppleAuthorizationServiceDummy(),
-            authenticationService: AuthenticationServiceDummy(),
-            authorizationCredentialStateProvider: credentialStateProvider,
-            authorizationCredentialRevocationNotifying: credentialRevocationNotifier,
-            authenticationAccessTokenProviderObserving: accessTokenProviderObserver,
-            deauthenticationService: deauthenticationService
-        )
+        Current.keychain = keychain
+        Current.appleAuthorizationCredentialStateProvider = credentialStateProvider
+        Current.accessTokenProviderObserver = accessTokenProviderObserver
+        Current.deauthenticationService = deauthenticationService
 
-        return (keychain, credentialRevocationNotifier, accessTokenProviderObserver, deauthenticationService, view)
+        return (keychain, deauthenticationService, RootView())
     }
 
     func testInitialState() {
-        let (keychain, _, _, deauthenticationService, view) = rootView(
+        let (keychain, deauthenticationService, view) = rootView(
             appleAuthorizationUserId: nil,
             credentialState: .notFound,
-            accessTokenProvider: nil
+            userAuthenticated: false
         )
 
         XCTAssertView(view) { view in
@@ -50,10 +48,10 @@ final class RootViewTests: XCTestCase {
     }
 
     func testAuthenticationShowsMainTabView() {
-        let (_, _, _, deauthenticationService, view) = rootView(
+        let (_, deauthenticationService, view) = rootView(
             appleAuthorizationUserId: "USER_ID",
             credentialState: .notFound,
-            accessTokenProvider: AuthenticationAccessTokenProviderDummy()
+            userAuthenticated: true
         )
 
         XCTAssertView(view) { view in
@@ -64,65 +62,93 @@ final class RootViewTests: XCTestCase {
     }
 
     func testDeauthorizationWhileClosedShowsOnboardingView() {
-        let (keychain, _, _, deauthenticationService, view) = rootView(
+        let expectation = self.expectation(description: "Authentication")
+
+        let (keychain, deauthenticationService, view) = rootView(
             appleAuthorizationUserId: "USER_ID",
             credentialState: .revoked,
-            accessTokenProvider: AuthenticationAccessTokenProviderDummy()
+            userAuthenticated: true
         )
 
         XCTAssertView(view) { view in
-            XCTAssertTrue(view.state.isUnauthenticated)
-            XCTAssertFalse(view.state.isAuthenticated)
+            DispatchQueue.main.async {
+                XCTAssertTrue(view.state.isUnauthenticated)
+                XCTAssertFalse(view.state.isAuthenticated)
+                expectation.fulfill()
+            }
             XCTAssertNil(keychain.appleAuthorizationUserId)
             XCTAssertEqual(deauthenticationService.deauthenticationCount, 1)
         }
+
+        wait(for: [expectation], timeout: 1)
     }
 
     func testDeauthorizationWhileOpenShowsOnboardingView() {
-        let (keychain, credentialRevocationNotifier, _, deauthenticationService, view) = rootView(
+        let expectation = self.expectation(description: "Authentication")
+
+        let (keychain, deauthenticationService, view) = rootView(
             appleAuthorizationUserId: "USER_ID",
             credentialState: .authorized,
-            accessTokenProvider: AuthenticationAccessTokenProviderDummy()
+            userAuthenticated: true
         )
 
         XCTAssertView(view) { view in
-            credentialRevocationNotifier.revocationHandler?()
-            XCTAssertTrue(view.state.isUnauthenticated)
-            XCTAssertFalse(view.state.isAuthenticated)
+            Current.appleAuthorizationCredentialRevocationNotifier.revocationHandler?()
+            DispatchQueue.main.async {
+                XCTAssertTrue(view.state.isUnauthenticated)
+                XCTAssertFalse(view.state.isAuthenticated)
+                expectation.fulfill()
+            }
             XCTAssertNil(keychain.appleAuthorizationUserId)
             XCTAssertEqual(deauthenticationService.deauthenticationCount, 1)
         }
+
+        wait(for: [expectation], timeout: 1)
     }
 
     func testDeauthenticationByProviderShowsOnboardingView() {
-        let (keychain, _, accessTokenProviderObserver, deauthenticationService, view) = rootView(
+        let expectation = self.expectation(description: "Authentication")
+
+        let (keychain, deauthenticationService, view) = rootView(
             appleAuthorizationUserId: "USER_ID",
             credentialState: .authorized,
-            accessTokenProvider: AuthenticationAccessTokenProviderDummy()
+            userAuthenticated: true
         )
 
         XCTAssertView(view) { view in
-            accessTokenProviderObserver.currentProvider = nil
-            XCTAssertTrue(view.state.isUnauthenticated)
-            XCTAssertFalse(view.state.isAuthenticated)
-            XCTAssertNil(keychain.appleAuthorizationUserId)
+            Current.accessTokenProviderObserver.currentProvider = nil
+            DispatchQueue.main.async {
+                XCTAssertTrue(view.state.isUnauthenticated)
+                XCTAssertFalse(view.state.isAuthenticated)
+                XCTAssertNil(keychain.appleAuthorizationUserId)
+                expectation.fulfill()
+            }
             XCTAssertEqual(deauthenticationService.deauthenticationCount, 0)
         }
+
+        wait(for: [expectation], timeout: 1)
     }
 
     func testDeauthenticationByUserShowsOnboardingView() {
-        let (keychain, _, _, deauthenticationService, view) = rootView(
+        let expectation = self.expectation(description: "Authentication")
+
+        let (keychain, deauthenticationService, view) = rootView(
             appleAuthorizationUserId: "USER_ID",
             credentialState: .authorized,
-            accessTokenProvider: AuthenticationAccessTokenProviderDummy()
+            userAuthenticated: true
         )
 
         XCTAssertView(view) { view in
             deauthenticationService.deauthenticate()
-            XCTAssertTrue(view.state.isUnauthenticated)
-            XCTAssertFalse(view.state.isAuthenticated)
-            XCTAssertNil(keychain.appleAuthorizationUserId)
+            DispatchQueue.main.async {
+                XCTAssertTrue(view.state.isUnauthenticated)
+                XCTAssertFalse(view.state.isAuthenticated)
+                XCTAssertNil(keychain.appleAuthorizationUserId)
+                expectation.fulfill()
+            }
             XCTAssertEqual(deauthenticationService.deauthenticationCount, 1)
         }
+
+        wait(for: [expectation], timeout: 1)
     }
 }
