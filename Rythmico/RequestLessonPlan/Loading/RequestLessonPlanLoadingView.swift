@@ -11,8 +11,10 @@ struct RequestLessonPlanLoadingView: View {
     }
 }
 
+#if DEBUG
 struct RequestLessonPlanLoadingView_Previews: PreviewProvider {
     static var previews: some View {
         RequestLessonPlanLoadingView()
     }
 }
+#endif

@@ -65,6 +65,7 @@ struct LessonsView: View, TestableView {
     }
 }
 
+#if DEBUG
 struct LessonsView_Previews: PreviewProvider {
     static var previews: some View {
         Current.userAuthenticated()
@@ -82,3 +83,4 @@ struct LessonsView_Previews: PreviewProvider {
         }
     }
 }
+#endif

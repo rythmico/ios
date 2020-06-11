@@ -93,6 +93,7 @@ struct PrivateNoteView: View, TestableView {
     }
 }
 
+#if DEBUG
 struct PrivateNoteView_Previews: PreviewProvider {
     static var previews: some View {
         let state = PrivateNoteView.ViewState()
@@ -105,3 +106,4 @@ struct PrivateNoteView_Previews: PreviewProvider {
         .previewDevices()
     }
 }
+#endif

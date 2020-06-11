@@ -212,6 +212,7 @@ struct SchedulingView: View, TestableView {
     }
 }
 
+#if DEBUG
 struct SchedulingViewPreview: PreviewProvider {
     static var previews: some View {
         let state = SchedulingView.ViewState()
@@ -228,3 +229,4 @@ struct SchedulingViewPreview: PreviewProvider {
         .previewDevices()
     }
 }
+#endif
