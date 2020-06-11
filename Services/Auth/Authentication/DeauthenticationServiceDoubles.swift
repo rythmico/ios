@@ -1,17 +1,22 @@
 import Sugar
 
-final class DeauthenticationServiceSpy: DeauthenticationServiceProtocol {
-    var deauthenticationCount = 0
+final class DeauthenticationServiceStub: DeauthenticationServiceProtocol {
+    private let accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase
 
-    private let accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverStub
-
-    init(accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverStub) {
+    init(accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase) {
         self.accessTokenProviderObserver = accessTokenProviderObserver
     }
 
     func deauthenticate() {
-        deauthenticationCount += 1
         accessTokenProviderObserver.currentProvider = nil
+    }
+}
+
+final class DeauthenticationServiceSpy: DeauthenticationServiceProtocol {
+    var deauthenticationCount = 0
+
+    func deauthenticate() {
+        deauthenticationCount += 1
     }
 }
 

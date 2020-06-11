@@ -5,16 +5,13 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
     @Environment(\.betterSheetPresentationMode)
     private var presentationMode
 
-    private let lessonPlan: LessonPlan
     @ObservedObject
-    private var notificationsAuthorizationManager: PushNotificationAuthorizationManagerBase
+    private var notificationAuthorizationCoordinator = Current.pushNotificationAuthorizationCoordinator
 
-    init(
-        lessonPlan: LessonPlan,
-        notificationsAuthorizationManager: PushNotificationAuthorizationManagerBase
-    ) {
+    private let lessonPlan: LessonPlan
+
+    init(lessonPlan: LessonPlan) {
         self.lessonPlan = lessonPlan
-        self.notificationsAuthorizationManager = notificationsAuthorizationManager
     }
 
     var title: String {
@@ -26,18 +23,10 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
     }
 
     var enablePushNotificationsButtonAction: Action? {
-        guard notificationsAuthorizationManager.status == .notDetermined else {
-            return nil
-        }
-        return {
-            self.notificationsAuthorizationManager.requestAuthorization { error in
-                self.errorMessage = error.localizedDescription
-            }
-        }
+        notificationAuthorizationCoordinator.status.isDetermined
+            ? nil
+            : notificationAuthorizationCoordinator.requestAuthorization
     }
-
-    @State
-    var errorMessage: String?
 
     var didAppear: Handler<Self>?
     var body: some View {
@@ -86,9 +75,12 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
             }
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: enablePushNotificationsButtonAction != nil)
-        .alert(item: $errorMessage) { Alert(title: Text("An error ocurred"), message: Text($0)) }
+        .alert(
+            error: self.notificationAuthorizationCoordinator.status.failedValue,
+            dismiss: notificationAuthorizationCoordinator.dismissFailure
+        )
         .onAppear { self.didAppear?(self) }
-        .onAppear(perform: notificationsAuthorizationManager.refreshAuthorizationStatus)
+        .onAppear(perform: notificationAuthorizationCoordinator.refreshAuthorizationStatus)
     }
 
     func doContinue() {
@@ -98,16 +90,22 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
 
 struct RequestLessonPlanConfirmationView_Previews: PreviewProvider {
     static var previews: some View {
-        let manager = PushNotificationAuthorizationManagerStub(
-//            status: .authorized,
-            status: .notDetermined,
-            requestAuthorizationResult: .success(true)
+        Current.userAuthenticated()
+
+        Current.pushNotificationAuthorizationCoordinator = PushNotificationAuthorizationCoordinator(
+            center: UNUserNotificationCenterStub(
+                authorizationStatus: .notDetermined,
+//                authorizationStatus: .authorized,
+                authorizationRequestResult: (true, nil)
+//                authorizationRequestResult: (false, nil)
+//                authorizationRequestResult: (false, "Error")
+            ),
+            registerService: PushNotificationRegisterServiceDummy(),
+            queue: nil
         )
-        return RequestLessonPlanConfirmationView(
-            lessonPlan: .stub,
-            notificationsAuthorizationManager: manager
-        )
-        .previewDevices()
-//        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+
+        return RequestLessonPlanConfirmationView(lessonPlan: .stub)
+            .previewDevices()
+//            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }

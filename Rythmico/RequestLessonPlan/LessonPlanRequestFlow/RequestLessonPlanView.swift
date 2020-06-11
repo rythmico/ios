@@ -5,30 +5,21 @@ typealias RequestLessonPlanFailureView = Alert
 
 struct RequestLessonPlanView: View, Identifiable, TestableView {
     @ObservedObject
-    private var coordinator: LessonPlanRequestCoordinatorBase
+    private var coordinator: LessonPlanRequestCoordinator
     @ObservedObject
     private var context: RequestLessonPlanContext
     private let _formView: RequestLessonPlanFormView
-    private let notificationsAuthorizationManager: PushNotificationAuthorizationManagerBase
 
-    init(
-        coordinator: LessonPlanRequestCoordinatorBase,
-        context: RequestLessonPlanContext,
-        accessTokenProvider: AuthenticationAccessTokenProvider,
-        instrumentProvider: InstrumentSelectionListProviderProtocol,
-        keyboardDismisser: KeyboardDismisser,
-        notificationsAuthorizationManager: PushNotificationAuthorizationManagerBase
-    ) {
+    init?(context: RequestLessonPlanContext) {
+        guard
+            let coordinator = Current.lessonPlanRequestCoordinator(),
+            let formView = RequestLessonPlanFormView(context: context, coordinator: coordinator)
+        else {
+            return nil
+        }
         self.coordinator = coordinator
         self.context = context
-        self._formView = RequestLessonPlanFormView(
-            context: context,
-            coordinator: coordinator,
-            accessTokenProvider: accessTokenProvider,
-            instrumentProvider: instrumentProvider,
-            keyboardDismisser: keyboardDismisser
-        )
-        self.notificationsAuthorizationManager = notificationsAuthorizationManager
+        self._formView = formView
     }
 
     let id = UUID()
@@ -76,18 +67,23 @@ extension RequestLessonPlanView {
 
     var confirmationView: RequestLessonPlanConfirmationView? {
         coordinator.state.successValue.map {
-            RequestLessonPlanConfirmationView(
-                lessonPlan: $0,
-                notificationsAuthorizationManager: notificationsAuthorizationManager
-            )
+            RequestLessonPlanConfirmationView(lessonPlan: $0)
         }
     }
 }
 
 struct RequestLessonPlanView_Preview: PreviewProvider {
     static var previews: some View {
-        let service = LessonPlanRequestServiceStub(result: .success(.stub), delay: 3)
-//        service.result = .failure("something")
+        Current.userAuthenticated()
+
+        Current.instrumentSelectionListProvider = InstrumentSelectionListProviderStub(
+            instruments: Instrument.allCases
+        )
+
+        Current.addressSearchService = AddressSearchServiceStub(
+            result: .success([.stub]),
+            delay: 2
+        )
 
         let context = RequestLessonPlanContext()
         context.instrument = .guitar
@@ -96,25 +92,23 @@ struct RequestLessonPlanView_Preview: PreviewProvider {
         context.schedule = .stub
         context.privateNote = "Note"
 
-        let coordinator = LessonPlanRequestCoordinatorStub(expectedState: .success(.stub), delay: 1.5)
-//        coordinator.expectedState = .failure("something went wrong")
-
-        let manager = PushNotificationAuthorizationManagerStub(
-            status: .authorized,
-            requestAuthorizationResult: .success(true)
+        Current.lessonPlanRequestService = LessonPlanRequestServiceStub(
+            result: .success(.stub),
+            delay: 2
         )
 
-        let view = RequestLessonPlanView(
-            coordinator: coordinator,
-            context: context,
-            accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
-            instrumentProvider: InstrumentSelectionListProviderFake(),
-            keyboardDismisser: UIApplication.shared,
-            notificationsAuthorizationManager: manager
+        Current.pushNotificationAuthorizationCoordinator = PushNotificationAuthorizationCoordinator(
+            center: UNUserNotificationCenterStub(
+                authorizationStatus: .notDetermined,
+//                authorizationStatus: .authorized,
+                authorizationRequestResult: (true, nil)
+//                authorizationRequestResult: (false, nil)
+//                authorizationRequestResult: (false, "Error")
+            ),
+            registerService: PushNotificationRegisterServiceDummy(),
+            queue: nil
         )
 
-        return view
-            .environment(\.locale, Locale(identifier: "en_GB"))
-            .previewDevices()
+        return RequestLessonPlanView(context: context)
     }
 }

@@ -17,3 +17,7 @@ final class KeyboardDismisserSpy: KeyboardDismisser {
         dismissKeyboardCount += 1
     }
 }
+
+final class KeyboardDismisserDummy: KeyboardDismisser {
+    func dismissKeyboard() {}
+}

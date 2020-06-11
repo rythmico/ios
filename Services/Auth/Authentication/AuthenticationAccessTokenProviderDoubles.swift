@@ -1,14 +1,14 @@
 import Sugar
 
 final class AuthenticationAccessTokenProviderStub: AuthenticationAccessTokenProvider {
-    var expectedResult: AccessTokenResult
+    var result: AccessTokenResult
 
-    init(expectedResult: AccessTokenResult) {
-        self.expectedResult = expectedResult
+    init(result: AccessTokenResult) {
+        self.result = result
     }
 
     func getAccessToken(completionHandler: @escaping Handler<AccessTokenResult>) {
-        completionHandler(expectedResult)
+        completionHandler(result)
     }
 }
 

@@ -1,35 +1,23 @@
 import APIKit
 import Sugar
 
-protocol AddressProviderProtocol: AnyObject {
+protocol AddressSearchServiceProtocol: AnyObject {
     typealias CompletionHandler = SimpleResultHandler<[AddressDetails]>
-    func addresses(withPostcode postcode: String, completion: @escaping CompletionHandler)
+    func addresses(accessToken: String, postcode: String, completion: @escaping CompletionHandler)
 }
 
-final class AddressSearchService: AddressProviderProtocol {
-    private let accessTokenProvider: AuthenticationAccessTokenProvider
+final class AddressSearchService: AddressSearchServiceProtocol {
     private let sessionConfiguration = URLSessionConfiguration.ephemeral
 
-    init(accessTokenProvider: AuthenticationAccessTokenProvider) {
-        self.accessTokenProvider = accessTokenProvider
-    }
-
-    func addresses(withPostcode postcode: String, completion: @escaping CompletionHandler) {
-        accessTokenProvider.getAccessToken { result in
-            switch result {
-            case .success(let accessToken):
-                do {
-                    let session = Session(adapter: URLSessionAdapter(configuration: self.sessionConfiguration))
-                    let request = try AddressSearchRequest(accessToken: accessToken, postcode: postcode)
-                    session.send(request, callbackQueue: .main) { result in
-                        completion(result.map([AddressDetails].init).mapError { $0 as Error })
-                    }
-                } catch {
-                    completion(.failure(error))
-                }
-            case .failure(let error):
-                completion(.failure(error))
+    func addresses(accessToken: String, postcode: String, completion: @escaping CompletionHandler) {
+        do {
+            let session = Session(adapter: URLSessionAdapter(configuration: self.sessionConfiguration))
+            let request = try AddressSearchRequest(accessToken: accessToken, postcode: postcode)
+            session.send(request, callbackQueue: .main) { result in
+                completion(result.map([AddressDetails].init).mapError { $0 as Error })
             }
+        } catch {
+            completion(.failure(error))
         }
     }
 }

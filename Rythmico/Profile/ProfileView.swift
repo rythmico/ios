@@ -7,48 +7,24 @@ struct ProfileView: View, TestableView {
         static let horizontalMargins: CGFloat = 6
     }
 
-    @State private var pushNotificationsAuthorizationPrompted = false
-
     @ObservedObject
-    private var notificationsAuthorizationManager: PushNotificationAuthorizationManagerBase
-    private let urlOpener: URLOpener
-    private let deauthenticationService: DeauthenticationServiceProtocol
-
-    init(
-        notificationsAuthorizationManager: PushNotificationAuthorizationManagerBase,
-        urlOpener: URLOpener,
-        deauthenticationService: DeauthenticationServiceProtocol
-    ) {
-        self.notificationsAuthorizationManager = notificationsAuthorizationManager
-        self.urlOpener = urlOpener
-        self.deauthenticationService = deauthenticationService
-    }
+    private var notificationAuthorizationCoordinator = Current.pushNotificationAuthorizationCoordinator
 
     var enablePushNotificationsAction: Action? {
-        guard notificationsAuthorizationManager.status == .notDetermined else {
-            return nil
-        }
-        return {
-            self.notificationsAuthorizationManager.requestAuthorization { error in
-                self.pushNotificationsAuthorizationPrompted = false
-                self.errorMessage = error.localizedDescription
-            }
-        }
+        notificationAuthorizationCoordinator.status.isDetermined
+            ? nil
+            : notificationAuthorizationCoordinator.requestAuthorization
     }
 
     var goToPushNotificationsSettingsAction: Action? {
-        guard notificationsAuthorizationManager.status != .notDetermined else {
-            return nil
-        }
-        return { self.urlOpener.open(UIApplication.openSettingsURLString) }
+        notificationAuthorizationCoordinator.status.isDetermined
+            ? { Current.urlOpener.open(UIApplication.openSettingsURLString) }
+            : nil
     }
 
     func logOut() {
-        deauthenticationService.deauthenticate()
+        Current.deauthenticationService.deauthenticate()
     }
-
-    @State
-    var errorMessage: String?
 
     var didAppear: Handler<Self>?
     var body: some View {
@@ -61,11 +37,10 @@ struct ProfileView: View, TestableView {
                         action: goToPushNotificationsSettingsAction
                     ) {
                         enablePushNotificationsAction.map {
-                            Toggle("", isOn: $pushNotificationsAuthorizationPrompted)
+                            Toggle("", isOn: .constant(notificationAuthorizationCoordinator.status.isAuthorizing))
                                 .onTapGesture(perform: $0)
                         }
                     }
-
                 }
                 Section {
                     Button(action: logOut) {
@@ -81,7 +56,10 @@ struct ProfileView: View, TestableView {
                     .accessibility(hint: Text("Double tap to log out of your account"))
                 }
             }
-            .alert(item: $errorMessage) { Alert(title: Text("An error ocurred"), message: Text($0)) }
+            .alert(
+                error: self.notificationAuthorizationCoordinator.status.failedValue,
+                dismiss: notificationAuthorizationCoordinator.dismissFailure
+            )
             .navigationBarTitle(Text("Profile"), displayMode: .large)
             .onAppear { self.didAppear?(self) }
         }
@@ -131,15 +109,18 @@ struct ProfileView: View, TestableView {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        let manager = PushNotificationAuthorizationManagerStub(
-            status: .notDetermined,
-//            requestAuthorizationResult: .success(true)
-            requestAuthorizationResult: .failure("something")
+        Current.userAuthenticated()
+        Current.pushNotificationAuthorizationCoordinator = PushNotificationAuthorizationCoordinator(
+            center: UNUserNotificationCenterStub(
+                authorizationStatus: .notDetermined,
+//                authorizationStatus: .authorized,
+                authorizationRequestResult: (true, nil)
+//                authorizationRequestResult: (false, nil)
+//                authorizationRequestResult: (false, "Error")
+            ),
+            registerService: PushNotificationRegisterServiceDummy(),
+            queue: nil
         )
-        return ProfileView(
-            notificationsAuthorizationManager: manager,
-            urlOpener: URLOpenerSpy(),
-            deauthenticationService: DeauthenticationServiceDummy()
-        )
+        return ProfileView()
     }
 }

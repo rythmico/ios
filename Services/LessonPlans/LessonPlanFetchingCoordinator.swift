@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-class LessonPlanFetchingCoordinatorBase: ObservableObject {
+final class LessonPlanFetchingCoordinator: ObservableObject {
     enum State {
         case idle
         case loading
@@ -10,33 +10,41 @@ class LessonPlanFetchingCoordinatorBase: ObservableObject {
 
     @Published var state: State = .idle
 
-    func fetchLessonPlans() {}
-    func dismissError() {}
-}
-
-final class LessonPlanFetchingCoordinator: LessonPlanFetchingCoordinatorBase {
+    private let accessTokenProvider: AuthenticationAccessTokenProvider
     private let service: LessonPlanFetchingServiceProtocol
     private let repository: LessonPlanRepository
 
-    init(service: LessonPlanFetchingServiceProtocol, repository: LessonPlanRepository) {
+    init(
+        accessTokenProvider: AuthenticationAccessTokenProvider,
+        service: LessonPlanFetchingServiceProtocol,
+        repository: LessonPlanRepository
+    ) {
+        self.accessTokenProvider = accessTokenProvider
         self.service = service
         self.repository = repository
     }
 
-    override func fetchLessonPlans() {
+    func fetchLessonPlans() {
         state = .loading
-        service.lessonPlans { result in
+        accessTokenProvider.getAccessToken { result in
             switch result {
-            case .success(let lessonPlans):
-                self.state = .idle
-                self.repository.lessonPlans = lessonPlans
+            case .success(let accessToken):
+                self.service.lessonPlans(accessToken: accessToken) { result in
+                    switch result {
+                    case .success(let lessonPlans):
+                        self.state = .idle
+                        self.repository.lessonPlans = lessonPlans
+                    case .failure(let error):
+                        self.state = .failure(error)
+                    }
+                }
             case .failure(let error):
-                self.state = .failure(error)
+                self.state = .failure(error) // TODO: handle individual cases
             }
         }
     }
 
-    override func dismissError() {
+    func dismissError() {
         if state.failureValue != nil {
             state = .idle
         }

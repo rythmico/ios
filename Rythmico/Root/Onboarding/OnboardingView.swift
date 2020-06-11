@@ -2,29 +2,12 @@ import SwiftUI
 import Sugar
 
 struct OnboardingView: View, TestableView {
-    private let appleAuthorizationService: AppleAuthorizationServiceProtocol
-    private let authenticationService: AuthenticationServiceProtocol
-    private let keychain: KeychainProtocol
-    private let pushNotificationUnregistrationService: PushNotificationUnregistrationServiceProtocol
-
     @State
     var isLoading: Bool = false
     var isAppleAuthorizationButtonEnabled: Bool { !isLoading }
 
     @State
     var errorMessage: String?
-
-    init(
-        appleAuthorizationService: AppleAuthorizationServiceProtocol,
-        authenticationService: AuthenticationServiceProtocol,
-        keychain: KeychainProtocol,
-        pushNotificationUnregistrationService: PushNotificationUnregistrationServiceProtocol
-    ) {
-        self.appleAuthorizationService = appleAuthorizationService
-        self.authenticationService = authenticationService
-        self.keychain = keychain
-        self.pushNotificationUnregistrationService = pushNotificationUnregistrationService
-    }
 
     var didAppear: Handler<Self>?
     var body: some View {
@@ -61,19 +44,19 @@ struct OnboardingView: View, TestableView {
             Alert(title: Text("An error ocurred"), message: Text($0))
         }
         .onDisappear {
-            UIAccessibility.post(notification: .announcement, argument: "Welcome")
+            Current.uiAccessibility.postAnnouncement("Welcome")
         }
         .onAppear { self.didAppear?(self) }
-        .onAppear(perform: pushNotificationUnregistrationService.unregisterForPushNotifications)
+        .onAppear(perform: Current.deviceUnregisterCoordinator().unregisterDevice)
     }
 
     func authenticateWithApple() {
-        appleAuthorizationService.requestAuthorization { result in
+        Current.appleAuthorizationService.requestAuthorization { result in
             switch result {
             case .success(let credential):
-                self.keychain.appleAuthorizationUserId = credential.userId
+                Current.keychain.appleAuthorizationUserId = credential.userId
                 self.isLoading = true
-                self.authenticationService.authenticateAppleAccount(with: credential) { result in
+                Current.authenticationService.authenticateAppleAccount(with: credential) { result in
                     self.isLoading = false
                     switch result {
                     case .success:
@@ -103,7 +86,7 @@ struct OnboardingView: View, TestableView {
         }
     }
 
-    private func handleAuthenticationError(_ error: AuthenticationServiceProtocol.Error) {
+    private func handleAuthenticationError(_ error: AuthenticationAPIError) {
         switch error.reasonCode {
         case .invalidAPIKey,
              .appNotAuthorized,
@@ -123,45 +106,20 @@ struct OnboardingView: View, TestableView {
 }
 
 struct OnboardingView_Preview: PreviewProvider {
-    static var previewCategorySizes: [ContentSizeCategory] {
-        [
-            ContentSizeCategory.allCases.dropFirst(2).first,
-            ContentSizeCategory.allCases.last
-        ].compactMap { $0 }
-    }
-
     static var previews: some View {
-        ForEach(previewCategorySizes, id: \.self) {
-            OnboardingView(
-                appleAuthorizationService: authorizationService,
-                authenticationService: authenticationService,
-                keychain: keychain,
-                pushNotificationUnregistrationService: PushNotificationUnregistrationServiceDummy()
-            ).environment(\.sizeCategory, $0)
+        Current.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
+        Current.authenticationService = AuthenticationServiceStub(
+            result: .success(AuthenticationAccessTokenProviderStub(result: .success(""))),
+            delay: 2,
+            accessTokenProviderObserver: Current.accessTokenProviderObserver
+        )
+
+        return Group {
+            OnboardingView()
+                .environment(\.colorScheme, .light)
+            OnboardingView()
+                .environment(\.colorScheme, .dark)
+                .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
         }
-    }
-
-    private static var authorizationService: AppleAuthorizationServiceProtocol {
-        AppleAuthorizationServiceStub(expectedResult: .success(
-            AppleAuthorizationServiceStub.Credential(
-                userId: "USER_ID",
-                fullName: nil,
-                email: nil,
-                identityToken: "IDENTITY_TOKEN",
-                nonce: "NONCE"
-            )
-        ))
-    }
-
-    private static var authenticationService: AuthenticationServiceProtocol {
-        AuthenticationServiceStub(expectedResult: .failure(.init(reasonCode: .invalidEmail, localizedDescription: "Something went ooopsie!")))
-    }
-
-    private static var keychain: KeychainProtocol {
-        KeychainFake()
-    }
-
-    private static var authenticationAccessTokenProvider: AuthenticationAccessTokenProvider {
-        AuthenticationAccessTokenProviderStub(expectedResult: .success("ACCESS_TOKEN"))
     }
 }

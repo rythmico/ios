@@ -22,7 +22,7 @@ final class OnboardingViewTests: XCTestCase {
     }
 
     func testPushNotificationsUnregistrationOnAppear() {
-        let spy = PushNotificationUnregistrationServiceSpy()
+        let spy = DeviceUnregisterServiceSpy()
 
         let view = OnboardingView(
             appleAuthorizationService: authorizationService(withErrorCode: .failed),
@@ -43,7 +43,7 @@ final class OnboardingViewTests: XCTestCase {
             appleAuthorizationService: authorizationService(withErrorCode: .failed),
             authenticationService: AuthenticationServiceDummy(),
             keychain: keychain,
-            pushNotificationUnregistrationService: PushNotificationUnregistrationServiceDummy()
+            pushNotificationUnregistrationService: DeviceUnregisterServiceDummy()
         )
 
         XCTAssertView(view) { view in
@@ -61,7 +61,7 @@ final class OnboardingViewTests: XCTestCase {
             appleAuthorizationService: AppleAuthorizationServiceStub(expectedResult: .success(credential)),
             authenticationService: authenticationService(withErrorCode: .invalidCredential),
             keychain: keychain,
-            pushNotificationUnregistrationService: PushNotificationUnregistrationServiceDummy()
+            pushNotificationUnregistrationService: DeviceUnregisterServiceDummy()
         )
 
         XCTAssertView(view) { view in
@@ -81,7 +81,7 @@ final class OnboardingViewTests: XCTestCase {
             appleAuthorizationService: AppleAuthorizationServiceStub(expectedResult: .success(credential)),
             authenticationService: AuthenticationServiceStub(expectedResult: .success(AuthenticationAccessTokenProviderDummy())),
             keychain: keychain,
-            pushNotificationUnregistrationService: PushNotificationUnregistrationServiceDummy()
+            pushNotificationUnregistrationService: DeviceUnregisterServiceDummy()
         )
 
         XCTAssertView(view) { view in
