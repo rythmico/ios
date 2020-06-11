@@ -13,36 +13,28 @@ struct RequestLessonPlanFormView: View, TestableView {
 
     @ObservedObject
     private var context: RequestLessonPlanContext
-    private let coordinator: LessonPlanRequestCoordinatorBase
-    private let accessTokenProvider: AuthenticationAccessTokenProvider
-    private let instrumentProvider: InstrumentSelectionListProviderProtocol
-    private let keyboardDismisser: KeyboardDismisser
+    private let coordinator: LessonPlanRequestCoordinator
+    private let addressSearchCoordinator: AddressSearchCoordinator
 
-    init(
-        context: RequestLessonPlanContext,
-        coordinator: LessonPlanRequestCoordinatorBase,
-        accessTokenProvider: AuthenticationAccessTokenProvider,
-        instrumentProvider: InstrumentSelectionListProviderProtocol,
-        keyboardDismisser: KeyboardDismisser
-    ) {
+    init?(context: RequestLessonPlanContext, coordinator: LessonPlanRequestCoordinator) {
+        guard let addressSearchCoordinator = Current.addressSearchCoordinator() else {
+            return nil
+        }
         self.context = context
         self.coordinator = coordinator
-        self.accessTokenProvider = accessTokenProvider
-        self.instrumentProvider = instrumentProvider
-        self.keyboardDismisser = keyboardDismisser
+        self.addressSearchCoordinator = addressSearchCoordinator
     }
-
-    var didAppear: Handler<Self>?
 
     var shouldShowBackButton: Bool {
         !context.currentStep.isInstrumentSelection
     }
 
     func back() {
-        keyboardDismisser.dismissKeyboard()
+        Current.keyboardDismisser.dismissKeyboard()
         context.unwindLatestStep()
     }
 
+    var didAppear: Handler<Self>?
     var body: some View {
         VStack(spacing: .spacingSmall) {
             VStack(spacing: 0) {
@@ -96,7 +88,7 @@ extension RequestLessonPlanFormView {
 
     var instrumentSelectionView: InstrumentSelectionView? {
         context.currentStep.isInstrumentSelection
-            ? InstrumentSelectionView(state: instrumentSelectionViewState, context: context, instrumentProvider: instrumentProvider)
+            ? InstrumentSelectionView(state: instrumentSelectionViewState, context: context)
             : nil
     }
 
@@ -105,8 +97,7 @@ extension RequestLessonPlanFormView {
             StudentDetailsView(
                 instrument: $0,
                 state: studentDetailsViewState,
-                context: context,
-                keyboardDismisser: keyboardDismisser
+                context: context
             )
         }
     }
@@ -117,8 +108,8 @@ extension RequestLessonPlanFormView {
                 student: values.1,
                 instrument: values.0,
                 state: addressDetailsViewState,
-                context: context,
-                addressProvider: AddressSearchService(accessTokenProvider: accessTokenProvider)
+                searchCoordinator: addressSearchCoordinator,
+                context: context
             )
         }
     }
@@ -137,8 +128,7 @@ extension RequestLessonPlanFormView {
         context.currentStep.isPrivateNote
             ? PrivateNoteView(
                 state: privateNoteViewState,
-                context: context,
-                keyboardDismisser: keyboardDismisser
+                context: context
             )
             : nil
     }

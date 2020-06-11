@@ -2,6 +2,10 @@ import XCTest
 @testable import Rythmico
 
 final class PrivateNoteViewTests: XCTestCase {
+    override func setUp() {
+        Current = .dummy
+    }
+
     var privateNoteView: (RequestLessonPlanContext, PrivateNoteView.ViewState, PrivateNoteView) {
         let context = RequestLessonPlanContext()
         let state = PrivateNoteView.ViewState()
@@ -10,8 +14,7 @@ final class PrivateNoteViewTests: XCTestCase {
             state,
             PrivateNoteView(
                 state: state,
-                context: context,
-                keyboardDismisser: KeyboardDismisserSpy()
+                context: context
             )
         )
     }

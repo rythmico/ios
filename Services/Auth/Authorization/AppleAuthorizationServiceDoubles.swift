@@ -1,14 +1,14 @@
 import Sugar
 
 final class AppleAuthorizationServiceStub: AppleAuthorizationServiceProtocol {
-    var expectedResult: AuthorizationResult
+    var result: AuthorizationResult
 
-    init(expectedResult: AuthorizationResult) {
-        self.expectedResult = expectedResult
+    init(result: AuthorizationResult) {
+        self.result = result
     }
 
     func requestAuthorization(nonce: String, completionHandler: @escaping Handler<AuthorizationResult>) {
-        completionHandler(expectedResult)
+        completionHandler(result)
     }
 }
 

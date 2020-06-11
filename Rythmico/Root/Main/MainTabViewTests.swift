@@ -2,15 +2,18 @@ import XCTest
 @testable import Rythmico
 
 final class MainTabViewTests: XCTestCase {
-    func testPushNotificationRegistrationOnAppear() {
-        let spy = PushNotificationRegistrationServiceSpy()
-        let view = MainTabView(
-            accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
-            lessonPlanRepository: LessonPlanRepository(),
-            pushNotificationRegistrationService: spy,
-            pushNotificationAuthorizationManager: PushNotificationAuthorizationManagerDummy(),
-            deauthenticationService: DeauthenticationServiceDummy()
-        )
+    override func setUp() {
+        Current = .dummy
+        Current.userAuthenticated()
+    }
+
+    func testPushNotificationRegistrationOnAppear() throws {
+        Current.deviceTokenProvider = DeviceTokenProviderStub(result: .success("TOKEN"))
+
+        let spy = DeviceRegisterServiceSpy()
+        Current.deviceRegisterService = spy
+
+        let view = try XCTUnwrap(MainTabView())
 
         XCTAssertView(view) { view in
             XCTAssertEqual(spy.registerCount, 1)

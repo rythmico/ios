@@ -8,73 +8,56 @@ struct MainTabView: View, TestableView {
         case profile
     }
 
-    private let accessTokenProvider: AuthenticationAccessTokenProvider
-    private let lessonPlanFetchingCoordinator: LessonPlanFetchingCoordinatorBase
-    private let lessonPlanRepository: LessonPlanRepository
-    private let pushNotificationRegistrationService: PushNotificationRegistrationServiceProtocol
-    private let pushNotificationAuthorizationManager: PushNotificationAuthorizationManagerBase
-    private let deauthenticationService: DeauthenticationServiceProtocol
+    @State
+    private var tabSelection: TabSelection = .lessons
 
-    @State private var tabSelection: TabSelection = .lessons
+    private let lessonsView: LessonsView
+    private let profileView: ProfileView = ProfileView()
 
-    init(
-        accessTokenProvider: AuthenticationAccessTokenProvider,
-        lessonPlanRepository: LessonPlanRepository,
-        pushNotificationRegistrationService: PushNotificationRegistrationServiceProtocol,
-        pushNotificationAuthorizationManager: PushNotificationAuthorizationManagerBase,
-        deauthenticationService: DeauthenticationServiceProtocol
-    ) {
-        self.accessTokenProvider = accessTokenProvider
-        self.lessonPlanFetchingCoordinator = LessonPlanFetchingCoordinator(
-            service: LessonPlanFetchingService(accessTokenProvider: accessTokenProvider),
-            repository: lessonPlanRepository
-        )
-        self.lessonPlanRepository = lessonPlanRepository
-        self.pushNotificationRegistrationService = pushNotificationRegistrationService
-        self.pushNotificationAuthorizationManager = pushNotificationAuthorizationManager
-        self.deauthenticationService = deauthenticationService
+    private let deviceRegisterCoordinator: DeviceRegisterCoordinator
+
+    init?() {
+        guard
+            let lessonsView = LessonsView(),
+            let deviceRegisterCoordinator = Current.deviceRegisterCoordinator()
+        else {
+            return nil
+        }
+        self.lessonsView = lessonsView
+        self.deviceRegisterCoordinator = deviceRegisterCoordinator
     }
 
     var didAppear: Handler<Self>?
     var body: some View {
         TabView(selection: $tabSelection) {
-            LessonsView(
-                accessTokenProvider: accessTokenProvider,
-                pushNotificationAuthorizationManager: pushNotificationAuthorizationManager,
-                lessonPlanFetchingCoordinator: lessonPlanFetchingCoordinator,
-                lessonPlanRepository: lessonPlanRepository
-            )
-            .tag(TabSelection.lessons)
-            .tabItem {
-                Image(systemSymbol: .calendar).font(.system(size: 21, weight: .medium))
-                Text("LESSONS")
-            }
+            lessonsView
+                .tag(TabSelection.lessons)
+                .tabItem {
+                    Image(systemSymbol: .calendar).font(.system(size: 21, weight: .medium))
+                    Text("LESSONS")
+                }
 
-            ProfileView(
-                notificationsAuthorizationManager: pushNotificationAuthorizationManager,
-                urlOpener: UIApplication.shared,
-                deauthenticationService: deauthenticationService
-            )
-            .tag(TabSelection.profile)
-            .tabItem {
-                Image(systemSymbol: .person).font(.system(size: 21, weight: .semibold))
-                Text("PROFILE")
-            }
+            profileView
+                .tag(TabSelection.profile)
+                .tabItem {
+                    Image(systemSymbol: .person).font(.system(size: 21, weight: .semibold))
+                    Text("PROFILE")
+                }
         }
         .accentColor(.rythmicoPurple)
         .onAppear { self.didAppear?(self) }
-        .onAppear(perform: pushNotificationRegistrationService.registerForPushNotifications)
+        .onAppear(perform: deviceRegisterCoordinator.registerDevice)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView(
-            accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
-            lessonPlanRepository: LessonPlanRepository(),
-            pushNotificationRegistrationService: PushNotificationRegistrationServiceDummy(),
-            pushNotificationAuthorizationManager: PushNotificationAuthorizationManagerDummy(),
-            deauthenticationService: DeauthenticationServiceDummy()
+        Current.userAuthenticated()
+        Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(
+            result: .success([.stub]),
+            delay: 2
         )
+
+        return MainTabView()
     }
 }

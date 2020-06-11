@@ -3,33 +3,15 @@ import XCTest
 import AuthenticationServices
 
 final class OnboardingViewTests: XCTestCase {
-    func authorizationService(withErrorCode code: ASAuthorizationError.Code) -> AppleAuthorizationServiceStub {
-        AppleAuthorizationServiceStub(expectedResult: .failure(ASAuthorizationError(code)))
+    override func setUp() {
+        Current = .dummy
     }
 
-    func authenticationService(withErrorCode code: AuthenticationAPIError.ReasonCode) -> AuthenticationServiceStub {
-        AuthenticationServiceStub(expectedResult: .failure(AuthenticationAPIError(reasonCode: code, localizedDescription: "Whooopsie")))
-    }
+    func testDeviceUnregistrationOnAppear() {
+        let spy = DeviceTokenDeleterSpy()
+        Current.deviceTokenDeleter = spy
 
-    var credential: AppleAuthorizationCredential {
-        AppleAuthorizationCredential(
-            userId: "USER_ID",
-            fullName: "First Second",
-            email: "a@b.c",
-            identityToken: "IDENTITY_TOKEN",
-            nonce: "NONCE"
-        )
-    }
-
-    func testPushNotificationsUnregistrationOnAppear() {
-        let spy = PushNotificationUnregistrationServiceSpy()
-
-        let view = OnboardingView(
-            appleAuthorizationService: authorizationService(withErrorCode: .failed),
-            authenticationService: AuthenticationServiceDummy(),
-            keychain: KeychainFake(),
-            pushNotificationUnregistrationService: spy
-        )
+        let view = OnboardingView()
 
         XCTAssertView(view) { view in
             XCTAssertEqual(spy.unregisterCount, 1)
@@ -37,14 +19,12 @@ final class OnboardingViewTests: XCTestCase {
     }
 
     func testFailedAuthorization() {
-        let keychain = KeychainFake()
+        Current.appleAuthorizationService = AppleAuthorizationServiceStub(result: .failure(.init(.failed)))
 
-        let view = OnboardingView(
-            appleAuthorizationService: authorizationService(withErrorCode: .failed),
-            authenticationService: AuthenticationServiceDummy(),
-            keychain: keychain,
-            pushNotificationUnregistrationService: PushNotificationUnregistrationServiceDummy()
-        )
+        let keychain = KeychainFake()
+        Current.keychain = keychain
+
+        let view = OnboardingView()
 
         XCTAssertView(view) { view in
             view.authenticateWithApple()
@@ -55,14 +35,16 @@ final class OnboardingViewTests: XCTestCase {
     }
 
     func testFailedAuthentication() {
-        let keychain = KeychainFake()
-
-        let view = OnboardingView(
-            appleAuthorizationService: AppleAuthorizationServiceStub(expectedResult: .success(credential)),
-            authenticationService: authenticationService(withErrorCode: .invalidCredential),
-            keychain: keychain,
-            pushNotificationUnregistrationService: PushNotificationUnregistrationServiceDummy()
+        Current.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
+        Current.authenticationService = AuthenticationServiceStub(
+            result: .failure(.init(reasonCode: .invalidCredential, localizedDescription: "Whooopsie")),
+            accessTokenProviderObserver: Current.accessTokenProviderObserver
         )
+
+        let keychain = KeychainFake()
+        Current.keychain = keychain
+
+        let view = OnboardingView()
 
         XCTAssertView(view) { view in
             view.authenticateWithApple()
@@ -75,14 +57,16 @@ final class OnboardingViewTests: XCTestCase {
     }
 
     func testSuccessfulAuthentication() {
-        let keychain = KeychainFake()
-
-        let view = OnboardingView(
-            appleAuthorizationService: AppleAuthorizationServiceStub(expectedResult: .success(credential)),
-            authenticationService: AuthenticationServiceStub(expectedResult: .success(AuthenticationAccessTokenProviderDummy())),
-            keychain: keychain,
-            pushNotificationUnregistrationService: PushNotificationUnregistrationServiceDummy()
+        Current.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
+        Current.authenticationService = AuthenticationServiceStub(
+            result: .success(AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))),
+            accessTokenProviderObserver: Current.accessTokenProviderObserver
         )
+
+        let keychain = KeychainFake()
+        Current.keychain = keychain
+
+        let view = OnboardingView()
 
         XCTAssertView(view) { view in
             view.authenticateWithApple()

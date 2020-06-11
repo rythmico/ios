@@ -7,3 +7,7 @@ final class URLOpenerSpy: URLOpener {
         openCount += 1
     }
 }
+
+final class URLOpenerDummy: URLOpener {
+    func open(_ url: URL) {}
+}

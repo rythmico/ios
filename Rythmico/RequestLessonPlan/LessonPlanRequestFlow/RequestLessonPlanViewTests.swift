@@ -3,38 +3,29 @@ import XCTest
 import struct SwiftUI.Image
 
 final class RequestLessonPlanViewTests: XCTestCase {
-    func requestLessonPlanView(
-        state: LessonPlanRequestCoordinatorState,
-        context: RequestLessonPlanContext
-    ) -> (RequestLessonPlanView) {
-        let coordinator = LessonPlanRequestCoordinatorDummy()
-        coordinator.state = state
-        let view = RequestLessonPlanView(
-            coordinator: coordinator,
-            context: context,
-            accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
-            instrumentProvider: InstrumentSelectionListProviderFake(),
-            keyboardDismisser: KeyboardDismisserSpy(),
-            notificationsAuthorizationManager: PushNotificationAuthorizationManagerDummy()
-        )
-        return (view)
+    override func setUp() {
+        Current = .dummy
+        Current.userAuthenticated()
     }
 
-    func testIdleState() {
-        let (view) = requestLessonPlanView(state: .idle, context: .init())
+    func testIdleState() throws {
+        let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
 
         XCTAssertView(view) { view in
             XCTAssertNotNil(view.formView)
             XCTAssertNil(view.loadingView)
             XCTAssertNil(view.confirmationView)
             XCTAssertTrue(view.swipeDownToDismissEnabled)
+            XCTAssertNil(view.errorMessage)
         }
     }
 
-    func testLoadingState() {
-        let (view) = requestLessonPlanView(state: .loading, context: .init())
+    func testLoadingState() throws {
+        let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
 
         XCTAssertView(view) { view in
+            view.coordinator.requestLessonPlan(.stub)
+
             XCTAssertNil(view.formView)
             XCTAssertNotNil(view.loadingView)
             XCTAssertNil(view.confirmationView)
@@ -42,25 +33,45 @@ final class RequestLessonPlanViewTests: XCTestCase {
         }
     }
 
-    func testFailureState() {
-        let (view) = requestLessonPlanView(state: .failure("error"), context: .init())
+    func testFailureState() throws {
+        Current.lessonPlanRequestService = LessonPlanRequestServiceStub(result: .failure("Something"))
+
+        let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
 
         XCTAssertView(view) { view in
+            view.coordinator.requestLessonPlan(.stub)
+
             XCTAssertNotNil(view.formView)
             XCTAssertNil(view.loadingView)
             XCTAssertNil(view.confirmationView)
             XCTAssertFalse(view.swipeDownToDismissEnabled)
+            XCTAssertEqual(view.errorMessage, "Something")
         }
     }
 
-    func testConfirmationState() {
-        let (view) = requestLessonPlanView(state: .success(.stub), context: .init())
+    func testConfirmationState() throws {
+        Current.lessonPlanRequestService = LessonPlanRequestServiceStub(result: .success(.stub))
+
+        let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
 
         XCTAssertView(view) { view in
+            view.coordinator.requestLessonPlan(.stub)
+
             XCTAssertNil(view.formView)
             XCTAssertNil(view.loadingView)
             XCTAssertNotNil(view.confirmationView)
             XCTAssertFalse(view.swipeDownToDismissEnabled)
+            XCTAssertNil(view.errorMessage)
         }
     }
+}
+
+private extension LessonPlanRequestBody {
+    static let stub = LessonPlanRequestBody(
+        instrument: .guitar,
+        student: .davidStub,
+        address: .stub,
+        schedule: .stub,
+        privateNote: "Note"
+    )
 }

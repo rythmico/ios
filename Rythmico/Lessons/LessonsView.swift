@@ -2,39 +2,23 @@ import SwiftUI
 import Sugar
 
 struct LessonsView: View, TestableView {
-    private let accessTokenProvider: AuthenticationAccessTokenProvider
-    private let pushNotificationAuthorizationManager: PushNotificationAuthorizationManagerBase
     @ObservedObject
-    private var fetchingCoordinator: LessonPlanFetchingCoordinatorBase
+    private var fetchingCoordinator: LessonPlanFetchingCoordinator
     @ObservedObject
-    private var lessonPlanRepository: LessonPlanRepository
+    private var lessonPlanRepository = Current.lessonPlanRepository
     @State
     private(set) var lessonRequestView: RequestLessonPlanView?
 
-    init(
-        accessTokenProvider: AuthenticationAccessTokenProvider,
-        pushNotificationAuthorizationManager: PushNotificationAuthorizationManagerBase,
-        lessonPlanFetchingCoordinator: LessonPlanFetchingCoordinatorBase,
-        lessonPlanRepository: LessonPlanRepository
-    ) {
-        self.accessTokenProvider = accessTokenProvider
-        self.pushNotificationAuthorizationManager = pushNotificationAuthorizationManager
-        self.fetchingCoordinator = lessonPlanFetchingCoordinator
+    init?() {
+        guard let fetchingCoordinator = Current.lessonPlanFetchingCoordinator() else {
+            return nil
+        }
+        self.fetchingCoordinator = fetchingCoordinator
         self.lessonPlanRepository = lessonPlanRepository
     }
 
     func presentRequestLessonFlow() {
-        lessonRequestView = RequestLessonPlanView(
-            coordinator: LessonPlanRequestCoordinator(
-                service: LessonPlanRequestService(accessTokenProvider: accessTokenProvider),
-                repository: lessonPlanRepository
-            ),
-            context: RequestLessonPlanContext(),
-            accessTokenProvider: accessTokenProvider,
-            instrumentProvider: InstrumentSelectionListProviderFake(),
-            keyboardDismisser: UIApplication.shared,
-            notificationsAuthorizationManager: pushNotificationAuthorizationManager
-        )
+        lessonRequestView = RequestLessonPlanView(context: RequestLessonPlanContext())
     }
 
     var didAppear: Handler<Self>?
@@ -48,6 +32,11 @@ struct LessonsView: View, TestableView {
             }
             .navigationBarTitle("Lessons", displayMode: .large)
             .navigationBarItems(
+                leading: Group {
+                    if fetchingCoordinator.state.isLoading {
+                        ActivityIndicator(style: .medium, color: .rythmicoGray90)
+                    }
+                },
                 trailing: Button(action: presentRequestLessonFlow) {
                     Image(systemSymbol: .plusCircleFill).font(.system(size: 24))
                         .padding(.vertical, .spacingExtraSmall)
@@ -57,14 +46,7 @@ struct LessonsView: View, TestableView {
                 .accessibility(label: Text("Request lessons"))
                 .accessibility(hint: Text("Double tap to request a lesson plan"))
             )
-            .alert(
-                item: Binding(
-                    get: { self.fetchingCoordinator.error?.localizedDescription },
-                    set: { self.fetchingCoordinator.error = $0 }
-                )
-            ) {
-                Alert(title: Text("An error ocurred"), message: Text($0.localizedDescription))
-            }
+            .alert(error: self.fetchingCoordinator.state.failureValue, dismiss: fetchingCoordinator.dismissError)
             .onAppear { self.didAppear?(self) }
             .onAppear(perform: fetchingCoordinator.fetchLessonPlans)
         }
@@ -85,22 +67,16 @@ struct LessonsView: View, TestableView {
 
 struct LessonsView_Previews: PreviewProvider {
     static var previews: some View {
-        let repository = LessonPlanRepository()
-        let view = LessonsView(
-            accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
-            pushNotificationAuthorizationManager: PushNotificationAuthorizationManagerDummy(),
-            lessonPlanFetchingCoordinator: LessonPlanFetchingCoordinatorStub(
-                result: .success([.stub, .stub, .stub, .stub]),
-                delay: 1,
-                repository: repository
-            ),
-            lessonPlanRepository: repository
+        Current.userAuthenticated()
+        Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(
+            result: .success([.stub]),
+            delay: 2
         )
         return Group {
-            view
+            LessonsView()
                 .environment(\.colorScheme, .light)
 //                .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
-            view
+            LessonsView()
                 .environment(\.colorScheme, .dark)
 //                .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
         }

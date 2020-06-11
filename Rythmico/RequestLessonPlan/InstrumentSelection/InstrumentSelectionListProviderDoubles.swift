@@ -1,12 +1,5 @@
 import Foundation
 import Sugar
-import struct SwiftUI.Image
-
-final class InstrumentSelectionListProviderFake: InstrumentSelectionListProviderProtocol {
-    func instruments(completion: Handler<[Instrument]>) {
-        completion(Instrument.allCases)
-    }
-}
 
 final class InstrumentSelectionListProviderStub: InstrumentSelectionListProviderProtocol {
     var instruments: [Instrument]
@@ -18,4 +11,8 @@ final class InstrumentSelectionListProviderStub: InstrumentSelectionListProvider
     func instruments(completion: Handler<[Instrument]>) {
         completion(instruments)
     }
+}
+
+final class InstrumentSelectionListProviderDummy: InstrumentSelectionListProviderProtocol {
+    func instruments(completion: Handler<[Instrument]>) {}
 }

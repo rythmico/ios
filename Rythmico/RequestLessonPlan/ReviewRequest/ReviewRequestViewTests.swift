@@ -2,13 +2,19 @@ import XCTest
 @testable import Rythmico
 
 final class ReviewRequestViewTests: XCTestCase {
-    var reviewRequestView: (LessonPlanRequestCoordinatorSpy, ReviewRequestView) {
-        let coordinator = LessonPlanRequestCoordinatorSpy()
+    override func setUp() {
+        Current = .dummy
+        Current.userAuthenticated()
+    }
+
+    func reviewRequestView() throws -> (LessonPlanRequestServiceSpy, ReviewRequestView) {
+        let serviceSpy = LessonPlanRequestServiceSpy()
+        Current.lessonPlanRequestService = serviceSpy
         let context = RequestLessonPlanContext()
-        return (
-            coordinator,
+        return try (
+            serviceSpy,
             ReviewRequestView(
-                coordinator: coordinator,
+                coordinator: XCTUnwrap(Current.lessonPlanRequestCoordinator()),
                 context: context,
                 instrument: .drums,
                 student: .davidStub,
@@ -19,19 +25,19 @@ final class ReviewRequestViewTests: XCTestCase {
         )
     }
 
-    func testCoordinatorValues() {
-        let (coordinator, view) = reviewRequestView
+    func testCoordinatorValues() throws {
+        let (serviceSpy, view) = try reviewRequestView()
 
         XCTAssertView(view) { view in
-            XCTAssertEqual(coordinator.requestCount, 0)
-            XCTAssertNil(coordinator.latestRequestBody)
+            XCTAssertEqual(serviceSpy.requestCount, 0)
+            XCTAssertNil(serviceSpy.latestRequestBody)
             view.submitRequest()
-            XCTAssertEqual(coordinator.requestCount, 1)
-            XCTAssertEqual(coordinator.latestRequestBody?.instrument, .drums)
-            XCTAssertEqual(coordinator.latestRequestBody?.student, .davidStub)
-            XCTAssertEqual(coordinator.latestRequestBody?.address, .stub)
-            XCTAssertEqual(coordinator.latestRequestBody?.schedule, .stub)
-            XCTAssertEqual(coordinator.latestRequestBody?.privateNote, "")
+            XCTAssertEqual(serviceSpy.requestCount, 1)
+            XCTAssertEqual(serviceSpy.latestRequestBody?.instrument, .drums)
+            XCTAssertEqual(serviceSpy.latestRequestBody?.student, .davidStub)
+            XCTAssertEqual(serviceSpy.latestRequestBody?.address, .stub)
+            XCTAssertEqual(serviceSpy.latestRequestBody?.schedule, .stub)
+            XCTAssertEqual(serviceSpy.latestRequestBody?.privateNote, "")
         }
     }
 }

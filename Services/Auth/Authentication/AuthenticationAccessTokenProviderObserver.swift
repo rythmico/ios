@@ -2,18 +2,17 @@ import Foundation
 import Combine
 import Sugar
 
-protocol AuthenticationAccessTokenProviderObserving: ObservableObject {
-    var currentProvider: AuthenticationAccessTokenProvider? { get }
+class AuthenticationAccessTokenProviderObserverBase: ObservableObject {
+    @Published var currentProvider: AuthenticationAccessTokenProvider?
 }
 
-final class AuthenticationAccessTokenProviderObserver: AuthenticationAccessTokenProviderObserving {
+final class AuthenticationAccessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase {
     private let broadcast: AuthenticationAccessTokenProviderBroadcastProtocol
     private var token: AuthenticationAccessTokenProviderBroadcastProtocol.ListenerToken?
 
-    @Published private(set) var currentProvider: AuthenticationAccessTokenProvider?
-
     init(broadcast: AuthenticationAccessTokenProviderBroadcastProtocol) {
         self.broadcast = broadcast
+        super.init()
         self.currentProvider = broadcast.currentProvider
         subscribeToBroadcast()
     }

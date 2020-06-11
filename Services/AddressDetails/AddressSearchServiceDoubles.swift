@@ -1,7 +1,7 @@
 import Foundation
 import Sugar
 
-final class AddressProviderStub: AddressProviderProtocol {
+final class AddressSearchServiceStub: AddressSearchServiceProtocol {
     var result: SimpleResult<[AddressDetails]>
     var delay: TimeInterval?
 
@@ -10,7 +10,7 @@ final class AddressProviderStub: AddressProviderProtocol {
         self.delay = delay
     }
 
-    func addresses(withPostcode postcode: String, completion: @escaping CompletionHandler) {
+    func addresses(accessToken: String, postcode: String, completion: @escaping CompletionHandler) {
         if let delay = delay {
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 completion(self.result)
@@ -21,7 +21,7 @@ final class AddressProviderStub: AddressProviderProtocol {
     }
 }
 
-final class AddressProviderSpy: AddressProviderProtocol {
+final class AddressSearchServiceSpy: AddressSearchServiceProtocol {
     var result: SimpleResult<[AddressDetails]>
 
     private(set) var latestPostcode: String?
@@ -31,9 +31,13 @@ final class AddressProviderSpy: AddressProviderProtocol {
         self.result = result
     }
 
-    func addresses(withPostcode postcode: String, completion: @escaping CompletionHandler) {
+    func addresses(accessToken: String, postcode: String, completion: @escaping CompletionHandler) {
         latestPostcode = postcode
         searchCount += 1
         completion(result)
     }
+}
+
+final class AddressSearchServiceDummy: AddressSearchServiceProtocol {
+    func addresses(accessToken: String, postcode: String, completion: @escaping CompletionHandler) {}
 }
