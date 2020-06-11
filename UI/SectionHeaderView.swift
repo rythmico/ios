@@ -8,7 +8,7 @@ struct SectionHeaderView<Accessory: View>: View {
         HStack(alignment: .center, spacing: .spacingExtraSmall) {
             Text(title.localizedUppercase)
                 .fixedSize(horizontal: true, vertical: false)
-                .rythmicoFont(.footnote)
+                .rythmicoFont(.footnoteBold)
                 .foregroundColor(.rythmicoGray90)
             VStack {
                 Divider().background(Color.rythmicoGray20)

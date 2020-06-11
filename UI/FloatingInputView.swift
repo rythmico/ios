@@ -20,7 +20,7 @@ struct FloatingInputView<Content: View>: View {
                 Spacer()
                 Button(action: doneAction) {
                     Text("Done")
-                        .rythmicoFont(.callout)
+                        .rythmicoFont(.bodyBold)
                         .foregroundColor(.rythmicoPurple)
                 }
                 .padding(.horizontal, .spacingMedium)

@@ -1,8 +1,8 @@
 import SwiftUI
 
 extension View {
-    func rythmicoFont(_ textStyle: Font.TextStyle) -> some View {
-        modifier(FontModifier(textStyle: textStyle))
+    func rythmicoFont(_ style: RythmicoFontStyle) -> some View {
+        modifier(FontModifier(style: style))
     }
 }
 
@@ -10,68 +10,93 @@ struct FontModifier: ViewModifier {
     @Environment(\.sizeCategory) var sizeCategory
     @Environment(\.legibilityWeight) var legibilityWeight
 
-    let textStyle: Font.TextStyle
+    let style: RythmicoFontStyle
 
     func body(content: Content) -> some View {
-        let size = textStyle.fontSize(for: sizeCategory)
-        let weight = textStyle.weight(for: legibilityWeight)
+        let size = style.size(for: sizeCategory)
+        let weight = style.weight(for: legibilityWeight)
         let font = Font.system(size: size, weight: weight, design: .rounded)
         return content.font(font)
     }
 }
 
-extension Font.TextStyle {
-    func fontSize(for sizeCategory: ContentSizeCategory) -> CGFloat {
-        regularFontSize * sizeCategory.fontFactor
-    }
+enum RythmicoFontStyle {
+    case largeTitle         // 28px Bold
+//    case title
+    case headline           // 20px Bold
+    case subheadlineBold    // 18px Bold
+    case subheadline        // 18px Regular
+    case bodyBold           // 16px Bold
+    case bodySemibold       // 16px Semibold
+    case bodyMedium         // 16px Medium
+    case body               // 16px Regular
+    case calloutBold        // 14px Bold
+    case callout            // 14px Regular
+    case footnoteBold       // 12px Bold
+    case footnote           // 12px Regular
+    case caption            // 10px Bold
 
-    private var regularFontSize: CGFloat {
+    private var regularSize: CGFloat {
         switch self {
         case .largeTitle:
             return 28
-        case .title:
-            return 24
         case .headline:
+            return 20
+        case .subheadlineBold, .subheadline:
             return 18
-        case .subheadline:
-            return 17
-        case .body:
+        case .bodyBold, .bodySemibold, .bodyMedium, .body:
             return 16
-        case .callout:
-            return 16
-        case .footnote:
-            return 11
+        case .calloutBold, .callout:
+            return 14
+        case .footnoteBold, .footnote:
+            return 12
         case .caption:
             return 10
-        @unknown default:
-            return Font.TextStyle.body.regularFontSize
         }
     }
 
-    func weight(for legibilityWeight: LegibilityWeight?) -> Font.Weight {
+    private var regularWeight: Font.Weight {
         switch self {
         case .largeTitle:
-            return legibilityWeight == .bold ? .black : .bold
+            return .bold
         case .headline:
-            return legibilityWeight == .bold ? .heavy : .bold
+            return .bold
+        case .subheadlineBold:
+            return .bold
         case .subheadline:
-            return legibilityWeight == .bold ? .heavy : .semibold
+            return .regular
+        case .bodyBold:
+            return .bold
+        case .bodySemibold:
+            return .semibold
+        case .bodyMedium:
+            return .medium
         case .body:
-            return legibilityWeight == .bold ? .bold : .regular
+            return .regular
+        case .calloutBold:
+            return .bold
         case .callout:
-            return legibilityWeight == .bold ? .heavy : .bold
+            return .regular
+        case .footnoteBold:
+            return .bold
         case .footnote:
-            return legibilityWeight == .bold ? .black : .bold
+            return .regular
         case .caption:
-            return legibilityWeight == .bold ? .black : .bold
-        default:
-            return Font.TextStyle.body.weight(for: legibilityWeight)
+            return .bold
         }
+    }
+
+    func size(for sizeCategory: ContentSizeCategory) -> CGFloat {
+        regularSize * sizeCategory.fontSizeFactor
+    }
+
+    func weight(for legibilityWeight: LegibilityWeight?) -> Font.Weight {
+        legibilityWeight == .bold ? regularWeight.bolder : regularWeight
     }
 }
 
 private extension ContentSizeCategory {
-    var fontFactor: CGFloat {
+    var fontSizeFactor: CGFloat {
         switch self {
         case .extraSmall:
             return 0.95
@@ -98,25 +123,57 @@ private extension ContentSizeCategory {
         case .accessibilityExtraExtraExtraLarge:
             return 1.55
         @unknown default:
-            return ContentSizeCategory.medium.fontFactor
+            return ContentSizeCategory.medium.fontSizeFactor
         }
     }
 }
 
-extension UIFont {
-    static func rythmicoFont(_ textStyle: Font.TextStyle) -> UIFont {
-        let contentSizeCategory = ContentSizeCategory(UITraitCollection.current.preferredContentSizeCategory)
-        let legibilityWeight = LegibilityWeight(UITraitCollection.current.legibilityWeight)
-        let traits: [UIFontDescriptor.TraitKey: Any] = [.weight: UIFont.Weight(textStyle.weight(for: legibilityWeight))]
-        let attributes: [UIFontDescriptor.AttributeName: Any] = [.traits: traits]
-        let descriptor = UIFontDescriptor
-            .preferredFontDescriptor(withTextStyle: UIFont.TextStyle(textStyle))
-            .addingAttributes(attributes)
-            .withDesign(.rounded)!
-        return UIFont(descriptor: descriptor, size: textStyle.fontSize(for: contentSizeCategory))
+private extension Font.Weight {
+    var bolder: Font.Weight {
+        switch self {
+        case .regular:
+            return .semibold
+        case .medium:
+            return .bold
+        case .semibold:
+            return .heavy
+        case .bold, .black:
+            return .black
+        default:
+            return .semibold
+        }
     }
 }
 
+extension Font {
+    static func rythmicoFont(
+        _ style: RythmicoFontStyle,
+        sizeCategory: ContentSizeCategory,
+        legibilityWeight: LegibilityWeight?
+    ) -> Font {
+        Font.system(
+            size: style.size(for: sizeCategory),
+            weight: style.weight(for: legibilityWeight),
+            design: .rounded
+        )
+    }
+}
+
+extension UIFont {
+    static func rythmicoFont(_ style: RythmicoFontStyle) -> UIFont {
+        let sizeCategory = ContentSizeCategory(UITraitCollection.current.preferredContentSizeCategory)
+        let legibilityWeight = LegibilityWeight(UITraitCollection.current.legibilityWeight)
+
+        let fontSize = style.size(for: sizeCategory)
+        let fontWeight = UIFont.Weight(style.weight(for: legibilityWeight))
+        let baseFont = UIFont.systemFont(ofSize: fontSize, weight: fontWeight)
+        let descriptor = baseFont.fontDescriptor.withDesign(.rounded)!
+
+        return UIFont(descriptor: descriptor, size: fontSize)
+    }
+}
+
+// Replace with enum protocol extension (Swift 5.3 onwards).
 private extension ContentSizeCategory {
     init(_ uiContentSizeCategory: UIContentSizeCategory) {
         switch uiContentSizeCategory {
@@ -150,6 +207,7 @@ private extension ContentSizeCategory {
     }
 }
 
+// Replace with enum protocol extension (Swift 5.3 onwards).
 private extension LegibilityWeight {
     init?(_ uiLegibilityWeight: UILegibilityWeight) {
         switch uiLegibilityWeight {
@@ -165,6 +223,7 @@ private extension LegibilityWeight {
     }
 }
 
+// Replace with enum protocol extension (Swift 5.3 onwards).
 private extension UIFont.TextStyle {
     init(_ textStyle: Font.TextStyle) {
         switch textStyle {
@@ -190,6 +249,7 @@ private extension UIFont.TextStyle {
     }
 }
 
+// Replace with enum protocol extension (Swift 5.3 onwards).
 private extension UIFont.Weight {
     init(_ weight: Font.Weight) {
         switch weight {

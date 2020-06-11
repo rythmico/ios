@@ -11,11 +11,7 @@ struct BackButton: View {
             HStack {
                 Image(systemSymbol: .chevronLeft).font(.system(size: 21, weight: .semibold))
                 Text("Back").font(
-                    .system(
-                        size: Font.TextStyle.callout.fontSize(for: sizeCategory),
-                        weight: legibilityWeight == .bold ? .bold : .medium,
-                        design: .rounded
-                    )
+                    .rythmicoFont(.bodyMedium, sizeCategory: sizeCategory, legibilityWeight: legibilityWeight)
                 )
             }
         }

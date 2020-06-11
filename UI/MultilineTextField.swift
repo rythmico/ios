@@ -50,7 +50,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
                         $0.setTitle("Done", for: .normal)
                         $0.setTitleColor(.rythmicoPurple, for: .normal)
                         $0.setTitleColor(UIColor.rythmicoPurple.withAlphaComponent(0.2), for: .highlighted)
-                        $0.titleLabel?.font = .rythmicoFont(.callout)
+                        $0.titleLabel?.font = .rythmicoFont(.bodyBold)
                         $0.addTarget(textField, action: #selector(UITextField.resignFirstResponder), for: .touchUpInside)
                     }
                 )
