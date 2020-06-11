@@ -9,3 +9,7 @@ final class AppleAuthorizationCredentialStateFetcherStub: AppleAuthorizationCred
         completion(expectedState)
     }
 }
+
+final class AppleAuthorizationCredentialStateFetcherDummy: AppleAuthorizationCredentialStateProvider {
+    func getCredentialState(forUserID userID: String, completion: @escaping StateHandler) {}
+}

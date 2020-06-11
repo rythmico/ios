@@ -3,7 +3,7 @@ import XCTest
 
 final class MainTabViewTests: XCTestCase {
     func testPushNotificationRegistrationOnAppear() {
-        let spy = PushNotificationRegistrationServiceSpy()
+        let spy = DeviceRegisterServiceSpy()
         let view = MainTabView(
             accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
             lessonPlanRepository: LessonPlanRepository(),

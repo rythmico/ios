@@ -8,52 +8,45 @@ protocol AddressDetailsContext {
 struct AddressDetailsView: View, TestableView {
     final class ViewState: ObservableObject {
         @Published var postcode = String()
-        @Published var addresses: [AddressDetails]?
         @Published var selectedAddress: AddressDetails?
     }
 
-    @Environment(\.sizeCategory) var sizeCategory: ContentSizeCategory
+    @Environment(\.sizeCategory) private var sizeCategory: ContentSizeCategory
 
     private let student: Student
     private let instrument: Instrument
-    private let addressProvider: AddressProviderProtocol
+    @ObservedObject
+    private var state: ViewState
+    @ObservedObject
+    private var coordinator: AddressSearchCoordinator
     private let context: AddressDetailsContext
-
-    @ObservedObject var state: ViewState
-    @State var isLoading = false
-    @State var errorMessage: String?
 
     init(
         student: Student,
         instrument: Instrument,
         state: ViewState,
-        context: AddressDetailsContext,
-        addressProvider: AddressProviderProtocol
+        searchCoordinator: AddressSearchCoordinator,
+        context: AddressDetailsContext
     ) {
         self.student = student
         self.instrument = instrument
         self.state = state
+        self.coordinator = searchCoordinator
         self.context = context
-        self.addressProvider = addressProvider
     }
 
     var subtitle: [MultiStyleText.Part] {
-        (UIScreen.main.isLarge && !sizeCategory._isAccessibilityCategory) || state.addresses?.isEmpty != false
+        (UIScreen.main.isLarge && !sizeCategory._isAccessibilityCategory) || addresses?.isEmpty != false
             ? "Enter the address where " + student.name.firstWord?.bold + " will have the " + "\(instrument.name) lessons".bold
             : .empty
     }
 
+    private var addresses: [AddressDetails]? {
+        coordinator.state.successValue
+    }
+
     func searchAddresses() {
-        isLoading = true
-        addressProvider.addresses(withPostcode: state.postcode) { result in
-            self.isLoading = false
-            switch result {
-            case .success(let addresses):
-                self.state.addresses = addresses
-            case .failure(let error):
-                self.errorMessage = error.localizedDescription
-            }
-        }
+        coordinator.searchAddresses(withPostcode: state.postcode)
     }
 
     var nextButtonAction: Action? {
@@ -79,7 +72,7 @@ struct AddressDetailsView: View, TestableView {
                             ).modifier(RoundedThinOutlineContainer(padded: false))
                             HStack {
                                 Spacer()
-                                if isLoading {
+                                if coordinator.state.isLoading {
                                     ActivityIndicator(style: .medium, color: .rythmicoGray90)
                                     .transition(
                                         AnyTransition
@@ -93,7 +86,7 @@ struct AddressDetailsView: View, TestableView {
                     }
                     .padding(.horizontal, .spacingMedium)
 
-                    state.addresses.map { addresses in
+                    addresses.map { addresses in
                         SectionHeaderContentView(
                             title: "Select Address",
                             padding: .init(horizontal: .spacingMedium)
@@ -114,7 +107,7 @@ struct AddressDetailsView: View, TestableView {
                         )
                     }
 
-                    if state.addresses == nil {
+                    if addresses == nil {
                         Spacer()
                     }
                 }
@@ -128,25 +121,28 @@ struct AddressDetailsView: View, TestableView {
             }
             .animation(.rythmicoSpring(duration: .durationMedium), value: nextButtonAction != nil)
         }
-        .animation(.rythmicoSpring(duration: .durationMedium), value: state.addresses)
-        .alert(item: $errorMessage) { Alert(title: Text("Error"), message: Text($0)) }
+        .animation(.rythmicoSpring(duration: .durationMedium), value: addresses)
+        .alert(error: self.coordinator.state.failureValue, dismiss: coordinator.dismissError)
         .onAppear { self.didAppear?(self) }
     }
 }
 
 struct AddressDetailsViewPreview: PreviewProvider {
     static var previews: some View {
+        Current.userAuthenticated()
+
+        let searchCoordinator = Current.addressSearchCoordinator()!
+        searchCoordinator.state = .success([.stub])
+
         let state = AddressDetailsView.ViewState()
-//        state.addresses = [.stub, .stub, .stub, .stub, .stub, .stub, .stub]
+        state.selectedAddress = .stub
+
         return AddressDetailsView(
             student: .davidStub,
             instrument: .guitar,
             state: state,
-            context: RequestLessonPlanContext(),
-            addressProvider: AddressProviderStub(
-                result: .success([.stub, .stub, .stub, .stub, .stub, .stub, .stub]),
-                delay: 2
-            )
+            searchCoordinator: searchCoordinator,
+            context: RequestLessonPlanContext()
         )
         .previewDevices()
     }

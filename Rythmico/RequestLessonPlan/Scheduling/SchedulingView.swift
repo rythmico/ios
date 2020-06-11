@@ -214,9 +214,14 @@ struct SchedulingView: View, TestableView {
 
 struct SchedulingViewPreview: PreviewProvider {
     static var previews: some View {
-        SchedulingView(
+        let state = SchedulingView.ViewState()
+        state.startDate = Date()
+        state.startTime = Date()
+        state.duration = .fortyFiveMinutes
+
+        return SchedulingView(
             instrument: .guitar,
-            state: .init(),
+            state: state,
             context: RequestLessonPlanContext()
         )
         .environment(\.locale, .init(identifier: "en_GB"))

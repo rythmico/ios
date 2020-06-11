@@ -6,23 +6,16 @@ protocol InstrumentSelectionContext {
 }
 
 struct InstrumentSelectionView: View, TestableView {
-    private let context: InstrumentSelectionContext
-    private let instrumentProvider: InstrumentSelectionListProviderProtocol
-
     final class ViewState: ObservableObject {
         @Published var instruments: [InstrumentViewData] = []
     }
 
     @ObservedObject var state: ViewState
+    private let context: InstrumentSelectionContext
 
-    init(
-        state: ViewState,
-        context: InstrumentSelectionContext,
-        instrumentProvider: InstrumentSelectionListProviderProtocol
-    ) {
+    init(state: ViewState, context: InstrumentSelectionContext) {
         self.state = state
         self.context = context
-        self.instrumentProvider = instrumentProvider
     }
 
     var didAppear: Handler<Self>?
@@ -41,12 +34,14 @@ struct InstrumentSelectionView: View, TestableView {
     }
 
     private func onAppear() {
-        instrumentProvider.instruments { instruments in
+        Current.instrumentSelectionListProvider.instruments { instruments in
             self.state.instruments = instruments
                 .map { instrument in
-                    InstrumentViewData(name: instrument.name, icon: instrument.icon, action: {
-                        self.context.setInstrument(instrument)
-                    })
+                    InstrumentViewData(
+                        name: instrument.name,
+                        icon: instrument.icon,
+                        action: { self.context.setInstrument(instrument) }
+                    )
                 }
         }
     }

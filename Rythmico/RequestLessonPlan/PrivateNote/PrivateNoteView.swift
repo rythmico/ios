@@ -27,20 +27,15 @@ struct PrivateNoteView: View, TestableView {
     }
 
     @ObservedObject
-    private var editingCoordinator: EditingCoordinator<EditingFocus>
+    private var editingCoordinator = EditingCoordinator<EditingFocus>(keyboardDismisser: Current.keyboardDismisser)
     private(set) var editingFocus: EditingFocus {
         get { editingCoordinator.focus }
         nonmutating set { editingCoordinator.focus = newValue }
     }
 
-    init(
-        state: ViewState,
-        context: PrivateNoteContext,
-        keyboardDismisser: KeyboardDismisser
-    ) {
+    init(state: ViewState, context: PrivateNoteContext) {
         self.state = state
         self.context = context
-        self.editingCoordinator = EditingCoordinator(keyboardDismisser: keyboardDismisser)
     }
 
     private var subtitle: [MultiStyleText.Part] {
@@ -100,10 +95,12 @@ struct PrivateNoteView: View, TestableView {
 
 struct PrivateNoteView_Previews: PreviewProvider {
     static var previews: some View {
-        PrivateNoteView(
-            state: .init(),
-            context: RequestLessonPlanContext(),
-            keyboardDismisser: UIApplication.shared
+        let state = PrivateNoteView.ViewState()
+        state.privateNote = "Note"
+
+        return PrivateNoteView(
+            state: state,
+            context: RequestLessonPlanContext()
         )
         .previewDevices()
     }

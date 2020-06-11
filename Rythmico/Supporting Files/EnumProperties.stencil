@@ -15,9 +15,7 @@ import SwiftUI
 
 {# Creates value type of the form foo: Type1 #}
 {% macro associatedValueVarUnitType case %}
-    {% if case.associatedValues.first.type.name != nil %}
-        {{ case.associatedValues.first.type.name }}?{% else %}{{ case.associatedValues.first.typeName }}?
-    {% endif %}
+    {{ case.associatedValues.first.typeName }}?
 {% endmacro %}
 
 {# Creates set value of the form (foo: newValue.foo, boo: newValue.boo) with given case and newValue #}
