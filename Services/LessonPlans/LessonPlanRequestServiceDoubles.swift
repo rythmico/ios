@@ -23,9 +23,11 @@ final class LessonPlanRequestServiceStub: LessonPlanRequestServiceProtocol {
 
 final class LessonPlanRequestServiceSpy: LessonPlanRequestServiceProtocol {
     var requestCount = 0
+    var latestRequestBody: LessonPlanRequestBody?
 
     func requestLessonPlan(accessToken: String, body: LessonPlanRequestBody, completion: @escaping CompletionHandler) {
         requestCount += 1
+        latestRequestBody = body
     }
 }
 

@@ -19,7 +19,7 @@ final class DeviceRegisterCoordinator {
         accessTokenProvider.getAccessToken { result in
             switch result {
             case .success(let accessToken):
-                self.deviceTokenProvider.instanceID { result, _ in
+                self.deviceTokenProvider.deviceToken { result, _ in
                     if let deviceToken = result?.token {
                         self.service.registerDevice(accessToken: accessToken, deviceToken: deviceToken)
                     }

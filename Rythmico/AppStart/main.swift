@@ -1,10 +1,10 @@
 import UIKit
 
+let isRunningTests = NSClassFromString("XCTestCase") != nil
+
 UIApplicationMain(
     CommandLine.argc,
     CommandLine.unsafeArgv,
     nil,
-    NSStringFromClass(
-        NSClassFromString("XCTestCase") == nil ? AppDelegate.self : TestDelegate.self
-    )
+    NSStringFromClass(isRunningTests ? TestDelegate.self : AppDelegate.self)
 )

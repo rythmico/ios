@@ -2,38 +2,31 @@ import XCTest
 @testable import Rythmico
 
 final class LessonsViewTests: XCTestCase {
-    var lessonsView: (LessonPlanFetchingCoordinatorSpy, LessonPlanRepository, LessonsView) {
-        let repository = LessonPlanRepository()
-        let coordinator = LessonPlanFetchingCoordinatorSpy()
-        return (
-            coordinator,
-            repository,
-            LessonsView(
-                accessTokenProvider: AuthenticationAccessTokenProviderDummy(),
-                pushNotificationAuthorizationManager: PushNotificationAuthorizationManagerDummy(),
-                lessonPlanFetchingCoordinator: coordinator,
-                lessonPlanRepository: repository
-            )
-        )
+    override func setUp() {
+        Current = .dummy
+        Current.userAuthenticated()
     }
 
-    func testInitialState() {
-        let (coordinator, _, _) = lessonsView
-        XCTAssertEqual(coordinator.fetchCount, 0)
-        XCTAssertTrue(coordinator.state.isIdle)
+    func testInitialState() throws {
+        Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(result: .success([.stub]))
+
+        let _ = try XCTUnwrap(LessonsView())
+
+        XCTAssertEqual(Current.lessonPlanRepository.lessonPlans, [])
     }
 
-    func testLessonPlansLoadingOnAppear() {
-        let (coordinator, _, view) = lessonsView
+    func testLessonPlansLoadingOnAppear() throws {
+        Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(result: .success([.stub]))
+
+        let view = try XCTUnwrap(LessonsView())
 
         XCTAssertView(view) { view in
-            XCTAssertEqual(coordinator.fetchCount, 1)
-            XCTAssertTrue(coordinator.state.isIdle)
+            XCTAssertEqual(Current.lessonPlanRepository.lessonPlans, [.stub])
         }
     }
 
-    func testPresentRequestLessonFlow() {
-        let (_, _, view) = lessonsView
+    func testPresentRequestLessonFlow() throws {
+        let view = try XCTUnwrap(LessonsView())
 
         XCTAssertView(view) { view in
             XCTAssertNil(view.lessonRequestView)

@@ -10,7 +10,7 @@ final class LessonPlanRequestCoordinator: ObservableObject {
     }
 
     @Published
-    var state: State = .idle
+    private(set) var state: State = .idle
 
     private let accessTokenProvider: AuthenticationAccessTokenProvider
     private let service: LessonPlanRequestServiceProtocol
@@ -43,6 +43,12 @@ final class LessonPlanRequestCoordinator: ObservableObject {
             case .failure(let error):
                 self.state = .failure(error) // TODO: handle
             }
+        }
+    }
+
+    func dismissFailure() {
+        if state.isFailure {
+            state = .idle
         }
     }
 }

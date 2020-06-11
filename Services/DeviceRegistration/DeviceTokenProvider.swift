@@ -1,8 +1,20 @@
 import Foundation
 import FirebaseInstanceID
 
-protocol DeviceTokenProvider {
-    func instanceID(handler: @escaping InstanceIDResultHandler)
+protocol DeviceTokenProtocol {
+    var instanceID: String { get }
+    var token: String { get }
 }
 
-extension InstanceID: DeviceTokenProvider {}
+extension InstanceIDResult: DeviceTokenProtocol {}
+
+protocol DeviceTokenProvider {
+    typealias ResultHandler = (DeviceTokenProtocol?, Error?) -> Void
+    func deviceToken(handler: @escaping ResultHandler)
+}
+
+extension InstanceID: DeviceTokenProvider {
+    func deviceToken(handler: @escaping ResultHandler) {
+        instanceID { handler($0, $1) }
+    }
+}
