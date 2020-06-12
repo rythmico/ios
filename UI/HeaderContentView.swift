@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct TitleContentView<Content: View>: View {
+struct HeaderContentView<Content: View>: View {
     var title: [MultiStyleText.Part]
     var content: Content
 

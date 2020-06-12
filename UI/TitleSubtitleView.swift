@@ -10,7 +10,7 @@ struct TitleSubtitleView: View {
     }
 
     init(title: String, subtitle: String) {
-        self.init(title: title, subtitle: [.init(subtitle)])
+        self.init(title: title, subtitle: [subtitle.part])
     }
 
     var body: some View {
