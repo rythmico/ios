@@ -12,7 +12,7 @@ struct OnboardingView: View, TestableView {
     var didAppear: Handler<Self>?
     var body: some View {
         ZStack {
-            Color.rythmicoBackground.edgesIgnoringSafeArea(.all)
+            Color(.systemBackground).edgesIgnoringSafeArea(.all)
             VStack(spacing: .spacingSmall) {
                 Spacer()
                 VStack(spacing: .spacingSmall) {
