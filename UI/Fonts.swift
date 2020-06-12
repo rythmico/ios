@@ -86,7 +86,7 @@ enum RythmicoFontStyle {
     }
 
     fileprivate func size(for sizeCategory: ContentSizeCategory) -> CGFloat {
-        regularSize * sizeCategory.fontSizeFactor
+        regularSize * sizeCategory.sizeFactor
     }
 
     fileprivate func weight(for legibilityWeight: LegibilityWeight?) -> Font.Weight {
@@ -94,8 +94,8 @@ enum RythmicoFontStyle {
     }
 }
 
-private extension ContentSizeCategory {
-    var fontSizeFactor: CGFloat {
+extension ContentSizeCategory {
+    var sizeFactor: CGFloat {
         switch self {
         case .extraSmall:
             return 0.95
@@ -122,7 +122,7 @@ private extension ContentSizeCategory {
         case .accessibilityExtraExtraExtraLarge:
             return 1.55
         @unknown default:
-            return ContentSizeCategory.medium.fontSizeFactor
+            return ContentSizeCategory.medium.sizeFactor
         }
     }
 }
