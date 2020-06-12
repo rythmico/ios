@@ -54,7 +54,7 @@ struct SchedulingView: View, TestableView {
 
     var subtitle: [MultiStyleText.Part] {
         (UIScreen.main.isLarge && !sizeCategory._isAccessibilityCategory) || editingFocus.isNone
-            ? "Enter when you want the " + "\(instrument.name) lessons".bold + " to commence and for how long"
+            ? "Enter when you want the " + "\(instrument.name) lessons".style(.bodyBold) + " to commence and for how long"
             : .empty
     }
 
@@ -118,7 +118,7 @@ struct SchedulingView: View, TestableView {
                         }
 
                         VStack(alignment: .leading, spacing: .spacingExtraSmall) {
-                            Text("Please note:").rythmicoFont(.callout)
+                            Text("Please note:").rythmicoFont(.bodyBold)
                             Text("Mon-Fri lessons £60 for 45-60 min.").rythmicoFont(.body)
                             Text("Weekend lessons £65 for 45-60 min.").rythmicoFont(.body)
                         }

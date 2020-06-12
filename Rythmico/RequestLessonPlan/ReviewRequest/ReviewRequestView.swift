@@ -75,7 +75,7 @@ struct ReviewRequestView: View, TestableView {
 
                                 VStack(alignment: .leading, spacing: .spacingMedium) {
                                     Text(studentDetails).lineSpacing(Const.lineSpacing)
-                                    MultiStyleText(style: .body, parts: studentAbout)
+                                    MultiStyleText(parts: studentAbout)
                                 }.fixedSize(horizontal: false, vertical: true)
                             }
                             .rythmicoFont(.body)
@@ -104,20 +104,20 @@ struct ReviewRequestView: View, TestableView {
                                     Image(decorative: Asset.infoIcon.name)
                                         .renderingMode(.template)
                                         .foregroundColor(.rythmicoGray90)
-                                    MultiStyleText(style: .body, parts: [
-                                        .init("Start Date: ", color: .rythmicoGray90),
-                                        .init(startDateText, weight: .bold, color: .rythmicoGray90)
+                                    MultiStyleText(parts: [
+                                        "Start Date: ".color(.rythmicoGray90),
+                                        startDateText.color(.rythmicoGray90).style(.bodyBold)
                                     ])
                                 }
                                 HStack(spacing: .spacingExtraSmall) {
                                     Image(decorative: Asset.timeIcon.name)
                                         .renderingMode(.template)
                                         .foregroundColor(.rythmicoGray90)
-                                    MultiStyleText(style: .body, parts: startTimeAndDurationText)
+                                    MultiStyleText(parts: startTimeAndDurationText)
                                 }
                                 HStack(spacing: .spacingExtraSmall) {
                                     Image(decorative: Asset.timeIcon.name).hidden()
-                                    MultiStyleText(style: .body, parts: frequencyText)
+                                    MultiStyleText(parts: frequencyText)
                                 }
                             }
                         }
@@ -149,7 +149,7 @@ struct ReviewRequestView: View, TestableView {
     }
 
     private func editButton(performing action: @escaping Action) -> some View {
-        Button("Edit", action: action).rythmicoFont(.callout).foregroundColor(.rythmicoGray90)
+        Button("Edit", action: action).rythmicoFont(.bodyBold).foregroundColor(.rythmicoGray90)
     }
 
     private func editInstrument() { context.instrument = nil }
@@ -177,8 +177,8 @@ struct ReviewRequestView: View, TestableView {
         guard !student.about.isEmpty else { return .empty }
         let aboutHeader = ["About", student.name.firstWord].compactMap { $0 }.joined(separator: .whitespace)
         return [
-            .init(aboutHeader + ":\n", weight: .bold, color: .rythmicoGray90),
-            .init(student.about, color: .rythmicoGray90)
+            (aboutHeader + ":\n").style(.bodyBold).color(.rythmicoGray90),
+            student.about.color(.rythmicoGray90)
         ]
     }
 
@@ -188,15 +188,15 @@ struct ReviewRequestView: View, TestableView {
     private let startTimeFormatter = DateFormatter().then { $0.dateFormat = "ha" }
     private var startTimeText: String { startTimeFormatter.string(from: schedule.startDate) }
     private var startTimeAndDurationText: [MultiStyleText.Part] {
-        startTimeText.bold.color(.rythmicoGray90) +
+        startTimeText.style(.bodyBold).color(.rythmicoGray90) +
         " for ".color(.rythmicoGray90) +
-        "\(schedule.duration.rawValue) minutes".bold.color(.rythmicoGray90)
+        "\(schedule.duration.rawValue) minutes".style(.bodyBold).color(.rythmicoGray90)
     }
 
     private let frequencyDayFormatter = DateFormatter().then { $0.dateFormat = "EEEE" }
     private var frequencyDayText: String { frequencyDayFormatter.string(from: schedule.startDate) }
     private var frequencyText: [MultiStyleText.Part] {
-        "Reocurring ".color(.rythmicoGray90) + "every \(frequencyDayText)".bold.color(.rythmicoGray90)
+        "Reocurring ".color(.rythmicoGray90) + "every \(frequencyDayText)".style(.bodyBold).color(.rythmicoGray90)
     }
 }
 

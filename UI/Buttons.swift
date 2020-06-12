@@ -14,7 +14,7 @@ extension Button {
 struct PrimaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .rythmicoFont(.callout)
+            .rythmicoFont(.bodyBold)
             .foregroundColor(.rythmicoWhite)
             .frame(maxWidth: .infinity, minHeight: 48)
             .background(
@@ -36,7 +36,7 @@ struct SecondaryButtonStyle: ButtonStyle {
             .lineLimit(1)
             .minimumScaleFactor(0.6)
             .padding(.horizontal, .spacingMedium)
-            .rythmicoFont(.callout)
+            .rythmicoFont(.bodyBold)
             .foregroundColor(foregroundColor(for: configuration))
             .frame(height: 40)
             .background(

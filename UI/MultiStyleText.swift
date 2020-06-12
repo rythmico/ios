@@ -4,7 +4,6 @@ struct MultiStyleText: View {
     @Environment(\.sizeCategory) private var sizeCategory
     @Environment(\.legibilityWeight) private var legibilityWeight
 
-    var style: Font.TextStyle
     var parts: [Part]
 
     var body: some View {
@@ -13,36 +12,31 @@ struct MultiStyleText: View {
                 EmptyView()
             } else {
                 parts.reduce(Text("")) { text, part in
-                    text + Text(part.string).font(
-                        Font.system(
-                            size: style.fontSize(for: sizeCategory),
-                            weight: weight(for: part, systemLegibilityWeight: legibilityWeight),
-                            design: .rounded
+                    text + Text(part.string)
+                        .font(
+                            .rythmicoFont(
+                                part.style,
+                                sizeCategory: sizeCategory,
+                                legibilityWeight: legibilityWeight
+                            )
                         )
-                    ).foregroundColor(part.color)
+                        .foregroundColor(part.color)
                 }
                 .lineSpacing(6)
             }
         }
-    }
-
-    private func weight(for part: Part, systemLegibilityWeight: LegibilityWeight?) -> Font.Weight {
-        if systemLegibilityWeight == .bold {
-            return part.weight == .bold ? .heavy : .bold
-        }
-        return style.weight(for: part.weight)
     }
 }
 
 extension MultiStyleText {
     struct Part: ExpressibleByStringLiteral {
         var string: String
-        var weight: LegibilityWeight
+        var style: RythmicoFontStyle
         var color: Color
 
-        init(_ string: String, weight: LegibilityWeight = .regular, color: Color = .rythmicoForeground) {
+        init(_ string: String, style: RythmicoFontStyle = .body, color: Color = .rythmicoForeground) {
             self.string = string
-            self.weight = weight
+            self.style = style
             self.color = color
         }
 
@@ -65,9 +59,9 @@ extension MultiStyleText.Part: MultiStyleTextPartConvertible {
 }
 
 extension MultiStyleTextPartConvertible {
-    var bold: MultiStyleText.Part {
+    func style(_ style: RythmicoFontStyle) -> MultiStyleText.Part {
         var part = self.part
-        part.weight = .bold
+        part.style = style
         return part
     }
 

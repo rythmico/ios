@@ -19,8 +19,8 @@ struct AddressItemView: View {
         isSelected ? .accentColor : .rythmicoGray90
     }
 
-    private var textStyle: Font.TextStyle {
-        isSelected ? .callout : .body
+    private var textStyle: RythmicoFontStyle {
+        isSelected ? .bodyBold : .body
     }
 
     private var containerModifier: RoundedThickOutlineContainer {

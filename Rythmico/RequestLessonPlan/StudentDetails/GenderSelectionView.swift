@@ -30,8 +30,8 @@ struct GenderSelectionView: View {
         selection == gender ? .accentColor : .rythmicoForeground
     }
 
-    private func textStyle(for gender: Gender) -> Font.TextStyle {
-        selection == gender ? .callout : .body
+    private func textStyle(for gender: Gender) -> RythmicoFontStyle {
+        selection == gender ? .bodyBold : .body
     }
 
     private func iconColor(for gender: Gender) -> Color {

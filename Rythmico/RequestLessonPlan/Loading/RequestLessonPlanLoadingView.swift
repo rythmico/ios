@@ -5,7 +5,7 @@ struct RequestLessonPlanLoadingView: View {
         HStack(spacing: .spacingExtraSmall) {
             ActivityIndicator(style: .medium, color: .rythmicoGray90)
             Text("Submitting proposal...")
-                .rythmicoFont(.subheadline)
+                .rythmicoFont(.subheadlineBold)
                 .foregroundColor(.rythmicoForeground)
         }
     }
