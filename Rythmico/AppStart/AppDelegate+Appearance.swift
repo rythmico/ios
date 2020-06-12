@@ -16,6 +16,7 @@ extension AppDelegate {
                 ]
                 $0.titlePositionAdjustment.vertical = 1
                 $0.shadowColor = nil
+
                 bar.standardAppearance = $0
                 bar.compactAppearance = $0
                 bar.scrollEdgeAppearance = $0
