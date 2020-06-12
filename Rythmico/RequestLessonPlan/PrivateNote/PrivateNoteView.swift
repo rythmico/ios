@@ -60,7 +60,7 @@ struct PrivateNoteView: View, TestableView {
         TitleSubtitleContentView(title: "Private Note", subtitle: subtitle) {
             VStack(spacing: 0) {
                 ScrollView {
-                    TitleContentView(title: "Private Note".style(.bodyBold) + " (optional)") {
+                    HeaderContentView(title: "Private Note".style(.bodyBold) + " (optional)") {
                         MultilineTextField(
                             "Message prospective tutors...",
                             text: $state.privateNote,
