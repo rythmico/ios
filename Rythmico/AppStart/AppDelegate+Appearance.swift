@@ -14,6 +14,7 @@ extension AppDelegate {
                     .foregroundColor: UIColor.rythmicoForeground,
                     .font: UIFont.rythmicoFont(.subheadlineBold)
                 ]
+                $0.titlePositionAdjustment.vertical = 1
                 $0.shadowColor = nil
                 bar.standardAppearance = $0
                 bar.compactAppearance = $0
