@@ -7,16 +7,15 @@ extension View {
 }
 
 struct FontModifier: ViewModifier {
-    @Environment(\.sizeCategory) var sizeCategory
-    @Environment(\.legibilityWeight) var legibilityWeight
+    @Environment(\.sizeCategory) private var sizeCategory
+    @Environment(\.legibilityWeight) private var legibilityWeight
 
     let style: RythmicoFontStyle
 
     func body(content: Content) -> some View {
-        let size = style.size(for: sizeCategory)
-        let weight = style.weight(for: legibilityWeight)
-        let font = Font.system(size: size, weight: weight, design: .rounded)
-        return content.font(font)
+        content.font(
+            .rythmicoFont(style, sizeCategory: sizeCategory, legibilityWeight: legibilityWeight)
+        )
     }
 }
 
@@ -86,11 +85,11 @@ enum RythmicoFontStyle {
         }
     }
 
-    func size(for sizeCategory: ContentSizeCategory) -> CGFloat {
+    fileprivate func size(for sizeCategory: ContentSizeCategory) -> CGFloat {
         regularSize * sizeCategory.fontSizeFactor
     }
 
-    func weight(for legibilityWeight: LegibilityWeight?) -> Font.Weight {
+    fileprivate func weight(for legibilityWeight: LegibilityWeight?) -> Font.Weight {
         legibilityWeight == .bold ? regularWeight.bolder : regularWeight
     }
 }
@@ -219,32 +218,6 @@ private extension LegibilityWeight {
             return nil
         @unknown default:
             return nil
-        }
-    }
-}
-
-// Replace with enum protocol extension (Swift 5.3 onwards).
-private extension UIFont.TextStyle {
-    init(_ textStyle: Font.TextStyle) {
-        switch textStyle {
-        case .largeTitle:
-            self = .largeTitle
-        case .title:
-            self = .title1
-        case .headline:
-            self = .headline
-        case .subheadline:
-            self = .subheadline
-        case .body:
-            self = .body
-        case .callout:
-            self = .callout
-        case .footnote:
-            self = .footnote
-        case .caption:
-            self = .caption1
-        @unknown default:
-            self = .body
         }
     }
 }
