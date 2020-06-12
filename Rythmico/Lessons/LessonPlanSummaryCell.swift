@@ -63,17 +63,18 @@ struct LessonPlanSummaryCell: View {
                     Group {
                         Text(tutor)
                             .lineLimit(2)
+                            .rythmicoFont(.body)
                             .foregroundColor(.rythmicoGray90)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         Text(status)
                             .lineLimit(1)
+                            .rythmicoFont(.bodyMedium)
                             .foregroundColor(.rythmicoDarkPurple)
                             .padding(.vertical, .spacingUnit / 2)
                             .padding(.horizontal, .spacingExtraSmall)
                             .frame(minWidth: 96)
                             .background(Color.rythmicoLightPurple.clipShape(Capsule()))
                     }
-                    .rythmicoFont(.body)
                     .minimumScaleFactor(0.7)
                 }
             }
