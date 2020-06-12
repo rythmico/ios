@@ -12,7 +12,7 @@ extension AppDelegate {
                 ]
                 $0.titleTextAttributes = [
                     .foregroundColor: UIColor.rythmicoForeground,
-                    .font: UIFont.rythmicoFont(.subheadline)
+                    .font: UIFont.rythmicoFont(.subheadlineBold)
                 ]
                 $0.shadowColor = nil
                 bar.standardAppearance = $0

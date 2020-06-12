@@ -53,7 +53,7 @@ struct StudentDetailsView: View, TestableView {
     // MARK: - Subtitle -
     var subtitle: [MultiStyleText.Part] {
         (UIScreen.main.isLarge && !sizeCategory._isAccessibilityCategory) || editingFocus.isNone
-            ? "Enter the details of the student who will learn " + instrument.name.bold
+            ? "Enter the details of the student who will learn " + instrument.name.style(.bodyBold)
             : .empty
     }
 
@@ -135,7 +135,7 @@ struct StudentDetailsView: View, TestableView {
                         TitleContentView(title: "Gender") {
                             GenderSelectionView(selection: $state.gender)
                         }
-                        TitleContentView(title: "About " + aboutNameTextPart) {
+                        TitleContentView(title: "About ".style(.bodyBold) + aboutNameTextPart.style(.bodyBold)) {
                             MultilineTextField(
                                 "Existing instrument prowess etc.",
                                 text: $state.about,

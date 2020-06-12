@@ -76,15 +76,16 @@ struct RequestLessonPlanView_Preview: PreviewProvider {
 
         Current.addressSearchService = AddressSearchServiceStub(
             result: .success([.stub]),
-            delay: 2
+            delay: nil
+//            delay: 2
         )
 
         let context = RequestLessonPlanContext()
         context.instrument = .guitar
         context.student = .davidStub
-        context.address = .stub
-        context.schedule = .stub
-        context.privateNote = "Note"
+//        context.address = .stub
+//        context.schedule = .stub
+//        context.privateNote = "Note"
 
         Current.lessonPlanRequestService = LessonPlanRequestServiceStub(
             result: .success(.stub),

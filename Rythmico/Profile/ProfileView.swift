@@ -68,7 +68,7 @@ struct ProfileView: View, TestableView {
 
     private func header(_ title: String) -> some View {
         Text(title)
-            .rythmicoFont(.headline)
+            .rythmicoFont(.subheadlineBold)
             .foregroundColor(.rythmicoForeground)
             .padding(.horizontal, Const.horizontalMargins)
             .padding(.bottom, .spacingUnit * 2)
