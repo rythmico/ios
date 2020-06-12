@@ -174,8 +174,8 @@ extension UIFont {
 
 // Replace with enum protocol extension (Swift 5.3 onwards).
 private extension ContentSizeCategory {
-    init(_ uiContentSizeCategory: UIContentSizeCategory) {
-        switch uiContentSizeCategory {
+    init(_ contentSizeCategory: UIContentSizeCategory) {
+        switch contentSizeCategory {
         case .extraSmall:
             self = .extraSmall
         case .small:
@@ -208,8 +208,8 @@ private extension ContentSizeCategory {
 
 // Replace with enum protocol extension (Swift 5.3 onwards).
 private extension LegibilityWeight {
-    init?(_ uiLegibilityWeight: UILegibilityWeight) {
-        switch uiLegibilityWeight {
+    init?(_ legibilityWeight: UILegibilityWeight) {
+        switch legibilityWeight {
         case .bold:
             self = .bold
         case .regular:
@@ -222,7 +222,6 @@ private extension LegibilityWeight {
     }
 }
 
-// Replace with enum protocol extension (Swift 5.3 onwards).
 private extension UIFont.Weight {
     init(_ weight: Font.Weight) {
         switch weight {
