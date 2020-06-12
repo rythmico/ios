@@ -12,26 +12,22 @@ struct OnboardingView: View, TestableView {
     var didAppear: Handler<Self>?
     var body: some View {
         ZStack {
-            Color.rythmicoPurple.edgesIgnoringSafeArea(.all)
+            Color.rythmicoBackground.edgesIgnoringSafeArea(.all)
             VStack(spacing: .spacingSmall) {
                 Spacer()
                 VStack(spacing: .spacingSmall) {
                     Text("Rythmico")
                         .rythmicoFont(.largeTitle)
-                        .foregroundColor(.white)
-                    Text("Turning kids into the festival headliners of tomorrow")
-                        .rythmicoFont(.subheadline)
                         .multilineTextAlignment(.center)
-                        .foregroundColor(.white)
+                        .foregroundColor(.rythmicoForeground)
                 }
                 .accessibilityElement(children: .combine)
                 Spacer()
                 if isLoading {
-                    ActivityIndicator(style: .medium, color: .lightGray)
+                    ActivityIndicator(style: .medium, color: .rythmicoGray90)
                         .frame(width: 44, height: 44)
                 } else {
                     AuthorizationAppleIDButton()
-                        .environment(\.colorScheme, .dark)
                         .accessibility(hint: Text("Double tap to sign in with your Apple ID"))
                         .onTapGesture(perform: authenticateWithApple)
                         .disabled(!isAppleAuthorizationButtonEnabled)
