@@ -78,6 +78,7 @@
 		03BB5C9A24733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C9924733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift */; };
 		03C08E742487F663007D1724 /* LessonPlanRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C08E732487F663007D1724 /* LessonPlanRepository.swift */; };
 		03C39DCE2494FC9D00C76516 /* Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DCD2494FC9D00C76516 /* Sleep.swift */; };
+		03C39DD0249500B900C76516 /* AppDelegate+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DCF249500B900C76516 /* AppDelegate+Firebase.swift */; };
 		03EDA6792476F2CB00FBE527 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA6782476F2CB00FBE527 /* ProfileView.swift */; };
 		03EDA67B2477695900FBE527 /* ProfileViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67A2477695900FBE527 /* ProfileViewTests.swift */; };
 		03EDA67D24776C6C00FBE527 /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67C24776C6C00FBE527 /* URLOpener.swift */; };
@@ -316,6 +317,7 @@
 		03BB5C9924733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanConfirmationViewTests.swift; sourceTree = "<group>"; };
 		03C08E732487F663007D1724 /* LessonPlanRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanRepository.swift; sourceTree = "<group>"; };
 		03C39DCD2494FC9D00C76516 /* Sleep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sleep.swift; sourceTree = "<group>"; };
+		03C39DCF249500B900C76516 /* AppDelegate+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Firebase.swift"; sourceTree = "<group>"; };
 		03EDA6782476F2CB00FBE527 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		03EDA67A2477695900FBE527 /* ProfileViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewTests.swift; sourceTree = "<group>"; };
 		03EDA67C24776C6C00FBE527 /* URLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
@@ -1023,6 +1025,7 @@
 				D54A561623CD577800BC8485 /* main.swift */,
 				03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */,
 				03B1984F2471B9F7005529EB /* AppDelegate+Appearance.swift */,
+				03C39DCF249500B900C76516 /* AppDelegate+Firebase.swift */,
 				03B198532471BBE8005529EB /* AppDelegate+PushNotifications.swift */,
 				03B1984D2471B9AA005529EB /* AppDelegate+Window.swift */,
 				D5C23A75240F0186007DED63 /* TestDelegate.swift */,
@@ -1338,6 +1341,7 @@
 				D5B57A6724147F5100BE9B4F /* EnumProperties.generated.swift in Sources */,
 				D5F506B82406363600CA4094 /* GenderSelectionView.swift in Sources */,
 				D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */,
+				03C39DD0249500B900C76516 /* AppDelegate+Firebase.swift in Sources */,
 				D5F506B02405A6A900CA4094 /* Duration.swift in Sources */,
 				D5AAF7D923F9EB1200E410F2 /* InstrumentSelectionListProviderDoubles.swift in Sources */,
 				0365F6F52417F1E900F452AC /* AddressSearchService.swift in Sources */,
