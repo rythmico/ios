@@ -79,6 +79,7 @@
 		03C08E742487F663007D1724 /* LessonPlanRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C08E732487F663007D1724 /* LessonPlanRepository.swift */; };
 		03C39DCE2494FC9D00C76516 /* Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DCD2494FC9D00C76516 /* Sleep.swift */; };
 		03C39DD0249500B900C76516 /* AppDelegate+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DCF249500B900C76516 /* AppDelegate+Firebase.swift */; };
+		03C39DD224950BC300C76516 /* AppDelegate+LaunchScreenCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DD124950BC300C76516 /* AppDelegate+LaunchScreenCache.swift */; };
 		03EDA6792476F2CB00FBE527 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA6782476F2CB00FBE527 /* ProfileView.swift */; };
 		03EDA67B2477695900FBE527 /* ProfileViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67A2477695900FBE527 /* ProfileViewTests.swift */; };
 		03EDA67D24776C6C00FBE527 /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67C24776C6C00FBE527 /* URLOpener.swift */; };
@@ -318,6 +319,7 @@
 		03C08E732487F663007D1724 /* LessonPlanRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanRepository.swift; sourceTree = "<group>"; };
 		03C39DCD2494FC9D00C76516 /* Sleep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sleep.swift; sourceTree = "<group>"; };
 		03C39DCF249500B900C76516 /* AppDelegate+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Firebase.swift"; sourceTree = "<group>"; };
+		03C39DD124950BC300C76516 /* AppDelegate+LaunchScreenCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+LaunchScreenCache.swift"; sourceTree = "<group>"; };
 		03EDA6782476F2CB00FBE527 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		03EDA67A2477695900FBE527 /* ProfileViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewTests.swift; sourceTree = "<group>"; };
 		03EDA67C24776C6C00FBE527 /* URLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
@@ -1026,6 +1028,7 @@
 				03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */,
 				03B1984F2471B9F7005529EB /* AppDelegate+Appearance.swift */,
 				03C39DCF249500B900C76516 /* AppDelegate+Firebase.swift */,
+				03C39DD124950BC300C76516 /* AppDelegate+LaunchScreenCache.swift */,
 				03B198532471BBE8005529EB /* AppDelegate+PushNotifications.swift */,
 				03B1984D2471B9AA005529EB /* AppDelegate+Window.swift */,
 				D5C23A75240F0186007DED63 /* TestDelegate.swift */,
@@ -1331,6 +1334,7 @@
 				03AAF6712445E0FB002D8F5B /* Schedule.swift in Sources */,
 				03275AE3249070D5009C3980 /* DeviceRegisterService.swift in Sources */,
 				03A3F6EC2447D3FD00F6391D /* UIScreen+Sugar.swift in Sources */,
+				03C39DD224950BC300C76516 /* AppDelegate+LaunchScreenCache.swift in Sources */,
 				D53555C523E536AE005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
 				D53555C823E536AE005A20EB /* AppleAuthorizationResponse.swift in Sources */,
 				03B198582471BD82005529EB /* RequestLessonPlanConfirmationView.swift in Sources */,
