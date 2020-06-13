@@ -4,6 +4,18 @@ import class UserNotifications.UNUserNotificationCenter
 import class FirebaseInstanceID.InstanceID
 
 extension AppEnvironment {
+    static let fake: AppEnvironment = {
+        var env = AppEnvironment.dummy
+        env.userAuthenticated()
+        env.lessonPlanFetchingService = LessonPlanFetchingServiceStub(
+            result: .success([.stub, .stub]),
+            delay: 1.5
+        )
+        return env
+    }()
+}
+
+extension AppEnvironment {
     static let dummy = AppEnvironment(
         keychain: KeychainDummy(),
         appleAuthorizationService: AppleAuthorizationServiceDummy(),
