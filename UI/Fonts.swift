@@ -7,16 +7,15 @@ extension View {
 }
 
 struct FontModifier: ViewModifier {
-    @Environment(\.sizeCategory) var sizeCategory
-    @Environment(\.legibilityWeight) var legibilityWeight
+    @Environment(\.sizeCategory) private var sizeCategory
+    @Environment(\.legibilityWeight) private var legibilityWeight
 
     let style: RythmicoFontStyle
 
     func body(content: Content) -> some View {
-        let size = style.size(for: sizeCategory)
-        let weight = style.weight(for: legibilityWeight)
-        let font = Font.system(size: size, weight: weight, design: .rounded)
-        return content.font(font)
+        content.font(
+            .rythmicoFont(style, sizeCategory: sizeCategory, legibilityWeight: legibilityWeight)
+        )
     }
 }
 
@@ -86,17 +85,17 @@ enum RythmicoFontStyle {
         }
     }
 
-    func size(for sizeCategory: ContentSizeCategory) -> CGFloat {
-        regularSize * sizeCategory.fontSizeFactor
+    fileprivate func size(for sizeCategory: ContentSizeCategory) -> CGFloat {
+        regularSize * sizeCategory.sizeFactor
     }
 
-    func weight(for legibilityWeight: LegibilityWeight?) -> Font.Weight {
+    fileprivate func weight(for legibilityWeight: LegibilityWeight?) -> Font.Weight {
         legibilityWeight == .bold ? regularWeight.bolder : regularWeight
     }
 }
 
-private extension ContentSizeCategory {
-    var fontSizeFactor: CGFloat {
+extension ContentSizeCategory {
+    var sizeFactor: CGFloat {
         switch self {
         case .extraSmall:
             return 0.95
@@ -123,7 +122,7 @@ private extension ContentSizeCategory {
         case .accessibilityExtraExtraExtraLarge:
             return 1.55
         @unknown default:
-            return ContentSizeCategory.medium.fontSizeFactor
+            return ContentSizeCategory.medium.sizeFactor
         }
     }
 }
@@ -175,8 +174,8 @@ extension UIFont {
 
 // Replace with enum protocol extension (Swift 5.3 onwards).
 private extension ContentSizeCategory {
-    init(_ uiContentSizeCategory: UIContentSizeCategory) {
-        switch uiContentSizeCategory {
+    init(_ contentSizeCategory: UIContentSizeCategory) {
+        switch contentSizeCategory {
         case .extraSmall:
             self = .extraSmall
         case .small:
@@ -209,8 +208,8 @@ private extension ContentSizeCategory {
 
 // Replace with enum protocol extension (Swift 5.3 onwards).
 private extension LegibilityWeight {
-    init?(_ uiLegibilityWeight: UILegibilityWeight) {
-        switch uiLegibilityWeight {
+    init?(_ legibilityWeight: UILegibilityWeight) {
+        switch legibilityWeight {
         case .bold:
             self = .bold
         case .regular:
@@ -223,33 +222,6 @@ private extension LegibilityWeight {
     }
 }
 
-// Replace with enum protocol extension (Swift 5.3 onwards).
-private extension UIFont.TextStyle {
-    init(_ textStyle: Font.TextStyle) {
-        switch textStyle {
-        case .largeTitle:
-            self = .largeTitle
-        case .title:
-            self = .title1
-        case .headline:
-            self = .headline
-        case .subheadline:
-            self = .subheadline
-        case .body:
-            self = .body
-        case .callout:
-            self = .callout
-        case .footnote:
-            self = .footnote
-        case .caption:
-            self = .caption1
-        @unknown default:
-            self = .body
-        }
-    }
-}
-
-// Replace with enum protocol extension (Swift 5.3 onwards).
 private extension UIFont.Weight {
     init(_ weight: Font.Weight) {
         switch weight {
