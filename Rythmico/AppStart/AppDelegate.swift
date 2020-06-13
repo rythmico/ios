@@ -1,5 +1,4 @@
 import UIKit
-import Firebase
 import Sugar
 
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -9,12 +8,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         configureFirebase()
         configurePushNotifications(for: application)
         configureGlobalAppearance()
-        sleep(.durationShort)
+        sleep(.durationMedium)
         configureWindow()
         return true
-    }
-
-    private func configureFirebase() {
-        FirebaseApp.configure()
     }
 }
