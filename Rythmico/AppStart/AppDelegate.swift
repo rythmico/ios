@@ -1,5 +1,6 @@
 import UIKit
 import Firebase
+import Sugar
 
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: Window?
@@ -8,7 +9,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         configureFirebase()
         configurePushNotifications(for: application)
         configureGlobalAppearance()
-        usleep(useconds_t(.durationShort * 1000000))
+        sleep(.durationShort)
         configureWindow()
         return true
     }
