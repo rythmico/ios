@@ -8,7 +8,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         configureFirebase()
         configurePushNotifications(for: application)
         configureGlobalAppearance()
-        sleep(.durationShort)
+        sleep(.durationMedium)
         configureWindow()
         return true
     }
