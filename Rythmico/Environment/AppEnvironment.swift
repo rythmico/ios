@@ -113,7 +113,10 @@ extension AppEnvironment {
 }
 
 #if DEBUG
-var Current = isRunningTests || isRunningPreviews ? AppEnvironment.dummy : AppEnvironment.live
+var Current = isRunningTests || isRunningPreviews
+    ? AppEnvironment.dummy
+//    : AppEnvironment.live
+    : AppEnvironment.fake
 #else
 let Current = AppEnvironment.live
 #endif
