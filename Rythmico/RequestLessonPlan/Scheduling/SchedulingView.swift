@@ -85,7 +85,7 @@ struct SchedulingView: View, TestableView {
             VStack(spacing: 0) {
                 ScrollView {
                     VStack(alignment: .leading, spacing: .spacingLarge) {
-                        TitleContentView(title: "Start Date") {
+                        HeaderContentView(title: "Start Date") {
                             CustomTextField(
                                 "Select a date...",
                                 text: .constant(startDateText),
@@ -96,7 +96,7 @@ struct SchedulingView: View, TestableView {
                         }
 
                         HStack(spacing: .spacingExtraSmall) {
-                            TitleContentView(title: "Time") {
+                            HeaderContentView(title: "Time") {
                                 CustomTextField(
                                     "Start time...",
                                     text: .constant(startTimeText),
@@ -106,7 +106,7 @@ struct SchedulingView: View, TestableView {
                                 .onTapGesture(perform: beginEditingStartTime)
                             }
 
-                            TitleContentView(title: "Duration") {
+                            HeaderContentView(title: "Duration") {
                                 CustomTextField(
                                     "Duration...",
                                     text: .constant(durationText),

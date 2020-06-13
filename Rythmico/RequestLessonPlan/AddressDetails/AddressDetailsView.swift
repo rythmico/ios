@@ -60,7 +60,7 @@ struct AddressDetailsView: View, TestableView {
         TitleSubtitleContentView(title: "Address Details", subtitle: subtitle) {
             VStack(spacing: 0) {
                 VStack(alignment: .leading, spacing: .spacingExtraLarge) {
-                    TitleContentView(title: "Post Code") {
+                    HeaderContentView(title: "Post Code") {
                         ZStack {
                             CustomTextField(
                                 "NW1 7FB",

@@ -114,7 +114,7 @@ struct StudentDetailsView: View, TestableView {
             VStack(spacing: 0) {
                 ScrollView {
                     VStack(alignment: .leading, spacing: .spacingLarge) {
-                        TitleContentView(title: "Full Name") {
+                        HeaderContentView(title: "Full Name") {
                             CustomTextField(
                                 "Enter Name...",
                                 text: $state.name,
@@ -123,7 +123,7 @@ struct StudentDetailsView: View, TestableView {
                                 onEditingChanged: textFieldEditingChanged
                             ).modifier(RoundedThinOutlineContainer(padded: false))
                         }
-                        TitleContentView(title: "Date of Birth") {
+                        HeaderContentView(title: "Date of Birth") {
                             CustomTextField(
                                 dateOfBirthPlaceholderText,
                                 text: .constant(dateOfBirthText ?? .empty),
@@ -132,10 +132,10 @@ struct StudentDetailsView: View, TestableView {
                             .modifier(RoundedThinOutlineContainer(padded: false))
                             .onTapGesture(perform: beginEditingDateOfBirth)
                         }
-                        TitleContentView(title: "Gender") {
+                        HeaderContentView(title: "Gender") {
                             GenderSelectionView(selection: $state.gender)
                         }
-                        TitleContentView(title: "About ".style(.bodyBold) + aboutNameTextPart.style(.bodyBold)) {
+                        HeaderContentView(title: "About ".style(.bodyBold) + aboutNameTextPart.style(.bodyBold)) {
                             MultilineTextField(
                                 "Existing instrument prowess etc.",
                                 text: $state.about,
