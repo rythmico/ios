@@ -38,15 +38,6 @@ struct LessonPlanSummaryCell: View {
         }
     }
 
-    var status: String {
-        switch lessonPlan.status {
-        case .pending:
-            return "Pending"
-        default:
-            return "" // TODO
-        }
-    }
-
     var body: some View {
         HStack(spacing: 0) {
             VStack(alignment: .leading, spacing: .spacingExtraSmall) {
@@ -60,22 +51,13 @@ struct LessonPlanSummaryCell: View {
                     tutorImage
                         .frame(width: 32, height: 32)
                         .background(Color.rythmicoGray10.clipShape(Circle()))
-                    Group {
-                        Text(tutor)
-                            .lineLimit(2)
-                            .rythmicoFont(.body)
-                            .foregroundColor(.rythmicoGray90)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Text(status)
-                            .lineLimit(1)
-                            .rythmicoFont(.bodyMedium)
-                            .foregroundColor(.rythmicoDarkPurple)
-                            .padding(.vertical, .spacingUnit / 2)
-                            .padding(.horizontal, .spacingExtraSmall)
-                            .frame(minWidth: 96)
-                            .background(Color.rythmicoLightPurple.clipShape(Capsule()))
-                    }
-                    .minimumScaleFactor(0.7)
+                    Text(tutor)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.7)
+                        .rythmicoFont(.body)
+                        .foregroundColor(.rythmicoGray90)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    LessonPlanStatusPill(lessonPlan.status)
                 }
             }
         }

@@ -14,22 +14,10 @@ struct TitleSubtitleView: View {
     }
 
     var body: some View {
-        HStack(spacing: 0) {
-            VStack(alignment: .leading, spacing: .spacingSmall) {
-                Text(title)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.65)
-                    .foregroundColor(.rythmicoForeground)
-                    .rythmicoFont(.largeTitle)
-                    .accessibility(addTraits: .isHeader)
-                MultiStyleText(parts: subtitle.map { $0.color(.rythmicoGray90) })
-                    .transition(
-                        AnyTransition
-                            .opacity
-                            .combined(with: .offset(y: -50))
-                    )
-            }
-            Spacer()
+        TitleContentView(title: title) {
+            MultiStyleText(parts: subtitle.map { $0.color(.rythmicoGray90) }).transition(
+                AnyTransition.opacity.combined(with: .offset(y: -50))
+            )
         }
     }
 }
