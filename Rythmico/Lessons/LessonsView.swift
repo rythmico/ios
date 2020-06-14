@@ -17,6 +17,14 @@ struct LessonsView: View, TestableView {
         self.lessonPlanRepository = lessonPlanRepository
     }
 
+    var lessonPlans: [LessonPlan] { lessonPlanRepository.lessonPlans }
+    var isLoading: Bool { fetchingCoordinator.state.isLoading }
+    var errorMessage: String? { fetchingCoordinator.state.failureValue?.localizedDescription }
+
+    func dismissErrorAlert() {
+        fetchingCoordinator.dismissError()
+    }
+
     func presentRequestLessonFlow() {
         lessonRequestView = RequestLessonPlanView(context: RequestLessonPlanContext())
     }
@@ -24,16 +32,16 @@ struct LessonsView: View, TestableView {
     var didAppear: Handler<Self>?
     var body: some View {
         NavigationView {
-            CollectionView(
-                lessonPlanRepository.lessonPlans,
-                padding: EdgeInsets(horizontal: .spacingMedium, vertical: .spacingMedium)
-            ) {
-                LessonPlanSummaryCell(lessonPlan: $0, transitionDelay: self.transitionDelay(for: $0))
+            CollectionView(lessonPlans, padding: EdgeInsets(.spacingMedium)) {
+                LessonPlanSummaryCell(
+                    lessonPlan: $0,
+                    transitionDelay: self.transitionDelay(for: $0)
+                )
             }
             .navigationBarTitle("Lessons", displayMode: .large)
             .navigationBarItems(
                 leading: Group {
-                    if fetchingCoordinator.state.isLoading {
+                    if isLoading {
                         ActivityIndicator(style: .medium, color: .rythmicoGray90)
                     }
                 },
@@ -46,7 +54,7 @@ struct LessonsView: View, TestableView {
                 .accessibility(label: Text("Request lessons"))
                 .accessibility(hint: Text("Double tap to request a lesson plan"))
             )
-            .alert(error: self.fetchingCoordinator.state.failureValue, dismiss: fetchingCoordinator.dismissError)
+            .alert(error: self.errorMessage, dismiss: dismissErrorAlert)
             .onAppear { self.didAppear?(self) }
             .onAppear(perform: fetchingCoordinator.fetchLessonPlans)
         }
@@ -70,7 +78,7 @@ struct LessonsView_Previews: PreviewProvider {
     static var previews: some View {
         Current.userAuthenticated()
         Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(
-            result: .success([.stub]),
+            result: .success([.stub, .stub]),
             delay: 2
         )
         return Group {
