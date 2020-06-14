@@ -79,7 +79,8 @@ struct LessonsView_Previews: PreviewProvider {
         Current.userAuthenticated()
         Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(
             result: .success([.stub, .stub]),
-            delay: 2
+//            delay: 2
+            delay: nil
         )
         return Group {
             LessonsView()
@@ -87,7 +88,7 @@ struct LessonsView_Previews: PreviewProvider {
 //                .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
             LessonsView()
                 .environment(\.colorScheme, .dark)
-//                .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+                .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
         }
     }
 }
