@@ -21,7 +21,7 @@ final class RequestLessonPlanConfirmationViewTests: XCTestCase {
             registerService: PushNotificationRegisterServiceDummy(),
             queue: nil
         )
-        return RequestLessonPlanConfirmationView(lessonPlan: .stub)
+        return RequestLessonPlanConfirmationView(lessonPlan: .jackGuitarPlanStub)
     }
 
     func testEnableNotificationsButtonShown_whenStatusNotDetermined() {

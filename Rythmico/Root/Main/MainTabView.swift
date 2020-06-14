@@ -55,7 +55,7 @@ struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
         Current.userAuthenticated()
         Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(
-            result: .success([.stub]),
+            result: .success(.stub),
             delay: 2
         )
 
