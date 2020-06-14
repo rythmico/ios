@@ -26,5 +26,13 @@ extension EdgeInsets {
         self.trailing = horizontal
     }
 
+    init(_ all: CGFloat) {
+        self.init()
+        self.top = all
+        self.leading = all
+        self.bottom = all
+        self.trailing = all
+    }
+
     static var zero: EdgeInsets { .init() }
 }

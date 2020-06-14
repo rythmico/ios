@@ -1,42 +1,47 @@
 import Foundation
+import Then
 import class UIKit.UIApplication
 import class UserNotifications.UNUserNotificationCenter
 import class FirebaseInstanceID.InstanceID
 
+extension AppEnvironment: Then {}
+
 extension AppEnvironment {
-    static let fake: AppEnvironment = {
-        var env = AppEnvironment.dummy
-        env.userAuthenticated()
-        env.lessonPlanFetchingService = LessonPlanFetchingServiceStub(
-            result: .success([.stub, .stub]),
-            delay: 1.5
-        )
-        return env
-    }()
+    static var fake: AppEnvironment {
+        dummy.with {
+            $0.userAuthenticated()
+            $0.lessonPlanFetchingService = LessonPlanFetchingServiceStub(
+                result: .success([.stub, .stub]),
+                delay: 1.5
+            )
+        }
+    }
 }
 
 extension AppEnvironment {
-    static let dummy = AppEnvironment(
-        keychain: KeychainDummy(),
-        appleAuthorizationService: AppleAuthorizationServiceDummy(),
-        appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcherDummy(),
-        appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifierDummy(),
-        authenticationService: AuthenticationServiceDummy(),
-        deauthenticationService: DeauthenticationServiceDummy(),
-        accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverDummy(),
-        instrumentSelectionListProvider: InstrumentSelectionListProviderDummy(),
-        addressSearchService: AddressSearchServiceDummy(),
-        lessonPlanFetchingService: LessonPlanFetchingServiceDummy(),
-        lessonPlanRequestService: LessonPlanRequestServiceDummy(),
-        lessonPlanRepository: LessonPlanRepository(),
-        deviceTokenProvider: DeviceTokenProviderDummy(),
-        deviceRegisterService: DeviceRegisterServiceDummy(),
-        deviceTokenDeleter: DeviceTokenDeleterDummy(),
-        pushNotificationAuthorizationCoordinator: .dummy,
-        keyboardDismisser: KeyboardDismisserDummy(),
-        uiAccessibility: UIAccessibilityDummy.self,
-        urlOpener: URLOpenerDummy()
-    )
+    static var dummy: AppEnvironment {
+        AppEnvironment(
+            keychain: KeychainDummy(),
+            appleAuthorizationService: AppleAuthorizationServiceDummy(),
+            appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcherDummy(),
+            appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifierDummy(),
+            authenticationService: AuthenticationServiceDummy(),
+            deauthenticationService: DeauthenticationServiceDummy(),
+            accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverDummy(),
+            instrumentSelectionListProvider: InstrumentSelectionListProviderDummy(),
+            addressSearchService: AddressSearchServiceDummy(),
+            lessonPlanFetchingService: LessonPlanFetchingServiceDummy(),
+            lessonPlanRequestService: LessonPlanRequestServiceDummy(),
+            lessonPlanRepository: LessonPlanRepository(),
+            deviceTokenProvider: DeviceTokenProviderDummy(),
+            deviceRegisterService: DeviceRegisterServiceDummy(),
+            deviceTokenDeleter: DeviceTokenDeleterDummy(),
+            pushNotificationAuthorizationCoordinator: .dummy,
+            keyboardDismisser: KeyboardDismisserDummy(),
+            uiAccessibility: UIAccessibilityDummy.self,
+            urlOpener: URLOpenerDummy()
+        )
+    }
 }
 
 extension AppEnvironment {
