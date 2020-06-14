@@ -8,7 +8,7 @@ final class LessonsViewTests: XCTestCase {
     }
 
     func testInitialState() throws {
-        Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(result: .success([.stub]))
+        Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(result: .success(.stub))
 
         let view = try XCTUnwrap(LessonsView())
 
@@ -18,7 +18,7 @@ final class LessonsViewTests: XCTestCase {
     }
 
     func testLessonPlansLoadingOnAppear() throws {
-        Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(result: .success([.stub]), delay: 0)
+        Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(result: .success(.stub), delay: 0)
 
         let view = try XCTUnwrap(LessonsView())
 
@@ -30,12 +30,12 @@ final class LessonsViewTests: XCTestCase {
     }
 
     func testLessonPlansFetching() throws {
-        Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(result: .success([.stub]))
+        Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(result: .success(.stub))
 
         let view = try XCTUnwrap(LessonsView())
 
         XCTAssertView(view) { view in
-            XCTAssertEqual(view.lessonPlans, [.stub])
+            XCTAssertEqual(view.lessonPlans, .stub)
             XCTAssertFalse(view.isLoading)
             XCTAssertNil(view.errorMessage)
         }

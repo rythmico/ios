@@ -11,7 +11,7 @@ extension AppEnvironment {
         dummy.with {
             $0.userAuthenticated()
             $0.lessonPlanFetchingService = LessonPlanFetchingServiceStub(
-                result: .success([.stub, .stub]),
+                result: .success(.stub),
                 delay: 1.5
             )
         }

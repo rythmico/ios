@@ -24,7 +24,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
         let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
 
         XCTAssertView(view) { view in
-            view.coordinator.requestLessonPlan(.stub)
+            view.coordinator.requestLessonPlan(LessonPlanRequestBody.stub)
 
             XCTAssertNil(view.formView)
             XCTAssertNotNil(view.loadingView)
@@ -39,7 +39,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
         let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
 
         XCTAssertView(view) { view in
-            view.coordinator.requestLessonPlan(.stub)
+            view.coordinator.requestLessonPlan(LessonPlanRequestBody.stub)
 
             XCTAssertNotNil(view.formView)
             XCTAssertNil(view.loadingView)
@@ -50,12 +50,12 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 
     func testConfirmationState() throws {
-        Current.lessonPlanRequestService = LessonPlanRequestServiceStub(result: .success(.stub))
+        Current.lessonPlanRequestService = LessonPlanRequestServiceStub(result: .success(.jackGuitarPlanStub))
 
         let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
 
         XCTAssertView(view) { view in
-            view.coordinator.requestLessonPlan(.stub)
+            view.coordinator.requestLessonPlan(LessonPlanRequestBody.stub)
 
             XCTAssertNil(view.formView)
             XCTAssertNil(view.loadingView)

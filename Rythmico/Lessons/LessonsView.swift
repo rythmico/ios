@@ -78,7 +78,7 @@ struct LessonsView_Previews: PreviewProvider {
     static var previews: some View {
         Current.userAuthenticated()
         Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(
-            result: .success([.stub, .stub]),
+            result: .success(.stub),
 //            delay: 2
             delay: nil
         )
