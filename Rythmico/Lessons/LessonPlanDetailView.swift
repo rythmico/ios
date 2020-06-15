@@ -54,13 +54,13 @@ struct LessonPlanDetailView: View {
                     .foregroundColor(.rythmicoGray90)
                 }
             }
-            .padding(.top, .spacingExtraSmall)
             .padding(.horizontal, .spacingMedium)
 
             Spacer()
 
             // TODO: cancel button
         }
+        .padding(.top, .spacingMedium)
         .onEdgeSwipe(.left, perform: back)
         .navigationBarTitle(Text(""), displayMode: .inline)
         .navigationBarBackButtonHidden(true)
