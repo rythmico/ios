@@ -9,7 +9,7 @@ struct OnboardingView: View, TestableView {
     @State
     var errorMessage: String?
 
-    var didAppear: Handler<Self>?
+    var onAppear: Handler<Self>?
     var body: some View {
         ZStack {
             Color(.systemBackground).edgesIgnoringSafeArea(.all)
@@ -42,7 +42,7 @@ struct OnboardingView: View, TestableView {
         .onDisappear {
             Current.uiAccessibility.postAnnouncement("Welcome")
         }
-        .onAppear { self.didAppear?(self) }
+        .onAppear { self.onAppear?(self) }
         .onAppear(perform: Current.deviceUnregisterCoordinator().unregisterDevice)
     }
 

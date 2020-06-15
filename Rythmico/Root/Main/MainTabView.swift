@@ -27,7 +27,7 @@ struct MainTabView: View, TestableView {
         self.deviceRegisterCoordinator = deviceRegisterCoordinator
     }
 
-    var didAppear: Handler<Self>?
+    var onAppear: Handler<Self>?
     var body: some View {
         TabView(selection: $tabSelection) {
             lessonsView
@@ -45,7 +45,7 @@ struct MainTabView: View, TestableView {
                 }
         }
         .accentColor(.rythmicoPurple)
-        .onAppear { self.didAppear?(self) }
+        .onAppear { self.onAppear?(self) }
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
     }
 }

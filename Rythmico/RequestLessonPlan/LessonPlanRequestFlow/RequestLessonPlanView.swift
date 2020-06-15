@@ -23,7 +23,7 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
     }
 
     let id = UUID()
-    var didAppear: Handler<Self>?
+    var onAppear: Handler<Self>?
 
     var swipeDownToDismissEnabled: Bool {
         coordinator.state.isIdle && context.currentStep.index == 0
@@ -40,7 +40,7 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
             confirmationView.transition(stateTransition(scale: 0.7))
         }
         .betterSheetIsModalInPresentation(!swipeDownToDismissEnabled)
-        .onAppear { self.didAppear?(self) }
+        .onAppear { self.onAppear?(self) }
     }
 
     private func stateTransition(scale: CGFloat) -> AnyTransition {
