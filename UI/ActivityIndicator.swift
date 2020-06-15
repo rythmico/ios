@@ -9,6 +9,7 @@ struct ActivityIndicator: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<ActivityIndicator>) -> UIActivityIndicatorView {
         NonAccessibleUIActivityIndicatorView(style: style).then {
             $0.color = color ?? $0.color
+            $0.hidesWhenStopped = false
             $0.startAnimating()
         }
     }

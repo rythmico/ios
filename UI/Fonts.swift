@@ -131,12 +131,14 @@ private extension Font.Weight {
     var bolder: Font.Weight {
         switch self {
         case .regular:
-            return .semibold
+            return .medium
         case .medium:
-            return .bold
+            return .semibold
         case .semibold:
+            return .bold
+        case .bold:
             return .heavy
-        case .bold, .black:
+        case .heavy, .black:
             return .black
         default:
             return .semibold

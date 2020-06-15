@@ -35,50 +35,31 @@ struct AppEnvironment {
 
 extension AppEnvironment {
     func addressSearchCoordinator() -> AddressSearchCoordinator? {
-        guard let accessTokenProvider = accessTokenProviderObserver.currentProvider else {
-            return nil
+        accessTokenProviderObserver.currentProvider.map {
+            AddressSearchCoordinator(accessTokenProvider: $0, service: addressSearchService)
         }
-        return AddressSearchCoordinator(
-            accessTokenProvider: accessTokenProvider,
-            service: addressSearchService
-        )
     }
 
     func lessonPlanFetchingCoordinator() -> LessonPlanFetchingCoordinator? {
-        guard let accessTokenProvider = accessTokenProviderObserver.currentProvider else {
-            return nil
+        accessTokenProviderObserver.currentProvider.map {
+            LessonPlanFetchingCoordinator(accessTokenProvider: $0, service: lessonPlanFetchingService, repository: lessonPlanRepository)
         }
-        return LessonPlanFetchingCoordinator(
-            accessTokenProvider: accessTokenProvider,
-            service: lessonPlanFetchingService,
-            repository: lessonPlanRepository
-        )
     }
 
     func lessonPlanRequestCoordinator() -> LessonPlanRequestCoordinator? {
-        guard let accessTokenProvider = accessTokenProviderObserver.currentProvider else {
-            return nil
+        accessTokenProviderObserver.currentProvider.map {
+            LessonPlanRequestCoordinator(accessTokenProvider: $0, service: lessonPlanRequestService, repository: lessonPlanRepository)
         }
-        return LessonPlanRequestCoordinator(
-            accessTokenProvider: accessTokenProvider,
-            service: lessonPlanRequestService,
-            repository: lessonPlanRepository
-        )
     }
 
     func deviceRegisterCoordinator() -> DeviceRegisterCoordinator? {
-        guard let accessTokenProvider = accessTokenProviderObserver.currentProvider else {
-            return nil
+        accessTokenProviderObserver.currentProvider.map {
+            DeviceRegisterCoordinator(accessTokenProvider: $0, deviceTokenProvider: deviceTokenProvider, service: deviceRegisterService)
         }
-        return DeviceRegisterCoordinator(
-            accessTokenProvider: accessTokenProvider,
-            deviceTokenProvider: deviceTokenProvider,
-            service: deviceRegisterService
-        )
     }
 
     func deviceUnregisterCoordinator() -> DeviceUnregisterCoordinator {
-        return DeviceUnregisterCoordinator(deviceTokenDeleter: deviceTokenDeleter)
+        DeviceUnregisterCoordinator(deviceTokenDeleter: deviceTokenDeleter)
     }
 }
 
@@ -113,10 +94,7 @@ extension AppEnvironment {
 }
 
 #if DEBUG
-var Current = isRunningTests || isRunningPreviews
-    ? AppEnvironment.dummy
-//    : AppEnvironment.live
-    : AppEnvironment.fake
+var Current: AppEnvironment = isRunningTests || isRunningPreviews ? .dummy : .fake
 #else
-let Current = AppEnvironment.live
+let Current: AppEnvironment = .live
 #endif

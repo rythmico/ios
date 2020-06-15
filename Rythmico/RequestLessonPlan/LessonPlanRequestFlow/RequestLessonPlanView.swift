@@ -88,7 +88,7 @@ struct RequestLessonPlanView_Preview: PreviewProvider {
 //        context.privateNote = "Note"
 
         Current.lessonPlanRequestService = LessonPlanRequestServiceStub(
-            result: .success(.stub),
+            result: .success(.jackGuitarPlanStub),
             delay: 2
         )
 

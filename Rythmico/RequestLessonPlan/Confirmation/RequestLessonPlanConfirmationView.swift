@@ -104,7 +104,7 @@ struct RequestLessonPlanConfirmationView_Previews: PreviewProvider {
             queue: nil
         )
 
-        return RequestLessonPlanConfirmationView(lessonPlan: .stub)
+        return RequestLessonPlanConfirmationView(lessonPlan: .jackGuitarPlanStub)
             .previewDevices()
 //            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
