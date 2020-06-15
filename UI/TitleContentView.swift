@@ -14,7 +14,7 @@ struct TitleContentView<Content: View>: View {
             VStack(alignment: .leading, spacing: .spacingSmall) {
                 Text(title)
                     .lineLimit(1)
-                    .minimumScaleFactor(0.65)
+                    .minimumScaleFactor(0.6)
                     .foregroundColor(.rythmicoForeground)
                     .rythmicoFont(.largeTitle)
                     .accessibility(addTraits: .isHeader)

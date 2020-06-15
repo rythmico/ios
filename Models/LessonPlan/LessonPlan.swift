@@ -1,7 +1,7 @@
 import Foundation
 
-struct LessonPlan: Equatable, Decodable, Identifiable {
-    enum Status: Equatable, Decodable {
+struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
+    enum Status: Equatable, Decodable, Hashable {
         case pending
         case reviewing([Tutor])
         case scheduled(Tutor)
@@ -25,14 +25,14 @@ struct LessonPlan: Equatable, Decodable, Identifiable {
         }
     }
 
-    struct Tutor: Equatable, Decodable {
+    struct Tutor: Equatable, Decodable, Hashable {
         var id: String
         var name: String
         var imageURL: URL
     }
 
-    struct CancellationInfo: Equatable, Decodable {
-        enum Reason: String, Decodable {
+    struct CancellationInfo: Equatable, Decodable, Hashable {
+        enum Reason: String, Decodable, Hashable {
             case tooExpensive = "TOO_EXPENSIVE"
             case badTutor = "BAD_TUTOR"
             case rearrangementWanted = "REARRANGEMENT_WANTED"

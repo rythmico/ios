@@ -1,7 +1,7 @@
 import Foundation
 import struct SwiftUI.Image
 
-enum Instrument: String, Equatable, Codable, CaseIterable {
+enum Instrument: String, Equatable, Codable, CaseIterable, Hashable {
     case guitar = "GUITAR"
     case drums = "DRUMS"
     case piano = "PIANO"
