@@ -1,15 +1,17 @@
 import SwiftUI
 
 struct BackButton: View {
+    var title = "Back"
     var action: () -> Void
 
     var body: some View {
         Button(action: action) {
             HStack {
                 Image(systemSymbol: .chevronLeft).font(.system(size: 21, weight: .semibold))
-                Text("Back").rythmicoFont(.bodyMedium)
+                Text(title).rythmicoFont(.bodyMedium)
             }
+            .padding([.vertical, .trailing], .spacingSmall)
         }
-        .foregroundColor(.rythmicoGray90)
+        .foregroundColor(.accentColor)
     }
 }

@@ -48,10 +48,10 @@ struct RequestLessonPlanFormView: View, TestableView {
                             .padding(.horizontal, .spacingExtraLarge)
                             .offset(x: .spacingExtraLarge)
                     }
-                    .accentColor(.rythmicoGray90)
                     .accessibility(label: Text("Close"))
                     .accessibility(hint: Text("Double tap to return to main screen"))
                 }
+                .accentColor(.rythmicoGray90)
                 .frame(minHeight: 64)
                 .padding(.horizontal, .spacingSmall)
                 .animation(.rythmicoSpring(duration: .durationShort), value: shouldShowBackButton)
