@@ -7,6 +7,8 @@ struct LessonsView: View, TestableView {
     @ObservedObject
     private var lessonPlanRepository = Current.lessonPlanRepository
     @State
+    private var selectedLessonPlan: LessonPlan?
+    @State
     private(set) var lessonRequestView: RequestLessonPlanView?
 
     init?() {
@@ -32,11 +34,16 @@ struct LessonsView: View, TestableView {
     var didAppear: Handler<Self>?
     var body: some View {
         NavigationView {
-            CollectionView(lessonPlans, padding: EdgeInsets(.spacingMedium)) {
-                LessonPlanSummaryCell(
-                    lessonPlan: $0,
-                    transitionDelay: self.transitionDelay(for: $0)
+            CollectionView(lessonPlans, padding: EdgeInsets(.spacingMedium)) { lessonPlan in
+                NavigationLink(
+                    destination: LessonPlanDetailView(lessonPlan),
+                    tag: lessonPlan,
+                    selection: self.$selectedLessonPlan,
+                    label: {
+                        LessonPlanSummaryCell(lessonPlan: lessonPlan)
+                    }
                 )
+                .transition(self.transition(for: lessonPlan))
             }
             .navigationBarTitle("Lessons", displayMode: .large)
             .navigationBarItems(
@@ -58,18 +65,37 @@ struct LessonsView: View, TestableView {
             .onAppear { self.didAppear?(self) }
             .onAppear(perform: fetchingCoordinator.fetchLessonPlans)
         }
+        .modifier(BestNavigationStyleModifier())
         .accentColor(.rythmicoPurple)
         .betterSheet(item: $lessonRequestView, content: { $0 })
     }
 
-    private func transitionDelay(for lessonPlan: LessonPlan) -> Double? {
-        guard
+    private func transition(for lessonPlan: LessonPlan) -> AnyTransition {
+        let transitionDelay: Double
+        if
             lessonPlanRepository.previousLessonPlans.isEmpty,
             let index = lessonPlanRepository.lessonPlans.firstIndex(of: lessonPlan)
-        else {
-            return nil
+        {
+            transitionDelay = Double(index) * (.durationShort * 2/3)
+        } else {
+            transitionDelay = 0
         }
-        return Double(index) * .durationShort
+        return AnyTransition.opacity.combined(with: .scale(scale: 0.8))
+            .animation(
+                Animation
+                    .rythmicoSpring(duration: .durationMedium)
+                    .delay(transitionDelay)
+            )
+    }
+}
+
+private struct BestNavigationStyleModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return AnyView(content.navigationViewStyle(StackNavigationViewStyle()))
+        } else {
+            return AnyView(content.navigationViewStyle(DefaultNavigationViewStyle()))
+        }
     }
 }
 
