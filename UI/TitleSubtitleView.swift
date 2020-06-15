@@ -15,7 +15,10 @@ struct TitleSubtitleView: View {
 
     var body: some View {
         TitleContentView(title: title) {
-            MultiStyleText(parts: subtitle.map { $0.color(.rythmicoGray90) }).transition(
+            MultiStyleText(
+                parts: subtitle.map { $0.color(.rythmicoGray90) }
+            )
+            .transition(
                 AnyTransition.opacity.combined(with: .offset(y: -50))
             )
         }

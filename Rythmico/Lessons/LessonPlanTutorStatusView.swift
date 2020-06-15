@@ -42,7 +42,11 @@ private extension LessonPlan.Status {
     var image: AnyView {
         switch self {
         case .pending:
-            return AnyView(Image(systemSymbol: .person).foregroundColor(.rythmicoGray90).font(.system(size: 18, weight: .semibold, design: .rounded)))
+            return AnyView(
+                Image(systemSymbol: .person)
+                    .foregroundColor(.rythmicoGray90)
+                    .font(.system(size: 18, weight: .semibold, design: .rounded))
+            )
         default:
             return AnyView(Image(systemSymbol: .personFill)) // TODO
         }
