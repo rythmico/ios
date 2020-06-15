@@ -30,7 +30,7 @@ struct ProfileView: View, TestableView {
         Current.deauthenticationService.deauthenticate()
     }
 
-    var didAppear: Handler<Self>?
+    var onAppear: Handler<Self>?
     var body: some View {
         NavigationView {
             Form {
@@ -62,7 +62,7 @@ struct ProfileView: View, TestableView {
             }
             .alert(error: self.errorMessage, dismiss: notificationAuthorizationCoordinator.dismissFailure)
             .navigationBarTitle(Text("Profile"), displayMode: .large)
-            .onAppear { self.didAppear?(self) }
+            .onAppear { self.onAppear?(self) }
         }
     }
 

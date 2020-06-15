@@ -55,7 +55,7 @@ struct AddressDetailsView: View, TestableView {
         }
     }
 
-    var didAppear: Handler<Self>?
+    var onAppear: Handler<Self>?
     var body: some View {
         TitleSubtitleContentView(title: "Address Details", subtitle: subtitle) {
             VStack(spacing: 0) {
@@ -123,7 +123,7 @@ struct AddressDetailsView: View, TestableView {
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: addresses)
         .alert(error: self.errorMessage, dismiss: coordinator.dismissError)
-        .onAppear { self.didAppear?(self) }
+        .onAppear { self.onAppear?(self) }
     }
 }
 

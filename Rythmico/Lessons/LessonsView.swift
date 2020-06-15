@@ -31,7 +31,7 @@ struct LessonsView: View, TestableView {
         lessonRequestView = RequestLessonPlanView(context: RequestLessonPlanContext())
     }
 
-    var didAppear: Handler<Self>?
+    var onAppear: Handler<Self>?
     var body: some View {
         NavigationView {
             CollectionView(lessonPlans, padding: EdgeInsets(.spacingMedium)) { lessonPlan in
@@ -62,7 +62,7 @@ struct LessonsView: View, TestableView {
                 .accessibility(hint: Text("Double tap to request a lesson plan"))
             )
             .alert(error: self.errorMessage, dismiss: dismissErrorAlert)
-            .onAppear { self.didAppear?(self) }
+            .onAppear { self.onAppear?(self) }
             .onAppear(perform: fetchingCoordinator.fetchLessonPlans)
         }
         .modifier(BestNavigationStyleModifier())

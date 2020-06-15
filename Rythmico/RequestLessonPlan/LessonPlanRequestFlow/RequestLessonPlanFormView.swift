@@ -34,7 +34,7 @@ struct RequestLessonPlanFormView: View, TestableView {
         context.unwindLatestStep()
     }
 
-    var didAppear: Handler<Self>?
+    var onAppear: Handler<Self>?
     var body: some View {
         VStack(spacing: .spacingSmall) {
             VStack(spacing: 0) {
