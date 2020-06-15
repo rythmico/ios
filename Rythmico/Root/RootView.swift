@@ -85,7 +85,7 @@ struct RootView_Previews: PreviewProvider {
         )
 
         Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(
-            result: .success([.stub]),
+            result: .success(.stub),
             delay: 2
         )
 

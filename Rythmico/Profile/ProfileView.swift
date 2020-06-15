@@ -92,7 +92,7 @@ struct ProfileView: View, TestableView {
             Spacer()
             content()
             if disclosure {
-                Image(decorative: Asset.disclosureIndicator.name)
+                Image(decorative: Asset.iconDisclosure.name)
                     .renderingMode(.template)
             }
         }
