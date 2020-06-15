@@ -10,6 +10,8 @@ struct LessonsView: View, TestableView {
     private var selectedLessonPlan: LessonPlan?
     @State
     private(set) var lessonRequestView: RequestLessonPlanView?
+    @State
+    private var didAppear = false
 
     init?() {
         guard let fetchingCoordinator = Current.lessonPlanFetchingCoordinator() else {
@@ -22,6 +24,10 @@ struct LessonsView: View, TestableView {
     var lessonPlans: [LessonPlan] { lessonPlanRepository.lessonPlans }
     var isLoading: Bool { fetchingCoordinator.state.isLoading }
     var errorMessage: String? { fetchingCoordinator.state.failureValue?.localizedDescription }
+
+    func fetchLessonPlans() {
+        fetchingCoordinator.fetchLessonPlans()
+    }
 
     func dismissErrorAlert() {
         fetchingCoordinator.dismissError()
@@ -39,9 +45,7 @@ struct LessonsView: View, TestableView {
                     destination: LessonPlanDetailView(lessonPlan),
                     tag: lessonPlan,
                     selection: self.$selectedLessonPlan,
-                    label: {
-                        LessonPlanSummaryCell(lessonPlan: lessonPlan)
-                    }
+                    label: { LessonPlanSummaryCell(lessonPlan: lessonPlan) }
                 )
                 .transition(self.transition(for: lessonPlan))
             }
@@ -61,13 +65,19 @@ struct LessonsView: View, TestableView {
                 .accessibility(label: Text("Request lessons"))
                 .accessibility(hint: Text("Double tap to request a lesson plan"))
             )
-            .alert(error: self.errorMessage, dismiss: dismissErrorAlert)
-            .onAppear { self.onAppear?(self) }
-            .onAppear(perform: fetchingCoordinator.fetchLessonPlans)
         }
         .modifier(BestNavigationStyleModifier())
         .accentColor(.rythmicoPurple)
+        .alert(error: self.errorMessage, dismiss: dismissErrorAlert)
         .betterSheet(item: $lessonRequestView, content: { $0 })
+        .onAppear { self.onAppear?(self) }
+        .onAppear(perform: fetchOnAppear)
+    }
+
+    private func fetchOnAppear() {
+        guard !didAppear else { return }
+        fetchingCoordinator.fetchLessonPlans()
+        didAppear = true
     }
 
     private func transition(for lessonPlan: LessonPlan) -> AnyTransition {
@@ -103,6 +113,7 @@ struct LessonsView_Previews: PreviewProvider {
         Current.userAuthenticated()
         Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(
             result: .success(.stub),
+//            result: .failure("Something"),
 //            delay: 2
             delay: nil
         )
