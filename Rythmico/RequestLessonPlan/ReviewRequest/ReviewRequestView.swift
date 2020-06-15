@@ -68,7 +68,7 @@ struct ReviewRequestView: View, TestableView {
                             accessory: editButton(performing: editStudentDetails)
                         ) {
                             HStack(alignment: .firstTextBaseline, spacing: .spacingExtraSmall) {
-                                Image(decorative: Asset.infoIcon.name)
+                                Image(decorative: Asset.iconInfo.name)
                                     .renderingMode(.template)
                                     .foregroundColor(.rythmicoGray90)
                                     .alignmentGuide(.firstTextBaseline) { $0[.bottom] - 2.5 }
@@ -101,7 +101,7 @@ struct ReviewRequestView: View, TestableView {
                         ) {
                             VStack(alignment: .leading, spacing: .spacingSmall) {
                                 HStack(spacing: .spacingExtraSmall) {
-                                    Image(decorative: Asset.infoIcon.name)
+                                    Image(decorative: Asset.iconInfo.name)
                                         .renderingMode(.template)
                                         .foregroundColor(.rythmicoGray90)
                                     MultiStyleText(parts: [
@@ -110,13 +110,13 @@ struct ReviewRequestView: View, TestableView {
                                     ])
                                 }
                                 HStack(spacing: .spacingExtraSmall) {
-                                    Image(decorative: Asset.timeIcon.name)
+                                    Image(decorative: Asset.iconTime.name)
                                         .renderingMode(.template)
                                         .foregroundColor(.rythmicoGray90)
                                     MultiStyleText(parts: startTimeAndDurationText)
                                 }
                                 HStack(spacing: .spacingExtraSmall) {
-                                    Image(decorative: Asset.timeIcon.name).hidden()
+                                    Image(decorative: Asset.iconTime.name).hidden()
                                     MultiStyleText(parts: frequencyText)
                                 }
                             }
