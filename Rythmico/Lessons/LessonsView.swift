@@ -91,11 +91,9 @@ struct LessonsView: View, TestableView {
 
 private struct BestNavigationStyleModifier: ViewModifier {
     func body(content: Content) -> some View {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return AnyView(content.navigationViewStyle(StackNavigationViewStyle()))
-        } else {
-            return AnyView(content.navigationViewStyle(DefaultNavigationViewStyle()))
-        }
+        UIDevice.current.userInterfaceIdiom == .phone
+            ? AnyView(content.navigationViewStyle(StackNavigationViewStyle()))
+            : AnyView(content.navigationViewStyle(DefaultNavigationViewStyle()))
     }
 }
 

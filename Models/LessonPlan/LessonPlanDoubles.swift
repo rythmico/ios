@@ -1,7 +1,4 @@
 import Foundation
-import Then
-
-extension LessonPlan: Then {}
 
 extension LessonPlan {
     static var jackGuitarPlanStub: LessonPlan {

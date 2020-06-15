@@ -53,6 +53,7 @@ struct LessonPlanDetailView: View {
                 .foregroundColor(.rythmicoGray90)
             }
             Spacer()
+            // TODO: cancel button
         }
         .padding(.top, .spacingExtraSmall)
         .padding(.horizontal, .spacingMedium)
