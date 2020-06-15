@@ -10,9 +10,17 @@ extension AppEnvironment {
     static var fake: AppEnvironment {
         dummy.with {
             $0.userAuthenticated()
-            $0.lessonPlanFetchingService = LessonPlanFetchingServiceStub(
-                result: .success(.stub),
-                delay: 1.5
+            $0.lessonPlanFetchingService = LessonPlanFetchingServiceStub(result: .success(.stub), delay: 1.5)
+            $0.instrumentSelectionListProvider = InstrumentSelectionListProviderStub(instruments: Instrument.allCases)
+            $0.addressSearchService = AddressSearchServiceStub(result: .success([.stub]), delay: 1)
+            $0.lessonPlanRequestService = LessonPlanRequestServiceStub(result: .success(.davidGuitarPlanStub), delay: 2)
+            $0.pushNotificationAuthorizationCoordinator = PushNotificationAuthorizationCoordinator(
+                center: UNUserNotificationCenterStub(
+                    authorizationStatus: .notDetermined,
+                    authorizationRequestResult: (true, nil)
+                ),
+                registerService: PushNotificationRegisterServiceDummy(),
+                queue: nil
             )
         }
     }
