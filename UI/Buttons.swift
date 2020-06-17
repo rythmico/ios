@@ -2,21 +2,30 @@ import SwiftUI
 import Sugar
 
 extension Button {
-    func primaryStyle() -> some View {
-        buttonStyle(PrimaryButtonStyle())
+    func primaryStyle(expansive: Bool = true) -> some View {
+        buttonStyle(PrimaryButtonStyle(expansive: expansive))
     }
 
-    func secondaryStyle() -> some View {
-        buttonStyle(SecondaryButtonStyle())
+    func secondaryStyle(expansive: Bool = true) -> some View {
+        buttonStyle(SecondaryButtonStyle(expansive: expansive))
+    }
+
+    func tertiaryStyle(expansive: Bool = true) -> some View {
+        buttonStyle(TertiaryButtonStyle(expansive: expansive))
     }
 }
 
 struct PrimaryButtonStyle: ButtonStyle {
+    var expansive: Bool
+
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
+            .lineLimit(1)
+            .minimumScaleFactor(0.6)
+            .padding(.horizontal, .spacingMedium)
             .rythmicoFont(.bodyBold)
             .foregroundColor(.rythmicoWhite)
-            .frame(maxWidth: .infinity, minHeight: 48)
+            .frame(maxWidth: expansive ? .infinity : nil, minHeight: 48)
             .background(
                 RoundedRectangle(cornerRadius: 4, style: .continuous)
                     .fill(backgroundColor(for: configuration))
@@ -31,6 +40,8 @@ struct PrimaryButtonStyle: ButtonStyle {
 }
 
 struct SecondaryButtonStyle: ButtonStyle {
+    var expansive: Bool
+
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .lineLimit(1)
@@ -38,7 +49,42 @@ struct SecondaryButtonStyle: ButtonStyle {
             .padding(.horizontal, .spacingMedium)
             .rythmicoFont(.bodyBold)
             .foregroundColor(foregroundColor(for: configuration))
-            .frame(height: 40)
+            .frame(maxWidth: expansive ? .infinity : nil, minHeight: 48)
+            .background(
+                RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    .fill(backgroundColor(for: configuration))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 4, style: .continuous)
+                            .stroke(Color.rythmicoPurple, lineWidth: 2)
+                    )
+                    .contentShape(Rectangle())
+            )
+    }
+
+    func foregroundColor(for configuration: Configuration) -> Color {
+        configuration.isPressed
+            ? Color.rythmicoWhite
+            : Color.rythmicoPurple
+    }
+
+    func backgroundColor(for configuration: Configuration) -> Color {
+        configuration.isPressed
+            ? Color.rythmicoPurple
+            : Color.clear
+    }
+}
+
+struct TertiaryButtonStyle: ButtonStyle {
+    var expansive: Bool
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .lineLimit(1)
+            .minimumScaleFactor(0.6)
+            .padding(.horizontal, .spacingMedium)
+            .rythmicoFont(.bodyBold)
+            .foregroundColor(foregroundColor(for: configuration))
+            .frame(maxWidth: expansive ? .infinity : nil, minHeight: 48)
             .background(
                 RoundedRectangle(cornerRadius: 4, style: .continuous)
                     .fill(backgroundColor(for: configuration))
@@ -46,6 +92,7 @@ struct SecondaryButtonStyle: ButtonStyle {
                         RoundedRectangle(cornerRadius: 4, style: .continuous)
                             .stroke(Color.rythmicoGray30, lineWidth: 2)
                     )
+                    .contentShape(Rectangle())
             )
     }
 
@@ -67,7 +114,13 @@ struct Buttons_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 20) {
             Button("Next", action: {}).primaryStyle()
+            Button("Next", action: {}).primaryStyle(expansive: false)
+
             Button("Next", action: {}).secondaryStyle()
+            Button("Next", action: {}).secondaryStyle(expansive: false)
+
+            Button("Next", action: {}).tertiaryStyle()
+            Button("Next", action: {}).tertiaryStyle(expansive: false)
         }
         .padding()
     }
