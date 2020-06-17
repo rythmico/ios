@@ -32,10 +32,11 @@ struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
     }
 
     struct CancellationInfo: Equatable, Decodable, Hashable {
-        enum Reason: String, Decodable, Hashable {
+        enum Reason: String, Decodable, Hashable, CaseIterable {
             case tooExpensive = "TOO_EXPENSIVE"
             case badTutor = "BAD_TUTOR"
-            case rearrangementWanted = "REARRANGEMENT_WANTED"
+            case rearrangementNeeded = "NEED_REARRANGEMENT"
+            case other = "OTHER"
         }
 
         var date: Date
