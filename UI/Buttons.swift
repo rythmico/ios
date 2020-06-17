@@ -19,17 +19,19 @@ struct PrimaryButtonStyle: ButtonStyle {
     var expansive: Bool
 
     func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .lineLimit(1)
-            .minimumScaleFactor(0.6)
-            .padding(.horizontal, .spacingMedium)
-            .rythmicoFont(.bodyBold)
-            .foregroundColor(.rythmicoWhite)
-            .frame(maxWidth: expansive ? .infinity : nil, minHeight: 48)
-            .background(
-                RoundedRectangle(cornerRadius: 4, style: .continuous)
-                    .fill(backgroundColor(for: configuration))
-            )
+        DisableableButton {
+            configuration.label
+                .lineLimit(1)
+                .minimumScaleFactor(0.6)
+                .padding(.horizontal, .spacingMedium)
+                .rythmicoFont(.bodyBold)
+                .foregroundColor(.rythmicoWhite)
+                .frame(maxWidth: expansive ? .infinity : nil, minHeight: 48)
+                .background(
+                    RoundedRectangle(cornerRadius: 4, style: .continuous)
+                        .fill(backgroundColor(for: configuration))
+                )
+        }
     }
 
     func backgroundColor(for configuration: Configuration) -> Color {
@@ -43,22 +45,24 @@ struct SecondaryButtonStyle: ButtonStyle {
     var expansive: Bool
 
     func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .lineLimit(1)
-            .minimumScaleFactor(0.6)
-            .padding(.horizontal, .spacingMedium)
-            .rythmicoFont(.bodyBold)
-            .foregroundColor(foregroundColor(for: configuration))
-            .frame(maxWidth: expansive ? .infinity : nil, minHeight: 48)
-            .background(
-                RoundedRectangle(cornerRadius: 4, style: .continuous)
-                    .fill(backgroundColor(for: configuration))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 4, style: .continuous)
-                            .stroke(Color.rythmicoPurple, lineWidth: 2)
-                    )
-                    .contentShape(Rectangle())
-            )
+        DisableableButton {
+            configuration.label
+                .lineLimit(1)
+                .minimumScaleFactor(0.6)
+                .padding(.horizontal, .spacingMedium)
+                .rythmicoFont(.bodyBold)
+                .foregroundColor(foregroundColor(for: configuration))
+                .frame(maxWidth: expansive ? .infinity : nil, minHeight: 48)
+                .background(
+                    RoundedRectangle(cornerRadius: 4, style: .continuous)
+                        .fill(backgroundColor(for: configuration))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 4, style: .continuous)
+                                .stroke(Color.rythmicoPurple, lineWidth: 2)
+                        )
+                        .contentShape(Rectangle())
+                )
+        }
     }
 
     func foregroundColor(for configuration: Configuration) -> Color {
@@ -77,50 +81,75 @@ struct SecondaryButtonStyle: ButtonStyle {
 struct TertiaryButtonStyle: ButtonStyle {
     var expansive: Bool
 
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .lineLimit(1)
-            .minimumScaleFactor(0.6)
-            .padding(.horizontal, .spacingMedium)
-            .rythmicoFont(.bodyBold)
-            .foregroundColor(foregroundColor(for: configuration))
-            .frame(maxWidth: expansive ? .infinity : nil, minHeight: 48)
-            .background(
-                RoundedRectangle(cornerRadius: 4, style: .continuous)
-                    .fill(backgroundColor(for: configuration))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 4, style: .continuous)
-                            .stroke(Color.rythmicoGray30, lineWidth: 2)
-                    )
-                    .contentShape(Rectangle())
-            )
+    func makeBody(configuration: ButtonStyleConfiguration) -> some View {
+        DisableableButton {
+            configuration.label
+                .lineLimit(1)
+                .minimumScaleFactor(0.6)
+                .padding(.horizontal, .spacingMedium)
+                .rythmicoFont(.bodyBold)
+                .foregroundColor(foregroundColor(for: configuration))
+                .frame(maxWidth: expansive ? .infinity : nil, minHeight: 48)
+                .background(
+                    RoundedRectangle(cornerRadius: 4, style: .continuous)
+                        .fill(backgroundColor(for: configuration))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 4, style: .continuous)
+                                .stroke(Color.rythmicoGray30, lineWidth: 2)
+                        )
+                        .contentShape(Rectangle())
+                )
+        }
     }
 
-    func foregroundColor(for configuration: Configuration) -> Color {
+    func foregroundColor(for configuration: ButtonStyleConfiguration) -> Color {
         configuration.isPressed
             ? Color.rythmicoWhite
             : Color.rythmicoGray90
     }
 
-    func backgroundColor(for configuration: Configuration) -> Color {
+    func backgroundColor(for configuration: ButtonStyleConfiguration) -> Color {
         configuration.isPressed
             ? Color.rythmicoGray30
             : Color.clear
     }
 }
 
+private struct DisableableButton<Button: View>: View {
+    @Environment(\.isEnabled) private var isEnabled: Bool
+
+    var button: Button
+
+    init(@ViewBuilder button: () -> Button) {
+        self.button = button()
+    }
+
+    var body: some View {
+        button.opacity(isEnabled ? 1 : 0.3)
+    }
+}
+
 #if DEBUG
 struct Buttons_Previews: PreviewProvider {
     static var previews: some View {
-        VStack(spacing: 20) {
-            Button("Next", action: {}).primaryStyle()
-            Button("Next", action: {}).primaryStyle(expansive: false)
+        VStack(spacing: 50) {
+            VStack(spacing: .spacingSmall) {
+                Button("Next", action: {}).primaryStyle(expansive: false)
+                Button("Next", action: {}).primaryStyle()
+                Button("Next", action: {}).primaryStyle().disabled(true)
+            }
 
-            Button("Next", action: {}).secondaryStyle()
-            Button("Next", action: {}).secondaryStyle(expansive: false)
+            VStack(spacing: .spacingSmall) {
+                Button("Next", action: {}).secondaryStyle(expansive: false)
+                Button("Next", action: {}).secondaryStyle()
+                Button("Next", action: {}).secondaryStyle().disabled(true)
+            }
 
-            Button("Next", action: {}).tertiaryStyle()
-            Button("Next", action: {}).tertiaryStyle(expansive: false)
+            VStack(spacing: .spacingSmall) {
+                Button("Next", action: {}).tertiaryStyle(expansive: false)
+                Button("Next", action: {}).tertiaryStyle()
+                Button("Next", action: {}).tertiaryStyle().disabled(true)
+            }
         }
         .padding()
     }
