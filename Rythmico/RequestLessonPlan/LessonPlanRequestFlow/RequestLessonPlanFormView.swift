@@ -43,13 +43,8 @@ struct RequestLessonPlanFormView: View, TestableView {
                         BackButton(action: back).transition(.opacity)
                     }
                     Spacer()
-                    Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
-                        Image(systemSymbol: .xmark).font(.system(size: 21, weight: .semibold))
-                            .padding(.horizontal, .spacingExtraLarge)
-                            .offset(x: .spacingExtraLarge)
-                    }
-                    .accessibility(label: Text("Close"))
-                    .accessibility(hint: Text("Double tap to return to main screen"))
+                    CloseButton(action: presentationMode.wrappedValue.dismiss)
+                        .accessibility(hint: Text("Double tap to return to main screen"))
                 }
                 .accentColor(.rythmicoGray90)
                 .frame(minHeight: 64)

@@ -11,6 +11,7 @@
 		03021C51248A799200C0C57E /* LessonsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03021C50248A799200C0C57E /* LessonsViewTests.swift */; };
 		03080EEB2466FDD9008715EE /* LessonPlanRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03080EEA2466FDD9008715EE /* LessonPlanRequestService.swift */; };
 		03080EED2466FE21008715EE /* LessonPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03080EEC2466FE21008715EE /* LessonPlan.swift */; };
+		031378C5249A7453005FC49C /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031378C4249A7453005FC49C /* CloseButton.swift */; };
 		032215572497034A009D48A8 /* LessonPlanTutorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032215562497034A009D48A8 /* LessonPlanTutorStatusView.swift */; };
 		03275AD5248FDB38009C3980 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AD4248FDB38009C3980 /* AppEnvironment.swift */; };
 		03275AD7249001E9009C3980 /* UNUserNotificationCenterDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AD6249001E9009C3980 /* UNUserNotificationCenterDoubles.swift */; };
@@ -254,6 +255,7 @@
 		03021C50248A799200C0C57E /* LessonsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsViewTests.swift; sourceTree = "<group>"; };
 		03080EEA2466FDD9008715EE /* LessonPlanRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanRequestService.swift; sourceTree = "<group>"; };
 		03080EEC2466FE21008715EE /* LessonPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlan.swift; sourceTree = "<group>"; };
+		031378C4249A7453005FC49C /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		032215562497034A009D48A8 /* LessonPlanTutorStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanTutorStatusView.swift; sourceTree = "<group>"; };
 		03275AD4248FDB38009C3980 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		03275AD6249001E9009C3980 /* UNUserNotificationCenterDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNUserNotificationCenterDoubles.swift; sourceTree = "<group>"; };
@@ -836,6 +838,7 @@
 				D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */,
 				D5F5065C23FF16AA00CA4094 /* BackButton.swift */,
 				D5F506B9240637F400CA4094 /* Buttons.swift */,
+				031378C4249A7453005FC49C /* CloseButton.swift */,
 				D5AAF7DA23FB347C00E410F2 /* CollectionView.swift */,
 				D535554623E20076005A20EB /* Colors.swift */,
 				0392A9CE244D09FF001E97AE /* ContentSizeCategory+Sugar.swift */,
@@ -1312,6 +1315,7 @@
 				D53555B723E53699005A20EB /* DeauthenticationService.swift in Sources */,
 				D5200E4023FDE460007168E0 /* MultiStyleText.swift in Sources */,
 				D5F506B42405ED9300CA4094 /* RoundedThickOutlineContainer.swift in Sources */,
+				031378C5249A7453005FC49C /* CloseButton.swift in Sources */,
 				035AF3082491A51D004A01B2 /* UIAccessibilityProtocol.swift in Sources */,
 				D5AAF7DF23FB444500E410F2 /* RoundedShadowContainer.swift in Sources */,
 				D535554723E20076005A20EB /* Colors.swift in Sources */,
