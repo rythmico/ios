@@ -59,7 +59,7 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
 
                         self.enablePushNotificationsButtonAction.map {
                             Button("Enable Push Notifications", action: $0)
-                                .secondaryStyle()
+                                .tertiaryStyle(expansive: false)
                                 .transition(
                                     AnyTransition.opacity.combined(with: .move(edge: .bottom))
                                 )
