@@ -125,7 +125,9 @@ private struct DisableableButton<Button: View>: View {
     }
 
     var body: some View {
-        button.opacity(isEnabled ? 1 : 0.3)
+        button
+            .opacity(isEnabled ? 1 : 0.3)
+            .animation(.easeInOut(duration: .durationShort), value: isEnabled)
     }
 }
 
