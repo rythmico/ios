@@ -19,4 +19,14 @@ final class MainTabViewTests: XCTestCase {
             XCTAssertEqual(spy.registerCount, 1)
         }
     }
+
+    func testPresentRequestLessonFlow() throws {
+        let view = try XCTUnwrap(MainTabView())
+
+        XCTAssertView(view) { view in
+            XCTAssertNil(view.lessonRequestView)
+            view.presentRequestLessonFlow()
+            XCTAssertNotNil(view.lessonRequestView)
+        }
+    }
 }

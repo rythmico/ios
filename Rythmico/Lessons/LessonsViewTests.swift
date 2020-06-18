@@ -10,7 +10,8 @@ final class LessonsViewTests: XCTestCase {
     func testInitialState() throws {
         Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(result: .success(.stub))
 
-        let view = try XCTUnwrap(LessonsView())
+        let fetchingCoordinator = try XCTUnwrap(Current.lessonPlanFetchingCoordinator())
+        let view = try XCTUnwrap(LessonsView(coordinator: fetchingCoordinator))
 
         XCTAssertTrue(view.lessonPlans.isEmpty)
         XCTAssertFalse(view.isLoading)
@@ -20,7 +21,8 @@ final class LessonsViewTests: XCTestCase {
     func testLessonPlansLoadingOnAppear() throws {
         Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(result: .success(.stub), delay: 0)
 
-        let view = try XCTUnwrap(LessonsView())
+        let fetchingCoordinator = try XCTUnwrap(Current.lessonPlanFetchingCoordinator())
+        let view = try XCTUnwrap(LessonsView(coordinator: fetchingCoordinator))
 
         XCTAssertView(view) { view in
             XCTAssertTrue(view.lessonPlans.isEmpty)
@@ -32,7 +34,8 @@ final class LessonsViewTests: XCTestCase {
     func testLessonPlansFetching() throws {
         Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(result: .success(.stub))
 
-        let view = try XCTUnwrap(LessonsView())
+        let fetchingCoordinator = try XCTUnwrap(Current.lessonPlanFetchingCoordinator())
+        let view = try XCTUnwrap(LessonsView(coordinator: fetchingCoordinator))
 
         XCTAssertView(view) { view in
             XCTAssertEqual(view.lessonPlans, .stub)
@@ -44,7 +47,8 @@ final class LessonsViewTests: XCTestCase {
     func testLessonPlansFetchingFailure() throws {
         Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(result: .failure("Something"))
 
-        let view = try XCTUnwrap(LessonsView())
+        let fetchingCoordinator = try XCTUnwrap(Current.lessonPlanFetchingCoordinator())
+        let view = try XCTUnwrap(LessonsView(coordinator: fetchingCoordinator))
 
         XCTAssertView(view) { view in
             XCTAssertTrue(view.lessonPlans.isEmpty)
@@ -53,16 +57,6 @@ final class LessonsViewTests: XCTestCase {
 
             view.dismissErrorAlert()
             XCTAssertNil(view.errorMessage)
-        }
-    }
-
-    func testPresentRequestLessonFlow() throws {
-        let view = try XCTUnwrap(LessonsView())
-
-        XCTAssertView(view) { view in
-            XCTAssertNil(view.lessonRequestView)
-            view.presentRequestLessonFlow()
-            XCTAssertNotNil(view.lessonRequestView)
         }
     }
 }
