@@ -4,6 +4,8 @@ struct LessonPlanDetailView: View {
     @Environment(\.presentationMode) private var presentationMode
 
     var lessonPlan: LessonPlan
+    @State
+    var cancellationView: LessonPlanCancellationView?
 
     init(_ lessonPlan: LessonPlan) {
         self.lessonPlan = lessonPlan
@@ -58,10 +60,16 @@ struct LessonPlanDetailView: View {
 
             Spacer()
 
-            // TODO: cancel button
+            ActionList(
+                [.init(title: "Cancel Lesson Plan Request", action: showCancelLessonPlanForm)],
+                showBottomSeparator: false
+            )
+            .foregroundColor(.rythmicoGray90)
+            .rythmicoFont(.body)
         }
-        .padding(.top, .spacingMedium)
+        .padding(.top, .spacingExtraSmall)
         .onEdgeSwipe(.left, perform: back)
+        .betterSheet(item: $cancellationView) { $0 }
         .navigationBarTitle(Text(""), displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackButton(title: "Lessons", action: back))
@@ -75,13 +83,17 @@ struct LessonPlanDetailView: View {
     private func back() {
         presentationMode.wrappedValue.dismiss()
     }
+
+    private func showCancelLessonPlanForm() {
+        cancellationView = LessonPlanCancellationView(lessonPlan: lessonPlan, onSuccessfulCancellation: back)
+    }
 }
 
 #if DEBUG
 struct LessonPlanDetailView_Previews: PreviewProvider {
     static var previews: some View {
         LessonPlanDetailView(.jesseDrumsPlanStub)
-            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+//            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }
 #endif

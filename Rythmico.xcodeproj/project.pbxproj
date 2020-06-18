@@ -11,7 +11,10 @@
 		03021C51248A799200C0C57E /* LessonsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03021C50248A799200C0C57E /* LessonsViewTests.swift */; };
 		03080EEB2466FDD9008715EE /* LessonPlanRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03080EEA2466FDD9008715EE /* LessonPlanRequestService.swift */; };
 		03080EED2466FE21008715EE /* LessonPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03080EEC2466FE21008715EE /* LessonPlan.swift */; };
+		031378C3249A722F005FC49C /* LessonPlanCancellationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031378C2249A722F005FC49C /* LessonPlanCancellationView.swift */; };
 		031378C5249A7453005FC49C /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031378C4249A7453005FC49C /* CloseButton.swift */; };
+		031378C7249A7ADE005FC49C /* LessonPlanCancellationReasonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031378C6249A7ADE005FC49C /* LessonPlanCancellationReasonView.swift */; };
+		031378C9249A7DFF005FC49C /* LessonPlanCancellationPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031378C8249A7DFF005FC49C /* LessonPlanCancellationPromptView.swift */; };
 		032215572497034A009D48A8 /* LessonPlanTutorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032215562497034A009D48A8 /* LessonPlanTutorStatusView.swift */; };
 		03275AD5248FDB38009C3980 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AD4248FDB38009C3980 /* AppEnvironment.swift */; };
 		03275AD7249001E9009C3980 /* UNUserNotificationCenterDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AD6249001E9009C3980 /* UNUserNotificationCenterDoubles.swift */; };
@@ -45,6 +48,8 @@
 		0372E35E249AD7C10048B402 /* LessonPlanCancellationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0372E35D249AD7C10048B402 /* LessonPlanCancellationService.swift */; };
 		0372E360249AD8620048B402 /* LessonPlanCancellationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0372E35F249AD8620048B402 /* LessonPlanCancellationCoordinator.swift */; };
 		0372E362249AD9800048B402 /* LessonPlanCancellationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0372E361249AD9800048B402 /* LessonPlanCancellationServiceDoubles.swift */; };
+		0372E364249ADF8D0048B402 /* LessonPlanCancellationLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0372E363249ADF8D0048B402 /* LessonPlanCancellationLoadingView.swift */; };
+		0372E366249AE3FC0048B402 /* LessonPlanCancellationConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0372E365249AE3FC0048B402 /* LessonPlanCancellationConfirmationView.swift */; };
 		0392A9CF244D09FF001E97AE /* ContentSizeCategory+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0392A9CE244D09FF001E97AE /* ContentSizeCategory+Sugar.swift */; };
 		0392A9D3244D184F001E97AE /* PrivateNoteViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0392A9D0244D181E001E97AE /* PrivateNoteViewTests.swift */; };
 		039C3EB52448A7CD0036959A /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039C3EB42448A7CD0036959A /* Transitions.swift */; };
@@ -260,7 +265,10 @@
 		03021C50248A799200C0C57E /* LessonsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsViewTests.swift; sourceTree = "<group>"; };
 		03080EEA2466FDD9008715EE /* LessonPlanRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanRequestService.swift; sourceTree = "<group>"; };
 		03080EEC2466FE21008715EE /* LessonPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlan.swift; sourceTree = "<group>"; };
+		031378C2249A722F005FC49C /* LessonPlanCancellationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanCancellationView.swift; sourceTree = "<group>"; };
 		031378C4249A7453005FC49C /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
+		031378C6249A7ADE005FC49C /* LessonPlanCancellationReasonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanCancellationReasonView.swift; sourceTree = "<group>"; };
+		031378C8249A7DFF005FC49C /* LessonPlanCancellationPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanCancellationPromptView.swift; sourceTree = "<group>"; };
 		032215562497034A009D48A8 /* LessonPlanTutorStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanTutorStatusView.swift; sourceTree = "<group>"; };
 		03275AD4248FDB38009C3980 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		03275AD6249001E9009C3980 /* UNUserNotificationCenterDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNUserNotificationCenterDoubles.swift; sourceTree = "<group>"; };
@@ -297,6 +305,8 @@
 		0372E35D249AD7C10048B402 /* LessonPlanCancellationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanCancellationService.swift; sourceTree = "<group>"; };
 		0372E35F249AD8620048B402 /* LessonPlanCancellationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanCancellationCoordinator.swift; sourceTree = "<group>"; };
 		0372E361249AD9800048B402 /* LessonPlanCancellationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanCancellationServiceDoubles.swift; sourceTree = "<group>"; };
+		0372E363249ADF8D0048B402 /* LessonPlanCancellationLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanCancellationLoadingView.swift; sourceTree = "<group>"; };
+		0372E365249AE3FC0048B402 /* LessonPlanCancellationConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanCancellationConfirmationView.swift; sourceTree = "<group>"; };
 		0392A9CE244D09FF001E97AE /* ContentSizeCategory+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentSizeCategory+Sugar.swift"; sourceTree = "<group>"; };
 		0392A9D0244D181E001E97AE /* PrivateNoteViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateNoteViewTests.swift; sourceTree = "<group>"; };
 		039C3EB42448A7CD0036959A /* Transitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transitions.swift; sourceTree = "<group>"; };
@@ -584,10 +594,15 @@
 			children = (
 				033D47D0247777100096C50F /* LessonsView.swift */,
 				03021C50248A799200C0C57E /* LessonsViewTests.swift */,
-				03C39DD92496DBC700C76516 /* LessonPlanDetailView.swift */,
 				03021C4E248A769200C0C57E /* LessonPlanSummaryCell.swift */,
 				032215562497034A009D48A8 /* LessonPlanTutorStatusView.swift */,
 				03C39DD72496CA2A00C76516 /* LessonPlanStatusPill.swift */,
+				03C39DD92496DBC700C76516 /* LessonPlanDetailView.swift */,
+				031378C2249A722F005FC49C /* LessonPlanCancellationView.swift */,
+				031378C8249A7DFF005FC49C /* LessonPlanCancellationPromptView.swift */,
+				031378C6249A7ADE005FC49C /* LessonPlanCancellationReasonView.swift */,
+				0372E363249ADF8D0048B402 /* LessonPlanCancellationLoadingView.swift */,
+				0372E365249AE3FC0048B402 /* LessonPlanCancellationConfirmationView.swift */,
 			);
 			path = Lessons;
 			sourceTree = "<group>";
@@ -1336,6 +1351,7 @@
 				D535554723E20076005A20EB /* Colors.swift in Sources */,
 				D53555B923E53699005A20EB /* AuthenticationServiceDoubles.swift in Sources */,
 				03A3F6E52447B7BD00F6391D /* PreviewDevices.swift in Sources */,
+				0372E366249AE3FC0048B402 /* LessonPlanCancellationConfirmationView.swift in Sources */,
 				D50811E423FB72A3008103D8 /* StepBar.swift in Sources */,
 				033D47D324784A3E0096C50F /* LessonPlanFetchingCoordinator.swift in Sources */,
 				D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */,
@@ -1347,6 +1363,7 @@
 				03A3F6EE2447DFF900F6391D /* Animation.swift in Sources */,
 				03B1984524719105005529EB /* RequestLessonPlanLoadingView.swift in Sources */,
 				D5BA171023D7A18900954D50 /* RootView.swift in Sources */,
+				0372E364249ADF8D0048B402 /* LessonPlanCancellationLoadingView.swift in Sources */,
 				D5C23A76240F0186007DED63 /* TestDelegate.swift in Sources */,
 				03080EEB2466FDD9008715EE /* LessonPlanRequestService.swift in Sources */,
 				03EDA6792476F2CB00FBE527 /* ProfileView.swift in Sources */,
@@ -1356,6 +1373,7 @@
 				03B1984E2471B9AA005529EB /* AppDelegate+Window.swift in Sources */,
 				03A094622443D8E1008B4BD6 /* EditingCoordinator.swift in Sources */,
 				03275AE5249071DB009C3980 /* DeviceTokenProvider.swift in Sources */,
+				031378C3249A722F005FC49C /* LessonPlanCancellationView.swift in Sources */,
 				D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */,
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
 				D53555CE23E536AE005A20EB /* AppleAuthorizationControllerDoubles.swift in Sources */,
@@ -1371,6 +1389,7 @@
 				03275AE3249070D5009C3980 /* DeviceRegisterService.swift in Sources */,
 				03A3F6EC2447D3FD00F6391D /* UIScreen+Sugar.swift in Sources */,
 				03C39DD224950BC300C76516 /* AppDelegate+LaunchScreenCache.swift in Sources */,
+				031378C7249A7ADE005FC49C /* LessonPlanCancellationReasonView.swift in Sources */,
 				D53555C523E536AE005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
 				D53555C823E536AE005A20EB /* AppleAuthorizationResponse.swift in Sources */,
 				032215572497034A009D48A8 /* LessonPlanTutorStatusView.swift in Sources */,
@@ -1428,6 +1447,7 @@
 				D5F506BA240637F400CA4094 /* Buttons.swift in Sources */,
 				D53555CC23E536AE005A20EB /* AppleAuthorizationServiceDoubles.swift in Sources */,
 				D5F506BE2406E49A00CA4094 /* EdgeSwipeView.swift in Sources */,
+				031378C9249A7DFF005FC49C /* LessonPlanCancellationPromptView.swift in Sources */,
 				D5AAF7DB23FB347C00E410F2 /* CollectionView.swift in Sources */,
 				D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */,
 				03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */,
