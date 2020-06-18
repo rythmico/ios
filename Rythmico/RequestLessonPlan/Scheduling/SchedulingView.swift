@@ -12,8 +12,6 @@ struct SchedulingView: View, TestableView {
         static let earliestStartTime = Date(timeIntervalSinceReferenceDate: 0).setting(hour: 8) // 08:00
         static let fieldDateFormat = "EEEE d MMMM"
         static let fieldTimeFormat = "H:mm"
-        static let pickerDateFormat = "E d MMM yyyy"
-        static let pickerTimeFormat = "H:mm"
     }
 
     @Environment(\.sizeCategory) var sizeCategory: ContentSizeCategory
