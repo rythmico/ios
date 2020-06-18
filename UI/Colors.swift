@@ -103,7 +103,18 @@ extension UIColor {
     )
 }
 
-extension UIColor {
+extension Color {
+    init(lightModeVariantHex: Int, darkModeVariantHex: Int) {
+        self.init(
+            UIColor(
+                lightModeVariant: UIColor(hex: lightModeVariantHex),
+                darkModeVariant: UIColor(hex: darkModeVariantHex)
+            )
+        )
+    }
+}
+
+private extension UIColor {
     convenience init(lightModeVariant: UIColor, darkModeVariant: UIColor) {
         self.init(dynamicProvider: {
             if $0.userInterfaceStyle == .light {
