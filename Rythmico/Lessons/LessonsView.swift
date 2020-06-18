@@ -47,6 +47,7 @@ struct LessonsView: View, TestableView {
                     selection: self.$selectedLessonPlan,
                     label: { LessonPlanSummaryCell(lessonPlan: lessonPlan) }
                 )
+                .disabled(lessonPlan.status.isCancelled)
                 .transition(self.transition(for: lessonPlan))
             }
             .navigationBarTitle("Lessons", displayMode: .large)
@@ -112,7 +113,7 @@ struct LessonsView_Previews: PreviewProvider {
     static var previews: some View {
         Current.userAuthenticated()
         Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(
-            result: .success(.stub),
+            result: .success([.davidGuitarPlanStub, .cancelledJackGuitarPlanStub]),
 //            result: .failure("Something"),
 //            delay: 2
             delay: nil

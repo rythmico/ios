@@ -41,7 +41,7 @@ private struct CircleImageTitleView: View {
 private extension LessonPlan.Status {
     var image: AnyView {
         switch self {
-        case .pending:
+        case .pending, .cancelled(nil, _):
             return AnyView(
                 Image(systemSymbol: .person)
                     .foregroundColor(.rythmicoGray90)
@@ -56,6 +56,8 @@ private extension LessonPlan.Status {
         switch self {
         case .pending:
             return "Tutor TBC"
+        case .cancelled(nil, _):
+            return "No tutor"
         default:
             return "" // TODO
         }
@@ -65,6 +67,8 @@ private extension LessonPlan.Status {
         switch self {
         case .pending:
             return "Pending tutor applications"
+        case .cancelled(nil, _):
+            return "No tutor was selected"
         default:
             return "" // TODO
         }
