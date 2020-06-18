@@ -124,12 +124,18 @@ struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
         Current.userAuthenticated()
         Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(
-            result: .success(.stub),
-            delay: 2
+//            result: .success(.stub),
+            result: .success([.davidGuitarPlanStub, .cancelledJackGuitarPlanStub]),
+//            delay: 2,
+            delay: nil
         )
 
-        return MainTabView()
-            .environment(\.colorScheme, .dark)
+        return Group {
+            MainTabView()
+                .environment(\.colorScheme, .light)
+            MainTabView()
+                .environment(\.colorScheme, .dark)
+        }
     }
 }
 #endif
