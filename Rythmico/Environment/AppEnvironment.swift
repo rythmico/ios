@@ -5,6 +5,8 @@ import class UserNotifications.UNUserNotificationCenter
 import class FirebaseInstanceID.InstanceID
 
 struct AppEnvironment {
+    var locale: Locale
+
     var keychain: KeychainProtocol
 
     var appleAuthorizationService: AppleAuthorizationServiceProtocol
@@ -72,6 +74,7 @@ extension AppEnvironment {
 
 extension AppEnvironment {
     static let live = AppEnvironment(
+        locale: .autoupdatingCurrent,
         keychain: Keychain.localKeychain,
         appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
         appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
