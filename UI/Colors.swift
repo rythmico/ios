@@ -10,7 +10,6 @@ extension Color {
 
     static let rythmicoWhite = Color(.rythmicoWhite)
 
-    static let rythmicoGray5 = Color(.rythmicoGray5)
     static let rythmicoGray10 = Color(.rythmicoGray10)
     static let rythmicoGray20 = Color(.rythmicoGray20)
     static let rythmicoGray30 = Color(.rythmicoGray30)
@@ -50,11 +49,6 @@ extension UIColor {
     static let rythmicoWhite = UIColor(
         lightModeVariant: .white,
         darkModeVariant: .rythmicoForegroundDarkModeVariant
-    )
-
-    static let rythmicoGray5 = UIColor(
-        lightModeVariant: .init(hex: 0xF8F8F8),
-        darkModeVariant: .init(hex: 0x181818)
     )
 
     static let rythmicoGray10 = UIColor(
@@ -107,6 +101,17 @@ extension UIColor {
         lightModeVariant: .init(base256Red: 246, green: 246, blue: 246),
         darkModeVariant: .init(base256Red: 40, green: 40, blue: 41)
     )
+}
+
+extension Color {
+    init(lightModeVariantHex: Int, darkModeVariantHex: Int) {
+        self.init(
+            UIColor(
+                lightModeVariant: UIColor(hex: lightModeVariantHex),
+                darkModeVariant: UIColor(hex: darkModeVariantHex)
+            )
+        )
+    }
 }
 
 private extension UIColor {

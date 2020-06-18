@@ -39,7 +39,7 @@ private extension LessonPlan.Status {
         case .scheduled:
             return .clear
         case .cancelled:
-            return .rythmicoGray90
+            return Color(lightModeVariantHex: 0x111619, darkModeVariantHex: 0x9fa1a3)
         }
     }
 
@@ -52,7 +52,7 @@ private extension LessonPlan.Status {
         case .scheduled:
             return .clear
         case .cancelled:
-            return .rythmicoGray10
+            return Color(lightModeVariantHex: 0xDDE1E6, darkModeVariantHex: 0x424345)
         }
     }
 }
