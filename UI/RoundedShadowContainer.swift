@@ -12,7 +12,7 @@ struct RoundedShadowContainer: ViewModifier {
     func body(content: Content) -> some View {
         content
             .background(background)
-            .opacity(isEnabled ? 1 : 0.7)
+            .opacity(isEnabled ? 1 : 0.75)
     }
 
     private var background: some View {
@@ -24,7 +24,11 @@ struct RoundedShadowContainer: ViewModifier {
                 ? AnyView(base.shadow(color: Color(white: 0, opacity: 0.14), radius: 5, x: 0, y: 2))
                 : AnyView(base.overlay(shape.stroke(Color.rythmicoGray20, lineWidth: 1)))
         case false:
-            return AnyView(shape.fill(Color.rythmicoGray5))
+            return AnyView(shape.fill(disabledBackgroundColor))
         }
+    }
+
+    private var disabledBackgroundColor: Color {
+        Color(lightModeVariantHex: 0xF4F4F4, darkModeVariantHex: 0x242424)
     }
 }

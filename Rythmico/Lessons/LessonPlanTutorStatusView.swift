@@ -12,6 +12,7 @@ struct LessonPlanTutorStatusView: View {
     var body: some View {
         CircleImageTitleView(
             image: status.image,
+            imageBackgroundColor: status.imageBackgroundColor,
             title: summarized ? status.summarizedTitle : status.title,
             bold: !summarized
         )
@@ -20,6 +21,7 @@ struct LessonPlanTutorStatusView: View {
 
 private struct CircleImageTitleView: View {
     var image: AnyView
+    var imageBackgroundColor: Color
     var title: String
     var bold: Bool
 
@@ -27,7 +29,7 @@ private struct CircleImageTitleView: View {
         HStack(spacing: .spacingExtraSmall) {
             image
                 .frame(width: 32, height: 32)
-                .background(Color.rythmicoGray10.clipShape(Circle()))
+                .background(imageBackgroundColor.clipShape(Circle()))
             Text(title)
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
@@ -49,6 +51,15 @@ private extension LessonPlan.Status {
             )
         default:
             return AnyView(Image(systemSymbol: .personFill)) // TODO
+        }
+    }
+
+    var imageBackgroundColor: Color {
+        switch self {
+        case .cancelled(nil, _):
+            return Color(lightModeVariantHex: 0xDDE1E6, darkModeVariantHex: 0x424345)
+        default:
+            return .rythmicoGray10
         }
     }
 
