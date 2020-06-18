@@ -1,8 +1,6 @@
 import SwiftUI
 import Sugar
 
-typealias RequestLessonPlanFailureView = Alert
-
 struct RequestLessonPlanView: View, Identifiable, TestableView {
     @ObservedObject
     private(set) var coordinator: LessonPlanRequestCoordinator
