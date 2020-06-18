@@ -3,9 +3,12 @@ import SFSafeSymbols
 import Sugar
 
 struct MainTabView: View, TestableView {
-    enum TabSelection: Hashable {
-        case lessons
-        case profile
+    enum TabSelection: String, Hashable {
+        case lessons = "Lessons"
+        case profile = "Profile"
+
+        var title: String { rawValue }
+        var uppercasedTitle: String { title.uppercased(with: Current.locale) }
     }
 
     final class ViewState: ObservableObject {
@@ -18,44 +21,101 @@ struct MainTabView: View, TestableView {
     private let lessonsView: LessonsView
     private let profileView: ProfileView = ProfileView()
 
+    @State
+    private(set) var lessonRequestView: RequestLessonPlanView?
+
+    @ObservedObject
+    private var lessonPlanFetchingCoordinator: LessonPlanFetchingCoordinator
     private let deviceRegisterCoordinator: DeviceRegisterCoordinator
 
     init?() {
         guard
-            let lessonsView = LessonsView(),
+            let lessonPlanFetchingCoordinator = Current.lessonPlanFetchingCoordinator(),
             let deviceRegisterCoordinator = Current.deviceRegisterCoordinator()
         else {
             return nil
         }
-        self.lessonsView = lessonsView
+        self.lessonsView = LessonsView(coordinator: lessonPlanFetchingCoordinator)
+        self.lessonPlanFetchingCoordinator = lessonPlanFetchingCoordinator
         self.deviceRegisterCoordinator = deviceRegisterCoordinator
+    }
+
+    func presentRequestLessonFlow() {
+        lessonRequestView = RequestLessonPlanView(context: RequestLessonPlanContext())
     }
 
     var onAppear: Handler<Self>?
     var body: some View {
-        TabView(selection: $state.tabSelection) {
-            lessonsView
-                .tag(TabSelection.lessons)
-                .tabItem {
-                    Image(systemSymbol: .calendar).font(.system(size: 21, weight: .medium))
-                    Text("LESSONS")
-                }
+        NavigationView {
+            TabView(selection: $state.tabSelection) {
+                lessonsView
+                    .tag(TabSelection.lessons)
+                    .tabItem {
+                        Image(systemSymbol: .calendar).font(.system(size: 21, weight: .medium))
+                        Text(TabSelection.lessons.uppercasedTitle)
+                    }
 
-            profileView
-                .tag(TabSelection.profile)
-                .tabItem {
-                    Image(systemSymbol: .person).font(.system(size: 21, weight: .semibold))
-                    Text("PROFILE")
-                }
+                profileView
+                    .tag(TabSelection.profile)
+                    .tabItem {
+                        Image(systemSymbol: .person).font(.system(size: 21, weight: .semibold))
+                        Text(TabSelection.profile.uppercasedTitle)
+                    }
+            }
+            .navigationBarTitle(Text(state.tabSelection.title), displayMode: .large)
+            .navigationBarItems(leading: leadingNavigationItem, trailing: trailingNavigationItem)
         }
+        .modifier(BestNavigationStyleModifier())
         .onReceive(state.$tabSelection) { tabSelection in
             if self.state.tabSelection == .profile, tabSelection == .lessons {
                 self.lessonsView.fetchLessonPlans()
             }
         }
         .accentColor(.rythmicoPurple)
+        .betterSheet(item: $lessonRequestView, content: { $0 })
         .onAppear { self.onAppear?(self) }
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
+    }
+
+    private var leadingNavigationItem: AnyView? {
+        switch state.tabSelection {
+        case .lessons:
+            return AnyView(
+                Group {
+                    if lessonPlanFetchingCoordinator.state.isLoading {
+                        ActivityIndicator(style: .medium, color: .rythmicoGray90)
+                    }
+                }
+            )
+        case .profile:
+            return nil
+        }
+    }
+
+    private var trailingNavigationItem: AnyView? {
+        switch state.tabSelection {
+        case .lessons:
+            return AnyView(
+                Button(action: presentRequestLessonFlow) {
+                    Image(systemSymbol: .plusCircleFill).font(.system(size: 24))
+                        .padding(.vertical, .spacingExtraSmall)
+                        .padding(.horizontal, .spacingExtraLarge)
+                        .offset(x: .spacingExtraLarge)
+                }
+                .accessibility(label: Text("Request lessons"))
+                .accessibility(hint: Text("Double tap to request a lesson plan"))
+            )
+        case .profile:
+            return nil
+        }
+    }
+}
+
+private struct BestNavigationStyleModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        UIDevice.current.userInterfaceIdiom == .phone
+            ? AnyView(content.navigationViewStyle(StackNavigationViewStyle()))
+            : AnyView(content.navigationViewStyle(DefaultNavigationViewStyle()))
     }
 }
 
@@ -69,6 +129,7 @@ struct MainTabView_Previews: PreviewProvider {
         )
 
         return MainTabView()
+            .environment(\.colorScheme, .dark)
     }
 }
 #endif

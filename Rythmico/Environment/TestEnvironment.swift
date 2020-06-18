@@ -30,6 +30,7 @@ extension AppEnvironment {
 extension AppEnvironment {
     static var dummy: AppEnvironment {
         AppEnvironment(
+            locale: Locale(identifier: "en_GB"),
             keychain: KeychainDummy(),
             appleAuthorizationService: AppleAuthorizationServiceDummy(),
             appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcherDummy(),

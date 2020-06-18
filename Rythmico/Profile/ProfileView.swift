@@ -32,38 +32,35 @@ struct ProfileView: View, TestableView {
 
     var onAppear: Handler<Self>?
     var body: some View {
-        NavigationView {
-            Form {
-                Section(header: header("Notifications")) {
-                    cell(
-                        "Push Notifications",
-                        disclosure: enablePushNotificationsAction == nil,
-                        action: goToPushNotificationsSettingsAction
-                    ) {
-                        enablePushNotificationsAction.map {
-                            Toggle("", isOn: .constant(notificationAuthorizationCoordinator.status.isAuthorizing))
-                                .onTapGesture(perform: $0)
-                        }
+        Form {
+            Section(header: header("Notifications")) {
+                cell(
+                    "Push Notifications",
+                    disclosure: enablePushNotificationsAction == nil,
+                    action: goToPushNotificationsSettingsAction
+                ) {
+                    enablePushNotificationsAction.map {
+                        Toggle("", isOn: .constant(notificationAuthorizationCoordinator.status.isAuthorizing))
+                            .onTapGesture(perform: $0)
                     }
-                }
-                Section {
-                    Button(action: logOut) {
-                        HStack(alignment: .center) {
-                            Text("Log out")
-                                .rythmicoFont(.body)
-                                .foregroundColor(.rythmicoRed)
-                                .frame(maxWidth: .infinity)
-                                .multilineTextAlignment(.center)
-                        }
-                    }
-                    .frame(minHeight: 35)
-                    .accessibility(hint: Text("Double tap to log out of your account"))
                 }
             }
-            .alert(error: self.errorMessage, dismiss: notificationAuthorizationCoordinator.dismissFailure)
-            .navigationBarTitle(Text("Profile"), displayMode: .large)
-            .onAppear { self.onAppear?(self) }
+            Section {
+                Button(action: logOut) {
+                    HStack(alignment: .center) {
+                        Text("Log out")
+                            .rythmicoFont(.body)
+                            .foregroundColor(.rythmicoRed)
+                            .frame(maxWidth: .infinity)
+                            .multilineTextAlignment(.center)
+                    }
+                }
+                .frame(minHeight: 35)
+                .accessibility(hint: Text("Double tap to log out of your account"))
+            }
         }
+        .alert(error: self.errorMessage, dismiss: notificationAuthorizationCoordinator.dismissFailure)
+        .onAppear { self.onAppear?(self) }
     }
 
     private func header(_ title: String) -> some View {
