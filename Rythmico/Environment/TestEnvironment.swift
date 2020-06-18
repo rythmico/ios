@@ -14,6 +14,7 @@ extension AppEnvironment {
             $0.instrumentSelectionListProvider = InstrumentSelectionListProviderStub(instruments: Instrument.allCases)
             $0.addressSearchService = AddressSearchServiceStub(result: .success([.stub]), delay: 1)
             $0.lessonPlanRequestService = LessonPlanRequestServiceStub(result: .success(.davidGuitarPlanStub), delay: 2)
+            $0.lessonPlanCancellationService = LessonPlanCancellationServiceStub(result: .success(.cancelledJackGuitarPlanStub), delay: 2)
             $0.pushNotificationAuthorizationCoordinator = PushNotificationAuthorizationCoordinator(
                 center: UNUserNotificationCenterStub(
                     authorizationStatus: .notDetermined,
@@ -40,6 +41,7 @@ extension AppEnvironment {
             addressSearchService: AddressSearchServiceDummy(),
             lessonPlanFetchingService: LessonPlanFetchingServiceDummy(),
             lessonPlanRequestService: LessonPlanRequestServiceDummy(),
+            lessonPlanCancellationService: LessonPlanCancellationServiceDummy(),
             lessonPlanRepository: LessonPlanRepository(),
             deviceTokenProvider: DeviceTokenProviderDummy(),
             deviceRegisterService: DeviceRegisterServiceDummy(),

@@ -11,7 +11,7 @@ public func XCTAssertView<TV: TestableView>(
     let expectation = XCTestExpectation(description: message)
     var view = view
 
-    view.didAppear = { view in
+    view.onAppear = { view in
         assertion(view)
         expectation.fulfill()
     }

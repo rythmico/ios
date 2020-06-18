@@ -30,7 +30,7 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
 
     var errorMessage: String? { notificationAuthorizationCoordinator.status.failedValue?.localizedDescription }
 
-    var didAppear: Handler<Self>?
+    var onAppear: Handler<Self>?
     var body: some View {
         VStack(spacing: 0) {
             GeometryReader { geometry in
@@ -59,7 +59,7 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
 
                         self.enablePushNotificationsButtonAction.map {
                             Button("Enable Push Notifications", action: $0)
-                                .secondaryStyle()
+                                .tertiaryStyle(expansive: false)
                                 .transition(
                                     AnyTransition.opacity.combined(with: .move(edge: .bottom))
                                 )
@@ -78,7 +78,7 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: enablePushNotificationsButtonAction != nil)
         .alert(error: self.errorMessage, dismiss: notificationAuthorizationCoordinator.dismissFailure)
-        .onAppear { self.didAppear?(self) }
+        .onAppear { self.onAppear?(self) }
         .onAppear(perform: notificationAuthorizationCoordinator.refreshAuthorizationStatus)
     }
 

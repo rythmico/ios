@@ -108,7 +108,7 @@ struct StudentDetailsView: View, TestableView {
     }
 
     // MARK: - Body -
-    var didAppear: Handler<Self>?
+    var onAppear: Handler<Self>?
     var body: some View {
         TitleSubtitleContentView(title: "Student Details", subtitle: subtitle) {
             VStack(spacing: 0) {
@@ -175,7 +175,7 @@ struct StudentDetailsView: View, TestableView {
             .animation(.rythmicoSpring(duration: .durationShort), value: nextButtonAction != nil)
         }
         .animation(.easeInOut(duration: .durationMedium), value: editingFocus)
-        .onAppear { self.didAppear?(self) }
+        .onAppear { self.onAppear?(self) }
     }
 
     func textFieldEditingChanged(_ isEditing: Bool) {

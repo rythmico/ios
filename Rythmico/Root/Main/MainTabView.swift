@@ -8,8 +8,12 @@ struct MainTabView: View, TestableView {
         case profile
     }
 
-    @State
-    private var tabSelection: TabSelection = .lessons
+    final class ViewState: ObservableObject {
+        @Published var tabSelection: TabSelection = .lessons
+    }
+
+    @ObservedObject
+    private var state = ViewState()
 
     private let lessonsView: LessonsView
     private let profileView: ProfileView = ProfileView()
@@ -27,9 +31,9 @@ struct MainTabView: View, TestableView {
         self.deviceRegisterCoordinator = deviceRegisterCoordinator
     }
 
-    var didAppear: Handler<Self>?
+    var onAppear: Handler<Self>?
     var body: some View {
-        TabView(selection: $tabSelection) {
+        TabView(selection: $state.tabSelection) {
             lessonsView
                 .tag(TabSelection.lessons)
                 .tabItem {
@@ -44,8 +48,13 @@ struct MainTabView: View, TestableView {
                     Text("PROFILE")
                 }
         }
+        .onReceive(state.$tabSelection) { tabSelection in
+            if self.state.tabSelection == .profile, tabSelection == .lessons {
+                self.lessonsView.fetchLessonPlans()
+            }
+        }
         .accentColor(.rythmicoPurple)
-        .onAppear { self.didAppear?(self) }
+        .onAppear { self.onAppear?(self) }
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
     }
 }

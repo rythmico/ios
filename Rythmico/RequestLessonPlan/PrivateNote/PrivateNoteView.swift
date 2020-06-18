@@ -55,7 +55,7 @@ struct PrivateNoteView: View, TestableView {
         }
     }
 
-    var didAppear: Handler<Self>?
+    var onAppear: Handler<Self>?
     var body: some View {
         TitleSubtitleContentView(title: "Private Note", subtitle: subtitle) {
             VStack(spacing: 0) {
@@ -81,7 +81,7 @@ struct PrivateNoteView: View, TestableView {
             }
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: editingFocus)
-        .onAppear { self.didAppear?(self) }
+        .onAppear { self.onAppear?(self) }
     }
 
     func noteEditingChanged(_ isEditing: Bool) {
