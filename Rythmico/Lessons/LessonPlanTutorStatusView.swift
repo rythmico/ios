@@ -57,12 +57,7 @@ private extension LessonPlan.Status {
     var imageBackgroundColor: Color {
         switch self {
         case .cancelled(nil, _):
-            return Color(
-                UIColor(
-                    lightModeVariant: .init(hex: 0xDDE1E6),
-                    darkModeVariant: .init(hex: 0x424345)
-                )
-            )
+            return Color(lightModeVariantHex: 0xDDE1E6, darkModeVariantHex: 0x424345)
         default:
             return .rythmicoGray10
         }

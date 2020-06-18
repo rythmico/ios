@@ -29,11 +29,6 @@ struct RoundedShadowContainer: ViewModifier {
     }
 
     private var disabledBackgroundColor: Color {
-        Color(
-            UIColor(
-                lightModeVariant: .init(hex: 0xF4F4F4),
-                darkModeVariant: .init(hex: 0x242424)
-            )
-        )
+        Color(lightModeVariantHex: 0xF4F4F4, darkModeVariantHex: 0x242424)
     }
 }
