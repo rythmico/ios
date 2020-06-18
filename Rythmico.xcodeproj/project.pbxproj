@@ -110,6 +110,9 @@
 		03C39DD62496802500C76516 /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DD52496802500C76516 /* Pill.swift */; };
 		03C39DD82496CA2A00C76516 /* LessonPlanStatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DD72496CA2A00C76516 /* LessonPlanStatusPill.swift */; };
 		03C39DDA2496DBC700C76516 /* LessonPlanDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DD92496DBC700C76516 /* LessonPlanDetailView.swift */; };
+		03D932F2249C096B003416DC /* LessonPlanDetailViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D932F1249C096B003416DC /* LessonPlanDetailViewTests.swift */; };
+		03D932F4249C0A71003416DC /* LessonPlanCancellationViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D932F3249C0A71003416DC /* LessonPlanCancellationViewTests.swift */; };
+		03D932F6249C0C56003416DC /* LessonPlanCancellationReasonViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D932F5249C0C56003416DC /* LessonPlanCancellationReasonViewTests.swift */; };
 		03EDA6792476F2CB00FBE527 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA6782476F2CB00FBE527 /* ProfileView.swift */; };
 		03EDA67B2477695900FBE527 /* ProfileViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67A2477695900FBE527 /* ProfileViewTests.swift */; };
 		03EDA67D24776C6C00FBE527 /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67C24776C6C00FBE527 /* URLOpener.swift */; };
@@ -366,6 +369,9 @@
 		03C39DD52496802500C76516 /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
 		03C39DD72496CA2A00C76516 /* LessonPlanStatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanStatusPill.swift; sourceTree = "<group>"; };
 		03C39DD92496DBC700C76516 /* LessonPlanDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanDetailView.swift; sourceTree = "<group>"; };
+		03D932F1249C096B003416DC /* LessonPlanDetailViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanDetailViewTests.swift; sourceTree = "<group>"; };
+		03D932F3249C0A71003416DC /* LessonPlanCancellationViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanCancellationViewTests.swift; sourceTree = "<group>"; };
+		03D932F5249C0C56003416DC /* LessonPlanCancellationReasonViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanCancellationReasonViewTests.swift; sourceTree = "<group>"; };
 		03EDA6782476F2CB00FBE527 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		03EDA67A2477695900FBE527 /* ProfileViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewTests.swift; sourceTree = "<group>"; };
 		03EDA67C24776C6C00FBE527 /* URLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
@@ -612,9 +618,12 @@
 				032215562497034A009D48A8 /* LessonPlanTutorStatusView.swift */,
 				03C39DD72496CA2A00C76516 /* LessonPlanStatusPill.swift */,
 				03C39DD92496DBC700C76516 /* LessonPlanDetailView.swift */,
+				03D932F1249C096B003416DC /* LessonPlanDetailViewTests.swift */,
 				031378C2249A722F005FC49C /* LessonPlanCancellationView.swift */,
+				03D932F3249C0A71003416DC /* LessonPlanCancellationViewTests.swift */,
 				031378C8249A7DFF005FC49C /* LessonPlanCancellationPromptView.swift */,
 				031378C6249A7ADE005FC49C /* LessonPlanCancellationReasonView.swift */,
+				03D932F5249C0C56003416DC /* LessonPlanCancellationReasonViewTests.swift */,
 				0372E363249ADF8D0048B402 /* LessonPlanCancellationLoadingView.swift */,
 				0372E365249AE3FC0048B402 /* LessonPlanCancellationConfirmationView.swift */,
 			);
@@ -1530,6 +1539,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03D932F6249C0C56003416DC /* LessonPlanCancellationReasonViewTests.swift in Sources */,
 				D535553823E116C9005A20EB /* RootViewTests.swift in Sources */,
 				D5C23A74240EFDCB007DED63 /* MainTabViewTests.swift in Sources */,
 				03306F74247347570074AA98 /* RequestLessonPlanViewTests.swift in Sources */,
@@ -1545,8 +1555,10 @@
 				03BB5C9A24733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift in Sources */,
 				D50811E623FB769D008103D8 /* RequestLessonPlanFormViewTests.swift in Sources */,
 				03AAF6752445E16A002D8F5B /* SchedulingViewTests.swift in Sources */,
+				03D932F2249C096B003416DC /* LessonPlanDetailViewTests.swift in Sources */,
 				D53555C123E536A6005A20EB /* AuthenticationAccessTokenProviderObserverTests.swift in Sources */,
 				D53555D023E536B5005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift in Sources */,
+				03D932F4249C0A71003416DC /* LessonPlanCancellationViewTests.swift in Sources */,
 				D50811EA23FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -2,15 +2,17 @@ import SwiftUI
 import Sugar
 
 extension LessonPlanCancellationView {
-    struct ReasonView: View {
+    struct ReasonView: View, TestableView {
         typealias Reason = LessonPlan.CancellationInfo.Reason
-        @State
-        var selectedReason: Reason?
-        var submitHandler: Handler<Reason>
+
+        private var submitHandler: Handler<Reason>
 
         init(submitHandler: @escaping Handler<Reason>) {
             self.submitHandler = submitHandler
         }
+
+        @State
+        var selectedReason: Reason?
 
         var submitButtonAction: Action? {
             selectedReason.map { reason in
@@ -18,6 +20,7 @@ extension LessonPlanCancellationView {
             }
         }
 
+        var onAppear: Handler<Self>?
         var body: some View {
             VStack(spacing: 0) {
                 VStack(spacing: .spacingUnit * 9) {
@@ -43,6 +46,7 @@ extension LessonPlanCancellationView {
                 }
             }
             .betterSheetIsModalInPresentation(true)
+            .onAppear { self.onAppear?(self) }
         }
     }
 }

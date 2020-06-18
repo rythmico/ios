@@ -1,11 +1,12 @@
 import SwiftUI
+import Sugar
 
-struct LessonPlanDetailView: View {
+struct LessonPlanDetailView: View, TestableView {
     @Environment(\.presentationMode) private var presentationMode
 
     var lessonPlan: LessonPlan
     @State
-    var cancellationView: LessonPlanCancellationView?
+    private(set) var cancellationView: LessonPlanCancellationView?
 
     init(_ lessonPlan: LessonPlan) {
         self.lessonPlan = lessonPlan
@@ -18,6 +19,11 @@ struct LessonPlanDetailView: View {
         ].compactMap { $0 }.joined(separator: " - ")
     }
 
+    func showCancelLessonPlanForm() {
+        cancellationView = LessonPlanCancellationView(lessonPlan: lessonPlan, onSuccessfulCancellation: back)
+    }
+
+    var onAppear: Handler<Self>?
     var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: .spacingExtraLarge) {
@@ -73,6 +79,7 @@ struct LessonPlanDetailView: View {
         .navigationBarTitle(Text(""), displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackButton(title: "Lessons", action: back))
+        .onAppear { self.onAppear?(self) }
     }
 
     private let startDateFormatter = DateFormatter().then { $0.dateFormat = "d MMMM @ ha" }
@@ -82,10 +89,6 @@ struct LessonPlanDetailView: View {
 
     private func back() {
         presentationMode.wrappedValue.dismiss()
-    }
-
-    private func showCancelLessonPlanForm() {
-        cancellationView = LessonPlanCancellationView(lessonPlan: lessonPlan, onSuccessfulCancellation: back)
     }
 }
 

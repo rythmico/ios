@@ -21,6 +21,16 @@ final class LessonPlanCancellationServiceStub: LessonPlanCancellationServiceProt
     }
 }
 
+final class LessonPlanCancellationServiceSpy: LessonPlanCancellationServiceProtocol {
+    var latestRequestLessonPlanId: String?
+    var latestRequestReason: Reason?
+
+    func cancelLessonPlan(accessToken: String, lessonPlanId: String, reason: Reason, completion: @escaping CompletionHandler) {
+        latestRequestLessonPlanId = lessonPlanId
+        latestRequestReason = reason
+    }
+}
+
 final class LessonPlanCancellationServiceDummy: LessonPlanCancellationServiceProtocol {
     func cancelLessonPlan(accessToken: String, lessonPlanId: String, reason: Reason, completion: @escaping CompletionHandler) {}
 }
