@@ -20,6 +20,7 @@ struct AppEnvironment {
 
     var lessonPlanFetchingService: LessonPlanFetchingServiceProtocol
     var lessonPlanRequestService: LessonPlanRequestServiceProtocol
+    var lessonPlanCancellationService: LessonPlanCancellationServiceProtocol
     var lessonPlanRepository: LessonPlanRepository
 
     var deviceTokenProvider: DeviceTokenProvider
@@ -52,6 +53,12 @@ extension AppEnvironment {
         }
     }
 
+    func lessonPlanCancellationCoordinator() -> LessonPlanCancellationCoordinator? {
+        accessTokenProviderObserver.currentProvider.map {
+            LessonPlanCancellationCoordinator(accessTokenProvider: $0, service: lessonPlanCancellationService, repository: lessonPlanRepository)
+        }
+    }
+
     func deviceRegisterCoordinator() -> DeviceRegisterCoordinator? {
         accessTokenProviderObserver.currentProvider.map {
             DeviceRegisterCoordinator(accessTokenProvider: $0, deviceTokenProvider: deviceTokenProvider, service: deviceRegisterService)
@@ -78,6 +85,7 @@ extension AppEnvironment {
         addressSearchService: AddressSearchService(),
         lessonPlanFetchingService: LessonPlanFetchingService(),
         lessonPlanRequestService: LessonPlanRequestService(),
+        lessonPlanCancellationService: LessonPlanCancellationService(),
         lessonPlanRepository: LessonPlanRepository(),
         deviceTokenProvider: InstanceID.instanceID(),
         deviceRegisterService: DeviceRegisterService(),
