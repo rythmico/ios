@@ -1,7 +1,7 @@
 import SwiftUI
 import Sugar
 
-struct LessonPlanCancellationView: View, Identifiable {
+struct LessonPlanCancellationView: View, TestableView, Identifiable {
     @Environment(\.betterSheetPresentationMode)
     private var presentationMode
 
@@ -27,6 +27,11 @@ struct LessonPlanCancellationView: View, Identifiable {
         coordinator.state.failureValue?.localizedDescription
     }
 
+    func submit(_ reason: LessonPlan.CancellationInfo.Reason) {
+        coordinator.cancelLessonPlan(lessonPlan, reason: reason)
+    }
+
+    var onAppear: Handler<Self>?
     var body: some View {
         NavigationView {
             ZStack {
@@ -72,6 +77,7 @@ struct LessonPlanCancellationView: View, Identifiable {
         .accentColor(.rythmicoGray90)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isCancellationIntended)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isUserInputRequired)
+        .onAppear { self.onAppear?(self) }
     }
 
     private var isUserInputRequired: Bool {
@@ -97,10 +103,6 @@ struct LessonPlanCancellationView: View, Identifiable {
 
     private func back() {
         isCancellationIntended = false
-    }
-
-    private func submit(_ reason: LessonPlan.CancellationInfo.Reason) {
-        coordinator.cancelLessonPlan(lessonPlan, reason: reason)
     }
 }
 

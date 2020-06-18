@@ -6,6 +6,20 @@
 	objectVersion = 52;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		03D932EC249C0278003416DC /* Periphery */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 03D932EF249C0278003416DC /* Build configuration list for PBXAggregateTarget "Periphery" */;
+			buildPhases = (
+				03D932F0249C0285003416DC /* Periphery */,
+			);
+			dependencies = (
+			);
+			name = Periphery;
+			productName = Periphery;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		03021C4F248A769200C0C57E /* LessonPlanSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03021C4E248A769200C0C57E /* LessonPlanSummaryCell.swift */; };
 		03021C51248A799200C0C57E /* LessonsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03021C50248A799200C0C57E /* LessonsViewTests.swift */; };
@@ -96,6 +110,9 @@
 		03C39DD62496802500C76516 /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DD52496802500C76516 /* Pill.swift */; };
 		03C39DD82496CA2A00C76516 /* LessonPlanStatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DD72496CA2A00C76516 /* LessonPlanStatusPill.swift */; };
 		03C39DDA2496DBC700C76516 /* LessonPlanDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DD92496DBC700C76516 /* LessonPlanDetailView.swift */; };
+		03D932F2249C096B003416DC /* LessonPlanDetailViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D932F1249C096B003416DC /* LessonPlanDetailViewTests.swift */; };
+		03D932F4249C0A71003416DC /* LessonPlanCancellationViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D932F3249C0A71003416DC /* LessonPlanCancellationViewTests.swift */; };
+		03D932F6249C0C56003416DC /* LessonPlanCancellationReasonViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D932F5249C0C56003416DC /* LessonPlanCancellationReasonViewTests.swift */; };
 		03EDA6792476F2CB00FBE527 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA6782476F2CB00FBE527 /* ProfileView.swift */; };
 		03EDA67B2477695900FBE527 /* ProfileViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67A2477695900FBE527 /* ProfileViewTests.swift */; };
 		03EDA67D24776C6C00FBE527 /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67C24776C6C00FBE527 /* URLOpener.swift */; };
@@ -352,6 +369,9 @@
 		03C39DD52496802500C76516 /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
 		03C39DD72496CA2A00C76516 /* LessonPlanStatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanStatusPill.swift; sourceTree = "<group>"; };
 		03C39DD92496DBC700C76516 /* LessonPlanDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanDetailView.swift; sourceTree = "<group>"; };
+		03D932F1249C096B003416DC /* LessonPlanDetailViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanDetailViewTests.swift; sourceTree = "<group>"; };
+		03D932F3249C0A71003416DC /* LessonPlanCancellationViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanCancellationViewTests.swift; sourceTree = "<group>"; };
+		03D932F5249C0C56003416DC /* LessonPlanCancellationReasonViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanCancellationReasonViewTests.swift; sourceTree = "<group>"; };
 		03EDA6782476F2CB00FBE527 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		03EDA67A2477695900FBE527 /* ProfileViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewTests.swift; sourceTree = "<group>"; };
 		03EDA67C24776C6C00FBE527 /* URLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
@@ -598,9 +618,12 @@
 				032215562497034A009D48A8 /* LessonPlanTutorStatusView.swift */,
 				03C39DD72496CA2A00C76516 /* LessonPlanStatusPill.swift */,
 				03C39DD92496DBC700C76516 /* LessonPlanDetailView.swift */,
+				03D932F1249C096B003416DC /* LessonPlanDetailViewTests.swift */,
 				031378C2249A722F005FC49C /* LessonPlanCancellationView.swift */,
+				03D932F3249C0A71003416DC /* LessonPlanCancellationViewTests.swift */,
 				031378C8249A7DFF005FC49C /* LessonPlanCancellationPromptView.swift */,
 				031378C6249A7ADE005FC49C /* LessonPlanCancellationReasonView.swift */,
+				03D932F5249C0C56003416DC /* LessonPlanCancellationReasonViewTests.swift */,
 				0372E363249ADF8D0048B402 /* LessonPlanCancellationLoadingView.swift */,
 				0372E365249AE3FC0048B402 /* LessonPlanCancellationConfirmationView.swift */,
 			);
@@ -1181,6 +1204,9 @@
 					03341B3A23ABB1E7009AE8A8 = {
 						CreatedOnToolsVersion = 11.2.1;
 					};
+					03D932EC249C0278003416DC = {
+						CreatedOnToolsVersion = 11.6;
+					};
 					D53554F423E0FD77005A20EB = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
@@ -1216,6 +1242,7 @@
 				03341B3A23ABB1E7009AE8A8 /* Rythmico */,
 				D535552A23E10557005A20EB /* RythmicoTests */,
 				D53554F423E0FD77005A20EB /* Sugar */,
+				03D932EC249C0278003416DC /* Periphery */,
 			);
 		};
 /* End PBXProject section */
@@ -1251,6 +1278,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		03D932F0249C0285003416DC /* Periphery */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Periphery;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if ! which periphery >/dev/null; then\n    brew tap peripheryapp/periphery\n    brew cask install periphery\nfi\n\nperiphery scan \\\n    --project \"Rythmico.xcodeproj\" \\\n    --schemes \"Rythmico\" \\\n    --targets \"Rythmico\",\"Sugar\" \\\n    --retain-objc-annotated \\\n    --retain-public\n";
+		};
 		D509898123B9B2E400C19300 /* Select GoogleService-Info.plist */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1494,6 +1539,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03D932F6249C0C56003416DC /* LessonPlanCancellationReasonViewTests.swift in Sources */,
 				D535553823E116C9005A20EB /* RootViewTests.swift in Sources */,
 				D5C23A74240EFDCB007DED63 /* MainTabViewTests.swift in Sources */,
 				03306F74247347570074AA98 /* RequestLessonPlanViewTests.swift in Sources */,
@@ -1509,8 +1555,10 @@
 				03BB5C9A24733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift in Sources */,
 				D50811E623FB769D008103D8 /* RequestLessonPlanFormViewTests.swift in Sources */,
 				03AAF6752445E16A002D8F5B /* SchedulingViewTests.swift in Sources */,
+				03D932F2249C096B003416DC /* LessonPlanDetailViewTests.swift in Sources */,
 				D53555C123E536A6005A20EB /* AuthenticationAccessTokenProviderObserverTests.swift in Sources */,
 				D53555D023E536B5005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift in Sources */,
+				03D932F4249C0A71003416DC /* LessonPlanCancellationViewTests.swift in Sources */,
 				D50811EA23FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1723,6 +1771,22 @@
 			};
 			name = Release;
 		};
+		03D932ED249C0278003416DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		03D932EE249C0278003416DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		D53554FF23E0FD77005A20EB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1851,6 +1915,15 @@
 			buildConfigurations = (
 				03341B5023ABB1E8009AE8A8 /* Debug */,
 				03341B5123ABB1E8009AE8A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03D932EF249C0278003416DC /* Build configuration list for PBXAggregateTarget "Periphery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03D932ED249C0278003416DC /* Debug */,
+				03D932EE249C0278003416DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
