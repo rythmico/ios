@@ -1,4 +1,7 @@
 import Foundation
+import Then
+
+extension LessonPlan: Then {}
 
 extension LessonPlan {
     static var jackGuitarPlanStub: LessonPlan {
@@ -58,6 +61,23 @@ extension LessonPlan {
             address: .stub,
             schedule: .stub,
             privateNote: ""
+        )
+    }
+}
+
+extension LessonPlan {
+    static var cancelledJackGuitarPlanStub: LessonPlan {
+        jackGuitarPlanStub.with {
+            $0.status = .cancelled(nil, .stub)
+        }
+    }
+}
+
+extension LessonPlan.CancellationInfo {
+    static var stub: LessonPlan.CancellationInfo {
+        LessonPlan.CancellationInfo(
+            date: Date(),
+            reason: .rearrangementNeeded
         )
     }
 }

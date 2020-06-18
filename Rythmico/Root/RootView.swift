@@ -15,7 +15,7 @@ struct RootView: View, TestableView {
     @State
     private(set) var state = Self.freshState
 
-    var didAppear: Handler<Self>?
+    var onAppear: Handler<Self>?
     var body: some View {
         ZStack {
             state.unauthenticatedValue.zIndex(1).transition(.move(edge: .leading))
@@ -23,11 +23,11 @@ struct RootView: View, TestableView {
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: state.isAuthenticated)
         .onReceive(accessTokenProviderObserver.$currentProvider.receive(on: RunLoop.main), perform: refreshState)
-        .onAppear { self.didAppear?(self) }
-        .onAppear(perform: onAppear)
+        .onAppear { self.onAppear?(self) }
+        .onAppear(perform: handleStateChanges)
     }
 
-    private func onAppear() {
+    private func handleStateChanges() {
         if let authorizationUserId = Current.keychain.appleAuthorizationUserId {
             Current.appleAuthorizationCredentialStateProvider.getCredentialState(forUserID: authorizationUserId) { state in
                 switch state {

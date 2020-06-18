@@ -18,7 +18,7 @@ struct InstrumentSelectionView: View, TestableView {
         self.context = context
     }
 
-    var didAppear: Handler<Self>?
+    var onAppear: Handler<Self>?
     var body: some View {
         TitleSubtitleContentView(title: "Choose Instrument", subtitle: "Select one instrument") {
             CollectionView(
@@ -29,11 +29,11 @@ struct InstrumentSelectionView: View, TestableView {
                 InstrumentView(viewData: $0).padding(.horizontal, .spacingMedium)
             }
         }
-        .onAppear { self.didAppear?(self) }
-        .onAppear(perform: onAppear)
+        .onAppear { self.onAppear?(self) }
+        .onAppear(perform: fetchInstruments)
     }
 
-    private func onAppear() {
+    private func fetchInstruments() {
         Current.instrumentSelectionListProvider.instruments { instruments in
             self.state.instruments = instruments
                 .map { instrument in

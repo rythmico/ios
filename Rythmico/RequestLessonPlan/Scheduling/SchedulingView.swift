@@ -79,7 +79,7 @@ struct SchedulingView: View, TestableView {
         }
     }
 
-    var didAppear: Handler<Self>?
+    var onAppear: Handler<Self>?
     var body: some View {
         TitleSubtitleContentView(title: "Lesson Schedule", subtitle: subtitle) {
             VStack(spacing: 0) {
@@ -180,7 +180,7 @@ struct SchedulingView: View, TestableView {
             }
         }
         .animation(.easeInOut(duration: .durationMedium), value: editingFocus)
-        .onAppear { self.didAppear?(self) }
+        .onAppear { self.onAppear?(self) }
     }
 
     func beginEditingStartDate() {

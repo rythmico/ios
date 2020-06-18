@@ -10,6 +10,8 @@ struct LessonsView: View, TestableView {
     private var selectedLessonPlan: LessonPlan?
     @State
     private(set) var lessonRequestView: RequestLessonPlanView?
+    @State
+    private var didAppear = false
 
     init?() {
         guard let fetchingCoordinator = Current.lessonPlanFetchingCoordinator() else {
@@ -23,6 +25,10 @@ struct LessonsView: View, TestableView {
     var isLoading: Bool { fetchingCoordinator.state.isLoading }
     var errorMessage: String? { fetchingCoordinator.state.failureValue?.localizedDescription }
 
+    func fetchLessonPlans() {
+        fetchingCoordinator.fetchLessonPlans()
+    }
+
     func dismissErrorAlert() {
         fetchingCoordinator.dismissError()
     }
@@ -31,7 +37,7 @@ struct LessonsView: View, TestableView {
         lessonRequestView = RequestLessonPlanView(context: RequestLessonPlanContext())
     }
 
-    var didAppear: Handler<Self>?
+    var onAppear: Handler<Self>?
     var body: some View {
         NavigationView {
             CollectionView(lessonPlans, padding: EdgeInsets(.spacingMedium)) { lessonPlan in
@@ -39,10 +45,9 @@ struct LessonsView: View, TestableView {
                     destination: LessonPlanDetailView(lessonPlan),
                     tag: lessonPlan,
                     selection: self.$selectedLessonPlan,
-                    label: {
-                        LessonPlanSummaryCell(lessonPlan: lessonPlan)
-                    }
+                    label: { LessonPlanSummaryCell(lessonPlan: lessonPlan) }
                 )
+                .disabled(lessonPlan.status.isCancelled)
                 .transition(self.transition(for: lessonPlan))
             }
             .navigationBarTitle("Lessons", displayMode: .large)
@@ -61,13 +66,19 @@ struct LessonsView: View, TestableView {
                 .accessibility(label: Text("Request lessons"))
                 .accessibility(hint: Text("Double tap to request a lesson plan"))
             )
-            .alert(error: self.errorMessage, dismiss: dismissErrorAlert)
-            .onAppear { self.didAppear?(self) }
-            .onAppear(perform: fetchingCoordinator.fetchLessonPlans)
         }
         .modifier(BestNavigationStyleModifier())
         .accentColor(.rythmicoPurple)
+        .alert(error: self.errorMessage, dismiss: dismissErrorAlert)
         .betterSheet(item: $lessonRequestView, content: { $0 })
+        .onAppear { self.onAppear?(self) }
+        .onAppear(perform: fetchOnAppear)
+    }
+
+    private func fetchOnAppear() {
+        guard !didAppear else { return }
+        fetchingCoordinator.fetchLessonPlans()
+        didAppear = true
     }
 
     private func transition(for lessonPlan: LessonPlan) -> AnyTransition {
@@ -102,7 +113,8 @@ struct LessonsView_Previews: PreviewProvider {
     static var previews: some View {
         Current.userAuthenticated()
         Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(
-            result: .success(.stub),
+            result: .success([.davidGuitarPlanStub, .cancelledJackGuitarPlanStub]),
+//            result: .failure("Something"),
 //            delay: 2
             delay: nil
         )

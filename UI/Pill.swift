@@ -12,7 +12,7 @@ struct Pill<Content: View>: View {
     var body: some View {
         content
             .padding(.vertical, .spacingUnit / 2)
-            .padding(.horizontal, .spacingExtraSmall)
+            .padding(.horizontal, .spacingUnit * 3.5)
             .frame(minWidth: 96)
             .background(color.clipShape(Capsule()))
     }

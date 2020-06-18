@@ -45,7 +45,7 @@ struct ReviewRequestView: View, TestableView {
         )
     }
 
-    var didAppear: Handler<Self>?
+    var onAppear: Handler<Self>?
     var body: some View {
         TitleSubtitleContentView(title: "Review Proposal", subtitle: []) {
             VStack(spacing: 0) {
@@ -145,7 +145,7 @@ struct ReviewRequestView: View, TestableView {
                 }
             }
         }
-        .onAppear { self.didAppear?(self) }
+        .onAppear { self.onAppear?(self) }
     }
 
     private func editButton(performing action: @escaping Action) -> some View {
