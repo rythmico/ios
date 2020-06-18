@@ -49,6 +49,7 @@ struct ActionList: View {
     }
 }
 
+#if DEBUG
 struct ActionList_Previews: PreviewProvider {
     static var previews: some View {
         ActionList(
@@ -60,3 +61,4 @@ struct ActionList_Previews: PreviewProvider {
         )
     }
 }
+#endif

@@ -62,8 +62,10 @@ private extension LessonPlan.CancellationInfo.Reason {
     }
 }
 
+#if DEBUG
 struct LessonPlanCancellationReasonView_Previews: PreviewProvider {
     static var previews: some View {
         LessonPlanCancellationView.ReasonView { _ in }
     }
 }
+#endif

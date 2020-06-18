@@ -32,8 +32,10 @@ extension LessonPlanCancellationView {
     }
 }
 
+#if DEBUG
 struct LessonPlanCancellationPromptView_Previews: PreviewProvider {
     static var previews: some View {
         LessonPlanCancellationView.PromptView(noAction: {}, yesAction: {})
     }
 }
+#endif
