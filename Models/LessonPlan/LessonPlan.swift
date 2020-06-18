@@ -95,3 +95,12 @@ struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
         case privateNote
     }
 }
+
+extension LessonPlan.Status {
+    var isCancelled: Bool {
+        guard case .cancelled = self else {
+            return false
+        }
+        return true
+    }
+}
