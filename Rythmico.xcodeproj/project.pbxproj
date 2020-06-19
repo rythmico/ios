@@ -69,6 +69,8 @@
 		035B1CF5249CFA1800AABFEA /* BetterSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1CF4249CFA1800AABFEA /* BetterSheet */; };
 		035B1CF6249CFA5700AABFEA /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506AF2405A6A900CA4094 /* Duration.swift */; };
 		035B1D09249D115B00AABFEA /* MainTabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D08249D115B00AABFEA /* MainTabViewTests.swift */; };
+		035B1D0A249D303300AABFEA /* Sugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53554F523E0FD77005A20EB /* Sugar.framework */; };
+		035B1D0B249D303300AABFEA /* Sugar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D53554F523E0FD77005A20EB /* Sugar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0365F6F02417E79000F452AC /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6EF2417E79000F452AC /* Address.swift */; };
 		0365F6F32417EE4100F452AC /* Character+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6F22417EE4100F452AC /* Character+Sugar.swift */; };
 		0365F6F52417F1E900F452AC /* AddressSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6F42417F1E900F452AC /* AddressSearchService.swift */; };
@@ -262,19 +264,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		035B1CEE249CF9D500AABFEA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 03341B3323ABB1E7009AE8A8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D53554F423E0FD77005A20EB;
-			remoteInfo = Sugar;
-		};
 		035B1D01249D109B00AABFEA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 03341B3323ABB1E7009AE8A8 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 035B1CBB249CF2AA00AABFEA;
 			remoteInfo = RythmicoTutor;
+		};
+		035B1D0C249D303300AABFEA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03341B3323ABB1E7009AE8A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D53554F423E0FD77005A20EB;
+			remoteInfo = Sugar;
 		};
 		D53554FA23E0FD77005A20EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -293,6 +295,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		035B1D0E249D303400AABFEA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				035B1D0B249D303300AABFEA /* Sugar.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D53554B123E0FA4B005A20EB /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -583,6 +596,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				035B1CD7249CF7EB00AABFEA /* Valet in Frameworks */,
+				035B1D0A249D303300AABFEA /* Sugar.framework in Frameworks */,
 				035B1CD2249CF5D000AABFEA /* SFSafeSymbols in Frameworks */,
 				035B1CF5249CFA1800AABFEA /* BetterSheet in Frameworks */,
 				035B1CD5249CF7E200AABFEA /* Then in Frameworks */,
@@ -1264,11 +1278,12 @@
 				035B1CB8249CF2AA00AABFEA /* Sources */,
 				035B1CB9249CF2AA00AABFEA /* Frameworks */,
 				035B1CBA249CF2AA00AABFEA /* Resources */,
+				035B1D0E249D303400AABFEA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				035B1CEF249CF9D500AABFEA /* PBXTargetDependency */,
+				035B1D0D249D303300AABFEA /* PBXTargetDependency */,
 			);
 			name = RythmicoTutor;
 			packageProductDependencies = (
@@ -1762,15 +1777,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		035B1CEF249CF9D500AABFEA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D53554F423E0FD77005A20EB /* Sugar */;
-			targetProxy = 035B1CEE249CF9D500AABFEA /* PBXContainerItemProxy */;
-		};
 		035B1D02249D109B00AABFEA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 035B1CBB249CF2AA00AABFEA /* RythmicoTutor */;
 			targetProxy = 035B1D01249D109B00AABFEA /* PBXContainerItemProxy */;
+		};
+		035B1D0D249D303300AABFEA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D53554F423E0FD77005A20EB /* Sugar */;
+			targetProxy = 035B1D0C249D303300AABFEA /* PBXContainerItemProxy */;
 		};
 		D53554FB23E0FD77005A20EB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
