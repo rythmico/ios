@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "035B1CBB249CF2AA00AABFEA"
-               BuildableName = "RythmicoTutor.app"
+               BuildableName = "Tutor.app"
                BlueprintName = "RythmicoTutor"
                ReferencedContainer = "container:Rythmico.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "035B1CBB249CF2AA00AABFEA"
-            BuildableName = "RythmicoTutor.app"
+            BuildableName = "Tutor.app"
             BlueprintName = "RythmicoTutor"
             ReferencedContainer = "container:Rythmico.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "035B1CBB249CF2AA00AABFEA"
-            BuildableName = "RythmicoTutor.app"
+            BuildableName = "Tutor.app"
             BlueprintName = "RythmicoTutor"
             ReferencedContainer = "container:Rythmico.xcodeproj">
          </BuildableReference>
