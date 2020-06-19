@@ -56,10 +56,13 @@
 		035AF30D2491B7C3004A01B2 /* UNUserNotificationCenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF30C2491B7C3004A01B2 /* UNUserNotificationCenterProtocol.swift */; };
 		035B1CBF249CF2AA00AABFEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CBE249CF2AA00AABFEA /* AppDelegate.swift */; };
 		035B1CC1249CF2AA00AABFEA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CC0249CF2AA00AABFEA /* SceneDelegate.swift */; };
-		035B1CC3249CF2AA00AABFEA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CC2249CF2AA00AABFEA /* ContentView.swift */; };
+		035B1CC3249CF2AA00AABFEA /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CC2249CF2AA00AABFEA /* MainTabView.swift */; };
 		035B1CC5249CF2AC00AABFEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 035B1CC4249CF2AC00AABFEA /* Assets.xcassets */; };
 		035B1CC8249CF2AC00AABFEA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 035B1CC7249CF2AC00AABFEA /* Preview Assets.xcassets */; };
 		035B1CCB249CF2AC00AABFEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035B1CC9249CF2AC00AABFEA /* LaunchScreen.storyboard */; };
+		035B1CD2249CF5D000AABFEA /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1CD1249CF5D000AABFEA /* SFSafeSymbols */; };
+		035B1CD5249CF7E200AABFEA /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1CD4249CF7E200AABFEA /* Then */; };
+		035B1CD7249CF7EB00AABFEA /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1CD6249CF7EB00AABFEA /* Valet */; };
 		0365F6F02417E79000F452AC /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6EF2417E79000F452AC /* Address.swift */; };
 		0365F6F32417EE4100F452AC /* Character+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6F22417EE4100F452AC /* Character+Sugar.swift */; };
 		0365F6F52417F1E900F452AC /* AddressSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6F42417F1E900F452AC /* AddressSearchService.swift */; };
@@ -323,7 +326,7 @@
 		035B1CBC249CF2AA00AABFEA /* Tutor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tutor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		035B1CBE249CF2AA00AABFEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		035B1CC0249CF2AA00AABFEA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		035B1CC2249CF2AA00AABFEA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		035B1CC2249CF2AA00AABFEA /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		035B1CC4249CF2AC00AABFEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		035B1CC7249CF2AC00AABFEA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		035B1CCA249CF2AC00AABFEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -554,6 +557,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				035B1CD7249CF7EB00AABFEA /* Valet in Frameworks */,
+				035B1CD2249CF5D000AABFEA /* SFSafeSymbols in Frameworks */,
+				035B1CD5249CF7E200AABFEA /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,7 +691,7 @@
 				035B1CC9249CF2AC00AABFEA /* LaunchScreen.storyboard */,
 				035B1CBE249CF2AA00AABFEA /* AppDelegate.swift */,
 				035B1CC0249CF2AA00AABFEA /* SceneDelegate.swift */,
-				035B1CC2249CF2AA00AABFEA /* ContentView.swift */,
+				035B1CC2249CF2AA00AABFEA /* MainTabView.swift */,
 				035B1CD0249CF3E300AABFEA /* Supporting Files */,
 				035B1CC6249CF2AC00AABFEA /* Preview Content */,
 			);
@@ -1218,6 +1224,11 @@
 			dependencies = (
 			);
 			name = RythmicoTutor;
+			packageProductDependencies = (
+				035B1CD1249CF5D000AABFEA /* SFSafeSymbols */,
+				035B1CD4249CF7E200AABFEA /* Then */,
+				035B1CD6249CF7EB00AABFEA /* Valet */,
+			);
 			productName = RythmicoTutor;
 			productReference = 035B1CBC249CF2AA00AABFEA /* Tutor.app */;
 			productType = "com.apple.product-type.application";
@@ -1606,7 +1617,7 @@
 			files = (
 				035B1CBF249CF2AA00AABFEA /* AppDelegate.swift in Sources */,
 				035B1CC1249CF2AA00AABFEA /* SceneDelegate.swift in Sources */,
-				035B1CC3249CF2AA00AABFEA /* ContentView.swift in Sources */,
+				035B1CC3249CF2AA00AABFEA /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2165,6 +2176,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		035B1CD1249CF5D000AABFEA /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D535547F23E0E7C1005A20EB /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+		035B1CD4249CF7E200AABFEA /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D535554A23E23EA7005A20EB /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		035B1CD6249CF7EB00AABFEA /* Valet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D535547523DF3A19005A20EB /* XCRemoteSwiftPackageReference "Valet" */;
+			productName = Valet;
+		};
 		03B19836247053F5005529EB /* APIKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 03B19835247053F5005529EB /* XCRemoteSwiftPackageReference "APIKit" */;

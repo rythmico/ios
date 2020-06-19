@@ -1,23 +1,16 @@
-//
-//  ContentView.swift
-//  RythmicoTutor
-//
-//  Created by David Roman on 19/06/2020.
-//  Copyright © 2020 David Roman. All rights reserved.
-//
-
 import SwiftUI
+import SFSafeSymbols
 
-struct ContentView: View {
+struct MainTabView: View {
     @State private var selection = 0
  
     var body: some View {
-        TabView(selection: $selection){
+        TabView(selection: $selection) {
             Text("First View")
                 .font(.title)
                 .tabItem {
                     VStack {
-                        Image("first")
+                        Image(systemSymbol: .musicNoteList).font(.system(size: 21, weight: .bold))
                         Text("First")
                     }
                 }
@@ -26,7 +19,7 @@ struct ContentView: View {
                 .font(.title)
                 .tabItem {
                     VStack {
-                        Image("second")
+                        Image(systemSymbol: .personFill).font(.system(size: 21, weight: .semibold))
                         Text("Second")
                     }
                 }
@@ -37,6 +30,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainTabView()
     }
 }
