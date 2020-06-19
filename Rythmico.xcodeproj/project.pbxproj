@@ -68,6 +68,7 @@
 		035B1CF3249CFA0900AABFEA /* AppDelegate+Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CF2249CFA0900AABFEA /* AppDelegate+Window.swift */; };
 		035B1CF5249CFA1800AABFEA /* BetterSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1CF4249CFA1800AABFEA /* BetterSheet */; };
 		035B1CF6249CFA5700AABFEA /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506AF2405A6A900CA4094 /* Duration.swift */; };
+		035B1D09249D115B00AABFEA /* MainTabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D08249D115B00AABFEA /* MainTabViewTests.swift */; };
 		0365F6F02417E79000F452AC /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6EF2417E79000F452AC /* Address.swift */; };
 		0365F6F32417EE4100F452AC /* Character+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6F22417EE4100F452AC /* Character+Sugar.swift */; };
 		0365F6F52417F1E900F452AC /* AddressSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6F42417F1E900F452AC /* AddressSearchService.swift */; };
@@ -268,6 +269,13 @@
 			remoteGlobalIDString = D53554F423E0FD77005A20EB;
 			remoteInfo = Sugar;
 		};
+		035B1D01249D109B00AABFEA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03341B3323ABB1E7009AE8A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 035B1CBB249CF2AA00AABFEA;
+			remoteInfo = RythmicoTutor;
+		};
 		D53554FA23E0FD77005A20EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 03341B3323ABB1E7009AE8A8 /* Project object */;
@@ -346,6 +354,8 @@
 		035B1CEC249CF9B400AABFEA /* TestDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDelegate.swift; sourceTree = "<group>"; };
 		035B1CF0249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+LaunchScreenCache.swift"; sourceTree = "<group>"; };
 		035B1CF2249CFA0900AABFEA /* AppDelegate+Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Window.swift"; sourceTree = "<group>"; };
+		035B1CFC249D109B00AABFEA /* RythmicoTutorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RythmicoTutorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		035B1D08249D115B00AABFEA /* MainTabViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewTests.swift; sourceTree = "<group>"; };
 		0365F6EF2417E79000F452AC /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		0365F6F22417EE4100F452AC /* Character+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+Sugar.swift"; sourceTree = "<group>"; };
 		0365F6F42417F1E900F452AC /* AddressSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchService.swift; sourceTree = "<group>"; };
@@ -579,6 +589,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		035B1CF9249D109B00AABFEA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D53554F223E0FD77005A20EB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -618,6 +635,7 @@
 				D53554F523E0FD77005A20EB /* Sugar.framework */,
 				D535552B23E10557005A20EB /* RythmicoTests.xctest */,
 				035B1CBC249CF2AA00AABFEA /* Tutor.app */,
+				035B1CFC249D109B00AABFEA /* RythmicoTutorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -706,6 +724,7 @@
 			children = (
 				035B1CF7249CFAD900AABFEA /* AppStart */,
 				035B1CC2249CF2AA00AABFEA /* MainTabView.swift */,
+				035B1D08249D115B00AABFEA /* MainTabViewTests.swift */,
 				035B1CD0249CF3E300AABFEA /* Supporting Files */,
 				035B1CC6249CF2AC00AABFEA /* Preview Content */,
 			);
@@ -1262,6 +1281,24 @@
 			productReference = 035B1CBC249CF2AA00AABFEA /* Tutor.app */;
 			productType = "com.apple.product-type.application";
 		};
+		035B1CFB249D109B00AABFEA /* RythmicoTutorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 035B1D05249D109B00AABFEA /* Build configuration list for PBXNativeTarget "RythmicoTutorTests" */;
+			buildPhases = (
+				035B1CF8249D109B00AABFEA /* Sources */,
+				035B1CF9249D109B00AABFEA /* Frameworks */,
+				035B1CFA249D109B00AABFEA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				035B1D02249D109B00AABFEA /* PBXTargetDependency */,
+			);
+			name = RythmicoTutorTests;
+			productName = RythmicoTutorTests;
+			productReference = 035B1CFC249D109B00AABFEA /* RythmicoTutorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D53554F423E0FD77005A20EB /* Sugar */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D53554FE23E0FD77005A20EB /* Build configuration list for PBXNativeTarget "Sugar" */;
@@ -1317,6 +1354,11 @@
 					035B1CBB249CF2AA00AABFEA = {
 						CreatedOnToolsVersion = 11.6;
 					};
+					035B1CFB249D109B00AABFEA = {
+						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
+						TestTargetID = 035B1CBB249CF2AA00AABFEA;
+					};
 					03D932EC249C0278003416DC = {
 						CreatedOnToolsVersion = 11.6;
 					};
@@ -1355,6 +1397,7 @@
 				03341B3A23ABB1E7009AE8A8 /* Rythmico */,
 				D535552A23E10557005A20EB /* RythmicoTests */,
 				035B1CBB249CF2AA00AABFEA /* RythmicoTutor */,
+				035B1CFB249D109B00AABFEA /* RythmicoTutorTests */,
 				D53554F423E0FD77005A20EB /* Sugar */,
 				03D932EC249C0278003416DC /* Periphery */,
 			);
@@ -1382,6 +1425,13 @@
 				035B1CCB249CF2AC00AABFEA /* LaunchScreen.storyboard in Resources */,
 				035B1CC8249CF2AC00AABFEA /* Preview Assets.xcassets in Resources */,
 				035B1CC5249CF2AC00AABFEA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		035B1CFA249D109B00AABFEA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1654,6 +1704,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		035B1CF8249D109B00AABFEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				035B1D09249D115B00AABFEA /* MainTabViewTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D53554F123E0FD77005A20EB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1708,6 +1766,11 @@
 			isa = PBXTargetDependency;
 			target = D53554F423E0FD77005A20EB /* Sugar */;
 			targetProxy = 035B1CEE249CF9D500AABFEA /* PBXContainerItemProxy */;
+		};
+		035B1D02249D109B00AABFEA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 035B1CBB249CF2AA00AABFEA /* RythmicoTutor */;
+			targetProxy = 035B1D01249D109B00AABFEA /* PBXContainerItemProxy */;
 		};
 		D53554FB23E0FD77005A20EB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1968,6 +2031,57 @@
 			};
 			name = Release;
 		};
+		035B1D03249D109B00AABFEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 72N659HYBR;
+				INFOPLIST_FILE = "RythmicoTutor/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.RythmicoTutorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tutor.app/Tutor";
+			};
+			name = Debug;
+		};
+		035B1D04249D109B00AABFEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 72N659HYBR;
+				INFOPLIST_FILE = "RythmicoTutor/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.RythmicoTutorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tutor.app/Tutor";
+			};
+			name = Release;
+		};
 		03D932ED249C0278003416DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2121,6 +2235,15 @@
 			buildConfigurations = (
 				035B1CCE249CF2AC00AABFEA /* Debug */,
 				035B1CCF249CF2AC00AABFEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		035B1D05249D109B00AABFEA /* Build configuration list for PBXNativeTarget "RythmicoTutorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				035B1D03249D109B00AABFEA /* Debug */,
+				035B1D04249D109B00AABFEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
