@@ -54,6 +54,21 @@
 		035AF3082491A51D004A01B2 /* UIAccessibilityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF3072491A51D004A01B2 /* UIAccessibilityProtocol.swift */; };
 		035AF30A2491A54E004A01B2 /* UIAccessibilityDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF3092491A54E004A01B2 /* UIAccessibilityDoubles.swift */; };
 		035AF30D2491B7C3004A01B2 /* UNUserNotificationCenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF30C2491B7C3004A01B2 /* UNUserNotificationCenterProtocol.swift */; };
+		035B1CBF249CF2AA00AABFEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CBE249CF2AA00AABFEA /* AppDelegate.swift */; };
+		035B1CC3249CF2AA00AABFEA /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CC2249CF2AA00AABFEA /* MainTabView.swift */; };
+		035B1CC5249CF2AC00AABFEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 035B1CC4249CF2AC00AABFEA /* Assets.xcassets */; };
+		035B1CC8249CF2AC00AABFEA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 035B1CC7249CF2AC00AABFEA /* Preview Assets.xcassets */; };
+		035B1CCB249CF2AC00AABFEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035B1CC9249CF2AC00AABFEA /* LaunchScreen.storyboard */; };
+		035B1CD2249CF5D000AABFEA /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1CD1249CF5D000AABFEA /* SFSafeSymbols */; };
+		035B1CD5249CF7E200AABFEA /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1CD4249CF7E200AABFEA /* Then */; };
+		035B1CD7249CF7EB00AABFEA /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1CD6249CF7EB00AABFEA /* Valet */; };
+		035B1CEB249CF9A400AABFEA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CEA249CF9A400AABFEA /* main.swift */; };
+		035B1CED249CF9B400AABFEA /* TestDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CEC249CF9B400AABFEA /* TestDelegate.swift */; };
+		035B1CF1249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CF0249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift */; };
+		035B1CF3249CFA0900AABFEA /* AppDelegate+Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CF2249CFA0900AABFEA /* AppDelegate+Window.swift */; };
+		035B1CF5249CFA1800AABFEA /* BetterSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1CF4249CFA1800AABFEA /* BetterSheet */; };
+		035B1CF6249CFA5700AABFEA /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506AF2405A6A900CA4094 /* Duration.swift */; };
+		035B1D09249D115B00AABFEA /* MainTabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D08249D115B00AABFEA /* MainTabViewTests.swift */; };
 		0365F6F02417E79000F452AC /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6EF2417E79000F452AC /* Address.swift */; };
 		0365F6F32417EE4100F452AC /* Character+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6F22417EE4100F452AC /* Character+Sugar.swift */; };
 		0365F6F52417F1E900F452AC /* AddressSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6F42417F1E900F452AC /* AddressSearchService.swift */; };
@@ -247,6 +262,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		035B1CEE249CF9D500AABFEA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03341B3323ABB1E7009AE8A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D53554F423E0FD77005A20EB;
+			remoteInfo = Sugar;
+		};
+		035B1D01249D109B00AABFEA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03341B3323ABB1E7009AE8A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 035B1CBB249CF2AA00AABFEA;
+			remoteInfo = RythmicoTutor;
+		};
 		D53554FA23E0FD77005A20EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 03341B3323ABB1E7009AE8A8 /* Project object */;
@@ -314,6 +343,19 @@
 		035AF3072491A51D004A01B2 /* UIAccessibilityProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAccessibilityProtocol.swift; sourceTree = "<group>"; };
 		035AF3092491A54E004A01B2 /* UIAccessibilityDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAccessibilityDoubles.swift; sourceTree = "<group>"; };
 		035AF30C2491B7C3004A01B2 /* UNUserNotificationCenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNUserNotificationCenterProtocol.swift; sourceTree = "<group>"; };
+		035B1CBC249CF2AA00AABFEA /* Tutor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tutor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		035B1CBE249CF2AA00AABFEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		035B1CC2249CF2AA00AABFEA /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		035B1CC4249CF2AC00AABFEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		035B1CC7249CF2AC00AABFEA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		035B1CCA249CF2AC00AABFEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		035B1CCC249CF2AC00AABFEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		035B1CEA249CF9A400AABFEA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		035B1CEC249CF9B400AABFEA /* TestDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDelegate.swift; sourceTree = "<group>"; };
+		035B1CF0249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+LaunchScreenCache.swift"; sourceTree = "<group>"; };
+		035B1CF2249CFA0900AABFEA /* AppDelegate+Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Window.swift"; sourceTree = "<group>"; };
+		035B1CFC249D109B00AABFEA /* RythmicoTutorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RythmicoTutorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		035B1D08249D115B00AABFEA /* MainTabViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewTests.swift; sourceTree = "<group>"; };
 		0365F6EF2417E79000F452AC /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		0365F6F22417EE4100F452AC /* Character+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+Sugar.swift"; sourceTree = "<group>"; };
 		0365F6F42417F1E900F452AC /* AddressSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchService.swift; sourceTree = "<group>"; };
@@ -536,6 +578,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		035B1CB9249CF2AA00AABFEA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				035B1CD7249CF7EB00AABFEA /* Valet in Frameworks */,
+				035B1CD2249CF5D000AABFEA /* SFSafeSymbols in Frameworks */,
+				035B1CF5249CFA1800AABFEA /* BetterSheet in Frameworks */,
+				035B1CD5249CF7E200AABFEA /* Then in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		035B1CF9249D109B00AABFEA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D53554F223E0FD77005A20EB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -558,6 +618,7 @@
 			isa = PBXGroup;
 			children = (
 				03341B3D23ABB1E7009AE8A8 /* Rythmico */,
+				035B1CBD249CF2AA00AABFEA /* RythmicoTutor */,
 				D50E4BDC23CA82E000B6FCB1 /* UI */,
 				03EDA6692476AD6800FBE527 /* Services */,
 				03EDA66A2476AE5500FBE527 /* Models */,
@@ -573,6 +634,8 @@
 				03341B3B23ABB1E7009AE8A8 /* Rythmico.app */,
 				D53554F523E0FD77005A20EB /* Sugar.framework */,
 				D535552B23E10557005A20EB /* RythmicoTests.xctest */,
+				035B1CBC249CF2AA00AABFEA /* Tutor.app */,
+				035B1CFC249D109B00AABFEA /* RythmicoTutorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -654,6 +717,48 @@
 				035AF3092491A54E004A01B2 /* UIAccessibilityDoubles.swift */,
 			);
 			path = UIAccessibility;
+			sourceTree = "<group>";
+		};
+		035B1CBD249CF2AA00AABFEA /* RythmicoTutor */ = {
+			isa = PBXGroup;
+			children = (
+				035B1CF7249CFAD900AABFEA /* AppStart */,
+				035B1CC2249CF2AA00AABFEA /* MainTabView.swift */,
+				035B1D08249D115B00AABFEA /* MainTabViewTests.swift */,
+				035B1CD0249CF3E300AABFEA /* Supporting Files */,
+				035B1CC6249CF2AC00AABFEA /* Preview Content */,
+			);
+			path = RythmicoTutor;
+			sourceTree = "<group>";
+		};
+		035B1CC6249CF2AC00AABFEA /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				035B1CC7249CF2AC00AABFEA /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		035B1CD0249CF3E300AABFEA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				035B1CC4249CF2AC00AABFEA /* Assets.xcassets */,
+				035B1CCC249CF2AC00AABFEA /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		035B1CF7249CFAD900AABFEA /* AppStart */ = {
+			isa = PBXGroup;
+			children = (
+				035B1CC9249CF2AC00AABFEA /* LaunchScreen.storyboard */,
+				035B1CEA249CF9A400AABFEA /* main.swift */,
+				035B1CBE249CF2AA00AABFEA /* AppDelegate.swift */,
+				035B1CF0249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift */,
+				035B1CF2249CFA0900AABFEA /* AppDelegate+Window.swift */,
+				035B1CEC249CF9B400AABFEA /* TestDelegate.swift */,
+			);
+			path = AppStart;
 			sourceTree = "<group>";
 		};
 		0365F6F12417E95200F452AC /* AddressDetails */ = {
@@ -1152,6 +1257,48 @@
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
 			productType = "com.apple.product-type.application";
 		};
+		035B1CBB249CF2AA00AABFEA /* RythmicoTutor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 035B1CCD249CF2AC00AABFEA /* Build configuration list for PBXNativeTarget "RythmicoTutor" */;
+			buildPhases = (
+				035B1CB8249CF2AA00AABFEA /* Sources */,
+				035B1CB9249CF2AA00AABFEA /* Frameworks */,
+				035B1CBA249CF2AA00AABFEA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				035B1CEF249CF9D500AABFEA /* PBXTargetDependency */,
+			);
+			name = RythmicoTutor;
+			packageProductDependencies = (
+				035B1CD1249CF5D000AABFEA /* SFSafeSymbols */,
+				035B1CD4249CF7E200AABFEA /* Then */,
+				035B1CD6249CF7EB00AABFEA /* Valet */,
+				035B1CF4249CFA1800AABFEA /* BetterSheet */,
+			);
+			productName = RythmicoTutor;
+			productReference = 035B1CBC249CF2AA00AABFEA /* Tutor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		035B1CFB249D109B00AABFEA /* RythmicoTutorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 035B1D05249D109B00AABFEA /* Build configuration list for PBXNativeTarget "RythmicoTutorTests" */;
+			buildPhases = (
+				035B1CF8249D109B00AABFEA /* Sources */,
+				035B1CF9249D109B00AABFEA /* Frameworks */,
+				035B1CFA249D109B00AABFEA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				035B1D02249D109B00AABFEA /* PBXTargetDependency */,
+			);
+			name = RythmicoTutorTests;
+			productName = RythmicoTutorTests;
+			productReference = 035B1CFC249D109B00AABFEA /* RythmicoTutorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D53554F423E0FD77005A20EB /* Sugar */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D53554FE23E0FD77005A20EB /* Build configuration list for PBXNativeTarget "Sugar" */;
@@ -1197,12 +1344,20 @@
 		03341B3323ABB1E7009AE8A8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1160;
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "David Roman";
 				TargetAttributes = {
 					03341B3A23ABB1E7009AE8A8 = {
 						CreatedOnToolsVersion = 11.2.1;
+					};
+					035B1CBB249CF2AA00AABFEA = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					035B1CFB249D109B00AABFEA = {
+						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
+						TestTargetID = 035B1CBB249CF2AA00AABFEA;
 					};
 					03D932EC249C0278003416DC = {
 						CreatedOnToolsVersion = 11.6;
@@ -1241,6 +1396,8 @@
 			targets = (
 				03341B3A23ABB1E7009AE8A8 /* Rythmico */,
 				D535552A23E10557005A20EB /* RythmicoTests */,
+				035B1CBB249CF2AA00AABFEA /* RythmicoTutor */,
+				035B1CFB249D109B00AABFEA /* RythmicoTutorTests */,
 				D53554F423E0FD77005A20EB /* Sugar */,
 				03D932EC249C0278003416DC /* Periphery */,
 			);
@@ -1258,6 +1415,23 @@
 				03341B4523ABB1E8009AE8A8 /* Assets.xcassets in Resources */,
 				D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */,
 				D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		035B1CBA249CF2AA00AABFEA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				035B1CCB249CF2AC00AABFEA /* LaunchScreen.storyboard in Resources */,
+				035B1CC8249CF2AC00AABFEA /* Preview Assets.xcassets in Resources */,
+				035B1CC5249CF2AC00AABFEA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		035B1CFA249D109B00AABFEA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1516,6 +1690,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		035B1CB8249CF2AA00AABFEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				035B1CBF249CF2AA00AABFEA /* AppDelegate.swift in Sources */,
+				035B1CEB249CF9A400AABFEA /* main.swift in Sources */,
+				035B1CF3249CFA0900AABFEA /* AppDelegate+Window.swift in Sources */,
+				035B1CC3249CF2AA00AABFEA /* MainTabView.swift in Sources */,
+				035B1CF6249CFA5700AABFEA /* Duration.swift in Sources */,
+				035B1CED249CF9B400AABFEA /* TestDelegate.swift in Sources */,
+				035B1CF1249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		035B1CF8249D109B00AABFEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				035B1D09249D115B00AABFEA /* MainTabViewTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D53554F123E0FD77005A20EB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1566,6 +1762,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		035B1CEF249CF9D500AABFEA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D53554F423E0FD77005A20EB /* Sugar */;
+			targetProxy = 035B1CEE249CF9D500AABFEA /* PBXContainerItemProxy */;
+		};
+		035B1D02249D109B00AABFEA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 035B1CBB249CF2AA00AABFEA /* RythmicoTutor */;
+			targetProxy = 035B1D01249D109B00AABFEA /* PBXContainerItemProxy */;
+		};
 		D53554FB23E0FD77005A20EB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D53554F423E0FD77005A20EB /* Sugar */;
@@ -1583,6 +1789,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				03341B4A23ABB1E8009AE8A8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		035B1CC9249CF2AC00AABFEA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				035B1CCA249CF2AC00AABFEA /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1771,6 +1985,107 @@
 			};
 			name = Release;
 		};
+		035B1CCE249CF2AC00AABFEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 0;
+				DEVELOPMENT_ASSET_PATHS = "\"RythmicoTutor/Preview Content\"";
+				DEVELOPMENT_TEAM = 72N659HYBR;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "RythmicoTutor/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.tutor;
+				PRODUCT_NAME = Tutor;
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.rythmico.tutor";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		035B1CCF249CF2AC00AABFEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 0;
+				DEVELOPMENT_ASSET_PATHS = "\"RythmicoTutor/Preview Content\"";
+				DEVELOPMENT_TEAM = 72N659HYBR;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "RythmicoTutor/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.tutor;
+				PRODUCT_NAME = Tutor;
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.rythmico.tutor";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		035B1D03249D109B00AABFEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 72N659HYBR;
+				INFOPLIST_FILE = "RythmicoTutor/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.RythmicoTutorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tutor.app/Tutor";
+			};
+			name = Debug;
+		};
+		035B1D04249D109B00AABFEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 72N659HYBR;
+				INFOPLIST_FILE = "RythmicoTutor/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.RythmicoTutorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tutor.app/Tutor";
+			};
+			name = Release;
+		};
 		03D932ED249C0278003416DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1856,7 +2171,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 72N659HYBR;
 				INFOPLIST_FILE = "Rythmico/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1882,7 +2197,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 72N659HYBR;
 				INFOPLIST_FILE = "Rythmico/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1915,6 +2230,24 @@
 			buildConfigurations = (
 				03341B5023ABB1E8009AE8A8 /* Debug */,
 				03341B5123ABB1E8009AE8A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		035B1CCD249CF2AC00AABFEA /* Build configuration list for PBXNativeTarget "RythmicoTutor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				035B1CCE249CF2AC00AABFEA /* Debug */,
+				035B1CCF249CF2AC00AABFEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		035B1D05249D109B00AABFEA /* Build configuration list for PBXNativeTarget "RythmicoTutorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				035B1D03249D109B00AABFEA /* Debug */,
+				035B1D04249D109B00AABFEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2008,6 +2341,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		035B1CD1249CF5D000AABFEA /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D535547F23E0E7C1005A20EB /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
+		035B1CD4249CF7E200AABFEA /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D535554A23E23EA7005A20EB /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		035B1CD6249CF7EB00AABFEA /* Valet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D535547523DF3A19005A20EB /* XCRemoteSwiftPackageReference "Valet" */;
+			productName = Valet;
+		};
+		035B1CF4249CFA1800AABFEA /* BetterSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5AAF7C923ED850E00E410F2 /* XCRemoteSwiftPackageReference "BetterSheet" */;
+			productName = BetterSheet;
+		};
 		03B19836247053F5005529EB /* APIKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 03B19835247053F5005529EB /* XCRemoteSwiftPackageReference "APIKit" */;
