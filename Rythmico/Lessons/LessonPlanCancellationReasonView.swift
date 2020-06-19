@@ -45,6 +45,7 @@ extension LessonPlanCancellationView {
                     }
                 }
             }
+            .animation(.rythmicoSpring(duration: .durationShort), value: submitButtonAction != nil)
             .betterSheetIsModalInPresentation(true)
             .onAppear { self.onAppear?(self) }
         }
