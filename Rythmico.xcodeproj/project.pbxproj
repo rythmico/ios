@@ -2044,7 +2044,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 72N659HYBR;
 				INFOPLIST_FILE = "RythmicoTutor/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2070,7 +2070,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 72N659HYBR;
 				INFOPLIST_FILE = "RythmicoTutor/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2171,7 +2171,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 72N659HYBR;
 				INFOPLIST_FILE = "Rythmico/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2197,7 +2197,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 72N659HYBR;
 				INFOPLIST_FILE = "Rythmico/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
