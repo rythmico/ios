@@ -26,7 +26,7 @@ struct MainTabView: View {
         }
         self.deviceRegisterCoordinator = deviceRegisterCoordinator
     }
- 
+
     var body: some View {
         TabView(selection: $state.tabSelection) {
             Text("First View")
