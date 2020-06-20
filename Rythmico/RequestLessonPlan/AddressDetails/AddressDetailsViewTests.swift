@@ -63,6 +63,9 @@ final class AddressDetailsViewTests: XCTestCase {
             XCTAssertEqual(view.errorMessage, "Something")
             XCTAssertNil(view.addresses)
             XCTAssertNil(view.state.selectedAddress)
+
+            view.dismissError()
+            XCTAssertNil(view.errorMessage)
         }
     }
 

@@ -7,7 +7,7 @@ struct OnboardingView: View, TestableView {
     var isAppleAuthorizationButtonEnabled: Bool { !isLoading }
 
     @State
-    private(set) var errorMessage: String?
+    var errorMessage: String?
 
     func dismissError() { errorMessage = nil }
 
@@ -18,15 +18,18 @@ struct OnboardingView: View, TestableView {
             VStack(spacing: .spacingSmall) {
                 Spacer()
                 VStack(spacing: .spacingSmall) {
-                    Text("Rythmico")
-                        .rythmicoFont(.largeTitle)
+                    Text("Rythmico Tutor")
+                        .font(Font.system(.largeTitle).bold())
                         .multilineTextAlignment(.center)
-                        .foregroundColor(.rythmicoForeground)
+                    Text("Turning kids into the festival headliners of tomorrow")
+                        .font(Font.system(.body))
+                        .foregroundColor(.gray)
+                        .multilineTextAlignment(.center)
                 }
                 .accessibilityElement(children: .combine)
                 Spacer()
                 if isLoading {
-                    ActivityIndicator(style: .medium, color: .rythmicoGray90)
+                    ActivityIndicator(style: .medium)
                         .frame(width: 44, height: 44)
                 } else {
                     AuthorizationAppleIDButton()

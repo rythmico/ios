@@ -45,7 +45,7 @@ final class LessonsViewTests: XCTestCase {
     }
 
     func testLessonPlansFetchingFailure() throws {
-        Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(result: .failure("Something"))
+        Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(result: .failure("Something 1"))
 
         let fetchingCoordinator = try XCTUnwrap(Current.lessonPlanFetchingCoordinator())
         let view = try XCTUnwrap(LessonsView(coordinator: fetchingCoordinator))
@@ -53,7 +53,7 @@ final class LessonsViewTests: XCTestCase {
         XCTAssertView(view) { view in
             XCTAssertTrue(view.lessonPlans.isEmpty)
             XCTAssertFalse(view.isLoading)
-            XCTAssertEqual(view.errorMessage, "Something")
+            XCTAssertEqual(view.errorMessage, "Something 1")
 
             view.dismissErrorAlert()
             XCTAssertNil(view.errorMessage)

@@ -26,6 +26,10 @@ struct ProfileView: View, TestableView {
             : nil
     }
 
+    func dismissError() {
+        notificationAuthorizationCoordinator.dismissFailure()
+    }
+
     func logOut() {
         Current.deauthenticationService.deauthenticate()
     }
@@ -59,7 +63,7 @@ struct ProfileView: View, TestableView {
                 .accessibility(hint: Text("Double tap to log out of your account"))
             }
         }
-        .alert(error: self.errorMessage, dismiss: notificationAuthorizationCoordinator.dismissFailure)
+        .alert(error: self.errorMessage, dismiss: dismissError)
         .onAppear { self.onAppear?(self) }
     }
 

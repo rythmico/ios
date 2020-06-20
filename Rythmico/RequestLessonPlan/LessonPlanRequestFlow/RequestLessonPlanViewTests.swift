@@ -34,7 +34,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 
     func testFailureState() throws {
-        Current.lessonPlanRequestService = LessonPlanRequestServiceStub(result: .failure("Something"))
+        Current.lessonPlanRequestService = LessonPlanRequestServiceStub(result: .failure("Something 2"))
 
         let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
 
@@ -45,7 +45,10 @@ final class RequestLessonPlanViewTests: XCTestCase {
             XCTAssertNil(view.loadingView)
             XCTAssertNil(view.confirmationView)
             XCTAssertFalse(view.swipeDownToDismissEnabled)
-            XCTAssertEqual(view.errorMessage, "Something")
+            XCTAssertEqual(view.errorMessage, "Something 2")
+
+            view.dismissError()
+            XCTAssertNil(view.errorMessage)
         }
     }
 
