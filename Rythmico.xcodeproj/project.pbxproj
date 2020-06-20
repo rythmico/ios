@@ -844,7 +844,6 @@
 		035B1CBD249CF2AA00AABFEA /* RythmicoTutor */ = {
 			isa = PBXGroup;
 			children = (
-				035B1D5F249E608E00AABFEA /* Tutor.entitlements */,
 				035B1D18249E567700AABFEA /* AppEnvironment */,
 				035B1CF7249CFAD900AABFEA /* AppStart */,
 				035B1D11249E562700AABFEA /* Root */,
@@ -867,6 +866,7 @@
 			children = (
 				035B1CC4249CF2AC00AABFEA /* Assets.xcassets */,
 				035B1D6A249E662200AABFEA /* EnumProperties.swift */,
+				035B1D5F249E608E00AABFEA /* Tutor.entitlements */,
 				035B1CCC249CF2AC00AABFEA /* Info.plist */,
 				035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */,
 				035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */,
