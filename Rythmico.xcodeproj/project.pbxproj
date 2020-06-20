@@ -71,6 +71,83 @@
 		035B1D09249D115B00AABFEA /* MainTabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D08249D115B00AABFEA /* MainTabViewTests.swift */; };
 		035B1D0A249D303300AABFEA /* Sugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53554F523E0FD77005A20EB /* Sugar.framework */; };
 		035B1D0B249D303300AABFEA /* Sugar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D53554F523E0FD77005A20EB /* Sugar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		035B1D10249E561C00AABFEA /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D0F249E561C00AABFEA /* RootView.swift */; };
+		035B1D13249E563A00AABFEA /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D12249E563A00AABFEA /* OnboardingView.swift */; };
+		035B1D14249E565200AABFEA /* TestableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147506240C8E69002EE20C /* TestableView.swift */; };
+		035B1D15249E565200AABFEA /* TestableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147506240C8E69002EE20C /* TestableView.swift */; };
+		035B1D16249E565C00AABFEA /* AuthorizationAppleIDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */; };
+		035B1D17249E566800AABFEA /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */; };
+		035B1D1A249E568600AABFEA /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D19249E568600AABFEA /* AppEnvironment.swift */; };
+		035B1D1B249E56CD00AABFEA /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896C23B963B700C19300 /* FIRAnalyticsConnector.framework */; };
+		035B1D1C249E56CD00AABFEA /* FirebaseABTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556123E4F8BE005A20EB /* FirebaseABTesting.framework */; };
+		035B1D1D249E56CD00AABFEA /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896B23B963B700C19300 /* FirebaseAnalytics.framework */; };
+		035B1D1E249E56CD00AABFEA /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896523B963B700C19300 /* FirebaseAuth.framework */; };
+		035B1D1F249E56CD00AABFEA /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896F23B963B700C19300 /* FirebaseCore.framework */; };
+		035B1D20249E56CD00AABFEA /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896E23B963B700C19300 /* FirebaseCoreDiagnostics.framework */; };
+		035B1D21249E56CD00AABFEA /* FirebaseCrashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556423E4F8BF005A20EB /* FirebaseCrashlytics.framework */; };
+		035B1D22249E56CD00AABFEA /* FirebaseInstallations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535555F23E4F8BE005A20EB /* FirebaseInstallations.framework */; };
+		035B1D23249E56CD00AABFEA /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896823B963B700C19300 /* FirebaseInstanceID.framework */; };
+		035B1D24249E56CD00AABFEA /* FirebaseMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B1984A2471B098005529EB /* FirebaseMessaging.framework */; };
+		035B1D25249E56CD00AABFEA /* FirebasePerformance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556523E4F8BF005A20EB /* FirebasePerformance.framework */; };
+		035B1D26249E56CD00AABFEA /* FirebaseRemoteConfig.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556223E4F8BE005A20EB /* FirebaseRemoteConfig.framework */; };
+		035B1D27249E56CD00AABFEA /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896D23B963B700C19300 /* GoogleAppMeasurement.framework */; };
+		035B1D28249E56CD00AABFEA /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896623B963B700C19300 /* GoogleDataTransport.framework */; };
+		035B1D29249E56CD00AABFEA /* GoogleDataTransportCCTSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509897023B963B700C19300 /* GoogleDataTransportCCTSupport.framework */; };
+		035B1D2A249E56CD00AABFEA /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535555E23E4F8BE005A20EB /* GoogleToolboxForMac.framework */; };
+		035B1D2B249E56CD00AABFEA /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896A23B963B700C19300 /* GoogleUtilities.framework */; };
+		035B1D2C249E56CD00AABFEA /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896723B963B700C19300 /* GTMSessionFetcher.framework */; };
+		035B1D2D249E56CD00AABFEA /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509897123B963B700C19300 /* nanopb.framework */; };
+		035B1D2E249E56CD00AABFEA /* PromisesObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556323E4F8BF005A20EB /* PromisesObjC.framework */; };
+		035B1D2F249E56CD00AABFEA /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556023E4F8BE005A20EB /* Protobuf.framework */; };
+		035B1D30249E571B00AABFEA /* UIAccessibilityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF3072491A51D004A01B2 /* UIAccessibilityProtocol.swift */; };
+		035B1D31249E572000AABFEA /* UIApplication+KeyboardDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506642400619600CA4094 /* UIApplication+KeyboardDismisser.swift */; };
+		035B1D32249E572900AABFEA /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67C24776C6C00FBE527 /* URLOpener.swift */; };
+		035B1D33249E576900AABFEA /* AuthenticationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561F23CE92AE00BC8485 /* AuthenticationError.swift */; };
+		035B1D34249E576900AABFEA /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BC423C7AAA900B6FCB1 /* AuthenticationService.swift */; };
+		035B1D35249E576900AABFEA /* DeauthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547B23DF4D30005A20EB /* DeauthenticationService.swift */; };
+		035B1D36249E576900AABFEA /* DeauthenticationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554223E1DFEC005A20EB /* DeauthenticationServiceDoubles.swift */; };
+		035B1D37249E576900AABFEA /* AuthenticationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B13B2D23D125E6006CBC46 /* AuthenticationServiceDoubles.swift */; };
+		035B1D38249E576900AABFEA /* AuthenticationAccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B13B2B23D12520006CBC46 /* AuthenticationAccessTokenProvider.swift */; };
+		035B1D39249E576900AABFEA /* AuthenticationAccessTokenProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B13B2F23D1265F006CBC46 /* AuthenticationAccessTokenProviderDoubles.swift */; };
+		035B1D3A249E576900AABFEA /* AuthenticationAccessTokenProviderObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A32DBC23D139C000F3903C /* AuthenticationAccessTokenProviderObserver.swift */; };
+		035B1D3B249E576900AABFEA /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554023E1DF8B005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift */; };
+		035B1D3C249E576900AABFEA /* AuthenticationAccessTokenProviderBroadcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170923D671FD00954D50 /* AuthenticationAccessTokenProviderBroadcast.swift */; };
+		035B1D3D249E576900AABFEA /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170B23D6725B00954D50 /* AuthenticationAccessTokenProviderBroadcastDoubles.swift */; };
+		035B1D3E249E577700AABFEA /* AppleAuthorizationCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561223CD4B2C00BC8485 /* AppleAuthorizationCredential.swift */; };
+		035B1D3F249E577700AABFEA /* AppleAuthorizationCredentialDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF30424919FEF004A01B2 /* AppleAuthorizationCredentialDoubles.swift */; };
+		035B1D40249E577700AABFEA /* AppleAuthorizationCredentialStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546A23DCB65A005A20EB /* AppleAuthorizationCredentialStateProvider.swift */; };
+		035B1D41249E577700AABFEA /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553A23E1DD1A005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift */; };
+		035B1D42249E577700AABFEA /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546C23DF212C005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift */; };
+		035B1D43249E577700AABFEA /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553C23E1DE15005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift */; };
+		035B1D44249E577700AABFEA /* AppleAuthorizationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561023CD457800BC8485 /* AppleAuthorizationResponse.swift */; };
+		035B1D45249E577700AABFEA /* AppleAuthorizationResponseDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546823DCB03E005A20EB /* AppleAuthorizationResponseDoubles.swift */; };
+		035B1D46249E577700AABFEA /* AppleAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BC123C69D0400B6FCB1 /* AppleAuthorizationService.swift */; };
+		035B1D47249E577700AABFEA /* AppleAuthorizationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */; };
+		035B1D48249E577700AABFEA /* AppleAuthorizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */; };
+		035B1D49249E577700AABFEA /* AppleAuthorizationControllerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560B23CD342E00BC8485 /* AppleAuthorizationControllerDoubles.swift */; };
+		035B1D4A249E577700AABFEA /* AppleAuthorizationCompletionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509899023BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift */; };
+		035B1D4B249E578D00AABFEA /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547823DF3A7C005A20EB /* Keychain.swift */; };
+		035B1D4D249E57B500AABFEA /* TestEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D4C249E57B500AABFEA /* TestEnvironment.swift */; };
+		035B1D4E249E57D100AABFEA /* KeychainDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547D23DF4F44005A20EB /* KeychainDoubles.swift */; };
+		035B1D4F249E57DC00AABFEA /* UIAccessibilityDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF3092491A54E004A01B2 /* UIAccessibilityDoubles.swift */; };
+		035B1D50249E57E200AABFEA /* URLOpenerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67E24776CEC00FBE527 /* URLOpenerDoubles.swift */; };
+		035B1D51249E57F100AABFEA /* HashFunction+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */; };
+		035B1D52249E57FD00AABFEA /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5068B24046B1400CA4094 /* Spacing.swift */; };
+		035B1D53249E582800AABFEA /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6ED2447DFF900F6391D /* Animation.swift */; };
+		035B1D54249E59BB00AABFEA /* PreviewDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6E42447B7BD00F6391D /* PreviewDevices.swift */; };
+		035B1D55249E5A1800AABFEA /* ContentSizeCategory+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0392A9CE244D09FF001E97AE /* ContentSizeCategory+Sugar.swift */; };
+		035B1D59249E5CF800AABFEA /* AppDelegate+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D58249E5CF800AABFEA /* AppDelegate+Firebase.swift */; };
+		035B1D5B249E5E6E00AABFEA /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = 035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */; };
+		035B1D5E249E5EEC00AABFEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */; };
+		035B1D60249E63CD00AABFEA /* DeviceTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE4249071DB009C3980 /* DeviceTokenProvider.swift */; };
+		035B1D61249E63D400AABFEA /* DeviceTokenDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE624907462009C3980 /* DeviceTokenDeleter.swift */; };
+		035B1D62249E63D800AABFEA /* DeviceRegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE2249070D5009C3980 /* DeviceRegisterService.swift */; };
+		035B1D63249E63EC00AABFEA /* DeviceRegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C902472D85A00B44692 /* DeviceRegisterCoordinator.swift */; };
+		035B1D64249E642800AABFEA /* DeviceTokenProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A91EF52491887A00DEAD5E /* DeviceTokenProviderDoubles.swift */; };
+		035B1D65249E642D00AABFEA /* DeviceRegisterServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C932472FEA900B44692 /* DeviceRegisterServiceDoubles.swift */; };
+		035B1D66249E643400AABFEA /* DeviceTokenDeleterDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE82490769E009C3980 /* DeviceTokenDeleterDoubles.swift */; };
+		035B1D67249E644C00AABFEA /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336D62B241EAAF6006CFC1F /* APIRequest.swift */; };
+		035B1D69249E645E00AABFEA /* APIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1D68249E645E00AABFEA /* APIKit */; };
 		0365F6F02417E79000F452AC /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6EF2417E79000F452AC /* Address.swift */; };
 		0365F6F32417EE4100F452AC /* Character+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6F22417EE4100F452AC /* Character+Sugar.swift */; };
 		0365F6F52417F1E900F452AC /* AddressSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6F42417F1E900F452AC /* AddressSearchService.swift */; };
@@ -143,7 +220,6 @@
 		D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898423B9B5C100C19300 /* GoogleService-Info.plist */; };
 		D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */; };
 		D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */; };
-		D5147508240C8E69002EE20C /* TestableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147506240C8E69002EE20C /* TestableView.swift */; };
 		D514750D240C90DE002EE20C /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = D514750C240C90DE002EE20C /* ViewInspector */; };
 		D514750F240C96F0002EE20C /* XCTAssertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147507240C8E69002EE20C /* XCTAssertView.swift */; };
 		D5147511240C99A9002EE20C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147510240C99A9002EE20C /* CustomTextField.swift */; };
@@ -369,6 +445,14 @@
 		035B1CF2249CFA0900AABFEA /* AppDelegate+Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Window.swift"; sourceTree = "<group>"; };
 		035B1CFC249D109B00AABFEA /* RythmicoTutorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RythmicoTutorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		035B1D08249D115B00AABFEA /* MainTabViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewTests.swift; sourceTree = "<group>"; };
+		035B1D0F249E561C00AABFEA /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		035B1D12249E563A00AABFEA /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		035B1D19249E568600AABFEA /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		035B1D4C249E57B500AABFEA /* TestEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEnvironment.swift; sourceTree = "<group>"; };
+		035B1D58249E5CF800AABFEA /* AppDelegate+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Firebase.swift"; sourceTree = "<group>"; };
+		035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
+		035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		035B1D5F249E608E00AABFEA /* Tutor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tutor.entitlements; sourceTree = "<group>"; };
 		0365F6EF2417E79000F452AC /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		0365F6F22417EE4100F452AC /* Character+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+Sugar.swift"; sourceTree = "<group>"; };
 		0365F6F42417F1E900F452AC /* AddressSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchService.swift; sourceTree = "<group>"; };
@@ -600,6 +684,28 @@
 				035B1CD2249CF5D000AABFEA /* SFSafeSymbols in Frameworks */,
 				035B1CF5249CFA1800AABFEA /* BetterSheet in Frameworks */,
 				035B1CD5249CF7E200AABFEA /* Then in Frameworks */,
+				035B1D1B249E56CD00AABFEA /* FIRAnalyticsConnector.framework in Frameworks */,
+				035B1D1C249E56CD00AABFEA /* FirebaseABTesting.framework in Frameworks */,
+				035B1D1D249E56CD00AABFEA /* FirebaseAnalytics.framework in Frameworks */,
+				035B1D1E249E56CD00AABFEA /* FirebaseAuth.framework in Frameworks */,
+				035B1D1F249E56CD00AABFEA /* FirebaseCore.framework in Frameworks */,
+				035B1D20249E56CD00AABFEA /* FirebaseCoreDiagnostics.framework in Frameworks */,
+				035B1D21249E56CD00AABFEA /* FirebaseCrashlytics.framework in Frameworks */,
+				035B1D22249E56CD00AABFEA /* FirebaseInstallations.framework in Frameworks */,
+				035B1D23249E56CD00AABFEA /* FirebaseInstanceID.framework in Frameworks */,
+				035B1D24249E56CD00AABFEA /* FirebaseMessaging.framework in Frameworks */,
+				035B1D25249E56CD00AABFEA /* FirebasePerformance.framework in Frameworks */,
+				035B1D26249E56CD00AABFEA /* FirebaseRemoteConfig.framework in Frameworks */,
+				035B1D27249E56CD00AABFEA /* GoogleAppMeasurement.framework in Frameworks */,
+				035B1D28249E56CD00AABFEA /* GoogleDataTransport.framework in Frameworks */,
+				035B1D29249E56CD00AABFEA /* GoogleDataTransportCCTSupport.framework in Frameworks */,
+				035B1D2A249E56CD00AABFEA /* GoogleToolboxForMac.framework in Frameworks */,
+				035B1D2B249E56CD00AABFEA /* GoogleUtilities.framework in Frameworks */,
+				035B1D2C249E56CD00AABFEA /* GTMSessionFetcher.framework in Frameworks */,
+				035B1D2D249E56CD00AABFEA /* nanopb.framework in Frameworks */,
+				035B1D2E249E56CD00AABFEA /* PromisesObjC.framework in Frameworks */,
+				035B1D2F249E56CD00AABFEA /* Protobuf.framework in Frameworks */,
+				035B1D69249E645E00AABFEA /* APIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -736,9 +842,10 @@
 		035B1CBD249CF2AA00AABFEA /* RythmicoTutor */ = {
 			isa = PBXGroup;
 			children = (
+				035B1D5F249E608E00AABFEA /* Tutor.entitlements */,
+				035B1D18249E567700AABFEA /* AppEnvironment */,
 				035B1CF7249CFAD900AABFEA /* AppStart */,
-				035B1CC2249CF2AA00AABFEA /* MainTabView.swift */,
-				035B1D08249D115B00AABFEA /* MainTabViewTests.swift */,
+				035B1D11249E562700AABFEA /* Root */,
 				035B1CD0249CF3E300AABFEA /* Supporting Files */,
 				035B1CC6249CF2AC00AABFEA /* Preview Content */,
 			);
@@ -758,6 +865,8 @@
 			children = (
 				035B1CC4249CF2AC00AABFEA /* Assets.xcassets */,
 				035B1CCC249CF2AC00AABFEA /* Info.plist */,
+				035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */,
+				035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -768,11 +877,48 @@
 				035B1CC9249CF2AC00AABFEA /* LaunchScreen.storyboard */,
 				035B1CEA249CF9A400AABFEA /* main.swift */,
 				035B1CBE249CF2AA00AABFEA /* AppDelegate.swift */,
+				035B1D58249E5CF800AABFEA /* AppDelegate+Firebase.swift */,
 				035B1CF0249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift */,
 				035B1CF2249CFA0900AABFEA /* AppDelegate+Window.swift */,
 				035B1CEC249CF9B400AABFEA /* TestDelegate.swift */,
 			);
 			path = AppStart;
+			sourceTree = "<group>";
+		};
+		035B1D11249E562700AABFEA /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				035B1D0F249E561C00AABFEA /* RootView.swift */,
+				035B1D56249E5A5000AABFEA /* Onboarding */,
+				035B1D57249E5A5700AABFEA /* Main */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		035B1D18249E567700AABFEA /* AppEnvironment */ = {
+			isa = PBXGroup;
+			children = (
+				035B1D19249E568600AABFEA /* AppEnvironment.swift */,
+				035B1D4C249E57B500AABFEA /* TestEnvironment.swift */,
+			);
+			path = AppEnvironment;
+			sourceTree = "<group>";
+		};
+		035B1D56249E5A5000AABFEA /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				035B1D12249E563A00AABFEA /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		035B1D57249E5A5700AABFEA /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				035B1CC2249CF2AA00AABFEA /* MainTabView.swift */,
+				035B1D08249D115B00AABFEA /* MainTabViewTests.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		0365F6F12417E95200F452AC /* AddressDetails */ = {
@@ -1249,9 +1395,9 @@
 				D5B57A632414672F00BE9B4F /* Generate Enum Properties */,
 				03341B3723ABB1E7009AE8A8 /* Sources */,
 				03341B3823ABB1E7009AE8A8 /* Frameworks */,
-				D53554B123E0FA4B005A20EB /* Embed Frameworks */,
 				03341B3923ABB1E7009AE8A8 /* Resources */,
 				D509898123B9B2E400C19300 /* Select GoogleService-Info.plist */,
+				D53554B123E0FA4B005A20EB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1278,6 +1424,7 @@
 				035B1CB8249CF2AA00AABFEA /* Sources */,
 				035B1CB9249CF2AA00AABFEA /* Frameworks */,
 				035B1CBA249CF2AA00AABFEA /* Resources */,
+				035B1D5C249E5EA000AABFEA /* Select GoogleService-Info.plist */,
 				035B1D0E249D303400AABFEA /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -1291,6 +1438,7 @@
 				035B1CD4249CF7E200AABFEA /* Then */,
 				035B1CD6249CF7EB00AABFEA /* Valet */,
 				035B1CF4249CFA1800AABFEA /* BetterSheet */,
+				035B1D68249E645E00AABFEA /* APIKit */,
 			);
 			productName = RythmicoTutor;
 			productReference = 035B1CBC249CF2AA00AABFEA /* Tutor.app */;
@@ -1439,7 +1587,9 @@
 			files = (
 				035B1CCB249CF2AC00AABFEA /* LaunchScreen.storyboard in Resources */,
 				035B1CC8249CF2AC00AABFEA /* Preview Assets.xcassets in Resources */,
+				035B1D5E249E5EEC00AABFEA /* GoogleService-Info.plist in Resources */,
 				035B1CC5249CF2AC00AABFEA /* Assets.xcassets in Resources */,
+				035B1D5B249E5E6E00AABFEA /* GoogleService-Info-Debug.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1467,6 +1617,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		035B1D5C249E5EA000AABFEA /* Select GoogleService-Info.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Select GoogleService-Info.plist";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/script/build_phase_select_google_info_plist\n";
+		};
 		03D932F0249C0285003416DC /* Periphery */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1628,7 +1796,6 @@
 				D53555C823E536AE005A20EB /* AppleAuthorizationResponse.swift in Sources */,
 				032215572497034A009D48A8 /* LessonPlanTutorStatusView.swift in Sources */,
 				03B198582471BD82005529EB /* RequestLessonPlanConfirmationView.swift in Sources */,
-				D5147508240C8E69002EE20C /* TestableView.swift in Sources */,
 				D5E04B1923BED80700A161BB /* Fonts.swift in Sources */,
 				03C39DD62496802500C76516 /* Pill.swift in Sources */,
 				03EDA67D24776C6C00FBE527 /* URLOpener.swift in Sources */,
@@ -1688,6 +1855,7 @@
 				03275AD924900422009C3980 /* PushNotificationRegisterService.swift in Sources */,
 				03B19843247181B3005529EB /* RequestLessonPlanFormView.swift in Sources */,
 				03BB5C942472FEA900B44692 /* DeviceRegisterServiceDoubles.swift in Sources */,
+				035B1D14249E565200AABFEA /* TestableView.swift in Sources */,
 				03B198502471B9F7005529EB /* AppDelegate+Appearance.swift in Sources */,
 				D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */,
 				033D47D6247ABF6B0096C50F /* LessonPlanFetchingService.swift in Sources */,
@@ -1709,13 +1877,65 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				035B1D40249E577700AABFEA /* AppleAuthorizationCredentialStateProvider.swift in Sources */,
+				035B1D10249E561C00AABFEA /* RootView.swift in Sources */,
+				035B1D64249E642800AABFEA /* DeviceTokenProviderDoubles.swift in Sources */,
+				035B1D31249E572000AABFEA /* UIApplication+KeyboardDismisser.swift in Sources */,
+				035B1D67249E644C00AABFEA /* APIRequest.swift in Sources */,
 				035B1CBF249CF2AA00AABFEA /* AppDelegate.swift in Sources */,
+				035B1D65249E642D00AABFEA /* DeviceRegisterServiceDoubles.swift in Sources */,
+				035B1D3B249E576900AABFEA /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */,
+				035B1D34249E576900AABFEA /* AuthenticationService.swift in Sources */,
+				035B1D39249E576900AABFEA /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
+				035B1D42249E577700AABFEA /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
+				035B1D62249E63D800AABFEA /* DeviceRegisterService.swift in Sources */,
+				035B1D63249E63EC00AABFEA /* DeviceRegisterCoordinator.swift in Sources */,
+				035B1D4E249E57D100AABFEA /* KeychainDoubles.swift in Sources */,
+				035B1D51249E57F100AABFEA /* HashFunction+Helpers.swift in Sources */,
+				035B1D53249E582800AABFEA /* Animation.swift in Sources */,
+				035B1D35249E576900AABFEA /* DeauthenticationService.swift in Sources */,
+				035B1D3E249E577700AABFEA /* AppleAuthorizationCredential.swift in Sources */,
+				035B1D50249E57E200AABFEA /* URLOpenerDoubles.swift in Sources */,
+				035B1D54249E59BB00AABFEA /* PreviewDevices.swift in Sources */,
+				035B1D45249E577700AABFEA /* AppleAuthorizationResponseDoubles.swift in Sources */,
+				035B1D60249E63CD00AABFEA /* DeviceTokenProvider.swift in Sources */,
+				035B1D3D249E576900AABFEA /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */,
 				035B1CEB249CF9A400AABFEA /* main.swift in Sources */,
+				035B1D61249E63D400AABFEA /* DeviceTokenDeleter.swift in Sources */,
+				035B1D4A249E577700AABFEA /* AppleAuthorizationCompletionDelegate.swift in Sources */,
+				035B1D37249E576900AABFEA /* AuthenticationServiceDoubles.swift in Sources */,
+				035B1D13249E563A00AABFEA /* OnboardingView.swift in Sources */,
+				035B1D3F249E577700AABFEA /* AppleAuthorizationCredentialDoubles.swift in Sources */,
+				035B1D66249E643400AABFEA /* DeviceTokenDeleterDoubles.swift in Sources */,
+				035B1D52249E57FD00AABFEA /* Spacing.swift in Sources */,
+				035B1D30249E571B00AABFEA /* UIAccessibilityProtocol.swift in Sources */,
+				035B1D32249E572900AABFEA /* URLOpener.swift in Sources */,
+				035B1D17249E566800AABFEA /* ActivityIndicator.swift in Sources */,
+				035B1D59249E5CF800AABFEA /* AppDelegate+Firebase.swift in Sources */,
+				035B1D44249E577700AABFEA /* AppleAuthorizationResponse.swift in Sources */,
 				035B1CF3249CFA0900AABFEA /* AppDelegate+Window.swift in Sources */,
+				035B1D43249E577700AABFEA /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,
 				035B1CC3249CF2AA00AABFEA /* MainTabView.swift in Sources */,
+				035B1D41249E577700AABFEA /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
 				035B1CF6249CFA5700AABFEA /* Duration.swift in Sources */,
+				035B1D38249E576900AABFEA /* AuthenticationAccessTokenProvider.swift in Sources */,
+				035B1D3A249E576900AABFEA /* AuthenticationAccessTokenProviderObserver.swift in Sources */,
+				035B1D1A249E568600AABFEA /* AppEnvironment.swift in Sources */,
 				035B1CED249CF9B400AABFEA /* TestDelegate.swift in Sources */,
+				035B1D36249E576900AABFEA /* DeauthenticationServiceDoubles.swift in Sources */,
+				035B1D4D249E57B500AABFEA /* TestEnvironment.swift in Sources */,
+				035B1D46249E577700AABFEA /* AppleAuthorizationService.swift in Sources */,
+				035B1D33249E576900AABFEA /* AuthenticationError.swift in Sources */,
+				035B1D4F249E57DC00AABFEA /* UIAccessibilityDoubles.swift in Sources */,
+				035B1D49249E577700AABFEA /* AppleAuthorizationControllerDoubles.swift in Sources */,
+				035B1D3C249E576900AABFEA /* AuthenticationAccessTokenProviderBroadcast.swift in Sources */,
+				035B1D47249E577700AABFEA /* AppleAuthorizationServiceDoubles.swift in Sources */,
+				035B1D48249E577700AABFEA /* AppleAuthorizationController.swift in Sources */,
+				035B1D15249E565200AABFEA /* TestableView.swift in Sources */,
+				035B1D16249E565C00AABFEA /* AuthorizationAppleIDButton.swift in Sources */,
 				035B1CF1249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift in Sources */,
+				035B1D4B249E578D00AABFEA /* Keychain.swift in Sources */,
+				035B1D55249E5A1800AABFEA /* ContentSizeCategory+Sugar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2004,12 +2224,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RythmicoTutor/Tutor.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"RythmicoTutor/Preview Content\"";
 				DEVELOPMENT_TEAM = 72N659HYBR;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "RythmicoTutor/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2017,6 +2242,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.tutor;
 				PRODUCT_NAME = Tutor;
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.rythmico.tutor";
@@ -2029,12 +2255,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RythmicoTutor/Tutor.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"RythmicoTutor/Preview Content\"";
 				DEVELOPMENT_TEAM = 72N659HYBR;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "RythmicoTutor/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2042,6 +2273,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.tutor;
 				PRODUCT_NAME = Tutor;
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.rythmico.tutor";
@@ -2375,6 +2607,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5AAF7C923ED850E00E410F2 /* XCRemoteSwiftPackageReference "BetterSheet" */;
 			productName = BetterSheet;
+		};
+		035B1D68249E645E00AABFEA /* APIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 03B19835247053F5005529EB /* XCRemoteSwiftPackageReference "APIKit" */;
+			productName = APIKit;
 		};
 		03B19836247053F5005529EB /* APIKit */ = {
 			isa = XCSwiftPackageProductDependency;

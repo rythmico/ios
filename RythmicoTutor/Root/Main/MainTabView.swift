@@ -15,6 +15,17 @@ struct MainTabView: View {
 
     @ObservedObject
     private var state = ViewState()
+
+    private let deviceRegisterCoordinator: DeviceRegisterCoordinator
+
+    init?() {
+        guard
+            let deviceRegisterCoordinator = Current.deviceRegisterCoordinator()
+        else {
+            return nil
+        }
+        self.deviceRegisterCoordinator = deviceRegisterCoordinator
+    }
  
     var body: some View {
         TabView(selection: $state.tabSelection) {
@@ -33,6 +44,7 @@ struct MainTabView: View {
                     Text(TabSelection.profile.title)
                 }
         }
+        .onAppear(perform: deviceRegisterCoordinator.registerDevice)
     }
 }
 
