@@ -7,7 +7,9 @@ struct OnboardingView: View, TestableView {
     var isAppleAuthorizationButtonEnabled: Bool { !isLoading }
 
     @State
-    var errorMessage: String?
+    private(set) var errorMessage: String?
+
+    func dismissError() { errorMessage = nil }
 
     var onAppear: Handler<Self>?
     var body: some View {
@@ -36,9 +38,7 @@ struct OnboardingView: View, TestableView {
             .padding(.spacingLarge)
             .animation(.rythmicoSpring(duration: .durationMedium), value: isLoading)
         }
-        .alert(item: $errorMessage) {
-            Alert(title: Text("An error ocurred"), message: Text($0))
-        }
+        .alert(error: self.errorMessage, dismiss: dismissError)
         .onDisappear {
             Current.uiAccessibility.postAnnouncement("Welcome")
         }

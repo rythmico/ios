@@ -53,6 +53,9 @@ final class OnboardingViewTests: XCTestCase {
             XCTAssertEqual(view.errorMessage, "Whooopsie (17004)")
             XCTAssertEqual(keychain.inMemoryStorage.values.count, 1)
             XCTAssertEqual(keychain.inMemoryStorage.values.first, "USER_ID")
+
+            view.dismissError()
+            XCTAssertNil(view.errorMessage)
         }
     }
 

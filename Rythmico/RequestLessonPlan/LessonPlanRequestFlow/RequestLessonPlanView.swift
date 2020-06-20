@@ -31,9 +31,13 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
         coordinator.state.failureValue?.localizedDescription
     }
 
+    func dismissError() {
+        coordinator.dismissFailure()
+    }
+
     var body: some View {
         ZStack {
-            formView.transition(stateTransition(scale: 0.9)).alert(error: self.errorMessage, dismiss: coordinator.dismissFailure)
+            formView.transition(stateTransition(scale: 0.9)).alert(error: self.errorMessage, dismiss: dismissError)
             loadingView.transition(stateTransition(scale: 0.7))
             confirmationView.transition(stateTransition(scale: 0.7))
         }

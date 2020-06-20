@@ -30,6 +30,10 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
 
     var errorMessage: String? { notificationAuthorizationCoordinator.status.failedValue?.localizedDescription }
 
+    func dismissError() {
+        notificationAuthorizationCoordinator.dismissFailure()
+    }
+
     var onAppear: Handler<Self>?
     var body: some View {
         VStack(spacing: 0) {
@@ -77,7 +81,7 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
             }
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: enablePushNotificationsButtonAction != nil)
-        .alert(error: self.errorMessage, dismiss: notificationAuthorizationCoordinator.dismissFailure)
+        .alert(error: self.errorMessage, dismiss: dismissError)
         .onAppear { self.onAppear?(self) }
         .onAppear(perform: notificationAuthorizationCoordinator.refreshAuthorizationStatus)
     }

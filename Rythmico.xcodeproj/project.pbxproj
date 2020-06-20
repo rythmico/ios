@@ -203,6 +203,7 @@
 		03BB5C962473070C00B44692 /* ReviewRequestViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C952473070C00B44692 /* ReviewRequestViewTests.swift */; };
 		03BB5C9A24733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C9924733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift */; };
 		03C08E742487F663007D1724 /* LessonPlanRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C08E732487F663007D1724 /* LessonPlanRepository.swift */; };
+		03C34360249E7218004907DF /* View+ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AEA24908017009C3980 /* View+ErrorAlert.swift */; };
 		03C39DCE2494FC9D00C76516 /* Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DCD2494FC9D00C76516 /* Sleep.swift */; };
 		03C39DD0249500B900C76516 /* AppDelegate+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DCF249500B900C76516 /* AppDelegate+Firebase.swift */; };
 		03C39DD224950BC300C76516 /* AppDelegate+LaunchScreenCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DD124950BC300C76516 /* AppDelegate+LaunchScreenCache.swift */; };
@@ -221,7 +222,7 @@
 		03FE8192244E204900C5C184 /* AddressItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE8191244E204900C5C184 /* AddressItemView.swift */; };
 		D50811E423FB72A3008103D8 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E323FB72A3008103D8 /* StepBar.swift */; };
 		D50811E623FB769D008103D8 /* RequestLessonPlanFormViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */; };
-		D50811EA23FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E923FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift */; };
+		D50811EA23FD75ED008103D8 /* InstrumentSelectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E923FD75ED008103D8 /* InstrumentSelectionViewTests.swift */; };
 		D509898023B969B700C19300 /* GoogleService-Info-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */; };
 		D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898423B9B5C100C19300 /* GoogleService-Info.plist */; };
 		D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */; };
@@ -530,7 +531,7 @@
 		D50668DA23B946330044E553 /* Rythmico.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rythmico.entitlements; sourceTree = "<group>"; };
 		D50811E323FB72A3008103D8 /* StepBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
 		D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanFormViewTests.swift; sourceTree = "<group>"; };
-		D50811E923FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionViewModelTests.swift; sourceTree = "<group>"; };
+		D50811E923FD75ED008103D8 /* InstrumentSelectionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionViewTests.swift; sourceTree = "<group>"; };
 		D509896523B963B700C19300 /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Carthage/Build/iOS/FirebaseAuth.framework; sourceTree = "<group>"; };
 		D509896623B963B700C19300 /* GoogleDataTransport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleDataTransport.framework; path = Carthage/Build/iOS/GoogleDataTransport.framework; sourceTree = "<group>"; };
 		D509896723B963B700C19300 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = Carthage/Build/iOS/GTMSessionFetcher.framework; sourceTree = "<group>"; };
@@ -1304,7 +1305,7 @@
 				D5AAF7D423F9E1F900E410F2 /* InstrumentSelectionListProvider.swift */,
 				D5AAF7D823F9EB1200E410F2 /* InstrumentSelectionListProviderDoubles.swift */,
 				D5AAF7D023F9ACFA00E410F2 /* InstrumentSelectionView.swift */,
-				D50811E923FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift */,
+				D50811E923FD75ED008103D8 /* InstrumentSelectionViewTests.swift */,
 				D5AAF7DC23FB431E00E410F2 /* InstrumentView.swift */,
 			);
 			path = InstrumentSelection;
@@ -1939,6 +1940,7 @@
 				035B1CF6249CFA5700AABFEA /* Duration.swift in Sources */,
 				035B1D38249E576900AABFEA /* AuthenticationAccessTokenProvider.swift in Sources */,
 				035B1D3A249E576900AABFEA /* AuthenticationAccessTokenProviderObserver.swift in Sources */,
+				03C34360249E7218004907DF /* View+ErrorAlert.swift in Sources */,
 				035B1D1A249E568600AABFEA /* AppEnvironment.swift in Sources */,
 				035B1CED249CF9B400AABFEA /* TestDelegate.swift in Sources */,
 				035B1D36249E576900AABFEA /* DeauthenticationServiceDoubles.swift in Sources */,
@@ -2013,7 +2015,7 @@
 				D53555C123E536A6005A20EB /* AuthenticationAccessTokenProviderObserverTests.swift in Sources */,
 				D53555D023E536B5005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift in Sources */,
 				03D932F4249C0A71003416DC /* LessonPlanCancellationViewTests.swift in Sources */,
-				D50811EA23FD75ED008103D8 /* InstrumentSelectionViewModelTests.swift in Sources */,
+				D50811EA23FD75ED008103D8 /* InstrumentSelectionViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -49,6 +49,10 @@ struct AddressDetailsView: View, TestableView {
         coordinator.searchAddresses(withPostcode: state.postcode)
     }
 
+    func dismissError() {
+        coordinator.dismissError()
+    }
+
     var nextButtonAction: Action? {
         state.selectedAddress.map { address in
             { self.context.setAddress(address) }
@@ -122,7 +126,7 @@ struct AddressDetailsView: View, TestableView {
             .animation(.rythmicoSpring(duration: .durationMedium), value: nextButtonAction != nil)
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: addresses)
-        .alert(error: self.errorMessage, dismiss: coordinator.dismissError)
+        .alert(error: self.errorMessage, dismiss: dismissError)
         .onAppear { self.onAppear?(self) }
     }
 }

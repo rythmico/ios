@@ -87,13 +87,16 @@ final class RequestLessonPlanConfirmationViewTests: XCTestCase {
     func testEnableNotifications_failure() {
         let view = confirmationView(
             authorizationStatus: .notDetermined,
-            authorizationRequestResult: (false, "Something")
+            authorizationRequestResult: (false, "Something 3")
         )
 
         XCTAssertView(view) { view in
             view.enablePushNotificationsButtonAction?()
             XCTAssertNotNil(view.enablePushNotificationsButtonAction)
-            XCTAssertEqual(view.errorMessage, "Something")
+            XCTAssertEqual(view.errorMessage, "Something 3")
+
+            view.dismissError()
+            XCTAssertNil(view.errorMessage)
         }
     }
 }
