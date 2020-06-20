@@ -1,5 +1,9 @@
 import SwiftUI
+#if canImport(Rythmico)
 @testable import Rythmico
+#elseif canImport(Tutor)
+@testable import Tutor
+#endif
 import XCTest
 import ViewInspector
 

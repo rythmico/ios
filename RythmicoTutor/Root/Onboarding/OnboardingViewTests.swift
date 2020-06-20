@@ -1,5 +1,5 @@
 import XCTest
-@testable import Rythmico
+@testable import Tutor
 import AuthenticationServices
 
 final class OnboardingViewTests: XCTestCase {

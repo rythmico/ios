@@ -1,7 +1,8 @@
 import SwiftUI
 import SFSafeSymbols
+import Sugar
 
-struct MainTabView: View {
+struct MainTabView: View, TestableView {
     enum TabSelection: String, Hashable {
         case requests = "Requests"
         case profile = "Profile"
@@ -15,7 +16,19 @@ struct MainTabView: View {
 
     @ObservedObject
     private var state = ViewState()
- 
+
+    private let deviceRegisterCoordinator: DeviceRegisterCoordinator
+
+    init?() {
+        guard
+            let deviceRegisterCoordinator = Current.deviceRegisterCoordinator()
+        else {
+            return nil
+        }
+        self.deviceRegisterCoordinator = deviceRegisterCoordinator
+    }
+
+    var onAppear: Handler<Self>?
     var body: some View {
         TabView(selection: $state.tabSelection) {
             Text("First View")
@@ -33,6 +46,8 @@ struct MainTabView: View {
                     Text(TabSelection.profile.title)
                 }
         }
+        .onAppear { self.onAppear?(self) }
+        .onAppear(perform: deviceRegisterCoordinator.registerDevice)
     }
 }
 

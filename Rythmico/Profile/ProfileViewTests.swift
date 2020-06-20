@@ -144,6 +144,9 @@ final class ProfileViewTests: XCTestCase {
             XCTAssertNil(view.goToPushNotificationsSettingsAction)
             XCTAssertNotNil(view.enablePushNotificationsAction)
             XCTAssertEqual(view.errorMessage, "something")
+
+            view.dismissError()
+            XCTAssertNil(view.errorMessage)
         }
     }
 
