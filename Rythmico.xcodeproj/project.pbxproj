@@ -68,7 +68,6 @@
 		035B1CF3249CFA0900AABFEA /* AppDelegate+Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CF2249CFA0900AABFEA /* AppDelegate+Window.swift */; };
 		035B1CF5249CFA1800AABFEA /* BetterSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1CF4249CFA1800AABFEA /* BetterSheet */; };
 		035B1CF6249CFA5700AABFEA /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506AF2405A6A900CA4094 /* Duration.swift */; };
-		035B1D09249D115B00AABFEA /* MainTabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D08249D115B00AABFEA /* MainTabViewTests.swift */; };
 		035B1D0A249D303300AABFEA /* Sugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53554F523E0FD77005A20EB /* Sugar.framework */; };
 		035B1D0B249D303300AABFEA /* Sugar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D53554F523E0FD77005A20EB /* Sugar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		035B1D10249E561C00AABFEA /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D0F249E561C00AABFEA /* RootView.swift */; };
@@ -150,6 +149,11 @@
 		035B1D69249E645E00AABFEA /* APIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1D68249E645E00AABFEA /* APIKit */; };
 		035B1D6B249E662200AABFEA /* EnumProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D6A249E662200AABFEA /* EnumProperties.swift */; };
 		035B1D6D249E674000AABFEA /* GoogleService-Info-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = 035B1D6C249E674000AABFEA /* GoogleService-Info-Release.plist */; };
+		035B1D72249E689C00AABFEA /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1D71249E689C00AABFEA /* ViewInspector */; };
+		035B1D73249E6AEB00AABFEA /* MainTabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D08249D115B00AABFEA /* MainTabViewTests.swift */; };
+		035B1D74249E6B2D00AABFEA /* XCTAssertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147507240C8E69002EE20C /* XCTAssertView.swift */; };
+		035B1D76249E6D0100AABFEA /* OnboardingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D75249E6D0100AABFEA /* OnboardingViewTests.swift */; };
+		035B1D78249E6D3B00AABFEA /* RootViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D77249E6D3B00AABFEA /* RootViewTests.swift */; };
 		0365F6F02417E79000F452AC /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6EF2417E79000F452AC /* Address.swift */; };
 		0365F6F32417EE4100F452AC /* Character+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6F22417EE4100F452AC /* Character+Sugar.swift */; };
 		0365F6F52417F1E900F452AC /* AddressSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6F42417F1E900F452AC /* AddressSearchService.swift */; };
@@ -457,6 +461,8 @@
 		035B1D5F249E608E00AABFEA /* Tutor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tutor.entitlements; sourceTree = "<group>"; };
 		035B1D6A249E662200AABFEA /* EnumProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumProperties.swift; sourceTree = "<group>"; };
 		035B1D6C249E674000AABFEA /* GoogleService-Info-Release.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Release.plist"; sourceTree = "<group>"; };
+		035B1D75249E6D0100AABFEA /* OnboardingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewTests.swift; sourceTree = "<group>"; };
+		035B1D77249E6D3B00AABFEA /* RootViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewTests.swift; sourceTree = "<group>"; };
 		0365F6EF2417E79000F452AC /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		0365F6F22417EE4100F452AC /* Character+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+Sugar.swift"; sourceTree = "<group>"; };
 		0365F6F42417F1E900F452AC /* AddressSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchService.swift; sourceTree = "<group>"; };
@@ -717,6 +723,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				035B1D72249E689C00AABFEA /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,6 +902,7 @@
 			isa = PBXGroup;
 			children = (
 				035B1D0F249E561C00AABFEA /* RootView.swift */,
+				035B1D77249E6D3B00AABFEA /* RootViewTests.swift */,
 				035B1D56249E5A5000AABFEA /* Onboarding */,
 				035B1D57249E5A5700AABFEA /* Main */,
 			);
@@ -914,6 +922,7 @@
 			isa = PBXGroup;
 			children = (
 				035B1D12249E563A00AABFEA /* OnboardingView.swift */,
+				035B1D75249E6D0100AABFEA /* OnboardingViewTests.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1464,6 +1473,9 @@
 				035B1D02249D109B00AABFEA /* PBXTargetDependency */,
 			);
 			name = RythmicoTutorTests;
+			packageProductDependencies = (
+				035B1D71249E689C00AABFEA /* ViewInspector */,
+			);
 			productName = RythmicoTutorTests;
 			productReference = 035B1CFC249D109B00AABFEA /* RythmicoTutorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -1951,7 +1963,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				035B1D09249D115B00AABFEA /* MainTabViewTests.swift in Sources */,
+				035B1D78249E6D3B00AABFEA /* RootViewTests.swift in Sources */,
+				035B1D74249E6B2D00AABFEA /* XCTAssertView.swift in Sources */,
+				035B1D76249E6D0100AABFEA /* OnboardingViewTests.swift in Sources */,
+				035B1D73249E6AEB00AABFEA /* MainTabViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2232,7 +2247,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = RythmicoTutor/Tutor.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "RythmicoTutor/Supporting Files/Tutor.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 0;
@@ -2263,7 +2278,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = RythmicoTutor/Tutor.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "RythmicoTutor/Supporting Files/Tutor.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 0;
@@ -2620,6 +2635,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 03B19835247053F5005529EB /* XCRemoteSwiftPackageReference "APIKit" */;
 			productName = APIKit;
+		};
+		035B1D71249E689C00AABFEA /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D514750B240C90DE002EE20C /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
 		};
 		03B19836247053F5005529EB /* APIKit */ = {
 			isa = XCSwiftPackageProductDependency;
