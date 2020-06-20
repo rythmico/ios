@@ -148,6 +148,7 @@
 		035B1D66249E643400AABFEA /* DeviceTokenDeleterDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE82490769E009C3980 /* DeviceTokenDeleterDoubles.swift */; };
 		035B1D67249E644C00AABFEA /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336D62B241EAAF6006CFC1F /* APIRequest.swift */; };
 		035B1D69249E645E00AABFEA /* APIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1D68249E645E00AABFEA /* APIKit */; };
+		035B1D6B249E662200AABFEA /* EnumProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D6A249E662200AABFEA /* EnumProperties.swift */; };
 		0365F6F02417E79000F452AC /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6EF2417E79000F452AC /* Address.swift */; };
 		0365F6F32417EE4100F452AC /* Character+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6F22417EE4100F452AC /* Character+Sugar.swift */; };
 		0365F6F52417F1E900F452AC /* AddressSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6F42417F1E900F452AC /* AddressSearchService.swift */; };
@@ -453,6 +454,7 @@
 		035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
 		035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		035B1D5F249E608E00AABFEA /* Tutor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tutor.entitlements; sourceTree = "<group>"; };
+		035B1D6A249E662200AABFEA /* EnumProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumProperties.swift; sourceTree = "<group>"; };
 		0365F6EF2417E79000F452AC /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		0365F6F22417EE4100F452AC /* Character+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+Sugar.swift"; sourceTree = "<group>"; };
 		0365F6F42417F1E900F452AC /* AddressSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchService.swift; sourceTree = "<group>"; };
@@ -864,6 +866,7 @@
 			isa = PBXGroup;
 			children = (
 				035B1CC4249CF2AC00AABFEA /* Assets.xcassets */,
+				035B1D6A249E662200AABFEA /* EnumProperties.swift */,
 				035B1CCC249CF2AC00AABFEA /* Info.plist */,
 				035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */,
 				035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */,
@@ -1934,6 +1937,7 @@
 				035B1D15249E565200AABFEA /* TestableView.swift in Sources */,
 				035B1D16249E565C00AABFEA /* AuthorizationAppleIDButton.swift in Sources */,
 				035B1CF1249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift in Sources */,
+				035B1D6B249E662200AABFEA /* EnumProperties.swift in Sources */,
 				035B1D4B249E578D00AABFEA /* Keychain.swift in Sources */,
 				035B1D55249E5A1800AABFEA /* ContentSizeCategory+Sugar.swift in Sources */,
 			);
