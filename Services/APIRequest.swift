@@ -6,7 +6,12 @@ protocol AuthorizedAPIRequest: Request {
 }
 
 extension AuthorizedAPIRequest {
-    var headerFields: [String: String] { ["Authorization": "Bearer " + accessToken] }
+    var headerFields: [String: String] {
+        [
+            "Authorization": "Bearer " + accessToken,
+            "User-Agent": APIUserAgent.current ?? "Unknown",
+        ]
+    }
 }
 
 protocol RythmicoAPIRequestCore: AuthorizedAPIRequest {}
