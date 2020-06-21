@@ -31,10 +31,7 @@ protocol RythmicoAPIRequest: RythmicoAPIRequestCore, DecodableJSONRequest {}
 protocol RythmicoAPIRequestNoResponse: RythmicoAPIRequestCore where Response == Void, DataParser == JSONRawDataParser {}
 
 extension RythmicoAPIRequestNoResponse {
-    func response(from object: DataParser.Parsed, urlResponse: HTTPURLResponse) throws -> Response {
-        ()
-    }
-
+    func response(from object: DataParser.Parsed, urlResponse: HTTPURLResponse) throws -> Response { () }
     var dataParser: DataParser { JSONRawDataParser() }
 }
 

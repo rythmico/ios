@@ -53,6 +53,8 @@ struct MainTabView: View, TestableView {
 
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView()
+        Current.userAuthenticated()
+
+        return MainTabView()
     }
 }
