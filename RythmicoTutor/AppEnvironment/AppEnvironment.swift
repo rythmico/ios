@@ -17,6 +17,9 @@ struct AppEnvironment {
 
     var accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase
 
+    var bookingRequestRepository: BookingRequestRepository
+    var bookingRequestFetchingService: BookingRequestFetchingServiceProtocol
+
     var deviceTokenProvider: DeviceTokenProvider
     var deviceRegisterService: DeviceRegisterServiceProtocol
     var deviceTokenDeleter: DeviceTokenDeleter
@@ -27,6 +30,12 @@ struct AppEnvironment {
 }
 
 extension AppEnvironment {
+    func bookingRequestFetchingCoordinator() -> BookingRequestFetchingCoordinator? {
+        accessTokenProviderObserver.currentProvider.map {
+            BookingRequestFetchingCoordinator(accessTokenProvider: $0, service: bookingRequestFetchingService, repository: bookingRequestRepository)
+        }
+    }
+
     func deviceRegisterCoordinator() -> DeviceRegisterCoordinator? {
         accessTokenProviderObserver.currentProvider.map {
             DeviceRegisterCoordinator(accessTokenProvider: $0, deviceTokenProvider: deviceTokenProvider, service: deviceRegisterService)
@@ -50,6 +59,8 @@ extension AppEnvironment {
         authenticationService: AuthenticationService(),
         deauthenticationService: DeauthenticationService(),
         accessTokenProviderObserver: AuthenticationAccessTokenProviderObserver(broadcast: AuthenticationAccessTokenProviderBroadcast()),
+        bookingRequestRepository: BookingRequestRepository(),
+        bookingRequestFetchingService: BookingRequestFetchingService(),
         deviceTokenProvider: InstanceID.instanceID(),
         deviceRegisterService: DeviceRegisterService(),
         deviceTokenDeleter: InstanceID.instanceID(),
