@@ -25,6 +25,8 @@ extension AppEnvironment {
             authenticationService: AuthenticationServiceDummy(),
             deauthenticationService: DeauthenticationServiceDummy(),
             accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverDummy(),
+            bookingRequestRepository: BookingRequestRepository(),
+            bookingRequestFetchingService: BookingRequestFetchingServiceDummy(),
             deviceTokenProvider: DeviceTokenProviderDummy(),
             deviceRegisterService: DeviceRegisterServiceDummy(),
             deviceTokenDeleter: DeviceTokenDeleterDummy(),
