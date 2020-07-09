@@ -50,6 +50,9 @@
 		032B6FD424B7881C00299A09 /* InstrumentExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FD324B7881C00299A09 /* InstrumentExtensions.swift */; };
 		032B6FD724B788B200299A09 /* ScheduleDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF6722445E11A002D8F5B /* ScheduleDoubles.swift */; };
 		032B6FDB24B7890700299A09 /* Duration+CasePickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FDA24B7890700299A09 /* Duration+CasePickable.swift */; };
+		032B6FDD24B78A5200299A09 /* BookingRequestFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FDC24B78A5200299A09 /* BookingRequestFetchingService.swift */; };
+		032B6FE024B78ACB00299A09 /* BookingRequestFetchingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FDF24B78ACB00299A09 /* BookingRequestFetchingCoordinator.swift */; };
+		032B6FE224B78E8100299A09 /* BookingRequestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FE124B78E8100299A09 /* BookingRequestRepository.swift */; };
 		03306F74247347570074AA98 /* RequestLessonPlanViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03306F73247347570074AA98 /* RequestLessonPlanViewTests.swift */; };
 		03341B3F23ABB1E7009AE8A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */; };
 		03341B4523ABB1E8009AE8A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4423ABB1E8009AE8A8 /* Assets.xcassets */; };
@@ -439,6 +442,9 @@
 		032B6FCF24B787BB00299A09 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		032B6FD324B7881C00299A09 /* InstrumentExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentExtensions.swift; sourceTree = "<group>"; };
 		032B6FDA24B7890700299A09 /* Duration+CasePickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Duration+CasePickable.swift"; sourceTree = "<group>"; };
+		032B6FDC24B78A5200299A09 /* BookingRequestFetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestFetchingService.swift; sourceTree = "<group>"; };
+		032B6FDF24B78ACB00299A09 /* BookingRequestFetchingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestFetchingCoordinator.swift; sourceTree = "<group>"; };
+		032B6FE124B78E8100299A09 /* BookingRequestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestRepository.swift; sourceTree = "<group>"; };
 		03306F73247347570074AA98 /* RequestLessonPlanViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanViewTests.swift; sourceTree = "<group>"; };
 		03341B3B23ABB1E7009AE8A8 /* Rythmico.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rythmico.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -781,6 +787,16 @@
 			path = Instrument;
 			sourceTree = "<group>";
 		};
+		032B6FDE24B78A8100299A09 /* BookingRequest */ = {
+			isa = PBXGroup;
+			children = (
+				032B6FE124B78E8100299A09 /* BookingRequestRepository.swift */,
+				032B6FDC24B78A5200299A09 /* BookingRequestFetchingService.swift */,
+				032B6FDF24B78ACB00299A09 /* BookingRequestFetchingCoordinator.swift */,
+			);
+			path = BookingRequest;
+			sourceTree = "<group>";
+		};
 		03341B3223ABB1E7009AE8A8 = {
 			isa = PBXGroup;
 			children = (
@@ -1120,6 +1136,7 @@
 				0336D62B241EAAF6006CFC1F /* APIRequest.swift */,
 				03C34361249FC16E004907DF /* APIUserAgent.swift */,
 				D535549823E0FA4A005A20EB /* Auth */,
+				032B6FDE24B78A8100299A09 /* BookingRequest */,
 				03A91EF924918A4700DEAD5E /* DeviceRegistration */,
 				03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */,
 				D535547A23DF3E81005A20EB /* Keychain */,
@@ -1945,6 +1962,7 @@
 				035B1D64249E642800AABFEA /* DeviceTokenProviderDoubles.swift in Sources */,
 				035B1D31249E572000AABFEA /* UIApplication+KeyboardDismisser.swift in Sources */,
 				035B1D67249E644C00AABFEA /* APIRequest.swift in Sources */,
+				032B6FDD24B78A5200299A09 /* BookingRequestFetchingService.swift in Sources */,
 				035B1CBF249CF2AA00AABFEA /* AppDelegate.swift in Sources */,
 				035B1D65249E642D00AABFEA /* DeviceRegisterServiceDoubles.swift in Sources */,
 				035B1D3B249E576900AABFEA /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */,
@@ -1959,8 +1977,10 @@
 				035B1D53249E582800AABFEA /* Animation.swift in Sources */,
 				035B1D35249E576900AABFEA /* DeauthenticationService.swift in Sources */,
 				035B1D3E249E577700AABFEA /* AppleAuthorizationCredential.swift in Sources */,
+				032B6FE024B78ACB00299A09 /* BookingRequestFetchingCoordinator.swift in Sources */,
 				032B6FD724B788B200299A09 /* ScheduleDoubles.swift in Sources */,
 				035B1D50249E57E200AABFEA /* URLOpenerDoubles.swift in Sources */,
+				032B6FE224B78E8100299A09 /* BookingRequestRepository.swift in Sources */,
 				035B1D54249E59BB00AABFEA /* PreviewDevices.swift in Sources */,
 				035B1D45249E577700AABFEA /* AppleAuthorizationResponseDoubles.swift in Sources */,
 				035B1D60249E63CD00AABFEA /* DeviceTokenProvider.swift in Sources */,
