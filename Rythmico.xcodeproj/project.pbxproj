@@ -230,6 +230,7 @@
 		03D932F2249C096B003416DC /* LessonPlanDetailViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D932F1249C096B003416DC /* LessonPlanDetailViewTests.swift */; };
 		03D932F4249C0A71003416DC /* LessonPlanCancellationViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D932F3249C0A71003416DC /* LessonPlanCancellationViewTests.swift */; };
 		03D932F6249C0C56003416DC /* LessonPlanCancellationReasonViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D932F5249C0C56003416DC /* LessonPlanCancellationReasonViewTests.swift */; };
+		03E88E8224B7975E0077A420 /* BookingRequestFetchingServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E8124B7975E0077A420 /* BookingRequestFetchingServiceDoubles.swift */; };
 		03EDA6792476F2CB00FBE527 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA6782476F2CB00FBE527 /* ProfileView.swift */; };
 		03EDA67B2477695900FBE527 /* ProfileViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67A2477695900FBE527 /* ProfileViewTests.swift */; };
 		03EDA67D24776C6C00FBE527 /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67C24776C6C00FBE527 /* URLOpener.swift */; };
@@ -548,6 +549,7 @@
 		03D932F1249C096B003416DC /* LessonPlanDetailViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanDetailViewTests.swift; sourceTree = "<group>"; };
 		03D932F3249C0A71003416DC /* LessonPlanCancellationViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanCancellationViewTests.swift; sourceTree = "<group>"; };
 		03D932F5249C0C56003416DC /* LessonPlanCancellationReasonViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanCancellationReasonViewTests.swift; sourceTree = "<group>"; };
+		03E88E8124B7975E0077A420 /* BookingRequestFetchingServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestFetchingServiceDoubles.swift; sourceTree = "<group>"; };
 		03EDA6782476F2CB00FBE527 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		03EDA67A2477695900FBE527 /* ProfileViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewTests.swift; sourceTree = "<group>"; };
 		03EDA67C24776C6C00FBE527 /* URLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
@@ -795,6 +797,7 @@
 			children = (
 				032B6FE124B78E8100299A09 /* BookingRequestRepository.swift */,
 				032B6FDC24B78A5200299A09 /* BookingRequestFetchingService.swift */,
+				03E88E8124B7975E0077A420 /* BookingRequestFetchingServiceDoubles.swift */,
 				032B6FDF24B78ACB00299A09 /* BookingRequestFetchingCoordinator.swift */,
 			);
 			path = BookingRequest;
@@ -2002,6 +2005,7 @@
 				035B1D30249E571B00AABFEA /* UIAccessibilityProtocol.swift in Sources */,
 				032B6FCC24B7877B00299A09 /* BookingRequest.swift in Sources */,
 				032B6FCB24B7877600299A09 /* BookingRequestDoubles.swift in Sources */,
+				03E88E8224B7975E0077A420 /* BookingRequestFetchingServiceDoubles.swift in Sources */,
 				035B1D32249E572900AABFEA /* URLOpener.swift in Sources */,
 				035B1D17249E566800AABFEA /* ActivityIndicator.swift in Sources */,
 				032B6FD124B787BB00299A09 /* Gender.swift in Sources */,
