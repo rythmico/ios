@@ -1,17 +1,6 @@
 import Foundation
-import Combine
 
-final class BookingRequestFetchingCoordinator: ObservableObject {
-    enum State {
-        case idle
-        case loading
-        case failure(Error)
-        case success([BookingRequest])
-    }
-
-    @Published
-    private(set) var state: State = .idle
-
+final class BookingRequestFetchingCoordinator: FailableActivityCoordinator<[BookingRequest]> {
     private let accessTokenProvider: AuthenticationAccessTokenProvider
     private let service: BookingRequestFetchingServiceProtocol
     private let repository: BookingRequestRepository
@@ -34,21 +23,15 @@ final class BookingRequestFetchingCoordinator: ObservableObject {
                 self.service.bookingRequests(accessToken: accessToken) { result in
                     switch result {
                     case .success(let bookingRequests):
-                        self.state = .success(bookingRequests)
+                        self.state = .finished(.success(bookingRequests))
                         self.repository.latestBookingRequests = bookingRequests
                     case .failure(let error):
-                        self.state = .failure(error)
+                        self.state = .finished(.failure(error))
                     }
                 }
             case .failure(let error):
-                self.state = .failure(error) // TODO: handle
+                self.state = .finished(.failure(error)) // TODO: handle
             }
-        }
-    }
-
-    func dismissFailure() {
-        if case .failure = state {
-            state = .idle
         }
     }
 }
