@@ -41,6 +41,15 @@
 		03275AE724907462009C3980 /* DeviceTokenDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE624907462009C3980 /* DeviceTokenDeleter.swift */; };
 		03275AE92490769E009C3980 /* DeviceTokenDeleterDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE82490769E009C3980 /* DeviceTokenDeleterDoubles.swift */; };
 		03275AEB24908017009C3980 /* View+ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AEA24908017009C3980 /* View+ErrorAlert.swift */; };
+		032B6FCB24B7877600299A09 /* BookingRequestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FC924B7875300299A09 /* BookingRequestDoubles.swift */; };
+		032B6FCC24B7877B00299A09 /* BookingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FC524B783C000299A09 /* BookingRequest.swift */; };
+		032B6FCD24B7879300299A09 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF6702445E0FB002D8F5B /* Schedule.swift */; };
+		032B6FD024B787BB00299A09 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FCF24B787BB00299A09 /* Gender.swift */; };
+		032B6FD124B787BB00299A09 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FCF24B787BB00299A09 /* Gender.swift */; };
+		032B6FD224B787D700299A09 /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D623F9E20C00E410F2 /* Instrument.swift */; };
+		032B6FD424B7881C00299A09 /* InstrumentExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FD324B7881C00299A09 /* InstrumentExtensions.swift */; };
+		032B6FD724B788B200299A09 /* ScheduleDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF6722445E11A002D8F5B /* ScheduleDoubles.swift */; };
+		032B6FDB24B7890700299A09 /* Duration+CasePickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FDA24B7890700299A09 /* Duration+CasePickable.swift */; };
 		03306F74247347570074AA98 /* RequestLessonPlanViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03306F73247347570074AA98 /* RequestLessonPlanViewTests.swift */; };
 		03341B3F23ABB1E7009AE8A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */; };
 		03341B4523ABB1E8009AE8A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4423ABB1E8009AE8A8 /* Assets.xcassets */; };
@@ -425,6 +434,11 @@
 		03275AE624907462009C3980 /* DeviceTokenDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTokenDeleter.swift; sourceTree = "<group>"; };
 		03275AE82490769E009C3980 /* DeviceTokenDeleterDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTokenDeleterDoubles.swift; sourceTree = "<group>"; };
 		03275AEA24908017009C3980 /* View+ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ErrorAlert.swift"; sourceTree = "<group>"; };
+		032B6FC524B783C000299A09 /* BookingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequest.swift; sourceTree = "<group>"; };
+		032B6FC924B7875300299A09 /* BookingRequestDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestDoubles.swift; sourceTree = "<group>"; };
+		032B6FCF24B787BB00299A09 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		032B6FD324B7881C00299A09 /* InstrumentExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentExtensions.swift; sourceTree = "<group>"; };
+		032B6FDA24B7890700299A09 /* Duration+CasePickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Duration+CasePickable.swift"; sourceTree = "<group>"; };
 		03306F73247347570074AA98 /* RequestLessonPlanViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanViewTests.swift; sourceTree = "<group>"; };
 		03341B3B23ABB1E7009AE8A8 /* Rythmico.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rythmico.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -749,6 +763,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		032B6FC824B783D300299A09 /* BookingRequest */ = {
+			isa = PBXGroup;
+			children = (
+				032B6FC524B783C000299A09 /* BookingRequest.swift */,
+				032B6FC924B7875300299A09 /* BookingRequestDoubles.swift */,
+			);
+			path = BookingRequest;
+			sourceTree = "<group>";
+		};
+		032B6FD524B7882B00299A09 /* Instrument */ = {
+			isa = PBXGroup;
+			children = (
+				D5AAF7D623F9E20C00E410F2 /* Instrument.swift */,
+				032B6FD324B7881C00299A09 /* InstrumentExtensions.swift */,
+			);
+			path = Instrument;
+			sourceTree = "<group>";
+		};
 		03341B3223ABB1E7009AE8A8 = {
 			isa = PBXGroup;
 			children = (
@@ -995,6 +1027,7 @@
 		03AAF6742445E123002D8F5B /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
+				032B6FDA24B7890700299A09 /* Duration+CasePickable.swift */,
 				03AAF6702445E0FB002D8F5B /* Schedule.swift */,
 				03AAF6722445E11A002D8F5B /* ScheduleDoubles.swift */,
 			);
@@ -1013,6 +1046,7 @@
 		03B71326241D84F300DED025 /* Student */ = {
 			isa = PBXGroup;
 			children = (
+				032B6FCF24B787BB00299A09 /* Gender.swift */,
 				D5F506B52406360900CA4094 /* Student.swift */,
 				03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */,
 			);
@@ -1102,7 +1136,8 @@
 			children = (
 				03B71325241D84B400DED025 /* Address */,
 				03EDA66C2476AF0300FBE527 /* AddressDetails */,
-				D5AAF7D623F9E20C00E410F2 /* Instrument.swift */,
+				032B6FC824B783D300299A09 /* BookingRequest */,
+				032B6FD524B7882B00299A09 /* Instrument */,
 				03BB5C9E2473463200B44692 /* LessonPlan */,
 				03AAF6742445E123002D8F5B /* Schedule */,
 				03B71326241D84F300DED025 /* Student */,
@@ -1802,6 +1837,7 @@
 				031378C3249A722F005FC49C /* LessonPlanCancellationView.swift in Sources */,
 				D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */,
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
+				032B6FD024B787BB00299A09 /* Gender.swift in Sources */,
 				D53555CE23E536AE005A20EB /* AppleAuthorizationControllerDoubles.swift in Sources */,
 				03B198542471BBE8005529EB /* AppDelegate+PushNotifications.swift in Sources */,
 				D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */,
@@ -1814,6 +1850,7 @@
 				03AAF6712445E0FB002D8F5B /* Schedule.swift in Sources */,
 				03275AE3249070D5009C3980 /* DeviceRegisterService.swift in Sources */,
 				03A3F6EC2447D3FD00F6391D /* UIScreen+Sugar.swift in Sources */,
+				032B6FD424B7881C00299A09 /* InstrumentExtensions.swift in Sources */,
 				03C39DD224950BC300C76516 /* AppDelegate+LaunchScreenCache.swift in Sources */,
 				031378C7249A7ADE005FC49C /* LessonPlanCancellationReasonView.swift in Sources */,
 				D53555C523E536AE005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
@@ -1888,6 +1925,7 @@
 				03C39DDA2496DBC700C76516 /* LessonPlanDetailView.swift in Sources */,
 				03C39DD424967E5B00C76516 /* TitleContentView.swift in Sources */,
 				0372E35E249AD7C10048B402 /* LessonPlanCancellationService.swift in Sources */,
+				032B6FDB24B7890700299A09 /* Duration+CasePickable.swift in Sources */,
 				03A3F6E32447880A00F6391D /* FloatingView.swift in Sources */,
 				03C34362249FC16E004907DF /* APIUserAgent.swift in Sources */,
 				D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */,
@@ -1921,6 +1959,7 @@
 				035B1D53249E582800AABFEA /* Animation.swift in Sources */,
 				035B1D35249E576900AABFEA /* DeauthenticationService.swift in Sources */,
 				035B1D3E249E577700AABFEA /* AppleAuthorizationCredential.swift in Sources */,
+				032B6FD724B788B200299A09 /* ScheduleDoubles.swift in Sources */,
 				035B1D50249E57E200AABFEA /* URLOpenerDoubles.swift in Sources */,
 				035B1D54249E59BB00AABFEA /* PreviewDevices.swift in Sources */,
 				035B1D45249E577700AABFEA /* AppleAuthorizationResponseDoubles.swift in Sources */,
@@ -1935,8 +1974,11 @@
 				035B1D66249E643400AABFEA /* DeviceTokenDeleterDoubles.swift in Sources */,
 				035B1D52249E57FD00AABFEA /* Spacing.swift in Sources */,
 				035B1D30249E571B00AABFEA /* UIAccessibilityProtocol.swift in Sources */,
+				032B6FCC24B7877B00299A09 /* BookingRequest.swift in Sources */,
+				032B6FCB24B7877600299A09 /* BookingRequestDoubles.swift in Sources */,
 				035B1D32249E572900AABFEA /* URLOpener.swift in Sources */,
 				035B1D17249E566800AABFEA /* ActivityIndicator.swift in Sources */,
+				032B6FD124B787BB00299A09 /* Gender.swift in Sources */,
 				035B1D59249E5CF800AABFEA /* AppDelegate+Firebase.swift in Sources */,
 				035B1D44249E577700AABFEA /* AppleAuthorizationResponse.swift in Sources */,
 				035B1CF3249CFA0900AABFEA /* AppDelegate+Window.swift in Sources */,
@@ -1950,6 +1992,7 @@
 				035B1D1A249E568600AABFEA /* AppEnvironment.swift in Sources */,
 				035B1CED249CF9B400AABFEA /* TestDelegate.swift in Sources */,
 				035B1D36249E576900AABFEA /* DeauthenticationServiceDoubles.swift in Sources */,
+				032B6FD224B787D700299A09 /* Instrument.swift in Sources */,
 				035B1D4D249E57B500AABFEA /* TestEnvironment.swift in Sources */,
 				035B1D46249E577700AABFEA /* AppleAuthorizationService.swift in Sources */,
 				035B1D33249E576900AABFEA /* AuthenticationError.swift in Sources */,
@@ -1963,6 +2006,7 @@
 				035B1CF1249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift in Sources */,
 				035B1D6B249E662200AABFEA /* EnumProperties.swift in Sources */,
 				035B1D4B249E578D00AABFEA /* Keychain.swift in Sources */,
+				032B6FCD24B7879300299A09 /* Schedule.swift in Sources */,
 				035B1D55249E5A1800AABFEA /* ContentSizeCategory+Sugar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
