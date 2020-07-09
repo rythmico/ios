@@ -53,6 +53,8 @@
 		032B6FDD24B78A5200299A09 /* BookingRequestFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FDC24B78A5200299A09 /* BookingRequestFetchingService.swift */; };
 		032B6FE024B78ACB00299A09 /* BookingRequestFetchingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FDF24B78ACB00299A09 /* BookingRequestFetchingCoordinator.swift */; };
 		032B6FE224B78E8100299A09 /* BookingRequestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FE124B78E8100299A09 /* BookingRequestRepository.swift */; };
+		032B6FE424B7953600299A09 /* ActivityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FE324B7953600299A09 /* ActivityCoordinator.swift */; };
+		032B6FE524B7953600299A09 /* ActivityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FE324B7953600299A09 /* ActivityCoordinator.swift */; };
 		03306F74247347570074AA98 /* RequestLessonPlanViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03306F73247347570074AA98 /* RequestLessonPlanViewTests.swift */; };
 		03341B3F23ABB1E7009AE8A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */; };
 		03341B4523ABB1E8009AE8A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03341B4423ABB1E8009AE8A8 /* Assets.xcassets */; };
@@ -445,6 +447,7 @@
 		032B6FDC24B78A5200299A09 /* BookingRequestFetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestFetchingService.swift; sourceTree = "<group>"; };
 		032B6FDF24B78ACB00299A09 /* BookingRequestFetchingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestFetchingCoordinator.swift; sourceTree = "<group>"; };
 		032B6FE124B78E8100299A09 /* BookingRequestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestRepository.swift; sourceTree = "<group>"; };
+		032B6FE324B7953600299A09 /* ActivityCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCoordinator.swift; sourceTree = "<group>"; };
 		03306F73247347570074AA98 /* RequestLessonPlanViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanViewTests.swift; sourceTree = "<group>"; };
 		03341B3B23ABB1E7009AE8A8 /* Rythmico.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rythmico.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03341B3E23ABB1E7009AE8A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1132,6 +1135,7 @@
 		03EDA6692476AD6800FBE527 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				032B6FE324B7953600299A09 /* ActivityCoordinator.swift */,
 				03EDA66B2476AEF600FBE527 /* AddressDetails */,
 				0336D62B241EAAF6006CFC1F /* APIRequest.swift */,
 				03C34361249FC16E004907DF /* APIUserAgent.swift */,
@@ -1932,6 +1936,7 @@
 				03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */,
 				03275AD924900422009C3980 /* PushNotificationRegisterService.swift in Sources */,
 				03B19843247181B3005529EB /* RequestLessonPlanFormView.swift in Sources */,
+				032B6FE424B7953600299A09 /* ActivityCoordinator.swift in Sources */,
 				03BB5C942472FEA900B44692 /* DeviceRegisterServiceDoubles.swift in Sources */,
 				035B1D14249E565200AABFEA /* TestableView.swift in Sources */,
 				03B198502471B9F7005529EB /* AppDelegate+Appearance.swift in Sources */,
@@ -1986,6 +1991,7 @@
 				035B1D60249E63CD00AABFEA /* DeviceTokenProvider.swift in Sources */,
 				035B1D3D249E576900AABFEA /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */,
 				035B1CEB249CF9A400AABFEA /* main.swift in Sources */,
+				032B6FE524B7953600299A09 /* ActivityCoordinator.swift in Sources */,
 				035B1D61249E63D400AABFEA /* DeviceTokenDeleter.swift in Sources */,
 				035B1D4A249E577700AABFEA /* AppleAuthorizationCompletionDelegate.swift in Sources */,
 				035B1D37249E576900AABFEA /* AuthenticationServiceDoubles.swift in Sources */,
