@@ -5,7 +5,7 @@ struct Schedule: Equatable, Codable, Hashable {
     var duration: Duration
 }
 
-enum Duration: Int, Equatable, Codable, CasePickable, CaseIterable, Hashable {
+enum Duration: Int, Equatable, Codable, CaseIterable, Hashable {
     // NOTE: do not EVER remove any existing cases.
     // To modify picker options, instead explicitly specify
     // which cases you want to show on a picker by declaring
