@@ -17,7 +17,9 @@ extension AppEnvironment {
 extension AppEnvironment {
     static var dummy: AppEnvironment {
         AppEnvironment(
+            calendar: Calendar(identifier: .gregorian),
             locale: Locale(identifier: "en_GB"),
+            timeZone: TimeZone(identifier: "Europe/London")!,
             keychain: KeychainDummy(),
             appleAuthorizationService: AppleAuthorizationServiceDummy(),
             appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcherDummy(),
@@ -25,6 +27,8 @@ extension AppEnvironment {
             authenticationService: AuthenticationServiceDummy(),
             deauthenticationService: DeauthenticationServiceDummy(),
             accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverDummy(),
+            bookingRequestRepository: BookingRequestRepository(),
+            bookingRequestFetchingService: BookingRequestFetchingServiceDummy(),
             deviceTokenProvider: DeviceTokenProviderDummy(),
             deviceRegisterService: DeviceRegisterServiceDummy(),
             deviceTokenDeleter: DeviceTokenDeleterDummy(),

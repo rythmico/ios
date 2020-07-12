@@ -30,29 +30,42 @@ struct MainTabView: View, TestableView {
 
     var onAppear: Handler<Self>?
     var body: some View {
-        TabView(selection: $state.tabSelection) {
-            Text("First View")
-                .font(.title)
-                .tag(TabSelection.requests)
-                .tabItem {
-                    Image(systemSymbol: .musicNoteList).font(.system(size: 21, weight: .bold))
-                    Text(TabSelection.requests.title)
-                }
-            Text("Second View")
-                .font(.title)
-                .tag(TabSelection.profile)
-                .tabItem {
-                    Image(systemSymbol: .personFill).font(.system(size: 21, weight: .semibold))
-                    Text(TabSelection.profile.title)
-                }
+        NavigationView {
+            TabView(selection: $state.tabSelection) {
+                BookingRequestsView()
+                    .tag(TabSelection.requests)
+                    .tabItem {
+                        Image(systemSymbol: .musicNoteList).font(.system(size: 21, weight: .bold))
+                        Text(TabSelection.requests.title)
+                    }
+                Text("Second View")
+                    .font(.title)
+                    .tag(TabSelection.profile)
+                    .tabItem {
+                        Image(systemSymbol: .personFill).font(.system(size: 21, weight: .semibold))
+                        Text(TabSelection.profile.title)
+                    }
+            }
+            .navigationBarTitle(Text(state.tabSelection.title), displayMode: .automatic)
         }
         .onAppear { self.onAppear?(self) }
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
     }
 }
 
+#if DEBUG
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView()
+        Current.userAuthenticated()
+
+        Current.bookingRequestFetchingService = BookingRequestFetchingServiceStub(
+            result: .success([.stub, .longStub]),
+//            result: .failure("b o i"),
+            delay: 2
+//            delay: nil
+        )
+
+        return MainTabView()
     }
 }
+#endif

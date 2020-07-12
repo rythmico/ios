@@ -6,7 +6,12 @@ protocol AuthorizedAPIRequest: Request {
 }
 
 extension AuthorizedAPIRequest {
-    var headerFields: [String: String] { ["Authorization": "Bearer " + accessToken] }
+    var headerFields: [String: String] {
+        [
+            "Authorization": "Bearer " + accessToken,
+            "User-Agent": APIUserAgent.current ?? "Unknown",
+        ]
+    }
 }
 
 protocol RythmicoAPIRequestCore: AuthorizedAPIRequest {}
@@ -23,13 +28,18 @@ extension RythmicoAPIRequestCore {
 
 protocol RythmicoAPIRequest: RythmicoAPIRequestCore, DecodableJSONRequest {}
 
+extension RythmicoAPIRequest {
+    var decoder: Decoder {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .millisecondsSince1970
+        return decoder
+    }
+}
+
 protocol RythmicoAPIRequestNoResponse: RythmicoAPIRequestCore where Response == Void, DataParser == JSONRawDataParser {}
 
 extension RythmicoAPIRequestNoResponse {
-    func response(from object: DataParser.Parsed, urlResponse: HTTPURLResponse) throws -> Response {
-        ()
-    }
-
+    func response(from object: DataParser.Parsed, urlResponse: HTTPURLResponse) throws -> Response { () }
     var dataParser: DataParser { JSONRawDataParser() }
 }
 
