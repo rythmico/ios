@@ -60,7 +60,9 @@ struct MainTabView_Previews: PreviewProvider {
 
         Current.bookingRequestFetchingService = BookingRequestFetchingServiceStub(
             result: .success([.stub, .longStub]),
-            delay: nil
+//            result: .failure("b o i"),
+            delay: 2
+//            delay: nil
         )
 
         return MainTabView()
