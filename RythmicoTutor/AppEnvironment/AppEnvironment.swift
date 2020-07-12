@@ -3,9 +3,13 @@ import class UIKit.UIApplication
 import struct UIKit.UIAccessibility
 import class UserNotifications.UNUserNotificationCenter
 import class FirebaseInstanceID.InstanceID
+import Sugar
+import Then
 
 struct AppEnvironment {
+    var calendar: Calendar
     var locale: Locale
+    var timeZone: TimeZone
 
     var keychain: KeychainProtocol
 
@@ -30,6 +34,14 @@ struct AppEnvironment {
 }
 
 extension AppEnvironment {
+    func dateFormatter(format: DateFormatter.Format) -> DateFormatter {
+        DateFormatter(format: format).with {
+            $0.calendar = calendar
+            $0.locale = locale
+            $0.timeZone = timeZone
+        }
+    }
+
     func bookingRequestFetchingCoordinator() -> BookingRequestFetchingCoordinator? {
         accessTokenProviderObserver.currentProvider.map {
             BookingRequestFetchingCoordinator(accessTokenProvider: $0, service: bookingRequestFetchingService, repository: bookingRequestRepository)
@@ -49,7 +61,9 @@ extension AppEnvironment {
 
 extension AppEnvironment {
     static let live = AppEnvironment(
+        calendar: .autoupdatingCurrent,
         locale: .autoupdatingCurrent,
+        timeZone: .autoupdatingCurrent,
         keychain: Keychain.localKeychain,
         appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
         appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
