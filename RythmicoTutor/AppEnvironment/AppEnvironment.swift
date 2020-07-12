@@ -35,10 +35,23 @@ struct AppEnvironment {
 
 extension AppEnvironment {
     func dateFormatter(format: DateFormatter.Format) -> DateFormatter {
-        DateFormatter(format: format).with {
+        DateFormatter().then {
             $0.calendar = calendar
             $0.locale = locale
             $0.timeZone = timeZone
+            $0.setFormat(format)
+        }
+    }
+
+    func relativeDateTimeFormatter(
+        context: Formatter.Context,
+        style: RelativeDateTimeFormatter.UnitsStyle
+    ) -> RelativeDateTimeFormatter {
+        RelativeDateTimeFormatter().then {
+            $0.calendar = calendar
+            $0.locale = locale
+            $0.formattingContext = context
+            $0.unitsStyle = style
         }
     }
 

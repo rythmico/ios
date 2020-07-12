@@ -231,6 +231,7 @@
 		03D932F4249C0A71003416DC /* LessonPlanCancellationViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D932F3249C0A71003416DC /* LessonPlanCancellationViewTests.swift */; };
 		03D932F6249C0C56003416DC /* LessonPlanCancellationReasonViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D932F5249C0C56003416DC /* LessonPlanCancellationReasonViewTests.swift */; };
 		03E88E8224B7975E0077A420 /* BookingRequestFetchingServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E8124B7975E0077A420 /* BookingRequestFetchingServiceDoubles.swift */; };
+		03E88E8424B8B9020077A420 /* BookingRequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E8324B8B9020077A420 /* BookingRequestsView.swift */; };
 		03E88E8724BB7EB10077A420 /* Result+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E8624BB7EB10077A420 /* Result+Sugar.swift */; };
 		03E88E8924BB82290077A420 /* DateFormatter+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E8824BB82290077A420 /* DateFormatter+Sugar.swift */; };
 		03EDA6792476F2CB00FBE527 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA6782476F2CB00FBE527 /* ProfileView.swift */; };
@@ -552,6 +553,7 @@
 		03D932F3249C0A71003416DC /* LessonPlanCancellationViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanCancellationViewTests.swift; sourceTree = "<group>"; };
 		03D932F5249C0C56003416DC /* LessonPlanCancellationReasonViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanCancellationReasonViewTests.swift; sourceTree = "<group>"; };
 		03E88E8124B7975E0077A420 /* BookingRequestFetchingServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestFetchingServiceDoubles.swift; sourceTree = "<group>"; };
+		03E88E8324B8B9020077A420 /* BookingRequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestsView.swift; sourceTree = "<group>"; };
 		03E88E8624BB7EB10077A420 /* Result+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Sugar.swift"; sourceTree = "<group>"; };
 		03E88E8824BB82290077A420 /* DateFormatter+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Sugar.swift"; sourceTree = "<group>"; };
 		03EDA6782476F2CB00FBE527 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -918,6 +920,7 @@
 				035B1D18249E567700AABFEA /* AppEnvironment */,
 				035B1CF7249CFAD900AABFEA /* AppStart */,
 				035B1D11249E562700AABFEA /* Root */,
+				03E88E8524B8B9100077A420 /* BookingRequests */,
 				035B1CD0249CF3E300AABFEA /* Supporting Files */,
 				035B1CC6249CF2AC00AABFEA /* Preview Content */,
 			);
@@ -1137,6 +1140,14 @@
 				03A91EF7249189E000DEAD5E /* PushNotificationAuthorizationCoordinatorDoubles.swift */,
 			);
 			path = PushNotifications;
+			sourceTree = "<group>";
+		};
+		03E88E8524B8B9100077A420 /* BookingRequests */ = {
+			isa = PBXGroup;
+			children = (
+				03E88E8324B8B9020077A420 /* BookingRequestsView.swift */,
+			);
+			path = BookingRequests;
 			sourceTree = "<group>";
 		};
 		03EDA6692476AD6800FBE527 /* Services */ = {
@@ -1979,6 +1990,7 @@
 				032B6FDD24B78A5200299A09 /* BookingRequestFetchingService.swift in Sources */,
 				035B1CBF249CF2AA00AABFEA /* AppDelegate.swift in Sources */,
 				035B1D65249E642D00AABFEA /* DeviceRegisterServiceDoubles.swift in Sources */,
+				03E88E8424B8B9020077A420 /* BookingRequestsView.swift in Sources */,
 				035B1D3B249E576900AABFEA /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */,
 				035B1D34249E576900AABFEA /* AuthenticationService.swift in Sources */,
 				035B1D39249E576900AABFEA /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
