@@ -40,6 +40,7 @@ struct BookingRequestsView: View {
     }
 }
 
+#if DEBUG
 struct BookingRequestsView_Previews: PreviewProvider {
     static var previews: some View {
         Current.userAuthenticated()
@@ -52,3 +53,4 @@ struct BookingRequestsView_Previews: PreviewProvider {
         return BookingRequestsView()
     }
 }
+#endif
