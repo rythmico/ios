@@ -10,7 +10,9 @@ final class BookingRequestFetchingService: BookingRequestFetchingServiceProtocol
     func bookingRequests(accessToken: String, completion: @escaping CompletionHandler) {
         let session = Session(adapter: URLSessionAdapter(configuration: .ephemeral))
         let request = GetBookingRequestsRequest(accessToken: accessToken)
-        session.send(request)
+        session.send(request, callbackQueue: .main) { result in
+            completion(result.mapError { $0 as Error })
+        }
     }
 }
 
