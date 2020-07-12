@@ -7,15 +7,14 @@ extension DateFormatter {
         case custom(String)
     }
 
-    public convenience init(format: Format) {
-        self.init()
+    public func setFormat(_ format: Format) {
         switch format {
         case .time(let style):
-            self.timeStyle = style
+            timeStyle = style
         case .date(let style):
-            self.dateStyle = style
+            dateStyle = style
         case .custom(let format):
-            self.dateFormat = format
+            dateFormat = DateFormatter.dateFormat(fromTemplate: format, options: 0, locale: locale) ?? format
         }
     }
 }
