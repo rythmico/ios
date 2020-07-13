@@ -13,7 +13,10 @@ typealias Keychain = Valet
 
 extension Keychain: KeychainProtocol {}
 extension Keychain {
-    static var localKeychain = Keychain.valet(with: Identifier(nonEmpty: "local_keychain")!, accessibility: .afterFirstUnlockThisDeviceOnly)
+    static var localKeychain = Keychain.valet(
+        with: Identifier(nonEmpty: "local_keychain")!,
+        accessibility: .afterFirstUnlockThisDeviceOnly
+    )
 }
 
 private enum KeychainKey {

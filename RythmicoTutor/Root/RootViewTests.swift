@@ -22,7 +22,7 @@ final class RootViewTests: XCTestCase {
         let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(
             currentProvider: userAuthenticated ? AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN")) : nil
         )
-        let deauthenticationService = DeauthenticationServiceSpy(accessTokenProviderObserver: accessTokenProviderObserver)
+        let deauthenticationService = DeauthenticationServiceSpy()
 
         Current.keychain = keychain
         Current.appleAuthorizationCredentialStateProvider = credentialStateProvider
