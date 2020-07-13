@@ -2,7 +2,7 @@ import SwiftUI
 
 struct BookingRequestsView: View {
     @ObservedObject
-    private var coordinator = Current.bookingRequestFetchingCoordinator()!
+    private var coordinator: BookingRequestFetchingCoordinator
     @ObservedObject
     private var repository = Current.bookingRequestRepository
 
@@ -12,6 +12,13 @@ struct BookingRequestsView: View {
     var isLoading: Bool { coordinator.state.isLoading }
     var error: Error? { coordinator.state.failureValue }
     var requests: [BookingRequest] { repository.latestBookingRequests }
+
+    init?() {
+        guard let coordinator = Current.bookingRequestFetchingCoordinator() else {
+            return nil
+        }
+        self.coordinator = coordinator
+    }
 
     var body: some View {
         VStack(spacing: .spacingMedium) {
@@ -36,10 +43,14 @@ struct BookingRequestsView: View {
                                 .font(.callout)
                             }
                             Spacer(minLength: 0)
-                            Text("\(request.createdAt, formatter: self.bookingDateFormatter)")
-                                .foregroundColor(.secondary)
-                                .font(.caption)
-                                .fontWeight(.medium)
+                            TickingText(
+                                self.bookingDateFormatter.localizedString(
+                                    for: request.createdAt,
+                                    relativeTo: Current.date()
+                                )
+                            )
+                            .foregroundColor(.secondary)
+                            .font(Font.caption.weight(.medium))
                         }
                         .padding(.vertical, .spacingUnit)
                     }
