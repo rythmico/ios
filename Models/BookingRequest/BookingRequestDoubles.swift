@@ -5,7 +5,7 @@ extension BookingRequest {
     static var stub: BookingRequest {
         BookingRequest(
             id: "ID1",
-            createdAt: Current.date() - (32, .second),
+            createdAt: AppEnvironment.dummy.date() - (32, .second),
             instrument: .piano,
             submitterName: "David R",
             student: .jackStub,
@@ -18,7 +18,7 @@ extension BookingRequest {
     static var longStub: BookingRequest {
         BookingRequest(
             id: "ID2",
-            createdAt: Current.date() - (1, .weekOfMonth),
+            createdAt: AppEnvironment.dummy.date() - (1, .weekOfMonth),
             instrument: .piano,
             submitterName: "David R",
             student: .longNameStub,

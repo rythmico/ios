@@ -140,7 +140,6 @@
 		035B1D49249E577700AABFEA /* AppleAuthorizationControllerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560B23CD342E00BC8485 /* AppleAuthorizationControllerDoubles.swift */; };
 		035B1D4A249E577700AABFEA /* AppleAuthorizationCompletionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509899023BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift */; };
 		035B1D4B249E578D00AABFEA /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547823DF3A7C005A20EB /* Keychain.swift */; };
-		035B1D4D249E57B500AABFEA /* TestEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D4C249E57B500AABFEA /* TestEnvironment.swift */; };
 		035B1D4E249E57D100AABFEA /* KeychainDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547D23DF4F44005A20EB /* KeychainDoubles.swift */; };
 		035B1D4F249E57DC00AABFEA /* UIAccessibilityDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF3092491A54E004A01B2 /* UIAccessibilityDoubles.swift */; };
 		035B1D50249E57E200AABFEA /* URLOpenerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67E24776CEC00FBE527 /* URLOpenerDoubles.swift */; };
@@ -234,6 +233,8 @@
 		03E88E8424B8B9020077A420 /* BookingRequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E8324B8B9020077A420 /* BookingRequestsView.swift */; };
 		03E88E8724BB7EB10077A420 /* Result+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E8624BB7EB10077A420 /* Result+Sugar.swift */; };
 		03E88E8924BB82290077A420 /* DateFormatter+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E8824BB82290077A420 /* DateFormatter+Sugar.swift */; };
+		03E88E8D24BC8C1D0077A420 /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E8C24BC8C1D0077A420 /* AppContext.swift */; };
+		03E88E8F24BC9FAF0077A420 /* AppEnvironment+Instances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E8E24BC9FAF0077A420 /* AppEnvironment+Instances.swift */; };
 		03EDA6792476F2CB00FBE527 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA6782476F2CB00FBE527 /* ProfileView.swift */; };
 		03EDA67B2477695900FBE527 /* ProfileViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67A2477695900FBE527 /* ProfileViewTests.swift */; };
 		03EDA67D24776C6C00FBE527 /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67C24776C6C00FBE527 /* URLOpener.swift */; };
@@ -484,7 +485,6 @@
 		035B1D0F249E561C00AABFEA /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		035B1D12249E563A00AABFEA /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		035B1D19249E568600AABFEA /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
-		035B1D4C249E57B500AABFEA /* TestEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEnvironment.swift; sourceTree = "<group>"; };
 		035B1D58249E5CF800AABFEA /* AppDelegate+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Firebase.swift"; sourceTree = "<group>"; };
 		035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
 		035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -556,6 +556,8 @@
 		03E88E8324B8B9020077A420 /* BookingRequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestsView.swift; sourceTree = "<group>"; };
 		03E88E8624BB7EB10077A420 /* Result+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Sugar.swift"; sourceTree = "<group>"; };
 		03E88E8824BB82290077A420 /* DateFormatter+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Sugar.swift"; sourceTree = "<group>"; };
+		03E88E8C24BC8C1D0077A420 /* AppContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
+		03E88E8E24BC9FAF0077A420 /* AppEnvironment+Instances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Instances.swift"; sourceTree = "<group>"; };
 		03EDA6782476F2CB00FBE527 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		03EDA67A2477695900FBE527 /* ProfileViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewTests.swift; sourceTree = "<group>"; };
 		03EDA67C24776C6C00FBE527 /* URLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
@@ -977,8 +979,9 @@
 		035B1D18249E567700AABFEA /* AppEnvironment */ = {
 			isa = PBXGroup;
 			children = (
+				03E88E8C24BC8C1D0077A420 /* AppContext.swift */,
 				035B1D19249E568600AABFEA /* AppEnvironment.swift */,
-				035B1D4C249E57B500AABFEA /* TestEnvironment.swift */,
+				03E88E8E24BC9FAF0077A420 /* AppEnvironment+Instances.swift */,
 			);
 			path = AppEnvironment;
 			sourceTree = "<group>";
@@ -1983,6 +1986,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				035B1D40249E577700AABFEA /* AppleAuthorizationCredentialStateProvider.swift in Sources */,
+				03E88E8D24BC8C1D0077A420 /* AppContext.swift in Sources */,
 				035B1D10249E561C00AABFEA /* RootView.swift in Sources */,
 				035B1D64249E642800AABFEA /* DeviceTokenProviderDoubles.swift in Sources */,
 				035B1D31249E572000AABFEA /* UIApplication+KeyboardDismisser.swift in Sources */,
@@ -1991,6 +1995,7 @@
 				035B1CBF249CF2AA00AABFEA /* AppDelegate.swift in Sources */,
 				035B1D65249E642D00AABFEA /* DeviceRegisterServiceDoubles.swift in Sources */,
 				03E88E8424B8B9020077A420 /* BookingRequestsView.swift in Sources */,
+				03E88E8F24BC9FAF0077A420 /* AppEnvironment+Instances.swift in Sources */,
 				035B1D3B249E576900AABFEA /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */,
 				035B1D34249E576900AABFEA /* AuthenticationService.swift in Sources */,
 				035B1D39249E576900AABFEA /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
@@ -2041,7 +2046,6 @@
 				035B1CED249CF9B400AABFEA /* TestDelegate.swift in Sources */,
 				035B1D36249E576900AABFEA /* DeauthenticationServiceDoubles.swift in Sources */,
 				032B6FD224B787D700299A09 /* Instrument.swift in Sources */,
-				035B1D4D249E57B500AABFEA /* TestEnvironment.swift in Sources */,
 				035B1D46249E577700AABFEA /* AppleAuthorizationService.swift in Sources */,
 				035B1D33249E576900AABFEA /* AuthenticationError.swift in Sources */,
 				035B1D4F249E57DC00AABFEA /* UIAccessibilityDoubles.swift in Sources */,
