@@ -235,6 +235,7 @@
 		03E88E8924BB82290077A420 /* DateFormatter+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E8824BB82290077A420 /* DateFormatter+Sugar.swift */; };
 		03E88E8D24BC8C1D0077A420 /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E8C24BC8C1D0077A420 /* AppContext.swift */; };
 		03E88E8F24BC9FAF0077A420 /* AppEnvironment+Instances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E8E24BC9FAF0077A420 /* AppEnvironment+Instances.swift */; };
+		03E88E9124BCA4AA0077A420 /* TickingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E9024BCA4AA0077A420 /* TickingView.swift */; };
 		03EDA6792476F2CB00FBE527 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA6782476F2CB00FBE527 /* ProfileView.swift */; };
 		03EDA67B2477695900FBE527 /* ProfileViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67A2477695900FBE527 /* ProfileViewTests.swift */; };
 		03EDA67D24776C6C00FBE527 /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67C24776C6C00FBE527 /* URLOpener.swift */; };
@@ -558,6 +559,7 @@
 		03E88E8824BB82290077A420 /* DateFormatter+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Sugar.swift"; sourceTree = "<group>"; };
 		03E88E8C24BC8C1D0077A420 /* AppContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
 		03E88E8E24BC9FAF0077A420 /* AppEnvironment+Instances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Instances.swift"; sourceTree = "<group>"; };
+		03E88E9024BCA4AA0077A420 /* TickingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickingView.swift; sourceTree = "<group>"; };
 		03EDA6782476F2CB00FBE527 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		03EDA67A2477695900FBE527 /* ProfileViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewTests.swift; sourceTree = "<group>"; };
 		03EDA67C24776C6C00FBE527 /* URLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
@@ -1278,6 +1280,7 @@
 				D50811E323FB72A3008103D8 /* StepBar.swift */,
 				D5C23A7B240FEF30007DED63 /* TapView.swift */,
 				D5147506240C8E69002EE20C /* TestableView.swift */,
+				03E88E9024BCA4AA0077A420 /* TickingView.swift */,
 				03C39DD324967E5B00C76516 /* TitleContentView.swift */,
 				D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */,
 				D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */,
@@ -2025,6 +2028,7 @@
 				035B1D3F249E577700AABFEA /* AppleAuthorizationCredentialDoubles.swift in Sources */,
 				035B1D66249E643400AABFEA /* DeviceTokenDeleterDoubles.swift in Sources */,
 				035B1D52249E57FD00AABFEA /* Spacing.swift in Sources */,
+				03E88E9124BCA4AA0077A420 /* TickingView.swift in Sources */,
 				035B1D30249E571B00AABFEA /* UIAccessibilityProtocol.swift in Sources */,
 				032B6FCC24B7877B00299A09 /* BookingRequest.swift in Sources */,
 				032B6FCB24B7877600299A09 /* BookingRequestDoubles.swift in Sources */,
