@@ -12,7 +12,7 @@ final class ProfileViewTests: XCTestCase {
         let urlOpener = URLOpenerSpy()
         Current.urlOpener = urlOpener
 
-        let deauthenticationSpy = DeauthenticationServiceSpy(accessTokenProviderObserver: Current.accessTokenProviderObserver)
+        let deauthenticationSpy = DeauthenticationServiceSpy()
         Current.deauthenticationService = deauthenticationSpy
 
         let view = ProfileView()
@@ -151,7 +151,7 @@ final class ProfileViewTests: XCTestCase {
     }
 
     func testLogOut() {
-        let deauthenticationSpy = DeauthenticationServiceSpy(accessTokenProviderObserver: Current.accessTokenProviderObserver)
+        let deauthenticationSpy = DeauthenticationServiceSpy()
         Current.deauthenticationService = deauthenticationSpy
 
         let view = ProfileView()

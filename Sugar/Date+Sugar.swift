@@ -30,8 +30,16 @@ extension Date {
         return date
     }
 
+    public func subtracting(_ amount: Int, _ units: Calendar.Component) -> Date {
+        adding(-amount, units)
+    }
+
     public static func + (lhs: Date, rhs: (Int, Calendar.Component)) -> Date {
         lhs.adding(rhs.0, rhs.1)
+    }
+
+    public static func - (lhs: Date, rhs: (Int, Calendar.Component)) -> Date {
+        lhs.subtracting(rhs.0, rhs.1)
     }
 
     public func setting(hour: Int, minute: Int = 0, second: Int = 0) -> Date {
@@ -39,6 +47,12 @@ extension Date {
             preconditionFailure("Time setting failed in \(#file):\(#line)")
         }
         return date
+    }
+}
+
+extension Date: ExpressibleByStringLiteral {
+    public init(stringLiteral value: String) {
+        self = ISO8601DateFormatter().date(from: value)!
     }
 }
 
