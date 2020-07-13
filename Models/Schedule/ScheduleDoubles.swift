@@ -9,6 +9,7 @@ extension Schedule {
         .init(startDate: startDate, duration: .fortyFiveMinutes)
     }
 
+    @available(*, deprecated, message: "Use AppEnvironment.dummy.date() instead")
     private static let now: Date = "2020-07-13T17:30:00Z"
 
     static var startingTomorrowStub: Schedule {
