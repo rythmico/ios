@@ -1,12 +1,15 @@
 import Foundation
+import Then
+import Sugar
+
 import class UIKit.UIApplication
 import struct UIKit.UIAccessibility
 import class UserNotifications.UNUserNotificationCenter
 import class FirebaseInstanceID.InstanceID
-import Sugar
-import Then
 
 struct AppEnvironment {
+    var date: () -> Date
+
     var calendar: Calendar
     var locale: Locale
     var timeZone: TimeZone
@@ -74,6 +77,7 @@ extension AppEnvironment {
 
 extension AppEnvironment {
     static let live = AppEnvironment(
+        date: { Date() },
         calendar: .autoupdatingCurrent,
         locale: .autoupdatingCurrent,
         timeZone: .autoupdatingCurrent,

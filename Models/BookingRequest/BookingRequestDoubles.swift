@@ -1,15 +1,16 @@
 import Foundation
+import Sugar
 
 extension BookingRequest {
     static var stub: BookingRequest {
         BookingRequest(
             id: "ID1",
-            createdAt: Date() - 32,
+            createdAt: Current.date() - (32, .second),
             instrument: .piano,
             submitterName: "David R",
             student: .jackStub,
             postcode: "N8",
-            schedule: .stub,
+            schedule: .startingTomorrowStub,
             privateNote: ""
         )
     }
@@ -17,12 +18,12 @@ extension BookingRequest {
     static var longStub: BookingRequest {
         BookingRequest(
             id: "ID2",
-            createdAt: Date(timeIntervalSince1970: 0),
+            createdAt: Current.date() - (1, .weekOfMonth),
             instrument: .piano,
             submitterName: "David R",
             student: .longNameStub,
             postcode: "NW5",
-            schedule: .stub,
+            schedule: .startingIn1WeekStub,
             privateNote: ""
         )
     }
