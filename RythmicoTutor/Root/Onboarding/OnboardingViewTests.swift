@@ -37,8 +37,7 @@ final class OnboardingViewTests: XCTestCase {
     func testFailedAuthentication() {
         Current.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
         Current.authenticationService = AuthenticationServiceStub(
-            result: .failure(.init(reasonCode: .invalidCredential, localizedDescription: "Whooopsie")),
-            accessTokenProviderObserver: Current.accessTokenProviderObserver
+            result: .failure(.init(reasonCode: .invalidCredential, localizedDescription: "Whooopsie"))
         )
 
         let keychain = KeychainFake()
@@ -62,8 +61,7 @@ final class OnboardingViewTests: XCTestCase {
     func testSuccessfulAuthentication() {
         Current.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
         Current.authenticationService = AuthenticationServiceStub(
-            result: .success(AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))),
-            accessTokenProviderObserver: Current.accessTokenProviderObserver
+            result: .success(AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN")))
         )
 
         let keychain = KeychainFake()
