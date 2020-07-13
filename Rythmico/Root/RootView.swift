@@ -77,12 +77,9 @@ struct RootView_Previews: PreviewProvider {
         Current.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
         Current.authenticationService = AuthenticationServiceStub(
             result: .success(AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))),
-            delay: 2,
-            accessTokenProviderObserver: Current.accessTokenProviderObserver
+            delay: 2
         )
-        Current.deauthenticationService = DeauthenticationServiceStub(
-            accessTokenProviderObserver: Current.accessTokenProviderObserver
-        )
+        Current.deauthenticationService = DeauthenticationServiceStub()
 
         Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(
             result: .success(.stub),

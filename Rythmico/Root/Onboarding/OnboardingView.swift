@@ -107,8 +107,7 @@ struct OnboardingView_Preview: PreviewProvider {
         Current.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
         Current.authenticationService = AuthenticationServiceStub(
             result: .success(AuthenticationAccessTokenProviderStub(result: .success(""))),
-            delay: 2,
-            accessTokenProviderObserver: Current.accessTokenProviderObserver
+            delay: 2
         )
 
         return Group {
