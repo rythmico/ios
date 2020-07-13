@@ -56,16 +56,7 @@ struct MainTabView: View, TestableView {
 #if DEBUG
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
-        Current.userAuthenticated()
-
-        Current.bookingRequestFetchingService = BookingRequestFetchingServiceStub(
-            result: .success([.stub, .longStub]),
-//            result: .failure("b o i"),
-            delay: 2
-//            delay: nil
-        )
-
-        return MainTabView()
+        MainTabView()
     }
 }
 #endif
