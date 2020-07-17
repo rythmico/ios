@@ -1,8 +1,6 @@
 import Foundation
-import class UIKit.UIApplication
-import struct UIKit.UIAccessibility
-import class UserNotifications.UNUserNotificationCenter
-import class FirebaseInstanceID.InstanceID
+import Sugar
+import Then
 
 struct AppEnvironment {
     var locale: Locale
@@ -71,41 +69,3 @@ extension AppEnvironment {
         DeviceUnregisterCoordinator(deviceTokenDeleter: deviceTokenDeleter)
     }
 }
-
-extension AppEnvironment {
-    static let live = AppEnvironment(
-        locale: .autoupdatingCurrent,
-        keychain: Keychain.localKeychain,
-        appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
-        appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
-        appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifier(
-            notificationCenter: NotificationCenter.default
-        ),
-        authenticationService: AuthenticationService(),
-        deauthenticationService: DeauthenticationService(),
-        accessTokenProviderObserver: AuthenticationAccessTokenProviderObserver(broadcast: AuthenticationAccessTokenProviderBroadcast()),
-        instrumentSelectionListProvider: InstrumentSelectionListProvider(),
-        addressSearchService: AddressSearchService(),
-        lessonPlanFetchingService: LessonPlanFetchingService(),
-        lessonPlanRequestService: LessonPlanRequestService(),
-        lessonPlanCancellationService: LessonPlanCancellationService(),
-        lessonPlanRepository: LessonPlanRepository(),
-        deviceTokenProvider: InstanceID.instanceID(),
-        deviceRegisterService: DeviceRegisterService(),
-        deviceTokenDeleter: InstanceID.instanceID(),
-        pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator(
-            center: UNUserNotificationCenter.current(),
-            registerService: UIApplication.shared,
-            queue: DispatchQueue.main
-        ),
-        keyboardDismisser: UIApplication.shared,
-        uiAccessibility: UIAccessibility.self,
-        urlOpener: UIApplication.shared
-    )
-}
-
-#if DEBUG
-var Current: AppEnvironment = isRunningTests || isRunningPreviews ? .dummy : .fake
-#else
-let Current: AppEnvironment = .live
-#endif
