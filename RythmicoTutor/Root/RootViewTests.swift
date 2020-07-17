@@ -61,6 +61,8 @@ final class RootViewTests: XCTestCase {
         }
     }
 
+    // TODO: re-enable when @StateObject can be attached to accessTokenProviderObserver
+    // on RootView and state can be computed again (no need for next run loop check this way).
     func testDeauthorizationWhileClosedShowsOnboardingView() {
         let expectation = self.expectation(description: "Authentication")
 
