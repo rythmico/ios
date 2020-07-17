@@ -1,10 +1,39 @@
-import Foundation
+import UIKit
+import UserNotifications
+import Firebase
 import Then
-import class UIKit.UIApplication
-import class UserNotifications.UNUserNotificationCenter
-import class FirebaseInstanceID.InstanceID
 
 extension AppEnvironment: Then {}
+
+extension AppEnvironment {
+    static let live = AppEnvironment(
+        locale: .autoupdatingCurrent,
+        keychain: Keychain.localKeychain,
+        appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
+        appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
+        appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifier(notificationCenter: NotificationCenter.default),
+        authenticationService: AuthenticationService(),
+        deauthenticationService: DeauthenticationService(),
+        accessTokenProviderObserver: AuthenticationAccessTokenProviderObserver(broadcast: AuthenticationAccessTokenProviderBroadcast()),
+        instrumentSelectionListProvider: InstrumentSelectionListProvider(),
+        addressSearchService: AddressSearchService(),
+        lessonPlanFetchingService: LessonPlanFetchingService(),
+        lessonPlanRequestService: LessonPlanRequestService(),
+        lessonPlanCancellationService: LessonPlanCancellationService(),
+        lessonPlanRepository: LessonPlanRepository(),
+        deviceTokenProvider: InstanceID.instanceID(),
+        deviceRegisterService: DeviceRegisterService(),
+        deviceTokenDeleter: InstanceID.instanceID(),
+        pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator(
+            center: UNUserNotificationCenter.current(),
+            registerService: UIApplication.shared,
+            queue: DispatchQueue.main
+        ),
+        keyboardDismisser: UIApplication.shared,
+        uiAccessibility: UIAccessibility.self,
+        urlOpener: UIApplication.shared
+    )
+}
 
 extension AppEnvironment {
     static var fake: AppEnvironment {
@@ -55,6 +84,7 @@ extension AppEnvironment {
     }
 }
 
+// Modifiers (debug-only)
 extension AppEnvironment {
     mutating func userAuthenticated() {
         accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(

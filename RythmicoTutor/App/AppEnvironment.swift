@@ -69,9 +69,3 @@ extension AppEnvironment {
         DeviceUnregisterCoordinator(deviceTokenDeleter: deviceTokenDeleter)
     }
 }
-
-#if DEBUG
-var Current: AppEnvironment = AppContext.current.environment
-#else
-let Current: AppEnvironment = AppContext.current.environment
-#endif

@@ -7,13 +7,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         static let launchScreenDelay = launchScreenDebugMode ? 5 : .durationMedium
     }
 
-    var window: Window?
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         clearLaunchScreenCache(Const.launchScreenDebugMode)
         configureFirebase()
         configurePushNotifications(for: application)
-        configureGlobalAppearance()
+        App.main()
         sleep(Const.launchScreenDelay)
         configureWindow()
         return true
