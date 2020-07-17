@@ -18,9 +18,9 @@ enum AppContext {
 
     var delegateType: UIApplicationDelegate.Type {
         switch self {
-        case .test:
-            return TestDelegate.self
-        case .preview, .debug, .release:
+        case .test, .preview:
+            return AppDelegateDummy.self
+        case .debug, .release:
             return AppDelegate.self
         }
     }
