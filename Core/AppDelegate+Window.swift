@@ -1,7 +1,19 @@
-import UIKit
+import SwiftUI
+import Then
+import BetterSheet
 import Sugar
 
-final class Window: UIWindow {
+extension AppDelegate {
+    func configureWindow() {
+        window = Window().then {
+            $0.traitCollectionDidChange = { _ in App.refresh() }
+            $0.rootViewController = UIHostingController.withBetterSheetSupport(rootView: RootView())
+            $0.makeKeyAndVisible()
+        }
+    }
+}
+
+private final class Window: UIWindow {
     var traitCollectionDidChange: Handler<(old: UITraitCollection?, new: UITraitCollection)>?
 
     init() {

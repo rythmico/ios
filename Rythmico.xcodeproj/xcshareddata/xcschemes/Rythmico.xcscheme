@@ -37,16 +37,20 @@
                BlueprintName = "RythmicoTests"
                ReferencedContainer = "container:Rythmico.xcodeproj">
             </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D52BFAE223ECB651009F4498"
-               BuildableName = "ViewModelTests.xctest"
-               BlueprintName = "ViewModelTests"
-               ReferencedContainer = "container:Rythmico.xcodeproj">
-            </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "RootViewTests/testDeauthenticationByProviderShowsOnboardingView()">
+               </Test>
+               <Test
+                  Identifier = "RootViewTests/testDeauthenticationByUserShowsOnboardingView()">
+               </Test>
+               <Test
+                  Identifier = "RootViewTests/testDeauthorizationWhileClosedShowsOnboardingView()">
+               </Test>
+               <Test
+                  Identifier = "RootViewTests/testDeauthorizationWhileOpenShowsOnboardingView()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>
