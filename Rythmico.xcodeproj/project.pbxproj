@@ -77,7 +77,7 @@
 		035B1CD5249CF7E200AABFEA /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1CD4249CF7E200AABFEA /* Then */; };
 		035B1CD7249CF7EB00AABFEA /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1CD6249CF7EB00AABFEA /* Valet */; };
 		035B1CEB249CF9A400AABFEA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CEA249CF9A400AABFEA /* main.swift */; };
-		035B1CED249CF9B400AABFEA /* TestDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CEC249CF9B400AABFEA /* TestDelegate.swift */; };
+		035B1CED249CF9B400AABFEA /* AppDelegateDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CEC249CF9B400AABFEA /* AppDelegateDummy.swift */; };
 		035B1CF1249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CF0249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift */; };
 		035B1CF3249CFA0900AABFEA /* AppDelegate+Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CF2249CFA0900AABFEA /* AppDelegate+Window.swift */; };
 		035B1CF5249CFA1800AABFEA /* BetterSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1CF4249CFA1800AABFEA /* BetterSheet */; };
@@ -478,7 +478,7 @@
 		035B1CCA249CF2AC00AABFEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		035B1CCC249CF2AC00AABFEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		035B1CEA249CF9A400AABFEA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		035B1CEC249CF9B400AABFEA /* TestDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDelegate.swift; sourceTree = "<group>"; };
+		035B1CEC249CF9B400AABFEA /* AppDelegateDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateDummy.swift; sourceTree = "<group>"; };
 		035B1CF0249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+LaunchScreenCache.swift"; sourceTree = "<group>"; };
 		035B1CF2249CFA0900AABFEA /* AppDelegate+Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Window.swift"; sourceTree = "<group>"; };
 		035B1CFC249D109B00AABFEA /* RythmicoTutorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RythmicoTutorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -962,7 +962,7 @@
 				035B1D58249E5CF800AABFEA /* AppDelegate+Firebase.swift */,
 				035B1CF0249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift */,
 				035B1CF2249CFA0900AABFEA /* AppDelegate+Window.swift */,
-				035B1CEC249CF9B400AABFEA /* TestDelegate.swift */,
+				035B1CEC249CF9B400AABFEA /* AppDelegateDummy.swift */,
 			);
 			path = AppStart;
 			sourceTree = "<group>";
@@ -2047,7 +2047,7 @@
 				035B1D3A249E576900AABFEA /* AuthenticationAccessTokenProviderObserver.swift in Sources */,
 				03C34360249E7218004907DF /* View+ErrorAlert.swift in Sources */,
 				035B1D1A249E568600AABFEA /* AppEnvironment.swift in Sources */,
-				035B1CED249CF9B400AABFEA /* TestDelegate.swift in Sources */,
+				035B1CED249CF9B400AABFEA /* AppDelegateDummy.swift in Sources */,
 				035B1D36249E576900AABFEA /* DeauthenticationServiceDoubles.swift in Sources */,
 				032B6FD224B787D700299A09 /* Instrument.swift in Sources */,
 				035B1D46249E577700AABFEA /* AppleAuthorizationService.swift in Sources */,
