@@ -17,10 +17,10 @@ extension AppEnvironment {
         authenticationService: AuthenticationService(),
         deauthenticationService: DeauthenticationService(),
         accessTokenProviderObserver: AuthenticationAccessTokenProviderObserver(broadcast: AuthenticationAccessTokenProviderBroadcast()),
-        bookingRequestRepository: BookingRequestRepository(),
-        bookingRequestFetchingService: BookingRequestFetchingService(),
+        bookingRequestRepository: Repository(),
+        bookingRequestFetchingService: APIService(),
         deviceTokenProvider: InstanceID.instanceID(),
-        deviceRegisterService: DeviceRegisterService(),
+        deviceRegisterService: APIService(),
         deviceTokenDeleter: InstanceID.instanceID(),
         keyboardDismisser: UIApplication.shared,
         uiAccessibility: UIAccessibility.self,
@@ -36,7 +36,8 @@ extension AppEnvironment {
             $0.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
             $0.authenticationService = AuthenticationServiceStub(result: .success(fakeAccessTokenProvider), delay: 2)
             $0.deauthenticationService = DeauthenticationServiceStub()
-            $0.bookingRequestFetchingService = BookingRequestFetchingServiceStub(result: .success([.stub, .longStub]), delay: 1)
+            $0.bookingRequestFetchingService = APIServiceStub(result: .success([.stub, .longStub]), delay: 1)
+            $0.keyboardDismisser = UIApplication.shared
         }
     }
 
@@ -58,10 +59,10 @@ extension AppEnvironment {
             authenticationService: AuthenticationServiceDummy(),
             deauthenticationService: DeauthenticationServiceDummy(),
             accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverDummy(),
-            bookingRequestRepository: BookingRequestRepository(),
-            bookingRequestFetchingService: BookingRequestFetchingServiceDummy(),
+            bookingRequestRepository: Repository(),
+            bookingRequestFetchingService: APIServiceDummy(),
             deviceTokenProvider: DeviceTokenProviderDummy(),
-            deviceRegisterService: DeviceRegisterServiceDummy(),
+            deviceRegisterService: APIServiceDummy(),
             deviceTokenDeleter: DeviceTokenDeleterDummy(),
             keyboardDismisser: KeyboardDismisserDummy(),
             uiAccessibility: UIAccessibilityDummy.self,

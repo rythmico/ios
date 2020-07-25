@@ -176,6 +176,7 @@ struct StudentDetailsView: View, TestableView {
         }
         .animation(.easeInOut(duration: .durationMedium), value: editingFocus)
         .onAppear { self.onAppear?(self) }
+        .onDisappear(perform: endEditing)
     }
 
     func textFieldEditingChanged(_ isEditing: Bool) {

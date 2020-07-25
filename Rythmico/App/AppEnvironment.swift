@@ -16,15 +16,15 @@ struct AppEnvironment {
     var accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase
 
     var instrumentSelectionListProvider: InstrumentSelectionListProviderProtocol
-    var addressSearchService: AddressSearchServiceProtocol
+    var addressSearchService: APIServiceBase<AddressSearchRequest>
 
-    var lessonPlanFetchingService: LessonPlanFetchingServiceProtocol
-    var lessonPlanRequestService: LessonPlanRequestServiceProtocol
-    var lessonPlanCancellationService: LessonPlanCancellationServiceProtocol
-    var lessonPlanRepository: LessonPlanRepository
+    var lessonPlanFetchingService: APIServiceBase<GetLessonPlansRequest>
+    var lessonPlanRequestService: APIServiceBase<CreateLessonPlanRequest>
+    var lessonPlanCancellationService: APIServiceBase<CancelLessonPlanRequest>
+    var lessonPlanRepository: Repository<LessonPlan>
 
     var deviceTokenProvider: DeviceTokenProvider
-    var deviceRegisterService: DeviceRegisterServiceProtocol
+    var deviceRegisterService: APIServiceBase<AddDeviceRequest>
     var deviceTokenDeleter: DeviceTokenDeleter
 
     var pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator
@@ -35,37 +35,37 @@ struct AppEnvironment {
 }
 
 extension AppEnvironment {
-    func addressSearchCoordinator() -> AddressSearchCoordinator? {
-        accessTokenProviderObserver.currentProvider.map {
-            AddressSearchCoordinator(accessTokenProvider: $0, service: addressSearchService)
-        }
+    func addressSearchCoordinator() -> APIActivityCoordinator<AddressSearchRequest>? {
+        coordinator(for: addressSearchService)
     }
 
-    func lessonPlanFetchingCoordinator() -> LessonPlanFetchingCoordinator? {
-        accessTokenProviderObserver.currentProvider.map {
-            LessonPlanFetchingCoordinator(accessTokenProvider: $0, service: lessonPlanFetchingService, repository: lessonPlanRepository)
-        }
+    func lessonPlanFetchingCoordinator() -> APIActivityCoordinator<GetLessonPlansRequest>? {
+        coordinator(for: lessonPlanFetchingService)
     }
 
-    func lessonPlanRequestCoordinator() -> LessonPlanRequestCoordinator? {
-        accessTokenProviderObserver.currentProvider.map {
-            LessonPlanRequestCoordinator(accessTokenProvider: $0, service: lessonPlanRequestService, repository: lessonPlanRepository)
-        }
+    func lessonPlanRequestCoordinator() -> APIActivityCoordinator<CreateLessonPlanRequest>? {
+        coordinator(for: lessonPlanRequestService)
     }
 
-    func lessonPlanCancellationCoordinator() -> LessonPlanCancellationCoordinator? {
-        accessTokenProviderObserver.currentProvider.map {
-            LessonPlanCancellationCoordinator(accessTokenProvider: $0, service: lessonPlanCancellationService, repository: lessonPlanRepository)
-        }
+    func lessonPlanCancellationCoordinator() -> APIActivityCoordinator<CancelLessonPlanRequest>? {
+        coordinator(for: lessonPlanCancellationService)
     }
 
     func deviceRegisterCoordinator() -> DeviceRegisterCoordinator? {
-        accessTokenProviderObserver.currentProvider.map {
-            DeviceRegisterCoordinator(accessTokenProvider: $0, deviceTokenProvider: deviceTokenProvider, service: deviceRegisterService)
+        coordinator(for: deviceRegisterService).map {
+            DeviceRegisterCoordinator(deviceTokenProvider: deviceTokenProvider, apiCoordinator: $0)
         }
     }
 
     func deviceUnregisterCoordinator() -> DeviceUnregisterCoordinator {
         DeviceUnregisterCoordinator(deviceTokenDeleter: deviceTokenDeleter)
+    }
+}
+
+private extension AppEnvironment {
+    func coordinator<Request: AuthorizedAPIRequest>(for service: APIServiceBase<Request>) -> APIActivityCoordinator<Request>? {
+        accessTokenProviderObserver.currentProvider.map {
+            APIActivityCoordinator(accessTokenProvider: $0, deauthenticationService: deauthenticationService, service: service)
+        }
     }
 }

@@ -63,4 +63,8 @@ extension ActivityCoordinator.State where Output: AnyResult {
     var isSuccess: Bool {
         successValue != nil
     }
+
+    var isFailure: Bool {
+        failureValue != nil
+    }
 }

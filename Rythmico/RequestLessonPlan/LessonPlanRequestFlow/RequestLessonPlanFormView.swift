@@ -2,6 +2,9 @@ import SwiftUI
 import Sugar
 
 struct RequestLessonPlanFormView: View, TestableView {
+    typealias RequestCoordinator = APIActivityCoordinator<CreateLessonPlanRequest>
+    typealias AddressSearchCoordinator = APIActivityCoordinator<AddressSearchRequest>
+
     fileprivate let instrumentSelectionViewState = InstrumentSelectionView.ViewState()
     fileprivate let studentDetailsViewState = StudentDetailsView.ViewState()
     fileprivate let addressDetailsViewState = AddressDetailsView.ViewState()
@@ -13,15 +16,15 @@ struct RequestLessonPlanFormView: View, TestableView {
 
     @ObservedObject
     private var context: RequestLessonPlanContext
-    private let coordinator: LessonPlanRequestCoordinator
+    private let requestCoordinator: RequestCoordinator
     private let addressSearchCoordinator: AddressSearchCoordinator
 
-    init?(context: RequestLessonPlanContext, coordinator: LessonPlanRequestCoordinator) {
+    init?(context: RequestLessonPlanContext, coordinator: RequestCoordinator) {
         guard let addressSearchCoordinator = Current.addressSearchCoordinator() else {
             return nil
         }
         self.context = context
-        self.coordinator = coordinator
+        self.requestCoordinator = coordinator
         self.addressSearchCoordinator = addressSearchCoordinator
     }
 
@@ -131,7 +134,7 @@ extension RequestLessonPlanFormView {
     var reviewRequestView: ReviewRequestView? {
         context.currentStep.reviewRequestValue.map {
             ReviewRequestView(
-                coordinator: coordinator,
+                coordinator: requestCoordinator,
                 context: context,
                 instrument: $0.0,
                 student: $0.1,
