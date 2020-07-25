@@ -6,6 +6,8 @@ protocol AddressDetailsContext {
 }
 
 struct AddressDetailsView: View, TestableView {
+    typealias SearchCoordinator = APIActivityCoordinator<AddressSearchRequest>
+
     final class ViewState: ObservableObject {
         @Published var postcode = String()
         @Published var selectedAddress: AddressDetails?
@@ -18,20 +20,20 @@ struct AddressDetailsView: View, TestableView {
     @ObservedObject
     private(set) var state: ViewState
     @ObservedObject
-    private(set) var coordinator: AddressSearchCoordinator
+    private(set) var searchCoordinator: SearchCoordinator
     private let context: AddressDetailsContext
 
     init(
         student: Student,
         instrument: Instrument,
         state: ViewState,
-        searchCoordinator: AddressSearchCoordinator,
+        searchCoordinator: SearchCoordinator,
         context: AddressDetailsContext
     ) {
         self.student = student
         self.instrument = instrument
         self.state = state
-        self.coordinator = searchCoordinator
+        self.searchCoordinator = searchCoordinator
         self.context = context
     }
 
@@ -41,16 +43,12 @@ struct AddressDetailsView: View, TestableView {
             : .empty
     }
 
-    var addresses: [AddressDetails]? { coordinator.state.successValue }
-    var isLoading: Bool { coordinator.state.isLoading }
-    var errorMessage: String? { coordinator.state.failureValue?.localizedDescription }
+    var isLoading: Bool { searchCoordinator.state.isLoading }
+    var error: Error? { searchCoordinator.state.failureValue }
+    var addresses: [AddressDetails]? { searchCoordinator.state.successValue.map([AddressDetails].init) }
 
     func searchAddresses() {
-        coordinator.searchAddresses(withPostcode: state.postcode)
-    }
-
-    func dismissError() {
-        coordinator.dismissError()
+        searchCoordinator.run(with: .init(postcode: state.postcode))
     }
 
     var nextButtonAction: Action? {
@@ -126,19 +124,31 @@ struct AddressDetailsView: View, TestableView {
             .animation(.rythmicoSpring(duration: .durationMedium), value: nextButtonAction != nil)
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: addresses)
-        .alert(error: self.errorMessage, dismiss: dismissError)
+        .alertOnFailure(searchCoordinator)
         .onAppear { self.onAppear?(self) }
+        .onDisappear(perform: Current.keyboardDismisser.dismissKeyboard)
+    }
+}
+
+private extension Array where Element == AddressDetails {
+    init(_ response: AddressSearchRequest.Response) {
+        self = response.addresses.map {
+            AddressDetails(
+                latitude: response.latitude,
+                longitude: response.longitude,
+                line1: $0.line1, line2: $0.line2,
+                line3: $0.line3, line4: $0.line4,
+                city: $0.city,
+                postcode: response.postcode,
+                country: $0.country
+            )
+        }
     }
 }
 
 #if DEBUG
 struct AddressDetailsViewPreview: PreviewProvider {
     static var previews: some View {
-        Current.userAuthenticated()
-
-        let searchCoordinator = Current.addressSearchCoordinator()!
-        searchCoordinator.state = .success([.stub])
-
         let state = AddressDetailsView.ViewState()
         state.selectedAddress = .stub
 
@@ -146,7 +156,7 @@ struct AddressDetailsViewPreview: PreviewProvider {
             student: .davidStub,
             instrument: .guitar,
             state: state,
-            searchCoordinator: searchCoordinator,
+            searchCoordinator: Current.addressSearchCoordinator()!,
             context: RequestLessonPlanContext()
         )
         .previewDevices()

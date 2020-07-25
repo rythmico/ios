@@ -24,8 +24,9 @@ struct MainTabView: View, TestableView {
     @State
     private(set) var lessonRequestView: RequestLessonPlanView?
 
+    // TODO: potentially use @StateObject to simplify RootView
     @ObservedObject
-    private var lessonPlanFetchingCoordinator: LessonPlanFetchingCoordinator
+    private var lessonPlanFetchingCoordinator: LessonsView.Coordinator
     private let deviceRegisterCoordinator: DeviceRegisterCoordinator
 
     init?() {
@@ -66,11 +67,7 @@ struct MainTabView: View, TestableView {
             .navigationBarItems(leading: leadingNavigationItem, trailing: trailingNavigationItem)
         }
         .modifier(BestNavigationStyleModifier())
-        .onReceive(state.$tabSelection) { tabSelection in
-            if self.state.tabSelection == .profile, tabSelection == .lessons {
-                self.lessonsView.fetchLessonPlans()
-            }
-        }
+        .onReceive(state.$tabSelection, perform: onTabSelectionChange)
         .accentColor(.rythmicoPurple)
         .betterSheet(item: $lessonRequestView, content: { $0 })
         .onAppear { self.onAppear?(self) }
@@ -109,6 +106,12 @@ struct MainTabView: View, TestableView {
             return nil
         }
     }
+
+    private func onTabSelectionChange(_ newTab: TabSelection) { let oldTab = state.tabSelection
+        if oldTab != newTab, newTab == .lessons {
+            lessonPlanFetchingCoordinator.run()
+        }
+    }
 }
 
 private struct BestNavigationStyleModifier: ViewModifier {
@@ -121,21 +124,12 @@ private struct BestNavigationStyleModifier: ViewModifier {
 
 #if DEBUG
 struct MainTabView_Previews: PreviewProvider {
+    @ViewBuilder
     static var previews: some View {
-        Current.userAuthenticated()
-        Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(
-//            result: .success(.stub),
-            result: .success([.davidGuitarPlanStub, .cancelledJackGuitarPlanStub]),
-//            delay: 2,
-            delay: nil
-        )
-
-        return Group {
-            MainTabView()
-                .environment(\.colorScheme, .light)
-            MainTabView()
-                .environment(\.colorScheme, .dark)
-        }
+        MainTabView()
+            .environment(\.colorScheme, .light)
+        MainTabView()
+            .environment(\.colorScheme, .dark)
     }
 }
 #endif

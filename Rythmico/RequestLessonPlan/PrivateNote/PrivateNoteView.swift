@@ -82,6 +82,7 @@ struct PrivateNoteView: View, TestableView {
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: editingFocus)
         .onAppear { self.onAppear?(self) }
+        .onDisappear(perform: endEditing)
     }
 
     func noteEditingChanged(_ isEditing: Bool) {

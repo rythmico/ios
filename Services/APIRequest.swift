@@ -1,8 +1,26 @@
 import APIKit
 import Foundation
 
+@dynamicMemberLookup
 protocol AuthorizedAPIRequest: Request {
+    associatedtype Properties
+
     var accessToken: String { get }
+    var properties: Properties { get }
+
+    init(accessToken: String, properties: Properties) throws
+}
+
+extension AuthorizedAPIRequest where Properties == Void {
+    init(accessToken: String) throws {
+        try self.init(accessToken: accessToken, properties: ())
+    }
+}
+
+extension AuthorizedAPIRequest {
+    subscript<T>(dynamicMember keyPath: KeyPath<Properties, T>) -> T {
+        properties[keyPath: keyPath]
+    }
 }
 
 extension AuthorizedAPIRequest {

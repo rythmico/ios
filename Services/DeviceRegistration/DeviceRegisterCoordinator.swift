@@ -1,31 +1,20 @@
 import Foundation
 
 final class DeviceRegisterCoordinator {
-    private let accessTokenProvider: AuthenticationAccessTokenProvider
-    private let deviceTokenProvider: DeviceTokenProvider
-    private let service: DeviceRegisterServiceProtocol
+    typealias APICoordinator = APIActivityCoordinator<AddDeviceRequest>
 
-    init(
-        accessTokenProvider: AuthenticationAccessTokenProvider,
-        deviceTokenProvider: DeviceTokenProvider,
-        service: DeviceRegisterServiceProtocol
-    ) {
-        self.accessTokenProvider = accessTokenProvider
+    private let deviceTokenProvider: DeviceTokenProvider
+    private let apiCoordinator: APICoordinator
+
+    init(deviceTokenProvider: DeviceTokenProvider, apiCoordinator: APICoordinator) {
         self.deviceTokenProvider = deviceTokenProvider
-        self.service = service
+        self.apiCoordinator = apiCoordinator
     }
 
     func registerDevice() {
-        accessTokenProvider.getAccessToken { result in
-            switch result {
-            case .success(let accessToken):
-                self.deviceTokenProvider.deviceToken { result, _ in
-                    if let deviceToken = result?.token {
-                        self.service.registerDevice(accessToken: accessToken, deviceToken: deviceToken)
-                    }
-                }
-            case .failure:
-                break
+        deviceTokenProvider.deviceToken { result, _ in
+            if let deviceToken = result?.token {
+                self.apiCoordinator.run(with: .init(body: .init(token: deviceToken)))
             }
         }
     }
