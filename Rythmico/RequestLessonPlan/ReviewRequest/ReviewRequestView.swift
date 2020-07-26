@@ -2,12 +2,14 @@ import SwiftUI
 import Sugar
 
 struct ReviewRequestView: View, TestableView {
+    typealias Coordinator = APIActivityCoordinator<CreateLessonPlanRequest>
+
     private enum Const {
         static let headerPadding = EdgeInsets(bottom: .spacingUnit * 2)
         static let lineSpacing: CGFloat = .spacingUnit * 2
     }
 
-    private let coordinator: LessonPlanRequestCoordinator
+    private let coordinator: Coordinator
     private let context: RequestLessonPlanContext
     private let instrument: Instrument
     private let student: Student
@@ -16,7 +18,7 @@ struct ReviewRequestView: View, TestableView {
     private let privateNote: String
 
     init(
-        coordinator: LessonPlanRequestCoordinator,
+        coordinator: Coordinator,
         context: RequestLessonPlanContext,
         instrument: Instrument,
         student: Student,
@@ -34,8 +36,8 @@ struct ReviewRequestView: View, TestableView {
     }
 
     func submitRequest() {
-        coordinator.requestLessonPlan(
-            LessonPlanRequestBody(
+        coordinator.run(
+            with: .init(
                 instrument: instrument,
                 student: student,
                 address: address,
@@ -45,7 +47,7 @@ struct ReviewRequestView: View, TestableView {
         )
     }
 
-    var onAppear: Handler<Self>?
+    let inspection = SelfInspection()
     var body: some View {
         TitleSubtitleContentView(title: "Review Proposal", subtitle: []) {
             VStack(spacing: 0) {
@@ -145,7 +147,7 @@ struct ReviewRequestView: View, TestableView {
                 }
             }
         }
-        .onAppear { self.onAppear?(self) }
+        .testable(self)
     }
 
     private func editButton(performing action: @escaping Action) -> some View {
@@ -203,9 +205,7 @@ struct ReviewRequestView: View, TestableView {
 #if DEBUG
 struct ReviewRequestView_Previews: PreviewProvider {
     static var previews: some View {
-        Current.userAuthenticated()
-
-        return ReviewRequestView(
+        ReviewRequestView(
             coordinator: Current.lessonPlanRequestCoordinator()!,
             context: .init(),
             instrument: .guitar,

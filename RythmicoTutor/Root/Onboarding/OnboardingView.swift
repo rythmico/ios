@@ -11,7 +11,7 @@ struct OnboardingView: View, TestableView {
 
     func dismissError() { errorMessage = nil }
 
-    var onAppear: Handler<Self>?
+    let inspection = SelfInspection()
     var body: some View {
         ZStack {
             Color(.systemBackground).edgesIgnoringSafeArea(.all)
@@ -45,7 +45,7 @@ struct OnboardingView: View, TestableView {
         .onDisappear {
             Current.uiAccessibility.postAnnouncement("Welcome")
         }
-        .onAppear { self.onAppear?(self) }
+        .testable(self)
         .onAppear(perform: Current.deviceUnregisterCoordinator().unregisterDevice)
     }
 

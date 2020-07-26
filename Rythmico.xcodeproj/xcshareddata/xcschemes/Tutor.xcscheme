@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1150"
+   LastUpgradeVersion = "1160"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "03341B3A23ABB1E7009AE8A8"
-               BuildableName = "Rythmico.app"
-               BlueprintName = "Rythmico"
+               BlueprintIdentifier = "035B1CBB249CF2AA00AABFEA"
+               BuildableName = "Tutor.app"
+               BlueprintName = "RythmicoTutor"
                ReferencedContainer = "container:Rythmico.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D535552A23E10557005A20EB"
-               BuildableName = "RythmicoTests.xctest"
-               BlueprintName = "RythmicoTests"
+               BlueprintIdentifier = "035B1CFB249D109B00AABFEA"
+               BuildableName = "RythmicoTutorTests.xctest"
+               BlueprintName = "RythmicoTutorTests"
                ReferencedContainer = "container:Rythmico.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -54,9 +54,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "03341B3A23ABB1E7009AE8A8"
-            BuildableName = "Rythmico.app"
-            BlueprintName = "Rythmico"
+            BlueprintIdentifier = "035B1CBB249CF2AA00AABFEA"
+            BuildableName = "Tutor.app"
+            BlueprintName = "RythmicoTutor"
             ReferencedContainer = "container:Rythmico.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -71,9 +71,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "03341B3A23ABB1E7009AE8A8"
-            BuildableName = "Rythmico.app"
-            BlueprintName = "Rythmico"
+            BlueprintIdentifier = "035B1CBB249CF2AA00AABFEA"
+            BuildableName = "Tutor.app"
+            BlueprintName = "RythmicoTutor"
             ReferencedContainer = "container:Rythmico.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
