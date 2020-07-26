@@ -41,7 +41,7 @@ extension BookingRequest.Student {
 
     static var longNameStub: Self {
         .init(
-            name: "Ana De la Rosa San Cristo del Poder",
+            name: "Ana De la Rosa San Cristo del Poder González Martínez Jiménez",
             age: 30,
             gender: .female,
             about: ""
