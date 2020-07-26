@@ -33,24 +33,13 @@ struct BookingRequestsView: View {
                     }
                 ) {
                     ForEach(requests) { request in
-                        HStack(spacing: .spacingSmall) {
-                            VStack(alignment: .leading) {
-                                Text(request.student.name)
-                                    .foregroundColor(.primary)
-                                    .font(.body)
-                                Text("\(request.schedule.startDate, formatter: self.lessonDateFormatter) • \(request.postcode)")
-                                    .foregroundColor(.secondary)
-                                    .font(.callout)
-                            }
-                            Spacer(minLength: 0)
-                            TickingText(
-                                self.bookingDateFormatter.localizedString(
-                                    for: request.createdAt,
-                                    relativeTo: Current.date()
-                                )
-                            )
-                            .foregroundColor(.secondary)
-                            .font(Font.caption.weight(.medium))
+                        VStack(alignment: .leading) {
+                            Text(request.student.name)
+                                .foregroundColor(.primary)
+                                .font(.body)
+                            Text("\(request.schedule.startDate, formatter: self.lessonDateFormatter) • \(request.postcode)")
+                                .foregroundColor(.secondary)
+                                .font(.callout)
                         }
                         .padding(.vertical, .spacingUnit)
                     }
