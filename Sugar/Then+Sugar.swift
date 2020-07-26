@@ -7,4 +7,5 @@ extension Then where Self: Any {
     }
 }
 
+extension JSONDecoder: Then {}
 extension URLRequest: Then {}

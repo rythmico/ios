@@ -48,9 +48,7 @@ protocol RythmicoAPIRequest: RythmicoAPIRequestCore, DecodableJSONRequest {}
 
 extension RythmicoAPIRequest {
     var decoder: Decoder {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .millisecondsSince1970
-        return decoder
+        JSONDecoder().then { $0.dateDecodingStrategy = .millisecondsSince1970 }
     }
 }
 
