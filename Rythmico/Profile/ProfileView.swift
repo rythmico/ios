@@ -34,7 +34,7 @@ struct ProfileView: View, TestableView {
         Current.deauthenticationService.deauthenticate()
     }
 
-    var onAppear: Handler<Self>?
+    let inspection = SelfInspection()
     var body: some View {
         Form {
             Section(header: header("Notifications")) {
@@ -64,7 +64,7 @@ struct ProfileView: View, TestableView {
             }
         }
         .alert(error: self.errorMessage, dismiss: dismissError)
-        .onAppear { self.onAppear?(self) }
+        .testable(self)
     }
 
     private func header(_ title: String) -> some View {

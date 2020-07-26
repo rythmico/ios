@@ -2,8 +2,10 @@ import SwiftUI
 import Sugar
 
 struct RequestLessonPlanView: View, Identifiable, TestableView {
+    typealias Coordinator = APIActivityCoordinator<CreateLessonPlanRequest>
+
     @ObservedObject
-    private(set) var coordinator: LessonPlanRequestCoordinator
+    private(set) var coordinator: Coordinator
     @ObservedObject
     private var context: RequestLessonPlanContext
     private let _formView: RequestLessonPlanFormView
@@ -21,7 +23,7 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
     }
 
     let id = UUID()
-    var onAppear: Handler<Self>?
+    let inspection = SelfInspection()
 
     var swipeDownToDismissEnabled: Bool {
         coordinator.state.isIdle && context.currentStep.index == 0
@@ -37,12 +39,13 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
 
     var body: some View {
         ZStack {
-            formView.transition(stateTransition(scale: 0.9)).alert(error: self.errorMessage, dismiss: dismissError)
+            formView.transition(stateTransition(scale: 0.9)).alertOnFailure(coordinator)
             loadingView.transition(stateTransition(scale: 0.7))
             confirmationView.transition(stateTransition(scale: 0.7))
         }
         .betterSheetIsModalInPresentation(!swipeDownToDismissEnabled)
-        .onAppear { self.onAppear?(self) }
+        .testable(self)
+        .onSuccess(coordinator, perform: Current.lessonPlanRepository.insertItem)
     }
 
     private func stateTransition(scale: CGFloat) -> AnyTransition {
@@ -70,43 +73,7 @@ extension RequestLessonPlanView {
 #if DEBUG
 struct RequestLessonPlanView_Preview: PreviewProvider {
     static var previews: some View {
-        Current.userAuthenticated()
-
-        Current.instrumentSelectionListProvider = InstrumentSelectionListProviderStub(
-            instruments: Instrument.allCases
-        )
-
-        Current.addressSearchService = AddressSearchServiceStub(
-            result: .success([.stub]),
-            delay: nil
-//            delay: 2
-        )
-
-        let context = RequestLessonPlanContext()
-        context.instrument = .guitar
-        context.student = .davidStub
-//        context.address = .stub
-//        context.schedule = .stub
-//        context.privateNote = "Note"
-
-        Current.lessonPlanRequestService = LessonPlanRequestServiceStub(
-            result: .success(.jackGuitarPlanStub),
-            delay: 2
-        )
-
-        Current.pushNotificationAuthorizationCoordinator = PushNotificationAuthorizationCoordinator(
-            center: UNUserNotificationCenterStub(
-                authorizationStatus: .notDetermined,
-//                authorizationStatus: .authorized,
-                authorizationRequestResult: (true, nil)
-//                authorizationRequestResult: (false, nil)
-//                authorizationRequestResult: (false, "Error")
-            ),
-            registerService: PushNotificationRegisterServiceDummy(),
-            queue: nil
-        )
-
-        return RequestLessonPlanView(context: context)
+        RequestLessonPlanView(context: RequestLessonPlanContext())
     }
 }
 #endif

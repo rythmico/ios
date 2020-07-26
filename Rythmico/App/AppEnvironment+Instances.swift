@@ -16,13 +16,13 @@ extension AppEnvironment {
         deauthenticationService: DeauthenticationService(),
         accessTokenProviderObserver: AuthenticationAccessTokenProviderObserver(broadcast: AuthenticationAccessTokenProviderBroadcast()),
         instrumentSelectionListProvider: InstrumentSelectionListProvider(),
-        addressSearchService: AddressSearchService(),
-        lessonPlanFetchingService: LessonPlanFetchingService(),
-        lessonPlanRequestService: LessonPlanRequestService(),
-        lessonPlanCancellationService: LessonPlanCancellationService(),
-        lessonPlanRepository: LessonPlanRepository(),
+        addressSearchService: APIService(),
+        lessonPlanFetchingService: APIService(),
+        lessonPlanRequestService: APIService(),
+        lessonPlanCancellationService: APIService(),
+        lessonPlanRepository: Repository(),
         deviceTokenProvider: InstanceID.instanceID(),
-        deviceRegisterService: DeviceRegisterService(),
+        deviceRegisterService: APIService(),
         deviceTokenDeleter: InstanceID.instanceID(),
         pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator(
             center: UNUserNotificationCenter.current(),
@@ -39,11 +39,14 @@ extension AppEnvironment {
     static var fake: AppEnvironment {
         dummy.with {
             $0.userAuthenticated()
-            $0.lessonPlanFetchingService = LessonPlanFetchingServiceStub(result: .success(.stub), delay: 1.5)
+            $0.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
+            $0.authenticationService = AuthenticationServiceStub(result: .success(fakeAccessTokenProvider), delay: 2)
+            $0.deauthenticationService = DeauthenticationServiceStub()
             $0.instrumentSelectionListProvider = InstrumentSelectionListProviderStub(instruments: Instrument.allCases)
-            $0.addressSearchService = AddressSearchServiceStub(result: .success([.stub]), delay: 1)
-            $0.lessonPlanRequestService = LessonPlanRequestServiceStub(result: .success(.davidGuitarPlanStub), delay: 2)
-            $0.lessonPlanCancellationService = LessonPlanCancellationServiceStub(result: .success(.cancelledJackGuitarPlanStub), delay: 2)
+            $0.addressSearchService = APIServiceStub(result: .success(.stub), delay: 1)
+            $0.lessonPlanFetchingService = APIServiceStub(result: .success(.stub), delay: 1.5)
+            $0.lessonPlanRequestService = APIServiceStub(result: .success(.davidGuitarPlanStub), delay: 2)
+            $0.lessonPlanCancellationService = APIServiceStub(result: .success(.cancelledJackGuitarPlanStub), delay: 2)
             $0.pushNotificationAuthorizationCoordinator = PushNotificationAuthorizationCoordinator(
                 center: UNUserNotificationCenterStub(
                     authorizationStatus: .notDetermined,
@@ -52,8 +55,11 @@ extension AppEnvironment {
                 registerService: PushNotificationRegisterServiceDummy(),
                 queue: nil
             )
+            $0.keyboardDismisser = UIApplication.shared
         }
     }
+
+    private static let fakeAccessTokenProvider = AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))
 }
 
 extension AppEnvironment {
@@ -68,13 +74,13 @@ extension AppEnvironment {
             deauthenticationService: DeauthenticationServiceDummy(),
             accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverDummy(),
             instrumentSelectionListProvider: InstrumentSelectionListProviderDummy(),
-            addressSearchService: AddressSearchServiceDummy(),
-            lessonPlanFetchingService: LessonPlanFetchingServiceDummy(),
-            lessonPlanRequestService: LessonPlanRequestServiceDummy(),
-            lessonPlanCancellationService: LessonPlanCancellationServiceDummy(),
-            lessonPlanRepository: LessonPlanRepository(),
+            addressSearchService: APIServiceDummy(),
+            lessonPlanFetchingService: APIServiceDummy(),
+            lessonPlanRequestService: APIServiceDummy(),
+            lessonPlanCancellationService: APIServiceDummy(),
+            lessonPlanRepository: Repository(),
             deviceTokenProvider: DeviceTokenProviderDummy(),
-            deviceRegisterService: DeviceRegisterServiceDummy(),
+            deviceRegisterService: APIServiceDummy(),
             deviceTokenDeleter: DeviceTokenDeleterDummy(),
             pushNotificationAuthorizationCoordinator: .dummy,
             keyboardDismisser: KeyboardDismisserDummy(),
@@ -87,10 +93,10 @@ extension AppEnvironment {
 // Modifiers (debug-only)
 extension AppEnvironment {
     mutating func userAuthenticated() {
-        accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(
-            currentProvider: AuthenticationAccessTokenProviderStub(
-                result: .success("ACCESS_TOKEN")
-            )
-        )
+        accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(currentProvider: Self.fakeAccessTokenProvider)
+    }
+
+    mutating func userUnauthenticated() {
+        accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverDummy()
     }
 }

@@ -1,5 +1,8 @@
 import XCTest
 @testable import Rythmico
+import ViewInspector
+
+extension LessonsView: Inspectable {}
 
 final class LessonsViewTests: XCTestCase {
     override func setUp() {
@@ -8,18 +11,18 @@ final class LessonsViewTests: XCTestCase {
     }
 
     func testInitialState() throws {
-        Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(result: .success(.stub))
+        Current.lessonPlanFetchingService = APIServiceStub(result: .success(.stub))
 
         let fetchingCoordinator = try XCTUnwrap(Current.lessonPlanFetchingCoordinator())
         let view = try XCTUnwrap(LessonsView(coordinator: fetchingCoordinator))
 
         XCTAssertTrue(view.lessonPlans.isEmpty)
         XCTAssertFalse(view.isLoading)
-        XCTAssertNil(view.errorMessage)
+        XCTAssertNil(view.error)
     }
 
     func testLessonPlansLoadingOnAppear() throws {
-        Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(result: .success(.stub), delay: 0)
+        Current.lessonPlanFetchingService = APIServiceStub(result: .success(.stub), delay: 0)
 
         let fetchingCoordinator = try XCTUnwrap(Current.lessonPlanFetchingCoordinator())
         let view = try XCTUnwrap(LessonsView(coordinator: fetchingCoordinator))
@@ -27,12 +30,13 @@ final class LessonsViewTests: XCTestCase {
         XCTAssertView(view) { view in
             XCTAssertTrue(view.lessonPlans.isEmpty)
             XCTAssertTrue(view.isLoading)
-            XCTAssertNil(view.errorMessage)
+            XCTAssertNil(view.error)
         }
     }
 
     func testLessonPlansFetching() throws {
-        Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(result: .success(.stub))
+        let spy = APIServiceSpy<GetLessonPlansRequest>(result: .success(.stub))
+        Current.lessonPlanFetchingService = spy
 
         let fetchingCoordinator = try XCTUnwrap(Current.lessonPlanFetchingCoordinator())
         let view = try XCTUnwrap(LessonsView(coordinator: fetchingCoordinator))
@@ -40,12 +44,12 @@ final class LessonsViewTests: XCTestCase {
         XCTAssertView(view) { view in
             XCTAssertEqual(view.lessonPlans, .stub)
             XCTAssertFalse(view.isLoading)
-            XCTAssertNil(view.errorMessage)
+            XCTAssertNil(view.error)
         }
     }
 
     func testLessonPlansFetchingFailure() throws {
-        Current.lessonPlanFetchingService = LessonPlanFetchingServiceStub(result: .failure("Something 1"))
+        Current.lessonPlanFetchingService = APIServiceStub(result: .failure("Something 1"))
 
         let fetchingCoordinator = try XCTUnwrap(Current.lessonPlanFetchingCoordinator())
         let view = try XCTUnwrap(LessonsView(coordinator: fetchingCoordinator))
@@ -53,10 +57,7 @@ final class LessonsViewTests: XCTestCase {
         XCTAssertView(view) { view in
             XCTAssertTrue(view.lessonPlans.isEmpty)
             XCTAssertFalse(view.isLoading)
-            XCTAssertEqual(view.errorMessage, "Something 1")
-
-            view.dismissErrorAlert()
-            XCTAssertNil(view.errorMessage)
+            XCTAssertEqual(view.error?.localizedDescription, "Something 1")
         }
     }
 }

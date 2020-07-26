@@ -2,6 +2,9 @@ import XCTest
 @testable import Rythmico
 import enum UserNotifications.UNAuthorizationStatus
 import Sugar
+import ViewInspector
+
+extension RequestLessonPlanConfirmationView: Inspectable {}
 
 final class RequestLessonPlanConfirmationViewTests: XCTestCase {
     override func setUp() {

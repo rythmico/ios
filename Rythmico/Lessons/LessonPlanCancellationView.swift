@@ -2,13 +2,15 @@ import SwiftUI
 import Sugar
 
 struct LessonPlanCancellationView: View, TestableView, Identifiable {
+    private typealias Coordinator = APIActivityCoordinator<CancelLessonPlanRequest>
+
     @Environment(\.betterSheetPresentationMode)
     private var presentationMode
 
     @State
     private var isCancellationIntended = false
     @ObservedObject
-    private var coordinator: LessonPlanCancellationCoordinator
+    private var coordinator: Coordinator
     private var lessonPlan: LessonPlan
     private var onSuccessfulCancellation: Action
 
@@ -22,16 +24,13 @@ struct LessonPlanCancellationView: View, TestableView, Identifiable {
     }
 
     let id = UUID()
-
-    var errorMessage: String? {
-        coordinator.state.failureValue?.localizedDescription
-    }
+    var error: Error? { coordinator.state.failureValue }
 
     func submit(_ reason: LessonPlan.CancellationInfo.Reason) {
-        coordinator.cancelLessonPlan(lessonPlan, reason: reason)
+        coordinator.run(with: (lessonPlanId: lessonPlan.id, body: .init(reason: reason)))
     }
 
-    var onAppear: Handler<Self>?
+    let inspection = SelfInspection()
     var body: some View {
         NavigationView {
             ZStack {
@@ -72,24 +71,24 @@ struct LessonPlanCancellationView: View, TestableView, Identifiable {
                 }
             )
         }
-        .onReceive(coordinator.$state, perform: stateDidChange)
-        .alert(error: self.errorMessage, dismiss: coordinator.dismissError)
         .accentColor(.rythmicoGray90)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isCancellationIntended)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isUserInputRequired)
-        .onAppear { self.onAppear?(self) }
+        .testable(self)
+        .onSuccess(coordinator, perform: lessonPlanSuccessfullyCancelled)
+        .alertOnFailure(coordinator)
     }
 
     private var isUserInputRequired: Bool {
         coordinator.state.isIdle || coordinator.state.isFailure
     }
 
-    private func stateDidChange(_ state: LessonPlanCancellationCoordinator.State) {
-        if case .success = state {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self.dismiss()
-                self.onSuccessfulCancellation()
-            }
+    private func lessonPlanSuccessfullyCancelled(_ lessonPlan: LessonPlan) {
+        Current.lessonPlanRepository.replaceIdentifiableItem(lessonPlan)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.dismiss()
+            self.onSuccessfulCancellation()
         }
     }
 
@@ -109,15 +108,7 @@ struct LessonPlanCancellationView: View, TestableView, Identifiable {
 #if DEBUG
 struct LessonPlanCancellationView_Previews: PreviewProvider {
     static var previews: some View {
-        Current.userAuthenticated()
-
-        Current.lessonPlanCancellationService = LessonPlanCancellationServiceStub(
-//            result: .success(.cancelledJackGuitarPlanStub),
-            result: .failure("Something"),
-            delay: 2
-        )
-
-        return LessonPlanCancellationView(
+        LessonPlanCancellationView(
             lessonPlan: .jackGuitarPlanStub,
             onSuccessfulCancellation: {}
         )

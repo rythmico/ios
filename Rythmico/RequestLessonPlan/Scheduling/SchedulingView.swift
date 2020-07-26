@@ -77,7 +77,7 @@ struct SchedulingView: View, TestableView {
         }
     }
 
-    var onAppear: Handler<Self>?
+    let inspection = SelfInspection()
     var body: some View {
         TitleSubtitleContentView(title: "Lesson Schedule", subtitle: subtitle) {
             VStack(spacing: 0) {
@@ -178,7 +178,7 @@ struct SchedulingView: View, TestableView {
             }
         }
         .animation(.easeInOut(duration: .durationMedium), value: editingFocus)
-        .onAppear { self.onAppear?(self) }
+        .testable(self)
     }
 
     func beginEditingStartDate() {

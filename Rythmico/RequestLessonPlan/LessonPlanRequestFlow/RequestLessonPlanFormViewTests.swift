@@ -1,6 +1,9 @@
 import XCTest
 @testable import Rythmico
 import struct SwiftUI.Image
+import ViewInspector
+
+extension RequestLessonPlanFormView: Inspectable {}
 
 final class RequestLessonPlanFormViewTests: XCTestCase {
     override func setUp() {

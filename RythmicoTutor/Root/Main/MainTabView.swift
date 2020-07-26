@@ -28,7 +28,7 @@ struct MainTabView: View, TestableView {
         self.deviceRegisterCoordinator = deviceRegisterCoordinator
     }
 
-    var onAppear: Handler<Self>?
+    let inspection = SelfInspection()
     var body: some View {
         NavigationView {
             TabView(selection: $state.tabSelection) {
@@ -48,7 +48,7 @@ struct MainTabView: View, TestableView {
             }
             .navigationBarTitle(Text(state.tabSelection.title), displayMode: .automatic)
         }
-        .onAppear { self.onAppear?(self) }
+        .testable(self)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
     }
 }

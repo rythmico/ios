@@ -1,5 +1,8 @@
 import XCTest
 @testable import Rythmico
+import ViewInspector
+
+extension PrivateNoteView: Inspectable {}
 
 final class PrivateNoteViewTests: XCTestCase {
     override func setUp() {

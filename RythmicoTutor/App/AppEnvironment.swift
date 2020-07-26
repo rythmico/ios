@@ -19,11 +19,11 @@ struct AppEnvironment {
 
     var accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase
 
-    var bookingRequestRepository: BookingRequestRepository
-    var bookingRequestFetchingService: BookingRequestFetchingServiceProtocol
+    var bookingRequestRepository: Repository<BookingRequest>
+    var bookingRequestFetchingService: APIServiceBase<GetBookingRequestsRequest>
 
     var deviceTokenProvider: DeviceTokenProvider
-    var deviceRegisterService: DeviceRegisterServiceProtocol
+    var deviceRegisterService: APIServiceBase<AddDeviceRequest>
     var deviceTokenDeleter: DeviceTokenDeleter
 
     var keyboardDismisser: KeyboardDismisser
@@ -53,19 +53,25 @@ extension AppEnvironment {
         }
     }
 
-    func bookingRequestFetchingCoordinator() -> BookingRequestFetchingCoordinator? {
-        accessTokenProviderObserver.currentProvider.map {
-            BookingRequestFetchingCoordinator(accessTokenProvider: $0, service: bookingRequestFetchingService, repository: bookingRequestRepository)
-        }
+    func bookingRequestFetchingCoordinator() -> APIActivityCoordinator<GetBookingRequestsRequest>? {
+        coordinator(for: bookingRequestFetchingService)
     }
 
     func deviceRegisterCoordinator() -> DeviceRegisterCoordinator? {
-        accessTokenProviderObserver.currentProvider.map {
-            DeviceRegisterCoordinator(accessTokenProvider: $0, deviceTokenProvider: deviceTokenProvider, service: deviceRegisterService)
+        coordinator(for: deviceRegisterService).map {
+            DeviceRegisterCoordinator(deviceTokenProvider: deviceTokenProvider, apiCoordinator: $0)
         }
     }
 
     func deviceUnregisterCoordinator() -> DeviceUnregisterCoordinator {
         DeviceUnregisterCoordinator(deviceTokenDeleter: deviceTokenDeleter)
+    }
+}
+
+private extension AppEnvironment {
+    func coordinator<Request: AuthorizedAPIRequest>(for service: APIServiceBase<Request>) -> APIActivityCoordinator<Request>? {
+        accessTokenProviderObserver.currentProvider.map {
+            APIActivityCoordinator(accessTokenProvider: $0, deauthenticationService: deauthenticationService, service: service)
+        }
     }
 }
