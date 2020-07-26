@@ -6,20 +6,6 @@
 	objectVersion = 52;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		03D932EC249C0278003416DC /* Periphery */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 03D932EF249C0278003416DC /* Build configuration list for PBXAggregateTarget "Periphery" */;
-			buildPhases = (
-				03D932F0249C0285003416DC /* Periphery */,
-			);
-			dependencies = (
-			);
-			name = Periphery;
-			productName = Periphery;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		03021C4F248A769200C0C57E /* LessonPlanSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03021C4E248A769200C0C57E /* LessonPlanSummaryCell.swift */; };
 		03021C51248A799200C0C57E /* LessonsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03021C50248A799200C0C57E /* LessonsViewTests.swift */; };
@@ -1564,9 +1550,6 @@
 						LastSwiftMigration = 1160;
 						TestTargetID = 035B1CBB249CF2AA00AABFEA;
 					};
-					03D932EC249C0278003416DC = {
-						CreatedOnToolsVersion = 11.6;
-					};
 					D53554F423E0FD77005A20EB = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
@@ -1604,7 +1587,6 @@
 				035B1CBB249CF2AA00AABFEA /* RythmicoTutor */,
 				035B1CFB249D109B00AABFEA /* RythmicoTutorTests */,
 				D53554F423E0FD77005A20EB /* Sugar */,
-				03D932EC249C0278003416DC /* Periphery */,
 			);
 		};
 /* End PBXProject section */
@@ -1677,24 +1659,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${SRCROOT}/script/build_phase_select_google_info_plist\n";
-		};
-		03D932F0249C0285003416DC /* Periphery */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Periphery;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if ! which periphery >/dev/null; then\n    brew tap peripheryapp/periphery\n    brew cask install periphery\nfi\n\nperiphery scan \\\n    --project \"Rythmico.xcodeproj\" \\\n    --schemes \"Rythmico\" \\\n    --targets \"Rythmico\",\"Sugar\" \\\n    --retain-objc-annotated \\\n    --retain-public\n";
 		};
 		D509898123B9B2E400C19300 /* Select GoogleService-Info.plist */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2402,22 +2366,6 @@
 			};
 			name = Release;
 		};
-		03D932ED249C0278003416DC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		03D932EE249C0278003416DC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		D53554FF23E0FD77005A20EB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2564,15 +2512,6 @@
 			buildConfigurations = (
 				035B1D03249D109B00AABFEA /* Debug */,
 				035B1D04249D109B00AABFEA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		03D932EF249C0278003416DC /* Build configuration list for PBXAggregateTarget "Periphery" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				03D932ED249C0278003416DC /* Debug */,
-				03D932EE249C0278003416DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
