@@ -38,7 +38,7 @@ struct MainTabView: View, TestableView {
                         Image(systemSymbol: .musicNoteList).font(.system(size: 21, weight: .bold))
                         Text(TabSelection.requests.title)
                     }
-                Text("Second View").onTapGesture { fatalError("Crash 2!") } // TODO: REMOVE
+                Text("Second View")
                     .font(.title)
                     .tag(TabSelection.profile)
                     .tabItem {
