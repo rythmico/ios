@@ -23,7 +23,7 @@ struct LessonPlanDetailView: View, TestableView {
         cancellationView = LessonPlanCancellationView(lessonPlan: lessonPlan, onSuccessfulCancellation: back)
     }
 
-    var onAppear: Handler<Self>?
+    let inspection = SelfInspection()
     var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: .spacingExtraLarge) {
@@ -79,7 +79,7 @@ struct LessonPlanDetailView: View, TestableView {
         .navigationBarTitle(Text(""), displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackButton(title: "Lessons", action: back))
-        .onAppear { self.onAppear?(self) }
+        .testable(self)
     }
 
     private let startDateFormatter = DateFormatter().then { $0.dateFormat = "d MMMM @ ha" }

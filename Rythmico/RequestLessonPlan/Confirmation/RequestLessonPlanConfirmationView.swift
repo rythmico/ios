@@ -34,7 +34,7 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
         notificationAuthorizationCoordinator.dismissFailure()
     }
 
-    var onAppear: Handler<Self>?
+    let inspection = SelfInspection()
     var body: some View {
         VStack(spacing: 0) {
             GeometryReader { geometry in
@@ -82,7 +82,7 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: enablePushNotificationsButtonAction != nil)
         .alert(error: self.errorMessage, dismiss: dismissError)
-        .onAppear { self.onAppear?(self) }
+        .testable(self)
         .onAppear(perform: notificationAuthorizationCoordinator.refreshAuthorizationStatus)
     }
 

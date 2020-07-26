@@ -1,5 +1,8 @@
 import XCTest
 @testable import Tutor
+import ViewInspector
+
+extension MainTabView: Inspectable {}
 
 final class MainTabViewTests: XCTestCase {
     override func setUp() {

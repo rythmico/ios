@@ -1,5 +1,8 @@
 import XCTest
 @testable import Rythmico
+import ViewInspector
+
+extension ReviewRequestView: Inspectable {}
 
 final class ReviewRequestViewTests: XCTestCase {
     override func setUp() {

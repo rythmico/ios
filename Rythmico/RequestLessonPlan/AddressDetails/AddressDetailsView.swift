@@ -57,7 +57,7 @@ struct AddressDetailsView: View, TestableView {
         }
     }
 
-    var onAppear: Handler<Self>?
+    let inspection = SelfInspection()
     var body: some View {
         TitleSubtitleContentView(title: "Address Details", subtitle: subtitle) {
             VStack(spacing: 0) {
@@ -125,7 +125,7 @@ struct AddressDetailsView: View, TestableView {
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: addresses)
         .alertOnFailure(searchCoordinator)
-        .onAppear { self.onAppear?(self) }
+        .testable(self)
         .onDisappear(perform: Current.keyboardDismisser.dismissKeyboard)
     }
 }

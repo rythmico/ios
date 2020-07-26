@@ -2,6 +2,9 @@ import XCTest
 import SwiftUI
 import Sugar
 @testable import Rythmico
+import ViewInspector
+
+extension AddressDetailsView: Inspectable {}
 
 final class AddressDetailsViewTests: XCTestCase {
     override func setUp() {

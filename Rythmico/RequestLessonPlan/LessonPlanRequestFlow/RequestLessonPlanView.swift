@@ -23,7 +23,7 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
     }
 
     let id = UUID()
-    var onAppear: Handler<Self>?
+    let inspection = SelfInspection()
 
     var swipeDownToDismissEnabled: Bool {
         coordinator.state.isIdle && context.currentStep.index == 0
@@ -44,7 +44,7 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
             confirmationView.transition(stateTransition(scale: 0.7))
         }
         .betterSheetIsModalInPresentation(!swipeDownToDismissEnabled)
-        .onAppear { self.onAppear?(self) }
+        .testable(self)
         .onSuccess(coordinator, perform: Current.lessonPlanRepository.insertItem)
     }
 

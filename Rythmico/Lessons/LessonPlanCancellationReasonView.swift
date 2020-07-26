@@ -20,7 +20,7 @@ extension LessonPlanCancellationView {
             }
         }
 
-        var onAppear: Handler<Self>?
+        let inspection = SelfInspection()
         var body: some View {
             VStack(spacing: 0) {
                 VStack(spacing: .spacingUnit * 9) {
@@ -45,9 +45,9 @@ extension LessonPlanCancellationView {
                     }
                 }
             }
+            .testable(self)
             .animation(.rythmicoSpring(duration: .durationShort), value: submitButtonAction != nil)
             .betterSheetIsModalInPresentation(true)
-            .onAppear { self.onAppear?(self) }
         }
     }
 }

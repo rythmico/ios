@@ -45,7 +45,7 @@ struct MainTabView: View, TestableView {
         lessonRequestView = RequestLessonPlanView(context: RequestLessonPlanContext())
     }
 
-    var onAppear: Handler<Self>?
+    let inspection = SelfInspection()
     var body: some View {
         NavigationView {
             TabView(selection: $state.tabSelection) {
@@ -70,7 +70,7 @@ struct MainTabView: View, TestableView {
         .onReceive(state.$tabSelection, perform: onTabSelectionChange)
         .accentColor(.rythmicoPurple)
         .betterSheet(item: $lessonRequestView, content: { $0 })
-        .onAppear { self.onAppear?(self) }
+        .testable(self)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
     }
 

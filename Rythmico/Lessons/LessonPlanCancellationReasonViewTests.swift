@@ -1,5 +1,8 @@
 import XCTest
 @testable import Rythmico
+import ViewInspector
+
+extension LessonPlanCancellationView.ReasonView: Inspectable {}
 
 final class LessonPlanCancellationReasonViewTests: XCTestCase {
     override func setUp() {

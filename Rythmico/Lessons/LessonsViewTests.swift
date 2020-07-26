@@ -1,5 +1,8 @@
 import XCTest
 @testable import Rythmico
+import ViewInspector
+
+extension LessonsView: Inspectable {}
 
 final class LessonsViewTests: XCTestCase {
     override func setUp() {
@@ -32,8 +35,6 @@ final class LessonsViewTests: XCTestCase {
     }
 
     func testLessonPlansFetching() throws {
-        let expectation = self.expectation(description: "Fetching")
-
         let spy = APIServiceSpy<GetLessonPlansRequest>(result: .success(.stub))
         Current.lessonPlanFetchingService = spy
 
@@ -41,15 +42,10 @@ final class LessonsViewTests: XCTestCase {
         let view = try XCTUnwrap(LessonsView(coordinator: fetchingCoordinator))
 
         XCTAssertView(view) { view in
-            DispatchQueue.main.async {
-                XCTAssertEqual(view.lessonPlans, .stub)
-                expectation.fulfill()
-            }
+            XCTAssertEqual(view.lessonPlans, .stub)
             XCTAssertFalse(view.isLoading)
             XCTAssertNil(view.error)
         }
-
-        wait(for: [expectation], timeout: 1)
     }
 
     func testLessonPlansFetchingFailure() throws {

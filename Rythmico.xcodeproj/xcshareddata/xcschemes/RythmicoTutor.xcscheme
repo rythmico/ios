@@ -37,20 +37,6 @@
                BlueprintName = "RythmicoTutorTests"
                ReferencedContainer = "container:Rythmico.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "RootViewTests/testDeauthenticationByProviderShowsOnboardingView()">
-               </Test>
-               <Test
-                  Identifier = "RootViewTests/testDeauthenticationByUserShowsOnboardingView()">
-               </Test>
-               <Test
-                  Identifier = "RootViewTests/testDeauthorizationWhileClosedShowsOnboardingView()">
-               </Test>
-               <Test
-                  Identifier = "RootViewTests/testDeauthorizationWhileOpenShowsOnboardingView()">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>
