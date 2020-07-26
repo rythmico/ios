@@ -1,5 +1,8 @@
 import XCTest
 @testable import Rythmico
+import ViewInspector
+
+extension MainTabView: Inspectable {}
 
 final class MainTabViewTests: XCTestCase {
     override func setUp() {

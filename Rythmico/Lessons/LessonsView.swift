@@ -21,7 +21,7 @@ struct LessonsView: View, TestableView {
     var error: Error? { coordinator.state.failureValue }
     var lessonPlans: [LessonPlan] { repository.items }
 
-    var onAppear: Handler<Self>?
+    let inspection = SelfInspection()
     var body: some View {
         CollectionView(lessonPlans, padding: EdgeInsets(.spacingMedium)) { lessonPlan in
             NavigationLink(
@@ -34,7 +34,7 @@ struct LessonsView: View, TestableView {
             .transition(self.transition(for: lessonPlan))
         }
         .accentColor(.rythmicoPurple)
-        .onAppear { self.onAppear?(self) }
+        .testable(self)
         .onAppear(perform: fetchOnAppear)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)

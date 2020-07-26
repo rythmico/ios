@@ -37,7 +37,7 @@ struct RequestLessonPlanFormView: View, TestableView {
         context.unwindLatestStep()
     }
 
-    var onAppear: Handler<Self>?
+    let inspection = SelfInspection()
     var body: some View {
         VStack(spacing: .spacingSmall) {
             VStack(spacing: 0) {
@@ -68,6 +68,7 @@ struct RequestLessonPlanFormView: View, TestableView {
             .animation(.rythmicoSpring(duration: .durationMedium), value: context.currentStep.index)
             .onEdgeSwipe(.left, perform: back)
         }
+        .testable(self)
     }
 
     private func pageTransition(forStepIndex index: Int) -> AnyTransition {

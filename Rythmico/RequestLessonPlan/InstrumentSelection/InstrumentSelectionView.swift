@@ -18,7 +18,7 @@ struct InstrumentSelectionView: View, TestableView {
         self.context = context
     }
 
-    var onAppear: Handler<Self>?
+    let inspection = SelfInspection()
     var body: some View {
         TitleSubtitleContentView(title: "Choose Instrument", subtitle: "Select one instrument") {
             CollectionView(
@@ -29,7 +29,7 @@ struct InstrumentSelectionView: View, TestableView {
                 InstrumentView(viewData: $0).padding(.horizontal, .spacingMedium)
             }
         }
-        .onAppear { self.onAppear?(self) }
+        .testable(self)
         .onAppear(perform: fetchInstruments)
     }
 

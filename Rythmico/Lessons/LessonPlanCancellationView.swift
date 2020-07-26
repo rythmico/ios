@@ -30,7 +30,7 @@ struct LessonPlanCancellationView: View, TestableView, Identifiable {
         coordinator.run(with: (lessonPlanId: lessonPlan.id, body: .init(reason: reason)))
     }
 
-    var onAppear: Handler<Self>?
+    let inspection = SelfInspection()
     var body: some View {
         NavigationView {
             ZStack {
@@ -74,7 +74,7 @@ struct LessonPlanCancellationView: View, TestableView, Identifiable {
         .accentColor(.rythmicoGray90)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isCancellationIntended)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isUserInputRequired)
-        .onAppear { self.onAppear?(self) }
+        .testable(self)
         .onSuccess(coordinator, perform: lessonPlanSuccessfullyCancelled)
         .alertOnFailure(coordinator)
     }

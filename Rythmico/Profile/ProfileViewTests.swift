@@ -1,6 +1,9 @@
 import XCTest
 @testable import Rythmico
 import Sugar
+import ViewInspector
+
+extension ProfileView: Inspectable {}
 
 final class ProfileViewTests: XCTestCase {
     override func setUp() {

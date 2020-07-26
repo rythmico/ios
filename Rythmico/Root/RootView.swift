@@ -15,7 +15,7 @@ struct RootView: View, TestableView {
     @State
     private(set) var state = Self.freshState
 
-    var onAppear: Handler<Self>?
+    let inspection = SelfInspection()
     var body: some View {
         ZStack {
             state.unauthenticatedValue.zIndex(1).transition(.move(edge: .leading))
@@ -23,7 +23,7 @@ struct RootView: View, TestableView {
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: state.isAuthenticated)
         .onReceive(accessTokenProviderObserver.$currentProvider.receive(on: RunLoop.main), perform: refreshState)
-        .onAppear { self.onAppear?(self) }
+        .testable(self)
         .onAppear(perform: handleStateChanges)
     }
 

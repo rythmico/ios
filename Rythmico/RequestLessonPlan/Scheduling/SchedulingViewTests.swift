@@ -1,5 +1,8 @@
 import XCTest
 @testable import Rythmico
+import ViewInspector
+
+extension SchedulingView: Inspectable {}
 
 final class SchedulingViewTests: XCTestCase {
     override func setUp() {

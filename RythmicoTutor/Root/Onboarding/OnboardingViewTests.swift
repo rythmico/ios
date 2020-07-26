@@ -1,6 +1,9 @@
 import XCTest
 @testable import Tutor
 import AuthenticationServices
+import ViewInspector
+
+extension OnboardingView: Inspectable {}
 
 final class OnboardingViewTests: XCTestCase {
     override func setUp() {

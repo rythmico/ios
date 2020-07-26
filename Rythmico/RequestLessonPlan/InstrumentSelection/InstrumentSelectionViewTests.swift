@@ -1,6 +1,9 @@
 import XCTest
 @testable import Rythmico
 import struct SwiftUI.Image
+import ViewInspector
+
+extension InstrumentSelectionView: Inspectable {}
 
 final class InstrumentSelectionViewTests: XCTestCase {
     var instrumentSelectionView: (RequestLessonPlanContext, [Instrument], InstrumentSelectionView) {

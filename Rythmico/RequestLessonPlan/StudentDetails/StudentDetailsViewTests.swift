@@ -2,6 +2,9 @@ import XCTest
 import SwiftUI
 import Sugar
 @testable import Rythmico
+import ViewInspector
+
+extension StudentDetailsView: Inspectable {}
 
 final class StudentDetailsViewTests: XCTestCase {
     var studentDetailsView: (RequestLessonPlanContext, KeyboardDismisserSpy, StudentDetailsView) {

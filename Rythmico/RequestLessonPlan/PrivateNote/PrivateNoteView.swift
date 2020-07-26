@@ -55,7 +55,7 @@ struct PrivateNoteView: View, TestableView {
         }
     }
 
-    var onAppear: Handler<Self>?
+    let inspection = SelfInspection()
     var body: some View {
         TitleSubtitleContentView(title: "Private Note", subtitle: subtitle) {
             VStack(spacing: 0) {
@@ -81,7 +81,7 @@ struct PrivateNoteView: View, TestableView {
             }
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: editingFocus)
-        .onAppear { self.onAppear?(self) }
+        .testable(self)
         .onDisappear(perform: endEditing)
     }
 

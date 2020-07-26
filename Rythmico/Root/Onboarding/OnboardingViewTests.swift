@@ -1,6 +1,9 @@
 import XCTest
 @testable import Rythmico
 import AuthenticationServices
+import ViewInspector
+
+extension OnboardingView: Inspectable {}
 
 final class OnboardingViewTests: XCTestCase {
     override func setUp() {
