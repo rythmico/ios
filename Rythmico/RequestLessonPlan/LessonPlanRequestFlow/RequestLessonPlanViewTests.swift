@@ -24,7 +24,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
         let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
 
         XCTAssertView(view) { view in
-            view.coordinator.requestLessonPlan(LessonPlanRequestBody.stub)
+            view.coordinator.run(with: .stub)
 
             XCTAssertNil(view.formView)
             XCTAssertNotNil(view.loadingView)
@@ -34,12 +34,12 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 
     func testFailureState() throws {
-        Current.lessonPlanRequestService = LessonPlanRequestServiceStub(result: .failure("Something 2"))
+        Current.lessonPlanRequestService = APIServiceStub(result: .failure("Something 2"))
 
         let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
 
         XCTAssertView(view) { view in
-            view.coordinator.requestLessonPlan(LessonPlanRequestBody.stub)
+            view.coordinator.run(with: .stub)
 
             XCTAssertNotNil(view.formView)
             XCTAssertNil(view.loadingView)
@@ -53,12 +53,12 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 
     func testConfirmationState() throws {
-        Current.lessonPlanRequestService = LessonPlanRequestServiceStub(result: .success(.jackGuitarPlanStub))
+        Current.lessonPlanRequestService = APIServiceStub(result: .success(.jackGuitarPlanStub))
 
         let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
 
         XCTAssertView(view) { view in
-            view.coordinator.requestLessonPlan(LessonPlanRequestBody.stub)
+            view.coordinator.run(with: .stub)
 
             XCTAssertNil(view.formView)
             XCTAssertNil(view.loadingView)
@@ -69,8 +69,8 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 }
 
-private extension LessonPlanRequestBody {
-    static let stub = LessonPlanRequestBody(
+private extension CreateLessonPlanRequest.Body {
+    static let stub = CreateLessonPlanRequest.Body(
         instrument: .guitar,
         student: .davidStub,
         address: .stub,

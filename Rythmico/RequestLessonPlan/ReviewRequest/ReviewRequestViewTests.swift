@@ -7,8 +7,8 @@ final class ReviewRequestViewTests: XCTestCase {
         Current.userAuthenticated()
     }
 
-    func reviewRequestView() throws -> (LessonPlanRequestServiceSpy, ReviewRequestView) {
-        let serviceSpy = LessonPlanRequestServiceSpy()
+    func reviewRequestView() throws -> (APIServiceSpy<CreateLessonPlanRequest>, ReviewRequestView) {
+        let serviceSpy = APIServiceSpy<CreateLessonPlanRequest>()
         Current.lessonPlanRequestService = serviceSpy
         let context = RequestLessonPlanContext()
         return try (
@@ -29,15 +29,15 @@ final class ReviewRequestViewTests: XCTestCase {
         let (serviceSpy, view) = try reviewRequestView()
 
         XCTAssertView(view) { view in
-            XCTAssertEqual(serviceSpy.requestCount, 0)
-            XCTAssertNil(serviceSpy.latestRequestBody)
+            XCTAssertEqual(serviceSpy.sendCount, 0)
+            XCTAssertNil(serviceSpy.latestRequest?.properties)
             view.submitRequest()
-            XCTAssertEqual(serviceSpy.requestCount, 1)
-            XCTAssertEqual(serviceSpy.latestRequestBody?.instrument, .drums)
-            XCTAssertEqual(serviceSpy.latestRequestBody?.student, .davidStub)
-            XCTAssertEqual(serviceSpy.latestRequestBody?.address, .stub)
-            XCTAssertEqual(serviceSpy.latestRequestBody?.schedule, .stub)
-            XCTAssertEqual(serviceSpy.latestRequestBody?.privateNote, "")
+            XCTAssertEqual(serviceSpy.sendCount, 1)
+            XCTAssertEqual(serviceSpy.latestRequest?.instrument, .drums)
+            XCTAssertEqual(serviceSpy.latestRequest?.student, .davidStub)
+            XCTAssertEqual(serviceSpy.latestRequest?.address, .stub)
+            XCTAssertEqual(serviceSpy.latestRequest?.schedule, .stub)
+            XCTAssertEqual(serviceSpy.latestRequest?.privateNote, "")
         }
     }
 }

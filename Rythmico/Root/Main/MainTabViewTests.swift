@@ -10,13 +10,13 @@ final class MainTabViewTests: XCTestCase {
     func testPushNotificationRegistrationOnAppear() throws {
         Current.deviceTokenProvider = DeviceTokenProviderStub(result: .success("TOKEN"))
 
-        let spy = DeviceRegisterServiceSpy()
+        let spy = APIServiceSpy<AddDeviceRequest>()
         Current.deviceRegisterService = spy
 
         let view = try XCTUnwrap(MainTabView())
 
         XCTAssertView(view) { view in
-            XCTAssertEqual(spy.registerCount, 1)
+            XCTAssertEqual(spy.sendCount, 1)
         }
     }
 

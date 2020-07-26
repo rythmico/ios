@@ -4,7 +4,7 @@ final class APIServiceStub<Request: AuthorizedAPIRequest>: APIServiceBase<Reques
     var result: Result<Response, Error>
     var delay: TimeInterval?
 
-    init(result: Result<Response, Error>, delay: TimeInterval?) {
+    init(result: Result<Response, Error>, delay: TimeInterval? = nil) {
         self.result = result
         self.delay = delay
     }
@@ -21,10 +21,19 @@ final class APIServiceStub<Request: AuthorizedAPIRequest>: APIServiceBase<Reques
 }
 
 final class APIServiceSpy<Request: AuthorizedAPIRequest>: APIServiceBase<Request> {
-    var sendCount = 0
+    private(set) var sendCount = 0
+    private(set) var latestRequest: Request?
+
+    var result: Result<Response, Error>?
+
+    init(result: Result<Response, Error>? = nil) {
+        self.result = result
+    }
 
     override func send(_ request: Request, completion: @escaping CompletionHandler) {
         sendCount += 1
+        latestRequest = request
+        result.map(completion)
     }
 }
 
