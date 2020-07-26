@@ -39,8 +39,8 @@ struct BookingRequestsView: View {
                                     .foregroundColor(.primary)
                                     .font(.body)
                                 Text("\(request.schedule.startDate, formatter: self.lessonDateFormatter) • \(request.postcode)")
-                                .foregroundColor(.secondary)
-                                .font(.callout)
+                                    .foregroundColor(.secondary)
+                                    .font(.callout)
                             }
                             Spacer(minLength: 0)
                             TickingText(
