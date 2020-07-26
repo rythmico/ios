@@ -8,7 +8,7 @@ final class LessonPlanCancellationViewTests: XCTestCase {
     }
 
     func testCancellationSubmission() throws {
-        let spy = LessonPlanCancellationServiceSpy()
+        let spy = APIServiceSpy<CancelLessonPlanRequest>()
         Current.lessonPlanCancellationService = spy
 
         let view = try XCTUnwrap(
@@ -16,11 +16,11 @@ final class LessonPlanCancellationViewTests: XCTestCase {
         )
 
         XCTAssertView(view) { view in
-            XCTAssertNil(spy.latestRequestLessonPlanId)
-            XCTAssertNil(spy.latestRequestReason)
+            XCTAssertNil(spy.latestRequest?.lessonPlanId)
+            XCTAssertNil(spy.latestRequest?.body.reason)
             view.submit(.badTutor)
-            XCTAssertEqual(spy.latestRequestLessonPlanId, LessonPlan.davidGuitarPlanStub.id)
-            XCTAssertEqual(spy.latestRequestReason, .badTutor)
+            XCTAssertEqual(spy.latestRequest?.lessonPlanId, LessonPlan.davidGuitarPlanStub.id)
+            XCTAssertEqual(spy.latestRequest?.body.reason, .badTutor)
         }
     }
 }

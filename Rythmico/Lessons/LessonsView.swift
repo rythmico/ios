@@ -35,7 +35,7 @@ struct LessonsView: View, TestableView {
         }
         .accentColor(.rythmicoPurple)
         .onAppear { self.onAppear?(self) }
-        .onAppear(perform: coordinator.run)
+        .onAppear(perform: fetchOnAppear)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
     }
