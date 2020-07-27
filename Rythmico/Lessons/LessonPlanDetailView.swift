@@ -2,7 +2,8 @@ import SwiftUI
 import Sugar
 
 struct LessonPlanDetailView: View, TestableView {
-    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.presentationMode)
+    private var presentationMode
 
     var lessonPlan: LessonPlan
     @State
@@ -73,13 +74,13 @@ struct LessonPlanDetailView: View, TestableView {
             .foregroundColor(.rythmicoGray90)
             .rythmicoFont(.body)
         }
+        .testable(self)
         .padding(.top, .spacingExtraSmall)
         .onEdgeSwipe(.left, perform: back)
-        .betterSheet(item: $cancellationView) { $0 }
         .navigationBarTitle(Text(""), displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackButton(title: "Lessons", action: back))
-        .testable(self)
+        .sheet(item: $cancellationView)
     }
 
     private let startDateFormatter = DateFormatter().then { $0.dateFormat = "d MMMM @ ha" }
