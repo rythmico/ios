@@ -299,6 +299,8 @@
 		D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */; };
 		D5473C9F241AC3CB00D66775 /* AddressDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5473C9D241AC3B800D66775 /* AddressDetailsViewTests.swift */; };
 		D5473CA1241AC4A000D66775 /* AddressDetailsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5473CA0241AC4A000D66775 /* AddressDetailsDoubles.swift */; };
+		D54FC05524CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */; };
+		D54FC05624CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */; };
 		D55F012C24CCBE8700E5F13C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB324C4AA4C0077A420 /* APIService.swift */; };
 		D55F012D24CCBE8E00E5F13C /* APIServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB924C6232D0077A420 /* APIServiceDoubles.swift */; };
 		D55F012E24CCBECE00E5F13C /* APIActivityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB524C4AD820077A420 /* APIActivityCoordinator.swift */; };
@@ -309,6 +311,8 @@
 		D55F013424CCE65C00E5F13C /* Then+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55F013224CCE65C00E5F13C /* Then+Sugar.swift */; };
 		D56544D324CE4BA100281875 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = D56544D224CE4BA100281875 /* ViewInspector */; };
 		D56544D524CE4C8D00281875 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = D56544D424CE4C8D00281875 /* ViewInspector */; };
+		D5919F6E24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */; };
+		D5919F6F24CF2D48009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */; };
 		D5AAF7C823ECC87000E410F2 /* RequestLessonPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */; };
 		D5AAF7CB23ED850E00E410F2 /* BetterSheet in Frameworks */ = {isa = PBXBuildFile; productRef = D5AAF7CA23ED850E00E410F2 /* BetterSheet */; };
 		D5AAF7D123F9ACFA00E410F2 /* InstrumentSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D023F9ACFA00E410F2 /* InstrumentSelectionView.swift */; };
@@ -609,7 +613,9 @@
 		D54A561023CD457800BC8485 /* AppleAuthorizationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationResponse.swift; sourceTree = "<group>"; };
 		D54A561223CD4B2C00BC8485 /* AppleAuthorizationCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredential.swift; sourceTree = "<group>"; };
 		D54A561F23CE92AE00BC8485 /* AuthenticationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationError.swift; sourceTree = "<group>"; };
+		D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetInteractiveDismissal.swift; sourceTree = "<group>"; };
 		D55F013224CCE65C00E5F13C /* Then+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Then+Sugar.swift"; sourceTree = "<group>"; };
+		D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetInteractiveDismissal+Previews.swift"; sourceTree = "<group>"; };
 		D5A32DBC23D139C000F3903C /* AuthenticationAccessTokenProviderObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderObserver.swift; sourceTree = "<group>"; };
 		D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanView.swift; sourceTree = "<group>"; };
 		D5AAF7D023F9ACFA00E410F2 /* InstrumentSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionView.swift; sourceTree = "<group>"; };
@@ -1214,6 +1220,8 @@
 				D5F50662240056FA00CA4094 /* RoundedThinOutlineContainer.swift */,
 				D5B57A702419F79700BE9B4F /* SectionHeaderView.swift */,
 				0372E359249ABAB80048B402 /* SelectableList.swift */,
+				D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */,
+				D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */,
 				D5F5068B24046B1400CA4094 /* Spacing.swift */,
 				D50811E323FB72A3008103D8 /* StepBar.swift */,
 				D5C23A7B240FEF30007DED63 /* TapView.swift */,
@@ -1791,6 +1799,7 @@
 				03FE8192244E204900C5C184 /* AddressItemView.swift in Sources */,
 				D55F012F24CCC4D300E5F13C /* ActivityCoordinator.swift in Sources */,
 				03E88EAB24C1F5FE0077A420 /* AppContext.swift in Sources */,
+				D5919F6E24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */,
 				035AF30A2491A54E004A01B2 /* UIAccessibilityDoubles.swift in Sources */,
 				03AAF6712445E0FB002D8F5B /* Schedule.swift in Sources */,
 				03275AE3249070D5009C3980 /* DeviceEndpoints.swift in Sources */,
@@ -1812,6 +1821,7 @@
 				D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */,
 				D5F506B02405A6A900CA4094 /* Duration.swift in Sources */,
 				D5AAF7D923F9EB1200E410F2 /* InstrumentSelectionListProviderDoubles.swift in Sources */,
+				D54FC05524CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */,
 				0365F6F52417F1E900F452AC /* AddressLookupEndpoints.swift in Sources */,
 				03E88EAC24C1F6020077A420 /* main.swift in Sources */,
 				03275AEB24908017009C3980 /* View+ErrorAlert.swift in Sources */,
@@ -1893,12 +1903,14 @@
 				03E88EB224C205C30077A420 /* Current.swift in Sources */,
 				03E88EB424C4AA4C0077A420 /* APIService.swift in Sources */,
 				035B1D67249E644C00AABFEA /* APIRequest.swift in Sources */,
+				D5919F6F24CF2D48009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */,
 				032B6FDD24B78A5200299A09 /* BookingRequestEndpoints.swift in Sources */,
 				035B1CBF249CF2AA00AABFEA /* AppDelegate.swift in Sources */,
 				03E88E8424B8B9020077A420 /* BookingRequestsView.swift in Sources */,
 				03E88E8F24BC9FAF0077A420 /* AppEnvironment+Instances.swift in Sources */,
 				035B1D3B249E576900AABFEA /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */,
 				035B1D34249E576900AABFEA /* AuthenticationService.swift in Sources */,
+				D54FC05624CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */,
 				035B1D39249E576900AABFEA /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
 				035B1D42249E577700AABFEA /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
 				035B1D62249E63D800AABFEA /* DeviceEndpoints.swift in Sources */,
