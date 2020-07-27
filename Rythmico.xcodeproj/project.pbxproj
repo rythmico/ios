@@ -59,7 +59,6 @@
 		035B1CED249CF9B400AABFEA /* AppDelegateDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CEC249CF9B400AABFEA /* AppDelegateDummy.swift */; };
 		035B1CF1249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CF0249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift */; };
 		035B1CF3249CFA0900AABFEA /* AppDelegate+Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CF2249CFA0900AABFEA /* AppDelegate+Window.swift */; };
-		035B1CF5249CFA1800AABFEA /* BetterSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1CF4249CFA1800AABFEA /* BetterSheet */; };
 		035B1CF6249CFA5700AABFEA /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506AF2405A6A900CA4094 /* Duration.swift */; };
 		035B1D0A249D303300AABFEA /* Sugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53554F523E0FD77005A20EB /* Sugar.framework */; };
 		035B1D0B249D303300AABFEA /* Sugar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D53554F523E0FD77005A20EB /* Sugar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -299,6 +298,8 @@
 		D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */; };
 		D5473C9F241AC3CB00D66775 /* AddressDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5473C9D241AC3B800D66775 /* AddressDetailsViewTests.swift */; };
 		D5473CA1241AC4A000D66775 /* AddressDetailsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5473CA0241AC4A000D66775 /* AddressDetailsDoubles.swift */; };
+		D54FC05524CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */; };
+		D54FC05624CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */; };
 		D55F012C24CCBE8700E5F13C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB324C4AA4C0077A420 /* APIService.swift */; };
 		D55F012D24CCBE8E00E5F13C /* APIServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB924C6232D0077A420 /* APIServiceDoubles.swift */; };
 		D55F012E24CCBECE00E5F13C /* APIActivityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB524C4AD820077A420 /* APIActivityCoordinator.swift */; };
@@ -309,8 +310,13 @@
 		D55F013424CCE65C00E5F13C /* Then+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55F013224CCE65C00E5F13C /* Then+Sugar.swift */; };
 		D56544D324CE4BA100281875 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = D56544D224CE4BA100281875 /* ViewInspector */; };
 		D56544D524CE4C8D00281875 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = D56544D424CE4C8D00281875 /* ViewInspector */; };
+		D585217624CF81CE005D783A /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = D585217524CF81CE005D783A /* Introspect */; };
+		D585217824CF81E8005D783A /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = D585217724CF81E8005D783A /* Introspect */; };
+		D5919F6E24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */; };
+		D5919F6F24CF2D48009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */; };
+		D5919F7124CF3BDF009D6185 /* View+Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F7024CF3BDF009D6185 /* View+Sheet.swift */; };
+		D5919F7224CF3BDF009D6185 /* View+Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F7024CF3BDF009D6185 /* View+Sheet.swift */; };
 		D5AAF7C823ECC87000E410F2 /* RequestLessonPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */; };
-		D5AAF7CB23ED850E00E410F2 /* BetterSheet in Frameworks */ = {isa = PBXBuildFile; productRef = D5AAF7CA23ED850E00E410F2 /* BetterSheet */; };
 		D5AAF7D123F9ACFA00E410F2 /* InstrumentSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D023F9ACFA00E410F2 /* InstrumentSelectionView.swift */; };
 		D5AAF7D523F9E1F900E410F2 /* InstrumentSelectionListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D423F9E1F900E410F2 /* InstrumentSelectionListProvider.swift */; };
 		D5AAF7D723F9E20C00E410F2 /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D623F9E20C00E410F2 /* Instrument.swift */; };
@@ -609,7 +615,10 @@
 		D54A561023CD457800BC8485 /* AppleAuthorizationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationResponse.swift; sourceTree = "<group>"; };
 		D54A561223CD4B2C00BC8485 /* AppleAuthorizationCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredential.swift; sourceTree = "<group>"; };
 		D54A561F23CE92AE00BC8485 /* AuthenticationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationError.swift; sourceTree = "<group>"; };
+		D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetInteractiveDismissal.swift; sourceTree = "<group>"; };
 		D55F013224CCE65C00E5F13C /* Then+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Then+Sugar.swift"; sourceTree = "<group>"; };
+		D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetInteractiveDismissal+Previews.swift"; sourceTree = "<group>"; };
+		D5919F7024CF3BDF009D6185 /* View+Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Sheet.swift"; sourceTree = "<group>"; };
 		D5A32DBC23D139C000F3903C /* AuthenticationAccessTokenProviderObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderObserver.swift; sourceTree = "<group>"; };
 		D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanView.swift; sourceTree = "<group>"; };
 		D5AAF7D023F9ACFA00E410F2 /* InstrumentSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionView.swift; sourceTree = "<group>"; };
@@ -674,7 +683,6 @@
 				D53555D523E53704005A20EB /* FirebasePerformance.framework in Frameworks */,
 				D53555D623E53704005A20EB /* FirebaseRemoteConfig.framework in Frameworks */,
 				D53555D723E53704005A20EB /* GoogleToolboxForMac.framework in Frameworks */,
-				D5AAF7CB23ED850E00E410F2 /* BetterSheet in Frameworks */,
 				D53555D823E53704005A20EB /* PromisesObjC.framework in Frameworks */,
 				D53555D923E53704005A20EB /* Protobuf.framework in Frameworks */,
 				D53555DA23E53704005A20EB /* FIRAnalyticsConnector.framework in Frameworks */,
@@ -689,6 +697,7 @@
 				D53555E223E53704005A20EB /* GoogleDataTransportCCTSupport.framework in Frameworks */,
 				D53555E323E53704005A20EB /* GoogleUtilities.framework in Frameworks */,
 				D53555E423E53704005A20EB /* GTMSessionFetcher.framework in Frameworks */,
+				D585217624CF81CE005D783A /* Introspect in Frameworks */,
 				D53555E523E53704005A20EB /* nanopb.framework in Frameworks */,
 				03B19837247053F5005529EB /* APIKit in Frameworks */,
 			);
@@ -701,7 +710,6 @@
 				035B1CD7249CF7EB00AABFEA /* Valet in Frameworks */,
 				035B1D0A249D303300AABFEA /* Sugar.framework in Frameworks */,
 				035B1CD2249CF5D000AABFEA /* SFSafeSymbols in Frameworks */,
-				035B1CF5249CFA1800AABFEA /* BetterSheet in Frameworks */,
 				035B1CD5249CF7E200AABFEA /* Then in Frameworks */,
 				035B1D1B249E56CD00AABFEA /* FIRAnalyticsConnector.framework in Frameworks */,
 				035B1D1C249E56CD00AABFEA /* FirebaseABTesting.framework in Frameworks */,
@@ -718,6 +726,7 @@
 				035B1D27249E56CD00AABFEA /* GoogleAppMeasurement.framework in Frameworks */,
 				035B1D28249E56CD00AABFEA /* GoogleDataTransport.framework in Frameworks */,
 				035B1D29249E56CD00AABFEA /* GoogleDataTransportCCTSupport.framework in Frameworks */,
+				D585217824CF81E8005D783A /* Introspect in Frameworks */,
 				035B1D2A249E56CD00AABFEA /* GoogleToolboxForMac.framework in Frameworks */,
 				035B1D2B249E56CD00AABFEA /* GoogleUtilities.framework in Frameworks */,
 				035B1D2C249E56CD00AABFEA /* GTMSessionFetcher.framework in Frameworks */,
@@ -1206,14 +1215,16 @@
 				D5F5067A2400788400CA4094 /* MultilineTextField.swift */,
 				D5200E3F23FDE460007168E0 /* MultiStyleText.swift */,
 				03AAF66B2444FFCC002D8F5B /* Pickers.swift */,
-				03A3F6E42447B7BD00F6391D /* PreviewDevices.swift */,
 				03C39DD52496802500C76516 /* Pill.swift */,
+				03A3F6E42447B7BD00F6391D /* PreviewDevices.swift */,
 				D5EF88B523FB706C0072BD03 /* ProgressBar.swift */,
 				D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */,
 				D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */,
 				D5F50662240056FA00CA4094 /* RoundedThinOutlineContainer.swift */,
-				0372E359249ABAB80048B402 /* SelectableList.swift */,
 				D5B57A702419F79700BE9B4F /* SectionHeaderView.swift */,
+				0372E359249ABAB80048B402 /* SelectableList.swift */,
+				D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */,
+				D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */,
 				D5F5068B24046B1400CA4094 /* Spacing.swift */,
 				D50811E323FB72A3008103D8 /* StepBar.swift */,
 				D5C23A7B240FEF30007DED63 /* TapView.swift */,
@@ -1226,6 +1237,7 @@
 				D5F506642400619600CA4094 /* UIApplication+KeyboardDismisser.swift */,
 				03A3F6EB2447D3FD00F6391D /* UIScreen+Sugar.swift */,
 				03275AEA24908017009C3980 /* View+ErrorAlert.swift */,
+				D5919F7024CF3BDF009D6185 /* View+Sheet.swift */,
 				D5147507240C8E69002EE20C /* XCTAssertView.swift */,
 			);
 			path = UI;
@@ -1434,9 +1446,9 @@
 				D535547623DF3A19005A20EB /* Valet */,
 				D535548023E0E7C1005A20EB /* SFSafeSymbols */,
 				D535554B23E23EA7005A20EB /* Then */,
-				D5AAF7CA23ED850E00E410F2 /* BetterSheet */,
 				D5F5066D24006CDD00CA4094 /* KeyboardObserver */,
 				03B19836247053F5005529EB /* APIKit */,
+				D585217524CF81CE005D783A /* Introspect */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -1462,8 +1474,8 @@
 				035B1CD1249CF5D000AABFEA /* SFSafeSymbols */,
 				035B1CD4249CF7E200AABFEA /* Then */,
 				035B1CD6249CF7EB00AABFEA /* Valet */,
-				035B1CF4249CFA1800AABFEA /* BetterSheet */,
 				035B1D68249E645E00AABFEA /* APIKit */,
+				D585217724CF81E8005D783A /* Introspect */,
 			);
 			productName = RythmicoTutor;
 			productReference = 035B1CBC249CF2AA00AABFEA /* Tutor.app */;
@@ -1573,10 +1585,10 @@
 				D535547523DF3A19005A20EB /* XCRemoteSwiftPackageReference "Valet" */,
 				D535547F23E0E7C1005A20EB /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				D535554A23E23EA7005A20EB /* XCRemoteSwiftPackageReference "Then" */,
-				D5AAF7C923ED850E00E410F2 /* XCRemoteSwiftPackageReference "BetterSheet" */,
 				D5F5066C24006CDD00CA4094 /* XCRemoteSwiftPackageReference "KeyboardObserver" */,
 				03B19835247053F5005529EB /* XCRemoteSwiftPackageReference "APIKit" */,
 				D56544D124CE4BA100281875 /* XCRemoteSwiftPackageReference "ViewInspector" */,
+				D585217424CF81CE005D783A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = 03341B3C23ABB1E7009AE8A8 /* Products */;
 			projectDirPath = "";
@@ -1790,7 +1802,9 @@
 				D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */,
 				03FE8192244E204900C5C184 /* AddressItemView.swift in Sources */,
 				D55F012F24CCC4D300E5F13C /* ActivityCoordinator.swift in Sources */,
+				D5919F7124CF3BDF009D6185 /* View+Sheet.swift in Sources */,
 				03E88EAB24C1F5FE0077A420 /* AppContext.swift in Sources */,
+				D5919F6E24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */,
 				035AF30A2491A54E004A01B2 /* UIAccessibilityDoubles.swift in Sources */,
 				03AAF6712445E0FB002D8F5B /* Schedule.swift in Sources */,
 				03275AE3249070D5009C3980 /* DeviceEndpoints.swift in Sources */,
@@ -1812,6 +1826,7 @@
 				D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */,
 				D5F506B02405A6A900CA4094 /* Duration.swift in Sources */,
 				D5AAF7D923F9EB1200E410F2 /* InstrumentSelectionListProviderDoubles.swift in Sources */,
+				D54FC05524CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */,
 				0365F6F52417F1E900F452AC /* AddressLookupEndpoints.swift in Sources */,
 				03E88EAC24C1F6020077A420 /* main.swift in Sources */,
 				03275AEB24908017009C3980 /* View+ErrorAlert.swift in Sources */,
@@ -1893,12 +1908,14 @@
 				03E88EB224C205C30077A420 /* Current.swift in Sources */,
 				03E88EB424C4AA4C0077A420 /* APIService.swift in Sources */,
 				035B1D67249E644C00AABFEA /* APIRequest.swift in Sources */,
+				D5919F6F24CF2D48009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */,
 				032B6FDD24B78A5200299A09 /* BookingRequestEndpoints.swift in Sources */,
 				035B1CBF249CF2AA00AABFEA /* AppDelegate.swift in Sources */,
 				03E88E8424B8B9020077A420 /* BookingRequestsView.swift in Sources */,
 				03E88E8F24BC9FAF0077A420 /* AppEnvironment+Instances.swift in Sources */,
 				035B1D3B249E576900AABFEA /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */,
 				035B1D34249E576900AABFEA /* AuthenticationService.swift in Sources */,
+				D54FC05624CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */,
 				035B1D39249E576900AABFEA /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
 				035B1D42249E577700AABFEA /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
 				035B1D62249E63D800AABFEA /* DeviceEndpoints.swift in Sources */,
@@ -1962,6 +1979,7 @@
 				035B1CF1249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift in Sources */,
 				035B1D6B249E662200AABFEA /* EnumProperties.swift in Sources */,
 				035B1D4B249E578D00AABFEA /* Keychain.swift in Sources */,
+				D5919F7224CF3BDF009D6185 /* View+Sheet.swift in Sources */,
 				032B6FCD24B7879300299A09 /* Schedule.swift in Sources */,
 				035B1D55249E5A1800AABFEA /* ContentSizeCategory+Sugar.swift in Sources */,
 			);
@@ -2569,12 +2587,12 @@
 				version = 0.4.1;
 			};
 		};
-		D5AAF7C923ED850E00E410F2 /* XCRemoteSwiftPackageReference "BetterSheet" */ = {
+		D585217424CF81CE005D783A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/egeniq/BetterSheet";
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 0.1.0;
 			};
 		};
 		D5F5066C24006CDD00CA4094 /* XCRemoteSwiftPackageReference "KeyboardObserver" */ = {
@@ -2602,11 +2620,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D535547523DF3A19005A20EB /* XCRemoteSwiftPackageReference "Valet" */;
 			productName = Valet;
-		};
-		035B1CF4249CFA1800AABFEA /* BetterSheet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5AAF7C923ED850E00E410F2 /* XCRemoteSwiftPackageReference "BetterSheet" */;
-			productName = BetterSheet;
 		};
 		035B1D68249E645E00AABFEA /* APIKit */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -2643,10 +2656,15 @@
 			package = D56544D124CE4BA100281875 /* XCRemoteSwiftPackageReference "ViewInspector" */;
 			productName = ViewInspector;
 		};
-		D5AAF7CA23ED850E00E410F2 /* BetterSheet */ = {
+		D585217524CF81CE005D783A /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D5AAF7C923ED850E00E410F2 /* XCRemoteSwiftPackageReference "BetterSheet" */;
-			productName = BetterSheet;
+			package = D585217424CF81CE005D783A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
+		D585217724CF81E8005D783A /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D585217424CF81CE005D783A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
 		};
 		D5F5066D24006CDD00CA4094 /* KeyboardObserver */ = {
 			isa = XCSwiftPackageProductDependency;

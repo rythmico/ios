@@ -2,7 +2,7 @@ import SwiftUI
 import Sugar
 
 struct RequestLessonPlanConfirmationView: View, TestableView {
-    @Environment(\.betterSheetPresentationMode)
+    @Environment(\.presentationMode)
     private var presentationMode
 
     @ObservedObject

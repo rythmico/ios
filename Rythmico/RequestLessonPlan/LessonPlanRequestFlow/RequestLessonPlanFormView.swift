@@ -11,7 +11,7 @@ struct RequestLessonPlanFormView: View, TestableView {
     fileprivate let schedulingViewState = SchedulingView.ViewState()
     fileprivate let privateNoteViewState = PrivateNoteView.ViewState()
 
-    @Environment(\.betterSheetPresentationMode)
+    @Environment(\.presentationMode)
     private var presentationMode
 
     @ObservedObject
@@ -37,6 +37,10 @@ struct RequestLessonPlanFormView: View, TestableView {
         context.unwindLatestStep()
     }
 
+    func dismiss() {
+        presentationMode.wrappedValue.dismiss()
+    }
+
     let inspection = SelfInspection()
     var body: some View {
         VStack(spacing: .spacingSmall) {
@@ -46,7 +50,7 @@ struct RequestLessonPlanFormView: View, TestableView {
                         BackButton(action: back).transition(.opacity)
                     }
                     Spacer()
-                    CloseButton(action: presentationMode.wrappedValue.dismiss)
+                    CloseButton(action: dismiss)
                         .accessibility(hint: Text("Double tap to return to main screen"))
                 }
                 .accentColor(.rythmicoGray90)
