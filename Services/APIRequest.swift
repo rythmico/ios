@@ -12,17 +12,15 @@ protocol AuthorizedAPIRequest: Request {
 }
 
 extension AuthorizedAPIRequest {
-    subscript<T>(dynamicMember keyPath: KeyPath<Properties, T>) -> T {
-        properties[keyPath: keyPath]
-    }
-}
-
-extension AuthorizedAPIRequest {
     var headerFields: [String: String] {
         [
             "Authorization": "Bearer " + accessToken,
             "User-Agent": APIUserAgent.current ?? "Unknown",
         ]
+    }
+
+    subscript<T>(dynamicMember keyPath: KeyPath<Properties, T>) -> T {
+        properties[keyPath: keyPath]
     }
 }
 
