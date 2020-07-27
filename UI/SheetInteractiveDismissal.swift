@@ -1,43 +1,14 @@
 import SwiftUI
+import Introspect
 
 extension View {
-    func sheetInteractiveDismissal(_ enabled: Bool, onAttempt: (() -> Void)? = nil) -> some View {
-        AdaptivePresentationView(view: self, isInteractiveDismissalEnabled: enabled, onDismissalAttempt: onAttempt)
+    func sheetInteractiveDismissal(_ enabled: Bool) -> some View {
+        introspectViewController {
+            $0.ultimateParent.isModalInPresentation = !enabled
+        }
     }
 }
 
-private struct AdaptivePresentationView<T: View>: UIViewControllerRepresentable {
-    let view: T
-    let isInteractiveDismissalEnabled: Bool
-    let onDismissalAttempt: (() -> Void)?
-
-    func makeUIViewController(context: Context) -> UIHostingController<T> {
-        UIHostingController(rootView: view)
-    }
-
-    func updateUIViewController(_ uiViewController: UIHostingController<T>, context: Context) {
-        uiViewController.parent?.presentationController?.delegate = context.coordinator
-        uiViewController.rootView = view
-        context.coordinator.adaptivePresentationView = self
-    }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    final class Coordinator: NSObject, UIAdaptivePresentationControllerDelegate {
-        var adaptivePresentationView: AdaptivePresentationView
-
-        init(_ adaptivePresentationView: AdaptivePresentationView) {
-            self.adaptivePresentationView = adaptivePresentationView
-        }
-
-        func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
-            adaptivePresentationView.isInteractiveDismissalEnabled
-        }
-
-        func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
-            adaptivePresentationView.onDismissalAttempt?()
-        }
-    }
+private extension UIViewController {
+    var ultimateParent: UIViewController { parent?.ultimateParent ?? self }
 }

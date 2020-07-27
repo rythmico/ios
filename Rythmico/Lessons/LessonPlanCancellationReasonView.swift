@@ -47,7 +47,7 @@ extension LessonPlanCancellationView {
             }
             .testable(self)
             .animation(.rythmicoSpring(duration: .durationShort), value: submitButtonAction != nil)
-            .betterSheetIsModalInPresentation(true)
+            .sheetInteractiveDismissal(false)
         }
     }
 }

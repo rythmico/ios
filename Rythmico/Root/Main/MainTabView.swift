@@ -66,12 +66,12 @@ struct MainTabView: View, TestableView {
             .navigationBarTitle(Text(state.tabSelection.title), displayMode: .large)
             .navigationBarItems(leading: leadingNavigationItem, trailing: trailingNavigationItem)
         }
+        .testable(self)
         .modifier(BestNavigationStyleModifier())
         .onReceive(state.$tabSelection, perform: onTabSelectionChange)
         .accentColor(.rythmicoPurple)
-        .betterSheet(item: $lessonRequestView, content: { $0 })
-        .testable(self)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
+        .sheet(item: $lessonRequestView)
     }
 
     private var leadingNavigationItem: AnyView? {
