@@ -25,7 +25,7 @@ struct BookingRequestsView: View {
             List {
                 Section(
                     header: HStack {
-                        Text("LATEST")
+                        Text("UPCOMING")
                         if isLoading {
                             ActivityIndicator(style: .medium)
                                 .transition(AnyTransition.opacity.combined(with: .scale))
@@ -33,13 +33,19 @@ struct BookingRequestsView: View {
                     }
                 ) {
                     ForEach(requests) { request in
-                        VStack(alignment: .leading) {
-                            Text(request.student.name)
-                                .foregroundColor(.primary)
-                                .font(.body)
-                            Text("\(request.schedule.startDate, formatter: self.lessonDateFormatter) • \(request.postcode)")
+                        HStack(spacing: .spacingMedium) {
+                            VStack(alignment: .leading) {
+                                Text(request.student.name)
+                                    .foregroundColor(.primary)
+                                    .font(.body)
+                                Text("\(request.schedule.startDate, formatter: self.lessonDateFormatter)")
+                                    .foregroundColor(.secondary)
+                                    .font(.callout)
+                            }
+                            Spacer(minLength: 0)
+                            Text(request.postcode)
                                 .foregroundColor(.secondary)
-                                .font(.callout)
+                                .font(.body)
                         }
                         .padding(.vertical, .spacingUnit)
                     }
