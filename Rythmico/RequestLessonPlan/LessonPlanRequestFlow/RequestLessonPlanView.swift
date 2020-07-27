@@ -43,9 +43,9 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
             loadingView.transition(stateTransition(scale: 0.7))
             confirmationView.transition(stateTransition(scale: 0.7))
         }
-        .betterSheetIsModalInPresentation(!swipeDownToDismissEnabled)
         .testable(self)
         .onSuccess(coordinator, perform: Current.lessonPlanRepository.insertItem)
+        .sheetInteractiveDismissal(swipeDownToDismissEnabled)
     }
 
     private func stateTransition(scale: CGFloat) -> AnyTransition {

@@ -4,7 +4,7 @@ import Sugar
 struct LessonPlanCancellationView: View, TestableView, Identifiable {
     private typealias Coordinator = APIActivityCoordinator<CancelLessonPlanRequest>
 
-    @Environment(\.betterSheetPresentationMode)
+    @Environment(\.presentationMode)
     private var presentationMode
 
     @State
