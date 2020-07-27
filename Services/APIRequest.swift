@@ -12,17 +12,15 @@ protocol AuthorizedAPIRequest: Request {
 }
 
 extension AuthorizedAPIRequest {
-    subscript<T>(dynamicMember keyPath: KeyPath<Properties, T>) -> T {
-        properties[keyPath: keyPath]
-    }
-}
-
-extension AuthorizedAPIRequest {
     var headerFields: [String: String] {
         [
             "Authorization": "Bearer " + accessToken,
             "User-Agent": APIUserAgent.current ?? "Unknown",
         ]
+    }
+
+    subscript<T>(dynamicMember keyPath: KeyPath<Properties, T>) -> T {
+        properties[keyPath: keyPath]
     }
 }
 
@@ -38,7 +36,7 @@ extension RythmicoAPIRequest {
     var pathPrefix: String { "/v1" }
 
     var decoder: Decoder {
-        JSONDecoder().then { $0.dateDecodingStrategy = .millisecondsSince1970 }
+        JSONDecoder().with(\.dateDecodingStrategy, .millisecondsSince1970)
     }
 }
 
