@@ -36,7 +36,7 @@ extension RythmicoAPIRequest {
     var pathPrefix: String { "/v1" }
 
     var decoder: Decoder {
-        JSONDecoder().then { $0.dateDecodingStrategy = .millisecondsSince1970 }
+        JSONDecoder().with(\.dateDecodingStrategy, .millisecondsSince1970)
     }
 }
 
