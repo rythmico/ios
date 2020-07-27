@@ -11,12 +11,6 @@ protocol AuthorizedAPIRequest: Request {
     init(accessToken: String, properties: Properties) throws
 }
 
-extension AuthorizedAPIRequest where Properties == Void {
-    init(accessToken: String) throws {
-        try self.init(accessToken: accessToken, properties: ())
-    }
-}
-
 extension AuthorizedAPIRequest {
     subscript<T>(dynamicMember keyPath: KeyPath<Properties, T>) -> T {
         properties[keyPath: keyPath]
@@ -32,9 +26,9 @@ extension AuthorizedAPIRequest {
     }
 }
 
-protocol RythmicoAPIRequestCore: AuthorizedAPIRequest {}
+protocol RythmicoAPIRequest: AuthorizedAPIRequest, DecodableJSONRequest {}
 
-extension RythmicoAPIRequestCore {
+extension RythmicoAPIRequest {
     #if DEBUG
     var host: String { "rythmico-dev.web.app" }
     #else
@@ -42,21 +36,10 @@ extension RythmicoAPIRequestCore {
     #endif
 
     var pathPrefix: String { "/v1" }
-}
 
-protocol RythmicoAPIRequest: RythmicoAPIRequestCore, DecodableJSONRequest {}
-
-extension RythmicoAPIRequest {
     var decoder: Decoder {
         JSONDecoder().then { $0.dateDecodingStrategy = .millisecondsSince1970 }
     }
-}
-
-protocol RythmicoAPIRequestNoResponse: RythmicoAPIRequestCore where Response == Void, DataParser == JSONRawDataParser {}
-
-extension RythmicoAPIRequestNoResponse {
-    func response(from object: DataParser.Parsed, urlResponse: HTTPURLResponse) throws -> Response { () }
-    var dataParser: DataParser { JSONRawDataParser() }
 }
 
 struct RythmicoAPIError: LocalizedError, Decodable {

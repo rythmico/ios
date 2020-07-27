@@ -1,6 +1,6 @@
 import APIKit
 
-struct AddDeviceRequest: RythmicoAPIRequestNoResponse {
+struct AddDeviceRequest: RythmicoAPIRequest {
     struct Properties {
         struct Body: Encodable {
             var token: String
@@ -18,4 +18,7 @@ struct AddDeviceRequest: RythmicoAPIRequestNoResponse {
     var bodyParameters: BodyParameters? {
         JSONEncodableBodyParameters(object: properties.body)
     }
+
+    typealias Response = Void
+    typealias Error = RythmicoAPIError
 }
