@@ -62,21 +62,6 @@ struct ProfileView: View, TestableView {
                 .frame(minHeight: 35)
                 .accessibility(hint: Text("Double tap to log out of your account"))
             }
-
-            // TODO: REMOVE
-            Section {
-                Button(action: { fatalError("Crash!") }) {
-                    HStack(alignment: .center) {
-                        Text("Crash!")
-                            .rythmicoFont(.body)
-                            .foregroundColor(.rythmicoRed)
-                            .frame(maxWidth: .infinity)
-                            .multilineTextAlignment(.center)
-                    }
-                }
-                .frame(minHeight: 35)
-                .accessibility(hint: Text("Double tap to log out of your account"))
-            }
         }
         .alert(error: self.errorMessage, dismiss: dismissError)
         .testable(self)
