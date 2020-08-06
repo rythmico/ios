@@ -8,15 +8,17 @@
   "tvOS" : [
 
   ],
-  "commitish" : "6.24.0",
+  "commitish" : "6.29.0",
   "iOS" : [
     {
       "name" : "FirebaseInstanceID",
-      "hash" : "9f3b384c2873eb5dd99ed74c3ba18257b42dce48863ad11bc2cdb33a9dd95cdd"
+      "hash" : "b2e635ee63cbad49ba41fd85c5ac60ab4101ab47ff166b42cec6ad5c7dfdc523",
+      "linking" : "dynamic"
     },
     {
       "name" : "FirebaseMessaging",
-      "hash" : "86e0082d4524b8d812558c2066b986384544ec020534a55d5800225ae8641fc6"
+      "hash" : "c2721127206b3eae6091b0d67cbda02f282e97b508db44797803fc552a016441",
+      "linking" : "dynamic"
     }
   ]
 }
