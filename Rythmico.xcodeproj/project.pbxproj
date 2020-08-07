@@ -253,6 +253,9 @@
 		D52C553724DC6C3B00C295C4 /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556023E4F8BE005A20EB /* Protobuf.framework */; };
 		D52C553A24DC71B800C295C4 /* BookingRequestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C553924DC71B800C295C4 /* BookingRequestDetailView.swift */; };
 		D52C553D24DC74A200C295C4 /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C553B24DC74A200C295C4 /* TitleCell.swift */; };
+		D52C554124DDC3DF00C295C4 /* FloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6E22447880A00F6391D /* FloatingView.swift */; };
+		D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554324DDC53400C295C4 /* FloatingView+Rythmico.swift */; };
+		D52C554824DDC60900C295C4 /* FloatingView+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554624DDC60600C295C4 /* FloatingView+Tutor.swift */; };
 		D52C554A24DDE1D300C295C4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554924DDE1D300C295C4 /* MapView.swift */; };
 		D535547723DF3A19005A20EB /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = D535547623DF3A19005A20EB /* Valet */; };
 		D535547923DF3A7C005A20EB /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547823DF3A7C005A20EB /* Keychain.swift */; };
@@ -578,6 +581,8 @@
 		D52C550824DC6A7500C295C4 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Carthage/Build/iOS/Firebase.framework; sourceTree = "<group>"; };
 		D52C553924DC71B800C295C4 /* BookingRequestDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestDetailView.swift; sourceTree = "<group>"; };
 		D52C553B24DC74A200C295C4 /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
+		D52C554324DDC53400C295C4 /* FloatingView+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingView+Rythmico.swift"; sourceTree = "<group>"; };
+		D52C554624DDC60600C295C4 /* FloatingView+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingView+Tutor.swift"; sourceTree = "<group>"; };
 		D52C554924DDE1D300C295C4 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D535546823DCB03E005A20EB /* AppleAuthorizationResponseDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationResponseDoubles.swift; sourceTree = "<group>"; };
 		D535546A23DCB65A005A20EB /* AppleAuthorizationCredentialStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialStateProvider.swift; sourceTree = "<group>"; };
@@ -1213,6 +1218,8 @@
 				D5F506BD2406E49A00CA4094 /* EdgeSwipeView.swift */,
 				D5F5068D240473CB00CA4094 /* FloatingInputView.swift */,
 				03A3F6E22447880A00F6391D /* FloatingView.swift */,
+				D52C554324DDC53400C295C4 /* FloatingView+Rythmico.swift */,
+				D52C554624DDC60600C295C4 /* FloatingView+Tutor.swift */,
 				D5E04B1823BED80700A161BB /* Fonts.swift */,
 				D5F5065E240055E800CA4094 /* HeaderContentView.swift */,
 				D52C554924DDE1D300C295C4 /* MapView.swift */,
@@ -1796,6 +1803,7 @@
 				03275AE5249071DB009C3980 /* DeviceTokenProvider.swift in Sources */,
 				031378C3249A722F005FC49C /* LessonPlanCancellationView.swift in Sources */,
 				D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */,
+				D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */,
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
 				032B6FD024B787BB00299A09 /* Gender.swift in Sources */,
 				D53555CE23E536AE005A20EB /* AppleAuthorizationControllerDoubles.swift in Sources */,
@@ -1923,7 +1931,9 @@
 				035B1D34249E576900AABFEA /* AuthenticationService.swift in Sources */,
 				D54FC05624CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */,
 				035B1D39249E576900AABFEA /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
+				D52C554824DDC60900C295C4 /* FloatingView+Tutor.swift in Sources */,
 				035B1D42249E577700AABFEA /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
+				D52C554124DDC3DF00C295C4 /* FloatingView.swift in Sources */,
 				035B1D62249E63D800AABFEA /* DeviceEndpoints.swift in Sources */,
 				035B1D63249E63EC00AABFEA /* DeviceRegisterCoordinator.swift in Sources */,
 				035B1D4E249E57D100AABFEA /* KeychainDoubles.swift in Sources */,
