@@ -257,6 +257,7 @@
 		D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554324DDC53400C295C4 /* FloatingView+Rythmico.swift */; };
 		D52C554824DDC60900C295C4 /* FloatingView+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554624DDC60600C295C4 /* FloatingView+Tutor.swift */; };
 		D52C554A24DDE1D300C295C4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554924DDE1D300C295C4 /* MapView.swift */; };
+		D52C554C24DDE5FF00C295C4 /* Buttons+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */; };
 		D535547723DF3A19005A20EB /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = D535547623DF3A19005A20EB /* Valet */; };
 		D535547923DF3A7C005A20EB /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547823DF3A7C005A20EB /* Keychain.swift */; };
 		D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547D23DF4F44005A20EB /* KeychainDoubles.swift */; };
@@ -356,7 +357,7 @@
 		D5F506B42405ED9300CA4094 /* RoundedThickOutlineContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */; };
 		D5F506B62406360900CA4094 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B52406360900CA4094 /* Student.swift */; };
 		D5F506B82406363600CA4094 /* GenderSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B72406363600CA4094 /* GenderSelectionView.swift */; };
-		D5F506BA240637F400CA4094 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B9240637F400CA4094 /* Buttons.swift */; };
+		D5F506BA240637F400CA4094 /* Buttons+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B9240637F400CA4094 /* Buttons+Rythmico.swift */; };
 		D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */; };
 		D5F506BE2406E49A00CA4094 /* EdgeSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506BD2406E49A00CA4094 /* EdgeSwipeView.swift */; };
 		D5FD6F1224096FB5008C5AD4 /* Collection+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD6F1124096FB5008C5AD4 /* Collection+Sugar.swift */; };
@@ -584,6 +585,7 @@
 		D52C554324DDC53400C295C4 /* FloatingView+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingView+Rythmico.swift"; sourceTree = "<group>"; };
 		D52C554624DDC60600C295C4 /* FloatingView+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingView+Tutor.swift"; sourceTree = "<group>"; };
 		D52C554924DDE1D300C295C4 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Buttons+Tutor.swift"; sourceTree = "<group>"; };
 		D535546823DCB03E005A20EB /* AppleAuthorizationResponseDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationResponseDoubles.swift; sourceTree = "<group>"; };
 		D535546A23DCB65A005A20EB /* AppleAuthorizationCredentialStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialStateProvider.swift; sourceTree = "<group>"; };
 		D535546C23DF212C005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialRevocationNotifier.swift; sourceTree = "<group>"; };
@@ -669,7 +671,7 @@
 		D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedThickOutlineContainer.swift; sourceTree = "<group>"; };
 		D5F506B52406360900CA4094 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		D5F506B72406363600CA4094 /* GenderSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectionView.swift; sourceTree = "<group>"; };
-		D5F506B9240637F400CA4094 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		D5F506B9240637F400CA4094 /* Buttons+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Buttons+Rythmico.swift"; sourceTree = "<group>"; };
 		D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetailsView.swift; sourceTree = "<group>"; };
 		D5F506BD2406E49A00CA4094 /* EdgeSwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeSwipeView.swift; sourceTree = "<group>"; };
 		D5FD6F1124096FB5008C5AD4 /* Collection+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Sugar.swift"; sourceTree = "<group>"; };
@@ -1208,7 +1210,8 @@
 				03A3F6ED2447DFF900F6391D /* Animation.swift */,
 				D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */,
 				D5F5065C23FF16AA00CA4094 /* BackButton.swift */,
-				D5F506B9240637F400CA4094 /* Buttons.swift */,
+				D5F506B9240637F400CA4094 /* Buttons+Rythmico.swift */,
+				D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */,
 				031378C4249A7453005FC49C /* CloseButton.swift */,
 				D5AAF7DA23FB347C00E410F2 /* CollectionView.swift */,
 				D535554623E20076005A20EB /* Colors.swift */,
@@ -1879,7 +1882,7 @@
 				D53555B523E53699005A20EB /* AuthenticationError.swift in Sources */,
 				D53555CA23E536AE005A20EB /* AppleAuthorizationService.swift in Sources */,
 				0365F6F02417E79000F452AC /* Address.swift in Sources */,
-				D5F506BA240637F400CA4094 /* Buttons.swift in Sources */,
+				D5F506BA240637F400CA4094 /* Buttons+Rythmico.swift in Sources */,
 				D53555CC23E536AE005A20EB /* AppleAuthorizationServiceDoubles.swift in Sources */,
 				D55F012D24CCBE8E00E5F13C /* APIServiceDoubles.swift in Sources */,
 				D5F506BE2406E49A00CA4094 /* EdgeSwipeView.swift in Sources */,
@@ -1970,6 +1973,7 @@
 				035B1CF3249CFA0900AABFEA /* AppDelegate+Window.swift in Sources */,
 				035B1D43249E577700AABFEA /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,
 				035B1CC3249CF2AA00AABFEA /* MainTabView.swift in Sources */,
+				D52C554C24DDE5FF00C295C4 /* Buttons+Tutor.swift in Sources */,
 				035B1D41249E577700AABFEA /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
 				035B1CF6249CFA5700AABFEA /* Duration.swift in Sources */,
 				035B1D38249E576900AABFEA /* AuthenticationAccessTokenProvider.swift in Sources */,
