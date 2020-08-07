@@ -43,7 +43,7 @@ struct BookingRequestsView: View {
                             label: {
                                 HStack(spacing: .spacingMedium) {
                                     VStack(alignment: .leading) {
-                                        Text(request.student.name)
+                                        Text("\(request.student.name) - \(request.instrument.name)")
                                             .foregroundColor(.primary)
                                             .font(.body)
                                         Text("\(request.schedule.startDate, formatter: self.lessonDateFormatter)")
