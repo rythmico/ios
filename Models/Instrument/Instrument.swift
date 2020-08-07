@@ -11,3 +11,18 @@ enum Instrument: String, Equatable, Codable, CaseIterable, Hashable {
 extension Instrument: Identifiable {
     var id: String { rawValue }
 }
+
+extension Instrument {
+    var name: String {
+        switch self {
+        case .guitar:
+            return "Guitar"
+        case .drums:
+            return "Drums"
+        case .piano:
+            return "Piano"
+        case .singing:
+            return "Singing"
+        }
+    }
+}
