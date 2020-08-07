@@ -1,8 +1,22 @@
 import SwiftUI
+import Sugar
 
-extension FloatingView {
+struct FloatingView<Content: View>: View {
+    var content: Content
+
     init(@ViewBuilder content: () -> Content) {
-        self.backgroundColor = .rythmicoBackgroundSecondary
+        self.backgroundColor = backgroundColor
         self.content = content()
+    }
+
+    var body: some View {
+        VStack(spacing: 0) {
+            Divider()
+            content
+                .padding(.vertical, .spacingExtraSmall)
+                .padding(.horizontal, .spacingMedium)
+        }
+        .background(Color.rythmicoBackgroundSecondary.edgesIgnoringSafeArea(.bottom))
+        .transition(.move(edgeWithSafeArea: .bottom))
     }
 }
