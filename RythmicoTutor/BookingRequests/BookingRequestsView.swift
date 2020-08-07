@@ -9,6 +9,9 @@ struct BookingRequestsView: View {
     private let lessonDateFormatter = Current.dateFormatter(format: .custom("d MMM '@' HH:mm"))
     private let bookingDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .short)
 
+    @State
+    private var selectedBookingRequest: BookingRequest?
+
     init?() {
         guard let coordinator = Current.bookingRequestFetchingCoordinator() else {
             return nil
@@ -33,21 +36,28 @@ struct BookingRequestsView: View {
                     }
                 ) {
                     ForEach(requests) { request in
-                        HStack(spacing: .spacingMedium) {
-                            VStack(alignment: .leading) {
-                                Text(request.student.name)
-                                    .foregroundColor(.primary)
-                                    .font(.body)
-                                Text("\(request.schedule.startDate, formatter: self.lessonDateFormatter)")
-                                    .foregroundColor(.secondary)
-                                    .font(.callout)
+                        NavigationLink(
+                            destination: BookingRequestDetailView(bookingRequest: request),
+                            tag: request,
+                            selection: self.$selectedBookingRequest,
+                            label: {
+                                HStack(spacing: .spacingMedium) {
+                                    VStack(alignment: .leading) {
+                                        Text(request.student.name)
+                                            .foregroundColor(.primary)
+                                            .font(.body)
+                                        Text("\(request.schedule.startDate, formatter: self.lessonDateFormatter)")
+                                            .foregroundColor(.secondary)
+                                            .font(.callout)
+                                    }
+                                    Spacer(minLength: 0)
+                                    Text(request.postcode)
+                                        .foregroundColor(.secondary)
+                                        .font(.body)
+                                }
+                                .padding(.vertical, .spacingUnit)
                             }
-                            Spacer(minLength: 0)
-                            Text(request.postcode)
-                                .foregroundColor(.secondary)
-                                .font(.body)
-                        }
-                        .padding(.vertical, .spacingUnit)
+                        )
                     }
                 }
             }

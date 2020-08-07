@@ -56,7 +56,7 @@ struct BookingRequestDetailView: View {
                 }
                 Section(
                     header: Text("ADDRESS DETAILS"),
-                    footer: Text("Exact location and address will be provided if you're selected.\n")
+                    footer: Text("Exact location and address will be provided if you're selected.")
                 ) {
                     VStack(alignment: .leading, spacing: .spacingExtraSmall) {
                         MapView()
@@ -76,8 +76,10 @@ struct BookingRequestDetailView: View {
                 Button("Apply", action: {}).primaryStyle()
             }
         }
+        .navigationBarTitle(Text(title), displayMode: .inline)
     }
 
+    private var title: String { "\(bookingRequest.student.name) - \(bookingRequest.instrument.name) Request" }
     private var hasAbout: Bool { !bookingRequest.student.about.isEmpty }
     private var hasPrivateNote: Bool { !bookingRequest.privateNote.isEmpty }
 }
