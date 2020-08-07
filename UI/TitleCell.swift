@@ -9,10 +9,12 @@ struct TitleCell: View {
             Text(title)
                 .foregroundColor(.primary)
                 .font(.body)
+                .multilineTextAlignment(.leading)
             Spacer()
             Text(detail)
                 .foregroundColor(.secondary)
                 .font(.body)
+                .multilineTextAlignment(.trailing)
         }
     }
 }
