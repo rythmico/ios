@@ -252,6 +252,7 @@
 		D52C553724DC6C3B00C295C4 /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556023E4F8BE005A20EB /* Protobuf.framework */; };
 		D52C553A24DC71B800C295C4 /* BookingRequestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C553924DC71B800C295C4 /* BookingRequestDetailView.swift */; };
 		D52C553D24DC74A200C295C4 /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C553B24DC74A200C295C4 /* TitleCell.swift */; };
+		D52C554224DDC50D00C295C4 /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039C3EB42448A7CD0036959A /* Transitions.swift */; };
 		D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554324DDC53400C295C4 /* FloatingView+Rythmico.swift */; };
 		D52C554824DDC60900C295C4 /* FloatingView+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554624DDC60600C295C4 /* FloatingView+Tutor.swift */; };
 		D52C554A24DDE1D300C295C4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554924DDE1D300C295C4 /* MapView.swift */; };
@@ -1978,6 +1979,7 @@
 				03E88EAA24C1F4FD0077A420 /* AppDelegate+PushNotifications.swift in Sources */,
 				03E88EBC24C709A00077A420 /* ActivityCoordinator.swift in Sources */,
 				035B1CED249CF9B400AABFEA /* AppDelegateDummy.swift in Sources */,
+				D52C554224DDC50D00C295C4 /* Transitions.swift in Sources */,
 				035B1D36249E576900AABFEA /* DeauthenticationServiceDoubles.swift in Sources */,
 				032B6FD224B787D700299A09 /* Instrument.swift in Sources */,
 				035B1D46249E577700AABFEA /* AppleAuthorizationService.swift in Sources */,
