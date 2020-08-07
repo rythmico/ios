@@ -5,7 +5,6 @@ struct FloatingView<Content: View>: View {
     var content: Content
 
     init(@ViewBuilder content: () -> Content) {
-        self.backgroundColor = backgroundColor
         self.content = content()
     }
 
