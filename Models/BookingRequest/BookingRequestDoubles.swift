@@ -15,6 +15,19 @@ extension BookingRequest {
         )
     }
 
+    static var stubWithAbout: BookingRequest {
+        BookingRequest(
+            id: "ID3",
+            createdAt: AppEnvironment.dummy.date() - (32, .second),
+            instrument: .guitar,
+            submitterName: "David R",
+            student: .janeStub,
+            postcode: "N8",
+            schedule: .startingTomorrowStub,
+            privateNote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        )
+    }
+
     static var longStub: BookingRequest {
         BookingRequest(
             id: "ID2",
@@ -36,6 +49,15 @@ extension BookingRequest.Student {
             age: 10,
             gender: .male,
             about: ""
+        )
+    }
+
+    static var janeStub: Self {
+        .init(
+            name: "Jane",
+            age: 9,
+            gender: .female,
+            about: "Jane is in Year 5. She has had a few guitar lessons at school and seems to really enjoy learning."
         )
     }
 
