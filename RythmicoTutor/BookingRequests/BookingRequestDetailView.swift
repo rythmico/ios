@@ -12,7 +12,7 @@ struct BookingRequestDetailView: View {
 
     func openMap() {
         var appleMapsURLComponents = URLComponents()
-        appleMapsURLComponents.scheme = "https"
+        appleMapsURLComponents.scheme = "http"
         appleMapsURLComponents.host = "maps.apple.com"
         appleMapsURLComponents.queryItems = [URLQueryItem(name: "q", value: bookingRequest.postcode)]
         guard let appleMapsURL = appleMapsURLComponents.url else {
