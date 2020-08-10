@@ -257,6 +257,7 @@
 		D52C554824DDC60900C295C4 /* FloatingView+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554624DDC60600C295C4 /* FloatingView+Tutor.swift */; };
 		D52C554A24DDE1D300C295C4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554924DDE1D300C295C4 /* MapView.swift */; };
 		D52C554C24DDE5FF00C295C4 /* Buttons+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */; };
+		D52C554E24E1BCBB00C295C4 /* URL+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554D24E1BCBB00C295C4 /* URL+Sugar.swift */; };
 		D535547723DF3A19005A20EB /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = D535547623DF3A19005A20EB /* Valet */; };
 		D535547923DF3A7C005A20EB /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547823DF3A7C005A20EB /* Keychain.swift */; };
 		D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547D23DF4F44005A20EB /* KeychainDoubles.swift */; };
@@ -584,6 +585,7 @@
 		D52C554624DDC60600C295C4 /* FloatingView+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingView+Tutor.swift"; sourceTree = "<group>"; };
 		D52C554924DDE1D300C295C4 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Buttons+Tutor.swift"; sourceTree = "<group>"; };
+		D52C554D24E1BCBB00C295C4 /* URL+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Sugar.swift"; sourceTree = "<group>"; };
 		D535546823DCB03E005A20EB /* AppleAuthorizationResponseDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationResponseDoubles.swift; sourceTree = "<group>"; };
 		D535546A23DCB65A005A20EB /* AppleAuthorizationCredentialStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialStateProvider.swift; sourceTree = "<group>"; };
 		D535546C23DF212C005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialRevocationNotifier.swift; sourceTree = "<group>"; };
@@ -1329,6 +1331,7 @@
 				03C39DCD2494FC9D00C76516 /* Sleep.swift */,
 				D55F013224CCE65C00E5F13C /* Then+Sugar.swift */,
 				D50E4BBF23C689BA00B6FCB1 /* Typealiases.swift */,
+				D52C554D24E1BCBB00C295C4 /* URL+Sugar.swift */,
 			);
 			path = Sugar;
 			sourceTree = "<group>";
@@ -2028,6 +2031,7 @@
 				D535550123E0FD9F005A20EB /* NotificationCenterProtocol.swift in Sources */,
 				03275ADD2490091E009C3980 /* DispatchQueue+Sugar.swift in Sources */,
 				D5FD6F1224096FB5008C5AD4 /* Collection+Sugar.swift in Sources */,
+				D52C554E24E1BCBB00C295C4 /* URL+Sugar.swift in Sources */,
 				D535550323E0FD9F005A20EB /* Typealiases.swift in Sources */,
 				03B4A32224468758004282F4 /* Date+Sugar.swift in Sources */,
 				0365F6F32417EE4100F452AC /* Character+Sugar.swift in Sources */,
