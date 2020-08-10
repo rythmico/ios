@@ -10,15 +10,45 @@ struct BookingRequestDetailView: View {
         self.bookingRequest = bookingRequest
     }
 
-    func openMap() {
-        var appleMapsURLComponents = URLComponents()
-        appleMapsURLComponents.scheme = "http"
-        appleMapsURLComponents.host = "maps.apple.com"
-        appleMapsURLComponents.queryItems = [URLQueryItem(name: "q", value: bookingRequest.postcode)]
-        guard let appleMapsURL = appleMapsURLComponents.url else {
-            return
+    @State
+    private var isMapActionSheetPresented = false
+    @State
+    private var error: Error?
+    private func dismissError() { error = nil }
+
+    func presentMapActionSheet() { isMapActionSheetPresented.toggle() }
+
+    func openInAppleMaps() {
+        do {
+            try Current.urlOpener.open(
+                URL(
+                    scheme: "http",
+                    host: "maps.apple.com",
+                    queryItems: [
+                        URLQueryItem(name: "q", value: bookingRequest.postcode)
+                    ]
+                )
+            )
+        } catch {
+            self.error = error
         }
-        Current.urlOpener.open(appleMapsURL)
+    }
+
+    func openInGoogleMaps() {
+        do {
+            try Current.urlOpener.open(
+                URL(
+                    scheme: "comgooglemaps",
+                    host: "",
+                    queryItems: [
+                        URLQueryItem(name: "q", value: bookingRequest.postcode),
+                        URLQueryItem(name: "zoom", value: String(10)),
+                    ]
+                )
+            )
+        } catch {
+            self.error = error
+        }
     }
 
     var body: some View {
@@ -62,7 +92,7 @@ struct BookingRequestDetailView: View {
                         MapView()
                             .frame(height: 160)
                             .clipShape(RoundedRectangle(cornerRadius: .spacingUnit * 2, style: .continuous))
-                            .onTapGesture(perform: openMap)
+                            .onTapGesture(perform: presentMapActionSheet)
                         Text(bookingRequest.postcode)
                             .foregroundColor(.primary)
                             .font(.body)
@@ -77,6 +107,18 @@ struct BookingRequestDetailView: View {
             }
         }
         .navigationBarTitle(Text(title), displayMode: .inline)
+        .actionSheet(isPresented: $isMapActionSheetPresented) {
+            ActionSheet(
+                title: Text("Open in..."),
+                message: nil,
+                buttons: [
+                    .default(Text("Apple Maps"), action: openInAppleMaps),
+                    .default(Text("Google Maps"), action: openInGoogleMaps),
+                    .cancel()
+                ]
+            )
+        }
+        .alert(error: self.error, dismiss: dismissError)
     }
 
     private var title: String { "\(bookingRequest.student.name) - \(bookingRequest.instrument.name) Request" }
