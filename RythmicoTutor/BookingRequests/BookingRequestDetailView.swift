@@ -88,7 +88,7 @@ struct BookingRequestDetailView: View {
         .navigationBarTitle(Text(title), displayMode: .inline)
         .mapOpeningSheet(
             isPresented: $isMapOpeningSheetPresented,
-            action: .search(query: bookingRequest.postcode),
+            intent: .search(query: bookingRequest.postcode),
             error: $mapOpeningError
         )
     }

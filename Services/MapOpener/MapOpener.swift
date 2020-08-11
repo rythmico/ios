@@ -1,12 +1,12 @@
 import Foundation
 
 enum MapLink {
-    enum Action {
+    enum Intent {
         case search(query: String)
     }
 
-    case appleMaps(Action)
-    case googleMaps(Action, zoom: Int)
+    case appleMaps(Intent)
+    case googleMaps(Intent, zoom: Int)
 }
 
 protocol MapOpenerProtocol {
