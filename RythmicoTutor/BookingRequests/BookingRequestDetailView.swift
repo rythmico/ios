@@ -1,4 +1,5 @@
 import SwiftUI
+import Sugar
 
 struct BookingRequestDetailView: View {
     private let bookingRequest: BookingRequest
@@ -19,36 +20,23 @@ struct BookingRequestDetailView: View {
     func presentMapActionSheet() { isMapActionSheetPresented.toggle() }
 
     func openInAppleMaps() {
-        do {
-            try Current.urlOpener.open(
-                URL(
-                    scheme: "http",
-                    host: "maps.apple.com",
-                    queryItems: [
-                        URLQueryItem(name: "q", value: bookingRequest.postcode)
-                    ]
+        error = Result {
+            try Current.mapOpener.open(
+                .appleMaps(
+                    .search(query: bookingRequest.postcode)
                 )
             )
-        } catch {
-            self.error = error
-        }
+        }.failureValue
     }
 
     func openInGoogleMaps() {
-        do {
-            try Current.urlOpener.open(
-                URL(
-                    scheme: "comgooglemaps",
-                    host: "",
-                    queryItems: [
-                        URLQueryItem(name: "q", value: bookingRequest.postcode),
-                        URLQueryItem(name: "zoom", value: String(10)),
-                    ]
+        error = Result {
+            try Current.mapOpener.open(
+                .googleMaps(
+                    .search(query: bookingRequest.postcode), zoom: 10
                 )
             )
-        } catch {
-            self.error = error
-        }
+        }.failureValue
     }
 
     var body: some View {
