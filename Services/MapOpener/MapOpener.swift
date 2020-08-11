@@ -1,27 +1,31 @@
 import Foundation
 
-struct MapOpener {
-    enum Link {
-        enum Action {
-            case search(query: String)
-        }
-
-        case appleMaps(Action)
-        case googleMaps(Action, zoom: Int)
+enum MapLink {
+    enum Action {
+        case search(query: String)
     }
 
+    case appleMaps(Action)
+    case googleMaps(Action, zoom: Int)
+}
+
+protocol MapOpenerProtocol {
+    func open(_ link: MapLink) throws
+}
+
+struct MapOpener: MapOpenerProtocol {
     private let urlOpener: URLOpener
 
     init(urlOpener: URLOpener) {
         self.urlOpener = urlOpener
     }
 
-    func open(_ link: Link) throws {
+    func open(_ link: MapLink) throws {
         try urlOpener.open(link.url())
     }
 }
 
-fileprivate extension MapOpener.Link {
+fileprivate extension MapLink {
     var scheme: String {
         switch self {
         case .appleMaps: return "http"
