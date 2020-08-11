@@ -24,7 +24,7 @@
 		03275AE5249071DB009C3980 /* DeviceTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE4249071DB009C3980 /* DeviceTokenProvider.swift */; };
 		03275AE724907462009C3980 /* DeviceTokenDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE624907462009C3980 /* DeviceTokenDeleter.swift */; };
 		03275AE92490769E009C3980 /* DeviceTokenDeleterDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE82490769E009C3980 /* DeviceTokenDeleterDoubles.swift */; };
-		03275AEB24908017009C3980 /* View+ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AEA24908017009C3980 /* View+ErrorAlert.swift */; };
+		03275AEB24908017009C3980 /* Alert+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AEA24908017009C3980 /* Alert+Error.swift */; };
 		032B6FCB24B7877600299A09 /* BookingRequestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FC924B7875300299A09 /* BookingRequestDoubles.swift */; };
 		032B6FCC24B7877B00299A09 /* BookingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FC524B783C000299A09 /* BookingRequest.swift */; };
 		032B6FCD24B7879300299A09 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF6702445E0FB002D8F5B /* Schedule.swift */; };
@@ -179,7 +179,7 @@
 		03BB5C912472D85A00B44692 /* DeviceRegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C902472D85A00B44692 /* DeviceRegisterCoordinator.swift */; };
 		03BB5C962473070C00B44692 /* ReviewRequestViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C952473070C00B44692 /* ReviewRequestViewTests.swift */; };
 		03BB5C9A24733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C9924733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift */; };
-		03C34360249E7218004907DF /* View+ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AEA24908017009C3980 /* View+ErrorAlert.swift */; };
+		03C34360249E7218004907DF /* Alert+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AEA24908017009C3980 /* Alert+Error.swift */; };
 		03C34362249FC16E004907DF /* APIUserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C34361249FC16E004907DF /* APIUserAgent.swift */; };
 		03C34363249FC16E004907DF /* APIUserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C34361249FC16E004907DF /* APIUserAgent.swift */; };
 		03C39DCE2494FC9D00C76516 /* Sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DCD2494FC9D00C76516 /* Sleep.swift */; };
@@ -322,8 +322,8 @@
 		D585217824CF81E8005D783A /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = D585217724CF81E8005D783A /* Introspect */; };
 		D5919F6E24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */; };
 		D5919F6F24CF2D48009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */; };
-		D5919F7124CF3BDF009D6185 /* View+Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F7024CF3BDF009D6185 /* View+Sheet.swift */; };
-		D5919F7224CF3BDF009D6185 /* View+Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F7024CF3BDF009D6185 /* View+Sheet.swift */; };
+		D5919F7124CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */; };
+		D5919F7224CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */; };
 		D5AAF7C823ECC87000E410F2 /* RequestLessonPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */; };
 		D5AAF7D123F9ACFA00E410F2 /* InstrumentSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D023F9ACFA00E410F2 /* InstrumentSelectionView.swift */; };
 		D5AAF7D523F9E1F900E410F2 /* InstrumentSelectionListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D423F9E1F900E410F2 /* InstrumentSelectionListProvider.swift */; };
@@ -441,7 +441,7 @@
 		03275AE4249071DB009C3980 /* DeviceTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTokenProvider.swift; sourceTree = "<group>"; };
 		03275AE624907462009C3980 /* DeviceTokenDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTokenDeleter.swift; sourceTree = "<group>"; };
 		03275AE82490769E009C3980 /* DeviceTokenDeleterDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTokenDeleterDoubles.swift; sourceTree = "<group>"; };
-		03275AEA24908017009C3980 /* View+ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ErrorAlert.swift"; sourceTree = "<group>"; };
+		03275AEA24908017009C3980 /* Alert+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+Error.swift"; sourceTree = "<group>"; };
 		032B6FC524B783C000299A09 /* BookingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequest.swift; sourceTree = "<group>"; };
 		032B6FC924B7875300299A09 /* BookingRequestDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestDoubles.swift; sourceTree = "<group>"; };
 		032B6FCF24B787BB00299A09 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
@@ -635,7 +635,7 @@
 		D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetInteractiveDismissal.swift; sourceTree = "<group>"; };
 		D55F013224CCE65C00E5F13C /* Then+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Then+Sugar.swift"; sourceTree = "<group>"; };
 		D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetInteractiveDismissal+Previews.swift"; sourceTree = "<group>"; };
-		D5919F7024CF3BDF009D6185 /* View+Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Sheet.swift"; sourceTree = "<group>"; };
+		D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet+Sugar.swift"; sourceTree = "<group>"; };
 		D5A32DBC23D139C000F3903C /* AuthenticationAccessTokenProviderObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderObserver.swift; sourceTree = "<group>"; };
 		D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanView.swift; sourceTree = "<group>"; };
 		D5AAF7D023F9ACFA00E410F2 /* InstrumentSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionView.swift; sourceTree = "<group>"; };
@@ -1214,6 +1214,7 @@
 			children = (
 				0372E35B249AC68A0048B402 /* ActionList.swift */,
 				D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */,
+				03275AEA24908017009C3980 /* Alert+Error.swift */,
 				03A3F6ED2447DFF900F6391D /* Animation.swift */,
 				D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */,
 				D5F5065C23FF16AA00CA4094 /* BackButton.swift */,
@@ -1243,6 +1244,7 @@
 				D5F50662240056FA00CA4094 /* RoundedThinOutlineContainer.swift */,
 				D5B57A702419F79700BE9B4F /* SectionHeaderView.swift */,
 				0372E359249ABAB80048B402 /* SelectableList.swift */,
+				D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */,
 				D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */,
 				D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */,
 				D5F5068B24046B1400CA4094 /* Spacing.swift */,
@@ -1257,8 +1259,6 @@
 				039C3EB42448A7CD0036959A /* Transitions.swift */,
 				D5F506642400619600CA4094 /* UIApplication+KeyboardDismisser.swift */,
 				03A3F6EB2447D3FD00F6391D /* UIScreen+Sugar.swift */,
-				03275AEA24908017009C3980 /* View+ErrorAlert.swift */,
-				D5919F7024CF3BDF009D6185 /* View+Sheet.swift */,
 				D5147507240C8E69002EE20C /* XCTAssertView.swift */,
 			);
 			path = UI;
@@ -1835,7 +1835,7 @@
 				D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */,
 				03FE8192244E204900C5C184 /* AddressItemView.swift in Sources */,
 				D55F012F24CCC4D300E5F13C /* ActivityCoordinator.swift in Sources */,
-				D5919F7124CF3BDF009D6185 /* View+Sheet.swift in Sources */,
+				D5919F7124CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */,
 				03E88EAB24C1F5FE0077A420 /* AppContext.swift in Sources */,
 				D5919F6E24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */,
 				035AF30A2491A54E004A01B2 /* UIAccessibilityDoubles.swift in Sources */,
@@ -1862,7 +1862,7 @@
 				D54FC05524CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */,
 				0365F6F52417F1E900F452AC /* AddressLookupEndpoints.swift in Sources */,
 				03E88EAC24C1F6020077A420 /* main.swift in Sources */,
-				03275AEB24908017009C3980 /* View+ErrorAlert.swift in Sources */,
+				03275AEB24908017009C3980 /* Alert+Error.swift in Sources */,
 				03B198562471BD6C005529EB /* PushNotificationAuthorizationCoordinator.swift in Sources */,
 				D5F5067B2400788400CA4094 /* MultilineTextField.swift in Sources */,
 				D55F012E24CCBECE00E5F13C /* APIActivityCoordinator.swift in Sources */,
@@ -1993,7 +1993,7 @@
 				035B1CF6249CFA5700AABFEA /* Duration.swift in Sources */,
 				035B1D38249E576900AABFEA /* AuthenticationAccessTokenProvider.swift in Sources */,
 				035B1D3A249E576900AABFEA /* AuthenticationAccessTokenProviderObserver.swift in Sources */,
-				03C34360249E7218004907DF /* View+ErrorAlert.swift in Sources */,
+				03C34360249E7218004907DF /* Alert+Error.swift in Sources */,
 				D52C555024E2ABFC00C295C4 /* MapOpener.swift in Sources */,
 				035B1D1A249E568600AABFEA /* AppEnvironment.swift in Sources */,
 				D52C554A24DDE1D300C295C4 /* MapView.swift in Sources */,
@@ -2019,7 +2019,7 @@
 				035B1CF1249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift in Sources */,
 				035B1D6B249E662200AABFEA /* EnumProperties.swift in Sources */,
 				035B1D4B249E578D00AABFEA /* Keychain.swift in Sources */,
-				D5919F7224CF3BDF009D6185 /* View+Sheet.swift in Sources */,
+				D5919F7224CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */,
 				D52C553D24DC74A200C295C4 /* TitleCell.swift in Sources */,
 				032B6FCD24B7879300299A09 /* Schedule.swift in Sources */,
 				035B1D55249E5A1800AABFEA /* ContentSizeCategory+Sugar.swift in Sources */,
