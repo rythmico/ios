@@ -10,9 +10,7 @@ extension View {
         )
     }
 
-    func alert(
-        error: Binding<String?>
-    ) -> some View {
+    func alert(error: Binding<String?>) -> some View {
         alert(item: error) {
             Alert(title: Text("An error ocurred"), message: Text($0))
         }
