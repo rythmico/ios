@@ -9,18 +9,25 @@ public protocol AnyResult {
 
 extension Result: AnyResult {}
 
-extension Result {
+extension AnyResult {
     public var successValue: Success? {
-        guard case .success(let value) = self else {
-            return nil
-        }
-        return value
+        try? get()
     }
 
     public var failureValue: Failure? {
-        guard case .failure(let error) = self else {
-            return nil
+        do {
+            _ = try get()
+        } catch {
+            return error as? Failure
         }
-        return error
+        return nil
+    }
+
+    public var isSuccess: Bool {
+        successValue != nil
+    }
+
+    public var isFailure: Bool {
+        failureValue != nil
     }
 }
