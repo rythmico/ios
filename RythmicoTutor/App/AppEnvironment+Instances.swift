@@ -24,7 +24,8 @@ extension AppEnvironment {
         deviceTokenDeleter: InstanceID.instanceID(),
         keyboardDismisser: UIApplication.shared,
         uiAccessibility: UIAccessibility.self,
-        urlOpener: UIApplication.shared
+        urlOpener: UIApplication.shared,
+        mapOpener: MapOpener(urlOpener: UIApplication.shared)
     )
 }
 
@@ -38,6 +39,8 @@ extension AppEnvironment {
             $0.deauthenticationService = DeauthenticationServiceStub()
             $0.bookingRequestFetchingService = APIServiceStub(result: .success([.stub, .longStub]), delay: 1)
             $0.keyboardDismisser = UIApplication.shared
+            $0.urlOpener = UIApplication.shared
+            $0.mapOpener = MapOpener(urlOpener: UIApplication.shared)
         }
     }
 
@@ -66,7 +69,8 @@ extension AppEnvironment {
             deviceTokenDeleter: DeviceTokenDeleterDummy(),
             keyboardDismisser: KeyboardDismisserDummy(),
             uiAccessibility: UIAccessibilityDummy.self,
-            urlOpener: URLOpenerDummy()
+            urlOpener: URLOpenerDummy(),
+            mapOpener: MapOpenerDummy()
         )
     }
 }
