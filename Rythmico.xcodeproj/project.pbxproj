@@ -258,6 +258,7 @@
 		D52C554A24DDE1D300C295C4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554924DDE1D300C295C4 /* MapView.swift */; };
 		D52C554C24DDE5FF00C295C4 /* Buttons+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */; };
 		D52C554E24E1BCBB00C295C4 /* URL+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554D24E1BCBB00C295C4 /* URL+Sugar.swift */; };
+		D52C555024E2ABFC00C295C4 /* MapOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554F24E2ABFC00C295C4 /* MapOpener.swift */; };
 		D535547723DF3A19005A20EB /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = D535547623DF3A19005A20EB /* Valet */; };
 		D535547923DF3A7C005A20EB /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547823DF3A7C005A20EB /* Keychain.swift */; };
 		D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547D23DF4F44005A20EB /* KeychainDoubles.swift */; };
@@ -586,6 +587,7 @@
 		D52C554924DDE1D300C295C4 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Buttons+Tutor.swift"; sourceTree = "<group>"; };
 		D52C554D24E1BCBB00C295C4 /* URL+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Sugar.swift"; sourceTree = "<group>"; };
+		D52C554F24E2ABFC00C295C4 /* MapOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOpener.swift; sourceTree = "<group>"; };
 		D535546823DCB03E005A20EB /* AppleAuthorizationResponseDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationResponseDoubles.swift; sourceTree = "<group>"; };
 		D535546A23DCB65A005A20EB /* AppleAuthorizationCredentialStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialStateProvider.swift; sourceTree = "<group>"; };
 		D535546C23DF212C005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialRevocationNotifier.swift; sourceTree = "<group>"; };
@@ -1134,6 +1136,7 @@
 				03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */,
 				D535547A23DF3E81005A20EB /* Keychain */,
 				033D47D5247ABF6B0096C50F /* LessonPlanEndpoints.swift */,
+				D52C554F24E2ABFC00C295C4 /* MapOpener.swift */,
 				03BB5CA02473467500B44692 /* PushNotifications */,
 				03E88EB724C4B0F40077A420 /* Repository.swift */,
 				035AF30B2491A553004A01B2 /* UIAccessibility */,
@@ -1977,6 +1980,7 @@
 				035B1D38249E576900AABFEA /* AuthenticationAccessTokenProvider.swift in Sources */,
 				035B1D3A249E576900AABFEA /* AuthenticationAccessTokenProviderObserver.swift in Sources */,
 				03C34360249E7218004907DF /* View+ErrorAlert.swift in Sources */,
+				D52C555024E2ABFC00C295C4 /* MapOpener.swift in Sources */,
 				035B1D1A249E568600AABFEA /* AppEnvironment.swift in Sources */,
 				D52C554A24DDE1D300C295C4 /* MapView.swift in Sources */,
 				03E88EAA24C1F4FD0077A420 /* AppDelegate+PushNotifications.swift in Sources */,
