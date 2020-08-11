@@ -231,6 +231,7 @@
 		D5200E4023FDE460007168E0 /* MultiStyleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3F23FDE460007168E0 /* MultiStyleText.swift */; };
 		D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */; };
 		D5217CEC24E2D7D800C89018 /* MapOpenerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5217CEB24E2D7D800C89018 /* MapOpenerDoubles.swift */; };
+		D5217CEF24E2F8B400C89018 /* MapOpener+ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5217CEE24E2F8B400C89018 /* MapOpener+ActionSheet.swift */; };
 		D52C550D24DC6C3A00C295C4 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896C23B963B700C19300 /* FIRAnalyticsConnector.framework */; };
 		D52C551124DC6C3A00C295C4 /* FirebaseABTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556123E4F8BE005A20EB /* FirebaseABTesting.framework */; };
 		D52C551324DC6C3A00C295C4 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896B23B963B700C19300 /* FirebaseAnalytics.framework */; };
@@ -581,6 +582,7 @@
 		D5200E3F23FDE460007168E0 /* MultiStyleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStyleText.swift; sourceTree = "<group>"; };
 		D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleView.swift; sourceTree = "<group>"; };
 		D5217CEB24E2D7D800C89018 /* MapOpenerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOpenerDoubles.swift; sourceTree = "<group>"; };
+		D5217CEE24E2F8B400C89018 /* MapOpener+ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapOpener+ActionSheet.swift"; sourceTree = "<group>"; };
 		D52C550824DC6A7500C295C4 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Carthage/Build/iOS/Firebase.framework; sourceTree = "<group>"; };
 		D52C553924DC71B800C295C4 /* BookingRequestDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestDetailView.swift; sourceTree = "<group>"; };
 		D52C553B24DC74A200C295C4 /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
@@ -1267,6 +1269,7 @@
 			children = (
 				D52C554F24E2ABFC00C295C4 /* MapOpener.swift */,
 				D5217CEB24E2D7D800C89018 /* MapOpenerDoubles.swift */,
+				D5217CEE24E2F8B400C89018 /* MapOpener+ActionSheet.swift */,
 			);
 			path = MapOpener;
 			sourceTree = "<group>";
@@ -1995,6 +1998,7 @@
 				035B1D1A249E568600AABFEA /* AppEnvironment.swift in Sources */,
 				D52C554A24DDE1D300C295C4 /* MapView.swift in Sources */,
 				03E88EAA24C1F4FD0077A420 /* AppDelegate+PushNotifications.swift in Sources */,
+				D5217CEF24E2F8B400C89018 /* MapOpener+ActionSheet.swift in Sources */,
 				03E88EBC24C709A00077A420 /* ActivityCoordinator.swift in Sources */,
 				035B1CED249CF9B400AABFEA /* AppDelegateDummy.swift in Sources */,
 				D52C554224DDC50D00C295C4 /* Transitions.swift in Sources */,
