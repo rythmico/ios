@@ -10,68 +10,47 @@ struct BookingRequestDetailView: View {
         self.bookingRequest = bookingRequest
     }
 
+    var title: String { "\(bookingRequest.student.name) - \(bookingRequest.instrument.name) Request" }
+    var submittedBy: String { bookingRequest.submitterName }
+    var startDate: String { dateFormatter.string(from: bookingRequest.schedule.startDate) }
+    var time: String { timeFormatter.string(from: bookingRequest.schedule.startDate) }
+    var duration: String { "\(bookingRequest.schedule.duration) minutes" }
+    var name: String { bookingRequest.student.name }
+    var age: String { "\(bookingRequest.student.age)" }
+    var gender: String { bookingRequest.student.gender.name }
+    var about: String? { bookingRequest.student.about.isEmpty ? nil : bookingRequest.student.about }
+    var privateNote: String { bookingRequest.privateNote.isEmpty ? "None" : bookingRequest.privateNote }
+    var privateNoteOpacity: Double { bookingRequest.privateNote.isEmpty ? 0.5 : 1 }
+
     @State
-    private var isMapActionSheetPresented = false
+    private var isMapOpeningSheetPresented = false
+    private func presentMapActionSheet() { isMapOpeningSheetPresented = true }
     @State
-    private var error: Error?
-    private func dismissError() { error = nil }
+    private var mapOpeningError: Error?
 
-    func presentMapActionSheet() { isMapActionSheetPresented.toggle() }
-
-    func openInAppleMaps() {
-        do {
-            try Current.urlOpener.open(
-                URL(
-                    scheme: "http",
-                    host: "maps.apple.com",
-                    queryItems: [
-                        URLQueryItem(name: "q", value: bookingRequest.postcode)
-                    ]
-                )
-            )
-        } catch {
-            self.error = error
-        }
-    }
-
-    func openInGoogleMaps() {
-        do {
-            try Current.urlOpener.open(
-                URL(
-                    scheme: "comgooglemaps",
-                    host: "",
-                    queryItems: [
-                        URLQueryItem(name: "q", value: bookingRequest.postcode),
-                        URLQueryItem(name: "zoom", value: String(10)),
-                    ]
-                )
-            )
-        } catch {
-            self.error = error
-        }
-    }
+    var postcode: String { bookingRequest.postcode }
 
     var body: some View {
         VStack(spacing: 0) {
             List {
                 Section(header: Text("REQUEST DETAILS")) {
-                    TitleCell(title: "Submitted by", detail: bookingRequest.submitterName)
+                    TitleCell(title: "Submitted by", detail: submittedBy)
                 }
                 Section(header: Text("LESSON SCHEDULE DETAILS")) {
-                    TitleCell(title: "Start Date", detail: dateFormatter.string(from: bookingRequest.schedule.startDate))
-                    TitleCell(title: "Time", detail: timeFormatter.string(from: bookingRequest.schedule.startDate))
-                    TitleCell(title: "Duration", detail: "\(bookingRequest.schedule.duration) minutes")
+                    TitleCell(title: "Start Date", detail: startDate)
+                    TitleCell(title: "Time", detail: time)
+                    TitleCell(title: "Duration", detail: duration)
                 }
                 Section(header: Text("STUDENT DETAILS")) {
-                    TitleCell(title: "Name", detail: bookingRequest.student.name)
-                    TitleCell(title: "Age", detail: "\(bookingRequest.student.age)")
-                    TitleCell(title: "Gender", detail: bookingRequest.student.gender.name)
-                    if hasAbout {
+                    TitleCell(title: "Name", detail: name)
+                    TitleCell(title: "Age", detail: age)
+                    TitleCell(title: "Gender", detail: gender)
+                    about.map { about in
                         VStack(alignment: .leading, spacing: .spacingUnit) {
                             Text("About")
                                 .foregroundColor(.primary)
                                 .font(.body)
-                            Text(bookingRequest.student.about)
+                            Text(about)
                                 .foregroundColor(.secondary)
                                 .font(.body)
                         }
@@ -79,8 +58,8 @@ struct BookingRequestDetailView: View {
                     }
                 }
                 Section(header: Text("PRIVATE NOTE")) {
-                    Text(hasPrivateNote ? bookingRequest.privateNote : "None")
-                        .foregroundColor(Color.secondary.opacity(hasPrivateNote ? 1 : 0.5))
+                    Text(privateNote)
+                        .foregroundColor(Color.secondary.opacity(privateNoteOpacity))
                         .font(.body)
                         .padding(.vertical, .spacingUnit)
                 }
@@ -93,7 +72,7 @@ struct BookingRequestDetailView: View {
                             .frame(height: 160)
                             .clipShape(RoundedRectangle(cornerRadius: .spacingUnit * 2, style: .continuous))
                             .onTapGesture(perform: presentMapActionSheet)
-                        Text(bookingRequest.postcode)
+                        Text(postcode)
                             .foregroundColor(.primary)
                             .font(.body)
                     }
@@ -107,23 +86,12 @@ struct BookingRequestDetailView: View {
             }
         }
         .navigationBarTitle(Text(title), displayMode: .inline)
-        .actionSheet(isPresented: $isMapActionSheetPresented) {
-            ActionSheet(
-                title: Text("Open in..."),
-                message: nil,
-                buttons: [
-                    .default(Text("Apple Maps"), action: openInAppleMaps),
-                    .default(Text("Google Maps"), action: openInGoogleMaps),
-                    .cancel()
-                ]
-            )
-        }
-        .alert(error: self.error, dismiss: dismissError)
+        .mapOpeningSheet(
+            isPresented: $isMapOpeningSheetPresented,
+            intent: .search(query: bookingRequest.postcode),
+            error: $mapOpeningError
+        )
     }
-
-    private var title: String { "\(bookingRequest.student.name) - \(bookingRequest.instrument.name) Request" }
-    private var hasAbout: Bool { !bookingRequest.student.about.isEmpty }
-    private var hasPrivateNote: Bool { !bookingRequest.privateNote.isEmpty }
 }
 
 #if DEBUG

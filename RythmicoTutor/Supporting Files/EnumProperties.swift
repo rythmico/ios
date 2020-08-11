@@ -48,16 +48,11 @@ extension ActivityCoordinator.State {
 
 extension ActivityCoordinator.State where Output: AnyResult {
     var successValue: Output.Success? {
-        try? finishedValue?.get()
+        finishedValue?.successValue
     }
 
     var failureValue: Output.Failure? {
-        do {
-            _ = try finishedValue?.get()
-        } catch {
-            return error as? Output.Failure
-        }
-        return nil
+        finishedValue?.failureValue
     }
 
     var isSuccess: Bool {
