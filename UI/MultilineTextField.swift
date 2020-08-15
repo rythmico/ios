@@ -197,6 +197,8 @@ struct MultilineTextField: View {
     @State private var dynamicHeight: CGFloat = 100
     @State private var showingPlaceholder = false
 
+    @Environment(\.sizeCategory) private var sizeCategory
+
     init(
         _ placeholder: String = "",
         text: Binding<String>,
@@ -236,9 +238,11 @@ struct MultilineTextField: View {
         .background(placeholderView, alignment: .topLeading)
     }
 
+    @ViewBuilder
     var placeholderView: some View {
-        Group {
-            if showingPlaceholder {
+        if showingPlaceholder {
+            // Forces placeholder UIFont change on sizeCategory change.
+            if sizeCategory == sizeCategory {
                 Text(placeholder)
                     .font(Font(
                         CTFontCreateWithFontDescriptor(
