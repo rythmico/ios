@@ -5,7 +5,7 @@ extension MultilineTextField {
         _ placeholder: String = "",
         text: Binding<String>,
         minHeight: CGFloat? = nil,
-        onEditingChanged: @escaping (Bool) -> Void
+        onEditingChanged: @escaping (Bool) -> Void = { _ in }
     ) {
         self.init(
             placeholder,
