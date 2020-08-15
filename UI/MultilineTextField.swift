@@ -52,10 +52,8 @@ private struct UITextViewWrapper: UIViewRepresentable {
                 UIBarButtonItem(
                     customView: UIButton().then {
                         $0.setTitle("Done", for: .normal)
-                        if let accentColor = accentColor {
-                            $0.setTitleColor(accentColor, for: .normal)
-                            $0.setTitleColor(accentColor.withAlphaComponent(0.2), for: .highlighted)
-                        }
+                        $0.setTitleColor(accentColorOrDefault, for: .normal)
+                        $0.setTitleColor(accentColorOrDefault.withAlphaComponent(0.2), for: .highlighted)
                         $0.titleLabel?.font = fontOrDefaultFont.fontDescriptor
                             .withSymbolicTraits(.traitBold)
                             .map { UIFont(descriptor: $0, size: $0.pointSize) }
@@ -108,6 +106,10 @@ private struct UITextViewWrapper: UIViewRepresentable {
 
     private var fontOrDefaultFont: UIFont {
         font ?? .preferredFont(forTextStyle: .body)
+    }
+
+    private var accentColorOrDefault: UIColor {
+        accentColor ?? .systemBlue
     }
 
     func makeCoordinator() -> Coordinator {
