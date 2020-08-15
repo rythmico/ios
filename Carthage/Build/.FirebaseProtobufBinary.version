@@ -8,11 +8,11 @@
   "tvOS" : [
 
   ],
-  "commitish" : "6.29.0",
+  "commitish" : "6.30.0",
   "iOS" : [
     {
       "name" : "Protobuf",
-      "hash" : "752854b3bbe9e42e05fad6e6f094dc8dc2cc95993bbf6bcbafe777c58fcf8313",
+      "hash" : "c4409148c2027911addfe592eaf7735f0333bf47963bd6991f92f726d5cd17cd",
       "linking" : "dynamic"
     }
   ]

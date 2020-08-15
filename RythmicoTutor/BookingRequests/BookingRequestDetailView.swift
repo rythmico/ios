@@ -30,6 +30,10 @@ struct BookingRequestDetailView: View {
 
     var postcode: String { bookingRequest.postcode }
 
+    @State
+    private var isApplicationViewPresented = false
+    private func presentApplicationView() { isApplicationViewPresented = true }
+
     var body: some View {
         VStack(spacing: 0) {
             List {
@@ -82,7 +86,7 @@ struct BookingRequestDetailView: View {
             .listStyle(GroupedListStyle())
 
             FloatingView {
-                Button("Apply", action: {}).primaryStyle()
+                Button("Apply", action: presentApplicationView).primaryStyle()
             }
         }
         .navigationBarTitle(Text(title), displayMode: .inline)
@@ -91,6 +95,7 @@ struct BookingRequestDetailView: View {
             intent: .search(query: bookingRequest.postcode),
             error: $mapOpeningError
         )
+        .sheet(isPresented: $isApplicationViewPresented) { BookingApplicationView(booking: self.bookingRequest) }
     }
 }
 
