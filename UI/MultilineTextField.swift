@@ -23,6 +23,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
     var textColor: UIColor
     var minHeight: CGFloat
     @Binding var calculatedHeight: CGFloat
+    var padding: EdgeInsets
     var onEditingChanged: (Bool) -> Void
 
     func makeUIView(context: Context) -> UITextView {
@@ -36,10 +37,10 @@ private struct UITextViewWrapper: UIViewRepresentable {
         textField.isScrollEnabled = false
         textField.backgroundColor = .clear
         textField.textContainerInset = UIEdgeInsets(
-            top: 15,
-            left: .spacingSmall,
-            bottom: 15,
-            right: .spacingSmall
+            top: padding.top,
+            left: padding.leading,
+            bottom: padding.bottom,
+            right: padding.trailing
         )
         textField.textContainer.lineFragmentPadding = 0
 
@@ -177,6 +178,7 @@ struct MultilineTextField: View {
     private var accentColor: UIColor?
     private var textColor: UIColor?
     private var placeholderColor: Color?
+    private var padding: EdgeInsets
     private var onEditingChanged: (Bool) -> Void
 
     @Binding private var text: String
@@ -201,6 +203,7 @@ struct MultilineTextField: View {
         textColor: UIColor?,
         placeholderColor: Color?,
         minHeight: CGFloat? = nil,
+        padding: EdgeInsets? = nil,
         onEditingChanged: @escaping (Bool) -> Void
     ) {
         self.placeholder = placeholder
@@ -210,6 +213,7 @@ struct MultilineTextField: View {
         self.textColor = textColor
         self.placeholderColor = placeholderColor
         self.minHeight = minHeight ?? 0
+        self.padding = padding ?? .zero
         self.onEditingChanged = onEditingChanged
         self._showingPlaceholder = State(initialValue: self.text.isEmpty)
     }
@@ -223,6 +227,7 @@ struct MultilineTextField: View {
             textColor: textColor ?? .black,
             minHeight: minHeight,
             calculatedHeight: $dynamicHeight,
+            padding: padding,
             onEditingChanged: onEditingChanged
         )
         .frame(minHeight: dynamicHeight, maxHeight: dynamicHeight, alignment: .topLeading)
@@ -242,7 +247,7 @@ struct MultilineTextField: View {
                     ))
                     .foregroundColor(placeholderColor ?? Color(.systemGray3))
                     .fixedSize(horizontal: false, vertical: true)
-                    .padding(.spacingSmall)
+                    .padding(padding)
             }
         }
     }
