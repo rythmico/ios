@@ -15,6 +15,7 @@ extension MultilineTextField {
             textColor: .rythmicoForeground,
             placeholderColor: .rythmicoGray30,
             minHeight: minHeight,
+            padding: EdgeInsets(horizontal: .spacingSmall, vertical: 15),
             onEditingChanged: onEditingChanged
         )
     }

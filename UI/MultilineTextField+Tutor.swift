@@ -15,6 +15,7 @@ extension MultilineTextField {
             textColor: nil,
             placeholderColor: nil,
             minHeight: minHeight,
+            padding: .zero,
             onEditingChanged: onEditingChanged
         )
     }
