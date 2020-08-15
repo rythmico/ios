@@ -8,31 +8,31 @@
   "tvOS" : [
 
   ],
-  "commitish" : "6.29.0",
+  "commitish" : "6.30.0",
   "iOS" : [
     {
       "name" : "GoogleToolboxForMac",
-      "hash" : "1f2560ba5619fb52e6d21abe68586c09b023fb2517bbd5cd688b9a264b2f0a8e",
+      "hash" : "c2c82a9b42ce75990538fad86db5a75adb3693b85402c35348613ffa0e384a77",
       "linking" : "dynamic"
     },
     {
       "name" : "FirebaseABTesting",
-      "hash" : "287e14825dedf21d012599de01ef68bebecd8535f5ef223b1e1729aafba1c91c",
-      "linking" : "dynamic"
-    },
-    {
-      "name" : "FirebaseRemoteConfig",
-      "hash" : "44afcee785eb7e81453b0dfcfa4f2e6d5ded39dfaecae15ce0f752a10b783ceb",
-      "linking" : "dynamic"
-    },
-    {
-      "name" : "GTMSessionFetcher",
-      "hash" : "e0da5a64fb37f7cd8ad7d0203c6cfa246a5e112e8bfb06c787811b585ba3a944",
+      "hash" : "63c9e83e195b101b7eb75ce71fd0c98e66fa01f41a14284783d8a40f0fd21c0c",
       "linking" : "dynamic"
     },
     {
       "name" : "FirebasePerformance",
-      "hash" : "84de23a69171170571bcb73be862c07236ddaf9e215e8b65b839149d2b80d5a1",
+      "hash" : "5cb38d0c763fafa7a56c0fd552940e8b861b6c715f59a1157261afc2146beed7",
+      "linking" : "dynamic"
+    },
+    {
+      "name" : "FirebaseRemoteConfig",
+      "hash" : "62cb420144dc0902a56347c64544695769ac4b3a5f6235ca14e90f3d8e6b2241",
+      "linking" : "dynamic"
+    },
+    {
+      "name" : "GTMSessionFetcher",
+      "hash" : "35e7251929dde4dfcf4689040e609f5ba3c6c7833f04827933bc6b8a33c63415",
       "linking" : "dynamic"
     }
   ]
