@@ -51,8 +51,11 @@ struct BookingApplicationView: View {
     }
 }
 
+#if DEBUG
 struct BookingApplicationView_Previews: PreviewProvider {
     static var previews: some View {
         BookingApplicationView(booking: .stub)
+            .environment(\.colorScheme, .dark)
     }
 }
+#endif
