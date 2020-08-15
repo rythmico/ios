@@ -18,25 +18,29 @@ private struct UITextViewWrapper: UIViewRepresentable {
 
     var placeholder: String
     @Binding var text: String
+    var font: UIFont?
+    var accentColor: UIColor?
+    var textColor: UIColor
     var minHeight: CGFloat
     @Binding var calculatedHeight: CGFloat
+    var padding: EdgeInsets
     var onEditingChanged: (Bool) -> Void
 
     func makeUIView(context: Context) -> UITextView {
         let textField = UITextViewPrimitive()
         textField.delegate = context.coordinator
 
-        textField.font = .rythmicoFont(.body)
+        textField.font = fontOrDefaultFont
         textField.isEditable = true
         textField.isSelectable = true
         textField.isUserInteractionEnabled = true
         textField.isScrollEnabled = false
         textField.backgroundColor = .clear
         textField.textContainerInset = UIEdgeInsets(
-            top: 15,
-            left: .spacingSmall,
-            bottom: 15,
-            right: .spacingSmall
+            top: padding.top,
+            left: padding.leading,
+            bottom: padding.bottom,
+            right: padding.trailing
         )
         textField.textContainer.lineFragmentPadding = 0
 
@@ -48,9 +52,11 @@ private struct UITextViewWrapper: UIViewRepresentable {
                 UIBarButtonItem(
                     customView: UIButton().then {
                         $0.setTitle("Done", for: .normal)
-                        $0.setTitleColor(.rythmicoPurple, for: .normal)
-                        $0.setTitleColor(UIColor.rythmicoPurple.withAlphaComponent(0.2), for: .highlighted)
-                        $0.titleLabel?.font = .rythmicoFont(.bodyBold)
+                        $0.setTitleColor(accentColorOrDefault, for: .normal)
+                        $0.setTitleColor(accentColorOrDefault.withAlphaComponent(0.2), for: .highlighted)
+                        $0.titleLabel?.font = fontOrDefaultFont.fontDescriptor
+                            .withSymbolicTraits(.traitBold)
+                            .map { UIFont(descriptor: $0, size: $0.pointSize) }
                         $0.addTarget(textField, action: #selector(UITextField.resignFirstResponder), for: .touchUpInside)
                     }
                 )
@@ -63,21 +69,30 @@ private struct UITextViewWrapper: UIViewRepresentable {
 
     func updateUIView(_ uiView: UITextView, context: Context) {
         if uiView.rythmicoText != self.text {
-            uiView.rythmicoText = self.text
+            uiView.setRythmicoText(self.text, font: fontOrDefaultFont, color: textColor)
         }
-        uiView.font = .rythmicoFont(.body)
+        uiView.font = font ?? .preferredFont(forTextStyle: .body)
         UITextViewWrapper.recalculateHeight(
             view: uiView,
             placeholder: placeholder,
+            font: fontOrDefaultFont,
+            textColor: textColor,
             minHeight: minHeight,
             result: $calculatedHeight
         )
     }
 
-    private static func recalculateHeight(view: UITextView, placeholder: String, minHeight: CGFloat, result: Binding<CGFloat>) {
+    private static func recalculateHeight(
+        view: UITextView,
+        placeholder: String,
+        font: UIFont,
+        textColor: UIColor,
+        minHeight: CGFloat,
+        result: Binding<CGFloat>
+    ) {
         let oldText = view.text
         if view.rythmicoText.isEmpty {
-            view.rythmicoText = placeholder
+            view.setRythmicoText(placeholder, font: font, color: textColor)
         }
         let newSize = view.sizeThatFits(CGSize(width: view.frame.size.width, height: CGFloat.greatestFiniteMagnitude))
         let newHeight = max(minHeight, newSize.height)
@@ -89,10 +104,20 @@ private struct UITextViewWrapper: UIViewRepresentable {
         }
     }
 
+    private var fontOrDefaultFont: UIFont {
+        font ?? .preferredFont(forTextStyle: .body)
+    }
+
+    private var accentColorOrDefault: UIColor {
+        accentColor ?? .systemBlue
+    }
+
     func makeCoordinator() -> Coordinator {
         Coordinator(
             placeholder: placeholder,
             text: $text,
+            font: fontOrDefaultFont,
+            textColor: textColor,
             minHeight: minHeight,
             height: $calculatedHeight,
             onEditingChanged: onEditingChanged
@@ -102,6 +127,8 @@ private struct UITextViewWrapper: UIViewRepresentable {
     final class Coordinator: NSObject, UITextViewDelegate {
         var placeholder: String
         var text: Binding<String>
+        var font: UIFont
+        var textColor: UIColor
         var minHeight: CGFloat
         var calculatedHeight: Binding<CGFloat>
         var onEditingChanged: (Bool) -> Void
@@ -109,12 +136,16 @@ private struct UITextViewWrapper: UIViewRepresentable {
         init(
             placeholder: String,
             text: Binding<String>,
+            font: UIFont,
+            textColor: UIColor,
             minHeight: CGFloat,
             height: Binding<CGFloat>,
             onEditingChanged: @escaping (Bool) -> Void
         ) {
             self.placeholder = placeholder
             self.text = text
+            self.font = font
+            self.textColor = textColor
             self.minHeight = minHeight
             self.calculatedHeight = height
             self.onEditingChanged = onEditingChanged
@@ -125,6 +156,8 @@ private struct UITextViewWrapper: UIViewRepresentable {
             UITextViewWrapper.recalculateHeight(
                 view: uiView,
                 placeholder: placeholder,
+                font: font,
+                textColor: textColor,
                 minHeight: minHeight,
                 result: calculatedHeight
             )
@@ -143,6 +176,11 @@ private struct UITextViewWrapper: UIViewRepresentable {
 struct MultilineTextField: View {
     private var placeholder: String
     private var minHeight: CGFloat
+    private var font: UIFont?
+    private var accentColor: UIColor?
+    private var textColor: UIColor?
+    private var placeholderColor: Color?
+    private var padding: EdgeInsets
     private var onEditingChanged: (Bool) -> Void
 
     @Binding private var text: String
@@ -159,15 +197,27 @@ struct MultilineTextField: View {
     @State private var dynamicHeight: CGFloat = 100
     @State private var showingPlaceholder = false
 
+    @Environment(\.sizeCategory) private var sizeCategory
+
     init(
         _ placeholder: String = "",
         text: Binding<String>,
+        font: UIFont?,
+        accentColor: UIColor?,
+        textColor: UIColor?,
+        placeholderColor: Color?,
         minHeight: CGFloat? = nil,
+        padding: EdgeInsets? = nil,
         onEditingChanged: @escaping (Bool) -> Void
     ) {
         self.placeholder = placeholder
         self._text = text
+        self.font = font
+        self.accentColor = accentColor
+        self.textColor = textColor
+        self.placeholderColor = placeholderColor
         self.minHeight = minHeight ?? 0
+        self.padding = padding ?? .zero
         self.onEditingChanged = onEditingChanged
         self._showingPlaceholder = State(initialValue: self.text.isEmpty)
     }
@@ -176,41 +226,57 @@ struct MultilineTextField: View {
         UITextViewWrapper(
             placeholder: placeholder,
             text: internalText,
+            font: font,
+            accentColor: accentColor,
+            textColor: textColor ?? .label,
             minHeight: minHeight,
             calculatedHeight: $dynamicHeight,
+            padding: padding,
             onEditingChanged: onEditingChanged
         )
         .frame(minHeight: dynamicHeight, maxHeight: dynamicHeight, alignment: .topLeading)
         .background(placeholderView, alignment: .topLeading)
     }
 
+    @ViewBuilder
     var placeholderView: some View {
-        Group {
-            if showingPlaceholder {
+        if showingPlaceholder {
+            // Forces placeholder UIFont change on sizeCategory change.
+            if sizeCategory == sizeCategory {
                 Text(placeholder)
-                    .rythmicoFont(.body)
-                    .foregroundColor(.rythmicoGray30)
+                    .font(Font(
+                        CTFontCreateWithFontDescriptor(
+                            fontOrDefaultFont.fontDescriptor as CTFontDescriptor,
+                            fontOrDefaultFont.pointSize,
+                            nil
+                        )
+                    ))
+                    .foregroundColor(placeholderColor ?? Color(.tertiaryLabel))
                     .fixedSize(horizontal: false, vertical: true)
-                    .padding(.spacingSmall)
+                    .padding(padding)
             }
         }
+    }
+
+    private var fontOrDefaultFont: UIFont {
+        font ?? .preferredFont(forTextStyle: .body)
     }
 }
 
 private extension UITextView {
-    var rythmicoText: String {
-        get { attributedText.string }
-        set {
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.paragraphSpacing = .spacingSmall
+    var rythmicoText: String { attributedText.string }
 
-            attributedText = NSAttributedString(
-                string: newValue,
-                attributes: [
-                    .paragraphStyle: paragraphStyle,
-                    .font: UIFont.rythmicoFont(.body)
-                ]
-            )
-        }
+    func setRythmicoText(_ string: String, font: UIFont, color: UIColor) {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.paragraphSpacing = .spacingSmall
+
+        attributedText = NSAttributedString(
+            string: string,
+            attributes: [
+                .paragraphStyle: paragraphStyle,
+                .font: font,
+                .foregroundColor: color,
+            ]
+        )
     }
 }
