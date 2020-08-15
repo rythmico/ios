@@ -226,7 +226,7 @@ struct MultilineTextField: View {
             text: internalText,
             font: font,
             accentColor: accentColor,
-            textColor: textColor ?? .black,
+            textColor: textColor ?? .label,
             minHeight: minHeight,
             calculatedHeight: $dynamicHeight,
             padding: padding,
@@ -247,7 +247,7 @@ struct MultilineTextField: View {
                             nil
                         )
                     ))
-                    .foregroundColor(placeholderColor ?? Color(.systemGray3))
+                    .foregroundColor(placeholderColor ?? Color(.tertiaryLabel))
                     .fixedSize(horizontal: false, vertical: true)
                     .padding(padding)
             }
