@@ -7,10 +7,19 @@ if ! which git-crypt > /dev/null; then
     brew install git-crypt
 fi
 
-PRIVATE_KEY=$1
+if [ "$#" -eq 3 ]; then
+    PRIVATE_KEY=$1
+    SSH_PATH=$2
+    GIT_URL=$3
+elif [ "$#" -eq 2 ]; then
+    SSH_PATH=$1
+    GIT_URL=$2
+else
+    echo "Illegal number of parameters"
+    exit 1
+fi
+
 git-crypt unlock $PRIVATE_KEY
 
 SCRIPT_DIR=$(dirname $0)
-SSH_PATH=$2
-GIT_URL=$3
 $SCRIPT_DIR/fetch_certificates $SSH_PATH $GIT_URL
