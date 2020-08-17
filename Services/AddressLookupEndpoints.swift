@@ -1,6 +1,5 @@
 import APIKit
 import Sugar
-import Then
 
 struct AddressSearchRequest: RythmicoAPIRequest {
     struct Properties {
