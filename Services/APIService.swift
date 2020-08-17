@@ -9,7 +9,10 @@ class APIServiceBase<Request: AuthorizedAPIRequest> {
 }
 
 final class APIService<Request: AuthorizedAPIRequest>: APIServiceBase<Request> {
-    private let sessionConfiguration = URLSessionConfiguration.ephemeral
+    private let sessionConfiguration = URLSessionConfiguration.ephemeral.then {
+        $0.waitsForConnectivity = true
+        $0.timeoutIntervalForResource = 150
+    }
 
     override func send(_ request: Request, completion: @escaping CompletionHandler) {
         let session = Session(adapter: URLSessionAdapter(configuration: sessionConfiguration))
