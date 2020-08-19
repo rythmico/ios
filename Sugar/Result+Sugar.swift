@@ -1,13 +1,15 @@
 import Foundation
 
+extension Result where Success == Void {
+    public static var success: Result { .success(()) }
+}
+
 public protocol AnyResult {
     associatedtype Success
     associatedtype Failure
 
     func get() throws -> Success
 }
-
-extension Result: AnyResult {}
 
 extension AnyResult {
     public var successValue: Success? {
@@ -31,3 +33,5 @@ extension AnyResult {
         failureValue != nil
     }
 }
+
+extension Result: AnyResult {}

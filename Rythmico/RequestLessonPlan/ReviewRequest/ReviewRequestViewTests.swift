@@ -17,7 +17,7 @@ final class ReviewRequestViewTests: XCTestCase {
         return try (
             serviceSpy,
             ReviewRequestView(
-                coordinator: XCTUnwrap(Current.lessonPlanRequestCoordinator()),
+                coordinator: XCTUnwrap(Current.coordinator(for: \.lessonPlanRequestService)),
                 context: context,
                 instrument: .drums,
                 student: .davidStub,

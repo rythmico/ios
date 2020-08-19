@@ -31,7 +31,7 @@ struct MainTabView: View, TestableView {
 
     init?() {
         guard
-            let lessonPlanFetchingCoordinator = Current.lessonPlanFetchingCoordinator(),
+            let lessonPlanFetchingCoordinator = Current.coordinator(for: \.lessonPlanFetchingService),
             let deviceRegisterCoordinator = Current.deviceRegisterCoordinator()
         else {
             return nil

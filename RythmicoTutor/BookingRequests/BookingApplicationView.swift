@@ -3,11 +3,24 @@ import SwiftUI
 struct BookingApplicationView: View {
     @Environment(\.presentationMode)
     private var presentationMode
+    @ObservedObject
+    private var coordinator: APIActivityCoordinator<CreateBookingApplicationRequest>
+    private let booking: BookingRequest
+
+    init?(booking: BookingRequest) {
+        guard let coordinator = Current.coordinator(for: \.bookingApplicationCreatingService) else {
+            return nil
+        }
+        self.coordinator = coordinator
+        self.booking = booking
+    }
 
     @State
-    private var privateNote = ""
+    var privateNote = ""
 
-    var booking: BookingRequest
+    func submit() {
+        coordinator.run(with: (id: booking.id, body: .init(privateNote: privateNote)))
+    }
 
     var body: some View {
         NavigationView {
@@ -25,13 +38,26 @@ struct BookingApplicationView: View {
                 .listStyle(GroupedListStyle())
 
                 FloatingView {
-                    Button("Submit Application (coming next)", action: {}).primaryStyle().disabled(true)
+                    Button("Submit Application", action: submit).primaryStyle()
                 }
             }
             .navigationBarTitle(Text("Application"), displayMode: .inline)
-            .navigationBarItems(trailing: Button("Close", action: dismiss))
+            .navigationBarItems(trailing: trailingBarItem)
         }
         .sheetInteractiveDismissal(interactiveDismissalEnabled)
+        .disabled(coordinator.state.isLoading)
+        .animation(.easeInOut(duration: .durationMedium), value: coordinator.state.isLoading)
+        .alertOnFailure(coordinator)
+        .onSuccess(coordinator, perform: dismiss)
+    }
+
+    @ViewBuilder
+    private var trailingBarItem: some View {
+        if coordinator.state.isLoading {
+            ActivityIndicator(style: .medium)
+        } else {
+            Button("Close", action: dismiss)
+        }
     }
 
     private var header: Text {
@@ -43,7 +69,7 @@ struct BookingApplicationView: View {
     }
 
     private var interactiveDismissalEnabled: Bool {
-        privateNote.isEmpty
+        privateNote.isEmpty && coordinator.state.isIdle
     }
 
     private func dismiss() {

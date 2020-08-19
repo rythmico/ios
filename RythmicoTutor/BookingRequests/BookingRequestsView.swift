@@ -15,7 +15,7 @@ struct BookingRequestsView: View {
     private var didAppear = false
 
     init?() {
-        guard let coordinator = Current.bookingRequestFetchingCoordinator() else {
+        guard let coordinator = Current.coordinator(for: \.bookingRequestFetchingService) else {
             return nil
         }
         self.coordinator = coordinator
