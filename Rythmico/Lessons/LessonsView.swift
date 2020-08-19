@@ -65,10 +65,10 @@ struct LessonsView: View, TestableView {
 struct LessonsView_Previews: PreviewProvider {
     @ViewBuilder
     static var previews: some View {
-        LessonsView(coordinator: Current.lessonPlanFetchingCoordinator()!)
+        LessonsView(coordinator: Current.coordinator(for: \.lessonPlanFetchingService)!)
             .environment(\.colorScheme, .light)
 //            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
-        LessonsView(coordinator: Current.lessonPlanFetchingCoordinator()!)
+        LessonsView(coordinator: Current.coordinator(for: \.lessonPlanFetchingService)!)
             .environment(\.colorScheme, .dark)
             .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }

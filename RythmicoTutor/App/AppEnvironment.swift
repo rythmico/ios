@@ -1,6 +1,4 @@
 import Foundation
-import Sugar
-import Then
 
 struct AppEnvironment {
     var date: () -> Date
@@ -21,6 +19,8 @@ struct AppEnvironment {
 
     var bookingRequestRepository: Repository<BookingRequest>
     var bookingRequestFetchingService: APIServiceBase<GetBookingRequestsRequest>
+
+    var bookingApplicationCreatingService: APIServiceBase<CreateBookingApplicationRequest>
 
     var deviceTokenProvider: DeviceTokenProvider
     var deviceRegisterService: APIServiceBase<AddDeviceRequest>
@@ -51,28 +51,6 @@ extension AppEnvironment {
             $0.locale = locale
             $0.formattingContext = context
             $0.unitsStyle = style
-        }
-    }
-
-    func bookingRequestFetchingCoordinator() -> APIActivityCoordinator<GetBookingRequestsRequest>? {
-        coordinator(for: bookingRequestFetchingService)
-    }
-
-    func deviceRegisterCoordinator() -> DeviceRegisterCoordinator? {
-        coordinator(for: deviceRegisterService).map {
-            DeviceRegisterCoordinator(deviceTokenProvider: deviceTokenProvider, apiCoordinator: $0)
-        }
-    }
-
-    func deviceUnregisterCoordinator() -> DeviceUnregisterCoordinator {
-        DeviceUnregisterCoordinator(deviceTokenDeleter: deviceTokenDeleter)
-    }
-}
-
-private extension AppEnvironment {
-    func coordinator<Request: AuthorizedAPIRequest>(for service: APIServiceBase<Request>) -> APIActivityCoordinator<Request>? {
-        accessTokenProviderObserver.currentProvider.map {
-            APIActivityCoordinator(accessTokenProvider: $0, deauthenticationService: deauthenticationService, service: service)
         }
     }
 }

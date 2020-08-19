@@ -19,6 +19,7 @@ extension AppEnvironment {
         accessTokenProviderObserver: AuthenticationAccessTokenProviderObserver(broadcast: AuthenticationAccessTokenProviderBroadcast()),
         bookingRequestRepository: Repository(),
         bookingRequestFetchingService: APIService(),
+        bookingApplicationCreatingService: APIService(),
         deviceTokenProvider: InstanceID.instanceID(),
         deviceRegisterService: APIService(),
         deviceTokenDeleter: InstanceID.instanceID(),
@@ -35,9 +36,10 @@ extension AppEnvironment {
             $0.userAuthenticated()
             $0.date = { dummy.date() + (fakeReferenceDate.distance(to: Date())) }
             $0.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
-            $0.authenticationService = AuthenticationServiceStub(result: .success(fakeAccessTokenProvider), delay: 2)
+            $0.authenticationService = AuthenticationServiceStub(result: .success(AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))), delay: 2)
             $0.deauthenticationService = DeauthenticationServiceStub()
             $0.bookingRequestFetchingService = APIServiceStub(result: .success([.stub, .longStub]), delay: 1)
+            $0.bookingApplicationCreatingService = APIServiceStub(result: .success, delay: 2)
             $0.keyboardDismisser = UIApplication.shared
             $0.urlOpener = UIApplication.shared
             $0.mapOpener = MapOpener(urlOpener: UIApplication.shared)
@@ -45,7 +47,6 @@ extension AppEnvironment {
     }
 
     private static let fakeReferenceDate = Date()
-    private static let fakeAccessTokenProvider = AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))
 }
 
 extension AppEnvironment {
@@ -64,6 +65,7 @@ extension AppEnvironment {
             accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverDummy(),
             bookingRequestRepository: Repository(),
             bookingRequestFetchingService: APIServiceDummy(),
+            bookingApplicationCreatingService: APIServiceDummy(),
             deviceTokenProvider: DeviceTokenProviderDummy(),
             deviceRegisterService: APIServiceDummy(),
             deviceTokenDeleter: DeviceTokenDeleterDummy(),
@@ -72,16 +74,5 @@ extension AppEnvironment {
             urlOpener: URLOpenerDummy(),
             mapOpener: MapOpenerDummy()
         )
-    }
-}
-
-// Modifiers (debug-only)
-extension AppEnvironment {
-    mutating func userAuthenticated() {
-        accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(currentProvider: Self.fakeAccessTokenProvider)
-    }
-
-    mutating func userUnauthenticated() {
-        accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverDummy()
     }
 }

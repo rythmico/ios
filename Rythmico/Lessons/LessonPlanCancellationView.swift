@@ -15,7 +15,7 @@ struct LessonPlanCancellationView: View, TestableView, Identifiable {
     private var onSuccessfulCancellation: Action
 
     init?(lessonPlan: LessonPlan, onSuccessfulCancellation: @escaping Action) {
-        guard let coordinator = Current.lessonPlanCancellationCoordinator() else {
+        guard let coordinator = Current.coordinator(for: \.lessonPlanCancellationService) else {
             return nil
         }
         self.coordinator = coordinator
