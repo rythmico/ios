@@ -40,7 +40,7 @@ extension AppEnvironment {
         dummy.with {
             $0.userAuthenticated()
             $0.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
-            $0.authenticationService = AuthenticationServiceStub(result: .success(fakeAccessTokenProvider), delay: 2)
+            $0.authenticationService = AuthenticationServiceStub(result: .success(AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))), delay: 2)
             $0.deauthenticationService = DeauthenticationServiceStub()
             $0.instrumentSelectionListProvider = InstrumentSelectionListProviderStub(instruments: Instrument.allCases)
             $0.addressSearchService = APIServiceStub(result: .success(.stub), delay: 1)
@@ -58,8 +58,6 @@ extension AppEnvironment {
             $0.keyboardDismisser = UIApplication.shared
         }
     }
-
-    private static let fakeAccessTokenProvider = AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))
 }
 
 extension AppEnvironment {
@@ -87,16 +85,5 @@ extension AppEnvironment {
             uiAccessibility: UIAccessibilityDummy.self,
             urlOpener: URLOpenerDummy()
         )
-    }
-}
-
-// Modifiers (debug-only)
-extension AppEnvironment {
-    mutating func userAuthenticated() {
-        accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(currentProvider: Self.fakeAccessTokenProvider)
-    }
-
-    mutating func userUnauthenticated() {
-        accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverDummy()
     }
 }

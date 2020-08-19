@@ -350,6 +350,8 @@
 		D5CAC9AE24E6D67C00119DAA /* MultilineTextField+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CAC9AD24E6D67C00119DAA /* MultilineTextField+Tutor.swift */; };
 		D5E04B1923BED80700A161BB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* Fonts.swift */; };
 		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
+		D5E987B924ED88FF00E2E1AF /* AppEnvironmentExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironmentExtensions.swift */; };
+		D5E987BA24ED88FF00E2E1AF /* AppEnvironmentExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironmentExtensions.swift */; };
 		D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF88B523FB706C0072BD03 /* ProgressBar.swift */; };
 		D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5065C23FF16AA00CA4094 /* BackButton.swift */; };
 		D5F5065F240055E800CA4094 /* HeaderContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5065E240055E800CA4094 /* HeaderContentView.swift */; };
@@ -671,6 +673,7 @@
 		D5CAC9AD24E6D67C00119DAA /* MultilineTextField+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultilineTextField+Tutor.swift"; sourceTree = "<group>"; };
 		D5E04B1823BED80700A161BB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		D5E987B824ED88FF00E2E1AF /* AppEnvironmentExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironmentExtensions.swift; sourceTree = "<group>"; };
 		D5EF88B523FB706C0072BD03 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D5F5065C23FF16AA00CA4094 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		D5F5065E240055E800CA4094 /* HeaderContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderContentView.swift; sourceTree = "<group>"; };
@@ -1126,6 +1129,7 @@
 				03B198532471BBE8005529EB /* AppDelegate+PushNotifications.swift */,
 				035B1CF2249CFA0900AABFEA /* AppDelegate+Window.swift */,
 				035B1CEC249CF9B400AABFEA /* AppDelegateDummy.swift */,
+				D5E987B824ED88FF00E2E1AF /* AppEnvironmentExtensions.swift */,
 				03E88EB024C205C30077A420 /* Current.swift */,
 				035B1CEA249CF9A400AABFEA /* main.swift */,
 			);
@@ -1894,6 +1898,7 @@
 				D53555BA23E53699005A20EB /* AuthenticationAccessTokenProvider.swift in Sources */,
 				03275ADB249004C0009C3980 /* PushNotificationRegisterServiceDoubles.swift in Sources */,
 				03275AD5248FDB38009C3980 /* AppEnvironment.swift in Sources */,
+				D5E987B924ED88FF00E2E1AF /* AppEnvironmentExtensions.swift in Sources */,
 				D5AAF7DD23FB431E00E410F2 /* InstrumentView.swift in Sources */,
 				D53555BC23E53699005A20EB /* AuthenticationAccessTokenProviderObserver.swift in Sources */,
 				03A91EF62491887A00DEAD5E /* DeviceTokenProviderDoubles.swift in Sources */,
@@ -1974,6 +1979,7 @@
 				035B1D3E249E577700AABFEA /* AppleAuthorizationCredential.swift in Sources */,
 				032B6FD724B788B200299A09 /* ScheduleDoubles.swift in Sources */,
 				D5CAC9A924E6C3A900119DAA /* MultilineTextField.swift in Sources */,
+				D5E987BA24ED88FF00E2E1AF /* AppEnvironmentExtensions.swift in Sources */,
 				03E88EBA24C6232D0077A420 /* APIServiceDoubles.swift in Sources */,
 				035B1D50249E57E200AABFEA /* URLOpenerDoubles.swift in Sources */,
 				035B1D54249E59BB00AABFEA /* PreviewDevices.swift in Sources */,
