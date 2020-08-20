@@ -352,6 +352,10 @@
 		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
 		D5E987B924ED88FF00E2E1AF /* AppEnvironmentExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironmentExtensions.swift */; };
 		D5E987BA24ED88FF00E2E1AF /* AppEnvironmentExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironmentExtensions.swift */; };
+		D5E987BC24EDE92E00E2E1AF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987BB24EDE92E00E2E1AF /* Router.swift */; };
+		D5E987BD24EDE92E00E2E1AF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987BB24EDE92E00E2E1AF /* Router.swift */; };
+		D5E987BF24EDE94200E2E1AF /* Routes+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987BE24EDE94200E2E1AF /* Routes+Rythmico.swift */; };
+		D5E987C224EDE9A100E2E1AF /* Routes+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C024EDE98900E2E1AF /* Routes+Tutor.swift */; };
 		D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */; };
 		D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF88B523FB706C0072BD03 /* ProgressBar.swift */; };
 		D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5065C23FF16AA00CA4094 /* BackButton.swift */; };
@@ -675,6 +679,9 @@
 		D5E04B1823BED80700A161BB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D5E987B824ED88FF00E2E1AF /* AppEnvironmentExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironmentExtensions.swift; sourceTree = "<group>"; };
+		D5E987BB24EDE92E00E2E1AF /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		D5E987BE24EDE94200E2E1AF /* Routes+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Routes+Rythmico.swift"; sourceTree = "<group>"; };
+		D5E987C024EDE98900E2E1AF /* Routes+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Routes+Tutor.swift"; sourceTree = "<group>"; };
 		D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestsTabView.swift; sourceTree = "<group>"; };
 		D5EF88B523FB706C0072BD03 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D5F5065C23FF16AA00CA4094 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
@@ -1158,6 +1165,7 @@
 				D5217CED24E2D81B00C89018 /* MapOpener */,
 				03BB5CA02473467500B44692 /* PushNotifications */,
 				03E88EB724C4B0F40077A420 /* Repository.swift */,
+				D5E987C324EEE20300E2E1AF /* Router */,
 				035AF30B2491A553004A01B2 /* UIAccessibility */,
 				033D47CB247774CE0096C50F /* URLOpener */,
 			);
@@ -1447,6 +1455,16 @@
 				D509899023BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift */,
 			);
 			path = Authorization;
+			sourceTree = "<group>";
+		};
+		D5E987C324EEE20300E2E1AF /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				D5E987BB24EDE92E00E2E1AF /* Router.swift */,
+				D5E987BE24EDE94200E2E1AF /* Routes+Rythmico.swift */,
+				D5E987C024EDE98900E2E1AF /* Routes+Tutor.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		D5F506B12405B5AA00CA4094 /* StudentDetails */ = {
@@ -1846,6 +1864,7 @@
 				D53555CE23E536AE005A20EB /* AppleAuthorizationControllerDoubles.swift in Sources */,
 				03B198542471BBE8005529EB /* AppDelegate+PushNotifications.swift in Sources */,
 				D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */,
+				D5E987BC24EDE92E00E2E1AF /* Router.swift in Sources */,
 				D5C23A7C240FEF30007DED63 /* TapView.swift in Sources */,
 				D5F506652400619600CA4094 /* UIApplication+KeyboardDismisser.swift in Sources */,
 				D5AAF7D723F9E20C00E410F2 /* Instrument.swift in Sources */,
@@ -1924,6 +1943,7 @@
 				031378C9249A7DFF005FC49C /* LessonPlanCancellationPromptView.swift in Sources */,
 				D5AAF7DB23FB347C00E410F2 /* CollectionView.swift in Sources */,
 				D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */,
+				D5E987BF24EDE94200E2E1AF /* Routes+Rythmico.swift in Sources */,
 				03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */,
 				D5CAC9AC24E6D19900119DAA /* MultilineTextField+Rythmico.swift in Sources */,
 				03275AD924900422009C3980 /* PushNotificationRegisterService.swift in Sources */,
@@ -1966,6 +1986,7 @@
 				D577EEA724E6F66400253EA1 /* BookingRequestApplyView.swift in Sources */,
 				D52C553A24DC71B800C295C4 /* BookingRequestDetailView.swift in Sources */,
 				03E88E8F24BC9FAF0077A420 /* AppEnvironment+Instances.swift in Sources */,
+				D5E987BD24EDE92E00E2E1AF /* Router.swift in Sources */,
 				035B1D3B249E576900AABFEA /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */,
 				035B1D34249E576900AABFEA /* AuthenticationService.swift in Sources */,
 				D54FC05624CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */,
@@ -1987,6 +2008,7 @@
 				035B1D50249E57E200AABFEA /* URLOpenerDoubles.swift in Sources */,
 				035B1D54249E59BB00AABFEA /* PreviewDevices.swift in Sources */,
 				035B1D45249E577700AABFEA /* AppleAuthorizationResponseDoubles.swift in Sources */,
+				D5E987C224EDE9A100E2E1AF /* Routes+Tutor.swift in Sources */,
 				035B1D60249E63CD00AABFEA /* DeviceTokenProvider.swift in Sources */,
 				035B1D3D249E576900AABFEA /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */,
 				035B1CEB249CF9A400AABFEA /* main.swift in Sources */,
