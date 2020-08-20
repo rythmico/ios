@@ -1,18 +1,18 @@
 import SwiftUI
 
 struct BookingRequestsTabView: View {
-    enum Screen: String, CaseIterable {
+    enum Tab: String, CaseIterable {
         case upcoming = "Upcoming"
         case applied = "Applied"
     }
 
     @State
-    private(set) var screen: Screen = .upcoming
+    private(set) var tab: Tab = .upcoming
 
     var body: some View {
         VStack(spacing: 0) {
-            Picker("", selection: $screen) {
-                ForEach(Screen.allCases, id: \.self) {
+            Picker("", selection: $tab) {
+                ForEach(Tab.allCases, id: \.self) {
                     Text($0.rawValue)
                 }
             }
@@ -24,9 +24,9 @@ struct BookingRequestsTabView: View {
 
             Divider()
 
-            if screen == .upcoming {
+            if tab == .upcoming {
                 BookingRequestsView()
-            } else if screen == .applied {
+            } else if tab == .applied {
                 Color.white // TODO
             }
         }
@@ -36,17 +36,19 @@ struct BookingRequestsTabView: View {
     private func handleRoute(_ route: Route) {
         switch route {
         case .bookingRequests, .bookingApplications:
-            screen = .upcoming
+            tab = .upcoming
             Current.router.end()
         case .bookingApplications:
-            screen = .applied
+            tab = .applied
             Current.router.end()
         }
     }
 }
 
+#if DEBUG
 struct BookingRequestsTabView_Previews: PreviewProvider {
     static var previews: some View {
         BookingRequestsTabView()
     }
 }
+#endif
