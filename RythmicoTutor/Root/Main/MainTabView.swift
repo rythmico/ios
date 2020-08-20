@@ -32,7 +32,7 @@ struct MainTabView: View, TestableView {
     var body: some View {
         NavigationView {
             TabView(selection: $state.tabSelection) {
-                BookingRequestsView()
+                BookingRequestsTabView()
                     .tag(TabSelection.requests)
                     .tabItem {
                         Image(systemSymbol: .musicNoteList).font(.system(size: 21, weight: .bold))
