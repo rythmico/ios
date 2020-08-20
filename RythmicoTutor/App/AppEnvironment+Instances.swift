@@ -26,7 +26,8 @@ extension AppEnvironment {
         keyboardDismisser: UIApplication.shared,
         uiAccessibility: UIAccessibility.self,
         urlOpener: UIApplication.shared,
-        mapOpener: MapOpener(urlOpener: UIApplication.shared)
+        mapOpener: MapOpener(urlOpener: UIApplication.shared),
+        router: Router()
     )
 }
 
@@ -72,7 +73,8 @@ extension AppEnvironment {
             keyboardDismisser: KeyboardDismisserDummy(),
             uiAccessibility: UIAccessibilityDummy.self,
             urlOpener: URLOpenerDummy(),
-            mapOpener: MapOpenerDummy()
+            mapOpener: MapOpenerDummy(),
+            router: Router()
         )
     }
 }

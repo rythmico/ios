@@ -30,6 +30,8 @@ struct AppEnvironment {
     var uiAccessibility: UIAccessibilityProtocol.Type
     var urlOpener: URLOpener
     var mapOpener: MapOpenerProtocol
+
+    var router: Router
 }
 
 extension AppEnvironment {
