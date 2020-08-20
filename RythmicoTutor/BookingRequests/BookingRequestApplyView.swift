@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BookingApplicationView: View {
+struct BookingRequestApplyView: View {
     @Environment(\.presentationMode)
     private var presentationMode
     @ObservedObject
@@ -80,7 +80,7 @@ struct BookingApplicationView: View {
 #if DEBUG
 struct BookingApplicationView_Previews: PreviewProvider {
     static var previews: some View {
-        BookingApplicationView(booking: .stub)
+        BookingRequestApplyView(booking: .stub)
             .environment(\.colorScheme, .dark)
     }
 }

@@ -95,7 +95,7 @@ struct BookingRequestDetailView: View {
             intent: .search(query: bookingRequest.postcode),
             error: $mapOpeningError
         )
-        .sheet(isPresented: $isApplicationViewPresented) { BookingApplicationView(booking: self.bookingRequest) }
+        .sheet(isPresented: $isApplicationViewPresented) { BookingRequestApplyView(booking: self.bookingRequest) }
     }
 }
 
