@@ -30,6 +30,18 @@ struct BookingRequestsTabView: View {
                 Color.white // TODO
             }
         }
+        .onRoute(perform: handleRoute)
+    }
+
+    private func handleRoute(_ route: Route) {
+        switch route {
+        case .bookingRequests, .bookingApplications:
+            screen = .upcoming
+            Current.router.end()
+        case .bookingApplications:
+            screen = .applied
+            Current.router.end()
+        }
     }
 }
 

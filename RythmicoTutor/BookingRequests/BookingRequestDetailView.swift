@@ -1,6 +1,9 @@
 import SwiftUI
 
 struct BookingRequestDetailView: View {
+    @Environment(\.presentationMode)
+    private var presentationMode
+
     private let bookingRequest: BookingRequest
 
     private let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
@@ -96,6 +99,14 @@ struct BookingRequestDetailView: View {
             error: $mapOpeningError
         )
         .sheet(isPresented: $isApplicationViewPresented) { BookingRequestApplyView(booking: self.bookingRequest) }
+        .onRoute(perform: handleRoute)
+    }
+
+    private func handleRoute(_ route: Route) {
+        switch route {
+        case .bookingRequests, .bookingApplications:
+            presentationMode.wrappedValue.dismiss()
+        }
     }
 }
 

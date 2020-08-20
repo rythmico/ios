@@ -50,6 +50,14 @@ struct MainTabView: View, TestableView {
         }
         .testable(self)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
+        .onRoute(perform: handleRoute)
+    }
+
+    private func handleRoute(_ route: Route) {
+        switch route {
+        case .bookingRequests, .bookingApplications:
+            state.tabSelection = .requests
+        }
     }
 }
 
