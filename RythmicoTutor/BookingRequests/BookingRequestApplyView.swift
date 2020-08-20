@@ -48,7 +48,7 @@ struct BookingRequestApplyView: View {
         .disabled(coordinator.state.isLoading)
         .animation(.easeInOut(duration: .durationMedium), value: coordinator.state.isLoading)
         .alertOnFailure(coordinator)
-        .onSuccess(coordinator, perform: dismiss)
+        .onSuccess(coordinator, perform: finalize)
     }
 
     @ViewBuilder
@@ -74,6 +74,11 @@ struct BookingRequestApplyView: View {
 
     private func dismiss() {
         presentationMode.wrappedValue.dismiss()
+    }
+
+    private func finalize() {
+        dismiss()
+        Current.router.open(.bookingApplications)
     }
 }
 
