@@ -38,10 +38,11 @@ extension AppEnvironment {
             $0.userAuthenticated()
             $0.date = { dummy.date() + (fakeReferenceDate.distance(to: Date())) }
             $0.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
-            $0.authenticationService = AuthenticationServiceStub(result: .success(AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))), delay: 2)
+            $0.authenticationService = AuthenticationServiceStub(result: .success(AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))), delay: fakeAPIServicesDelay)
             $0.deauthenticationService = DeauthenticationServiceStub()
-            $0.bookingRequestFetchingService = APIServiceStub(result: .success([.stub, .longStub]), delay: 1)
-            $0.bookingRequestApplyingService = APIServiceStub(result: .success(.stub), delay: 2)
+            $0.bookingRequestFetchingService = APIServiceStub(result: .success([.stub, .longStub]), delay: fakeAPIServicesDelay)
+            $0.bookingRequestApplyingService = APIServiceStub(result: .success(.stub), delay: fakeAPIServicesDelay)
+            $0.bookingApplicationFetchingService = APIServiceStub(result: .success([.stub, .stubWithAbout]), delay: fakeAPIServicesDelay)
             $0.keyboardDismisser = UIApplication.shared
             $0.urlOpener = UIApplication.shared
             $0.mapOpener = MapOpener(urlOpener: UIApplication.shared)
@@ -49,6 +50,7 @@ extension AppEnvironment {
     }
 
     private static let fakeReferenceDate = Date()
+    private static var fakeAPIServicesDelay: TimeInterval? = nil
 }
 
 extension AppEnvironment {
