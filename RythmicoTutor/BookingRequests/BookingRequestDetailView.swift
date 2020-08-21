@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftUIMapView
 
 struct BookingRequestDetailView: View {
     @Environment(\.presentationMode)
@@ -75,7 +76,7 @@ struct BookingRequestDetailView: View {
                     footer: Text("Exact location and address will be provided if you're selected.")
                 ) {
                     VStack(alignment: .leading, spacing: .spacingExtraSmall) {
-                        MapView()
+                        StaticMapView()
                             .frame(height: 160)
                             .clipShape(RoundedRectangle(cornerRadius: .spacingUnit * 2, style: .continuous))
                             .onTapGesture(perform: presentMapActionSheet)
