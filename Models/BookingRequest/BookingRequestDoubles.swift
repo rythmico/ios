@@ -2,8 +2,8 @@ import Foundation
 import Sugar
 
 extension BookingRequest {
-    static var stub: BookingRequest {
-        BookingRequest(
+    static var stub: Self {
+        .init(
             id: "ID1",
             createdAt: AppEnvironment.dummy.date() - (32, .second),
             instrument: .piano,
@@ -15,8 +15,8 @@ extension BookingRequest {
         )
     }
 
-    static var stubWithAbout: BookingRequest {
-        BookingRequest(
+    static var stubWithAbout: Self {
+        .init(
             id: "ID3",
             createdAt: AppEnvironment.dummy.date() - (32, .second),
             instrument: .guitar,
@@ -28,8 +28,8 @@ extension BookingRequest {
         )
     }
 
-    static var longStub: BookingRequest {
-        BookingRequest(
+    static var longStub: Self {
+        .init(
             id: "ID2",
             createdAt: AppEnvironment.dummy.date() - (1, .weekOfMonth),
             instrument: .piano,
