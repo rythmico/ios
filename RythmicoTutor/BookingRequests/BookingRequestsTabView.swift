@@ -35,7 +35,7 @@ struct BookingRequestsTabView: View {
 
     private func handleRoute(_ route: Route) {
         switch route {
-        case .bookingRequests, .bookingApplications:
+        case .bookingRequests:
             tab = .upcoming
             Current.router.end()
         case .bookingApplications:
