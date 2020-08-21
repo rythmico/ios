@@ -19,7 +19,8 @@ extension AppEnvironment {
         accessTokenProviderObserver: AuthenticationAccessTokenProviderObserver(broadcast: AuthenticationAccessTokenProviderBroadcast()),
         bookingRequestRepository: Repository(),
         bookingRequestFetchingService: APIService(),
-        bookingApplicationCreatingService: APIService(),
+        bookingRequestApplyingService: APIService(),
+        bookingApplicationRepository: Repository(),
         deviceTokenProvider: InstanceID.instanceID(),
         deviceRegisterService: APIService(),
         deviceTokenDeleter: InstanceID.instanceID(),
@@ -40,7 +41,7 @@ extension AppEnvironment {
             $0.authenticationService = AuthenticationServiceStub(result: .success(AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))), delay: 2)
             $0.deauthenticationService = DeauthenticationServiceStub()
             $0.bookingRequestFetchingService = APIServiceStub(result: .success([.stub, .longStub]), delay: 1)
-            $0.bookingApplicationCreatingService = APIServiceStub(result: .success, delay: 2)
+            $0.bookingRequestApplyingService = APIServiceStub(result: .success(.stub), delay: 2)
             $0.keyboardDismisser = UIApplication.shared
             $0.urlOpener = UIApplication.shared
             $0.mapOpener = MapOpener(urlOpener: UIApplication.shared)
@@ -66,7 +67,8 @@ extension AppEnvironment {
             accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverDummy(),
             bookingRequestRepository: Repository(),
             bookingRequestFetchingService: APIServiceDummy(),
-            bookingApplicationCreatingService: APIServiceDummy(),
+            bookingRequestApplyingService: APIServiceDummy(),
+            bookingApplicationRepository: Repository(),
             deviceTokenProvider: DeviceTokenProviderDummy(),
             deviceRegisterService: APIServiceDummy(),
             deviceTokenDeleter: DeviceTokenDeleterDummy(),

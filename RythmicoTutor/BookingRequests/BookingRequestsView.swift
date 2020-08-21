@@ -2,7 +2,7 @@ import SwiftUI
 
 struct BookingRequestsView: View {
     @ObservedObject
-    private var coordinator: APIActivityCoordinator<GetBookingRequestsRequest>
+    private var coordinator: APIActivityCoordinator<BookingRequestsGetRequest>
     @ObservedObject
     private var repository = Current.bookingRequestRepository
 

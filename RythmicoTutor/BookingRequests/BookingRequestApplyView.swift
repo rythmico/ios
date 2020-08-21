@@ -4,11 +4,11 @@ struct BookingRequestApplyView: View {
     @Environment(\.presentationMode)
     private var presentationMode
     @ObservedObject
-    private var coordinator: APIActivityCoordinator<CreateBookingApplicationRequest>
+    private var coordinator: APIActivityCoordinator<BookingRequestApplyRequest>
     private let booking: BookingRequest
 
     init?(booking: BookingRequest) {
-        guard let coordinator = Current.coordinator(for: \.bookingApplicationCreatingService) else {
+        guard let coordinator = Current.coordinator(for: \.bookingRequestApplyingService) else {
             return nil
         }
         self.coordinator = coordinator
@@ -19,7 +19,7 @@ struct BookingRequestApplyView: View {
     var privateNote = ""
 
     func submit() {
-        coordinator.run(with: (id: booking.id, body: .init(privateNote: privateNote)))
+        coordinator.run(with: (bookingRequestId: booking.id, body: .init(privateNote: privateNote)))
     }
 
     var body: some View {
@@ -76,7 +76,8 @@ struct BookingRequestApplyView: View {
         presentationMode.wrappedValue.dismiss()
     }
 
-    private func finalize() {
+    private func finalize(_ application: BookingApplication) {
+        Current.bookingApplicationRepository.insertItem(application)
         dismiss()
         Current.router.open(.bookingApplications)
     }

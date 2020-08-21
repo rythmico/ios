@@ -18,9 +18,10 @@ struct AppEnvironment {
     var accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase
 
     var bookingRequestRepository: Repository<BookingRequest>
-    var bookingRequestFetchingService: APIServiceBase<GetBookingRequestsRequest>
+    var bookingRequestFetchingService: APIServiceBase<BookingRequestsGetRequest>
+    var bookingRequestApplyingService: APIServiceBase<BookingRequestApplyRequest>
 
-    var bookingApplicationCreatingService: APIServiceBase<CreateBookingApplicationRequest>
+    var bookingApplicationRepository: Repository<BookingApplication>
 
     var deviceTokenProvider: DeviceTokenProvider
     var deviceRegisterService: APIServiceBase<AddDeviceRequest>
