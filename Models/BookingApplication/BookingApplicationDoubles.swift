@@ -84,7 +84,7 @@ extension BookingApplication.StatusInfo {
     static var stub: Self {
         .init(
             status: .pending,
-            date: AppEnvironment.dummy.date() - (1, .minute)
+            date: AppEnvironment.dummy.date() - (58, .second)
         )
     }
 }
