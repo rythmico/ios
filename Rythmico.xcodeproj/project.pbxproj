@@ -360,6 +360,7 @@
 		D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF88B523FB706C0072BD03 /* ProgressBar.swift */; };
 		D5F4D3DE24F031FA000E8580 /* SwiftUIMapView in Frameworks */ = {isa = PBXBuildFile; productRef = D5F4D3DD24F031FA000E8580 /* SwiftUIMapView */; };
 		D5F4D3E024F04294000E8580 /* BookingApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3DF24F04294000E8580 /* BookingApplication.swift */; };
+		D5F4D3E324F04479000E8580 /* BookingApplicationEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E224F04479000E8580 /* BookingApplicationEndpoints.swift */; };
 		D5F4D3E524F0475F000E8580 /* BookingApplicationDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E424F0475F000E8580 /* BookingApplicationDoubles.swift */; };
 		D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5065C23FF16AA00CA4094 /* BackButton.swift */; };
 		D5F5065F240055E800CA4094 /* HeaderContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5065E240055E800CA4094 /* HeaderContentView.swift */; };
@@ -688,6 +689,7 @@
 		D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestsTabView.swift; sourceTree = "<group>"; };
 		D5EF88B523FB706C0072BD03 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D5F4D3DF24F04294000E8580 /* BookingApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplication.swift; sourceTree = "<group>"; };
+		D5F4D3E224F04479000E8580 /* BookingApplicationEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationEndpoints.swift; sourceTree = "<group>"; };
 		D5F4D3E424F0475F000E8580 /* BookingApplicationDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationDoubles.swift; sourceTree = "<group>"; };
 		D5F5065C23FF16AA00CA4094 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		D5F5065E240055E800CA4094 /* HeaderContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderContentView.swift; sourceTree = "<group>"; };
@@ -1164,6 +1166,7 @@
 				03C34361249FC16E004907DF /* APIUserAgent.swift */,
 				D535549823E0FA4A005A20EB /* Auth */,
 				032B6FDC24B78A5200299A09 /* BookingRequestEndpoints.swift */,
+				D5F4D3E224F04479000E8580 /* BookingApplicationEndpoints.swift */,
 				03A91EF924918A4700DEAD5E /* DeviceRegistration */,
 				03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */,
 				D535547A23DF3E81005A20EB /* Keychain */,
@@ -2081,6 +2084,7 @@
 				035B1D15249E565200AABFEA /* TestableView.swift in Sources */,
 				03E88EAF24C1F74D0077A420 /* App.swift in Sources */,
 				035B1D16249E565C00AABFEA /* AuthorizationAppleIDButton.swift in Sources */,
+				D5F4D3E324F04479000E8580 /* BookingApplicationEndpoints.swift in Sources */,
 				D5217CEC24E2D7D800C89018 /* MapOpenerDoubles.swift in Sources */,
 				035B1CF1249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift in Sources */,
 				035B1D6B249E662200AABFEA /* EnumProperties.swift in Sources */,
