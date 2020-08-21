@@ -10,8 +10,6 @@ struct BookingRequestsView: View {
 
     @State
     private var selectedBookingRequest: BookingRequest?
-    @State
-    private var didAppear = false
 
     init?() {
         guard let coordinator = Current.coordinator(for: \.bookingRequestFetchingService) else {
@@ -65,15 +63,16 @@ struct BookingRequestsView: View {
             .listStyle(GroupedListStyle())
         }
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
-        .onAppear(perform: fetchOnAppear)
+        .onAppear(perform: fetchOnAppearOnce)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
     }
 
-    private func fetchOnAppear() {
-        guard !didAppear else { return }
+    private static var didAppear = false
+    private func fetchOnAppearOnce() {
+        guard !Self.didAppear else { return }
         coordinator.run()
-        didAppear = true
+        Self.didAppear = true
     }
 }
 
