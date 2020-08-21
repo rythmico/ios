@@ -29,3 +29,11 @@ struct BookingApplication: Equatable, Decodable, Identifiable, Hashable {
     var schedule: Schedule
     var privateNote: String
 }
+
+extension BookingApplication.Status {
+    var title: String {
+        switch self {
+        case .pending: return "Pending"
+        }
+    }
+}
