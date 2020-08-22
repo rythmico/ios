@@ -22,7 +22,7 @@ struct BookingRequestApplyRequest: RythmicoAPIRequest {
     let properties: Properties
 
     let method: HTTPMethod = .post
-    var path: String { "/booking-request/\(self.bookingRequestId)/apply" }
+    var path: String { "/booking-requests/\(self.bookingRequestId)/apply" }
 
     var bodyParameters: BodyParameters? {
         JSONEncodableBodyParameters(object: self.body)
