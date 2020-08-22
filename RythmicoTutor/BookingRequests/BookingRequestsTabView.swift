@@ -27,7 +27,7 @@ struct BookingRequestsTabView: View {
             if tab == .upcoming {
                 BookingRequestsView()
             } else if tab == .applied {
-                Color.white // TODO
+                BookingApplicationsView()
             }
         }
         .onRoute(perform: handleRoute)

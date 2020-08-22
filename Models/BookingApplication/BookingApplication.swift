@@ -1,4 +1,5 @@
 import Foundation
+import struct SwiftUI.Color
 
 struct BookingApplication: Equatable, Decodable, Identifiable, Hashable {
     enum Status: String, Decodable, Hashable {
@@ -34,6 +35,12 @@ extension BookingApplication.Status {
     var title: String {
         switch self {
         case .pending: return "Pending"
+        }
+    }
+
+    var color: Color {
+        switch self {
+        case .pending: return .orange
         }
     }
 }
