@@ -10,11 +10,11 @@ extension BookingApplication {
             statusInfo: .stub,
             instrument: .piano,
             submitterName: "David R",
-            submitterPrivateNote: "I'll help!",
+            submitterPrivateNote: "",
             student: .jackStub,
             postcode: "N8",
             schedule: .startingTomorrowStub,
-            privateNote: ""
+            privateNote: "I'll help!"
         )
     }
 
@@ -26,7 +26,7 @@ extension BookingApplication {
             statusInfo: .stub,
             instrument: .guitar,
             submitterName: "David R",
-            submitterPrivateNote: "I'll help!",
+            submitterPrivateNote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             student: .janeStub,
             postcode: "N8",
             schedule: .startingTomorrowStub,
@@ -42,7 +42,7 @@ extension BookingApplication {
             statusInfo: .stub,
             instrument: .piano,
             submitterName: "David R",
-            submitterPrivateNote: "I'll help!",
+            submitterPrivateNote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             student: .longNameStub,
             postcode: "NW5",
             schedule: .startingIn1WeekStub,

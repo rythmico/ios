@@ -43,7 +43,7 @@ extension AppEnvironment {
             $0.deauthenticationService = DeauthenticationServiceStub()
             $0.bookingRequestFetchingService = APIServiceStub(result: .success([.stub, .longStub]), delay: fakeAPIServicesDelay)
             $0.bookingRequestApplyingService = APIServiceStub(result: .success(.stub), delay: fakeAPIServicesDelay)
-            $0.bookingApplicationFetchingService = APIServiceStub(result: .success([.stub, .stubWithAbout]), delay: fakeAPIServicesDelay)
+            $0.bookingApplicationFetchingService = APIServiceStub(result: .success([.stub, .longStub, .stubWithAbout]), delay: fakeAPIServicesDelay)
             $0.keyboardDismisser = UIApplication.shared
             $0.urlOpener = UIApplication.shared
             $0.mapOpener = MapOpener(urlOpener: UIApplication.shared)
