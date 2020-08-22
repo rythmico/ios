@@ -30,4 +30,6 @@ struct AppEnvironment {
     var keyboardDismisser: KeyboardDismisser
     var uiAccessibility: UIAccessibilityProtocol.Type
     var urlOpener: URLOpener
+
+    var router: Router
 }

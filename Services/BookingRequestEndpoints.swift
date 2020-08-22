@@ -1,6 +1,6 @@
 import APIKit
 
-struct GetBookingRequestsRequest: RythmicoAPIRequest {
+struct BookingRequestsGetRequest: RythmicoAPIRequest {
     let accessToken: String
     let properties: Void
 
@@ -11,8 +11,8 @@ struct GetBookingRequestsRequest: RythmicoAPIRequest {
     typealias Error = RythmicoAPIError
 }
 
-struct CreateBookingApplicationRequest: RythmicoAPIRequest {
-    typealias Properties = (id: String, body: Body)
+struct BookingRequestApplyRequest: RythmicoAPIRequest {
+    typealias Properties = (bookingRequestId: String, body: Body)
 
     struct Body: Encodable {
         var privateNote: String
@@ -22,12 +22,12 @@ struct CreateBookingApplicationRequest: RythmicoAPIRequest {
     let properties: Properties
 
     let method: HTTPMethod = .post
-    var path: String { "/booking-request/\(self.id)/apply" }
+    var path: String { "/booking-requests/\(self.bookingRequestId)/apply" }
 
     var bodyParameters: BodyParameters? {
         JSONEncodableBodyParameters(object: self.body)
     }
 
-    typealias Response = Void
+    typealias Response = BookingApplication
     typealias Error = RythmicoAPIError
 }

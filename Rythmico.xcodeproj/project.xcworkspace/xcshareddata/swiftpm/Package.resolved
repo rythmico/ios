@@ -38,6 +38,15 @@
         }
       },
       {
+        "package": "SwiftUIMapView",
+        "repositoryURL": "https://github.com/sgade/swiftui-mapview",
+        "state": {
+          "branch": null,
+          "revision": "6dd36fc4b86464ab8f3d7442ad972413b5418bd2",
+          "version": "1.2.0"
+        }
+      },
+      {
         "package": "Then",
         "repositoryURL": "https://github.com/devxoul/Then",
         "state": {

@@ -18,9 +18,11 @@ struct AppEnvironment {
     var accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase
 
     var bookingRequestRepository: Repository<BookingRequest>
-    var bookingRequestFetchingService: APIServiceBase<GetBookingRequestsRequest>
+    var bookingRequestFetchingService: APIServiceBase<BookingRequestsGetRequest>
+    var bookingRequestApplyingService: APIServiceBase<BookingRequestApplyRequest>
 
-    var bookingApplicationCreatingService: APIServiceBase<CreateBookingApplicationRequest>
+    var bookingApplicationRepository: Repository<BookingApplication>
+    var bookingApplicationFetchingService: APIServiceBase<BookingApplicationsGetRequest>
 
     var deviceTokenProvider: DeviceTokenProvider
     var deviceRegisterService: APIServiceBase<AddDeviceRequest>
@@ -30,6 +32,8 @@ struct AppEnvironment {
     var uiAccessibility: UIAccessibilityProtocol.Type
     var urlOpener: URLOpener
     var mapOpener: MapOpenerProtocol
+
+    var router: Router
 }
 
 extension AppEnvironment {

@@ -1,6 +1,10 @@
 import SwiftUI
+import SwiftUIMapView
 
 struct BookingRequestDetailView: View {
+    @Environment(\.presentationMode)
+    private var presentationMode
+
     private let bookingRequest: BookingRequest
 
     private let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
@@ -72,7 +76,7 @@ struct BookingRequestDetailView: View {
                     footer: Text("Exact location and address will be provided if you're selected.")
                 ) {
                     VStack(alignment: .leading, spacing: .spacingExtraSmall) {
-                        MapView()
+                        StaticMapView()
                             .frame(height: 160)
                             .clipShape(RoundedRectangle(cornerRadius: .spacingUnit * 2, style: .continuous))
                             .onTapGesture(perform: presentMapActionSheet)
@@ -95,7 +99,15 @@ struct BookingRequestDetailView: View {
             intent: .search(query: bookingRequest.postcode),
             error: $mapOpeningError
         )
-        .sheet(isPresented: $isApplicationViewPresented) { BookingApplicationView(booking: self.bookingRequest) }
+        .sheet(isPresented: $isApplicationViewPresented) { BookingRequestApplyView(booking: self.bookingRequest) }
+        .onRoute(perform: handleRoute)
+    }
+
+    private func handleRoute(_ route: Route) {
+        switch route {
+        case .bookingRequests, .bookingApplications:
+            presentationMode.wrappedValue.dismiss()
+        }
     }
 }
 

@@ -1,14 +1,14 @@
 import SwiftUI
 
-struct BookingApplicationView: View {
+struct BookingRequestApplyView: View {
     @Environment(\.presentationMode)
     private var presentationMode
     @ObservedObject
-    private var coordinator: APIActivityCoordinator<CreateBookingApplicationRequest>
+    private var coordinator: APIActivityCoordinator<BookingRequestApplyRequest>
     private let booking: BookingRequest
 
     init?(booking: BookingRequest) {
-        guard let coordinator = Current.coordinator(for: \.bookingApplicationCreatingService) else {
+        guard let coordinator = Current.coordinator(for: \.bookingRequestApplyingService) else {
             return nil
         }
         self.coordinator = coordinator
@@ -19,7 +19,7 @@ struct BookingApplicationView: View {
     var privateNote = ""
 
     func submit() {
-        coordinator.run(with: (id: booking.id, body: .init(privateNote: privateNote)))
+        coordinator.run(with: (bookingRequestId: booking.id, body: .init(privateNote: privateNote)))
     }
 
     var body: some View {
@@ -48,7 +48,7 @@ struct BookingApplicationView: View {
         .disabled(coordinator.state.isLoading)
         .animation(.easeInOut(duration: .durationMedium), value: coordinator.state.isLoading)
         .alertOnFailure(coordinator)
-        .onSuccess(coordinator, perform: dismiss)
+        .onSuccess(coordinator, perform: finalize)
     }
 
     @ViewBuilder
@@ -75,12 +75,18 @@ struct BookingApplicationView: View {
     private func dismiss() {
         presentationMode.wrappedValue.dismiss()
     }
+
+    private func finalize(_ application: BookingApplication) {
+        Current.bookingApplicationRepository.insertItem(application)
+        dismiss()
+        Current.router.open(.bookingApplications)
+    }
 }
 
 #if DEBUG
 struct BookingApplicationView_Previews: PreviewProvider {
     static var previews: some View {
-        BookingApplicationView(booking: .stub)
+        BookingRequestApplyView(booking: .stub)
             .environment(\.colorScheme, .dark)
     }
 }

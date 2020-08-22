@@ -78,7 +78,9 @@ struct OnboardingView: View, TestableView {
         switch error.code {
         case .notHandled:
             preconditionFailure(error.localizedDescription)
-        case .canceled, .failed, .invalidResponse, .unknown:
+        case .failed, .invalidResponse, .unknown:
+            errorMessage = error.localizedDescription
+        case .canceled:
             break
         @unknown default:
             break

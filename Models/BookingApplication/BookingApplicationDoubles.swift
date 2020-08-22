@@ -1,26 +1,32 @@
 import Foundation
 import Sugar
 
-extension BookingRequest {
+extension BookingApplication {
     static var stub: Self {
         .init(
             id: "ID1",
+            bookingRequestId: "ID1",
             createdAt: AppEnvironment.dummy.date() - (32, .second),
+            statusInfo: .stub,
             instrument: .piano,
             submitterName: "David R",
+            submitterPrivateNote: "",
             student: .jackStub,
             postcode: "N8",
             schedule: .startingTomorrowStub,
-            privateNote: ""
+            privateNote: "I'll help!"
         )
     }
 
     static var stubWithAbout: Self {
         .init(
             id: "ID3",
+            bookingRequestId: "ID3",
             createdAt: AppEnvironment.dummy.date() - (32, .second),
+            statusInfo: .stub,
             instrument: .guitar,
             submitterName: "David R",
+            submitterPrivateNote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             student: .janeStub,
             postcode: "N8",
             schedule: .startingTomorrowStub,
@@ -31,9 +37,12 @@ extension BookingRequest {
     static var longStub: Self {
         .init(
             id: "ID2",
+            bookingRequestId: "ID2",
             createdAt: AppEnvironment.dummy.date() - (1, .weekOfMonth),
+            statusInfo: .stub,
             instrument: .piano,
             submitterName: "David R",
+            submitterPrivateNote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             student: .longNameStub,
             postcode: "NW5",
             schedule: .startingIn1WeekStub,
@@ -42,7 +51,7 @@ extension BookingRequest {
     }
 }
 
-extension BookingRequest.Student {
+extension BookingApplication.Student {
     static var jackStub: Self {
         .init(
             name: "Jack",
@@ -67,6 +76,15 @@ extension BookingRequest.Student {
             age: 30,
             gender: .female,
             about: ""
+        )
+    }
+}
+
+extension BookingApplication.StatusInfo {
+    static var stub: Self {
+        .init(
+            status: .pending,
+            date: AppEnvironment.dummy.date() - (58, .second)
         )
     }
 }

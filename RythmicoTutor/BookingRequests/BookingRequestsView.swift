@@ -2,17 +2,14 @@ import SwiftUI
 
 struct BookingRequestsView: View {
     @ObservedObject
-    private var coordinator: APIActivityCoordinator<GetBookingRequestsRequest>
+    private var coordinator: APIActivityCoordinator<BookingRequestsGetRequest>
     @ObservedObject
     private var repository = Current.bookingRequestRepository
 
-    private let lessonDateFormatter = Current.dateFormatter(format: .custom("d MMM '@' HH:mm"))
-    private let bookingDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .short)
+    private let scheduleFormatter = Current.dateFormatter(format: .custom("d MMM '@' HH:mm"))
 
     @State
     private var selectedBookingRequest: BookingRequest?
-    @State
-    private var didAppear = false
 
     init?() {
         guard let coordinator = Current.coordinator(for: \.bookingRequestFetchingService) else {
@@ -48,7 +45,7 @@ struct BookingRequestsView: View {
                                         Text("\(request.student.name) - \(request.instrument.name)")
                                             .foregroundColor(.primary)
                                             .font(.body)
-                                        Text("\(request.schedule.startDate, formatter: self.lessonDateFormatter)")
+                                        Text("\(request.schedule.startDate, formatter: self.scheduleFormatter)")
                                             .foregroundColor(.secondary)
                                             .font(.callout)
                                     }
@@ -66,15 +63,16 @@ struct BookingRequestsView: View {
             .listStyle(GroupedListStyle())
         }
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
-        .onAppear(perform: fetchOnAppear)
+        .onAppear(perform: fetchOnAppearOnce)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
     }
 
-    private func fetchOnAppear() {
-        guard !didAppear else { return }
+    private static var didAppear = false
+    private func fetchOnAppearOnce() {
+        guard !Self.didAppear else { return }
         coordinator.run()
-        didAppear = true
+        Self.didAppear = true
     }
 }
 

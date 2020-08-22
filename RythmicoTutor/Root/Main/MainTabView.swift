@@ -3,7 +3,7 @@ import SFSafeSymbols
 import Sugar
 
 struct MainTabView: View, TestableView {
-    enum TabSelection: String, Hashable {
+    enum Tab: String, Hashable {
         case requests = "Requests"
         case profile = "Profile"
 
@@ -11,7 +11,7 @@ struct MainTabView: View, TestableView {
     }
 
     final class ViewState: ObservableObject {
-        @Published var tabSelection: TabSelection = .requests
+        @Published var tab: Tab = .requests
     }
 
     @ObservedObject
@@ -31,25 +31,33 @@ struct MainTabView: View, TestableView {
     let inspection = SelfInspection()
     var body: some View {
         NavigationView {
-            TabView(selection: $state.tabSelection) {
-                BookingRequestsView()
-                    .tag(TabSelection.requests)
+            TabView(selection: $state.tab) {
+                BookingRequestsTabView()
+                    .tag(Tab.requests)
                     .tabItem {
                         Image(systemSymbol: .musicNoteList).font(.system(size: 21, weight: .bold))
-                        Text(TabSelection.requests.title)
+                        Text(Tab.requests.title)
                     }
                 Text("Second View")
                     .font(.title)
-                    .tag(TabSelection.profile)
+                    .tag(Tab.profile)
                     .tabItem {
                         Image(systemSymbol: .personFill).font(.system(size: 21, weight: .semibold))
-                        Text(TabSelection.profile.title)
+                        Text(Tab.profile.title)
                     }
             }
-            .navigationBarTitle(Text(state.tabSelection.title), displayMode: .automatic)
+            .navigationBarTitle(Text(state.tab.title), displayMode: .automatic)
         }
         .testable(self)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
+        .onRoute(perform: handleRoute)
+    }
+
+    private func handleRoute(_ route: Route) {
+        switch route {
+        case .bookingRequests, .bookingApplications:
+            state.tab = .requests
+        }
     }
 }
 

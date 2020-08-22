@@ -32,7 +32,7 @@ final class OnboardingViewTests: XCTestCase {
         XCTAssertView(view) { view in
             view.authenticateWithApple()
             XCTAssertFalse(view.isLoading)
-            XCTAssertNil(view.errorMessage)
+            XCTAssertNotNil(view.errorMessage)
             XCTAssert(keychain.inMemoryStorage.isEmpty)
         }
     }

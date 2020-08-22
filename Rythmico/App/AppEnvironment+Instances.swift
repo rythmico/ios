@@ -31,7 +31,8 @@ extension AppEnvironment {
         ),
         keyboardDismisser: UIApplication.shared,
         uiAccessibility: UIAccessibility.self,
-        urlOpener: UIApplication.shared
+        urlOpener: UIApplication.shared,
+        router: Router()
     )
 }
 
@@ -83,7 +84,8 @@ extension AppEnvironment {
             pushNotificationAuthorizationCoordinator: .dummy,
             keyboardDismisser: KeyboardDismisserDummy(),
             uiAccessibility: UIAccessibilityDummy.self,
-            urlOpener: URLOpenerDummy()
+            urlOpener: URLOpenerDummy(),
+            router: Router()
         )
     }
 }
