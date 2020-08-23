@@ -15,11 +15,7 @@ struct BookingApplicationDetailView: View {
         self.bookingApplication = bookingApplication
     }
 
-    var status: String {
-        switch bookingApplication.statusInfo.status {
-        case .pending: return "Pending tutor selection"
-        }
-    }
+    var status: String { bookingApplication.statusInfo.status.summary }
     var statusColor: Color { bookingApplication.statusInfo.status.color }
     var statusDate: String { statusDateFormatter.localizedString(for: bookingApplication.statusInfo.date, relativeTo: Current.date()) }
     var title: String { "\(bookingApplication.student.name) - \(bookingApplication.instrument.name) Request" }
