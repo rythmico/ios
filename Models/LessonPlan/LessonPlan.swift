@@ -3,32 +3,37 @@ import Foundation
 struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
     enum Status: Equatable, Decodable, Hashable {
         case pending
-        case reviewing([Tutor])
+        case reviewing([Application])
         case scheduled(Tutor)
         case cancelled(Tutor?, CancellationInfo)
 
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            let applicants = try container.decodeIfPresent([Tutor].self, forKey: .applicants)
+            let applications = try container.decodeIfPresent([Application].self, forKey: .applications)
             let tutor = try container.decodeIfPresent(Tutor.self, forKey: .tutor)
             let cancellationInfo = try container.decodeIfPresent(CancellationInfo.self, forKey: .cancellationInfo)
-            switch (applicants, tutor, cancellationInfo) {
+            switch (applications, tutor, cancellationInfo) {
             case (_, let tutor, let cancellationInfo?):
                 self = .cancelled(tutor, cancellationInfo)
             case (_, let tutor?, _):
                 self = .scheduled(tutor)
-            case (let applicants?, _, _) where !applicants.isEmpty:
-                self = .reviewing(applicants)
+            case (let applications?, _, _) where !applications.isEmpty:
+                self = .reviewing(applications)
             default:
                 self = .pending
             }
         }
     }
 
+    struct Application: Equatable, Decodable, Hashable {
+        var tutor: Tutor
+        var privateNote: String
+    }
+
     struct Tutor: Equatable, Decodable, Hashable {
         var id: String
         var name: String
-        var imageURL: URL
+        var photoURL: URL?
     }
 
     struct CancellationInfo: Equatable, Decodable, Hashable {
@@ -84,7 +89,7 @@ struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
         case id
 
         // Status
-        case applicants
+        case applications
         case tutor
         case cancellationInfo
 
