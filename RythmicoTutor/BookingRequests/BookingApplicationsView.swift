@@ -6,9 +6,6 @@ struct BookingApplicationsView: View {
     @ObservedObject
     private var repository = Current.bookingApplicationRepository
 
-    private let scheduleFormatter = Current.dateFormatter(format: .custom("d MMM '@' HH:mm"))
-    private let statusDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .short)
-
     @State
     private var selectedBookingApplication: BookingApplication?
 
@@ -39,27 +36,9 @@ struct BookingApplicationsView: View {
                         NavigationLink(
                             destination: BookingApplicationDetailView(bookingApplication: application),
                             tag: application,
-                            selection: self.$selectedBookingApplication
-                        ) {
-                            HStack(spacing: .spacingUnit * 2) {
-                                Dot(color: application.statusInfo.status.color)
-                                HStack(spacing: .spacingMedium) {
-                                    VStack(alignment: .leading) {
-                                        Text(self.title(for: application))
-                                            .foregroundColor(.primary)
-                                            .font(.body)
-                                        Text(self.subtitle(for: application))
-                                            .foregroundColor(.secondary)
-                                            .font(.callout)
-                                    }
-                                    Spacer(minLength: 0)
-                                    TickingText(self.statusDate(for: application))
-                                        .foregroundColor(.secondary)
-                                        .font(.footnote)
-                                }
-                            }
-                            .padding(.vertical, .spacingUnit)
-                        }
+                            selection: self.$selectedBookingApplication,
+                            label: { BookingApplicationCell(application: application) }
+                        )
                     }
                 }
             }
@@ -69,27 +48,6 @@ struct BookingApplicationsView: View {
         .onAppear(perform: coordinator.run)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
-    }
-
-    private func title(for application: BookingApplication) -> String {
-        "\(application.student.name) - \(application.instrument.name)"
-    }
-
-    private func subtitle(for application: BookingApplication) -> String {
-        let startDate = scheduleFormatter.string(from: application.schedule.startDate)
-        let status = application.statusInfo.status.title
-        return [startDate, status].joined(separator: " • ")
-    }
-
-    private func statusDate(for application: BookingApplication) -> String {
-        let date = Current.date()
-        guard application.statusInfo.date.distance(to: date) >= 60 else {
-            return "now"
-        }
-        return statusDateFormatter.localizedString(
-            for: application.statusInfo.date,
-            relativeTo: date
-        )
     }
 }
 

@@ -2,7 +2,7 @@ import Foundation
 import struct SwiftUI.Color
 
 struct BookingApplication: Equatable, Decodable, Identifiable, Hashable {
-    enum Status: String, Decodable, Hashable {
+    enum Status: String, Decodable, Hashable, CaseIterable {
         case pending = "PENDING"
         case cancelled = "CANCELLED"
         case retracted = "RETRACTED"
