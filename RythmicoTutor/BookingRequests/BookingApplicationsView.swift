@@ -45,9 +45,17 @@ struct BookingApplicationsView: View {
             .listStyle(GroupedListStyle())
         }
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
-        .onAppear(perform: coordinator.run)
+        .onAppear(perform: fetchOnAppear)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
+    }
+
+    @State
+    private var didAppear = false
+    private func fetchOnAppear() {
+        guard !didAppear else { return }
+        coordinator.run()
+        didAppear = true
     }
 }
 
