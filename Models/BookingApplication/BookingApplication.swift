@@ -41,7 +41,7 @@ extension BookingApplication.Status {
         case .pending: return "Pending"
         case .cancelled: return "Cancelled"
         case .retracted: return "Retracted"
-        case .notSelected: return "Not selected"
+        case .notSelected: return "Not Selected"
         case .selected: return "Selected"
         }
     }
