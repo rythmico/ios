@@ -67,6 +67,12 @@ extension BookingApplication {
     }
 }
 
+extension Array where Element == BookingApplication {
+    static var stub: Self {
+        BookingApplication.Status.allCases.map { .stub(.stub($0)) }
+    }
+}
+
 extension BookingApplication.Student {
     static var jackStub: Self {
         .init(
