@@ -7,8 +7,6 @@ struct BookingApplicationsView: View {
     private var repository = Current.bookingApplicationRepository
 
     @State
-    private var selectedBookingApplication: BookingApplication?
-    @State
     private var selectedBookingApplicationGroup: BookingApplication.Status?
 
     init?() {
