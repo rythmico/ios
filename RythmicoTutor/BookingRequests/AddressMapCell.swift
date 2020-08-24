@@ -93,6 +93,7 @@ private extension Address {
     }
 }
 
+#if DEBUG
 struct AddressMapCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -106,3 +107,4 @@ struct AddressMapCell_Previews: PreviewProvider {
         .previewLayout(.fixed(width: 370, height: 400))
     }
 }
+#endif

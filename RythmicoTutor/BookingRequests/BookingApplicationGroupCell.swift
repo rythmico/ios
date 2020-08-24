@@ -31,6 +31,7 @@ struct BookingApplicationGroupCell: View {
     }
 }
 
+#if DEBUG
 struct BookingApplicationGroupCell_Previews: PreviewProvider {
     static var previews: some View {
         BookingApplicationGroupCell(status: .selected, applications: .stub)
@@ -38,3 +39,4 @@ struct BookingApplicationGroupCell_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
     }
 }
+#endif

@@ -17,6 +17,7 @@ struct BookingApplicationGroupView: View {
     }
 }
 
+#if DEBUG
 struct BookingApplicationGroupView_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(BookingApplication.Status.allCases, id: \.self) {
@@ -25,3 +26,4 @@ struct BookingApplicationGroupView_Previews: PreviewProvider {
         }
     }
 }
+#endif
