@@ -8,7 +8,7 @@ final class RequestLessonPlanContext: ObservableObject {
     @Published var student: Student? {
         willSet { previousStep = currentStep }
     }
-    @Published var address: AddressDetails? {
+    @Published var address: Address? {
         willSet { previousStep = currentStep }
     }
     @Published var schedule: Schedule? {
@@ -28,7 +28,7 @@ extension RequestLessonPlanContext {
         case addressDetails(Instrument, Student)
         case scheduling(Instrument)
         case privateNote
-        case reviewRequest(Instrument, Student, AddressDetails, Schedule, String)
+        case reviewRequest(Instrument, Student, Address, Schedule, String)
 
         static func < (lhs: Self, rhs: Self) -> Bool {
             lhs.index < rhs.index
@@ -105,7 +105,7 @@ extension RequestLessonPlanContext: StudentDetailsContext {
 }
 
 extension RequestLessonPlanContext: AddressDetailsContext {
-    func setAddress(_ address: AddressDetails) { self.address = address }
+    func setAddress(_ address: Address) { self.address = address }
 }
 
 extension RequestLessonPlanContext: SchedulingContext {

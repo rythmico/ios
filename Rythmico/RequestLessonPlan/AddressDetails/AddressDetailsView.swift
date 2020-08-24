@@ -2,7 +2,7 @@ import SwiftUI
 import Sugar
 
 protocol AddressDetailsContext {
-    func setAddress(_ address: AddressDetails)
+    func setAddress(_ address: Address)
 }
 
 struct AddressDetailsView: View, TestableView {
@@ -10,7 +10,7 @@ struct AddressDetailsView: View, TestableView {
 
     final class ViewState: ObservableObject {
         @Published var postcode = String()
-        @Published var selectedAddress: AddressDetails?
+        @Published var selectedAddress: Address?
     }
 
     @Environment(\.sizeCategory) private var sizeCategory: ContentSizeCategory
@@ -45,7 +45,7 @@ struct AddressDetailsView: View, TestableView {
 
     var isLoading: Bool { searchCoordinator.state.isLoading }
     var error: Error? { searchCoordinator.state.failureValue }
-    var addresses: [AddressDetails]? { searchCoordinator.state.successValue.map([AddressDetails].init) }
+    var addresses: [Address]? { searchCoordinator.state.successValue.map([Address].init) }
 
     func searchAddresses() {
         searchCoordinator.run(with: .init(postcode: state.postcode))
@@ -130,10 +130,10 @@ struct AddressDetailsView: View, TestableView {
     }
 }
 
-private extension Array where Element == AddressDetails {
+private extension Array where Element == Address {
     init(_ response: AddressSearchRequest.Response) {
         self = response.addresses.map {
-            AddressDetails(
+            Address(
                 latitude: response.latitude,
                 longitude: response.longitude,
                 line1: $0.line1, line2: $0.line2,

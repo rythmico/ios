@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct AddressSelectionView: View {
-    var addresses: [AddressDetails]
-    @Binding var selection: AddressDetails?
+    var addresses: [Address]
+    @Binding var selection: Address?
 
     var body: some View {
         VStack(alignment: .leading, spacing: .spacingExtraSmall) {
@@ -16,7 +16,7 @@ struct AddressSelectionView: View {
         }
     }
 
-    private var _addresses: [AddressDetails] {
+    private var _addresses: [Address] {
         if let selectedAddress = selection, !addresses.contains(selectedAddress) {
             selection = nil
         }

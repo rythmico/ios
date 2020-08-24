@@ -15,7 +15,7 @@ struct CreateLessonPlanRequest: RythmicoAPIRequest {
     struct Body: Encodable {
         var instrument: Instrument
         var student: Student
-        var address: AddressDetails
+        var address: Address
         var schedule: Schedule
         var privateNote: String
     }
