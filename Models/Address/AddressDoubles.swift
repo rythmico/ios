@@ -3,8 +3,8 @@ import Foundation
 extension Address {
     static var stub: Address {
         Address(
-            latitude: 0,
-            longitude: 0,
+            latitude: 51.580460,
+            longitude: -0.119150,
             line1: "Apartment 30",
             line2: "85 Shore Street",
             line3: "",

@@ -15,15 +15,12 @@ struct BookingApplicationDetailView: View {
         self.bookingApplication = bookingApplication
     }
 
-    var status: String {
-        switch bookingApplication.statusInfo.status {
-        case .pending: return "Pending tutor selection"
-        }
-    }
+    var status: String { bookingApplication.statusInfo.status.summary }
     var statusColor: Color { bookingApplication.statusInfo.status.color }
     var statusDate: String { statusDateFormatter.localizedString(for: bookingApplication.statusInfo.date, relativeTo: Current.date()) }
     var title: String { "\(bookingApplication.student.name) - \(bookingApplication.instrument.name) Request" }
     var submittedBy: String { bookingApplication.submitterName }
+    var phoneNumber: String? { bookingApplication.phoneNumber }
     var startDate: String { dateFormatter.string(from: bookingApplication.schedule.startDate) }
     var time: String { timeFormatter.string(from: bookingApplication.schedule.startDate) }
     var duration: String { "\(bookingApplication.schedule.duration) minutes" }
@@ -33,14 +30,6 @@ struct BookingApplicationDetailView: View {
     var about: String? { bookingApplication.student.about.isEmpty ? nil : bookingApplication.student.about }
     var submitterPrivateNote: String { bookingApplication.submitterPrivateNote.isEmpty ? "None" : bookingApplication.submitterPrivateNote }
     var submitterPrivateNoteOpacity: Double { bookingApplication.submitterPrivateNote.isEmpty ? 0.5 : 1 }
-
-    @State
-    private var isMapOpeningSheetPresented = false
-    private func presentMapActionSheet() { isMapOpeningSheetPresented = true }
-    @State
-    private var mapOpeningError: Error?
-
-    var postcode: String { bookingApplication.postcode }
 
     var body: some View {
         List {
@@ -60,6 +49,9 @@ struct BookingApplicationDetailView: View {
             }
             Section(header: Text("REQUEST DETAILS")) {
                 TitleCell(title: "Submitted by", detail: submittedBy)
+                phoneNumber.map {
+                    TitleCell(title: "Contact Number", detail: $0)
+                }
             }
             Section(header: Text("LESSON SCHEDULE DETAILS")) {
                 TitleCell(title: "Start Date", detail: startDate)
@@ -92,25 +84,11 @@ struct BookingApplicationDetailView: View {
                 header: Text("ADDRESS DETAILS"),
                 footer: Text("Exact location and address will be provided if you're selected.")
             ) {
-                VStack(alignment: .leading, spacing: .spacingExtraSmall) {
-                    StaticMapView()
-                        .frame(height: 160)
-                        .clipShape(RoundedRectangle(cornerRadius: .spacingUnit * 2, style: .continuous))
-                        .onTapGesture(perform: presentMapActionSheet)
-                    Text(postcode)
-                        .foregroundColor(.primary)
-                        .font(.body)
-                }
-                .padding(.vertical, .spacingUnit * 2)
+                AddressMapCell(addressInfo: bookingApplication.addressInfo)
             }
         }
         .listStyle(GroupedListStyle())
         .navigationBarTitle(Text(title), displayMode: .inline)
-        .mapOpeningSheet(
-            isPresented: $isMapOpeningSheetPresented,
-            intent: .search(query: bookingApplication.postcode),
-            error: $mapOpeningError
-        )
         .onRoute(perform: handleRoute)
     }
 
@@ -124,8 +102,10 @@ struct BookingApplicationDetailView: View {
 
 #if DEBUG
 struct BookingApplicationDetailView_Previews: PreviewProvider {
+    @ViewBuilder
     static var previews: some View {
         BookingApplicationDetailView(bookingApplication: .longStub)
+        BookingApplicationDetailView(bookingApplication: .stub(.stub(.selected)))
     }
 }
 #endif

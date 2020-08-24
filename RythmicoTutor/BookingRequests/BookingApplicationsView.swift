@@ -6,11 +6,8 @@ struct BookingApplicationsView: View {
     @ObservedObject
     private var repository = Current.bookingApplicationRepository
 
-    private let scheduleFormatter = Current.dateFormatter(format: .custom("d MMM '@' HH:mm"))
-    private let statusDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .short)
-
     @State
-    private var selectedBookingApplication: BookingApplication?
+    private var selectedBookingApplicationGroup: BookingApplication.Status?
 
     init?() {
         guard let coordinator = Current.coordinator(for: \.bookingApplicationFetchingService) else {
@@ -26,70 +23,43 @@ struct BookingApplicationsView: View {
     var body: some View {
         VStack(spacing: .spacingMedium) {
             List {
-                Section(
-                    header: HStack {
-                        Text("PENDING")
-                        if isLoading {
-                            ActivityIndicator(style: .medium)
-                                .transition(AnyTransition.opacity.combined(with: .scale))
-                        }
+                BookingApplicationSection(applications: applications, status: .pending) {
+                    if isLoading {
+                        ActivityIndicator(style: .medium).transition(AnyTransition.opacity.combined(with: .scale))
                     }
-                ) {
-                    ForEach(applications) { application in
-                        NavigationLink(
-                            destination: BookingApplicationDetailView(bookingApplication: application),
-                            tag: application,
-                            selection: self.$selectedBookingApplication
-                        ) {
-                            HStack(spacing: .spacingUnit * 2) {
-                                Dot(color: application.statusInfo.status.color)
-                                HStack(spacing: .spacingMedium) {
-                                    VStack(alignment: .leading) {
-                                        Text(self.title(for: application))
-                                            .foregroundColor(.primary)
-                                            .font(.body)
-                                        Text(self.subtitle(for: application))
-                                            .foregroundColor(.secondary)
-                                            .font(.callout)
-                                    }
-                                    Spacer(minLength: 0)
-                                    TickingText(self.statusDate(for: application))
-                                        .foregroundColor(.secondary)
-                                        .font(.footnote)
-                                }
-                            }
-                            .padding(.vertical, .spacingUnit)
-                        }
-                    }
+                }
+                Section(header: Text("OTHER STATUS")) {
+                    ForEach([.selected, .notSelected, .cancelled], id: \.self, content: applicationGroupCell)
                 }
             }
             .listStyle(GroupedListStyle())
         }
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
-        .onAppear(perform: coordinator.run)
+        .onAppear(perform: fetchOnAppear)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
     }
 
-    private func title(for application: BookingApplication) -> String {
-        "\(application.student.name) - \(application.instrument.name)"
-    }
-
-    private func subtitle(for application: BookingApplication) -> String {
-        let startDate = scheduleFormatter.string(from: application.schedule.startDate)
-        let status = application.statusInfo.status.title
-        return [startDate, status].joined(separator: " • ")
-    }
-
-    private func statusDate(for application: BookingApplication) -> String {
-        let date = Current.date()
-        guard application.statusInfo.date.distance(to: date) >= 60 else {
-            return "now"
-        }
-        return statusDateFormatter.localizedString(
-            for: application.statusInfo.date,
-            relativeTo: date
+    private func applicationGroupCell(for status: BookingApplication.Status) -> some View {
+        NavigationLink(
+            destination: BookingApplicationGroupView(applications: applications, status: status),
+            tag: status,
+            selection: $selectedBookingApplicationGroup,
+            label: { BookingApplicationGroupCell(status: status, applications: applications) }
         )
+        .disabled(numberOfApplications(withStatus: status) == 0)
+    }
+
+    private func numberOfApplications(withStatus status: BookingApplication.Status) -> Int {
+        applications.filter { $0.statusInfo.status == status }.count // TODO: count(where:)
+    }
+
+    @State
+    private var didAppear = false
+    private func fetchOnAppear() {
+        guard !didAppear else { return }
+        coordinator.run()
+        didAppear = true
     }
 }
 

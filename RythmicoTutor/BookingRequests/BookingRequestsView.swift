@@ -6,8 +6,6 @@ struct BookingRequestsView: View {
     @ObservedObject
     private var repository = Current.bookingRequestRepository
 
-    private let scheduleFormatter = Current.dateFormatter(format: .custom("d MMM '@' HH:mm"))
-
     @State
     private var selectedBookingRequest: BookingRequest?
 
@@ -39,23 +37,7 @@ struct BookingRequestsView: View {
                             destination: BookingRequestDetailView(bookingRequest: request),
                             tag: request,
                             selection: self.$selectedBookingRequest,
-                            label: {
-                                HStack(spacing: .spacingMedium) {
-                                    VStack(alignment: .leading) {
-                                        Text("\(request.student.name) - \(request.instrument.name)")
-                                            .foregroundColor(.primary)
-                                            .font(.body)
-                                        Text("\(request.schedule.startDate, formatter: self.scheduleFormatter)")
-                                            .foregroundColor(.secondary)
-                                            .font(.callout)
-                                    }
-                                    Spacer(minLength: 0)
-                                    Text(request.postcode)
-                                        .foregroundColor(.secondary)
-                                        .font(.body)
-                                }
-                                .padding(.vertical, .spacingUnit)
-                            }
+                            label: { BookingRequestCell(request: request) }
                         )
                     }
                 }

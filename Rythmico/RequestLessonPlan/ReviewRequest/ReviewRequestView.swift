@@ -13,7 +13,7 @@ struct ReviewRequestView: View, TestableView {
     private let context: RequestLessonPlanContext
     private let instrument: Instrument
     private let student: Student
-    private let address: AddressDetails
+    private let address: Address
     private let schedule: Schedule
     private let privateNote: String
 
@@ -22,7 +22,7 @@ struct ReviewRequestView: View, TestableView {
         context: RequestLessonPlanContext,
         instrument: Instrument,
         student: Student,
-        address: AddressDetails,
+        address: Address,
         schedule: Schedule,
         privateNote: String
     ) {

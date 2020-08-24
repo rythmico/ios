@@ -166,7 +166,6 @@
 		03AAF6752445E16A002D8F5B /* SchedulingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF66D2445E03B002D8F5B /* SchedulingViewTests.swift */; };
 		03AB22F3244CB13200DAC7DF /* PrivateNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AB22F2244CB13200DAC7DF /* PrivateNoteView.swift */; };
 		03B19837247053F5005529EB /* APIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 03B19836247053F5005529EB /* APIKit */; };
-		03B1983924705894005529EB /* AddressDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1983824705894005529EB /* AddressDetails.swift */; };
 		03B1983F24717A90005529EB /* LessonPlanDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1983E24717A90005529EB /* LessonPlanDoubles.swift */; };
 		03B1984124717AE8005529EB /* AddressDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984024717AE8005529EB /* AddressDoubles.swift */; };
 		03B19843247181B3005529EB /* RequestLessonPlanFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */; };
@@ -305,7 +304,6 @@
 		D53555E623E5383C005A20EB /* AppleAuthorizationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560E23CD384300BC8485 /* AppleAuthorizationServiceTests.swift */; };
 		D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */; };
 		D5473C9F241AC3CB00D66775 /* AddressDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5473C9D241AC3B800D66775 /* AddressDetailsViewTests.swift */; };
-		D5473CA1241AC4A000D66775 /* AddressDetailsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5473CA0241AC4A000D66775 /* AddressDetailsDoubles.swift */; };
 		D54FC05524CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */; };
 		D54FC05624CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */; };
 		D55F012C24CCBE8700E5F13C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB324C4AA4C0077A420 /* APIService.swift */; };
@@ -365,6 +363,14 @@
 		D5F4D3E524F0475F000E8580 /* BookingApplicationDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E424F0475F000E8580 /* BookingApplicationDoubles.swift */; };
 		D5F4D3E724F096A2000E8580 /* BookingApplicationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E624F096A2000E8580 /* BookingApplicationDetailView.swift */; };
 		D5F4D3E924F09C43000E8580 /* Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E824F09C43000E8580 /* Dot.swift */; };
+		D5F4D3EB24F315AB000E8580 /* BookingApplicationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3EA24F315AB000E8580 /* BookingApplicationCell.swift */; };
+		D5F4D3ED24F317C0000E8580 /* BookingRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3EC24F317C0000E8580 /* BookingRequestCell.swift */; };
+		D5F4D3EF24F31CF1000E8580 /* BookingApplicationGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3EE24F31CF1000E8580 /* BookingApplicationGroupView.swift */; };
+		D5F4D3F124F31E14000E8580 /* BookingApplicationGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3F024F31E14000E8580 /* BookingApplicationGroupCell.swift */; };
+		D5F4D3F324F32EBE000E8580 /* BookingApplicationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3F224F32EBE000E8580 /* BookingApplicationSection.swift */; };
+		D5F4D3F424F33C9E000E8580 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6EF2417E79000F452AC /* Address.swift */; };
+		D5F4D3F524F33CA4000E8580 /* AddressDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984024717AE8005529EB /* AddressDoubles.swift */; };
+		D5F4D3F724F3476F000E8580 /* AddressMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3F624F3476E000E8580 /* AddressMapCell.swift */; };
 		D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5065C23FF16AA00CA4094 /* BackButton.swift */; };
 		D5F5065F240055E800CA4094 /* HeaderContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5065E240055E800CA4094 /* HeaderContentView.swift */; };
 		D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */; };
@@ -528,7 +534,6 @@
 		03AAF6702445E0FB002D8F5B /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		03AAF6722445E11A002D8F5B /* ScheduleDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDoubles.swift; sourceTree = "<group>"; };
 		03AB22F2244CB13200DAC7DF /* PrivateNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateNoteView.swift; sourceTree = "<group>"; };
-		03B1983824705894005529EB /* AddressDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetails.swift; sourceTree = "<group>"; };
 		03B1983E24717A90005529EB /* LessonPlanDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanDoubles.swift; sourceTree = "<group>"; };
 		03B1984024717AE8005529EB /* AddressDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDoubles.swift; sourceTree = "<group>"; };
 		03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanFormView.swift; sourceTree = "<group>"; };
@@ -641,7 +646,6 @@
 		D535556523E4F8BF005A20EB /* FirebasePerformance.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebasePerformance.framework; path = Carthage/Build/iOS/FirebasePerformance.framework; sourceTree = "<group>"; };
 		D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanContext.swift; sourceTree = "<group>"; };
 		D5473C9D241AC3B800D66775 /* AddressDetailsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetailsViewTests.swift; sourceTree = "<group>"; };
-		D5473CA0241AC4A000D66775 /* AddressDetailsDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetailsDoubles.swift; sourceTree = "<group>"; };
 		D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationServiceDoubles.swift; sourceTree = "<group>"; };
 		D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HashFunction+Helpers.swift"; sourceTree = "<group>"; };
 		D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationController.swift; sourceTree = "<group>"; };
@@ -697,6 +701,12 @@
 		D5F4D3E424F0475F000E8580 /* BookingApplicationDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationDoubles.swift; sourceTree = "<group>"; };
 		D5F4D3E624F096A2000E8580 /* BookingApplicationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationDetailView.swift; sourceTree = "<group>"; };
 		D5F4D3E824F09C43000E8580 /* Dot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dot.swift; sourceTree = "<group>"; };
+		D5F4D3EA24F315AB000E8580 /* BookingApplicationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationCell.swift; sourceTree = "<group>"; };
+		D5F4D3EC24F317C0000E8580 /* BookingRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestCell.swift; sourceTree = "<group>"; };
+		D5F4D3EE24F31CF1000E8580 /* BookingApplicationGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationGroupView.swift; sourceTree = "<group>"; };
+		D5F4D3F024F31E14000E8580 /* BookingApplicationGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationGroupCell.swift; sourceTree = "<group>"; };
+		D5F4D3F224F32EBE000E8580 /* BookingApplicationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationSection.swift; sourceTree = "<group>"; };
+		D5F4D3F624F3476E000E8580 /* AddressMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressMapCell.swift; sourceTree = "<group>"; };
 		D5F5065C23FF16AA00CA4094 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		D5F5065E240055E800CA4094 /* HeaderContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderContentView.swift; sourceTree = "<group>"; };
 		D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleContentView.swift; sourceTree = "<group>"; };
@@ -1137,10 +1147,16 @@
 			children = (
 				D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */,
 				03E88E8324B8B9020077A420 /* BookingRequestsView.swift */,
+				D5F4D3EC24F317C0000E8580 /* BookingRequestCell.swift */,
 				D52C553924DC71B800C295C4 /* BookingRequestDetailView.swift */,
 				D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */,
 				D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */,
+				D5F4D3F224F32EBE000E8580 /* BookingApplicationSection.swift */,
+				D5F4D3EA24F315AB000E8580 /* BookingApplicationCell.swift */,
+				D5F4D3F024F31E14000E8580 /* BookingApplicationGroupCell.swift */,
+				D5F4D3EE24F31CF1000E8580 /* BookingApplicationGroupView.swift */,
 				D5F4D3E624F096A2000E8580 /* BookingApplicationDetailView.swift */,
+				D5F4D3F624F3476E000E8580 /* AddressMapCell.swift */,
 			);
 			path = BookingRequests;
 			sourceTree = "<group>";
@@ -1193,7 +1209,6 @@
 			isa = PBXGroup;
 			children = (
 				03B71325241D84B400DED025 /* Address */,
-				03EDA66C2476AF0300FBE527 /* AddressDetails */,
 				D5F4D3E124F0429A000E8580 /* BookingApplication */,
 				032B6FC824B783D300299A09 /* BookingRequest */,
 				032B6FD524B7882B00299A09 /* Instrument */,
@@ -1202,15 +1217,6 @@
 				03B71326241D84F300DED025 /* Student */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		03EDA66C2476AF0300FBE527 /* AddressDetails */ = {
-			isa = PBXGroup;
-			children = (
-				03B1983824705894005529EB /* AddressDetails.swift */,
-				D5473CA0241AC4A000D66775 /* AddressDetailsDoubles.swift */,
-			);
-			path = AddressDetails;
 			sourceTree = "<group>";
 		};
 		03EDA6772476F2BB00FBE527 /* Profile */ = {
@@ -1836,7 +1842,6 @@
 				D5B57A6D2419DA5B00BE9B4F /* AddressSelectionView.swift in Sources */,
 				03341B3F23ABB1E7009AE8A8 /* App.swift in Sources */,
 				D53555C023E53699005A20EB /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */,
-				D5473CA1241AC4A000D66775 /* AddressDetailsDoubles.swift in Sources */,
 				D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */,
 				03E88EB124C205C30077A420 /* Current.swift in Sources */,
 				03AAF66C2444FFCC002D8F5B /* Pickers.swift in Sources */,
@@ -1942,7 +1947,6 @@
 				D55F013324CCE65C00E5F13C /* Then+Sugar.swift in Sources */,
 				03E88EAD24C1F6050077A420 /* AppDelegate.swift in Sources */,
 				03B1983F24717A90005529EB /* LessonPlanDoubles.swift in Sources */,
-				03B1983924705894005529EB /* AddressDetails.swift in Sources */,
 				03275AE92490769E009C3980 /* DeviceTokenDeleterDoubles.swift in Sources */,
 				D53555C423E536AE005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
 				D53555CD23E536AE005A20EB /* AppleAuthorizationController.swift in Sources */,
@@ -2009,6 +2013,7 @@
 				03E88EB224C205C30077A420 /* Current.swift in Sources */,
 				03E88EB424C4AA4C0077A420 /* APIService.swift in Sources */,
 				035B1D67249E644C00AABFEA /* APIRequest.swift in Sources */,
+				D5F4D3ED24F317C0000E8580 /* BookingRequestCell.swift in Sources */,
 				D5919F6F24CF2D48009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */,
 				032B6FDD24B78A5200299A09 /* BookingRequestEndpoints.swift in Sources */,
 				035B1CBF249CF2AA00AABFEA /* AppDelegate.swift in Sources */,
@@ -2056,8 +2061,10 @@
 				035B1D52249E57FD00AABFEA /* Spacing.swift in Sources */,
 				03E88E9124BCA4AA0077A420 /* TickingView.swift in Sources */,
 				035B1D30249E571B00AABFEA /* UIAccessibilityProtocol.swift in Sources */,
+				D5F4D3F424F33C9E000E8580 /* Address.swift in Sources */,
 				032B6FCC24B7877B00299A09 /* BookingRequest.swift in Sources */,
 				032B6FCB24B7877600299A09 /* BookingRequestDoubles.swift in Sources */,
+				D5F4D3EB24F315AB000E8580 /* BookingApplicationCell.swift in Sources */,
 				035B1D32249E572900AABFEA /* URLOpener.swift in Sources */,
 				035B1D17249E566800AABFEA /* ActivityIndicator.swift in Sources */,
 				032B6FD124B787BB00299A09 /* Gender.swift in Sources */,
@@ -2067,6 +2074,7 @@
 				035B1D43249E577700AABFEA /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,
 				035B1CC3249CF2AA00AABFEA /* MainTabView.swift in Sources */,
 				D52C554C24DDE5FF00C295C4 /* Buttons+Tutor.swift in Sources */,
+				D5F4D3EF24F31CF1000E8580 /* BookingApplicationGroupView.swift in Sources */,
 				035B1D41249E577700AABFEA /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
 				035B1CF6249CFA5700AABFEA /* Duration.swift in Sources */,
 				035B1D38249E576900AABFEA /* AuthenticationAccessTokenProvider.swift in Sources */,
@@ -2079,6 +2087,7 @@
 				03E88EAA24C1F4FD0077A420 /* AppDelegate+PushNotifications.swift in Sources */,
 				D5217CEF24E2F8B400C89018 /* MapOpener+ActionSheet.swift in Sources */,
 				03E88EBC24C709A00077A420 /* ActivityCoordinator.swift in Sources */,
+				D5F4D3F524F33CA4000E8580 /* AddressDoubles.swift in Sources */,
 				035B1CED249CF9B400AABFEA /* AppDelegateDummy.swift in Sources */,
 				D52C554224DDC50D00C295C4 /* Transitions.swift in Sources */,
 				035B1D36249E576900AABFEA /* DeauthenticationServiceDoubles.swift in Sources */,
@@ -2088,8 +2097,10 @@
 				035B1D4F249E57DC00AABFEA /* UIAccessibilityDoubles.swift in Sources */,
 				035B1D49249E577700AABFEA /* AppleAuthorizationControllerDoubles.swift in Sources */,
 				035B1D3C249E576900AABFEA /* AuthenticationAccessTokenProviderBroadcast.swift in Sources */,
+				D5F4D3F324F32EBE000E8580 /* BookingApplicationSection.swift in Sources */,
 				035B1D47249E577700AABFEA /* AppleAuthorizationServiceDoubles.swift in Sources */,
 				035B1D48249E577700AABFEA /* AppleAuthorizationController.swift in Sources */,
+				D5F4D3F124F31E14000E8580 /* BookingApplicationGroupCell.swift in Sources */,
 				D55F013424CCE65C00E5F13C /* Then+Sugar.swift in Sources */,
 				D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */,
 				D5CAC9AE24E6D67C00119DAA /* MultilineTextField+Tutor.swift in Sources */,
@@ -2100,6 +2111,7 @@
 				D5217CEC24E2D7D800C89018 /* MapOpenerDoubles.swift in Sources */,
 				035B1CF1249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift in Sources */,
 				035B1D6B249E662200AABFEA /* EnumProperties.swift in Sources */,
+				D5F4D3F724F3476F000E8580 /* AddressMapCell.swift in Sources */,
 				035B1D4B249E578D00AABFEA /* Keychain.swift in Sources */,
 				D5919F7224CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */,
 				D52C553D24DC74A200C295C4 /* TitleCell.swift in Sources */,

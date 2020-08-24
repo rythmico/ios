@@ -23,7 +23,7 @@ extension _AuthenticationService: AuthenticationServiceProtocol {
         signIn(with: oauthCredential) { authResult, error in
             switch (authResult, error) {
             case let (authResult?, _):
-                // This is an affordance that does not belong here, violates SRP,
+                // TODO: this is an affordance that does not belong here, violates SRP,
                 // and should be extracted to its own class in charge of updating user details.
                 // For now, impact is small enough that I can justify leaving it here.
                 if let fullName = credential.fullName {

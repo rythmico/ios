@@ -3,32 +3,37 @@ import Foundation
 struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
     enum Status: Equatable, Decodable, Hashable {
         case pending
-        case reviewing([Tutor])
+        case reviewing([Application])
         case scheduled(Tutor)
         case cancelled(Tutor?, CancellationInfo)
 
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            let applicants = try container.decodeIfPresent([Tutor].self, forKey: .applicants)
+            let applications = try container.decodeIfPresent([Application].self, forKey: .applications)
             let tutor = try container.decodeIfPresent(Tutor.self, forKey: .tutor)
             let cancellationInfo = try container.decodeIfPresent(CancellationInfo.self, forKey: .cancellationInfo)
-            switch (applicants, tutor, cancellationInfo) {
+            switch (applications, tutor, cancellationInfo) {
             case (_, let tutor, let cancellationInfo?):
                 self = .cancelled(tutor, cancellationInfo)
             case (_, let tutor?, _):
                 self = .scheduled(tutor)
-            case (let applicants?, _, _) where !applicants.isEmpty:
-                self = .reviewing(applicants)
+            case (let applications?, _, _) where !applications.isEmpty:
+                self = .reviewing(applications)
             default:
                 self = .pending
             }
         }
     }
 
+    struct Application: Equatable, Decodable, Hashable {
+        var tutor: Tutor
+        var privateNote: String
+    }
+
     struct Tutor: Equatable, Decodable, Hashable {
         var id: String
         var name: String
-        var imageURL: URL
+        var photoURL: URL?
     }
 
     struct CancellationInfo: Equatable, Decodable, Hashable {
@@ -71,23 +76,22 @@ struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(String.self, forKey: .id)
-        self.status = try Status(from: decoder)
-        self.instrument = try container.decode(Instrument.self, forKey: .instrument)
-        self.student = try container.decode(Student.self, forKey: .student)
-        self.address = try container.decode(Address.self, forKey: .address)
-        self.schedule = try container.decode(Schedule.self, forKey: .schedule)
-        self.privateNote = try container.decode(String.self, forKey: .privateNote)
+        try self.init(
+            id: container.decode(String.self, forKey: .id),
+            status: Status(from: decoder),
+            instrument: container.decode(Instrument.self, forKey: .instrument),
+            student: container.decode(Student.self, forKey: .student),
+            address: container.decode(Address.self, forKey: .address),
+            schedule: container.decode(Schedule.self, forKey: .schedule),
+            privateNote: container.decode(String.self, forKey: .privateNote)
+        )
     }
 
     private enum CodingKeys: String, CodingKey {
         case id
-
-        // Status
-        case applicants
-        case tutor
-        case cancellationInfo
-
+        case applications // Status
+        case tutor // Status
+        case cancellationInfo // Status
         case instrument
         case student
         case address
