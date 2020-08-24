@@ -370,6 +370,7 @@
 		D5F4D3F324F32EBE000E8580 /* BookingApplicationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3F224F32EBE000E8580 /* BookingApplicationSection.swift */; };
 		D5F4D3F424F33C9E000E8580 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6EF2417E79000F452AC /* Address.swift */; };
 		D5F4D3F524F33CA4000E8580 /* AddressDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984024717AE8005529EB /* AddressDoubles.swift */; };
+		D5F4D3F724F3476F000E8580 /* AddressMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3F624F3476E000E8580 /* AddressMapCell.swift */; };
 		D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5065C23FF16AA00CA4094 /* BackButton.swift */; };
 		D5F5065F240055E800CA4094 /* HeaderContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5065E240055E800CA4094 /* HeaderContentView.swift */; };
 		D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */; };
@@ -705,6 +706,7 @@
 		D5F4D3EE24F31CF1000E8580 /* BookingApplicationGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationGroupView.swift; sourceTree = "<group>"; };
 		D5F4D3F024F31E14000E8580 /* BookingApplicationGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationGroupCell.swift; sourceTree = "<group>"; };
 		D5F4D3F224F32EBE000E8580 /* BookingApplicationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationSection.swift; sourceTree = "<group>"; };
+		D5F4D3F624F3476E000E8580 /* AddressMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressMapCell.swift; sourceTree = "<group>"; };
 		D5F5065C23FF16AA00CA4094 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		D5F5065E240055E800CA4094 /* HeaderContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderContentView.swift; sourceTree = "<group>"; };
 		D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleContentView.swift; sourceTree = "<group>"; };
@@ -1154,6 +1156,7 @@
 				D5F4D3F024F31E14000E8580 /* BookingApplicationGroupCell.swift */,
 				D5F4D3EE24F31CF1000E8580 /* BookingApplicationGroupView.swift */,
 				D5F4D3E624F096A2000E8580 /* BookingApplicationDetailView.swift */,
+				D5F4D3F624F3476E000E8580 /* AddressMapCell.swift */,
 			);
 			path = BookingRequests;
 			sourceTree = "<group>";
@@ -2108,6 +2111,7 @@
 				D5217CEC24E2D7D800C89018 /* MapOpenerDoubles.swift in Sources */,
 				035B1CF1249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift in Sources */,
 				035B1D6B249E662200AABFEA /* EnumProperties.swift in Sources */,
+				D5F4D3F724F3476F000E8580 /* AddressMapCell.swift in Sources */,
 				035B1D4B249E578D00AABFEA /* Keychain.swift in Sources */,
 				D5919F7224CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */,
 				D52C553D24DC74A200C295C4 /* TitleCell.swift in Sources */,

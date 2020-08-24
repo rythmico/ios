@@ -30,14 +30,6 @@ struct BookingApplicationDetailView: View {
     var submitterPrivateNote: String { bookingApplication.submitterPrivateNote.isEmpty ? "None" : bookingApplication.submitterPrivateNote }
     var submitterPrivateNoteOpacity: Double { bookingApplication.submitterPrivateNote.isEmpty ? 0.5 : 1 }
 
-    @State
-    private var isMapOpeningSheetPresented = false
-    private func presentMapActionSheet() { isMapOpeningSheetPresented = true }
-    @State
-    private var mapOpeningError: Error?
-
-    var postcode: String { bookingApplication.postcode }
-
     var body: some View {
         List {
             Section(header: Text("STATUS")) {
@@ -88,25 +80,11 @@ struct BookingApplicationDetailView: View {
                 header: Text("ADDRESS DETAILS"),
                 footer: Text("Exact location and address will be provided if you're selected.")
             ) {
-                VStack(alignment: .leading, spacing: .spacingExtraSmall) {
-                    StaticMapView()
-                        .frame(height: 160)
-                        .clipShape(RoundedRectangle(cornerRadius: .spacingUnit * 2, style: .continuous))
-                        .onTapGesture(perform: presentMapActionSheet)
-                    Text(postcode)
-                        .foregroundColor(.primary)
-                        .font(.body)
-                }
-                .padding(.vertical, .spacingUnit * 2)
+                AddressMapCell(addressInfo: bookingApplication.addressInfo)
             }
         }
         .listStyle(GroupedListStyle())
         .navigationBarTitle(Text(title), displayMode: .inline)
-        .mapOpeningSheet(
-            isPresented: $isMapOpeningSheetPresented,
-            intent: .search(query: bookingApplication.postcode),
-            error: $mapOpeningError
-        )
         .onRoute(perform: handleRoute)
     }
 

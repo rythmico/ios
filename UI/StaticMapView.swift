@@ -3,7 +3,9 @@ import SwiftUIMapView
 import MapKit
 
 struct StaticMapView: View {
-    let coordinate = CLLocationCoordinate2D(latitude: 51.5062, longitude: -0.1248)
+    static let defaultCoordinate = CLLocationCoordinate2D(latitude: 51.5062, longitude: -0.1248)
+
+    var coordinate = Self.defaultCoordinate
 
     var body: some View {
         MapView(
