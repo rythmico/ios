@@ -40,18 +40,14 @@ struct BookingApplicationsView: View {
         .alertOnFailure(coordinator)
     }
 
-    @ViewBuilder
     private func applicationGroupCell(for status: BookingApplication.Status) -> some View {
-        if numberOfApplications(withStatus: status) > 0 {
-            NavigationLink(
-                destination: BookingApplicationGroupView(applications: applications, status: status),
-                tag: status,
-                selection: $selectedBookingApplicationGroup,
-                label: { BookingApplicationGroupCell(status: status, applications: applications) }
-            )
-        } else {
-            BookingApplicationGroupCell(status: status, applications: applications)
-        }
+        NavigationLink(
+            destination: BookingApplicationGroupView(applications: applications, status: status),
+            tag: status,
+            selection: $selectedBookingApplicationGroup,
+            label: { BookingApplicationGroupCell(status: status, applications: applications) }
+        )
+        .disabled(numberOfApplications(withStatus: status) == 0)
     }
 
     private func numberOfApplications(withStatus status: BookingApplication.Status) -> Int {
