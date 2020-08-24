@@ -20,6 +20,7 @@ struct BookingApplicationDetailView: View {
     var statusDate: String { statusDateFormatter.localizedString(for: bookingApplication.statusInfo.date, relativeTo: Current.date()) }
     var title: String { "\(bookingApplication.student.name) - \(bookingApplication.instrument.name) Request" }
     var submittedBy: String { bookingApplication.submitterName }
+    var phoneNumber: String? { bookingApplication.phoneNumber }
     var startDate: String { dateFormatter.string(from: bookingApplication.schedule.startDate) }
     var time: String { timeFormatter.string(from: bookingApplication.schedule.startDate) }
     var duration: String { "\(bookingApplication.schedule.duration) minutes" }
@@ -48,6 +49,9 @@ struct BookingApplicationDetailView: View {
             }
             Section(header: Text("REQUEST DETAILS")) {
                 TitleCell(title: "Submitted by", detail: submittedBy)
+                phoneNumber.map {
+                    TitleCell(title: "Contact Number", detail: $0)
+                }
             }
             Section(header: Text("LESSON SCHEDULE DETAILS")) {
                 TitleCell(title: "Start Date", detail: startDate)
@@ -98,8 +102,10 @@ struct BookingApplicationDetailView: View {
 
 #if DEBUG
 struct BookingApplicationDetailView_Previews: PreviewProvider {
+    @ViewBuilder
     static var previews: some View {
         BookingApplicationDetailView(bookingApplication: .longStub)
+        BookingApplicationDetailView(bookingApplication: .stub(.stub(.selected)))
     }
 }
 #endif
