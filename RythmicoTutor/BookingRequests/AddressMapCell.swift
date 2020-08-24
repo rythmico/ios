@@ -13,7 +13,7 @@ struct AddressMapCell: View {
     var body: some View {
         Group {
             VStack(alignment: .leading, spacing: .spacingExtraSmall) {
-                StaticMapView(coordinate: coordinate)
+                StaticMapView(coordinate: coordinate, showsCoordinate: isFullAddress)
                     .frame(height: 160)
                     .clipShape(RoundedRectangle(cornerRadius: .spacingUnit * 2, style: .continuous))
                     .onTapGesture(perform: presentMapActionSheet)
