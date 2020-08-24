@@ -76,23 +76,22 @@ struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(String.self, forKey: .id)
-        self.status = try Status(from: decoder)
-        self.instrument = try container.decode(Instrument.self, forKey: .instrument)
-        self.student = try container.decode(Student.self, forKey: .student)
-        self.address = try container.decode(Address.self, forKey: .address)
-        self.schedule = try container.decode(Schedule.self, forKey: .schedule)
-        self.privateNote = try container.decode(String.self, forKey: .privateNote)
+        try self.init(
+            id: container.decode(String.self, forKey: .id),
+            status: Status(from: decoder),
+            instrument: container.decode(Instrument.self, forKey: .instrument),
+            student: container.decode(Student.self, forKey: .student),
+            address: container.decode(Address.self, forKey: .address),
+            schedule: container.decode(Schedule.self, forKey: .schedule),
+            privateNote: container.decode(String.self, forKey: .privateNote)
+        )
     }
 
     private enum CodingKeys: String, CodingKey {
         case id
-
-        // Status
-        case applications
-        case tutor
-        case cancellationInfo
-
+        case applications // Status
+        case tutor // Status
+        case cancellationInfo // Status
         case instrument
         case student
         case address
