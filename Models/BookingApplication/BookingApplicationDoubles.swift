@@ -11,8 +11,9 @@ extension BookingApplication {
             instrument: .piano,
             submitterName: "David R",
             submitterPrivateNote: "",
+            phoneNumber: statusInfo.status == .selected ? "+44 5555 666666" : nil,
             student: .jackStub,
-            postcode: "N8",
+            addressInfo: statusInfo.status == .selected ? .address(.stub) : .postcode("N8"),
             schedule: .startingTomorrowStub,
             privateNote: "I'll help!"
         )
@@ -27,8 +28,9 @@ extension BookingApplication {
             instrument: .piano,
             submitterName: "David R",
             submitterPrivateNote: "",
+            phoneNumber: nil,
             student: .jackStub,
-            postcode: "N8",
+            addressInfo: .postcode("N8"),
             schedule: .startingTomorrowStub,
             privateNote: "I'll help!"
         )
@@ -43,8 +45,9 @@ extension BookingApplication {
             instrument: .guitar,
             submitterName: "David R",
             submitterPrivateNote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            phoneNumber: nil,
             student: .janeStub,
-            postcode: "N8",
+            addressInfo: .postcode("N8"),
             schedule: .startingTomorrowStub,
             privateNote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         )
@@ -59,8 +62,9 @@ extension BookingApplication {
             instrument: .piano,
             submitterName: "David R",
             submitterPrivateNote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            phoneNumber: nil,
             student: .longNameStub,
-            postcode: "NW5",
+            addressInfo: .postcode("NW5"),
             schedule: .startingIn1WeekStub,
             privateNote: ""
         )

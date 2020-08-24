@@ -368,6 +368,8 @@
 		D5F4D3EF24F31CF1000E8580 /* BookingApplicationGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3EE24F31CF1000E8580 /* BookingApplicationGroupView.swift */; };
 		D5F4D3F124F31E14000E8580 /* BookingApplicationGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3F024F31E14000E8580 /* BookingApplicationGroupCell.swift */; };
 		D5F4D3F324F32EBE000E8580 /* BookingApplicationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3F224F32EBE000E8580 /* BookingApplicationSection.swift */; };
+		D5F4D3F424F33C9E000E8580 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6EF2417E79000F452AC /* Address.swift */; };
+		D5F4D3F524F33CA4000E8580 /* AddressDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984024717AE8005529EB /* AddressDoubles.swift */; };
 		D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5065C23FF16AA00CA4094 /* BackButton.swift */; };
 		D5F5065F240055E800CA4094 /* HeaderContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5065E240055E800CA4094 /* HeaderContentView.swift */; };
 		D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */; };
@@ -2056,6 +2058,7 @@
 				035B1D52249E57FD00AABFEA /* Spacing.swift in Sources */,
 				03E88E9124BCA4AA0077A420 /* TickingView.swift in Sources */,
 				035B1D30249E571B00AABFEA /* UIAccessibilityProtocol.swift in Sources */,
+				D5F4D3F424F33C9E000E8580 /* Address.swift in Sources */,
 				032B6FCC24B7877B00299A09 /* BookingRequest.swift in Sources */,
 				032B6FCB24B7877600299A09 /* BookingRequestDoubles.swift in Sources */,
 				D5F4D3EB24F315AB000E8580 /* BookingApplicationCell.swift in Sources */,
@@ -2081,6 +2084,7 @@
 				03E88EAA24C1F4FD0077A420 /* AppDelegate+PushNotifications.swift in Sources */,
 				D5217CEF24E2F8B400C89018 /* MapOpener+ActionSheet.swift in Sources */,
 				03E88EBC24C709A00077A420 /* ActivityCoordinator.swift in Sources */,
+				D5F4D3F524F33CA4000E8580 /* AddressDoubles.swift in Sources */,
 				035B1CED249CF9B400AABFEA /* AppDelegateDummy.swift in Sources */,
 				D52C554224DDC50D00C295C4 /* Transitions.swift in Sources */,
 				035B1D36249E576900AABFEA /* DeauthenticationServiceDoubles.swift in Sources */,
