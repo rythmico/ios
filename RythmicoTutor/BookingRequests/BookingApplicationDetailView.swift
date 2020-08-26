@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftUIMapView
+import Sugar
 
 struct BookingApplicationDetailView: View {
     @Environment(\.presentationMode)
@@ -11,8 +12,17 @@ struct BookingApplicationDetailView: View {
     private let timeFormatter = Current.dateFormatter(format: .time(.short))
     private let statusDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .short)
 
-    init(bookingApplication: BookingApplication) {
+    @State
+    private var retractionPromptSheetPresented = false
+    @ObservedObject
+    private var retractionCoordinator: APIActivityCoordinator<BookingApplicationsRetractRequest>
+
+    init?(bookingApplication: BookingApplication) {
+        guard let retractionCoordinator = Current.coordinator(for: \.bookingApplicationRetractionService) else {
+            return nil
+        }
         self.bookingApplication = bookingApplication
+        self.retractionCoordinator = retractionCoordinator
     }
 
     var status: String { bookingApplication.statusInfo.status.summary }
@@ -30,6 +40,12 @@ struct BookingApplicationDetailView: View {
     var about: String? { bookingApplication.student.about.isEmpty ? nil : bookingApplication.student.about }
     var submitterPrivateNote: String { bookingApplication.submitterPrivateNote.isEmpty ? "None" : bookingApplication.submitterPrivateNote }
     var submitterPrivateNoteOpacity: Double { bookingApplication.submitterPrivateNote.isEmpty ? 0.5 : 1 }
+
+    var retractAction: Action? {
+        bookingApplication.statusInfo.status == .pending
+            ? { self.retractionCoordinator.run(with: .init(bookingApplicationId: self.bookingApplication.id)) }
+            : nil
+    }
 
     var body: some View {
         List {
@@ -86,9 +102,28 @@ struct BookingApplicationDetailView: View {
             ) {
                 AddressMapCell(addressInfo: bookingApplication.addressInfo)
             }
+            retractAction.map { retractAction in
+                GroupedButton("Retract Application", isDestructive: true, action: promptForRetraction) {
+                    if retractionCoordinator.state.isLoading {
+                        ActivityIndicator(style: .medium)
+                    }
+                }
+            }
         }
         .listStyle(GroupedListStyle())
         .navigationBarTitle(Text(title), displayMode: .inline)
+        .actionSheet(isPresented: $retractionPromptSheetPresented) {
+            ActionSheet(
+                title: Text("Are you sure you'd like to retract your application?"),
+                buttons: [
+                    .destructive(Text("Retract"), action: retractAction),
+                    .cancel()
+                ]
+            )
+        }
+        .disabled(retractionCoordinator.state.isLoading)
+        .alertOnFailure(retractionCoordinator)
+        .onSuccess(retractionCoordinator, perform: didRetractBookingApplication)
         .onRoute(perform: handleRoute)
     }
 
@@ -97,6 +132,15 @@ struct BookingApplicationDetailView: View {
         case .bookingRequests, .bookingApplications:
             presentationMode.wrappedValue.dismiss()
         }
+    }
+
+    private func promptForRetraction() {
+        retractionPromptSheetPresented = true
+    }
+
+    private func didRetractBookingApplication(_ retractedApplication: BookingApplication) {
+        Current.bookingApplicationRepository.replaceIdentifiableItem(retractedApplication)
+        Current.router.open(.bookingApplications)
     }
 }
 

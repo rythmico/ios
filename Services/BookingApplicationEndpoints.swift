@@ -10,3 +10,18 @@ struct BookingApplicationsGetRequest: RythmicoAPIRequest {
     typealias Response = [BookingApplication]
     typealias Error = RythmicoAPIError
 }
+
+struct BookingApplicationsRetractRequest: RythmicoAPIRequest {
+    struct Properties {
+        var bookingApplicationId: String
+    }
+
+    let accessToken: String
+    let properties: Properties
+
+    let method: HTTPMethod = .patch
+    var path: String { "/booking-applications/\(self.bookingApplicationId)/retract" }
+
+    typealias Response = BookingApplication
+    typealias Error = RythmicoAPIError
+}

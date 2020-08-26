@@ -23,6 +23,7 @@ struct AppEnvironment {
 
     var bookingApplicationRepository: Repository<BookingApplication>
     var bookingApplicationFetchingService: APIServiceBase<BookingApplicationsGetRequest>
+    var bookingApplicationRetractionService: APIServiceBase<BookingApplicationsRetractRequest>
 
     var deviceTokenProvider: DeviceTokenProvider
     var deviceRegisterService: APIServiceBase<AddDeviceRequest>

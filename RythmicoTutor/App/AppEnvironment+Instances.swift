@@ -22,6 +22,7 @@ extension AppEnvironment {
         bookingRequestApplyingService: APIService(),
         bookingApplicationRepository: Repository(),
         bookingApplicationFetchingService: APIService(),
+        bookingApplicationRetractionService: APIService(),
         deviceTokenProvider: InstanceID.instanceID(),
         deviceRegisterService: APIService(),
         deviceTokenDeleter: InstanceID.instanceID(),
@@ -44,6 +45,7 @@ extension AppEnvironment {
             $0.bookingRequestFetchingService = APIServiceStub(result: .success([.stub, .longStub]), delay: fakeAPIServicesDelay)
             $0.bookingRequestApplyingService = APIServiceStub(result: .success(.stub), delay: fakeAPIServicesDelay)
             $0.bookingApplicationFetchingService = APIServiceStub(result: .success([.longStub, .stubWithAbout] + .stub), delay: fakeAPIServicesDelay)
+            $0.bookingApplicationRetractionService = APIServiceStub(result: .success(.stub), delay: fakeAPIServicesDelay)
             $0.keyboardDismisser = UIApplication.shared
             $0.urlOpener = UIApplication.shared
             $0.mapOpener = MapOpener(urlOpener: UIApplication.shared)
@@ -73,6 +75,7 @@ extension AppEnvironment {
             bookingRequestApplyingService: APIServiceDummy(),
             bookingApplicationRepository: Repository(),
             bookingApplicationFetchingService: APIServiceDummy(),
+            bookingApplicationRetractionService: APIServiceDummy(),
             deviceTokenProvider: DeviceTokenProviderDummy(),
             deviceRegisterService: APIServiceDummy(),
             deviceTokenDeleter: DeviceTokenDeleterDummy(),
