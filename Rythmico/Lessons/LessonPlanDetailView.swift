@@ -83,7 +83,7 @@ struct LessonPlanDetailView: View, TestableView {
         .sheet(item: $cancellationView)
     }
 
-    private let startDateFormatter = DateFormatter().then { $0.dateFormat = "d MMMM @ ha" }
+    private let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM @ ha"))
     private var startDateText: String { startDateFormatter.string(from: lessonPlan.schedule.startDate) }
 
     private var durationText: String { "\(lessonPlan.schedule.duration) minutes" }

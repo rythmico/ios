@@ -10,8 +10,6 @@ protocol SchedulingContext {
 struct SchedulingView: View, TestableView {
     fileprivate enum Const {
         static let earliestStartTime = Date(timeIntervalSinceReferenceDate: 0).setting(hour: 8) // 08:00
-        static let fieldDateFormat = "EEEE d MMMM"
-        static let fieldTimeFormat = "H:mm"
     }
 
     @Environment(\.sizeCategory) var sizeCategory: ContentSizeCategory
@@ -35,8 +33,8 @@ struct SchedulingView: View, TestableView {
 
     private let instrument: Instrument
     private let context: SchedulingContext
-    private let dateFormatter = DateFormatter().then { $0.dateFormat = Const.fieldDateFormat }
-    private let timeFormatter = DateFormatter().then { $0.dateFormat = Const.fieldTimeFormat }
+    private let dateFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
+    private let timeFormatter = Current.dateFormatter(format: .custom("H:mm"))
     private let availableDates = [Date](byAdding: 1, .day, from: Date() + (1, .day), times: 182)
     private let availableTimes = [Date](byAdding: 30, .minute, from: Const.earliestStartTime, times: 22)
 
