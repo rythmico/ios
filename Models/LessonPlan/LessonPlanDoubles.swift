@@ -76,7 +76,7 @@ extension LessonPlan {
 extension LessonPlan.CancellationInfo {
     static var stub: LessonPlan.CancellationInfo {
         LessonPlan.CancellationInfo(
-            date: Date(),
+            date: .stub,
             reason: .rearrangementNeeded
         )
     }

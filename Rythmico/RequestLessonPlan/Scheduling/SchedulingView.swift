@@ -35,7 +35,7 @@ struct SchedulingView: View, TestableView {
     private let context: SchedulingContext
     private let dateFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
     private let timeFormatter = Current.dateFormatter(format: .custom("H:mm"))
-    private let availableDates = [Date](byAdding: 1, .day, from: Date() + (1, .day), times: 182)
+    private let availableDates = [Date](byAdding: 1, .day, from: Current.date() + (1, .day), times: 182)
     private let availableTimes = [Date](byAdding: 30, .minute, from: Const.earliestStartTime, times: 22)
 
     init(
@@ -212,8 +212,8 @@ struct SchedulingView: View, TestableView {
 struct SchedulingViewPreview: PreviewProvider {
     static var previews: some View {
         let state = SchedulingView.ViewState()
-        state.startDate = Date()
-        state.startTime = Date()
+        state.startDate = .stub
+        state.startTime = .stub
         state.duration = .fortyFiveMinutes
 
         return SchedulingView(

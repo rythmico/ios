@@ -121,8 +121,8 @@ final class SchedulingViewTests: XCTestCase {
         let (_, state, view) = schedulingView
 
         XCTAssertView(view) { view in
-            state.startDate = Date()
-            state.startTime = Date()
+            state.startDate = .stub
+            state.startTime = .stub
             state.duration = .fortyFiveMinutes
             XCTAssertNotNil(view.nextButtonAction)
         }

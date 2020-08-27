@@ -72,7 +72,7 @@ extension AppEnvironment {
 extension AppEnvironment {
     static var dummy: AppEnvironment {
         AppEnvironment(
-            date: { fakeDate },
+            date: { .stub },
             calendar: Calendar(identifier: .gregorian),
             locale: Locale(identifier: "en_GB"),
             timeZone: TimeZone(identifier: "Europe/London")!,

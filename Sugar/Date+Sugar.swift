@@ -1,5 +1,6 @@
 import Foundation
 
+// TODO: Calendar.current ~> Current.calendar
 extension Date {
     public init?(date: Date, time: Date) {
         let calendar = Calendar.current
@@ -53,6 +54,12 @@ extension Date {
 extension Date: ExpressibleByStringLiteral {
     public init(stringLiteral value: String) {
         self = ISO8601DateFormatter().date(from: value)!
+    }
+}
+
+extension Date {
+    public static var stub: Date {
+        "2020-07-13T12:15:00Z"
     }
 }
 

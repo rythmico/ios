@@ -1,12 +1,11 @@
 import Foundation
+import Sugar
 
 extension Student {
-    private static let dateOfBirth = Date().adding(-9, .year)
-
     static var jackStub: Student {
         .init(
             name: "Jack Doe",
-            dateOfBirth: dateOfBirth,
+            dateOfBirth: .stub - (9, .year),
             gender: .male,
             about: ""
         )
@@ -15,7 +14,7 @@ extension Student {
     static var jesseStub: Student {
         .init(
             name: "Jesse Doe",
-            dateOfBirth: dateOfBirth,
+            dateOfBirth: .stub - (9, .year),
             gender: .male,
             about: ""
         )
@@ -24,7 +23,7 @@ extension Student {
     static var charlotteStub: Student {
         .init(
             name: "Charlotte Doe",
-            dateOfBirth: dateOfBirth,
+            dateOfBirth: .stub - (9, .year),
             gender: .female,
             about: ""
         )
@@ -33,7 +32,7 @@ extension Student {
     static var janeStub: Student {
         .init(
             name: "Jane Doe",
-            dateOfBirth: dateOfBirth,
+            dateOfBirth: .stub - (9, .year),
             gender: .female,
             about: ""
         )
@@ -42,7 +41,7 @@ extension Student {
     static var davidStub: Student {
         .init(
             name: "David Roman",
-            dateOfBirth: dateOfBirth,
+            dateOfBirth: .stub - (9, .year),
             gender: .male,
             about: """
             Something qwdsqw sqw qwdsqwsq
@@ -54,7 +53,7 @@ extension Student {
     static var davidStubNoAbout: Student {
         .init(
             name: "David Roman",
-            dateOfBirth: dateOfBirth,
+            dateOfBirth: .stub - (9, .year),
             gender: .male,
             about: ""
         )
@@ -63,7 +62,7 @@ extension Student {
     static var unnamedStub: Student {
         .init(
             name: "",
-            dateOfBirth: dateOfBirth,
+            dateOfBirth: .stub - (9, .year),
             gender: .male,
             about: """
             Something qwdsqw sqw qwdsqwsq

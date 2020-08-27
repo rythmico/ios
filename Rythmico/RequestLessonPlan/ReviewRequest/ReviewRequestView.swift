@@ -171,7 +171,11 @@ struct ReviewRequestView: View, TestableView {
     private let dateOfBirthFormatter = Current.dateFormatter(format: .custom("dd-MM-yyyy"))
     private func studentAge(from dateOfBirth: Date) -> String {
         let dateOfBirthString = dateOfBirthFormatter.string(from: dateOfBirth)
-        let age = Calendar.current.dateComponents([.year], from: dateOfBirth, to: Date()).year.map { "(\($0) years old)" }
+        let age = Current.calendar.dateComponents(
+            [.year],
+            from: dateOfBirth,
+            to: Current.date()
+        ).year.map { "(\($0) years old)" }
         return [dateOfBirthString, age].compactMap { $0 }.joined(separator: .whitespace)
     }
 

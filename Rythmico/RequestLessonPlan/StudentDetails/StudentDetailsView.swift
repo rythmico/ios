@@ -1,7 +1,6 @@
 import SwiftUI
 import KeyboardObserver
 import Sugar
-import Then
 
 protocol StudentDetailsContext {
     func setStudent(_ student: Student)
@@ -9,8 +8,7 @@ protocol StudentDetailsContext {
 
 struct StudentDetailsView: View, TestableView {
     private enum Const {
-        // 10 years old
-        static let averageStudentAge: TimeInterval = 10 * 365 * 24 * 3600
+        static let averageStudentAge: (Int, Calendar.Component) = (10, .year)
     }
 
     final class ViewState: ObservableObject {
@@ -71,7 +69,7 @@ struct StudentDetailsView: View, TestableView {
     var dateOfBirthPlaceholderText: String { dateFormatter.string(from: dateOfBirthPlaceholder) }
 
     private let dateFormatter = Current.dateFormatter(format: .date(.long))
-    private let dateOfBirthPlaceholder = Date().addingTimeInterval(-Const.averageStudentAge)
+    private let dateOfBirthPlaceholder = Current.date() - Const.averageStudentAge
 
     // MARK: - About -
     var aboutNameTextPart: MultiStyleText.Part {
@@ -202,7 +200,7 @@ struct StudentDetailsView_Preview: PreviewProvider {
     static var previews: some View {
         let state = StudentDetailsView.ViewState()
         state.name = "David"
-        state.dateOfBirth = Date()
+        state.dateOfBirth = .stub - (10, .year)
         state.gender = .male
         state.about = "Something"
 

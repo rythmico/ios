@@ -6,7 +6,7 @@ extension BookingApplication {
         .init(
             id: "ID1",
             bookingRequestId: "ID1",
-            createdAt: AppEnvironment.dummy.date() - (32, .second),
+            createdAt: .stub - (32, .second),
             statusInfo: statusInfo,
             instrument: .piano,
             submitterName: "David R",
@@ -23,7 +23,7 @@ extension BookingApplication {
         .init(
             id: "ID2",
             bookingRequestId: "ID2",
-            createdAt: AppEnvironment.dummy.date() - (32, .second),
+            createdAt: .stub - (32, .second),
             statusInfo: .stub(.pending),
             instrument: .piano,
             submitterName: "David R",
@@ -40,7 +40,7 @@ extension BookingApplication {
         .init(
             id: "ID3",
             bookingRequestId: "ID3",
-            createdAt: AppEnvironment.dummy.date() - (32, .second),
+            createdAt: .stub - (32, .second),
             statusInfo: .stub(.pending),
             instrument: .guitar,
             submitterName: "David R",
@@ -57,7 +57,7 @@ extension BookingApplication {
         .init(
             id: "ID4",
             bookingRequestId: "ID4",
-            createdAt: AppEnvironment.dummy.date() - (1, .weekOfMonth),
+            createdAt: .stub - (1, .weekOfMonth),
             statusInfo: .stub(.pending),
             instrument: .piano,
             submitterName: "David R",
@@ -110,7 +110,7 @@ extension BookingApplication.StatusInfo {
     static func stub(_ status: BookingApplication.Status) -> Self {
         .init(
             status: status,
-            date: AppEnvironment.dummy.date() - (58, .second)
+            date: .stub - (58, .second)
         )
     }
 }

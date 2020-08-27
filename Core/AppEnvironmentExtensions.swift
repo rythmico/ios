@@ -55,7 +55,7 @@ extension AppEnvironment {
     }
 
     mutating func useFakeDate() {
-        date = { Self.dummy.date() + (Self.fakeReferenceDate.distance(to: Date())) }
+        date = { .stub + Self.fakeReferenceDate.distance(to: Date()) }
     }
 
     mutating func userAuthenticated() {
@@ -82,7 +82,6 @@ extension AppEnvironment {
         )
     }
 
-    static var fakeDate: Date = "2020-07-13T12:15:00Z"
     static var fakeAPIServicesDelay: TimeInterval? = nil
     static func fakeAPIService<R: AuthorizedAPIRequest>(result: Result<R.Response, Error>) -> APIServiceStub<R> {
         APIServiceStub(result: result, delay: fakeAPIServicesDelay)
