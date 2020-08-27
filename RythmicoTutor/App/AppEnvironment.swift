@@ -8,14 +8,22 @@ struct AppEnvironment {
     var timeZone: TimeZone
 
     var keychain: KeychainProtocol
-
     var appleAuthorizationService: AppleAuthorizationServiceProtocol
     var appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider
     var appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifying
     var authenticationService: AuthenticationServiceProtocol
     var deauthenticationService: DeauthenticationServiceProtocol
-
     var accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase
+
+    var deviceTokenProvider: DeviceTokenProvider
+    var deviceRegisterService: APIServiceBase<AddDeviceRequest>
+    var deviceTokenDeleter: DeviceTokenDeleter
+
+    var uiAccessibility: UIAccessibilityProtocol.Type
+    var keyboardDismisser: KeyboardDismisser
+    var urlOpener: URLOpener
+    var mapOpener: MapOpenerProtocol
+    var router: Router
 
     var bookingRequestRepository: Repository<BookingRequest>
     var bookingRequestFetchingService: APIServiceBase<BookingRequestsGetRequest>
@@ -24,17 +32,6 @@ struct AppEnvironment {
     var bookingApplicationRepository: Repository<BookingApplication>
     var bookingApplicationFetchingService: APIServiceBase<BookingApplicationsGetRequest>
     var bookingApplicationRetractionService: APIServiceBase<BookingApplicationsRetractRequest>
-
-    var deviceTokenProvider: DeviceTokenProvider
-    var deviceRegisterService: APIServiceBase<AddDeviceRequest>
-    var deviceTokenDeleter: DeviceTokenDeleter
-
-    var keyboardDismisser: KeyboardDismisser
-    var uiAccessibility: UIAccessibilityProtocol.Type
-    var urlOpener: URLOpener
-    var mapOpener: MapOpenerProtocol
-
-    var router: Router
 }
 
 extension AppEnvironment {

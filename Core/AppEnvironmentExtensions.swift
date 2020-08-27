@@ -20,13 +20,44 @@ extension AppEnvironment {
 
 // Modifiers (debug-only)
 extension AppEnvironment {
+    mutating func useFakeDate() {
+        date = { Self.dummy.date() + (Self.fakeReferenceDate.distance(to: Date())) }
+    }
+
     mutating func userAuthenticated() {
         accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(
-            currentProvider: AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))
+            currentProvider: Self.fakeAccessTokenProvider
         )
     }
 
     mutating func userUnauthenticated() {
         accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverDummy()
     }
+
+    mutating func shouldSucceedAuthentication() {
+        authenticationService = AuthenticationServiceStub(
+            result: .success(Self.fakeAccessTokenProvider),
+            delay: Self.fakeAPIServicesDelay
+        )
+    }
+
+    mutating func shouldFailAuthentication() {
+        authenticationService = AuthenticationServiceStub(
+            result: .failure(Self.fakeAuthenticationError),
+            delay: Self.fakeAPIServicesDelay
+        )
+    }
+
+    static var fakeAPIServicesDelay: TimeInterval? = nil
+
+    static func fakeAPIService<R: AuthorizedAPIRequest>(result: Result<R.Response, Error>) -> APIServiceStub<R> {
+        APIServiceStub(result: result, delay: fakeAPIServicesDelay)
+    }
+
+    private static let fakeReferenceDate = Date()
+    private static let fakeAccessTokenProvider = AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))
+    private static let fakeAuthenticationError = AuthenticationServiceStub.Error(
+        reasonCode: .invalidCredential,
+        localizedDescription: "Invalid credential"
+    )
 }
