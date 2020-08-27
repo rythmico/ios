@@ -66,10 +66,30 @@ extension LessonPlan {
 }
 
 extension LessonPlan {
+    static var reviewingJackGuitarPlanStub: LessonPlan {
+        jackGuitarPlanStub.with {
+            $0.status = .reviewing([.stub])
+        }
+    }
+}
+
+extension LessonPlan {
     static var cancelledJackGuitarPlanStub: LessonPlan {
         jackGuitarPlanStub.with {
             $0.status = .cancelled(nil, .stub)
         }
+    }
+}
+
+extension LessonPlan.Application {
+    static var stub: Self {
+        .init(tutor: .jesseStub, privateNote: "I'll help!")
+    }
+}
+
+extension LessonPlan.Tutor {
+    static var jesseStub: Self {
+        .init(id: "ID1", name: "Jesse Bildner", photoURL: nil)
     }
 }
 
