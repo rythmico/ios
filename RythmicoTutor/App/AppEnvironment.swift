@@ -2,7 +2,6 @@ import Foundation
 
 struct AppEnvironment {
     var date: () -> Date
-
     var calendar: Calendar
     var locale: Locale
     var timeZone: TimeZone
@@ -32,27 +31,4 @@ struct AppEnvironment {
     var bookingApplicationRepository: Repository<BookingApplication>
     var bookingApplicationFetchingService: APIServiceBase<BookingApplicationsGetRequest>
     var bookingApplicationRetractionService: APIServiceBase<BookingApplicationsRetractRequest>
-}
-
-extension AppEnvironment {
-    func dateFormatter(format: DateFormatter.Format) -> DateFormatter {
-        DateFormatter().then {
-            $0.calendar = calendar
-            $0.locale = locale
-            $0.timeZone = timeZone
-            $0.setFormat(format)
-        }
-    }
-
-    func relativeDateTimeFormatter(
-        context: Formatter.Context,
-        style: RelativeDateTimeFormatter.UnitsStyle
-    ) -> RelativeDateTimeFormatter {
-        RelativeDateTimeFormatter().then {
-            $0.calendar = calendar
-            $0.locale = locale
-            $0.formattingContext = context
-            $0.unitsStyle = style
-        }
-    }
 }

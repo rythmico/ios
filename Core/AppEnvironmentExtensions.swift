@@ -1,6 +1,28 @@
-import Foundation
+import UIKit
+import Then
 
 extension AppEnvironment {
+    func dateFormatter(format: DateFormatter.Format) -> DateFormatter {
+        DateFormatter().then {
+            $0.calendar = calendar
+            $0.locale = locale
+            $0.timeZone = timeZone
+            $0.setFormat(format)
+        }
+    }
+
+    func relativeDateTimeFormatter(
+        context: Formatter.Context,
+        style: RelativeDateTimeFormatter.UnitsStyle
+    ) -> RelativeDateTimeFormatter {
+        RelativeDateTimeFormatter().then {
+            $0.calendar = calendar
+            $0.locale = locale
+            $0.formattingContext = context
+            $0.unitsStyle = style
+        }
+    }
+
     func coordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
         accessTokenProviderObserver.currentProvider.map {
             APIActivityCoordinator(accessTokenProvider: $0, deauthenticationService: deauthenticationService, service: self[keyPath: service])
@@ -18,8 +40,20 @@ extension AppEnvironment {
     }
 }
 
-// Modifiers (debug-only)
+#if DEBUG
 extension AppEnvironment {
+    mutating func setUpFake() {
+        useFakeDate()
+
+        appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
+        shouldSucceedAuthentication()
+        deauthenticationService = DeauthenticationServiceStub()
+        userAuthenticated()
+
+        keyboardDismisser = UIApplication.shared
+        urlOpener = UIApplication.shared
+    }
+
     mutating func useFakeDate() {
         date = { Self.dummy.date() + (Self.fakeReferenceDate.distance(to: Date())) }
     }
@@ -48,8 +82,8 @@ extension AppEnvironment {
         )
     }
 
+    static var fakeDate: Date = "2020-07-13T12:15:00Z"
     static var fakeAPIServicesDelay: TimeInterval? = nil
-
     static func fakeAPIService<R: AuthorizedAPIRequest>(result: Result<R.Response, Error>) -> APIServiceStub<R> {
         APIServiceStub(result: result, delay: fakeAPIServicesDelay)
     }
@@ -61,3 +95,4 @@ extension AppEnvironment {
         localizedDescription: "Invalid credential"
     )
 }
+#endif

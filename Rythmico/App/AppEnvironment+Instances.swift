@@ -7,7 +7,11 @@ extension AppEnvironment: Then {}
 
 extension AppEnvironment {
     static let live = AppEnvironment(
+        date: { Date() },
+        calendar: .autoupdatingCurrent,
         locale: .autoupdatingCurrent,
+        timeZone: .autoupdatingCurrent,
+
         keychain: Keychain.localKeychain,
         appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
         appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
@@ -15,39 +19,44 @@ extension AppEnvironment {
         authenticationService: AuthenticationService(),
         deauthenticationService: DeauthenticationService(),
         accessTokenProviderObserver: AuthenticationAccessTokenProviderObserver(broadcast: AuthenticationAccessTokenProviderBroadcast()),
+
+        deviceTokenProvider: InstanceID.instanceID(),
+        deviceRegisterService: APIService(),
+        deviceTokenDeleter: InstanceID.instanceID(),
+
+        uiAccessibility: UIAccessibility.self,
+        keyboardDismisser: UIApplication.shared,
+        urlOpener: UIApplication.shared,
+        router: Router(),
+
         instrumentSelectionListProvider: InstrumentSelectionListProvider(),
         addressSearchService: APIService(),
+
         lessonPlanFetchingService: APIService(),
         lessonPlanRequestService: APIService(),
         lessonPlanCancellationService: APIService(),
         lessonPlanRepository: Repository(),
-        deviceTokenProvider: InstanceID.instanceID(),
-        deviceRegisterService: APIService(),
-        deviceTokenDeleter: InstanceID.instanceID(),
+
         pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator(
             center: UNUserNotificationCenter.current(),
             registerService: UIApplication.shared,
             queue: DispatchQueue.main
-        ),
-        keyboardDismisser: UIApplication.shared,
-        uiAccessibility: UIAccessibility.self,
-        urlOpener: UIApplication.shared,
-        router: Router()
+        )
     )
 }
 
 extension AppEnvironment {
     static var fake: AppEnvironment {
         dummy.with {
-            $0.userAuthenticated()
-            $0.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
-            $0.authenticationService = AuthenticationServiceStub(result: .success(AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))), delay: fakeAPIServicesDelay)
-            $0.deauthenticationService = DeauthenticationServiceStub()
+            $0.setUpFake()
+
             $0.instrumentSelectionListProvider = InstrumentSelectionListProviderStub(instruments: Instrument.allCases)
-            $0.addressSearchService = APIServiceStub(result: .success(.stub), delay: fakeAPIServicesDelay)
-            $0.lessonPlanFetchingService = APIServiceStub(result: .success(.stub), delay: fakeAPIServicesDelay)
-            $0.lessonPlanRequestService = APIServiceStub(result: .success(.davidGuitarPlanStub), delay: fakeAPIServicesDelay)
-            $0.lessonPlanCancellationService = APIServiceStub(result: .success(.cancelledJackGuitarPlanStub), delay: fakeAPIServicesDelay)
+            $0.addressSearchService = fakeAPIService(result: .success(.stub))
+
+            $0.lessonPlanFetchingService = fakeAPIService(result: .success(.stub))
+            $0.lessonPlanRequestService = fakeAPIService(result: .success(.davidGuitarPlanStub))
+            $0.lessonPlanCancellationService = fakeAPIService(result: .success(.cancelledJackGuitarPlanStub))
+
             $0.pushNotificationAuthorizationCoordinator = PushNotificationAuthorizationCoordinator(
                 center: UNUserNotificationCenterStub(
                     authorizationStatus: .notDetermined,
@@ -56,17 +65,18 @@ extension AppEnvironment {
                 registerService: PushNotificationRegisterServiceDummy(),
                 queue: nil
             )
-            $0.keyboardDismisser = UIApplication.shared
         }
     }
-
-    private static var fakeAPIServicesDelay: TimeInterval? = nil
 }
 
 extension AppEnvironment {
     static var dummy: AppEnvironment {
         AppEnvironment(
+            date: { fakeDate },
+            calendar: Calendar(identifier: .gregorian),
             locale: Locale(identifier: "en_GB"),
+            timeZone: TimeZone(identifier: "Europe/London")!,
+
             keychain: KeychainDummy(),
             appleAuthorizationService: AppleAuthorizationServiceDummy(),
             appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcherDummy(),
@@ -74,20 +84,25 @@ extension AppEnvironment {
             authenticationService: AuthenticationServiceDummy(),
             deauthenticationService: DeauthenticationServiceDummy(),
             accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverDummy(),
+
+            deviceTokenProvider: DeviceTokenProviderDummy(),
+            deviceRegisterService: APIServiceDummy(),
+            deviceTokenDeleter: DeviceTokenDeleterDummy(),
+
+            uiAccessibility: UIAccessibilityDummy.self,
+            keyboardDismisser: KeyboardDismisserDummy(),
+            urlOpener: URLOpenerDummy(),
+            router: Router(),
+
             instrumentSelectionListProvider: InstrumentSelectionListProviderDummy(),
             addressSearchService: APIServiceDummy(),
+
             lessonPlanFetchingService: APIServiceDummy(),
             lessonPlanRequestService: APIServiceDummy(),
             lessonPlanCancellationService: APIServiceDummy(),
             lessonPlanRepository: Repository(),
-            deviceTokenProvider: DeviceTokenProviderDummy(),
-            deviceRegisterService: APIServiceDummy(),
-            deviceTokenDeleter: DeviceTokenDeleterDummy(),
-            pushNotificationAuthorizationCoordinator: .dummy,
-            keyboardDismisser: KeyboardDismisserDummy(),
-            uiAccessibility: UIAccessibilityDummy.self,
-            urlOpener: URLOpenerDummy(),
-            router: Router()
+
+            pushNotificationAuthorizationCoordinator: .dummy
         )
     }
 }

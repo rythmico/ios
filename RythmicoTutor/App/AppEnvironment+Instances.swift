@@ -42,15 +42,8 @@ extension AppEnvironment {
 extension AppEnvironment {
     static var fake: AppEnvironment {
         dummy.with {
-            $0.useFakeDate()
+            $0.setUpFake()
 
-            $0.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
-            $0.shouldSucceedAuthentication()
-            $0.deauthenticationService = DeauthenticationServiceStub()
-            $0.userAuthenticated()
-
-            $0.keyboardDismisser = UIApplication.shared
-            $0.urlOpener = UIApplication.shared
             $0.mapOpener = MapOpener(urlOpener: UIApplication.shared)
 
             $0.bookingRequestFetchingService = fakeAPIService(result: .success([.stub, .longStub]))
@@ -64,7 +57,7 @@ extension AppEnvironment {
 extension AppEnvironment {
     static var dummy: AppEnvironment {
         AppEnvironment(
-            date: { "2020-07-13T12:15:00Z" },
+            date: { fakeDate },
             calendar: Calendar(identifier: .gregorian),
             locale: Locale(identifier: "en_GB"),
             timeZone: TimeZone(identifier: "Europe/London")!,
