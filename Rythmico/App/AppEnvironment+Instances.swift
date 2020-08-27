@@ -41,13 +41,13 @@ extension AppEnvironment {
         dummy.with {
             $0.userAuthenticated()
             $0.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
-            $0.authenticationService = AuthenticationServiceStub(result: .success(AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))), delay: 2)
+            $0.authenticationService = AuthenticationServiceStub(result: .success(AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))), delay: fakeAPIServicesDelay)
             $0.deauthenticationService = DeauthenticationServiceStub()
             $0.instrumentSelectionListProvider = InstrumentSelectionListProviderStub(instruments: Instrument.allCases)
-            $0.addressSearchService = APIServiceStub(result: .success(.stub), delay: 1)
-            $0.lessonPlanFetchingService = APIServiceStub(result: .success(.stub), delay: 1.5)
-            $0.lessonPlanRequestService = APIServiceStub(result: .success(.davidGuitarPlanStub), delay: 2)
-            $0.lessonPlanCancellationService = APIServiceStub(result: .success(.cancelledJackGuitarPlanStub), delay: 2)
+            $0.addressSearchService = APIServiceStub(result: .success(.stub), delay: fakeAPIServicesDelay)
+            $0.lessonPlanFetchingService = APIServiceStub(result: .success(.stub), delay: fakeAPIServicesDelay)
+            $0.lessonPlanRequestService = APIServiceStub(result: .success(.davidGuitarPlanStub), delay: fakeAPIServicesDelay)
+            $0.lessonPlanCancellationService = APIServiceStub(result: .success(.cancelledJackGuitarPlanStub), delay: fakeAPIServicesDelay)
             $0.pushNotificationAuthorizationCoordinator = PushNotificationAuthorizationCoordinator(
                 center: UNUserNotificationCenterStub(
                     authorizationStatus: .notDetermined,
@@ -59,6 +59,8 @@ extension AppEnvironment {
             $0.keyboardDismisser = UIApplication.shared
         }
     }
+
+    private static var fakeAPIServicesDelay: TimeInterval? = nil
 }
 
 extension AppEnvironment {
