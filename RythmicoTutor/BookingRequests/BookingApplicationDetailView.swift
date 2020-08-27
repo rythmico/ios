@@ -103,11 +103,12 @@ struct BookingApplicationDetailView: View {
                 AddressMapCell(addressInfo: bookingApplication.addressInfo)
             }
             retractAction.map { retractAction in
-                GroupedButton("Retract Application", isDestructive: true, action: promptForRetraction) {
+                GroupedButton("Retract Application", action: promptForRetraction) {
                     if retractionCoordinator.state.isLoading {
                         ActivityIndicator(style: .medium)
                     }
                 }
+                .accentColor(.red)
             }
         }
         .listStyle(GroupedListStyle())
