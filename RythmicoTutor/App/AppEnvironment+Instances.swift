@@ -10,6 +10,7 @@ extension AppEnvironment {
         calendar: .autoupdatingCurrent,
         locale: .autoupdatingCurrent,
         timeZone: .autoupdatingCurrent,
+
         keychain: Keychain.localKeychain,
         appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
         appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
@@ -17,52 +18,50 @@ extension AppEnvironment {
         authenticationService: AuthenticationService(),
         deauthenticationService: DeauthenticationService(),
         accessTokenProviderObserver: AuthenticationAccessTokenProviderObserver(broadcast: AuthenticationAccessTokenProviderBroadcast()),
-        bookingRequestRepository: Repository(),
-        bookingRequestFetchingService: APIService(),
-        bookingRequestApplyingService: APIService(),
-        bookingApplicationRepository: Repository(),
-        bookingApplicationFetchingService: APIService(),
-        bookingApplicationRetractionService: APIService(),
+
         deviceTokenProvider: InstanceID.instanceID(),
         deviceRegisterService: APIService(),
         deviceTokenDeleter: InstanceID.instanceID(),
-        keyboardDismisser: UIApplication.shared,
+
         uiAccessibility: UIAccessibility.self,
+        keyboardDismisser: UIApplication.shared,
         urlOpener: UIApplication.shared,
         mapOpener: MapOpener(urlOpener: UIApplication.shared),
-        router: Router()
+        router: Router(),
+
+        bookingRequestRepository: Repository(),
+        bookingRequestFetchingService: APIService(),
+        bookingRequestApplyingService: APIService(),
+
+        bookingApplicationRepository: Repository(),
+        bookingApplicationFetchingService: APIService(),
+        bookingApplicationRetractionService: APIService()
     )
 }
 
 extension AppEnvironment {
     static var fake: AppEnvironment {
         dummy.with {
-            $0.userAuthenticated()
-            $0.date = { dummy.date() + (fakeReferenceDate.distance(to: Date())) }
-            $0.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
-            $0.authenticationService = AuthenticationServiceStub(result: .success(AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))), delay: fakeAPIServicesDelay)
-            $0.deauthenticationService = DeauthenticationServiceStub()
-            $0.bookingRequestFetchingService = APIServiceStub(result: .success([.stub, .longStub]), delay: fakeAPIServicesDelay)
-            $0.bookingRequestApplyingService = APIServiceStub(result: .success(.stub), delay: fakeAPIServicesDelay)
-            $0.bookingApplicationFetchingService = APIServiceStub(result: .success([.longStub, .stubWithAbout] + .stub), delay: fakeAPIServicesDelay)
-            $0.bookingApplicationRetractionService = APIServiceStub(result: .success(.stub), delay: fakeAPIServicesDelay)
-            $0.keyboardDismisser = UIApplication.shared
-            $0.urlOpener = UIApplication.shared
+            $0.setUpFake()
+
             $0.mapOpener = MapOpener(urlOpener: UIApplication.shared)
+
+            $0.bookingRequestFetchingService = fakeAPIService(result: .success([.stub, .longStub]))
+            $0.bookingRequestApplyingService = fakeAPIService(result: .success(.stub))
+            $0.bookingApplicationFetchingService = fakeAPIService(result: .success([.longStub, .stubWithAbout] + .stub))
+            $0.bookingApplicationRetractionService = fakeAPIService(result: .success(.stub))
         }
     }
-
-    private static let fakeReferenceDate = Date()
-    private static var fakeAPIServicesDelay: TimeInterval? = nil
 }
 
 extension AppEnvironment {
     static var dummy: AppEnvironment {
         AppEnvironment(
-            date: { "2020-07-13T12:15:00Z" },
+            date: { .stub },
             calendar: Calendar(identifier: .gregorian),
             locale: Locale(identifier: "en_GB"),
             timeZone: TimeZone(identifier: "Europe/London")!,
+
             keychain: KeychainDummy(),
             appleAuthorizationService: AppleAuthorizationServiceDummy(),
             appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcherDummy(),
@@ -70,20 +69,24 @@ extension AppEnvironment {
             authenticationService: AuthenticationServiceDummy(),
             deauthenticationService: DeauthenticationServiceDummy(),
             accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverDummy(),
-            bookingRequestRepository: Repository(),
-            bookingRequestFetchingService: APIServiceDummy(),
-            bookingRequestApplyingService: APIServiceDummy(),
-            bookingApplicationRepository: Repository(),
-            bookingApplicationFetchingService: APIServiceDummy(),
-            bookingApplicationRetractionService: APIServiceDummy(),
+
             deviceTokenProvider: DeviceTokenProviderDummy(),
             deviceRegisterService: APIServiceDummy(),
             deviceTokenDeleter: DeviceTokenDeleterDummy(),
-            keyboardDismisser: KeyboardDismisserDummy(),
+
             uiAccessibility: UIAccessibilityDummy.self,
+            keyboardDismisser: KeyboardDismisserDummy(),
             urlOpener: URLOpenerDummy(),
             mapOpener: MapOpenerDummy(),
-            router: Router()
+            router: Router(),
+
+            bookingRequestRepository: Repository(),
+            bookingRequestFetchingService: APIServiceDummy(),
+            bookingRequestApplyingService: APIServiceDummy(),
+
+            bookingApplicationRepository: Repository(),
+            bookingApplicationFetchingService: APIServiceDummy(),
+            bookingApplicationRetractionService: APIServiceDummy()
         )
     }
 }

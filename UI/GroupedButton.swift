@@ -4,45 +4,46 @@ struct GroupedButton<Accessory: View>: View {
     @Environment(\.isEnabled) private var isEnabled: Bool
 
     var title: String
-    var alignment: TextAlignment
-    var isDestructive: Bool
     var action: () -> Void
     var accessory: Accessory
 
     init(
         _ title: String,
-        alignment: TextAlignment = .center,
-        isDestructive: Bool = false,
         action: @escaping () -> Void,
         @ViewBuilder accessory: () -> Accessory
     ) {
         self.title = title
-        self.alignment = alignment
-        self.isDestructive = isDestructive
         self.action = action
         self.accessory = accessory()
     }
 
     var body: some View {
-        Button(action: action) {
-            ZStack {
-                Text(title)
-                    .foregroundColor(labelColor)
-                    .multilineTextAlignment(alignment)
-                    .frame(maxWidth: .infinity)
+        ZStack {
+            HStack(spacing: 0) {
+                Spacer()
+                Button(title, action: action)
+                Spacer()
+            }
 
-                HStack {
-                    Spacer()
-                    accessory
-                }
+            HStack {
+                Spacer()
+                accessory.transition(AnyTransition.opacity.combined(with: .scale))
             }
         }
         .animation(.easeInOut(duration: .durationShort), value: isEnabled)
     }
+}
 
-    private var labelColor: Color? {
-        isEnabled
-            ? isDestructive ? .red : nil
-            : .gray
+#if DEBUG
+struct GroupedButton_Previews: PreviewProvider {
+    static var previews: some View {
+        Form {
+            GroupedButton("Something", action: {}) {
+                ActivityIndicator(style: .medium)
+            }
+            .accentColor(.red)
+            .disabled(true)
+        }
     }
 }
+#endif

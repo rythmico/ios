@@ -42,6 +42,6 @@ struct LessonPlanSummaryCell: View {
         .modifier(RoundedShadowContainer())
     }
 
-    private let startDateFormatter = DateFormatter().then { $0.dateFormat = "d MMM" }
+    private let startDateFormatter = Current.dateFormatter(format: .custom("d MMM"))
     private var startDateText: String { startDateFormatter.string(from: lessonPlan.schedule.startDate) }
 }

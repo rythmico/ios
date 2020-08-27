@@ -68,7 +68,7 @@ final class StudentDetailsViewTests: XCTestCase {
         let (_, _, view) = studentDetailsView
 
         XCTAssertView(view) { view in
-            view.state.dateOfBirth = Date()
+            view.state.dateOfBirth = .stub
             XCTAssertNotNil(view.dateOfBirthText)
 
             XCTAssertNil(view.nextButtonAction)
@@ -102,7 +102,7 @@ final class StudentDetailsViewTests: XCTestCase {
 
         XCTAssertView(view) { view in
             view.state.name = "David"
-            view.state.dateOfBirth = Date()
+            view.state.dateOfBirth = .stub
             view.state.gender = .male
 
             XCTAssertNotNil(view.nextButtonAction)
@@ -113,10 +113,8 @@ final class StudentDetailsViewTests: XCTestCase {
         let (context, _, view) = studentDetailsView
 
         XCTAssertView(view) { view in
-            let date = Date()
-
             view.state.name = "  David    Roman  "
-            view.state.dateOfBirth = date
+            view.state.dateOfBirth = .stub
             view.state.gender = .male
             view.state.about = """
                David is an exceptional piano student, however    whitespaces are not his thing.    Like at all.
@@ -135,7 +133,7 @@ final class StudentDetailsViewTests: XCTestCase {
                 context.student,
                 Student(
                     name: "David Roman",
-                    dateOfBirth: date,
+                    dateOfBirth: .stub,
                     gender: .male,
                     about: """
                     David is an exceptional piano student, however whitespaces are not his thing. Like at all.

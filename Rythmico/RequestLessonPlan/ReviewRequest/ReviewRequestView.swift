@@ -168,11 +168,11 @@ struct ReviewRequestView: View, TestableView {
         ].filter(\.isEmpty.not).joined(separator: .newline)
     }
 
-    private let dateOfBirthFormatter = DateFormatter().then { $0.dateFormat = "dd-MM-yyyy" }
+    private let dateOfBirthFormatter = Current.dateFormatter(format: .custom("dd-MM-yyyy"))
     private func studentAge(from dateOfBirth: Date) -> String {
         let dateOfBirthString = dateOfBirthFormatter.string(from: dateOfBirth)
-        let age = Calendar.current.dateComponents([.year], from: dateOfBirth, to: Date()).year.map { "(\($0) years old)" }
-        return [dateOfBirthString, age].compactMap { $0 }.joined(separator: .whitespace)
+        let age = Current.calendar.diff(from: dateOfBirth, to: Current.date(), in: .year)
+        return [dateOfBirthString, "(\(age) years old)"].compactMap { $0 }.joined(separator: .whitespace)
     }
 
     private var studentAbout: [MultiStyleText.Part] {
@@ -184,10 +184,10 @@ struct ReviewRequestView: View, TestableView {
         ]
     }
 
-    private let startDateFormatter = DateFormatter().then { $0.dateFormat = "d MMMM" }
+    private let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
     private var startDateText: String { startDateFormatter.string(from: schedule.startDate) }
 
-    private let startTimeFormatter = DateFormatter().then { $0.dateFormat = "ha" }
+    private let startTimeFormatter = Current.dateFormatter(format: .custom("ha"))
     private var startTimeText: String { startTimeFormatter.string(from: schedule.startDate) }
     private var startTimeAndDurationText: [MultiStyleText.Part] {
         startTimeText.style(.bodyBold).color(.rythmicoGray90) +
@@ -195,7 +195,7 @@ struct ReviewRequestView: View, TestableView {
         "\(schedule.duration.rawValue) minutes".style(.bodyBold).color(.rythmicoGray90)
     }
 
-    private let frequencyDayFormatter = DateFormatter().then { $0.dateFormat = "EEEE" }
+    private let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
     private var frequencyDayText: String { frequencyDayFormatter.string(from: schedule.startDate) }
     private var frequencyText: [MultiStyleText.Part] {
         "Reocurring ".color(.rythmicoGray90) + "every \(frequencyDayText)".style(.bodyBold).color(.rythmicoGray90)
