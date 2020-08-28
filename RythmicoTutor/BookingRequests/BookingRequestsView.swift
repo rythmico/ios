@@ -45,16 +45,17 @@ struct BookingRequestsView: View {
             .listStyle(GroupedListStyle())
         }
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
-        .onAppear(perform: fetchOnAppearOnce)
+        .onAppear(perform: fetchOnAppear)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
     }
 
-    private static var didAppear = false
-    private func fetchOnAppearOnce() {
-        guard !Self.didAppear else { return }
+    @State
+    private var didAppear = false
+    private func fetchOnAppear() {
+        guard !didAppear else { return }
         coordinator.run()
-        Self.didAppear = true
+        didAppear = true
     }
 }
 
