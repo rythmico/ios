@@ -5,6 +5,8 @@ struct BookingRequestsView: View {
     private var coordinator: APIActivityCoordinator<BookingRequestsGetRequest>
     @ObservedObject
     private var repository = Current.bookingRequestRepository
+    @ObservedObject
+    private var applicationRepository = Current.bookingApplicationRepository
 
     @State
     private var selectedBookingRequest: BookingRequest?
@@ -18,7 +20,14 @@ struct BookingRequestsView: View {
 
     var isLoading: Bool { coordinator.state.isLoading }
     var error: Error? { coordinator.state.failureValue }
-    var requests: [BookingRequest] { repository.items }
+    var requests: [BookingRequest] {
+        // Optimization to remove already-applied requests before fetch.
+        repository.items.filter { request in
+            !applicationRepository.items.contains {
+                $0.statusInfo.status == .pending && $0.bookingRequestId == request.id
+            }
+        }
+    }
 
     var body: some View {
         VStack(spacing: .spacingMedium) {
