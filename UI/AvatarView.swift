@@ -1,6 +1,10 @@
 import SwiftUI
 
 struct AvatarView: View {
+    enum Const {
+        static let defaultSize: CGFloat = .spacingUnit * 9
+    }
+
     enum Content {
         case initials(String)
         case photo(Image)
@@ -23,7 +27,7 @@ struct AvatarView: View {
     }
 
     var content: Content
-    var size: CGFloat = .spacingUnit * 9
+    var size: CGFloat = Const.defaultSize
     var backgroundColor: Color = .rythmicoGray10
 
     var body: some View {
