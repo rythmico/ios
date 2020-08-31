@@ -6,6 +6,7 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
     private let accessTokenProvider: AuthenticationAccessTokenProvider
     private let deauthenticationService: DeauthenticationServiceProtocol
     private let service: Service
+    private var runningTask: SessionTask?
 
     init(
         accessTokenProvider: AuthenticationAccessTokenProvider,
@@ -24,7 +25,7 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
             case .success(let accessToken):
                 do {
                     let request = try Request(accessToken: accessToken, properties: properties)
-                    self.service.send(request) { result in
+                    self.runningTask = self.service.send(request) { result in
                         switch result {
                         case .success(let value):
                             self.state = .finished(.success(value))
@@ -39,6 +40,11 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
                 self.handleAuthenticationError(error)
             }
         }
+    }
+
+    override func cancel() {
+        runningTask?.cancel()
+        super.cancel()
     }
 
     private func handleAuthenticationError(_ error: AuthenticationCommonError) {

@@ -1,4 +1,5 @@
 import Foundation
+import APIKit
 
 final class APIServiceStub<Request: AuthorizedAPIRequest>: APIServiceBase<Request> {
     var result: Result<Response, Error>
@@ -9,7 +10,7 @@ final class APIServiceStub<Request: AuthorizedAPIRequest>: APIServiceBase<Reques
         self.delay = delay
     }
 
-    override func send(_ request: Request, completion: @escaping CompletionHandler) {
+    override func send(_ request: Request, completion: @escaping CompletionHandler) -> SessionTask? {
         if let delay = delay {
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 completion(self.result)
@@ -17,6 +18,7 @@ final class APIServiceStub<Request: AuthorizedAPIRequest>: APIServiceBase<Reques
         } else {
             completion(result)
         }
+        return nil
     }
 }
 
@@ -30,10 +32,11 @@ final class APIServiceSpy<Request: AuthorizedAPIRequest>: APIServiceBase<Request
         self.result = result
     }
 
-    override func send(_ request: Request, completion: @escaping CompletionHandler) {
+    override func send(_ request: Request, completion: @escaping CompletionHandler) -> SessionTask? {
         sendCount += 1
         latestRequest = request
         result.map(completion)
+        return nil
     }
 }
 

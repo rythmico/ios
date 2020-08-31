@@ -9,6 +9,12 @@ class ActivityCoordinator<Output>: ObservableObject {
 
     @Published
     /*protected(set)*/ var state: State = .idle
+
+    func cancel() {
+        if case .loading = state {
+            state = .idle
+        }
+    }
 }
 
 class FailableActivityCoordinator<Success>: ActivityCoordinator<Result<Success, Error>> {
