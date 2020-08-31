@@ -7,12 +7,12 @@ struct AvatarStackView: View {
         static let spacing: CGFloat = -AvatarView.Const.defaultSize * 0.42
     }
 
-    var content: [AvatarView.Content]
+    var contents: [AvatarView.Content]
 
     var body: some View {
         HStack(spacing: Const.spacing) {
-            ForEach(0..<self.content.count) { index in
-                AvatarView(content: self.content[index])
+            ForEach(0..<contents.count, id: \.self) { index in
+                AvatarView(content: self.contents[index])
                     .overlay(
                         Circle()
                             .stroke(Color.white, lineWidth: Const.borderLineWidth)
@@ -25,17 +25,32 @@ struct AvatarStackView: View {
 }
 
 #if DEBUG
+struct AvatarStackView_PreviewsWrapper: View {
+    @State var content: [AvatarView.Content] = [
+        .initials("DR"),
+        .photo(Image(decorative: "avatar")),
+        .initials("DR"),
+    ]
+
+    var body: some View {
+        AvatarStackView(contents: content)
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.content = [
+                        .photo(Image(decorative: "avatar")),
+                        .photo(Image(decorative: "avatar")),
+                        .photo(Image(decorative: "avatar")),
+                    ]
+                }
+            }
+    }
+}
+
 struct AvatarStackView_Previews: PreviewProvider {
     static var previews: some View {
-        AvatarStackView(
-            content: [
-                .photo(Image(decorative: "avatar")),
-                .photo(Image(decorative: "avatar")),
-                .photo(Image(decorative: "avatar")),
-            ]
-        )
-        .previewLayout(.sizeThatFits)
-        .padding()
+        AvatarStackView_PreviewsWrapper()
+            .previewLayout(.sizeThatFits)
+            .padding()
     }
 }
 #endif

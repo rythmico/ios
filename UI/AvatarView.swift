@@ -9,21 +9,6 @@ struct AvatarView: View {
         case initials(String)
         case photo(Image)
         case placeholder
-
-        var initials: String? {
-            guard case .initials(let initials) = self else { return nil }
-            return initials
-        }
-
-        var photo: Image? {
-            guard case .photo(let image) = self else { return nil }
-            return image
-        }
-
-        var isPlaceholder: Bool {
-            guard case .placeholder = self else { return false }
-            return true
-        }
     }
 
     var content: Content
@@ -35,39 +20,46 @@ struct AvatarView: View {
             .frame(width: size, height: size)
             .background(backgroundColor)
             .clipShape(Circle())
+            .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
     }
 
-    private var contentView: AnyView {
+    // TODO: switch views
+    private var contentView: AnyView? {
         initialsView ?? photoView ?? placeholderView
     }
 
     private var initialsView: AnyView? {
-        content.initials.map { initials in
-            AnyView(
-                GeometryReader { g in
-                    Text(initials)
-                        .font(.system(size: max(g.size.width, g.size.height), weight: .medium, design: .rounded))
-                        .minimumScaleFactor(.leastNonzeroMagnitude)
-                        .lineLimit(1)
-                        .foregroundColor(.rythmicoGray90)
-                        .padding(.horizontal, g.size.width * 0.18)
-                }
-            )
+        guard case .initials(let initials) = content else {
+            return nil
         }
+        return AnyView(
+            GeometryReader { g in
+                Text(initials)
+                    .font(.system(size: max(g.size.width, g.size.height), weight: .medium, design: .rounded))
+                    .minimumScaleFactor(.leastNonzeroMagnitude)
+                    .lineLimit(1)
+                    .foregroundColor(.rythmicoGray90)
+                    .padding(.horizontal, g.size.width * 0.18)
+            }
+        )
     }
 
     private var photoView: AnyView? {
-        content.photo.map { image in
-            AnyView(
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-            )
+        guard case .photo(let image) = content else {
+            return nil
         }
+        return AnyView(
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+        )
     }
 
-    private var placeholderView: AnyView {
-        AnyView(
+    private var placeholderView: AnyView? {
+        guard case .placeholder = content else {
+            return nil
+        }
+        return AnyView(
             GeometryReader { g in
                 Image(systemSymbol: .person)
                     .resizable()
