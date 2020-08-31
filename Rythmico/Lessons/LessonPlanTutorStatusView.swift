@@ -10,26 +10,8 @@ struct LessonPlanTutorStatusView: View {
     }
 
     var body: some View {
-        CircleImageTitleView(
-            image: status.image,
-            imageBackgroundColor: status.imageBackgroundColor,
-            title: summarized ? status.summarizedTitle : status.title,
-            bold: !summarized
-        )
-    }
-}
-
-private struct CircleImageTitleView: View {
-    var image: AnyView
-    var imageBackgroundColor: Color
-    var title: String
-    var bold: Bool
-
-    var body: some View {
         HStack(spacing: .spacingExtraSmall) {
-            image
-                .frame(width: 32, height: 32)
-                .background(imageBackgroundColor.clipShape(Circle()))
+            status.avatar
             Text(title)
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
@@ -38,50 +20,83 @@ private struct CircleImageTitleView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
+
+    private var title: String {
+        summarized ? status.summarizedTitle : status.title
+    }
+
+    private var bold: Bool {
+        !summarized
+    }
 }
 
 private extension LessonPlan.Status {
-    var image: AnyView {
+    var avatar: AnyView {
         switch self {
-        case .pending, .cancelled(nil, _):
-            return AnyView(
-                Image(systemSymbol: .person)
-                    .foregroundColor(.rythmicoGray90)
-                    .font(.system(size: 18, weight: .semibold, design: .rounded))
-            )
-        default:
-            return AnyView(Image(systemSymbol: .personFill)) // TODO
-        }
-    }
-
-    var imageBackgroundColor: Color {
-        switch self {
+        case .pending,
+             .reviewing([]):
+            return AnyView(AvatarView(content: .placeholder))
+        case .reviewing(let applications):
+            return AnyView(AvatarStackView(contents: applications.map { _ in .placeholder })) // TODO
+        case .scheduled(let tutor),
+             .cancelled(let tutor?, _):
+            return AnyView(AvatarView(content: .placeholder)) // TODO
         case .cancelled(nil, _):
-            return Color(lightModeVariantHex: 0xDDE1E6, darkModeVariantHex: 0x424345)
-        default:
-            return .rythmicoGray10
+            return AnyView(AvatarView(content: .placeholder))
         }
     }
 
     var summarizedTitle: String {
         switch self {
-        case .pending:
+        case .pending,
+             .reviewing([]):
             return "Tutor TBC"
+        case .reviewing(let applications):
+            return "\(applications.count) applied"
+        case .scheduled(let tutor),
+             .cancelled(let tutor?, _):
+            return tutor.name
         case .cancelled(nil, _):
             return "No tutor"
-        default:
-            return "" // TODO
         }
     }
 
     var title: String {
         switch self {
-        case .pending:
+        case .pending,
+             .reviewing([]):
             return "Pending tutor applications"
+        case .reviewing(let applications):
+            let count = applications.count
+            return "\(count) tutor\(count == 1 ? "" : "s") applied" // TODO: plurals
+        case .scheduled(let tutor),
+             .cancelled(let tutor?, _):
+            return tutor.name
         case .cancelled(nil, _):
             return "No tutor was selected"
-        default:
-            return "" // TODO
         }
     }
 }
+
+#if DEBUG
+struct LessonPlanTutorStatusView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            LessonPlanTutorStatusView(.pending, summarized: true)
+                .previewDisplayName("Pending")
+            LessonPlanTutorStatusView(.reviewing([]), summarized: true)
+                .previewDisplayName("Reviewing 0 Tutors")
+            LessonPlanTutorStatusView(.reviewing([.stub, .stub]), summarized: true)
+                .previewDisplayName("Reviewing 1+ Tutors")
+            LessonPlanTutorStatusView(.scheduled(.jesseStub), summarized: true)
+                .previewDisplayName("Scheduled")
+            LessonPlanTutorStatusView(.cancelled(nil, .stub), summarized: true)
+                .previewDisplayName("Cancelled no Tutor")
+            LessonPlanTutorStatusView(.cancelled(.jesseStub, .stub), summarized: true)
+                .previewDisplayName("Cancelled w/ Tutor")
+        }
+        .previewLayout(.sizeThatFits)
+        .padding()
+    }
+}
+#endif

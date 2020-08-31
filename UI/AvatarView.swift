@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AvatarView: View {
     enum Const {
-        static let defaultSize: CGFloat = .spacingUnit * 9
+        static let defaultSize: CGFloat = .spacingUnit * 8
     }
 
     enum Content {
