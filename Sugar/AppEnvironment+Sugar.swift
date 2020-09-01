@@ -55,6 +55,11 @@ extension AppEnvironment {
 
         keyboardDismisser = UIApplication.shared
         urlOpener = UIApplication.shared
+
+        imageLoadingService = ImageLoadingServiceStub(
+            result: .success(Asset.appLogo.image),
+            delay: Self.fakeAPIServicesDelay
+        )
     }
 
     mutating func useFakeDate() {
