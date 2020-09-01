@@ -14,10 +14,12 @@ struct LessonPlanSummaryCell: View {
         switch lessonPlan.status {
         case .pending:
             return "Pending tutor applications"
+        case .reviewing:
+            return "Pending selection of tutor"
+        case .scheduled:
+            return ""
         case .cancelled:
             return [startDateText, "Plan Cancelled"].joined(separator: " • ")
-        default:
-            return "" // TODO
         }
     }
 
@@ -45,3 +47,17 @@ struct LessonPlanSummaryCell: View {
     private let startDateFormatter = Current.dateFormatter(format: .custom("d MMM"))
     private var startDateText: String { startDateFormatter.string(from: lessonPlan.schedule.startDate) }
 }
+
+#if DEBUG
+struct LessonPlanSummaryCell_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            LessonPlanSummaryCell(lessonPlan: .jackGuitarPlanStub)
+            LessonPlanSummaryCell(lessonPlan: .reviewingJackGuitarPlanStub)
+            LessonPlanSummaryCell(lessonPlan: .cancelledJackGuitarPlanStub)
+        }
+        .previewLayout(.sizeThatFits)
+        .padding()
+    }
+}
+#endif

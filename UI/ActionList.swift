@@ -19,7 +19,7 @@ struct ActionList: View {
     var body: some View {
         VStack(spacing: 0) {
             Divider().foregroundColor(.rythmicoGray20)
-            ForEach(0..<buttons.count) { index in
+            ForEach(0..<buttons.count, id: \.self) { index in
                 VStack(spacing: 0) {
                     SwiftUI.Button(action: self.buttons[index].action) {
                         HStack(spacing: 0) {

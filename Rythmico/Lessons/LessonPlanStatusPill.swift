@@ -22,7 +22,7 @@ private extension LessonPlan.Status {
         case .pending:
             return "Pending"
         case .reviewing:
-            return "Reviewing"
+            return "Review"
         case .scheduled:
             return "Scheduled"
         case .cancelled:
@@ -35,7 +35,7 @@ private extension LessonPlan.Status {
         case .pending:
             return .rythmicoDarkPurple
         case .reviewing:
-            return .clear
+            return .rythmicoDarkBurgundy
         case .scheduled:
             return .clear
         case .cancelled:
@@ -48,7 +48,7 @@ private extension LessonPlan.Status {
         case .pending:
             return .rythmicoLightPurple
         case .reviewing:
-            return .clear
+            return .rythmicoLightBurgundy
         case .scheduled:
             return .clear
         case .cancelled:

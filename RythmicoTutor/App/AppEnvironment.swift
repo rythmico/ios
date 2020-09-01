@@ -24,6 +24,8 @@ struct AppEnvironment {
     var mapOpener: MapOpenerProtocol
     var router: Router
 
+    var imageLoadingService: ImageLoadingServiceProtocol
+
     var bookingRequestRepository: Repository<BookingRequest>
     var bookingRequestFetchingService: APIServiceBase<BookingRequestsGetRequest>
     var bookingRequestApplyingService: APIServiceBase<BookingRequestApplyRequest>

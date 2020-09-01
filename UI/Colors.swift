@@ -3,6 +3,9 @@ import SwiftUI
 extension Color {
     static let rythmicoRed = Color(.rythmicoRed)
 
+    static let rythmicoLightBurgundy = Color(.rythmicoLightBurgundy)
+    static let rythmicoDarkBurgundy = Color(.rythmicoDarkBurgundy)
+
     static let rythmicoLightPurple = Color(.rythmicoLightPurple)
     static let rythmicoPurple = Color(.rythmicoPurple)
     static let rythmicoHighlightPurple = Color(.rythmicoHighlightPurple)
@@ -24,6 +27,16 @@ extension UIColor {
     static let rythmicoRed = UIColor(
         lightModeVariant: .init(hex: 0xB00020),
         darkModeVariant: .init(hex: 0x9E001C)
+    )
+
+    static let rythmicoLightBurgundy = UIColor(
+        lightModeVariant: .init(hex: 0xFFD6E8),
+        darkModeVariant: .init(hex: 0xe5c0d0)
+    )
+
+    static let rythmicoDarkBurgundy = UIColor(
+        lightModeVariant: .init(hex: 0x9F1754),
+        darkModeVariant: .init(hex: 0x8f144b)
     )
 
     static let rythmicoLightPurple = UIColor(

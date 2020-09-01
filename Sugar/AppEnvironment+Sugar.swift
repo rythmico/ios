@@ -29,6 +29,10 @@ extension AppEnvironment {
         }
     }
 
+    func imageLoadingCoordinator() -> ImageLoadingCoordinator {
+        ImageLoadingCoordinator(service: imageLoadingService)
+    }
+
     func deviceRegisterCoordinator() -> DeviceRegisterCoordinator? {
         coordinator(for: \.deviceRegisterService).map {
             DeviceRegisterCoordinator(deviceTokenProvider: deviceTokenProvider, apiCoordinator: $0)
@@ -51,6 +55,11 @@ extension AppEnvironment {
 
         keyboardDismisser = UIApplication.shared
         urlOpener = UIApplication.shared
+
+        imageLoadingService = ImageLoadingServiceStub(
+            result: .success(UIImage(.red)),
+            delay: Self.fakeAPIServicesDelay
+        )
     }
 
     mutating func useFakeDate() {
