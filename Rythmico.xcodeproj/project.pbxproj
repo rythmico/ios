@@ -242,6 +242,7 @@
 		D527B01824FEABEB003E81A9 /* CancellableDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B01124FE92DA003E81A9 /* CancellableDoubles.swift */; };
 		D527B01D24FEB2C8003E81A9 /* View+Centering.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B01C24FEB2C8003E81A9 /* View+Centering.swift */; };
 		D527B01E24FEB2C8003E81A9 /* View+Centering.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B01C24FEB2C8003E81A9 /* View+Centering.swift */; };
+		D527B02224FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B02124FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift */; };
 		D52C550D24DC6C3A00C295C4 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896C23B963B700C19300 /* FIRAnalyticsConnector.framework */; };
 		D52C551124DC6C3A00C295C4 /* FirebaseABTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556123E4F8BE005A20EB /* FirebaseABTesting.framework */; };
 		D52C551324DC6C3A00C295C4 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896B23B963B700C19300 /* FirebaseAnalytics.framework */; };
@@ -626,6 +627,7 @@
 		D527B01124FE92DA003E81A9 /* CancellableDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellableDoubles.swift; sourceTree = "<group>"; };
 		D527B01324FEA2DE003E81A9 /* ImageLoadingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadingCoordinator.swift; sourceTree = "<group>"; };
 		D527B01C24FEB2C8003E81A9 /* View+Centering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Centering.swift"; sourceTree = "<group>"; };
+		D527B02124FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanTutorAvatarView.swift; sourceTree = "<group>"; };
 		D52C550824DC6A7500C295C4 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Carthage/Build/iOS/Firebase.framework; sourceTree = "<group>"; };
 		D52C553924DC71B800C295C4 /* BookingRequestDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestDetailView.swift; sourceTree = "<group>"; };
 		D52C553B24DC74A200C295C4 /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
@@ -926,6 +928,7 @@
 				03021C50248A799200C0C57E /* LessonsViewTests.swift */,
 				03021C4E248A769200C0C57E /* LessonPlanSummaryCell.swift */,
 				032215562497034A009D48A8 /* LessonPlanTutorStatusView.swift */,
+				D527B02124FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift */,
 				03C39DD72496CA2A00C76516 /* LessonPlanStatusPill.swift */,
 				03C39DD92496DBC700C76516 /* LessonPlanDetailView.swift */,
 				03D932F1249C096B003416DC /* LessonPlanDetailViewTests.swift */,
@@ -2030,6 +2033,7 @@
 				D53555CA23E536AE005A20EB /* AppleAuthorizationService.swift in Sources */,
 				D527B01724FEAA62003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */,
 				0365F6F02417E79000F452AC /* Address.swift in Sources */,
+				D527B02224FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift in Sources */,
 				D5F506BA240637F400CA4094 /* Buttons+Rythmico.swift in Sources */,
 				D53555CC23E536AE005A20EB /* AppleAuthorizationServiceDoubles.swift in Sources */,
 				D55F012D24CCBE8E00E5F13C /* APIServiceDoubles.swift in Sources */,

@@ -41,4 +41,11 @@ extension String {
             .first
             .map(String.init)
     }
+
+    public var initials: String {
+        self.split(separator: .whitespace)
+            .filter { !$0.trimmingCharacters(in: .whitespaces).isEmpty }
+            .compactMap { $0.first?.uppercased() }
+            .joined()
+    }
 }
