@@ -15,6 +15,10 @@ class ActivityCoordinator<Output>: ObservableObject {
             state = .idle
         }
     }
+
+    deinit {
+        cancel()
+    }
 }
 
 class FailableActivityCoordinator<Success>: ActivityCoordinator<Result<Success, Error>> {
