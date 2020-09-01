@@ -1,11 +1,10 @@
 import Foundation
-import struct SwiftUI.Image
 import class UIKit.UIImage
 import protocol Combine.Cancellable
 import Sugar
 
 protocol ImageLoadingServiceProtocol {
-    typealias CompletionHandler = SimpleResultHandler<Image>
+    typealias CompletionHandler = SimpleResultHandler<UIImage>
 
     func load(_ url: URL, completion: @escaping CompletionHandler) -> Cancellable
 }
@@ -18,13 +17,14 @@ final class ImageLoadingService: ImageLoadingServiceProtocol {
     private let sessionConfiguration = URLSessionConfiguration.ephemeral.then {
         $0.waitsForConnectivity = true
         $0.timeoutIntervalForResource = 150
-        $0.requestCachePolicy = .reloadRevalidatingCacheData
+        $0.requestCachePolicy = .returnCacheDataElseLoad
+        $0.urlCache = URLCache.imageURLCache
     }
 
     func load(_ url: URL, completion: @escaping CompletionHandler) -> Cancellable {
         load(url, on: .current) { dataResult in
             let imageResult = dataResult.flatMap {
-                UIImage(data: $0).map(Image.init).map(Result.success)
+                UIImage(data: $0).map(Result.success)
                 ??
                 .failure(Error.invalidResponse)
             }
@@ -50,4 +50,15 @@ final class ImageLoadingService: ImageLoadingServiceProtocol {
             }
         }.then { $0.resume() }
     }
+}
+
+private extension URLCache {
+    static let inMemorySizeMegabytes = 30
+    static let inDiskSizeMegabytes = 20
+
+    static let imageURLCache = URLCache(
+        memoryCapacity: inMemorySizeMegabytes * 1024 * 1024,
+        diskCapacity: inDiskSizeMegabytes * 1024 * 1024,
+        diskPath: nil
+    )
 }
