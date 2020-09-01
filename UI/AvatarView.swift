@@ -8,7 +8,7 @@ struct AvatarView: View {
 
     enum Content {
         case initials(String)
-        case photo(Image)
+        case photo(UIImage)
         case placeholder
     }
 
@@ -61,7 +61,7 @@ struct AvatarView: View {
             return nil
         }
         return AnyView(
-            image
+            Image(uiImage: image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
         )
@@ -92,11 +92,11 @@ struct AvatarView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             AvatarView(.initials("DR"))
-            AvatarView(.photo(Image(decorative: "avatar")))
+            AvatarView(.photo(Asset.appLogo.image))
             AvatarView(.placeholder)
 
             AvatarView(.initials("DR"), size: 200)
-            AvatarView(.photo(Image(decorative: "avatar")), size: 200)
+            AvatarView(.photo(Asset.appLogo.image), size: 200)
             AvatarView(.placeholder, size: 200)
         }
         .previewLayout(.sizeThatFits)
