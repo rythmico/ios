@@ -89,7 +89,12 @@ extension LessonPlan.Application {
 
 extension LessonPlan.Tutor {
     static var jesseStub: Self {
-        .init(id: "ID1", name: "Jesse Bildner", photoURL: nil)
+        .init(
+            id: "ID1",
+            name: "Jesse Bildner",
+            photoThumbnailURL: nil,
+            photoURL: nil
+        )
     }
 }
 
