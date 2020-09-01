@@ -92,7 +92,7 @@ extension LessonPlan.Tutor {
         .init(
             id: "ID1",
             name: "Jesse Bildner",
-            photoThumbnailURL: nil,
+            photoThumbnailURL: URL(string: "https://rythmico.com"),
             photoURL: nil
         )
     }
@@ -110,7 +110,7 @@ extension LessonPlan.CancellationInfo {
 extension Array where Element == LessonPlan {
     static var stub: Self {
         [
-            .jackGuitarPlanStub,
+            .reviewingJackGuitarPlanStub,
             .jesseDrumsPlanStub,
             .charlottePianoPlanStub,
             .janeSingingPlanStub

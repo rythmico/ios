@@ -57,7 +57,7 @@ extension AppEnvironment {
         urlOpener = UIApplication.shared
 
         imageLoadingService = ImageLoadingServiceStub(
-            result: .success(Asset.appLogo.image),
+            result: .success(UIImage(.red)),
             delay: Self.fakeAPIServicesDelay
         )
     }

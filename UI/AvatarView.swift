@@ -92,11 +92,11 @@ struct AvatarView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             AvatarView(.initials("DR"))
-            AvatarView(.photo(Asset.appLogo.image))
+            AvatarView(.photo(UIImage(.red)))
             AvatarView(.placeholder)
 
             AvatarView(.initials("DR"), size: 200)
-            AvatarView(.photo(Asset.appLogo.image), size: 200)
+            AvatarView(.photo(UIImage(.purple)), size: 200)
             AvatarView(.placeholder, size: 200)
         }
         .previewLayout(.sizeThatFits)
