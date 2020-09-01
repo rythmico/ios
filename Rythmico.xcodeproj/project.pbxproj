@@ -233,6 +233,8 @@
 		D527B00924FD2047003E81A9 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B00824FD2047003E81A9 /* AvatarView.swift */; };
 		D527B00B24FD3297003E81A9 /* AvatarStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B00A24FD3297003E81A9 /* AvatarStackView.swift */; };
 		D527B00E24FE75C1003E81A9 /* ImageLoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B00C24FDC7AF003E81A9 /* ImageLoadingService.swift */; };
+		D527B01024FE7811003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B00F24FE7811003E81A9 /* ImageLoadingServiceDoubles.swift */; };
+		D527B01224FE92DA003E81A9 /* CancellableDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B01124FE92DA003E81A9 /* CancellableDoubles.swift */; };
 		D52C550D24DC6C3A00C295C4 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896C23B963B700C19300 /* FIRAnalyticsConnector.framework */; };
 		D52C551124DC6C3A00C295C4 /* FirebaseABTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556123E4F8BE005A20EB /* FirebaseABTesting.framework */; };
 		D52C551324DC6C3A00C295C4 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896B23B963B700C19300 /* FirebaseAnalytics.framework */; };
@@ -613,6 +615,8 @@
 		D527B00824FD2047003E81A9 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		D527B00A24FD3297003E81A9 /* AvatarStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarStackView.swift; sourceTree = "<group>"; };
 		D527B00C24FDC7AF003E81A9 /* ImageLoadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadingService.swift; sourceTree = "<group>"; };
+		D527B00F24FE7811003E81A9 /* ImageLoadingServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadingServiceDoubles.swift; sourceTree = "<group>"; };
+		D527B01124FE92DA003E81A9 /* CancellableDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellableDoubles.swift; sourceTree = "<group>"; };
 		D52C550824DC6A7500C295C4 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Carthage/Build/iOS/Firebase.framework; sourceTree = "<group>"; };
 		D52C553924DC71B800C295C4 /* BookingRequestDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestDetailView.swift; sourceTree = "<group>"; };
 		D52C553B24DC74A200C295C4 /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
@@ -1202,6 +1206,7 @@
 				03A91EF924918A4700DEAD5E /* DeviceRegistration */,
 				03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */,
 				D527B00C24FDC7AF003E81A9 /* ImageLoadingService.swift */,
+				D527B00F24FE7811003E81A9 /* ImageLoadingServiceDoubles.swift */,
 				D535547A23DF3E81005A20EB /* Keychain */,
 				033D47D5247ABF6B0096C50F /* LessonPlanEndpoints.swift */,
 				D5217CED24E2D81B00C89018 /* MapOpener */,
@@ -1220,6 +1225,7 @@
 				03B71325241D84B400DED025 /* Address */,
 				D5F4D3E124F0429A000E8580 /* BookingApplication */,
 				032B6FC824B783D300299A09 /* BookingRequest */,
+				D527B01124FE92DA003E81A9 /* CancellableDoubles.swift */,
 				032B6FD524B7882B00299A09 /* Instrument */,
 				03BB5C9E2473463200B44692 /* LessonPlan */,
 				03AAF6742445E123002D8F5B /* Schedule */,
@@ -2071,6 +2077,7 @@
 				035B1CEB249CF9A400AABFEA /* main.swift in Sources */,
 				035B1D61249E63D400AABFEA /* DeviceTokenDeleter.swift in Sources */,
 				03E88EB824C4B0F40077A420 /* Repository.swift in Sources */,
+				D527B01224FE92DA003E81A9 /* CancellableDoubles.swift in Sources */,
 				035B1D4A249E577700AABFEA /* AppleAuthorizationCompletionDelegate.swift in Sources */,
 				035B1D37249E576900AABFEA /* AuthenticationServiceDoubles.swift in Sources */,
 				035B1D13249E563A00AABFEA /* OnboardingView.swift in Sources */,
@@ -2136,6 +2143,7 @@
 				D52C553D24DC74A200C295C4 /* TitleCell.swift in Sources */,
 				032B6FCD24B7879300299A09 /* Schedule.swift in Sources */,
 				035B1D55249E5A1800AABFEA /* ContentSizeCategory+Sugar.swift in Sources */,
+				D527B01024FE7811003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

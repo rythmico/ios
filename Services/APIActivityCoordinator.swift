@@ -26,12 +26,7 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
                 do {
                     let request = try Request(accessToken: accessToken, properties: properties)
                     self.runningTask = self.service.send(request) { result in
-                        switch result {
-                        case .success(let value):
-                            self.state = .finished(.success(value))
-                        case .failure(let error):
-                            self.state = .finished(.failure(error))
-                        }
+                        self.state = .finished(result)
                     }
                 } catch {
                     self.state = .finished(.failure(error))

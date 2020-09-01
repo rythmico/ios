@@ -1,14 +1,13 @@
 import Foundation
 import struct SwiftUI.Image
 import class UIKit.UIImage
+import protocol Combine.Cancellable
 import Sugar
 
 protocol ImageLoadingServiceProtocol {
-    typealias DataCompletionHandler = SimpleResultHandler<Data>
-    typealias ImageCompletionHandler = SimpleResultHandler<Image>
+    typealias CompletionHandler = SimpleResultHandler<Image>
 
-    func load(_ url: URL, completion: @escaping DataCompletionHandler) -> URLSessionTask
-    func load(_ url: URL, completion: @escaping ImageCompletionHandler) -> URLSessionTask
+    func load(_ url: URL, completion: @escaping CompletionHandler) -> Cancellable
 }
 
 final class ImageLoadingService: ImageLoadingServiceProtocol {
@@ -22,11 +21,7 @@ final class ImageLoadingService: ImageLoadingServiceProtocol {
         $0.requestCachePolicy = .reloadRevalidatingCacheData
     }
 
-    func load(_ url: URL, completion: @escaping DataCompletionHandler) -> URLSessionTask {
-        load(url, on: .main, completion: completion)
-    }
-
-    func load(_ url: URL, completion: @escaping ImageCompletionHandler) -> URLSessionTask {
+    func load(_ url: URL, completion: @escaping CompletionHandler) -> Cancellable {
         load(url, on: .current) { dataResult in
             let imageResult = dataResult.flatMap {
                 UIImage(data: $0).map(Image.init).map(Result.success)
@@ -39,7 +34,9 @@ final class ImageLoadingService: ImageLoadingServiceProtocol {
         }
     }
 
-    private func load(_ url: URL, on runLoop: RunLoop, completion: @escaping DataCompletionHandler) -> URLSessionTask {
+    private typealias DataCompletionHandler = SimpleResultHandler<Data>
+
+    private func load(_ url: URL, on runLoop: RunLoop, completion: @escaping DataCompletionHandler) -> Cancellable {
         URLSession(configuration: sessionConfiguration).dataTask(with: url) { data, _, error in
             runLoop.perform {
                 switch (error, data) {
@@ -51,6 +48,6 @@ final class ImageLoadingService: ImageLoadingServiceProtocol {
                     fatalError("Impossible")
                 }
             }
-        }
+        }.then { $0.resume() }
     }
 }
