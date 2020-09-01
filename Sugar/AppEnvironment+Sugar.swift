@@ -29,6 +29,10 @@ extension AppEnvironment {
         }
     }
 
+    func imageLoadingCoordinator() -> ImageLoadingCoordinator {
+        ImageLoadingCoordinator(service: imageLoadingService)
+    }
+
     func deviceRegisterCoordinator() -> DeviceRegisterCoordinator? {
         coordinator(for: \.deviceRegisterService).map {
             DeviceRegisterCoordinator(deviceTokenProvider: deviceTokenProvider, apiCoordinator: $0)

@@ -24,6 +24,8 @@ struct AppEnvironment {
     var urlOpener: URLOpener
     var router: Router
 
+    var imageLoadingService: ImageLoadingServiceProtocol
+
     var instrumentSelectionListProvider: InstrumentSelectionListProviderProtocol
     var addressSearchService: APIServiceBase<AddressSearchRequest>
 

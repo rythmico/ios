@@ -3,10 +3,10 @@ import struct SwiftUI.Image
 import protocol Combine.Cancellable
 
 final class ImageLoadingCoordinator: FailableActivityCoordinator<Image> {
-    private let service: ImageLoadingService
+    private let service: ImageLoadingServiceProtocol
     private var cancellable: Cancellable?
 
-    init(service: ImageLoadingService) {
+    init(service: ImageLoadingServiceProtocol) {
         self.service = service
     }
 

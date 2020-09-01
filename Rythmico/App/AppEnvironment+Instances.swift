@@ -29,6 +29,8 @@ extension AppEnvironment {
         urlOpener: UIApplication.shared,
         router: Router(),
 
+        imageLoadingService: ImageLoadingService(),
+
         instrumentSelectionListProvider: InstrumentSelectionListProvider(),
         addressSearchService: APIService(),
 
@@ -93,6 +95,8 @@ extension AppEnvironment {
             keyboardDismisser: KeyboardDismisserDummy(),
             urlOpener: URLOpenerDummy(),
             router: Router(),
+
+            imageLoadingService: ImageLoadingServiceDummy(),
 
             instrumentSelectionListProvider: InstrumentSelectionListProviderDummy(),
             addressSearchService: APIServiceDummy(),

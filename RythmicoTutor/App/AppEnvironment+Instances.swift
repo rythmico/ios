@@ -29,6 +29,8 @@ extension AppEnvironment {
         mapOpener: MapOpener(urlOpener: UIApplication.shared),
         router: Router(),
 
+        imageLoadingService: ImageLoadingService(),
+
         bookingRequestRepository: Repository(),
         bookingRequestFetchingService: APIService(),
         bookingRequestApplyingService: APIService(),
@@ -79,6 +81,8 @@ extension AppEnvironment {
             urlOpener: URLOpenerDummy(),
             mapOpener: MapOpenerDummy(),
             router: Router(),
+
+            imageLoadingService: ImageLoadingServiceDummy(),
 
             bookingRequestRepository: Repository(),
             bookingRequestFetchingService: APIServiceDummy(),
