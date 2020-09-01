@@ -37,10 +37,10 @@ private extension LessonPlan.Status {
              .reviewing([]):
             return AnyView(AvatarView(.placeholder))
         case .reviewing(let applications):
-            return AnyView(AvatarStackView(applications.map { _ in .placeholder })) // TODO
+            return AnyView(AvatarStackView(applications.map(\.tutor), thumbnails: true))
         case .scheduled(let tutor),
              .cancelled(let tutor?, _):
-            return AnyView(AvatarView(.placeholder)) // TODO
+            return AnyView(LessonPlanTutorAvatarView(tutor, thumbnail: true))
         case .cancelled(nil, _):
             return AnyView(AvatarView(.placeholder))
         }
