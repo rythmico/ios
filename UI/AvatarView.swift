@@ -40,6 +40,7 @@ struct AvatarView: View {
                     .lineLimit(1)
                     .foregroundColor(.rythmicoGray90)
                     .padding(.horizontal, g.size.width * 0.18)
+                    .centerV()
             }
         )
     }
@@ -69,6 +70,7 @@ struct AvatarView: View {
                     .foregroundColor(.rythmicoGray90)
                     .padding(.horizontal, g.size.width * 0.255)
                     .offset(x: 0, y: -g.size.height * 0.02)
+                    .centerV()
             }
         )
     }
