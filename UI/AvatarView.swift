@@ -11,9 +11,19 @@ struct AvatarView: View {
         case placeholder
     }
 
-    var content: Content
-    var size: CGFloat = Const.defaultSize
-    var backgroundColor: Color = .rythmicoGray10
+    private let content: Content
+    private let size: CGFloat
+    private let backgroundColor: Color
+
+    init(
+        _ content: Content,
+        size: CGFloat = Const.defaultSize,
+        backgroundColor: Color = .rythmicoGray10
+    ) {
+        self.content = content
+        self.size = size
+        self.backgroundColor = backgroundColor
+    }
 
     var body: some View {
         contentView
@@ -80,13 +90,13 @@ struct AvatarView: View {
 struct AvatarView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            AvatarView(content: .initials("DR"))
-            AvatarView(content: .photo(Image(decorative: "avatar")))
-            AvatarView(content: .placeholder)
+            AvatarView(.initials("DR"))
+            AvatarView(.photo(Image(decorative: "avatar")))
+            AvatarView(.placeholder)
 
-            AvatarView(content: .initials("DR"), size: 200)
-            AvatarView(content: .photo(Image(decorative: "avatar")), size: 200)
-            AvatarView(content: .placeholder, size: 200)
+            AvatarView(.initials("DR"), size: 200)
+            AvatarView(.photo(Image(decorative: "avatar")), size: 200)
+            AvatarView(.placeholder, size: 200)
         }
         .previewLayout(.sizeThatFits)
         .padding()

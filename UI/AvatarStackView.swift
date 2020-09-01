@@ -1,18 +1,24 @@
 import SwiftUI
 
-struct AvatarStackView: View {
-    private enum Const {
-        static let borderLineWidth: CGFloat = 2
-        static let borderOutlineSize: CGFloat = AvatarView.Const.defaultSize + Const.borderLineWidth
-        static let spacing: CGFloat = -AvatarView.Const.defaultSize * 0.42
-    }
+private enum Const {
+    static let borderLineWidth: CGFloat = 2
+    static let borderOutlineSize: CGFloat = AvatarView.Const.defaultSize + borderLineWidth
+    static let spacing: CGFloat = -AvatarView.Const.defaultSize * 0.42
+}
 
-    var contents: [AvatarView.Content]
+struct AvatarStackView<Data: RangeReplaceableCollection, ContentView: View>: View where Data.Index == Int {
+    private let data: Data
+    private let content: (Data.Element) -> ContentView
+
+    init(_ data: Data, @ViewBuilder content: @escaping (Data.Element) -> ContentView) {
+        self.data = data
+        self.content = content
+    }
 
     var body: some View {
         HStack(spacing: Const.spacing) {
-            ForEach(0..<contents.count, id: \.self) { index in
-                AvatarView(content: self.contents[index])
+            ForEach(0..<data.count, id: \.self) { index in
+                self.content(self.data[index])
                     .overlay(
                         Circle()
                             .stroke(Color.white, lineWidth: Const.borderLineWidth)
@@ -21,6 +27,12 @@ struct AvatarStackView: View {
                     .zIndex(Double(-index))
             }
         }
+    }
+}
+
+extension AvatarStackView where Data.Element == AvatarView.Content, ContentView == AvatarView {
+    init(_ data: Data) {
+        self.init(data) { AvatarView($0) }
     }
 }
 
@@ -33,7 +45,7 @@ struct AvatarStackView_PreviewsWrapper: View {
     ]
 
     var body: some View {
-        AvatarStackView(contents: content)
+        AvatarStackView(content)
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.content = [

@@ -35,14 +35,14 @@ private extension LessonPlan.Status {
         switch self {
         case .pending,
              .reviewing([]):
-            return AnyView(AvatarView(content: .placeholder))
+            return AnyView(AvatarView(.placeholder))
         case .reviewing(let applications):
-            return AnyView(AvatarStackView(contents: applications.map { _ in .placeholder })) // TODO
+            return AnyView(AvatarStackView(applications.map { _ in .placeholder })) // TODO
         case .scheduled(let tutor),
              .cancelled(let tutor?, _):
-            return AnyView(AvatarView(content: .placeholder)) // TODO
+            return AnyView(AvatarView(.placeholder)) // TODO
         case .cancelled(nil, _):
-            return AnyView(AvatarView(content: .placeholder))
+            return AnyView(AvatarView(.placeholder))
         }
     }
 
