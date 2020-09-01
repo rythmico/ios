@@ -129,7 +129,12 @@ extension Font {
 
 extension UIFont {
     static func rythmicoFont(_ style: RythmicoFontStyle) -> UIFont {
-        let sizeCategory = ContentSizeCategory(UITraitCollection.current.preferredContentSizeCategory)
+        let sizeCategory: ContentSizeCategory
+        if #available(iOS 14, *) {
+            sizeCategory = ContentSizeCategory(UITraitCollection.current.preferredContentSizeCategory)
+        } else {
+            sizeCategory = ContentSizeCategory(UITraitCollection.current.preferredContentSizeCategory)
+        }
         let legibilityWeight = LegibilityWeight(UITraitCollection.current.legibilityWeight)
 
         let fontSize = style.size(for: sizeCategory)
