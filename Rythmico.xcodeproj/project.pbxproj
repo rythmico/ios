@@ -1200,22 +1200,13 @@
 			isa = PBXGroup;
 			children = (
 				03E88EBB24C709A00077A420 /* ActivityCoordinator.swift */,
-				0365F6F42417F1E900F452AC /* AddressLookupEndpoints.swift */,
-				03E88EB524C4AD820077A420 /* APIActivityCoordinator.swift */,
-				0336D62B241EAAF6006CFC1F /* APIRequest.swift */,
-				03E88EB324C4AA4C0077A420 /* APIService.swift */,
-				03E88EB924C6232D0077A420 /* APIServiceDoubles.swift */,
-				03C34361249FC16E004907DF /* APIUserAgent.swift */,
+				D527B01A24FEACC0003E81A9 /* API */,
 				D535549823E0FA4A005A20EB /* Auth */,
-				032B6FDC24B78A5200299A09 /* BookingRequestEndpoints.swift */,
-				D5F4D3E224F04479000E8580 /* BookingApplicationEndpoints.swift */,
 				03A91EF924918A4700DEAD5E /* DeviceRegistration */,
 				03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */,
-				D527B01324FEA2DE003E81A9 /* ImageLoadingCoordinator.swift */,
-				D527B00C24FDC7AF003E81A9 /* ImageLoadingService.swift */,
-				D527B00F24FE7811003E81A9 /* ImageLoadingServiceDoubles.swift */,
+				D527B01B24FEAD1A003E81A9 /* Endpoints */,
+				D527B01924FEAC97003E81A9 /* ImageLoading */,
 				D535547A23DF3E81005A20EB /* Keychain */,
-				033D47D5247ABF6B0096C50F /* LessonPlanEndpoints.swift */,
 				D5217CED24E2D81B00C89018 /* MapOpener */,
 				03BB5CA02473467500B44692 /* PushNotifications */,
 				03E88EB724C4B0F40077A420 /* Repository.swift */,
@@ -1363,6 +1354,39 @@
 				D509898423B9B5C100C19300 /* GoogleService-Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D527B01924FEAC97003E81A9 /* ImageLoading */ = {
+			isa = PBXGroup;
+			children = (
+				D527B01324FEA2DE003E81A9 /* ImageLoadingCoordinator.swift */,
+				D527B00C24FDC7AF003E81A9 /* ImageLoadingService.swift */,
+				D527B00F24FE7811003E81A9 /* ImageLoadingServiceDoubles.swift */,
+			);
+			path = ImageLoading;
+			sourceTree = "<group>";
+		};
+		D527B01A24FEACC0003E81A9 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				03E88EB524C4AD820077A420 /* APIActivityCoordinator.swift */,
+				0336D62B241EAAF6006CFC1F /* APIRequest.swift */,
+				03E88EB324C4AA4C0077A420 /* APIService.swift */,
+				03E88EB924C6232D0077A420 /* APIServiceDoubles.swift */,
+				03C34361249FC16E004907DF /* APIUserAgent.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		D527B01B24FEAD1A003E81A9 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				0365F6F42417F1E900F452AC /* AddressLookupEndpoints.swift */,
+				D5F4D3E224F04479000E8580 /* BookingApplicationEndpoints.swift */,
+				032B6FDC24B78A5200299A09 /* BookingRequestEndpoints.swift */,
+				033D47D5247ABF6B0096C50F /* LessonPlanEndpoints.swift */,
+			);
+			path = Endpoints;
 			sourceTree = "<group>";
 		};
 		D535547423DF33AA005A20EB /* Authentication */ = {
