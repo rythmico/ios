@@ -68,7 +68,7 @@ extension LessonPlan {
 extension LessonPlan {
     static var reviewingJackGuitarPlanStub: LessonPlan {
         jackGuitarPlanStub.with {
-            $0.status = .reviewing([.stub])
+            $0.status = .reviewing([.stub, .stub])
         }
     }
 }

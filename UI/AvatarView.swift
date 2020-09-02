@@ -99,6 +99,7 @@ struct AvatarView_Previews: PreviewProvider {
             AvatarView(.photo(UIImage(.purple)), size: 200)
             AvatarView(.placeholder, size: 200)
         }
+        .environment(\.colorScheme, .dark)
         .previewLayout(.sizeThatFits)
         .padding()
     }

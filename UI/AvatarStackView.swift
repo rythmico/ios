@@ -21,7 +21,7 @@ struct AvatarStackView<Data: RangeReplaceableCollection, ContentView: View>: Vie
                 self.content(self.data[index])
                     .overlay(
                         Circle()
-                            .stroke(Color.white, lineWidth: Const.borderLineWidth)
+                            .stroke(Color.rythmicoBackground, lineWidth: Const.borderLineWidth)
                             .frame(width: Const.borderOutlineSize, height: Const.borderOutlineSize)
                     )
                     .zIndex(Double(-index))
@@ -61,6 +61,7 @@ struct AvatarStackView_PreviewsWrapper: View {
 struct AvatarStackView_Previews: PreviewProvider {
     static var previews: some View {
         AvatarStackView_PreviewsWrapper()
+            .environment(\.colorScheme, .dark)
             .previewLayout(.sizeThatFits)
             .padding()
     }
