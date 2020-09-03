@@ -240,8 +240,6 @@
 		D527B01624FEAA5F003E81A9 /* ImageLoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B00C24FDC7AF003E81A9 /* ImageLoadingService.swift */; };
 		D527B01724FEAA62003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B00F24FE7811003E81A9 /* ImageLoadingServiceDoubles.swift */; };
 		D527B01824FEABEB003E81A9 /* CancellableDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B01124FE92DA003E81A9 /* CancellableDoubles.swift */; };
-		D527B01D24FEB2C8003E81A9 /* View+Centering.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B01C24FEB2C8003E81A9 /* View+Centering.swift */; };
-		D527B01E24FEB2C8003E81A9 /* View+Centering.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B01C24FEB2C8003E81A9 /* View+Centering.swift */; };
 		D527B02224FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B02124FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift */; };
 		D52C550D24DC6C3A00C295C4 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896C23B963B700C19300 /* FIRAnalyticsConnector.framework */; };
 		D52C551124DC6C3A00C295C4 /* FirebaseABTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556123E4F8BE005A20EB /* FirebaseABTesting.framework */; };
@@ -628,7 +626,6 @@
 		D527B00F24FE7811003E81A9 /* ImageLoadingServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadingServiceDoubles.swift; sourceTree = "<group>"; };
 		D527B01124FE92DA003E81A9 /* CancellableDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellableDoubles.swift; sourceTree = "<group>"; };
 		D527B01324FEA2DE003E81A9 /* ImageLoadingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadingCoordinator.swift; sourceTree = "<group>"; };
-		D527B01C24FEB2C8003E81A9 /* View+Centering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Centering.swift"; sourceTree = "<group>"; };
 		D527B02124FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanTutorAvatarView.swift; sourceTree = "<group>"; };
 		D52C550824DC6A7500C295C4 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Carthage/Build/iOS/Firebase.framework; sourceTree = "<group>"; };
 		D52C553924DC71B800C295C4 /* BookingRequestDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestDetailView.swift; sourceTree = "<group>"; };
@@ -1335,7 +1332,6 @@
 				D5F506642400619600CA4094 /* UIApplication+KeyboardDismisser.swift */,
 				D5CC5FE924FF1201007DFE84 /* UIImage+Sugar.swift */,
 				03A3F6EB2447D3FD00F6391D /* UIScreen+Sugar.swift */,
-				D527B01C24FEB2C8003E81A9 /* View+Centering.swift */,
 				D5147507240C8E69002EE20C /* XCTAssertView.swift */,
 			);
 			path = UI;
@@ -2050,7 +2046,6 @@
 				D5E987BF24EDE94200E2E1AF /* Routes+Rythmico.swift in Sources */,
 				03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */,
 				D5CAC9AC24E6D19900119DAA /* MultilineTextField+Rythmico.swift in Sources */,
-				D527B01D24FEB2C8003E81A9 /* View+Centering.swift in Sources */,
 				03275AD924900422009C3980 /* PushNotificationRegisterService.swift in Sources */,
 				03B19843247181B3005529EB /* RequestLessonPlanFormView.swift in Sources */,
 				035B1D14249E565200AABFEA /* TestableView.swift in Sources */,
@@ -2119,7 +2114,6 @@
 				D5F4D3E924F09C43000E8580 /* Dot.swift in Sources */,
 				035B1D50249E57E200AABFEA /* URLOpenerDoubles.swift in Sources */,
 				D527B00E24FE75C1003E81A9 /* ImageLoadingService.swift in Sources */,
-				D527B01E24FEB2C8003E81A9 /* View+Centering.swift in Sources */,
 				035B1D54249E59BB00AABFEA /* PreviewDevices.swift in Sources */,
 				035B1D45249E577700AABFEA /* AppleAuthorizationResponseDoubles.swift in Sources */,
 				D5E987C224EDE9A100E2E1AF /* Routes+Tutor.swift in Sources */,
