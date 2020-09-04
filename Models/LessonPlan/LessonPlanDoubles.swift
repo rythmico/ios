@@ -92,7 +92,7 @@ extension LessonPlan.Tutor {
         .init(
             id: "ID1",
             name: "Jesse Bildner",
-            photoThumbnailURL: URL(string: "https://rythmico.com"),
+            photoThumbnailURL: nil,
             photoURL: nil
         )
     }

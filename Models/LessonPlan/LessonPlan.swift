@@ -33,8 +33,8 @@ struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
     struct Tutor: Equatable, Decodable, Hashable {
         var id: String
         var name: String
-        var photoThumbnailURL: URL?
-        var photoURL: URL?
+        var photoThumbnailURL: ImageSource?
+        var photoURL: ImageSource?
     }
 
     struct CancellationInfo: Equatable, Decodable, Hashable {
