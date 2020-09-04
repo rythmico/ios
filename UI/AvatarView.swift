@@ -51,7 +51,7 @@ struct AvatarView: View {
                     .lineLimit(1)
                     .foregroundColor(.rythmicoGray90)
                     .padding(.horizontal, g.size.width * 0.18)
-                    .position(x: g.frame(in: .local).midX, y: g.frame(in: .local).midY)
+                    .position(x: g.size.width / 2, y: g.size.height / 2)
             }
         )
     }
@@ -81,7 +81,7 @@ struct AvatarView: View {
                     .foregroundColor(.rythmicoGray90)
                     .padding(.horizontal, g.size.width * 0.255)
                     .offset(x: 0, y: -g.size.height * 0.02)
-                    .position(x: g.frame(in: .local).midX, y: g.frame(in: .local).midY)
+                    .position(x: g.size.width / 2, y: g.size.height / 2)
             }
         )
     }
