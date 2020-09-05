@@ -9,20 +9,6 @@ protocol KeychainProtocol: AnyObject {
     func removeObject(forKey key: String) -> Bool
 }
 
-typealias Keychain = Valet
-
-extension Keychain: KeychainProtocol {}
-extension Keychain {
-    static var localKeychain = Keychain.valet(
-        with: Identifier(nonEmpty: "local_keychain")!,
-        accessibility: .afterFirstUnlockThisDeviceOnly
-    )
-}
-
-private enum KeychainKey {
-    static let appleAuthorizationUserId = "appleAuthorizationUserId"
-}
-
 extension KeychainProtocol {
     var appleAuthorizationUserId: String? {
         get { string(forKey: KeychainKey.appleAuthorizationUserId) }
@@ -36,4 +22,18 @@ extension KeychainProtocol {
             removeObject(forKey: key)
         }
     }
+}
+
+private enum KeychainKey {
+    static let appleAuthorizationUserId = "appleAuthorizationUserId"
+}
+
+typealias Keychain = Valet
+
+extension Keychain: KeychainProtocol {}
+extension Keychain {
+    static var localKeychain = Keychain.valet(
+        with: Identifier(nonEmpty: "local_keychain")!,
+        accessibility: .afterFirstUnlockThisDeviceOnly
+    )
 }
