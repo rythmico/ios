@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BookingRequestsTabView: View {
+struct BookingRequestsTabView: View, RoutableView {
     enum Tab: String, CaseIterable {
         case upcoming = "Upcoming"
         case applied = "Applied"
@@ -30,10 +30,10 @@ struct BookingRequestsTabView: View {
                 BookingApplicationsView()
             }
         }
-        .onRoute(perform: handleRoute)
+        .routable(self)
     }
 
-    private func handleRoute(_ route: Route) {
+    func handleRoute(_ route: Route) {
         switch route {
         case .bookingRequests:
             tab = .upcoming

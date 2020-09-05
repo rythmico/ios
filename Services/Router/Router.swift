@@ -13,8 +13,12 @@ final class Router: ObservableObject {
     }
 }
 
+protocol RoutableView: View {
+    func handleRoute(_ route: Route)
+}
+
 extension View {
-    func onRoute(_ router: Router = Current.router, perform handler: @escaping (Route) -> Void) -> some View {
-        onReceive(router.$route) { $0.map(handler) }
+    func routable<RV: RoutableView>(_ view: RV, router: Router = Current.router) -> some View {
+        onReceive(router.$route) { $0.map(view.handleRoute) }
     }
 }

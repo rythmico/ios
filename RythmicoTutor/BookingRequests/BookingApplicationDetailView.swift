@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftUIMapView
 import Sugar
 
-struct BookingApplicationDetailView: View {
+struct BookingApplicationDetailView: View, RoutableView {
     @Environment(\.presentationMode)
     private var presentationMode
 
@@ -125,10 +125,10 @@ struct BookingApplicationDetailView: View {
         .disabled(retractionCoordinator.state.isLoading)
         .alertOnFailure(retractionCoordinator)
         .onSuccess(retractionCoordinator, perform: didRetractBookingApplication)
-        .onRoute(perform: handleRoute)
+        .routable(self)
     }
 
-    private func handleRoute(_ route: Route) {
+    func handleRoute(_ route: Route) {
         switch route {
         case .bookingRequests, .bookingApplications:
             presentationMode.wrappedValue.dismiss()
