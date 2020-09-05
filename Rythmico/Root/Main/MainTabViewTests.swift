@@ -27,9 +27,9 @@ final class MainTabViewTests: XCTestCase {
         let view = try XCTUnwrap(MainTabView())
 
         XCTAssertView(view) { view in
-            XCTAssertNil(view.lessonRequestView)
+            XCTAssertFalse(view.isLessonRequestViewPresented)
             view.presentRequestLessonFlow()
-            XCTAssertNotNil(view.lessonRequestView)
+            XCTAssertTrue(view.isLessonRequestViewPresented)
         }
     }
 }

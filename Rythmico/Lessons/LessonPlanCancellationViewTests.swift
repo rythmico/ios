@@ -15,7 +15,7 @@ final class LessonPlanCancellationViewTests: XCTestCase {
         Current.lessonPlanCancellationService = spy
 
         let view = try XCTUnwrap(
-            LessonPlanCancellationView(lessonPlan: .davidGuitarPlanStub, onSuccessfulCancellation: {})
+            LessonPlanCancellationView(lessonPlan: .davidGuitarPlanStub)
         )
 
         XCTAssertView(view) { view in
