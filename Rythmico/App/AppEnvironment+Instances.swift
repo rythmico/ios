@@ -12,7 +12,9 @@ extension AppEnvironment {
         locale: .autoupdatingCurrent,
         timeZone: .autoupdatingCurrent,
 
+        settings: UserDefaults.standard,
         keychain: Keychain.localKeychain,
+
         appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
         appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
         appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifier(notificationCenter: NotificationCenter.default),
@@ -79,7 +81,9 @@ extension AppEnvironment {
             locale: Locale(identifier: "en_GB"),
             timeZone: TimeZone(identifier: "Europe/London")!,
 
+            settings: UserDefaultsDummy(),
             keychain: KeychainDummy(),
+
             appleAuthorizationService: AppleAuthorizationServiceDummy(),
             appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcherDummy(),
             appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifierDummy(),
