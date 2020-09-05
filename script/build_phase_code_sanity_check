@@ -1,0 +1,61 @@
+#!/usr/bin/env xcrun --sdk macosx swift
+
+import Foundation
+
+@discardableResult
+func shell(_ command: String) -> String {
+    let task = Process()
+    let pipe = Pipe()
+
+    task.standardOutput = pipe
+    task.arguments = ["-c", command]
+    task.launchPath = "/bin/bash"
+    task.launch()
+
+    let data = pipe.fileHandleForReading.readDataToEndOfFile()
+    let output = String(data: data, encoding: .utf8)!
+
+    return output
+}
+
+var exitStatus = EXIT_SUCCESS
+
+shell(#"find "$PWD" -type f -name '*.swift'"#)
+    .components(separatedBy: "\n")
+    .filter { !$0.trimmingCharacters(in: .whitespaces).isEmpty }
+    .forEach { swiftFile in
+        let content = shell("cat '\(swiftFile)'")
+        let lines = content.components(separatedBy: "\n")
+
+        func linesContainCode(code: String) -> Bool {
+            lines.contains { line in
+                if let codeRange = line.range(of: code) {
+                    if let commentRange = line.range(of: "//") {
+                        return codeRange.lowerBound < commentRange.lowerBound
+                    } else {
+                        return true
+                    }
+                } else {
+                    return false
+                }
+            }
+        }
+
+        func assertProtocolConformance(protocol: String, requiredCode: String, excludeFiles: [String] = []) {
+            guard !excludeFiles.contains(URL(fileURLWithPath: swiftFile).lastPathComponent) else {
+                return
+            }
+            if
+                let conformanceLine = lines.firstIndex(where: { $0.contains(`protocol`) }).map({ $0 + 1 }),
+                !linesContainCode(code: requiredCode)
+            {
+                print("\(swiftFile):\(conformanceLine): error: Missing '\(requiredCode)' requirement for protocol `\(`protocol`)`")
+                exitStatus = EXIT_FAILURE
+            }
+        }
+
+        assertProtocolConformance(protocol: "RoutableView", requiredCode: ".routable(self)", excludeFiles: ["Router.swift"])
+        assertProtocolConformance(protocol: "TestableView", requiredCode: ".testable(self)", excludeFiles: ["TestableView.swift", "XCTAssertView.swift"])
+    }
+
+exit(exitStatus)

@@ -1595,6 +1595,7 @@
 			buildPhases = (
 				D5B57A612414516700BE9B4F /* Generate Asset Symbols */,
 				D5B57A632414672F00BE9B4F /* Generate Enum Properties */,
+				D5CC5FF825041262007DFE84 /* Sanity Check Sources */,
 				03341B3723ABB1E7009AE8A8 /* Sources */,
 				03341B3823ABB1E7009AE8A8 /* Frameworks */,
 				03341B3923ABB1E7009AE8A8 /* Resources */,
@@ -1623,6 +1624,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 035B1CCD249CF2AC00AABFEA /* Build configuration list for PBXNativeTarget "RythmicoTutor" */;
 			buildPhases = (
+				D5CC5FF725040F9A007DFE84 /* Sanity Check Sources */,
 				035B1CB8249CF2AA00AABFEA /* Sources */,
 				035B1CB9249CF2AA00AABFEA /* Frameworks */,
 				035B1CBA249CF2AA00AABFEA /* Resources */,
@@ -1895,6 +1897,42 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${SRCROOT}/script/build_phase_generate_enum_properties\n";
+		};
+		D5CC5FF725040F9A007DFE84 /* Sanity Check Sources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Sanity Check Sources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/script/build_phase_code_sanity_check\n";
+		};
+		D5CC5FF825041262007DFE84 /* Sanity Check Sources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Sanity Check Sources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/script/build_phase_code_sanity_check\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
