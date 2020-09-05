@@ -3,7 +3,7 @@ import SFSafeSymbols
 import Sugar
 
 struct MainTabView: View, TestableView {
-    enum TabSelection: String, Hashable {
+    enum Tab: String, Hashable {
         case lessons = "Lessons"
         case profile = "Profile"
 
@@ -12,7 +12,7 @@ struct MainTabView: View, TestableView {
     }
 
     final class ViewState: ObservableObject {
-        @Published var tabSelection: TabSelection = .lessons
+        @Published var tab: Tab = .lessons
     }
 
     @ObservedObject
@@ -48,34 +48,34 @@ struct MainTabView: View, TestableView {
     let inspection = SelfInspection()
     var body: some View {
         NavigationView {
-            TabView(selection: $state.tabSelection) {
+            TabView(selection: $state.tab) {
                 lessonsView
-                    .tag(TabSelection.lessons)
+                    .tag(Tab.lessons)
                     .tabItem {
                         Image(systemSymbol: .calendar).font(.system(size: 21, weight: .medium))
-                        Text(TabSelection.lessons.uppercasedTitle)
+                        Text(Tab.lessons.uppercasedTitle)
                     }
 
                 profileView
-                    .tag(TabSelection.profile)
+                    .tag(Tab.profile)
                     .tabItem {
                         Image(systemSymbol: .person).font(.system(size: 21, weight: .semibold))
-                        Text(TabSelection.profile.uppercasedTitle)
+                        Text(Tab.profile.uppercasedTitle)
                     }
             }
-            .navigationBarTitle(Text(state.tabSelection.title), displayMode: .large)
+            .navigationBarTitle(Text(state.tab.title), displayMode: .large)
             .navigationBarItems(leading: leadingNavigationItem, trailing: trailingNavigationItem)
         }
         .testable(self)
         .modifier(BestNavigationStyleModifier())
-        .onReceive(state.$tabSelection, perform: onTabSelectionChange)
+        .onReceive(state.$tab, perform: onTabSelectionChange)
         .accentColor(.rythmicoPurple)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
         .sheet(item: $lessonRequestView)
     }
 
     private var leadingNavigationItem: AnyView? {
-        switch state.tabSelection {
+        switch state.tab {
         case .lessons:
             return AnyView(
                 Group {
@@ -90,7 +90,7 @@ struct MainTabView: View, TestableView {
     }
 
     private var trailingNavigationItem: AnyView? {
-        switch state.tabSelection {
+        switch state.tab {
         case .lessons:
             return AnyView(
                 Button(action: presentRequestLessonFlow) {
@@ -107,7 +107,7 @@ struct MainTabView: View, TestableView {
         }
     }
 
-    private func onTabSelectionChange(_ newTab: TabSelection) { let oldTab = state.tabSelection
+    private func onTabSelectionChange(_ newTab: Tab) { let oldTab = state.tab
         if oldTab != newTab, newTab == .lessons {
             lessonPlanFetchingCoordinator.run()
         }
