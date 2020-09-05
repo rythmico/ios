@@ -2,7 +2,6 @@ import Foundation
 
 struct AppEnvironment {
     var date: () -> Date
-
     var calendar: Calendar
     var locale: Locale
     var timeZone: TimeZone
