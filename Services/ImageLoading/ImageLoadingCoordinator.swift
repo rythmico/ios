@@ -10,9 +10,9 @@ final class ImageLoadingCoordinator: FailableActivityCoordinator<UIImage> {
         self.service = service
     }
 
-    func run(with source: ImageSource) {
+    func run(with imageReference: ImageReference) {
         state = .loading
-        switch source {
+        switch imageReference {
         case .url(let url):
             cancellable = service.load(url) { result in
                 self.state = .finished(result.map { $0.withRenderingMode(.alwaysOriginal) })

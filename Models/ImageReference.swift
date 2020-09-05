@@ -1,7 +1,7 @@
 import Foundation
 import class UIKit.UIImage
 
-enum ImageSource: Equatable, Decodable, Hashable {
+enum ImageReference: Equatable, Decodable, Hashable {
     case url(URL)
     case assetName(String)
     case image(UIImage)
