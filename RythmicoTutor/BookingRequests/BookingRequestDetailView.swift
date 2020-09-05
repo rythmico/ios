@@ -99,7 +99,9 @@ struct BookingRequestDetailView: View, RoutableView {
             intent: .search(query: bookingRequest.postcode),
             error: $mapOpeningError
         )
-        .sheet(isPresented: $isApplicationViewPresented) { BookingRequestApplyView(booking: self.bookingRequest) }
+        .sheet(isPresented: $isApplicationViewPresented) {
+            BookingRequestApplyView(booking: self.bookingRequest)
+        }
         .routable(self)
     }
 

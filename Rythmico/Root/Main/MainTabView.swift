@@ -2,7 +2,7 @@ import SwiftUI
 import SFSafeSymbols
 import Sugar
 
-struct MainTabView: View, TestableView {
+struct MainTabView: View, TestableView, RoutableView {
     enum Tab: String, Hashable {
         case lessons = "Lessons"
         case profile = "Profile"
@@ -22,7 +22,7 @@ struct MainTabView: View, TestableView {
     private let profileView: ProfileView = ProfileView()
 
     @State
-    private(set) var lessonRequestView: RequestLessonPlanView?
+    private(set) var isLessonRequestViewPresented = false
 
     // TODO: potentially use @StateObject to simplify RootView
     @ObservedObject
@@ -42,7 +42,7 @@ struct MainTabView: View, TestableView {
     }
 
     func presentRequestLessonFlow() {
-        lessonRequestView = RequestLessonPlanView(context: RequestLessonPlanContext())
+        isLessonRequestViewPresented = true
     }
 
     let inspection = SelfInspection()
@@ -71,7 +71,25 @@ struct MainTabView: View, TestableView {
         .onReceive(state.$tab, perform: onTabSelectionChange)
         .accentColor(.rythmicoPurple)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
-        .sheet(item: $lessonRequestView)
+        .sheet(isPresented: $isLessonRequestViewPresented) {
+            RequestLessonPlanView(context: RequestLessonPlanContext())
+        }
+        .routable(self)
+    }
+
+    func handleRoute(_ route: Route) {
+        switch route {
+        case .lessons:
+            state.tab = .lessons
+            Current.router.end()
+        case .requestLessonPlan:
+            state.tab = .lessons
+            presentRequestLessonFlow()
+            Current.router.end()
+        case .profile:
+            state.tab = .profile
+            Current.router.end()
+        }
     }
 
     private var leadingNavigationItem: AnyView? {
