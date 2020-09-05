@@ -8,12 +8,12 @@ protocol UserDefaultsProtocol {
 extension UserDefaults: UserDefaultsProtocol {}
 
 extension UserDefaultsProtocol {
-    var isAppFirstOpen: Bool {
-        get { object(forKey: UserDefaultsKey.isAppFirstOpen) as? Bool ?? false }
-        set { set(newValue, forKey: UserDefaultsKey.isAppFirstOpen) }
-    }
+//    var x: Bool {
+//        get { object(forKey: UserDefaultsKey.x) as? Bool ?? false }
+//        set { set(newValue, forKey: UserDefaultsKey.x) }
+//    }
 }
 
 private enum UserDefaultsKey {
-    static let isAppFirstOpen = "isAppFirstOpen"
+//    static let x = "x"
 }
