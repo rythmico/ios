@@ -7,7 +7,7 @@ protocol AppleAuthorizationCredentialRevocationNotifying: AnyObject {
 }
 
 final class AppleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifying {
-    private let notificationCenter: NotificationCenterProtocol
+    private let notificationCenter: NotificationCenter
     private var token: NSObjectProtocol?
 
     var revocationHandler: Action? {
@@ -16,7 +16,7 @@ final class AppleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCr
         }
     }
 
-    init(notificationCenter: NotificationCenterProtocol) {
+    init(notificationCenter: NotificationCenter) {
         self.notificationCenter = notificationCenter
     }
 

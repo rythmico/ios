@@ -281,8 +281,6 @@
 		D53554F923E0FD77005A20EB /* Sugar.h in Headers */ = {isa = PBXBuildFile; fileRef = D53554F723E0FD77005A20EB /* Sugar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D53554FC23E0FD77005A20EB /* Sugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53554F523E0FD77005A20EB /* Sugar.framework */; };
 		D53554FD23E0FD77005A20EB /* Sugar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D53554F523E0FD77005A20EB /* Sugar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D535550123E0FD9F005A20EB /* NotificationCenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546E23DF2698005A20EB /* NotificationCenterProtocol.swift */; };
-		D535550223E0FD9F005A20EB /* NotificationCenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547223DF2AE2005A20EB /* NotificationCenterSpy.swift */; };
 		D535550323E0FD9F005A20EB /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BBF23C689BA00B6FCB1 /* Typealiases.swift */; };
 		D535553623E105A5005A20EB /* OnboardingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553523E105A5005A20EB /* OnboardingViewTests.swift */; };
 		D535553823E116C9005A20EB /* RootViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553723E116C9005A20EB /* RootViewTests.swift */; };
@@ -651,9 +649,7 @@
 		D535546823DCB03E005A20EB /* AppleAuthorizationResponseDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationResponseDoubles.swift; sourceTree = "<group>"; };
 		D535546A23DCB65A005A20EB /* AppleAuthorizationCredentialStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialStateProvider.swift; sourceTree = "<group>"; };
 		D535546C23DF212C005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialRevocationNotifier.swift; sourceTree = "<group>"; };
-		D535546E23DF2698005A20EB /* NotificationCenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterProtocol.swift; sourceTree = "<group>"; };
 		D535547023DF2A40005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialRevocationObserverTests.swift; sourceTree = "<group>"; };
-		D535547223DF2AE2005A20EB /* NotificationCenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterSpy.swift; sourceTree = "<group>"; };
 		D535547823DF3A7C005A20EB /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		D535547B23DF4D30005A20EB /* DeauthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeauthenticationService.swift; sourceTree = "<group>"; };
 		D535547D23DF4F44005A20EB /* KeychainDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainDoubles.swift; sourceTree = "<group>"; };
@@ -1466,8 +1462,6 @@
 				03275ADC2490091E009C3980 /* DispatchQueue+Sugar.swift */,
 				03B71323241D71B600DED025 /* Error+Sugar.swift */,
 				D5CC5FEC25027F64007DFE84 /* ImageReference+Sugar.swift */,
-				D535546E23DF2698005A20EB /* NotificationCenterProtocol.swift */,
-				D535547223DF2AE2005A20EB /* NotificationCenterSpy.swift */,
 				D5B57A6E2419E22300BE9B4F /* Optional+Sugar.swift */,
 				03E88E8624BB7EB10077A420 /* Result+Sugar.swift */,
 				03C39DCD2494FC9D00C76516 /* Sleep.swift */,
@@ -2297,13 +2291,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5C23A78240F1C1E007DED63 /* String+Sugar.swift in Sources */,
-				D535550223E0FD9F005A20EB /* NotificationCenterSpy.swift in Sources */,
 				D5B57A6F2419E22300BE9B4F /* Optional+Sugar.swift in Sources */,
 				D5C23A7A240F2DEB007DED63 /* Bool+Sugar.swift in Sources */,
 				03B71324241D71B600DED025 /* Error+Sugar.swift in Sources */,
 				03E88E8924BB82290077A420 /* DateFormatter+Sugar.swift in Sources */,
 				03E88E8724BB7EB10077A420 /* Result+Sugar.swift in Sources */,
-				D535550123E0FD9F005A20EB /* NotificationCenterProtocol.swift in Sources */,
 				03275ADD2490091E009C3980 /* DispatchQueue+Sugar.swift in Sources */,
 				D5FD6F1224096FB5008C5AD4 /* Collection+Sugar.swift in Sources */,
 				D52C554E24E1BCBB00C295C4 /* URL+Sugar.swift in Sources */,

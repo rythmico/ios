@@ -17,7 +17,7 @@ extension AppEnvironment {
 
         appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
         appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
-        appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifier(notificationCenter: NotificationCenter.default),
+        appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifier(notificationCenter: .default),
         authenticationService: AuthenticationService(),
         deauthenticationService: DeauthenticationService(),
         accessTokenProviderObserver: AuthenticationAccessTokenProviderObserver(broadcast: AuthenticationAccessTokenProviderBroadcast()),

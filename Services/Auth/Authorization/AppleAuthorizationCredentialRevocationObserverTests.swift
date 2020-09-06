@@ -46,3 +46,20 @@ final class AppleAuthorizationCredentialRevocationNotifierTests: XCTestCase {
         wait(for: [expectationA, expectationB], timeout: 1)
     }
 }
+
+private final class NotificationCenterSpy: NotificationCenter {
+    private(set) var notificationName: NSNotification.Name?
+    private(set) var observerBlock: ((Notification) -> Void)?
+
+    var returnedToken: Int
+
+    init(returnedToken: Int) {
+        self.returnedToken = returnedToken
+    }
+
+    override func addObserver(forName name: NSNotification.Name?, object obj: Any?, queue: OperationQueue?, using block: @escaping (Notification) -> Void) -> NSObjectProtocol {
+        notificationName = name
+        observerBlock = block
+        return NSNumber(value: returnedToken)
+    }
+}
