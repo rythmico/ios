@@ -10,7 +10,7 @@ final class MainTabViewTests: XCTestCase {
         Current.userAuthenticated()
     }
 
-    func testPushNotificationRegistrationOnAppear() throws {
+    func testDeviceRegistrationOnAppear() throws {
         Current.deviceTokenProvider = DeviceTokenProviderStub(result: .success("TOKEN"))
 
         let spy = APIServiceSpy<AddDeviceRequest>()
@@ -20,6 +20,21 @@ final class MainTabViewTests: XCTestCase {
 
         XCTAssertView(view) { view in
             XCTAssertEqual(spy.sendCount, 1)
+        }
+    }
+
+    func testPushNotificationPromptOnAppear() throws {
+        Current.pushNotificationAuthorization(
+            initialStatus: .notDetermined,
+            requestResult: (true, nil)
+        )
+
+        let view = try XCTUnwrap(MainTabView())
+
+        XCTAssertTrue(Current.pushNotificationAuthorizationCoordinator.status.isNotDetermined)
+
+        XCTAssertView(view) { view in
+            XCTAssertTrue(Current.pushNotificationAuthorizationCoordinator.status.isAuthorized)
         }
     }
 }
