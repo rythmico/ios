@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import class UIKit.UIImage
 import protocol Combine.Cancellable
@@ -65,3 +66,4 @@ final class ImageLoadingServiceDummy: ImageLoadingServiceProtocol {
         CancellableDummy()
     }
 }
+#endif

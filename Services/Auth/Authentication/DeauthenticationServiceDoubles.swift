@@ -1,3 +1,4 @@
+#if DEBUG
 import Sugar
 
 final class DeauthenticationServiceStub: DeauthenticationServiceProtocol {
@@ -18,3 +19,4 @@ final class DeauthenticationServiceSpy: DeauthenticationServiceProtocol {
 final class DeauthenticationServiceDummy: DeauthenticationServiceProtocol {
     func deauthenticate() {}
 }
+#endif

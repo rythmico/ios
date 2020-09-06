@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import Sugar
 
@@ -30,3 +31,4 @@ extension Schedule {
         )
     }
 }
+#endif

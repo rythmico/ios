@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import UserNotifications
 
@@ -30,3 +31,4 @@ final class UNUserNotificationCenterDummy: UNUserNotificationCenterProtocol {
     func getNotificationSettings(completionHandler: @escaping (UNNotificationSettingsProtocol) -> Void) {}
     func requestAuthorization(options: UNAuthorizationOptions, completionHandler: @escaping (Bool, Error?) -> Void) {}
 }
+#endif

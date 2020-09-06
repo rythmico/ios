@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 final class KeychainFake: KeychainProtocol {
@@ -25,3 +26,4 @@ final class KeychainDummy: KeychainProtocol {
 
     func removeObject(forKey key: String) -> Bool { false }
 }
+#endif

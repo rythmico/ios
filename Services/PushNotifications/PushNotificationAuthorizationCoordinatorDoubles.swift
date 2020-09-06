@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 extension PushNotificationAuthorizationCoordinator {
@@ -6,3 +7,4 @@ extension PushNotificationAuthorizationCoordinator {
         registerService: PushNotificationRegisterServiceDummy()
     )
 }
+#endif
