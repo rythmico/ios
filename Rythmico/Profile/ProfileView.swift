@@ -122,8 +122,7 @@ struct ProfileView_Previews: PreviewProvider {
 //                authorizationRequestResult: (false, nil)
 //                authorizationRequestResult: (false, "Error")
             ),
-            registerService: PushNotificationRegisterServiceDummy(),
-            queue: nil
+            registerService: PushNotificationRegisterServiceDummy()
         )
         return ProfileView()
     }

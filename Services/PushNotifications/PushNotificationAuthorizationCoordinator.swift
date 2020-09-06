@@ -25,22 +25,19 @@ final class PushNotificationAuthorizationCoordinator: ObservableObject {
 
     private let center: UNUserNotificationCenterProtocol
     private let registerService: PushNotificationRegisterServiceProtocol
-    private let queue: DispatchQueue?
 
     init(
         center: UNUserNotificationCenterProtocol,
-        registerService: PushNotificationRegisterServiceProtocol,
-        queue: DispatchQueue?
+        registerService: PushNotificationRegisterServiceProtocol
     ) {
         self.center = center
         self.registerService = registerService
-        self.queue = queue
         refreshAuthorizationStatus()
     }
 
     func refreshAuthorizationStatus() {
         center.getNotificationSettings { settings in
-            self.queue.asyncOrImmediate {
+            DispatchQueue.main.immediateOrAsync {
                 switch settings.authorizationStatus {
                 case .notDetermined:
                     self.status = .notDetermined
@@ -58,7 +55,7 @@ final class PushNotificationAuthorizationCoordinator: ObservableObject {
     func requestAuthorization() {
         status = .authorizing
         center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            self.queue.asyncOrImmediate {
+            DispatchQueue.main.immediateOrAsync {
                 if let error = error {
                     self.status = .failed(error)
                 } else {

@@ -36,8 +36,7 @@ final class ProfileViewTests: XCTestCase {
                 authorizationStatus: .authorized,
                 authorizationRequestResult: (false, nil)
             ),
-            registerService: PushNotificationRegisterServiceDummy(),
-            queue: nil
+            registerService: PushNotificationRegisterServiceDummy()
         )
 
         let view = ProfileView()
@@ -59,8 +58,7 @@ final class ProfileViewTests: XCTestCase {
                 authorizationStatus: .denied,
                 authorizationRequestResult: (false, nil)
             ),
-            registerService: PushNotificationRegisterServiceDummy(),
-            queue: nil
+            registerService: PushNotificationRegisterServiceDummy()
         )
 
         let view = ProfileView()
@@ -82,8 +80,7 @@ final class ProfileViewTests: XCTestCase {
                 authorizationStatus: .notDetermined,
                 authorizationRequestResult: (true, nil)
             ),
-            registerService: PushNotificationRegisterServiceDummy(),
-            queue: nil
+            registerService: PushNotificationRegisterServiceDummy()
         )
 
         let view = ProfileView()
@@ -108,8 +105,7 @@ final class ProfileViewTests: XCTestCase {
                 authorizationStatus: .notDetermined,
                 authorizationRequestResult: (false, nil)
             ),
-            registerService: PushNotificationRegisterServiceDummy(),
-            queue: nil
+            registerService: PushNotificationRegisterServiceDummy()
         )
 
         let view = ProfileView()
@@ -134,8 +130,7 @@ final class ProfileViewTests: XCTestCase {
                 authorizationStatus: .notDetermined,
                 authorizationRequestResult: (false, "something")
             ),
-            registerService: PushNotificationRegisterServiceDummy(),
-            queue: nil
+            registerService: PushNotificationRegisterServiceDummy()
         )
 
         let view = ProfileView()

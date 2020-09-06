@@ -1,13 +1,12 @@
 import Foundation
 
-extension Optional where Wrapped == DispatchQueue {
-    /// Submits a work item to a dispatch queue, if it exists.
-    /// Otherwise, execute immediately.
-    public func asyncOrImmediate(execute work: @escaping @convention(block) () -> Void) {
-        guard let self = self else {
+extension DispatchQueue {
+    // Optimized for immediate main thread dispatching.
+    public func immediateOrAsync(execute work: @escaping @convention(block) () -> Void) {
+        if self == .main, Thread.isMainThread {
             work()
-            return
+        } else {
+            async(execute: work)
         }
-        self.async(execute: work)
     }
 }

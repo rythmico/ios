@@ -43,8 +43,7 @@ extension AppEnvironment {
 
         pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator(
             center: UNUserNotificationCenter.current(),
-            registerService: UIApplication.shared,
-            queue: DispatchQueue.main
+            registerService: UIApplication.shared
         )
     )
 }
@@ -66,8 +65,7 @@ extension AppEnvironment {
                     authorizationStatus: .notDetermined,
                     authorizationRequestResult: (true, nil)
                 ),
-                registerService: PushNotificationRegisterServiceDummy(),
-                queue: nil
+                registerService: PushNotificationRegisterServiceDummy()
             )
         }
     }

@@ -21,8 +21,7 @@ final class RequestLessonPlanConfirmationViewTests: XCTestCase {
                 authorizationStatus: authorizationStatus,
                 authorizationRequestResult: authorizationRequestResult
             ),
-            registerService: PushNotificationRegisterServiceDummy(),
-            queue: nil
+            registerService: PushNotificationRegisterServiceDummy()
         )
         return RequestLessonPlanConfirmationView(lessonPlan: .jackGuitarPlanStub)
     }
