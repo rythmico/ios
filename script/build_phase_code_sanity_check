@@ -55,6 +55,7 @@ shell(#"find "$PWD" -type f -name '*.swift'"#)
         }
 
         assertProtocolConformance(protocol: "RoutableView", requiredCode: ".routable(self)", excludeFiles: ["Router.swift"])
+        assertProtocolConformance(protocol: "VisibleView", requiredCode: ".visible(self)", excludeFiles: ["VisibleView.swift", "APIActivityCoordinator+SwiftUI.swift"])
         assertProtocolConformance(protocol: "TestableView", requiredCode: ".testable(self)", excludeFiles: ["TestableView.swift", "XCTAssertView.swift"])
     }
 

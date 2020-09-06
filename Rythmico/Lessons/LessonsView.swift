@@ -1,7 +1,7 @@
 import SwiftUI
 import Sugar
 
-struct LessonsView: View, TestableView {
+struct LessonsView: View, TestableView, VisibleView {
     typealias Coordinator = APIActivityCoordinator<GetLessonPlansRequest>
 
     @ObservedObject
@@ -11,7 +11,7 @@ struct LessonsView: View, TestableView {
     @State
     private var selectedLessonPlan: LessonPlan?
     @State
-    private var didAppear = false
+    private(set) var isVisible = false; var isVisibleBinding: Binding<Bool> { $isVisible }
 
     init(coordinator: Coordinator) {
         self.coordinator = coordinator
@@ -35,15 +35,10 @@ struct LessonsView: View, TestableView {
         }
         .accentColor(.rythmicoPurple)
         .testable(self)
-        .onAppear(perform: fetchOnAppear)
+        .visible(self)
+        .runCoordinator(coordinator, on: self)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
-    }
-
-    private func fetchOnAppear() {
-        guard !didAppear else { return }
-        coordinator.run()
-        didAppear = true
     }
 
     private func transition(for lessonPlan: LessonPlan) -> AnyTransition {

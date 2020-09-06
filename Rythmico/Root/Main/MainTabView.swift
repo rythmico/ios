@@ -12,13 +12,14 @@ struct MainTabView: View, TestableView, RoutableView {
     }
 
     final class ViewState: ObservableObject {
-        @Published var tab: Tab = .lessons
         @Published var isLessonRequestViewPresented = false
     }
 
     @ObservedObject
     private(set) var state = ViewState()
 
+    @State
+    private var tab: Tab = .lessons
     private let lessonsView: LessonsView
     private let profileView: ProfileView = ProfileView()
 
@@ -54,7 +55,7 @@ struct MainTabView: View, TestableView, RoutableView {
     let inspection = SelfInspection()
     var body: some View {
         NavigationView {
-            TabView(selection: $state.tab) {
+            TabView(selection: $tab) {
                 lessonsView
                     .tag(Tab.lessons)
                     .tabItem {
@@ -69,12 +70,11 @@ struct MainTabView: View, TestableView, RoutableView {
                         Text(Tab.profile.uppercasedTitle)
                     }
             }
-            .navigationBarTitle(Text(state.tab.title), displayMode: .large)
+            .navigationBarTitle(Text(tab.title), displayMode: .large)
             .navigationBarItems(leading: leadingNavigationItem, trailing: trailingNavigationItem)
         }
         .testable(self)
         .modifier(BestNavigationStyleModifier())
-        .onReceive(state.$tab, perform: onTabSelectionChange)
         .onReceive(state.$isLessonRequestViewPresented, perform: onIsLessonRequestViewPresentedChange)
         .accentColor(.rythmicoPurple)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
@@ -88,20 +88,20 @@ struct MainTabView: View, TestableView, RoutableView {
     func handleRoute(_ route: Route) {
         switch route {
         case .lessons:
-            state.tab = .lessons
+            tab = .lessons
             Current.router.end()
         case .requestLessonPlan:
-            state.tab = .lessons
+            tab = .lessons
             presentRequestLessonFlow()
             Current.router.end()
         case .profile:
-            state.tab = .profile
+            tab = .profile
             Current.router.end()
         }
     }
 
     private var leadingNavigationItem: AnyView? {
-        switch state.tab {
+        switch tab {
         case .lessons:
             return AnyView(
                 Group {
@@ -116,7 +116,7 @@ struct MainTabView: View, TestableView, RoutableView {
     }
 
     private var trailingNavigationItem: AnyView? {
-        switch state.tab {
+        switch tab {
         case .lessons:
             return AnyView(
                 Button(action: presentRequestLessonFlow) {
@@ -130,12 +130,6 @@ struct MainTabView: View, TestableView, RoutableView {
             )
         case .profile:
             return nil
-        }
-    }
-
-    private func onTabSelectionChange(_ newTab: Tab) { let oldTab = state.tab
-        if oldTab != newTab, newTab == .lessons {
-            lessonPlanFetchingCoordinator.run()
         }
     }
 

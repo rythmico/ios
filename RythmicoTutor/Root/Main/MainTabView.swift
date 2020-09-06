@@ -10,29 +10,28 @@ struct MainTabView: View, TestableView, RoutableView {
         var title: String { rawValue }
     }
 
-    final class ViewState: ObservableObject {
-        @Published var tab: Tab = .requests
-    }
-
-    @ObservedObject
-    private var state = ViewState()
+    @State
+    private var tab: Tab = .requests
+    private let bookingRequestsTabView: BookingRequestsTabView
 
     private let deviceRegisterCoordinator: DeviceRegisterCoordinator
 
     init?() {
         guard
+            let bookingRequestsTabView = BookingRequestsTabView(),
             let deviceRegisterCoordinator = Current.deviceRegisterCoordinator()
         else {
             return nil
         }
+        self.bookingRequestsTabView = bookingRequestsTabView
         self.deviceRegisterCoordinator = deviceRegisterCoordinator
     }
 
     let inspection = SelfInspection()
     var body: some View {
         NavigationView {
-            TabView(selection: $state.tab) {
-                BookingRequestsTabView()
+            TabView(selection: $tab) {
+                bookingRequestsTabView
                     .tag(Tab.requests)
                     .tabItem {
                         Image(systemSymbol: .musicNoteList).font(.system(size: 21, weight: .bold))
@@ -46,7 +45,7 @@ struct MainTabView: View, TestableView, RoutableView {
                         Text(Tab.profile.title)
                     }
             }
-            .navigationBarTitle(Text(state.tab.title), displayMode: .automatic)
+            .navigationBarTitle(Text(tab.title), displayMode: .automatic)
         }
         .testable(self)
         .routable(self)
@@ -56,7 +55,7 @@ struct MainTabView: View, TestableView, RoutableView {
     func handleRoute(_ route: Route) {
         switch route {
         case .bookingRequests, .bookingApplications:
-            state.tab = .requests
+            tab = .requests
         }
     }
 }

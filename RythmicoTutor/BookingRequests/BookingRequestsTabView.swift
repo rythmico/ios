@@ -9,6 +9,20 @@ struct BookingRequestsTabView: View, RoutableView {
     @State
     private(set) var tab: Tab = .upcoming
 
+    private let bookingRequestsView: BookingRequestsView
+    private let bookingApplicationsView: BookingApplicationsView
+
+    init?() {
+        guard
+            let bookingRequestsView = BookingRequestsView(),
+            let bookingApplicationsView = BookingApplicationsView()
+        else {
+            return nil
+        }
+        self.bookingRequestsView = bookingRequestsView
+        self.bookingApplicationsView = bookingApplicationsView
+    }
+
     var body: some View {
         VStack(spacing: 0) {
             Picker("", selection: $tab) {
@@ -25,9 +39,9 @@ struct BookingRequestsTabView: View, RoutableView {
             Divider()
 
             if tab == .upcoming {
-                BookingRequestsView()
+                bookingRequestsView
             } else if tab == .applied {
-                BookingApplicationsView()
+                bookingApplicationsView
             }
         }
         .routable(self)
