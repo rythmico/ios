@@ -1,3 +1,4 @@
+#if DEBUG
 import Combine
 
 final class AuthenticationAccessTokenProviderObserverStub: AuthenticationAccessTokenProviderObserverBase {
@@ -8,3 +9,4 @@ final class AuthenticationAccessTokenProviderObserverStub: AuthenticationAccessT
 }
 
 final class AuthenticationAccessTokenProviderObserverDummy: AuthenticationAccessTokenProviderObserverBase {}
+#endif

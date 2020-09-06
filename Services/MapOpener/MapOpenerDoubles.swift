@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 final class MapOpenerSpy: MapOpenerProtocol {
@@ -11,3 +12,4 @@ final class MapOpenerSpy: MapOpenerProtocol {
 final class MapOpenerDummy: MapOpenerProtocol {
     func open(_ link: MapLink) throws {}
 }
+#endif

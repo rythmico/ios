@@ -1,3 +1,4 @@
+#if DEBUG
 import Sugar
 
 final class AppleAuthorizationCredentialRevocationNotifierFake: AppleAuthorizationCredentialRevocationNotifying {
@@ -7,3 +8,4 @@ final class AppleAuthorizationCredentialRevocationNotifierFake: AppleAuthorizati
 final class AppleAuthorizationCredentialRevocationNotifierDummy: AppleAuthorizationCredentialRevocationNotifying {
     var revocationHandler: Action?
 }
+#endif

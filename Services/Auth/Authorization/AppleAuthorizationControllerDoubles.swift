@@ -1,3 +1,4 @@
+#if DEBUG
 import Sugar
 
 final class AppleAuthorizationControllerSpy: AppleAuthorizationControllerProtocol {
@@ -29,3 +30,4 @@ final class AppleAuthorizationControllerSpy: AppleAuthorizationControllerProtoco
         Self.didInit = nil
     }
 }
+#endif

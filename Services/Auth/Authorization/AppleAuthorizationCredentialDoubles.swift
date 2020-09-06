@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 
 extension AppleAuthorizationCredential {
@@ -9,3 +10,4 @@ extension AppleAuthorizationCredential {
         nonce: "NONCE"
     )
 }
+#endif

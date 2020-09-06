@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import APIKit
 
@@ -41,3 +42,4 @@ final class APIServiceSpy<Request: AuthorizedAPIRequest>: APIServiceBase<Request
 }
 
 typealias APIServiceDummy<Request: AuthorizedAPIRequest> = APIServiceBase<Request>
+#endif

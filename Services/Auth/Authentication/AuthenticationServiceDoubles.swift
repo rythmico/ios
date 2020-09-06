@@ -1,3 +1,4 @@
+#if DEBUG
 import Sugar
 
 final class AuthenticationServiceStub: AuthenticationServiceProtocol {
@@ -33,3 +34,4 @@ final class AuthenticationServiceStub: AuthenticationServiceProtocol {
 final class AuthenticationServiceDummy: AuthenticationServiceProtocol {
     func authenticateAppleAccount(with credential: AppleAuthorizationCredential, completionHandler: @escaping Handler<AuthenticationResult>) {}
 }
+#endif

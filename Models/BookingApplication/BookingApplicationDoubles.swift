@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import Sugar
 
@@ -114,3 +115,4 @@ extension BookingApplication.StatusInfo {
         )
     }
 }
+#endif

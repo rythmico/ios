@@ -1,3 +1,4 @@
+#if DEBUG
 import FirebaseInstanceID
 
 final class DeviceTokenDeleterSpy: DeviceTokenDeleter {
@@ -13,3 +14,4 @@ final class DeviceTokenDeleterDummy: DeviceTokenDeleter {
         // NO-OP
     }
 }
+#endif
