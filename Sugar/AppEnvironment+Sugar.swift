@@ -44,6 +44,7 @@ extension AppEnvironment {
     }
 }
 
+#if DEBUG
 extension AppEnvironment {
     mutating func setUpFake() {
         useFakeDate()
@@ -123,3 +124,4 @@ extension AppEnvironment {
         localizedDescription: "Invalid credential"
     )
 }
+#endif

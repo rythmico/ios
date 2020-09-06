@@ -1,16 +1,20 @@
 private extension AppContext {
     var environment: AppEnvironment {
+        #if DEBUG
         switch self {
         case .test:
             return .dummy
         case .preview:
             return .fake
-        case .debug:
+        case .run:
             return .fake
 //            return .live
         case .release:
             return .live
         }
+        #else
+        return .live
+        #endif
     }
 }
 

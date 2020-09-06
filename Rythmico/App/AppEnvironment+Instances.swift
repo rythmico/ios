@@ -48,6 +48,7 @@ extension AppEnvironment {
     )
 }
 
+#if DEBUG
 extension AppEnvironment {
     static var fake: AppEnvironment {
         dummy.with {
@@ -104,3 +105,4 @@ extension AppEnvironment {
         )
     }
 }
+#endif
