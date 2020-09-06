@@ -349,6 +349,8 @@
 		D5AAF7DF23FB444500E410F2 /* RoundedShadowContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */; };
 		D5AFED3025047DFC003FFC68 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED2F25047DFC003FFC68 /* Cancellable.swift */; };
 		D5AFED3125047DFC003FFC68 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED2F25047DFC003FFC68 /* Cancellable.swift */; };
+		D5AFED4225057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */; };
+		D5AFED4325057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */; };
 		D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A64241479F300BE9B4F /* Assets.generated.swift */; };
 		D5B57A6724147F5100BE9B4F /* EnumProperties.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6624147F5100BE9B4F /* EnumProperties.generated.swift */; };
 		D5B57A6D2419DA5B00BE9B4F /* AddressSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6C2419DA5B00BE9B4F /* AddressSelectionView.swift */; };
@@ -700,6 +702,7 @@
 		D5AAF7DC23FB431E00E410F2 /* InstrumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentView.swift; sourceTree = "<group>"; };
 		D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowContainer.swift; sourceTree = "<group>"; };
 		D5AFED2F25047DFC003FFC68 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
+		D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityCoordinator+SwiftUI.swift"; sourceTree = "<group>"; };
 		D5B13B2B23D12520006CBC46 /* AuthenticationAccessTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProvider.swift; sourceTree = "<group>"; };
 		D5B13B2D23D125E6006CBC46 /* AuthenticationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceDoubles.swift; sourceTree = "<group>"; };
 		D5B13B2F23D1265F006CBC46 /* AuthenticationAccessTokenProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderDoubles.swift; sourceTree = "<group>"; };
@@ -1218,7 +1221,7 @@
 		03EDA6692476AD6800FBE527 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				03E88EBB24C709A00077A420 /* ActivityCoordinator.swift */,
+				D5AFED4425057CB0003FFC68 /* ActivityCoordinator */,
 				D527B01A24FEACC0003E81A9 /* API */,
 				D535549823E0FA4A005A20EB /* Auth */,
 				03A91EF924918A4700DEAD5E /* DeviceRegistration */,
@@ -1568,6 +1571,15 @@
 				D527B01124FE92DA003E81A9 /* CancellableDoubles.swift */,
 			);
 			path = Cancellable;
+			sourceTree = "<group>";
+		};
+		D5AFED4425057CB0003FFC68 /* ActivityCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				03E88EBB24C709A00077A420 /* ActivityCoordinator.swift */,
+				D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */,
+			);
+			path = ActivityCoordinator;
 			sourceTree = "<group>";
 		};
 		D5E987C324EEE20300E2E1AF /* Router */ = {
@@ -2025,6 +2037,7 @@
 				D5A8C4BB25044A230006F5C5 /* UserDefaultsProtocol.swift in Sources */,
 				031378C3249A722F005FC49C /* LessonPlanCancellationView.swift in Sources */,
 				D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */,
+				D5AFED4225057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */,
 				D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */,
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
 				032B6FD024B787BB00299A09 /* Gender.swift in Sources */,
@@ -2227,6 +2240,7 @@
 				D5F4D3EF24F31CF1000E8580 /* BookingApplicationGroupView.swift in Sources */,
 				035B1D41249E577700AABFEA /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
 				035B1CF6249CFA5700AABFEA /* Duration.swift in Sources */,
+				D5AFED4325057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */,
 				035B1D38249E576900AABFEA /* AuthenticationAccessTokenProvider.swift in Sources */,
 				035B1D3A249E576900AABFEA /* AuthenticationAccessTokenProviderObserver.swift in Sources */,
 				03C34360249E7218004907DF /* Alert+Error.swift in Sources */,
