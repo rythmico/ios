@@ -6,6 +6,8 @@ struct AppEnvironment {
     var locale: Locale
     var timeZone: TimeZone
 
+    var eventEmitter: NotificationCenter
+
     var settings: UserDefaultsProtocol
     var keychain: KeychainProtocol
 

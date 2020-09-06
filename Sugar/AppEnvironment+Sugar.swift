@@ -49,6 +49,8 @@ extension AppEnvironment {
     mutating func setUpFake() {
         useFakeDate()
 
+        eventEmitter = .default
+
         settings = UserDefaultsFake()
         keychain = KeychainFake()
 

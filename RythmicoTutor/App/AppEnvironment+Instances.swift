@@ -12,6 +12,8 @@ extension AppEnvironment {
         locale: .autoupdatingCurrent,
         timeZone: .autoupdatingCurrent,
 
+        eventEmitter: .default,
+
         settings: UserDefaults.standard,
         keychain: Keychain.localKeychain,
 
@@ -72,6 +74,8 @@ extension AppEnvironment {
             calendar: Calendar(identifier: .gregorian),
             locale: Locale(identifier: "en_GB"),
             timeZone: TimeZone(identifier: "Europe/London")!,
+
+            eventEmitter: NotificationCenter(),
 
             settings: UserDefaultsDummy(),
             keychain: KeychainDummy(),
