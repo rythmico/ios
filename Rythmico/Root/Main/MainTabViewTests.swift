@@ -8,6 +8,7 @@ final class MainTabViewTests: XCTestCase {
     override func setUp() {
         Current = .dummy
         Current.userAuthenticated()
+        Current.lessonPlanFetchingService = APIServiceStub(result: .success([.jackGuitarPlanStub]))
     }
 
     func testPushNotificationRegistrationOnAppear() throws {
@@ -27,9 +28,19 @@ final class MainTabViewTests: XCTestCase {
         let view = try XCTUnwrap(MainTabView())
 
         XCTAssertView(view) { view in
-            XCTAssertFalse(view.isLessonRequestViewPresented)
+            XCTAssertFalse(view.state.isLessonRequestViewPresented)
             view.presentRequestLessonFlow()
-            XCTAssertTrue(view.isLessonRequestViewPresented)
+            XCTAssertTrue(view.state.isLessonRequestViewPresented)
+        }
+    }
+
+    func testAutoPresentRequestLessonFlow() throws {
+        Current.lessonPlanFetchingService = APIServiceStub(result: .success([]))
+
+        let view = try XCTUnwrap(MainTabView())
+
+        XCTAssertView(view) { view in
+            XCTAssertTrue(view.state.isLessonRequestViewPresented)
         }
     }
 }

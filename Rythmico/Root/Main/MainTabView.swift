@@ -13,16 +13,17 @@ struct MainTabView: View, TestableView, RoutableView {
 
     final class ViewState: ObservableObject {
         @Published var tab: Tab = .lessons
+        @Published var isLessonRequestViewPresented = false
     }
 
     @ObservedObject
-    private var state = ViewState()
+    private(set) var state = ViewState()
 
     private let lessonsView: LessonsView
     private let profileView: ProfileView = ProfileView()
 
     @State
-    private(set) var isLessonRequestViewPresented = false
+    private var hasPresentedLessonRequestView = false
 
     // TODO: potentially use @StateObject to simplify RootView
     @ObservedObject
@@ -42,7 +43,12 @@ struct MainTabView: View, TestableView, RoutableView {
     }
 
     func presentRequestLessonFlow() {
-        isLessonRequestViewPresented = true
+        state.isLessonRequestViewPresented = true
+    }
+
+    func presentRequestLessonFlowIfNeeded(_ lessonPlans: [LessonPlan]) {
+        guard !hasPresentedLessonRequestView else { return }
+        state.isLessonRequestViewPresented = lessonPlans.isEmpty
     }
 
     let inspection = SelfInspection()
@@ -69,9 +75,11 @@ struct MainTabView: View, TestableView, RoutableView {
         .testable(self)
         .modifier(BestNavigationStyleModifier())
         .onReceive(state.$tab, perform: onTabSelectionChange)
+        .onReceive(state.$isLessonRequestViewPresented, perform: onIsLessonRequestViewPresentedChange)
         .accentColor(.rythmicoPurple)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
-        .sheet(isPresented: $isLessonRequestViewPresented) {
+        .onSuccess(lessonPlanFetchingCoordinator, perform: presentRequestLessonFlowIfNeeded)
+        .sheet(isPresented: $state.isLessonRequestViewPresented) {
             RequestLessonPlanView(context: RequestLessonPlanContext())
         }
         .routable(self)
@@ -129,6 +137,10 @@ struct MainTabView: View, TestableView, RoutableView {
         if oldTab != newTab, newTab == .lessons {
             lessonPlanFetchingCoordinator.run()
         }
+    }
+
+    private func onIsLessonRequestViewPresentedChange(_ flag: Bool) {
+        if flag { hasPresentedLessonRequestView = true }
     }
 }
 
