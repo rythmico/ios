@@ -21,16 +21,12 @@ extension RootView.UserState {
 
 extension ActivityCoordinator.State {
     var isIdle: Bool {
-        guard case .idle = self else {
-            return false
-        }
+        guard case .idle = self else { return false }
         return true
     }
 
     var isLoading: Bool {
-        guard case .loading = self else {
-            return false
-        }
+        guard case .loading = self else { return false }
         return true
     }
 
@@ -39,9 +35,7 @@ extension ActivityCoordinator.State {
     }
 
     var finishedValue: Output? {
-        guard case .finished(let output) = self else {
-            return nil
-        }
+        guard case .finished(let output) = self else { return nil }
         return output
     }
 }

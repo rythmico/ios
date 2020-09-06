@@ -11,7 +11,7 @@ final class MainTabViewTests: XCTestCase {
         Current.lessonPlanFetchingService = APIServiceStub(result: .success([.jackGuitarPlanStub]))
     }
 
-    func testPushNotificationRegistrationOnAppear() throws {
+    func testDeviceRegistrationOnAppear() throws {
         Current.deviceTokenProvider = DeviceTokenProviderStub(result: .success("TOKEN"))
 
         let spy = APIServiceSpy<AddDeviceRequest>()
