@@ -44,6 +44,9 @@ final class PushNotificationAuthorizationCoordinator: ObservableObject {
     }
 
     func requestAuthorization() {
+        guard !status.isDetermined else {
+            return
+        }
         status = .authorizing
         center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             DispatchQueue.main.immediateOrAsync {
