@@ -18,8 +18,6 @@ struct MainTabView: View, TestableView, RoutableView {
     private var state = ViewState()
 
     private let deviceRegisterCoordinator: DeviceRegisterCoordinator
-    @ObservedObject
-    private var pushNotificationAuthCoordinator = Current.pushNotificationAuthorizationCoordinator
 
     init?() {
         guard
@@ -53,11 +51,6 @@ struct MainTabView: View, TestableView, RoutableView {
         .testable(self)
         .routable(self)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
-        .onAppear(perform: pushNotificationAuthCoordinator.requestAuthorization)
-        .alert(
-            error: self.pushNotificationAuthCoordinator.status.failedValue,
-            dismiss: pushNotificationAuthCoordinator.dismissFailure
-        )
     }
 
     func handleRoute(_ route: Route) {

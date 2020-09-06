@@ -7,6 +7,8 @@ struct BookingRequestsView: View {
     private var repository = Current.bookingRequestRepository
     @ObservedObject
     private var applicationRepository = Current.bookingApplicationRepository
+    @ObservedObject
+    private var pushNotificationAuthCoordinator = Current.pushNotificationAuthorizationCoordinator
 
     @State
     private var selectedBookingRequest: BookingRequest?
@@ -57,6 +59,11 @@ struct BookingRequestsView: View {
         .onAppear(perform: fetchOnAppear)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
+        .onAppear(perform: pushNotificationAuthCoordinator.requestAuthorization)
+        .alert(
+            error: self.pushNotificationAuthCoordinator.status.failedValue,
+            dismiss: pushNotificationAuthCoordinator.dismissFailure
+        )
     }
 
     @State
