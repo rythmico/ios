@@ -26,6 +26,11 @@ extension AppEnvironment {
         deviceRegisterService: APIService(),
         deviceTokenDeleter: InstanceID.instanceID(),
 
+        pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator(
+            center: UNUserNotificationCenter.current(),
+            registerService: UIApplication.shared
+        ),
+
         uiAccessibility: UIAccessibility.self,
         keyboardDismisser: UIApplication.shared,
         urlOpener: UIApplication.shared,
@@ -39,16 +44,11 @@ extension AppEnvironment {
         lessonPlanFetchingService: APIService(),
         lessonPlanRequestService: APIService(),
         lessonPlanCancellationService: APIService(),
-        lessonPlanRepository: Repository(),
-
-        pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator(
-            center: UNUserNotificationCenter.current(),
-            registerService: UIApplication.shared,
-            queue: DispatchQueue.main
-        )
+        lessonPlanRepository: Repository()
     )
 }
 
+#if DEBUG
 extension AppEnvironment {
     static var fake: AppEnvironment {
         dummy.with {
@@ -60,15 +60,6 @@ extension AppEnvironment {
             $0.lessonPlanFetchingService = fakeAPIService(result: .success(.stub))
             $0.lessonPlanRequestService = fakeAPIService(result: .success(.davidGuitarPlanStub))
             $0.lessonPlanCancellationService = fakeAPIService(result: .success(.cancelledJackGuitarPlanStub))
-
-            $0.pushNotificationAuthorizationCoordinator = PushNotificationAuthorizationCoordinator(
-                center: UNUserNotificationCenterStub(
-                    authorizationStatus: .notDetermined,
-                    authorizationRequestResult: (true, nil)
-                ),
-                registerService: PushNotificationRegisterServiceDummy(),
-                queue: nil
-            )
         }
     }
 }
@@ -95,6 +86,8 @@ extension AppEnvironment {
             deviceRegisterService: APIServiceDummy(),
             deviceTokenDeleter: DeviceTokenDeleterDummy(),
 
+            pushNotificationAuthorizationCoordinator: .dummy,
+
             uiAccessibility: UIAccessibilityDummy.self,
             keyboardDismisser: KeyboardDismisserDummy(),
             urlOpener: URLOpenerDummy(),
@@ -108,9 +101,8 @@ extension AppEnvironment {
             lessonPlanFetchingService: APIServiceDummy(),
             lessonPlanRequestService: APIServiceDummy(),
             lessonPlanCancellationService: APIServiceDummy(),
-            lessonPlanRepository: Repository(),
-
-            pushNotificationAuthorizationCoordinator: .dummy
+            lessonPlanRepository: Repository()
         )
     }
 }
+#endif

@@ -44,6 +44,7 @@ extension AppEnvironment {
     }
 }
 
+#if DEBUG
 extension AppEnvironment {
     mutating func setUpFake() {
         useFakeDate()
@@ -55,6 +56,11 @@ extension AppEnvironment {
         shouldSucceedAuthentication()
         deauthenticationService = DeauthenticationServiceStub()
         userAuthenticated()
+
+        pushNotificationAuthorization(
+            initialStatus: .notDetermined,
+            requestResult: (true, nil)
+        )
 
         keyboardDismisser = UIApplication.shared
         urlOpener = UIApplication.shared
@@ -93,6 +99,19 @@ extension AppEnvironment {
         )
     }
 
+    mutating func pushNotificationAuthorization(
+        initialStatus: UNAuthorizationStatus,
+        requestResult: (Bool, Error?)
+    ) {
+        pushNotificationAuthorizationCoordinator = PushNotificationAuthorizationCoordinator(
+            center: UNUserNotificationCenterStub(
+                authorizationStatus: initialStatus,
+                authorizationRequestResult: requestResult
+            ),
+            registerService: PushNotificationRegisterServiceDummy()
+        )
+    }
+
     static var fakeAPIServicesDelay: TimeInterval? = nil
     static func fakeAPIService<R: AuthorizedAPIRequest>(result: Result<R.Response, Error>) -> APIServiceStub<R> {
         APIServiceStub(result: result, delay: fakeAPIServicesDelay)
@@ -105,3 +124,4 @@ extension AppEnvironment {
         localizedDescription: "Invalid credential"
     )
 }
+#endif

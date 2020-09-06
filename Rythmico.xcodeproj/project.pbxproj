@@ -230,6 +230,12 @@
 		D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */; };
 		D5217CEC24E2D7D800C89018 /* MapOpenerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5217CEB24E2D7D800C89018 /* MapOpenerDoubles.swift */; };
 		D5217CEF24E2F8B400C89018 /* MapOpener+ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5217CEE24E2F8B400C89018 /* MapOpener+ActionSheet.swift */; };
+		D524D0C0250468CA00BC9AF7 /* PushNotificationAuthorizationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198552471BD6C005529EB /* PushNotificationAuthorizationCoordinator.swift */; };
+		D524D0C1250468D200BC9AF7 /* PushNotificationAuthorizationCoordinatorDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A91EF7249189E000DEAD5E /* PushNotificationAuthorizationCoordinatorDoubles.swift */; };
+		D524D0C225046B9100BC9AF7 /* UNUserNotificationCenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF30C2491B7C3004A01B2 /* UNUserNotificationCenterProtocol.swift */; };
+		D524D0C325046B9800BC9AF7 /* UNUserNotificationCenterDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AD6249001E9009C3980 /* UNUserNotificationCenterDoubles.swift */; };
+		D524D0C425046BA900BC9AF7 /* PushNotificationRegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AD824900422009C3980 /* PushNotificationRegisterService.swift */; };
+		D524D0C525046BAE00BC9AF7 /* PushNotificationRegisterServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275ADA249004C0009C3980 /* PushNotificationRegisterServiceDoubles.swift */; };
 		D527B00924FD2047003E81A9 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B00824FD2047003E81A9 /* AvatarView.swift */; };
 		D527B00B24FD3297003E81A9 /* AvatarStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B00A24FD3297003E81A9 /* AvatarStackView.swift */; };
 		D527B00E24FE75C1003E81A9 /* ImageLoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B00C24FDC7AF003E81A9 /* ImageLoadingService.swift */; };
@@ -2158,6 +2164,8 @@
 				035B1CBF249CF2AA00AABFEA /* AppDelegate.swift in Sources */,
 				03E88E8424B8B9020077A420 /* BookingRequestsView.swift in Sources */,
 				D577EEA724E6F66400253EA1 /* BookingRequestApplyView.swift in Sources */,
+				D524D0C0250468CA00BC9AF7 /* PushNotificationAuthorizationCoordinator.swift in Sources */,
+				D524D0C1250468D200BC9AF7 /* PushNotificationAuthorizationCoordinatorDoubles.swift in Sources */,
 				D52C553A24DC71B800C295C4 /* BookingRequestDetailView.swift in Sources */,
 				03E88E8F24BC9FAF0077A420 /* AppEnvironment+Instances.swift in Sources */,
 				D5F4D3E024F04294000E8580 /* BookingApplication.swift in Sources */,
@@ -2200,6 +2208,8 @@
 				035B1D13249E563A00AABFEA /* OnboardingView.swift in Sources */,
 				035B1D3F249E577700AABFEA /* AppleAuthorizationCredentialDoubles.swift in Sources */,
 				035B1D66249E643400AABFEA /* DeviceTokenDeleterDoubles.swift in Sources */,
+				D524D0C525046BAE00BC9AF7 /* PushNotificationRegisterServiceDoubles.swift in Sources */,
+				D524D0C425046BA900BC9AF7 /* PushNotificationRegisterService.swift in Sources */,
 				035B1D52249E57FD00AABFEA /* Spacing.swift in Sources */,
 				03E88E9124BCA4AA0077A420 /* TickingView.swift in Sources */,
 				035B1D30249E571B00AABFEA /* UIAccessibilityProtocol.swift in Sources */,
@@ -2214,6 +2224,7 @@
 				035B1D59249E5CF800AABFEA /* AppDelegate+Firebase.swift in Sources */,
 				035B1D44249E577700AABFEA /* AppleAuthorizationResponse.swift in Sources */,
 				035B1CF3249CFA0900AABFEA /* AppDelegate+Window.swift in Sources */,
+				D524D0C225046B9100BC9AF7 /* UNUserNotificationCenterProtocol.swift in Sources */,
 				035B1D43249E577700AABFEA /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,
 				035B1CC3249CF2AA00AABFEA /* MainTabView.swift in Sources */,
 				D52C554C24DDE5FF00C295C4 /* Buttons+Tutor.swift in Sources */,
@@ -2224,6 +2235,7 @@
 				035B1D3A249E576900AABFEA /* AuthenticationAccessTokenProviderObserver.swift in Sources */,
 				03C34360249E7218004907DF /* Alert+Error.swift in Sources */,
 				D52C555024E2ABFC00C295C4 /* MapOpener.swift in Sources */,
+				D524D0C325046B9800BC9AF7 /* UNUserNotificationCenterDoubles.swift in Sources */,
 				035B1D1A249E568600AABFEA /* AppEnvironment.swift in Sources */,
 				D52C554A24DDE1D300C295C4 /* StaticMapView.swift in Sources */,
 				D5E987C724EEFC7C00E2E1AF /* BookingApplicationsView.swift in Sources */,

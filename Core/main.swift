@@ -5,7 +5,7 @@ private extension AppContext {
         switch self {
         case .test, .preview:
             return AppDelegateDummy.self
-        case .debug, .release:
+        case .run, .release:
             return AppDelegate.self
         }
     }

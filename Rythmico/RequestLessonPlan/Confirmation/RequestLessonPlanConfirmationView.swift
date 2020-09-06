@@ -95,19 +95,13 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
 struct RequestLessonPlanConfirmationView_Previews: PreviewProvider {
     static var previews: some View {
         Current.userAuthenticated()
-
-        Current.pushNotificationAuthorizationCoordinator = PushNotificationAuthorizationCoordinator(
-            center: UNUserNotificationCenterStub(
-                authorizationStatus: .notDetermined,
-//                authorizationStatus: .authorized,
-                authorizationRequestResult: (true, nil)
-//                authorizationRequestResult: (false, nil)
-//                authorizationRequestResult: (false, "Error")
-            ),
-            registerService: PushNotificationRegisterServiceDummy(),
-            queue: nil
+        Current.pushNotificationAuthorization(
+            initialStatus: .notDetermined,
+//            initialStatus: .authorized,
+            requestResult: (true, nil)
+//            requestResult: (false, nil)
+//            requestResult: (false, "Error")
         )
-
         return RequestLessonPlanConfirmationView(lessonPlan: .jackGuitarPlanStub)
             .previewDevices()
 //            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)

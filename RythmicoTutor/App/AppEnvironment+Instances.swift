@@ -1,4 +1,5 @@
 import UIKit
+import UserNotifications
 import Firebase
 import Then
 
@@ -25,6 +26,11 @@ extension AppEnvironment {
         deviceRegisterService: APIService(),
         deviceTokenDeleter: InstanceID.instanceID(),
 
+        pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator(
+            center: UNUserNotificationCenter.current(),
+            registerService: UIApplication.shared
+        ),
+
         uiAccessibility: UIAccessibility.self,
         keyboardDismisser: UIApplication.shared,
         urlOpener: UIApplication.shared,
@@ -43,6 +49,7 @@ extension AppEnvironment {
     )
 }
 
+#if DEBUG
 extension AppEnvironment {
     static var fake: AppEnvironment {
         dummy.with {
@@ -80,6 +87,8 @@ extension AppEnvironment {
             deviceRegisterService: APIServiceDummy(),
             deviceTokenDeleter: DeviceTokenDeleterDummy(),
 
+            pushNotificationAuthorizationCoordinator: .dummy,
+
             uiAccessibility: UIAccessibilityDummy.self,
             keyboardDismisser: KeyboardDismisserDummy(),
             urlOpener: URLOpenerDummy(),
@@ -98,3 +107,4 @@ extension AppEnvironment {
         )
     }
 }
+#endif

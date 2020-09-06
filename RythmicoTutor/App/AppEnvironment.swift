@@ -20,6 +20,8 @@ struct AppEnvironment {
     var deviceRegisterService: APIServiceBase<AddDeviceRequest>
     var deviceTokenDeleter: DeviceTokenDeleter
 
+    var pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator
+
     var uiAccessibility: UIAccessibilityProtocol.Type
     var keyboardDismisser: KeyboardDismisser
     var urlOpener: URLOpener

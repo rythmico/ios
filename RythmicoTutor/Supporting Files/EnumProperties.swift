@@ -21,16 +21,12 @@ extension RootView.UserState {
 
 extension ActivityCoordinator.State {
     var isIdle: Bool {
-        guard case .idle = self else {
-            return false
-        }
+        guard case .idle = self else { return false }
         return true
     }
 
     var isLoading: Bool {
-        guard case .loading = self else {
-            return false
-        }
+        guard case .loading = self else { return false }
         return true
     }
 
@@ -39,9 +35,7 @@ extension ActivityCoordinator.State {
     }
 
     var finishedValue: Output? {
-        guard case .finished(let output) = self else {
-            return nil
-        }
+        guard case .finished(let output) = self else { return nil }
         return output
     }
 }
@@ -61,5 +55,45 @@ extension ActivityCoordinator.State where Output: AnyResult {
 
     var isFailure: Bool {
         failureValue != nil
+    }
+}
+
+extension PushNotificationAuthorizationCoordinator.Status {
+    var isNotDetermined: Bool {
+        guard case .notDetermined = self else { return false }
+        return true
+    }
+
+    var isAuthorizing: Bool {
+        guard case .authorizing = self else { return false }
+        return true
+    }
+
+    var isFailed: Bool {
+        failedValue != nil
+    }
+
+    var failedValue: Error? {
+        guard case .failed(let error) = self else { return nil }
+        return error
+    }
+
+    var isDenied: Bool {
+        guard case .denied = self else { return false }
+        return true
+    }
+
+    var isAuthorized: Bool {
+        guard case .authorized = self else { return false }
+        return true
+    }
+
+    var isDetermined: Bool {
+        switch self {
+        case .notDetermined, .authorizing, .failed:
+            return false
+        case .denied, .authorized:
+            return true
+        }
     }
 }

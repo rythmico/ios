@@ -12,88 +12,77 @@ final class RequestLessonPlanConfirmationViewTests: XCTestCase {
         Current.userAuthenticated()
     }
 
-    func confirmationView(
-        authorizationStatus: UNAuthorizationStatus,
-        authorizationRequestResult: (Bool, Error?)
-    ) -> RequestLessonPlanConfirmationView {
-        Current.pushNotificationAuthorizationCoordinator = PushNotificationAuthorizationCoordinator(
-            center: UNUserNotificationCenterStub(
-                authorizationStatus: authorizationStatus,
-                authorizationRequestResult: authorizationRequestResult
-            ),
-            registerService: PushNotificationRegisterServiceDummy(),
-            queue: nil
-        )
-        return RequestLessonPlanConfirmationView(lessonPlan: .jackGuitarPlanStub)
+    func confirmationView() -> RequestLessonPlanConfirmationView {
+        RequestLessonPlanConfirmationView(lessonPlan: .jackGuitarPlanStub)
     }
 
     func testEnableNotificationsButtonShown_whenStatusNotDetermined() {
-        let view = confirmationView(
-            authorizationStatus: .notDetermined,
-            authorizationRequestResult: (true, nil)
+        Current.pushNotificationAuthorization(
+            initialStatus: .notDetermined,
+            requestResult: (true, nil)
         )
 
-        XCTAssertView(view) { view in
+        XCTAssertView(confirmationView()) { view in
             XCTAssertNotNil(view.enablePushNotificationsButtonAction)
             XCTAssertNil(view.errorMessage)
         }
     }
 
     func testEnableNotificationsButtonShown_whenStatusDenied() {
-        let view = confirmationView(
-            authorizationStatus: .denied,
-            authorizationRequestResult: (true, nil)
+        Current.pushNotificationAuthorization(
+            initialStatus: .denied,
+            requestResult: (true, nil)
         )
 
-        XCTAssertView(view) { view in
+        XCTAssertView(confirmationView()) { view in
             XCTAssertNil(view.enablePushNotificationsButtonAction)
             XCTAssertNil(view.errorMessage)
         }
     }
 
     func testEnableNotificationsButtonShown_whenStatusAuthorized() {
-        let view = confirmationView(
-            authorizationStatus: .authorized,
-            authorizationRequestResult: (true, nil)
+        Current.pushNotificationAuthorization(
+            initialStatus: .authorized,
+            requestResult: (true, nil)
         )
 
-        XCTAssertView(view) { view in
+        XCTAssertView(confirmationView()) { view in
             XCTAssertNil(view.enablePushNotificationsButtonAction)
             XCTAssertNil(view.errorMessage)
         }
     }
 
     func testEnableNotifications_authorized() {
-        let view = confirmationView(
-            authorizationStatus: .notDetermined,
-            authorizationRequestResult: (true, nil)
+        Current.pushNotificationAuthorization(
+            initialStatus: .notDetermined,
+            requestResult: (true, nil)
         )
 
-        XCTAssertView(view) { view in
+        XCTAssertView(confirmationView()) { view in
             view.enablePushNotificationsButtonAction?()
             XCTAssertNil(view.enablePushNotificationsButtonAction)
         }
     }
 
     func testEnableNotifications_denied() {
-        let view = confirmationView(
-            authorizationStatus: .notDetermined,
-            authorizationRequestResult: (false, nil)
+        Current.pushNotificationAuthorization(
+            initialStatus: .notDetermined,
+            requestResult: (false, nil)
         )
 
-        XCTAssertView(view) { view in
+        XCTAssertView(confirmationView()) { view in
             view.enablePushNotificationsButtonAction?()
             XCTAssertNil(view.enablePushNotificationsButtonAction)
         }
     }
 
     func testEnableNotifications_failure() {
-        let view = confirmationView(
-            authorizationStatus: .notDetermined,
-            authorizationRequestResult: (false, "Something 3")
+        Current.pushNotificationAuthorization(
+            initialStatus: .notDetermined,
+            requestResult: (false, "Something 3")
         )
 
-        XCTAssertView(view) { view in
+        XCTAssertView(confirmationView()) { view in
             view.enablePushNotificationsButtonAction?()
             XCTAssertNotNil(view.enablePushNotificationsButtonAction)
             XCTAssertEqual(view.errorMessage, "Something 3")
