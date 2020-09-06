@@ -14,9 +14,9 @@ final class LessonPlanDetailViewTests: XCTestCase {
         let view = LessonPlanDetailView(.jackGuitarPlanStub)
 
         XCTAssertView(view) { view in
-            XCTAssertNil(view.cancellationView)
+            XCTAssertFalse(view.isCancellationViewPresented)
             view.showCancelLessonPlanForm()
-            XCTAssertNotNil(view.cancellationView)
+            XCTAssertTrue(view.isCancellationViewPresented)
         }
     }
 }

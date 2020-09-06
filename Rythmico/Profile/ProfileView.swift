@@ -36,7 +36,7 @@ struct ProfileView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        Form {
+        List {
             Section(header: header("Notifications")) {
                 cell(
                     "Push Notifications",
@@ -63,6 +63,7 @@ struct ProfileView: View, TestableView {
                 .accessibility(hint: Text("Double tap to log out of your account"))
             }
         }
+        .listStyle(GroupedListStyle())
         .alert(error: self.errorMessage, dismiss: dismissError)
         .testable(self)
     }

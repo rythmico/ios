@@ -34,12 +34,12 @@ struct LessonPlanTutorAvatarView: View {
         .initials(tutor.name.initials)
     }
 
-    private var photoURL: URL? {
+    private var photoReference: ImageReference? {
         thumbnail ? tutor.photoThumbnailURL : tutor.photoURL
     }
 
     private func load() {
-        photoURL.map(coordinator.run)
+        photoReference.map(coordinator.run)
     }
 }
 

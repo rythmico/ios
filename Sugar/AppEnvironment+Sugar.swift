@@ -48,6 +48,9 @@ extension AppEnvironment {
     mutating func setUpFake() {
         useFakeDate()
 
+        settings = UserDefaultsFake()
+        keychain = KeychainFake()
+
         appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
         shouldSucceedAuthentication()
         deauthenticationService = DeauthenticationServiceStub()

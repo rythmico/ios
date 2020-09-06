@@ -1,7 +1,7 @@
 import SwiftUI
 import Sugar
 
-struct RequestLessonPlanView: View, Identifiable, TestableView {
+struct RequestLessonPlanView: View, TestableView {
     typealias Coordinator = APIActivityCoordinator<CreateLessonPlanRequest>
 
     @ObservedObject
@@ -22,7 +22,6 @@ struct RequestLessonPlanView: View, Identifiable, TestableView {
         self._formView = formView
     }
 
-    let id = UUID()
     let inspection = SelfInspection()
 
     var swipeDownToDismissEnabled: Bool {

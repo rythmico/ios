@@ -1,7 +1,7 @@
 import SwiftUI
 import Sugar
 
-struct LessonPlanCancellationView: View, TestableView, Identifiable {
+struct LessonPlanCancellationView: View, TestableView {
     private typealias Coordinator = APIActivityCoordinator<CancelLessonPlanRequest>
 
     @Environment(\.presentationMode)
@@ -12,18 +12,15 @@ struct LessonPlanCancellationView: View, TestableView, Identifiable {
     @ObservedObject
     private var coordinator: Coordinator
     private var lessonPlan: LessonPlan
-    private var onSuccessfulCancellation: Action
 
-    init?(lessonPlan: LessonPlan, onSuccessfulCancellation: @escaping Action) {
+    init?(lessonPlan: LessonPlan) {
         guard let coordinator = Current.coordinator(for: \.lessonPlanCancellationService) else {
             return nil
         }
         self.coordinator = coordinator
         self.lessonPlan = lessonPlan
-        self.onSuccessfulCancellation = onSuccessfulCancellation
     }
 
-    let id = UUID()
     var error: Error? { coordinator.state.failureValue }
 
     func submit(_ reason: LessonPlan.CancellationInfo.Reason) {
@@ -87,8 +84,7 @@ struct LessonPlanCancellationView: View, TestableView, Identifiable {
         Current.lessonPlanRepository.replaceIdentifiableItem(lessonPlan)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.dismiss()
-            self.onSuccessfulCancellation()
+            Current.router.open(.lessons)
         }
     }
 
@@ -108,10 +104,7 @@ struct LessonPlanCancellationView: View, TestableView, Identifiable {
 #if DEBUG
 struct LessonPlanCancellationView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlanCancellationView(
-            lessonPlan: .jackGuitarPlanStub,
-            onSuccessfulCancellation: {}
-        )
+        LessonPlanCancellationView(lessonPlan: .jackGuitarPlanStub)
     }
 }
 #endif

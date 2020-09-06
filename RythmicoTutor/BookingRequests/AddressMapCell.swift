@@ -97,12 +97,15 @@ private extension Address {
 struct AddressMapCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            Form {
+            List {
                 AddressMapCell(addressInfo: .postcode("N8"))
             }
-            Form {
+            .listStyle(GroupedListStyle())
+
+            List {
                 AddressMapCell(addressInfo: .address(.stub))
             }
+            .listStyle(GroupedListStyle())
         }
         .previewLayout(.fixed(width: 370, height: 400))
     }

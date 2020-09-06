@@ -333,6 +333,12 @@
 		D5919F6F24CF2D48009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */; };
 		D5919F7124CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */; };
 		D5919F7224CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */; };
+		D5A8C4BB25044A230006F5C5 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */; };
+		D5A8C4BC25044A230006F5C5 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */; };
+		D5A8C4BE25044A370006F5C5 /* UserDefaultsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */; };
+		D5A8C4BF25044A370006F5C5 /* UserDefaultsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */; };
+		D5A8C4C225044F4C0006F5C5 /* APIUserAgent+RythmicoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4C125044F4C0006F5C5 /* APIUserAgent+RythmicoTests.swift */; };
+		D5A8C4C425044F580006F5C5 /* APIUserAgent+TutorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4C325044F580006F5C5 /* APIUserAgent+TutorTests.swift */; };
 		D5AAF7C823ECC87000E410F2 /* RequestLessonPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */; };
 		D5AAF7D123F9ACFA00E410F2 /* InstrumentSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D023F9ACFA00E410F2 /* InstrumentSelectionView.swift */; };
 		D5AAF7D523F9E1F900E410F2 /* InstrumentSelectionListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D423F9E1F900E410F2 /* InstrumentSelectionListProvider.swift */; };
@@ -358,6 +364,9 @@
 		D5CAC9AE24E6D67C00119DAA /* MultilineTextField+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CAC9AD24E6D67C00119DAA /* MultilineTextField+Tutor.swift */; };
 		D5CC5FEA24FF1201007DFE84 /* UIImage+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC5FE924FF1201007DFE84 /* UIImage+Sugar.swift */; };
 		D5CC5FEB24FF1201007DFE84 /* UIImage+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC5FE924FF1201007DFE84 /* UIImage+Sugar.swift */; };
+		D5CC5FEF25027F74007DFE84 /* ImageReference+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC5FEC25027F64007DFE84 /* ImageReference+Sugar.swift */; };
+		D5CC5FF125029525007DFE84 /* ImageReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC5FF025029525007DFE84 /* ImageReference.swift */; };
+		D5CC5FF225029525007DFE84 /* ImageReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC5FF025029525007DFE84 /* ImageReference.swift */; };
 		D5E04B1923BED80700A161BB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* Fonts.swift */; };
 		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
 		D5E987B924ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
@@ -681,6 +690,10 @@
 		D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetInteractiveDismissal+Previews.swift"; sourceTree = "<group>"; };
 		D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet+Sugar.swift"; sourceTree = "<group>"; };
 		D5A32DBC23D139C000F3903C /* AuthenticationAccessTokenProviderObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderObserver.swift; sourceTree = "<group>"; };
+		D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProtocol.swift; sourceTree = "<group>"; };
+		D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDoubles.swift; sourceTree = "<group>"; };
+		D5A8C4C125044F4C0006F5C5 /* APIUserAgent+RythmicoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIUserAgent+RythmicoTests.swift"; sourceTree = "<group>"; };
+		D5A8C4C325044F580006F5C5 /* APIUserAgent+TutorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIUserAgent+TutorTests.swift"; sourceTree = "<group>"; };
 		D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanView.swift; sourceTree = "<group>"; };
 		D5AAF7D023F9ACFA00E410F2 /* InstrumentSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionView.swift; sourceTree = "<group>"; };
 		D5AAF7D423F9E1F900E410F2 /* InstrumentSelectionListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionListProvider.swift; sourceTree = "<group>"; };
@@ -709,6 +722,8 @@
 		D5CAC9AB24E6D19900119DAA /* MultilineTextField+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultilineTextField+Rythmico.swift"; sourceTree = "<group>"; };
 		D5CAC9AD24E6D67C00119DAA /* MultilineTextField+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultilineTextField+Tutor.swift"; sourceTree = "<group>"; };
 		D5CC5FE924FF1201007DFE84 /* UIImage+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Sugar.swift"; sourceTree = "<group>"; };
+		D5CC5FEC25027F64007DFE84 /* ImageReference+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageReference+Sugar.swift"; sourceTree = "<group>"; };
+		D5CC5FF025029525007DFE84 /* ImageReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReference.swift; sourceTree = "<group>"; };
 		D5E04B1823BED80700A161BB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Sugar.swift"; sourceTree = "<group>"; };
@@ -1219,6 +1234,7 @@
 				D5E987C324EEE20300E2E1AF /* Router */,
 				035AF30B2491A553004A01B2 /* UIAccessibility */,
 				033D47CB247774CE0096C50F /* URLOpener */,
+				D5A8C4C025044A3B0006F5C5 /* UserDefaults */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1230,6 +1246,7 @@
 				D5F4D3E124F0429A000E8580 /* BookingApplication */,
 				032B6FC824B783D300299A09 /* BookingRequest */,
 				D527B01124FE92DA003E81A9 /* CancellableDoubles.swift */,
+				D5CC5FF025029525007DFE84 /* ImageReference.swift */,
 				032B6FD524B7882B00299A09 /* Instrument */,
 				03BB5C9E2473463200B44692 /* LessonPlan */,
 				03AAF6742445E123002D8F5B /* Schedule */,
@@ -1381,6 +1398,8 @@
 				03E88EB324C4AA4C0077A420 /* APIService.swift */,
 				03E88EB924C6232D0077A420 /* APIServiceDoubles.swift */,
 				03C34361249FC16E004907DF /* APIUserAgent.swift */,
+				D5A8C4C125044F4C0006F5C5 /* APIUserAgent+RythmicoTests.swift */,
+				D5A8C4C325044F580006F5C5 /* APIUserAgent+TutorTests.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1447,6 +1466,7 @@
 				03E88E8824BB82290077A420 /* DateFormatter+Sugar.swift */,
 				03275ADC2490091E009C3980 /* DispatchQueue+Sugar.swift */,
 				03B71323241D71B600DED025 /* Error+Sugar.swift */,
+				D5CC5FEC25027F64007DFE84 /* ImageReference+Sugar.swift */,
 				D535546E23DF2698005A20EB /* NotificationCenterProtocol.swift */,
 				D535547223DF2AE2005A20EB /* NotificationCenterSpy.swift */,
 				D5B57A6E2419E22300BE9B4F /* Optional+Sugar.swift */,
@@ -1539,6 +1559,15 @@
 			path = Authorization;
 			sourceTree = "<group>";
 		};
+		D5A8C4C025044A3B0006F5C5 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */,
+				D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
 		D5E987C324EEE20300E2E1AF /* Router */ = {
 			isa = PBXGroup;
 			children = (
@@ -1588,6 +1617,7 @@
 			buildPhases = (
 				D5B57A612414516700BE9B4F /* Generate Asset Symbols */,
 				D5B57A632414672F00BE9B4F /* Generate Enum Properties */,
+				D5CC5FF825041262007DFE84 /* Sanity Check Sources */,
 				03341B3723ABB1E7009AE8A8 /* Sources */,
 				03341B3823ABB1E7009AE8A8 /* Frameworks */,
 				03341B3923ABB1E7009AE8A8 /* Resources */,
@@ -1616,6 +1646,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 035B1CCD249CF2AC00AABFEA /* Build configuration list for PBXNativeTarget "RythmicoTutor" */;
 			buildPhases = (
+				D5CC5FF725040F9A007DFE84 /* Sanity Check Sources */,
 				035B1CB8249CF2AA00AABFEA /* Sources */,
 				035B1CB9249CF2AA00AABFEA /* Frameworks */,
 				035B1CBA249CF2AA00AABFEA /* Resources */,
@@ -1889,6 +1920,42 @@
 			shellPath = /bin/sh;
 			shellScript = "${SRCROOT}/script/build_phase_generate_enum_properties\n";
 		};
+		D5CC5FF725040F9A007DFE84 /* Sanity Check Sources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Sanity Check Sources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/script/build_phase_code_sanity_check\n";
+		};
+		D5CC5FF825041262007DFE84 /* Sanity Check Sources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Sanity Check Sources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/script/build_phase_code_sanity_check\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1941,6 +2008,8 @@
 				D5AAF7D523F9E1F900E410F2 /* InstrumentSelectionListProvider.swift in Sources */,
 				03A91EF2249186EC00DEAD5E /* AppEnvironment+Instances.swift in Sources */,
 				03A3F6EE2447DFF900F6391D /* Animation.swift in Sources */,
+				D5A8C4BE25044A370006F5C5 /* UserDefaultsDoubles.swift in Sources */,
+				D5CC5FEF25027F74007DFE84 /* ImageReference+Sugar.swift in Sources */,
 				03B1984524719105005529EB /* RequestLessonPlanLoadingView.swift in Sources */,
 				D5BA171023D7A18900954D50 /* RootView.swift in Sources */,
 				0372E364249ADF8D0048B402 /* LessonPlanCancellationLoadingView.swift in Sources */,
@@ -1951,6 +2020,7 @@
 				0336D62C241EAAF6006CFC1F /* APIRequest.swift in Sources */,
 				03A094622443D8E1008B4BD6 /* EditingCoordinator.swift in Sources */,
 				03275AE5249071DB009C3980 /* DeviceTokenProvider.swift in Sources */,
+				D5A8C4BB25044A230006F5C5 /* UserDefaultsProtocol.swift in Sources */,
 				031378C3249A722F005FC49C /* LessonPlanCancellationView.swift in Sources */,
 				D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */,
 				D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */,
@@ -2009,6 +2079,7 @@
 				03E88EAD24C1F6050077A420 /* AppDelegate.swift in Sources */,
 				03B1983F24717A90005529EB /* LessonPlanDoubles.swift in Sources */,
 				03275AE92490769E009C3980 /* DeviceTokenDeleterDoubles.swift in Sources */,
+				D5CC5FF125029525007DFE84 /* ImageReference.swift in Sources */,
 				D53555C423E536AE005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
 				D53555CD23E536AE005A20EB /* AppleAuthorizationController.swift in Sources */,
 				D55F012C24CCBE8700E5F13C /* APIService.swift in Sources */,
@@ -2082,6 +2153,7 @@
 				035B1D67249E644C00AABFEA /* APIRequest.swift in Sources */,
 				D5F4D3ED24F317C0000E8580 /* BookingRequestCell.swift in Sources */,
 				D5919F6F24CF2D48009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */,
+				D5A8C4BF25044A370006F5C5 /* UserDefaultsDoubles.swift in Sources */,
 				032B6FDD24B78A5200299A09 /* BookingRequestEndpoints.swift in Sources */,
 				035B1CBF249CF2AA00AABFEA /* AppDelegate.swift in Sources */,
 				03E88E8424B8B9020077A420 /* BookingRequestsView.swift in Sources */,
@@ -2138,6 +2210,7 @@
 				035B1D32249E572900AABFEA /* URLOpener.swift in Sources */,
 				035B1D17249E566800AABFEA /* ActivityIndicator.swift in Sources */,
 				032B6FD124B787BB00299A09 /* Gender.swift in Sources */,
+				D5A8C4BC25044A230006F5C5 /* UserDefaultsProtocol.swift in Sources */,
 				035B1D59249E5CF800AABFEA /* AppDelegate+Firebase.swift in Sources */,
 				035B1D44249E577700AABFEA /* AppleAuthorizationResponse.swift in Sources */,
 				035B1CF3249CFA0900AABFEA /* AppDelegate+Window.swift in Sources */,
@@ -2179,6 +2252,7 @@
 				035B1D16249E565C00AABFEA /* AuthorizationAppleIDButton.swift in Sources */,
 				D5F4D3E324F04479000E8580 /* BookingApplicationEndpoints.swift in Sources */,
 				D5217CEC24E2D7D800C89018 /* MapOpenerDoubles.swift in Sources */,
+				D5CC5FF225029525007DFE84 /* ImageReference.swift in Sources */,
 				035B1CF1249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift in Sources */,
 				035B1D6B249E662200AABFEA /* EnumProperties.swift in Sources */,
 				D5F4D3F724F3476F000E8580 /* AddressMapCell.swift in Sources */,
@@ -2197,6 +2271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5A8C4C425044F580006F5C5 /* APIUserAgent+TutorTests.swift in Sources */,
 				035B1D78249E6D3B00AABFEA /* RootViewTests.swift in Sources */,
 				035B1D74249E6B2D00AABFEA /* XCTAssertView.swift in Sources */,
 				035B1D76249E6D0100AABFEA /* OnboardingViewTests.swift in Sources */,
@@ -2245,6 +2320,7 @@
 				03BB5C9A24733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift in Sources */,
 				D50811E623FB769D008103D8 /* RequestLessonPlanFormViewTests.swift in Sources */,
 				03AAF6752445E16A002D8F5B /* SchedulingViewTests.swift in Sources */,
+				D5A8C4C225044F4C0006F5C5 /* APIUserAgent+RythmicoTests.swift in Sources */,
 				03D932F2249C096B003416DC /* LessonPlanDetailViewTests.swift in Sources */,
 				D53555C123E536A6005A20EB /* AuthenticationAccessTokenProviderObserverTests.swift in Sources */,
 				D53555D023E536B5005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift in Sources */,

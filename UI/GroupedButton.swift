@@ -37,13 +37,14 @@ struct GroupedButton<Accessory: View>: View {
 #if DEBUG
 struct GroupedButton_Previews: PreviewProvider {
     static var previews: some View {
-        Form {
+        List {
             GroupedButton("Something", action: {}) {
                 ActivityIndicator(style: .medium)
             }
             .accentColor(.red)
             .disabled(true)
         }
+        .listStyle(GroupedListStyle())
     }
 }
 #endif

@@ -1,13 +1,13 @@
 import SwiftUI
 import Sugar
 
-struct LessonPlanDetailView: View, TestableView {
+struct LessonPlanDetailView: View, TestableView, RoutableView {
     @Environment(\.presentationMode)
     private var presentationMode
 
     var lessonPlan: LessonPlan
     @State
-    private(set) var cancellationView: LessonPlanCancellationView?
+    private(set) var isCancellationViewPresented = false
 
     init(_ lessonPlan: LessonPlan) {
         self.lessonPlan = lessonPlan
@@ -21,7 +21,7 @@ struct LessonPlanDetailView: View, TestableView {
     }
 
     func showCancelLessonPlanForm() {
-        cancellationView = LessonPlanCancellationView(lessonPlan: lessonPlan, onSuccessfulCancellation: back)
+        isCancellationViewPresented = true
     }
 
     let inspection = SelfInspection()
@@ -80,7 +80,20 @@ struct LessonPlanDetailView: View, TestableView {
         .navigationBarTitle(Text(""), displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackButton(title: "Lessons", action: back))
-        .sheet(item: $cancellationView)
+        .sheet(isPresented: $isCancellationViewPresented) {
+            LessonPlanCancellationView(lessonPlan: self.lessonPlan)
+        }
+        .routable(self)
+    }
+
+    func handleRoute(_ route: Route) {
+        switch route {
+        case .lessons,
+             .requestLessonPlan,
+             .profile:
+            isCancellationViewPresented = false
+            back()
+        }
     }
 
     private let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM @ ha"))

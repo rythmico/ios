@@ -6,7 +6,9 @@ struct AppEnvironment {
     var locale: Locale
     var timeZone: TimeZone
 
+    var settings: UserDefaultsProtocol
     var keychain: KeychainProtocol
+
     var appleAuthorizationService: AppleAuthorizationServiceProtocol
     var appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider
     var appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifying

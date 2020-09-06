@@ -2,8 +2,8 @@ import SwiftUI
 import SFSafeSymbols
 import Sugar
 
-struct MainTabView: View, TestableView {
-    enum TabSelection: String, Hashable {
+struct MainTabView: View, TestableView, RoutableView {
+    enum Tab: String, Hashable {
         case lessons = "Lessons"
         case profile = "Profile"
 
@@ -12,17 +12,18 @@ struct MainTabView: View, TestableView {
     }
 
     final class ViewState: ObservableObject {
-        @Published var tabSelection: TabSelection = .lessons
+        @Published var tab: Tab = .lessons
+        @Published var isLessonRequestViewPresented = false
     }
 
     @ObservedObject
-    private var state = ViewState()
+    private(set) var state = ViewState()
 
     private let lessonsView: LessonsView
     private let profileView: ProfileView = ProfileView()
 
     @State
-    private(set) var lessonRequestView: RequestLessonPlanView?
+    private var hasPresentedLessonRequestView = false
 
     // TODO: potentially use @StateObject to simplify RootView
     @ObservedObject
@@ -42,40 +43,65 @@ struct MainTabView: View, TestableView {
     }
 
     func presentRequestLessonFlow() {
-        lessonRequestView = RequestLessonPlanView(context: RequestLessonPlanContext())
+        state.isLessonRequestViewPresented = true
+    }
+
+    func presentRequestLessonFlowIfNeeded(_ lessonPlans: [LessonPlan]) {
+        guard !hasPresentedLessonRequestView else { return }
+        state.isLessonRequestViewPresented = lessonPlans.isEmpty
     }
 
     let inspection = SelfInspection()
     var body: some View {
         NavigationView {
-            TabView(selection: $state.tabSelection) {
+            TabView(selection: $state.tab) {
                 lessonsView
-                    .tag(TabSelection.lessons)
+                    .tag(Tab.lessons)
                     .tabItem {
                         Image(systemSymbol: .calendar).font(.system(size: 21, weight: .medium))
-                        Text(TabSelection.lessons.uppercasedTitle)
+                        Text(Tab.lessons.uppercasedTitle)
                     }
 
                 profileView
-                    .tag(TabSelection.profile)
+                    .tag(Tab.profile)
                     .tabItem {
                         Image(systemSymbol: .person).font(.system(size: 21, weight: .semibold))
-                        Text(TabSelection.profile.uppercasedTitle)
+                        Text(Tab.profile.uppercasedTitle)
                     }
             }
-            .navigationBarTitle(Text(state.tabSelection.title), displayMode: .large)
+            .navigationBarTitle(Text(state.tab.title), displayMode: .large)
             .navigationBarItems(leading: leadingNavigationItem, trailing: trailingNavigationItem)
         }
         .testable(self)
         .modifier(BestNavigationStyleModifier())
-        .onReceive(state.$tabSelection, perform: onTabSelectionChange)
+        .onReceive(state.$tab, perform: onTabSelectionChange)
+        .onReceive(state.$isLessonRequestViewPresented, perform: onIsLessonRequestViewPresentedChange)
         .accentColor(.rythmicoPurple)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
-        .sheet(item: $lessonRequestView)
+        .onSuccess(lessonPlanFetchingCoordinator, perform: presentRequestLessonFlowIfNeeded)
+        .sheet(isPresented: $state.isLessonRequestViewPresented) {
+            RequestLessonPlanView(context: RequestLessonPlanContext())
+        }
+        .routable(self)
+    }
+
+    func handleRoute(_ route: Route) {
+        switch route {
+        case .lessons:
+            state.tab = .lessons
+            Current.router.end()
+        case .requestLessonPlan:
+            state.tab = .lessons
+            presentRequestLessonFlow()
+            Current.router.end()
+        case .profile:
+            state.tab = .profile
+            Current.router.end()
+        }
     }
 
     private var leadingNavigationItem: AnyView? {
-        switch state.tabSelection {
+        switch state.tab {
         case .lessons:
             return AnyView(
                 Group {
@@ -90,7 +116,7 @@ struct MainTabView: View, TestableView {
     }
 
     private var trailingNavigationItem: AnyView? {
-        switch state.tabSelection {
+        switch state.tab {
         case .lessons:
             return AnyView(
                 Button(action: presentRequestLessonFlow) {
@@ -107,10 +133,14 @@ struct MainTabView: View, TestableView {
         }
     }
 
-    private func onTabSelectionChange(_ newTab: TabSelection) { let oldTab = state.tabSelection
+    private func onTabSelectionChange(_ newTab: Tab) { let oldTab = state.tab
         if oldTab != newTab, newTab == .lessons {
             lessonPlanFetchingCoordinator.run()
         }
+    }
+
+    private func onIsLessonRequestViewPresentedChange(_ flag: Bool) {
+        if flag { hasPresentedLessonRequestView = true }
     }
 }
 
