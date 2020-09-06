@@ -18,6 +18,11 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
         self.service = service
     }
 
+    func start(with properties: Request.Properties) {
+        guard state.isIdle else { return }
+        run(with: properties)
+    }
+
     func run(with properties: Request.Properties) {
         state = .loading
         accessTokenProvider.getAccessToken { result in
@@ -55,5 +60,6 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
 }
 
 extension APIActivityCoordinator where Request.Properties == Void {
+    func start() { start(with: ()) }
     func run() { run(with: ()) }
 }
