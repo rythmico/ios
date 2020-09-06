@@ -31,12 +31,9 @@ final class ProfileViewTests: XCTestCase {
         let urlOpener = URLOpenerSpy()
         Current.urlOpener = urlOpener
 
-        Current.pushNotificationAuthorizationCoordinator = PushNotificationAuthorizationCoordinator(
-            center: UNUserNotificationCenterStub(
-                authorizationStatus: .authorized,
-                authorizationRequestResult: (false, nil)
-            ),
-            registerService: PushNotificationRegisterServiceDummy()
+        Current.pushNotificationAuthorization(
+            initialStatus: .authorized,
+            requestResult: (false, nil)
         )
 
         let view = ProfileView()
@@ -53,12 +50,9 @@ final class ProfileViewTests: XCTestCase {
         let urlOpener = URLOpenerSpy()
         Current.urlOpener = urlOpener
 
-        Current.pushNotificationAuthorizationCoordinator = PushNotificationAuthorizationCoordinator(
-            center: UNUserNotificationCenterStub(
-                authorizationStatus: .denied,
-                authorizationRequestResult: (false, nil)
-            ),
-            registerService: PushNotificationRegisterServiceDummy()
+        Current.pushNotificationAuthorization(
+            initialStatus: .denied,
+            requestResult: (false, nil)
         )
 
         let view = ProfileView()
@@ -75,12 +69,9 @@ final class ProfileViewTests: XCTestCase {
         let urlOpener = URLOpenerSpy()
         Current.urlOpener = urlOpener
 
-        Current.pushNotificationAuthorizationCoordinator = PushNotificationAuthorizationCoordinator(
-            center: UNUserNotificationCenterStub(
-                authorizationStatus: .notDetermined,
-                authorizationRequestResult: (true, nil)
-            ),
-            registerService: PushNotificationRegisterServiceDummy()
+        Current.pushNotificationAuthorization(
+            initialStatus: .notDetermined,
+            requestResult: (true, nil)
         )
 
         let view = ProfileView()
@@ -100,12 +91,9 @@ final class ProfileViewTests: XCTestCase {
         let urlOpener = URLOpenerSpy()
         Current.urlOpener = urlOpener
 
-        Current.pushNotificationAuthorizationCoordinator = PushNotificationAuthorizationCoordinator(
-            center: UNUserNotificationCenterStub(
-                authorizationStatus: .notDetermined,
-                authorizationRequestResult: (false, nil)
-            ),
-            registerService: PushNotificationRegisterServiceDummy()
+        Current.pushNotificationAuthorization(
+            initialStatus: .notDetermined,
+            requestResult: (false, nil)
         )
 
         let view = ProfileView()
@@ -125,12 +113,9 @@ final class ProfileViewTests: XCTestCase {
         let urlOpener = URLOpenerSpy()
         Current.urlOpener = urlOpener
 
-        Current.pushNotificationAuthorizationCoordinator = PushNotificationAuthorizationCoordinator(
-            center: UNUserNotificationCenterStub(
-                authorizationStatus: .notDetermined,
-                authorizationRequestResult: (false, "something")
-            ),
-            registerService: PushNotificationRegisterServiceDummy()
+        Current.pushNotificationAuthorization(
+            initialStatus: .notDetermined,
+            requestResult: (false, "something")
         )
 
         let view = ProfileView()

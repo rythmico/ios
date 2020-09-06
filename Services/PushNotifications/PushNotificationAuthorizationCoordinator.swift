@@ -18,6 +18,11 @@ final class PushNotificationAuthorizationCoordinator: ObservableObject {
                 return true
             }
         }
+
+        var isFailed: Bool {
+            guard case .failed = self else { return false }
+            return true
+        }
     }
 
     @Published

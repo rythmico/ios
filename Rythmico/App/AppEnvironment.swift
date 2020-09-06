@@ -20,6 +20,8 @@ struct AppEnvironment {
     var deviceRegisterService: APIServiceBase<AddDeviceRequest>
     var deviceTokenDeleter: DeviceTokenDeleter
 
+    var pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator
+
     var uiAccessibility: UIAccessibilityProtocol.Type
     var keyboardDismisser: KeyboardDismisser
     var urlOpener: URLOpener
@@ -34,6 +36,4 @@ struct AppEnvironment {
     var lessonPlanRequestService: APIServiceBase<CreateLessonPlanRequest>
     var lessonPlanCancellationService: APIServiceBase<CancelLessonPlanRequest>
     var lessonPlanRepository: Repository<LessonPlan>
-
-    var pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator
 }

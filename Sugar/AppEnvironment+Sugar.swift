@@ -56,6 +56,11 @@ extension AppEnvironment {
         deauthenticationService = DeauthenticationServiceStub()
         userAuthenticated()
 
+        pushNotificationAuthorization(
+            initialStatus: .notDetermined,
+            requestResult: (true, nil)
+        )
+
         keyboardDismisser = UIApplication.shared
         urlOpener = UIApplication.shared
 
@@ -90,6 +95,19 @@ extension AppEnvironment {
         authenticationService = AuthenticationServiceStub(
             result: .failure(Self.fakeAuthenticationError),
             delay: Self.fakeAPIServicesDelay
+        )
+    }
+
+    mutating func pushNotificationAuthorization(
+        initialStatus: UNAuthorizationStatus,
+        requestResult: (Bool, Error?)
+    ) {
+        pushNotificationAuthorizationCoordinator = PushNotificationAuthorizationCoordinator(
+            center: UNUserNotificationCenterStub(
+                authorizationStatus: initialStatus,
+                authorizationRequestResult: requestResult
+            ),
+            registerService: PushNotificationRegisterServiceDummy()
         )
     }
 
