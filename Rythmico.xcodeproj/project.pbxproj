@@ -349,6 +349,8 @@
 		D5AAF7DF23FB444500E410F2 /* RoundedShadowContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */; };
 		D5AFED3025047DFC003FFC68 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED2F25047DFC003FFC68 /* Cancellable.swift */; };
 		D5AFED3125047DFC003FFC68 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED2F25047DFC003FFC68 /* Cancellable.swift */; };
+		D5AFED3C25056300003FFC68 /* NotificationCenter+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED3B25056300003FFC68 /* NotificationCenter+Sugar.swift */; };
+		D5AFED3D25056300003FFC68 /* NotificationCenter+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED3B25056300003FFC68 /* NotificationCenter+Sugar.swift */; };
 		D5AFED3F25057158003FFC68 /* VisibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED3E25057158003FFC68 /* VisibleView.swift */; };
 		D5AFED4025057158003FFC68 /* VisibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED3E25057158003FFC68 /* VisibleView.swift */; };
 		D5AFED4225057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */; };
@@ -704,6 +706,7 @@
 		D5AAF7DC23FB431E00E410F2 /* InstrumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentView.swift; sourceTree = "<group>"; };
 		D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowContainer.swift; sourceTree = "<group>"; };
 		D5AFED2F25047DFC003FFC68 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
+		D5AFED3B25056300003FFC68 /* NotificationCenter+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Sugar.swift"; sourceTree = "<group>"; };
 		D5AFED3E25057158003FFC68 /* VisibleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibleView.swift; sourceTree = "<group>"; };
 		D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityCoordinator+SwiftUI.swift"; sourceTree = "<group>"; };
 		D5B13B2B23D12520006CBC46 /* AuthenticationAccessTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProvider.swift; sourceTree = "<group>"; };
@@ -1469,6 +1472,7 @@
 				03275ADC2490091E009C3980 /* DispatchQueue+Sugar.swift */,
 				03B71323241D71B600DED025 /* Error+Sugar.swift */,
 				D5CC5FEC25027F64007DFE84 /* ImageReference+Sugar.swift */,
+				D5AFED3B25056300003FFC68 /* NotificationCenter+Sugar.swift */,
 				D5B57A6E2419E22300BE9B4F /* Optional+Sugar.swift */,
 				03E88E8624BB7EB10077A420 /* Result+Sugar.swift */,
 				03C39DCD2494FC9D00C76516 /* Sleep.swift */,
@@ -1987,6 +1991,7 @@
 				D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */,
 				03E88EB124C205C30077A420 /* Current.swift in Sources */,
 				03AAF66C2444FFCC002D8F5B /* Pickers.swift in Sources */,
+				D5AFED3C25056300003FFC68 /* NotificationCenter+Sugar.swift in Sources */,
 				D5F5068E240473CB00CA4094 /* FloatingInputView.swift in Sources */,
 				0392A9CF244D09FF001E97AE /* ContentSizeCategory+Sugar.swift in Sources */,
 				D5AAF7C823ECC87000E410F2 /* RequestLessonPlanView.swift in Sources */,
@@ -2179,6 +2184,7 @@
 				03E88E8424B8B9020077A420 /* BookingRequestsView.swift in Sources */,
 				D577EEA724E6F66400253EA1 /* BookingRequestApplyView.swift in Sources */,
 				D524D0C0250468CA00BC9AF7 /* PushNotificationAuthorizationCoordinator.swift in Sources */,
+				D5AFED3D25056300003FFC68 /* NotificationCenter+Sugar.swift in Sources */,
 				D524D0C1250468D200BC9AF7 /* PushNotificationAuthorizationCoordinatorDoubles.swift in Sources */,
 				D52C553A24DC71B800C295C4 /* BookingRequestDetailView.swift in Sources */,
 				03E88E8F24BC9FAF0077A420 /* AppEnvironment+Instances.swift in Sources */,
