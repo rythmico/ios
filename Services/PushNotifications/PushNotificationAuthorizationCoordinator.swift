@@ -19,6 +19,11 @@ final class PushNotificationAuthorizationCoordinator: ObservableObject {
             }
         }
 
+        var isAuthorizing: Bool {
+            guard case .authorizing = self else { return false }
+            return true
+        }
+
         var failedValue: Error? {
             guard case .failed(let error) = self else { return nil }
             return error
