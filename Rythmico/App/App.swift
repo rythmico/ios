@@ -11,7 +11,7 @@ struct App {
     }
 
     static func handle(_ event: PushNotificationEvent) {
-        // TODO
+        Current.pushNotificationEventHandler.handle(event)
     }
 
     // TODO: hopefully to be deleted someday if SwiftUI allows for better customization.

@@ -373,6 +373,12 @@
 		D5BF12B025068E2100B2931C /* PushNotificationEvent+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12AF25068E2100B2931C /* PushNotificationEvent+Tutor.swift */; };
 		D5BF12B325068E7000B2931C /* PushNotificationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12B225068E7000B2931C /* PushNotificationEvent.swift */; };
 		D5BF12B425068E7000B2931C /* PushNotificationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12B225068E7000B2931C /* PushNotificationEvent.swift */; };
+		D5BF12B92506924300B2931C /* PushNotificationEventHandler+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12B82506924300B2931C /* PushNotificationEventHandler+Rythmico.swift */; };
+		D5BF12BB2506926900B2931C /* PushNotificationEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12BA2506926900B2931C /* PushNotificationEventHandler.swift */; };
+		D5BF12BC2506926900B2931C /* PushNotificationEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12BA2506926900B2931C /* PushNotificationEventHandler.swift */; };
+		D5BF12BE2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12BD2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift */; };
+		D5BF12BF2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12BD2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift */; };
+		D5BF12C1250693C500B2931C /* PushNotificationEventHandler+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12C0250693C500B2931C /* PushNotificationEventHandler+Tutor.swift */; };
 		D5C23A74240EFDCB007DED63 /* MainTabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03341B4223ABB1E7009AE8A8 /* MainTabViewTests.swift */; };
 		D5C23A78240F1C1E007DED63 /* String+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C23A77240F1C1E007DED63 /* String+Sugar.swift */; };
 		D5C23A7A240F2DEB007DED63 /* Bool+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C23A79240F2DEB007DED63 /* Bool+Sugar.swift */; };
@@ -740,6 +746,10 @@
 		D5BF12AD25068E1000B2931C /* PushNotificationEvent+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationEvent+Rythmico.swift"; sourceTree = "<group>"; };
 		D5BF12AF25068E2100B2931C /* PushNotificationEvent+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationEvent+Tutor.swift"; sourceTree = "<group>"; };
 		D5BF12B225068E7000B2931C /* PushNotificationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationEvent.swift; sourceTree = "<group>"; };
+		D5BF12B82506924300B2931C /* PushNotificationEventHandler+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationEventHandler+Rythmico.swift"; sourceTree = "<group>"; };
+		D5BF12BA2506926900B2931C /* PushNotificationEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationEventHandler.swift; sourceTree = "<group>"; };
+		D5BF12BD2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationEventHandlerDoubles.swift; sourceTree = "<group>"; };
+		D5BF12C0250693C500B2931C /* PushNotificationEventHandler+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationEventHandler+Tutor.swift"; sourceTree = "<group>"; };
 		D5C23A77240F1C1E007DED63 /* String+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Sugar.swift"; sourceTree = "<group>"; };
 		D5C23A79240F2DEB007DED63 /* Bool+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Sugar.swift"; sourceTree = "<group>"; };
 		D5C23A7B240FEF30007DED63 /* TapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapView.swift; sourceTree = "<group>"; };
@@ -1202,6 +1212,10 @@
 				03275ADA249004C0009C3980 /* PushNotificationRegisterServiceDoubles.swift */,
 				03B198552471BD6C005529EB /* PushNotificationAuthorizationCoordinator.swift */,
 				03A91EF7249189E000DEAD5E /* PushNotificationAuthorizationCoordinatorDoubles.swift */,
+				D5BF12BA2506926900B2931C /* PushNotificationEventHandler.swift */,
+				D5BF12BD2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift */,
+				D5BF12B82506924300B2931C /* PushNotificationEventHandler+Rythmico.swift */,
+				D5BF12C0250693C500B2931C /* PushNotificationEventHandler+Tutor.swift */,
 			);
 			path = PushNotifications;
 			sourceTree = "<group>";
@@ -2017,6 +2031,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5BF12B92506924300B2931C /* PushNotificationEventHandler+Rythmico.swift in Sources */,
 				D5B57A6D2419DA5B00BE9B4F /* AddressSelectionView.swift in Sources */,
 				03341B3F23ABB1E7009AE8A8 /* App.swift in Sources */,
 				D53555C023E53699005A20EB /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */,
@@ -2164,12 +2179,14 @@
 				D53555B523E53699005A20EB /* AuthenticationError.swift in Sources */,
 				D53555CA23E536AE005A20EB /* AppleAuthorizationService.swift in Sources */,
 				D527B01724FEAA62003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */,
+				D5BF12BB2506926900B2931C /* PushNotificationEventHandler.swift in Sources */,
 				0365F6F02417E79000F452AC /* Address.swift in Sources */,
 				D527B02224FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift in Sources */,
 				D5F506BA240637F400CA4094 /* Buttons+Rythmico.swift in Sources */,
 				D53555CC23E536AE005A20EB /* AppleAuthorizationServiceDoubles.swift in Sources */,
 				D55F012D24CCBE8E00E5F13C /* APIServiceDoubles.swift in Sources */,
 				D5F4D3FF24F858AE000E8580 /* Date+Sugar.swift in Sources */,
+				D5BF12BE2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift in Sources */,
 				D5F506BE2406E49A00CA4094 /* EdgeSwipeView.swift in Sources */,
 				D5AFED3F25057158003FFC68 /* VisibleView.swift in Sources */,
 				031378C9249A7DFF005FC49C /* LessonPlanCancellationPromptView.swift in Sources */,
@@ -2209,6 +2226,7 @@
 				035B1D64249E642800AABFEA /* DeviceTokenProviderDoubles.swift in Sources */,
 				035B1D31249E572000AABFEA /* UIApplication+KeyboardDismisser.swift in Sources */,
 				03E88EB224C205C30077A420 /* Current.swift in Sources */,
+				D5BF12BC2506926900B2931C /* PushNotificationEventHandler.swift in Sources */,
 				D527B01424FEA2DE003E81A9 /* ImageLoadingCoordinator.swift in Sources */,
 				03E88EB424C4AA4C0077A420 /* APIService.swift in Sources */,
 				035B1D67249E644C00AABFEA /* APIRequest.swift in Sources */,
@@ -2252,6 +2270,7 @@
 				D5F4D3E924F09C43000E8580 /* Dot.swift in Sources */,
 				035B1D50249E57E200AABFEA /* URLOpenerDoubles.swift in Sources */,
 				D527B00E24FE75C1003E81A9 /* ImageLoadingService.swift in Sources */,
+				D5BF12C1250693C500B2931C /* PushNotificationEventHandler+Tutor.swift in Sources */,
 				035B1D54249E59BB00AABFEA /* PreviewDevices.swift in Sources */,
 				035B1D45249E577700AABFEA /* AppleAuthorizationResponseDoubles.swift in Sources */,
 				D5E987C224EDE9A100E2E1AF /* Routes+Tutor.swift in Sources */,
@@ -2314,6 +2333,7 @@
 				D5F4D3F324F32EBE000E8580 /* BookingApplicationSection.swift in Sources */,
 				035B1D47249E577700AABFEA /* AppleAuthorizationServiceDoubles.swift in Sources */,
 				D5AFED4025057158003FFC68 /* VisibleView.swift in Sources */,
+				D5BF12BF2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift in Sources */,
 				035B1D48249E577700AABFEA /* AppleAuthorizationController.swift in Sources */,
 				D5AFED4A25057D49003FFC68 /* APIActivityCoordinator+SwiftUI.swift in Sources */,
 				D5F4D3F124F31E14000E8580 /* BookingApplicationGroupCell.swift in Sources */,

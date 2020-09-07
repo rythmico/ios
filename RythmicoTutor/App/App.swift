@@ -5,6 +5,6 @@ struct App {
     static func refresh() {}
 
     static func handle(_ event: PushNotificationEvent) {
-        // TODO
+        Current.pushNotificationEventHandler.handle(event)
     }
 }

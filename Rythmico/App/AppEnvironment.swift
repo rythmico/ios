@@ -23,6 +23,7 @@ struct AppEnvironment {
     var deviceTokenDeleter: DeviceTokenDeleter
 
     var pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator
+    var pushNotificationEventHandler: PushNotificationEventHandlerProtocol
 
     var uiAccessibility: UIAccessibilityProtocol.Type
     var keyboardDismisser: KeyboardDismisser

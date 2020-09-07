@@ -32,6 +32,7 @@ extension AppEnvironment {
             center: UNUserNotificationCenter.current(),
             registerService: UIApplication.shared
         ),
+        pushNotificationEventHandler: PushNotificationEventHandler(),
 
         uiAccessibility: UIAccessibility.self,
         keyboardDismisser: UIApplication.shared,
@@ -91,6 +92,7 @@ extension AppEnvironment {
             deviceTokenDeleter: DeviceTokenDeleterDummy(),
 
             pushNotificationAuthorizationCoordinator: .dummy,
+            pushNotificationEventHandler: PushNotificationEventHandlerDummy(),
 
             uiAccessibility: UIAccessibilityDummy.self,
             keyboardDismisser: KeyboardDismisserDummy(),
