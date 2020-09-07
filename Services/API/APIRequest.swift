@@ -15,6 +15,7 @@ extension AuthorizedAPIRequest {
     var headerFields: [String: String] {
         [
             "Authorization": "Bearer " + accessToken,
+            "User-Agent": APIUserAgent.current ?? "Unknown",
         ]
     }
 
