@@ -1,5 +1,6 @@
 import Foundation
 
 enum PushNotificationEvent: String {
-    case TODO
+    case bookingRequestsChanged = "BOOKING_REQUESTS_CHANGED"
+    case bookingApplicationsChanged = "BOOKING_APPLICATIONS_CHANGED"
 }
