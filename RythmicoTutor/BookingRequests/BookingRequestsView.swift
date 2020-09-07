@@ -59,14 +59,20 @@ struct BookingRequestsView: View, VisibleView {
         }
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
         .visible(self)
+
         .runCoordinator(coordinator, on: self)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
-        .onAppear(perform: pushNotificationAuthCoordinator.requestAuthorization)
+
+        .onSuccess(coordinator, perform: requestPushNotificationAuth)
         .alert(
             error: self.pushNotificationAuthCoordinator.status.failedValue,
             dismiss: pushNotificationAuthCoordinator.dismissFailure
         )
+    }
+
+    func requestPushNotificationAuth(_: [BookingRequest]) {
+        pushNotificationAuthCoordinator.requestAuthorization()
     }
 }
 
