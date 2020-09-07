@@ -10,6 +10,10 @@ struct App {
         configureGlobalAppearance()
     }
 
+    static func handle(_ event: PushNotificationEvent) {
+        // TODO
+    }
+
     // TODO: hopefully to be deleted someday if SwiftUI allows for better customization.
     private static func configureGlobalAppearance() {
         UINavigationBar.appearance().do { bar in

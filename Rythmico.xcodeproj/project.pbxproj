@@ -369,6 +369,10 @@
 		D5B57A75241A018900BE9B4F /* SchedulingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A74241A018900BE9B4F /* SchedulingView.swift */; };
 		D5BA171023D7A18900954D50 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170F23D7A18900954D50 /* RootView.swift */; };
 		D5BA171223D7AB3B00954D50 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA171123D7AB3B00954D50 /* MainTabView.swift */; };
+		D5BF12AE25068E1000B2931C /* PushNotificationEvent+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12AD25068E1000B2931C /* PushNotificationEvent+Rythmico.swift */; };
+		D5BF12B025068E2100B2931C /* PushNotificationEvent+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12AF25068E2100B2931C /* PushNotificationEvent+Tutor.swift */; };
+		D5BF12B325068E7000B2931C /* PushNotificationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12B225068E7000B2931C /* PushNotificationEvent.swift */; };
+		D5BF12B425068E7000B2931C /* PushNotificationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12B225068E7000B2931C /* PushNotificationEvent.swift */; };
 		D5C23A74240EFDCB007DED63 /* MainTabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03341B4223ABB1E7009AE8A8 /* MainTabViewTests.swift */; };
 		D5C23A78240F1C1E007DED63 /* String+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C23A77240F1C1E007DED63 /* String+Sugar.swift */; };
 		D5C23A7A240F2DEB007DED63 /* Bool+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C23A79240F2DEB007DED63 /* Bool+Sugar.swift */; };
@@ -733,6 +737,9 @@
 		D5BA170B23D6725B00954D50 /* AuthenticationAccessTokenProviderBroadcastDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderBroadcastDoubles.swift; sourceTree = "<group>"; };
 		D5BA170F23D7A18900954D50 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		D5BA171123D7AB3B00954D50 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		D5BF12AD25068E1000B2931C /* PushNotificationEvent+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationEvent+Rythmico.swift"; sourceTree = "<group>"; };
+		D5BF12AF25068E2100B2931C /* PushNotificationEvent+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationEvent+Tutor.swift"; sourceTree = "<group>"; };
+		D5BF12B225068E7000B2931C /* PushNotificationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationEvent.swift; sourceTree = "<group>"; };
 		D5C23A77240F1C1E007DED63 /* String+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Sugar.swift"; sourceTree = "<group>"; };
 		D5C23A79240F2DEB007DED63 /* Bool+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Sugar.swift"; sourceTree = "<group>"; };
 		D5C23A7B240FEF30007DED63 /* TapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapView.swift; sourceTree = "<group>"; };
@@ -1266,6 +1273,7 @@
 				D5CC5FF025029525007DFE84 /* ImageReference.swift */,
 				032B6FD524B7882B00299A09 /* Instrument */,
 				03BB5C9E2473463200B44692 /* LessonPlan */,
+				D5BF12B125068E2500B2931C /* PushNotificationEvent */,
 				03AAF6742445E123002D8F5B /* Schedule */,
 				03B71326241D84F300DED025 /* Student */,
 			);
@@ -1602,6 +1610,16 @@
 				D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */,
 			);
 			path = ActivityCoordinator;
+			sourceTree = "<group>";
+		};
+		D5BF12B125068E2500B2931C /* PushNotificationEvent */ = {
+			isa = PBXGroup;
+			children = (
+				D5BF12B225068E7000B2931C /* PushNotificationEvent.swift */,
+				D5BF12AD25068E1000B2931C /* PushNotificationEvent+Rythmico.swift */,
+				D5BF12AF25068E2100B2931C /* PushNotificationEvent+Tutor.swift */,
+			);
+			path = PushNotificationEvent;
 			sourceTree = "<group>";
 		};
 		D5E987C324EEE20300E2E1AF /* Router */ = {
@@ -2040,6 +2058,7 @@
 				0372E366249AE3FC0048B402 /* LessonPlanCancellationConfirmationView.swift in Sources */,
 				D50811E423FB72A3008103D8 /* StepBar.swift in Sources */,
 				D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */,
+				D5BF12B325068E7000B2931C /* PushNotificationEvent.swift in Sources */,
 				D527B00924FD2047003E81A9 /* AvatarView.swift in Sources */,
 				03021C4F248A769200C0C57E /* LessonPlanSummaryCell.swift in Sources */,
 				D5AAF7D523F9E1F900E410F2 /* InstrumentSelectionListProvider.swift in Sources */,
@@ -2131,6 +2150,7 @@
 				D5AAF7DD23FB431E00E410F2 /* InstrumentView.swift in Sources */,
 				D53555BC23E53699005A20EB /* AuthenticationAccessTokenProviderObserver.swift in Sources */,
 				03A91EF62491887A00DEAD5E /* DeviceTokenProviderDoubles.swift in Sources */,
+				D5BF12AE25068E1000B2931C /* PushNotificationEvent+Rythmico.swift in Sources */,
 				D5CC5FEA24FF1201007DFE84 /* UIImage+Sugar.swift in Sources */,
 				039C3EB52448A7CD0036959A /* Transitions.swift in Sources */,
 				035AF30D2491B7C3004A01B2 /* UNUserNotificationCenterProtocol.swift in Sources */,
@@ -2227,6 +2247,7 @@
 				032B6FD724B788B200299A09 /* ScheduleDoubles.swift in Sources */,
 				D5CAC9A924E6C3A900119DAA /* MultilineTextField.swift in Sources */,
 				D5E987BA24ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */,
+				D5BF12B425068E7000B2931C /* PushNotificationEvent.swift in Sources */,
 				03E88EBA24C6232D0077A420 /* APIServiceDoubles.swift in Sources */,
 				D5F4D3E924F09C43000E8580 /* Dot.swift in Sources */,
 				035B1D50249E57E200AABFEA /* URLOpenerDoubles.swift in Sources */,
@@ -2297,6 +2318,7 @@
 				D5AFED4A25057D49003FFC68 /* APIActivityCoordinator+SwiftUI.swift in Sources */,
 				D5F4D3F124F31E14000E8580 /* BookingApplicationGroupCell.swift in Sources */,
 				D55F013424CCE65C00E5F13C /* Then+Sugar.swift in Sources */,
+				D5BF12B025068E2100B2931C /* PushNotificationEvent+Tutor.swift in Sources */,
 				D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */,
 				D5CAC9AE24E6D67C00119DAA /* MultilineTextField+Tutor.swift in Sources */,
 				035B1D15249E565200AABFEA /* TestableView.swift in Sources */,
