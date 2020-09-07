@@ -1,5 +1,5 @@
 import Foundation
 
 enum PushNotificationEvent: String {
-    case lessonPlanUpdate = "LESSON_PLAN_UPDATE"
+    case lessonPlansChanged = "LESSON_PLANS_CHANGED"
 }

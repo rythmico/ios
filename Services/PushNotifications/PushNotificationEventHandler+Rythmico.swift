@@ -6,7 +6,7 @@ final class PushNotificationEventHandler: PushNotificationEventHandlerProtocol {
 
     func handle(_ event: PushNotificationEvent) {
         switch event {
-        case .lessonPlanUpdate: handleLessonPlanUpdateEvent()
+        case .lessonPlansChanged: handleLessonPlanUpdateEvent()
         }
     }
 
