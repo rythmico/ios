@@ -157,7 +157,9 @@ extension AppEnvironment {
     }
 
     private static let fakeReferenceDate = Date()
-    private static let fakeAccessTokenProvider = AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))
+    private static var fakeAccessTokenProvider: AuthenticationAccessTokenProvider {
+        AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))
+    }
     private static let fakeAuthenticationError = AuthenticationServiceStub.Error(
         reasonCode: .invalidCredential,
         localizedDescription: "Invalid credential"
