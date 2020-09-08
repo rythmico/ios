@@ -379,6 +379,8 @@
 		D5BF12BE2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12BD2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift */; };
 		D5BF12BF2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12BD2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift */; };
 		D5BF12C1250693C500B2931C /* PushNotificationEventHandler+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12C0250693C500B2931C /* PushNotificationEventHandler+Tutor.swift */; };
+		D5BF12C62507D78800B2931C /* RouterDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12C52507D78800B2931C /* RouterDoubles.swift */; };
+		D5BF12C72507D78800B2931C /* RouterDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12C52507D78800B2931C /* RouterDoubles.swift */; };
 		D5C23A74240EFDCB007DED63 /* MainTabViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03341B4223ABB1E7009AE8A8 /* MainTabViewTests.swift */; };
 		D5C23A78240F1C1E007DED63 /* String+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C23A77240F1C1E007DED63 /* String+Sugar.swift */; };
 		D5C23A7A240F2DEB007DED63 /* Bool+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C23A79240F2DEB007DED63 /* Bool+Sugar.swift */; };
@@ -750,6 +752,7 @@
 		D5BF12BA2506926900B2931C /* PushNotificationEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationEventHandler.swift; sourceTree = "<group>"; };
 		D5BF12BD2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationEventHandlerDoubles.swift; sourceTree = "<group>"; };
 		D5BF12C0250693C500B2931C /* PushNotificationEventHandler+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationEventHandler+Tutor.swift"; sourceTree = "<group>"; };
+		D5BF12C52507D78800B2931C /* RouterDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterDoubles.swift; sourceTree = "<group>"; };
 		D5C23A77240F1C1E007DED63 /* String+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Sugar.swift"; sourceTree = "<group>"; };
 		D5C23A79240F2DEB007DED63 /* Bool+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Sugar.swift"; sourceTree = "<group>"; };
 		D5C23A7B240FEF30007DED63 /* TapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapView.swift; sourceTree = "<group>"; };
@@ -1640,6 +1643,7 @@
 			isa = PBXGroup;
 			children = (
 				D5E987BB24EDE92E00E2E1AF /* Router.swift */,
+				D5BF12C52507D78800B2931C /* RouterDoubles.swift */,
 				D5E987BE24EDE94200E2E1AF /* Routes+Rythmico.swift */,
 				D5E987C024EDE98900E2E1AF /* Routes+Tutor.swift */,
 			);
@@ -2120,6 +2124,7 @@
 				03A3F6EC2447D3FD00F6391D /* UIScreen+Sugar.swift in Sources */,
 				03E88EA824C1F4980077A420 /* AppDelegate+Window.swift in Sources */,
 				032B6FD424B7881C00299A09 /* InstrumentExtensions.swift in Sources */,
+				D5BF12C62507D78800B2931C /* RouterDoubles.swift in Sources */,
 				031378C7249A7ADE005FC49C /* LessonPlanCancellationReasonView.swift in Sources */,
 				D53555C523E536AE005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
 				D53555C823E536AE005A20EB /* AppleAuthorizationResponse.swift in Sources */,
@@ -2280,6 +2285,7 @@
 				035B1D61249E63D400AABFEA /* DeviceTokenDeleter.swift in Sources */,
 				03E88EB824C4B0F40077A420 /* Repository.swift in Sources */,
 				D527B01224FE92DA003E81A9 /* CancellableDoubles.swift in Sources */,
+				D5BF12C72507D78800B2931C /* RouterDoubles.swift in Sources */,
 				035B1D4A249E577700AABFEA /* AppleAuthorizationCompletionDelegate.swift in Sources */,
 				035B1D37249E576900AABFEA /* AuthenticationServiceDoubles.swift in Sources */,
 				035B1D13249E563A00AABFEA /* OnboardingView.swift in Sources */,

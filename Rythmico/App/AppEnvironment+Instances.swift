@@ -97,7 +97,7 @@ extension AppEnvironment {
             uiAccessibility: UIAccessibilityDummy.self,
             keyboardDismisser: KeyboardDismisserDummy(),
             urlOpener: URLOpenerDummy(),
-            router: Router(),
+            router: RouterDummy(),
 
             imageLoadingService: ImageLoadingServiceDummy(),
 

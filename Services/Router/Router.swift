@@ -1,6 +1,6 @@
 import SwiftUI
 
-final class Router: ObservableObject {
+class Router: ObservableObject {
     @Published
     private(set) var route: Route?
 

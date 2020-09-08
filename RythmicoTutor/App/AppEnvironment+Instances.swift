@@ -99,7 +99,7 @@ extension AppEnvironment {
             keyboardDismisser: KeyboardDismisserDummy(),
             urlOpener: URLOpenerDummy(),
             mapOpener: MapOpenerDummy(),
-            router: Router(),
+            router: RouterDummy(),
 
             imageLoadingService: ImageLoadingServiceDummy(),
 

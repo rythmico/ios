@@ -102,6 +102,7 @@ extension AppEnvironment {
 
         keyboardDismisser = UIApplication.shared
         urlOpener = UIApplication.shared
+        router = Router()
 
         imageLoadingService = ImageLoadingServiceStub(
             result: .success(UIImage(.red)),
