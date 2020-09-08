@@ -19,9 +19,10 @@ extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
 
     // Handle notification arrival (usually silent).
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        defer { completionHandler(.noData) }
+
         switch application.applicationState {
         case .background, .inactive:
-            completionHandler(.noData)
             return
         case .active:
             break
