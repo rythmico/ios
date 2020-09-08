@@ -7,6 +7,6 @@ xcodebuild \
     -scheme All \
     -destination generic/platform=iOS \
     -configuration Release \
-    clean build | xcpretty -s -c
+    clean build | xcpretty -sc
 
 exit ${PIPESTATUS[0]}
