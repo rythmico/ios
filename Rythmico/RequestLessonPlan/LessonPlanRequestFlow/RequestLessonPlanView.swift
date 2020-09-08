@@ -12,7 +12,7 @@ struct RequestLessonPlanView: View, TestableView {
 
     init?(context: RequestLessonPlanContext) {
         guard
-            let coordinator = Current.coordinator(for: \.lessonPlanRequestService),
+            let coordinator = Current.ephemeralCoordinator(for: \.lessonPlanRequestService),
             let formView = RequestLessonPlanFormView(context: context, coordinator: coordinator)
         else {
             return nil

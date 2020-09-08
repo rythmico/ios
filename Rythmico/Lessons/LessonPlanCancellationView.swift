@@ -14,7 +14,7 @@ struct LessonPlanCancellationView: View, TestableView {
     private var lessonPlan: LessonPlan
 
     init?(lessonPlan: LessonPlan) {
-        guard let coordinator = Current.coordinator(for: \.lessonPlanCancellationService) else {
+        guard let coordinator = Current.ephemeralCoordinator(for: \.lessonPlanCancellationService) else {
             return nil
         }
         self.coordinator = coordinator

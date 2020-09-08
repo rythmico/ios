@@ -24,6 +24,39 @@ extension AppEnvironment {
     }
 
     func coordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
+        // Return nil if logged out.
+        guard let currentProvider = accessTokenProviderObserver.currentProvider else {
+            latestProvider = nil
+            coordinatorMap = [:]
+            return nil
+        }
+
+        // Check if user changed and reset cache.
+        if currentProvider !== latestProvider {
+            latestProvider = nil
+            coordinatorMap = [:]
+        }
+
+        // Update reference to latest provider.
+        latestProvider = currentProvider
+
+        // Return cached coordinator if it exists.
+        let key = AnyHashable(service)
+        if let coordinator = coordinatorMap[key] as? APIActivityCoordinator<Request> {
+            return coordinator
+        }
+
+        // Initialize, cache and return new coordinator if not.
+        let coordinator = APIActivityCoordinator(
+            accessTokenProvider: currentProvider,
+            deauthenticationService: deauthenticationService,
+            service: self[keyPath: service]
+        )
+        coordinatorMap[key] = coordinator
+        return coordinator
+    }
+
+    func ephemeralCoordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
         accessTokenProviderObserver.currentProvider.map {
             APIActivityCoordinator(accessTokenProvider: $0, deauthenticationService: deauthenticationService, service: self[keyPath: service])
         }
@@ -34,7 +67,7 @@ extension AppEnvironment {
     }
 
     func deviceRegisterCoordinator() -> DeviceRegisterCoordinator? {
-        coordinator(for: \.deviceRegisterService).map {
+        ephemeralCoordinator(for: \.deviceRegisterService).map {
             DeviceRegisterCoordinator(deviceTokenProvider: deviceTokenProvider, apiCoordinator: $0)
         }
     }
@@ -43,6 +76,9 @@ extension AppEnvironment {
         DeviceUnregisterCoordinator(deviceTokenDeleter: deviceTokenDeleter)
     }
 }
+
+private var latestProvider: AuthenticationAccessTokenProvider?
+private var coordinatorMap: [AnyHashable: Any] = [:]
 
 #if DEBUG
 extension AppEnvironment {

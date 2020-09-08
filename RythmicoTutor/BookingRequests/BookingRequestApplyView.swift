@@ -8,7 +8,7 @@ struct BookingRequestApplyView: View {
     private let booking: BookingRequest
 
     init?(booking: BookingRequest) {
-        guard let coordinator = Current.coordinator(for: \.bookingRequestApplyingService) else {
+        guard let coordinator = Current.ephemeralCoordinator(for: \.bookingRequestApplyingService) else {
             return nil
         }
         self.coordinator = coordinator
