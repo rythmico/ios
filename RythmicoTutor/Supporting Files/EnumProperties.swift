@@ -38,6 +38,11 @@ extension ActivityCoordinator.State {
         guard case .finished(let output) = self else { return nil }
         return output
     }
+
+    var isIdle: Bool {
+        guard case .idle = self else { return false }
+        return true
+    }
 }
 
 extension ActivityCoordinator.State where Output: AnyResult {

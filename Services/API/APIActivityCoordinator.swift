@@ -18,12 +18,33 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
         self.service = service
     }
 
+    override func cancel() {
+        runningTask?.cancel()
+        super.cancel()
+    }
+
     func start(with properties: Request.Properties) {
-        guard state.isReady else { return }
-        run(with: properties)
+        start(with: properties, idleOnSuccess: false)
+    }
+
+    func startToIdle(with properties: Request.Properties) {
+        start(with: properties, idleOnSuccess: true)
     }
 
     func run(with properties: Request.Properties) {
+        run(with: properties, idleOnSuccess: false)
+    }
+
+    func runToIdle(with properties: Request.Properties) {
+        run(with: properties, idleOnSuccess: true)
+    }
+
+    private func start(with properties: Request.Properties, idleOnSuccess: Bool) {
+        guard state.isReady else { return }
+        run(with: properties, idleOnSuccess: idleOnSuccess)
+    }
+
+    private func run(with properties: Request.Properties, idleOnSuccess: Bool) {
         state = .loading
         accessTokenProvider.getAccessToken { result in
             switch result {
@@ -32,6 +53,9 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
                     let request = try Request(accessToken: accessToken, properties: properties)
                     self.runningTask = self.service.send(request) { result in
                         self.state = .finished(result)
+                        if idleOnSuccess {
+                            self.idle()
+                        }
                     }
                 } catch {
                     self.state = .finished(.failure(error))
@@ -40,11 +64,6 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
                 self.handleAuthenticationError(error)
             }
         }
-    }
-
-    override func cancel() {
-        runningTask?.cancel()
-        super.cancel()
     }
 
     private func handleAuthenticationError(_ error: AuthenticationCommonError) {
@@ -61,5 +80,8 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
 
 extension APIActivityCoordinator where Request.Properties == Void {
     func start() { start(with: ()) }
+    func startToIdle() { startToIdle(with: ()) }
+
     func run() { run(with: ()) }
+    func runToIdle() { runToIdle(with: ()) }
 }

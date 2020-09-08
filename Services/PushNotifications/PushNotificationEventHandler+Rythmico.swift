@@ -22,6 +22,6 @@ final class PushNotificationEventHandler: PushNotificationEventHandlerProtocol {
             .compactMap(\.successValue)
             .sink(receiveValue: Current[keyPath: repositoryKeyPath].setItems)
             .store(in: &cancellables)
-        coordinator.run()
+        coordinator.runToIdle()
     }
 }
