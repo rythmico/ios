@@ -19,7 +19,7 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
     }
 
     func start(with properties: Request.Properties) {
-        guard state.isIdle else { return }
+        guard state.isReady else { return }
         run(with: properties)
     }
 

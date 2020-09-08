@@ -77,7 +77,7 @@ struct LessonPlanCancellationView: View, TestableView {
     }
 
     private var isUserInputRequired: Bool {
-        coordinator.state.isIdle || coordinator.state.isFailure
+        coordinator.state.isReady || coordinator.state.isFailure
     }
 
     private func lessonPlanSuccessfullyCancelled(_ lessonPlan: LessonPlan) {

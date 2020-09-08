@@ -20,8 +20,8 @@ extension RootView.UserState {
 }
 
 extension ActivityCoordinator.State {
-    var isIdle: Bool {
-        guard case .idle = self else { return false }
+    var isReady: Bool {
+        guard case .ready = self else { return false }
         return true
     }
 

@@ -1,11 +1,11 @@
 import SwiftUI
 
 extension View {
-    func onIdle<Output>(
+    func onReady<Output>(
         _ coordinator: ActivityCoordinator<Output>,
         perform action: @escaping () -> Void
     ) -> some View {
-        onCoordinatorState(coordinator, { $0.isIdle ? () : nil }, perform: action)
+        onCoordinatorState(coordinator, { $0.isReady ? () : nil }, perform: action)
     }
 
     func onLoading<Output>(

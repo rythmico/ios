@@ -2,23 +2,23 @@ import Combine
 
 class ActivityCoordinator<Output>: ObservableObject {
     enum State {
-        case idle
+        case ready
         case loading
         case finished(Output)
     }
 
     @Published
-    /*protected(set)*/ var state: State = .idle
+    /*protected(set)*/ var state: State = .ready
 
     func cancel() {
         if case .loading = state {
-            state = .idle
+            state = .ready
         }
     }
 
     func reset() {
         cancel()
-        state = .idle
+        state = .ready
     }
 
     deinit {
@@ -29,7 +29,7 @@ class ActivityCoordinator<Output>: ObservableObject {
 class FailableActivityCoordinator<Success>: ActivityCoordinator<Result<Success, Error>> {
     func dismissFailure() {
         if case .finished(let result) = state, case .failure = result {
-            state = .idle
+            state = .ready
         }
     }
 }

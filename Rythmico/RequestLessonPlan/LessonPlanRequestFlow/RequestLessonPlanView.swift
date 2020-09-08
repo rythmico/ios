@@ -25,7 +25,7 @@ struct RequestLessonPlanView: View, TestableView {
     let inspection = SelfInspection()
 
     var swipeDownToDismissEnabled: Bool {
-        coordinator.state.isIdle && context.currentStep.index == 0
+        coordinator.state.isReady && context.currentStep.index == 0
     }
 
     var errorMessage: String? {
@@ -57,7 +57,7 @@ struct RequestLessonPlanView: View, TestableView {
 
 extension RequestLessonPlanView {
     var formView: RequestLessonPlanFormView? {
-        coordinator.state.isIdle || coordinator.state.isFailure ? _formView : nil
+        coordinator.state.isReady || coordinator.state.isFailure ? _formView : nil
     }
 
     var loadingView: RequestLessonPlanLoadingView? {

@@ -69,7 +69,7 @@ struct BookingRequestApplyView: View {
     }
 
     private var interactiveDismissalEnabled: Bool {
-        privateNote.isEmpty && coordinator.state.isIdle
+        privateNote.isEmpty && coordinator.state.isReady
     }
 
     private func dismiss() {
