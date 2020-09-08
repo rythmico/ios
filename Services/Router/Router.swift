@@ -9,7 +9,9 @@ final class Router: ObservableObject {
     }
 
     func end() {
-        self.route = nil
+        DispatchQueue.main.async {
+            self.route = nil
+        }
     }
 }
 
