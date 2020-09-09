@@ -2,7 +2,7 @@ import SwiftUI
 import Sugar
 
 struct LessonPlanTutorAvatarView: View {
-    @ObservedObject
+    @StateObject
     private var coordinator = Current.imageLoadingCoordinator()
 
     private let tutor: LessonPlan.Tutor

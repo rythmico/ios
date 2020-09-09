@@ -1,6 +1,6 @@
 import SwiftUI
 
-final class Router: ObservableObject {
+class Router: ObservableObject {
     @Published
     private(set) var route: Route?
 
@@ -9,7 +9,9 @@ final class Router: ObservableObject {
     }
 
     func end() {
-        self.route = nil
+        DispatchQueue.main.async {
+            self.route = nil
+        }
     }
 }
 

@@ -16,7 +16,7 @@ final class RequestLessonPlanFormViewTests: XCTestCase {
         let view = try XCTUnwrap(
             RequestLessonPlanFormView(
                 context: context,
-                coordinator: XCTUnwrap(Current.coordinator(for: \.lessonPlanRequestService))
+                coordinator: XCTUnwrap(Current.ephemeralCoordinator(for: \.lessonPlanRequestService))
             )
         )
         return (context, view)

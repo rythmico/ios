@@ -16,4 +16,25 @@ extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert])
     }
+
+    // Handle notification arrival (usually silent).
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        defer { completionHandler(.noData) }
+
+        switch application.applicationState {
+        case .background, .inactive:
+            return
+        case .active:
+            break
+        @unknown default:
+            break
+        }
+
+        PushNotificationEvent(userInfo: userInfo).map(App.handle)
+    }
+
+    // Handle notification tap.
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        // TODO: parse and handle response.notification.request.content.userInfo ~> Route
+    }
 }

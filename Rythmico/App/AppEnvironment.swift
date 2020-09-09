@@ -6,6 +6,8 @@ struct AppEnvironment {
     var locale: Locale
     var timeZone: TimeZone
 
+    var eventEmitter: NotificationCenter
+
     var settings: UserDefaultsProtocol
     var keychain: KeychainProtocol
 
@@ -21,6 +23,7 @@ struct AppEnvironment {
     var deviceTokenDeleter: DeviceTokenDeleter
 
     var pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator
+    var pushNotificationEventHandler: PushNotificationEventHandlerProtocol
 
     var uiAccessibility: UIAccessibilityProtocol.Type
     var keyboardDismisser: KeyboardDismisser

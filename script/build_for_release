@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -e
+
+xcodebuild \
+    -project Rythmico.xcodeproj \
+    -scheme All \
+    -destination generic/platform=iOS \
+    -configuration Release \
+    clean build | xcpretty -sc
+
+exit ${PIPESTATUS[0]}

@@ -156,7 +156,7 @@ struct AddressDetailsViewPreview: PreviewProvider {
             student: .davidStub,
             instrument: .guitar,
             state: state,
-            searchCoordinator: Current.coordinator(for: \.addressSearchService)!,
+            searchCoordinator: Current.ephemeralCoordinator(for: \.addressSearchService)!,
             context: RequestLessonPlanContext()
         )
         .previewDevices()

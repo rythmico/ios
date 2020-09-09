@@ -28,7 +28,7 @@ final class ImageLoadingService: ImageLoadingServiceProtocol {
                 ??
                 .failure(Error.invalidResponse)
             }
-            RunLoop.main.perform {
+            DispatchQueue.main.immediateOrAsync {
                 completion(imageResult)
             }
         }

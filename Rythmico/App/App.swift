@@ -10,6 +10,14 @@ struct App {
         configureGlobalAppearance()
     }
 
+    static func handle(_ event: PushNotificationEvent) {
+        Current.pushNotificationEventHandler.handle(event)
+    }
+
+    static func willResignActive() {
+        Current.coordinator(for: \.lessonPlanFetchingService)?.reset()
+    }
+
     // TODO: hopefully to be deleted someday if SwiftUI allows for better customization.
     private static func configureGlobalAppearance() {
         UINavigationBar.appearance().do { bar in

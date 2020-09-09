@@ -8,9 +8,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     var window: UIWindow?
+    var notificationCenterCancellables: [NSObjectProtocol] = []
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         clearLaunchScreenCache(Const.launchScreenDebugMode)
+        configureLifecycleEvents()
         configureFirebase()
         configurePushNotifications(for: application)
         App.main()

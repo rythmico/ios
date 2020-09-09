@@ -2,7 +2,7 @@ import Foundation
 import FirebaseAuth
 import Sugar
 
-protocol AuthenticationAccessTokenProvider {
+protocol AuthenticationAccessTokenProvider: AnyObject {
     typealias AccessToken = String
     typealias Error = AuthenticationCommonError
     typealias AccessTokenResult = Result<AccessToken, Error>

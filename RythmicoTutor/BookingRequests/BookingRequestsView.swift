@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BookingRequestsView: View {
+struct BookingRequestsView: View, VisibleView {
     @ObservedObject
     private var coordinator: APIActivityCoordinator<BookingRequestsGetRequest>
     @ObservedObject
@@ -12,6 +12,8 @@ struct BookingRequestsView: View {
 
     @State
     private var selectedBookingRequest: BookingRequest?
+    @State
+    private(set) var isVisible = false; var isVisibleBinding: Binding<Bool> { $isVisible }
 
     init?() {
         guard let coordinator = Current.coordinator(for: \.bookingRequestFetchingService) else {
@@ -56,8 +58,9 @@ struct BookingRequestsView: View {
             .listStyle(GroupedListStyle())
         }
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
+        .visible(self)
 
-        .onAppear(perform: fetchOnAppear)
+        .onAppearOrForeground(self, perform: coordinator.startToIdle)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
 
@@ -66,14 +69,6 @@ struct BookingRequestsView: View {
             error: self.pushNotificationAuthCoordinator.status.failedValue,
             dismiss: pushNotificationAuthCoordinator.dismissFailure
         )
-    }
-
-    @State
-    private var didAppear = false
-    private func fetchOnAppear() {
-        guard !didAppear else { return }
-        coordinator.run()
-        didAppear = true
     }
 
     func requestPushNotificationAuth(_: [BookingRequest]) {

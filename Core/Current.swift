@@ -7,8 +7,8 @@ private extension AppContext {
         case .preview:
             return .fake
         case .run:
-            return .fake
-//            return .live
+//            return .fake
+            return .live
         case .release:
             return .live
         }

@@ -1,0 +1,108 @@
+diff --git a/Rythmico/Root/Onboarding/OnboardingView.swift b/Rythmico/Root/Onboarding/OnboardingView.swift
+index 2647174..4ccea39 100644
+--- a/Rythmico/Root/Onboarding/OnboardingView.swift
++++ b/Rythmico/Root/Onboarding/OnboardingView.swift
+@@ -29,9 +29,8 @@ struct OnboardingView: View, TestableView {
+                     ActivityIndicator(style: .medium, color: .rythmicoGray90)
+                         .frame(width: 44, height: 44)
+                 } else {
+-                    AuthorizationAppleIDButton()
++                    AuthorizationAppleIDButton(action: authenticateWithApple)
+                         .accessibility(hint: Text("Double tap to sign in with your Apple ID"))
+-                        .onTapGesture(perform: authenticateWithApple)
+                         .disabled(!isAppleAuthorizationButtonEnabled)
+                 }
+             }
+diff --git a/RythmicoTutor/Root/Onboarding/OnboardingView.swift b/RythmicoTutor/Root/Onboarding/OnboardingView.swift
+index 9d80c8a..408c51e 100644
+--- a/RythmicoTutor/Root/Onboarding/OnboardingView.swift
++++ b/RythmicoTutor/Root/Onboarding/OnboardingView.swift
+@@ -32,9 +32,8 @@ struct OnboardingView: View, TestableView {
+                     ActivityIndicator(style: .medium)
+                         .frame(width: 44, height: 44)
+                 } else {
+-                    AuthorizationAppleIDButton()
++                    AuthorizationAppleIDButton(action: authenticateWithApple)
+                         .accessibility(hint: Text("Double tap to sign in with your Apple ID"))
+-                        .onTapGesture(perform: authenticateWithApple)
+                         .disabled(!isAppleAuthorizationButtonEnabled)
+                 }
+             }
+diff --git a/UI/AuthorizationAppleIDButton.swift b/UI/AuthorizationAppleIDButton.swift
+index 2abab3f..6b66524 100644
+--- a/UI/AuthorizationAppleIDButton.swift
++++ b/UI/AuthorizationAppleIDButton.swift
+@@ -10,57 +10,35 @@ struct AuthorizationAppleIDButton: View {
+     @Environment(\.colorScheme) private var colorScheme
+     @Environment(\.sizeCategory) private var sizeCategory
+ 
+-    var type: ASAuthorizationAppleIDButton.ButtonType = .continue
++    var type: SignInWithAppleButton.Label = .continue
++    var action: () -> Void
+ 
+     var body: some View {
+-        Group {
+-            // Required to force SwiftUI to recreate the UIViewRepresentable
+-            // https://stackoverflow.com/a/56852456
+-            if colorScheme == .light {
+-                Representable(type: type)
+-            } else {
+-                Representable(type: type)
+-            }
++        Button(action: action) {
++            SignInWithAppleButton(type, onRequest: { _ in }, onCompletion: { _ in })
++                .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .white)
++                .allowsHitTesting(false)
+         }
+         .frame(maxWidth: Const.maxWidth)
+         .frame(height: Const.defaultHeight * sizeCategory.sizeFactor)
+     }
+ }
+ 
+-extension AuthorizationAppleIDButton {
+-    private struct Representable: UIViewRepresentable {
+-        var type: ASAuthorizationAppleIDButton.ButtonType
+-
+-        func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
+-            switch context.environment.colorScheme {
+-            case .light:
+-                return ASAuthorizationAppleIDButton(type: type, style: .black)
+-            case .dark:
+-                return ASAuthorizationAppleIDButton(type: type, style: .white)
+-            @unknown default:
+-                return ASAuthorizationAppleIDButton(type: type, style: .black)
+-            }
+-        }
+-
+-        func updateUIView(_ uiView: ASAuthorizationAppleIDButton, context: Context) {}
+-    }
+-}
+-
+ #if DEBUG
+ struct AuthorizationAppleIDButton_Preview: PreviewProvider {
++    @ViewBuilder
+     static var previews: some View {
+-        ZStack {
+-            Color.blue.edgesIgnoringSafeArea(.all)
+-            VStack {
+-                ForEach(ColorScheme.allCases, id: \.self) {
+-                    AuthorizationAppleIDButton()
+-                        .environment(\.colorScheme, $0)
+-                        .environment(\.sizeCategory, .extraSmall)
+-//                        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+-                        .padding()
+-                }
++        ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
++            ZStack {
++                Color.blue
++                AuthorizationAppleIDButton {}
++                    .environment(\.colorScheme, colorScheme)
++                    .environment(\.sizeCategory, .extraSmall)
++//                    .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+             }
++            .padding()
+         }
++        .previewLayout(.sizeThatFits)
+     }
+ }
+ #endif

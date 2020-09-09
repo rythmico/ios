@@ -1,42 +1,11 @@
-import Combine
-
-class ActivityCoordinator<Output>: ObservableObject {
-    enum State {
-        case idle
-        case loading
-        case finished(Output)
-    }
-
-    @Published
-    /*protected(set)*/ var state: State = .idle
-
-    func cancel() {
-        if case .loading = state {
-            state = .idle
-        }
-    }
-
-    deinit {
-        cancel()
-    }
-}
-
-class FailableActivityCoordinator<Success>: ActivityCoordinator<Result<Success, Error>> {
-    func dismissFailure() {
-        if case .finished(let result) = state, case .failure = result {
-            state = .idle
-        }
-    }
-}
-
 import SwiftUI
 
 extension View {
-    func onIdle<Output>(
+    func onReady<Output>(
         _ coordinator: ActivityCoordinator<Output>,
         perform action: @escaping () -> Void
     ) -> some View {
-        onCoordinatorState(coordinator, { $0.isIdle ? () : nil }, perform: action)
+        onCoordinatorState(coordinator, { $0.isReady ? () : nil }, perform: action)
     }
 
     func onLoading<Output>(
@@ -65,6 +34,13 @@ extension View {
         perform action: @escaping (Error) -> Void
     ) -> some View {
         onCoordinatorState(coordinator, \.failureValue, perform: action)
+    }
+
+    func onIdle<Output>(
+        _ coordinator: ActivityCoordinator<Output>,
+        perform action: @escaping () -> Void
+    ) -> some View {
+        onCoordinatorState(coordinator, { $0.isIdle ? () : nil }, perform: action)
     }
 
     private func onCoordinatorState<Value, Output>(

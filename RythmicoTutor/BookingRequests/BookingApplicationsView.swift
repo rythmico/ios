@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BookingApplicationsView: View {
+struct BookingApplicationsView: View, VisibleView {
     @ObservedObject
     private var coordinator: APIActivityCoordinator<BookingApplicationsGetRequest>
     @ObservedObject
@@ -8,6 +8,8 @@ struct BookingApplicationsView: View {
 
     @State
     private var selectedBookingApplicationGroup: BookingApplication.Status?
+    @State
+    private(set) var isVisible = false; var isVisibleBinding: Binding<Bool> { $isVisible }
 
     init?() {
         guard let coordinator = Current.coordinator(for: \.bookingApplicationFetchingService) else {
@@ -35,7 +37,8 @@ struct BookingApplicationsView: View {
             .listStyle(GroupedListStyle())
         }
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
-        .onAppear(perform: fetchOnAppear)
+        .visible(self)
+        .onAppearOrForeground(self, perform: coordinator.startToIdle)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
     }
@@ -52,14 +55,6 @@ struct BookingApplicationsView: View {
 
     private func numberOfApplications(withStatus status: BookingApplication.Status) -> Int {
         applications.filter { $0.statusInfo.status == status }.count // TODO: count(where:)
-    }
-
-    @State
-    private var didAppear = false
-    private func fetchOnAppear() {
-        guard !didAppear else { return }
-        coordinator.run()
-        didAppear = true
     }
 }
 

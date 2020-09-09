@@ -11,7 +11,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
         Current.userAuthenticated()
     }
 
-    func testIdleState() throws {
+    func testReadyState() throws {
         let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
 
         XCTAssertView(view) { view in

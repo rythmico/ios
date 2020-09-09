@@ -12,12 +12,14 @@ extension AppEnvironment {
         locale: .autoupdatingCurrent,
         timeZone: .autoupdatingCurrent,
 
+        eventEmitter: .default,
+
         settings: UserDefaults.standard,
         keychain: Keychain.localKeychain,
 
         appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
         appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
-        appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifier(notificationCenter: NotificationCenter.default),
+        appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifier(notificationCenter: .default),
         authenticationService: AuthenticationService(),
         deauthenticationService: DeauthenticationService(),
         accessTokenProviderObserver: AuthenticationAccessTokenProviderObserver(broadcast: AuthenticationAccessTokenProviderBroadcast()),
@@ -30,6 +32,7 @@ extension AppEnvironment {
             center: UNUserNotificationCenter.current(),
             registerService: UIApplication.shared
         ),
+        pushNotificationEventHandler: PushNotificationEventHandler(),
 
         uiAccessibility: UIAccessibility.self,
         keyboardDismisser: UIApplication.shared,
@@ -72,6 +75,8 @@ extension AppEnvironment {
             locale: Locale(identifier: "en_GB"),
             timeZone: TimeZone(identifier: "Europe/London")!,
 
+            eventEmitter: NotificationCenter(),
+
             settings: UserDefaultsDummy(),
             keychain: KeychainDummy(),
 
@@ -87,11 +92,12 @@ extension AppEnvironment {
             deviceTokenDeleter: DeviceTokenDeleterDummy(),
 
             pushNotificationAuthorizationCoordinator: .dummy,
+            pushNotificationEventHandler: PushNotificationEventHandlerDummy(),
 
             uiAccessibility: UIAccessibilityDummy.self,
             keyboardDismisser: KeyboardDismisserDummy(),
             urlOpener: URLOpenerDummy(),
-            router: Router(),
+            router: RouterDummy(),
 
             imageLoadingService: ImageLoadingServiceDummy(),
 
