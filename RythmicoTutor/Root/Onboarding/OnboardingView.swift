@@ -32,9 +32,8 @@ struct OnboardingView: View, TestableView {
                     ActivityIndicator(style: .medium)
                         .frame(width: 44, height: 44)
                 } else {
-                    AuthorizationAppleIDButton()
+                    AuthorizationAppleIDButton(action: authenticateWithApple)
                         .accessibility(hint: Text("Double tap to sign in with your Apple ID"))
-                        .onTapGesture(perform: authenticateWithApple)
                         .disabled(!isAppleAuthorizationButtonEnabled)
                 }
             }
