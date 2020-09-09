@@ -7,4 +7,9 @@ struct App {
     static func handle(_ event: PushNotificationEvent) {
         Current.pushNotificationEventHandler.handle(event)
     }
+
+    static func willResignActive() {
+        Current.coordinator(for: \.bookingRequestFetchingService)?.reset()
+        Current.coordinator(for: \.bookingApplicationFetchingService)?.reset()
+    }
 }

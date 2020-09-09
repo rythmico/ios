@@ -328,6 +328,8 @@
 		D55F013124CCCEDE00E5F13C /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB724C4B0F40077A420 /* Repository.swift */; };
 		D55F013324CCE65C00E5F13C /* Then+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55F013224CCE65C00E5F13C /* Then+Sugar.swift */; };
 		D55F013424CCE65C00E5F13C /* Then+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55F013224CCE65C00E5F13C /* Then+Sugar.swift */; };
+		D55FD2AF2507F8BF004A2891 /* AppDelegate+Lifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55FD2AE2507F8BF004A2891 /* AppDelegate+Lifecycle.swift */; };
+		D55FD2B02507F8BF004A2891 /* AppDelegate+Lifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55FD2AE2507F8BF004A2891 /* AppDelegate+Lifecycle.swift */; };
 		D56544D324CE4BA100281875 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = D56544D224CE4BA100281875 /* ViewInspector */; };
 		D56544D524CE4C8D00281875 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = D56544D424CE4C8D00281875 /* ViewInspector */; };
 		D577EEA724E6F66400253EA1 /* BookingRequestApplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */; };
@@ -359,8 +361,6 @@
 		D5AFED4025057158003FFC68 /* VisibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED3E25057158003FFC68 /* VisibleView.swift */; };
 		D5AFED4225057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */; };
 		D5AFED4325057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */; };
-		D5AFED4925057D49003FFC68 /* APIActivityCoordinator+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED4825057D49003FFC68 /* APIActivityCoordinator+SwiftUI.swift */; };
-		D5AFED4A25057D49003FFC68 /* APIActivityCoordinator+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED4825057D49003FFC68 /* APIActivityCoordinator+SwiftUI.swift */; };
 		D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A64241479F300BE9B4F /* Assets.generated.swift */; };
 		D5B57A6724147F5100BE9B4F /* EnumProperties.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6624147F5100BE9B4F /* EnumProperties.generated.swift */; };
 		D5B57A6D2419DA5B00BE9B4F /* AddressSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6C2419DA5B00BE9B4F /* AddressSelectionView.swift */; };
@@ -710,6 +710,7 @@
 		D54A561F23CE92AE00BC8485 /* AuthenticationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationError.swift; sourceTree = "<group>"; };
 		D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetInteractiveDismissal.swift; sourceTree = "<group>"; };
 		D55F013224CCE65C00E5F13C /* Then+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Then+Sugar.swift"; sourceTree = "<group>"; };
+		D55FD2AE2507F8BF004A2891 /* AppDelegate+Lifecycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Lifecycle.swift"; sourceTree = "<group>"; };
 		D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestApplyView.swift; sourceTree = "<group>"; };
 		D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetInteractiveDismissal+Previews.swift"; sourceTree = "<group>"; };
 		D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet+Sugar.swift"; sourceTree = "<group>"; };
@@ -730,7 +731,6 @@
 		D5AFED3B25056300003FFC68 /* NotificationCenter+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Sugar.swift"; sourceTree = "<group>"; };
 		D5AFED3E25057158003FFC68 /* VisibleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibleView.swift; sourceTree = "<group>"; };
 		D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityCoordinator+SwiftUI.swift"; sourceTree = "<group>"; };
-		D5AFED4825057D49003FFC68 /* APIActivityCoordinator+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIActivityCoordinator+SwiftUI.swift"; sourceTree = "<group>"; };
 		D5B13B2B23D12520006CBC46 /* AuthenticationAccessTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProvider.swift; sourceTree = "<group>"; };
 		D5B13B2D23D125E6006CBC46 /* AuthenticationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceDoubles.swift; sourceTree = "<group>"; };
 		D5B13B2F23D1265F006CBC46 /* AuthenticationAccessTokenProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderDoubles.swift; sourceTree = "<group>"; };
@@ -1249,6 +1249,7 @@
 				035B1CBE249CF2AA00AABFEA /* AppDelegate.swift */,
 				035B1D58249E5CF800AABFEA /* AppDelegate+Firebase.swift */,
 				035B1CF0249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift */,
+				D55FD2AE2507F8BF004A2891 /* AppDelegate+Lifecycle.swift */,
 				03B198532471BBE8005529EB /* AppDelegate+PushNotifications.swift */,
 				035B1CF2249CFA0900AABFEA /* AppDelegate+Window.swift */,
 				035B1CEC249CF9B400AABFEA /* AppDelegateDummy.swift */,
@@ -1437,7 +1438,6 @@
 			isa = PBXGroup;
 			children = (
 				03E88EB524C4AD820077A420 /* APIActivityCoordinator.swift */,
-				D5AFED4825057D49003FFC68 /* APIActivityCoordinator+SwiftUI.swift */,
 				0336D62B241EAAF6006CFC1F /* APIRequest.swift */,
 				03E88EB324C4AA4C0077A420 /* APIService.swift */,
 				03E88EB924C6232D0077A420 /* APIServiceDoubles.swift */,
@@ -2092,7 +2092,6 @@
 				03EDA67F24776CEC00FBE527 /* URLOpenerDoubles.swift in Sources */,
 				D55F013124CCCEDE00E5F13C /* Repository.swift in Sources */,
 				D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */,
-				D5AFED4925057D49003FFC68 /* APIActivityCoordinator+SwiftUI.swift in Sources */,
 				0336D62C241EAAF6006CFC1F /* APIRequest.swift in Sources */,
 				03A094622443D8E1008B4BD6 /* EditingCoordinator.swift in Sources */,
 				03275AE5249071DB009C3980 /* DeviceTokenProvider.swift in Sources */,
@@ -2185,6 +2184,7 @@
 				D53555CA23E536AE005A20EB /* AppleAuthorizationService.swift in Sources */,
 				D527B01724FEAA62003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */,
 				D5BF12BB2506926900B2931C /* PushNotificationEventHandler.swift in Sources */,
+				D55FD2AF2507F8BF004A2891 /* AppDelegate+Lifecycle.swift in Sources */,
 				0365F6F02417E79000F452AC /* Address.swift in Sources */,
 				D527B02224FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift in Sources */,
 				D5F506BA240637F400CA4094 /* Buttons+Rythmico.swift in Sources */,
@@ -2341,11 +2341,11 @@
 				D5AFED4025057158003FFC68 /* VisibleView.swift in Sources */,
 				D5BF12BF2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift in Sources */,
 				035B1D48249E577700AABFEA /* AppleAuthorizationController.swift in Sources */,
-				D5AFED4A25057D49003FFC68 /* APIActivityCoordinator+SwiftUI.swift in Sources */,
 				D5F4D3F124F31E14000E8580 /* BookingApplicationGroupCell.swift in Sources */,
 				D55F013424CCE65C00E5F13C /* Then+Sugar.swift in Sources */,
 				D5BF12B025068E2100B2931C /* PushNotificationEvent+Tutor.swift in Sources */,
 				D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */,
+				D55FD2B02507F8BF004A2891 /* AppDelegate+Lifecycle.swift in Sources */,
 				D5CAC9AE24E6D67C00119DAA /* MultilineTextField+Tutor.swift in Sources */,
 				035B1D15249E565200AABFEA /* TestableView.swift in Sources */,
 				03E88EAF24C1F74D0077A420 /* App.swift in Sources */,

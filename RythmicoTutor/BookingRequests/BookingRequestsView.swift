@@ -60,7 +60,7 @@ struct BookingRequestsView: View, VisibleView {
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
         .visible(self)
 
-        .runCoordinator(coordinator, on: self)
+        .onAppearOrForeground(self, perform: coordinator.startToIdle)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
 

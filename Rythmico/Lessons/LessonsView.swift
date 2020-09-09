@@ -36,7 +36,7 @@ struct LessonsView: View, TestableView, VisibleView {
         .accentColor(.rythmicoPurple)
         .testable(self)
         .visible(self)
-        .runCoordinator(coordinator, on: self)
+        .onAppearOrForeground(self, perform: coordinator.startToIdle)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
     }

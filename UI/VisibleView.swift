@@ -15,3 +15,13 @@ extension View {
             .onDisappear { visibilityBinding.wrappedValue = false }
     }
 }
+
+extension View {
+    func onAppearOrForeground<VV: VisibleView>(
+        _ view: VV,
+        perform action: @escaping () -> Void
+    ) -> some View {
+        self.onAppear(perform: action)
+            .onEvent(.appInForeground, if: view.isVisibleBinding, perform: action)
+    }
+}
