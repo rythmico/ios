@@ -72,7 +72,6 @@ struct PrivateNoteView: View, TestableView {
                     .onBackgroundTapGesture(perform: endEditing)
                     .padding([.trailing, .bottom], .spacingMedium)
                 }
-                .avoidingKeyboard()
                 .padding(.leading, .spacingMedium)
 
                 FloatingView {

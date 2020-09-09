@@ -1,5 +1,4 @@
 import SwiftUI
-import KeyboardObserver
 import Sugar
 
 protocol StudentDetailsContext {
@@ -147,7 +146,6 @@ struct StudentDetailsView: View, TestableView {
                     .onBackgroundTapGesture(perform: endEditing)
                 }
                 .padding(.leading, .spacingMedium)
-                .avoidingKeyboard()
 
                 ZStack(alignment: .bottom) {
                     nextButtonAction.map { action in
