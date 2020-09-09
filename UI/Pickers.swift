@@ -9,7 +9,9 @@ struct LabelessDatePicker: View {
             "",
             selection: selection,
             displayedComponents: displayedComponents
-        ).labelsHidden()
+        )
+        .labelsHidden()
+        .datePickerStyle(WheelDatePickerStyle())
     }
 }
 
