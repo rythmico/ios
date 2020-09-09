@@ -100,7 +100,7 @@ struct BookingRequestDetailView: View, RoutableView {
             error: $mapOpeningError
         )
         .sheet(isPresented: $isApplicationViewPresented) {
-            BookingRequestApplyView(booking: self.bookingRequest)
+            BookingRequestApplyView(booking: bookingRequest)
         }
         .routable(self)
     }

@@ -49,7 +49,7 @@ struct BookingRequestsView: View, VisibleView {
                         NavigationLink(
                             destination: BookingRequestDetailView(bookingRequest: request),
                             tag: request,
-                            selection: self.$selectedBookingRequest,
+                            selection: $selectedBookingRequest,
                             label: { BookingRequestCell(request: request) }
                         )
                     }
@@ -66,7 +66,7 @@ struct BookingRequestsView: View, VisibleView {
 
         .onSuccess(coordinator, perform: requestPushNotificationAuth)
         .alert(
-            error: self.pushNotificationAuthCoordinator.status.failedValue,
+            error: pushNotificationAuthCoordinator.status.failedValue,
             dismiss: pushNotificationAuthCoordinator.dismissFailure
         )
     }

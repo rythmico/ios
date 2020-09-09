@@ -43,7 +43,7 @@ struct BookingApplicationDetailView: View, RoutableView {
 
     var retractAction: Action? {
         bookingApplication.statusInfo.status == .pending
-            ? { self.retractionCoordinator.run(with: .init(bookingApplicationId: self.bookingApplication.id)) }
+            ? { retractionCoordinator.run(with: .init(bookingApplicationId: bookingApplication.id)) }
             : nil
     }
 
@@ -57,7 +57,7 @@ struct BookingApplicationDetailView: View, RoutableView {
                             .foregroundColor(.primary)
                             .font(.body)
                         Spacer(minLength: 0)
-                        TickingText(self.statusDate)
+                        TickingText(statusDate)
                             .foregroundColor(.secondary)
                             .font(.footnote)
                     }

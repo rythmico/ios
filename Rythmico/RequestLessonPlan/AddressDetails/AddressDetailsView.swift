@@ -53,7 +53,7 @@ struct AddressDetailsView: View, TestableView {
 
     var nextButtonAction: Action? {
         state.selectedAddress.map { address in
-            { self.context.setAddress(address) }
+            { context.setAddress(address) }
         }
     }
 

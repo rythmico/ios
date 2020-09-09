@@ -27,11 +27,11 @@ struct LessonsView: View, TestableView, VisibleView {
             NavigationLink(
                 destination: LessonPlanDetailView(lessonPlan),
                 tag: lessonPlan,
-                selection: self.$selectedLessonPlan,
+                selection: $selectedLessonPlan,
                 label: { LessonPlanSummaryCell(lessonPlan: lessonPlan) }
             )
             .disabled(lessonPlan.status.isCancelled)
-            .transition(self.transition(for: lessonPlan))
+            .transition(transition(for: lessonPlan))
         }
         .accentColor(.rythmicoPurple)
         .testable(self)

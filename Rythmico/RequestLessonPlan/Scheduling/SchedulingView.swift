@@ -69,7 +69,7 @@ struct SchedulingView: View, TestableView {
         }
 
         return {
-            self.context.setSchedule(
+            context.setSchedule(
                 Schedule(startDate: startDateAndTime, duration: duration)
             )
         }
@@ -137,10 +137,10 @@ struct SchedulingView: View, TestableView {
                             BetterPicker(
                                 options: availableDates,
                                 selection: Binding(
-                                    get: { self.state.startDate ?? self.availableDates[0] },
-                                    set: { self.state.startDate = $0 }
+                                    get: { state.startDate ?? availableDates[0] },
+                                    set: { state.startDate = $0 }
                                 ),
-                                formatter: { self.dateFormatter.string(from: $0) }
+                                formatter: { dateFormatter.string(from: $0) }
                             )
                         }
                         .zIndex(1)
@@ -151,10 +151,10 @@ struct SchedulingView: View, TestableView {
                             BetterPicker(
                                 options: availableTimes,
                                 selection: Binding(
-                                    get: { self.state.startTime ?? self.availableTimes[0] },
-                                    set: { self.state.startTime = $0 }
+                                    get: { state.startTime ?? availableTimes[0] },
+                                    set: { state.startTime = $0 }
                                 ),
-                                formatter: { self.timeFormatter.string(from: $0) }
+                                formatter: { timeFormatter.string(from: $0) }
                             )
                         }
                         .zIndex(1)
@@ -164,8 +164,8 @@ struct SchedulingView: View, TestableView {
                         FloatingInputView(doneAction: endEditing) {
                             BetterPicker(
                                 selection: Binding(
-                                    get: { self.state.duration ?? .fortyFiveMinutes },
-                                    set: { self.state.duration = $0 }
+                                    get: { state.duration ?? .fortyFiveMinutes },
+                                    set: { state.duration = $0 }
                                 ),
                                 formatter: { "\($0.rawValue) minutes" }
                             )

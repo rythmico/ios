@@ -29,7 +29,7 @@ struct CreateLessonPlanRequest: RythmicoAPIRequest {
     let path: String = "/lesson-plans"
 
     var bodyParameters: BodyParameters? {
-        JSONEncodableBodyParameters(object: self.properties)
+        JSONEncodableBodyParameters(object: properties)
     }
 
     typealias Response = LessonPlan

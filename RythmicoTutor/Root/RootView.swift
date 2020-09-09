@@ -56,9 +56,9 @@ struct RootView: View, TestableView {
         }
 
         let freshState = Self.freshState
-        switch (freshState, self.state) {
+        switch (freshState, state) {
         case (.authenticated, .unauthenticated), (.unauthenticated, .authenticated):
-            self.state = freshState
+            state = freshState
         default:
             break
         }

@@ -21,12 +21,12 @@ struct ActionList: View {
             Divider().foregroundColor(.rythmicoGray20)
             ForEach(0..<buttons.count, id: \.self) { index in
                 VStack(spacing: 0) {
-                    SwiftUI.Button(action: self.buttons[index].action) {
+                    SwiftUI.Button(action: buttons[index].action) {
                         HStack(spacing: 0) {
-                            Text(self.buttons[index].title)
+                            Text(buttons[index].title)
                                 .multilineTextAlignment(.leading)
                             Spacer()
-                            if self.buttons[index].disclosure {
+                            if buttons[index].disclosure {
                                 Image(decorative: Asset.iconDisclosure.name)
                                     .renderingMode(.template)
                             }
@@ -34,7 +34,7 @@ struct ActionList: View {
                         .padding(.vertical, .spacingLarge)
                         .padding(.horizontal, .spacingMedium)
                     }
-                    if self.isLastButtonIndex(index) && !self.showBottomSeparator {
+                    if isLastButtonIndex(index) && !showBottomSeparator {
                         EmptyView()
                     } else {
                         Divider().foregroundColor(.rythmicoGray20)

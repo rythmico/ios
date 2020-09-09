@@ -35,12 +35,12 @@ struct InstrumentSelectionView: View, TestableView {
 
     private func fetchInstruments() {
         Current.instrumentSelectionListProvider.instruments { instruments in
-            self.state.instruments = instruments
+            state.instruments = instruments
                 .map { instrument in
                     InstrumentViewData(
                         name: instrument.name,
                         icon: instrument.icon,
-                        action: { self.context.setInstrument(instrument) }
+                        action: { context.setInstrument(instrument) }
                     )
                 }
         }

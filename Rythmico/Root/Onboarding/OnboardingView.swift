@@ -37,7 +37,7 @@ struct OnboardingView: View, TestableView {
             .padding(.spacingLarge)
             .animation(.rythmicoSpring(duration: .durationMedium), value: isLoading)
         }
-        .alert(error: self.errorMessage, dismiss: dismissError)
+        .alert(error: errorMessage, dismiss: dismissError)
         .onDisappear {
             Current.uiAccessibility.postAnnouncement("Welcome")
         }
@@ -50,22 +50,22 @@ struct OnboardingView: View, TestableView {
             switch result {
             case .success(let credential):
                 Current.keychain.appleAuthorizationUserId = credential.userId
-                self.isLoading = true
+                isLoading = true
                 Current.authenticationService.authenticateAppleAccount(with: credential) { result in
-                    self.isLoading = false
+                    isLoading = false
                     switch result {
                     case .success:
                         // Firebase's Auth singleton makes this line redundant since it notifies listeners
                         // about user changes upon sign in. However if services are changed there's
                         // a chance this line might be needed.
-                        // self.authenticationStatusObserver.statusDidChangeHandler(accessTokenProvider)
+                        // authenticationStatusObserver.statusDidChangeHandler(accessTokenProvider)
                         break
                     case .failure(let error):
-                        self.handleAuthenticationError(error)
+                        handleAuthenticationError(error)
                     }
                 }
             case .failure(let error):
-                self.handleAuthorizationError(error)
+                handleAuthorizationError(error)
             }
         }
     }

@@ -18,7 +18,7 @@ struct AvatarStackView<Data: RangeReplaceableCollection, ContentView: View>: Vie
     var body: some View {
         HStack(spacing: Const.spacing) {
             ForEach(0..<data.count, id: \.self) { index in
-                self.content(self.data[index])
+                content(data[index])
                     .overlay(
                         Circle()
                             .stroke(Color.rythmicoBackground, lineWidth: Const.borderLineWidth)
@@ -48,7 +48,7 @@ struct AvatarStackView_PreviewsWrapper: View {
         AvatarStackView(content)
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.content = [
+                    content = [
                         .photo(UIImage(.red)),
                         .photo(UIImage(.blue)),
                         .photo(UIImage(.green)),

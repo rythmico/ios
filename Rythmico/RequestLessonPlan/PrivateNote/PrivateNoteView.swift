@@ -46,8 +46,8 @@ struct PrivateNoteView: View, TestableView {
 
     var nextButtonAction: Action {
         {
-            self.context.setPrivateNote(
-                self.state.privateNote
+            context.setPrivateNote(
+                state.privateNote
                     .trimmingLineCharacters(in: .whitespacesAndNewlines)
                     .removingRepetitionOf(.whitespace)
                     .removingRepetitionOf(.newline)

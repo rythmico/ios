@@ -17,7 +17,7 @@ struct ProgressBar: View {
                 Color.rythmicoGray10.cornerRadius(.greatestFiniteMagnitude, antialiased: true)
                 Color.rythmicoPurple
                     .cornerRadius(.greatestFiniteMagnitude, antialiased: true)
-                    .frame(width: metrics.size.width * CGFloat(self.progress))
+                    .frame(width: metrics.size.width * CGFloat(progress))
             }
         }
         .frame(height: Const.height)

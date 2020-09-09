@@ -94,12 +94,12 @@ struct StudentDetailsView: View, TestableView {
         }
 
         return {
-            self.context.setStudent(
+            context.setStudent(
                 Student(
                     name: name,
                     dateOfBirth: dateOfBirth,
                     gender: gender,
-                    about: self.sanitizedAbout
+                    about: sanitizedAbout
                 )
             )
         }
@@ -161,8 +161,8 @@ struct StudentDetailsView: View, TestableView {
                         FloatingInputView(doneAction: endEditing) {
                             LabelessDatePicker(
                                 selection: Binding(
-                                    get: { self.state.dateOfBirth ?? self.dateOfBirthPlaceholder },
-                                    set: { self.state.dateOfBirth = $0 }
+                                    get: { state.dateOfBirth ?? dateOfBirthPlaceholder },
+                                    set: { state.dateOfBirth = $0 }
                                 )
                             )
                         }

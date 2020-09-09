@@ -64,7 +64,7 @@ struct ProfileView: View, TestableView {
             }
         }
         .listStyle(GroupedListStyle())
-        .alert(error: self.errorMessage, dismiss: dismissError)
+        .alert(error: errorMessage, dismiss: dismissError)
         .testable(self)
     }
 

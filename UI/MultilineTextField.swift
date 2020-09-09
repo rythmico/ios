@@ -186,10 +186,10 @@ struct MultilineTextField: View {
     @Binding private var text: String
     private var internalText: Binding<String> {
         Binding(
-            get: { self.text },
+            get: { text },
             set: {
-                self.text = $0
-                self.showingPlaceholder = $0.isEmpty
+                text = $0
+                showingPlaceholder = $0.isEmpty
             }
         )
     }

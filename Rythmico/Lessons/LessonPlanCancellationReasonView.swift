@@ -16,7 +16,7 @@ extension LessonPlanCancellationView {
 
         var submitButtonAction: Action? {
             selectedReason.map { reason in
-                { self.submitHandler(reason) }
+                { submitHandler(reason) }
             }
         }
 
