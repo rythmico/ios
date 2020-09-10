@@ -362,7 +362,7 @@
 		D5AFED4225057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */; };
 		D5AFED4325057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */; };
 		D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A64241479F300BE9B4F /* Assets.generated.swift */; };
-		D5B57A6724147F5100BE9B4F /* EnumProperties.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6624147F5100BE9B4F /* EnumProperties.generated.swift */; };
+		D5B57A6724147F5100BE9B4F /* RequestLessonPlanContext+EnumProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6624147F5100BE9B4F /* RequestLessonPlanContext+EnumProperties.swift */; };
 		D5B57A6D2419DA5B00BE9B4F /* AddressSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6C2419DA5B00BE9B4F /* AddressSelectionView.swift */; };
 		D5B57A6F2419E22300BE9B4F /* Optional+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6E2419E22300BE9B4F /* Optional+Sugar.swift */; };
 		D5B57A712419F79700BE9B4F /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A702419F79700BE9B4F /* SectionHeaderView.swift */; };
@@ -734,7 +734,7 @@
 		D5B13B2D23D125E6006CBC46 /* AuthenticationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceDoubles.swift; sourceTree = "<group>"; };
 		D5B13B2F23D1265F006CBC46 /* AuthenticationAccessTokenProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderDoubles.swift; sourceTree = "<group>"; };
 		D5B57A64241479F300BE9B4F /* Assets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.generated.swift; sourceTree = "<group>"; };
-		D5B57A6624147F5100BE9B4F /* EnumProperties.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumProperties.generated.swift; sourceTree = "<group>"; };
+		D5B57A6624147F5100BE9B4F /* RequestLessonPlanContext+EnumProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RequestLessonPlanContext+EnumProperties.swift"; sourceTree = "<group>"; };
 		D5B57A6C2419DA5B00BE9B4F /* AddressSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSelectionView.swift; sourceTree = "<group>"; };
 		D5B57A6E2419E22300BE9B4F /* Optional+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Sugar.swift"; sourceTree = "<group>"; };
 		D5B57A702419F79700BE9B4F /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
@@ -1198,6 +1198,7 @@
 				D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */,
 				03306F73247347570074AA98 /* RequestLessonPlanViewTests.swift */,
 				D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */,
+				D5B57A6624147F5100BE9B4F /* RequestLessonPlanContext+EnumProperties.swift */,
 				03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */,
 				D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */,
 			);
@@ -1412,7 +1413,6 @@
 				03341B4423ABB1E8009AE8A8 /* Assets.xcassets */,
 				D5B57A64241479F300BE9B4F /* Assets.generated.swift */,
 				03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */,
-				D5B57A6624147F5100BE9B4F /* EnumProperties.generated.swift */,
 				D50668DA23B946330044E553 /* Rythmico.entitlements */,
 				03341B4C23ABB1E8009AE8A8 /* Info.plist */,
 				D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */,
@@ -1686,7 +1686,6 @@
 			buildConfigurationList = 03341B4F23ABB1E8009AE8A8 /* Build configuration list for PBXNativeTarget "Rythmico" */;
 			buildPhases = (
 				D5B57A612414516700BE9B4F /* Generate Asset Symbols */,
-				D5B57A632414672F00BE9B4F /* Generate Enum Properties */,
 				D5CC5FF825041262007DFE84 /* Sanity Check Sources */,
 				03341B3723ABB1E7009AE8A8 /* Sources */,
 				03341B3823ABB1E7009AE8A8 /* Frameworks */,
@@ -1969,25 +1968,6 @@
 			shellPath = /bin/sh;
 			shellScript = "${SRCROOT}/script/build_phase_generate_asset_symbols\n";
 		};
-		D5B57A632414672F00BE9B4F /* Generate Enum Properties */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Generate Enum Properties";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(SRCROOT)/Rythmico/Supporting Files/EnumProperties.generated.swift",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/script/build_phase_generate_enum_properties\n";
-		};
 		D5CC5FF725040F9A007DFE84 /* Sanity Check Sources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2129,7 +2109,7 @@
 				03C39DD62496802500C76516 /* Pill.swift in Sources */,
 				03EDA67D24776C6C00FBE527 /* URLOpener.swift in Sources */,
 				03A91EF8249189E000DEAD5E /* PushNotificationAuthorizationCoordinatorDoubles.swift in Sources */,
-				D5B57A6724147F5100BE9B4F /* EnumProperties.generated.swift in Sources */,
+				D5B57A6724147F5100BE9B4F /* RequestLessonPlanContext+EnumProperties.swift in Sources */,
 				0372E35A249ABAB80048B402 /* SelectableList.swift in Sources */,
 				D5F506B82406363600CA4094 /* GenderSelectionView.swift in Sources */,
 				D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */,

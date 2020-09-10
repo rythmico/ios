@@ -50,6 +50,10 @@ extension RequestLessonPlanContext {
                 return 5
             }
         }
+
+        static var count: Int {
+            return 6
+        }
     }
 
     enum Direction {

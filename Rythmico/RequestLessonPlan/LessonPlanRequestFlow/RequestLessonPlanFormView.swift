@@ -106,10 +106,10 @@ extension RequestLessonPlanFormView {
     }
 
     var addressDetailsView: AddressDetailsView? {
-        context.currentStep.addressDetailsValue.map { values in
+        context.currentStep.addressDetailsValue.map {
             AddressDetailsView(
-                student: values.1,
-                instrument: values.0,
+                student: $0.student,
+                instrument: $0.instrument,
                 state: addressDetailsViewState,
                 searchCoordinator: addressSearchCoordinator,
                 context: context
@@ -141,11 +141,11 @@ extension RequestLessonPlanFormView {
             ReviewRequestView(
                 coordinator: requestCoordinator,
                 context: context,
-                instrument: $0.0,
-                student: $0.1,
-                address: $0.2,
-                schedule: $0.3,
-                privateNote: $0.4
+                instrument: $0.instrument,
+                student: $0.student,
+                address: $0.address,
+                schedule: $0.schedule,
+                privateNote: $0.privateNote
             )
         }
     }
