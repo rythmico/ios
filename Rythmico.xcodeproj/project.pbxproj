@@ -2917,7 +2917,7 @@
 			repositoryURL = "https://github.com/Square/Valet";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.2.8;
+				minimumVersion = 4.1.1;
 			};
 		};
 		D535547F23E0E7C1005A20EB /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {

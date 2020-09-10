@@ -1,29 +1,29 @@
 #if DEBUG
 import Foundation
+import enum Valet.KeychainError
 
 final class KeychainFake: KeychainProtocol {
     var inMemoryStorage: [String: String] = [:]
 
-    func set(string: String, forKey key: String) -> Bool {
+    func setString(_ string: String, forKey key: String) throws {
         inMemoryStorage[key] = string
-        return true
     }
 
-    func string(forKey key: String) -> String? {
-        inMemoryStorage[key]
+    func string(forKey key: String) throws -> String {
+        guard let string = inMemoryStorage[key] else {
+            throw KeychainError.itemNotFound
+        }
+        return string
     }
 
-    func removeObject(forKey key: String) -> Bool {
+    func removeObject(forKey key: String) throws {
         inMemoryStorage[key] = nil
-        return true
     }
 }
 
 final class KeychainDummy: KeychainProtocol {
-    func set(string: String, forKey key: String) -> Bool { false }
-
-    func string(forKey key: String) -> String? { nil }
-
-    func removeObject(forKey key: String) -> Bool { false }
+    func setString(_ string: String, forKey key: String) throws {}
+    func string(forKey key: String) throws -> String { throw KeychainError.itemNotFound }
+    func removeObject(forKey key: String) throws {}
 }
 #endif

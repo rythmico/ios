@@ -2,24 +2,22 @@ import Foundation
 import Valet
 
 protocol KeychainProtocol: AnyObject {
-    @discardableResult
-    func set(string: String, forKey key: String) -> Bool
-    func string(forKey key: String) -> String?
-    @discardableResult
-    func removeObject(forKey key: String) -> Bool
+    func setString(_ string: String, forKey key: String) throws
+    func string(forKey key: String) throws -> String
+    func removeObject(forKey key: String) throws
 }
 
 extension KeychainProtocol {
     var appleAuthorizationUserId: String? {
-        get { string(forKey: KeychainKey.appleAuthorizationUserId) }
-        set { setOrRemove(string: newValue, forKey: KeychainKey.appleAuthorizationUserId) }
+        get { try? string(forKey: KeychainKey.appleAuthorizationUserId) }
+        set { try? setOrRemoveString(newValue, forKey: KeychainKey.appleAuthorizationUserId) }
     }
 
-    private func setOrRemove(string: String?, forKey key: String) {
+    private func setOrRemoveString(_ string: String?, forKey key: String) throws {
         if let string = string {
-            set(string: string, forKey: key)
+            try setString(string, forKey: key)
         } else {
-            removeObject(forKey: key)
+            try removeObject(forKey: key)
         }
     }
 }
