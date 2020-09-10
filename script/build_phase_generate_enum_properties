@@ -7,8 +7,5 @@ fi
 
 sourcery \
     --sources Rythmico/RequestLessonPlan/LessonPlanRequestFlow/RequestLessonPlanContext.swift \
-    --sources Rythmico/RequestLessonPlan/StudentDetails/StudentDetailsView.swift \
-    --sources Rythmico/RequestLessonPlan/Scheduling/SchedulingView.swift \
-    --sources Rythmico/RequestLessonPlan/PrivateNote/PrivateNoteView.swift \
     --templates Rythmico/Supporting\ Files/EnumProperties.stencil \
     --output Rythmico/Supporting\ Files

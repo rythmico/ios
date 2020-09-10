@@ -21,19 +21,13 @@ struct StudentDetailsView: View, TestableView {
     @Environment(\.sizeCategory) var sizeCategory: ContentSizeCategory
 
     enum EditingFocus: EditingFocusEnum {
-        // TODO: remove with Swift 5.3
-        static var none: Self { ._none }
-        static var textField: Self { ._textField }
-        var isNone: Bool { is_none }
-        var isTextField: Bool { is_textField }
-        case _none
-        case _textField
+        case textField
         case dateOfBirth
     }
 
     @ObservedObject
     private var editingCoordinator = EditingCoordinator<EditingFocus>(keyboardDismisser: Current.keyboardDismisser)
-    private var editingFocus: EditingFocus {
+    private var editingFocus: EditingFocus? {
         get { editingCoordinator.focus }
         nonmutating set { editingCoordinator.focus = newValue }
     }
@@ -49,7 +43,7 @@ struct StudentDetailsView: View, TestableView {
 
     // MARK: - Subtitle -
     var subtitle: [MultiStyleText.Part] {
-        (UIScreen.main.isLarge && !sizeCategory._isAccessibilityCategory) || editingFocus.isNone
+        (UIScreen.main.isLarge && !sizeCategory._isAccessibilityCategory) || editingFocus == .none
             ? "Enter the details of the student who will learn " + instrument.name.style(.bodyBold)
             : .empty
     }
@@ -155,7 +149,7 @@ struct StudentDetailsView: View, TestableView {
                         .zIndex(0)
                     }
 
-                    if editingFocus.isDateOfBirth {
+                    if editingFocus == .dateOfBirth {
                         FloatingInputView(doneAction: endEditing) {
                             LabelessDatePicker(
                                 selection: Binding(

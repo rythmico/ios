@@ -37,7 +37,7 @@ final class SchedulingViewTests: XCTestCase {
             XCTAssertNil(state.startDate)
             XCTAssertNil(state.duration)
 
-            XCTAssertTrue(view.editingFocus.isNone)
+            XCTAssertEqual(view.editingFocus, .none)
 
             XCTAssertTrue(view.startDateText.isEmpty)
             XCTAssertTrue(view.startTimeText.isEmpty)
@@ -57,7 +57,7 @@ final class SchedulingViewTests: XCTestCase {
             XCTAssertNil(state.startTime)
             XCTAssertNil(state.duration)
 
-            XCTAssertTrue(view.editingFocus.isStartDate)
+            XCTAssertEqual(view.editingFocus, .startDate)
 
             XCTAssertFalse(view.startDateText.isEmpty)
             XCTAssertTrue(view.startTimeText.isEmpty)
@@ -77,7 +77,7 @@ final class SchedulingViewTests: XCTestCase {
             XCTAssertNotNil(state.startTime)
             XCTAssertNil(state.duration)
 
-            XCTAssertTrue(view.editingFocus.isStartTime)
+            XCTAssertEqual(view.editingFocus, .startTime)
 
             XCTAssertTrue(view.startDateText.isEmpty)
             XCTAssertFalse(view.startTimeText.isEmpty)
@@ -97,7 +97,7 @@ final class SchedulingViewTests: XCTestCase {
             XCTAssertNil(state.startTime)
             XCTAssertNotNil(state.duration)
 
-            XCTAssertTrue(view.editingFocus.isDuration)
+            XCTAssertEqual(view.editingFocus, .duration)
 
             XCTAssertTrue(view.startDateText.isEmpty)
             XCTAssertTrue(view.startTimeText.isEmpty)
@@ -113,7 +113,7 @@ final class SchedulingViewTests: XCTestCase {
         XCTAssertView(view) { view in
             view.beginEditingStartDate()
             view.endEditing()
-            XCTAssertTrue(view.editingFocus.isNone)
+            XCTAssertEqual(view.editingFocus, .none)
         }
     }
 

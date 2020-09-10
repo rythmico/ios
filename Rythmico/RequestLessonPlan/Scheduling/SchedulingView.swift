@@ -23,13 +23,12 @@ struct SchedulingView: View, TestableView {
     @ObservedObject private(set) var state: ViewState
 
     enum EditingFocus {
-        case none
         case startDate
         case startTime
         case duration
     }
 
-    @State private(set) var editingFocus: EditingFocus = .none
+    @State private(set) var editingFocus: EditingFocus? = .none
 
     private let instrument: Instrument
     private let context: SchedulingContext
@@ -49,7 +48,7 @@ struct SchedulingView: View, TestableView {
     }
 
     var subtitle: [MultiStyleText.Part] {
-        (UIScreen.main.isLarge && !sizeCategory._isAccessibilityCategory) || editingFocus.isNone
+        (UIScreen.main.isLarge && !sizeCategory._isAccessibilityCategory) || editingFocus == .none
             ? "Enter when you want the " + "\(instrument.name) lessons".style(.bodyBold) + " to commence and for how long"
             : .empty
     }
@@ -132,7 +131,7 @@ struct SchedulingView: View, TestableView {
                         .zIndex(0)
                     }
 
-                    if editingFocus.isStartDate {
+                    if editingFocus == .startDate {
                         FloatingInputView(doneAction: endEditing) {
                             BetterPicker(
                                 options: availableDates,
@@ -146,7 +145,7 @@ struct SchedulingView: View, TestableView {
                         .zIndex(1)
                     }
 
-                    if editingFocus.isStartTime {
+                    if editingFocus == .startTime {
                         FloatingInputView(doneAction: endEditing) {
                             BetterPicker(
                                 options: availableTimes,
@@ -160,7 +159,7 @@ struct SchedulingView: View, TestableView {
                         .zIndex(1)
                     }
 
-                    if editingFocus.isDuration {
+                    if editingFocus == .duration {
                         FloatingInputView(doneAction: endEditing) {
                             BetterPicker(
                                 selection: Binding(

@@ -17,18 +17,12 @@ struct PrivateNoteView: View, TestableView {
     private let context: PrivateNoteContext
 
     enum EditingFocus: EditingFocusEnum {
-        // TODO: remove with Swift 5.3
-        static var none: Self { ._none }
-        static var textField: Self { ._textField }
-        var isNone: Bool { is_none }
-        var isTextField: Bool { is_textField }
-        case _none
-        case _textField
+        case textField
     }
 
     @ObservedObject
     private var editingCoordinator = EditingCoordinator<EditingFocus>(keyboardDismisser: Current.keyboardDismisser)
-    private(set) var editingFocus: EditingFocus {
+    private(set) var editingFocus: EditingFocus? {
         get { editingCoordinator.focus }
         nonmutating set { editingCoordinator.focus = newValue }
     }
@@ -39,7 +33,7 @@ struct PrivateNoteView: View, TestableView {
     }
 
     private var subtitle: [MultiStyleText.Part] {
-        (UIScreen.main.isLarge && !sizeCategory._isAccessibilityCategory) || editingFocus.isNone
+        (UIScreen.main.isLarge && !sizeCategory._isAccessibilityCategory) || editingFocus == .none
             ? ["Enter details of what you're looking for to make it easier for prospective tutors"]
             : .empty
     }

@@ -28,7 +28,7 @@ final class PrivateNoteViewTests: XCTestCase {
         XCTAssertView(view) { view in
             XCTAssertNil(context.privateNote)
             XCTAssertEqual(state.privateNote, "")
-            XCTAssertTrue(view.editingFocus.isNone)
+            XCTAssertEqual(view.editingFocus, .none)
         }
     }
 
@@ -37,9 +37,9 @@ final class PrivateNoteViewTests: XCTestCase {
 
         XCTAssertView(view) { view in
             view.noteEditingChanged(true)
-            XCTAssertTrue(view.editingFocus.isTextField)
+            XCTAssertEqual(view.editingFocus, .textField)
             view.noteEditingChanged(false)
-            XCTAssertTrue(view.editingFocus.isNone)
+            XCTAssertEqual(view.editingFocus, .none)
         }
     }
 
@@ -49,7 +49,7 @@ final class PrivateNoteViewTests: XCTestCase {
         XCTAssertView(view) { view in
             view.noteEditingChanged(true)
             view.endEditing()
-            XCTAssertTrue(view.editingFocus.isNone)
+            XCTAssertEqual(view.editingFocus, .none)
         }
     }
 
