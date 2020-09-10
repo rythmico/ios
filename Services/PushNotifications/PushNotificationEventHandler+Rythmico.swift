@@ -15,7 +15,7 @@ final class PushNotificationEventHandler: PushNotificationEventHandlerProtocol {
         _ serviceKeyPath: KeyPath<AppEnvironment, APIServiceBase<Request>>,
         storeInto repositoryKeyPath: KeyPath<AppEnvironment, Repository<Item>>
     ) where Request.Properties == Void, Request.Response == [Item] {
-        guard let coordinator = Current.coordinator(for: serviceKeyPath) else {
+        guard let coordinator = Current.sharedCoordinator(for: serviceKeyPath) else {
             return
         }
         coordinator.$state

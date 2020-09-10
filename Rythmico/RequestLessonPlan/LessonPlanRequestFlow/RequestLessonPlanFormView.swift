@@ -20,7 +20,7 @@ struct RequestLessonPlanFormView: View, TestableView {
     private let addressSearchCoordinator: AddressSearchCoordinator
 
     init?(context: RequestLessonPlanContext, coordinator: RequestCoordinator) {
-        guard let addressSearchCoordinator = Current.ephemeralCoordinator(for: \.addressSearchService) else {
+        guard let addressSearchCoordinator = Current.coordinator(for: \.addressSearchService) else {
             return nil
         }
         self.context = context

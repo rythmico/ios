@@ -13,7 +13,7 @@ final class LessonsViewTests: XCTestCase {
     func testInitialState() throws {
         Current.lessonPlanFetchingService = APIServiceStub(result: .success(.stub))
 
-        let fetchingCoordinator = try XCTUnwrap(Current.coordinator(for: \.lessonPlanFetchingService))
+        let fetchingCoordinator = try XCTUnwrap(Current.sharedCoordinator(for: \.lessonPlanFetchingService))
         let view = try XCTUnwrap(LessonsView(coordinator: fetchingCoordinator))
 
         XCTAssertTrue(view.lessonPlans.isEmpty)
@@ -24,7 +24,7 @@ final class LessonsViewTests: XCTestCase {
     func testLessonPlansLoadingOnAppear() throws {
         Current.lessonPlanFetchingService = APIServiceStub(result: .success(.stub), delay: 0)
 
-        let fetchingCoordinator = try XCTUnwrap(Current.coordinator(for: \.lessonPlanFetchingService))
+        let fetchingCoordinator = try XCTUnwrap(Current.sharedCoordinator(for: \.lessonPlanFetchingService))
         let view = try XCTUnwrap(LessonsView(coordinator: fetchingCoordinator))
 
         XCTAssertView(view) { view in
@@ -38,7 +38,7 @@ final class LessonsViewTests: XCTestCase {
         let spy = APIServiceSpy<GetLessonPlansRequest>(result: .success(.stub))
         Current.lessonPlanFetchingService = spy
 
-        let fetchingCoordinator = try XCTUnwrap(Current.coordinator(for: \.lessonPlanFetchingService))
+        let fetchingCoordinator = try XCTUnwrap(Current.sharedCoordinator(for: \.lessonPlanFetchingService))
         let view = try XCTUnwrap(LessonsView(coordinator: fetchingCoordinator))
 
         XCTAssertView(view) { view in
@@ -51,7 +51,7 @@ final class LessonsViewTests: XCTestCase {
     func testLessonPlansFetchingFailure() throws {
         Current.lessonPlanFetchingService = APIServiceStub(result: .failure("Something 1"))
 
-        let fetchingCoordinator = try XCTUnwrap(Current.coordinator(for: \.lessonPlanFetchingService))
+        let fetchingCoordinator = try XCTUnwrap(Current.sharedCoordinator(for: \.lessonPlanFetchingService))
         let view = try XCTUnwrap(LessonsView(coordinator: fetchingCoordinator))
 
         XCTAssertView(view) { view in

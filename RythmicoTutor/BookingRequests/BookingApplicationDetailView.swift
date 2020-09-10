@@ -18,7 +18,7 @@ struct BookingApplicationDetailView: View, RoutableView {
     private var retractionCoordinator: APIActivityCoordinator<BookingApplicationsRetractRequest>
 
     init?(bookingApplication: BookingApplication) {
-        guard let retractionCoordinator = Current.ephemeralCoordinator(for: \.bookingApplicationRetractionService) else {
+        guard let retractionCoordinator = Current.coordinator(for: \.bookingApplicationRetractionService) else {
             return nil
         }
         self.bookingApplication = bookingApplication

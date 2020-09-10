@@ -59,10 +59,10 @@ struct LessonsView: View, TestableView, VisibleView {
 #if DEBUG
 struct LessonsView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonsView(coordinator: Current.coordinator(for: \.lessonPlanFetchingService)!)
+        LessonsView(coordinator: Current.sharedCoordinator(for: \.lessonPlanFetchingService)!)
             .environment(\.colorScheme, .light)
 //            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
-        LessonsView(coordinator: Current.coordinator(for: \.lessonPlanFetchingService)!)
+        LessonsView(coordinator: Current.sharedCoordinator(for: \.lessonPlanFetchingService)!)
             .environment(\.colorScheme, .dark)
             .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }

@@ -33,7 +33,7 @@ struct MainTabView: View, TestableView, RoutableView {
 
     init?() {
         guard
-            let lessonPlanFetchingCoordinator = Current.coordinator(for: \.lessonPlanFetchingService),
+            let lessonPlanFetchingCoordinator = Current.sharedCoordinator(for: \.lessonPlanFetchingService),
             let deviceRegisterCoordinator = Current.deviceRegisterCoordinator()
         else {
             return nil

@@ -9,7 +9,7 @@ struct App {
     }
 
     static func willResignActive() {
-        Current.coordinator(for: \.bookingRequestFetchingService)?.reset()
-        Current.coordinator(for: \.bookingApplicationFetchingService)?.reset()
+        Current.sharedCoordinator(for: \.bookingRequestFetchingService)?.reset()
+        Current.sharedCoordinator(for: \.bookingApplicationFetchingService)?.reset()
     }
 }

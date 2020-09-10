@@ -23,7 +23,7 @@ extension AppEnvironment {
         }
     }
 
-    func coordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
+    func sharedCoordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
         // Return nil if logged out.
         guard let currentProvider = accessTokenProviderObserver.currentProvider else {
             latestProvider = nil
@@ -56,7 +56,7 @@ extension AppEnvironment {
         return coordinator
     }
 
-    func ephemeralCoordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
+    func coordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
         accessTokenProviderObserver.currentProvider.map {
             APIActivityCoordinator(accessTokenProvider: $0, deauthenticationService: deauthenticationService, service: self[keyPath: service])
         }
@@ -67,7 +67,7 @@ extension AppEnvironment {
     }
 
     func deviceRegisterCoordinator() -> DeviceRegisterCoordinator? {
-        ephemeralCoordinator(for: \.deviceRegisterService).map {
+        coordinator(for: \.deviceRegisterService).map {
             DeviceRegisterCoordinator(deviceTokenProvider: deviceTokenProvider, apiCoordinator: $0)
         }
     }

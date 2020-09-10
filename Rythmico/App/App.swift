@@ -15,7 +15,7 @@ struct App {
     }
 
     static func willResignActive() {
-        Current.coordinator(for: \.lessonPlanFetchingService)?.reset()
+        Current.sharedCoordinator(for: \.lessonPlanFetchingService)?.reset()
     }
 
     // TODO: hopefully to be deleted someday if SwiftUI allows for better customization.
