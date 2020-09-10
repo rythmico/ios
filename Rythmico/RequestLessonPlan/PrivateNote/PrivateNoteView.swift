@@ -10,8 +10,6 @@ struct PrivateNoteView: View, TestableView {
         @Published var privateNote: String = ""
     }
 
-    @Environment(\.sizeCategory) var sizeCategory: ContentSizeCategory
-
     @ObservedObject
     private var state: ViewState
     private let context: PrivateNoteContext
@@ -20,7 +18,7 @@ struct PrivateNoteView: View, TestableView {
         case textField
     }
 
-    @ObservedObject
+    @StateObject
     private var editingCoordinator = EditingCoordinator<EditingFocus>(keyboardDismisser: Current.keyboardDismisser)
     private(set) var editingFocus: EditingFocus? {
         get { editingCoordinator.focus }
@@ -33,7 +31,7 @@ struct PrivateNoteView: View, TestableView {
     }
 
     private var subtitle: [MultiStyleText.Part] {
-        (UIScreen.main.isLarge && !sizeCategory._isAccessibilityCategory) || editingFocus == .none
+        editingFocus == .none
             ? ["Enter details of what you're looking for to make it easier for prospective tutors"]
             : .empty
     }

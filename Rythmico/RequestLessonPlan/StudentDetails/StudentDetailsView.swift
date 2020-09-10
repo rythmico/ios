@@ -18,14 +18,13 @@ struct StudentDetailsView: View, TestableView {
     }
 
     @ObservedObject var state: ViewState
-    @Environment(\.sizeCategory) var sizeCategory: ContentSizeCategory
 
     enum EditingFocus: EditingFocusEnum {
         case textField
         case dateOfBirth
     }
 
-    @ObservedObject
+    @StateObject
     private var editingCoordinator = EditingCoordinator<EditingFocus>(keyboardDismisser: Current.keyboardDismisser)
     private var editingFocus: EditingFocus? {
         get { editingCoordinator.focus }
@@ -43,7 +42,7 @@ struct StudentDetailsView: View, TestableView {
 
     // MARK: - Subtitle -
     var subtitle: [MultiStyleText.Part] {
-        (UIScreen.main.isLarge && !sizeCategory._isAccessibilityCategory) || editingFocus == .none
+        editingFocus == .none
             ? "Enter the details of the student who will learn " + instrument.name.style(.bodyBold)
             : .empty
     }

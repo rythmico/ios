@@ -13,8 +13,6 @@ struct AddressDetailsView: View, TestableView {
         @Published var selectedAddress: Address?
     }
 
-    @Environment(\.sizeCategory) private var sizeCategory: ContentSizeCategory
-
     private let student: Student
     private let instrument: Instrument
     @ObservedObject
@@ -38,9 +36,10 @@ struct AddressDetailsView: View, TestableView {
     }
 
     var subtitle: [MultiStyleText.Part] {
-        (UIScreen.main.isLarge && !sizeCategory._isAccessibilityCategory) || addresses?.isEmpty != false
-            ? "Enter the address where " + student.name.firstWord?.style(.bodyBold) + " will have the " + "\(instrument.name) lessons".style(.bodyBold)
-            : .empty
+        "Enter the address where " +
+        student.name.firstWord?.style(.bodyBold) +
+        " will have the " +
+        "\(instrument.name) lessons".style(.bodyBold)
     }
 
     var isLoading: Bool { coordinator.state.isLoading }

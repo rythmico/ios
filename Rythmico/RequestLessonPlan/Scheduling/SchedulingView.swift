@@ -12,8 +12,6 @@ struct SchedulingView: View, TestableView {
         static let earliestStartTime = Date(timeIntervalSinceReferenceDate: 0).setting(hour: 8) // 08:00
     }
 
-    @Environment(\.sizeCategory) var sizeCategory: ContentSizeCategory
-
     final class ViewState: ObservableObject {
         @Published var startDate: Date?
         @Published var startTime: Date? // TODO: make Time struct
@@ -48,9 +46,9 @@ struct SchedulingView: View, TestableView {
     }
 
     var subtitle: [MultiStyleText.Part] {
-        (UIScreen.main.isLarge && !sizeCategory._isAccessibilityCategory) || editingFocus == .none
-            ? "Enter when you want the " + "\(instrument.name) lessons".style(.bodyBold) + " to commence and for how long"
-            : .empty
+        "Enter when you want the " +
+        "\(instrument.name) lessons".style(.bodyBold) +
+        " to commence and for how long"
     }
 
     var startDateText: String { state.startDate.map(dateFormatter.string(from:)) ?? .empty }

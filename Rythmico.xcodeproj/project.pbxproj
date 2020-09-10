@@ -154,7 +154,6 @@
 		039C3EB52448A7CD0036959A /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039C3EB42448A7CD0036959A /* Transitions.swift */; };
 		03A094622443D8E1008B4BD6 /* EditingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */; };
 		03A3F6E52447B7BD00F6391D /* PreviewDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6E42447B7BD00F6391D /* PreviewDevices.swift */; };
-		03A3F6EC2447D3FD00F6391D /* UIScreen+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6EB2447D3FD00F6391D /* UIScreen+Sugar.swift */; };
 		03A3F6EE2447DFF900F6391D /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6ED2447DFF900F6391D /* Animation.swift */; };
 		03A8116E241D1DAF0091B9ED /* StudentDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */; };
 		03A91EF2249186EC00DEAD5E /* AppEnvironment+Instances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A91EF1249186EC00DEAD5E /* AppEnvironment+Instances.swift */; };
@@ -572,7 +571,6 @@
 		039C3EB42448A7CD0036959A /* Transitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transitions.swift; sourceTree = "<group>"; };
 		03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingCoordinator.swift; sourceTree = "<group>"; };
 		03A3F6E42447B7BD00F6391D /* PreviewDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDevices.swift; sourceTree = "<group>"; };
-		03A3F6EB2447D3FD00F6391D /* UIScreen+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Sugar.swift"; sourceTree = "<group>"; };
 		03A3F6ED2447DFF900F6391D /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDoubles.swift; sourceTree = "<group>"; };
 		03A91EF1249186EC00DEAD5E /* AppEnvironment+Instances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Instances.swift"; sourceTree = "<group>"; };
@@ -1390,7 +1388,6 @@
 				039C3EB42448A7CD0036959A /* Transitions.swift */,
 				D5F506642400619600CA4094 /* UIApplication+KeyboardDismisser.swift */,
 				D5CC5FE924FF1201007DFE84 /* UIImage+Sugar.swift */,
-				03A3F6EB2447D3FD00F6391D /* UIScreen+Sugar.swift */,
 				D5AFED3E25057158003FFC68 /* VisibleView.swift */,
 				D5147507240C8E69002EE20C /* XCTAssertView.swift */,
 			);
@@ -2097,7 +2094,6 @@
 				03AAF6712445E0FB002D8F5B /* Schedule.swift in Sources */,
 				03275AE3249070D5009C3980 /* DeviceEndpoints.swift in Sources */,
 				D527B01824FEABEB003E81A9 /* CancellableDoubles.swift in Sources */,
-				03A3F6EC2447D3FD00F6391D /* UIScreen+Sugar.swift in Sources */,
 				03E88EA824C1F4980077A420 /* AppDelegate+Window.swift in Sources */,
 				032B6FD424B7881C00299A09 /* InstrumentExtensions.swift in Sources */,
 				D5BF12C62507D78800B2931C /* RouterDoubles.swift in Sources */,

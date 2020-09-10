@@ -84,8 +84,8 @@ struct CustomTextField: UIViewRepresentable {
         return textField
     }
 
-    func makeCoordinator() -> CustomTextField.Coordinator {
-        return Coordinator(text: $text, onEditingChanged: onEditingChanged, onCommit: onCommit)
+    func makeCoordinator() -> Coordinator {
+        Coordinator(text: $text, onEditingChanged: onEditingChanged, onCommit: onCommit)
     }
 
     func updateUIView(_ uiView: UITextField, context: UIViewRepresentableContext<CustomTextField>) {
