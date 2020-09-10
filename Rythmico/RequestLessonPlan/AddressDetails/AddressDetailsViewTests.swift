@@ -29,7 +29,7 @@ final class AddressDetailsViewTests: XCTestCase {
                 student: .davidStub,
                 instrument: .guitar,
                 state: .init(),
-                searchCoordinator: XCTUnwrap(Current.coordinator(for: \.addressSearchService)),
+                coordinator: XCTUnwrap(Current.coordinator(for: \.addressSearchService)),
                 context: context
             )
         )

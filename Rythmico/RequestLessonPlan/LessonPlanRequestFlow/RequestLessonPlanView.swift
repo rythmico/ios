@@ -4,11 +4,12 @@ import Sugar
 struct RequestLessonPlanView: View, TestableView {
     typealias Coordinator = APIActivityCoordinator<CreateLessonPlanRequest>
 
-    @ObservedObject
-    private(set) var coordinator: Coordinator
-    @ObservedObject
-    private var context: RequestLessonPlanContext
-    private let _formView: RequestLessonPlanFormView
+    @StateObject
+    var context: RequestLessonPlanContext
+    @StateObject
+    var coordinator: Coordinator
+    @State
+    private var _formView: RequestLessonPlanFormView
 
     init?(context: RequestLessonPlanContext) {
         guard
@@ -17,9 +18,9 @@ struct RequestLessonPlanView: View, TestableView {
         else {
             return nil
         }
-        self.coordinator = coordinator
-        self.context = context
-        self._formView = formView
+        self._context = .init(wrappedValue: context)
+        self._coordinator = .init(wrappedValue: coordinator)
+        self.__formView = .init(wrappedValue: formView)
     }
 
     let inspection = SelfInspection()

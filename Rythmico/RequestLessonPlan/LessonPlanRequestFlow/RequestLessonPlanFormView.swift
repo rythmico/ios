@@ -5,11 +5,16 @@ struct RequestLessonPlanFormView: View, TestableView {
     typealias RequestCoordinator = APIActivityCoordinator<CreateLessonPlanRequest>
     typealias AddressSearchCoordinator = APIActivityCoordinator<AddressSearchRequest>
 
-    fileprivate let instrumentSelectionViewState = InstrumentSelectionView.ViewState()
-    fileprivate let studentDetailsViewState = StudentDetailsView.ViewState()
-    fileprivate let addressDetailsViewState = AddressDetailsView.ViewState()
-    fileprivate let schedulingViewState = SchedulingView.ViewState()
-    fileprivate let privateNoteViewState = PrivateNoteView.ViewState()
+    @StateObject
+    fileprivate var instrumentSelectionViewState = InstrumentSelectionView.ViewState()
+    @StateObject
+    fileprivate var studentDetailsViewState = StudentDetailsView.ViewState()
+    @StateObject
+    fileprivate var addressDetailsViewState = AddressDetailsView.ViewState()
+    @StateObject
+    fileprivate var schedulingViewState = SchedulingView.ViewState()
+    @StateObject
+    fileprivate var privateNoteViewState = PrivateNoteView.ViewState()
 
     @Environment(\.presentationMode)
     private var presentationMode
@@ -111,7 +116,7 @@ extension RequestLessonPlanFormView {
                 student: $0.student,
                 instrument: $0.instrument,
                 state: addressDetailsViewState,
-                searchCoordinator: addressSearchCoordinator,
+                coordinator: addressSearchCoordinator,
                 context: context
             )
         }

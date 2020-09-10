@@ -20,20 +20,20 @@ struct AddressDetailsView: View, TestableView {
     @ObservedObject
     private(set) var state: ViewState
     @ObservedObject
-    private(set) var searchCoordinator: SearchCoordinator
+    private(set) var coordinator: SearchCoordinator
     private let context: AddressDetailsContext
 
     init(
         student: Student,
         instrument: Instrument,
         state: ViewState,
-        searchCoordinator: SearchCoordinator,
+        coordinator: SearchCoordinator,
         context: AddressDetailsContext
     ) {
         self.student = student
         self.instrument = instrument
         self.state = state
-        self.searchCoordinator = searchCoordinator
+        self.coordinator = coordinator
         self.context = context
     }
 
@@ -43,12 +43,12 @@ struct AddressDetailsView: View, TestableView {
             : .empty
     }
 
-    var isLoading: Bool { searchCoordinator.state.isLoading }
-    var error: Error? { searchCoordinator.state.failureValue }
-    var addresses: [Address]? { searchCoordinator.state.successValue.map([Address].init) }
+    var isLoading: Bool { coordinator.state.isLoading }
+    var error: Error? { coordinator.state.failureValue }
+    var addresses: [Address]? { coordinator.state.successValue.map([Address].init) }
 
     func searchAddresses() {
-        searchCoordinator.run(with: .init(postcode: state.postcode))
+        coordinator.run(with: .init(postcode: state.postcode))
     }
 
     var nextButtonAction: Action? {
@@ -124,7 +124,7 @@ struct AddressDetailsView: View, TestableView {
             .animation(.rythmicoSpring(duration: .durationMedium), value: nextButtonAction != nil)
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: addresses)
-        .alertOnFailure(searchCoordinator)
+        .alertOnFailure(coordinator)
         .testable(self)
         .onDisappear(perform: Current.keyboardDismisser.dismissKeyboard)
     }
@@ -156,7 +156,7 @@ struct AddressDetailsViewPreview: PreviewProvider {
             student: .davidStub,
             instrument: .guitar,
             state: state,
-            searchCoordinator: Current.coordinator(for: \.addressSearchService)!,
+            coordinator: Current.coordinator(for: \.addressSearchService)!,
             context: RequestLessonPlanContext()
         )
         .previewDevices()
