@@ -117,6 +117,7 @@ struct SchedulingView: View, TestableView {
                                 DatePicker("", selection: $state.startTime, displayedComponents: .hourAndMinute)
                                     .datePickerStyle(GraphicalDatePickerStyle())
                                     .modifier(RoundedThinOutlineContainer(padded: false))
+                                    .onTapGesture(perform: beginEditingStartTime)
                             }
 
                             HeaderContentView(title: "Duration") {
@@ -174,6 +175,10 @@ struct SchedulingView: View, TestableView {
         if state.startDate == nil {
             state.startDate = firstAvailableDate
         }
+    }
+
+    func beginEditingStartTime() {
+        editingFocus = .startTime
     }
 
     func beginEditingDuration() {
