@@ -26,7 +26,6 @@ struct AuthorizationAppleIDButton: View {
 
 #if DEBUG
 struct AuthorizationAppleIDButton_Preview: PreviewProvider {
-    @ViewBuilder
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
             ZStack {

@@ -7,23 +7,21 @@ struct MultiStyleText: View {
     var parts: [Part]
 
     var body: some View {
-        Group {
-            if parts.isEmpty {
-                EmptyView()
-            } else {
-                parts.reduce(Text("")) { text, part in
-                    text + Text(part.string)
-                        .font(
-                            .rythmicoFont(
-                                part.style,
-                                sizeCategory: sizeCategory,
-                                legibilityWeight: legibilityWeight
-                            )
+        if parts.isEmpty {
+            EmptyView()
+        } else {
+            parts.reduce(Text("")) { text, part in
+                text + Text(part.string)
+                    .font(
+                        .rythmicoFont(
+                            part.style,
+                            sizeCategory: sizeCategory,
+                            legibilityWeight: legibilityWeight
                         )
-                        .foregroundColor(part.color)
-                }
-                .lineSpacing(6)
+                    )
+                    .foregroundColor(part.color)
             }
+            .lineSpacing(6)
         }
     }
 }

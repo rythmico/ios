@@ -147,7 +147,6 @@ struct BookingApplicationDetailView: View, RoutableView {
 
 #if DEBUG
 struct BookingApplicationDetailView_Previews: PreviewProvider {
-    @ViewBuilder
     static var previews: some View {
         BookingApplicationDetailView(bookingApplication: .longStub)
         BookingApplicationDetailView(bookingApplication: .stub(.stub(.selected)))

@@ -148,7 +148,6 @@ private struct BestNavigationStyleModifier: ViewModifier {
 
 #if DEBUG
 struct MainTabView_Previews: PreviewProvider {
-    @ViewBuilder
     static var previews: some View {
         MainTabView()
             .environment(\.colorScheme, .light)

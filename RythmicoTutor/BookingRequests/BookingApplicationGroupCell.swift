@@ -9,7 +9,6 @@ struct BookingApplicationGroupCell: View {
         self.applicationCount = applications.filter { $0.statusInfo.status == status }.count
     }
 
-    @ViewBuilder
     var body: some View {
         HStack(spacing: .spacingMedium) {
             Text(title)

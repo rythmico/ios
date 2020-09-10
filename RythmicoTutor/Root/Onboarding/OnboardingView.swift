@@ -108,13 +108,11 @@ struct OnboardingView: View, TestableView {
 #if DEBUG
 struct OnboardingView_Preview: PreviewProvider {
     static var previews: some View {
-        Group {
-            OnboardingView()
-                .environment(\.colorScheme, .light)
-            OnboardingView()
-                .environment(\.colorScheme, .dark)
-                .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
-        }
+        OnboardingView()
+            .environment(\.colorScheme, .light)
+        OnboardingView()
+            .environment(\.colorScheme, .dark)
+            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }
 #endif

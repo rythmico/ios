@@ -105,19 +105,11 @@ struct OnboardingView: View, TestableView {
 #if DEBUG
 struct OnboardingView_Preview: PreviewProvider {
     static var previews: some View {
-        Current.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
-        Current.authenticationService = AuthenticationServiceStub(
-            result: .success(AuthenticationAccessTokenProviderStub(result: .success(""))),
-            delay: 2
-        )
-
-        return Group {
-            OnboardingView()
-                .environment(\.colorScheme, .light)
-            OnboardingView()
-                .environment(\.colorScheme, .dark)
-                .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
-        }
+        OnboardingView()
+            .environment(\.colorScheme, .light)
+        OnboardingView()
+            .environment(\.colorScheme, .dark)
+            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }
 #endif

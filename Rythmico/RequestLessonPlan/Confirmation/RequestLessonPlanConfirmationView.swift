@@ -94,7 +94,6 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
 #if DEBUG
 struct RequestLessonPlanConfirmationView_Previews: PreviewProvider {
     static var previews: some View {
-        Current.userAuthenticated()
         Current.pushNotificationAuthorization(
             initialStatus: .notDetermined,
 //            initialStatus: .authorized,

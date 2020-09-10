@@ -113,7 +113,6 @@ struct ProfileView: View, TestableView {
 #if DEBUG
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        Current.userAuthenticated()
         Current.pushNotificationAuthorization(
             initialStatus: .notDetermined,
 //            initialStatus: .authorized,

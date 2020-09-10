@@ -58,7 +58,6 @@ struct LessonsView: View, TestableView, VisibleView {
 
 #if DEBUG
 struct LessonsView_Previews: PreviewProvider {
-    @ViewBuilder
     static var previews: some View {
         LessonsView(coordinator: Current.coordinator(for: \.lessonPlanFetchingService)!)
             .environment(\.colorScheme, .light)
