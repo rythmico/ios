@@ -100,36 +100,30 @@ struct MainTabView: View, TestableView, RoutableView {
         }
     }
 
-    private var leadingNavigationItem: AnyView? {
+    @ViewBuilder
+    private var leadingNavigationItem: some View {
         switch tab {
-        case .lessons:
-            return AnyView(
-                Group {
-                    if lessonPlanFetchingCoordinator.state.isLoading {
-                        ActivityIndicator(style: .medium, color: .rythmicoGray90)
-                    }
-                }
-            )
-        case .profile:
-            return nil
+        case .lessons where lessonPlanFetchingCoordinator.state.isLoading:
+            ActivityIndicator(style: .medium, color: .rythmicoGray90)
+        default:
+            EmptyView()
         }
     }
 
-    private var trailingNavigationItem: AnyView? {
+    @ViewBuilder
+    private var trailingNavigationItem: some View {
         switch tab {
         case .lessons:
-            return AnyView(
-                Button(action: presentRequestLessonFlow) {
-                    Image(systemSymbol: .plusCircleFill).font(.system(size: 24))
-                        .padding(.vertical, .spacingExtraSmall)
-                        .padding(.horizontal, .spacingExtraLarge)
-                        .offset(x: .spacingExtraLarge)
-                }
-                .accessibility(label: Text("Request lessons"))
-                .accessibility(hint: Text("Double tap to request a lesson plan"))
-            )
+            Button(action: presentRequestLessonFlow) {
+                Image(systemSymbol: .plusCircleFill).font(.system(size: 24))
+                    .padding(.vertical, .spacingExtraSmall)
+                    .padding(.horizontal, .spacingExtraLarge)
+                    .offset(x: .spacingExtraLarge)
+            }
+            .accessibility(label: Text("Request lessons"))
+            .accessibility(hint: Text("Double tap to request a lesson plan"))
         case .profile:
-            return nil
+            EmptyView()
         }
     }
 

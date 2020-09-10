@@ -87,7 +87,7 @@ struct ProfileView: View, TestableView {
         _ title: String,
         disclosure: Bool = false,
         action: Action? = nil,
-        content: () -> Content
+        @ViewBuilder content: () -> Content
     ) -> some View {
         let cellContent = HStack {
             Text(title)
