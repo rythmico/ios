@@ -92,7 +92,7 @@ extension AppEnvironment {
 
         appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
         shouldSucceedAuthentication()
-        deauthenticationService = DeauthenticationServiceStub()
+        deauthenticationService = DeauthenticationServiceFake()
         userAuthenticated()
 
         pushNotificationAuthorization(

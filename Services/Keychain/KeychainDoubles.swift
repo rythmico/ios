@@ -3,7 +3,7 @@ import Foundation
 import enum Valet.KeychainError
 
 final class KeychainFake: KeychainProtocol {
-    var inMemoryStorage: [String: String] = [:]
+    private(set) var inMemoryStorage: [String: String] = [:]
 
     func setString(_ string: String, forKey key: String) throws {
         inMemoryStorage[key] = string

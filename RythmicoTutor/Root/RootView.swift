@@ -12,8 +12,9 @@ struct RootView: View, TestableView {
     @ObservedObject
     private var accessTokenProviderObserver = Current.accessTokenProviderObserver
 
-    @State
-    private(set) var state = Self.freshState
+    var state: UserState {
+        MainTabView().flatMap(UserState.authenticated) ?? .unauthenticated(OnboardingView())
+    }
 
     let inspection = SelfInspection()
     var body: some View {
@@ -21,9 +22,9 @@ struct RootView: View, TestableView {
             state.unauthenticatedValue.zIndex(1).transition(.move(edge: .leading))
             state.authenticatedValue.zIndex(2).transition(.move(edge: .trailing))
         }
-        .animation(.rythmicoSpring(duration: .durationMedium), value: state.isAuthenticated)
-        .onReceive(accessTokenProviderObserver.$currentProvider.receive(on: RunLoop.main), perform: refreshState)
         .testable(self)
+        .animation(.rythmicoSpring(duration: .durationMedium), value: state.isAuthenticated)
+        .onReceive(accessTokenProviderObserver.$currentProvider, perform: accessTokenProviderChanged)
         .onAppear(perform: handleStateChanges)
     }
 
@@ -48,33 +49,19 @@ struct RootView: View, TestableView {
         }
     }
 
-    private func refreshState(with provider: AuthenticationAccessTokenProvider?) {
+    private func accessTokenProviderChanged(with provider: AuthenticationAccessTokenProvider?) {
         if provider == nil {
             // TODO: potentially refactor to put all-things-authentication into coordinator
             // that takes care of flushing keychain upon logout etc.
             Current.keychain.appleAuthorizationUserId = nil
         }
-
-        let freshState = Self.freshState
-        switch (freshState, state) {
-        case (.authenticated, .unauthenticated), (.unauthenticated, .authenticated):
-            state = freshState
-        default:
-            break
-        }
-    }
-
-    private static var freshState: UserState {
-        MainTabView().flatMap(UserState.authenticated) ?? .unauthenticated(OnboardingView())
     }
 }
 
 #if DEBUG
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
-        Current.userUnauthenticated()
-
-        return RootView().previewDevices()
+        RootView().previewDevices()
     }
 }
 #endif

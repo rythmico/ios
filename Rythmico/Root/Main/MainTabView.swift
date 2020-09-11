@@ -15,18 +15,19 @@ struct MainTabView: View, TestableView, RoutableView {
         @Published var isLessonRequestViewPresented = false
     }
 
-    @ObservedObject
-    private(set) var state = ViewState()
+    @StateObject
+    var state = ViewState()
 
     @State
     private var tab: Tab = .lessons
-    private let lessonsView: LessonsView
-    private let profileView: ProfileView = ProfileView()
+    @State
+    private var lessonsView: LessonsView
+    @State
+    private var profileView = ProfileView()
 
     @State
     private var hasPresentedLessonRequestView = false
 
-    // TODO: potentially use @StateObject to simplify RootView
     @ObservedObject
     private var lessonPlanFetchingCoordinator: LessonsView.Coordinator
     private let deviceRegisterCoordinator: DeviceRegisterCoordinator
@@ -38,7 +39,7 @@ struct MainTabView: View, TestableView, RoutableView {
         else {
             return nil
         }
-        self.lessonsView = LessonsView(coordinator: lessonPlanFetchingCoordinator)
+        self._lessonsView = .init(wrappedValue: LessonsView(coordinator: lessonPlanFetchingCoordinator))
         self.lessonPlanFetchingCoordinator = lessonPlanFetchingCoordinator
         self.deviceRegisterCoordinator = deviceRegisterCoordinator
     }
