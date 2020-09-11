@@ -34,7 +34,6 @@ struct RootView: View, TestableView {
                 switch state {
                 case .revoked, .transferred:
                     Current.deauthenticationService.deauthenticate()
-                    Current.keychain.appleAuthorizationUserId = nil
                 case .authorized, .notFound:
                     break
                 @unknown default:
@@ -45,7 +44,6 @@ struct RootView: View, TestableView {
 
         Current.appleAuthorizationCredentialRevocationNotifier.revocationHandler = {
             Current.deauthenticationService.deauthenticate()
-            Current.keychain.appleAuthorizationUserId = nil
         }
     }
 
