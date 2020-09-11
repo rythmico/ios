@@ -21,12 +21,8 @@ struct InstrumentSelectionView: View, TestableView {
     let inspection = SelfInspection()
     var body: some View {
         TitleSubtitleContentView(title: "Choose Instrument", subtitle: "Select one instrument") {
-            CollectionView(
-                state.instruments,
-                id: \.name,
-                padding: .init(top: 7, bottom: .spacingMedium)
-            ) {
-                InstrumentView(viewData: $0).padding(.horizontal, .spacingMedium)
+            CollectionView(state.instruments, id: \.name) {
+                InstrumentView(viewData: $0)
             }
         }
         .testable(self)

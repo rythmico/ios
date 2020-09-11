@@ -23,7 +23,7 @@ struct LessonsView: View, TestableView, VisibleView {
 
     let inspection = SelfInspection()
     var body: some View {
-        CollectionView(lessonPlans, padding: EdgeInsets(.spacingMedium)) { lessonPlan in
+        CollectionView(lessonPlans) { lessonPlan in
             NavigationLink(
                 destination: LessonPlanDetailView(lessonPlan),
                 tag: lessonPlan,

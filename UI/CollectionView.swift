@@ -3,32 +3,25 @@ import SwiftUI
 struct CollectionView<Data: RandomAccessCollection, ID: Hashable, Content: View>: View {
     private let data: Data
     private let id: KeyPath<Data.Element, ID>
-    private let padding: EdgeInsets
     private let content: (Data.Element) -> Content
 
     init(
         _ data: Data,
         id: KeyPath<Data.Element, ID>,
-        padding: EdgeInsets = .zero,
         @ViewBuilder content: @escaping (Data.Element) -> Content
     ) {
         self.data = data
         self.id = id
-        self.padding = padding
         self.content = content
     }
 
     var body: some View {
         ScrollView {
-            VStack(spacing: .spacingSmall) {
-                // Needed cause otherwise SwiftUI does not refresh ScrollView. Sigh.
-                if data.isEmpty {
-                    Color.clear
-                } else {
-                    ForEach(data, id: id, content: content)
-                }
+            LazyVStack(alignment: .center, spacing: .spacingSmall) {
+                ForEach(data, id: id, content: content).padding(.horizontal, .spacingMedium)
             }
-            .padding(padding)
+            .padding(.top, .spacingSmall)
+            .padding(.bottom, .spacingMedium)
         }
     }
 }
@@ -36,10 +29,9 @@ struct CollectionView<Data: RandomAccessCollection, ID: Hashable, Content: View>
 extension CollectionView where Data.Element: Identifiable, ID == Data.Element.ID {
     init(
         _ data: Data,
-        padding: EdgeInsets = .zero,
         @ViewBuilder content: @escaping (Data.Element) -> Content
     ) {
-        self.init(data, id: \.id, padding: padding, content: content)
+        self.init(data, id: \.id, content: content)
     }
 }
 
