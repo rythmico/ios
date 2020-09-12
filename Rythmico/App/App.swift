@@ -14,7 +14,7 @@ struct App {
         Current.pushNotificationEventHandler.handle(event)
     }
 
-    static func willResignActive() {
+    static func didEnterBackground() {
         Current.sharedCoordinator(for: \.lessonPlanFetchingService)?.reset()
     }
 

@@ -2,7 +2,7 @@ import UIKit
 
 extension AppDelegate {
     func configureLifecycleEvents() {
-        onNotification(UIApplication.willResignActiveNotification, perform: App.willResignActive)
+        onNotification(UIApplication.didEnterBackgroundNotification, perform: App.didEnterBackground)
     }
 
     private func onNotification(_ name: Notification.Name, perform action: @escaping () -> Void) {
