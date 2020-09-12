@@ -5,12 +5,10 @@ protocol SchedulingContext {
     func setSchedule(_ schedule: Schedule)
 }
 
-// TODO: refactor date logic into a manager class from
-// which to observe available dates and times, with injectable calendar.
 struct SchedulingView: View, TestableView {
     final class ViewState: ObservableObject {
         @Published var startDate: Date?
-        @Published var startTime = Date(timeIntervalSinceReferenceDate: 0).setting(hour: 16)
+        @Published var startTime = Current.calendar.date(bySetting: .hour, value: 16, of: Date.referenceDate) ?? Date.referenceDate
         @Published var duration: Duration?
     }
 
