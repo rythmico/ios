@@ -9,7 +9,9 @@ struct LabelessDatePicker: View {
             "",
             selection: selection,
             displayedComponents: displayedComponents
-        ).labelsHidden()
+        )
+        .labelsHidden()
+        .datePickerStyle(WheelDatePickerStyle())
     }
 }
 
@@ -27,7 +29,7 @@ struct BetterPicker<Options: RandomAccessCollection, Selection: Hashable>: View 
     var body: some View {
         Picker("", selection: selection) {
             ForEach(options, id: \.hashValue) {
-                Text(self.formatter($0)).tag($0)
+                Text(formatter($0)).tag($0)
             }
         }
         .labelsHidden()

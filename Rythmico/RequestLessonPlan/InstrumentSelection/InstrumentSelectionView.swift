@@ -21,12 +21,8 @@ struct InstrumentSelectionView: View, TestableView {
     let inspection = SelfInspection()
     var body: some View {
         TitleSubtitleContentView(title: "Choose Instrument", subtitle: "Select one instrument") {
-            CollectionView(
-                state.instruments,
-                id: \.name,
-                padding: .init(top: 7, bottom: .spacingMedium)
-            ) {
-                InstrumentView(viewData: $0).padding(.horizontal, .spacingMedium)
+            CollectionView(state.instruments, id: \.name) {
+                InstrumentView(viewData: $0)
             }
         }
         .testable(self)
@@ -35,12 +31,12 @@ struct InstrumentSelectionView: View, TestableView {
 
     private func fetchInstruments() {
         Current.instrumentSelectionListProvider.instruments { instruments in
-            self.state.instruments = instruments
+            state.instruments = instruments
                 .map { instrument in
                     InstrumentViewData(
                         name: instrument.name,
                         icon: instrument.icon,
-                        action: { self.context.setInstrument(instrument) }
+                        action: { context.setInstrument(instrument) }
                     )
                 }
         }

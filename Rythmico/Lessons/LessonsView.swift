@@ -23,15 +23,15 @@ struct LessonsView: View, TestableView, VisibleView {
 
     let inspection = SelfInspection()
     var body: some View {
-        CollectionView(lessonPlans, padding: EdgeInsets(.spacingMedium)) { lessonPlan in
+        CollectionView(lessonPlans) { lessonPlan in
             NavigationLink(
                 destination: LessonPlanDetailView(lessonPlan),
                 tag: lessonPlan,
-                selection: self.$selectedLessonPlan,
+                selection: $selectedLessonPlan,
                 label: { LessonPlanSummaryCell(lessonPlan: lessonPlan) }
             )
             .disabled(lessonPlan.status.isCancelled)
-            .transition(self.transition(for: lessonPlan))
+            .transition(transition(for: lessonPlan))
         }
         .accentColor(.rythmicoPurple)
         .testable(self)
@@ -58,12 +58,11 @@ struct LessonsView: View, TestableView, VisibleView {
 
 #if DEBUG
 struct LessonsView_Previews: PreviewProvider {
-    @ViewBuilder
     static var previews: some View {
-        LessonsView(coordinator: Current.coordinator(for: \.lessonPlanFetchingService)!)
+        LessonsView(coordinator: Current.sharedCoordinator(for: \.lessonPlanFetchingService)!)
             .environment(\.colorScheme, .light)
 //            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
-        LessonsView(coordinator: Current.coordinator(for: \.lessonPlanFetchingService)!)
+        LessonsView(coordinator: Current.sharedCoordinator(for: \.lessonPlanFetchingService)!)
             .environment(\.colorScheme, .dark)
             .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }

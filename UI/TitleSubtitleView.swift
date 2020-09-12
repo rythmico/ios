@@ -28,10 +28,8 @@ struct TitleSubtitleView: View {
 #if DEBUG
 struct TitleSubtitleView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            TitleSubtitleView(title: "Title", subtitle: "Subtitle").background(Color.blue)
-            TitleSubtitleView(title: "Title", subtitle: []).background(Color.blue)
-        }
+        TitleSubtitleView(title: "Title", subtitle: "Subtitle").background(Color.blue)
+        TitleSubtitleView(title: "Title", subtitle: []).background(Color.blue)
     }
 }
 #endif

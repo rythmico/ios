@@ -32,16 +32,15 @@ struct OnboardingView: View, TestableView {
                     ActivityIndicator(style: .medium)
                         .frame(width: 44, height: 44)
                 } else {
-                    AuthorizationAppleIDButton()
+                    AuthorizationAppleIDButton(action: authenticateWithApple)
                         .accessibility(hint: Text("Double tap to sign in with your Apple ID"))
-                        .onTapGesture(perform: authenticateWithApple)
                         .disabled(!isAppleAuthorizationButtonEnabled)
                 }
             }
             .padding(.spacingLarge)
             .animation(.rythmicoSpring(duration: .durationMedium), value: isLoading)
         }
-        .alert(error: self.errorMessage, dismiss: dismissError)
+        .alert(error: errorMessage, dismiss: dismissError)
         .onDisappear {
             Current.uiAccessibility.postAnnouncement("Welcome")
         }
@@ -54,9 +53,9 @@ struct OnboardingView: View, TestableView {
             switch result {
             case .success(let credential):
                 Current.keychain.appleAuthorizationUserId = credential.userId
-                self.isLoading = true
+                isLoading = true
                 Current.authenticationService.authenticateAppleAccount(with: credential) { result in
-                    self.isLoading = false
+                    isLoading = false
                     switch result {
                     case .success:
                         // Firebase's Auth singleton makes this line redundant since it notifies listeners
@@ -65,11 +64,11 @@ struct OnboardingView: View, TestableView {
                         // self.authenticationStatusObserver.statusDidChangeHandler(accessTokenProvider)
                         break
                     case .failure(let error):
-                        self.handleAuthenticationError(error)
+                        handleAuthenticationError(error)
                     }
                 }
             case .failure(let error):
-                self.handleAuthorizationError(error)
+                handleAuthorizationError(error)
             }
         }
     }
@@ -87,7 +86,7 @@ struct OnboardingView: View, TestableView {
         }
     }
 
-    private func handleAuthenticationError(_ error: AuthenticationAPIError) {
+    private func handleAuthenticationError(_ error: AuthenticationSignInError) {
         switch error.reasonCode {
         case .invalidAPIKey,
              .appNotAuthorized,
@@ -109,13 +108,11 @@ struct OnboardingView: View, TestableView {
 #if DEBUG
 struct OnboardingView_Preview: PreviewProvider {
     static var previews: some View {
-        Group {
-            OnboardingView()
-                .environment(\.colorScheme, .light)
-            OnboardingView()
-                .environment(\.colorScheme, .dark)
-                .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
-        }
+        OnboardingView()
+            .environment(\.colorScheme, .light)
+        OnboardingView()
+            .environment(\.colorScheme, .dark)
+            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }
 #endif

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -154,7 +154,6 @@
 		039C3EB52448A7CD0036959A /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039C3EB42448A7CD0036959A /* Transitions.swift */; };
 		03A094622443D8E1008B4BD6 /* EditingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */; };
 		03A3F6E52447B7BD00F6391D /* PreviewDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6E42447B7BD00F6391D /* PreviewDevices.swift */; };
-		03A3F6EC2447D3FD00F6391D /* UIScreen+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6EB2447D3FD00F6391D /* UIScreen+Sugar.swift */; };
 		03A3F6EE2447DFF900F6391D /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6ED2447DFF900F6391D /* Animation.swift */; };
 		03A8116E241D1DAF0091B9ED /* StudentDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */; };
 		03A91EF2249186EC00DEAD5E /* AppEnvironment+Instances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A91EF1249186EC00DEAD5E /* AppEnvironment+Instances.swift */; };
@@ -276,6 +275,7 @@
 		D52C554C24DDE5FF00C295C4 /* Buttons+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */; };
 		D52C554E24E1BCBB00C295C4 /* URL+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554D24E1BCBB00C295C4 /* URL+Sugar.swift */; };
 		D52C555024E2ABFC00C295C4 /* MapOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554F24E2ABFC00C295C4 /* MapOpener.swift */; };
+		D5317142250D77B3006751A7 /* Sequence+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5317141250D77B3006751A7 /* Sequence+Sugar.swift */; };
 		D535547723DF3A19005A20EB /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = D535547623DF3A19005A20EB /* Valet */; };
 		D535547923DF3A7C005A20EB /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547823DF3A7C005A20EB /* Keychain.swift */; };
 		D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547D23DF4F44005A20EB /* KeychainDoubles.swift */; };
@@ -362,7 +362,7 @@
 		D5AFED4225057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */; };
 		D5AFED4325057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */; };
 		D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A64241479F300BE9B4F /* Assets.generated.swift */; };
-		D5B57A6724147F5100BE9B4F /* EnumProperties.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6624147F5100BE9B4F /* EnumProperties.generated.swift */; };
+		D5B57A6724147F5100BE9B4F /* RequestLessonPlanContext+EnumProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6624147F5100BE9B4F /* RequestLessonPlanContext+EnumProperties.swift */; };
 		D5B57A6D2419DA5B00BE9B4F /* AddressSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6C2419DA5B00BE9B4F /* AddressSelectionView.swift */; };
 		D5B57A6F2419E22300BE9B4F /* Optional+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6E2419E22300BE9B4F /* Optional+Sugar.swift */; };
 		D5B57A712419F79700BE9B4F /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A702419F79700BE9B4F /* SectionHeaderView.swift */; };
@@ -426,7 +426,6 @@
 		D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */; };
 		D5F50663240056FA00CA4094 /* RoundedThinOutlineContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F50662240056FA00CA4094 /* RoundedThinOutlineContainer.swift */; };
 		D5F506652400619600CA4094 /* UIApplication+KeyboardDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506642400619600CA4094 /* UIApplication+KeyboardDismisser.swift */; };
-		D5F5066E24006CDD00CA4094 /* KeyboardObserver in Frameworks */ = {isa = PBXBuildFile; productRef = D5F5066D24006CDD00CA4094 /* KeyboardObserver */; };
 		D5F5067B2400788400CA4094 /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5067A2400788400CA4094 /* MultilineTextField.swift */; };
 		D5F5068C24046B1400CA4094 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5068B24046B1400CA4094 /* Spacing.swift */; };
 		D5F5068E240473CB00CA4094 /* FloatingInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5068D240473CB00CA4094 /* FloatingInputView.swift */; };
@@ -573,7 +572,6 @@
 		039C3EB42448A7CD0036959A /* Transitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transitions.swift; sourceTree = "<group>"; };
 		03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingCoordinator.swift; sourceTree = "<group>"; };
 		03A3F6E42447B7BD00F6391D /* PreviewDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDevices.swift; sourceTree = "<group>"; };
-		03A3F6EB2447D3FD00F6391D /* UIScreen+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Sugar.swift"; sourceTree = "<group>"; };
 		03A3F6ED2447DFF900F6391D /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDoubles.swift; sourceTree = "<group>"; };
 		03A91EF1249186EC00DEAD5E /* AppEnvironment+Instances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Instances.swift"; sourceTree = "<group>"; };
@@ -671,6 +669,7 @@
 		D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Buttons+Tutor.swift"; sourceTree = "<group>"; };
 		D52C554D24E1BCBB00C295C4 /* URL+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Sugar.swift"; sourceTree = "<group>"; };
 		D52C554F24E2ABFC00C295C4 /* MapOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOpener.swift; sourceTree = "<group>"; };
+		D5317141250D77B3006751A7 /* Sequence+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Sugar.swift"; sourceTree = "<group>"; };
 		D535546823DCB03E005A20EB /* AppleAuthorizationResponseDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationResponseDoubles.swift; sourceTree = "<group>"; };
 		D535546A23DCB65A005A20EB /* AppleAuthorizationCredentialStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialStateProvider.swift; sourceTree = "<group>"; };
 		D535546C23DF212C005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialRevocationNotifier.swift; sourceTree = "<group>"; };
@@ -735,7 +734,7 @@
 		D5B13B2D23D125E6006CBC46 /* AuthenticationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceDoubles.swift; sourceTree = "<group>"; };
 		D5B13B2F23D1265F006CBC46 /* AuthenticationAccessTokenProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderDoubles.swift; sourceTree = "<group>"; };
 		D5B57A64241479F300BE9B4F /* Assets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.generated.swift; sourceTree = "<group>"; };
-		D5B57A6624147F5100BE9B4F /* EnumProperties.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumProperties.generated.swift; sourceTree = "<group>"; };
+		D5B57A6624147F5100BE9B4F /* RequestLessonPlanContext+EnumProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RequestLessonPlanContext+EnumProperties.swift"; sourceTree = "<group>"; };
 		D5B57A6C2419DA5B00BE9B4F /* AddressSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSelectionView.swift; sourceTree = "<group>"; };
 		D5B57A6E2419E22300BE9B4F /* Optional+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Sugar.swift"; sourceTree = "<group>"; };
 		D5B57A702419F79700BE9B4F /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
@@ -815,7 +814,6 @@
 				D52C552324DC6C3B00C295C4 /* FirebasePerformance.framework in Frameworks */,
 				D52C551724DC6C3B00C295C4 /* FirebaseCore.framework in Frameworks */,
 				D52C553524DC6C3B00C295C4 /* PromisesObjC.framework in Frameworks */,
-				D5F5066E24006CDD00CA4094 /* KeyboardObserver in Frameworks */,
 				D52C552F24DC6C3B00C295C4 /* GoogleUtilities.framework in Frameworks */,
 				D52C552124DC6C3B00C295C4 /* FirebaseMessaging.framework in Frameworks */,
 				D53554FC23E0FD77005A20EB /* Sugar.framework in Frameworks */,
@@ -1200,6 +1198,7 @@
 				D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */,
 				03306F73247347570074AA98 /* RequestLessonPlanViewTests.swift */,
 				D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */,
+				D5B57A6624147F5100BE9B4F /* RequestLessonPlanContext+EnumProperties.swift */,
 				03B19842247181B3005529EB /* RequestLessonPlanFormView.swift */,
 				D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */,
 			);
@@ -1391,7 +1390,6 @@
 				039C3EB42448A7CD0036959A /* Transitions.swift */,
 				D5F506642400619600CA4094 /* UIApplication+KeyboardDismisser.swift */,
 				D5CC5FE924FF1201007DFE84 /* UIImage+Sugar.swift */,
-				03A3F6EB2447D3FD00F6391D /* UIScreen+Sugar.swift */,
 				D5AFED3E25057158003FFC68 /* VisibleView.swift */,
 				D5147507240C8E69002EE20C /* XCTAssertView.swift */,
 			);
@@ -1414,7 +1412,6 @@
 				03341B4423ABB1E8009AE8A8 /* Assets.xcassets */,
 				D5B57A64241479F300BE9B4F /* Assets.generated.swift */,
 				03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */,
-				D5B57A6624147F5100BE9B4F /* EnumProperties.generated.swift */,
 				D50668DA23B946330044E553 /* Rythmico.entitlements */,
 				03341B4C23ABB1E8009AE8A8 /* Info.plist */,
 				D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */,
@@ -1514,6 +1511,7 @@
 				D5AFED3B25056300003FFC68 /* NotificationCenter+Sugar.swift */,
 				D5B57A6E2419E22300BE9B4F /* Optional+Sugar.swift */,
 				03E88E8624BB7EB10077A420 /* Result+Sugar.swift */,
+				D5317141250D77B3006751A7 /* Sequence+Sugar.swift */,
 				03C39DCD2494FC9D00C76516 /* Sleep.swift */,
 				D5C23A77240F1C1E007DED63 /* String+Sugar.swift */,
 				D55F013224CCE65C00E5F13C /* Then+Sugar.swift */,
@@ -1688,7 +1686,6 @@
 			buildConfigurationList = 03341B4F23ABB1E8009AE8A8 /* Build configuration list for PBXNativeTarget "Rythmico" */;
 			buildPhases = (
 				D5B57A612414516700BE9B4F /* Generate Asset Symbols */,
-				D5B57A632414672F00BE9B4F /* Generate Enum Properties */,
 				D5CC5FF825041262007DFE84 /* Sanity Check Sources */,
 				03341B3723ABB1E7009AE8A8 /* Sources */,
 				03341B3823ABB1E7009AE8A8 /* Frameworks */,
@@ -1706,7 +1703,6 @@
 				D535547623DF3A19005A20EB /* Valet */,
 				D535548023E0E7C1005A20EB /* SFSafeSymbols */,
 				D535554B23E23EA7005A20EB /* Then */,
-				D5F5066D24006CDD00CA4094 /* KeyboardObserver */,
 				03B19836247053F5005529EB /* APIKit */,
 				D585217524CF81CE005D783A /* Introspect */,
 			);
@@ -1810,7 +1806,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "David Roman";
 				TargetAttributes = {
 					03341B3A23ABB1E7009AE8A8 = {
@@ -1847,7 +1843,6 @@
 				D535547523DF3A19005A20EB /* XCRemoteSwiftPackageReference "Valet" */,
 				D535547F23E0E7C1005A20EB /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				D535554A23E23EA7005A20EB /* XCRemoteSwiftPackageReference "Then" */,
-				D5F5066C24006CDD00CA4094 /* XCRemoteSwiftPackageReference "KeyboardObserver" */,
 				03B19835247053F5005529EB /* XCRemoteSwiftPackageReference "APIKit" */,
 				D56544D124CE4BA100281875 /* XCRemoteSwiftPackageReference "ViewInspector" */,
 				D585217424CF81CE005D783A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
@@ -1955,6 +1950,7 @@
 		};
 		D5B57A612414516700BE9B4F /* Generate Asset Symbols */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1972,25 +1968,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${SRCROOT}/script/build_phase_generate_asset_symbols\n";
-		};
-		D5B57A632414672F00BE9B4F /* Generate Enum Properties */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Generate Enum Properties";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(SRCROOT)/Rythmico/Supporting Files/EnumProperties.generated.swift",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/script/build_phase_generate_enum_properties\n";
 		};
 		D5CC5FF725040F9A007DFE84 /* Sanity Check Sources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2120,7 +2097,6 @@
 				03AAF6712445E0FB002D8F5B /* Schedule.swift in Sources */,
 				03275AE3249070D5009C3980 /* DeviceEndpoints.swift in Sources */,
 				D527B01824FEABEB003E81A9 /* CancellableDoubles.swift in Sources */,
-				03A3F6EC2447D3FD00F6391D /* UIScreen+Sugar.swift in Sources */,
 				03E88EA824C1F4980077A420 /* AppDelegate+Window.swift in Sources */,
 				032B6FD424B7881C00299A09 /* InstrumentExtensions.swift in Sources */,
 				D5BF12C62507D78800B2931C /* RouterDoubles.swift in Sources */,
@@ -2133,7 +2109,7 @@
 				03C39DD62496802500C76516 /* Pill.swift in Sources */,
 				03EDA67D24776C6C00FBE527 /* URLOpener.swift in Sources */,
 				03A91EF8249189E000DEAD5E /* PushNotificationAuthorizationCoordinatorDoubles.swift in Sources */,
-				D5B57A6724147F5100BE9B4F /* EnumProperties.generated.swift in Sources */,
+				D5B57A6724147F5100BE9B4F /* RequestLessonPlanContext+EnumProperties.swift in Sources */,
 				0372E35A249ABAB80048B402 /* SelectableList.swift in Sources */,
 				D5F506B82406363600CA4094 /* GenderSelectionView.swift in Sources */,
 				D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */,
@@ -2386,6 +2362,7 @@
 				D5C23A78240F1C1E007DED63 /* String+Sugar.swift in Sources */,
 				D5B57A6F2419E22300BE9B4F /* Optional+Sugar.swift in Sources */,
 				D5C23A7A240F2DEB007DED63 /* Bool+Sugar.swift in Sources */,
+				D5317142250D77B3006751A7 /* Sequence+Sugar.swift in Sources */,
 				03B71324241D71B600DED025 /* Error+Sugar.swift in Sources */,
 				03E88E8924BB82290077A420 /* DateFormatter+Sugar.swift in Sources */,
 				03E88E8724BB7EB10077A420 /* Result+Sugar.swift in Sources */,
@@ -2498,6 +2475,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2564,6 +2542,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2940,7 +2919,7 @@
 			repositoryURL = "https://github.com/Square/Valet";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.2.8;
+				minimumVersion = 4.1.1;
 			};
 		};
 		D535547F23E0E7C1005A20EB /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
@@ -2981,14 +2960,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.2.0;
-			};
-		};
-		D5F5066C24006CDD00CA4094 /* XCRemoteSwiftPackageReference "KeyboardObserver" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/timdonnelly/KeyboardObserver";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -3058,11 +3029,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5F4D3DC24F031FA000E8580 /* XCRemoteSwiftPackageReference "swiftui-mapview" */;
 			productName = SwiftUIMapView;
-		};
-		D5F5066D24006CDD00CA4094 /* KeyboardObserver */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5F5066C24006CDD00CA4094 /* XCRemoteSwiftPackageReference "KeyboardObserver" */;
-			productName = KeyboardObserver;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

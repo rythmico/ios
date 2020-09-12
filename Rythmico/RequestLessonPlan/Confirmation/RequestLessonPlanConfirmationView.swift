@@ -42,18 +42,18 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
                     VStack(spacing: .spacingUnit * 8) {
                         VStack(spacing: 0) {
                             VStack(spacing: .spacingLarge) {
-                                self.lessonPlan.instrument.largeIcon
+                                lessonPlan.instrument.largeIcon
                                     .renderingMode(.template)
                                     .foregroundColor(.rythmicoForeground)
 
                                 VStack(spacing: .spacingSmall) {
-                                    Text(self.title)
+                                    Text(title)
                                         .multilineTextAlignment(.center)
                                         .rythmicoFont(.largeTitle)
                                         .foregroundColor(.rythmicoForeground)
                                         .minimumScaleFactor(0.8)
 
-                                    Text(self.subtitle)
+                                    Text(subtitle)
                                         .multilineTextAlignment(.center)
                                         .rythmicoFont(.body)
                                         .foregroundColor(.rythmicoGray90)
@@ -61,7 +61,7 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
                             }
                         }
 
-                        self.enablePushNotificationsButtonAction.map {
+                        enablePushNotificationsButtonAction.map {
                             Button("Enable Push Notifications", action: $0)
                                 .tertiaryStyle(expansive: false)
                                 .transition(
@@ -81,7 +81,7 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
             }
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: enablePushNotificationsButtonAction != nil)
-        .alert(error: self.errorMessage, dismiss: dismissError)
+        .alert(error: errorMessage, dismiss: dismissError)
         .testable(self)
         .onAppear(perform: notificationAuthorizationCoordinator.refreshAuthorizationStatus)
     }
@@ -94,7 +94,6 @@ struct RequestLessonPlanConfirmationView: View, TestableView {
 #if DEBUG
 struct RequestLessonPlanConfirmationView_Previews: PreviewProvider {
     static var previews: some View {
-        Current.userAuthenticated()
         Current.pushNotificationAuthorization(
             initialStatus: .notDetermined,
 //            initialStatus: .authorized,

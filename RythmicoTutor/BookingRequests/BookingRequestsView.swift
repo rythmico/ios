@@ -16,7 +16,7 @@ struct BookingRequestsView: View, VisibleView {
     private(set) var isVisible = false; var isVisibleBinding: Binding<Bool> { $isVisible }
 
     init?() {
-        guard let coordinator = Current.coordinator(for: \.bookingRequestFetchingService) else {
+        guard let coordinator = Current.sharedCoordinator(for: \.bookingRequestFetchingService) else {
             return nil
         }
         self.coordinator = coordinator
@@ -49,7 +49,7 @@ struct BookingRequestsView: View, VisibleView {
                         NavigationLink(
                             destination: BookingRequestDetailView(bookingRequest: request),
                             tag: request,
-                            selection: self.$selectedBookingRequest,
+                            selection: $selectedBookingRequest,
                             label: { BookingRequestCell(request: request) }
                         )
                     }
@@ -66,7 +66,7 @@ struct BookingRequestsView: View, VisibleView {
 
         .onSuccess(coordinator, perform: requestPushNotificationAuth)
         .alert(
-            error: self.pushNotificationAuthCoordinator.status.failedValue,
+            error: pushNotificationAuthCoordinator.status.failedValue,
             dismiss: pushNotificationAuthCoordinator.dismissFailure
         )
     }

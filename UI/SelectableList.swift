@@ -24,13 +24,13 @@ struct SelectableList<Data: RandomAccessCollection, ID: Hashable, Content: View>
             Divider().foregroundColor(.rythmicoGray20)
             ForEach(data, id: id) { element in
                 VStack(spacing: 0) {
-                    Button(action: { self.selection = element }) {
+                    Button(action: { selection = element }) {
                         HStack(spacing: 0) {
-                            self.content(element)
+                            content(element)
                                 .multilineTextAlignment(.leading)
                                 .foregroundColor(Color(.label))
                             Spacer()
-                            if self.isSelected(element) {
+                            if isSelected(element) {
                                 Image(decorative: Asset.iconCheckmark.name)
                                     .renderingMode(.template)
                                     .foregroundColor(.accentColor)

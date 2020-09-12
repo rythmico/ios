@@ -34,7 +34,7 @@ final class PushNotificationAuthorizationCoordinator: ObservableObject {
                     self.status = .notDetermined
                 case .denied:
                     self.status = .denied
-                case .authorized, .provisional:
+                case .authorized, .provisional, .ephemeral:
                     self.status = .authorized
                 @unknown default:
                     self.status = .notDetermined

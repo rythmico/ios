@@ -9,9 +9,9 @@ struct AddressSelectionView: View {
             ForEach(_addresses, id: \.hashValue) { address in
                 AddressItemView(
                     title: address.condensedFormattedString,
-                    isSelected: self.selection == address
+                    isSelected: selection == address
                 )
-                .onTapGesture { self.selection = address }
+                .onTapGesture { selection = address }
             }
         }
     }

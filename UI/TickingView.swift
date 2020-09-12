@@ -17,7 +17,7 @@ struct TickingView<Content: View>: View {
         content
             .animation(.none)
             .onReceive(timer) { _ in
-                self.content = self.contentBuilder()
+                content = contentBuilder()
             }
     }
 }

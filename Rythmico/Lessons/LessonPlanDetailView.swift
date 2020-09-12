@@ -81,7 +81,7 @@ struct LessonPlanDetailView: View, TestableView, RoutableView {
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackButton(title: "Lessons", action: back))
         .sheet(isPresented: $isCancellationViewPresented) {
-            LessonPlanCancellationView(lessonPlan: self.lessonPlan)
+            LessonPlanCancellationView(lessonPlan: lessonPlan)
         }
         .routable(self)
     }

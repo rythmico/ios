@@ -1,4 +1,5 @@
 import SwiftUI
+import SFSafeSymbols
 import Then
 
 private struct UITextViewWrapper: UIViewRepresentable {
@@ -51,12 +52,14 @@ private struct UITextViewWrapper: UIViewRepresentable {
                 UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
                 UIBarButtonItem(
                     customView: UIButton().then {
-                        $0.setTitle("Done", for: .normal)
-                        $0.setTitleColor(accentColorOrDefault, for: .normal)
-                        $0.setTitleColor(accentColorOrDefault.withAlphaComponent(0.2), for: .highlighted)
-                        $0.titleLabel?.font = fontOrDefaultFont.fontDescriptor
+                        if let font = fontOrDefaultFont.fontDescriptor
                             .withSymbolicTraits(.traitBold)
-                            .map { UIFont(descriptor: $0, size: $0.pointSize) }
+                            .map ({ UIFont(descriptor: $0, size: $0.pointSize + 2) })
+                        {
+                            $0.setPreferredSymbolConfiguration(.init(font: font), forImageIn: .normal)
+                        }
+                        $0.setImage(.keyboardChevronCompactDown, for: .normal)
+                        $0.tintColor = accentColorOrDefault
                         $0.addTarget(textField, action: #selector(UITextField.resignFirstResponder), for: .touchUpInside)
                     }
                 )
@@ -186,10 +189,10 @@ struct MultilineTextField: View {
     @Binding private var text: String
     private var internalText: Binding<String> {
         Binding(
-            get: { self.text },
+            get: { text },
             set: {
-                self.text = $0
-                self.showingPlaceholder = $0.isEmpty
+                text = $0
+                showingPlaceholder = $0.isEmpty
             }
         )
     }

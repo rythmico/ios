@@ -18,7 +18,7 @@ struct BookingApplicationDetailView: View, RoutableView {
     private var retractionCoordinator: APIActivityCoordinator<BookingApplicationsRetractRequest>
 
     init?(bookingApplication: BookingApplication) {
-        guard let retractionCoordinator = Current.ephemeralCoordinator(for: \.bookingApplicationRetractionService) else {
+        guard let retractionCoordinator = Current.coordinator(for: \.bookingApplicationRetractionService) else {
             return nil
         }
         self.bookingApplication = bookingApplication
@@ -43,7 +43,7 @@ struct BookingApplicationDetailView: View, RoutableView {
 
     var retractAction: Action? {
         bookingApplication.statusInfo.status == .pending
-            ? { self.retractionCoordinator.run(with: .init(bookingApplicationId: self.bookingApplication.id)) }
+            ? { retractionCoordinator.run(with: .init(bookingApplicationId: bookingApplication.id)) }
             : nil
     }
 
@@ -57,7 +57,7 @@ struct BookingApplicationDetailView: View, RoutableView {
                             .foregroundColor(.primary)
                             .font(.body)
                         Spacer(minLength: 0)
-                        TickingText(self.statusDate)
+                        TickingText(statusDate)
                             .foregroundColor(.secondary)
                             .font(.footnote)
                     }
@@ -147,7 +147,6 @@ struct BookingApplicationDetailView: View, RoutableView {
 
 #if DEBUG
 struct BookingApplicationDetailView_Previews: PreviewProvider {
-    @ViewBuilder
     static var previews: some View {
         BookingApplicationDetailView(bookingApplication: .longStub)
         BookingApplicationDetailView(bookingApplication: .stub(.stub(.selected)))

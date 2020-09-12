@@ -8,20 +8,20 @@ struct GenderSelectionView: View {
             ForEach(Gender.allCases, id: \.self) { gender in
                 HStack(spacing: 0) {
                     Text(gender.name)
-                        .rythmicoFont(self.textStyle(for: gender))
-                        .foregroundColor(self.textColor(for: gender))
+                        .rythmicoFont(textStyle(for: gender))
+                        .foregroundColor(textColor(for: gender))
                         .animation(.none)
                     Spacer()
                     gender.icon
                         .renderingMode(.template)
-                        .foregroundColor(self.iconColor(for: gender))
+                        .foregroundColor(iconColor(for: gender))
                 }
                 .modifier(
                     self.containerModifier(for: gender)
                         .animation(.rythmicoSpring(duration: .durationShort))
                 )
                 .contentShape(Rectangle())
-                .onTapGesture { self.selection = gender }
+                .onTapGesture { selection = gender }
             }
         }
     }

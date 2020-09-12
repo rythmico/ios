@@ -5,11 +5,16 @@ struct RequestLessonPlanFormView: View, TestableView {
     typealias RequestCoordinator = APIActivityCoordinator<CreateLessonPlanRequest>
     typealias AddressSearchCoordinator = APIActivityCoordinator<AddressSearchRequest>
 
-    fileprivate let instrumentSelectionViewState = InstrumentSelectionView.ViewState()
-    fileprivate let studentDetailsViewState = StudentDetailsView.ViewState()
-    fileprivate let addressDetailsViewState = AddressDetailsView.ViewState()
-    fileprivate let schedulingViewState = SchedulingView.ViewState()
-    fileprivate let privateNoteViewState = PrivateNoteView.ViewState()
+    @StateObject
+    fileprivate var instrumentSelectionViewState = InstrumentSelectionView.ViewState()
+    @StateObject
+    fileprivate var studentDetailsViewState = StudentDetailsView.ViewState()
+    @StateObject
+    fileprivate var addressDetailsViewState = AddressDetailsView.ViewState()
+    @StateObject
+    fileprivate var schedulingViewState = SchedulingView.ViewState()
+    @StateObject
+    fileprivate var privateNoteViewState = PrivateNoteView.ViewState()
 
     @Environment(\.presentationMode)
     private var presentationMode
@@ -20,7 +25,7 @@ struct RequestLessonPlanFormView: View, TestableView {
     private let addressSearchCoordinator: AddressSearchCoordinator
 
     init?(context: RequestLessonPlanContext, coordinator: RequestCoordinator) {
-        guard let addressSearchCoordinator = Current.ephemeralCoordinator(for: \.addressSearchService) else {
+        guard let addressSearchCoordinator = Current.coordinator(for: \.addressSearchService) else {
             return nil
         }
         self.context = context
@@ -106,12 +111,12 @@ extension RequestLessonPlanFormView {
     }
 
     var addressDetailsView: AddressDetailsView? {
-        context.currentStep.addressDetailsValue.map { values in
+        context.currentStep.addressDetailsValue.map {
             AddressDetailsView(
-                student: values.1,
-                instrument: values.0,
+                student: $0.student,
+                instrument: $0.instrument,
                 state: addressDetailsViewState,
-                searchCoordinator: addressSearchCoordinator,
+                coordinator: addressSearchCoordinator,
                 context: context
             )
         }
@@ -141,11 +146,11 @@ extension RequestLessonPlanFormView {
             ReviewRequestView(
                 coordinator: requestCoordinator,
                 context: context,
-                instrument: $0.0,
-                student: $0.1,
-                address: $0.2,
-                schedule: $0.3,
-                privateNote: $0.4
+                instrument: $0.instrument,
+                student: $0.student,
+                address: $0.address,
+                schedule: $0.schedule,
+                privateNote: $0.privateNote
             )
         }
     }

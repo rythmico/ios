@@ -22,9 +22,9 @@ extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
         defer { completionHandler(.noData) }
 
         switch application.applicationState {
-        case .background, .inactive:
+        case .background:
             return
-        case .active:
+        case .active, .inactive:
             break
         @unknown default:
             break

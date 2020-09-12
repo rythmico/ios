@@ -12,7 +12,7 @@ struct BookingApplicationsView: View, VisibleView {
     private(set) var isVisible = false; var isVisibleBinding: Binding<Bool> { $isVisible }
 
     init?() {
-        guard let coordinator = Current.coordinator(for: \.bookingApplicationFetchingService) else {
+        guard let coordinator = Current.sharedCoordinator(for: \.bookingApplicationFetchingService) else {
             return nil
         }
         self.coordinator = coordinator
@@ -54,7 +54,7 @@ struct BookingApplicationsView: View, VisibleView {
     }
 
     private func numberOfApplications(withStatus status: BookingApplication.Status) -> Int {
-        applications.filter { $0.statusInfo.status == status }.count // TODO: count(where:)
+        applications.count { $0.statusInfo.status == status }
     }
 }
 

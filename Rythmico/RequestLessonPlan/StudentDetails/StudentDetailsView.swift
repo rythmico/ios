@@ -1,5 +1,4 @@
 import SwiftUI
-import KeyboardObserver
 import Sugar
 
 protocol StudentDetailsContext {
@@ -19,22 +18,15 @@ struct StudentDetailsView: View, TestableView {
     }
 
     @ObservedObject var state: ViewState
-    @Environment(\.sizeCategory) var sizeCategory: ContentSizeCategory
 
     enum EditingFocus: EditingFocusEnum {
-        // TODO: remove with Swift 5.3
-        static var none: Self { ._none }
-        static var textField: Self { ._textField }
-        var isNone: Bool { is_none }
-        var isTextField: Bool { is_textField }
-        case _none
-        case _textField
+        case textField
         case dateOfBirth
     }
 
-    @ObservedObject
+    @StateObject
     private var editingCoordinator = EditingCoordinator<EditingFocus>(keyboardDismisser: Current.keyboardDismisser)
-    private var editingFocus: EditingFocus {
+    private var editingFocus: EditingFocus? {
         get { editingCoordinator.focus }
         nonmutating set { editingCoordinator.focus = newValue }
     }
@@ -50,7 +42,7 @@ struct StudentDetailsView: View, TestableView {
 
     // MARK: - Subtitle -
     var subtitle: [MultiStyleText.Part] {
-        (UIScreen.main.isLarge && !sizeCategory._isAccessibilityCategory) || editingFocus.isNone
+        editingFocus == .none
             ? "Enter the details of the student who will learn " + instrument.name.style(.bodyBold)
             : .empty
     }
@@ -94,12 +86,12 @@ struct StudentDetailsView: View, TestableView {
         }
 
         return {
-            self.context.setStudent(
+            context.setStudent(
                 Student(
                     name: name,
                     dateOfBirth: dateOfBirth,
                     gender: gender,
-                    about: self.sanitizedAbout
+                    about: sanitizedAbout
                 )
             )
         }
@@ -147,7 +139,6 @@ struct StudentDetailsView: View, TestableView {
                     .onBackgroundTapGesture(perform: endEditing)
                 }
                 .padding(.leading, .spacingMedium)
-                .avoidingKeyboard()
 
                 ZStack(alignment: .bottom) {
                     nextButtonAction.map { action in
@@ -157,12 +148,12 @@ struct StudentDetailsView: View, TestableView {
                         .zIndex(0)
                     }
 
-                    if editingFocus.isDateOfBirth {
+                    if editingFocus == .dateOfBirth {
                         FloatingInputView(doneAction: endEditing) {
                             LabelessDatePicker(
                                 selection: Binding(
-                                    get: { self.state.dateOfBirth ?? self.dateOfBirthPlaceholder },
-                                    set: { self.state.dateOfBirth = $0 }
+                                    get: { state.dateOfBirth ?? dateOfBirthPlaceholder },
+                                    set: { state.dateOfBirth = $0 }
                                 )
                             )
                         }

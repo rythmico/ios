@@ -16,8 +16,8 @@ final class APIService<Request: AuthorizedAPIRequest>: APIServiceBase<Request> {
 
     override func send(_ request: Request, completion: @escaping CompletionHandler) -> SessionTask? {
         let session = Session(adapter: URLSessionAdapter(configuration: sessionConfiguration))
-        return session.send(request, callbackQueue: .main) { result in
+        return session.send(request, callbackQueue: .main, completionHandler: { result in
             completion(result.mapError { $0 as Error })
-        }
+        })
     }
 }

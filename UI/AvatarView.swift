@@ -34,16 +34,10 @@ struct AvatarView: View {
             .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
     }
 
-    // TODO: switch views
-    private var contentView: AnyView? {
-        initialsView ?? photoView ?? placeholderView
-    }
-
-    private var initialsView: AnyView? {
-        guard case .initials(let initials) = content else {
-            return nil
-        }
-        return AnyView(
+    @ViewBuilder
+    private var contentView: some View {
+        switch content {
+        case .initials(let initials):
             GeometryReader { g in
                 Text(initials)
                     .font(.system(size: g.size.width, weight: .medium, design: .rounded))
@@ -53,25 +47,11 @@ struct AvatarView: View {
                     .padding(.horizontal, g.size.width * 0.18)
                     .position(x: g.size.width / 2, y: g.size.height / 2)
             }
-        )
-    }
-
-    private var photoView: AnyView? {
-        guard case .photo(let image) = content else {
-            return nil
-        }
-        return AnyView(
+        case .photo(let image):
             Image(uiImage: image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-        )
-    }
-
-    private var placeholderView: AnyView? {
-        guard case .placeholder = content else {
-            return nil
-        }
-        return AnyView(
+        case .placeholder:
             GeometryReader { g in
                 Image(systemSymbol: .person)
                     .resizable()
@@ -83,7 +63,7 @@ struct AvatarView: View {
                     .offset(x: 0, y: -g.size.height * 0.02)
                     .position(x: g.size.width / 2, y: g.size.height / 2)
             }
-        )
+        }
     }
 }
 

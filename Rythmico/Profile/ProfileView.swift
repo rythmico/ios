@@ -64,7 +64,7 @@ struct ProfileView: View, TestableView {
             }
         }
         .listStyle(GroupedListStyle())
-        .alert(error: self.errorMessage, dismiss: dismissError)
+        .alert(error: errorMessage, dismiss: dismissError)
         .testable(self)
     }
 
@@ -87,7 +87,7 @@ struct ProfileView: View, TestableView {
         _ title: String,
         disclosure: Bool = false,
         action: Action? = nil,
-        content: () -> Content
+        @ViewBuilder content: () -> Content
     ) -> some View {
         let cellContent = HStack {
             Text(title)
@@ -113,7 +113,6 @@ struct ProfileView: View, TestableView {
 #if DEBUG
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        Current.userAuthenticated()
         Current.pushNotificationAuthorization(
             initialStatus: .notDetermined,
 //            initialStatus: .authorized,

@@ -12,7 +12,8 @@ struct MainTabView: View, TestableView, RoutableView {
 
     @State
     private var tab: Tab = .requests
-    private let bookingRequestsTabView: BookingRequestsTabView
+    @State
+    private var bookingRequestsTabView: BookingRequestsTabView
 
     private let deviceRegisterCoordinator: DeviceRegisterCoordinator
 
@@ -23,7 +24,7 @@ struct MainTabView: View, TestableView, RoutableView {
         else {
             return nil
         }
-        self.bookingRequestsTabView = bookingRequestsTabView
+        self._bookingRequestsTabView = .init(wrappedValue: bookingRequestsTabView)
         self.deviceRegisterCoordinator = deviceRegisterCoordinator
     }
 

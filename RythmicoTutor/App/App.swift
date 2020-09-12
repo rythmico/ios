@@ -8,8 +8,8 @@ struct App {
         Current.pushNotificationEventHandler.handle(event)
     }
 
-    static func willResignActive() {
-        Current.coordinator(for: \.bookingRequestFetchingService)?.reset()
-        Current.coordinator(for: \.bookingApplicationFetchingService)?.reset()
+    static func didEnterBackground() {
+        Current.sharedCoordinator(for: \.bookingRequestFetchingService)?.reset()
+        Current.sharedCoordinator(for: \.bookingApplicationFetchingService)?.reset()
     }
 }

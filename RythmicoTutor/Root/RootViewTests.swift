@@ -22,14 +22,15 @@ final class RootViewTests: XCTestCase {
         let keychain = KeychainFake()
         keychain.appleAuthorizationUserId = appleAuthorizationUserId
         let credentialStateProvider = AppleAuthorizationCredentialStateFetcherStub(expectedState: credentialState)
-        let accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(
-            currentProvider: userAuthenticated ? AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN")) : nil
-        )
+        if userAuthenticated {
+            Current.userAuthenticated()
+        } else {
+            Current.userUnauthenticated()
+        }
         let deauthenticationService = DeauthenticationServiceSpy()
 
         Current.keychain = keychain
         Current.appleAuthorizationCredentialStateProvider = credentialStateProvider
-        Current.accessTokenProviderObserver = accessTokenProviderObserver
         Current.deauthenticationService = deauthenticationService
 
         return (keychain, deauthenticationService, RootView())
@@ -64,28 +65,19 @@ final class RootViewTests: XCTestCase {
         }
     }
 
-    // TODO: re-enable when @StateObject can be attached to accessTokenProviderObserver
-    // on RootView and state can be computed again (no need for next run loop check this way).
     func testDeauthorizationWhileClosedShowsOnboardingView() {
-        let expectation = self.expectation(description: "Authentication")
-
         let (keychain, deauthenticationService, view) = rootView(
             appleAuthorizationUserId: "USER_ID",
             credentialState: .revoked,
             userAuthenticated: true
         )
 
-        XCTAssertView(view) { view in
-            DispatchQueue.main.async {
-                XCTAssertTrue(view.state.isUnauthenticated)
-                XCTAssertFalse(view.state.isAuthenticated)
-                expectation.fulfill()
-            }
+        XCTAssertView(view, after: 0.5) { view in
+            XCTAssertTrue(view.state.isUnauthenticated)
+            XCTAssertFalse(view.state.isAuthenticated)
             XCTAssertNil(keychain.appleAuthorizationUserId)
             XCTAssertEqual(deauthenticationService.deauthenticationCount, 1)
         }
-
-        wait(for: [expectation], timeout: 1)
     }
 
     func testDeauthorizationWhileOpenShowsOnboardingView() {
@@ -99,12 +91,12 @@ final class RootViewTests: XCTestCase {
 
         XCTAssertView(view) { view in
             Current.appleAuthorizationCredentialRevocationNotifier.revocationHandler?()
+            XCTAssertTrue(view.state.isUnauthenticated)
+            XCTAssertFalse(view.state.isAuthenticated)
             DispatchQueue.main.async {
-                XCTAssertTrue(view.state.isUnauthenticated)
-                XCTAssertFalse(view.state.isAuthenticated)
+                XCTAssertNil(keychain.appleAuthorizationUserId)
                 expectation.fulfill()
             }
-            XCTAssertNil(keychain.appleAuthorizationUserId)
             XCTAssertEqual(deauthenticationService.deauthenticationCount, 1)
         }
 
@@ -122,9 +114,9 @@ final class RootViewTests: XCTestCase {
 
         XCTAssertView(view) { view in
             Current.accessTokenProviderObserver.currentProvider = nil
+            XCTAssertTrue(view.state.isUnauthenticated)
+            XCTAssertFalse(view.state.isAuthenticated)
             DispatchQueue.main.async {
-                XCTAssertTrue(view.state.isUnauthenticated)
-                XCTAssertFalse(view.state.isAuthenticated)
                 XCTAssertNil(keychain.appleAuthorizationUserId)
                 expectation.fulfill()
             }
@@ -145,9 +137,9 @@ final class RootViewTests: XCTestCase {
 
         XCTAssertView(view) { view in
             deauthenticationService.deauthenticate()
+            XCTAssertTrue(view.state.isUnauthenticated)
+            XCTAssertFalse(view.state.isAuthenticated)
             DispatchQueue.main.async {
-                XCTAssertTrue(view.state.isUnauthenticated)
-                XCTAssertFalse(view.state.isAuthenticated)
                 XCTAssertNil(keychain.appleAuthorizationUserId)
                 expectation.fulfill()
             }

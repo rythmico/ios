@@ -15,7 +15,7 @@ struct InstrumentView: View {
     }
 
     var body: some View {
-        Button(action: { self.viewData.action?() }) {
+        Button(action: { viewData.action?() }) {
             HStack {
                 Text(viewData.name)
                     .rythmicoFont(.subheadlineBold)

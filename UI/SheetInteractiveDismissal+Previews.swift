@@ -8,13 +8,13 @@ struct AdaptivePresentationView_Previews: PreviewProvider {
         @State var attempts = 0
 
         var body: some View {
-            Button("Present") { self.isPresenting.toggle() }
+            Button("Present") { isPresenting.toggle() }
                 .sheet(isPresented: $isPresenting) {
                     HStack {
-                        Text("Dismissable (attempted: \(self.attempts))")
-                        Toggle("", isOn: self.$isDismissable).labelsHidden()
+                        Text("Dismissable (attempted: \(attempts))")
+                        Toggle("", isOn: $isDismissable).labelsHidden()
                     }
-                    .sheetInteractiveDismissal(self.isDismissable, onAttempt: { self.attempts += 1 })
+                    .sheetInteractiveDismissal(isDismissable, onAttempt: { attempts += 1 })
                 }
         }
     }

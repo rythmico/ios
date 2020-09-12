@@ -15,30 +15,31 @@ struct MainTabView: View, TestableView, RoutableView {
         @Published var isLessonRequestViewPresented = false
     }
 
-    @ObservedObject
-    private(set) var state = ViewState()
+    @StateObject
+    var state = ViewState()
 
     @State
     private var tab: Tab = .lessons
-    private let lessonsView: LessonsView
-    private let profileView: ProfileView = ProfileView()
+    @State
+    private var lessonsView: LessonsView
+    @State
+    private var profileView = ProfileView()
 
     @State
     private var hasPresentedLessonRequestView = false
 
-    // TODO: potentially use @StateObject to simplify RootView
     @ObservedObject
     private var lessonPlanFetchingCoordinator: LessonsView.Coordinator
     private let deviceRegisterCoordinator: DeviceRegisterCoordinator
 
     init?() {
         guard
-            let lessonPlanFetchingCoordinator = Current.coordinator(for: \.lessonPlanFetchingService),
+            let lessonPlanFetchingCoordinator = Current.sharedCoordinator(for: \.lessonPlanFetchingService),
             let deviceRegisterCoordinator = Current.deviceRegisterCoordinator()
         else {
             return nil
         }
-        self.lessonsView = LessonsView(coordinator: lessonPlanFetchingCoordinator)
+        self._lessonsView = .init(wrappedValue: LessonsView(coordinator: lessonPlanFetchingCoordinator))
         self.lessonPlanFetchingCoordinator = lessonPlanFetchingCoordinator
         self.deviceRegisterCoordinator = deviceRegisterCoordinator
     }
@@ -100,36 +101,30 @@ struct MainTabView: View, TestableView, RoutableView {
         }
     }
 
-    private var leadingNavigationItem: AnyView? {
+    @ViewBuilder
+    private var leadingNavigationItem: some View {
         switch tab {
-        case .lessons:
-            return AnyView(
-                Group {
-                    if lessonPlanFetchingCoordinator.state.isLoading {
-                        ActivityIndicator(style: .medium, color: .rythmicoGray90)
-                    }
-                }
-            )
-        case .profile:
-            return nil
+        case .lessons where lessonPlanFetchingCoordinator.state.isLoading:
+            ActivityIndicator(style: .medium, color: .rythmicoGray90)
+        default:
+            EmptyView()
         }
     }
 
-    private var trailingNavigationItem: AnyView? {
+    @ViewBuilder
+    private var trailingNavigationItem: some View {
         switch tab {
         case .lessons:
-            return AnyView(
-                Button(action: presentRequestLessonFlow) {
-                    Image(systemSymbol: .plusCircleFill).font(.system(size: 24))
-                        .padding(.vertical, .spacingExtraSmall)
-                        .padding(.horizontal, .spacingExtraLarge)
-                        .offset(x: .spacingExtraLarge)
-                }
-                .accessibility(label: Text("Request lessons"))
-                .accessibility(hint: Text("Double tap to request a lesson plan"))
-            )
+            Button(action: presentRequestLessonFlow) {
+                Image(systemSymbol: .plusCircleFill).font(.system(size: 24))
+                    .padding(.vertical, .spacingExtraSmall)
+                    .padding(.horizontal, .spacingExtraLarge)
+                    .offset(x: .spacingExtraLarge)
+            }
+            .accessibility(label: Text("Request lessons"))
+            .accessibility(hint: Text("Double tap to request a lesson plan"))
         case .profile:
-            return nil
+            EmptyView()
         }
     }
 
@@ -148,7 +143,6 @@ private struct BestNavigationStyleModifier: ViewModifier {
 
 #if DEBUG
 struct MainTabView_Previews: PreviewProvider {
-    @ViewBuilder
     static var previews: some View {
         MainTabView()
             .environment(\.colorScheme, .light)

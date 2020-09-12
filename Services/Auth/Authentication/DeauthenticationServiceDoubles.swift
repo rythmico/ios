@@ -1,7 +1,7 @@
 #if DEBUG
 import Sugar
 
-final class DeauthenticationServiceStub: DeauthenticationServiceProtocol {
+final class DeauthenticationServiceFake: DeauthenticationServiceProtocol {
     func deauthenticate() {
         Current.accessTokenProviderObserver.currentProvider = nil
     }
