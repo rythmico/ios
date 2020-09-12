@@ -8,7 +8,7 @@ protocol SchedulingContext {
 struct SchedulingView: View, TestableView {
     final class ViewState: ObservableObject {
         @Published var startDate: Date?
-        @Published var startTime = Current.calendar.date(bySetting: .hour, value: 16, of: Date.referenceDate) ?? Date.referenceDate
+        @Published var startTime = Current.calendar.date(bySetting: .hour, value: 16, of: .referenceDate) ?? .referenceDate
         @Published var duration: Duration?
     }
 
