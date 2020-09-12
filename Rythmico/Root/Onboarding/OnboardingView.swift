@@ -83,7 +83,7 @@ struct OnboardingView: View, TestableView {
         }
     }
 
-    private func handleAuthenticationError(_ error: AuthenticationAPIError) {
+    private func handleAuthenticationError(_ error: AuthenticationSignInError) {
         switch error.reasonCode {
         case .invalidAPIKey,
              .appNotAuthorized,
