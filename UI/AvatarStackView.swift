@@ -19,6 +19,7 @@ struct AvatarStackView<Data: RangeReplaceableCollection, ContentView: View>: Vie
         HStack(spacing: Const.spacing) {
             ForEach(0..<data.count, id: \.self) { index in
                 content(data[index])
+                    .frame(width: AvatarView.Const.defaultSize, height: AvatarView.Const.defaultSize)
                     .overlay(
                         Circle()
                             .stroke(Color.rythmicoBackground, lineWidth: Const.borderLineWidth)

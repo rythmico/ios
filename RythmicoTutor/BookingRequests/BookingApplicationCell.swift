@@ -15,7 +15,7 @@ struct BookingApplicationCell: View {
                         .foregroundColor(.secondary)
                         .font(.callout)
                 }
-                Spacer(minLength: 0)
+                Spacer()
                 TickingText(statusDate)
                     .foregroundColor(.secondary)
                     .font(.footnote)
