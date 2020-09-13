@@ -9,8 +9,6 @@ struct LessonsView: View, TestableView, VisibleView {
     @ObservedObject
     private var repository = Current.lessonPlanRepository
     @State
-    private var selectedLessonPlan: LessonPlan?
-    @State
     private(set) var isVisible = false; var isVisibleBinding: Binding<Bool> { $isVisible }
 
     init(coordinator: Coordinator) {
@@ -24,14 +22,8 @@ struct LessonsView: View, TestableView, VisibleView {
     let inspection = SelfInspection()
     var body: some View {
         CollectionView(lessonPlans) { lessonPlan in
-            NavigationLink(
-                destination: LessonPlanDetailView(lessonPlan),
-                tag: lessonPlan,
-                selection: $selectedLessonPlan,
-                label: { LessonPlanSummaryCell(lessonPlan: lessonPlan) }
-            )
-            .disabled(lessonPlan.status.isCancelled)
-            .transition(transition(for: lessonPlan))
+            LessonPlanSummaryCell(lessonPlan: lessonPlan)
+                .transition(transition(for: lessonPlan))
         }
         .accentColor(.rythmicoPurple)
         .testable(self)
