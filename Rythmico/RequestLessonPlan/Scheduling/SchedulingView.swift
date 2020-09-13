@@ -128,11 +128,6 @@ struct SchedulingView: View, TestableView {
                                 .onTapGesture(perform: beginEditingDuration)
                             }
                         }
-
-                        HeaderContentView(title: "Please note:") {
-                            Text("Mon-Fri lessons £60 for 45-60 min.").rythmicoFont(.body)
-                            Text("Weekend lessons £65 for 45-60 min.").rythmicoFont(.body)
-                        }
                     }
                     .padding([.trailing, .bottom], .spacingMedium)
                     .onBackgroundTapGesture(perform: endEditing)
