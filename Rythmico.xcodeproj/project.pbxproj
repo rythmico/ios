@@ -980,15 +980,8 @@
 				032215562497034A009D48A8 /* LessonPlanTutorStatusView.swift */,
 				D527B02124FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift */,
 				03C39DD72496CA2A00C76516 /* LessonPlanStatusPill.swift */,
-				03C39DD92496DBC700C76516 /* LessonPlanDetailView.swift */,
-				03D932F1249C096B003416DC /* LessonPlanDetailViewTests.swift */,
-				031378C2249A722F005FC49C /* LessonPlanCancellationView.swift */,
-				03D932F3249C0A71003416DC /* LessonPlanCancellationViewTests.swift */,
-				031378C8249A7DFF005FC49C /* LessonPlanCancellationPromptView.swift */,
-				031378C6249A7ADE005FC49C /* LessonPlanCancellationReasonView.swift */,
-				03D932F5249C0C56003416DC /* LessonPlanCancellationReasonViewTests.swift */,
-				0372E363249ADF8D0048B402 /* LessonPlanCancellationLoadingView.swift */,
-				0372E365249AE3FC0048B402 /* LessonPlanCancellationConfirmationView.swift */,
+				D518C2F6250EA84F00288A48 /* Details */,
+				D518C2F5250EA83000288A48 /* Cancellation */,
 			);
 			path = Lessons;
 			sourceTree = "<group>";
@@ -1394,6 +1387,29 @@
 				D5147507240C8E69002EE20C /* XCTAssertView.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		D518C2F5250EA83000288A48 /* Cancellation */ = {
+			isa = PBXGroup;
+			children = (
+				031378C2249A722F005FC49C /* LessonPlanCancellationView.swift */,
+				03D932F3249C0A71003416DC /* LessonPlanCancellationViewTests.swift */,
+				031378C8249A7DFF005FC49C /* LessonPlanCancellationPromptView.swift */,
+				031378C6249A7ADE005FC49C /* LessonPlanCancellationReasonView.swift */,
+				03D932F5249C0C56003416DC /* LessonPlanCancellationReasonViewTests.swift */,
+				0372E363249ADF8D0048B402 /* LessonPlanCancellationLoadingView.swift */,
+				0372E365249AE3FC0048B402 /* LessonPlanCancellationConfirmationView.swift */,
+			);
+			path = Cancellation;
+			sourceTree = "<group>";
+		};
+		D518C2F6250EA84F00288A48 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				03C39DD92496DBC700C76516 /* LessonPlanDetailView.swift */,
+				03D932F1249C096B003416DC /* LessonPlanDetailViewTests.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		D5217CED24E2D81B00C89018 /* MapOpener */ = {
