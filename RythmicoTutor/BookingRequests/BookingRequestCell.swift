@@ -13,7 +13,7 @@ struct BookingRequestCell: View {
                     .foregroundColor(.secondary)
                     .font(.callout)
             }
-            Spacer(minLength: 0)
+            Spacer()
             Text(accessory)
                 .foregroundColor(.secondary)
                 .font(.body)
