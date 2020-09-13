@@ -56,7 +56,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 
     func testConfirmationState() throws {
-        Current.lessonPlanRequestService = APIServiceStub(result: .success(.jackGuitarPlanStub))
+        Current.lessonPlanRequestService = APIServiceStub(result: .success(.pendingJackGuitarPlanStub))
 
         let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
 

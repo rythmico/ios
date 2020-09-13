@@ -104,7 +104,7 @@ struct LessonPlanCancellationView: View, TestableView {
 #if DEBUG
 struct LessonPlanCancellationView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlanCancellationView(lessonPlan: .jackGuitarPlanStub)
+        LessonPlanCancellationView(lessonPlan: .pendingJackGuitarPlanStub)
     }
 }
 #endif

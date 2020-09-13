@@ -5,8 +5,8 @@ import Then
 extension LessonPlan: Then {}
 
 extension LessonPlan {
-    static var jackGuitarPlanStub: LessonPlan {
-        LessonPlan(
+    static var pendingJackGuitarPlanStub: Self {
+        .init(
             id: "jack_guitar",
             status: .pending,
             instrument: .guitar,
@@ -17,8 +17,8 @@ extension LessonPlan {
         )
     }
 
-    static var jesseDrumsPlanStub: LessonPlan {
-        LessonPlan(
+    static var jesseDrumsPlanStub: Self {
+        .init(
             id: "jesse_drums",
             status: .pending,
             instrument: .drums,
@@ -29,8 +29,8 @@ extension LessonPlan {
         )
     }
 
-    static var charlottePianoPlanStub: LessonPlan {
-        LessonPlan(
+    static var charlottePianoPlanStub: Self {
+        .init(
             id: "charlotte_piano",
             status: .pending,
             instrument: .piano,
@@ -41,8 +41,8 @@ extension LessonPlan {
         )
     }
 
-    static var janeSingingPlanStub: LessonPlan {
-        LessonPlan(
+    static var janeSingingPlanStub: Self {
+        .init(
             id: "jane_singing",
             status: .pending,
             instrument: .singing,
@@ -53,8 +53,8 @@ extension LessonPlan {
         )
     }
 
-    static var davidGuitarPlanStub: LessonPlan {
-        LessonPlan(
+    static var davidGuitarPlanStub: Self {
+        .init(
             id: "david_guitar",
             status: .pending,
             instrument: .guitar,
@@ -67,16 +67,22 @@ extension LessonPlan {
 }
 
 extension LessonPlan {
-    static var reviewingJackGuitarPlanStub: LessonPlan {
-        jackGuitarPlanStub.with {
+    static var reviewingJackGuitarPlanStub: Self {
+        pendingJackGuitarPlanStub.with {
             $0.status = .reviewing([.stub, .stub])
         }
     }
 }
 
 extension LessonPlan {
-    static var cancelledJackGuitarPlanStub: LessonPlan {
-        jackGuitarPlanStub.with {
+    static var cancelledJackGuitarPlanStub: Self {
+        pendingJackGuitarPlanStub.with {
+            $0.status = .cancelled(nil, .stub)
+        }
+    }
+
+    static var cancelledCharlottePianoPlanStub: Self {
+        charlottePianoPlanStub.with {
             $0.status = .cancelled(nil, .stub)
         }
     }
@@ -100,8 +106,8 @@ extension LessonPlan.Tutor {
 }
 
 extension LessonPlan.CancellationInfo {
-    static var stub: LessonPlan.CancellationInfo {
-        LessonPlan.CancellationInfo(
+    static var stub: Self {
+        .init(
             date: .stub,
             reason: .rearrangementNeeded
         )
@@ -111,10 +117,9 @@ extension LessonPlan.CancellationInfo {
 extension Array where Element == LessonPlan {
     static var stub: Self {
         [
-            .reviewingJackGuitarPlanStub,
             .jesseDrumsPlanStub,
-            .charlottePianoPlanStub,
-            .janeSingingPlanStub
+            .reviewingJackGuitarPlanStub,
+            .cancelledCharlottePianoPlanStub,
         ]
     }
 }
