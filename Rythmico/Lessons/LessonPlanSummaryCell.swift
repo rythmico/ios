@@ -52,7 +52,7 @@ struct LessonPlanSummaryCell: View {
 struct LessonPlanSummaryCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LessonPlanSummaryCell(lessonPlan: .jackGuitarPlanStub)
+            LessonPlanSummaryCell(lessonPlan: .pendingJackGuitarPlanStub)
             LessonPlanSummaryCell(lessonPlan: .reviewingJackGuitarPlanStub)
             LessonPlanSummaryCell(lessonPlan: .cancelledJackGuitarPlanStub)
         }
