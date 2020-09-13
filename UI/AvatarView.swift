@@ -13,25 +13,21 @@ struct AvatarView: View {
     }
 
     private let content: Content
-    private let size: CGFloat
     private let backgroundColor: Color
 
-    init(
-        _ content: Content,
-        size: CGFloat = Const.defaultSize,
-        backgroundColor: Color = Const.defaultBackgroundColor
-    ) {
+    init(_ content: Content, backgroundColor: Color = Const.defaultBackgroundColor) {
         self.content = content
-        self.size = size
         self.backgroundColor = backgroundColor
     }
 
     var body: some View {
-        contentView
-            .frame(width: size, height: size)
-            .background(backgroundColor)
-            .clipShape(Circle())
-            .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
+        GeometryReader { g in
+            contentView
+                .frame(width: g.size.width, height: g.size.height)
+                .background(backgroundColor)
+                .clipShape(Circle())
+        }
+        .frame(width: Const.defaultSize, height: Const.defaultSize, alignment: .center)
     }
 
     @ViewBuilder
@@ -40,29 +36,26 @@ struct AvatarView: View {
         case .initials(let initials):
             GeometryReader { g in
                 Text(initials)
-                    .font(.system(size: g.size.width, weight: .medium, design: .rounded))
-                    .minimumScaleFactor(.leastNonzeroMagnitude)
+                    .font(.system(size: g.size.width / 2, weight: .medium, design: .rounded))
                     .lineLimit(1)
                     .foregroundColor(.rythmicoGray90)
-                    .padding(.horizontal, g.size.width * 0.18)
-                    .position(x: g.size.width / 2, y: g.size.height / 2)
+                    .position(x: g.frame(in: .local).midX, y: g.frame(in: .local).midY)
             }
+            .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
         case .photo(let image):
             Image(uiImage: image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
+                .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
         case .placeholder:
             GeometryReader { g in
                 Image(systemSymbol: .person)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .font(.system(size: g.size.width, weight: .medium, design: .rounded))
-                    .minimumScaleFactor(.leastNonzeroMagnitude)
+                    .font(.system(size: g.size.width / 1.75, weight: .medium, design: .rounded))
+                    .offset(x: 0, y: -g.size.height * 0.025)
                     .foregroundColor(.rythmicoGray90)
-                    .padding(.horizontal, g.size.width * 0.255)
-                    .offset(x: 0, y: -g.size.height * 0.02)
-                    .position(x: g.size.width / 2, y: g.size.height / 2)
+                    .position(x: g.frame(in: .local).midX, y: g.frame(in: .local).midY)
             }
+            .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
         }
     }
 }
@@ -71,13 +64,26 @@ struct AvatarView: View {
 struct AvatarView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            AvatarView(.initials("DR"))
-            AvatarView(.photo(UIImage(.red)))
-            AvatarView(.placeholder)
+            Group {
+                AvatarView(.initials("DR"))
+                AvatarView(.initials("DR")).frame(width: 100, height: 100)
+                AvatarView(.initials("DR")).frame(width: 300, height: 300)
+                AvatarView(.initials("DR")).frame(width: 600, height: 600)
+            }
 
-            AvatarView(.initials("DR"), size: 200)
-            AvatarView(.photo(UIImage(.purple)), size: 200)
-            AvatarView(.placeholder, size: 200)
+            Group {
+                AvatarView(.photo(UIImage(.red)))
+                AvatarView(.photo(UIImage(.purple))).frame(width: 100, height: 100)
+                AvatarView(.photo(UIImage(.purple))).frame(width: 300, height: 300)
+                AvatarView(.photo(UIImage(.purple))).frame(width: 600, height: 600)
+            }
+
+            Group {
+                AvatarView(.placeholder)
+                AvatarView(.placeholder).frame(width: 100, height: 100)
+                AvatarView(.placeholder).frame(width: 300, height: 300)
+                AvatarView(.placeholder).frame(width: 600, height: 600)
+            }
         }
         .environment(\.colorScheme, .dark)
         .previewLayout(.sizeThatFits)

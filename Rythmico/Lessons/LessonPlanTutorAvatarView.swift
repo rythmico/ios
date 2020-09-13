@@ -7,23 +7,20 @@ struct LessonPlanTutorAvatarView: View {
 
     private let tutor: LessonPlan.Tutor
     private let thumbnail: Bool
-    private let size: CGFloat
     private let backgroundColor: Color
 
     init(
         _ tutor: LessonPlan.Tutor,
         thumbnail: Bool,
-        size: CGFloat = AvatarView.Const.defaultSize,
         backgroundColor: Color = AvatarView.Const.defaultBackgroundColor
     ) {
         self.tutor = tutor
         self.thumbnail = thumbnail
-        self.size = size
         self.backgroundColor = backgroundColor
     }
 
     var body: some View {
-        AvatarView(content, size: size, backgroundColor: backgroundColor)
+        AvatarView(content, backgroundColor: backgroundColor)
             .onAppear(perform: load)
             .onDisappear(perform: coordinator.cancel)
     }
