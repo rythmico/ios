@@ -86,7 +86,7 @@ struct LessonPlanTutorStatusView_Previews: PreviewProvider {
                 .previewDisplayName("Pending")
             LessonPlanTutorStatusView(.reviewing([]), summarized: true)
                 .previewDisplayName("Reviewing 0 Tutors")
-            LessonPlanTutorStatusView(.reviewing([.stub, .stub]), summarized: true)
+            LessonPlanTutorStatusView(.reviewing(.stub), summarized: true)
                 .previewDisplayName("Reviewing 1+ Tutors")
             LessonPlanTutorStatusView(.scheduled(.jesseStub), summarized: true)
                 .previewDisplayName("Scheduled")

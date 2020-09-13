@@ -69,7 +69,7 @@ extension LessonPlan {
 extension LessonPlan {
     static var reviewingJackGuitarPlanStub: Self {
         pendingJackGuitarPlanStub.with {
-            $0.status = .reviewing([.stub, .stub])
+            $0.status = .reviewing(.stub)
         }
     }
 }
@@ -89,8 +89,16 @@ extension LessonPlan {
 }
 
 extension LessonPlan.Application {
-    static var stub: Self {
+    static var jesseStub: Self {
         .init(tutor: .jesseStub, privateNote: "I'll help!")
+    }
+
+    static var davidStub: Self {
+        .init(tutor: .davidStub, privateNote: "Lorem ipsum!")
+    }
+
+    static var charlotteStub: Self {
+        .init(tutor: .charlotteStub, privateNote: "")
     }
 }
 
@@ -99,6 +107,24 @@ extension LessonPlan.Tutor {
         .init(
             id: "ID1",
             name: "Jesse Bildner",
+            photoThumbnailURL: nil,
+            photoURL: nil
+        )
+    }
+
+    static var davidStub: Self {
+        .init(
+            id: "ID2",
+            name: "David Roman",
+            photoThumbnailURL: nil,
+            photoURL: nil
+        )
+    }
+
+    static var charlotteStub: Self {
+        .init(
+            id: "ID3",
+            name: "Charlotte",
             photoThumbnailURL: nil,
             photoURL: nil
         )
@@ -120,6 +146,16 @@ extension Array where Element == LessonPlan {
             .jesseDrumsPlanStub,
             .reviewingJackGuitarPlanStub,
             .cancelledCharlottePianoPlanStub,
+        ]
+    }
+}
+
+extension Array where Element == LessonPlan.Application {
+    static var stub: Self {
+        [
+            .jesseStub,
+            .davidStub,
+            .charlotteStub
         ]
     }
 }
