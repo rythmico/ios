@@ -76,10 +76,8 @@ struct LessonPlanDetailView: View, TestableView, RoutableView {
         }
         .testable(self)
         .padding(.top, .spacingExtraSmall)
-        .onEdgeSwipe(.left, perform: back)
         .navigationBarTitle(Text(""), displayMode: .inline)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: BackButton(title: "Lessons", action: back))
+        .navigationBarBackButtonItem(BackButton(title: "Lessons", action: back))
         .sheet(isPresented: $isCancellationViewPresented) {
             LessonPlanCancellationView(lessonPlan: lessonPlan)
         }
