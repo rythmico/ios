@@ -31,18 +31,19 @@ struct LessonPlanTutorStatusView: View {
 }
 
 private extension LessonPlan.Status {
-    var avatar: AnyView {
+    @ViewBuilder
+    var avatar: some View {
         switch self {
         case .pending,
              .reviewing([]):
-            return AnyView(AvatarView(.placeholder))
+            AvatarView(.placeholder)
         case .reviewing(let applications):
-            return AnyView(AvatarStackView(applications.map(\.tutor), thumbnails: true))
+            AvatarStackView(applications.map(\.tutor), thumbnails: true)
         case .scheduled(let tutor),
              .cancelled(let tutor?, _):
-            return AnyView(LessonPlanTutorAvatarView(tutor, thumbnail: true))
+            LessonPlanTutorAvatarView(tutor, thumbnail: true)
         case .cancelled(nil, _):
-            return AnyView(AvatarView(.placeholder))
+            AvatarView(.placeholder)
         }
     }
 

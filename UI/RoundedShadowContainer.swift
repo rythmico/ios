@@ -15,16 +15,21 @@ struct RoundedShadowContainer: ViewModifier {
             .opacity(isEnabled ? 1 : 0.75)
     }
 
+    @ViewBuilder
     private var background: some View {
         let shape = RoundedRectangle(cornerRadius: Const.cornerRadius, style: Const.cornerStyle)
-        switch isEnabled {
-        case true:
+        if isEnabled {
             let base = shape.fill(Color.rythmicoBackground)
-            return colorScheme == .light
-                ? AnyView(base.shadow(color: Color(white: 0, opacity: 0.14), radius: 5, x: 0, y: 2))
-                : AnyView(base.overlay(shape.stroke(Color.rythmicoGray20, lineWidth: 1)))
-        case false:
-            return AnyView(shape.fill(disabledBackgroundColor))
+            switch colorScheme {
+            case .dark:
+                base.overlay(shape.stroke(Color.rythmicoGray20, lineWidth: 1))
+            case .light:
+                base.shadow(color: Color(white: 0, opacity: 0.14), radius: 5, x: 0, y: 2)
+            @unknown default:
+                base.shadow(color: Color(white: 0, opacity: 0.14), radius: 5, x: 0, y: 2)
+            }
+        } else {
+            shape.fill(disabledBackgroundColor)
         }
     }
 
