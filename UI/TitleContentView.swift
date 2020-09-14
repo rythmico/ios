@@ -10,17 +10,15 @@ struct TitleContentView<Content: View>: View {
     }
 
     var body: some View {
-        HStack(spacing: 0) {
-            VStack(alignment: .leading, spacing: .spacingSmall) {
-                Text(title)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.6)
-                    .foregroundColor(.rythmicoForeground)
-                    .rythmicoFont(.largeTitle)
-                    .accessibility(addTraits: .isHeader)
-                content
-            }
-            Spacer()
+        VStack(alignment: .leading, spacing: .spacingSmall) {
+            Text(title)
+                .lineLimit(1)
+                .minimumScaleFactor(0.6)
+                .foregroundColor(.rythmicoForeground)
+                .rythmicoFont(.largeTitle)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .accessibility(addTraits: .isHeader)
+            content
         }
     }
 }
