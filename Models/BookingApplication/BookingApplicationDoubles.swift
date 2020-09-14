@@ -5,8 +5,8 @@ import Sugar
 extension BookingApplication {
     static func stub(_ statusInfo: StatusInfo) -> Self {
         .init(
-            id: "ID1",
-            bookingRequestId: "ID1",
+            id: UUID().uuidString,
+            bookingRequestId: UUID().uuidString,
             createdAt: .stub - (32, .second),
             statusInfo: statusInfo,
             instrument: .piano,
@@ -20,91 +20,77 @@ extension BookingApplication {
         )
     }
 
-    static var stub: Self {
-        .init(
-            id: "ID2",
-            bookingRequestId: "ID2",
-            createdAt: .stub - (32, .second),
-            statusInfo: .stub(.pending),
-            instrument: .piano,
-            submitterName: "David R",
-            submitterPrivateNote: "",
-            phoneNumber: nil,
-            student: .jackStub,
-            addressInfo: .postcode("N8"),
-            schedule: .startingTomorrowStub,
-            privateNote: "I'll help!"
-        )
-    }
+    static let stub = Self(
+        id: UUID().uuidString,
+        bookingRequestId: UUID().uuidString,
+        createdAt: .stub - (32, .second),
+        statusInfo: .stub(.pending),
+        instrument: .piano,
+        submitterName: "David R",
+        submitterPrivateNote: "",
+        phoneNumber: nil,
+        student: .jackStub,
+        addressInfo: .postcode("N8"),
+        schedule: .startingTomorrowStub,
+        privateNote: "I'll help!"
+    )
 
-    static var stubWithAbout: Self {
-        .init(
-            id: "ID3",
-            bookingRequestId: "ID3",
-            createdAt: .stub - (32, .second),
-            statusInfo: .stub(.pending),
-            instrument: .guitar,
-            submitterName: "David R",
-            submitterPrivateNote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            phoneNumber: nil,
-            student: .janeStub,
-            addressInfo: .postcode("N8"),
-            schedule: .startingTomorrowStub,
-            privateNote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        )
-    }
+    static let stubWithAbout = Self(
+        id: UUID().uuidString,
+        bookingRequestId: UUID().uuidString,
+        createdAt: .stub - (32, .second),
+        statusInfo: .stub(.pending),
+        instrument: .guitar,
+        submitterName: "David R",
+        submitterPrivateNote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        phoneNumber: nil,
+        student: .janeStub,
+        addressInfo: .postcode("N8"),
+        schedule: .startingTomorrowStub,
+        privateNote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    )
 
-    static var longStub: Self {
-        .init(
-            id: "ID4",
-            bookingRequestId: "ID4",
-            createdAt: .stub - (1, .weekOfMonth),
-            statusInfo: .stub(.pending),
-            instrument: .piano,
-            submitterName: "David R",
-            submitterPrivateNote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            phoneNumber: nil,
-            student: .longNameStub,
-            addressInfo: .postcode("NW5"),
-            schedule: .startingIn1WeekStub,
-            privateNote: ""
-        )
-    }
+    static let longStub = Self(
+        id: UUID().uuidString,
+        bookingRequestId: UUID().uuidString,
+        createdAt: .stub - (1, .weekOfMonth),
+        statusInfo: .stub(.pending),
+        instrument: .piano,
+        submitterName: "David R",
+        submitterPrivateNote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        phoneNumber: nil,
+        student: .longNameStub,
+        addressInfo: .postcode("NW5"),
+        schedule: .startingIn1WeekStub,
+        privateNote: ""
+    )
 }
 
 extension Array where Element == BookingApplication {
-    static var stub: Self {
-        BookingApplication.Status.allCases.map { .stub(.stub($0)) }
-    }
+    static let stub: Self = BookingApplication.Status.allCases.map { .stub(.stub($0)) }
 }
 
 extension BookingApplication.Student {
-    static var jackStub: Self {
-        .init(
-            name: "Jack",
-            age: 10,
-            gender: .male,
-            about: ""
-        )
-    }
+    static let jackStub = Self(
+        name: "Jack",
+        age: 10,
+        gender: .male,
+        about: ""
+    )
 
-    static var janeStub: Self {
-        .init(
-            name: "Jane",
-            age: 9,
-            gender: .female,
-            about: "Jane is in Year 5. She has had a few guitar lessons at school and seems to really enjoy learning."
-        )
-    }
+    static let janeStub = Self(
+        name: "Jane",
+        age: 9,
+        gender: .female,
+        about: "Jane is in Year 5. She has had a few guitar lessons at school and seems to really enjoy learning."
+    )
 
-    static var longNameStub: Self {
-        .init(
-            name: "Ana De la Rosa San Cristo del Poder González Martínez Jiménez",
-            age: 30,
-            gender: .female,
-            about: ""
-        )
-    }
+    static let longNameStub = Self(
+        name: "Ana De la Rosa San Cristo del Poder González Martínez Jiménez",
+        age: 30,
+        gender: .female,
+        about: ""
+    )
 }
 
 extension BookingApplication.StatusInfo {

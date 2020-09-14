@@ -3,32 +3,24 @@ import Foundation
 import Sugar
 
 extension Schedule {
-    static var stub: Self {
-        .init(
-            startDate: .stub + (6, .hour),
-            duration: .fortyFiveMinutes
-        )
-    }
+    static let stub = Self(
+        startDate: .stub + (6, .hour),
+        duration: .fortyFiveMinutes
+    )
 
-    static var startingTomorrowStub: Self {
-        .init(
-            startDate: .stub + (1, .day),
-            duration: .fortyFiveMinutes
-        )
-    }
+    static let startingTomorrowStub = Self(
+        startDate: .stub + (1, .day),
+        duration: .fortyFiveMinutes
+    )
 
-    static var startingIn3DaysStub: Self {
-        .init(
-            startDate: .stub + (3, .day),
-            duration: .oneHour
-        )
-    }
+    static let startingIn3DaysStub = Self(
+        startDate: .stub + (3, .day),
+        duration: .oneHour
+    )
 
-    static var startingIn1WeekStub: Self {
-        .init(
-            startDate: .stub + (1, .weekOfMonth),
-            duration: .oneHour
-        )
-    }
+    static let startingIn1WeekStub = Self(
+        startDate: .stub + (1, .weekOfMonth),
+        duration: .oneHour
+    )
 }
 #endif
