@@ -12,6 +12,7 @@ struct LessonPlanTutorStatusView: View {
     var body: some View {
         HStack(spacing: .spacingExtraSmall) {
             status.avatar
+                .fixedSize()
             Text(title)
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
