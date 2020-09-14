@@ -12,6 +12,7 @@ struct LessonPlanTutorStatusView: View {
     var body: some View {
         HStack(spacing: .spacingExtraSmall) {
             status.avatar
+                .fixedSize()
             Text(title)
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
@@ -31,18 +32,19 @@ struct LessonPlanTutorStatusView: View {
 }
 
 private extension LessonPlan.Status {
-    var avatar: AnyView {
+    @ViewBuilder
+    var avatar: some View {
         switch self {
         case .pending,
              .reviewing([]):
-            return AnyView(AvatarView(.placeholder))
+            AvatarView(.placeholder)
         case .reviewing(let applications):
-            return AnyView(AvatarStackView(applications.map(\.tutor), thumbnails: true))
+            AvatarStackView(applications.map(\.tutor), thumbnails: true)
         case .scheduled(let tutor),
              .cancelled(let tutor?, _):
-            return AnyView(LessonPlanTutorAvatarView(tutor, thumbnail: true))
+            LessonPlanTutorAvatarView(tutor, thumbnail: true)
         case .cancelled(nil, _):
-            return AnyView(AvatarView(.placeholder))
+            AvatarView(.placeholder)
         }
     }
 
@@ -86,7 +88,7 @@ struct LessonPlanTutorStatusView_Previews: PreviewProvider {
                 .previewDisplayName("Pending")
             LessonPlanTutorStatusView(.reviewing([]), summarized: true)
                 .previewDisplayName("Reviewing 0 Tutors")
-            LessonPlanTutorStatusView(.reviewing([.stub, .stub]), summarized: true)
+            LessonPlanTutorStatusView(.reviewing(.stub), summarized: true)
                 .previewDisplayName("Reviewing 1+ Tutors")
             LessonPlanTutorStatusView(.scheduled(.jesseStub), summarized: true)
                 .previewDisplayName("Scheduled")

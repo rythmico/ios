@@ -2,8 +2,8 @@ import SwiftUI
 
 private enum Const {
     static let borderLineWidth: CGFloat = 2
-    static let borderOutlineSize: CGFloat = AvatarView.Const.defaultSize + borderLineWidth
-    static let spacing: CGFloat = -AvatarView.Const.defaultSize * 0.42
+    static let borderOutlineSize: CGFloat = AvatarView.Const.minSize + 1.5
+    static let spacing: CGFloat = -AvatarView.Const.minSize * 0.42
 }
 
 struct AvatarStackView<Data: RangeReplaceableCollection, ContentView: View>: View where Data.Index == Int {
@@ -19,7 +19,7 @@ struct AvatarStackView<Data: RangeReplaceableCollection, ContentView: View>: Vie
         HStack(spacing: Const.spacing) {
             ForEach(0..<data.count, id: \.self) { index in
                 content(data[index])
-                    .frame(width: AvatarView.Const.defaultSize, height: AvatarView.Const.defaultSize)
+                    .frame(width: AvatarView.Const.minSize, height: AvatarView.Const.minSize)
                     .overlay(
                         Circle()
                             .stroke(Color.rythmicoBackground, lineWidth: Const.borderLineWidth)

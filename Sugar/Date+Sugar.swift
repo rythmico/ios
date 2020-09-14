@@ -1,8 +1,9 @@
 import Foundation
+import Then
 
 extension Date {
     init?(date: Date, time: Date) {
-        let calendar = Current.calendar
+        let calendar = Current.calendar()
 
         let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
         let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)
@@ -41,6 +42,8 @@ extension Calendar {
         dateComponents([unit], from: fromDate, to: toDate).value(for: unit)!
     }
 }
+
+extension Calendar: Then {}
 
 extension Date: ExpressibleByStringLiteral {
     public init(stringLiteral value: StringLiteralType) {

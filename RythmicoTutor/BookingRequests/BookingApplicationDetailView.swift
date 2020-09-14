@@ -14,7 +14,7 @@ struct BookingApplicationDetailView: View, RoutableView {
 
     @State
     private var retractionPromptSheetPresented = false
-    @ObservedObject
+    @StateObject
     private var retractionCoordinator: APIActivityCoordinator<BookingApplicationsRetractRequest>
 
     init?(bookingApplication: BookingApplication) {
@@ -22,7 +22,7 @@ struct BookingApplicationDetailView: View, RoutableView {
             return nil
         }
         self.bookingApplication = bookingApplication
-        self.retractionCoordinator = retractionCoordinator
+        self._retractionCoordinator = .init(wrappedValue: retractionCoordinator)
     }
 
     var status: String { bookingApplication.statusInfo.status.summary }

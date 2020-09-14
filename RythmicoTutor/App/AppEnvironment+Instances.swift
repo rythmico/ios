@@ -7,8 +7,8 @@ extension AppEnvironment: Then {}
 
 extension AppEnvironment {
     static let live = AppEnvironment(
-        date: { Date() },
-        calendar: .autoupdatingCurrent,
+        date: Date.init,
+        calendarType: { Calendar.current.identifier },
         locale: .autoupdatingCurrent,
         timeZone: .autoupdatingCurrent,
 
@@ -72,7 +72,7 @@ extension AppEnvironment {
     static var dummy: AppEnvironment {
         AppEnvironment(
             date: { .stub },
-            calendar: Calendar(identifier: .gregorian),
+            calendarType: { .gregorian },
             locale: Locale(identifier: "en_GB"),
             timeZone: TimeZone(identifier: "Europe/London")!,
 

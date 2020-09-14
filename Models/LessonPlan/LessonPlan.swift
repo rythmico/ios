@@ -103,9 +103,12 @@ struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
 
 extension LessonPlan.Status {
     var isCancelled: Bool {
-        guard case .cancelled = self else {
-            return false
-        }
+        guard case .cancelled = self else { return false }
         return true
+    }
+
+    var reviewingValue: [LessonPlan.Application]? {
+        guard case .reviewing(let applications) = self else { return nil }
+        return applications
     }
 }

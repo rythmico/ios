@@ -8,7 +8,7 @@ protocol SchedulingContext {
 struct SchedulingView: View, TestableView {
     final class ViewState: ObservableObject {
         @Published var startDate: Date?
-        @Published var startTime = Current.calendar.date(bySetting: .hour, value: 16, of: .referenceDate) ?? .referenceDate
+        @Published var startTime = Current.calendar().date(bySetting: .hour, value: 16, of: .referenceDate) ?? .referenceDate
         @Published var duration: Duration?
     }
 
@@ -127,11 +127,6 @@ struct SchedulingView: View, TestableView {
                                 .modifier(RoundedThinOutlineContainer(padded: false))
                                 .onTapGesture(perform: beginEditingDuration)
                             }
-                        }
-
-                        HeaderContentView(title: "Please note:") {
-                            Text("Mon-Fri lessons £60 for 45-60 min.").rythmicoFont(.body)
-                            Text("Weekend lessons £65 for 45-60 min.").rythmicoFont(.body)
                         }
                     }
                     .padding([.trailing, .bottom], .spacingMedium)

@@ -8,7 +8,7 @@ final class MainTabViewTests: XCTestCase {
     override func setUp() {
         Current = .dummy
         Current.userAuthenticated()
-        Current.lessonPlanFetchingService = APIServiceStub(result: .success([.jackGuitarPlanStub]))
+        Current.lessonPlanFetchingService = APIServiceStub(result: .success([.pendingJackGuitarPlanStub]))
     }
 
     func testDeviceRegistrationOnAppear() throws {

@@ -9,7 +9,7 @@ struct LessonPlanCancellationView: View, TestableView {
 
     @State
     private var isCancellationIntended = false
-    @ObservedObject
+    @StateObject
     private var coordinator: Coordinator
     private var lessonPlan: LessonPlan
 
@@ -17,7 +17,7 @@ struct LessonPlanCancellationView: View, TestableView {
         guard let coordinator = Current.coordinator(for: \.lessonPlanCancellationService) else {
             return nil
         }
-        self.coordinator = coordinator
+        self._coordinator = .init(wrappedValue: coordinator)
         self.lessonPlan = lessonPlan
     }
 
@@ -104,7 +104,7 @@ struct LessonPlanCancellationView: View, TestableView {
 #if DEBUG
 struct LessonPlanCancellationView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlanCancellationView(lessonPlan: .jackGuitarPlanStub)
+        LessonPlanCancellationView(lessonPlan: .pendingJackGuitarPlanStub)
     }
 }
 #endif

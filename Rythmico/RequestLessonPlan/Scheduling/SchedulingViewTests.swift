@@ -35,7 +35,7 @@ final class SchedulingViewTests: XCTestCase {
             )
 
             XCTAssertNil(state.startDate)
-            XCTAssertEqual(state.startTime, Current.calendar.date(bySetting: .hour, value: 16, of: .referenceDate))
+            XCTAssertEqual(state.startTime, Current.calendar().date(bySetting: .hour, value: 16, of: .referenceDate))
             XCTAssertNil(state.duration)
 
             XCTAssertEqual(view.editingFocus, .none)

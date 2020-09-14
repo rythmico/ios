@@ -13,7 +13,7 @@ final class RequestLessonPlanConfirmationViewTests: XCTestCase {
     }
 
     func confirmationView() -> RequestLessonPlanConfirmationView {
-        RequestLessonPlanConfirmationView(lessonPlan: .jackGuitarPlanStub)
+        RequestLessonPlanConfirmationView(lessonPlan: .pendingJackGuitarPlanStub)
     }
 
     func testEnableNotificationsButtonShown_whenStatusNotDetermined() {

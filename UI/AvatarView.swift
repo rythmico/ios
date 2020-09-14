@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AvatarView: View {
     enum Const {
-        static let defaultSize: CGFloat = .spacingUnit * 8
+        static let minSize: CGFloat = .spacingUnit * 8
         static let defaultBackgroundColor: Color = .rythmicoGray10
     }
 
@@ -27,7 +27,8 @@ struct AvatarView: View {
                 .background(backgroundColor)
                 .clipShape(Circle())
         }
-        .frame(width: Const.defaultSize, height: Const.defaultSize, alignment: .center)
+        .frame(minWidth: Const.minSize, minHeight: Const.minSize)
+        .scaledToFit()
     }
 
     @ViewBuilder
@@ -65,21 +66,21 @@ struct AvatarView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             Group {
-                AvatarView(.initials("DR"))
+                AvatarView(.initials("DR")).fixedSize()
                 AvatarView(.initials("DR")).frame(width: 100, height: 100)
                 AvatarView(.initials("DR")).frame(width: 300, height: 300)
                 AvatarView(.initials("DR")).frame(width: 600, height: 600)
             }
 
             Group {
-                AvatarView(.photo(UIImage(.red)))
+                AvatarView(.photo(UIImage(.red))).fixedSize()
                 AvatarView(.photo(UIImage(.purple))).frame(width: 100, height: 100)
                 AvatarView(.photo(UIImage(.purple))).frame(width: 300, height: 300)
                 AvatarView(.photo(UIImage(.purple))).frame(width: 600, height: 600)
             }
 
             Group {
-                AvatarView(.placeholder)
+                AvatarView(.placeholder).fixedSize()
                 AvatarView(.placeholder).frame(width: 100, height: 100)
                 AvatarView(.placeholder).frame(width: 300, height: 300)
                 AvatarView(.placeholder).frame(width: 600, height: 600)
