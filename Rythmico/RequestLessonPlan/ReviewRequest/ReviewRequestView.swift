@@ -207,7 +207,7 @@ struct ReviewRequestView_Previews: PreviewProvider {
     static var previews: some View {
         ReviewRequestView(
             coordinator: Current.coordinator(for: \.lessonPlanRequestService)!,
-            context: .init(),
+            context: RequestLessonPlanContext(),
             instrument: .guitar,
             student: .davidStub,
             address: .stub,

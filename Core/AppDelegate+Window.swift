@@ -25,6 +25,7 @@ private final class Window: UIWindow {
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
         traitCollectionDidChange?((old: previousTraitCollection, new: traitCollection))
     }
 }
