@@ -94,7 +94,7 @@ struct LessonPlanDetailView: View, TestableView, RoutableView {
         }
     }
 
-    private let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM @ ha"))
+    private let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM @ h:mma"))
     private var startDateText: String { startDateFormatter.string(from: lessonPlan.schedule.startDate) }
 
     private var durationText: String { "\(lessonPlan.schedule.duration) minutes" }
