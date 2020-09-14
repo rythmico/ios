@@ -3,7 +3,7 @@ import SwiftUI
 struct BookingRequestApplyView: View {
     @Environment(\.presentationMode)
     private var presentationMode
-    @ObservedObject
+    @StateObject
     private var coordinator: APIActivityCoordinator<BookingRequestApplyRequest>
     private let booking: BookingRequest
 
@@ -11,7 +11,7 @@ struct BookingRequestApplyView: View {
         guard let coordinator = Current.coordinator(for: \.bookingRequestApplyingService) else {
             return nil
         }
-        self.coordinator = coordinator
+        self._coordinator = .init(wrappedValue: coordinator)
         self.booking = booking
     }
 

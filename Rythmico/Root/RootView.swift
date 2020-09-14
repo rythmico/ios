@@ -9,7 +9,7 @@ extension RootView {
 }
 
 struct RootView: View, TestableView {
-    @ObservedObject
+    @StateObject
     private var accessTokenProviderObserver = Current.accessTokenProviderObserver
 
     var state: UserState {
