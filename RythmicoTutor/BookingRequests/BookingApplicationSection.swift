@@ -20,7 +20,7 @@ struct BookingApplicationSection<HeaderAccessory: View>: View {
 
     var body: some View {
         Section(
-            header: HStack {
+            header: HStack(spacing: .spacingUnit * 2) {
                 if header.isEmpty { EmptyView() } else { Text(header) }
                 headerAccessory
             },

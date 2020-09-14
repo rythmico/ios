@@ -19,11 +19,8 @@ struct GroupedButton<Accessory: View>: View {
 
     var body: some View {
         ZStack {
-            HStack(spacing: 0) {
-                Spacer()
-                Button(title, action: action)
-                Spacer()
-            }
+            Button(title, action: action)
+                .frame(maxWidth: .infinity, alignment: .center)
 
             HStack {
                 Spacer()

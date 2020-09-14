@@ -7,7 +7,7 @@ struct BookingApplicationCell: View {
         HStack(spacing: .spacingUnit * 2) {
             Dot(color: application.statusInfo.status.color)
             HStack(spacing: .spacingMedium) {
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: .spacingUnit / 2) {
                     Text(title)
                         .foregroundColor(.primary)
                         .font(.body)
@@ -15,7 +15,8 @@ struct BookingApplicationCell: View {
                         .foregroundColor(.secondary)
                         .font(.callout)
                 }
-                Spacer()
+                .frame(maxWidth: .infinity, alignment: .leading)
+
                 TickingText(statusDate)
                     .foregroundColor(.secondary)
                     .font(.footnote)

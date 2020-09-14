@@ -5,7 +5,7 @@ struct BookingRequestCell: View {
 
     var body: some View {
         HStack(spacing: .spacingMedium) {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: .spacingUnit / 2) {
                 Text(title)
                     .foregroundColor(.primary)
                     .font(.body)
@@ -13,7 +13,8 @@ struct BookingRequestCell: View {
                     .foregroundColor(.secondary)
                     .font(.callout)
             }
-            Spacer()
+            .frame(maxWidth: .infinity, alignment: .leading)
+
             Text(accessory)
                 .foregroundColor(.secondary)
                 .font(.body)

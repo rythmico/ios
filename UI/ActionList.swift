@@ -25,7 +25,8 @@ struct ActionList: View {
                         HStack(spacing: 0) {
                             Text(buttons[index].title)
                                 .multilineTextAlignment(.leading)
-                            Spacer()
+                                .frame(maxWidth: .infinity, alignment: .leading)
+
                             if buttons[index].disclosure {
                                 Image(decorative: Asset.iconDisclosure.name)
                                     .renderingMode(.template)

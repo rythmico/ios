@@ -64,8 +64,7 @@ struct LessonPlanDetailView: View, TestableView, RoutableView {
                 }
             }
             .padding(.horizontal, .spacingMedium)
-
-            Spacer()
+            .frame(maxHeight: .infinity, alignment: .top)
 
             ActionList(
                 [.init(title: "Cancel Lesson Plan Request", action: showCancelLessonPlanForm)],

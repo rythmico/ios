@@ -29,7 +29,8 @@ struct SelectableList<Data: RandomAccessCollection, ID: Hashable, Content: View>
                             content(element)
                                 .multilineTextAlignment(.leading)
                                 .foregroundColor(Color(.label))
-                            Spacer()
+                                .frame(maxWidth: .infinity, alignment: .leading)
+
                             if isSelected(element) {
                                 Image(decorative: Asset.iconCheckmark.name)
                                     .renderingMode(.template)

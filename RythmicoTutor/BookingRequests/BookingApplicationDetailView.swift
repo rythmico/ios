@@ -56,7 +56,8 @@ struct BookingApplicationDetailView: View, RoutableView {
                         Text(status)
                             .foregroundColor(.primary)
                             .font(.body)
-                        Spacer()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+
                         TickingText(statusDate)
                             .foregroundColor(.secondary)
                             .font(.footnote)

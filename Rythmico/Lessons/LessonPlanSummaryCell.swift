@@ -50,7 +50,7 @@ struct LessonPlanSummaryCell: View {
                     HStack(spacing: .spacingExtraSmall) {
                         Text("Review Tutors")
                             .rythmicoFont(.body)
-                        Spacer()
+                            .frame(maxWidth: .infinity, alignment: .leading)
                         Image(systemSymbol: .chevronRight)
                             .font(.system(size: 18, weight: .regular, design: .rounded))
                     }
