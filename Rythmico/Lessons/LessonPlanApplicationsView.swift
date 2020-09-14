@@ -87,9 +87,11 @@ struct LessonPlanApplicationsView: View, RoutableView {
     }
 }
 
+#if DEBUG
 struct LessonPlanApplicationsView_Previews: PreviewProvider {
     static var previews: some View {
         LessonPlanApplicationsView(.reviewingJackGuitarPlanStub)
 //            .environment(\.sizeCategory, ContentSizeCategory.accessibilityExtraLarge)
     }
 }
+#endif
