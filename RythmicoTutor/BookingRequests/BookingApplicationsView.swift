@@ -27,7 +27,7 @@ struct BookingApplicationsView: View, VisibleView {
             List {
                 BookingApplicationSection(applications: applications, status: .pending) {
                     if isLoading {
-                        ActivityIndicator().transition(AnyTransition.opacity.combined(with: .scale))
+                        ActivityIndicator()
                     }
                 }
                 Section(header: Text("OTHER STATUS")) {

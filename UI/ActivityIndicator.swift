@@ -7,7 +7,13 @@ struct ActivityIndicator: View {
     var color: Color? = nil
 
     var body: some View {
-        ProgressView().progressViewStyle(color.map(Style.init) ?? Style())
+        ProgressView()
+            .progressViewStyle(color.map(Style.init) ?? Style())
+            .transition(
+                AnyTransition
+                    .opacity.combined(with: .scale)
+                    .animation(.easeInOut(duration: .durationShort))
+            )
     }
 }
 

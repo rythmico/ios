@@ -41,7 +41,6 @@ struct BookingRequestsView: View, VisibleView {
                         Text("UPCOMING")
                         if isLoading {
                             ActivityIndicator()
-                                .transition(AnyTransition.opacity.combined(with: .scale))
                         }
                     }
                 ) {

@@ -75,11 +75,6 @@ struct AddressDetailsView: View, TestableView {
                                 Spacer()
                                 if isLoading {
                                     ActivityIndicator(color: .rythmicoGray90)
-                                    .transition(
-                                        AnyTransition
-                                            .scale
-                                            .animation(.rythmicoSpring(duration: .durationShort, type: .damping))
-                                    )
                                 }
                                 Spacer().frame(width: .spacingExtraSmall)
                             }
