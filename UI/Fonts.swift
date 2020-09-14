@@ -129,12 +129,7 @@ extension Font {
 
 extension UIFont {
     static func rythmicoFont(_ style: RythmicoFontStyle) -> UIFont {
-        let sizeCategory: ContentSizeCategory
-        if #available(iOS 14, *) {
-            sizeCategory = ContentSizeCategory(UITraitCollection.current.preferredContentSizeCategory)
-        } else {
-            sizeCategory = ContentSizeCategory(UITraitCollection.current.preferredContentSizeCategory)
-        }
+        let sizeCategory = ContentSizeCategory(UITraitCollection.current.preferredContentSizeCategory)!
         let legibilityWeight = LegibilityWeight(UITraitCollection.current.legibilityWeight)
 
         let fontSize = style.size(for: sizeCategory)
@@ -146,52 +141,13 @@ extension UIFont {
     }
 }
 
-// Replace with enum protocol extension (Swift 5.3 onwards).
-private extension ContentSizeCategory {
-    init(_ contentSizeCategory: UIContentSizeCategory) {
-        switch contentSizeCategory {
-        case .extraSmall:
-            self = .extraSmall
-        case .small:
-            self = .small
-        case .medium:
-            self = .medium
-        case .large:
-            self = .large
-        case .extraLarge:
-            self = .extraLarge
-        case .extraExtraLarge:
-            self = .extraExtraLarge
-        case .extraExtraExtraLarge:
-            self = .extraExtraExtraLarge
-        case .accessibilityMedium:
-            self = .accessibilityMedium
-        case .accessibilityLarge:
-            self = .accessibilityLarge
-        case .accessibilityExtraLarge:
-            self = .accessibilityExtraLarge
-        case .accessibilityExtraExtraLarge:
-            self = .accessibilityExtraExtraLarge
-        case .accessibilityExtraExtraExtraLarge:
-            self = .accessibilityExtraExtraExtraLarge
-        default:
-            self = .medium
-        }
-    }
-}
-
-// Replace with enum protocol extension (Swift 5.3 onwards).
 private extension LegibilityWeight {
     init?(_ legibilityWeight: UILegibilityWeight) {
         switch legibilityWeight {
-        case .bold:
-            self = .bold
-        case .regular:
-            self = .regular
-        case .unspecified:
-            return nil
-        @unknown default:
-            return nil
+        case .bold: self = .bold
+        case .regular: self = .regular
+        case .unspecified: return nil
+        @unknown default: return nil
         }
     }
 }
@@ -199,26 +155,16 @@ private extension LegibilityWeight {
 private extension UIFont.Weight {
     init(_ weight: Font.Weight) {
         switch weight {
-        case .ultraLight:
-            self = .ultraLight
-        case .thin:
-            self = .thin
-        case .light:
-            self = .light
-        case .regular:
-            self = .regular
-        case .medium:
-            self = .medium
-        case .semibold:
-            self = .semibold
-        case .bold:
-            self = .bold
-        case .heavy:
-            self = .heavy
-        case .black:
-            self = .black
-        default:
-            self = .regular
+        case .ultraLight: self = .ultraLight
+        case .thin: self = .thin
+        case .light: self = .light
+        case .regular: self = .regular
+        case .medium: self = .medium
+        case .semibold: self = .semibold
+        case .bold: self = .bold
+        case .heavy: self = .heavy
+        case .black: self = .black
+        default: self = .regular
         }
     }
 }
