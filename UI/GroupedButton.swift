@@ -39,7 +39,7 @@ struct GroupedButton_Previews: PreviewProvider {
     static var previews: some View {
         List {
             GroupedButton("Something", action: {}) {
-                ActivityIndicator(style: .medium)
+                ActivityIndicator()
             }
             .accentColor(.red)
             .disabled(true)

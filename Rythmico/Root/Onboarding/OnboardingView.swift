@@ -26,7 +26,7 @@ struct OnboardingView: View, TestableView {
                 .accessibilityElement(children: .combine)
                 Spacer()
                 if isLoading {
-                    ActivityIndicator(style: .medium, color: .rythmicoGray90)
+                    ActivityIndicator(color: .rythmicoGray90)
                         .frame(width: 44, height: 44)
                 } else {
                     AuthorizationAppleIDButton(action: authenticateWithApple)

@@ -74,7 +74,7 @@ struct AddressDetailsView: View, TestableView {
                             HStack {
                                 Spacer()
                                 if isLoading {
-                                    ActivityIndicator(style: .medium, color: .rythmicoGray90)
+                                    ActivityIndicator(color: .rythmicoGray90)
                                     .transition(
                                         AnyTransition
                                             .scale

@@ -105,7 +105,7 @@ struct BookingApplicationDetailView: View, RoutableView {
             retractAction.map { retractAction in
                 GroupedButton("Retract Application", action: promptForRetraction) {
                     if retractionCoordinator.state.isLoading {
-                        ActivityIndicator(style: .medium)
+                        ActivityIndicator()
                     }
                 }
                 .accentColor(.red)

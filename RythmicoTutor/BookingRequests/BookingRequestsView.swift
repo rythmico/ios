@@ -40,7 +40,7 @@ struct BookingRequestsView: View, VisibleView {
                     header: HStack {
                         Text("UPCOMING")
                         if isLoading {
-                            ActivityIndicator(style: .medium)
+                            ActivityIndicator()
                                 .transition(AnyTransition.opacity.combined(with: .scale))
                         }
                     }

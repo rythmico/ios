@@ -54,7 +54,7 @@ struct BookingRequestApplyView: View {
     @ViewBuilder
     private var trailingBarItem: some View {
         if coordinator.state.isLoading {
-            ActivityIndicator(style: .medium)
+            ActivityIndicator()
         } else {
             Button("Close", action: dismiss)
         }
