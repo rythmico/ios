@@ -14,7 +14,8 @@ struct BookingApplicationGroupCell: View {
             Text(title)
                 .foregroundColor(.primary)
                 .font(.body)
-            Spacer()
+                .frame(maxWidth: .infinity, alignment: .leading)
+
             Text(accessory)
                 .foregroundColor(.secondary)
                 .font(.body)

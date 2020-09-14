@@ -1,5 +1,6 @@
 import Foundation
 import Sugar
+import Then
 
 final class RequestLessonPlanContext: ObservableObject {
     @Published var instrument: Instrument? {
@@ -20,6 +21,8 @@ final class RequestLessonPlanContext: ObservableObject {
 
     private(set) var previousStep: Step?
 }
+
+extension RequestLessonPlanContext: Then {}
 
 extension RequestLessonPlanContext {
     enum Step: Comparable {

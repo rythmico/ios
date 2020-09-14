@@ -19,11 +19,8 @@ struct GroupedButton<Accessory: View>: View {
 
     var body: some View {
         ZStack {
-            HStack(spacing: 0) {
-                Spacer()
-                Button(title, action: action)
-                Spacer()
-            }
+            Button(title, action: action)
+                .frame(maxWidth: .infinity, alignment: .center)
 
             HStack {
                 Spacer()
@@ -39,7 +36,7 @@ struct GroupedButton_Previews: PreviewProvider {
     static var previews: some View {
         List {
             GroupedButton("Something", action: {}) {
-                ActivityIndicator(style: .medium)
+                ActivityIndicator()
             }
             .accentColor(.red)
             .disabled(true)

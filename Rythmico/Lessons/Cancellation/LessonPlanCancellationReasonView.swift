@@ -36,8 +36,7 @@ extension LessonPlanCancellationView {
                     }
                     .accentColor(.rythmicoPurple)
                 }
-
-                Spacer()
+                .frame(maxHeight: .infinity, alignment: .top)
 
                 submitButtonAction.map { action in
                     FloatingView {

@@ -37,11 +37,10 @@ struct BookingRequestsView: View, VisibleView {
         VStack(spacing: .spacingMedium) {
             List {
                 Section(
-                    header: HStack {
+                    header: HStack(spacing: .spacingUnit * 2) {
                         Text("UPCOMING")
                         if isLoading {
-                            ActivityIndicator(style: .medium)
-                                .transition(AnyTransition.opacity.combined(with: .scale))
+                            ActivityIndicator()
                         }
                     }
                 ) {

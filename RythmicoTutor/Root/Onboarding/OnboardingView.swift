@@ -16,7 +16,6 @@ struct OnboardingView: View, TestableView {
         ZStack {
             Color(.systemBackground).edgesIgnoringSafeArea(.all)
             VStack(spacing: .spacingSmall) {
-                Spacer()
                 VStack(spacing: .spacingSmall) {
                     Text("Rythmico Tutor")
                         .font(Font.system(.largeTitle).bold())
@@ -26,10 +25,11 @@ struct OnboardingView: View, TestableView {
                         .foregroundColor(.gray)
                         .multilineTextAlignment(.center)
                 }
+                .frame(maxHeight: .infinity, alignment: .top)
                 .accessibilityElement(children: .combine)
-                Spacer()
+
                 if isLoading {
-                    ActivityIndicator(style: .medium)
+                    ActivityIndicator()
                         .frame(width: 44, height: 44)
                 } else {
                     AuthorizationAppleIDButton(action: authenticateWithApple)

@@ -16,17 +16,17 @@ struct OnboardingView: View, TestableView {
         ZStack {
             Color(.systemBackground).edgesIgnoringSafeArea(.all)
             VStack(spacing: .spacingSmall) {
-                Spacer()
                 VStack(spacing: .spacingSmall) {
                     Text("Rythmico")
                         .rythmicoFont(.largeTitle)
                         .multilineTextAlignment(.center)
                         .foregroundColor(.rythmicoForeground)
                 }
+                .frame(maxHeight: .infinity, alignment: .center)
                 .accessibilityElement(children: .combine)
-                Spacer()
+
                 if isLoading {
-                    ActivityIndicator(style: .medium, color: .rythmicoGray90)
+                    ActivityIndicator(color: .rythmicoGray90)
                         .frame(width: 44, height: 44)
                 } else {
                     AuthorizationAppleIDButton(action: authenticateWithApple)

@@ -90,8 +90,7 @@ struct ProfileView: View, TestableView {
         @ViewBuilder content: () -> Content
     ) -> some View {
         let cellContent = HStack {
-            Text(title)
-            Spacer()
+            Text(title).frame(maxWidth: .infinity, alignment: .leading)
             content()
             if disclosure {
                 Image(decorative: Asset.iconDisclosure.name)

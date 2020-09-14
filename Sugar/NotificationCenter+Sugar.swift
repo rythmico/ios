@@ -17,7 +17,7 @@ extension NotificationCenter {
     }
 
     func publisher(for eventType: EventType) -> AnyPublisher<Void, Never> {
-        publisher(for: eventType.notificationName).map { _ in () }.eraseToAnyPublisher()
+        publisher(for: eventType.notificationName).map { _ in }.eraseToAnyPublisher()
     }
 }
 

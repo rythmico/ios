@@ -10,7 +10,8 @@ struct TitleCell: View {
                 .foregroundColor(.primary)
                 .font(.body)
                 .multilineTextAlignment(.leading)
-            Spacer()
+                .frame(maxWidth: .infinity, alignment: .leading)
+
             Text(detail)
                 .foregroundColor(.secondary)
                 .font(.body)

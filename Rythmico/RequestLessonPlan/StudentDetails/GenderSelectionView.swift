@@ -11,7 +11,8 @@ struct GenderSelectionView: View {
                         .rythmicoFont(textStyle(for: gender))
                         .foregroundColor(textColor(for: gender))
                         .animation(.none)
-                    Spacer()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
                     gender.icon
                         .renderingMode(.template)
                         .foregroundColor(iconColor(for: gender))

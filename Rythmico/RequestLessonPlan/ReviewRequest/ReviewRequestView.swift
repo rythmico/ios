@@ -187,7 +187,7 @@ struct ReviewRequestView: View, TestableView {
     private let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
     private var startDateText: String { startDateFormatter.string(from: schedule.startDate) }
 
-    private let startTimeFormatter = Current.dateFormatter(format: .custom("ha"))
+    private let startTimeFormatter = Current.dateFormatter(format: .custom("h:mma"))
     private var startTimeText: String { startTimeFormatter.string(from: schedule.startDate) }
     private var startTimeAndDurationText: [MultiStyleText.Part] {
         startTimeText.style(.bodyBold).color(.rythmicoGray90) +
@@ -207,7 +207,7 @@ struct ReviewRequestView_Previews: PreviewProvider {
     static var previews: some View {
         ReviewRequestView(
             coordinator: Current.coordinator(for: \.lessonPlanRequestService)!,
-            context: .init(),
+            context: RequestLessonPlanContext(),
             instrument: .guitar,
             student: .davidStub,
             address: .stub,

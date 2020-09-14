@@ -6,7 +6,7 @@ extension LessonPlanCancellationView {
             ZStack {
                 Color(.systemBackground)
                 HStack(spacing: .spacingExtraSmall) {
-                    ActivityIndicator(style: .medium, color: .rythmicoGray90)
+                    ActivityIndicator(color: .rythmicoGray90)
                     Text("Cancelling plan...")
                         .rythmicoFont(.subheadlineBold)
                         .foregroundColor(.rythmicoForeground)

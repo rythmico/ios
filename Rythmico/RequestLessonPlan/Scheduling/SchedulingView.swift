@@ -195,7 +195,6 @@ struct SchedulingViewPreview: PreviewProvider {
             state: SchedulingView.ViewState(),
             context: RequestLessonPlanContext()
         )
-        .environment(\.locale, .init(identifier: "en_GB"))
         .previewDevices()
     }
 }

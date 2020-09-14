@@ -1,25 +1,28 @@
 import SwiftUI
 import Then
 
-struct ActivityIndicator: UIViewRepresentable {
+struct ActivityIndicator: View {
+    private typealias Style = CircularProgressViewStyle
 
-    var style: UIActivityIndicatorView.Style
-    var color: UIColor? = nil
+    var color: Color? = nil
 
-    func makeUIView(context: UIViewRepresentableContext<ActivityIndicator>) -> UIActivityIndicatorView {
-        NonAccessibleUIActivityIndicatorView(style: style).then {
-            $0.color = color ?? $0.color
-            $0.hidesWhenStopped = false
-            $0.startAnimating()
-        }
-    }
-
-    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicator>) {}
-}
-
-private final class NonAccessibleUIActivityIndicatorView: UIActivityIndicatorView {
-    override var accessibilityLabel: String? {
-        get { "Loading" }
-        set {}
+    var body: some View {
+        ProgressView()
+            .progressViewStyle(color.map(Style.init) ?? Style())
+            .transition(
+                AnyTransition
+                    .opacity.combined(with: .scale)
+                    .animation(.easeInOut(duration: .durationShort))
+            )
     }
 }
+
+#if DEBUG
+struct ActivityIndicator_Previews: PreviewProvider {
+    static var previews: some View {
+        ActivityIndicator(color: .black)
+            .padding()
+            .previewLayout(.sizeThatFits)
+    }
+}
+#endif

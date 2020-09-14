@@ -105,7 +105,7 @@ struct MainTabView: View, TestableView, RoutableView {
     private var leadingNavigationItem: some View {
         switch tab {
         case .lessons where lessonPlanFetchingCoordinator.state.isLoading:
-            ActivityIndicator(style: .medium, color: .rythmicoGray90)
+            ActivityIndicator(color: .rythmicoGray90)
         default:
             EmptyView()
         }

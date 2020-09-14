@@ -56,7 +56,8 @@ struct BookingApplicationDetailView: View, RoutableView {
                         Text(status)
                             .foregroundColor(.primary)
                             .font(.body)
-                        Spacer()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+
                         TickingText(statusDate)
                             .foregroundColor(.secondary)
                             .font(.footnote)
@@ -105,7 +106,7 @@ struct BookingApplicationDetailView: View, RoutableView {
             retractAction.map { retractAction in
                 GroupedButton("Retract Application", action: promptForRetraction) {
                     if retractionCoordinator.state.isLoading {
-                        ActivityIndicator(style: .medium)
+                        ActivityIndicator()
                     }
                 }
                 .accentColor(.red)
