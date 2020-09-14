@@ -82,7 +82,7 @@ struct AddressDetailsView: View, TestableView {
                     }
                     .padding(.horizontal, .spacingMedium)
 
-                    addresses.map { addresses in
+                    if let addresses = addresses {
                         SectionHeaderContentView(
                             title: "Select Address",
                             padding: .init(horizontal: .spacingMedium)
@@ -98,12 +98,9 @@ struct AddressDetailsView: View, TestableView {
                         .transition(
                             AnyTransition
                                 .opacity
-                                .combined(with: .offset(x: 0, y: 25)
-                            )
+                                .combined(with: .offset(x: 0, y: 25))
                         )
-                    }
-
-                    if addresses == nil {
+                    } else {
                         Spacer()
                     }
                 }
