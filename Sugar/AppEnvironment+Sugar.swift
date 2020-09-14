@@ -2,9 +2,16 @@ import UIKit
 import Then
 
 extension AppEnvironment {
+    func calendar() -> Calendar {
+        Calendar(identifier: calendarType()).with {
+            $0.locale = locale
+            $0.timeZone = timeZone
+        }
+    }
+
     func dateFormatter(format: DateFormatter.Format) -> DateFormatter {
         DateFormatter().then {
-            $0.calendar = calendar
+            $0.calendar = calendar()
             $0.locale = locale
             $0.timeZone = timeZone
             $0.setFormat(format)
@@ -16,7 +23,7 @@ extension AppEnvironment {
         style: RelativeDateTimeFormatter.UnitsStyle
     ) -> RelativeDateTimeFormatter {
         RelativeDateTimeFormatter().then {
-            $0.calendar = calendar
+            $0.calendar = calendar()
             $0.locale = locale
             $0.formattingContext = context
             $0.unitsStyle = style

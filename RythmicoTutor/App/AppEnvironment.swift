@@ -2,7 +2,7 @@ import Foundation
 
 struct AppEnvironment {
     var date: () -> Date
-    var calendar: Calendar
+    var calendarType: () -> Calendar.Identifier
     var locale: Locale
     var timeZone: TimeZone
 
