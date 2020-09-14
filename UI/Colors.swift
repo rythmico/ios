@@ -43,7 +43,7 @@ extension UIColor {
 
     static let rythmicoLightBlue = UIColor(
         lightModeVariant: .init(hex: 0xE8F1FF),
-        darkModeVariant: .init(hex: 0xd0d8e5)
+        darkModeVariant: .init(hex: 0x17386A)
     )
 
     static let rythmicoLightPurple = UIColor(
