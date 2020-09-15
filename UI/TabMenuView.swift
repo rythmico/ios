@@ -36,7 +36,7 @@ struct TabMenuView<Tab: RawRepresentable>: View where Tab.RawValue == String {
                     .onTapGesture { selection = tab }
                 }
             }
-            .padding(.horizontal, .spacingExtraLarge)
+            .padding(.horizontal, .spacingMedium)
 
             Divider().accentColor(.rythmicoGray20)
         }
