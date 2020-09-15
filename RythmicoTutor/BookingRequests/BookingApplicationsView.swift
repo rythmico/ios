@@ -39,6 +39,7 @@ struct BookingApplicationsView: View, VisibleView {
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
         .visible(self)
         .onAppearOrForeground(self, perform: coordinator.startToIdle)
+        .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
     }

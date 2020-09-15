@@ -29,6 +29,7 @@ struct LessonsView: View, TestableView, VisibleView {
         .testable(self)
         .visible(self)
         .onAppearOrForeground(self, perform: coordinator.startToIdle)
+        .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
     }
