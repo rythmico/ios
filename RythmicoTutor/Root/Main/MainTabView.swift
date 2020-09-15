@@ -46,7 +46,7 @@ struct MainTabView: View, TestableView, RoutableView {
                         Text(Tab.profile.title)
                     }
             }
-            .navigationBarTitle(Text(tab.title), displayMode: .automatic)
+            .navigationBarTitle(Text(tab.title), displayMode: .large)
         }
         .testable(self)
         .routable(self)
