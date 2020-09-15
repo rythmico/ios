@@ -4,7 +4,7 @@ import Introspect
 extension View {
     func navigationBarBackButtonItem<B: View>(_ button: B) -> some View {
         self.navigationBarBackButtonHiddenMaintainingInteractivePopGesture(true)
-            .navigationBarItems(leading: button)
+            .navigationBarItems(leading: button.offset(x: -7))
     }
 
     func navigationBarBackButtonHiddenMaintainingInteractivePopGesture(_ hidden: Bool) -> some View {
