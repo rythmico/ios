@@ -334,6 +334,7 @@
 		D55F013424CCE65C00E5F13C /* Then+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55F013224CCE65C00E5F13C /* Then+Sugar.swift */; };
 		D55FD2AF2507F8BF004A2891 /* AppDelegate+Lifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55FD2AE2507F8BF004A2891 /* AppDelegate+Lifecycle.swift */; };
 		D55FD2B02507F8BF004A2891 /* AppDelegate+Lifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55FD2AE2507F8BF004A2891 /* AppDelegate+Lifecycle.swift */; };
+		D564F4642511722900EA13E9 /* TabMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D564F4632511722900EA13E9 /* TabMenuView.swift */; };
 		D56544D324CE4BA100281875 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = D56544D224CE4BA100281875 /* ViewInspector */; };
 		D56544D524CE4C8D00281875 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = D56544D424CE4C8D00281875 /* ViewInspector */; };
 		D577EEA724E6F66400253EA1 /* BookingRequestApplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */; };
@@ -717,6 +718,7 @@
 		D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetInteractiveDismissal.swift; sourceTree = "<group>"; };
 		D55F013224CCE65C00E5F13C /* Then+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Then+Sugar.swift"; sourceTree = "<group>"; };
 		D55FD2AE2507F8BF004A2891 /* AppDelegate+Lifecycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Lifecycle.swift"; sourceTree = "<group>"; };
+		D564F4632511722900EA13E9 /* TabMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuView.swift; sourceTree = "<group>"; };
 		D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestApplyView.swift; sourceTree = "<group>"; };
 		D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetInteractiveDismissal+Previews.swift"; sourceTree = "<group>"; };
 		D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet+Sugar.swift"; sourceTree = "<group>"; };
@@ -1383,6 +1385,7 @@
 				D5F5068B24046B1400CA4094 /* Spacing.swift */,
 				D52C554924DDE1D300C295C4 /* StaticMapView.swift */,
 				D50811E323FB72A3008103D8 /* StepBar.swift */,
+				D564F4632511722900EA13E9 /* TabMenuView.swift */,
 				D5C23A7B240FEF30007DED63 /* TapView.swift */,
 				D5147506240C8E69002EE20C /* TestableView.swift */,
 				03E88E9024BCA4AA0077A420 /* TickingView.swift */,
@@ -2162,6 +2165,7 @@
 				03B1983F24717A90005529EB /* LessonPlanDoubles.swift in Sources */,
 				03275AE92490769E009C3980 /* DeviceTokenDeleterDoubles.swift in Sources */,
 				D5CC5FF125029525007DFE84 /* ImageReference.swift in Sources */,
+				D564F4642511722900EA13E9 /* TabMenuView.swift in Sources */,
 				D53555C423E536AE005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
 				D53555CD23E536AE005A20EB /* AppleAuthorizationController.swift in Sources */,
 				D55F012C24CCBE8700E5F13C /* APIService.swift in Sources */,
