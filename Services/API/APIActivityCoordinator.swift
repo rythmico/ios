@@ -52,14 +52,8 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
             case .success(let accessToken):
                 do {
                     let request = try Request(accessToken: accessToken, properties: properties)
-                    self.runningTask = self.service.send(request) { result in
-                        switch result {
-                        case .success:
-                            self.state = .finished(result)
-                            if idleOnSuccess { self.idle() }
-                        case .failure(let error):
-                            self.handleRequestError(error)
-                        }
+                    self.runningTask = self.service.send(request) {
+                        self.handleRequestResult($0, idleOnSuccess: idleOnSuccess)
                     }
                 } catch {
                     self.handleRequestError(error)
@@ -67,6 +61,16 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
             case .failure(let error):
                 self.handleAuthenticationError(error)
             }
+        }
+    }
+
+    private func handleRequestResult(_ result: Result<Request.Response, Error>, idleOnSuccess: Bool) {
+        switch result {
+        case .success:
+            state = .finished(result)
+            if idleOnSuccess { idle() }
+        case .failure(let error):
+            handleRequestError(error)
         }
     }
 
@@ -85,7 +89,6 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
         default:
             break
         }
-
         state = .finished(.failure(error))
     }
 }
