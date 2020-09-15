@@ -19,6 +19,7 @@ struct BookingRequestApplyView: View {
     var privateNote = ""
 
     func submit() {
+        Current.keyboardDismisser.dismissKeyboard()
         coordinator.run(with: (bookingRequestId: booking.id, body: .init(privateNote: privateNote)))
     }
 

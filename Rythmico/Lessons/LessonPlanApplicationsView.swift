@@ -31,12 +31,10 @@ struct LessonPlanApplicationsView: View, RoutableView {
         Current.calendar().isDateInWeekend(lessonPlan.schedule.startDate) ? "65" : "60"
     }
 
-    var columns: [GridItem] {
-        [
-            GridItem(.flexible(), spacing: .spacingSmall),
-            GridItem(.flexible(), spacing: .spacingSmall)
-        ]
-    }
+    var columns = Array(
+        repeating: GridItem(.flexible(), spacing: .spacingSmall),
+        count: 2
+    )
 
     var body: some View {
         VStack(alignment: .leading, spacing: .spacingSmall) {

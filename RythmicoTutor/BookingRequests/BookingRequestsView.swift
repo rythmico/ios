@@ -60,6 +60,7 @@ struct BookingRequestsView: View, VisibleView {
         .visible(self)
 
         .onAppearOrForeground(self, perform: coordinator.startToIdle)
+        .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
 

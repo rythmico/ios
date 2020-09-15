@@ -1,3 +1,4 @@
+import Foundation
 import APIKit
 
 final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActivityCoordinator<Request.Response> {
@@ -51,18 +52,33 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
             case .success(let accessToken):
                 do {
                     let request = try Request(accessToken: accessToken, properties: properties)
-                    self.runningTask = self.service.send(request) { result in
-                        self.state = .finished(result)
-                        if idleOnSuccess {
-                            self.idle()
-                        }
+                    self.runningTask = self.service.send(request) {
+                        self.handleRequestResult($0, idleOnSuccess: idleOnSuccess)
                     }
                 } catch {
-                    self.state = .finished(.failure(error))
+                    self.handleRequestError(error)
                 }
             case .failure(let error):
                 self.handleAuthenticationError(error)
             }
+        }
+    }
+
+    private func handleRequestResult(_ result: Result<Request.Response, Error>, idleOnSuccess: Bool) {
+        switch result {
+        case .success:
+            state = .finished(result)
+            if idleOnSuccess { idle() }
+        case .failure(let error):
+            handleRequestError(error)
+        }
+    }
+
+    private func handleRequestError(_ error: Error) {
+        if let error = error as? SessionTaskError, error.isCancelledError {
+            cancel()
+        } else {
+            state = .finished(.failure(error))
         }
     }
 
@@ -73,7 +89,6 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
         default:
             break
         }
-
         state = .finished(.failure(error))
     }
 }
@@ -84,4 +99,17 @@ extension APIActivityCoordinator where Request.Properties == Void {
 
     func run() { run(with: ()) }
     func runToIdle() { runToIdle(with: ()) }
+}
+
+private extension SessionTaskError {
+    var isCancelledError: Bool {
+        guard
+            case .connectionError(let connectionError as NSError) = self,
+            connectionError.domain == NSURLErrorDomain,
+            connectionError.code == -999
+        else {
+            return false
+        }
+        return true
+    }
 }
