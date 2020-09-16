@@ -2,46 +2,73 @@ import SwiftUI
 import Sugar
 
 struct LessonPlanTutorAvatarView: View {
+    enum Mode {
+        case thumbnail
+        case original
+        case thumbnailToOriginal
+    }
+
     @StateObject
-    private var coordinator = Current.imageLoadingCoordinator()
+    private var thumbnailCoordinator = Current.imageLoadingCoordinator()
+    @StateObject
+    private var originalCoordinator = Current.imageLoadingCoordinator()
 
     private let tutor: LessonPlan.Tutor
-    private let thumbnail: Bool
+    private let mode: Mode
     private let backgroundColor: Color
 
     init(
         _ tutor: LessonPlan.Tutor,
-        thumbnail: Bool,
+        mode: Mode,
         backgroundColor: Color = AvatarView.Const.defaultBackgroundColor
     ) {
         self.tutor = tutor
-        self.thumbnail = thumbnail
+        self.mode = mode
         self.backgroundColor = backgroundColor
     }
 
     var body: some View {
         AvatarView(content, backgroundColor: backgroundColor)
             .onAppear(perform: load)
-            .onDisappear(perform: coordinator.cancel)
+            .onDisappear(perform: cancel)
     }
 
     private var content: AvatarView.Content {
-        coordinator.state.successValue.map(AvatarView.Content.photo)
-        ??
-        .initials(tutor.name.initials)
-    }
-
-    private var photoReference: ImageReference? {
-        thumbnail ? tutor.photoThumbnailURL : tutor.photoURL
+        let content: AvatarView.Content?
+        switch mode {
+        case .thumbnail:
+            content = thumbnailCoordinator.state.successValue.map(AvatarView.Content.photo)
+        case .original:
+            content = originalCoordinator.state.successValue.map(AvatarView.Content.photo)
+        case .thumbnailToOriginal:
+            content =
+                originalCoordinator.state.successValue.map(AvatarView.Content.photo)
+                ??
+                thumbnailCoordinator.state.successValue.map(AvatarView.Content.photo)
+        }
+        return content ?? .initials(tutor.name.initials)
     }
 
     private func load() {
-        photoReference.map(coordinator.run)
+        switch mode {
+        case .thumbnail:
+            tutor.photoThumbnailURL.map(thumbnailCoordinator.run)
+        case .original:
+            tutor.photoURL.map(originalCoordinator.run)
+        case .thumbnailToOriginal:
+            tutor.photoThumbnailURL.map(thumbnailCoordinator.run)
+            tutor.photoURL.map(originalCoordinator.run)
+        }
+    }
+
+    private func cancel() {
+        thumbnailCoordinator.cancel()
+        originalCoordinator.cancel()
     }
 }
 
 extension AvatarStackView where Data.Element == LessonPlan.Tutor, ContentView == LessonPlanTutorAvatarView {
     init(_ data: Data, thumbnails: Bool) {
-        self.init(data) { LessonPlanTutorAvatarView($0, thumbnail: thumbnails) }
+        self.init(data) { LessonPlanTutorAvatarView($0, mode: .thumbnail) }
     }
 }
