@@ -66,8 +66,7 @@ struct LessonPlanApplicationsView: View, RoutableView {
             }
         }
         .padding(.top, .spacingExtraSmall)
-        .navigationBarTitle(Text(""), displayMode: .inline)
-        .navigationBarBackButtonItem(BackButton(title: "Lessons", action: back))
+        .navigationBarTitleDisplayMode(.inline)
         .routable(self)
     }
 
