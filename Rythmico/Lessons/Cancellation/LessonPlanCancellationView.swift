@@ -54,7 +54,7 @@ struct LessonPlanCancellationView: View, TestableView {
             }
             .onEdgeSwipe(.left, perform: back)
             .padding(.top, .spacingExtraSmall)
-            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(
                 leading: Group {
                     if isUserInputRequired && isCancellationIntended {
