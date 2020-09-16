@@ -42,7 +42,7 @@ private extension LessonPlan.Status {
             AvatarStackView(applications.map(\.tutor), thumbnails: true)
         case .scheduled(let tutor),
              .cancelled(let tutor?, _):
-            LessonPlanTutorAvatarView(tutor, thumbnail: true)
+            LessonPlanTutorAvatarView(tutor, mode: .thumbnail)
         case .cancelled(nil, _):
             AvatarView(.placeholder)
         }

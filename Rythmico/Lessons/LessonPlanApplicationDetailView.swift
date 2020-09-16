@@ -19,7 +19,7 @@ struct LessonPlanApplicationDetailView: View {
             VStack(spacing: 0) {
                 VStack(spacing: .spacingExtraLarge) {
                     VStack(spacing: .spacingExtraSmall) {
-                        LessonPlanTutorAvatarView(application.tutor, thumbnail: false)
+                        LessonPlanTutorAvatarView(application.tutor, mode: .thumbnailToOriginal)
                             .frame(width: .spacingUnit * 24, height: .spacingUnit * 24)
                         VStack(spacing: .spacingUnit) {
                             Text(application.tutor.name)
