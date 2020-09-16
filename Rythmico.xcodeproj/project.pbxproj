@@ -225,8 +225,6 @@
 		D514750F240C96F0002EE20C /* XCTAssertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147507240C8E69002EE20C /* XCTAssertView.swift */; };
 		D5147511240C99A9002EE20C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147510240C99A9002EE20C /* CustomTextField.swift */; };
 		D518C2F8250EA89100288A48 /* LessonPlanApplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518C2F7250EA89100288A48 /* LessonPlanApplicationsView.swift */; };
-		D518C2FA250ECC2C00288A48 /* NavigationLinkInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518C2F9250ECC2C00288A48 /* NavigationLinkInteractiveDismissal.swift */; };
-		D518C2FB250ECC2C00288A48 /* NavigationLinkInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518C2F9250ECC2C00288A48 /* NavigationLinkInteractiveDismissal.swift */; };
 		D518C2FD250EDD3300288A48 /* InfoBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518C2FC250EDD3300288A48 /* InfoBanner.swift */; };
 		D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */; };
 		D5200E4023FDE460007168E0 /* MultiStyleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3F23FDE460007168E0 /* MultiStyleText.swift */; };
@@ -334,11 +332,13 @@
 		D55F013424CCE65C00E5F13C /* Then+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55F013224CCE65C00E5F13C /* Then+Sugar.swift */; };
 		D55FD2AF2507F8BF004A2891 /* AppDelegate+Lifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55FD2AE2507F8BF004A2891 /* AppDelegate+Lifecycle.swift */; };
 		D55FD2B02507F8BF004A2891 /* AppDelegate+Lifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55FD2AE2507F8BF004A2891 /* AppDelegate+Lifecycle.swift */; };
+		D564F4642511722900EA13E9 /* TabMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D564F4632511722900EA13E9 /* TabMenuView.swift */; };
 		D56544D324CE4BA100281875 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = D56544D224CE4BA100281875 /* ViewInspector */; };
 		D56544D524CE4C8D00281875 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = D56544D424CE4C8D00281875 /* ViewInspector */; };
 		D577EEA724E6F66400253EA1 /* BookingRequestApplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */; };
 		D585217624CF81CE005D783A /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = D585217524CF81CE005D783A /* Introspect */; };
 		D585217824CF81E8005D783A /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = D585217724CF81E8005D783A /* Introspect */; };
+		D585D5B12511299800B74091 /* LessonPlanApplicationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D585D5B02511299800B74091 /* LessonPlanApplicationDetailView.swift */; };
 		D5919F6E24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */; };
 		D5919F6F24CF2D48009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */; };
 		D5919F7124CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */; };
@@ -373,6 +373,8 @@
 		D5B57A75241A018900BE9B4F /* SchedulingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A74241A018900BE9B4F /* SchedulingView.swift */; };
 		D5BA171023D7A18900954D50 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170F23D7A18900954D50 /* RootView.swift */; };
 		D5BA171223D7AB3B00954D50 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA171123D7AB3B00954D50 /* MainTabView.swift */; };
+		D5BDD88725117E5300706EC1 /* ScheduleDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD88625117E5300706EC1 /* ScheduleDetailsView.swift */; };
+		D5BDD8A72511989500706EC1 /* AcceptedStatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD8A62511989500706EC1 /* AcceptedStatusPill.swift */; };
 		D5BF12AE25068E1000B2931C /* PushNotificationEvent+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12AD25068E1000B2931C /* PushNotificationEvent+Rythmico.swift */; };
 		D5BF12B025068E2100B2931C /* PushNotificationEvent+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12AF25068E2100B2931C /* PushNotificationEvent+Tutor.swift */; };
 		D5BF12B325068E7000B2931C /* PushNotificationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12B225068E7000B2931C /* PushNotificationEvent.swift */; };
@@ -653,7 +655,6 @@
 		D5147507240C8E69002EE20C /* XCTAssertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTAssertView.swift; sourceTree = "<group>"; };
 		D5147510240C99A9002EE20C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		D518C2F7250EA89100288A48 /* LessonPlanApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationsView.swift; sourceTree = "<group>"; };
-		D518C2F9250ECC2C00288A48 /* NavigationLinkInteractiveDismissal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkInteractiveDismissal.swift; sourceTree = "<group>"; };
 		D518C2FC250EDD3300288A48 /* InfoBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBanner.swift; sourceTree = "<group>"; };
 		D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailsView.swift; sourceTree = "<group>"; };
 		D5200E3F23FDE460007168E0 /* MultiStyleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStyleText.swift; sourceTree = "<group>"; };
@@ -717,7 +718,9 @@
 		D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetInteractiveDismissal.swift; sourceTree = "<group>"; };
 		D55F013224CCE65C00E5F13C /* Then+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Then+Sugar.swift"; sourceTree = "<group>"; };
 		D55FD2AE2507F8BF004A2891 /* AppDelegate+Lifecycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Lifecycle.swift"; sourceTree = "<group>"; };
+		D564F4632511722900EA13E9 /* TabMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuView.swift; sourceTree = "<group>"; };
 		D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestApplyView.swift; sourceTree = "<group>"; };
+		D585D5B02511299800B74091 /* LessonPlanApplicationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationDetailView.swift; sourceTree = "<group>"; };
 		D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetInteractiveDismissal+Previews.swift"; sourceTree = "<group>"; };
 		D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet+Sugar.swift"; sourceTree = "<group>"; };
 		D5A32DBC23D139C000F3903C /* AuthenticationAccessTokenProviderObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderObserver.swift; sourceTree = "<group>"; };
@@ -751,6 +754,8 @@
 		D5BA170B23D6725B00954D50 /* AuthenticationAccessTokenProviderBroadcastDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderBroadcastDoubles.swift; sourceTree = "<group>"; };
 		D5BA170F23D7A18900954D50 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		D5BA171123D7AB3B00954D50 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		D5BDD88625117E5300706EC1 /* ScheduleDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailsView.swift; sourceTree = "<group>"; };
+		D5BDD8A62511989500706EC1 /* AcceptedStatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedStatusPill.swift; sourceTree = "<group>"; };
 		D5BF12AD25068E1000B2931C /* PushNotificationEvent+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationEvent+Rythmico.swift"; sourceTree = "<group>"; };
 		D5BF12AF25068E2100B2931C /* PushNotificationEvent+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationEvent+Tutor.swift"; sourceTree = "<group>"; };
 		D5BF12B225068E7000B2931C /* PushNotificationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationEvent.swift; sourceTree = "<group>"; };
@@ -988,6 +993,8 @@
 				D527B02124FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift */,
 				03C39DD72496CA2A00C76516 /* LessonPlanStatusPill.swift */,
 				D518C2F7250EA89100288A48 /* LessonPlanApplicationsView.swift */,
+				D585D5B02511299800B74091 /* LessonPlanApplicationDetailView.swift */,
+				D5BDD88625117E5300706EC1 /* ScheduleDetailsView.swift */,
 				D518C2F6250EA84F00288A48 /* Details */,
 				D518C2F5250EA83000288A48 /* Cancellation */,
 			);
@@ -1338,6 +1345,7 @@
 		D50E4BDC23CA82E000B6FCB1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				D5BDD8A62511989500706EC1 /* AcceptedStatusPill.swift */,
 				0372E35B249AC68A0048B402 /* ActionList.swift */,
 				D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */,
 				03275AEA24908017009C3980 /* Alert+Error.swift */,
@@ -1367,7 +1375,6 @@
 				D5CAC9AB24E6D19900119DAA /* MultilineTextField+Rythmico.swift */,
 				D5CAC9AD24E6D67C00119DAA /* MultilineTextField+Tutor.swift */,
 				D5200E3F23FDE460007168E0 /* MultiStyleText.swift */,
-				D518C2F9250ECC2C00288A48 /* NavigationLinkInteractiveDismissal.swift */,
 				03AAF66B2444FFCC002D8F5B /* Pickers.swift */,
 				03C39DD52496802500C76516 /* Pill.swift */,
 				03A3F6E42447B7BD00F6391D /* PreviewDevices.swift */,
@@ -1383,6 +1390,7 @@
 				D5F5068B24046B1400CA4094 /* Spacing.swift */,
 				D52C554924DDE1D300C295C4 /* StaticMapView.swift */,
 				D50811E323FB72A3008103D8 /* StepBar.swift */,
+				D564F4632511722900EA13E9 /* TabMenuView.swift */,
 				D5C23A7B240FEF30007DED63 /* TapView.swift */,
 				D5147506240C8E69002EE20C /* TestableView.swift */,
 				03E88E9024BCA4AA0077A420 /* TickingView.swift */,
@@ -2084,6 +2092,7 @@
 				D527B00924FD2047003E81A9 /* AvatarView.swift in Sources */,
 				03021C4F248A769200C0C57E /* LessonPlanSummaryCell.swift in Sources */,
 				D518C2FD250EDD3300288A48 /* InfoBanner.swift in Sources */,
+				D5BDD8A72511989500706EC1 /* AcceptedStatusPill.swift in Sources */,
 				D5AAF7D523F9E1F900E410F2 /* InstrumentSelectionListProvider.swift in Sources */,
 				03A91EF2249186EC00DEAD5E /* AppEnvironment+Instances.swift in Sources */,
 				03A3F6EE2447DFF900F6391D /* Animation.swift in Sources */,
@@ -2138,7 +2147,6 @@
 				03A91EF8249189E000DEAD5E /* PushNotificationAuthorizationCoordinatorDoubles.swift in Sources */,
 				D5B57A6724147F5100BE9B4F /* RequestLessonPlanContext+EnumProperties.swift in Sources */,
 				0372E35A249ABAB80048B402 /* SelectableList.swift in Sources */,
-				D518C2FA250ECC2C00288A48 /* NavigationLinkInteractiveDismissal.swift in Sources */,
 				D5F506B82406363600CA4094 /* GenderSelectionView.swift in Sources */,
 				D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */,
 				D5F506B02405A6A900CA4094 /* Duration.swift in Sources */,
@@ -2151,6 +2159,7 @@
 				D5F5067B2400788400CA4094 /* MultilineTextField.swift in Sources */,
 				D55F012E24CCBECE00E5F13C /* APIActivityCoordinator.swift in Sources */,
 				033D47D1247777100096C50F /* LessonsView.swift in Sources */,
+				D585D5B12511299800B74091 /* LessonPlanApplicationDetailView.swift in Sources */,
 				03AAF6732445E11A002D8F5B /* ScheduleDoubles.swift in Sources */,
 				D5F5065F240055E800CA4094 /* HeaderContentView.swift in Sources */,
 				03AB22F3244CB13200DAC7DF /* PrivateNoteView.swift in Sources */,
@@ -2162,6 +2171,7 @@
 				03B1983F24717A90005529EB /* LessonPlanDoubles.swift in Sources */,
 				03275AE92490769E009C3980 /* DeviceTokenDeleterDoubles.swift in Sources */,
 				D5CC5FF125029525007DFE84 /* ImageReference.swift in Sources */,
+				D564F4642511722900EA13E9 /* TabMenuView.swift in Sources */,
 				D53555C423E536AE005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
 				D53555CD23E536AE005A20EB /* AppleAuthorizationController.swift in Sources */,
 				D55F012C24CCBE8700E5F13C /* APIService.swift in Sources */,
@@ -2192,6 +2202,7 @@
 				0365F6F02417E79000F452AC /* Address.swift in Sources */,
 				D527B02224FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift in Sources */,
 				D5F506BA240637F400CA4094 /* Buttons+Rythmico.swift in Sources */,
+				D5BDD88725117E5300706EC1 /* ScheduleDetailsView.swift in Sources */,
 				D53555CC23E536AE005A20EB /* AppleAuthorizationServiceDoubles.swift in Sources */,
 				D55F012D24CCBE8E00E5F13C /* APIServiceDoubles.swift in Sources */,
 				D5F4D3FF24F858AE000E8580 /* Date+Sugar.swift in Sources */,
@@ -2241,7 +2252,6 @@
 				03E88EB424C4AA4C0077A420 /* APIService.swift in Sources */,
 				035B1D67249E644C00AABFEA /* APIRequest.swift in Sources */,
 				D5F4D3ED24F317C0000E8580 /* BookingRequestCell.swift in Sources */,
-				D518C2FB250ECC2C00288A48 /* NavigationLinkInteractiveDismissal.swift in Sources */,
 				D5919F6F24CF2D48009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */,
 				D5A8C4BF25044A370006F5C5 /* UserDefaultsDoubles.swift in Sources */,
 				032B6FDD24B78A5200299A09 /* BookingRequestEndpoints.swift in Sources */,

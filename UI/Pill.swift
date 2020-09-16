@@ -18,18 +18,20 @@ struct Pill<Content: View>: View {
     }
 }
 
-struct TextPill: View {
-    var title: String
-    var titleColor: Color
-    var backgroundColor: Color
-
-    var body: some View {
-        Pill(color: backgroundColor) {
-            Text(title)
-                .lineLimit(1)
-                .minimumScaleFactor(0.7)
-                .rythmicoFont(.bodyMedium)
-                .foregroundColor(titleColor)
+extension Pill where Content == AnyView {
+    init(
+        title: String,
+        titleColor: Color,
+        backgroundColor: Color
+    ) {
+        self.init(color: backgroundColor) {
+            AnyView(
+                Text(title)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+                    .rythmicoFont(.bodyMedium)
+                    .foregroundColor(titleColor)
+            )
         }
     }
 }
