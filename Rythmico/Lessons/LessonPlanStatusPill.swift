@@ -8,7 +8,7 @@ struct LessonPlanStatusPill: View {
     }
 
     var body: some View {
-        TextPill(
+        Pill(
             title: status.title,
             titleColor: status.titleColor,
             backgroundColor: status.backgroundColor

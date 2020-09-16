@@ -373,6 +373,7 @@
 		D5BA171023D7A18900954D50 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170F23D7A18900954D50 /* RootView.swift */; };
 		D5BA171223D7AB3B00954D50 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA171123D7AB3B00954D50 /* MainTabView.swift */; };
 		D5BDD88725117E5300706EC1 /* ScheduleDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD88625117E5300706EC1 /* ScheduleDetailsView.swift */; };
+		D5BDD8A72511989500706EC1 /* AcceptedStatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD8A62511989500706EC1 /* AcceptedStatusPill.swift */; };
 		D5BF12AE25068E1000B2931C /* PushNotificationEvent+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12AD25068E1000B2931C /* PushNotificationEvent+Rythmico.swift */; };
 		D5BF12B025068E2100B2931C /* PushNotificationEvent+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12AF25068E2100B2931C /* PushNotificationEvent+Tutor.swift */; };
 		D5BF12B325068E7000B2931C /* PushNotificationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12B225068E7000B2931C /* PushNotificationEvent.swift */; };
@@ -752,6 +753,7 @@
 		D5BA170F23D7A18900954D50 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		D5BA171123D7AB3B00954D50 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		D5BDD88625117E5300706EC1 /* ScheduleDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailsView.swift; sourceTree = "<group>"; };
+		D5BDD8A62511989500706EC1 /* AcceptedStatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedStatusPill.swift; sourceTree = "<group>"; };
 		D5BF12AD25068E1000B2931C /* PushNotificationEvent+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationEvent+Rythmico.swift"; sourceTree = "<group>"; };
 		D5BF12AF25068E2100B2931C /* PushNotificationEvent+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationEvent+Tutor.swift"; sourceTree = "<group>"; };
 		D5BF12B225068E7000B2931C /* PushNotificationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationEvent.swift; sourceTree = "<group>"; };
@@ -1340,6 +1342,7 @@
 		D50E4BDC23CA82E000B6FCB1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				D5BDD8A62511989500706EC1 /* AcceptedStatusPill.swift */,
 				0372E35B249AC68A0048B402 /* ActionList.swift */,
 				D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */,
 				03275AEA24908017009C3980 /* Alert+Error.swift */,
@@ -2086,6 +2089,7 @@
 				D527B00924FD2047003E81A9 /* AvatarView.swift in Sources */,
 				03021C4F248A769200C0C57E /* LessonPlanSummaryCell.swift in Sources */,
 				D518C2FD250EDD3300288A48 /* InfoBanner.swift in Sources */,
+				D5BDD8A72511989500706EC1 /* AcceptedStatusPill.swift in Sources */,
 				D5AAF7D523F9E1F900E410F2 /* InstrumentSelectionListProvider.swift in Sources */,
 				03A91EF2249186EC00DEAD5E /* AppEnvironment+Instances.swift in Sources */,
 				03A3F6EE2447DFF900F6391D /* Animation.swift in Sources */,
