@@ -323,6 +323,7 @@
 		D54EFF0C2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF0B2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift */; };
 		D54EFF192513D690004F14D3 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF182513D690004F14D3 /* Portfolio.swift */; };
 		D54EFF1E2513D69A004F14D3 /* PortfolioDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF1D2513D69A004F14D3 /* PortfolioDoubles.swift */; };
+		D54EFF2A2513DDDB004F14D3 /* PortfolioEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF292513DDDB004F14D3 /* PortfolioEndpoints.swift */; };
 		D54FC05524CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */; };
 		D54FC05624CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */; };
 		D55F012C24CCBE8700E5F13C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB324C4AA4C0077A420 /* APIService.swift */; };
@@ -721,6 +722,7 @@
 		D54EFF0B2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationDetailMessageView.swift; sourceTree = "<group>"; };
 		D54EFF182513D690004F14D3 /* Portfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
 		D54EFF1D2513D69A004F14D3 /* PortfolioDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDoubles.swift; sourceTree = "<group>"; };
+		D54EFF292513DDDB004F14D3 /* PortfolioEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioEndpoints.swift; sourceTree = "<group>"; };
 		D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetInteractiveDismissal.swift; sourceTree = "<group>"; };
 		D55F013224CCE65C00E5F13C /* Then+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Then+Sugar.swift"; sourceTree = "<group>"; };
 		D55FD2AE2507F8BF004A2891 /* AppDelegate+Lifecycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Lifecycle.swift"; sourceTree = "<group>"; };
@@ -1494,6 +1496,7 @@
 				D5F4D3E224F04479000E8580 /* BookingApplicationEndpoints.swift */,
 				032B6FDC24B78A5200299A09 /* BookingRequestEndpoints.swift */,
 				033D47D5247ABF6B0096C50F /* LessonPlanEndpoints.swift */,
+				D54EFF292513DDDB004F14D3 /* PortfolioEndpoints.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -2164,6 +2167,7 @@
 				03EDA67D24776C6C00FBE527 /* URLOpener.swift in Sources */,
 				03A91EF8249189E000DEAD5E /* PushNotificationAuthorizationCoordinatorDoubles.swift in Sources */,
 				D5B57A6724147F5100BE9B4F /* RequestLessonPlanContext+EnumProperties.swift in Sources */,
+				D54EFF2A2513DDDB004F14D3 /* PortfolioEndpoints.swift in Sources */,
 				0372E35A249ABAB80048B402 /* SelectableList.swift in Sources */,
 				D5F506B82406363600CA4094 /* GenderSelectionView.swift in Sources */,
 				D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */,
