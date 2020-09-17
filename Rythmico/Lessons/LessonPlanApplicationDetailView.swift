@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct LessonPlanApplicationDetailView: View {
+    typealias MessageView = LessonPlanApplicationDetailMessageView
+
     enum Tab: String, CaseIterable {
         case message = "Message"
         case about = "About"
@@ -36,45 +38,12 @@ struct LessonPlanApplicationDetailView: View {
                 }
 
                 ScrollView {
-                    VStack(spacing: .spacingMedium) {
-                        VStack(spacing: .spacingSmall) {
-                            if let privateNote = privateNote {
-                                Text(privateNoteHeader)
-                                    .rythmicoFont(.subheadlineBold)
-                                    .foregroundColor(.rythmicoForeground)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-
-                                Text(privateNote)
-                                    .rythmicoFont(.body)
-                                    .foregroundColor(.rythmicoGray90)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                            } else {
-                                Text("No private message from \(application.tutor.name).")
-                                    .rythmicoFont(.body)
-                                    .foregroundColor(.rythmicoGray30)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                            }
-                        }
-                        .padding(.horizontal, .spacingMedium)
-
-                        Divider().accentColor(.rythmicoGray20)
-
-                        VStack(spacing: .spacingSmall) {
-                            HStack(spacing: .spacingSmall) {
-                                Text("Lesson Schedule")
-                                    .rythmicoFont(.subheadlineBold)
-                                    .foregroundColor(.rythmicoForeground)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .fixedSize(horizontal: false, vertical: true)
-
-                                AcceptedStatusPill()
-                            }
-
-                            ScheduleDetailsView(lessonPlan.schedule)
-                        }
-                        .padding(.horizontal, .spacingMedium)
+                    switch tab {
+                    case .message:
+                        MessageView(lessonPlan: lessonPlan, application: application)
+                    case .about:
+                        Color.white
                     }
-                    .padding(.top, .spacingMedium)
                 }
             }
 
@@ -82,14 +51,6 @@ struct LessonPlanApplicationDetailView: View {
                 Button(bookButtonTitle, action: {}).primaryStyle()
             }
         }
-    }
-
-    private var privateNoteHeader: String {
-        application.tutor.name.firstWord.map { "Private Message from \($0)" } ?? "Private Message"
-    }
-
-    private var privateNote: String? {
-        application.privateNote.nilIfEmpty.map { "\"\($0)\"" }
     }
 
     private var bookButtonTitle: String {
