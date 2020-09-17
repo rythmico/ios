@@ -43,7 +43,7 @@ struct LessonPlanApplicationDetailMessageView: View {
             }
             .padding(.horizontal, .spacingMedium)
         }
-        .padding(.top, .spacingMedium)
+        .padding(.vertical, .spacingMedium)
     }
 
     private var privateNoteHeader: String {
