@@ -12,6 +12,10 @@ extension String {
 }
 
 extension String {
+    public var isBlank: Bool {
+        trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
     public func repeated(_ count: Int = 2) -> String {
         String(repeating: self, count: count)
     }
