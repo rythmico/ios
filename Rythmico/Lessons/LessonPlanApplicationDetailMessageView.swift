@@ -26,7 +26,7 @@ struct LessonPlanApplicationDetailMessageView: View {
             }
             .padding(.horizontal, .spacingMedium)
 
-            Divider().accentColor(.rythmicoGray20)
+            Divider().overlay(Color.rythmicoGray20)
 
             VStack(spacing: .spacingSmall) {
                 HStack(spacing: .spacingSmall) {
