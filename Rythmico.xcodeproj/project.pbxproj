@@ -321,6 +321,7 @@
 		D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */; };
 		D5473C9F241AC3CB00D66775 /* AddressDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5473C9D241AC3B800D66775 /* AddressDetailsViewTests.swift */; };
 		D54EFF0C2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF0B2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift */; };
+		D54EFF142513D5BF004F14D3 /* LessonPlanApplicationDetailAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF132513D5BE004F14D3 /* LessonPlanApplicationDetailAboutView.swift */; };
 		D54EFF192513D690004F14D3 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF182513D690004F14D3 /* Portfolio.swift */; };
 		D54EFF1E2513D69A004F14D3 /* PortfolioDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF1D2513D69A004F14D3 /* PortfolioDoubles.swift */; };
 		D54EFF2A2513DDDB004F14D3 /* PortfolioEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF292513DDDB004F14D3 /* PortfolioEndpoints.swift */; };
@@ -348,6 +349,7 @@
 		D5919F6F24CF2D48009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */; };
 		D5919F7124CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */; };
 		D5919F7224CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */; };
+		D5989BA7251533E300BED8A6 /* PortfolioTrainingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5989BA6251533E300BED8A6 /* PortfolioTrainingsView.swift */; };
 		D5A8C4BB25044A230006F5C5 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */; };
 		D5A8C4BC25044A230006F5C5 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */; };
 		D5A8C4BE25044A370006F5C5 /* UserDefaultsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */; };
@@ -721,6 +723,7 @@
 		D54A561223CD4B2C00BC8485 /* AppleAuthorizationCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredential.swift; sourceTree = "<group>"; };
 		D54A561F23CE92AE00BC8485 /* AuthenticationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationError.swift; sourceTree = "<group>"; };
 		D54EFF0B2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationDetailMessageView.swift; sourceTree = "<group>"; };
+		D54EFF132513D5BE004F14D3 /* LessonPlanApplicationDetailAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationDetailAboutView.swift; sourceTree = "<group>"; };
 		D54EFF182513D690004F14D3 /* Portfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
 		D54EFF1D2513D69A004F14D3 /* PortfolioDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDoubles.swift; sourceTree = "<group>"; };
 		D54EFF292513DDDB004F14D3 /* PortfolioEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioEndpoints.swift; sourceTree = "<group>"; };
@@ -733,6 +736,7 @@
 		D585D5B02511299800B74091 /* LessonPlanApplicationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationDetailView.swift; sourceTree = "<group>"; };
 		D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetInteractiveDismissal+Previews.swift"; sourceTree = "<group>"; };
 		D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet+Sugar.swift"; sourceTree = "<group>"; };
+		D5989BA6251533E300BED8A6 /* PortfolioTrainingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioTrainingsView.swift; sourceTree = "<group>"; };
 		D5A32DBC23D139C000F3903C /* AuthenticationAccessTokenProviderObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderObserver.swift; sourceTree = "<group>"; };
 		D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProtocol.swift; sourceTree = "<group>"; };
 		D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDoubles.swift; sourceTree = "<group>"; };
@@ -1005,6 +1009,8 @@
 				D518C2F7250EA89100288A48 /* LessonPlanApplicationsView.swift */,
 				D585D5B02511299800B74091 /* LessonPlanApplicationDetailView.swift */,
 				D54EFF0B2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift */,
+				D54EFF132513D5BE004F14D3 /* LessonPlanApplicationDetailAboutView.swift */,
+				D5989BA6251533E300BED8A6 /* PortfolioTrainingsView.swift */,
 				D5BDD88625117E5300706EC1 /* ScheduleDetailsView.swift */,
 				D518C2F6250EA84F00288A48 /* Details */,
 				D518C2F5250EA83000288A48 /* Cancellation */,
@@ -2098,6 +2104,7 @@
 				D53555C223E536AE005A20EB /* AppleAuthorizationCredential.swift in Sources */,
 				03C39DD82496CA2A00C76516 /* LessonPlanStatusPill.swift in Sources */,
 				D53555C923E536AE005A20EB /* AppleAuthorizationResponseDoubles.swift in Sources */,
+				D5989BA7251533E300BED8A6 /* PortfolioTrainingsView.swift in Sources */,
 				03E88EA924C1F49B0077A420 /* AppDelegateDummy.swift in Sources */,
 				D53555B723E53699005A20EB /* DeauthenticationService.swift in Sources */,
 				D5200E4023FDE460007168E0 /* MultiStyleText.swift in Sources */,
@@ -2244,6 +2251,7 @@
 				D5CAC9AC24E6D19900119DAA /* MultilineTextField+Rythmico.swift in Sources */,
 				03275AD924900422009C3980 /* PushNotificationRegisterService.swift in Sources */,
 				D54EFF1E2513D69A004F14D3 /* PortfolioDoubles.swift in Sources */,
+				D54EFF142513D5BF004F14D3 /* LessonPlanApplicationDetailAboutView.swift in Sources */,
 				03B19843247181B3005529EB /* RequestLessonPlanFormView.swift in Sources */,
 				035B1D14249E565200AABFEA /* TestableView.swift in Sources */,
 				D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */,

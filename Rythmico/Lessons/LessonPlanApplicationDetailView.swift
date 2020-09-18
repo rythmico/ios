@@ -2,6 +2,7 @@ import SwiftUI
 
 struct LessonPlanApplicationDetailView: View {
     typealias MessageView = LessonPlanApplicationDetailMessageView
+    typealias AboutView = LessonPlanApplicationDetailAboutView
 
     enum Tab: String, CaseIterable {
         case message = "Message"
@@ -11,10 +12,22 @@ struct LessonPlanApplicationDetailView: View {
     @Environment(\.presentationMode)
     private var presentationMode
 
+    @StateObject
+    private var coordinator: APIActivityCoordinator<GetPortfolioRequest>
+
     var lessonPlan: LessonPlan
     var application: LessonPlan.Application
 
     @State private var tab: Tab = .message
+
+    init?(lessonPlan: LessonPlan, application: LessonPlan.Application) {
+        guard let coordinator = Current.sharedCoordinator(for: \.portfolioFetchingService) else {
+            return nil
+        }
+        self.lessonPlan = lessonPlan
+        self.application = application
+        self._coordinator = .init(wrappedValue: coordinator)
+    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -42,7 +55,7 @@ struct LessonPlanApplicationDetailView: View {
                     case .message:
                         MessageView(lessonPlan: lessonPlan, application: application)
                     case .about:
-                        Color.white
+                        AboutView(coordinator: coordinator, tutor: application.tutor)
                     }
                 }
             }
@@ -51,6 +64,7 @@ struct LessonPlanApplicationDetailView: View {
                 Button(bookButtonTitle, action: {}).primaryStyle()
             }
         }
+        .onDisappear(perform: coordinator.cancel)
     }
 
     private var bookButtonTitle: String {
