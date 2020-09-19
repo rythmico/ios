@@ -64,6 +64,14 @@ struct LessonPlanApplicationDetailAboutView: View, VisibleView {
                     VideoCarouselView(videos: portfolio.videos)
                 }
             }
+
+            if !portfolio.photos.isEmpty {
+                VStack(spacing: .spacingSmall) {
+                    header("Photos")
+                    PhotoCarouselView(photos: portfolio.photos)
+                }
+                .padding(.horizontal, .spacingMedium)
+            }
         }
     }
 
@@ -91,5 +99,16 @@ struct LessonPlanApplicationDetailAboutView: View, VisibleView {
 
     private func fetchPortfolio() {
         coordinator.start(with: .init(tutorId: tutor.id))
+    }
+}
+
+struct LessonPlanApplicationDetailAboutView_Previews: PreviewProvider {
+    static var previews: some View {
+        ScrollView {
+            LessonPlanApplicationDetailAboutView(
+                coordinator: Current.coordinator(for: \.portfolioFetchingService)!,
+                tutor: .charlotteStub
+            )
+        }
     }
 }
