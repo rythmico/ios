@@ -350,6 +350,7 @@
 		D5919F7124CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */; };
 		D5919F7224CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */; };
 		D5989BA7251533E300BED8A6 /* PortfolioTrainingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5989BA6251533E300BED8A6 /* PortfolioTrainingsView.swift */; };
+		D5989BAF251662F400BED8A6 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5989BAE251662F400BED8A6 /* AsyncImage.swift */; };
 		D5A8C4BB25044A230006F5C5 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */; };
 		D5A8C4BC25044A230006F5C5 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */; };
 		D5A8C4BE25044A370006F5C5 /* UserDefaultsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */; };
@@ -737,6 +738,7 @@
 		D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetInteractiveDismissal+Previews.swift"; sourceTree = "<group>"; };
 		D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet+Sugar.swift"; sourceTree = "<group>"; };
 		D5989BA6251533E300BED8A6 /* PortfolioTrainingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioTrainingsView.swift; sourceTree = "<group>"; };
+		D5989BAE251662F400BED8A6 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		D5A32DBC23D139C000F3903C /* AuthenticationAccessTokenProviderObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderObserver.swift; sourceTree = "<group>"; };
 		D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProtocol.swift; sourceTree = "<group>"; };
 		D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDoubles.swift; sourceTree = "<group>"; };
@@ -1368,6 +1370,7 @@
 				D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */,
 				03275AEA24908017009C3980 /* Alert+Error.swift */,
 				03A3F6ED2447DFF900F6391D /* Animation.swift */,
+				D5989BAE251662F400BED8A6 /* AsyncImage.swift */,
 				D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */,
 				D527B00A24FD3297003E81A9 /* AvatarStackView.swift */,
 				D527B00824FD2047003E81A9 /* AvatarView.swift */,
@@ -2190,6 +2193,7 @@
 				03275AEB24908017009C3980 /* Alert+Error.swift in Sources */,
 				03B198562471BD6C005529EB /* PushNotificationAuthorizationCoordinator.swift in Sources */,
 				D5F5067B2400788400CA4094 /* MultilineTextField.swift in Sources */,
+				D5989BAF251662F400BED8A6 /* AsyncImage.swift in Sources */,
 				D55F012E24CCBECE00E5F13C /* APIActivityCoordinator.swift in Sources */,
 				033D47D1247777100096C50F /* LessonsView.swift in Sources */,
 				D585D5B12511299800B74091 /* LessonPlanApplicationDetailView.swift in Sources */,
@@ -2563,7 +2567,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				EXCLUDED_ARCHS = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2631,7 +2634,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				EXCLUDED_ARCHS = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

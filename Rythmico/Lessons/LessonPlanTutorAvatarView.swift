@@ -5,13 +5,7 @@ struct LessonPlanTutorAvatarView: View {
     enum Mode {
         case thumbnail
         case original
-        case thumbnailToOriginal
     }
-
-    @StateObject
-    private var thumbnailCoordinator = Current.imageLoadingCoordinator()
-    @StateObject
-    private var originalCoordinator = Current.imageLoadingCoordinator()
 
     private let tutor: LessonPlan.Tutor
     private let mode: Mode
@@ -28,42 +22,35 @@ struct LessonPlanTutorAvatarView: View {
     }
 
     var body: some View {
-        AvatarView(content, backgroundColor: backgroundColor)
-            .onAppear(perform: load)
-            .onDisappear(perform: cancel)
-    }
-
-    private var content: AvatarView.Content {
-        let content: AvatarView.Content?
-        switch mode {
-        case .thumbnail:
-            content = thumbnailCoordinator.state.successValue.map(AvatarView.Content.photo)
-        case .original:
-            content = originalCoordinator.state.successValue.map(AvatarView.Content.photo)
-        case .thumbnailToOriginal:
-            content =
-                originalCoordinator.state.successValue.map(AvatarView.Content.photo)
-                ??
-                thumbnailCoordinator.state.successValue.map(AvatarView.Content.photo)
-        }
-        return content ?? .initials(tutor.name.initials)
-    }
-
-    private func load() {
-        switch mode {
-        case .thumbnail:
-            tutor.photoThumbnailURL.map(thumbnailCoordinator.run)
-        case .original:
-            tutor.photoURL.map(originalCoordinator.run)
-        case .thumbnailToOriginal:
-            tutor.photoThumbnailURL.map(thumbnailCoordinator.run)
-            tutor.photoURL.map(originalCoordinator.run)
+        if let asyncContent = asyncContent {
+            AsyncImage(asyncContent, label: avatarView)
+        } else {
+            avatarView(with: nil)
         }
     }
 
-    private func cancel() {
-        thumbnailCoordinator.cancel()
-        originalCoordinator.cancel()
+    @ViewBuilder
+    private func avatarView(with uiImage: UIImage?) -> some View {
+        AvatarView(
+            uiImage.map(AvatarView.Content.photo) ?? .initials(tutor.name.initials),
+            backgroundColor: backgroundColor
+        )
+    }
+
+    private var asyncContent: AsyncImageContent? {
+        switch mode {
+        case .thumbnail:
+            return tutor.photoThumbnailURL.map(AsyncImageContent.simple)
+        case .original:
+            switch (tutor.photoThumbnailURL, tutor.photoURL) {
+            case (let thumbnail?, let original?):
+                return .transitional(from: thumbnail, to: original)
+            case (let ref?, _), (_, let ref?):
+                return .simple(ref)
+            case (nil, nil):
+                return nil
+            }
+        }
     }
 }
 
