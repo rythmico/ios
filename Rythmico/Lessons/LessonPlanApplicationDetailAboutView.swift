@@ -52,6 +52,18 @@ struct LessonPlanApplicationDetailAboutView: View, VisibleView {
                 }
                 .padding(.horizontal, .spacingMedium)
             }
+
+            if !portfolio.videos.isEmpty || !portfolio.photos.isEmpty {
+                Divider().overlay(Color.rythmicoGray20)
+            }
+
+            if !portfolio.videos.isEmpty {
+                VStack(spacing: .spacingSmall) {
+                    header("Videos")
+                        .padding(.horizontal, .spacingMedium)
+                    VideoCarouselView(videos: portfolio.videos)
+                }
+            }
         }
     }
 
