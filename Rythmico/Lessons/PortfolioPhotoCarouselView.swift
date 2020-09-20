@@ -25,8 +25,7 @@ struct PhotoCarouselView: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                         } else {
-                            Color.rythmicoGray20
-                                .scaledToFit()
+                            Color.black
                         }
                     }
                     .tag(photo)
@@ -44,10 +43,15 @@ private struct PhotoCarouselCell: View {
     var body: some View {
         AsyncImage(.simple(photo.thumbnailURL)) {
             if let uiImage = $0 {
-                Image(uiImage: uiImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
+                GeometryReader { gr in
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: gr.size.width)
+                }
+                .clipped()
+                .aspectRatio(1, contentMode: .fit)
+                .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
             } else {
                 Color.rythmicoGray30
                     .scaledToFill()

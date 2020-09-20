@@ -41,10 +41,15 @@ private struct VideoCarouselCell: View {
         ZStack {
             AsyncImage(.simple(video.thumbnailURL)) {
                 if let uiImage = $0 {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
+                    GeometryReader { gr in
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(height: gr.size.width)
+                    }
+                    .clipped()
+                    .aspectRatio(1, contentMode: .fit)
+                    .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
                 } else {
                     Color.rythmicoGray20
                         .scaledToFill()
