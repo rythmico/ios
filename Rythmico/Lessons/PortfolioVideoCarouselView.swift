@@ -44,16 +44,21 @@ private struct VideoCarouselCell: View {
                     Image(uiImage: uiImage)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .cornerRadius(.spacingUnit * 2, antialiased: true)
                 } else {
                     Color.rythmicoGray20
                 }
             }
+            LinearGradient(
+                gradient: Gradient(colors: [Color.black.opacity(0.01), Color.black.opacity(0.4)]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
             Image(decorative: Asset.iconVideo.name)
                 .renderingMode(.template)
                 .foregroundColor(.rythmicoWhite)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
                 .padding([.leading, .bottom], .spacingSmall)
         }
+        .cornerRadius(.spacingUnit * 2, antialiased: true)
     }
 }
