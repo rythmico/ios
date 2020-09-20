@@ -15,10 +15,11 @@ struct LessonPlanApplicationDetailView: View {
     @StateObject
     private var coordinator: APIActivityCoordinator<GetPortfolioRequest>
 
+    @State
+    private var tab: Tab = .message
+
     var lessonPlan: LessonPlan
     var application: LessonPlan.Application
-
-    @State private var tab: Tab = .message
 
     init?(lessonPlan: LessonPlan, application: LessonPlan.Application) {
         guard let coordinator = Current.sharedCoordinator(for: \.portfolioFetchingService) else {
@@ -50,13 +51,11 @@ struct LessonPlanApplicationDetailView: View {
                     TabMenuView(tabs: Tab.allCases, selection: $tab)
                 }
 
-                ScrollView {
-                    switch tab {
-                    case .message:
-                        MessageView(lessonPlan: lessonPlan, application: application)
-                    case .about:
-                        AboutView(coordinator: coordinator, tutor: application.tutor)
-                    }
+                switch tab {
+                case .message:
+                    MessageView(lessonPlan: lessonPlan, application: application)
+                case .about:
+                    AboutView(coordinator: coordinator, tutor: application.tutor)
                 }
             }
 

@@ -5,8 +5,8 @@ struct PhotoCarouselView: View {
 
     let columns = Array(repeating: GridItem(.flexible(), spacing: .spacingUnit * 2), count: 3)
 
-    @State
-    private var selectedPhoto: Portfolio.Photo?
+    @Binding
+    var selectedPhoto: Portfolio.Photo?
 
     var body: some View {
         LazyVGrid(columns: columns, spacing: .spacingUnit * 2) {

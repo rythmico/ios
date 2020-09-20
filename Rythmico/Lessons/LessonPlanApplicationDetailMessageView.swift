@@ -5,45 +5,47 @@ struct LessonPlanApplicationDetailMessageView: View {
     var application: LessonPlan.Application
 
     var body: some View {
-        VStack(spacing: .spacingMedium) {
-            VStack(spacing: .spacingSmall) {
-                if let privateNote = privateNote {
-                    Text(privateNoteHeader)
-                        .rythmicoFont(.subheadlineBold)
-                        .foregroundColor(.rythmicoForeground)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+        ScrollView {
+            VStack(spacing: .spacingMedium) {
+                VStack(spacing: .spacingSmall) {
+                    if let privateNote = privateNote {
+                        Text(privateNoteHeader)
+                            .rythmicoFont(.subheadlineBold)
+                            .foregroundColor(.rythmicoForeground)
+                            .frame(maxWidth: .infinity, alignment: .leading)
 
-                    Text(privateNote)
-                        .rythmicoFont(.body)
-                        .foregroundColor(.rythmicoGray90)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                } else {
-                    Text("No private message from \(application.tutor.name).")
-                        .rythmicoFont(.body)
-                        .foregroundColor(.rythmicoGray30)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                        Text(privateNote)
+                            .rythmicoFont(.body)
+                            .foregroundColor(.rythmicoGray90)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    } else {
+                        Text("No private message from \(application.tutor.name).")
+                            .rythmicoFont(.body)
+                            .foregroundColor(.rythmicoGray30)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
                 }
-            }
-            .padding(.horizontal, .spacingMedium)
+                .padding(.horizontal, .spacingMedium)
 
-            Divider().overlay(Color.rythmicoGray20)
+                Divider().overlay(Color.rythmicoGray20)
 
-            VStack(spacing: .spacingSmall) {
-                HStack(spacing: .spacingSmall) {
-                    Text("Lesson Schedule")
-                        .rythmicoFont(.subheadlineBold)
-                        .foregroundColor(.rythmicoForeground)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .fixedSize(horizontal: false, vertical: true)
+                VStack(spacing: .spacingSmall) {
+                    HStack(spacing: .spacingSmall) {
+                        Text("Lesson Schedule")
+                            .rythmicoFont(.subheadlineBold)
+                            .foregroundColor(.rythmicoForeground)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .fixedSize(horizontal: false, vertical: true)
 
-                    AcceptedStatusPill()
+                        AcceptedStatusPill()
+                    }
+
+                    ScheduleDetailsView(lessonPlan.schedule)
                 }
-
-                ScheduleDetailsView(lessonPlan.schedule)
+                .padding(.horizontal, .spacingMedium)
             }
-            .padding(.horizontal, .spacingMedium)
+            .padding(.vertical, .spacingMedium)
         }
-        .padding(.vertical, .spacingMedium)
     }
 
     private var privateNoteHeader: String {

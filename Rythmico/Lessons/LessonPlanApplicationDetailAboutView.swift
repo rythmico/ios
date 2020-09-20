@@ -4,15 +4,20 @@ struct LessonPlanApplicationDetailAboutView: View, VisibleView {
     @ObservedObject
     private(set) var coordinator: APIActivityCoordinator<GetPortfolioRequest>
     @State
+    private var selectedVideo: Portfolio.Video?
+    @State
+    private var selectedPhoto: Portfolio.Photo?
+    @State
     private var isVisible = false; var isVisibleBinding: Binding<Bool> { $isVisible }
 
     var tutor: LessonPlan.Tutor
 
     var body: some View {
-        content
-            .padding(.vertical, .spacingMedium)
-            .visible(self)
-            .onAppearOrForeground(self, perform: fetchPortfolio)
+        ScrollView {
+            content.padding(.vertical, .spacingMedium)
+        }
+        .visible(self)
+        .onAppearOrForeground(self, perform: fetchPortfolio)
     }
 
     @ViewBuilder
@@ -64,14 +69,14 @@ struct LessonPlanApplicationDetailAboutView: View, VisibleView {
                 VStack(spacing: .spacingSmall) {
                     header("Videos")
                         .padding(.horizontal, .spacingMedium)
-                    VideoCarouselView(videos: portfolio.videos)
+                    VideoCarouselView(videos: portfolio.videos, selectedVideo: $selectedVideo)
                 }
             }
 
             if !portfolio.photos.isEmpty {
                 VStack(spacing: .spacingSmall) {
                     header("Photos")
-                    PhotoCarouselView(photos: portfolio.photos)
+                    PhotoCarouselView(photos: portfolio.photos, selectedPhoto: $selectedPhoto)
                 }
                 .padding(.horizontal, .spacingMedium)
             }

@@ -6,8 +6,8 @@ struct VideoCarouselView: View {
 
     let rows = [GridItem(.fixed(.spacingUnit * 33), alignment: .leading)]
 
-    @State
-    private var selectedVideo: Portfolio.Video?
+    @Binding
+    var selectedVideo: Portfolio.Video?
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
