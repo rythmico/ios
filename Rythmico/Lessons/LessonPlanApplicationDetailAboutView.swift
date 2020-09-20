@@ -102,6 +102,7 @@ struct LessonPlanApplicationDetailAboutView: View, VisibleView {
     }
 }
 
+#if DEBUG
 struct LessonPlanApplicationDetailAboutView_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView {
@@ -112,3 +113,4 @@ struct LessonPlanApplicationDetailAboutView_Previews: PreviewProvider {
         }
     }
 }
+#endif
