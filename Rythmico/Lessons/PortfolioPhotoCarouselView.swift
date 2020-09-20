@@ -47,9 +47,11 @@ private struct PhotoCarouselCell: View {
                 Image(uiImage: uiImage)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
+                    .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
             } else {
                 Color.rythmicoGray30
                     .scaledToFill()
+                    .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
             }
         }
         .cornerRadius(.spacingUnit * 2, antialiased: true)

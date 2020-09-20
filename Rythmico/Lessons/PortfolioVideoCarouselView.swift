@@ -44,9 +44,11 @@ private struct VideoCarouselCell: View {
                     Image(uiImage: uiImage)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
+                        .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
                 } else {
                     Color.rythmicoGray20
                         .scaledToFill()
+                        .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
                 }
             }
             LinearGradient(
