@@ -49,6 +49,7 @@ private struct PhotoCarouselCell: View {
                     .aspectRatio(contentMode: .fill)
             } else {
                 Color.rythmicoGray30
+                    .scaledToFill()
             }
         }
         .cornerRadius(.spacingUnit * 2, antialiased: true)

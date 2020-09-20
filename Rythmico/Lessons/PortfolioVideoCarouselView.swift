@@ -46,6 +46,7 @@ private struct VideoCarouselCell: View {
                         .aspectRatio(contentMode: .fill)
                 } else {
                     Color.rythmicoGray20
+                        .scaledToFill()
                 }
             }
             LinearGradient(
