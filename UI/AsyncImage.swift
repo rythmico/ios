@@ -22,9 +22,11 @@ struct AsyncImage<Label: View>: View {
     }
 
     var body: some View {
-        label(uiImage)
-            .onAppear(perform: load)
-            .onDisappear(perform: cancel)
+        ZStack {
+            label(uiImage)
+        }
+        .onAppear(perform: load)
+        .onDisappear(perform: cancel)
     }
 
     private var uiImage: UIImage? {
