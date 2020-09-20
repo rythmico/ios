@@ -19,16 +19,14 @@ struct LessonPlanApplicationDetailAboutView: View, VisibleView {
     private var content: some View {
         switch coordinator.state {
         case .ready, .finished(.failure), .idle:
-            Color.rythmicoBackground
+            Color(.systemBackground)
         case .loading:
             ZStack {
-                Color.rythmicoBackground
+                Color(.systemBackground)
                 ActivityIndicator(color: .rythmicoGray90)
             }
-            .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
         case .finished(.success(let portfolio)):
             portfolioView(portfolio)
-                .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
         }
     }
 

@@ -20,16 +20,9 @@ struct VideoCarouselView: View {
             }
             .padding(.horizontal, .spacingMedium)
         }
-        .fullScreenCover(item: $selectedVideo) {
+        .sheet(item: $selectedVideo) {
             VideoPlayer(player: AVPlayer(url: $0.videoURL).then { $0.play() })
                 .edgesIgnoringSafeArea(.all)
-                .gesture(
-                    DragGesture().onEnded {
-                        if $0.translation.height > 150 {
-                            selectedVideo = nil
-                        }
-                    }
-                )
         }
     }
 }
