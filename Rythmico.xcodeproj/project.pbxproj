@@ -353,6 +353,8 @@
 		D5989BAF251662F400BED8A6 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5989BAE251662F400BED8A6 /* AsyncImage.swift */; };
 		D5989BC62516833E00BED8A6 /* PortfolioVideoCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5989BC52516833E00BED8A6 /* PortfolioVideoCarouselView.swift */; };
 		D5989BD125168B0100BED8A6 /* PortfolioPhotoCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5989BD025168B0100BED8A6 /* PortfolioPhotoCarouselView.swift */; };
+		D59D0593251828EA0070D81B /* AppDelegate+Playback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59D0592251828EA0070D81B /* AppDelegate+Playback.swift */; };
+		D59D0594251828EA0070D81B /* AppDelegate+Playback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59D0592251828EA0070D81B /* AppDelegate+Playback.swift */; };
 		D5A8C4BB25044A230006F5C5 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */; };
 		D5A8C4BC25044A230006F5C5 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */; };
 		D5A8C4BE25044A370006F5C5 /* UserDefaultsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */; };
@@ -743,6 +745,7 @@
 		D5989BAE251662F400BED8A6 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		D5989BC52516833E00BED8A6 /* PortfolioVideoCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioVideoCarouselView.swift; sourceTree = "<group>"; };
 		D5989BD025168B0100BED8A6 /* PortfolioPhotoCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioPhotoCarouselView.swift; sourceTree = "<group>"; };
+		D59D0592251828EA0070D81B /* AppDelegate+Playback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Playback.swift"; sourceTree = "<group>"; };
 		D5A32DBC23D139C000F3903C /* AuthenticationAccessTokenProviderObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderObserver.swift; sourceTree = "<group>"; };
 		D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProtocol.swift; sourceTree = "<group>"; };
 		D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDoubles.swift; sourceTree = "<group>"; };
@@ -1282,6 +1285,7 @@
 				035B1D58249E5CF800AABFEA /* AppDelegate+Firebase.swift */,
 				035B1CF0249CF9FA00AABFEA /* AppDelegate+LaunchScreenCache.swift */,
 				D55FD2AE2507F8BF004A2891 /* AppDelegate+Lifecycle.swift */,
+				D59D0592251828EA0070D81B /* AppDelegate+Playback.swift */,
 				03B198532471BBE8005529EB /* AppDelegate+PushNotifications.swift */,
 				035B1CF2249CFA0900AABFEA /* AppDelegate+Window.swift */,
 				035B1CEC249CF9B400AABFEA /* AppDelegateDummy.swift */,
@@ -2250,6 +2254,7 @@
 				D53555CC23E536AE005A20EB /* AppleAuthorizationServiceDoubles.swift in Sources */,
 				D55F012D24CCBE8E00E5F13C /* APIServiceDoubles.swift in Sources */,
 				D5F4D3FF24F858AE000E8580 /* Date+Sugar.swift in Sources */,
+				D59D0593251828EA0070D81B /* AppDelegate+Playback.swift in Sources */,
 				D5989BD125168B0100BED8A6 /* PortfolioPhotoCarouselView.swift in Sources */,
 				D5BF12BE2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift in Sources */,
 				D5F506BE2406E49A00CA4094 /* EdgeSwipeView.swift in Sources */,
@@ -2391,6 +2396,7 @@
 				D5217CEF24E2F8B400C89018 /* MapOpener+ActionSheet.swift in Sources */,
 				03E88EBC24C709A00077A420 /* ActivityCoordinator.swift in Sources */,
 				D5F4D3F524F33CA4000E8580 /* AddressDoubles.swift in Sources */,
+				D59D0594251828EA0070D81B /* AppDelegate+Playback.swift in Sources */,
 				035B1CED249CF9B400AABFEA /* AppDelegateDummy.swift in Sources */,
 				D52C554224DDC50D00C295C4 /* Transitions.swift in Sources */,
 				035B1D36249E576900AABFEA /* DeauthenticationServiceDoubles.swift in Sources */,
