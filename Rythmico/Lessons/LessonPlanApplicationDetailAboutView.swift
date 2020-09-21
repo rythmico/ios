@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct LessonPlanApplicationDetailAboutView: View, VisibleView {
-    @ObservedObject
-    private(set) var coordinator: APIActivityCoordinator<GetPortfolioRequest>
+    @StateObject
+    var coordinator: APIActivityCoordinator<GetPortfolioRequest>
     @State
     private var selectedVideo: Portfolio.Video?
     @State
