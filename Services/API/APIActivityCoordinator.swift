@@ -20,7 +20,9 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
     }
 
     override func cancel() {
-        runningTask?.cancel()
+        if case .loading = state {
+            runningTask?.cancel()
+        }
         super.cancel()
     }
 
