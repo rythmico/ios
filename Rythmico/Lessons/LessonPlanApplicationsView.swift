@@ -37,11 +37,6 @@ struct LessonPlanApplicationsView: View, RoutableView {
         Current.calendar().isDateInWeekend(lessonPlan.schedule.startDate) ? "65" : "60"
     }
 
-    var columns = Array(
-        repeating: GridItem(.flexible(), spacing: .spacingSmall),
-        count: 2
-    )
-
     var body: some View {
         VStack(alignment: .leading, spacing: .spacingSmall) {
             TitleContentView(title: "Tutors Available") {
@@ -51,23 +46,11 @@ struct LessonPlanApplicationsView: View, RoutableView {
             }
             .padding(.horizontal, .spacingMedium)
 
-            ScrollView(showsIndicators: false) {
-                LazyVGrid(columns: columns, alignment: .center, spacing: .spacingSmall) {
-                    ForEach(applications, id: \.self) { application in
-                        NavigationLink(
-                            destination: LessonPlanApplicationDetailView(
-                                lessonPlan: lessonPlan,
-                                application: application
-                            ),
-                            tag: application,
-                            selection: $state.selectedApplication,
-                            label: { LessonPlanApplicationCell(application) }
-                        )
-                    }
-                }
-                .padding(.top, .spacingUnit * 2)
-                .padding(.horizontal, .spacingMedium)
-            }
+            LessonPlanApplicationsGridView(
+                lessonPlan: lessonPlan,
+                applications: applications,
+                selectedApplication: $state.selectedApplication
+            )
         }
         .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
