@@ -18,6 +18,7 @@ struct LessonPlanApplicationDetailAboutView: View, VisibleView {
         }
         .visible(self)
         .onAppearOrForeground(self, perform: fetchPortfolio)
+        .onDisappear(perform: coordinator.cancel)
         .alertOnFailure(coordinator)
     }
 

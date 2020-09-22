@@ -22,7 +22,7 @@ struct LessonPlanApplicationDetailView: View {
     var application: LessonPlan.Application
 
     init?(lessonPlan: LessonPlan, application: LessonPlan.Application) {
-        guard let coordinator = Current.sharedCoordinator(for: \.portfolioFetchingService) else {
+        guard let coordinator = Current.coordinator(for: \.portfolioFetchingService) else {
             return nil
         }
         self.lessonPlan = lessonPlan
