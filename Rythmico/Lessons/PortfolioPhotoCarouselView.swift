@@ -17,23 +17,34 @@ struct PhotoCarouselView: View {
             }
         }
         .sheet(item: $selectedPhoto) { selectedPhoto in
-            TabView(selection: Binding($selectedPhoto)) {
-                ForEach(photos, id: \.self) { photo in
-                    AsyncImage(.transitional(from: photo.thumbnailURL, to: photo.photoURL)) {
-                        if let uiImage = $0 {
-                            Image(uiImage: uiImage)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                        } else {
-                            Color.black
-                        }
-                    }
-                    .tag(photo)
-                }
-            }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-            .background(Color.black.edgesIgnoringSafeArea(.all))
+            PhotoCarouselDetailView(photos: photos, selectedPhoto: $selectedPhoto)
         }
+    }
+}
+
+private struct PhotoCarouselDetailView: View {
+    var photos: [Portfolio.Photo]
+
+    @Binding
+    var selectedPhoto: Portfolio.Photo?
+
+    var body: some View {
+        TabView {
+            ForEach(photos, id: \.self) { photo in
+                AsyncImage(.transitional(from: photo.thumbnailURL, to: photo.photoURL)) {
+                    if let uiImage = $0 {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    } else {
+                        Color.black
+                    }
+                }
+                .tag(photo)
+            }
+        }
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+        .background(Color.black.edgesIgnoringSafeArea(.all))
     }
 }
 

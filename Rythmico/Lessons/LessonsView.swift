@@ -21,10 +21,10 @@ struct LessonsView: View, TestableView, VisibleView {
 
     let inspection = SelfInspection()
     var body: some View {
-        CollectionView(lessonPlans) { lessonPlan in
-            LessonPlanSummaryCell(lessonPlan: lessonPlan)
-                .transition(transition(for: lessonPlan))
-        }
+        LessonsCollectionView(
+            previousLessonPlans: repository.previousItems,
+            currentLessonPlans: repository.items
+        )
         .accentColor(.rythmicoPurple)
         .testable(self)
         .visible(self)
@@ -32,20 +32,6 @@ struct LessonsView: View, TestableView, VisibleView {
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
-    }
-
-    private func transition(for lessonPlan: LessonPlan) -> AnyTransition {
-        let transitionDelay = repository.items
-            .firstIndex(of: lessonPlan)
-            .flatMap { repository.previousItems.isNilOrEmpty ? $0 : nil }
-            .map { Double($0) * (.durationShort * 2/3) }
-
-        return AnyTransition.opacity.combined(with: .scale(scale: 0.8))
-            .animation(
-                Animation
-                    .rythmicoSpring(duration: .durationMedium)
-                    .delay(transitionDelay ?? 0)
-            )
     }
 }
 
