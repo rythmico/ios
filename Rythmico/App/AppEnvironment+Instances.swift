@@ -47,7 +47,9 @@ extension AppEnvironment {
         lessonPlanFetchingService: APIService(),
         lessonPlanRequestService: APIService(),
         lessonPlanCancellationService: APIService(),
-        lessonPlanRepository: Repository()
+        lessonPlanRepository: Repository(),
+
+        portfolioFetchingService: APIService()
     )
 }
 
@@ -63,6 +65,8 @@ extension AppEnvironment {
             $0.lessonPlanFetchingService = fakeAPIService(result: .success(.stub))
             $0.lessonPlanRequestService = fakeAPIService(result: .success(.davidGuitarPlanStub))
             $0.lessonPlanCancellationService = fakeAPIService(result: .success(.cancelledJackGuitarPlanStub))
+
+            $0.portfolioFetchingService = fakeAPIService(result: .success(.longStub))
         }
     }
 }
@@ -107,7 +111,9 @@ extension AppEnvironment {
             lessonPlanFetchingService: APIServiceDummy(),
             lessonPlanRequestService: APIServiceDummy(),
             lessonPlanCancellationService: APIServiceDummy(),
-            lessonPlanRepository: Repository()
+            lessonPlanRepository: Repository(),
+
+            portfolioFetchingService: APIServiceDummy()
         )
     }
 }

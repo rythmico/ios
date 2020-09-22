@@ -22,30 +22,19 @@ final class ImageLoadingService: ImageLoadingServiceProtocol {
     }
 
     func load(_ url: URL, completion: @escaping CompletionHandler) -> Cancellable {
-        load(url, on: .current) { dataResult in
-            let imageResult = dataResult.flatMap {
-                UIImage(data: $0).map(Result.success)
-                ??
-                .failure(Error.invalidResponse)
-            }
-            DispatchQueue.main.immediateOrAsync {
-                completion(imageResult)
-            }
-        }
-    }
-
-    private typealias DataCompletionHandler = SimpleResultHandler<Data>
-
-    private func load(_ url: URL, on runLoop: RunLoop, completion: @escaping DataCompletionHandler) -> Cancellable {
         URLSession(configuration: sessionConfiguration).dataTask(with: url) { data, _, error in
-            runLoop.perform {
+            DispatchQueue.global().async {
+                let result: Result<UIImage, Swift.Error>
                 switch (error, data) {
                 case (let error?, _):
-                    completion(.failure(error))
+                    result = .failure(error)
                 case (_, let data?):
-                    completion(.success(data))
+                    result = UIImage(data: data).map { .success($0.withRenderingMode(.alwaysOriginal)) } ?? .failure(Error.invalidResponse)
                 case (nil, nil):
                     fatalError("Impossible")
+                }
+                DispatchQueue.main.async {
+                    completion(result)
                 }
             }
         }.then { $0.resume() }

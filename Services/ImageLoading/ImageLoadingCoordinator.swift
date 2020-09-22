@@ -10,12 +10,15 @@ final class ImageLoadingCoordinator: FailableActivityCoordinator<UIImage> {
         self.service = service
     }
 
-    func run(with imageReference: ImageReference) {
+    func start(with imageReference: ImageReference) {
+        if case .loading = state {
+            return
+        }
         state = .loading
         switch imageReference {
         case .url(let url):
             cancellable = service.load(url) { result in
-                self.state = .finished(result.map { $0.withRenderingMode(.alwaysOriginal) })
+                self.state = .finished(result)
             }
         case .assetName(let assetName):
             self.state = .finished(.success(UIImage(named: assetName)!))
@@ -25,7 +28,9 @@ final class ImageLoadingCoordinator: FailableActivityCoordinator<UIImage> {
     }
 
     override func cancel() {
-        cancellable?.cancel()
+        if case .loading = state {
+            cancellable?.cancel()
+        }
         super.cancel()
     }
 }

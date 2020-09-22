@@ -18,14 +18,11 @@ struct RootView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        ZStack {
-            state.unauthenticatedValue.zIndex(1).transition(.move(edge: .leading))
-            state.authenticatedValue.zIndex(2).transition(.move(edge: .trailing))
-        }
-        .testable(self)
-        .animation(.rythmicoSpring(duration: .durationMedium), value: state.isAuthenticated)
-        .onReceive(accessTokenProviderObserver.$currentProvider, perform: accessTokenProviderChanged)
-        .onAppear(perform: handleStateChanges)
+        RootViewContent(state: state)
+            .testable(self)
+            .animation(.rythmicoSpring(duration: .durationMedium), value: state.isAuthenticated)
+            .onReceive(accessTokenProviderObserver.$currentProvider, perform: accessTokenProviderChanged)
+            .onAppear(perform: handleStateChanges)
     }
 
     private func handleStateChanges() {
@@ -52,6 +49,17 @@ struct RootView: View, TestableView {
             // TODO: potentially refactor to put all-things-authentication into coordinator
             // that takes care of flushing keychain upon logout etc.
             Current.keychain.appleAuthorizationUserId = nil
+        }
+    }
+}
+
+struct RootViewContent: View {
+    var state: RootView.UserState
+
+    var body: some View {
+        ZStack {
+            state.unauthenticatedValue.zIndex(1).transition(.move(edge: .leading))
+            state.authenticatedValue.zIndex(2).transition(.move(edge: .trailing))
         }
     }
 }

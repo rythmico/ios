@@ -3,6 +3,19 @@ import SwiftUI
 struct LessonPlanSummaryCell: View {
     var lessonPlan: LessonPlan
 
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            LessonPlanSummaryCellMainContent(lessonPlan: lessonPlan)
+            LessonPlanSummaryCellAccessory(lessonPlan: lessonPlan)
+        }
+        .modifier(RoundedShadowContainer())
+        .disabled(lessonPlan.status.isCancelled)
+    }
+}
+
+struct LessonPlanSummaryCellMainContent: View {
+    var lessonPlan: LessonPlan
+
     var title: String {
         [
             lessonPlan.student.name.firstWord,
@@ -24,47 +37,49 @@ struct LessonPlanSummaryCell: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            NavigationLink(destination: LessonPlanDetailView(lessonPlan)) {
-                VStack(alignment: .leading, spacing: .spacingExtraSmall) {
-                    Text(title)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.7)
-                        .rythmicoFont(.subheadlineBold)
-                        .foregroundColor(lessonPlan.status.isCancelled ? .rythmicoGray90 : .rythmicoForeground)
-                    Text(subtitle)
-                        .rythmicoFont(.body)
-                        .foregroundColor(.rythmicoGray90)
-                    HStack(spacing: .spacingExtraSmall) {
-                        LessonPlanTutorStatusView(lessonPlan.status, summarized: true)
-                        LessonPlanStatusPill(lessonPlan.status)
-                    }
-                }
-                .padding(.spacingMedium)
-            }
-
-            if let applicationsView = LessonPlanApplicationsView(lessonPlan) {
-                Divider().overlay(Color.rythmicoGray20)
-
-                NavigationLink(destination: applicationsView) {
-                    HStack(spacing: .spacingExtraSmall) {
-                        Text("Review Tutors")
-                            .rythmicoFont(.body)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        Image(systemSymbol: .chevronRight)
-                            .font(.system(size: 18, weight: .regular, design: .rounded))
-                    }
-                    .padding(.spacingMedium)
+        NavigationLink(destination: LessonPlanDetailView(lessonPlan)) {
+            VStack(alignment: .leading, spacing: .spacingExtraSmall) {
+                Text(title)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+                    .rythmicoFont(.subheadlineBold)
+                    .foregroundColor(lessonPlan.status.isCancelled ? .rythmicoGray90 : .rythmicoForeground)
+                Text(subtitle)
+                    .rythmicoFont(.body)
                     .foregroundColor(.rythmicoGray90)
+                HStack(spacing: .spacingExtraSmall) {
+                    LessonPlanTutorStatusView(lessonPlan.status, summarized: true)
+                    LessonPlanStatusPill(lessonPlan.status)
                 }
             }
+            .padding(.spacingMedium)
         }
-        .modifier(RoundedShadowContainer())
-        .disabled(lessonPlan.status.isCancelled)
     }
 
     private let startDateFormatter = Current.dateFormatter(format: .custom("d MMM"))
     private var startDateText: String { startDateFormatter.string(from: lessonPlan.schedule.startDate) }
+}
+
+struct LessonPlanSummaryCellAccessory: View {
+    var lessonPlan: LessonPlan
+
+    var body: some View {
+        if let applicationsView = LessonPlanApplicationsView(lessonPlan) {
+            Divider().overlay(Color.rythmicoGray20)
+
+            NavigationLink(destination: applicationsView) {
+                HStack(spacing: .spacingExtraSmall) {
+                    Text("Review Tutors")
+                        .rythmicoFont(.body)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Image(systemSymbol: .chevronRight)
+                        .font(.system(size: 18, weight: .regular, design: .rounded))
+                }
+                .padding(.spacingMedium)
+                .foregroundColor(.rythmicoGray90)
+            }
+        }
+    }
 }
 
 #if DEBUG

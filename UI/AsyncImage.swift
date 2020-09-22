@@ -1,0 +1,50 @@
+import SwiftUI
+
+enum AsyncImageContent {
+    case simple(ImageReference)
+    case transitional(from: ImageReference, to: ImageReference)
+}
+
+struct AsyncImage<Label: View>: View {
+    typealias Content = AsyncImageContent
+
+    @StateObject
+    private var primaryCoordinator = Current.imageLoadingCoordinator()
+    @StateObject
+    private var secondaryCoordinator = Current.imageLoadingCoordinator()
+
+    private var content: Content
+    private var label: (UIImage?) -> Label
+
+    init(_ content: Content, @ViewBuilder label: @escaping (UIImage?) -> Label) {
+        self.content = content
+        self.label = label
+    }
+
+    var body: some View {
+        ZStack {
+            label(uiImage)
+        }
+        .onDisappear(perform: cancel)
+        .onAppear(perform: load)
+    }
+
+    private var uiImage: UIImage? {
+        secondaryCoordinator.state.successValue ?? primaryCoordinator.state.successValue
+    }
+
+    private func load() {
+        switch content {
+        case .simple(let ref):
+            primaryCoordinator.start(with: ref)
+        case .transitional(let primaryRef, let secondaryRef):
+            secondaryCoordinator.start(with: secondaryRef)
+            primaryCoordinator.start(with: primaryRef)
+        }
+    }
+
+    private func cancel() {
+        secondaryCoordinator.cancel()
+        primaryCoordinator.cancel()
+    }
+}
