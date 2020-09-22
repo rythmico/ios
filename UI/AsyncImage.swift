@@ -36,10 +36,10 @@ struct AsyncImage<Label: View>: View {
     private func load() {
         switch content {
         case .simple(let ref):
-            primaryCoordinator.run(with: ref)
+            primaryCoordinator.start(with: ref)
         case .transitional(let primaryRef, let secondaryRef):
-            secondaryCoordinator.run(with: secondaryRef)
-            primaryCoordinator.run(with: primaryRef)
+            secondaryCoordinator.start(with: secondaryRef)
+            primaryCoordinator.start(with: primaryRef)
         }
     }
 
