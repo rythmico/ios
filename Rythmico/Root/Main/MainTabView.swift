@@ -75,7 +75,6 @@ struct MainTabView: View, TestableView, RoutableView {
             .navigationBarItems(leading: leadingNavigationItem, trailing: trailingNavigationItem)
         }
         .testable(self)
-        .modifier(BestNavigationStyleModifier())
         .onReceive(state.$isLessonRequestViewPresented, perform: onIsLessonRequestViewPresentedChange)
         .accentColor(.rythmicoPurple)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
@@ -130,14 +129,6 @@ struct MainTabView: View, TestableView, RoutableView {
 
     private func onIsLessonRequestViewPresentedChange(_ flag: Bool) {
         if flag { hasPresentedLessonRequestView = true }
-    }
-}
-
-private struct BestNavigationStyleModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        UIDevice.current.userInterfaceIdiom == .phone
-            ? AnyView(content.navigationViewStyle(StackNavigationViewStyle()))
-            : AnyView(content.navigationViewStyle(DefaultNavigationViewStyle()))
     }
 }
 

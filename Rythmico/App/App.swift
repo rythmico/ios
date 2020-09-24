@@ -42,8 +42,6 @@ struct App {
                 bar.compactAppearance = $0
                 bar.scrollEdgeAppearance = $0
 
-                bar.isTranslucent = false
-
                 bar.layoutMargins.left = .spacingMedium
                 bar.layoutMargins.right = .spacingMedium
             }
