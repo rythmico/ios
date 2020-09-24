@@ -29,7 +29,7 @@ private struct PhotoCarouselDetailView: View {
     var selectedPhoto: Portfolio.Photo?
 
     var body: some View {
-        TabView {
+        TabView(selection: $selectedPhoto) {
             ForEach(photos, id: \.self) { photo in
                 AsyncImage(.transitional(from: photo.thumbnailURL, to: photo.photoURL)) {
                     if let uiImage = $0 {
