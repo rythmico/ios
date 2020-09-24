@@ -11,12 +11,8 @@ struct MainTabView: View, TestableView, RoutableView {
         var uppercasedTitle: String { title.uppercased(with: Current.locale) }
     }
 
-    final class ViewState: ObservableObject {
-        @Published var isLessonRequestViewPresented = false
-    }
-
-    @StateObject
-    var state = ViewState()
+    @State
+    private var isLessonRequestViewPresented = false
 
     @State
     private var tab: Tab = .lessons
@@ -45,12 +41,12 @@ struct MainTabView: View, TestableView, RoutableView {
     }
 
     func presentRequestLessonFlow() {
-        state.isLessonRequestViewPresented = true
+        isLessonRequestViewPresented = true
     }
 
     func presentRequestLessonFlowIfNeeded(_ lessonPlans: [LessonPlan]) {
         guard !hasPresentedLessonRequestView else { return }
-        state.isLessonRequestViewPresented = lessonPlans.isEmpty
+        isLessonRequestViewPresented = lessonPlans.isEmpty
     }
 
     let inspection = SelfInspection()
@@ -77,11 +73,11 @@ struct MainTabView: View, TestableView, RoutableView {
         }
         .navigationViewFixInteractiveDismissal()
         .testable(self)
-        .onReceive(state.$isLessonRequestViewPresented, perform: onIsLessonRequestViewPresentedChange)
+        .onChange(of: isLessonRequestViewPresented, perform: onIsLessonRequestViewPresentedChange)
         .accentColor(.rythmicoPurple)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
         .onSuccess(lessonPlanFetchingCoordinator, perform: presentRequestLessonFlowIfNeeded)
-        .sheet(isPresented: $state.isLessonRequestViewPresented) {
+        .sheet(isPresented: $isLessonRequestViewPresented) {
             RequestLessonPlanView(context: RequestLessonPlanContext())
         }
         .routable(self)

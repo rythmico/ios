@@ -1,17 +1,13 @@
 import SwiftUI
 
 struct LessonPlanApplicationsView: View, RoutableView {
-    final class ViewState: ObservableObject {
-        @Published var selectedApplication: LessonPlan.Application?
-    }
-
     @Environment(\.presentationMode)
     private var presentationMode
 
     private var lessonPlan: LessonPlan
     private var applications: [LessonPlan.Application]
-    @StateObject
-    private var state = ViewState()
+    @State
+    private var selectedApplication: LessonPlan.Application?
     @State
     private var shouldShowInfoBannerOnAppear = false
     @State
@@ -49,13 +45,13 @@ struct LessonPlanApplicationsView: View, RoutableView {
             LessonPlanApplicationsGridView(
                 lessonPlan: lessonPlan,
                 applications: applications,
-                selectedApplication: $state.selectedApplication
+                selectedApplication: $selectedApplication
             )
         }
         .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
         .routable(self)
-        .onReceive(state.$selectedApplication, perform: onSelectedApplicationChanged)
+        .onChange(of: selectedApplication, perform: onSelectedApplicationChanged)
         .onAppear(perform: onAppear)
     }
 
