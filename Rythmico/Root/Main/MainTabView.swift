@@ -71,9 +71,11 @@ struct MainTabView: View, TestableView, RoutableView {
                         Text(Tab.profile.uppercasedTitle)
                     }
             }
+
             .navigationBarTitle(Text(tab.title), displayMode: .large)
             .navigationBarItems(leading: leadingNavigationItem, trailing: trailingNavigationItem)
         }
+        .navigationViewFixInteractiveDismissal()
         .testable(self)
         .onReceive(state.$isLessonRequestViewPresented, perform: onIsLessonRequestViewPresentedChange)
         .accentColor(.rythmicoPurple)

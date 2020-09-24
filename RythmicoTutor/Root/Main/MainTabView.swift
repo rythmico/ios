@@ -48,6 +48,7 @@ struct MainTabView: View, TestableView, RoutableView {
             }
             .navigationBarTitle(Text(tab.title), displayMode: .large)
         }
+        .navigationViewFixInteractiveDismissal()
         .testable(self)
         .routable(self)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
