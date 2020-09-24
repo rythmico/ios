@@ -4,7 +4,7 @@ import Introspect
 extension View {
     func sheetInteractiveDismissal(_ enabled: Bool, onAttempt: (() -> Void)? = nil) -> some View {
         introspectViewController {
-            guard let presentationController = $0.ultimateParent.presentationController else {
+            guard let presentationController = $0.presentationController else {
                 return
             }
             let delegate = AdaptivePresentationControllerDelegate(shouldDismiss: enabled, didAttemptToDismiss: onAttempt)
@@ -12,10 +12,6 @@ extension View {
             presentationController.delegate = delegate
         }
     }
-}
-
-private extension UIViewController {
-    var ultimateParent: UIViewController { parent?.ultimateParent ?? self }
 }
 
 private final class AdaptivePresentationControllerDelegate: NSObject, UIAdaptivePresentationControllerDelegate {
