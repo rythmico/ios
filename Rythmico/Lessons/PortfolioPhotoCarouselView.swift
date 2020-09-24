@@ -17,7 +17,9 @@ struct PhotoCarouselView: View {
             }
         }
         .sheet(item: $selectedPhoto) { selectedPhoto in
-            PhotoCarouselDetailView(photos: photos, selectedPhoto: $selectedPhoto)
+            if let selectedPhotoBinding = Binding($selectedPhoto) {
+                PhotoCarouselDetailView(photos: photos, selectedPhoto: selectedPhotoBinding)
+            }
         }
     }
 }
@@ -26,25 +28,39 @@ private struct PhotoCarouselDetailView: View {
     var photos: [Portfolio.Photo]
 
     @Binding
-    var selectedPhoto: Portfolio.Photo?
+    var selectedPhoto: Portfolio.Photo
 
     var body: some View {
-        TabView(selection: Binding($selectedPhoto)) {
-            ForEach(photos, id: \.self) { photo in
-                AsyncImage(.transitional(from: photo.thumbnailURL, to: photo.photoURL)) {
-                    if let uiImage = $0 {
-                        Image(uiImage: uiImage)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    } else {
-                        Color.black
+        ZStack {
+            Color.black.edgesIgnoringSafeArea(.all)
+
+            VStack(spacing: .spacingMedium) {
+                TabView(selection: $selectedPhoto) {
+                    ForEach(photos, id: \.self) { photo in
+                        AsyncImage(.transitional(from: photo.thumbnailURL, to: photo.photoURL)) {
+                            if let uiImage = $0 {
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                            } else {
+                                Color.black
+                            }
+                        }
+                        .tag(photo)
                     }
                 }
-                .tag(photo)
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+
+                DotPageIndicator(
+                    selection: $selectedPhoto,
+                    items: photos,
+                    foregroundColor: Color.white.opacity(0.125),
+                    accentColor: .rythmicoPurple
+                )
             }
+            .padding(.top, .spacingMedium * 2)
+            .padding(.bottom, .spacingMedium)
         }
-        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-        .background(Color.black.edgesIgnoringSafeArea(.all))
     }
 }
 
