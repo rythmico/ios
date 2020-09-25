@@ -51,7 +51,7 @@ final class RootViewTests: XCTestCase {
         }
     }
 
-    func testAuthenticationShowsMainTabView() {
+    func testAuthenticationShowsMainView() {
         let (_, deauthenticationService, view) = rootView(
             appleAuthorizationUserId: "USER_ID",
             credentialState: .notFound,

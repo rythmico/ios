@@ -2,9 +2,9 @@ import XCTest
 @testable import Tutor
 import ViewInspector
 
-extension MainTabView: Inspectable {}
+extension MainView: Inspectable {}
 
-final class MainTabViewTests: XCTestCase {
+final class MainViewTests: XCTestCase {
     override func setUp() {
         Current = .dummy
         Current.userAuthenticated()
@@ -16,7 +16,7 @@ final class MainTabViewTests: XCTestCase {
         let spy = APIServiceSpy<AddDeviceRequest>()
         Current.deviceRegisterService = spy
 
-        let view = try XCTUnwrap(MainTabView())
+        let view = try XCTUnwrap(MainView())
 
         XCTAssertView(view) { view in
             XCTAssertEqual(spy.sendCount, 1)
@@ -30,7 +30,7 @@ final class MainTabViewTests: XCTestCase {
             requestResult: (true, nil)
         )
 
-        let view = try XCTUnwrap(MainTabView())
+        let view = try XCTUnwrap(MainView())
 
         XCTAssertTrue(Current.pushNotificationAuthorizationCoordinator.status.isNotDetermined)
 

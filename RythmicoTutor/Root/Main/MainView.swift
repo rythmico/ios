@@ -2,7 +2,7 @@ import SwiftUI
 import SFSafeSymbols
 import Sugar
 
-struct MainTabView: View, TestableView, RoutableView {
+struct MainView: View, TestableView, RoutableView {
     enum Tab: String, Hashable, CaseIterable {
         case requests = "Requests"
         case profile = "Profile"
@@ -76,9 +76,9 @@ struct MainTabView: View, TestableView, RoutableView {
 }
 
 #if DEBUG
-struct MainTabView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView()
+        MainView()
     }
 }
 #endif
