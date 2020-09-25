@@ -32,8 +32,7 @@ extension LessonPlanCancellationView {
 
                     SelectableList(Reason.allCases, title: \.title, selection: $selectedReason)
                 }
-
-                InteractiveBackground()
+                .frame(maxHeight: .infinity, alignment: .top)
 
                 submitButtonAction.map { action in
                     FloatingView {
