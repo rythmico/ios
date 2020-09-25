@@ -27,14 +27,11 @@ struct SelectableList<Data: RandomAccessCollection, ID: Hashable, Content: View>
                     Button(action: { selection = element }) {
                         HStack(spacing: 0) {
                             content(element)
-                                .multilineTextAlignment(.leading)
-                                .foregroundColor(Color(.label))
                                 .frame(maxWidth: .infinity, alignment: .leading)
 
                             if isSelected(element) {
                                 Image(decorative: Asset.iconCheckmark.name)
                                     .renderingMode(.template)
-                                    .foregroundColor(.accentColor)
                                     .transition(
                                         AnyTransition
                                             .opacity
@@ -46,6 +43,7 @@ struct SelectableList<Data: RandomAccessCollection, ID: Hashable, Content: View>
                     }
                     Divider().overlay(Color.rythmicoGray20)
                 }
+                .background(InteractiveBackground())
             }
         }
     }
@@ -66,6 +64,22 @@ extension SelectableList where Data.Element: Identifiable, ID == Data.Element.ID
         @ViewBuilder content: @escaping (Data.Element) -> Content
     ) {
         self.init(data, id: \.id, selection: selection, content: content)
+    }
+}
+
+extension SelectableList where ID == String, Content == AnyView {
+    init(
+        _ data: Data,
+        title: KeyPath<Data.Element, String>,
+        selection: Binding<Data.Element?>
+    ) {
+        self.init(data, id: title, selection: selection) { element in
+            AnyView(
+                Text(element[keyPath: title])
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(.rythmicoGray90)
+            )
+        }
     }
 }
 

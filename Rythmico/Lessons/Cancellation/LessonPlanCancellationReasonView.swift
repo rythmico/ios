@@ -30,13 +30,10 @@ extension LessonPlanCancellationView {
                     )
                     .padding(.horizontal, .spacingMedium)
 
-                    SelectableList(Reason.allCases, id: \.self, selection: $selectedReason) { reason in
-                        Text(reason.title)
-                            .foregroundColor(.rythmicoGray90)
-                    }
-                    .accentColor(.rythmicoPurple)
+                    SelectableList(Reason.allCases, title: \.title, selection: $selectedReason)
                 }
-                .frame(maxHeight: .infinity, alignment: .top)
+
+                InteractiveBackground()
 
                 submitButtonAction.map { action in
                     FloatingView {
@@ -44,6 +41,7 @@ extension LessonPlanCancellationView {
                     }
                 }
             }
+            .accentColor(.rythmicoPurple)
             .testable(self)
             .animation(.rythmicoSpring(duration: .durationShort), value: submitButtonAction != nil)
             .sheetInteractiveDismissal(false)

@@ -16,10 +16,11 @@ extension LessonPlanCancellationView {
                     Text("This will cancel the weekly payments to the tutor, and all upcoming lessons.")
                         .rythmicoFont(.body)
                         .foregroundColor(.rythmicoGray90)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .padding(.horizontal, .spacingMedium)
 
-                Color(.systemBackground)
+                InteractiveBackground()
 
                 FloatingView {
                     HStack(spacing: .spacingSmall) {
