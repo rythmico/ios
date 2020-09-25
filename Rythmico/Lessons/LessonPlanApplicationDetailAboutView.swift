@@ -51,6 +51,7 @@ struct LessonPlanApplicationDetailAboutView: View, VisibleView {
                     .lineSpacing(.spacingUnit * 2)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
+            .frame(maxWidth: .spacingMax)
             .padding(.horizontal, .spacingMedium)
 
             Divider().overlay(Color.rythmicoGray20)
@@ -60,6 +61,7 @@ struct LessonPlanApplicationDetailAboutView: View, VisibleView {
                     header("Training")
                     PortfolioTrainingsView(trainingList: portfolio.training)
                 }
+                .frame(maxWidth: .spacingMax)
                 .padding(.horizontal, .spacingMedium)
             }
 
@@ -70,6 +72,7 @@ struct LessonPlanApplicationDetailAboutView: View, VisibleView {
             if !portfolio.videos.isEmpty {
                 VStack(spacing: .spacingSmall) {
                     header("Videos")
+                        .frame(maxWidth: .spacingMax)
                         .padding(.horizontal, .spacingMedium)
                     VideoCarouselView(videos: portfolio.videos, selectedVideo: $selectedVideo)
                 }
@@ -80,6 +83,7 @@ struct LessonPlanApplicationDetailAboutView: View, VisibleView {
                     header("Photos")
                     PhotoCarouselView(photos: portfolio.photos, selectedPhoto: $selectedPhoto)
                 }
+                .frame(maxWidth: .spacingMax)
                 .padding(.horizontal, .spacingMedium)
             }
         }

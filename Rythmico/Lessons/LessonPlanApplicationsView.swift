@@ -40,6 +40,7 @@ struct LessonPlanApplicationsView: View, RoutableView {
                     InfoBanner(text: priceInfo)
                 }
             }
+            .frame(maxWidth: .spacingMax)
             .padding(.horizontal, .spacingMedium)
 
             LessonPlanApplicationsGridView(
