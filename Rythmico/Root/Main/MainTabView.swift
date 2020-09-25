@@ -3,7 +3,7 @@ import SFSafeSymbols
 import Sugar
 
 struct MainTabView: View, TestableView, RoutableView {
-    enum Tab: String, Hashable {
+    enum Tab: String, Hashable, CaseIterable {
         case lessons = "Lessons"
         case profile = "Profile"
 
@@ -51,27 +51,12 @@ struct MainTabView: View, TestableView, RoutableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        NavigationView {
-            TabView(selection: $tab) {
-                lessonsView
-                    .tag(Tab.lessons)
-                    .tabItem {
-                        Image(systemSymbol: .calendar).font(.system(size: 21, weight: .medium))
-                        Text(Tab.lessons.uppercasedTitle)
-                    }
-
-                profileView
-                    .tag(Tab.profile)
-                    .tabItem {
-                        Image(systemSymbol: .person).font(.system(size: 21, weight: .semibold))
-                        Text(Tab.profile.uppercasedTitle)
-                    }
-            }
-
-            .navigationBarTitle(Text(tab.title), displayMode: .large)
-            .navigationBarItems(leading: leadingNavigationItem, trailing: trailingNavigationItem)
-        }
-        .navigationViewFixInteractiveDismissal()
+        MainViewContent(
+            tabs: Tab.allCases, selection: $tab,
+            navigationTitle: \.title, leadingItem: leadingItem, trailingItem: trailingItem,
+            content: content,
+            tabTitle: \.uppercasedTitle, tabIcons: icon
+        )
         .testable(self)
         .onChange(of: isLessonRequestViewPresented, perform: onIsLessonRequestViewPresentedChange)
         .accentColor(.rythmicoPurple)
@@ -99,7 +84,23 @@ struct MainTabView: View, TestableView, RoutableView {
     }
 
     @ViewBuilder
-    private var leadingNavigationItem: some View {
+    private func icon(for tab: Tab) -> some View {
+        switch tab {
+        case .lessons: Image(systemSymbol: .calendar).font(.system(size: 21, weight: .medium))
+        case .profile: Image(systemSymbol: .person).font(.system(size: 21, weight: .semibold))
+        }
+    }
+
+    @ViewBuilder
+    private func content(for tab: Tab) -> some View {
+        switch tab {
+        case .lessons: lessonsView
+        case .profile: profileView
+        }
+    }
+
+    @ViewBuilder
+    private func leadingItem(for tab: Tab) -> some View {
         switch tab {
         case .lessons where lessonPlanFetchingCoordinator.state.isLoading:
             ActivityIndicator(color: .rythmicoGray90)
@@ -109,7 +110,7 @@ struct MainTabView: View, TestableView, RoutableView {
     }
 
     @ViewBuilder
-    private var trailingNavigationItem: some View {
+    private func trailingItem(for tab: Tab) -> some View {
         switch tab {
         case .lessons:
             Button(action: presentRequestLessonFlow) {
