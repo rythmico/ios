@@ -12,7 +12,7 @@ struct MainView: View, TestableView, RoutableView {
     }
 
     @State
-    private var isLessonRequestViewPresented = false
+    private(set) var isLessonRequestViewPresented = false
 
     @State
     private var tab: Tab = .lessons
