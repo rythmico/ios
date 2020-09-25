@@ -68,6 +68,7 @@ struct LessonPlanCancellationView: View, TestableView {
                 }
             )
         }
+        .sheetInteractiveDismissal(!isCancellationIntended)
         .accentColor(.rythmicoGray90)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isCancellationIntended)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isUserInputRequired)

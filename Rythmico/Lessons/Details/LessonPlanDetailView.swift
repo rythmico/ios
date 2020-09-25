@@ -63,6 +63,7 @@ struct LessonPlanDetailView: View, TestableView, RoutableView {
                     .foregroundColor(.rythmicoGray90)
                 }
             }
+            .frame(maxWidth: .spacingMax)
             .padding(.horizontal, .spacingMedium)
             .frame(maxHeight: .infinity, alignment: .top)
 

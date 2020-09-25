@@ -3,129 +3,78 @@ import Sugar
 
 extension Button {
     func primaryStyle(expansive: Bool = true) -> some View {
-        buttonStyle(PrimaryButtonStyle(expansive: expansive))
+        buttonStyle(
+            RythmicoButtonStyle(
+                expansive: expansive,
+                foregroundColor: (normal: .rythmicoWhite, pressed: .rythmicoWhite),
+                backgroundColor: (normal: .rythmicoPurple, pressed: .rythmicoHighlightPurple),
+                borderColor: (normal: .clear, pressed: .clear)
+            )
+        )
     }
 
     func secondaryStyle(expansive: Bool = true) -> some View {
-        buttonStyle(SecondaryButtonStyle(expansive: expansive))
+        buttonStyle(
+            RythmicoButtonStyle(
+                expansive: expansive,
+                foregroundColor: (normal: .rythmicoPurple, pressed: .rythmicoWhite),
+                backgroundColor: (normal: .clear, pressed: .rythmicoPurple),
+                borderColor: (normal: .rythmicoPurple, pressed: .rythmicoPurple)
+            )
+        )
     }
 
     func tertiaryStyle(expansive: Bool = true) -> some View {
-        buttonStyle(TertiaryButtonStyle(expansive: expansive))
+        buttonStyle(
+            RythmicoButtonStyle(
+                expansive: expansive,
+                foregroundColor: (normal: .rythmicoGray90, pressed: .rythmicoWhite),
+                backgroundColor: (normal: .clear, pressed: .rythmicoGray30),
+                borderColor: (normal: .rythmicoGray30, pressed: .rythmicoGray30)
+            )
+        )
     }
 }
 
-struct PrimaryButtonStyle: ButtonStyle {
+private struct RythmicoButtonStyle: ButtonStyle {
+    typealias StateColors = (normal: Color, pressed: Color)
+
     var expansive: Bool
+    let buttonMaxWidth = .spacingUnit * 85
+    var foregroundColor: StateColors
+    var backgroundColor: StateColors
+    var borderColor: StateColors
 
     func makeBody(configuration: Configuration) -> some View {
-        DisableableButton {
-            configuration.label
-                .lineLimit(1)
-                .minimumScaleFactor(0.6)
-                .padding(.horizontal, .spacingMedium)
-                .rythmicoFont(.bodyBold)
-                .foregroundColor(.rythmicoWhite)
-                .frame(maxWidth: expansive ? .infinity : nil, minHeight: 48)
-                .background(
-                    RoundedRectangle(cornerRadius: 4, style: .continuous)
-                        .fill(backgroundColor(for: configuration))
-                )
-        }
+        configuration.label
+            .lineLimit(1)
+            .minimumScaleFactor(0.6)
+            .padding(.horizontal, .spacingMedium)
+            .rythmicoFont(.bodyBold)
+            .foregroundColor(color(from: foregroundColor, for: configuration))
+            .frame(maxWidth: expansive ? buttonMaxWidth : nil, minHeight: 48)
+            .background(
+                RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    .fill(color(from: backgroundColor, for: configuration))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 4, style: .continuous)
+                            .stroke(color(from: borderColor, for: configuration), lineWidth: 2)
+                    )
+                    .contentShape(Rectangle())
+            )
+            .modifier(DiseableableButtonModifier())
     }
 
-    func backgroundColor(for configuration: Configuration) -> Color {
-        configuration.isPressed
-            ? Color.rythmicoHighlightPurple
-            : Color.rythmicoPurple
-    }
-}
-
-struct SecondaryButtonStyle: ButtonStyle {
-    var expansive: Bool
-
-    func makeBody(configuration: Configuration) -> some View {
-        DisableableButton {
-            configuration.label
-                .lineLimit(1)
-                .minimumScaleFactor(0.6)
-                .padding(.horizontal, .spacingMedium)
-                .rythmicoFont(.bodyBold)
-                .foregroundColor(foregroundColor(for: configuration))
-                .frame(maxWidth: expansive ? .infinity : nil, minHeight: 48)
-                .background(
-                    RoundedRectangle(cornerRadius: 4, style: .continuous)
-                        .fill(backgroundColor(for: configuration))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 4, style: .continuous)
-                                .stroke(Color.rythmicoPurple, lineWidth: 2)
-                        )
-                        .contentShape(Rectangle())
-                )
-        }
-    }
-
-    func foregroundColor(for configuration: Configuration) -> Color {
-        configuration.isPressed
-            ? Color.rythmicoWhite
-            : Color.rythmicoPurple
-    }
-
-    func backgroundColor(for configuration: Configuration) -> Color {
-        configuration.isPressed
-            ? Color.rythmicoPurple
-            : Color.clear
+    func color(from colors: StateColors, for configuration: Configuration) -> Color {
+        configuration.isPressed ? colors.pressed : colors.normal
     }
 }
 
-struct TertiaryButtonStyle: ButtonStyle {
-    var expansive: Bool
-
-    func makeBody(configuration: ButtonStyleConfiguration) -> some View {
-        DisableableButton {
-            configuration.label
-                .lineLimit(1)
-                .minimumScaleFactor(0.6)
-                .padding(.horizontal, .spacingMedium)
-                .rythmicoFont(.bodyBold)
-                .foregroundColor(foregroundColor(for: configuration))
-                .frame(maxWidth: expansive ? .infinity : nil, minHeight: 48)
-                .background(
-                    RoundedRectangle(cornerRadius: 4, style: .continuous)
-                        .fill(backgroundColor(for: configuration))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 4, style: .continuous)
-                                .stroke(Color.rythmicoGray30, lineWidth: 2)
-                        )
-                        .contentShape(Rectangle())
-                )
-        }
-    }
-
-    func foregroundColor(for configuration: ButtonStyleConfiguration) -> Color {
-        configuration.isPressed
-            ? Color.rythmicoWhite
-            : Color.rythmicoGray90
-    }
-
-    func backgroundColor(for configuration: ButtonStyleConfiguration) -> Color {
-        configuration.isPressed
-            ? Color.rythmicoGray30
-            : Color.clear
-    }
-}
-
-private struct DisableableButton<Button: View>: View {
+private struct DiseableableButtonModifier: ViewModifier {
     @Environment(\.isEnabled) private var isEnabled: Bool
 
-    var button: Button
-
-    init(@ViewBuilder button: () -> Button) {
-        self.button = button()
-    }
-
-    var body: some View {
-        button
+    func body(content: Content) -> some View {
+        content
             .opacity(isEnabled ? 1 : 0.3)
             .animation(.easeInOut(duration: .durationShort), value: isEnabled)
     }

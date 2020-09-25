@@ -2,8 +2,8 @@ import SwiftUI
 import SFSafeSymbols
 import Sugar
 
-struct MainTabView: View, TestableView, RoutableView {
-    enum Tab: String, Hashable {
+struct MainView: View, TestableView, RoutableView {
+    enum Tab: String, Hashable, CaseIterable {
         case lessons = "Lessons"
         case profile = "Profile"
 
@@ -11,12 +11,8 @@ struct MainTabView: View, TestableView, RoutableView {
         var uppercasedTitle: String { title.uppercased(with: Current.locale) }
     }
 
-    final class ViewState: ObservableObject {
-        @Published var isLessonRequestViewPresented = false
-    }
-
-    @StateObject
-    var state = ViewState()
+    @State
+    private(set) var isLessonRequestViewPresented = false
 
     @State
     private var tab: Tab = .lessons
@@ -45,43 +41,28 @@ struct MainTabView: View, TestableView, RoutableView {
     }
 
     func presentRequestLessonFlow() {
-        state.isLessonRequestViewPresented = true
+        isLessonRequestViewPresented = true
     }
 
     func presentRequestLessonFlowIfNeeded(_ lessonPlans: [LessonPlan]) {
         guard !hasPresentedLessonRequestView else { return }
-        state.isLessonRequestViewPresented = lessonPlans.isEmpty
+        isLessonRequestViewPresented = lessonPlans.isEmpty
     }
 
     let inspection = SelfInspection()
     var body: some View {
-        NavigationView {
-            TabView(selection: $tab) {
-                lessonsView
-                    .tag(Tab.lessons)
-                    .tabItem {
-                        Image(systemSymbol: .calendar).font(.system(size: 21, weight: .medium))
-                        Text(Tab.lessons.uppercasedTitle)
-                    }
-
-                profileView
-                    .tag(Tab.profile)
-                    .tabItem {
-                        Image(systemSymbol: .person).font(.system(size: 21, weight: .semibold))
-                        Text(Tab.profile.uppercasedTitle)
-                    }
-            }
-
-            .navigationBarTitle(Text(tab.title), displayMode: .large)
-            .navigationBarItems(leading: leadingNavigationItem, trailing: trailingNavigationItem)
-        }
-        .navigationViewFixInteractiveDismissal()
+        MainViewContent(
+            tabs: Tab.allCases, selection: $tab,
+            navigationTitle: \.title, leadingItem: leadingItem, trailingItem: trailingItem,
+            content: content,
+            tabTitle: \.uppercasedTitle, tabIcons: icon
+        )
         .testable(self)
-        .onReceive(state.$isLessonRequestViewPresented, perform: onIsLessonRequestViewPresentedChange)
+        .onChange(of: isLessonRequestViewPresented, perform: onIsLessonRequestViewPresentedChange)
         .accentColor(.rythmicoPurple)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
         .onSuccess(lessonPlanFetchingCoordinator, perform: presentRequestLessonFlowIfNeeded)
-        .sheet(isPresented: $state.isLessonRequestViewPresented) {
+        .sheet(isPresented: $isLessonRequestViewPresented) {
             RequestLessonPlanView(context: RequestLessonPlanContext())
         }
         .routable(self)
@@ -103,7 +84,23 @@ struct MainTabView: View, TestableView, RoutableView {
     }
 
     @ViewBuilder
-    private var leadingNavigationItem: some View {
+    private func icon(for tab: Tab) -> some View {
+        switch tab {
+        case .lessons: Image(systemSymbol: .calendar).font(.system(size: 21, weight: .medium))
+        case .profile: Image(systemSymbol: .person).font(.system(size: 21, weight: .semibold))
+        }
+    }
+
+    @ViewBuilder
+    private func content(for tab: Tab) -> some View {
+        switch tab {
+        case .lessons: lessonsView
+        case .profile: profileView
+        }
+    }
+
+    @ViewBuilder
+    private func leadingItem(for tab: Tab) -> some View {
         switch tab {
         case .lessons where lessonPlanFetchingCoordinator.state.isLoading:
             ActivityIndicator(color: .rythmicoGray90)
@@ -113,7 +110,7 @@ struct MainTabView: View, TestableView, RoutableView {
     }
 
     @ViewBuilder
-    private var trailingNavigationItem: some View {
+    private func trailingItem(for tab: Tab) -> some View {
         switch tab {
         case .lessons:
             Button(action: presentRequestLessonFlow) {
@@ -135,11 +132,11 @@ struct MainTabView: View, TestableView, RoutableView {
 }
 
 #if DEBUG
-struct MainTabView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView()
+        MainView()
             .environment(\.colorScheme, .light)
-        MainTabView()
+        MainView()
             .environment(\.colorScheme, .dark)
     }
 }

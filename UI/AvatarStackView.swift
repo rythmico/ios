@@ -2,7 +2,7 @@ import SwiftUI
 
 private enum Const {
     static let borderLineWidth: CGFloat = 2
-    static let borderOutlineSize: CGFloat = AvatarView.Const.minSize + 1.5
+    static let borderOutlineSize: CGFloat = AvatarView.Const.minSize + borderLineWidth / 1.5
     static let spacing: CGFloat = -AvatarView.Const.minSize * 0.42
 }
 

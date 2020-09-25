@@ -14,7 +14,7 @@ extension RootView.UserState {
         if case .authenticated = self { return true } else { return false }
     }
 
-    var authenticatedValue: MainTabView? {
+    var authenticatedValue: MainView? {
         if case .authenticated(let v) = self { return v } else { return nil }
     }
 }

@@ -8,6 +8,8 @@ struct VideoCarouselView: View {
 
     @Binding
     var selectedVideo: Portfolio.Video?
+    @State
+    private var scrollViewWidth: CGFloat = 0
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -18,8 +20,10 @@ struct VideoCarouselView: View {
                     }
                 }
             }
-            .padding(.horizontal, .spacingMedium)
+            .padding(.horizontal, scrollViewWidth < .spacingMax ? .spacingMedium : 0)
         }
+        .introspectScrollView { scrollViewWidth = $0.frame.width }
+        .frame(maxWidth: .spacingMax)
         .sheet(item: $selectedVideo) {
             VideoPlayer(player: AVPlayer(url: $0.videoURL).then { $0.play() })
                 .edgesIgnoringSafeArea(.all)

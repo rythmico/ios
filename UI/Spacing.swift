@@ -7,6 +7,7 @@ extension CGFloat {
     static let spacingMedium: CGFloat = spacingUnit * 5
     static let spacingLarge: CGFloat = spacingUnit * 6
     static let spacingExtraLarge: CGFloat = spacingUnit * 7
+    static let spacingMax: CGFloat = spacingUnit * 125
 }
 
 extension EdgeInsets {

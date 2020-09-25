@@ -25,6 +25,7 @@ struct LessonPlanApplicationDetailMessageView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
+                .frame(maxWidth: .spacingMax)
                 .padding(.horizontal, .spacingMedium)
 
                 Divider().overlay(Color.rythmicoGray20)
@@ -42,6 +43,7 @@ struct LessonPlanApplicationDetailMessageView: View {
 
                     ScheduleDetailsView(lessonPlan.schedule)
                 }
+                .frame(maxWidth: .spacingMax)
                 .padding(.horizontal, .spacingMedium)
             }
             .padding(.vertical, .spacingMedium)

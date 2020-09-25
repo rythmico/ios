@@ -4,7 +4,7 @@ import Sugar
 extension RootView {
     enum UserState {
         case unauthenticated(OnboardingView)
-        case authenticated(MainTabView)
+        case authenticated(MainView)
     }
 }
 
@@ -13,7 +13,7 @@ struct RootView: View, TestableView {
     private var accessTokenProviderObserver = Current.accessTokenProviderObserver
 
     var state: UserState {
-        MainTabView().flatMap(UserState.authenticated) ?? .unauthenticated(OnboardingView())
+        MainView().flatMap(UserState.authenticated) ?? .unauthenticated(OnboardingView())
     }
 
     let inspection = SelfInspection()

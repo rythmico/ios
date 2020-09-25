@@ -61,7 +61,7 @@ extension Portfolio.Video {
     static func stub(_ color: UIColor) -> Self {
         .init(
             videoURL: URL(string: "https://bit.ly/swswift")!,
-            thumbnailURL: .image(UIImage(.red))
+            thumbnailURL: .image(UIImage(color))
         )
     }
 }

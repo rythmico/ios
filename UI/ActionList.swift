@@ -34,6 +34,7 @@ struct ActionList: View {
                         }
                         .padding(.vertical, .spacingLarge)
                         .padding(.horizontal, .spacingMedium)
+                        .frame(maxWidth: .spacingMax)
                     }
                     if isLastButtonIndex(index) && !showBottomSeparator {
                         EmptyView()

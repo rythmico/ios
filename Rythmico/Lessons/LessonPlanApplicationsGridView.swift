@@ -30,5 +30,6 @@ struct LessonPlanApplicationsGridView: View {
             .padding(.top, .spacingUnit * 2)
             .padding(.horizontal, .spacingMedium)
         }
+        .frame(maxWidth: .spacingMax)
     }
 }

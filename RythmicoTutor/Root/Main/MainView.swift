@@ -2,8 +2,8 @@ import SwiftUI
 import SFSafeSymbols
 import Sugar
 
-struct MainTabView: View, TestableView, RoutableView {
-    enum Tab: String, Hashable {
+struct MainView: View, TestableView, RoutableView {
+    enum Tab: String, Hashable, CaseIterable {
         case requests = "Requests"
         case profile = "Profile"
 
@@ -30,25 +30,12 @@ struct MainTabView: View, TestableView, RoutableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        NavigationView {
-            TabView(selection: $tab) {
-                bookingRequestsTabView
-                    .tag(Tab.requests)
-                    .tabItem {
-                        Image(systemSymbol: .musicNoteList).font(.system(size: 21, weight: .bold))
-                        Text(Tab.requests.title)
-                    }
-                Text("Second View")
-                    .font(.title)
-                    .tag(Tab.profile)
-                    .tabItem {
-                        Image(systemSymbol: .personFill).font(.system(size: 21, weight: .semibold))
-                        Text(Tab.profile.title)
-                    }
-            }
-            .navigationBarTitle(Text(tab.title), displayMode: .large)
-        }
-        .navigationViewFixInteractiveDismissal()
+        MainViewContent(
+            tabs: Tab.allCases, selection: $tab,
+            navigationTitle: \.title, leadingItem: leadingItem, trailingItem: trailingItem,
+            content: content,
+            tabTitle: \.title, tabIcons: icon
+        )
         .testable(self)
         .routable(self)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
@@ -60,12 +47,38 @@ struct MainTabView: View, TestableView, RoutableView {
             tab = .requests
         }
     }
+
+    @ViewBuilder
+    private func icon(for tab: Tab) -> some View {
+        switch tab {
+        case .requests: Image(systemSymbol: .musicNoteList).font(.system(size: 21, weight: .bold))
+        case .profile: Image(systemSymbol: .personFill).font(.system(size: 21, weight: .semibold))
+        }
+    }
+
+    @ViewBuilder
+    private func content(for tab: Tab) -> some View {
+        switch tab {
+        case .requests: bookingRequestsTabView
+        case .profile: Text("Profile")
+        }
+    }
+
+    @ViewBuilder
+    private func leadingItem(for tab: Tab) -> some View {
+        EmptyView()
+    }
+
+    @ViewBuilder
+    private func trailingItem(for tab: Tab) -> some View {
+        EmptyView()
+    }
 }
 
 #if DEBUG
-struct MainTabView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView()
+        MainView()
     }
 }
 #endif
