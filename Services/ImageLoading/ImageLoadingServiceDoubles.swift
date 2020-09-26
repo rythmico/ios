@@ -1,7 +1,6 @@
 #if DEBUG
 import Foundation
 import class UIKit.UIImage
-import protocol Combine.Cancellable
 
 final class ImageLoadingServiceStub: ImageLoadingServiceProtocol {
     private var cache: [URL: UIImage] = [:]
@@ -14,7 +13,7 @@ final class ImageLoadingServiceStub: ImageLoadingServiceProtocol {
         self.delay = delay
     }
 
-    func load(_ url: URL, completion: @escaping CompletionHandler) -> Cancellable {
+    func load(_ url: URL, completion: @escaping CompletionHandler) -> Activity {
         if let image = cache[url] {
             completion(.success(image))
         } else {
@@ -29,7 +28,7 @@ final class ImageLoadingServiceStub: ImageLoadingServiceProtocol {
                 completion(result)
             }
         }
-        return CancellableDummy()
+        return ActivityDummy()
     }
 }
 
@@ -38,7 +37,7 @@ final class ImageLoadingServiceSpy: ImageLoadingServiceProtocol {
 
     private(set) var loadCount = 0
     private(set) var latestURL: URL?
-    private(set) var cancellable: CancellableSpy?
+    private(set) var activity: ActivitySpy?
 
     var result: Result<UIImage, Error>?
 
@@ -46,7 +45,7 @@ final class ImageLoadingServiceSpy: ImageLoadingServiceProtocol {
         self.result = result
     }
 
-    func load(_ url: URL, completion: @escaping CompletionHandler) -> Cancellable {
+    func load(_ url: URL, completion: @escaping CompletionHandler) -> Activity {
         if let image = cache[url] {
             completion(.success(image))
         } else {
@@ -57,13 +56,15 @@ final class ImageLoadingServiceSpy: ImageLoadingServiceProtocol {
             latestURL = url
             result.map(completion)
         }
-        return CancellableSpy()
+        let activity = ActivitySpy()
+        self.activity = activity
+        return activity
     }
 }
 
 final class ImageLoadingServiceDummy: ImageLoadingServiceProtocol {
-    func load(_ url: URL, completion: @escaping CompletionHandler) -> Cancellable {
-        CancellableDummy()
+    func load(_ url: URL, completion: @escaping CompletionHandler) -> Activity {
+        ActivityDummy()
     }
 }
 #endif

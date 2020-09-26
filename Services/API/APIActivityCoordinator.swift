@@ -1,13 +1,12 @@
 import Foundation
 import APIKit
 
-final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActivityCoordinator<Request.Response> {
+final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActivityCoordinator<Request.Properties, Request.Response> {
     typealias Service = APIServiceBase<Request>
 
     private let accessTokenProvider: AuthenticationAccessTokenProvider
     private let deauthenticationService: DeauthenticationServiceProtocol
     private let service: Service
-    private var runningTask: SessionTask?
 
     init(
         accessTokenProvider: AuthenticationAccessTokenProvider,
@@ -19,43 +18,15 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
         self.service = service
     }
 
-    override func cancel() {
-        if case .loading = state {
-            runningTask?.cancel()
-        }
-        super.cancel()
-    }
-
-    func start(with properties: Request.Properties) {
-        start(with: properties, idleOnSuccess: false)
-    }
-
-    func startToIdle(with properties: Request.Properties) {
-        start(with: properties, idleOnSuccess: true)
-    }
-
-    func run(with properties: Request.Properties) {
-        run(with: properties, idleOnSuccess: false)
-    }
-
-    func runToIdle(with properties: Request.Properties) {
-        run(with: properties, idleOnSuccess: true)
-    }
-
-    private func start(with properties: Request.Properties, idleOnSuccess: Bool) {
-        guard state.isReady else { return }
-        run(with: properties, idleOnSuccess: idleOnSuccess)
-    }
-
-    private func run(with properties: Request.Properties, idleOnSuccess: Bool) {
-        state = .loading
+    override func performTask(with input: Request.Properties) {
+        super.performTask(with: input)
         accessTokenProvider.getAccessToken { result in
             switch result {
             case .success(let accessToken):
                 do {
-                    let request = try Request(accessToken: accessToken, properties: properties)
-                    self.runningTask = self.service.send(request) {
-                        self.handleRequestResult($0, idleOnSuccess: idleOnSuccess)
+                    let request = try Request(accessToken: accessToken, properties: input)
+                    self.activity = self.service.send(request) {
+                        self.handleRequestResult($0)
                     }
                 } catch {
                     self.handleRequestError(error)
@@ -66,11 +37,10 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
         }
     }
 
-    private func handleRequestResult(_ result: Result<Request.Response, Error>, idleOnSuccess: Bool) {
+    private func handleRequestResult(_ result: Result<Request.Response, Error>) {
         switch result {
         case .success:
-            state = .finished(result)
-            if idleOnSuccess { idle() }
+            finish(result)
         case .failure(let error):
             handleRequestError(error)
         }
@@ -80,7 +50,7 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
         if let error = error as? SessionTaskError, error.isCancelledError {
             cancel()
         } else {
-            state = .finished(.failure(error))
+            finish(.failure(error))
         }
     }
 
@@ -91,16 +61,8 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
         default:
             break
         }
-        state = .finished(.failure(error))
+        finish(.failure(error))
     }
-}
-
-extension APIActivityCoordinator where Request.Properties == Void {
-    func start() { start(with: ()) }
-    func startToIdle() { startToIdle(with: ()) }
-
-    func run() { run(with: ()) }
-    func runToIdle() { runToIdle(with: ()) }
 }
 
 private extension SessionTaskError {

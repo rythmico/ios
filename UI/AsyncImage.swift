@@ -25,8 +25,9 @@ struct AsyncImage<Label: View>: View {
         ZStack {
             label(uiImage)
         }
-        .onDisappear(perform: cancel)
         .onAppear(perform: load)
+        .onAppear(perform: resume)
+        .onDisappear(perform: suspend)
     }
 
     private var uiImage: UIImage? {
@@ -43,8 +44,13 @@ struct AsyncImage<Label: View>: View {
         }
     }
 
-    private func cancel() {
-        secondaryCoordinator.cancel()
-        primaryCoordinator.cancel()
+    private func resume() {
+        secondaryCoordinator.resume()
+        primaryCoordinator.resume()
+    }
+
+    private func suspend() {
+        secondaryCoordinator.suspend()
+        primaryCoordinator.suspend()
     }
 }

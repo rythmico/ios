@@ -1,52 +1,59 @@
 import SwiftUI
 
 extension View {
-    func onReady<Output>(
-        _ coordinator: ActivityCoordinator<Output>,
+    func onReady<Input, Output>(
+        _ coordinator: ActivityCoordinator<Input, Output>,
         perform action: @escaping () -> Void
     ) -> some View {
         onCoordinatorState(coordinator, { $0.isReady ? () : nil }, perform: action)
     }
 
-    func onLoading<Output>(
-        _ coordinator: ActivityCoordinator<Output>,
+    func onLoading<Input, Output>(
+        _ coordinator: ActivityCoordinator<Input, Output>,
         perform action: @escaping () -> Void
     ) -> some View {
         onCoordinatorState(coordinator, { $0.isLoading ? () : nil }, perform: action)
     }
 
-    func onFinished<Output>(
-        _ coordinator: ActivityCoordinator<Output>,
+    func onSuspended<Input, Output>(
+        _ coordinator: ActivityCoordinator<Input, Output>,
+        perform action: @escaping () -> Void
+    ) -> some View {
+        onCoordinatorState(coordinator, { $0.isSuspended ? () : nil }, perform: action)
+    }
+
+    func onFinished<Input, Output>(
+        _ coordinator: ActivityCoordinator<Input, Output>,
         perform action: @escaping (Output) -> Void
     ) -> some View {
         onCoordinatorState(coordinator, \.finishedValue, perform: action)
     }
 
-    func onSuccess<Success>(
-        _ coordinator: FailableActivityCoordinator<Success>,
+    func onSuccess<Input, Success>(
+        _ coordinator: FailableActivityCoordinator<Input, Success>,
         perform action: @escaping (Success) -> Void
     ) -> some View {
         onCoordinatorState(coordinator, \.successValue, perform: action)
     }
 
-    func onFailure<Success>(
-        _ coordinator: FailableActivityCoordinator<Success>,
+    func onFailure<Input, Success>(
+        _ coordinator: FailableActivityCoordinator<Input, Success>,
         perform action: @escaping (Error) -> Void
     ) -> some View {
         onCoordinatorState(coordinator, \.failureValue, perform: action)
     }
 
-    func onIdle<Output>(
-        _ coordinator: ActivityCoordinator<Output>,
+    func onIdle<Input, Output>(
+        _ coordinator: ActivityCoordinator<Input, Output>,
         perform action: @escaping () -> Void
     ) -> some View {
         onCoordinatorState(coordinator, { $0.isIdle ? () : nil }, perform: action)
     }
 
-    private func onCoordinatorState<Value, Output>(
-        _ coordinator: ActivityCoordinator<Value>,
-        _ stateMap: @escaping (ActivityCoordinator<Value>.State) -> Output?,
-        perform action: @escaping (Output) -> Void
+    private func onCoordinatorState<Input, Output, Value>(
+        _ coordinator: ActivityCoordinator<Input, Output>,
+        _ stateMap: @escaping (ActivityCoordinator<Input, Output>.State) -> Value?,
+        perform action: @escaping (Value) -> Void
     ) -> some View {
         onReceive(
             coordinator.$state,
@@ -56,7 +63,9 @@ extension View {
 }
 
 extension View {
-    func alertOnFailure<Success>(_ coordinator: FailableActivityCoordinator<Success>) -> some View {
+    func alertOnFailure<Input, Success>(
+        _ coordinator: FailableActivityCoordinator<Input, Success>
+    ) -> some View {
         alert(error: coordinator.state.failureValue, dismiss: coordinator.dismissFailure)
     }
 }
