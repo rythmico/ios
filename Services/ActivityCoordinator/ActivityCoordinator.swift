@@ -4,6 +4,7 @@ class ActivityCoordinator<Output>: ObservableObject {
     enum State {
         case ready
         case loading
+        case suspended
         case finished(Output)
         case idle
     }
@@ -11,10 +12,29 @@ class ActivityCoordinator<Output>: ObservableObject {
     @Published
     /*protected(set)*/ var state: State = .ready
 
-    func cancel() {
-        if case .loading = state {
-            state = .ready
+    func resume() {
+        if case .suspended = state {
+            state = .loading
         }
+    }
+
+    func suspend() {
+        if case .loading = state {
+            state = .suspended
+        }
+    }
+
+    func cancel() {
+        switch state {
+        case .suspended, .loading:
+            state = .ready
+        default:
+            break
+        }
+    }
+
+    func complete(_ output: Output) {
+        state = .finished(output)
     }
 
     func reset() {

@@ -7,7 +7,7 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
     private let accessTokenProvider: AuthenticationAccessTokenProvider
     private let deauthenticationService: DeauthenticationServiceProtocol
     private let service: Service
-    private var runningTask: SessionTask?
+    private var activity: Activity?
 
     init(
         accessTokenProvider: AuthenticationAccessTokenProvider,
@@ -21,7 +21,7 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
 
     override func cancel() {
         if case .loading = state {
-            runningTask?.cancel()
+            activity?.cancel()
         }
         super.cancel()
     }
@@ -54,7 +54,7 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
             case .success(let accessToken):
                 do {
                     let request = try Request(accessToken: accessToken, properties: properties)
-                    self.runningTask = self.service.send(request) {
+                    self.activity = self.service.send(request) {
                         self.handleRequestResult($0, idleOnSuccess: idleOnSuccess)
                     }
                 } catch {

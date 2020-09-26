@@ -5,7 +5,7 @@ class APIServiceBase<Request: AuthorizedAPIRequest> {
     typealias Response = Request.Response
     typealias CompletionHandler = SimpleResultHandler<Response>
 
-    func send(_ request: Request, completion: @escaping CompletionHandler) -> SessionTask? { nil }
+    func send(_ request: Request, completion: @escaping CompletionHandler) -> Activity? { nil }
 }
 
 final class APIService<Request: AuthorizedAPIRequest>: APIServiceBase<Request> {
@@ -14,10 +14,10 @@ final class APIService<Request: AuthorizedAPIRequest>: APIServiceBase<Request> {
         $0.timeoutIntervalForResource = 150
     }
 
-    override func send(_ request: Request, completion: @escaping CompletionHandler) -> SessionTask? {
+    override func send(_ request: Request, completion: @escaping CompletionHandler) -> Activity? {
         let session = Session(adapter: URLSessionAdapter(configuration: sessionConfiguration))
         return session.send(request, callbackQueue: .main, completionHandler: { result in
             completion(result.mapError { $0 as Error })
-        })
+        }) as? Activity
     }
 }

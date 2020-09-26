@@ -4,7 +4,7 @@ import protocol Combine.Cancellable
 
 final class ImageLoadingCoordinator: FailableActivityCoordinator<UIImage> {
     private let service: ImageLoadingServiceProtocol
-    private var cancellable: Cancellable?
+    private var activity: Activity?
 
     init(service: ImageLoadingServiceProtocol) {
         self.service = service
@@ -17,7 +17,7 @@ final class ImageLoadingCoordinator: FailableActivityCoordinator<UIImage> {
         state = .loading
         switch imageReference {
         case .url(let url):
-            cancellable = service.load(url) { result in
+            activity = service.load(url) { result in
                 self.state = .finished(result)
             }
         case .assetName(let assetName):
@@ -27,10 +27,24 @@ final class ImageLoadingCoordinator: FailableActivityCoordinator<UIImage> {
         }
     }
 
-    override func cancel() {
-        if case .loading = state {
-            cancellable?.cancel()
+    override func resume() {
+        super.resume()
+        if case .suspended = state {
+            activity?.resume()
         }
+    }
+
+    override func suspend() {
+        super.suspend()
+        if case .loading = state {
+            activity?.suspend()
+        }
+    }
+
+    override func cancel() {
         super.cancel()
+        if case .loading = state {
+            activity?.cancel()
+        }
     }
 }

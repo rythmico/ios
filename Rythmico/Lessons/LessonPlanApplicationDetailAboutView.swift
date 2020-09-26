@@ -25,7 +25,7 @@ struct LessonPlanApplicationDetailAboutView: View, VisibleView {
     @ViewBuilder
     private var content: some View {
         switch coordinator.state {
-        case .ready, .finished(.failure), .idle:
+        case .ready, .suspended, .finished(.failure), .idle:
             Color(.systemBackground)
         case .loading:
             ZStack {

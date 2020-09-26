@@ -11,7 +11,7 @@ final class APIServiceStub<Request: AuthorizedAPIRequest>: APIServiceBase<Reques
         self.delay = delay
     }
 
-    override func send(_ request: Request, completion: @escaping CompletionHandler) -> SessionTask? {
+    override func send(_ request: Request, completion: @escaping CompletionHandler) -> Activity? {
         if let delay = delay {
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 completion(self.result)
@@ -33,7 +33,7 @@ final class APIServiceSpy<Request: AuthorizedAPIRequest>: APIServiceBase<Request
         self.result = result
     }
 
-    override func send(_ request: Request, completion: @escaping CompletionHandler) -> SessionTask? {
+    override func send(_ request: Request, completion: @escaping CompletionHandler) -> Activity? {
         sendCount += 1
         latestRequest = request
         result.map(completion)
