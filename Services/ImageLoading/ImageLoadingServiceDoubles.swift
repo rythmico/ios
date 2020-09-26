@@ -1,7 +1,6 @@
 #if DEBUG
 import Foundation
 import class UIKit.UIImage
-import protocol Combine.Cancellable
 
 final class ImageLoadingServiceStub: ImageLoadingServiceProtocol {
     private var cache: [URL: UIImage] = [:]

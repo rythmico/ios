@@ -1,6 +1,6 @@
 import Combine
 
-class ActivityCoordinator<Output>: ObservableObject {
+class ActivityCoordinator<Input, Output>: ObservableObject {
     enum State {
         case ready
         case loading
@@ -10,31 +10,74 @@ class ActivityCoordinator<Output>: ObservableObject {
     }
 
     @Published
-    /*protected(set)*/ var state: State = .ready
+    fileprivate(set) var state: State = .ready
 
-    func resume() {
-        if case .suspended = state {
-            state = .loading
-        }
+    /*protected*/ var activity: Activity?
+    private var idleOnFinished = false
+
+    func start(with input: Input) {
+        guard state.isReady else { return }
+        idleOnFinished = false
+        performTask(with: input)
+    }
+
+    func startToIdle(with input: Input) {
+        guard state.isReady else { return }
+        idleOnFinished = true
+        performTask(with: input)
+    }
+
+    func run(with input: Input) {
+        idleOnFinished = false
+        performTask(with: input)
+    }
+
+    func runToIdle(with input: Input) {
+        idleOnFinished = true
+        performTask(with: input)
+    }
+
+    /*protected*/ func performTask(with input: Input) {
+        state = .loading
     }
 
     func suspend() {
         if case .loading = state {
             state = .suspended
+            activity?.suspend()
+        }
+    }
+
+    func resume() {
+        if case .suspended = state {
+            state = .loading
+            activity?.resume()
         }
     }
 
     func cancel() {
         switch state {
-        case .suspended, .loading:
+        case .loading, .suspended:
             state = .ready
+            activity?.cancel()
+            activity = nil
         default:
             break
         }
     }
 
-    func complete(_ output: Output) {
+    /*protected*/ func finish(_ output: Output) {
         state = .finished(output)
+        activity = nil
+        if idleOnFinished {
+            idle()
+        }
+    }
+
+    /*protected*/ func idle() {
+        if case .finished = state {
+            state = .idle
+        }
     }
 
     func reset() {
@@ -47,8 +90,16 @@ class ActivityCoordinator<Output>: ObservableObject {
     }
 }
 
-class FailableActivityCoordinator<Success>: ActivityCoordinator<Result<Success, Error>> {
-    func idle() {
+extension ActivityCoordinator where Input == Void {
+    func start() { start(with: ()) }
+    func startToIdle() { startToIdle(with: ()) }
+
+    func run() { run(with: ()) }
+    func runToIdle() { runToIdle(with: ()) }
+}
+
+class FailableActivityCoordinator<Input, Success>: ActivityCoordinator<Input, Result<Success, Error>> {
+    override func idle() {
         if case .finished(let result) = state, case .success = result {
             state = .idle
         }

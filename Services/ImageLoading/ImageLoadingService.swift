@@ -1,6 +1,5 @@
 import Foundation
 import class UIKit.UIImage
-import protocol Combine.Cancellable
 import Sugar
 
 protocol ImageLoadingServiceProtocol {

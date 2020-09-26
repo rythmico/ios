@@ -30,6 +30,11 @@ extension ActivityCoordinator.State {
         return true
     }
 
+    var isSuspended: Bool {
+        guard case .suspended = self else { return false }
+        return true
+    }
+
     var isFinished: Bool {
         finishedValue != nil
     }
