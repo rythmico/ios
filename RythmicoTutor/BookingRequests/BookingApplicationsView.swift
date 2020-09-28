@@ -9,7 +9,7 @@ struct BookingApplicationsView: View, VisibleView {
     @State
     private var selectedBookingApplicationGroup: BookingApplication.Status?
     @State
-    private(set) var isVisible = false; var isVisibleBinding: Binding<Bool> { $isVisible }
+    var isVisible = false
 
     init?() {
         guard let coordinator = Current.sharedCoordinator(for: \.bookingApplicationFetchingService) else {

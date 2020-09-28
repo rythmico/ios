@@ -9,7 +9,7 @@ struct LessonsView: View, TestableView, VisibleView {
     @ObservedObject
     private var repository = Current.lessonPlanRepository
     @State
-    private(set) var isVisible = false; var isVisibleBinding: Binding<Bool> { $isVisible }
+    var isVisible = false
 
     init(coordinator: Coordinator) {
         self.coordinator = coordinator

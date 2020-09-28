@@ -2,17 +2,13 @@ import SwiftUI
 import Combine
 
 protocol VisibleView {
-    var isVisibleBinding: Binding<Bool> { get }
+    var isVisible: Bool { get nonmutating set }
 }
 
 extension View {
     func visible<VV: VisibleView>(_ view: VV) -> some View {
-        visibility(view.isVisibleBinding)
-    }
-
-    private func visibility(_ visibilityBinding: Binding<Bool>) -> some View {
-        self.onAppear { visibilityBinding.wrappedValue = true }
-            .onDisappear { visibilityBinding.wrappedValue = false }
+        self.onAppear { view.isVisible = true }
+            .onDisappear { view.isVisible = false }
     }
 }
 
@@ -22,6 +18,10 @@ extension View {
         perform action: @escaping () -> Void
     ) -> some View {
         self.onAppear(perform: action)
-            .onEvent(.appInForeground, if: view.isVisibleBinding, perform: action)
+            .onEvent(.appInForeground) {
+                if view.isVisible {
+                    action()
+                }
+            }
     }
 }

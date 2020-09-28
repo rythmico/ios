@@ -26,12 +26,11 @@ import SwiftUI
 extension View {
     func onEvent(
         _ eventType: NotificationCenter.EventType,
-        if condition: Binding<Bool> = .constant(true),
         emitter: NotificationCenter = Current.eventEmitter,
         perform action: @escaping () -> Void
     ) -> some View {
         onReceive(
-            emitter.publisher(for: eventType).filter { condition.wrappedValue },
+            emitter.publisher(for: eventType),
             perform: action
         )
     }
