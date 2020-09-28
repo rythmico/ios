@@ -61,7 +61,7 @@ struct OnboardingView: View, TestableView {
                         // Firebase's Auth singleton makes this line redundant since it notifies listeners
                         // about user changes upon sign in. However if services are changed there's
                         // a chance this line might be needed.
-                        // self.authenticationStatusObserver.statusDidChangeHandler(accessTokenProvider)
+                        // authenticationStatusObserver.statusDidChangeHandler(accessTokenProvider)
                         break
                     case .failure(let error):
                         handleAuthenticationError(error)

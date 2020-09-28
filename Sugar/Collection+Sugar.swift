@@ -20,7 +20,7 @@ extension RangeReplaceableCollection {
 
 extension RangeReplaceableCollection where Element: Equatable {
     public mutating func removeAll(_ element: Element) {
-        self.removeAll(where: { $0 == element })
+        removeAll(where: { $0 == element })
     }
 
     public func removingAll(_ element: Element) -> Self {

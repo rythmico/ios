@@ -18,8 +18,8 @@ final class AuthenticationAccessTokenProviderObserver: AuthenticationAccessToken
     }
 
     private func subscribeToBroadcast() {
-        token = broadcast.addStateDidChangeListener { provider in
-            self.currentProvider = provider
+        token = broadcast.addStateDidChangeListener { [self] provider in
+            currentProvider = provider
         }
     }
 

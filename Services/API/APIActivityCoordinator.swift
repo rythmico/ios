@@ -20,19 +20,17 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
 
     override func performTask(with input: Request.Properties) {
         super.performTask(with: input)
-        accessTokenProvider.getAccessToken { result in
+        accessTokenProvider.getAccessToken { [self] result in
             switch result {
             case .success(let accessToken):
                 do {
                     let request = try Request(accessToken: accessToken, properties: input)
-                    self.activity = self.service.send(request) {
-                        self.handleRequestResult($0)
-                    }
+                    activity = service.send(request, completion: handleRequestResult)
                 } catch {
-                    self.handleRequestError(error)
+                    handleRequestError(error)
                 }
             case .failure(let error):
-                self.handleAuthenticationError(error)
+                handleAuthenticationError(error)
             }
         }
     }

@@ -27,17 +27,17 @@ final class PushNotificationAuthorizationCoordinator: ObservableObject {
     }
 
     func refreshAuthorizationStatus() {
-        center.getNotificationSettings { settings in
+        center.getNotificationSettings { [self] settings in
             DispatchQueue.main.immediateOrAsync {
                 switch settings.authorizationStatus {
                 case .notDetermined:
-                    self.status = .notDetermined
+                    status = .notDetermined
                 case .denied:
-                    self.status = .denied
+                    status = .denied
                 case .authorized, .provisional, .ephemeral:
-                    self.status = .authorized
+                    status = .authorized
                 @unknown default:
-                    self.status = .notDetermined
+                    status = .notDetermined
                 }
             }
         }
@@ -48,16 +48,16 @@ final class PushNotificationAuthorizationCoordinator: ObservableObject {
             return
         }
         status = .authorizing
-        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { [self] granted, error in
             DispatchQueue.main.immediateOrAsync {
                 if let error = error {
-                    self.status = .failed(error)
+                    status = .failed(error)
                 } else {
                     if granted {
-                        self.status = .authorized
-                        self.registerService.registerForRemoteNotifications()
+                        status = .authorized
+                        registerService.registerForRemoteNotifications()
                     } else {
-                        self.status = .denied
+                        status = .denied
                     }
                 }
             }

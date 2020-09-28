@@ -11,11 +11,11 @@ final class AuthenticationServiceStub: AuthenticationServiceProtocol {
     }
 
     func authenticateAppleAccount(with credential: AppleAuthorizationCredential, completionHandler: @escaping Handler<AuthenticationResult>) {
-        let work = {
-            completionHandler(self.result)
+        let work = { [self] in
+            completionHandler(result)
 
             // Imitate Firebase's singleton behavior.
-            switch self.result {
+            switch result {
             case .success(let provider):
                 Current.accessTokenProviderObserver.currentProvider = provider
             case .failure:

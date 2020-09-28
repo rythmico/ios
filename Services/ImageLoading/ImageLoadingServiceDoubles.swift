@@ -21,8 +21,8 @@ final class ImageLoadingServiceStub: ImageLoadingServiceProtocol {
                 cache[url] = image
             }
             if let delay = delay {
-                DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-                    completion(self.result)
+                DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [self] in
+                    completion(result)
                 }
             } else {
                 completion(result)

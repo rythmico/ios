@@ -12,9 +12,9 @@ final class DeviceRegisterCoordinator {
     }
 
     func registerDevice() {
-        deviceTokenProvider.deviceToken { result, _ in
+        deviceTokenProvider.deviceToken { [self] result, _ in
             if let deviceToken = result?.token {
-                self.apiCoordinator.run(with: .init(body: .init(token: deviceToken)))
+                apiCoordinator.run(with: .init(body: .init(token: deviceToken)))
             }
         }
     }
