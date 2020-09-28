@@ -3,15 +3,14 @@ import FirebaseMessaging
 
 extension App {
     func configurePushNotifications() {
-        delegate.configurePushNotifications(handler: handle)
+        delegate.configurePushNotifications()
     }
 }
 
 extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
-    fileprivate func configurePushNotifications(handler: @escaping PushNotificationEventHandler) {
+    fileprivate func configurePushNotifications() {
         Messaging.messaging().delegate = self
         UNUserNotificationCenter.current().delegate = self
-        pushNotificationEventHandler = handler
     }
 
     // Show notifications in-app (without sound/vibration or badge).
@@ -32,7 +31,7 @@ extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
             break
         }
 
-        PushNotificationEvent(userInfo: userInfo).map { pushNotificationEventHandler?($0) }
+        PushNotificationEvent(userInfo: userInfo).map(Current.pushNotificationEventHandler.handle)
     }
 
     // Handle notification tap.

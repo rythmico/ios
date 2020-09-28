@@ -1,9 +1,6 @@
 import SwiftUI
 
-final class AppDelegate: NSObject, UIApplicationDelegate {
-    typealias PushNotificationEventHandler = (PushNotificationEvent) -> Void
-    var pushNotificationEventHandler: PushNotificationEventHandler?
-}
+final class AppDelegate: NSObject, UIApplicationDelegate {}
 
 @main
 struct App: SwiftUI.App {

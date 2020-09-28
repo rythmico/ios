@@ -2,10 +2,6 @@ import UIKit
 import Then
 
 extension App {
-    func handle(_ event: PushNotificationEvent) {
-        Current.pushNotificationEventHandler.handle(event)
-    }
-
     func didEnterBackground() {
         Current.sharedCoordinator(for: \.lessonPlanFetchingService)?.reset()
     }
