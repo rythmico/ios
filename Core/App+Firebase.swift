@@ -1,7 +1,6 @@
-import UIKit
 import Firebase
 
-extension AppDelegate {
+extension App {
     func configureFirebase() {
         FirebaseApp.configure()
     }

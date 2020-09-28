@@ -1,6 +1,6 @@
-import UIKit
+import Foundation
 
-extension AppDelegate {
+extension App {
     func clearLaunchScreenCache(_ shouldClear: Bool) {
         #if DEBUG
         guard shouldClear else { return }

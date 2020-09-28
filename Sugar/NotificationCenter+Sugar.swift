@@ -5,6 +5,7 @@ extension NotificationCenter {
     enum EventType {
         case appInForeground
         case appInBackground
+        case sizeCategoryChanged
 
         var notificationName: Notification.Name {
             switch self {
@@ -12,6 +13,8 @@ extension NotificationCenter {
                 return UIApplication.willEnterForegroundNotification
             case .appInBackground:
                 return UIApplication.didEnterBackgroundNotification
+            case .sizeCategoryChanged:
+                return UIContentSizeCategory.didChangeNotification
             }
         }
     }
