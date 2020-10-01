@@ -50,8 +50,8 @@ struct LessonPlanBookingView: View {
 struct LessonPlanBookingView_Previews: PreviewProvider {
     static var previews: some View {
         LessonPlanBookingView(lessonPlan: .davidGuitarPlanStub, application: .davidStub)
-//            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
             .environment(\.locale, Current.locale)
-            .environment(\.legibilityWeight, .bold)
+//            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+//            .environment(\.legibilityWeight, .bold)
     }
 }
