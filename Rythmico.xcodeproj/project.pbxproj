@@ -417,6 +417,8 @@
 		D5D78DE025250864007041BE /* LessonPlanBookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D78DDF25250864007041BE /* LessonPlanBookingView.swift */; };
 		D5D78E0C25257800007041BE /* PhoneNumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D78E0B25257800007041BE /* PhoneNumberField.swift */; };
 		D5D78E172525F531007041BE /* LegibilityWeight+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D78E162525F531007041BE /* LegibilityWeight+Sugar.swift */; };
+		D5D974F425263FAF000AD074 /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D974F325263FAF000AD074 /* PhoneNumber.swift */; };
+		D5D974F925263FB9000AD074 /* PhoneNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D974F825263FB9000AD074 /* PhoneNumberTests.swift */; };
 		D5E04B1923BED80700A161BB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* Fonts.swift */; };
 		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
 		D5E987B924ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
@@ -806,6 +808,8 @@
 		D5D78DDF25250864007041BE /* LessonPlanBookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanBookingView.swift; sourceTree = "<group>"; };
 		D5D78E0B25257800007041BE /* PhoneNumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberField.swift; sourceTree = "<group>"; };
 		D5D78E162525F531007041BE /* LegibilityWeight+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LegibilityWeight+Sugar.swift"; sourceTree = "<group>"; };
+		D5D974F325263FAF000AD074 /* PhoneNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumber.swift; sourceTree = "<group>"; };
+		D5D974F825263FB9000AD074 /* PhoneNumberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTests.swift; sourceTree = "<group>"; };
 		D5E04B1823BED80700A161BB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Sugar.swift"; sourceTree = "<group>"; };
@@ -1331,6 +1335,7 @@
 				D5CC5FF025029525007DFE84 /* ImageReference.swift */,
 				032B6FD524B7882B00299A09 /* Instrument */,
 				03BB5C9E2473463200B44692 /* LessonPlan */,
+				D5D974FD25263FBC000AD074 /* PhoneNumber */,
 				D54EFF222513D69D004F14D3 /* Portfolio */,
 				D5BF12B125068E2500B2931C /* PushNotificationEvent */,
 				03AAF6742445E123002D8F5B /* Schedule */,
@@ -1744,6 +1749,15 @@
 				D5D78DDF25250864007041BE /* LessonPlanBookingView.swift */,
 			);
 			path = Booking;
+			sourceTree = "<group>";
+		};
+		D5D974FD25263FBC000AD074 /* PhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				D5D974F325263FAF000AD074 /* PhoneNumber.swift */,
+				D5D974F825263FB9000AD074 /* PhoneNumberTests.swift */,
+			);
+			path = PhoneNumber;
 			sourceTree = "<group>";
 		};
 		D5E987C324EEE20300E2E1AF /* Router */ = {
@@ -2160,6 +2174,7 @@
 				D5F506B42405ED9300CA4094 /* RoundedThickOutlineContainer.swift in Sources */,
 				031378C5249A7453005FC49C /* CloseButton.swift in Sources */,
 				035AF3082491A51D004A01B2 /* UIAccessibilityProtocol.swift in Sources */,
+				D5D974F425263FAF000AD074 /* PhoneNumber.swift in Sources */,
 				D5AAF7DF23FB444500E410F2 /* RoundedShadowContainer.swift in Sources */,
 				D535554723E20076005A20EB /* Colors.swift in Sources */,
 				D527B00B24FD3297003E81A9 /* AvatarStackView.swift in Sources */,
@@ -2530,6 +2545,7 @@
 				D50811E623FB769D008103D8 /* RequestLessonPlanFormViewTests.swift in Sources */,
 				03AAF6752445E16A002D8F5B /* SchedulingViewTests.swift in Sources */,
 				D5A8C4C225044F4C0006F5C5 /* APIUserAgent+RythmicoTests.swift in Sources */,
+				D5D974F925263FB9000AD074 /* PhoneNumberTests.swift in Sources */,
 				03D932F2249C096B003416DC /* LessonPlanDetailViewTests.swift in Sources */,
 				D53555C123E536A6005A20EB /* AuthenticationAccessTokenProviderObserverTests.swift in Sources */,
 				D53555D023E536B5005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift in Sources */,
