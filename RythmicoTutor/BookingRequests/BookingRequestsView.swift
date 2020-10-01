@@ -13,7 +13,7 @@ struct BookingRequestsView: View, VisibleView {
     @State
     private var selectedBookingRequest: BookingRequest?
     @State
-    private(set) var isVisible = false; var isVisibleBinding: Binding<Bool> { $isVisible }
+    var isVisible = false
 
     init?() {
         guard let coordinator = Current.sharedCoordinator(for: \.bookingRequestFetchingService) else {

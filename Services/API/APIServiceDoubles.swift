@@ -13,8 +13,8 @@ final class APIServiceStub<Request: AuthorizedAPIRequest>: APIServiceBase<Reques
 
     override func send(_ request: Request, completion: @escaping CompletionHandler) -> Activity? {
         if let delay = delay {
-            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-                completion(self.result)
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [self] in
+                completion(result)
             }
         } else {
             completion(result)

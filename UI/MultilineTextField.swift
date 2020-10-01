@@ -6,7 +6,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
     final class UITextViewPrimitive: UITextView {
         override func caretRect(for position: UITextPosition) -> CGRect {
             var superRect = super.caretRect(for: position)
-            guard let font = self.font else {
+            guard let font = font else {
                 return superRect
             }
 
@@ -71,8 +71,8 @@ private struct UITextViewWrapper: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: UITextView, context: Context) {
-        if uiView.rythmicoText != self.text {
-            uiView.setRythmicoText(self.text, font: fontOrDefaultFont, color: textColor)
+        if uiView.rythmicoText != text {
+            uiView.setRythmicoText(text, font: fontOrDefaultFont, color: textColor)
         }
         uiView.font = font ?? .preferredFont(forTextStyle: .body)
         UITextViewWrapper.recalculateHeight(

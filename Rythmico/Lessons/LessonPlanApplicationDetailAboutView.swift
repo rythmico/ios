@@ -8,7 +8,7 @@ struct LessonPlanApplicationDetailAboutView: View, VisibleView {
     @State
     private var selectedPhoto: Portfolio.Photo?
     @State
-    private var isVisible = false; var isVisibleBinding: Binding<Bool> { $isVisible }
+    var isVisible = false
 
     var tutor: LessonPlan.Tutor
 

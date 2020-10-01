@@ -1,25 +1,13 @@
 import UIKit
 import Then
 
-struct App {
-    static func main() {
-        configureGlobalAppearance()
-    }
-
-    static func refresh() {
-        configureGlobalAppearance()
-    }
-
-    static func handle(_ event: PushNotificationEvent) {
-        Current.pushNotificationEventHandler.handle(event)
-    }
-
-    static func didEnterBackground() {
+extension App {
+    func didEnterBackground() {
         Current.sharedCoordinator(for: \.lessonPlanFetchingService)?.reset()
     }
 
     // TODO: hopefully to be deleted someday if SwiftUI allows for better customization.
-    private static func configureGlobalAppearance() {
+    func configureAppearance() {
         UINavigationBar.appearance().do { bar in
             UINavigationBarAppearance().do {
                 $0.configureWithOpaqueBackground()

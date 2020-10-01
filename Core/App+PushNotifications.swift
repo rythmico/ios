@@ -1,15 +1,16 @@
 import UIKit
 import FirebaseMessaging
 
+extension App {
+    func configurePushNotifications() {
+        delegate.configurePushNotifications()
+    }
+}
+
 extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
-    func configurePushNotifications(for application: UIApplication) {
+    fileprivate func configurePushNotifications() {
         Messaging.messaging().delegate = self
         UNUserNotificationCenter.current().delegate = self
-        application.registerForRemoteNotifications()
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        application.registerForRemoteNotifications()
     }
 
     // Show notifications in-app (without sound/vibration or badge).
@@ -30,7 +31,7 @@ extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
             break
         }
 
-        PushNotificationEvent(userInfo: userInfo).map(App.handle)
+        PushNotificationEvent(userInfo: userInfo).map(Current.pushNotificationEventHandler.handle)
     }
 
     // Handle notification tap.

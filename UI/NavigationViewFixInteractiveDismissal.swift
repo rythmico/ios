@@ -46,7 +46,7 @@ private final class InteractivePopGestureHandler: NSObject {
 private extension UIView {
     var navigationBarButtons: [UIView] {
         guard
-            let navigationBar = self.subviews.first(where: { $0 is UINavigationBar }),
+            let navigationBar = subviews.first(where: { $0 is UINavigationBar }),
             let navigationBarContent = navigationBar.subviews.first(where: { NSStringFromClass(type(of: $0)) == "_UINavigationBarContentView" })
         else {
             return []

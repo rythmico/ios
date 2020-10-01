@@ -18,7 +18,7 @@ struct GenderSelectionView: View {
                         .foregroundColor(iconColor(for: gender))
                 }
                 .modifier(
-                    self.containerModifier(for: gender)
+                    containerModifier(for: gender)
                         .animation(.rythmicoSpring(duration: .durationShort))
                 )
                 .contentShape(Rectangle())
