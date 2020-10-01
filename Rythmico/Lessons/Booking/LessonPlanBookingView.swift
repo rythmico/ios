@@ -12,29 +12,44 @@ struct LessonPlanBookingView: View {
         TitleSubtitleContentView(title: title, subtitle: subtitle) {
             ScrollView {
                 VStack(spacing: .spacingLarge) {
-                    SectionHeaderView(title: "Lesson Schedule")
-                    ScheduleDetailsView(lessonPlan.schedule, tutor: application.tutor)
-                        .fixedSize(horizontal: false, vertical: true)
+                    SectionHeaderContentView(title: "Lesson Schedule") {
+                        ScheduleDetailsView(lessonPlan.schedule, tutor: application.tutor)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
 
-                    SectionHeaderView(title: "Contact Number")
-                    VStack(spacing: .spacingSmall) {
-                        MultiStyleText(parts: contactNumberInstructions)
-                        VStack(spacing: .spacingExtraSmall) {
-                            PhoneNumberField($phoneNumber, inputError: $phoneNumberInputError)
-                                .padding(.horizontal, .spacingUnit * 2.5)
-                                .modifier(RoundedThinOutlineContainer(padded: false))
-                            if let error = phoneNumberInputError {
-                                Text(error.localizedDescription)
-                                    .rythmicoFont(.callout)
-                                    .foregroundColor(.rythmicoRed)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .transition(
-                                        AnyTransition
-                                            .opacity
-                                            .combined(with: .offset(x: 0, y: -.spacingMedium))
-                                    )
+                    SectionHeaderContentView(title: "Contact Number") {
+                        VStack(spacing: .spacingSmall) {
+                            MultiStyleText(parts: contactNumberInstructions)
+                            VStack(spacing: .spacingExtraSmall) {
+                                PhoneNumberField($phoneNumber, inputError: $phoneNumberInputError)
+                                    .padding(.horizontal, .spacingUnit * 2.5)
+                                    .modifier(RoundedThinOutlineContainer(padded: false))
+                                if let error = phoneNumberInputError {
+                                    Text(error.localizedDescription)
+                                        .rythmicoFont(.callout)
+                                        .foregroundColor(.rythmicoRed)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .transition(
+                                            AnyTransition
+                                                .opacity
+                                                .combined(with: .offset(x: 0, y: -.spacingMedium))
+                                        )
+                                }
                             }
                         }
+                        .fixedSize(horizontal: false, vertical: true)
+                    }
+
+                    SectionHeaderContentView(title: "Price Per Lesson") {
+                        VStack(spacing: .spacingExtraSmall) {
+                            MultiStyleText(parts: price)
+                            Text(priceExplanation)
+                                .lineSpacing(3)
+                                .rythmicoFont(.callout)
+                                .foregroundColor(.rythmicoGray90)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        .fixedSize(horizontal: false, vertical: true)
                     }
                 }
                 .padding(.horizontal, .spacingMedium)
@@ -59,6 +74,15 @@ struct LessonPlanBookingView: View {
         "Enter a contact number of the ".color(.rythmicoGray90) +
         "parent/guardian".style(.bodyBold).color(.rythmicoGray90) +
         " of the student.".color(.rythmicoGray90)
+    }
+
+    var price: [MultiStyleText.Part] {
+        "£60".style(.headline).color(.rythmicoGray90) +
+        " per lesson".color(.rythmicoGray90)
+    }
+
+    var priceExplanation: String {
+        "This is based on the standard £60 per hour rate for all guitar tutors for the specific date and time selected."
     }
 }
 
