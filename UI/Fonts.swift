@@ -72,11 +72,11 @@ enum RythmicoFontStyle {
         }
     }
 
-    fileprivate func size(for sizeCategory: ContentSizeCategory) -> CGFloat {
+    fileprivate func size<CSC: ContentSizeCategoryProtocol>(for sizeCategory: CSC) -> CGFloat {
         regularSize * sizeCategory.sizeFactor
     }
 
-    fileprivate func weight(for legibilityWeight: LegibilityWeight?) -> Font.Weight {
+    fileprivate func weight<LW: LegibilityWeightProtocol>(for legibilityWeight: LW?) -> Font.Weight {
         legibilityWeight == .bold ? regularWeight.bolder : regularWeight
     }
 }
@@ -115,10 +115,11 @@ extension Font {
 }
 
 extension UIFont {
-    static func rythmicoFont(_ style: RythmicoFontStyle) -> UIFont {
-        let sizeCategory = ContentSizeCategory(UITraitCollection.current.preferredContentSizeCategory)!
-        let legibilityWeight = LegibilityWeight(UITraitCollection.current.legibilityWeight)
-
+    static func rythmicoFont<CSC: ContentSizeCategoryProtocol, LW: LegibilityWeightProtocol>(
+        _ style: RythmicoFontStyle,
+        sizeCategory: CSC,
+        legibilityWeight: LW?
+    ) -> UIFont {
         let fontSize = style.size(for: sizeCategory)
         let fontWeight = UIFont.Weight(style.weight(for: legibilityWeight))
         let baseFont = UIFont.systemFont(ofSize: fontSize, weight: fontWeight)
@@ -126,16 +127,13 @@ extension UIFont {
 
         return UIFont(descriptor: descriptor, size: fontSize)
     }
-}
 
-private extension LegibilityWeight {
-    init?(_ legibilityWeight: UILegibilityWeight) {
-        switch legibilityWeight {
-        case .bold: self = .bold
-        case .regular: self = .regular
-        case .unspecified: return nil
-        @unknown default: return nil
-        }
+    static func rythmicoFont(_ style: RythmicoFontStyle) -> UIFont {
+        rythmicoFont(
+            style,
+            sizeCategory: UITraitCollection.current.preferredContentSizeCategory,
+            legibilityWeight: UITraitCollection.current.legibilityWeight
+        )
     }
 }
 
