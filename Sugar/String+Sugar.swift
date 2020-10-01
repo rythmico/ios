@@ -53,3 +53,9 @@ extension String {
             .joined()
     }
 }
+
+extension Collection where Element: StringProtocol {
+    public func spaced() -> String {
+        joined(separator: .whitespace)
+    }
+}

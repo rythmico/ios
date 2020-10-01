@@ -13,7 +13,7 @@ struct BookingApplicationGroupView: View {
     }
 
     private var title: String {
-        [status.title, "Requests"].joined(separator: " ")
+        [status.title, "Requests"].spaced()
     }
 }
 

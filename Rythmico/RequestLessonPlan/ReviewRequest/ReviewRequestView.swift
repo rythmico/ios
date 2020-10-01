@@ -152,12 +152,12 @@ struct ReviewRequestView: View, TestableView {
     private func studentAge(from dateOfBirth: Date) -> String {
         let dateOfBirthString = dateOfBirthFormatter.string(from: dateOfBirth)
         let age = Current.calendar().diff(from: dateOfBirth, to: Current.date(), in: .year)
-        return [dateOfBirthString, "(\(age) years old)"].compact().joined(separator: .whitespace)
+        return [dateOfBirthString, "(\(age) years old)"].compact().spaced()
     }
 
     private var studentAbout: [MultiStyleText.Part] {
         guard !student.about.isEmpty else { return .empty }
-        let aboutHeader = ["About", student.name.firstWord].compact().joined(separator: .whitespace)
+        let aboutHeader = ["About", student.name.firstWord].compact().spaced()
         return [
             (aboutHeader + ":\n").style(.bodyBold).color(.rythmicoGray90),
             student.about.color(.rythmicoGray90)
