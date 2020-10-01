@@ -56,32 +56,19 @@ enum RythmicoFontStyle {
 
     private var regularWeight: Font.Weight {
         switch self {
-        case .largeTitle:
-            return .bold
-        case .headline:
-            return .bold
-        case .subheadlineBold:
-            return .bold
-        case .subheadline:
-            return .regular
-        case .bodyBold:
-            return .bold
-        case .bodySemibold:
-            return .semibold
-        case .bodyMedium:
-            return .medium
-        case .body:
-            return .regular
-        case .calloutBold:
-            return .bold
-        case .callout:
-            return .regular
-        case .footnoteBold:
-            return .bold
-        case .footnote:
-            return .regular
-        case .caption:
-            return .bold
+        case .largeTitle: return .bold
+        case .headline: return .bold
+        case .subheadlineBold: return .bold
+        case .subheadline: return .regular
+        case .bodyBold: return .bold
+        case .bodySemibold: return .semibold
+        case .bodyMedium: return .medium
+        case .body: return .regular
+        case .calloutBold: return .bold
+        case .callout: return .regular
+        case .footnoteBold: return .bold
+        case .footnote: return .regular
+        case .caption: return .bold
         }
     }
 
