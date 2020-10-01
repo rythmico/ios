@@ -2,9 +2,11 @@ import SwiftUI
 
 struct ScheduleDetailsView: View {
     var schedule: Schedule
+    var tutor: LessonPlan.Tutor?
 
-    init(_ schedule: Schedule) {
+    init(_ schedule: Schedule, tutor: LessonPlan.Tutor?) {
         self.schedule = schedule
+        self.tutor = tutor
     }
 
     var body: some View {
@@ -33,6 +35,17 @@ struct ScheduleDetailsView: View {
                 MultiStyleText(parts: frequencyText)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+
+            if let tutor = tutor {
+                HStack(spacing: .spacingExtraSmall) {
+                    Image(decorative: Asset.iconTime.name).hidden()
+                    HStack(spacing: .spacingExtraSmall) {
+                        LessonPlanTutorAvatarView(tutor, mode: .thumbnail).fixedSize()
+                        TutorAcceptedStatusPill(tutor: tutor)
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
         }
     }
 
@@ -50,6 +63,19 @@ struct ScheduleDetailsView: View {
     private let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
     private var frequencyDayText: String { frequencyDayFormatter.string(from: schedule.startDate) }
     private var frequencyText: [MultiStyleText.Part] {
-        "Reocurring ".color(.rythmicoGray90) + "every \(frequencyDayText)".style(.bodyBold).color(.rythmicoGray90)
+        "Reocurring ".color(.rythmicoGray90) +
+        "every \(frequencyDayText)".style(.bodyBold).color(.rythmicoGray90) +
+        " at the same time and for the same duration".color(.rythmicoGray90)
+    }
+}
+
+struct ScheduleDetailsView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ScheduleDetailsView(.stub, tutor: .none)
+            ScheduleDetailsView(.stub, tutor: .davidStub)
+        }
+        .previewLayout(.sizeThatFits)
+        .padding()
     }
 }

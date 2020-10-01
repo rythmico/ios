@@ -101,7 +101,7 @@ struct ReviewRequestView: View, TestableView {
                             padding: Const.headerPadding,
                             accessory: editButton(performing: editSchedule)
                         ) {
-                            ScheduleDetailsView(schedule)
+                            ScheduleDetailsView(schedule, tutor: nil)
                         }
 
                         privateNote.nilIfEmpty.map { privateNote in

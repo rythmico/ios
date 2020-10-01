@@ -38,10 +38,10 @@ struct LessonPlanApplicationDetailMessageView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .fixedSize(horizontal: false, vertical: true)
 
-                        AcceptedStatusPill()
+                        TutorAcceptedStatusPill()
                     }
 
-                    ScheduleDetailsView(lessonPlan.schedule)
+                    ScheduleDetailsView(lessonPlan.schedule, tutor: nil)
                 }
                 .frame(maxWidth: .spacingMax)
                 .padding(.horizontal, .spacingMedium)
