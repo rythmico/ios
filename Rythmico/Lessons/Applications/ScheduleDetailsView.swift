@@ -20,7 +20,6 @@ struct ScheduleDetailsView: View {
                     startDateText.color(.rythmicoGray90).style(.bodyBold)
                 ])
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
 
             HStack(spacing: .spacingExtraSmall) {
                 Image(decorative: Asset.iconTime.name)
@@ -28,13 +27,11 @@ struct ScheduleDetailsView: View {
                     .foregroundColor(.rythmicoGray90)
                 MultiStyleText(parts: startTimeAndDurationText)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
 
             HStack(spacing: .spacingExtraSmall) {
                 Image(decorative: Asset.iconTime.name).hidden()
                 MultiStyleText(parts: frequencyText)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
 
             if let tutor = tutor {
                 HStack(spacing: .spacingExtraSmall) {
@@ -44,7 +41,6 @@ struct ScheduleDetailsView: View {
                         TutorAcceptedStatusPill(tutor: tutor)
                     }
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
     }

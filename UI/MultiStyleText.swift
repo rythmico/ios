@@ -22,6 +22,7 @@ struct MultiStyleText: View {
                     )
                     .foregroundColor(part.color)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             .lineSpacing(6)
         }
     }
