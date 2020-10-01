@@ -1,4 +1,5 @@
 import SwiftUI
+import Sugar
 
 struct LessonPlanSummaryCell: View {
     var lessonPlan: LessonPlan
@@ -20,7 +21,7 @@ struct LessonPlanSummaryCellMainContent: View {
         [
             lessonPlan.student.name.firstWord,
             "\(lessonPlan.instrument.name) Lessons"
-        ].compactMap { $0 }.joined(separator: " - ")
+        ].compact().joined(separator: " - ")
     }
 
     var subtitle: String {

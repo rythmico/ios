@@ -17,7 +17,7 @@ struct LessonPlanDetailView: View, TestableView, RoutableView {
         [
             lessonPlan.student.name.firstWord,
             "\(lessonPlan.instrument.name) Lessons"
-        ].compactMap { $0 }.joined(separator: " - ")
+        ].compact().joined(separator: " - ")
     }
 
     func showCancelLessonPlanForm() {
