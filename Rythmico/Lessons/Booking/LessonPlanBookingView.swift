@@ -33,7 +33,11 @@ struct LessonPlanBookingView: View {
     }
 
     var subtitle: [MultiStyleText.Part] {
-        ["Review the proposed lesson plan and price per lesson before booking".part]
+        "Review the ".color(.rythmicoGray90) +
+        "proposed lesson plan".color(.rythmicoGray90).style(.bodyBold) +
+        " and ".color(.rythmicoGray90) +
+        "price per lesson".color(.rythmicoGray90).style(.bodyBold) +
+        " before booking".color(.rythmicoGray90)
     }
 
     var contactNumberInstructions: [MultiStyleText.Part] {
