@@ -415,6 +415,7 @@
 		D5CC5FF225029525007DFE84 /* ImageReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC5FF025029525007DFE84 /* ImageReference.swift */; };
 		D5D78DD7252502CE007041BE /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = D5D78DD6252502CE007041BE /* PhoneNumberKit */; };
 		D5D78DE025250864007041BE /* LessonPlanBookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D78DDF25250864007041BE /* LessonPlanBookingView.swift */; };
+		D5D78E0C25257800007041BE /* PhoneNumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D78E0B25257800007041BE /* PhoneNumberField.swift */; };
 		D5E04B1923BED80700A161BB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* Fonts.swift */; };
 		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
 		D5E987B924ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
@@ -802,6 +803,7 @@
 		D5CC5FEC25027F64007DFE84 /* ImageReference+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageReference+Sugar.swift"; sourceTree = "<group>"; };
 		D5CC5FF025029525007DFE84 /* ImageReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReference.swift; sourceTree = "<group>"; };
 		D5D78DDF25250864007041BE /* LessonPlanBookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanBookingView.swift; sourceTree = "<group>"; };
+		D5D78E0B25257800007041BE /* PhoneNumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberField.swift; sourceTree = "<group>"; };
 		D5E04B1823BED80700A161BB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Sugar.swift"; sourceTree = "<group>"; };
@@ -1410,6 +1412,7 @@
 				D5CAC9AD24E6D67C00119DAA /* MultilineTextField+Tutor.swift */,
 				D5200E3F23FDE460007168E0 /* MultiStyleText.swift */,
 				D5882501251CBE0C000820F4 /* NavigationViewFixInteractiveDismissal.swift */,
+				D5D78E0B25257800007041BE /* PhoneNumberField.swift */,
 				03AAF66B2444FFCC002D8F5B /* Pickers.swift */,
 				03C39DD52496802500C76516 /* Pill.swift */,
 				03A3F6E42447B7BD00F6391D /* PreviewDevices.swift */,
@@ -2161,6 +2164,7 @@
 				0372E366249AE3FC0048B402 /* LessonPlanCancellationConfirmationView.swift in Sources */,
 				D50811E423FB72A3008103D8 /* StepBar.swift in Sources */,
 				D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */,
+				D5D78E0C25257800007041BE /* PhoneNumberField.swift in Sources */,
 				D5BF12B325068E7000B2931C /* PushNotificationEvent.swift in Sources */,
 				D527B00924FD2047003E81A9 /* AvatarView.swift in Sources */,
 				03021C4F248A769200C0C57E /* LessonPlanSummaryCell.swift in Sources */,
