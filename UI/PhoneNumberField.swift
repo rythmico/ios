@@ -4,15 +4,13 @@ import PhoneNumberKit
 struct PhoneNumberField: UIViewRepresentable {
 
     @Binding var phoneNumber: PhoneNumber?
-    var defaultRegion: String?
 
-    init(_ phoneNumber: Binding<PhoneNumber?>, defaultRegion: String? = nil) {
+    init(_ phoneNumber: Binding<PhoneNumber?>) {
         self._phoneNumber = phoneNumber
-        self.defaultRegion = defaultRegion
     }
 
     func makeUIView(context: Context) -> PhoneNumberTextField {
-        RythmicoPhoneNumberTextField(defaultRegion: defaultRegion).then {
+        RythmicoPhoneNumberTextField(defaultRegion: context.environment.locale.regionCode).then {
             $0.withFlag = true
             $0.withPrefix = true
             $0.withExamplePlaceholder = true
@@ -24,8 +22,14 @@ struct PhoneNumberField: UIViewRepresentable {
         }
     }
 
-    func updateUIView(_ view: PhoneNumberTextField, context: Context) {
-        view.font = .rythmicoFont(.body)
+    func updateUIView(_ uiView: PhoneNumberTextField, context: Context) {
+        let uiView = uiView as! RythmicoPhoneNumberTextField
+        let env = context.environment
+
+        uiView._defaultRegion = env.locale.regionCode
+        uiView.font = .rythmicoFont(.body, sizeCategory: env.sizeCategory, legibilityWeight: env.legibilityWeight)
+        uiView.updateFlag()
+        uiView.updatePlaceholder()
     }
 
     func makeCoordinator() -> Coordinator {
@@ -46,18 +50,20 @@ struct PhoneNumberField: UIViewRepresentable {
 }
 
 private final class RythmicoPhoneNumberTextField: PhoneNumberTextField {
-    private let _defaultRegion: String?
+    private var padding: UIEdgeInsets {
+        UIEdgeInsets(
+            top: 15,
+            left: flagButton.frame.width,
+            bottom: 15,
+            right: 16
+        )
+    }
 
-    private let padding = UIEdgeInsets(
-        top: 15,
-        left: .spacingUnit * 7.5,
-        bottom: 15,
-        right: .spacingSmall
-    )
+    var _defaultRegion: String?
 
     init(defaultRegion: String?) {
         self._defaultRegion = defaultRegion
-        super.init(frame: .zero, phoneNumberKit: PhoneNumberKit())
+        super.init(frame: .zero)
     }
 
     override var defaultRegion: String {

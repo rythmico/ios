@@ -18,7 +18,7 @@ struct LessonPlanBookingView: View {
                     SectionHeaderView(title: "Contact Number")
                     VStack(spacing: .spacingSmall) {
                         MultiStyleText(parts: contactNumberInstructions)
-                        PhoneNumberField($phoneNumber, defaultRegion: Current.locale.regionCode)
+                        PhoneNumberField($phoneNumber)
                             .padding(.horizontal, .spacingUnit * 2.5)
                             .modifier(RoundedThinOutlineContainer(padded: false))
                     }
@@ -51,5 +51,7 @@ struct LessonPlanBookingView_Previews: PreviewProvider {
     static var previews: some View {
         LessonPlanBookingView(lessonPlan: .davidGuitarPlanStub, application: .davidStub)
 //            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+            .environment(\.locale, Current.locale)
+            .environment(\.legibilityWeight, .bold)
     }
 }
