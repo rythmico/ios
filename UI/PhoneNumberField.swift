@@ -4,9 +4,11 @@ import PhoneNumberKit
 struct PhoneNumberField: UIViewRepresentable {
 
     @Binding var phoneNumber: PhoneNumber?
+    @Binding var inputError: Error?
 
-    init(_ phoneNumber: Binding<PhoneNumber?>) {
+    init(_ phoneNumber: Binding<PhoneNumber?>, inputError: Binding<Error?> = .constant(nil)) {
         self._phoneNumber = phoneNumber
+        self._inputError = inputError
     }
 
     func makeUIView(context: Context) -> PhoneNumberTextField {
@@ -45,7 +47,14 @@ struct PhoneNumberField: UIViewRepresentable {
 
         @objc func onTextUpdate(textField: PhoneNumberTextField) {
             control.phoneNumber = textField.phoneNumber
+            control.inputError = textField.validationError
         }
+    }
+}
+
+private extension PhoneNumberTextField {
+    var validationError: Error? {
+        Result { try text.map { try phoneNumberKit.parse($0) } }.failureValue
     }
 }
 

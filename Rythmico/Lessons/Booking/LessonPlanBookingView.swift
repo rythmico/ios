@@ -6,6 +6,7 @@ struct LessonPlanBookingView: View {
     var application: LessonPlan.Application
 
     @State var phoneNumber: PhoneNumber?
+    @State var phoneNumberInputError: Error?
 
     var body: some View {
         TitleSubtitleContentView(title: title, subtitle: subtitle) {
@@ -18,12 +19,26 @@ struct LessonPlanBookingView: View {
                     SectionHeaderView(title: "Contact Number")
                     VStack(spacing: .spacingSmall) {
                         MultiStyleText(parts: contactNumberInstructions)
-                        PhoneNumberField($phoneNumber)
-                            .padding(.horizontal, .spacingUnit * 2.5)
-                            .modifier(RoundedThinOutlineContainer(padded: false))
+                        VStack(spacing: .spacingExtraSmall) {
+                            PhoneNumberField($phoneNumber, inputError: $phoneNumberInputError)
+                                .padding(.horizontal, .spacingUnit * 2.5)
+                                .modifier(RoundedThinOutlineContainer(padded: false))
+                            if let error = phoneNumberInputError {
+                                Text(error.localizedDescription)
+                                    .rythmicoFont(.callout)
+                                    .foregroundColor(.rythmicoRed)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .transition(
+                                        AnyTransition
+                                            .opacity
+                                            .combined(with: .offset(x: 0, y: -.spacingMedium))
+                                    )
+                            }
+                        }
                     }
                 }
                 .padding(.horizontal, .spacingMedium)
+                .animation(.rythmicoSpring(duration: .durationShort), value: phoneNumberInputError != nil)
             }
         }
     }
