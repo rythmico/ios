@@ -10,11 +10,9 @@ struct SectionHeaderView<Accessory: View>: View {
                 .lineLimit(1)
                 .rythmicoFont(.footnoteBold)
                 .foregroundColor(.rythmicoGray90)
-            VStack {
-                Divider()
-                    .frame(minWidth: .spacingMedium, maxWidth: .infinity)
-                    .background(Color.rythmicoGray20)
-            }
+                .fixedSize(horizontal: true, vertical: false)
+            Color.rythmicoGray20
+                .frame(maxWidth: .infinity, maxHeight: 0.5)
             accessory
         }
     }
