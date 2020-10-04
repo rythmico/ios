@@ -53,8 +53,6 @@ struct LessonPlanDetailView: View, TestableView, RoutableView {
                                 .renderingMode(.template)
                                 .offset(x: 0, y: .spacingUnit / 2)
                             Text(lessonPlan.address.condensedFormattedString)
-                                .lineLimit(2)
-                                .minimumScaleFactor(0.7)
                                 .lineSpacing(.spacingUnit)
                         }
                         LessonPlanTutorStatusView(lessonPlan.status, summarized: false)
