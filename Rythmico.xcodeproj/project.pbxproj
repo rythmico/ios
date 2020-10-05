@@ -419,6 +419,8 @@
 		D5D78E172525F531007041BE /* LegibilityWeight+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D78E162525F531007041BE /* LegibilityWeight+Sugar.swift */; };
 		D5D974F425263FAF000AD074 /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D974F325263FAF000AD074 /* PhoneNumber.swift */; };
 		D5D974F925263FB9000AD074 /* PhoneNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D974F825263FB9000AD074 /* PhoneNumberTests.swift */; };
+		D5D97514252B9EB6000AD074 /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = D5D97513252B9EB6000AD074 /* Stripe */; };
+		D5D97515252B9EB6000AD074 /* Stripe in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D5D97513252B9EB6000AD074 /* Stripe */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D5E04B1923BED80700A161BB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* Fonts.swift */; };
 		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
 		D5E987B924ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
@@ -516,6 +518,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D53554FD23E0FD77005A20EB /* Sugar.framework in Embed Frameworks */,
+				D5D97515252B9EB6000AD074 /* Stripe in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -877,6 +880,7 @@
 				D535547723DF3A19005A20EB /* Valet in Frameworks */,
 				D585217624CF81CE005D783A /* Introspect in Frameworks */,
 				D52C551324DC6C3A00C295C4 /* FirebaseAnalytics.framework in Frameworks */,
+				D5D97514252B9EB6000AD074 /* Stripe in Frameworks */,
 				D52C551F24DC6C3B00C295C4 /* FirebaseInstanceID.framework in Frameworks */,
 				D52C551524DC6C3A00C295C4 /* FirebaseAuth.framework in Frameworks */,
 				D52C551924DC6C3B00C295C4 /* FirebaseCoreDiagnostics.framework in Frameworks */,
@@ -1829,6 +1833,7 @@
 				03B19836247053F5005529EB /* APIKit */,
 				D585217524CF81CE005D783A /* Introspect */,
 				D5D78DD6252502CE007041BE /* PhoneNumberKit */,
+				D5D97513252B9EB6000AD074 /* Stripe */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -1972,6 +1977,7 @@
 				D585217424CF81CE005D783A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				D5F4D3DC24F031FA000E8580 /* XCRemoteSwiftPackageReference "swiftui-mapview" */,
 				D5D78DD5252502CE007041BE /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
+				D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */,
 			);
 			productRefGroup = 03341B3C23ABB1E7009AE8A8 /* Products */;
 			projectDirPath = "";
@@ -3112,6 +3118,14 @@
 				minimumVersion = 3.3.1;
 			};
 		};
+		D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stripe/stripe-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 20.0.0;
+			};
+		};
 		D5F4D3DC24F031FA000E8580 /* XCRemoteSwiftPackageReference "swiftui-mapview" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sgade/swiftui-mapview";
@@ -3187,6 +3201,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5D78DD5252502CE007041BE /* XCRemoteSwiftPackageReference "PhoneNumberKit" */;
 			productName = PhoneNumberKit;
+		};
+		D5D97513252B9EB6000AD074 /* Stripe */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = Stripe;
 		};
 		D5F4D3DD24F031FA000E8580 /* SwiftUIMapView */ = {
 			isa = XCSwiftPackageProductDependency;
