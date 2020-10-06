@@ -43,7 +43,7 @@ struct LessonPlanApplicationDetailAboutView: View, VisibleView {
             VStack(spacing: .spacingSmall) {
                 HStack(spacing: .spacingSmall) {
                     header("Bio")
-                    MultiStyleText(parts: age(from: portfolio))
+                    MultiStyleText(parts: age(from: portfolio), alignment: .trailing)
                 }
 
                 bio(from: portfolio)
@@ -95,7 +95,6 @@ struct LessonPlanApplicationDetailAboutView: View, VisibleView {
             .rythmicoFont(.subheadlineBold)
             .foregroundColor(.rythmicoForeground)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .fixedSize(horizontal: false, vertical: true)
     }
 
     @ViewBuilder

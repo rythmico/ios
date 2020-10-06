@@ -6,6 +6,7 @@ struct MultiStyleText: View {
     @Environment(\.legibilityWeight) private var legibilityWeight
 
     var parts: [Part]
+    var alignment: Alignment = .leading
 
     var body: some View {
         if parts.isEmpty {
@@ -22,7 +23,7 @@ struct MultiStyleText: View {
                     )
                     .foregroundColor(part.color)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .frame(maxWidth: .infinity, alignment: alignment)
             .lineSpacing(6)
         }
     }
