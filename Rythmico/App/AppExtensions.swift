@@ -1,7 +1,12 @@
+import Stripe
 import UIKit
 import Then
 
 extension App {
+    func main() {
+        Stripe.setDefaultPublishableKey(AppSecrets.stripePublishableKey)
+    }
+
     func didEnterBackground() {
         Current.sharedCoordinator(for: \.lessonPlanFetchingService)?.reset()
     }

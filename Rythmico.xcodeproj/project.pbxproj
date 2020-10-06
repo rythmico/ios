@@ -332,6 +332,7 @@
 		D564F4642511722900EA13E9 /* TabMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D564F4632511722900EA13E9 /* TabMenuView.swift */; };
 		D56544D324CE4BA100281875 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = D56544D224CE4BA100281875 /* ViewInspector */; };
 		D56544D524CE4C8D00281875 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = D56544D424CE4C8D00281875 /* ViewInspector */; };
+		D56B2523252CF76300BC3932 /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B2522252CF76300BC3932 /* AppSecrets.swift */; };
 		D577EEA724E6F66400253EA1 /* BookingRequestApplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */; };
 		D58149E9251D262B0009BBB3 /* DotPageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58149E8251D262B0009BBB3 /* DotPageIndicator.swift */; };
 		D58149ED251D262F0009BBB3 /* Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E824F09C43000E8580 /* Dot.swift */; };
@@ -743,6 +744,7 @@
 		D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetInteractiveDismissal.swift; sourceTree = "<group>"; };
 		D55F013224CCE65C00E5F13C /* Then+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Then+Sugar.swift"; sourceTree = "<group>"; };
 		D564F4632511722900EA13E9 /* TabMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuView.swift; sourceTree = "<group>"; };
+		D56B2522252CF76300BC3932 /* AppSecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecrets.swift; sourceTree = "<group>"; };
 		D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestApplyView.swift; sourceTree = "<group>"; };
 		D58149E8251D262B0009BBB3 /* DotPageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotPageIndicator.swift; sourceTree = "<group>"; };
 		D58149F4251D6F770009BBB3 /* InteractiveBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveBackground.swift; sourceTree = "<group>"; };
@@ -1102,9 +1104,9 @@
 		035B1D18249E567700AABFEA /* App */ = {
 			isa = PBXGroup;
 			children = (
-				03E88EAE24C1F74D0077A420 /* AppExtensions.swift */,
 				035B1D19249E568600AABFEA /* AppEnvironment.swift */,
 				03E88E8E24BC9FAF0077A420 /* AppEnvironment+Instances.swift */,
+				03E88EAE24C1F74D0077A420 /* AppExtensions.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -1163,9 +1165,10 @@
 		03A91EFA24918AEC00DEAD5E /* App */ = {
 			isa = PBXGroup;
 			children = (
-				03341B3E23ABB1E7009AE8A8 /* AppExtensions.swift */,
 				03275AD4248FDB38009C3980 /* AppEnvironment.swift */,
 				03A91EF1249186EC00DEAD5E /* AppEnvironment+Instances.swift */,
+				03341B3E23ABB1E7009AE8A8 /* AppExtensions.swift */,
+				D56B2522252CF76300BC3932 /* AppSecrets.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -2339,6 +2342,7 @@
 				D58824C4251A6D49000820F4 /* LessonsCollectionView.swift in Sources */,
 				03C39DDA2496DBC700C76516 /* LessonPlanDetailView.swift in Sources */,
 				D55F013024CCC57400E5F13C /* EnumProperties.swift in Sources */,
+				D56B2523252CF76300BC3932 /* AppSecrets.swift in Sources */,
 				03C39DD424967E5B00C76516 /* TitleContentView.swift in Sources */,
 				032B6FDB24B7890700299A09 /* Duration+CasePickable.swift in Sources */,
 				03C34362249FC16E004907DF /* APIUserAgent.swift in Sources */,

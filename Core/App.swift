@@ -22,6 +22,7 @@ struct App: SwiftUI.App {
         configureAppearance()
         configureFirebase()
         configurePushNotifications()
+        main()
         Thread.sleep(forTimeInterval: Const.launchScreenDelay)
     }
 
