@@ -18,6 +18,9 @@ struct LessonPlanApplicationDetailView: View {
     @State
     private var tab: Tab = .message
 
+    @State
+    private var showingBookingView = false
+
     var lessonPlan: LessonPlan
     var application: LessonPlan.Application
 
@@ -60,7 +63,12 @@ struct LessonPlanApplicationDetailView: View {
             }
 
             FloatingView {
-                Button(bookButtonTitle, action: {}).primaryStyle()
+                NavigationLink(
+                    destination: LessonPlanBookingView(lessonPlan: lessonPlan, application: application),
+                    isActive: $showingBookingView
+                ) {
+                    Button(bookButtonTitle, action: book).primaryStyle()
+                }
             }
         }
         .onDisappear(perform: coordinator.cancel)
@@ -68,6 +76,10 @@ struct LessonPlanApplicationDetailView: View {
 
     private var bookButtonTitle: String {
         application.tutor.name.firstWord.map { "Book \($0)" } ?? "Book"
+    }
+
+    private func book() {
+        showingBookingView = true
     }
 
     private func back() {
