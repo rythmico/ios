@@ -8,12 +8,6 @@ struct StripePaymentCardTextField: UIViewRepresentable {
 
     func makeUIView(context: Context) -> STPPaymentCardTextField {
         STPPaymentCardTextField().then { view in
-            #if DEBUG
-            view.cardParams = cardDetails
-            DispatchQueue.main.async {
-                view.resignFirstResponder()
-            }
-            #endif
             view.borderWidth = 0
             view.postalCodeEntryEnabled = false
             view.delegate = context.coordinator
@@ -21,6 +15,11 @@ struct StripePaymentCardTextField: UIViewRepresentable {
             view.textErrorColor = .rythmicoRed
             view.placeholderColor = .rythmicoGray30
             view.setContentHuggingPriority(.required, for: .vertical)
+
+            context.coordinator.performWithoutEditing {
+                view.cardParams = cardDetails
+                self.cardIsValid = view.isValid
+            }
         }
     }
 
@@ -33,10 +32,23 @@ struct StripePaymentCardTextField: UIViewRepresentable {
     }
 
     class Coordinator: NSObject, STPPaymentCardTextFieldDelegate {
-        var parent: StripePaymentCardTextField
+        private var parent: StripePaymentCardTextField
+        private var isEditingEnabled = true
 
         init(_ textField: StripePaymentCardTextField) {
             parent = textField
+        }
+
+        func paymentCardTextFieldDidBeginEditing(_ textField: STPPaymentCardTextField) {
+            if !isEditingEnabled {
+                textField.resignFirstResponder()
+                isEditingEnabled = true
+            }
+        }
+
+        func performWithoutEditing(_ setter: () -> Void) {
+            isEditingEnabled = false
+            setter()
         }
 
         func paymentCardTextFieldDidChange(_ textField: STPPaymentCardTextField) {
