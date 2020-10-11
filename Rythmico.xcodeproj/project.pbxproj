@@ -428,6 +428,8 @@
 		D5D9AE3F25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE3E25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift */; };
 		D5D9AE4425335B0400A0ABCC /* StripeCardDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE4325335B0400A0ABCC /* StripeCardDetails.swift */; };
 		D5D9AE4F253367A100A0ABCC /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE4E253367A100A0ABCC /* Divider.swift */; };
+		D5D9AE5C2533865D00A0ABCC /* Button+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE5B2533865D00A0ABCC /* Button+Sugar.swift */; };
+		D5D9AE632533866200A0ABCC /* Button+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE5B2533865D00A0ABCC /* Button+Sugar.swift */; };
 		D5E04B1923BED80700A161BB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* Fonts.swift */; };
 		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
 		D5E987B924ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
@@ -827,6 +829,7 @@
 		D5D9AE3E25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCardDetailsDoubles.swift; sourceTree = "<group>"; };
 		D5D9AE4325335B0400A0ABCC /* StripeCardDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCardDetails.swift; sourceTree = "<group>"; };
 		D5D9AE4E253367A100A0ABCC /* Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
+		D5D9AE5B2533865D00A0ABCC /* Button+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Sugar.swift"; sourceTree = "<group>"; };
 		D5E04B1823BED80700A161BB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Sugar.swift"; sourceTree = "<group>"; };
@@ -1412,6 +1415,7 @@
 				D527B00A24FD3297003E81A9 /* AvatarStackView.swift */,
 				D527B00824FD2047003E81A9 /* AvatarView.swift */,
 				D5F5065C23FF16AA00CA4094 /* BackButton.swift */,
+				D5D9AE5B2533865D00A0ABCC /* Button+Sugar.swift */,
 				D5F506B9240637F400CA4094 /* Buttons+Rythmico.swift */,
 				D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */,
 				031378C4249A7453005FC49C /* CloseButton.swift */,
@@ -2360,6 +2364,7 @@
 				03B19843247181B3005529EB /* RequestLessonPlanFormView.swift in Sources */,
 				035B1D14249E565200AABFEA /* TestableView.swift in Sources */,
 				D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */,
+				D5D9AE5C2533865D00A0ABCC /* Button+Sugar.swift in Sources */,
 				033D47D6247ABF6B0096C50F /* LessonPlanEndpoints.swift in Sources */,
 				D5F5068C24046B1400CA4094 /* Spacing.swift in Sources */,
 				D535547923DF3A7C005A20EB /* Keychain.swift in Sources */,
@@ -2384,6 +2389,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5D9AE632533866200A0ABCC /* Button+Sugar.swift in Sources */,
 				03E88EB624C4AD820077A420 /* APIActivityCoordinator.swift in Sources */,
 				035B1D40249E577700AABFEA /* AppleAuthorizationCredentialStateProvider.swift in Sources */,
 				03E88E8D24BC8C1D0077A420 /* AppContext.swift in Sources */,
