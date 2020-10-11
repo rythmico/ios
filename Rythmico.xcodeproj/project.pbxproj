@@ -424,6 +424,8 @@
 		D5D974F925263FB9000AD074 /* PhoneNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D974F825263FB9000AD074 /* PhoneNumberTests.swift */; };
 		D5D97514252B9EB6000AD074 /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = D5D97513252B9EB6000AD074 /* Stripe */; };
 		D5D97515252B9EB6000AD074 /* Stripe in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D5D97513252B9EB6000AD074 /* Stripe */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		D5D9AE3F25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE3E25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift */; };
+		D5D9AE4425335B0400A0ABCC /* StripeCardDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE4325335B0400A0ABCC /* StripeCardDetails.swift */; };
 		D5E04B1923BED80700A161BB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* Fonts.swift */; };
 		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
 		D5E987B924ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
@@ -819,6 +821,8 @@
 		D5D78E162525F531007041BE /* LegibilityWeight+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LegibilityWeight+Sugar.swift"; sourceTree = "<group>"; };
 		D5D974F325263FAF000AD074 /* PhoneNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumber.swift; sourceTree = "<group>"; };
 		D5D974F825263FB9000AD074 /* PhoneNumberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTests.swift; sourceTree = "<group>"; };
+		D5D9AE3E25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCardDetailsDoubles.swift; sourceTree = "<group>"; };
+		D5D9AE4325335B0400A0ABCC /* StripeCardDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCardDetails.swift; sourceTree = "<group>"; };
 		D5E04B1823BED80700A161BB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Sugar.swift"; sourceTree = "<group>"; };
@@ -1760,6 +1764,8 @@
 			children = (
 				D5D78DDF25250864007041BE /* LessonPlanBookingView.swift */,
 				D56B2530252D1A8100BC3932 /* StripePaymentCardTextField.swift */,
+				D5D9AE4325335B0400A0ABCC /* StripeCardDetails.swift */,
+				D5D9AE3E25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift */,
 			);
 			path = Booking;
 			sourceTree = "<group>";
@@ -2177,6 +2183,7 @@
 				D5D78E172525F531007041BE /* LegibilityWeight+Sugar.swift in Sources */,
 				D527B01624FEAA5F003E81A9 /* ImageLoadingService.swift in Sources */,
 				035AF30524919FEF004A01B2 /* AppleAuthorizationCredentialDoubles.swift in Sources */,
+				D5D9AE3F25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift in Sources */,
 				D5AAF7D123F9ACFA00E410F2 /* InstrumentSelectionView.swift in Sources */,
 				D53555B623E53699005A20EB /* AuthenticationService.swift in Sources */,
 				D53555BB23E53699005A20EB /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
@@ -2315,6 +2322,7 @@
 				D5147511240C99A9002EE20C /* CustomTextField.swift in Sources */,
 				03E88EA724C1F4960077A420 /* App+LaunchScreenCache.swift in Sources */,
 				D53555B823E53699005A20EB /* DeauthenticationServiceDoubles.swift in Sources */,
+				D5D9AE4425335B0400A0ABCC /* StripeCardDetails.swift in Sources */,
 				D53555B523E53699005A20EB /* AuthenticationError.swift in Sources */,
 				D53555CA23E536AE005A20EB /* AppleAuthorizationService.swift in Sources */,
 				D527B01724FEAA62003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */,

@@ -3,7 +3,7 @@ import Stripe
 import Then
 
 struct StripePaymentCardTextField: UIViewRepresentable {
-    @Binding var cardDetails: STPPaymentMethodCardParams
+    @Binding var cardDetails: StripeCardDetails
     @Binding var cardIsValid: Bool
 
     func makeUIView(context: Context) -> STPPaymentCardTextField {
