@@ -11,8 +11,7 @@ struct SectionHeaderView<Accessory: View>: View {
                 .rythmicoFont(.footnoteBold)
                 .foregroundColor(.rythmicoGray90)
                 .fixedSize(horizontal: true, vertical: false)
-            Color.rythmicoGray20
-                .frame(maxWidth: .infinity, maxHeight: 0.5)
+            HDivider()
             accessory
         }
     }
