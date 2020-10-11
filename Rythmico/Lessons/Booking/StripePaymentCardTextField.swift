@@ -18,7 +18,9 @@ struct StripePaymentCardTextField: UIViewRepresentable {
 
             context.coordinator.performWithoutEditing {
                 view.cardParams = cardDetails
-                self.cardIsValid = view.isValid
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                    self.cardIsValid = view.isValid
+                }
             }
         }
     }
@@ -52,8 +54,10 @@ struct StripePaymentCardTextField: UIViewRepresentable {
         }
 
         func paymentCardTextFieldDidChange(_ textField: STPPaymentCardTextField) {
-            parent.cardDetails = textField.cardParams
-            parent.cardIsValid = textField.isValid
+            DispatchQueue.main.asyncAfter(deadline: .now()) { [self] in
+                parent.cardDetails = textField.cardParams
+                parent.cardIsValid = textField.isValid
+            }
         }
     }
 }
