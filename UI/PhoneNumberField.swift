@@ -21,6 +21,8 @@ struct PhoneNumberField: UIViewRepresentable {
             $0.textColor = .rythmicoForeground
             $0.addTarget(context.coordinator, action: #selector(Coordinator.onTextUpdate), for: .editingChanged)
             $0.setContentHuggingPriority(.required, for: .vertical)
+
+            phoneNumber.map($0.setE164PhoneNumber)
         }
     }
 
@@ -53,6 +55,10 @@ struct PhoneNumberField: UIViewRepresentable {
 }
 
 private extension PhoneNumberTextField {
+    func setE164PhoneNumber(_ phoneNumber: PhoneNumber) {
+        text = phoneNumberKit.format(phoneNumber, toType: .e164)
+    }
+
     var validationError: Error? {
         Result { try text.map { try phoneNumberKit.parse($0) } }.failureValue
     }
