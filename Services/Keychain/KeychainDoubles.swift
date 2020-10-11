@@ -1,4 +1,3 @@
-#if DEBUG
 import Foundation
 import enum Valet.KeychainError
 
@@ -26,4 +25,3 @@ final class KeychainDummy: KeychainProtocol {
     func string(forKey key: String) throws -> String { throw KeychainError.itemNotFound }
     func removeObject(forKey key: String) throws {}
 }
-#endif

@@ -1,4 +1,3 @@
-#if DEBUG
 import Foundation
 import Then
 
@@ -123,4 +122,3 @@ extension Array where Element == LessonPlan.Application {
         .charlotteStub
     ]
 }
-#endif

@@ -1,4 +1,3 @@
-#if DEBUG
 import Foundation
 
 final class PushNotificationEventHandlerSpy: PushNotificationEventHandlerProtocol {
@@ -12,4 +11,3 @@ final class PushNotificationEventHandlerSpy: PushNotificationEventHandlerProtoco
 final class PushNotificationEventHandlerDummy: PushNotificationEventHandlerProtocol {
     func handle(_ event: PushNotificationEvent) {}
 }
-#endif

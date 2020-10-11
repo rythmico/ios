@@ -1,4 +1,3 @@
-#if DEBUG
 import Foundation
 import Sugar
 
@@ -17,4 +16,3 @@ final class InstrumentSelectionListProviderStub: InstrumentSelectionListProvider
 final class InstrumentSelectionListProviderDummy: InstrumentSelectionListProviderProtocol {
     func instruments(completion: Handler<[Instrument]>) {}
 }
-#endif

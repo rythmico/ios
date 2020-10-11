@@ -1,4 +1,3 @@
-#if DEBUG
 import Foundation
 import Sugar
 
@@ -23,4 +22,3 @@ extension Schedule {
         duration: .oneHour
     )
 }
-#endif

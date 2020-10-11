@@ -18,6 +18,7 @@ struct TutorAcceptedStatusPill: View {
     }
 }
 
+#if DEBUG
 struct TutorAcceptedStatusPill_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -28,3 +29,4 @@ struct TutorAcceptedStatusPill_Previews: PreviewProvider {
         .padding()
     }
 }
+#endif

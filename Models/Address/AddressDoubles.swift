@@ -1,4 +1,3 @@
-#if DEBUG
 import Foundation
 
 extension Address {
@@ -14,4 +13,3 @@ extension Address {
         country: "England"
     )
 }
-#endif

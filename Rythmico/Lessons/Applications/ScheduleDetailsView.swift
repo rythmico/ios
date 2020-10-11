@@ -65,6 +65,7 @@ struct ScheduleDetailsView: View {
     }
 }
 
+#if DEBUG
 struct ScheduleDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -75,3 +76,4 @@ struct ScheduleDetailsView_Previews: PreviewProvider {
         .padding()
     }
 }
+#endif

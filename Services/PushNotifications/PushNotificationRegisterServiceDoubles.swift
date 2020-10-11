@@ -1,4 +1,3 @@
-#if DEBUG
 import Foundation
 
 final class PushNotificationRegisterServiceSpy: PushNotificationRegisterServiceProtocol {
@@ -18,4 +17,3 @@ final class PushNotificationRegisterServiceDummy: PushNotificationRegisterServic
     func registerForRemoteNotifications() {}
     func unregisterForRemoteNotifications() {}
 }
-#endif

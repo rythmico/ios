@@ -1,4 +1,3 @@
-#if DEBUG
 import Foundation
 
 final class UserDefaultsFake: UserDefaultsProtocol {
@@ -17,4 +16,3 @@ final class UserDefaultsDummy: UserDefaultsProtocol {
     func object(forKey defaultName: String) -> Any? { nil }
     func set(_ value: Any?, forKey defaultName: String) {}
 }
-#endif

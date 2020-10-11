@@ -86,6 +86,7 @@ struct LessonPlanBookingView: View {
     }
 }
 
+#if DEBUG
 struct LessonPlanBookingView_Previews: PreviewProvider {
     static var previews: some View {
         LessonPlanBookingView(lessonPlan: .davidGuitarPlanStub, application: .davidStub)
@@ -94,3 +95,4 @@ struct LessonPlanBookingView_Previews: PreviewProvider {
 //            .environment(\.legibilityWeight, .bold)
     }
 }
+#endif

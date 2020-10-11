@@ -1,4 +1,3 @@
-#if DEBUG
 import Sugar
 
 final class AppleAuthorizationServiceStub: AppleAuthorizationServiceProtocol {
@@ -16,4 +15,3 @@ final class AppleAuthorizationServiceStub: AppleAuthorizationServiceProtocol {
 final class AppleAuthorizationServiceDummy: AppleAuthorizationServiceProtocol {
     func requestAuthorization(nonce: String, completionHandler: @escaping Handler<AuthorizationResult>) {}
 }
-#endif

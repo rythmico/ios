@@ -1,4 +1,3 @@
-#if DEBUG
 import Foundation
 import class UIKit.UIImage
 
@@ -67,4 +66,3 @@ final class ImageLoadingServiceDummy: ImageLoadingServiceProtocol {
         ActivityDummy()
     }
 }
-#endif

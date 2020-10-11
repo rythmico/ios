@@ -1,4 +1,3 @@
-#if DEBUG
 import Foundation
 import Sugar
 
@@ -59,4 +58,3 @@ extension BookingRequest.Student {
         about: ""
     )
 }
-#endif

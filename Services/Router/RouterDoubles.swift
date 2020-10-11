@@ -1,4 +1,3 @@
-#if DEBUG
 import Foundation
 import Sugar
 
@@ -24,4 +23,3 @@ final class RouterDummy: Router {
     override func open(_ route: Route) {}
     override func end() {}
 }
-#endif
