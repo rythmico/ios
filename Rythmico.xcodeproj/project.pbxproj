@@ -430,6 +430,11 @@
 		D5D9AE4F253367A100A0ABCC /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE4E253367A100A0ABCC /* Divider.swift */; };
 		D5D9AE5C2533865D00A0ABCC /* Button+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE5B2533865D00A0ABCC /* Button+Sugar.swift */; };
 		D5D9AE632533866200A0ABCC /* Button+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE5B2533865D00A0ABCC /* Button+Sugar.swift */; };
+		D5D9AE682533ADA400A0ABCC /* Checkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE672533ADA400A0ABCC /* Checkout.swift */; };
+		D5D9AE712534CAF000A0ABCC /* CheckoutDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE702534CAF000A0ABCC /* CheckoutDoubles.swift */; };
+		D5D9AE762534CBB700A0ABCC /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE752534CBB700A0ABCC /* Price.swift */; };
+		D5D9AE7B2534CBC800A0ABCC /* PriceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE7A2534CBC800A0ABCC /* PriceDoubles.swift */; };
+		D5D9AE882534CD0200A0ABCC /* CheckoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE872534CD0200A0ABCC /* CheckoutTests.swift */; };
 		D5E04B1923BED80700A161BB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* Fonts.swift */; };
 		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
 		D5E987B924ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
@@ -830,6 +835,11 @@
 		D5D9AE4325335B0400A0ABCC /* StripeCardDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCardDetails.swift; sourceTree = "<group>"; };
 		D5D9AE4E253367A100A0ABCC /* Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
 		D5D9AE5B2533865D00A0ABCC /* Button+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Sugar.swift"; sourceTree = "<group>"; };
+		D5D9AE672533ADA400A0ABCC /* Checkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkout.swift; sourceTree = "<group>"; };
+		D5D9AE702534CAF000A0ABCC /* CheckoutDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutDoubles.swift; sourceTree = "<group>"; };
+		D5D9AE752534CBB700A0ABCC /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
+		D5D9AE7A2534CBC800A0ABCC /* PriceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceDoubles.swift; sourceTree = "<group>"; };
+		D5D9AE872534CD0200A0ABCC /* CheckoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutTests.swift; sourceTree = "<group>"; };
 		D5E04B1823BED80700A161BB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Sugar.swift"; sourceTree = "<group>"; };
@@ -1354,11 +1364,13 @@
 				03B71325241D84B400DED025 /* Address */,
 				D5F4D3E124F0429A000E8580 /* BookingApplication */,
 				032B6FC824B783D300299A09 /* BookingRequest */,
+				D5D9AE832534CC0700A0ABCC /* Checkout */,
 				D5CC5FF025029525007DFE84 /* ImageReference.swift */,
 				032B6FD524B7882B00299A09 /* Instrument */,
 				03BB5C9E2473463200B44692 /* LessonPlan */,
 				D5D974FD25263FBC000AD074 /* PhoneNumber */,
 				D54EFF222513D69D004F14D3 /* Portfolio */,
+				D5D9AE7F2534CC0100A0ABCC /* Price */,
 				D5BF12B125068E2500B2931C /* PushNotificationEvent */,
 				03AAF6742445E123002D8F5B /* Schedule */,
 				03B71326241D84F300DED025 /* Student */,
@@ -1789,6 +1801,25 @@
 			path = PhoneNumber;
 			sourceTree = "<group>";
 		};
+		D5D9AE7F2534CC0100A0ABCC /* Price */ = {
+			isa = PBXGroup;
+			children = (
+				D5D9AE752534CBB700A0ABCC /* Price.swift */,
+				D5D9AE7A2534CBC800A0ABCC /* PriceDoubles.swift */,
+			);
+			path = Price;
+			sourceTree = "<group>";
+		};
+		D5D9AE832534CC0700A0ABCC /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				D5D9AE672533ADA400A0ABCC /* Checkout.swift */,
+				D5D9AE702534CAF000A0ABCC /* CheckoutDoubles.swift */,
+				D5D9AE872534CD0200A0ABCC /* CheckoutTests.swift */,
+			);
+			path = Checkout;
+			sourceTree = "<group>";
+		};
 		D5E987C324EEE20300E2E1AF /* Router */ = {
 			isa = PBXGroup;
 			children = (
@@ -2208,6 +2239,7 @@
 				031378C5249A7453005FC49C /* CloseButton.swift in Sources */,
 				035AF3082491A51D004A01B2 /* UIAccessibilityProtocol.swift in Sources */,
 				D5D974F425263FAF000AD074 /* PhoneNumber.swift in Sources */,
+				D5D9AE762534CBB700A0ABCC /* Price.swift in Sources */,
 				D5AAF7DF23FB444500E410F2 /* RoundedShadowContainer.swift in Sources */,
 				D535554723E20076005A20EB /* Colors.swift in Sources */,
 				D527B00B24FD3297003E81A9 /* AvatarStackView.swift in Sources */,
@@ -2247,6 +2279,7 @@
 				D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */,
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
 				032B6FD024B787BB00299A09 /* Gender.swift in Sources */,
+				D5D9AE682533ADA400A0ABCC /* Checkout.swift in Sources */,
 				D53555CE23E536AE005A20EB /* AppleAuthorizationControllerDoubles.swift in Sources */,
 				03B198542471BBE8005529EB /* App+PushNotifications.swift in Sources */,
 				D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */,
@@ -2278,6 +2311,7 @@
 				D54EFF0C2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift in Sources */,
 				03EDA67D24776C6C00FBE527 /* URLOpener.swift in Sources */,
 				03A91EF8249189E000DEAD5E /* PushNotificationAuthorizationCoordinatorDoubles.swift in Sources */,
+				D5D9AE7B2534CBC800A0ABCC /* PriceDoubles.swift in Sources */,
 				D5B57A6724147F5100BE9B4F /* RequestLessonPlanContext+EnumProperties.swift in Sources */,
 				D54EFF2A2513DDDB004F14D3 /* PortfolioEndpoints.swift in Sources */,
 				0372E35A249ABAB80048B402 /* SelectableList.swift in Sources */,
@@ -2369,6 +2403,7 @@
 				D5F5068C24046B1400CA4094 /* Spacing.swift in Sources */,
 				D535547923DF3A7C005A20EB /* Keychain.swift in Sources */,
 				D58824C4251A6D49000820F4 /* LessonsCollectionView.swift in Sources */,
+				D5D9AE712534CAF000A0ABCC /* CheckoutDoubles.swift in Sources */,
 				03C39DDA2496DBC700C76516 /* LessonPlanDetailView.swift in Sources */,
 				D55F013024CCC57400E5F13C /* EnumProperties.swift in Sources */,
 				D56B2523252CF76300BC3932 /* AppSecrets.swift in Sources */,
@@ -2591,6 +2626,7 @@
 				D53555D023E536B5005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift in Sources */,
 				03D932F4249C0A71003416DC /* LessonPlanCancellationViewTests.swift in Sources */,
 				D50811EA23FD75ED008103D8 /* InstrumentSelectionViewTests.swift in Sources */,
+				D5D9AE882534CD0200A0ABCC /* CheckoutTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
