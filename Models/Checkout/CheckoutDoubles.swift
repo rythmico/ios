@@ -1,8 +1,8 @@
 import Foundation
 
 extension Checkout {
-    static let stub = Self.init(
-        phoneNumber: E164PhoneNumberOptional(wrappedValue: .stub),
+    static let stub = Self(
+        phoneNumber: .stub,
         pricePerLesson: .stub,
         availableCards: [.stub]
     )

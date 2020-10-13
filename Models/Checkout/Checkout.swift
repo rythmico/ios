@@ -2,7 +2,7 @@ import Foundation
 import PhoneNumberKit
 import Stripe
 
-struct Checkout {
+struct Checkout: Equatable, Decodable, Hashable {
     struct Card: Equatable, Decodable, Identifiable, Hashable {
         typealias Brand = STPCardBrand
 

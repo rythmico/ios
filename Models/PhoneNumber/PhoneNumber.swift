@@ -2,7 +2,7 @@ import Foundation
 import PhoneNumberKit
 
 @propertyWrapper
-struct E164PhoneNumber {
+struct E164PhoneNumber: Equatable, Hashable {
     var wrappedValue: PhoneNumber
 }
 
@@ -25,8 +25,8 @@ extension E164PhoneNumber: Codable {
 }
 
 @propertyWrapper
-struct E164PhoneNumberOptional {
-    var wrappedValue: PhoneNumber?
+struct E164PhoneNumberOptional: Equatable, Hashable {
+    var wrappedValue: Optional<PhoneNumber>
 }
 
 extension E164PhoneNumberOptional: Codable {

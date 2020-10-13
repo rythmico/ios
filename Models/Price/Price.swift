@@ -1,6 +1,6 @@
 import Foundation
 
-struct Price {
+struct Price: Equatable, Decodable, Hashable {
     enum Currency: String, Equatable, Decodable, Hashable {
         // Supported currencies
         case GBP
