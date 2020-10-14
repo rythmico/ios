@@ -63,7 +63,7 @@ struct RadialSelectionIndicator: View {
                     )
             }
             Circle()
-                .strokeBorder(Color.rythmicoBackground, lineWidth: 3.5)
+                .strokeBorder(Color(.systemBackground), lineWidth: 3.5)
             Circle()
                 .strokeBorder(Color.rythmicoPurple, lineWidth: 1.75)
         }

@@ -118,6 +118,7 @@ struct LessonPlanBookingView: View {
     }
 
     func addNewCard() {
+        Current.keyboardDismisser.dismissKeyboard()
         addingNewCard = true
     }
 }

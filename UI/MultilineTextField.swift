@@ -44,28 +44,10 @@ private struct UITextViewWrapper: UIViewRepresentable {
             right: padding.trailing
         )
         textField.textContainer.lineFragmentPadding = 0
-
-        // add done button tooltip
-        textField.inputAccessoryView = UIToolbar().then {
-            $0.sizeToFit()
-            $0.items = [
-                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-                UIBarButtonItem(
-                    customView: UIButton().then {
-                        if let font = fontOrDefaultFont.fontDescriptor
-                            .withSymbolicTraits(.traitBold)
-                            .map ({ UIFont(descriptor: $0, size: $0.pointSize + 2) })
-                        {
-                            $0.setPreferredSymbolConfiguration(.init(font: font), forImageIn: .normal)
-                        }
-                        $0.setImage(.keyboardChevronCompactDown, for: .normal)
-                        $0.tintColor = accentColorOrDefault
-                        $0.addTarget(textField, action: #selector(UITextField.resignFirstResponder), for: .touchUpInside)
-                    }
-                )
-            ]
-        }
-
+        textField.inputAccessoryView = UIToolbar.dismissKeyboardTooltip(
+            withFont: fontOrDefaultFont,
+            color: accentColorOrDefault
+        )
         textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return textField
     }

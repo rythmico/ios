@@ -213,6 +213,7 @@
 		D5015873253743C4005E02FA /* AddNewCardServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5015872253743C4005E02FA /* AddNewCardServiceDoubles.swift */; };
 		D501587825375AA9005E02FA /* PorfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501587725375AA9005E02FA /* PorfolioView.swift */; };
 		D501587D25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501587C25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift */; };
+		D501588525376EC0005E02FA /* DismissKeyboardTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */; };
 		D50811E423FB72A3008103D8 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E323FB72A3008103D8 /* StepBar.swift */; };
 		D50811E623FB769D008103D8 /* RequestLessonPlanFormViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */; };
 		D50811EA23FD75ED008103D8 /* InstrumentSelectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E923FD75ED008103D8 /* InstrumentSelectionViewTests.swift */; };
@@ -680,6 +681,7 @@
 		D5015872253743C4005E02FA /* AddNewCardServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCardServiceDoubles.swift; sourceTree = "<group>"; };
 		D501587725375AA9005E02FA /* PorfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorfolioView.swift; sourceTree = "<group>"; };
 		D501587C25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationDetailHeaderView.swift; sourceTree = "<group>"; };
+		D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardTooltip.swift; sourceTree = "<group>"; };
 		D50668DA23B946330044E553 /* Rythmico.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rythmico.entitlements; sourceTree = "<group>"; };
 		D50811E323FB72A3008103D8 /* StepBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
 		D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanFormViewTests.swift; sourceTree = "<group>"; };
@@ -1492,6 +1494,7 @@
 				D5D78E162525F531007041BE /* LegibilityWeight+Sugar.swift */,
 				D5814A08251D957D0009BBB3 /* MainViewContent.swift */,
 				D5F5067A2400788400CA4094 /* MultilineTextField.swift */,
+				D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */,
 				D5CAC9AB24E6D19900119DAA /* MultilineTextField+Rythmico.swift */,
 				D5CAC9AD24E6D67C00119DAA /* MultilineTextField+Tutor.swift */,
 				D5200E3F23FDE460007168E0 /* MultiStyleText.swift */,
@@ -2335,6 +2338,7 @@
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
 				032B6FD024B787BB00299A09 /* Gender.swift in Sources */,
 				D5D9AE682533ADA400A0ABCC /* Checkout.swift in Sources */,
+				D501588525376EC0005E02FA /* DismissKeyboardTooltip.swift in Sources */,
 				D501585C25373D5A005E02FA /* AddNewCardService.swift in Sources */,
 				D53555CE23E536AE005A20EB /* AppleAuthorizationControllerDoubles.swift in Sources */,
 				03B198542471BBE8005529EB /* App+PushNotifications.swift in Sources */,
