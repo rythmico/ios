@@ -31,7 +31,7 @@ struct StripeSetupIntentLink<Label: View>: View {
     }
 
     private func confirmSetupIntent() {
-        coordinator.run(
+        coordinator.start(
             with: AddNewCardServiceParams(
                 clientSecret: clientSecret,
                 cardDetails: cardDetails,

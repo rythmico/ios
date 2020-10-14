@@ -21,12 +21,13 @@ struct LessonPlanBookingEntryView: View {
             }
         }
         .onAppear(perform: fetch)
+        .onDisappear(perform: getCoordinator.cancel)
         .alertOnFailure(getCoordinator)
         .animation(.rythmicoSpring(duration: .durationShort), value: getCoordinator.state.successValue)
     }
 
     private func fetch() {
-        getCoordinator.run(with: .init(lessonPlanId: lessonPlan.id))
+        getCoordinator.start(with: .init(lessonPlanId: lessonPlan.id))
     }
 }
 
