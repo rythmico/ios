@@ -15,9 +15,15 @@ struct AddNewCardView: View {
             VStack(spacing: 0) {
                 TitleSubtitleContentView(title: "Add New Card", subtitle: subtitle) {
                     VStack(spacing: .spacingMedium) {
-                        StripePaymentCardTextField(cardDetails: $cardDetails, cardIsValid: $cardIsValid)
-                            .padding(.vertical, .spacingUnit)
-                            .modifier(RoundedThinOutlineContainer(padded: false))
+                        HStack(spacing: .spacingMedium) {
+                            StripePaymentCardTextField(cardDetails: $cardDetails, cardIsValid: $cardIsValid)
+                                .padding(.vertical, .spacingUnit)
+                                .modifier(RoundedThinOutlineContainer(padded: false))
+                            if coordinator.state.isLoading {
+                                ActivityIndicator(color: .rythmicoGray90)
+                            }
+                        }
+                        .animation(.rythmicoSpring(duration: .durationShort), value: coordinator.state.isLoading)
 
                         Spacer()
 
