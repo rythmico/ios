@@ -441,6 +441,7 @@
 		D5D9AE7B2534CBC800A0ABCC /* PriceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE7A2534CBC800A0ABCC /* PriceDoubles.swift */; };
 		D5D9AE882534CD0200A0ABCC /* CheckoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE872534CD0200A0ABCC /* CheckoutTests.swift */; };
 		D5D9AE9B25367B5400A0ABCC /* NumberFormatter+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE9A25367B5400A0ABCC /* NumberFormatter+Sugar.swift */; };
+		D5D9AEA325367E9B00A0ABCC /* LessonPlanBookingEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEA225367E9B00A0ABCC /* LessonPlanBookingEntryView.swift */; };
 		D5D9AEB425368AAA00A0ABCC /* LessonPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEB325368AAA00A0ABCC /* LessonPriceView.swift */; };
 		D5D9AEB9253692FF00A0ABCC /* Decimal+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEB8253692FF00A0ABCC /* Decimal+Sugar.swift */; };
 		D5D9AEBE253694B400A0ABCC /* PhoneNumberInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEBD253694B400A0ABCC /* PhoneNumberInputView.swift */; };
@@ -857,6 +858,7 @@
 		D5D9AE7A2534CBC800A0ABCC /* PriceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceDoubles.swift; sourceTree = "<group>"; };
 		D5D9AE872534CD0200A0ABCC /* CheckoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutTests.swift; sourceTree = "<group>"; };
 		D5D9AE9A25367B5400A0ABCC /* NumberFormatter+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Sugar.swift"; sourceTree = "<group>"; };
+		D5D9AEA225367E9B00A0ABCC /* LessonPlanBookingEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanBookingEntryView.swift; sourceTree = "<group>"; };
 		D5D9AEB325368AAA00A0ABCC /* LessonPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPriceView.swift; sourceTree = "<group>"; };
 		D5D9AEB8253692FF00A0ABCC /* Decimal+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Sugar.swift"; sourceTree = "<group>"; };
 		D5D9AEBD253694B400A0ABCC /* PhoneNumberInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberInputView.swift; sourceTree = "<group>"; };
@@ -1818,6 +1820,7 @@
 		D5D78DE42525086E007041BE /* Booking */ = {
 			isa = PBXGroup;
 			children = (
+				D5D9AEA225367E9B00A0ABCC /* LessonPlanBookingEntryView.swift */,
 				D5D78DDF25250864007041BE /* LessonPlanBookingView.swift */,
 				D5D9AEBD253694B400A0ABCC /* PhoneNumberInputView.swift */,
 				D5D9AEB325368AAA00A0ABCC /* LessonPriceView.swift */,
@@ -2249,6 +2252,7 @@
 				03E88EB124C205C30077A420 /* Current.swift in Sources */,
 				03AAF66C2444FFCC002D8F5B /* Pickers.swift in Sources */,
 				D5AFED3C25056300003FFC68 /* NotificationCenter+Sugar.swift in Sources */,
+				D5D9AEA325367E9B00A0ABCC /* LessonPlanBookingEntryView.swift in Sources */,
 				D5F5068E240473CB00CA4094 /* FloatingInputView.swift in Sources */,
 				0392A9CF244D09FF001E97AE /* ContentSizeCategory+Sugar.swift in Sources */,
 				D5AAF7C823ECC87000E410F2 /* RequestLessonPlanView.swift in Sources */,

@@ -1,60 +1,91 @@
 import SwiftUI
 import PhoneNumberKit
+import NonEmpty
+import Sugar
 
 struct LessonPlanBookingView: View {
-    var lessonPlan: LessonPlan
-    var application: LessonPlan.Application
+    private var lessonPlan: LessonPlan
+    private var application: LessonPlan.Application
+    private var checkout: Checkout
 
-    @State var phoneNumber: PhoneNumber?
-    @State var phoneNumberInputError: Error?
+    init(
+        lessonPlan: LessonPlan,
+        application: LessonPlan.Application,
+        checkout: Checkout
+    ) {
+        self.lessonPlan = lessonPlan
+        self.application = application
+        self.checkout = checkout
+        self._phoneNumber = .init(wrappedValue: checkout.phoneNumber)
+        self._availableCards = .init(wrappedValue: checkout.availableCards)
+        self._selectedCard = .init(wrappedValue: checkout.availableCards.first)
+    }
+
+    @State private var phoneNumber: Optional<PhoneNumber>
+    @State private var phoneNumberInputError: Error?
+
+    @State private var availableCards: [Checkout.Card]
+    @State private var selectedCard: Checkout.Card?
+    @State private var addingNewCard = false
 
     var body: some View {
-        TitleSubtitleContentView(title: title, subtitle: subtitle) {
-            ScrollView {
-                VStack(spacing: .spacingLarge) {
-                    SectionHeaderContentView(title: "Lesson Schedule") {
-                        ScheduleDetailsView(lessonPlan.schedule, tutor: application.tutor)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
+        VStack(spacing: 0) {
+            TitleSubtitleContentView(title: title, subtitle: subtitle) {
+                ScrollView {
+                    VStack(spacing: .spacingLarge) {
+                        Group {
+                            SectionHeaderContentView(title: "Lesson Schedule") {
+                                ScheduleDetailsView(lessonPlan.schedule, tutor: application.tutor)
+                            }
 
-                    SectionHeaderContentView(title: "Contact Number") {
-                        VStack(spacing: .spacingSmall) {
-                            MultiStyleText(parts: contactNumberInstructions)
-                            VStack(spacing: .spacingExtraSmall) {
-                                PhoneNumberField($phoneNumber, inputError: $phoneNumberInputError)
-                                    .padding(.horizontal, .spacingUnit * 2.5)
-                                    .modifier(RoundedThinOutlineContainer(padded: false))
-                                if let error = phoneNumberInputError {
-                                    Text(error.localizedDescription)
-                                        .rythmicoFont(.callout)
-                                        .foregroundColor(.rythmicoRed)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .transition(
-                                            AnyTransition
-                                                .opacity
-                                                .combined(with: .offset(x: 0, y: -.spacingMedium))
-                                        )
-                                }
+                            SectionHeaderContentView(title: "Contact Number") {
+                                PhoneNumberInputView(phoneNumber: $phoneNumber, phoneNumberInputError: $phoneNumberInputError)
+                            }
+
+                            SectionHeaderContentView(title: "Price Per Lesson") {
+                                LessonPriceView(price: checkout.pricePerLesson, instrument: lessonPlan.instrument)
                             }
                         }
-                        .fixedSize(horizontal: false, vertical: true)
-                    }
+                        .padding(.horizontal, .spacingMedium)
 
-                    SectionHeaderContentView(title: "Price Per Lesson") {
-                        VStack(spacing: .spacingExtraSmall) {
-                            MultiStyleText(parts: price)
-                            Text(priceExplanation)
-                                .lineSpacing(3)
-                                .rythmicoFont(.callout)
-                                .foregroundColor(.rythmicoGray90)
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                        SectionHeaderContentView(title: "Payment Method", padding: EdgeInsets(horizontal: .spacingMedium)) {
+                            if
+                                let availableCards = NonEmpty(rawValue: availableCards),
+                                let selectedCardBinding = Binding($selectedCard)
+                            {
+                                CardStackView(cards: availableCards, selectedCard: selectedCardBinding)
+                            }
                         }
-                        .fixedSize(horizontal: false, vertical: true)
+
+                        HDividerContainer {
+                            Button("Add new card", action: addNewCard).quaternaryStyle()
+                        }
+
+                        Text("Payment will be automatically taken monthly.")
+                            .foregroundColor(.rythmicoGray90)
+                            .rythmicoFont(.calloutBold)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding(.horizontal, .spacingMedium)
                     }
+                    .padding(.bottom, .spacingMedium)
+                    .animation(.rythmicoSpring(duration: .durationShort), value: phoneNumberInputError != nil)
                 }
-                .padding(.horizontal, .spacingMedium)
-                .animation(.rythmicoSpring(duration: .durationShort), value: phoneNumberInputError != nil)
             }
+            FloatingView {
+                Button("Confirm Booking", action: confirmAction).primaryStyle()
+            }
+            .disabled(!canConfirm)
+        }
+        .onChange(of: availableCards, perform: availableCardsChanged)
+        .sheet(isPresented: $addingNewCard) {
+            AddNewCardView(availableCards: $availableCards)
+        }
+    }
+
+    private func availableCardsChanged(_ cards: [Checkout.Card]) {
+        if selectedCard == nil, let firstCard = cards.first {
+            selectedCard = firstCard
         }
     }
 
@@ -70,29 +101,38 @@ struct LessonPlanBookingView: View {
         " before booking".color(.rythmicoGray90)
     }
 
-    var contactNumberInstructions: [MultiStyleText.Part] {
-        "Enter a contact number of the ".color(.rythmicoGray90) +
-        "parent/guardian".style(.bodyBold).color(.rythmicoGray90) +
-        " of the student.".color(.rythmicoGray90)
+    var confirmAction: Action? {
+        guard
+            let phoneNumber = phoneNumber,
+            let selectedCard = selectedCard
+        else {
+            return nil
+        }
+        return {
+
+        }
     }
 
-    var price: [MultiStyleText.Part] {
-        "£60".style(.headline).color(.rythmicoGray90) +
-        " per lesson".color(.rythmicoGray90)
+    var canConfirm: Bool {
+        confirmAction != nil
     }
 
-    var priceExplanation: String {
-        "This is based on the standard £60 per hour rate for all guitar tutors for the specific date and time selected."
+    func addNewCard() {
+        addingNewCard = true
     }
 }
 
 #if DEBUG
 struct LessonPlanBookingView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlanBookingView(lessonPlan: .davidGuitarPlanStub, application: .davidStub)
-            .environment(\.locale, Current.locale)
-//            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
-//            .environment(\.legibilityWeight, .bold)
+        LessonPlanBookingView(
+            lessonPlan: .davidGuitarPlanStub,
+            application: .davidStub,
+            checkout: .stub
+        )
+        .environment(\.locale, Current.locale)
+//        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+//        .environment(\.legibilityWeight, .bold)
     }
 }
 #endif

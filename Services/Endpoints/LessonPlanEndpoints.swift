@@ -1,4 +1,5 @@
 import APIKit
+import PhoneNumberKit
 
 struct GetLessonPlansRequest: RythmicoAPIRequest {
     let accessToken: String
@@ -56,5 +57,20 @@ struct CancelLessonPlanRequest: RythmicoAPIRequest {
     }
 
     typealias Response = LessonPlan
+    typealias Error = RythmicoAPIError
+}
+
+struct GetLessonPlanCheckoutRequest: RythmicoAPIRequest {
+    struct Properties {
+        var lessonPlanId: String
+    }
+
+    let accessToken: String
+    let properties: Properties
+
+    let method: HTTPMethod = .get
+    var path: String { "/lesson-plans/\(self.lessonPlanId)/checkout" }
+
+    typealias Response = Checkout
     typealias Error = RythmicoAPIError
 }

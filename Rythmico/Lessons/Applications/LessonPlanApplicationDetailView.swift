@@ -64,7 +64,7 @@ struct LessonPlanApplicationDetailView: View {
 
             FloatingView {
                 NavigationLink(
-                    destination: LessonPlanBookingView(lessonPlan: lessonPlan, application: application),
+                    destination: LessonPlanBookingEntryView(lessonPlan: lessonPlan, application: application),
                     isActive: $showingBookingView
                 ) {
                     Button(bookButtonTitle, action: book).primaryStyle()
