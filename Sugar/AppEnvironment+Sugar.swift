@@ -9,6 +9,13 @@ extension AppEnvironment {
         }
     }
 
+    func numberFormatter(format: NumberFormatter.Format) -> NumberFormatter {
+        NumberFormatter().then {
+            $0.locale = locale
+            $0.setFormat(format)
+        }
+    }
+
     func dateFormatter(format: DateFormatter.Format) -> DateFormatter {
         DateFormatter().then {
             $0.calendar = calendar()
