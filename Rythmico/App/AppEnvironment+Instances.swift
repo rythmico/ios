@@ -73,7 +73,7 @@ extension AppEnvironment {
 
             $0.portfolioFetchingService = fakeAPIService(result: .success(.longStub))
 
-            $0.addNewCardService = AddNewCardServiceStub(result: .success(STPSetupIntentFake()))
+            $0.addNewCardService = AddNewCardServiceStub(result: .success(STPSetupIntentFake()), delay: fakeAPIServicesDelay)
         }
     }
 }
