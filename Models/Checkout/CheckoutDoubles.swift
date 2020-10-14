@@ -3,7 +3,7 @@ import Foundation
 extension Checkout {
     static let stub = Self(
         phoneNumber: .stub,
-        pricePerLesson: .stub,
+        pricePerLesson: .nonDecimalStub,
         availableCards: [.stub]
     )
 }
