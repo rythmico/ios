@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct LessonPlanApplicationDetailView: View {
+    typealias HeaderView = LessonPlanApplicationDetailHeaderView
     typealias MessageView = LessonPlanApplicationDetailMessageView
     typealias AboutView = LessonPlanApplicationDetailAboutView
 
@@ -26,20 +27,7 @@ struct LessonPlanApplicationDetailView: View {
         VStack(spacing: 0) {
             VStack(spacing: 0) {
                 VStack(spacing: .spacingExtraLarge) {
-                    VStack(spacing: .spacingExtraSmall) {
-                        LessonPlanTutorAvatarView(application.tutor, mode: .original)
-                            .frame(width: .spacingUnit * 24, height: .spacingUnit * 24)
-                        VStack(spacing: .spacingUnit) {
-                            Text(application.tutor.name)
-                                .rythmicoFont(.largeTitle)
-                                .foregroundColor(.rythmicoForeground)
-                            Text(lessonPlan.instrument.name + " Tutor")
-                                .rythmicoFont(.callout)
-                                .foregroundColor(.rythmicoGray90)
-                        }
-                    }
-                    .padding(.horizontal, .spacingMedium)
-
+                    HeaderView(lessonPlan: lessonPlan, application: application, expanded: tab == .message)
                     TabMenuView(tabs: Tab.allCases, selection: $tab)
                 }
 
@@ -51,16 +39,16 @@ struct LessonPlanApplicationDetailView: View {
                 }
             }
 
-            FloatingView {
-                NavigationLink(
-                    destination: LessonPlanBookingEntryView(lessonPlan: lessonPlan, application: application),
-                    isActive: $showingBookingView
-                ) {
+            NavigationLink(
+                destination: LessonPlanBookingEntryView(lessonPlan: lessonPlan, application: application),
+                isActive: $showingBookingView
+            ) {
+                FloatingView {
                     Button(bookButtonTitle, action: book).primaryStyle()
                 }
             }
         }
-        .onDisappear(perform: coordinator.cancel)
+        .animation(.rythmicoSpring(duration: .durationShort), value: tab)
     }
 
     private var bookButtonTitle: String {
