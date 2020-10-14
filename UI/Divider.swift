@@ -16,7 +16,7 @@ struct HDividerContainer<Content: View>: View {
     var body: some View {
         VStack(spacing: 0) {
             HDivider()
-            content.frame(minHeight: .spacingUnit * 12)
+            content
             HDivider()
         }
     }

@@ -43,6 +43,7 @@ struct ScheduleDetailsView: View {
                 }
             }
         }
+        .fixedSize(horizontal: false, vertical: true)
     }
 
     private let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
