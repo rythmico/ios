@@ -438,6 +438,7 @@
 		D5D9AE9B25367B5400A0ABCC /* NumberFormatter+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE9A25367B5400A0ABCC /* NumberFormatter+Sugar.swift */; };
 		D5D9AEB425368AAA00A0ABCC /* LessonPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEB325368AAA00A0ABCC /* LessonPriceView.swift */; };
 		D5D9AEB9253692FF00A0ABCC /* Decimal+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEB8253692FF00A0ABCC /* Decimal+Sugar.swift */; };
+		D5D9AEBE253694B400A0ABCC /* PhoneNumberInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEBD253694B400A0ABCC /* PhoneNumberInputView.swift */; };
 		D5E04B1923BED80700A161BB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* Fonts.swift */; };
 		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
 		D5E987B924ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
@@ -846,6 +847,7 @@
 		D5D9AE9A25367B5400A0ABCC /* NumberFormatter+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Sugar.swift"; sourceTree = "<group>"; };
 		D5D9AEB325368AAA00A0ABCC /* LessonPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPriceView.swift; sourceTree = "<group>"; };
 		D5D9AEB8253692FF00A0ABCC /* Decimal+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Sugar.swift"; sourceTree = "<group>"; };
+		D5D9AEBD253694B400A0ABCC /* PhoneNumberInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberInputView.swift; sourceTree = "<group>"; };
 		D5E04B1823BED80700A161BB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Sugar.swift"; sourceTree = "<group>"; };
@@ -1792,6 +1794,7 @@
 			isa = PBXGroup;
 			children = (
 				D5D78DDF25250864007041BE /* LessonPlanBookingView.swift */,
+				D5D9AEBD253694B400A0ABCC /* PhoneNumberInputView.swift */,
 				D5D9AEB325368AAA00A0ABCC /* LessonPriceView.swift */,
 				D56B2530252D1A8100BC3932 /* StripePaymentCardTextField.swift */,
 				D5D9AE4325335B0400A0ABCC /* StripeCardDetails.swift */,
@@ -2308,6 +2311,7 @@
 				03275AE3249070D5009C3980 /* DeviceEndpoints.swift in Sources */,
 				D527B01824FEABEB003E81A9 /* ActivityDoubles.swift in Sources */,
 				D58149E9251D262B0009BBB3 /* DotPageIndicator.swift in Sources */,
+				D5D9AEBE253694B400A0ABCC /* PhoneNumberInputView.swift in Sources */,
 				032B6FD424B7881C00299A09 /* InstrumentExtensions.swift in Sources */,
 				D5BF12C62507D78800B2931C /* RouterDoubles.swift in Sources */,
 				031378C7249A7ADE005FC49C /* LessonPlanCancellationReasonView.swift in Sources */,
