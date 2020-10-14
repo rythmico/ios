@@ -1,6 +1,7 @@
 import UIKit
 import UserNotifications
 import Firebase
+import Stripe
 import Then
 
 extension AppEnvironment: Then {}
@@ -49,7 +50,9 @@ extension AppEnvironment {
         lessonPlanCancellationService: APIService(),
         lessonPlanRepository: Repository(),
 
-        portfolioFetchingService: APIService()
+        portfolioFetchingService: APIService(),
+
+        addNewCardService: STPPaymentHandler.shared()
     )
 }
 
@@ -67,6 +70,8 @@ extension AppEnvironment {
             $0.lessonPlanCancellationService = fakeAPIService(result: .success(.cancelledJackGuitarPlanStub))
 
             $0.portfolioFetchingService = fakeAPIService(result: .success(.longStub))
+
+            $0.addNewCardService = AddNewCardServiceStub(result: .success(STPSetupIntentFake()))
         }
     }
 }
@@ -113,7 +118,9 @@ extension AppEnvironment {
             lessonPlanCancellationService: APIServiceDummy(),
             lessonPlanRepository: Repository(),
 
-            portfolioFetchingService: APIServiceDummy()
+            portfolioFetchingService: APIServiceDummy(),
+
+            addNewCardService: AddNewCardServiceDummy()
         )
     }
 }

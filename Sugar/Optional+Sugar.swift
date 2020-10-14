@@ -17,3 +17,9 @@ extension Optional where Wrapped: Collection {
         self?.isEmpty != false
     }
 }
+
+extension Optional where Wrapped: NSNumber {
+    public var isNilOrZero: Bool {
+        self.map { $0.intValue == 0 } ?? true
+    }
+}

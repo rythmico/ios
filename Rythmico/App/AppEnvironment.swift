@@ -41,4 +41,6 @@ struct AppEnvironment {
     var lessonPlanRepository: Repository<LessonPlan>
 
     var portfolioFetchingService: APIServiceBase<GetPortfolioRequest>
+
+    var addNewCardService: AddNewCardServiceProtocol
 }

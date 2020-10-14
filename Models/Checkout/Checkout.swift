@@ -17,10 +17,17 @@ struct Checkout: Equatable, Decodable, Hashable {
     var phoneNumber: PhoneNumber?
     var pricePerLesson: Price
     var availableCards: [Card]
+    var stripeClientSecret: String
 }
 
+protocol STPSetupIntentProtocol {
+    var paymentMethodID: String? { get }
+}
+
+extension STPSetupIntent: STPSetupIntentProtocol {}
+
 extension Checkout.Card {
-    init?(setupIntent: STPSetupIntent, cardDetails: STPPaymentMethodCardParams) {
+    init?(setupIntent: STPSetupIntentProtocol, cardDetails: STPPaymentMethodCardParams) {
         guard
             let paymentMethodId = setupIntent.paymentMethodID,
             let number = cardDetails.number,

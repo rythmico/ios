@@ -89,6 +89,10 @@ extension AppEnvironment {
     func deviceUnregisterCoordinator() -> DeviceUnregisterCoordinator {
         DeviceUnregisterCoordinator(deviceTokenDeleter: deviceTokenDeleter)
     }
+
+    func addNewCardCoordinator() -> AddNewCardCoordinator {
+        AddNewCardCoordinator(service: addNewCardService)
+    }
 }
 
 private var latestProvider: AuthenticationAccessTokenProvider?

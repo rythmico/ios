@@ -208,6 +208,9 @@
 		03EDA67F24776CEC00FBE527 /* URLOpenerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67E24776CEC00FBE527 /* URLOpenerDoubles.swift */; };
 		03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE818F244E169200C5C184 /* ReviewRequestView.swift */; };
 		03FE8192244E204900C5C184 /* AddressItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE8191244E204900C5C184 /* AddressItemView.swift */; };
+		D501585C25373D5A005E02FA /* AddNewCardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501585B25373D5A005E02FA /* AddNewCardService.swift */; };
+		D501586E25374048005E02FA /* AddNewCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501586D25374048005E02FA /* AddNewCardCoordinator.swift */; };
+		D5015873253743C4005E02FA /* AddNewCardServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5015872253743C4005E02FA /* AddNewCardServiceDoubles.swift */; };
 		D50811E423FB72A3008103D8 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E323FB72A3008103D8 /* StepBar.swift */; };
 		D50811E623FB769D008103D8 /* RequestLessonPlanFormViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */; };
 		D50811EA23FD75ED008103D8 /* InstrumentSelectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E923FD75ED008103D8 /* InstrumentSelectionViewTests.swift */; };
@@ -334,6 +337,7 @@
 		D56544D524CE4C8D00281875 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = D56544D424CE4C8D00281875 /* ViewInspector */; };
 		D56B2523252CF76300BC3932 /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B2522252CF76300BC3932 /* AppSecrets.swift */; };
 		D56B2531252D1A8100BC3932 /* StripePaymentCardTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B2530252D1A8100BC3932 /* StripePaymentCardTextField.swift */; };
+		D56B253625322AE300BC3932 /* StripeSetupIntentLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B253525322AE300BC3932 /* StripeSetupIntentLink.swift */; };
 		D56B253B2532433E00BC3932 /* ErrorText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B253A2532433E00BC3932 /* ErrorText.swift */; };
 		D56B25432533331A00BC3932 /* PhoneNumberDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */; };
 		D577EEA724E6F66400253EA1 /* BookingRequestApplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */; };
@@ -428,6 +432,7 @@
 		D5D9AE3F25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE3E25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift */; };
 		D5D9AE4425335B0400A0ABCC /* StripeCardDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE4325335B0400A0ABCC /* StripeCardDetails.swift */; };
 		D5D9AE4F253367A100A0ABCC /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE4E253367A100A0ABCC /* Divider.swift */; };
+		D5D9AE572533764D00A0ABCC /* AddNewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE562533764D00A0ABCC /* AddNewCardView.swift */; };
 		D5D9AE5C2533865D00A0ABCC /* Button+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE5B2533865D00A0ABCC /* Button+Sugar.swift */; };
 		D5D9AE632533866200A0ABCC /* Button+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE5B2533865D00A0ABCC /* Button+Sugar.swift */; };
 		D5D9AE682533ADA400A0ABCC /* Checkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE672533ADA400A0ABCC /* Checkout.swift */; };
@@ -667,6 +672,9 @@
 		03EDA67E24776CEC00FBE527 /* URLOpenerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpenerDoubles.swift; sourceTree = "<group>"; };
 		03FE818F244E169200C5C184 /* ReviewRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestView.swift; sourceTree = "<group>"; };
 		03FE8191244E204900C5C184 /* AddressItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressItemView.swift; sourceTree = "<group>"; };
+		D501585B25373D5A005E02FA /* AddNewCardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCardService.swift; sourceTree = "<group>"; };
+		D501586D25374048005E02FA /* AddNewCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCardCoordinator.swift; sourceTree = "<group>"; };
+		D5015872253743C4005E02FA /* AddNewCardServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCardServiceDoubles.swift; sourceTree = "<group>"; };
 		D50668DA23B946330044E553 /* Rythmico.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rythmico.entitlements; sourceTree = "<group>"; };
 		D50811E323FB72A3008103D8 /* StepBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
 		D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanFormViewTests.swift; sourceTree = "<group>"; };
@@ -765,6 +773,7 @@
 		D564F4632511722900EA13E9 /* TabMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuView.swift; sourceTree = "<group>"; };
 		D56B2522252CF76300BC3932 /* AppSecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecrets.swift; sourceTree = "<group>"; };
 		D56B2530252D1A8100BC3932 /* StripePaymentCardTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePaymentCardTextField.swift; sourceTree = "<group>"; };
+		D56B253525322AE300BC3932 /* StripeSetupIntentLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeSetupIntentLink.swift; sourceTree = "<group>"; };
 		D56B253A2532433E00BC3932 /* ErrorText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorText.swift; sourceTree = "<group>"; };
 		D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberDoubles.swift; sourceTree = "<group>"; };
 		D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestApplyView.swift; sourceTree = "<group>"; };
@@ -840,6 +849,7 @@
 		D5D9AE3E25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCardDetailsDoubles.swift; sourceTree = "<group>"; };
 		D5D9AE4325335B0400A0ABCC /* StripeCardDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCardDetails.swift; sourceTree = "<group>"; };
 		D5D9AE4E253367A100A0ABCC /* Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
+		D5D9AE562533764D00A0ABCC /* AddNewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCardView.swift; sourceTree = "<group>"; };
 		D5D9AE5B2533865D00A0ABCC /* Button+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Sugar.swift"; sourceTree = "<group>"; };
 		D5D9AE672533ADA400A0ABCC /* Checkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkout.swift; sourceTree = "<group>"; };
 		D5D9AE702534CAF000A0ABCC /* CheckoutDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutDoubles.swift; sourceTree = "<group>"; };
@@ -1353,6 +1363,7 @@
 				D5AFED4425057CB0003FFC68 /* ActivityCoordinator */,
 				D527B01A24FEACC0003E81A9 /* API */,
 				D535549823E0FA4A005A20EB /* Auth */,
+				D501586625373D8B005E02FA /* Checkout */,
 				03A91EF924918A4700DEAD5E /* DeviceRegistration */,
 				03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */,
 				D527B01B24FEAD1A003E81A9 /* Endpoints */,
@@ -1397,6 +1408,16 @@
 				03EDA67A2477695900FBE527 /* ProfileViewTests.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		D501586625373D8B005E02FA /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				D501586D25374048005E02FA /* AddNewCardCoordinator.swift */,
+				D501585B25373D5A005E02FA /* AddNewCardService.swift */,
+				D5015872253743C4005E02FA /* AddNewCardServiceDoubles.swift */,
+			);
+			path = Checkout;
 			sourceTree = "<group>";
 		};
 		D509896423B963B700C19300 /* Frameworks */ = {
@@ -1801,7 +1822,9 @@
 				D5D9AEBD253694B400A0ABCC /* PhoneNumberInputView.swift */,
 				D5D9AEB325368AAA00A0ABCC /* LessonPriceView.swift */,
 				D5D9AEC22537105400A0ABCC /* CardStackView.swift */,
+				D5D9AE562533764D00A0ABCC /* AddNewCardView.swift */,
 				D56B2530252D1A8100BC3932 /* StripePaymentCardTextField.swift */,
+				D56B253525322AE300BC3932 /* StripeSetupIntentLink.swift */,
 				D5D9AE4325335B0400A0ABCC /* StripeCardDetails.swift */,
 				D5D9AE3E25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift */,
 			);
@@ -2241,6 +2264,7 @@
 				D53555BD23E53699005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */,
 				D5B57A712419F79700BE9B4F /* SectionHeaderView.swift in Sources */,
 				D53555C323E536AE005A20EB /* AppleAuthorizationCredentialStateProvider.swift in Sources */,
+				D56B253625322AE300BC3932 /* StripeSetupIntentLink.swift in Sources */,
 				D5D78E172525F531007041BE /* LegibilityWeight+Sugar.swift in Sources */,
 				D527B01624FEAA5F003E81A9 /* ImageLoadingService.swift in Sources */,
 				035AF30524919FEF004A01B2 /* AppleAuthorizationCredentialDoubles.swift in Sources */,
@@ -2300,6 +2324,7 @@
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
 				032B6FD024B787BB00299A09 /* Gender.swift in Sources */,
 				D5D9AE682533ADA400A0ABCC /* Checkout.swift in Sources */,
+				D501585C25373D5A005E02FA /* AddNewCardService.swift in Sources */,
 				D53555CE23E536AE005A20EB /* AppleAuthorizationControllerDoubles.swift in Sources */,
 				03B198542471BBE8005529EB /* App+PushNotifications.swift in Sources */,
 				D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */,
@@ -2311,9 +2336,11 @@
 				D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */,
 				03FE8192244E204900C5C184 /* AddressItemView.swift in Sources */,
 				D55F012F24CCC4D300E5F13C /* ActivityCoordinator.swift in Sources */,
+				D5D9AE572533764D00A0ABCC /* AddNewCardView.swift in Sources */,
 				D5919F7124CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */,
 				03E88EAB24C1F5FE0077A420 /* AppContext.swift in Sources */,
 				D5919F6E24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */,
+				D5015873253743C4005E02FA /* AddNewCardServiceDoubles.swift in Sources */,
 				035AF30A2491A54E004A01B2 /* UIAccessibilityDoubles.swift in Sources */,
 				03AAF6712445E0FB002D8F5B /* Schedule.swift in Sources */,
 				03275AE3249070D5009C3980 /* DeviceEndpoints.swift in Sources */,
@@ -2345,6 +2372,7 @@
 				D58824BF251A6953000820F4 /* LessonPlanApplicationsGridView.swift in Sources */,
 				D5882502251CBE0C000820F4 /* NavigationViewFixInteractiveDismissal.swift in Sources */,
 				03275AEB24908017009C3980 /* Alert+Error.swift in Sources */,
+				D501586E25374048005E02FA /* AddNewCardCoordinator.swift in Sources */,
 				03B198562471BD6C005529EB /* PushNotificationAuthorizationCoordinator.swift in Sources */,
 				D5F5067B2400788400CA4094 /* MultilineTextField.swift in Sources */,
 				D5989BAF251662F400BED8A6 /* AsyncImage.swift in Sources */,
