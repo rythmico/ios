@@ -11,17 +11,18 @@ struct CardStackView: View {
         VStack(spacing: 0) {
             HDivider()
             ForEach(cards) { card in
-                HStack(spacing: .spacingMedium) {
+                HStack(spacing: .spacingSmall) {
                     Image(uiImage: card.brand.logo)
                     VStack(alignment: .leading, spacing: .spacingUnit / 2) {
                         Text(card.brand.name)
                             .rythmicoFont(.bodySemibold)
-                        HStack(spacing: .spacingMedium) {
+                        HStack(spacing: .spacingSmall) {
                             Text(formattedLastFourDigits(for: card))
                             Text(formattedExpiryDate(for: card))
                         }
                         .rythmicoFont(.body)
                     }
+                    .lineLimit(1)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     RadialSelectionIndicator(isSelected: selectedCard == card)
                 }
