@@ -11,7 +11,6 @@ struct Checkout: Equatable, Decodable, Hashable {
         var lastFourDigits: String
         var expiryMonth: Int
         var expiryYear: Int
-        var cvc: String
     }
 
     @E164PhoneNumberOptional
@@ -27,8 +26,7 @@ extension Checkout.Card {
             let number = cardDetails.number,
             let lastFourDigits = cardDetails.last4,
             let expiryMonth = cardDetails.expMonth,
-            let expiryYear = cardDetails.expYear,
-            let cvc = cardDetails.cvc
+            let expiryYear = cardDetails.expYear
         else {
             return nil
         }
@@ -37,8 +35,7 @@ extension Checkout.Card {
             brand: STPCardValidator.brand(forNumber: number),
             lastFourDigits: lastFourDigits,
             expiryMonth: expiryMonth.intValue,
-            expiryYear: expiryYear.intValue,
-            cvc: cvc
+            expiryYear: expiryYear.intValue
         )
     }
 }
@@ -64,5 +61,9 @@ extension STPCardBrand: Decodable {
 
     var name: String {
         STPStringFromCardBrand(self)
+    }
+
+    var logo: UIImage {
+        STPImageLibrary.brandImage(for: self)
     }
 }

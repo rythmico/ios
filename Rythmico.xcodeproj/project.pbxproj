@@ -439,6 +439,7 @@
 		D5D9AEB425368AAA00A0ABCC /* LessonPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEB325368AAA00A0ABCC /* LessonPriceView.swift */; };
 		D5D9AEB9253692FF00A0ABCC /* Decimal+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEB8253692FF00A0ABCC /* Decimal+Sugar.swift */; };
 		D5D9AEBE253694B400A0ABCC /* PhoneNumberInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEBD253694B400A0ABCC /* PhoneNumberInputView.swift */; };
+		D5D9AEC32537105400A0ABCC /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEC22537105400A0ABCC /* CardStackView.swift */; };
 		D5E04B1923BED80700A161BB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* Fonts.swift */; };
 		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
 		D5E987B924ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
@@ -450,6 +451,7 @@
 		D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */; };
 		D5E987C724EEFC7C00E2E1AF /* BookingApplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */; };
 		D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF88B523FB706C0072BD03 /* ProgressBar.swift */; };
+		D5F11566253735F20027D164 /* NonEmpty in Frameworks */ = {isa = PBXBuildFile; productRef = D5F11565253735F20027D164 /* NonEmpty */; };
 		D5F4D3DE24F031FA000E8580 /* SwiftUIMapView in Frameworks */ = {isa = PBXBuildFile; productRef = D5F4D3DD24F031FA000E8580 /* SwiftUIMapView */; };
 		D5F4D3E024F04294000E8580 /* BookingApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3DF24F04294000E8580 /* BookingApplication.swift */; };
 		D5F4D3E324F04479000E8580 /* BookingApplicationEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E224F04479000E8580 /* BookingApplicationEndpoints.swift */; };
@@ -848,6 +850,7 @@
 		D5D9AEB325368AAA00A0ABCC /* LessonPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPriceView.swift; sourceTree = "<group>"; };
 		D5D9AEB8253692FF00A0ABCC /* Decimal+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Sugar.swift"; sourceTree = "<group>"; };
 		D5D9AEBD253694B400A0ABCC /* PhoneNumberInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberInputView.swift; sourceTree = "<group>"; };
+		D5D9AEC22537105400A0ABCC /* CardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
 		D5E04B1823BED80700A161BB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Sugar.swift"; sourceTree = "<group>"; };
@@ -922,6 +925,7 @@
 				D52C552D24DC6C3B00C295C4 /* GoogleToolboxForMac.framework in Frameworks */,
 				03B19837247053F5005529EB /* APIKit in Frameworks */,
 				D52C550D24DC6C3A00C295C4 /* FIRAnalyticsConnector.framework in Frameworks */,
+				D5F11566253735F20027D164 /* NonEmpty in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1796,6 +1800,7 @@
 				D5D78DDF25250864007041BE /* LessonPlanBookingView.swift */,
 				D5D9AEBD253694B400A0ABCC /* PhoneNumberInputView.swift */,
 				D5D9AEB325368AAA00A0ABCC /* LessonPriceView.swift */,
+				D5D9AEC22537105400A0ABCC /* CardStackView.swift */,
 				D56B2530252D1A8100BC3932 /* StripePaymentCardTextField.swift */,
 				D5D9AE4325335B0400A0ABCC /* StripeCardDetails.swift */,
 				D5D9AE3E25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift */,
@@ -1902,6 +1907,7 @@
 				D585217524CF81CE005D783A /* Introspect */,
 				D5D78DD6252502CE007041BE /* PhoneNumberKit */,
 				D5D97513252B9EB6000AD074 /* Stripe */,
+				D5F11565253735F20027D164 /* NonEmpty */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -2046,6 +2052,7 @@
 				D5F4D3DC24F031FA000E8580 /* XCRemoteSwiftPackageReference "swiftui-mapview" */,
 				D5D78DD5252502CE007041BE /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
 				D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */,
+				D5F11564253735F20027D164 /* XCRemoteSwiftPackageReference "swift-nonempty" */,
 			);
 			productRefGroup = 03341B3C23ABB1E7009AE8A8 /* Products */;
 			projectDirPath = "";
@@ -2266,6 +2273,7 @@
 				D527B00924FD2047003E81A9 /* AvatarView.swift in Sources */,
 				03021C4F248A769200C0C57E /* LessonPlanSummaryCell.swift in Sources */,
 				D58149F5251D6F770009BBB3 /* InteractiveBackground.swift in Sources */,
+				D5D9AEC32537105400A0ABCC /* CardStackView.swift in Sources */,
 				D518C2FD250EDD3300288A48 /* InfoBanner.swift in Sources */,
 				D5BDD8A72511989500706EC1 /* TutorAcceptedStatusPill.swift in Sources */,
 				D5AAF7D523F9E1F900E410F2 /* InstrumentSelectionListProvider.swift in Sources */,
@@ -3213,6 +3221,14 @@
 				minimumVersion = 20.0.0;
 			};
 		};
+		D5F11564253735F20027D164 /* XCRemoteSwiftPackageReference "swift-nonempty" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-nonempty";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		D5F4D3DC24F031FA000E8580 /* XCRemoteSwiftPackageReference "swiftui-mapview" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sgade/swiftui-mapview";
@@ -3293,6 +3309,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */;
 			productName = Stripe;
+		};
+		D5F11565253735F20027D164 /* NonEmpty */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5F11564253735F20027D164 /* XCRemoteSwiftPackageReference "swift-nonempty" */;
+			productName = NonEmpty;
 		};
 		D5F4D3DD24F031FA000E8580 /* SwiftUIMapView */ = {
 			isa = XCSwiftPackageProductDependency;
