@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct LessonPlanApplicationDetailAboutView: View, VisibleView {
-    @StateObject
+    @ObservedObject
     var coordinator: APIActivityCoordinator<GetPortfolioRequest>
     @State
     var isVisible = false
@@ -22,12 +22,9 @@ struct LessonPlanApplicationDetailAboutView: View, VisibleView {
     private var content: some View {
         switch coordinator.state {
         case .ready, .suspended, .finished(.failure), .idle:
-            Color(.systemBackground)
+            Color.clear
         case .loading:
-            ZStack {
-                Color(.systemBackground)
-                ActivityIndicator(color: .rythmicoGray90)
-            }
+            ActivityIndicator(color: .rythmicoGray90).frame(maxWidth: .infinity, maxHeight: .infinity)
         case .finished(.success(let portfolio)):
             PortfolioView(tutor: tutor, portfolio: portfolio)
         }

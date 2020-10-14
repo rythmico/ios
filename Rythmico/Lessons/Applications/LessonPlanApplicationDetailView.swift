@@ -12,26 +12,15 @@ struct LessonPlanApplicationDetailView: View {
     @Environment(\.presentationMode)
     private var presentationMode
 
-    @StateObject
-    private var coordinator: APIActivityCoordinator<GetPortfolioRequest>
-
     @State
     private var tab: Tab = .message
-
+    @StateObject
+    private var coordinator = Current.coordinator(for: \.portfolioFetchingService)!
     @State
     private var showingBookingView = false
 
     var lessonPlan: LessonPlan
     var application: LessonPlan.Application
-
-    init?(lessonPlan: LessonPlan, application: LessonPlan.Application) {
-        guard let coordinator = Current.coordinator(for: \.portfolioFetchingService) else {
-            return nil
-        }
-        self.lessonPlan = lessonPlan
-        self.application = application
-        self._coordinator = .init(wrappedValue: coordinator)
-    }
 
     var body: some View {
         VStack(spacing: 0) {
