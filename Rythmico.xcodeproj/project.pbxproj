@@ -682,6 +682,8 @@
 		D501587725375AA9005E02FA /* PorfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorfolioView.swift; sourceTree = "<group>"; };
 		D501587C25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationDetailHeaderView.swift; sourceTree = "<group>"; };
 		D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardTooltip.swift; sourceTree = "<group>"; };
+		D50158892538A985005E02FA /* Rythmico-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rythmico-Bridging-Header.h"; sourceTree = "<group>"; };
+		D501588A2538A985005E02FA /* STPPaymentMethodCard+BrandFromString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "STPPaymentMethodCard+BrandFromString.h"; sourceTree = "<group>"; };
 		D50668DA23B946330044E553 /* Rythmico.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rythmico.entitlements; sourceTree = "<group>"; };
 		D50811E323FB72A3008103D8 /* StepBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
 		D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanFormViewTests.swift; sourceTree = "<group>"; };
@@ -1868,6 +1870,8 @@
 				D5D9AE672533ADA400A0ABCC /* Checkout.swift */,
 				D5D9AE702534CAF000A0ABCC /* CheckoutDoubles.swift */,
 				D5D9AE872534CD0200A0ABCC /* CheckoutTests.swift */,
+				D50158892538A985005E02FA /* Rythmico-Bridging-Header.h */,
+				D501588A2538A985005E02FA /* STPPaymentMethodCard+BrandFromString.h */,
 			);
 			path = Checkout;
 			sourceTree = "<group>";
@@ -2049,6 +2053,7 @@
 				TargetAttributes = {
 					03341B3A23ABB1E7009AE8A8 = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1200;
 					};
 					035B1CBB249CF2AA00AABFEA = {
 						CreatedOnToolsVersion = 11.6;
@@ -2876,6 +2881,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Rythmico/Supporting Files/Rythmico.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -2894,6 +2900,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.student;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.rythmico.student";
+				SWIFT_OBJC_BRIDGING_HEADER = "Models/Checkout/Rythmico-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2904,6 +2912,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Rythmico/Supporting Files/Rythmico.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
@@ -2922,6 +2931,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.student;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.rythmico.student";
+				SWIFT_OBJC_BRIDGING_HEADER = "Models/Checkout/Rythmico-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

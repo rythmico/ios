@@ -54,16 +54,7 @@ extension STPCardBrand: Decodable {
     }
 
     init(_ rawBrandString: String) {
-        switch rawBrandString.lowercased() {
-        case "visa": self = .visa
-        case "amex": self = .amex
-        case "mastercard": self = .masterCard
-        case "discover": self = .discover
-        case "jcb": self = .JCB
-        case "diners": self = .dinersClub
-        case "unionpay": self = .unionPay
-        default: self = .unknown
-        }
+        self = STPPaymentMethodCard.brand(from: rawBrandString)
     }
 
     var name: String {
