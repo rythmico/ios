@@ -24,8 +24,8 @@ struct LessonPlanBookingView: View {
     @State private var phoneNumber: Optional<PhoneNumber>
     @State private var phoneNumberInputError: Error?
 
-    @State private var availableCards: [Checkout.Card]
-    @State private var selectedCard: Checkout.Card?
+    @State private var availableCards: [Card]
+    @State private var selectedCard: Card?
     @State private var addingNewCard = false
 
     var body: some View {
@@ -83,7 +83,7 @@ struct LessonPlanBookingView: View {
         }
     }
 
-    private func availableCardsChanged(_ cards: [Checkout.Card]) {
+    private func availableCardsChanged(_ cards: [Card]) {
         if selectedCard == nil, let firstCard = cards.first {
             selectedCard = firstCard
         }

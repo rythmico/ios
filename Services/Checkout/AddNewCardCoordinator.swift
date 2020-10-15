@@ -1,6 +1,6 @@
 import Foundation
 
-final class AddNewCardCoordinator: FailableActivityCoordinator<AddNewCardServiceParams, Checkout.Card> {
+final class AddNewCardCoordinator: FailableActivityCoordinator<AddNewCardServiceParams, Card> {
     private let service: AddNewCardServiceProtocol
 
     init(service: AddNewCardServiceProtocol) {
@@ -14,7 +14,7 @@ final class AddNewCardCoordinator: FailableActivityCoordinator<AddNewCardService
                 finish(
                     result.map { setupIntent in
                         guard
-                            let card = Checkout.Card(setupIntent: setupIntent, cardDetails: input.cardDetails)
+                            let card = Card(setupIntent: setupIntent, cardDetails: input.cardDetails)
                         else {
                             preconditionFailure(
                                 """

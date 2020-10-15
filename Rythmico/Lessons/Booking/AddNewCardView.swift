@@ -4,7 +4,7 @@ struct AddNewCardView: View {
     @Environment(\.presentationMode) private var presentationMode
 
     var stripeClientSecret: String
-    @Binding var availableCards: [Checkout.Card]
+    @Binding var availableCards: [Card]
     @State private var cardDetails = StripeCardDetails()
     @State private var cardIsValid = false
 
@@ -77,7 +77,7 @@ struct AddNewCardView: View {
         presentationMode.wrappedValue.dismiss()
     }
 
-    func coordinatorSucceeded(_ newCard: Checkout.Card) {
+    func coordinatorSucceeded(_ newCard: Card) {
         availableCards.append(newCard)
         dismiss()
     }

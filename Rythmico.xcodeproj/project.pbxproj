@@ -214,6 +214,9 @@
 		D501587825375AA9005E02FA /* PorfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501587725375AA9005E02FA /* PorfolioView.swift */; };
 		D501587D25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501587C25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift */; };
 		D501588525376EC0005E02FA /* DismissKeyboardTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */; };
+		D501589A2538BE7C005E02FA /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50158992538BE7C005E02FA /* Card.swift */; };
+		D501589E2538BE82005E02FA /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50158992538BE7C005E02FA /* Card.swift */; };
+		D50158B42538C029005E02FA /* CardDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50158B32538C029005E02FA /* CardDoubles.swift */; };
 		D50811E423FB72A3008103D8 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E323FB72A3008103D8 /* StepBar.swift */; };
 		D50811E623FB769D008103D8 /* RequestLessonPlanFormViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */; };
 		D50811EA23FD75ED008103D8 /* InstrumentSelectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E923FD75ED008103D8 /* InstrumentSelectionViewTests.swift */; };
@@ -684,6 +687,8 @@
 		D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardTooltip.swift; sourceTree = "<group>"; };
 		D50158892538A985005E02FA /* Rythmico-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rythmico-Bridging-Header.h"; sourceTree = "<group>"; };
 		D501588A2538A985005E02FA /* STPPaymentMethodCard+BrandFromString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "STPPaymentMethodCard+BrandFromString.h"; sourceTree = "<group>"; };
+		D50158992538BE7C005E02FA /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		D50158B32538C029005E02FA /* CardDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDoubles.swift; sourceTree = "<group>"; };
 		D50668DA23B946330044E553 /* Rythmico.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rythmico.entitlements; sourceTree = "<group>"; };
 		D50811E323FB72A3008103D8 /* StepBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
 		D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanFormViewTests.swift; sourceTree = "<group>"; };
@@ -1397,6 +1402,7 @@
 				03B71325241D84B400DED025 /* Address */,
 				D5F4D3E124F0429A000E8580 /* BookingApplication */,
 				032B6FC824B783D300299A09 /* BookingRequest */,
+				D501589F2538BE84005E02FA /* Card */,
 				D5D9AE832534CC0700A0ABCC /* Checkout */,
 				D5CC5FF025029525007DFE84 /* ImageReference.swift */,
 				032B6FD524B7882B00299A09 /* Instrument */,
@@ -1428,6 +1434,15 @@
 				D5015872253743C4005E02FA /* AddNewCardServiceDoubles.swift */,
 			);
 			path = Checkout;
+			sourceTree = "<group>";
+		};
+		D501589F2538BE84005E02FA /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				D50158992538BE7C005E02FA /* Card.swift */,
+				D50158B32538C029005E02FA /* CardDoubles.swift */,
+			);
+			path = Card;
 			sourceTree = "<group>";
 		};
 		D509896423B963B700C19300 /* Frameworks */ = {
@@ -2380,6 +2395,7 @@
 				03EDA67D24776C6C00FBE527 /* URLOpener.swift in Sources */,
 				03A91EF8249189E000DEAD5E /* PushNotificationAuthorizationCoordinatorDoubles.swift in Sources */,
 				D5D9AE7B2534CBC800A0ABCC /* PriceDoubles.swift in Sources */,
+				D50158B42538C029005E02FA /* CardDoubles.swift in Sources */,
 				D5B57A6724147F5100BE9B4F /* RequestLessonPlanContext+EnumProperties.swift in Sources */,
 				D54EFF2A2513DDDB004F14D3 /* PortfolioEndpoints.swift in Sources */,
 				0372E35A249ABAB80048B402 /* SelectableList.swift in Sources */,
@@ -2400,6 +2416,7 @@
 				033D47D1247777100096C50F /* LessonsView.swift in Sources */,
 				D585D5B12511299800B74091 /* LessonPlanApplicationDetailView.swift in Sources */,
 				03AAF6732445E11A002D8F5B /* ScheduleDoubles.swift in Sources */,
+				D501589A2538BE7C005E02FA /* Card.swift in Sources */,
 				D5F5065F240055E800CA4094 /* HeaderContentView.swift in Sources */,
 				03AB22F3244CB13200DAC7DF /* PrivateNoteView.swift in Sources */,
 				D5F50663240056FA00CA4094 /* RoundedThinOutlineContainer.swift in Sources */,
@@ -2620,6 +2637,7 @@
 				D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */,
 				D5CAC9AE24E6D67C00119DAA /* MultilineTextField+Tutor.swift in Sources */,
 				035B1D15249E565200AABFEA /* TestableView.swift in Sources */,
+				D501589E2538BE82005E02FA /* Card.swift in Sources */,
 				03E88EAF24C1F74D0077A420 /* AppExtensions.swift in Sources */,
 				035B1D16249E565C00AABFEA /* AuthorizationAppleIDButton.swift in Sources */,
 				D5F4D3E324F04479000E8580 /* BookingApplicationEndpoints.swift in Sources */,
