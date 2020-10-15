@@ -3,6 +3,7 @@ import SwiftUI
 struct AddNewCardView: View {
     @Environment(\.presentationMode) private var presentationMode
 
+    var stripeClientSecret: String
     @Binding var availableCards: [Checkout.Card]
     @State private var cardDetails = StripeCardDetails()
     @State private var cardIsValid = false
@@ -38,7 +39,7 @@ struct AddNewCardView: View {
                 }
 
                 StripeSetupIntentLink(
-                    clientSecret: clientSecret,
+                    clientSecret: stripeClientSecret,
                     cardDetails: cardDetails,
                     coordinator: coordinator
                 ) { action in
@@ -82,12 +83,10 @@ struct AddNewCardView: View {
     }
 }
 
-private let clientSecret = "seti_1HbVOrKYZ0dQzslEXS6mVexF_secret_IBtBJAtyxvQZmmumfICX510ChcazReG"
-
 #if DEBUG
 struct AddNewCardView_Previews: PreviewProvider {
     static var previews: some View {
-        AddNewCardView(availableCards: .constant([]))
+        AddNewCardView(stripeClientSecret: "", availableCards: .constant([]))
     }
 }
 #endif

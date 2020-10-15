@@ -79,7 +79,7 @@ struct LessonPlanBookingView: View {
         }
         .onChange(of: availableCards, perform: availableCardsChanged)
         .sheet(isPresented: $addingNewCard) {
-            AddNewCardView(availableCards: $availableCards)
+            AddNewCardView(stripeClientSecret: checkout.stripeClientSecret, availableCards: $availableCards)
         }
     }
 
