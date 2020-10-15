@@ -53,7 +53,8 @@ extension AppEnvironment {
 
         portfolioFetchingService: APIService(),
 
-        addNewCardService: STPPaymentHandler.shared()
+        cardSetupCredentialFetchingService: APIService(),
+        cardSetupService: STPPaymentHandler.shared()
     )
 }
 
@@ -73,7 +74,8 @@ extension AppEnvironment {
 
             $0.portfolioFetchingService = fakeAPIService(result: .success(.longStub))
 
-            $0.addNewCardService = AddNewCardServiceStub(result: .success(STPSetupIntentFake()), delay: fakeAPIServicesDelay)
+            $0.cardSetupCredentialFetchingService = fakeAPIService(result: .success(.stub))
+            $0.cardSetupService = CardSetupServiceStub(result: .success(STPSetupIntentFake()), delay: fakeAPIServicesDelay)
         }
     }
 }
@@ -123,7 +125,8 @@ extension AppEnvironment {
 
             portfolioFetchingService: APIServiceDummy(),
 
-            addNewCardService: AddNewCardServiceDummy()
+            cardSetupCredentialFetchingService: APIServiceDummy(),
+            cardSetupService: CardSetupServiceDummy()
         )
     }
 }

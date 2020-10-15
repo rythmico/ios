@@ -43,5 +43,6 @@ struct AppEnvironment {
 
     var portfolioFetchingService: APIServiceBase<GetPortfolioRequest>
 
-    var addNewCardService: AddNewCardServiceProtocol
+    var cardSetupCredentialFetchingService: APIServiceBase<GetCardSetupCredentialRequest>
+    var cardSetupService: CardSetupServiceProtocol
 }

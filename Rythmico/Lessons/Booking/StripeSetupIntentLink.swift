@@ -3,21 +3,21 @@ import Stripe
 import Sugar
 
 struct StripeSetupIntentLink<Label: View>: View {
-    private var clientSecret: String
+    private var credential: CardSetupCredential
     private var cardDetails: StripeCardDetails
     @ObservedObject
-    private var coordinator: AddNewCardCoordinator
+    private var coordinator: CardSetupCoordinator
     private var label: (@escaping Action) -> Label
     @State
     private var authenticationView = StripeAuthenticationPresentingView()
 
     init(
-        clientSecret: String,
+        credential: CardSetupCredential,
         cardDetails: StripeCardDetails,
-        coordinator: AddNewCardCoordinator,
+        coordinator: CardSetupCoordinator,
         @ViewBuilder label: @escaping (@escaping Action) -> Label
     ) {
-        self.clientSecret = clientSecret
+        self.credential = credential
         self.cardDetails = cardDetails
         self.coordinator = coordinator
         self.label = label
@@ -32,8 +32,8 @@ struct StripeSetupIntentLink<Label: View>: View {
 
     private func confirmSetupIntent() {
         coordinator.start(
-            with: AddNewCardServiceParams(
-                clientSecret: clientSecret,
+            with: CardSetupParams(
+                credential: credential,
                 cardDetails: cardDetails,
                 authenticationContext: authenticationView.authenticationContext
             )

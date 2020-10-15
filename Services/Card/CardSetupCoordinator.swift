@@ -1,13 +1,13 @@
 import Foundation
 
-final class AddNewCardCoordinator: FailableActivityCoordinator<AddNewCardServiceParams, Card> {
-    private let service: AddNewCardServiceProtocol
+final class CardSetupCoordinator: FailableActivityCoordinator<CardSetupParams, Card> {
+    private let service: CardSetupServiceProtocol
 
-    init(service: AddNewCardServiceProtocol) {
+    init(service: CardSetupServiceProtocol) {
         self.service = service
     }
 
-    override func performTask(with input: AddNewCardServiceParams) {
+    override func performTask(with input: CardSetupParams) {
         super.performTask(with: input)
         service.send(input) { [self] result in
             if let result = result {

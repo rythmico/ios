@@ -6,5 +6,4 @@ struct Checkout: Equatable, Decodable, Hashable {
     var phoneNumber: PhoneNumber?
     var pricePerLesson: Price
     var availableCards: [Card]
-    var stripeClientSecret: String
 }

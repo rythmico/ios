@@ -12,7 +12,7 @@ struct STPSetupIntentFake: STPSetupIntentProtocol {
     let paymentMethodID: String? = UUID().uuidString
 }
 
-final class AddNewCardServiceStub: AddNewCardServiceProtocol {
+final class CardSetupServiceStub: CardSetupServiceProtocol {
     var result: Output
     var delay: TimeInterval?
 
@@ -32,7 +32,7 @@ final class AddNewCardServiceStub: AddNewCardServiceProtocol {
     }
 }
 
-final class AddNewCardServiceSpy: AddNewCardServiceProtocol {
+final class CardSetupServiceSpy: CardSetupServiceProtocol {
     private(set) var sendCount = 0
     private(set) var latestParams: Params?
 
@@ -49,6 +49,6 @@ final class AddNewCardServiceSpy: AddNewCardServiceProtocol {
     }
 }
 
-final class AddNewCardServiceDummy: AddNewCardServiceProtocol {
+final class CardSetupServiceDummy: CardSetupServiceProtocol {
     func send(_ params: Params, completion: @escaping Completion) {}
 }

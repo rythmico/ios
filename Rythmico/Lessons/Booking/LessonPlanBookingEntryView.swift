@@ -23,7 +23,7 @@ struct LessonPlanBookingEntryView: View {
         .onAppear(perform: fetch)
         .onDisappear(perform: getCoordinator.cancel)
         .alertOnFailure(getCoordinator)
-        .animation(.rythmicoSpring(duration: .durationShort), value: getCoordinator.state.successValue)
+        .animation(.rythmicoSpring(duration: .durationMedium), value: getCoordinator.state.successValue)
     }
 
     private func fetch() {

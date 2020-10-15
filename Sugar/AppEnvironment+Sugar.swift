@@ -90,8 +90,8 @@ extension AppEnvironment {
         DeviceUnregisterCoordinator(deviceTokenDeleter: deviceTokenDeleter)
     }
 
-    func addNewCardCoordinator() -> AddNewCardCoordinator {
-        AddNewCardCoordinator(service: addNewCardService)
+    func cardSetupCoordinator() -> CardSetupCoordinator {
+        CardSetupCoordinator(service: cardSetupService)
     }
 }
 

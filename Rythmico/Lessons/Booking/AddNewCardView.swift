@@ -3,13 +3,13 @@ import SwiftUI
 struct AddNewCardView: View {
     @Environment(\.presentationMode) private var presentationMode
 
-    var stripeClientSecret: String
+    var credential: CardSetupCredential
     @Binding var availableCards: [Card]
     @State private var cardDetails = StripeCardDetails()
     @State private var cardIsValid = false
 
     @StateObject
-    private var coordinator = Current.addNewCardCoordinator()
+    private var coordinator = Current.cardSetupCoordinator()
 
     var body: some View {
         NavigationView {
@@ -39,7 +39,7 @@ struct AddNewCardView: View {
                 }
 
                 StripeSetupIntentLink(
-                    clientSecret: stripeClientSecret,
+                    credential: credential,
                     cardDetails: cardDetails,
                     coordinator: coordinator
                 ) { action in
@@ -86,7 +86,7 @@ struct AddNewCardView: View {
 #if DEBUG
 struct AddNewCardView_Previews: PreviewProvider {
     static var previews: some View {
-        AddNewCardView(stripeClientSecret: "", availableCards: .constant([]))
+        AddNewCardView(credential: .stub, availableCards: .constant([]))
     }
 }
 #endif

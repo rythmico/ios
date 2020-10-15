@@ -1,23 +1,23 @@
 import Foundation
 import Stripe
 
-struct AddNewCardServiceParams {
-    var clientSecret: String
+struct CardSetupParams {
+    var credential: CardSetupCredential
     var cardDetails: StripeCardDetails
     var authenticationContext: STPAuthenticationContext
 }
 
-protocol AddNewCardServiceProtocol {
-    typealias Params = AddNewCardServiceParams
+protocol CardSetupServiceProtocol {
+    typealias Params = CardSetupParams
     typealias Output = Swift.Result<STPSetupIntentProtocol, Error>?
     typealias Completion = (Output) -> Void
     func send(_ params: Params, completion: @escaping Completion)
 }
 
-extension STPPaymentHandler: AddNewCardServiceProtocol {
+extension STPPaymentHandler: CardSetupServiceProtocol {
     func send(_ params: Params, completion: @escaping Completion) {
         confirmSetupIntent(
-            withParams: STPSetupIntentConfirmParams(clientSecret: params.clientSecret).then {
+            withParams: STPSetupIntentConfirmParams(clientSecret: params.credential.stripeClientSecret).then {
                 $0.paymentMethodParams = STPPaymentMethodParams(
                     card: params.cardDetails,
                     billingDetails: nil,

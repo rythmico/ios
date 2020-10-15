@@ -208,14 +208,16 @@
 		03EDA67F24776CEC00FBE527 /* URLOpenerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67E24776CEC00FBE527 /* URLOpenerDoubles.swift */; };
 		03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE818F244E169200C5C184 /* ReviewRequestView.swift */; };
 		03FE8192244E204900C5C184 /* AddressItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE8191244E204900C5C184 /* AddressItemView.swift */; };
-		D501585C25373D5A005E02FA /* AddNewCardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501585B25373D5A005E02FA /* AddNewCardService.swift */; };
-		D501586E25374048005E02FA /* AddNewCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501586D25374048005E02FA /* AddNewCardCoordinator.swift */; };
-		D5015873253743C4005E02FA /* AddNewCardServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5015872253743C4005E02FA /* AddNewCardServiceDoubles.swift */; };
+		D501585C25373D5A005E02FA /* CardSetupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501585B25373D5A005E02FA /* CardSetupService.swift */; };
+		D501586E25374048005E02FA /* CardSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501586D25374048005E02FA /* CardSetupCoordinator.swift */; };
+		D5015873253743C4005E02FA /* CardSetupServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5015872253743C4005E02FA /* CardSetupServiceDoubles.swift */; };
 		D501587825375AA9005E02FA /* PorfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501587725375AA9005E02FA /* PorfolioView.swift */; };
 		D501587D25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501587C25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift */; };
 		D501588525376EC0005E02FA /* DismissKeyboardTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */; };
 		D501589A2538BE7C005E02FA /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50158992538BE7C005E02FA /* Card.swift */; };
 		D501589E2538BE82005E02FA /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50158992538BE7C005E02FA /* Card.swift */; };
+		D50158AA2538BF63005E02FA /* CardSetupCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50158A92538BF63005E02FA /* CardSetupCredential.swift */; };
+		D50158AF2538BFDD005E02FA /* CardSetupCredentialDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50158AE2538BFDD005E02FA /* CardSetupCredentialDoubles.swift */; };
 		D50158B42538C029005E02FA /* CardDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50158B32538C029005E02FA /* CardDoubles.swift */; };
 		D50811E423FB72A3008103D8 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E323FB72A3008103D8 /* StepBar.swift */; };
 		D50811E623FB769D008103D8 /* RequestLessonPlanFormViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E523FB769D008103D8 /* RequestLessonPlanFormViewTests.swift */; };
@@ -250,6 +252,8 @@
 		D527B01724FEAA62003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B00F24FE7811003E81A9 /* ImageLoadingServiceDoubles.swift */; };
 		D527B01824FEABEB003E81A9 /* ActivityDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B01124FE92DA003E81A9 /* ActivityDoubles.swift */; };
 		D527B02224FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B02124FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift */; };
+		D52A4F192538C41400C65A91 /* CardSetupEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52A4F182538C41400C65A91 /* CardSetupEndpoints.swift */; };
+		D52A4F1E2538C59300C65A91 /* AddNewCardEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52A4F1D2538C59300C65A91 /* AddNewCardEntryView.swift */; };
 		D52C550D24DC6C3A00C295C4 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896C23B963B700C19300 /* FIRAnalyticsConnector.framework */; };
 		D52C551124DC6C3A00C295C4 /* FirebaseABTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D535556123E4F8BE005A20EB /* FirebaseABTesting.framework */; };
 		D52C551324DC6C3A00C295C4 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D509896B23B963B700C19300 /* FirebaseAnalytics.framework */; };
@@ -679,15 +683,17 @@
 		03EDA67E24776CEC00FBE527 /* URLOpenerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpenerDoubles.swift; sourceTree = "<group>"; };
 		03FE818F244E169200C5C184 /* ReviewRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestView.swift; sourceTree = "<group>"; };
 		03FE8191244E204900C5C184 /* AddressItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressItemView.swift; sourceTree = "<group>"; };
-		D501585B25373D5A005E02FA /* AddNewCardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCardService.swift; sourceTree = "<group>"; };
-		D501586D25374048005E02FA /* AddNewCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCardCoordinator.swift; sourceTree = "<group>"; };
-		D5015872253743C4005E02FA /* AddNewCardServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCardServiceDoubles.swift; sourceTree = "<group>"; };
+		D501585B25373D5A005E02FA /* CardSetupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetupService.swift; sourceTree = "<group>"; };
+		D501586D25374048005E02FA /* CardSetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetupCoordinator.swift; sourceTree = "<group>"; };
+		D5015872253743C4005E02FA /* CardSetupServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetupServiceDoubles.swift; sourceTree = "<group>"; };
 		D501587725375AA9005E02FA /* PorfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorfolioView.swift; sourceTree = "<group>"; };
 		D501587C25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationDetailHeaderView.swift; sourceTree = "<group>"; };
 		D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardTooltip.swift; sourceTree = "<group>"; };
 		D50158892538A985005E02FA /* Rythmico-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rythmico-Bridging-Header.h"; sourceTree = "<group>"; };
 		D501588A2538A985005E02FA /* STPPaymentMethodCard+BrandFromString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "STPPaymentMethodCard+BrandFromString.h"; sourceTree = "<group>"; };
 		D50158992538BE7C005E02FA /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		D50158A92538BF63005E02FA /* CardSetupCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetupCredential.swift; sourceTree = "<group>"; };
+		D50158AE2538BFDD005E02FA /* CardSetupCredentialDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetupCredentialDoubles.swift; sourceTree = "<group>"; };
 		D50158B32538C029005E02FA /* CardDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDoubles.swift; sourceTree = "<group>"; };
 		D50668DA23B946330044E553 /* Rythmico.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rythmico.entitlements; sourceTree = "<group>"; };
 		D50811E323FB72A3008103D8 /* StepBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
@@ -729,6 +735,8 @@
 		D527B01124FE92DA003E81A9 /* ActivityDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDoubles.swift; sourceTree = "<group>"; };
 		D527B01324FEA2DE003E81A9 /* ImageLoadingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadingCoordinator.swift; sourceTree = "<group>"; };
 		D527B02124FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanTutorAvatarView.swift; sourceTree = "<group>"; };
+		D52A4F182538C41400C65A91 /* CardSetupEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetupEndpoints.swift; sourceTree = "<group>"; };
+		D52A4F1D2538C59300C65A91 /* AddNewCardEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCardEntryView.swift; sourceTree = "<group>"; };
 		D52C550824DC6A7500C295C4 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Carthage/Build/iOS/Firebase.framework; sourceTree = "<group>"; };
 		D52C553924DC71B800C295C4 /* BookingRequestDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestDetailView.swift; sourceTree = "<group>"; };
 		D52C553B24DC74A200C295C4 /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
@@ -1378,7 +1386,7 @@
 				D5AFED4425057CB0003FFC68 /* ActivityCoordinator */,
 				D527B01A24FEACC0003E81A9 /* API */,
 				D535549823E0FA4A005A20EB /* Auth */,
-				D501586625373D8B005E02FA /* Checkout */,
+				D501586625373D8B005E02FA /* Card */,
 				03A91EF924918A4700DEAD5E /* DeviceRegistration */,
 				03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */,
 				D527B01B24FEAD1A003E81A9 /* Endpoints */,
@@ -1426,14 +1434,14 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		D501586625373D8B005E02FA /* Checkout */ = {
+		D501586625373D8B005E02FA /* Card */ = {
 			isa = PBXGroup;
 			children = (
-				D501586D25374048005E02FA /* AddNewCardCoordinator.swift */,
-				D501585B25373D5A005E02FA /* AddNewCardService.swift */,
-				D5015872253743C4005E02FA /* AddNewCardServiceDoubles.swift */,
+				D501586D25374048005E02FA /* CardSetupCoordinator.swift */,
+				D501585B25373D5A005E02FA /* CardSetupService.swift */,
+				D5015872253743C4005E02FA /* CardSetupServiceDoubles.swift */,
 			);
-			path = Checkout;
+			path = Card;
 			sourceTree = "<group>";
 		};
 		D501589F2538BE84005E02FA /* Card */ = {
@@ -1441,6 +1449,8 @@
 			children = (
 				D50158992538BE7C005E02FA /* Card.swift */,
 				D50158B32538C029005E02FA /* CardDoubles.swift */,
+				D50158A92538BF63005E02FA /* CardSetupCredential.swift */,
+				D50158AE2538BFDD005E02FA /* CardSetupCredentialDoubles.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -1627,6 +1637,7 @@
 				0365F6F42417F1E900F452AC /* AddressLookupEndpoints.swift */,
 				D5F4D3E224F04479000E8580 /* BookingApplicationEndpoints.swift */,
 				032B6FDC24B78A5200299A09 /* BookingRequestEndpoints.swift */,
+				D52A4F182538C41400C65A91 /* CardSetupEndpoints.swift */,
 				033D47D5247ABF6B0096C50F /* LessonPlanEndpoints.swift */,
 				D54EFF292513DDDB004F14D3 /* PortfolioEndpoints.swift */,
 			);
@@ -1851,6 +1862,7 @@
 				D5D9AEBD253694B400A0ABCC /* PhoneNumberInputView.swift */,
 				D5D9AEB325368AAA00A0ABCC /* LessonPriceView.swift */,
 				D5D9AEC22537105400A0ABCC /* CardStackView.swift */,
+				D52A4F1D2538C59300C65A91 /* AddNewCardEntryView.swift */,
 				D5D9AE562533764D00A0ABCC /* AddNewCardView.swift */,
 				D56B2530252D1A8100BC3932 /* StripePaymentCardTextField.swift */,
 				D56B253525322AE300BC3932 /* StripeSetupIntentLink.swift */,
@@ -2315,6 +2327,7 @@
 				D5F506B42405ED9300CA4094 /* RoundedThickOutlineContainer.swift in Sources */,
 				031378C5249A7453005FC49C /* CloseButton.swift in Sources */,
 				035AF3082491A51D004A01B2 /* UIAccessibilityProtocol.swift in Sources */,
+				D52A4F192538C41400C65A91 /* CardSetupEndpoints.swift in Sources */,
 				D5D974F425263FAF000AD074 /* PhoneNumber.swift in Sources */,
 				D5D9AE762534CBB700A0ABCC /* Price.swift in Sources */,
 				D5AAF7DF23FB444500E410F2 /* RoundedShadowContainer.swift in Sources */,
@@ -2359,7 +2372,7 @@
 				032B6FD024B787BB00299A09 /* Gender.swift in Sources */,
 				D5D9AE682533ADA400A0ABCC /* Checkout.swift in Sources */,
 				D501588525376EC0005E02FA /* DismissKeyboardTooltip.swift in Sources */,
-				D501585C25373D5A005E02FA /* AddNewCardService.swift in Sources */,
+				D501585C25373D5A005E02FA /* CardSetupService.swift in Sources */,
 				D53555CE23E536AE005A20EB /* AppleAuthorizationControllerDoubles.swift in Sources */,
 				03B198542471BBE8005529EB /* App+PushNotifications.swift in Sources */,
 				D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */,
@@ -2375,7 +2388,7 @@
 				D5919F7124CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */,
 				03E88EAB24C1F5FE0077A420 /* AppContext.swift in Sources */,
 				D5919F6E24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */,
-				D5015873253743C4005E02FA /* AddNewCardServiceDoubles.swift in Sources */,
+				D5015873253743C4005E02FA /* CardSetupServiceDoubles.swift in Sources */,
 				035AF30A2491A54E004A01B2 /* UIAccessibilityDoubles.swift in Sources */,
 				03AAF6712445E0FB002D8F5B /* Schedule.swift in Sources */,
 				03275AE3249070D5009C3980 /* DeviceEndpoints.swift in Sources */,
@@ -2404,11 +2417,12 @@
 				D5F506B02405A6A900CA4094 /* Duration.swift in Sources */,
 				D5AAF7D923F9EB1200E410F2 /* InstrumentSelectionListProviderDoubles.swift in Sources */,
 				D54FC05524CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */,
+				D50158AA2538BF63005E02FA /* CardSetupCredential.swift in Sources */,
 				0365F6F52417F1E900F452AC /* AddressLookupEndpoints.swift in Sources */,
 				D58824BF251A6953000820F4 /* LessonPlanApplicationsGridView.swift in Sources */,
 				D5882502251CBE0C000820F4 /* NavigationViewFixInteractiveDismissal.swift in Sources */,
 				03275AEB24908017009C3980 /* Alert+Error.swift in Sources */,
-				D501586E25374048005E02FA /* AddNewCardCoordinator.swift in Sources */,
+				D501586E25374048005E02FA /* CardSetupCoordinator.swift in Sources */,
 				03B198562471BD6C005529EB /* PushNotificationAuthorizationCoordinator.swift in Sources */,
 				D5F5067B2400788400CA4094 /* MultilineTextField.swift in Sources */,
 				D5989BAF251662F400BED8A6 /* AsyncImage.swift in Sources */,
@@ -2421,6 +2435,7 @@
 				03AB22F3244CB13200DAC7DF /* PrivateNoteView.swift in Sources */,
 				D5F50663240056FA00CA4094 /* RoundedThinOutlineContainer.swift in Sources */,
 				03BB5C912472D85A00B44692 /* DeviceRegisterCoordinator.swift in Sources */,
+				D52A4F1E2538C59300C65A91 /* AddNewCardEntryView.swift in Sources */,
 				03E88EA624C1F4930077A420 /* App+Firebase.swift in Sources */,
 				D55F013324CCE65C00E5F13C /* Then+Sugar.swift in Sources */,
 				D5814A09251D957D0009BBB3 /* MainViewContent.swift in Sources */,
@@ -2487,6 +2502,7 @@
 				035B1D14249E565200AABFEA /* TestableView.swift in Sources */,
 				D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */,
 				D5D9AE5C2533865D00A0ABCC /* Button+Sugar.swift in Sources */,
+				D50158AF2538BFDD005E02FA /* CardSetupCredentialDoubles.swift in Sources */,
 				033D47D6247ABF6B0096C50F /* LessonPlanEndpoints.swift in Sources */,
 				D5F5068C24046B1400CA4094 /* Spacing.swift in Sources */,
 				D535547923DF3A7C005A20EB /* Keychain.swift in Sources */,
