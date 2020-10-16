@@ -48,13 +48,15 @@ struct CardStackView: View {
 }
 
 struct RadialSelectionIndicator: View {
+    @Environment(\.isEnabled) private var isEnabled
+
     var isSelected: Bool
 
     var body: some View {
         ZStack {
             if isSelected {
                 Circle()
-                    .fill(Color.rythmicoPurple)
+                    .fill(color)
                     .transition(
                         AnyTransition
                             .scale
@@ -65,9 +67,14 @@ struct RadialSelectionIndicator: View {
             Circle()
                 .strokeBorder(Color(.systemBackground), lineWidth: 2.5)
             Circle()
-                .strokeBorder(Color.rythmicoPurple, lineWidth: 1)
+                .strokeBorder(color, lineWidth: 1)
         }
         .frame(width: 16, height: 16)
+        .animation(.rythmicoSpring(duration: .durationShort))
+    }
+
+    var color: Color {
+        isEnabled ? .rythmicoPurple : .rythmicoGray20
     }
 }
 
@@ -83,9 +90,12 @@ struct CardStackView_Previews: PreviewProvider {
     }
 
     static var previews: some View {
-        Content()
-            .previewLayout(.sizeThatFits)
-            .padding(.vertical)
+        Group {
+            Content()
+            Content().disabled(true)
+        }
+        .previewLayout(.sizeThatFits)
+        .padding(.vertical)
     }
 }
 #endif
