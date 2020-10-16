@@ -44,7 +44,7 @@ struct LessonPlanCancellationView: View, TestableView {
                             )
                     }
                 } else if coordinator.state.isLoading {
-                    LoadingView()
+                    LoadingView(title: "Cancelling plan...")
                         .transition(
                             .asymmetric(insertion: .move(edge: .trailing), removal: .opacity)
                         )
