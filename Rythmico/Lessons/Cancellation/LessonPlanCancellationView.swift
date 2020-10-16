@@ -49,7 +49,7 @@ struct LessonPlanCancellationView: View, TestableView {
                             .asymmetric(insertion: .move(edge: .trailing), removal: .opacity)
                         )
                 } else if coordinator.state.isSuccess {
-                    ConfirmationView().transition(.opacity)
+                    ConfirmationView(title: "Plan cancelled successfully").transition(.opacity)
                 }
             }
             .onEdgeSwipe(.left, perform: back)
