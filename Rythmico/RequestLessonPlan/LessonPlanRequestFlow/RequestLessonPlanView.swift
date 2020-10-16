@@ -40,8 +40,8 @@ struct RequestLessonPlanView: View, TestableView {
     var body: some View {
         CoordinatorStateView(
             coordinator: coordinator,
-            successContent: { confirmationView },
-            loadingContent: { loadingView },
+            successContent: RequestLessonPlanConfirmationView.init,
+            loadingTitle: "Submitting proposal...",
             inputContent: { formView.alertOnFailure(coordinator) }
         )
         .testable(self)
@@ -60,14 +60,6 @@ struct RequestLessonPlanView: View, TestableView {
 extension RequestLessonPlanView {
     var formView: RequestLessonPlanFormView? {
         coordinator.state.isReady || coordinator.state.isFailure ? _formView : nil
-    }
-
-    var loadingView: LoadingView? {
-        coordinator.state.isLoading ? LoadingView(title: "Submitting proposal...") : nil
-    }
-
-    var confirmationView: RequestLessonPlanConfirmationView? {
-        coordinator.state.successValue.map(RequestLessonPlanConfirmationView.init)
     }
 }
 
