@@ -5,11 +5,11 @@ struct LessonPlanBookingEntryView: View {
     var application: LessonPlan.Application
 
     @StateObject
-    private var getCoordinator = Current.coordinator(for: \.lessonPlanGetCheckoutService)!
+    private var coordinator = Current.coordinator(for: \.lessonPlanGetCheckoutService)!
 
     var body: some View {
         ZStack {
-            if let checkout = getCoordinator.state.successValue {
+            if let checkout = coordinator.state.successValue {
                 LessonPlanBookingView(
                     lessonPlan: lessonPlan,
                     application: application,
@@ -21,13 +21,13 @@ struct LessonPlanBookingEntryView: View {
             }
         }
         .onAppear(perform: fetch)
-        .onDisappear(perform: getCoordinator.cancel)
-        .alertOnFailure(getCoordinator)
-        .animation(.rythmicoSpring(duration: .durationMedium), value: getCoordinator.state.successValue)
+        .onDisappear(perform: coordinator.cancel)
+        .alertOnFailure(coordinator)
+        .animation(.rythmicoSpring(duration: .durationMedium), value: coordinator.state.successValue)
     }
 
     private func fetch() {
-        getCoordinator.start(with: .init(lessonPlanId: lessonPlan.id))
+        coordinator.start(with: .init(lessonPlanId: lessonPlan.id))
     }
 }
 
