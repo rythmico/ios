@@ -8,7 +8,7 @@ struct RoundedThickOutlineContainer: ViewModifier {
         content
             .padding(.vertical, .spacingSmall)
             .padding(.horizontal, .spacingSmall)
-            .frame(minHeight: 56, maxHeight: .infinity)
+            .frame(minHeight: 56)
             .background(
                 RoundedRectangle(cornerRadius: 8, style: .continuous)
                     .fill(backgroundColor)

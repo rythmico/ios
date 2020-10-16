@@ -2,6 +2,7 @@ import SwiftUI
 
 struct GenderSelectionView: View {
     @Binding var selection: Gender?
+    var accentColor = Color.rythmicoPurple
 
     var body: some View {
         HStack(spacing: 10) {
@@ -13,9 +14,8 @@ struct GenderSelectionView: View {
                         .animation(.none)
                         .frame(maxWidth: .infinity, alignment: .leading)
 
-                    gender.icon
-                        .renderingMode(.template)
-                        .foregroundColor(iconColor(for: gender))
+                    VectorImage(asset: gender.icon)
+                        .accentColor(iconColor(for: gender))
                 }
                 .modifier(
                     containerModifier(for: gender)
@@ -28,7 +28,7 @@ struct GenderSelectionView: View {
     }
 
     private func textColor(for gender: Gender) -> Color {
-        selection == gender ? .accentColor : .rythmicoForeground
+        selection == gender ? accentColor : .rythmicoForeground
     }
 
     private func textStyle(for gender: Gender) -> RythmicoFontStyle {
@@ -36,23 +36,33 @@ struct GenderSelectionView: View {
     }
 
     private func iconColor(for gender: Gender) -> Color {
-        selection == gender ? .accentColor : .rythmicoGray90
+        selection == gender ? accentColor : .rythmicoGray90
     }
 
     private func containerModifier(for gender: Gender) -> RoundedThickOutlineContainer {
         selection == gender
-            ? RoundedThickOutlineContainer(backgroundColor: .accentColor, borderColor: .accentColor)
+            ? RoundedThickOutlineContainer(backgroundColor: accentColor, borderColor: accentColor)
             : RoundedThickOutlineContainer()
     }
 }
 
 private extension Gender {
-    var icon: Image {
+    var icon: ImageAsset {
         switch self {
         case .male:
-            return Image(decorative: Asset.genderSignMale.name)
+            return Asset.genderSignMale
         case .female:
-            return Image(decorative: Asset.genderSignFemale.name)
+            return Asset.genderSignFemale
         }
     }
 }
+
+#if DEBUG
+struct GenderSelectionView_Previews: PreviewProvider {
+    static var previews: some View {
+        GenderSelectionView(selection: .constant(.male))
+            .previewLayout(.sizeThatFits)
+            .padding()
+    }
+}
+#endif

@@ -5,8 +5,7 @@ struct InfoBanner: View {
 
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: .spacingExtraSmall) {
-            Image(decorative: Asset.iconInfo.name)
-                .renderingMode(.template)
+            VectorImage(asset: Asset.iconInfo)
                 .alignmentGuide(.firstTextBaseline) { $0[.bottom] - 3 }
             Text(text)
                 .rythmicoFont(.callout)
@@ -14,6 +13,7 @@ struct InfoBanner: View {
         }
         .padding(.spacingSmall)
         .foregroundColor(.rythmicoForeground)
+        .accentColor(.rythmicoForeground)
         .background(Color.rythmicoLightBlue)
         .clipShape(RoundedRectangle(cornerRadius: .spacingUnit, style: .continuous))
     }

@@ -12,9 +12,8 @@ struct ScheduleDetailsView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: .spacingSmall) {
             HStack(spacing: .spacingExtraSmall) {
-                Image(decorative: Asset.iconInfo.name)
-                    .renderingMode(.template)
-                    .foregroundColor(.rythmicoGray90)
+                VectorImage(asset: Asset.iconInfo)
+                    .accentColor(.rythmicoGray90)
                 MultiStyleText(parts: [
                     "Start Date: ".color(.rythmicoGray90),
                     startDateText.color(.rythmicoGray90).style(.bodyBold)
@@ -22,20 +21,19 @@ struct ScheduleDetailsView: View {
             }
 
             HStack(spacing: .spacingExtraSmall) {
-                Image(decorative: Asset.iconTime.name)
-                    .renderingMode(.template)
-                    .foregroundColor(.rythmicoGray90)
+                VectorImage(asset: Asset.iconTime)
+                    .accentColor(.rythmicoGray90)
                 MultiStyleText(parts: startTimeAndDurationText)
             }
 
             HStack(spacing: .spacingExtraSmall) {
-                Image(decorative: Asset.iconTime.name).hidden()
+                VectorImage(asset: Asset.iconTime).hidden()
                 MultiStyleText(parts: frequencyText)
             }
 
             if let tutor = tutor {
                 HStack(spacing: .spacingExtraSmall) {
-                    Image(decorative: Asset.iconTime.name).hidden()
+                    VectorImage(asset: Asset.iconTime).hidden()
                     HStack(spacing: .spacingExtraSmall) {
                         LessonPlanTutorAvatarView(tutor, mode: .thumbnail).fixedSize()
                         TutorAcceptedStatusPill(tutor: tutor)

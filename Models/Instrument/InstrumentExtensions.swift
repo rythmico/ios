@@ -1,29 +1,16 @@
 import SwiftUI
 
 extension Instrument {
-    var icon: Image {
+    var icon: ImageAsset {
         switch self {
         case .guitar:
-            return Image(decorative: Asset.instrumentIconGuitar.name)
+            return Asset.instrumentIconGuitar
         case .drums:
-            return Image(decorative: Asset.instrumentIconDrums.name)
+            return Asset.instrumentIconDrums
         case .piano:
-            return Image(decorative: Asset.instrumentIconPiano.name)
+            return Asset.instrumentIconPiano
         case .singing:
-            return Image(decorative: Asset.instrumentIconSinging.name)
-        }
-    }
-
-    var largeIcon: Image {
-        switch self {
-        case .guitar:
-            return Image(decorative: Asset.instrumentIconGuitarLarge.name)
-        case .drums:
-            return Image(decorative: Asset.instrumentIconDrumsLarge.name)
-        case .piano:
-            return Image(decorative: Asset.instrumentIconPianoLarge.name)
-        case .singing:
-            return Image(decorative: Asset.instrumentIconSingingLarge.name)
+            return Asset.instrumentIconSinging
         }
     }
 }

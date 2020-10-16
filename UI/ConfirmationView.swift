@@ -7,9 +7,8 @@ struct ConfirmationView: View {
         ZStack {
             Color(.systemBackground)
             HStack(spacing: .spacingExtraSmall) {
-                Image(decorative: Asset.iconCheckmark.name)
-                    .renderingMode(.template)
-                    .foregroundColor(.rythmicoPurple)
+                VectorImage(asset: Asset.iconCheckmark)
+                    .accentColor(.rythmicoPurple)
                 Text(title)
                     .rythmicoFont(.subheadlineBold)
                     .foregroundColor(.rythmicoForeground)
