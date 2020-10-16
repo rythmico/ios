@@ -228,6 +228,7 @@
 		D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */; };
 		D514750F240C96F0002EE20C /* XCTAssertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147507240C8E69002EE20C /* XCTAssertView.swift */; };
 		D5147511240C99A9002EE20C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147510240C99A9002EE20C /* CustomTextField.swift */; };
+		D516A8FA253A1816002E6EDF /* CoordinatorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D516A8F9253A1816002E6EDF /* CoordinatorStateView.swift */; };
 		D518C2F8250EA89100288A48 /* LessonPlanApplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518C2F7250EA89100288A48 /* LessonPlanApplicationsView.swift */; };
 		D518C2FD250EDD3300288A48 /* InfoBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518C2FC250EDD3300288A48 /* InfoBanner.swift */; };
 		D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */; };
@@ -721,6 +722,7 @@
 		D5147506240C8E69002EE20C /* TestableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestableView.swift; sourceTree = "<group>"; };
 		D5147507240C8E69002EE20C /* XCTAssertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTAssertView.swift; sourceTree = "<group>"; };
 		D5147510240C99A9002EE20C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		D516A8F9253A1816002E6EDF /* CoordinatorStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorStateView.swift; sourceTree = "<group>"; };
 		D518C2F7250EA89100288A48 /* LessonPlanApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationsView.swift; sourceTree = "<group>"; };
 		D518C2FC250EDD3300288A48 /* InfoBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBanner.swift; sourceTree = "<group>"; };
 		D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailsView.swift; sourceTree = "<group>"; };
@@ -1494,6 +1496,7 @@
 				D5AAF7DA23FB347C00E410F2 /* CollectionView.swift */,
 				D535554623E20076005A20EB /* Colors.swift */,
 				0392A9CE244D09FF001E97AE /* ContentSizeCategory+Sugar.swift */,
+				D516A8F9253A1816002E6EDF /* CoordinatorStateView.swift */,
 				D5147510240C99A9002EE20C /* CustomTextField.swift */,
 				D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */,
 				D5D9AE4E253367A100A0ABCC /* Divider.swift */,
@@ -2316,6 +2319,7 @@
 				D5989BA7251533E300BED8A6 /* PortfolioTrainingsView.swift in Sources */,
 				D53555B723E53699005A20EB /* DeauthenticationService.swift in Sources */,
 				D5200E4023FDE460007168E0 /* MultiStyleText.swift in Sources */,
+				D516A8FA253A1816002E6EDF /* CoordinatorStateView.swift in Sources */,
 				D5F506B42405ED9300CA4094 /* RoundedThickOutlineContainer.swift in Sources */,
 				031378C5249A7453005FC49C /* CloseButton.swift in Sources */,
 				035AF3082491A51D004A01B2 /* UIAccessibilityProtocol.swift in Sources */,

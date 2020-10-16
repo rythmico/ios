@@ -38,11 +38,12 @@ struct RequestLessonPlanView: View, TestableView {
     }
 
     var body: some View {
-        ZStack {
-            formView.transition(stateTransition(scale: 0.9)).alertOnFailure(coordinator)
-            loadingView.transition(stateTransition(scale: 0.7))
-            confirmationView.transition(stateTransition(scale: 0.7))
-        }
+        CoordinatorStateView(
+            coordinator: coordinator,
+            successContent: { confirmationView },
+            loadingContent: { loadingView },
+            inputContent: { formView.alertOnFailure(coordinator) }
+        )
         .testable(self)
         .onSuccess(coordinator, perform: Current.lessonPlanRepository.insertItem)
         .sheetInteractiveDismissal(swipeDownToDismissEnabled)
