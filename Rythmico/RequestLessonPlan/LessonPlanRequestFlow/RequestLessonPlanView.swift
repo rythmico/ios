@@ -40,7 +40,7 @@ struct RequestLessonPlanView: View, TestableView {
     var body: some View {
         CoordinatorStateView(
             coordinator: coordinator,
-            successContent: RequestLessonPlanConfirmationView.init,
+            successContent: LessonPlanConfirmationView.init,
             loadingTitle: "Submitting proposal...",
             inputContent: { formView.alertOnFailure(coordinator) }
         )

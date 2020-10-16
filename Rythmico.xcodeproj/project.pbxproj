@@ -166,11 +166,11 @@
 		03B1984524719105005529EB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984424719105005529EB /* LoadingView.swift */; };
 		03B198542471BBE8005529EB /* App+PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198532471BBE8005529EB /* App+PushNotifications.swift */; };
 		03B198562471BD6C005529EB /* PushNotificationAuthorizationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198552471BD6C005529EB /* PushNotificationAuthorizationCoordinator.swift */; };
-		03B198582471BD82005529EB /* RequestLessonPlanConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198572471BD82005529EB /* RequestLessonPlanConfirmationView.swift */; };
+		03B198582471BD82005529EB /* LessonPlanConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198572471BD82005529EB /* LessonPlanConfirmationView.swift */; };
 		03B71324241D71B600DED025 /* Error+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B71323241D71B600DED025 /* Error+Sugar.swift */; };
 		03BB5C912472D85A00B44692 /* DeviceRegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C902472D85A00B44692 /* DeviceRegisterCoordinator.swift */; };
 		03BB5C962473070C00B44692 /* ReviewRequestViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C952473070C00B44692 /* ReviewRequestViewTests.swift */; };
-		03BB5C9A24733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C9924733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift */; };
+		03BB5C9A24733F5100B44692 /* LessonPlanConfirmationViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C9924733F5100B44692 /* LessonPlanConfirmationViewTests.swift */; };
 		03C34360249E7218004907DF /* Alert+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AEA24908017009C3980 /* Alert+Error.swift */; };
 		03C34362249FC16E004907DF /* APIUserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C34361249FC16E004907DF /* APIUserAgent.swift */; };
 		03C34363249FC16E004907DF /* APIUserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C34361249FC16E004907DF /* APIUserAgent.swift */; };
@@ -653,11 +653,11 @@
 		03B1984A2471B098005529EB /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseMessaging.framework; path = Carthage/Build/iOS/FirebaseMessaging.framework; sourceTree = "<group>"; };
 		03B198532471BBE8005529EB /* App+PushNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "App+PushNotifications.swift"; sourceTree = "<group>"; };
 		03B198552471BD6C005529EB /* PushNotificationAuthorizationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationAuthorizationCoordinator.swift; sourceTree = "<group>"; };
-		03B198572471BD82005529EB /* RequestLessonPlanConfirmationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanConfirmationView.swift; sourceTree = "<group>"; };
+		03B198572471BD82005529EB /* LessonPlanConfirmationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonPlanConfirmationView.swift; sourceTree = "<group>"; };
 		03B71323241D71B600DED025 /* Error+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Sugar.swift"; sourceTree = "<group>"; };
 		03BB5C902472D85A00B44692 /* DeviceRegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterCoordinator.swift; sourceTree = "<group>"; };
 		03BB5C952473070C00B44692 /* ReviewRequestViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestViewTests.swift; sourceTree = "<group>"; };
-		03BB5C9924733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanConfirmationViewTests.swift; sourceTree = "<group>"; };
+		03BB5C9924733F5100B44692 /* LessonPlanConfirmationViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanConfirmationViewTests.swift; sourceTree = "<group>"; };
 		03C34361249FC16E004907DF /* APIUserAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserAgent.swift; sourceTree = "<group>"; };
 		03C39DD324967E5B00C76516 /* TitleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleContentView.swift; sourceTree = "<group>"; };
 		03C39DD52496802500C76516 /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
@@ -1300,8 +1300,8 @@
 		03BB5C9C247345BE00B44692 /* Confirmation */ = {
 			isa = PBXGroup;
 			children = (
-				03B198572471BD82005529EB /* RequestLessonPlanConfirmationView.swift */,
-				03BB5C9924733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift */,
+				03B198572471BD82005529EB /* LessonPlanConfirmationView.swift */,
+				03BB5C9924733F5100B44692 /* LessonPlanConfirmationViewTests.swift */,
 			);
 			path = Confirmation;
 			sourceTree = "<group>";
@@ -2403,7 +2403,7 @@
 				D53555C523E536AE005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
 				D53555C823E536AE005A20EB /* AppleAuthorizationResponse.swift in Sources */,
 				032215572497034A009D48A8 /* LessonPlanTutorStatusView.swift in Sources */,
-				03B198582471BD82005529EB /* RequestLessonPlanConfirmationView.swift in Sources */,
+				03B198582471BD82005529EB /* LessonPlanConfirmationView.swift in Sources */,
 				D5E04B1923BED80700A161BB /* Fonts.swift in Sources */,
 				03C39DD62496802500C76516 /* Pill.swift in Sources */,
 				D54EFF0C2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift in Sources */,
@@ -2729,7 +2729,7 @@
 				0392A9D3244D184F001E97AE /* PrivateNoteViewTests.swift in Sources */,
 				03EDA67B2477695900FBE527 /* ProfileViewTests.swift in Sources */,
 				D5FD6F16240AF535008C5AD4 /* StudentDetailsViewTests.swift in Sources */,
-				03BB5C9A24733F5100B44692 /* RequestLessonPlanConfirmationViewTests.swift in Sources */,
+				03BB5C9A24733F5100B44692 /* LessonPlanConfirmationViewTests.swift in Sources */,
 				D50811E623FB769D008103D8 /* RequestLessonPlanFormViewTests.swift in Sources */,
 				03AAF6752445E16A002D8F5B /* SchedulingViewTests.swift in Sources */,
 				D5A8C4C225044F4C0006F5C5 /* APIUserAgent+RythmicoTests.swift in Sources */,

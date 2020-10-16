@@ -4,16 +4,16 @@ import enum UserNotifications.UNAuthorizationStatus
 import Sugar
 import ViewInspector
 
-extension RequestLessonPlanConfirmationView: Inspectable {}
+extension LessonPlanConfirmationView: Inspectable {}
 
-final class RequestLessonPlanConfirmationViewTests: XCTestCase {
+final class LessonPlanConfirmationViewTests: XCTestCase {
     override func setUp() {
         Current = .dummy
         Current.userAuthenticated()
     }
 
-    func confirmationView() -> RequestLessonPlanConfirmationView {
-        RequestLessonPlanConfirmationView(lessonPlan: .pendingJackGuitarPlanStub)
+    func confirmationView() -> LessonPlanConfirmationView {
+        LessonPlanConfirmationView(lessonPlan: .pendingJackGuitarPlanStub)
     }
 
     func testEnableNotificationsButtonShown_whenStatusNotDetermined() {

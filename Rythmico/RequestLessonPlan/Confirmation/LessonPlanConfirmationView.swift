@@ -1,18 +1,14 @@
 import SwiftUI
 import Sugar
 
-struct RequestLessonPlanConfirmationView: View, TestableView {
+struct LessonPlanConfirmationView: View, TestableView {
     @Environment(\.presentationMode)
     private var presentationMode
 
     @ObservedObject
     private var notificationAuthorizationCoordinator = Current.pushNotificationAuthorizationCoordinator
 
-    private let lessonPlan: LessonPlan
-
-    init(lessonPlan: LessonPlan) {
-        self.lessonPlan = lessonPlan
-    }
+    var lessonPlan: LessonPlan
 
     var title: String {
         ["\(lessonPlan.instrument.name) Lessons", "Request Submitted!"].joined(separator: "\n")
@@ -101,7 +97,7 @@ struct RequestLessonPlanConfirmationView_Previews: PreviewProvider {
 //            requestResult: (false, nil)
 //            requestResult: (false, "Error")
         )
-        return RequestLessonPlanConfirmationView(lessonPlan: .pendingJackGuitarPlanStub)
+        return LessonPlanConfirmationView(lessonPlan: .pendingJackGuitarPlanStub)
             .previewDevices()
 //            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
