@@ -10,7 +10,7 @@ struct BookingApplicationDetailView: View, RoutableView {
 
     private let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
     private let timeFormatter = Current.dateFormatter(format: .time(.short))
-    private let statusDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .short)
+    private let statusDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .short, precise: true)
 
     @State
     private var retractionPromptSheetPresented = false

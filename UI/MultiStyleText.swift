@@ -6,6 +6,7 @@ struct MultiStyleText: View {
     @Environment(\.legibilityWeight) private var legibilityWeight
 
     var parts: [Part]
+    var expanded: Bool = true
     var alignment: Alignment = .leading
 
     var body: some View {
@@ -23,7 +24,7 @@ struct MultiStyleText: View {
                     )
                     .foregroundColor(part.color)
             }
-            .frame(maxWidth: .infinity, alignment: alignment)
+            .frame(maxWidth: expanded ? .infinity : nil, alignment: alignment)
             .lineSpacing(6)
         }
     }

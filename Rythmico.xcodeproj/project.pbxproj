@@ -232,6 +232,7 @@
 		D516A91B253A471C002E6EDF /* VectorImage+Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D516A91A253A471C002E6EDF /* VectorImage+Assets.swift */; };
 		D516A929253A554F002E6EDF /* AssetImage+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D516A928253A554F002E6EDF /* AssetImage+Sugar.swift */; };
 		D516A92A253A554F002E6EDF /* AssetImage+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D516A928253A554F002E6EDF /* AssetImage+Sugar.swift */; };
+		D516A92F253A6337002E6EDF /* LessonPlanConfirmationDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D516A92E253A6337002E6EDF /* LessonPlanConfirmationDetailsView.swift */; };
 		D518C2F8250EA89100288A48 /* LessonPlanApplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518C2F7250EA89100288A48 /* LessonPlanApplicationsView.swift */; };
 		D518C2FD250EDD3300288A48 /* InfoBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518C2FC250EDD3300288A48 /* InfoBanner.swift */; };
 		D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */; };
@@ -728,6 +729,7 @@
 		D516A915253A470D002E6EDF /* VectorImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorImage.swift; sourceTree = "<group>"; };
 		D516A91A253A471C002E6EDF /* VectorImage+Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VectorImage+Assets.swift"; sourceTree = "<group>"; };
 		D516A928253A554F002E6EDF /* AssetImage+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AssetImage+Sugar.swift"; sourceTree = "<group>"; };
+		D516A92E253A6337002E6EDF /* LessonPlanConfirmationDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanConfirmationDetailsView.swift; sourceTree = "<group>"; };
 		D518C2F7250EA89100288A48 /* LessonPlanApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationsView.swift; sourceTree = "<group>"; };
 		D518C2FC250EDD3300288A48 /* InfoBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBanner.swift; sourceTree = "<group>"; };
 		D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailsView.swift; sourceTree = "<group>"; };
@@ -1300,6 +1302,7 @@
 		03BB5C9C247345BE00B44692 /* Confirmation */ = {
 			isa = PBXGroup;
 			children = (
+				D516A92E253A6337002E6EDF /* LessonPlanConfirmationDetailsView.swift */,
 				03B198572471BD82005529EB /* LessonPlanConfirmationView.swift */,
 				03BB5C9924733F5100B44692 /* LessonPlanConfirmationViewTests.swift */,
 			);
@@ -2442,6 +2445,7 @@
 				D516A916253A470D002E6EDF /* VectorImage.swift in Sources */,
 				D55F013324CCE65C00E5F13C /* Then+Sugar.swift in Sources */,
 				D5814A09251D957D0009BBB3 /* MainViewContent.swift in Sources */,
+				D516A92F253A6337002E6EDF /* LessonPlanConfirmationDetailsView.swift in Sources */,
 				03E88EAD24C1F6050077A420 /* App.swift in Sources */,
 				03B1983F24717A90005529EB /* LessonPlanDoubles.swift in Sources */,
 				03275AE92490769E009C3980 /* DeviceTokenDeleterDoubles.swift in Sources */,

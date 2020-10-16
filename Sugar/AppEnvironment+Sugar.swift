@@ -27,13 +27,15 @@ extension AppEnvironment {
 
     func relativeDateTimeFormatter(
         context: Formatter.Context,
-        style: RelativeDateTimeFormatter.UnitsStyle
+        style: RelativeDateTimeFormatter.UnitsStyle,
+        precise: Bool
     ) -> RelativeDateTimeFormatter {
         RelativeDateTimeFormatter().then {
             $0.calendar = calendar()
             $0.locale = locale
             $0.formattingContext = context
             $0.unitsStyle = style
+            $0.dateTimeStyle = precise ? .numeric : .named
         }
     }
 

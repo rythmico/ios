@@ -5,17 +5,37 @@ struct LessonPlanConfirmationView: View, TestableView {
     @Environment(\.presentationMode)
     private var presentationMode
 
-    @ObservedObject
+    @StateObject
     private var notificationAuthorizationCoordinator = Current.pushNotificationAuthorizationCoordinator
 
     var lessonPlan: LessonPlan
 
     var title: String {
-        ["\(lessonPlan.instrument.name) Lessons", "Request Submitted!"].joined(separator: "\n")
+        switch lessonPlan.status {
+        case .scheduled:
+            return ["\(lessonPlan.instrument.name) Lessons", "Confirmed!"].joined(separator: "\n")
+        default:
+            return ["\(lessonPlan.instrument.name) Lessons", "Request Submitted!"].joined(separator: "\n")
+        }
     }
 
-    var subtitle: String {
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta odio dolor, eget sodales turpis mollis semper."
+    var subtitle: String? {
+        switch lessonPlan.status {
+        case .scheduled:
+            return nil
+        default:
+            return "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta odio dolor, eget sodales turpis mollis semper."
+        }
+    }
+
+    @ViewBuilder
+    var additionalContent: some View {
+        switch lessonPlan.status {
+        case .scheduled(let tutor):
+            LessonPlanConfirmationDetailsView(lessonPlan: lessonPlan, tutor: tutor)
+        default:
+            EmptyView()
+        }
     }
 
     var enablePushNotificationsButtonAction: Action? {
@@ -36,25 +56,26 @@ struct LessonPlanConfirmationView: View, TestableView {
             GeometryReader { geometry in
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: .spacingUnit * 8) {
-                        VStack(spacing: 0) {
-                            VStack(spacing: .spacingLarge) {
-                                VectorImage(asset: lessonPlan.instrument.icon, resizeable: true)
-                                    .frame(width: 48, height: 48)
-                                    .accentColor(.rythmicoForeground)
+                        VStack(spacing: .spacingLarge) {
+                            VectorImage(asset: lessonPlan.instrument.icon, resizeable: true)
+                                .frame(width: 48, height: 48)
+                                .accentColor(.rythmicoForeground)
 
-                                VStack(spacing: .spacingSmall) {
-                                    Text(title)
-                                        .multilineTextAlignment(.center)
-                                        .rythmicoFont(.largeTitle)
-                                        .foregroundColor(.rythmicoForeground)
-                                        .minimumScaleFactor(0.8)
-
+                            VStack(spacing: .spacingSmall) {
+                                Text(title)
+                                    .multilineTextAlignment(.center)
+                                    .rythmicoFont(.largeTitle)
+                                    .foregroundColor(.rythmicoForeground)
+                                    .minimumScaleFactor(0.8)
+                                if let subtitle = subtitle {
                                     Text(subtitle)
                                         .multilineTextAlignment(.center)
                                         .rythmicoFont(.body)
                                         .foregroundColor(.rythmicoGray90)
                                 }
                             }
+
+                            additionalContent
                         }
 
                         enablePushNotificationsButtonAction.map {
@@ -97,9 +118,11 @@ struct RequestLessonPlanConfirmationView_Previews: PreviewProvider {
 //            requestResult: (false, nil)
 //            requestResult: (false, "Error")
         )
-        return LessonPlanConfirmationView(lessonPlan: .pendingJackGuitarPlanStub)
-            .previewDevices()
-//            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+        return Group {
+            LessonPlanConfirmationView(lessonPlan: .pendingJackGuitarPlanStub)
+            LessonPlanConfirmationView(lessonPlan: .scheduledJackGuitarPlanStub)
+        }
+//        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }
 #endif
