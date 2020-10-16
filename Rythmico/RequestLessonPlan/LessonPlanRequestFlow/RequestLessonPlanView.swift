@@ -61,8 +61,8 @@ extension RequestLessonPlanView {
         coordinator.state.isReady || coordinator.state.isFailure ? _formView : nil
     }
 
-    var loadingView: RequestLessonPlanLoadingView? {
-        coordinator.state.isLoading ? RequestLessonPlanLoadingView() : nil
+    var loadingView: LoadingView? {
+        coordinator.state.isLoading ? LoadingView(title: "Submitting proposal...") : nil
     }
 
     var confirmationView: RequestLessonPlanConfirmationView? {

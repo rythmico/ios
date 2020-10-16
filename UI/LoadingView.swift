@@ -1,10 +1,12 @@
 import SwiftUI
 
-struct RequestLessonPlanLoadingView: View {
+struct LoadingView: View {
+    var title: String
+
     var body: some View {
         HStack(spacing: .spacingExtraSmall) {
             ActivityIndicator(color: .rythmicoGray90)
-            Text("Submitting proposal...")
+            Text(title)
                 .rythmicoFont(.subheadlineBold)
                 .foregroundColor(.rythmicoForeground)
         }
@@ -12,9 +14,9 @@ struct RequestLessonPlanLoadingView: View {
 }
 
 #if DEBUG
-struct RequestLessonPlanLoadingView_Previews: PreviewProvider {
+struct LoadingView_Previews: PreviewProvider {
     static var previews: some View {
-        RequestLessonPlanLoadingView()
+        LoadingView(title: "Submitting proposal...")
     }
 }
 #endif
