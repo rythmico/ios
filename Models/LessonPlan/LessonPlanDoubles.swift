@@ -71,6 +71,12 @@ extension LessonPlan {
     }
 }
 
+extension LessonPlan {
+    static let scheduledJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
+        $0.status = .scheduled(.jesseStub)
+    }
+}
+
 extension LessonPlan.Application {
     static let jesseStub = Self(tutor: .jesseStub, privateNote: "I'll help!")
     static let davidStub = Self(tutor: .davidStub, privateNote: "Lorem ipsum!")

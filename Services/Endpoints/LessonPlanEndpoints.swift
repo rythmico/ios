@@ -74,3 +74,29 @@ struct GetLessonPlanCheckoutRequest: RythmicoAPIRequest {
     typealias Response = Checkout
     typealias Error = RythmicoAPIError
 }
+
+struct CompleteLessonPlanCheckoutRequest: RythmicoAPIRequest {
+    struct Properties {
+        struct Body: Encodable {
+            @E164PhoneNumber
+            var phoneNumber: PhoneNumber
+            var cardId: String
+        }
+
+        var lessonPlanId: String
+        var body: Body
+    }
+
+    let accessToken: String
+    let properties: Properties
+
+    let method: HTTPMethod = .post
+    var path: String { "/lesson-plans/\(self.lessonPlanId)/checkout" }
+
+    var bodyParameters: BodyParameters? {
+        JSONEncodableBodyParameters(object: self.body)
+    }
+
+    typealias Response = LessonPlan
+    typealias Error = RythmicoAPIError
+}

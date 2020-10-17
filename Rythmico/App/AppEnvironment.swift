@@ -39,6 +39,7 @@ struct AppEnvironment {
     var lessonPlanRequestService: APIServiceBase<CreateLessonPlanRequest>
     var lessonPlanCancellationService: APIServiceBase<CancelLessonPlanRequest>
     var lessonPlanGetCheckoutService: APIServiceBase<GetLessonPlanCheckoutRequest>
+    var lessonPlanCompleteCheckoutService: APIServiceBase<CompleteLessonPlanCheckoutRequest>
     var lessonPlanRepository: Repository<LessonPlan>
 
     var portfolioFetchingService: APIServiceBase<GetPortfolioRequest>
