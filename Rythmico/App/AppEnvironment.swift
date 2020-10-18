@@ -30,7 +30,7 @@ struct AppEnvironment {
     var uiAccessibility: UIAccessibilityProtocol.Type
     var keyboardDismisser: KeyboardDismisser
     var urlOpener: URLOpener
-    var router: Router
+    var router: RouterProtocol
 
     var imageLoadingService: ImageLoadingServiceProtocol
 

@@ -10,15 +10,12 @@ struct LessonPlanApplicationDetailView: View {
         case about = "About"
     }
 
-    @Environment(\.presentationMode)
-    private var presentationMode
-
+    @ObservedObject
+    private var state = Current.state
     @State
     private var tab: Tab = .message
     @StateObject
     private var coordinator = Current.coordinator(for: \.portfolioFetchingService)!
-    @State
-    private var showingBookingView = false
 
     var lessonPlan: LessonPlan
     var application: LessonPlan.Application
@@ -39,16 +36,14 @@ struct LessonPlanApplicationDetailView: View {
                 }
             }
 
-            NavigationLink(
-                destination: LessonPlanBookingEntryView(lessonPlan: lessonPlan, application: application),
-                isActive: $showingBookingView
-            ) {
-                FloatingView {
-                    Button(bookButtonTitle, action: book).primaryStyle()
-                }
+            FloatingView {
+                Button(bookButtonTitle, action: book).primaryStyle()
             }
         }
         .animation(.rythmicoSpring(duration: .durationShort), value: tab)
+        .sheet(isPresented: $state.isBookingLessonPlan) {
+            LessonPlanBookingEntryView(lessonPlan: lessonPlan, application: application)
+        }
     }
 
     private var bookButtonTitle: String {
@@ -56,11 +51,7 @@ struct LessonPlanApplicationDetailView: View {
     }
 
     private func book() {
-        showingBookingView = true
-    }
-
-    private func back() {
-        presentationMode.wrappedValue.dismiss()
+        state.isBookingLessonPlan = true
     }
 }
 

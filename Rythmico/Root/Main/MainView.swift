@@ -2,7 +2,7 @@ import SwiftUI
 import SFSafeSymbols
 import Sugar
 
-struct MainView: View, TestableView, RoutableView {
+struct MainView: View, TestableView {
     enum Tab: String, Hashable, CaseIterable {
         case lessons = "Lessons"
         case profile = "Profile"
@@ -11,11 +11,8 @@ struct MainView: View, TestableView, RoutableView {
         var uppercasedTitle: String { title.uppercased(with: Current.locale) }
     }
 
-    @State
-    private(set) var isLessonRequestViewPresented = false
-
-    @State
-    private var tab: Tab = .lessons
+    @ObservedObject
+    private var state = Current.state
     @State
     private var lessonsView: LessonsView
     @State
@@ -41,45 +38,29 @@ struct MainView: View, TestableView, RoutableView {
     }
 
     func presentRequestLessonFlow() {
-        isLessonRequestViewPresented = true
+        state.isRequestingLessonPlan = true
     }
 
     func presentRequestLessonFlowIfNeeded(_ lessonPlans: [LessonPlan]) {
         guard !hasPresentedLessonRequestView else { return }
-        isLessonRequestViewPresented = lessonPlans.isEmpty
+        state.isRequestingLessonPlan = lessonPlans.isEmpty
     }
 
     let inspection = SelfInspection()
     var body: some View {
         MainViewContent(
-            tabs: Tab.allCases, selection: $tab,
+            tabs: Tab.allCases, selection: $state.tab,
             navigationTitle: \.title, leadingItem: leadingItem, trailingItem: trailingItem,
             content: content,
             tabTitle: \.uppercasedTitle, tabIcons: icon
         )
         .testable(self)
-        .onChange(of: isLessonRequestViewPresented, perform: onIsLessonRequestViewPresentedChange)
+        .onChange(of: state.isRequestingLessonPlan, perform: onIsLessonRequestViewPresentedChange)
         .accentColor(.rythmicoPurple)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
         .onSuccess(lessonPlanFetchingCoordinator, perform: presentRequestLessonFlowIfNeeded)
-        .sheet(isPresented: $isLessonRequestViewPresented) {
+        .sheet(isPresented: $state.isRequestingLessonPlan) {
             RequestLessonPlanView(context: RequestLessonPlanContext())
-        }
-        .routable(self)
-    }
-
-    func handleRoute(_ route: Route) {
-        switch route {
-        case .lessons:
-            tab = .lessons
-            Current.router.end()
-        case .requestLessonPlan:
-            tab = .lessons
-            presentRequestLessonFlow()
-            Current.router.end()
-        case .profile:
-            tab = .profile
-            Current.router.end()
         }
     }
 

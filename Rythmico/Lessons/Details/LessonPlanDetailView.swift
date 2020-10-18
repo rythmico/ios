@@ -1,17 +1,10 @@
 import SwiftUI
 import Sugar
 
-struct LessonPlanDetailView: View, TestableView, RoutableView {
-    @Environment(\.presentationMode)
-    private var presentationMode
-
+struct LessonPlanDetailView: View, TestableView {
     var lessonPlan: LessonPlan
     @State
     private(set) var isCancellationViewPresented = false
-
-    init(_ lessonPlan: LessonPlan) {
-        self.lessonPlan = lessonPlan
-    }
 
     var title: String {
         [
@@ -79,33 +72,18 @@ struct LessonPlanDetailView: View, TestableView, RoutableView {
         .sheet(isPresented: $isCancellationViewPresented) {
             LessonPlanCancellationView(lessonPlan: lessonPlan)
         }
-        .routable(self)
-    }
-
-    func handleRoute(_ route: Route) {
-        switch route {
-        case .lessons,
-             .requestLessonPlan,
-             .profile:
-            isCancellationViewPresented = false
-            back()
-        }
     }
 
     private let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM @ h:mma"))
     private var startDateText: String { startDateFormatter.string(from: lessonPlan.schedule.startDate) }
 
     private var durationText: String { "\(lessonPlan.schedule.duration) minutes" }
-
-    private func back() {
-        presentationMode.wrappedValue.dismiss()
-    }
 }
 
 #if DEBUG
 struct LessonPlanDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlanDetailView(.jesseDrumsPlanStub)
+        LessonPlanDetailView(lessonPlan: .jesseDrumsPlanStub)
 //            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }

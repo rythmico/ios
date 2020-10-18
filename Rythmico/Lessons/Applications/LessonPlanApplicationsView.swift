@@ -1,13 +1,10 @@
 import SwiftUI
 
-struct LessonPlanApplicationsView: View, RoutableView {
-    @Environment(\.presentationMode)
-    private var presentationMode
-
+struct LessonPlanApplicationsView: View {
     private var lessonPlan: LessonPlan
     private var applications: [LessonPlan.Application]
-    @State
-    private var selectedApplication: LessonPlan.Application?
+    @ObservedObject
+    private var state = Current.state
     @State
     private var shouldShowInfoBannerOnAppear = false
     @State
@@ -45,19 +42,13 @@ struct LessonPlanApplicationsView: View, RoutableView {
 
             LessonPlanApplicationsGridView(
                 lessonPlan: lessonPlan,
-                applications: applications,
-                selectedApplication: $selectedApplication
+                applications: applications
             )
         }
         .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
-        .routable(self)
-        .onChange(of: selectedApplication, perform: onSelectedApplicationChanged)
+        .onChange(of: state.reviewingLessonPlanApplication, perform: onSelectedApplicationChanged)
         .onAppear(perform: onAppear)
-    }
-
-    private func back() {
-        presentationMode.wrappedValue.dismiss()
     }
 
     private func onSelectedApplicationChanged(_ application: LessonPlan.Application?) {
@@ -66,15 +57,6 @@ struct LessonPlanApplicationsView: View, RoutableView {
 
     private func onAppear() {
         if shouldShowInfoBannerOnAppear { isShowingInfoBanner = true }
-    }
-
-    func handleRoute(_ route: Route) {
-        switch route {
-        case .lessons,
-             .requestLessonPlan,
-             .profile:
-            back()
-        }
     }
 }
 

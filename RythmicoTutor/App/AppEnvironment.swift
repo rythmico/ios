@@ -29,7 +29,7 @@ struct AppEnvironment {
     var keyboardDismisser: KeyboardDismisser
     var urlOpener: URLOpener
     var mapOpener: MapOpenerProtocol
-    var router: Router
+    var router: RouterProtocol
 
     var imageLoadingService: ImageLoadingServiceProtocol
 

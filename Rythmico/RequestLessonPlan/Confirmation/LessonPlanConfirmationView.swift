@@ -2,9 +2,6 @@ import SwiftUI
 import Sugar
 
 struct LessonPlanConfirmationView: View, TestableView {
-    @Environment(\.presentationMode)
-    private var presentationMode
-
     @StateObject
     private var notificationAuthorizationCoordinator = Current.pushNotificationAuthorizationCoordinator
 
@@ -101,10 +98,13 @@ struct LessonPlanConfirmationView: View, TestableView {
         .alert(error: errorMessage, dismiss: dismissError)
         .testable(self)
         .onAppear(perform: notificationAuthorizationCoordinator.refreshAuthorizationStatus)
+        .introspectViewController { controller = $0 }
     }
 
+    @State private var controller: UIViewController?
     func doContinue() {
-        presentationMode.wrappedValue.dismiss()
+        controller?.dismiss(animated: true, completion: nil)
+        Current.router.open(.lessons)
     }
 }
 

@@ -17,6 +17,9 @@ struct LessonPlanSummaryCell: View {
 struct LessonPlanSummaryCellMainContent: View {
     var lessonPlan: LessonPlan
 
+    @ObservedObject
+    private var state = Current.state
+
     var title: String {
         [
             lessonPlan.student.name.firstWord,
@@ -38,7 +41,11 @@ struct LessonPlanSummaryCellMainContent: View {
     }
 
     var body: some View {
-        NavigationLink(destination: LessonPlanDetailView(lessonPlan)) {
+        NavigationLink(
+            destination: LessonPlanDetailView(lessonPlan: lessonPlan),
+            tag: lessonPlan,
+            selection: $state.selectedLessonPlan
+        ) {
             VStack(alignment: .leading, spacing: .spacingExtraSmall) {
                 Text(title)
                     .lineLimit(1)
@@ -64,11 +71,18 @@ struct LessonPlanSummaryCellMainContent: View {
 struct LessonPlanSummaryCellAccessory: View {
     var lessonPlan: LessonPlan
 
+    @ObservedObject
+    private var state = Current.state
+
     var body: some View {
         if let applicationsView = LessonPlanApplicationsView(lessonPlan) {
             Divider().overlay(Color.rythmicoGray20)
 
-            NavigationLink(destination: applicationsView) {
+            NavigationLink(
+                destination: applicationsView,
+                tag: lessonPlan,
+                selection: $state.reviewingLessonPlan
+            ) {
                 HStack(spacing: .spacingExtraSmall) {
                     Text("Review Tutors")
                         .rythmicoFont(.body)
