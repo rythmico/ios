@@ -135,10 +135,6 @@ struct LessonPlanBookingView: View {
         }
     }
 
-    var backButtonHidden: Bool {
-        coordinator.state.isSuccess || coordinator.state.isLoading
-    }
-
     var canConfirm: Bool {
         confirmAction != nil
     }
