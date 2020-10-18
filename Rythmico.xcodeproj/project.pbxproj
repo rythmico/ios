@@ -410,6 +410,7 @@
 		D5B57A75241A018900BE9B4F /* SchedulingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A74241A018900BE9B4F /* SchedulingView.swift */; };
 		D5BA171023D7A18900954D50 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170F23D7A18900954D50 /* RootView.swift */; };
 		D5BA171223D7AB3B00954D50 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA171123D7AB3B00954D50 /* MainView.swift */; };
+		D5BDD502253B406300255190 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD501253B406300255190 /* AppState.swift */; };
 		D5BDD88725117E5300706EC1 /* ScheduleDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD88625117E5300706EC1 /* ScheduleDetailsView.swift */; };
 		D5BDD8A72511989500706EC1 /* TutorAcceptedStatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD8A62511989500706EC1 /* TutorAcceptedStatusPill.swift */; };
 		D5BF12AE25068E1000B2931C /* PushNotificationEvent+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12AD25068E1000B2931C /* PushNotificationEvent+Rythmico.swift */; };
@@ -854,6 +855,7 @@
 		D5BA170B23D6725B00954D50 /* AuthenticationAccessTokenProviderBroadcastDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderBroadcastDoubles.swift; sourceTree = "<group>"; };
 		D5BA170F23D7A18900954D50 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		D5BA171123D7AB3B00954D50 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		D5BDD501253B406300255190 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D5BDD88625117E5300706EC1 /* ScheduleDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailsView.swift; sourceTree = "<group>"; };
 		D5BDD8A62511989500706EC1 /* TutorAcceptedStatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorAcceptedStatusPill.swift; sourceTree = "<group>"; };
 		D5BF12AD25068E1000B2931C /* PushNotificationEvent+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationEvent+Rythmico.swift"; sourceTree = "<group>"; };
@@ -1248,6 +1250,7 @@
 				03A91EF1249186EC00DEAD5E /* AppEnvironment+Instances.swift */,
 				03341B3E23ABB1E7009AE8A8 /* AppExtensions.swift */,
 				D56B2522252CF76300BC3932 /* AppSecrets.swift */,
+				D5BDD501253B406300255190 /* AppState.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -2497,6 +2500,7 @@
 				D5F506BE2406E49A00CA4094 /* EdgeSwipeView.swift in Sources */,
 				D5AFED3F25057158003FFC68 /* VisibleView.swift in Sources */,
 				D54EFF192513D690004F14D3 /* Portfolio.swift in Sources */,
+				D5BDD502253B406300255190 /* AppState.swift in Sources */,
 				031378C9249A7DFF005FC49C /* LessonPlanCancellationPromptView.swift in Sources */,
 				D5AAF7DB23FB347C00E410F2 /* CollectionView.swift in Sources */,
 				D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */,

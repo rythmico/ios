@@ -1,6 +1,8 @@
 import Foundation
 
 struct AppEnvironment {
+    var state: AppState
+
     var date: () -> Date
     var calendarType: () -> Calendar.Identifier
     var locale: Locale
