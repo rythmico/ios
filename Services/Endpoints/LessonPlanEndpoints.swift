@@ -44,7 +44,7 @@ struct CancelLessonPlanRequest: RythmicoAPIRequest {
         var reason: Reason
     }
 
-    typealias Properties = (lessonPlanId: String, body: Body)
+    typealias Properties = (lessonPlanId: LessonPlan.ID, body: Body)
 
     let accessToken: String
     let properties: Properties
@@ -62,7 +62,7 @@ struct CancelLessonPlanRequest: RythmicoAPIRequest {
 
 struct GetLessonPlanCheckoutRequest: RythmicoAPIRequest {
     struct Properties {
-        var lessonPlanId: String
+        var lessonPlanId: LessonPlan.ID
     }
 
     let accessToken: String
@@ -83,7 +83,7 @@ struct CompleteLessonPlanCheckoutRequest: RythmicoAPIRequest {
             var cardId: String
         }
 
-        var lessonPlanId: String
+        var lessonPlanId: LessonPlan.ID
         var body: Body
     }
 

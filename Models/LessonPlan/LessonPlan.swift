@@ -1,4 +1,5 @@
 import Foundation
+import Tagged
 
 struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
     enum Status: Equatable, Decodable, Hashable {
@@ -30,8 +31,10 @@ struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
         var privateNote: String
     }
 
-    struct Tutor: Equatable, Decodable, Hashable {
-        var id: String
+    struct Tutor: Identifiable, Equatable, Decodable, Hashable {
+        typealias ID = Tagged<Self, String>
+
+        var id: ID
         var name: String
         var photoThumbnailURL: ImageReference?
         var photoURL: ImageReference?
@@ -49,7 +52,9 @@ struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
         var reason: Reason
     }
 
-    var id: String
+    typealias ID = Tagged<Self, String>
+
+    var id: ID
     var status: Status
     var instrument: Instrument
     var student: Student
@@ -58,7 +63,7 @@ struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
     var privateNote: String
 
     init(
-        id: String,
+        id: ID,
         status: Status,
         instrument: Instrument,
         student: Student,
@@ -78,7 +83,7 @@ struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(
-            id: container.decode(String.self, forKey: .id),
+            id: container.decode(ID.self, forKey: .id),
             status: Status(from: decoder),
             instrument: container.decode(Instrument.self, forKey: .instrument),
             student: container.decode(Student.self, forKey: .student),

@@ -2,7 +2,7 @@ import APIKit
 
 struct GetPortfolioRequest: RythmicoAPIRequest {
     struct Body: Encodable {
-        var tutorId: String
+        var tutorId: LessonPlan.Tutor.ID
     }
 
     let accessToken: String

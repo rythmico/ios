@@ -411,6 +411,7 @@
 		D5BA171023D7A18900954D50 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170F23D7A18900954D50 /* RootView.swift */; };
 		D5BA171223D7AB3B00954D50 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA171123D7AB3B00954D50 /* MainView.swift */; };
 		D5BDD502253B406300255190 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD501253B406300255190 /* AppState.swift */; };
+		D5BDD50B253CCC4400255190 /* Tagged in Frameworks */ = {isa = PBXBuildFile; productRef = D5BDD50A253CCC4400255190 /* Tagged */; };
 		D5BDD88725117E5300706EC1 /* ScheduleDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD88625117E5300706EC1 /* ScheduleDetailsView.swift */; };
 		D5BDD8A72511989500706EC1 /* TutorAcceptedStatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD8A62511989500706EC1 /* TutorAcceptedStatusPill.swift */; };
 		D5BF12AE25068E1000B2931C /* PushNotificationEvent+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12AD25068E1000B2931C /* PushNotificationEvent+Rythmico.swift */; };
@@ -941,6 +942,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5BDD50B253CCC4400255190 /* Tagged in Frameworks */,
 				D52C551B24DC6C3B00C295C4 /* FirebaseCrashlytics.framework in Frameworks */,
 				D52C553724DC6C3B00C295C4 /* Protobuf.framework in Frameworks */,
 				D52C552524DC6C3B00C295C4 /* FirebaseRemoteConfig.framework in Frameworks */,
@@ -1982,6 +1984,7 @@
 				D5D78DD6252502CE007041BE /* PhoneNumberKit */,
 				D5D97513252B9EB6000AD074 /* Stripe */,
 				D5F11565253735F20027D164 /* NonEmpty */,
+				D5BDD50A253CCC4400255190 /* Tagged */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -2128,6 +2131,7 @@
 				D5D78DD5252502CE007041BE /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
 				D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */,
 				D5F11564253735F20027D164 /* XCRemoteSwiftPackageReference "swift-nonempty" */,
+				D5BDD509253CCC4400255190 /* XCRemoteSwiftPackageReference "swift-tagged" */,
 			);
 			productRefGroup = 03341B3C23ABB1E7009AE8A8 /* Products */;
 			projectDirPath = "";
@@ -3307,6 +3311,14 @@
 				minimumVersion = 0.1.0;
 			};
 		};
+		D5BDD509253CCC4400255190 /* XCRemoteSwiftPackageReference "swift-tagged" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-tagged";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
 		D5D78DD5252502CE007041BE /* XCRemoteSwiftPackageReference "PhoneNumberKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marmelroy/PhoneNumberKit";
@@ -3401,6 +3413,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D585217424CF81CE005D783A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
+		};
+		D5BDD50A253CCC4400255190 /* Tagged */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5BDD509253CCC4400255190 /* XCRemoteSwiftPackageReference "swift-tagged" */;
+			productName = Tagged;
 		};
 		D5D78DD6252502CE007041BE /* PhoneNumberKit */ = {
 			isa = XCSwiftPackageProductDependency;
