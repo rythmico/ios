@@ -38,7 +38,6 @@ struct LessonPlanApplicationDetailView: View {
                 Button(bookButtonTitle, action: book).primaryStyle()
             }
         }
-        .animation(.rythmicoSpring(duration: .durationShort), value: tab)
     }
 
     private var bookButtonTitle: String {
