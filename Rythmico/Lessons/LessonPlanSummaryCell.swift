@@ -44,7 +44,7 @@ struct LessonPlanSummaryCellMainContent: View {
         NavigationLink(
             destination: LessonPlanDetailView(lessonPlan: lessonPlan),
             tag: lessonPlan,
-            selection: $state.selectedLessonPlan
+            selection: $state.lessonsContext.selectedLessonPlan
         ) {
             VStack(alignment: .leading, spacing: .spacingExtraSmall) {
                 Text(title)
@@ -81,7 +81,7 @@ struct LessonPlanSummaryCellAccessory: View {
             NavigationLink(
                 destination: applicationsView,
                 tag: lessonPlan,
-                selection: $state.reviewingLessonPlan
+                selection: $state.lessonsContext.reviewingLessonPlan
             ) {
                 HStack(spacing: .spacingExtraSmall) {
                     Text("Review Tutors")

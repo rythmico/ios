@@ -47,7 +47,7 @@ struct LessonPlanApplicationsView: View {
         }
         .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
-        .onChange(of: state.reviewingLessonPlanApplication, perform: onSelectedApplicationChanged)
+        .onChange(of: state.lessonsContext.reviewingLessonPlanApplication, perform: onSelectedApplicationChanged)
         .onAppear(perform: onAppear)
     }
 

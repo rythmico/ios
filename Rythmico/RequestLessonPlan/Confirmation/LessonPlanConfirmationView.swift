@@ -98,13 +98,10 @@ struct LessonPlanConfirmationView: View, TestableView {
         .alert(error: errorMessage, dismiss: dismissError)
         .testable(self)
         .onAppear(perform: notificationAuthorizationCoordinator.refreshAuthorizationStatus)
-        .introspectViewController { controller = $0 }
     }
 
-    @State private var controller: UIViewController?
     func doContinue() {
-        controller?.dismiss(animated: true, completion: nil)
-        Current.router.open(.lessons)
+        Current.state.lessonsContext = .none
     }
 }
 

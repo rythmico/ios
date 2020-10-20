@@ -10,8 +10,6 @@ struct LessonPlanApplicationDetailView: View {
         case about = "About"
     }
 
-    @ObservedObject
-    private var state = Current.state
     @State
     private var tab: Tab = .message
     @StateObject
@@ -41,9 +39,6 @@ struct LessonPlanApplicationDetailView: View {
             }
         }
         .animation(.rythmicoSpring(duration: .durationShort), value: tab)
-        .sheet(isPresented: $state.isBookingLessonPlan) {
-            LessonPlanBookingEntryView(lessonPlan: lessonPlan, application: application)
-        }
     }
 
     private var bookButtonTitle: String {
@@ -51,7 +46,7 @@ struct LessonPlanApplicationDetailView: View {
     }
 
     private func book() {
-        state.isBookingLessonPlan = true
+        Current.state.lessonsContext = .booking(lessonPlan, application)
     }
 }
 

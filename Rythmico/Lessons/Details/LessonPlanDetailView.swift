@@ -2,9 +2,10 @@ import SwiftUI
 import Sugar
 
 struct LessonPlanDetailView: View, TestableView {
+    @ObservedObject
+    private var state = Current.state
+
     var lessonPlan: LessonPlan
-    @State
-    private(set) var isCancellationViewPresented = false
 
     var title: String {
         [
@@ -14,7 +15,7 @@ struct LessonPlanDetailView: View, TestableView {
     }
 
     func showCancelLessonPlanForm() {
-        isCancellationViewPresented = true
+        state.lessonsContext = .cancelling(lessonPlan)
     }
 
     let inspection = SelfInspection()
@@ -69,8 +70,8 @@ struct LessonPlanDetailView: View, TestableView {
         .testable(self)
         .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(isPresented: $isCancellationViewPresented) {
-            LessonPlanCancellationView(lessonPlan: lessonPlan)
+        .sheet(item: $state.lessonsContext.cancellingLessonPlan) {
+            LessonPlanCancellationView(lessonPlan: $0)
         }
     }
 

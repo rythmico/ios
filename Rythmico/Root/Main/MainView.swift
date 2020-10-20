@@ -38,12 +38,12 @@ struct MainView: View, TestableView {
     }
 
     func presentRequestLessonFlow() {
-        state.isRequestingLessonPlan = true
+        state.lessonsContext = .requestingLessonPlan
     }
 
     func presentRequestLessonFlowIfNeeded(_ lessonPlans: [LessonPlan]) {
-        guard !hasPresentedLessonRequestView else { return }
-        state.isRequestingLessonPlan = lessonPlans.isEmpty
+        guard !hasPresentedLessonRequestView, lessonPlans.isEmpty else { return }
+        state.lessonsContext = .requestingLessonPlan
     }
 
     let inspection = SelfInspection()
@@ -55,12 +55,15 @@ struct MainView: View, TestableView {
             tabTitle: \.uppercasedTitle, tabIcons: icon
         )
         .testable(self)
-        .onChange(of: state.isRequestingLessonPlan, perform: onIsLessonRequestViewPresentedChange)
+        .onChange(of: state.lessonsContext.isRequestingLessonPlan, perform: onIsLessonRequestViewPresentedChange)
         .accentColor(.rythmicoPurple)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
         .onSuccess(lessonPlanFetchingCoordinator, perform: presentRequestLessonFlowIfNeeded)
-        .sheet(isPresented: $state.isRequestingLessonPlan) {
+        .sheet(isPresented: $state.lessonsContext.isRequestingLessonPlan) {
             RequestLessonPlanView(context: RequestLessonPlanContext())
+        }
+        .sheet(item: $state.lessonsContext.bookingValues) {
+            LessonPlanBookingEntryView(lessonPlan: $0.lessonPlan, application: $0.application)
         }
     }
 

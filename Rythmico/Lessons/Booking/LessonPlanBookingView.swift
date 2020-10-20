@@ -32,72 +32,66 @@ struct LessonPlanBookingView: View {
     @State private var addingNewCard = false
 
     var body: some View {
-        NavigationView {
-            CoordinatorStateView(
-                coordinator: coordinator,
-                successContent: LessonPlanConfirmationView.init,
-                loadingTitle: "Processing booking..."
-            ) {
-                VStack(spacing: 0) {
-                    TitleSubtitleContentView(title: title, subtitle: subtitle) {
-                        ScrollView {
-                            VStack(spacing: .spacingLarge) {
-                                Group {
-                                    SectionHeaderContentView(title: "Lesson Schedule") {
-                                        ScheduleDetailsView(lessonPlan.schedule, tutor: application.tutor)
-                                    }
-
-                                    SectionHeaderContentView(title: "Contact Number") {
-                                        PhoneNumberInputView(phoneNumber: $phoneNumber, phoneNumberInputError: $phoneNumberInputError)
-                                    }
-
-                                    SectionHeaderContentView(title: "Price Per Lesson") {
-                                        LessonPriceView(price: checkout.pricePerLesson, instrument: lessonPlan.instrument)
-                                    }
-                                }
-                                .padding(.horizontal, .spacingMedium)
-
-                                SectionHeaderContentView(title: "Payment Method", padding: EdgeInsets(horizontal: .spacingMedium)) {
-                                    if
-                                        let availableCards = NonEmpty(rawValue: availableCards),
-                                        let selectedCardBinding = Binding($selectedCard)
-                                    {
-                                        CardStackView(cards: availableCards, selectedCard: selectedCardBinding)
-                                    }
+        CoordinatorStateView(
+            coordinator: coordinator,
+            successContent: LessonPlanConfirmationView.init,
+            loadingTitle: "Processing booking..."
+        ) {
+            VStack(spacing: 0) {
+                TitleSubtitleContentView(title: title, subtitle: subtitle) {
+                    ScrollView {
+                        VStack(spacing: .spacingLarge) {
+                            Group {
+                                SectionHeaderContentView(title: "Lesson Schedule") {
+                                    ScheduleDetailsView(lessonPlan.schedule, tutor: application.tutor)
                                 }
 
-                                HDividerContainer {
-                                    Button("Add new card", action: addNewCard).quaternaryStyle()
+                                SectionHeaderContentView(title: "Contact Number") {
+                                    PhoneNumberInputView(phoneNumber: $phoneNumber, phoneNumberInputError: $phoneNumberInputError)
                                 }
 
-                                Text("Payment will be automatically taken monthly.")
-                                    .foregroundColor(.rythmicoGray90)
-                                    .rythmicoFont(.calloutBold)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .fixedSize(horizontal: false, vertical: true)
-                                    .padding(.horizontal, .spacingMedium)
+                                SectionHeaderContentView(title: "Price Per Lesson") {
+                                    LessonPriceView(price: checkout.pricePerLesson, instrument: lessonPlan.instrument)
+                                }
                             }
-                            .padding(.bottom, .spacingMedium)
-                            .animation(.rythmicoSpring(duration: .durationShort), value: phoneNumberInputError != nil)
+                            .padding(.horizontal, .spacingMedium)
+
+                            SectionHeaderContentView(title: "Payment Method", padding: EdgeInsets(horizontal: .spacingMedium)) {
+                                if
+                                    let availableCards = NonEmpty(rawValue: availableCards),
+                                    let selectedCardBinding = Binding($selectedCard)
+                                {
+                                    CardStackView(cards: availableCards, selectedCard: selectedCardBinding)
+                                }
+                            }
+
+                            HDividerContainer {
+                                Button("Add new card", action: addNewCard).quaternaryStyle()
+                            }
+
+                            Text("Payment will be automatically taken monthly.")
+                                .foregroundColor(.rythmicoGray90)
+                                .rythmicoFont(.calloutBold)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .padding(.horizontal, .spacingMedium)
                         }
+                        .padding(.bottom, .spacingMedium)
+                        .animation(.rythmicoSpring(duration: .durationShort), value: phoneNumberInputError != nil)
                     }
-                    FloatingView {
-                        Button("Confirm Booking", action: confirmAction).primaryStyle()
-                    }
-                    .disabled(!canConfirm)
                 }
-                .onChange(of: availableCards, perform: availableCardsChanged)
-                .sheet(isPresented: $addingNewCard) {
-                    AddNewCardEntryView(availableCards: $availableCards)
+                FloatingView {
+                    Button("Confirm Booking", action: confirmAction).primaryStyle()
                 }
+                .disabled(!canConfirm)
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: CloseButton(action: dismiss))
+            .onChange(of: availableCards, perform: availableCardsChanged)
+            .sheet(isPresented: $addingNewCard) {
+                AddNewCardEntryView(availableCards: $availableCards)
+            }
         }
         .onSuccess(coordinator, perform: checkoutSucceeded)
         .alertOnFailure(coordinator)
-        .disabled(coordinator.state.isLoading)
-        .sheetInteractiveDismissal(coordinator.state.isSuccess)
     }
 
     private func availableCardsChanged(_ cards: [Card]) {
@@ -146,10 +140,7 @@ struct LessonPlanBookingView: View {
 
     func checkoutSucceeded(_ lessonPlan: LessonPlan) {
         Current.lessonPlanRepository.replaceIdentifiableItem(lessonPlan)
-    }
-
-    func dismiss() {
-        Current.state.isBookingLessonPlan = false
+        Current.state.lessonsContext = .booked(lessonPlan, application)
     }
 }
 

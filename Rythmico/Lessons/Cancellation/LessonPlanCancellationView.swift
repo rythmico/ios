@@ -85,7 +85,7 @@ struct LessonPlanCancellationView: View, TestableView {
         Current.lessonPlanRepository.replaceIdentifiableItem(lessonPlan)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            Current.router.open(.lessons)
+            Current.state.lessonsContext = .none
         }
     }
 
