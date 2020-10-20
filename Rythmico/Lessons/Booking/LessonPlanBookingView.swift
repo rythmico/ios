@@ -123,6 +123,7 @@ struct LessonPlanBookingView: View {
             coordinator.run(
                 with: .init(
                     lessonPlanId: lessonPlan.id,
+                    applicationId: application.tutor.id,
                     body: .init(phoneNumber: phoneNumber, cardId: selectedCard.id)
                 )
             )

@@ -36,7 +36,7 @@ struct LessonPlanBookingEntryView: View {
     }
 
     private func fetch() {
-        coordinator.start(with: .init(lessonPlanId: lessonPlan.id))
+        coordinator.start(with: .init(lessonPlanId: lessonPlan.id, applicationId: application.tutor.id))
     }
 
     func dismiss() {

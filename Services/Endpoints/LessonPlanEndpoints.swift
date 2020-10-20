@@ -63,13 +63,14 @@ struct CancelLessonPlanRequest: RythmicoAPIRequest {
 struct GetLessonPlanCheckoutRequest: RythmicoAPIRequest {
     struct Properties {
         var lessonPlanId: LessonPlan.ID
+        var applicationId: LessonPlan.Tutor.ID
     }
 
     let accessToken: String
     let properties: Properties
 
     let method: HTTPMethod = .get
-    var path: String { "/lesson-plans/\(self.lessonPlanId)/checkout" }
+    var path: String { "/lesson-plans/\(self.lessonPlanId)/applications/\(self.applicationId)/checkout" }
 
     typealias Response = Checkout
     typealias Error = RythmicoAPIError
@@ -80,10 +81,11 @@ struct CompleteLessonPlanCheckoutRequest: RythmicoAPIRequest {
         struct Body: Encodable {
             @E164PhoneNumber
             var phoneNumber: PhoneNumber
-            var cardId: String
+            var cardId: Card.ID
         }
 
         var lessonPlanId: LessonPlan.ID
+        var applicationId: LessonPlan.Tutor.ID
         var body: Body
     }
 
@@ -91,7 +93,7 @@ struct CompleteLessonPlanCheckoutRequest: RythmicoAPIRequest {
     let properties: Properties
 
     let method: HTTPMethod = .post
-    var path: String { "/lesson-plans/\(self.lessonPlanId)/checkout" }
+    var path: String { "/lesson-plans/\(self.lessonPlanId)/applications/\(self.applicationId)/book" }
 
     var bodyParameters: BodyParameters? {
         JSONEncodableBodyParameters(object: self.body)

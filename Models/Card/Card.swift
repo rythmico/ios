@@ -1,10 +1,12 @@
 import Foundation
 import Stripe
+import Tagged
 
 struct Card: Equatable, Decodable, Identifiable, Hashable {
+    typealias ID = Tagged<Self, String>
     typealias Brand = STPCardBrand
 
-    var id: String
+    var id: ID
     var brand: Brand
     var lastFourDigits: String
     var expiryMonth: Int
@@ -29,7 +31,7 @@ extension Card {
             return nil
         }
         self.init(
-            id: paymentMethodId,
+            id: ID(rawValue: paymentMethodId),
             brand: STPCardValidator.brand(forNumber: number),
             lastFourDigits: lastFourDigits,
             expiryMonth: expiryMonth.intValue,
