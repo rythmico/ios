@@ -22,7 +22,7 @@ struct LessonPlanApplicationDetailView: View {
         VStack(spacing: 0) {
             VStack(spacing: 0) {
                 VStack(spacing: .spacingExtraLarge) {
-                    HeaderView(lessonPlan: lessonPlan, application: application, expanded: tab == .message)
+                    HeaderView(lessonPlan: lessonPlan, application: application)
                     TabMenuView(tabs: Tab.allCases, selection: $tab)
                 }
 
