@@ -339,6 +339,7 @@
 		D54EFF322514C847004F14D3 /* ExpandableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF312514C847004F14D3 /* ExpandableText.swift */; };
 		D54FC05524CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */; };
 		D54FC05624CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */; };
+		D555A4AE2542409F00B8688F /* MultiSheet in Frameworks */ = {isa = PBXBuildFile; productRef = D555A4AD2542409F00B8688F /* MultiSheet */; };
 		D55F012C24CCBE8700E5F13C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB324C4AA4C0077A420 /* APIService.swift */; };
 		D55F012D24CCBE8E00E5F13C /* APIServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB924C6232D0077A420 /* APIServiceDoubles.swift */; };
 		D55F012E24CCBECE00E5F13C /* APIActivityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB524C4AD820077A420 /* APIActivityCoordinator.swift */; };
@@ -951,6 +952,7 @@
 				D52C552324DC6C3B00C295C4 /* FirebasePerformance.framework in Frameworks */,
 				D52C551724DC6C3B00C295C4 /* FirebaseCore.framework in Frameworks */,
 				D52C553524DC6C3B00C295C4 /* PromisesObjC.framework in Frameworks */,
+				D555A4AE2542409F00B8688F /* MultiSheet in Frameworks */,
 				D52C552F24DC6C3B00C295C4 /* GoogleUtilities.framework in Frameworks */,
 				D52C552124DC6C3B00C295C4 /* FirebaseMessaging.framework in Frameworks */,
 				D53554FC23E0FD77005A20EB /* Sugar.framework in Frameworks */,
@@ -1985,6 +1987,7 @@
 				D5D97513252B9EB6000AD074 /* Stripe */,
 				D5F11565253735F20027D164 /* NonEmpty */,
 				D5BDD50A253CCC4400255190 /* Tagged */,
+				D555A4AD2542409F00B8688F /* MultiSheet */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -2132,6 +2135,7 @@
 				D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */,
 				D5F11564253735F20027D164 /* XCRemoteSwiftPackageReference "swift-nonempty" */,
 				D5BDD509253CCC4400255190 /* XCRemoteSwiftPackageReference "swift-tagged" */,
+				D555A4AC2542409F00B8688F /* XCRemoteSwiftPackageReference "MultiSheet" */,
 			);
 			productRefGroup = 03341B3C23ABB1E7009AE8A8 /* Products */;
 			projectDirPath = "";
@@ -3295,6 +3299,14 @@
 				minimumVersion = 2.6.0;
 			};
 		};
+		D555A4AC2542409F00B8688F /* XCRemoteSwiftPackageReference "MultiSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/davdroman/MultiSheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		D56544D124CE4BA100281875 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nalexn/ViewInspector";
@@ -3393,6 +3405,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D535554A23E23EA7005A20EB /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		D555A4AD2542409F00B8688F /* MultiSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D555A4AC2542409F00B8688F /* XCRemoteSwiftPackageReference "MultiSheet" */;
+			productName = MultiSheet;
 		};
 		D56544D224CE4BA100281875 /* ViewInspector */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -1,5 +1,6 @@
 import SwiftUI
 import SFSafeSymbols
+import MultiSheet
 import Sugar
 
 struct MainView: View, TestableView {
@@ -59,11 +60,13 @@ struct MainView: View, TestableView {
         .accentColor(.rythmicoPurple)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
         .onSuccess(lessonPlanFetchingCoordinator, perform: presentRequestLessonFlowIfNeeded)
-        .sheet(isPresented: $state.lessonsContext.isRequestingLessonPlan) {
-            RequestLessonPlanView(context: RequestLessonPlanContext())
-        }
-        .sheet(item: $state.lessonsContext.bookingValues) {
-            LessonPlanBookingEntryView(lessonPlan: $0.lessonPlan, application: $0.application)
+        .multiSheet {
+            $0.sheet(isPresented: $state.lessonsContext.isRequestingLessonPlan) {
+                RequestLessonPlanView(context: RequestLessonPlanContext())
+            }
+            $0.sheet(item: $state.lessonsContext.bookingValues) {
+                LessonPlanBookingEntryView(lessonPlan: $0.lessonPlan, application: $0.application)
+            }
         }
     }
 
