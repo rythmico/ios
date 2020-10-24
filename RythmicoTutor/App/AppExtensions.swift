@@ -1,7 +1,7 @@
 import UIKit
 
 extension App {
-    func main() {}
+    static func didFinishLaunching() {}
 
     func didEnterBackground() {
         Current.sharedCoordinator(for: \.bookingRequestFetchingService)?.reset()

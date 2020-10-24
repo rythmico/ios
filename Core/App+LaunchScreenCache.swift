@@ -1,6 +1,6 @@
 import Foundation
 
-extension App {
+extension App.Delegate {
     func clearLaunchScreenCache(_ shouldClear: Bool) {
         #if DEBUG
         guard shouldClear else { return }

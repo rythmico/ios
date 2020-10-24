@@ -3,7 +3,7 @@ import UIKit
 import Then
 
 extension App {
-    func main() {
+    static func didFinishLaunching() {
         Stripe.setDefaultPublishableKey(AppSecrets.stripePublishableKey)
     }
 
@@ -63,21 +63,6 @@ extension App {
 
         UISwitch.appearance().do {
             $0.onTintColor = .rythmicoPurple
-        }
-
-        for window in UIApplication.shared.windows {
-            // Whenever a system keyboard is shown, a special internal window is created in application
-            // window list of type UITextEffectsWindow. This kind of window cannot be safely removed without
-            // having an adverse effect on keyboard behavior. For example, an input accessory view is
-            // disconnected from the keyboard. Therefore, a check for this class is needed. In case this class
-            // that is indernal is removed from the iOS SDK in future, there is a "fallback" class check on
-            // NSString class that always fails.
-            if !window.isKind(of: NSClassFromString("UITextEffectsWindow") ?? NSString.classForCoder()) {
-                window.subviews.forEach {
-                    $0.removeFromSuperview()
-                    window.addSubview($0)
-                }
-            }
         }
     }
 }
