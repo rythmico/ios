@@ -26,6 +26,7 @@ struct AddNewCardEntryView: View {
     }
 }
 
+#if DEBUG
 struct AddNewCardEntryView_Previews: PreviewProvider {
     static var previews: some View {
         LessonPlanBookingEntryView(
@@ -34,3 +35,4 @@ struct AddNewCardEntryView_Previews: PreviewProvider {
         )
     }
 }
+#endif

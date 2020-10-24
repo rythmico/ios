@@ -44,6 +44,7 @@ struct LessonPlanBookingEntryView: View {
     }
 }
 
+#if DEBUG
 struct LessonPlanBookingEntryView_Previews: PreviewProvider {
     static var previews: some View {
         LessonPlanBookingEntryView(
@@ -52,3 +53,4 @@ struct LessonPlanBookingEntryView_Previews: PreviewProvider {
         )
     }
 }
+#endif
