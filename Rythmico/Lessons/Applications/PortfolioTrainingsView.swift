@@ -6,8 +6,9 @@ struct PortfolioTrainingsView: View {
     var body: some View {
         ForEach(0..<trainingList.count, id: \.self) { index in let training = trainingList[index]
             HStack(alignment: .firstTextBaseline, spacing: .spacingExtraSmall) {
-                VectorImage(asset: Asset.iconTraining)
-                    .accentColor(.rythmicoGray90)
+                Image(decorative: Asset.iconTraining.name)
+                    .renderingMode(.template)
+                    .foregroundColor(.rythmicoGray90)
                     .alignmentGuide(.firstTextBaseline) { $0[.bottom] - 2 }
                 VStack(spacing: .spacingSmall) {
                     VStack(spacing: .spacingUnit * 2) {

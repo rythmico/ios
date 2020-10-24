@@ -5,7 +5,8 @@ struct InfoBanner: View {
 
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: .spacingExtraSmall) {
-            VectorImage(asset: Asset.iconInfo)
+            Image(decorative: Asset.iconInfo.name)
+                .renderingMode(.template)
                 .alignmentGuide(.firstTextBaseline) { $0[.bottom] - 3 }
             Text(text)
                 .rythmicoFont(.callout)

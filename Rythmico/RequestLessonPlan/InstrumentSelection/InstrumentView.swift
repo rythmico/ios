@@ -24,8 +24,9 @@ struct InstrumentView: View {
                     .padding(.vertical, .spacingMedium)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                VectorImage(asset: viewData.icon)
-                    .accentColor(.rythmicoForeground)
+                Image(decorative: viewData.icon.name)
+                    .renderingMode(.template)
+                    .foregroundColor(.rythmicoForeground)
                     .padding(.trailing, .spacingMedium)
             }
         }

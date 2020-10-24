@@ -93,7 +93,8 @@ struct ProfileView: View, TestableView {
             Text(title).frame(maxWidth: .infinity, alignment: .leading)
             content()
             if disclosure {
-                VectorImage(asset: Asset.iconDisclosure)
+                Image(decorative: Asset.iconDisclosure.name)
+                    .renderingMode(.template)
             }
         }
         let view = action == nil

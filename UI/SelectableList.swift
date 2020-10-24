@@ -30,7 +30,8 @@ struct SelectableList<Data: RandomAccessCollection, ID: Hashable, Content: View>
                                 .frame(maxWidth: .infinity, alignment: .leading)
 
                             if isSelected(element) {
-                                VectorImage(asset: Asset.iconCheckmark)
+                                Image(decorative: Asset.iconCheckmark.name)
+                                    .renderingMode(.template)
                                     .transition(
                                         AnyTransition
                                             .opacity

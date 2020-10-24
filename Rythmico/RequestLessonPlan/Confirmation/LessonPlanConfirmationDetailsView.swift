@@ -6,10 +6,10 @@ struct LessonPlanConfirmationDetailsView: View {
 
     var body: some View {
         VStack(spacing: .spacingSmall) {
-            HStack(alignment: .firstTextBaseline, spacing: .spacingExtraSmall) {
-                VectorImage(asset: Asset.iconInfo)
-                    .alignmentGuide(.firstTextBaseline) { $0[.bottom] - .spacingUnit / 2 }
-                    .accentColor(.rythmicoGray90)
+            HStack(spacing: .spacingExtraSmall) {
+                Image(decorative: Asset.iconInfo.name)
+                    .renderingMode(.template)
+                    .foregroundColor(.rythmicoGray90)
                 MultiStyleText(
                     parts: [
                         "First Lesson: ".color(.rythmicoGray90),

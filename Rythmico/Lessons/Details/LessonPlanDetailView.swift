@@ -30,21 +30,21 @@ struct LessonPlanDetailView: View, TestableView {
                     Group {
                         HStack(spacing: .spacingMedium) {
                             HStack(spacing: .spacingUnit * 2) {
-                                VectorImage(asset: Asset.iconInfo)
+                                Image(decorative: Asset.iconInfo.name).renderingMode(.template)
                                 Text(startDateText)
                                     .lineLimit(1)
                                     .minimumScaleFactor(0.7)
                             }
                             HStack(spacing: .spacingUnit * 2) {
-                                VectorImage(asset: Asset.iconTime)
+                                Image(decorative: Asset.iconTime.name).renderingMode(.template)
                                 Text(durationText)
                                     .lineLimit(1)
                                     .minimumScaleFactor(0.7)
                             }
                         }
                         HStack(alignment: .firstTextBaseline, spacing: .spacingUnit * 2) {
-                            VectorImage(asset: Asset.iconLocation)
-                                .alignmentGuide(.firstTextBaseline) { $0[.bottom] }
+                            Image(decorative: Asset.iconLocation.name)
+                                .renderingMode(.template)
                                 .offset(x: 0, y: .spacingUnit / 2)
                             Text(lessonPlan.address.condensedFormattedString)
                                 .lineSpacing(.spacingUnit)
@@ -53,7 +53,6 @@ struct LessonPlanDetailView: View, TestableView {
                     }
                     .rythmicoFont(.body)
                     .foregroundColor(.rythmicoGray90)
-                    .accentColor(.rythmicoGray90)
                 }
             }
             .frame(maxWidth: .spacingMax)

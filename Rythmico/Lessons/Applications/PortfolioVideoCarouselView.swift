@@ -58,8 +58,9 @@ private struct VideoCarouselCell: View {
                 startPoint: .top,
                 endPoint: .bottom
             )
-            VectorImage(asset: Asset.iconVideo)
-                .accentColor(.rythmicoWhite)
+            Image(decorative: Asset.iconVideo.name)
+                .renderingMode(.template)
+                .foregroundColor(.rythmicoWhite)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
                 .padding([.leading, .bottom], .spacingSmall)
         }

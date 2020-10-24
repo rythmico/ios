@@ -14,8 +14,9 @@ struct GenderSelectionView: View {
                         .animation(.none)
                         .frame(maxWidth: .infinity, alignment: .leading)
 
-                    VectorImage(asset: gender.icon)
-                        .accentColor(iconColor(for: gender))
+                    Image(decorative: gender.icon.name)
+                        .renderingMode(.template)
+                        .foregroundColor(iconColor(for: gender))
                 }
                 .modifier(
                     containerModifier(for: gender)

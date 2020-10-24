@@ -28,7 +28,8 @@ struct ActionList: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
 
                             if buttons[index].disclosure {
-                                VectorImage(asset: Asset.iconDisclosure)
+                                Image(decorative: Asset.iconDisclosure.name)
+                                    .renderingMode(.template)
                             }
                         }
                         .padding(.vertical, .spacingLarge)

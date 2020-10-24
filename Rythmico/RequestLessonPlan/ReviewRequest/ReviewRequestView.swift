@@ -70,8 +70,9 @@ struct ReviewRequestView: View, TestableView {
                             accessory: editButton(performing: editStudentDetails)
                         ) {
                             HStack(alignment: .firstTextBaseline, spacing: .spacingExtraSmall) {
-                                VectorImage(asset: Asset.iconInfo)
-                                    .accentColor(.rythmicoGray90)
+                                Image(decorative: Asset.iconInfo.name)
+                                    .renderingMode(.template)
+                                    .foregroundColor(.rythmicoGray90)
                                     .alignmentGuide(.firstTextBaseline) { $0[.bottom] - 2.5 }
 
                                 VStack(alignment: .leading, spacing: .spacingMedium) {
