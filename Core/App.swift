@@ -1,7 +1,5 @@
 import SwiftUI
 
-final class AppDelegate: NSObject, UIApplicationDelegate {}
-
 @main
 struct App: SwiftUI.App {
     private enum Const {
@@ -9,8 +7,7 @@ struct App: SwiftUI.App {
         static let launchScreenDelay = launchScreenDebugMode ? 5 : .durationMedium
     }
 
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @Environment(\.scenePhase) var scenePhase
+    @UIApplicationDelegateAdaptor(Delegate.self) private var delegate
 
     init() {
         switch AppContext.current {
@@ -20,10 +17,19 @@ struct App: SwiftUI.App {
         clearLaunchScreenCache(Const.launchScreenDebugMode)
         allowAudioPlaybackOnSilentMode()
         configureAppearance()
-        configureFirebase()
-        configurePushNotifications()
         main()
-        Thread.sleep(forTimeInterval: Const.launchScreenDelay)
+    }
+
+    final class Delegate: NSObject, UIApplicationDelegate {
+        func application(
+            _ application: UIApplication,
+            didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
+        ) -> Bool {
+            configureFirebase()
+            configurePushNotifications(application: application)
+            Thread.sleep(forTimeInterval: Const.launchScreenDelay)
+            return true
+        }
     }
 
     var body: some Scene {
@@ -31,13 +37,6 @@ struct App: SwiftUI.App {
             RootView()
                 .onEvent(.sizeCategoryChanged, perform: configureAppearance)
                 .onEvent(.appInBackground, perform: didEnterBackground)
-        }
-        .onChange(of: scenePhase, perform: scenePhaseDidChange)
-    }
-
-    func scenePhaseDidChange(_ scenePhase: ScenePhase) {
-        if scenePhase == .active {
-            UIApplication.shared.registerForRemoteNotifications()
         }
     }
 }

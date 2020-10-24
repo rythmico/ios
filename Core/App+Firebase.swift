@@ -1,6 +1,6 @@
 import Firebase
 
-extension App {
+extension App.Delegate {
     func configureFirebase() {
         FirebaseApp.configure()
     }
