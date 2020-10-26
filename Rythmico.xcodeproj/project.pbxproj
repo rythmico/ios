@@ -213,7 +213,6 @@
 		D501587D25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501587C25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift */; };
 		D501588525376EC0005E02FA /* DismissKeyboardTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */; };
 		D501589A2538BE7C005E02FA /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50158992538BE7C005E02FA /* Card.swift */; };
-		D501589E2538BE82005E02FA /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50158992538BE7C005E02FA /* Card.swift */; };
 		D50158AA2538BF63005E02FA /* CardSetupCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50158A92538BF63005E02FA /* CardSetupCredential.swift */; };
 		D50158AF2538BFDD005E02FA /* CardSetupCredentialDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50158AE2538BFDD005E02FA /* CardSetupCredentialDoubles.swift */; };
 		D50158B42538C029005E02FA /* CardDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50158B32538C029005E02FA /* CardDoubles.swift */; };
@@ -229,7 +228,6 @@
 		D516A8FA253A1816002E6EDF /* CoordinatorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D516A8F9253A1816002E6EDF /* CoordinatorStateView.swift */; };
 		D516A8FF253A1D6A002E6EDF /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D516A8FE253A1D6A002E6EDF /* ConfirmationView.swift */; };
 		D516A929253A554F002E6EDF /* AssetImage+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D516A928253A554F002E6EDF /* AssetImage+Sugar.swift */; };
-		D516A92A253A554F002E6EDF /* AssetImage+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D516A928253A554F002E6EDF /* AssetImage+Sugar.swift */; };
 		D516A92F253A6337002E6EDF /* LessonPlanConfirmationDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D516A92E253A6337002E6EDF /* LessonPlanConfirmationDetailsView.swift */; };
 		D518C2F8250EA89100288A48 /* LessonPlanApplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518C2F7250EA89100288A48 /* LessonPlanApplicationsView.swift */; };
 		D518C2FD250EDD3300288A48 /* InfoBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518C2FC250EDD3300288A48 /* InfoBanner.swift */; };
@@ -335,6 +333,7 @@
 		D54EFF1E2513D69A004F14D3 /* PortfolioDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF1D2513D69A004F14D3 /* PortfolioDoubles.swift */; };
 		D54EFF2A2513DDDB004F14D3 /* PortfolioEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF292513DDDB004F14D3 /* PortfolioEndpoints.swift */; };
 		D54EFF322514C847004F14D3 /* ExpandableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF312514C847004F14D3 /* ExpandableText.swift */; };
+		D54F71182547523100D73E1E /* DismissKeyboardTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */; };
 		D54FC05524CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */; };
 		D54FC05624CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */; };
 		D555A4AE2542409F00B8688F /* MultiSheet in Frameworks */ = {isa = PBXBuildFile; productRef = D555A4AD2542409F00B8688F /* MultiSheet */; };
@@ -2635,7 +2634,6 @@
 				035B1CF6249CFA5700AABFEA /* Duration.swift in Sources */,
 				D5AFED4325057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */,
 				035B1D38249E576900AABFEA /* AuthenticationAccessTokenProvider.swift in Sources */,
-				D516A92A253A554F002E6EDF /* AssetImage+Sugar.swift in Sources */,
 				035B1D3A249E576900AABFEA /* AuthenticationAccessTokenProviderObserver.swift in Sources */,
 				03C34360249E7218004907DF /* Alert+Error.swift in Sources */,
 				D52C555024E2ABFC00C295C4 /* MapOpener.swift in Sources */,
@@ -2667,11 +2665,11 @@
 				D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */,
 				D5CAC9AE24E6D67C00119DAA /* MultilineTextField+Tutor.swift in Sources */,
 				035B1D15249E565200AABFEA /* TestableView.swift in Sources */,
-				D501589E2538BE82005E02FA /* Card.swift in Sources */,
 				03E88EAF24C1F74D0077A420 /* AppExtensions.swift in Sources */,
 				035B1D16249E565C00AABFEA /* AuthorizationAppleIDButton.swift in Sources */,
 				D5F4D3E324F04479000E8580 /* BookingApplicationEndpoints.swift in Sources */,
 				D5217CEC24E2D7D800C89018 /* MapOpenerDoubles.swift in Sources */,
+				D54F71182547523100D73E1E /* DismissKeyboardTooltip.swift in Sources */,
 				D5CC5FF225029525007DFE84 /* ImageReference.swift in Sources */,
 				035B1CF1249CF9FA00AABFEA /* App+LaunchScreenCache.swift in Sources */,
 				035B1D6B249E662200AABFEA /* EnumProperties.swift in Sources */,

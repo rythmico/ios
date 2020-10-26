@@ -59,6 +59,10 @@ extension AppEnvironment {
         cardSetupCredentialFetchingService: APIService(),
         cardSetupService: STPPaymentHandler.shared()
     )
+
+    func cardSetupCoordinator() -> CardSetupCoordinator {
+        CardSetupCoordinator(service: cardSetupService)
+    }
 }
 
 #if DEBUG
