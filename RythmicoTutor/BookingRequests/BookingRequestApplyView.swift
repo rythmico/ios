@@ -79,7 +79,6 @@ struct BookingRequestApplyView: View {
 
     private func finalize(_ application: BookingApplication) {
         Current.bookingApplicationRepository.insertItem(application)
-        dismiss()
         Current.router.open(.bookingApplications)
     }
 }

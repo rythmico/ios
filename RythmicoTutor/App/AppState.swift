@@ -13,6 +13,7 @@ extension AppState {
     enum RequestsContext {
         case none
         case viewingRequest(BookingRequest)
+        case applyingToRequest(BookingRequest)
         case viewingApplication(BookingApplication)
     }
 }
@@ -23,7 +24,7 @@ extension AppState.RequestsContext {
             switch self {
             case .none, .viewingApplication:
                 return nil
-            case .viewingRequest(let request):
+            case .viewingRequest(let request), .applyingToRequest(let request):
                 return request
             }
         }
@@ -36,10 +37,30 @@ extension AppState.RequestsContext {
         }
     }
 
+    var isApplyingToRequest: Bool {
+        get {
+            switch self {
+            case .none, .viewingRequest, .viewingApplication:
+                return false
+            case .applyingToRequest:
+                return true
+            }
+        }
+        set(isApplying) {
+            if let selectedRequest = selectedRequest {
+                if isApplying {
+                    self = .applyingToRequest(selectedRequest)
+                } else {
+                    self = .none
+                }
+            }
+        }
+    }
+
     var selectedApplication: BookingApplication? {
         get {
             switch self {
-            case .none, .viewingRequest:
+            case .none, .viewingRequest, .applyingToRequest:
                 return nil
             case .viewingApplication(let application):
                 return application

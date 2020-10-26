@@ -2,6 +2,9 @@ import SwiftUI
 import SwiftUIMapView
 
 struct BookingRequestDetailView: View {
+    @ObservedObject
+    private var state = Current.state
+
     private let bookingRequest: BookingRequest
 
     private let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
@@ -31,9 +34,7 @@ struct BookingRequestDetailView: View {
 
     var postcode: String { bookingRequest.postcode }
 
-    @State
-    private var isApplicationViewPresented = false
-    private func presentApplicationView() { isApplicationViewPresented = true }
+    private func presentApplicationView() { state.requestsContext.isApplyingToRequest = true }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -96,7 +97,7 @@ struct BookingRequestDetailView: View {
             intent: .search(query: bookingRequest.postcode),
             error: $mapOpeningError
         )
-        .sheet(isPresented: $isApplicationViewPresented) {
+        .sheet(isPresented: $state.requestsContext.isApplyingToRequest) {
             BookingRequestApplyView(booking: bookingRequest)
         }
     }
