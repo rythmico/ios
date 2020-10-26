@@ -2950,7 +2950,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.student;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.rythmico.student";
-				SWIFT_OBJC_BRIDGING_HEADER = "Models/Checkout/Rythmico-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Models/Checkout/Rythmico-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2981,7 +2981,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.student;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.rythmico.student";
-				SWIFT_OBJC_BRIDGING_HEADER = "Models/Checkout/Rythmico-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Models/Checkout/Rythmico-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
