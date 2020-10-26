@@ -10,8 +10,8 @@ struct BookingRequestsView: View, VisibleView {
     @ObservedObject
     private var pushNotificationAuthCoordinator = Current.pushNotificationAuthorizationCoordinator
 
-    @State
-    private var selectedBookingRequest: BookingRequest?
+    @ObservedObject
+    private var state = Current.state
     @State
     var isVisible = false
 
@@ -48,7 +48,7 @@ struct BookingRequestsView: View, VisibleView {
                         NavigationLink(
                             destination: BookingRequestDetailView(bookingRequest: request),
                             tag: request,
-                            selection: $selectedBookingRequest,
+                            selection: $state.requestsContext.selectedRequest,
                             label: { BookingRequestCell(request: request) }
                         )
                     }

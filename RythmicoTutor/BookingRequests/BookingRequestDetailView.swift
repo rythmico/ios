@@ -1,10 +1,7 @@
 import SwiftUI
 import SwiftUIMapView
 
-struct BookingRequestDetailView: View, RoutableView {
-    @Environment(\.presentationMode)
-    private var presentationMode
-
+struct BookingRequestDetailView: View {
     private let bookingRequest: BookingRequest
 
     private let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
@@ -101,14 +98,6 @@ struct BookingRequestDetailView: View, RoutableView {
         )
         .sheet(isPresented: $isApplicationViewPresented) {
             BookingRequestApplyView(booking: bookingRequest)
-        }
-        .routable(self)
-    }
-
-    func handleRoute(_ route: Route) {
-        switch route {
-        case .bookingRequests, .bookingApplications:
-            presentationMode.wrappedValue.dismiss()
         }
     }
 }

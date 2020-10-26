@@ -1,13 +1,13 @@
 import SwiftUI
 
-struct BookingRequestsTabView: View, RoutableView {
+struct BookingRequestsTabView: View {
     enum Tab: String, CaseIterable {
         case upcoming = "Upcoming"
         case applied = "Applied"
     }
 
-    @State
-    private(set) var tab: Tab = .upcoming
+    @ObservedObject
+    private var state = Current.state
 
     private let bookingRequestsView: BookingRequestsView
     private let bookingApplicationsView: BookingApplicationsView
@@ -25,7 +25,7 @@ struct BookingRequestsTabView: View, RoutableView {
 
     var body: some View {
         VStack(spacing: 0) {
-            Picker("", selection: $tab) {
+            Picker("", selection: $state.requestsTab) {
                 ForEach(Tab.allCases, id: \.self) {
                     Text($0.rawValue)
                 }
@@ -38,23 +38,11 @@ struct BookingRequestsTabView: View, RoutableView {
 
             Divider()
 
-            if tab == .upcoming {
+            if state.requestsTab == .upcoming {
                 bookingRequestsView
-            } else if tab == .applied {
+            } else if state.requestsTab == .applied {
                 bookingApplicationsView
             }
-        }
-        .routable(self)
-    }
-
-    func handleRoute(_ route: Route) {
-        switch route {
-        case .bookingRequests:
-            tab = .upcoming
-            Current.router.end()
-        case .bookingApplications:
-            tab = .applied
-            Current.router.end()
         }
     }
 }

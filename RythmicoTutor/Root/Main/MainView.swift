@@ -2,7 +2,7 @@ import SwiftUI
 import SFSafeSymbols
 import Sugar
 
-struct MainView: View, TestableView, RoutableView {
+struct MainView: View, TestableView {
     enum Tab: String, Hashable, CaseIterable {
         case requests = "Requests"
         case profile = "Profile"
@@ -10,8 +10,8 @@ struct MainView: View, TestableView, RoutableView {
         var title: String { rawValue }
     }
 
-    @State
-    private var tab: Tab = .requests
+    @ObservedObject
+    private var state = Current.state
     @State
     private var bookingRequestsTabView: BookingRequestsTabView
 
@@ -31,21 +31,13 @@ struct MainView: View, TestableView, RoutableView {
     let inspection = SelfInspection()
     var body: some View {
         MainViewContent(
-            tabs: Tab.allCases, selection: $tab,
+            tabs: Tab.allCases, selection: $state.tab,
             navigationTitle: \.title, leadingItem: leadingItem, trailingItem: trailingItem,
             content: content,
             tabTitle: \.title, tabIcons: icon
         )
         .testable(self)
-        .routable(self)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
-    }
-
-    func handleRoute(_ route: Route) {
-        switch route {
-        case .bookingRequests, .bookingApplications:
-            tab = .requests
-        }
     }
 
     @ViewBuilder

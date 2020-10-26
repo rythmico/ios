@@ -5,8 +5,8 @@ struct BookingApplicationSection<HeaderAccessory: View>: View {
     private let status: BookingApplication.Status
     private let headerAccessory: HeaderAccessory
 
-    @State
-    private var selectedBookingApplication: BookingApplication?
+    @ObservedObject
+    private var state = Current.state
 
     init(
         applications: [BookingApplication],
@@ -47,7 +47,7 @@ struct BookingApplicationSection<HeaderAccessory: View>: View {
             NavigationLink(
                 destination: BookingApplicationDetailView(bookingApplication: application),
                 tag: application,
-                selection: $selectedBookingApplication,
+                selection: $state.requestsContext.selectedApplication,
                 label: { BookingApplicationCell(application: application) }
             )
         } else {

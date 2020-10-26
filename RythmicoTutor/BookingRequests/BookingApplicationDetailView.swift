@@ -2,10 +2,7 @@ import SwiftUI
 import SwiftUIMapView
 import Sugar
 
-struct BookingApplicationDetailView: View, RoutableView {
-    @Environment(\.presentationMode)
-    private var presentationMode
-
+struct BookingApplicationDetailView: View {
     private let bookingApplication: BookingApplication
 
     private let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
@@ -126,14 +123,6 @@ struct BookingApplicationDetailView: View, RoutableView {
         .disabled(retractionCoordinator.state.isLoading)
         .alertOnFailure(retractionCoordinator)
         .onSuccess(retractionCoordinator, perform: didRetractBookingApplication)
-        .routable(self)
-    }
-
-    func handleRoute(_ route: Route) {
-        switch route {
-        case .bookingRequests, .bookingApplications:
-            presentationMode.wrappedValue.dismiss()
-        }
     }
 
     private func promptForRetraction() {
