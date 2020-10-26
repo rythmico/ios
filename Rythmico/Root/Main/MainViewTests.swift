@@ -28,9 +28,9 @@ final class MainViewTests: XCTestCase {
         let view = try XCTUnwrap(MainView())
 
         XCTAssertView(view) { view in
-            XCTAssertFalse(view.isLessonRequestViewPresented)
+            XCTAssertEqual(Current.state.lessonsContext, .none)
             view.presentRequestLessonFlow()
-            XCTAssertTrue(view.isLessonRequestViewPresented)
+            XCTAssertEqual(Current.state.lessonsContext, .requestingLessonPlan)
         }
     }
 
@@ -40,7 +40,7 @@ final class MainViewTests: XCTestCase {
         let view = try XCTUnwrap(MainView())
 
         XCTAssertView(view) { view in
-            XCTAssertTrue(view.isLessonRequestViewPresented)
+            XCTAssertEqual(Current.state.lessonsContext, .requestingLessonPlan)
         }
     }
 }

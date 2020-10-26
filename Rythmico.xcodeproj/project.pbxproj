@@ -3059,6 +3059,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "-DDEBUG -DTUTOR_TESTS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.RythmicoTutorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3166,6 +3167,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "-DDEBUG -DRYTHMICO_TESTS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.RythmicoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

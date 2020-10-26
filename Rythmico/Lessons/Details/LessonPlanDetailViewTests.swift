@@ -11,12 +11,12 @@ final class LessonPlanDetailViewTests: XCTestCase {
     }
 
     func testCancellationFormPresentation() {
-        let view = LessonPlanDetailView(.pendingJackGuitarPlanStub)
+        let view = LessonPlanDetailView(lessonPlan: .pendingJackGuitarPlanStub)
 
         XCTAssertView(view) { view in
-            XCTAssertFalse(view.isCancellationViewPresented)
+            XCTAssertEqual(Current.state.lessonsContext, .none)
             view.showCancelLessonPlanForm()
-            XCTAssertTrue(view.isCancellationViewPresented)
+            XCTAssertEqual(Current.state.lessonsContext, .cancelling(.pendingJackGuitarPlanStub))
         }
     }
 }

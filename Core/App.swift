@@ -14,14 +14,18 @@ struct App: SwiftUI.App {
     }
 
     final class Delegate: NSObject, UIApplicationDelegate {
+        var isRunningFullApp: Bool {
+            switch AppContext.current {
+            case .test, .preview: return false
+            case .run, .release: return true
+            }
+        }
+
         func application(
             _ application: UIApplication,
             didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
         ) -> Bool {
-            switch AppContext.current {
-            case .test, .preview: return true
-            case .run, .release: break
-            }
+            guard isRunningFullApp else { return true }
             clearLaunchScreenCache(Const.launchScreenDebugMode)
             allowAudioPlaybackOnSilentMode()
             configureFirebase()
@@ -34,9 +38,11 @@ struct App: SwiftUI.App {
 
     var body: some Scene {
         WindowGroup {
-            RootView()
-                .onEvent(.sizeCategoryChanged, perform: refreshAppearance)
-                .onEvent(.appInBackground, perform: didEnterBackground)
+            if delegate.isRunningFullApp {
+                RootView()
+                    .onEvent(.sizeCategoryChanged, perform: refreshAppearance)
+                    .onEvent(.appInBackground, perform: didEnterBackground)
+            }
         }
     }
 

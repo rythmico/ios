@@ -9,7 +9,7 @@ final class AppState: ObservableObject {
 }
 
 extension AppState {
-    enum LessonsContext {
+    enum LessonsContext: Equatable {
         case none
         case requestingLessonPlan
         case viewing(LessonPlan)

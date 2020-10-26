@@ -10,7 +10,7 @@ final class AppState: ObservableObject {
 }
 
 extension AppState {
-    enum RequestsContext {
+    enum RequestsContext: Equatable {
         case none
         case viewingRequest(BookingRequest)
         case applyingToRequest(BookingRequest)
