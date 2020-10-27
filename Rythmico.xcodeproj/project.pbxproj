@@ -33,7 +33,7 @@
 		032B6FD224B787D700299A09 /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D623F9E20C00E410F2 /* Instrument.swift */; };
 		032B6FD424B7881C00299A09 /* InstrumentExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FD324B7881C00299A09 /* InstrumentExtensions.swift */; };
 		032B6FD724B788B200299A09 /* ScheduleDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF6722445E11A002D8F5B /* ScheduleDoubles.swift */; };
-		032B6FDB24B7890700299A09 /* Duration+CasePickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FDA24B7890700299A09 /* Duration+CasePickable.swift */; };
+		032B6FDB24B7890700299A09 /* ScheduleDuration+CasePickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FDA24B7890700299A09 /* ScheduleDuration+CasePickable.swift */; };
 		032B6FDD24B78A5200299A09 /* BookingRequestEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FDC24B78A5200299A09 /* BookingRequestEndpoints.swift */; };
 		03306F74247347570074AA98 /* RequestLessonPlanViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03306F73247347570074AA98 /* RequestLessonPlanViewTests.swift */; };
 		03341B3F23ABB1E7009AE8A8 /* AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03341B3E23ABB1E7009AE8A8 /* AppExtensions.swift */; };
@@ -407,6 +407,7 @@
 		D5B57A6F2419E22300BE9B4F /* Optional+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6E2419E22300BE9B4F /* Optional+Sugar.swift */; };
 		D5B57A712419F79700BE9B4F /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A702419F79700BE9B4F /* SectionHeaderView.swift */; };
 		D5B57A75241A018900BE9B4F /* SchedulingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A74241A018900BE9B4F /* SchedulingView.swift */; };
+		D5B880932547AFF600754197 /* Tagged in Frameworks */ = {isa = PBXBuildFile; productRef = D5B880922547AFF600754197 /* Tagged */; };
 		D5BA171023D7A18900954D50 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170F23D7A18900954D50 /* RootView.swift */; };
 		D5BA171223D7AB3B00954D50 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA171123D7AB3B00954D50 /* MainView.swift */; };
 		D5BDD502253B406300255190 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD501253B406300255190 /* AppState.swift */; };
@@ -590,7 +591,7 @@
 		032B6FC924B7875300299A09 /* BookingRequestDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestDoubles.swift; sourceTree = "<group>"; };
 		032B6FCF24B787BB00299A09 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		032B6FD324B7881C00299A09 /* InstrumentExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentExtensions.swift; sourceTree = "<group>"; };
-		032B6FDA24B7890700299A09 /* Duration+CasePickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Duration+CasePickable.swift"; sourceTree = "<group>"; };
+		032B6FDA24B7890700299A09 /* ScheduleDuration+CasePickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScheduleDuration+CasePickable.swift"; sourceTree = "<group>"; };
 		032B6FDC24B78A5200299A09 /* BookingRequestEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestEndpoints.swift; sourceTree = "<group>"; };
 		03306F73247347570074AA98 /* RequestLessonPlanViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanViewTests.swift; sourceTree = "<group>"; };
 		03341B3B23ABB1E7009AE8A8 /* Rythmico.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rythmico.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -984,6 +985,7 @@
 				035B1CD2249CF5D000AABFEA /* SFSafeSymbols in Frameworks */,
 				035B1CD5249CF7E200AABFEA /* Then in Frameworks */,
 				035B1D1B249E56CD00AABFEA /* FIRAnalyticsConnector.framework in Frameworks */,
+				D5B880932547AFF600754197 /* Tagged in Frameworks */,
 				035B1D1C249E56CD00AABFEA /* FirebaseABTesting.framework in Frameworks */,
 				035B1D1D249E56CD00AABFEA /* FirebaseAnalytics.framework in Frameworks */,
 				035B1D1E249E56CD00AABFEA /* FirebaseAuth.framework in Frameworks */,
@@ -1269,9 +1271,9 @@
 		03AAF6742445E123002D8F5B /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				032B6FDA24B7890700299A09 /* Duration+CasePickable.swift */,
 				03AAF6702445E0FB002D8F5B /* Schedule.swift */,
 				03AAF6722445E11A002D8F5B /* ScheduleDoubles.swift */,
+				032B6FDA24B7890700299A09 /* ScheduleDuration+CasePickable.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -2013,6 +2015,7 @@
 				035B1D68249E645E00AABFEA /* APIKit */,
 				D585217724CF81E8005D783A /* Introspect */,
 				D5F4D3DD24F031FA000E8580 /* SwiftUIMapView */,
+				D5B880922547AFF600754197 /* Tagged */,
 			);
 			productName = RythmicoTutor;
 			productReference = 035B1CBC249CF2AA00AABFEA /* Tutor.app */;
@@ -2526,7 +2529,7 @@
 				D55F013024CCC57400E5F13C /* EnumProperties.swift in Sources */,
 				D56B2523252CF76300BC3932 /* AppSecrets.swift in Sources */,
 				03C39DD424967E5B00C76516 /* TitleContentView.swift in Sources */,
-				032B6FDB24B7890700299A09 /* Duration+CasePickable.swift in Sources */,
+				032B6FDB24B7890700299A09 /* ScheduleDuration+CasePickable.swift in Sources */,
 				03C34362249FC16E004907DF /* APIUserAgent.swift in Sources */,
 				D518C2F8250EA89100288A48 /* LessonPlanApplicationsView.swift in Sources */,
 				D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */,
@@ -3426,6 +3429,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D585217424CF81CE005D783A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
+		};
+		D5B880922547AFF600754197 /* Tagged */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5BDD509253CCC4400255190 /* XCRemoteSwiftPackageReference "swift-tagged" */;
+			productName = Tagged;
 		};
 		D5BDD50A253CCC4400255190 /* Tagged */ = {
 			isa = XCSwiftPackageProductDependency;
