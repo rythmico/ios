@@ -3,6 +3,8 @@ import SwiftUIMapView
 import Sugar
 
 struct BookingApplicationDetailView: View {
+    @Environment(\.presentationMode) private var presentationMode
+
     private let bookingApplication: BookingApplication
 
     private let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
@@ -131,7 +133,8 @@ struct BookingApplicationDetailView: View {
 
     private func didRetractBookingApplication(_ retractedApplication: BookingApplication) {
         Current.bookingApplicationRepository.replaceIdentifiableItem(retractedApplication)
-        Current.router.open(.bookingApplications)
+        Current.router.open(.bookingApplications) // Does not work.
+        presentationMode.wrappedValue.dismiss() // FIXME: workaround for the above. Investigate.
     }
 }
 

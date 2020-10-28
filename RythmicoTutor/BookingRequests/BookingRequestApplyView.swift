@@ -78,8 +78,11 @@ struct BookingRequestApplyView: View {
     }
 
     private func finalize(_ application: BookingApplication) {
-        Current.bookingApplicationRepository.insertItem(application)
         Current.router.open(.bookingApplications)
+        // FIXME: workaround for crash. Investigate.
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            Current.bookingApplicationRepository.insertItem(application)
+        }
     }
 }
 

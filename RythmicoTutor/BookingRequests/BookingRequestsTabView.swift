@@ -9,20 +9,6 @@ struct BookingRequestsTabView: View {
     @ObservedObject
     private var state = Current.state
 
-    private let bookingRequestsView: BookingRequestsView
-    private let bookingApplicationsView: BookingApplicationsView
-
-    init?() {
-        guard
-            let bookingRequestsView = BookingRequestsView(),
-            let bookingApplicationsView = BookingApplicationsView()
-        else {
-            return nil
-        }
-        self.bookingRequestsView = bookingRequestsView
-        self.bookingApplicationsView = bookingApplicationsView
-    }
-
     var body: some View {
         VStack(spacing: 0) {
             Picker("", selection: $state.requestsTab) {
@@ -39,9 +25,9 @@ struct BookingRequestsTabView: View {
             Divider()
 
             if state.requestsTab == .upcoming {
-                bookingRequestsView
+                BookingRequestsView()
             } else if state.requestsTab == .applied {
-                bookingApplicationsView
+                BookingApplicationsView()
             }
         }
     }

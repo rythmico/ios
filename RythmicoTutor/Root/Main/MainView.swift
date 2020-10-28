@@ -12,19 +12,13 @@ struct MainView: View, TestableView {
 
     @ObservedObject
     private var state = Current.state
-    @State
-    private var bookingRequestsTabView: BookingRequestsTabView
 
     private let deviceRegisterCoordinator: DeviceRegisterCoordinator
 
     init?() {
-        guard
-            let bookingRequestsTabView = BookingRequestsTabView(),
-            let deviceRegisterCoordinator = Current.deviceRegisterCoordinator()
-        else {
+        guard let deviceRegisterCoordinator = Current.deviceRegisterCoordinator() else {
             return nil
         }
-        self._bookingRequestsTabView = .init(wrappedValue: bookingRequestsTabView)
         self.deviceRegisterCoordinator = deviceRegisterCoordinator
     }
 
@@ -51,7 +45,7 @@ struct MainView: View, TestableView {
     @ViewBuilder
     private func content(for tab: Tab) -> some View {
         switch tab {
-        case .requests: bookingRequestsTabView
+        case .requests: BookingRequestsTabView()
         case .profile: Text("Profile")
         }
     }
