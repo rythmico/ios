@@ -31,8 +31,6 @@ struct LessonPlanBookingEntryView: View {
         .onDisappear(perform: coordinator.cancel)
         .alertOnFailure(coordinator)
         .animation(.rythmicoSpring(duration: .durationMedium), value: coordinator.state.successValue)
-        .disabled(coordinator.state.isLoading)
-        .sheetInteractiveDismissal(coordinator.state.isSuccess)
     }
 
     private func fetch() {
