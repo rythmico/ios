@@ -1,4 +1,3 @@
-#if DEBUG
 import Sugar
 
 final class AuthenticationAccessTokenProviderStub: AuthenticationAccessTokenProvider {
@@ -16,4 +15,3 @@ final class AuthenticationAccessTokenProviderStub: AuthenticationAccessTokenProv
 final class AuthenticationAccessTokenProviderDummy: AuthenticationAccessTokenProvider {
     func getAccessToken(completionHandler: @escaping Handler<AccessTokenResult>) {}
 }
-#endif

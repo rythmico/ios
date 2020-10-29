@@ -1,4 +1,5 @@
 import APIKit
+import PhoneNumberKit
 
 struct GetLessonPlansRequest: RythmicoAPIRequest {
     let accessToken: String
@@ -43,13 +44,56 @@ struct CancelLessonPlanRequest: RythmicoAPIRequest {
         var reason: Reason
     }
 
-    typealias Properties = (lessonPlanId: String, body: Body)
+    typealias Properties = (lessonPlanId: LessonPlan.ID, body: Body)
 
     let accessToken: String
     let properties: Properties
 
     let method: HTTPMethod = .patch
     var path: String { "/lesson-plans/\(self.lessonPlanId)/cancel" }
+
+    var bodyParameters: BodyParameters? {
+        JSONEncodableBodyParameters(object: self.body)
+    }
+
+    typealias Response = LessonPlan
+    typealias Error = RythmicoAPIError
+}
+
+struct GetLessonPlanCheckoutRequest: RythmicoAPIRequest {
+    struct Properties {
+        var lessonPlanId: LessonPlan.ID
+        var applicationId: LessonPlan.Tutor.ID
+    }
+
+    let accessToken: String
+    let properties: Properties
+
+    let method: HTTPMethod = .get
+    var path: String { "/lesson-plans/\(self.lessonPlanId)/applications/\(self.applicationId)/checkout" }
+
+    typealias Response = Checkout
+    typealias Error = RythmicoAPIError
+}
+
+struct CompleteLessonPlanCheckoutRequest: RythmicoAPIRequest {
+    struct Properties {
+        struct Body: Encodable {
+            @E164PhoneNumber
+            var phoneNumber: PhoneNumber
+            var cardId: Card.ID
+        }
+
+        var lessonPlanId: LessonPlan.ID
+        var applicationId: LessonPlan.Tutor.ID
+        var body: Body
+    }
+
+    let accessToken: String
+    let properties: Properties
+
+    let method: HTTPMethod = .post
+    var path: String { "/lesson-plans/\(self.lessonPlanId)/applications/\(self.applicationId)/book" }
 
     var bodyParameters: BodyParameters? {
         JSONEncodableBodyParameters(object: self.body)

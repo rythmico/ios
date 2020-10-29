@@ -2,15 +2,14 @@ import SwiftUI
 import SwiftUIMapView
 import Sugar
 
-struct BookingApplicationDetailView: View, RoutableView {
-    @Environment(\.presentationMode)
-    private var presentationMode
+struct BookingApplicationDetailView: View {
+    @Environment(\.presentationMode) private var presentationMode
 
     private let bookingApplication: BookingApplication
 
     private let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
     private let timeFormatter = Current.dateFormatter(format: .time(.short))
-    private let statusDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .short)
+    private let statusDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .short, precise: true)
 
     @State
     private var retractionPromptSheetPresented = false
@@ -126,14 +125,6 @@ struct BookingApplicationDetailView: View, RoutableView {
         .disabled(retractionCoordinator.state.isLoading)
         .alertOnFailure(retractionCoordinator)
         .onSuccess(retractionCoordinator, perform: didRetractBookingApplication)
-        .routable(self)
-    }
-
-    func handleRoute(_ route: Route) {
-        switch route {
-        case .bookingRequests, .bookingApplications:
-            presentationMode.wrappedValue.dismiss()
-        }
     }
 
     private func promptForRetraction() {
@@ -142,7 +133,8 @@ struct BookingApplicationDetailView: View, RoutableView {
 
     private func didRetractBookingApplication(_ retractedApplication: BookingApplication) {
         Current.bookingApplicationRepository.replaceIdentifiableItem(retractedApplication)
-        Current.router.open(.bookingApplications)
+        Current.router.open(.bookingApplications) // Does not work.
+        presentationMode.wrappedValue.dismiss() // FIXME: workaround for the above. Investigate.
     }
 }
 

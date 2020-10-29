@@ -1,8 +1,9 @@
 import SwiftUI
 import SFSafeSymbols
+import MultiSheet
 import Sugar
 
-struct MainView: View, TestableView, RoutableView {
+struct MainView: View, TestableView {
     enum Tab: String, Hashable, CaseIterable {
         case lessons = "Lessons"
         case profile = "Profile"
@@ -11,11 +12,8 @@ struct MainView: View, TestableView, RoutableView {
         var uppercasedTitle: String { title.uppercased(with: Current.locale) }
     }
 
-    @State
-    private(set) var isLessonRequestViewPresented = false
-
-    @State
-    private var tab: Tab = .lessons
+    @ObservedObject
+    private var state = Current.state
     @State
     private var lessonsView: LessonsView
     @State
@@ -41,45 +39,34 @@ struct MainView: View, TestableView, RoutableView {
     }
 
     func presentRequestLessonFlow() {
-        isLessonRequestViewPresented = true
+        state.lessonsContext = .requestingLessonPlan
     }
 
     func presentRequestLessonFlowIfNeeded(_ lessonPlans: [LessonPlan]) {
-        guard !hasPresentedLessonRequestView else { return }
-        isLessonRequestViewPresented = lessonPlans.isEmpty
+        guard !hasPresentedLessonRequestView, lessonPlans.isEmpty else { return }
+        state.lessonsContext = .requestingLessonPlan
     }
 
     let inspection = SelfInspection()
     var body: some View {
         MainViewContent(
-            tabs: Tab.allCases, selection: $tab,
+            tabs: Tab.allCases, selection: $state.tab,
             navigationTitle: \.title, leadingItem: leadingItem, trailingItem: trailingItem,
             content: content,
             tabTitle: \.uppercasedTitle, tabIcons: icon
         )
         .testable(self)
-        .onChange(of: isLessonRequestViewPresented, perform: onIsLessonRequestViewPresentedChange)
+        .onChange(of: state.lessonsContext.isRequestingLessonPlan, perform: onIsLessonRequestViewPresentedChange)
         .accentColor(.rythmicoPurple)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
         .onSuccess(lessonPlanFetchingCoordinator, perform: presentRequestLessonFlowIfNeeded)
-        .sheet(isPresented: $isLessonRequestViewPresented) {
-            RequestLessonPlanView(context: RequestLessonPlanContext())
-        }
-        .routable(self)
-    }
-
-    func handleRoute(_ route: Route) {
-        switch route {
-        case .lessons:
-            tab = .lessons
-            Current.router.end()
-        case .requestLessonPlan:
-            tab = .lessons
-            presentRequestLessonFlow()
-            Current.router.end()
-        case .profile:
-            tab = .profile
-            Current.router.end()
+        .multiSheet {
+            $0.sheet(isPresented: $state.lessonsContext.isRequestingLessonPlan) {
+                RequestLessonPlanView(context: RequestLessonPlanContext())
+            }
+            $0.sheet(item: $state.lessonsContext.bookingValues) {
+                LessonPlanBookingEntryView(lessonPlan: $0.lessonPlan, application: $0.application)
+            }
         }
     }
 

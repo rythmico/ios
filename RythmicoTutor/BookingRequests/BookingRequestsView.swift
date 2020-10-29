@@ -10,8 +10,8 @@ struct BookingRequestsView: View, VisibleView {
     @ObservedObject
     private var pushNotificationAuthCoordinator = Current.pushNotificationAuthorizationCoordinator
 
-    @State
-    private var selectedBookingRequest: BookingRequest?
+    @ObservedObject
+    private var state = Current.state
     @State
     var isVisible = false
 
@@ -34,28 +34,24 @@ struct BookingRequestsView: View, VisibleView {
     }
 
     var body: some View {
-        VStack(spacing: .spacingMedium) {
-            List {
-                Section(
-                    header: HStack(spacing: .spacingUnit * 2) {
-                        Text("UPCOMING")
-                        if isLoading {
-                            ActivityIndicator()
-                        }
-                    }
-                ) {
-                    ForEach(requests) { request in
-                        NavigationLink(
-                            destination: BookingRequestDetailView(bookingRequest: request),
-                            tag: request,
-                            selection: $selectedBookingRequest,
-                            label: { BookingRequestCell(request: request) }
-                        )
+        List {
+            Section(
+                header: HStack(spacing: .spacingUnit * 2) {
+                    Text("UPCOMING")
+                    if isLoading {
+                        ActivityIndicator()
                     }
                 }
+            ) {
+                ForEach(requests) { request in
+                    BookingRequestCell(
+                        request: request,
+                        selection: $state.requestsContext.selectedRequest
+                    )
+                }
             }
-            .listStyle(GroupedListStyle())
         }
+        .listStyle(GroupedListStyle())
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
         .visible(self)
 

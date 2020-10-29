@@ -1,4 +1,3 @@
-#if DEBUG
 import Foundation
 
 final class ActivitySpy: Activity {
@@ -24,4 +23,3 @@ final class ActivityDummy: Activity {
     func suspend() {}
     func cancel() {}
 }
-#endif

@@ -1,6 +1,8 @@
 import Foundation
 
 struct AppEnvironment {
+    var state: AppState
+
     var date: () -> Date
     var calendarType: () -> Calendar.Identifier
     var locale: Locale
@@ -28,7 +30,7 @@ struct AppEnvironment {
     var uiAccessibility: UIAccessibilityProtocol.Type
     var keyboardDismisser: KeyboardDismisser
     var urlOpener: URLOpener
-    var router: Router
+    var router: RouterProtocol
 
     var imageLoadingService: ImageLoadingServiceProtocol
 
@@ -38,7 +40,12 @@ struct AppEnvironment {
     var lessonPlanFetchingService: APIServiceBase<GetLessonPlansRequest>
     var lessonPlanRequestService: APIServiceBase<CreateLessonPlanRequest>
     var lessonPlanCancellationService: APIServiceBase<CancelLessonPlanRequest>
+    var lessonPlanGetCheckoutService: APIServiceBase<GetLessonPlanCheckoutRequest>
+    var lessonPlanCompleteCheckoutService: APIServiceBase<CompleteLessonPlanCheckoutRequest>
     var lessonPlanRepository: Repository<LessonPlan>
 
     var portfolioFetchingService: APIServiceBase<GetPortfolioRequest>
+
+    var cardSetupCredentialFetchingService: APIServiceBase<GetCardSetupCredentialRequest>
+    var cardSetupService: CardSetupServiceProtocol
 }

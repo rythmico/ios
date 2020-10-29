@@ -34,6 +34,10 @@ extension Button {
             )
         )
     }
+
+    func quaternaryStyle(expansive: Bool = true) -> some View {
+        buttonStyle(RythmicoLinkButtonStyle(expansive: expansive))
+    }
 }
 
 private struct RythmicoButtonStyle: ButtonStyle {
@@ -70,6 +74,21 @@ private struct RythmicoButtonStyle: ButtonStyle {
     }
 }
 
+private struct RythmicoLinkButtonStyle: ButtonStyle {
+    var expansive: Bool
+    let buttonMaxWidth = .spacingUnit * 85
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .opacity(configuration.isPressed ? 0.3 : 1)
+            .foregroundColor(.rythmicoGray90)
+            .rythmicoFont(.body)
+            .frame(maxWidth: expansive ? buttonMaxWidth : nil, minHeight: 48)
+            .modifier(DiseableableButtonModifier())
+            .contentShape(Rectangle())
+    }
+}
+
 private struct DiseableableButtonModifier: ViewModifier {
     @Environment(\.isEnabled) private var isEnabled: Bool
 
@@ -83,7 +102,7 @@ private struct DiseableableButtonModifier: ViewModifier {
 #if DEBUG
 struct Buttons_Previews: PreviewProvider {
     static var previews: some View {
-        VStack(spacing: 50) {
+        Group {
             VStack(spacing: .spacingSmall) {
                 Button("Next", action: {}).primaryStyle(expansive: false)
                 Button("Next", action: {}).primaryStyle()
@@ -101,7 +120,14 @@ struct Buttons_Previews: PreviewProvider {
                 Button("Next", action: {}).tertiaryStyle()
                 Button("Next", action: {}).tertiaryStyle().disabled(true)
             }
+
+            VStack(spacing: .spacingSmall) {
+                Button("Next", action: {}).quaternaryStyle(expansive: false)
+                Button("Next", action: {}).quaternaryStyle()
+                Button("Next", action: {}).quaternaryStyle().disabled(true)
+            }
         }
+        .previewLayout(.sizeThatFits)
         .padding()
     }
 }

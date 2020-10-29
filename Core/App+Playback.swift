@@ -1,7 +1,7 @@
 import Foundation
 import AVKit
 
-extension App {
+extension App.Delegate {
     func allowAudioPlaybackOnSilentMode() {
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback)

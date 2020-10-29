@@ -9,11 +9,16 @@ extension String {
     public static var whitespace: String { " " }
     public static var newline: String { "\n" }
     public static var comma: String { "," }
+    public static var quote: String { "\"" }
 }
 
 extension String {
     public var isBlank: Bool {
         trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
+    public func quoted() -> String {
+        .quote + self + .quote
     }
 
     public func repeated(_ count: Int = 2) -> String {
@@ -51,5 +56,11 @@ extension String {
             .filter { !$0.trimmingCharacters(in: .whitespaces).isEmpty }
             .compactMap { $0.first?.uppercased() }
             .joined()
+    }
+}
+
+extension Collection where Element: StringProtocol {
+    public func spaced() -> String {
+        joined(separator: .whitespace)
     }
 }

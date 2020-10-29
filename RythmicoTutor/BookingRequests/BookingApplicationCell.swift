@@ -47,7 +47,7 @@ struct BookingApplicationCell: View {
     }
 
     private let scheduleFormatter = Current.dateFormatter(format: .custom("d MMM '@' HH:mm"))
-    private let statusDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .short)
+    private let statusDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .short, precise: true)
 }
 
 #if DEBUG

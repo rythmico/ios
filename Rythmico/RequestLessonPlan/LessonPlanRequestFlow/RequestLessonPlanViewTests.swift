@@ -16,8 +16,6 @@ final class RequestLessonPlanViewTests: XCTestCase {
 
         XCTAssertView(view) { view in
             XCTAssertNotNil(view.formView)
-            XCTAssertNil(view.loadingView)
-            XCTAssertNil(view.confirmationView)
             XCTAssertTrue(view.swipeDownToDismissEnabled)
             XCTAssertNil(view.errorMessage)
         }
@@ -30,8 +28,6 @@ final class RequestLessonPlanViewTests: XCTestCase {
             view.coordinator.run(with: .stub)
 
             XCTAssertNil(view.formView)
-            XCTAssertNotNil(view.loadingView)
-            XCTAssertNil(view.confirmationView)
             XCTAssertFalse(view.swipeDownToDismissEnabled)
         }
     }
@@ -45,8 +41,6 @@ final class RequestLessonPlanViewTests: XCTestCase {
             view.coordinator.run(with: .stub)
 
             XCTAssertNotNil(view.formView)
-            XCTAssertNil(view.loadingView)
-            XCTAssertNil(view.confirmationView)
             XCTAssertFalse(view.swipeDownToDismissEnabled)
             XCTAssertEqual(view.errorMessage, "Something 2")
 
@@ -64,8 +58,6 @@ final class RequestLessonPlanViewTests: XCTestCase {
             view.coordinator.run(with: .stub)
 
             XCTAssertNil(view.formView)
-            XCTAssertNil(view.loadingView)
-            XCTAssertNotNil(view.confirmationView)
             XCTAssertFalse(view.swipeDownToDismissEnabled)
             XCTAssertNil(view.errorMessage)
         }

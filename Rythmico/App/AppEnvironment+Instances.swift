@@ -1,12 +1,15 @@
 import UIKit
 import UserNotifications
 import Firebase
+import Stripe
 import Then
 
 extension AppEnvironment: Then {}
 
 extension AppEnvironment {
     static let live = AppEnvironment(
+        state: AppState(),
+
         date: Date.init,
         calendarType: { Calendar.current.identifier },
         locale: .autoupdatingCurrent,
@@ -47,10 +50,19 @@ extension AppEnvironment {
         lessonPlanFetchingService: APIService(),
         lessonPlanRequestService: APIService(),
         lessonPlanCancellationService: APIService(),
+        lessonPlanGetCheckoutService: APIService(),
+        lessonPlanCompleteCheckoutService: APIService(),
         lessonPlanRepository: Repository(),
 
-        portfolioFetchingService: APIService()
+        portfolioFetchingService: APIService(),
+
+        cardSetupCredentialFetchingService: APIService(),
+        cardSetupService: STPPaymentHandler.shared()
     )
+
+    func cardSetupCoordinator() -> CardSetupCoordinator {
+        CardSetupCoordinator(service: cardSetupService)
+    }
 }
 
 #if DEBUG
@@ -65,8 +77,13 @@ extension AppEnvironment {
             $0.lessonPlanFetchingService = fakeAPIService(result: .success(.stub))
             $0.lessonPlanRequestService = fakeAPIService(result: .success(.davidGuitarPlanStub))
             $0.lessonPlanCancellationService = fakeAPIService(result: .success(.cancelledJackGuitarPlanStub))
+            $0.lessonPlanGetCheckoutService = fakeAPIService(result: .success(.stub))
+            $0.lessonPlanCompleteCheckoutService = fakeAPIService(result: .success(.scheduledJackGuitarPlanStub))
 
             $0.portfolioFetchingService = fakeAPIService(result: .success(.longStub))
+
+            $0.cardSetupCredentialFetchingService = fakeAPIService(result: .success(.stub))
+            $0.cardSetupService = CardSetupServiceStub(result: .success(STPSetupIntentFake()), delay: fakeAPIServicesDelay)
         }
     }
 }
@@ -74,6 +91,8 @@ extension AppEnvironment {
 extension AppEnvironment {
     static var dummy: AppEnvironment {
         AppEnvironment(
+            state: AppState(),
+
             date: { .stub },
             calendarType: { .gregorian },
             locale: Locale(identifier: "en_GB"),
@@ -111,9 +130,14 @@ extension AppEnvironment {
             lessonPlanFetchingService: APIServiceDummy(),
             lessonPlanRequestService: APIServiceDummy(),
             lessonPlanCancellationService: APIServiceDummy(),
+            lessonPlanGetCheckoutService: APIServiceDummy(),
+            lessonPlanCompleteCheckoutService: APIServiceDummy(),
             lessonPlanRepository: Repository(),
 
-            portfolioFetchingService: APIServiceDummy()
+            portfolioFetchingService: APIServiceDummy(),
+
+            cardSetupCredentialFetchingService: APIServiceDummy(),
+            cardSetupService: CardSetupServiceDummy()
         )
     }
 }

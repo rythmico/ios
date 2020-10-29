@@ -37,36 +37,18 @@ struct MainViewContent<Tab: Hashable>: View {
     }
 
     var body: some View {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            NavigationView {
-                TabView(selection: $selection) {
-                    ForEach(tabs, id: \.self) { tab in
-                        contents[tab]
-                            .tag(tab)
-                            .tabItem {
-                                tabIcons[tab]
-                                Text(tab[keyPath: tabTitle])
-                            }
-                    }
+        TabView(selection: $selection) {
+            ForEach(tabs, id: \.self) { tab in
+                NavigationView {
+                    contents[tab]
+                        .navigationTitle(tab[keyPath: navigationTitle])
+                        .navigationBarItems(leading: leadingItems[tab], trailing: trailingItems[tab])
                 }
-                .navigationBarTitle(selection[keyPath: navigationTitle])
-                .navigationBarItems(leading: leadingItems[selection], trailing: trailingItems[selection])
-            }
-            .navigationViewFixInteractiveDismissal()
-        } else {
-            TabView(selection: $selection) {
-                ForEach(tabs, id: \.self) { tab in
-                    NavigationView {
-                        contents[tab]
-                            .navigationTitle(tab[keyPath: navigationTitle])
-                            .navigationBarItems(leading: leadingItems[tab], trailing: trailingItems[tab])
-                    }
-                    .navigationViewFixInteractiveDismissal()
-                    .tag(tab)
-                    .tabItem {
-                        tabIcons[tab]
-                        Text(tab[keyPath: tabTitle])
-                    }
+                .navigationViewFixInteractiveDismissal()
+                .tag(tab)
+                .tabItem {
+                    tabIcons[tab]
+                    Text(tab[keyPath: tabTitle])
                 }
             }
         }

@@ -1,4 +1,3 @@
-#if DEBUG
 import Foundation
 
 final class DeviceTokenProviderStub: DeviceTokenProvider {
@@ -26,4 +25,3 @@ final class DeviceTokenProviderStub: DeviceTokenProvider {
 final class DeviceTokenProviderDummy: DeviceTokenProvider {
     func deviceToken(handler: @escaping ResultHandler) {}
 }
-#endif

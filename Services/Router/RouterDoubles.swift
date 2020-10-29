@@ -1,8 +1,7 @@
-#if DEBUG
 import Foundation
 import Sugar
 
-final class RouterSpy: Router {
+final class RouterSpy: RouterProtocol {
     var didOpen: Handler<Route>
     var didEnd: Action
 
@@ -11,17 +10,11 @@ final class RouterSpy: Router {
         self.didEnd = didEnd
     }
 
-    override func open(_ route: Route) {
+    func open(_ route: Route) {
         didOpen(route)
     }
-
-    override func end() {
-        didEnd()
-    }
 }
 
-final class RouterDummy: Router {
-    override func open(_ route: Route) {}
-    override func end() {}
+final class RouterDummy: RouterProtocol {
+    func open(_ route: Route) {}
 }
-#endif

@@ -1,6 +1,8 @@
 import Foundation
 
 struct AppEnvironment {
+    var state: AppState
+
     var date: () -> Date
     var calendarType: () -> Calendar.Identifier
     var locale: Locale
@@ -29,7 +31,7 @@ struct AppEnvironment {
     var keyboardDismisser: KeyboardDismisser
     var urlOpener: URLOpener
     var mapOpener: MapOpenerProtocol
-    var router: Router
+    var router: RouterProtocol
 
     var imageLoadingService: ImageLoadingServiceProtocol
 

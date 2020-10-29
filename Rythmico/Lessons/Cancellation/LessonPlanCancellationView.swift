@@ -44,12 +44,12 @@ struct LessonPlanCancellationView: View, TestableView {
                             )
                     }
                 } else if coordinator.state.isLoading {
-                    LoadingView()
+                    LoadingView(title: "Cancelling plan...")
                         .transition(
                             .asymmetric(insertion: .move(edge: .trailing), removal: .opacity)
                         )
                 } else if coordinator.state.isSuccess {
-                    ConfirmationView().transition(.opacity)
+                    ConfirmationView(title: "Plan cancelled successfully").transition(.opacity)
                 }
             }
             .onEdgeSwipe(.left, perform: back)
@@ -85,7 +85,7 @@ struct LessonPlanCancellationView: View, TestableView {
         Current.lessonPlanRepository.replaceIdentifiableItem(lessonPlan)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            Current.router.open(.lessons)
+            Current.state.lessonsContext = .none
         }
     }
 

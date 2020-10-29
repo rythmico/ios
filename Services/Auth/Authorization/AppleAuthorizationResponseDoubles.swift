@@ -1,4 +1,3 @@
-#if DEBUG
 import Foundation
 
 struct AppleAuthorizationResponseStub: AppleAuthorizationResponseProtocol {
@@ -21,4 +20,3 @@ struct AppleAuthorizationResponseDummy: AppleAuthorizationResponseProtocol {
     var email: String?
     var identityToken: Data?
 }
-#endif

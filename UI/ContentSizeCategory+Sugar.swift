@@ -1,6 +1,25 @@
 import SwiftUI
 
-extension ContentSizeCategory {
+protocol ContentSizeCategoryProtocol: Equatable {
+    static var extraSmall: Self { get }
+    static var small: Self { get }
+    static var medium: Self { get }
+    static var large: Self { get }
+    static var extraLarge: Self { get }
+    static var extraExtraLarge: Self { get }
+    static var extraExtraExtraLarge: Self { get }
+    static var accessibilityMedium: Self { get }
+    static var accessibilityLarge: Self { get }
+    static var accessibilityExtraLarge: Self { get }
+    static var accessibilityExtraExtraLarge: Self { get }
+    static var accessibilityExtraExtraExtraLarge: Self { get }
+}
+
+extension ContentSizeCategoryProtocol {
+    static var `default`: Self { .medium }
+}
+
+extension ContentSizeCategoryProtocol {
     var sizeFactor: CGFloat {
         switch self {
         case .extraSmall:
@@ -27,8 +46,11 @@ extension ContentSizeCategory {
             return 1.55
         case .accessibilityExtraExtraExtraLarge:
             return 1.55
-        @unknown default:
-            return ContentSizeCategory.medium.sizeFactor
+        default:
+            return Self.default.sizeFactor
         }
     }
 }
+
+extension ContentSizeCategory: ContentSizeCategoryProtocol {}
+extension UIContentSizeCategory: ContentSizeCategoryProtocol {}

@@ -1,4 +1,3 @@
-#if DEBUG
 import Foundation
 import Sugar
 
@@ -21,4 +20,3 @@ final class AuthenticationAccessTokenProviderBroadcastSpy: AuthenticationAccessT
         didRemoveStateDidChangeListener?(listenerToken)
     }
 }
-#endif

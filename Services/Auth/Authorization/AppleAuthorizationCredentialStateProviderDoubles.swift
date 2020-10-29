@@ -1,4 +1,3 @@
-#if DEBUG
 final class AppleAuthorizationCredentialStateFetcherStub: AppleAuthorizationCredentialStateProvider {
     var expectedState: State
 
@@ -14,4 +13,3 @@ final class AppleAuthorizationCredentialStateFetcherStub: AppleAuthorizationCred
 final class AppleAuthorizationCredentialStateFetcherDummy: AppleAuthorizationCredentialStateProvider {
     func getCredentialState(forUserID userID: String, completion: @escaping StateHandler) {}
 }
-#endif

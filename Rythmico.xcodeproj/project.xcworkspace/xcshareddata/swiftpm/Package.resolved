@@ -11,12 +11,57 @@
         }
       },
       {
+        "package": "MultiSheet",
+        "repositoryURL": "https://github.com/davdroman/MultiSheet",
+        "state": {
+          "branch": null,
+          "revision": "3edf5de0cb5ffed9d2fe869fd1bd3b4bd0d33167",
+          "version": "1.1.0"
+        }
+      },
+      {
+        "package": "PhoneNumberKit",
+        "repositoryURL": "https://github.com/marmelroy/PhoneNumberKit",
+        "state": {
+          "branch": null,
+          "revision": "c7d7b0c91ef0ad7e413022edfcf5d6f75561e2d5",
+          "version": "3.3.1"
+        }
+      },
+      {
         "package": "SFSafeSymbols",
         "repositoryURL": "https://github.com/piknotech/SFSafeSymbols",
         "state": {
           "branch": null,
           "revision": "31a99db357f2b839a18ab598c4aa87a741bd6009",
           "version": "1.2.0"
+        }
+      },
+      {
+        "package": "Stripe",
+        "repositoryURL": "https://github.com/stripe/stripe-ios",
+        "state": {
+          "branch": null,
+          "revision": "93255bc66c5b5ee554712be8b25db659237109c9",
+          "version": "20.0.0"
+        }
+      },
+      {
+        "package": "swift-nonempty",
+        "repositoryURL": "https://github.com/pointfreeco/swift-nonempty",
+        "state": {
+          "branch": "main",
+          "revision": "16c099a67fa5404c3762fa670e6c04bee1a8d1c9",
+          "version": null
+        }
+      },
+      {
+        "package": "Tagged",
+        "repositoryURL": "https://github.com/pointfreeco/swift-tagged",
+        "state": {
+          "branch": null,
+          "revision": "592e1eb4255c571ebffc29955011e352217501b4",
+          "version": "0.5.0"
         }
       },
       {

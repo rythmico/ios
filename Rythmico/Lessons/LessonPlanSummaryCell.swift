@@ -1,4 +1,5 @@
 import SwiftUI
+import Sugar
 
 struct LessonPlanSummaryCell: View {
     var lessonPlan: LessonPlan
@@ -16,11 +17,14 @@ struct LessonPlanSummaryCell: View {
 struct LessonPlanSummaryCellMainContent: View {
     var lessonPlan: LessonPlan
 
+    @ObservedObject
+    private var state = Current.state
+
     var title: String {
         [
             lessonPlan.student.name.firstWord,
             "\(lessonPlan.instrument.name) Lessons"
-        ].compactMap { $0 }.joined(separator: " - ")
+        ].compact().joined(separator: " - ")
     }
 
     var subtitle: String {
@@ -37,7 +41,11 @@ struct LessonPlanSummaryCellMainContent: View {
     }
 
     var body: some View {
-        NavigationLink(destination: LessonPlanDetailView(lessonPlan)) {
+        NavigationLink(
+            destination: LessonPlanDetailView(lessonPlan: lessonPlan),
+            tag: lessonPlan,
+            selection: $state.lessonsContext.selectedLessonPlan
+        ) {
             VStack(alignment: .leading, spacing: .spacingExtraSmall) {
                 Text(title)
                     .lineLimit(1)
@@ -63,11 +71,18 @@ struct LessonPlanSummaryCellMainContent: View {
 struct LessonPlanSummaryCellAccessory: View {
     var lessonPlan: LessonPlan
 
+    @ObservedObject
+    private var state = Current.state
+
     var body: some View {
         if let applicationsView = LessonPlanApplicationsView(lessonPlan) {
             Divider().overlay(Color.rythmicoGray20)
 
-            NavigationLink(destination: applicationsView) {
+            NavigationLink(
+                destination: applicationsView,
+                tag: lessonPlan,
+                selection: $state.lessonsContext.reviewingLessonPlan
+            ) {
                 HStack(spacing: .spacingExtraSmall) {
                     Text("Review Tutors")
                         .rythmicoFont(.body)

@@ -7,6 +7,8 @@ extension AppEnvironment: Then {}
 
 extension AppEnvironment {
     static let live = AppEnvironment(
+        state: AppState(),
+
         date: Date.init,
         calendarType: { Calendar.current.identifier },
         locale: .autoupdatingCurrent,
@@ -71,6 +73,8 @@ extension AppEnvironment {
 extension AppEnvironment {
     static var dummy: AppEnvironment {
         AppEnvironment(
+            state: AppState(),
+
             date: { .stub },
             calendarType: { .gregorian },
             locale: Locale(identifier: "en_GB"),

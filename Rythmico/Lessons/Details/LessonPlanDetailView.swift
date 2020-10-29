@@ -1,27 +1,21 @@
 import SwiftUI
 import Sugar
 
-struct LessonPlanDetailView: View, TestableView, RoutableView {
-    @Environment(\.presentationMode)
-    private var presentationMode
+struct LessonPlanDetailView: View, TestableView {
+    @ObservedObject
+    private var state = Current.state
 
     var lessonPlan: LessonPlan
-    @State
-    private(set) var isCancellationViewPresented = false
-
-    init(_ lessonPlan: LessonPlan) {
-        self.lessonPlan = lessonPlan
-    }
 
     var title: String {
         [
             lessonPlan.student.name.firstWord,
             "\(lessonPlan.instrument.name) Lessons"
-        ].compactMap { $0 }.joined(separator: " - ")
+        ].compact().joined(separator: " - ")
     }
 
     func showCancelLessonPlanForm() {
-        isCancellationViewPresented = true
+        state.lessonsContext = .cancelling(lessonPlan)
     }
 
     let inspection = SelfInspection()
@@ -53,8 +47,6 @@ struct LessonPlanDetailView: View, TestableView, RoutableView {
                                 .renderingMode(.template)
                                 .offset(x: 0, y: .spacingUnit / 2)
                             Text(lessonPlan.address.condensedFormattedString)
-                                .lineLimit(2)
-                                .minimumScaleFactor(0.7)
                                 .lineSpacing(.spacingUnit)
                         }
                         LessonPlanTutorStatusView(lessonPlan.status, summarized: false)
@@ -77,19 +69,8 @@ struct LessonPlanDetailView: View, TestableView, RoutableView {
         .testable(self)
         .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(isPresented: $isCancellationViewPresented) {
-            LessonPlanCancellationView(lessonPlan: lessonPlan)
-        }
-        .routable(self)
-    }
-
-    func handleRoute(_ route: Route) {
-        switch route {
-        case .lessons,
-             .requestLessonPlan,
-             .profile:
-            isCancellationViewPresented = false
-            back()
+        .sheet(item: $state.lessonsContext.cancellingLessonPlan) {
+            LessonPlanCancellationView(lessonPlan: $0)
         }
     }
 
@@ -97,16 +78,12 @@ struct LessonPlanDetailView: View, TestableView, RoutableView {
     private var startDateText: String { startDateFormatter.string(from: lessonPlan.schedule.startDate) }
 
     private var durationText: String { "\(lessonPlan.schedule.duration) minutes" }
-
-    private func back() {
-        presentationMode.wrappedValue.dismiss()
-    }
 }
 
 #if DEBUG
 struct LessonPlanDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlanDetailView(.jesseDrumsPlanStub)
+        LessonPlanDetailView(lessonPlan: .jesseDrumsPlanStub)
 //            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }

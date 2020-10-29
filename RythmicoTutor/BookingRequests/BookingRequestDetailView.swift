@@ -1,9 +1,9 @@
 import SwiftUI
 import SwiftUIMapView
 
-struct BookingRequestDetailView: View, RoutableView {
-    @Environment(\.presentationMode)
-    private var presentationMode
+struct BookingRequestDetailView: View {
+    @ObservedObject
+    private var state = Current.state
 
     private let bookingRequest: BookingRequest
 
@@ -34,9 +34,7 @@ struct BookingRequestDetailView: View, RoutableView {
 
     var postcode: String { bookingRequest.postcode }
 
-    @State
-    private var isApplicationViewPresented = false
-    private func presentApplicationView() { isApplicationViewPresented = true }
+    private func presentApplicationView() { state.requestsContext.isApplyingToRequest = true }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -99,16 +97,8 @@ struct BookingRequestDetailView: View, RoutableView {
             intent: .search(query: bookingRequest.postcode),
             error: $mapOpeningError
         )
-        .sheet(isPresented: $isApplicationViewPresented) {
+        .sheet(isPresented: $state.requestsContext.isApplyingToRequest) {
             BookingRequestApplyView(booking: bookingRequest)
-        }
-        .routable(self)
-    }
-
-    func handleRoute(_ route: Route) {
-        switch route {
-        case .bookingRequests, .bookingApplications:
-            presentationMode.wrappedValue.dismiss()
         }
     }
 }

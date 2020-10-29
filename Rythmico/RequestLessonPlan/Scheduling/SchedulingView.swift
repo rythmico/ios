@@ -9,7 +9,7 @@ struct SchedulingView: View, TestableView {
     final class ViewState: ObservableObject {
         @Published var startDate: Date?
         @Published var startTime = Current.calendar().date(bySetting: .hour, value: 16, of: .referenceDate) ?? .referenceDate
-        @Published var duration: Duration?
+        @Published var duration: Schedule.Duration?
     }
 
     @ObservedObject private(set) var state: ViewState

@@ -3,7 +3,7 @@ import Sugar
 
 struct InstrumentViewData {
     var name: String
-    var icon: Image
+    var icon: ImageAsset
     var action: Action?
 }
 
@@ -24,8 +24,9 @@ struct InstrumentView: View {
                     .padding(.vertical, .spacingMedium)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                viewData.icon.renderingMode(.template)
-                    .accentColor(.rythmicoForeground)
+                Image(decorative: viewData.icon.name)
+                    .renderingMode(.template)
+                    .foregroundColor(.rythmicoForeground)
                     .padding(.trailing, .spacingMedium)
             }
         }
@@ -40,10 +41,10 @@ struct InstrumentView: View {
 struct InstrumentView_Preview: PreviewProvider {
     static var previews: some View {
         VStack {
-            InstrumentView(viewData: .init(name: "Guitar", icon: Image(decorative: Asset.instrumentIconGuitar.name), action: {}))
-            InstrumentView(viewData: .init(name: "Drums", icon: Image(decorative: Asset.instrumentIconDrums.name), action: {}))
-            InstrumentView(viewData: .init(name: "Piano", icon: Image(decorative: Asset.instrumentIconPiano.name), action: {}))
-            InstrumentView(viewData: .init(name: "Singing", icon: Image(decorative: Asset.instrumentIconSinging.name), action: {}))
+            InstrumentView(viewData: .init(name: "Guitar", icon: Asset.instrumentIconGuitar, action: {}))
+            InstrumentView(viewData: .init(name: "Drums", icon: Asset.instrumentIconDrums, action: {}))
+            InstrumentView(viewData: .init(name: "Piano", icon: Asset.instrumentIconPiano, action: {}))
+            InstrumentView(viewData: .init(name: "Singing", icon: Asset.instrumentIconSinging, action: {}))
         }.padding(.horizontal, 20)
     }
 }

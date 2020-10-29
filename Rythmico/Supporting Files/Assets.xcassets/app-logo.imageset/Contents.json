@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "app-logo-dark.pdf",
+      "filename" : "rythmico_logo_dark.svg",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "light"
         }
       ],
-      "filename" : "app-logo-dark-1.pdf",
+      "filename" : "rythmico_logo_dark-1.svg",
       "idiom" : "universal"
     },
     {
@@ -21,7 +21,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "app-logo-light.pdf",
+      "filename" : "rythmico_logo_light.svg",
       "idiom" : "universal"
     }
   ],

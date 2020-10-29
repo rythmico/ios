@@ -1,12 +1,17 @@
-#if DEBUG
 import Foundation
 import Then
 
 extension LessonPlan: Then {}
 
+extension LessonPlan.ID {
+    static func random() -> Self {
+        Self(rawValue: UUID().uuidString)
+    }
+}
+
 extension LessonPlan {
     static let pendingJackGuitarPlanStub = Self(
-        id: UUID().uuidString,
+        id: .random(),
         status: .pending,
         instrument: .guitar,
         student: .jackStub,
@@ -16,7 +21,7 @@ extension LessonPlan {
     )
 
     static let jesseDrumsPlanStub = Self(
-        id: UUID().uuidString,
+        id: .random(),
         status: .pending,
         instrument: .drums,
         student: .jesseStub,
@@ -26,7 +31,7 @@ extension LessonPlan {
     )
 
     static let charlottePianoPlanStub = Self(
-        id: UUID().uuidString,
+        id: .random(),
         status: .pending,
         instrument: .piano,
         student: .charlotteStub,
@@ -36,7 +41,7 @@ extension LessonPlan {
     )
 
     static let janeSingingPlanStub = Self(
-        id: UUID().uuidString,
+        id: .random(),
         status: .pending,
         instrument: .singing,
         student: .janeStub,
@@ -46,7 +51,7 @@ extension LessonPlan {
     )
 
     static let davidGuitarPlanStub = Self(
-        id: UUID().uuidString,
+        id: .random(),
         status: .pending,
         instrument: .guitar,
         student: .davidStub,
@@ -72,29 +77,41 @@ extension LessonPlan {
     }
 }
 
+extension LessonPlan {
+    static let scheduledJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
+        $0.status = .scheduled(.jesseStub)
+    }
+}
+
 extension LessonPlan.Application {
     static let jesseStub = Self(tutor: .jesseStub, privateNote: "I'll help!")
     static let davidStub = Self(tutor: .davidStub, privateNote: "Lorem ipsum!")
     static let charlotteStub =  Self(tutor: .charlotteStub, privateNote: "")
 }
 
+extension LessonPlan.Tutor.ID {
+    static func random() -> Self {
+        Self(rawValue: UUID().uuidString)
+    }
+}
+
 extension LessonPlan.Tutor {
     static let jesseStub = Self(
-        id: UUID().uuidString,
+        id: .random(),
         name: "Jesse Bildner",
         photoThumbnailURL: nil,
         photoURL: nil
     )
 
     static let davidStub = Self(
-        id: UUID().uuidString,
+        id: .random(),
         name: "David Roman",
         photoThumbnailURL: nil,
         photoURL: nil
     )
 
     static let charlotteStub = Self(
-        id: UUID().uuidString,
+        id: .random(),
         name: "Charlotte",
         photoThumbnailURL: nil,
         photoURL: nil
@@ -123,4 +140,3 @@ extension Array where Element == LessonPlan.Application {
         .charlotteStub
     ]
 }
-#endif

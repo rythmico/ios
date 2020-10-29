@@ -2,24 +2,31 @@ import SwiftUI
 
 struct BookingRequestCell: View {
     var request: BookingRequest
+    @Binding var selection: BookingRequest?
 
     var body: some View {
-        HStack(spacing: .spacingMedium) {
-            VStack(alignment: .leading, spacing: .spacingUnit / 2) {
-                Text(title)
-                    .foregroundColor(.primary)
-                    .font(.body)
-                Text(subtitle)
-                    .foregroundColor(.secondary)
-                    .font(.callout)
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
+        NavigationLink(
+            destination: BookingRequestDetailView(bookingRequest: request),
+            tag: request,
+            selection: $selection
+        ) {
+            HStack(spacing: .spacingMedium) {
+                VStack(alignment: .leading, spacing: .spacingUnit / 2) {
+                    Text(title)
+                        .foregroundColor(.primary)
+                        .font(.body)
+                    Text(subtitle)
+                        .foregroundColor(.secondary)
+                        .font(.callout)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
 
-            Text(accessory)
-                .foregroundColor(.secondary)
-                .font(.body)
+                Text(accessory)
+                    .foregroundColor(.secondary)
+                    .font(.body)
+            }
+            .padding(.vertical, .spacingUnit)
         }
-        .padding(.vertical, .spacingUnit)
     }
 
     private var title: String {
@@ -40,7 +47,7 @@ struct BookingRequestCell: View {
 #if DEBUG
 struct BookingRequestCell_Previews: PreviewProvider {
     static var previews: some View {
-        BookingRequestCell(request: .stub)
+        BookingRequestCell(request: .stub, selection: .constant(nil))
             .padding(.horizontal, .spacingExtraSmall)
             .previewLayout(.sizeThatFits)
     }

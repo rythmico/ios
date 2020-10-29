@@ -1,10 +1,13 @@
 import SwiftUI
+import Sugar
 
 struct MultiStyleText: View {
     @Environment(\.sizeCategory) private var sizeCategory
     @Environment(\.legibilityWeight) private var legibilityWeight
 
     var parts: [Part]
+    var expanded: Bool = true
+    var alignment: Alignment = .leading
 
     var body: some View {
         if parts.isEmpty {
@@ -21,6 +24,7 @@ struct MultiStyleText: View {
                     )
                     .foregroundColor(part.color)
             }
+            .frame(maxWidth: expanded ? .infinity : nil, alignment: alignment)
             .lineSpacing(6)
         }
     }
@@ -81,6 +85,6 @@ extension Array where Element == MultiStyleText.Part {
 typealias MSTP = MultiStyleText.Part
 
 func + (lhs: MSTP, rhs: MSTP) -> [MSTP] { [lhs, rhs] }
-func + (lhs: MSTP, rhs: MSTP?) -> [MSTP] { [lhs, rhs].compactMap { $0 } }
+func + (lhs: MSTP, rhs: MSTP?) -> [MSTP] { [lhs, rhs].compact() }
 func + (lhs: [MSTP], rhs: MSTP) -> [MSTP] { lhs + [rhs] }
 func + (lhs: [MSTP], rhs: MSTP?) -> [MSTP] { rhs.map { lhs + [$0] } ?? lhs }

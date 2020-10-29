@@ -6,3 +6,8 @@ enum Route {
 
     case profile
 }
+
+extension Router {
+    func open(_ route: Route) {
+    }
+}

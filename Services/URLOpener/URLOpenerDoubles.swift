@@ -1,4 +1,3 @@
-#if DEBUG
 import Foundation
 
 final class URLOpenerSpy: URLOpener {
@@ -12,4 +11,3 @@ final class URLOpenerSpy: URLOpener {
 final class URLOpenerDummy: URLOpener {
     func open(_ url: URL) {}
 }
-#endif
