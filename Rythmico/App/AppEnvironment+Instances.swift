@@ -1,6 +1,7 @@
 import UIKit
 import UserNotifications
 import Firebase
+import FirebaseInstanceID
 import Stripe
 import Then
 

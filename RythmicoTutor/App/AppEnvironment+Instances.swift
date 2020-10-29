@@ -1,6 +1,7 @@
 import UIKit
 import UserNotifications
 import Firebase
+import FirebaseInstanceID
 import Then
 
 extension AppEnvironment: Then {}
