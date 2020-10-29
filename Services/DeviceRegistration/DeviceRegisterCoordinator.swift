@@ -12,8 +12,8 @@ final class DeviceRegisterCoordinator {
     }
 
     func registerDevice() {
-        deviceTokenProvider.deviceToken { [self] result, _ in
-            if let deviceToken = result?.token {
+        deviceTokenProvider.deviceToken { [self] token, _ in
+            if let deviceToken = token {
                 apiCoordinator.run(with: .init(body: .init(token: deviceToken)))
             }
         }
@@ -28,6 +28,6 @@ final class DeviceUnregisterCoordinator {
     }
 
     func unregisterDevice() {
-        deviceTokenDeleter.deleteID { _ in }
+        deviceTokenDeleter.deleteToken { _ in }
     }
 }

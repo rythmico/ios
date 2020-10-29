@@ -1,8 +1,10 @@
 import Foundation
-import FirebaseInstanceID
+import FirebaseMessaging
+import Sugar
 
 protocol DeviceTokenDeleter {
-    func deleteID(handler: @escaping InstanceIDDeleteHandler)
+    typealias ErrorHandler = Handler<Error?>
+    func deleteToken(completion: @escaping ErrorHandler)
 }
 
-extension InstanceID: DeviceTokenDeleter {}
+extension Messaging: DeviceTokenDeleter {}

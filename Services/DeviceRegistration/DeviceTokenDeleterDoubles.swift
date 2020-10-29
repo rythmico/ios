@@ -1,15 +1,15 @@
-import FirebaseInstanceID
+import Foundation
 
 final class DeviceTokenDeleterSpy: DeviceTokenDeleter {
     var unregisterCount = 0
 
-    func deleteID(handler: @escaping InstanceIDDeleteHandler) {
+    func deleteToken(completion: @escaping ErrorHandler) {
         unregisterCount += 1
     }
 }
 
 final class DeviceTokenDeleterDummy: DeviceTokenDeleter {
-    func deleteID(handler: @escaping InstanceIDDeleteHandler) {
+    func deleteToken(completion: @escaping ErrorHandler) {
         // NO-OP
     }
 }
