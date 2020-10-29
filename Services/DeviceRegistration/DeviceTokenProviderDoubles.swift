@@ -1,11 +1,6 @@
 import Foundation
 
 final class DeviceTokenProviderStub: DeviceTokenProvider {
-    private struct DeviceToken: DeviceTokenProtocol {
-        var instanceID: String
-        var token: String
-    }
-
     var result: Result<String, Error>
 
     init(result: Result<String, Error>) {
@@ -15,7 +10,7 @@ final class DeviceTokenProviderStub: DeviceTokenProvider {
     func deviceToken(handler: @escaping ResultHandler) {
         switch result {
         case .success(let token):
-            handler(DeviceToken(instanceID: token, token: token), nil)
+            handler(token, nil)
         case .failure(let error):
             handler(nil, error)
         }

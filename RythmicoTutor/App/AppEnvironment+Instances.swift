@@ -1,7 +1,6 @@
 import UIKit
 import UserNotifications
 import Firebase
-import FirebaseInstanceID
 import Then
 
 extension AppEnvironment: Then {}
@@ -27,9 +26,9 @@ extension AppEnvironment {
         deauthenticationService: DeauthenticationService(),
         accessTokenProviderObserver: AuthenticationAccessTokenProviderObserver(broadcast: AuthenticationAccessTokenProviderBroadcast()),
 
-        deviceTokenProvider: InstanceID.instanceID(),
+        deviceTokenProvider: Messaging.messaging(),
         deviceRegisterService: APIService(),
-        deviceTokenDeleter: InstanceID.instanceID(),
+        deviceTokenDeleter: Messaging.messaging(),
 
         pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator(
             center: UNUserNotificationCenter.current(),
