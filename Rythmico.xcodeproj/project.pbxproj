@@ -2844,10 +2844,6 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Rythmico/Preview Content\"";
 				DEVELOPMENT_TEAM = 72N659HYBR;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = "Rythmico/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2875,10 +2871,6 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Rythmico/Preview Content\"";
 				DEVELOPMENT_TEAM = 72N659HYBR;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = "Rythmico/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2904,10 +2896,6 @@
 				DEVELOPMENT_ASSET_PATHS = "\"RythmicoTutor/Preview Content\"";
 				DEVELOPMENT_TEAM = 72N659HYBR;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = "RythmicoTutor/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2933,10 +2921,6 @@
 				DEVELOPMENT_ASSET_PATHS = "\"RythmicoTutor/Preview Content\"";
 				DEVELOPMENT_TEAM = 72N659HYBR;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = "RythmicoTutor/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
