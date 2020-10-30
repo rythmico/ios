@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+rm -rf "${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/Frameworks/FirebaseAnalytics.framework"
+rm -rf "${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/Frameworks/GoogleAppMeasurement.framework"
+rm -rf "${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app/Frameworks/FIRAnalyticsConnector.framework"

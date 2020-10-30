@@ -1862,6 +1862,7 @@
 				03341B3923ABB1E7009AE8A8 /* Resources */,
 				D509898123B9B2E400C19300 /* Select GoogleService-Info.plist */,
 				D53554B123E0FA4B005A20EB /* Embed Frameworks */,
+				D5AC9E16254C2F8D003A8197 /* Strip Firebase Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1899,6 +1900,7 @@
 				035B1CBA249CF2AA00AABFEA /* Resources */,
 				035B1D5C249E5EA000AABFEA /* Select GoogleService-Info.plist */,
 				035B1D0E249D303400AABFEA /* Embed Frameworks */,
+				D5AC9E17254C2FC1003A8197 /* Strip Firebase Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2138,6 +2140,44 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${SRCROOT}/script/build_phase_select_google_info_plist\n";
+		};
+		D5AC9E16254C2F8D003A8197 /* Strip Firebase Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Strip Firebase Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/script/build_phase_strip_firebase_frameworks\n";
+		};
+		D5AC9E17254C2FC1003A8197 /* Strip Firebase Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Strip Firebase Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/script/build_phase_strip_firebase_frameworks\n";
 		};
 		D5B57A612414516700BE9B4F /* Generate Asset Symbols */ = {
 			isa = PBXShellScriptBuildPhase;
