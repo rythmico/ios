@@ -1,5 +1,5 @@
+import SwiftUI
 import Stripe
-import UIKit
 import Then
 
 extension App {
@@ -10,7 +10,9 @@ extension App {
     func didEnterBackground() {
         Current.sharedCoordinator(for: \.lessonPlanFetchingService)?.reset()
     }
+}
 
+extension SwiftUI.App {
     // TODO: hopefully to be deleted someday if SwiftUI allows for better customization.
     func configureAppearance() {
         UINavigationBar.appearance().do { bar in

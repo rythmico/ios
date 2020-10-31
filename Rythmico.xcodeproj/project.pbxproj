@@ -353,6 +353,10 @@
 		D5AAF7DB23FB347C00E410F2 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7DA23FB347C00E410F2 /* CollectionView.swift */; };
 		D5AAF7DD23FB431E00E410F2 /* InstrumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7DC23FB431E00E410F2 /* InstrumentView.swift */; };
 		D5AAF7DF23FB444500E410F2 /* RoundedShadowContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */; };
+		D5AC9E26254D8AD7003A8197 /* AppDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E25254D8AD7003A8197 /* AppDoubles.swift */; };
+		D5AC9E27254D8AD7003A8197 /* AppDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E25254D8AD7003A8197 /* AppDoubles.swift */; };
+		D5AC9E2C254D8AE2003A8197 /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E2B254D8AE2003A8197 /* AppLauncher.swift */; };
+		D5AC9E2D254D8AE2003A8197 /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E2B254D8AE2003A8197 /* AppLauncher.swift */; };
 		D5AFED3025047DFC003FFC68 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED2F25047DFC003FFC68 /* Activity.swift */; };
 		D5AFED3125047DFC003FFC68 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED2F25047DFC003FFC68 /* Activity.swift */; };
 		D5AFED3C25056300003FFC68 /* NotificationCenter+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED3B25056300003FFC68 /* NotificationCenter+Sugar.swift */; };
@@ -784,6 +788,8 @@
 		D5AAF7DA23FB347C00E410F2 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		D5AAF7DC23FB431E00E410F2 /* InstrumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentView.swift; sourceTree = "<group>"; };
 		D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowContainer.swift; sourceTree = "<group>"; };
+		D5AC9E25254D8AD7003A8197 /* AppDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDoubles.swift; sourceTree = "<group>"; };
+		D5AC9E2B254D8AE2003A8197 /* AppLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLauncher.swift; sourceTree = "<group>"; };
 		D5AFED2F25047DFC003FFC68 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		D5AFED3B25056300003FFC68 /* NotificationCenter+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Sugar.swift"; sourceTree = "<group>"; };
 		D5AFED3E25057158003FFC68 /* VisibleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibleView.swift; sourceTree = "<group>"; };
@@ -1294,6 +1300,8 @@
 			children = (
 				03E88E8C24BC8C1D0077A420 /* AppContext.swift */,
 				035B1CBE249CF2AA00AABFEA /* App.swift */,
+				D5AC9E25254D8AD7003A8197 /* AppDoubles.swift */,
+				D5AC9E2B254D8AE2003A8197 /* AppLauncher.swift */,
 				035B1D58249E5CF800AABFEA /* App+Firebase.swift */,
 				035B1CF0249CF9FA00AABFEA /* App+LaunchScreenCache.swift */,
 				D59D0592251828EA0070D81B /* App+Playback.swift */,
@@ -2333,6 +2341,7 @@
 				D501585C25373D5A005E02FA /* CardSetupService.swift in Sources */,
 				D53555CE23E536AE005A20EB /* AppleAuthorizationControllerDoubles.swift in Sources */,
 				03B198542471BBE8005529EB /* App+PushNotifications.swift in Sources */,
+				D5AC9E2C254D8AE2003A8197 /* AppLauncher.swift in Sources */,
 				D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */,
 				D5AFED3025047DFC003FFC68 /* Activity.swift in Sources */,
 				D5E987BC24EDE92E00E2E1AF /* Router.swift in Sources */,
@@ -2461,6 +2470,7 @@
 				03B19843247181B3005529EB /* RequestLessonPlanFormView.swift in Sources */,
 				035B1D14249E565200AABFEA /* TestableView.swift in Sources */,
 				D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */,
+				D5AC9E26254D8AD7003A8197 /* AppDoubles.swift in Sources */,
 				D5D9AE5C2533865D00A0ABCC /* Button+Sugar.swift in Sources */,
 				D50158AF2538BFDD005E02FA /* CardSetupCredentialDoubles.swift in Sources */,
 				033D47D6247ABF6B0096C50F /* LessonPlanEndpoints.swift in Sources */,
@@ -2555,6 +2565,7 @@
 				D5BF12C72507D78800B2931C /* RouterDoubles.swift in Sources */,
 				035B1D4A249E577700AABFEA /* AppleAuthorizationCompletionDelegate.swift in Sources */,
 				035B1D37249E576900AABFEA /* AuthenticationServiceDoubles.swift in Sources */,
+				D5AC9E2D254D8AE2003A8197 /* AppLauncher.swift in Sources */,
 				035B1D13249E563A00AABFEA /* OnboardingView.swift in Sources */,
 				035B1D3F249E577700AABFEA /* AppleAuthorizationCredentialDoubles.swift in Sources */,
 				035B1D66249E643400AABFEA /* DeviceTokenDeleterDoubles.swift in Sources */,
@@ -2563,6 +2574,7 @@
 				035B1D52249E57FD00AABFEA /* Spacing.swift in Sources */,
 				03E88E9124BCA4AA0077A420 /* TickingView.swift in Sources */,
 				035B1D30249E571B00AABFEA /* UIAccessibilityProtocol.swift in Sources */,
+				D5AC9E27254D8AD7003A8197 /* AppDoubles.swift in Sources */,
 				D5F4D3F424F33C9E000E8580 /* Address.swift in Sources */,
 				D5814A0A251D957D0009BBB3 /* MainViewContent.swift in Sources */,
 				032B6FCC24B7877B00299A09 /* BookingRequest.swift in Sources */,

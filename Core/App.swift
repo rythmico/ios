@@ -1,6 +1,5 @@
 import SwiftUI
 
-@main
 struct App: SwiftUI.App {
     private enum Const {
         static let launchScreenDebugMode = false
@@ -14,18 +13,10 @@ struct App: SwiftUI.App {
     }
 
     final class Delegate: NSObject, UIApplicationDelegate {
-        var isRunningFullApp: Bool {
-            switch AppContext.current {
-            case .test, .preview: return false
-            case .run, .release: return true
-            }
-        }
-
         func application(
             _ application: UIApplication,
             didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
         ) -> Bool {
-            guard isRunningFullApp else { return true }
             clearLaunchScreenCache(Const.launchScreenDebugMode)
             allowAudioPlaybackOnSilentMode()
             configureFirebase()
@@ -38,11 +29,9 @@ struct App: SwiftUI.App {
 
     var body: some Scene {
         WindowGroup {
-            if delegate.isRunningFullApp {
-                RootView()
-                    .onEvent(.sizeCategoryChanged, perform: refreshAppearance)
-                    .onEvent(.appInBackground, perform: didEnterBackground)
-            }
+            RootView()
+                .onEvent(.sizeCategoryChanged, perform: refreshAppearance)
+                .onEvent(.appInBackground, perform: didEnterBackground)
         }
     }
 
