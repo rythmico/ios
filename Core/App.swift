@@ -3,7 +3,6 @@ import SwiftUI
 struct App: SwiftUI.App {
     private enum Const {
         static let launchScreenDebugMode = false
-        static let launchScreenDelay = launchScreenDebugMode ? 5 : .durationMedium
     }
 
     @UIApplicationDelegateAdaptor(Delegate.self) private var delegate
@@ -22,7 +21,6 @@ struct App: SwiftUI.App {
             configureFirebase()
             configurePushNotifications(application: application)
             App.didFinishLaunching()
-            Thread.sleep(forTimeInterval: Const.launchScreenDelay)
             return true
         }
     }
