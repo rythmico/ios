@@ -3,9 +3,13 @@ import SwiftUI
 struct App: SwiftUI.App {
     private enum Const {
         static let launchScreenDebugMode = false
+        static let launchScreenFadeOutDelay = AppSplash.Const.animationDuration * 1.8
     }
 
-    @UIApplicationDelegateAdaptor(Delegate.self) private var delegate
+    @UIApplicationDelegateAdaptor(Delegate.self)
+    private var delegate
+    @StateObject
+    private var remoteConfigCoordinator = Current.remoteConfigCoordinator()
 
     init() {
         configureAppearance()
@@ -27,10 +31,22 @@ struct App: SwiftUI.App {
 
     var body: some Scene {
         WindowGroup {
-            RootView()
-                .onEvent(.sizeCategoryChanged, perform: refreshAppearance)
-                .onEvent(.appInBackground, perform: didEnterBackground)
+            ZStack {
+                if shouldShowSplash {
+                    AppSplash(image: App.logo, title: App.name).zIndex(.greatestFiniteMagnitude)
+                } else {
+                    RootView()
+                        .onEvent(.sizeCategoryChanged, perform: refreshAppearance)
+                        .onEvent(.appInBackground, perform: didEnterBackground)
+                }
+            }
+            .onAppear { remoteConfigCoordinator.fetch() }
+            .animation(Animation.easeInOut(duration: .durationShort).delay(Const.launchScreenFadeOutDelay), value: shouldShowSplash)
         }
+    }
+
+    private var shouldShowSplash: Bool {
+        !remoteConfigCoordinator.wasFetched
     }
 
     private func refreshAppearance() {
