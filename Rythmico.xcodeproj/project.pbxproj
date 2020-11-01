@@ -314,12 +314,14 @@
 		D56B25432533331A00BC3932 /* PhoneNumberDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */; };
 		D575C80F254DB13D001664AB /* RemoteConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C80E254DB13D001664AB /* RemoteConfigService.swift */; };
 		D575C814254DB602001664AB /* RemoteConfigServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C813254DB602001664AB /* RemoteConfigServiceDoubles.swift */; };
+		D575C819254DD6C8001664AB /* AppSplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C818254DD6C8001664AB /* AppSplash.swift */; };
 		D575C82F254F10E1001664AB /* RemoteConfigCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E49254DA0E7003A8197 /* RemoteConfigCoordinator.swift */; };
 		D575C830254F10E1001664AB /* RemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E3E254D957D003A8197 /* RemoteConfig.swift */; };
 		D575C831254F10E1001664AB /* RemoteConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C80E254DB13D001664AB /* RemoteConfigService.swift */; };
 		D575C832254F10E1001664AB /* RemoteConfigServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C813254DB602001664AB /* RemoteConfigServiceDoubles.swift */; };
 		D575C837254F10F0001664AB /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = D575C836254F10F0001664AB /* FirebaseRemoteConfig */; };
 		D575C84E254F29BD001664AB /* Assets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C84D254F29BD001664AB /* Assets.generated.swift */; };
+		D575C856254F2B2F001664AB /* AppSplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C818254DD6C8001664AB /* AppSplash.swift */; };
 		D575C869254F2F26001664AB /* ImageAsset+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D516A928253A554F002E6EDF /* ImageAsset+Sugar.swift */; };
 		D575C86E254F2F82001664AB /* ActivityCoordinator+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C86D254F2F82001664AB /* ActivityCoordinator+Sugar.swift */; };
 		D575C86F254F2F82001664AB /* ActivityCoordinator+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C86D254F2F82001664AB /* ActivityCoordinator+Sugar.swift */; };
@@ -776,6 +778,7 @@
 		D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberDoubles.swift; sourceTree = "<group>"; };
 		D575C80E254DB13D001664AB /* RemoteConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigService.swift; sourceTree = "<group>"; };
 		D575C813254DB602001664AB /* RemoteConfigServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigServiceDoubles.swift; sourceTree = "<group>"; };
+		D575C818254DD6C8001664AB /* AppSplash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSplash.swift; sourceTree = "<group>"; };
 		D575C84D254F29BD001664AB /* Assets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.generated.swift; sourceTree = "<group>"; };
 		D575C86D254F2F82001664AB /* ActivityCoordinator+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityCoordinator+Sugar.swift"; sourceTree = "<group>"; };
 		D575C876254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationAuthorizationCoordinator+Sugar.swift"; sourceTree = "<group>"; };
@@ -1326,6 +1329,7 @@
 			children = (
 				03E88E8C24BC8C1D0077A420 /* AppContext.swift */,
 				035B1CBE249CF2AA00AABFEA /* App.swift */,
+				D575C818254DD6C8001664AB /* AppSplash.swift */,
 				D5AC9E25254D8AD7003A8197 /* AppDoubles.swift */,
 				D5AC9E2B254D8AE2003A8197 /* AppLauncher.swift */,
 				035B1D58249E5CF800AABFEA /* App+Firebase.swift */,
@@ -2326,6 +2330,7 @@
 				D5D9AEA325367E9B00A0ABCC /* LessonPlanBookingEntryView.swift in Sources */,
 				D5F5068E240473CB00CA4094 /* FloatingInputView.swift in Sources */,
 				D501587825375AA9005E02FA /* PorfolioView.swift in Sources */,
+				D575C819254DD6C8001664AB /* AppSplash.swift in Sources */,
 				0392A9CF244D09FF001E97AE /* ContentSizeCategory+Sugar.swift in Sources */,
 				D5AAF7C823ECC87000E410F2 /* RequestLessonPlanView.swift in Sources */,
 				D56B25432533331A00BC3932 /* PhoneNumberDoubles.swift in Sources */,
@@ -2599,6 +2604,7 @@
 				035B1D3B249E576900AABFEA /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */,
 				035B1D34249E576900AABFEA /* AuthenticationService.swift in Sources */,
 				D5814A01251D7FFC0009BBB3 /* App+SplitViewCustomization.swift in Sources */,
+				D575C856254F2B2F001664AB /* AppSplash.swift in Sources */,
 				D54FC05624CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */,
 				D5F4D3E524F0475F000E8580 /* BookingApplicationDoubles.swift in Sources */,
 				035B1D39249E576900AABFEA /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
@@ -2982,6 +2988,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.student;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.rythmico.student";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "RYTHMICO DEBUG";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Models/Checkout/Rythmico-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -3009,6 +3016,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.student;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.rythmico.student";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = RYTHMICO;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Models/Checkout/Rythmico-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3035,6 +3043,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.tutor;
 				PRODUCT_NAME = Tutor;
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.rythmico.tutor";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "TUTOR DEBUG";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3060,6 +3069,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.tutor;
 				PRODUCT_NAME = Tutor;
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.rythmico.tutor";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = TUTOR;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

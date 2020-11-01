@@ -1,6 +1,9 @@
 import SwiftUI
 
 extension App {
+    static let logo = Asset.appLogo
+    static let name = "Rythmico Tutor"
+
     static func didFinishLaunching() {}
 
     func didEnterBackground() {

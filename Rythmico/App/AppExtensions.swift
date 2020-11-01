@@ -3,6 +3,9 @@ import Stripe
 import Then
 
 extension App {
+    static let logo = Asset.appLogo
+    static let name = "Rythmico"
+
     static func didFinishLaunching() {
         Stripe.setDefaultPublishableKey(AppSecrets.stripePublishableKey)
     }
