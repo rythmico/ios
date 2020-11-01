@@ -314,6 +314,13 @@
 		D56B253625322AE300BC3932 /* StripeSetupIntentLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B253525322AE300BC3932 /* StripeSetupIntentLink.swift */; };
 		D56B253B2532433E00BC3932 /* ErrorText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B253A2532433E00BC3932 /* ErrorText.swift */; };
 		D56B25432533331A00BC3932 /* PhoneNumberDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */; };
+		D575C80F254DB13D001664AB /* RemoteConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C80E254DB13D001664AB /* RemoteConfigService.swift */; };
+		D575C814254DB602001664AB /* RemoteConfigServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C813254DB602001664AB /* RemoteConfigServiceDoubles.swift */; };
+		D575C82F254F10E1001664AB /* RemoteConfigCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E49254DA0E7003A8197 /* RemoteConfigCoordinator.swift */; };
+		D575C830254F10E1001664AB /* RemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E3E254D957D003A8197 /* RemoteConfig.swift */; };
+		D575C831254F10E1001664AB /* RemoteConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C80E254DB13D001664AB /* RemoteConfigService.swift */; };
+		D575C832254F10E1001664AB /* RemoteConfigServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C813254DB602001664AB /* RemoteConfigServiceDoubles.swift */; };
+		D575C837254F10F0001664AB /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = D575C836254F10F0001664AB /* FirebaseRemoteConfig */; };
 		D577EEA724E6F66400253EA1 /* BookingRequestApplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */; };
 		D58149E9251D262B0009BBB3 /* DotPageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58149E8251D262B0009BBB3 /* DotPageIndicator.swift */; };
 		D58149ED251D262F0009BBB3 /* Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E824F09C43000E8580 /* Dot.swift */; };
@@ -357,6 +364,9 @@
 		D5AC9E27254D8AD7003A8197 /* AppDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E25254D8AD7003A8197 /* AppDoubles.swift */; };
 		D5AC9E2C254D8AE2003A8197 /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E2B254D8AE2003A8197 /* AppLauncher.swift */; };
 		D5AC9E2D254D8AE2003A8197 /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E2B254D8AE2003A8197 /* AppLauncher.swift */; };
+		D5AC9E3B254D9533003A8197 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = D5AC9E3A254D9533003A8197 /* FirebaseRemoteConfig */; };
+		D5AC9E3F254D957D003A8197 /* RemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E3E254D957D003A8197 /* RemoteConfig.swift */; };
+		D5AC9E4A254DA0E7003A8197 /* RemoteConfigCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E49254DA0E7003A8197 /* RemoteConfigCoordinator.swift */; };
 		D5AFED3025047DFC003FFC68 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED2F25047DFC003FFC68 /* Activity.swift */; };
 		D5AFED3125047DFC003FFC68 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED2F25047DFC003FFC68 /* Activity.swift */; };
 		D5AFED3C25056300003FFC68 /* NotificationCenter+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED3B25056300003FFC68 /* NotificationCenter+Sugar.swift */; };
@@ -759,6 +769,8 @@
 		D56B253525322AE300BC3932 /* StripeSetupIntentLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeSetupIntentLink.swift; sourceTree = "<group>"; };
 		D56B253A2532433E00BC3932 /* ErrorText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorText.swift; sourceTree = "<group>"; };
 		D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberDoubles.swift; sourceTree = "<group>"; };
+		D575C80E254DB13D001664AB /* RemoteConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigService.swift; sourceTree = "<group>"; };
+		D575C813254DB602001664AB /* RemoteConfigServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigServiceDoubles.swift; sourceTree = "<group>"; };
 		D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestApplyView.swift; sourceTree = "<group>"; };
 		D58149E8251D262B0009BBB3 /* DotPageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotPageIndicator.swift; sourceTree = "<group>"; };
 		D58149F4251D6F770009BBB3 /* InteractiveBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveBackground.swift; sourceTree = "<group>"; };
@@ -790,6 +802,8 @@
 		D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowContainer.swift; sourceTree = "<group>"; };
 		D5AC9E25254D8AD7003A8197 /* AppDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDoubles.swift; sourceTree = "<group>"; };
 		D5AC9E2B254D8AE2003A8197 /* AppLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLauncher.swift; sourceTree = "<group>"; };
+		D5AC9E3E254D957D003A8197 /* RemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfig.swift; sourceTree = "<group>"; };
+		D5AC9E49254DA0E7003A8197 /* RemoteConfigCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigCoordinator.swift; sourceTree = "<group>"; };
 		D5AFED2F25047DFC003FFC68 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		D5AFED3B25056300003FFC68 /* NotificationCenter+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Sugar.swift"; sourceTree = "<group>"; };
 		D5AFED3E25057158003FFC68 /* VisibleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisibleView.swift; sourceTree = "<group>"; };
@@ -901,6 +915,7 @@
 				D535548123E0E7C1005A20EB /* SFSafeSymbols in Frameworks */,
 				D5D78DD7252502CE007041BE /* PhoneNumberKit in Frameworks */,
 				D535547723DF3A19005A20EB /* Valet in Frameworks */,
+				D5AC9E3B254D9533003A8197 /* FirebaseRemoteConfig in Frameworks */,
 				D585217624CF81CE005D783A /* Introspect in Frameworks */,
 				D5D97514252B9EB6000AD074 /* Stripe in Frameworks */,
 				D5FC2D44254A7DE3005056D5 /* FirebaseAuth in Frameworks */,
@@ -926,6 +941,7 @@
 				035B1CD5249CF7E200AABFEA /* Then in Frameworks */,
 				D5B880932547AFF600754197 /* Tagged in Frameworks */,
 				D585217824CF81E8005D783A /* Introspect in Frameworks */,
+				D575C837254F10F0001664AB /* FirebaseRemoteConfig in Frameworks */,
 				035B1D69249E645E00AABFEA /* APIKit in Frameworks */,
 				D5FC2D4D254A7E21005056D5 /* FirebaseAnalytics in Frameworks */,
 			);
@@ -1326,6 +1342,7 @@
 				D535547A23DF3E81005A20EB /* Keychain */,
 				D5217CED24E2D81B00C89018 /* MapOpener */,
 				03BB5CA02473467500B44692 /* PushNotifications */,
+				D5AC9E4E254DA113003A8197 /* RemoteConfig */,
 				03E88EB724C4B0F40077A420 /* Repository.swift */,
 				D5E987C324EEE20300E2E1AF /* Router */,
 				035AF30B2491A553004A01B2 /* UIAccessibility */,
@@ -1712,6 +1729,17 @@
 			path = UserDefaults;
 			sourceTree = "<group>";
 		};
+		D5AC9E4E254DA113003A8197 /* RemoteConfig */ = {
+			isa = PBXGroup;
+			children = (
+				D5AC9E3E254D957D003A8197 /* RemoteConfig.swift */,
+				D575C80E254DB13D001664AB /* RemoteConfigService.swift */,
+				D575C813254DB602001664AB /* RemoteConfigServiceDoubles.swift */,
+				D5AC9E49254DA0E7003A8197 /* RemoteConfigCoordinator.swift */,
+			);
+			path = RemoteConfig;
+			sourceTree = "<group>";
+		};
 		D5AFED3225047E17003FFC68 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
@@ -1893,6 +1921,7 @@
 				D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */,
 				D5FC2D41254A7DE3005056D5 /* FirebaseMessaging */,
 				D5FC2D43254A7DE3005056D5 /* FirebaseAuth */,
+				D5AC9E3A254D9533003A8197 /* FirebaseRemoteConfig */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -1928,6 +1957,7 @@
 				D5FC2D4E254A7E21005056D5 /* FirebaseAuth */,
 				D5FC2D50254A7E21005056D5 /* FirebaseCrashlytics */,
 				D5FC2D52254A7E21005056D5 /* FirebaseMessaging */,
+				D575C836254F10F0001664AB /* FirebaseRemoteConfig */,
 			);
 			productName = RythmicoTutor;
 			productReference = 035B1CBC249CF2AA00AABFEA /* Tutor.app */;
@@ -2267,6 +2297,7 @@
 				D56B25432533331A00BC3932 /* PhoneNumberDoubles.swift in Sources */,
 				D5BA171223D7AB3B00954D50 /* MainView.swift in Sources */,
 				D54EFF322514C847004F14D3 /* ExpandableText.swift in Sources */,
+				D5AC9E4A254DA0E7003A8197 /* RemoteConfigCoordinator.swift in Sources */,
 				03080EED2466FE21008715EE /* LessonPlan.swift in Sources */,
 				D5989BC62516833E00BED8A6 /* PortfolioVideoCarouselView.swift in Sources */,
 				D53555CF23E536AE005A20EB /* AppleAuthorizationCompletionDelegate.swift in Sources */,
@@ -2397,6 +2428,7 @@
 				033D47D1247777100096C50F /* LessonsView.swift in Sources */,
 				D585D5B12511299800B74091 /* LessonPlanApplicationDetailView.swift in Sources */,
 				03AAF6732445E11A002D8F5B /* ScheduleDoubles.swift in Sources */,
+				D575C80F254DB13D001664AB /* RemoteConfigService.swift in Sources */,
 				D501589A2538BE7C005E02FA /* Card.swift in Sources */,
 				D5F5065F240055E800CA4094 /* HeaderContentView.swift in Sources */,
 				03AB22F3244CB13200DAC7DF /* PrivateNoteView.swift in Sources */,
@@ -2480,6 +2512,7 @@
 				D5D9AE712534CAF000A0ABCC /* CheckoutDoubles.swift in Sources */,
 				03C39DDA2496DBC700C76516 /* LessonPlanDetailView.swift in Sources */,
 				D55F013024CCC57400E5F13C /* EnumProperties.swift in Sources */,
+				D5AC9E3F254D957D003A8197 /* RemoteConfig.swift in Sources */,
 				D56B2523252CF76300BC3932 /* AppSecrets.swift in Sources */,
 				03C39DD424967E5B00C76516 /* TitleContentView.swift in Sources */,
 				032B6FDB24B7890700299A09 /* ScheduleDuration+CasePickable.swift in Sources */,
@@ -2488,6 +2521,7 @@
 				D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */,
 				D5F506B62406360900CA4094 /* Student.swift in Sources */,
 				D516A8FF253A1D6A002E6EDF /* ConfirmationView.swift in Sources */,
+				D575C814254DB602001664AB /* RemoteConfigServiceDoubles.swift in Sources */,
 				D58149ED251D262F0009BBB3 /* Dot.swift in Sources */,
 				D53555BF23E53699005A20EB /* AuthenticationAccessTokenProviderBroadcast.swift in Sources */,
 				03A8116E241D1DAF0091B9ED /* StudentDoubles.swift in Sources */,
@@ -2533,6 +2567,7 @@
 				D5F4D3E524F0475F000E8580 /* BookingApplicationDoubles.swift in Sources */,
 				035B1D39249E576900AABFEA /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
 				D52C554824DDC60900C295C4 /* FloatingView+Tutor.swift in Sources */,
+				D575C830254F10E1001664AB /* RemoteConfig.swift in Sources */,
 				D5F4D3E724F096A2000E8580 /* BookingApplicationDetailView.swift in Sources */,
 				035B1D42249E577700AABFEA /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
 				035B1D62249E63D800AABFEA /* DeviceEndpoints.swift in Sources */,
@@ -2569,6 +2604,7 @@
 				035B1D13249E563A00AABFEA /* OnboardingView.swift in Sources */,
 				035B1D3F249E577700AABFEA /* AppleAuthorizationCredentialDoubles.swift in Sources */,
 				035B1D66249E643400AABFEA /* DeviceTokenDeleterDoubles.swift in Sources */,
+				D575C831254F10E1001664AB /* RemoteConfigService.swift in Sources */,
 				D524D0C525046BAE00BC9AF7 /* PushNotificationRegisterServiceDoubles.swift in Sources */,
 				D524D0C425046BA900BC9AF7 /* PushNotificationRegisterService.swift in Sources */,
 				035B1D52249E57FD00AABFEA /* Spacing.swift in Sources */,
@@ -2615,6 +2651,7 @@
 				035B1D4F249E57DC00AABFEA /* UIAccessibilityDoubles.swift in Sources */,
 				035B1D49249E577700AABFEA /* AppleAuthorizationControllerDoubles.swift in Sources */,
 				035B1D3C249E576900AABFEA /* AuthenticationAccessTokenProviderBroadcast.swift in Sources */,
+				D575C82F254F10E1001664AB /* RemoteConfigCoordinator.swift in Sources */,
 				D5F4D3F324F32EBE000E8580 /* BookingApplicationSection.swift in Sources */,
 				035B1D47249E577700AABFEA /* AppleAuthorizationServiceDoubles.swift in Sources */,
 				D5AFED4025057158003FFC68 /* VisibleView.swift in Sources */,
@@ -2638,6 +2675,7 @@
 				D5F4D3F724F3476F000E8580 /* AddressMapCell.swift in Sources */,
 				D5F4D3FB24F7120E000E8580 /* GroupedButton.swift in Sources */,
 				035B1D4B249E578D00AABFEA /* Keychain.swift in Sources */,
+				D575C832254F10E1001664AB /* RemoteConfigServiceDoubles.swift in Sources */,
 				D5CC5FEB24FF1201007DFE84 /* UIImage+Sugar.swift in Sources */,
 				D5919F7224CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */,
 				D52C553D24DC74A200C295C4 /* TitleCell.swift in Sources */,
@@ -3367,6 +3405,11 @@
 			package = D56544D124CE4BA100281875 /* XCRemoteSwiftPackageReference "ViewInspector" */;
 			productName = ViewInspector;
 		};
+		D575C836254F10F0001664AB /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
 		D585217524CF81CE005D783A /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D585217424CF81CE005D783A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
@@ -3376,6 +3419,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D585217424CF81CE005D783A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
+		};
+		D5AC9E3A254D9533003A8197 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
 		};
 		D5B880922547AFF600754197 /* Tagged */ = {
 			isa = XCSwiftPackageProductDependency;
