@@ -16,7 +16,7 @@ struct AuthorizationAppleIDButton: View {
     var body: some View {
         Button(action: action) {
             SignInWithAppleButton(type, onRequest: { _ in }, onCompletion: { _ in })
-                .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .white)
+                .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
                 .allowsHitTesting(false)
         }
         .frame(maxWidth: Const.maxWidth)
