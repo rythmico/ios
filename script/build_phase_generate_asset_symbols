@@ -6,6 +6,6 @@ if ! which swiftgen > /dev/null; then
 fi
 
 swiftgen run xcassets \
-    Rythmico/Supporting\ Files/Assets.xcassets \
+    "$TARGET_NAME/Supporting Files/Assets.xcassets" \
     --templateName swift4 \
-    --output Rythmico/Supporting\ Files/Assets.generated.swift
+    --output "$TARGET_NAME/Supporting Files/Assets.generated.swift"

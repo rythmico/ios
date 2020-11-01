@@ -321,6 +321,7 @@
 		D575C831254F10E1001664AB /* RemoteConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C80E254DB13D001664AB /* RemoteConfigService.swift */; };
 		D575C832254F10E1001664AB /* RemoteConfigServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C813254DB602001664AB /* RemoteConfigServiceDoubles.swift */; };
 		D575C837254F10F0001664AB /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = D575C836254F10F0001664AB /* FirebaseRemoteConfig */; };
+		D575C84E254F29BD001664AB /* Assets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C84D254F29BD001664AB /* Assets.generated.swift */; };
 		D577EEA724E6F66400253EA1 /* BookingRequestApplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */; };
 		D58149E9251D262B0009BBB3 /* DotPageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58149E8251D262B0009BBB3 /* DotPageIndicator.swift */; };
 		D58149ED251D262F0009BBB3 /* Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E824F09C43000E8580 /* Dot.swift */; };
@@ -771,6 +772,7 @@
 		D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberDoubles.swift; sourceTree = "<group>"; };
 		D575C80E254DB13D001664AB /* RemoteConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigService.swift; sourceTree = "<group>"; };
 		D575C813254DB602001664AB /* RemoteConfigServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigServiceDoubles.swift; sourceTree = "<group>"; };
+		D575C84D254F29BD001664AB /* Assets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.generated.swift; sourceTree = "<group>"; };
 		D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestApplyView.swift; sourceTree = "<group>"; };
 		D58149E8251D262B0009BBB3 /* DotPageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotPageIndicator.swift; sourceTree = "<group>"; };
 		D58149F4251D6F770009BBB3 /* InteractiveBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveBackground.swift; sourceTree = "<group>"; };
@@ -1100,6 +1102,7 @@
 			isa = PBXGroup;
 			children = (
 				035B1CC4249CF2AC00AABFEA /* Assets.xcassets */,
+				D575C84D254F29BD001664AB /* Assets.generated.swift */,
 				035B1CC9249CF2AC00AABFEA /* LaunchScreen.storyboard */,
 				035B1D6A249E662200AABFEA /* EnumProperties.swift */,
 				035B1D5F249E608E00AABFEA /* Tutor.entitlements */,
@@ -1610,7 +1613,6 @@
 				D53554F723E0FD77005A20EB /* Sugar.h */,
 				D53554F823E0FD77005A20EB /* Info.plist */,
 				D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */,
-				D516A928253A554F002E6EDF /* AssetImage+Sugar.swift */,
 				D5C23A79240F2DEB007DED63 /* Bool+Sugar.swift */,
 				0365F6F22417EE4100F452AC /* Character+Sugar.swift */,
 				D5FD6F1124096FB5008C5AD4 /* Collection+Sugar.swift */,
@@ -1931,6 +1933,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 035B1CCD249CF2AC00AABFEA /* Build configuration list for PBXNativeTarget "RythmicoTutor" */;
 			buildPhases = (
+				D575C852254F2A3D001664AB /* Generate Asset Symbols */,
 				D5CC5FF725040F9A007DFE84 /* Sanity Check Sources */,
 				035B1CB8249CF2AA00AABFEA /* Sources */,
 				035B1CB9249CF2AA00AABFEA /* Frameworks */,
@@ -2179,6 +2182,27 @@
 			shellPath = /bin/sh;
 			shellScript = "${SRCROOT}/script/build_phase_select_google_info_plist\n";
 		};
+		D575C852254F2A3D001664AB /* Generate Asset Symbols */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/${TARGET_NAME}/Supporting Files/Assets.xcassets",
+			);
+			name = "Generate Asset Symbols";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/${TARGET_NAME}/Supporting Files/Assets.generated.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/script/build_phase_generate_asset_symbols\n";
+		};
 		D5AC9E16254C2F8D003A8197 /* Strip Firebase Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -2226,13 +2250,13 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Rythmico/Supporting Files/Assets.xcassets",
+				"$(SRCROOT)/${TARGET_NAME}/Supporting Files/Assets.xcassets",
 			);
 			name = "Generate Asset Symbols";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(SRCROOT)/Rythmico/Supporting Files/Assets.generated.swift",
+				"$(SRCROOT)/${TARGET_NAME}/Supporting Files/Assets.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2595,6 +2619,7 @@
 				035B1D60249E63CD00AABFEA /* DeviceTokenProvider.swift in Sources */,
 				035B1D3D249E576900AABFEA /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */,
 				035B1D61249E63D400AABFEA /* DeviceTokenDeleter.swift in Sources */,
+				D575C84E254F29BD001664AB /* Assets.generated.swift in Sources */,
 				03E88EB824C4B0F40077A420 /* Repository.swift in Sources */,
 				D527B01224FE92DA003E81A9 /* ActivityDoubles.swift in Sources */,
 				D5BF12C72507D78800B2931C /* RouterDoubles.swift in Sources */,
