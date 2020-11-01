@@ -11,7 +11,6 @@ final class RemoteConfigCoordinator: ObservableObject {
 
     func fetch(forced: Bool = false) {
         service.fetch(forced: forced) { [self] in
-            print("Is app update required: \(Current.remoteConfig.appUpdateRequired)")
             wasFetched = true
         }
     }

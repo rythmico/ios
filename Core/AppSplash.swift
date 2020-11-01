@@ -53,7 +53,7 @@ private struct AppSplashTitleModifier: ViewModifier {
     #elseif TUTOR
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 28, weight: .bold))
+            .font(Font.system(.largeTitle).bold())
     }
     #endif
 }
