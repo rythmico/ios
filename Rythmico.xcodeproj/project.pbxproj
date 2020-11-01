@@ -113,7 +113,6 @@
 		035B1D66249E643400AABFEA /* DeviceTokenDeleterDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE82490769E009C3980 /* DeviceTokenDeleterDoubles.swift */; };
 		035B1D67249E644C00AABFEA /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336D62B241EAAF6006CFC1F /* APIRequest.swift */; };
 		035B1D69249E645E00AABFEA /* APIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1D68249E645E00AABFEA /* APIKit */; };
-		035B1D6B249E662200AABFEA /* EnumProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D6A249E662200AABFEA /* EnumProperties.swift */; };
 		035B1D6D249E674000AABFEA /* GoogleService-Info-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = 035B1D6C249E674000AABFEA /* GoogleService-Info-Release.plist */; };
 		035B1D73249E6AEB00AABFEA /* MainViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D08249D115B00AABFEA /* MainViewTests.swift */; };
 		035B1D74249E6B2D00AABFEA /* XCTAssertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147507240C8E69002EE20C /* XCTAssertView.swift */; };
@@ -302,7 +301,6 @@
 		D55F012D24CCBE8E00E5F13C /* APIServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB924C6232D0077A420 /* APIServiceDoubles.swift */; };
 		D55F012E24CCBECE00E5F13C /* APIActivityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB524C4AD820077A420 /* APIActivityCoordinator.swift */; };
 		D55F012F24CCC4D300E5F13C /* ActivityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EBB24C709A00077A420 /* ActivityCoordinator.swift */; };
-		D55F013024CCC57400E5F13C /* EnumProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D6A249E662200AABFEA /* EnumProperties.swift */; };
 		D55F013124CCCEDE00E5F13C /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB724C4B0F40077A420 /* Repository.swift */; };
 		D55F013324CCE65C00E5F13C /* Then+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55F013224CCE65C00E5F13C /* Then+Sugar.swift */; };
 		D55F013424CCE65C00E5F13C /* Then+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55F013224CCE65C00E5F13C /* Then+Sugar.swift */; };
@@ -323,6 +321,12 @@
 		D575C837254F10F0001664AB /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = D575C836254F10F0001664AB /* FirebaseRemoteConfig */; };
 		D575C84E254F29BD001664AB /* Assets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C84D254F29BD001664AB /* Assets.generated.swift */; };
 		D575C869254F2F26001664AB /* ImageAsset+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D516A928253A554F002E6EDF /* ImageAsset+Sugar.swift */; };
+		D575C86E254F2F82001664AB /* ActivityCoordinator+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C86D254F2F82001664AB /* ActivityCoordinator+Sugar.swift */; };
+		D575C86F254F2F82001664AB /* ActivityCoordinator+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C86D254F2F82001664AB /* ActivityCoordinator+Sugar.swift */; };
+		D575C877254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C876254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift */; };
+		D575C878254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C876254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift */; };
+		D575C880254F2FF7001664AB /* RootView+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C87F254F2FF7001664AB /* RootView+Sugar.swift */; };
+		D575C881254F2FF7001664AB /* RootView+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C87F254F2FF7001664AB /* RootView+Sugar.swift */; };
 		D577EEA724E6F66400253EA1 /* BookingRequestApplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */; };
 		D58149E9251D262B0009BBB3 /* DotPageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58149E8251D262B0009BBB3 /* DotPageIndicator.swift */; };
 		D58149ED251D262F0009BBB3 /* Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E824F09C43000E8580 /* Dot.swift */; };
@@ -609,7 +613,6 @@
 		035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
 		035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		035B1D5F249E608E00AABFEA /* Tutor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tutor.entitlements; sourceTree = "<group>"; };
-		035B1D6A249E662200AABFEA /* EnumProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumProperties.swift; sourceTree = "<group>"; };
 		035B1D6C249E674000AABFEA /* GoogleService-Info-Release.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Release.plist"; sourceTree = "<group>"; };
 		035B1D75249E6D0100AABFEA /* OnboardingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewTests.swift; sourceTree = "<group>"; };
 		035B1D77249E6D3B00AABFEA /* RootViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewTests.swift; sourceTree = "<group>"; };
@@ -774,6 +777,9 @@
 		D575C80E254DB13D001664AB /* RemoteConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigService.swift; sourceTree = "<group>"; };
 		D575C813254DB602001664AB /* RemoteConfigServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigServiceDoubles.swift; sourceTree = "<group>"; };
 		D575C84D254F29BD001664AB /* Assets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.generated.swift; sourceTree = "<group>"; };
+		D575C86D254F2F82001664AB /* ActivityCoordinator+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityCoordinator+Sugar.swift"; sourceTree = "<group>"; };
+		D575C876254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationAuthorizationCoordinator+Sugar.swift"; sourceTree = "<group>"; };
+		D575C87F254F2FF7001664AB /* RootView+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RootView+Sugar.swift"; sourceTree = "<group>"; };
 		D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestApplyView.swift; sourceTree = "<group>"; };
 		D58149E8251D262B0009BBB3 /* DotPageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotPageIndicator.swift; sourceTree = "<group>"; };
 		D58149F4251D6F770009BBB3 /* InteractiveBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveBackground.swift; sourceTree = "<group>"; };
@@ -1105,7 +1111,6 @@
 				035B1CC4249CF2AC00AABFEA /* Assets.xcassets */,
 				D575C84D254F29BD001664AB /* Assets.generated.swift */,
 				035B1CC9249CF2AC00AABFEA /* LaunchScreen.storyboard */,
-				035B1D6A249E662200AABFEA /* EnumProperties.swift */,
 				035B1D5F249E608E00AABFEA /* Tutor.entitlements */,
 				035B1CCC249CF2AC00AABFEA /* Info.plist */,
 				035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */,
@@ -1288,6 +1293,7 @@
 				03275ADA249004C0009C3980 /* PushNotificationRegisterServiceDoubles.swift */,
 				03B198552471BD6C005529EB /* PushNotificationAuthorizationCoordinator.swift */,
 				03A91EF7249189E000DEAD5E /* PushNotificationAuthorizationCoordinatorDoubles.swift */,
+				D575C876254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift */,
 				D5BF12BA2506926900B2931C /* PushNotificationEventHandler.swift */,
 				D5BF12BD2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift */,
 				D5BF12B82506924300B2931C /* PushNotificationEventHandler+Rythmico.swift */,
@@ -1459,6 +1465,7 @@
 				03C39DD52496802500C76516 /* Pill.swift */,
 				03A3F6E42447B7BD00F6391D /* PreviewDevices.swift */,
 				D5EF88B523FB706C0072BD03 /* ProgressBar.swift */,
+				D575C87F254F2FF7001664AB /* RootView+Sugar.swift */,
 				D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */,
 				D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */,
 				D5F50662240056FA00CA4094 /* RoundedThinOutlineContainer.swift */,
@@ -1757,6 +1764,7 @@
 			isa = PBXGroup;
 			children = (
 				03E88EBB24C709A00077A420 /* ActivityCoordinator.swift */,
+				D575C86D254F2F82001664AB /* ActivityCoordinator+Sugar.swift */,
 				D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */,
 			);
 			path = ActivityCoordinator;
@@ -2330,6 +2338,7 @@
 				D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */,
 				D53555C623E536AE005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,
 				03B1984124717AE8005529EB /* AddressDoubles.swift in Sources */,
+				D575C877254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift in Sources */,
 				D53555BD23E53699005A20EB /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */,
 				D5B57A712419F79700BE9B4F /* SectionHeaderView.swift in Sources */,
 				D53555C323E536AE005A20EB /* AppleAuthorizationCredentialStateProvider.swift in Sources */,
@@ -2393,6 +2402,7 @@
 				D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */,
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
 				032B6FD024B787BB00299A09 /* Gender.swift in Sources */,
+				D575C86E254F2F82001664AB /* ActivityCoordinator+Sugar.swift in Sources */,
 				D5D9AE682533ADA400A0ABCC /* Checkout.swift in Sources */,
 				D501588525376EC0005E02FA /* DismissKeyboardTooltip.swift in Sources */,
 				D501585C25373D5A005E02FA /* CardSetupService.swift in Sources */,
@@ -2403,6 +2413,7 @@
 				D5AFED3025047DFC003FFC68 /* Activity.swift in Sources */,
 				D5E987BC24EDE92E00E2E1AF /* Router.swift in Sources */,
 				D5C23A7C240FEF30007DED63 /* TapView.swift in Sources */,
+				D575C880254F2FF7001664AB /* RootView+Sugar.swift in Sources */,
 				D5F506652400619600CA4094 /* UIApplication+KeyboardDismisser.swift in Sources */,
 				D5AAF7D723F9E20C00E410F2 /* Instrument.swift in Sources */,
 				D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */,
@@ -2537,7 +2548,6 @@
 				D58824C4251A6D49000820F4 /* LessonsCollectionView.swift in Sources */,
 				D5D9AE712534CAF000A0ABCC /* CheckoutDoubles.swift in Sources */,
 				03C39DDA2496DBC700C76516 /* LessonPlanDetailView.swift in Sources */,
-				D55F013024CCC57400E5F13C /* EnumProperties.swift in Sources */,
 				D5AC9E3F254D957D003A8197 /* RemoteConfig.swift in Sources */,
 				D56B2523252CF76300BC3932 /* AppSecrets.swift in Sources */,
 				03C39DD424967E5B00C76516 /* TitleContentView.swift in Sources */,
@@ -2660,6 +2670,7 @@
 				D5AFED4325057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */,
 				035B1D38249E576900AABFEA /* AuthenticationAccessTokenProvider.swift in Sources */,
 				035B1D3A249E576900AABFEA /* AuthenticationAccessTokenProviderObserver.swift in Sources */,
+				D575C878254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift in Sources */,
 				03C34360249E7218004907DF /* Alert+Error.swift in Sources */,
 				D52C555024E2ABFC00C295C4 /* MapOpener.swift in Sources */,
 				D524D0C325046B9800BC9AF7 /* UNUserNotificationCenterDoubles.swift in Sources */,
@@ -2690,6 +2701,8 @@
 				D5BF12B025068E2100B2931C /* PushNotificationEvent+Tutor.swift in Sources */,
 				D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */,
 				D5CAC9AE24E6D67C00119DAA /* MultilineTextField+Tutor.swift in Sources */,
+				D575C881254F2FF7001664AB /* RootView+Sugar.swift in Sources */,
+				D575C86F254F2F82001664AB /* ActivityCoordinator+Sugar.swift in Sources */,
 				035B1D15249E565200AABFEA /* TestableView.swift in Sources */,
 				03E88EAF24C1F74D0077A420 /* AppExtensions.swift in Sources */,
 				D54F711125474E6F00D73E1E /* AppState.swift in Sources */,
@@ -2699,7 +2712,6 @@
 				D54F71182547523100D73E1E /* DismissKeyboardTooltip.swift in Sources */,
 				D5CC5FF225029525007DFE84 /* ImageReference.swift in Sources */,
 				035B1CF1249CF9FA00AABFEA /* App+LaunchScreenCache.swift in Sources */,
-				035B1D6B249E662200AABFEA /* EnumProperties.swift in Sources */,
 				D5F4D3F724F3476F000E8580 /* AddressMapCell.swift in Sources */,
 				D5F4D3FB24F7120E000E8580 /* GroupedButton.swift in Sources */,
 				035B1D4B249E578D00AABFEA /* Keychain.swift in Sources */,
