@@ -5,6 +5,7 @@ import Then
 extension App {
     static let logo = Asset.appLogo
     static let name = "Rythmico"
+    static let slogan = "Turning kids into the festival headliners of tomorrow"
 
     static func didFinishLaunching() {
         Stripe.setDefaultPublishableKey(AppSecrets.stripePublishableKey)
