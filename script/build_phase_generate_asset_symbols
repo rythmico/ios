@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-if ! which swiftgen > /dev/null; then
-    HOMEBREW_NO_AUTO_UPDATE=1 \
-    brew install swiftgen
-fi
-
 swiftgen run xcassets \
     "$SRCROOT/$TARGET_NAME/Supporting Files/Assets.xcassets" \
     --templateName swift4 \
