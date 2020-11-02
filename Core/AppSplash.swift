@@ -37,7 +37,7 @@ struct AppSplash: View {
         ZStack {
             Color(.systemBackground)
             VStack(spacing: .spacingLarge) {
-                Image(uiImage: image.image)
+                Image(decorative: image.name)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 68)
