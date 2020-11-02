@@ -2,42 +2,94 @@ import SwiftUI
 
 extension Button {
     func primaryStyle(expansive: Bool = true) -> some View {
-        buttonStyle(PrimaryButtonStyle(expansive: expansive))
+        buttonStyle(
+            RythmicoButtonStyle(
+                expansive: expansive,
+                foregroundColor: (normal: .white, pressed: .white),
+                backgroundColor: (normal: .blue, pressed: .blue),
+                borderColor: (normal: .clear, pressed: .clear),
+                dimOnPress: true
+            )
+        )
+    }
+
+    func secondaryStyle(expansive: Bool = true) -> some View {
+        buttonStyle(
+            RythmicoButtonStyle(
+                expansive: expansive,
+                foregroundColor: (normal: .blue, pressed: .white),
+                backgroundColor: (normal: .clear, pressed: .blue),
+                borderColor: (normal: .blue, pressed: .blue),
+                dimOnPress: false
+            )
+        )
     }
 }
 
-struct PrimaryButtonStyle: ButtonStyle {
+private struct RythmicoButtonStyle: ButtonStyle {
+    typealias StateColors = (normal: Color, pressed: Color)
+
     var expansive: Bool
+    let buttonMaxWidth = .spacingUnit * 85
+    var foregroundColor: StateColors
+    var backgroundColor: StateColors
+    var borderColor: StateColors
+    var dimOnPress: Bool
 
     func makeBody(configuration: Configuration) -> some View {
-        DisableableButton {
-            configuration.label
-                .lineLimit(1)
-                .minimumScaleFactor(0.6)
-                .padding(.horizontal, .spacingMedium)
-                .font(Font.body.bold())
-                .foregroundColor(.white)
-                .frame(maxWidth: expansive ? .infinity : nil, minHeight: 50)
-                .background(
-                    RoundedRectangle(cornerRadius: .spacingUnit * 2, style: .continuous).fill(Color.blue)
-                )
-                .opacity(configuration.isPressed ? 0.3 : 1)
-        }
+        configuration.label
+            .lineLimit(1)
+            .minimumScaleFactor(0.6)
+            .padding(.horizontal, .spacingMedium)
+            .font(Font.body.bold())
+            .foregroundColor(color(from: foregroundColor, for: configuration))
+            .frame(maxWidth: expansive ? buttonMaxWidth : nil, minHeight: 48)
+            .background(
+                RoundedRectangle(cornerRadius: .spacingUnit * 2, style: .continuous)
+                    .fill(color(from: backgroundColor, for: configuration))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: .spacingUnit * 2, style: .continuous)
+                            .stroke(color(from: borderColor, for: configuration), lineWidth: 2)
+                    )
+                    .contentShape(Rectangle())
+            )
+            .modifier(DiseableableButtonModifier())
+            .opacity(configuration.isPressed && dimOnPress ? 0.3 : 1)
+    }
+
+    func color(from colors: StateColors, for configuration: Configuration) -> Color {
+        configuration.isPressed ? colors.pressed : colors.normal
     }
 }
 
-private struct DisableableButton<Button: View>: View {
+private struct DiseableableButtonModifier: ViewModifier {
     @Environment(\.isEnabled) private var isEnabled: Bool
 
-    var button: Button
-
-    init(@ViewBuilder button: () -> Button) {
-        self.button = button()
-    }
-
-    var body: some View {
-        button
-            .opacity(isEnabled ? 1 : 0.5)
+    func body(content: Content) -> some View {
+        content
+            .opacity(isEnabled ? 1 : 0.3)
             .animation(.easeInOut(duration: .durationShort), value: isEnabled)
     }
 }
+
+#if DEBUG
+struct Buttons_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            VStack(spacing: .spacingSmall) {
+                Button("Next", action: {}).primaryStyle(expansive: false)
+                Button("Next", action: {}).primaryStyle()
+                Button("Next", action: {}).primaryStyle().disabled(true)
+            }
+
+            VStack(spacing: .spacingSmall) {
+                Button("Next", action: {}).secondaryStyle(expansive: false)
+                Button("Next", action: {}).secondaryStyle()
+                Button("Next", action: {}).secondaryStyle().disabled(true)
+            }
+        }
+        .previewLayout(.sizeThatFits)
+        .padding()
+    }
+}
+#endif
