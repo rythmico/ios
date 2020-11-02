@@ -1,24 +1,50 @@
 import SwiftUI
 
-struct AppSplash: View {
+struct AnimatedAppSplash: View {
     enum Const {
-        static let animationDuration: TimeInterval = 0.2
-        static let animationDelay: TimeInterval = 0.3 // must be over 0.18
+        static let animationDuration: TimeInterval = 0.25
+        static let animationDelay: TimeInterval = 0.25 // must be over 0.18
     }
 
     var image: ImageAsset
     var title: String
 
+    @State private var isShowingTitle = false
+
+    var body: some View {
+        AppSplash(
+            image: image,
+            title: title,
+            titleHidden: !isShowingTitle
+        )
+        .onAppear(perform: showTitle)
+    }
+
+    func showTitle() {
+        let animation = Animation
+            .rythmicoSpring(duration: Const.animationDuration)
+            .delay(Const.animationDelay)
+        withAnimation(animation) { isShowingTitle = true }
+    }
+}
+
+struct AppSplash: View {
+    var image: ImageAsset
+    var title: String
+    var titleHidden: Bool = false
+
     var body: some View {
         ZStack {
             Color(.systemBackground)
             VStack(spacing: .spacingLarge) {
-                Image(image.name)
+                Image(uiImage: image.image)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 68)
-                if isShowingTitle {
+                if !titleHidden {
                     Text(title)
+                        .multilineTextAlignment(.center)
+                        .lineSpacing(.spacingUnit)
                         .modifier(AppSplashTitleModifier())
                         .transition(
                             AnyTransition
@@ -29,17 +55,6 @@ struct AppSplash: View {
             }
         }
         .edgesIgnoringSafeArea(.all)
-        .transition(.opacity)
-        .onAppear(perform: showTitle)
-    }
-
-    @State private var isShowingTitle = false
-
-    func showTitle() {
-        let animation = Animation
-            .rythmicoSpring(duration: Const.animationDuration)
-            .delay(Const.animationDelay)
-        withAnimation(animation) { isShowingTitle = true }
     }
 }
 

@@ -3,7 +3,7 @@ import SwiftUI
 struct App: SwiftUI.App {
     private enum Const {
         static let launchScreenDebugMode = false
-        static let launchScreenFadeOutDelay = AppSplash.Const.animationDuration * 1.8
+        static let launchScreenFadeOutDelay = AnimatedAppSplash.Const.animationDuration * 2
     }
 
     @UIApplicationDelegateAdaptor(Delegate.self)
@@ -33,9 +33,11 @@ struct App: SwiftUI.App {
         WindowGroup {
             ZStack {
                 if shouldShowSplash {
-                    AppSplash(image: App.logo, title: App.name).zIndex(.greatestFiniteMagnitude)
+                    AnimatedAppSplash(image: App.logo, title: App.name)
+                        .transition(.blendingOpacity)
                 } else {
                     RootView()
+                        .transition(.blendingOpacity)
                         .onEvent(.sizeCategoryChanged, perform: refreshAppearance)
                         .onEvent(.appInBackground, perform: didEnterBackground)
                 }
