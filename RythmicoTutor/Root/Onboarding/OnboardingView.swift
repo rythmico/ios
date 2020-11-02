@@ -7,7 +7,7 @@ struct OnboardingView: View, TestableView {
     var isAppleAuthorizationButtonEnabled: Bool { !isLoading }
 
     @State
-    var errorMessage: String?
+    private(set) var errorMessage: String?
 
     func dismissError() { errorMessage = nil }
 
