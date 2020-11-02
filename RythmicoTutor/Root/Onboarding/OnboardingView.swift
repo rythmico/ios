@@ -14,20 +14,9 @@ struct OnboardingView: View, TestableView {
     let inspection = SelfInspection()
     var body: some View {
         ZStack {
-            Color(.systemBackground).edgesIgnoringSafeArea(.all)
-            VStack(spacing: .spacingSmall) {
-                VStack(spacing: .spacingSmall) {
-                    Text("Rythmico Tutor")
-                        .font(Font.system(.largeTitle).bold())
-                        .multilineTextAlignment(.center)
-                    Text("Turning kids into the festival headliners of tomorrow")
-                        .font(Font.system(.body))
-                        .foregroundColor(.gray)
-                        .multilineTextAlignment(.center)
-                }
-                .frame(maxHeight: .infinity, alignment: .top)
-                .accessibilityElement(children: .combine)
-
+            AppSplash(image: App.logo, title: App.name)
+            VStack(spacing: 0) {
+                Spacer()
                 if isLoading {
                     ActivityIndicator()
                         .frame(width: 44, height: 44)
