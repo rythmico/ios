@@ -29,7 +29,7 @@ struct AppUpdatePrompt: View {
     var body: some View {
         NavigationView {
             VStack(spacing: .spacingSmall) {
-                Text("Please download the latest version of \(App.name) to access all the latest features.")
+                Text("Please download the latest version of \(App.name) to be able to continue.")
                     .modifier(AppUpdatePromptDescriptionModifier())
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 if shouldShowUpdateButton {
