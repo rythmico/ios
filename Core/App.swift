@@ -35,6 +35,9 @@ struct App: SwiftUI.App {
                 if shouldShowSplash {
                     AnimatedAppSplash(image: App.logo, title: App.name)
                         .transition(.blendingOpacity)
+                } else if Current.remoteConfig.appUpdateRequired {
+                    AppUpdatePrompt(appId: App.id, method: App.distributionMethod)
+                        .transition(.blendingOpacity)
                 } else {
                     RootView()
                         .transition(.blendingOpacity)
