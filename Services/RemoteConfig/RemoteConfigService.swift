@@ -15,7 +15,7 @@ final class RemoteConfig: RemoteConfigServiceProtocol {
         #else
         static let minimumFetchInterval: TimeInterval = 12 * 3600 // 12h (recommended)
         #endif
-        static let fetchTimeout: TimeInterval = 3.5 // seconds
+        static let fetchTimeout: TimeInterval = 4 // seconds
     }
 
     private let config = FIRRemoteConfig.remoteConfig().then {
