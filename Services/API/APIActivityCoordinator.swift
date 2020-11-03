@@ -62,7 +62,7 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
         switch error.errorType {
         case .appOutdated:
             remoteConfigCoordinator.fetch(forced: true)
-        case .none:
+        case .unknown, .none:
             break
         }
         finish(.failure(error))
