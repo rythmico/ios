@@ -98,6 +98,7 @@ extension ActivityCoordinator where Input == Void {
     func runToIdle() { runToIdle(with: ()) }
 }
 
+// TODO: abstract Error to be able to identify error types and show different alerts.
 class FailableActivityCoordinator<Input, Success>: ActivityCoordinator<Input, Result<Success, Error>> {
     override func idle() {
         if case .finished(let result) = state, case .success = result {

@@ -1,5 +1,6 @@
 import UIKit
 import Then
+import enum APIKit.SessionTaskError
 
 extension AppEnvironment {
     func calendar() -> Calendar {
@@ -71,6 +72,7 @@ extension AppEnvironment {
         let coordinator = APIActivityCoordinator(
             accessTokenProvider: currentProvider,
             deauthenticationService: deauthenticationService,
+            remoteConfigCoordinator: remoteConfigCoordinator,
             service: self[keyPath: service]
         )
         coordinatorMap[service] = coordinator
@@ -79,7 +81,12 @@ extension AppEnvironment {
 
     func coordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
         accessTokenProviderObserver.currentProvider.map {
-            APIActivityCoordinator(accessTokenProvider: $0, deauthenticationService: deauthenticationService, service: self[keyPath: service])
+            APIActivityCoordinator(
+                accessTokenProvider: $0,
+                deauthenticationService: deauthenticationService,
+                remoteConfigCoordinator: remoteConfigCoordinator,
+                service: self[keyPath: service]
+            )
         }
     }
 
@@ -181,7 +188,7 @@ extension AppEnvironment {
 
     static var fakeAPIServicesDelay: TimeInterval? = nil
     static func fakeAPIService<R: AuthorizedAPIRequest>(result: Result<R.Response, Error>) -> APIServiceStub<R> {
-        APIServiceStub(result: result, delay: fakeAPIServicesDelay)
+        APIServiceStub(result: result.mapError { .responseError($0) }, delay: fakeAPIServicesDelay)
     }
 
     private static let fakeReferenceDate = Date()

@@ -47,5 +47,9 @@ extension JSONEncodableBodyParameters {
 }
 
 struct RythmicoAPIError: LocalizedError, Decodable {
+    enum ErrorType: String, Decodable {
+        case appOutdated = "APP_OUTDATED"
+    }
+    var errorType: ErrorType?
     var errorDescription: String?
 }

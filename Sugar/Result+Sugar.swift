@@ -4,6 +4,12 @@ extension Result where Success == Void {
     public static var success: Result { .success(()) }
 }
 
+extension Result {
+    public func eraseError() -> Result<Success, Error> {
+        mapError { $0 as Error }
+    }
+}
+
 public protocol AnyResult {
     associatedtype Success
     associatedtype Failure

@@ -2,10 +2,10 @@ import Foundation
 import APIKit
 
 final class APIServiceStub<Request: AuthorizedAPIRequest>: APIServiceBase<Request> {
-    var result: Result<Response, Error>
+    var result: Result
     var delay: TimeInterval?
 
-    init(result: Result<Response, Error>, delay: TimeInterval? = nil) {
+    init(result: Result, delay: TimeInterval? = nil) {
         self.result = result
         self.delay = delay
     }
@@ -26,9 +26,9 @@ final class APIServiceSpy<Request: AuthorizedAPIRequest>: APIServiceBase<Request
     private(set) var sendCount = 0
     private(set) var latestRequest: Request?
 
-    var result: Result<Response, Error>?
+    var result: Result?
 
-    init(result: Result<Response, Error>? = nil) {
+    init(result: Result? = nil) {
         self.result = result
     }
 

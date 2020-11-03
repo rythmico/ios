@@ -6,15 +6,18 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
 
     private let accessTokenProvider: AuthenticationAccessTokenProvider
     private let deauthenticationService: DeauthenticationServiceProtocol
+    private let remoteConfigCoordinator: RemoteConfigCoordinator
     private let service: Service
 
     init(
         accessTokenProvider: AuthenticationAccessTokenProvider,
         deauthenticationService: DeauthenticationServiceProtocol,
+        remoteConfigCoordinator: RemoteConfigCoordinator,
         service: Service
     ) {
         self.accessTokenProvider = accessTokenProvider
         self.deauthenticationService = deauthenticationService
+        self.remoteConfigCoordinator = remoteConfigCoordinator
         self.service = service
     }
 
@@ -35,21 +38,34 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
         }
     }
 
-    private func handleRequestResult(_ result: Result<Request.Response, Error>) {
+    private func handleRequestResult(_ result: Service.Result) {
         switch result {
         case .success:
-            finish(result)
+            finish(result.eraseError()) // TODO: stop erasing when FailableActivityCoordinator abstracts Error
         case .failure(let error):
             handleRequestError(error)
         }
     }
 
     private func handleRequestError(_ error: Error) {
-        if let error = error as? SessionTaskError, error.isCancelledError {
+        switch error {
+        case let error as SessionTaskError where error.isCancelledError:
             cancel()
-        } else {
+        case SessionTaskError.responseError(let rythmicoAPIError as RythmicoAPIError):
+            handleRythmicoAPIError(rythmicoAPIError)
+        default:
             finish(.failure(error))
         }
+    }
+
+    private func handleRythmicoAPIError(_ error: RythmicoAPIError) {
+        switch error.errorType {
+        case .appOutdated:
+            remoteConfigCoordinator.fetch(forced: true)
+        case .none:
+            break
+        }
+        finish(.failure(error))
     }
 
     private func handleAuthenticationError(_ error: AuthenticationCommonError) {
