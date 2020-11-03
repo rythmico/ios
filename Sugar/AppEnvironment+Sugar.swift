@@ -39,8 +39,10 @@ extension AppEnvironment {
         }
     }
 
-    func remoteConfigCoordinator() -> RemoteConfigCoordinator {
-        RemoteConfigCoordinator(service: remoteConfig)
+    var remoteConfigCoordinator: RemoteConfigCoordinator {
+        cachedRemoteConfigCoordinator ?? RemoteConfigCoordinator(service: remoteConfig).then {
+            cachedRemoteConfigCoordinator = $0
+        }
     }
 
     func sharedCoordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
@@ -95,6 +97,8 @@ extension AppEnvironment {
         DeviceUnregisterCoordinator(deviceTokenDeleter: deviceTokenDeleter)
     }
 }
+
+private var cachedRemoteConfigCoordinator: RemoteConfigCoordinator?
 
 private var latestProvider: AuthenticationAccessTokenProvider?
 private var coordinatorMap: [AnyKeyPath: Any] = [:]

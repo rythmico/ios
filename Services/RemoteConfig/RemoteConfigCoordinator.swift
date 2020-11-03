@@ -1,4 +1,5 @@
 import Foundation
+import Then
 
 final class RemoteConfigCoordinator: ObservableObject {
     private let service: RemoteConfigServiceProtocol
@@ -15,3 +16,5 @@ final class RemoteConfigCoordinator: ObservableObject {
         }
     }
 }
+
+extension RemoteConfigCoordinator: Then {}

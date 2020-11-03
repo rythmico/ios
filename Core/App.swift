@@ -9,7 +9,7 @@ struct App: SwiftUI.App {
     @UIApplicationDelegateAdaptor(Delegate.self)
     private var delegate
     @StateObject
-    private var remoteConfigCoordinator = Current.remoteConfigCoordinator()
+    private var remoteConfigCoordinator = Current.remoteConfigCoordinator
 
     init() {
         configureAppearance()
