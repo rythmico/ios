@@ -61,8 +61,7 @@ extension AppEnvironment {
         latestProvider = currentProvider
 
         // Return cached coordinator if it exists.
-        let key = AnyHashable(service)
-        if let coordinator = coordinatorMap[key] as? APIActivityCoordinator<Request> {
+        if let coordinator = coordinatorMap[service] as? APIActivityCoordinator<Request> {
             return coordinator
         }
 
@@ -72,7 +71,7 @@ extension AppEnvironment {
             deauthenticationService: deauthenticationService,
             service: self[keyPath: service]
         )
-        coordinatorMap[key] = coordinator
+        coordinatorMap[service] = coordinator
         return coordinator
     }
 
@@ -98,7 +97,7 @@ extension AppEnvironment {
 }
 
 private var latestProvider: AuthenticationAccessTokenProvider?
-private var coordinatorMap: [AnyHashable: Any] = [:]
+private var coordinatorMap: [AnyKeyPath: Any] = [:]
 
 #if DEBUG
 extension AppEnvironment {
