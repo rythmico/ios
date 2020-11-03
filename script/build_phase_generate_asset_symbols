@@ -1,11 +1,6 @@
-#!/bin/bash
-
-if ! which swiftgen > /dev/null; then
-    HOMEBREW_NO_AUTO_UPDATE=1 \
-    brew install swiftgen
-fi
+#!/usr/bin/env bash
 
 swiftgen run xcassets \
-    Rythmico/Supporting\ Files/Assets.xcassets \
+    "$SRCROOT/$TARGET_NAME/Supporting Files/Assets.xcassets" \
     --templateName swift4 \
-    --output Rythmico/Supporting\ Files/Assets.generated.swift
+    --output "$SRCROOT/$TARGET_NAME/Supporting Files/Assets.generated.swift"

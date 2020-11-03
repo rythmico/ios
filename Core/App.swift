@@ -1,49 +1,57 @@
 import SwiftUI
 
-@main
 struct App: SwiftUI.App {
     private enum Const {
         static let launchScreenDebugMode = false
-        static let launchScreenDelay = launchScreenDebugMode ? 5 : .durationMedium
+        static let launchScreenFadeOutDelay = AnimatedAppSplash.Const.animationDuration * 2
     }
 
-    @UIApplicationDelegateAdaptor(Delegate.self) private var delegate
+    @UIApplicationDelegateAdaptor(Delegate.self)
+    private var delegate
+    @StateObject
+    private var remoteConfigCoordinator = Current.remoteConfigCoordinator()
 
     init() {
         configureAppearance()
     }
 
     final class Delegate: NSObject, UIApplicationDelegate {
-        var isRunningFullApp: Bool {
-            switch AppContext.current {
-            case .test, .preview: return false
-            case .run, .release: return true
-            }
-        }
-
         func application(
             _ application: UIApplication,
             didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
         ) -> Bool {
-            guard isRunningFullApp else { return true }
             clearLaunchScreenCache(Const.launchScreenDebugMode)
             allowAudioPlaybackOnSilentMode()
             configureFirebase()
             configurePushNotifications(application: application)
             App.didFinishLaunching()
-            Thread.sleep(forTimeInterval: Const.launchScreenDelay)
             return true
         }
     }
 
     var body: some Scene {
         WindowGroup {
-            if delegate.isRunningFullApp {
-                RootView()
-                    .onEvent(.sizeCategoryChanged, perform: refreshAppearance)
-                    .onEvent(.appInBackground, perform: didEnterBackground)
+            ZStack {
+                if shouldShowSplash {
+                    AnimatedAppSplash(image: App.logo, title: App.name)
+                        .transition(.blendingOpacity)
+                } else if Current.remoteConfig.appUpdateRequired {
+                    AppUpdatePrompt(appId: App.id, method: App.distributionMethod)
+                        .transition(.blendingOpacity)
+                } else {
+                    RootView()
+                        .transition(.blendingOpacity)
+                        .onEvent(.sizeCategoryChanged, perform: refreshAppearance)
+                        .onEvent(.appInBackground, perform: didEnterBackground)
+                }
             }
+            .onAppear { remoteConfigCoordinator.fetch() }
+            .animation(Animation.easeInOut(duration: .durationShort).delay(Const.launchScreenFadeOutDelay), value: shouldShowSplash)
         }
+    }
+
+    private var shouldShowSplash: Bool {
+        !remoteConfigCoordinator.wasFetched
     }
 
     private func refreshAppearance() {

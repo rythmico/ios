@@ -1,11 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
-if ! which git-crypt > /dev/null; then
-    HOMEBREW_NO_AUTO_UPDATE=1 \
-    brew install git-crypt
-fi
+brew bundle --no-lock
 
 if [ "$#" -eq 3 ]; then
     PRIVATE_KEY=$1

@@ -3,6 +3,8 @@ import Foundation
 struct AppEnvironment {
     var state: AppState
 
+    var remoteConfig: RemoteConfigServiceProtocol
+
     var date: () -> Date
     var calendarType: () -> Calendar.Identifier
     var locale: Locale

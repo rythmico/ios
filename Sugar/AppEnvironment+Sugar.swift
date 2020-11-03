@@ -39,6 +39,10 @@ extension AppEnvironment {
         }
     }
 
+    func remoteConfigCoordinator() -> RemoteConfigCoordinator {
+        RemoteConfigCoordinator(service: remoteConfig)
+    }
+
     func sharedCoordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
         // Return nil if logged out.
         guard let currentProvider = accessTokenProviderObserver.currentProvider else {
@@ -99,6 +103,11 @@ private var coordinatorMap: [AnyHashable: Any] = [:]
 #if DEBUG
 extension AppEnvironment {
     mutating func setUpFake() {
+        remoteConfig = RemoteConfigStub(
+            fetchingDelay: Self.fakeAPIServicesDelay,
+            appUpdateRequired: true
+        )
+
         useFakeDate()
 
         eventEmitter = .default

@@ -1,8 +1,14 @@
+import SwiftUI
 import Stripe
-import UIKit
 import Then
 
 extension App {
+    static let id = "1493135894"
+    static let logo = Asset.appLogo
+    static let name = "Rythmico"
+    static let slogan = "Turning kids into the festival headliners of tomorrow"
+    static let distributionMethod = DistributionMethod.testFlight
+
     static func didFinishLaunching() {
         Stripe.setDefaultPublishableKey(AppSecrets.stripePublishableKey)
     }
@@ -10,7 +16,9 @@ extension App {
     func didEnterBackground() {
         Current.sharedCoordinator(for: \.lessonPlanFetchingService)?.reset()
     }
+}
 
+extension SwiftUI.App {
     // TODO: hopefully to be deleted someday if SwiftUI allows for better customization.
     func configureAppearance() {
         UINavigationBar.appearance().do { bar in
