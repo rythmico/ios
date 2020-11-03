@@ -188,7 +188,7 @@ extension AppEnvironment {
 
     static var fakeAPIServicesDelay: TimeInterval? = nil
     static func fakeAPIService<R: AuthorizedAPIRequest>(result: Result<R.Response, Error>) -> APIServiceStub<R> {
-        APIServiceStub(result: result.mapError { .responseError($0) }, delay: fakeAPIServicesDelay)
+        APIServiceStub(result: result, delay: fakeAPIServicesDelay)
     }
 
     private static let fakeReferenceDate = Date()
