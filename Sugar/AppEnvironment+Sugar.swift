@@ -105,7 +105,7 @@ extension AppEnvironment {
     mutating func setUpFake() {
         remoteConfig = RemoteConfigStub(
             fetchingDelay: Self.fakeAPIServicesDelay,
-            appUpdateRequired: true
+            appUpdateRequired: false
         )
 
         useFakeDate()
