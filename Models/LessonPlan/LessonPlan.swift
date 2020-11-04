@@ -1,7 +1,7 @@
 import Foundation
 import Tagged
 
-struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
+struct LessonPlan: Equatable, Identifiable, Hashable {
     enum Status: Equatable, Decodable, Hashable {
         case pending
         case reviewing([Application])
@@ -26,11 +26,6 @@ struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
         }
     }
 
-    struct Application: Equatable, Decodable, Hashable {
-        var tutor: Tutor
-        var privateNote: String
-    }
-
     struct Tutor: Identifiable, Equatable, Decodable, Hashable {
         typealias ID = Tagged<Self, String>
 
@@ -38,6 +33,11 @@ struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
         var name: String
         var photoThumbnailURL: ImageReference?
         var photoURL: ImageReference?
+    }
+
+    struct Application: Equatable, Decodable, Hashable {
+        var tutor: Tutor
+        var privateNote: String
     }
 
     struct BookingInfo: Equatable, Decodable, Hashable {
@@ -66,25 +66,9 @@ struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
     var address: Address
     var schedule: Schedule
     var privateNote: String
+}
 
-    init(
-        id: ID,
-        status: Status,
-        instrument: Instrument,
-        student: Student,
-        address: Address,
-        schedule: Schedule,
-        privateNote: String
-    ) {
-        self.id = id
-        self.status = status
-        self.instrument = instrument
-        self.student = student
-        self.address = address
-        self.schedule = schedule
-        self.privateNote = privateNote
-    }
-
+extension LessonPlan: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(

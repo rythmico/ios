@@ -68,18 +68,18 @@ extension LessonPlan {
 }
 
 extension LessonPlan {
+    static let scheduledJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
+        $0.status = .scheduled(.jesseStub)
+    }
+}
+
+extension LessonPlan {
     static let cancelledJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
         $0.status = .cancelled(nil, .stub)
     }
 
     static let cancelledCharlottePianoPlanStub = charlottePianoPlanStub.with {
         $0.status = .cancelled(nil, .stub)
-    }
-}
-
-extension LessonPlan {
-    static let scheduledJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
-        $0.status = .scheduled(.jesseStub)
     }
 }
 
