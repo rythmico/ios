@@ -26,15 +26,6 @@ struct LessonPlan: Equatable, Identifiable, Hashable {
         }
     }
 
-    struct Tutor: Identifiable, Equatable, Decodable, Hashable {
-        typealias ID = Tagged<Self, String>
-
-        var id: ID
-        var name: String
-        var photoThumbnailURL: ImageReference?
-        var photoURL: ImageReference?
-    }
-
     struct Application: Equatable, Decodable, Hashable {
         var tutor: Tutor
         var privateNote: String

@@ -6,7 +6,7 @@ struct PortfolioView: View {
     @State
     private var selectedPhoto: Portfolio.Photo?
 
-    var tutor: LessonPlan.Tutor
+    var tutor: Tutor
     var portfolio: Portfolio
 
     var body: some View {

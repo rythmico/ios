@@ -2,7 +2,7 @@ import SwiftUI
 
 struct LessonPlanConfirmationDetailsView: View {
     var lessonPlan: LessonPlan
-    var tutor: LessonPlan.Tutor
+    var tutor: Tutor
 
     var body: some View {
         VStack(spacing: .spacingSmall) {

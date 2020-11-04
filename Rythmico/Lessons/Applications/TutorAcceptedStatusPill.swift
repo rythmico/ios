@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct TutorAcceptedStatusPill: View {
-    var tutor: LessonPlan.Tutor?
+    var tutor: Tutor?
 
     private var title: String {
         ["Accepted", tutor?.name.firstWord.map { "by \($0)" }]

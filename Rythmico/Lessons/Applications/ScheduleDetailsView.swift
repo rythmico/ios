@@ -2,9 +2,9 @@ import SwiftUI
 
 struct ScheduleDetailsView: View {
     var schedule: Schedule
-    var tutor: LessonPlan.Tutor?
+    var tutor: Tutor?
 
-    init(_ schedule: Schedule, tutor: LessonPlan.Tutor?) {
+    init(_ schedule: Schedule, tutor: Tutor?) {
         self.schedule = schedule
         self.tutor = tutor
     }

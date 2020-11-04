@@ -63,7 +63,7 @@ struct CancelLessonPlanRequest: RythmicoAPIRequest {
 struct GetLessonPlanCheckoutRequest: RythmicoAPIRequest {
     struct Properties {
         var lessonPlanId: LessonPlan.ID
-        var applicationId: LessonPlan.Tutor.ID
+        var applicationId: Tutor.ID
     }
 
     let accessToken: String
@@ -85,7 +85,7 @@ struct CompleteLessonPlanCheckoutRequest: RythmicoAPIRequest {
         }
 
         var lessonPlanId: LessonPlan.ID
-        var applicationId: LessonPlan.Tutor.ID
+        var applicationId: Tutor.ID
         var body: Body
     }
 
