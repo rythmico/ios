@@ -101,7 +101,7 @@ struct MainView: View, TestableView {
         switch tab {
         case .lessons:
             Button(action: presentRequestLessonFlow) {
-                Image(systemSymbol: .plusCircleFill).font(.system(size: 24))
+                Image(decorative: Asset.buttonRequestLessons.name)
                     .padding(.vertical, .spacingExtraSmall)
                     .padding(.horizontal, .spacingExtraLarge)
                     .offset(x: .spacingExtraLarge)
