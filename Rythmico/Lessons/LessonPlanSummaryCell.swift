@@ -4,6 +4,16 @@ import Sugar
 struct LessonPlanSummaryCell: View {
     var lessonPlan: LessonPlan
 
+    init?(lessonPlan: LessonPlan) {
+        switch lessonPlan.status {
+        case .scheduled, .cancelled:
+            return nil
+        case .pending, .reviewing:
+            break
+        }
+        self.lessonPlan = lessonPlan
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             LessonPlanSummaryCellMainContent(lessonPlan: lessonPlan)
@@ -103,6 +113,7 @@ struct LessonPlanSummaryCell_Previews: PreviewProvider {
         Group {
             LessonPlanSummaryCell(lessonPlan: .pendingJackGuitarPlanStub)
             LessonPlanSummaryCell(lessonPlan: .reviewingJackGuitarPlanStub)
+            LessonPlanSummaryCell(lessonPlan: .scheduledJackGuitarPlanStub)
             LessonPlanSummaryCell(lessonPlan: .cancelledJackGuitarPlanStub)
         }
         .previewLayout(.sizeThatFits)

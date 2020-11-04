@@ -128,7 +128,8 @@ extension LessonPlan.CancellationInfo {
 extension Array where Element == LessonPlan {
     static let stub: Self = [
         .jesseDrumsPlanStub,
-        .reviewingJackGuitarPlanStub,
+//        .reviewingJackGuitarPlanStub,
+        .scheduledJackGuitarPlanStub,
         .cancelledCharlottePianoPlanStub,
     ]
 }
