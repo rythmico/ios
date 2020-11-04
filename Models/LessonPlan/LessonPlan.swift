@@ -11,13 +11,13 @@ struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             let applications = try container.decodeIfPresent([Application].self, forKey: .applications)
-            let tutor = try container.decodeIfPresent(Tutor.self, forKey: .tutor)
+            let bookingInfo = try container.decodeIfPresent(BookingInfo.self, forKey: .bookingInfo)
             let cancellationInfo = try container.decodeIfPresent(CancellationInfo.self, forKey: .cancellationInfo)
-            switch (applications, tutor, cancellationInfo) {
-            case (_, let tutor, let cancellationInfo?):
-                self = .cancelled(tutor, cancellationInfo)
-            case (_, let tutor?, _):
-                self = .scheduled(tutor)
+            switch (applications, bookingInfo, cancellationInfo) {
+            case (_, let bookingInfo, let cancellationInfo?):
+                self = .cancelled(bookingInfo?.tutor, cancellationInfo)
+            case (_, let bookingInfo?, _):
+                self = .scheduled(bookingInfo.tutor)
             case (let applications?, _, _) where !applications.isEmpty:
                 self = .reviewing(applications)
             default:
@@ -38,6 +38,11 @@ struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
         var name: String
         var photoThumbnailURL: ImageReference?
         var photoURL: ImageReference?
+    }
+
+    struct BookingInfo: Equatable, Decodable, Hashable {
+        var date: Date
+        var tutor: Tutor
     }
 
     struct CancellationInfo: Equatable, Decodable, Hashable {
@@ -96,7 +101,7 @@ struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
     private enum CodingKeys: String, CodingKey {
         case id
         case applications // Status
-        case tutor // Status
+        case bookingInfo // Status
         case cancellationInfo // Status
         case instrument
         case student
