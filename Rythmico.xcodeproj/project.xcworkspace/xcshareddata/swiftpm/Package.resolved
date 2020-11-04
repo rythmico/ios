@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/davdroman/APIKit",
         "state": {
           "branch": "davdroman-improvements",
-          "revision": "52f43d05c402cf62e6e8732114f1053d4631c78e",
+          "revision": "7233705e1ee2020bc67ddeeed261db7be12f38c7",
           "version": null
         }
       },
@@ -123,7 +123,7 @@
         "repositoryURL": "https://github.com/pointfreeco/swift-nonempty",
         "state": {
           "branch": "main",
-          "revision": "16c099a67fa5404c3762fa670e6c04bee1a8d1c9",
+          "revision": "b4f37767336e4bb98bffa3e05fad579d91c2b2d4",
           "version": null
         }
       },
@@ -141,8 +141,8 @@
         "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect",
         "state": {
           "branch": null,
-          "revision": "de5c32c15ae169cfcb27397ffb2734dcd0e1e6d5",
-          "version": "0.1.0"
+          "revision": "f1ec9da347a7fbe53c520d35434f6c2295650bd5",
+          "version": "0.1.1"
         }
       },
       {
@@ -150,8 +150,8 @@
         "repositoryURL": "https://github.com/sgade/swiftui-mapview",
         "state": {
           "branch": null,
-          "revision": "6dd36fc4b86464ab8f3d7442ad972413b5418bd2",
-          "version": "1.2.0"
+          "revision": "6620434bae01602d76832d4180b0124db2343e3c",
+          "version": "1.2.1"
         }
       },
       {

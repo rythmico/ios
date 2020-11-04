@@ -3,7 +3,9 @@ import Sugar
 
 class APIServiceBase<Request: AuthorizedAPIRequest> {
     typealias Response = Request.Response
-    typealias CompletionHandler = SimpleResultHandler<Response>
+    typealias Error = SessionTaskError
+    typealias Result = Swift.Result<Response, Error>
+    typealias CompletionHandler = Handler<Result>
 
     func send(_ request: Request, completion: @escaping CompletionHandler) -> Activity? { nil }
 }
@@ -16,8 +18,6 @@ final class APIService<Request: AuthorizedAPIRequest>: APIServiceBase<Request> {
 
     override func send(_ request: Request, completion: @escaping CompletionHandler) -> Activity? {
         let session = Session(adapter: URLSessionAdapter(configuration: sessionConfiguration))
-        return session.send(request, callbackQueue: .main, completionHandler: { result in
-            completion(result.mapError { $0 as Error })
-        }) as? Activity
+        return session.send(request, callbackQueue: .main, completionHandler: completion) as? Activity
     }
 }

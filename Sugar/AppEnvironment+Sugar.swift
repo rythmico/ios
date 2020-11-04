@@ -1,5 +1,6 @@
 import UIKit
 import Then
+import enum APIKit.SessionTaskError
 
 extension AppEnvironment {
     func calendar() -> Calendar {
@@ -39,8 +40,10 @@ extension AppEnvironment {
         }
     }
 
-    func remoteConfigCoordinator() -> RemoteConfigCoordinator {
-        RemoteConfigCoordinator(service: remoteConfig)
+    var remoteConfigCoordinator: RemoteConfigCoordinator {
+        cachedRemoteConfigCoordinator ?? RemoteConfigCoordinator(service: remoteConfig).then {
+            cachedRemoteConfigCoordinator = $0
+        }
     }
 
     func sharedCoordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
@@ -61,8 +64,7 @@ extension AppEnvironment {
         latestProvider = currentProvider
 
         // Return cached coordinator if it exists.
-        let key = AnyHashable(service)
-        if let coordinator = coordinatorMap[key] as? APIActivityCoordinator<Request> {
+        if let coordinator = coordinatorMap[service] as? APIActivityCoordinator<Request> {
             return coordinator
         }
 
@@ -70,15 +72,21 @@ extension AppEnvironment {
         let coordinator = APIActivityCoordinator(
             accessTokenProvider: currentProvider,
             deauthenticationService: deauthenticationService,
+            remoteConfigCoordinator: remoteConfigCoordinator,
             service: self[keyPath: service]
         )
-        coordinatorMap[key] = coordinator
+        coordinatorMap[service] = coordinator
         return coordinator
     }
 
     func coordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
         accessTokenProviderObserver.currentProvider.map {
-            APIActivityCoordinator(accessTokenProvider: $0, deauthenticationService: deauthenticationService, service: self[keyPath: service])
+            APIActivityCoordinator(
+                accessTokenProvider: $0,
+                deauthenticationService: deauthenticationService,
+                remoteConfigCoordinator: remoteConfigCoordinator,
+                service: self[keyPath: service]
+            )
         }
     }
 
@@ -97,15 +105,17 @@ extension AppEnvironment {
     }
 }
 
+private var cachedRemoteConfigCoordinator: RemoteConfigCoordinator?
+
 private var latestProvider: AuthenticationAccessTokenProvider?
-private var coordinatorMap: [AnyHashable: Any] = [:]
+private var coordinatorMap: [AnyKeyPath: Any] = [:]
 
 #if DEBUG
 extension AppEnvironment {
     mutating func setUpFake() {
         remoteConfig = RemoteConfigStub(
             fetchingDelay: Self.fakeAPIServicesDelay,
-            appUpdateRequired: true
+            appUpdateRequired: false
         )
 
         useFakeDate()
