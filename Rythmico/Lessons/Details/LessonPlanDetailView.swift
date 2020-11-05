@@ -49,7 +49,7 @@ struct LessonPlanDetailView: View, TestableView {
                             Text(lessonPlan.address.condensedFormattedString)
                                 .lineSpacing(.spacingUnit)
                         }
-                        LessonPlanTutorStatusView(lessonPlan.status, summarized: false)
+                        InlineContentAndTitleView(status: lessonPlan.status, summarized: false)
                     }
                     .rythmicoFont(.body)
                     .foregroundColor(.rythmicoGray90)
