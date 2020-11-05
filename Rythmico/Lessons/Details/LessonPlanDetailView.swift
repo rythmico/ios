@@ -8,10 +8,9 @@ struct LessonPlanDetailView: View, TestableView {
     var lessonPlan: LessonPlan
 
     var title: String {
-        [
-            lessonPlan.student.name.firstWord,
-            "\(lessonPlan.instrument.name) Lessons"
-        ].compact().joined(separator: " - ")
+        [lessonPlan.student.name.firstWord, "\(lessonPlan.instrument.name) Lessons"]
+            .compact()
+            .joined(separator: " - ")
     }
 
     func showCancelLessonPlanForm() {
