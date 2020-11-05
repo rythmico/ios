@@ -11,10 +11,11 @@ struct Lesson: Equatable, Decodable, Identifiable, Hashable {
     }
 
     var id: ID
-    var status: Status
-    var instrument: Instrument
     var student: Student
+    var instrument: Instrument
+    var number: Int
     var tutor: Tutor
+    var status: Status
     var address: Address
     var schedule: Schedule
 }

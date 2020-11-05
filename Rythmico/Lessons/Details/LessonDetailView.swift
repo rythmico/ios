@@ -6,10 +6,9 @@ struct LessonDetailView: View, TestableView {
     private var state = Current.state
 
     var lesson: Lesson
-    var lessonNumber: Int
 
     var title: String {
-        [lesson.student.name.firstWord, "\(lesson.instrument.name) Lesson \(lessonNumber)"]
+        [lesson.student.name.firstWord, "\(lesson.instrument.name) Lesson \(lesson.number)"]
             .compact()
             .joined(separator: " - ")
     }
@@ -86,7 +85,7 @@ struct LessonDetailView: View, TestableView {
 #if DEBUG
 struct LessonDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonDetailView(lesson: .scheduledStub, lessonNumber: 1)
+        LessonDetailView(lesson: .scheduledStub)
 //            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }

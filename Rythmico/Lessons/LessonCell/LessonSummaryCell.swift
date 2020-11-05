@@ -3,11 +3,10 @@ import Sugar
 
 struct LessonSummaryCell: View {
     var lesson: Lesson
-    var lessonNumber: Int
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            LessonSummaryCellMainContent(lesson: lesson, lessonNumber: lessonNumber)
+            LessonSummaryCellMainContent(lesson: lesson)
         }
         .modifier(RoundedShadowContainer())
         .disabled(lesson.status.isCancelled)
@@ -16,13 +15,12 @@ struct LessonSummaryCell: View {
 
 struct LessonSummaryCellMainContent: View {
     var lesson: Lesson
-    var lessonNumber: Int
 
     @ObservedObject
     private var state = Current.state
 
     var title: String {
-        [lesson.student.name.firstWord, "\(lesson.instrument.name) Lesson \(lessonNumber)"]
+        [lesson.student.name.firstWord, "\(lesson.instrument.name) Lesson \(lesson.number)"]
             .compact()
             .joined(separator: " - ")
     }
@@ -40,7 +38,7 @@ struct LessonSummaryCellMainContent: View {
 
     var body: some View {
         NavigationLink(
-            destination: LessonDetailView(lesson: lesson, lessonNumber: lessonNumber),
+            destination: LessonDetailView(lesson: lesson),
             tag: lesson,
             selection: $state.lessonsContext.viewingLesson
         ) {
@@ -73,9 +71,9 @@ struct LessonSummaryCellMainContent: View {
 struct LessonSummaryCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LessonSummaryCell(lesson: .scheduledStub, lessonNumber: 1)
-            LessonSummaryCell(lesson: .cancelledStub, lessonNumber: 2)
-            LessonSummaryCell(lesson: .completedStub, lessonNumber: 3)
+            LessonSummaryCell(lesson: .scheduledStub)
+            LessonSummaryCell(lesson: .cancelledStub)
+            LessonSummaryCell(lesson: .completedStub)
         }
         .previewLayout(.sizeThatFits)
         .padding()
