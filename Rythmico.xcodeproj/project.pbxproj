@@ -1081,9 +1081,7 @@
 				033D47D0247777100096C50F /* LessonsView.swift */,
 				D58824C3251A6D49000820F4 /* LessonsCollectionView.swift */,
 				03021C50248A799200C0C57E /* LessonsViewTests.swift */,
-				03021C4E248A769200C0C57E /* LessonPlanSummaryCell.swift */,
-				032215562497034A009D48A8 /* LessonPlanTutorStatusView.swift */,
-				03C39DD72496CA2A00C76516 /* LessonPlanStatusPill.swift */,
+				D517FFC32554872E00A41639 /* LessonPlanCell */,
 				D527B02124FEC53D003E81A9 /* TutorAvatarView.swift */,
 				D5D78DDB25250810007041BE /* Applications */,
 				D5D78DE42525086E007041BE /* Booking */,
@@ -1532,6 +1530,16 @@
 				D517FF8C25536AF900A41639 /* TutorDoubles.swift */,
 			);
 			path = Tutor;
+			sourceTree = "<group>";
+		};
+		D517FFC32554872E00A41639 /* LessonPlanCell */ = {
+			isa = PBXGroup;
+			children = (
+				03021C4E248A769200C0C57E /* LessonPlanSummaryCell.swift */,
+				032215562497034A009D48A8 /* LessonPlanTutorStatusView.swift */,
+				03C39DD72496CA2A00C76516 /* LessonPlanStatusPill.swift */,
+			);
+			path = LessonPlanCell;
 			sourceTree = "<group>";
 		};
 		D518C2F5250EA83000288A48 /* Cancellation */ = {
