@@ -37,7 +37,7 @@ struct ScheduleDetailsView: View {
                 HStack(spacing: .spacingExtraSmall) {
                     Image(decorative: Asset.iconTime.name).hidden()
                     HStack(spacing: .spacingExtraSmall) {
-                        LessonPlanTutorAvatarView(tutor, mode: .thumbnail).fixedSize()
+                        TutorAvatarView(tutor, mode: .thumbnail).fixedSize()
                         TutorAcceptedStatusPill(tutor: tutor)
                     }
                 }

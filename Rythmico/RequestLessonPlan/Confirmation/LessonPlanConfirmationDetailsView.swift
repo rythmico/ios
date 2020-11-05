@@ -22,7 +22,7 @@ struct LessonPlanConfirmationDetailsView: View {
                 .fixedSize(horizontal: false, vertical: true)
             }
             HStack(spacing: .spacingExtraSmall) {
-                LessonPlanTutorAvatarView(tutor, mode: .thumbnail)
+                TutorAvatarView(tutor, mode: .thumbnail)
                     .fixedSize()
                 Text(tutor.name)
                     .foregroundColor(.rythmicoGray90)

@@ -237,7 +237,7 @@
 		D527B01624FEAA5F003E81A9 /* ImageLoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B00C24FDC7AF003E81A9 /* ImageLoadingService.swift */; };
 		D527B01724FEAA62003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B00F24FE7811003E81A9 /* ImageLoadingServiceDoubles.swift */; };
 		D527B01824FEABEB003E81A9 /* ActivityDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B01124FE92DA003E81A9 /* ActivityDoubles.swift */; };
-		D527B02224FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B02124FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift */; };
+		D527B02224FEC53D003E81A9 /* TutorAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B02124FEC53D003E81A9 /* TutorAvatarView.swift */; };
 		D52A4F192538C41400C65A91 /* CardSetupEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52A4F182538C41400C65A91 /* CardSetupEndpoints.swift */; };
 		D52A4F1E2538C59300C65A91 /* AddNewCardEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52A4F1D2538C59300C65A91 /* AddNewCardEntryView.swift */; };
 		D52C553A24DC71B800C295C4 /* BookingRequestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C553924DC71B800C295C4 /* BookingRequestDetailView.swift */; };
@@ -733,7 +733,7 @@
 		D527B00F24FE7811003E81A9 /* ImageLoadingServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadingServiceDoubles.swift; sourceTree = "<group>"; };
 		D527B01124FE92DA003E81A9 /* ActivityDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDoubles.swift; sourceTree = "<group>"; };
 		D527B01324FEA2DE003E81A9 /* ImageLoadingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadingCoordinator.swift; sourceTree = "<group>"; };
-		D527B02124FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanTutorAvatarView.swift; sourceTree = "<group>"; };
+		D527B02124FEC53D003E81A9 /* TutorAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorAvatarView.swift; sourceTree = "<group>"; };
 		D52A4F182538C41400C65A91 /* CardSetupEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetupEndpoints.swift; sourceTree = "<group>"; };
 		D52A4F1D2538C59300C65A91 /* AddNewCardEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCardEntryView.swift; sourceTree = "<group>"; };
 		D52C553924DC71B800C295C4 /* BookingRequestDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestDetailView.swift; sourceTree = "<group>"; };
@@ -1083,8 +1083,8 @@
 				03021C50248A799200C0C57E /* LessonsViewTests.swift */,
 				03021C4E248A769200C0C57E /* LessonPlanSummaryCell.swift */,
 				032215562497034A009D48A8 /* LessonPlanTutorStatusView.swift */,
-				D527B02124FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift */,
 				03C39DD72496CA2A00C76516 /* LessonPlanStatusPill.swift */,
+				D527B02124FEC53D003E81A9 /* TutorAvatarView.swift */,
 				D5D78DDB25250810007041BE /* Applications */,
 				D5D78DE42525086E007041BE /* Booking */,
 				D518C2F6250EA84F00288A48 /* Details */,
@@ -2559,7 +2559,7 @@
 				D527B01724FEAA62003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */,
 				D5BF12BB2506926900B2931C /* PushNotificationEventHandler.swift in Sources */,
 				0365F6F02417E79000F452AC /* Address.swift in Sources */,
-				D527B02224FEC53D003E81A9 /* LessonPlanTutorAvatarView.swift in Sources */,
+				D527B02224FEC53D003E81A9 /* TutorAvatarView.swift in Sources */,
 				D5F506BA240637F400CA4094 /* Buttons+Rythmico.swift in Sources */,
 				D5BDD88725117E5300706EC1 /* ScheduleDetailsView.swift in Sources */,
 				D53555CC23E536AE005A20EB /* AppleAuthorizationServiceDoubles.swift in Sources */,
