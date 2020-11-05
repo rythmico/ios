@@ -6,7 +6,9 @@ extension Color {
     static let rythmicoLightBurgundy = Color(.rythmicoLightBurgundy)
     static let rythmicoDarkBurgundy = Color(.rythmicoDarkBurgundy)
 
+    static let rythmicoExtraLightBlue = Color(.rythmicoExtraLightBlue)
     static let rythmicoLightBlue = Color(.rythmicoLightBlue)
+    static let rythmicoDarkBlue = Color(.rythmicoDarkBlue)
 
     static let rythmicoLightGreen = Color(.rythmicoLightGreen)
     static let rythmicoDarkGreen = Color(.rythmicoDarkGreen)
@@ -44,9 +46,19 @@ extension UIColor {
         darkModeVariant: .init(hex: 0x8f144b)
     )
 
-    static let rythmicoLightBlue = UIColor(
+    static let rythmicoExtraLightBlue = UIColor(
         lightModeVariant: .init(hex: 0xE8F1FF),
         darkModeVariant: .init(hex: 0x17386A)
+    )
+
+    static let rythmicoLightBlue = UIColor(
+        lightModeVariant: .init(hex: 0xd0e2ff),
+        darkModeVariant: .init(hex: 0xd0e2ff)
+    )
+
+    static let rythmicoDarkBlue = UIColor(
+        lightModeVariant: .init(hex: 0x0043CE),
+        darkModeVariant: .init(hex: 0x0043CE)
     )
 
     static let rythmicoLightGreen = UIColor(
