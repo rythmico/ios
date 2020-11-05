@@ -53,7 +53,7 @@ extension AppState.LessonsContext {
         set {
             if let newValue = newValue {
                 self = .viewingLesson(newValue)
-            } else if selectedLessonPlan != nil {
+            } else {
                 switch self {
                 case .none, .requestingLessonPlan, .cancelling, .reviewing, .booking, .booked, .viewing:
                     break

@@ -11,7 +11,7 @@ extension Lesson.ID {
 
 extension Array where Element == Lesson {
     static let lessonCount = 6
-    static let stub: Self =
+    static var stub: Self {
         [.stub(number: lessonCount, status: .scheduled, startDate: .stub)]
         +
         (1..<lessonCount).map {
@@ -21,6 +21,7 @@ extension Array where Element == Lesson {
                 startDate: .stub - ($0, .weekOfMonth)
             )
         }
+    }
 }
 
 extension Lesson {
