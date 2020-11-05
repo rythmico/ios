@@ -23,7 +23,7 @@ struct LessonPlanDetailView: View, TestableView {
         VStack(spacing: 0) {
             VStack(spacing: .spacingExtraLarge) {
                 TitleContentView(title: title) {
-                    LessonPlanStatusPill(lessonPlan.status)
+                    Pill(status: lessonPlan.status)
                 }
                 VStack(alignment: .leading, spacing: .spacingMedium) {
                     SectionHeaderView(title: "Lesson Details")

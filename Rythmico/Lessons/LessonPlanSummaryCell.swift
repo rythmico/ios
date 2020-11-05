@@ -67,7 +67,7 @@ struct LessonPlanSummaryCellMainContent: View {
                     .foregroundColor(.rythmicoGray90)
                 HStack(spacing: .spacingExtraSmall) {
                     LessonPlanTutorStatusView(lessonPlan.status, summarized: true)
-                    LessonPlanStatusPill(lessonPlan.status)
+                    Pill(status: lessonPlan.status)
                 }
             }
             .padding(.spacingMedium)
