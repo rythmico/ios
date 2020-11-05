@@ -69,17 +69,17 @@ extension LessonPlan {
 
 extension LessonPlan {
     static let scheduledJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
-        $0.status = .scheduled(.jesseStub)
+        $0.status = .scheduled(.stub, .jesseStub)
     }
 }
 
 extension LessonPlan {
     static let cancelledJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
-        $0.status = .cancelled(nil, .stub)
+        $0.status = .cancelled(nil, nil, .stub)
     }
 
     static let cancelledCharlottePianoPlanStub = charlottePianoPlanStub.with {
-        $0.status = .cancelled(nil, .stub)
+        $0.status = .cancelled(.stub, .jesseStub, .stub)
     }
 }
 

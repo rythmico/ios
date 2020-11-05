@@ -5,20 +5,21 @@ struct LessonPlan: Equatable, Identifiable, Hashable {
     enum Status: Equatable, Decodable, Hashable {
         case pending
         case reviewing([Application])
-        case scheduled(Tutor)
-        case cancelled(Tutor?, CancellationInfo)
+        case scheduled([Lesson], Tutor)
+        case cancelled([Lesson]?, Tutor?, CancellationInfo)
 
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             let applications = try container.decodeIfPresent([Application].self, forKey: .applications)
+            let lessons = try container.decodeIfPresent([Lesson].self, forKey: .lessons)
             let bookingInfo = try container.decodeIfPresent(BookingInfo.self, forKey: .bookingInfo)
             let cancellationInfo = try container.decodeIfPresent(CancellationInfo.self, forKey: .cancellationInfo)
-            switch (applications, bookingInfo, cancellationInfo) {
-            case (_, let bookingInfo, let cancellationInfo?):
-                self = .cancelled(bookingInfo?.tutor, cancellationInfo)
-            case (_, let bookingInfo?, _):
-                self = .scheduled(bookingInfo.tutor)
-            case (let applications?, _, _) where !applications.isEmpty:
+            switch (applications, lessons, bookingInfo, cancellationInfo) {
+            case (_, let lessons, let bookingInfo, let cancellationInfo?):
+                self = .cancelled(lessons, bookingInfo?.tutor, cancellationInfo)
+            case (_, let lessons?, let bookingInfo?, _) where !lessons.isEmpty:
+                self = .scheduled(lessons, bookingInfo.tutor)
+            case (let applications?, _, _, _) where !applications.isEmpty:
                 self = .reviewing(applications)
             default:
                 self = .pending
@@ -78,6 +79,7 @@ extension LessonPlan: Decodable {
         case applications // Status
         case bookingInfo // Status
         case cancellationInfo // Status
+        case lessons // Status
         case instrument
         case student
         case address

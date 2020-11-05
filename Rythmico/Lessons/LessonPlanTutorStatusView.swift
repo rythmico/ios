@@ -40,10 +40,10 @@ private extension LessonPlan.Status {
             AvatarView(.placeholder)
         case .reviewing(let applications):
             AvatarStackView(applications.map(\.tutor), thumbnails: true)
-        case .scheduled(let tutor),
-             .cancelled(let tutor?, _):
+        case .scheduled(_, let tutor),
+             .cancelled(_, let tutor?, _):
             LessonPlanTutorAvatarView(tutor, mode: .thumbnail)
-        case .cancelled(nil, _):
+        case .cancelled(_, nil, _):
             AvatarView(.placeholder)
         }
     }
@@ -55,10 +55,10 @@ private extension LessonPlan.Status {
             return "Tutor TBC"
         case .reviewing(let applications):
             return "\(applications.count) applied"
-        case .scheduled(let tutor),
-             .cancelled(let tutor?, _):
+        case .scheduled(_, let tutor),
+             .cancelled(_, let tutor?, _):
             return tutor.name
-        case .cancelled(nil, _):
+        case .cancelled(_, nil, _):
             return "No tutor"
         }
     }
@@ -71,10 +71,10 @@ private extension LessonPlan.Status {
         case .reviewing(let applications):
             let count = applications.count
             return "\(count) tutor\(count == 1 ? "" : "s") applied" // TODO: plurals
-        case .scheduled(let tutor),
-             .cancelled(let tutor?, _):
+        case .scheduled(_, let tutor),
+             .cancelled(_, let tutor?, _):
             return tutor.name
-        case .cancelled(nil, _):
+        case .cancelled(_, nil, _):
             return "No tutor was selected"
         }
     }
@@ -90,11 +90,11 @@ struct LessonPlanTutorStatusView_Previews: PreviewProvider {
                 .previewDisplayName("Reviewing 0 Tutors")
             LessonPlanTutorStatusView(.reviewing(.stub), summarized: true)
                 .previewDisplayName("Reviewing 1+ Tutors")
-            LessonPlanTutorStatusView(.scheduled(.jesseStub), summarized: true)
+            LessonPlanTutorStatusView(.scheduled(.stub, .jesseStub), summarized: true)
                 .previewDisplayName("Scheduled")
-            LessonPlanTutorStatusView(.cancelled(nil, .stub), summarized: true)
+            LessonPlanTutorStatusView(.cancelled(.stub, nil, .stub), summarized: true)
                 .previewDisplayName("Cancelled no Tutor")
-            LessonPlanTutorStatusView(.cancelled(.jesseStub, .stub), summarized: true)
+            LessonPlanTutorStatusView(.cancelled(.stub, .jesseStub, .stub), summarized: true)
                 .previewDisplayName("Cancelled w/ Tutor")
         }
         .previewLayout(.sizeThatFits)
