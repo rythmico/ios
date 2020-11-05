@@ -8,6 +8,12 @@ struct Schedule: Equatable, Codable, Hashable {
     var duration: Duration
 }
 
+extension Schedule {
+    var endDate: Date {
+        Current.calendar().date(byAdding: .minute, value: duration.rawValue, to: startDate)!
+    }
+}
+
 extension Schedule.Duration {
     static let fortyFiveMinutes = Self(rawValue: 45)
     static let oneHour = Self(rawValue: 60)

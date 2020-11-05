@@ -18,3 +18,10 @@ struct Lesson: Equatable, Decodable, Identifiable, Hashable {
     var address: Address
     var schedule: Schedule
 }
+
+extension Lesson.Status {
+    var isCancelled: Bool {
+        guard case .cancelled = self else { return false }
+        return true
+    }
+}

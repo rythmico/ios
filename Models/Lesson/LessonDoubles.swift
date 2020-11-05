@@ -21,6 +21,12 @@ extension Array where Element == Lesson {
         }
 }
 
+extension Lesson {
+    static let scheduledStub = stub(status: .scheduled, startDate: .stub)
+    static let cancelledStub = stub(status: .cancelled, startDate: .stub)
+    static let completedStub = stub(status: .completed, startDate: .stub)
+}
+
 private extension Lesson {
     static func stub(status: Status, startDate: Date) -> Self {
         Self(

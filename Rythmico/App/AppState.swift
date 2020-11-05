@@ -17,6 +17,8 @@ extension AppState {
         case reviewing(LessonPlan, LessonPlan.Application? = nil)
         case booking(LessonPlan, LessonPlan.Application)
         case booked(LessonPlan, LessonPlan.Application)
+
+        case viewingLesson(Lesson)
     }
 }
 
@@ -26,7 +28,7 @@ extension AppState.LessonsContext {
             switch self {
             case .requestingLessonPlan:
                 return true
-            case .none, .viewing, .cancelling, .booked, .reviewing, .booking:
+            case .none, .viewing, .cancelling, .booked, .reviewing, .booking, .viewingLesson:
                 return false
             }
         }
@@ -39,10 +41,33 @@ extension AppState.LessonsContext {
         }
     }
 
+    var viewingLesson: Lesson? {
+        get {
+            switch self {
+            case .none, .requestingLessonPlan, .booked, .reviewing, .booking, .viewing, .cancelling:
+                return nil
+            case .viewingLesson(let lesson):
+                return lesson
+            }
+        }
+        set {
+            if let newValue = newValue {
+                self = .viewingLesson(newValue)
+            } else if selectedLessonPlan != nil {
+                switch self {
+                case .none, .requestingLessonPlan, .cancelling, .reviewing, .booking, .booked, .viewing:
+                    break
+                case .viewingLesson:
+                    self = .none
+                }
+            }
+        }
+    }
+
     var selectedLessonPlan: LessonPlan? {
         get {
             switch self {
-            case .none, .requestingLessonPlan, .booked, .reviewing, .booking:
+            case .none, .requestingLessonPlan, .booked, .reviewing, .booking, .viewingLesson:
                 return nil
             case .viewing(let lessonPlan), .cancelling(let lessonPlan):
                 return lessonPlan
@@ -53,7 +78,7 @@ extension AppState.LessonsContext {
                 self = .viewing(newValue)
             } else if selectedLessonPlan != nil {
                 switch self {
-                case .none, .requestingLessonPlan, .cancelling, .reviewing, .booking, .booked:
+                case .none, .requestingLessonPlan, .cancelling, .reviewing, .booking, .booked, .viewingLesson:
                     break
                 case .viewing:
                     self = .none
@@ -65,7 +90,7 @@ extension AppState.LessonsContext {
     var cancellingLessonPlan: LessonPlan? {
         get {
             switch self {
-            case .none, .requestingLessonPlan, .viewing, .booked, .reviewing, .booking:
+            case .none, .requestingLessonPlan, .viewing, .booked, .reviewing, .booking, .viewingLesson:
                 return nil
             case .cancelling(let lessonPlan):
                 return lessonPlan
@@ -83,7 +108,7 @@ extension AppState.LessonsContext {
     var reviewingLessonPlan: LessonPlan? {
         get {
             switch self {
-            case .none, .requestingLessonPlan, .viewing, .cancelling, .booked:
+            case .none, .requestingLessonPlan, .viewing, .cancelling, .booked, .viewingLesson:
                 return nil
             case let .reviewing(lessonPlan, _), let .booking(lessonPlan, _):
                 return lessonPlan
@@ -101,7 +126,7 @@ extension AppState.LessonsContext {
     var reviewingLessonPlanApplication: LessonPlan.Application? {
         get {
             switch self {
-            case .none, .requestingLessonPlan, .viewing, .cancelling, .booked:
+            case .none, .requestingLessonPlan, .viewing, .cancelling, .booked, .viewingLesson:
                 return nil
             case let .reviewing(_, application):
                 return application
@@ -119,7 +144,7 @@ extension AppState.LessonsContext {
     var bookingValues: (lessonPlan: LessonPlan, application: LessonPlan.Application)? {
         get {
             switch self {
-            case .none, .requestingLessonPlan, .viewing, .cancelling, .reviewing:
+            case .none, .requestingLessonPlan, .viewing, .cancelling, .reviewing, .viewingLesson:
                 return nil
             case let .booking(lessonPlan, application), let .booked(lessonPlan, application):
                 return (lessonPlan, application)
@@ -128,7 +153,7 @@ extension AppState.LessonsContext {
         set {
             guard newValue == nil else { return }
             switch self {
-            case .none, .requestingLessonPlan, .viewing, .cancelling, .reviewing:
+            case .none, .requestingLessonPlan, .viewing, .cancelling, .reviewing, .viewingLesson:
                 break
             case let .booking(lessonPlan, application):
                 self = .reviewing(lessonPlan, application)
