@@ -1,5 +1,8 @@
 import Foundation
 import Sugar
+import Then
+
+extension Schedule: Then {}
 
 extension Schedule {
     static let stub = Self(
