@@ -5,15 +5,11 @@ struct LessonsView: View, TestableView, VisibleView {
     typealias Coordinator = APIActivityCoordinator<GetLessonPlansRequest>
 
     @ObservedObject
-    private var coordinator: Coordinator
+    private(set) var coordinator: Coordinator
     @ObservedObject
     private var repository = Current.lessonPlanRepository
     @State
     var isVisible = false
-
-    init(coordinator: Coordinator) {
-        self.coordinator = coordinator
-    }
 
     var isLoading: Bool { coordinator.state.isLoading }
     var error: Error? { coordinator.state.failureValue }
@@ -41,9 +37,6 @@ struct LessonsView_Previews: PreviewProvider {
         LessonsView(coordinator: Current.sharedCoordinator(for: \.lessonPlanFetchingService)!)
             .environment(\.colorScheme, .light)
 //            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
-        LessonsView(coordinator: Current.sharedCoordinator(for: \.lessonPlanFetchingService)!)
-            .environment(\.colorScheme, .dark)
-            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }
 #endif
