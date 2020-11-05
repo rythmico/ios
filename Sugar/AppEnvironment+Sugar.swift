@@ -26,6 +26,15 @@ extension AppEnvironment {
         }
     }
 
+    func dateIntervalFormatter(format: DateIntervalFormatter.Format) -> DateIntervalFormatter {
+        DateIntervalFormatter().then {
+            $0.calendar = calendar()
+            $0.locale = locale
+            $0.timeZone = timeZone
+            $0.setFormat(format)
+        }
+    }
+
     func relativeDateTimeFormatter(
         context: Formatter.Context,
         style: RelativeDateTimeFormatter.UnitsStyle,

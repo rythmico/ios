@@ -214,6 +214,7 @@
 		D517FF8D25536AF900A41639 /* TutorDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517FF8C25536AF900A41639 /* TutorDoubles.swift */; };
 		D517FF952553B60000A41639 /* LessonDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517FF942553B60000A41639 /* LessonDoubles.swift */; };
 		D517FFA4255482EF00A41639 /* InlineContentAndTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517FFA3255482EF00A41639 /* InlineContentAndTitleView.swift */; };
+		D517FFCB25548EC600A41639 /* DateIntervalFormatter+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517FFCA25548EC600A41639 /* DateIntervalFormatter+Sugar.swift */; };
 		D518C2F8250EA89100288A48 /* LessonPlanApplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518C2F7250EA89100288A48 /* LessonPlanApplicationsView.swift */; };
 		D518C2FD250EDD3300288A48 /* InfoBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518C2FC250EDD3300288A48 /* InfoBanner.swift */; };
 		D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */; };
@@ -720,6 +721,7 @@
 		D517FF8C25536AF900A41639 /* TutorDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorDoubles.swift; sourceTree = "<group>"; };
 		D517FF942553B60000A41639 /* LessonDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDoubles.swift; sourceTree = "<group>"; };
 		D517FFA3255482EF00A41639 /* InlineContentAndTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineContentAndTitleView.swift; sourceTree = "<group>"; };
+		D517FFCA25548EC600A41639 /* DateIntervalFormatter+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateIntervalFormatter+Sugar.swift"; sourceTree = "<group>"; };
 		D518C2F7250EA89100288A48 /* LessonPlanApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationsView.swift; sourceTree = "<group>"; };
 		D518C2FC250EDD3300288A48 /* InfoBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBanner.swift; sourceTree = "<group>"; };
 		D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailsView.swift; sourceTree = "<group>"; };
@@ -1674,6 +1676,7 @@
 				D5FD6F1124096FB5008C5AD4 /* Collection+Sugar.swift */,
 				D5F4D3FE24F858AE000E8580 /* Date+Sugar.swift */,
 				03E88E8824BB82290077A420 /* DateFormatter+Sugar.swift */,
+				D517FFCA25548EC600A41639 /* DateIntervalFormatter+Sugar.swift */,
 				D5D9AEB8253692FF00A0ABCC /* Decimal+Sugar.swift */,
 				03275ADC2490091E009C3980 /* DispatchQueue+Sugar.swift */,
 				03B71323241D71B600DED025 /* Error+Sugar.swift */,
@@ -2802,6 +2805,7 @@
 				D5C23A78240F1C1E007DED63 /* String+Sugar.swift in Sources */,
 				D5B57A6F2419E22300BE9B4F /* Optional+Sugar.swift in Sources */,
 				D5D9AEB9253692FF00A0ABCC /* Decimal+Sugar.swift in Sources */,
+				D517FFCB25548EC600A41639 /* DateIntervalFormatter+Sugar.swift in Sources */,
 				D5C23A7A240F2DEB007DED63 /* Bool+Sugar.swift in Sources */,
 				D5317142250D77B3006751A7 /* Sequence+Sugar.swift in Sources */,
 				03B71324241D71B600DED025 /* Error+Sugar.swift in Sources */,
