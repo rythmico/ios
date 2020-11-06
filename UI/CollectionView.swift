@@ -12,8 +12,7 @@ struct CollectionView<Content: View>: View {
             LazyVStack(alignment: .center, spacing: .spacingSmall) {
                 content.padding(.horizontal, .spacingMedium)
             }
-            .padding(.top, .spacingSmall)
-            .padding(.bottom, .spacingMedium)
+            .padding(.vertical, .spacingMedium)
         }
     }
 }

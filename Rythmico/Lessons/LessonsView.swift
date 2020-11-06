@@ -4,6 +4,13 @@ import Sugar
 struct LessonsView: View, TestableView, VisibleView {
     typealias Coordinator = APIActivityCoordinator<GetLessonPlansRequest>
 
+    enum Filter: String, CaseIterable {
+        case upcoming
+        case past
+    }
+
+    @ObservedObject
+    private var state = Current.state
     @ObservedObject
     private(set) var coordinator: Coordinator
     @ObservedObject
@@ -17,10 +24,15 @@ struct LessonsView: View, TestableView, VisibleView {
 
     let inspection = SelfInspection()
     var body: some View {
-        LessonsCollectionView(
-            previousLessonPlans: repository.previousItems,
-            currentLessonPlans: repository.items
-        )
+        VStack(spacing: 0) {
+            TabMenuView(tabs: Filter.allCases, selection: $state.lessonsFilter)
+            LessonsCollectionView(
+                previousLessonPlans: repository.previousItems,
+                currentLessonPlans: repository.items,
+                filter: state.lessonsFilter
+            )
+        }
+        .padding(.top, .spacingSmall)
         .accentColor(.rythmicoPurple)
         .testable(self)
         .visible(self)

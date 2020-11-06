@@ -3,6 +3,7 @@ import Then
 
 final class AppState: ObservableObject {
     @Published var tab: MainView.Tab = .lessons
+    @Published var lessonsFilter: LessonsView.Filter = .upcoming
     // TODO: use optional when Binding allows chaining optional sub-bindings.
     // e.g. $state.lessonsContext(?).reviewingValues(?).0
     @Published var lessonsContext: LessonsContext = .none

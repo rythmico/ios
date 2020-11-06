@@ -3,25 +3,46 @@ import SwiftUI
 struct LessonsCollectionView: View {
     var previousLessonPlans: [LessonPlan]?
     var currentLessonPlans: [LessonPlan]
+    var filter: LessonsView.Filter
 
-    var body: some View {
-        CollectionView(currentLessonPlans) { lessonPlan in
-            LessonPlanSummaryCell(lessonPlan: lessonPlan)
-                .transition(transition(for: lessonPlan))
+    var lessonPlans: [LessonPlan] {
+        switch filter {
+        case .upcoming:
+            return currentLessonPlans
+        case .past:
+            return []
         }
     }
 
-    private func transition(for lessonPlan: LessonPlan) -> AnyTransition {
-        let transitionDelay = currentLessonPlans
-            .firstIndex(of: lessonPlan)
-            .flatMap { previousLessonPlans.isNilOrEmpty ? $0 : nil }
-            .map { Double($0) * (.durationShort * 2/3) }
+    var lessons: [Lesson] {
+        let allLessons = currentLessonPlans.compactMap(\.lessons).flatten()
+        switch filter {
+        case .upcoming:
+            return allLessons
+                .filter { Current.date() < $0.schedule.endDate }
+                .sorted { $0.schedule.startDate < $1.schedule.startDate }
+        case .past:
+            return allLessons
+                .filter { Current.date() > $0.schedule.endDate }
+                .sorted { $0.schedule.startDate > $1.schedule.startDate }
+        }
+    }
 
-        return AnyTransition.opacity.combined(with: .scale(scale: 0.8))
-            .animation(
-                Animation
-                    .rythmicoSpring(duration: .durationMedium)
-                    .delay(transitionDelay ?? 0)
-            )
+    var body: some View {
+        CollectionView {
+            ForEach(lessonPlans) { lessonPlan in
+                LessonPlanSummaryCell(lessonPlan: lessonPlan).transition(transition)
+            }
+            ForEach(lessons) { lesson in
+                LessonSummaryCell(lesson: lesson).transition(transition)
+            }
+        }
+    }
+
+    private var transition: AnyTransition {
+        AnyTransition
+            .opacity
+            .combined(with: .scale(scale: 0.75))
+            .animation(.rythmicoSpring(duration: .durationMedium))
     }
 }

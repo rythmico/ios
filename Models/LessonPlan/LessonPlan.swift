@@ -88,6 +88,19 @@ extension LessonPlan: Decodable {
     }
 }
 
+extension LessonPlan {
+    var lessons: [Lesson]? {
+        switch status {
+        case .scheduled(let lessons, _):
+            return lessons
+        case .cancelled(let lessons, _, _):
+            return lessons
+        case .pending, .reviewing:
+            return nil
+        }
+    }
+}
+
 extension LessonPlan.Status {
     var isCancelled: Bool {
         guard case .cancelled = self else { return false }
