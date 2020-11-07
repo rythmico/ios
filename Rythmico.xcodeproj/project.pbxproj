@@ -209,7 +209,6 @@
 		D516A929253A554F002E6EDF /* ImageAsset+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D516A928253A554F002E6EDF /* ImageAsset+Sugar.swift */; };
 		D516A92F253A6337002E6EDF /* LessonPlanConfirmationDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D516A92E253A6337002E6EDF /* LessonPlanConfirmationDetailsView.swift */; };
 		D517FF702553693200A41639 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517FF6F2553693200A41639 /* Lesson.swift */; };
-		D517FF772553693800A41639 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517FF6F2553693200A41639 /* Lesson.swift */; };
 		D517FF8025536AB900A41639 /* Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517FF7F25536AB900A41639 /* Tutor.swift */; };
 		D517FF8D25536AF900A41639 /* TutorDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517FF8C25536AF900A41639 /* TutorDoubles.swift */; };
 		D517FF952553B60000A41639 /* LessonDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517FF942553B60000A41639 /* LessonDoubles.swift */; };
@@ -2762,7 +2761,6 @@
 				D5E987C724EEFC7C00E2E1AF /* BookingApplicationsView.swift in Sources */,
 				03E88EAA24C1F4FD0077A420 /* App+PushNotifications.swift in Sources */,
 				D5217CEF24E2F8B400C89018 /* MapOpener+ActionSheet.swift in Sources */,
-				D517FF772553693800A41639 /* Lesson.swift in Sources */,
 				03E88EBC24C709A00077A420 /* ActivityCoordinator.swift in Sources */,
 				D5F4D3F524F33CA4000E8580 /* AddressDoubles.swift in Sources */,
 				D59D0594251828EA0070D81B /* App+Playback.swift in Sources */,
