@@ -4,16 +4,19 @@ import Sugar
 struct LessonsView: View, TestableView, VisibleView {
     typealias Coordinator = APIActivityCoordinator<GetLessonPlansRequest>
 
+    enum Filter: String, CaseIterable {
+        case upcoming
+        case past
+    }
+
     @ObservedObject
-    private var coordinator: Coordinator
+    private var state = Current.state
+    @ObservedObject
+    private(set) var coordinator: Coordinator
     @ObservedObject
     private var repository = Current.lessonPlanRepository
     @State
     var isVisible = false
-
-    init(coordinator: Coordinator) {
-        self.coordinator = coordinator
-    }
 
     var isLoading: Bool { coordinator.state.isLoading }
     var error: Error? { coordinator.state.failureValue }
@@ -21,10 +24,15 @@ struct LessonsView: View, TestableView, VisibleView {
 
     let inspection = SelfInspection()
     var body: some View {
-        LessonsCollectionView(
-            previousLessonPlans: repository.previousItems,
-            currentLessonPlans: repository.items
-        )
+        VStack(spacing: 0) {
+            TabMenuView(tabs: Filter.allCases, selection: $state.lessonsFilter)
+            LessonsCollectionView(
+                previousLessonPlans: repository.previousItems,
+                currentLessonPlans: repository.items,
+                filter: state.lessonsFilter
+            )
+        }
+        .padding(.top, .spacingSmall)
         .accentColor(.rythmicoPurple)
         .testable(self)
         .visible(self)
@@ -41,9 +49,6 @@ struct LessonsView_Previews: PreviewProvider {
         LessonsView(coordinator: Current.sharedCoordinator(for: \.lessonPlanFetchingService)!)
             .environment(\.colorScheme, .light)
 //            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
-        LessonsView(coordinator: Current.sharedCoordinator(for: \.lessonPlanFetchingService)!)
-            .environment(\.colorScheme, .dark)
-            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }
 #endif

@@ -1,28 +1,28 @@
 import SwiftUI
 import Sugar
 
-struct LessonPlanDetailView: View, TestableView {
+struct LessonDetailView: View, TestableView {
     @ObservedObject
     private var state = Current.state
 
-    var lessonPlan: LessonPlan
+    var lesson: Lesson
 
     var title: String {
-        [lessonPlan.student.name.firstWord, "\(lessonPlan.instrument.name) Lessons"]
+        [lesson.student.name.firstWord, "\(lesson.instrument.name) Lesson \(lesson.number)"]
             .compact()
             .joined(separator: " - ")
     }
 
-    func showCancelLessonPlanForm() {
-        state.lessonsContext = .cancelling(lessonPlan)
-    }
+//    func showCancelLessonPlanForm() {
+//        state.lessonsContext = .cancelling(lessonPlan)
+//    }
 
     let inspection = SelfInspection()
     var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: .spacingExtraLarge) {
                 TitleContentView(title: title) {
-                    Pill(status: lessonPlan.status)
+                    Pill(status: lesson.status)
                 }
                 VStack(alignment: .leading, spacing: .spacingMedium) {
                     SectionHeaderView(title: "Lesson Details")
@@ -45,10 +45,10 @@ struct LessonPlanDetailView: View, TestableView {
                             Image(decorative: Asset.iconLocation.name)
                                 .renderingMode(.template)
                                 .offset(x: 0, y: .spacingUnit / 2)
-                            Text(lessonPlan.address.condensedFormattedString)
+                            Text(lesson.address.condensedFormattedString)
                                 .lineSpacing(.spacingUnit)
                         }
-                        InlineContentAndTitleView(status: lessonPlan.status, summarized: false)
+                        InlineContentAndTitleView(lesson: lesson, summarized: false)
                     }
                     .rythmicoFont(.body)
                     .foregroundColor(.rythmicoGray90)
@@ -58,12 +58,15 @@ struct LessonPlanDetailView: View, TestableView {
             .padding(.horizontal, .spacingMedium)
             .frame(maxHeight: .infinity, alignment: .top)
 
-            ActionList(
-                [.init(title: "Cancel Lesson Plan Request", action: showCancelLessonPlanForm)],
-                showBottomSeparator: false
-            )
-            .foregroundColor(.rythmicoGray90)
-            .rythmicoFont(.body)
+//            ActionList(
+//                [
+//                    .init(title: "View Lesson Plan", action: showCancelLessonPlanForm),
+//                    .init(title: "Cancel Lesson", action: showCancelLessonPlanForm),
+//                ],
+//                showBottomSeparator: false
+//            )
+//            .foregroundColor(.rythmicoGray90)
+//            .rythmicoFont(.body)
         }
         .testable(self)
         .padding(.top, .spacingExtraSmall)
@@ -74,15 +77,15 @@ struct LessonPlanDetailView: View, TestableView {
     }
 
     private let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM @ h:mma"))
-    private var startDateText: String { startDateFormatter.string(from: lessonPlan.schedule.startDate) }
+    private var startDateText: String { startDateFormatter.string(from: lesson.schedule.startDate) }
 
-    private var durationText: String { "\(lessonPlan.schedule.duration) minutes" }
+    private var durationText: String { "\(lesson.schedule.duration) minutes" }
 }
 
 #if DEBUG
-struct LessonPlanDetailView_Previews: PreviewProvider {
+struct LessonDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlanDetailView(lessonPlan: .jesseDrumsPlanStub)
+        LessonDetailView(lesson: .scheduledStub)
 //            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }

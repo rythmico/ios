@@ -28,7 +28,7 @@ struct LessonPlanConfirmationView: View, TestableView {
     @ViewBuilder
     var additionalContent: some View {
         switch lessonPlan.status {
-        case .scheduled(let tutor):
+        case .scheduled(_, let tutor):
             LessonPlanConfirmationDetailsView(lessonPlan: lessonPlan, tutor: tutor)
         default:
             EmptyView()

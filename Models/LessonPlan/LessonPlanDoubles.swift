@@ -68,18 +68,18 @@ extension LessonPlan {
 }
 
 extension LessonPlan {
-    static let cancelledJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
-        $0.status = .cancelled(nil, .stub)
-    }
-
-    static let cancelledCharlottePianoPlanStub = charlottePianoPlanStub.with {
-        $0.status = .cancelled(nil, .stub)
+    static let scheduledJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
+        $0.status = .scheduled(.stub, .jesseStub)
     }
 }
 
 extension LessonPlan {
-    static let scheduledJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
-        $0.status = .scheduled(.jesseStub)
+    static let cancelledJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
+        $0.status = .cancelled(nil, nil, .stub)
+    }
+
+    static let cancelledCharlottePianoPlanStub = charlottePianoPlanStub.with {
+        $0.status = .cancelled(.stub, .jesseStub, .stub)
     }
 }
 
@@ -87,35 +87,6 @@ extension LessonPlan.Application {
     static let jesseStub = Self(tutor: .jesseStub, privateNote: "I'll help!")
     static let davidStub = Self(tutor: .davidStub, privateNote: "Lorem ipsum!")
     static let charlotteStub =  Self(tutor: .charlotteStub, privateNote: "")
-}
-
-extension LessonPlan.Tutor.ID {
-    static func random() -> Self {
-        Self(rawValue: UUID().uuidString)
-    }
-}
-
-extension LessonPlan.Tutor {
-    static let jesseStub = Self(
-        id: .random(),
-        name: "Jesse Bildner",
-        photoThumbnailURL: nil,
-        photoURL: nil
-    )
-
-    static let davidStub = Self(
-        id: .random(),
-        name: "David Roman",
-        photoThumbnailURL: nil,
-        photoURL: nil
-    )
-
-    static let charlotteStub = Self(
-        id: .random(),
-        name: "Charlotte",
-        photoThumbnailURL: nil,
-        photoURL: nil
-    )
 }
 
 extension LessonPlan.CancellationInfo {
@@ -128,7 +99,8 @@ extension LessonPlan.CancellationInfo {
 extension Array where Element == LessonPlan {
     static let stub: Self = [
         .jesseDrumsPlanStub,
-        .reviewingJackGuitarPlanStub,
+//        .reviewingJackGuitarPlanStub,
+        .scheduledJackGuitarPlanStub,
         .cancelledCharlottePianoPlanStub,
     ]
 }

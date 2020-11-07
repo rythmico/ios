@@ -1,33 +1,12 @@
 import SwiftUI
 
-struct LessonPlanTutorStatusView: View {
-    var status: LessonPlan.Status
-    var summarized: Bool
-
-    init(_ status: LessonPlan.Status, summarized: Bool) {
-        self.status = status
-        self.summarized = summarized
-    }
-
-    var body: some View {
-        HStack(spacing: .spacingExtraSmall) {
-            status.avatar
-                .fixedSize()
-            Text(title)
-                .lineLimit(1)
-                .minimumScaleFactor(0.7)
-                .rythmicoFont(bold ? .bodySemibold : .body)
-                .foregroundColor(.rythmicoGray90)
-                .frame(maxWidth: .infinity, alignment: .leading)
-        }
-    }
-
-    private var title: String {
-        summarized ? status.summarizedTitle : status.title
-    }
-
-    private var bold: Bool {
-        !summarized
+extension InlineContentAndTitleView where Content == AnyView {
+    init(status: LessonPlan.Status, summarized: Bool) {
+        self.init(
+            content: { AnyView(status.avatar) },
+            title: summarized ? status.summarizedTitle : status.title,
+            bold: !summarized
+        )
     }
 }
 
@@ -40,10 +19,10 @@ private extension LessonPlan.Status {
             AvatarView(.placeholder)
         case .reviewing(let applications):
             AvatarStackView(applications.map(\.tutor), thumbnails: true)
-        case .scheduled(let tutor),
-             .cancelled(let tutor?, _):
-            LessonPlanTutorAvatarView(tutor, mode: .thumbnail)
-        case .cancelled(nil, _):
+        case .scheduled(_, let tutor),
+             .cancelled(_, let tutor?, _):
+            TutorAvatarView(tutor, mode: .thumbnail)
+        case .cancelled(_, nil, _):
             AvatarView(.placeholder)
         }
     }
@@ -55,10 +34,10 @@ private extension LessonPlan.Status {
             return "Tutor TBC"
         case .reviewing(let applications):
             return "\(applications.count) applied"
-        case .scheduled(let tutor),
-             .cancelled(let tutor?, _):
+        case .scheduled(_, let tutor),
+             .cancelled(_, let tutor?, _):
             return tutor.name
-        case .cancelled(nil, _):
+        case .cancelled(_, nil, _):
             return "No tutor"
         }
     }
@@ -71,10 +50,10 @@ private extension LessonPlan.Status {
         case .reviewing(let applications):
             let count = applications.count
             return "\(count) tutor\(count == 1 ? "" : "s") applied" // TODO: plurals
-        case .scheduled(let tutor),
-             .cancelled(let tutor?, _):
+        case .scheduled(_, let tutor),
+             .cancelled(_, let tutor?, _):
             return tutor.name
-        case .cancelled(nil, _):
+        case .cancelled(_, nil, _):
             return "No tutor was selected"
         }
     }
@@ -84,17 +63,17 @@ private extension LessonPlan.Status {
 struct LessonPlanTutorStatusView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LessonPlanTutorStatusView(.pending, summarized: true)
+            InlineContentAndTitleView(status: .pending, summarized: true)
                 .previewDisplayName("Pending")
-            LessonPlanTutorStatusView(.reviewing([]), summarized: true)
+            InlineContentAndTitleView(status: .reviewing([]), summarized: true)
                 .previewDisplayName("Reviewing 0 Tutors")
-            LessonPlanTutorStatusView(.reviewing(.stub), summarized: true)
+            InlineContentAndTitleView(status: .reviewing(.stub), summarized: true)
                 .previewDisplayName("Reviewing 1+ Tutors")
-            LessonPlanTutorStatusView(.scheduled(.jesseStub), summarized: true)
+            InlineContentAndTitleView(status: .scheduled(.stub, .jesseStub), summarized: true)
                 .previewDisplayName("Scheduled")
-            LessonPlanTutorStatusView(.cancelled(nil, .stub), summarized: true)
+            InlineContentAndTitleView(status: .cancelled(.stub, nil, .stub), summarized: true)
                 .previewDisplayName("Cancelled no Tutor")
-            LessonPlanTutorStatusView(.cancelled(.jesseStub, .stub), summarized: true)
+            InlineContentAndTitleView(status: .cancelled(.stub, .jesseStub, .stub), summarized: true)
                 .previewDisplayName("Cancelled w/ Tutor")
         }
         .previewLayout(.sizeThatFits)

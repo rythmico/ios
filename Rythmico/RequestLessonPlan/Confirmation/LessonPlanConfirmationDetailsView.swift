@@ -2,7 +2,7 @@ import SwiftUI
 
 struct LessonPlanConfirmationDetailsView: View {
     var lessonPlan: LessonPlan
-    var tutor: LessonPlan.Tutor
+    var tutor: Tutor
 
     var body: some View {
         VStack(spacing: .spacingSmall) {
@@ -22,7 +22,7 @@ struct LessonPlanConfirmationDetailsView: View {
                 .fixedSize(horizontal: false, vertical: true)
             }
             HStack(spacing: .spacingExtraSmall) {
-                LessonPlanTutorAvatarView(tutor, mode: .thumbnail)
+                TutorAvatarView(tutor, mode: .thumbnail)
                     .fixedSize()
                 Text(tutor.name)
                     .foregroundColor(.rythmicoGray90)

@@ -73,7 +73,7 @@ struct LessonPlanApplicationCell: View {
 
     var body: some View {
         VStack(spacing: .spacingExtraSmall) {
-            LessonPlanTutorAvatarView(application.tutor, mode: .thumbnail)
+            TutorAvatarView(application.tutor, mode: .thumbnail)
                 .frame(width: Const.avatarSize, height: Const.avatarSize)
             Text(application.tutor.name)
                 .rythmicoFont(.bodyBold)

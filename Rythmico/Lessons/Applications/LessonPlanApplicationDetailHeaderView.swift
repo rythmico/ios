@@ -6,7 +6,7 @@ struct LessonPlanApplicationDetailHeaderView: View {
 
     var body: some View {
         HStack(spacing: .spacingSmall) {
-            LessonPlanTutorAvatarView(application.tutor, mode: .original)
+            TutorAvatarView(application.tutor, mode: .original)
                 .frame(width: .spacingUnit * 20, height: .spacingUnit * 20)
             VStack(alignment: .leading, spacing: .spacingUnit) {
                 Text(application.tutor.name)

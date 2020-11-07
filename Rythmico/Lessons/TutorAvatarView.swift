@@ -1,18 +1,18 @@
 import SwiftUI
 import Sugar
 
-struct LessonPlanTutorAvatarView: View {
+struct TutorAvatarView: View {
     enum Mode {
         case thumbnail
         case original
     }
 
-    private let tutor: LessonPlan.Tutor
+    private let tutor: Tutor
     private let mode: Mode
     private let backgroundColor: Color
 
     init(
-        _ tutor: LessonPlan.Tutor,
+        _ tutor: Tutor,
         mode: Mode,
         backgroundColor: Color = AvatarView.Const.defaultBackgroundColor
     ) {
@@ -54,8 +54,8 @@ struct LessonPlanTutorAvatarView: View {
     }
 }
 
-extension AvatarStackView where Data.Element == LessonPlan.Tutor, ContentView == LessonPlanTutorAvatarView {
+extension AvatarStackView where Data.Element == Tutor, ContentView == TutorAvatarView {
     init(_ data: Data, thumbnails: Bool) {
-        self.init(data) { LessonPlanTutorAvatarView($0, mode: .thumbnail) }
+        self.init(data) { TutorAvatarView($0, mode: .thumbnail) }
     }
 }

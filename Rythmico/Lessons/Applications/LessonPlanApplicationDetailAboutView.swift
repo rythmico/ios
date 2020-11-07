@@ -6,7 +6,7 @@ struct LessonPlanApplicationDetailAboutView: View, VisibleView {
     @State
     var isVisible = false
 
-    var tutor: LessonPlan.Tutor
+    var tutor: Tutor
 
     var body: some View {
         ZStack {

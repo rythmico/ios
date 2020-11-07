@@ -1,24 +1,25 @@
 import Foundation
 import Tagged
 
-struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
+struct LessonPlan: Equatable, Identifiable, Hashable {
     enum Status: Equatable, Decodable, Hashable {
         case pending
         case reviewing([Application])
-        case scheduled(Tutor)
-        case cancelled(Tutor?, CancellationInfo)
+        case scheduled([Lesson], Tutor)
+        case cancelled([Lesson]?, Tutor?, CancellationInfo)
 
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             let applications = try container.decodeIfPresent([Application].self, forKey: .applications)
-            let tutor = try container.decodeIfPresent(Tutor.self, forKey: .tutor)
+            let lessons = try container.decodeIfPresent([Lesson].self, forKey: .lessons)
+            let bookingInfo = try container.decodeIfPresent(BookingInfo.self, forKey: .bookingInfo)
             let cancellationInfo = try container.decodeIfPresent(CancellationInfo.self, forKey: .cancellationInfo)
-            switch (applications, tutor, cancellationInfo) {
-            case (_, let tutor, let cancellationInfo?):
-                self = .cancelled(tutor, cancellationInfo)
-            case (_, let tutor?, _):
-                self = .scheduled(tutor)
-            case (let applications?, _, _) where !applications.isEmpty:
+            switch (applications, lessons, bookingInfo, cancellationInfo) {
+            case (_, let lessons, let bookingInfo, let cancellationInfo?):
+                self = .cancelled(lessons, bookingInfo?.tutor, cancellationInfo)
+            case (_, let lessons?, let bookingInfo?, _) where !lessons.isEmpty:
+                self = .scheduled(lessons, bookingInfo.tutor)
+            case (let applications?, _, _, _) where !applications.isEmpty:
                 self = .reviewing(applications)
             default:
                 self = .pending
@@ -31,13 +32,9 @@ struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
         var privateNote: String
     }
 
-    struct Tutor: Identifiable, Equatable, Decodable, Hashable {
-        typealias ID = Tagged<Self, String>
-
-        var id: ID
-        var name: String
-        var photoThumbnailURL: ImageReference?
-        var photoURL: ImageReference?
+    struct BookingInfo: Equatable, Decodable, Hashable {
+        var date: Date
+        var tutor: Tutor
     }
 
     struct CancellationInfo: Equatable, Decodable, Hashable {
@@ -61,25 +58,9 @@ struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
     var address: Address
     var schedule: Schedule
     var privateNote: String
+}
 
-    init(
-        id: ID,
-        status: Status,
-        instrument: Instrument,
-        student: Student,
-        address: Address,
-        schedule: Schedule,
-        privateNote: String
-    ) {
-        self.id = id
-        self.status = status
-        self.instrument = instrument
-        self.student = student
-        self.address = address
-        self.schedule = schedule
-        self.privateNote = privateNote
-    }
-
+extension LessonPlan: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(
@@ -96,13 +77,27 @@ struct LessonPlan: Equatable, Decodable, Identifiable, Hashable {
     private enum CodingKeys: String, CodingKey {
         case id
         case applications // Status
-        case tutor // Status
+        case bookingInfo // Status
         case cancellationInfo // Status
+        case lessons // Status
         case instrument
         case student
         case address
         case schedule
         case privateNote
+    }
+}
+
+extension LessonPlan {
+    var lessons: [Lesson]? {
+        switch status {
+        case .scheduled(let lessons, _):
+            return lessons
+        case .cancelled(let lessons, _, _):
+            return lessons
+        case .pending, .reviewing:
+            return nil
+        }
     }
 }
 

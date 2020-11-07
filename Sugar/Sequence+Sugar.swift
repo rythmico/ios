@@ -18,3 +18,9 @@ extension Sequence {
         compactMap { $0 }
     }
 }
+
+extension Sequence where Element: Sequence {
+    public func flatten() -> [Element.Element] {
+        flatMap { $0 }
+    }
+}

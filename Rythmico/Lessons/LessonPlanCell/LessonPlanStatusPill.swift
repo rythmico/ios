@@ -1,14 +1,8 @@
 import SwiftUI
 
-struct LessonPlanStatusPill: View {
-    var status: LessonPlan.Status
-
-    init(_ status: LessonPlan.Status) {
-        self.status = status
-    }
-
-    var body: some View {
-        Pill(
+extension Pill where Content == AnyView {
+    init(status: LessonPlan.Status) {
+        self.init(
             title: status.title,
             titleColor: status.titleColor,
             backgroundColor: status.backgroundColor
