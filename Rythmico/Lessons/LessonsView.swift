@@ -34,7 +34,10 @@ struct LessonsView: View, TestableView {
         .padding(.top, .spacingSmall)
         .accentColor(.rythmicoPurple)
         .testable(self)
-        .onReceive(state.onLessonsTabRootPublisher, perform: coordinator.startToIdle)
+        .onReceive(
+            coordinator.$state.zip(state.onLessonsTabRootPublisher).b,
+            perform: coordinator.startToIdle
+        )
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)

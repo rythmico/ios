@@ -53,7 +53,10 @@ struct BookingRequestsView: View {
         .listStyle(GroupedListStyle())
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
 
-        .onReceive(state.onRequestsUpcomingTabRootPublisher, perform: coordinator.startToIdle)
+        .onReceive(
+            coordinator.$state.zip(state.onRequestsUpcomingTabRootPublisher).b,
+            perform: coordinator.startToIdle
+        )
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)

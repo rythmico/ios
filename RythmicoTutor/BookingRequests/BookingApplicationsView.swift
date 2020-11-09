@@ -38,7 +38,10 @@ struct BookingApplicationsView: View {
             .listStyle(GroupedListStyle())
         }
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
-        .onReceive(state.onRequestsAppliedTabRootPublisher, perform: coordinator.startToIdle)
+        .onReceive(
+            coordinator.$state.zip(state.onRequestsAppliedTabRootPublisher).b,
+            perform: coordinator.startToIdle
+        )
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
