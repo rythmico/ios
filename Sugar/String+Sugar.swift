@@ -40,6 +40,10 @@ extension String {
             .map { $0.trimmingCharacters(in: set) }
             .joined(separator: .newline)
     }
+
+    public func replacingCharacters(in set: CharacterSet, with replacement: String) -> String {
+        components(separatedBy: set).joined(separator: replacement)
+    }
 }
 
 extension String {
