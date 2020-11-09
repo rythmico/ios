@@ -60,7 +60,7 @@ struct ScheduleDetailsView: View {
     private let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
     private var frequencyDayText: String { frequencyDayFormatter.string(from: schedule.startDate) }
     private var frequencyText: [MultiStyleText.Part] {
-        "Reocurring ".color(.rythmicoGray90) +
+        "Recurring ".color(.rythmicoGray90) +
         "every \(frequencyDayText)".style(.bodyBold).color(.rythmicoGray90) +
         " at the same time and for the same duration".color(.rythmicoGray90)
     }
