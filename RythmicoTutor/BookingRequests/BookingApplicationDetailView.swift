@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftUIMapView
+import PhoneNumberKit
 import Sugar
 
 struct BookingApplicationDetailView: View {
@@ -29,7 +30,7 @@ struct BookingApplicationDetailView: View {
     var statusDate: String { statusDateFormatter.localizedString(for: bookingApplication.statusInfo.date, relativeTo: Current.date()) }
     var title: String { "\(bookingApplication.student.name) - \(bookingApplication.instrument.name) Request" }
     var submittedBy: String { bookingApplication.submitterName }
-    var phoneNumber: String? { bookingApplication.phoneNumber }
+    var phoneNumber: String? { bookingApplication.phoneNumber.map { PhoneNumberKit().format($0, toType: .international) } }
     var startDate: String { dateFormatter.string(from: bookingApplication.schedule.startDate) }
     var time: String { timeFormatter.string(from: bookingApplication.schedule.startDate) }
     var duration: String { "\(bookingApplication.schedule.duration) minutes" }

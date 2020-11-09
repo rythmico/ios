@@ -1,7 +1,8 @@
 import Foundation
+import PhoneNumberKit
 import struct SwiftUI.Color
 
-struct BookingApplication: Equatable, Decodable, Identifiable, Hashable {
+struct BookingApplication: Equatable, Identifiable, Hashable {
     enum Status: String, Decodable, Hashable, CaseIterable {
         case pending = "PENDING"
         case cancelled = "CANCELLED"
@@ -53,40 +54,15 @@ struct BookingApplication: Equatable, Decodable, Identifiable, Hashable {
     var instrument: Instrument
     var submitterName: String
     var submitterPrivateNote: String
-    var phoneNumber: String?
+    @E164PhoneNumberOptional
+    var phoneNumber: PhoneNumber?
     var student: Student
     var addressInfo: AddressInfo
     var schedule: Schedule
     var privateNote: String
+}
 
-    init(
-        id: String,
-        bookingRequestId: String,
-        createdAt: Date,
-        statusInfo: StatusInfo,
-        instrument: Instrument,
-        submitterName: String,
-        submitterPrivateNote: String,
-        phoneNumber: String?,
-        student: Student,
-        addressInfo: AddressInfo,
-        schedule: Schedule,
-        privateNote: String
-    ) {
-        self.id = id
-        self.bookingRequestId = bookingRequestId
-        self.createdAt = createdAt
-        self.statusInfo = statusInfo
-        self.instrument = instrument
-        self.submitterName = submitterName
-        self.submitterPrivateNote = submitterPrivateNote
-        self.phoneNumber = phoneNumber
-        self.student = student
-        self.addressInfo = addressInfo
-        self.schedule = schedule
-        self.privateNote = privateNote
-    }
-
+extension BookingApplication: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(
@@ -97,7 +73,7 @@ struct BookingApplication: Equatable, Decodable, Identifiable, Hashable {
             instrument: container.decode(Instrument.self, forKey: .instrument),
             submitterName: container.decode(String.self, forKey: .submitterName),
             submitterPrivateNote: container.decode(String.self, forKey: .submitterPrivateNote),
-            phoneNumber: container.decodeIfPresent(String.self, forKey: .phoneNumber),
+            phoneNumber: container.decode(E164PhoneNumberOptional.self, forKey: .phoneNumber).wrappedValue,
             student: container.decode(Student.self, forKey: .student),
             addressInfo: AddressInfo(from: decoder),
             schedule: container.decode(Schedule.self, forKey: .schedule),
