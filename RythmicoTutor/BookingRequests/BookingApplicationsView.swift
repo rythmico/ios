@@ -1,15 +1,16 @@
 import SwiftUI
+import Combine
 
-struct BookingApplicationsView: View, VisibleView {
+struct BookingApplicationsView: View {
     @ObservedObject
     private var coordinator: APIActivityCoordinator<BookingApplicationsGetRequest>
     @ObservedObject
     private var repository = Current.bookingApplicationRepository
 
+    @ObservedObject
+    private var state = Current.state
     @State
     private var selectedBookingApplicationGroup: BookingApplication.Status?
-    @State
-    var isVisible = false
 
     init?() {
         guard let coordinator = Current.sharedCoordinator(for: \.bookingApplicationFetchingService) else {
@@ -37,8 +38,10 @@ struct BookingApplicationsView: View, VisibleView {
             .listStyle(GroupedListStyle())
         }
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
-        .visible(self)
-        .onAppearOrForeground(self, perform: coordinator.startToIdle)
+        .onReceive(
+            coordinator.$state.zip(state.onRequestsAppliedTabRootPublisher).b,
+            perform: coordinator.startToIdle
+        )
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
@@ -56,6 +59,15 @@ struct BookingApplicationsView: View, VisibleView {
 
     private func numberOfApplications(withStatus status: BookingApplication.Status) -> Int {
         applications.count { $0.statusInfo.status == status }
+    }
+}
+
+private extension AppState {
+    var onRequestsAppliedTabRootPublisher: AnyPublisher<Void, Never> {
+        $tab.combineLatest($requestsTab, $requestsContext)
+            .filter { $0 == (.requests, .applied, .none) }
+            .map { _ in () }
+            .eraseToAnyPublisher()
     }
 }
 

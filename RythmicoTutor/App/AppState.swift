@@ -51,7 +51,7 @@ extension AppState.RequestsContext {
                 if isApplying {
                     self = .applyingToRequest(selectedRequest)
                 } else {
-                    self = .none
+                    self = .viewingRequest(selectedRequest)
                 }
             }
         }

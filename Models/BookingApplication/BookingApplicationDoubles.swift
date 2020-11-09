@@ -11,7 +11,7 @@ extension BookingApplication {
             instrument: .piano,
             submitterName: "David R",
             submitterPrivateNote: "",
-            phoneNumber: statusInfo.status == .selected ? "+44 5555 666666" : nil,
+            phoneNumber: statusInfo.status == .selected ? .stub : nil,
             student: .jackStub,
             addressInfo: statusInfo.status == .selected ? .address(.stub) : .postcode("N8"),
             schedule: .startingTomorrowStub,

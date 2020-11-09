@@ -1,10 +1,8 @@
 import SwiftUI
 
-struct LessonPlanApplicationDetailAboutView: View, VisibleView {
+struct LessonPlanApplicationDetailAboutView: View {
     @ObservedObject
     var coordinator: APIActivityCoordinator<GetPortfolioRequest>
-    @State
-    var isVisible = false
 
     var tutor: Tutor
 
@@ -12,8 +10,7 @@ struct LessonPlanApplicationDetailAboutView: View, VisibleView {
         ZStack {
             content
         }
-        .visible(self)
-        .onAppearOrForeground(self, perform: fetchPortfolio)
+        .onAppear(perform: fetchPortfolio)
         .onDisappear(perform: coordinator.cancel)
         .alertOnFailure(coordinator)
     }

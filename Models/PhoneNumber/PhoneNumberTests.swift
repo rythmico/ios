@@ -1,5 +1,9 @@
 import XCTest
+#if RYTHMICO_TESTS
 @testable import Rythmico
+#elseif TUTOR_TESTS
+@testable import Tutor
+#endif
 import PhoneNumberKit
 
 final class PhoneNumberTests: XCTestCase {}

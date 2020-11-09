@@ -1,6 +1,7 @@
 import SwiftUI
+import Combine
 
-struct BookingRequestsView: View, VisibleView {
+struct BookingRequestsView: View {
     @ObservedObject
     private var coordinator: APIActivityCoordinator<BookingRequestsGetRequest>
     @ObservedObject
@@ -12,8 +13,6 @@ struct BookingRequestsView: View, VisibleView {
 
     @ObservedObject
     private var state = Current.state
-    @State
-    var isVisible = false
 
     init?() {
         guard let coordinator = Current.sharedCoordinator(for: \.bookingRequestFetchingService) else {
@@ -53,9 +52,11 @@ struct BookingRequestsView: View, VisibleView {
         }
         .listStyle(GroupedListStyle())
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
-        .visible(self)
 
-        .onAppearOrForeground(self, perform: coordinator.startToIdle)
+        .onReceive(
+            coordinator.$state.zip(state.onRequestsUpcomingTabRootPublisher).b,
+            perform: coordinator.startToIdle
+        )
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
@@ -69,6 +70,15 @@ struct BookingRequestsView: View, VisibleView {
 
     func requestPushNotificationAuth(_: [BookingRequest]) {
         pushNotificationAuthCoordinator.requestAuthorization()
+    }
+}
+
+private extension AppState {
+    var onRequestsUpcomingTabRootPublisher: AnyPublisher<Void, Never> {
+        $tab.combineLatest($requestsTab, $requestsContext)
+            .filter { $0 == (.requests, .upcoming, .none) }
+            .map { _ in () }
+            .eraseToAnyPublisher()
     }
 }
 

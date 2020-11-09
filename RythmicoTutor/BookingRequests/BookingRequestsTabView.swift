@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct BookingRequestsTabView: View {
-    enum Tab: String, CaseIterable {
+    enum Tab: String, Equatable, Hashable, CaseIterable {
         case upcoming = "Upcoming"
         case applied = "Applied"
     }

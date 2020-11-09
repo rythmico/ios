@@ -1,5 +1,11 @@
 import Foundation
 
+extension URLOpener {
+    func open(_ link: MapLink) throws {
+        open(try link.url())
+    }
+}
+
 enum MapLink {
     enum Intent {
         case search(query: String)
@@ -7,22 +13,6 @@ enum MapLink {
 
     case appleMaps(Intent)
     case googleMaps(Intent, zoom: Int)
-}
-
-protocol MapOpenerProtocol {
-    func open(_ link: MapLink) throws
-}
-
-struct MapOpener: MapOpenerProtocol {
-    private let urlOpener: URLOpener
-
-    init(urlOpener: URLOpener) {
-        self.urlOpener = urlOpener
-    }
-
-    func open(_ link: MapLink) throws {
-        try urlOpener.open(link.url())
-    }
 }
 
 fileprivate extension MapLink {

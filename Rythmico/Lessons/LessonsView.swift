@@ -1,7 +1,8 @@
 import SwiftUI
+import Combine
 import Sugar
 
-struct LessonsView: View, TestableView, VisibleView {
+struct LessonsView: View, TestableView {
     typealias Coordinator = APIActivityCoordinator<GetLessonPlansRequest>
 
     enum Filter: String, CaseIterable {
@@ -15,8 +16,6 @@ struct LessonsView: View, TestableView, VisibleView {
     private(set) var coordinator: Coordinator
     @ObservedObject
     private var repository = Current.lessonPlanRepository
-    @State
-    var isVisible = false
 
     var isLoading: Bool { coordinator.state.isLoading }
     var error: Error? { coordinator.state.failureValue }
@@ -35,11 +34,22 @@ struct LessonsView: View, TestableView, VisibleView {
         .padding(.top, .spacingSmall)
         .accentColor(.rythmicoPurple)
         .testable(self)
-        .visible(self)
-        .onAppearOrForeground(self, perform: coordinator.startToIdle)
+        .onReceive(
+            coordinator.$state.zip(state.onLessonsTabRootPublisher).b,
+            perform: coordinator.startToIdle
+        )
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
+    }
+}
+
+private extension AppState {
+    var onLessonsTabRootPublisher: AnyPublisher<Void, Never> {
+        $tab.combineLatest($lessonsContext)
+            .filter { $0 == (.lessons, .none) }
+            .map { _ in () }
+            .eraseToAnyPublisher()
     }
 }
 
