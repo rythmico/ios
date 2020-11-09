@@ -44,7 +44,7 @@ struct LessonsView: View, TestableView {
 private extension AppState {
     var onLessonsTabRootPublisher: AnyPublisher<Void, Never> {
         $tab.combineLatest($lessonsContext)
-            .filter { $0 == .lessons && $1 == .none }
+            .filter { $0 == (.lessons, .none) }
             .map { _ in () }
             .eraseToAnyPublisher()
     }
