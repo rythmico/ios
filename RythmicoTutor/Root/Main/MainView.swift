@@ -3,7 +3,7 @@ import SFSafeSymbols
 import Sugar
 
 struct MainView: View, TestableView {
-    enum Tab: String, Hashable, CaseIterable {
+    enum Tab: String, Equatable, Hashable, CaseIterable {
         case requests = "Requests"
         case profile = "Profile"
 
