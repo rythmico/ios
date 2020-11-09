@@ -223,7 +223,6 @@
 		D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */; };
 		D5200E4023FDE460007168E0 /* MultiStyleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3F23FDE460007168E0 /* MultiStyleText.swift */; };
 		D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */; };
-		D5217CEC24E2D7D800C89018 /* MapOpenerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5217CEB24E2D7D800C89018 /* MapOpenerDoubles.swift */; };
 		D5217CEF24E2F8B400C89018 /* MapOpener+ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5217CEE24E2F8B400C89018 /* MapOpener+ActionSheet.swift */; };
 		D524D0C0250468CA00BC9AF7 /* PushNotificationAuthorizationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198552471BD6C005529EB /* PushNotificationAuthorizationCoordinator.swift */; };
 		D524D0C1250468D200BC9AF7 /* PushNotificationAuthorizationCoordinatorDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A91EF7249189E000DEAD5E /* PushNotificationAuthorizationCoordinatorDoubles.swift */; };
@@ -736,7 +735,6 @@
 		D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailsView.swift; sourceTree = "<group>"; };
 		D5200E3F23FDE460007168E0 /* MultiStyleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStyleText.swift; sourceTree = "<group>"; };
 		D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleView.swift; sourceTree = "<group>"; };
-		D5217CEB24E2D7D800C89018 /* MapOpenerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOpenerDoubles.swift; sourceTree = "<group>"; };
 		D5217CEE24E2F8B400C89018 /* MapOpener+ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapOpener+ActionSheet.swift"; sourceTree = "<group>"; };
 		D527B00824FD2047003E81A9 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		D527B00A24FD3297003E81A9 /* AvatarStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarStackView.swift; sourceTree = "<group>"; };
@@ -1589,7 +1587,6 @@
 			isa = PBXGroup;
 			children = (
 				D52C554F24E2ABFC00C295C4 /* MapOpener.swift */,
-				D5217CEB24E2D7D800C89018 /* MapOpenerDoubles.swift */,
 				D5217CEE24E2F8B400C89018 /* MapOpener+ActionSheet.swift */,
 			);
 			path = MapOpener;
@@ -2792,7 +2789,6 @@
 				D54F711125474E6F00D73E1E /* AppState.swift in Sources */,
 				035B1D16249E565C00AABFEA /* AuthorizationAppleIDButton.swift in Sources */,
 				D5F4D3E324F04479000E8580 /* BookingApplicationEndpoints.swift in Sources */,
-				D5217CEC24E2D7D800C89018 /* MapOpenerDoubles.swift in Sources */,
 				D54F71182547523100D73E1E /* DismissKeyboardTooltip.swift in Sources */,
 				D5CC5FF225029525007DFE84 /* ImageReference.swift in Sources */,
 				D593C7032550C03B00C684FF /* AppUpdatePrompt.swift in Sources */,

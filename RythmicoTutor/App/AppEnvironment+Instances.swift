@@ -41,7 +41,6 @@ extension AppEnvironment {
         uiAccessibility: UIAccessibility.self,
         keyboardDismisser: UIApplication.shared,
         urlOpener: UIApplication.shared,
-        mapOpener: MapOpener(urlOpener: UIApplication.shared),
         router: Router(),
 
         imageLoadingService: ImageLoadingService(),
@@ -61,8 +60,6 @@ extension AppEnvironment {
     static var fake: AppEnvironment {
         dummy.with {
             $0.setUpFake()
-
-            $0.mapOpener = MapOpener(urlOpener: UIApplication.shared)
 
             $0.bookingRequestFetchingService = fakeAPIService(result: .success([.stub, .longStub]))
             $0.bookingRequestApplyingService = fakeAPIService(result: .success(.stub))
@@ -106,7 +103,6 @@ extension AppEnvironment {
             uiAccessibility: UIAccessibilityDummy.self,
             keyboardDismisser: KeyboardDismisserDummy(),
             urlOpener: URLOpenerDummy(),
-            mapOpener: MapOpenerDummy(),
             router: RouterDummy(),
 
             imageLoadingService: ImageLoadingServiceDummy(),

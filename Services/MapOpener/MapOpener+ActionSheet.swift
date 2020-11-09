@@ -4,7 +4,7 @@ import Sugar
 extension View {
     func mapOpeningSheet(
         isPresented: Binding<Bool>,
-        mapOpener: MapOpenerProtocol = Current.mapOpener,
+        urlOpener: URLOpener = Current.urlOpener,
         intent: MapLink.Intent,
         error: Binding<Error?>
     ) -> some View {
@@ -15,7 +15,7 @@ extension View {
 
         func button(for link: MapLink) -> ActionSheet.Button {
             .default(Text(link.appName)) {
-                error.wrappedValue = Result { try mapOpener.open(link) }.failureValue
+                error.wrappedValue = Result { try urlOpener.open(link) }.failureValue
             }
         }
 
