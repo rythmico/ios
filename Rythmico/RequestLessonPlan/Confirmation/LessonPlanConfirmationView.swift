@@ -21,7 +21,7 @@ struct LessonPlanConfirmationView: View, TestableView {
         case .scheduled:
             return nil
         default:
-            return "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta odio dolor, eget sodales turpis mollis semper."
+            return "Potential tutors received your request and will submit applications for your consideration."
         }
     }
 
