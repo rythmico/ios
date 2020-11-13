@@ -19,15 +19,11 @@ struct LessonPlanApplicationsView: View {
     }
 
     var priceInfo: String {
-        "For the dates you’ve selected, all \(instrument) tutors charge a standard rate of £\(price) per lesson"
+        "All \(instrument) tutors charge a standard rate of £\(lessonPlan.schedule.duration) per lesson"
     }
 
     var instrument: String {
         lessonPlan.instrument.name.lowercased(with: Current.locale)
-    }
-
-    var price: String {
-        Current.calendar().isDateInWeekend(lessonPlan.schedule.startDate) ? "65" : "60"
     }
 
     var body: some View {
