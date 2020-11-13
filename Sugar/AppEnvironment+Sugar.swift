@@ -112,6 +112,10 @@ extension AppEnvironment {
     func deviceUnregisterCoordinator() -> DeviceUnregisterCoordinator {
         DeviceUnregisterCoordinator(deviceTokenDeleter: deviceTokenDeleter)
     }
+
+    var sceneState: UIApplication.State {
+        UIApplication.shared.applicationState
+    }
 }
 
 private var cachedRemoteConfigCoordinator: RemoteConfigCoordinator?

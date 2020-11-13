@@ -71,7 +71,7 @@ struct BookingRequestsView: View {
     }
 
     private func fetch() {
-        guard scenePhase == .active else { return }
+        guard Current.sceneState == .active else { return }
         coordinator.startToIdle()
     }
 }
