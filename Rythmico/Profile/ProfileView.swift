@@ -7,8 +7,14 @@ struct ProfileView: View, TestableView {
         static let horizontalMargins: CGFloat = 6
     }
 
+    private enum Page {
+        case parentInfoAndSafety
+    }
+
     @ObservedObject
     private var notificationAuthorizationCoordinator = Current.pushNotificationAuthorizationCoordinator
+    @State
+    private var page: Page?
 
     var errorMessage: String? {
         notificationAuthorizationCoordinator.status.failedValue?.localizedDescription
@@ -37,31 +43,52 @@ struct ProfileView: View, TestableView {
     let inspection = SelfInspection()
     var body: some View {
         List {
-            Section(header: header("Notifications")) {
-                cell(
-                    "Push Notifications",
-                    disclosure: enablePushNotificationsAction == nil,
-                    action: goToPushNotificationsSettingsAction
-                ) {
-                    enablePushNotificationsAction.map {
-                        Toggle("", isOn: .constant(notificationAuthorizationCoordinator.status.isAuthorizing))
-                            .onTapGesture(perform: $0)
+            Group {
+                Section(header: header("Notifications")) {
+                    cell(
+                        "Push Notifications",
+                        disclosure: enablePushNotificationsAction == nil,
+                        action: goToPushNotificationsSettingsAction
+                    ) {
+                        enablePushNotificationsAction.map {
+                            Toggle("", isOn: .constant(notificationAuthorizationCoordinator.status.isAuthorizing))
+                                .onTapGesture(perform: $0)
+                        }
                     }
                 }
-            }
-            Section {
-                Button(action: logOut) {
-                    HStack(alignment: .center) {
-                        Text("Log out")
-                            .rythmicoFont(.body)
-                            .foregroundColor(.rythmicoRed)
-                            .frame(maxWidth: .infinity)
-                            .multilineTextAlignment(.center)
+                Section(header: header("Help & Support")) {
+                    ZStack {
+                        cell("Parent Info & Safety", disclosure: true)
+                        NavigationLink(
+                            destination: ParentInfoAndSafetyView(),
+                            tag: .parentInfoAndSafety,
+                            selection: $page,
+                            label: { EmptyView() }
+                        )
+                        .frame(width: 0)
+                        .opacity(0)
                     }
+                    cell(
+                        "Contact Us",
+                        disclosure: true,
+                        action: { Current.urlOpener.open("mailto:info@rythmico.com") }
+                    )
                 }
-                .frame(minHeight: 35)
-                .accessibility(hint: Text("Double tap to log out of your account"))
+                Section {
+                    Button(action: logOut) {
+                        HStack(alignment: .center) {
+                            Text("Log out")
+                                .rythmicoFont(.body)
+                                .foregroundColor(.rythmicoRed)
+                                .frame(maxWidth: .infinity)
+                                .multilineTextAlignment(.center)
+                        }
+                    }
+                    .frame(minHeight: 35)
+                    .accessibility(hint: Text("Double tap to log out of your account"))
+                }
             }
+            .textCase(nil)
         }
         .listStyle(GroupedListStyle())
         .alert(error: errorMessage, dismiss: dismissError)
@@ -76,11 +103,12 @@ struct ProfileView: View, TestableView {
             .padding(.bottom, .spacingUnit * 2)
     }
 
-    private func cell<Content: View>(
+    private func cell(
         _ title: String,
-        disclosure: Bool = false
+        disclosure: Bool = false,
+        action: Action? = nil
     ) -> some View {
-        cell(title, disclosure: disclosure) { EmptyView() }
+        cell(title, disclosure: disclosure, action: action) { EmptyView() }
     }
 
     private func cell<Content: View>(
