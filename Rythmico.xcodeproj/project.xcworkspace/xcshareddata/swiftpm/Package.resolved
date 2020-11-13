@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/firebase/firebase-ios-sdk",
         "state": {
           "branch": null,
-          "revision": "d1870fd01d72bef52bd6596f8cbbcda4a4bb9d5d",
-          "version": "7.0.0"
+          "revision": "c227152e84ad215eed0285c9df62f39e0406e455",
+          "version": "7.1.0"
         }
       },
       {
@@ -114,8 +114,8 @@
         "repositoryURL": "https://github.com/stripe/stripe-ios",
         "state": {
           "branch": null,
-          "revision": "93255bc66c5b5ee554712be8b25db659237109c9",
-          "version": "20.0.0"
+          "revision": "ce45d3715285eace0d4e5f072289904c7d332b23",
+          "version": "20.1.1"
         }
       },
       {

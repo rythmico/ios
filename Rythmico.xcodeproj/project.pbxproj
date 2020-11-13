@@ -252,6 +252,7 @@
 		D52C554C24DDE5FF00C295C4 /* Buttons+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */; };
 		D52C554E24E1BCBB00C295C4 /* URL+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554D24E1BCBB00C295C4 /* URL+Sugar.swift */; };
 		D52C555024E2ABFC00C295C4 /* MapOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554F24E2ABFC00C295C4 /* MapOpener.swift */; };
+		D531295D255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D531295C255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift */; };
 		D5317142250D77B3006751A7 /* Sequence+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5317141250D77B3006751A7 /* Sequence+Sugar.swift */; };
 		D535547723DF3A19005A20EB /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = D535547623DF3A19005A20EB /* Valet */; };
 		D535547923DF3A7C005A20EB /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547823DF3A7C005A20EB /* Keychain.swift */; };
@@ -293,6 +294,7 @@
 		D53555D023E536B5005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547023DF2A40005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift */; };
 		D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */; };
 		D53555E623E5383C005A20EB /* AppleAuthorizationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560E23CD384300BC8485 /* AppleAuthorizationServiceTests.swift */; };
+		D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = D53668FC255EEDEF00A9D97D /* Stripe */; };
 		D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */; };
 		D5473C9F241AC3CB00D66775 /* AddressDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5473C9D241AC3B800D66775 /* AddressDetailsViewTests.swift */; };
 		D54EFF0C2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF0B2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift */; };
@@ -436,8 +438,6 @@
 		D5D78E172525F531007041BE /* LegibilityWeight+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D78E162525F531007041BE /* LegibilityWeight+Sugar.swift */; };
 		D5D974F425263FAF000AD074 /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D974F325263FAF000AD074 /* PhoneNumber.swift */; };
 		D5D974F925263FB9000AD074 /* PhoneNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D974F825263FB9000AD074 /* PhoneNumberTests.swift */; };
-		D5D97514252B9EB6000AD074 /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = D5D97513252B9EB6000AD074 /* Stripe */; };
-		D5D97515252B9EB6000AD074 /* Stripe in Embed Frameworks */ = {isa = PBXBuildFile; productRef = D5D97513252B9EB6000AD074 /* Stripe */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D5D9AE3F25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE3E25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift */; };
 		D5D9AE4425335B0400A0ABCC /* StripeCardDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE4325335B0400A0ABCC /* StripeCardDetails.swift */; };
 		D5D9AE4F253367A100A0ABCC /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE4E253367A100A0ABCC /* Divider.swift */; };
@@ -567,7 +567,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D53554FD23E0FD77005A20EB /* Sugar.framework in Embed Frameworks */,
-				D5D97515252B9EB6000AD074 /* Stripe in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -756,6 +755,7 @@
 		D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Buttons+Tutor.swift"; sourceTree = "<group>"; };
 		D52C554D24E1BCBB00C295C4 /* URL+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Sugar.swift"; sourceTree = "<group>"; };
 		D52C554F24E2ABFC00C295C4 /* MapOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOpener.swift; sourceTree = "<group>"; };
+		D531295C255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentInfoAndSafetyView.swift; sourceTree = "<group>"; };
 		D5317141250D77B3006751A7 /* Sequence+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Sugar.swift"; sourceTree = "<group>"; };
 		D535546823DCB03E005A20EB /* AppleAuthorizationResponseDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationResponseDoubles.swift; sourceTree = "<group>"; };
 		D535546A23DCB65A005A20EB /* AppleAuthorizationCredentialStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialStateProvider.swift; sourceTree = "<group>"; };
@@ -957,11 +957,11 @@
 				D535547723DF3A19005A20EB /* Valet in Frameworks */,
 				D5AC9E3B254D9533003A8197 /* FirebaseRemoteConfig in Frameworks */,
 				D585217624CF81CE005D783A /* Introspect in Frameworks */,
-				D5D97514252B9EB6000AD074 /* Stripe in Frameworks */,
 				D5FC2D44254A7DE3005056D5 /* FirebaseAuth in Frameworks */,
 				D5FC2D42254A7DE3005056D5 /* FirebaseMessaging in Frameworks */,
 				D5FC2D3E254A7DE3005056D5 /* FirebaseAnalytics in Frameworks */,
 				D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */,
+				D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */,
 				03B19837247053F5005529EB /* APIKit in Frameworks */,
 				D5F11566253735F20027D164 /* NonEmpty in Frameworks */,
 			);
@@ -1426,6 +1426,7 @@
 			children = (
 				03EDA6782476F2CB00FBE527 /* ProfileView.swift */,
 				03EDA67A2477695900FBE527 /* ProfileViewTests.swift */,
+				D531295C255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -2010,7 +2011,6 @@
 				03B19836247053F5005529EB /* APIKit */,
 				D585217524CF81CE005D783A /* Introspect */,
 				D5D78DD6252502CE007041BE /* PhoneNumberKit */,
-				D5D97513252B9EB6000AD074 /* Stripe */,
 				D5F11565253735F20027D164 /* NonEmpty */,
 				D5BDD50A253CCC4400255190 /* Tagged */,
 				D555A4AD2542409F00B8688F /* MultiSheet */,
@@ -2019,6 +2019,7 @@
 				D5FC2D41254A7DE3005056D5 /* FirebaseMessaging */,
 				D5FC2D43254A7DE3005056D5 /* FirebaseAuth */,
 				D5AC9E3A254D9533003A8197 /* FirebaseRemoteConfig */,
+				D53668FC255EEDEF00A9D97D /* Stripe */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -2439,6 +2440,7 @@
 				D516A929253A554F002E6EDF /* ImageAsset+Sugar.swift in Sources */,
 				D5AAF7D123F9ACFA00E410F2 /* InstrumentSelectionView.swift in Sources */,
 				D53555B623E53699005A20EB /* AuthenticationService.swift in Sources */,
+				D531295D255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift in Sources */,
 				D53555BB23E53699005A20EB /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
 				D53555C223E536AE005A20EB /* AppleAuthorizationCredential.swift in Sources */,
 				03C39DD82496CA2A00C76516 /* LessonPlanStatusPill.swift in Sources */,
@@ -3537,6 +3539,11 @@
 			package = D535554A23E23EA7005A20EB /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
 		};
+		D53668FC255EEDEF00A9D97D /* Stripe */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = Stripe;
+		};
 		D555A4AD2542409F00B8688F /* MultiSheet */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D555A4AC2542409F00B8688F /* XCRemoteSwiftPackageReference "MultiSheet" */;
@@ -3586,11 +3593,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5D78DD5252502CE007041BE /* XCRemoteSwiftPackageReference "PhoneNumberKit" */;
 			productName = PhoneNumberKit;
-		};
-		D5D97513252B9EB6000AD074 /* Stripe */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */;
-			productName = Stripe;
 		};
 		D5F11565253735F20027D164 /* NonEmpty */ = {
 			isa = XCSwiftPackageProductDependency;

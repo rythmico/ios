@@ -24,7 +24,7 @@ struct LessonPriceView: View {
     }
 
     var priceExplanation: String {
-        "This is based on the standard £60 per hour rate for all " +
+        "This is based on the standard £1/minute rate for all " +
         instrument.name.lowercased(with: Current.locale) +
         " tutors."
     }

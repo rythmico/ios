@@ -60,51 +60,54 @@ struct AddressDetailsView: View, TestableView {
     var body: some View {
         TitleSubtitleContentView(title: "Address Details", subtitle: subtitle) {
             VStack(spacing: 0) {
-                VStack(alignment: .leading, spacing: .spacingExtraLarge) {
-                    HeaderContentView(title: "Post Code") {
-                        ZStack {
-                            CustomTextField(
-                                "NW1 7FB",
-                                text: $state.postcode,
-                                textContentType: .postalCode,
-                                autocapitalizationType: .allCharacters,
-                                returnKeyType: .search,
-                                onCommit: searchAddresses
-                            ).modifier(RoundedThinOutlineContainer(padded: false))
-                            HStack {
-                                Spacer()
-                                if isLoading {
-                                    ActivityIndicator(color: .rythmicoGray90)
+                ScrollView {
+                    VStack(alignment: .leading, spacing: .spacingMedium) {
+                        Group {
+                            InfoBanner(text: "You can also arrange for online lessons. Just let your prospective tutor know about your preference in the final step.")
+                            HeaderContentView(title: "Post Code") {
+                                ZStack {
+                                    CustomTextField(
+                                        "NW1 7FB",
+                                        text: $state.postcode,
+                                        textContentType: .postalCode,
+                                        autocapitalizationType: .allCharacters,
+                                        returnKeyType: .search,
+                                        onCommit: searchAddresses
+                                    ).modifier(RoundedThinOutlineContainer(padded: false))
+                                    HStack {
+                                        Spacer()
+                                        if isLoading {
+                                            ActivityIndicator(color: .rythmicoGray90)
+                                        }
+                                        Spacer().frame(width: .spacingExtraSmall)
+                                    }
                                 }
-                                Spacer().frame(width: .spacingExtraSmall)
                             }
                         }
-                    }
-                    .padding(.horizontal, .spacingMedium)
+                        .padding(.horizontal, .spacingMedium)
 
-                    if let addresses = addresses {
-                        SectionHeaderContentView(
-                            title: "Select Address",
-                            padding: .init(horizontal: .spacingMedium)
-                        ) {
-                            ScrollView {
+                        if let addresses = addresses {
+                            SectionHeaderContentView(
+                                title: "Select Address",
+                                padding: .init(horizontal: .spacingMedium)
+                            ) {
                                 AddressSelectionView(
                                     addresses: addresses,
                                     selection: $state.selectedAddress
-                                ).padding([.trailing, .bottom], .spacingMedium)
+                                )
+                                .padding([.horizontal, .bottom], .spacingMedium)
                             }
-                            .padding(.leading, .spacingMedium)
+                            .transition(
+                                AnyTransition
+                                    .opacity
+                                    .combined(with: .offset(x: 0, y: 25))
+                            )
+                        } else {
+                            Spacer()
                         }
-                        .transition(
-                            AnyTransition
-                                .opacity
-                                .combined(with: .offset(x: 0, y: 25))
-                        )
-                    } else {
-                        Spacer()
                     }
+                    .accentColor(.rythmicoPurple)
                 }
-                .accentColor(.rythmicoPurple)
 
                 nextButtonAction.map { action in
                     FloatingView {
@@ -150,7 +153,6 @@ struct AddressDetailsViewPreview: PreviewProvider {
             coordinator: Current.coordinator(for: \.addressSearchService)!,
             context: RequestLessonPlanContext()
         )
-        .previewDevices()
     }
 }
 #endif

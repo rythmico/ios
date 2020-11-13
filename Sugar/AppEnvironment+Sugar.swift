@@ -64,7 +64,7 @@ extension AppEnvironment {
         }
 
         // Check if user changed and reset cache.
-        if currentProvider !== latestProvider {
+        if latestProvider != nil, currentProvider !== latestProvider {
             latestProvider = nil
             coordinatorMap = [:]
         }
@@ -111,6 +111,10 @@ extension AppEnvironment {
 
     func deviceUnregisterCoordinator() -> DeviceUnregisterCoordinator {
         DeviceUnregisterCoordinator(deviceTokenDeleter: deviceTokenDeleter)
+    }
+
+    var sceneState: UIApplication.State {
+        UIApplication.shared.applicationState
     }
 }
 

@@ -10,6 +10,8 @@ struct LessonsView: View, TestableView {
         case past
     }
 
+    @Environment(\.scenePhase)
+    private var scenePhase
     @ObservedObject
     private var state = Current.state
     @ObservedObject
@@ -34,13 +36,15 @@ struct LessonsView: View, TestableView {
         .padding(.top, .spacingSmall)
         .accentColor(.rythmicoPurple)
         .testable(self)
-        .onReceive(
-            coordinator.$state.zip(state.onLessonsTabRootPublisher).b,
-            perform: coordinator.startToIdle
-        )
+        .onReceive(coordinator.$state.zip(state.onLessonsTabRootPublisher).b, perform: fetch)
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
+    }
+
+    private func fetch() {
+        guard Current.sceneState == .active else { return }
+        coordinator.startToIdle()
     }
 }
 
