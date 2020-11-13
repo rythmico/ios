@@ -5,7 +5,7 @@ struct AddressSelectionView: View {
     @Binding var selection: Address?
 
     var body: some View {
-        VStack(alignment: .leading, spacing: .spacingExtraSmall) {
+        LazyVStack(alignment: .leading, spacing: .spacingExtraSmall) {
             ForEach(_addresses, id: \.hashValue) { address in
                 AddressItemView(
                     title: address.condensedFormattedString,
