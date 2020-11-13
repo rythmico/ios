@@ -64,7 +64,7 @@ extension AppEnvironment {
         }
 
         // Check if user changed and reset cache.
-        if currentProvider !== latestProvider {
+        if latestProvider != nil, currentProvider !== latestProvider {
             latestProvider = nil
             coordinatorMap = [:]
         }
