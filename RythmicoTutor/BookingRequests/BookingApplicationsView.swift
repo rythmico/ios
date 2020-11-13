@@ -2,13 +2,14 @@ import SwiftUI
 import Combine
 
 struct BookingApplicationsView: View {
+    @Environment(\.scenePhase)
+    private var scenePhase
+    @ObservedObject
+    private var state = Current.state
     @ObservedObject
     private var coordinator: APIActivityCoordinator<BookingApplicationsGetRequest>
     @ObservedObject
     private var repository = Current.bookingApplicationRepository
-
-    @ObservedObject
-    private var state = Current.state
     @State
     private var selectedBookingApplicationGroup: BookingApplication.Status?
 
@@ -38,10 +39,7 @@ struct BookingApplicationsView: View {
             .listStyle(GroupedListStyle())
         }
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
-        .onReceive(
-            coordinator.$state.zip(state.onRequestsAppliedTabRootPublisher).b,
-            perform: coordinator.startToIdle
-        )
+        .onReceive(coordinator.$state.zip(state.onRequestsAppliedTabRootPublisher).b, perform: fetch)
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
@@ -59,6 +57,11 @@ struct BookingApplicationsView: View {
 
     private func numberOfApplications(withStatus status: BookingApplication.Status) -> Int {
         applications.count { $0.statusInfo.status == status }
+    }
+
+    private func fetch() {
+        guard scenePhase == .active else { return }
+        coordinator.startToIdle()
     }
 }
 

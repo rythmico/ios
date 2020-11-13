@@ -2,6 +2,10 @@ import SwiftUI
 import Combine
 
 struct BookingRequestsView: View {
+    @Environment(\.scenePhase)
+    private var scenePhase
+    @ObservedObject
+    private var state = Current.state
     @ObservedObject
     private var coordinator: APIActivityCoordinator<BookingRequestsGetRequest>
     @ObservedObject
@@ -10,9 +14,6 @@ struct BookingRequestsView: View {
     private var applicationRepository = Current.bookingApplicationRepository
     @ObservedObject
     private var pushNotificationAuthCoordinator = Current.pushNotificationAuthorizationCoordinator
-
-    @ObservedObject
-    private var state = Current.state
 
     init?() {
         guard let coordinator = Current.sharedCoordinator(for: \.bookingRequestFetchingService) else {
@@ -53,10 +54,7 @@ struct BookingRequestsView: View {
         .listStyle(GroupedListStyle())
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
 
-        .onReceive(
-            coordinator.$state.zip(state.onRequestsUpcomingTabRootPublisher).b,
-            perform: coordinator.startToIdle
-        )
+        .onReceive(coordinator.$state.zip(state.onRequestsUpcomingTabRootPublisher).b, perform: fetch)
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
@@ -70,6 +68,11 @@ struct BookingRequestsView: View {
 
     func requestPushNotificationAuth(_: [BookingRequest]) {
         pushNotificationAuthCoordinator.requestAuthorization()
+    }
+
+    private func fetch() {
+        guard scenePhase == .active else { return }
+        coordinator.startToIdle()
     }
 }
 
