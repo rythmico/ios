@@ -26,23 +26,40 @@ struct PortfolioTrainingsView: View {
                             }
                         }
 
-                        Text(yearRange(of: training))
-                            .foregroundColor(.rythmicoGray90)
-                            .rythmicoFont(.callout)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                        if let duration = duration(of: training) {
+                            Text(duration)
+                                .foregroundColor(.rythmicoGray90)
+                                .rythmicoFont(.callout)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
                     }
 
                     if index < trainingList.endIndex - 1 {
-                        Divider().overlay(Color.rythmicoGray20)
+                        HDivider()
                     }
                 }
             }
         }
     }
 
-    private func yearRange(of training: Portfolio.Training) -> String {
-        [training.fromYear, training.toYear]
+    private func duration(of training: Portfolio.Training) -> String? {
+        guard let duration = training.duration else {
+            return nil
+        }
+        return [duration.fromYear, duration.toYear]
             .map { $0.map(String.init) ?? "now" }
             .joined(separator: " - ")
     }
 }
+
+#if DEBUG
+struct PortfolioTrainingsView_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack(spacing: .spacingMedium) {
+            PortfolioTrainingsView(trainingList: .stub)
+        }
+        .previewLayout(.sizeThatFits)
+        .padding()
+    }
+}
+#endif
