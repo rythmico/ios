@@ -1,4 +1,8 @@
 import UIKit
+import Then
+
+extension Portfolio: Then {}
+extension Portfolio.Training: Then {}
 
 extension Portfolio {
     static let minimalStub = Self(
@@ -38,23 +42,36 @@ extension Portfolio.Training {
     static let shortStub = Self(
         title: "The Juilliard School",
         description: "",
-        fromYear: 2014,
-        toYear: nil
+        duration: nil
     )
 
-    static let longStubA = Self(
-        title: "The Juilliard School",
-        description: "Master of Music Scholarship",
-        fromYear: 2014,
-        toYear: 2016
-    )
+    static let mediumStubA = shortStub.with {
+        $0.description = "Master of Music Scholarship"
+    }
 
-    static let longStubB = Self(
-        title: "Manhattan School of Music",
-        description: "Undergraduate Music Scholarship",
-        fromYear: 2011,
-        toYear: 2014
-    )
+    static let mediumStubB = shortStub.with {
+        $0.duration = Duration(fromYear: 2014, toYear: nil)
+    }
+
+    static let longStubA = shortStub.with {
+        $0.description = "Master of Music Scholarship"
+        $0.duration = Duration(fromYear: 2014, toYear: 2016)
+    }
+
+    static let longStubB = shortStub.with {
+        $0.description = "Undergraduate Music Scholarship"
+        $0.duration = Duration(fromYear: 2011, toYear: 2014)
+    }
+}
+
+extension Array where Element == Portfolio.Training {
+    static let stub: Self = [
+        .shortStub,
+        .mediumStubA,
+        .mediumStubB,
+        .longStubA,
+        .longStubB,
+    ]
 }
 
 extension Portfolio.Video {

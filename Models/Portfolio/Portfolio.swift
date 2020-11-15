@@ -2,10 +2,14 @@ import Foundation
 
 struct Portfolio: Equatable, Decodable, Hashable {
     struct Training: Equatable, Decodable, Hashable {
+        struct Duration: Equatable, Decodable, Hashable {
+            var fromYear: Int
+            var toYear: Int? // nil means til now
+        }
+
         var title: String
         var description: String
-        var fromYear: Int
-        var toYear: Int?
+        var duration: Duration?
     }
 
     struct Video: Equatable, Decodable, Hashable {
