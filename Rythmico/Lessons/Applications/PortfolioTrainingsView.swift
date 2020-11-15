@@ -26,7 +26,7 @@ struct PortfolioTrainingsView: View {
                             }
                         }
 
-                        if let duration = duration(of: training) {
+                        if let duration = training.duration?.description {
                             Text(duration)
                                 .foregroundColor(.rythmicoGray90)
                                 .rythmicoFont(.callout)
@@ -41,14 +41,11 @@ struct PortfolioTrainingsView: View {
             }
         }
     }
+}
 
-    private func duration(of training: Portfolio.Training) -> String? {
-        guard let duration = training.duration else {
-            return nil
-        }
-        return [duration.fromYear, duration.toYear]
-            .map { $0.map(String.init) ?? "now" }
-            .joined(separator: " - ")
+private extension Portfolio.Training.Duration {
+    var description: String {
+        [fromYear, toYear].map { $0.map(String.init) ?? "now" }.joined(separator: " - ")
     }
 }
 
