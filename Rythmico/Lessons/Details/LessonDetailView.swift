@@ -13,9 +13,9 @@ struct LessonDetailView: View, TestableView {
             .joined(separator: " - ")
     }
 
-//    func showCancelLessonPlanForm() {
-//        state.lessonsContext = .cancelling(lessonPlan)
-//    }
+    func showSkipLessonForm() {
+        state.lessonsContext = .skippingLesson(lesson)
+    }
 
     let inspection = SelfInspection()
     var body: some View {
@@ -56,21 +56,21 @@ struct LessonDetailView: View, TestableView {
             .padding(.horizontal, .spacingMedium)
             .frame(maxHeight: .infinity, alignment: .top)
 
-//            ActionList(
-//                [
-//                    .init(title: "View Lesson Plan", action: showCancelLessonPlanForm),
-//                    .init(title: "Cancel Lesson", action: showCancelLessonPlanForm),
-//                ],
-//                showBottomSeparator: false
-//            )
-//            .foregroundColor(.rythmicoGray90)
-//            .rythmicoFont(.body)
+            ActionList(
+                [
+//                    .init(title: "View Lesson Plan", action: showLessonPlan),
+                    .init(title: "Skip This Lesson", action: showSkipLessonForm),
+                ],
+                showBottomSeparator: false
+            )
+            .foregroundColor(.rythmicoGray90)
+            .rythmicoFont(.body)
         }
         .testable(self)
         .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(item: $state.lessonsContext.cancellingLessonPlan) {
-            LessonPlanCancellationView(lessonPlan: $0)
+        .sheet(item: $state.lessonsContext.skippingLesson) {
+            LessonSkippingView(lesson: $0)
         }
     }
 

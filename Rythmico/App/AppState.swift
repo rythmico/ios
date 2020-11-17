@@ -20,6 +20,7 @@ extension AppState {
         case booked(LessonPlan, LessonPlan.Application)
 
         case viewingLesson(Lesson)
+        case skippingLesson(Lesson)
     }
 }
 
@@ -45,7 +46,7 @@ extension AppState.LessonsContext {
     var viewingLesson: Lesson? {
         get {
             switch self {
-            case .viewingLesson(let lesson):
+            case .viewingLesson(let lesson), .skippingLesson(let lesson):
                 return lesson
             default:
                 return nil
@@ -54,13 +55,26 @@ extension AppState.LessonsContext {
         set {
             if let newValue = newValue {
                 self = .viewingLesson(newValue)
-            } else {
-                switch self {
-                case .viewingLesson:
-                    self = .none
-                default:
-                    break
-                }
+            } else if viewingLesson != nil {
+                self = .none
+            }
+        }
+    }
+
+    var skippingLesson: Lesson? {
+        get {
+            switch self {
+            case .skippingLesson(let lesson):
+                return lesson
+            default:
+                return nil
+            }
+        }
+        set {
+            if let newValue = newValue {
+                self = .skippingLesson(newValue)
+            } else if let lesson = skippingLesson {
+                self = .viewingLesson(lesson)
             }
         }
     }
@@ -78,12 +92,7 @@ extension AppState.LessonsContext {
             if let newValue = newValue {
                 self = .viewing(newValue)
             } else if selectedLessonPlan != nil {
-                switch self {
-                case .viewing:
-                    self = .none
-                default:
-                    break
-                }
+                self = .none
             }
         }
     }
