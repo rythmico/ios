@@ -56,15 +56,9 @@ struct LessonDetailView: View, TestableView {
             .padding(.horizontal, .spacingMedium)
             .frame(maxHeight: .infinity, alignment: .top)
 
-            ActionList(
-                [
-//                    .init(title: "View Lesson Plan", action: showLessonPlan),
-                    .init(title: "Skip This Lesson", action: showSkipLessonForm),
-                ],
-                showBottomSeparator: false
-            )
-            .foregroundColor(.rythmicoGray90)
-            .rythmicoFont(.body)
+            ActionList(actions, showBottomSeparator: false)
+                .foregroundColor(.rythmicoGray90)
+                .rythmicoFont(.body)
         }
         .testable(self)
         .padding(.top, .spacingExtraSmall)
@@ -78,6 +72,18 @@ struct LessonDetailView: View, TestableView {
     private var startDateText: String { startDateFormatter.string(from: lesson.schedule.startDate) }
 
     private var durationText: String { "\(lesson.schedule.duration) minutes" }
+
+    private var actions: [ActionList.Button] {
+        switch lesson.status {
+        case .scheduled:
+            return [
+//                .init(title: "View Lesson Plan", action: showLessonPlan),
+                .init(title: "Skip This Lesson", action: showSkipLessonForm),
+            ]
+        case .completed, .skipped:
+            return []
+        }
+    }
 }
 
 #if DEBUG
