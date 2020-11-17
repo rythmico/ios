@@ -11,7 +11,7 @@ extension LessonPlanCancellationView {
                 VStack(spacing: .spacingExtraLarge) {
                     TitleSubtitleView(
                         title: "Cancel Lesson Plan?",
-                        subtitle: ["Are you sure you want to cancel your lesson plan?".style(.bodyBold)]
+                        subtitle: ["Are you sure you want to cancel your lesson plan?".part]
                     )
                     Text("This will cancel the monthly payments to the tutor, and all upcoming lessons.")
                         .rythmicoFont(.body)
