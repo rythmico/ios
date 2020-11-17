@@ -56,6 +56,8 @@ extension AppEnvironment {
         lessonPlanCompleteCheckoutService: APIService(),
         lessonPlanRepository: Repository(),
 
+        lessonSkippingService: APIService(),
+
         portfolioFetchingService: APIService(),
 
         cardSetupCredentialFetchingService: APIService(),
@@ -81,6 +83,8 @@ extension AppEnvironment {
             $0.lessonPlanCancellationService = fakeAPIService(result: .success(.cancelledJackGuitarPlanStub))
             $0.lessonPlanGetCheckoutService = fakeAPIService(result: .success(.stub))
             $0.lessonPlanCompleteCheckoutService = fakeAPIService(result: .success(.scheduledJackGuitarPlanStub))
+
+            $0.lessonSkippingService = fakeAPIService(result: .success(.scheduledSkippedJackGuitarPlanStub))
 
             $0.portfolioFetchingService = fakeAPIService(result: .success(.longStub))
 
@@ -137,6 +141,8 @@ extension AppEnvironment {
             lessonPlanGetCheckoutService: APIServiceDummy(),
             lessonPlanCompleteCheckoutService: APIServiceDummy(),
             lessonPlanRepository: Repository(),
+
+            lessonSkippingService: APIServiceDummy(),
 
             portfolioFetchingService: APIServiceDummy(),
 

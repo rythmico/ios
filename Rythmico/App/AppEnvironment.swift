@@ -46,6 +46,8 @@ struct AppEnvironment {
     var lessonPlanCompleteCheckoutService: APIServiceBase<CompleteLessonPlanCheckoutRequest>
     var lessonPlanRepository: Repository<LessonPlan>
 
+    var lessonSkippingService: APIServiceBase<SkipLessonRequest>
+
     var portfolioFetchingService: APIServiceBase<GetPortfolioRequest>
 
     var cardSetupCredentialFetchingService: APIServiceBase<GetCardSetupCredentialRequest>

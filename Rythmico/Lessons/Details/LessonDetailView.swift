@@ -13,9 +13,9 @@ struct LessonDetailView: View, TestableView {
             .joined(separator: " - ")
     }
 
-//    func showCancelLessonPlanForm() {
-//        state.lessonsContext = .cancelling(lessonPlan)
-//    }
+    func showSkipLessonForm() {
+        state.lessonsContext = .skippingLesson(lesson)
+    }
 
     let inspection = SelfInspection()
     var body: some View {
@@ -27,19 +27,17 @@ struct LessonDetailView: View, TestableView {
                 VStack(alignment: .leading, spacing: .spacingMedium) {
                     SectionHeaderView(title: "Lesson Details")
                     Group {
-                        HStack(spacing: .spacingMedium) {
-                            HStack(spacing: .spacingUnit * 2) {
-                                Image(decorative: Asset.iconInfo.name).renderingMode(.template)
-                                Text(startDateText)
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.7)
-                            }
-                            HStack(spacing: .spacingUnit * 2) {
-                                Image(decorative: Asset.iconTime.name).renderingMode(.template)
-                                Text(durationText)
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.7)
-                            }
+                        HStack(spacing: .spacingUnit * 2) {
+                            Image(decorative: Asset.iconInfo.name).renderingMode(.template)
+                            Text(startDateText)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.7)
+                        }
+                        HStack(spacing: .spacingUnit * 2) {
+                            Image(decorative: Asset.iconTime.name).renderingMode(.template)
+                            Text(durationText)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.7)
                         }
                         HStack(alignment: .firstTextBaseline, spacing: .spacingUnit * 2) {
                             Image(decorative: Asset.iconLocation.name)
@@ -58,21 +56,15 @@ struct LessonDetailView: View, TestableView {
             .padding(.horizontal, .spacingMedium)
             .frame(maxHeight: .infinity, alignment: .top)
 
-//            ActionList(
-//                [
-//                    .init(title: "View Lesson Plan", action: showCancelLessonPlanForm),
-//                    .init(title: "Cancel Lesson", action: showCancelLessonPlanForm),
-//                ],
-//                showBottomSeparator: false
-//            )
-//            .foregroundColor(.rythmicoGray90)
-//            .rythmicoFont(.body)
+            ActionList(actions, showBottomSeparator: false)
+                .foregroundColor(.rythmicoGray90)
+                .rythmicoFont(.body)
         }
         .testable(self)
         .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(item: $state.lessonsContext.cancellingLessonPlan) {
-            LessonPlanCancellationView(lessonPlan: $0)
+        .sheet(item: $state.lessonsContext.skippingLesson) {
+            LessonSkippingView(lesson: $0)
         }
     }
 
@@ -80,6 +72,18 @@ struct LessonDetailView: View, TestableView {
     private var startDateText: String { startDateFormatter.string(from: lesson.schedule.startDate) }
 
     private var durationText: String { "\(lesson.schedule.duration) minutes" }
+
+    private var actions: [ActionList.Button] {
+        switch lesson.status {
+        case .scheduled:
+            return [
+//                .init(title: "View Lesson Plan", action: showLessonPlan),
+                .init(title: "Skip This Lesson", action: showSkipLessonForm),
+            ]
+        case .completed, .skipped:
+            return []
+        }
+    }
 }
 
 #if DEBUG

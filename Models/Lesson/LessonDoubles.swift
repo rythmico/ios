@@ -17,7 +17,7 @@ extension Array where Element == Lesson {
         (1..<lessonCount).map {
             .stub(
                 number: lessonCount-$0,
-                status: .random() ? .cancelled : .completed,
+                status: .random() ? .skipped : .completed,
                 startDate: .stub - ($0, .weekOfMonth)
             )
         }
@@ -26,7 +26,7 @@ extension Array where Element == Lesson {
 
 extension Lesson {
     static let scheduledStub = stub(number: 1, status: .scheduled, startDate: .stub)
-    static let cancelledStub = stub(number: 2, status: .cancelled, startDate: .stub)
+    static let skippedStub = stub(number: 2, status: .skipped, startDate: .stub)
     static let completedStub = stub(number: 3, status: .completed, startDate: .stub)
 }
 
@@ -34,6 +34,7 @@ private extension Lesson {
     static func stub(number: Int, status: Status, startDate: Date) -> Self {
         Self(
             id: .random(),
+            planId: .random(),
             student: .jackStub,
             instrument: .guitar,
             number: number,

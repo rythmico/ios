@@ -6,11 +6,12 @@ struct Lesson: Equatable, Decodable, Identifiable, Hashable {
 
     enum Status: String, Equatable, Decodable, Hashable {
         case scheduled = "SCHEDULED"
-        case cancelled = "CANCELLED"
+        case skipped = "SKIPPED"
         case completed = "COMPLETED"
     }
 
     var id: ID
+    var planId: LessonPlan.ID
     var student: Student
     var instrument: Instrument
     var number: Int
@@ -21,8 +22,8 @@ struct Lesson: Equatable, Decodable, Identifiable, Hashable {
 }
 
 extension Lesson.Status {
-    var isCancelled: Bool {
-        guard case .cancelled = self else { return false }
+    var isSkipped: Bool {
+        guard case .skipped = self else { return false }
         return true
     }
 }

@@ -71,6 +71,10 @@ extension LessonPlan {
     static let scheduledJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
         $0.status = .scheduled(.stub, .jesseStub)
     }
+
+    static let scheduledSkippedJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
+        $0.status = .scheduled(.stub, .jesseStub)
+    }
 }
 
 extension LessonPlan {
