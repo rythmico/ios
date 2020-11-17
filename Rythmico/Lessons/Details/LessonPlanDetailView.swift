@@ -57,7 +57,7 @@ struct LessonPlanDetailView: View, TestableView {
             .frame(maxHeight: .infinity, alignment: .top)
 
             ActionList(
-                [.init(title: "Cancel Lesson Plan Request", action: showCancelLessonPlanForm)],
+                [.init(title: "Cancel Lesson Plan", action: showCancelLessonPlanForm)],
                 showBottomSeparator: false
             )
             .foregroundColor(.rythmicoGray90)
