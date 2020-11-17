@@ -55,7 +55,7 @@ extension AppState.LessonsContext {
         set {
             if let newValue = newValue {
                 self = .viewingLesson(newValue)
-            } else if viewingLesson != nil {
+            } else if case .viewingLesson = self {
                 self = .none
             }
         }
@@ -91,7 +91,7 @@ extension AppState.LessonsContext {
         set {
             if let newValue = newValue {
                 self = .viewing(newValue)
-            } else if selectedLessonPlan != nil {
+            } else if case .viewing = self {
                 self = .none
             }
         }
