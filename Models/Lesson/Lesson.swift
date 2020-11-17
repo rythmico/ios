@@ -11,6 +11,7 @@ struct Lesson: Equatable, Decodable, Identifiable, Hashable {
     }
 
     var id: ID
+    var planId: LessonPlan.ID
     var student: Student
     var instrument: Instrument
     var number: Int

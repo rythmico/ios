@@ -34,6 +34,7 @@ private extension Lesson {
     static func stub(number: Int, status: Status, startDate: Date) -> Self {
         Self(
             id: .random(),
+            planId: .random(),
             student: .jackStub,
             instrument: .guitar,
             number: number,
