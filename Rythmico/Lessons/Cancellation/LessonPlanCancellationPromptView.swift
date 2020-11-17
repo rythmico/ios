@@ -13,7 +13,7 @@ extension LessonPlanCancellationView {
                         title: "Cancel Lesson Plan?",
                         subtitle: ["Are you sure you want to cancel your lesson plan?".style(.bodyBold)]
                     )
-                    Text("This will cancel the weekly payments to the tutor, and all upcoming lessons.")
+                    Text("This will cancel the monthly payments to the tutor, and all upcoming lessons.")
                         .rythmicoFont(.body)
                         .foregroundColor(.rythmicoGray90)
                         .frame(maxWidth: .infinity, alignment: .leading)
