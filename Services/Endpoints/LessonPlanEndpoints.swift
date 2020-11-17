@@ -60,6 +60,19 @@ struct CancelLessonPlanRequest: RythmicoAPIRequest {
     typealias Error = RythmicoAPIError
 }
 
+struct SkipLessonRequest: RythmicoAPIRequest {
+    typealias Properties = Lesson
+
+    let accessToken: String
+    let properties: Properties
+
+    let method: HTTPMethod = .patch
+    var path: String { "/lesson-plans/\(self.planId)/lessons/\(self.id)/skip" }
+
+    typealias Response = LessonPlan
+    typealias Error = RythmicoAPIError
+}
+
 struct GetLessonPlanCheckoutRequest: RythmicoAPIRequest {
     struct Properties {
         var lessonPlanId: LessonPlan.ID
