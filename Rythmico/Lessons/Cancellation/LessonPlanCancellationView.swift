@@ -30,26 +30,21 @@ struct LessonPlanCancellationView: View, TestableView {
     let inspection = SelfInspection()
     var body: some View {
         NavigationView {
-            ZStack {
-                if isUserInputRequired {
-                    if !isCancellationIntended {
-                        PromptView(noAction: dismiss, yesAction: showReasonView)
-                            .transition(
-                                .asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing))
-                            )
-                    } else {
-                        ReasonView(submitHandler: submit)
-                            .transition(
-                                .asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading))
-                            )
-                    }
-                } else if coordinator.state.isLoading {
-                    LoadingView(title: "Cancelling plan...")
+            CoordinatorStateView(
+                coordinator: coordinator,
+                successTitle: "Plan cancelled successfully",
+                loadingTitle: "Cancelling plan..."
+            ) {
+                if !isCancellationIntended {
+                    PromptView(noAction: dismiss, yesAction: showReasonView)
                         .transition(
-                            .asymmetric(insertion: .move(edge: .trailing), removal: .opacity)
+                            .asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing))
                         )
-                } else if coordinator.state.isSuccess {
-                    ConfirmationView(title: "Plan cancelled successfully").transition(.opacity)
+                } else {
+                    ReasonView(submitHandler: submit)
+                        .transition(
+                            .asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading))
+                        )
                 }
             }
             .onEdgeSwipe(.left, perform: back)
