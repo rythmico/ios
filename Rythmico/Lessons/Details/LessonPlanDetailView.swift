@@ -27,19 +27,17 @@ struct LessonPlanDetailView: View, TestableView {
                 VStack(alignment: .leading, spacing: .spacingMedium) {
                     SectionHeaderView(title: "Lesson Details")
                     Group {
-                        HStack(spacing: .spacingMedium) {
-                            HStack(spacing: .spacingUnit * 2) {
-                                Image(decorative: Asset.iconInfo.name).renderingMode(.template)
-                                Text(startDateText)
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.7)
-                            }
-                            HStack(spacing: .spacingUnit * 2) {
-                                Image(decorative: Asset.iconTime.name).renderingMode(.template)
-                                Text(durationText)
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.7)
-                            }
+                        HStack(spacing: .spacingUnit * 2) {
+                            Image(decorative: Asset.iconInfo.name).renderingMode(.template)
+                            Text(startDateText)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.7)
+                        }
+                        HStack(spacing: .spacingUnit * 2) {
+                            Image(decorative: Asset.iconTime.name).renderingMode(.template)
+                            Text(durationText)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.7)
                         }
                         HStack(alignment: .firstTextBaseline, spacing: .spacingUnit * 2) {
                             Image(decorative: Asset.iconLocation.name)
