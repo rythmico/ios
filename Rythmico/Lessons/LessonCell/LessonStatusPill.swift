@@ -15,8 +15,8 @@ private extension Lesson.Status {
         switch self {
         case .scheduled:
             return "Scheduled"
-        case .cancelled:
-            return "Cancelled"
+        case .skipped:
+            return "Skipped"
         case .completed:
             return "Completed"
         }
@@ -26,7 +26,7 @@ private extension Lesson.Status {
         switch self {
         case .scheduled:
             return .rythmicoDarkBlue
-        case .cancelled:
+        case .skipped:
             return Color(lightModeVariantHex: 0x111619, darkModeVariantHex: 0x9fa1a3)
         case .completed:
             return .rythmicoDarkGreen
@@ -37,7 +37,7 @@ private extension Lesson.Status {
         switch self {
         case .scheduled:
             return .rythmicoLightBlue
-        case .cancelled:
+        case .skipped:
             return Color(lightModeVariantHex: 0xDDE1E6, darkModeVariantHex: 0x424345)
         case .completed:
             return .rythmicoLightGreen
@@ -50,7 +50,7 @@ struct LessonStatusPill_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             Pill(status: Lesson.scheduledStub.status)
-            Pill(status: Lesson.cancelledStub.status)
+            Pill(status: Lesson.skippedStub.status)
             Pill(status: Lesson.completedStub.status)
         }
         .previewLayout(.sizeThatFits)

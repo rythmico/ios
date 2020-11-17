@@ -9,7 +9,7 @@ struct LessonSummaryCell: View {
             LessonSummaryCellMainContent(lesson: lesson)
         }
         .modifier(RoundedShadowContainer())
-        .disabled(lesson.status.isCancelled)
+        .disabled(lesson.status.isSkipped)
     }
 }
 
@@ -29,8 +29,8 @@ struct LessonSummaryCellMainContent: View {
         switch lesson.status {
         case .scheduled:
             return [startDateText, durationText].joined(separator: " • ")
-        case .cancelled:
-            return [startDateText, "Lesson Cancelled"].joined(separator: " • ")
+        case .skipped:
+            return [startDateText, "Lesson Skipped"].joined(separator: " • ")
         case .completed:
             return [startDateText, "Lesson Complete"].joined(separator: " • ")
         }
@@ -47,7 +47,7 @@ struct LessonSummaryCellMainContent: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
                     .rythmicoFont(.subheadlineBold)
-                    .foregroundColor(lesson.status.isCancelled ? .rythmicoGray90 : .rythmicoForeground)
+                    .foregroundColor(lesson.status.isSkipped ? .rythmicoGray90 : .rythmicoForeground)
                 Text(subtitle)
                     .rythmicoFont(.body)
                     .foregroundColor(.rythmicoGray90)
@@ -72,7 +72,7 @@ struct LessonSummaryCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             LessonSummaryCell(lesson: .scheduledStub)
-            LessonSummaryCell(lesson: .cancelledStub)
+            LessonSummaryCell(lesson: .skippedStub)
             LessonSummaryCell(lesson: .completedStub)
         }
         .previewLayout(.sizeThatFits)

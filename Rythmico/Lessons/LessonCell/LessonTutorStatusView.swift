@@ -31,15 +31,15 @@ struct LessonTutorStatusView_Previews: PreviewProvider {
         Group {
             InlineContentAndTitleView(lesson: .scheduledStub, summarized: true)
                 .previewDisplayName("Scheduled - Cell")
-            InlineContentAndTitleView(lesson: .cancelledStub, summarized: true)
-                .previewDisplayName("Cancelled - Cell")
+            InlineContentAndTitleView(lesson: .skippedStub, summarized: true)
+                .previewDisplayName("Skipped - Cell")
             InlineContentAndTitleView(lesson: .completedStub, summarized: true)
                 .previewDisplayName("Completed - Cell")
 
             InlineContentAndTitleView(lesson: .scheduledStub, summarized: false)
                 .previewDisplayName("Scheduled - Detail")
-            InlineContentAndTitleView(lesson: .cancelledStub, summarized: false)
-                .previewDisplayName("Cancelled - Detail")
+            InlineContentAndTitleView(lesson: .skippedStub, summarized: false)
+                .previewDisplayName("Skipped - Detail")
             InlineContentAndTitleView(lesson: .completedStub, summarized: false)
                 .previewDisplayName("Completed - Detail")
         }
