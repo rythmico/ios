@@ -45,7 +45,7 @@ struct LessonSkippingView: View {
     }
 
     private func dismiss() {
-        Current.state.lessonsContext.skippingLesson = nil
+        Current.state.lessonsContext = .none
     }
 
     private func submit() {
