@@ -37,7 +37,8 @@ struct LessonsView: View, TestableView {
         .accentColor(.rythmicoPurple)
         .testable(self)
         .onReceive(coordinator.$state.zip(state.onLessonsTabRootPublisher).b, perform: fetch)
-        .onDisappear(perform: coordinator.cancel)
+        // FIXME: double HTTP request for some reason
+//        .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
     }
