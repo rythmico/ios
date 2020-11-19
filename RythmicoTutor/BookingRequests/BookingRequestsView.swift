@@ -55,7 +55,8 @@ struct BookingRequestsView: View {
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
 
         .onReceive(coordinator.$state.zip(state.onRequestsUpcomingTabRootPublisher).b, perform: fetch)
-        .onDisappear(perform: coordinator.cancel)
+        // FIXME: double HTTP request for some reason
+//        .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
 
