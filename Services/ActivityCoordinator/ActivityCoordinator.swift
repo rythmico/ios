@@ -60,7 +60,6 @@ class ActivityCoordinator<Input, Output>: ObservableObject {
         case .loading, .suspended:
             state = .ready
             activity?.cancel()
-            activity = nil
         default:
             break
         }
@@ -68,7 +67,6 @@ class ActivityCoordinator<Input, Output>: ObservableObject {
 
     /*protected*/ func finish(_ output: Output) {
         state = .finished(output)
-        activity = nil
         if idleOnFinished {
             idle()
         }
