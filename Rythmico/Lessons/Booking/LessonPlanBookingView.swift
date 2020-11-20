@@ -69,7 +69,7 @@ struct LessonPlanBookingView: View {
                                 Button("Add new card", action: addNewCard).quaternaryStyle()
                             }
 
-                            Text("Payment will be automatically taken monthly.")
+                            Text("Payment will be automatically taken on the 1st of every month.")
                                 .foregroundColor(.rythmicoGray90)
                                 .rythmicoFont(.calloutBold)
                                 .frame(maxWidth: .infinity, alignment: .leading)

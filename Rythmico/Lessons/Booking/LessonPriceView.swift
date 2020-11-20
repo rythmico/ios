@@ -9,11 +9,6 @@ struct LessonPriceView: View {
     var body: some View {
         VStack(spacing: .spacingExtraSmall) {
             MultiStyleText(parts: priceDescription)
-            Text(priceExplanation)
-                .lineSpacing(3)
-                .rythmicoFont(.callout)
-                .foregroundColor(.rythmicoGray90)
-                .frame(maxWidth: .infinity, alignment: .leading)
         }
         .fixedSize(horizontal: false, vertical: true)
     }
@@ -21,12 +16,6 @@ struct LessonPriceView: View {
     var priceDescription: [MultiStyleText.Part] {
         priceFormatter.string(for: price).style(.headline).color(.rythmicoGray90) +
         " per lesson".color(.rythmicoGray90)
-    }
-
-    var priceExplanation: String {
-        "This is based on the standard £1/minute rate for all " +
-        instrument.name.lowercased(with: Current.locale) +
-        " tutors."
     }
 }
 

@@ -21,7 +21,7 @@ struct LessonPlanConfirmationView: View, TestableView {
         case .scheduled:
             return nil
         default:
-            return "Potential tutors received your request and will submit applications for your consideration."
+            return "Potential tutors have received your request and will submit applications for your consideration."
         }
     }
 
