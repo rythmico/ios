@@ -78,7 +78,7 @@ struct LessonDetailView: View, TestableView {
         case .scheduled:
             return [
 //                .init(title: "View Lesson Plan", action: showLessonPlan),
-                .init(title: "Skip This Lesson", action: showSkipLessonForm),
+                .init(title: "Skip Lesson", action: showSkipLessonForm),
             ]
         case .completed, .skipped:
             return []

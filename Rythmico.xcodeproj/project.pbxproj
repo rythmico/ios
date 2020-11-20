@@ -453,7 +453,6 @@
 		D5D9AE9B25367B5400A0ABCC /* NumberFormatter+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE9A25367B5400A0ABCC /* NumberFormatter+Sugar.swift */; };
 		D5D9AEA325367E9B00A0ABCC /* LessonPlanBookingEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEA225367E9B00A0ABCC /* LessonPlanBookingEntryView.swift */; };
 		D5D9AEB425368AAA00A0ABCC /* LessonPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEB325368AAA00A0ABCC /* LessonPriceView.swift */; };
-		D5D9AEB9253692FF00A0ABCC /* Decimal+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEB8253692FF00A0ABCC /* Decimal+Sugar.swift */; };
 		D5D9AEBE253694B400A0ABCC /* PhoneNumberInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEBD253694B400A0ABCC /* PhoneNumberInputView.swift */; };
 		D5D9AEC32537105400A0ABCC /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEC22537105400A0ABCC /* CardStackView.swift */; };
 		D5E04B1923BED80700A161BB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* Fonts.swift */; };
@@ -899,7 +898,6 @@
 		D5D9AE9A25367B5400A0ABCC /* NumberFormatter+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Sugar.swift"; sourceTree = "<group>"; };
 		D5D9AEA225367E9B00A0ABCC /* LessonPlanBookingEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanBookingEntryView.swift; sourceTree = "<group>"; };
 		D5D9AEB325368AAA00A0ABCC /* LessonPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPriceView.swift; sourceTree = "<group>"; };
-		D5D9AEB8253692FF00A0ABCC /* Decimal+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Sugar.swift"; sourceTree = "<group>"; };
 		D5D9AEBD253694B400A0ABCC /* PhoneNumberInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberInputView.swift; sourceTree = "<group>"; };
 		D5D9AEC22537105400A0ABCC /* CardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
 		D5E04B1823BED80700A161BB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -1706,7 +1704,6 @@
 				D5F4D3FE24F858AE000E8580 /* Date+Sugar.swift */,
 				03E88E8824BB82290077A420 /* DateFormatter+Sugar.swift */,
 				D517FFCA25548EC600A41639 /* DateIntervalFormatter+Sugar.swift */,
-				D5D9AEB8253692FF00A0ABCC /* Decimal+Sugar.swift */,
 				03275ADC2490091E009C3980 /* DispatchQueue+Sugar.swift */,
 				03B71323241D71B600DED025 /* Error+Sugar.swift */,
 				D516A928253A554F002E6EDF /* ImageAsset+Sugar.swift */,
@@ -2851,7 +2848,6 @@
 			files = (
 				D5C23A78240F1C1E007DED63 /* String+Sugar.swift in Sources */,
 				D5B57A6F2419E22300BE9B4F /* Optional+Sugar.swift in Sources */,
-				D5D9AEB9253692FF00A0ABCC /* Decimal+Sugar.swift in Sources */,
 				D517FFCB25548EC600A41639 /* DateIntervalFormatter+Sugar.swift in Sources */,
 				D5C23A7A240F2DEB007DED63 /* Bool+Sugar.swift in Sources */,
 				D5317142250D77B3006751A7 /* Sequence+Sugar.swift in Sources */,

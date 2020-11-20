@@ -13,7 +13,6 @@ struct Price: Equatable, Decodable, Hashable {
 extension NumberFormatter {
     func string(for price: Price) -> String {
         currencyCode = price.currency.rawValue
-        usesSignificantDigits = price.amount.isInteger
         guard let formattedPrice = string(for: price.amount) else {
             preconditionFailure("Price formatter failed to format Price: \(price)")
         }
