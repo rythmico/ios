@@ -17,11 +17,12 @@ extension AppEnvironment {
         }
     }
 
-    func dateFormatter(format: DateFormatter.Format) -> DateFormatter {
+    func dateFormatter(format: DateFormatter.Format, relativeToNow: Bool = false) -> DateFormatter {
         DateFormatter().then {
             $0.calendar = calendar()
             $0.locale = locale
             $0.timeZone = timeZone
+            $0.doesRelativeDateFormatting = relativeToNow
             $0.setFormat(format)
         }
     }

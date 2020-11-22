@@ -466,6 +466,8 @@
 		D5E58F20256AF31A00EB52ED /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517FF6F2553693200A41639 /* Lesson.swift */; };
 		D5E58F24256AF43900EB52ED /* LessonDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517FF942553B60000A41639 /* LessonDoubles.swift */; };
 		D5E58F29256AF72700EB52ED /* LessonsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E58F28256AF72700EB52ED /* LessonsCollectionView.swift */; };
+		D5E58F2E256B023E00EB52ED /* LessonSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E58F2D256B023E00EB52ED /* LessonSummaryCell.swift */; };
+		D5E58F39256B034A00EB52ED /* BookingDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E58F38256B034A00EB52ED /* BookingDoubles.swift */; };
 		D5E987B924ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
 		D5E987BA24ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
 		D5E987BC24EDE92E00E2E1AF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987BB24EDE92E00E2E1AF /* Router.swift */; };
@@ -916,6 +918,8 @@
 		D5E58F0D256AF1E500EB52ED /* BookingEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingEndpoints.swift; sourceTree = "<group>"; };
 		D5E58F13256AF22200EB52ED /* Booking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking.swift; sourceTree = "<group>"; };
 		D5E58F28256AF72700EB52ED /* LessonsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsCollectionView.swift; sourceTree = "<group>"; };
+		D5E58F2D256B023E00EB52ED /* LessonSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonSummaryCell.swift; sourceTree = "<group>"; };
+		D5E58F38256B034A00EB52ED /* BookingDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDoubles.swift; sourceTree = "<group>"; };
 		D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Sugar.swift"; sourceTree = "<group>"; };
 		D5E987BB24EDE92E00E2E1AF /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D5E987BE24EDE94200E2E1AF /* Routes+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Routes+Rythmico.swift"; sourceTree = "<group>"; };
@@ -1948,6 +1952,7 @@
 				D5E58F00256AF06700EB52ED /* BookingsTabView.swift */,
 				D5E58F08256AF09800EB52ED /* BookingsView.swift */,
 				D5E58F28256AF72700EB52ED /* LessonsCollectionView.swift */,
+				D5E58F2D256B023E00EB52ED /* LessonSummaryCell.swift */,
 			);
 			path = Bookings;
 			sourceTree = "<group>";
@@ -1956,6 +1961,7 @@
 			isa = PBXGroup;
 			children = (
 				D5E58F13256AF22200EB52ED /* Booking.swift */,
+				D5E58F38256B034A00EB52ED /* BookingDoubles.swift */,
 			);
 			path = Booking;
 			sourceTree = "<group>";
@@ -2778,6 +2784,7 @@
 				035B1D60249E63CD00AABFEA /* DeviceTokenProvider.swift in Sources */,
 				035B1D3D249E576900AABFEA /* AuthenticationAccessTokenProviderBroadcastDoubles.swift in Sources */,
 				035B1D61249E63D400AABFEA /* DeviceTokenDeleter.swift in Sources */,
+				D5E58F2E256B023E00EB52ED /* LessonSummaryCell.swift in Sources */,
 				D575C84E254F29BD001664AB /* Assets.generated.swift in Sources */,
 				03E88EB824C4B0F40077A420 /* Repository.swift in Sources */,
 				D527B01224FE92DA003E81A9 /* ActivityDoubles.swift in Sources */,
@@ -2797,6 +2804,7 @@
 				035B1D30249E571B00AABFEA /* UIAccessibilityProtocol.swift in Sources */,
 				D5AC9E27254D8AD7003A8197 /* AppDoubles.swift in Sources */,
 				D5F4D3F424F33C9E000E8580 /* Address.swift in Sources */,
+				D5E58F39256B034A00EB52ED /* BookingDoubles.swift in Sources */,
 				D5814A0A251D957D0009BBB3 /* MainViewContent.swift in Sources */,
 				032B6FCC24B7877B00299A09 /* BookingRequest.swift in Sources */,
 				032B6FCB24B7877600299A09 /* BookingRequestDoubles.swift in Sources */,

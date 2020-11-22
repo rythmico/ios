@@ -64,8 +64,11 @@ extension AppEnvironment {
         dummy.with {
             $0.setUpFake()
 
+            $0.bookingsFetchingService = fakeAPIService(result: .success(.stub))
+
             $0.bookingRequestFetchingService = fakeAPIService(result: .success([.stub, .longStub]))
             $0.bookingRequestApplyingService = fakeAPIService(result: .success(.stub))
+
             $0.bookingApplicationFetchingService = fakeAPIService(result: .success([.longStub, .stubWithAbout] + .stub))
             $0.bookingApplicationRetractionService = fakeAPIService(result: .success(.stub))
         }
