@@ -12,8 +12,6 @@ struct BookingRequestsView: View {
     private var repository = Current.bookingRequestRepository
     @ObservedObject
     private var applicationRepository = Current.bookingApplicationRepository
-    @ObservedObject
-    private var pushNotificationAuthCoordinator = Current.pushNotificationAuthorizationCoordinator
 
     init?() {
         guard let coordinator = Current.sharedCoordinator(for: \.bookingRequestFetchingService) else {
@@ -58,16 +56,6 @@ struct BookingRequestsView: View {
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
-
-        .onSuccess(coordinator, perform: requestPushNotificationAuth)
-        .alert(
-            error: pushNotificationAuthCoordinator.status.failedValue,
-            dismiss: pushNotificationAuthCoordinator.dismissFailure
-        )
-    }
-
-    func requestPushNotificationAuth(_: [BookingRequest]) {
-        pushNotificationAuthCoordinator.requestAuthorization()
     }
 
     private func fetch() {
