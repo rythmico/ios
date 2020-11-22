@@ -54,7 +54,7 @@ struct BookingRequestsView: View {
         .listStyle(GroupedListStyle())
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
 
-        .onReceive(coordinator.$state.zip(state.onRequestsUpcomingTabRootPublisher).b, perform: fetch)
+        .onReceive(coordinator.$state.zip(state.onRequestsOpenTabRootPublisher).b, perform: fetch)
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
@@ -77,7 +77,7 @@ struct BookingRequestsView: View {
 }
 
 private extension AppState {
-    var onRequestsUpcomingTabRootPublisher: AnyPublisher<Void, Never> {
+    var onRequestsOpenTabRootPublisher: AnyPublisher<Void, Never> {
         $tab.combineLatest($requestsTab, $requestsContext)
             .filter { $0 == (.requests, .open, .none) }
             .map { _ in () }
