@@ -4,8 +4,8 @@ import Sugar
 
 struct MainView: View, TestableView {
     enum Tab: String, Equatable, Hashable, CaseIterable {
+        case schedule = "Schedule"
         case requests = "Requests"
-        case profile = "Profile"
 
         var title: String { rawValue }
     }
@@ -37,16 +37,16 @@ struct MainView: View, TestableView {
     @ViewBuilder
     private func icon(for tab: Tab) -> some View {
         switch tab {
+        case .schedule: Image(systemSymbol: .calendar).font(.system(size: 21, weight: .semibold))
         case .requests: Image(systemSymbol: .musicNoteList).font(.system(size: 21, weight: .bold))
-        case .profile: Image(systemSymbol: .personFill).font(.system(size: 21, weight: .semibold))
         }
     }
 
     @ViewBuilder
     private func content(for tab: Tab) -> some View {
         switch tab {
+        case .schedule: Text("Schedule")
         case .requests: BookingRequestsTabView()
-        case .profile: Text("Profile")
         }
     }
 

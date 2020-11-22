@@ -2,7 +2,7 @@ import SwiftUI
 import Then
 
 final class AppState: ObservableObject {
-    @Published var tab: MainView.Tab = .requests
+    @Published var tab: MainView.Tab = .schedule
     @Published var requestsTab: BookingRequestsTabView.Tab = .upcoming
     // TODO: use optional when Binding allows chaining optional sub-bindings.
     // e.g. $state.requestsContext(?).reviewingValues(?).0
