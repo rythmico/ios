@@ -2,7 +2,7 @@ import SwiftUI
 
 struct BookingRequestsTabView: View {
     enum Tab: String, Equatable, Hashable, CaseIterable {
-        case upcoming = "Upcoming"
+        case open = "Open"
         case applied = "Applied"
     }
 
@@ -24,7 +24,7 @@ struct BookingRequestsTabView: View {
 
             Divider()
 
-            if state.requestsTab == .upcoming {
+            if state.requestsTab == .open {
                 BookingRequestsView()
             } else if state.requestsTab == .applied {
                 BookingApplicationsView()

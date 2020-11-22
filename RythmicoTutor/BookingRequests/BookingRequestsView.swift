@@ -80,7 +80,7 @@ struct BookingRequestsView: View {
 private extension AppState {
     var onRequestsUpcomingTabRootPublisher: AnyPublisher<Void, Never> {
         $tab.combineLatest($requestsTab, $requestsContext)
-            .filter { $0 == (.requests, .upcoming, .none) }
+            .filter { $0 == (.requests, .open, .none) }
             .map { _ in () }
             .eraseToAnyPublisher()
     }
