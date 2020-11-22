@@ -13,12 +13,18 @@ struct MainView: View, TestableView {
     @ObservedObject
     private var state = Current.state
 
+    @ObservedObject
+    private var bookingFetchingCoordinator: BookingsView.Coordinator
     private let deviceRegisterCoordinator: DeviceRegisterCoordinator
 
     init?() {
-        guard let deviceRegisterCoordinator = Current.deviceRegisterCoordinator() else {
+        guard
+            let bookingFetchingCoordinator = Current.sharedCoordinator(for: \.bookingsFetchingService),
+            let deviceRegisterCoordinator = Current.deviceRegisterCoordinator()
+        else {
             return nil
         }
+        self.bookingFetchingCoordinator = bookingFetchingCoordinator
         self.deviceRegisterCoordinator = deviceRegisterCoordinator
     }
 
@@ -45,14 +51,19 @@ struct MainView: View, TestableView {
     @ViewBuilder
     private func content(for tab: Tab) -> some View {
         switch tab {
-        case .schedule: Text("Schedule")
+        case .schedule: BookingsTabView()
         case .requests: BookingRequestsTabView()
         }
     }
 
     @ViewBuilder
     private func leadingItem(for tab: Tab) -> some View {
-        EmptyView()
+        switch tab {
+        case .schedule where bookingFetchingCoordinator.state.isLoading:
+            ActivityIndicator()
+        default:
+            EmptyView()
+        }
     }
 
     @ViewBuilder
