@@ -11,11 +11,19 @@ struct Lesson: Equatable, Decodable, Identifiable, Hashable {
     }
 
     var id: ID
+    #if RYTHMICO
     var planId: LessonPlan.ID
+    #elseif TUTOR
+    // TODO
+    // var bookingId: Booking.ID
+    #endif
     var student: Student
     var instrument: Instrument
     var number: Int
+    #if RYTHMICO
     var tutor: Tutor
+    #elseif TUTOR
+    #endif
     var status: Status
     var address: Address
     var schedule: Schedule

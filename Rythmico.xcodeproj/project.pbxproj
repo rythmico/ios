@@ -457,6 +457,11 @@
 		D5D9AEC32537105400A0ABCC /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEC22537105400A0ABCC /* CardStackView.swift */; };
 		D5E04B1923BED80700A161BB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* Fonts.swift */; };
 		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
+		D5E58F14256AF22200EB52ED /* Booking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E58F13256AF22200EB52ED /* Booking.swift */; };
+		D5E58F18256AF2BA00EB52ED /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B52406360900CA4094 /* Student.swift */; };
+		D5E58F1C256AF2C000EB52ED /* StudentDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */; };
+		D5E58F20256AF31A00EB52ED /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517FF6F2553693200A41639 /* Lesson.swift */; };
+		D5E58F24256AF43900EB52ED /* LessonDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517FF942553B60000A41639 /* LessonDoubles.swift */; };
 		D5E987B924ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
 		D5E987BA24ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
 		D5E987BC24EDE92E00E2E1AF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987BB24EDE92E00E2E1AF /* Router.swift */; };
@@ -902,6 +907,7 @@
 		D5D9AEC22537105400A0ABCC /* CardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
 		D5E04B1823BED80700A161BB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		D5E58F13256AF22200EB52ED /* Booking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking.swift; sourceTree = "<group>"; };
 		D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Sugar.swift"; sourceTree = "<group>"; };
 		D5E987BB24EDE92E00E2E1AF /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D5E987BE24EDE94200E2E1AF /* Routes+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Routes+Rythmico.swift"; sourceTree = "<group>"; };
@@ -1121,6 +1127,7 @@
 			children = (
 				035B1D18249E567700AABFEA /* App */,
 				035B1D11249E562700AABFEA /* Root */,
+				D5E58EFF256AF05600EB52ED /* Bookings */,
 				03E88E8524B8B9100077A420 /* BookingRequests */,
 				035B1CD0249CF3E300AABFEA /* Supporting Files */,
 				035B1CC6249CF2AC00AABFEA /* Preview Content */,
@@ -1402,6 +1409,7 @@
 			children = (
 				D5AFED3225047E17003FFC68 /* Activity */,
 				03B71325241D84B400DED025 /* Address */,
+				D5E58F12256AF20E00EB52ED /* Booking */,
 				D5F4D3E124F0429A000E8580 /* BookingApplication */,
 				032B6FC824B783D300299A09 /* BookingRequest */,
 				D501589F2538BE84005E02FA /* Card */,
@@ -1923,6 +1931,14 @@
 				D501588A2538A985005E02FA /* STPPaymentMethodCard+BrandFromString.h */,
 			);
 			path = Checkout;
+			sourceTree = "<group>";
+		};
+		D5E58F12256AF20E00EB52ED /* Booking */ = {
+			isa = PBXGroup;
+			children = (
+				D5E58F13256AF22200EB52ED /* Booking.swift */,
+			);
+			path = Booking;
 			sourceTree = "<group>";
 		};
 		D5E987C324EEE20300E2E1AF /* Router */ = {
@@ -2703,6 +2719,7 @@
 				D5814A01251D7FFC0009BBB3 /* App+SplitViewCustomization.swift in Sources */,
 				D575C856254F2B2F001664AB /* AppSplash.swift in Sources */,
 				D54FC05624CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */,
+				D5E58F14256AF22200EB52ED /* Booking.swift in Sources */,
 				D5F4D3E524F0475F000E8580 /* BookingApplicationDoubles.swift in Sources */,
 				035B1D39249E576900AABFEA /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
 				D52C554824DDC60900C295C4 /* FloatingView+Tutor.swift in Sources */,
@@ -2717,10 +2734,12 @@
 				035B1D51249E57F100AABFEA /* HashFunction+Helpers.swift in Sources */,
 				035B1D53249E582800AABFEA /* Animation.swift in Sources */,
 				035B1D35249E576900AABFEA /* DeauthenticationService.swift in Sources */,
+				D5E58F24256AF43900EB52ED /* LessonDoubles.swift in Sources */,
 				035B1D3E249E577700AABFEA /* AppleAuthorizationCredential.swift in Sources */,
 				D5AFED3125047DFC003FFC68 /* Activity.swift in Sources */,
 				032B6FD724B788B200299A09 /* ScheduleDoubles.swift in Sources */,
 				D5CAC9A924E6C3A900119DAA /* MultilineTextField.swift in Sources */,
+				D5E58F1C256AF2C000EB52ED /* StudentDoubles.swift in Sources */,
 				D5E987BA24ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */,
 				D5BF12B425068E7000B2931C /* PushNotificationEvent.swift in Sources */,
 				03E88EBA24C6232D0077A420 /* APIServiceDoubles.swift in Sources */,
@@ -2748,6 +2767,7 @@
 				035B1D3F249E577700AABFEA /* AppleAuthorizationCredentialDoubles.swift in Sources */,
 				035B1D66249E643400AABFEA /* DeviceTokenDeleterDoubles.swift in Sources */,
 				D575C831254F10E1001664AB /* RemoteConfigService.swift in Sources */,
+				D5E58F18256AF2BA00EB52ED /* Student.swift in Sources */,
 				D524D0C525046BAE00BC9AF7 /* PushNotificationRegisterServiceDoubles.swift in Sources */,
 				D524D0C425046BA900BC9AF7 /* PushNotificationRegisterService.swift in Sources */,
 				035B1D52249E57FD00AABFEA /* Spacing.swift in Sources */,
@@ -2782,6 +2802,7 @@
 				035B1D1A249E568600AABFEA /* AppEnvironment.swift in Sources */,
 				D52C554A24DDE1D300C295C4 /* StaticMapView.swift in Sources */,
 				D5E987C724EEFC7C00E2E1AF /* BookingApplicationsView.swift in Sources */,
+				D5E58F20256AF31A00EB52ED /* Lesson.swift in Sources */,
 				03E88EAA24C1F4FD0077A420 /* App+PushNotifications.swift in Sources */,
 				D5217CEF24E2F8B400C89018 /* MapOpener+ActionSheet.swift in Sources */,
 				03E88EBC24C709A00077A420 /* ActivityCoordinator.swift in Sources */,
