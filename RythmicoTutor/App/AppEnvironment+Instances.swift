@@ -45,6 +45,9 @@ extension AppEnvironment {
 
         imageLoadingService: ImageLoadingService(),
 
+        bookingsRepository: Repository(),
+        bookingsFetchingService: APIService(),
+
         bookingRequestRepository: Repository(),
         bookingRequestFetchingService: APIService(),
         bookingRequestApplyingService: APIService(),
@@ -106,6 +109,9 @@ extension AppEnvironment {
             router: RouterDummy(),
 
             imageLoadingService: ImageLoadingServiceDummy(),
+
+            bookingsRepository: Repository(),
+            bookingsFetchingService: APIServiceDummy(),
 
             bookingRequestRepository: Repository(),
             bookingRequestFetchingService: APIServiceDummy(),
