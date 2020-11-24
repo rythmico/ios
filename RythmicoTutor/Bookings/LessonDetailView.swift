@@ -28,30 +28,28 @@ struct LessonDetailView: View {
     private var error: Error?
 
     var body: some View {
-        VStack(spacing: 0) {
-            List {
-                Section(header: Text("LESSON DETAILS")) {
-                    TitleCell(title: "Student", detail: studentName)
-                    TitleCell(title: "Start Date", detail: startDate)
-                    TitleCell(title: "Time", detail: time)
-                    TitleCell(title: "Duration", detail: duration)
-                }
-                Section(header: Text("ADDRESS DETAILS")) {
-                    AddressMapCell(addressInfo: .address(lesson.address))
-                }
-                Section {
-                    GroupedButton("View Student Details", action: presentStudentDetails).navigationLink(
-                        NavigationLink(
-                            destination: Text(""), // TODO
-                            isActive: $isStudentDetailsPresented,
-                            label: { EmptyView() }
-                        )
-                    )
-                    GroupedButton("Contact", action: presentContactSheet)
-                }
+        List {
+            Section(header: Text("LESSON DETAILS")) {
+                TitleCell(title: "Student", detail: studentName)
+                TitleCell(title: "Start Date", detail: startDate)
+                TitleCell(title: "Time", detail: time)
+                TitleCell(title: "Duration", detail: duration)
             }
-            .listStyle(GroupedListStyle())
+            Section(header: Text("ADDRESS DETAILS")) {
+                AddressMapCell(addressInfo: .address(lesson.address))
+            }
+            Section {
+                GroupedButton("View Student Details", action: presentStudentDetails).navigationLink(
+                    NavigationLink(
+                        destination: Text(""), // TODO
+                        isActive: $isStudentDetailsPresented,
+                        label: { EmptyView() }
+                    )
+                )
+                GroupedButton("Contact", action: presentContactSheet)
+            }
         }
+        .listStyle(GroupedListStyle())
         .navigationBarTitle(Text(title), displayMode: .inline)
         .phoneNumberOpeningSheet(
             isPresented: $isContactSheetPresented,
