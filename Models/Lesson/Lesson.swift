@@ -32,6 +32,7 @@ struct Lesson: Equatable, Decodable, Identifiable, Hashable {
     #elseif TUTOR
     @E164PhoneNumber
     var phoneNumber: PhoneNumber
+    var privateNote: String
     #endif
 }
 
