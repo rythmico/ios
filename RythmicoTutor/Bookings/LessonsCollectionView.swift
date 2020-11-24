@@ -4,10 +4,26 @@ struct LessonsCollectionView: View {
     var currentBookings: [Booking]
     @State private var selectedLesson: Lesson?
 
+    @ObservedObject
+    private var state = Current.state
+    private var filter: BookingsTabView.Tab { state.scheduleTab }
+
+    var days: [Date] {
+        let unsortedDays = Array(lessons.keys)
+        switch filter {
+        case .upcoming: return unsortedDays.sorted { $0 < $1 }
+        case .past: return unsortedDays.sorted { $0 > $1 }
+        }
+    }
+
     var lessons: [Date: [Lesson]] {
         let allLessons = currentBookings.map(\.lessons).flatten()
-        let upcomingLessons = allLessons.filter { Current.date() < $0.schedule.endDate }
-        return upcomingLessons.reduce(into: [:]) { acc, c in
+        let ungroupedLessons: [Lesson]
+        switch filter {
+        case .upcoming: ungroupedLessons = allLessons.filter { Current.date() < $0.schedule.endDate }
+        case .past: ungroupedLessons = allLessons.filter { Current.date() > $0.schedule.endDate }
+        }
+        return ungroupedLessons.reduce(into: [:]) { acc, c in
             let components = Current.calendar().dateComponents([.year, .month, .day], from: c.schedule.startDate)
             let date = Current.calendar().date(from: components)!
             let existing = acc[date] ?? []
@@ -17,7 +33,7 @@ struct LessonsCollectionView: View {
 
     var body: some View {
         List {
-            ForEach(Array(lessons.keys), id: \.self) { date in
+            ForEach(days, id: \.self) { date in
                 if let lessons = lessons[date] {
                     Section(header: Text(dayString(from: date)), footer: EmptyView()) {
                         ForEach(lessons) { lesson in

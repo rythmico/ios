@@ -37,8 +37,7 @@ struct Lesson: Equatable, Decodable, Identifiable, Hashable {
 }
 
 extension Lesson.Status {
-    var isSkipped: Bool {
-        guard case .skipped = self else { return false }
-        return true
-    }
+    var isScheduled: Bool { self == .scheduled }
+    var isSkipped: Bool { self == .skipped }
+    var isCompleted: Bool { self == .completed }
 }

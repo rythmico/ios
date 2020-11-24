@@ -3,6 +3,7 @@ import Then
 
 final class AppState: ObservableObject {
     @Published var tab: MainView.Tab = .schedule
+    @Published var scheduleTab: BookingsTabView.Tab = .upcoming
     @Published var requestsTab: BookingRequestsTabView.Tab = .open
     // TODO: use optional when Binding allows chaining optional sub-bindings.
     // e.g. $state.requestsContext(?).reviewingValues(?).0

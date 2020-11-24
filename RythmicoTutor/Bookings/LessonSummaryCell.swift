@@ -24,25 +24,41 @@ struct LessonSummaryCell: View {
     }
 
     var body: some View {
-        NavigationLink(
-            destination: LessonDetailView(lesson: lesson),
-            tag: lesson,
-            selection: $selection
-        ) {
-            HStack(spacing: .spacingMedium) {
-                VStack(alignment: .leading, spacing: .spacingUnit / 2) {
-                    Text(title)
-                        .foregroundColor(.primary)
-                        .font(.body)
-                    Text(subtitle)
-                        .foregroundColor(.secondary)
-                        .font(.callout)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            .padding(.vertical, .spacingUnit)
+        if hasDetail {
+            NavigationLink(
+                destination: LessonDetailView(lesson: lesson),
+                tag: lesson,
+                selection: $selection,
+                label: { content }
+            )
+        } else {
+            content
         }
-        .disabled(lesson.status.isSkipped)
+    }
+
+    private var hasDetail: Bool {
+        lesson.status.isScheduled
+    }
+
+    private var content: some View {
+        HStack(spacing: .spacingMedium) {
+            VStack(alignment: .leading, spacing: .spacingUnit / 2) {
+                Text(title)
+                    .foregroundColor(.primary)
+                    .font(.body)
+                Text(subtitle)
+                    .foregroundColor(.secondary)
+                    .font(.callout)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            if lesson.status.isCompleted {
+                Image(systemSymbol: .checkmark)
+                    .font(.system(size: 18, weight: .medium))
+                    .foregroundColor(.accentColor)
+            }
+        }
+        .padding(.vertical, .spacingUnit)
+        .opacity(lesson.status.isSkipped ? 0.3 : 1)
     }
 
     private let durationFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))
