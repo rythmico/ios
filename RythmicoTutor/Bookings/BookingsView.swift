@@ -9,7 +9,7 @@ struct BookingsView: View {
     @ObservedObject
     private var state = Current.state
     @ObservedObject
-    private var coordinator = Current.sharedCoordinator(for: \.bookingsFetchingService)!
+    private var coordinator: Coordinator
     @ObservedObject
     private var repository = Current.bookingsRepository
     @ObservedObject
@@ -18,6 +18,13 @@ struct BookingsView: View {
     var isLoading: Bool { coordinator.state.isLoading }
     var error: Error? { coordinator.state.failureValue }
     var bookings: [Booking] { repository.items }
+
+    init?() {
+        guard let coordinator = Current.sharedCoordinator(for: \.bookingsFetchingService) else {
+            return nil
+        }
+        self.coordinator = coordinator
+    }
 
     var body: some View {
         LessonsCollectionView(currentBookings: bookings)
