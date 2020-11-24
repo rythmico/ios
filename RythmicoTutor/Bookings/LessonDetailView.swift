@@ -41,7 +41,7 @@ struct LessonDetailView: View {
             Section {
                 GroupedButton("View Student Details", action: presentStudentDetails).navigationLink(
                     NavigationLink(
-                        destination: Text(""), // TODO
+                        destination: LessonStudentDetailView(lesson: lesson),
                         isActive: $isStudentDetailsPresented,
                         label: { EmptyView() }
                     )
