@@ -3,17 +3,7 @@ import Sugar
 
 struct LessonSummaryCell: View {
     var lesson: Lesson
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            LessonSummaryCellMainContent(lesson: lesson)
-        }
-        .disabled(lesson.status.isSkipped)
-    }
-}
-
-struct LessonSummaryCellMainContent: View {
-    var lesson: Lesson
+    @Binding var selection: Lesson?
 
     @ObservedObject
     private var state = Current.state
@@ -35,9 +25,9 @@ struct LessonSummaryCellMainContent: View {
 
     var body: some View {
         NavigationLink(
-            destination: Text(""),
+            destination: LessonDetailView(lesson: lesson),
             tag: lesson,
-            selection: .constant(nil)
+            selection: $selection
         ) {
             HStack(spacing: .spacingMedium) {
                 VStack(alignment: .leading, spacing: .spacingUnit / 2) {
@@ -52,6 +42,7 @@ struct LessonSummaryCellMainContent: View {
             }
             .padding(.vertical, .spacingUnit)
         }
+        .disabled(lesson.status.isSkipped)
     }
 
     private let durationFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))
@@ -62,9 +53,9 @@ struct LessonSummaryCellMainContent: View {
 struct LessonSummaryCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LessonSummaryCell(lesson: .scheduledStub)
-            LessonSummaryCell(lesson: .skippedStub)
-            LessonSummaryCell(lesson: .completedStub)
+            LessonSummaryCell(lesson: .scheduledStub, selection: .constant(nil))
+            LessonSummaryCell(lesson: .skippedStub, selection: .constant(nil))
+            LessonSummaryCell(lesson: .completedStub, selection: .constant(nil))
         }
         .previewLayout(.sizeThatFits)
         .padding()

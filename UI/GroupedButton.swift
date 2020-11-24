@@ -31,6 +31,12 @@ struct GroupedButton<Accessory: View>: View {
     }
 }
 
+extension GroupedButton where Accessory == EmptyView {
+    init(_ title: String, action: @escaping () -> Void) {
+        self.init(title, action: action) { EmptyView() }
+    }
+}
+
 #if DEBUG
 struct GroupedButton_Previews: PreviewProvider {
     static var previews: some View {

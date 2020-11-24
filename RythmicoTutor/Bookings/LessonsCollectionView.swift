@@ -2,6 +2,7 @@ import SwiftUI
 
 struct LessonsCollectionView: View {
     var currentBookings: [Booking]
+    @State private var selectedLesson: Lesson?
 
     var lessons: [Date: [Lesson]] {
         let allLessons = currentBookings.map(\.lessons).flatten()

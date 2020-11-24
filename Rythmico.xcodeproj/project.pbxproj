@@ -469,6 +469,7 @@
 		D5E58F29256AF72700EB52ED /* LessonsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E58F28256AF72700EB52ED /* LessonsCollectionView.swift */; };
 		D5E58F2E256B023E00EB52ED /* LessonSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E58F2D256B023E00EB52ED /* LessonSummaryCell.swift */; };
 		D5E58F39256B034A00EB52ED /* BookingDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E58F38256B034A00EB52ED /* BookingDoubles.swift */; };
+		D5E58F3E256D9E4A00EB52ED /* LessonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E58F3D256D9E4A00EB52ED /* LessonDetailView.swift */; };
 		D5E58F46256DB0AC00EB52ED /* NavigationLinkModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E58F45256DB0AC00EB52ED /* NavigationLinkModifier.swift */; };
 		D5E987B924ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
 		D5E987BA24ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
@@ -922,6 +923,7 @@
 		D5E58F28256AF72700EB52ED /* LessonsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsCollectionView.swift; sourceTree = "<group>"; };
 		D5E58F2D256B023E00EB52ED /* LessonSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonSummaryCell.swift; sourceTree = "<group>"; };
 		D5E58F38256B034A00EB52ED /* BookingDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDoubles.swift; sourceTree = "<group>"; };
+		D5E58F3D256D9E4A00EB52ED /* LessonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailView.swift; sourceTree = "<group>"; };
 		D5E58F45256DB0AC00EB52ED /* NavigationLinkModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkModifier.swift; sourceTree = "<group>"; };
 		D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Sugar.swift"; sourceTree = "<group>"; };
 		D5E987BB24EDE92E00E2E1AF /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -1957,6 +1959,7 @@
 				D5E58F08256AF09800EB52ED /* BookingsView.swift */,
 				D5E58F28256AF72700EB52ED /* LessonsCollectionView.swift */,
 				D5E58F2D256B023E00EB52ED /* LessonSummaryCell.swift */,
+				D5E58F3D256D9E4A00EB52ED /* LessonDetailView.swift */,
 			);
 			path = Bookings;
 			sourceTree = "<group>";
@@ -2818,6 +2821,7 @@
 				035B1D32249E572900AABFEA /* URLOpener.swift in Sources */,
 				035B1D17249E566800AABFEA /* ActivityIndicator.swift in Sources */,
 				032B6FD124B787BB00299A09 /* Gender.swift in Sources */,
+				D5E58F3E256D9E4A00EB52ED /* LessonDetailView.swift in Sources */,
 				D5A8C4BC25044A230006F5C5 /* UserDefaultsProtocol.swift in Sources */,
 				035B1D59249E5CF800AABFEA /* App+Firebase.swift in Sources */,
 				035B1D44249E577700AABFEA /* AppleAuthorizationResponse.swift in Sources */,
