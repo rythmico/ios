@@ -54,7 +54,8 @@ private extension Lesson {
             number: number,
             status: status,
             address: .stub,
-            schedule: Schedule.stub.with(\.startDate, startDate)
+            schedule: Schedule.stub.with(\.startDate, startDate),
+            phoneNumber: .stub
         )
     }
     #endif

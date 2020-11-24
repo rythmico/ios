@@ -1,4 +1,5 @@
 import Foundation
+import PhoneNumberKit
 import Tagged
 
 struct Lesson: Equatable, Decodable, Identifiable, Hashable {
@@ -27,6 +28,11 @@ struct Lesson: Equatable, Decodable, Identifiable, Hashable {
     var status: Status
     var address: Address
     var schedule: Schedule
+    #if RYTHMICO
+    #elseif TUTOR
+    @E164PhoneNumber
+    var phoneNumber: PhoneNumber
+    #endif
 }
 
 extension Lesson.Status {
