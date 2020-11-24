@@ -18,9 +18,9 @@ struct LessonsCollectionView: View {
         List {
             ForEach(Array(lessons.keys), id: \.self) { date in
                 if let lessons = lessons[date] {
-                    Section(header: Text(dateFormatter.string(from: date)), footer: EmptyView()) {
+                    Section(header: Text(dayString(from: date)), footer: EmptyView()) {
                         ForEach(lessons) { lesson in
-                            LessonSummaryCell(lesson: lesson)
+                            LessonSummaryCell(lesson: lesson, selection: $selectedLesson)
                         }
                     }
                 }
@@ -29,5 +29,13 @@ struct LessonsCollectionView: View {
         .listStyle(GroupedListStyle())
     }
 
-    private let dateFormatter = Current.dateFormatter(format: .custom("EEEE dd MMM"), relativeToNow: true)
+    private let dateFormatter = Current.dateFormatter(format: .custom("EEEE dd MMM"))
+    private func dayString(from date: Date) -> String {
+        switch true {
+        case Current.calendar().isDateInYesterday(date): return "Yesterday"
+        case Current.calendar().isDateInToday(date): return "Today"
+        case Current.calendar().isDateInTomorrow(date): return "Tomorrow"
+        default: return dateFormatter.string(from: date)
+        }
+    }
 }
