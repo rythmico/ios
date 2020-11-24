@@ -58,7 +58,7 @@ extension BookingApplication {
         submitterName: "David R",
         submitterPrivateNote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         phoneNumber: nil,
-        student: .longNameStub,
+        student: .davidStubNoAbout,
         addressInfo: .postcode("NW5"),
         schedule: .startingIn1WeekStub,
         privateNote: ""
@@ -67,29 +67,6 @@ extension BookingApplication {
 
 extension Array where Element == BookingApplication {
     static let stub: Self = BookingApplication.Status.allCases.map { .stub(.stub($0)) }
-}
-
-extension BookingApplication.Student {
-    static let jackStub = Self(
-        name: "Jack",
-        age: 10,
-        gender: .male,
-        about: ""
-    )
-
-    static let janeStub = Self(
-        name: "Jane",
-        age: 9,
-        gender: .female,
-        about: "Jane is in Year 5. She has had a few guitar lessons at school and seems to really enjoy learning."
-    )
-
-    static let longNameStub = Self(
-        name: "Ana De la Rosa San Cristo del Poder González Martínez Jiménez",
-        age: 30,
-        gender: .female,
-        about: ""
-    )
 }
 
 extension BookingApplication.StatusInfo {
