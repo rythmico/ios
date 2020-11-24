@@ -1,6 +1,7 @@
 import SwiftUI
 import MapKit
 
+// TODO: refactor with generics, to use in BookingRequestDetailView and LessonDetailView.
 struct AddressMapCell: View {
     @State
     private var isMapOpeningSheetPresented = false

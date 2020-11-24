@@ -14,7 +14,7 @@ extension Router {
         switch route {
         case .bookingRequests:
             state.tab = .requests
-            state.requestsTab = .upcoming
+            state.requestsTab = .open
             state.requestsContext = .none
         case .bookingApplications:
             state.tab = .requests
@@ -22,7 +22,7 @@ extension Router {
             state.requestsContext = .none
         case .viewingRequest(let request):
             state.tab = .requests
-            state.requestsTab = .upcoming
+            state.requestsTab = .open
             state.requestsContext = .viewingRequest(request)
         case .viewingApplication(let application):
             state.tab = .requests

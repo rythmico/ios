@@ -4,8 +4,8 @@ import Sugar
 
 struct MainView: View, TestableView {
     enum Tab: String, Equatable, Hashable, CaseIterable {
+        case schedule = "Schedule"
         case requests = "Requests"
-        case profile = "Profile"
 
         var title: String { rawValue }
     }
@@ -13,12 +13,18 @@ struct MainView: View, TestableView {
     @ObservedObject
     private var state = Current.state
 
+    @ObservedObject
+    private var bookingFetchingCoordinator: BookingsView.Coordinator
     private let deviceRegisterCoordinator: DeviceRegisterCoordinator
 
     init?() {
-        guard let deviceRegisterCoordinator = Current.deviceRegisterCoordinator() else {
+        guard
+            let bookingFetchingCoordinator = Current.sharedCoordinator(for: \.bookingsFetchingService),
+            let deviceRegisterCoordinator = Current.deviceRegisterCoordinator()
+        else {
             return nil
         }
+        self.bookingFetchingCoordinator = bookingFetchingCoordinator
         self.deviceRegisterCoordinator = deviceRegisterCoordinator
     }
 
@@ -37,22 +43,27 @@ struct MainView: View, TestableView {
     @ViewBuilder
     private func icon(for tab: Tab) -> some View {
         switch tab {
+        case .schedule: Image(systemSymbol: .calendar).font(.system(size: 21, weight: .semibold))
         case .requests: Image(systemSymbol: .musicNoteList).font(.system(size: 21, weight: .bold))
-        case .profile: Image(systemSymbol: .personFill).font(.system(size: 21, weight: .semibold))
         }
     }
 
     @ViewBuilder
     private func content(for tab: Tab) -> some View {
         switch tab {
+        case .schedule: BookingsTabView()
         case .requests: BookingRequestsTabView()
-        case .profile: Text("Profile")
         }
     }
 
     @ViewBuilder
     private func leadingItem(for tab: Tab) -> some View {
-        EmptyView()
+        switch tab {
+        case .schedule where bookingFetchingCoordinator.state.isLoading:
+            ActivityIndicator()
+        default:
+            EmptyView()
+        }
     }
 
     @ViewBuilder

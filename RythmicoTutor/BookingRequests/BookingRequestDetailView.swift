@@ -25,13 +25,6 @@ struct BookingRequestDetailView: View {
     var about: String? { bookingRequest.student.about.isEmpty ? nil : bookingRequest.student.about }
     var privateNote: String { bookingRequest.privateNote.isEmpty ? "None" : bookingRequest.privateNote }
     var privateNoteOpacity: Double { bookingRequest.privateNote.isEmpty ? 0.5 : 1 }
-
-    @State
-    private var isMapOpeningSheetPresented = false
-    private func presentMapActionSheet() { isMapOpeningSheetPresented = true }
-    @State
-    private var mapOpeningError: Error?
-
     var postcode: String { bookingRequest.postcode }
 
     private func presentApplicationView() { state.requestsContext.isApplyingToRequest = true }
@@ -73,16 +66,7 @@ struct BookingRequestDetailView: View {
                     header: Text("ADDRESS DETAILS"),
                     footer: Text("Exact location and address will be provided if you're selected.")
                 ) {
-                    VStack(alignment: .leading, spacing: .spacingExtraSmall) {
-                        StaticMapView(showsCoordinate: false)
-                            .frame(height: 160)
-                            .clipShape(RoundedRectangle(cornerRadius: .spacingUnit * 2, style: .continuous))
-                            .onTapGesture(perform: presentMapActionSheet)
-                        Text(postcode)
-                            .foregroundColor(.primary)
-                            .font(.body)
-                    }
-                    .padding(.vertical, .spacingUnit * 2)
+                    AddressMapCell(addressInfo: .postcode(bookingRequest.postcode))
                 }
             }
             .listStyle(GroupedListStyle())
@@ -92,11 +76,6 @@ struct BookingRequestDetailView: View {
             }
         }
         .navigationBarTitle(Text(title), displayMode: .inline)
-        .mapOpeningSheet(
-            isPresented: $isMapOpeningSheetPresented,
-            intent: .search(query: bookingRequest.postcode),
-            error: $mapOpeningError
-        )
         .sheet(isPresented: $state.requestsContext.isApplyingToRequest) {
             BookingRequestApplyView(booking: bookingRequest)
         }

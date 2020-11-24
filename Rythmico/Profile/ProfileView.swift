@@ -57,17 +57,14 @@ struct ProfileView: View, TestableView {
                     }
                 }
                 Section(header: header("Help & Support")) {
-                    ZStack {
-                        cell("Parent Info & Safety", disclosure: true)
+                    cell("Parent Info & Safety", disclosure: true).navigationLink(
                         NavigationLink(
                             destination: ParentInfoAndSafetyView(),
                             tag: .parentInfoAndSafety,
                             selection: $page,
                             label: { EmptyView() }
                         )
-                        .frame(width: 0)
-                        .opacity(0)
-                    }
+                    )
                     cell(
                         "Contact Us",
                         disclosure: true,

@@ -31,6 +31,7 @@ extension Lesson {
 }
 
 private extension Lesson {
+    #if RYTHMICO
     static func stub(number: Int, status: Status, startDate: Date) -> Self {
         Self(
             id: .random(),
@@ -44,4 +45,20 @@ private extension Lesson {
             schedule: Schedule.stub.with(\.startDate, startDate)
         )
     }
+    #elseif TUTOR
+    static func stub(number: Int, status: Status, startDate: Date) -> Self {
+        Self(
+            id: .random(),
+            student: .jackStub,
+            instrument: .guitar,
+            number: number,
+            status: status,
+            address: .stub,
+            schedule: Schedule.stub.with(\.startDate, startDate),
+            phoneNumber: .stub,
+            privateNote: ""
+        )
+    }
+    #endif
 }
+

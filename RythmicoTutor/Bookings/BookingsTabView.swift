@@ -1,9 +1,9 @@
 import SwiftUI
 
-struct BookingRequestsTabView: View {
+struct BookingsTabView: View {
     enum Tab: String, Equatable, Hashable, CaseIterable {
-        case open = "Open"
-        case applied = "Applied"
+        case upcoming = "Upcoming"
+        case past = "Past"
     }
 
     @ObservedObject
@@ -11,7 +11,7 @@ struct BookingRequestsTabView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            Picker("", selection: $state.requestsTab) {
+            Picker("", selection: $state.scheduleTab) {
                 ForEach(Tab.allCases, id: \.self) {
                     Text($0.rawValue)
                 }
@@ -24,19 +24,15 @@ struct BookingRequestsTabView: View {
 
             Divider()
 
-            if state.requestsTab == .open {
-                BookingRequestsView()
-            } else if state.requestsTab == .applied {
-                BookingApplicationsView()
-            }
+            BookingsView()
         }
     }
 }
 
 #if DEBUG
-struct BookingRequestsTabView_Previews: PreviewProvider {
+struct BookingsTabView_Previews: PreviewProvider {
     static var previews: some View {
-        BookingRequestsTabView()
+        BookingsTabView()
     }
 }
 #endif

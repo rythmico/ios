@@ -16,13 +16,6 @@ struct BookingApplication: Equatable, Identifiable, Hashable {
         var date: Date
     }
 
-    struct Student: Equatable, Decodable, Hashable {
-        var name: String
-        var age: Int
-        var gender: Gender
-        var about: String
-    }
-
     enum AddressInfo: Equatable, Decodable, Hashable {
         case postcode(String)
         case address(Address)

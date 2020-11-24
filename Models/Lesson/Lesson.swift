@@ -1,4 +1,5 @@
 import Foundation
+import PhoneNumberKit
 import Tagged
 
 struct Lesson: Equatable, Decodable, Identifiable, Hashable {
@@ -11,19 +12,32 @@ struct Lesson: Equatable, Decodable, Identifiable, Hashable {
     }
 
     var id: ID
+    #if RYTHMICO
     var planId: LessonPlan.ID
+    #elseif TUTOR
+    // TODO
+    // var bookingId: Booking.ID
+    #endif
     var student: Student
     var instrument: Instrument
     var number: Int
+    #if RYTHMICO
     var tutor: Tutor
+    #elseif TUTOR
+    #endif
     var status: Status
     var address: Address
     var schedule: Schedule
+    #if RYTHMICO
+    #elseif TUTOR
+    @E164PhoneNumber
+    var phoneNumber: PhoneNumber
+    var privateNote: String
+    #endif
 }
 
 extension Lesson.Status {
-    var isSkipped: Bool {
-        guard case .skipped = self else { return false }
-        return true
-    }
+    var isScheduled: Bool { self == .scheduled }
+    var isSkipped: Bool { self == .skipped }
+    var isCompleted: Bool { self == .completed }
 }

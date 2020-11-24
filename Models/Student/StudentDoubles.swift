@@ -1,59 +1,54 @@
 import Foundation
 import Sugar
+import Then
+
+extension Student: Then {}
 
 extension Student {
-    static let jackStub = Self(
-        name: "Jack Doe",
-        dateOfBirth: .stub - (9, .year),
-        gender: .male,
-        about: ""
-    )
-
-    static let jesseStub = Self(
-        name: "Jesse Doe",
-        dateOfBirth: .stub - (9, .year),
-        gender: .male,
-        about: ""
-    )
-
-    static let charlotteStub = Self(
-        name: "Charlotte Doe",
-        dateOfBirth: .stub - (9, .year),
-        gender: .female,
-        about: ""
-    )
-
-    static let janeStub = Self(
-        name: "Jane Doe",
-        dateOfBirth: .stub - (9, .year),
-        gender: .female,
-        about: ""
-    )
-
-    static let davidStub = Self(
-        name: "David Roman",
-        dateOfBirth: .stub - (9, .year),
-        gender: .male,
-        about: """
-        Something qwdsqw sqw qwdsqwsq
-        Swdqwd qwd swqs qws qw dq wd
-        """
-    )
-
-    static let davidStubNoAbout = Self(
-        name: "David Roman",
-        dateOfBirth: .stub - (9, .year),
-        gender: .male,
-        about: ""
-    )
-
-    static let unnamedStub = Self(
+    #if RYTHMICO
+    static let baseStub = Self(
         name: "",
         dateOfBirth: .stub - (9, .year),
         gender: .male,
-        about: """
+        about: ""
+    )
+    #elseif TUTOR
+    static let baseStub = Self(
+        name: "",
+        age: 9,
+        gender: .male,
+        about: ""
+    )
+    #endif
+
+    static let jackStub = baseStub.with(\.name, "Jack Doe")
+    static let jesseStub = baseStub.with(\.name, "Jesse Doe")
+
+    static let charlotteStub = baseStub.with {
+        $0.name = "Charlotte Doe"
+        $0.gender = .female
+    }
+
+    static let janeStub = baseStub.with {
+        $0.name = "Jane Doe"
+        $0.gender = .female
+    }
+
+    static let davidStub = baseStub.with {
+        $0.name = "David Roman"
+        $0.about = """
         Something qwdsqw sqw qwdsqwsq
         Swdqwd qwd swqs qws qw dq wd
         """
-    )
+    }
+
+    static let davidStubNoAbout = baseStub.with(\.name, "David Roman")
+
+    static let unnamedStub = baseStub.with {
+        $0.name = ""
+        $0.about = """
+        Something qwdsqw sqw qwdsqwsq
+        Swdqwd qwd swqs qws qw dq wd
+        """
+    }
 }

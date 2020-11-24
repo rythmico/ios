@@ -12,8 +12,6 @@ struct BookingRequestsView: View {
     private var repository = Current.bookingRequestRepository
     @ObservedObject
     private var applicationRepository = Current.bookingApplicationRepository
-    @ObservedObject
-    private var pushNotificationAuthCoordinator = Current.pushNotificationAuthorizationCoordinator
 
     init?() {
         guard let coordinator = Current.sharedCoordinator(for: \.bookingRequestFetchingService) else {
@@ -54,21 +52,10 @@ struct BookingRequestsView: View {
         .listStyle(GroupedListStyle())
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
 
-        .onReceive(coordinator.$state.zip(state.onRequestsUpcomingTabRootPublisher).b, perform: fetch)
-        // FIXME: double HTTP request for some reason
-//        .onDisappear(perform: coordinator.cancel)
+        .onReceive(coordinator.$state.zip(state.onRequestsOpenTabRootPublisher).b, perform: fetch)
+        .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
-
-        .onSuccess(coordinator, perform: requestPushNotificationAuth)
-        .alert(
-            error: pushNotificationAuthCoordinator.status.failedValue,
-            dismiss: pushNotificationAuthCoordinator.dismissFailure
-        )
-    }
-
-    func requestPushNotificationAuth(_: [BookingRequest]) {
-        pushNotificationAuthCoordinator.requestAuthorization()
     }
 
     private func fetch() {
@@ -78,9 +65,9 @@ struct BookingRequestsView: View {
 }
 
 private extension AppState {
-    var onRequestsUpcomingTabRootPublisher: AnyPublisher<Void, Never> {
+    var onRequestsOpenTabRootPublisher: AnyPublisher<Void, Never> {
         $tab.combineLatest($requestsTab, $requestsContext)
-            .filter { $0 == (.requests, .upcoming, .none) }
+            .filter { $0 == (.requests, .open, .none) }
             .map { _ in () }
             .eraseToAnyPublisher()
     }
