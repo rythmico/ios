@@ -24,10 +24,7 @@ struct VideoCarouselView: View {
         }
         .introspectScrollView { scrollViewWidth = $0.frame.width }
         .frame(maxWidth: .spacingMax)
-        .sheet(item: $selectedVideo) {
-            VideoPlayer(player: AVPlayer(url: $0.videoURL).then { $0.play() })
-                .edgesIgnoringSafeArea(.all)
-        }
+        .sheet(item: $selectedVideo, content: VideoCarouselPlayer.init)
     }
 }
 
@@ -65,5 +62,35 @@ private struct VideoCarouselCell: View {
                 .padding([.leading, .bottom], .spacingSmall)
         }
         .cornerRadius(.spacingUnit * 2, antialiased: true)
+    }
+}
+
+private struct VideoCarouselPlayer: View {
+    @Environment(\.presentationMode) private var presentationMode
+
+    var video: Portfolio.Video
+    var player: AVPlayer
+
+    init(video: Portfolio.Video) {
+        self.video = video
+        self.player = AVPlayer(url: video.videoURL)
+        self.player.play()
+    }
+
+    var body: some View {
+        ZStack {
+            Color.black.edgesIgnoringSafeArea(.all)
+            VStack(alignment: .trailing, spacing: 0) {
+                CloseButton(action: dismiss)
+                    .padding([.trailing, .bottom], .spacingSmall)
+                    .padding(.top, .spacingMedium)
+                    .accentColor(.rythmicoWhite)
+                VideoPlayer(player: player)
+            }
+        }
+    }
+
+    private func dismiss() {
+        presentationMode.wrappedValue.dismiss()
     }
 }
