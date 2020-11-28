@@ -16,51 +16,6 @@ struct PhotoCarouselView: View {
                 }
             }
         }
-        .sheet(item: $selectedPhoto) { selectedPhoto in
-            if let selectedPhotoBinding = Binding($selectedPhoto) {
-                PhotoCarouselDetailView(photos: photos, selectedPhoto: selectedPhotoBinding)
-            }
-        }
-    }
-}
-
-private struct PhotoCarouselDetailView: View {
-    var photos: [Portfolio.Photo]
-
-    @Binding
-    var selectedPhoto: Portfolio.Photo
-
-    var body: some View {
-        ZStack {
-            Color.black.edgesIgnoringSafeArea(.all)
-
-            VStack(spacing: .spacingMedium) {
-                TabView(selection: $selectedPhoto) {
-                    ForEach(photos, id: \.self) { photo in
-                        AsyncImage(.transitional(from: photo.thumbnailURL, to: photo.photoURL)) {
-                            if let uiImage = $0 {
-                                Image(uiImage: uiImage)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            } else {
-                                Color.black
-                            }
-                        }
-                        .tag(photo)
-                    }
-                }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-
-                DotPageIndicator(
-                    selection: $selectedPhoto,
-                    items: photos,
-                    foregroundColor: Color.white.opacity(0.125),
-                    accentColor: .rythmicoPurple
-                )
-            }
-            .padding(.top, .spacingMedium * 2)
-            .padding(.bottom, .spacingMedium)
-        }
     }
 }
 
@@ -86,5 +41,68 @@ private struct PhotoCarouselCell: View {
             }
         }
         .cornerRadius(.spacingUnit * 2, antialiased: true)
+    }
+}
+
+struct PhotoCarouselDetailView: View {
+    @Environment(\.presentationMode) private var presentationMode
+
+    var photos: [Portfolio.Photo]
+    @Binding
+    var selection: Portfolio.Photo?
+    @State
+    private var latestSelection: Portfolio.Photo
+
+    init?(photos: [Portfolio.Photo], selection: Binding<Portfolio.Photo?>) {
+        guard let initialSelection = selection.wrappedValue else {
+            return nil
+        }
+        self.photos = photos
+        self._selection = selection
+        self._latestSelection = .init(wrappedValue: initialSelection)
+    }
+
+    var body: some View {
+        ZStack {
+            Color.black.edgesIgnoringSafeArea(.all)
+
+            VStack(alignment: .trailing, spacing: 0) {
+                CloseButton(action: dismiss)
+                    .padding([.trailing, .bottom], .spacingSmall)
+                    .padding(.top, .spacingMedium)
+                    .accentColor(.rythmicoWhite)
+
+                VStack(spacing: .spacingMedium) {
+                    TabView(selection: Binding($selection) ?? $latestSelection) {
+                        ForEach(photos, id: \.self) { photo in
+                            AsyncImage(.transitional(from: photo.thumbnailURL, to: photo.photoURL)) {
+                                if let uiImage = $0 {
+                                    Image(uiImage: uiImage)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                } else {
+                                    Color.black
+                                }
+                            }
+                            .tag(photo)
+                        }
+                    }
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+
+                    DotPageIndicator(
+                        selection: $selection,
+                        items: photos,
+                        foregroundColor: Color.rythmicoWhite.opacity(0.125),
+                        accentColor: .rythmicoWhite
+                    )
+                    .padding(.bottom, .spacingMedium)
+                }
+            }
+        }
+        .onChange(of: selection) { $0.map { latestSelection = $0 } }
+    }
+
+    private func dismiss() {
+        presentationMode.wrappedValue.dismiss()
     }
 }
