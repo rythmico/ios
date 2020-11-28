@@ -12,17 +12,26 @@ struct PhoneNumberField: UIViewRepresentable {
     }
 
     func makeUIView(context: Context) -> PhoneNumberTextField {
-        RythmicoPhoneNumberTextField(defaultRegion: context.environment.locale.regionCode).then {
+        guard let regionCode = context.environment.locale.regionCode else {
+            preconditionFailure(
+                """
+                Region code missing from running device.
+                This should only happen on SIM, and rarely.
+                If happening on device, a Locale other than Locale.current must be being used.
+                """
+            )
+        }
+        return RythmicoPhoneNumberTextField(defaultRegion: regionCode).then {
             $0.withFlag = true
-            $0.withPrefix = true
-            $0.withExamplePlaceholder = true
+            $0.withPrefix = true // allow explicit + prefixes
+            $0.placeholder = PhoneNumberKit().getFormattedExampleNumber(forCountry: regionCode, withFormat: .national, withPrefix: false)
             $0.countryCodePlaceholderColor = .rythmicoGray30
             $0.numberPlaceholderColor = .rythmicoGray30
             $0.textColor = .rythmicoForeground
             $0.addTarget(context.coordinator, action: #selector(Coordinator.onTextUpdate), for: .editingChanged)
             $0.setContentHuggingPriority(.required, for: .vertical)
 
-            phoneNumber.map($0.setE164PhoneNumber)
+            phoneNumber.map($0.setNationalPhoneNumber)
         }
     }
 
@@ -57,8 +66,8 @@ struct PhoneNumberField: UIViewRepresentable {
 }
 
 private extension PhoneNumberTextField {
-    func setE164PhoneNumber(_ phoneNumber: PhoneNumber) {
-        text = phoneNumberKit.format(phoneNumber, toType: .e164)
+    func setNationalPhoneNumber(_ phoneNumber: PhoneNumber) {
+        text = phoneNumberKit.format(phoneNumber, toType: .national)
     }
 
     var validationError: Error? {
