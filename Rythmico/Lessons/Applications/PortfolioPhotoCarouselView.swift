@@ -24,7 +24,32 @@ struct PhotoCarouselView: View {
     }
 }
 
-private struct PhotoCarouselDetailView: View {
+private struct PhotoCarouselCell: View {
+    var photo: Portfolio.Photo
+
+    var body: some View {
+        AsyncImage(.simple(photo.thumbnailURL)) {
+            if let uiImage = $0 {
+                GeometryReader { gr in
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: gr.size.width)
+                }
+                .clipped()
+                .aspectRatio(1, contentMode: .fit)
+                .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
+            } else {
+                Color.rythmicoGray30
+                    .scaledToFill()
+                    .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
+            }
+        }
+        .cornerRadius(.spacingUnit * 2, antialiased: true)
+    }
+}
+
+struct PhotoCarouselDetailView: View {
     var photos: [Portfolio.Photo]
 
     @Binding
@@ -61,30 +86,5 @@ private struct PhotoCarouselDetailView: View {
             .padding(.top, .spacingMedium * 2)
             .padding(.bottom, .spacingMedium)
         }
-    }
-}
-
-private struct PhotoCarouselCell: View {
-    var photo: Portfolio.Photo
-
-    var body: some View {
-        AsyncImage(.simple(photo.thumbnailURL)) {
-            if let uiImage = $0 {
-                GeometryReader { gr in
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: gr.size.width)
-                }
-                .clipped()
-                .aspectRatio(1, contentMode: .fit)
-                .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
-            } else {
-                Color.rythmicoGray30
-                    .scaledToFill()
-                    .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
-            }
-        }
-        .cornerRadius(.spacingUnit * 2, antialiased: true)
     }
 }
