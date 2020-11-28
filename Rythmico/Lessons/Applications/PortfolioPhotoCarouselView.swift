@@ -45,41 +45,64 @@ private struct PhotoCarouselCell: View {
 }
 
 struct PhotoCarouselDetailView: View {
-    var photos: [Portfolio.Photo]
+    @Environment(\.presentationMode) private var presentationMode
 
+    var photos: [Portfolio.Photo]
     @Binding
-    var selectedPhoto: Portfolio.Photo
+    var selection: Portfolio.Photo?
+    @State
+    private var latestSelection: Portfolio.Photo
+
+    init?(photos: [Portfolio.Photo], selection: Binding<Portfolio.Photo?>) {
+        guard let initialSelection = selection.wrappedValue else {
+            return nil
+        }
+        self.photos = photos
+        self._selection = selection
+        self._latestSelection = .init(wrappedValue: initialSelection)
+    }
 
     var body: some View {
         ZStack {
             Color.black.edgesIgnoringSafeArea(.all)
 
-            VStack(spacing: .spacingMedium) {
-                TabView(selection: $selectedPhoto) {
-                    ForEach(photos, id: \.self) { photo in
-                        AsyncImage(.transitional(from: photo.thumbnailURL, to: photo.photoURL)) {
-                            if let uiImage = $0 {
-                                Image(uiImage: uiImage)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            } else {
-                                Color.black
-                            }
-                        }
-                        .tag(photo)
-                    }
-                }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            VStack(alignment: .trailing, spacing: 0) {
+                CloseButton(action: dismiss)
+                    .padding([.trailing, .bottom], .spacingSmall)
+                    .padding(.top, .spacingMedium)
+                    .accentColor(.rythmicoWhite)
 
-                DotPageIndicator(
-                    selection: $selectedPhoto,
-                    items: photos,
-                    foregroundColor: Color.white.opacity(0.125),
-                    accentColor: .rythmicoPurple
-                )
+                VStack(spacing: .spacingMedium) {
+                    TabView(selection: Binding($selection) ?? $latestSelection) {
+                        ForEach(photos, id: \.self) { photo in
+                            AsyncImage(.transitional(from: photo.thumbnailURL, to: photo.photoURL)) {
+                                if let uiImage = $0 {
+                                    Image(uiImage: uiImage)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                } else {
+                                    Color.black
+                                }
+                            }
+                            .tag(photo)
+                        }
+                    }
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+
+                    DotPageIndicator(
+                        selection: $selection,
+                        items: photos,
+                        foregroundColor: Color.rythmicoWhite.opacity(0.125),
+                        accentColor: .rythmicoWhite
+                    )
+                    .padding(.bottom, .spacingMedium)
+                }
             }
-            .padding(.top, .spacingMedium * 2)
-            .padding(.bottom, .spacingMedium)
         }
+        .onChange(of: selection) { $0.map { latestSelection = $0 } }
+    }
+
+    private func dismiss() {
+        presentationMode.wrappedValue.dismiss()
     }
 }

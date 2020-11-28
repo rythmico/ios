@@ -65,7 +65,7 @@ struct PortfolioView: View {
         .multiSheet {
             $0.sheet(item: $selectedVideo, content: VideoCarouselPlayer.init)
             $0.sheet(item: $selectedPhoto) { _ in
-                Binding($selectedPhoto).map { PhotoCarouselDetailView(photos: portfolio.photos, selectedPhoto: $0) }
+                PhotoCarouselDetailView(photos: portfolio.photos, selection: $selectedPhoto)
             }
         }
     }
