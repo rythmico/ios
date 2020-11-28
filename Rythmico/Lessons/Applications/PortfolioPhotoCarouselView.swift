@@ -16,11 +16,6 @@ struct PhotoCarouselView: View {
                 }
             }
         }
-        .sheet(item: $selectedPhoto) { selectedPhoto in
-            if let selectedPhotoBinding = Binding($selectedPhoto) {
-                PhotoCarouselDetailView(photos: photos, selectedPhoto: selectedPhotoBinding)
-            }
-        }
     }
 }
 

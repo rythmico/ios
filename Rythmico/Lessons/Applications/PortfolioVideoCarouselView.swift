@@ -24,7 +24,6 @@ struct VideoCarouselView: View {
         }
         .introspectScrollView { scrollViewWidth = $0.frame.width }
         .frame(maxWidth: .spacingMax)
-        .sheet(item: $selectedVideo, content: VideoCarouselPlayer.init)
     }
 }
 
@@ -65,7 +64,7 @@ private struct VideoCarouselCell: View {
     }
 }
 
-private struct VideoCarouselPlayer: View {
+struct VideoCarouselPlayer: View {
     @Environment(\.presentationMode) private var presentationMode
 
     var video: Portfolio.Video
