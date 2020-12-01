@@ -1,4 +1,5 @@
 import SwiftUI
+import CasePaths
 import Then
 
 final class AppState: ObservableObject {
@@ -19,64 +20,36 @@ extension AppState {
         case booking(LessonPlan, LessonPlan.Application)
         case booked(LessonPlan, LessonPlan.Application)
 
-        case viewingLesson(Lesson)
-        case skippingLesson(Lesson)
+        case viewingLesson(Lesson, skipping: Bool = false)
     }
 }
 
 extension AppState.LessonsContext {
+    private subscript<Value>(casePath: CasePath<Self, Value>) -> Value? {
+        casePath.extract(from: self)
+    }
+
     var isRequestingLessonPlan: Bool {
-        get {
-            switch self {
-            case .requestingLessonPlan:
-                return true
-            default:
-                return false
-            }
-        }
+        get { self[/Self.requestingLessonPlan] != nil }
         set {
-            if newValue {
-                self = .requestingLessonPlan
-            } else if isRequestingLessonPlan {
-                self = .none
-            }
+            if newValue { self = .requestingLessonPlan }
+            else
+            if isRequestingLessonPlan { self = .none }
         }
     }
 
     var viewingLesson: Lesson? {
-        get {
-            switch self {
-            case .viewingLesson(let lesson), .skippingLesson(let lesson):
-                return lesson
-            default:
-                return nil
-            }
-        }
+        get { self[/Self.viewingLesson]?.0 }
         set {
-            if let newValue = newValue {
-                self = .viewingLesson(newValue)
-            } else if case .viewingLesson = self {
-                self = .none
-            }
+            if let newValue = newValue { self = .viewingLesson(newValue) }
+            else
+            if viewingLesson != nil { self = .none }
         }
     }
 
-    var skippingLesson: Lesson? {
-        get {
-            switch self {
-            case .skippingLesson(let lesson):
-                return lesson
-            default:
-                return nil
-            }
-        }
-        set {
-            if let newValue = newValue {
-                self = .skippingLesson(newValue)
-            } else if let lesson = skippingLesson {
-                self = .viewingLesson(lesson)
-            }
-        }
+    var isSkippingLesson: Bool {
+        get { self[/Self.viewingLesson]?.1 == true }
+        set { viewingLesson.map { self = .viewingLesson($0, skipping: newValue) } }
     }
 
     var selectedLessonPlan: LessonPlan? {

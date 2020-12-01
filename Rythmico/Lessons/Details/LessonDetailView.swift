@@ -14,7 +14,7 @@ struct LessonDetailView: View, TestableView {
     }
 
     func showSkipLessonForm() {
-        state.lessonsContext = .skippingLesson(lesson)
+        state.lessonsContext.isSkippingLesson = true
     }
 
     let inspection = SelfInspection()
@@ -63,8 +63,8 @@ struct LessonDetailView: View, TestableView {
         .testable(self)
         .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(item: $state.lessonsContext.skippingLesson) {
-            LessonSkippingView(lesson: $0)
+        .sheet(isPresented: $state.lessonsContext.isSkippingLesson) {
+            LessonSkippingView(lesson: lesson)
         }
     }
 
