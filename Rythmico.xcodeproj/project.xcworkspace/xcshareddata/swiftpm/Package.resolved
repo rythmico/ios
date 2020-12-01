@@ -119,6 +119,15 @@
         }
       },
       {
+        "package": "swift-case-paths",
+        "repositoryURL": "https://github.com/pointfreeco/swift-case-paths",
+        "state": {
+          "branch": null,
+          "revision": "ed1838ab4fa5d47db8aa640736dd5b7672548873",
+          "version": "0.1.2"
+        }
+      },
+      {
         "package": "swift-nonempty",
         "repositoryURL": "https://github.com/pointfreeco/swift-nonempty",
         "state": {
