@@ -14,12 +14,11 @@ extension AppState {
     enum LessonsContext: Equatable {
         case none
         case requestingLessonPlan
-        case viewing(LessonPlan)
-        case cancelling(LessonPlan)
         case reviewing(LessonPlan, LessonPlan.Application? = nil)
         case booking(LessonPlan, LessonPlan.Application)
         case booked(LessonPlan, LessonPlan.Application)
 
+        case viewingLessonPlan(LessonPlan, cancelling: Bool = false)
         case viewingLesson(Lesson, skipping: Bool = false)
     }
 }
@@ -52,40 +51,18 @@ extension AppState.LessonsContext {
         set { viewingLesson.map { self = .viewingLesson($0, skipping: newValue) } }
     }
 
-    var selectedLessonPlan: LessonPlan? {
-        get {
-            switch self {
-            case .viewing(let lessonPlan), .cancelling(let lessonPlan):
-                return lessonPlan
-            default:
-                return nil
-            }
-        }
+    var viewingLessonPlan: LessonPlan? {
+        get { self[/Self.viewingLessonPlan]?.0 }
         set {
-            if let newValue = newValue {
-                self = .viewing(newValue)
-            } else if case .viewing = self {
-                self = .none
-            }
+            if let newValue = newValue { self = .viewingLessonPlan(newValue) }
+            else
+            if viewingLessonPlan != nil { self = .none }
         }
     }
 
-    var cancellingLessonPlan: LessonPlan? {
-        get {
-            switch self {
-            case .cancelling(let lessonPlan):
-                return lessonPlan
-            default:
-                return nil
-            }
-        }
-        set {
-            if let newValue = newValue {
-                self = .cancelling(newValue)
-            } else if let lessonPlan = cancellingLessonPlan {
-                self = .viewing(lessonPlan)
-            }
-        }
+    var isCancellingLessonPlan: Bool {
+        get { self[/Self.viewingLessonPlan]?.1 == true }
+        set { viewingLessonPlan.map { self = .viewingLessonPlan($0, cancelling: newValue) } }
     }
 
     var reviewingLessonPlan: LessonPlan? {
