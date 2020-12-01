@@ -13,17 +13,29 @@ final class AppState: ObservableObject {
 extension AppState {
     enum LessonsContext: Equatable {
         case none
-        case requestingLessonPlan
-        case reviewing(LessonPlan, LessonPlan.Application? = nil)
-        case booking(LessonPlan, LessonPlan.Application)
-        case booked(LessonPlan, LessonPlan.Application)
 
-        case viewingLessonPlan(LessonPlan, cancelling: Bool = false)
-        case viewingLesson(Lesson, skipping: Bool = false)
+        // TODO: make tuple when below is implemented.
+        // https://github.com/apple/swift-evolution/blob/main/proposals/0283-tuples-are-equatable-comparable-hashable.md
+        enum ReviewingLessonPlanContext: Equatable {
+            case none
+            case reviewingApplication(LessonPlan.Application, isBooking: Bool = false)
+        }
+
+        case requestingLessonPlan
+        case viewingLessonPlan(LessonPlan, isCancelling: Bool = false)
+        case reviewingLessonPlan(LessonPlan, ReviewingLessonPlanContext = .none)
+        case bookedLessonPlan(LessonPlan, LessonPlan.Application)
+
+        case viewingLesson(Lesson, isSkipping: Bool = false)
     }
 }
 
 extension AppState.LessonsContext {
+    // TODO: enable when Swift allows this (put @dynamicMemberLookup above enum declaration)
+//    subscript<Value>(dynamicMember keyPath: KeyPath<Self.Type, (Value) -> Self>) -> Value? {
+//        CasePath.case(Self.self[keyPath: keyPath]).extract(from: self)
+//    }
+
     private subscript<Value>(casePath: CasePath<Self, Value>) -> Value? {
         casePath.extract(from: self)
     }
@@ -48,7 +60,7 @@ extension AppState.LessonsContext {
 
     var isSkippingLesson: Bool {
         get { self[/Self.viewingLesson]?.1 == true }
-        set { viewingLesson.map { self = .viewingLesson($0, skipping: newValue) } }
+        set { viewingLesson.map { self = .viewingLesson($0, isSkipping: newValue) } }
     }
 
     var viewingLessonPlan: LessonPlan? {
@@ -62,64 +74,75 @@ extension AppState.LessonsContext {
 
     var isCancellingLessonPlan: Bool {
         get { self[/Self.viewingLessonPlan]?.1 == true }
-        set { viewingLessonPlan.map { self = .viewingLessonPlan($0, cancelling: newValue) } }
+        set { viewingLessonPlan.map { self = .viewingLessonPlan($0, isCancelling: newValue) } }
     }
 
     var reviewingLessonPlan: LessonPlan? {
-        get {
-            switch self {
-            case let .reviewing(lessonPlan, _), let .booking(lessonPlan, _):
-                return lessonPlan
-            default:
-                return nil
-            }
-        }
+        get { self[/Self.reviewingLessonPlan]?.0 }
         set {
-            if let newValue = newValue {
-                self = .reviewing(newValue, nil)
-            } else if reviewingLessonPlan != nil {
-                self = .none
+            if let newValue = newValue { self = .reviewingLessonPlan(newValue) }
+            else
+            if reviewingLessonPlan != nil { self = .none }
+        }
+    }
+
+    var reviewingApplication: LessonPlan.Application? {
+        get { self[/Self.reviewingLessonPlan]?.1.reviewingApplication }
+        set {
+            reviewingLessonPlan.map {
+                self = .reviewingLessonPlan($0, newValue.map { .reviewingApplication($0) } ?? .none)
             }
         }
     }
 
-    var reviewingLessonPlanApplication: LessonPlan.Application? {
-        get {
-            switch self {
-            case let .reviewing(_, application):
-                return application
-            case let .booking(_, application):
-                return application
-            default:
-                return nil
-            }
-        }
+    var isBookingLessonPlan: Bool {
+        get { self[/Self.reviewingLessonPlan]?.1.isBooking == true }
         set {
-            if let lessonPlan = reviewingLessonPlan {
-                self = .reviewing(lessonPlan, newValue)
+            reviewingLessonPlan.map {
+                self = .reviewingLessonPlan($0,
+                    reviewingApplication.map { .reviewingApplication($0, isBooking: newValue) } ?? .none
+                )
             }
         }
     }
 
     var bookingValues: (lessonPlan: LessonPlan, application: LessonPlan.Application)? {
         get {
-            switch self {
-            case let .booking(lessonPlan, application), let .booked(lessonPlan, application):
-                return (lessonPlan, application)
-            default:
+            self[/Self.bookedLessonPlan] ?? {
+                if
+                    let lessonPlan = reviewingLessonPlan,
+                    let application = reviewingApplication,
+                    isBookingLessonPlan
+                {
+                    return (lessonPlan, application)
+                }
                 return nil
-            }
+            }()
         }
         set {
             guard newValue == nil else { return }
             switch self {
-            case let .booking(lessonPlan, application):
-                self = .reviewing(lessonPlan, application)
-            case .booked:
+            case let .reviewingLessonPlan(lessonPlan, .reviewingApplication(application, _)):
+                self = .reviewingLessonPlan(lessonPlan, .reviewingApplication(application, isBooking: false))
+            case .bookedLessonPlan:
                 self = .none
             default:
                 break
             }
         }
+    }
+}
+
+extension AppState.LessonsContext.ReviewingLessonPlanContext {
+    private subscript<Value>(casePath: CasePath<Self, Value>) -> Value? {
+        casePath.extract(from: self)
+    }
+
+    var reviewingApplication: LessonPlan.Application? {
+        self[/Self.reviewingApplication]?.0
+    }
+
+    var isBooking: Bool {
+        self[/Self.reviewingApplication]?.1 == true
     }
 }

@@ -45,7 +45,7 @@ struct LessonPlanApplicationDetailView: View {
     }
 
     private func book() {
-        Current.state.lessonsContext = .booking(lessonPlan, application)
+        Current.state.lessonsContext.isBookingLessonPlan = true
     }
 }
 
