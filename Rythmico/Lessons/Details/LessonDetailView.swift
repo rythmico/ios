@@ -73,7 +73,7 @@ struct LessonDetailView: View, TestableView {
                 LessonSkippingView(lesson: lesson)
             }
             $0.sheet(isPresented: $state.lessonsContext.isCancellingLessonPlan) {
-                if let lessonPlan = Current.lessonPlanRepository.items.first(where: { $0.id == lesson.planId }) {
+                if let lessonPlan = Current.lessonPlanRepository.firstById(lesson.planId) {
                     LessonPlanCancellationView(lessonPlan: lessonPlan)
                 }
             }

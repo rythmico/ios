@@ -140,7 +140,7 @@ struct LessonPlanBookingView: View {
     }
 
     func checkoutSucceeded(_ lessonPlan: LessonPlan) {
-        Current.lessonPlanRepository.replaceIdentifiableItem(lessonPlan)
+        Current.lessonPlanRepository.replaceById(lessonPlan)
         Current.state.lessonsContext = .bookedLessonPlan(lessonPlan, application)
     }
 }

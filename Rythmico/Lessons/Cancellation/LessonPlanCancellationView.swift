@@ -77,7 +77,7 @@ struct LessonPlanCancellationView: View, TestableView {
     }
 
     private func lessonPlanSuccessfullyCancelled(_ lessonPlan: LessonPlan) {
-        Current.lessonPlanRepository.replaceIdentifiableItem(lessonPlan)
+        Current.lessonPlanRepository.replaceById(lessonPlan)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             Current.state.lessonsContext = .none

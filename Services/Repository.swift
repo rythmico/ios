@@ -25,7 +25,11 @@ extension Repository {
 }
 
 extension Repository where Item: Identifiable {
-    func replaceIdentifiableItem(_ item: Item) {
+    func firstById(_ id: Item.ID) -> Item? {
+        items.first { $0.id == id }
+    }
+
+    func replaceById(_ item: Item) {
         for (index, element) in items.enumerated() where element.id == item.id {
             items[index] = item
         }
