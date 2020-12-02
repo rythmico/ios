@@ -55,9 +55,8 @@ struct LessonSkippingView: View {
     }
 
     private func lessonSuccessfullySkipped(_ lessonPlan: LessonPlan) {
-        Current.lessonPlanRepository.replaceById(lessonPlan)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            Current.lessonPlanRepository.replaceById(lessonPlan)
             Current.state.lessonsContext = .none
         }
     }
