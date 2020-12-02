@@ -1,5 +1,5 @@
 import SwiftUI
-import CasePaths
+import EnumKit
 import Then
 
 final class AppState: ObservableObject {
@@ -11,10 +11,10 @@ final class AppState: ObservableObject {
 }
 
 extension AppState {
-    enum LessonsContext: Equatable {
+    enum LessonsContext: Equatable, CaseAccessible {
         case none
 
-        enum ReviewingLessonPlanContext: Equatable {
+        enum ReviewingLessonPlanContext: Equatable, CaseAccessible {
             case none
             case reviewingApplication(LessonPlan.Application, isBooking: Bool = false)
         }
@@ -24,7 +24,7 @@ extension AppState {
         case reviewingLessonPlan(LessonPlan, ReviewingLessonPlanContext = .none)
         case bookedLessonPlan(LessonPlan, LessonPlan.Application)
 
-        enum ViewingLessonContext: Equatable {
+        enum ViewingLessonContext: Equatable, CaseAccessible {
             case none
             case skippingLesson
             case cancellingLessonPlan
@@ -40,12 +40,8 @@ extension AppState.LessonsContext {
 //        CasePath.case(Self.self[keyPath: keyPath]).extract(from: self)
 //    }
 
-    private subscript<Value>(casePath: CasePath<Self, Value>) -> Value? {
-        casePath.extract(from: self)
-    }
-
     var isRequestingLessonPlan: Bool {
-        get { self[/Self.requestingLessonPlan] != nil }
+        get { self.matches(case: .requestingLessonPlan) }
         set {
             if newValue { self = .requestingLessonPlan }
             else
@@ -54,7 +50,7 @@ extension AppState.LessonsContext {
     }
 
     var viewingLesson: Lesson? {
-        get { self[/Self.viewingLesson]?.0 }
+        get { self[case: Self.viewingLesson]?.0 }
         set {
             if let newValue = newValue { self = .viewingLesson(newValue) }
             else
@@ -63,12 +59,12 @@ extension AppState.LessonsContext {
     }
 
     var isSkippingLesson: Bool {
-        get { self[/Self.viewingLesson]?.1.isSkippingLesson == true }
-        set { viewingLesson.map { self = .viewingLesson($0, newValue ? .skippingLesson : .none) } }
+        get { self[case: Self.viewingLesson]?.1.matches(case: .skippingLesson) == true }
+        set { self[case: Self.viewingLesson]?.1 = newValue ? .skippingLesson : .none }
     }
 
     var viewingLessonPlan: LessonPlan? {
-        get { self[/Self.viewingLessonPlan]?.0 }
+        get { self[case: Self.viewingLessonPlan]?.0 }
         set {
             if let newValue = newValue { self = .viewingLessonPlan(newValue) }
             else
@@ -78,19 +74,19 @@ extension AppState.LessonsContext {
 
     var isCancellingLessonPlan: Bool {
         get {
-            self[/Self.viewingLessonPlan]?.1 == true
+            self[case: Self.viewingLessonPlan]?.1 == true
             ||
-            self[/Self.viewingLesson]?.1.isCancellingLessonPlan == true
+            self[case: Self.viewingLesson]?.1.matches(case: .cancellingLessonPlan) == true
         }
         set {
-            viewingLessonPlan.map { self = .viewingLessonPlan($0, isCancelling: newValue) }
+            (self[case: Self.viewingLessonPlan]?.1 = newValue)
             ??
-            viewingLesson.map { self = .viewingLesson($0, newValue ? .cancellingLessonPlan : .none) }
+            (self[case: Self.viewingLesson]?.1 = newValue ? .cancellingLessonPlan : .none)
         }
     }
 
     var reviewingLessonPlan: LessonPlan? {
-        get { self[/Self.reviewingLessonPlan]?.0 }
+        get { self[case: Self.reviewingLessonPlan]?.0 }
         set {
             if let newValue = newValue { self = .reviewingLessonPlan(newValue) }
             else
@@ -99,76 +95,33 @@ extension AppState.LessonsContext {
     }
 
     var reviewingApplication: LessonPlan.Application? {
-        get { self[/Self.reviewingLessonPlan]?.1.reviewingApplication }
-        set {
-            reviewingLessonPlan.map {
-                self = .reviewingLessonPlan($0, newValue.map { .reviewingApplication($0) } ?? .none)
-            }
-        }
+        get { self[case: Self.reviewingLessonPlan]?.1[case: ReviewingLessonPlanContext.reviewingApplication]?.0 }
+        set { self[case: Self.reviewingLessonPlan]?.1 = newValue.map { .reviewingApplication($0) } ?? .none }
     }
 
     var isBookingLessonPlan: Bool {
-        get { self[/Self.reviewingLessonPlan]?.1.isBooking == true }
-        set {
-            reviewingLessonPlan.map {
-                self = .reviewingLessonPlan($0,
-                    reviewingApplication.map { .reviewingApplication($0, isBooking: newValue) } ?? .none
-                )
-            }
-        }
+        get { self[case: Self.reviewingLessonPlan]?.1[case: ReviewingLessonPlanContext.reviewingApplication]?.1 == true }
+        set { self[case: Self.reviewingLessonPlan]?.1[case: ReviewingLessonPlanContext.reviewingApplication]?.1 = newValue }
     }
 
     var bookingValues: (lessonPlan: LessonPlan, application: LessonPlan.Application)? {
         get {
-            self[/Self.bookedLessonPlan] ?? {
-                if
-                    let lessonPlan = reviewingLessonPlan,
-                    let application = reviewingApplication,
-                    isBookingLessonPlan
-                {
-                    return (lessonPlan, application)
-                }
-                return nil
-            }()
+            (isBookingLessonPlan ? unwrap(a: reviewingLessonPlan, b: reviewingApplication) : nil)
+            ??
+            self[case: Self.bookedLessonPlan]
         }
         set {
             guard newValue == nil else { return }
             switch self {
-            case let .reviewingLessonPlan(lessonPlan, .reviewingApplication(application, _)):
-                self = .reviewingLessonPlan(lessonPlan, .reviewingApplication(application, isBooking: false))
-            case .bookedLessonPlan:
-                self = .none
-            default:
-                break
+            case .reviewingLessonPlan: self.isBookingLessonPlan = false
+            case .bookedLessonPlan: self = .none
+            default: break
             }
         }
     }
-}
 
-extension AppState.LessonsContext.ReviewingLessonPlanContext {
-    private subscript<Value>(casePath: CasePath<Self, Value>) -> Value? {
-        casePath.extract(from: self)
-    }
-
-    var reviewingApplication: LessonPlan.Application? {
-        self[/Self.reviewingApplication]?.0
-    }
-
-    var isBooking: Bool {
-        self[/Self.reviewingApplication]?.1 == true
-    }
-}
-
-extension AppState.LessonsContext.ViewingLessonContext {
-    private subscript<Value>(casePath: CasePath<Self, Value>) -> Value? {
-        casePath.extract(from: self)
-    }
-
-    var isSkippingLesson: Bool {
-        self[/Self.skippingLesson] != nil
-    }
-
-    var isCancellingLessonPlan: Bool {
-        self[/Self.cancellingLessonPlan] != nil
+    private func unwrap<A, B>(a: A?, b: B?) -> (A, B)? {
+        guard let a = a, let b = b else { return nil }
+        return (a, b)
     }
 }
