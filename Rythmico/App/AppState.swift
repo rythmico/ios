@@ -14,8 +14,6 @@ extension AppState {
     enum LessonsContext: Equatable {
         case none
 
-        // TODO: make tuple when below is implemented.
-        // https://github.com/apple/swift-evolution/blob/main/proposals/0283-tuples-are-equatable-comparable-hashable.md
         enum ReviewingLessonPlanContext: Equatable {
             case none
             case reviewingApplication(LessonPlan.Application, isBooking: Bool = false)
@@ -26,7 +24,13 @@ extension AppState {
         case reviewingLessonPlan(LessonPlan, ReviewingLessonPlanContext = .none)
         case bookedLessonPlan(LessonPlan, LessonPlan.Application)
 
-        case viewingLesson(Lesson, isSkipping: Bool = false)
+        enum ViewingLessonContext: Equatable {
+            case none
+            case skippingLesson
+            case cancellingLessonPlan
+        }
+
+        case viewingLesson(Lesson, ViewingLessonContext = .none)
     }
 }
 
@@ -59,8 +63,8 @@ extension AppState.LessonsContext {
     }
 
     var isSkippingLesson: Bool {
-        get { self[/Self.viewingLesson]?.1 == true }
-        set { viewingLesson.map { self = .viewingLesson($0, isSkipping: newValue) } }
+        get { self[/Self.viewingLesson]?.1.isSkippingLesson == true }
+        set { viewingLesson.map { self = .viewingLesson($0, newValue ? .skippingLesson : .none) } }
     }
 
     var viewingLessonPlan: LessonPlan? {
@@ -73,8 +77,16 @@ extension AppState.LessonsContext {
     }
 
     var isCancellingLessonPlan: Bool {
-        get { self[/Self.viewingLessonPlan]?.1 == true }
-        set { viewingLessonPlan.map { self = .viewingLessonPlan($0, isCancelling: newValue) } }
+        get {
+            self[/Self.viewingLessonPlan]?.1 == true
+            ||
+            self[/Self.viewingLesson]?.1.isCancellingLessonPlan == true
+        }
+        set {
+            viewingLessonPlan.map { self = .viewingLessonPlan($0, isCancelling: newValue) }
+            ??
+            viewingLesson.map { self = .viewingLesson($0, newValue ? .cancellingLessonPlan : .none) }
+        }
     }
 
     var reviewingLessonPlan: LessonPlan? {
@@ -144,5 +156,19 @@ extension AppState.LessonsContext.ReviewingLessonPlanContext {
 
     var isBooking: Bool {
         self[/Self.reviewingApplication]?.1 == true
+    }
+}
+
+extension AppState.LessonsContext.ViewingLessonContext {
+    private subscript<Value>(casePath: CasePath<Self, Value>) -> Value? {
+        casePath.extract(from: self)
+    }
+
+    var isSkippingLesson: Bool {
+        self[/Self.skippingLesson] != nil
+    }
+
+    var isCancellingLessonPlan: Bool {
+        self[/Self.cancellingLessonPlan] != nil
     }
 }

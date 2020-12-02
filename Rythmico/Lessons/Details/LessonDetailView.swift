@@ -1,4 +1,5 @@
 import SwiftUI
+import MultiSheet
 import Sugar
 
 struct LessonDetailView: View, TestableView {
@@ -15,6 +16,10 @@ struct LessonDetailView: View, TestableView {
 
     func showSkipLessonForm() {
         state.lessonsContext.isSkippingLesson = true
+    }
+
+    func showCancelLessonPlanForm() {
+        state.lessonsContext.isCancellingLessonPlan = true
     }
 
     let inspection = SelfInspection()
@@ -63,8 +68,15 @@ struct LessonDetailView: View, TestableView {
         .testable(self)
         .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(isPresented: $state.lessonsContext.isSkippingLesson) {
-            LessonSkippingView(lesson: lesson)
+        .multiSheet {
+            $0.sheet(isPresented: $state.lessonsContext.isSkippingLesson) {
+                LessonSkippingView(lesson: lesson)
+            }
+            $0.sheet(isPresented: $state.lessonsContext.isCancellingLessonPlan) {
+                if let lessonPlan = Current.lessonPlanRepository.items.first(where: { $0.id == lesson.planId }) {
+                    LessonPlanCancellationView(lessonPlan: lessonPlan)
+                }
+            }
         }
     }
 
@@ -79,6 +91,7 @@ struct LessonDetailView: View, TestableView {
             return [
 //                .init(title: "View Lesson Plan", action: showLessonPlan),
                 .init(title: "Skip Lesson", action: showSkipLessonForm),
+                .init(title: "Cancel Lesson Plan", action: showCancelLessonPlanForm),
             ]
         case .completed, .skipped:
             return []
