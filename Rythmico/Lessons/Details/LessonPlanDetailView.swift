@@ -14,7 +14,7 @@ struct LessonPlanDetailView: View, TestableView {
     }
 
     func showCancelLessonPlanForm() {
-        state.lessonsContext.isCancellingLessonPlan = true
+        state.lessonsContext = .viewingLessonPlan(lessonPlan, isCancelling: true)
     }
 
     let inspection = SelfInspection()
