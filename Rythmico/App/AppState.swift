@@ -40,22 +40,18 @@ extension AppState.LessonsContext {
 //        CasePath.case(Self.self[keyPath: keyPath]).extract(from: self)
 //    }
 
+    private mutating func setIfSomeOrReset<T, AssociatedValue>(_ newValue: T?, onCase pattern: (AssociatedValue) -> Self, _ caseMap: (T) -> Self) {
+        newValue.map { self = caseMap($0) } ?? { self.do(onCase: pattern) { _ in self = .none } }()
+    }
+
     var isRequestingLessonPlan: Bool {
         get { self.matches(case: .requestingLessonPlan) }
-        set {
-            if newValue { self = .requestingLessonPlan }
-            else
-            if isRequestingLessonPlan { self = .none }
-        }
+        set { if newValue { self = .requestingLessonPlan } else if isRequestingLessonPlan { self = .none } } // not worth specializing `setIfSomeOrReset` for this one
     }
 
     var viewingLesson: Lesson? {
         get { self[case: Self.viewingLesson]?.0 }
-        set {
-            if let newValue = newValue { self = .viewingLesson(newValue) }
-            else
-            if viewingLesson != nil { self = .none }
-        }
+        set { setIfSomeOrReset(newValue, onCase: Self.viewingLesson) { .viewingLesson($0) } }
     }
 
     var isSkippingLesson: Bool {
@@ -65,11 +61,7 @@ extension AppState.LessonsContext {
 
     var viewingLessonPlan: LessonPlan? {
         get { self[case: Self.viewingLessonPlan]?.0 }
-        set {
-            if let newValue = newValue { self = .viewingLessonPlan(newValue) }
-            else
-            if viewingLessonPlan != nil { self = .none }
-        }
+        set { setIfSomeOrReset(newValue, onCase: Self.viewingLessonPlan) { .viewingLessonPlan($0) } }
     }
 
     var isCancellingLessonPlan: Bool {
@@ -87,11 +79,7 @@ extension AppState.LessonsContext {
 
     var reviewingLessonPlan: LessonPlan? {
         get { self[case: Self.reviewingLessonPlan]?.0 }
-        set {
-            if let newValue = newValue { self = .reviewingLessonPlan(newValue) }
-            else
-            if reviewingLessonPlan != nil { self = .none }
-        }
+        set { setIfSomeOrReset(newValue, onCase: Self.reviewingLessonPlan) { .reviewingLessonPlan($0) } }
     }
 
     var reviewingApplication: LessonPlan.Application? {
