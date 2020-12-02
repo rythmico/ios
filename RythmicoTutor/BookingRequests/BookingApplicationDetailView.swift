@@ -132,7 +132,7 @@ struct BookingApplicationDetailView: View {
     }
 
     private func didRetractBookingApplication(_ retractedApplication: BookingApplication) {
-        Current.bookingApplicationRepository.replaceIdentifiableItem(retractedApplication)
+        Current.bookingApplicationRepository.replaceById(retractedApplication)
         Current.router.open(.bookingApplications) // Does not work.
         presentationMode.wrappedValue.dismiss() // FIXME: workaround for the above. Investigate.
     }
