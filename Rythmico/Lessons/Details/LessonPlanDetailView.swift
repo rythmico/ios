@@ -14,7 +14,7 @@ struct LessonPlanDetailView: View, TestableView {
     }
 
     func showCancelLessonPlanForm() {
-        state.lessonsContext = .cancelling(lessonPlan)
+        state.lessonsContext = .viewingLessonPlan(lessonPlan, isCancelling: true)
     }
 
     let inspection = SelfInspection()
@@ -66,8 +66,8 @@ struct LessonPlanDetailView: View, TestableView {
         .testable(self)
         .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(item: $state.lessonsContext.cancellingLessonPlan) {
-            LessonPlanCancellationView(lessonPlan: $0)
+        .sheet(isPresented: $state.lessonsContext.isCancellingLessonPlan) {
+            LessonPlanCancellationView(lessonPlan: lessonPlan)
         }
     }
 

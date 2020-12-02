@@ -16,7 +16,7 @@ final class LessonPlanDetailViewTests: XCTestCase {
         XCTAssertView(view) { view in
             XCTAssertEqual(Current.state.lessonsContext, .none)
             view.showCancelLessonPlanForm()
-            XCTAssertEqual(Current.state.lessonsContext, .cancelling(.pendingJackGuitarPlanStub))
+            XCTAssertEqual(Current.state.lessonsContext, .viewingLessonPlan(.pendingJackGuitarPlanStub, isCancelling: true))
         }
     }
 }

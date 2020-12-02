@@ -2,6 +2,8 @@ import SwiftUI
 import Sugar
 
 struct LessonSkippingView: View {
+    @Environment(\.presentationMode)
+    private var presentationMode
     @StateObject
     private var coordinator = Current.coordinator(for: \.lessonSkippingService)!
 
@@ -45,7 +47,7 @@ struct LessonSkippingView: View {
     }
 
     private func dismiss() {
-        Current.state.lessonsContext = .none
+        presentationMode.wrappedValue.dismiss()
     }
 
     private func submit() {
@@ -53,9 +55,8 @@ struct LessonSkippingView: View {
     }
 
     private func lessonSuccessfullySkipped(_ lessonPlan: LessonPlan) {
-        Current.lessonPlanRepository.replaceIdentifiableItem(lessonPlan)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            Current.lessonPlanRepository.replaceById(lessonPlan)
             Current.state.lessonsContext = .none
         }
     }

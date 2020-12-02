@@ -1,4 +1,5 @@
 import SwiftUI
+import EnumKit
 import Then
 
 final class AppState: ObservableObject {
@@ -10,166 +11,105 @@ final class AppState: ObservableObject {
 }
 
 extension AppState {
-    enum LessonsContext: Equatable {
+    enum LessonsContext: Equatable, CaseAccessible {
         case none
-        case requestingLessonPlan
-        case viewing(LessonPlan)
-        case cancelling(LessonPlan)
-        case reviewing(LessonPlan, LessonPlan.Application? = nil)
-        case booking(LessonPlan, LessonPlan.Application)
-        case booked(LessonPlan, LessonPlan.Application)
 
-        case viewingLesson(Lesson)
-        case skippingLesson(Lesson)
+        enum ReviewingLessonPlanContext: Equatable, CaseAccessible {
+            case none
+            case reviewingApplication(LessonPlan.Application, isBooking: Bool = false)
+        }
+
+        case requestingLessonPlan
+        case viewingLessonPlan(LessonPlan, isCancelling: Bool = false)
+        case reviewingLessonPlan(LessonPlan, ReviewingLessonPlanContext = .none)
+        case bookedLessonPlan(LessonPlan, LessonPlan.Application)
+
+        enum ViewingLessonContext: Equatable, CaseAccessible {
+            case none
+            case skippingLesson
+            case cancellingLessonPlan
+        }
+
+        case viewingLesson(Lesson, ViewingLessonContext = .none)
     }
 }
 
 extension AppState.LessonsContext {
+    // TODO: enable when Swift allows this (put @dynamicMemberLookup above enum declaration)
+//    subscript<Value>(dynamicMember keyPath: KeyPath<Self.Type, (Value) -> Self>) -> Value? {
+//        CasePath.case(Self.self[keyPath: keyPath]).extract(from: self)
+//    }
+
+    private mutating func setIfSomeOrReset<T, AssociatedValue>(_ newValue: T?, onCase pattern: (AssociatedValue) -> Self, _ caseMap: (T) -> Self) {
+        newValue.map { self = caseMap($0) } ?? { self.do(onCase: pattern) { _ in self = .none } }()
+    }
+
     var isRequestingLessonPlan: Bool {
-        get {
-            switch self {
-            case .requestingLessonPlan:
-                return true
-            default:
-                return false
-            }
-        }
-        set {
-            if newValue {
-                self = .requestingLessonPlan
-            } else if isRequestingLessonPlan {
-                self = .none
-            }
-        }
+        get { self.matches(case: .requestingLessonPlan) }
+        set { if newValue { self = .requestingLessonPlan } else if isRequestingLessonPlan { self = .none } } // not worth specializing `setIfSomeOrReset` for this one
     }
 
     var viewingLesson: Lesson? {
-        get {
-            switch self {
-            case .viewingLesson(let lesson), .skippingLesson(let lesson):
-                return lesson
-            default:
-                return nil
-            }
-        }
-        set {
-            if let newValue = newValue {
-                self = .viewingLesson(newValue)
-            } else if case .viewingLesson = self {
-                self = .none
-            }
-        }
+        get { self[case: Self.viewingLesson]?.0 }
+        set { setIfSomeOrReset(newValue, onCase: Self.viewingLesson) { .viewingLesson($0) } }
     }
 
-    var skippingLesson: Lesson? {
-        get {
-            switch self {
-            case .skippingLesson(let lesson):
-                return lesson
-            default:
-                return nil
-            }
-        }
-        set {
-            if let newValue = newValue {
-                self = .skippingLesson(newValue)
-            } else if let lesson = skippingLesson {
-                self = .viewingLesson(lesson)
-            }
-        }
+    var isSkippingLesson: Bool {
+        get { self[case: Self.viewingLesson]?.1.matches(case: .skippingLesson) == true }
+        set { self[case: Self.viewingLesson]?.1 = newValue ? .skippingLesson : .none }
     }
 
-    var selectedLessonPlan: LessonPlan? {
-        get {
-            switch self {
-            case .viewing(let lessonPlan), .cancelling(let lessonPlan):
-                return lessonPlan
-            default:
-                return nil
-            }
-        }
-        set {
-            if let newValue = newValue {
-                self = .viewing(newValue)
-            } else if case .viewing = self {
-                self = .none
-            }
-        }
+    var viewingLessonPlan: LessonPlan? {
+        get { self[case: Self.viewingLessonPlan]?.0 }
+        set { setIfSomeOrReset(newValue, onCase: Self.viewingLessonPlan) { .viewingLessonPlan($0) } }
     }
 
-    var cancellingLessonPlan: LessonPlan? {
+    var isCancellingLessonPlan: Bool {
         get {
-            switch self {
-            case .cancelling(let lessonPlan):
-                return lessonPlan
-            default:
-                return nil
-            }
+            self[case: Self.viewingLessonPlan]?.1 == true
+            ||
+            self[case: Self.viewingLesson]?.1.matches(case: .cancellingLessonPlan) == true
         }
         set {
-            if let newValue = newValue {
-                self = .cancelling(newValue)
-            } else if let lessonPlan = cancellingLessonPlan {
-                self = .viewing(lessonPlan)
-            }
+            (self[case: Self.viewingLessonPlan]?.1 = newValue)
+            ??
+            (self[case: Self.viewingLesson]?.1 = newValue ? .cancellingLessonPlan : .none)
         }
     }
 
     var reviewingLessonPlan: LessonPlan? {
-        get {
-            switch self {
-            case let .reviewing(lessonPlan, _), let .booking(lessonPlan, _):
-                return lessonPlan
-            default:
-                return nil
-            }
-        }
-        set {
-            if let newValue = newValue {
-                self = .reviewing(newValue, nil)
-            } else if reviewingLessonPlan != nil {
-                self = .none
-            }
-        }
+        get { self[case: Self.reviewingLessonPlan]?.0 }
+        set { setIfSomeOrReset(newValue, onCase: Self.reviewingLessonPlan) { .reviewingLessonPlan($0) } }
     }
 
-    var reviewingLessonPlanApplication: LessonPlan.Application? {
-        get {
-            switch self {
-            case let .reviewing(_, application):
-                return application
-            case let .booking(_, application):
-                return application
-            default:
-                return nil
-            }
-        }
-        set {
-            if let lessonPlan = reviewingLessonPlan {
-                self = .reviewing(lessonPlan, newValue)
-            }
-        }
+    var reviewingApplication: LessonPlan.Application? {
+        get { self[case: Self.reviewingLessonPlan]?.1[case: ReviewingLessonPlanContext.reviewingApplication]?.0 }
+        set { self[case: Self.reviewingLessonPlan]?.1 = newValue.map { .reviewingApplication($0) } ?? .none }
+    }
+
+    var isBookingLessonPlan: Bool {
+        get { self[case: Self.reviewingLessonPlan]?.1[case: ReviewingLessonPlanContext.reviewingApplication]?.1 == true }
+        set { self[case: Self.reviewingLessonPlan]?.1[case: ReviewingLessonPlanContext.reviewingApplication]?.1 = newValue }
     }
 
     var bookingValues: (lessonPlan: LessonPlan, application: LessonPlan.Application)? {
         get {
-            switch self {
-            case let .booking(lessonPlan, application), let .booked(lessonPlan, application):
-                return (lessonPlan, application)
-            default:
-                return nil
-            }
+            (isBookingLessonPlan ? unwrap(a: reviewingLessonPlan, b: reviewingApplication) : nil)
+            ??
+            self[case: Self.bookedLessonPlan]
         }
         set {
             guard newValue == nil else { return }
             switch self {
-            case let .booking(lessonPlan, application):
-                self = .reviewing(lessonPlan, application)
-            case .booked:
-                self = .none
-            default:
-                break
+            case .reviewingLessonPlan: self.isBookingLessonPlan = false
+            case .bookedLessonPlan: self = .none
+            default: break
             }
         }
+    }
+
+    private func unwrap<A, B>(a: A?, b: B?) -> (A, B)? {
+        guard let a = a, let b = b else { return nil }
+        return (a, b)
     }
 }

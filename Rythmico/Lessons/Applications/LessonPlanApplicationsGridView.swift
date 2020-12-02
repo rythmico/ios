@@ -37,7 +37,7 @@ struct LessonPlanApplicationsGridLink: View {
                 application: application
             ),
             tag: application,
-            selection: $state.lessonsContext.reviewingLessonPlanApplication
+            selection: $state.lessonsContext.reviewingApplication
         ) {
             LessonPlanApplicationCell(application)
         }
