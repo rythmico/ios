@@ -5,10 +5,6 @@ struct LessonPlanApplicationsView: View {
     private var applications: [LessonPlan.Application]
     @ObservedObject
     private var state = Current.state
-    @State
-    private var shouldShowInfoBannerOnAppear = false
-    @State
-    private var isShowingInfoBanner = false
 
     init?(_ lessonPlan: LessonPlan) {
         guard let applications = lessonPlan.status.reviewingValue else {
@@ -29,9 +25,7 @@ struct LessonPlanApplicationsView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: .spacingSmall) {
             TitleContentView(title: "Tutors Available") {
-                if isShowingInfoBanner {
-                    InfoBanner(text: priceInfo)
-                }
+                InfoBanner(text: priceInfo)
             }
             .frame(maxWidth: .spacingMax)
             .padding(.horizontal, .spacingMedium)
@@ -43,16 +37,6 @@ struct LessonPlanApplicationsView: View {
         }
         .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
-        .onChange(of: state.lessonsContext.reviewingApplication, perform: onSelectedApplicationChanged)
-        .onAppear(perform: onAppear)
-    }
-
-    private func onSelectedApplicationChanged(_ application: LessonPlan.Application?) {
-        if application != nil { shouldShowInfoBannerOnAppear = true }
-    }
-
-    private func onAppear() {
-        if shouldShowInfoBannerOnAppear { isShowingInfoBanner = true }
     }
 }
 
