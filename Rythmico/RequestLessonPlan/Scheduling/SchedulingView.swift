@@ -106,8 +106,7 @@ struct SchedulingView: View, TestableView {
                                         displayedComponents: .date
                                     )
                                     .datePickerStyle(GraphicalDatePickerStyle())
-                                    .padding(.horizontal, .spacingUnit * 2)
-                                    .padding(.top, .spacingUnit)
+                                    .padding([.top, .horizontal], .spacingUnit * 2)
                                     .transition(.opacity)
                                     .matchedGeometryEffect(
                                         id: startDatePickerAnimation,
