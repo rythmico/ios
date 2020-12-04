@@ -24,37 +24,38 @@ struct LessonPlanDetailView: View, TestableView {
                 TitleContentView(title: title) {
                     Pill(status: lessonPlan.status)
                 }
-                VStack(alignment: .leading, spacing: .spacingMedium) {
-                    SectionHeaderView(title: "Lesson Details")
-                    Group {
-                        HStack(spacing: .spacingUnit * 2) {
-                            Image(decorative: Asset.iconInfo.name).renderingMode(.template)
-                            Text(startDateText)
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.7)
+                ScrollView {
+                    VStack(alignment: .leading, spacing: .spacingMedium) {
+                        SectionHeaderView(title: "Lesson Details")
+                        Group {
+                            HStack(spacing: .spacingUnit * 2) {
+                                Image(decorative: Asset.iconInfo.name).renderingMode(.template)
+                                Text(startDateText)
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.7)
+                            }
+                            HStack(spacing: .spacingUnit * 2) {
+                                Image(decorative: Asset.iconTime.name).renderingMode(.template)
+                                Text(durationText)
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.7)
+                            }
+                            HStack(alignment: .firstTextBaseline, spacing: .spacingUnit * 2) {
+                                Image(decorative: Asset.iconLocation.name)
+                                    .renderingMode(.template)
+                                    .offset(x: 0, y: .spacingUnit / 2)
+                                Text(lessonPlan.address.condensedFormattedString)
+                                    .lineSpacing(.spacingUnit)
+                            }
+                            InlineContentAndTitleView(status: lessonPlan.status, summarized: false)
                         }
-                        HStack(spacing: .spacingUnit * 2) {
-                            Image(decorative: Asset.iconTime.name).renderingMode(.template)
-                            Text(durationText)
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.7)
-                        }
-                        HStack(alignment: .firstTextBaseline, spacing: .spacingUnit * 2) {
-                            Image(decorative: Asset.iconLocation.name)
-                                .renderingMode(.template)
-                                .offset(x: 0, y: .spacingUnit / 2)
-                            Text(lessonPlan.address.condensedFormattedString)
-                                .lineSpacing(.spacingUnit)
-                        }
-                        InlineContentAndTitleView(status: lessonPlan.status, summarized: false)
+                        .rythmicoFont(.body)
+                        .foregroundColor(.rythmicoGray90)
                     }
-                    .rythmicoFont(.body)
-                    .foregroundColor(.rythmicoGray90)
                 }
             }
             .frame(maxWidth: .spacingMax)
             .padding(.horizontal, .spacingMedium)
-            .frame(maxHeight: .infinity, alignment: .top)
 
             ActionList(
                 [.init(title: "Cancel Lesson Plan", action: showCancelLessonPlanForm)],

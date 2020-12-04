@@ -29,37 +29,38 @@ struct LessonDetailView: View, TestableView {
                 TitleContentView(title: title) {
                     Pill(status: lesson.status)
                 }
-                VStack(alignment: .leading, spacing: .spacingMedium) {
-                    SectionHeaderView(title: "Lesson Details")
-                    Group {
-                        HStack(spacing: .spacingUnit * 2) {
-                            Image(decorative: Asset.iconInfo.name).renderingMode(.template)
-                            Text(startDateText)
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.7)
+                ScrollView {
+                    VStack(alignment: .leading, spacing: .spacingMedium) {
+                        SectionHeaderView(title: "Lesson Details")
+                        Group {
+                            HStack(spacing: .spacingUnit * 2) {
+                                Image(decorative: Asset.iconInfo.name).renderingMode(.template)
+                                Text(startDateText)
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.7)
+                            }
+                            HStack(spacing: .spacingUnit * 2) {
+                                Image(decorative: Asset.iconTime.name).renderingMode(.template)
+                                Text(durationText)
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.7)
+                            }
+                            HStack(alignment: .firstTextBaseline, spacing: .spacingUnit * 2) {
+                                Image(decorative: Asset.iconLocation.name)
+                                    .renderingMode(.template)
+                                    .offset(x: 0, y: .spacingUnit / 2)
+                                Text(lesson.address.condensedFormattedString)
+                                    .lineSpacing(.spacingUnit)
+                            }
+                            InlineContentAndTitleView(lesson: lesson, summarized: false)
                         }
-                        HStack(spacing: .spacingUnit * 2) {
-                            Image(decorative: Asset.iconTime.name).renderingMode(.template)
-                            Text(durationText)
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.7)
-                        }
-                        HStack(alignment: .firstTextBaseline, spacing: .spacingUnit * 2) {
-                            Image(decorative: Asset.iconLocation.name)
-                                .renderingMode(.template)
-                                .offset(x: 0, y: .spacingUnit / 2)
-                            Text(lesson.address.condensedFormattedString)
-                                .lineSpacing(.spacingUnit)
-                        }
-                        InlineContentAndTitleView(lesson: lesson, summarized: false)
+                        .rythmicoFont(.body)
+                        .foregroundColor(.rythmicoGray90)
                     }
-                    .rythmicoFont(.body)
-                    .foregroundColor(.rythmicoGray90)
                 }
             }
             .frame(maxWidth: .spacingMax)
             .padding(.horizontal, .spacingMedium)
-            .frame(maxHeight: .infinity, alignment: .top)
 
             ActionList(actions, showBottomSeparator: false)
                 .foregroundColor(.rythmicoGray90)
