@@ -12,8 +12,6 @@ struct SchedulingView: View, TestableView {
         @Published var duration: Schedule.Duration?
     }
 
-    @ObservedObject private(set) var state: ViewState
-
     enum EditingFocus {
         case startDate
         case startTime
@@ -23,20 +21,13 @@ struct SchedulingView: View, TestableView {
     @State private(set) var editingFocus: EditingFocus? = .none
     @Namespace private var startDatePickerAnimation
 
-    private let instrument: Instrument
-    private let context: SchedulingContext
-    private let dateFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
-    private let firstAvailableDate = Current.date() + (2, .day)
+    @ObservedObject private(set)
+    var state: ViewState
+    var instrument: Instrument
+    var context: SchedulingContext
 
-    init(
-        instrument: Instrument,
-        state: ViewState,
-        context: SchedulingContext
-    ) {
-        self.instrument = instrument
-        self.state = state
-        self.context = context
-    }
+    private static let dateFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
+    private let firstAvailableDate = Current.date() + (2, .day)
 
     var subtitle: [MultiStyleText.Part] {
         "Enter when you want the " +
@@ -44,8 +35,26 @@ struct SchedulingView: View, TestableView {
         " to commence and for how long"
     }
 
-    var startDateText: String { state.startDate.map(dateFormatter.string(from:)) ?? .empty }
+    var startDateText: String { state.startDate.map(Self.dateFormatter.string(from:)) ?? .empty }
     var durationText: String { state.duration.map { "\($0.rawValue) minutes" } ?? .empty }
+
+    private static let scheduleInfoDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
+    private static let scheduleInfoAfterDayFormatter = Current.dateFormatter(format: .custom("E d MMMM"))
+    private static let scheduleInfoDurationFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))
+    var scheduleInfoText: String? {
+        let startTime = state.startTime
+        guard
+            let startDate = state.startDate,
+            let duration = state.duration,
+            let endTime = Current.calendar().date(byAdding: .minute, value: duration.rawValue, to: startTime)
+        else {
+            return nil
+        }
+        let day = Self.scheduleInfoDayFormatter.string(from: startDate)
+        let afterDay = Self.scheduleInfoAfterDayFormatter.string(from: startDate)
+        let time = Self.scheduleInfoDurationFormatter.string(from: startTime, to: endTime)
+        return "Lessons will be scheduled every \(day) \(time) after \(afterDay)"
+    }
 
     var nextButtonAction: Action? {
         guard
@@ -68,7 +77,7 @@ struct SchedulingView: View, TestableView {
         TitleSubtitleContentView(title: "Lesson Schedule", subtitle: subtitle) {
             VStack(spacing: 0) {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: .spacingLarge) {
+                    VStack(alignment: .leading, spacing: .spacingMedium) {
                         HeaderContentView(title: "Start Date") {
                             ZStack {
                                 if editingFocus != .startDate {
@@ -97,8 +106,7 @@ struct SchedulingView: View, TestableView {
                                         displayedComponents: .date
                                     )
                                     .datePickerStyle(GraphicalDatePickerStyle())
-                                    .padding(.horizontal, .spacingUnit * 2)
-                                    .padding(.top, .spacingUnit)
+                                    .padding([.top, .horizontal], .spacingUnit * 2)
                                     .transition(.opacity)
                                     .matchedGeometryEffect(
                                         id: startDatePickerAnimation,
@@ -127,6 +135,10 @@ struct SchedulingView: View, TestableView {
                                 .modifier(RoundedThinOutlineContainer(padded: false))
                                 .onTapGesture(perform: beginEditingDuration)
                             }
+                        }
+
+                        if let scheduleInfoText = scheduleInfoText {
+                            InfoBanner(text: scheduleInfoText)
                         }
                     }
                     .padding([.trailing, .bottom], .spacingMedium)
@@ -191,8 +203,8 @@ struct SchedulingView: View, TestableView {
 struct SchedulingViewPreview: PreviewProvider {
     static var previews: some View {
         SchedulingView(
-            instrument: .guitar,
             state: SchedulingView.ViewState(),
+            instrument: .guitar,
             context: RequestLessonPlanContext()
         )
         .previewDevices()
