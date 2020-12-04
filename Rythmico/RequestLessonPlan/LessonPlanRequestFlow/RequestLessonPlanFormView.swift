@@ -125,8 +125,8 @@ extension RequestLessonPlanFormView {
     var schedulingView: SchedulingView? {
         context.currentStep.schedulingValue.map {
             SchedulingView(
-                instrument: $0,
                 state: schedulingViewState,
+                instrument: $0,
                 context: context
             )
         }

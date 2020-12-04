@@ -12,8 +12,6 @@ struct SchedulingView: View, TestableView {
         @Published var duration: Schedule.Duration?
     }
 
-    @ObservedObject private(set) var state: ViewState
-
     enum EditingFocus {
         case startDate
         case startTime
@@ -23,20 +21,13 @@ struct SchedulingView: View, TestableView {
     @State private(set) var editingFocus: EditingFocus? = .none
     @Namespace private var startDatePickerAnimation
 
-    private let instrument: Instrument
-    private let context: SchedulingContext
+    @ObservedObject private(set)
+    var state: ViewState
+    var instrument: Instrument
+    var context: SchedulingContext
+
     private let dateFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
     private let firstAvailableDate = Current.date() + (2, .day)
-
-    init(
-        instrument: Instrument,
-        state: ViewState,
-        context: SchedulingContext
-    ) {
-        self.instrument = instrument
-        self.state = state
-        self.context = context
-    }
 
     var subtitle: [MultiStyleText.Part] {
         "Enter when you want the " +
@@ -191,8 +182,8 @@ struct SchedulingView: View, TestableView {
 struct SchedulingViewPreview: PreviewProvider {
     static var previews: some View {
         SchedulingView(
-            instrument: .guitar,
             state: SchedulingView.ViewState(),
+            instrument: .guitar,
             context: RequestLessonPlanContext()
         )
         .previewDevices()
