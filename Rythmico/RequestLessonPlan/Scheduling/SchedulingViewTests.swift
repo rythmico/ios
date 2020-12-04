@@ -16,8 +16,8 @@ final class SchedulingViewTests: XCTestCase {
             context,
             state,
             SchedulingView(
-                instrument: .guitar,
                 state: state,
+                instrument: .guitar,
                 context: context
             )
         )
