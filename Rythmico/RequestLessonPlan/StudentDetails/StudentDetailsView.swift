@@ -60,7 +60,7 @@ struct StudentDetailsView: View, TestableView {
     var dateOfBirthText: String? { state.dateOfBirth.map(dateFormatter.string(from:)) }
     var dateOfBirthPlaceholderText: String { dateFormatter.string(from: dateOfBirthPlaceholder) }
 
-    private let dateFormatter = Current.dateFormatter(format: .date(.long))
+    private let dateFormatter = Current.dateFormatter(format: .preset(date: .long))
     private let dateOfBirthPlaceholder = Current.date() - Const.averageStudentAge
 
     // MARK: - About -
