@@ -8,6 +8,15 @@ struct LessonSkippingView: View {
     private var coordinator = Current.coordinator(for: \.lessonSkippingService)!
 
     var lesson: Lesson
+    var freeSkipUntil: Date
+
+    init?(lesson: Lesson) {
+        guard let freeSkipUntil = lesson.freeSkipUntil else {
+            return nil
+        }
+        self.lesson = lesson
+        self.freeSkipUntil = freeSkipUntil
+    }
 
     var body: some View {
         CoordinatorStateView(
