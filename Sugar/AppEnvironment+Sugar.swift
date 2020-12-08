@@ -35,6 +35,19 @@ extension AppEnvironment {
         }
     }
 
+    func dateComponentsFormatter(
+        allowedUnits: NSCalendar.Unit,
+        style: DateComponentsFormatter.UnitsStyle,
+        includesTimeRemainingPhrase: Bool
+    ) -> DateComponentsFormatter {
+        DateComponentsFormatter().then {
+            $0.calendar = calendar()
+            $0.allowedUnits = allowedUnits
+            $0.unitsStyle = style
+            $0.includesTimeRemainingPhrase = includesTimeRemainingPhrase
+        }
+    }
+
     func relativeDateTimeFormatter(
         context: Formatter.Context,
         style: RelativeDateTimeFormatter.UnitsStyle,
