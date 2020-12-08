@@ -42,7 +42,8 @@ private extension Lesson {
             tutor: .jesseStub,
             status: status,
             address: .stub,
-            schedule: Schedule.stub.with(\.startDate, startDate)
+            schedule: Schedule.stub.with(\.startDate, startDate),
+            freeSkipUntil: status == .scheduled ? startDate - (3, .hour) : nil
         )
     }
     #elseif TUTOR
