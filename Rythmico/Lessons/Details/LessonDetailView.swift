@@ -88,16 +88,11 @@ struct LessonDetailView: View, TestableView {
     private var durationText: String { "\(lesson.schedule.duration) minutes" }
 
     private var actions: [ActionList.Button] {
-        switch lesson.status {
-        case .scheduled:
-            return [
-//                .init(title: "View Lesson Plan", action: showLessonPlan),
-                showSkipLessonFormAction.map { .init(title: "Skip Lesson", action: $0) },
-                .init(title: "Cancel Lesson Plan", action: showCancelLessonPlanForm),
-            ].compact()
-        case .completed, .skipped:
-            return []
-        }
+        [
+//            .init(title: "View Lesson Plan", action: showLessonPlan),
+            showSkipLessonFormAction.map { .init(title: "Skip Lesson", action: $0) },
+            .init(title: "Cancel Lesson Plan", action: showCancelLessonPlanForm),
+        ].compact()
     }
 }
 
