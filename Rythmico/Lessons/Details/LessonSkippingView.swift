@@ -10,6 +10,9 @@ struct LessonSkippingView: View {
     var lesson: Lesson
     var freeSkipUntil: Date
 
+    @State private
+    var showingConfirmationSheet = false
+
     init?(lesson: Lesson) {
         guard let freeSkipUntil = lesson.freeSkipUntil else {
             return nil
@@ -33,7 +36,7 @@ struct LessonSkippingView: View {
                     InteractiveBackground()
 
                     FloatingView {
-                        Button("Skip Lesson", action: submit).secondaryStyle()
+                        Button("Skip Lesson", action: onSkipButtonPressed).secondaryStyle()
                     }
                 }
                 .padding(.top, .spacingExtraSmall)
@@ -51,6 +54,13 @@ struct LessonSkippingView: View {
         .accentColor(.rythmicoGray90)
         .onSuccess(coordinator, perform: lessonSuccessfullySkipped)
         .alertOnFailure(coordinator)
+        .actionSheet(isPresented: $showingConfirmationSheet) {
+            ActionSheet(
+                title: Text("Are you sure?"),
+                message: Text("Skipping this lesson will incur the lesson fee."),
+                buttons: [.destructive(Text("Skip Lesson"), action: submit), .cancel()]
+            )
+        }
     }
 
     private static let dayFormatter = Current.dateFormatter(format: .custom("d MMM"))
@@ -117,6 +127,14 @@ struct LessonSkippingView: View {
 
     private func submit() {
         coordinator.run(with: lesson)
+    }
+
+    private func onSkipButtonPressed() {
+        if isFreeSkip {
+            submit()
+        } else {
+            showingConfirmationSheet = true
+        }
     }
 
     private func lessonSuccessfullySkipped(_ lessonPlan: LessonPlan) {
