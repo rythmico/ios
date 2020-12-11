@@ -26,11 +26,9 @@ struct LessonSkippingView: View {
         ) {
             NavigationView {
                 VStack(spacing: 0) {
-                    TitleSubtitleView(
-                        title: "Confirm Skipping",
-                        subtitle: ["This will cancel your payment for this lesson.".part]
-                    )
-                    .padding(.horizontal, .spacingMedium)
+                    TitleSubtitleView(title: "Confirm Skipping", subtitle: description)
+                        .padding(.horizontal, .spacingMedium)
+                        .fixedSize(horizontal: false, vertical: true)
 
                     InteractiveBackground()
 
@@ -53,6 +51,64 @@ struct LessonSkippingView: View {
         .accentColor(.rythmicoGray90)
         .onSuccess(coordinator, perform: lessonSuccessfullySkipped)
         .alertOnFailure(coordinator)
+    }
+
+    private static let dayFormatter = Current.dateFormatter(format: .custom("d MMM"))
+    private static let timeFormatter = Current.dateFormatter(format: .preset(time: .short))
+    private static let timeRemainingFormatter = Current.dateComponentsFormatter(
+        allowedUnits: [.day, .hour, .minute],
+        style: .short,
+        includesTimeRemainingPhrase: true
+    )
+
+    private var description: [MultiStyleText.Part] {
+        if isFreeSkip {
+            return [
+                "Skip before ",
+                dayString(from: freeSkipUntil).style(.bodyBold),
+                " at ",
+                Self.timeFormatter.string(from: freeSkipUntil).style(.bodyBold),
+                " free of charge",
+                " — ",
+                "\(remainingTimeString(from: Current.date(), to: freeSkipUntil)).".part,
+            ]
+        } else {
+            return [
+                "This lesson is ",
+                "due very soon".style(.bodyBold),
+                ", so by skipping it you will still be charged the ",
+                "full price".style(.bodyBold),
+                " of the lesson in your monthly invoice.",
+                "\n\n",
+                "This is to protect our tutors from last minute lesson skips which would negatively impact them in terms of revenue and scheduling.",
+                "\n\n",
+                "If you wish to ",
+                "postpone this lesson".style(.bodyBold),
+                " instead of skipping it, please ",
+                "get in touch with your tutor".style(.bodyBold),
+                " and arrange it with them.",
+            ]
+        }
+    }
+
+    private var isFreeSkip: Bool {
+        Current.date() < freeSkipUntil
+    }
+
+    private func dayString(from date: Date) -> String {
+        switch true {
+        case Current.calendar().isDateInToday(date): return "Today"
+        case Current.calendar().isDateInTomorrow(date): return "Tomorrow"
+        default: return Self.dayFormatter.string(from: date)
+        }
+    }
+
+    private func remainingTimeString(from: Date, to: Date) -> String {
+        let now = Current.date()
+        guard let string = Self.timeRemainingFormatter.string(from: now, to: freeSkipUntil) else {
+            preconditionFailure("timeRemainingFormatter returned nil for input from: \(now) to: \(freeSkipUntil)")
+        }
+        return string
     }
 
     private func dismiss() {
