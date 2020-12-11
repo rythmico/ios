@@ -29,7 +29,7 @@ struct LessonSkippingView: View {
         ) {
             NavigationView {
                 VStack(spacing: 0) {
-                    TitleSubtitleView(title: "Confirm Skipping", subtitle: description)
+                    TitleSubtitleView(title: "Confirm Skipping", subtitle: description + footnote)
                         .padding(.horizontal, .spacingMedium)
                         .fixedSize(horizontal: false, vertical: true)
 
@@ -74,7 +74,7 @@ struct LessonSkippingView: View {
     private var description: [MultiStyleText.Part] {
         if isFreeSkip {
             return [
-                "Skip before ",
+                "You may skip this lesson before ",
                 dayString(from: freeSkipUntil).style(.bodyBold),
                 " at ",
                 Self.timeFormatter.string(from: freeSkipUntil).style(.bodyBold),
@@ -91,14 +91,19 @@ struct LessonSkippingView: View {
                 " of the lesson in your monthly invoice.",
                 "\n\n",
                 "This is to protect our tutors from last minute lesson skips which would negatively impact them in terms of revenue and scheduling.",
-                "\n\n",
-                "If you wish to ",
-                "postpone this lesson".style(.bodyBold),
-                " instead of skipping it, please ",
-                "get in touch with your tutor".style(.bodyBold),
-                " and arrange it with them.",
             ]
         }
+    }
+
+    private var footnote: [MultiStyleText.Part] {
+        [
+            "\n\n",
+            "If you wish to ",
+            "postpone this lesson".style(.bodyBold),
+            " instead of skipping it, please ",
+            "get in touch with your tutor".style(.bodyBold),
+            " and arrange it with them.",
+        ]
     }
 
     private var isFreeSkip: Bool {
