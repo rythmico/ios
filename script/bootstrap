@@ -2,7 +2,6 @@
 
 set -e
 
-brew update
 brew bundle --no-lock
 
 if [ "$#" -eq 3 ]; then
