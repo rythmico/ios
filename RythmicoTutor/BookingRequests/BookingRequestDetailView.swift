@@ -8,7 +8,7 @@ struct BookingRequestDetailView: View {
     private let bookingRequest: BookingRequest
 
     private let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
-    private let timeFormatter = Current.dateFormatter(format: .time(.short))
+    private let timeFormatter = Current.dateFormatter(format: .preset(time: .short))
 
     init(bookingRequest: BookingRequest) {
         self.bookingRequest = bookingRequest
