@@ -29,6 +29,7 @@ struct Lesson: Equatable, Decodable, Identifiable, Hashable {
     var address: Address
     var schedule: Schedule
     #if RYTHMICO
+    var freeSkipUntil: Date?
     #elseif TUTOR
     @E164PhoneNumber
     var phoneNumber: PhoneNumber

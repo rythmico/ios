@@ -14,8 +14,11 @@ struct LessonDetailView: View, TestableView {
             .joined(separator: " - ")
     }
 
-    func showSkipLessonForm() {
-        state.lessonsContext.isSkippingLesson = true
+    var lessonSkippingView: LessonSkippingView? { LessonSkippingView(lesson: lesson) }
+    var showSkipLessonFormAction: Action? {
+        lessonSkippingView.map { _ in
+            { state.lessonsContext.isSkippingLesson = true }
+        }
     }
 
     func showCancelLessonPlanForm() {
@@ -70,9 +73,7 @@ struct LessonDetailView: View, TestableView {
         .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
         .multiSheet {
-            $0.sheet(isPresented: $state.lessonsContext.isSkippingLesson) {
-                LessonSkippingView(lesson: lesson)
-            }
+            $0.sheet(isPresented: $state.lessonsContext.isSkippingLesson) { lessonSkippingView }
             $0.sheet(isPresented: $state.lessonsContext.isCancellingLessonPlan) {
                 if let lessonPlan = Current.lessonPlanRepository.firstById(lesson.planId) {
                     LessonPlanCancellationView(lessonPlan: lessonPlan)
@@ -87,16 +88,11 @@ struct LessonDetailView: View, TestableView {
     private var durationText: String { "\(lesson.schedule.duration) minutes" }
 
     private var actions: [ActionList.Button] {
-        switch lesson.status {
-        case .scheduled:
-            return [
-//                .init(title: "View Lesson Plan", action: showLessonPlan),
-                .init(title: "Skip Lesson", action: showSkipLessonForm),
-                .init(title: "Cancel Lesson Plan", action: showCancelLessonPlanForm),
-            ]
-        case .completed, .skipped:
-            return []
-        }
+        [
+//            .init(title: "View Lesson Plan", action: showLessonPlan),
+            showSkipLessonFormAction.map { .init(title: "Skip Lesson", action: $0) },
+            .init(title: "Cancel Lesson Plan", action: showCancelLessonPlanForm),
+        ].compact()
     }
 }
 

@@ -9,7 +9,7 @@ struct BookingApplicationDetailView: View {
     private let bookingApplication: BookingApplication
 
     private let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
-    private let timeFormatter = Current.dateFormatter(format: .time(.short))
+    private let timeFormatter = Current.dateFormatter(format: .preset(time: .short))
     private let statusDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .short, precise: true)
 
     @State

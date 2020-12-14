@@ -8,6 +8,7 @@ struct MultiStyleText: View {
     var parts: [Part]
     var expanded: Bool = true
     var alignment: Alignment = .leading
+    var foregroundColor: Color = .rythmicoForeground
 
     var body: some View {
         if parts.isEmpty {
@@ -17,12 +18,12 @@ struct MultiStyleText: View {
                 text + Text(part.string)
                     .font(
                         .rythmicoFont(
-                            part.style,
+                            part.style ?? .body,
                             sizeCategory: sizeCategory,
                             legibilityWeight: legibilityWeight
                         )
                     )
-                    .foregroundColor(part.color)
+                    .foregroundColor(part.color ?? foregroundColor)
             }
             .frame(maxWidth: expanded ? .infinity : nil, alignment: alignment)
             .lineSpacing(6)
@@ -33,10 +34,10 @@ struct MultiStyleText: View {
 extension MultiStyleText {
     struct Part: ExpressibleByStringLiteral {
         var string: String
-        var style: RythmicoFontStyle
-        var color: Color
+        var style: RythmicoFontStyle?
+        var color: Color?
 
-        init(_ string: String, style: RythmicoFontStyle = .body, color: Color = .rythmicoForeground) {
+        init(_ string: String, style: RythmicoFontStyle? = nil, color: Color? = nil) {
             self.string = string
             self.style = style
             self.color = color
@@ -61,13 +62,13 @@ extension MultiStyleText.Part: MultiStyleTextPartConvertible {
 }
 
 extension MultiStyleTextPartConvertible {
-    func style(_ style: RythmicoFontStyle) -> MultiStyleText.Part {
+    func style(_ style: RythmicoFontStyle?) -> MultiStyleText.Part {
         var part = self.part
         part.style = style
         return part
     }
 
-    func color(_ color: Color) -> MultiStyleText.Part {
+    func color(_ color: Color?) -> MultiStyleText.Part {
         var part = self.part
         part.color = color
         return part
