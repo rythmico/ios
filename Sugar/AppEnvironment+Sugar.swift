@@ -38,7 +38,7 @@ extension AppEnvironment {
     func dateComponentsFormatter(
         allowedUnits: NSCalendar.Unit,
         style: DateComponentsFormatter.UnitsStyle,
-        includesTimeRemainingPhrase: Bool
+        includesTimeRemainingPhrase: Bool = false
     ) -> DateComponentsFormatter {
         DateComponentsFormatter().then {
             $0.calendar = calendar()

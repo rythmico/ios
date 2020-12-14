@@ -22,32 +22,26 @@ struct LessonSkippingView: View {
     }
 
     var body: some View {
-        CoordinatorStateView(
-            coordinator: coordinator,
-            successTitle: "Lesson Will Be Skipped",
-            loadingTitle: "Skipping Lesson..."
-        ) {
+        CoordinatorStateView(coordinator: coordinator, successTitle: "Lesson Skipped", loadingTitle: "Skipping Lesson...") {
             NavigationView {
                 VStack(spacing: 0) {
-                    TitleSubtitleView(title: "Confirm Skip Lesson", subtitle: description + footnote)
-                        .padding(.horizontal, .spacingMedium)
-                        .fixedSize(horizontal: false, vertical: true)
-
-                    InteractiveBackground()
+                    TitleContentView(title: "Confirm Skip Lesson", titlePadding: .init(horizontal: .spacingMedium)) {
+                        ScrollView {
+                            LessonSkippingContentView(
+                                isFree: isFree,
+                                freeSkipUntil: freeSkipUntil
+                            )
+                            .padding(.horizontal, .spacingMedium)
+                        }
+                    }
 
                     FloatingView {
-                        Button("Skip Lesson", action: onSkipButtonPressed).secondaryStyle()
+                        Button(submitButtonTitle, action: onSkipButtonPressed).secondaryStyle()
                     }
                 }
                 .padding(.top, .spacingExtraSmall)
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(
-                    trailing: Group {
-                        if true {
-                            CloseButton(action: dismiss)
-                        }
-                    }
-                )
+                .navigationBarItems(trailing: CloseButton(action: dismiss))
             }
         }
         .sheetInteractiveDismissal(!coordinator.state.isLoading)
@@ -57,73 +51,14 @@ struct LessonSkippingView: View {
         .actionSheet(isPresented: $showingConfirmationSheet) {
             ActionSheet(
                 title: Text("Are you sure?"),
-                message: Text("Skipping this lesson will incur the lesson fee."),
+                message: Text("You will still be charged the full amount for this lesson."),
                 buttons: [.destructive(Text("Skip Lesson"), action: submit), .cancel()]
             )
         }
     }
 
-    private static let dayFormatter = Current.dateFormatter(format: .custom("d MMM"))
-    private static let timeFormatter = Current.dateFormatter(format: .preset(time: .short))
-    private static let timeRemainingFormatter = Current.dateComponentsFormatter(
-        allowedUnits: [.day, .hour, .minute],
-        style: .short,
-        includesTimeRemainingPhrase: true
-    )
-
-    private var description: [MultiStyleText.Part] {
-        if isFreeSkip {
-            return [
-                "You may skip this lesson before ",
-                dayString(from: freeSkipUntil).style(.bodyBold),
-                " at ",
-                Self.timeFormatter.string(from: freeSkipUntil).style(.bodyBold),
-                " free of charge",
-                " — ",
-                "\(remainingTimeString(from: Current.date(), to: freeSkipUntil)).".part,
-            ]
-        } else {
-            return [
-                "This lesson is ",
-                "due very soon".style(.bodyBold),
-                ", so by skipping it you will still be charged the ",
-                "full price".style(.bodyBold),
-                " of the lesson in your monthly invoice.",
-                "\n\n",
-                "This is to protect our tutors from last minute lesson skips which would negatively impact them in terms of revenue and scheduling.",
-            ]
-        }
-    }
-
-    private var footnote: [MultiStyleText.Part] {
-        [
-            "\n\n",
-            "If you wish to ",
-            "postpone this lesson".style(.bodyBold),
-            " instead of skipping it, please ",
-            "get in touch with your tutor".style(.bodyBold),
-            " and arrange it with them.",
-        ]
-    }
-
-    private var isFreeSkip: Bool {
+    private var isFree: Bool {
         Current.date() < freeSkipUntil
-    }
-
-    private func dayString(from date: Date) -> String {
-        switch true {
-        case Current.calendar().isDateInToday(date): return "Today"
-        case Current.calendar().isDateInTomorrow(date): return "Tomorrow"
-        default: return Self.dayFormatter.string(from: date)
-        }
-    }
-
-    private func remainingTimeString(from: Date, to: Date) -> String {
-        let now = Current.date()
-        guard let string = Self.timeRemainingFormatter.string(from: now, to: freeSkipUntil) else {
-            preconditionFailure("timeRemainingFormatter returned nil for input from: \(now) to: \(freeSkipUntil)")
-        }
-        return string
     }
 
     private func dismiss() {
@@ -134,8 +69,12 @@ struct LessonSkippingView: View {
         coordinator.run(with: lesson)
     }
 
+    private var submitButtonTitle: String {
+        isFree ? "Skip Lesson For Free" : "Skip Lesson"
+    }
+
     private func onSkipButtonPressed() {
-        if isFreeSkip {
+        if isFree {
             submit()
         } else {
             showingConfirmationSheet = true
