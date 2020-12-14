@@ -29,7 +29,7 @@ struct LessonSkippingView: View {
         ) {
             NavigationView {
                 VStack(spacing: 0) {
-                    TitleSubtitleView(title: "Confirm Skipping", subtitle: description + footnote)
+                    TitleSubtitleView(title: "Confirm Skip Lesson", subtitle: description + footnote)
                         .padding(.horizontal, .spacingMedium)
                         .fixedSize(horizontal: false, vertical: true)
 
