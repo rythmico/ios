@@ -16,7 +16,6 @@ extension AuthorizedAPIRequest {
         [
             "Authorization": "Bearer " + accessToken,
             "User-Agent": APIUserAgent.current ?? "Unknown",
-            "Accept-Encoding": ""
         ]
     }
 
