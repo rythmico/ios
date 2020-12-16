@@ -1,5 +1,6 @@
 import APIKit
 import Foundation
+import Sugar
 
 @dynamicMemberLookup
 protocol AuthorizedAPIRequest: Request {
@@ -13,10 +14,7 @@ protocol AuthorizedAPIRequest: Request {
 
 extension AuthorizedAPIRequest {
     var headerFields: [String: String] {
-        [
-            "Authorization": "Bearer " + accessToken,
-            "User-Agent": APIUserAgent.current ?? "Unknown",
-        ]
+        APIClientInfo.current + ["Authorization": "Bearer " + accessToken]
     }
 
     subscript<T>(dynamicMember keyPath: KeyPath<Properties, T>) -> T {

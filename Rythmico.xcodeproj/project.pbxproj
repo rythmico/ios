@@ -151,8 +151,8 @@
 		03BB5C962473070C00B44692 /* ReviewRequestViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C952473070C00B44692 /* ReviewRequestViewTests.swift */; };
 		03BB5C9A24733F5100B44692 /* LessonPlanConfirmationViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C9924733F5100B44692 /* LessonPlanConfirmationViewTests.swift */; };
 		03C34360249E7218004907DF /* Alert+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AEA24908017009C3980 /* Alert+Error.swift */; };
-		03C34362249FC16E004907DF /* APIUserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C34361249FC16E004907DF /* APIUserAgent.swift */; };
-		03C34363249FC16E004907DF /* APIUserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C34361249FC16E004907DF /* APIUserAgent.swift */; };
+		03C34362249FC16E004907DF /* APIClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C34361249FC16E004907DF /* APIClientInfo.swift */; };
+		03C34363249FC16E004907DF /* APIClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C34361249FC16E004907DF /* APIClientInfo.swift */; };
 		03C39DD424967E5B00C76516 /* TitleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DD324967E5B00C76516 /* TitleContentView.swift */; };
 		03C39DD62496802500C76516 /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DD52496802500C76516 /* Pill.swift */; };
 		03C39DD82496CA2A00C76516 /* LessonPlanStatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DD72496CA2A00C76516 /* LessonPlanStatusPill.swift */; };
@@ -326,6 +326,7 @@
 		D56B253625322AE300BC3932 /* StripeSetupIntentLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B253525322AE300BC3932 /* StripeSetupIntentLink.swift */; };
 		D56B253B2532433E00BC3932 /* ErrorText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B253A2532433E00BC3932 /* ErrorText.swift */; };
 		D56B25432533331A00BC3932 /* PhoneNumberDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */; };
+		D572B687258A3A7F00B87E77 /* Dictionary+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572B686258A3A7F00B87E77 /* Dictionary+Sugar.swift */; };
 		D575C80F254DB13D001664AB /* RemoteConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C80E254DB13D001664AB /* RemoteConfigService.swift */; };
 		D575C814254DB602001664AB /* RemoteConfigServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C813254DB602001664AB /* RemoteConfigServiceDoubles.swift */; };
 		D575C819254DD6C8001664AB /* AppSplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C818254DD6C8001664AB /* AppSplash.swift */; };
@@ -374,8 +375,8 @@
 		D5A8C4BC25044A230006F5C5 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */; };
 		D5A8C4BE25044A370006F5C5 /* UserDefaultsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */; };
 		D5A8C4BF25044A370006F5C5 /* UserDefaultsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */; };
-		D5A8C4C225044F4C0006F5C5 /* APIUserAgent+RythmicoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4C125044F4C0006F5C5 /* APIUserAgent+RythmicoTests.swift */; };
-		D5A8C4C425044F580006F5C5 /* APIUserAgent+TutorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4C325044F580006F5C5 /* APIUserAgent+TutorTests.swift */; };
+		D5A8C4C225044F4C0006F5C5 /* APIClientInfo+RythmicoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4C125044F4C0006F5C5 /* APIClientInfo+RythmicoTests.swift */; };
+		D5A8C4C425044F580006F5C5 /* APIClientInfo+TutorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4C325044F580006F5C5 /* APIClientInfo+TutorTests.swift */; };
 		D5AAF7C823ECC87000E410F2 /* RequestLessonPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */; };
 		D5AAF7D123F9ACFA00E410F2 /* InstrumentSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D023F9ACFA00E410F2 /* InstrumentSelectionView.swift */; };
 		D5AAF7D523F9E1F900E410F2 /* InstrumentSelectionListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D423F9E1F900E410F2 /* InstrumentSelectionListProvider.swift */; };
@@ -681,7 +682,7 @@
 		03BB5C902472D85A00B44692 /* DeviceRegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterCoordinator.swift; sourceTree = "<group>"; };
 		03BB5C952473070C00B44692 /* ReviewRequestViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestViewTests.swift; sourceTree = "<group>"; };
 		03BB5C9924733F5100B44692 /* LessonPlanConfirmationViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanConfirmationViewTests.swift; sourceTree = "<group>"; };
-		03C34361249FC16E004907DF /* APIUserAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserAgent.swift; sourceTree = "<group>"; };
+		03C34361249FC16E004907DF /* APIClientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientInfo.swift; sourceTree = "<group>"; };
 		03C39DD324967E5B00C76516 /* TitleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleContentView.swift; sourceTree = "<group>"; };
 		03C39DD52496802500C76516 /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
 		03C39DD72496CA2A00C76516 /* LessonPlanStatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanStatusPill.swift; sourceTree = "<group>"; };
@@ -820,6 +821,7 @@
 		D56B253525322AE300BC3932 /* StripeSetupIntentLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeSetupIntentLink.swift; sourceTree = "<group>"; };
 		D56B253A2532433E00BC3932 /* ErrorText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorText.swift; sourceTree = "<group>"; };
 		D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberDoubles.swift; sourceTree = "<group>"; };
+		D572B686258A3A7F00B87E77 /* Dictionary+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Sugar.swift"; sourceTree = "<group>"; };
 		D575C80E254DB13D001664AB /* RemoteConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigService.swift; sourceTree = "<group>"; };
 		D575C813254DB602001664AB /* RemoteConfigServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigServiceDoubles.swift; sourceTree = "<group>"; };
 		D575C818254DD6C8001664AB /* AppSplash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSplash.swift; sourceTree = "<group>"; };
@@ -847,8 +849,8 @@
 		D5A32DBC23D139C000F3903C /* AuthenticationAccessTokenProviderObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderObserver.swift; sourceTree = "<group>"; };
 		D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProtocol.swift; sourceTree = "<group>"; };
 		D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDoubles.swift; sourceTree = "<group>"; };
-		D5A8C4C125044F4C0006F5C5 /* APIUserAgent+RythmicoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIUserAgent+RythmicoTests.swift"; sourceTree = "<group>"; };
-		D5A8C4C325044F580006F5C5 /* APIUserAgent+TutorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIUserAgent+TutorTests.swift"; sourceTree = "<group>"; };
+		D5A8C4C125044F4C0006F5C5 /* APIClientInfo+RythmicoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClientInfo+RythmicoTests.swift"; sourceTree = "<group>"; };
+		D5A8C4C325044F580006F5C5 /* APIClientInfo+TutorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClientInfo+TutorTests.swift"; sourceTree = "<group>"; };
 		D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanView.swift; sourceTree = "<group>"; };
 		D5AAF7D023F9ACFA00E410F2 /* InstrumentSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionView.swift; sourceTree = "<group>"; };
 		D5AAF7D423F9E1F900E410F2 /* InstrumentSelectionListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionListProvider.swift; sourceTree = "<group>"; };
@@ -1667,9 +1669,9 @@
 				0336D62B241EAAF6006CFC1F /* APIRequest.swift */,
 				03E88EB324C4AA4C0077A420 /* APIService.swift */,
 				03E88EB924C6232D0077A420 /* APIServiceDoubles.swift */,
-				03C34361249FC16E004907DF /* APIUserAgent.swift */,
-				D5A8C4C125044F4C0006F5C5 /* APIUserAgent+RythmicoTests.swift */,
-				D5A8C4C325044F580006F5C5 /* APIUserAgent+TutorTests.swift */,
+				03C34361249FC16E004907DF /* APIClientInfo.swift */,
+				D5A8C4C125044F4C0006F5C5 /* APIClientInfo+RythmicoTests.swift */,
+				D5A8C4C325044F580006F5C5 /* APIClientInfo+TutorTests.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1738,6 +1740,7 @@
 				D5F4D3FE24F858AE000E8580 /* Date+Sugar.swift */,
 				03E88E8824BB82290077A420 /* DateFormatter+Sugar.swift */,
 				D517FFCA25548EC600A41639 /* DateIntervalFormatter+Sugar.swift */,
+				D572B686258A3A7F00B87E77 /* Dictionary+Sugar.swift */,
 				03275ADC2490091E009C3980 /* DispatchQueue+Sugar.swift */,
 				03B71323241D71B600DED025 /* Error+Sugar.swift */,
 				D516A928253A554F002E6EDF /* ImageAsset+Sugar.swift */,
@@ -2711,7 +2714,7 @@
 				D56B2523252CF76300BC3932 /* AppSecrets.swift in Sources */,
 				03C39DD424967E5B00C76516 /* TitleContentView.swift in Sources */,
 				032B6FDB24B7890700299A09 /* ScheduleDuration+CasePickable.swift in Sources */,
-				03C34362249FC16E004907DF /* APIUserAgent.swift in Sources */,
+				03C34362249FC16E004907DF /* APIClientInfo.swift in Sources */,
 				D518C2F8250EA89100288A48 /* LessonPlanApplicationsView.swift in Sources */,
 				D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */,
 				D5F506B62406360900CA4094 /* Student.swift in Sources */,
@@ -2776,7 +2779,7 @@
 				D5F4D40024F858AE000E8580 /* Date+Sugar.swift in Sources */,
 				035B1D63249E63EC00AABFEA /* DeviceRegisterCoordinator.swift in Sources */,
 				035B1D4E249E57D100AABFEA /* KeychainDoubles.swift in Sources */,
-				03C34363249FC16E004907DF /* APIUserAgent.swift in Sources */,
+				03C34363249FC16E004907DF /* APIClientInfo.swift in Sources */,
 				035B1D51249E57F100AABFEA /* HashFunction+Helpers.swift in Sources */,
 				035B1D53249E582800AABFEA /* Animation.swift in Sources */,
 				035B1D35249E576900AABFEA /* DeauthenticationService.swift in Sources */,
@@ -2907,7 +2910,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5A8C4C425044F580006F5C5 /* APIUserAgent+TutorTests.swift in Sources */,
+				D5A8C4C425044F580006F5C5 /* APIClientInfo+TutorTests.swift in Sources */,
 				035B1D78249E6D3B00AABFEA /* RootViewTests.swift in Sources */,
 				035B1D74249E6B2D00AABFEA /* XCTAssertView.swift in Sources */,
 				D5F4AE862559D3FD001085D5 /* PhoneNumberTests.swift in Sources */,
@@ -2924,6 +2927,7 @@
 				D5B57A6F2419E22300BE9B4F /* Optional+Sugar.swift in Sources */,
 				D517FFCB25548EC600A41639 /* DateIntervalFormatter+Sugar.swift in Sources */,
 				D5C23A7A240F2DEB007DED63 /* Bool+Sugar.swift in Sources */,
+				D572B687258A3A7F00B87E77 /* Dictionary+Sugar.swift in Sources */,
 				D5317142250D77B3006751A7 /* Sequence+Sugar.swift in Sources */,
 				03B71324241D71B600DED025 /* Error+Sugar.swift in Sources */,
 				03E88E8924BB82290077A420 /* DateFormatter+Sugar.swift in Sources */,
@@ -2957,7 +2961,7 @@
 				03BB5C9A24733F5100B44692 /* LessonPlanConfirmationViewTests.swift in Sources */,
 				D50811E623FB769D008103D8 /* RequestLessonPlanFormViewTests.swift in Sources */,
 				03AAF6752445E16A002D8F5B /* SchedulingViewTests.swift in Sources */,
-				D5A8C4C225044F4C0006F5C5 /* APIUserAgent+RythmicoTests.swift in Sources */,
+				D5A8C4C225044F4C0006F5C5 /* APIClientInfo+RythmicoTests.swift in Sources */,
 				D5D974F925263FB9000AD074 /* PhoneNumberTests.swift in Sources */,
 				03D932F2249C096B003416DC /* LessonPlanDetailViewTests.swift in Sources */,
 				D53555C123E536A6005A20EB /* AuthenticationAccessTokenProviderObserverTests.swift in Sources */,
