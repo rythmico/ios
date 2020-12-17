@@ -26,7 +26,7 @@ extension LessonPlanCancellationView {
                 VStack(spacing: .spacingUnit * 9) {
                     TitleSubtitleView(
                         title: "Please tell us why",
-                        subtitle: "Please give us a reason why you decided to cancel your lesson plan"
+                        subtitle: "Please tell us the reason why you decided to cancel your lesson plan:"
                     )
                     .padding(.horizontal, .spacingMedium)
 
@@ -36,7 +36,7 @@ extension LessonPlanCancellationView {
 
                 submitButtonAction.map { action in
                     FloatingView {
-                        Button("Submit", action: action).secondaryStyle()
+                        Button("Cancel Lesson Plan", action: action).secondaryStyle()
                     }
                 }
             }
