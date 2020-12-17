@@ -9,14 +9,7 @@ extension LessonPlanCancellationView {
         var body: some View {
             VStack(spacing: 0) {
                 VStack(spacing: .spacingExtraLarge) {
-                    TitleSubtitleView(
-                        title: "Cancel Lesson Plan?",
-                        subtitle: ["Are you sure you want to cancel your lesson plan?".part]
-                    )
-                    Text("This will cancel the monthly payments to the tutor, and all upcoming lessons.")
-                        .rythmicoFont(.body)
-                        .foregroundColor(.rythmicoGray90)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    TitleContentView(title: "Cancel Lesson Plan?", content: content)
                 }
                 .padding(.horizontal, .spacingMedium)
 
@@ -29,6 +22,14 @@ extension LessonPlanCancellationView {
                     }
                 }
             }
+        }
+
+        @ViewBuilder
+        private func content() -> some View {
+            MultiStyleText(
+                parts: ["This will cancel the whole lesson plan, including upcoming lessons. The recurring payment will also be cancelled."],
+                foregroundColor: .rythmicoGray90
+            )
         }
     }
 }
