@@ -12,11 +12,7 @@ struct GenderSelectionView: View {
                         .rythmicoFont(textStyle(for: gender))
                         .foregroundColor(textColor(for: gender))
                         .animation(.none)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-
-                    Image(decorative: gender.icon.name)
-                        .renderingMode(.template)
-                        .foregroundColor(iconColor(for: gender))
+                        .frame(maxWidth: .infinity)
                 }
                 .modifier(
                     containerModifier(for: gender)
@@ -44,17 +40,6 @@ struct GenderSelectionView: View {
         selection == gender
             ? RoundedThickOutlineContainer(backgroundColor: accentColor, borderColor: accentColor)
             : RoundedThickOutlineContainer()
-    }
-}
-
-private extension Gender {
-    var icon: ImageAsset {
-        switch self {
-        case .male:
-            return Asset.genderSignMale
-        case .female:
-            return Asset.genderSignFemale
-        }
     }
 }
 
