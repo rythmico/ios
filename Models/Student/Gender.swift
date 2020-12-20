@@ -3,6 +3,7 @@ import Foundation
 enum Gender: String, Equatable, Codable, CaseIterable, Hashable {
     case male = "MALE"
     case female = "FEMALE"
+    case other = "OTHER"
 
     var name: String {
         switch self {
@@ -10,6 +11,8 @@ enum Gender: String, Equatable, Codable, CaseIterable, Hashable {
             return "Male"
         case .female:
             return "Female"
+        case .other:
+            return "Other"
         }
     }
 }
