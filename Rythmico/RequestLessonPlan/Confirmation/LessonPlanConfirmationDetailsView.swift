@@ -12,11 +12,12 @@ struct LessonPlanConfirmationDetailsView: View {
                     .foregroundColor(.rythmicoGray90)
                 MultiStyleText(
                     parts: [
-                        "First Lesson: ".color(.rythmicoGray90),
-                        dateFormatter.string(from: lessonPlan.schedule.startDate).color(.rythmicoGray90).style(.bodyBold),
-                        " (\(relativeDateFormatter.localizedString(for: lessonPlan.schedule.startDate, relativeTo: Current.date())))".color(.rythmicoGray90)
+                        "First Lesson: ",
+                        dateFormatter.string(from: lessonPlan.schedule.startDate).style(.bodyBold),
+                        " (", relativeDate().part, ")"
                     ],
-                    expanded: false
+                    expanded: false,
+                    foregroundColor: .rythmicoGray90
                 )
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
@@ -32,5 +33,23 @@ struct LessonPlanConfirmationDetailsView: View {
     }
 
     private let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
-    private let relativeDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .full, precise: false)
+    private let relativeDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .full, precise: true)
+    private func relativeDate() -> String {
+        // Can't use Current.relativeDateTimeFormatter alone because it needs to be precise in number of days regardless of number of hours.
+        let startDate = lessonPlan.schedule.startDate
+        let calendar = Current.calendar()
+        let today = Current.date()
+        let tomorrow = calendar.date(byAdding: .day, value: 1, to: today)!
+        switch true {
+        case calendar.isDate(startDate, inSameDayAs: tomorrow):
+            return "Tomorrow"
+        case calendar.isDate(startDate, inSameDayAs: today):
+            return relativeDateFormatter.localizedString(for: startDate, relativeTo: today)
+        default:
+            let todayComps = calendar.dateComponents([.year, .month, .day], from: today)
+            let startDateComps = calendar.dateComponents([.year, .month, .day], from: startDate)
+            let daysDiff = calendar.dateComponents([.day], from: todayComps, to: startDateComps).day!
+            return "In \(daysDiff) days"
+        }
+    }
 }

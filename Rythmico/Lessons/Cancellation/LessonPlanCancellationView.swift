@@ -36,7 +36,7 @@ struct LessonPlanCancellationView: View, TestableView {
                 loadingTitle: "Cancelling plan..."
             ) {
                 if !isCancellationIntended {
-                    PromptView(noAction: dismiss, yesAction: showReasonView)
+                    PromptView(lessonPlan: lessonPlan, noAction: dismiss, yesAction: showReasonView)
                         .transition(
                             .asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing))
                         )
