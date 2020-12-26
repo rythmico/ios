@@ -521,6 +521,7 @@
 		D5F506BA240637F400CA4094 /* Buttons+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B9240637F400CA4094 /* Buttons+Rythmico.swift */; };
 		D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */; };
 		D5F506BE2406E49A00CA4094 /* EdgeSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506BD2406E49A00CA4094 /* EdgeSwipeView.swift */; };
+		D5F7A5132597B92100A9FF56 /* ImageOverlayModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F7A5122597B92100A9FF56 /* ImageOverlayModifier.swift */; };
 		D5FAE6742559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FAE6732559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift */; };
 		D5FAE6862559DF8300473A8B /* PhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FAE6852559DF8300473A8B /* PhoneNumberCell.swift */; };
 		D5FC2D3E254A7DE3005056D5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D3D254A7DE3005056D5 /* FirebaseAnalytics */; };
@@ -967,6 +968,7 @@
 		D5F506B9240637F400CA4094 /* Buttons+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Buttons+Rythmico.swift"; sourceTree = "<group>"; };
 		D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetailsView.swift; sourceTree = "<group>"; };
 		D5F506BD2406E49A00CA4094 /* EdgeSwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeSwipeView.swift; sourceTree = "<group>"; };
+		D5F7A5122597B92100A9FF56 /* ImageOverlayModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOverlayModifier.swift; sourceTree = "<group>"; };
 		D5FAE6732559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhoneNumberOpener+ActionSheet.swift"; sourceTree = "<group>"; };
 		D5FAE6852559DF8300473A8B /* PhoneNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCell.swift; sourceTree = "<group>"; };
 		D5FD6F1124096FB5008C5AD4 /* Collection+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Sugar.swift"; sourceTree = "<group>"; };
@@ -1521,6 +1523,7 @@
 				D5E04B1823BED80700A161BB /* Fonts.swift */,
 				D5F4D3FA24F7120E000E8580 /* GroupedButton.swift */,
 				D5F5065E240055E800CA4094 /* HeaderContentView.swift */,
+				D5F7A5122597B92100A9FF56 /* ImageOverlayModifier.swift */,
 				D518C2FC250EDD3300288A48 /* InfoBanner.swift */,
 				D517FFA3255482EF00A41639 /* InlineContentAndTitleView.swift */,
 				D58149F4251D6F770009BBB3 /* InteractiveBackground.swift */,
@@ -2696,6 +2699,7 @@
 				D5CAC9AC24E6D19900119DAA /* MultilineTextField+Rythmico.swift in Sources */,
 				03275AD924900422009C3980 /* PushNotificationRegisterService.swift in Sources */,
 				D54EFF1E2513D69A004F14D3 /* PortfolioDoubles.swift in Sources */,
+				D5F7A5132597B92100A9FF56 /* ImageOverlayModifier.swift in Sources */,
 				D54EFF142513D5BF004F14D3 /* LessonPlanApplicationDetailAboutView.swift in Sources */,
 				03B19843247181B3005529EB /* RequestLessonPlanFormView.swift in Sources */,
 				035B1D14249E565200AABFEA /* TestableView.swift in Sources */,
