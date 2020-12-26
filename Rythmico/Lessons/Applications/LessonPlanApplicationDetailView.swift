@@ -21,7 +21,7 @@ struct LessonPlanApplicationDetailView: View {
     var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: 0) {
-                VStack(spacing: .spacingExtraLarge) {
+                VStack(spacing: .spacingUnit * 8) {
                     HeaderView(lessonPlan: lessonPlan, application: application)
                     TabMenuView(tabs: Tab.allCases, selection: $tab)
                 }

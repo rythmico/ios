@@ -8,6 +8,7 @@ struct LessonPlanApplicationDetailHeaderView: View {
         HStack(spacing: .spacingSmall) {
             TutorAvatarView(application.tutor, mode: .original)
                 .frame(width: .spacingUnit * 20, height: .spacingUnit * 20)
+                .withDBSCheck()
             VStack(alignment: .leading, spacing: .spacingUnit) {
                 Text(application.tutor.name)
                     .rythmicoFont(.largeTitle)
