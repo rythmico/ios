@@ -52,7 +52,7 @@ struct LessonPlanApplicationCell: View {
     }
 
     var body: some View {
-        VStack(spacing: .spacingExtraSmall) {
+        VStack(spacing: .spacingSmall) {
             TutorAvatarView(application.tutor, mode: .thumbnail)
                 .frame(width: Const.avatarSize, height: Const.avatarSize)
                 .withSmallDBSCheck()
@@ -62,7 +62,7 @@ struct LessonPlanApplicationCell: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.6)
         }
-        .padding(.vertical, .spacingExtraLarge)
+        .padding(.vertical, .spacingLarge)
         .padding(.horizontal, .spacingSmall)
         .frame(maxWidth: .infinity)
         .modifier(RoundedShadowContainer())
