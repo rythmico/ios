@@ -15,12 +15,7 @@ struct ImageOverlayModifier: ViewModifier {
     var alignment: Alignment
 
     func body(content: Content) -> some View {
-        ZStack {
-            content
-            Image(uiImage: image)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
-                .offset(offset)
-        }
+        content.overlay(Image(uiImage: image).offset(offset), alignment: alignment)
     }
 
     private var offset: CGSize {
