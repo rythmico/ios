@@ -55,6 +55,7 @@ struct LessonPlanApplicationCell: View {
         VStack(spacing: .spacingExtraSmall) {
             TutorAvatarView(application.tutor, mode: .thumbnail)
                 .frame(width: Const.avatarSize, height: Const.avatarSize)
+                .withSmallDBSCheck()
             Text(application.tutor.name)
                 .rythmicoFont(.bodyBold)
                 .foregroundColor(.rythmicoForeground)

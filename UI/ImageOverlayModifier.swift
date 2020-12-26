@@ -1,5 +1,15 @@
 import SwiftUI
 
+extension View {
+    func withSmallDBSCheck() -> some View {
+        self.modifier(ImageOverlayModifier(image: Asset.iconDbsSmall.image, alignment: .bottom))
+    }
+
+    func withDBSCheck() -> some View {
+        self.modifier(ImageOverlayModifier(image: Asset.iconDbs.image, alignment: .bottom))
+    }
+}
+
 struct ImageOverlayModifier: ViewModifier {
     var image: UIImage
     var alignment: Alignment
