@@ -47,3 +47,25 @@ struct ImageOverlayModifier: ViewModifier {
     private var halfImageWidth: CGFloat { image.size.width / 2 }
     private var halfImageHeight: CGFloat { image.size.height / 2 }
 }
+
+#if DEBUG
+struct ImageOverlayModifier_Previews: PreviewProvider {
+    static var previews: some View {
+        ForEach(0..<Alignment.allCases.count, id: \.self) {
+            Rectangle()
+                .fill(Color.red)
+                .frame(width: 100, height: 100)
+                .modifier(ImageOverlayModifier(image: Asset.iconDbsSmall.image, alignment: Alignment.allCases[$0]))
+        }
+        .previewLayout(.sizeThatFits)
+        .padding()
+    }
+}
+
+private extension Alignment {
+    static var allCases: [Self] {
+        [.top, .topLeading, .topTrailing, .center, .leading, .trailing, .bottom, .bottomLeading, .bottomTrailing]
+    }
+}
+#endif
+
