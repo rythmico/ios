@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "icon-policy-skip-lessons.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}
