@@ -6,8 +6,8 @@ struct RoundedShadowContainer: ViewModifier {
         static let cornerStyle: RoundedCornerStyle = .continuous
     }
 
-    @Environment(\.isEnabled) var isEnabled
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.isEnabled) private var isEnabled
+    @Environment(\.colorScheme) private var colorScheme
 
     func body(content: Content) -> some View {
         content
