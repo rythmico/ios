@@ -35,7 +35,10 @@ struct LessonPlanApplicationDetailView: View {
             }
 
             FloatingView {
-                Button(bookButtonTitle, action: book).primaryStyle()
+                VStack(spacing: .spacingUnit * 2) {
+                    Button(bookButtonTitle, action: book).primaryStyle()
+                    MultiStyleText(parts: frequencyText, alignment: .center, foregroundColor: .rythmicoGray90)
+                }
             }
         }
     }
@@ -46,6 +49,12 @@ struct LessonPlanApplicationDetailView: View {
 
     private func book() {
         Current.state.lessonsContext.isBookingLessonPlan = true
+    }
+
+    private let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
+    private var frequencyDayText: String { frequencyDayFormatter.string(from: lessonPlan.schedule.startDate) }
+    private var frequencyText: [MultiStyleText.Part] {
+        "Lessons recurring ".style(.callout) + "every \(frequencyDayText)".style(.calloutBold)
     }
 }
 
