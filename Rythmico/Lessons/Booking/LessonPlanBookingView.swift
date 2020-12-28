@@ -55,32 +55,26 @@ struct LessonPlanBookingView: View {
                                 SectionHeaderContentView(title: "Contact Number") {
                                     PhoneNumberInputView(phoneNumber: $phoneNumber, phoneNumberInputError: $phoneNumberInputError)
                                 }
-
-                                SectionHeaderContentView(title: "Price Per Lesson") {
-                                    LessonPriceView(price: checkout.pricePerLesson, instrument: lessonPlan.instrument)
-                                }
                             }
                             .padding(.horizontal, .spacingMedium)
 
-                            SectionHeaderContentView(title: "Payment Method", padding: EdgeInsets(horizontal: .spacingMedium)) {
-                                if
-                                    let availableCards = NonEmpty(rawValue: availableCards),
-                                    let selectedCardBinding = Binding($selectedCard)
-                                {
-                                    CardStackView(cards: availableCards, selectedCard: selectedCardBinding)
+                            VStack(spacing: .spacingSmall) {
+                                SectionHeaderContentView(title: "Payment Method", padding: EdgeInsets(horizontal: .spacingMedium)) {
+                                    if
+                                        let availableCards = NonEmpty(rawValue: availableCards),
+                                        let selectedCardBinding = Binding($selectedCard)
+                                    {
+                                        CardStackView(cards: availableCards, selectedCard: selectedCardBinding)
+                                    }
                                 }
-                            }
 
-                            HDividerContainer {
-                                Button("Add new card", action: addNewCard).quaternaryStyle()
-                            }
+                                HDividerContainer {
+                                    Button("Add new card", action: addNewCard).quaternaryStyle()
+                                }
 
-                            Text("Payment will be automatically taken on the 1st of every month.")
-                                .foregroundColor(.rythmicoGray90)
-                                .rythmicoFont(.calloutBold)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .fixedSize(horizontal: false, vertical: true)
-                                .padding(.horizontal, .spacingMedium)
+                                LessonPlanBookingPriceView(price: checkout.pricePerLesson)
+                                    .padding(.horizontal, .spacingSmall)
+                            }
                         }
                         .padding(.bottom, .spacingMedium)
                         .animation(.rythmicoSpring(duration: .durationShort), value: phoneNumberInputError != nil)
@@ -159,6 +153,7 @@ struct LessonPlanBookingView_Previews: PreviewProvider {
             application: .davidStub,
             checkout: .stub
         )
+//        .environment(\.colorScheme, .dark)
 //        .environment(\.locale, Current.locale)
 //        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
 //        .environment(\.legibilityWeight, .bold)
