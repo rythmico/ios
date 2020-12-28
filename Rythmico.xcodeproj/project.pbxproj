@@ -461,6 +461,7 @@
 		D5D9AEBE253694B400A0ABCC /* PhoneNumberInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEBD253694B400A0ABCC /* PhoneNumberInputView.swift */; };
 		D5D9AEC32537105400A0ABCC /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEC22537105400A0ABCC /* CardStackView.swift */; };
 		D5DDE85E2598E7B300CF565D /* LessonPlanBookingPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DDE85D2598E7B300CF565D /* LessonPlanBookingPolicyView.swift */; };
+		D5DDE869259955C200CF565D /* RoundedGrayedDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DDE868259955C200CF565D /* RoundedGrayedDialog.swift */; };
 		D5E04B1923BED80700A161BB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* Fonts.swift */; };
 		D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */; };
 		D5E58F01256AF06700EB52ED /* BookingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E58F00256AF06700EB52ED /* BookingsTabView.swift */; };
@@ -924,6 +925,7 @@
 		D5D9AEBD253694B400A0ABCC /* PhoneNumberInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberInputView.swift; sourceTree = "<group>"; };
 		D5D9AEC22537105400A0ABCC /* CardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
 		D5DDE85D2598E7B300CF565D /* LessonPlanBookingPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanBookingPolicyView.swift; sourceTree = "<group>"; };
+		D5DDE868259955C200CF565D /* RoundedGrayedDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedGrayedDialog.swift; sourceTree = "<group>"; };
 		D5E04B1823BED80700A161BB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		D5E58F00256AF06700EB52ED /* BookingsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsTabView.swift; sourceTree = "<group>"; };
@@ -1544,6 +1546,7 @@
 				03A3F6E42447B7BD00F6391D /* PreviewDevices.swift */,
 				D5EF88B523FB706C0072BD03 /* ProgressBar.swift */,
 				D575C87F254F2FF7001664AB /* RootView+Sugar.swift */,
+				D5DDE868259955C200CF565D /* RoundedGrayedDialog.swift */,
 				D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */,
 				D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */,
 				D5F50662240056FA00CA4094 /* RoundedThinOutlineContainer.swift */,
@@ -2530,6 +2533,7 @@
 				D527B00B24FD3297003E81A9 /* AvatarStackView.swift in Sources */,
 				D53555B923E53699005A20EB /* AuthenticationServiceDoubles.swift in Sources */,
 				03A3F6E52447B7BD00F6391D /* PreviewDevices.swift in Sources */,
+				D5DDE869259955C200CF565D /* RoundedGrayedDialog.swift in Sources */,
 				D56B253B2532433E00BC3932 /* ErrorText.swift in Sources */,
 				D50811E423FB72A3008103D8 /* StepBar.swift in Sources */,
 				D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */,
