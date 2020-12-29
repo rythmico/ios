@@ -5,14 +5,10 @@ struct BookingRequestDetailView: View {
     @ObservedObject
     private var state = Current.state
 
-    private let bookingRequest: BookingRequest
+    var bookingRequest: BookingRequest
 
     private let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
     private let timeFormatter = Current.dateFormatter(format: .preset(time: .short))
-
-    init(bookingRequest: BookingRequest) {
-        self.bookingRequest = bookingRequest
-    }
 
     var title: String { "\(bookingRequest.student.name) - \(bookingRequest.instrument.name) Request" }
     var submittedBy: String { bookingRequest.submitterName }
