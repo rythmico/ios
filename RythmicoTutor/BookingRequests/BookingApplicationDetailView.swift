@@ -4,7 +4,10 @@ import PhoneNumberKit
 import Sugar
 
 struct BookingApplicationDetailView: View {
-    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.presentationMode)
+    private var presentationMode
+    @ObservedObject
+    private var state = Current.state
 
     private let bookingApplication: BookingApplication
 
@@ -125,6 +128,16 @@ struct BookingApplicationDetailView: View {
         .disabled(retractionCoordinator.state.isLoading)
         .alertOnFailure(retractionCoordinator)
         .onSuccess(retractionCoordinator, perform: didRetractBookingApplication)
+        .onReceive(state.$requestsContext, perform: requestsContextChanged)
+    }
+
+    // FIXME: this is a workaround for this View not dismissing on requestsContext = .none.
+    // I suspect it's a SwiftUI bug where if the NavigationLink is specifically inside a List (BookingApplicationsView's List),
+    // programatic navigation does not work, so we're forced to dismiss through presentationMode by observing.
+    private func requestsContextChanged(_ context: AppState.RequestsContext) {
+        if context == .none {
+            presentationMode.wrappedValue.dismiss()
+        }
     }
 
     private func promptForRetraction() {
