@@ -35,7 +35,7 @@ struct LessonsCollectionView: View {
         List {
             ForEach(days, id: \.self) { date in
                 if let lessons = lessons[date] {
-                    Section(header: Text(dayString(from: date)), footer: EmptyView()) {
+                    Section(header: Text(dayString(from: date))) {
                         ForEach(lessons) { lesson in
                             LessonSummaryCell(lesson: lesson, selection: $selectedLesson)
                         }
