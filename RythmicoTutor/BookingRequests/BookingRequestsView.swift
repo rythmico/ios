@@ -41,12 +41,7 @@ struct BookingRequestsView: View {
                     }
                 }
             ) {
-                ForEach(requests) { request in
-                    BookingRequestCell(
-                        request: request,
-                        selection: $state.requestsContext.selectedRequest
-                    )
-                }
+                ForEach(requests, content: BookingRequestCell.init)
             }
         }
         .listStyle(GroupedListStyle())
