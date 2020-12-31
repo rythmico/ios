@@ -37,7 +37,7 @@ struct PageView<Data: RandomAccessCollection, Selection: Hashable, Content: View
             PageDotIndicator(
                 selection: $selection,
                 items: data,
-                foregroundColor: accentColor.opacity(0.125),
+                foregroundColor: accentColor.opacity(0.25),
                 accentColor: accentColor
             )
         }
