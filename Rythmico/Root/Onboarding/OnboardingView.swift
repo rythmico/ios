@@ -13,22 +13,21 @@ struct OnboardingView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        ZStack {
-            AppSplash(image: App.logo, title: App.name)
-            VStack(spacing: 0) {
-                Spacer()
-                if isLoading {
-                    ActivityIndicator(color: .rythmicoGray90)
-                        .frame(width: 44, height: 44)
-                } else {
-                    AuthorizationAppleIDButton(action: authenticateWithApple)
-                        .accessibility(hint: Text("Double tap to sign in with your Apple ID"))
-                        .disabled(!isAppleAuthorizationButtonEnabled)
-                }
+        VStack(spacing: 0) {
+            Spacer(minLength: 0)
+            OnboardingSlideshowView()
+            Spacer(minLength: 0)
+            if isLoading {
+                ActivityIndicator(color: .rythmicoGray90)
+                    .frame(width: 44, height: 44)
+            } else {
+                AuthorizationAppleIDButton(action: authenticateWithApple)
+                    .accessibility(hint: Text("Double tap to sign in with your Apple ID"))
+                    .disabled(!isAppleAuthorizationButtonEnabled)
+                    .padding([.horizontal, .bottom], .spacingLarge)
             }
-            .padding(.spacingLarge)
-            .animation(.rythmicoSpring(duration: .durationMedium), value: isLoading)
         }
+        .animation(.rythmicoSpring(duration: .durationMedium), value: isLoading)
         .alert(error: errorMessage, dismiss: dismissError)
         .onDisappear {
             Current.uiAccessibility.postAnnouncement("Welcome")
