@@ -84,7 +84,7 @@ struct BookingRequestDetailView: View {
     // I suspect it's a SwiftUI bug where if the NavigationLink is specifically inside a List (BookingRequestsView's List),
     // programatic navigation does not work, so we're forced to dismiss through presentationMode by observing.
     private func requestsContextChanged(_ context: AppState.RequestsContext) {
-        if context == .none {
+        if context.selectedRequest == nil {
             presentationMode.wrappedValue.dismiss()
         }
     }
