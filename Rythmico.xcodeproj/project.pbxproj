@@ -345,7 +345,7 @@
 		D575C880254F2FF7001664AB /* RootView+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C87F254F2FF7001664AB /* RootView+Sugar.swift */; };
 		D575C881254F2FF7001664AB /* RootView+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C87F254F2FF7001664AB /* RootView+Sugar.swift */; };
 		D577EEA724E6F66400253EA1 /* BookingRequestApplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */; };
-		D58149E9251D262B0009BBB3 /* DotPageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58149E8251D262B0009BBB3 /* DotPageIndicator.swift */; };
+		D58149E9251D262B0009BBB3 /* PageDotIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58149E8251D262B0009BBB3 /* PageDotIndicator.swift */; };
 		D58149ED251D262F0009BBB3 /* Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E824F09C43000E8580 /* Dot.swift */; };
 		D58149F5251D6F770009BBB3 /* InteractiveBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58149F4251D6F770009BBB3 /* InteractiveBackground.swift */; };
 		D5814A00251D7FFC0009BBB3 /* App+SplitViewCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58149FF251D7FFC0009BBB3 /* App+SplitViewCustomization.swift */; };
@@ -833,7 +833,7 @@
 		D575C876254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationAuthorizationCoordinator+Sugar.swift"; sourceTree = "<group>"; };
 		D575C87F254F2FF7001664AB /* RootView+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RootView+Sugar.swift"; sourceTree = "<group>"; };
 		D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestApplyView.swift; sourceTree = "<group>"; };
-		D58149E8251D262B0009BBB3 /* DotPageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotPageIndicator.swift; sourceTree = "<group>"; };
+		D58149E8251D262B0009BBB3 /* PageDotIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageDotIndicator.swift; sourceTree = "<group>"; };
 		D58149F4251D6F770009BBB3 /* InteractiveBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveBackground.swift; sourceTree = "<group>"; };
 		D58149FF251D7FFC0009BBB3 /* App+SplitViewCustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+SplitViewCustomization.swift"; sourceTree = "<group>"; };
 		D5814A08251D957D0009BBB3 /* MainViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewContent.swift; sourceTree = "<group>"; };
@@ -1516,7 +1516,6 @@
 				D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */,
 				D5D9AE4E253367A100A0ABCC /* Divider.swift */,
 				D5F4D3E824F09C43000E8580 /* Dot.swift */,
-				D58149E8251D262B0009BBB3 /* DotPageIndicator.swift */,
 				D5F506AF2405A6A900CA4094 /* Duration.swift */,
 				D5F506BD2406E49A00CA4094 /* EdgeSwipeView.swift */,
 				D56B253A2532433E00BC3932 /* ErrorText.swift */,
@@ -1540,6 +1539,7 @@
 				D5200E3F23FDE460007168E0 /* MultiStyleText.swift */,
 				D5E58F45256DB0AC00EB52ED /* NavigationLinkModifier.swift */,
 				D5882501251CBE0C000820F4 /* NavigationViewFixInteractiveDismissal.swift */,
+				D58149E8251D262B0009BBB3 /* PageDotIndicator.swift */,
 				D5D78E0B25257800007041BE /* PhoneNumberField.swift */,
 				03AAF66B2444FFCC002D8F5B /* Pickers.swift */,
 				03C39DD52496802500C76516 /* Pill.swift */,
@@ -2595,7 +2595,7 @@
 				03AAF6712445E0FB002D8F5B /* Schedule.swift in Sources */,
 				03275AE3249070D5009C3980 /* DeviceEndpoints.swift in Sources */,
 				D527B01824FEABEB003E81A9 /* ActivityDoubles.swift in Sources */,
-				D58149E9251D262B0009BBB3 /* DotPageIndicator.swift in Sources */,
+				D58149E9251D262B0009BBB3 /* PageDotIndicator.swift in Sources */,
 				D5D9AEBE253694B400A0ABCC /* PhoneNumberInputView.swift in Sources */,
 				032B6FD424B7881C00299A09 /* InstrumentExtensions.swift in Sources */,
 				D5BF12C62507D78800B2931C /* RouterDoubles.swift in Sources */,

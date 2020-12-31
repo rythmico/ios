@@ -1,9 +1,11 @@
 import SwiftUI
 
-struct DotPageIndicator<Item: Hashable>: View {
+struct PageDotIndicator<Items: RandomAccessCollection>: View where Items.Element: Hashable {
+    typealias Item = Items.Element
+
     @Binding
     var selection: Item
-    var items: [Item]
+    var items: Items
 
     var foregroundColor = Color.white.opacity(0.5)
     var accentColor: Color = .white
@@ -18,9 +20,9 @@ struct DotPageIndicator<Item: Hashable>: View {
 }
 
 #if DEBUG
-struct DotPageIndicator_Previews: PreviewProvider {
+struct PageDotIndicator_Previews: PreviewProvider {
     static var previews: some View {
-        DotPageIndicator(selection: .constant(1), items: [1, 2, 3])
+        PageDotIndicator(selection: .constant(1), items: [1, 2, 3])
             .previewLayout(.sizeThatFits)
             .padding()
             .background(Color.black)
