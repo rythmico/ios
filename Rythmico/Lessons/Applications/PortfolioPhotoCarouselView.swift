@@ -72,7 +72,7 @@ struct PhotoCarouselDetailView: View {
                     .padding(.top, .spacingMedium)
                     .accentColor(.rythmicoWhite)
 
-                PageView(photos, selection: Binding($selection) ?? $latestSelection) { photo in
+                PageView(photos, selection: Binding($selection) ?? $latestSelection, accentColor: .rythmicoWhite) { photo in
                     AsyncImage(.transitional(from: photo.thumbnailURL, to: photo.photoURL)) {
                         if let uiImage = $0 {
                             Image(uiImage: uiImage)

@@ -6,11 +6,13 @@ struct PageView<Data: RandomAccessCollection, Selection: Hashable, Content: View
     private var selection: Selection
     @State
     private var privateSelection: Selection
+    private var accentColor: Color
     private let content: (Data.Element) -> Content
 
     init(
         _ data: Data,
         selection: Binding<Selection>? = nil,
+        accentColor: Color,
         @ViewBuilder content: @escaping (Data.Element) -> Content
     ) {
         self.data = data
@@ -24,6 +26,7 @@ struct PageView<Data: RandomAccessCollection, Selection: Hashable, Content: View
         } else {
             preconditionFailure("PageView initialized without selection binding and empty data collection.")
         }
+        self.accentColor = accentColor
         self.content = content
     }
 
@@ -37,8 +40,8 @@ struct PageView<Data: RandomAccessCollection, Selection: Hashable, Content: View
             PageDotIndicator(
                 selection: $selection,
                 items: data,
-                foregroundColor: Color.rythmicoWhite.opacity(0.125),
-                accentColor: .rythmicoWhite
+                foregroundColor: accentColor.opacity(0.125),
+                accentColor: accentColor
             )
         }
     }
