@@ -255,6 +255,7 @@
 		D52C554E24E1BCBB00C295C4 /* URL+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554D24E1BCBB00C295C4 /* URL+Sugar.swift */; };
 		D52C555024E2ABFC00C295C4 /* MapOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554F24E2ABFC00C295C4 /* MapOpener.swift */; };
 		D52D8A4E259D5FDD00A6CBBF /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52D8A4D259D5FDC00A6CBBF /* PageView.swift */; };
+		D52D8A59259D714B00A6CBBF /* OnboardingSlideshowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52D8A58259D714B00A6CBBF /* OnboardingSlideshowView.swift */; };
 		D531295D255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D531295C255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift */; };
 		D5312968256427EA00CA6621 /* LessonSkippingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5312967256427EA00CA6621 /* LessonSkippingView.swift */; };
 		D5317142250D77B3006751A7 /* Sequence+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5317141250D77B3006751A7 /* Sequence+Sugar.swift */; };
@@ -779,6 +780,7 @@
 		D52C554D24E1BCBB00C295C4 /* URL+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Sugar.swift"; sourceTree = "<group>"; };
 		D52C554F24E2ABFC00C295C4 /* MapOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOpener.swift; sourceTree = "<group>"; };
 		D52D8A4D259D5FDC00A6CBBF /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		D52D8A58259D714B00A6CBBF /* OnboardingSlideshowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlideshowView.swift; sourceTree = "<group>"; };
 		D531295C255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentInfoAndSafetyView.swift; sourceTree = "<group>"; };
 		D5312967256427EA00CA6621 /* LessonSkippingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonSkippingView.swift; sourceTree = "<group>"; };
 		D5317141250D77B3006751A7 /* Sequence+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Sugar.swift"; sourceTree = "<group>"; };
@@ -1810,6 +1812,7 @@
 			children = (
 				D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */,
 				D535553523E105A5005A20EB /* OnboardingViewTests.swift */,
+				D52D8A58259D714B00A6CBBF /* OnboardingSlideshowView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -2571,6 +2574,7 @@
 				D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */,
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
 				032B6FD024B787BB00299A09 /* Gender.swift in Sources */,
+				D52D8A59259D714B00A6CBBF /* OnboardingSlideshowView.swift in Sources */,
 				D575C86E254F2F82001664AB /* ActivityCoordinator+Sugar.swift in Sources */,
 				D5D9AE682533ADA400A0ABCC /* Checkout.swift in Sources */,
 				D501588525376EC0005E02FA /* DismissKeyboardTooltip.swift in Sources */,
