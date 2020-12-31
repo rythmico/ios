@@ -40,15 +40,19 @@ struct OnboardingSlideshowView: View {
     private var step = Step.one
 
     var body: some View {
-        VStack(spacing: .spacingExtraLarge) {
+        VStack(spacing: secondSpacing) {
             PageView(
                 Step.allCases,
                 selection: $step,
-                fixedHeight: Step.maxHeight,
-                spacing: .spacingUnit * 10,
-                accentColor: .rythmicoForeground,
-                content: { Image(decorative: $0.asset.name) }
-            )
+                fixedHeight: fixedImageHeight,
+                spacing: firstSpacing,
+                accentColor: .rythmicoForeground
+            ) {
+                Image(decorative: $0.asset.name)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding(.horizontal, .spacingMedium)
+            }
 
             VStack(spacing: .spacingUnit * 2) {
                 Text(step.title)
@@ -66,5 +70,21 @@ struct OnboardingSlideshowView: View {
             .padding(.horizontal, .spacingLarge)
             .animation(.easeInOut(duration: .durationShort), value: step)
         }
+    }
+
+    private var isCompact: Bool {
+        UIScreen.main.bounds.height <= 568 // iPhone 5/SE size.
+    }
+
+    private var fixedImageHeight: CGFloat? {
+        isCompact ? Step.maxHeight.map { $0 * 0.8 } : Step.maxHeight
+    }
+
+    private var firstSpacing: CGFloat {
+        isCompact ? .spacingMedium : .spacingUnit * 10
+    }
+
+    private var secondSpacing: CGFloat {
+        isCompact ? .spacingSmall : .spacingExtraLarge
     }
 }

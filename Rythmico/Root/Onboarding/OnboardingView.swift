@@ -16,7 +16,7 @@ struct OnboardingView: View, TestableView {
         VStack(spacing: 0) {
             Spacer(minLength: 0)
             OnboardingSlideshowView()
-            Spacer(minLength: 0)
+            Spacer(minLength: .spacingMedium)
             if isLoading {
                 ActivityIndicator(color: .rythmicoGray90)
                     .frame(width: 44, height: 44)
