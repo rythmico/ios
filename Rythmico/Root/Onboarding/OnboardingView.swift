@@ -17,15 +17,16 @@ struct OnboardingView: View, TestableView {
             Spacer(minLength: 0)
             OnboardingSlideshowView()
             Spacer(minLength: .spacingMedium)
-            if isLoading {
-                ActivityIndicator(color: .rythmicoGray90)
-                    .frame(width: 44, height: 44)
-            } else {
-                AuthorizationAppleIDButton(action: authenticateWithApple)
-                    .accessibility(hint: Text("Double tap to sign in with your Apple ID"))
-                    .disabled(!isAppleAuthorizationButtonEnabled)
-                    .padding([.horizontal, .bottom], .spacingLarge)
-            }
+            AuthorizationAppleIDButton(action: authenticateWithApple)
+                .accessibility(hint: Text("Double tap to sign in with your Apple ID"))
+                .disabled(!isAppleAuthorizationButtonEnabled)
+                .opacity(isAppleAuthorizationButtonEnabled ? 1 : 0)
+                .overlay(Group {
+                    if isLoading {
+                        ActivityIndicator(color: .rythmicoGray90)
+                    }
+                })
+                .padding([.horizontal, .bottom], .spacingLarge)
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: isLoading)
         .alert(error: errorMessage, dismiss: dismissError)
