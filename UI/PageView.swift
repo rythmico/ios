@@ -4,28 +4,17 @@ struct PageView<Data: RandomAccessCollection, Selection: Hashable, Content: View
     private var data: Data
     @Binding
     private var selection: Selection
-    @State
-    private var privateSelection: Selection
     private var accentColor: Color
     private let content: (Data.Element) -> Content
 
     init(
         _ data: Data,
-        selection: Binding<Selection>? = nil,
+        selection: Binding<Selection>,
         accentColor: Color,
         @ViewBuilder content: @escaping (Data.Element) -> Content
     ) {
         self.data = data
-        if let selection = selection {
-            self._selection = selection
-            self._privateSelection = .init(wrappedValue: selection.wrappedValue)
-        } else if let firstElement = data.first {
-            let privateSelection = State(wrappedValue: firstElement)
-            self._selection = privateSelection.projectedValue
-            self._privateSelection = privateSelection
-        } else {
-            preconditionFailure("PageView initialized without selection binding and empty data collection.")
-        }
+        self._selection = selection
         self.accentColor = accentColor
         self.content = content
     }
