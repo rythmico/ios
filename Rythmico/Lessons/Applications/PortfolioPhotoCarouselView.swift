@@ -72,30 +72,16 @@ struct PhotoCarouselDetailView: View {
                     .padding(.top, .spacingMedium)
                     .accentColor(.rythmicoWhite)
 
-                VStack(spacing: .spacingMedium) {
-                    TabView(selection: Binding($selection) ?? $latestSelection) {
-                        ForEach(photos, id: \.self) { photo in
-                            AsyncImage(.transitional(from: photo.thumbnailURL, to: photo.photoURL)) {
-                                if let uiImage = $0 {
-                                    Image(uiImage: uiImage)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                } else {
-                                    Color.black
-                                }
-                            }
-                            .tag(photo)
+                PageView(photos, selection: Binding($selection) ?? $latestSelection) { photo in
+                    AsyncImage(.transitional(from: photo.thumbnailURL, to: photo.photoURL)) {
+                        if let uiImage = $0 {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        } else {
+                            Color.black
                         }
                     }
-                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-
-                    DotPageIndicator(
-                        selection: $selection,
-                        items: photos,
-                        foregroundColor: Color.rythmicoWhite.opacity(0.125),
-                        accentColor: .rythmicoWhite
-                    )
-                    .padding(.bottom, .spacingMedium)
                 }
             }
         }

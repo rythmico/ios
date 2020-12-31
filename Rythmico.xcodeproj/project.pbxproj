@@ -254,6 +254,7 @@
 		D52C554C24DDE5FF00C295C4 /* Buttons+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */; };
 		D52C554E24E1BCBB00C295C4 /* URL+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554D24E1BCBB00C295C4 /* URL+Sugar.swift */; };
 		D52C555024E2ABFC00C295C4 /* MapOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554F24E2ABFC00C295C4 /* MapOpener.swift */; };
+		D52D8A4E259D5FDD00A6CBBF /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52D8A4D259D5FDC00A6CBBF /* PageView.swift */; };
 		D531295D255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D531295C255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift */; };
 		D5312968256427EA00CA6621 /* LessonSkippingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5312967256427EA00CA6621 /* LessonSkippingView.swift */; };
 		D5317142250D77B3006751A7 /* Sequence+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5317141250D77B3006751A7 /* Sequence+Sugar.swift */; };
@@ -777,6 +778,7 @@
 		D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Buttons+Tutor.swift"; sourceTree = "<group>"; };
 		D52C554D24E1BCBB00C295C4 /* URL+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Sugar.swift"; sourceTree = "<group>"; };
 		D52C554F24E2ABFC00C295C4 /* MapOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOpener.swift; sourceTree = "<group>"; };
+		D52D8A4D259D5FDC00A6CBBF /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		D531295C255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentInfoAndSafetyView.swift; sourceTree = "<group>"; };
 		D5312967256427EA00CA6621 /* LessonSkippingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonSkippingView.swift; sourceTree = "<group>"; };
 		D5317141250D77B3006751A7 /* Sequence+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Sugar.swift"; sourceTree = "<group>"; };
@@ -1540,6 +1542,7 @@
 				D5E58F45256DB0AC00EB52ED /* NavigationLinkModifier.swift */,
 				D5882501251CBE0C000820F4 /* NavigationViewFixInteractiveDismissal.swift */,
 				D58149E8251D262B0009BBB3 /* PageDotIndicator.swift */,
+				D52D8A4D259D5FDC00A6CBBF /* PageView.swift */,
 				D5D78E0B25257800007041BE /* PhoneNumberField.swift */,
 				03AAF66B2444FFCC002D8F5B /* Pickers.swift */,
 				03C39DD52496802500C76516 /* Pill.swift */,
@@ -2727,6 +2730,7 @@
 				03C39DD424967E5B00C76516 /* TitleContentView.swift in Sources */,
 				032B6FDB24B7890700299A09 /* ScheduleDuration+CasePickable.swift in Sources */,
 				03C34362249FC16E004907DF /* APIClientInfo.swift in Sources */,
+				D52D8A4E259D5FDD00A6CBBF /* PageView.swift in Sources */,
 				D518C2F8250EA89100288A48 /* LessonPlanApplicationsView.swift in Sources */,
 				D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */,
 				D5F506B62406360900CA4094 /* Student.swift in Sources */,
