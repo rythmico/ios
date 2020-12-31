@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct OnboardingSlideshowView: View {
-    enum Step: CaseIterable, Hashable {
+    enum Step: Int, CaseIterable, Hashable {
         case one, two, three
 
         static var maxHeight: CGFloat? {
@@ -33,6 +33,14 @@ struct OnboardingSlideshowView: View {
             case .three:
                 return "Lessons that will support you through your music grades, but feel like band practise."
             }
+        }
+
+        var next: Step {
+            Self(rawValue: rawValue + 1) ?? self
+        }
+
+        var previous: Step {
+            Self(rawValue: rawValue - 1) ?? self
         }
     }
 
@@ -69,8 +77,14 @@ struct OnboardingSlideshowView: View {
             .multilineTextAlignment(.center)
             .frame(maxWidth: .spacingMax)
             .padding(.horizontal, .spacingLarge)
-            .animation(.easeInOut(duration: .durationShort), value: step)
         }
+        .animation(.easeInOut(duration: .durationShort), value: step)
+        .gesture(
+            DragGesture(minimumDistance: 60).onEnded {
+                guard abs($0.translation.width) >= 60 else { return }
+                step = $0.translation.width > 0 ? step.previous : step.next
+            }
+        )
     }
 
     private var isCompact: Bool {
