@@ -67,6 +67,7 @@ struct OnboardingSlideshowView: View {
                     .id(step.description.hashValue)
             }
             .multilineTextAlignment(.center)
+            .frame(maxWidth: .spacingMax)
             .padding(.horizontal, .spacingLarge)
             .animation(.easeInOut(duration: .durationShort), value: step)
         }
