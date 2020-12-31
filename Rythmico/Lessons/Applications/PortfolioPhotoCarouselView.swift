@@ -83,6 +83,7 @@ struct PhotoCarouselDetailView: View {
                         }
                     }
                 }
+                .padding(.bottom, .spacingMedium)
             }
         }
         .onChange(of: selection) { $0.map { latestSelection = $0 } }

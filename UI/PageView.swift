@@ -40,7 +40,6 @@ struct PageView<Data: RandomAccessCollection, Selection: Hashable, Content: View
                 foregroundColor: Color.rythmicoWhite.opacity(0.125),
                 accentColor: .rythmicoWhite
             )
-            .padding(.bottom, .spacingMedium)
         }
     }
 }
