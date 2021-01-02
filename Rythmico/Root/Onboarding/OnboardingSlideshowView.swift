@@ -27,11 +27,11 @@ struct OnboardingSlideshowView: View {
         var description: String {
             switch self {
             case .one:
-                return "An exciting and creative experience where they can explore their talents and hone their skills."
+                return "An exciting and creative experience where kids can explore their talents and hone their skills."
             case .two:
                 return "All tutors are DBS checked with years of experience working with children, helping them dream big."
             case .three:
-                return "Lessons that will support you through your music grades, but feel like band practise."
+                return "Lessons that will support you through your music grades, but feel like band practice."
             }
         }
 
