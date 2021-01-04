@@ -29,6 +29,8 @@ struct AppEnvironment {
     var pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator
     var pushNotificationEventHandler: PushNotificationEventHandlerProtocol
 
+    var calendarInfoFetchingService: APIServiceBase<GetCalendarInfoRequest>
+
     var uiAccessibility: UIAccessibilityProtocol.Type
     var keyboardDismisser: KeyboardDismisser
     var urlOpener: URLOpener

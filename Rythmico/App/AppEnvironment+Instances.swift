@@ -39,6 +39,8 @@ extension AppEnvironment {
         ),
         pushNotificationEventHandler: PushNotificationEventHandler(),
 
+        calendarInfoFetchingService: APIService(),
+
         uiAccessibility: UIAccessibility.self,
         keyboardDismisser: UIApplication.shared,
         urlOpener: UIApplication.shared,
@@ -124,6 +126,8 @@ extension AppEnvironment {
 
             pushNotificationAuthorizationCoordinator: .dummy,
             pushNotificationEventHandler: PushNotificationEventHandlerDummy(),
+
+            calendarInfoFetchingService: APIServiceDummy(),
 
             uiAccessibility: UIAccessibilityDummy.self,
             keyboardDismisser: KeyboardDismisserDummy(),

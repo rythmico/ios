@@ -317,6 +317,8 @@
 		D55C35D825A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */; };
 		D55C35EA25A3A6490023E56B /* CalendarInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35E925A3A6490023E56B /* CalendarInfo.swift */; };
 		D55C35EB25A3A6490023E56B /* CalendarInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35E925A3A6490023E56B /* CalendarInfo.swift */; };
+		D55C35F725A3A8090023E56B /* CalendarInfoDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35F625A3A8090023E56B /* CalendarInfoDoubles.swift */; };
+		D55C35F825A3A8090023E56B /* CalendarInfoDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35F625A3A8090023E56B /* CalendarInfoDoubles.swift */; };
 		D55F012C24CCBE8700E5F13C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB324C4AA4C0077A420 /* APIService.swift */; };
 		D55F012D24CCBE8E00E5F13C /* APIServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB924C6232D0077A420 /* APIServiceDoubles.swift */; };
 		D55F012E24CCBECE00E5F13C /* APIActivityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB524C4AD820077A420 /* APIActivityCoordinator.swift */; };
@@ -827,6 +829,7 @@
 		D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetInteractiveDismissal.swift; sourceTree = "<group>"; };
 		D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEndpoints.swift; sourceTree = "<group>"; };
 		D55C35E925A3A6490023E56B /* CalendarInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInfo.swift; sourceTree = "<group>"; };
+		D55C35F625A3A8090023E56B /* CalendarInfoDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInfoDoubles.swift; sourceTree = "<group>"; };
 		D55F013224CCE65C00E5F13C /* Then+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Then+Sugar.swift"; sourceTree = "<group>"; };
 		D564F4632511722900EA13E9 /* TabMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuView.swift; sourceTree = "<group>"; };
 		D56B2522252CF76300BC3932 /* AppSecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecrets.swift; sourceTree = "<group>"; };
@@ -1879,6 +1882,7 @@
 			isa = PBXGroup;
 			children = (
 				D55C35E925A3A6490023E56B /* CalendarInfo.swift */,
+				D55C35F625A3A8090023E56B /* CalendarInfoDoubles.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -2536,6 +2540,7 @@
 				D5D78E172525F531007041BE /* LegibilityWeight+Sugar.swift in Sources */,
 				D527B01624FEAA5F003E81A9 /* ImageLoadingService.swift in Sources */,
 				035AF30524919FEF004A01B2 /* AppleAuthorizationCredentialDoubles.swift in Sources */,
+				D55C35F725A3A8090023E56B /* CalendarInfoDoubles.swift in Sources */,
 				D5D9AE3F25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift in Sources */,
 				D516A929253A554F002E6EDF /* ImageAsset+Sugar.swift in Sources */,
 				D5AAF7D123F9ACFA00E410F2 /* InstrumentSelectionView.swift in Sources */,
@@ -2939,6 +2944,7 @@
 				D5F4D3E324F04479000E8580 /* BookingApplicationEndpoints.swift in Sources */,
 				D54F71182547523100D73E1E /* DismissKeyboardTooltip.swift in Sources */,
 				D5CC5FF225029525007DFE84 /* ImageReference.swift in Sources */,
+				D55C35F825A3A8090023E56B /* CalendarInfoDoubles.swift in Sources */,
 				D593C7032550C03B00C684FF /* AppUpdatePrompt.swift in Sources */,
 				035B1CF1249CF9FA00AABFEA /* App+LaunchScreenCache.swift in Sources */,
 				D5F4D3F724F3476F000E8580 /* AddressMapCell.swift in Sources */,

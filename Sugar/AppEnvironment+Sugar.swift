@@ -161,6 +161,11 @@ extension AppEnvironment {
             requestResult: (true, nil)
         )
 
+        calendarInfoFetchingService = APIServiceStub(
+            result: .success(.stub),
+            delay: Self.fakeAPIServicesDelay
+        )
+
         keyboardDismisser = UIApplication.shared
         urlOpener = UIApplication.shared
         router = Router()
