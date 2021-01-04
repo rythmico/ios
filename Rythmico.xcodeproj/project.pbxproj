@@ -319,6 +319,8 @@
 		D55C35EB25A3A6490023E56B /* CalendarInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35E925A3A6490023E56B /* CalendarInfo.swift */; };
 		D55C35F725A3A8090023E56B /* CalendarInfoDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35F625A3A8090023E56B /* CalendarInfoDoubles.swift */; };
 		D55C35F825A3A8090023E56B /* CalendarInfoDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35F625A3A8090023E56B /* CalendarInfoDoubles.swift */; };
+		D55C35FD25A3AB510023E56B /* CalendarSyncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35FC25A3AB510023E56B /* CalendarSyncer.swift */; };
+		D55C35FE25A3AB510023E56B /* CalendarSyncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35FC25A3AB510023E56B /* CalendarSyncer.swift */; };
 		D55F012C24CCBE8700E5F13C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB324C4AA4C0077A420 /* APIService.swift */; };
 		D55F012D24CCBE8E00E5F13C /* APIServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB924C6232D0077A420 /* APIServiceDoubles.swift */; };
 		D55F012E24CCBECE00E5F13C /* APIActivityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB524C4AD820077A420 /* APIActivityCoordinator.swift */; };
@@ -830,6 +832,7 @@
 		D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEndpoints.swift; sourceTree = "<group>"; };
 		D55C35E925A3A6490023E56B /* CalendarInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInfo.swift; sourceTree = "<group>"; };
 		D55C35F625A3A8090023E56B /* CalendarInfoDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInfoDoubles.swift; sourceTree = "<group>"; };
+		D55C35FC25A3AB510023E56B /* CalendarSyncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSyncer.swift; sourceTree = "<group>"; };
 		D55F013224CCE65C00E5F13C /* Then+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Then+Sugar.swift"; sourceTree = "<group>"; };
 		D564F4632511722900EA13E9 /* TabMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuView.swift; sourceTree = "<group>"; };
 		D56B2522252CF76300BC3932 /* AppSecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecrets.swift; sourceTree = "<group>"; };
@@ -1874,6 +1877,7 @@
 			isa = PBXGroup;
 			children = (
 				D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */,
+				D55C35FC25A3AB510023E56B /* CalendarSyncer.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -2737,6 +2741,7 @@
 				D54EFF192513D690004F14D3 /* Portfolio.swift in Sources */,
 				D5BDD502253B406300255190 /* AppState.swift in Sources */,
 				031378C9249A7DFF005FC49C /* LessonPlanCancellationPromptView.swift in Sources */,
+				D55C35FD25A3AB510023E56B /* CalendarSyncer.swift in Sources */,
 				D5AAF7DB23FB347C00E410F2 /* CollectionView.swift in Sources */,
 				D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */,
 				D5E987BF24EDE94200E2E1AF /* Routes+Rythmico.swift in Sources */,
@@ -2811,6 +2816,7 @@
 				D52C553A24DC71B800C295C4 /* BookingRequestDetailView.swift in Sources */,
 				03E88E8F24BC9FAF0077A420 /* AppEnvironment+Instances.swift in Sources */,
 				D5F4D3E024F04294000E8580 /* BookingApplication.swift in Sources */,
+				D55C35FE25A3AB510023E56B /* CalendarSyncer.swift in Sources */,
 				D5E987BD24EDE92E00E2E1AF /* Router.swift in Sources */,
 				D5E58F0E256AF1E500EB52ED /* BookingEndpoints.swift in Sources */,
 				035B1D3B249E576900AABFEA /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */,
