@@ -313,6 +313,10 @@
 		D54FC05524CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */; };
 		D54FC05624CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */; };
 		D555A4AE2542409F00B8688F /* MultiSheet in Frameworks */ = {isa = PBXBuildFile; productRef = D555A4AD2542409F00B8688F /* MultiSheet */; };
+		D55C35D725A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */; };
+		D55C35D825A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */; };
+		D55C35EA25A3A6490023E56B /* CalendarInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35E925A3A6490023E56B /* CalendarInfo.swift */; };
+		D55C35EB25A3A6490023E56B /* CalendarInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35E925A3A6490023E56B /* CalendarInfo.swift */; };
 		D55F012C24CCBE8700E5F13C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB324C4AA4C0077A420 /* APIService.swift */; };
 		D55F012D24CCBE8E00E5F13C /* APIServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB924C6232D0077A420 /* APIServiceDoubles.swift */; };
 		D55F012E24CCBECE00E5F13C /* APIActivityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB524C4AD820077A420 /* APIActivityCoordinator.swift */; };
@@ -821,6 +825,8 @@
 		D54EFF312514C847004F14D3 /* ExpandableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableText.swift; sourceTree = "<group>"; };
 		D54F711025474E6F00D73E1E /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetInteractiveDismissal.swift; sourceTree = "<group>"; };
+		D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEndpoints.swift; sourceTree = "<group>"; };
+		D55C35E925A3A6490023E56B /* CalendarInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInfo.swift; sourceTree = "<group>"; };
 		D55F013224CCE65C00E5F13C /* Then+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Then+Sugar.swift"; sourceTree = "<group>"; };
 		D564F4632511722900EA13E9 /* TabMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuView.swift; sourceTree = "<group>"; };
 		D56B2522252CF76300BC3932 /* AppSecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecrets.swift; sourceTree = "<group>"; };
@@ -1420,6 +1426,7 @@
 				D5AFED4425057CB0003FFC68 /* ActivityCoordinator */,
 				D527B01A24FEACC0003E81A9 /* API */,
 				D535549823E0FA4A005A20EB /* Auth */,
+				D55C35DC25A3A5C10023E56B /* Calendar */,
 				D501586625373D8B005E02FA /* Card */,
 				03A91EF924918A4700DEAD5E /* DeviceRegistration */,
 				03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */,
@@ -1447,6 +1454,7 @@
 				D5E58F12256AF20E00EB52ED /* Booking */,
 				D5F4D3E124F0429A000E8580 /* BookingApplication */,
 				032B6FC824B783D300299A09 /* BookingRequest */,
+				D55C35EF25A3A6590023E56B /* Calendar */,
 				D501589F2538BE84005E02FA /* Card */,
 				D5D9AE832534CC0700A0ABCC /* Checkout */,
 				D5CC5FF025029525007DFE84 /* ImageReference.swift */,
@@ -1857,6 +1865,22 @@
 				D54EFF1D2513D69A004F14D3 /* PortfolioDoubles.swift */,
 			);
 			path = Portfolio;
+			sourceTree = "<group>";
+		};
+		D55C35DC25A3A5C10023E56B /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		D55C35EF25A3A6590023E56B /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				D55C35E925A3A6490023E56B /* CalendarInfo.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		D5A8C4C025044A3B0006F5C5 /* UserDefaults */ = {
@@ -2517,6 +2541,7 @@
 				D5AAF7D123F9ACFA00E410F2 /* InstrumentSelectionView.swift in Sources */,
 				D53555B623E53699005A20EB /* AuthenticationService.swift in Sources */,
 				D531295D255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift in Sources */,
+				D55C35EA25A3A6490023E56B /* CalendarInfo.swift in Sources */,
 				D53555BB23E53699005A20EB /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
 				D53555C223E536AE005A20EB /* AppleAuthorizationCredential.swift in Sources */,
 				03C39DD82496CA2A00C76516 /* LessonPlanStatusPill.swift in Sources */,
@@ -2666,6 +2691,7 @@
 				D527B01524FEAA5C003E81A9 /* ImageLoadingCoordinator.swift in Sources */,
 				D5D9AE4F253367A100A0ABCC /* Divider.swift in Sources */,
 				03275ADB249004C0009C3980 /* PushNotificationRegisterServiceDoubles.swift in Sources */,
+				D55C35D725A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */,
 				03275AD5248FDB38009C3980 /* AppEnvironment.swift in Sources */,
 				D5814A00251D7FFC0009BBB3 /* App+SplitViewCustomization.swift in Sources */,
 				D5E987B924ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */,
@@ -2764,6 +2790,7 @@
 				D527B01424FEA2DE003E81A9 /* ImageLoadingCoordinator.swift in Sources */,
 				03E88EB424C4AA4C0077A420 /* APIService.swift in Sources */,
 				035B1D67249E644C00AABFEA /* APIRequest.swift in Sources */,
+				D55C35EB25A3A6490023E56B /* CalendarInfo.swift in Sources */,
 				D5F4D3ED24F317C0000E8580 /* BookingRequestCell.swift in Sources */,
 				D5919F6F24CF2D48009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */,
 				D5A8C4BF25044A370006F5C5 /* UserDefaultsDoubles.swift in Sources */,
@@ -2901,6 +2928,7 @@
 				D55F013424CCE65C00E5F13C /* Then+Sugar.swift in Sources */,
 				D5BF12B025068E2100B2931C /* PushNotificationEvent+Tutor.swift in Sources */,
 				D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */,
+				D55C35D825A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */,
 				D5CAC9AE24E6D67C00119DAA /* MultilineTextField+Tutor.swift in Sources */,
 				D575C881254F2FF7001664AB /* RootView+Sugar.swift in Sources */,
 				D575C86F254F2F82001664AB /* ActivityCoordinator+Sugar.swift in Sources */,
