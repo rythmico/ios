@@ -52,6 +52,18 @@ struct ProfileView: View, TestableView {
                     ) {
                         enablePushNotificationsAction.map {
                             Toggle("", isOn: .constant(notificationAuthorizationCoordinator.status.isAuthorizing))
+                                .labelsHidden()
+                                .onTapGesture(perform: $0)
+                        }
+                    }
+                    cell(
+                        "Calendar Sync",
+                        disclosure: false,
+                        action: {}
+                    ) {
+                        enablePushNotificationsAction.map {
+                            Toggle("", isOn: .constant(false))
+                                .labelsHidden()
                                 .onTapGesture(perform: $0)
                         }
                     }
