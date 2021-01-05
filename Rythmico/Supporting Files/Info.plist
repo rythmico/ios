@@ -30,6 +30,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>We need access to your camera to auto-fill your card details.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>We need access to your calendar to determine your calendar sync status.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
