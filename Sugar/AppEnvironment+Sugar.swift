@@ -68,8 +68,15 @@ extension AppEnvironment {
         }
     }
 
-    func calendarSyncStatusProvider() -> CalendarSyncStatusProvider {
-        CalendarSyncStatusProvider(accessProvider: calendarAccessProvider)
+    func calendarSyncCoordinator() -> CalendarSyncCoordinator? {
+        coordinator(for: \.calendarInfoFetchingService).map {
+            CalendarSyncCoordinator(
+                calendarAccessProvider: calendarAccessProvider,
+                calendarInfoFetchingCoordinator: $0,
+                eventEmitter: eventEmitter,
+                urlOpener: urlOpener
+            )
+        }
     }
 
     func sharedCoordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
