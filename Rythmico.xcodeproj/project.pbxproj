@@ -453,6 +453,7 @@
 		D5CC5FEF25027F74007DFE84 /* ImageReference+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC5FEC25027F64007DFE84 /* ImageReference+Sugar.swift */; };
 		D5CC5FF125029525007DFE84 /* ImageReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC5FF025029525007DFE84 /* ImageReference.swift */; };
 		D5CC5FF225029525007DFE84 /* ImageReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC5FF025029525007DFE84 /* ImageReference.swift */; };
+		D5CCC33225A4C66A00E25B62 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCC33125A4C66A00E25B62 /* ProfileView.swift */; };
 		D5CCC5532559D7F400FE8522 /* PhoneNumberOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCC5522559D7F400FE8522 /* PhoneNumberOpener.swift */; };
 		D5D78DD7252502CE007041BE /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = D5D78DD6252502CE007041BE /* PhoneNumberKit */; };
 		D5D78DE025250864007041BE /* LessonPlanBookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D78DDF25250864007041BE /* LessonPlanBookingView.swift */; };
@@ -930,6 +931,7 @@
 		D5CC5FE924FF1201007DFE84 /* UIImage+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Sugar.swift"; sourceTree = "<group>"; };
 		D5CC5FEC25027F64007DFE84 /* ImageReference+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageReference+Sugar.swift"; sourceTree = "<group>"; };
 		D5CC5FF025029525007DFE84 /* ImageReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReference.swift; sourceTree = "<group>"; };
+		D5CCC33125A4C66A00E25B62 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		D5CCC5522559D7F400FE8522 /* PhoneNumberOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberOpener.swift; sourceTree = "<group>"; };
 		D5D78DDF25250864007041BE /* LessonPlanBookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanBookingView.swift; sourceTree = "<group>"; };
 		D5D78E0B25257800007041BE /* PhoneNumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberField.swift; sourceTree = "<group>"; };
@@ -1188,6 +1190,7 @@
 				035B1D11249E562700AABFEA /* Root */,
 				D5E58EFF256AF05600EB52ED /* Bookings */,
 				03E88E8524B8B9100077A420 /* BookingRequests */,
+				D5CCC33625A4C66D00E25B62 /* Profile */,
 				035B1CD0249CF3E300AABFEA /* Supporting Files */,
 				035B1CC6249CF2AC00AABFEA /* Preview Content */,
 			);
@@ -1954,6 +1957,14 @@
 				D5BF12AF25068E2100B2931C /* PushNotificationEvent+Tutor.swift */,
 			);
 			path = PushNotificationEvent;
+			sourceTree = "<group>";
+		};
+		D5CCC33625A4C66D00E25B62 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D5CCC33125A4C66A00E25B62 /* ProfileView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		D5D78DDB25250810007041BE /* Applications */ = {
@@ -2877,6 +2888,7 @@
 				D5CCC5532559D7F400FE8522 /* PhoneNumberOpener.swift in Sources */,
 				035B1D50249E57E200AABFEA /* URLOpenerDoubles.swift in Sources */,
 				D527B00E24FE75C1003E81A9 /* ImageLoadingService.swift in Sources */,
+				D5CCC33225A4C66A00E25B62 /* ProfileView.swift in Sources */,
 				D5BF12C1250693C500B2931C /* PushNotificationEventHandler+Tutor.swift in Sources */,
 				D5FAE6862559DF8300473A8B /* PhoneNumberCell.swift in Sources */,
 				D575C869254F2F26001664AB /* ImageAsset+Sugar.swift in Sources */,
