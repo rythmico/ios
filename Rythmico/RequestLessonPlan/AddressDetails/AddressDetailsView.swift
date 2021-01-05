@@ -39,7 +39,7 @@ struct AddressDetailsView: View, TestableView {
         "Enter the address where " +
         student.name.firstWord?.style(.bodyBold) +
         " will have the " +
-        "\(instrument.name) lessons".style(.bodyBold)
+        "\(instrument.assimilatedName) lessons".style(.bodyBold)
     }
 
     var isLoading: Bool { coordinator.state.isLoading }

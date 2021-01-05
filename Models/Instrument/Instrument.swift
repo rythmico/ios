@@ -13,12 +13,27 @@ extension Instrument: Identifiable {
 }
 
 extension Instrument {
-    var name: String {
+    var standaloneName: String {
         switch self {
         case .guitar:
             return "Guitar"
         case .drums:
             return "Drums"
+        case .piano:
+            return "Piano"
+        case .singing:
+            return "Singing"
+        }
+    }
+
+    /// Noun to be joined with other nouns.
+    /// i.e. "Drum lessons", "Drum tutor".
+    var assimilatedName: String {
+        switch self {
+        case .guitar:
+            return "Guitar"
+        case .drums:
+            return "Drum"
         case .piano:
             return "Piano"
         case .singing:

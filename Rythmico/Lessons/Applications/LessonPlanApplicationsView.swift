@@ -19,7 +19,7 @@ struct LessonPlanApplicationsView: View {
     }
 
     var instrument: String {
-        lessonPlan.instrument.name.lowercased(with: Current.locale)
+        lessonPlan.instrument.assimilatedName.lowercased(with: Current.locale)
     }
 
     var body: some View {

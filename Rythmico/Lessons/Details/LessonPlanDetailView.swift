@@ -8,7 +8,7 @@ struct LessonPlanDetailView: View, TestableView {
     var lessonPlan: LessonPlan
 
     var title: String {
-        [lessonPlan.student.name.firstWord, "\(lessonPlan.instrument.name) Lessons"]
+        [lessonPlan.student.name.firstWord, "\(lessonPlan.instrument.assimilatedName) Lessons"]
             .compact()
             .joined(separator: " - ")
     }

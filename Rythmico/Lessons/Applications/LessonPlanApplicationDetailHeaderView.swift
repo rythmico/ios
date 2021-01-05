@@ -13,7 +13,7 @@ struct LessonPlanApplicationDetailHeaderView: View {
                 Text(application.tutor.name)
                     .rythmicoFont(.largeTitle)
                     .foregroundColor(.rythmicoForeground)
-                Text(lessonPlan.instrument.name + " Tutor")
+                Text(lessonPlan.instrument.assimilatedName + " Tutor")
                     .rythmicoFont(.callout)
                     .foregroundColor(.rythmicoGray90)
             }

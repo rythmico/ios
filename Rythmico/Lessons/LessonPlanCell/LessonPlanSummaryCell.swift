@@ -33,7 +33,7 @@ struct LessonPlanSummaryCellMainContent: View {
     var title: String {
         [
             lessonPlan.student.name.firstWord,
-            "\(lessonPlan.instrument.name) Lessons"
+            "\(lessonPlan.instrument.assimilatedName) Lessons"
         ].compact().joined(separator: " - ")
     }
 

@@ -43,7 +43,7 @@ struct StudentDetailsView: View, TestableView {
     // MARK: - Subtitle -
     var subtitle: [MultiStyleText.Part] {
         editingFocus == .none
-            ? "Enter the details of the student who will learn " + instrument.name.style(.bodyBold)
+            ? "Enter the details of the student who will be learning " + instrument.standaloneName.style(.bodyBold)
             : .empty
     }
 

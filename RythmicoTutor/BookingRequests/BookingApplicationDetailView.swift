@@ -31,7 +31,7 @@ struct BookingApplicationDetailView: View {
     var status: String { bookingApplication.statusInfo.status.summary }
     var statusColor: Color { bookingApplication.statusInfo.status.color }
     var statusDate: String { statusDateFormatter.localizedString(for: bookingApplication.statusInfo.date, relativeTo: Current.date()) }
-    var title: String { "\(bookingApplication.student.name) - \(bookingApplication.instrument.name) Request" }
+    var title: String { "\(bookingApplication.student.name) - \(bookingApplication.instrument.assimilatedName) Request" }
     var submittedBy: String { bookingApplication.submitterName }
     var startDate: String { dateFormatter.string(from: bookingApplication.schedule.startDate) }
     var time: String { timeFormatter.string(from: bookingApplication.schedule.startDate) }

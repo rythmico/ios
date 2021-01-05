@@ -34,7 +34,7 @@ struct InstrumentSelectionView: View, TestableView {
             state.instruments = instruments
                 .map { instrument in
                     InstrumentViewData(
-                        name: instrument.name,
+                        name: instrument.standaloneName,
                         icon: instrument.icon,
                         action: { context.setInstrument(instrument) }
                     )

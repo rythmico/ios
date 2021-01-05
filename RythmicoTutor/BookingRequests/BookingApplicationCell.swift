@@ -26,7 +26,7 @@ struct BookingApplicationCell: View {
     }
 
     private var title: String {
-        "\(application.student.name) - \(application.instrument.name)"
+        "\(application.student.name) - \(application.instrument.standaloneName)"
     }
 
     private var subtitle: String {
