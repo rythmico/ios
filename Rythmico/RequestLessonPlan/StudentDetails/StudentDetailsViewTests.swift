@@ -32,7 +32,7 @@ final class StudentDetailsViewTests: XCTestCase {
 
             XCTAssertEqual(
                 view.subtitle.string,
-                "Enter the details of the student who will learn Singing"
+                "Enter the details of the student who will be learning Singing"
             )
 
             XCTAssertEqual(view.state.name, .empty)

@@ -21,10 +21,10 @@ final class InstrumentSelectionViewTests: XCTestCase {
         XCTAssertView(view) { view in
             XCTAssertEqual(view.state.instruments.count, 2)
 
-            XCTAssertEqual(view.state.instruments[0].name, instruments[0].name)
+            XCTAssertEqual(view.state.instruments[0].name, instruments[0].standaloneName)
             XCTAssertEqual(view.state.instruments[0].icon, instruments[0].icon)
 
-            XCTAssertEqual(view.state.instruments[1].name, instruments[1].name)
+            XCTAssertEqual(view.state.instruments[1].name, instruments[1].standaloneName)
             XCTAssertEqual(view.state.instruments[1].icon, instruments[1].icon)
         }
     }
