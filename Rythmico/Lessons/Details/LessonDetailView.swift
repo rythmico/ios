@@ -9,7 +9,7 @@ struct LessonDetailView: View, TestableView {
     var lesson: Lesson
 
     var title: String {
-        [lesson.student.name.firstWord, "\(lesson.instrument.name) Lesson \(lesson.number)"]
+        [lesson.student.name.firstWord, "\(lesson.instrument.assimilatedName) Lesson \(lesson.number)"]
             .compact()
             .joined(separator: " - ")
     }

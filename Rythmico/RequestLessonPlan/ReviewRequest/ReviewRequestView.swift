@@ -59,7 +59,7 @@ struct ReviewRequestView: View, TestableView {
                             accessory: editButton(performing: editInstrument)
                         ) {
                             InstrumentView(
-                                viewData: .init(name: instrument.name, icon: instrument.icon, action: nil)
+                                viewData: .init(name: instrument.standaloneName, icon: instrument.icon, action: nil)
                             )
                         }
 

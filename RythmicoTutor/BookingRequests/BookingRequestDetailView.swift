@@ -12,7 +12,7 @@ struct BookingRequestDetailView: View {
     private let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
     private let timeFormatter = Current.dateFormatter(format: .preset(time: .short))
 
-    var title: String { "\(bookingRequest.student.name) - \(bookingRequest.instrument.name) Request" }
+    var title: String { "\(bookingRequest.student.name) - \(bookingRequest.instrument.assimilatedName) Request" }
     var submittedBy: String { bookingRequest.submitterName }
     var startDate: String { dateFormatter.string(from: bookingRequest.schedule.startDate) }
     var time: String { timeFormatter.string(from: bookingRequest.schedule.startDate) }

@@ -10,9 +10,9 @@ struct LessonPlanConfirmationView: View, TestableView {
     var title: String {
         switch lessonPlan.status {
         case .scheduled:
-            return ["\(lessonPlan.instrument.name) Lessons", "Confirmed!"].joined(separator: "\n")
+            return ["\(lessonPlan.instrument.assimilatedName) Lessons", "Confirmed!"].joined(separator: "\n")
         default:
-            return ["\(lessonPlan.instrument.name) Lessons", "Request Submitted!"].joined(separator: "\n")
+            return ["\(lessonPlan.instrument.assimilatedName) Lessons", "Request Submitted!"].joined(separator: "\n")
         }
     }
 

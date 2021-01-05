@@ -31,7 +31,7 @@ struct SchedulingView: View, TestableView {
 
     var subtitle: [MultiStyleText.Part] {
         "Enter when you want the " +
-        "\(instrument.name) lessons".style(.bodyBold) +
+        "\(instrument.assimilatedName) lessons".style(.bodyBold) +
         " to commence and for how long"
     }
 
