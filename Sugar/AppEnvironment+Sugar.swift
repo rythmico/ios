@@ -68,6 +68,10 @@ extension AppEnvironment {
         }
     }
 
+    func calendarSyncStatusProvider() -> CalendarSyncStatusProvider {
+        CalendarSyncStatusProvider(accessProvider: calendarAccessProvider)
+    }
+
     func sharedCoordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
         // Return nil if logged out.
         guard let currentProvider = accessTokenProviderObserver.currentProvider else {
@@ -159,6 +163,11 @@ extension AppEnvironment {
         pushNotificationAuthorization(
             initialStatus: .notDetermined,
             requestResult: (true, nil)
+        )
+
+        calendarAccessProvider = EKEventStoreStub(
+            accessRequestResult: (true, nil),
+            calendars: [EKCalendarFake()]
         )
 
         calendarInfoFetchingService = APIServiceStub(
