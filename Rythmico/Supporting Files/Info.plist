@@ -17,7 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>739</string>
+	<string>744</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
 	<key>ITSAppUsesNonExemptEncryption</key>
@@ -28,10 +28,10 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSCameraUsageDescription</key>
-	<string>We need access to your camera to auto-fill your card details.</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>We need access to your calendar to determine your calendar sync status.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We need access to your camera to auto-fill your card details.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
