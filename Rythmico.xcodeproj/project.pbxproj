@@ -321,6 +321,10 @@
 		D55C35F825A3A8090023E56B /* CalendarInfoDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35F625A3A8090023E56B /* CalendarInfoDoubles.swift */; };
 		D55C35FD25A3AB510023E56B /* CalendarSyncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35FC25A3AB510023E56B /* CalendarSyncer.swift */; };
 		D55C35FE25A3AB510023E56B /* CalendarSyncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35FC25A3AB510023E56B /* CalendarSyncer.swift */; };
+		D55C360325A3DBB30023E56B /* CalendarSyncStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C360225A3DBB30023E56B /* CalendarSyncStatusProvider.swift */; };
+		D55C360425A3DBB30023E56B /* CalendarSyncStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C360225A3DBB30023E56B /* CalendarSyncStatusProvider.swift */; };
+		D55C360C25A3E2B20023E56B /* CalendarSyncStatusProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C360B25A3E2B20023E56B /* CalendarSyncStatusProviderDoubles.swift */; };
+		D55C360D25A3E2B20023E56B /* CalendarSyncStatusProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C360B25A3E2B20023E56B /* CalendarSyncStatusProviderDoubles.swift */; };
 		D55F012C24CCBE8700E5F13C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB324C4AA4C0077A420 /* APIService.swift */; };
 		D55F012D24CCBE8E00E5F13C /* APIServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB924C6232D0077A420 /* APIServiceDoubles.swift */; };
 		D55F012E24CCBECE00E5F13C /* APIActivityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB524C4AD820077A420 /* APIActivityCoordinator.swift */; };
@@ -833,6 +837,8 @@
 		D55C35E925A3A6490023E56B /* CalendarInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInfo.swift; sourceTree = "<group>"; };
 		D55C35F625A3A8090023E56B /* CalendarInfoDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInfoDoubles.swift; sourceTree = "<group>"; };
 		D55C35FC25A3AB510023E56B /* CalendarSyncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSyncer.swift; sourceTree = "<group>"; };
+		D55C360225A3DBB30023E56B /* CalendarSyncStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSyncStatusProvider.swift; sourceTree = "<group>"; };
+		D55C360B25A3E2B20023E56B /* CalendarSyncStatusProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSyncStatusProviderDoubles.swift; sourceTree = "<group>"; };
 		D55F013224CCE65C00E5F13C /* Then+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Then+Sugar.swift"; sourceTree = "<group>"; };
 		D564F4632511722900EA13E9 /* TabMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuView.swift; sourceTree = "<group>"; };
 		D56B2522252CF76300BC3932 /* AppSecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecrets.swift; sourceTree = "<group>"; };
@@ -1878,6 +1884,8 @@
 			children = (
 				D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */,
 				D55C35FC25A3AB510023E56B /* CalendarSyncer.swift */,
+				D55C360225A3DBB30023E56B /* CalendarSyncStatusProvider.swift */,
+				D55C360B25A3E2B20023E56B /* CalendarSyncStatusProviderDoubles.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -2644,6 +2652,7 @@
 				D53555C523E536AE005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
 				D53555C823E536AE005A20EB /* AppleAuthorizationResponse.swift in Sources */,
 				032215572497034A009D48A8 /* LessonPlanTutorStatusView.swift in Sources */,
+				D55C360C25A3E2B20023E56B /* CalendarSyncStatusProviderDoubles.swift in Sources */,
 				03B198582471BD82005529EB /* LessonPlanConfirmationView.swift in Sources */,
 				D5E04B1923BED80700A161BB /* Fonts.swift in Sources */,
 				03C39DD62496802500C76516 /* Pill.swift in Sources */,
@@ -2692,6 +2701,7 @@
 				03B1983F24717A90005529EB /* LessonPlanDoubles.swift in Sources */,
 				03275AE92490769E009C3980 /* DeviceTokenDeleterDoubles.swift in Sources */,
 				D5CC5FF125029525007DFE84 /* ImageReference.swift in Sources */,
+				D55C360325A3DBB30023E56B /* CalendarSyncStatusProvider.swift in Sources */,
 				D564F4642511722900EA13E9 /* TabMenuView.swift in Sources */,
 				D53555C423E536AE005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
 				D53555CD23E536AE005A20EB /* AppleAuthorizationController.swift in Sources */,
@@ -2811,6 +2821,7 @@
 				D577EEA724E6F66400253EA1 /* BookingRequestApplyView.swift in Sources */,
 				D524D0C0250468CA00BC9AF7 /* PushNotificationAuthorizationCoordinator.swift in Sources */,
 				D5AFED3D25056300003FFC68 /* NotificationCenter+Sugar.swift in Sources */,
+				D55C360D25A3E2B20023E56B /* CalendarSyncStatusProviderDoubles.swift in Sources */,
 				D524D0C1250468D200BC9AF7 /* PushNotificationAuthorizationCoordinatorDoubles.swift in Sources */,
 				D5F4AE822559D3F6001085D5 /* PhoneNumber.swift in Sources */,
 				D52C553A24DC71B800C295C4 /* BookingRequestDetailView.swift in Sources */,
@@ -2839,6 +2850,7 @@
 				035B1D4E249E57D100AABFEA /* KeychainDoubles.swift in Sources */,
 				03C34363249FC16E004907DF /* APIClientInfo.swift in Sources */,
 				035B1D51249E57F100AABFEA /* HashFunction+Helpers.swift in Sources */,
+				D55C360425A3DBB30023E56B /* CalendarSyncStatusProvider.swift in Sources */,
 				035B1D53249E582800AABFEA /* Animation.swift in Sources */,
 				035B1D35249E576900AABFEA /* DeauthenticationService.swift in Sources */,
 				D5E58F24256AF43900EB52ED /* LessonDoubles.swift in Sources */,
