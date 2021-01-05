@@ -1,5 +1,6 @@
 import UIKit
 import UserNotifications
+import EventKit
 import Firebase
 import Stripe
 import Then
@@ -38,6 +39,9 @@ extension AppEnvironment {
             registerService: UIApplication.shared
         ),
         pushNotificationEventHandler: PushNotificationEventHandler(),
+
+        calendarAccessProvider: EKEventStore(),
+        calendarInfoFetchingService: APIService(),
 
         uiAccessibility: UIAccessibility.self,
         keyboardDismisser: UIApplication.shared,
@@ -124,6 +128,9 @@ extension AppEnvironment {
 
             pushNotificationAuthorizationCoordinator: .dummy,
             pushNotificationEventHandler: PushNotificationEventHandlerDummy(),
+
+            calendarAccessProvider: EKEventStoreDummy(),
+            calendarInfoFetchingService: APIServiceDummy(),
 
             uiAccessibility: UIAccessibilityDummy.self,
             keyboardDismisser: KeyboardDismisserDummy(),

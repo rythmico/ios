@@ -23,7 +23,7 @@ final class ProfileViewTests: XCTestCase {
         XCTAssertView(view) { view in
             XCTAssertEqual(urlOpener.openCount, 0)
             XCTAssertEqual(deauthenticationSpy.deauthenticationCount, 0)
-            XCTAssertNil(view.errorMessage)
+            XCTAssertNil(view.pushNotificationErrorMessage)
         }
     }
 
@@ -126,10 +126,10 @@ final class ProfileViewTests: XCTestCase {
             view.enablePushNotificationsAction?()
             XCTAssertNil(view.goToPushNotificationsSettingsAction)
             XCTAssertNotNil(view.enablePushNotificationsAction)
-            XCTAssertEqual(view.errorMessage, "something")
+            XCTAssertEqual(view.pushNotificationErrorMessage, "something")
 
-            view.dismissError()
-            XCTAssertNil(view.errorMessage)
+            view.dismissPushNotificationError()
+            XCTAssertNil(view.pushNotificationErrorMessage)
         }
     }
 

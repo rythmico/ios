@@ -68,6 +68,17 @@ extension AppEnvironment {
         }
     }
 
+    func calendarSyncCoordinator() -> CalendarSyncCoordinator? {
+        coordinator(for: \.calendarInfoFetchingService).map {
+            CalendarSyncCoordinator(
+                calendarAccessProvider: calendarAccessProvider,
+                calendarInfoFetchingCoordinator: $0,
+                eventEmitter: eventEmitter,
+                urlOpener: urlOpener
+            )
+        }
+    }
+
     func sharedCoordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
         // Return nil if logged out.
         guard let currentProvider = accessTokenProviderObserver.currentProvider else {
@@ -159,6 +170,16 @@ extension AppEnvironment {
         pushNotificationAuthorization(
             initialStatus: .notDetermined,
             requestResult: (true, nil)
+        )
+
+        calendarAccessProvider = EKEventStoreStub(
+            accessRequestResult: (true, nil),
+            calendars: [EKCalendarFake()]
+        )
+
+        calendarInfoFetchingService = APIServiceStub(
+            result: .success(.stub),
+            delay: Self.fakeAPIServicesDelay
         )
 
         keyboardDismisser = UIApplication.shared

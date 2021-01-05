@@ -28,6 +28,8 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCalendarsUsageDescription</key>
+	<string>We need access to your calendar to determine your calendar sync status.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

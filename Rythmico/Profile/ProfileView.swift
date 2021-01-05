@@ -13,11 +13,17 @@ struct ProfileView: View, TestableView {
 
     @ObservedObject
     private var notificationAuthorizationCoordinator = Current.pushNotificationAuthorizationCoordinator
+    @StateObject
+    private var calendarSyncCoordinator = Current.calendarSyncCoordinator()!
     @State
     private var page: Page?
 
-    var errorMessage: String? {
+    var pushNotificationErrorMessage: String? {
         notificationAuthorizationCoordinator.status.failedValue?.localizedDescription
+    }
+
+    func dismissPushNotificationError() {
+        notificationAuthorizationCoordinator.dismissFailure()
     }
 
     var enablePushNotificationsAction: Action? {
@@ -27,13 +33,9 @@ struct ProfileView: View, TestableView {
     }
 
     var goToPushNotificationsSettingsAction: Action? {
-        notificationAuthorizationCoordinator.status.isDetermined
+        enablePushNotificationsAction == nil
             ? { Current.urlOpener.open(UIApplication.openSettingsURLString) }
             : nil
-    }
-
-    func dismissError() {
-        notificationAuthorizationCoordinator.dismissFailure()
     }
 
     func logOut() {
@@ -45,14 +47,20 @@ struct ProfileView: View, TestableView {
         List {
             Group {
                 Section(header: header("Notifications")) {
-                    cell(
-                        "Push Notifications",
-                        disclosure: enablePushNotificationsAction == nil,
-                        action: goToPushNotificationsSettingsAction
-                    ) {
+                    cell("Push Notifications", disclosure: enablePushNotificationsAction == nil, action: goToPushNotificationsSettingsAction) {
                         enablePushNotificationsAction.map {
                             Toggle("", isOn: .constant(notificationAuthorizationCoordinator.status.isAuthorizing))
+                                .labelsHidden()
                                 .onTapGesture(perform: $0)
+                        }
+                    }
+                    cell("Calendar Sync", disclosure: calendarSyncCoordinator.enableCalendarSyncAction == nil, action: calendarSyncCoordinator.goToCalendarAction) {
+                        if calendarSyncCoordinator.isSyncingCalendar {
+                            ActivityIndicator()
+                        } else if let action = calendarSyncCoordinator.enableCalendarSyncAction {
+                            Toggle("", isOn: .constant(calendarSyncCoordinator.isSyncingCalendar))
+                                .labelsHidden()
+                                .onTapGesture(perform: action)
                         }
                     }
                 }
@@ -88,7 +96,9 @@ struct ProfileView: View, TestableView {
             .textCase(nil)
         }
         .listStyle(GroupedListStyle())
-        .alert(error: errorMessage, dismiss: dismissError)
+        .alert(error: pushNotificationErrorMessage, dismiss: dismissPushNotificationError)
+        .alert(error: calendarSyncCoordinator.error, dismiss: calendarSyncCoordinator.dismissError)
+        .alert(item: $calendarSyncCoordinator.permissionsNeededAlert)
         .testable(self)
     }
 
