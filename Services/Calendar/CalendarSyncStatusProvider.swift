@@ -32,7 +32,7 @@ final class CalendarSyncStatusProvider: ObservableObject {
 
     enum Status {
         case unauthorized
-        case failed(Error)
+//        case failed(Error)
         case notSynced
         case synced
     }
@@ -48,11 +48,11 @@ final class CalendarSyncStatusProvider: ObservableObject {
 
     func requestAccess() {
         accessProvider.requestAccess(to: .event) { [self] isGranted, error in
-            if let error = error {
-                status = .failed(error)
-            } else {
+//            if let error = error {
+//                status = .failed(error)
+//            } else {
                 setStatusForGranted(isGranted)
-            }
+//            }
         }
     }
 
@@ -86,5 +86,27 @@ private extension EKAuthorizationStatus {
         @unknown default:
             return false
         }
+    }
+}
+
+extension CalendarSyncStatusProvider.Status {
+    var isUnauthorized: Bool {
+        guard case .unauthorized = self else { return false }
+        return true
+    }
+
+//    var error: Error? {
+//        guard case .failed(let error) = self else { return nil }
+//        return error
+//    }
+
+    var isNotSynced: Bool {
+        guard case .notSynced = self else { return false }
+        return true
+    }
+
+    var isSynced: Bool {
+        guard case .synced = self else { return false }
+        return true
     }
 }
