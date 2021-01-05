@@ -31,13 +31,14 @@ final class CalendarSyncStatusProvider: ObservableObject {
     }
 
     enum Status {
+        case notDetermined
         case unauthorized
 //        case failed(Error)
         case notSynced
         case synced
     }
 
-    @Published private(set) var status = Status.unauthorized
+    @Published private(set) var status = Status.notDetermined
 
     private let accessProvider: CalendarAccessProviderProtocol
 
@@ -56,7 +57,7 @@ final class CalendarSyncStatusProvider: ObservableObject {
         }
     }
 
-    private func refreshStatus() {
+    func refreshStatus() {
         let authorizationStatus = type(of: accessProvider).authorizationStatus(for: .event)
         setStatusForGranted(authorizationStatus.isGranted)
     }
@@ -90,6 +91,11 @@ private extension EKAuthorizationStatus {
 }
 
 extension CalendarSyncStatusProvider.Status {
+    var isNotDetermined: Bool {
+        guard case .notDetermined = self else { return false }
+        return true
+    }
+
     var isUnauthorized: Bool {
         guard case .unauthorized = self else { return false }
         return true
