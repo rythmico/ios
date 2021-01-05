@@ -62,12 +62,15 @@ final class CalendarSyncStatusProvider: ObservableObject {
         setStatusForGranted(authorizationStatus.isGranted)
     }
 
-    private func setStatusForGranted(_ isGranted: Bool) {
-        if isGranted {
+    private func setStatusForGranted(_ isGranted: Bool?) {
+        switch isGranted {
+        case .none:
+            status = .notDetermined
+        case .some(true):
             status = accessProvider.calendars(for: .event).contains(where: isSyncedCalendar)
                 ? .synced
                 : .notSynced
-        } else {
+        case .some(false):
             status = .unauthorized
         }
     }
@@ -78,11 +81,13 @@ final class CalendarSyncStatusProvider: ObservableObject {
 }
 
 private extension EKAuthorizationStatus {
-    var isGranted: Bool {
+    var isGranted: Bool? {
         switch self {
+        case .notDetermined:
+            return nil
         case .authorized:
             return true
-        case .denied, .notDetermined, .restricted:
+        case .denied, .restricted:
             return false
         @unknown default:
             return false
