@@ -52,9 +52,9 @@ private extension LessonPlan.CancellationInfo.Reason {
     var title: String {
         switch self {
         case .tooExpensive:
-            return "Lesson price too expensive"
+            return "Price"
         case .badTutor:
-            return "Tutor wasn’t very good"
+            return "Tutor wasn’t the right fit"
         case .rearrangementNeeded:
             return "I want to rearrange the plan"
         case .other:

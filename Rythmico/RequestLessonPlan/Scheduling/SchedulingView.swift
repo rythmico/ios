@@ -39,7 +39,7 @@ struct SchedulingView: View, TestableView {
     var durationText: String { state.duration.map { "\($0.rawValue) minutes" } ?? .empty }
 
     private static let scheduleInfoDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
-    private static let scheduleInfoAfterDayFormatter = Current.dateFormatter(format: .custom("E d MMMM"))
+    private static let scheduleInfoAfterDayFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
     private static let scheduleInfoDurationFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))
     var scheduleInfoText: String? {
         let startTime = state.startTime
