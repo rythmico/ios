@@ -48,6 +48,7 @@ struct LessonPlanDetailView: View, TestableView {
                                     .lineSpacing(.spacingUnit)
                             }
                             InlineContentAndTitleView(status: lessonPlan.status, summarized: false)
+                            InfoBanner(text: "Potential tutors have received your request and will submit applications for your consideration.")
                         }
                         .rythmicoFont(.body)
                         .foregroundColor(.rythmicoGray90)
