@@ -102,6 +102,11 @@ extension LessonPlan {
 }
 
 extension LessonPlan.Status {
+    var isPending: Bool {
+        guard case .pending = self else { return false }
+        return true
+    }
+
     var isCancelled: Bool {
         guard case .cancelled = self else { return false }
         return true
