@@ -7,6 +7,5 @@ struct Student: Equatable, Codable, Hashable {
     #elseif TUTOR
     var age: Int
     #endif
-    var gender: Gender
     var about: String
 }

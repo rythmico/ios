@@ -41,8 +41,6 @@ final class StudentDetailsViewTests: XCTestCase {
             XCTAssertNil(view.dateOfBirthText)
             XCTAssertFalse(view.dateOfBirthPlaceholderText.isEmpty)
 
-            XCTAssertNil(view.state.gender)
-
             XCTAssertEqual(view.aboutNameTextPart.string, "Student")
             XCTAssertEqual(view.state.about, .empty)
 
@@ -75,17 +73,6 @@ final class StudentDetailsViewTests: XCTestCase {
         }
     }
 
-    func testEditingGender() throws {
-        let (_, _, view) = studentDetailsView
-
-        XCTAssertView(view) { view in
-            view.state.gender = .male
-            XCTAssertEqual(view.state.gender, .male)
-
-            XCTAssertNil(view.nextButtonAction)
-        }
-    }
-
     func testEditingAbout() throws {
         let (_, _, view) = studentDetailsView
 
@@ -103,7 +90,6 @@ final class StudentDetailsViewTests: XCTestCase {
         XCTAssertView(view) { view in
             view.state.name = "David"
             view.state.dateOfBirth = .stub
-            view.state.gender = .male
 
             XCTAssertNotNil(view.nextButtonAction)
         }
@@ -115,7 +101,6 @@ final class StudentDetailsViewTests: XCTestCase {
         XCTAssertView(view) { view in
             view.state.name = "  David    Roman  "
             view.state.dateOfBirth = .stub
-            view.state.gender = .male
             view.state.about = """
                David is an exceptional piano student, however    whitespaces are not his thing.    Like at all.
 
@@ -134,7 +119,6 @@ final class StudentDetailsViewTests: XCTestCase {
                 Student(
                     name: "David Roman",
                     dateOfBirth: .stub,
-                    gender: .male,
                     about: """
                     David is an exceptional piano student, however whitespaces are not his thing. Like at all.
                     Anyway we can help him out a bit with this.

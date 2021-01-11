@@ -38,7 +38,6 @@ struct BookingApplicationDetailView: View {
     var duration: String { "\(bookingApplication.schedule.duration) minutes" }
     var name: String { bookingApplication.student.name }
     var age: String { "\(bookingApplication.student.age)" }
-    var gender: String { bookingApplication.student.gender.name }
     var about: String? { bookingApplication.student.about.isEmpty ? nil : bookingApplication.student.about }
     var submitterPrivateNote: String { bookingApplication.submitterPrivateNote.isEmpty ? "None" : bookingApplication.submitterPrivateNote }
     var submitterPrivateNoteOpacity: Double { bookingApplication.submitterPrivateNote.isEmpty ? 0.5 : 1 }
@@ -80,7 +79,6 @@ struct BookingApplicationDetailView: View {
             Section(header: Text("STUDENT DETAILS")) {
                 TitleCell(title: "Name", detail: name)
                 TitleCell(title: "Age", detail: age)
-                TitleCell(title: "Gender", detail: gender)
                 about.map { about in
                     VStack(alignment: .leading, spacing: .spacingUnit) {
                         Text("About")

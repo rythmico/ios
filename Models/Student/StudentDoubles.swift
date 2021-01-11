@@ -9,14 +9,12 @@ extension Student {
     static let baseStub = Self(
         name: "",
         dateOfBirth: .stub - (9, .year),
-        gender: .male,
         about: ""
     )
     #elseif TUTOR
     static let baseStub = Self(
         name: "",
         age: 9,
-        gender: .male,
         about: ""
     )
     #endif
@@ -26,12 +24,10 @@ extension Student {
 
     static let charlotteStub = baseStub.with {
         $0.name = "Charlotte Doe"
-        $0.gender = .female
     }
 
     static let janeStub = baseStub.with {
         $0.name = "Jane Doe"
-        $0.gender = .female
     }
 
     static let davidStub = baseStub.with {

@@ -144,7 +144,6 @@ struct ReviewRequestView: View, TestableView {
         [
             student.name,
             studentAge(from: student.dateOfBirth),
-            student.gender.name
         ].filter(\.isEmpty.not).joined(separator: .newline)
     }
 
