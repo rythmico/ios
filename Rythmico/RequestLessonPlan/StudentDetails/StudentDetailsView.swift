@@ -13,7 +13,6 @@ struct StudentDetailsView: View, TestableView {
     final class ViewState: ObservableObject {
         @Published var name = String()
         @Published var dateOfBirth: Date?
-        @Published var gender: Gender?
         @Published var about = String()
     }
 
@@ -79,8 +78,7 @@ struct StudentDetailsView: View, TestableView {
     var nextButtonAction: Action? {
         guard
             let name = sanitizedName,
-            let dateOfBirth = state.dateOfBirth,
-            let gender = state.gender
+            let dateOfBirth = state.dateOfBirth
         else {
             return nil
         }
@@ -90,7 +88,6 @@ struct StudentDetailsView: View, TestableView {
                 Student(
                     name: name,
                     dateOfBirth: dateOfBirth,
-                    gender: gender,
                     about: sanitizedAbout
                 )
             )
@@ -121,9 +118,6 @@ struct StudentDetailsView: View, TestableView {
                             )
                             .modifier(RoundedThinOutlineContainer(padded: false))
                             .onTapGesture(perform: beginEditingDateOfBirth)
-                        }
-                        HeaderContentView(title: "Gender") {
-                            GenderSelectionView(selection: $state.gender)
                         }
                         HeaderContentView(title: "About ".style(.bodyBold) + aboutNameTextPart.style(.bodyBold)) {
                             MultilineTextField(
@@ -192,7 +186,6 @@ struct StudentDetailsView_Preview: PreviewProvider {
         let state = StudentDetailsView.ViewState()
         state.name = "David"
         state.dateOfBirth = .stub - (10, .year)
-        state.gender = .male
         state.about = "Something"
 
         return StudentDetailsView(

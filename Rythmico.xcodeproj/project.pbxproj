@@ -28,8 +28,6 @@
 		032B6FCB24B7877600299A09 /* BookingRequestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FC924B7875300299A09 /* BookingRequestDoubles.swift */; };
 		032B6FCC24B7877B00299A09 /* BookingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FC524B783C000299A09 /* BookingRequest.swift */; };
 		032B6FCD24B7879300299A09 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF6702445E0FB002D8F5B /* Schedule.swift */; };
-		032B6FD024B787BB00299A09 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FCF24B787BB00299A09 /* Gender.swift */; };
-		032B6FD124B787BB00299A09 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FCF24B787BB00299A09 /* Gender.swift */; };
 		032B6FD224B787D700299A09 /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D623F9E20C00E410F2 /* Instrument.swift */; };
 		032B6FD424B7881C00299A09 /* InstrumentExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FD324B7881C00299A09 /* InstrumentExtensions.swift */; };
 		032B6FD724B788B200299A09 /* ScheduleDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF6722445E11A002D8F5B /* ScheduleDoubles.swift */; };
@@ -538,7 +536,6 @@
 		D5F506B02405A6A900CA4094 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506AF2405A6A900CA4094 /* Duration.swift */; };
 		D5F506B42405ED9300CA4094 /* RoundedThickOutlineContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */; };
 		D5F506B62406360900CA4094 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B52406360900CA4094 /* Student.swift */; };
-		D5F506B82406363600CA4094 /* GenderSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B72406363600CA4094 /* GenderSelectionView.swift */; };
 		D5F506BA240637F400CA4094 /* Buttons+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B9240637F400CA4094 /* Buttons+Rythmico.swift */; };
 		D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */; };
 		D5F506BE2406E49A00CA4094 /* EdgeSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506BD2406E49A00CA4094 /* EdgeSwipeView.swift */; };
@@ -634,7 +631,6 @@
 		03275AEA24908017009C3980 /* Alert+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+Error.swift"; sourceTree = "<group>"; };
 		032B6FC524B783C000299A09 /* BookingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequest.swift; sourceTree = "<group>"; };
 		032B6FC924B7875300299A09 /* BookingRequestDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestDoubles.swift; sourceTree = "<group>"; };
-		032B6FCF24B787BB00299A09 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		032B6FD324B7881C00299A09 /* InstrumentExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentExtensions.swift; sourceTree = "<group>"; };
 		032B6FDA24B7890700299A09 /* ScheduleDuration+CasePickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScheduleDuration+CasePickable.swift"; sourceTree = "<group>"; };
 		032B6FDC24B78A5200299A09 /* BookingRequestEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestEndpoints.swift; sourceTree = "<group>"; };
@@ -998,7 +994,6 @@
 		D5F506AF2405A6A900CA4094 /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
 		D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedThickOutlineContainer.swift; sourceTree = "<group>"; };
 		D5F506B52406360900CA4094 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
-		D5F506B72406363600CA4094 /* GenderSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectionView.swift; sourceTree = "<group>"; };
 		D5F506B9240637F400CA4094 /* Buttons+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Buttons+Rythmico.swift"; sourceTree = "<group>"; };
 		D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetailsView.swift; sourceTree = "<group>"; };
 		D5F506BD2406E49A00CA4094 /* EdgeSwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeSwipeView.swift; sourceTree = "<group>"; };
@@ -1336,7 +1331,6 @@
 		03B71326241D84F300DED025 /* Student */ = {
 			isa = PBXGroup;
 			children = (
-				032B6FCF24B787BB00299A09 /* Gender.swift */,
 				D5F506B52406360900CA4094 /* Student.swift */,
 				03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */,
 			);
@@ -2081,7 +2075,6 @@
 		D5F506B12405B5AA00CA4094 /* StudentDetails */ = {
 			isa = PBXGroup;
 			children = (
-				D5F506B72406363600CA4094 /* GenderSelectionView.swift */,
 				D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */,
 				D5FD6F15240AF535008C5AD4 /* StudentDetailsViewTests.swift */,
 			);
@@ -2635,7 +2628,6 @@
 				D5AFED4225057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */,
 				D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */,
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
-				032B6FD024B787BB00299A09 /* Gender.swift in Sources */,
 				D52D8A59259D714B00A6CBBF /* OnboardingSlideshowView.swift in Sources */,
 				D575C86E254F2F82001664AB /* ActivityCoordinator+Sugar.swift in Sources */,
 				D5D9AE682533ADA400A0ABCC /* Checkout.swift in Sources */,
@@ -2685,7 +2677,6 @@
 				D5B57A6724147F5100BE9B4F /* RequestLessonPlanContext+EnumProperties.swift in Sources */,
 				D54EFF2A2513DDDB004F14D3 /* PortfolioEndpoints.swift in Sources */,
 				0372E35A249ABAB80048B402 /* SelectableList.swift in Sources */,
-				D5F506B82406363600CA4094 /* GenderSelectionView.swift in Sources */,
 				D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */,
 				D5F506B02405A6A900CA4094 /* Duration.swift in Sources */,
 				D5AAF7D923F9EB1200E410F2 /* InstrumentSelectionListProviderDoubles.swift in Sources */,
@@ -2927,7 +2918,6 @@
 				D5F4D3EB24F315AB000E8580 /* BookingApplicationCell.swift in Sources */,
 				035B1D32249E572900AABFEA /* URLOpener.swift in Sources */,
 				035B1D17249E566800AABFEA /* ActivityIndicator.swift in Sources */,
-				032B6FD124B787BB00299A09 /* Gender.swift in Sources */,
 				D5E58F3E256D9E4A00EB52ED /* LessonDetailView.swift in Sources */,
 				D5A8C4BC25044A230006F5C5 /* UserDefaultsProtocol.swift in Sources */,
 				035B1D59249E5CF800AABFEA /* App+Firebase.swift in Sources */,
