@@ -1,5 +1,4 @@
 import SwiftUI
-import AVKit
 
 struct VideoCarouselView: View {
     var videos: [Portfolio.Video]
@@ -64,21 +63,18 @@ private struct VideoCarouselCell: View {
     }
 }
 
-/// Video direct link player.
 struct VideoCarouselPlayer: View {
     var video: Portfolio.Video
-    private var player: AVPlayer
-
-    init(video: Portfolio.Video) {
-        self.video = video
-        self.player = AVPlayer(url: video.videoURL)
-    }
 
     var body: some View {
         DismissableContainer {
-            VideoPlayer(player: player)
+            switch video.source {
+            case .youtube(let videoId):
+                YouTubeVideoPlayerView(videoId: videoId)
+            case .directURL(let url):
+                DirectURLVideoPlayerView(url: url)
+            }
         }
-        .onAppear(perform: player.play)
     }
 }
 
