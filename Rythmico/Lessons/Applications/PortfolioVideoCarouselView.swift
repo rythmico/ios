@@ -49,7 +49,7 @@ private struct VideoCarouselCell: View {
                 }
             }
             LinearGradient(
-                gradient: Gradient(colors: [Color.black.opacity(0.01), Color.black.opacity(0.4)]),
+                gradient: Gradient(colors: [Color.black.opacity(0.01), Color.black.opacity(0.5)]),
                 startPoint: .top,
                 endPoint: .bottom
             )
@@ -60,6 +60,21 @@ private struct VideoCarouselCell: View {
                 .padding([.leading, .bottom], .spacingSmall)
         }
         .cornerRadius(.spacingUnit * 2, antialiased: true)
+        .overlay(overlay)
+    }
+
+    @Environment(\.colorScheme) private var colorScheme
+    @ViewBuilder
+    var overlay: some View {
+        if colorScheme == .dark {
+            RoundedRectangle(
+                cornerRadius: .spacingUnit * 2,
+                style: .continuous
+            )
+            .strokeBorder(Color.white.opacity(0.15), lineWidth: 1, antialiased: true)
+        } else {
+            EmptyView()
+        }
     }
 }
 
