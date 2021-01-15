@@ -64,27 +64,47 @@ private struct VideoCarouselCell: View {
     }
 }
 
+/// Video direct link player.
 struct VideoCarouselPlayer: View {
-    @Environment(\.presentationMode) private var presentationMode
-
     var video: Portfolio.Video
-    var player: AVPlayer
+    private var player: AVPlayer
 
     init(video: Portfolio.Video) {
         self.video = video
         self.player = AVPlayer(url: video.videoURL)
-        self.player.play()
+    }
+
+    var body: some View {
+        DismissableContainer {
+            VideoPlayer(player: player)
+        }
+        .onAppear(perform: player.play)
+    }
+}
+
+struct DismissableContainer<Content: View>: View {
+    @Environment(\.presentationMode) private var presentationMode
+
+    var backgroundColor: Color
+    var content: Content
+
+    init(
+        backgroundColor: Color = .black,
+        @ViewBuilder content: @escaping () -> Content
+    ) {
+        self.backgroundColor = backgroundColor
+        self.content = content()
     }
 
     var body: some View {
         ZStack {
-            Color.black.edgesIgnoringSafeArea(.all)
+            backgroundColor.edgesIgnoringSafeArea(.all)
             VStack(alignment: .trailing, spacing: 0) {
                 CloseButton(action: dismiss)
                     .padding([.trailing, .bottom], .spacingSmall)
                     .padding(.top, .spacingMedium)
                     .accentColor(.rythmicoWhite)
-                VideoPlayer(player: player)
+                content
             }
         }
     }
