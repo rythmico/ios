@@ -387,6 +387,7 @@
 		D5989BD125168B0100BED8A6 /* PortfolioPhotoCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5989BD025168B0100BED8A6 /* PortfolioPhotoCarouselView.swift */; };
 		D59D0593251828EA0070D81B /* App+Playback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59D0592251828EA0070D81B /* App+Playback.swift */; };
 		D59D0594251828EA0070D81B /* App+Playback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59D0592251828EA0070D81B /* App+Playback.swift */; };
+		D59E4E3725B1DBB000E8F94C /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = D59E4E3625B1DBB000E8F94C /* WebView */; };
 		D5A8C4BB25044A230006F5C5 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */; };
 		D5A8C4BC25044A230006F5C5 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */; };
 		D5A8C4BE25044A370006F5C5 /* UserDefaultsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */; };
@@ -1021,6 +1022,7 @@
 				D585217624CF81CE005D783A /* Introspect in Frameworks */,
 				D5FC2D44254A7DE3005056D5 /* FirebaseAuth in Frameworks */,
 				D5FC2D42254A7DE3005056D5 /* FirebaseMessaging in Frameworks */,
+				D59E4E3725B1DBB000E8F94C /* WebView in Frameworks */,
 				D5FC2D3E254A7DE3005056D5 /* FirebaseAnalytics in Frameworks */,
 				D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */,
 				D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */,
@@ -2147,6 +2149,7 @@
 				D5AC9E3A254D9533003A8197 /* FirebaseRemoteConfig */,
 				D53668FC255EEDEF00A9D97D /* Stripe */,
 				D507CCA925771C86001B2B5A /* EnumKit */,
+				D59E4E3625B1DBB000E8F94C /* WebView */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -2306,6 +2309,7 @@
 				D555A4AC2542409F00B8688F /* XCRemoteSwiftPackageReference "MultiSheet" */,
 				D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				D507CCA825771C86001B2B5A /* XCRemoteSwiftPackageReference "EnumKit" */,
+				D59E4E3525B1DBB000E8F94C /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */,
 			);
 			productRefGroup = 03341B3C23ABB1E7009AE8A8 /* Products */;
 			projectDirPath = "";
@@ -3620,6 +3624,14 @@
 				minimumVersion = 0.1.0;
 			};
 		};
+		D59E4E3525B1DBB000E8F94C /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kylehickinson/SwiftUI-WebView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
 		D5BDD509253CCC4400255190 /* XCRemoteSwiftPackageReference "swift-tagged" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-tagged";
@@ -3750,6 +3762,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D585217424CF81CE005D783A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
+		};
+		D59E4E3625B1DBB000E8F94C /* WebView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D59E4E3525B1DBB000E8F94C /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */;
+			productName = WebView;
 		};
 		D5AC9E3A254D9533003A8197 /* FirebaseRemoteConfig */ = {
 			isa = XCSwiftPackageProductDependency;
