@@ -1683,6 +1683,7 @@
 				D5B57A64241479F300BE9B4F /* Assets.generated.swift */,
 				03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */,
 				D50668DA23B946330044E553 /* Rythmico.entitlements */,
+				D50158892538A985005E02FA /* Rythmico-Bridging-Header.h */,
 				03341B4C23ABB1E8009AE8A8 /* Info.plist */,
 				D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */,
 				D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */,
@@ -2026,7 +2027,6 @@
 				D5D9AE672533ADA400A0ABCC /* Checkout.swift */,
 				D5D9AE702534CAF000A0ABCC /* CheckoutDoubles.swift */,
 				D5D9AE872534CD0200A0ABCC /* CheckoutTests.swift */,
-				D50158892538A985005E02FA /* Rythmico-Bridging-Header.h */,
 				D501588A2538A985005E02FA /* STPPaymentMethodCard+BrandFromString.h */,
 			);
 			path = Checkout;
@@ -3256,7 +3256,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.rythmico.student";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "RYTHMICO DEBUG";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Models/Checkout/Rythmico-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Rythmico/Supporting Files/Rythmico-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3284,7 +3284,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.rythmico.student";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = RYTHMICO;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Models/Checkout/Rythmico-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Rythmico/Supporting Files/Rythmico-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
