@@ -10,21 +10,21 @@ extension Tutor {
     static let jesseStub = Self(
         id: .random(),
         name: "Jesse Bildner",
-        photoThumbnailURL: nil,
-        photoURL: nil
+        photoURL: nil,
+        thumbnailURL: nil
     )
 
     static let davidStub = Self(
         id: .random(),
         name: "David Roman",
-        photoThumbnailURL: nil,
-        photoURL: nil
+        photoURL: nil,
+        thumbnailURL: nil
     )
 
     static let charlotteStub = Self(
         id: .random(),
         name: "Charlotte",
-        photoThumbnailURL: nil,
-        photoURL: nil
+        photoURL: nil,
+        thumbnailURL: nil
     )
 }
