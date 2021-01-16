@@ -14,7 +14,10 @@ protocol AuthorizedAPIRequest: Request {
 
 extension AuthorizedAPIRequest {
     var headerFields: [String: String] {
-        APIClientInfo.current + ["Authorization": "Bearer " + accessToken]
+        APIClientInfo.current + [
+            "Authorization": "Bearer " + accessToken,
+            "Accept-Encoding": "",
+        ]
     }
 
     subscript<T>(dynamicMember keyPath: KeyPath<Properties, T>) -> T {
