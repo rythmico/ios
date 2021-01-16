@@ -96,7 +96,8 @@ extension Array where Element == Portfolio.Training {
 extension Portfolio.Video {
     static func stub(_ color: UIColor) -> Self {
         .init(
-            videoURL: URL(string: "https://bit.ly/swswift")!,
+            source: .youtube(videoId: "FnW2OWH8Tac"),
+//            source: .directURL(URL(string: "https://bit.ly/swswift")!),
             thumbnailURL: .image(UIImage(color))
         )
     }

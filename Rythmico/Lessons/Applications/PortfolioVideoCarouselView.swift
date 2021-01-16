@@ -1,5 +1,4 @@
 import SwiftUI
-import AVKit
 
 struct VideoCarouselView: View {
     var videos: [Portfolio.Video]
@@ -50,7 +49,7 @@ private struct VideoCarouselCell: View {
                 }
             }
             LinearGradient(
-                gradient: Gradient(colors: [Color.black.opacity(0.01), Color.black.opacity(0.4)]),
+                gradient: Gradient(colors: [Color.black.opacity(0.01), Color.black.opacity(0.5)]),
                 startPoint: .top,
                 endPoint: .bottom
             )
@@ -61,30 +60,62 @@ private struct VideoCarouselCell: View {
                 .padding([.leading, .bottom], .spacingSmall)
         }
         .cornerRadius(.spacingUnit * 2, antialiased: true)
+        .overlay(overlay)
+    }
+
+    @Environment(\.colorScheme) private var colorScheme
+    @ViewBuilder
+    var overlay: some View {
+        if colorScheme == .dark {
+            RoundedRectangle(
+                cornerRadius: .spacingUnit * 2,
+                style: .continuous
+            )
+            .strokeBorder(Color.white.opacity(0.15), lineWidth: 1, antialiased: true)
+        } else {
+            EmptyView()
+        }
     }
 }
 
 struct VideoCarouselPlayer: View {
+    var video: Portfolio.Video
+
+    var body: some View {
+        DismissableContainer {
+            switch video.source {
+            case .youtube(let videoId):
+                YouTubeVideoPlayerView(videoId: videoId)
+            case .directURL(let url):
+                DirectURLVideoPlayerView(url: url)
+            }
+        }
+    }
+}
+
+struct DismissableContainer<Content: View>: View {
     @Environment(\.presentationMode) private var presentationMode
 
-    var video: Portfolio.Video
-    var player: AVPlayer
+    var backgroundColor: Color
+    var content: Content
 
-    init(video: Portfolio.Video) {
-        self.video = video
-        self.player = AVPlayer(url: video.videoURL)
-        self.player.play()
+    init(
+        backgroundColor: Color = .black,
+        @ViewBuilder content: @escaping () -> Content
+    ) {
+        self.backgroundColor = backgroundColor
+        self.content = content()
     }
 
     var body: some View {
         ZStack {
-            Color.black.edgesIgnoringSafeArea(.all)
+            backgroundColor.edgesIgnoringSafeArea(.all)
             VStack(alignment: .trailing, spacing: 0) {
                 CloseButton(action: dismiss)
                     .padding([.trailing, .bottom], .spacingSmall)
                     .padding(.top, .spacingMedium)
                     .accentColor(.rythmicoWhite)
-                VideoPlayer(player: player)
+                content
             }
         }
     }

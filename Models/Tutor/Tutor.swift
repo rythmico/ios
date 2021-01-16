@@ -6,6 +6,6 @@ struct Tutor: Identifiable, Equatable, Decodable, Hashable {
 
     var id: ID
     var name: String
-    var photoThumbnailURL: ImageReference?
     var photoURL: ImageReference?
+    var thumbnailURL: ImageReference?
 }

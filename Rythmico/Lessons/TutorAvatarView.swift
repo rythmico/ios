@@ -40,9 +40,9 @@ struct TutorAvatarView: View {
     private var asyncContent: AsyncImageContent? {
         switch mode {
         case .thumbnail:
-            return tutor.photoThumbnailURL.map(AsyncImageContent.simple)
+            return tutor.thumbnailURL.map(AsyncImageContent.simple)
         case .original:
-            switch (tutor.photoThumbnailURL, tutor.photoURL) {
+            switch (tutor.thumbnailURL, tutor.photoURL) {
             case (let thumbnail?, let original?):
                 return .transitional(from: thumbnail, to: original)
             case (let ref?, _), (_, let ref?):

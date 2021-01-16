@@ -27,9 +27,8 @@ struct PortfolioView: View {
                 .frame(maxWidth: .spacingMax)
                 .padding(.horizontal, .spacingMedium)
 
-                Divider().overlay(Color.rythmicoGray20)
-
                 if !portfolio.training.isEmpty {
+                    Divider().overlay(Color.rythmicoGray20)
                     VStack(spacing: .spacingSmall) {
                         header("Training")
                         PortfolioTrainingsView(trainingList: portfolio.training)
