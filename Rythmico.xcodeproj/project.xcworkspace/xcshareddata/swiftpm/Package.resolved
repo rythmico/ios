@@ -74,12 +74,12 @@
         }
       },
       {
-        "package": "MultiSheet",
-        "repositoryURL": "https://github.com/davdroman/MultiSheet",
+        "package": "MultiModal",
+        "repositoryURL": "https://github.com/davdroman/MultiModal",
         "state": {
           "branch": null,
-          "revision": "f5a4a67153211097b37a3304c612967e591f7e4a",
-          "version": "1.2.0"
+          "revision": "50ff31037eb2d012df150a8b1d54d0c31d1a7e04",
+          "version": "2.0.0"
         }
       },
       {

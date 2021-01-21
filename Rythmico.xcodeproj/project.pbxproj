@@ -310,7 +310,6 @@
 		D54F71182547523100D73E1E /* DismissKeyboardTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */; };
 		D54FC05524CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */; };
 		D54FC05624CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */; };
-		D555A4AE2542409F00B8688F /* MultiSheet in Frameworks */ = {isa = PBXBuildFile; productRef = D555A4AD2542409F00B8688F /* MultiSheet */; };
 		D55C35D725A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */; };
 		D55C35D825A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */; };
 		D55C35EA25A3A6490023E56B /* CalendarInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35E925A3A6490023E56B /* CalendarInfo.swift */; };
@@ -456,6 +455,8 @@
 		D5CC5FF225029525007DFE84 /* ImageReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC5FF025029525007DFE84 /* ImageReference.swift */; };
 		D5CCC33225A4C66A00E25B62 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCC33125A4C66A00E25B62 /* ProfileView.swift */; };
 		D5CCC5532559D7F400FE8522 /* PhoneNumberOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCC5522559D7F400FE8522 /* PhoneNumberOpener.swift */; };
+		D5D32C5A25B9FB0E00F3ECD8 /* MultiModal in Frameworks */ = {isa = PBXBuildFile; productRef = D5D32C5925B9FB0E00F3ECD8 /* MultiModal */; };
+		D5D32C6525BA02E600F3ECD8 /* MultiModal in Frameworks */ = {isa = PBXBuildFile; productRef = D5D32C6425BA02E600F3ECD8 /* MultiModal */; };
 		D5D78DD7252502CE007041BE /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = D5D78DD6252502CE007041BE /* PhoneNumberKit */; };
 		D5D78DE025250864007041BE /* LessonPlanBookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D78DDF25250864007041BE /* LessonPlanBookingView.swift */; };
 		D5D78E0C25257800007041BE /* PhoneNumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D78E0B25257800007041BE /* PhoneNumberField.swift */; };
@@ -1016,7 +1017,6 @@
 			files = (
 				D5BDD50B253CCC4400255190 /* Tagged in Frameworks */,
 				D535554C23E23EA7005A20EB /* Then in Frameworks */,
-				D555A4AE2542409F00B8688F /* MultiSheet in Frameworks */,
 				D53554FC23E0FD77005A20EB /* Sugar.framework in Frameworks */,
 				D535548123E0E7C1005A20EB /* SFSafeSymbols in Frameworks */,
 				D5D78DD7252502CE007041BE /* PhoneNumberKit in Frameworks */,
@@ -1027,6 +1027,7 @@
 				D5FC2D44254A7DE3005056D5 /* FirebaseAuth in Frameworks */,
 				D5FC2D42254A7DE3005056D5 /* FirebaseMessaging in Frameworks */,
 				D5FC2D3E254A7DE3005056D5 /* FirebaseAnalytics in Frameworks */,
+				D5D32C5A25B9FB0E00F3ECD8 /* MultiModal in Frameworks */,
 				D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */,
 				D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */,
 				03B19837247053F5005529EB /* APIKit in Frameworks */,
@@ -1051,6 +1052,7 @@
 				D5B880932547AFF600754197 /* Tagged in Frameworks */,
 				D585217824CF81E8005D783A /* Introspect in Frameworks */,
 				D575C837254F10F0001664AB /* FirebaseRemoteConfig in Frameworks */,
+				D5D32C6525BA02E600F3ECD8 /* MultiModal in Frameworks */,
 				035B1D69249E645E00AABFEA /* APIKit in Frameworks */,
 				D5FC2D4D254A7E21005056D5 /* FirebaseAnalytics in Frameworks */,
 			);
@@ -2147,7 +2149,6 @@
 				D5D78DD6252502CE007041BE /* PhoneNumberKit */,
 				D5F11565253735F20027D164 /* NonEmpty */,
 				D5BDD50A253CCC4400255190 /* Tagged */,
-				D555A4AD2542409F00B8688F /* MultiSheet */,
 				D5FC2D3D254A7DE3005056D5 /* FirebaseAnalytics */,
 				D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */,
 				D5FC2D41254A7DE3005056D5 /* FirebaseMessaging */,
@@ -2156,6 +2157,7 @@
 				D53668FC255EEDEF00A9D97D /* Stripe */,
 				D507CCA925771C86001B2B5A /* EnumKit */,
 				D59E4E6025B20ADA00E8F94C /* YouTubeiOSPlayerHelper */,
+				D5D32C5925B9FB0E00F3ECD8 /* MultiModal */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -2194,6 +2196,7 @@
 				D5FC2D52254A7E21005056D5 /* FirebaseMessaging */,
 				D575C836254F10F0001664AB /* FirebaseRemoteConfig */,
 				D5F4AE8A2559D46A001085D5 /* PhoneNumberKit */,
+				D5D32C6425BA02E600F3ECD8 /* MultiModal */,
 			);
 			productName = RythmicoTutor;
 			productReference = 035B1CBC249CF2AA00AABFEA /* Tutor.app */;
@@ -2312,10 +2315,10 @@
 				D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */,
 				D5F11564253735F20027D164 /* XCRemoteSwiftPackageReference "swift-nonempty" */,
 				D5BDD509253CCC4400255190 /* XCRemoteSwiftPackageReference "swift-tagged" */,
-				D555A4AC2542409F00B8688F /* XCRemoteSwiftPackageReference "MultiSheet" */,
 				D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				D507CCA825771C86001B2B5A /* XCRemoteSwiftPackageReference "EnumKit" */,
 				D59E4E5F25B20ADA00E8F94C /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
+				D5D32C5825B9FB0E00F3ECD8 /* XCRemoteSwiftPackageReference "MultiModal" */,
 			);
 			productRefGroup = 03341B3C23ABB1E7009AE8A8 /* Products */;
 			projectDirPath = "";
@@ -3608,14 +3611,6 @@
 				minimumVersion = 2.6.0;
 			};
 		};
-		D555A4AC2542409F00B8688F /* XCRemoteSwiftPackageReference "MultiSheet" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/davdroman/MultiSheet";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.0;
-			};
-		};
 		D56544D124CE4BA100281875 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nalexn/ViewInspector";
@@ -3646,6 +3641,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.5.0;
+			};
+		};
+		D5D32C5825B9FB0E00F3ECD8 /* XCRemoteSwiftPackageReference "MultiModal" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/davdroman/MultiModal";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
 			};
 		};
 		D5D78DD5252502CE007041BE /* XCRemoteSwiftPackageReference "PhoneNumberKit" */ = {
@@ -3741,11 +3744,6 @@
 			package = D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */;
 			productName = Stripe;
 		};
-		D555A4AD2542409F00B8688F /* MultiSheet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D555A4AC2542409F00B8688F /* XCRemoteSwiftPackageReference "MultiSheet" */;
-			productName = MultiSheet;
-		};
 		D56544D224CE4BA100281875 /* ViewInspector */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D56544D124CE4BA100281875 /* XCRemoteSwiftPackageReference "ViewInspector" */;
@@ -3790,6 +3788,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5BDD509253CCC4400255190 /* XCRemoteSwiftPackageReference "swift-tagged" */;
 			productName = Tagged;
+		};
+		D5D32C5925B9FB0E00F3ECD8 /* MultiModal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5D32C5825B9FB0E00F3ECD8 /* XCRemoteSwiftPackageReference "MultiModal" */;
+			productName = MultiModal;
+		};
+		D5D32C6425BA02E600F3ECD8 /* MultiModal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5D32C5825B9FB0E00F3ECD8 /* XCRemoteSwiftPackageReference "MultiModal" */;
+			productName = MultiModal;
 		};
 		D5D78DD6252502CE007041BE /* PhoneNumberKit */ = {
 			isa = XCSwiftPackageProductDependency;
