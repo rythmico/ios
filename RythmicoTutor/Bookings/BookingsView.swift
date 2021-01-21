@@ -1,4 +1,5 @@
 import SwiftUI
+import MultiModal
 import Combine
 
 struct BookingsView: View {
@@ -34,13 +35,14 @@ struct BookingsView: View {
             // FIXME: double HTTP request for some reason
             // .onDisappear(perform: coordinator.cancel)
             .onSuccess(coordinator, perform: repository.setItems)
-            .alertOnFailure(coordinator)
-
             .onSuccess(coordinator, perform: requestPushNotificationAuth)
-            .alert(
-                error: pushNotificationAuthCoordinator.status.failedValue,
-                dismiss: pushNotificationAuthCoordinator.dismissFailure
-            )
+            .multiModal {
+                $0.alertOnFailure(coordinator)
+                $0.alert(
+                    error: pushNotificationAuthCoordinator.status.failedValue,
+                    dismiss: pushNotificationAuthCoordinator.dismissFailure
+                )
+            }
     }
 
     func requestPushNotificationAuth(_: Any) {
