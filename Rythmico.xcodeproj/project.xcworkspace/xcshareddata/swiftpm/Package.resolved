@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/firebase/firebase-ios-sdk",
         "state": {
           "branch": null,
-          "revision": "c67d97dc802aafe5474042156dce828e1c4145ca",
-          "version": "7.3.1"
+          "revision": "3721a5b8a6233237098f90e5f065dada7641a40b",
+          "version": "7.4.0"
         }
       },
       {
@@ -74,12 +74,12 @@
         }
       },
       {
-        "package": "MultiSheet",
-        "repositoryURL": "https://github.com/davdroman/MultiSheet",
+        "package": "MultiModal",
+        "repositoryURL": "https://github.com/davdroman/MultiModal",
         "state": {
           "branch": null,
-          "revision": "f5a4a67153211097b37a3304c612967e591f7e4a",
-          "version": "1.2.0"
+          "revision": "50ff31037eb2d012df150a8b1d54d0c31d1a7e04",
+          "version": "2.0.0"
         }
       },
       {
@@ -87,8 +87,8 @@
         "repositoryURL": "https://github.com/firebase/nanopb.git",
         "state": {
           "branch": null,
-          "revision": "8119dfe5631f2616d11e50ead95448d12e816062",
-          "version": "2.30906.0"
+          "revision": "c2d43e59d8ec880ed261366818f0cacc5c8cc2e6",
+          "version": "2.30907.0"
         }
       },
       {
@@ -96,8 +96,8 @@
         "repositoryURL": "https://github.com/marmelroy/PhoneNumberKit",
         "state": {
           "branch": null,
-          "revision": "c7d7b0c91ef0ad7e413022edfcf5d6f75561e2d5",
-          "version": "3.3.1"
+          "revision": "1ef0431b971f69c48ca5eb4cdba07f2c5da54c35",
+          "version": "3.3.3"
         }
       },
       {

@@ -1,4 +1,5 @@
 import SwiftUI
+import MultiModal
 import class FirebaseAuth.Auth
 import Sugar
 
@@ -55,8 +56,10 @@ struct ProfileView: View, TestableView {
 //            .textCase(nil)
         }
         .listStyle(GroupedListStyle())
-        .alert(error: calendarSyncCoordinator.error, dismiss: calendarSyncCoordinator.dismissError)
-        .alert(item: $calendarSyncCoordinator.permissionsNeededAlert)
+        .multiModal {
+            $0.alert(error: calendarSyncCoordinator.error, dismiss: calendarSyncCoordinator.dismissError)
+            $0.alert(item: $calendarSyncCoordinator.permissionsNeededAlert)
+        }
         .testable(self)
     }
 

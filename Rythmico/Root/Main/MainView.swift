@@ -1,6 +1,6 @@
 import SwiftUI
 import SFSafeSymbols
-import MultiSheet
+import MultiModal
 import Sugar
 
 struct MainView: View, TestableView {
@@ -60,7 +60,7 @@ struct MainView: View, TestableView {
         .accentColor(.rythmicoPurple)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
         .onSuccess(lessonPlanFetchingCoordinator, perform: presentRequestLessonFlowIfNeeded)
-        .multiSheet {
+        .multiModal {
             $0.sheet(isPresented: $state.lessonsContext.isRequestingLessonPlan) {
                 RequestLessonPlanView(context: RequestLessonPlanContext())
             }

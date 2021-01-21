@@ -1,5 +1,5 @@
 import SwiftUI
-import MultiSheet
+import MultiModal
 import Sugar
 
 struct LessonDetailView: View, TestableView {
@@ -72,7 +72,7 @@ struct LessonDetailView: View, TestableView {
         .testable(self)
         .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
-        .multiSheet {
+        .multiModal {
             $0.sheet(isPresented: $state.lessonsContext.isSkippingLesson) { lessonSkippingView }
             $0.sheet(isPresented: $state.lessonsContext.isCancellingLessonPlan) {
                 if let lessonPlan = Current.lessonPlanRepository.firstById(lesson.planId) {

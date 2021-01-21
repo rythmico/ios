@@ -1,5 +1,5 @@
 import SwiftUI
-import MultiSheet
+import MultiModal
 
 struct PortfolioView: View {
     @State
@@ -61,7 +61,7 @@ struct PortfolioView: View {
             }
             .padding(.vertical, .spacingMedium)
         }
-        .multiSheet {
+        .multiModal {
             $0.sheet(item: $selectedVideo, content: VideoCarouselPlayer.init)
             $0.sheet(item: $selectedPhoto) { _ in
                 PhotoCarouselDetailView(photos: portfolio.photos, selection: $selectedPhoto)
