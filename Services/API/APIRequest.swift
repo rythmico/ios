@@ -48,16 +48,14 @@ extension JSONEncodableBodyParameters {
 }
 
 struct RythmicoAPIError: LocalizedError, Decodable {
-    enum ErrorType: String, Decodable {
-        case appOutdated = "APP_OUTDATED"
-        case unknown
-
-        init(from decoder: Decoder) throws {
-            let container = try decoder.singleValueContainer()
-            let rawValue = try container.decode(String.self)
-            self = Self(rawValue: rawValue) ?? .unknown
-        }
-    }
     var errorType: ErrorType?
     var errorDescription: String?
+}
+
+extension RythmicoAPIError.ErrorType: Decodable {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let rawValue = try container.decode(String.self)
+        self = Self(rawValue: rawValue) ?? .unknown
+    }
 }

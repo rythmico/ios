@@ -62,6 +62,10 @@ extension AppEnvironment {
         }
     }
 
+    var apiErrorHandler: APIActivityErrorHandlerProtocol {
+        APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator)
+    }
+
     var remoteConfigCoordinator: RemoteConfigCoordinator {
         cachedRemoteConfigCoordinator ?? RemoteConfigCoordinator(service: remoteConfig).then {
             cachedRemoteConfigCoordinator = $0
@@ -105,7 +109,7 @@ extension AppEnvironment {
         let coordinator = APIActivityCoordinator(
             accessTokenProvider: currentProvider,
             deauthenticationService: deauthenticationService,
-            remoteConfigCoordinator: remoteConfigCoordinator,
+            errorHandler: apiErrorHandler,
             service: self[keyPath: service]
         )
         coordinatorMap[service] = coordinator
@@ -117,7 +121,7 @@ extension AppEnvironment {
             APIActivityCoordinator(
                 accessTokenProvider: $0,
                 deauthenticationService: deauthenticationService,
-                remoteConfigCoordinator: remoteConfigCoordinator,
+                errorHandler: apiErrorHandler,
                 service: self[keyPath: service]
             )
         }

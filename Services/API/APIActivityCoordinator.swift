@@ -6,18 +6,18 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
 
     private let accessTokenProvider: AuthenticationAccessTokenProvider
     private let deauthenticationService: DeauthenticationServiceProtocol
-    private let remoteConfigCoordinator: RemoteConfigCoordinator
+    private let errorHandler: APIActivityErrorHandlerProtocol
     private let service: Service
 
     init(
         accessTokenProvider: AuthenticationAccessTokenProvider,
         deauthenticationService: DeauthenticationServiceProtocol,
-        remoteConfigCoordinator: RemoteConfigCoordinator,
+        errorHandler: APIActivityErrorHandlerProtocol,
         service: Service
     ) {
         self.accessTokenProvider = accessTokenProvider
         self.deauthenticationService = deauthenticationService
-        self.remoteConfigCoordinator = remoteConfigCoordinator
+        self.errorHandler = errorHandler
         self.service = service
     }
 
@@ -59,12 +59,7 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
     }
 
     private func handleRythmicoAPIError(_ error: RythmicoAPIError) {
-        switch error.errorType {
-        case .appOutdated:
-            remoteConfigCoordinator.fetch(forced: true)
-        case .unknown, .none:
-            break
-        }
+        errorHandler.handle(error)
         finish(.failure(error))
     }
 
