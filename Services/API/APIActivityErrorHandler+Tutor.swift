@@ -2,11 +2,11 @@ import Foundation
 
 final class APIActivityErrorHandler: APIActivityErrorHandlerProtocol {
     private let remoteConfigCoordinator: RemoteConfigCoordinator
-    private let settings: UserDefaultsProtocol
+    private let settings: UserDefaults
 
     init(
         remoteConfigCoordinator: RemoteConfigCoordinator,
-        settings: UserDefaultsProtocol
+        settings: UserDefaults
     ) {
         self.remoteConfigCoordinator = remoteConfigCoordinator
         self.settings = settings

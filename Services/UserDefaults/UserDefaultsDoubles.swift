@@ -1,18 +1,18 @@
 import Foundation
 
-final class UserDefaultsFake: UserDefaultsProtocol {
+final class UserDefaultsFake: UserDefaults {
     private var inMemoryDefaults: [String: Any] = [:]
 
-    func object(forKey defaultName: String) -> Any? {
+    override func object(forKey defaultName: String) -> Any? {
         inMemoryDefaults[defaultName]
     }
 
-    func set(_ value: Any?, forKey defaultName: String) {
+    override func set(_ value: Any?, forKey defaultName: String) {
         inMemoryDefaults[defaultName] = value
     }
 }
 
-final class UserDefaultsDummy: UserDefaultsProtocol {
-    func object(forKey defaultName: String) -> Any? { nil }
-    func set(_ value: Any?, forKey defaultName: String) {}
+final class UserDefaultsDummy: UserDefaults {
+    override func object(forKey defaultName: String) -> Any? { nil }
+    override func set(_ value: Any?, forKey defaultName: String) {}
 }

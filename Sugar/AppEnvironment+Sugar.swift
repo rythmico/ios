@@ -62,10 +62,6 @@ extension AppEnvironment {
         }
     }
 
-    var apiErrorHandler: APIActivityErrorHandlerProtocol {
-        APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator, settings: settings)
-    }
-
     var remoteConfigCoordinator: RemoteConfigCoordinator {
         cachedRemoteConfigCoordinator ?? RemoteConfigCoordinator(service: remoteConfig).then {
             cachedRemoteConfigCoordinator = $0

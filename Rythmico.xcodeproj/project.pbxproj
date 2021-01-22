@@ -306,7 +306,8 @@
 		D549219825BB28B100251FD2 /* APIActivityErrorHandler+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D549219725BB28B100251FD2 /* APIActivityErrorHandler+Tutor.swift */; };
 		D549219D25BB28F700251FD2 /* APIError+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D549219C25BB28F700251FD2 /* APIError+Rythmico.swift */; };
 		D54921A225BB290C00251FD2 /* APIError+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921A125BB290C00251FD2 /* APIError+Tutor.swift */; };
-		D54921AF25BB35BC00251FD2 /* UserDefaultsProtocol+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921AE25BB35BC00251FD2 /* UserDefaultsProtocol+Tutor.swift */; };
+		D54921AF25BB35BC00251FD2 /* UserDefaults+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921AE25BB35BC00251FD2 /* UserDefaults+Tutor.swift */; };
+		D54921C225BB3F9400251FD2 /* UserDefaults+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921C125BB3F9400251FD2 /* UserDefaults+Rythmico.swift */; };
 		D54CFD1C25BB173000C012F3 /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = D54CFD1B25BB173000C012F3 /* WebView */; };
 		D54CFD2125BB208100C012F3 /* TutorStatusEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CFD2025BB208100C012F3 /* TutorStatusEndpoints.swift */; };
 		D54CFD2C25BB20A600C012F3 /* TutorStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CFD2B25BB20A600C012F3 /* TutorStatus.swift */; };
@@ -399,8 +400,8 @@
 		D59D0594251828EA0070D81B /* App+Playback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59D0592251828EA0070D81B /* App+Playback.swift */; };
 		D59E4E5625B2033200E8F94C /* YouTubeVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59E4E5325B2033200E8F94C /* YouTubeVideoPlayerView.swift */; };
 		D59E4E6125B20ADA00E8F94C /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = D59E4E6025B20ADA00E8F94C /* YouTubeiOSPlayerHelper */; };
-		D5A8C4BB25044A230006F5C5 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */; };
-		D5A8C4BC25044A230006F5C5 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */; };
+		D5A8C4BB25044A230006F5C5 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BA25044A230006F5C5 /* UserDefaults.swift */; };
+		D5A8C4BC25044A230006F5C5 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BA25044A230006F5C5 /* UserDefaults.swift */; };
 		D5A8C4BE25044A370006F5C5 /* UserDefaultsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */; };
 		D5A8C4BF25044A370006F5C5 /* UserDefaultsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */; };
 		D5A8C4C225044F4C0006F5C5 /* APIClientInfo+RythmicoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4C125044F4C0006F5C5 /* APIClientInfo+RythmicoTests.swift */; };
@@ -838,7 +839,8 @@
 		D549219725BB28B100251FD2 /* APIActivityErrorHandler+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIActivityErrorHandler+Tutor.swift"; sourceTree = "<group>"; };
 		D549219C25BB28F700251FD2 /* APIError+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIError+Rythmico.swift"; sourceTree = "<group>"; };
 		D54921A125BB290C00251FD2 /* APIError+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIError+Tutor.swift"; sourceTree = "<group>"; };
-		D54921AE25BB35BC00251FD2 /* UserDefaultsProtocol+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaultsProtocol+Tutor.swift"; sourceTree = "<group>"; };
+		D54921AE25BB35BC00251FD2 /* UserDefaults+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Tutor.swift"; sourceTree = "<group>"; };
+		D54921C125BB3F9400251FD2 /* UserDefaults+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Rythmico.swift"; sourceTree = "<group>"; };
 		D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationServiceDoubles.swift; sourceTree = "<group>"; };
 		D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HashFunction+Helpers.swift"; sourceTree = "<group>"; };
 		D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationController.swift; sourceTree = "<group>"; };
@@ -900,7 +902,7 @@
 		D59D0592251828EA0070D81B /* App+Playback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+Playback.swift"; sourceTree = "<group>"; };
 		D59E4E5325B2033200E8F94C /* YouTubeVideoPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubeVideoPlayerView.swift; sourceTree = "<group>"; };
 		D5A32DBC23D139C000F3903C /* AuthenticationAccessTokenProviderObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAccessTokenProviderObserver.swift; sourceTree = "<group>"; };
-		D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProtocol.swift; sourceTree = "<group>"; };
+		D5A8C4BA25044A230006F5C5 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDoubles.swift; sourceTree = "<group>"; };
 		D5A8C4C125044F4C0006F5C5 /* APIClientInfo+RythmicoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClientInfo+RythmicoTests.swift"; sourceTree = "<group>"; };
 		D5A8C4C325044F580006F5C5 /* APIClientInfo+TutorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClientInfo+TutorTests.swift"; sourceTree = "<group>"; };
@@ -1955,8 +1957,9 @@
 		D5A8C4C025044A3B0006F5C5 /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
-				D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */,
-				D54921AE25BB35BC00251FD2 /* UserDefaultsProtocol+Tutor.swift */,
+				D5A8C4BA25044A230006F5C5 /* UserDefaults.swift */,
+				D54921C125BB3F9400251FD2 /* UserDefaults+Rythmico.swift */,
+				D54921AE25BB35BC00251FD2 /* UserDefaults+Tutor.swift */,
 				D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */,
 			);
 			path = UserDefaults;
@@ -2675,7 +2678,7 @@
 				0336D62C241EAAF6006CFC1F /* APIRequest.swift in Sources */,
 				03A094622443D8E1008B4BD6 /* EditingCoordinator.swift in Sources */,
 				03275AE5249071DB009C3980 /* DeviceTokenProvider.swift in Sources */,
-				D5A8C4BB25044A230006F5C5 /* UserDefaultsProtocol.swift in Sources */,
+				D5A8C4BB25044A230006F5C5 /* UserDefaults.swift in Sources */,
 				031378C3249A722F005FC49C /* LessonPlanCancellationView.swift in Sources */,
 				D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */,
 				D5D78DE025250864007041BE /* LessonPlanBookingView.swift in Sources */,
@@ -2708,6 +2711,7 @@
 				D5919F6E24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */,
 				D5015873253743C4005E02FA /* CardSetupServiceDoubles.swift in Sources */,
 				035AF30A2491A54E004A01B2 /* UIAccessibilityDoubles.swift in Sources */,
+				D54921C225BB3F9400251FD2 /* UserDefaults+Rythmico.swift in Sources */,
 				03AAF6712445E0FB002D8F5B /* Schedule.swift in Sources */,
 				03275AE3249070D5009C3980 /* DeviceEndpoints.swift in Sources */,
 				D527B01824FEABEB003E81A9 /* ActivityDoubles.swift in Sources */,
@@ -2955,7 +2959,7 @@
 				D575C84E254F29BD001664AB /* Assets.generated.swift in Sources */,
 				03E88EB824C4B0F40077A420 /* Repository.swift in Sources */,
 				D527B01224FE92DA003E81A9 /* ActivityDoubles.swift in Sources */,
-				D54921AF25BB35BC00251FD2 /* UserDefaultsProtocol+Tutor.swift in Sources */,
+				D54921AF25BB35BC00251FD2 /* UserDefaults+Tutor.swift in Sources */,
 				D5E58F46256DB0AC00EB52ED /* NavigationLinkModifier.swift in Sources */,
 				D5BF12C72507D78800B2931C /* RouterDoubles.swift in Sources */,
 				035B1D4A249E577700AABFEA /* AppleAuthorizationCompletionDelegate.swift in Sources */,
@@ -2981,7 +2985,7 @@
 				035B1D32249E572900AABFEA /* URLOpener.swift in Sources */,
 				035B1D17249E566800AABFEA /* ActivityIndicator.swift in Sources */,
 				D5E58F3E256D9E4A00EB52ED /* LessonDetailView.swift in Sources */,
-				D5A8C4BC25044A230006F5C5 /* UserDefaultsProtocol.swift in Sources */,
+				D5A8C4BC25044A230006F5C5 /* UserDefaults.swift in Sources */,
 				035B1D59249E5CF800AABFEA /* App+Firebase.swift in Sources */,
 				035B1D44249E577700AABFEA /* AppleAuthorizationResponse.swift in Sources */,
 				D524D0C225046B9100BC9AF7 /* UNUserNotificationCenterProtocol.swift in Sources */,

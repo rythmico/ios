@@ -19,7 +19,7 @@ extension AppEnvironment {
 
         eventEmitter: .default,
 
-        settings: UserDefaults.standard,
+        settings: .standard,
         keychain: Keychain.localKeychain,
 
         appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
@@ -60,6 +60,10 @@ extension AppEnvironment {
         bookingApplicationFetchingService: APIService(),
         bookingApplicationRetractionService: APIService()
     )
+
+    var apiErrorHandler: APIActivityErrorHandlerProtocol {
+        APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator, settings: settings)
+    }
 }
 
 #if DEBUG

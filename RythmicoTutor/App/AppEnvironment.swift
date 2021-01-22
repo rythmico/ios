@@ -12,7 +12,7 @@ struct AppEnvironment {
 
     var eventEmitter: NotificationCenter
 
-    var settings: UserDefaultsProtocol
+    var settings: UserDefaults
     var keychain: KeychainProtocol
 
     var appleAuthorizationService: AppleAuthorizationServiceProtocol

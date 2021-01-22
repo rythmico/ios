@@ -20,7 +20,7 @@ extension AppEnvironment {
 
         eventEmitter: .default,
 
-        settings: UserDefaults.standard,
+        settings: .standard,
         keychain: Keychain.localKeychain,
 
         appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
@@ -67,6 +67,10 @@ extension AppEnvironment {
         cardSetupCredentialFetchingService: APIService(),
         cardSetupService: STPPaymentHandler.shared()
     )
+
+    var apiErrorHandler: APIActivityErrorHandlerProtocol {
+        APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator)
+    }
 
     func cardSetupCoordinator() -> CardSetupCoordinator {
         CardSetupCoordinator(service: cardSetupService)
