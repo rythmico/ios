@@ -39,6 +39,8 @@ struct AppEnvironment {
 
     var imageLoadingService: ImageLoadingServiceProtocol
 
+    var tutorStatusFetchingService: APIServiceBase<GetTutorStatusRequest>
+
     var bookingsRepository: Repository<Booking>
     var bookingsFetchingService: APIServiceBase<BookingsGetRequest>
 
