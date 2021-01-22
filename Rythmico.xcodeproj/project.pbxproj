@@ -301,6 +301,7 @@
 		D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */; };
 		D5473C9F241AC3CB00D66775 /* AddressDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5473C9D241AC3B800D66775 /* AddressDetailsViewTests.swift */; };
 		D54CFD1C25BB173000C012F3 /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = D54CFD1B25BB173000C012F3 /* WebView */; };
+		D54CFD2125BB208100C012F3 /* TutorStatusEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CFD2025BB208100C012F3 /* TutorStatusEndpoints.swift */; };
 		D54CFD2C25BB20A600C012F3 /* TutorStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CFD2B25BB20A600C012F3 /* TutorStatus.swift */; };
 		D54CFD3225BB20BD00C012F3 /* TutorStatusDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CFD3125BB20BD00C012F3 /* TutorStatusDoubles.swift */; };
 		D54EFF0C2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF0B2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift */; };
@@ -833,6 +834,7 @@
 		D54A561023CD457800BC8485 /* AppleAuthorizationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationResponse.swift; sourceTree = "<group>"; };
 		D54A561223CD4B2C00BC8485 /* AppleAuthorizationCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredential.swift; sourceTree = "<group>"; };
 		D54A561F23CE92AE00BC8485 /* AuthenticationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationError.swift; sourceTree = "<group>"; };
+		D54CFD2025BB208100C012F3 /* TutorStatusEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorStatusEndpoints.swift; sourceTree = "<group>"; };
 		D54CFD2B25BB20A600C012F3 /* TutorStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorStatus.swift; sourceTree = "<group>"; };
 		D54CFD3125BB20BD00C012F3 /* TutorStatusDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorStatusDoubles.swift; sourceTree = "<group>"; };
 		D54EFF0B2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationDetailMessageView.swift; sourceTree = "<group>"; };
@@ -1468,6 +1470,7 @@
 				D5AC9E4E254DA113003A8197 /* RemoteConfig */,
 				03E88EB724C4B0F40077A420 /* Repository.swift */,
 				D5E987C324EEE20300E2E1AF /* Router */,
+				D54CFD2025BB208100C012F3 /* TutorStatusEndpoints.swift */,
 				035AF30B2491A553004A01B2 /* UIAccessibility */,
 				033D47CB247774CE0096C50F /* URLOpener */,
 				D5A8C4C025044A3B0006F5C5 /* UserDefaults */,
@@ -2969,6 +2972,7 @@
 				035B1D3A249E576900AABFEA /* AuthenticationAccessTokenProviderObserver.swift in Sources */,
 				D5E58F29256AF72700EB52ED /* LessonsCollectionView.swift in Sources */,
 				D575C878254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift in Sources */,
+				D54CFD2125BB208100C012F3 /* TutorStatusEndpoints.swift in Sources */,
 				03C34360249E7218004907DF /* Alert+Error.swift in Sources */,
 				D52C555024E2ABFC00C295C4 /* MapOpener.swift in Sources */,
 				D524D0C325046B9800BC9AF7 /* UNUserNotificationCenterDoubles.swift in Sources */,
