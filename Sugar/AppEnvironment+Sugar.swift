@@ -63,7 +63,7 @@ extension AppEnvironment {
     }
 
     var apiErrorHandler: APIActivityErrorHandlerProtocol {
-        APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator)
+        APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator, settings: settings)
     }
 
     var remoteConfigCoordinator: RemoteConfigCoordinator {
