@@ -306,6 +306,7 @@
 		D549219825BB28B100251FD2 /* APIActivityErrorHandler+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D549219725BB28B100251FD2 /* APIActivityErrorHandler+Tutor.swift */; };
 		D549219D25BB28F700251FD2 /* APIError+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D549219C25BB28F700251FD2 /* APIError+Rythmico.swift */; };
 		D54921A225BB290C00251FD2 /* APIError+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921A125BB290C00251FD2 /* APIError+Tutor.swift */; };
+		D54921AF25BB35BC00251FD2 /* UserDefaultsProtocol+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921AE25BB35BC00251FD2 /* UserDefaultsProtocol+Tutor.swift */; };
 		D54CFD1C25BB173000C012F3 /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = D54CFD1B25BB173000C012F3 /* WebView */; };
 		D54CFD2125BB208100C012F3 /* TutorStatusEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CFD2025BB208100C012F3 /* TutorStatusEndpoints.swift */; };
 		D54CFD2C25BB20A600C012F3 /* TutorStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CFD2B25BB20A600C012F3 /* TutorStatus.swift */; };
@@ -837,6 +838,7 @@
 		D549219725BB28B100251FD2 /* APIActivityErrorHandler+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIActivityErrorHandler+Tutor.swift"; sourceTree = "<group>"; };
 		D549219C25BB28F700251FD2 /* APIError+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIError+Rythmico.swift"; sourceTree = "<group>"; };
 		D54921A125BB290C00251FD2 /* APIError+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIError+Tutor.swift"; sourceTree = "<group>"; };
+		D54921AE25BB35BC00251FD2 /* UserDefaultsProtocol+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaultsProtocol+Tutor.swift"; sourceTree = "<group>"; };
 		D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationServiceDoubles.swift; sourceTree = "<group>"; };
 		D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HashFunction+Helpers.swift"; sourceTree = "<group>"; };
 		D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationController.swift; sourceTree = "<group>"; };
@@ -1954,6 +1956,7 @@
 			isa = PBXGroup;
 			children = (
 				D5A8C4BA25044A230006F5C5 /* UserDefaultsProtocol.swift */,
+				D54921AE25BB35BC00251FD2 /* UserDefaultsProtocol+Tutor.swift */,
 				D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */,
 			);
 			path = UserDefaults;
@@ -2952,6 +2955,7 @@
 				D575C84E254F29BD001664AB /* Assets.generated.swift in Sources */,
 				03E88EB824C4B0F40077A420 /* Repository.swift in Sources */,
 				D527B01224FE92DA003E81A9 /* ActivityDoubles.swift in Sources */,
+				D54921AF25BB35BC00251FD2 /* UserDefaultsProtocol+Tutor.swift in Sources */,
 				D5E58F46256DB0AC00EB52ED /* NavigationLinkModifier.swift in Sources */,
 				D5BF12C72507D78800B2931C /* RouterDoubles.swift in Sources */,
 				035B1D4A249E577700AABFEA /* AppleAuthorizationCompletionDelegate.swift in Sources */,
