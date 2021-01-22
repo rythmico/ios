@@ -300,6 +300,7 @@
 		D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = D53668FC255EEDEF00A9D97D /* Stripe */; };
 		D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */; };
 		D5473C9F241AC3CB00D66775 /* AddressDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5473C9D241AC3B800D66775 /* AddressDetailsViewTests.swift */; };
+		D54CFD1C25BB173000C012F3 /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = D54CFD1B25BB173000C012F3 /* WebView */; };
 		D54EFF0C2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF0B2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift */; };
 		D54EFF142513D5BF004F14D3 /* LessonPlanApplicationDetailAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF132513D5BE004F14D3 /* LessonPlanApplicationDetailAboutView.swift */; };
 		D54EFF192513D690004F14D3 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF182513D690004F14D3 /* Portfolio.swift */; };
@@ -1040,6 +1041,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D54CFD1C25BB173000C012F3 /* WebView in Frameworks */,
 				D5FC2D53254A7E21005056D5 /* FirebaseMessaging in Frameworks */,
 				D5F4D3DE24F031FA000E8580 /* SwiftUIMapView in Frameworks */,
 				D5FC2D4F254A7E21005056D5 /* FirebaseAuth in Frameworks */,
@@ -2197,6 +2199,7 @@
 				D575C836254F10F0001664AB /* FirebaseRemoteConfig */,
 				D5F4AE8A2559D46A001085D5 /* PhoneNumberKit */,
 				D5D32C6425BA02E600F3ECD8 /* MultiModal */,
+				D54CFD1B25BB173000C012F3 /* WebView */,
 			);
 			productName = RythmicoTutor;
 			productReference = 035B1CBC249CF2AA00AABFEA /* Tutor.app */;
@@ -2319,6 +2322,7 @@
 				D507CCA825771C86001B2B5A /* XCRemoteSwiftPackageReference "EnumKit" */,
 				D59E4E5F25B20ADA00E8F94C /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
 				D5D32C5825B9FB0E00F3ECD8 /* XCRemoteSwiftPackageReference "MultiModal" */,
+				D54CFD1A25BB173000C012F3 /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */,
 			);
 			productRefGroup = 03341B3C23ABB1E7009AE8A8 /* Products */;
 			projectDirPath = "";
@@ -3611,6 +3615,14 @@
 				minimumVersion = 2.6.0;
 			};
 		};
+		D54CFD1A25BB173000C012F3 /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kylehickinson/SwiftUI-WebView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
 		D56544D124CE4BA100281875 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nalexn/ViewInspector";
@@ -3743,6 +3755,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */;
 			productName = Stripe;
+		};
+		D54CFD1B25BB173000C012F3 /* WebView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D54CFD1A25BB173000C012F3 /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */;
+			productName = WebView;
 		};
 		D56544D224CE4BA100281875 /* ViewInspector */ = {
 			isa = XCSwiftPackageProductDependency;
