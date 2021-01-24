@@ -308,6 +308,7 @@
 		D54921A225BB290C00251FD2 /* APIError+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921A125BB290C00251FD2 /* APIError+Tutor.swift */; };
 		D54921AF25BB35BC00251FD2 /* UserDefaults+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921AE25BB35BC00251FD2 /* UserDefaults+Tutor.swift */; };
 		D54921C225BB3F9400251FD2 /* UserDefaults+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921C125BB3F9400251FD2 /* UserDefaults+Rythmico.swift */; };
+		D54921D025BB46F300251FD2 /* TutorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921CF25BB46F300251FD2 /* TutorStatusView.swift */; };
 		D54CFD1C25BB173000C012F3 /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = D54CFD1B25BB173000C012F3 /* WebView */; };
 		D54CFD2125BB208100C012F3 /* TutorStatusEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CFD2025BB208100C012F3 /* TutorStatusEndpoints.swift */; };
 		D54CFD2C25BB20A600C012F3 /* TutorStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CFD2B25BB20A600C012F3 /* TutorStatus.swift */; };
@@ -367,7 +368,6 @@
 		D575C877254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C876254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift */; };
 		D575C878254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C876254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift */; };
 		D575C880254F2FF7001664AB /* RootView+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C87F254F2FF7001664AB /* RootView+Sugar.swift */; };
-		D575C881254F2FF7001664AB /* RootView+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C87F254F2FF7001664AB /* RootView+Sugar.swift */; };
 		D577EEA724E6F66400253EA1 /* BookingRequestApplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */; };
 		D58149E9251D262B0009BBB3 /* PageDotIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58149E8251D262B0009BBB3 /* PageDotIndicator.swift */; };
 		D58149ED251D262F0009BBB3 /* Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E824F09C43000E8580 /* Dot.swift */; };
@@ -843,6 +843,7 @@
 		D54921A125BB290C00251FD2 /* APIError+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIError+Tutor.swift"; sourceTree = "<group>"; };
 		D54921AE25BB35BC00251FD2 /* UserDefaults+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Tutor.swift"; sourceTree = "<group>"; };
 		D54921C125BB3F9400251FD2 /* UserDefaults+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Rythmico.swift"; sourceTree = "<group>"; };
+		D54921CF25BB46F300251FD2 /* TutorStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorStatusView.swift; sourceTree = "<group>"; };
 		D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationServiceDoubles.swift; sourceTree = "<group>"; };
 		D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HashFunction+Helpers.swift"; sourceTree = "<group>"; };
 		D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationController.swift; sourceTree = "<group>"; };
@@ -1257,6 +1258,7 @@
 				D58DE1BB25BDF5C30013AEE8 /* RootViewFlow.swift */,
 				035B1D77249E6D3B00AABFEA /* RootViewTests.swift */,
 				035B1D56249E5A5000AABFEA /* Onboarding */,
+				D54921CF25BB46F300251FD2 /* TutorStatusView.swift */,
 				035B1D57249E5A5700AABFEA /* Main */,
 			);
 			path = Root;
@@ -2922,6 +2924,7 @@
 				D54FC05624CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */,
 				D5E58F14256AF22200EB52ED /* Booking.swift in Sources */,
 				D5F4D3E524F0475F000E8580 /* BookingApplicationDoubles.swift in Sources */,
+				D54921D025BB46F300251FD2 /* TutorStatusView.swift in Sources */,
 				035B1D39249E576900AABFEA /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
 				D52C554824DDC60900C295C4 /* FloatingView+Tutor.swift in Sources */,
 				D575C830254F10E1001664AB /* RemoteConfig.swift in Sources */,
@@ -3042,7 +3045,6 @@
 				D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */,
 				D55C35D825A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */,
 				D5CAC9AE24E6D67C00119DAA /* MultilineTextField+Tutor.swift in Sources */,
-				D575C881254F2FF7001664AB /* RootView+Sugar.swift in Sources */,
 				D575C86F254F2F82001664AB /* ActivityCoordinator+Sugar.swift in Sources */,
 				035B1D15249E565200AABFEA /* TestableView.swift in Sources */,
 				03E88EAF24C1F74D0077A420 /* AppExtensions.swift in Sources */,
