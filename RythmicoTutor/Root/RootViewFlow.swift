@@ -25,7 +25,12 @@ final class RootViewFlow: Flow {
         )
         .map { (isAuthenticated: $0 != nil, isTutorVerified: $1) }
         .map(stepForState)
-        .assign(to: \.currentStep, on: self)
+        .removeDuplicates()
+        .scan((previousStep, currentStep), { ($0.1, $1) })
+        .sink { [self] previous, current in
+            previousStep = previous
+            currentStep = current
+        }
     }
 
     private func stepForState(isAuthenticated: Bool, isTutorVerified: Bool) -> Step {
@@ -39,9 +44,6 @@ final class RootViewFlow: Flow {
         }
     }
 
-    private(set) var previousStep: Step?
-
-    @Published var currentStep: Step = .onboarding {
-        willSet { previousStep = currentStep }
-    }
+    @Published private(set) var previousStep: Step?
+    @Published private(set) var currentStep: Step = .onboarding
 }
