@@ -7,7 +7,7 @@ extension UserDefaults {
 }
 
 extension UserDefaults {
-    var tutorVerified: Bool {
+    @objc dynamic var tutorVerified: Bool {
         get { self[.tutorVerified] as? Bool ?? false }
         set { self[.tutorVerified] = newValue }
     }
