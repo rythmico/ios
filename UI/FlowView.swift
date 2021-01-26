@@ -2,13 +2,21 @@ import SwiftUI
 
 struct FlowView<FlowType: Flow, Content: View>: View {
     typealias Step = FlowType.Step
+    typealias TransitionMap = (AnyTransition) -> AnyTransition
+    typealias ContentBuilder = (Step) -> Content
 
     @StateObject
     var flow: FlowType
-    var content: (Step) -> Content
+    var transitionMap: TransitionMap
+    var content: ContentBuilder
 
-    init(flow: FlowType, @ViewBuilder content: @escaping (Step) -> Content) {
+    init(
+        flow: FlowType,
+        transition: @escaping TransitionMap = \.self,
+        @ViewBuilder content: @escaping ContentBuilder
+    ) {
         self._flow = .init(wrappedValue: flow)
+        self.transitionMap = transition
         self.content = content
     }
 
@@ -26,12 +34,13 @@ struct FlowView<FlowType: Flow, Content: View>: View {
     }
 
     private func transition(forStepIndex index: Int) -> AnyTransition {
-        AnyTransition.move(
-            edge: index == flow.currentStep.index
-                ? flow.direction == .forward ? .trailing : .leading
-                : flow.direction == .forward ? .leading : .trailing
+        transitionMap(
+            .move(
+                edge: index == flow.currentStep.index
+                    ? flow.direction == .forward ? .trailing : .leading
+                    : flow.direction == .forward ? .leading : .trailing
+            )
         )
-        .combined(with: .opacity)
     }
 }
 
