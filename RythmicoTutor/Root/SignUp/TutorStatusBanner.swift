@@ -27,7 +27,7 @@ struct TutorStatusBanner: View {
                 .id(description.hashValue)
             enableNotificationsAction.map { Button("Notify Me", action: $0) }
         }
-        .animation(.rythmicoSpring(duration: .durationShort), value: enableNotificationsAction != nil)
+        .animation(.rythmicoSpring(duration: .durationMedium), value: enableNotificationsAction != nil)
         .alert(
             error: pushNotificationAuthCoordinator.status.failedValue,
             dismiss: pushNotificationAuthCoordinator.dismissFailure
