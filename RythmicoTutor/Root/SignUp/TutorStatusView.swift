@@ -45,8 +45,8 @@ struct TutorStatusView: View {
                 ActivityIndicator(color: .gray)
             }
         }
-        .onAppear(perform: coordinator.startToIdle)
-        .onEvent(.appInForeground, perform: coordinator.startToIdle)
+        .onAppear(perform: coordinator.run)
+        .onEvent(.appInForeground, perform: coordinator.run)
         .onSuccess(coordinator, perform: tutorStatusFetched)
         .alertOnFailure(coordinator)
     }
