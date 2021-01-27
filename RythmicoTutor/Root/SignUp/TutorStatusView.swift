@@ -1,5 +1,7 @@
 import SwiftUI
 import WebView
+import WebKit
+import Sugar
 import Then
 
 extension WebViewStore: Then {}
@@ -13,7 +15,10 @@ struct TutorStatusView: View {
     private var webViewStore = WebViewStore().then {
         $0.webView.scrollView.contentInsetAdjustmentBehavior = .never
         $0.webView.backgroundColor = .white
+        $0.webView.allowsBackForwardNavigationGestures = false
+        $0.webView.allowsLinkPreview = false
     }
+    private let webViewDelegate = TutorSignUpWebViewDelegate()
 
     var body: some View {
         ZStack {
@@ -21,22 +26,8 @@ struct TutorStatusView: View {
                 switch status {
                 case .notRegistered:
                     WebView(webView: webViewStore.webView).edgesIgnoringSafeArea(.bottom)
-                case .notCurated:
-                    TutorStatusBanner(
-                        """
-                        Thank you for signing up as a Rythmico Tutor.
-
-                        We will review your submission and reach out to you within a few days.
-                        """
-                    )
-                case .notDBSChecked:
-                    TutorStatusBanner(
-                        """
-                        Your mandatory DBS check form is now ready.
-
-                        Please follow the link sent to your inbox provided by uCheck.
-                        """
-                    )
+                case .notCurated, .notDBSChecked:
+                    TutorStatusBanner(status.bannerText)
                 case .verified:
                     EmptyView()
                 }
@@ -45,10 +36,17 @@ struct TutorStatusView: View {
                 ActivityIndicator(color: .gray)
             }
         }
+        .onAppear(perform: setUpWebViewDelegate)
         .onAppear(perform: coordinator.run)
         .onEvent(.appInForeground, perform: coordinator.run)
         .onSuccess(coordinator, perform: tutorStatusFetched)
         .alertOnFailure(coordinator)
+        .animation(.rythmicoSpring(duration: .durationShort), value: coordinator.state.successValue)
+    }
+
+    func setUpWebViewDelegate() {
+        webViewDelegate.onAboutBlank = coordinator.run
+        webViewStore.webView.navigationDelegate = webViewDelegate
     }
 
     func tutorStatusFetched(_ newStatus: TutorStatus) {
@@ -77,6 +75,36 @@ struct TutorStatusView: View {
             return webViewStore.isLoading
         case .notCurated, .notDBSChecked, .verified:
             return false
+        }
+    }
+}
+
+private final class TutorSignUpWebViewDelegate: NSObject, WKNavigationDelegate {
+    var onAboutBlank: Action?
+
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        guard webView.url?.absoluteString == "about:blank" else { return }
+        onAboutBlank?()
+    }
+}
+
+private extension TutorStatus {
+    var bannerText: String {
+        switch self {
+        case .notCurated:
+            return  """
+                    Thank you for signing up as a Rythmico Tutor.
+
+                    We will review your submission and reach out to you within a few days.
+                    """
+        case .notDBSChecked:
+            return  """
+                    Your mandatory DBS check form is now ready.
+
+                    Please follow the link sent to your inbox provided by uCheck.
+                    """
+        case .notRegistered, .verified:
+            return .empty
         }
     }
 }

@@ -19,6 +19,8 @@ struct TutorStatusBanner: View {
                 .lineSpacing(.spacingUnit)
                 .frame(maxWidth: .spacingMax)
                 .padding(.horizontal, .spacingUnit * 10)
+                .transition(.opacity)
+                .id(description.hashValue)
         }
     }
 
