@@ -389,6 +389,8 @@
 		D5883CEB25A4189D000B545C /* CalendarSyncCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5883CE925A4189D000B545C /* CalendarSyncCoordinator.swift */; };
 		D58DE1BC25BDF5C30013AEE8 /* RootViewFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58DE1BB25BDF5C30013AEE8 /* RootViewFlow.swift */; };
 		D58DE1C125C05FD90013AEE8 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58DE1C025C05FD90013AEE8 /* Flow.swift */; };
+		D58DE1CD25C0F0100013AEE8 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58DE1CC25C0F0100013AEE8 /* UIColor+Hex.swift */; };
+		D58DE1CE25C0F0100013AEE8 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58DE1CC25C0F0100013AEE8 /* UIColor+Hex.swift */; };
 		D5919F6E24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */; };
 		D5919F6F24CF2D48009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */; };
 		D5919F7124CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */; };
@@ -899,6 +901,7 @@
 		D5883CE925A4189D000B545C /* CalendarSyncCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSyncCoordinator.swift; sourceTree = "<group>"; };
 		D58DE1BB25BDF5C30013AEE8 /* RootViewFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewFlow.swift; sourceTree = "<group>"; };
 		D58DE1C025C05FD90013AEE8 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
+		D58DE1CC25C0F0100013AEE8 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetInteractiveDismissal+Previews.swift"; sourceTree = "<group>"; };
 		D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet+Sugar.swift"; sourceTree = "<group>"; };
 		D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdatePrompt.swift; sourceTree = "<group>"; };
@@ -1642,6 +1645,7 @@
 				D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */,
 				039C3EB42448A7CD0036959A /* Transitions.swift */,
 				D5F506642400619600CA4094 /* UIApplication+KeyboardDismisser.swift */,
+				D58DE1CC25C0F0100013AEE8 /* UIColor+Hex.swift */,
 				D5CC5FE924FF1201007DFE84 /* UIImage+Sugar.swift */,
 				D5147507240C8E69002EE20C /* XCTAssertView.swift */,
 				D59E4E5325B2033200E8F94C /* YouTubeVideoPlayerView.swift */,
@@ -2609,6 +2613,7 @@
 				D5D9AEA325367E9B00A0ABCC /* LessonPlanBookingEntryView.swift in Sources */,
 				D5F5068E240473CB00CA4094 /* FloatingInputView.swift in Sources */,
 				D501587825375AA9005E02FA /* PorfolioView.swift in Sources */,
+				D58DE1CD25C0F0100013AEE8 /* UIColor+Hex.swift in Sources */,
 				D575C819254DD6C8001664AB /* AppSplash.swift in Sources */,
 				0392A9CF244D09FF001E97AE /* ContentSizeCategory+Sugar.swift in Sources */,
 				D517FF952553B60000A41639 /* LessonDoubles.swift in Sources */,
@@ -3034,6 +3039,7 @@
 				032B6FD224B787D700299A09 /* Instrument.swift in Sources */,
 				035B1D46249E577700AABFEA /* AppleAuthorizationService.swift in Sources */,
 				035B1D33249E576900AABFEA /* AuthenticationError.swift in Sources */,
+				D58DE1CE25C0F0100013AEE8 /* UIColor+Hex.swift in Sources */,
 				035B1D4F249E57DC00AABFEA /* UIAccessibilityDoubles.swift in Sources */,
 				035B1D49249E577700AABFEA /* AppleAuthorizationControllerDoubles.swift in Sources */,
 				035B1D3C249E576900AABFEA /* AuthenticationAccessTokenProviderBroadcast.swift in Sources */,
