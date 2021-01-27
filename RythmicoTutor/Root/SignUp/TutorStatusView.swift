@@ -44,6 +44,17 @@ struct TutorStatusView: View {
         .animation(.rythmicoSpring(duration: .durationShort), value: coordinator.state.successValue)
     }
 
+    var isLoading: Bool {
+        switch currentStatus {
+        case .none:
+            return coordinator.state.isLoading
+        case .notRegistered:
+            return webViewStore.isLoading
+        case .notCurated, .notDBSChecked, .verified:
+            return false
+        }
+    }
+
     func setUpWebViewDelegate() {
         webViewDelegate.onAboutBlank = coordinator.run
         webViewStore.webView.navigationDelegate = webViewDelegate
@@ -64,17 +75,6 @@ struct TutorStatusView: View {
             break
         case .verified:
             Current.settings.tutorVerified = true
-        }
-    }
-
-    var isLoading: Bool {
-        switch currentStatus {
-        case .none:
-            return coordinator.state.isLoading
-        case .notRegistered:
-            return webViewStore.isLoading
-        case .notCurated, .notDBSChecked, .verified:
-            return false
         }
     }
 }
