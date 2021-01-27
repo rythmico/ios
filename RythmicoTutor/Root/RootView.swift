@@ -2,12 +2,12 @@ import SwiftUI
 import Sugar
 
 struct RootView: View, TestableView {
-    @StateObject
-    private var accessTokenProviderObserver = Current.accessTokenProviderObserver
+    @StateObject var accessTokenProviderObserver = Current.accessTokenProviderObserver
+    @StateObject var flow = RootViewFlow()
 
     let inspection = SelfInspection()
     var body: some View {
-        FlowView(flow: RootViewFlow()) {
+        FlowView(flow: flow) {
             switch $0 {
             case .onboarding:
                 OnboardingView()
