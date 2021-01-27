@@ -1,6 +1,10 @@
 import SwiftUI
+import Sugar
 
 struct TutorStatusBanner: View {
+    @ObservedObject
+    private var pushNotificationAuthCoordinator = Current.pushNotificationAuthorizationCoordinator
+
     var description: String
 
     init(_ description: String) {
@@ -21,7 +25,13 @@ struct TutorStatusBanner: View {
                 .padding(.horizontal, .spacingUnit * 10)
                 .transition(.opacity)
                 .id(description.hashValue)
+            enableNotificationsAction.map { Button("Notify Me", action: $0) }
         }
+        .animation(.rythmicoSpring(duration: .durationShort), value: enableNotificationsAction != nil)
+        .alert(
+            error: pushNotificationAuthCoordinator.status.failedValue,
+            dismiss: pushNotificationAuthCoordinator.dismissFailure
+        )
     }
 
     var foregroundColor: Color {
@@ -32,4 +42,24 @@ struct TutorStatusBanner: View {
             )
         )
     }
+
+    var enableNotificationsAction: Action? {
+        pushNotificationAuthCoordinator.status.isDetermined
+            ? nil
+            : pushNotificationAuthCoordinator.requestAuthorization
+    }
 }
+
+#if DEBUG
+struct TutorStatusBanner_Previews: PreviewProvider {
+    static var previews: some View {
+        TutorStatusBanner(
+            """
+            Thank you for signing up as a Rythmico Tutor.
+
+            We will review your submission and reach out to you within a few days.
+            """
+        )
+    }
+}
+#endif
