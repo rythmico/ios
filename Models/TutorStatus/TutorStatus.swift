@@ -1,6 +1,6 @@
 import Foundation
 
-enum TutorStatus: Decodable {
+enum TutorStatus: Decodable, Equatable {
     case notRegistered(formURL: URL)
     case notCurated
     case notDBSChecked
