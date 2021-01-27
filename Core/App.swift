@@ -34,13 +34,10 @@ struct App: SwiftUI.App {
             ZStack {
                 if shouldShowSplash {
                     AnimatedAppSplash(image: App.logo, title: App.name)
-                        .transition(.blendingOpacity)
                 } else if Current.remoteConfig.appUpdateRequired {
                     AppUpdatePrompt(appId: App.id, method: App.distributionMethod)
-                        .transition(.blendingOpacity)
                 } else {
                     RootView()
-                        .transition(.blendingOpacity)
                         .onEvent(.sizeCategoryChanged, perform: refreshAppearance)
                         .onEvent(.appInBackground, perform: didEnterBackground)
                 }

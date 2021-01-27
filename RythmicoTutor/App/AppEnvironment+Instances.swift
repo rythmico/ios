@@ -19,7 +19,7 @@ extension AppEnvironment {
 
         eventEmitter: .default,
 
-        settings: UserDefaults.standard,
+        settings: .standard,
         keychain: Keychain.localKeychain,
 
         appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
@@ -49,6 +49,8 @@ extension AppEnvironment {
 
         imageLoadingService: ImageLoadingService(),
 
+        tutorStatusFetchingService: APIService(),
+
         bookingsRepository: Repository(),
         bookingsFetchingService: APIService(),
 
@@ -60,6 +62,10 @@ extension AppEnvironment {
         bookingApplicationFetchingService: APIService(),
         bookingApplicationRetractionService: APIService()
     )
+
+    var apiErrorHandler: APIActivityErrorHandlerProtocol {
+        APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator, settings: settings)
+    }
 }
 
 #if DEBUG
@@ -67,6 +73,8 @@ extension AppEnvironment {
     static var fake: AppEnvironment {
         dummy.with {
             $0.setUpFake()
+
+            $0.tutorStatusFetchingService = fakeAPIService(result: .success(.notRegisteredStub))
 
             $0.bookingsFetchingService = fakeAPIService(result: .success(.stub))
 
@@ -119,6 +127,8 @@ extension AppEnvironment {
             router: RouterDummy(),
 
             imageLoadingService: ImageLoadingServiceDummy(),
+
+            tutorStatusFetchingService: APIServiceDummy(),
 
             bookingsRepository: Repository(),
             bookingsFetchingService: APIServiceDummy(),

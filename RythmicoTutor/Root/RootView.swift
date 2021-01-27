@@ -1,29 +1,23 @@
 import SwiftUI
 import Sugar
 
-extension RootView {
-    enum UserState {
-        case unauthenticated(OnboardingView)
-        case authenticated(MainView)
-    }
-}
-
 struct RootView: View, TestableView {
-    @StateObject
-    private var accessTokenProviderObserver = Current.accessTokenProviderObserver
-
-    var state: UserState {
-        MainView().flatMap(UserState.authenticated) ?? .unauthenticated(OnboardingView())
-    }
+    @StateObject var accessTokenProviderObserver = Current.accessTokenProviderObserver
+    @StateObject var flow = RootViewFlow()
 
     let inspection = SelfInspection()
     var body: some View {
-        ZStack {
-            state.unauthenticatedValue.zIndex(1).transition(.move(edge: .leading))
-            state.authenticatedValue.zIndex(2).transition(.move(edge: .trailing))
+        FlowView(flow: flow) {
+            switch $0 {
+            case .onboarding:
+                OnboardingView()
+            case .tutorStatus:
+                TutorStatusView()
+            case .mainView:
+                MainView()
+            }
         }
         .testable(self)
-        .animation(.rythmicoSpring(duration: .durationMedium), value: state.isAuthenticated)
         .onReceive(accessTokenProviderObserver.$currentProvider, perform: accessTokenProviderChanged)
         .onAppear(perform: handleStateChanges)
     }
@@ -52,6 +46,7 @@ struct RootView: View, TestableView {
             // TODO: potentially refactor to put all-things-authentication into coordinator
             // that takes care of flushing keychain upon logout etc.
             Current.keychain.appleAuthorizationUserId = nil
+            Current.settings.tutorVerified = false
         }
     }
 }

@@ -35,7 +35,7 @@ struct AppSplash: View {
 
     var body: some View {
         ZStack {
-            Color(.systemBackground)
+            Color(.clear)
             VStack(spacing: .spacingLarge) {
                 Image(decorative: image.name)
                     .resizable()

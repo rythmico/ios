@@ -12,7 +12,7 @@ struct AppEnvironment {
 
     var eventEmitter: NotificationCenter
 
-    var settings: UserDefaultsProtocol
+    var settings: UserDefaults
     var keychain: KeychainProtocol
 
     var appleAuthorizationService: AppleAuthorizationServiceProtocol
@@ -38,6 +38,8 @@ struct AppEnvironment {
     var router: RouterProtocol
 
     var imageLoadingService: ImageLoadingServiceProtocol
+
+    var tutorStatusFetchingService: APIServiceBase<GetTutorStatusRequest>
 
     var bookingsRepository: Repository<Booking>
     var bookingsFetchingService: APIServiceBase<BookingsGetRequest>

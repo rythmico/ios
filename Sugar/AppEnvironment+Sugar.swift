@@ -105,7 +105,7 @@ extension AppEnvironment {
         let coordinator = APIActivityCoordinator(
             accessTokenProvider: currentProvider,
             deauthenticationService: deauthenticationService,
-            remoteConfigCoordinator: remoteConfigCoordinator,
+            errorHandler: apiErrorHandler,
             service: self[keyPath: service]
         )
         coordinatorMap[service] = coordinator
@@ -117,7 +117,7 @@ extension AppEnvironment {
             APIActivityCoordinator(
                 accessTokenProvider: $0,
                 deauthenticationService: deauthenticationService,
-                remoteConfigCoordinator: remoteConfigCoordinator,
+                errorHandler: apiErrorHandler,
                 service: self[keyPath: service]
             )
         }

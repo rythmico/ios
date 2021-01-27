@@ -9,14 +9,6 @@ extension AnyTransition {
             )
         )
     }
-
-    // TODO: remove, use @Namespace instead.
-    static var blendingOpacity: AnyTransition {
-        .modifier(
-            active: BlendingOpacityModifier(opacity: 0),
-            identity: BlendingOpacityModifier(opacity: 1)
-        )
-    }
 }
 
 private extension UIEdgeInsets {
@@ -31,21 +23,5 @@ private extension UIEdgeInsets {
         case .trailing:
             return .init(width: right, height: 0)
         }
-    }
-}
-
-private struct BlendingOpacityModifier: ViewModifier {
-    @Environment(\.colorScheme) private var colorScheme
-
-    let opacity: Double
-
-    func body(content: Content) -> some View {
-        content
-            .blendMode(blendMode)
-            .opacity(opacity)
-    }
-
-    var blendMode: BlendMode {
-        colorScheme == .dark ? .plusLighter : .plusDarker
     }
 }
