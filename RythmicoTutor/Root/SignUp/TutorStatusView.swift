@@ -17,15 +17,26 @@ struct TutorStatusView: View {
 
     var body: some View {
         ZStack {
-            Color.white.edgesIgnoringSafeArea(.bottom)
             if let status = currentStatus {
                 switch status {
                 case .notRegistered:
                     WebView(webView: webViewStore.webView).edgesIgnoringSafeArea(.bottom)
                 case .notCurated:
-                    EmptyView()
+                    TutorStatusBanner(
+                        """
+                        Thank you for signing up as a Rythmico Tutor.
+
+                        We will review your submission and reach out to you within a few days.
+                        """
+                    )
                 case .notDBSChecked:
-                    EmptyView()
+                    TutorStatusBanner(
+                        """
+                        Your mandatory DBS check form is now ready.
+
+                        Please follow the link sent to your inbox provided by uCheck.
+                        """
+                    )
                 case .verified:
                     EmptyView()
                 }
@@ -69,3 +80,13 @@ struct TutorStatusView: View {
         }
     }
 }
+
+#if DEBUG
+struct TutorStatusView_Previews: PreviewProvider {
+    static var previews: some View {
+        Current.tutorStatusFetchingService = APIServiceStub(result: .success(.notCurated))
+        Current.tutorStatusFetchingService = APIServiceStub(result: .success(.notDBSChecked))
+        return TutorStatusView()
+    }
+}
+#endif
