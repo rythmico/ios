@@ -30,6 +30,8 @@
 	<true/>
 	<key>NSCalendarsUsageDescription</key>
 	<string>We need access to your calendar to determine your calendar sync status.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We need access to your camera to take pictures for your portfolio.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
