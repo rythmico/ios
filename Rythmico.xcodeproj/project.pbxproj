@@ -343,6 +343,8 @@
 		D55F013124CCCEDE00E5F13C /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB724C4B0F40077A420 /* Repository.swift */; };
 		D55F013324CCE65C00E5F13C /* Then+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55F013224CCE65C00E5F13C /* Then+Sugar.swift */; };
 		D55F013424CCE65C00E5F13C /* Then+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55F013224CCE65C00E5F13C /* Then+Sugar.swift */; };
+		D5622D4925C32C0100DF4732 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D5622D4825C32C0100DF4732 /* Settings.bundle */; };
+		D5622D5125C32FC200DF4732 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D5622D5025C32FC200DF4732 /* Settings.bundle */; };
 		D564F4642511722900EA13E9 /* TabMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D564F4632511722900EA13E9 /* TabMenuView.swift */; };
 		D56544D324CE4BA100281875 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = D56544D224CE4BA100281875 /* ViewInspector */; };
 		D56544D524CE4C8D00281875 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = D56544D424CE4C8D00281875 /* ViewInspector */; };
@@ -875,6 +877,8 @@
 		D55C360225A3DBB30023E56B /* CalendarSyncStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSyncStatusProvider.swift; sourceTree = "<group>"; };
 		D55C360B25A3E2B20023E56B /* CalendarSyncStatusProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSyncStatusProviderDoubles.swift; sourceTree = "<group>"; };
 		D55F013224CCE65C00E5F13C /* Then+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Then+Sugar.swift"; sourceTree = "<group>"; };
+		D5622D4825C32C0100DF4732 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		D5622D5025C32FC200DF4732 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D564F4632511722900EA13E9 /* TabMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuView.swift; sourceTree = "<group>"; };
 		D56B2522252CF76300BC3932 /* AppSecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecrets.swift; sourceTree = "<group>"; };
 		D56B2530252D1A8100BC3932 /* StripePaymentCardTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripePaymentCardTextField.swift; sourceTree = "<group>"; };
@@ -1254,6 +1258,7 @@
 				035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */,
 				035B1D6C249E674000AABFEA /* GoogleService-Info-Release.plist */,
 				035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */,
+				D5622D4825C32C0100DF4732 /* Settings.bundle */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -1738,6 +1743,7 @@
 				D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */,
 				D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */,
 				D509898423B9B5C100C19300 /* GoogleService-Info.plist */,
+				D5622D5025C32FC200DF4732 /* Settings.bundle */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -2413,6 +2419,7 @@
 				03341B4523ABB1E8009AE8A8 /* Assets.xcassets in Resources */,
 				D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */,
 				D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */,
+				D5622D5125C32FC200DF4732 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2426,6 +2433,7 @@
 				035B1CC5249CF2AC00AABFEA /* Assets.xcassets in Resources */,
 				035B1D6D249E674000AABFEA /* GoogleService-Info-Release.plist in Resources */,
 				035B1D5B249E5E6E00AABFEA /* GoogleService-Info-Debug.plist in Resources */,
+				D5622D4925C32C0100DF4732 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
