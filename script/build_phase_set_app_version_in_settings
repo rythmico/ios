@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -e
+
+version=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" "$PROJECT_DIR/$INFOPLIST_FILE")
+build=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "$PROJECT_DIR/$INFOPLIST_FILE")
+/usr/libexec/PlistBuddy -c "Set PreferenceSpecifiers:1:DefaultValue $version ($build)" "$CODESIGNING_FOLDER_PATH/Settings.bundle/Root.plist"
