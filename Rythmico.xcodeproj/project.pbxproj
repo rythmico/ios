@@ -2198,6 +2198,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03341B4F23ABB1E8009AE8A8 /* Build configuration list for PBXNativeTarget "Rythmico" */;
 			buildPhases = (
+				D55430B325C428BF00499FF6 /* Generate License Plist */,
 				D5B57A612414516700BE9B4F /* Generate Asset Symbols */,
 				D5CC5FF825041262007DFE84 /* Sanity Check Sources */,
 				03341B3723ABB1E7009AE8A8 /* Sources */,
@@ -2240,6 +2241,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 035B1CCD249CF2AC00AABFEA /* Build configuration list for PBXNativeTarget "RythmicoTutor" */;
 			buildPhases = (
+				D55430B725C429C200499FF6 /* Generate License Plist */,
 				D575C852254F2A3D001664AB /* Generate Asset Symbols */,
 				D5CC5FF725040F9A007DFE84 /* Sanity Check Sources */,
 				035B1CB8249CF2AA00AABFEA /* Sources */,
@@ -2496,6 +2498,46 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${SRCROOT}/script/build_phase_select_google_info_plist\n";
+		};
+		D55430B325C428BF00499FF6 /* Generate License Plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate License Plist";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/${TARGET_NAME}/Supporting Files/Settings.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/script/build_phase_generate_license_acknowledgments\n";
+		};
+		D55430B725C429C200499FF6 /* Generate License Plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate License Plist";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/${TARGET_NAME}/Supporting Files/Settings.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/script/build_phase_generate_license_acknowledgments\n";
 		};
 		D575C852254F2A3D001664AB /* Generate Asset Symbols */ = {
 			isa = PBXShellScriptBuildPhase;
