@@ -2198,11 +2198,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03341B4F23ABB1E8009AE8A8 /* Build configuration list for PBXNativeTarget "Rythmico" */;
 			buildPhases = (
+				D55430B325C428BF00499FF6 /* Generate License Plist */,
 				D5B57A612414516700BE9B4F /* Generate Asset Symbols */,
 				D5CC5FF825041262007DFE84 /* Sanity Check Sources */,
 				03341B3723ABB1E7009AE8A8 /* Sources */,
 				03341B3823ABB1E7009AE8A8 /* Frameworks */,
 				03341B3923ABB1E7009AE8A8 /* Resources */,
+				D55430C225C4335600499FF6 /* Set App Version in Settings */,
 				D509898123B9B2E400C19300 /* Select GoogleService-Info.plist */,
 				D53554B123E0FA4B005A20EB /* Embed Frameworks */,
 				D5AC9E16254C2F8D003A8197 /* Strip Firebase Frameworks */,
@@ -2240,11 +2242,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 035B1CCD249CF2AC00AABFEA /* Build configuration list for PBXNativeTarget "RythmicoTutor" */;
 			buildPhases = (
+				D55430B725C429C200499FF6 /* Generate License Plist */,
 				D575C852254F2A3D001664AB /* Generate Asset Symbols */,
 				D5CC5FF725040F9A007DFE84 /* Sanity Check Sources */,
 				035B1CB8249CF2AA00AABFEA /* Sources */,
 				035B1CB9249CF2AA00AABFEA /* Frameworks */,
 				035B1CBA249CF2AA00AABFEA /* Resources */,
+				D55430BB25C42CCF00499FF6 /* Set App Version in Settings */,
 				035B1D5C249E5EA000AABFEA /* Select GoogleService-Info.plist */,
 				035B1D0E249D303400AABFEA /* Embed Frameworks */,
 				D5AC9E17254C2FC1003A8197 /* Strip Firebase Frameworks */,
@@ -2496,6 +2500,84 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${SRCROOT}/script/build_phase_select_google_info_plist\n";
+		};
+		D55430B325C428BF00499FF6 /* Generate License Plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate License Plist";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/${TARGET_NAME}/Supporting Files/Settings.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/script/build_phase_generate_license_acknowledgments\n";
+		};
+		D55430B725C429C200499FF6 /* Generate License Plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate License Plist";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/${TARGET_NAME}/Supporting Files/Settings.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/script/build_phase_generate_license_acknowledgments\n";
+		};
+		D55430BB25C42CCF00499FF6 /* Set App Version in Settings */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Set App Version in Settings";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/script/build_phase_set_app_version_in_settings\n";
+		};
+		D55430C225C4335600499FF6 /* Set App Version in Settings */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Set App Version in Settings";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/script/build_phase_set_app_version_in_settings\n";
 		};
 		D575C852254F2A3D001664AB /* Generate Asset Symbols */ = {
 			isa = PBXShellScriptBuildPhase;

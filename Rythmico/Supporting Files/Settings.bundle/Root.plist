@@ -10,9 +10,27 @@
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 			<key>Title</key>
-			<string>Acknowledgments</string>
+			<string>Licenses</string>
 			<key>File</key>
 			<string>com.mono0926.LicensePlist</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>Version</string>
+			<key>Key</key>
+			<string>version_preference</string>
+			<key>DefaultValue</key>
+			<string>VersionValue</string>
+			<key>Values</key>
+			<array>
+				<string>VersionValue</string>
+			</array>
+			<key>Titles</key>
+			<array>
+				<string>VersionValue</string>
+			</array>
 		</dict>
 	</array>
 </dict>
