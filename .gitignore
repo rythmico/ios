@@ -121,6 +121,3 @@ iOSInjectionProject/
 
 # Brew Bundle
 Brewfile.lock.json
-
-# Licenses
-com.mono0926.LicensePlist*

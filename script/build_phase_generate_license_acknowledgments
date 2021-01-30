@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-set -e
-
-license-plist --output-path "$SRCROOT/$TARGET_NAME/Supporting Files/Settings.bundle" --add-version-numbers
