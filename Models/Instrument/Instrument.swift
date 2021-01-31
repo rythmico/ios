@@ -6,6 +6,10 @@ enum Instrument: String, Equatable, Codable, CaseIterable, Hashable {
     case drums = "DRUMS"
     case piano = "PIANO"
     case singing = "SINGING"
+    case saxophone = "SAXOPHONE"
+    case trumpet = "TRUMPET"
+    case flute = "FLUTE"
+    case violin = "VIOLIN"
 }
 
 extension Instrument: Identifiable {
@@ -23,6 +27,14 @@ extension Instrument {
             return "Piano"
         case .singing:
             return "Singing"
+        case .saxophone:
+            return "Saxophone"
+        case .trumpet:
+            return "Trumpet"
+        case .flute:
+            return "Flute"
+        case .violin:
+            return "Violin"
         }
     }
 
@@ -38,6 +50,14 @@ extension Instrument {
             return "Piano"
         case .singing:
             return "Singing"
+        case .saxophone:
+            return "Saxophone"
+        case .trumpet:
+            return "Trumpet"
+        case .flute:
+            return "Flute"
+        case .violin:
+            return "Violin"
         }
     }
 }
