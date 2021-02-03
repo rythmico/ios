@@ -30,6 +30,9 @@ struct StudentDetailsView: View, TestableView {
         nonmutating set { editingCoordinator.focus = newValue }
     }
 
+    @State
+    private var showingDateOfBirthPrivacyInfo = false
+
     private let instrument: Instrument
     private let context: StudentDetailsContext
 
@@ -110,7 +113,18 @@ struct StudentDetailsView: View, TestableView {
                                 onEditingChanged: textFieldEditingChanged
                             ).modifier(RoundedThinOutlineContainer(padded: false))
                         }
-                        HeaderContentView(title: "Date of Birth") {
+                        HeaderContentView(title: ["Date of Birth".style(.bodyBold)], titleAccessory: {
+                            Image(decorative: Asset.iconInfo.name)
+                                .renderingMode(.template)
+                                .foregroundColor(.rythmicoGray90)
+                                .alert(isPresented: $showingDateOfBirthPrivacyInfo) {
+                                    Alert(
+                                        title: Text("Why Date of Birth?"),
+                                        message: Text("This allows tutors to better understand the learning requirements of the student and how to structure lessons for the most comprehensive learning and enjoyment.")
+                                    )
+                                }
+                                .onTapGesture(perform: showDateOfBirthPrivacyInfo)
+                        }) {
                             CustomTextField(
                                 dateOfBirthPlaceholderText,
                                 text: .constant(dateOfBirthText ?? .empty),
@@ -177,6 +191,10 @@ struct StudentDetailsView: View, TestableView {
 
     func endEditing() {
         editingFocus = .none
+    }
+
+    func showDateOfBirthPrivacyInfo() {
+        showingDateOfBirthPrivacyInfo = true
     }
 }
 
