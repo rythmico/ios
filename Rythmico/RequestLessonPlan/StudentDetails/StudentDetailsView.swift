@@ -110,7 +110,12 @@ struct StudentDetailsView: View, TestableView {
                                 onEditingChanged: textFieldEditingChanged
                             ).modifier(RoundedThinOutlineContainer(padded: false))
                         }
-                        HeaderContentView(title: "Date of Birth") {
+                        HeaderContentView(title: ["Date of Birth".style(.bodyBold)], titleAccessory: {
+                            InfoDisclaimerButton(
+                                title: "Why Date of Birth?",
+                                message: "This allows tutors to better understand the learning requirements of the student and how to structure lessons for the most comprehensive learning and enjoyment."
+                            )
+                        }) {
                             CustomTextField(
                                 dateOfBirthPlaceholderText,
                                 text: .constant(dateOfBirthText ?? .empty),
