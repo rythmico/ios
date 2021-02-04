@@ -27,6 +27,7 @@ struct InstrumentView: View {
                 Image(decorative: viewData.icon.name)
                     .renderingMode(.template)
                     .foregroundColor(.rythmicoForeground)
+                    .frame(width: 40, alignment: .center) // aligns all icons vertically
                     .padding(.trailing, .spacingMedium)
             }
         }
@@ -45,6 +46,10 @@ struct InstrumentView_Preview: PreviewProvider {
             InstrumentView(viewData: .init(name: "Drums", icon: Asset.instrumentIconDrums, action: {}))
             InstrumentView(viewData: .init(name: "Piano", icon: Asset.instrumentIconPiano, action: {}))
             InstrumentView(viewData: .init(name: "Singing", icon: Asset.instrumentIconSinging, action: {}))
+            InstrumentView(viewData: .init(name: "Saxophone", icon: Asset.instrumentIconSaxophone, action: {}))
+            InstrumentView(viewData: .init(name: "Trumpet", icon: Asset.instrumentIconTrumpet, action: {}))
+            InstrumentView(viewData: .init(name: "Flute", icon: Asset.instrumentIconFlute, action: {}))
+            InstrumentView(viewData: .init(name: "Violin", icon: Asset.instrumentIconViolin, action: {}))
         }.padding(.horizontal, 20)
     }
 }
