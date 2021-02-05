@@ -135,7 +135,8 @@ struct StudentDetailsView: View, TestableView {
                     .rythmicoFont(.body)
                     .accentColor(.rythmicoPurple)
                     .padding([.trailing, .bottom], .spacingMedium)
-                    .onBackgroundTapGesture(perform: endEditing)
+                    // FIXME
+//                    .onBackgroundTapGesture(perform: endEditing)
                 }
                 .padding(.leading, .spacingMedium)
 

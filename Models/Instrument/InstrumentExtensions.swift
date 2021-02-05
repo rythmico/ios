@@ -11,6 +11,14 @@ extension Instrument {
             return Asset.instrumentIconPiano
         case .singing:
             return Asset.instrumentIconSinging
+        case .saxophone:
+            return Asset.instrumentIconSaxophone
+        case .trumpet:
+            return Asset.instrumentIconTrumpet
+        case .flute:
+            return Asset.instrumentIconFlute
+        case .violin:
+            return Asset.instrumentIconViolin
         }
     }
 }
