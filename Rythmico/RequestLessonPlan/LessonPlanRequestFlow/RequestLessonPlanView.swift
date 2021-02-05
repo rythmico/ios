@@ -1,4 +1,5 @@
 import SwiftUI
+import MultiModal
 import Sugar
 
 struct RequestLessonPlanView: View, TestableView {
@@ -42,7 +43,7 @@ struct RequestLessonPlanView: View, TestableView {
             coordinator: coordinator,
             successContent: LessonPlanConfirmationView.init,
             loadingTitle: "Submitting proposal...",
-            inputContent: { formView.alertOnFailure(coordinator) }
+            inputContent: { formView.multiModal { $0.alertOnFailure(coordinator) } }
         )
         .testable(self)
         .onSuccess(coordinator, perform: Current.lessonPlanRepository.insertItem)

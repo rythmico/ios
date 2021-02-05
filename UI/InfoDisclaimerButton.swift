@@ -1,4 +1,5 @@
 import SwiftUI
+import MultiModal
 
 struct InfoDisclaimerButton: View {
     var title: String
@@ -8,12 +9,15 @@ struct InfoDisclaimerButton: View {
     private var showingDisclaimer = false
 
     var body: some View {
-        Image(decorative: Asset.iconInfo.name)
-            .renderingMode(.template)
-            .foregroundColor(.rythmicoGray90)
-            .alert(isPresented: $showingDisclaimer) {
+        Button(action: { showingDisclaimer = true }) {
+            Image(decorative: Asset.iconInfo.name)
+                .renderingMode(.template)
+                .foregroundColor(.rythmicoGray90)
+        }
+        .multiModal {
+            $0.alert(isPresented: $showingDisclaimer) {
                 Alert(title: Text(title), message: Text(message))
             }
-            .onTapGesture { showingDisclaimer = true }
+        }
     }
 }
