@@ -5,7 +5,7 @@ protocol StudentDetailsContext {
     func setStudent(_ student: Student)
 }
 
-struct StudentDetailsView: View, TestableView {
+struct StudentDetailsView: View, EditableView, TestableView {
     private enum Const {
         static let averageStudentAge: (Int, Calendar.Component) = (10, .year)
     }
@@ -24,11 +24,7 @@ struct StudentDetailsView: View, TestableView {
     }
 
     @StateObject
-    private var editingCoordinator = EditingCoordinator<EditingFocus>()
-    private var editingFocus: EditingFocus? {
-        get { editingCoordinator.focus }
-        nonmutating set { editingCoordinator.focus = newValue }
-    }
+    var editingCoordinator = EditingCoordinator()
 
     private let instrument: Instrument
     private let context: StudentDetailsContext
@@ -147,7 +143,7 @@ struct StudentDetailsView: View, TestableView {
                     }
 
                     if editingFocus == .dateOfBirth {
-                        FloatingInputView(doneAction: editingCoordinator.endEditing) {
+                        FloatingInputView(doneAction: endEditing) {
                             LabelessDatePicker(
                                 selection: Binding(
                                     get: { state.dateOfBirth ?? dateOfBirthPlaceholder },
@@ -163,7 +159,7 @@ struct StudentDetailsView: View, TestableView {
         }
         .animation(.easeInOut(duration: .durationMedium), value: editingFocus)
         .testable(self)
-        .onDisappear(perform: editingCoordinator.endEditing)
+        .onDisappear(perform: endEditing)
     }
 
     func textFieldEditingChanged(_ isEditing: Bool) {

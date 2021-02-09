@@ -5,7 +5,7 @@ protocol PrivateNoteContext {
     func setPrivateNote(_ note: String)
 }
 
-struct PrivateNoteView: View, TestableView {
+struct PrivateNoteView: View, EditableView, TestableView {
     final class ViewState: ObservableObject {
         @Published var privateNote: String = ""
     }
@@ -19,11 +19,7 @@ struct PrivateNoteView: View, TestableView {
     }
 
     @StateObject
-    private var editingCoordinator = EditingCoordinator<EditingFocus>()
-    private(set) var editingFocus: EditingFocus? {
-        get { editingCoordinator.focus }
-        nonmutating set { editingCoordinator.focus = newValue }
-    }
+    var editingCoordinator = EditingCoordinator()
 
     init(state: ViewState, context: PrivateNoteContext) {
         self.state = state
@@ -72,7 +68,7 @@ struct PrivateNoteView: View, TestableView {
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: editingFocus)
         .testable(self)
-        .onDisappear(perform: editingCoordinator.endEditing)
+        .onDisappear(perform: endEditing)
     }
 
     func noteEditingChanged(_ isEditing: Bool) {

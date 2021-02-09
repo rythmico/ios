@@ -5,7 +5,7 @@ protocol SchedulingContext {
     func setSchedule(_ schedule: Schedule)
 }
 
-struct SchedulingView: View, TestableView {
+struct SchedulingView: View, EditableView, TestableView {
     final class ViewState: ObservableObject {
         @Published var startDate: Date?
         @Published var startTime = Current.calendar().date(bySetting: .hour, value: 16, of: .referenceDate) ?? .referenceDate
@@ -20,12 +20,9 @@ struct SchedulingView: View, TestableView {
     }
 
     @StateObject
-    private var editingCoordinator = EditingCoordinator<EditingFocus>(endEditingOnBackgroundTap: false)
-    private(set) var editingFocus: EditingFocus? {
-        get { editingCoordinator.focus }
-        nonmutating set { editingCoordinator.focus = newValue }
-    }
-    @Namespace private var startDatePickerAnimation
+    var editingCoordinator = EditingCoordinator(endEditingOnBackgroundTap: false)
+    @Namespace
+    private var startDatePickerAnimation
 
     @ObservedObject private(set)
     var state: ViewState
@@ -160,7 +157,7 @@ struct SchedulingView: View, TestableView {
                     }
 
                     if editingFocus == .duration {
-                        FloatingInputView(doneAction: editingCoordinator.endEditing) {
+                        FloatingInputView(doneAction: endEditing) {
                             BetterPicker(
                                 selection: Binding(
                                     get: { state.duration ?? .fortyFiveMinutes },
