@@ -12,13 +12,19 @@ struct SchedulingView: View, TestableView {
         @Published var duration: Schedule.Duration?
     }
 
-    enum EditingFocus {
+    enum EditingFocus: EditingFocusEnum {
+        case textField // unused but required
         case startDate
         case startTime
         case duration
     }
 
-    @State private(set) var editingFocus: EditingFocus? = .none
+    @StateObject
+    private var editingCoordinator = EditingCoordinator<EditingFocus>(keyboardDismisser: Current.keyboardDismisser, endEditingOnBackgroundTap: false)
+    private(set) var editingFocus: EditingFocus? {
+        get { editingCoordinator.focus }
+        nonmutating set { editingCoordinator.focus = newValue }
+    }
     @Namespace private var startDatePickerAnimation
 
     @ObservedObject private(set)
@@ -142,7 +148,6 @@ struct SchedulingView: View, TestableView {
                         }
                     }
                     .padding([.trailing, .bottom], .spacingMedium)
-                    .onBackgroundTapGesture(perform: endEditing)
                 }
                 .padding(.leading, .spacingMedium)
 
@@ -155,7 +160,7 @@ struct SchedulingView: View, TestableView {
                     }
 
                     if editingFocus == .duration {
-                        FloatingInputView(doneAction: endEditing) {
+                        FloatingInputView(doneAction: editingCoordinator.endEditing) {
                             BetterPicker(
                                 selection: Binding(
                                     get: { state.duration ?? .fortyFiveMinutes },
@@ -192,10 +197,6 @@ struct SchedulingView: View, TestableView {
         if state.duration == nil {
             state.duration = .oneHour
         }
-    }
-
-    func endEditing() {
-        editingFocus = .none
     }
 }
 

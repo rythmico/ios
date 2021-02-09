@@ -61,7 +61,6 @@ struct PrivateNoteView: View, TestableView {
                         )
                         .modifier(RoundedThinOutlineContainer(padded: false))
                     }
-                    .onBackgroundTapGesture(perform: endEditing)
                     .padding([.trailing, .bottom], .spacingMedium)
                 }
                 .padding(.leading, .spacingMedium)
@@ -73,15 +72,11 @@ struct PrivateNoteView: View, TestableView {
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: editingFocus)
         .testable(self)
-        .onDisappear(perform: endEditing)
+        .onDisappear(perform: editingCoordinator.endEditing)
     }
 
     func noteEditingChanged(_ isEditing: Bool) {
         editingFocus = isEditing ? .textField : .none
-    }
-
-    func endEditing() {
-        editingFocus = .none
     }
 }
 

@@ -135,8 +135,6 @@ struct StudentDetailsView: View, TestableView {
                     .rythmicoFont(.body)
                     .accentColor(.rythmicoPurple)
                     .padding([.trailing, .bottom], .spacingMedium)
-                    // FIXME
-//                    .onBackgroundTapGesture(perform: endEditing)
                 }
                 .padding(.leading, .spacingMedium)
 
@@ -149,7 +147,7 @@ struct StudentDetailsView: View, TestableView {
                     }
 
                     if editingFocus == .dateOfBirth {
-                        FloatingInputView(doneAction: endEditing) {
+                        FloatingInputView(doneAction: editingCoordinator.endEditing) {
                             LabelessDatePicker(
                                 selection: Binding(
                                     get: { state.dateOfBirth ?? dateOfBirthPlaceholder },
@@ -165,7 +163,7 @@ struct StudentDetailsView: View, TestableView {
         }
         .animation(.easeInOut(duration: .durationMedium), value: editingFocus)
         .testable(self)
-        .onDisappear(perform: endEditing)
+        .onDisappear(perform: editingCoordinator.endEditing)
     }
 
     func textFieldEditingChanged(_ isEditing: Bool) {
@@ -179,10 +177,6 @@ struct StudentDetailsView: View, TestableView {
         if state.dateOfBirth == nil {
             state.dateOfBirth = dateOfBirthPlaceholder
         }
-    }
-
-    func endEditing() {
-        editingFocus = .none
     }
 }
 
