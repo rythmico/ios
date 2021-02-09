@@ -20,7 +20,7 @@ struct SchedulingView: View, TestableView {
     }
 
     @StateObject
-    private var editingCoordinator = EditingCoordinator<EditingFocus>(keyboardDismisser: Current.keyboardDismisser, endEditingOnBackgroundTap: false)
+    private var editingCoordinator = EditingCoordinator<EditingFocus>(endEditingOnBackgroundTap: false)
     private(set) var editingFocus: EditingFocus? {
         get { editingCoordinator.focus }
         nonmutating set { editingCoordinator.focus = newValue }

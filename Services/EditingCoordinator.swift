@@ -16,7 +16,7 @@ final class EditingCoordinator<Focus: EditingFocusEnum>: ObservableObject {
     private let keyboardDismisser: KeyboardDismisser
 
     init(
-        keyboardDismisser: KeyboardDismisser,
+        keyboardDismisser: KeyboardDismisser = Current.keyboardDismisser,
         endEditingOnBackgroundTap: Bool = true
     ) {
         self.keyboardDismisser = keyboardDismisser

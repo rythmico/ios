@@ -19,7 +19,7 @@ struct PrivateNoteView: View, TestableView {
     }
 
     @StateObject
-    private var editingCoordinator = EditingCoordinator<EditingFocus>(keyboardDismisser: Current.keyboardDismisser)
+    private var editingCoordinator = EditingCoordinator<EditingFocus>()
     private(set) var editingFocus: EditingFocus? {
         get { editingCoordinator.focus }
         nonmutating set { editingCoordinator.focus = newValue }
