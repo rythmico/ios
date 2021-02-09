@@ -15,7 +15,18 @@ final class EditingCoordinator<Focus: EditingFocusEnum>: ObservableObject {
 
     private let keyboardDismisser: KeyboardDismisser
 
-    init(keyboardDismisser: KeyboardDismisser) {
+    init(
+        keyboardDismisser: KeyboardDismisser = Current.keyboardDismisser,
+        endEditingOnBackgroundTap: Bool = true
+    ) {
         self.keyboardDismisser = keyboardDismisser
+
+        if endEditingOnBackgroundTap {
+            UIApplication.shared.onBackgroundTap { [weak self] in self?.endEditing() }
+        }
+    }
+
+    func endEditing() {
+        focus = .none
     }
 }

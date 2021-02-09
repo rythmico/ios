@@ -5,7 +5,7 @@ protocol PrivateNoteContext {
     func setPrivateNote(_ note: String)
 }
 
-struct PrivateNoteView: View, TestableView {
+struct PrivateNoteView: View, EditableView, TestableView {
     final class ViewState: ObservableObject {
         @Published var privateNote: String = ""
     }
@@ -19,11 +19,7 @@ struct PrivateNoteView: View, TestableView {
     }
 
     @StateObject
-    private var editingCoordinator = EditingCoordinator<EditingFocus>(keyboardDismisser: Current.keyboardDismisser)
-    private(set) var editingFocus: EditingFocus? {
-        get { editingCoordinator.focus }
-        nonmutating set { editingCoordinator.focus = newValue }
-    }
+    var editingCoordinator = EditingCoordinator()
 
     init(state: ViewState, context: PrivateNoteContext) {
         self.state = state
@@ -61,7 +57,6 @@ struct PrivateNoteView: View, TestableView {
                         )
                         .modifier(RoundedThinOutlineContainer(padded: false))
                     }
-                    .onBackgroundTapGesture(perform: endEditing)
                     .padding([.trailing, .bottom], .spacingMedium)
                 }
                 .padding(.leading, .spacingMedium)
@@ -78,10 +73,6 @@ struct PrivateNoteView: View, TestableView {
 
     func noteEditingChanged(_ isEditing: Bool) {
         editingFocus = isEditing ? .textField : .none
-    }
-
-    func endEditing() {
-        editingFocus = .none
     }
 }
 

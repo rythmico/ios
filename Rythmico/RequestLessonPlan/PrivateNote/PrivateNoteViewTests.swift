@@ -43,16 +43,6 @@ final class PrivateNoteViewTests: XCTestCase {
         }
     }
 
-    func testEndEditing() {
-        let (_, _, view) = privateNoteView
-
-        XCTAssertView(view) { view in
-            view.noteEditingChanged(true)
-            view.endEditing()
-            XCTAssertEqual(view.editingFocus, .none)
-        }
-    }
-
     func testNextButtonSetsPrivateNoteInContext() {
         let (context, state, view) = privateNoteView
 

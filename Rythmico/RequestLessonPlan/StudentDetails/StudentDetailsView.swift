@@ -5,7 +5,7 @@ protocol StudentDetailsContext {
     func setStudent(_ student: Student)
 }
 
-struct StudentDetailsView: View, TestableView {
+struct StudentDetailsView: View, EditableView, TestableView {
     private enum Const {
         static let averageStudentAge: (Int, Calendar.Component) = (10, .year)
     }
@@ -24,11 +24,7 @@ struct StudentDetailsView: View, TestableView {
     }
 
     @StateObject
-    private var editingCoordinator = EditingCoordinator<EditingFocus>(keyboardDismisser: Current.keyboardDismisser)
-    private var editingFocus: EditingFocus? {
-        get { editingCoordinator.focus }
-        nonmutating set { editingCoordinator.focus = newValue }
-    }
+    var editingCoordinator = EditingCoordinator()
 
     private let instrument: Instrument
     private let context: StudentDetailsContext
@@ -135,8 +131,6 @@ struct StudentDetailsView: View, TestableView {
                     .rythmicoFont(.body)
                     .accentColor(.rythmicoPurple)
                     .padding([.trailing, .bottom], .spacingMedium)
-                    // FIXME
-//                    .onBackgroundTapGesture(perform: endEditing)
                 }
                 .padding(.leading, .spacingMedium)
 
@@ -179,10 +173,6 @@ struct StudentDetailsView: View, TestableView {
         if state.dateOfBirth == nil {
             state.dateOfBirth = dateOfBirthPlaceholder
         }
-    }
-
-    func endEditing() {
-        editingFocus = .none
     }
 }
 
