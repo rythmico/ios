@@ -83,16 +83,6 @@ final class SchedulingViewTests: XCTestCase {
         }
     }
 
-    func testEndEditing() {
-        let (_, _, view) = schedulingView
-
-        XCTAssertView(view) { view in
-            view.beginEditingStartDate()
-            view.endEditing()
-            XCTAssertEqual(view.editingFocus, .none)
-        }
-    }
-
     func testEditingRequiredFieldsEnablesNextButton() {
         let (_, state, view) = schedulingView
 
