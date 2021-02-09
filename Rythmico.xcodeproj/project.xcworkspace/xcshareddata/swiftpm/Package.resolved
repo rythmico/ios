@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/firebase/firebase-ios-sdk",
         "state": {
           "branch": null,
-          "revision": "447cf74cc561d408bc66c0294145a624645038ac",
-          "version": "7.5.1"
+          "revision": "0dd2ad1054177670dfa5bb1bbc6767e2a965095d",
+          "version": "7.6.0"
         }
       },
       {
@@ -53,6 +53,15 @@
           "branch": null,
           "revision": "38205d8e39f806f71b048f93427337c9511c9402",
           "version": "7.5.1"
+        }
+      },
+      {
+        "package": "GoogleDataTransport",
+        "repositoryURL": "https://github.com/google/GoogleDataTransport.git",
+        "state": {
+          "branch": null,
+          "revision": "2e8a342494d20fcf209b61a45cddc1668b5ccc6d",
+          "version": "8.2.0"
         }
       },
       {
