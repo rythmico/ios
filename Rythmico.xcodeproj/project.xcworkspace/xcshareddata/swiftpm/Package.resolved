@@ -42,8 +42,26 @@
         "repositoryURL": "https://github.com/firebase/firebase-ios-sdk",
         "state": {
           "branch": null,
-          "revision": "3721a5b8a6233237098f90e5f065dada7641a40b",
-          "version": "7.4.0"
+          "revision": "447cf74cc561d408bc66c0294145a624645038ac",
+          "version": "7.5.1"
+        }
+      },
+      {
+        "package": "GoogleAppMeasurement",
+        "repositoryURL": "https://github.com/google/GoogleAppMeasurement.git",
+        "state": {
+          "branch": null,
+          "revision": "38205d8e39f806f71b048f93427337c9511c9402",
+          "version": "7.5.1"
+        }
+      },
+      {
+        "package": "GoogleUtilities",
+        "repositoryURL": "https://github.com/google/GoogleUtilities.git",
+        "state": {
+          "branch": null,
+          "revision": "2c7d33099a3c3da1139bb1e8eb94e46e0dacf075",
+          "version": "7.2.2"
         }
       },
       {
@@ -78,8 +96,8 @@
         "repositoryURL": "https://github.com/davdroman/MultiModal",
         "state": {
           "branch": null,
-          "revision": "50ff31037eb2d012df150a8b1d54d0c31d1a7e04",
-          "version": "2.0.0"
+          "revision": "e6f76c7851dcef105e1f52b8213ddbd50705e6ff",
+          "version": "2.0.1"
         }
       },
       {
