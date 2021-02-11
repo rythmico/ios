@@ -8,6 +8,12 @@ final class AppState: ObservableObject {
     // TODO: use optional when Binding allows chaining optional sub-bindings.
     // e.g. $state.lessonsContext(?).reviewingValues(?).0
     @Published var lessonsContext: LessonsContext = .none
+
+    func reset() {
+        tab = .lessons
+        lessonsFilter = .upcoming
+        lessonsContext = .none
+    }
 }
 
 extension AppState {

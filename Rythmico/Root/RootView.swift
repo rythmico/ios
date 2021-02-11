@@ -49,6 +49,10 @@ struct RootView: View, TestableView {
             // TODO: potentially refactor to put all-things-authentication into coordinator
             // that takes care of flushing keychain upon logout etc.
             Current.keychain.appleAuthorizationUserId = nil
+            DispatchQueue.main.asyncAfter(deadline: .now() + .durationMedium * 2) {
+                Current.lessonPlanRepository.reset()
+                Current.state.reset()
+            }
         }
     }
 }
