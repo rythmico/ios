@@ -22,6 +22,10 @@ extension Repository {
     func insertItem(_ item: Item) {
         insertItem(item, at: 0)
     }
+
+    func reset() {
+        items.removeAll()
+    }
 }
 
 extension Repository where Item: Identifiable {
