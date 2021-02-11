@@ -41,6 +41,9 @@ struct LessonsView: View, TestableView {
 //        .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
+        .detail(item: $state.lessonsContext.viewingLesson, content: LessonDetailView.init)
+        .detail(item: $state.lessonsContext.viewingLessonPlan, content: LessonPlanDetailView.init)
+        .detail(item: $state.lessonsContext.reviewingLessonPlan, content: LessonPlanApplicationsView.init)
     }
 
     private func fetch() {

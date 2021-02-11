@@ -27,9 +27,6 @@ struct LessonPlanSummaryCell: View {
 struct LessonPlanSummaryCellMainContent: View {
     var lessonPlan: LessonPlan
 
-    @ObservedObject
-    private var state = Current.state
-
     var title: String {
         [
             lessonPlan.student.name.firstWord,
@@ -51,11 +48,7 @@ struct LessonPlanSummaryCellMainContent: View {
     }
 
     var body: some View {
-        NavigationLink(
-            destination: LessonPlanDetailView(lessonPlan: lessonPlan),
-            tag: lessonPlan,
-            selection: $state.lessonsContext.viewingLessonPlan
-        ) {
+        Button(action: { Current.state.lessonsContext.viewingLessonPlan = lessonPlan }) {
             VStack(alignment: .leading, spacing: .spacingExtraSmall) {
                 Text(title)
                     .lineLimit(1)
@@ -81,18 +74,11 @@ struct LessonPlanSummaryCellMainContent: View {
 struct LessonPlanSummaryCellAccessory: View {
     var lessonPlan: LessonPlan
 
-    @ObservedObject
-    private var state = Current.state
-
     var body: some View {
-        if let applicationsView = LessonPlanApplicationsView(lessonPlan) {
+        if lessonPlan.status.isReviewing {
             Divider().overlay(Color.rythmicoGray20)
 
-            NavigationLink(
-                destination: applicationsView,
-                tag: lessonPlan,
-                selection: $state.lessonsContext.reviewingLessonPlan
-            ) {
+            Button(action: { Current.state.lessonsContext.reviewingLessonPlan = lessonPlan }) {
                 HStack(spacing: .spacingExtraSmall) {
                     Text("Review Tutors")
                         .rythmicoFont(.body)
