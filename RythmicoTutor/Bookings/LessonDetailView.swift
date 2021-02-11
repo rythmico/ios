@@ -39,7 +39,7 @@ struct LessonDetailView: View {
                 AddressMapCell(addressInfo: .address(lesson.address))
             }
             Section {
-                GroupedButton("View Student Details", action: presentStudentDetails).navigationLink(
+                GroupedButton("View Student Details", action: presentStudentDetails).hiddenNavigationLink(
                     NavigationLink(
                         destination: LessonStudentDetailView(lesson: lesson),
                         isActive: $isStudentDetailsPresented,
