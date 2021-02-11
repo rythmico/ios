@@ -25,6 +25,7 @@ struct LessonPlanBookingPriceView: View {
             .rythmicoFont(.callout)
             .foregroundColor(.rythmicoGray90)
             .frame(maxWidth: .infinity, alignment: .leading)
+            .fixedSize(horizontal: false, vertical: true)
             .onTapGesture(perform: presentTermsAndConditions)
         }
         .padding(.vertical, .spacingLarge)
