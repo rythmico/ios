@@ -48,9 +48,10 @@ struct RootView: View, TestableView {
             Current.keychain.appleAuthorizationUserId = nil
             Current.settings.tutorVerified = false
             DispatchQueue.main.asyncAfter(deadline: .now() + .durationMedium * 2) {
-                Current.bookingsRepository.reset()
-                Current.bookingRequestRepository.reset()
-                Current.bookingApplicationRepository.reset()
+                // FIXME: this crashes
+//                Current.bookingsRepository.reset()
+//                Current.bookingRequestRepository.reset()
+//                Current.bookingApplicationRepository.reset()
                 Current.state.reset()
             }
         }
