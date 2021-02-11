@@ -66,7 +66,7 @@ struct ProfileView: View, TestableView {
                     }
                 }
                 Section(header: header("Help & Support")) {
-                    cell("Parent Info & Safety", disclosure: true).navigationLink(
+                    cell("Parent Info & Safety", disclosure: true).hiddenNavigationLink(
                         NavigationLink(
                             destination: ParentInfoAndSafetyView(),
                             tag: .parentInfoAndSafety,

@@ -16,9 +16,6 @@ struct LessonSummaryCell: View {
 struct LessonSummaryCellMainContent: View {
     var lesson: Lesson
 
-    @ObservedObject
-    private var state = Current.state
-
     var title: String {
         [lesson.student.name.firstWord, "\(lesson.instrument.assimilatedName) Lesson \(lesson.number)"]
             .compact()
@@ -37,11 +34,7 @@ struct LessonSummaryCellMainContent: View {
     }
 
     var body: some View {
-        NavigationLink(
-            destination: LessonDetailView(lesson: lesson),
-            tag: lesson,
-            selection: $state.lessonsContext.viewingLesson
-        ) {
+        Button(action: { Current.state.lessonsContext.viewingLesson = lesson }) {
             VStack(alignment: .leading, spacing: .spacingExtraSmall) {
                 Text(title)
                     .lineLimit(1)
