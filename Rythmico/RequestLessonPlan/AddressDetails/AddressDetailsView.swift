@@ -123,9 +123,7 @@ struct AddressDetailsView: View, TestableView {
             .animation(.rythmicoSpring(duration: .durationMedium), value: nextButtonAction != nil)
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: addresses)
-        .multiModal {
-            $0.alertOnFailure(coordinator)
-        }
+        .alertOnFailure(coordinator)
         .testable(self)
         .onDisappear(perform: Current.keyboardDismisser.dismissKeyboard)
     }

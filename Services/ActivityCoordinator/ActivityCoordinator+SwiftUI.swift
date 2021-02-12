@@ -62,17 +62,21 @@ extension View {
     }
 }
 
+import MultiModal
+
 extension View {
     func alertOnFailure<Input, Success>(
         _ coordinator: FailableActivityCoordinator<Input, Success>,
         onDismiss: (() -> Void)? = nil
     ) -> some View {
-        alert(
-            error: coordinator.state.failureValue,
-            dismiss: {
-                coordinator.dismissFailure()
-                onDismiss?()
-            }
-        )
+        multiModal {
+            $0.alert(
+                error: coordinator.state.failureValue,
+                dismiss: {
+                    coordinator.dismissFailure()
+                    onDismiss?()
+                }
+            )
+        }
     }
 }
