@@ -43,7 +43,7 @@ struct RequestLessonPlanView: View, TestableView {
             coordinator: coordinator,
             successContent: LessonPlanConfirmationView.init,
             loadingTitle: "Submitting proposal...",
-            inputContent: { formView.multiModal { $0.alertOnFailure(coordinator) } }
+            inputContent: { formView.alertOnFailure(coordinator) }
         )
         .testable(self)
         .onSuccess(coordinator, perform: Current.lessonPlanRepository.insertItem)
