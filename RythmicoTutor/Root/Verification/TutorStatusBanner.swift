@@ -7,10 +7,6 @@ struct TutorStatusBanner: View {
 
     var description: String
 
-    init(_ description: String) {
-        self.description = description
-    }
-
     var body: some View {
         VStack(spacing: .spacingUnit * 12) {
             Image(decorative: Asset.appLogo.name)
@@ -53,7 +49,7 @@ struct TutorStatusBanner: View {
 #if DEBUG
 struct TutorStatusBanner_Previews: PreviewProvider {
     static var previews: some View {
-        TutorStatusBanner(
+        TutorStatusBanner(description:
             """
             Thank you for signing up as a Rythmico Tutor.
 

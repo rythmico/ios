@@ -28,7 +28,7 @@ struct TutorStatusView: View {
                 case .notRegistered:
                     WebView(webView: webViewStore.webView).edgesIgnoringSafeArea(.bottom)
                 case .notCurated, .notDBSChecked:
-                    TutorStatusBanner(status.bannerText)
+                    TutorStatusBanner(description: status.bannerText)
                 case .verified:
                     EmptyView()
                 }
