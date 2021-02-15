@@ -28,7 +28,7 @@ struct TutorStatusView: View {
                 case .notRegistered:
                     WebView(webView: webViewStore.webView).edgesIgnoringSafeArea(.bottom)
                 case .notCurated, .notDBSChecked:
-                    TutorStatusBanner(description: status.bannerText)
+                    TutorStatusBanner(status: status)
                 case .verified:
                     EmptyView()
                 }
@@ -87,27 +87,6 @@ private final class TutorSignUpWebViewDelegate: NSObject, WKNavigationDelegate {
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
         guard webView.url?.absoluteString == "about:blank" else { return }
         onAboutBlank?()
-    }
-}
-
-private extension TutorStatus {
-    var bannerText: String {
-        switch self {
-        case .notCurated:
-            return  """
-                    Thank you for signing up as a Rythmico Tutor.
-
-                    We will review your submission and reach out to you within a few days.
-                    """
-        case .notDBSChecked:
-            return  """
-                    Your mandatory DBS check form is now ready.
-
-                    Please follow the link sent to your inbox provided by uCheck.
-                    """
-        case .notRegistered, .verified:
-            return .empty
-        }
     }
 }
 

@@ -5,7 +5,7 @@ struct TutorStatusBanner: View {
     @ObservedObject
     private var pushNotificationAuthCoordinator = Current.pushNotificationAuthorizationCoordinator
 
-    var description: String
+    var status: TutorStatus
 
     var body: some View {
         VStack(spacing: .spacingUnit * 12) {
@@ -13,14 +13,14 @@ struct TutorStatusBanner: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 68)
-            Text(description)
+            Text(status.description)
                 .foregroundColor(foregroundColor)
                 .multilineTextAlignment(.center)
                 .lineSpacing(.spacingUnit)
                 .frame(maxWidth: .spacingMax)
                 .padding(.horizontal, .spacingUnit * 10)
                 .transition(.opacity)
-                .id(description.hashValue)
+                .id(status.description.hashValue)
             enableNotificationsAction.map { Button("Notify Me", action: $0) }
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: enableNotificationsAction != nil)
@@ -46,16 +46,31 @@ struct TutorStatusBanner: View {
     }
 }
 
+private extension TutorStatus {
+    var description: String {
+        switch self {
+        case .notCurated:
+            return  """
+                    Thank you for signing up as a Rythmico Tutor.
+
+                    We will review your submission and reach out to you within a few days.
+                    """
+        case .notDBSChecked:
+            return  """
+                    Your mandatory DBS check form is now ready.
+
+                    Please follow the link sent to your inbox provided by uCheck.
+                    """
+        case .notRegistered, .verified:
+            return .empty
+        }
+    }
+}
+
 #if DEBUG
 struct TutorStatusBanner_Previews: PreviewProvider {
     static var previews: some View {
-        TutorStatusBanner(description:
-            """
-            Thank you for signing up as a Rythmico Tutor.
-
-            We will review your submission and reach out to you within a few days.
-            """
-        )
+        TutorStatusBanner(status: .notCurated)
     }
 }
 #endif
