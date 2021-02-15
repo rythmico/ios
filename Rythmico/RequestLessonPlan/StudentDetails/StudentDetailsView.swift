@@ -109,7 +109,7 @@ struct StudentDetailsView: View, EditableView, TestableView {
                         HeaderContentView(title: ["Date of Birth".style(.bodyBold)], titleAccessory: {
                             InfoDisclaimerButton(
                                 title: "Why Date of Birth?",
-                                message: "This allows tutors to better understand the learning requirements of the student and how to structure lessons for the most comprehensive learning and enjoyment."
+                                message: "This gives tutors a better understanding of the learning requirements for each student, and will help to plan their lessons accordingly."
                             )
                         }) {
                             CustomTextField(

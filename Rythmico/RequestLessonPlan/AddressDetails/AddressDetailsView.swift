@@ -67,7 +67,7 @@ struct AddressDetailsView: View, TestableView {
                             HeaderContentView(title: ["Postcode".style(.bodyBold)], titleAccessory: {
                                 InfoDisclaimerButton(
                                     title: "Why Postcode?",
-                                    message: "We only show prospective tutors the postcode area, so they have a better idea of where they need to travel."
+                                    message: "We only show prospective tutors the postcode area, so they have a better idea of where they need to travel to."
                                 )
                             }) {
                                 ZStack {
