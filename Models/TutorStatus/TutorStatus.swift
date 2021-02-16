@@ -1,23 +1,32 @@
 import Foundation
 
 enum TutorStatus: Decodable, Equatable {
-    case notRegistered(formURL: URL)
-    case notCurated
-    case notDBSChecked
+    case registrationPending(formURL: URL)
+
+    case interviewPending
+    case interviewFailed
+
+    case dbsPending
+    case dbsFailed
+
     case verified
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let status = try container.decode(Status.self, forKey: .status)
         switch status {
-        case .statusNotRegistered:
+        case .registrationPending:
             let formURL = try container.decode(URL.self, forKey: .formURL)
-            self = .notRegistered(formURL: formURL)
-        case .statusNotCurated:
-            self = .notCurated
-        case .statusNotDBSChecked:
-            self = .notDBSChecked
-        case .statusVerified:
+            self = .registrationPending(formURL: formURL)
+        case .interviewPending:
+            self = .interviewPending
+        case .interviewFailed:
+            self = .interviewFailed
+        case .dbsPending:
+            self = .dbsPending
+        case .dbsFailed:
+            self = .dbsFailed
+        case .verified:
             self = .verified
         }
     }
@@ -28,9 +37,11 @@ enum TutorStatus: Decodable, Equatable {
     }
 
     private enum Status: String, Decodable {
-        case statusNotRegistered = "NOT_REGISTERED"
-        case statusNotCurated = "NOT_CURATED"
-        case statusNotDBSChecked = "NOT_DBS_CHECKED"
-        case statusVerified = "VERIFIED"
+        case registrationPending = "REGISTRATION_PENDING"
+        case interviewPending = "INTERVIEW_PENDING"
+        case interviewFailed = "INTERVIEW_FAILED"
+        case dbsPending = "DBS_PENDING"
+        case dbsFailed = "DBS_FAILED"
+        case verified = "VERIFIED"
     }
 }

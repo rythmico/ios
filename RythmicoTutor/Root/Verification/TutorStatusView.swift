@@ -25,12 +25,10 @@ struct TutorStatusView: View {
         ZStack {
             if let status = currentStatus {
                 switch status {
-                case .notRegistered:
+                case .registrationPending:
                     WebView(webView: webViewStore.webView).edgesIgnoringSafeArea(.bottom)
-                case .notCurated, .notDBSChecked:
+                case .interviewPending, .interviewFailed, .dbsPending, .dbsFailed, .verified:
                     TutorStatusBanner(status: status)
-                case .verified:
-                    EmptyView()
                 }
             }
             if isLoading {
@@ -50,9 +48,9 @@ struct TutorStatusView: View {
         switch currentStatus {
         case .none:
             return coordinator.state.isLoading
-        case .notRegistered:
+        case .registrationPending:
             return webViewStore.isLoading
-        case .notCurated, .notDBSChecked, .verified:
+        case .interviewPending, .interviewFailed, .dbsPending, .dbsFailed, .verified:
             return false
         }
     }
@@ -71,12 +69,10 @@ struct TutorStatusView: View {
 
     func handleTutorStatus(_ status: TutorStatus) {
         switch status {
-        case .notRegistered(let formURL):
+        case .registrationPending(let formURL):
             webViewStore.webView.load(URLRequest(url: formURL))
-        case .notCurated, .notDBSChecked:
+        case .interviewPending, .interviewFailed, .dbsPending, .dbsFailed, .verified:
             break
-        case .verified:
-            Current.settings.tutorVerified = true
         }
     }
 }
@@ -93,9 +89,7 @@ private final class TutorSignUpWebViewDelegate: NSObject, WKNavigationDelegate {
 #if DEBUG
 struct TutorStatusView_Previews: PreviewProvider {
     static var previews: some View {
-        Current.tutorStatusFetchingService = APIServiceStub(result: .success(.notCurated))
-        Current.tutorStatusFetchingService = APIServiceStub(result: .success(.notDBSChecked))
-        return TutorStatusView()
+        TutorStatusView()
     }
 }
 #endif

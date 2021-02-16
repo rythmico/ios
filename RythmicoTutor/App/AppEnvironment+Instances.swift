@@ -74,7 +74,7 @@ extension AppEnvironment {
         dummy.with {
             $0.setUpFake()
 
-            $0.tutorStatusFetchingService = fakeAPIService(result: .success(.notRegisteredStub))
+            $0.tutorStatusFetchingService = fakeAPIService(result: .success(.registrationPendingStub))
 
             $0.bookingsFetchingService = fakeAPIService(result: .success(.stub))
 

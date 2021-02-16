@@ -29,7 +29,14 @@ struct TutorStatusBanner: View {
             .lineSpacing(.spacingUnit)
             .frame(maxWidth: .spacingMax)
             .padding(.horizontal, .spacingUnit * 10)
+
             enableNotificationsAction.map { Button("Notify Me", action: $0) }
+
+            if let letsGoAction = letsGoAction {
+                FloatingView {
+                    Button("Let's Go", action: letsGoAction).primaryStyle()
+                }
+            }
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: enableNotificationsAction != nil)
         .alert(
@@ -52,39 +59,61 @@ struct TutorStatusBanner: View {
             ? nil
             : pushNotificationAuthCoordinator.requestAuthorization
     }
+
+    var letsGoAction: Action? {
+        status == .verified
+            ? { Current.settings.tutorVerified = true }
+            : nil
+    }
 }
 
 private extension TutorStatus {
     var image: ImageAsset? {
         switch self {
-        case .notCurated:
-            return Asset.graphicsVerificationWaiting
-        case .notDBSChecked:
-            return Asset.graphicsVerificationWaiting
-        case .notRegistered, .verified:
+        case .registrationPending:
             return nil
+        case .interviewPending:
+            return Asset.graphicsVerificationInterview
+        case .dbsPending:
+            return Asset.graphicsVerificationDbs
+        case .interviewFailed, .dbsFailed:
+            return Asset.graphicsVerificationFailure
+        case .verified:
+            return Asset.graphicsVerificationSuccess
         }
     }
 
     var title: String {
         switch self {
-        case .notCurated:
-            return "We’re reviewing your submission"
-        case .notDBSChecked:
-            return "We’re awaiting your DBS Check result"
-        case .notRegistered, .verified:
+        case .registrationPending:
             return .empty
+        case .interviewPending:
+            return "Hi there!"
+        case .dbsPending:
+            return "We’re awaiting your DBS Check"
+        case .interviewFailed:
+            return "{Interview_Unsuccessful_Title}" // TODO
+        case .dbsFailed:
+            return "Your DBS Check was unsuccessful"
+        case .verified:
+            return "Success!"
         }
     }
 
     var description: String {
         switch self {
-        case .notCurated:
-            return "Thank you for signing up as a Rythmico Tutor. We will review your profile and reach out to you within a few days."
-        case .notDBSChecked:
-            return "Your mandatory DBS check form is pending your submission. Please follow the link sent to your inbox provided by uCheck."
-        case .notRegistered, .verified:
+        case .registrationPending:
             return .empty
+        case .interviewPending:
+            return "Thanks for signing up to Rythmico! Before we welcome you onto the platform, we’d love to get to know you better. Please follow the link sent to your inbox to book a quick online meeting."
+        case .dbsPending:
+            return "Your mandatory DBS Check is awaiting. Please follow the link sent to your inbox to complete the DBS form provided by uCheck."
+        case .interviewFailed:
+            return "{Interview_Unsuccessful_Description}" // TODO
+        case .dbsFailed:
+            return "Unfortunately your DBS record did not match our requirements. If you think something is not right, please contact our DBS Check provider — uCheck."
+        case .verified:
+            return "Your profile has been verified. Thank you for your patience. You can now start using the Rythmico Tutor App 🥳"
         }
     }
 }
@@ -93,10 +122,13 @@ private extension TutorStatus {
 struct TutorStatusBanner_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            TutorStatusBanner(status: .notCurated)
-            TutorStatusBanner(status: .notDBSChecked)
+            TutorStatusBanner(status: .interviewPending)
+            TutorStatusBanner(status: .interviewFailed)
+            TutorStatusBanner(status: .dbsPending)
+            TutorStatusBanner(status: .dbsFailed)
+            TutorStatusBanner(status: .verified)
         }
-        .previewDevices()
+//        .previewDevices()
     }
 }
 #endif
