@@ -2,35 +2,38 @@ import SwiftUI
 import Sugar
 
 struct TutorStatusBanner: View {
-    @ObservedObject
-    private var pushNotificationAuthCoordinator = Current.pushNotificationAuthorizationCoordinator
-
     var status: TutorStatus
 
     var body: some View {
-        VStack(spacing: .spacingExtraLarge) {
-            if let image = status.image {
-                Image(decorative: image.name)
-                    .resizable()
-                    .scaledToFit()
-                    .padding(.horizontal, .spacingUnit * 8)
-            }
-            VStack(spacing: .spacingMedium) {
-                Text(status.title)
-                    .font(.system(size: 19, weight: .bold))
-                    .transition(.opacity)
-                    .id(status.title.hashValue)
-                Text(status.description)
-                    .transition(.opacity)
-                    .id(status.description.hashValue)
-            }
-            .foregroundColor(foregroundColor)
-            .multilineTextAlignment(.center)
-            .lineSpacing(.spacingUnit)
-            .frame(maxWidth: .spacingMax)
-            .padding(.horizontal, .spacingUnit * 10)
+        VStack(spacing: 0) {
+            VStack(spacing: .spacingExtraLarge) {
+                if let image = status.image {
+                    Image(decorative: image.name)
+                        .resizable()
+                        .scaledToFit()
+                        .padding(.horizontal, .spacingUnit * 8)
+                }
+                VStack(spacing: .spacingMedium) {
+                    Text(status.title)
+                        .font(.system(size: 19, weight: .bold))
+                        .transition(.opacity)
+                        .id(status.title.hashValue)
+                    Text(status.description)
+                        .transition(.opacity)
+                        .id(status.description.hashValue)
+                }
+                .foregroundColor(foregroundColor)
+                .multilineTextAlignment(.center)
+                .lineSpacing(.spacingUnit)
+                .frame(maxWidth: .spacingMax)
+                .padding(.horizontal, .spacingUnit * 10)
 
-            enableNotificationsAction.map { Button("Notify Me", action: $0) }
+                if let openInboxAction = openInboxAction {
+                    Button("Open Inbox", action: openInboxAction)
+                }
+            }
+            .frame(maxHeight: .infinity)
+            .padding(.vertical, .spacingLarge)
 
             if let letsGoAction = letsGoAction {
                 FloatingView {
@@ -38,11 +41,6 @@ struct TutorStatusBanner: View {
                 }
             }
         }
-        .animation(.rythmicoSpring(duration: .durationMedium), value: enableNotificationsAction != nil)
-        .alert(
-            error: pushNotificationAuthCoordinator.status.failedValue,
-            dismiss: pushNotificationAuthCoordinator.dismissFailure
-        )
     }
 
     var foregroundColor: Color {
@@ -54,10 +52,13 @@ struct TutorStatusBanner: View {
         )
     }
 
-    var enableNotificationsAction: Action? {
-        pushNotificationAuthCoordinator.status.isDetermined
-            ? nil
-            : pushNotificationAuthCoordinator.requestAuthorization
+    var openInboxAction: Action? {
+        switch status {
+        case .interviewPending, .dbsPending:
+            return { Current.urlOpener.open("message://") }
+        case .registrationPending, .interviewFailed, .dbsFailed, .verified:
+            return nil
+        }
     }
 
     var letsGoAction: Action? {
@@ -90,7 +91,7 @@ private extension TutorStatus {
         case .interviewPending:
             return "Hi there!"
         case .dbsPending:
-            return "We’re awaiting your DBS Check"
+            return "DBS Check required"
         case .interviewFailed:
             return "{Interview_Unsuccessful_Title}" // TODO
         case .dbsFailed:
@@ -111,9 +112,9 @@ private extension TutorStatus {
         case .interviewFailed:
             return "{Interview_Unsuccessful_Description}" // TODO
         case .dbsFailed:
-            return "Unfortunately your DBS record did not match our requirements. If you think something is not right, please contact our DBS Check provider — uCheck."
+            return "Unfortunately your DBS record did not match our requirements. If you think something is not right, please contact our DBS Check partner uCheck."
         case .verified:
-            return "Your profile has been verified. Thank you for your patience. You can now start using the Rythmico Tutor App 🥳"
+            return "Your profile has been verified. Thank you for your patience. You can now start using Rythmico Tutor 🥳"
         }
     }
 }
@@ -128,7 +129,6 @@ struct TutorStatusBanner_Previews: PreviewProvider {
             TutorStatusBanner(status: .dbsFailed)
             TutorStatusBanner(status: .verified)
         }
-//        .previewDevices()
     }
 }
 #endif

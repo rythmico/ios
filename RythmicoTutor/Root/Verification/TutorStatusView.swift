@@ -8,6 +8,7 @@ extension WebViewStore: Then {}
 
 struct TutorStatusView: View {
     private let deviceRegisterCoordinator = Current.deviceRegisterCoordinator()!
+    private var pushNotificationAuthCoordinator = Current.pushNotificationAuthorizationCoordinator
     @ObservedObject
     private var coordinator = Current.sharedCoordinator(for: \.tutorStatusFetchingService)!
     @State
@@ -41,6 +42,12 @@ struct TutorStatusView: View {
         .onEvent(.appInForeground, perform: coordinator.run)
         .onSuccess(coordinator, perform: tutorStatusFetched)
         .alertOnFailure(coordinator)
+        .multiModal {
+            $0.alert(
+                error: pushNotificationAuthCoordinator.status.failedValue,
+                dismiss: pushNotificationAuthCoordinator.dismissFailure
+            )
+        }
         .animation(.rythmicoSpring(duration: .durationShort), value: coordinator.state.successValue)
     }
 
@@ -72,7 +79,7 @@ struct TutorStatusView: View {
         case .registrationPending(let formURL):
             webViewStore.webView.load(URLRequest(url: formURL))
         case .interviewPending, .interviewFailed, .dbsPending, .dbsFailed, .verified:
-            break
+            pushNotificationAuthCoordinator.requestAuthorization()
         }
     }
 }
