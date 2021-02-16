@@ -44,7 +44,7 @@ name: SwiftUI-WebView, nameSpecified: WebView, owner: kylehickinson, version: 0.
 
 name: Then, nameSpecified: Then, owner: devxoul, version: 2.7.0
 
-name: Valet, nameSpecified: Valet, owner: Square, version: 4.1.1
+name: Valet, nameSpecified: Valet, owner: Square, version: 4.1.2
 
 name: ViewInspector, nameSpecified: ViewInspector, owner: nalexn, version: 0.4.1
 
