@@ -1,0 +1,21 @@
+#!/bin/bash
+
+GIT_URL="git@github.com:rythmico/ios-certs.git"
+TEAM_ID="72N659HYBR"
+APP_IDS="com.rythmico.student,com.rythmico.tutor"
+
+fastlane match nuke development \
+  --git_url "$GIT_URL" \
+  --team-id "$TEAM_ID"
+fastlane match development \
+  --git_url "$GIT_URL" \
+  --team-id "$TEAM_ID" \
+  --app_identifier "$APP_IDS"
+
+fastlane match nuke distribution \
+  --git_url "$GIT_URL" \
+  --team-id "$TEAM_ID"
+fastlane match appstore \
+  --git_url "$GIT_URL" \
+  --team-id "$TEAM_ID" \
+  --app_identifier "$APP_IDS"
