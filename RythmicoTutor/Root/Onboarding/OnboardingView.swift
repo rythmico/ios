@@ -1,4 +1,5 @@
 import SwiftUI
+import MultiModal
 import Sugar
 
 struct OnboardingView: View, TestableView {
@@ -29,12 +30,14 @@ struct OnboardingView: View, TestableView {
             .padding(.spacingLarge)
             .animation(.rythmicoSpring(duration: .durationMedium), value: isLoading)
         }
-        .alert(error: errorMessage, dismiss: dismissError)
         .onDisappear {
             Current.uiAccessibility.postAnnouncement("Welcome")
         }
         .testable(self)
         .onAppear(perform: Current.deviceUnregisterCoordinator().unregisterDevice)
+        .multiModal {
+            $0.alert(error: errorMessage, dismiss: dismissError)
+        }
     }
 
     func authenticateWithApple() {

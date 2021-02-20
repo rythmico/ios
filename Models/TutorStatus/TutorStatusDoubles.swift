@@ -5,5 +5,5 @@ extension TutorStatus {
         static let formURLStub = URL(string: "https://airtable.com/shrlakvOPUibGy562")!
     }
 
-    static let notRegisteredStub = notRegistered(formURL: Const.formURLStub)
+    static let registrationPendingStub = registrationPending(formURL: Const.formURLStub)
 }

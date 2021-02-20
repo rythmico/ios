@@ -8,6 +8,7 @@ extension WebViewStore: Then {}
 
 struct TutorStatusView: View {
     private let deviceRegisterCoordinator = Current.deviceRegisterCoordinator()!
+    private var pushNotificationAuthCoordinator = Current.pushNotificationAuthorizationCoordinator
     @ObservedObject
     private var coordinator = Current.sharedCoordinator(for: \.tutorStatusFetchingService)!
     @State
@@ -25,12 +26,10 @@ struct TutorStatusView: View {
         ZStack {
             if let status = currentStatus {
                 switch status {
-                case .notRegistered:
+                case .registrationPending:
                     WebView(webView: webViewStore.webView).edgesIgnoringSafeArea(.bottom)
-                case .notCurated, .notDBSChecked:
-                    TutorStatusBanner(status.bannerText)
-                case .verified:
-                    EmptyView()
+                case .interviewPending, .interviewFailed, .dbsPending, .dbsFailed, .verified:
+                    TutorStatusBanner(status: status)
                 }
             }
             if isLoading {
@@ -43,6 +42,12 @@ struct TutorStatusView: View {
         .onEvent(.appInForeground, perform: coordinator.run)
         .onSuccess(coordinator, perform: tutorStatusFetched)
         .alertOnFailure(coordinator)
+        .multiModal {
+            $0.alert(
+                error: pushNotificationAuthCoordinator.status.failedValue,
+                dismiss: pushNotificationAuthCoordinator.dismissFailure
+            )
+        }
         .animation(.rythmicoSpring(duration: .durationShort), value: coordinator.state.successValue)
     }
 
@@ -50,9 +55,9 @@ struct TutorStatusView: View {
         switch currentStatus {
         case .none:
             return coordinator.state.isLoading
-        case .notRegistered:
+        case .registrationPending:
             return webViewStore.isLoading
-        case .notCurated, .notDBSChecked, .verified:
+        case .interviewPending, .interviewFailed, .dbsPending, .dbsFailed, .verified:
             return false
         }
     }
@@ -71,12 +76,10 @@ struct TutorStatusView: View {
 
     func handleTutorStatus(_ status: TutorStatus) {
         switch status {
-        case .notRegistered(let formURL):
+        case .registrationPending(let formURL):
             webViewStore.webView.load(URLRequest(url: formURL))
-        case .notCurated, .notDBSChecked:
-            break
-        case .verified:
-            Current.settings.tutorVerified = true
+        case .interviewPending, .interviewFailed, .dbsPending, .dbsFailed, .verified:
+            pushNotificationAuthCoordinator.requestAuthorization()
         }
     }
 }
@@ -90,33 +93,10 @@ private final class TutorSignUpWebViewDelegate: NSObject, WKNavigationDelegate {
     }
 }
 
-private extension TutorStatus {
-    var bannerText: String {
-        switch self {
-        case .notCurated:
-            return  """
-                    Thank you for signing up as a Rythmico Tutor.
-
-                    We will review your submission and reach out to you within a few days.
-                    """
-        case .notDBSChecked:
-            return  """
-                    Your mandatory DBS check form is now ready.
-
-                    Please follow the link sent to your inbox provided by uCheck.
-                    """
-        case .notRegistered, .verified:
-            return .empty
-        }
-    }
-}
-
 #if DEBUG
 struct TutorStatusView_Previews: PreviewProvider {
     static var previews: some View {
-        Current.tutorStatusFetchingService = APIServiceStub(result: .success(.notCurated))
-        Current.tutorStatusFetchingService = APIServiceStub(result: .success(.notDBSChecked))
-        return TutorStatusView()
+        TutorStatusView()
     }
 }
 #endif
