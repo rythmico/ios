@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 protocol EditingFocusEnum: Equatable {
     static var textField: Self { get }

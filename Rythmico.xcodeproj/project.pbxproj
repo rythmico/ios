@@ -761,8 +761,6 @@
 		D501587725375AA9005E02FA /* PorfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorfolioView.swift; sourceTree = "<group>"; };
 		D501587C25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationDetailHeaderView.swift; sourceTree = "<group>"; };
 		D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardTooltip.swift; sourceTree = "<group>"; };
-		D50158892538A985005E02FA /* Rythmico-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rythmico-Bridging-Header.h"; sourceTree = "<group>"; };
-		D501588A2538A985005E02FA /* STPPaymentMethodCard+BrandFromString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "STPPaymentMethodCard+BrandFromString.h"; sourceTree = "<group>"; };
 		D50158992538BE7C005E02FA /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		D50158A92538BF63005E02FA /* CardSetupCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetupCredential.swift; sourceTree = "<group>"; };
 		D50158AE2538BFDD005E02FA /* CardSetupCredentialDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetupCredentialDoubles.swift; sourceTree = "<group>"; };
@@ -1748,7 +1746,6 @@
 				D5B57A64241479F300BE9B4F /* Assets.generated.swift */,
 				03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */,
 				D50668DA23B946330044E553 /* Rythmico.entitlements */,
-				D50158892538A985005E02FA /* Rythmico-Bridging-Header.h */,
 				03341B4C23ABB1E8009AE8A8 /* Info.plist */,
 				D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */,
 				D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */,
@@ -2118,7 +2115,6 @@
 				D5D9AE672533ADA400A0ABCC /* Checkout.swift */,
 				D5D9AE702534CAF000A0ABCC /* CheckoutDoubles.swift */,
 				D5D9AE872534CD0200A0ABCC /* CheckoutTests.swift */,
-				D501588A2538A985005E02FA /* STPPaymentMethodCard+BrandFromString.h */,
 			);
 			path = Checkout;
 			sourceTree = "<group>";
@@ -3415,7 +3411,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.rythmico.student";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "RYTHMICO DEBUG";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Rythmico/Supporting Files/Rythmico-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3443,7 +3438,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.rythmico.student";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = RYTHMICO;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/Rythmico/Supporting Files/Rythmico-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3820,7 +3814,7 @@
 			repositoryURL = "https://github.com/stripe/stripe-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 20.0.0;
+				minimumVersion = 21.3.0;
 			};
 		};
 		D5F11564253735F20027D164 /* XCRemoteSwiftPackageReference "swift-nonempty" */ = {

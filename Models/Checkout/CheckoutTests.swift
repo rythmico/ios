@@ -10,8 +10,8 @@ final class CheckoutTests: XCTestCase {
         XCTAssertEqual(Card.Brand("amex"), .amex)
         XCTAssertEqual(Card.Brand("Amex"), .amex)
 
-        XCTAssertEqual(Card.Brand("mastercard"), .masterCard)
-        XCTAssertEqual(Card.Brand("Mastercard"), .masterCard)
+        XCTAssertEqual(Card.Brand("mastercard"), .mastercard)
+        XCTAssertEqual(Card.Brand("Mastercard"), .mastercard)
 
         XCTAssertEqual(Card.Brand("discover"), .discover)
         XCTAssertEqual(Card.Brand("Discover"), .discover)

@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 import Stripe
 import Tagged
 
@@ -47,14 +47,34 @@ extension Card.Brand: Decodable {
     }
 
     init(_ rawBrandString: String) {
-        self = STPPaymentMethodCard.brand(from: rawBrandString)
+        self = STPCardBrandUtilities.brand(from: rawBrandString)
     }
 
     var name: String {
-        STPStringFromCardBrand(self)
+        STPCardBrandUtilities.name(from: self)
     }
 
     var logo: UIImage {
-        STPImageLibrary.brandImage(for: self)
+        STPImageLibrary.cardBrandImage(for: self)
+    }
+}
+
+private extension STPCardBrandUtilities {
+    // Mirrors STPPaymentMethodCard.brand(from:) internal function.
+    class func brand(from string: String) -> STPCardBrand {
+        guard let object = STPPaymentMethodCard.decodedObject(fromAPIResponse: ["brand": string]) else {
+            assertionFailure("Invalid internal parsing of raw brand name \(string)")
+            return .unknown
+        }
+        return object.brand
+    }
+
+    // Corrects silly optional return value of STPCardBrandUtilities.stringFrom(_:) public function.
+    class func name(from brand: STPCardBrand) -> String {
+        guard let name = STPCardBrandUtilities.stringFrom(brand) else {
+            assertionFailure("Invalid internal parsing of brand enum case \(brand)")
+            return .empty
+        }
+        return name
     }
 }
