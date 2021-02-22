@@ -21,7 +21,7 @@ final class CardSetupServiceStub: CardSetupServiceProtocol {
         self.delay = delay
     }
 
-    func send(_ params: Params, completion: @escaping Completion) {
+    func send(_ input: Input, completion: @escaping Completion) {
         if let delay = delay {
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [self] in
                 completion(result)
@@ -34,7 +34,7 @@ final class CardSetupServiceStub: CardSetupServiceProtocol {
 
 final class CardSetupServiceSpy: CardSetupServiceProtocol {
     private(set) var sendCount = 0
-    private(set) var latestParams: Params?
+    private(set) var latestInput: Input?
 
     var result: Output
 
@@ -42,13 +42,13 @@ final class CardSetupServiceSpy: CardSetupServiceProtocol {
         self.result = result
     }
 
-    func send(_ params: Params, completion: @escaping Completion) {
+    func send(_ input: Input, completion: @escaping Completion) {
         sendCount += 1
-        latestParams = params
+        latestInput = input
         result.map(completion)
     }
 }
 
 final class CardSetupServiceDummy: CardSetupServiceProtocol {
-    func send(_ params: Params, completion: @escaping Completion) {}
+    func send(_ input: Input, completion: @escaping Completion) {}
 }

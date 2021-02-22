@@ -95,9 +95,7 @@ struct LessonPlanBookingView: View {
     }
 
     private func availableCardsChanged(_ cards: [Card]) {
-        if selectedCard == nil, let firstCard = cards.first {
-            selectedCard = firstCard
-        }
+        selectedCard = cards.last
     }
 
     var title: String {

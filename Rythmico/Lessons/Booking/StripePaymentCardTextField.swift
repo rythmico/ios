@@ -16,11 +16,10 @@ struct StripePaymentCardTextField: UIViewRepresentable {
             view.placeholderColor = .rythmicoGray30
             view.setContentHuggingPriority(.required, for: .vertical)
 
-            context.coordinator.performWithoutEditing {
-                view.cardParams = cardDetails
-                DispatchQueue.main.asyncAfter(deadline: .now()) {
-                    self.cardIsValid = view.isValid
-                }
+            view.cardParams = cardDetails
+            view.becomeFirstResponder() // auto-start editing
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                self.cardIsValid = view.isValid
             }
         }
     }
@@ -35,29 +34,14 @@ struct StripePaymentCardTextField: UIViewRepresentable {
 
     class Coordinator: NSObject, STPPaymentCardTextFieldDelegate {
         private var parent: StripePaymentCardTextField
-        private var isEditingEnabled = true
 
         init(_ textField: StripePaymentCardTextField) {
             parent = textField
         }
 
-        func paymentCardTextFieldDidBeginEditing(_ textField: STPPaymentCardTextField) {
-            if !isEditingEnabled {
-                textField.resignFirstResponder()
-                isEditingEnabled = true
-            }
-        }
-
-        func performWithoutEditing(_ setter: () -> Void) {
-            isEditingEnabled = false
-            setter()
-        }
-
         func paymentCardTextFieldDidChange(_ textField: STPPaymentCardTextField) {
-            DispatchQueue.main.asyncAfter(deadline: .now()) { [self] in
-                parent.cardDetails = textField.cardParams
-                parent.cardIsValid = textField.isValid
-            }
+            parent.cardDetails = textField.cardParams
+            parent.cardIsValid = textField.isValid
         }
     }
 }
