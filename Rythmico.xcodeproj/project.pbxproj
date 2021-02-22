@@ -1474,18 +1474,18 @@
 		03E88EA124C1F1980077A420 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				03E88E8C24BC8C1D0077A420 /* AppContext.swift */,
 				035B1CBE249CF2AA00AABFEA /* App.swift */,
-				D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */,
-				D575C818254DD6C8001664AB /* AppSplash.swift */,
-				D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */,
-				D5AC9E25254D8AD7003A8197 /* AppDoubles.swift */,
-				D5AC9E2B254D8AE2003A8197 /* AppLauncher.swift */,
 				035B1D58249E5CF800AABFEA /* App+Firebase.swift */,
 				035B1CF0249CF9FA00AABFEA /* App+LaunchScreenCache.swift */,
 				D59D0592251828EA0070D81B /* App+Playback.swift */,
 				03B198532471BBE8005529EB /* App+PushNotifications.swift */,
 				D58149FF251D7FFC0009BBB3 /* App+SplitViewCustomization.swift */,
+				03E88E8C24BC8C1D0077A420 /* AppContext.swift */,
+				D5AC9E25254D8AD7003A8197 /* AppDoubles.swift */,
+				D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */,
+				D5AC9E2B254D8AE2003A8197 /* AppLauncher.swift */,
+				D575C818254DD6C8001664AB /* AppSplash.swift */,
+				D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */,
 				03E88EB024C205C30077A420 /* Current.swift */,
 			);
 			path = Core;
