@@ -141,8 +141,8 @@
         "repositoryURL": "https://github.com/piknotech/SFSafeSymbols",
         "state": {
           "branch": null,
-          "revision": "31a99db357f2b839a18ab598c4aa87a741bd6009",
-          "version": "1.2.0"
+          "revision": "9d66af8ebfafca1cb21b77f3c5e3f43189174403",
+          "version": "2.1.2"
         }
       },
       {
@@ -222,8 +222,8 @@
         "repositoryURL": "https://github.com/nalexn/ViewInspector",
         "state": {
           "branch": null,
-          "revision": "ace44b26e593423ceb9466df8072281f41da389d",
-          "version": "0.4.1"
+          "revision": "d64e4d10464334de907b801f3860e1c7afb74a53",
+          "version": "0.6.3"
         }
       },
       {
