@@ -3,6 +3,7 @@
 set -e
 
 xcodebuild \
+    -resolvePackageDependencies \
     -project Rythmico.xcodeproj \
     -scheme All \
     -destination 'platform=iOS Simulator,name=iPhone 12 Pro' \
