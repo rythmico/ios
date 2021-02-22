@@ -198,6 +198,8 @@
 		D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898423B9B5C100C19300 /* GoogleService-Info.plist */; };
 		D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */; };
 		D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */; };
+		D510825F25E43123003C9467 /* FoundationSugar in Frameworks */ = {isa = PBXBuildFile; productRef = D510825E25E43123003C9467 /* FoundationSugar */; };
+		D510826125E43129003C9467 /* FoundationSugar in Frameworks */ = {isa = PBXBuildFile; productRef = D510826025E43129003C9467 /* FoundationSugar */; };
 		D514750F240C96F0002EE20C /* XCTAssertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147507240C8E69002EE20C /* XCTAssertView.swift */; };
 		D5147511240C99A9002EE20C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147510240C99A9002EE20C /* CustomTextField.swift */; };
 		D516A8FA253A1816002E6EDF /* CoordinatorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D516A8F9253A1816002E6EDF /* CoordinatorStateView.swift */; };
@@ -736,6 +738,7 @@
 		D509899023BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCompletionDelegate.swift; sourceTree = "<group>"; };
 		D50E4BC123C69D0400B6FCB1 /* AppleAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationService.swift; sourceTree = "<group>"; };
 		D50E4BC423C7AAA900B6FCB1 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		D510825B25E43099003C9467 /* FoundationSugar */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FoundationSugar; sourceTree = "<group>"; };
 		D5147506240C8E69002EE20C /* TestableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestableView.swift; sourceTree = "<group>"; };
 		D5147507240C8E69002EE20C /* XCTAssertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTAssertView.swift; sourceTree = "<group>"; };
 		D5147510240C99A9002EE20C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -1001,6 +1004,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D510825F25E43123003C9467 /* FoundationSugar in Frameworks */,
 				D5BDD50B253CCC4400255190 /* Tagged in Frameworks */,
 				D535554C23E23EA7005A20EB /* Then in Frameworks */,
 				D535548123E0E7C1005A20EB /* SFSafeSymbols in Frameworks */,
@@ -1033,6 +1037,7 @@
 				035B1CD2249CF5D000AABFEA /* SFSafeSymbols in Frameworks */,
 				D5FC2D51254A7E21005056D5 /* FirebaseCrashlytics in Frameworks */,
 				D5F4AE8B2559D46A001085D5 /* PhoneNumberKit in Frameworks */,
+				D510826125E43129003C9467 /* FoundationSugar in Frameworks */,
 				035B1CD5249CF7E200AABFEA /* Then in Frameworks */,
 				D5B880932547AFF600754197 /* Tagged in Frameworks */,
 				D585217824CF81E8005D783A /* Introspect in Frameworks */,
@@ -1089,6 +1094,7 @@
 				D50E4BDC23CA82E000B6FCB1 /* UI */,
 				03EDA6692476AD6800FBE527 /* Services */,
 				03EDA66A2476AE5500FBE527 /* Models */,
+				D510825B25E43099003C9467 /* FoundationSugar */,
 				03341B3C23ABB1E7009AE8A8 /* Products */,
 				D5FC2D4B254A7E21005056D5 /* Frameworks */,
 			);
@@ -2133,6 +2139,7 @@
 				D507CCA925771C86001B2B5A /* EnumKit */,
 				D59E4E6025B20ADA00E8F94C /* YouTubeiOSPlayerHelper */,
 				D5D32C5925B9FB0E00F3ECD8 /* MultiModal */,
+				D510825E25E43123003C9467 /* FoundationSugar */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -2173,6 +2180,7 @@
 				D5F4AE8A2559D46A001085D5 /* PhoneNumberKit */,
 				D5D32C6425BA02E600F3ECD8 /* MultiModal */,
 				D54CFD1B25BB173000C012F3 /* WebView */,
+				D510826025E43129003C9467 /* FoundationSugar */,
 			);
 			productName = RythmicoTutor;
 			productReference = 035B1CBC249CF2AA00AABFEA /* Tutor.app */;
@@ -3635,6 +3643,14 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D507CCA825771C86001B2B5A /* XCRemoteSwiftPackageReference "EnumKit" */;
 			productName = EnumKit;
+		};
+		D510825E25E43123003C9467 /* FoundationSugar */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FoundationSugar;
+		};
+		D510826025E43129003C9467 /* FoundationSugar */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FoundationSugar;
 		};
 		D535547623DF3A19005A20EB /* Valet */ = {
 			isa = XCSwiftPackageProductDependency;
