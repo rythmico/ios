@@ -1487,6 +1487,7 @@
 				D575C818254DD6C8001664AB /* AppSplash.swift */,
 				D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */,
 				03E88EB024C205C30077A420 /* Current.swift */,
+				D5F4D3FE24F858AE000E8580 /* Date+Sugar.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1846,7 +1847,6 @@
 				D5C23A79240F2DEB007DED63 /* Bool+Sugar.swift */,
 				0365F6F22417EE4100F452AC /* Character+Sugar.swift */,
 				D5FD6F1124096FB5008C5AD4 /* Collection+Sugar.swift */,
-				D5F4D3FE24F858AE000E8580 /* Date+Sugar.swift */,
 				03E88E8824BB82290077A420 /* DateFormatter+Sugar.swift */,
 				D517FFCA25548EC600A41639 /* DateIntervalFormatter+Sugar.swift */,
 				D572B686258A3A7F00B87E77 /* Dictionary+Sugar.swift */,
