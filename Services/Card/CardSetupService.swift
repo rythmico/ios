@@ -8,23 +8,23 @@ struct CardSetupParams {
 }
 
 protocol CardSetupServiceProtocol {
-    typealias Params = CardSetupParams
+    typealias Input = CardSetupParams
     typealias Output = Swift.Result<STPSetupIntentProtocol, Error>?
     typealias Completion = (Output) -> Void
-    func send(_ params: Params, completion: @escaping Completion)
+    func send(_ input: Input, completion: @escaping Completion)
 }
 
 extension STPPaymentHandler: CardSetupServiceProtocol {
-    func send(_ params: Params, completion: @escaping Completion) {
+    func send(_ input: Input, completion: @escaping Completion) {
         confirmSetupIntent(
-            STPSetupIntentConfirmParams(clientSecret: params.credential.stripeClientSecret).then {
+            STPSetupIntentConfirmParams(clientSecret: input.credential.stripeClientSecret).then {
                 $0.paymentMethodParams = STPPaymentMethodParams(
-                    card: params.cardDetails,
+                    card: input.cardDetails,
                     billingDetails: nil,
                     metadata: nil
                 )
             },
-            with: params.authenticationContext,
+            with: input.authenticationContext,
             completion: { status, setupIntent, error in
                 switch status {
                 case .canceled:
