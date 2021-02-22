@@ -17,14 +17,14 @@ protocol CardSetupServiceProtocol {
 extension STPPaymentHandler: CardSetupServiceProtocol {
     func send(_ params: Params, completion: @escaping Completion) {
         confirmSetupIntent(
-            withParams: STPSetupIntentConfirmParams(clientSecret: params.credential.stripeClientSecret).then {
+            STPSetupIntentConfirmParams(clientSecret: params.credential.stripeClientSecret).then {
                 $0.paymentMethodParams = STPPaymentMethodParams(
                     card: params.cardDetails,
                     billingDetails: nil,
                     metadata: nil
                 )
             },
-            authenticationContext: params.authenticationContext,
+            with: params.authenticationContext,
             completion: { status, setupIntent, error in
                 switch status {
                 case .canceled:

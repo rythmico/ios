@@ -9,7 +9,7 @@ extension Card.ID {
 extension Card {
     static let mastercardStub = Self(
         id: .random(),
-        brand: .masterCard,
+        brand: .mastercard,
         lastFourDigits: "4242",
         expiryMonth: 12,
         expiryYear: 32
