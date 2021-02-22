@@ -1,6 +1,6 @@
 import Foundation
 import FirebaseMessaging
-import Sugar
+import FoundationSugar
 
 protocol DeviceTokenDeleter {
     typealias ErrorHandler = Handler<Error?>

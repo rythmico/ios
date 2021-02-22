@@ -1,7 +1,7 @@
 import SwiftUI
 import SFSafeSymbols
 import MultiModal
-import Sugar
+import FoundationSugar
 
 struct MainView: View, TestableView {
     enum Tab: String, Equatable, Hashable, CaseIterable {

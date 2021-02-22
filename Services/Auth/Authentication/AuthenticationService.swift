@@ -1,6 +1,6 @@
 import Foundation
 import FirebaseAuth
-import Sugar
+import FoundationSugar
 
 protocol AuthenticationServiceProtocol {
     typealias Response = AuthenticationAccessTokenProvider

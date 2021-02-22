@@ -1,5 +1,5 @@
 import Foundation
-import Sugar
+import FoundationSugar
 
 struct RemoteConfigStub: RemoteConfigServiceProtocol {
     var fetchingDelay: TimeInterval?

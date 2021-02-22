@@ -1,5 +1,5 @@
 import Foundation
-import Sugar
+import FoundationSugar
 
 extension ActivityCoordinator.State {
     var isReady: Bool {

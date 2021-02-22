@@ -1,5 +1,5 @@
 import Foundation
-import Sugar
+import FoundationSugar
 
 protocol InstrumentSelectionListProviderProtocol {
     func instruments(completion: Handler<[Instrument]>)

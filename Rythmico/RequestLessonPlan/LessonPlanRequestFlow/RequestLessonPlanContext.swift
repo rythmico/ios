@@ -1,5 +1,5 @@
 import Foundation
-import Sugar
+import FoundationSugar
 import Then
 
 final class RequestLessonPlanContext: ObservableObject {

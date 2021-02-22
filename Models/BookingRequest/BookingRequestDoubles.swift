@@ -1,5 +1,5 @@
 import Foundation
-import Sugar
+import FoundationSugar
 
 extension BookingRequest {
     static let stub = Self(

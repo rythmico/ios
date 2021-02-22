@@ -1,6 +1,6 @@
 import APIKit
 import Foundation
-import Sugar
+import FoundationSugar
 
 @dynamicMemberLookup
 protocol AuthorizedAPIRequest: Request {

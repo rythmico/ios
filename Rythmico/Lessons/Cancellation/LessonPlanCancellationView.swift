@@ -1,5 +1,5 @@
 import SwiftUI
-import Sugar
+import FoundationSugar
 
 struct LessonPlanCancellationView: View, TestableView {
     private typealias Coordinator = APIActivityCoordinator<CancelLessonPlanRequest>

@@ -1,7 +1,7 @@
 import SwiftUI
 import PhoneNumberKit
 import NonEmpty
-import Sugar
+import FoundationSugar
 
 struct LessonPlanBookingView: View {
     private var lessonPlan: LessonPlan

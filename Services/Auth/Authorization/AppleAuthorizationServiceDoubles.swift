@@ -1,4 +1,4 @@
-import Sugar
+import FoundationSugar
 
 final class AppleAuthorizationServiceStub: AppleAuthorizationServiceProtocol {
     var result: AuthorizationResult

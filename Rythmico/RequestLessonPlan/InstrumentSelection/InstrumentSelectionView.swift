@@ -1,5 +1,5 @@
 import SwiftUI
-import Sugar
+import FoundationSugar
 
 protocol InstrumentSelectionContext {
     func setInstrument(_ instrument: Instrument)

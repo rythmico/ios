@@ -1,6 +1,6 @@
 import AuthenticationServices
 import CryptoKit
-import Sugar
+import FoundationSugar
 
 protocol AppleAuthorizationServiceProtocol {
     typealias Credential = AppleAuthorizationCredential

@@ -1,5 +1,5 @@
 import AuthenticationServices
-import Sugar
+import FoundationSugar
 
 protocol AppleAuthorizationCredentialStateProvider {
     typealias State = ASAuthorizationAppleIDProvider.CredentialState

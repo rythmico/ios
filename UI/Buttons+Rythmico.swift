@@ -1,5 +1,5 @@
 import SwiftUI
-import Sugar
+import FoundationSugar
 
 extension Button {
     func primaryStyle(expansive: Bool = true) -> some View {

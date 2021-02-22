@@ -1,5 +1,5 @@
 import SwiftUI
-import Sugar
+import FoundationSugar
 
 protocol SchedulingContext {
     func setSchedule(_ schedule: Schedule)

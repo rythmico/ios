@@ -1,6 +1,6 @@
 import SwiftUI
 import Combine
-import Sugar
+import FoundationSugar
 
 struct LessonsView: View, TestableView {
     typealias Coordinator = APIActivityCoordinator<GetLessonPlansRequest>

@@ -1,5 +1,5 @@
 import Foundation
-import Sugar
+import FoundationSugar
 
 final class RouterSpy: RouterProtocol {
     var didOpen: Handler<Route>

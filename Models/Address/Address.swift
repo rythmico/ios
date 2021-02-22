@@ -1,5 +1,5 @@
 import Foundation
-import Sugar
+import FoundationSugar
 
 struct Address: Hashable, Equatable, Codable {
     var latitude: Double

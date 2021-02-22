@@ -1,6 +1,6 @@
 import Foundation
 import PhoneNumberKit
-import Sugar
+import FoundationSugar
 
 extension URLOpener {
     func open(_ link: PhoneNumberLink) throws {
