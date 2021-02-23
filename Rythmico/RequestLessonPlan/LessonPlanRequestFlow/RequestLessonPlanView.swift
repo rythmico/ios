@@ -1,6 +1,6 @@
 import SwiftUI
 import MultiModal
-import Sugar
+import FoundationSugar
 
 struct RequestLessonPlanView: View, TestableView {
     typealias Coordinator = APIActivityCoordinator<CreateLessonPlanRequest>

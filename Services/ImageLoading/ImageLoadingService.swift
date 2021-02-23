@@ -1,6 +1,6 @@
 import Foundation
 import class UIKit.UIImage
-import Sugar
+import FoundationSugar
 
 protocol ImageLoadingServiceProtocol {
     typealias CompletionHandler = SimpleResultHandler<UIImage>

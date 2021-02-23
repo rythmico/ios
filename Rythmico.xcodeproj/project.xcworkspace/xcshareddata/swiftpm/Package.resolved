@@ -42,7 +42,7 @@
         "repositoryURL": "https://github.com/firebase/firebase-ios-sdk",
         "state": {
           "branch": null,
-          "revision": "0dd2ad1054177670dfa5bb1bbc6767e2a965095d",
+          "revision": "14dff7e19375288c7e34df8444c85d314f26d7cf",
           "version": "7.6.0"
         }
       },
@@ -231,7 +231,7 @@
         "repositoryURL": "https://github.com/ivanlisovyi/youtube-ios-player-helper",
         "state": {
           "branch": "master",
-          "revision": "e159b302b2419adc48e959f93b68a09cbb332f4e",
+          "revision": "b02a8c88e8724f605f30de907dfcd29daeaeb3b1",
           "version": null
         }
       }

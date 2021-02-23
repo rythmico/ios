@@ -10,7 +10,7 @@ extension App {
     static let distributionMethod = DistributionMethod.testFlight
 
     static func didFinishLaunching() {
-        Stripe.setDefaultPublishableKey(AppSecrets.stripePublishableKey)
+        StripeAPI.defaultPublishableKey = AppSecrets.stripePublishableKey
     }
 
     func didEnterBackground() {

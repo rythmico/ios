@@ -1,4 +1,4 @@
-import Sugar
+import FoundationSugar
 
 final class AuthenticationAccessTokenProviderStub: AuthenticationAccessTokenProvider {
     var result: AccessTokenResult

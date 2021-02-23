@@ -1,5 +1,5 @@
 import SwiftUI
-import Sugar
+import FoundationSugar
 
 protocol BackgroundTapActionCoordinator {
     func onBackgroundTap(perform action: @escaping Action)

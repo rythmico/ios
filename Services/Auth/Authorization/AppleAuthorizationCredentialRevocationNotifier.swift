@@ -1,6 +1,6 @@
 import Foundation
 import class AuthenticationServices.ASAuthorizationAppleIDProvider
-import Sugar
+import FoundationSugar
 
 protocol AppleAuthorizationCredentialRevocationNotifying: AnyObject {
     var revocationHandler: Action? { get set }

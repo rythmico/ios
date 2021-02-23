@@ -1,6 +1,6 @@
 import SwiftUI
 import MultiModal
-import Sugar
+import FoundationSugar
 
 struct LessonDetailView: View, TestableView {
     @ObservedObject

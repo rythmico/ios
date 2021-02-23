@@ -1,5 +1,5 @@
 import SwiftUI
-import Sugar
+import FoundationSugar
 
 struct LessonSkippingView: View {
     @Environment(\.presentationMode)

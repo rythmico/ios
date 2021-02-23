@@ -1,5 +1,5 @@
 import Foundation
-import Sugar
+import FoundationSugar
 
 extension BookingApplication {
     static func stub(_ statusInfo: StatusInfo) -> Self {

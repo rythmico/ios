@@ -1,5 +1,6 @@
 import APIKit
-import Sugar
+import Foundation
+import FoundationSugar
 
 class APIServiceBase<Request: AuthorizedAPIRequest> {
     typealias Response = Request.Response

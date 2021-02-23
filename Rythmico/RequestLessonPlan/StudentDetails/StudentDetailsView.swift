@@ -1,5 +1,5 @@
 import SwiftUI
-import Sugar
+import FoundationSugar
 
 protocol StudentDetailsContext {
     func setStudent(_ student: Student)

@@ -28,9 +28,9 @@ name: PhoneNumberKit, nameSpecified: PhoneNumberKit, owner: marmelroy, version: 
 
 name: promises, nameSpecified: Promises, owner: google, version: 1.2.12
 
-name: SFSafeSymbols, nameSpecified: SFSafeSymbols, owner: piknotech, version: 1.2.0
+name: SFSafeSymbols, nameSpecified: SFSafeSymbols, owner: piknotech, version: 2.1.2
 
-name: stripe-ios, nameSpecified: Stripe, owner: stripe, version: 20.1.1
+name: stripe-ios, nameSpecified: Stripe, owner: stripe, version: 21.3.0
 
 name: swift-nonempty, nameSpecified: swift-nonempty, owner: pointfreeco, version: 
 
@@ -46,7 +46,7 @@ name: Then, nameSpecified: Then, owner: devxoul, version: 2.7.0
 
 name: Valet, nameSpecified: Valet, owner: Square, version: 4.1.2
 
-name: ViewInspector, nameSpecified: ViewInspector, owner: nalexn, version: 0.4.1
+name: ViewInspector, nameSpecified: ViewInspector, owner: nalexn, version: 0.6.3
 
 name: youtube-ios-player-helper, nameSpecified: YouTubeiOSPlayerHelper, owner: ivanlisovyi, version: 
 

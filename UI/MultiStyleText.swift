@@ -1,5 +1,5 @@
 import SwiftUI
-import Sugar
+import FoundationSugar
 
 struct MultiStyleText: View {
     @Environment(\.sizeCategory) private var sizeCategory

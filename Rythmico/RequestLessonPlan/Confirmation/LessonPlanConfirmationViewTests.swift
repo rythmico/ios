@@ -1,7 +1,7 @@
 import XCTest
 @testable import Rythmico
 import enum UserNotifications.UNAuthorizationStatus
-import Sugar
+import FoundationSugar
 import ViewInspector
 
 extension LessonPlanConfirmationView: Inspectable {}

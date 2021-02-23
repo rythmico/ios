@@ -1,6 +1,6 @@
 import Foundation
 import Combine
-import Sugar
+import FoundationSugar
 
 class AuthenticationAccessTokenProviderObserverBase: ObservableObject {
     @Published var currentProvider: AuthenticationAccessTokenProvider?

@@ -1,4 +1,4 @@
-import Sugar
+import FoundationSugar
 
 final class AppleAuthorizationCredentialRevocationNotifierFake: AppleAuthorizationCredentialRevocationNotifying {
     var revocationHandler: Action?

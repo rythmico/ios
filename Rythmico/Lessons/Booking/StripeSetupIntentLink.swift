@@ -1,6 +1,6 @@
 import SwiftUI
 import Stripe
-import Sugar
+import FoundationSugar
 
 struct StripeSetupIntentLink<Label: View>: View {
     private var credential: CardSetupCredential

@@ -1,5 +1,5 @@
 import SwiftUI
-import Sugar
+import FoundationSugar
 
 protocol PrivateNoteContext {
     func setPrivateNote(_ note: String)

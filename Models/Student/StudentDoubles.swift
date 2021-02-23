@@ -1,5 +1,5 @@
 import Foundation
-import Sugar
+import FoundationSugar
 import Then
 
 extension Student: Then {}

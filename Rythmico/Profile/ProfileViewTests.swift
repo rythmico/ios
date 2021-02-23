@@ -1,6 +1,6 @@
 import XCTest
 @testable import Rythmico
-import Sugar
+import FoundationSugar
 import ViewInspector
 
 extension ProfileView: Inspectable {}

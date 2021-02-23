@@ -1,6 +1,6 @@
 import Foundation
 import FirebaseAuth
-import Sugar
+import FoundationSugar
 
 protocol AuthenticationAccessTokenProvider: AnyObject {
     typealias AccessToken = String

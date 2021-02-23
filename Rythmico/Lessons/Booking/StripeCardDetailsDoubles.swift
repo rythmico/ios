@@ -1,5 +1,5 @@
 import Stripe
-import Sugar
+import FoundationSugar
 
 extension StripeCardDetails {
     static let stub = StripeCardDetails().then {

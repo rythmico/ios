@@ -1,5 +1,5 @@
 import SwiftUI
-import Sugar
+import FoundationSugar
 
 struct RequestLessonPlanFormView: View, TestableView {
     typealias RequestCoordinator = APIActivityCoordinator<CreateLessonPlanRequest>

@@ -1,5 +1,5 @@
 import SwiftUI
-import Sugar
+import FoundationSugar
 
 struct FloatingInputView<Content: View>: View {
     var doneAction: () -> Void

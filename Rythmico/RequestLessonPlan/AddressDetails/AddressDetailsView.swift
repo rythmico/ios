@@ -1,5 +1,5 @@
 import SwiftUI
-import Sugar
+import FoundationSugar
 
 protocol AddressDetailsContext {
     func setAddress(_ address: Address)

@@ -1,5 +1,5 @@
 import SwiftUI
-import Sugar
+import FoundationSugar
 
 struct RootView: View, TestableView {
     @StateObject var accessTokenProviderObserver = Current.accessTokenProviderObserver
