@@ -2236,7 +2236,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
 				LastUpgradeCheck = 1200;
-				ORGANIZATIONNAME = "David Roman";
+				ORGANIZATIONNAME = Rythmico;
 				TargetAttributes = {
 					03341B3A23ABB1E7009AE8A8 = {
 						CreatedOnToolsVersion = 11.2.1;
@@ -2258,7 +2258,7 @@
 				};
 			};
 			buildConfigurationList = 03341B3623ABB1E7009AE8A8 /* Build configuration list for PBXProject "Rythmico" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
