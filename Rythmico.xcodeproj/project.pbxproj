@@ -1096,7 +1096,6 @@
 				03EDA66A2476AE5500FBE527 /* Models */,
 				D510825B25E43099003C9467 /* FoundationSugar */,
 				03341B3C23ABB1E7009AE8A8 /* Products */,
-				D5FC2D4B254A7E21005056D5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2090,13 +2089,6 @@
 				D5FAE6732559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift */,
 			);
 			path = PhoneNumberOpener;
-			sourceTree = "<group>";
-		};
-		D5FC2D4B254A7E21005056D5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
