@@ -134,7 +134,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/SFSafeSymbols</string>
 			<key>Title</key>
-			<string>SFSafeSymbols (1.2.0)</string>
+			<string>SFSafeSymbols (2.1.2)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -142,7 +142,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/stripe-ios</string>
 			<key>Title</key>
-			<string>Stripe (20.1.1)</string>
+			<string>Stripe (21.3.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -206,7 +206,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/ViewInspector</string>
 			<key>Title</key>
-			<string>ViewInspector (0.4.1)</string>
+			<string>ViewInspector (0.6.3)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
