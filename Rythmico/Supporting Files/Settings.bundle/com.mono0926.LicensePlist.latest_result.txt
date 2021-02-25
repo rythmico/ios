@@ -6,7 +6,7 @@ name: boringssl-SwiftPM, nameSpecified: BoringSSL-GRPC, owner: firebase, version
 
 name: EnumKit, nameSpecified: EnumKit, owner: gringoireDM, version: 1.1.3
 
-name: firebase-ios-sdk, nameSpecified: Firebase, owner: firebase, version: 7.6.0
+name: firebase-ios-sdk, nameSpecified: Firebase, owner: firebase, version: 7.7.0
 
 name: GoogleAppMeasurement, nameSpecified: GoogleAppMeasurement, owner: google, version: 7.5.1
 
@@ -33,6 +33,8 @@ name: SFSafeSymbols, nameSpecified: SFSafeSymbols, owner: piknotech, version: 2.
 name: stripe-ios, nameSpecified: Stripe, owner: stripe, version: 21.3.0
 
 name: swift-nonempty, nameSpecified: swift-nonempty, owner: pointfreeco, version: 
+
+name: swift-protobuf, nameSpecified: SwiftProtobuf, owner: apple, version: 1.15.0
 
 name: swift-tagged, nameSpecified: Tagged, owner: pointfreeco, version: 0.5.0
 
