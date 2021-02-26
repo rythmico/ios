@@ -142,7 +142,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/stripe-ios</string>
 			<key>Title</key>
-			<string>Stripe (21.3.0)</string>
+			<string>Stripe (21.3.1)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
