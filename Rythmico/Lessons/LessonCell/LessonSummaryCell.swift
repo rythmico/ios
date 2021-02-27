@@ -16,12 +16,6 @@ struct LessonSummaryCell: View {
 struct LessonSummaryCellMainContent: View {
     var lesson: Lesson
 
-    var title: String {
-        [lesson.student.name.firstWord, "\(lesson.instrument.assimilatedName) Lesson \(lesson.number)"]
-            .compact()
-            .joined(separator: " - ")
-    }
-
     var subtitle: String {
         switch lesson.status {
         case .scheduled:
@@ -36,7 +30,7 @@ struct LessonSummaryCellMainContent: View {
     var body: some View {
         Button(action: { Current.state.lessonsContext.viewingLesson = lesson }) {
             VStack(alignment: .leading, spacing: .spacingExtraSmall) {
-                Text(title)
+                Text(lesson.title)
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
                     .rythmicoFont(.subheadlineBold)

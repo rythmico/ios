@@ -4,7 +4,7 @@ extension InlineContentAndTitleView where Content == AnyView {
     init(lesson: Lesson, summarized: Bool) {
         self.init(
             content: { AnyView(lesson.avatar) },
-            title: summarized ? lesson.summarizedTitle : lesson.title,
+            title: summarized ? lesson.summarizedTitle : lesson.fullTitle,
             bold: false
         )
     }
@@ -20,7 +20,7 @@ private extension Lesson {
         tutor.name
     }
 
-    var title: String {
+    var fullTitle: String {
         [tutor.name, "teaching", student.name.firstWord].compact().spaced()
     }
 }

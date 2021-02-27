@@ -6,21 +6,21 @@ struct Lesson: Equatable, Decodable, Identifiable, Hashable {
     typealias ID = Tagged<Self, String>
 
     enum Status: String, Equatable, Decodable, Hashable {
-        case scheduled = "SCHEDULED"
         case skipped = "SKIPPED"
         case completed = "COMPLETED"
+        case scheduled = "SCHEDULED"
     }
 
     var id: ID
     #if RYTHMICO
-    var planId: LessonPlan.ID
+    var lessonPlanId: LessonPlan.ID
     #elseif TUTOR
     // TODO
     // var bookingId: Booking.ID
     #endif
     var student: Student
     var instrument: Instrument
-    var number: Int
+    var week: Int?
     #if RYTHMICO
     var tutor: Tutor
     #elseif TUTOR
@@ -41,4 +41,19 @@ extension Lesson.Status {
     var isScheduled: Bool { self == .scheduled }
     var isSkipped: Bool { self == .skipped }
     var isCompleted: Bool { self == .completed }
+}
+
+extension Lesson {
+    var title: String {
+        [
+            student.name.firstWord,
+            [instrument.assimilatedName, "Lesson", orderDescriptor].spaced()
+        ]
+        .compact()
+        .spacedAndDashed()
+    }
+
+    private var orderDescriptor: String {
+        week.map { String($0 + 1) } ?? "(Extra)"
+    }
 }

@@ -7,6 +7,7 @@ extension String: Identifiable {
 extension String {
     public static var empty: String { "" }
     public static var whitespace: String { " " }
+    public static var dash: String { "-" }
     public static var newline: String { "\n" }
     public static var comma: String { "," }
     public static var quote: String { "\"" }
@@ -66,5 +67,9 @@ extension String {
 extension Collection where Element: StringProtocol {
     public func spaced() -> String {
         joined(separator: .whitespace)
+    }
+
+    public func spacedAndDashed() -> String {
+        joined(separator: .whitespace + .dash + .whitespace)
     }
 }
