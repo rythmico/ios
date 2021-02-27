@@ -8,12 +8,6 @@ struct LessonSummaryCell: View {
     @ObservedObject
     private var state = Current.state
 
-    var title: String {
-        [lesson.student.name.firstWord, "\(lesson.instrument.assimilatedName) Lesson \(lesson.number)"]
-            .compact()
-            .joined(separator: " - ")
-    }
-
     var subtitle: String {
         switch lesson.status {
         case .scheduled, .completed:
@@ -43,7 +37,7 @@ struct LessonSummaryCell: View {
     private var content: some View {
         HStack(spacing: .spacingMedium) {
             VStack(alignment: .leading, spacing: .spacingUnit / 2) {
-                Text(title)
+                Text(lesson.title)
                     .foregroundColor(.primary)
                     .font(.body)
                 Text(subtitle)
