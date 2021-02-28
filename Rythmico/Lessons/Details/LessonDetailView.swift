@@ -8,12 +8,6 @@ struct LessonDetailView: View, TestableView {
 
     var lesson: Lesson
 
-    var title: String {
-        [lesson.student.name.firstWord, "\(lesson.instrument.assimilatedName) Lesson \(lesson.number)"]
-            .compact()
-            .joined(separator: " - ")
-    }
-
     var lessonSkippingView: LessonSkippingView? { LessonSkippingView(lesson: lesson) }
     var showSkipLessonFormAction: Action? {
         lessonSkippingView.map { _ in
@@ -29,7 +23,7 @@ struct LessonDetailView: View, TestableView {
     var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: .spacingExtraLarge) {
-                TitleContentView(title: title) {
+                TitleContentView(title: lesson.title) {
                     Pill(status: lesson.status)
                 }
                 ScrollView {
@@ -75,7 +69,7 @@ struct LessonDetailView: View, TestableView {
         .multiModal {
             $0.sheet(isPresented: $state.lessonsContext.isSkippingLesson) { lessonSkippingView }
             $0.sheet(isPresented: $state.lessonsContext.isCancellingLessonPlan) {
-                if let lessonPlan = Current.lessonPlanRepository.firstById(lesson.planId) {
+                if let lessonPlan = Current.lessonPlanRepository.firstById(lesson.lessonPlanId) {
                     LessonPlanCancellationView(lessonPlan: lessonPlan)
                 }
             }

@@ -67,7 +67,7 @@ struct SkipLessonRequest: RythmicoAPIRequest {
     let properties: Properties
 
     let method: HTTPMethod = .patch
-    var path: String { "/lesson-plans/\(self.planId)/lessons/\(self.id)/skip" }
+    var path: String { "/lesson-plans/\(self.lessonPlanId)/lessons/\(self.id)/skip" }
 
     typealias Response = LessonPlan
     typealias Error = RythmicoAPIError

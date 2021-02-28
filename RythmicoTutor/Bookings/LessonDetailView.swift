@@ -7,11 +7,6 @@ struct LessonDetailView: View {
     private let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
     private let timeFormatter = Current.dateFormatter(format: .preset(time: .short))
 
-    var title: String {
-        [lesson.student.name.firstWord, "\(lesson.instrument.assimilatedName) Lesson \(lesson.number)"]
-            .compact()
-            .joined(separator: " - ")
-    }
     var studentName: String { lesson.student.name }
     var startDate: String { dateFormatter.string(from: lesson.schedule.startDate) }
     var time: String { timeFormatter.string(from: lesson.schedule.startDate) }
@@ -50,7 +45,7 @@ struct LessonDetailView: View {
             }
         }
         .listStyle(GroupedListStyle())
-        .navigationBarTitle(Text(title), displayMode: .inline)
+        .navigationBarTitle(Text(lesson.title), displayMode: .inline)
         .phoneNumberOpeningSheet(
             isPresented: $isContactSheetPresented,
             phoneNumber: lesson.phoneNumber,
