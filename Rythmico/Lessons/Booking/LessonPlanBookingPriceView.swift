@@ -19,7 +19,7 @@ struct LessonPlanBookingPriceView: View {
             .foregroundColor(.rythmicoForeground)
 
             Group {
-                Text("Payment will be automatically taken on the 1st of every month.")
+                Text("Payment will be automatically taken on the day of each lesson.")
                 Text("By confirming your booking you agree to our ") + Text("terms of service and policies").underline() + Text(".")
             }
             .rythmicoFont(.callout)
