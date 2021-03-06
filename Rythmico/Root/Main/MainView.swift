@@ -20,7 +20,7 @@ struct MainView: View, TestableView {
     private var profileView = ProfileView()
 
     @State
-    private var hasPresentedLessonRequestView = false
+    private var hasFetchedLessonPlanAtLeastOnce = false
 
     @ObservedObject
     private var lessonPlanFetchingCoordinator: LessonsView.Coordinator
@@ -42,9 +42,14 @@ struct MainView: View, TestableView {
         state.lessonsContext = .requestingLessonPlan
     }
 
-    func presentRequestLessonFlowIfNeeded(_ lessonPlans: [LessonPlan]) {
-        guard !hasPresentedLessonRequestView, lessonPlans.isEmpty else { return }
-        state.lessonsContext = .requestingLessonPlan
+    func onLessonPlansFetched(_ lessonPlans: [LessonPlan]) {
+        guard !hasFetchedLessonPlanAtLeastOnce else { return }
+        hasFetchedLessonPlanAtLeastOnce = true
+        if lessonPlans.isEmpty {
+            presentRequestLessonFlow()
+        } else {
+            Current.pushNotificationAuthorizationCoordinator.requestAuthorization()
+        }
     }
 
     let inspection = SelfInspection()
@@ -56,10 +61,10 @@ struct MainView: View, TestableView {
             tabTitle: \.uppercasedTitle, tabIcons: icon
         )
         .testable(self)
-        .onChange(of: state.lessonsContext.isRequestingLessonPlan, perform: onIsLessonRequestViewPresentedChange)
         .accentColor(.rythmicoPurple)
         .onAppear(perform: deviceRegisterCoordinator.registerDevice)
-        .onSuccess(lessonPlanFetchingCoordinator, perform: presentRequestLessonFlowIfNeeded)
+        .onAppear(perform: Current.pushNotificationAuthorizationCoordinator.refreshAuthorizationStatus)
+        .onSuccess(lessonPlanFetchingCoordinator, perform: onLessonPlansFetched)
         .multiModal {
             $0.sheet(isPresented: $state.lessonsContext.isRequestingLessonPlan) {
                 RequestLessonPlanView(context: RequestLessonPlanContext())
@@ -111,10 +116,6 @@ struct MainView: View, TestableView {
         case .profile:
             EmptyView()
         }
-    }
-
-    private func onIsLessonRequestViewPresentedChange(_ flag: Bool) {
-        if flag { hasPresentedLessonRequestView = true }
     }
 }
 
