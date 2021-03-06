@@ -4,6 +4,8 @@ import FoundationSugar
 struct LessonPlanConfirmationView: View, TestableView {
     @StateObject
     private var notificationAuthorizationCoordinator = Current.pushNotificationAuthorizationCoordinator
+    @StateObject
+    private var calendarSyncCoordinator = Current.calendarSyncCoordinator()!
 
     var lessonPlan: LessonPlan
 
@@ -81,12 +83,16 @@ struct LessonPlanConfirmationView: View, TestableView {
                             additionalContent
                         }
 
-                        enablePushNotificationsButtonAction.map {
-                            Button("Enable Push Notifications", action: $0)
-                                .tertiaryStyle(expansive: false)
-                                .transition(
-                                    AnyTransition.opacity.combined(with: .move(edge: .bottom))
-                                )
+                        if let action = calendarSyncCoordinator.enableCalendarSyncAction {
+                            ZStack {
+                                Button("Add to Calendar", action: action)
+                                    .tertiaryStyle(expansive: false)
+                                    .opacity(calendarSyncCoordinator.isSyncingCalendar ? 0 : 1)
+                                if calendarSyncCoordinator.isSyncingCalendar {
+                                    ActivityIndicator()
+                                }
+                            }
+                            .transition(.opacity)
                         }
                     }
                     .padding(.horizontal, .spacingMedium)
@@ -97,10 +103,12 @@ struct LessonPlanConfirmationView: View, TestableView {
             }
 
             FloatingView {
-                Button("Continue", action: doContinue).primaryStyle()
+                Button("Continue", action: doContinue)
+                    .primaryStyle()
+                    .disabled(calendarSyncCoordinator.isSyncingCalendar)
             }
         }
-        .animation(.rythmicoSpring(duration: .durationMedium), value: enablePushNotificationsButtonAction != nil)
+        .animation(.rythmicoSpring(duration: .durationMedium), value: calendarSyncCoordinator.isSyncingCalendar)
         .alert(error: errorMessage, dismiss: dismissError)
         .testable(self)
         .onAppear(perform: notificationAuthorizationCoordinator.refreshAuthorizationStatus)
