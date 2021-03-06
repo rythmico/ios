@@ -233,7 +233,7 @@ extension AppEnvironment {
         )
     }
 
-    static var fakeAPIServicesDelay: TimeInterval? = nil
+    static var fakeAPIServicesDelay: TimeInterval? = 2
     static func fakeAPIService<R: AuthorizedAPIRequest>(result: Result<R.Response, Error>) -> APIServiceStub<R> {
         APIServiceStub(result: result, delay: fakeAPIServicesDelay)
     }

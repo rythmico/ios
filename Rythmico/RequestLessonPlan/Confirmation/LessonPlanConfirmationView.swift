@@ -114,11 +114,7 @@ struct RequestLessonPlanConfirmationView_Previews: PreviewProvider {
 //            requestResult: (false, nil)
 //            requestResult: (false, "Error")
         )
-        return Group {
-            LessonPlanConfirmationView(lessonPlan: .pendingJackGuitarPlanStub)
-            LessonPlanConfirmationView(lessonPlan: .scheduledJackGuitarPlanStub)
-        }
-//        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+        return LessonPlanConfirmationView(lessonPlan: .scheduledJackGuitarPlanStub)
     }
 }
 #endif
