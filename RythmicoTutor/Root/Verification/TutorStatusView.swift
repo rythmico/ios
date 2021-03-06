@@ -88,7 +88,7 @@ private final class TutorSignUpWebViewDelegate: NSObject, WKNavigationDelegate {
     var onAboutBlank: Action?
 
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        guard webView.url?.absoluteString == "about:blank" else { return }
+        guard webView.url?.absoluteString == "https://rythmico-prod.web.app/blank" else { return }
         onAboutBlank?()
     }
 }
