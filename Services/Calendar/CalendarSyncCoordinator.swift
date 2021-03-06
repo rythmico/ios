@@ -82,6 +82,11 @@ final class CalendarSyncCoordinator: ObservableObject {
         do {
             try Current.urlOpener.subscribeToCalendar(with: info)
             isSubscriptionInProgress = true
+
+            // Timeout for EKEventStore to emit notification of change.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [weak self] in
+                self?.eventStoreChanged()
+            }
         } catch {
             self.error = error
         }
