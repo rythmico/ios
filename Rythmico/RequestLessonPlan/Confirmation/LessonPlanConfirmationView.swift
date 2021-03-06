@@ -3,8 +3,6 @@ import FoundationSugar
 
 struct LessonPlanConfirmationView: View, TestableView {
     @StateObject
-    private var notificationAuthorizationCoordinator = Current.pushNotificationAuthorizationCoordinator
-    @StateObject
     private var calendarSyncCoordinator = Current.calendarSyncCoordinator()!
 
     var lessonPlan: LessonPlan
@@ -35,18 +33,6 @@ struct LessonPlanConfirmationView: View, TestableView {
         default:
             EmptyView()
         }
-    }
-
-    var enablePushNotificationsButtonAction: Action? {
-        notificationAuthorizationCoordinator.status.isDetermined
-            ? nil
-            : notificationAuthorizationCoordinator.requestAuthorization
-    }
-
-    var errorMessage: String? { notificationAuthorizationCoordinator.status.failedValue?.localizedDescription }
-
-    func dismissError() {
-        notificationAuthorizationCoordinator.dismissFailure()
     }
 
     let inspection = SelfInspection()
@@ -109,12 +95,11 @@ struct LessonPlanConfirmationView: View, TestableView {
             }
         }
         .animation(.rythmicoSpring(duration: .durationMedium), value: calendarSyncCoordinator.isSyncingCalendar)
-        .alert(error: errorMessage, dismiss: dismissError)
         .testable(self)
-        .onAppear(perform: notificationAuthorizationCoordinator.refreshAuthorizationStatus)
     }
 
     func doContinue() {
+        Current.pushNotificationAuthorizationCoordinator.requestAuthorization()
         Current.state.lessonsContext = .none
     }
 }
