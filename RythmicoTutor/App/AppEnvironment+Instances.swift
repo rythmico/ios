@@ -39,7 +39,7 @@ extension AppEnvironment {
         ),
         pushNotificationEventHandler: PushNotificationEventHandler(),
 
-        calendarAccessProvider: EKEventStore(),
+        calendarSyncStatusProvider: CalendarSyncStatusProvider(accessProvider: EKEventStore()),
         calendarInfoFetchingService: APIService(),
 
         uiAccessibility: UIAccessibility.self,
@@ -118,7 +118,7 @@ extension AppEnvironment {
             pushNotificationAuthorizationCoordinator: .dummy,
             pushNotificationEventHandler: PushNotificationEventHandlerDummy(),
 
-            calendarAccessProvider: EKEventStoreDummy(),
+            calendarSyncStatusProvider: CalendarSyncStatusProviderDummy(),
             calendarInfoFetchingService: APIServiceDummy(),
 
             uiAccessibility: UIAccessibilityDummy.self,

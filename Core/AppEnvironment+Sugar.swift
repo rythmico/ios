@@ -71,7 +71,7 @@ extension AppEnvironment {
     func calendarSyncCoordinator() -> CalendarSyncCoordinator? {
         coordinator(for: \.calendarInfoFetchingService).map {
             CalendarSyncCoordinator(
-                calendarAccessProvider: calendarAccessProvider,
+                calendarSyncStatusProvider: calendarSyncStatusProvider,
                 calendarInfoFetchingCoordinator: $0,
                 eventEmitter: eventEmitter,
                 urlOpener: urlOpener
@@ -172,9 +172,9 @@ extension AppEnvironment {
             requestResult: (true, nil)
         )
 
-        calendarAccessProvider = EKEventStoreStub(
-            accessRequestResult: (true, nil),
-            calendars: [EKCalendarFake()]
+        calendarSyncStatusProvider = CalendarSyncStatusProviderStub(
+            initialStatus: .notSynced,
+            refreshedStatus: .synced
         )
 
         calendarInfoFetchingService = APIServiceStub(
