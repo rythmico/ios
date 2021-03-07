@@ -49,7 +49,7 @@ private struct VideoCarouselCell: View {
                 }
             }
             LinearGradient(
-                gradient: Gradient(colors: [Color.black.opacity(0.01), Color.black.opacity(0.5)]),
+                gradient: Gradient(colors: [.black.opacity(0.01), .black.opacity(0.5)]),
                 startPoint: .top,
                 endPoint: .bottom
             )

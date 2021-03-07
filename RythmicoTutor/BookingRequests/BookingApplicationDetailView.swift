@@ -93,7 +93,7 @@ struct BookingApplicationDetailView: View {
             }
             Section(header: Text("PRIVATE NOTE")) {
                 Text(submitterPrivateNote)
-                    .foregroundColor(Color.secondary.opacity(submitterPrivateNoteOpacity))
+                    .foregroundColor(.secondary.opacity(submitterPrivateNoteOpacity))
                     .font(.body)
                     .padding(.vertical, .spacingUnit)
             }

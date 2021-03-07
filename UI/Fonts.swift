@@ -106,7 +106,7 @@ extension Font {
         sizeCategory: ContentSizeCategory,
         legibilityWeight: LegibilityWeight?
     ) -> Font {
-        Font.system(
+        .system(
             size: style.size(for: sizeCategory),
             weight: style.weight(for: legibilityWeight),
             design: .rounded
