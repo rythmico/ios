@@ -32,11 +32,7 @@ struct SelectableList<Data: RandomAccessCollection, ID: Hashable, Content: View>
                             if isSelected(element) {
                                 Image(decorative: Asset.iconCheckmark.name)
                                     .renderingMode(.template)
-                                    .transition(
-                                        AnyTransition
-                                            .opacity
-                                            .animation(.easeInOut(duration: .durationShort))
-                                    )
+                                    .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
                             }
                         }
                         .padding(.spacingMedium)

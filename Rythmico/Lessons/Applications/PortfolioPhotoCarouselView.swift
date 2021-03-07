@@ -33,11 +33,11 @@ private struct PhotoCarouselCell: View {
                 }
                 .clipped()
                 .aspectRatio(1, contentMode: .fit)
-                .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
+                .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
             } else {
                 Color.rythmicoGray30
                     .scaledToFill()
-                    .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
+                    .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
             }
         }
         .cornerRadius(.spacingUnit * 2, antialiased: true)

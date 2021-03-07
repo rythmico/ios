@@ -46,11 +46,7 @@ struct AppSplash: View {
                         .multilineTextAlignment(.center)
                         .lineSpacing(.spacingUnit)
                         .modifier(AppSplashTitleModifier())
-                        .transition(
-                            AnyTransition
-                                .opacity
-                                .combined(with: .offset(y: -.spacingLarge))
-                        )
+                        .transition(.offset(y: -.spacingLarge) + .opacity)
                 }
             }
         }

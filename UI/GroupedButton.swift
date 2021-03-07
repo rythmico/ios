@@ -24,7 +24,7 @@ struct GroupedButton<Accessory: View>: View {
 
             HStack {
                 Spacer()
-                accessory.transition(AnyTransition.opacity.combined(with: .scale))
+                accessory.transition(.opacity + .scale)
             }
         }
         .animation(.easeInOut(duration: .durationShort), value: isEnabled)

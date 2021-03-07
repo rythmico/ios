@@ -41,11 +41,11 @@ private struct VideoCarouselCell: View {
                     }
                     .clipped()
                     .aspectRatio(1, contentMode: .fit)
-                    .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
+                    .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
                 } else {
                     Color.rythmicoGray20
                         .scaledToFill()
-                        .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
+                        .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
                 }
             }
             LinearGradient(

@@ -40,9 +40,6 @@ struct LessonsCollectionView: View {
     }
 
     private var transition: AnyTransition {
-        AnyTransition
-            .opacity
-            .combined(with: .scale(scale: 0.75))
-            .animation(.rythmicoSpring(duration: .durationMedium))
+        (.scale(scale: 0.75) + .opacity).animation(.rythmicoSpring(duration: .durationMedium))
     }
 }

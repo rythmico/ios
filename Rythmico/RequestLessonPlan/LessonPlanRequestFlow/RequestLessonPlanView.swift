@@ -51,10 +51,7 @@ struct RequestLessonPlanView: View, TestableView {
     }
 
     private func stateTransition(scale: CGFloat) -> AnyTransition {
-        AnyTransition
-            .opacity
-            .combined(with: .scale(scale: scale))
-            .animation(.rythmicoSpring(duration: .durationShort))
+        (.scale(scale: scale) + .opacity).animation(.rythmicoSpring(duration: .durationShort))
     }
 }
 

@@ -58,10 +58,7 @@ struct RadialSelectionIndicator: View {
                 Circle()
                     .fill(color)
                     .transition(
-                        AnyTransition
-                            .scale
-                            .combined(with: .opacity)
-                            .animation(.easeOut(duration: .durationMedium))
+                        (.scale + .opacity).animation(.easeOut(duration: .durationMedium))
                     )
             }
             Circle()

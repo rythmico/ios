@@ -35,10 +35,7 @@ struct CoordinatorStateView<Input, Success, InputContent: View, LoadingContent: 
     }
 
     private func stateTransition(scale: CGFloat) -> AnyTransition {
-        AnyTransition
-            .opacity
-            .combined(with: .scale(scale: scale))
-            .animation(.rythmicoSpring(duration: .durationShort))
+        (.scale(scale: scale) + .opacity).animation(.rythmicoSpring(duration: .durationShort))
     }
 }
 

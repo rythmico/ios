@@ -81,12 +81,11 @@ struct RequestLessonPlanFormView: View, TestableView {
     }
 
     private func pageTransition(forStepIndex index: Int) -> AnyTransition {
-        AnyTransition.move(
+        .opacity + .move(
             edge: index == context.currentStep.index
                 ? context.direction == .forward ? .trailing : .leading
                 : context.direction == .forward ? .leading : .trailing
         )
-        .combined(with: .opacity)
     }
 }
 
