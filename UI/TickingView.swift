@@ -14,11 +14,13 @@ struct TickingView<Content: View>: View {
     }
 
     var body: some View {
-        content
-            .animation(.none)
-            .onReceive(timer) { _ in
-                content = contentBuilder()
-            }
+        ZStack {
+            content
+        }
+        .animation(.none)
+        .onReceive(timer) { _ in
+            content = contentBuilder()
+        }
     }
 }
 
