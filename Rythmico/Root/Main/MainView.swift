@@ -20,7 +20,7 @@ struct MainView: View, TestableView {
     private var profileView = ProfileView()
 
     @State
-    private var hasFetchedLessonPlanAtLeastOnce = false
+    private var hasFetchedLessonPlansAtLeastOnce = false
 
     @ObservedObject
     private var lessonPlanFetchingCoordinator: LessonsView.Coordinator
@@ -43,8 +43,8 @@ struct MainView: View, TestableView {
     }
 
     func onLessonPlansFetched(_ lessonPlans: [LessonPlan]) {
-        guard !hasFetchedLessonPlanAtLeastOnce else { return }
-        hasFetchedLessonPlanAtLeastOnce = true
+        guard !hasFetchedLessonPlansAtLeastOnce else { return }
+        hasFetchedLessonPlansAtLeastOnce = true
         if lessonPlans.isEmpty {
             presentRequestLessonFlow()
         } else {
