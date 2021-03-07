@@ -37,6 +37,11 @@
                BlueprintName = "RythmicoTutorTests"
                ReferencedContainer = "container:Rythmico.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "MainViewTests/testPushNotificationPromptOnAppear()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>
