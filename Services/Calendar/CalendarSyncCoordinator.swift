@@ -9,19 +9,19 @@ final class CalendarSyncCoordinator: ObservableObject {
     private(set) var error: Error?
     private var isSubscriptionInProgress = false
 
-    private var calendarSyncStatusProvider: CalendarSyncStatusProvider
+    private var calendarSyncStatusProvider: CalendarSyncStatusProviderBase
     private var calendarInfoFetchingCoordinator: APIActivityCoordinator<GetCalendarInfoRequest>
     private var eventEmitter: NotificationCenter
     private var urlOpener: URLOpener
     private var cancellables = [AnyCancellable]()
 
     init(
-        calendarAccessProvider: CalendarAccessProviderProtocol,
+        calendarSyncStatusProvider: CalendarSyncStatusProviderBase,
         calendarInfoFetchingCoordinator: APIActivityCoordinator<GetCalendarInfoRequest>,
         eventEmitter: NotificationCenter,
         urlOpener: URLOpener
     ) {
-        self.calendarSyncStatusProvider = CalendarSyncStatusProvider(accessProvider: calendarAccessProvider)
+        self.calendarSyncStatusProvider = calendarSyncStatusProvider
         self.calendarInfoFetchingCoordinator = calendarInfoFetchingCoordinator
         self.eventEmitter = eventEmitter
         self.urlOpener = urlOpener
@@ -82,6 +82,11 @@ final class CalendarSyncCoordinator: ObservableObject {
         do {
             try Current.urlOpener.subscribeToCalendar(with: info)
             isSubscriptionInProgress = true
+
+            // Timeout for EKEventStore to emit notification of change.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [weak self] in
+                self?.eventStoreChanged()
+            }
         } catch {
             self.error = error
         }

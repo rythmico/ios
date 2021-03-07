@@ -1,35 +1,6 @@
 import Foundation
-import EventKit
-import Combine
 
-protocol EKCalendarProtocol {
-    var title: String { get }
-    var type: EKCalendarType { get }
-}
-
-extension EKCalendar: EKCalendarProtocol {}
-
-protocol CalendarAccessProviderProtocol {
-    static func authorizationStatus(for entityType: EKEntityType) -> EKAuthorizationStatus
-    func requestAccess(to entityType: EKEntityType, completion: @escaping EKEventStoreRequestAccessCompletionHandler)
-    func calendars(for entityType: EKEntityType) -> [EKCalendarProtocol]
-}
-
-extension EKEventStore: CalendarAccessProviderProtocol {
-    func calendars(for entityType: EKEntityType) -> [EKCalendarProtocol] {
-        calendars(for: entityType).map { (calendar: EKCalendar) in calendar as EKCalendarProtocol }
-    }
-}
-
-final class CalendarSyncStatusProvider: ObservableObject {
-    enum Const {
-        #if RYTHMICO
-        static let calendarName = "Rythmico"
-        #elseif TUTOR
-        static let calendarName = "Rythmico Tutor"
-        #endif
-    }
-
+class CalendarSyncStatusProviderBase: ObservableObject {
     enum Status {
         case notDetermined
         case unauthorized
@@ -38,16 +9,30 @@ final class CalendarSyncStatusProvider: ObservableObject {
         case synced
     }
 
-    @Published private(set) var status = Status.notDetermined
+    @Published /*protected(set)*/ var status: Status = .notDetermined
+
+    func requestAccess() {}
+    func refreshStatus() {}
+}
+
+final class CalendarSyncStatusProvider: CalendarSyncStatusProviderBase {
+    enum Const {
+        #if RYTHMICO
+        static let calendarName = "Rythmico"
+        #elseif TUTOR
+        static let calendarName = "Rythmico Tutor"
+        #endif
+    }
 
     private let accessProvider: CalendarAccessProviderProtocol
 
     init(accessProvider: CalendarAccessProviderProtocol) {
         self.accessProvider = accessProvider
+        super.init()
         refreshStatus()
     }
 
-    func requestAccess() {
+    override func requestAccess() {
         accessProvider.requestAccess(to: .event) { [self] isGranted, error in
 //            if let error = error {
 //                status = .failed(error)
@@ -57,7 +42,7 @@ final class CalendarSyncStatusProvider: ObservableObject {
         }
     }
 
-    func refreshStatus() {
+    override func refreshStatus() {
         let authorizationStatus = type(of: accessProvider).authorizationStatus(for: .event)
         setStatusForGranted(authorizationStatus.isGranted)
     }
@@ -80,22 +65,7 @@ final class CalendarSyncStatusProvider: ObservableObject {
     }
 }
 
-private extension EKAuthorizationStatus {
-    var isGranted: Bool? {
-        switch self {
-        case .notDetermined:
-            return nil
-        case .authorized:
-            return true
-        case .denied, .restricted:
-            return false
-        @unknown default:
-            return false
-        }
-    }
-}
-
-extension CalendarSyncStatusProvider.Status {
+extension CalendarSyncStatusProviderBase.Status {
     var isNotDetermined: Bool {
         guard case .notDetermined = self else { return false }
         return true

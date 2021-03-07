@@ -3,7 +3,7 @@ import FoundationSugar
 
 struct LessonPlanConfirmationView: View, TestableView {
     @StateObject
-    private var notificationAuthorizationCoordinator = Current.pushNotificationAuthorizationCoordinator
+    private var calendarSyncCoordinator = Current.calendarSyncCoordinator()!
 
     var lessonPlan: LessonPlan
 
@@ -33,18 +33,6 @@ struct LessonPlanConfirmationView: View, TestableView {
         default:
             EmptyView()
         }
-    }
-
-    var enablePushNotificationsButtonAction: Action? {
-        notificationAuthorizationCoordinator.status.isDetermined
-            ? nil
-            : notificationAuthorizationCoordinator.requestAuthorization
-    }
-
-    var errorMessage: String? { notificationAuthorizationCoordinator.status.failedValue?.localizedDescription }
-
-    func dismissError() {
-        notificationAuthorizationCoordinator.dismissFailure()
     }
 
     let inspection = SelfInspection()
@@ -81,12 +69,16 @@ struct LessonPlanConfirmationView: View, TestableView {
                             additionalContent
                         }
 
-                        enablePushNotificationsButtonAction.map {
-                            Button("Enable Push Notifications", action: $0)
-                                .tertiaryStyle(expansive: false)
-                                .transition(
-                                    AnyTransition.opacity.combined(with: .move(edge: .bottom))
-                                )
+                        if let action = calendarSyncCoordinator.enableCalendarSyncAction {
+                            ZStack {
+                                Button("Add to Calendar", action: action)
+                                    .tertiaryStyle(expansive: false)
+                                    .opacity(calendarSyncCoordinator.isSyncingCalendar ? 0 : 1)
+                                if calendarSyncCoordinator.isSyncingCalendar {
+                                    ActivityIndicator()
+                                }
+                            }
+                            .transition(.opacity)
                         }
                     }
                     .padding(.horizontal, .spacingMedium)
@@ -97,16 +89,17 @@ struct LessonPlanConfirmationView: View, TestableView {
             }
 
             FloatingView {
-                Button("Continue", action: doContinue).primaryStyle()
+                Button("Continue", action: doContinue)
+                    .primaryStyle()
+                    .disabled(calendarSyncCoordinator.isSyncingCalendar)
             }
         }
-        .animation(.rythmicoSpring(duration: .durationMedium), value: enablePushNotificationsButtonAction != nil)
-        .alert(error: errorMessage, dismiss: dismissError)
+        .animation(.rythmicoSpring(duration: .durationMedium), value: calendarSyncCoordinator.isSyncingCalendar)
         .testable(self)
-        .onAppear(perform: notificationAuthorizationCoordinator.refreshAuthorizationStatus)
     }
 
     func doContinue() {
+        Current.pushNotificationAuthorizationCoordinator.requestAuthorization()
         Current.state.lessonsContext = .none
     }
 }
@@ -121,11 +114,7 @@ struct RequestLessonPlanConfirmationView_Previews: PreviewProvider {
 //            requestResult: (false, nil)
 //            requestResult: (false, "Error")
         )
-        return Group {
-            LessonPlanConfirmationView(lessonPlan: .pendingJackGuitarPlanStub)
-            LessonPlanConfirmationView(lessonPlan: .scheduledJackGuitarPlanStub)
-        }
-//        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+        return LessonPlanConfirmationView(lessonPlan: .scheduledJackGuitarPlanStub)
     }
 }
 #endif

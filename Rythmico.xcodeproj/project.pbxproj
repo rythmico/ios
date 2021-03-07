@@ -325,8 +325,8 @@
 		D55C35FE25A3AB510023E56B /* CalendarSyncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35FC25A3AB510023E56B /* CalendarSyncer.swift */; };
 		D55C360325A3DBB30023E56B /* CalendarSyncStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C360225A3DBB30023E56B /* CalendarSyncStatusProvider.swift */; };
 		D55C360425A3DBB30023E56B /* CalendarSyncStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C360225A3DBB30023E56B /* CalendarSyncStatusProvider.swift */; };
-		D55C360C25A3E2B20023E56B /* CalendarSyncStatusProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C360B25A3E2B20023E56B /* CalendarSyncStatusProviderDoubles.swift */; };
-		D55C360D25A3E2B20023E56B /* CalendarSyncStatusProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C360B25A3E2B20023E56B /* CalendarSyncStatusProviderDoubles.swift */; };
+		D55C360C25A3E2B20023E56B /* EKEventStoreDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C360B25A3E2B20023E56B /* EKEventStoreDoubles.swift */; };
+		D55C360D25A3E2B20023E56B /* EKEventStoreDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C360B25A3E2B20023E56B /* EKEventStoreDoubles.swift */; };
 		D55F012C24CCBE8700E5F13C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB324C4AA4C0077A420 /* APIService.swift */; };
 		D55F012D24CCBE8E00E5F13C /* APIServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB924C6232D0077A420 /* APIServiceDoubles.swift */; };
 		D55F012E24CCBECE00E5F13C /* APIActivityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB524C4AD820077A420 /* APIActivityCoordinator.swift */; };
@@ -450,6 +450,10 @@
 		D5BF12C72507D78800B2931C /* RouterDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12C52507D78800B2931C /* RouterDoubles.swift */; };
 		D5C23A74240EFDCB007DED63 /* MainViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03341B4223ABB1E7009AE8A8 /* MainViewTests.swift */; };
 		D5C23A7C240FEF30007DED63 /* UIApplication+BackgroundTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C23A7B240FEF30007DED63 /* UIApplication+BackgroundTap.swift */; };
+		D5C76E9425F405E200739267 /* EKEventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C76E9325F405E200739267 /* EKEventStore.swift */; };
+		D5C76E9525F405E200739267 /* EKEventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C76E9325F405E200739267 /* EKEventStore.swift */; };
+		D5C76E9925F4075200739267 /* CalendarSyncStatusProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C76E9825F4075200739267 /* CalendarSyncStatusProviderDoubles.swift */; };
+		D5C76E9A25F4075200739267 /* CalendarSyncStatusProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C76E9825F4075200739267 /* CalendarSyncStatusProviderDoubles.swift */; };
 		D5CAC9A924E6C3A900119DAA /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5067A2400788400CA4094 /* MultilineTextField.swift */; };
 		D5CAC9AC24E6D19900119DAA /* MultilineTextField+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CAC9AB24E6D19900119DAA /* MultilineTextField+Rythmico.swift */; };
 		D5CAC9AE24E6D67C00119DAA /* MultilineTextField+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CAC9AD24E6D67C00119DAA /* MultilineTextField+Tutor.swift */; };
@@ -832,7 +836,7 @@
 		D55C35F625A3A8090023E56B /* CalendarInfoDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInfoDoubles.swift; sourceTree = "<group>"; };
 		D55C35FC25A3AB510023E56B /* CalendarSyncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSyncer.swift; sourceTree = "<group>"; };
 		D55C360225A3DBB30023E56B /* CalendarSyncStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSyncStatusProvider.swift; sourceTree = "<group>"; };
-		D55C360B25A3E2B20023E56B /* CalendarSyncStatusProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSyncStatusProviderDoubles.swift; sourceTree = "<group>"; };
+		D55C360B25A3E2B20023E56B /* EKEventStoreDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKEventStoreDoubles.swift; sourceTree = "<group>"; };
 		D5622D4825C32C0100DF4732 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D5622D5025C32FC200DF4732 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D564F4632511722900EA13E9 /* TabMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuView.swift; sourceTree = "<group>"; };
@@ -918,6 +922,8 @@
 		D5BF12C0250693C500B2931C /* PushNotificationEventHandler+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationEventHandler+Tutor.swift"; sourceTree = "<group>"; };
 		D5BF12C52507D78800B2931C /* RouterDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterDoubles.swift; sourceTree = "<group>"; };
 		D5C23A7B240FEF30007DED63 /* UIApplication+BackgroundTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+BackgroundTap.swift"; sourceTree = "<group>"; };
+		D5C76E9325F405E200739267 /* EKEventStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKEventStore.swift; sourceTree = "<group>"; };
+		D5C76E9825F4075200739267 /* CalendarSyncStatusProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSyncStatusProviderDoubles.swift; sourceTree = "<group>"; };
 		D5CAC9AB24E6D19900119DAA /* MultilineTextField+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultilineTextField+Rythmico.swift"; sourceTree = "<group>"; };
 		D5CAC9AD24E6D67C00119DAA /* MultilineTextField+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultilineTextField+Tutor.swift"; sourceTree = "<group>"; };
 		D5CC5FE924FF1201007DFE84 /* UIImage+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Sugar.swift"; sourceTree = "<group>"; };
@@ -1879,10 +1885,12 @@
 			isa = PBXGroup;
 			children = (
 				D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */,
+				D5883CE925A4189D000B545C /* CalendarSyncCoordinator.swift */,
 				D55C35FC25A3AB510023E56B /* CalendarSyncer.swift */,
 				D55C360225A3DBB30023E56B /* CalendarSyncStatusProvider.swift */,
-				D55C360B25A3E2B20023E56B /* CalendarSyncStatusProviderDoubles.swift */,
-				D5883CE925A4189D000B545C /* CalendarSyncCoordinator.swift */,
+				D5C76E9825F4075200739267 /* CalendarSyncStatusProviderDoubles.swift */,
+				D5C76E9325F405E200739267 /* EKEventStore.swift */,
+				D55C360B25A3E2B20023E56B /* EKEventStoreDoubles.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -2672,7 +2680,7 @@
 				D53555C523E536AE005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
 				D53555C823E536AE005A20EB /* AppleAuthorizationResponse.swift in Sources */,
 				032215572497034A009D48A8 /* LessonPlanTutorStatusView.swift in Sources */,
-				D55C360C25A3E2B20023E56B /* CalendarSyncStatusProviderDoubles.swift in Sources */,
+				D55C360C25A3E2B20023E56B /* EKEventStoreDoubles.swift in Sources */,
 				03B198582471BD82005529EB /* LessonPlanConfirmationView.swift in Sources */,
 				D5E04B1923BED80700A161BB /* Fonts.swift in Sources */,
 				03C39DD62496802500C76516 /* Pill.swift in Sources */,
@@ -2737,12 +2745,14 @@
 				D53555BC23E53699005A20EB /* AuthenticationAccessTokenProviderObserver.swift in Sources */,
 				03A91EF62491887A00DEAD5E /* DeviceTokenProviderDoubles.swift in Sources */,
 				D56B2531252D1A8100BC3932 /* StripePaymentCardTextField.swift in Sources */,
+				D5C76E9425F405E200739267 /* EKEventStore.swift in Sources */,
 				D5BF12AE25068E1000B2931C /* PushNotificationEvent+Rythmico.swift in Sources */,
 				D5CC5FEA24FF1201007DFE84 /* UIImage+Sugar.swift in Sources */,
 				039C3EB52448A7CD0036959A /* Transitions.swift in Sources */,
 				D5DDE85E2598E7B300CF565D /* LessonPlanBookingPolicyView.swift in Sources */,
 				035AF30D2491B7C3004A01B2 /* UNUserNotificationCenterProtocol.swift in Sources */,
 				D5B57A75241A018900BE9B4F /* SchedulingView.swift in Sources */,
+				D5C76E9925F4075200739267 /* CalendarSyncStatusProviderDoubles.swift in Sources */,
 				0372E35C249AC68A0048B402 /* ActionList.swift in Sources */,
 				D501587D25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift in Sources */,
 				D5883CEA25A4189D000B545C /* CalendarSyncCoordinator.swift in Sources */,
@@ -2848,11 +2858,12 @@
 				D549219825BB28B100251FD2 /* APIActivityErrorHandler+Tutor.swift in Sources */,
 				D524D0C0250468CA00BC9AF7 /* PushNotificationAuthorizationCoordinator.swift in Sources */,
 				D5AFED3D25056300003FFC68 /* NotificationCenter+Sugar.swift in Sources */,
-				D55C360D25A3E2B20023E56B /* CalendarSyncStatusProviderDoubles.swift in Sources */,
+				D55C360D25A3E2B20023E56B /* EKEventStoreDoubles.swift in Sources */,
 				D524D0C1250468D200BC9AF7 /* PushNotificationAuthorizationCoordinatorDoubles.swift in Sources */,
 				D5F4AE822559D3F6001085D5 /* PhoneNumber.swift in Sources */,
 				D52C553A24DC71B800C295C4 /* BookingRequestDetailView.swift in Sources */,
 				03E88E8F24BC9FAF0077A420 /* AppEnvironment+Instances.swift in Sources */,
+				D5C76E9525F405E200739267 /* EKEventStore.swift in Sources */,
 				D5F4D3E024F04294000E8580 /* BookingApplication.swift in Sources */,
 				D55C35FE25A3AB510023E56B /* CalendarSyncer.swift in Sources */,
 				D5E987BD24EDE92E00E2E1AF /* Router.swift in Sources */,
@@ -3006,6 +3017,7 @@
 				035B1D4B249E578D00AABFEA /* Keychain.swift in Sources */,
 				D575C832254F10E1001664AB /* RemoteConfigServiceDoubles.swift in Sources */,
 				D5CC5FEB24FF1201007DFE84 /* UIImage+Sugar.swift in Sources */,
+				D5C76E9A25F4075200739267 /* CalendarSyncStatusProviderDoubles.swift in Sources */,
 				D5919F7224CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */,
 				D52C553D24DC74A200C295C4 /* TitleCell.swift in Sources */,
 				032B6FCD24B7879300299A09 /* Schedule.swift in Sources */,
