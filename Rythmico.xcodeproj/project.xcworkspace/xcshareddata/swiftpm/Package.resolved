@@ -101,6 +101,15 @@
         }
       },
       {
+        "package": "Mixpanel",
+        "repositoryURL": "https://github.com/mixpanel/mixpanel-swift",
+        "state": {
+          "branch": null,
+          "revision": "1e45e0e676a7a49ec44f326c3a1f33888baf0c7c",
+          "version": "2.9.0"
+        }
+      },
+      {
         "package": "MultiModal",
         "repositoryURL": "https://github.com/davdroman/MultiModal",
         "state": {
