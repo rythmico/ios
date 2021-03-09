@@ -5,7 +5,7 @@ set -e
 xcodebuild \
     -project Rythmico.xcodeproj \
     -scheme All \
-    -destination 'platform=iOS Simulator,name=iPhone 8' \
+    -destination 'platform=iOS Simulator,name=iPhone 8,OS=14.4' \
     -configuration Debug \
     clean test | xcpretty -sc -r junit
 
