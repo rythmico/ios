@@ -6,22 +6,12 @@ struct ExpandableText<Expander: View, Collapser: View>: View {
     // Indicates whether the string provided overgrows the threshold line limit
     @State private var isExpandable: Bool = false
 
-    private var content: String
-    private var thresholdLines: Int
-    private var expander: Expander
-    private var collapser: Collapser
-
-    init(
-        _ content: String,
-        thresholdLines: Int = 3,
-        @ViewBuilder expander: () -> Expander,
-        @ViewBuilder collapser: () -> Collapser
-    ) {
-        self.content = content
-        self.thresholdLines = thresholdLines
-        self.expander = expander()
-        self.collapser = collapser()
-    }
+    var content: String
+    var thresholdLines: Int = 3
+    @ViewBuilder
+    var expander: Expander
+    @ViewBuilder
+    var collapser: Collapser
 
     var body: some View {
         VStack(alignment: .leading, spacing: lineSpacing) {
@@ -82,13 +72,13 @@ struct ExpandableText<Expander: View, Collapser: View>: View {
 
 extension ExpandableText where Expander == Text, Collapser == Text {
     init(
-        _ content: String,
+        content: String,
         thresholdLines: Int = 3,
         expander: String = "Read More",
         collapser: String = "Read Less"
     ) {
         self.init(
-            content,
+            content: content,
             thresholdLines: thresholdLines,
             expander: { Text(expander).fontWeight(.bold) },
             collapser: { Text(collapser).fontWeight(.bold) }

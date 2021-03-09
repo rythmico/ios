@@ -34,14 +34,14 @@ struct LessonDetailView: View {
                 AddressMapCell(addressInfo: .address(lesson.address))
             }
             Section {
-                GroupedButton("View Student Details", action: presentStudentDetails).hiddenNavigationLink(
+                GroupedButton(title: "View Student Details", action: presentStudentDetails).hiddenNavigationLink(
                     NavigationLink(
                         destination: LessonStudentDetailView(lesson: lesson),
                         isActive: $isStudentDetailsPresented,
                         label: { EmptyView() }
                     )
                 )
-                GroupedButton("Contact", action: presentContactSheet)
+                GroupedButton(title: "Contact", action: presentContactSheet)
             }
         }
         .listStyle(GroupedListStyle())

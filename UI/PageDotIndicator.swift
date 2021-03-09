@@ -7,7 +7,7 @@ struct PageDotIndicator<Items: RandomAccessCollection>: View where Items.Element
     var selection: Item
     var items: Items
 
-    var foregroundColor = Color.white.opacity(0.5)
+    var foregroundColor: Color = .white.opacity(0.5)
     var accentColor: Color = .white
 
     var body: some View {

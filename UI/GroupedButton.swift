@@ -5,17 +5,8 @@ struct GroupedButton<Accessory: View>: View {
 
     var title: String
     var action: () -> Void
+    @ViewBuilder
     var accessory: Accessory
-
-    init(
-        _ title: String,
-        action: @escaping () -> Void,
-        @ViewBuilder accessory: () -> Accessory
-    ) {
-        self.title = title
-        self.action = action
-        self.accessory = accessory()
-    }
 
     var body: some View {
         ZStack {
@@ -24,7 +15,7 @@ struct GroupedButton<Accessory: View>: View {
 
             HStack {
                 Spacer()
-                accessory.transition(AnyTransition.opacity.combined(with: .scale))
+                accessory.transition(.opacity + .scale)
             }
         }
         .animation(.easeInOut(duration: .durationShort), value: isEnabled)
@@ -32,8 +23,8 @@ struct GroupedButton<Accessory: View>: View {
 }
 
 extension GroupedButton where Accessory == EmptyView {
-    init(_ title: String, action: @escaping () -> Void) {
-        self.init(title, action: action) { EmptyView() }
+    init(title: String, action: @escaping () -> Void) {
+        self.init(title: title, action: action) { EmptyView() }
     }
 }
 
@@ -41,7 +32,7 @@ extension GroupedButton where Accessory == EmptyView {
 struct GroupedButton_Previews: PreviewProvider {
     static var previews: some View {
         List {
-            GroupedButton("Something", action: {}) {
+            GroupedButton(title: "Something", action: {}) {
                 ActivityIndicator()
             }
             .accentColor(.red)

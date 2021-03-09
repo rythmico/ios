@@ -4,22 +4,13 @@ struct CoordinatorStateView<Input, Success, InputContent: View, LoadingContent: 
     typealias Coordinator = FailableActivityCoordinator<Input, Success>
 
     @ObservedObject
-    private var coordinator: Coordinator
-    private var successContent: (Success) -> SuccessContent
-    private var loadingContent: LoadingContent
-    private var inputContent: InputContent
-
-    init(
-        coordinator: Coordinator,
-        @ViewBuilder successContent: @escaping (Success) -> SuccessContent,
-        @ViewBuilder loadingContent: () -> LoadingContent,
-        @ViewBuilder inputContent: () -> InputContent
-    ) {
-        self.coordinator = coordinator
-        self.successContent = successContent
-        self.loadingContent = loadingContent()
-        self.inputContent = inputContent()
-    }
+    var coordinator: Coordinator
+    @ViewBuilder
+    var successContent: (Success) -> SuccessContent
+    @ViewBuilder
+    var loadingContent: LoadingContent
+    @ViewBuilder
+    var inputContent: InputContent
 
     var body: some View {
         ZStack {
@@ -35,10 +26,7 @@ struct CoordinatorStateView<Input, Success, InputContent: View, LoadingContent: 
     }
 
     private func stateTransition(scale: CGFloat) -> AnyTransition {
-        AnyTransition
-            .opacity
-            .combined(with: .scale(scale: scale))
-            .animation(.rythmicoSpring(duration: .durationShort))
+        (.scale(scale: scale) + .opacity).animation(.rythmicoSpring(duration: .durationShort))
     }
 }
 

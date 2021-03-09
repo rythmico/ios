@@ -93,7 +93,7 @@ struct BookingApplicationDetailView: View {
             }
             Section(header: Text("PRIVATE NOTE")) {
                 Text(submitterPrivateNote)
-                    .foregroundColor(Color.secondary.opacity(submitterPrivateNoteOpacity))
+                    .foregroundColor(.secondary.opacity(submitterPrivateNoteOpacity))
                     .font(.body)
                     .padding(.vertical, .spacingUnit)
             }
@@ -104,7 +104,7 @@ struct BookingApplicationDetailView: View {
                 AddressMapCell(addressInfo: bookingApplication.addressInfo)
             }
             retractAction.map { retractAction in
-                GroupedButton("Retract Application", action: promptForRetraction) {
+                GroupedButton(title: "Retract Application", action: promptForRetraction) {
                     if retractionCoordinator.state.isLoading {
                         ActivityIndicator()
                     }

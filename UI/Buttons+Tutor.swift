@@ -41,7 +41,7 @@ private struct RythmicoButtonStyle: ButtonStyle {
             .lineLimit(1)
             .minimumScaleFactor(0.6)
             .padding(.horizontal, .spacingMedium)
-            .font(Font.body.bold())
+            .font(.body.bold())
             .foregroundColor(color(from: foregroundColor, for: configuration))
             .frame(maxWidth: expansive ? buttonMaxWidth : nil, minHeight: 48)
             .background(

@@ -31,7 +31,7 @@ private struct VideoCarouselCell: View {
 
     var body: some View {
         ZStack {
-            AsyncImage(.simple(video.thumbnailURL)) {
+            AsyncImage(content: .simple(video.thumbnailURL)) {
                 if let uiImage = $0 {
                     GeometryReader { gr in
                         Image(uiImage: uiImage)
@@ -41,15 +41,15 @@ private struct VideoCarouselCell: View {
                     }
                     .clipped()
                     .aspectRatio(1, contentMode: .fit)
-                    .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
+                    .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
                 } else {
                     Color.rythmicoGray20
                         .scaledToFill()
-                        .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
+                        .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
                 }
             }
             LinearGradient(
-                gradient: Gradient(colors: [Color.black.opacity(0.01), Color.black.opacity(0.5)]),
+                gradient: Gradient(colors: [.black.opacity(0.01), .black.opacity(0.5)]),
                 startPoint: .top,
                 endPoint: .bottom
             )
@@ -96,16 +96,9 @@ struct VideoCarouselPlayer: View {
 struct DismissableContainer<Content: View>: View {
     @Environment(\.presentationMode) private var presentationMode
 
-    var backgroundColor: Color
+    var backgroundColor: Color = .black
+    @ViewBuilder
     var content: Content
-
-    init(
-        backgroundColor: Color = .black,
-        @ViewBuilder content: @escaping () -> Content
-    ) {
-        self.backgroundColor = backgroundColor
-        self.content = content()
-    }
 
     var body: some View {
         ZStack {

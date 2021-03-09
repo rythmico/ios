@@ -102,11 +102,7 @@ struct AddressDetailsView: View, TestableView {
                                 )
                                 .padding([.horizontal, .bottom], .spacingMedium)
                             }
-                            .transition(
-                                AnyTransition
-                                    .opacity
-                                    .combined(with: .offset(x: 0, y: 25))
-                            )
+                            .transition(.offset(x: 0, y: 25) + .opacity)
                         } else {
                             Spacer()
                         }

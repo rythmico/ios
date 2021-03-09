@@ -9,11 +9,7 @@ struct ActivityIndicator: View {
     var body: some View {
         ProgressView()
             .progressViewStyle(color.map(Style.init) ?? Style())
-            .transition(
-                AnyTransition
-                    .opacity.combined(with: .scale)
-                    .animation(.easeInOut(duration: .durationShort))
-            )
+            .transition((.opacity + .scale).animation(.easeInOut(duration: .durationShort)))
     }
 }
 

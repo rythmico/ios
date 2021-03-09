@@ -3,25 +3,14 @@ import Stripe
 import FoundationSugar
 
 struct StripeSetupIntentLink<Label: View>: View {
-    private var credential: CardSetupCredential
-    private var cardDetails: StripeCardDetails
+    var credential: CardSetupCredential
+    var cardDetails: StripeCardDetails
     @ObservedObject
-    private var coordinator: CardSetupCoordinator
-    private var label: (@escaping Action) -> Label
+    var coordinator: CardSetupCoordinator
+    @ViewBuilder
+    var label: (@escaping Action) -> Label
     @State
     private var authenticationView = StripeAuthenticationPresentingView()
-
-    init(
-        credential: CardSetupCredential,
-        cardDetails: StripeCardDetails,
-        coordinator: CardSetupCoordinator,
-        @ViewBuilder label: @escaping (@escaping Action) -> Label
-    ) {
-        self.credential = credential
-        self.cardDetails = cardDetails
-        self.coordinator = coordinator
-        self.label = label
-    }
 
     var body: some View {
         ZStack {

@@ -23,7 +23,7 @@ private struct PhotoCarouselCell: View {
     var photo: Portfolio.Photo
 
     var body: some View {
-        AsyncImage(.simple(photo.thumbnailURL)) {
+        AsyncImage(content: .simple(photo.thumbnailURL)) {
             if let uiImage = $0 {
                 GeometryReader { gr in
                     Image(uiImage: uiImage)
@@ -33,11 +33,11 @@ private struct PhotoCarouselCell: View {
                 }
                 .clipped()
                 .aspectRatio(1, contentMode: .fit)
-                .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
+                .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
             } else {
                 Color.rythmicoGray30
                     .scaledToFill()
-                    .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
+                    .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
             }
         }
         .cornerRadius(.spacingUnit * 2, antialiased: true)
@@ -72,8 +72,8 @@ struct PhotoCarouselDetailView: View {
                     .padding(.top, .spacingMedium)
                     .accentColor(.rythmicoWhite)
 
-                PageView(photos, selection: Binding($selection) ?? $latestSelection, accentColor: .rythmicoWhite) { photo in
-                    AsyncImage(.transitional(from: photo.thumbnailURL, to: photo.photoURL)) {
+                PageView(data: photos, selection: Binding($selection) ?? $latestSelection, accentColor: .rythmicoWhite) { photo in
+                    AsyncImage(content: .transitional(from: photo.thumbnailURL, to: photo.photoURL)) {
                         if let uiImage = $0 {
                             Image(uiImage: uiImage)
                                 .resizable()

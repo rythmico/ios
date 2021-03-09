@@ -46,11 +46,7 @@ struct AppSplash: View {
                         .multilineTextAlignment(.center)
                         .lineSpacing(.spacingUnit)
                         .modifier(AppSplashTitleModifier())
-                        .transition(
-                            AnyTransition
-                                .opacity
-                                .combined(with: .offset(y: -.spacingLarge))
-                        )
+                        .transition(.offset(y: -.spacingLarge) + .opacity)
                 }
             }
         }
@@ -68,7 +64,7 @@ private struct AppSplashTitleModifier: ViewModifier {
     #elseif TUTOR
     func body(content: Content) -> some View {
         content
-            .font(Font.system(.largeTitle).bold())
+            .font(.system(.largeTitle).bold())
     }
     #endif
 }

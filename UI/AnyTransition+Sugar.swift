@@ -9,6 +9,10 @@ extension AnyTransition {
             )
         )
     }
+
+    static func + (lhs: AnyTransition, rhs: AnyTransition) -> AnyTransition {
+        lhs.combined(with: rhs)
+    }
 }
 
 private extension UIEdgeInsets {

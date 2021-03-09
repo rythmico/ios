@@ -119,7 +119,7 @@
 		0372E35C249AC68A0048B402 /* ActionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0372E35B249AC68A0048B402 /* ActionList.swift */; };
 		0392A9CF244D09FF001E97AE /* ContentSizeCategory+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0392A9CE244D09FF001E97AE /* ContentSizeCategory+Sugar.swift */; };
 		0392A9D3244D184F001E97AE /* PrivateNoteViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0392A9D0244D181E001E97AE /* PrivateNoteViewTests.swift */; };
-		039C3EB52448A7CD0036959A /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039C3EB42448A7CD0036959A /* Transitions.swift */; };
+		039C3EB52448A7CD0036959A /* AnyTransition+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039C3EB42448A7CD0036959A /* AnyTransition+Sugar.swift */; };
 		03A094622443D8E1008B4BD6 /* EditingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */; };
 		03A3F6E52447B7BD00F6391D /* PreviewDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6E42447B7BD00F6391D /* PreviewDevices.swift */; };
 		03A3F6EE2447DFF900F6391D /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6ED2447DFF900F6391D /* Animation.swift */; };
@@ -241,7 +241,7 @@
 		D52A4F1E2538C59300C65A91 /* AddNewCardEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52A4F1D2538C59300C65A91 /* AddNewCardEntryView.swift */; };
 		D52C553A24DC71B800C295C4 /* BookingRequestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C553924DC71B800C295C4 /* BookingRequestDetailView.swift */; };
 		D52C553D24DC74A200C295C4 /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C553B24DC74A200C295C4 /* TitleCell.swift */; };
-		D52C554224DDC50D00C295C4 /* Transitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039C3EB42448A7CD0036959A /* Transitions.swift */; };
+		D52C554224DDC50D00C295C4 /* AnyTransition+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039C3EB42448A7CD0036959A /* AnyTransition+Sugar.swift */; };
 		D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554324DDC53400C295C4 /* FloatingView+Rythmico.swift */; };
 		D52C554824DDC60900C295C4 /* FloatingView+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554624DDC60600C295C4 /* FloatingView+Tutor.swift */; };
 		D52C554A24DDE1D300C295C4 /* StaticMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554924DDE1D300C295C4 /* StaticMapView.swift */; };
@@ -669,7 +669,7 @@
 		0372E35B249AC68A0048B402 /* ActionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionList.swift; sourceTree = "<group>"; };
 		0392A9CE244D09FF001E97AE /* ContentSizeCategory+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentSizeCategory+Sugar.swift"; sourceTree = "<group>"; };
 		0392A9D0244D181E001E97AE /* PrivateNoteViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateNoteViewTests.swift; sourceTree = "<group>"; };
-		039C3EB42448A7CD0036959A /* Transitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transitions.swift; sourceTree = "<group>"; };
+		039C3EB42448A7CD0036959A /* AnyTransition+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyTransition+Sugar.swift"; sourceTree = "<group>"; };
 		03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingCoordinator.swift; sourceTree = "<group>"; };
 		03A3F6E42447B7BD00F6391D /* PreviewDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDevices.swift; sourceTree = "<group>"; };
 		03A3F6ED2447DFF900F6391D /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
@@ -1526,6 +1526,7 @@
 				03275AEA24908017009C3980 /* Alert+Error.swift */,
 				D5883CE325A4179F000B545C /* Alert+View.swift */,
 				03A3F6ED2447DFF900F6391D /* Animation.swift */,
+				039C3EB42448A7CD0036959A /* AnyTransition+Sugar.swift */,
 				D5989BAE251662F400BED8A6 /* AsyncImage.swift */,
 				D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */,
 				D527B00A24FD3297003E81A9 /* AvatarStackView.swift */,
@@ -1602,7 +1603,6 @@
 				03C39DD324967E5B00C76516 /* TitleContentView.swift */,
 				D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */,
 				D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */,
-				039C3EB42448A7CD0036959A /* Transitions.swift */,
 				D5C23A7B240FEF30007DED63 /* UIApplication+BackgroundTap.swift */,
 				D5F506642400619600CA4094 /* UIApplication+KeyboardDismisser.swift */,
 				D58DE1CC25C0F0100013AEE8 /* UIColor+Hex.swift */,
@@ -2111,7 +2111,6 @@
 				D55430C225C4335600499FF6 /* Set App Version in Settings */,
 				D509898123B9B2E400C19300 /* Select GoogleService-Info.plist */,
 				D53554B123E0FA4B005A20EB /* Embed Frameworks */,
-				D5AC9E16254C2F8D003A8197 /* Strip Firebase Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2154,7 +2153,6 @@
 				D55430BB25C42CCF00499FF6 /* Set App Version in Settings */,
 				035B1D5C249E5EA000AABFEA /* Select GoogleService-Info.plist */,
 				035B1D0E249D303400AABFEA /* Embed Frameworks */,
-				D5AC9E17254C2FC1003A8197 /* Strip Firebase Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2434,44 +2432,6 @@
 			shellPath = /bin/sh;
 			shellScript = "${SRCROOT}/script/build_phase_generate_asset_symbols\n";
 		};
-		D5AC9E16254C2F8D003A8197 /* Strip Firebase Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Strip Firebase Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/script/build_phase_strip_firebase_frameworks\n";
-		};
-		D5AC9E17254C2FC1003A8197 /* Strip Firebase Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Strip Firebase Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/script/build_phase_strip_firebase_frameworks\n";
-		};
 		D5B57A612414516700BE9B4F /* Generate Asset Symbols */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -2745,7 +2705,7 @@
 				D5C76E9425F405E200739267 /* EKEventStore.swift in Sources */,
 				D5BF12AE25068E1000B2931C /* PushNotificationEvent+Rythmico.swift in Sources */,
 				D5CC5FEA24FF1201007DFE84 /* UIImage+Sugar.swift in Sources */,
-				039C3EB52448A7CD0036959A /* Transitions.swift in Sources */,
+				039C3EB52448A7CD0036959A /* AnyTransition+Sugar.swift in Sources */,
 				D5DDE85E2598E7B300CF565D /* LessonPlanBookingPolicyView.swift in Sources */,
 				035AF30D2491B7C3004A01B2 /* UNUserNotificationCenterProtocol.swift in Sources */,
 				D5B57A75241A018900BE9B4F /* SchedulingView.swift in Sources */,
@@ -2975,7 +2935,7 @@
 				D54921A225BB290C00251FD2 /* APIError+Tutor.swift in Sources */,
 				D5F4D3F524F33CA4000E8580 /* AddressDoubles.swift in Sources */,
 				D59D0594251828EA0070D81B /* App+Playback.swift in Sources */,
-				D52C554224DDC50D00C295C4 /* Transitions.swift in Sources */,
+				D52C554224DDC50D00C295C4 /* AnyTransition+Sugar.swift in Sources */,
 				035B1D36249E576900AABFEA /* DeauthenticationServiceDoubles.swift in Sources */,
 				032B6FD224B787D700299A09 /* Instrument.swift in Sources */,
 				035B1D46249E577700AABFEA /* AppleAuthorizationService.swift in Sources */,

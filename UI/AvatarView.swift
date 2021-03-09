@@ -42,12 +42,12 @@ struct AvatarView: View {
                     .foregroundColor(.rythmicoGray90)
                     .position(x: g.frame(in: .local).midX, y: g.frame(in: .local).midY)
             }
-            .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
+            .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
         case .photo(let image):
             Image(uiImage: image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
+                .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
         case .placeholder:
             GeometryReader { g in
                 Image(systemSymbol: .person)
@@ -56,7 +56,7 @@ struct AvatarView: View {
                     .foregroundColor(.rythmicoGray90)
                     .position(x: g.frame(in: .local).midX, y: g.frame(in: .local).midY)
             }
-            .transition(AnyTransition.opacity.animation(.easeInOut(duration: .durationShort)))
+            .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
         }
     }
 }

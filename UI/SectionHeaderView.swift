@@ -26,24 +26,11 @@ extension SectionHeaderView where Accessory == EmptyView {
 
 struct SectionHeaderContentView<Accessory: View, Content: View>: View {
     var title: String
-    var alignment: HorizontalAlignment
-    var padding: EdgeInsets
+    var alignment: HorizontalAlignment = .center
+    var padding: EdgeInsets = .zero
     var accessory: Accessory
+    @ViewBuilder
     var content: Content
-
-    init(
-        title: String,
-        alignment: HorizontalAlignment = .center,
-        padding: EdgeInsets = .zero,
-        accessory: Accessory,
-        @ViewBuilder content: () -> Content
-    ) {
-        self.title = title
-        self.alignment = alignment
-        self.padding = padding
-        self.accessory = accessory
-        self.content = content()
-    }
 
     var body: some View {
         VStack(alignment: alignment, spacing: .spacingSmall) {

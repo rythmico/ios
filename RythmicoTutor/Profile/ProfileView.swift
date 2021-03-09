@@ -92,7 +92,7 @@ struct ProfileView: View, TestableView {
                 Image(systemSymbol: .chevronRight)
                     .renderingMode(.template)
                     .font(.system(size: 14, weight: .semibold))
-                    .foregroundColor(Color.secondary.opacity(0.5))
+                    .foregroundColor(.secondary.opacity(0.5))
             }
         }
         let view = action == nil

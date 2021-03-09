@@ -2,12 +2,8 @@ import SwiftUI
 
 struct Pill<Content: View>: View {
     var color: Color
+    @ViewBuilder
     var content: Content
-
-    init(color: Color, @ViewBuilder content: () -> Content) {
-        self.color = color
-        self.content = content()
-    }
 
     var body: some View {
         content
