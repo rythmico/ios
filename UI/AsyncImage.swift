@@ -13,13 +13,9 @@ struct AsyncImage<Label: View>: View {
     @StateObject
     private var secondaryCoordinator = Current.imageLoadingCoordinator()
 
-    private var content: Content
-    private var label: (UIImage?) -> Label
-
-    init(_ content: Content, @ViewBuilder label: @escaping (UIImage?) -> Label) {
-        self.content = content
-        self.label = label
-    }
+    var content: Content
+    @ViewBuilder
+    var label: (UIImage?) -> Label
 
     var body: some View {
         ZStack {

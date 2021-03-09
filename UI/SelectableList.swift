@@ -1,23 +1,12 @@
 import SwiftUI
 
 struct SelectableList<Data: RandomAccessCollection, ID: Hashable, Content: View>: View {
-    private let data: Data
-    private let id: KeyPath<Data.Element, ID>
+    var data: Data
+    var id: KeyPath<Data.Element, ID>
     @Binding
-    private var selection: Data.Element?
-    private let content: (Data.Element) -> Content
-
-    init(
-        _ data: Data,
-        id: KeyPath<Data.Element, ID>,
-        selection: Binding<Data.Element?>,
-        @ViewBuilder content: @escaping (Data.Element) -> Content
-    ) {
-        self.data = data
-        self.id = id
-        self._selection = selection
-        self.content = content
-    }
+    var selection: Data.Element?
+    @ViewBuilder
+    var content: (Data.Element) -> Content
 
     var body: some View {
         VStack(spacing: 0) {
@@ -59,7 +48,7 @@ extension SelectableList where Data.Element: Identifiable, ID == Data.Element.ID
         selection: Binding<Data.Element?>,
         @ViewBuilder content: @escaping (Data.Element) -> Content
     ) {
-        self.init(data, id: \.id, selection: selection, content: content)
+        self.init(data: data, id: \.id, selection: selection, content: content)
     }
 }
 
@@ -69,7 +58,7 @@ extension SelectableList where ID == String, Content == AnyView {
         title: KeyPath<Data.Element, String>,
         selection: Binding<Data.Element?>
     ) {
-        self.init(data, id: title, selection: selection) { element in
+        self.init(data: data, id: title, selection: selection) { element in
             AnyView(
                 Text(element[keyPath: title])
                     .multilineTextAlignment(.leading)
@@ -85,7 +74,7 @@ struct SelectableList_Previews: PreviewProvider {
         @State var selection: Int?
 
         var body: some View {
-            SelectableList([1, 2, 3, 4, 5], id: \.self, selection: $selection) { number in
+            SelectableList(data: [1, 2, 3, 4, 5], id: \.self, selection: $selection) { number in
                 Text("Cell \(number)")
             }
         }

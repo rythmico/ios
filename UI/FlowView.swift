@@ -7,18 +7,9 @@ struct FlowView<FlowType: Flow, Content: View>: View {
 
     @StateObject
     var flow: FlowType
-    var transitionMap: TransitionMap
+    var transitionMap: TransitionMap = \.self
+    @ViewBuilder
     var content: ContentBuilder
-
-    init(
-        flow: FlowType,
-        transition: @escaping TransitionMap = \.self,
-        @ViewBuilder content: @escaping ContentBuilder
-    ) {
-        self._flow = .init(wrappedValue: flow)
-        self.transitionMap = transition
-        self.content = content
-    }
 
     var body: some View {
         ZStack {

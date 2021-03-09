@@ -1,11 +1,8 @@
 import SwiftUI
 
 struct CollectionView<Content: View>: View {
-    private let content: Content
-
-    init(@ViewBuilder content: () -> Content) {
-        self.content = content()
-    }
+    @ViewBuilder
+    var content: Content
 
     var body: some View {
         ScrollView {

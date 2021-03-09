@@ -7,13 +7,9 @@ private enum Const {
 }
 
 struct AvatarStackView<Data: RangeReplaceableCollection, ContentView: View>: View where Data.Index == Int {
-    private let data: Data
-    private let content: (Data.Element) -> ContentView
-
-    init(_ data: Data, @ViewBuilder content: @escaping (Data.Element) -> ContentView) {
-        self.data = data
-        self.content = content
-    }
+    var data: Data
+    @ViewBuilder
+    var content: (Data.Element) -> ContentView
 
     var body: some View {
         HStack(spacing: Const.spacing) {
@@ -33,7 +29,7 @@ struct AvatarStackView<Data: RangeReplaceableCollection, ContentView: View>: Vie
 
 extension AvatarStackView where Data.Element == AvatarView.Content, ContentView == AvatarView {
     init(_ data: Data) {
-        self.init(data) { AvatarView($0) }
+        self.init(data: data) { AvatarView($0) }
     }
 }
 

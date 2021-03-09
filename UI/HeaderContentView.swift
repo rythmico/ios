@@ -2,18 +2,10 @@ import SwiftUI
 
 struct HeaderContentView<TitleAccessory: View, Content: View>: View {
     var title: [MultiStyleText.Part]
+    @ViewBuilder
     var titleAccessory: TitleAccessory
+    @ViewBuilder
     var content: Content
-
-    init(
-        title: [MultiStyleText.Part],
-        @ViewBuilder titleAccessory: () -> TitleAccessory,
-        @ViewBuilder content: () -> Content
-    ) {
-        self.title = title
-        self.titleAccessory = titleAccessory()
-        self.content = content()
-    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: .spacingExtraSmall) {

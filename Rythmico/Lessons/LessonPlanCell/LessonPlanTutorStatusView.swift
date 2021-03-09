@@ -18,7 +18,7 @@ private extension LessonPlan.Status {
              .reviewing([]):
             AvatarView(.placeholder)
         case .reviewing(let applications):
-            AvatarStackView(applications.map(\.tutor), thumbnails: true)
+            AvatarStackView(data: applications.map(\.tutor), thumbnails: true)
         case .scheduled(_, let tutor),
              .cancelled(_, let tutor?, _):
             TutorAvatarView(tutor, mode: .thumbnail)

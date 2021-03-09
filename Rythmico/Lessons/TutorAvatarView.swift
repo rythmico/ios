@@ -23,7 +23,7 @@ struct TutorAvatarView: View {
 
     var body: some View {
         if let asyncContent = asyncContent {
-            AsyncImage(asyncContent, label: avatarView)
+            AsyncImage(content: asyncContent, label: avatarView)
         } else {
             avatarView(with: nil)
         }
@@ -55,7 +55,7 @@ struct TutorAvatarView: View {
 }
 
 extension AvatarStackView where Data.Element == Tutor, ContentView == TutorAvatarView {
-    init(_ data: Data, thumbnails: Bool) {
-        self.init(data) { TutorAvatarView($0, mode: .thumbnail) }
+    init(data: Data, thumbnails: Bool) {
+        self.init(data: data) { TutorAvatarView($0, mode: .thumbnail) }
     }
 }

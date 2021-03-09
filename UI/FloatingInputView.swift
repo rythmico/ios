@@ -3,15 +3,8 @@ import FoundationSugar
 
 struct FloatingInputView<Content: View>: View {
     var doneAction: () -> Void
+    @ViewBuilder
     var content: Content
-
-    init(
-        doneAction: @escaping () -> Void,
-        @ViewBuilder content: () -> Content
-    ) {
-        self.doneAction = doneAction
-        self.content = content()
-    }
 
     var body: some View {
         VStack(spacing: 0) {

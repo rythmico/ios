@@ -31,7 +31,7 @@ private struct VideoCarouselCell: View {
 
     var body: some View {
         ZStack {
-            AsyncImage(.simple(video.thumbnailURL)) {
+            AsyncImage(content: .simple(video.thumbnailURL)) {
                 if let uiImage = $0 {
                     GeometryReader { gr in
                         Image(uiImage: uiImage)
@@ -96,16 +96,9 @@ struct VideoCarouselPlayer: View {
 struct DismissableContainer<Content: View>: View {
     @Environment(\.presentationMode) private var presentationMode
 
-    var backgroundColor: Color
+    var backgroundColor: Color = .black
+    @ViewBuilder
     var content: Content
-
-    init(
-        backgroundColor: Color = .black,
-        @ViewBuilder content: @escaping () -> Content
-    ) {
-        self.backgroundColor = backgroundColor
-        self.content = content()
-    }
 
     var body: some View {
         ZStack {
