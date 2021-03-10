@@ -23,6 +23,7 @@ struct App: SwiftUI.App {
             clearLaunchScreenCache(Const.launchScreenDebugMode)
             allowAudioPlaybackOnSilentMode()
             configureFirebase()
+            configureMixpanel()
             configurePushNotifications(application: application)
             App.didFinishLaunching()
             return true
