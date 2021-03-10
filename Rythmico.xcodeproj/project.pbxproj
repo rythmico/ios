@@ -301,6 +301,7 @@
 		D54921AF25BB35BC00251FD2 /* UserDefaults+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921AE25BB35BC00251FD2 /* UserDefaults+Tutor.swift */; };
 		D54921C225BB3F9400251FD2 /* UserDefaults+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921C125BB3F9400251FD2 /* UserDefaults+Rythmico.swift */; };
 		D54921D025BB46F300251FD2 /* TutorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921CF25BB46F300251FD2 /* TutorStatusView.swift */; };
+		D54CF08525F91255007D5050 /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B2522252CF76300BC3932 /* AppSecrets.swift */; };
 		D54CFD1C25BB173000C012F3 /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = D54CFD1B25BB173000C012F3 /* WebView */; };
 		D54CFD2125BB208100C012F3 /* TutorStatusEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CFD2025BB208100C012F3 /* TutorStatusEndpoints.swift */; };
 		D54CFD2C25BB20A600C012F3 /* TutorStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CFD2B25BB20A600C012F3 /* TutorStatus.swift */; };
@@ -1294,7 +1295,6 @@
 				03275AD4248FDB38009C3980 /* AppEnvironment.swift */,
 				03A91EF1249186EC00DEAD5E /* AppEnvironment+Instances.swift */,
 				03341B3E23ABB1E7009AE8A8 /* AppExtensions.swift */,
-				D56B2522252CF76300BC3932 /* AppSecrets.swift */,
 				D5BDD501253B406300255190 /* AppState.swift */,
 			);
 			path = App;
@@ -1429,6 +1429,7 @@
 				D5AC9E25254D8AD7003A8197 /* AppDoubles.swift */,
 				D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */,
 				D5AC9E2B254D8AE2003A8197 /* AppLauncher.swift */,
+				D56B2522252CF76300BC3932 /* AppSecrets.swift */,
 				D575C818254DD6C8001664AB /* AppSplash.swift */,
 				D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */,
 				03E88EB024C205C30077A420 /* Current.swift */,
@@ -2965,6 +2966,7 @@
 				D5BF12BF2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift in Sources */,
 				035B1D48249E577700AABFEA /* AppleAuthorizationController.swift in Sources */,
 				D5883CE525A4179F000B545C /* Alert+View.swift in Sources */,
+				D54CF08525F91255007D5050 /* AppSecrets.swift in Sources */,
 				D5F4D3F124F31E14000E8580 /* BookingApplicationGroupCell.swift in Sources */,
 				D505804A25D5A45C0028040F /* NavigationLink+Detail.swift in Sources */,
 				D5BF12B025068E2100B2931C /* PushNotificationEvent+Tutor.swift in Sources */,
