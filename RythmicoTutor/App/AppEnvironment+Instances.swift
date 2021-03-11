@@ -2,6 +2,7 @@ import UIKit
 import UserNotifications
 import EventKit
 import Firebase
+import Mixpanel
 import Then
 
 extension AppEnvironment: Then {}
@@ -28,6 +29,8 @@ extension AppEnvironment {
         authenticationService: AuthenticationService(),
         deauthenticationService: DeauthenticationService(),
         accessTokenProviderObserver: AuthenticationAccessTokenProviderObserver(broadcast: AuthenticationAccessTokenProviderBroadcast()),
+
+        analyticsService: Mixpanel.mainInstance(),
 
         deviceTokenProvider: Messaging.messaging(),
         deviceRegisterService: APIService(),
@@ -110,6 +113,8 @@ extension AppEnvironment {
             authenticationService: AuthenticationServiceDummy(),
             deauthenticationService: DeauthenticationServiceDummy(),
             accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverDummy(),
+
+            analyticsService: AnalyticsServiceDummy(),
 
             deviceTokenProvider: DeviceTokenProviderDummy(),
             deviceRegisterService: APIServiceDummy(),

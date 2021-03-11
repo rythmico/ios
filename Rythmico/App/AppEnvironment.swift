@@ -22,6 +22,10 @@ struct AppEnvironment {
     var deauthenticationService: DeauthenticationServiceProtocol
     var accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase
 
+    lazy
+    var analytics = AnalyticsCoordinator(service: analyticsService, accessTokenProviderObserver: accessTokenProviderObserver)
+    var analyticsService: AnalyticsServiceProtocol
+
     var deviceTokenProvider: DeviceTokenProvider
     var deviceRegisterService: APIServiceBase<AddDeviceRequest>
     var deviceTokenDeleter: DeviceTokenDeleter
