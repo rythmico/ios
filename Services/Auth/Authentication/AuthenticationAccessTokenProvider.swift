@@ -4,6 +4,8 @@ import FoundationSugar
 
 protocol AuthenticationAccessTokenProvider: AnyObject {
     var userId: String { get }
+    var name: String? { get }
+    var email: String? { get }
 
     typealias AccessToken = String
     typealias Error = AuthenticationCommonError
@@ -13,6 +15,7 @@ protocol AuthenticationAccessTokenProvider: AnyObject {
 
 extension FirebaseAuth.User: AuthenticationAccessTokenProvider {
     var userId: String { uid }
+    var name: String? { displayName }
 
     func getAccessToken(completionHandler: @escaping Handler<AccessTokenResult>) {
         getIDToken { token, error in

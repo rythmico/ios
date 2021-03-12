@@ -18,6 +18,7 @@ final class AnalyticsCoordinator {
     private func onAccessTokenProviderChanged(_ provider: AuthenticationAccessTokenProvider?) {
         if let provider = provider {
             service.identify(distinctId: provider.userId)
+            service.set(name: provider.name, email: provider.email)
         } else {
             service.reset()
         }
