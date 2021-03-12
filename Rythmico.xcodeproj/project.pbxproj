@@ -216,6 +216,8 @@
 		D517FFD02554A6E800A41639 /* LessonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517FFCF2554A6E800A41639 /* LessonDetailView.swift */; };
 		D518C2F8250EA89100288A48 /* LessonPlanApplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518C2F7250EA89100288A48 /* LessonPlanApplicationsView.swift */; };
 		D518C2FD250EDD3300288A48 /* InfoBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518C2FC250EDD3300288A48 /* InfoBanner.swift */; };
+		D51B4F5A25F9004F0028DEFA /* App+Mixpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51B4F5925F9004F0028DEFA /* App+Mixpanel.swift */; };
+		D51B4F5B25F9004F0028DEFA /* App+Mixpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51B4F5925F9004F0028DEFA /* App+Mixpanel.swift */; };
 		D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */; };
 		D5200E4023FDE460007168E0 /* MultiStyleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3F23FDE460007168E0 /* MultiStyleText.swift */; };
 		D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */; };
@@ -299,6 +301,13 @@
 		D54921AF25BB35BC00251FD2 /* UserDefaults+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921AE25BB35BC00251FD2 /* UserDefaults+Tutor.swift */; };
 		D54921C225BB3F9400251FD2 /* UserDefaults+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921C125BB3F9400251FD2 /* UserDefaults+Rythmico.swift */; };
 		D54921D025BB46F300251FD2 /* TutorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921CF25BB46F300251FD2 /* TutorStatusView.swift */; };
+		D54CF08525F91255007D5050 /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B2522252CF76300BC3932 /* AppSecrets.swift */; };
+		D54CF08725FA8624007D5050 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CF08625FA8624007D5050 /* AnalyticsService.swift */; };
+		D54CF08825FA8624007D5050 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CF08625FA8624007D5050 /* AnalyticsService.swift */; };
+		D54CF08B25FA8696007D5050 /* AnalyticsServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CF08A25FA8696007D5050 /* AnalyticsServiceDoubles.swift */; };
+		D54CF08C25FA8696007D5050 /* AnalyticsServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CF08A25FA8696007D5050 /* AnalyticsServiceDoubles.swift */; };
+		D54CF08E25FA8724007D5050 /* AnalyticsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CF08D25FA8724007D5050 /* AnalyticsCoordinator.swift */; };
+		D54CF08F25FA8724007D5050 /* AnalyticsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CF08D25FA8724007D5050 /* AnalyticsCoordinator.swift */; };
 		D54CFD1C25BB173000C012F3 /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = D54CFD1B25BB173000C012F3 /* WebView */; };
 		D54CFD2125BB208100C012F3 /* TutorStatusEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CFD2025BB208100C012F3 /* TutorStatusEndpoints.swift */; };
 		D54CFD2C25BB20A600C012F3 /* TutorStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CFD2B25BB20A600C012F3 /* TutorStatus.swift */; };
@@ -409,6 +418,8 @@
 		D5AAF7DB23FB347C00E410F2 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7DA23FB347C00E410F2 /* CollectionView.swift */; };
 		D5AAF7DD23FB431E00E410F2 /* InstrumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7DC23FB431E00E410F2 /* InstrumentView.swift */; };
 		D5AAF7DF23FB444500E410F2 /* RoundedShadowContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */; };
+		D5AC3F3225F6ADCE00321EDE /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = D5AC3F3125F6ADCE00321EDE /* Mixpanel */; };
+		D5AC3F3725F6ADE800321EDE /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = D5AC3F3625F6ADE800321EDE /* Mixpanel */; };
 		D5AC9E26254D8AD7003A8197 /* AppDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E25254D8AD7003A8197 /* AppDoubles.swift */; };
 		D5AC9E27254D8AD7003A8197 /* AppDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E25254D8AD7003A8197 /* AppDoubles.swift */; };
 		D5AC9E2C254D8AE2003A8197 /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E2B254D8AE2003A8197 /* AppLauncher.swift */; };
@@ -554,11 +565,9 @@
 		D5F7A5132597B92100A9FF56 /* ImageOverlayModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F7A5122597B92100A9FF56 /* ImageOverlayModifier.swift */; };
 		D5FAE6742559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FAE6732559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift */; };
 		D5FAE6862559DF8300473A8B /* PhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FAE6852559DF8300473A8B /* PhoneNumberCell.swift */; };
-		D5FC2D3E254A7DE3005056D5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D3D254A7DE3005056D5 /* FirebaseAnalytics */; };
 		D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */; };
 		D5FC2D42254A7DE3005056D5 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D41254A7DE3005056D5 /* FirebaseMessaging */; };
 		D5FC2D44254A7DE3005056D5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D43254A7DE3005056D5 /* FirebaseAuth */; };
-		D5FC2D4D254A7E21005056D5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D4C254A7E21005056D5 /* FirebaseAnalytics */; };
 		D5FC2D4F254A7E21005056D5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D4E254A7E21005056D5 /* FirebaseAuth */; };
 		D5FC2D51254A7E21005056D5 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D50254A7E21005056D5 /* FirebaseCrashlytics */; };
 		D5FC2D53254A7E21005056D5 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D52254A7E21005056D5 /* FirebaseMessaging */; };
@@ -759,6 +768,7 @@
 		D517FFCF2554A6E800A41639 /* LessonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailView.swift; sourceTree = "<group>"; };
 		D518C2F7250EA89100288A48 /* LessonPlanApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationsView.swift; sourceTree = "<group>"; };
 		D518C2FC250EDD3300288A48 /* InfoBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBanner.swift; sourceTree = "<group>"; };
+		D51B4F5925F9004F0028DEFA /* App+Mixpanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+Mixpanel.swift"; sourceTree = "<group>"; };
 		D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailsView.swift; sourceTree = "<group>"; };
 		D5200E3F23FDE460007168E0 /* MultiStyleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStyleText.swift; sourceTree = "<group>"; };
 		D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleView.swift; sourceTree = "<group>"; };
@@ -817,6 +827,9 @@
 		D54A561023CD457800BC8485 /* AppleAuthorizationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationResponse.swift; sourceTree = "<group>"; };
 		D54A561223CD4B2C00BC8485 /* AppleAuthorizationCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredential.swift; sourceTree = "<group>"; };
 		D54A561F23CE92AE00BC8485 /* AuthenticationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationError.swift; sourceTree = "<group>"; };
+		D54CF08625FA8624007D5050 /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
+		D54CF08A25FA8696007D5050 /* AnalyticsServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsServiceDoubles.swift; sourceTree = "<group>"; };
+		D54CF08D25FA8724007D5050 /* AnalyticsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsCoordinator.swift; sourceTree = "<group>"; };
 		D54CFD2025BB208100C012F3 /* TutorStatusEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorStatusEndpoints.swift; sourceTree = "<group>"; };
 		D54CFD2B25BB20A600C012F3 /* TutorStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorStatus.swift; sourceTree = "<group>"; };
 		D54CFD3125BB20BD00C012F3 /* TutorStatusDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorStatusDoubles.swift; sourceTree = "<group>"; };
@@ -1019,7 +1032,7 @@
 				D585217624CF81CE005D783A /* Introspect in Frameworks */,
 				D5FC2D44254A7DE3005056D5 /* FirebaseAuth in Frameworks */,
 				D5FC2D42254A7DE3005056D5 /* FirebaseMessaging in Frameworks */,
-				D5FC2D3E254A7DE3005056D5 /* FirebaseAnalytics in Frameworks */,
+				D5AC3F3225F6ADCE00321EDE /* Mixpanel in Frameworks */,
 				D5D32C5A25B9FB0E00F3ECD8 /* MultiModal in Frameworks */,
 				D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */,
 				D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */,
@@ -1044,11 +1057,11 @@
 				D510826125E43129003C9467 /* FoundationSugar in Frameworks */,
 				035B1CD5249CF7E200AABFEA /* Then in Frameworks */,
 				D5B880932547AFF600754197 /* Tagged in Frameworks */,
+				D5AC3F3725F6ADE800321EDE /* Mixpanel in Frameworks */,
 				D585217824CF81E8005D783A /* Introspect in Frameworks */,
 				D575C837254F10F0001664AB /* FirebaseRemoteConfig in Frameworks */,
 				D5D32C6525BA02E600F3ECD8 /* MultiModal in Frameworks */,
 				035B1D69249E645E00AABFEA /* APIKit in Frameworks */,
-				D5FC2D4D254A7E21005056D5 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1100,6 +1113,7 @@
 				03EDA66A2476AE5500FBE527 /* Models */,
 				D510825B25E43099003C9467 /* FoundationSugar */,
 				03341B3C23ABB1E7009AE8A8 /* Products */,
+				D5AC3F3525F6ADE800321EDE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1290,7 +1304,6 @@
 				03275AD4248FDB38009C3980 /* AppEnvironment.swift */,
 				03A91EF1249186EC00DEAD5E /* AppEnvironment+Instances.swift */,
 				03341B3E23ABB1E7009AE8A8 /* AppExtensions.swift */,
-				D56B2522252CF76300BC3932 /* AppSecrets.swift */,
 				D5BDD501253B406300255190 /* AppState.swift */,
 			);
 			path = App;
@@ -1417,6 +1430,7 @@
 				035B1CBE249CF2AA00AABFEA /* App.swift */,
 				035B1D58249E5CF800AABFEA /* App+Firebase.swift */,
 				035B1CF0249CF9FA00AABFEA /* App+LaunchScreenCache.swift */,
+				D51B4F5925F9004F0028DEFA /* App+Mixpanel.swift */,
 				D59D0592251828EA0070D81B /* App+Playback.swift */,
 				03B198532471BBE8005529EB /* App+PushNotifications.swift */,
 				D58149FF251D7FFC0009BBB3 /* App+SplitViewCustomization.swift */,
@@ -1424,6 +1438,7 @@
 				D5AC9E25254D8AD7003A8197 /* AppDoubles.swift */,
 				D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */,
 				D5AC9E2B254D8AE2003A8197 /* AppLauncher.swift */,
+				D56B2522252CF76300BC3932 /* AppSecrets.swift */,
 				D575C818254DD6C8001664AB /* AppSplash.swift */,
 				D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */,
 				03E88EB024C205C30077A420 /* Current.swift */,
@@ -1435,6 +1450,7 @@
 		03EDA6692476AD6800FBE527 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D54CF08925FA8627007D5050 /* Analytics */,
 				D5AFED4425057CB0003FFC68 /* ActivityCoordinator */,
 				D527B01A24FEACC0003E81A9 /* API */,
 				D535549823E0FA4A005A20EB /* Auth */,
@@ -1860,6 +1876,16 @@
 			path = Authorization;
 			sourceTree = "<group>";
 		};
+		D54CF08925FA8627007D5050 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				D54CF08D25FA8724007D5050 /* AnalyticsCoordinator.swift */,
+				D54CF08625FA8624007D5050 /* AnalyticsService.swift */,
+				D54CF08A25FA8696007D5050 /* AnalyticsServiceDoubles.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
 		D54CFD3025BB20AC00C012F3 /* TutorStatus */ = {
 			isa = PBXGroup;
 			children = (
@@ -1919,6 +1945,13 @@
 				D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */,
 			);
 			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		D5AC3F3525F6ADE800321EDE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D5AC9E4E254DA113003A8197 /* RemoteConfig */ = {
@@ -2126,7 +2159,6 @@
 				D5D78DD6252502CE007041BE /* PhoneNumberKit */,
 				D5F11565253735F20027D164 /* NonEmpty */,
 				D5BDD50A253CCC4400255190 /* Tagged */,
-				D5FC2D3D254A7DE3005056D5 /* FirebaseAnalytics */,
 				D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */,
 				D5FC2D41254A7DE3005056D5 /* FirebaseMessaging */,
 				D5FC2D43254A7DE3005056D5 /* FirebaseAuth */,
@@ -2136,6 +2168,7 @@
 				D59E4E6025B20ADA00E8F94C /* YouTubeiOSPlayerHelper */,
 				D5D32C5925B9FB0E00F3ECD8 /* MultiModal */,
 				D510825E25E43123003C9467 /* FoundationSugar */,
+				D5AC3F3125F6ADCE00321EDE /* Mixpanel */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -2167,7 +2200,6 @@
 				D585217724CF81E8005D783A /* Introspect */,
 				D5F4D3DD24F031FA000E8580 /* SwiftUIMapView */,
 				D5B880922547AFF600754197 /* Tagged */,
-				D5FC2D4C254A7E21005056D5 /* FirebaseAnalytics */,
 				D5FC2D4E254A7E21005056D5 /* FirebaseAuth */,
 				D5FC2D50254A7E21005056D5 /* FirebaseCrashlytics */,
 				D5FC2D52254A7E21005056D5 /* FirebaseMessaging */,
@@ -2176,6 +2208,7 @@
 				D5D32C6425BA02E600F3ECD8 /* MultiModal */,
 				D54CFD1B25BB173000C012F3 /* WebView */,
 				D510826025E43129003C9467 /* FoundationSugar */,
+				D5AC3F3625F6ADE800321EDE /* Mixpanel */,
 			);
 			productName = RythmicoTutor;
 			productReference = 035B1CBC249CF2AA00AABFEA /* Tutor.app */;
@@ -2278,6 +2311,7 @@
 				D59E4E5F25B20ADA00E8F94C /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
 				D5D32C5825B9FB0E00F3ECD8 /* XCRemoteSwiftPackageReference "MultiModal" */,
 				D54CFD1A25BB173000C012F3 /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */,
+				D5AC3F3025F6ADCE00321EDE /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
 			);
 			productRefGroup = 03341B3C23ABB1E7009AE8A8 /* Products */;
 			projectDirPath = "";
@@ -2535,8 +2569,10 @@
 				D5D9AE3F25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift in Sources */,
 				D516A929253A554F002E6EDF /* ImageAsset+Sugar.swift in Sources */,
 				D5AAF7D123F9ACFA00E410F2 /* InstrumentSelectionView.swift in Sources */,
+				D54CF08E25FA8724007D5050 /* AnalyticsCoordinator.swift in Sources */,
 				D53555B623E53699005A20EB /* AuthenticationService.swift in Sources */,
 				D531295D255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift in Sources */,
+				D54CF08725FA8624007D5050 /* AnalyticsService.swift in Sources */,
 				D55C35EA25A3A6490023E56B /* CalendarInfo.swift in Sources */,
 				D53555BB23E53699005A20EB /* AuthenticationAccessTokenProviderDoubles.swift in Sources */,
 				D53555C223E536AE005A20EB /* AppleAuthorizationCredential.swift in Sources */,
@@ -2586,11 +2622,13 @@
 				D55F013124CCCEDE00E5F13C /* Repository.swift in Sources */,
 				D5883CE425A4179F000B545C /* Alert+View.swift in Sources */,
 				D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */,
+				D54CF08B25FA8696007D5050 /* AnalyticsServiceDoubles.swift in Sources */,
 				0336D62C241EAAF6006CFC1F /* APIRequest.swift in Sources */,
 				03A094622443D8E1008B4BD6 /* EditingCoordinator.swift in Sources */,
 				03275AE5249071DB009C3980 /* DeviceTokenProvider.swift in Sources */,
 				D5A8C4BB25044A230006F5C5 /* UserDefaults.swift in Sources */,
 				D505804925D5A45C0028040F /* NavigationLink+Detail.swift in Sources */,
+				D51B4F5A25F9004F0028DEFA /* App+Mixpanel.swift in Sources */,
 				031378C3249A722F005FC49C /* LessonPlanCancellationView.swift in Sources */,
 				D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */,
 				D5D78DE025250864007041BE /* LessonPlanBookingView.swift in Sources */,
@@ -2827,6 +2865,7 @@
 				D5E58F0E256AF1E500EB52ED /* BookingEndpoints.swift in Sources */,
 				035B1D3B249E576900AABFEA /* AuthenticationAccessTokenProviderObserverDoubles.swift in Sources */,
 				D5FAE6742559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift in Sources */,
+				D54CF08825FA8624007D5050 /* AnalyticsService.swift in Sources */,
 				D5F4AE7E2559D3F0001085D5 /* PhoneNumberDoubles.swift in Sources */,
 				035B1D34249E576900AABFEA /* AuthenticationService.swift in Sources */,
 				D5814A01251D7FFC0009BBB3 /* App+SplitViewCustomization.swift in Sources */,
@@ -2840,6 +2879,7 @@
 				D575C830254F10E1001664AB /* RemoteConfig.swift in Sources */,
 				D5F4D3E724F096A2000E8580 /* BookingApplicationDetailView.swift in Sources */,
 				D58DE1BC25BDF5C30013AEE8 /* RootViewFlow.swift in Sources */,
+				D54CF08F25FA8724007D5050 /* AnalyticsCoordinator.swift in Sources */,
 				035B1D42249E577700AABFEA /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
 				035B1D62249E63D800AABFEA /* DeviceEndpoints.swift in Sources */,
 				D5F4D40024F858AE000E8580 /* Date+Sugar.swift in Sources */,
@@ -2884,6 +2924,7 @@
 				D5BF12C72507D78800B2931C /* RouterDoubles.swift in Sources */,
 				035B1D4A249E577700AABFEA /* AppleAuthorizationCompletionDelegate.swift in Sources */,
 				035B1D37249E576900AABFEA /* AuthenticationServiceDoubles.swift in Sources */,
+				D51B4F5B25F9004F0028DEFA /* App+Mixpanel.swift in Sources */,
 				D5AC9E2D254D8AE2003A8197 /* AppLauncher.swift in Sources */,
 				035B1D13249E563A00AABFEA /* OnboardingView.swift in Sources */,
 				035B1D3F249E577700AABFEA /* AppleAuthorizationCredentialDoubles.swift in Sources */,
@@ -2897,6 +2938,7 @@
 				035B1D30249E571B00AABFEA /* UIAccessibilityProtocol.swift in Sources */,
 				D5AC9E27254D8AD7003A8197 /* AppDoubles.swift in Sources */,
 				D5F4D3F424F33C9E000E8580 /* Address.swift in Sources */,
+				D54CF08C25FA8696007D5050 /* AnalyticsServiceDoubles.swift in Sources */,
 				D5E58F39256B034A00EB52ED /* BookingDoubles.swift in Sources */,
 				D5814A0A251D957D0009BBB3 /* MainViewContent.swift in Sources */,
 				032B6FCC24B7877B00299A09 /* BookingRequest.swift in Sources */,
@@ -2950,6 +2992,7 @@
 				D5BF12BF2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift in Sources */,
 				035B1D48249E577700AABFEA /* AppleAuthorizationController.swift in Sources */,
 				D5883CE525A4179F000B545C /* Alert+View.swift in Sources */,
+				D54CF08525F91255007D5050 /* AppSecrets.swift in Sources */,
 				D5F4D3F124F31E14000E8580 /* BookingApplicationGroupCell.swift in Sources */,
 				D505804A25D5A45C0028040F /* NavigationLink+Detail.swift in Sources */,
 				D5BF12B025068E2100B2931C /* PushNotificationEvent+Tutor.swift in Sources */,
@@ -3515,6 +3558,14 @@
 				kind = branch;
 			};
 		};
+		D5AC3F3025F6ADCE00321EDE /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mixpanel/mixpanel-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.0;
+			};
+		};
 		D5BDD509253CCC4400255190 /* XCRemoteSwiftPackageReference "swift-tagged" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-tagged";
@@ -3667,6 +3718,16 @@
 			package = D59E4E5F25B20ADA00E8F94C /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
 			productName = YouTubeiOSPlayerHelper;
 		};
+		D5AC3F3125F6ADCE00321EDE /* Mixpanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5AC3F3025F6ADCE00321EDE /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
+			productName = Mixpanel;
+		};
+		D5AC3F3625F6ADE800321EDE /* Mixpanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5AC3F3025F6ADCE00321EDE /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
+			productName = Mixpanel;
+		};
 		D5AC9E3A254D9533003A8197 /* FirebaseRemoteConfig */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -3712,11 +3773,6 @@
 			package = D5F4D3DC24F031FA000E8580 /* XCRemoteSwiftPackageReference "swiftui-mapview" */;
 			productName = SwiftUIMapView;
 		};
-		D5FC2D3D254A7DE3005056D5 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
 		D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -3731,11 +3787,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
-		};
-		D5FC2D4C254A7E21005056D5 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
 		};
 		D5FC2D4E254A7E21005056D5 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
