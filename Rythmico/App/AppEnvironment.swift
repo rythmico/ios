@@ -22,8 +22,7 @@ struct AppEnvironment {
     var deauthenticationService: DeauthenticationServiceProtocol
     var accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase
 
-    lazy
-    var analytics = AnalyticsCoordinator(service: analyticsService, accessTokenProviderObserver: accessTokenProviderObserver)
+    var analytics: AnalyticsCoordinator
     var analyticsService: AnalyticsServiceProtocol
 
     var deviceTokenProvider: DeviceTokenProvider
@@ -59,4 +58,121 @@ struct AppEnvironment {
 
     var cardSetupCredentialFetchingService: APIServiceBase<GetCardSetupCredentialRequest>
     var cardSetupService: CardSetupServiceProtocol
+
+    init(
+        state: AppState,
+
+        remoteConfig: RemoteConfigServiceProtocol,
+
+        date: @escaping () -> Date,
+        calendarType: @escaping () -> Calendar.Identifier,
+        locale: Locale,
+        timeZone: TimeZone,
+
+        eventEmitter: NotificationCenter,
+
+        settings: UserDefaults,
+        keychain: KeychainProtocol,
+
+        appleAuthorizationService: AppleAuthorizationServiceProtocol,
+        appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider,
+        appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifying,
+        authenticationService: AuthenticationServiceProtocol,
+        deauthenticationService: DeauthenticationServiceProtocol,
+        accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase,
+
+        analyticsService: AnalyticsServiceProtocol,
+
+        deviceTokenProvider: DeviceTokenProvider,
+        deviceRegisterService: APIServiceBase<AddDeviceRequest>,
+        deviceTokenDeleter: DeviceTokenDeleter,
+
+        pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator,
+        pushNotificationEventHandler: PushNotificationEventHandlerProtocol,
+
+        calendarSyncStatusProvider: CalendarSyncStatusProviderBase,
+        calendarInfoFetchingService: APIServiceBase<GetCalendarInfoRequest>,
+
+        uiAccessibility: UIAccessibilityProtocol.Type,
+        keyboardDismisser: KeyboardDismisser,
+        urlOpener: URLOpener,
+        router: RouterProtocol,
+
+        imageLoadingService: ImageLoadingServiceProtocol,
+
+        instrumentSelectionListProvider: InstrumentSelectionListProviderProtocol,
+        addressSearchService: APIServiceBase<AddressSearchRequest>,
+
+        lessonPlanFetchingService: APIServiceBase<GetLessonPlansRequest>,
+        lessonPlanRequestService: APIServiceBase<CreateLessonPlanRequest>,
+        lessonPlanCancellationService: APIServiceBase<CancelLessonPlanRequest>,
+        lessonPlanGetCheckoutService: APIServiceBase<GetLessonPlanCheckoutRequest>,
+        lessonPlanCompleteCheckoutService: APIServiceBase<CompleteLessonPlanCheckoutRequest>,
+        lessonPlanRepository: Repository<LessonPlan>,
+
+        lessonSkippingService: APIServiceBase<SkipLessonRequest>,
+
+        portfolioFetchingService: APIServiceBase<GetPortfolioRequest>,
+
+        cardSetupCredentialFetchingService: APIServiceBase<GetCardSetupCredentialRequest>,
+        cardSetupService: CardSetupServiceProtocol
+    ) {
+        self.state = state
+
+        self.remoteConfig = remoteConfig
+
+        self.date = date
+        self.calendarType = calendarType
+        self.locale = locale
+        self.timeZone = timeZone
+
+        self.eventEmitter = eventEmitter
+
+        self.settings = settings
+        self.keychain = keychain
+
+        self.appleAuthorizationService = appleAuthorizationService
+        self.appleAuthorizationCredentialStateProvider = appleAuthorizationCredentialStateProvider
+        self.appleAuthorizationCredentialRevocationNotifier = appleAuthorizationCredentialRevocationNotifier
+        self.authenticationService = authenticationService
+        self.deauthenticationService = deauthenticationService
+        self.accessTokenProviderObserver = accessTokenProviderObserver
+
+        self.analytics = AnalyticsCoordinator(service: analyticsService, accessTokenProviderObserver: accessTokenProviderObserver)
+        self.analyticsService = analyticsService
+
+        self.deviceTokenProvider = deviceTokenProvider
+        self.deviceRegisterService = deviceRegisterService
+        self.deviceTokenDeleter = deviceTokenDeleter
+
+        self.pushNotificationAuthorizationCoordinator = pushNotificationAuthorizationCoordinator
+        self.pushNotificationEventHandler = pushNotificationEventHandler
+
+        self.calendarSyncStatusProvider = calendarSyncStatusProvider
+        self.calendarInfoFetchingService = calendarInfoFetchingService
+
+        self.uiAccessibility = uiAccessibility
+        self.keyboardDismisser = keyboardDismisser
+        self.urlOpener = urlOpener
+        self.router = router
+
+        self.imageLoadingService = imageLoadingService
+
+        self.instrumentSelectionListProvider = instrumentSelectionListProvider
+        self.addressSearchService = addressSearchService
+
+        self.lessonPlanFetchingService = lessonPlanFetchingService
+        self.lessonPlanRequestService = lessonPlanRequestService
+        self.lessonPlanCancellationService = lessonPlanCancellationService
+        self.lessonPlanGetCheckoutService = lessonPlanGetCheckoutService
+        self.lessonPlanCompleteCheckoutService = lessonPlanCompleteCheckoutService
+        self.lessonPlanRepository = lessonPlanRepository
+
+        self.lessonSkippingService = lessonSkippingService
+
+        self.portfolioFetchingService = portfolioFetchingService
+
+        self.cardSetupCredentialFetchingService = cardSetupCredentialFetchingService
+        self.cardSetupService = cardSetupService
+    }
 }

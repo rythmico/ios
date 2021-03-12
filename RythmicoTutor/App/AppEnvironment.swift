@@ -22,8 +22,7 @@ struct AppEnvironment {
     var deauthenticationService: DeauthenticationServiceProtocol
     var accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase
 
-    lazy
-    var analytics = AnalyticsCoordinator(service: analyticsService, accessTokenProviderObserver: accessTokenProviderObserver)
+    var analytics: AnalyticsCoordinator
     var analyticsService: AnalyticsServiceProtocol
 
     var deviceTokenProvider: DeviceTokenProvider
@@ -55,4 +54,113 @@ struct AppEnvironment {
     var bookingApplicationRepository: Repository<BookingApplication>
     var bookingApplicationFetchingService: APIServiceBase<BookingApplicationsGetRequest>
     var bookingApplicationRetractionService: APIServiceBase<BookingApplicationsRetractRequest>
+
+    init(
+        state: AppState,
+
+        remoteConfig: RemoteConfigServiceProtocol,
+
+        date: @escaping () -> Date,
+        calendarType: @escaping () -> Calendar.Identifier,
+        locale: Locale,
+        timeZone: TimeZone,
+
+        eventEmitter: NotificationCenter,
+
+        settings: UserDefaults,
+        keychain: KeychainProtocol,
+
+        appleAuthorizationService: AppleAuthorizationServiceProtocol,
+        appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider,
+        appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifying,
+        authenticationService: AuthenticationServiceProtocol,
+        deauthenticationService: DeauthenticationServiceProtocol,
+        accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase,
+
+        analyticsService: AnalyticsServiceProtocol,
+
+        deviceTokenProvider: DeviceTokenProvider,
+        deviceRegisterService: APIServiceBase<AddDeviceRequest>,
+        deviceTokenDeleter: DeviceTokenDeleter,
+
+        pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator,
+        pushNotificationEventHandler: PushNotificationEventHandlerProtocol,
+
+        calendarSyncStatusProvider: CalendarSyncStatusProviderBase,
+        calendarInfoFetchingService: APIServiceBase<GetCalendarInfoRequest>,
+
+        uiAccessibility: UIAccessibilityProtocol.Type,
+        keyboardDismisser: KeyboardDismisser,
+        urlOpener: URLOpener,
+        router: RouterProtocol,
+
+        imageLoadingService: ImageLoadingServiceProtocol,
+
+        tutorStatusFetchingService: APIServiceBase<GetTutorStatusRequest>,
+
+        bookingsRepository: Repository<Booking>,
+        bookingsFetchingService: APIServiceBase<BookingsGetRequest>,
+
+        bookingRequestRepository: Repository<BookingRequest>,
+        bookingRequestFetchingService: APIServiceBase<BookingRequestsGetRequest>,
+        bookingRequestApplyingService: APIServiceBase<BookingRequestApplyRequest>,
+
+        bookingApplicationRepository: Repository<BookingApplication>,
+        bookingApplicationFetchingService: APIServiceBase<BookingApplicationsGetRequest>,
+        bookingApplicationRetractionService: APIServiceBase<BookingApplicationsRetractRequest>
+    ) {
+        self.state = state
+
+        self.remoteConfig = remoteConfig
+
+        self.date = date
+        self.calendarType = calendarType
+        self.locale = locale
+        self.timeZone = timeZone
+
+        self.eventEmitter = eventEmitter
+
+        self.settings = settings
+        self.keychain = keychain
+
+        self.appleAuthorizationService = appleAuthorizationService
+        self.appleAuthorizationCredentialStateProvider = appleAuthorizationCredentialStateProvider
+        self.appleAuthorizationCredentialRevocationNotifier = appleAuthorizationCredentialRevocationNotifier
+        self.authenticationService = authenticationService
+        self.deauthenticationService = deauthenticationService
+        self.accessTokenProviderObserver = accessTokenProviderObserver
+
+        self.analytics = AnalyticsCoordinator(service: analyticsService, accessTokenProviderObserver: accessTokenProviderObserver)
+        self.analyticsService = analyticsService
+
+        self.deviceTokenProvider = deviceTokenProvider
+        self.deviceRegisterService = deviceRegisterService
+        self.deviceTokenDeleter = deviceTokenDeleter
+
+        self.pushNotificationAuthorizationCoordinator = pushNotificationAuthorizationCoordinator
+        self.pushNotificationEventHandler = pushNotificationEventHandler
+
+        self.calendarSyncStatusProvider = calendarSyncStatusProvider
+        self.calendarInfoFetchingService = calendarInfoFetchingService
+
+        self.uiAccessibility = uiAccessibility
+        self.keyboardDismisser = keyboardDismisser
+        self.urlOpener = urlOpener
+        self.router = router
+
+        self.imageLoadingService = imageLoadingService
+
+        self.tutorStatusFetchingService = tutorStatusFetchingService
+
+        self.bookingsRepository = bookingsRepository
+        self.bookingsFetchingService = bookingsFetchingService
+
+        self.bookingRequestRepository = bookingRequestRepository
+        self.bookingRequestFetchingService = bookingRequestFetchingService
+        self.bookingRequestApplyingService = bookingRequestApplyingService
+
+        self.bookingApplicationRepository = bookingApplicationRepository
+        self.bookingApplicationFetchingService = bookingApplicationFetchingService
+        self.bookingApplicationRetractionService = bookingApplicationRetractionService
+    }
 }
