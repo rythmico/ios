@@ -8,19 +8,19 @@ final class RootViewFlow: Flow {
         case mainView
     }
 
-    private let accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase
+    private let userCredentialProvider: UserCredentialProviderBase
     private let settings: UserDefaults
     private var cancellable: AnyCancellable?
 
     init(
-        accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase = Current.accessTokenProviderObserver,
+        userCredentialProvider: UserCredentialProviderBase = Current.userCredentialProvider,
         settings: UserDefaults = Current.settings
     ) {
-        self.accessTokenProviderObserver = accessTokenProviderObserver
+        self.userCredentialProvider = userCredentialProvider
         self.settings = settings
 
         cancellable = Publishers.CombineLatest(
-            accessTokenProviderObserver.$currentProvider,
+            userCredentialProvider.$userCredential,
             settings.publisher(for: \.tutorVerified)
         )
         .map { (isAuthenticated: $0 != nil, isTutorVerified: $1) }

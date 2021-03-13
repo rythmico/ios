@@ -81,20 +81,20 @@ extension AppEnvironment {
 
     func sharedCoordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
         // Return nil if logged out.
-        guard let currentProvider = accessTokenProviderObserver.currentProvider else {
-            latestProvider = nil
+        guard let userCredential = userCredentialProvider.userCredential else {
+            latestUserCredential = nil
             coordinatorMap = [:]
             return nil
         }
 
         // Check if user changed and reset cache.
-        if latestProvider != nil, currentProvider !== latestProvider {
-            latestProvider = nil
+        if latestUserCredential != nil, userCredential !== latestUserCredential {
+            latestUserCredential = nil
             coordinatorMap = [:]
         }
 
         // Update reference to latest provider.
-        latestProvider = currentProvider
+        latestUserCredential = userCredential
 
         // Return cached coordinator if it exists.
         if let coordinator = coordinatorMap[service] as? APIActivityCoordinator<Request> {
@@ -103,7 +103,7 @@ extension AppEnvironment {
 
         // Initialize, cache and return new coordinator if not.
         let coordinator = APIActivityCoordinator(
-            accessTokenProvider: currentProvider,
+            userCredential: userCredential,
             deauthenticationService: deauthenticationService,
             errorHandler: apiErrorHandler,
             service: self[keyPath: service]
@@ -113,9 +113,9 @@ extension AppEnvironment {
     }
 
     func coordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
-        accessTokenProviderObserver.currentProvider.map {
+        userCredentialProvider.userCredential.map {
             APIActivityCoordinator(
-                accessTokenProvider: $0,
+                userCredential: $0,
                 deauthenticationService: deauthenticationService,
                 errorHandler: apiErrorHandler,
                 service: self[keyPath: service]
@@ -144,7 +144,7 @@ extension AppEnvironment {
 
 private var cachedRemoteConfigCoordinator: RemoteConfigCoordinator?
 
-private var latestProvider: AuthenticationAccessTokenProvider?
+private var latestUserCredential: UserCredentialProtocol?
 private var coordinatorMap: [AnyKeyPath: Any] = [:]
 
 #if DEBUG
@@ -197,18 +197,18 @@ extension AppEnvironment {
     }
 
     mutating func userAuthenticated() {
-        accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(
-            currentProvider: Self.fakeAccessTokenProvider
+        userCredentialProvider = UserCredentialProviderStub(
+            userCredential: Self.fakeUserCredential
         )
     }
 
     mutating func userUnauthenticated() {
-        accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverDummy()
+        userCredentialProvider = UserCredentialProviderDummy()
     }
 
     mutating func shouldSucceedAuthentication() {
         authenticationService = AuthenticationServiceStub(
-            result: .success(Self.fakeAccessTokenProvider),
+            result: .success(Self.fakeUserCredential),
             delay: Self.fakeAPIServicesDelay
         )
     }
@@ -239,8 +239,8 @@ extension AppEnvironment {
     }
 
     private static let fakeReferenceDate = Date()
-    private static var fakeAccessTokenProvider: AuthenticationAccessTokenProvider {
-        AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))
+    private static var fakeUserCredential: UserCredentialProtocol {
+        UserCredentialStub(result: .success("ACCESS_TOKEN"))
     }
     private static let fakeAuthenticationError = AuthenticationServiceStub.Error(
         reasonCode: .invalidCredential,

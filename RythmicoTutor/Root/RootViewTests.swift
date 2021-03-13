@@ -126,7 +126,7 @@ final class RootViewTests: XCTestCase {
         )
 
         XCTAssertView(view) { view in
-            Current.accessTokenProviderObserver.currentProvider = nil
+            Current.userCredentialProvider.userCredential = nil
             XCTAssertEqual(view.flow.currentStep, .onboarding)
             DispatchQueue.main.async {
                 XCTAssertNil(keychain.appleAuthorizationUserId)

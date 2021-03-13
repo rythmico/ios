@@ -10,7 +10,7 @@ extension RootView {
 
 struct RootView: View, TestableView {
     @StateObject
-    private var accessTokenProviderObserver = Current.accessTokenProviderObserver
+    private var userCredentialProvider = Current.userCredentialProvider
 
     var state: UserState {
         MainView().flatMap(UserState.authenticated) ?? .unauthenticated(OnboardingView())
@@ -21,7 +21,7 @@ struct RootView: View, TestableView {
         RootViewContent(state: state)
             .testable(self)
             .animation(.rythmicoSpring(duration: .durationMedium), value: state.isAuthenticated)
-            .onReceive(accessTokenProviderObserver.$currentProvider, perform: accessTokenProviderChanged)
+            .onReceive(userCredentialProvider.$userCredential, perform: onUserCredentialChanged)
             .onAppear(perform: handleStateChanges)
     }
 
@@ -44,8 +44,8 @@ struct RootView: View, TestableView {
         }
     }
 
-    private func accessTokenProviderChanged(with provider: AuthenticationAccessTokenProvider?) {
-        if provider == nil {
+    private func onUserCredentialChanged(_ credential: UserCredentialProtocol?) {
+        if credential == nil {
             // TODO: potentially refactor to put all-things-authentication into coordinator
             // that takes care of flushing keychain upon logout etc.
             Current.keychain.appleAuthorizationUserId = nil

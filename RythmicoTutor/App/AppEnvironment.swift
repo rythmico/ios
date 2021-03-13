@@ -20,7 +20,7 @@ struct AppEnvironment {
     var appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifying
     var authenticationService: AuthenticationServiceProtocol
     var deauthenticationService: DeauthenticationServiceProtocol
-    var accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase
+    var userCredentialProvider: UserCredentialProviderBase
 
     var analytics: AnalyticsCoordinator
     var analyticsService: AnalyticsServiceProtocol
@@ -75,7 +75,7 @@ struct AppEnvironment {
         appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifying,
         authenticationService: AuthenticationServiceProtocol,
         deauthenticationService: DeauthenticationServiceProtocol,
-        accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase,
+        userCredentialProvider: UserCredentialProviderBase,
 
         analyticsService: AnalyticsServiceProtocol,
 
@@ -128,9 +128,9 @@ struct AppEnvironment {
         self.appleAuthorizationCredentialRevocationNotifier = appleAuthorizationCredentialRevocationNotifier
         self.authenticationService = authenticationService
         self.deauthenticationService = deauthenticationService
-        self.accessTokenProviderObserver = accessTokenProviderObserver
+        self.userCredentialProvider = userCredentialProvider
 
-        self.analytics = AnalyticsCoordinator(service: analyticsService, accessTokenProviderObserver: accessTokenProviderObserver)
+        self.analytics = AnalyticsCoordinator(service: analyticsService, userCredentialProvider: userCredentialProvider)
         self.analyticsService = analyticsService
 
         self.deviceTokenProvider = deviceTokenProvider

@@ -1,6 +1,6 @@
 import FoundationSugar
 
-final class AuthenticationAccessTokenProviderStub: AuthenticationAccessTokenProvider {
+final class UserCredentialStub: UserCredentialProtocol {
     let userId: String = "USER_ID"
     let name: String? = "David Roman"
     let email: String? = "david@rythmico.com"
@@ -15,7 +15,7 @@ final class AuthenticationAccessTokenProviderStub: AuthenticationAccessTokenProv
     }
 }
 
-final class AuthenticationAccessTokenProviderDummy: AuthenticationAccessTokenProvider {
+final class UserCredentialDummy: UserCredentialProtocol {
     let userId: String = "USER_ID"
     let name: String? = nil
     let email: String? = nil

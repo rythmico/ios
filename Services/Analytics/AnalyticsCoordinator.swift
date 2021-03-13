@@ -3,22 +3,22 @@ import Combine
 
 final class AnalyticsCoordinator {
     private let service: AnalyticsServiceProtocol
-    private let accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase
+    private let userCredentialProvider: UserCredentialProviderBase
     private var cancellable: AnyCancellable?
 
     init(
         service: AnalyticsServiceProtocol,
-        accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase
+        userCredentialProvider: UserCredentialProviderBase
     ) {
         self.service = service
-        self.accessTokenProviderObserver = accessTokenProviderObserver
-        self.cancellable = accessTokenProviderObserver.$currentProvider.sink(receiveValue: onAccessTokenProviderChanged)
+        self.userCredentialProvider = userCredentialProvider
+        self.cancellable = userCredentialProvider.$userCredential.sink(receiveValue: onUserCredentialChanged)
     }
 
-    private func onAccessTokenProviderChanged(_ provider: AuthenticationAccessTokenProvider?) {
-        if let provider = provider {
-            service.identify(distinctId: provider.userId)
-            service.set(name: provider.name, email: provider.email)
+    private func onUserCredentialChanged(_ credential: UserCredentialProtocol?) {
+        if let credential = credential {
+            service.identify(distinctId: credential.userId)
+            service.set(name: credential.name, email: credential.email)
         } else {
             service.reset()
         }

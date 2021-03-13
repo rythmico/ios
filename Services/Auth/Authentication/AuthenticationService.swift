@@ -3,7 +3,7 @@ import FirebaseAuth
 import FoundationSugar
 
 protocol AuthenticationServiceProtocol {
-    typealias Response = AuthenticationAccessTokenProvider
+    typealias Response = UserCredentialProtocol
     typealias Error = AuthenticationError<AuthenticationErrorSignInReasonCode>
     typealias AuthenticationResult = Result<Response, Error>
     func authenticateAppleAccount(with credential: AppleAuthorizationCredential, completionHandler: @escaping Handler<AuthenticationResult>)

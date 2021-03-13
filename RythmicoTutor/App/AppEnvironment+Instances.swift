@@ -28,7 +28,7 @@ extension AppEnvironment {
         appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifier(notificationCenter: .default),
         authenticationService: AuthenticationService(),
         deauthenticationService: DeauthenticationService(),
-        accessTokenProviderObserver: AuthenticationAccessTokenProviderObserver(broadcast: AuthenticationAccessTokenProviderBroadcast()),
+        userCredentialProvider: UserCredentialProvider(emitter: UserCredentialEmitter()),
 
         analyticsService: Mixpanel.mainInstance(),
 
@@ -112,7 +112,7 @@ extension AppEnvironment {
             appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifierDummy(),
             authenticationService: AuthenticationServiceDummy(),
             deauthenticationService: DeauthenticationServiceDummy(),
-            accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverDummy(),
+            userCredentialProvider: UserCredentialProviderDummy(),
 
             analyticsService: AnalyticsServiceDummy(),
 

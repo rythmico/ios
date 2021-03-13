@@ -4,18 +4,18 @@ import APIKit
 final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActivityCoordinator<Request.Properties, Request.Response> {
     typealias Service = APIServiceBase<Request>
 
-    private let accessTokenProvider: AuthenticationAccessTokenProvider
+    private let userCredential: UserCredentialProtocol
     private let deauthenticationService: DeauthenticationServiceProtocol
     private let errorHandler: APIActivityErrorHandlerProtocol
     private let service: Service
 
     init(
-        accessTokenProvider: AuthenticationAccessTokenProvider,
+        userCredential: UserCredentialProtocol,
         deauthenticationService: DeauthenticationServiceProtocol,
         errorHandler: APIActivityErrorHandlerProtocol,
         service: Service
     ) {
-        self.accessTokenProvider = accessTokenProvider
+        self.userCredential = userCredential
         self.deauthenticationService = deauthenticationService
         self.errorHandler = errorHandler
         self.service = service
@@ -23,7 +23,7 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
 
     override func performTask(with input: Request.Properties) {
         super.performTask(with: input)
-        accessTokenProvider.getAccessToken { [self] result in
+        userCredential.getAccessToken { [self] result in
             switch result {
             case .success(let accessToken):
                 do {

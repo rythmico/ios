@@ -113,7 +113,7 @@ final class RootViewTests: XCTestCase {
         )
 
         XCTAssertView(view) { view in
-            Current.accessTokenProviderObserver.currentProvider = nil
+            Current.userCredentialProvider.userCredential = nil
             XCTAssertTrue(view.state.isUnauthenticated)
             XCTAssertFalse(view.state.isAuthenticated)
             DispatchQueue.main.async {
