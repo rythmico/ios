@@ -76,7 +76,7 @@ final class RootViewTests: XCTestCase {
             XCTAssertTrue(view.state.isUnauthenticated)
             XCTAssertFalse(view.state.isAuthenticated)
             XCTAssertNil(keychain.appleAuthorizationUserId)
-            XCTAssertEqual(deauthenticationService.deauthenticationCount, 1)
+            XCTAssertEqual(deauthenticationService.deauthenticationCount, 2)
         }
     }
 

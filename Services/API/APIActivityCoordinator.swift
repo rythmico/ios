@@ -4,18 +4,18 @@ import APIKit
 final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActivityCoordinator<Request.Properties, Request.Response> {
     typealias Service = APIServiceBase<Request>
 
-    private let userCredential: UserCredentialProtocol
+    private let userCredentialProvider: UserCredentialProviderBase
     private let deauthenticationService: DeauthenticationServiceProtocol
     private let errorHandler: APIActivityErrorHandlerProtocol
     private let service: Service
 
     init(
-        userCredential: UserCredentialProtocol,
+        userCredentialProvider: UserCredentialProviderBase,
         deauthenticationService: DeauthenticationServiceProtocol,
         errorHandler: APIActivityErrorHandlerProtocol,
         service: Service
     ) {
-        self.userCredential = userCredential
+        self.userCredentialProvider = userCredentialProvider
         self.deauthenticationService = deauthenticationService
         self.errorHandler = errorHandler
         self.service = service
@@ -23,6 +23,10 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
 
     override func performTask(with input: Request.Properties) {
         super.performTask(with: input)
+        guard let userCredential = userCredentialProvider.userCredential else {
+            handleUserCredentialMissing()
+            return
+        }
         userCredential.getAccessToken { [self] result in
             switch result {
             case .success(let accessToken):
@@ -36,6 +40,11 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
                 handleAuthenticationError(error)
             }
         }
+    }
+
+    private func handleUserCredentialMissing() {
+        deauthenticationService.deauthenticate()
+        finish(.failure("User credentials missing"))
     }
 
     private func handleRequestResult(_ result: Service.Result) {

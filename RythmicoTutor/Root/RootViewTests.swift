@@ -90,7 +90,7 @@ final class RootViewTests: XCTestCase {
         XCTAssertView(view, after: 0.5) { view in
             XCTAssertEqual(view.flow.currentStep, .onboarding)
             XCTAssertNil(keychain.appleAuthorizationUserId)
-            XCTAssertEqual(deauthenticationService.deauthenticationCount, 1)
+            XCTAssertEqual(deauthenticationService.deauthenticationCount, 2)
         }
     }
 

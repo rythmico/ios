@@ -103,7 +103,7 @@ extension AppEnvironment {
 
         // Initialize, cache and return new coordinator if not.
         let coordinator = APIActivityCoordinator(
-            userCredential: userCredential,
+            userCredentialProvider: userCredentialProvider,
             deauthenticationService: deauthenticationService,
             errorHandler: apiErrorHandler,
             service: self[keyPath: service]
@@ -113,14 +113,12 @@ extension AppEnvironment {
     }
 
     func coordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
-        userCredentialProvider.userCredential.map {
-            APIActivityCoordinator(
-                userCredential: $0,
-                deauthenticationService: deauthenticationService,
-                errorHandler: apiErrorHandler,
-                service: self[keyPath: service]
-            )
-        }
+        APIActivityCoordinator(
+            userCredentialProvider: userCredentialProvider,
+            deauthenticationService: deauthenticationService,
+            errorHandler: apiErrorHandler,
+            service: self[keyPath: service]
+        )
     }
 
     func imageLoadingCoordinator() -> ImageLoadingCoordinator {
