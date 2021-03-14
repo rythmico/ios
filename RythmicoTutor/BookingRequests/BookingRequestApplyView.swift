@@ -4,16 +4,9 @@ struct BookingRequestApplyView: View {
     @Environment(\.presentationMode)
     private var presentationMode
     @StateObject
-    private var coordinator: APIActivityCoordinator<BookingRequestApplyRequest>
-    private let booking: BookingRequest
+    private var coordinator = Current.coordinator(for: \.bookingRequestApplyingService)
 
-    init?(booking: BookingRequest) {
-        guard let coordinator = Current.coordinator(for: \.bookingRequestApplyingService) else {
-            return nil
-        }
-        self._coordinator = .init(wrappedValue: coordinator)
-        self.booking = booking
-    }
+    var booking: BookingRequest
 
     @State
     var privateNote = ""

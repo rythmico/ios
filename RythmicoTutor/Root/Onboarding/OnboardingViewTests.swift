@@ -12,10 +12,9 @@ final class OnboardingViewTests: XCTestCase {
 
     func testDeviceUnregistrationOnAppear() {
         let spy = DeviceTokenDeleterSpy()
-        Current.deviceTokenDeleter = spy
+        Current.deviceUnregisterCoordinator = DeviceUnregisterCoordinator(deviceTokenDeleter: spy)
 
         let view = OnboardingView()
-
         XCTAssertView(view) { view in
             XCTAssertEqual(spy.unregisterCount, 1)
         }

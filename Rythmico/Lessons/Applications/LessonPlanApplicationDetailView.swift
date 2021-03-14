@@ -13,7 +13,7 @@ struct LessonPlanApplicationDetailView: View {
     @State
     private var tab: Tab = .message
     @StateObject
-    private var coordinator = Current.coordinator(for: \.portfolioFetchingService)!
+    private var coordinator = Current.coordinator(for: \.portfolioFetchingService)
 
     var lessonPlan: LessonPlan
     var application: LessonPlan.Application

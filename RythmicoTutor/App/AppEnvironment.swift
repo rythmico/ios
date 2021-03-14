@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 struct AppEnvironment {
     var state: AppState
@@ -28,22 +28,21 @@ struct AppEnvironment {
 
     var apiActivityErrorHandler: APIActivityErrorHandlerProtocol
 
-    var deviceTokenProvider: DeviceTokenProvider
-    var deviceRegisterService: APIServiceBase<AddDeviceRequest>
-    var deviceTokenDeleter: DeviceTokenDeleter
+    var deviceRegisterCoordinator: DeviceRegisterCoordinator
+    var deviceUnregisterCoordinator: DeviceUnregisterCoordinator
 
     var pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator
     var pushNotificationEventHandler: PushNotificationEventHandlerProtocol
 
-    var calendarSyncStatusProvider: CalendarSyncStatusProviderBase
-    var calendarInfoFetchingService: APIServiceBase<GetCalendarInfoRequest>
+    var calendarSyncCoordinator: CalendarSyncCoordinator
 
+    var sceneState: () -> UIApplication.State
     var uiAccessibility: UIAccessibilityProtocol.Type
     var keyboardDismisser: KeyboardDismisser
     var urlOpener: URLOpener
     var router: RouterProtocol
 
-    var imageLoadingService: ImageLoadingServiceProtocol
+    var imageLoadingCoordinator: () -> ImageLoadingCoordinator
 
     var tutorStatusFetchingCoordinator: APIActivityCoordinator<GetTutorStatusRequest>
 
@@ -92,6 +91,7 @@ struct AppEnvironment {
         calendarSyncStatusProvider: CalendarSyncStatusProviderBase,
         calendarInfoFetchingService: APIServiceBase<GetCalendarInfoRequest>,
 
+        sceneState: @escaping () -> UIApplication.State,
         uiAccessibility: UIAccessibilityProtocol.Type,
         keyboardDismisser: KeyboardDismisser,
         urlOpener: URLOpener,
@@ -150,22 +150,26 @@ struct AppEnvironment {
             )
         }
 
-        self.deviceTokenProvider = deviceTokenProvider
-        self.deviceRegisterService = deviceRegisterService
-        self.deviceTokenDeleter = deviceTokenDeleter
+        self.deviceRegisterCoordinator = DeviceRegisterCoordinator(deviceTokenProvider: deviceTokenProvider, apiCoordinator: coordinator(for: deviceRegisterService))
+        self.deviceUnregisterCoordinator = DeviceUnregisterCoordinator(deviceTokenDeleter: deviceTokenDeleter)
 
         self.pushNotificationAuthorizationCoordinator = pushNotificationAuthorizationCoordinator
         self.pushNotificationEventHandler = pushNotificationEventHandler
 
-        self.calendarSyncStatusProvider = calendarSyncStatusProvider
-        self.calendarInfoFetchingService = calendarInfoFetchingService
+        self.calendarSyncCoordinator = CalendarSyncCoordinator(
+            calendarSyncStatusProvider: calendarSyncStatusProvider,
+            calendarInfoFetchingCoordinator: coordinator(for: calendarInfoFetchingService),
+            eventEmitter: eventEmitter,
+            urlOpener: urlOpener
+        )
 
+        self.sceneState = sceneState
         self.uiAccessibility = uiAccessibility
         self.keyboardDismisser = keyboardDismisser
         self.urlOpener = urlOpener
         self.router = router
 
-        self.imageLoadingService = imageLoadingService
+        self.imageLoadingCoordinator = { ImageLoadingCoordinator(service: imageLoadingService) }
 
         self.tutorStatusFetchingCoordinator = coordinator(for: tutorStatusFetchingService)
 

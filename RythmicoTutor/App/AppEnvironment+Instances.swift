@@ -45,6 +45,7 @@ extension AppEnvironment {
         calendarSyncStatusProvider: CalendarSyncStatusProvider(accessProvider: EKEventStore()),
         calendarInfoFetchingService: APIService(),
 
+        sceneState: { UIApplication.shared.applicationState },
         uiAccessibility: UIAccessibility.self,
         keyboardDismisser: UIApplication.shared,
         urlOpener: UIApplication.shared,
@@ -126,6 +127,7 @@ extension AppEnvironment {
             calendarSyncStatusProvider: CalendarSyncStatusProviderDummy(),
             calendarInfoFetchingService: APIServiceDummy(),
 
+            sceneState: { .active },
             uiAccessibility: UIAccessibilityDummy.self,
             keyboardDismisser: KeyboardDismisserDummy(),
             urlOpener: URLOpenerDummy(),

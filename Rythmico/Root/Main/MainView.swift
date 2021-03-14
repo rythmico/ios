@@ -15,26 +15,9 @@ struct MainView: View, TestableView {
     @ObservedObject
     private var state = Current.state
     @State
-    private var lessonsView: LessonsView
-    @State
-    private var profileView = ProfileView()
-
-    @State
     private var hasFetchedLessonPlansAtLeastOnce = false
-
     @ObservedObject
     private var lessonPlanFetchingCoordinator = Current.lessonPlanFetchingCoordinator
-    private let deviceRegisterCoordinator: DeviceRegisterCoordinator
-
-    init?() {
-        guard
-            let deviceRegisterCoordinator = Current.deviceRegisterCoordinator()
-        else {
-            return nil
-        }
-        self._lessonsView = .init(wrappedValue: LessonsView())
-        self.deviceRegisterCoordinator = deviceRegisterCoordinator
-    }
 
     func presentRequestLessonFlow() {
         state.lessonsContext = .requestingLessonPlan
@@ -60,7 +43,7 @@ struct MainView: View, TestableView {
         )
         .testable(self)
         .accentColor(.rythmicoPurple)
-        .onAppear(perform: deviceRegisterCoordinator.registerDevice)
+        .onAppear(perform: Current.deviceRegisterCoordinator.registerDevice)
         .onAppear(perform: Current.pushNotificationAuthorizationCoordinator.refreshAuthorizationStatus)
         .onSuccess(lessonPlanFetchingCoordinator, perform: onLessonPlansFetched)
         .multiModal {
@@ -84,8 +67,8 @@ struct MainView: View, TestableView {
     @ViewBuilder
     private func content(for tab: Tab) -> some View {
         switch tab {
-        case .lessons: lessonsView
-        case .profile: profileView
+        case .lessons: LessonsView()
+        case .profile: ProfileView()
         }
     }
 

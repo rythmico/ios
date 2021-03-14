@@ -2,8 +2,8 @@ import SwiftUI
 import FoundationSugar
 
 struct LessonPlanConfirmationView: View, TestableView {
-    @StateObject
-    private var calendarSyncCoordinator = Current.calendarSyncCoordinator()!
+    @ObservedObject
+    private var calendarSyncCoordinator = Current.calendarSyncCoordinator
 
     var lessonPlan: LessonPlan
 

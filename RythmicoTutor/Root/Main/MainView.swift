@@ -16,16 +16,6 @@ struct MainView: View, TestableView {
 
     @ObservedObject
     private var bookingFetchingCoordinator = Current.bookingsFetchingCoordinator
-    private let deviceRegisterCoordinator: DeviceRegisterCoordinator
-
-    init?() {
-        guard
-            let deviceRegisterCoordinator = Current.deviceRegisterCoordinator()
-        else {
-            return nil
-        }
-        self.deviceRegisterCoordinator = deviceRegisterCoordinator
-    }
 
     let inspection = SelfInspection()
     var body: some View {
@@ -36,7 +26,7 @@ struct MainView: View, TestableView {
             tabTitle: \.title, tabIcons: icon
         )
         .testable(self)
-        .onAppear(perform: deviceRegisterCoordinator.registerDevice)
+        .onAppear(perform: Current.deviceRegisterCoordinator.registerDevice)
     }
 
     @ViewBuilder

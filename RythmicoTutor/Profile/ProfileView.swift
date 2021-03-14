@@ -10,8 +10,8 @@ struct ProfileView: View, TestableView {
 
     @ObservedObject
     private var notificationAuthorizationCoordinator = Current.pushNotificationAuthorizationCoordinator
-    @StateObject
-    private var calendarSyncCoordinator = Current.calendarSyncCoordinator()!
+    @ObservedObject
+    private var calendarSyncCoordinator = Current.calendarSyncCoordinator
 
     func logOut() {
         Current.deauthenticationService.deauthenticate()

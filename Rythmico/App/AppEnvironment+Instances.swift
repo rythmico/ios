@@ -46,6 +46,7 @@ extension AppEnvironment {
         calendarSyncStatusProvider: CalendarSyncStatusProvider(accessProvider: EKEventStore()),
         calendarInfoFetchingService: APIService(),
 
+        sceneState: { UIApplication.shared.applicationState },
         uiAccessibility: UIAccessibility.self,
         keyboardDismisser: UIApplication.shared,
         urlOpener: UIApplication.shared,
@@ -70,10 +71,6 @@ extension AppEnvironment {
         cardSetupCredentialFetchingService: APIService(),
         cardSetupService: STPPaymentHandler.shared()
     )
-
-    func cardSetupCoordinator() -> CardSetupCoordinator {
-        CardSetupCoordinator(service: cardSetupService)
-    }
 }
 
 #if DEBUG
@@ -96,7 +93,9 @@ extension AppEnvironment {
             $0.portfolioFetchingService = fakeAPIService(result: .success(.longStub))
 
             $0.cardSetupCredentialFetchingService = fakeAPIService(result: .success(.stub))
-            $0.cardSetupService = CardSetupServiceStub(result: .success(STPSetupIntentFake()), delay: fakeAPIServicesDelay)
+            $0.cardSetupCoordinator = {
+                CardSetupCoordinator(service: CardSetupServiceStub(result: .success(STPSetupIntentFake()), delay: fakeAPIServicesDelay))
+            }
         }
     }
 }
@@ -137,6 +136,7 @@ extension AppEnvironment {
             calendarSyncStatusProvider: CalendarSyncStatusProviderDummy(),
             calendarInfoFetchingService: APIServiceDummy(),
 
+            sceneState: { .active },
             uiAccessibility: UIAccessibilityDummy.self,
             keyboardDismisser: KeyboardDismisserDummy(),
             urlOpener: URLOpenerDummy(),

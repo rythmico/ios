@@ -14,10 +14,7 @@ final class LessonPlanCancellationViewTests: XCTestCase {
         let spy = APIServiceSpy<CancelLessonPlanRequest>()
         Current.lessonPlanCancellationService = spy
 
-        let view = try XCTUnwrap(
-            LessonPlanCancellationView(lessonPlan: .davidGuitarPlanStub)
-        )
-
+        let view = LessonPlanCancellationView(lessonPlan: .davidGuitarPlanStub)
         XCTAssertView(view) { view in
             XCTAssertNil(spy.latestRequest?.lessonPlanId)
             XCTAssertNil(spy.latestRequest?.body.reason)

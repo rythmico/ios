@@ -12,8 +12,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 
     func testReadyState() throws {
-        let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
-
+        let view = RequestLessonPlanView(context: RequestLessonPlanContext())
         XCTAssertView(view) { view in
             XCTAssertNotNil(view.formView)
             XCTAssertTrue(view.swipeDownToDismissEnabled)
@@ -22,8 +21,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 
     func testLoadingState() throws {
-        let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
-
+        let view = RequestLessonPlanView(context: RequestLessonPlanContext())
         XCTAssertView(view) { view in
             view.coordinator.run(with: .stub)
 
@@ -35,8 +33,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
     func testFailureState() throws {
         Current.lessonPlanRequestService = APIServiceStub(result: .failure("Something 2"))
 
-        let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
-
+        let view = RequestLessonPlanView(context: RequestLessonPlanContext())
         XCTAssertView(view) { view in
             view.coordinator.run(with: .stub)
 
@@ -52,8 +49,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
     func testConfirmationState() throws {
         Current.lessonPlanRequestService = APIServiceStub(result: .success(.pendingJackGuitarPlanStub))
 
-        let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
-
+        let view = RequestLessonPlanView(context: RequestLessonPlanContext())
         XCTAssertView(view) { view in
             view.coordinator.run(with: .stub)
 

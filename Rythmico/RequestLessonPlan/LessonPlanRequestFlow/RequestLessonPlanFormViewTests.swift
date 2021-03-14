@@ -13,11 +13,9 @@ final class RequestLessonPlanFormViewTests: XCTestCase {
 
     func formView() throws -> (RequestLessonPlanContext, RequestLessonPlanFormView) {
         let context = RequestLessonPlanContext()
-        let view = try XCTUnwrap(
-            RequestLessonPlanFormView(
-                context: context,
-                coordinator: XCTUnwrap(Current.coordinator(for: \.lessonPlanRequestService))
-            )
+        let view = RequestLessonPlanFormView(
+            context: context,
+            requestCoordinator: Current.coordinator(for: \.lessonPlanRequestService)
         )
         return (context, view)
     }

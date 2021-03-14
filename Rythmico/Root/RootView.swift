@@ -2,8 +2,10 @@ import SwiftUI
 import FoundationSugar
 
 struct RootView: View, TestableView {
-    @StateObject var userCredentialProvider = Current.userCredentialProvider
-    @StateObject var flow = RootViewFlow()
+    @ObservedObject
+    var userCredentialProvider = Current.userCredentialProvider
+    @StateObject
+    var flow = RootViewFlow()
 
     let inspection = SelfInspection()
     var body: some View {

@@ -9,8 +9,6 @@ struct BookingApplicationDetailView: View {
     @ObservedObject
     private var state = Current.state
 
-    private let bookingApplication: BookingApplication
-
     private let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
     private let timeFormatter = Current.dateFormatter(format: .preset(time: .short))
     private let statusDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .short, precise: true)
@@ -18,15 +16,9 @@ struct BookingApplicationDetailView: View {
     @State
     private var retractionPromptSheetPresented = false
     @StateObject
-    private var retractionCoordinator: APIActivityCoordinator<BookingApplicationsRetractRequest>
+    private var retractionCoordinator = Current.coordinator(for: \.bookingApplicationRetractionService)
 
-    init?(bookingApplication: BookingApplication) {
-        guard let retractionCoordinator = Current.coordinator(for: \.bookingApplicationRetractionService) else {
-            return nil
-        }
-        self.bookingApplication = bookingApplication
-        self._retractionCoordinator = .init(wrappedValue: retractionCoordinator)
-    }
+    var bookingApplication: BookingApplication
 
     var status: String { bookingApplication.statusInfo.status.summary }
     var statusColor: Color { bookingApplication.statusInfo.status.color }

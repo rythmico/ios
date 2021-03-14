@@ -34,7 +34,7 @@ struct OnboardingView: View, TestableView {
             Current.uiAccessibility.postAnnouncement("Welcome")
         }
         .testable(self)
-        .onAppear(perform: Current.deviceUnregisterCoordinator().unregisterDevice)
+        .onAppear(perform: Current.deviceUnregisterCoordinator.unregisterDevice)
     }
 
     func authenticateWithApple() {

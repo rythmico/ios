@@ -14,10 +14,10 @@ final class ReviewRequestViewTests: XCTestCase {
         let serviceSpy = APIServiceSpy<CreateLessonPlanRequest>()
         Current.lessonPlanRequestService = serviceSpy
         let context = RequestLessonPlanContext()
-        return try (
+        return (
             serviceSpy,
             ReviewRequestView(
-                coordinator: XCTUnwrap(Current.coordinator(for: \.lessonPlanRequestService)),
+                coordinator: Current.coordinator(for: \.lessonPlanRequestService),
                 context: context,
                 instrument: .drums,
                 student: .davidStub,

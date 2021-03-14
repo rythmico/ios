@@ -62,42 +62,13 @@ extension AppEnvironment {
         }
     }
 
-    func calendarSyncCoordinator() -> CalendarSyncCoordinator? {
-        coordinator(for: \.calendarInfoFetchingService).map {
-            CalendarSyncCoordinator(
-                calendarSyncStatusProvider: calendarSyncStatusProvider,
-                calendarInfoFetchingCoordinator: $0,
-                eventEmitter: eventEmitter,
-                urlOpener: urlOpener
-            )
-        }
-    }
-
-    func coordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
+    func coordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request> {
         APIActivityCoordinator(
             userCredentialProvider: userCredentialProvider,
             deauthenticationService: deauthenticationService,
             errorHandler: apiActivityErrorHandler,
             service: self[keyPath: service]
         )
-    }
-
-    func imageLoadingCoordinator() -> ImageLoadingCoordinator {
-        ImageLoadingCoordinator(service: imageLoadingService)
-    }
-
-    func deviceRegisterCoordinator() -> DeviceRegisterCoordinator? {
-        coordinator(for: \.deviceRegisterService).map {
-            DeviceRegisterCoordinator(deviceTokenProvider: deviceTokenProvider, apiCoordinator: $0)
-        }
-    }
-
-    func deviceUnregisterCoordinator() -> DeviceUnregisterCoordinator {
-        DeviceUnregisterCoordinator(deviceTokenDeleter: deviceTokenDeleter)
-    }
-
-    var sceneState: UIApplication.State {
-        UIApplication.shared.applicationState
     }
 }
 
@@ -126,24 +97,34 @@ extension AppEnvironment {
             requestResult: (true, nil)
         )
 
-        calendarSyncStatusProvider = CalendarSyncStatusProviderStub(
-            initialStatus: .notSynced,
-            refreshedStatus: .synced
+        calendarSyncCoordinator = CalendarSyncCoordinator(
+            calendarSyncStatusProvider: CalendarSyncStatusProviderStub(
+                initialStatus: .notSynced,
+                refreshedStatus: .synced
+            ),
+            calendarInfoFetchingCoordinator: coordinator(
+                for: APIServiceStub(
+                    result: .success(.stub),
+                    delay: Self.fakeAPIServicesDelay
+                )
+            ),
+            eventEmitter: eventEmitter,
+            urlOpener: urlOpener
         )
 
-        calendarInfoFetchingService = APIServiceStub(
-            result: .success(.stub),
-            delay: Self.fakeAPIServicesDelay
-        )
-
+        sceneState = { .active }
         keyboardDismisser = UIApplication.shared
         urlOpener = UIApplication.shared
         router = Router()
 
-        imageLoadingService = ImageLoadingServiceStub(
-            result: .success(UIImage(.red)),
-            delay: Self.fakeAPIServicesDelay
-        )
+        imageLoadingCoordinator = {
+            ImageLoadingCoordinator(
+                service: ImageLoadingServiceStub(
+                    result: .success(UIImage(.red)),
+                    delay: Self.fakeAPIServicesDelay
+                )
+            )
+        }
     }
 
     mutating func useFakeDate() {
@@ -187,16 +168,20 @@ extension AppEnvironment {
         )
     }
 
-    mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
-        for coordinator: WritableKeyPath<Self, APIActivityCoordinator<R>>,
-        service: APIServiceBase<R>
-    ) {
-        self[keyPath: coordinator] = APIActivityCoordinator(
+    func coordinator<Request: AuthorizedAPIRequest>(for service: APIServiceBase<Request>) -> APIActivityCoordinator<Request> {
+        APIActivityCoordinator(
             userCredentialProvider: userCredentialProvider,
             deauthenticationService: deauthenticationService,
             errorHandler: apiActivityErrorHandler,
             service: service
         )
+    }
+
+    mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
+        for coordinator: WritableKeyPath<Self, APIActivityCoordinator<R>>,
+        service: APIServiceBase<R>
+    ) {
+        self[keyPath: coordinator] = self.coordinator(for: service)
     }
 
     mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
