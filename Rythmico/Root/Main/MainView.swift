@@ -23,18 +23,16 @@ struct MainView: View, TestableView {
     private var hasFetchedLessonPlansAtLeastOnce = false
 
     @ObservedObject
-    private var lessonPlanFetchingCoordinator: LessonsView.Coordinator
+    private var lessonPlanFetchingCoordinator = Current.lessonPlanFetchingCoordinator
     private let deviceRegisterCoordinator: DeviceRegisterCoordinator
 
     init?() {
         guard
-            let lessonPlanFetchingCoordinator = Current.sharedCoordinator(for: \.lessonPlanFetchingService),
             let deviceRegisterCoordinator = Current.deviceRegisterCoordinator()
         else {
             return nil
         }
-        self._lessonsView = .init(wrappedValue: LessonsView(coordinator: lessonPlanFetchingCoordinator))
-        self.lessonPlanFetchingCoordinator = lessonPlanFetchingCoordinator
+        self._lessonsView = .init(wrappedValue: LessonsView())
         self.deviceRegisterCoordinator = deviceRegisterCoordinator
     }
 

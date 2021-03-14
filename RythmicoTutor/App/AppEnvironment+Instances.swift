@@ -77,14 +77,14 @@ extension AppEnvironment {
         dummy.with {
             $0.setUpFake()
 
-            $0.tutorStatusFetchingService = fakeAPIService(result: .success(.registrationPendingStub))
+            $0.fakeAPIEndpoint(for: \.tutorStatusFetchingCoordinator, result: .success(.registrationPendingStub))
 
-            $0.bookingsFetchingService = fakeAPIService(result: .success(.stub))
+            $0.fakeAPIEndpoint(for: \.bookingsFetchingCoordinator, result: .success(.stub))
 
-            $0.bookingRequestFetchingService = fakeAPIService(result: .success([.stub, .longStub]))
+            $0.fakeAPIEndpoint(for: \.bookingRequestFetchingCoordinator, result: .success([.stub, .longStub]))
             $0.bookingRequestApplyingService = fakeAPIService(result: .success(.stub))
 
-            $0.bookingApplicationFetchingService = fakeAPIService(result: .success([.longStub, .stubWithAbout] + .stub))
+            $0.fakeAPIEndpoint(for: \.bookingApplicationFetchingCoordinator, result: .success([.longStub, .stubWithAbout] + .stub))
             $0.bookingApplicationRetractionService = fakeAPIService(result: .success(.stub))
         }
     }

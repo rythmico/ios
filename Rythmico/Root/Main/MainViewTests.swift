@@ -8,7 +8,7 @@ final class MainViewTests: XCTestCase {
     override func setUp() {
         Current = .dummy
         Current.userAuthenticated()
-        Current.lessonPlanFetchingService = APIServiceStub(result: .success([.pendingJackGuitarPlanStub]))
+        Current.stubAPIEndpoint(for: \.lessonPlanFetchingCoordinator, result: .success([.pendingJackGuitarPlanStub]))
     }
 
     func testDeviceRegistrationOnAppear() throws {
@@ -35,7 +35,7 @@ final class MainViewTests: XCTestCase {
     }
 
     func testAutoPresentRequestLessonFlow() throws {
-        Current.lessonPlanFetchingService = APIServiceStub(result: .success([]))
+        Current.stubAPIEndpoint(for: \.lessonPlanFetchingCoordinator, result: .success([]))
 
         let view = try XCTUnwrap(MainView())
 

@@ -62,12 +62,6 @@ extension AppEnvironment {
         }
     }
 
-    var remoteConfigCoordinator: RemoteConfigCoordinator {
-        cachedRemoteConfigCoordinator ?? RemoteConfigCoordinator(service: remoteConfig).then {
-            cachedRemoteConfigCoordinator = $0
-        }
-    }
-
     func calendarSyncCoordinator() -> CalendarSyncCoordinator? {
         coordinator(for: \.calendarInfoFetchingService).map {
             CalendarSyncCoordinator(
@@ -79,44 +73,11 @@ extension AppEnvironment {
         }
     }
 
-    func sharedCoordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
-        // Return nil if logged out.
-        guard let userCredential = userCredentialProvider.userCredential else {
-            latestUserCredential = nil
-            coordinatorMap = [:]
-            return nil
-        }
-
-        // Check if user changed and reset cache.
-        if latestUserCredential != nil, userCredential !== latestUserCredential {
-            latestUserCredential = nil
-            coordinatorMap = [:]
-        }
-
-        // Update reference to latest provider.
-        latestUserCredential = userCredential
-
-        // Return cached coordinator if it exists.
-        if let coordinator = coordinatorMap[service] as? APIActivityCoordinator<Request> {
-            return coordinator
-        }
-
-        // Initialize, cache and return new coordinator if not.
-        let coordinator = APIActivityCoordinator(
-            userCredentialProvider: userCredentialProvider,
-            deauthenticationService: deauthenticationService,
-            errorHandler: apiErrorHandler,
-            service: self[keyPath: service]
-        )
-        coordinatorMap[service] = coordinator
-        return coordinator
-    }
-
     func coordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
         APIActivityCoordinator(
             userCredentialProvider: userCredentialProvider,
             deauthenticationService: deauthenticationService,
-            errorHandler: apiErrorHandler,
+            errorHandler: apiActivityErrorHandler,
             service: self[keyPath: service]
         )
     }
@@ -139,11 +100,6 @@ extension AppEnvironment {
         UIApplication.shared.applicationState
     }
 }
-
-private var cachedRemoteConfigCoordinator: RemoteConfigCoordinator?
-
-private var latestUserCredential: UserCredentialProtocol?
-private var coordinatorMap: [AnyKeyPath: Any] = [:]
 
 #if DEBUG
 extension AppEnvironment {
@@ -231,11 +187,40 @@ extension AppEnvironment {
         )
     }
 
-    static var fakeAPIServicesDelay: TimeInterval? = 2
+    mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
+        for coordinator: WritableKeyPath<Self, APIActivityCoordinator<R>>,
+        service: APIServiceBase<R>
+    ) {
+        self[keyPath: coordinator] = APIActivityCoordinator(
+            userCredentialProvider: userCredentialProvider,
+            deauthenticationService: deauthenticationService,
+            errorHandler: apiActivityErrorHandler,
+            service: service
+        )
+    }
+
+    mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
+        for coordinator: WritableKeyPath<Self, APIActivityCoordinator<R>>,
+        result: Result<R.Response, Error>,
+        delay: TimeInterval? = nil
+    ) {
+        stubAPIEndpoint(for: coordinator, service: APIServiceStub(result: result, delay: delay))
+    }
+
+    mutating func fakeAPIEndpoint<R: AuthorizedAPIRequest>(
+        for coordinator: WritableKeyPath<Self, APIActivityCoordinator<R>>,
+        result: Result<R.Response, Error>,
+        delay: TimeInterval? = Self.fakeAPIServicesDelay
+    ) {
+        stubAPIEndpoint(for: coordinator, result: result, delay: delay)
+    }
+
+    @available(*, deprecated, message: "Will be replaced by 'fakeAPIEndpoint(for:result:delay:)'")
     static func fakeAPIService<R: AuthorizedAPIRequest>(result: Result<R.Response, Error>) -> APIServiceStub<R> {
         APIServiceStub(result: result, delay: fakeAPIServicesDelay)
     }
 
+    internal static var fakeAPIServicesDelay: TimeInterval? = 2
     private static let fakeReferenceDate = Date()
     private static var fakeUserCredential: UserCredentialProtocol {
         UserCredentialStub(result: .success("ACCESS_TOKEN"))

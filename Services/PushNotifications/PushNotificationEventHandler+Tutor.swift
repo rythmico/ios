@@ -4,9 +4,9 @@ final class PushNotificationEventHandler: PushNotificationEventHandlerProtocol {
     func handle(_ event: PushNotificationEvent) {
         switch event {
         case .bookingRequestsChanged:
-            Current.sharedCoordinator(for: \.bookingRequestFetchingService)?.reset()
+            Current.bookingRequestFetchingCoordinator.reset()
         case .bookingApplicationsChanged:
-            Current.sharedCoordinator(for: \.bookingApplicationFetchingService)?.reset()
+            Current.bookingApplicationFetchingCoordinator.reset()
         }
     }
 }

@@ -24,7 +24,7 @@ final class MainViewTests: XCTestCase {
     }
 
     func testPushNotificationPromptOnAppear() throws {
-        Current.bookingsFetchingService = APIServiceStub(result: .success(.stub))
+        Current.stubAPIEndpoint(for: \.bookingsFetchingCoordinator, result: .success(.stub))
         Current.pushNotificationAuthorization(
             initialStatus: .notDetermined,
             requestResult: (true, nil)

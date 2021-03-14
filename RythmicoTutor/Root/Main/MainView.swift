@@ -15,17 +15,15 @@ struct MainView: View, TestableView {
     private var state = Current.state
 
     @ObservedObject
-    private var bookingFetchingCoordinator: BookingsView.Coordinator
+    private var bookingFetchingCoordinator = Current.bookingsFetchingCoordinator
     private let deviceRegisterCoordinator: DeviceRegisterCoordinator
 
     init?() {
         guard
-            let bookingFetchingCoordinator = Current.sharedCoordinator(for: \.bookingsFetchingService),
             let deviceRegisterCoordinator = Current.deviceRegisterCoordinator()
         else {
             return nil
         }
-        self.bookingFetchingCoordinator = bookingFetchingCoordinator
         self.deviceRegisterCoordinator = deviceRegisterCoordinator
     }
 

@@ -7,18 +7,11 @@ struct BookingRequestsView: View {
     @ObservedObject
     private var state = Current.state
     @ObservedObject
-    private var coordinator: APIActivityCoordinator<BookingRequestsGetRequest>
+    private var coordinator = Current.bookingRequestFetchingCoordinator
     @ObservedObject
     private var repository = Current.bookingRequestRepository
     @ObservedObject
     private var applicationRepository = Current.bookingApplicationRepository
-
-    init?() {
-        guard let coordinator = Current.sharedCoordinator(for: \.bookingRequestFetchingService) else {
-            return nil
-        }
-        self.coordinator = coordinator
-    }
 
     var isLoading: Bool { coordinator.state.isLoading }
     var error: Error? { coordinator.state.failureValue }

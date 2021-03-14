@@ -3,14 +3,12 @@ import MultiModal
 import Combine
 
 struct BookingsView: View {
-    typealias Coordinator = APIActivityCoordinator<BookingsGetRequest>
-
     @Environment(\.scenePhase)
     private var scenePhase
     @ObservedObject
     private var state = Current.state
     @ObservedObject
-    private var coordinator: Coordinator
+    private var coordinator = Current.bookingsFetchingCoordinator
     @ObservedObject
     private var repository = Current.bookingsRepository
     @ObservedObject
@@ -19,13 +17,6 @@ struct BookingsView: View {
     var isLoading: Bool { coordinator.state.isLoading }
     var error: Error? { coordinator.state.failureValue }
     var bookings: [Booking] { repository.items }
-
-    init?() {
-        guard let coordinator = Current.sharedCoordinator(for: \.bookingsFetchingService) else {
-            return nil
-        }
-        self.coordinator = coordinator
-    }
 
     var body: some View {
         LessonsCollectionView(currentBookings: bookings)

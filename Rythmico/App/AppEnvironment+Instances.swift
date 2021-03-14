@@ -71,10 +71,6 @@ extension AppEnvironment {
         cardSetupService: STPPaymentHandler.shared()
     )
 
-    var apiErrorHandler: APIActivityErrorHandlerProtocol {
-        APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator)
-    }
-
     func cardSetupCoordinator() -> CardSetupCoordinator {
         CardSetupCoordinator(service: cardSetupService)
     }
@@ -89,7 +85,7 @@ extension AppEnvironment {
             $0.instrumentSelectionListProvider = InstrumentSelectionListProviderStub(instruments: Instrument.allCases)
             $0.addressSearchService = fakeAPIService(result: .success(.stub))
 
-            $0.lessonPlanFetchingService = fakeAPIService(result: .success(.stub))
+            $0.fakeAPIEndpoint(for: \.lessonPlanFetchingCoordinator, result: .success(.stub))
             $0.lessonPlanRequestService = fakeAPIService(result: .success(.davidGuitarPlanStub))
             $0.lessonPlanCancellationService = fakeAPIService(result: .success(.cancelledJackGuitarPlanStub))
             $0.lessonPlanGetCheckoutService = fakeAPIService(result: .success(.stub))

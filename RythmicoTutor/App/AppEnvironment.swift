@@ -3,6 +3,7 @@ import Foundation
 struct AppEnvironment {
     var state: AppState
 
+    var remoteConfigCoordinator: RemoteConfigCoordinator
     var remoteConfig: RemoteConfigServiceProtocol
 
     var date: () -> Date
@@ -25,6 +26,8 @@ struct AppEnvironment {
     var analytics: AnalyticsCoordinator
     var analyticsService: AnalyticsServiceProtocol
 
+    var apiActivityErrorHandler: APIActivityErrorHandlerProtocol
+
     var deviceTokenProvider: DeviceTokenProvider
     var deviceRegisterService: APIServiceBase<AddDeviceRequest>
     var deviceTokenDeleter: DeviceTokenDeleter
@@ -42,17 +45,17 @@ struct AppEnvironment {
 
     var imageLoadingService: ImageLoadingServiceProtocol
 
-    var tutorStatusFetchingService: APIServiceBase<GetTutorStatusRequest>
+    var tutorStatusFetchingCoordinator: APIActivityCoordinator<GetTutorStatusRequest>
 
     var bookingsRepository: Repository<Booking>
-    var bookingsFetchingService: APIServiceBase<BookingsGetRequest>
+    var bookingsFetchingCoordinator: APIActivityCoordinator<BookingsGetRequest>
 
     var bookingRequestRepository: Repository<BookingRequest>
-    var bookingRequestFetchingService: APIServiceBase<BookingRequestsGetRequest>
+    var bookingRequestFetchingCoordinator: APIActivityCoordinator<BookingRequestsGetRequest>
     var bookingRequestApplyingService: APIServiceBase<BookingRequestApplyRequest>
 
     var bookingApplicationRepository: Repository<BookingApplication>
-    var bookingApplicationFetchingService: APIServiceBase<BookingApplicationsGetRequest>
+    var bookingApplicationFetchingCoordinator: APIActivityCoordinator<BookingApplicationsGetRequest>
     var bookingApplicationRetractionService: APIServiceBase<BookingApplicationsRetractRequest>
 
     init(
@@ -111,6 +114,8 @@ struct AppEnvironment {
     ) {
         self.state = state
 
+        let remoteConfigCoordinator = RemoteConfigCoordinator(service: remoteConfig)
+        self.remoteConfigCoordinator = remoteConfigCoordinator
         self.remoteConfig = remoteConfig
 
         self.date = date
@@ -133,6 +138,18 @@ struct AppEnvironment {
         self.analytics = AnalyticsCoordinator(service: analyticsService, userCredentialProvider: userCredentialProvider)
         self.analyticsService = analyticsService
 
+        let apiActivityErrorHandler = APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator, settings: settings)
+        self.apiActivityErrorHandler = apiActivityErrorHandler
+
+        func coordinator<R: AuthorizedAPIRequest>(for service: APIServiceBase<R>) -> APIActivityCoordinator<R> {
+            APIActivityCoordinator(
+                userCredentialProvider: userCredentialProvider,
+                deauthenticationService: deauthenticationService,
+                errorHandler: apiActivityErrorHandler,
+                service: service
+            )
+        }
+
         self.deviceTokenProvider = deviceTokenProvider
         self.deviceRegisterService = deviceRegisterService
         self.deviceTokenDeleter = deviceTokenDeleter
@@ -150,17 +167,17 @@ struct AppEnvironment {
 
         self.imageLoadingService = imageLoadingService
 
-        self.tutorStatusFetchingService = tutorStatusFetchingService
+        self.tutorStatusFetchingCoordinator = coordinator(for: tutorStatusFetchingService)
 
         self.bookingsRepository = bookingsRepository
-        self.bookingsFetchingService = bookingsFetchingService
+        self.bookingsFetchingCoordinator = coordinator(for: bookingsFetchingService)
 
         self.bookingRequestRepository = bookingRequestRepository
-        self.bookingRequestFetchingService = bookingRequestFetchingService
+        self.bookingRequestFetchingCoordinator = coordinator(for: bookingRequestFetchingService)
         self.bookingRequestApplyingService = bookingRequestApplyingService
 
         self.bookingApplicationRepository = bookingApplicationRepository
-        self.bookingApplicationFetchingService = bookingApplicationFetchingService
+        self.bookingApplicationFetchingCoordinator = coordinator(for: bookingApplicationFetchingService)
         self.bookingApplicationRetractionService = bookingApplicationRetractionService
     }
 }

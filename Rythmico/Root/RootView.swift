@@ -1,28 +1,23 @@
 import SwiftUI
 import FoundationSugar
 
-extension RootView {
-    enum UserState {
-        case unauthenticated(OnboardingView)
-        case authenticated(MainView)
-    }
-}
-
 struct RootView: View, TestableView {
-    @StateObject
-    private var userCredentialProvider = Current.userCredentialProvider
-
-    var state: UserState {
-        MainView().flatMap(UserState.authenticated) ?? .unauthenticated(OnboardingView())
-    }
+    @StateObject var userCredentialProvider = Current.userCredentialProvider
+    @StateObject var flow = RootViewFlow()
 
     let inspection = SelfInspection()
     var body: some View {
-        RootViewContent(state: state)
-            .testable(self)
-            .animation(.rythmicoSpring(duration: .durationMedium), value: state.isAuthenticated)
-            .onReceive(userCredentialProvider.$userCredential, perform: onUserCredentialChanged)
-            .onAppear(perform: handleStateChanges)
+        FlowView(flow: flow) {
+            switch $0 {
+            case .onboarding:
+                OnboardingView()
+            case .mainView:
+                MainView()
+            }
+        }
+        .testable(self)
+        .onReceive(userCredentialProvider.$userCredential, perform: onUserCredentialChanged)
+        .onAppear(perform: handleStateChanges)
     }
 
     private func handleStateChanges() {
@@ -53,17 +48,6 @@ struct RootView: View, TestableView {
                 Current.lessonPlanRepository.reset()
                 Current.state.reset()
             }
-        }
-    }
-}
-
-struct RootViewContent: View {
-    var state: RootView.UserState
-
-    var body: some View {
-        ZStack {
-            state.unauthenticatedValue.zIndex(1).transition(.move(edge: .leading))
-            state.authenticatedValue.zIndex(2).transition(.move(edge: .trailing))
         }
     }
 }

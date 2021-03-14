@@ -3,6 +3,7 @@ import Foundation
 struct AppEnvironment {
     var state: AppState
 
+    var remoteConfigCoordinator: RemoteConfigCoordinator
     var remoteConfig: RemoteConfigServiceProtocol
 
     var date: () -> Date
@@ -25,6 +26,8 @@ struct AppEnvironment {
     var analytics: AnalyticsCoordinator
     var analyticsService: AnalyticsServiceProtocol
 
+    var apiActivityErrorHandler: APIActivityErrorHandlerProtocol
+
     var deviceTokenProvider: DeviceTokenProvider
     var deviceRegisterService: APIServiceBase<AddDeviceRequest>
     var deviceTokenDeleter: DeviceTokenDeleter
@@ -45,7 +48,7 @@ struct AppEnvironment {
     var instrumentSelectionListProvider: InstrumentSelectionListProviderProtocol
     var addressSearchService: APIServiceBase<AddressSearchRequest>
 
-    var lessonPlanFetchingService: APIServiceBase<GetLessonPlansRequest>
+    var lessonPlanFetchingCoordinator: APIActivityCoordinator<GetLessonPlansRequest>
     var lessonPlanRequestService: APIServiceBase<CreateLessonPlanRequest>
     var lessonPlanCancellationService: APIServiceBase<CancelLessonPlanRequest>
     var lessonPlanGetCheckoutService: APIServiceBase<GetLessonPlanCheckoutRequest>
@@ -119,6 +122,8 @@ struct AppEnvironment {
     ) {
         self.state = state
 
+        let remoteConfigCoordinator = RemoteConfigCoordinator(service: remoteConfig)
+        self.remoteConfigCoordinator = remoteConfigCoordinator
         self.remoteConfig = remoteConfig
 
         self.date = date
@@ -141,6 +146,18 @@ struct AppEnvironment {
         self.analytics = AnalyticsCoordinator(service: analyticsService, userCredentialProvider: userCredentialProvider)
         self.analyticsService = analyticsService
 
+        let apiActivityErrorHandler = APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator)
+        self.apiActivityErrorHandler = apiActivityErrorHandler
+
+        func coordinator<R: AuthorizedAPIRequest>(for service: APIServiceBase<R>) -> APIActivityCoordinator<R> {
+            APIActivityCoordinator(
+                userCredentialProvider: userCredentialProvider,
+                deauthenticationService: deauthenticationService,
+                errorHandler: apiActivityErrorHandler,
+                service: service
+            )
+        }
+
         self.deviceTokenProvider = deviceTokenProvider
         self.deviceRegisterService = deviceRegisterService
         self.deviceTokenDeleter = deviceTokenDeleter
@@ -161,7 +178,7 @@ struct AppEnvironment {
         self.instrumentSelectionListProvider = instrumentSelectionListProvider
         self.addressSearchService = addressSearchService
 
-        self.lessonPlanFetchingService = lessonPlanFetchingService
+        self.lessonPlanFetchingCoordinator = coordinator(for: lessonPlanFetchingService)
         self.lessonPlanRequestService = lessonPlanRequestService
         self.lessonPlanCancellationService = lessonPlanCancellationService
         self.lessonPlanGetCheckoutService = lessonPlanGetCheckoutService
