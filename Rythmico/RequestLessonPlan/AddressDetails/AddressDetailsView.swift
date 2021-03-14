@@ -151,7 +151,7 @@ struct AddressDetailsViewPreview: PreviewProvider {
             student: .davidStub,
             instrument: .guitar,
             state: state,
-            coordinator: Current.coordinator(for: \.addressSearchService),
+            coordinator: Current.addressSearchCoordinator(),
             context: RequestLessonPlanContext()
         )
     }

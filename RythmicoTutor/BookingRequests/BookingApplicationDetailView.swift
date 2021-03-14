@@ -16,7 +16,7 @@ struct BookingApplicationDetailView: View {
     @State
     private var retractionPromptSheetPresented = false
     @StateObject
-    private var retractionCoordinator = Current.coordinator(for: \.bookingApplicationRetractionService)
+    private var retractionCoordinator = Current.bookingApplicationRetractionCoordinator()
 
     var bookingApplication: BookingApplication
 

@@ -8,7 +8,7 @@ struct LessonPlanCancellationView: View, TestableView {
     @State
     private var isCancellationIntended = false
     @StateObject
-    private var coordinator = Current.coordinator(for: \.lessonPlanCancellationService)
+    private var coordinator = Current.lessonPlanCancellationCoordinator()
 
     var lessonPlan: LessonPlan
 

@@ -80,21 +80,21 @@ extension AppEnvironment {
             $0.setUpFake()
 
             $0.instrumentSelectionListProvider = InstrumentSelectionListProviderStub(instruments: Instrument.allCases)
-            $0.addressSearchService = fakeAPIService(result: .success(.stub))
+            $0.fakeAPIEndpoint(for: \.addressSearchCoordinator, result: .success(.stub))
 
             $0.fakeAPIEndpoint(for: \.lessonPlanFetchingCoordinator, result: .success(.stub))
-            $0.lessonPlanRequestService = fakeAPIService(result: .success(.davidGuitarPlanStub))
-            $0.lessonPlanCancellationService = fakeAPIService(result: .success(.cancelledJackGuitarPlanStub))
-            $0.lessonPlanGetCheckoutService = fakeAPIService(result: .success(.stub))
-            $0.lessonPlanCompleteCheckoutService = fakeAPIService(result: .success(.scheduledJackGuitarPlanStub))
+            $0.fakeAPIEndpoint(for: \.lessonPlanRequestCoordinator, result: .success(.davidGuitarPlanStub))
+            $0.fakeAPIEndpoint(for: \.lessonPlanCancellationCoordinator, result: .success(.cancelledJackGuitarPlanStub))
+            $0.fakeAPIEndpoint(for: \.lessonPlanGetCheckoutCoordinator, result: .success(.stub))
+            $0.fakeAPIEndpoint(for: \.lessonPlanCompleteCheckoutCoordinator, result: .success(.scheduledJackGuitarPlanStub))
 
-            $0.lessonSkippingService = fakeAPIService(result: .success(.scheduledSkippedJackGuitarPlanStub))
+            $0.fakeAPIEndpoint(for: \.lessonSkippingCoordinator, result: .success(.scheduledSkippedJackGuitarPlanStub))
 
-            $0.portfolioFetchingService = fakeAPIService(result: .success(.longStub))
+            $0.fakeAPIEndpoint(for: \.portfolioFetchingCoordinator, result: .success(.longStub))
 
-            $0.cardSetupCredentialFetchingService = fakeAPIService(result: .success(.stub))
+            $0.fakeAPIEndpoint(for: \.cardSetupCredentialFetchingCoordinator, result: .success(.stub))
             $0.cardSetupCoordinator = {
-                CardSetupCoordinator(service: CardSetupServiceStub(result: .success(STPSetupIntentFake()), delay: fakeAPIServicesDelay))
+                CardSetupCoordinator(service: CardSetupServiceStub(result: .success(STPSetupIntentFake()), delay: fakeAPIEndpointDelay))
             }
         }
     }

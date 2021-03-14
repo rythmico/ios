@@ -4,7 +4,7 @@ struct BookingRequestApplyView: View {
     @Environment(\.presentationMode)
     private var presentationMode
     @StateObject
-    private var coordinator = Current.coordinator(for: \.bookingRequestApplyingService)
+    private var coordinator = Current.bookingRequestApplyingCoordinator()
 
     var booking: BookingRequest
 

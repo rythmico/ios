@@ -21,7 +21,8 @@ struct RequestLessonPlanFormView: View, TestableView {
     @ObservedObject
     var context: RequestLessonPlanContext
     var requestCoordinator: RequestCoordinator
-    private let addressSearchCoordinator = Current.coordinator(for: \.addressSearchService)
+    @StateObject
+    private var addressSearchCoordinator = Current.addressSearchCoordinator()
 
     var shouldShowBackButton: Bool {
         !context.currentStep.isInstrumentSelection

@@ -45,20 +45,20 @@ struct AppEnvironment {
     var imageLoadingCoordinator: () -> ImageLoadingCoordinator
 
     var instrumentSelectionListProvider: InstrumentSelectionListProviderProtocol
-    var addressSearchService: APIServiceBase<AddressSearchRequest>
+    var addressSearchCoordinator: () -> APIActivityCoordinator<AddressSearchRequest>
 
     var lessonPlanFetchingCoordinator: APIActivityCoordinator<GetLessonPlansRequest>
-    var lessonPlanRequestService: APIServiceBase<CreateLessonPlanRequest>
-    var lessonPlanCancellationService: APIServiceBase<CancelLessonPlanRequest>
-    var lessonPlanGetCheckoutService: APIServiceBase<GetLessonPlanCheckoutRequest>
-    var lessonPlanCompleteCheckoutService: APIServiceBase<CompleteLessonPlanCheckoutRequest>
+    var lessonPlanRequestCoordinator: () -> APIActivityCoordinator<CreateLessonPlanRequest>
+    var lessonPlanCancellationCoordinator: () -> APIActivityCoordinator<CancelLessonPlanRequest>
+    var lessonPlanGetCheckoutCoordinator: () -> APIActivityCoordinator<GetLessonPlanCheckoutRequest>
+    var lessonPlanCompleteCheckoutCoordinator: () -> APIActivityCoordinator<CompleteLessonPlanCheckoutRequest>
     var lessonPlanRepository: Repository<LessonPlan>
 
-    var lessonSkippingService: APIServiceBase<SkipLessonRequest>
+    var lessonSkippingCoordinator: () -> APIActivityCoordinator<SkipLessonRequest>
 
-    var portfolioFetchingService: APIServiceBase<GetPortfolioRequest>
+    var portfolioFetchingCoordinator: () -> APIActivityCoordinator<GetPortfolioRequest>
 
-    var cardSetupCredentialFetchingService: APIServiceBase<GetCardSetupCredentialRequest>
+    var cardSetupCredentialFetchingCoordinator: () -> APIActivityCoordinator<GetCardSetupCredentialRequest>
     var cardSetupCoordinator: () -> CardSetupCoordinator
 
     init(
@@ -180,20 +180,20 @@ struct AppEnvironment {
         self.imageLoadingCoordinator = { ImageLoadingCoordinator(service: imageLoadingService) }
 
         self.instrumentSelectionListProvider = instrumentSelectionListProvider
-        self.addressSearchService = addressSearchService
+        self.addressSearchCoordinator = { coordinator(for: addressSearchService) }
 
         self.lessonPlanFetchingCoordinator = coordinator(for: lessonPlanFetchingService)
-        self.lessonPlanRequestService = lessonPlanRequestService
-        self.lessonPlanCancellationService = lessonPlanCancellationService
-        self.lessonPlanGetCheckoutService = lessonPlanGetCheckoutService
-        self.lessonPlanCompleteCheckoutService = lessonPlanCompleteCheckoutService
+        self.lessonPlanRequestCoordinator = { coordinator(for: lessonPlanRequestService) }
+        self.lessonPlanCancellationCoordinator = { coordinator(for: lessonPlanCancellationService) }
+        self.lessonPlanGetCheckoutCoordinator = { coordinator(for: lessonPlanGetCheckoutService) }
+        self.lessonPlanCompleteCheckoutCoordinator = { coordinator(for: lessonPlanCompleteCheckoutService) }
         self.lessonPlanRepository = lessonPlanRepository
 
-        self.lessonSkippingService = lessonSkippingService
+        self.lessonSkippingCoordinator = { coordinator(for: lessonSkippingService) }
 
-        self.portfolioFetchingService = portfolioFetchingService
+        self.portfolioFetchingCoordinator = { coordinator(for: portfolioFetchingService) }
 
-        self.cardSetupCredentialFetchingService = cardSetupCredentialFetchingService
+        self.cardSetupCredentialFetchingCoordinator = { coordinator(for: cardSetupCredentialFetchingService) }
         self.cardSetupCoordinator = { CardSetupCoordinator(service: cardSetupService) }
     }
 }

@@ -61,22 +61,13 @@ extension AppEnvironment {
             $0.dateTimeStyle = precise ? .numeric : .named
         }
     }
-
-    func coordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request> {
-        APIActivityCoordinator(
-            userCredentialProvider: userCredentialProvider,
-            deauthenticationService: deauthenticationService,
-            errorHandler: apiActivityErrorHandler,
-            service: self[keyPath: service]
-        )
-    }
 }
 
 #if DEBUG
 extension AppEnvironment {
     mutating func setUpFake() {
         remoteConfig = RemoteConfigStub(
-            fetchingDelay: Self.fakeAPIServicesDelay,
+            fetchingDelay: Self.fakeAPIEndpointDelay,
             appUpdateRequired: false
         )
 
@@ -105,7 +96,7 @@ extension AppEnvironment {
             calendarInfoFetchingCoordinator: coordinator(
                 for: APIServiceStub(
                     result: .success(.stub),
-                    delay: Self.fakeAPIServicesDelay
+                    delay: Self.fakeAPIEndpointDelay
                 )
             ),
             eventEmitter: eventEmitter,
@@ -121,7 +112,7 @@ extension AppEnvironment {
             ImageLoadingCoordinator(
                 service: ImageLoadingServiceStub(
                     result: .success(UIImage(.red)),
-                    delay: Self.fakeAPIServicesDelay
+                    delay: Self.fakeAPIEndpointDelay
                 )
             )
         }
@@ -144,14 +135,14 @@ extension AppEnvironment {
     mutating func shouldSucceedAuthentication() {
         authenticationService = AuthenticationServiceStub(
             result: .success(Self.fakeUserCredential),
-            delay: Self.fakeAPIServicesDelay
+            delay: Self.fakeAPIEndpointDelay
         )
     }
 
     mutating func shouldFailAuthentication() {
         authenticationService = AuthenticationServiceStub(
             result: .failure(Self.fakeAuthenticationError),
-            delay: Self.fakeAPIServicesDelay
+            delay: Self.fakeAPIEndpointDelay
         )
     }
 
@@ -178,34 +169,53 @@ extension AppEnvironment {
     }
 
     mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
-        for coordinator: WritableKeyPath<Self, APIActivityCoordinator<R>>,
+        for coordinatorKeyPath: WritableKeyPath<Self, APIActivityCoordinator<R>>,
         service: APIServiceBase<R>
     ) {
-        self[keyPath: coordinator] = self.coordinator(for: service)
+        self[keyPath: coordinatorKeyPath] = coordinator(for: service)
     }
 
     mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
-        for coordinator: WritableKeyPath<Self, APIActivityCoordinator<R>>,
+        for coordinatorKeyPath: WritableKeyPath<Self, APIActivityCoordinator<R>>,
         result: Result<R.Response, Error>,
         delay: TimeInterval? = nil
     ) {
-        stubAPIEndpoint(for: coordinator, service: APIServiceStub(result: result, delay: delay))
+        stubAPIEndpoint(for: coordinatorKeyPath, service: APIServiceStub(result: result, delay: delay))
+    }
+
+    mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
+        for coordinatorKeyPath: WritableKeyPath<Self, () -> APIActivityCoordinator<R>>,
+        service: APIServiceBase<R>
+    ) {
+        let coordinator = coordinator(for: service)
+        self[keyPath: coordinatorKeyPath] = { coordinator }
+    }
+
+    mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
+        for coordinatorKeyPath: WritableKeyPath<Self, () -> APIActivityCoordinator<R>>,
+        result: Result<R.Response, Error>,
+        delay: TimeInterval? = nil
+    ) {
+        stubAPIEndpoint(for: coordinatorKeyPath, service: APIServiceStub(result: result, delay: delay))
     }
 
     mutating func fakeAPIEndpoint<R: AuthorizedAPIRequest>(
-        for coordinator: WritableKeyPath<Self, APIActivityCoordinator<R>>,
+        for coordinatorKeyPath: WritableKeyPath<Self, APIActivityCoordinator<R>>,
         result: Result<R.Response, Error>,
-        delay: TimeInterval? = Self.fakeAPIServicesDelay
+        delay: TimeInterval? = Self.fakeAPIEndpointDelay
     ) {
-        stubAPIEndpoint(for: coordinator, result: result, delay: delay)
+        stubAPIEndpoint(for: coordinatorKeyPath, result: result, delay: delay)
     }
 
-    @available(*, deprecated, message: "Will be replaced by 'fakeAPIEndpoint(for:result:delay:)'")
-    static func fakeAPIService<R: AuthorizedAPIRequest>(result: Result<R.Response, Error>) -> APIServiceStub<R> {
-        APIServiceStub(result: result, delay: fakeAPIServicesDelay)
+    mutating func fakeAPIEndpoint<R: AuthorizedAPIRequest>(
+        for coordinatorKeyPath: WritableKeyPath<Self, () -> APIActivityCoordinator<R>>,
+        result: Result<R.Response, Error>,
+        delay: TimeInterval? = Self.fakeAPIEndpointDelay
+    ) {
+        stubAPIEndpoint(for: coordinatorKeyPath, result: result, delay: delay)
     }
 
-    internal static var fakeAPIServicesDelay: TimeInterval? = 2
+    internal static var fakeAPIEndpointDelay: TimeInterval? = 2
     private static let fakeReferenceDate = Date()
     private static var fakeUserCredential: UserCredentialProtocol {
         UserCredentialStub(result: .success("ACCESS_TOKEN"))

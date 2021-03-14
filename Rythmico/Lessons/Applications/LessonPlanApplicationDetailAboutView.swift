@@ -36,7 +36,7 @@ struct LessonPlanApplicationDetailAboutView: View {
 struct LessonPlanApplicationDetailAboutView_Previews: PreviewProvider {
     static var previews: some View {
         LessonPlanApplicationDetailAboutView(
-            coordinator: Current.coordinator(for: \.portfolioFetchingService),
+            coordinator: Current.portfolioFetchingCoordinator(),
             tutor: .charlotteStub
         )
     }

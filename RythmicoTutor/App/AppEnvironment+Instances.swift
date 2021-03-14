@@ -83,10 +83,10 @@ extension AppEnvironment {
             $0.fakeAPIEndpoint(for: \.bookingsFetchingCoordinator, result: .success(.stub))
 
             $0.fakeAPIEndpoint(for: \.bookingRequestFetchingCoordinator, result: .success([.stub, .longStub]))
-            $0.bookingRequestApplyingService = fakeAPIService(result: .success(.stub))
+            $0.fakeAPIEndpoint(for: \.bookingRequestApplyingCoordinator, result: .success(.stub))
 
             $0.fakeAPIEndpoint(for: \.bookingApplicationFetchingCoordinator, result: .success([.longStub, .stubWithAbout] + .stub))
-            $0.bookingApplicationRetractionService = fakeAPIService(result: .success(.stub))
+            $0.fakeAPIEndpoint(for: \.bookingApplicationRetractionCoordinator, result: .success(.stub))
         }
     }
 }

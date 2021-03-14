@@ -14,7 +14,7 @@ struct RequestLessonPlanView: View, TestableView {
 
     init(context: RequestLessonPlanContext) {
         self._context = .init(wrappedValue: context)
-        let coordinator = Current.coordinator(for: \.lessonPlanRequestService)
+        let coordinator = Current.lessonPlanRequestCoordinator()
         self._coordinator = .init(wrappedValue: coordinator)
         self.__formView = .init(wrappedValue: RequestLessonPlanFormView(context: context, requestCoordinator: coordinator))
     }

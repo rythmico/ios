@@ -168,7 +168,7 @@ struct ReviewRequestView: View, TestableView {
 struct ReviewRequestView_Previews: PreviewProvider {
     static var previews: some View {
         ReviewRequestView(
-            coordinator: Current.coordinator(for: \.lessonPlanRequestService),
+            coordinator: Current.lessonPlanRequestCoordinator(),
             context: RequestLessonPlanContext(),
             instrument: .guitar,
             student: .davidStub,

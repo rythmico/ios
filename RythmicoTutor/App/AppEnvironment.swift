@@ -51,11 +51,11 @@ struct AppEnvironment {
 
     var bookingRequestRepository: Repository<BookingRequest>
     var bookingRequestFetchingCoordinator: APIActivityCoordinator<BookingRequestsGetRequest>
-    var bookingRequestApplyingService: APIServiceBase<BookingRequestApplyRequest>
+    var bookingRequestApplyingCoordinator: () -> APIActivityCoordinator<BookingRequestApplyRequest>
 
     var bookingApplicationRepository: Repository<BookingApplication>
     var bookingApplicationFetchingCoordinator: APIActivityCoordinator<BookingApplicationsGetRequest>
-    var bookingApplicationRetractionService: APIServiceBase<BookingApplicationsRetractRequest>
+    var bookingApplicationRetractionCoordinator: () -> APIActivityCoordinator<BookingApplicationsRetractRequest>
 
     init(
         state: AppState,
@@ -178,10 +178,10 @@ struct AppEnvironment {
 
         self.bookingRequestRepository = bookingRequestRepository
         self.bookingRequestFetchingCoordinator = coordinator(for: bookingRequestFetchingService)
-        self.bookingRequestApplyingService = bookingRequestApplyingService
+        self.bookingRequestApplyingCoordinator = { coordinator(for: bookingRequestApplyingService) }
 
         self.bookingApplicationRepository = bookingApplicationRepository
         self.bookingApplicationFetchingCoordinator = coordinator(for: bookingApplicationFetchingService)
-        self.bookingApplicationRetractionService = bookingApplicationRetractionService
+        self.bookingApplicationRetractionCoordinator = { coordinator(for: bookingApplicationRetractionService) }
     }
 }
