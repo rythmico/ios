@@ -1764,16 +1764,9 @@
 			children = (
 				D54A561F23CE92AE00BC8485 /* AuthenticationError.swift */,
 				D50E4BC423C7AAA900B6FCB1 /* AuthenticationService.swift */,
+				D5B13B2D23D125E6006CBC46 /* AuthenticationServiceDoubles.swift */,
 				D535547B23DF4D30005A20EB /* DeauthenticationService.swift */,
 				D535554223E1DFEC005A20EB /* DeauthenticationServiceDoubles.swift */,
-				D5B13B2D23D125E6006CBC46 /* AuthenticationServiceDoubles.swift */,
-				D5B13B2B23D12520006CBC46 /* UserCredential.swift */,
-				D5B13B2F23D1265F006CBC46 /* UserCredentialDoubles.swift */,
-				D5A32DBC23D139C000F3903C /* UserCredentialProvider.swift */,
-				D535554023E1DF8B005A20EB /* UserCredentialProviderDoubles.swift */,
-				D5BA170723D66AF500954D50 /* UserCredentialProviderTests.swift */,
-				D5BA170923D671FD00954D50 /* UserCredentialEmitter.swift */,
-				D5BA170B23D6725B00954D50 /* UserCredentialEmitterDoubles.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -1793,6 +1786,7 @@
 				D535547423DF33AA005A20EB /* Authentication */,
 				D54A560D23CD36C500BC8485 /* Authorization */,
 				D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */,
+				D5E6A3ED25FE65A300F74880 /* UserCredential */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -2089,6 +2083,20 @@
 				D5E58F38256B034A00EB52ED /* BookingDoubles.swift */,
 			);
 			path = Booking;
+			sourceTree = "<group>";
+		};
+		D5E6A3ED25FE65A300F74880 /* UserCredential */ = {
+			isa = PBXGroup;
+			children = (
+				D5B13B2B23D12520006CBC46 /* UserCredential.swift */,
+				D5B13B2F23D1265F006CBC46 /* UserCredentialDoubles.swift */,
+				D5BA170923D671FD00954D50 /* UserCredentialEmitter.swift */,
+				D5BA170B23D6725B00954D50 /* UserCredentialEmitterDoubles.swift */,
+				D5A32DBC23D139C000F3903C /* UserCredentialProvider.swift */,
+				D535554023E1DF8B005A20EB /* UserCredentialProviderDoubles.swift */,
+				D5BA170723D66AF500954D50 /* UserCredentialProviderTests.swift */,
+			);
+			path = UserCredential;
 			sourceTree = "<group>";
 		};
 		D5E987C324EEE20300E2E1AF /* Router */ = {
