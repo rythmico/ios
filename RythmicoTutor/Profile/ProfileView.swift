@@ -39,6 +39,7 @@ struct ProfileView: View, TestableView {
                         action: { Current.urlOpener.open("mailto:info@rythmico.com") }
                     )
                 }
+                #if DEBUG
                 Section {
                     Button(action: logOut) {
                         HStack(alignment: .center) {
@@ -52,6 +53,7 @@ struct ProfileView: View, TestableView {
                     .frame(minHeight: 35)
                     .accessibility(hint: Text("Double tap to log out of your account"))
                 }
+                #endif
             }
 //            .textCase(nil)
         }
