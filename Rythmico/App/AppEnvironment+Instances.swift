@@ -9,7 +9,7 @@ import Then
 extension AppEnvironment: Then {}
 
 extension AppEnvironment {
-    static let live = AppEnvironment(
+    static let live = AppEnvironment.initLive { .init(
         state: AppState(),
 
         remoteConfig: RemoteConfig(),
@@ -29,7 +29,7 @@ extension AppEnvironment {
         appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifier(notificationCenter: .default),
         authenticationService: AuthenticationService(),
         deauthenticationService: DeauthenticationService(),
-        accessTokenProviderObserver: AuthenticationAccessTokenProviderObserver(broadcast: AuthenticationAccessTokenProviderBroadcast()),
+        userCredentialProvider: UserCredentialProvider(emitter: UserCredentialEmitter()),
 
         analyticsService: Mixpanel.mainInstance(),
 
@@ -46,6 +46,7 @@ extension AppEnvironment {
         calendarSyncStatusProvider: CalendarSyncStatusProvider(accessProvider: EKEventStore()),
         calendarInfoFetchingService: APIService(),
 
+        sceneState: { UIApplication.shared.applicationState },
         uiAccessibility: UIAccessibility.self,
         keyboardDismisser: UIApplication.shared,
         urlOpener: UIApplication.shared,
@@ -69,15 +70,7 @@ extension AppEnvironment {
 
         cardSetupCredentialFetchingService: APIService(),
         cardSetupService: STPPaymentHandler.shared()
-    )
-
-    var apiErrorHandler: APIActivityErrorHandlerProtocol {
-        APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator)
-    }
-
-    func cardSetupCoordinator() -> CardSetupCoordinator {
-        CardSetupCoordinator(service: cardSetupService)
-    }
+    )}
 }
 
 #if DEBUG
@@ -87,20 +80,19 @@ extension AppEnvironment {
             $0.setUpFake()
 
             $0.instrumentSelectionListProvider = InstrumentSelectionListProviderStub(instruments: Instrument.allCases)
-            $0.addressSearchService = fakeAPIService(result: .success(.stub))
+            $0.fakeAPIEndpoint(for: \.addressSearchCoordinator, result: .success(.stub))
 
-            $0.lessonPlanFetchingService = fakeAPIService(result: .success(.stub))
-            $0.lessonPlanRequestService = fakeAPIService(result: .success(.davidGuitarPlanStub))
-            $0.lessonPlanCancellationService = fakeAPIService(result: .success(.cancelledJackGuitarPlanStub))
-            $0.lessonPlanGetCheckoutService = fakeAPIService(result: .success(.stub))
-            $0.lessonPlanCompleteCheckoutService = fakeAPIService(result: .success(.scheduledJackGuitarPlanStub))
+            $0.fakeAPIEndpoint(for: \.lessonPlanFetchingCoordinator, result: .success(.stub))
+            $0.fakeAPIEndpoint(for: \.lessonPlanRequestCoordinator, result: .success(.davidGuitarPlanStub))
+            $0.fakeAPIEndpoint(for: \.lessonPlanCancellationCoordinator, result: .success(.cancelledJackGuitarPlanStub))
+            $0.fakeAPIEndpoint(for: \.lessonPlanGetCheckoutCoordinator, result: .success(.stub))
+            $0.fakeAPIEndpoint(for: \.lessonPlanCompleteCheckoutCoordinator, result: .success(.scheduledJackGuitarPlanStub))
 
-            $0.lessonSkippingService = fakeAPIService(result: .success(.scheduledSkippedJackGuitarPlanStub))
+            $0.fakeAPIEndpoint(for: \.lessonSkippingCoordinator, result: .success(.scheduledSkippedJackGuitarPlanStub))
 
-            $0.portfolioFetchingService = fakeAPIService(result: .success(.longStub))
+            $0.fakeAPIEndpoint(for: \.portfolioFetchingCoordinator, result: .success(.longStub))
 
-            $0.cardSetupCredentialFetchingService = fakeAPIService(result: .success(.stub))
-            $0.cardSetupService = CardSetupServiceStub(result: .success(STPSetupIntentFake()), delay: fakeAPIServicesDelay)
+            $0.fakeAPIEndpoint(for: \.cardSetupCredentialFetchingCoordinator, result: .success(.stub))
         }
     }
 }
@@ -127,7 +119,7 @@ extension AppEnvironment {
             appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifierDummy(),
             authenticationService: AuthenticationServiceDummy(),
             deauthenticationService: DeauthenticationServiceDummy(),
-            accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverDummy(),
+            userCredentialProvider: UserCredentialProviderDummy(),
 
             analyticsService: AnalyticsServiceDummy(),
 
@@ -141,6 +133,7 @@ extension AppEnvironment {
             calendarSyncStatusProvider: CalendarSyncStatusProviderDummy(),
             calendarInfoFetchingService: APIServiceDummy(),
 
+            sceneState: { .active },
             uiAccessibility: UIAccessibilityDummy.self,
             keyboardDismisser: KeyboardDismisserDummy(),
             urlOpener: URLOpenerDummy(),

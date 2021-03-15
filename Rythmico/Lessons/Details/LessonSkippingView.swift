@@ -5,7 +5,7 @@ struct LessonSkippingView: View {
     @Environment(\.presentationMode)
     private var presentationMode
     @StateObject
-    private var coordinator = Current.coordinator(for: \.lessonSkippingService)!
+    private var coordinator = Current.lessonSkippingCoordinator()
 
     let lesson: Lesson
     let freeSkipUntil: Date

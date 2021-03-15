@@ -2,7 +2,7 @@ import Foundation
 import FirebaseAuth
 import FoundationSugar
 
-protocol AuthenticationAccessTokenProvider: AnyObject {
+protocol UserCredentialProtocol: AnyObject {
     var userId: String { get }
     var name: String? { get }
     var email: String? { get }
@@ -13,7 +13,7 @@ protocol AuthenticationAccessTokenProvider: AnyObject {
     func getAccessToken(completionHandler: @escaping Handler<AccessTokenResult>)
 }
 
-extension FirebaseAuth.User: AuthenticationAccessTokenProvider {
+extension FirebaseAuth.User: UserCredentialProtocol {
     var userId: String { uid }
     var name: String? { displayName }
 

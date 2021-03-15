@@ -8,25 +8,24 @@ final class MainViewTests: XCTestCase {
     override func setUp() {
         Current = .dummy
         Current.userAuthenticated()
-        Current.lessonPlanFetchingService = APIServiceStub(result: .success([.pendingJackGuitarPlanStub]))
+        Current.stubAPIEndpoint(for: \.lessonPlanFetchingCoordinator, result: .success([.pendingJackGuitarPlanStub]))
     }
 
     func testDeviceRegistrationOnAppear() throws {
-        Current.deviceTokenProvider = DeviceTokenProviderStub(result: .success("TOKEN"))
-
         let spy = APIServiceSpy<AddDeviceRequest>()
-        Current.deviceRegisterService = spy
+        Current.deviceRegisterCoordinator = DeviceRegisterCoordinator(
+            deviceTokenProvider: DeviceTokenProviderStub(result: .success("TOKEN")),
+            apiCoordinator: Current.coordinator(for: spy)
+        )
 
-        let view = try XCTUnwrap(MainView())
-
+        let view = MainView()
         XCTAssertView(view) { view in
             XCTAssertEqual(spy.sendCount, 1)
         }
     }
 
     func testPresentRequestLessonFlow() throws {
-        let view = try XCTUnwrap(MainView())
-
+        let view = MainView()
         XCTAssertView(view) { view in
             XCTAssertEqual(Current.state.lessonsContext, .none)
             view.presentRequestLessonFlow()
@@ -35,10 +34,9 @@ final class MainViewTests: XCTestCase {
     }
 
     func testAutoPresentRequestLessonFlow() throws {
-        Current.lessonPlanFetchingService = APIServiceStub(result: .success([]))
+        Current.stubAPIEndpoint(for: \.lessonPlanFetchingCoordinator, result: .success([]))
 
-        let view = try XCTUnwrap(MainView())
-
+        let view = MainView()
         XCTAssertView(view) { view in
             XCTAssertEqual(Current.state.lessonsContext, .requestingLessonPlan)
         }

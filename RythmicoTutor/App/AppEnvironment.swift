@@ -1,8 +1,9 @@
-import Foundation
+import UIKit
 
 struct AppEnvironment {
     var state: AppState
 
+    var remoteConfigCoordinator: RemoteConfigCoordinator
     var remoteConfig: RemoteConfigServiceProtocol
 
     var date: () -> Date
@@ -20,40 +21,41 @@ struct AppEnvironment {
     var appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifying
     var authenticationService: AuthenticationServiceProtocol
     var deauthenticationService: DeauthenticationServiceProtocol
-    var accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase
+    var userCredentialProvider: UserCredentialProviderBase
 
     var analytics: AnalyticsCoordinator
     var analyticsService: AnalyticsServiceProtocol
 
-    var deviceTokenProvider: DeviceTokenProvider
-    var deviceRegisterService: APIServiceBase<AddDeviceRequest>
-    var deviceTokenDeleter: DeviceTokenDeleter
+    var apiActivityErrorHandler: APIActivityErrorHandlerProtocol
+
+    var deviceRegisterCoordinator: DeviceRegisterCoordinator
+    var deviceUnregisterCoordinator: DeviceUnregisterCoordinator
 
     var pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator
     var pushNotificationEventHandler: PushNotificationEventHandlerProtocol
 
-    var calendarSyncStatusProvider: CalendarSyncStatusProviderBase
-    var calendarInfoFetchingService: APIServiceBase<GetCalendarInfoRequest>
+    var calendarSyncCoordinator: CalendarSyncCoordinator
 
+    var sceneState: () -> UIApplication.State
     var uiAccessibility: UIAccessibilityProtocol.Type
     var keyboardDismisser: KeyboardDismisser
     var urlOpener: URLOpener
     var router: RouterProtocol
 
-    var imageLoadingService: ImageLoadingServiceProtocol
+    var imageLoadingCoordinator: () -> ImageLoadingCoordinator
 
-    var tutorStatusFetchingService: APIServiceBase<GetTutorStatusRequest>
+    var tutorStatusFetchingCoordinator: APIActivityCoordinator<GetTutorStatusRequest>
 
     var bookingsRepository: Repository<Booking>
-    var bookingsFetchingService: APIServiceBase<BookingsGetRequest>
+    var bookingsFetchingCoordinator: APIActivityCoordinator<BookingsGetRequest>
 
     var bookingRequestRepository: Repository<BookingRequest>
-    var bookingRequestFetchingService: APIServiceBase<BookingRequestsGetRequest>
-    var bookingRequestApplyingService: APIServiceBase<BookingRequestApplyRequest>
+    var bookingRequestFetchingCoordinator: APIActivityCoordinator<BookingRequestsGetRequest>
+    var bookingRequestApplyingCoordinator: () -> APIActivityCoordinator<BookingRequestApplyRequest>
 
     var bookingApplicationRepository: Repository<BookingApplication>
-    var bookingApplicationFetchingService: APIServiceBase<BookingApplicationsGetRequest>
-    var bookingApplicationRetractionService: APIServiceBase<BookingApplicationsRetractRequest>
+    var bookingApplicationFetchingCoordinator: APIActivityCoordinator<BookingApplicationsGetRequest>
+    var bookingApplicationRetractionCoordinator: () -> APIActivityCoordinator<BookingApplicationsRetractRequest>
 
     init(
         state: AppState,
@@ -75,7 +77,7 @@ struct AppEnvironment {
         appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifying,
         authenticationService: AuthenticationServiceProtocol,
         deauthenticationService: DeauthenticationServiceProtocol,
-        accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverBase,
+        userCredentialProvider: UserCredentialProviderBase,
 
         analyticsService: AnalyticsServiceProtocol,
 
@@ -89,6 +91,7 @@ struct AppEnvironment {
         calendarSyncStatusProvider: CalendarSyncStatusProviderBase,
         calendarInfoFetchingService: APIServiceBase<GetCalendarInfoRequest>,
 
+        sceneState: @escaping () -> UIApplication.State,
         uiAccessibility: UIAccessibilityProtocol.Type,
         keyboardDismisser: KeyboardDismisser,
         urlOpener: URLOpener,
@@ -111,6 +114,8 @@ struct AppEnvironment {
     ) {
         self.state = state
 
+        let remoteConfigCoordinator = RemoteConfigCoordinator(service: remoteConfig)
+        self.remoteConfigCoordinator = remoteConfigCoordinator
         self.remoteConfig = remoteConfig
 
         self.date = date
@@ -128,39 +133,55 @@ struct AppEnvironment {
         self.appleAuthorizationCredentialRevocationNotifier = appleAuthorizationCredentialRevocationNotifier
         self.authenticationService = authenticationService
         self.deauthenticationService = deauthenticationService
-        self.accessTokenProviderObserver = accessTokenProviderObserver
+        self.userCredentialProvider = userCredentialProvider
 
-        self.analytics = AnalyticsCoordinator(service: analyticsService, accessTokenProviderObserver: accessTokenProviderObserver)
+        self.analytics = AnalyticsCoordinator(service: analyticsService, userCredentialProvider: userCredentialProvider)
         self.analyticsService = analyticsService
 
-        self.deviceTokenProvider = deviceTokenProvider
-        self.deviceRegisterService = deviceRegisterService
-        self.deviceTokenDeleter = deviceTokenDeleter
+        let apiActivityErrorHandler = APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator, settings: settings)
+        self.apiActivityErrorHandler = apiActivityErrorHandler
+
+        func coordinator<R: AuthorizedAPIRequest>(for service: APIServiceBase<R>) -> APIActivityCoordinator<R> {
+            APIActivityCoordinator(
+                userCredentialProvider: userCredentialProvider,
+                deauthenticationService: deauthenticationService,
+                errorHandler: apiActivityErrorHandler,
+                service: service
+            )
+        }
+
+        self.deviceRegisterCoordinator = DeviceRegisterCoordinator(deviceTokenProvider: deviceTokenProvider, apiCoordinator: coordinator(for: deviceRegisterService))
+        self.deviceUnregisterCoordinator = DeviceUnregisterCoordinator(deviceTokenDeleter: deviceTokenDeleter)
 
         self.pushNotificationAuthorizationCoordinator = pushNotificationAuthorizationCoordinator
         self.pushNotificationEventHandler = pushNotificationEventHandler
 
-        self.calendarSyncStatusProvider = calendarSyncStatusProvider
-        self.calendarInfoFetchingService = calendarInfoFetchingService
+        self.calendarSyncCoordinator = CalendarSyncCoordinator(
+            calendarSyncStatusProvider: calendarSyncStatusProvider,
+            calendarInfoFetchingCoordinator: coordinator(for: calendarInfoFetchingService),
+            eventEmitter: eventEmitter,
+            urlOpener: urlOpener
+        )
 
+        self.sceneState = sceneState
         self.uiAccessibility = uiAccessibility
         self.keyboardDismisser = keyboardDismisser
         self.urlOpener = urlOpener
         self.router = router
 
-        self.imageLoadingService = imageLoadingService
+        self.imageLoadingCoordinator = { ImageLoadingCoordinator(service: imageLoadingService) }
 
-        self.tutorStatusFetchingService = tutorStatusFetchingService
+        self.tutorStatusFetchingCoordinator = coordinator(for: tutorStatusFetchingService)
 
         self.bookingsRepository = bookingsRepository
-        self.bookingsFetchingService = bookingsFetchingService
+        self.bookingsFetchingCoordinator = coordinator(for: bookingsFetchingService)
 
         self.bookingRequestRepository = bookingRequestRepository
-        self.bookingRequestFetchingService = bookingRequestFetchingService
-        self.bookingRequestApplyingService = bookingRequestApplyingService
+        self.bookingRequestFetchingCoordinator = coordinator(for: bookingRequestFetchingService)
+        self.bookingRequestApplyingCoordinator = { coordinator(for: bookingRequestApplyingService) }
 
         self.bookingApplicationRepository = bookingApplicationRepository
-        self.bookingApplicationFetchingService = bookingApplicationFetchingService
-        self.bookingApplicationRetractionService = bookingApplicationRetractionService
+        self.bookingApplicationFetchingCoordinator = coordinator(for: bookingApplicationFetchingService)
+        self.bookingApplicationRetractionCoordinator = { coordinator(for: bookingApplicationRetractionService) }
     }
 }

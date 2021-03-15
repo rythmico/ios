@@ -12,10 +12,9 @@ final class OnboardingViewTests: XCTestCase {
 
     func testDeviceUnregistrationOnAppear() {
         let spy = DeviceTokenDeleterSpy()
-        Current.deviceTokenDeleter = spy
+        Current.deviceUnregisterCoordinator = DeviceUnregisterCoordinator(deviceTokenDeleter: spy)
 
         let view = OnboardingView()
-
         XCTAssertView(view) { view in
             XCTAssertEqual(spy.unregisterCount, 1)
         }
@@ -64,7 +63,7 @@ final class OnboardingViewTests: XCTestCase {
     func testSuccessfulAuthentication() {
         Current.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
         Current.authenticationService = AuthenticationServiceStub(
-            result: .success(AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN")))
+            result: .success(UserCredentialStub(result: .success("ACCESS_TOKEN")))
         )
 
         let keychain = KeychainFake()

@@ -12,8 +12,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 
     func testReadyState() throws {
-        let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
-
+        let view = RequestLessonPlanView(context: RequestLessonPlanContext())
         XCTAssertView(view) { view in
             XCTAssertNotNil(view.formView)
             XCTAssertTrue(view.swipeDownToDismissEnabled)
@@ -22,8 +21,9 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 
     func testLoadingState() throws {
-        let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
+        Current.stubAPIEndpoint(for: \.lessonPlanRequestCoordinator, service: APIServiceDummy())
 
+        let view = RequestLessonPlanView(context: RequestLessonPlanContext())
         XCTAssertView(view) { view in
             view.coordinator.run(with: .stub)
 
@@ -33,10 +33,9 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 
     func testFailureState() throws {
-        Current.lessonPlanRequestService = APIServiceStub(result: .failure("Something 2"))
+        Current.stubAPIEndpoint(for: \.lessonPlanRequestCoordinator, result: .failure("Something 2"))
 
-        let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
-
+        let view = RequestLessonPlanView(context: RequestLessonPlanContext())
         XCTAssertView(view) { view in
             view.coordinator.run(with: .stub)
 
@@ -50,10 +49,9 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 
     func testConfirmationState() throws {
-        Current.lessonPlanRequestService = APIServiceStub(result: .success(.pendingJackGuitarPlanStub))
+        Current.stubAPIEndpoint(for: \.lessonPlanRequestCoordinator, result: .success(.pendingJackGuitarPlanStub))
 
-        let view = try XCTUnwrap(RequestLessonPlanView(context: RequestLessonPlanContext()))
-
+        let view = RequestLessonPlanView(context: RequestLessonPlanContext())
         XCTAssertView(view) { view in
             view.coordinator.run(with: .stub)
 

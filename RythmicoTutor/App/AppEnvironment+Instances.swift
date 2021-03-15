@@ -8,7 +8,7 @@ import Then
 extension AppEnvironment: Then {}
 
 extension AppEnvironment {
-    static let live = AppEnvironment(
+    static let live = AppEnvironment.initLive { .init(
         state: AppState(),
 
         remoteConfig: RemoteConfig(),
@@ -28,7 +28,7 @@ extension AppEnvironment {
         appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifier(notificationCenter: .default),
         authenticationService: AuthenticationService(),
         deauthenticationService: DeauthenticationService(),
-        accessTokenProviderObserver: AuthenticationAccessTokenProviderObserver(broadcast: AuthenticationAccessTokenProviderBroadcast()),
+        userCredentialProvider: UserCredentialProvider(emitter: UserCredentialEmitter()),
 
         analyticsService: Mixpanel.mainInstance(),
 
@@ -45,6 +45,7 @@ extension AppEnvironment {
         calendarSyncStatusProvider: CalendarSyncStatusProvider(accessProvider: EKEventStore()),
         calendarInfoFetchingService: APIService(),
 
+        sceneState: { UIApplication.shared.applicationState },
         uiAccessibility: UIAccessibility.self,
         keyboardDismisser: UIApplication.shared,
         urlOpener: UIApplication.shared,
@@ -64,11 +65,7 @@ extension AppEnvironment {
         bookingApplicationRepository: Repository(),
         bookingApplicationFetchingService: APIService(),
         bookingApplicationRetractionService: APIService()
-    )
-
-    var apiErrorHandler: APIActivityErrorHandlerProtocol {
-        APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator, settings: settings)
-    }
+    )}
 }
 
 #if DEBUG
@@ -77,15 +74,15 @@ extension AppEnvironment {
         dummy.with {
             $0.setUpFake()
 
-            $0.tutorStatusFetchingService = fakeAPIService(result: .success(.registrationPendingStub))
+            $0.fakeAPIEndpoint(for: \.tutorStatusFetchingCoordinator, result: .success(.registrationPendingStub))
 
-            $0.bookingsFetchingService = fakeAPIService(result: .success(.stub))
+            $0.fakeAPIEndpoint(for: \.bookingsFetchingCoordinator, result: .success(.stub))
 
-            $0.bookingRequestFetchingService = fakeAPIService(result: .success([.stub, .longStub]))
-            $0.bookingRequestApplyingService = fakeAPIService(result: .success(.stub))
+            $0.fakeAPIEndpoint(for: \.bookingRequestFetchingCoordinator, result: .success([.stub, .longStub]))
+            $0.fakeAPIEndpoint(for: \.bookingRequestApplyingCoordinator, result: .success(.stub))
 
-            $0.bookingApplicationFetchingService = fakeAPIService(result: .success([.longStub, .stubWithAbout] + .stub))
-            $0.bookingApplicationRetractionService = fakeAPIService(result: .success(.stub))
+            $0.fakeAPIEndpoint(for: \.bookingApplicationFetchingCoordinator, result: .success([.longStub, .stubWithAbout] + .stub))
+            $0.fakeAPIEndpoint(for: \.bookingApplicationRetractionCoordinator, result: .success(.stub))
         }
     }
 }
@@ -112,7 +109,7 @@ extension AppEnvironment {
             appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifierDummy(),
             authenticationService: AuthenticationServiceDummy(),
             deauthenticationService: DeauthenticationServiceDummy(),
-            accessTokenProviderObserver: AuthenticationAccessTokenProviderObserverDummy(),
+            userCredentialProvider: UserCredentialProviderDummy(),
 
             analyticsService: AnalyticsServiceDummy(),
 
@@ -126,6 +123,7 @@ extension AppEnvironment {
             calendarSyncStatusProvider: CalendarSyncStatusProviderDummy(),
             calendarInfoFetchingService: APIServiceDummy(),
 
+            sceneState: { .active },
             uiAccessibility: UIAccessibilityDummy.self,
             keyboardDismisser: KeyboardDismisserDummy(),
             urlOpener: URLOpenerDummy(),

@@ -14,7 +14,7 @@ extension App {
     }
 
     func didEnterBackground() {
-        Current.sharedCoordinator(for: \.lessonPlanFetchingService)?.reset()
+        Current.lessonPlanFetchingCoordinator.reset()
     }
 }
 

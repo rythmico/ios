@@ -5,7 +5,7 @@ struct AddNewCardEntryView: View {
     @Binding var availableCards: [Card]
 
     @StateObject
-    private var coordinator = Current.coordinator(for: \.cardSetupCredentialFetchingService)!
+    private var coordinator = Current.cardSetupCredentialFetchingCoordinator()
 
     var body: some View {
         ZStack {

@@ -3,7 +3,6 @@ import FoundationSugar
 
 struct RequestLessonPlanFormView: View, TestableView {
     typealias RequestCoordinator = APIActivityCoordinator<CreateLessonPlanRequest>
-    typealias AddressSearchCoordinator = APIActivityCoordinator<AddressSearchRequest>
 
     @StateObject
     fileprivate var instrumentSelectionViewState = InstrumentSelectionView.ViewState()
@@ -20,18 +19,10 @@ struct RequestLessonPlanFormView: View, TestableView {
     private var presentationMode
 
     @ObservedObject
-    private var context: RequestLessonPlanContext
-    private let requestCoordinator: RequestCoordinator
-    private let addressSearchCoordinator: AddressSearchCoordinator
-
-    init?(context: RequestLessonPlanContext, coordinator: RequestCoordinator) {
-        guard let addressSearchCoordinator = Current.coordinator(for: \.addressSearchService) else {
-            return nil
-        }
-        self.context = context
-        self.requestCoordinator = coordinator
-        self.addressSearchCoordinator = addressSearchCoordinator
-    }
+    var context: RequestLessonPlanContext
+    var requestCoordinator: RequestCoordinator
+    @StateObject
+    private var addressSearchCoordinator = Current.addressSearchCoordinator()
 
     var shouldShowBackButton: Bool {
         !context.currentStep.isInstrumentSelection

@@ -12,16 +12,11 @@ struct RequestLessonPlanView: View, TestableView {
     @State
     private var _formView: RequestLessonPlanFormView
 
-    init?(context: RequestLessonPlanContext) {
-        guard
-            let coordinator = Current.coordinator(for: \.lessonPlanRequestService),
-            let formView = RequestLessonPlanFormView(context: context, coordinator: coordinator)
-        else {
-            return nil
-        }
+    init(context: RequestLessonPlanContext) {
         self._context = .init(wrappedValue: context)
+        let coordinator = Current.lessonPlanRequestCoordinator()
         self._coordinator = .init(wrappedValue: coordinator)
-        self.__formView = .init(wrappedValue: formView)
+        self.__formView = .init(wrappedValue: RequestLessonPlanFormView(context: context, requestCoordinator: coordinator))
     }
 
     let inspection = SelfInspection()

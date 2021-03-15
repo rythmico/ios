@@ -20,16 +20,16 @@ final class AddressDetailsViewTests: XCTestCase {
         AddressDetailsView
     ) {
         let addressSearchService = APIServiceSpy<AddressSearchRequest>(result: result)
-        Current.addressSearchService = addressSearchService
+        Current.stubAPIEndpoint(for: \.addressSearchCoordinator, service: addressSearchService)
         let context = RequestLessonPlanContext()
-        return try (
+        return (
             context,
             addressSearchService,
             AddressDetailsView(
                 student: .davidStub,
                 instrument: .guitar,
                 state: .init(),
-                coordinator: XCTUnwrap(Current.coordinator(for: \.addressSearchService)),
+                coordinator: Current.addressSearchCoordinator(),
                 context: context
             )
         )

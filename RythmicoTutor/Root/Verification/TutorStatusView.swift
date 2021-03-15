@@ -7,10 +7,9 @@ import Then
 extension WebViewStore: Then {}
 
 struct TutorStatusView: View {
-    private let deviceRegisterCoordinator = Current.deviceRegisterCoordinator()!
     private var pushNotificationAuthCoordinator = Current.pushNotificationAuthorizationCoordinator
     @ObservedObject
-    private var coordinator = Current.sharedCoordinator(for: \.tutorStatusFetchingService)!
+    private var coordinator = Current.tutorStatusFetchingCoordinator
     @State
     private var currentStatus: TutorStatus?
     @StateObject
@@ -36,7 +35,7 @@ struct TutorStatusView: View {
                 ActivityIndicator(color: .gray)
             }
         }
-        .onAppear(perform: deviceRegisterCoordinator.registerDevice)
+        .onAppear(perform: Current.deviceRegisterCoordinator.registerDevice)
         .onAppear(perform: setUpWebViewDelegate)
         .onAppear(perform: coordinator.run)
         .onEvent(.appInForeground, perform: coordinator.run)

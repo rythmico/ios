@@ -14,8 +14,8 @@ struct ProfileView: View, TestableView {
 
     @ObservedObject
     private var notificationAuthorizationCoordinator = Current.pushNotificationAuthorizationCoordinator
-    @StateObject
-    private var calendarSyncCoordinator = Current.calendarSyncCoordinator()!
+    @ObservedObject
+    private var calendarSyncCoordinator = Current.calendarSyncCoordinator
     @State
     private var page: Page?
 
@@ -80,6 +80,7 @@ struct ProfileView: View, TestableView {
                         action: { Current.urlOpener.open("mailto:info@rythmico.com") }
                     )
                 }
+                #if DEBUG
                 Section {
                     Button(action: logOut) {
                         HStack(alignment: .center) {
@@ -93,6 +94,7 @@ struct ProfileView: View, TestableView {
                     .frame(minHeight: 35)
                     .accessibility(hint: Text("Double tap to log out of your account"))
                 }
+                #endif
             }
             .textCase(nil)
         }

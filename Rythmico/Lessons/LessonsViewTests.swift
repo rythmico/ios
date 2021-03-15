@@ -11,10 +11,9 @@ final class LessonsViewTests: XCTestCase {
     }
 
     func testInitialState() throws {
-        Current.lessonPlanFetchingService = APIServiceStub(result: .success(.stub))
+        Current.stubAPIEndpoint(for: \.lessonPlanFetchingCoordinator, result: .success(.stub))
 
-        let fetchingCoordinator = try XCTUnwrap(Current.sharedCoordinator(for: \.lessonPlanFetchingService))
-        let view = try XCTUnwrap(LessonsView(coordinator: fetchingCoordinator))
+        let view = LessonsView()
 
         XCTAssertTrue(view.lessonPlans.isEmpty)
         XCTAssertFalse(view.isLoading)
@@ -22,10 +21,9 @@ final class LessonsViewTests: XCTestCase {
     }
 
     func testLessonPlansLoadingOnAppear() throws {
-        Current.lessonPlanFetchingService = APIServiceStub(result: .success(.stub), delay: 0)
+        Current.stubAPIEndpoint(for: \.lessonPlanFetchingCoordinator, result: .success(.stub), delay: 0)
 
-        let fetchingCoordinator = try XCTUnwrap(Current.sharedCoordinator(for: \.lessonPlanFetchingService))
-        let view = try XCTUnwrap(LessonsView(coordinator: fetchingCoordinator))
+        let view = LessonsView()
 
         XCTAssertView(view) { view in
             XCTAssertTrue(view.lessonPlans.isEmpty)
@@ -36,10 +34,9 @@ final class LessonsViewTests: XCTestCase {
 
     func testLessonPlansFetching() throws {
         let spy = APIServiceSpy<GetLessonPlansRequest>(result: .success(.stub))
-        Current.lessonPlanFetchingService = spy
+        Current.stubAPIEndpoint(for: \.lessonPlanFetchingCoordinator, service: spy)
 
-        let fetchingCoordinator = try XCTUnwrap(Current.sharedCoordinator(for: \.lessonPlanFetchingService))
-        let view = try XCTUnwrap(LessonsView(coordinator: fetchingCoordinator))
+        let view = LessonsView()
 
         XCTAssertView(view) { view in
             XCTAssertEqual(view.lessonPlans, .stub)
@@ -49,10 +46,9 @@ final class LessonsViewTests: XCTestCase {
     }
 
     func testLessonPlansFetchingFailure() throws {
-        Current.lessonPlanFetchingService = APIServiceStub(result: .failure("Something 1"))
+        Current.stubAPIEndpoint(for: \.lessonPlanFetchingCoordinator, result: .failure("Something 1"))
 
-        let fetchingCoordinator = try XCTUnwrap(Current.sharedCoordinator(for: \.lessonPlanFetchingService))
-        let view = try XCTUnwrap(LessonsView(coordinator: fetchingCoordinator))
+        let view = LessonsView()
 
         XCTAssertView(view) { view in
             XCTAssertTrue(view.lessonPlans.isEmpty)

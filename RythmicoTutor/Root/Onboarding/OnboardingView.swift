@@ -34,7 +34,7 @@ struct OnboardingView: View, TestableView {
             Current.uiAccessibility.postAnnouncement("Welcome")
         }
         .testable(self)
-        .onAppear(perform: Current.deviceUnregisterCoordinator().unregisterDevice)
+        .onAppear(perform: Current.deviceUnregisterCoordinator.unregisterDevice)
         .multiModal {
             $0.alert(error: errorMessage, dismiss: dismissError)
         }
@@ -53,7 +53,7 @@ struct OnboardingView: View, TestableView {
                         // Firebase's Auth singleton makes this line redundant since it notifies listeners
                         // about user changes upon sign in. However if services are changed there's
                         // a chance this line might be needed.
-                        // authenticationStatusObserver.statusDidChangeHandler(accessTokenProvider)
+                        // authenticationStatusObserver.statusDidChangeHandler(userCredential)
                         break
                     case .failure(let error):
                         handleAuthenticationError(error)

@@ -11,29 +11,27 @@ final class MainViewTests: XCTestCase {
     }
 
     func testDeviceRegistrationOnAppear() throws {
-        Current.deviceTokenProvider = DeviceTokenProviderStub(result: .success("TOKEN"))
-
         let spy = APIServiceSpy<AddDeviceRequest>()
-        Current.deviceRegisterService = spy
+        Current.deviceRegisterCoordinator = DeviceRegisterCoordinator(
+            deviceTokenProvider: DeviceTokenProviderStub(result: .success("TOKEN")),
+            apiCoordinator: Current.coordinator(for: spy)
+        )
 
-        let view = try XCTUnwrap(MainView())
-
+        let view = MainView()
         XCTAssertView(view) { view in
             XCTAssertEqual(spy.sendCount, 1)
         }
     }
 
     func testPushNotificationPromptOnAppear() throws {
-        Current.bookingsFetchingService = APIServiceStub(result: .success(.stub))
+        Current.stubAPIEndpoint(for: \.bookingsFetchingCoordinator, result: .success(.stub))
         Current.pushNotificationAuthorization(
             initialStatus: .notDetermined,
             requestResult: (true, nil)
         )
 
-        let view = try XCTUnwrap(MainView())
-
+        let view = MainView()
         XCTAssertTrue(Current.pushNotificationAuthorizationCoordinator.status.isNotDetermined)
-
         XCTAssertView(view) { view in
             XCTAssertTrue(Current.pushNotificationAuthorizationCoordinator.status.isAuthorized)
         }

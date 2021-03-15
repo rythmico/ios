@@ -2,24 +2,15 @@ import SwiftUI
 import FoundationSugar
 
 struct LessonPlanCancellationView: View, TestableView {
-    private typealias Coordinator = APIActivityCoordinator<CancelLessonPlanRequest>
-
     @Environment(\.presentationMode)
     private var presentationMode
 
     @State
     private var isCancellationIntended = false
     @StateObject
-    private var coordinator: Coordinator
-    private var lessonPlan: LessonPlan
+    private var coordinator = Current.lessonPlanCancellationCoordinator()
 
-    init?(lessonPlan: LessonPlan) {
-        guard let coordinator = Current.coordinator(for: \.lessonPlanCancellationService) else {
-            return nil
-        }
-        self._coordinator = .init(wrappedValue: coordinator)
-        self.lessonPlan = lessonPlan
-    }
+    var lessonPlan: LessonPlan
 
     var error: Error? { coordinator.state.failureValue }
 

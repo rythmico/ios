@@ -8,7 +8,7 @@ struct LessonPlanBookingView: View {
     private var application: LessonPlan.Application
     private var checkout: Checkout
     @StateObject
-    private var coordinator = Current.coordinator(for: \.lessonPlanCompleteCheckoutService)!
+    private var coordinator = Current.lessonPlanCompleteCheckoutCoordinator()
 
     init(
         lessonPlan: LessonPlan,

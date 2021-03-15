@@ -2,8 +2,10 @@ import SwiftUI
 import FoundationSugar
 
 struct RootView: View, TestableView {
-    @StateObject var accessTokenProviderObserver = Current.accessTokenProviderObserver
-    @StateObject var flow = RootViewFlow()
+    @ObservedObject
+    var userCredentialProvider = Current.userCredentialProvider
+    @StateObject
+    var flow = RootViewFlow()
 
     let inspection = SelfInspection()
     var body: some View {
@@ -18,7 +20,7 @@ struct RootView: View, TestableView {
             }
         }
         .testable(self)
-        .onReceive(accessTokenProviderObserver.$currentProvider, perform: accessTokenProviderChanged)
+        .onReceive(userCredentialProvider.$userCredential, perform: onUserCredentialChanged)
         .onAppear(perform: handleStateChanges)
     }
 
@@ -41,8 +43,8 @@ struct RootView: View, TestableView {
         }
     }
 
-    private func accessTokenProviderChanged(with provider: AuthenticationAccessTokenProvider?) {
-        if provider == nil {
+    private func onUserCredentialChanged(_ credential: UserCredentialProtocol?) {
+        if credential == nil {
             // TODO: potentially refactor to put all-things-authentication into coordinator
             // that takes care of flushing keychain upon logout etc.
             Current.keychain.appleAuthorizationUserId = nil

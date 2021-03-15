@@ -2,7 +2,7 @@ import FoundationSugar
 
 final class DeauthenticationServiceFake: DeauthenticationServiceProtocol {
     func deauthenticate() {
-        Current.accessTokenProviderObserver.currentProvider = nil
+        Current.userCredentialProvider.userCredential = nil
     }
 }
 
@@ -11,7 +11,7 @@ final class DeauthenticationServiceSpy: DeauthenticationServiceProtocol {
 
     func deauthenticate() {
         deauthenticationCount += 1
-        Current.accessTokenProviderObserver.currentProvider = nil
+        Current.userCredentialProvider.userCredential = nil
     }
 }
 

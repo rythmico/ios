@@ -5,7 +5,7 @@ final class PushNotificationEventHandler: PushNotificationEventHandlerProtocol {
     func handle(_ event: PushNotificationEvent) {
         switch event {
         case .lessonPlansChanged:
-            Current.sharedCoordinator(for: \.lessonPlanFetchingService)?.reset()
+            Current.lessonPlanFetchingCoordinator.reset()
         }
     }
 }

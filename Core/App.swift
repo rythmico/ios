@@ -8,7 +8,7 @@ struct App: SwiftUI.App {
 
     @UIApplicationDelegateAdaptor(Delegate.self)
     private var delegate
-    @StateObject
+    @ObservedObject
     private var remoteConfigCoordinator = Current.remoteConfigCoordinator
 
     init() {
@@ -22,8 +22,6 @@ struct App: SwiftUI.App {
         ) -> Bool {
             clearLaunchScreenCache(Const.launchScreenDebugMode)
             allowAudioPlaybackOnSilentMode()
-            configureFirebase()
-            configureMixpanel()
             configurePushNotifications(application: application)
             App.didFinishLaunching()
             return true

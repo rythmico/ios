@@ -3,8 +3,6 @@ import Combine
 import FoundationSugar
 
 struct LessonsView: View, TestableView {
-    typealias Coordinator = APIActivityCoordinator<GetLessonPlansRequest>
-
     enum Filter: String, CaseIterable {
         case upcoming
         case past
@@ -15,7 +13,7 @@ struct LessonsView: View, TestableView {
     @ObservedObject
     private var state = Current.state
     @ObservedObject
-    private(set) var coordinator: Coordinator
+    private var coordinator = Current.lessonPlanFetchingCoordinator
     @ObservedObject
     private var repository = Current.lessonPlanRepository
 
@@ -47,7 +45,7 @@ struct LessonsView: View, TestableView {
     }
 
     private func fetch() {
-        guard Current.sceneState == .active else { return }
+        guard Current.sceneState() == .active else { return }
         coordinator.startToIdle()
     }
 }
@@ -64,7 +62,7 @@ private extension AppState {
 #if DEBUG
 struct LessonsView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonsView(coordinator: Current.sharedCoordinator(for: \.lessonPlanFetchingService)!)
+        LessonsView()
             .environment(\.colorScheme, .light)
 //            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }

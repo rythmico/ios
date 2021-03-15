@@ -16,8 +16,8 @@ final class AuthenticationServiceStub: AuthenticationServiceProtocol {
 
             // Imitate Firebase's singleton behavior.
             switch result {
-            case .success(let provider):
-                Current.accessTokenProviderObserver.currentProvider = provider
+            case .success(let userCredential):
+                Current.userCredentialProvider.userCredential = userCredential
             case .failure:
                 break
             }

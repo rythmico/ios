@@ -1,8 +1,21 @@
 import UIKit
+import Firebase
+import Mixpanel
 import Then
 import enum APIKit.SessionTaskError
 
 extension AppEnvironment {
+    /// Simple wrapper to initialize AppEnvironment.live
+    /// while ensuring all SDKs are configured as early as possible.
+    static func initLive(_ build: () -> AppEnvironment) -> AppEnvironment {
+        FirebaseApp.configure()
+
+        Mixpanel.initialize(token: AppSecrets.mixpanelProjectToken)
+        Mixpanel.mainInstance().serverURL = "https://api-eu.mixpanel.com"
+
+        return build()
+    }
+
     func calendar() -> Calendar {
         Calendar(identifier: calendarType()).with {
             $0.locale = locale
@@ -61,97 +74,13 @@ extension AppEnvironment {
             $0.dateTimeStyle = precise ? .numeric : .named
         }
     }
-
-    var remoteConfigCoordinator: RemoteConfigCoordinator {
-        cachedRemoteConfigCoordinator ?? RemoteConfigCoordinator(service: remoteConfig).then {
-            cachedRemoteConfigCoordinator = $0
-        }
-    }
-
-    func calendarSyncCoordinator() -> CalendarSyncCoordinator? {
-        coordinator(for: \.calendarInfoFetchingService).map {
-            CalendarSyncCoordinator(
-                calendarSyncStatusProvider: calendarSyncStatusProvider,
-                calendarInfoFetchingCoordinator: $0,
-                eventEmitter: eventEmitter,
-                urlOpener: urlOpener
-            )
-        }
-    }
-
-    func sharedCoordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
-        // Return nil if logged out.
-        guard let currentProvider = accessTokenProviderObserver.currentProvider else {
-            latestProvider = nil
-            coordinatorMap = [:]
-            return nil
-        }
-
-        // Check if user changed and reset cache.
-        if latestProvider != nil, currentProvider !== latestProvider {
-            latestProvider = nil
-            coordinatorMap = [:]
-        }
-
-        // Update reference to latest provider.
-        latestProvider = currentProvider
-
-        // Return cached coordinator if it exists.
-        if let coordinator = coordinatorMap[service] as? APIActivityCoordinator<Request> {
-            return coordinator
-        }
-
-        // Initialize, cache and return new coordinator if not.
-        let coordinator = APIActivityCoordinator(
-            accessTokenProvider: currentProvider,
-            deauthenticationService: deauthenticationService,
-            errorHandler: apiErrorHandler,
-            service: self[keyPath: service]
-        )
-        coordinatorMap[service] = coordinator
-        return coordinator
-    }
-
-    func coordinator<Request: AuthorizedAPIRequest>(for service: KeyPath<AppEnvironment, APIServiceBase<Request>>) -> APIActivityCoordinator<Request>? {
-        accessTokenProviderObserver.currentProvider.map {
-            APIActivityCoordinator(
-                accessTokenProvider: $0,
-                deauthenticationService: deauthenticationService,
-                errorHandler: apiErrorHandler,
-                service: self[keyPath: service]
-            )
-        }
-    }
-
-    func imageLoadingCoordinator() -> ImageLoadingCoordinator {
-        ImageLoadingCoordinator(service: imageLoadingService)
-    }
-
-    func deviceRegisterCoordinator() -> DeviceRegisterCoordinator? {
-        coordinator(for: \.deviceRegisterService).map {
-            DeviceRegisterCoordinator(deviceTokenProvider: deviceTokenProvider, apiCoordinator: $0)
-        }
-    }
-
-    func deviceUnregisterCoordinator() -> DeviceUnregisterCoordinator {
-        DeviceUnregisterCoordinator(deviceTokenDeleter: deviceTokenDeleter)
-    }
-
-    var sceneState: UIApplication.State {
-        UIApplication.shared.applicationState
-    }
 }
-
-private var cachedRemoteConfigCoordinator: RemoteConfigCoordinator?
-
-private var latestProvider: AuthenticationAccessTokenProvider?
-private var coordinatorMap: [AnyKeyPath: Any] = [:]
 
 #if DEBUG
 extension AppEnvironment {
     mutating func setUpFake() {
         remoteConfig = RemoteConfigStub(
-            fetchingDelay: Self.fakeAPIServicesDelay,
+            fetchingDelay: Self.fakeAPIEndpointDelay,
             appUpdateRequired: false
         )
 
@@ -172,24 +101,45 @@ extension AppEnvironment {
             requestResult: (true, nil)
         )
 
-        calendarSyncStatusProvider = CalendarSyncStatusProviderStub(
-            initialStatus: .notSynced,
-            refreshedStatus: .synced
+        calendarSyncCoordinator = CalendarSyncCoordinator(
+            calendarSyncStatusProvider: CalendarSyncStatusProviderStub(
+                initialStatus: .notSynced,
+                refreshedStatus: .synced
+            ),
+            calendarInfoFetchingCoordinator: coordinator(
+                for: APIServiceStub(
+                    result: .success(.stub),
+                    delay: Self.fakeAPIEndpointDelay
+                )
+            ),
+            eventEmitter: eventEmitter,
+            urlOpener: urlOpener
         )
 
-        calendarInfoFetchingService = APIServiceStub(
-            result: .success(.stub),
-            delay: Self.fakeAPIServicesDelay
-        )
-
+        sceneState = { .active }
         keyboardDismisser = UIApplication.shared
         urlOpener = UIApplication.shared
         router = Router()
 
-        imageLoadingService = ImageLoadingServiceStub(
-            result: .success(UIImage(.red)),
-            delay: Self.fakeAPIServicesDelay
-        )
+        imageLoadingCoordinator = {
+            ImageLoadingCoordinator(
+                service: ImageLoadingServiceStub(
+                    result: .success(UIImage(.red)),
+                    delay: Self.fakeAPIEndpointDelay
+                )
+            )
+        }
+
+        #if RYTHMICO
+        cardSetupCoordinator = {
+            CardSetupCoordinator(
+                service: CardSetupServiceStub(
+                    result: .success(STPSetupIntentFake()),
+                    delay: Self.fakeAPIEndpointDelay
+                )
+            )
+        }
+        #endif
     }
 
     mutating func useFakeDate() {
@@ -197,26 +147,26 @@ extension AppEnvironment {
     }
 
     mutating func userAuthenticated() {
-        accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverStub(
-            currentProvider: Self.fakeAccessTokenProvider
+        userCredentialProvider = UserCredentialProviderStub(
+            userCredential: Self.fakeUserCredential
         )
     }
 
     mutating func userUnauthenticated() {
-        accessTokenProviderObserver = AuthenticationAccessTokenProviderObserverDummy()
+        userCredentialProvider = UserCredentialProviderDummy()
     }
 
     mutating func shouldSucceedAuthentication() {
         authenticationService = AuthenticationServiceStub(
-            result: .success(Self.fakeAccessTokenProvider),
-            delay: Self.fakeAPIServicesDelay
+            result: .success(Self.fakeUserCredential),
+            delay: Self.fakeAPIEndpointDelay
         )
     }
 
     mutating func shouldFailAuthentication() {
         authenticationService = AuthenticationServiceStub(
             result: .failure(Self.fakeAuthenticationError),
-            delay: Self.fakeAPIServicesDelay
+            delay: Self.fakeAPIEndpointDelay
         )
     }
 
@@ -233,14 +183,66 @@ extension AppEnvironment {
         )
     }
 
-    static var fakeAPIServicesDelay: TimeInterval? = 2
-    static func fakeAPIService<R: AuthorizedAPIRequest>(result: Result<R.Response, Error>) -> APIServiceStub<R> {
-        APIServiceStub(result: result, delay: fakeAPIServicesDelay)
+    func coordinator<Request: AuthorizedAPIRequest>(for service: APIServiceBase<Request>) -> APIActivityCoordinator<Request> {
+        APIActivityCoordinator(
+            userCredentialProvider: userCredentialProvider,
+            deauthenticationService: deauthenticationService,
+            errorHandler: apiActivityErrorHandler,
+            service: service
+        )
     }
 
+    mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
+        for coordinatorKeyPath: WritableKeyPath<Self, APIActivityCoordinator<R>>,
+        service: APIServiceBase<R>
+    ) {
+        self[keyPath: coordinatorKeyPath] = coordinator(for: service)
+    }
+
+    mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
+        for coordinatorKeyPath: WritableKeyPath<Self, APIActivityCoordinator<R>>,
+        result: Result<R.Response, Error>,
+        delay: TimeInterval? = nil
+    ) {
+        stubAPIEndpoint(for: coordinatorKeyPath, service: APIServiceStub(result: result, delay: delay))
+    }
+
+    mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
+        for coordinatorKeyPath: WritableKeyPath<Self, () -> APIActivityCoordinator<R>>,
+        service: APIServiceBase<R>
+    ) {
+        let coordinator = coordinator(for: service)
+        self[keyPath: coordinatorKeyPath] = { coordinator }
+    }
+
+    mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
+        for coordinatorKeyPath: WritableKeyPath<Self, () -> APIActivityCoordinator<R>>,
+        result: Result<R.Response, Error>,
+        delay: TimeInterval? = nil
+    ) {
+        stubAPIEndpoint(for: coordinatorKeyPath, service: APIServiceStub(result: result, delay: delay))
+    }
+
+    mutating func fakeAPIEndpoint<R: AuthorizedAPIRequest>(
+        for coordinatorKeyPath: WritableKeyPath<Self, APIActivityCoordinator<R>>,
+        result: Result<R.Response, Error>,
+        delay: TimeInterval? = Self.fakeAPIEndpointDelay
+    ) {
+        stubAPIEndpoint(for: coordinatorKeyPath, result: result, delay: delay)
+    }
+
+    mutating func fakeAPIEndpoint<R: AuthorizedAPIRequest>(
+        for coordinatorKeyPath: WritableKeyPath<Self, () -> APIActivityCoordinator<R>>,
+        result: Result<R.Response, Error>,
+        delay: TimeInterval? = Self.fakeAPIEndpointDelay
+    ) {
+        stubAPIEndpoint(for: coordinatorKeyPath, result: result, delay: delay)
+    }
+
+    private static var fakeAPIEndpointDelay: TimeInterval? = 2
     private static let fakeReferenceDate = Date()
-    private static var fakeAccessTokenProvider: AuthenticationAccessTokenProvider {
-        AuthenticationAccessTokenProviderStub(result: .success("ACCESS_TOKEN"))
+    private static var fakeUserCredential: UserCredentialProtocol {
+        UserCredentialStub(result: .success("ACCESS_TOKEN"))
     }
     private static let fakeAuthenticationError = AuthenticationServiceStub.Error(
         reasonCode: .invalidCredential,

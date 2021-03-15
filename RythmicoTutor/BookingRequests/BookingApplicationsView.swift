@@ -7,18 +7,11 @@ struct BookingApplicationsView: View {
     @ObservedObject
     private var state = Current.state
     @ObservedObject
-    private var coordinator: APIActivityCoordinator<BookingApplicationsGetRequest>
+    private var coordinator = Current.bookingApplicationFetchingCoordinator
     @ObservedObject
     private var repository = Current.bookingApplicationRepository
     @State
     private var selectedBookingApplicationGroup: BookingApplication.Status?
-
-    init?() {
-        guard let coordinator = Current.sharedCoordinator(for: \.bookingApplicationFetchingService) else {
-            return nil
-        }
-        self.coordinator = coordinator
-    }
 
     var isLoading: Bool { coordinator.state.isLoading }
     var error: Error? { coordinator.state.failureValue }
@@ -60,7 +53,7 @@ struct BookingApplicationsView: View {
     }
 
     private func fetch() {
-        guard Current.sceneState == .active else { return }
+        guard Current.sceneState() == .active else { return }
         coordinator.startToIdle()
     }
 }

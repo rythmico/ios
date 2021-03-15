@@ -10,9 +10,9 @@ extension App {
     static func didFinishLaunching() {}
 
     func didEnterBackground() {
-        Current.sharedCoordinator(for: \.bookingsFetchingService)?.reset()
-        Current.sharedCoordinator(for: \.bookingRequestFetchingService)?.reset()
-        Current.sharedCoordinator(for: \.bookingApplicationFetchingService)?.reset()
+        Current.bookingsFetchingCoordinator.reset()
+        Current.bookingRequestFetchingCoordinator.reset()
+        Current.bookingApplicationFetchingCoordinator.reset()
     }
 }
 

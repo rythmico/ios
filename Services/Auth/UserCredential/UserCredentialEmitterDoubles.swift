@@ -1,11 +1,11 @@
 import Foundation
 import FoundationSugar
 
-final class AuthenticationAccessTokenProviderBroadcastSpy: AuthenticationAccessTokenProviderBroadcastProtocol {
-    var currentProvider: AuthenticationAccessTokenProvider?
+final class UserCredentialEmitterSpy: UserCredentialEmitterProtocol {
+    var userCredential: UserCredentialProtocol?
     var returnedToken: Int
 
-    init(currentProvider: AuthenticationAccessTokenProvider?, returnedToken: Int) {
+    init(userCredential: UserCredentialProtocol?, returnedToken: Int) {
         self.returnedToken = returnedToken
     }
 

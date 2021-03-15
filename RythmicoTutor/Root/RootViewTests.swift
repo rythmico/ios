@@ -32,6 +32,7 @@ final class RootViewTests: XCTestCase {
         Current.keychain = keychain
         Current.appleAuthorizationCredentialStateProvider = credentialStateProvider
         Current.deauthenticationService = deauthenticationService
+        Current.stubAPIEndpoint(for: \.bookingsFetchingCoordinator, service: APIServiceDummy())
 
         return (keychain, deauthenticationService, RootView())
     }
@@ -126,7 +127,7 @@ final class RootViewTests: XCTestCase {
         )
 
         XCTAssertView(view) { view in
-            Current.accessTokenProviderObserver.currentProvider = nil
+            Current.userCredentialProvider.userCredential = nil
             XCTAssertEqual(view.flow.currentStep, .onboarding)
             DispatchQueue.main.async {
                 XCTAssertNil(keychain.appleAuthorizationUserId)

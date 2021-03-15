@@ -7,7 +7,7 @@ struct LessonPlanBookingEntryView: View {
     var application: LessonPlan.Application
 
     @StateObject
-    private var coordinator = Current.coordinator(for: \.lessonPlanGetCheckoutService)!
+    private var coordinator = Current.lessonPlanGetCheckoutCoordinator()
 
     var body: some View {
         NavigationView {
