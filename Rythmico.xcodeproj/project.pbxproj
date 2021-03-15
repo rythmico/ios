@@ -1444,9 +1444,10 @@
 		03EDA6692476AD6800FBE527 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				D54CF08925FA8627007D5050 /* Analytics */,
 				D5AFED4425057CB0003FFC68 /* ActivityCoordinator */,
+				D54CF08925FA8627007D5050 /* Analytics */,
 				D527B01A24FEACC0003E81A9 /* API */,
+				D551125D25FFDA54009F3FD9 /* AppOpeners */,
 				D535549823E0FA4A005A20EB /* Auth */,
 				D55C35DC25A3A5C10023E56B /* Calendar */,
 				D501586625373D8B005E02FA /* Card */,
@@ -1455,9 +1456,7 @@
 				D527B01B24FEAD1A003E81A9 /* Endpoints */,
 				D527B01924FEAC97003E81A9 /* ImageLoading */,
 				D535547A23DF3E81005A20EB /* Keychain */,
-				D5217CED24E2D81B00C89018 /* MapOpener */,
 				D5AFED3B25056300003FFC68 /* NotificationCenter+Sugar.swift */,
-				D5FAE6782559DDCB00473A8B /* PhoneNumberOpener */,
 				03BB5CA02473467500B44692 /* PushNotifications */,
 				D5AC9E4E254DA113003A8197 /* RemoteConfig */,
 				03E88EB724C4B0F40077A420 /* Repository.swift */,
@@ -1890,6 +1889,15 @@
 				D54EFF1D2513D69A004F14D3 /* PortfolioDoubles.swift */,
 			);
 			path = Portfolio;
+			sourceTree = "<group>";
+		};
+		D551125D25FFDA54009F3FD9 /* AppOpeners */ = {
+			isa = PBXGroup;
+			children = (
+				D5217CED24E2D81B00C89018 /* MapOpener */,
+				D5FAE6782559DDCB00473A8B /* PhoneNumberOpener */,
+			);
+			path = AppOpeners;
 			sourceTree = "<group>";
 		};
 		D55C35DC25A3A5C10023E56B /* Calendar */ = {
