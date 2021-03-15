@@ -8,9 +8,9 @@ final class Dictionary_SugarTests: XCTestCase {
                 ["a": true]
             }
             ["b": 2]
-            if false {
+            if `false` {
                 ["c": "3"]
-            } else if false {
+            } else if `false` {
                 ["d": false]
             } else {
                 ["e": false]
@@ -32,4 +32,10 @@ final class Dictionary_SugarTests: XCTestCase {
         XCTAssertEqual(sut["2"] as? String, "tuple")
         XCTAssertNil(sut["3"])
     }
+}
+
+private extension Dictionary_SugarTests {
+    // Used to avoid triggering compiler warnings due to
+    // obviously inaccessible codepaths.
+    var `false`: Bool { false }
 }

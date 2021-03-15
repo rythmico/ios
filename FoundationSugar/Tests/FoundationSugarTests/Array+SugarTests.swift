@@ -8,9 +8,9 @@ final class Array_SugarTests: XCTestCase {
                 1
             }
             false
-            if false {
+            if `false` {
                 "c"
-            } else if false {
+            } else if `false` {
                 4
             } else {
                 "e"
@@ -33,7 +33,7 @@ final class Array_SugarTests: XCTestCase {
     func testBuilder_arrayOfNonOptionals() {
         let sut: [Int] = Array {
             [420, 69]
-            if false {
+            if `false` {
                 [120]
                 120
             }
@@ -59,7 +59,7 @@ final class Array_SugarTests: XCTestCase {
     func testBuilder_arrayOfOptionals() {
         let sut: [Int?] = Array {
             [420, 69]
-            if false {
+            if `false` {
                 [120]
                 120
             }
@@ -82,4 +82,10 @@ final class Array_SugarTests: XCTestCase {
             nil
         ])
     }
+}
+
+private extension Array_SugarTests {
+    // Used to avoid triggering compiler warnings due to
+    // obviously inaccessible codepaths.
+    var `false`: Bool { false }
 }
