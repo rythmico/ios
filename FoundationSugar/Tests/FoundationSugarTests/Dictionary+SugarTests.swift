@@ -16,9 +16,10 @@ final class Dictionary_SugarTests: XCTestCase {
                 ["e": false]
             }
             for i in 0..<3 {
-                ["\(i)": "loop"]
+                ("\(i)", "loop")
             }
             ["1": "newloop"]
+            ("2", "tuple")
         }
         XCTAssertEqual(sut.keys.count, 6)
         XCTAssertEqual(sut["a"] as? Bool, true)
@@ -28,7 +29,7 @@ final class Dictionary_SugarTests: XCTestCase {
         XCTAssertEqual(sut["e"] as? Bool, false)
         XCTAssertEqual(sut["0"] as? String, "loop")
         XCTAssertEqual(sut["1"] as? String, "newloop")
-        XCTAssertEqual(sut["2"] as? String, "loop")
+        XCTAssertEqual(sut["2"] as? String, "tuple")
         XCTAssertNil(sut["3"])
     }
 }

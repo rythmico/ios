@@ -8,11 +8,17 @@ extension Dictionary {
 
 @resultBuilder
 public struct DictionaryBuilder<Key: Hashable, Value> {
-    public static func buildBlock(_ dictionaries: Dictionary<Key, Value>...) -> Dictionary<Key, Value> { dictionaries.reduce([:], +) }
-    public static func buildArray(_ dictionaries: [Dictionary<Key, Value>]) -> Dictionary<Key, Value> { dictionaries.reduce([:], +) }
-    public static func buildOptional(_ dictionary: Dictionary<Key, Value>?) -> Dictionary<Key, Value> { dictionary ?? [:] }
-    public static func buildEither(first dictionary: Dictionary<Key, Value>) -> Dictionary<Key, Value> { dictionary }
-    public static func buildEither(second dictionary: Dictionary<Key, Value>) -> Dictionary<Key, Value> { dictionary }
+    public typealias Dictionary = Swift.Dictionary<Key, Value>
+    public typealias Element = (Key, Value)
+
+    public static func buildArray(_ dictionaries: [Dictionary]) -> Dictionary { dictionaries.reduce([:], +) }
+    public static func buildBlock(_ dictionaries: Dictionary...) -> Dictionary { dictionaries.reduce([:], +) }
+    public static func buildEither(first dictionary: Dictionary) -> Dictionary { dictionary }
+    public static func buildEither(second dictionary: Dictionary) -> Dictionary { dictionary }
+    public static func buildExpression(_ element: Element) -> Dictionary { [element.0: element.1] }
+    public static func buildExpression(_ dictionary: Dictionary) -> Dictionary { dictionary }
+    public static func buildLimitedAvailability(_ dictionary: Dictionary) -> Dictionary { dictionary }
+    public static func buildOptional(_ dictionary: Dictionary?) -> Dictionary { dictionary ?? [:] }
 }
 
 extension Dictionary {
