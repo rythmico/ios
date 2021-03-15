@@ -93,9 +93,6 @@ extension AppEnvironment {
             $0.fakeAPIEndpoint(for: \.portfolioFetchingCoordinator, result: .success(.longStub))
 
             $0.fakeAPIEndpoint(for: \.cardSetupCredentialFetchingCoordinator, result: .success(.stub))
-            $0.cardSetupCoordinator = {
-                CardSetupCoordinator(service: CardSetupServiceStub(result: .success(STPSetupIntentFake()), delay: fakeAPIEndpointDelay))
-            }
         }
     }
 }

@@ -116,6 +116,17 @@ extension AppEnvironment {
                 )
             )
         }
+
+        #if RYTHMICO
+        cardSetupCoordinator = {
+            CardSetupCoordinator(
+                service: CardSetupServiceStub(
+                    result: .success(STPSetupIntentFake()),
+                    delay: Self.fakeAPIEndpointDelay
+                )
+            )
+        }
+        #endif
     }
 
     mutating func useFakeDate() {
@@ -215,7 +226,7 @@ extension AppEnvironment {
         stubAPIEndpoint(for: coordinatorKeyPath, result: result, delay: delay)
     }
 
-    internal static var fakeAPIEndpointDelay: TimeInterval? = 2
+    private static var fakeAPIEndpointDelay: TimeInterval? = 2
     private static let fakeReferenceDate = Date()
     private static var fakeUserCredential: UserCredentialProtocol {
         UserCredentialStub(result: .success("ACCESS_TOKEN"))
