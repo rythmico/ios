@@ -1,8 +1,21 @@
 import UIKit
+import Firebase
+import Mixpanel
 import Then
 import enum APIKit.SessionTaskError
 
 extension AppEnvironment {
+    /// Simple wrapper to initialize AppEnvironment.live
+    /// while ensuring all SDKs are configured as early as possible.
+    static func initLive(_ build: () -> AppEnvironment) -> AppEnvironment {
+        FirebaseApp.configure()
+
+        Mixpanel.initialize(token: AppSecrets.mixpanelProjectToken)
+        Mixpanel.mainInstance().serverURL = "https://api-eu.mixpanel.com"
+
+        return build()
+    }
+
     func calendar() -> Calendar {
         Calendar(identifier: calendarType()).with {
             $0.locale = locale

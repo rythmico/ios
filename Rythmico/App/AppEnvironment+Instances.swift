@@ -9,7 +9,7 @@ import Then
 extension AppEnvironment: Then {}
 
 extension AppEnvironment {
-    static let live = AppEnvironment(
+    static let live = AppEnvironment.initLive { .init(
         state: AppState(),
 
         remoteConfig: RemoteConfig(),
@@ -70,7 +70,7 @@ extension AppEnvironment {
 
         cardSetupCredentialFetchingService: APIService(),
         cardSetupService: STPPaymentHandler.shared()
-    )
+    )}
 }
 
 #if DEBUG

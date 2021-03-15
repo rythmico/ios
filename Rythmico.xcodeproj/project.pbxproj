@@ -97,7 +97,6 @@
 		035B1D53249E582800AABFEA /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6ED2447DFF900F6391D /* Animation.swift */; };
 		035B1D54249E59BB00AABFEA /* PreviewDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6E42447B7BD00F6391D /* PreviewDevices.swift */; };
 		035B1D55249E5A1800AABFEA /* ContentSizeCategory+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0392A9CE244D09FF001E97AE /* ContentSizeCategory+Sugar.swift */; };
-		035B1D59249E5CF800AABFEA /* App+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D58249E5CF800AABFEA /* App+Firebase.swift */; };
 		035B1D5B249E5E6E00AABFEA /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = 035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */; };
 		035B1D5E249E5EEC00AABFEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */; };
 		035B1D60249E63CD00AABFEA /* DeviceTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE4249071DB009C3980 /* DeviceTokenProvider.swift */; };
@@ -156,7 +155,6 @@
 		03E88E8D24BC8C1D0077A420 /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E8C24BC8C1D0077A420 /* AppContext.swift */; };
 		03E88E8F24BC9FAF0077A420 /* AppEnvironment+Instances.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E8E24BC9FAF0077A420 /* AppEnvironment+Instances.swift */; };
 		03E88E9124BCA4AA0077A420 /* TickingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E9024BCA4AA0077A420 /* TickingView.swift */; };
-		03E88EA624C1F4930077A420 /* App+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D58249E5CF800AABFEA /* App+Firebase.swift */; };
 		03E88EA724C1F4960077A420 /* App+LaunchScreenCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CF0249CF9FA00AABFEA /* App+LaunchScreenCache.swift */; };
 		03E88EAA24C1F4FD0077A420 /* App+PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198532471BBE8005529EB /* App+PushNotifications.swift */; };
 		03E88EAB24C1F5FE0077A420 /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E8C24BC8C1D0077A420 /* AppContext.swift */; };
@@ -216,8 +214,6 @@
 		D517FFD02554A6E800A41639 /* LessonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517FFCF2554A6E800A41639 /* LessonDetailView.swift */; };
 		D518C2F8250EA89100288A48 /* LessonPlanApplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518C2F7250EA89100288A48 /* LessonPlanApplicationsView.swift */; };
 		D518C2FD250EDD3300288A48 /* InfoBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518C2FC250EDD3300288A48 /* InfoBanner.swift */; };
-		D51B4F5A25F9004F0028DEFA /* App+Mixpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51B4F5925F9004F0028DEFA /* App+Mixpanel.swift */; };
-		D51B4F5B25F9004F0028DEFA /* App+Mixpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51B4F5925F9004F0028DEFA /* App+Mixpanel.swift */; };
 		D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */; };
 		D5200E4023FDE460007168E0 /* MultiStyleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3F23FDE460007168E0 /* MultiStyleText.swift */; };
 		D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */; };
@@ -667,7 +663,6 @@
 		035B1D0F249E561C00AABFEA /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		035B1D12249E563A00AABFEA /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		035B1D19249E568600AABFEA /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
-		035B1D58249E5CF800AABFEA /* App+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+Firebase.swift"; sourceTree = "<group>"; };
 		035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
 		035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		035B1D5F249E608E00AABFEA /* Tutor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tutor.entitlements; sourceTree = "<group>"; };
@@ -770,7 +765,6 @@
 		D517FFCF2554A6E800A41639 /* LessonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailView.swift; sourceTree = "<group>"; };
 		D518C2F7250EA89100288A48 /* LessonPlanApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationsView.swift; sourceTree = "<group>"; };
 		D518C2FC250EDD3300288A48 /* InfoBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBanner.swift; sourceTree = "<group>"; };
-		D51B4F5925F9004F0028DEFA /* App+Mixpanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+Mixpanel.swift"; sourceTree = "<group>"; };
 		D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailsView.swift; sourceTree = "<group>"; };
 		D5200E3F23FDE460007168E0 /* MultiStyleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStyleText.swift; sourceTree = "<group>"; };
 		D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleView.swift; sourceTree = "<group>"; };
@@ -1430,9 +1424,7 @@
 			isa = PBXGroup;
 			children = (
 				035B1CBE249CF2AA00AABFEA /* App.swift */,
-				035B1D58249E5CF800AABFEA /* App+Firebase.swift */,
 				035B1CF0249CF9FA00AABFEA /* App+LaunchScreenCache.swift */,
-				D51B4F5925F9004F0028DEFA /* App+Mixpanel.swift */,
 				D59D0592251828EA0070D81B /* App+Playback.swift */,
 				03B198532471BBE8005529EB /* App+PushNotifications.swift */,
 				D58149FF251D7FFC0009BBB3 /* App+SplitViewCustomization.swift */,
@@ -2641,7 +2633,6 @@
 				D5E6A3F125FE9B4600F74880 /* FlowView.swift in Sources */,
 				D5A8C4BB25044A230006F5C5 /* UserDefaults.swift in Sources */,
 				D505804925D5A45C0028040F /* NavigationLink+Detail.swift in Sources */,
-				D51B4F5A25F9004F0028DEFA /* App+Mixpanel.swift in Sources */,
 				031378C3249A722F005FC49C /* LessonPlanCancellationView.swift in Sources */,
 				D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */,
 				D5D78DE025250864007041BE /* LessonPlanBookingView.swift in Sources */,
@@ -2726,7 +2717,6 @@
 				D5F50663240056FA00CA4094 /* RoundedThinOutlineContainer.swift in Sources */,
 				03BB5C912472D85A00B44692 /* DeviceRegisterCoordinator.swift in Sources */,
 				D52A4F1E2538C59300C65A91 /* AddNewCardEntryView.swift in Sources */,
-				03E88EA624C1F4930077A420 /* App+Firebase.swift in Sources */,
 				D517FFD02554A6E800A41639 /* LessonDetailView.swift in Sources */,
 				D5814A09251D957D0009BBB3 /* MainViewContent.swift in Sources */,
 				D516A92F253A6337002E6EDF /* LessonPlanConfirmationDetailsView.swift in Sources */,
@@ -2936,7 +2926,6 @@
 				D5BF12C72507D78800B2931C /* RouterDoubles.swift in Sources */,
 				035B1D4A249E577700AABFEA /* AppleAuthorizationCompletionDelegate.swift in Sources */,
 				035B1D37249E576900AABFEA /* AuthenticationServiceDoubles.swift in Sources */,
-				D51B4F5B25F9004F0028DEFA /* App+Mixpanel.swift in Sources */,
 				D5AC9E2D254D8AE2003A8197 /* AppLauncher.swift in Sources */,
 				035B1D13249E563A00AABFEA /* OnboardingView.swift in Sources */,
 				035B1D3F249E577700AABFEA /* AppleAuthorizationCredentialDoubles.swift in Sources */,
@@ -2960,7 +2949,6 @@
 				035B1D17249E566800AABFEA /* ActivityIndicator.swift in Sources */,
 				D5E58F3E256D9E4A00EB52ED /* LessonDetailView.swift in Sources */,
 				D5A8C4BC25044A230006F5C5 /* UserDefaults.swift in Sources */,
-				035B1D59249E5CF800AABFEA /* App+Firebase.swift in Sources */,
 				035B1D44249E577700AABFEA /* AppleAuthorizationResponse.swift in Sources */,
 				D524D0C225046B9100BC9AF7 /* UNUserNotificationCenterProtocol.swift in Sources */,
 				035B1D43249E577700AABFEA /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,

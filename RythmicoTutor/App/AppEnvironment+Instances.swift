@@ -8,7 +8,7 @@ import Then
 extension AppEnvironment: Then {}
 
 extension AppEnvironment {
-    static let live = AppEnvironment(
+    static let live = AppEnvironment.initLive { .init(
         state: AppState(),
 
         remoteConfig: RemoteConfig(),
@@ -65,7 +65,7 @@ extension AppEnvironment {
         bookingApplicationRepository: Repository(),
         bookingApplicationFetchingService: APIService(),
         bookingApplicationRetractionService: APIService()
-    )
+    )}
 
     var apiErrorHandler: APIActivityErrorHandlerProtocol {
         APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator, settings: settings)
