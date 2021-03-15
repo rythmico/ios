@@ -66,10 +66,6 @@ extension AppEnvironment {
         bookingApplicationFetchingService: APIService(),
         bookingApplicationRetractionService: APIService()
     )}
-
-    var apiErrorHandler: APIActivityErrorHandlerProtocol {
-        APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator, settings: settings)
-    }
 }
 
 #if DEBUG
