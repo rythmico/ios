@@ -12,6 +12,11 @@ struct LessonPlanCancellationView: View, TestableView {
 
     var lessonPlan: LessonPlan
 
+    init?(lessonPlan: LessonPlan) {
+        guard !lessonPlan.status.isCancelled else { return nil }
+        self.lessonPlan = lessonPlan
+    }
+
     var error: Error? { coordinator.state.failureValue }
 
     func submit(_ reason: LessonPlan.CancellationInfo.Reason) {

@@ -7,16 +7,21 @@ struct LessonDetailView: View, TestableView {
     private var state = Current.state
 
     var lesson: Lesson
+    var lessonPlan: LessonPlan? { Current.lessonPlanRepository.firstById(lesson.lessonPlanId) }
 
     var lessonSkippingView: LessonSkippingView? { LessonSkippingView(lesson: lesson) }
+    var lessonPlanCancellationView: LessonPlanCancellationView? { lessonPlan.flatMap(LessonPlanCancellationView.init) }
+
     var showSkipLessonFormAction: Action? {
-        lessonSkippingView.map { _ in
-            { state.lessonsContext.isSkippingLesson = true }
-        }
+        lessonSkippingView != nil
+            ? { state.lessonsContext.isSkippingLesson = true }
+            : nil
     }
 
-    func showCancelLessonPlanForm() {
-        state.lessonsContext.isCancellingLessonPlan = true
+    var showCancelLessonPlanFormAction: Action? {
+        lessonPlanCancellationView != nil
+            ? { state.lessonsContext.isCancellingLessonPlan = true }
+            : nil
     }
 
     let inspection = SelfInspection()
@@ -68,11 +73,7 @@ struct LessonDetailView: View, TestableView {
         .navigationBarTitleDisplayMode(.inline)
         .multiModal {
             $0.sheet(isPresented: $state.lessonsContext.isSkippingLesson) { lessonSkippingView }
-            $0.sheet(isPresented: $state.lessonsContext.isCancellingLessonPlan) {
-                if let lessonPlan = Current.lessonPlanRepository.firstById(lesson.lessonPlanId) {
-                    LessonPlanCancellationView(lessonPlan: lessonPlan)
-                }
-            }
+            $0.sheet(isPresented: $state.lessonsContext.isCancellingLessonPlan) { lessonPlanCancellationView }
         }
     }
 
@@ -81,12 +82,14 @@ struct LessonDetailView: View, TestableView {
 
     private var durationText: String { "\(lesson.schedule.duration) minutes" }
 
+    @ArrayBuilder<ActionList.Button>
     private var actions: [ActionList.Button] {
-        [
-//            .init(title: "View Lesson Plan", action: showLessonPlan),
-            showSkipLessonFormAction.map { .init(title: "Skip Lesson", action: $0) },
-            .init(title: "Cancel Lesson Plan", action: showCancelLessonPlanForm),
-        ].compact()
+        if let action = showSkipLessonFormAction {
+            .init(title: "Skip Lesson", action: action)
+        }
+        if let action = showCancelLessonPlanFormAction {
+            .init(title: "Cancel Lesson Plan", action: action)
+        }
     }
 }
 
