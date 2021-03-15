@@ -8,7 +8,7 @@ struct App: SwiftUI.App {
 
     @UIApplicationDelegateAdaptor(Delegate.self)
     private var delegate
-    @ObservedObject
+    @StateObject
     private var remoteConfigCoordinator = Current.remoteConfigCoordinator
 
     init() {
