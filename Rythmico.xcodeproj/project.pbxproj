@@ -319,6 +319,8 @@
 		D54F71182547523100D73E1E /* DismissKeyboardTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */; };
 		D54FC05524CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */; };
 		D54FC05624CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */; };
+		D551126225FFDB96009F3FD9 /* SettingsOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D551126125FFDB96009F3FD9 /* SettingsOpener.swift */; };
+		D551126325FFDB96009F3FD9 /* SettingsOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D551126125FFDB96009F3FD9 /* SettingsOpener.swift */; };
 		D55C35D725A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */; };
 		D55C35D825A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */; };
 		D55C35EA25A3A6490023E56B /* CalendarInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35E925A3A6490023E56B /* CalendarInfo.swift */; };
@@ -838,6 +840,7 @@
 		D54EFF312514C847004F14D3 /* ExpandableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableText.swift; sourceTree = "<group>"; };
 		D54F711025474E6F00D73E1E /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetInteractiveDismissal.swift; sourceTree = "<group>"; };
+		D551126125FFDB96009F3FD9 /* SettingsOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOpener.swift; sourceTree = "<group>"; };
 		D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEndpoints.swift; sourceTree = "<group>"; };
 		D55C35E925A3A6490023E56B /* CalendarInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInfo.swift; sourceTree = "<group>"; };
 		D55C35F625A3A8090023E56B /* CalendarInfoDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInfoDoubles.swift; sourceTree = "<group>"; };
@@ -1896,8 +1899,17 @@
 			children = (
 				D5217CED24E2D81B00C89018 /* MapOpener */,
 				D5FAE6782559DDCB00473A8B /* PhoneNumberOpener */,
+				D551126425FFDB9D009F3FD9 /* SettingsOpener */,
 			);
 			path = AppOpeners;
+			sourceTree = "<group>";
+		};
+		D551126425FFDB9D009F3FD9 /* SettingsOpener */ = {
+			isa = PBXGroup;
+			children = (
+				D551126125FFDB96009F3FD9 /* SettingsOpener.swift */,
+			);
+			path = SettingsOpener;
 			sourceTree = "<group>";
 		};
 		D55C35DC25A3A5C10023E56B /* Calendar */ = {
@@ -2808,6 +2820,7 @@
 				D5F5068C24046B1400CA4094 /* Spacing.swift in Sources */,
 				D535547923DF3A7C005A20EB /* Keychain.swift in Sources */,
 				D58824C4251A6D49000820F4 /* LessonsCollectionView.swift in Sources */,
+				D551126225FFDB96009F3FD9 /* SettingsOpener.swift in Sources */,
 				D5D9AE712534CAF000A0ABCC /* CheckoutDoubles.swift in Sources */,
 				03C39DDA2496DBC700C76516 /* LessonPlanDetailView.swift in Sources */,
 				D517FF702553693200A41639 /* Lesson.swift in Sources */,
@@ -2851,6 +2864,7 @@
 				035B1D67249E644C00AABFEA /* APIRequest.swift in Sources */,
 				D55C35EB25A3A6490023E56B /* CalendarInfo.swift in Sources */,
 				D5F4D3ED24F317C0000E8580 /* BookingRequestCell.swift in Sources */,
+				D551126325FFDB96009F3FD9 /* SettingsOpener.swift in Sources */,
 				D5919F6F24CF2D48009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */,
 				D5A8C4BF25044A370006F5C5 /* UserDefaultsDoubles.swift in Sources */,
 				032B6FDD24B78A5200299A09 /* BookingRequestEndpoints.swift in Sources */,
