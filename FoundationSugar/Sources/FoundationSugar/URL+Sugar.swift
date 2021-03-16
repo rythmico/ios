@@ -3,7 +3,7 @@ import Foundation
 extension URL {
     public enum Error: Swift.Error {
         case invalidURLComponents
-        case invalidPartialURL
+        case schemeDoubleSlashRemovalFailed
     }
 
     public init(
@@ -21,12 +21,12 @@ extension URL {
         guard let url = urlComponents.url else {
             throw Error.invalidURLComponents
         }
-        self = try doubleSlash ? url : url.strippingSchemeDoubleSlash()
+        self = try doubleSlash ? url : url.removingSchemeDoubleSlash()
     }
 
-    private func strippingSchemeDoubleSlash() throws -> URL {
+    private func removingSchemeDoubleSlash() throws -> URL {
         guard let url = URL(string: absoluteString.replacingOccurrences(of: "://", with: ":")) else {
-            throw Error.invalidPartialURL
+            throw Error.schemeDoubleSlashRemovalFailed
         }
         return url
     }
