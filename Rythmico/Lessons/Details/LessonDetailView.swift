@@ -9,8 +9,17 @@ struct LessonDetailView: View, TestableView {
     var lesson: Lesson
     var lessonPlan: LessonPlan? { Current.lessonPlanRepository.firstById(lesson.lessonPlanId) }
 
+    var lessonReschedulingView: LessonReschedulingView? { lessonPlan?.status.isCancelled == false ? .reschedulingView(lesson: lesson, lessonPlan: lessonPlan) : nil }
     var lessonSkippingView: LessonSkippingView? { LessonSkippingView(lesson: lesson) }
     var lessonPlanCancellationView: LessonPlanCancellationView? { lessonPlan.flatMap(LessonPlanCancellationView.init) }
+
+    @State
+    private var isRescheduling = false // TODO: move to AppState
+    var showRescheduleAlertAction: Action? {
+        lessonReschedulingView != nil
+            ? { isRescheduling = true }
+            : nil
+    }
 
     var showSkipLessonFormAction: Action? {
         lessonSkippingView != nil
@@ -72,6 +81,7 @@ struct LessonDetailView: View, TestableView {
         .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
         .multiModal {
+            $0.alert(isPresented: $isRescheduling) { .reschedulingView(lesson: lesson, lessonPlan: lessonPlan) }
             $0.sheet(isPresented: $state.lessonsContext.isSkippingLesson) { lessonSkippingView }
             $0.sheet(isPresented: $state.lessonsContext.isCancellingLessonPlan) { lessonPlanCancellationView }
         }
@@ -84,6 +94,9 @@ struct LessonDetailView: View, TestableView {
 
     @ArrayBuilder<ActionList.Button>
     private var actions: [ActionList.Button] {
+        if let action = showRescheduleAlertAction {
+            .init(title: "Reschedule", action: action)
+        }
         if let action = showSkipLessonFormAction {
             .init(title: "Skip Lesson", action: action)
         }

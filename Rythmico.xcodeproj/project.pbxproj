@@ -437,6 +437,7 @@
 		D5B57A6D2419DA5B00BE9B4F /* AddressSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6C2419DA5B00BE9B4F /* AddressSelectionView.swift */; };
 		D5B57A712419F79700BE9B4F /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A702419F79700BE9B4F /* SectionHeaderView.swift */; };
 		D5B57A75241A018900BE9B4F /* SchedulingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A74241A018900BE9B4F /* SchedulingView.swift */; };
+		D5B7948526004CF200DC6C77 /* LessonReschedulingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B7948426004CF200DC6C77 /* LessonReschedulingView.swift */; };
 		D5B880932547AFF600754197 /* Tagged in Frameworks */ = {isa = PBXBuildFile; productRef = D5B880922547AFF600754197 /* Tagged */; };
 		D5BA171023D7A18900954D50 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170F23D7A18900954D50 /* RootView.swift */; };
 		D5BA171223D7AB3B00954D50 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA171123D7AB3B00954D50 /* MainView.swift */; };
@@ -916,6 +917,7 @@
 		D5B57A6C2419DA5B00BE9B4F /* AddressSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSelectionView.swift; sourceTree = "<group>"; };
 		D5B57A702419F79700BE9B4F /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		D5B57A74241A018900BE9B4F /* SchedulingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulingView.swift; sourceTree = "<group>"; };
+		D5B7948426004CF200DC6C77 /* LessonReschedulingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonReschedulingView.swift; sourceTree = "<group>"; };
 		D5BA170723D66AF500954D50 /* UserCredentialProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialProviderTests.swift; sourceTree = "<group>"; };
 		D5BA170923D671FD00954D50 /* UserCredentialEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialEmitter.swift; sourceTree = "<group>"; };
 		D5BA170B23D6725B00954D50 /* UserCredentialEmitterDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialEmitterDoubles.swift; sourceTree = "<group>"; };
@@ -1682,6 +1684,7 @@
 				03C39DD92496DBC700C76516 /* LessonPlanDetailView.swift */,
 				03D932F1249C096B003416DC /* LessonPlanDetailViewTests.swift */,
 				D517FFCF2554A6E800A41639 /* LessonDetailView.swift */,
+				D5B7948426004CF200DC6C77 /* LessonReschedulingView.swift */,
 				D5312967256427EA00CA6621 /* LessonSkippingView.swift */,
 				D5077D8A2587D80200F8595E /* LessonSkippingContentView.swift */,
 			);
@@ -2832,6 +2835,7 @@
 				D5F5068C24046B1400CA4094 /* Spacing.swift in Sources */,
 				D535547923DF3A7C005A20EB /* Keychain.swift in Sources */,
 				D58824C4251A6D49000820F4 /* LessonsCollectionView.swift in Sources */,
+				D5B7948526004CF200DC6C77 /* LessonReschedulingView.swift in Sources */,
 				D551126225FFDB96009F3FD9 /* SettingsOpener.swift in Sources */,
 				D5D9AE712534CAF000A0ABCC /* CheckoutDoubles.swift in Sources */,
 				03C39DDA2496DBC700C76516 /* LessonPlanDetailView.swift in Sources */,
