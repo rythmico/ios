@@ -147,9 +147,9 @@ struct ReviewRequestView: View, TestableView {
         ].filter(\.isEmpty.not).joined(separator: .newline)
     }
 
-    private let dateOfBirthFormatter = Current.dateFormatter(format: .custom("dd-MM-yyyy"))
+    private static let dateOfBirthFormatter = Current.dateFormatter(format: .custom("dd-MM-yyyy"))
     private func studentAge(from dateOfBirth: Date) -> String {
-        let dateOfBirthString = dateOfBirthFormatter.string(from: dateOfBirth)
+        let dateOfBirthString = Self.dateOfBirthFormatter.string(from: dateOfBirth)
         let age = Current.calendar().diff(from: dateOfBirth, to: Current.date(), in: .year)
         return [dateOfBirthString, "(\(age) years old)"].compact().spaced()
     }

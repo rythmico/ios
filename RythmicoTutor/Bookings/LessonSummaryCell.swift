@@ -55,8 +55,8 @@ struct LessonSummaryCell: View {
         .opacity(lesson.status.isSkipped ? 0.3 : 1)
     }
 
-    private let durationFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))
-    private var durationText: String { durationFormatter.string(from: lesson.schedule.startDate, to: lesson.schedule.endDate) }
+    private static let durationFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))
+    private var durationText: String { Self.durationFormatter.string(from: lesson.schedule.startDate, to: lesson.schedule.endDate) }
 }
 
 #if DEBUG

@@ -9,9 +9,9 @@ struct BookingApplicationDetailView: View {
     @ObservedObject
     private var state = Current.state
 
-    private let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
-    private let timeFormatter = Current.dateFormatter(format: .preset(time: .short))
-    private let statusDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .short, precise: true)
+    private static let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
+    private static let timeFormatter = Current.dateFormatter(format: .preset(time: .short))
+    private static let statusDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .short, precise: true)
 
     @State
     private var retractionPromptSheetPresented = false
@@ -22,11 +22,11 @@ struct BookingApplicationDetailView: View {
 
     var status: String { bookingApplication.statusInfo.status.summary }
     var statusColor: Color { bookingApplication.statusInfo.status.color }
-    var statusDate: String { statusDateFormatter.localizedString(for: bookingApplication.statusInfo.date, relativeTo: Current.date()) }
+    var statusDate: String { Self.statusDateFormatter.localizedString(for: bookingApplication.statusInfo.date, relativeTo: Current.date()) }
     var title: String { "\(bookingApplication.student.name) - \(bookingApplication.instrument.assimilatedName) Request" }
     var submittedBy: String { bookingApplication.submitterName }
-    var startDate: String { dateFormatter.string(from: bookingApplication.schedule.startDate) }
-    var time: String { timeFormatter.string(from: bookingApplication.schedule.startDate) }
+    var startDate: String { Self.dateFormatter.string(from: bookingApplication.schedule.startDate) }
+    var time: String { Self.timeFormatter.string(from: bookingApplication.schedule.startDate) }
     var duration: String { "\(bookingApplication.schedule.duration) minutes" }
     var name: String { bookingApplication.student.name }
     var age: String { "\(bookingApplication.student.age)" }

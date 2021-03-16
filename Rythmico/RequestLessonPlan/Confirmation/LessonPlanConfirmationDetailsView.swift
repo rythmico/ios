@@ -13,7 +13,7 @@ struct LessonPlanConfirmationDetailsView: View {
                 MultiStyleText(
                     parts: [
                         "First Lesson: ",
-                        dateFormatter.string(from: lessonPlan.schedule.startDate).style(.bodyBold),
+                        Self.dateFormatter.string(from: lessonPlan.schedule.startDate).style(.bodyBold),
                         " (", relativeDate().part, ")"
                     ],
                     expanded: false,
@@ -32,8 +32,8 @@ struct LessonPlanConfirmationDetailsView: View {
         }
     }
 
-    private let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
-    private let relativeDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .full, precise: true)
+    private static let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
+    private static let relativeDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .full, precise: true)
     private func relativeDate() -> String {
         // Can't use Current.relativeDateTimeFormatter alone because it needs to be precise in number of days regardless of number of hours.
         let startDate = lessonPlan.schedule.startDate
@@ -44,7 +44,7 @@ struct LessonPlanConfirmationDetailsView: View {
         case calendar.isDate(startDate, inSameDayAs: tomorrow):
             return "Tomorrow"
         case calendar.isDate(startDate, inSameDayAs: today):
-            return relativeDateFormatter.localizedString(for: startDate, relativeTo: today)
+            return Self.relativeDateFormatter.localizedString(for: startDate, relativeTo: today)
         default:
             let todayComps = calendar.dateComponents([.year, .month, .day], from: today)
             let startDateComps = calendar.dateComponents([.year, .month, .day], from: startDate)

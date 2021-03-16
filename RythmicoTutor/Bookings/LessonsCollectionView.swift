@@ -46,13 +46,13 @@ struct LessonsCollectionView: View {
         .listStyle(GroupedListStyle())
     }
 
-    private let dateFormatter = Current.dateFormatter(format: .custom("EEEE dd MMM"))
+    private static let dateFormatter = Current.dateFormatter(format: .custom("EEEE dd MMM"))
     private func dayString(from date: Date) -> String {
         switch true {
         case Current.calendar().isDateInYesterday(date): return "Yesterday"
         case Current.calendar().isDateInToday(date): return "Today"
         case Current.calendar().isDateInTomorrow(date): return "Tomorrow"
-        default: return dateFormatter.string(from: date)
+        default: return Self.dateFormatter.string(from: date)
         }
     }
 }

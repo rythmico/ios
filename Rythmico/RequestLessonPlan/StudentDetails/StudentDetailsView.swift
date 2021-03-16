@@ -52,10 +52,10 @@ struct StudentDetailsView: View, EditableView, TestableView {
     }
 
     // MARK: - Date of Birth -
-    var dateOfBirthText: String? { state.dateOfBirth.map(dateFormatter.string(from:)) }
-    var dateOfBirthPlaceholderText: String { dateFormatter.string(from: dateOfBirthPlaceholder) }
+    var dateOfBirthText: String? { state.dateOfBirth.map(Self.dateFormatter.string(from:)) }
+    var dateOfBirthPlaceholderText: String { Self.dateFormatter.string(from: dateOfBirthPlaceholder) }
 
-    private let dateFormatter = Current.dateFormatter(format: .preset(date: .long))
+    private static let dateFormatter = Current.dateFormatter(format: .preset(date: .long))
     private let dateOfBirthPlaceholder = Current.date() - Const.averageStudentAge
 
     // MARK: - About -

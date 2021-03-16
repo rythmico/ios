@@ -40,10 +40,10 @@ struct CardStackView: View {
         "• • • • " + card.lastFourDigits
     }
 
-    private let expiryDateFormatter = Current.dateFormatter(format: .custom("'exp:' MM/yy"))
+    private static let expiryDateFormatter = Current.dateFormatter(format: .custom("'exp:' MM/yy"))
     private func formattedExpiryDate(for card: Card) -> String {
         "exp: " +
-        expiryDateFormatter.string(from: DateComponents(calendar: Current.calendar(), year: card.expiryYear, month: card.expiryMonth).date!)
+        Self.expiryDateFormatter.string(from: DateComponents(calendar: Current.calendar(), year: card.expiryYear, month: card.expiryMonth).date!)
     }
 }
 

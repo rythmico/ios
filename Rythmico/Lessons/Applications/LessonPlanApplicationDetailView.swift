@@ -51,8 +51,8 @@ struct LessonPlanApplicationDetailView: View {
         Current.state.lessonsContext.isBookingLessonPlan = true
     }
 
-    private let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
-    private var frequencyDayText: String { frequencyDayFormatter.string(from: lessonPlan.schedule.startDate) }
+    private static let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
+    private var frequencyDayText: String { Self.frequencyDayFormatter.string(from: lessonPlan.schedule.startDate) }
     private var frequencyText: [MultiStyleText.Part] {
         "Lessons recurring ".style(.callout) + "every \(frequencyDayText)".style(.calloutBold)
     }

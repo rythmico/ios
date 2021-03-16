@@ -77,9 +77,9 @@ struct LessonDetailView: View, TestableView {
         }
     }
 
-    private let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM @ h:mma"))
-    private var startDateText: String { startDateFormatter.string(from: lesson.schedule.startDate) }
+    private static let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM @ h:mma"))
 
+    private var startDateText: String { Self.startDateFormatter.string(from: lesson.schedule.startDate) }
     private var durationText: String { "\(lesson.schedule.duration) minutes" }
 
     @ArrayBuilder<ActionList.Button>

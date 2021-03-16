@@ -4,12 +4,12 @@ import SwiftUIMapView
 struct LessonDetailView: View {
     var lesson: Lesson
 
-    private let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
-    private let timeFormatter = Current.dateFormatter(format: .preset(time: .short))
+    private static let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
+    private static let timeFormatter = Current.dateFormatter(format: .preset(time: .short))
 
     var studentName: String { lesson.student.name }
-    var startDate: String { dateFormatter.string(from: lesson.schedule.startDate) }
-    var time: String { timeFormatter.string(from: lesson.schedule.startDate) }
+    var startDate: String { Self.dateFormatter.string(from: lesson.schedule.startDate) }
+    var time: String { Self.timeFormatter.string(from: lesson.schedule.startDate) }
     var duration: String { "\(lesson.schedule.duration) minutes" }
 
     @State

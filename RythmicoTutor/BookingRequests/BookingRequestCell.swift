@@ -35,14 +35,14 @@ struct BookingRequestCell: View {
     }
 
     private var subtitle: String {
-        scheduleFormatter.string(from: request.schedule.startDate)
+        Self.scheduleFormatter.string(from: request.schedule.startDate)
     }
 
     private var accessory: String {
         request.postcode
     }
 
-    private let scheduleFormatter = Current.dateFormatter(format: .custom("d MMM '@' HH:mm"))
+    private static let scheduleFormatter = Current.dateFormatter(format: .custom("d MMM '@' HH:mm"))
 }
 
 #if DEBUG
