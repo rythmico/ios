@@ -48,8 +48,6 @@ fileprivate extension MailLink {
     }
 
     func url() throws -> URL {
-        try URL(
-            string: URL(scheme: scheme, host: host, queryItems: queryItems).absoluteString.replacingOccurrences(of: "mailto://", with: "mailto:")
-        )!
+        try URL(scheme: scheme, doubleSlash: false, host: host, queryItems: queryItems)
     }
 }
