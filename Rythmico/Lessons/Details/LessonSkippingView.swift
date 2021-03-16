@@ -9,21 +9,18 @@ struct LessonSkippingView: View {
 
     let lesson: Lesson
     let freeSkipUntil: Date
-    let rearrangeUntil: Date
 
     @State private
     var showingConfirmationSheet = false
 
     init?(lesson: Lesson) {
         guard
-            let freeSkipUntil = lesson.freeSkipUntil,
-            let rearrangeUntil = Current.calendar().date(byAdding: .hour, value: -24, to: lesson.schedule.startDate)
+            let freeSkipUntil = lesson.freeSkipUntil
         else {
             return nil
         }
         self.lesson = lesson
         self.freeSkipUntil = freeSkipUntil
-        self.rearrangeUntil = rearrangeUntil
     }
 
     var body: some View {
@@ -34,8 +31,7 @@ struct LessonSkippingView: View {
                         ScrollView {
                             LessonSkippingContentView(
                                 isFree: isFree,
-                                freeSkipUntil: freeSkipUntil,
-                                rearrangeUntil: rearrangeUntil
+                                freeSkipUntil: freeSkipUntil
                             )
                             .padding(.horizontal, .spacingMedium)
                         }
