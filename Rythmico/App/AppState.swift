@@ -43,7 +43,7 @@ extension AppState {
 extension AppState.LessonsContext {
     // TODO: enable when Swift allows this (put @dynamicMemberLookup above enum declaration)
 //    subscript<Value>(dynamicMember keyPath: KeyPath<Self.Type, (Value) -> Self>) -> Value? {
-//        CasePath.case(Self.self[keyPath: keyPath]).extract(from: self)
+//        self[case: Self.self[keyPath: keyPath]]
 //    }
 
     private mutating func setIfSomeOrReset<T, AssociatedValue>(_ newValue: T?, onCase pattern: (AssociatedValue) -> Self, _ caseMap: (T) -> Self) {
