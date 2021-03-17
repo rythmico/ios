@@ -98,6 +98,7 @@ struct AppEnvironment {
         router: RouterProtocol,
 
         imageLoadingService: ImageLoadingServiceProtocol,
+        imageProcessingService: ImageProcessingServiceProtocol,
 
         tutorStatusFetchingService: APIServiceBase<GetTutorStatusRequest>,
 
@@ -169,7 +170,12 @@ struct AppEnvironment {
         self.urlOpener = urlOpener
         self.router = router
 
-        self.imageLoadingCoordinator = { ImageLoadingCoordinator(service: imageLoadingService) }
+        self.imageLoadingCoordinator = {
+            ImageLoadingCoordinator(
+                loadingService: imageLoadingService,
+                processingService: imageProcessingService
+            )
+        }
 
         self.tutorStatusFetchingCoordinator = coordinator(for: tutorStatusFetchingService)
 

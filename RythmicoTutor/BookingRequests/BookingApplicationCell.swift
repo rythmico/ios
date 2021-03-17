@@ -30,7 +30,7 @@ struct BookingApplicationCell: View {
     }
 
     private var subtitle: String {
-        let startDate = scheduleFormatter.string(from: application.schedule.startDate)
+        let startDate = Self.scheduleFormatter.string(from: application.schedule.startDate)
         let status = application.statusInfo.status.title
         return [startDate, status].joined(separator: " • ")
     }
@@ -40,14 +40,14 @@ struct BookingApplicationCell: View {
         guard application.statusInfo.date.distance(to: date) >= 60 else {
             return "now"
         }
-        return statusDateFormatter.localizedString(
+        return Self.statusDateFormatter.localizedString(
             for: application.statusInfo.date,
             relativeTo: date
         )
     }
 
-    private let scheduleFormatter = Current.dateFormatter(format: .custom("d MMM '@' HH:mm"))
-    private let statusDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .short, precise: true)
+    private static let scheduleFormatter = Current.dateFormatter(format: .custom("d MMM '@' HH:mm"))
+    private static let statusDateFormatter = Current.relativeDateTimeFormatter(context: .standalone, style: .short, precise: true)
 }
 
 #if DEBUG

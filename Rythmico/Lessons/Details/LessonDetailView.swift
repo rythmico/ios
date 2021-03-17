@@ -7,16 +7,30 @@ struct LessonDetailView: View, TestableView {
     private var state = Current.state
 
     var lesson: Lesson
+    var lessonPlan: LessonPlan? { Current.lessonPlanRepository.firstById(lesson.lessonPlanId) }
 
+    var lessonReschedulingView: LessonReschedulingView? { lessonPlan?.status.isCancelled == false ? .reschedulingView(lesson: lesson, lessonPlan: lessonPlan) : nil }
     var lessonSkippingView: LessonSkippingView? { LessonSkippingView(lesson: lesson) }
-    var showSkipLessonFormAction: Action? {
-        lessonSkippingView.map { _ in
-            { state.lessonsContext.isSkippingLesson = true }
-        }
+    var lessonPlanCancellationView: LessonPlanCancellationView? { lessonPlan.flatMap(LessonPlanCancellationView.init) }
+
+    @State
+    private var isRescheduling = false // TODO: move to AppState
+    var showRescheduleAlertAction: Action? {
+        lessonReschedulingView != nil
+            ? { isRescheduling = true }
+            : nil
     }
 
-    func showCancelLessonPlanForm() {
-        state.lessonsContext.isCancellingLessonPlan = true
+    var showSkipLessonFormAction: Action? {
+        lessonSkippingView != nil
+            ? { state.lessonsContext.isSkippingLesson = true }
+            : nil
+    }
+
+    var showCancelLessonPlanFormAction: Action? {
+        lessonPlanCancellationView != nil
+            ? { state.lessonsContext.isCancellingLessonPlan = true }
+            : nil
     }
 
     let inspection = SelfInspection()
@@ -67,26 +81,28 @@ struct LessonDetailView: View, TestableView {
         .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
         .multiModal {
+            $0.alert(isPresented: $isRescheduling) { .reschedulingView(lesson: lesson, lessonPlan: lessonPlan) }
             $0.sheet(isPresented: $state.lessonsContext.isSkippingLesson) { lessonSkippingView }
-            $0.sheet(isPresented: $state.lessonsContext.isCancellingLessonPlan) {
-                if let lessonPlan = Current.lessonPlanRepository.firstById(lesson.lessonPlanId) {
-                    LessonPlanCancellationView(lessonPlan: lessonPlan)
-                }
-            }
+            $0.sheet(isPresented: $state.lessonsContext.isCancellingLessonPlan) { lessonPlanCancellationView }
         }
     }
 
-    private let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM @ h:mma"))
-    private var startDateText: String { startDateFormatter.string(from: lesson.schedule.startDate) }
+    private static let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM @ h:mma"))
 
+    private var startDateText: String { Self.startDateFormatter.string(from: lesson.schedule.startDate) }
     private var durationText: String { "\(lesson.schedule.duration) minutes" }
 
+    @ArrayBuilder<ActionList.Button>
     private var actions: [ActionList.Button] {
-        [
-//            .init(title: "View Lesson Plan", action: showLessonPlan),
-            showSkipLessonFormAction.map { .init(title: "Skip Lesson", action: $0) },
-            .init(title: "Cancel Lesson Plan", action: showCancelLessonPlanForm),
-        ].compact()
+        if let action = showRescheduleAlertAction {
+            .init(title: "Reschedule", action: action)
+        }
+        if let action = showSkipLessonFormAction {
+            .init(title: "Skip Lesson", action: action)
+        }
+        if let action = showCancelLessonPlanFormAction {
+            .init(title: "Cancel Lesson Plan", action: action)
+        }
     }
 }
 

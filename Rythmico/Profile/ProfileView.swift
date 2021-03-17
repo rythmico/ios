@@ -35,7 +35,7 @@ struct ProfileView: View, TestableView {
 
     var goToPushNotificationsSettingsAction: Action? {
         enablePushNotificationsAction == nil
-            ? { Current.urlOpener.open(UIApplication.openSettingsURLString) }
+            ? { Current.urlOpener.openSettings() }
             : nil
     }
 

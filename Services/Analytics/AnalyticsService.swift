@@ -20,8 +20,12 @@ extension MixpanelInstance: AnalyticsServiceProtocol {
 
     func set(name: String?, email: String?) {
         people.set(properties: Properties {
-            if let name = name { ["$name": name] }
-            if let email = email { ["$email": email] }
+            if let name = name?.nilIfEmpty {
+                ["$name": name]
+            }
+            if let email = email?.nilIfEmpty {
+                ["$email": email]
+            }
         })
     }
 }

@@ -1,22 +1,24 @@
 import Foundation
 
-extension Dictionary where Key == String, Value == String {
+extension Dictionary {
     public static func + (lhs: Self, rhs: Self) -> Self {
-        lhs.merging(rhs, uniquingKeysWith: { lhs, rhs in rhs })
+        lhs.merging(rhs, uniquingKeysWith: { old, new in new })
     }
 }
 
 @resultBuilder
 public struct DictionaryBuilder<Key: Hashable, Value> {
-    public static func buildBlock(_ dictionaries: Dictionary<Key, Value>...) -> Dictionary<Key, Value> {
-        dictionaries.reduce(into: [:]) {
-            $0.merge($1) { _, new in new }
-        }
-    }
+    public typealias Dictionary = Swift.Dictionary<Key, Value>
+    public typealias Element = (Key, Value)
 
-    public static func buildOptional(_ dictionary: Dictionary<Key, Value>?) -> Dictionary<Key, Value> {
-        dictionary ?? [:]
-    }
+    public static func buildArray(_ dictionaries: [Dictionary]) -> Dictionary { dictionaries.reduce([:], +) }
+    public static func buildBlock(_ dictionaries: Dictionary...) -> Dictionary { dictionaries.reduce([:], +) }
+    public static func buildEither(first dictionary: Dictionary) -> Dictionary { dictionary }
+    public static func buildEither(second dictionary: Dictionary) -> Dictionary { dictionary }
+    public static func buildExpression(_ element: Element) -> Dictionary { [element.0: element.1] }
+    public static func buildExpression(_ dictionary: Dictionary) -> Dictionary { dictionary }
+    public static func buildLimitedAvailability(_ dictionary: Dictionary) -> Dictionary { dictionary }
+    public static func buildOptional(_ dictionary: Dictionary?) -> Dictionary { dictionary ?? [:] }
 }
 
 extension Dictionary {

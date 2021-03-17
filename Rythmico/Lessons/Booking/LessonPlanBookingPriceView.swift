@@ -7,13 +7,13 @@ struct LessonPlanBookingPriceView: View {
 
     var price: Price
 
-    private let priceFormatter = Current.numberFormatter(format: .price)
+    private static let priceFormatter = Current.numberFormatter(format: .price)
 
     var body: some View {
         VStack(spacing: .spacingSmall) {
             HStack(spacing: .spacingSmall) {
                 Text("Price per lesson").frame(maxWidth: .infinity, alignment: .leading)
-                Text(priceFormatter.string(for: price)).multilineTextAlignment(.trailing)
+                Text(Self.priceFormatter.string(for: price)).multilineTextAlignment(.trailing)
             }
             .rythmicoFont(.bodyBold)
             .foregroundColor(.rythmicoForeground)

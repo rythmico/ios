@@ -67,8 +67,8 @@ struct LessonPlanSummaryCellMainContent: View {
         }
     }
 
-    private let startDateFormatter = Current.dateFormatter(format: .custom("d MMM"))
-    private var startDateText: String { startDateFormatter.string(from: lessonPlan.schedule.startDate) }
+    private static let startDateFormatter = Current.dateFormatter(format: .custom("d MMM"))
+    private var startDateText: String { Self.startDateFormatter.string(from: lessonPlan.schedule.startDate) }
 }
 
 struct LessonPlanSummaryCellAccessory: View {

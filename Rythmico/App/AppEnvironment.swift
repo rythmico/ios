@@ -102,6 +102,7 @@ struct AppEnvironment {
         router: RouterProtocol,
 
         imageLoadingService: ImageLoadingServiceProtocol,
+        imageProcessingService: ImageProcessingServiceProtocol,
 
         instrumentSelectionListProvider: InstrumentSelectionListProviderProtocol,
         addressSearchService: APIServiceBase<AddressSearchRequest>,
@@ -177,7 +178,12 @@ struct AppEnvironment {
         self.urlOpener = urlOpener
         self.router = router
 
-        self.imageLoadingCoordinator = { ImageLoadingCoordinator(service: imageLoadingService) }
+        self.imageLoadingCoordinator = {
+            ImageLoadingCoordinator(
+                loadingService: imageLoadingService,
+                processingService: imageProcessingService
+            )
+        }
 
         self.instrumentSelectionListProvider = instrumentSelectionListProvider
         self.addressSearchCoordinator = { coordinator(for: addressSearchService) }

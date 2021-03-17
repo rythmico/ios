@@ -65,7 +65,7 @@ final class CalendarSyncCoordinator: ObservableObject {
         permissionsNeededAlert = Alert(
             title: Text("Please Allow Access"),
             message: Text("Please allow calendar access in settings in order to enable calendar sync."),
-            primaryButton: .default(Text("Settings")) { self.urlOpener.open(UIApplication.openSettingsURLString) },
+            primaryButton: .default(Text("Settings")) { self.urlOpener.openSettings() },
             secondaryButton: .cancel(Text("Not Now"))
         )
     }

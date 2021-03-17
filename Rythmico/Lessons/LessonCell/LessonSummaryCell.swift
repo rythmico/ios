@@ -47,11 +47,11 @@ struct LessonSummaryCellMainContent: View {
         }
     }
 
-    private let startDateFormatter = Current.dateFormatter(format: .custom("d MMM"))
-    private var startDateText: String { startDateFormatter.string(from: lesson.schedule.startDate) }
+    private static let startDateFormatter = Current.dateFormatter(format: .custom("d MMM"))
+    private var startDateText: String { Self.startDateFormatter.string(from: lesson.schedule.startDate) }
 
-    private let durationFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))
-    private var durationText: String { durationFormatter.string(from: lesson.schedule.startDate, to: lesson.schedule.endDate) }
+    private static let durationFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))
+    private var durationText: String { Self.durationFormatter.string(from: lesson.schedule.startDate, to: lesson.schedule.endDate) }
 }
 
 #if DEBUG

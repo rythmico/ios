@@ -46,19 +46,19 @@ struct ScheduleDetailsView: View {
         .fixedSize(horizontal: false, vertical: true)
     }
 
-    private let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
-    private var startDateText: String { startDateFormatter.string(from: schedule.startDate) }
+    private static let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
+    private var startDateText: String { Self.startDateFormatter.string(from: schedule.startDate) }
 
-    private let startTimeFormatter = Current.dateFormatter(format: .custom("h:mma"))
-    private var startTimeText: String { startTimeFormatter.string(from: schedule.startDate) }
+    private static let startTimeFormatter = Current.dateFormatter(format: .custom("h:mma"))
+    private var startTimeText: String { Self.startTimeFormatter.string(from: schedule.startDate) }
     private var startTimeAndDurationText: [MultiStyleText.Part] {
         startTimeText.style(.bodyBold).color(.rythmicoGray90) +
         " for ".color(.rythmicoGray90) +
         "\(schedule.duration.rawValue) minutes".style(.bodyBold).color(.rythmicoGray90)
     }
 
-    private let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
-    private var frequencyDayText: String { frequencyDayFormatter.string(from: schedule.startDate) }
+    private static let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
+    private var frequencyDayText: String { Self.frequencyDayFormatter.string(from: schedule.startDate) }
     private var frequencyText: [MultiStyleText.Part] {
         "Recurring ".color(.rythmicoGray90) +
         "every \(frequencyDayText)".style(.bodyBold).color(.rythmicoGray90) +

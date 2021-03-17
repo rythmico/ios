@@ -3,7 +3,6 @@ import SwiftUI
 struct LessonSkippingContentView: View {
     var isFree: Bool
     var freeSkipUntil: Date
-    var rearrangeUntil: Date
 
     var body: some View {
         VStack(spacing: .spacingMedium) {
@@ -26,7 +25,6 @@ struct LessonSkippingContentView: View {
                     We do this to protect Rythmico Tutors.
                     """
                 )
-                footnote
             } else {
                 MultiStyleText(parts: ["You will still be charged the full amount for this lesson."], foregroundColor: .rythmicoGray90)
                 InfoBanner(text:
@@ -36,26 +34,7 @@ struct LessonSkippingContentView: View {
                     We do this to protect Rythmico Tutors.
                     """
                 )
-                footnote
             }
-        }
-    }
-
-    @ViewBuilder
-    private var footnote: some View {
-        if Current.date() < rearrangeUntil {
-            MultiStyleText(
-                parts: [
-                    "If you wish to ",
-                    "postpone".style(.bodyBold),
-                    " this lesson instead, ",
-                    "get in touch with your tutor".style(.bodyBold),
-                    " and arrange it with them ",
-                    "no later than 24 hours".style(.bodyBold),
-                    " from the lesson start.",
-                ],
-                foregroundColor: .rythmicoGray90
-            )
         }
     }
 
@@ -73,8 +52,8 @@ struct LessonSkippingContentView: View {
 struct LessonSkippingContentView_Preview: PreviewProvider {
     static var previews: some View {
         Group {
-            LessonSkippingContentView(isFree: true, freeSkipUntil: Current.date() - (24, .hour), rearrangeUntil: Current.date() - (24, .hour))
-            LessonSkippingContentView(isFree: false, freeSkipUntil: Current.date() - (3, .hour), rearrangeUntil: Current.date() - (3, .hour))
+            LessonSkippingContentView(isFree: true, freeSkipUntil: Current.date() - (24, .hour))
+            LessonSkippingContentView(isFree: false, freeSkipUntil: Current.date() - (3, .hour))
         }
         .padding(.spacingMedium)
     }

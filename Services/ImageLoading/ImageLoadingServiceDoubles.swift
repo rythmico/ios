@@ -12,19 +12,19 @@ final class ImageLoadingServiceStub: ImageLoadingServiceProtocol {
         self.delay = delay
     }
 
-    func load(_ url: URL, completion: @escaping CompletionHandler) -> Activity {
+    func load(_ url: URL, handler: @escaping CompletionHandler) -> Activity {
         if let image = cache[url] {
-            completion(.success(image))
+            handler(.success(image))
         } else {
             if let image = try? result.get() {
                 cache[url] = image
             }
             if let delay = delay {
                 DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [self] in
-                    completion(result)
+                    handler(result)
                 }
             } else {
-                completion(result)
+                handler(result)
             }
         }
         return ActivityDummy()
@@ -44,16 +44,16 @@ final class ImageLoadingServiceSpy: ImageLoadingServiceProtocol {
         self.result = result
     }
 
-    func load(_ url: URL, completion: @escaping CompletionHandler) -> Activity {
+    func load(_ url: URL, handler: @escaping CompletionHandler) -> Activity {
         if let image = cache[url] {
-            completion(.success(image))
+            handler(.success(image))
         } else {
             if let image = try? result?.get() {
                 cache[url] = image
             }
             loadCount += 1
             latestURL = url
-            result.map(completion)
+            result.map(handler)
         }
         let activity = ActivitySpy()
         self.activity = activity
@@ -62,7 +62,7 @@ final class ImageLoadingServiceSpy: ImageLoadingServiceProtocol {
 }
 
 final class ImageLoadingServiceDummy: ImageLoadingServiceProtocol {
-    func load(_ url: URL, completion: @escaping CompletionHandler) -> Activity {
+    func load(_ url: URL, handler: @escaping CompletionHandler) -> Activity {
         ActivityDummy()
     }
 }

@@ -9,13 +9,13 @@ struct BookingRequestDetailView: View {
 
     var bookingRequest: BookingRequest
 
-    private let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
-    private let timeFormatter = Current.dateFormatter(format: .preset(time: .short))
+    private static let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
+    private static let timeFormatter = Current.dateFormatter(format: .preset(time: .short))
 
     var title: String { "\(bookingRequest.student.name) - \(bookingRequest.instrument.assimilatedName) Request" }
     var submittedBy: String { bookingRequest.submitterName }
-    var startDate: String { dateFormatter.string(from: bookingRequest.schedule.startDate) }
-    var time: String { timeFormatter.string(from: bookingRequest.schedule.startDate) }
+    var startDate: String { Self.dateFormatter.string(from: bookingRequest.schedule.startDate) }
+    var time: String { Self.timeFormatter.string(from: bookingRequest.schedule.startDate) }
     var duration: String { "\(bookingRequest.schedule.duration) minutes" }
     var name: String { bookingRequest.student.name }
     var age: String { "\(bookingRequest.student.age)" }

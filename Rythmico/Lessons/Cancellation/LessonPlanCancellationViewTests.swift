@@ -10,11 +10,11 @@ final class LessonPlanCancellationViewTests: XCTestCase {
         Current.userAuthenticated()
     }
 
-    func testCancellationSubmission() {
+    func testCancellationSubmission() throws {
         let spy = APIServiceSpy<CancelLessonPlanRequest>()
         Current.stubAPIEndpoint(for: \.lessonPlanCancellationCoordinator, service: spy)
 
-        let view = LessonPlanCancellationView(lessonPlan: .davidGuitarPlanStub)
+        let view = try XCTUnwrap(LessonPlanCancellationView(lessonPlan: .davidGuitarPlanStub))
         XCTAssertView(view) { view in
             XCTAssertNil(spy.latestRequest?.lessonPlanId)
             XCTAssertNil(spy.latestRequest?.body.reason)

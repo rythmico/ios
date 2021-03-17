@@ -1,12 +1,14 @@
 import Foundation
 
 extension URL {
-    public enum InitError: Error {
+    public enum Error: Swift.Error {
         case invalidURLComponents
+        case schemeDoubleSlashRemovalFailed
     }
 
     public init(
         scheme: String,
+        doubleSlash: Bool = true,
         host: String,
         path: String = "",
         queryItems: [URLQueryItem]? = nil
@@ -17,8 +19,15 @@ extension URL {
         urlComponents.path = path
         urlComponents.queryItems = queryItems
         guard let url = urlComponents.url else {
-            throw InitError.invalidURLComponents
+            throw Error.invalidURLComponents
         }
-        self = url
+        self = try doubleSlash ? url : url.removingSchemeDoubleSlash()
+    }
+
+    private func removingSchemeDoubleSlash() throws -> URL {
+        guard let url = URL(string: absoluteString.replacingOccurrences(of: "://", with: ":")) else {
+            throw Error.schemeDoubleSlashRemovalFailed
+        }
+        return url
     }
 }
