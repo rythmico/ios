@@ -123,10 +123,11 @@ extension AppEnvironment {
 
         imageLoadingCoordinator = {
             ImageLoadingCoordinator(
-                service: ImageLoadingServiceStub(
+                loadingService: ImageLoadingServiceStub(
                     result: .success(UIImage(.red)),
                     delay: Self.fakeAPIEndpointDelay
-                )
+                ),
+                processingService: ImageProcessingServiceStub()
             )
         }
 

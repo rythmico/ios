@@ -53,6 +53,7 @@ extension AppEnvironment {
         router: Router(),
 
         imageLoadingService: ImageLoadingService(),
+        imageProcessingService: ImageProcessingService(),
 
         instrumentSelectionListProvider: InstrumentSelectionListProvider(),
         addressSearchService: APIService(),
@@ -140,6 +141,7 @@ extension AppEnvironment {
             router: RouterDummy(),
 
             imageLoadingService: ImageLoadingServiceDummy(),
+            imageProcessingService: ImageProcessingServiceDummy(),
 
             instrumentSelectionListProvider: InstrumentSelectionListProviderDummy(),
             addressSearchService: APIServiceDummy(),

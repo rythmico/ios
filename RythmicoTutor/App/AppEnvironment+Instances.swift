@@ -52,6 +52,7 @@ extension AppEnvironment {
         router: Router(),
 
         imageLoadingService: ImageLoadingService(),
+        imageProcessingService: ImageProcessingService(),
 
         tutorStatusFetchingService: APIService(),
 
@@ -130,6 +131,7 @@ extension AppEnvironment {
             router: RouterDummy(),
 
             imageLoadingService: ImageLoadingServiceDummy(),
+            imageProcessingService: ImageProcessingServiceDummy(),
 
             tutorStatusFetchingService: APIServiceDummy(),
 
