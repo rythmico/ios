@@ -29,9 +29,9 @@ private extension URLOpener {
                 body: """
                 Rescheduling form 📝
 
-                - New Day of lesson:
-                - New Time of lesson:
-                - Reschedule entire plan? (Yes/No):
+                - New day for lesson:
+                - New time for lesson:
+                - Apply to all future lessons? (Yes/No):
 
                 Thank you!
 
