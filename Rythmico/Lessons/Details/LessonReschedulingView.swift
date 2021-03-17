@@ -1,7 +1,6 @@
 import SwiftUI
 
 typealias LessonReschedulingView = Alert
-
 extension LessonReschedulingView {
     static func reschedulingView(lesson: Lesson, lessonPlan: LessonPlan?) -> LessonReschedulingView {
         Alert(
