@@ -1,5 +1,21 @@
 import SwiftUI
 
+typealias LessonPlanReschedulingView = Alert
+extension LessonPlanReschedulingView {
+    static func reschedulingView(lessonPlan: LessonPlan) -> LessonPlanReschedulingView {
+        Alert(
+            title: Text("Rescheduling"),
+            message: Text(
+                """
+                If you wish to reschedule this plan, please contact us and we'll do it for you.
+                """
+            ),
+            primaryButton: .default(Text("Contact Us")) { Current.urlOpener.openMailToRescheduleLessonPlan(lessonPlan) },
+            secondaryButton: .cancel()
+        )
+    }
+}
+
 typealias LessonReschedulingView = Alert
 extension LessonReschedulingView {
     static func reschedulingView(lesson: Lesson, lessonPlan: LessonPlan?) -> LessonReschedulingView {
@@ -21,6 +37,30 @@ extension LessonReschedulingView {
 }
 
 private extension URLOpener {
+    func openMailToRescheduleLessonPlan(_ plan: LessonPlan) {
+        try? open(
+            .mail(
+                to: ["info@rythmico.com"],
+                subject: "Rescheduling request",
+                body: """
+                Rescheduling form 📝
+
+                - New start date for lessons:
+                - New time for lessons:
+
+                Thank you!
+
+                ------------
+
+                Useful info for our support team:
+
+                Plan ID: \(plan.id.rawValue)
+                UID: \(Current.userCredentialProvider.userCredential?.userId ?? "<none>")
+                """
+            )
+        )
+    }
+
     func openMailToRescheduleLesson(_ lesson: Lesson, plan: LessonPlan?) {
         try? open(
             .mail(
