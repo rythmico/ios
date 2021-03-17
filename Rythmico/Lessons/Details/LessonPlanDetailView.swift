@@ -1,4 +1,5 @@
 import SwiftUI
+import MultiModal
 import FoundationSugar
 
 struct LessonPlanDetailView: View, TestableView {
@@ -13,8 +14,21 @@ struct LessonPlanDetailView: View, TestableView {
             .joined(separator: " - ")
     }
 
-    func showCancelLessonPlanForm() {
-        state.lessonsContext = .viewingLessonPlan(lessonPlan, isCancelling: true)
+    var lessonPlanReschedulingView: LessonReschedulingView? { !lessonPlan.status.isCancelled ? .reschedulingView(lessonPlan: lessonPlan) : nil }
+    var lessonPlanCancellationView: LessonPlanCancellationView? { LessonPlanCancellationView(lessonPlan: lessonPlan) }
+
+    @State
+    private var isRescheduling = false // TODO: move to AppState
+    var showRescheduleAlertAction: Action? {
+        lessonPlanReschedulingView != nil
+            ? { isRescheduling = true }
+            : nil
+    }
+
+    var showCancelLessonPlanFormAction: Action? {
+        lessonPlanCancellationView != nil
+            ? { state.lessonsContext.isCancellingLessonPlan = true }
+            : nil
     }
 
     let inspection = SelfInspection()
@@ -60,18 +74,16 @@ struct LessonPlanDetailView: View, TestableView {
             .frame(maxWidth: .spacingMax)
             .padding(.horizontal, .spacingMedium)
 
-            ActionList(
-                [.init(title: "Cancel Lesson Plan", action: showCancelLessonPlanForm)],
-                showBottomSeparator: false
-            )
-            .foregroundColor(.rythmicoGray90)
-            .rythmicoFont(.body)
+            ActionList(actions, showBottomSeparator: false)
+                .foregroundColor(.rythmicoGray90)
+                .rythmicoFont(.body)
         }
         .testable(self)
         .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(isPresented: $state.lessonsContext.isCancellingLessonPlan) {
-            LessonPlanCancellationView(lessonPlan: lessonPlan)
+        .multiModal {
+            $0.alert(isPresented: $isRescheduling) { .reschedulingView(lessonPlan: lessonPlan) }
+            $0.sheet(isPresented: $state.lessonsContext.isCancellingLessonPlan) { lessonPlanCancellationView }
         }
     }
 
@@ -79,6 +91,16 @@ struct LessonPlanDetailView: View, TestableView {
 
     private var startDateText: String { Self.startDateFormatter.string(from: lessonPlan.schedule.startDate) }
     private var durationText: String { "\(lessonPlan.schedule.duration) minutes" }
+
+    @ArrayBuilder<ActionList.Button>
+    private var actions: [ActionList.Button] {
+        if let action = showRescheduleAlertAction {
+            .init(title: "Reschedule", action: action)
+        }
+        if let action = showCancelLessonPlanFormAction {
+            .init(title: "Cancel Lesson Plan", action: action)
+        }
+    }
 }
 
 #if DEBUG
