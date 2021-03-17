@@ -14,14 +14,14 @@ extension LessonReschedulingView {
                 If you wish to do either, please contact us and we'll do it for you.
                 """
             ),
-            primaryButton: .default(Text("Contact Us")) { Current.urlOpener.openMailToReschedule(lessonId: lesson.id, lessonPlanId: lessonPlan?.id) },
+            primaryButton: .default(Text("Contact Us")) { Current.urlOpener.openMailToRescheduleLesson(lesson, plan: lessonPlan) },
             secondaryButton: .cancel()
         )
     }
 }
 
 private extension URLOpener {
-    func openMailToReschedule(lessonId: Lesson.ID, lessonPlanId: LessonPlan.ID?) {
+    func openMailToRescheduleLesson(_ lesson: Lesson, plan: LessonPlan?) {
         try? open(
             .mail(
                 to: ["info@rythmico.com"],
@@ -39,8 +39,8 @@ private extension URLOpener {
 
                 Useful info for our support team:
 
-                Lesson ID: \(lessonId)
-                Plan ID: \(lessonPlanId?.rawValue ?? "<none>")
+                Lesson ID: \(lesson.id)
+                Plan ID: \(plan?.id.rawValue ?? "<none>")
                 UID: \(Current.userCredentialProvider.userCredential?.userId ?? "<none>")
                 """
             )
