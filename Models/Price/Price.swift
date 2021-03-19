@@ -1,4 +1,5 @@
 import Foundation
+import FoundationSugar
 
 struct Price: Equatable, Decodable, Hashable {
     enum Currency: String, Equatable, Decodable, Hashable {
@@ -13,9 +14,6 @@ struct Price: Equatable, Decodable, Hashable {
 extension NumberFormatter {
     func string(for price: Price) -> String {
         currencyCode = price.currency.rawValue
-        guard let formattedPrice = string(for: price.amount) else {
-            preconditionFailure("Price formatter failed to format Price: \(price)")
-        }
-        return formattedPrice
+        return string(for: price.amount) !! preconditionFailure("Price formatter failed to format Price: \(price)")
     }
 }

@@ -1,4 +1,5 @@
 import Foundation
+import FoundationSugar
 import Then
 
 extension Date {
@@ -26,10 +27,9 @@ extension Date {
 
     static func + (lhs: Date, rhs: (Int, Calendar.Component)) -> Date {
         let amount = rhs.0, units = rhs.1
-        guard let date = Calendar.current.date(byAdding: units, value: amount, to: lhs) else {
-            preconditionFailure("Date addition failed in \(#file):\(#line)")
-        }
-        return date
+        return Calendar.current.date(byAdding: units, value: amount, to: lhs) !! preconditionFailure(
+            "Date addition failed in \(#file):\(#line)"
+        )
     }
 
     static func - (lhs: Date, rhs: (Int, Calendar.Component)) -> Date {
