@@ -150,7 +150,7 @@ struct ReviewRequestView: View, TestableView {
     private static let dateOfBirthFormatter = Current.dateFormatter(format: .custom("dd-MM-yyyy"))
     private func studentAge(from dateOfBirth: Date) -> String {
         let dateOfBirthString = Self.dateOfBirthFormatter.string(from: dateOfBirth)
-        let age = Current.calendar().diff(from: dateOfBirth, to: Current.date(), in: .year)
+        let age = Current.date() - (dateOfBirth, .year)
         return [dateOfBirthString, "(\(age) years old)"].compact().spaced()
     }
 
