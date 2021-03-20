@@ -8,8 +8,10 @@ protocol SchedulingContext {
 struct SchedulingView: View, EditableView, TestableView {
     final class ViewState: ObservableObject {
         @Published var startDate: Date?
-        @Published var startTime = Current.calendar().date(bySetting: .hour, value: 16, of: .referenceDate) ?? .referenceDate
         @Published var duration: Schedule.Duration?
+
+        @Published var hasFocusedDate = false
+        @Published var hasFocusedTime = false
     }
 
     enum EditingFocus: EditingFocusEnum {
@@ -30,7 +32,9 @@ struct SchedulingView: View, EditableView, TestableView {
     var context: SchedulingContext
 
     private static let dateFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
-    private let firstAvailableDate = Current.date() + (2, .day)
+    private static let timeFormatter = Current.dateFormatter(format: .preset(date: .none, time: .short))
+
+    private let firstAvailableDate = Current.date() + (2, .day) |> (0, .second) |> (0, .nanosecond)
 
     var subtitle: [MultiStyleText.Part] {
         "Enter when you want the " +
@@ -38,40 +42,41 @@ struct SchedulingView: View, EditableView, TestableView {
         " to commence and for how long"
     }
 
-    var startDateText: String { state.startDate.map(Self.dateFormatter.string(from:)) ?? .empty }
-    var durationText: String { state.duration.map { "\($0.rawValue) minutes" } ?? .empty }
+    var startDateText: String? { state.hasFocusedDate ? state.startDate.map(Self.dateFormatter.string(from:)) : nil }
+    var startTimeText: String? { state.hasFocusedTime ? state.startDate.map(Self.timeFormatter.string(from:)) : nil }
+    var durationText: String? { state.duration.map { "\($0.rawValue) minutes" } }
 
     private static let scheduleInfoDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
     private static let scheduleInfoAfterDayFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
     private static let scheduleInfoDurationFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))
     var scheduleInfoText: String? {
-        let startTime = state.startTime
         guard
+            state.hasFocusedDate,
+            state.hasFocusedTime,
             let startDate = state.startDate,
             let duration = state.duration,
-            let endTime = Current.calendar().date(byAdding: .minute, value: duration.rawValue, to: startTime)
+            let endDate = Current.calendar().date(byAdding: .minute, value: duration.rawValue, to: startDate)
         else {
             return nil
         }
         let day = Self.scheduleInfoDayFormatter.string(from: startDate)
+        let time = Self.scheduleInfoDurationFormatter.string(from: startDate, to: endDate)
         let afterDay = Self.scheduleInfoAfterDayFormatter.string(from: startDate)
-        let time = Self.scheduleInfoDurationFormatter.string(from: startTime, to: endTime)
         return "Lessons will be scheduled every \(day) \(time) after \(afterDay)"
     }
 
     var nextButtonAction: Action? {
         guard
+            state.hasFocusedDate,
+            state.hasFocusedTime,
             let startDate = state.startDate,
-            let startDateAndTime = Date(date: startDate, time: state.startTime),
             let duration = state.duration
         else {
             return nil
         }
 
         return {
-            context.setSchedule(
-                Schedule(startDate: startDateAndTime, duration: duration)
-            )
+            context.setSchedule(Schedule(startDate: startDate, duration: duration))
         }
     }
 
@@ -82,61 +87,50 @@ struct SchedulingView: View, EditableView, TestableView {
                 ScrollView {
                     VStack(alignment: .leading, spacing: .spacingMedium) {
                         HeaderContentView(title: "Start Date") {
-                            ZStack {
-                                if editingFocus != .startDate {
-                                    CustomTextField(
-                                        "Select a date...",
-                                        text: .constant(startDateText),
-                                        isEditable: false
-                                    )
-                                    .onTapGesture(perform: beginEditingStartDate)
-                                    .transition(.opacity)
-                                    .matchedGeometryEffect(
-                                        id: startDatePickerAnimation,
-                                        in: startDatePickerAnimation,
-                                        properties: .size
-                                    )
-                                }
-
-                                if editingFocus == .startDate {
+                            CustomEditableTextField(
+                                placeholder: "Select a date...",
+                                text: startDateText,
+                                isEditing: editingFocus == .startDate,
+                                editAction: beginEditingStartDate
+                            ) {
+                                if let startDateBinding = Binding($state.startDate) {
                                     DatePicker(
                                         "",
-                                        selection: Binding(
-                                            get: { state.startDate ?? firstAvailableDate },
-                                            set: { state.startDate = $0 }
-                                        ),
-                                        in: PartialRangeFrom(firstAvailableDate),
+                                        selection: startDateBinding,
+                                        in: firstAvailableDate...,
                                         displayedComponents: .date
                                     )
                                     .datePickerStyle(GraphicalDatePickerStyle())
                                     .padding([.top, .horizontal], .spacingUnit * 2)
-                                    .transition(.opacity)
-                                    .matchedGeometryEffect(
-                                        id: startDatePickerAnimation,
-                                        in: startDatePickerAnimation,
-                                        properties: .size
-                                    )
                                 }
                             }
-                            .modifier(RoundedThinOutlineContainer(padded: false))
                         }
 
                         HStack(spacing: .spacingExtraSmall) {
                             HeaderContentView(title: "Time") {
-                                DatePicker("", selection: $state.startTime, displayedComponents: .hourAndMinute)
-                                    .datePickerStyle(GraphicalDatePickerStyle())
-                                    .modifier(RoundedThinOutlineContainer(padded: false))
-                                    .onTapGesture(perform: beginEditingStartTime)
+                                CustomEditableTextField(
+                                    placeholder: "Time...",
+                                    text: startTimeText,
+                                    isEditing: editingFocus == .startTime,
+                                    editAction: beginEditingStartTime
+                                ) {
+                                    if let startDateBinding = Binding($state.startDate) {
+                                        DatePicker(
+                                            "",
+                                            selection: startDateBinding,
+                                            displayedComponents: .hourAndMinute
+                                        )
+                                        .datePickerStyle(GraphicalDatePickerStyle())
+                                    }
+                                }
                             }
 
                             HeaderContentView(title: "Duration") {
-                                CustomTextField(
-                                    "Duration...",
-                                    text: .constant(durationText),
-                                    isEditable: false
+                                NonEditableTextField(
+                                    placeholder: "Duration...",
+                                    text: durationText,
+                                    tapAction: beginEditingDuration
                                 )
-                                .modifier(RoundedThinOutlineContainer(padded: false))
-                                .onTapGesture(perform: beginEditingDuration)
                             }
                         }
 
@@ -157,42 +151,42 @@ struct SchedulingView: View, EditableView, TestableView {
                     }
 
                     if editingFocus == .duration {
-                        FloatingInputView(doneAction: endEditing) {
-                            BetterPicker(
-                                selection: Binding(
-                                    get: { state.duration ?? .fortyFiveMinutes },
-                                    set: { state.duration = $0 }
-                                ),
-                                formatter: { "\($0.rawValue) minutes" }
-                            )
+                        if let durationBinding = Binding($state.duration) {
+                            FloatingInputView(doneAction: endEditing) {
+                                BetterPicker(
+                                    selection: durationBinding,
+                                    formatter: { "\($0.rawValue) minutes" }
+                                )
+                            }
+                            .zIndex(1)
                         }
-                        .zIndex(1)
                     }
                 }
             }
         }
-        .accentColor(.rythmicoPurple)
-        .animation(.easeInOut(duration: .durationMedium), value: editingFocus)
         .testable(self)
+        .accentColor(.rythmicoPurple)
+        .onReceive(editingCoordinator.$focus, perform: onEditingFocusChanged)
+        .animation(.easeInOut(duration: .durationMedium), value: editingFocus)
     }
 
-    func beginEditingStartDate() {
-        editingFocus = .startDate
+    func beginEditingStartDate() { editingFocus = .startDate }
+    func beginEditingStartTime() { editingFocus = .startTime }
+    func beginEditingDuration() { editingFocus = .duration }
 
-        if state.startDate == nil {
-            state.startDate = firstAvailableDate
-        }
-    }
-
-    func beginEditingStartTime() {
-        editingFocus = .startTime
-    }
-
-    func beginEditingDuration() {
-        editingFocus = .duration
-
-        if state.duration == nil {
-            state.duration = .oneHour
+    func onEditingFocusChanged(_ focus: EditingFocus?) {
+        guard let focus = focus else { return }
+        switch focus {
+        case .textField: // unused
+            break
+        case .startDate:
+            state.hasFocusedDate = true
+            state.startDate ??= firstAvailableDate
+        case .startTime:
+            state.hasFocusedTime = true
+            state.startDate ??= firstAvailableDate
+        case .duration:
+            state.duration ??= .oneHour
         }
     }
 }
@@ -205,7 +199,6 @@ struct SchedulingViewPreview: PreviewProvider {
             instrument: .guitar,
             context: RequestLessonPlanContext()
         )
-        .previewDevices()
     }
 }
 #endif
