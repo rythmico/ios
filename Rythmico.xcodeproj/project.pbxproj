@@ -531,6 +531,7 @@
 		D5E987C224EDE9A100E2E1AF /* Routes+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C024EDE98900E2E1AF /* Routes+Tutor.swift */; };
 		D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */; };
 		D5E987C724EEFC7C00E2E1AF /* BookingApplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */; };
+		D5ED326126065FEC00821ABE /* NonEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED326026065FEC00821ABE /* NonEditableTextField.swift */; };
 		D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF88B523FB706C0072BD03 /* ProgressBar.swift */; };
 		D5F11566253735F20027D164 /* NonEmpty in Frameworks */ = {isa = PBXBuildFile; productRef = D5F11565253735F20027D164 /* NonEmpty */; };
 		D5F4AE7E2559D3F0001085D5 /* PhoneNumberDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */; };
@@ -991,6 +992,7 @@
 		D5E987C024EDE98900E2E1AF /* Routes+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Routes+Tutor.swift"; sourceTree = "<group>"; };
 		D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestsTabView.swift; sourceTree = "<group>"; };
 		D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationsView.swift; sourceTree = "<group>"; };
+		D5ED326026065FEC00821ABE /* NonEditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonEditableTextField.swift; sourceTree = "<group>"; };
 		D5EF88B523FB706C0072BD03 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D5F4D3DF24F04294000E8580 /* BookingApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplication.swift; sourceTree = "<group>"; };
 		D5F4D3E224F04479000E8580 /* BookingApplicationEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationEndpoints.swift; sourceTree = "<group>"; };
@@ -1598,6 +1600,7 @@
 				D505804825D5A45C0028040F /* NavigationLink+Detail.swift */,
 				D5E58F45256DB0AC00EB52ED /* NavigationLink+Hidden.swift */,
 				D5882501251CBE0C000820F4 /* NavigationViewFixInteractiveDismissal.swift */,
+				D5ED326026065FEC00821ABE /* NonEditableTextField.swift */,
 				D58149E8251D262B0009BBB3 /* PageDotIndicator.swift */,
 				D52D8A4D259D5FDC00A6CBBF /* PageView.swift */,
 				D5D78E0B25257800007041BE /* PhoneNumberField.swift */,
@@ -2808,6 +2811,7 @@
 				D527B01724FEAA62003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */,
 				D5BF12BB2506926900B2931C /* PushNotificationEventHandler.swift in Sources */,
 				0365F6F02417E79000F452AC /* Address.swift in Sources */,
+				D5ED326126065FEC00821ABE /* NonEditableTextField.swift in Sources */,
 				D527B02224FEC53D003E81A9 /* TutorAvatarView.swift in Sources */,
 				D5F506BA240637F400CA4094 /* Buttons+Rythmico.swift in Sources */,
 				D5BDD88725117E5300706EC1 /* ScheduleDetailsView.swift in Sources */,
