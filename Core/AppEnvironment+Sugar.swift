@@ -83,6 +83,7 @@ extension AppEnvironment {
             fetchingDelay: Self.fakeAPIEndpointDelay,
             appUpdateRequired: false
         )
+        remoteConfigCoordinator = RemoteConfigCoordinator(service: remoteConfig)
 
         useFakeDate()
 
