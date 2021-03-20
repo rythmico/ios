@@ -25,15 +25,14 @@ extension Date {
         self = _self
     }
 
-    static func + (lhs: Date, rhs: (Int, Calendar.Component)) -> Date {
-        let amount = rhs.0, units = rhs.1
-        return Calendar.current.date(byAdding: units, value: amount, to: lhs) !! preconditionFailure(
-            "Date addition failed in \(#file):\(#line)"
+    static func + (lhs: Date, rhs: (amount: Int, units: Calendar.Component)) -> Date {
+        Calendar.current.date(byAdding: rhs.units, value: rhs.amount, to: lhs) !! preconditionFailure(
+            "Date addition failed with 'date' \(lhs) 'amount' \(rhs.amount) 'units' \(rhs.units)"
         )
     }
 
-    static func - (lhs: Date, rhs: (Int, Calendar.Component)) -> Date {
-        lhs + (-rhs.0, rhs.1)
+    static func - (lhs: Date, rhs: (amount: Int, units: Calendar.Component)) -> Date {
+        lhs + (-rhs.amount, rhs.units)
     }
 }
 
