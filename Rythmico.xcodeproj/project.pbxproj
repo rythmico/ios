@@ -532,6 +532,7 @@
 		D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */; };
 		D5E987C724EEFC7C00E2E1AF /* BookingApplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */; };
 		D5ED326126065FEC00821ABE /* NonEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED326026065FEC00821ABE /* NonEditableTextField.swift */; };
+		D5ED32632606600C00821ABE /* CustomEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED32622606600C00821ABE /* CustomEditableTextField.swift */; };
 		D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF88B523FB706C0072BD03 /* ProgressBar.swift */; };
 		D5F11566253735F20027D164 /* NonEmpty in Frameworks */ = {isa = PBXBuildFile; productRef = D5F11565253735F20027D164 /* NonEmpty */; };
 		D5F4AE7E2559D3F0001085D5 /* PhoneNumberDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */; };
@@ -993,6 +994,7 @@
 		D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestsTabView.swift; sourceTree = "<group>"; };
 		D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationsView.swift; sourceTree = "<group>"; };
 		D5ED326026065FEC00821ABE /* NonEditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonEditableTextField.swift; sourceTree = "<group>"; };
+		D5ED32622606600C00821ABE /* CustomEditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditableTextField.swift; sourceTree = "<group>"; };
 		D5EF88B523FB706C0072BD03 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D5F4D3DF24F04294000E8580 /* BookingApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplication.swift; sourceTree = "<group>"; };
 		D5F4D3E224F04479000E8580 /* BookingApplicationEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationEndpoints.swift; sourceTree = "<group>"; };
@@ -1565,6 +1567,7 @@
 				D516A8FE253A1D6A002E6EDF /* ConfirmationView.swift */,
 				0392A9CE244D09FF001E97AE /* ContentSizeCategory+Sugar.swift */,
 				D516A8F9253A1816002E6EDF /* CoordinatorStateView.swift */,
+				D5ED32622606600C00821ABE /* CustomEditableTextField.swift */,
 				D5147510240C99A9002EE20C /* CustomTextField.swift */,
 				D5B056A125B21843000D0046 /* DirectURLVideoPlayerView.swift */,
 				D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */,
@@ -2806,6 +2809,7 @@
 				03E88EA724C1F4960077A420 /* App+LaunchScreenCache.swift in Sources */,
 				D53555B823E53699005A20EB /* DeauthenticationServiceDoubles.swift in Sources */,
 				D5D9AE4425335B0400A0ABCC /* StripeCardDetails.swift in Sources */,
+				D5ED32632606600C00821ABE /* CustomEditableTextField.swift in Sources */,
 				D53555B523E53699005A20EB /* AuthenticationError.swift in Sources */,
 				D53555CA23E536AE005A20EB /* AppleAuthorizationService.swift in Sources */,
 				D527B01724FEAA62003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */,
