@@ -64,7 +64,7 @@ struct CustomTextField: UIViewRepresentable {
         self.onCommit = onCommit
     }
 
-    func makeUIView(context: UIViewRepresentableContext<CustomTextField>) -> UITextField {
+    func makeUIView(context: Context) -> UITextField {
         let textField = CustomUITextField(frame: .zero)
         textField.attributedPlaceholder = NSAttributedString(
             string: placeholder,
@@ -88,7 +88,7 @@ struct CustomTextField: UIViewRepresentable {
         Coordinator(text: $text, onEditingChanged: onEditingChanged, onCommit: onCommit)
     }
 
-    func updateUIView(_ uiView: UITextField, context: UIViewRepresentableContext<CustomTextField>) {
+    func updateUIView(_ uiView: UITextField, context: Context) {
         uiView.attributedPlaceholder = NSAttributedString(
             string: placeholder,
             attributes: [
