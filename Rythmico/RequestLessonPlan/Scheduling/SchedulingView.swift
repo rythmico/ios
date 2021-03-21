@@ -34,7 +34,7 @@ struct SchedulingView: View, EditableView, TestableView {
     private static let dateFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
     private static let timeFormatter = Current.dateFormatter(format: .preset(date: .none, time: .short))
 
-    private let firstAvailableDate = Current.date() + (2, .day) |> (0, .second) |> (0, .nanosecond)
+    private let firstAvailableDate = Current.date() + (2, .day) <- (0, [.second, .nanosecond])
 
     var subtitle: [MultiStyleText.Part] {
         "Enter when you want the " +
