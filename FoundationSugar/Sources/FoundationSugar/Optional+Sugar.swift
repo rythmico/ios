@@ -38,3 +38,8 @@ public func !! <T>(optional: T?, exitClosure: @autoclosure () -> Never) -> T {
     return value
 }
 
+infix operator ??= : AssignmentPrecedence
+
+public func ??= <T>(optional: inout T?, value: @autoclosure () -> T) {
+    optional = optional ?? value()
+}
