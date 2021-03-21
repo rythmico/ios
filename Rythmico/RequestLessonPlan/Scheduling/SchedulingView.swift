@@ -35,7 +35,7 @@ struct SchedulingView: View, EditableView, TestableView {
     private static let dateFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
     private static let timeFormatter = Current.dateFormatter(format: .preset(date: .none, time: .short))
 
-    private let firstAvailableDate = Current.date() + (2, .day) <- (0, [.second, .nanosecond])
+    private let firstAvailableDate = Current.date() + (2, .day) <- (0, [.minute, .second, .nanosecond])
 
     var subtitle: [MultiStyleText.Part] {
         "Enter when you want the " +
@@ -85,7 +85,7 @@ struct SchedulingView: View, EditableView, TestableView {
     var body: some View {
         TitleSubtitleContentView(title: "Lesson Schedule", subtitle: subtitle) {
             VStack(spacing: 0) {
-                ScrollView {
+                ScrollView { ScrollViewReader { proxy in
                     VStack(alignment: .leading, spacing: .spacingMedium) {
                         HeaderContentView(title: "Start Date") {
                             CustomEditableTextField(
@@ -113,7 +113,7 @@ struct SchedulingView: View, EditableView, TestableView {
                                     placeholder: "Time...",
                                     text: startTimeText,
                                     isEditing: editingFocus == .startTime,
-                                    editAction: beginEditingStartTime
+                                    editAction: { beginEditingStartTime(scrollViewProxy: proxy) }
                                 ) {
                                     if let startDateBinding = Binding($state.startDate) {
                                         DatePicker(
@@ -122,9 +122,13 @@ struct SchedulingView: View, EditableView, TestableView {
                                             displayedComponents: .hourAndMinute
                                         )
                                         .datePickerStyle(GraphicalDatePickerStyle())
-                                        .introspectDatePicker { $0.becomeFirstResponder() }
+                                        .introspectDatePicker {
+                                            $0.minuteInterval = 5
+                                            $0.becomeFirstResponder()
+                                        }
                                     }
                                 }
+                                .id(EditingFocus.startTime)
                             }
 
                             HeaderContentView(title: "Duration") {
@@ -141,7 +145,7 @@ struct SchedulingView: View, EditableView, TestableView {
                         }
                     }
                     .padding([.trailing, .bottom], .spacingMedium)
-                }
+                }}
                 .padding(.leading, .spacingMedium)
 
                 ZStack(alignment: .bottom) {
@@ -173,7 +177,14 @@ struct SchedulingView: View, EditableView, TestableView {
     }
 
     func beginEditingStartDate() { editingFocus = .startDate }
-    func beginEditingStartTime() { editingFocus = .startTime }
+    func beginEditingStartTime(scrollViewProxy proxy: ScrollViewProxy) {
+        editingFocus = .startTime
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            withAnimation(.easeInOut) {
+                proxy.scrollTo(EditingFocus.startTime, anchor: .top)
+            }
+        }
+    }
     func beginEditingDuration() { editingFocus = .duration }
 
     func onEditingFocusChanged(_ focus: EditingFocus?) {
