@@ -1,4 +1,5 @@
 import SwiftUI
+import Introspect
 import FoundationSugar
 
 protocol SchedulingContext {
@@ -121,6 +122,7 @@ struct SchedulingView: View, EditableView, TestableView {
                                             displayedComponents: .hourAndMinute
                                         )
                                         .datePickerStyle(GraphicalDatePickerStyle())
+                                        .introspectDatePicker { $0.becomeFirstResponder() }
                                     }
                                 }
                             }
