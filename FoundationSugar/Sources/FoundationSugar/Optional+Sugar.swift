@@ -38,6 +38,16 @@ public func !! <T>(optional: T?, exitClosure: @autoclosure () -> Never) -> T {
     return value
 }
 
+infix operator ?! : NilAssertingPrecedence
+
+public func ?! <T>(optional: T?, actionClosure: @autoclosure () -> Void) -> T? {
+    guard let value = optional else {
+        actionClosure()
+        return optional
+    }
+    return value
+}
+
 infix operator ??= : AssignmentPrecedence
 
 public func ??= <T>(optional: inout T?, value: @autoclosure () -> T) {
