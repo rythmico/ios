@@ -74,9 +74,7 @@ struct AddressDetailsView: View, TestableView {
                                     CustomTextField(
                                         "NW1 7FB",
                                         text: $state.postcode,
-                                        textContentType: .postalCode,
-                                        autocapitalizationType: .allCharacters,
-                                        returnKeyType: .search,
+                                        inputMode: .keyboard(contentType: .postalCode, autocapitalization: .allCharacters, returnKey: .search),
                                         onCommit: searchAddresses
                                     ).modifier(RoundedThinOutlineContainer(padded: false))
                                     HStack {

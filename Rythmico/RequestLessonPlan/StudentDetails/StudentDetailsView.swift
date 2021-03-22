@@ -101,8 +101,7 @@ struct StudentDetailsView: View, EditableView, TestableView {
                             CustomTextField(
                                 "Enter Name...",
                                 text: $state.name,
-                                textContentType: .name,
-                                autocapitalizationType: .words,
+                                inputMode: .keyboard(contentType: .name, autocapitalization: .words),
                                 onEditingChanged: textFieldEditingChanged
                             ).modifier(RoundedThinOutlineContainer(padded: false))
                         }

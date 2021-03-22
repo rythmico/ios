@@ -1,6 +1,14 @@
 import SwiftUI
 
 struct CustomTextField: UIViewRepresentable {
+    enum InputMode {
+        case keyboard(
+                contentType: UITextContentType? = nil,
+                autocapitalization: UITextAutocapitalizationType = .none,
+                returnKey: UIReturnKeyType = .done
+             )
+    }
+
     final class Coordinator: NSObject, UITextFieldDelegate {
         @Binding var text: String
         var onEditingChanged: (Bool) -> Void
@@ -37,29 +45,23 @@ struct CustomTextField: UIViewRepresentable {
 
     var placeholder: String
     @Binding var text: String
-    var textContentType: UITextContentType?
-    var autocapitalizationType: UITextAutocapitalizationType
-    var returnKeyType: UIReturnKeyType
     var isEditable: Bool
+    var inputMode: InputMode
     var onEditingChanged: (Bool) -> Void
     var onCommit: () -> Void
 
     init(
         _ placeholder: String,
         text: Binding<String>,
-        textContentType: UITextContentType? = nil,
-        autocapitalizationType: UITextAutocapitalizationType = .none,
-        returnKeyType: UIReturnKeyType = .done,
         isEditable: Bool = true,
+        inputMode: InputMode = .keyboard(),
         onEditingChanged: @escaping (Bool) -> Void = { _ in },
         onCommit: @escaping () -> Void = {}
     ) {
         self.placeholder = placeholder
         self._text = text
-        self.textContentType = textContentType
-        self.autocapitalizationType = autocapitalizationType
-        self.returnKeyType = returnKeyType
         self.isEditable = isEditable
+        self.inputMode = inputMode
         self.onEditingChanged = onEditingChanged
         self.onCommit = onCommit
     }
@@ -74,10 +76,13 @@ struct CustomTextField: UIViewRepresentable {
             ]
         )
         textField.font = .rythmicoFont(.body)
-        textField.textContentType = textContentType
-        textField.autocapitalizationType = autocapitalizationType
-        textField.returnKeyType = returnKeyType
         textField.isUserInteractionEnabled = isEditable
+        switch inputMode {
+        case let .keyboard(contentType, autocapitalization, returnKey):
+            textField.textContentType = contentType
+            textField.autocapitalizationType = autocapitalization
+            textField.returnKeyType = returnKey
+        }
         textField.delegate = context.coordinator
         textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         textField.setContentHuggingPriority(.defaultHigh, for: .vertical)
