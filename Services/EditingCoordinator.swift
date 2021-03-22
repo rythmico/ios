@@ -1,13 +1,30 @@
 import UIKit
 
 protocol EditingFocusEnum: Equatable {
-    static var textField: Self { get }
+    static var usingKeyboard: [Self] { get }
+}
+
+extension EditingFocusEnum {
+    var usesKeyboard: Bool {
+        Self.usingKeyboard.contains(self)
+    }
 }
 
 final class EditingCoordinator<Focus: EditingFocusEnum>: ObservableObject {
     @Published var focus: Focus? = .none {
         willSet {
-            if focus == .textField, newValue != .textField {
+            let shouldDismissKeyboard: Bool
+
+            switch (focus, newValue) {
+            case let (oldFocus?, newFocus?):
+                shouldDismissKeyboard = oldFocus.usesKeyboard && !newFocus.usesKeyboard
+            case let (oldFocus?, .none):
+                shouldDismissKeyboard = oldFocus.usesKeyboard
+            case (.none, _):
+                shouldDismissKeyboard = false
+            }
+
+            if shouldDismissKeyboard {
                 keyboardDismisser.dismissKeyboard()
             }
         }

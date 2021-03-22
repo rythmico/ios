@@ -83,7 +83,7 @@ final class SchedulingViewTests: XCTestCase {
         let (_, state, view) = schedulingView
 
         XCTAssertView(view) { view in
-            view.beginEditingStartTime()
+            view.onEditingStartTimeChanged(true)
 
             DispatchQueue.main.async {
                 XCTAssertNotNil(state.startDate)
@@ -111,7 +111,7 @@ final class SchedulingViewTests: XCTestCase {
         let (_, state, view) = schedulingView
 
         XCTAssertView(view) { view in
-            view.beginEditingDuration()
+            view.onEditingDurationChanged(true)
 
             DispatchQueue.main.async {
                 XCTAssertNil(state.startDate)

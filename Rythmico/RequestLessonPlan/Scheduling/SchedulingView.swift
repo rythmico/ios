@@ -16,10 +16,11 @@ struct SchedulingView: View, EditableView, TestableView {
     }
 
     enum EditingFocus: EditingFocusEnum {
-        case textField // unused but required
         case startDate
         case startTime
         case duration
+
+        static var usingKeyboard = [startTime, duration]
     }
 
     @StateObject
@@ -36,6 +37,7 @@ struct SchedulingView: View, EditableView, TestableView {
     private static let timeFormatter = Current.dateFormatter(format: .preset(date: .none, time: .short))
 
     private let firstAvailableDate = Current.date() + (2, .day) <- (0, [.minute, .second, .nanosecond])
+    private let defaultDuration: Schedule.Duration = .oneHour
 
     var subtitle: [MultiStyleText.Part] {
         "Enter when you want the " +
@@ -109,34 +111,29 @@ struct SchedulingView: View, EditableView, TestableView {
 
                         HStack(spacing: .spacingExtraSmall) {
                             HeaderContentView(title: "Time") {
-                                CustomEditableTextField(
-                                    placeholder: "Time...",
-                                    text: startTimeText,
-                                    isEditing: editingFocus == .startTime,
-                                    editAction: { beginEditingStartTime(scrollViewProxy: proxy) }
-                                ) {
-                                    if let startDateBinding = Binding($state.startDate) {
-                                        DatePicker(
-                                            "",
-                                            selection: startDateBinding,
-                                            displayedComponents: .hourAndMinute
-                                        )
-                                        .datePickerStyle(GraphicalDatePickerStyle())
-                                        .introspectDatePicker {
-                                            $0.minuteInterval = 5
-                                            $0.becomeFirstResponder()
-                                        }
-                                    }
-                                }
-                                .id(EditingFocus.startTime)
+                                CustomTextField(
+                                    "Time...",
+                                    text: .constant(startTimeText ?? .empty),
+                                    inputMode: DatePickerInputMode(
+                                        selection: $state.startDate.or(firstAvailableDate),
+                                        mode: .time
+                                    ),
+                                    inputAccessory: .doneButton,
+                                    onEditingChanged: onEditingStartTimeChanged
+                                ).modifier(RoundedThinOutlineContainer(padded: false))
                             }
 
                             HeaderContentView(title: "Duration") {
-                                NonEditableTextField(
-                                    placeholder: "Duration...",
-                                    text: durationText,
-                                    tapAction: beginEditingDuration
-                                )
+                                CustomTextField(
+                                    "Duration...",
+                                    text: .constant(durationText ?? .empty),
+                                    inputMode: PickerInputMode(
+                                        selection: $state.duration.or(defaultDuration),
+                                        formatter: { "\($0.rawValue) minutes" }
+                                    ),
+                                    inputAccessory: .doneButton,
+                                    onEditingChanged: onEditingDurationChanged
+                                ).modifier(RoundedThinOutlineContainer(padded: false))
                             }
                         }
 
@@ -155,18 +152,6 @@ struct SchedulingView: View, EditableView, TestableView {
                         }
                         .zIndex(0)
                     }
-
-                    if editingFocus == .duration {
-                        if let durationBinding = Binding($state.duration) {
-                            FloatingInputView(doneAction: endEditing) {
-                                BetterPicker(
-                                    selection: durationBinding,
-                                    formatter: { "\($0.rawValue) minutes" }
-                                )
-                            }
-                            .zIndex(1)
-                        }
-                    }
                 }
             }
         }
@@ -177,21 +162,12 @@ struct SchedulingView: View, EditableView, TestableView {
     }
 
     func beginEditingStartDate() { editingFocus = .startDate }
-    func beginEditingStartTime(scrollViewProxy proxy: ScrollViewProxy) {
-        editingFocus = .startTime
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            withAnimation(.easeInOut) {
-                proxy.scrollTo(EditingFocus.startTime, anchor: .top)
-            }
-        }
-    }
-    func beginEditingDuration() { editingFocus = .duration }
+    func onEditingStartTimeChanged(_ isEditing: Bool) { editingFocus = isEditing ? .startTime : .none }
+    func onEditingDurationChanged(_ isEditing: Bool) { editingFocus = isEditing ? .duration : .none }
 
     func onEditingFocusChanged(_ focus: EditingFocus?) {
         guard let focus = focus else { return }
         switch focus {
-        case .textField: // unused
-            break
         case .startDate:
             state.hasFocusedDate = true
             state.startDate ??= firstAvailableDate
@@ -199,7 +175,7 @@ struct SchedulingView: View, EditableView, TestableView {
             state.hasFocusedTime = true
             state.startDate ??= firstAvailableDate
         case .duration:
-            state.duration ??= .oneHour
+            state.duration ??= defaultDuration
         }
     }
 }
