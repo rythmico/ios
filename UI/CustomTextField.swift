@@ -1,12 +1,8 @@
 import SwiftUI
 
 struct CustomTextField: UIViewRepresentable {
-    enum InputMode {
-        case keyboard(
-                contentType: UITextContentType? = nil,
-                autocapitalization: UITextAutocapitalizationType = .none,
-                returnKey: UIReturnKeyType = .done
-             )
+    enum InputAccessory {
+        case doneButton
     }
 
     final class Coordinator: NSObject, UITextFieldDelegate {
@@ -46,7 +42,8 @@ struct CustomTextField: UIViewRepresentable {
     var placeholder: String
     @Binding var text: String
     var isEditable: Bool
-    var inputMode: InputMode
+    var inputMode: CustomTextFieldInputMode
+    var inputAccessory: InputAccessory?
     var onEditingChanged: (Bool) -> Void
     var onCommit: () -> Void
 
@@ -54,7 +51,8 @@ struct CustomTextField: UIViewRepresentable {
         _ placeholder: String,
         text: Binding<String>,
         isEditable: Bool = true,
-        inputMode: InputMode = .keyboard(),
+        inputMode: CustomTextFieldInputMode = KeyboardInputMode(),
+        inputAccessory: InputAccessory? = nil,
         onEditingChanged: @escaping (Bool) -> Void = { _ in },
         onCommit: @escaping () -> Void = {}
     ) {
@@ -62,6 +60,7 @@ struct CustomTextField: UIViewRepresentable {
         self._text = text
         self.isEditable = isEditable
         self.inputMode = inputMode
+        self.inputAccessory = inputAccessory
         self.onEditingChanged = onEditingChanged
         self.onCommit = onCommit
     }
@@ -77,11 +76,11 @@ struct CustomTextField: UIViewRepresentable {
         )
         textField.font = .rythmicoFont(.body)
         textField.isUserInteractionEnabled = isEditable
-        switch inputMode {
-        case let .keyboard(contentType, autocapitalization, returnKey):
-            textField.textContentType = contentType
-            textField.autocapitalizationType = autocapitalization
-            textField.returnKeyType = returnKey
+        textField.inputView = inputMode.inputView(textField: textField)
+        textField.inputAccessoryView = inputAccessory.map {
+            switch $0 {
+            case .doneButton: return UIToolbar.dismissKeyboardTooltip(color: .rythmicoPurple)
+            }
         }
         textField.delegate = context.coordinator
         textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)

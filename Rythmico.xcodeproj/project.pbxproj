@@ -290,6 +290,7 @@
 		D543CA6E2608B77D00900975 /* ScrollView+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA6D2608B77D00900975 /* ScrollView+Sugar.swift */; };
 		D543CA702608F8B400900975 /* Binding+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA6F2608F8B400900975 /* Binding+Sugar.swift */; };
 		D543CA712608F8B400900975 /* Binding+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA6F2608F8B400900975 /* Binding+Sugar.swift */; };
+		D543CA732609227D00900975 /* CustomTextFieldInputMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA722609227D00900975 /* CustomTextFieldInputMode.swift */; };
 		D5444FEC2602777D00369BA5 /* ImageProcessingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5444FEB2602777D00369BA5 /* ImageProcessingService.swift */; };
 		D5444FED2602777D00369BA5 /* ImageProcessingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5444FEB2602777D00369BA5 /* ImageProcessingService.swift */; };
 		D5444FEF2602815000369BA5 /* ImageProcessingServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5444FEE2602815000369BA5 /* ImageProcessingServiceDoubles.swift */; };
@@ -823,6 +824,7 @@
 		D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanContext.swift; sourceTree = "<group>"; };
 		D543CA6D2608B77D00900975 /* ScrollView+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Sugar.swift"; sourceTree = "<group>"; };
 		D543CA6F2608F8B400900975 /* Binding+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Sugar.swift"; sourceTree = "<group>"; };
+		D543CA722609227D00900975 /* CustomTextFieldInputMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldInputMode.swift; sourceTree = "<group>"; };
 		D5444FEB2602777D00369BA5 /* ImageProcessingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessingService.swift; sourceTree = "<group>"; };
 		D5444FEE2602815000369BA5 /* ImageProcessingServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessingServiceDoubles.swift; sourceTree = "<group>"; };
 		D5473C9D241AC3B800D66775 /* AddressDetailsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetailsViewTests.swift; sourceTree = "<group>"; };
@@ -1579,6 +1581,7 @@
 				D516A8F9253A1816002E6EDF /* CoordinatorStateView.swift */,
 				D5ED32622606600C00821ABE /* CustomEditableTextField.swift */,
 				D5147510240C99A9002EE20C /* CustomTextField.swift */,
+				D543CA722609227D00900975 /* CustomTextFieldInputMode.swift */,
 				D5B056A125B21843000D0046 /* DirectURLVideoPlayerView.swift */,
 				D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */,
 				D5D9AE4E253367A100A0ABCC /* Divider.swift */,
@@ -2633,6 +2636,7 @@
 				D54CF08E25FA8724007D5050 /* AnalyticsCoordinator.swift in Sources */,
 				D53555B623E53699005A20EB /* AuthenticationService.swift in Sources */,
 				D531295D255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift in Sources */,
+				D543CA732609227D00900975 /* CustomTextFieldInputMode.swift in Sources */,
 				D54CF08725FA8624007D5050 /* AnalyticsService.swift in Sources */,
 				D55C35EA25A3A6490023E56B /* CalendarInfo.swift in Sources */,
 				D53555BB23E53699005A20EB /* UserCredentialDoubles.swift in Sources */,
