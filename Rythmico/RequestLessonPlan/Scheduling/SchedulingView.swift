@@ -85,7 +85,7 @@ struct SchedulingView: View, EditableView, TestableView {
     var body: some View {
         TitleSubtitleContentView(title: "Lesson Schedule", subtitle: subtitle) {
             VStack(spacing: 0) {
-                ScrollView { ScrollViewReader { proxy in
+                ScrollView { proxy in
                     VStack(alignment: .leading, spacing: .spacingMedium) {
                         HeaderContentView(title: "Start Date") {
                             CustomEditableTextField(
@@ -145,7 +145,7 @@ struct SchedulingView: View, EditableView, TestableView {
                         }
                     }
                     .padding([.trailing, .bottom], .spacingMedium)
-                }}
+                }
                 .padding(.leading, .spacingMedium)
 
                 ZStack(alignment: .bottom) {
