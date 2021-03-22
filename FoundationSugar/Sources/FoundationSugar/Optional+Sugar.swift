@@ -1,5 +1,20 @@
 import Foundation
 
+public protocol OptionalProtocol {
+    associatedtype Wrapped
+
+    var value: Wrapped? { get }
+
+    static func some(_ wrapped: Wrapped) -> Self
+    static var none: Self { get }
+}
+
+extension Optional: OptionalProtocol {
+    public var value: Wrapped? {
+        return self
+    }
+}
+
 extension Optional {
     public mutating func nilifyIfSome() -> Bool {
         switch self {
