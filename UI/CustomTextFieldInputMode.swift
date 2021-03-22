@@ -87,7 +87,6 @@ private final class PickerAsUIView<Element: CasePickable & Hashable>: UIPickerVi
         self.dataSource = self
         self.delegate = self
         self.selectRow(data.firstIndex(of: selection.wrappedValue) ?? 0, inComponent: 0, animated: false)
-        self.reloadAllComponents()
     }
 
     @available(*, unavailable)
