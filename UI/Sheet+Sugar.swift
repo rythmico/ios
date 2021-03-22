@@ -21,12 +21,3 @@ extension View {
         }
     }
 }
-
-private extension Binding where Value == Bool {
-    init<Wrapped>(trueIfSome optional: Binding<Wrapped?>) {
-        self.init(
-            get: { optional.wrappedValue != nil },
-            set: { if !$0 { optional.wrappedValue = nil } }
-        )
-    }
-}

@@ -288,6 +288,8 @@
 		D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = D53668FC255EEDEF00A9D97D /* Stripe */; };
 		D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */; };
 		D543CA6E2608B77D00900975 /* ScrollView+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA6D2608B77D00900975 /* ScrollView+Sugar.swift */; };
+		D543CA702608F8B400900975 /* Binding+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA6F2608F8B400900975 /* Binding+Sugar.swift */; };
+		D543CA712608F8B400900975 /* Binding+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA6F2608F8B400900975 /* Binding+Sugar.swift */; };
 		D5444FEC2602777D00369BA5 /* ImageProcessingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5444FEB2602777D00369BA5 /* ImageProcessingService.swift */; };
 		D5444FED2602777D00369BA5 /* ImageProcessingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5444FEB2602777D00369BA5 /* ImageProcessingService.swift */; };
 		D5444FEF2602815000369BA5 /* ImageProcessingServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5444FEE2602815000369BA5 /* ImageProcessingServiceDoubles.swift */; };
@@ -820,6 +822,7 @@
 		D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanContext.swift; sourceTree = "<group>"; };
 		D543CA6D2608B77D00900975 /* ScrollView+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Sugar.swift"; sourceTree = "<group>"; };
+		D543CA6F2608F8B400900975 /* Binding+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Sugar.swift"; sourceTree = "<group>"; };
 		D5444FEB2602777D00369BA5 /* ImageProcessingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessingService.swift; sourceTree = "<group>"; };
 		D5444FEE2602815000369BA5 /* ImageProcessingServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessingServiceDoubles.swift; sourceTree = "<group>"; };
 		D5473C9D241AC3B800D66775 /* AddressDetailsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetailsViewTests.swift; sourceTree = "<group>"; };
@@ -1564,6 +1567,7 @@
 				D527B00A24FD3297003E81A9 /* AvatarStackView.swift */,
 				D527B00824FD2047003E81A9 /* AvatarView.swift */,
 				D5F5065C23FF16AA00CA4094 /* BackButton.swift */,
+				D543CA6F2608F8B400900975 /* Binding+Sugar.swift */,
 				D5D9AE5B2533865D00A0ABCC /* Button+Sugar.swift */,
 				D5F506B9240637F400CA4094 /* Buttons+Rythmico.swift */,
 				D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */,
@@ -2648,6 +2652,7 @@
 				035AF3082491A51D004A01B2 /* UIAccessibilityProtocol.swift in Sources */,
 				D52A4F192538C41400C65A91 /* CardSetupEndpoints.swift in Sources */,
 				D5D974F425263FAF000AD074 /* PhoneNumber.swift in Sources */,
+				D543CA702608F8B400900975 /* Binding+Sugar.swift in Sources */,
 				D5D9AE762534CBB700A0ABCC /* Price.swift in Sources */,
 				D5AAF7DF23FB444500E410F2 /* RoundedShadowContainer.swift in Sources */,
 				D535554723E20076005A20EB /* Colors.swift in Sources */,
@@ -2998,6 +3003,7 @@
 				035B1D66249E643400AABFEA /* DeviceTokenDeleterDoubles.swift in Sources */,
 				D575C831254F10E1001664AB /* RemoteConfigService.swift in Sources */,
 				D5E58F18256AF2BA00EB52ED /* Student.swift in Sources */,
+				D543CA712608F8B400900975 /* Binding+Sugar.swift in Sources */,
 				D524D0C525046BAE00BC9AF7 /* PushNotificationRegisterServiceDoubles.swift in Sources */,
 				D524D0C425046BA900BC9AF7 /* PushNotificationRegisterService.swift in Sources */,
 				035B1D52249E57FD00AABFEA /* Spacing.swift in Sources */,
