@@ -12,7 +12,7 @@ extension LessonPlanCancellationView {
         var submitHandler: Handler<Reason>
 
         @State
-        private var selectedReason: Reason?
+        var selectedReason: Reason?
         @State
         private var isPresentingReschedulingAlert = false
 
