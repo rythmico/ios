@@ -4,9 +4,9 @@ infix operator <- : AdditionPrecedence
 
 extension Date {
     public static func <- (lhs: Date, rhs: (amount: Int, units: [Calendar.Component], calendar: Calendar)) -> Date {
-        rhs.units.reduce(lhs) { lhs, unit in
-            rhs.calendar.date(bySetting: unit, value: rhs.amount, of: lhs) !! preconditionFailure(
-                "Date mutation failed with 'date' \(lhs) 'amount' \(rhs.amount) 'unit' \(unit) 'calendar' \(rhs.calendar)"
+        rhs.units.reduce(lhs) { acc, unit in
+            rhs.calendar.date(bySetting: unit, value: rhs.amount, of: acc) !! preconditionFailure(
+                "Date mutation failed with 'date' \(acc) 'amount' \(rhs.amount) 'unit' \(unit) 'calendar' \(rhs.calendar)"
             )
         }
     }
@@ -33,7 +33,7 @@ extension Date {
 }
 
 extension Date {
-    static var referenceDate: Date {
+    public static var referenceDate: Date {
         Date(timeIntervalSinceReferenceDate: .zero)
     }
 }
