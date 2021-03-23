@@ -33,6 +33,26 @@ extension Date {
 }
 
 extension Date {
+    public init(date: Date, time: Date, calendar: Calendar) {
+        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+        let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)
+
+        let dateTimeComponents = DateComponents(
+            year: dateComponents.year,
+            month: dateComponents.month,
+            day: dateComponents.day,
+            hour: timeComponents.hour,
+            minute: timeComponents.minute,
+            second: timeComponents.second
+        )
+
+        self = calendar.date(from: dateTimeComponents) !! preconditionFailure(
+            "Date merging failed with 'date' \(date) 'time' \(time) 'calendar' \(calendar)"
+        )
+    }
+}
+
+extension Date {
     public static var referenceDate: Date {
         Date(timeIntervalSinceReferenceDate: .zero)
     }
