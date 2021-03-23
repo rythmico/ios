@@ -90,7 +90,7 @@ struct LessonPlanDetailView: View, TestableView {
     private static let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM @ h:mma"))
 
     private var startDateText: String { Self.startDateFormatter.string(from: lessonPlan.schedule.startDate) }
-    private var durationText: String { "\(lessonPlan.schedule.duration) minutes" }
+    private var durationText: String { lessonPlan.schedule.duration.title }
 
     @ArrayBuilder<ActionList.Button>
     private var actions: [ActionList.Button] {

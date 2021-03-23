@@ -10,7 +10,7 @@ struct LessonDetailView: View {
     var studentName: String { lesson.student.name }
     var startDate: String { Self.dateFormatter.string(from: lesson.schedule.startDate) }
     var time: String { Self.timeFormatter.string(from: lesson.schedule.startDate) }
-    var duration: String { "\(lesson.schedule.duration) minutes" }
+    var duration: String { lesson.schedule.duration.title }
 
     @State
     private var isStudentDetailsPresented = false
