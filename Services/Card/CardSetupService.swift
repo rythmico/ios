@@ -1,4 +1,5 @@
 import Foundation
+import FoundationSugar
 import Stripe
 
 struct CardSetupParams {
@@ -30,15 +31,9 @@ extension STPPaymentHandler: CardSetupServiceProtocol {
                 case .canceled:
                     completion(nil)
                 case .failed:
-                    guard let error = error else {
-                        preconditionFailure("Failed status should come with error")
-                    }
-                    completion(.failure(error))
+                    completion(.failure(error !! preconditionFailure("Failed status should come with error")))
                 case .succeeded:
-                    guard let setupIntent = setupIntent else {
-                        preconditionFailure("Succeeded status should come with setupIntent")
-                    }
-                    completion(.success(setupIntent))
+                    completion(.success(setupIntent !! preconditionFailure("Succeeded status should come with setupIntent")))
                 @unknown default:
                     fatalError("Unhandled payment setup intent status")
                 }

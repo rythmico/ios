@@ -1,4 +1,5 @@
 import SwiftUI
+import FoundationSugar
 import EnumKit
 import Then
 
@@ -100,7 +101,7 @@ extension AppState.LessonsContext {
 
     var bookingValues: (lessonPlan: LessonPlan, application: LessonPlan.Application)? {
         get {
-            (isBookingLessonPlan ? unwrap(a: reviewingLessonPlan, b: reviewingApplication) : nil)
+            (isBookingLessonPlan ? unwrap(reviewingLessonPlan, reviewingApplication) : nil)
             ??
             self[case: Self.bookedLessonPlan]
         }
@@ -112,10 +113,5 @@ extension AppState.LessonsContext {
             default: break
             }
         }
-    }
-
-    private func unwrap<A, B>(a: A?, b: B?) -> (A, B)? {
-        guard let a = a, let b = b else { return nil }
-        return (a, b)
     }
 }

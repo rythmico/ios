@@ -287,6 +287,10 @@
 		D53555E623E5383C005A20EB /* AppleAuthorizationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560E23CD384300BC8485 /* AppleAuthorizationServiceTests.swift */; };
 		D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = D53668FC255EEDEF00A9D97D /* Stripe */; };
 		D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */; };
+		D543CA6E2608B77D00900975 /* ScrollView+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA6D2608B77D00900975 /* ScrollView+Sugar.swift */; };
+		D543CA702608F8B400900975 /* Binding+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA6F2608F8B400900975 /* Binding+Sugar.swift */; };
+		D543CA712608F8B400900975 /* Binding+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA6F2608F8B400900975 /* Binding+Sugar.swift */; };
+		D543CA732609227D00900975 /* CustomTextFieldInputMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA722609227D00900975 /* CustomTextFieldInputMode.swift */; };
 		D5444FEC2602777D00369BA5 /* ImageProcessingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5444FEB2602777D00369BA5 /* ImageProcessingService.swift */; };
 		D5444FED2602777D00369BA5 /* ImageProcessingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5444FEB2602777D00369BA5 /* ImageProcessingService.swift */; };
 		D5444FEF2602815000369BA5 /* ImageProcessingServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5444FEE2602815000369BA5 /* ImageProcessingServiceDoubles.swift */; };
@@ -531,6 +535,12 @@
 		D5E987C224EDE9A100E2E1AF /* Routes+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C024EDE98900E2E1AF /* Routes+Tutor.swift */; };
 		D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */; };
 		D5E987C724EEFC7C00E2E1AF /* BookingApplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */; };
+		D5ED326126065FEC00821ABE /* NonEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED326026065FEC00821ABE /* NonEditableTextField.swift */; };
+		D5ED32632606600C00821ABE /* CustomEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED32622606600C00821ABE /* CustomEditableTextField.swift */; };
+		D5ED3265260667E800821ABE /* DateDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED3264260667E800821ABE /* DateDoubles.swift */; };
+		D5ED3266260667E800821ABE /* DateDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED3264260667E800821ABE /* DateDoubles.swift */; };
+		D5ED3268260668BE00821ABE /* Date+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED3267260668BE00821ABE /* Date+Sugar.swift */; };
+		D5ED3269260668BE00821ABE /* Date+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED3267260668BE00821ABE /* Date+Sugar.swift */; };
 		D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF88B523FB706C0072BD03 /* ProgressBar.swift */; };
 		D5F11566253735F20027D164 /* NonEmpty in Frameworks */ = {isa = PBXBuildFile; productRef = D5F11565253735F20027D164 /* NonEmpty */; };
 		D5F4AE7E2559D3F0001085D5 /* PhoneNumberDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */; };
@@ -552,8 +562,6 @@
 		D5F4D3F524F33CA4000E8580 /* AddressDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984024717AE8005529EB /* AddressDoubles.swift */; };
 		D5F4D3F724F3476F000E8580 /* AddressMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3F624F3476E000E8580 /* AddressMapCell.swift */; };
 		D5F4D3FB24F7120E000E8580 /* GroupedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3FA24F7120E000E8580 /* GroupedButton.swift */; };
-		D5F4D3FF24F858AE000E8580 /* Date+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3FE24F858AE000E8580 /* Date+Sugar.swift */; };
-		D5F4D40024F858AE000E8580 /* Date+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3FE24F858AE000E8580 /* Date+Sugar.swift */; };
 		D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5065C23FF16AA00CA4094 /* BackButton.swift */; };
 		D5F5065F240055E800CA4094 /* HeaderContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5065E240055E800CA4094 /* HeaderContentView.swift */; };
 		D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */; };
@@ -814,6 +822,9 @@
 		D535554623E20076005A20EB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanContext.swift; sourceTree = "<group>"; };
+		D543CA6D2608B77D00900975 /* ScrollView+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Sugar.swift"; sourceTree = "<group>"; };
+		D543CA6F2608F8B400900975 /* Binding+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Sugar.swift"; sourceTree = "<group>"; };
+		D543CA722609227D00900975 /* CustomTextFieldInputMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldInputMode.swift; sourceTree = "<group>"; };
 		D5444FEB2602777D00369BA5 /* ImageProcessingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessingService.swift; sourceTree = "<group>"; };
 		D5444FEE2602815000369BA5 /* ImageProcessingServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessingServiceDoubles.swift; sourceTree = "<group>"; };
 		D5473C9D241AC3B800D66775 /* AddressDetailsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetailsViewTests.swift; sourceTree = "<group>"; };
@@ -991,6 +1002,10 @@
 		D5E987C024EDE98900E2E1AF /* Routes+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Routes+Tutor.swift"; sourceTree = "<group>"; };
 		D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestsTabView.swift; sourceTree = "<group>"; };
 		D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationsView.swift; sourceTree = "<group>"; };
+		D5ED326026065FEC00821ABE /* NonEditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonEditableTextField.swift; sourceTree = "<group>"; };
+		D5ED32622606600C00821ABE /* CustomEditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditableTextField.swift; sourceTree = "<group>"; };
+		D5ED3264260667E800821ABE /* DateDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDoubles.swift; sourceTree = "<group>"; };
+		D5ED3267260668BE00821ABE /* Date+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Sugar.swift"; sourceTree = "<group>"; };
 		D5EF88B523FB706C0072BD03 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D5F4D3DF24F04294000E8580 /* BookingApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplication.swift; sourceTree = "<group>"; };
 		D5F4D3E224F04479000E8580 /* BookingApplicationEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationEndpoints.swift; sourceTree = "<group>"; };
@@ -1004,7 +1019,6 @@
 		D5F4D3F224F32EBE000E8580 /* BookingApplicationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationSection.swift; sourceTree = "<group>"; };
 		D5F4D3F624F3476E000E8580 /* AddressMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressMapCell.swift; sourceTree = "<group>"; };
 		D5F4D3FA24F7120E000E8580 /* GroupedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedButton.swift; sourceTree = "<group>"; };
-		D5F4D3FE24F858AE000E8580 /* Date+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Sugar.swift"; sourceTree = "<group>"; };
 		D5F5065C23FF16AA00CA4094 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		D5F5065E240055E800CA4094 /* HeaderContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderContentView.swift; sourceTree = "<group>"; };
 		D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleContentView.swift; sourceTree = "<group>"; };
@@ -1449,7 +1463,7 @@
 				D575C818254DD6C8001664AB /* AppSplash.swift */,
 				D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */,
 				03E88EB024C205C30077A420 /* Current.swift */,
-				D5F4D3FE24F858AE000E8580 /* Date+Sugar.swift */,
+				D5ED3267260668BE00821ABE /* Date+Sugar.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1493,6 +1507,7 @@
 				D55C35EF25A3A6590023E56B /* Calendar */,
 				D501589F2538BE84005E02FA /* Card */,
 				D5D9AE832534CC0700A0ABCC /* Checkout */,
+				D5ED3264260667E800821ABE /* DateDoubles.swift */,
 				D5CC5FF025029525007DFE84 /* ImageReference.swift */,
 				032B6FD524B7882B00299A09 /* Instrument */,
 				D517FF7B2553693B00A41639 /* Lesson */,
@@ -1554,6 +1569,7 @@
 				D527B00A24FD3297003E81A9 /* AvatarStackView.swift */,
 				D527B00824FD2047003E81A9 /* AvatarView.swift */,
 				D5F5065C23FF16AA00CA4094 /* BackButton.swift */,
+				D543CA6F2608F8B400900975 /* Binding+Sugar.swift */,
 				D5D9AE5B2533865D00A0ABCC /* Button+Sugar.swift */,
 				D5F506B9240637F400CA4094 /* Buttons+Rythmico.swift */,
 				D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */,
@@ -1563,7 +1579,9 @@
 				D516A8FE253A1D6A002E6EDF /* ConfirmationView.swift */,
 				0392A9CE244D09FF001E97AE /* ContentSizeCategory+Sugar.swift */,
 				D516A8F9253A1816002E6EDF /* CoordinatorStateView.swift */,
+				D5ED32622606600C00821ABE /* CustomEditableTextField.swift */,
 				D5147510240C99A9002EE20C /* CustomTextField.swift */,
+				D543CA722609227D00900975 /* CustomTextFieldInputMode.swift */,
 				D5B056A125B21843000D0046 /* DirectURLVideoPlayerView.swift */,
 				D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */,
 				D5D9AE4E253367A100A0ABCC /* Divider.swift */,
@@ -1598,6 +1616,7 @@
 				D505804825D5A45C0028040F /* NavigationLink+Detail.swift */,
 				D5E58F45256DB0AC00EB52ED /* NavigationLink+Hidden.swift */,
 				D5882501251CBE0C000820F4 /* NavigationViewFixInteractiveDismissal.swift */,
+				D5ED326026065FEC00821ABE /* NonEditableTextField.swift */,
 				D58149E8251D262B0009BBB3 /* PageDotIndicator.swift */,
 				D52D8A4D259D5FDC00A6CBBF /* PageView.swift */,
 				D5D78E0B25257800007041BE /* PhoneNumberField.swift */,
@@ -1609,6 +1628,7 @@
 				D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */,
 				D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */,
 				D5F50662240056FA00CA4094 /* RoundedThinOutlineContainer.swift */,
+				D543CA6D2608B77D00900975 /* ScrollView+Sugar.swift */,
 				D5B57A702419F79700BE9B4F /* SectionHeaderView.swift */,
 				0372E359249ABAB80048B402 /* SelectableList.swift */,
 				D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */,
@@ -2616,6 +2636,7 @@
 				D54CF08E25FA8724007D5050 /* AnalyticsCoordinator.swift in Sources */,
 				D53555B623E53699005A20EB /* AuthenticationService.swift in Sources */,
 				D531295D255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift in Sources */,
+				D543CA732609227D00900975 /* CustomTextFieldInputMode.swift in Sources */,
 				D54CF08725FA8624007D5050 /* AnalyticsService.swift in Sources */,
 				D55C35EA25A3A6490023E56B /* CalendarInfo.swift in Sources */,
 				D53555BB23E53699005A20EB /* UserCredentialDoubles.swift in Sources */,
@@ -2629,11 +2650,13 @@
 				D516A8FA253A1816002E6EDF /* CoordinatorStateView.swift in Sources */,
 				D5312968256427EA00CA6621 /* LessonSkippingView.swift in Sources */,
 				D5F506B42405ED9300CA4094 /* RoundedThickOutlineContainer.swift in Sources */,
+				D5ED3265260667E800821ABE /* DateDoubles.swift in Sources */,
 				031378C5249A7453005FC49C /* CloseButton.swift in Sources */,
 				D5077D8B2587D80200F8595E /* LessonSkippingContentView.swift in Sources */,
 				035AF3082491A51D004A01B2 /* UIAccessibilityProtocol.swift in Sources */,
 				D52A4F192538C41400C65A91 /* CardSetupEndpoints.swift in Sources */,
 				D5D974F425263FAF000AD074 /* PhoneNumber.swift in Sources */,
+				D543CA702608F8B400900975 /* Binding+Sugar.swift in Sources */,
 				D5D9AE762534CBB700A0ABCC /* Price.swift in Sources */,
 				D5AAF7DF23FB444500E410F2 /* RoundedShadowContainer.swift in Sources */,
 				D535554723E20076005A20EB /* Colors.swift in Sources */,
@@ -2781,6 +2804,7 @@
 				03275AD5248FDB38009C3980 /* AppEnvironment.swift in Sources */,
 				D5814A00251D7FFC0009BBB3 /* App+SplitViewCustomization.swift in Sources */,
 				D5E987B924ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */,
+				D543CA6E2608B77D00900975 /* ScrollView+Sugar.swift in Sources */,
 				D5AAF7DD23FB431E00E410F2 /* InstrumentView.swift in Sources */,
 				D53555BC23E53699005A20EB /* UserCredentialProvider.swift in Sources */,
 				03A91EF62491887A00DEAD5E /* DeviceTokenProviderDoubles.swift in Sources */,
@@ -2801,20 +2825,22 @@
 				D535555023E4AB9A005A20EB /* ActivityIndicator.swift in Sources */,
 				D5147511240C99A9002EE20C /* CustomTextField.swift in Sources */,
 				03E88EA724C1F4960077A420 /* App+LaunchScreenCache.swift in Sources */,
+				D5ED3268260668BE00821ABE /* Date+Sugar.swift in Sources */,
 				D53555B823E53699005A20EB /* DeauthenticationServiceDoubles.swift in Sources */,
 				D5D9AE4425335B0400A0ABCC /* StripeCardDetails.swift in Sources */,
+				D5ED32632606600C00821ABE /* CustomEditableTextField.swift in Sources */,
 				D53555B523E53699005A20EB /* AuthenticationError.swift in Sources */,
 				D53555CA23E536AE005A20EB /* AppleAuthorizationService.swift in Sources */,
 				D527B01724FEAA62003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */,
 				D5BF12BB2506926900B2931C /* PushNotificationEventHandler.swift in Sources */,
 				0365F6F02417E79000F452AC /* Address.swift in Sources */,
+				D5ED326126065FEC00821ABE /* NonEditableTextField.swift in Sources */,
 				D527B02224FEC53D003E81A9 /* TutorAvatarView.swift in Sources */,
 				D5F506BA240637F400CA4094 /* Buttons+Rythmico.swift in Sources */,
 				D5BDD88725117E5300706EC1 /* ScheduleDetailsView.swift in Sources */,
 				D5444FEF2602815000369BA5 /* ImageProcessingServiceDoubles.swift in Sources */,
 				D53555CC23E536AE005A20EB /* AppleAuthorizationServiceDoubles.swift in Sources */,
 				D55F012D24CCBE8E00E5F13C /* APIServiceDoubles.swift in Sources */,
-				D5F4D3FF24F858AE000E8580 /* Date+Sugar.swift in Sources */,
 				D59D0593251828EA0070D81B /* App+Playback.swift in Sources */,
 				D5989BD125168B0100BED8A6 /* PortfolioPhotoCarouselView.swift in Sources */,
 				D5D9AEB425368AAA00A0ABCC /* LessonPlanBookingPriceView.swift in Sources */,
@@ -2934,7 +2960,6 @@
 				D54CF08F25FA8724007D5050 /* AnalyticsCoordinator.swift in Sources */,
 				035B1D42249E577700AABFEA /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
 				035B1D62249E63D800AABFEA /* DeviceEndpoints.swift in Sources */,
-				D5F4D40024F858AE000E8580 /* Date+Sugar.swift in Sources */,
 				035B1D63249E63EC00AABFEA /* DeviceRegisterCoordinator.swift in Sources */,
 				035B1D4E249E57D100AABFEA /* KeychainDoubles.swift in Sources */,
 				03C34363249FC16E004907DF /* APIClientInfo.swift in Sources */,
@@ -2982,6 +3007,7 @@
 				035B1D66249E643400AABFEA /* DeviceTokenDeleterDoubles.swift in Sources */,
 				D575C831254F10E1001664AB /* RemoteConfigService.swift in Sources */,
 				D5E58F18256AF2BA00EB52ED /* Student.swift in Sources */,
+				D543CA712608F8B400900975 /* Binding+Sugar.swift in Sources */,
 				D524D0C525046BAE00BC9AF7 /* PushNotificationRegisterServiceDoubles.swift in Sources */,
 				D524D0C425046BA900BC9AF7 /* PushNotificationRegisterService.swift in Sources */,
 				035B1D52249E57FD00AABFEA /* Spacing.swift in Sources */,
@@ -3065,10 +3091,12 @@
 				D5F4D3F724F3476F000E8580 /* AddressMapCell.swift in Sources */,
 				D5F4D3FB24F7120E000E8580 /* GroupedButton.swift in Sources */,
 				035B1D4B249E578D00AABFEA /* Keychain.swift in Sources */,
+				D5ED3269260668BE00821ABE /* Date+Sugar.swift in Sources */,
 				D575C832254F10E1001664AB /* RemoteConfigServiceDoubles.swift in Sources */,
 				D5CC5FEB24FF1201007DFE84 /* UIImage+Sugar.swift in Sources */,
 				D5C76E9A25F4075200739267 /* CalendarSyncStatusProviderDoubles.swift in Sources */,
 				D5919F7224CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */,
+				D5ED3266260667E800821ABE /* DateDoubles.swift in Sources */,
 				D52C553D24DC74A200C295C4 /* TitleCell.swift in Sources */,
 				032B6FCD24B7879300299A09 /* Schedule.swift in Sources */,
 				035B1D55249E5A1800AABFEA /* ContentSizeCategory+Sugar.swift in Sources */,

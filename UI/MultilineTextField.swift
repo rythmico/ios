@@ -44,10 +44,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
             right: padding.trailing
         )
         textField.textContainer.lineFragmentPadding = 0
-        textField.inputAccessoryView = UIToolbar.dismissKeyboardTooltip(
-            withFont: fontOrDefaultFont,
-            color: accentColorOrDefault
-        )
+        textField.inputAccessoryView = UIToolbar.dismissKeyboardTooltip(color: accentColorOrDefault)
         textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return textField
     }

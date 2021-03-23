@@ -21,11 +21,8 @@ final class ImageLoadingService: ImageLoadingServiceProtocol {
     }
 
     func load(_ url: URL, handler: @escaping CompletionHandler) -> Activity {
-        URLSession(configuration: sessionConfiguration).dataTask(with: url) { data, _, error in
-            guard let dataResult = Result(value: data, error: error) else {
-                assertionFailure("Impossible code path for ImageLoadingService")
-                return
-            }
+        URLSession(configuration: sessionConfiguration).dataTask(with: url) { data, response, error in
+            let dataResult = Result(value: data, error: error) !! preconditionFailure("Impossible code path for ImageLoadingService")
             let imageResult: Result<UIImage, Swift.Error> = dataResult.flatMap {
                 if let image = UIImage(data: $0) {
                     return .success(image.withRenderingMode(.alwaysOriginal))

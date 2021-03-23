@@ -14,8 +14,10 @@ struct PrivateNoteView: View, EditableView, TestableView {
     private var state: ViewState
     private let context: PrivateNoteContext
 
-    enum EditingFocus: EditingFocusEnum {
-        case textField
+    enum EditingFocus: EditingFocusEnum, CaseIterable {
+        case privateNote
+
+        static var usingKeyboard = allCases
     }
 
     @StateObject
@@ -72,7 +74,7 @@ struct PrivateNoteView: View, EditableView, TestableView {
     }
 
     func noteEditingChanged(_ isEditing: Bool) {
-        editingFocus = isEditing ? .textField : .none
+        editingFocus = isEditing ? .privateNote : .none
     }
 }
 

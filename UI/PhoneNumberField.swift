@@ -1,4 +1,5 @@
 import SwiftUI
+import FoundationSugar
 import PhoneNumberKit
 
 struct PhoneNumberField: UIViewRepresentable {
@@ -12,15 +13,13 @@ struct PhoneNumberField: UIViewRepresentable {
     }
 
     func makeUIView(context: Context) -> PhoneNumberTextField {
-        guard let regionCode = context.environment.locale.regionCode else {
-            preconditionFailure(
-                """
-                Region code missing from running device.
-                This should only happen on SIM, and rarely.
-                If happening on device, a Locale other than Locale.current must be being used.
-                """
-            )
-        }
+        let regionCode = context.environment.locale.regionCode !! preconditionFailure(
+            """
+            Region code missing from running device.
+            This should only happen on SIM, and rarely.
+            If happening on device, a Locale other than Locale.current must be being used.
+            """
+        )
         return RythmicoPhoneNumberTextField(defaultRegion: regionCode).then {
             $0.withFlag = true
             $0.withPrefix = true // allow explicit + prefixes
@@ -42,7 +41,7 @@ struct PhoneNumberField: UIViewRepresentable {
         uiView._defaultRegion = env.locale.regionCode
         let font = UIFont.rythmicoFont(.body, sizeCategory: env.sizeCategory, legibilityWeight: env.legibilityWeight)
         uiView.font = font
-        uiView.inputAccessoryView = UIToolbar.dismissKeyboardTooltip(withFont: font, color: .rythmicoPurple)
+        uiView.inputAccessoryView = UIToolbar.dismissKeyboardTooltip(color: .rythmicoPurple)
         uiView.updateFlag()
         uiView.updatePlaceholder()
     }

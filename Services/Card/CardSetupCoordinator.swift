@@ -1,4 +1,5 @@
 import Foundation
+import FoundationSugar
 
 final class CardSetupCoordinator: FailableActivityCoordinator<CardSetupParams, Card> {
     private let service: CardSetupServiceProtocol
@@ -13,18 +14,13 @@ final class CardSetupCoordinator: FailableActivityCoordinator<CardSetupParams, C
             if let result = result {
                 finish(
                     result.map { setupIntent in
-                        guard
-                            let card = Card(setupIntent: setupIntent, cardDetails: input.cardDetails)
-                        else {
-                            preconditionFailure(
-                                """
-                                Card could not be created with params:
-                                    - setupIntent: \(setupIntent)
-                                    - cardDetails: \(input.cardDetails)
-                                """
-                            )
-                        }
-                        return card
+                        Card(setupIntent: setupIntent, cardDetails: input.cardDetails) !! preconditionFailure(
+                            """
+                            Card could not be created with params:
+                                - setupIntent: \(setupIntent)
+                                - cardDetails: \(input.cardDetails)
+                            """
+                        )
                     }
                 )
             } else {

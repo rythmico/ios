@@ -13,17 +13,17 @@ extension String {
     public static var quote: String { "\"" }
 }
 
-extension String {
+extension StringProtocol {
     public var isBlank: Bool {
         trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
     public func quoted() -> String {
-        .quote + self + .quote
+        .quote + String(self) + .quote
     }
 
     public func repeated(_ count: Int = 2) -> String {
-        String(repeating: self, count: count)
+        String(repeating: String(self), count: count)
     }
 
     public func repeating(_ character: Character, count: Int) -> String {
@@ -47,7 +47,7 @@ extension String {
     }
 }
 
-extension String {
+extension StringProtocol {
     public var firstWord: String? {
         self.trimmingCharacters(in: .whitespacesAndNewlines)
             .lazy

@@ -31,8 +31,10 @@ final class RemoteConfig: RemoteConfigServiceProtocol {
             if let error = error {
                 assertionFailure(error.localizedDescription)
             } else {
-                config.ensureInitialized {
-                    $0.map { assertionFailure($0.localizedDescription) }
+                config.ensureInitialized { error in
+                    if let error = error {
+                        assertionFailure(error.localizedDescription)
+                    }
                 }
             }
             completion()

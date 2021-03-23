@@ -1,4 +1,5 @@
 import SwiftUI
+import FoundationSugar
 
 struct LessonSkippingContentView: View {
     var isFree: Bool
@@ -41,10 +42,9 @@ struct LessonSkippingContentView: View {
     private static let remainingTimeFormatter = Current.dateComponentsFormatter(allowedUnits: [.day, .hour, .minute], style: .short)
     private func remainingTimeString(from: Date, to: Date) -> String {
         let now = Current.date()
-        guard let string = Self.remainingTimeFormatter.string(from: now, to: freeSkipUntil) else {
-            preconditionFailure("timeRemainingFormatter returned nil for input from: \(now) to: \(freeSkipUntil)")
-        }
-        return string
+        return Self.remainingTimeFormatter.string(from: now, to: freeSkipUntil) !! preconditionFailure(
+            "remainingTimeFormatter returned nil for input 'from' \(now) 'to' \(freeSkipUntil)"
+        )
     }
 }
 

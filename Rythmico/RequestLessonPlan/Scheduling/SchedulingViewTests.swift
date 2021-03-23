@@ -1,6 +1,7 @@
 import XCTest
 @testable import Rythmico
 import ViewInspector
+import FoundationSugar
 
 extension SchedulingView: Inspectable {}
 
@@ -35,52 +36,98 @@ final class SchedulingViewTests: XCTestCase {
             )
 
             XCTAssertNil(state.startDate)
-            XCTAssertEqual(state.startTime, Current.calendar().date(bySetting: .hour, value: 16, of: .referenceDate))
+            XCTAssertNil(state.startTime)
             XCTAssertNil(state.duration)
 
             XCTAssertEqual(view.editingFocus, .none)
 
-            XCTAssertTrue(view.startDateText.isEmpty)
-            XCTAssertTrue(view.durationText.isEmpty)
+            XCTAssertNil(view.startDateText)
+            XCTAssertNil(view.startTimeText)
+            XCTAssertNil(view.durationText)
 
             XCTAssertNil(view.nextButtonAction)
         }
     }
 
     func testEditingStartDate() {
+        let expectation = self.expectation(description: "")
         let (_, state, view) = schedulingView
 
         XCTAssertView(view) { view in
             view.beginEditingStartDate()
 
-            XCTAssertNotNil(state.startDate)
-            XCTAssertNil(state.duration)
+            DispatchQueue.main.async {
+                XCTAssertNotNil(state.startDate)
+                XCTAssertNil(state.startTime)
+                XCTAssertNil(state.duration)
 
-            XCTAssertEqual(view.editingFocus, .startDate)
+                XCTAssertEqual(view.editingFocus, .startDate)
 
-            XCTAssertFalse(view.startDateText.isEmpty)
-            XCTAssertTrue(view.durationText.isEmpty)
+                XCTAssertNotNil(view.startDateText)
+                XCTAssertNil(view.startTimeText)
+                XCTAssertNil(view.durationText)
 
-            XCTAssertNil(view.nextButtonAction)
+                XCTAssertNil(view.nextButtonAction)
+
+                expectation.fulfill()
+            }
         }
+
+        wait(for: [expectation], timeout: 1)
     }
 
-    func testEditingDuration() {
+    func testEditingStartTime() {
+        let expectation = self.expectation(description: "")
         let (_, state, view) = schedulingView
 
         XCTAssertView(view) { view in
-            view.beginEditingDuration()
+            view.onEditingStartTimeChanged(true)
 
-            XCTAssertNil(state.startDate)
-            XCTAssertNotNil(state.duration)
+            DispatchQueue.main.async {
+                XCTAssertNil(state.startDate)
+                XCTAssertNotNil(state.startTime)
+                XCTAssertNil(state.duration)
 
-            XCTAssertEqual(view.editingFocus, .duration)
+                XCTAssertEqual(view.editingFocus, .startTime)
 
-            XCTAssertTrue(view.startDateText.isEmpty)
-            XCTAssertEqual(view.durationText, "60 minutes")
+                XCTAssertNil(view.startDateText)
+                XCTAssertNotNil(view.startTimeText)
+                XCTAssertNil(view.durationText)
 
-            XCTAssertNil(view.nextButtonAction)
+                XCTAssertNil(view.nextButtonAction)
+
+                expectation.fulfill()
+            }
         }
+
+        wait(for: [expectation], timeout: 1)
+    }
+
+    func testEditingDuration() {
+        let expectation = self.expectation(description: "")
+        let (_, state, view) = schedulingView
+
+        XCTAssertView(view) { view in
+            view.onEditingDurationChanged(true)
+
+            DispatchQueue.main.async {
+                XCTAssertNil(state.startDate)
+                XCTAssertNil(state.startTime)
+                XCTAssertNotNil(state.duration)
+
+                XCTAssertEqual(view.editingFocus, .duration)
+
+                XCTAssertNil(view.startDateText)
+                XCTAssertNil(view.startTimeText)
+                XCTAssertNotNil(view.durationText)
+
+                XCTAssertNil(view.nextButtonAction)
+
+                expectation.fulfill()
+            }
+        }
+
+        wait(for: [expectation], timeout: 1)
     }
 
     func testEditingRequiredFieldsEnablesNextButton() {
@@ -98,15 +145,15 @@ final class SchedulingViewTests: XCTestCase {
         let (context, state, view) = schedulingView
 
         XCTAssertView(view) { view in
-            state.startDate = Date(timeIntervalSince1970: 1586914107)
-            state.startTime = Date(timeIntervalSince1970: 25200)
+            state.startDate = "2021-07-03T13:30:20Z"
+            state.startTime = "2021-07-03T17:25:00Z"
             state.duration = .fortyFiveMinutes
 
             view.nextButtonAction?()
 
             XCTAssertEqual(
                 context.schedule,
-                Schedule(startDate: Date(timeIntervalSince1970: 1586934000), duration: .fortyFiveMinutes)
+                Schedule(startDate: "2021-07-03T17:25:00Z", duration: .fortyFiveMinutes)
             )
         }
     }

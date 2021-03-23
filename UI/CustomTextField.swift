@@ -1,6 +1,10 @@
 import SwiftUI
 
 struct CustomTextField: UIViewRepresentable {
+    enum InputAccessory {
+        case doneButton
+    }
+
     final class Coordinator: NSObject, UITextFieldDelegate {
         @Binding var text: String
         var onEditingChanged: (Bool) -> Void
@@ -37,34 +41,31 @@ struct CustomTextField: UIViewRepresentable {
 
     var placeholder: String
     @Binding var text: String
-    var textContentType: UITextContentType?
-    var autocapitalizationType: UITextAutocapitalizationType
-    var returnKeyType: UIReturnKeyType
     var isEditable: Bool
+    var inputMode: CustomTextFieldInputMode
+    var inputAccessory: InputAccessory?
     var onEditingChanged: (Bool) -> Void
     var onCommit: () -> Void
 
     init(
         _ placeholder: String,
         text: Binding<String>,
-        textContentType: UITextContentType? = nil,
-        autocapitalizationType: UITextAutocapitalizationType = .none,
-        returnKeyType: UIReturnKeyType = .done,
         isEditable: Bool = true,
+        inputMode: CustomTextFieldInputMode = KeyboardInputMode(),
+        inputAccessory: InputAccessory? = nil,
         onEditingChanged: @escaping (Bool) -> Void = { _ in },
         onCommit: @escaping () -> Void = {}
     ) {
         self.placeholder = placeholder
         self._text = text
-        self.textContentType = textContentType
-        self.autocapitalizationType = autocapitalizationType
-        self.returnKeyType = returnKeyType
         self.isEditable = isEditable
+        self.inputMode = inputMode
+        self.inputAccessory = inputAccessory
         self.onEditingChanged = onEditingChanged
         self.onCommit = onCommit
     }
 
-    func makeUIView(context: UIViewRepresentableContext<CustomTextField>) -> UITextField {
+    func makeUIView(context: Context) -> UITextField {
         let textField = CustomUITextField(frame: .zero)
         textField.attributedPlaceholder = NSAttributedString(
             string: placeholder,
@@ -74,10 +75,13 @@ struct CustomTextField: UIViewRepresentable {
             ]
         )
         textField.font = .rythmicoFont(.body)
-        textField.textContentType = textContentType
-        textField.autocapitalizationType = autocapitalizationType
-        textField.returnKeyType = returnKeyType
         textField.isUserInteractionEnabled = isEditable
+        textField.inputView = inputMode.inputView(textField: textField)
+        textField.inputAccessoryView = inputAccessory.map {
+            switch $0 {
+            case .doneButton: return UIToolbar.dismissKeyboardTooltip(color: .rythmicoPurple)
+            }
+        }
         textField.delegate = context.coordinator
         textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         textField.setContentHuggingPriority(.defaultHigh, for: .vertical)
@@ -88,7 +92,7 @@ struct CustomTextField: UIViewRepresentable {
         Coordinator(text: $text, onEditingChanged: onEditingChanged, onCommit: onCommit)
     }
 
-    func updateUIView(_ uiView: UITextField, context: UIViewRepresentableContext<CustomTextField>) {
+    func updateUIView(_ uiView: UITextField, context: Context) {
         uiView.attributedPlaceholder = NSAttributedString(
             string: placeholder,
             attributes: [

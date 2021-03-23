@@ -1,4 +1,5 @@
 import Foundation
+import FoundationSugar
 import Then
 
 extension Lesson: Then {}
@@ -18,7 +19,7 @@ extension Array where Element == Lesson {
             .stub(
                 week: lessonCount-$0-1,
                 status: .random() ? .skipped : .completed,
-                startDate: .stub - ($0, .weekOfMonth)
+                startDate: .stub - ($0, .weekOfMonth, .current)
             )
         }
     }
@@ -43,7 +44,7 @@ private extension Lesson {
             status: status,
             address: .stub,
             schedule: Schedule.stub.with(\.startDate, startDate),
-            freeSkipUntil: status == .scheduled ? startDate - (3, .hour) : nil
+            freeSkipUntil: status == .scheduled ? startDate - (3, .hour, .current) : nil
         )
     }
     #elseif TUTOR

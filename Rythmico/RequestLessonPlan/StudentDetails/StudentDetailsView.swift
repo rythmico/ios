@@ -18,9 +18,12 @@ struct StudentDetailsView: View, EditableView, TestableView {
 
     @ObservedObject var state: ViewState
 
-    enum EditingFocus: EditingFocusEnum {
-        case textField
+    enum EditingFocus: EditingFocusEnum, CaseIterable {
+        case fullName
         case dateOfBirth
+        case about
+
+        static var usingKeyboard = allCases
     }
 
     @StateObject
@@ -101,9 +104,8 @@ struct StudentDetailsView: View, EditableView, TestableView {
                             CustomTextField(
                                 "Enter Name...",
                                 text: $state.name,
-                                textContentType: .name,
-                                autocapitalizationType: .words,
-                                onEditingChanged: textFieldEditingChanged
+                                inputMode: KeyboardInputMode(contentType: .name, autocapitalization: .words),
+                                onEditingChanged: fullNameEditingChanged
                             ).modifier(RoundedThinOutlineContainer(padded: false))
                         }
                         HeaderContentView(title: ["Date of Birth".style(.bodyBold)], titleAccessory: {
@@ -115,16 +117,16 @@ struct StudentDetailsView: View, EditableView, TestableView {
                             CustomTextField(
                                 dateOfBirthPlaceholderText,
                                 text: .constant(dateOfBirthText ?? .empty),
-                                isEditable: false
-                            )
-                            .modifier(RoundedThinOutlineContainer(padded: false))
-                            .onTapGesture(perform: beginEditingDateOfBirth)
+                                inputMode: DatePickerInputMode(selection: $state.dateOfBirth.or(dateOfBirthPlaceholder), mode: .date),
+                                inputAccessory: .doneButton,
+                                onEditingChanged: dateOfBirthEditingChanged
+                            ).modifier(RoundedThinOutlineContainer(padded: false))
                         }
                         HeaderContentView(title: "About ".style(.bodyBold) + aboutNameTextPart.style(.bodyBold)) {
                             MultilineTextField(
                                 "Existing instrument prowess etc.",
                                 text: $state.about,
-                                onEditingChanged: textFieldEditingChanged
+                                onEditingChanged: aboutEditingChanged
                             ).modifier(RoundedThinOutlineContainer(padded: false))
                         }
                     }
@@ -134,24 +136,9 @@ struct StudentDetailsView: View, EditableView, TestableView {
                 }
                 .padding(.leading, .spacingMedium)
 
-                ZStack(alignment: .bottom) {
-                    nextButtonAction.map { action in
-                        FloatingView {
-                            Button("Next", action: action).primaryStyle()
-                        }
-                        .zIndex(0)
-                    }
-
-                    if editingFocus == .dateOfBirth {
-                        FloatingInputView(doneAction: endEditing) {
-                            LabelessDatePicker(
-                                selection: Binding(
-                                    get: { state.dateOfBirth ?? dateOfBirthPlaceholder },
-                                    set: { state.dateOfBirth = $0 }
-                                )
-                            )
-                        }
-                        .zIndex(1)
+                if let action = nextButtonAction {
+                    FloatingView {
+                        Button("Next", action: action).primaryStyle()
                     }
                 }
             }
@@ -162,17 +149,17 @@ struct StudentDetailsView: View, EditableView, TestableView {
         .onDisappear(perform: endEditing)
     }
 
-    func textFieldEditingChanged(_ isEditing: Bool) {
-        editingFocus = isEditing ? .textField : .none
+    func fullNameEditingChanged(_ isEditing: Bool) {
+        editingFocus = isEditing ? .fullName : .none
     }
 
-    func beginEditingDateOfBirth() {
-        editingFocus = .dateOfBirth
+    func dateOfBirthEditingChanged(_ isEditing: Bool) {
+        state.dateOfBirth ??= dateOfBirthPlaceholder
+        editingFocus = isEditing ? .dateOfBirth : .none
+    }
 
-        // set date of birth to initial value on first edit
-        if state.dateOfBirth == nil {
-            state.dateOfBirth = dateOfBirthPlaceholder
-        }
+    func aboutEditingChanged(_ isEditing: Bool) {
+        editingFocus = isEditing ? .about : .none
     }
 }
 
