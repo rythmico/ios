@@ -126,6 +126,7 @@ struct StudentDetailsView: View, EditableView, TestableView {
                             MultilineTextField(
                                 "Existing instrument prowess etc.",
                                 text: $state.about,
+                                inputAccessory: .none,
                                 onEditingChanged: aboutEditingChanged
                             ).modifier(RoundedThinOutlineContainer(padded: false))
                         }

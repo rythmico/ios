@@ -1,10 +1,6 @@
 import SwiftUI
 
 struct CustomTextField: UIViewRepresentable {
-    enum InputAccessory {
-        case doneButton
-    }
-
     final class Coordinator: NSObject, UITextFieldDelegate {
         @Binding var text: String
         var onEditingChanged: (Bool) -> Void
@@ -43,7 +39,7 @@ struct CustomTextField: UIViewRepresentable {
     @Binding var text: String
     var isEditable: Bool
     var inputMode: CustomTextFieldInputMode
-    var inputAccessory: InputAccessory?
+    var inputAccessory: CustomTextFieldInputAccessory?
     var onEditingChanged: (Bool) -> Void
     var onCommit: () -> Void
 
@@ -52,7 +48,7 @@ struct CustomTextField: UIViewRepresentable {
         text: Binding<String>,
         isEditable: Bool = true,
         inputMode: CustomTextFieldInputMode = KeyboardInputMode(),
-        inputAccessory: InputAccessory? = nil,
+        inputAccessory: CustomTextFieldInputAccessory? = .none,
         onEditingChanged: @escaping (Bool) -> Void = { _ in },
         onCommit: @escaping () -> Void = {}
     ) {
@@ -76,12 +72,8 @@ struct CustomTextField: UIViewRepresentable {
         )
         textField.font = .rythmicoFont(.body)
         textField.isUserInteractionEnabled = isEditable
-        textField.inputView = inputMode.inputView(textField: textField)
-        textField.inputAccessoryView = inputAccessory.map {
-            switch $0 {
-            case .doneButton: return UIToolbar.dismissKeyboardTooltip(color: .rythmicoPurple)
-            }
-        }
+        textField.inputView = inputMode.view(for: textField)
+        textField.inputAccessoryView = inputAccessory?.view(accentColor: .rythmicoPurple)
         textField.delegate = context.coordinator
         textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         textField.setContentHuggingPriority(.defaultHigh, for: .vertical)

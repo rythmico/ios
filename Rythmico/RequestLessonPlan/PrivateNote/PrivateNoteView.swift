@@ -54,6 +54,7 @@ struct PrivateNoteView: View, EditableView, TestableView {
                         MultilineTextField(
                             "Message prospective tutors...",
                             text: $state.privateNote,
+                            inputAccessory: .none,
                             minHeight: 120,
                             onEditingChanged: noteEditingChanged
                         )
