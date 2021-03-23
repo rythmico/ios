@@ -1,23 +1,29 @@
 import SwiftUI
+import MultiModal
 import FoundationSugar
 
 extension LessonPlanCancellationView {
     struct ReasonView: View, TestableView {
         typealias Reason = LessonPlan.CancellationInfo.Reason
 
-        private var submitHandler: Handler<Reason>
+        private static let invalidReasons: [Reason] = [.rearrangementNeeded]
 
-        init(submitHandler: @escaping Handler<Reason>) {
-            self.submitHandler = submitHandler
-        }
+        var lessonPlan: LessonPlan
+        var submitHandler: Handler<Reason>
 
         @State
         var selectedReason: Reason?
+        @State
+        private var isPresentingReschedulingAlert = false
 
         var submitButtonAction: Action? {
-            selectedReason.map { reason in
-                { submitHandler(reason) }
+            guard
+                let reason = selectedReason,
+                Self.invalidReasons.contains(reason).not
+            else {
+                return nil
             }
+            return { submitHandler(reason) }
         }
 
         let inspection = SelfInspection()
@@ -34,16 +40,26 @@ extension LessonPlanCancellationView {
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
 
-                submitButtonAction.map { action in
-                    FloatingView {
-                        Button("Cancel Lesson Plan", action: action).secondaryStyle()
-                    }
+                FloatingView {
+                    Button("Cancel Lesson Plan", action: submitButtonAction ?? {}).secondaryStyle()
                 }
+                .disabled(submitButtonAction == nil)
             }
             .accentColor(.rythmicoPurple)
             .testable(self)
             .animation(.rythmicoSpring(duration: .durationShort), value: submitButtonAction != nil)
+            .onChange(of: selectedReason, perform: handleRearrangementNeededReason)
+            .multiModal {
+                $0.alert(isPresented: $isPresentingReschedulingAlert) { .reschedulingView(lessonPlan: lessonPlan) }
+            }
             .sheetInteractiveDismissal(false)
+        }
+
+        private func handleRearrangementNeededReason(_ reason: Reason?) {
+            guard reason == .rearrangementNeeded else { return }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                isPresentingReschedulingAlert = true
+            }
         }
     }
 }
@@ -66,7 +82,7 @@ private extension LessonPlan.CancellationInfo.Reason {
 #if DEBUG
 struct LessonPlanCancellationReasonView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlanCancellationView.ReasonView { _ in }
+        LessonPlanCancellationView.ReasonView(lessonPlan: .pendingJackGuitarPlanStub) { _ in }
     }
 }
 #endif

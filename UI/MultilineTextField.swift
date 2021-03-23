@@ -22,6 +22,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
     var font: UIFont?
     var accentColor: UIColor?
     var textColor: UIColor
+    var inputAccessory: CustomTextFieldInputAccessory?
     var minHeight: CGFloat
     @Binding var calculatedHeight: CGFloat
     var padding: EdgeInsets
@@ -44,7 +45,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
             right: padding.trailing
         )
         textField.textContainer.lineFragmentPadding = 0
-        textField.inputAccessoryView = UIToolbar.dismissKeyboardTooltip(color: accentColorOrDefault)
+        textField.inputAccessoryView = inputAccessory?.view(accentColor: accentColorOrDefault)
         textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return textField
     }
@@ -162,6 +163,7 @@ struct MultilineTextField: View {
     private var accentColor: UIColor?
     private var textColor: UIColor?
     private var placeholderColor: Color?
+    private var inputAccessory: CustomTextFieldInputAccessory?
     private var padding: EdgeInsets
     private var onEditingChanged: (Bool) -> Void
 
@@ -188,6 +190,7 @@ struct MultilineTextField: View {
         accentColor: UIColor?,
         textColor: UIColor?,
         placeholderColor: Color?,
+        inputAccessory: CustomTextFieldInputAccessory?,
         minHeight: CGFloat? = nil,
         padding: EdgeInsets? = nil,
         onEditingChanged: @escaping (Bool) -> Void
@@ -198,6 +201,7 @@ struct MultilineTextField: View {
         self.accentColor = accentColor
         self.textColor = textColor
         self.placeholderColor = placeholderColor
+        self.inputAccessory = inputAccessory
         self.minHeight = minHeight ?? 0
         self.padding = padding ?? .zero
         self.onEditingChanged = onEditingChanged
@@ -211,6 +215,7 @@ struct MultilineTextField: View {
             font: font,
             accentColor: accentColor,
             textColor: textColor ?? .label,
+            inputAccessory: inputAccessory,
             minHeight: minHeight,
             calculatedHeight: $dynamicHeight,
             padding: padding,

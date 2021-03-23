@@ -13,8 +13,8 @@ final class LessonPlanCancellationReasonViewTests: XCTestCase {
     func testSubmitVisibilityAndHandling() throws {
         let expectation = self.expectation(description: "Handler")
 
-        let expectedReason = LessonPlan.CancellationInfo.Reason.rearrangementNeeded
-        let view = LessonPlanCancellationView.ReasonView { reason in
+        let expectedReason = LessonPlan.CancellationInfo.Reason.tooExpensive
+        let view = LessonPlanCancellationView.ReasonView(lessonPlan: .pendingJackGuitarPlanStub) { reason in
             XCTAssertEqual(reason, expectedReason)
             expectation.fulfill()
         }
@@ -27,5 +27,16 @@ final class LessonPlanCancellationReasonViewTests: XCTestCase {
         }
 
         wait(for: [expectation], timeout: 1)
+    }
+
+    func testRearrangementNeededDisablesSubmitButton() throws {
+        let view = LessonPlanCancellationView.ReasonView(lessonPlan: .pendingJackGuitarPlanStub) { _ in}
+
+        XCTAssertView(view) { view in
+            XCTAssertNil(view.selectedReason)
+            XCTAssertNil(view.submitButtonAction)
+            view.selectedReason = .rearrangementNeeded
+            XCTAssertNil(view.submitButtonAction)
+        }
     }
 }

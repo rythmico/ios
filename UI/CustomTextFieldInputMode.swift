@@ -1,7 +1,7 @@
 import SwiftUI
 
 protocol CustomTextFieldInputMode {
-    func inputView(textField: UITextField) -> UIView?
+    func view(for textField: UITextField) -> UIView?
 }
 
 struct KeyboardInputMode: CustomTextFieldInputMode {
@@ -9,7 +9,7 @@ struct KeyboardInputMode: CustomTextFieldInputMode {
     var autocapitalization: UITextAutocapitalizationType = .none
     var returnKey: UIReturnKeyType = .done
 
-    func inputView(textField: UITextField) -> UIView? {
+    func view(for textField: UITextField) -> UIView? {
         textField.textContentType = contentType
         textField.autocapitalizationType = autocapitalization
         textField.returnKeyType = returnKey
@@ -23,7 +23,7 @@ struct DatePickerInputMode: CustomTextFieldInputMode {
     var style: UIDatePickerStyle = .wheels
     var minuteInterval: Int = 5
 
-    func inputView(textField: UITextField) -> UIView? {
+    func view(for textField: UITextField) -> UIView? {
         DatePickerAsUIView(
             selection: selection,
             mode: mode,
@@ -39,7 +39,7 @@ struct PickerInputMode<Element: CasePickable & Hashable>: CustomTextFieldInputMo
     var selection: Binding<Element>
     var formatter: (Element) -> String
 
-    func inputView(textField: UITextField) -> UIView? {
+    func view(for textField: UITextField) -> UIView? {
         PickerAsUIView(selection: selection, formatter: formatter)
     }
 }

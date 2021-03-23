@@ -24,6 +24,7 @@ struct BookingRequestApplyView: View {
                         MultilineTextField(
                             "Add a private note...",
                             text: $privateNote,
+                            inputAccessory: .none,
                             minHeight: .spacingUnit * 20
                         )
                         .padding(.vertical, .spacingUnit)

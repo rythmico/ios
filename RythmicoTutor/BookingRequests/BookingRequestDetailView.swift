@@ -16,7 +16,7 @@ struct BookingRequestDetailView: View {
     var submittedBy: String { bookingRequest.submitterName }
     var startDate: String { Self.dateFormatter.string(from: bookingRequest.schedule.startDate) }
     var time: String { Self.timeFormatter.string(from: bookingRequest.schedule.startDate) }
-    var duration: String { "\(bookingRequest.schedule.duration) minutes" }
+    var duration: String { bookingRequest.schedule.duration.title }
     var name: String { bookingRequest.student.name }
     var age: String { "\(bookingRequest.student.age)" }
     var about: String? { bookingRequest.student.about.isEmpty ? nil : bookingRequest.student.about }

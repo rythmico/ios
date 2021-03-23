@@ -54,7 +54,7 @@ struct ScheduleDetailsView: View {
     private var startTimeAndDurationText: [MultiStyleText.Part] {
         startTimeText.style(.bodyBold).color(.rythmicoGray90) +
         " for ".color(.rythmicoGray90) +
-        "\(schedule.duration.rawValue) minutes".style(.bodyBold).color(.rythmicoGray90)
+        schedule.duration.title.style(.bodyBold).color(.rythmicoGray90)
     }
 
     private static let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))

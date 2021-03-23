@@ -37,7 +37,7 @@ struct LessonPlanCancellationView: View, TestableView {
                             .asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing))
                         )
                 } else {
-                    ReasonView(submitHandler: submit)
+                    ReasonView(lessonPlan: lessonPlan, submitHandler: submit)
                         .transition(
                             .asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading))
                         )

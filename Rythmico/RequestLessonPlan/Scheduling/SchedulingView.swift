@@ -52,7 +52,7 @@ struct SchedulingView: View, EditableView, TestableView {
 
     var startDateText: String? { state.startDate.map(Self.dateFormatter.string(from:)) }
     var startTimeText: String? { state.startTime.map(Self.timeFormatter.string(from:)) }
-    var durationText: String? { state.duration.map { "\($0.rawValue) minutes" } }
+    var durationText: String? { state.duration?.title }
 
     var scheduleInfoText: String? {
         guard
@@ -120,7 +120,7 @@ struct SchedulingView: View, EditableView, TestableView {
                                     text: .constant(durationText ?? .empty),
                                     inputMode: PickerInputMode(
                                         selection: $state.duration.or(defaultDuration),
-                                        formatter: { "\($0.rawValue) minutes" }
+                                        formatter: \.title
                                     ),
                                     inputAccessory: .doneButton,
                                     onEditingChanged: onEditingDurationChanged
