@@ -1,6 +1,7 @@
 import XCTest
 @testable import Rythmico
 import ViewInspector
+import FoundationSugar
 
 extension SchedulingView: Inspectable {}
 
@@ -34,10 +35,8 @@ final class SchedulingViewTests: XCTestCase {
                 "Enter when you want the Guitar lessons to commence and for how long"
             )
 
-            XCTAssertFalse(state.hasFocusedDate)
-            XCTAssertFalse(state.hasFocusedTime)
-
             XCTAssertNil(state.startDate)
+            XCTAssertNil(state.startTime)
             XCTAssertNil(state.duration)
 
             XCTAssertEqual(view.editingFocus, .none)
@@ -59,9 +58,8 @@ final class SchedulingViewTests: XCTestCase {
 
             DispatchQueue.main.async {
                 XCTAssertNotNil(state.startDate)
+                XCTAssertNil(state.startTime)
                 XCTAssertNil(state.duration)
-                XCTAssertTrue(state.hasFocusedDate)
-                XCTAssertFalse(state.hasFocusedTime)
 
                 XCTAssertEqual(view.editingFocus, .startDate)
 
@@ -86,10 +84,9 @@ final class SchedulingViewTests: XCTestCase {
             view.onEditingStartTimeChanged(true)
 
             DispatchQueue.main.async {
-                XCTAssertNotNil(state.startDate)
+                XCTAssertNil(state.startDate)
+                XCTAssertNotNil(state.startTime)
                 XCTAssertNil(state.duration)
-                XCTAssertFalse(state.hasFocusedDate)
-                XCTAssertTrue(state.hasFocusedTime)
 
                 XCTAssertEqual(view.editingFocus, .startTime)
 
@@ -115,9 +112,8 @@ final class SchedulingViewTests: XCTestCase {
 
             DispatchQueue.main.async {
                 XCTAssertNil(state.startDate)
+                XCTAssertNil(state.startTime)
                 XCTAssertNotNil(state.duration)
-                XCTAssertFalse(state.hasFocusedDate)
-                XCTAssertFalse(state.hasFocusedTime)
 
                 XCTAssertEqual(view.editingFocus, .duration)
 
@@ -138,9 +134,8 @@ final class SchedulingViewTests: XCTestCase {
         let (_, state, view) = schedulingView
 
         XCTAssertView(view) { view in
-            state.hasFocusedDate = true
-            state.hasFocusedTime = true
             state.startDate = .stub
+            state.startTime = .stub
             state.duration = .fortyFiveMinutes
             XCTAssertNotNil(view.nextButtonAction)
         }
@@ -150,16 +145,15 @@ final class SchedulingViewTests: XCTestCase {
         let (context, state, view) = schedulingView
 
         XCTAssertView(view) { view in
-            state.hasFocusedDate = true
-            state.hasFocusedTime = true
-            state.startDate = Date(timeIntervalSince1970: 1586914107)
+            state.startDate = "2021-07-03T13:30:20Z"
+            state.startTime = "2021-07-03T17:25:00Z"
             state.duration = .fortyFiveMinutes
 
             view.nextButtonAction?()
 
             XCTAssertEqual(
                 context.schedule,
-                Schedule(startDate: Date(timeIntervalSince1970: 1586914107), duration: .fortyFiveMinutes)
+                Schedule(startDate: "2021-07-03T17:25:00Z", duration: .fortyFiveMinutes)
             )
         }
     }

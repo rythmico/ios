@@ -9,10 +9,12 @@ protocol SchedulingContext {
 struct SchedulingView: View, EditableView, TestableView {
     final class ViewState: ObservableObject {
         @Published var startDate: Date?
+        @Published var startTime: Date?
         @Published var duration: Schedule.Duration?
 
-        @Published var hasFocusedDate = false
-        @Published var hasFocusedTime = false
+        var startDateAndTime: Date? {
+            unwrap(startDate, startTime).map { Date(date: $0, time: $1, calendar: Current.calendar()) }
+        }
     }
 
     enum EditingFocus: EditingFocusEnum {
@@ -25,18 +27,14 @@ struct SchedulingView: View, EditableView, TestableView {
 
     @StateObject
     var editingCoordinator = EditingCoordinator(endEditingOnBackgroundTap: false)
-    @Namespace
-    private var startDatePickerAnimation
 
     @ObservedObject private(set)
     var state: ViewState
     var instrument: Instrument
     var context: SchedulingContext
 
-    private static let dateFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
-    private static let timeFormatter = Current.dateFormatter(format: .preset(date: .none, time: .short))
-
-    private let firstAvailableDate = Current.date() + (2, .day) <- (0, [.minute, .second, .nanosecond])
+    private let firstAvailableDate = Current.date() + (2, .day)
+    private let defaultStartTime = Current.date() <- (0, [.minute, .second, .nanosecond])
     private let defaultDuration: Schedule.Duration = .oneHour
 
     var subtitle: [MultiStyleText.Part] {
@@ -45,41 +43,34 @@ struct SchedulingView: View, EditableView, TestableView {
         " to commence and for how long"
     }
 
-    var startDateText: String? { state.hasFocusedDate ? state.startDate.map(Self.dateFormatter.string(from:)) : nil }
-    var startTimeText: String? { state.hasFocusedTime ? state.startDate.map(Self.timeFormatter.string(from:)) : nil }
-    var durationText: String? { state.duration.map { "\($0.rawValue) minutes" } }
+    private static let dateFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
+    private static let timeFormatter = Current.dateFormatter(format: .preset(date: .none, time: .short))
 
     private static let scheduleInfoDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
     private static let scheduleInfoAfterDayFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
     private static let scheduleInfoDurationFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))
+
+    var startDateText: String? { state.startDate.map(Self.dateFormatter.string(from:)) }
+    var startTimeText: String? { state.startTime.map(Self.timeFormatter.string(from:)) }
+    var durationText: String? { state.duration.map { "\($0.rawValue) minutes" } }
+
     var scheduleInfoText: String? {
         guard
-            state.hasFocusedDate,
-            state.hasFocusedTime,
-            let startDate = state.startDate,
+            let startDateAndTime = state.startDateAndTime,
             let duration = state.duration,
-            let endDate = Current.calendar().date(byAdding: .minute, value: duration.rawValue, to: startDate)
+            let endDateAndTime = Current.calendar().date(byAdding: .minute, value: duration.rawValue, to: startDateAndTime)
         else {
             return nil
         }
-        let day = Self.scheduleInfoDayFormatter.string(from: startDate)
-        let time = Self.scheduleInfoDurationFormatter.string(from: startDate, to: endDate)
-        let afterDay = Self.scheduleInfoAfterDayFormatter.string(from: startDate)
+        let day = Self.scheduleInfoDayFormatter.string(from: startDateAndTime)
+        let time = Self.scheduleInfoDurationFormatter.string(from: startDateAndTime, to: endDateAndTime)
+        let afterDay = Self.scheduleInfoAfterDayFormatter.string(from: startDateAndTime)
         return "Lessons will be scheduled every \(day) \(time) after \(afterDay)"
     }
 
     var nextButtonAction: Action? {
-        guard
-            state.hasFocusedDate,
-            state.hasFocusedTime,
-            let startDate = state.startDate,
-            let duration = state.duration
-        else {
-            return nil
-        }
-
-        return {
-            context.setSchedule(Schedule(startDate: startDate, duration: duration))
+        unwrap(state.startDateAndTime, state.duration).map { startDate, duration in
+            { context.setSchedule(Schedule(startDate: startDate, duration: duration)) }
         }
     }
 
@@ -115,7 +106,7 @@ struct SchedulingView: View, EditableView, TestableView {
                                     "Time...",
                                     text: .constant(startTimeText ?? .empty),
                                     inputMode: DatePickerInputMode(
-                                        selection: $state.startDate.or(firstAvailableDate),
+                                        selection: $state.startTime.or(defaultStartTime),
                                         mode: .time
                                     ),
                                     inputAccessory: .doneButton,
@@ -169,11 +160,9 @@ struct SchedulingView: View, EditableView, TestableView {
         guard let focus = focus else { return }
         switch focus {
         case .startDate:
-            state.hasFocusedDate = true
             state.startDate ??= firstAvailableDate
         case .startTime:
-            state.hasFocusedTime = true
-            state.startDate ??= firstAvailableDate
+            state.startTime ??= defaultStartTime
         case .duration:
             state.duration ??= defaultDuration
         }
