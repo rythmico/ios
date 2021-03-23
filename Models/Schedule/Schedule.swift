@@ -9,13 +9,13 @@ struct Schedule: Equatable, Codable, Hashable {
 }
 
 extension Schedule {
-    var endDate: Date {
-        Current.calendar().date(byAdding: .minute, value: duration.rawValue, to: startDate)!
-    }
+    var endDate: Date { startDate + (duration.rawValue, .minute) }
 }
 
 extension Schedule.Duration {
     static let fortyFiveMinutes = Self(rawValue: 45)
     static let oneHour = Self(rawValue: 60)
     static let oneHourThirtyMinutes = Self(rawValue: 90)
+
+    var title: String { "\(rawValue) minutes" }
 }
