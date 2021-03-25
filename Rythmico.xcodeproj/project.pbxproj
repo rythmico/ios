@@ -235,6 +235,7 @@
 		D527B01724FEAA62003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B00F24FE7811003E81A9 /* ImageLoadingServiceDoubles.swift */; };
 		D527B01824FEABEB003E81A9 /* ActivityDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B01124FE92DA003E81A9 /* ActivityDoubles.swift */; };
 		D527B02224FEC53D003E81A9 /* TutorAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B02124FEC53D003E81A9 /* TutorAvatarView.swift */; };
+		D527CC1B260CB34400C480F5 /* URLOpener+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527CC1A260CB34400C480F5 /* URLOpener+Rythmico.swift */; };
 		D52A4F192538C41400C65A91 /* CardSetupEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52A4F182538C41400C65A91 /* CardSetupEndpoints.swift */; };
 		D52A4F1E2538C59300C65A91 /* AddNewCardEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52A4F1D2538C59300C65A91 /* AddNewCardEntryView.swift */; };
 		D52C553A24DC71B800C295C4 /* BookingRequestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C553924DC71B800C295C4 /* BookingRequestDetailView.swift */; };
@@ -794,6 +795,7 @@
 		D527B01124FE92DA003E81A9 /* ActivityDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDoubles.swift; sourceTree = "<group>"; };
 		D527B01324FEA2DE003E81A9 /* ImageLoadingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadingCoordinator.swift; sourceTree = "<group>"; };
 		D527B02124FEC53D003E81A9 /* TutorAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorAvatarView.swift; sourceTree = "<group>"; };
+		D527CC1A260CB34400C480F5 /* URLOpener+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLOpener+Rythmico.swift"; sourceTree = "<group>"; };
 		D52A4F182538C41400C65A91 /* CardSetupEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetupEndpoints.swift; sourceTree = "<group>"; };
 		D52A4F1D2538C59300C65A91 /* AddNewCardEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCardEntryView.swift; sourceTree = "<group>"; };
 		D52C553924DC71B800C295C4 /* BookingRequestDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestDetailView.swift; sourceTree = "<group>"; };
@@ -1180,6 +1182,7 @@
 			isa = PBXGroup;
 			children = (
 				03EDA67C24776C6C00FBE527 /* URLOpener.swift */,
+				D527CC1A260CB34400C480F5 /* URLOpener+Rythmico.swift */,
 				03EDA67E24776CEC00FBE527 /* URLOpenerDoubles.swift */,
 			);
 			path = URLOpener;
@@ -2763,6 +2766,7 @@
 				D54EFF2A2513DDDB004F14D3 /* PortfolioEndpoints.swift in Sources */,
 				0372E35A249ABAB80048B402 /* SelectableList.swift in Sources */,
 				D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */,
+				D527CC1B260CB34400C480F5 /* URLOpener+Rythmico.swift in Sources */,
 				D5F506B02405A6A900CA4094 /* Duration.swift in Sources */,
 				D5AAF7D923F9EB1200E410F2 /* InstrumentSelectionListProviderDoubles.swift in Sources */,
 				D54FC05524CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */,

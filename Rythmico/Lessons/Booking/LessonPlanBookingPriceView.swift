@@ -1,10 +1,6 @@
 import SwiftUI
 
 struct LessonPlanBookingPriceView: View {
-    private enum Const {
-        static let termsAndConditionsURL = URL(string: "https://rythmico.webflow.io/legal/terms-and-policies")!
-    }
-
     var price: Price
 
     private static let priceFormatter = Current.numberFormatter(format: .price)
@@ -26,15 +22,11 @@ struct LessonPlanBookingPriceView: View {
             .foregroundColor(.rythmicoGray90)
             .frame(maxWidth: .infinity, alignment: .leading)
             .fixedSize(horizontal: false, vertical: true)
-            .onTapGesture(perform: presentTermsAndConditions)
+            .onTapGesture(perform: Current.urlOpener.openTermsAndConditionsURL)
         }
         .padding(.vertical, .spacingLarge)
         .padding(.horizontal, .spacingSmall)
         .modifier(RoundedGrayedDialog())
-    }
-
-    func presentTermsAndConditions() {
-        Current.urlOpener.open(Const.termsAndConditionsURL)
     }
 }
 
