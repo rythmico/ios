@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/firebase/abseil-cpp-SwiftPM.git",
         "state": {
           "branch": null,
-          "revision": "8bdc85ed5c9f8fb30cafcee3c131940c33196f02",
-          "version": "0.20200225.1"
+          "revision": "697fb93ee29def0198c456118b69bdfea9a02a5d",
+          "version": "0.20200225.2"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/firebase/boringssl-SwiftPM.git",
         "state": {
           "branch": null,
-          "revision": "22f4879721986806f5d6346c9ac31b5beb1092aa",
-          "version": "0.0.8"
+          "revision": "6fbad5bf8bd80a36d342bf1693e4423870124d4c",
+          "version": "0.0.9"
         }
       },
       {
