@@ -1,8 +1,8 @@
-name: abseil-cpp-SwiftPM, nameSpecified: abseil, owner: firebase, version: 0.20200225.1
+name: abseil-cpp-SwiftPM, nameSpecified: abseil, owner: firebase, version: 0.20200225.2
 
 name: APIKit, nameSpecified: APIKit, owner: davdroman, version: 
 
-name: boringssl-SwiftPM, nameSpecified: BoringSSL-GRPC, owner: firebase, version: 0.0.8
+name: boringssl-SwiftPM, nameSpecified: BoringSSL-GRPC, owner: firebase, version: 0.0.9
 
 name: EnumKit, nameSpecified: EnumKit, owner: gringoireDM, version: 1.1.3
 

@@ -14,7 +14,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/abseil-cpp-SwiftPM</string>
 			<key>Title</key>
-			<string>abseil (0.20200225.1)</string>
+			<string>abseil (0.20200225.2)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -30,7 +30,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/boringssl-SwiftPM</string>
 			<key>Title</key>
-			<string>BoringSSL-GRPC (0.0.8)</string>
+			<string>BoringSSL-GRPC (0.0.9)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
