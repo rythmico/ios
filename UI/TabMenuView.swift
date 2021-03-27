@@ -43,3 +43,26 @@ struct TabMenuView<Tab: RawRepresentable>: View where Tab.RawValue == String {
         }
     }
 }
+
+#if DEBUG
+struct TabMenuViewPreviewContent: View {
+    enum Tab: String, CaseIterable {
+        case x, y, z
+    }
+
+    @State
+    private var selectedTab: Tab = .x
+
+    var body: some View {
+        TabMenuView(tabs: Tab.allCases, selection: $selectedTab)
+    }
+}
+
+struct TabMenuView_Previews: PreviewProvider {
+    static var previews: some View {
+        TabMenuViewPreviewContent()
+            .previewLayout(.sizeThatFits)
+            .padding()
+    }
+}
+#endif
