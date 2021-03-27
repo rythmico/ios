@@ -1,87 +1,94 @@
 import SwiftUI
+import FoundationSugar
 
 struct ExpandableText<Expander: View, Collapser: View>: View {
-    // Indicates whether the user want to see all the text or not
-    @State private var expanded: Bool = false
-    // Indicates whether the string provided overgrows the threshold line limit
-    @State private var isExpandable: Bool = false
+    @State
+    private var isExpanded = false
 
     var content: String
-    var thresholdLines: Int = 3
     @ViewBuilder
     var expander: Expander
     @ViewBuilder
     var collapser: Collapser
+    var onExpand: Action? = nil
+    var onCollapse: Action? = nil
 
     var body: some View {
-        VStack(alignment: .leading, spacing: lineSpacing) {
-            // Render the real text (which might or might not be limited)
-            Text(content)
-                .lineLimit(lineLimit)
-                .lineSpacing(lineSpacing)
-                .background(
-                    // Render the limited text and measure its size
-                    Text(content)
-                        .lineLimit(thresholdLines)
+        VStack(alignment: .leading, spacing: .spacingSmall) {
+            VStack(alignment: .leading, spacing: paragraphSpacing) {
+                ForEach(0..<paragraphCount, id: \.self) { index in
+                    Text(paragraphs[index])
                         .lineSpacing(lineSpacing)
-                        .background(
-                            GeometryReader { displayedGeometry in
-                                // Create a ZStack with unbounded height to allow the inner Text as much
-                                // height as it likes, but no extra width.
-                                ZStack {
-                                    // Render the text without restrictions and measure its size
-                                    Text(content)
-                                        .lineSpacing(lineSpacing)
-                                        .background(
-                                            GeometryReader { fullGeometry in
-                                                // And compare the two
-                                                Color.clear.onAppear {
-                                                    isExpandable = fullGeometry.size.height > displayedGeometry.size.height
-                                                }
-                                            }
-                                        )
-                                }
-                                .frame(height: .greatestFiniteMagnitude)
-                            }
+                        .transition(
+                            .asymmetric(
+                                insertion: .move(edge: .bottom) + .opacity,
+                                removal: .identity
+                            )
                         )
-                        .hidden() // Hide the background
-            )
+                }
+            }
 
-            if isExpandable { toggleButton }
+            toggleButton
         }
-        .animation(.rythmicoSpring(duration: .durationMedium), value: expanded)
+        .animation(.rythmicoSpring(duration: .durationShort), value: isExpanded)
     }
 
-    private var lineLimit: Int? {
-        expanded ? nil : thresholdLines
-    }
+    private let paragraphSpacing: CGFloat = .spacingLarge
+    private let paragraphCountWhenCollapsed = 1
+    private var paragraphCount: Int { isExpanded ? paragraphs.count : min(paragraphCountWhenCollapsed, paragraphs.count) }
+    private var paragraphs: [String] { content.removingRepetitionOf("\n").components(separatedBy: "\n") }
 
-    private let lineSpacing = .spacingUnit * 2
+    private let lineSpacing: CGFloat = .spacingUnit * 2
 
     @ViewBuilder
     private var toggleButton: some View {
-        Button(action: { expanded.toggle() }) {
-            if expanded {
-                collapser
-            } else {
-                expander
+        if paragraphs.count > paragraphCountWhenCollapsed {
+            Button(action: toggle) {
+                if isExpanded {
+                    collapser
+                } else {
+                    expander
+                }
             }
         }
+    }
+    private func toggle() {
+        (isExpanded ? onCollapse : onExpand)?()
+        isExpanded.toggle()
     }
 }
 
 extension ExpandableText where Expander == Text, Collapser == Text {
     init(
         content: String,
-        thresholdLines: Int = 3,
         expander: String = "Read More",
-        collapser: String = "Read Less"
+        collapser: String = "Read Less",
+        onExpand: Action? = nil,
+        onCollapse: Action? = nil
     ) {
         self.init(
             content: content,
-            thresholdLines: thresholdLines,
             expander: { Text(expander).fontWeight(.bold) },
-            collapser: { Text(collapser).fontWeight(.bold) }
+            collapser: { Text(collapser).fontWeight(.bold) },
+            onExpand: onExpand,
+            onCollapse: onCollapse
         )
     }
 }
+
+#if DEBUG
+struct ExpandableText_Previews: PreviewProvider {
+    static let strings = ["", "Something", Portfolio.longStub.bio]
+
+    static var previews: some View {
+        ForEach(0..<strings.count, id: \.self) { index in
+            ScrollView {
+                ExpandableText(content: strings[index])
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .previewLayout(.sizeThatFits)
+        .padding()
+    }
+}
+#endif
