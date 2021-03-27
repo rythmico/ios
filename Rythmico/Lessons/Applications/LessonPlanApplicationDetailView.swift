@@ -20,18 +20,16 @@ struct LessonPlanApplicationDetailView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            VStack(spacing: 0) {
-                VStack(spacing: .spacingUnit * 8) {
-                    HeaderView(lessonPlan: lessonPlan, application: application)
-                    TabMenuView(tabs: Tab.allCases, selection: $tab)
-                }
+            VStack(spacing: .spacingSmall) {
+                HeaderView(lessonPlan: lessonPlan, application: application)
+                TabMenuView(tabs: Tab.allCases, selection: $tab)
+            }
 
-                switch tab {
-                case .message:
-                    MessageView(lessonPlan: lessonPlan, application: application)
-                case .about:
-                    AboutView(coordinator: coordinator, tutor: application.tutor)
-                }
+            switch tab {
+            case .message:
+                MessageView(lessonPlan: lessonPlan, application: application)
+            case .about:
+                AboutView(coordinator: coordinator, tutor: application.tutor)
             }
 
             FloatingView {

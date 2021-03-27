@@ -31,7 +31,6 @@ struct LessonsView: View, TestableView {
                 filter: state.lessonsFilter
             )
         }
-        .padding(.top, .spacingSmall)
         .accentColor(.rythmicoPurple)
         .testable(self)
         .onReceive(coordinator.$state.zip(state.onLessonsTabRootPublisher).b, perform: fetch)
