@@ -1,4 +1,7 @@
 import Foundation
+import Then
+
+extension URLComponents: Then {}
 
 extension URL {
     public enum Error: Swift.Error {
@@ -13,21 +16,16 @@ extension URL {
         path: String = "",
         queryItems: [URLQueryItem]? = nil
     ) throws {
-        var urlComponents = URLComponents()
-        urlComponents.scheme = scheme
-        urlComponents.host = host
-        urlComponents.path = path
-        urlComponents.queryItems = queryItems
-        guard let url = urlComponents.url else {
-            throw Error.invalidURLComponents
-        }
-        self = try doubleSlash ? url : url.removingSchemeDoubleSlash()
+        let url = try URLComponents()
+            .with(\.scheme, scheme)
+            .with(\.host, host)
+            .with(\.path, path)
+            .with(\.queryItems, queryItems)
+            .url !! Error.invalidURLComponents
+        self = doubleSlash ? url : try url.removingSchemeDoubleSlash()
     }
 
     private func removingSchemeDoubleSlash() throws -> URL {
-        guard let url = URL(string: absoluteString.replacingOccurrences(of: "://", with: ":")) else {
-            throw Error.schemeDoubleSlashRemovalFailed
-        }
-        return url
+        try URL(string: absoluteString.replacingOccurrences(of: "://", with: ":")) !! Error.schemeDoubleSlashRemovalFailed
     }
 }

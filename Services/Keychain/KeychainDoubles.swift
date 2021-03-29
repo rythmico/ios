@@ -1,4 +1,5 @@
 import Foundation
+import FoundationSugar
 import enum Valet.KeychainError
 
 final class KeychainFake: KeychainProtocol {
@@ -9,10 +10,7 @@ final class KeychainFake: KeychainProtocol {
     }
 
     func string(forKey key: String) throws -> String {
-        guard let string = inMemoryStorage[key] else {
-            throw KeychainError.itemNotFound
-        }
-        return string
+        try inMemoryStorage[key] !! KeychainError.itemNotFound
     }
 
     func removeObject(forKey key: String) throws {

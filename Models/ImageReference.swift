@@ -1,4 +1,5 @@
 import Foundation
+import FoundationSugar
 import class UIKit.UIImage
 
 enum ImageReference: Equatable, Decodable, Hashable {
@@ -9,12 +10,10 @@ enum ImageReference: Equatable, Decodable, Hashable {
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         let value = try container.decode(String.self)
-        guard let url = URL(string: value) else {
-            throw DecodingError.dataCorruptedError(
-                in: container,
-                debugDescription: "Expected valid image URL, got '\(value)' instead"
-            )
-        }
+        let url = try URL(string: value) !! DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "Expected valid image URL, got '\(value)' instead"
+        )
         self = .url(url)
     }
 }
