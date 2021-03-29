@@ -121,3 +121,7 @@ iOSInjectionProject/
 
 # Brew Bundle
 Brewfile.lock.json
+
+# Manually installed tools
+tools/git-crypt-0.6.0/
+tools/swiftgen-6.4.0/
