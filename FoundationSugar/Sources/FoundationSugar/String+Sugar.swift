@@ -18,6 +18,10 @@ extension StringProtocol {
         trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
+    public var nilIfBlank: Self? {
+        isBlank ? nil : self
+    }
+
     public func quoted() -> String {
         .quote + String(self) + .quote
     }

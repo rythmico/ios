@@ -1,4 +1,5 @@
 import UIKit
+import FoundationSugar
 
 protocol URLOpener {
     func open(_ url: URL)
@@ -7,11 +8,15 @@ protocol URLOpener {
 
 extension URLOpener {
     func open(_ urlString: String) {
-        open(URL(string: urlString)!)
+        open(url(with: urlString))
     }
 
     func canOpenURL(_ urlString: String) -> Bool {
-        canOpenURL(URL(string: urlString)!)
+        canOpenURL(url(with: urlString))
+    }
+
+    private func url(with urlString: String) -> URL {
+        URL(string: urlString) !! preconditionFailure("Invalid terms and conditions URL with string: '\(urlString)'")
     }
 }
 

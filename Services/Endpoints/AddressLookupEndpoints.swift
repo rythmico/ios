@@ -11,17 +11,14 @@ struct AddressSearchRequest: RythmicoAPIRequest {
     let properties: Properties
 
     init(accessToken: String, properties: Properties) throws {
-        let sanitizedPostcode = properties.postcode
+        let postcode = try properties.postcode
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .replacingOccurrences(of: String.whitespace, with: String.empty)
             .lowercased()
-
-        guard !sanitizedPostcode.isEmpty else {
-            throw Error(message: "Postcode must not be empty")
-        }
+            .nilIfBlank !! Error(message: "Postcode must not be empty")
 
         self.accessToken = accessToken
-        self.properties = .init(postcode: sanitizedPostcode)
+        self.properties = .init(postcode: postcode)
     }
 
     let method: HTTPMethod = .get

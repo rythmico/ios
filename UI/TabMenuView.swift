@@ -13,27 +13,24 @@ struct TabMenuView<Tab: RawRepresentable>: View where Tab.RawValue == String {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 ForEach(tabs, id: \.rawValue) { tab in
-                    VStack(spacing: 0) {
-                        Text(tab.rawValue.uppercased(with: Current.locale))
-                            .rythmicoFont(.calloutBold)
-                            .foregroundColor(selection == tab ? .rythmicoPurple : .rythmicoGray90)
-                            .padding(.bottom, .spacingSmall)
-                        if selection == tab {
-                            Capsule(style: .circular)
-                                .fill(Color.rythmicoPurple)
-                                .frame(height: selectedTabHeight)
-                                .matchedGeometryEffect(id: "shown", in: selectionAnimation)
-                        } else {
-                            Capsule(style: .circular)
-                                .hidden()
-                                .frame(height: selectedTabHeight)
-                                .matchedGeometryEffect(id: "hidden", in: selectionAnimation)
-                        }
-                    }
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .animation(.rythmicoSpring(duration: .durationShort), value: selection.rawValue)
-                    .contentShape(Rectangle())
-                    .onTapGesture { selection = tab }
+                    Text(tab.rawValue.uppercased(with: Current.locale))
+                        .rythmicoFont(.calloutBold)
+                        .foregroundColor(selection == tab ? .rythmicoPurple : .rythmicoGray90)
+                        .frame(maxWidth: .infinity, minHeight: .spacingUnit * 13, alignment: .center)
+                        .background(
+                            Group {
+                                if selection == tab {
+                                    Capsule(style: .circular)
+                                        .fill(Color.rythmicoPurple)
+                                        .frame(height: selectedTabHeight)
+                                        .matchedGeometryEffect(id: "selection", in: selectionAnimation)
+                                }
+                            },
+                            alignment: .bottom
+                        )
+                        .animation(.rythmicoSpring(duration: .durationShort), value: selection.rawValue)
+                        .contentShape(Rectangle())
+                        .onTapGesture { selection = tab }
                 }
             }
             .frame(maxWidth: .spacingMax)
@@ -43,3 +40,26 @@ struct TabMenuView<Tab: RawRepresentable>: View where Tab.RawValue == String {
         }
     }
 }
+
+#if DEBUG
+struct TabMenuViewPreviewContent: View {
+    enum Tab: String, CaseIterable {
+        case x, y, z
+    }
+
+    @State
+    private var selectedTab: Tab = .x
+
+    var body: some View {
+        TabMenuView(tabs: Tab.allCases, selection: $selectedTab)
+    }
+}
+
+struct TabMenuView_Previews: PreviewProvider {
+    static var previews: some View {
+        TabMenuViewPreviewContent()
+            .previewLayout(.sizeThatFits)
+            .padding()
+    }
+}
+#endif

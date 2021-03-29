@@ -20,6 +20,7 @@ struct VideoCarouselView: View {
                 }
             }
             .padding(.horizontal, scrollViewWidth < .spacingMax ? .spacingMedium : 0)
+            .fixedSize(horizontal: false, vertical: true)
         }
         .introspectScrollView { scrollViewWidth = $0.frame.width }
         .frame(maxWidth: .spacingMax)
@@ -65,15 +66,13 @@ private struct VideoCarouselCell: View {
 
     @Environment(\.colorScheme) private var colorScheme
     @ViewBuilder
-    var overlay: some View {
+    private var overlay: some View {
         if colorScheme == .dark {
             RoundedRectangle(
                 cornerRadius: .spacingUnit * 2,
                 style: .continuous
             )
             .strokeBorder(Color.white.opacity(0.15), lineWidth: 1, antialiased: true)
-        } else {
-            EmptyView()
         }
     }
 }

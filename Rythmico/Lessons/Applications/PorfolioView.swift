@@ -2,6 +2,8 @@ import SwiftUI
 import MultiModal
 
 struct PortfolioView: View {
+    private static let bioId = "bio"
+
     @State
     private var selectedVideo: Portfolio.Video?
     @State
@@ -11,7 +13,7 @@ struct PortfolioView: View {
     var portfolio: Portfolio
 
     var body: some View {
-        ScrollView {
+        ScrollView { proxy in
             VStack(spacing: .spacingMedium) {
                 VStack(spacing: .spacingSmall) {
                     HStack(spacing: .spacingSmall) {
@@ -19,13 +21,14 @@ struct PortfolioView: View {
                         MultiStyleText(parts: age(from: portfolio), alignment: .trailing)
                     }
 
-                    bio(from: portfolio)
+                    bio(from: portfolio, scrollingProxy: proxy)
                         .rythmicoFont(.body)
                         .lineSpacing(.spacingUnit * 2)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .frame(maxWidth: .spacingMax)
                 .padding(.horizontal, .spacingMedium)
+                .id(Self.bioId)
 
                 if !portfolio.training.isEmpty {
                     Divider().overlay(Color.rythmicoGray20)
@@ -78,11 +81,15 @@ struct PortfolioView: View {
     }
 
     @ViewBuilder
-    private func bio(from portfolio: Portfolio) -> some View {
+    private func bio(from portfolio: Portfolio, scrollingProxy: ScrollViewProxy) -> some View {
         if portfolio.bio.isBlank {
             Text("\(tutor.name.firstWord ?? "Tutor") did not add a bio.").foregroundColor(.rythmicoGray30)
         } else {
-            ExpandableText(content: portfolio.bio).foregroundColor(.rythmicoGray90)
+            ExpandableText(
+                content: portfolio.bio,
+                onCollapse: { scrollingProxy.scrollTo(Self.bioId, anchor: .bottom) }
+            )
+            .foregroundColor(.rythmicoGray90)
         }
     }
 
