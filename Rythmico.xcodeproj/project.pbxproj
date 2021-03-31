@@ -538,6 +538,10 @@
 		D5E987C224EDE9A100E2E1AF /* Routes+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C024EDE98900E2E1AF /* Routes+Tutor.swift */; };
 		D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */; };
 		D5E987C724EEFC7C00E2E1AF /* BookingApplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */; };
+		D5ED167C26149B5C001841ED /* NotoSansJP-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5ED167626149B5B001841ED /* NotoSansJP-Bold.otf */; };
+		D5ED167E26149B5C001841ED /* NotoSansJP-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5ED167826149B5B001841ED /* NotoSansJP-Medium.otf */; };
+		D5ED168026149B5C001841ED /* NotoSansJP-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5ED167A26149B5B001841ED /* NotoSansJP-Black.otf */; };
+		D5ED168126149B5C001841ED /* NotoSansJP-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5ED167B26149B5C001841ED /* NotoSansJP-Regular.otf */; };
 		D5ED326126065FEC00821ABE /* NonEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED326026065FEC00821ABE /* NonEditableTextField.swift */; };
 		D5ED32632606600C00821ABE /* CustomEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED32622606600C00821ABE /* CustomEditableTextField.swift */; };
 		D5ED3265260667E800821ABE /* DateDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED3264260667E800821ABE /* DateDoubles.swift */; };
@@ -1007,6 +1011,10 @@
 		D5E987C024EDE98900E2E1AF /* Routes+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Routes+Tutor.swift"; sourceTree = "<group>"; };
 		D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestsTabView.swift; sourceTree = "<group>"; };
 		D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationsView.swift; sourceTree = "<group>"; };
+		D5ED167626149B5B001841ED /* NotoSansJP-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Bold.otf"; sourceTree = "<group>"; };
+		D5ED167826149B5B001841ED /* NotoSansJP-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Medium.otf"; sourceTree = "<group>"; };
+		D5ED167A26149B5B001841ED /* NotoSansJP-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Black.otf"; sourceTree = "<group>"; };
+		D5ED167B26149B5C001841ED /* NotoSansJP-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Regular.otf"; sourceTree = "<group>"; };
 		D5ED326026065FEC00821ABE /* NonEditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonEditableTextField.swift; sourceTree = "<group>"; };
 		D5ED32622606600C00821ABE /* CustomEditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditableTextField.swift; sourceTree = "<group>"; };
 		D5ED3264260667E800821ABE /* DateDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDoubles.swift; sourceTree = "<group>"; };
@@ -1738,6 +1746,7 @@
 			children = (
 				D5B57A64241479F300BE9B4F /* Assets.generated.swift */,
 				03341B4423ABB1E8009AE8A8 /* Assets.xcassets */,
+				D5ED167526149B42001841ED /* Fonts */,
 				D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */,
 				D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */,
 				D509898423B9B5C100C19300 /* GoogleService-Info.plist */,
@@ -2173,6 +2182,17 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		D5ED167526149B42001841ED /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D5ED167A26149B5B001841ED /* NotoSansJP-Black.otf */,
+				D5ED167626149B5B001841ED /* NotoSansJP-Bold.otf */,
+				D5ED167826149B5B001841ED /* NotoSansJP-Medium.otf */,
+				D5ED167B26149B5C001841ED /* NotoSansJP-Regular.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		D5F4D3E124F0429A000E8580 /* BookingApplication */ = {
 			isa = PBXGroup;
 			children = (
@@ -2401,13 +2421,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5ED168026149B5C001841ED /* NotoSansJP-Black.otf in Resources */,
 				D509898023B969B700C19300 /* GoogleService-Info-Release.plist in Resources */,
+				D5ED167E26149B5C001841ED /* NotoSansJP-Medium.otf in Resources */,
 				03341B4B23ABB1E8009AE8A8 /* LaunchScreen.storyboard in Resources */,
+				D5ED168126149B5C001841ED /* NotoSansJP-Regular.otf in Resources */,
 				03341B4823ABB1E8009AE8A8 /* Preview Assets.xcassets in Resources */,
 				03341B4523ABB1E8009AE8A8 /* Assets.xcassets in Resources */,
 				D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */,
 				D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */,
 				D5622D5125C32FC200DF4732 /* Settings.bundle in Resources */,
+				D5ED167C26149B5C001841ED /* NotoSansJP-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
