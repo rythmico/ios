@@ -29,15 +29,17 @@ struct LessonSummaryCellMainContent: View {
 
     var body: some View {
         Button(action: { Current.state.lessonsContext.viewingLesson = lesson }) {
-            VStack(alignment: .leading, spacing: .spacingExtraSmall) {
+            VStack(alignment: .leading, spacing: 0) {
                 Text(lesson.title)
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
                     .rythmicoFont(.subheadlineBold)
                     .foregroundColor(lesson.status.isSkipped ? .rythmicoGray90 : .rythmicoForeground)
+                VSpacing(.spacingUnit * 2)
                 Text(subtitle)
                     .rythmicoFont(.body)
                     .foregroundColor(.rythmicoGray90)
+                VSpacing(.spacingExtraSmall)
                 HStack(spacing: .spacingExtraSmall) {
                     InlineContentAndTitleView(lesson: lesson, summarized: true)
                     Pill(status: lesson.status)
