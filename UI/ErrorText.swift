@@ -12,6 +12,6 @@ struct ErrorText: View {
             .rythmicoFont(.callout)
             .foregroundColor(.rythmicoRed)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .transition(.offset(x: 0, y: -.spacingMedium) + .opacity)
+            .transition(.offset(y: -.spacingMedium) + .opacity)
     }
 }

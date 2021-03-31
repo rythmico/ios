@@ -57,7 +57,7 @@ struct LessonPlanDetailView: View, TestableView {
                             HStack(alignment: .firstTextBaseline, spacing: .spacingUnit * 2) {
                                 Image(decorative: Asset.iconLocation.name)
                                     .renderingMode(.template)
-                                    .offset(x: 0, y: .spacingUnit / 2)
+                                    .offset(y: .spacingUnit / 2)
                                 Text(lessonPlan.address.condensedFormattedString)
                                     .lineSpacing(.spacingUnit)
                             }
