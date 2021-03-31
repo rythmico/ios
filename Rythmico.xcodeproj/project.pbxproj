@@ -542,6 +542,8 @@
 		D5ED167E26149B5C001841ED /* NotoSansJP-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5ED167826149B5B001841ED /* NotoSansJP-Medium.otf */; };
 		D5ED168026149B5C001841ED /* NotoSansJP-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5ED167A26149B5B001841ED /* NotoSansJP-Black.otf */; };
 		D5ED168126149B5C001841ED /* NotoSansJP-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5ED167B26149B5C001841ED /* NotoSansJP-Regular.otf */; };
+		D5ED168B2614BB40001841ED /* StackSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED168A2614BB40001841ED /* StackSpacing.swift */; };
+		D5ED168C2614BB40001841ED /* StackSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED168A2614BB40001841ED /* StackSpacing.swift */; };
 		D5ED326126065FEC00821ABE /* NonEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED326026065FEC00821ABE /* NonEditableTextField.swift */; };
 		D5ED32632606600C00821ABE /* CustomEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED32622606600C00821ABE /* CustomEditableTextField.swift */; };
 		D5ED3265260667E800821ABE /* DateDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED3264260667E800821ABE /* DateDoubles.swift */; };
@@ -1015,6 +1017,7 @@
 		D5ED167826149B5B001841ED /* NotoSansJP-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Medium.otf"; sourceTree = "<group>"; };
 		D5ED167A26149B5B001841ED /* NotoSansJP-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Black.otf"; sourceTree = "<group>"; };
 		D5ED167B26149B5C001841ED /* NotoSansJP-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Regular.otf"; sourceTree = "<group>"; };
+		D5ED168A2614BB40001841ED /* StackSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackSpacing.swift; sourceTree = "<group>"; };
 		D5ED326026065FEC00821ABE /* NonEditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonEditableTextField.swift; sourceTree = "<group>"; };
 		D5ED32622606600C00821ABE /* CustomEditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditableTextField.swift; sourceTree = "<group>"; };
 		D5ED3264260667E800821ABE /* DateDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDoubles.swift; sourceTree = "<group>"; };
@@ -1650,6 +1653,7 @@
 				D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */,
 				D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */,
 				D5F5068B24046B1400CA4094 /* Spacing.swift */,
+				D5ED168A2614BB40001841ED /* StackSpacing.swift */,
 				D52C554924DDE1D300C295C4 /* StaticMapView.swift */,
 				D50811E323FB72A3008103D8 /* StepBar.swift */,
 				D564F4632511722900EA13E9 /* TabMenuView.swift */,
@@ -2703,6 +2707,7 @@
 				D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */,
 				D59E4E5625B2033200E8F94C /* YouTubeVideoPlayerView.swift in Sources */,
 				D5D78E0C25257800007041BE /* PhoneNumberField.swift in Sources */,
+				D5ED168B2614BB40001841ED /* StackSpacing.swift in Sources */,
 				D5BF12B325068E7000B2931C /* PushNotificationEvent.swift in Sources */,
 				D527B00924FD2047003E81A9 /* AvatarView.swift in Sources */,
 				03021C4F248A769200C0C57E /* LessonPlanSummaryCell.swift in Sources */,
@@ -2956,6 +2961,7 @@
 				032B6FDD24B78A5200299A09 /* BookingRequestEndpoints.swift in Sources */,
 				D58DE1D625C0F1A20013AEE8 /* TutorStatusBanner.swift in Sources */,
 				D5444FED2602777D00369BA5 /* ImageProcessingService.swift in Sources */,
+				D5ED168C2614BB40001841ED /* StackSpacing.swift in Sources */,
 				035B1CBF249CF2AA00AABFEA /* App.swift in Sources */,
 				D54CFD3225BB20BD00C012F3 /* TutorStatusDoubles.swift in Sources */,
 				03E88E8424B8B9020077A420 /* BookingRequestsView.swift in Sources */,
