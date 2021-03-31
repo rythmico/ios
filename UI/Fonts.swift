@@ -101,16 +101,17 @@ private extension Font.Weight {
 }
 
 extension Font {
+    fileprivate enum Const {
+        static let notoSansJPFamily = "Noto Sans JP"
+    }
+
     static func rythmicoFont(
         _ style: RythmicoFontStyle,
         sizeCategory: ContentSizeCategory,
         legibilityWeight: LegibilityWeight?
     ) -> Font {
-        .system(
-            size: style.size(for: sizeCategory),
-            weight: style.weight(for: legibilityWeight),
-            design: .rounded
-        )
+        .custom(Const.notoSansJPFamily, fixedSize: style.size(for: sizeCategory))
+        .weight(style.weight(for: legibilityWeight))
     }
 }
 
@@ -120,10 +121,14 @@ extension UIFont {
         sizeCategory: CSC,
         legibilityWeight: LW?
     ) -> UIFont {
-        let fontSize = style.size(for: sizeCategory)
         let fontWeight = UIFont.Weight(style.weight(for: legibilityWeight))
-        let baseFont = UIFont.systemFont(ofSize: fontSize, weight: fontWeight)
-        let descriptor = baseFont.fontDescriptor.withDesign(.rounded)!
+        let fontSize = style.size(for: sizeCategory)
+        let descriptor = UIFontDescriptor(
+            fontAttributes: [
+                .family: Font.Const.notoSansJPFamily,
+                .traits: [ UIFontDescriptor.TraitKey.weight: fontWeight.rawValue ]
+            ]
+        )
 
         return UIFont(descriptor: descriptor, size: fontSize)
     }
