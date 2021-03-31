@@ -538,6 +538,12 @@
 		D5E987C224EDE9A100E2E1AF /* Routes+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C024EDE98900E2E1AF /* Routes+Tutor.swift */; };
 		D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */; };
 		D5E987C724EEFC7C00E2E1AF /* BookingApplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */; };
+		D5ED167C26149B5C001841ED /* NotoSansJP-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5ED167626149B5B001841ED /* NotoSansJP-Bold.otf */; };
+		D5ED167E26149B5C001841ED /* NotoSansJP-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5ED167826149B5B001841ED /* NotoSansJP-Medium.otf */; };
+		D5ED168026149B5C001841ED /* NotoSansJP-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5ED167A26149B5B001841ED /* NotoSansJP-Black.otf */; };
+		D5ED168126149B5C001841ED /* NotoSansJP-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5ED167B26149B5C001841ED /* NotoSansJP-Regular.otf */; };
+		D5ED168B2614BB40001841ED /* StackSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED168A2614BB40001841ED /* StackSpacing.swift */; };
+		D5ED168C2614BB40001841ED /* StackSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED168A2614BB40001841ED /* StackSpacing.swift */; };
 		D5ED326126065FEC00821ABE /* NonEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED326026065FEC00821ABE /* NonEditableTextField.swift */; };
 		D5ED32632606600C00821ABE /* CustomEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED32622606600C00821ABE /* CustomEditableTextField.swift */; };
 		D5ED3265260667E800821ABE /* DateDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED3264260667E800821ABE /* DateDoubles.swift */; };
@@ -1007,6 +1013,11 @@
 		D5E987C024EDE98900E2E1AF /* Routes+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Routes+Tutor.swift"; sourceTree = "<group>"; };
 		D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestsTabView.swift; sourceTree = "<group>"; };
 		D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationsView.swift; sourceTree = "<group>"; };
+		D5ED167626149B5B001841ED /* NotoSansJP-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Bold.otf"; sourceTree = "<group>"; };
+		D5ED167826149B5B001841ED /* NotoSansJP-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Medium.otf"; sourceTree = "<group>"; };
+		D5ED167A26149B5B001841ED /* NotoSansJP-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Black.otf"; sourceTree = "<group>"; };
+		D5ED167B26149B5C001841ED /* NotoSansJP-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Regular.otf"; sourceTree = "<group>"; };
+		D5ED168A2614BB40001841ED /* StackSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackSpacing.swift; sourceTree = "<group>"; };
 		D5ED326026065FEC00821ABE /* NonEditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonEditableTextField.swift; sourceTree = "<group>"; };
 		D5ED32622606600C00821ABE /* CustomEditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditableTextField.swift; sourceTree = "<group>"; };
 		D5ED3264260667E800821ABE /* DateDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDoubles.swift; sourceTree = "<group>"; };
@@ -1239,15 +1250,15 @@
 		035B1CD0249CF3E300AABFEA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				035B1CC4249CF2AC00AABFEA /* Assets.xcassets */,
 				D575C84D254F29BD001664AB /* Assets.generated.swift */,
-				035B1CC9249CF2AC00AABFEA /* LaunchScreen.storyboard */,
-				035B1D5F249E608E00AABFEA /* Tutor.entitlements */,
-				035B1CCC249CF2AC00AABFEA /* Info.plist */,
+				035B1CC4249CF2AC00AABFEA /* Assets.xcassets */,
 				035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */,
 				035B1D6C249E674000AABFEA /* GoogleService-Info-Release.plist */,
 				035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */,
+				035B1CCC249CF2AC00AABFEA /* Info.plist */,
+				035B1CC9249CF2AC00AABFEA /* LaunchScreen.storyboard */,
 				D5622D4825C32C0100DF4732 /* Settings.bundle */,
+				035B1D5F249E608E00AABFEA /* Tutor.entitlements */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -1642,6 +1653,7 @@
 				D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */,
 				D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */,
 				D5F5068B24046B1400CA4094 /* Spacing.swift */,
+				D5ED168A2614BB40001841ED /* StackSpacing.swift */,
 				D52C554924DDE1D300C295C4 /* StaticMapView.swift */,
 				D50811E323FB72A3008103D8 /* StepBar.swift */,
 				D564F4632511722900EA13E9 /* TabMenuView.swift */,
@@ -1736,14 +1748,15 @@
 		D52677CB241019B60074FDEF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				03341B4423ABB1E8009AE8A8 /* Assets.xcassets */,
 				D5B57A64241479F300BE9B4F /* Assets.generated.swift */,
-				03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */,
-				D50668DA23B946330044E553 /* Rythmico.entitlements */,
-				03341B4C23ABB1E8009AE8A8 /* Info.plist */,
+				03341B4423ABB1E8009AE8A8 /* Assets.xcassets */,
+				D5ED167526149B42001841ED /* Fonts */,
 				D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */,
 				D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */,
 				D509898423B9B5C100C19300 /* GoogleService-Info.plist */,
+				03341B4C23ABB1E8009AE8A8 /* Info.plist */,
+				03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */,
+				D50668DA23B946330044E553 /* Rythmico.entitlements */,
 				D5622D5025C32FC200DF4732 /* Settings.bundle */,
 			);
 			path = "Supporting Files";
@@ -2173,6 +2186,17 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		D5ED167526149B42001841ED /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D5ED167A26149B5B001841ED /* NotoSansJP-Black.otf */,
+				D5ED167626149B5B001841ED /* NotoSansJP-Bold.otf */,
+				D5ED167826149B5B001841ED /* NotoSansJP-Medium.otf */,
+				D5ED167B26149B5C001841ED /* NotoSansJP-Regular.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		D5F4D3E124F0429A000E8580 /* BookingApplication */ = {
 			isa = PBXGroup;
 			children = (
@@ -2401,13 +2425,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5ED168026149B5C001841ED /* NotoSansJP-Black.otf in Resources */,
 				D509898023B969B700C19300 /* GoogleService-Info-Release.plist in Resources */,
+				D5ED167E26149B5C001841ED /* NotoSansJP-Medium.otf in Resources */,
 				03341B4B23ABB1E8009AE8A8 /* LaunchScreen.storyboard in Resources */,
+				D5ED168126149B5C001841ED /* NotoSansJP-Regular.otf in Resources */,
 				03341B4823ABB1E8009AE8A8 /* Preview Assets.xcassets in Resources */,
 				03341B4523ABB1E8009AE8A8 /* Assets.xcassets in Resources */,
 				D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */,
 				D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */,
 				D5622D5125C32FC200DF4732 /* Settings.bundle in Resources */,
+				D5ED167C26149B5C001841ED /* NotoSansJP-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2679,6 +2707,7 @@
 				D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */,
 				D59E4E5625B2033200E8F94C /* YouTubeVideoPlayerView.swift in Sources */,
 				D5D78E0C25257800007041BE /* PhoneNumberField.swift in Sources */,
+				D5ED168B2614BB40001841ED /* StackSpacing.swift in Sources */,
 				D5BF12B325068E7000B2931C /* PushNotificationEvent.swift in Sources */,
 				D527B00924FD2047003E81A9 /* AvatarView.swift in Sources */,
 				03021C4F248A769200C0C57E /* LessonPlanSummaryCell.swift in Sources */,
@@ -2932,6 +2961,7 @@
 				032B6FDD24B78A5200299A09 /* BookingRequestEndpoints.swift in Sources */,
 				D58DE1D625C0F1A20013AEE8 /* TutorStatusBanner.swift in Sources */,
 				D5444FED2602777D00369BA5 /* ImageProcessingService.swift in Sources */,
+				D5ED168C2614BB40001841ED /* StackSpacing.swift in Sources */,
 				035B1CBF249CF2AA00AABFEA /* App.swift in Sources */,
 				D54CFD3225BB20BD00C012F3 /* TutorStatusDoubles.swift in Sources */,
 				03E88E8424B8B9020077A420 /* BookingRequestsView.swift in Sources */,

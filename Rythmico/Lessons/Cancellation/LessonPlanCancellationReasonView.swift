@@ -36,7 +36,7 @@ extension LessonPlanCancellationView {
                     )
                     .padding(.horizontal, .spacingMedium)
 
-                    SelectableList(Reason.allCases, title: \.title, selection: $selectedReason)
+                    SelectableList(Reason.allCases, title: \.title, selection: $selectedReason).rythmicoFont(.body)
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
 
