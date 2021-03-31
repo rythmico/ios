@@ -112,7 +112,7 @@ struct StudentDetailsView: View, EditableView, TestableView {
                             InfoDisclaimerButton(
                                 title: "Why Date of Birth?",
                                 message: "This gives tutors a better understanding of the learning requirements for each student, and will help to plan their lessons accordingly."
-                            )
+                            ).offset(y: 1)
                         }) {
                             CustomTextField(
                                 dateOfBirthPlaceholderText,
