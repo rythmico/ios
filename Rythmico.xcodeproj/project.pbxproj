@@ -1239,15 +1239,15 @@
 		035B1CD0249CF3E300AABFEA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				035B1CC4249CF2AC00AABFEA /* Assets.xcassets */,
 				D575C84D254F29BD001664AB /* Assets.generated.swift */,
-				035B1CC9249CF2AC00AABFEA /* LaunchScreen.storyboard */,
-				035B1D5F249E608E00AABFEA /* Tutor.entitlements */,
-				035B1CCC249CF2AC00AABFEA /* Info.plist */,
+				035B1CC4249CF2AC00AABFEA /* Assets.xcassets */,
 				035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */,
 				035B1D6C249E674000AABFEA /* GoogleService-Info-Release.plist */,
 				035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */,
+				035B1CCC249CF2AC00AABFEA /* Info.plist */,
+				035B1CC9249CF2AC00AABFEA /* LaunchScreen.storyboard */,
 				D5622D4825C32C0100DF4732 /* Settings.bundle */,
+				035B1D5F249E608E00AABFEA /* Tutor.entitlements */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -1736,14 +1736,14 @@
 		D52677CB241019B60074FDEF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				03341B4423ABB1E8009AE8A8 /* Assets.xcassets */,
 				D5B57A64241479F300BE9B4F /* Assets.generated.swift */,
-				03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */,
-				D50668DA23B946330044E553 /* Rythmico.entitlements */,
-				03341B4C23ABB1E8009AE8A8 /* Info.plist */,
+				03341B4423ABB1E8009AE8A8 /* Assets.xcassets */,
 				D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */,
 				D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */,
 				D509898423B9B5C100C19300 /* GoogleService-Info.plist */,
+				03341B4C23ABB1E8009AE8A8 /* Info.plist */,
+				03341B4923ABB1E8009AE8A8 /* LaunchScreen.storyboard */,
+				D50668DA23B946330044E553 /* Rythmico.entitlements */,
 				D5622D5025C32FC200DF4732 /* Settings.bundle */,
 			);
 			path = "Supporting Files";
