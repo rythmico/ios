@@ -52,7 +52,7 @@ struct AvatarView: View {
             GeometryReader { g in
                 Image(systemSymbol: .person)
                     .font(.system(size: g.size.width / 1.75, weight: .medium, design: .rounded))
-                    .offset(x: 0, y: -g.size.height * 0.025)
+                    .offset(y: -g.size.height * 0.025)
                     .foregroundColor(.rythmicoGray90)
                     .position(x: g.frame(in: .local).midX, y: g.frame(in: .local).midY)
             }
