@@ -62,13 +62,7 @@ struct LessonPlanSummaryCellMainContent: View {
                 VSpacing(.spacingExtraSmall)
                 HStack(spacing: .spacingExtraSmall) {
                     InlineContentAndTitleView(status: lessonPlan.status, summarized: true)
-                    if lessonPlan.status.isReviewing {
-                        Button(action: { Current.state.lessonsContext.reviewingLessonPlan = lessonPlan }) {
-                            Pill(status: lessonPlan.status)
-                        }
-                    } else {
-                        Pill(status: lessonPlan.status)
-                    }
+                    Pill.statusPillForLessonPlan(lessonPlan)
                 }
             }
             .padding(.spacingMedium)

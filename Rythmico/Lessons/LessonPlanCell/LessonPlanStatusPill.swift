@@ -1,12 +1,24 @@
 import SwiftUI
 
 extension Pill where Content == AnyView {
-    init(status: LessonPlan.Status) {
+    private init(status: LessonPlan.Status) {
         self.init(
             title: status.title,
             titleColor: status.titleColor,
             backgroundColor: status.backgroundColor
         )
+    }
+
+    @ViewBuilder
+    static func statusPillForLessonPlan(_ lessonPlan: LessonPlan) -> some View {
+        if lessonPlan.status.isReviewing {
+            Button(
+                action: { Current.state.lessonsContext = .reviewingLessonPlan(lessonPlan, .none) },
+                label: { Pill(status: lessonPlan.status) }
+            )
+        } else {
+            Pill(status: lessonPlan.status)
+        }
     }
 }
 
