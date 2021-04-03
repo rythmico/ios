@@ -1,4 +1,4 @@
-name: abseil-cpp-SwiftPM, nameSpecified: abseil, owner: firebase, version: 0.20200225.2
+name: abseil-cpp-SwiftPM, nameSpecified: abseil, owner: firebase, version: 0.20200225.3
 
 name: APIKit, nameSpecified: APIKit, owner: davdroman, version: 
 
@@ -10,7 +10,7 @@ name: firebase-ios-sdk, nameSpecified: Firebase, owner: firebase, version: 7.9.1
 
 name: GoogleAppMeasurement, nameSpecified: GoogleAppMeasurement, owner: google, version: 7.9.0
 
-name: GoogleDataTransport, nameSpecified: GoogleDataTransport, owner: google, version: 8.3.0
+name: GoogleDataTransport, nameSpecified: GoogleDataTransport, owner: google, version: 8.3.1
 
 name: GoogleUtilities, nameSpecified: GoogleUtilities, owner: google, version: 7.3.0
 
@@ -20,7 +20,7 @@ name: gtm-session-fetcher, nameSpecified: GTMSessionFetcher, owner: google, vers
 
 name: leveldb, nameSpecified: leveldb, owner: firebase, version: 1.22.2
 
-name: mixpanel-swift, nameSpecified: Mixpanel, owner: mixpanel, version: 2.9.0
+name: mixpanel-swift, nameSpecified: Mixpanel, owner: mixpanel, version: 2.9.1
 
 name: MultiModal, nameSpecified: MultiModal, owner: davdroman, version: 2.0.1
 
