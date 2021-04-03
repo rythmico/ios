@@ -36,7 +36,7 @@ struct LessonPlanDetailView: View, TestableView {
         VStack(spacing: 0) {
             VStack(spacing: .spacingExtraLarge) {
                 TitleContentView(title: title) {
-                    Pill(status: lessonPlan.status)
+                    Pill.statusPillForLessonPlan(lessonPlan)
                 }
                 ScrollView {
                     VStack(alignment: .leading, spacing: .spacingMedium) {
