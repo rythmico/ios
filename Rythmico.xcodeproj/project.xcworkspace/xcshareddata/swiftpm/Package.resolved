@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/firebase/abseil-cpp-SwiftPM.git",
         "state": {
           "branch": null,
-          "revision": "697fb93ee29def0198c456118b69bdfea9a02a5d",
-          "version": "0.20200225.2"
+          "revision": "ff5f5f0a3d3266836b9d722bb73cabdf7057482e",
+          "version": "0.20200225.3"
         }
       },
       {
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/google/GoogleDataTransport.git",
         "state": {
           "branch": null,
-          "revision": "34bd15a31149e42eadd6c75bd67aaea002e23bf4",
-          "version": "8.3.0"
+          "revision": "3615a4ca10961d82ed2b5459cd9a5cb5ebc03ff2",
+          "version": "8.3.1"
         }
       },
       {
@@ -105,8 +105,8 @@
         "repositoryURL": "https://github.com/mixpanel/mixpanel-swift",
         "state": {
           "branch": null,
-          "revision": "1e45e0e676a7a49ec44f326c3a1f33888baf0c7c",
-          "version": "2.9.0"
+          "revision": "aca22aee2e0f750f961d093c018b690563aa9c7e",
+          "version": "2.9.1"
         }
       },
       {
