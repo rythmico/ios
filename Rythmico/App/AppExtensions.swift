@@ -35,7 +35,7 @@ extension SwiftUI.App {
                 $0.titlePositionAdjustment.vertical = 1
                 $0.shadowColor = nil
 
-                let backIndicatorImage = UIImage(systemSymbol: .chevronLeft).applyingSymbolConfiguration(.init(pointSize: 17, weight: .bold))
+                let backIndicatorImage = UIImage(systemSymbol: .chevronLeft).applyingSymbolConfiguration(.init(pointSize: 17, weight: .medium))
                 $0.setBackIndicatorImage(backIndicatorImage, transitionMaskImage: backIndicatorImage)
                 $0.backButtonAppearance.normal.titleTextAttributes = [.font: UIFont.rythmicoFont(.bodyMedium)]
 
