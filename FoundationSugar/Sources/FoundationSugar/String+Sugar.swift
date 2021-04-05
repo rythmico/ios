@@ -60,12 +60,17 @@ extension StringProtocol {
 }
 
 extension StringProtocol {
-    public var firstWord: String? {
+    public func word(at index: Int) -> String? {
         self.trimmingCharacters(in: .whitespacesAndNewlines)
             .lazy
             .split(separator: .whitespace)
+            .dropFirst(index)
             .first
             .map(String.init)
+    }
+
+    public var firstWord: String? {
+        word(at: 0)
     }
 
     public var initials: String {
