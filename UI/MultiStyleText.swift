@@ -1,6 +1,7 @@
 import SwiftUI
 import FoundationSugar
 
+@available(*, deprecated)
 struct MultiStyleText: View {
     var parts: [Part]
     var expanded: Bool = true
