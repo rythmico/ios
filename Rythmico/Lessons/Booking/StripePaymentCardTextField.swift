@@ -25,7 +25,7 @@ struct StripePaymentCardTextField: UIViewRepresentable {
     }
 
     func updateUIView(_ view: STPPaymentCardTextField, context: Context) {
-        view.font = .rythmicoFont(.body, sizeCategory: context.environment.sizeCategory, legibilityWeight: context.environment.legibilityWeight)
+        view.font = .rythmicoFont(.body)
     }
 
     func makeCoordinator() -> StripePaymentCardTextField.Coordinator {

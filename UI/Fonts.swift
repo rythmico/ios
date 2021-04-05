@@ -1,143 +1,114 @@
 import SwiftUI
 
 extension View {
-    func rythmicoFont(_ style: RythmicoFontStyle) -> some View {
-        modifier(FontModifier(style: style))
+    func rythmicoFont(_ style: Font.RythmicoTextStyle) -> some View {
+        font(.rythmico(style))
     }
 }
 
-struct FontModifier: ViewModifier {
-    @Environment(\.sizeCategory) private var sizeCategory
-    @Environment(\.legibilityWeight) private var legibilityWeight
-
-    let style: RythmicoFontStyle
-
-    func body(content: Content) -> some View {
-        content.font(
-            .rythmicoFont(style, sizeCategory: sizeCategory, legibilityWeight: legibilityWeight)
-        )
+extension Text {
+    func rythmicoFont(_ style: Font.RythmicoTextStyle) -> Text {
+        font(.rythmico(style))
     }
 }
 
-enum RythmicoFontStyle {
-    case largeTitle         // 28px Bold
-//    case title
-    case headline           // 20px Bold
-    case subheadlineBold    // 18px Bold
-    case subheadline        // 18px Regular
-    case bodyBold           // 16px Bold
-    case bodySemibold       // 16px Semibold
-    case bodyMedium         // 16px Medium
-    case body               // 16px Regular
-    case calloutBold        // 14px Bold
-    case callout            // 14px Regular
-    case footnoteBold       // 12px Bold
-    case footnote           // 12px Regular
-    case caption            // 10px Bold
-
-    private var regularSize: CGFloat {
-        switch self {
-        case .largeTitle:
-            return 28
-        case .headline:
-            return 20
-        case .subheadlineBold, .subheadline:
-            return 18
-        case .bodyBold, .bodySemibold, .bodyMedium, .body:
-            return 16
-        case .calloutBold, .callout:
-            return 14
-        case .footnoteBold, .footnote:
-            return 12
-        case .caption:
-            return 10
+extension Font {
+    enum RythmicoTextStyle {
+        fileprivate enum FamilyName {
+            static let notoSansJP = "Noto Sans JP"
         }
-    }
 
-    private var regularWeight: Font.Weight {
-        switch self {
-        case .largeTitle: return .bold
-        case .headline: return .bold
-        case .subheadlineBold: return .bold
-        case .subheadline: return .regular
-        case .bodyBold: return .bold
-        case .bodySemibold: return .semibold
-        case .bodyMedium: return .medium
-        case .body: return .regular
-        case .calloutBold: return .bold
-        case .callout: return .regular
-        case .footnoteBold: return .bold
-        case .footnote: return .regular
-        case .caption: return .bold
+        case largeTitle         // 32px Bold
+        case headline           // 20px Bold
+        case subheadlineBold    // 18px Bold
+        case subheadline        // 18px Regular
+        case bodyBold           // 16px Bold
+        case bodySemibold       // 16px Semibold
+        case bodyMedium         // 16px Medium
+        case body               // 16px Regular
+        case calloutBold        // 14px Bold
+        case callout            // 14px Regular
+        case footnoteBold       // 12px Bold
+        case footnote           // 12px Regular
+        case caption            // 10px Bold
+
+        fileprivate var regularSize: CGFloat {
+            switch self {
+            case .largeTitle:
+                return 32
+            case .headline:
+                return 20
+            case .subheadlineBold, .subheadline:
+                return 18
+            case .bodyBold, .bodySemibold, .bodyMedium, .body:
+                return 16
+            case .calloutBold, .callout:
+                return 14
+            case .footnoteBold, .footnote:
+                return 12
+            case .caption:
+                return 10
+            }
         }
-    }
 
-    fileprivate func size<CSC: ContentSizeCategoryProtocol>(for sizeCategory: CSC) -> CGFloat {
-        regularSize * sizeCategory.sizeFactor
-    }
+        private var regularWeight: Font.Weight {
+            switch self {
+            case .largeTitle: return .bold
+            case .headline: return .bold
+            case .subheadlineBold: return .bold
+            case .subheadline: return .regular
+            case .bodyBold: return .bold
+            case .bodySemibold: return .semibold
+            case .bodyMedium: return .medium
+            case .body: return .regular
+            case .calloutBold: return .bold
+            case .callout: return .regular
+            case .footnoteBold: return .bold
+            case .footnote: return .regular
+            case .caption: return .bold
+            }
+        }
 
-    fileprivate func weight<LW: LegibilityWeightProtocol>(for legibilityWeight: LW?) -> Font.Weight {
-        legibilityWeight == .bold ? regularWeight.bolder : regularWeight
+        fileprivate var weight: Font.Weight {
+            UIAccessibility.isBoldTextEnabled ? regularWeight.bolder : regularWeight
+        }
     }
 }
 
 private extension Font.Weight {
-    var bolder: Font.Weight {
+    var bolder: Self {
         switch self {
         case .regular:
             return .medium
-        case .medium:
-            return .semibold
-        case .semibold:
+        case .medium, .semibold:
             return .bold
-        case .bold:
-            return .heavy
-        case .heavy, .black:
+        case .bold, .heavy, .black:
             return .black
         default:
-            return .semibold
+            return .bold
         }
     }
 }
 
 extension Font {
-    fileprivate enum Const {
-        static let notoSansJPFamily = "Noto Sans JP"
-    }
-
-    static func rythmicoFont(
-        _ style: RythmicoFontStyle,
-        sizeCategory: ContentSizeCategory,
-        legibilityWeight: LegibilityWeight?
-    ) -> Font {
-        .custom(Const.notoSansJPFamily, fixedSize: style.size(for: sizeCategory))
-        .weight(style.weight(for: legibilityWeight))
+    static func rythmico(_ style: RythmicoTextStyle) -> Font {
+        .custom(RythmicoTextStyle.FamilyName.notoSansJP, size: style.regularSize, relativeTo: .largeTitle).weight(style.weight)
     }
 }
 
 extension UIFont {
-    static func rythmicoFont<CSC: ContentSizeCategoryProtocol, LW: LegibilityWeightProtocol>(
-        _ style: RythmicoFontStyle,
-        sizeCategory: CSC,
-        legibilityWeight: LW?
-    ) -> UIFont {
-        let fontWeight = UIFont.Weight(style.weight(for: legibilityWeight))
-        let fontSize = style.size(for: sizeCategory)
-        let descriptor = UIFontDescriptor(
-            fontAttributes: [
-                .family: Font.Const.notoSansJPFamily,
-                .traits: [ UIFontDescriptor.TraitKey.weight: fontWeight.rawValue ]
-            ]
-        )
-
-        return UIFont(descriptor: descriptor, size: fontSize)
-    }
-
-    static func rythmicoFont(_ style: RythmicoFontStyle) -> UIFont {
-        rythmicoFont(
-            style,
-            sizeCategory: UITraitCollection.current.preferredContentSizeCategory,
-            legibilityWeight: UITraitCollection.current.legibilityWeight
+    static func rythmicoFont(_ style: Font.RythmicoTextStyle) -> UIFont {
+        UIFontMetrics(forTextStyle: .largeTitle).scaledFont(
+            for: UIFont(
+                descriptor: UIFontDescriptor(
+                    fontAttributes: [
+                        .family: Font.RythmicoTextStyle.FamilyName.notoSansJP,
+                        .traits: [ UIFontDescriptor.TraitKey.weight: Weight(style.weight).rawValue ]
+                    ]
+                ),
+                size: style.regularSize
+            ),
+            maximumPointSize: 40
         )
     }
 }

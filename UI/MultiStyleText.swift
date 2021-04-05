@@ -2,9 +2,6 @@ import SwiftUI
 import FoundationSugar
 
 struct MultiStyleText: View {
-    @Environment(\.sizeCategory) private var sizeCategory
-    @Environment(\.legibilityWeight) private var legibilityWeight
-
     var parts: [Part]
     var expanded: Bool = true
     var alignment: Alignment = .leading
@@ -16,13 +13,7 @@ struct MultiStyleText: View {
         } else {
             parts.reduce(Text("")) { text, part in
                 text + Text(part.string)
-                    .font(
-                        .rythmicoFont(
-                            part.style ?? .body,
-                            sizeCategory: sizeCategory,
-                            legibilityWeight: legibilityWeight
-                        )
-                    )
+                    .rythmicoFont(part.style ?? .body)
                     .foregroundColor(part.color ?? foregroundColor)
             }
             .frame(maxWidth: expanded ? .infinity : nil, alignment: alignment)
@@ -34,10 +25,10 @@ struct MultiStyleText: View {
 extension MultiStyleText {
     struct Part: ExpressibleByStringLiteral {
         var string: String
-        var style: RythmicoFontStyle?
+        var style: Font.RythmicoTextStyle?
         var color: Color?
 
-        init(_ string: String, style: RythmicoFontStyle? = nil, color: Color? = nil) {
+        init(_ string: String, style: Font.RythmicoTextStyle? = nil, color: Color? = nil) {
             self.string = string
             self.style = style
             self.color = color
@@ -62,7 +53,7 @@ extension MultiStyleText.Part: MultiStyleTextPartConvertible {
 }
 
 extension MultiStyleTextPartConvertible {
-    func style(_ style: RythmicoFontStyle?) -> MultiStyleText.Part {
+    func style(_ style: Font.RythmicoTextStyle?) -> MultiStyleText.Part {
         var part = self.part
         part.style = style
         return part
