@@ -1,4 +1,5 @@
 import Foundation
+import FoundationSugar
 import Tagged
 
 struct Tutor: Identifiable, Equatable, Decodable, Hashable {
@@ -8,4 +9,18 @@ struct Tutor: Identifiable, Equatable, Decodable, Hashable {
     var name: String
     var photoURL: ImageReference?
     var thumbnailURL: ImageReference?
+}
+
+extension Tutor {
+    var firstName: String? {
+        name.firstWord
+    }
+
+    var lastName: String? {
+        name.word(at: 1)
+    }
+
+    var shortName: String? {
+        unwrap(firstName, lastName?.first).map { $0 + .whitespace + $1 + .period } ?? firstName
+    }
 }
