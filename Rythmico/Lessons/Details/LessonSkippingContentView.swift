@@ -8,17 +8,19 @@ struct LessonSkippingContentView: View {
     var body: some View {
         VStack(spacing: .spacingMedium) {
             if isFree {
-                MultiStyleText(parts: ["This will cancel your payment for this lesson."], foregroundColor: .rythmicoGray90)
-                MultiStyleText(
-                    parts: [
-                        "Skip for ",
-                        "FREE".color(.rythmicoPurple).style(.bodyBold),
-                        " within ",
-                        remainingTimeString(from: Current.date(), to: freeSkipUntil).style(.bodyBold),
-                        ".",
-                    ],
-                    foregroundColor: .rythmicoGray90
-                )
+                Group {
+                    Text("This will cancel your payment for this lesson.")
+                    Text {
+                        "Skip for"
+                        "FREE".text.foregroundColor(.rythmicoPurple).rythmicoFont(.bodyBold)
+                        "within"
+                        remainingTimeString.text.rythmicoFont(.bodyBold) + String.period.text
+                    }
+                }
+                .foregroundColor(.rythmicoGray90)
+                .rythmicoFont(.body)
+                .lineSpacing(6)
+
                 InfoBanner(text:
                     """
                     If a lesson is skipped when there is less than 3 hours before it’s scheduled, then you will be charged fully.
@@ -27,7 +29,11 @@ struct LessonSkippingContentView: View {
                     """
                 )
             } else {
-                MultiStyleText(parts: ["You will still be charged the full amount for this lesson."], foregroundColor: .rythmicoGray90)
+                Text("You will still be charged the full amount for this lesson.")
+                    .foregroundColor(.rythmicoGray90)
+                    .rythmicoFont(.body)
+                    .lineSpacing(6)
+
                 InfoBanner(text:
                     """
                     Skipping a lesson for free is only available more than 3 hours before a lesson is scheduled to start.
@@ -40,7 +46,7 @@ struct LessonSkippingContentView: View {
     }
 
     private static let remainingTimeFormatter = Current.dateComponentsFormatter(allowedUnits: [.day, .hour, .minute], style: .short)
-    private func remainingTimeString(from: Date, to: Date) -> String {
+    private var remainingTimeString: String {
         let now = Current.date()
         return Self.remainingTimeFormatter.string(from: now, to: freeSkipUntil) !! preconditionFailure(
             "remainingTimeFormatter returned nil for input 'from' \(now) 'to' \(freeSkipUntil)"

@@ -18,7 +18,7 @@ struct PortfolioView: View {
                 VStack(spacing: .spacingSmall) {
                     HStack(spacing: .spacingSmall) {
                         header("Bio")
-                        MultiStyleText(parts: age(from: portfolio), alignment: .trailing)
+                        ageText(from: portfolio).multilineTextAlignment(.trailing)
                     }
 
                     bio(from: portfolio, scrollingProxy: proxy)
@@ -93,7 +93,11 @@ struct PortfolioView: View {
         }
     }
 
-    private func age(from portfolio: Portfolio) -> [MultiStyleText.Part] {
-        "Age: ".color(.rythmicoGray90) + "\(portfolio.age)".color(.rythmicoGray90).style(.bodyBold)
+    private func ageText(from portfolio: Portfolio) -> Text {
+        Text {
+            "Age: ".text.rythmicoFont(.body)
+            "\(portfolio.age)".text.rythmicoFont(.bodyBold)
+        }
+        .foregroundColor(.rythmicoGray90)
     }
 }

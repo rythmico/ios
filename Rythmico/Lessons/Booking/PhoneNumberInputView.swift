@@ -7,7 +7,9 @@ struct PhoneNumberInputView: View {
 
     var body: some View {
         VStack(spacing: .spacingSmall) {
-            MultiStyleText(parts: contactNumberInstructions)
+            contactNumberInstructions
+                .lineLimit(6)
+                .frame(maxWidth: .infinity, alignment: .leading)
             VStack(spacing: .spacingExtraSmall) {
                 PhoneNumberField($phoneNumber, inputError: $phoneNumberInputError)
                     .padding(.horizontal, .spacingUnit * 2.5)
@@ -20,10 +22,14 @@ struct PhoneNumberInputView: View {
         .fixedSize(horizontal: false, vertical: true)
     }
 
-    var contactNumberInstructions: [MultiStyleText.Part] {
-        "Enter a contact number of the ".color(.rythmicoGray90) +
-        "parent/guardian".style(.bodyBold).color(.rythmicoGray90) +
-        " of the student.".color(.rythmicoGray90)
+    var contactNumberInstructions: Text {
+        Text {
+            "Enter a contact number of the"
+            "parent/guardian".text.rythmicoFont(.bodyBold)
+            "of the student."
+        }
+        .foregroundColor(.rythmicoGray90)
+        .rythmicoFont(.body)
     }
 }
 

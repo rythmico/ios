@@ -28,10 +28,17 @@ struct PrivateNoteView: View, EditableView, TestableView {
         self.context = context
     }
 
-    private var subtitle: [MultiStyleText.Part] {
+    private var subtitle: Text? {
         editingFocus == .none
-            ? ["Enter details of what you're looking for to make it easier for prospective tutors"]
-            : .empty
+            ? Text("Enter details of what you're looking for to make it easier for prospective tutors")
+            : nil
+    }
+
+    private var privateNoteHeaderTitle: Text {
+        Text {
+            "Private Note"
+            "(optional)".text.rythmicoFont(.body)
+        }
     }
 
     var nextButtonAction: Action {
@@ -50,18 +57,18 @@ struct PrivateNoteView: View, EditableView, TestableView {
         TitleSubtitleContentView(title: "Private Note", subtitle: subtitle) {
             VStack(spacing: 0) {
                 ScrollView {
-                    HeaderContentView(title: "Private Note".style(.bodyBold) + " (optional)") {
+                    HeaderContentView(title: privateNoteHeaderTitle) {
                         MultilineTextField(
                             "Message prospective tutors...",
                             text: $state.privateNote,
                             inputAccessory: .none,
                             minHeight: 120,
                             onEditingChanged: noteEditingChanged
-                        )
-                        .modifier(RoundedThinOutlineContainer(padded: false))
+                        ).modifier(RoundedThinOutlineContainer(padded: false))
                     }
                     .padding([.trailing, .bottom], .spacingMedium)
                 }
+                .accentColor(.rythmicoPurple)
                 .padding(.leading, .spacingMedium)
 
                 FloatingView {

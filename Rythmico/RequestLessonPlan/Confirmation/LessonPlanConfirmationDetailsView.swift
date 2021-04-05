@@ -10,15 +10,13 @@ struct LessonPlanConfirmationDetailsView: View {
                 Image(decorative: Asset.iconInfo.name)
                     .renderingMode(.template)
                     .foregroundColor(.rythmicoGray90)
-                MultiStyleText(
-                    parts: [
-                        "First Lesson: ",
-                        Self.dateFormatter.string(from: lessonPlan.schedule.startDate).style(.bodyBold),
-                        " (", relativeDate().part, ")"
-                    ],
-                    expanded: false,
-                    foregroundColor: .rythmicoGray90
-                )
+                Text {
+                    "First Lesson:"
+                    Self.dateFormatter.string(from: lessonPlan.schedule.startDate).text.rythmicoFont(.bodyBold)
+                    relativeDate().parenthesized()
+                }
+                .foregroundColor(.rythmicoGray90)
+                .rythmicoFont(.body)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
             }

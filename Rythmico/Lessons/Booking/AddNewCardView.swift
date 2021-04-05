@@ -59,10 +59,12 @@ struct AddNewCardView: View {
         .alertOnFailure(coordinator)
     }
 
-    var subtitle: [MultiStyleText.Part] {
-        "Enter ".color(.rythmicoGray90) +
-        "credit/debit card".color(.rythmicoGray90).style(.bodyBold) +
-        " details to setup payment for the lesson plan.".color(.rythmicoGray90)
+    var subtitle: Text {
+        Text {
+            "Enter"
+            "credit/debit card".text.rythmicoFont(.bodyBold)
+            "details to setup payment for the lesson plan."
+        }
     }
 
     var confirmButtonEnabled: Bool {

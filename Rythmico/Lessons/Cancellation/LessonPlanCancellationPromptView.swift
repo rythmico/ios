@@ -39,25 +39,13 @@ extension LessonPlanCancellationView {
         private func content() -> some View {
             switch lessonPlan.status {
             case .pending:
-                MultiStyleText(
-                    parts: ["This lesson plan request is currently pending. By cancelling it, tutors won't be able to view it."],
-                    foregroundColor: .rythmicoGray90
-                )
+                descriptionText("This lesson plan request is currently pending. By cancelling it, tutors won't be able to view it.")
             case .reviewing:
-                MultiStyleText(
-                    parts: ["This lesson plan request is currently in review. By cancelling it, tutors who have applied will be withdrawn."],
-                    foregroundColor: .rythmicoGray90
-                )
+                descriptionText("This lesson plan request is currently in review. By cancelling it, tutors who have applied will be withdrawn.")
             case .scheduled:
-                MultiStyleText(
-                    parts: ["This will cancel the whole lesson plan, including upcoming lessons. The recurring payment will also be cancelled."],
-                    foregroundColor: .rythmicoGray90
-                )
+                descriptionText("This will cancel the whole lesson plan, including upcoming lessons. The recurring payment will also be cancelled.")
                 if !isFree {
-                    MultiStyleText(
-                        parts: ["You will still be charged the full amount for your upcoming lesson on this plan."],
-                        foregroundColor: .rythmicoGray90
-                    )
+                    descriptionText("You will still be charged the full amount for your upcoming lesson on this plan.")
                     InfoBanner(text:
                         """
                         When cancelling a lesson plan, you will still be charged the full amount for an upcoming lesson if the plan is cancelled less than 3 hours before the lesson is scheduled to start.
@@ -69,6 +57,14 @@ extension LessonPlanCancellationView {
             case .cancelled:
                 preconditionFailure("Cannot cancel an already cancelled lesson plan.")
             }
+        }
+
+        @ViewBuilder
+        private func descriptionText(_ string: String) -> some View {
+            Text(string)
+                .foregroundColor(.rythmicoGray90)
+                .rythmicoFont(.body)
+                .lineSpacing(6)
         }
 
         private var isFree: Bool {
