@@ -21,6 +21,6 @@ extension Tutor {
     }
 
     var shortName: String? {
-        unwrap(firstName, lastName?.first).map { $0 + .whitespace + $1 + .period } ?? firstName
+        unwrap(firstName, lastName?.first).map { "\($0) \($1)." } ?? firstName
     }
 }

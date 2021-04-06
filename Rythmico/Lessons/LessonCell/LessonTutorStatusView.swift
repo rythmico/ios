@@ -17,7 +17,7 @@ private extension Lesson {
     }
 
     var summarizedTitle: String {
-        tutor.name
+        tutor.shortName ?? .empty
     }
 
     var fullTitle: String {
