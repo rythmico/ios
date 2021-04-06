@@ -2,13 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>NotoSansJP-Black.otf</string>
-		<string>NotoSansJP-Bold.otf</string>
-		<string>NotoSansJP-Medium.otf</string>
-		<string>NotoSansJP-Regular.otf</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -24,7 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>902</string>
+	<string>946</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
 	<key>ITSAppUsesNonExemptEncryption</key>
@@ -39,6 +32,13 @@
 	<string>We need access to your calendar to determine your calendar sync status.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>We need access to your camera to auto-fill your card details.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NotoSansJP-Black.otf</string>
+		<string>NotoSansJP-Bold.otf</string>
+		<string>NotoSansJP-Medium.otf</string>
+		<string>NotoSansJP-Regular.otf</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
