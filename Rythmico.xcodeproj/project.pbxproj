@@ -548,6 +548,7 @@
 		D5ED3269260668BE00821ABE /* Date+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED3267260668BE00821ABE /* Date+Sugar.swift */; };
 		D5EEF6A5261B921A0014E500 /* JoinedText in Frameworks */ = {isa = PBXBuildFile; productRef = D5EEF6A4261B921A0014E500 /* JoinedText */; };
 		D5EEF6AA261BB13C0014E500 /* Text+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EEF6A9261BB13C0014E500 /* Text+Sugar.swift */; };
+		D5EEF6AD261BDE470014E500 /* XCTAssertText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EEF6AC261BDE470014E500 /* XCTAssertText.swift */; };
 		D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF88B523FB706C0072BD03 /* ProgressBar.swift */; };
 		D5F11566253735F20027D164 /* NonEmpty in Frameworks */ = {isa = PBXBuildFile; productRef = D5F11565253735F20027D164 /* NonEmpty */; };
 		D5F4AE7E2559D3F0001085D5 /* PhoneNumberDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */; };
@@ -1018,6 +1019,7 @@
 		D5ED3264260667E800821ABE /* DateDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDoubles.swift; sourceTree = "<group>"; };
 		D5ED3267260668BE00821ABE /* Date+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Sugar.swift"; sourceTree = "<group>"; };
 		D5EEF6A9261BB13C0014E500 /* Text+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Sugar.swift"; sourceTree = "<group>"; };
+		D5EEF6AC261BDE470014E500 /* XCTAssertText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTAssertText.swift; sourceTree = "<group>"; };
 		D5EF88B523FB706C0072BD03 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D5F4D3DF24F04294000E8580 /* BookingApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplication.swift; sourceTree = "<group>"; };
 		D5F4D3E224F04479000E8580 /* BookingApplicationEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationEndpoints.swift; sourceTree = "<group>"; };
@@ -1662,6 +1664,7 @@
 				D5F506642400619600CA4094 /* UIApplication+KeyboardDismisser.swift */,
 				D58DE1CC25C0F0100013AEE8 /* UIColor+Hex.swift */,
 				D5CC5FE924FF1201007DFE84 /* UIImage+Sugar.swift */,
+				D5EEF6AC261BDE470014E500 /* XCTAssertText.swift */,
 				D5147507240C8E69002EE20C /* XCTAssertView.swift */,
 				D59E4E5325B2033200E8F94C /* YouTubeVideoPlayerView.swift */,
 			);
@@ -3167,6 +3170,7 @@
 				D535553623E105A5005A20EB /* OnboardingViewTests.swift in Sources */,
 				0392A9D3244D184F001E97AE /* PrivateNoteViewTests.swift in Sources */,
 				03EDA67B2477695900FBE527 /* ProfileViewTests.swift in Sources */,
+				D5EEF6AD261BDE470014E500 /* XCTAssertText.swift in Sources */,
 				D5FD6F16240AF535008C5AD4 /* StudentDetailsViewTests.swift in Sources */,
 				D50811E623FB769D008103D8 /* RequestLessonPlanFormViewTests.swift in Sources */,
 				03AAF6752445E16A002D8F5B /* SchedulingViewTests.swift in Sources */,
