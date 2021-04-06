@@ -36,7 +36,7 @@ struct ExpandableText<Expander: View, Collapser: View>: View {
     private let paragraphSpacing: CGFloat = .spacingLarge
     private let paragraphCountWhenCollapsed = 1
     private var paragraphCount: Int { isExpanded ? paragraphs.count : min(paragraphCountWhenCollapsed, paragraphs.count) }
-    private var paragraphs: [String] { content.removingRepetitionOf("\n").components(separatedBy: "\n") }
+    private var paragraphs: [String] { content.components(separatedBy: "\n\n") }
 
     private let lineSpacing: CGFloat = .spacingUnit * 2
 
