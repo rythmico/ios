@@ -7,7 +7,7 @@ struct BackButton: View {
     var body: some View {
         Button(action: action) {
             HStack(spacing: .spacingUnit) {
-                Image(systemSymbol: .chevronLeft).font(.system(size: 21, weight: .semibold))
+                Image(systemSymbol: .chevronLeft).font(.system(size: 21, weight: .medium))
                 Text(title).rythmicoFont(.bodyMedium).offset(y: -1)
             }
             .padding([.vertical, .trailing], .spacingSmall)

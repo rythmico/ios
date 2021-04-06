@@ -5,15 +5,9 @@ import Then
 private struct UITextViewWrapper: UIViewRepresentable {
     final class UITextViewPrimitive: UITextView {
         override func caretRect(for position: UITextPosition) -> CGRect {
-            var superRect = super.caretRect(for: position)
-            guard let font = font else {
-                return superRect
+            super.caretRect(for: position).with {
+                $0.size.height = UIFontMetrics(forTextStyle: .largeTitle).scaledValue(for: 26)
             }
-
-            // "descender" is expressed as a negative value,
-            // so to add its height you must subtract its value
-            superRect.size.height = font.pointSize - font.descender
-            return superRect
         }
     }
 

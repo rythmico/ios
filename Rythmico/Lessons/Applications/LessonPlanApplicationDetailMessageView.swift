@@ -55,6 +55,6 @@ struct LessonPlanApplicationDetailMessageView: View {
     }
 
     private var privateNote: String? {
-        application.privateNote.nilIfEmpty.map { "\"\($0)\"" }
+        application.privateNote.nilIfEmpty.map { $0.smartQuoted() }
     }
 }

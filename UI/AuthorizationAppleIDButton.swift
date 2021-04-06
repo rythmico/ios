@@ -4,11 +4,13 @@ import AuthenticationServices
 struct AuthorizationAppleIDButton: View {
     private enum Const {
         static let maxWidth: CGFloat = 320
-        static let defaultHeight: CGFloat = 44
+        static let regularHeight: CGFloat = 44
     }
 
-    @Environment(\.colorScheme) private var colorScheme
-    @Environment(\.sizeCategory) private var sizeCategory
+    @Environment(\.colorScheme)
+    private var colorScheme
+    @ScaledMetric(relativeTo: .largeTitle)
+    private var height = Const.regularHeight
 
     var type: SignInWithAppleButton.Label = .continue
     var action: () -> Void
@@ -20,7 +22,7 @@ struct AuthorizationAppleIDButton: View {
                 .allowsHitTesting(false)
         }
         .frame(maxWidth: Const.maxWidth)
-        .frame(height: Const.defaultHeight * sizeCategory.sizeFactor)
+        .frame(height: height)
     }
 }
 

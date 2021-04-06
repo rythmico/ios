@@ -11,27 +11,21 @@ struct ScheduleDetailsView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: .spacingSmall) {
-            HStack(spacing: .spacingExtraSmall) {
-                Image(decorative: Asset.iconInfo.name)
-                    .renderingMode(.template)
-                    .foregroundColor(.rythmicoGray90)
-                MultiStyleText(parts: [
-                    "Start Date: ".color(.rythmicoGray90),
-                    startDateText.color(.rythmicoGray90).style(.bodyBold)
-                ])
+            Group {
+                HStack(spacing: .spacingExtraSmall) {
+                    Image(decorative: Asset.iconInfo.name).renderingMode(.template)
+                    startDateText
+                }
+                HStack(spacing: .spacingExtraSmall) {
+                    Image(decorative: Asset.iconTime.name).renderingMode(.template)
+                    startTimeAndDurationText
+                }
+                HStack(spacing: .spacingExtraSmall) {
+                    Image(decorative: Asset.iconTime.name).hidden()
+                    frequencyText
+                }
             }
-
-            HStack(spacing: .spacingExtraSmall) {
-                Image(decorative: Asset.iconTime.name)
-                    .renderingMode(.template)
-                    .foregroundColor(.rythmicoGray90)
-                MultiStyleText(parts: startTimeAndDurationText)
-            }
-
-            HStack(spacing: .spacingExtraSmall) {
-                Image(decorative: Asset.iconTime.name).hidden()
-                MultiStyleText(parts: frequencyText)
-            }
+            .foregroundColor(.rythmicoGray90)
 
             if let tutor = tutor {
                 HStack(spacing: .spacingExtraSmall) {
@@ -43,26 +37,40 @@ struct ScheduleDetailsView: View {
                 }
             }
         }
+        .lineSpacing(6)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .fixedSize(horizontal: false, vertical: true)
     }
 
     private static let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
-    private var startDateText: String { Self.startDateFormatter.string(from: schedule.startDate) }
+    private var startDate: String { Self.startDateFormatter.string(from: schedule.startDate) }
+    private var startDateText: Text {
+        Text {
+            "Start Date:".text.rythmicoFont(.body)
+            startDate.text.rythmicoFont(.bodyBold)
+        }
+    }
 
     private static let startTimeFormatter = Current.dateFormatter(format: .custom("h:mma"))
-    private var startTimeText: String { Self.startTimeFormatter.string(from: schedule.startDate) }
-    private var startTimeAndDurationText: [MultiStyleText.Part] {
-        startTimeText.style(.bodyBold).color(.rythmicoGray90) +
-        " for ".color(.rythmicoGray90) +
-        schedule.duration.title.style(.bodyBold).color(.rythmicoGray90)
+    private var startTime: String { Self.startTimeFormatter.string(from: schedule.startDate) }
+    private var startTimeAndDurationText: Text {
+        Text {
+            startTime
+            "for".text.rythmicoFont(.body)
+            schedule.duration.title
+        }
+        .rythmicoFont(.bodyBold)
     }
 
     private static let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
-    private var frequencyDayText: String { Self.frequencyDayFormatter.string(from: schedule.startDate) }
-    private var frequencyText: [MultiStyleText.Part] {
-        "Recurring ".color(.rythmicoGray90) +
-        "every \(frequencyDayText)".style(.bodyBold).color(.rythmicoGray90) +
-        " at the same time and for the same duration".color(.rythmicoGray90)
+    private var frequencyDay: String { Self.frequencyDayFormatter.string(from: schedule.startDate) }
+    private var frequencyText: Text {
+        Text {
+            "Recurring"
+            "every \(frequencyDay)".text.rythmicoFont(.bodyBold)
+            "at the same time and for the same duration"
+        }
+        .rythmicoFont(.body)
     }
 }
 

@@ -9,8 +9,14 @@ extension String {
     public static var whitespace: String { " " }
     public static var dash: String { "-" }
     public static var newline: String { "\n" }
+    public static var period: String { "." }
     public static var comma: String { "," }
     public static var quote: String { "\"" }
+    public static var openQuote: String { "“" }
+    public static var closeQuote: String { "”" }
+    public static var colon: String { ":" }
+    public static var openParenthesis: String { "(" }
+    public static var closeParenthesis: String { ")" }
 }
 
 extension StringProtocol {
@@ -24,6 +30,14 @@ extension StringProtocol {
 
     public func quoted() -> String {
         .quote + String(self) + .quote
+    }
+
+    public func smartQuoted() -> String {
+        .openQuote + String(self) + .closeQuote
+    }
+
+    public func parenthesized() -> String {
+        .openParenthesis + String(self) + .closeParenthesis
     }
 
     public func repeated(_ count: Int = 2) -> String {
@@ -52,12 +66,17 @@ extension StringProtocol {
 }
 
 extension StringProtocol {
-    public var firstWord: String? {
+    public func word(at index: Int) -> String? {
         self.trimmingCharacters(in: .whitespacesAndNewlines)
             .lazy
             .split(separator: .whitespace)
+            .dropFirst(index)
             .first
             .map(String.init)
+    }
+
+    public var firstWord: String? {
+        word(at: 0)
     }
 
     public var initials: String {

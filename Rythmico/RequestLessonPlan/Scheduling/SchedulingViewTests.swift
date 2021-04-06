@@ -24,14 +24,14 @@ final class SchedulingViewTests: XCTestCase {
         )
     }
 
-    func testInitialValues() {
+    func testInitialValues() throws {
         let (context, state, view) = schedulingView
 
-        XCTAssertView(view) { view in
+        try XCTAssertView(view) { view in
             XCTAssertNil(context.schedule)
 
-            XCTAssertEqual(
-                view.subtitle.string,
+            try XCTAssertText(
+                XCTUnwrap(view.subtitle),
                 "Enter when you want the Guitar lessons to commence and for how long"
             )
 

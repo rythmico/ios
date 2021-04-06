@@ -102,12 +102,14 @@ struct LessonPlanBookingView: View {
         ["Book", application.tutor.name.firstWord].compact().spaced()
     }
 
-    var subtitle: [MultiStyleText.Part] {
-        "Review the ".color(.rythmicoGray90) +
-        "proposed lesson plan".color(.rythmicoGray90).style(.bodyBold) +
-        " and ".color(.rythmicoGray90) +
-        "price per lesson".color(.rythmicoGray90).style(.bodyBold) +
-        " before booking".color(.rythmicoGray90)
+    var subtitle: Text {
+        Text {
+            "Review the"
+            "proposed lesson plan".text.rythmicoFont(.bodyBold)
+            "and"
+            "price per lesson".text.rythmicoFont(.bodyBold)
+            "before booking"
+        }
     }
 
     var confirmAction: Action? {

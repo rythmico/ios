@@ -49,7 +49,7 @@ struct ReviewRequestView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        TitleSubtitleContentView(title: "Review Proposal", subtitle: []) {
+        TitleSubtitleContentView(title: "Review Proposal") {
             VStack(spacing: 0) {
                 ScrollView {
                     VStack(spacing: .spacingUnit * 8) {
@@ -77,7 +77,7 @@ struct ReviewRequestView: View, TestableView {
 
                                 VStack(alignment: .leading, spacing: .spacingMedium) {
                                     Text(studentDetails).lineSpacing(Const.lineSpacing)
-                                    MultiStyleText(parts: studentAbout)
+                                    studentAbout.lineSpacing(6)
                                 }.fixedSize(horizontal: false, vertical: true)
                             }
                             .rythmicoFont(.body)
@@ -154,13 +154,12 @@ struct ReviewRequestView: View, TestableView {
         return [dateOfBirthString, "(\(age) years old)"].compact().spaced()
     }
 
-    private var studentAbout: [MultiStyleText.Part] {
-        guard !student.about.isEmpty else { return .empty }
-        let aboutHeader = ["About", student.name.firstWord].compact().spaced()
-        return [
-            (aboutHeader + ":\n").style(.bodyBold).color(.rythmicoGray90),
-            student.about.color(.rythmicoGray90)
-        ]
+    private var studentAbout: Text? {
+        guard !student.about.isBlank else { return nil }
+        return Text(separator: .newline) {
+            Text(["About", student.name.firstWord].compact().spaced() + .colon).rythmicoFont(.bodyBold)
+            student.about
+        }
     }
 }
 

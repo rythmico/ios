@@ -2,7 +2,7 @@ import SwiftUI
 
 struct TitleSubtitleContentView<Content: View>: View {
     var title: String
-    var subtitle: [MultiStyleText.Part]
+    var subtitle: Text? = nil
     @ViewBuilder
     var content: Content
 
@@ -16,7 +16,7 @@ struct TitleSubtitleContentView<Content: View>: View {
 
 extension TitleSubtitleContentView {
     init(title: String, subtitle: String, @ViewBuilder content: () -> Content) {
-        self.init(title: title, subtitle: [.init(subtitle)], content: content)
+        self.init(title: title, subtitle: Text(subtitle), content: content)
     }
 }
 

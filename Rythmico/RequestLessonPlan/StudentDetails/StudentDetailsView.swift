@@ -39,10 +39,13 @@ struct StudentDetailsView: View, EditableView, TestableView {
     }
 
     // MARK: - Subtitle -
-    var subtitle: [MultiStyleText.Part] {
+    var subtitle: Text? {
         editingFocus == .none
-            ? "Enter the details of the student who will be learning " + instrument.standaloneName.style(.bodyBold)
-            : .empty
+            ? Text {
+                "Enter the details of the student who will be learning"
+                instrument.standaloneName.text.rythmicoFont(.bodyBold)
+            }
+            : nil
     }
 
     // MARK: - Name -
@@ -62,8 +65,15 @@ struct StudentDetailsView: View, EditableView, TestableView {
     private let dateOfBirthPlaceholder = Current.date() - Const.averageStudentAge
 
     // MARK: - About -
-    var aboutNameTextPart: MultiStyleText.Part {
-        sanitizedName?.firstWord.map { $0.color(.rythmicoPurple) } ?? "Student"
+    var aboutHeaderTitle: Text {
+        Text {
+            "About"
+            if let firstName = sanitizedName?.firstWord {
+                firstName.text.foregroundColor(.rythmicoPurple)
+            } else {
+                "Student"
+            }
+        }
     }
 
     private var sanitizedAbout: String {
@@ -108,7 +118,7 @@ struct StudentDetailsView: View, EditableView, TestableView {
                                 onEditingChanged: fullNameEditingChanged
                             ).modifier(RoundedThinOutlineContainer(padded: false))
                         }
-                        HeaderContentView(title: ["Date of Birth".style(.bodyBold)], titleAccessory: {
+                        HeaderContentView(title: "Date of Birth", titleAccessory: {
                             InfoDisclaimerButton(
                                 title: "Why Date of Birth?",
                                 message: "This gives tutors a better understanding of the learning requirements for each student, and will help to plan their lessons accordingly."
@@ -122,7 +132,7 @@ struct StudentDetailsView: View, EditableView, TestableView {
                                 onEditingChanged: dateOfBirthEditingChanged
                             ).modifier(RoundedThinOutlineContainer(padded: false))
                         }
-                        HeaderContentView(title: "About ".style(.bodyBold) + aboutNameTextPart.style(.bodyBold)) {
+                        HeaderContentView(title: aboutHeaderTitle) {
                             MultilineTextField(
                                 "Existing instrument prowess etc.",
                                 text: $state.about,
