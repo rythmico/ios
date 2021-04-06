@@ -38,10 +38,10 @@ final class AddressDetailsViewTests: XCTestCase {
     func testInitialValues() throws {
         let (context, _, view) = try addressDetailsView(result: .success(.stub))
 
-        XCTAssertView(view) { view in
+        try XCTAssertView(view) { view in
             XCTAssertNil(context.address)
 
-            XCTAssertEqual(view.subtitle.string, "Enter the address where David will have the Guitar lessons")
+            try XCTAssertText(view.subtitle, "Enter the address where David will have the Guitar lessons")
             XCTAssertTrue(view.state.postcode.isEmpty)
             XCTAssertNil(view.state.selectedAddress)
 

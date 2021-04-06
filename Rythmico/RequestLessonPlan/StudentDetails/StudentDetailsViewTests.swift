@@ -23,15 +23,15 @@ final class StudentDetailsViewTests: XCTestCase {
         )
     }
 
-    func testInitialValues() {
+    func testInitialValues() throws {
         let (context, keyboardDismisser, view) = studentDetailsView
 
-        XCTAssertView(view) { view in
+        try XCTAssertView(view) { view in
             XCTAssertNil(context.student)
             XCTAssertEqual(keyboardDismisser.dismissKeyboardCount, 0)
 
-            XCTAssertEqual(
-                view.subtitle.string,
+            try XCTAssertText(
+                XCTUnwrap(view.subtitle),
                 "Enter the details of the student who will be learning Singing"
             )
 
@@ -41,7 +41,7 @@ final class StudentDetailsViewTests: XCTestCase {
             XCTAssertNil(view.dateOfBirthText)
             XCTAssertFalse(view.dateOfBirthPlaceholderText.isEmpty)
 
-            XCTAssertEqual(view.aboutNameTextPart.string, "Student")
+            try XCTAssertText(view.aboutHeaderTitle, "About Student")
             XCTAssertEqual(view.state.about, .empty)
 
             XCTAssertNil(view.nextButtonAction)
@@ -51,12 +51,12 @@ final class StudentDetailsViewTests: XCTestCase {
     func testEditingName() throws {
         let (_, _, view) = studentDetailsView
 
-        XCTAssertView(view) { view in
+        try XCTAssertView(view) { view in
             view.state.name = "David"
-            XCTAssertEqual(view.aboutNameTextPart.string, "David")
+            try XCTAssertText(view.aboutHeaderTitle, "About David")
 
             view.state.name = "  Jesse Bildner \n   "
-            XCTAssertEqual(view.aboutNameTextPart.string, "Jesse")
+            try XCTAssertText(view.aboutHeaderTitle, "About Jesse")
 
             XCTAssertNil(view.nextButtonAction)
         }
