@@ -11,7 +11,7 @@ struct TitleContentView<Content: View>: View {
             Text(title)
                 .padding(titlePadding)
                 .lineLimit(1)
-                .minimumScaleFactor(0.6)
+                .minimumScaleFactor(0.4)
                 .foregroundColor(.rythmicoForeground)
                 .rythmicoFont(.largeTitle)
                 .frame(maxWidth: .infinity, alignment: .leading)
