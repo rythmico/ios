@@ -12,6 +12,8 @@ extension String {
     public static var period: String { "." }
     public static var comma: String { "," }
     public static var quote: String { "\"" }
+    public static var openQuote: String { "“" }
+    public static var closeQuote: String { "”" }
     public static var colon: String { ":" }
     public static var openParenthesis: String { "(" }
     public static var closeParenthesis: String { ")" }
@@ -28,6 +30,10 @@ extension StringProtocol {
 
     public func quoted() -> String {
         .quote + String(self) + .quote
+    }
+
+    public func smartQuoted() -> String {
+        .openQuote + String(self) + .closeQuote
     }
 
     public func parenthesized() -> String {

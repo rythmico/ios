@@ -38,6 +38,7 @@ struct ScheduleDetailsView: View {
             }
         }
         .lineSpacing(6)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .fixedSize(horizontal: false, vertical: true)
     }
 
