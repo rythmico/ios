@@ -287,6 +287,8 @@
 		D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */; };
 		D54340EA261E2FFE006898B0 /* RawAnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340E9261E2FFE006898B0 /* RawAnalyticsService.swift */; };
 		D54340EB261E2FFE006898B0 /* RawAnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340E9261E2FFE006898B0 /* RawAnalyticsService.swift */; };
+		D54340F0261E7009006898B0 /* AnalyticsPropsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340EF261E7009006898B0 /* AnalyticsPropsBuilder.swift */; };
+		D54340F1261E7009006898B0 /* AnalyticsPropsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340EF261E7009006898B0 /* AnalyticsPropsBuilder.swift */; };
 		D543CA6E2608B77D00900975 /* ScrollView+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA6D2608B77D00900975 /* ScrollView+Sugar.swift */; };
 		D543CA702608F8B400900975 /* Binding+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA6F2608F8B400900975 /* Binding+Sugar.swift */; };
 		D543CA712608F8B400900975 /* Binding+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA6F2608F8B400900975 /* Binding+Sugar.swift */; };
@@ -832,6 +834,7 @@
 		D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanContext.swift; sourceTree = "<group>"; };
 		D54340E9261E2FFE006898B0 /* RawAnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawAnalyticsService.swift; sourceTree = "<group>"; };
+		D54340EF261E7009006898B0 /* AnalyticsPropsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsPropsBuilder.swift; sourceTree = "<group>"; };
 		D543CA6D2608B77D00900975 /* ScrollView+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Sugar.swift"; sourceTree = "<group>"; };
 		D543CA6F2608F8B400900975 /* Binding+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Sugar.swift"; sourceTree = "<group>"; };
 		D543CA722609227D00900975 /* CustomTextFieldInputMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldInputMode.swift; sourceTree = "<group>"; };
@@ -1924,6 +1927,7 @@
 			isa = PBXGroup;
 			children = (
 				D54CF08D25FA8724007D5050 /* AnalyticsCoordinator.swift */,
+				D54340EF261E7009006898B0 /* AnalyticsPropsBuilder.swift */,
 				D54CF08625FA8624007D5050 /* AnalyticsService.swift */,
 				D54CF08A25FA8696007D5050 /* AnalyticsServiceDoubles.swift */,
 				D54340E9261E2FFE006898B0 /* RawAnalyticsService.swift */,
@@ -2887,6 +2891,7 @@
 				D5D9AEB425368AAA00A0ABCC /* LessonPlanBookingPriceView.swift in Sources */,
 				D5BF12BE2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift in Sources */,
 				D5F506BE2406E49A00CA4094 /* EdgeSwipeView.swift in Sources */,
+				D54340F0261E7009006898B0 /* AnalyticsPropsBuilder.swift in Sources */,
 				D54EFF192513D690004F14D3 /* Portfolio.swift in Sources */,
 				D5BDD502253B406300255190 /* AppState.swift in Sources */,
 				031378C9249A7DFF005FC49C /* LessonPlanCancellationPromptView.swift in Sources */,
@@ -3001,6 +3006,7 @@
 				D5F4D3E724F096A2000E8580 /* BookingApplicationDetailView.swift in Sources */,
 				D58DE1BC25BDF5C30013AEE8 /* RootViewFlow.swift in Sources */,
 				D54CF08F25FA8724007D5050 /* AnalyticsCoordinator.swift in Sources */,
+				D54340F1261E7009006898B0 /* AnalyticsPropsBuilder.swift in Sources */,
 				035B1D42249E577700AABFEA /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
 				035B1D62249E63D800AABFEA /* DeviceEndpoints.swift in Sources */,
 				035B1D63249E63EC00AABFEA /* DeviceRegisterCoordinator.swift in Sources */,
