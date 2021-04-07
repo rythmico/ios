@@ -23,6 +23,13 @@ extension AppEnvironment {
         settings: .standard,
         keychain: Keychain.localKeychain,
 
+        accessibilitySettings: AccessibilitySettings(
+            isVoiceOverOn: UIAccessibility.isVoiceOverRunning,
+            interfaceStyle: UITraitCollection.current.userInterfaceStyle,
+            dynamicTypeSize: UITraitCollection.current.preferredContentSizeCategory,
+            isBoldTextOn: UIAccessibility.isBoldTextEnabled
+        ),
+
         appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
         appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
         appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifier(notificationCenter: .default),
@@ -104,6 +111,8 @@ extension AppEnvironment {
 
             settings: UserDefaultsDummy(),
             keychain: KeychainDummy(),
+
+            accessibilitySettings: .dummy,
 
             appleAuthorizationService: AppleAuthorizationServiceDummy(),
             appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcherDummy(),

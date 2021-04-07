@@ -16,6 +16,8 @@ struct AppEnvironment {
     var settings: UserDefaults
     var keychain: KeychainProtocol
 
+    var accessibilitySettings: AccessibilitySettings
+
     var appleAuthorizationService: AppleAuthorizationServiceProtocol
     var appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider
     var appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifying
@@ -71,6 +73,8 @@ struct AppEnvironment {
 
         settings: UserDefaults,
         keychain: KeychainProtocol,
+
+        accessibilitySettings: AccessibilitySettings,
 
         appleAuthorizationService: AppleAuthorizationServiceProtocol,
         appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider,
@@ -129,6 +133,8 @@ struct AppEnvironment {
         self.settings = settings
         self.keychain = keychain
 
+        self.accessibilitySettings = accessibilitySettings
+
         self.appleAuthorizationService = appleAuthorizationService
         self.appleAuthorizationCredentialStateProvider = appleAuthorizationCredentialStateProvider
         self.appleAuthorizationCredentialRevocationNotifier = appleAuthorizationCredentialRevocationNotifier
@@ -136,7 +142,7 @@ struct AppEnvironment {
         self.deauthenticationService = deauthenticationService
         self.userCredentialProvider = userCredentialProvider
 
-        self.analytics = AnalyticsCoordinator(service: analyticsService, userCredentialProvider: userCredentialProvider)
+        self.analytics = AnalyticsCoordinator(service: analyticsService, userCredentialProvider: userCredentialProvider, accessibilitySettings: accessibilitySettings)
         self.analyticsService = analyticsService
 
         let apiActivityErrorHandler = APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator, settings: settings)
