@@ -1,11 +1,6 @@
-import UIKit
+import Foundation
 import FoundationSugar
-
-struct AnalyticsUserProfile {
-    var id: String
-    var name: String?
-    var email: String?
-}
+import class Mixpanel.MixpanelInstance
 
 protocol AnalyticsServiceProtocol {
     func identify(_ profile: AnalyticsUserProfile)
@@ -14,16 +9,9 @@ protocol AnalyticsServiceProtocol {
     func reset()
 }
 
-extension AnalyticsServiceProtocol where Self: RawAnalyticsServiceProtocol {
+extension MixpanelInstance: AnalyticsServiceProtocol {
     func identify(_ profile: AnalyticsUserProfile) {
-        identify(distinctId: profile.id)
-        set(Properties {
-            if let name = profile.name?.nilIfEmpty {
-                ["$name": name]
-            }
-            if let email = profile.email?.nilIfEmpty {
-                ["$email": email]
-            }
-        })
+        identify(distinctId: profile.id, usePeople: true)
+        people.set(properties: profile.rawAnalyticsValue)
     }
 }
