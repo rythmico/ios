@@ -289,6 +289,10 @@
 		D54340EE261E3C03006898B0 /* AnalyticsUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340EC261E3C03006898B0 /* AnalyticsUserProfile.swift */; };
 		D54340F0261E7009006898B0 /* AnalyticsPropsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340EF261E7009006898B0 /* AnalyticsPropsBuilder.swift */; };
 		D54340F1261E7009006898B0 /* AnalyticsPropsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340EF261E7009006898B0 /* AnalyticsPropsBuilder.swift */; };
+		D54340F3261E72F8006898B0 /* AccessibilitySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340F2261E72F8006898B0 /* AccessibilitySettings.swift */; };
+		D54340F4261E72F8006898B0 /* AccessibilitySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340F2261E72F8006898B0 /* AccessibilitySettings.swift */; };
+		D54340F7261E7314006898B0 /* AccessibilitySettingsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340F6261E7314006898B0 /* AccessibilitySettingsDoubles.swift */; };
+		D54340F8261E7314006898B0 /* AccessibilitySettingsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340F6261E7314006898B0 /* AccessibilitySettingsDoubles.swift */; };
 		D543CA6E2608B77D00900975 /* ScrollView+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA6D2608B77D00900975 /* ScrollView+Sugar.swift */; };
 		D543CA702608F8B400900975 /* Binding+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA6F2608F8B400900975 /* Binding+Sugar.swift */; };
 		D543CA712608F8B400900975 /* Binding+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA6F2608F8B400900975 /* Binding+Sugar.swift */; };
@@ -835,6 +839,8 @@
 		D54317F323FDB0DD00CB1493 /* RequestLessonPlanContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanContext.swift; sourceTree = "<group>"; };
 		D54340EC261E3C03006898B0 /* AnalyticsUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsUserProfile.swift; sourceTree = "<group>"; };
 		D54340EF261E7009006898B0 /* AnalyticsPropsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsPropsBuilder.swift; sourceTree = "<group>"; };
+		D54340F2261E72F8006898B0 /* AccessibilitySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilitySettings.swift; sourceTree = "<group>"; };
+		D54340F6261E7314006898B0 /* AccessibilitySettingsDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilitySettingsDoubles.swift; sourceTree = "<group>"; };
 		D543CA6D2608B77D00900975 /* ScrollView+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Sugar.swift"; sourceTree = "<group>"; };
 		D543CA6F2608F8B400900975 /* Binding+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Sugar.swift"; sourceTree = "<group>"; };
 		D543CA722609227D00900975 /* CustomTextFieldInputMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldInputMode.swift; sourceTree = "<group>"; };
@@ -1493,6 +1499,7 @@
 		03EDA6692476AD6800FBE527 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D54340F5261E7303006898B0 /* AccessibilitySettings */,
 				D5AFED4425057CB0003FFC68 /* ActivityCoordinator */,
 				D54CF08925FA8627007D5050 /* Analytics */,
 				D527B01A24FEACC0003E81A9 /* API */,
@@ -1899,6 +1906,15 @@
 				D54317F023FDB03300CB1493 /* Main */,
 			);
 			path = Root;
+			sourceTree = "<group>";
+		};
+		D54340F5261E7303006898B0 /* AccessibilitySettings */ = {
+			isa = PBXGroup;
+			children = (
+				D54340F2261E72F8006898B0 /* AccessibilitySettings.swift */,
+				D54340F6261E7314006898B0 /* AccessibilitySettingsDoubles.swift */,
+			);
+			path = AccessibilitySettings;
 			sourceTree = "<group>";
 		};
 		D54A560D23CD36C500BC8485 /* Authorization */ = {
@@ -2652,6 +2668,7 @@
 				D501587825375AA9005E02FA /* PorfolioView.swift in Sources */,
 				D58DE1CD25C0F0100013AEE8 /* UIColor+Hex.swift in Sources */,
 				D575C819254DD6C8001664AB /* AppSplash.swift in Sources */,
+				D54340F7261E7314006898B0 /* AccessibilitySettingsDoubles.swift in Sources */,
 				D517FF952553B60000A41639 /* LessonDoubles.swift in Sources */,
 				D5AAF7C823ECC87000E410F2 /* RequestLessonPlanView.swift in Sources */,
 				D56B25432533331A00BC3932 /* PhoneNumberDoubles.swift in Sources */,
@@ -2808,6 +2825,7 @@
 				D54FC05524CF040500029FC6 /* SheetInteractiveDismissal.swift in Sources */,
 				D50158AA2538BF63005E02FA /* CardSetupCredential.swift in Sources */,
 				0365F6F52417F1E900F452AC /* AddressLookupEndpoints.swift in Sources */,
+				D54340F3261E72F8006898B0 /* AccessibilitySettings.swift in Sources */,
 				D517FF8025536AB900A41639 /* Tutor.swift in Sources */,
 				D58824BF251A6953000820F4 /* LessonPlanApplicationsGridView.swift in Sources */,
 				D5882502251CBE0C000820F4 /* NavigationViewFixInteractiveDismissal.swift in Sources */,
@@ -3005,6 +3023,7 @@
 				D575C830254F10E1001664AB /* RemoteConfig.swift in Sources */,
 				D5F4D3E724F096A2000E8580 /* BookingApplicationDetailView.swift in Sources */,
 				D58DE1BC25BDF5C30013AEE8 /* RootViewFlow.swift in Sources */,
+				D54340F8261E7314006898B0 /* AccessibilitySettingsDoubles.swift in Sources */,
 				D54CF08F25FA8724007D5050 /* AnalyticsCoordinator.swift in Sources */,
 				D54340F1261E7009006898B0 /* AnalyticsPropsBuilder.swift in Sources */,
 				035B1D42249E577700AABFEA /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
@@ -3142,6 +3161,7 @@
 				D5F4D3FB24F7120E000E8580 /* GroupedButton.swift in Sources */,
 				035B1D4B249E578D00AABFEA /* Keychain.swift in Sources */,
 				D5ED3269260668BE00821ABE /* Date+Sugar.swift in Sources */,
+				D54340F4261E72F8006898B0 /* AccessibilitySettings.swift in Sources */,
 				D575C832254F10E1001664AB /* RemoteConfigServiceDoubles.swift in Sources */,
 				D5CC5FEB24FF1201007DFE84 /* UIImage+Sugar.swift in Sources */,
 				D5C76E9A25F4075200739267 /* CalendarSyncStatusProviderDoubles.swift in Sources */,
