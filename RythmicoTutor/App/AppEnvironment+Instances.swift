@@ -29,7 +29,7 @@ extension AppEnvironment {
             dynamicTypeSize: UITraitCollection.current.preferredContentSizeCategory,
             isBoldTextOn: UIAccessibility.isBoldTextEnabled
         ),
-        uiAccessibility: UIAccessibility.self,
+        voiceOver: UIAccessibility.self,
 
         appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
         appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
@@ -113,7 +113,7 @@ extension AppEnvironment {
             keychain: KeychainDummy(),
 
             accessibilitySettings: .dummy,
-            uiAccessibility: UIAccessibilityDummy.self,
+            voiceOver: VoiceOverServiceDummy.self,
 
             appleAuthorizationService: AppleAuthorizationServiceDummy(),
             appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcherDummy(),

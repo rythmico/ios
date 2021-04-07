@@ -17,7 +17,7 @@ struct AppEnvironment {
     var keychain: KeychainProtocol
 
     var accessibilitySettings: AccessibilitySettings
-    var uiAccessibility: UIAccessibilityProtocol.Type
+    var voiceOver: VoiceOverServiceProtocol.Type
 
     var appleAuthorizationService: AppleAuthorizationServiceProtocol
     var appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider
@@ -75,7 +75,7 @@ struct AppEnvironment {
         keychain: KeychainProtocol,
 
         accessibilitySettings: AccessibilitySettings,
-        uiAccessibility: UIAccessibilityProtocol.Type,
+        voiceOver: VoiceOverServiceProtocol.Type,
 
         appleAuthorizationService: AppleAuthorizationServiceProtocol,
         appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider,
@@ -134,7 +134,7 @@ struct AppEnvironment {
         self.keychain = keychain
 
         self.accessibilitySettings = accessibilitySettings
-        self.uiAccessibility = uiAccessibility
+        self.voiceOver = voiceOver
 
         self.appleAuthorizationService = appleAuthorizationService
         self.appleAuthorizationCredentialStateProvider = appleAuthorizationCredentialStateProvider
