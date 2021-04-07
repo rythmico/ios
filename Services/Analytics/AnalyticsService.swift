@@ -1,29 +1,27 @@
-import Foundation
+import UIKit
 import FoundationSugar
-import class Mixpanel.MixpanelInstance
-import typealias Mixpanel.Properties
+
+struct AnalyticsUserProfile {
+    var id: String
+    var name: String?
+    var email: String?
+}
 
 protocol AnalyticsServiceProtocol {
-    typealias Properties = Mixpanel.Properties
-
-    func identify(distinctId: String)
-    func set(name: String?, email: String?)
-    func time(event: String)
-    func track(event: String?, properties: Properties?)
+    func identify(_ profile: AnalyticsUserProfile)
+//    func time(event: String)
+//    func track(event: String?, properties: Properties?)
     func reset()
 }
 
-extension MixpanelInstance: AnalyticsServiceProtocol {
-    func identify(distinctId: String) {
-        identify(distinctId: distinctId, usePeople: true)
-    }
-
-    func set(name: String?, email: String?) {
-        people.set(properties: Properties {
-            if let name = name?.nilIfEmpty {
+extension AnalyticsServiceProtocol where Self: RawAnalyticsServiceProtocol {
+    func identify(_ profile: AnalyticsUserProfile) {
+        identify(distinctId: profile.id)
+        set(Properties {
+            if let name = profile.name?.nilIfEmpty {
                 ["$name": name]
             }
-            if let email = email?.nilIfEmpty {
+            if let email = profile.email?.nilIfEmpty {
                 ["$email": email]
             }
         })

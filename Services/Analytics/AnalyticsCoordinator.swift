@@ -17,10 +17,17 @@ final class AnalyticsCoordinator {
 
     private func onUserCredentialChanged(_ credential: UserCredentialProtocol?) {
         if let credential = credential {
-            service.identify(distinctId: credential.userId)
-            service.set(name: credential.name, email: credential.email)
+            service.identify(analyticsUserProfile(with: credential))
         } else {
             service.reset()
         }
+    }
+
+    private func analyticsUserProfile(with credential: UserCredentialProtocol) -> AnalyticsUserProfile {
+        AnalyticsUserProfile(
+            id: credential.userId,
+            name: credential.name,
+            email: credential.email
+        )
     }
 }
