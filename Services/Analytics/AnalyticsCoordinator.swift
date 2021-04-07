@@ -4,14 +4,19 @@ import Combine
 final class AnalyticsCoordinator {
     private let service: AnalyticsServiceProtocol
     private let userCredentialProvider: UserCredentialProviderBase
+    private let accessibilitySettings: AccessibilitySettings
+
     private var cancellable: AnyCancellable?
 
     init(
         service: AnalyticsServiceProtocol,
-        userCredentialProvider: UserCredentialProviderBase
+        userCredentialProvider: UserCredentialProviderBase,
+        accessibilitySettings: AccessibilitySettings
     ) {
         self.service = service
         self.userCredentialProvider = userCredentialProvider
+        self.accessibilitySettings = accessibilitySettings
+
         self.cancellable = userCredentialProvider.$userCredential.sink(receiveValue: onUserCredentialChanged)
     }
 
@@ -27,7 +32,8 @@ final class AnalyticsCoordinator {
         AnalyticsUserProfile(
             id: credential.userId,
             name: credential.name,
-            email: credential.email
+            email: credential.email,
+            accessibilitySettings: accessibilitySettings
         )
     }
 }
