@@ -29,6 +29,7 @@ extension AppEnvironment {
             dynamicTypeSize: UITraitCollection.current.preferredContentSizeCategory,
             isBoldTextOn: UIAccessibility.isBoldTextEnabled
         ),
+        uiAccessibility: UIAccessibility.self,
 
         appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
         appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
@@ -53,7 +54,6 @@ extension AppEnvironment {
         calendarInfoFetchingService: APIService(),
 
         sceneState: { UIApplication.shared.applicationState },
-        uiAccessibility: UIAccessibility.self,
         keyboardDismisser: UIApplication.shared,
         urlOpener: UIApplication.shared,
         router: Router(),
@@ -113,6 +113,7 @@ extension AppEnvironment {
             keychain: KeychainDummy(),
 
             accessibilitySettings: .dummy,
+            uiAccessibility: UIAccessibilityDummy.self,
 
             appleAuthorizationService: AppleAuthorizationServiceDummy(),
             appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcherDummy(),
@@ -134,7 +135,6 @@ extension AppEnvironment {
             calendarInfoFetchingService: APIServiceDummy(),
 
             sceneState: { .active },
-            uiAccessibility: UIAccessibilityDummy.self,
             keyboardDismisser: KeyboardDismisserDummy(),
             urlOpener: URLOpenerDummy(),
             router: RouterDummy(),

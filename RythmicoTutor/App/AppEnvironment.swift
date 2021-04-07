@@ -17,6 +17,7 @@ struct AppEnvironment {
     var keychain: KeychainProtocol
 
     var accessibilitySettings: AccessibilitySettings
+    var uiAccessibility: UIAccessibilityProtocol.Type
 
     var appleAuthorizationService: AppleAuthorizationServiceProtocol
     var appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider
@@ -39,7 +40,6 @@ struct AppEnvironment {
     var calendarSyncCoordinator: CalendarSyncCoordinator
 
     var sceneState: () -> UIApplication.State
-    var uiAccessibility: UIAccessibilityProtocol.Type
     var keyboardDismisser: KeyboardDismisser
     var urlOpener: URLOpener
     var router: RouterProtocol
@@ -75,6 +75,7 @@ struct AppEnvironment {
         keychain: KeychainProtocol,
 
         accessibilitySettings: AccessibilitySettings,
+        uiAccessibility: UIAccessibilityProtocol.Type,
 
         appleAuthorizationService: AppleAuthorizationServiceProtocol,
         appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider,
@@ -96,7 +97,6 @@ struct AppEnvironment {
         calendarInfoFetchingService: APIServiceBase<GetCalendarInfoRequest>,
 
         sceneState: @escaping () -> UIApplication.State,
-        uiAccessibility: UIAccessibilityProtocol.Type,
         keyboardDismisser: KeyboardDismisser,
         urlOpener: URLOpener,
         router: RouterProtocol,
@@ -134,6 +134,7 @@ struct AppEnvironment {
         self.keychain = keychain
 
         self.accessibilitySettings = accessibilitySettings
+        self.uiAccessibility = uiAccessibility
 
         self.appleAuthorizationService = appleAuthorizationService
         self.appleAuthorizationCredentialStateProvider = appleAuthorizationCredentialStateProvider
@@ -171,7 +172,6 @@ struct AppEnvironment {
         )
 
         self.sceneState = sceneState
-        self.uiAccessibility = uiAccessibility
         self.keyboardDismisser = keyboardDismisser
         self.urlOpener = urlOpener
         self.router = router
