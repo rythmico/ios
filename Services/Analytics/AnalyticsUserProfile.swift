@@ -9,8 +9,8 @@ struct AnalyticsUserProfile {
 }
 
 extension AnalyticsUserProfile {
-    @AnalyticsPropsBuilder
-    var rawAnalyticsValue: AnalyticsProps {
+    @AnalyticsEvent.PropsBuilder
+    var rawAnalyticsValue: AnalyticsEvent.Props {
         if let name = name?.nilIfEmpty {
             ["$name": name]
         }
