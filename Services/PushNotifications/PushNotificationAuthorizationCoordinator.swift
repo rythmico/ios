@@ -70,3 +70,22 @@ final class PushNotificationAuthorizationCoordinator: ObservableObject {
         }
     }
 }
+
+extension PushNotificationAuthorizationCoordinator.Status: Equatable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        switch (lhs, rhs) {
+        case (.notDetermined, .notDetermined),
+             (.authorizing, .authorizing),
+             (.failed, .failed),
+             (.denied, .denied),
+             (.authorized, .authorized):
+            return true
+        case (.notDetermined, _),
+             (.authorizing, _),
+             (.failed, _),
+             (.denied, _),
+             (.authorized, _):
+            return false
+        }
+    }
+}
