@@ -5,7 +5,7 @@ import Mixpanel
 protocol AnalyticsServiceProtocol {
     func identify(_ profile: AnalyticsUserProfile)
 //    func time(event: String)
-    func track(event: AnalyticsEvent)
+    func track(_ event: AnalyticsEvent)
     func reset()
 }
 
@@ -17,7 +17,7 @@ extension MixpanelInstance: AnalyticsServiceProtocol {
         people.set(properties: profile.rawAnalyticsValue)
     }
 
-    func track(event: AnalyticsEvent) {
+    func track(_ event: AnalyticsEvent) {
         track(event: event.name.rawValue, properties: event.props)
     }
 }
