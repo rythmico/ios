@@ -146,7 +146,12 @@ struct AppEnvironment {
         self.deauthenticationService = deauthenticationService
         self.userCredentialProvider = userCredentialProvider
 
-        self.analytics = AnalyticsCoordinator(service: analyticsService, userCredentialProvider: userCredentialProvider, accessibilitySettings: accessibilitySettings)
+        self.analytics = AnalyticsCoordinator(
+            service: analyticsService,
+            userCredentialProvider: userCredentialProvider,
+            accessibilitySettings: accessibilitySettings,
+            notificationAuthCoordinator: pushNotificationAuthorizationCoordinator
+        )
         self.analyticsService = analyticsService
 
         let apiActivityErrorHandler = APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator, settings: settings)

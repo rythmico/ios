@@ -6,6 +6,7 @@ struct AnalyticsUserProfile {
     var name: String?
     var email: String?
     var accessibilitySettings: AccessibilitySettings
+    var pushNotificationsAuthStatus: PushNotificationAuthorizationCoordinator.Status
 }
 
 extension AnalyticsUserProfile {
@@ -22,6 +23,9 @@ extension AnalyticsUserProfile {
             "iOS Interface Style": accessibilitySettings.interfaceStyle().rawAnalyticsValue,
             "iOS Dynamic Type Size": accessibilitySettings.dynamicTypeSize().rawAnalyticsValue,
             "iOS Bold Text Enabled": accessibilitySettings.isBoldTextOn(),
+        ]
+        [
+            "iOS Push Notifications Status": pushNotificationsAuthStatus.rawAnalyticsValue
         ]
     }
 }
@@ -70,6 +74,23 @@ private extension UIContentSizeCategory {
             return "8XL"
         default:
             return .empty
+        }
+    }
+}
+
+private extension PushNotificationAuthorizationCoordinator.Status {
+    var rawAnalyticsValue: String {
+        switch self {
+        case .notDetermined:
+            return "Not Determined"
+        case .authorizing:
+            return "Authorizing"
+        case .failed:
+            return "Failed"
+        case .denied:
+            return "Denied"
+        case .authorized:
+            return "Authorized"
         }
     }
 }
