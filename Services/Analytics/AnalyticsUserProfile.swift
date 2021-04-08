@@ -18,10 +18,10 @@ extension AnalyticsUserProfile {
             ["$email": email]
         }
         [
-            "Voice Over Enabled": accessibilitySettings.isVoiceOverOn(),
-            "Interface Style": accessibilitySettings.interfaceStyle().rawAnalyticsValue,
-            "Dynamic Type Size": accessibilitySettings.dynamicTypeSize().rawAnalyticsValue,
-            "Bold Text Enabled": accessibilitySettings.isBoldTextOn(),
+            "iOS Voice Over Enabled": accessibilitySettings.isVoiceOverOn(),
+            "iOS Interface Style": accessibilitySettings.interfaceStyle().rawAnalyticsValue,
+            "iOS Dynamic Type Size": accessibilitySettings.dynamicTypeSize().rawAnalyticsValue,
+            "iOS Bold Text Enabled": accessibilitySettings.isBoldTextOn(),
         ]
     }
 }
