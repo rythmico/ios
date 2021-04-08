@@ -404,8 +404,6 @@
 		D58DE1CD25C0F0100013AEE8 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58DE1CC25C0F0100013AEE8 /* UIColor+Hex.swift */; };
 		D58DE1CE25C0F0100013AEE8 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58DE1CC25C0F0100013AEE8 /* UIColor+Hex.swift */; };
 		D58DE1D625C0F1A20013AEE8 /* TutorStatusBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58DE1D525C0F1A20013AEE8 /* TutorStatusBanner.swift */; };
-		D5919F6E24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */; };
-		D5919F6F24CF2D48009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */; };
 		D5919F7124CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */; };
 		D5919F7224CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */; };
 		D593C7022550C03B00C684FF /* AppUpdatePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */; };
@@ -918,7 +916,6 @@
 		D58DE1C025C05FD90013AEE8 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		D58DE1CC25C0F0100013AEE8 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		D58DE1D525C0F1A20013AEE8 /* TutorStatusBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorStatusBanner.swift; sourceTree = "<group>"; };
-		D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetInteractiveDismissal+Previews.swift"; sourceTree = "<group>"; };
 		D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet+Sugar.swift"; sourceTree = "<group>"; };
 		D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdatePrompt.swift; sourceTree = "<group>"; };
 		D5989BA6251533E300BED8A6 /* PortfolioTrainingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioTrainingsView.swift; sourceTree = "<group>"; };
@@ -1664,7 +1661,6 @@
 				0372E359249ABAB80048B402 /* SelectableList.swift */,
 				D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */,
 				D54FC05424CF040500029FC6 /* SheetInteractiveDismissal.swift */,
-				D5919F6D24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift */,
 				D5F5068B24046B1400CA4094 /* Spacing.swift */,
 				D5ED168A2614BB40001841ED /* StackSpacing.swift */,
 				D52C554924DDE1D300C295C4 /* StaticMapView.swift */,
@@ -2793,7 +2789,6 @@
 				D5D9AE572533764D00A0ABCC /* AddNewCardView.swift in Sources */,
 				D5919F7124CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */,
 				03E88EAB24C1F5FE0077A420 /* AppContext.swift in Sources */,
-				D5919F6E24CF2D22009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */,
 				D5015873253743C4005E02FA /* CardSetupServiceDoubles.swift in Sources */,
 				035AF30A2491A54E004A01B2 /* VoiceOverServiceDoubles.swift in Sources */,
 				D54921C225BB3F9400251FD2 /* UserDefaults+Rythmico.swift in Sources */,
@@ -2987,7 +2982,6 @@
 				D55C35EB25A3A6490023E56B /* CalendarInfo.swift in Sources */,
 				D5F4D3ED24F317C0000E8580 /* BookingRequestCell.swift in Sources */,
 				D551126325FFDB96009F3FD9 /* SettingsOpener.swift in Sources */,
-				D5919F6F24CF2D48009D6185 /* SheetInteractiveDismissal+Previews.swift in Sources */,
 				D5A8C4BF25044A370006F5C5 /* UserDefaultsDoubles.swift in Sources */,
 				032B6FDD24B78A5200299A09 /* BookingRequestEndpoints.swift in Sources */,
 				D58DE1D625C0F1A20013AEE8 /* TutorStatusBanner.swift in Sources */,
