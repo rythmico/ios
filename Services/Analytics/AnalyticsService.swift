@@ -1,6 +1,6 @@
 import Foundation
 import FoundationSugar
-import class Mixpanel.MixpanelInstance
+import Mixpanel
 
 protocol AnalyticsServiceProtocol {
     func identify(_ profile: AnalyticsUserProfile)
@@ -8,6 +8,8 @@ protocol AnalyticsServiceProtocol {
     func track(event: AnalyticsEvent)
     func reset()
 }
+
+func AnalyticsService() -> AnalyticsServiceProtocol { Mixpanel.mainInstance() }
 
 extension MixpanelInstance: AnalyticsServiceProtocol {
     func identify(_ profile: AnalyticsUserProfile) {

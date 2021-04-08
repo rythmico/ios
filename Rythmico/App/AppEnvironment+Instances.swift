@@ -2,7 +2,6 @@ import UIKit
 import UserNotifications
 import EventKit
 import Firebase
-import Mixpanel
 import Stripe
 import Then
 
@@ -39,7 +38,7 @@ extension AppEnvironment {
         deauthenticationService: DeauthenticationService(),
         userCredentialProvider: UserCredentialProvider(emitter: UserCredentialEmitter()),
 
-        analyticsService: Mixpanel.mainInstance(),
+        analyticsService: AnalyticsService(),
 
         deviceTokenProvider: Messaging.messaging(),
         deviceRegisterService: APIService(),
