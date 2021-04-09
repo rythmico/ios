@@ -35,6 +35,26 @@ struct LessonPlanConfirmationView: View, TestableView {
         }
     }
 
+    @ViewBuilder
+    var addToCalendarButton: some View {
+        switch lessonPlan.status {
+        case .scheduled:
+            if let action = calendarSyncCoordinator.enableCalendarSyncAction {
+                ZStack {
+                    Button("Add to Calendar", action: action)
+                        .tertiaryStyle(expansive: false)
+                        .opacity(calendarSyncCoordinator.isSyncingCalendar ? 0 : 1)
+                    if calendarSyncCoordinator.isSyncingCalendar {
+                        ActivityIndicator()
+                    }
+                }
+                .transition(.opacity)
+            }
+        default:
+            EmptyView()
+        }
+    }
+
     let inspection = SelfInspection()
     var body: some View {
         VStack(spacing: 0) {
@@ -69,17 +89,7 @@ struct LessonPlanConfirmationView: View, TestableView {
                             additionalContent
                         }
 
-                        if let action = calendarSyncCoordinator.enableCalendarSyncAction {
-                            ZStack {
-                                Button("Add to Calendar", action: action)
-                                    .tertiaryStyle(expansive: false)
-                                    .opacity(calendarSyncCoordinator.isSyncingCalendar ? 0 : 1)
-                                if calendarSyncCoordinator.isSyncingCalendar {
-                                    ActivityIndicator()
-                                }
-                            }
-                            .transition(.opacity)
-                        }
+                        addToCalendarButton
                     }
                     .padding(.horizontal, .spacingMedium)
                     .padding(.vertical, .spacingLarge)
@@ -107,7 +117,8 @@ struct LessonPlanConfirmationView: View, TestableView {
 #if DEBUG
 struct LessonPlanConfirmationView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlanConfirmationView(lessonPlan: .scheduledJackGuitarPlanStub)
+        LessonPlanConfirmationView(lessonPlan: .pendingJackGuitarPlanStub)
+//        LessonPlanConfirmationView(lessonPlan: .scheduledJackGuitarPlanStub)
     }
 }
 #endif
