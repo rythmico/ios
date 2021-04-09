@@ -35,6 +35,26 @@ struct LessonPlanConfirmationView: View, TestableView {
         }
     }
 
+    @ViewBuilder
+    var addToCalendarButton: some View {
+        switch lessonPlan.status {
+        case .scheduled:
+            if let action = calendarSyncCoordinator.enableCalendarSyncAction {
+                ZStack {
+                    Button("Add to Calendar", action: action)
+                        .tertiaryStyle(expansive: false)
+                        .opacity(calendarSyncCoordinator.isSyncingCalendar ? 0 : 1)
+                    if calendarSyncCoordinator.isSyncingCalendar {
+                        ActivityIndicator()
+                    }
+                }
+                .transition(.opacity)
+            }
+        default:
+            EmptyView()
+        }
+    }
+
     let inspection = SelfInspection()
     var body: some View {
         VStack(spacing: 0) {
@@ -69,17 +89,7 @@ struct LessonPlanConfirmationView: View, TestableView {
                             additionalContent
                         }
 
-                        if let action = calendarSyncCoordinator.enableCalendarSyncAction {
-                            ZStack {
-                                Button("Add to Calendar", action: action)
-                                    .tertiaryStyle(expansive: false)
-                                    .opacity(calendarSyncCoordinator.isSyncingCalendar ? 0 : 1)
-                                if calendarSyncCoordinator.isSyncingCalendar {
-                                    ActivityIndicator()
-                                }
-                            }
-                            .transition(.opacity)
-                        }
+                        addToCalendarButton
                     }
                     .padding(.horizontal, .spacingMedium)
                     .padding(.vertical, .spacingLarge)
@@ -105,16 +115,10 @@ struct LessonPlanConfirmationView: View, TestableView {
 }
 
 #if DEBUG
-struct RequestLessonPlanConfirmationView_Previews: PreviewProvider {
+struct LessonPlanConfirmationView_Previews: PreviewProvider {
     static var previews: some View {
-        Current.pushNotificationAuthorization(
-            initialStatus: .notDetermined,
-//            initialStatus: .authorized,
-            requestResult: (true, nil)
-//            requestResult: (false, nil)
-//            requestResult: (false, "Error")
-        )
-        return LessonPlanConfirmationView(lessonPlan: .scheduledJackGuitarPlanStub)
+        LessonPlanConfirmationView(lessonPlan: .pendingJackGuitarPlanStub)
+//        LessonPlanConfirmationView(lessonPlan: .scheduledJackGuitarPlanStub)
     }
 }
 #endif
