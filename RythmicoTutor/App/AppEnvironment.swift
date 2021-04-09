@@ -1,4 +1,7 @@
 import UIKit
+import UserNotifications
+import EventKit
+import Firebase
 
 struct AppEnvironment {
     var state: AppState
@@ -15,6 +18,9 @@ struct AppEnvironment {
 
     var settings: UserDefaults
     var keychain: KeychainProtocol
+
+    var accessibilitySettings: AccessibilitySettings
+    var voiceOver: VoiceOverServiceProtocol.Type
 
     var appleAuthorizationService: AppleAuthorizationServiceProtocol
     var appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider
@@ -37,7 +43,6 @@ struct AppEnvironment {
     var calendarSyncCoordinator: CalendarSyncCoordinator
 
     var sceneState: () -> UIApplication.State
-    var uiAccessibility: UIAccessibilityProtocol.Type
     var keyboardDismisser: KeyboardDismisser
     var urlOpener: URLOpener
     var router: RouterProtocol
@@ -72,6 +77,9 @@ struct AppEnvironment {
         settings: UserDefaults,
         keychain: KeychainProtocol,
 
+        accessibilitySettings: AccessibilitySettings,
+        voiceOver: VoiceOverServiceProtocol.Type,
+
         appleAuthorizationService: AppleAuthorizationServiceProtocol,
         appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider,
         appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifying,
@@ -92,7 +100,6 @@ struct AppEnvironment {
         calendarInfoFetchingService: APIServiceBase<GetCalendarInfoRequest>,
 
         sceneState: @escaping () -> UIApplication.State,
-        uiAccessibility: UIAccessibilityProtocol.Type,
         keyboardDismisser: KeyboardDismisser,
         urlOpener: URLOpener,
         router: RouterProtocol,
@@ -129,6 +136,9 @@ struct AppEnvironment {
         self.settings = settings
         self.keychain = keychain
 
+        self.accessibilitySettings = accessibilitySettings
+        self.voiceOver = voiceOver
+
         self.appleAuthorizationService = appleAuthorizationService
         self.appleAuthorizationCredentialStateProvider = appleAuthorizationCredentialStateProvider
         self.appleAuthorizationCredentialRevocationNotifier = appleAuthorizationCredentialRevocationNotifier
@@ -136,7 +146,12 @@ struct AppEnvironment {
         self.deauthenticationService = deauthenticationService
         self.userCredentialProvider = userCredentialProvider
 
-        self.analytics = AnalyticsCoordinator(service: analyticsService, userCredentialProvider: userCredentialProvider)
+        self.analytics = AnalyticsCoordinator(
+            service: analyticsService,
+            userCredentialProvider: userCredentialProvider,
+            accessibilitySettings: accessibilitySettings,
+            notificationAuthCoordinator: pushNotificationAuthorizationCoordinator
+        )
         self.analyticsService = analyticsService
 
         let apiActivityErrorHandler = APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator, settings: settings)
@@ -165,7 +180,6 @@ struct AppEnvironment {
         )
 
         self.sceneState = sceneState
-        self.uiAccessibility = uiAccessibility
         self.keyboardDismisser = keyboardDismisser
         self.urlOpener = urlOpener
         self.router = router
@@ -190,4 +204,73 @@ struct AppEnvironment {
         self.bookingApplicationFetchingCoordinator = coordinator(for: bookingApplicationFetchingService)
         self.bookingApplicationRetractionCoordinator = { coordinator(for: bookingApplicationRetractionService) }
     }
+}
+
+extension AppEnvironment {
+    static let live = AppEnvironment.initLive { .init(
+        state: AppState(),
+
+        remoteConfig: RemoteConfig(),
+
+        date: Date.init,
+        calendarType: { Calendar.current.identifier },
+        locale: .autoupdatingCurrent,
+        timeZone: .autoupdatingCurrent,
+
+        eventEmitter: .default,
+
+        settings: .standard,
+        keychain: Keychain.localKeychain,
+
+        accessibilitySettings: AccessibilitySettings(
+            isVoiceOverOn: UIAccessibility.isVoiceOverRunning,
+            interfaceStyle: UITraitCollection.current.userInterfaceStyle,
+            dynamicTypeSize: UITraitCollection.current.preferredContentSizeCategory,
+            isBoldTextOn: UIAccessibility.isBoldTextEnabled
+        ),
+        voiceOver: UIAccessibility.self,
+
+        appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
+        appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
+        appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifier(notificationCenter: .default),
+        authenticationService: AuthenticationService(),
+        deauthenticationService: DeauthenticationService(),
+        userCredentialProvider: UserCredentialProvider(emitter: UserCredentialEmitter()),
+
+        analyticsService: AnalyticsService(),
+
+        deviceTokenProvider: Messaging.messaging(),
+        deviceRegisterService: APIService(),
+        deviceTokenDeleter: Messaging.messaging(),
+
+        pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator(
+            center: UNUserNotificationCenter.current(),
+            registerService: UIApplication.shared
+        ),
+        pushNotificationEventHandler: PushNotificationEventHandler(),
+
+        calendarSyncStatusProvider: CalendarSyncStatusProvider(accessProvider: EKEventStore()),
+        calendarInfoFetchingService: APIService(),
+
+        sceneState: { UIApplication.shared.applicationState },
+        keyboardDismisser: UIApplication.shared,
+        urlOpener: UIApplication.shared,
+        router: Router(),
+
+        imageLoadingService: ImageLoadingService(),
+        imageProcessingService: ImageProcessingService(),
+
+        tutorStatusFetchingService: APIService(),
+
+        bookingsRepository: Repository(),
+        bookingsFetchingService: APIService(),
+
+        bookingRequestRepository: Repository(),
+        bookingRequestFetchingService: APIService(),
+        bookingRequestApplyingService: APIService(),
+
+        bookingApplicationRepository: Repository(),
+        bookingApplicationFetchingService: APIService(),
+        bookingApplicationRetractionService: APIService()
+    )}
 }

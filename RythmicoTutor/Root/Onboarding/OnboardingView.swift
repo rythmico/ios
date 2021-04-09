@@ -31,7 +31,7 @@ struct OnboardingView: View, TestableView {
             .animation(.rythmicoSpring(duration: .durationMedium), value: isLoading)
         }
         .onDisappear {
-            Current.uiAccessibility.postAnnouncement("Welcome")
+            Current.voiceOver.announce("Welcome")
         }
         .testable(self)
         .onAppear(perform: Current.deviceUnregisterCoordinator.unregisterDevice)
