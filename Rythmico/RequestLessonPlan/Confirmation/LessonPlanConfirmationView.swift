@@ -105,16 +105,9 @@ struct LessonPlanConfirmationView: View, TestableView {
 }
 
 #if DEBUG
-struct RequestLessonPlanConfirmationView_Previews: PreviewProvider {
+struct LessonPlanConfirmationView_Previews: PreviewProvider {
     static var previews: some View {
-        Current.pushNotificationAuthorization(
-            initialStatus: .notDetermined,
-//            initialStatus: .authorized,
-            requestResult: (true, nil)
-//            requestResult: (false, nil)
-//            requestResult: (false, "Error")
-        )
-        return LessonPlanConfirmationView(lessonPlan: .scheduledJackGuitarPlanStub)
+        LessonPlanConfirmationView(lessonPlan: .scheduledJackGuitarPlanStub)
     }
 }
 #endif
