@@ -1,4 +1,5 @@
 import SwiftUI
+import TextBuilder
 
 struct BookingRequestApplyView: View {
     @Environment(\.presentationMode)
@@ -55,8 +56,8 @@ struct BookingRequestApplyView: View {
         }
     }
 
-    private var header: Text {
-        Text("Add a private note".uppercased())
+    private var header: some View {
+        Text("Add a private note").textCase(.uppercase)
     }
 
     private var footer: Text {

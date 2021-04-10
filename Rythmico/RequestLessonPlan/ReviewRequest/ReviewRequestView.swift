@@ -156,7 +156,7 @@ struct ReviewRequestView: View, TestableView {
 
     private var studentAbout: Text? {
         guard !student.about.isBlank else { return nil }
-        return Text(separator: .newline) {
+        return Text(separator: String.newline) {
             Text(["About", student.name.firstWord].compact().spaced() + .colon).rythmicoFont(.bodyBold)
             student.about
         }

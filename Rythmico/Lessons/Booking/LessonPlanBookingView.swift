@@ -1,4 +1,5 @@
 import SwiftUI
+import TextBuilder
 import PhoneNumberKit
 import NonEmpty
 import FoundationSugar
@@ -102,14 +103,13 @@ struct LessonPlanBookingView: View {
         ["Book", application.tutor.name.firstWord].compact().spaced()
     }
 
+    @SpacedTextBuilder
     var subtitle: Text {
-        Text {
-            "Review the"
-            "proposed lesson plan".text.rythmicoFont(.bodyBold)
-            "and"
-            "price per lesson".text.rythmicoFont(.bodyBold)
-            "before booking"
-        }
+        "Review the"
+        "proposed lesson plan".text.rythmicoFont(.bodyBold)
+        "and"
+        "price per lesson".text.rythmicoFont(.bodyBold)
+        "before booking"
     }
 
     var confirmAction: Action? {

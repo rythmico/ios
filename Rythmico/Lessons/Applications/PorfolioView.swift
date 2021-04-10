@@ -94,8 +94,8 @@ struct PortfolioView: View {
     }
 
     private func ageText(from portfolio: Portfolio) -> Text {
-        Text {
-            "Age: ".text.rythmicoFont(.body)
+        Text(separator: String.whitespace) {
+            "Age:".text.rythmicoFont(.body)
             "\(portfolio.age)".text.rythmicoFont(.bodyBold)
         }
         .foregroundColor(.rythmicoGray90)

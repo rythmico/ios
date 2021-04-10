@@ -92,15 +92,6 @@
         }
       },
       {
-        "package": "JoinedText",
-        "repositoryURL": "https://github.com/Tunous/JoinedText",
-        "state": {
-          "branch": null,
-          "revision": "479f42b1a5daeda1ceeb45dd81d6346df1c5ea7b",
-          "version": "0.1.0"
-        }
-      },
-      {
         "package": "leveldb",
         "repositoryURL": "https://github.com/firebase/leveldb.git",
         "state": {
@@ -224,6 +215,15 @@
           "branch": null,
           "revision": "a67dcaff2377573a51f75761bb6e768b78931909",
           "version": "0.3.0"
+        }
+      },
+      {
+        "package": "TextBuilder",
+        "repositoryURL": "https://github.com/davdroman/TextBuilder",
+        "state": {
+          "branch": null,
+          "revision": "037a984734656c1d65e135ab58b74a5e5e923a67",
+          "version": "1.0.0"
         }
       },
       {

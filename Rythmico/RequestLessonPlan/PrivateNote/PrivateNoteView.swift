@@ -1,4 +1,5 @@
 import SwiftUI
+import TextBuilder
 import FoundationSugar
 
 protocol PrivateNoteContext {
@@ -34,11 +35,10 @@ struct PrivateNoteView: View, EditableView, TestableView {
             : nil
     }
 
+    @SpacedTextBuilder
     private var privateNoteHeaderTitle: Text {
-        Text {
-            "Private Note"
-            "(optional)".text.rythmicoFont(.body)
-        }
+        "Private Note"
+        "(optional)".text.rythmicoFont(.body)
     }
 
     var nextButtonAction: Action {

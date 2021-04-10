@@ -10,7 +10,7 @@ struct LessonSkippingContentView: View {
             if isFree {
                 Group {
                     Text("This will cancel your payment for this lesson.")
-                    Text {
+                    Text(separator: String.whitespace) {
                         "Skip for"
                         "FREE".text.foregroundColor(.rythmicoPurple).rythmicoFont(.bodyBold)
                         "within"
