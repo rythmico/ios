@@ -10,25 +10,34 @@ struct InstrumentViewData {
 struct InstrumentView: View {
     private let viewData: InstrumentViewData
 
+//    @ScaledMetric(relativeTo: .largeTitle)
+    private var iconWidth = .spacingUnit * 10 // TODO: remove
+//    private var iconWidth = .spacingUnit * 18
+
     init(viewData: InstrumentViewData) {
         self.viewData = viewData
     }
 
     var body: some View {
         Button(action: { viewData.action?() }) {
-            HStack {
+            HStack(spacing: .spacingUnit * 2) {
                 Text(viewData.name)
                     .rythmicoFont(.subheadlineBold)
                     .foregroundColor(.rythmicoForeground)
-                    .padding(.leading, .spacingMedium)
-                    .padding(.vertical, .spacingMedium)
+                    .padding([.vertical, .leading], .spacingMedium)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
                 Image(decorative: viewData.icon.name)
-                    .renderingMode(.template)
-                    .foregroundColor(.rythmicoForeground)
-                    .frame(width: 40, alignment: .center) // aligns all icons vertically
-                    .padding(.trailing, .spacingMedium)
+                    .renderingMode(.template) // TODO: remove
+//                    .renderingMode(.original)
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fit)
+                    .frame(width: iconWidth, alignment: .center)
+                    .padding(.vertical, .spacingSmall) // TODO: remove
+//                    .padding(.vertical, .spacingUnit * 2)
+                    .padding(.trailing, .spacingSmall) // TODO: remove
+//                    .padding(.trailing, .spacingExtraSmall)
+                    .foregroundColor(.rythmicoForeground) // TODO: remove
             }
         }
         .frame(minHeight: 70)
