@@ -80,9 +80,9 @@ private struct RythmicoLinkButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .opacity(configuration.isPressed ? 0.3 : 1)
             .foregroundColor(.rythmicoGray90)
             .rythmicoFont(.body)
+            .opacity(configuration.isPressed ? 0.3 : 1)
             .frame(maxWidth: expansive ? buttonMaxWidth : nil, minHeight: 48)
             .modifier(DiseableableButtonModifier())
             .contentShape(Rectangle())

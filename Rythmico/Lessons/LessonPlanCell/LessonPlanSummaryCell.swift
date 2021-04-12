@@ -51,9 +51,9 @@ struct LessonPlanSummaryCellMainContent: View {
         Button(action: { Current.state.lessonsContext.viewingLessonPlan = lessonPlan }) {
             VStack(alignment: .leading, spacing: 0) {
                 Text(title)
+                    .rythmicoFont(.subheadlineBold)
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
-                    .rythmicoFont(.subheadlineBold)
                     .foregroundColor(lessonPlan.status.isCancelled ? .rythmicoGray90 : .rythmicoForeground)
                 VSpacing(.spacingUnit * 2)
                 Text(subtitle)

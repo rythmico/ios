@@ -31,10 +31,10 @@ struct LessonSummaryCellMainContent: View {
         Button(action: { Current.state.lessonsContext.viewingLesson = lesson }) {
             VStack(alignment: .leading, spacing: 0) {
                 Text(lesson.title)
+                    .foregroundColor(lesson.status.isSkipped ? .rythmicoGray90 : .rythmicoForeground)
+                    .rythmicoFont(.subheadlineBold)
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
-                    .rythmicoFont(.subheadlineBold)
-                    .foregroundColor(lesson.status.isSkipped ? .rythmicoGray90 : .rythmicoForeground)
                 VSpacing(.spacingUnit * 2)
                 Text(subtitle)
                     .rythmicoFont(.body)
