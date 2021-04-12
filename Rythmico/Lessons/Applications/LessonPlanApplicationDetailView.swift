@@ -52,7 +52,7 @@ struct LessonPlanApplicationDetailView: View {
     private static let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
     private var frequencyDayText: String { Self.frequencyDayFormatter.string(from: lessonPlan.schedule.startDate) }
     private var frequencyText: Text {
-        Text(separator: String.whitespace) {
+        Text(separator: .whitespace) {
             "Lessons recurring"
             "every \(frequencyDayText)".text.rythmicoFont(.calloutBold)
         }

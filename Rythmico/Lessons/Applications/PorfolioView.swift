@@ -94,7 +94,7 @@ struct PortfolioView: View {
     }
 
     private func ageText(from portfolio: Portfolio) -> Text {
-        Text(separator: String.whitespace) {
+        Text(separator: .whitespace) {
             "Age:".text.rythmicoFont(.body)
             "\(portfolio.age)".text.rythmicoFont(.bodyBold)
         }

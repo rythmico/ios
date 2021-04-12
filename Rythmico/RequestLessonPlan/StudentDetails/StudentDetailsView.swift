@@ -42,7 +42,7 @@ struct StudentDetailsView: View, EditableView, TestableView {
     // MARK: - Subtitle -
     var subtitle: Text? {
         editingFocus == .none
-            ? Text(separator: String.whitespace) {
+            ? Text(separator: .whitespace) {
                 "Enter the details of the student who will be learning"
                 instrument.standaloneName.text.rythmicoFont(.bodyBold)
             }

@@ -10,7 +10,7 @@ struct LessonPlanConfirmationDetailsView: View {
                 Image(decorative: Asset.iconInfo.name)
                     .renderingMode(.template)
                     .foregroundColor(.rythmicoGray90)
-                Text(separator: String.whitespace) {
+                Text(separator: .whitespace) {
                     "First Lesson:"
                     Self.dateFormatter.string(from: lessonPlan.schedule.startDate).text.rythmicoFont(.bodyBold)
                     relativeDate().parenthesized()

@@ -23,7 +23,7 @@ struct PhoneNumberInputView: View {
     }
 
     var contactNumberInstructions: Text {
-        Text(separator: String.whitespace) {
+        Text(separator: .whitespace) {
             "Enter a contact number of the"
             "parent/guardian".text.rythmicoFont(.bodyBold)
             "of the student."

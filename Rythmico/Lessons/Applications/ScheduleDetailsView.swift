@@ -54,7 +54,7 @@ struct ScheduleDetailsView: View {
     private static let startTimeFormatter = Current.dateFormatter(format: .custom("h:mma"))
     private var startTime: String { Self.startTimeFormatter.string(from: schedule.startDate) }
     private var startTimeAndDurationText: Text {
-        Text(separator: String.whitespace) {
+        Text(separator: .whitespace) {
             startTime
             "for".text.rythmicoFont(.body)
             schedule.duration.title
@@ -65,7 +65,7 @@ struct ScheduleDetailsView: View {
     private static let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
     private var frequencyDay: String { Self.frequencyDayFormatter.string(from: schedule.startDate) }
     private var frequencyText: Text {
-        Text(separator: String.whitespace) {
+        Text(separator: .whitespace) {
             "Recurring"
             "every \(frequencyDay)".text.rythmicoFont(.bodyBold)
             "at the same time and for the same duration"
