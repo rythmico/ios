@@ -1,4 +1,5 @@
 import SwiftUI
+import TextBuilder
 
 struct LessonPlanBookingPriceView: View {
     var price: Price
@@ -16,13 +17,17 @@ struct LessonPlanBookingPriceView: View {
 
             Group {
                 Text("Payment will be automatically taken on the day of each lesson.")
-                Text("By confirming your booking you agree to our ") + Text("terms of service and policies").underline() + Text(".")
+                Text {
+                    "By confirming your booking you agree to our "
+                    "terms of service and policies".text.underline()
+                    "."
+                }
+                .onTapGesture(perform: Current.urlOpener.openTermsAndConditionsURL)
             }
             .rythmicoFont(.callout)
             .foregroundColor(.rythmicoGray90)
             .frame(maxWidth: .infinity, alignment: .leading)
             .fixedSize(horizontal: false, vertical: true)
-            .onTapGesture(perform: Current.urlOpener.openTermsAndConditionsURL)
         }
         .padding(.vertical, .spacingLarge)
         .padding(.horizontal, .spacingSmall)
