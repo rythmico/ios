@@ -1,4 +1,5 @@
 import SwiftUI
+import TextBuilder
 
 struct AddNewCardView: View {
     @Environment(\.presentationMode) private var presentationMode
@@ -59,12 +60,11 @@ struct AddNewCardView: View {
         .alertOnFailure(coordinator)
     }
 
+    @SpacedTextBuilder
     var subtitle: Text {
-        Text {
-            "Enter"
-            "credit/debit card".text.rythmicoFont(.bodyBold)
-            "details to setup payment for the lesson plan."
-        }
+        "Enter"
+        "credit/debit card".text.rythmicoFont(.bodyBold)
+        "details to setup payment for the lesson plan."
     }
 
     var confirmButtonEnabled: Bool {

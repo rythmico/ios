@@ -1,4 +1,5 @@
 import SwiftUI
+import TextBuilder
 import FoundationSugar
 
 protocol AddressDetailsContext {
@@ -35,13 +36,16 @@ struct AddressDetailsView: View, TestableView {
         self.context = context
     }
 
+    @SpacedTextBuilder
     var subtitle: Text {
-        Text {
-            "Enter the address where"
-            student.name.firstWord?.text.rythmicoFont(.bodyBold)
-            "will have the"
-            "\(instrument.assimilatedName) lessons".text.rythmicoFont(.bodyBold)
+        "Enter the address where"
+        if let studentName = student.name.firstWord {
+            studentName.text.rythmicoFont(.bodyBold)
+        } else {
+            "the student"
         }
+        "will have the"
+        "\(instrument.assimilatedName) lessons".text.rythmicoFont(.bodyBold)
     }
 
     var isLoading: Bool { coordinator.state.isLoading }

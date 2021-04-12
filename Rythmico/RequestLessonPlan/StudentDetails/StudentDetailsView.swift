@@ -1,4 +1,5 @@
 import SwiftUI
+import TextBuilder
 import FoundationSugar
 
 protocol StudentDetailsContext {
@@ -41,7 +42,7 @@ struct StudentDetailsView: View, EditableView, TestableView {
     // MARK: - Subtitle -
     var subtitle: Text? {
         editingFocus == .none
-            ? Text {
+            ? Text(separator: .whitespace) {
                 "Enter the details of the student who will be learning"
                 instrument.standaloneName.text.rythmicoFont(.bodyBold)
             }
@@ -65,14 +66,13 @@ struct StudentDetailsView: View, EditableView, TestableView {
     private let dateOfBirthPlaceholder = Current.date() - Const.averageStudentAge
 
     // MARK: - About -
+    @SpacedTextBuilder
     var aboutHeaderTitle: Text {
-        Text {
-            "About"
-            if let firstName = sanitizedName?.firstWord {
-                firstName.text.foregroundColor(.rythmicoPurple)
-            } else {
-                "Student"
-            }
+        "About"
+        if let firstName = sanitizedName?.firstWord {
+            firstName.text.foregroundColor(.rythmicoPurple)
+        } else {
+            "Student"
         }
     }
 

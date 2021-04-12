@@ -1,4 +1,5 @@
 import SwiftUI
+import TextBuilder
 
 struct ScheduleDetailsView: View {
     var schedule: Schedule
@@ -44,17 +45,16 @@ struct ScheduleDetailsView: View {
 
     private static let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
     private var startDate: String { Self.startDateFormatter.string(from: schedule.startDate) }
+    @SpacedTextBuilder
     private var startDateText: Text {
-        Text {
-            "Start Date:".text.rythmicoFont(.body)
-            startDate.text.rythmicoFont(.bodyBold)
-        }
+        "Start Date:".text.rythmicoFont(.body)
+        startDate.text.rythmicoFont(.bodyBold)
     }
 
     private static let startTimeFormatter = Current.dateFormatter(format: .custom("h:mma"))
     private var startTime: String { Self.startTimeFormatter.string(from: schedule.startDate) }
     private var startTimeAndDurationText: Text {
-        Text {
+        Text(separator: .whitespace) {
             startTime
             "for".text.rythmicoFont(.body)
             schedule.duration.title
@@ -65,7 +65,7 @@ struct ScheduleDetailsView: View {
     private static let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
     private var frequencyDay: String { Self.frequencyDayFormatter.string(from: schedule.startDate) }
     private var frequencyText: Text {
-        Text {
+        Text(separator: .whitespace) {
             "Recurring"
             "every \(frequencyDay)".text.rythmicoFont(.bodyBold)
             "at the same time and for the same duration"

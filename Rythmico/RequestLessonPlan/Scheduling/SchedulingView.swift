@@ -1,4 +1,5 @@
 import SwiftUI
+import TextBuilder
 import Introspect
 import FoundationSugar
 
@@ -37,12 +38,11 @@ struct SchedulingView: View, EditableView, TestableView {
     private let defaultStartTime = Current.date() <- (0, [.minute, .second, .nanosecond])
     private let defaultDuration: Schedule.Duration = .oneHour
 
+    @SpacedTextBuilder
     var subtitle: Text {
-        Text {
-            "Enter when you want the"
-            "\(instrument.assimilatedName) lessons".text.rythmicoFont(.bodyBold)
-            "to commence and for how long"
-        }
+        "Enter when you want the"
+        "\(instrument.assimilatedName) lessons".text.rythmicoFont(.bodyBold)
+        "to commence and for how long"
     }
 
     private static let dateFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))

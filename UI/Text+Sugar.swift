@@ -1,18 +1,10 @@
 import SwiftUI
-import JoinedText
 
-extension StringProtocol {
-    var text: Text { Text(self) }
-}
+// TODO: remove in Swift 5.5
+// https://github.com/apple/swift-evolution/blob/main/proposals/0299-extend-generic-static-member-lookup.md
 
+@available(swift, obsoleted: 5.5)
 extension Text {
-    init(separator: String, @TextBuilder content: () -> [Text]) {
-        self.init(separator: Text(separator), content: content)
-    }
-}
-
-extension TextBuilder {
-    public static func buildExpression(_ string: String?) -> [Text] {
-        string.map { [Text($0)] } ?? []
-    }
+    static var whitespace: Text { Text(String.whitespace) }
+    static var newline: Text { Text(String.newline) }
 }
