@@ -103,7 +103,7 @@ extension UIFont {
                 descriptor: UIFontDescriptor(
                     fontAttributes: [
                         .family: Font.RythmicoTextStyle.FamilyName.notoSansJP,
-                        .traits: [ UIFontDescriptor.TraitKey.weight: Weight(style.weight).rawValue ]
+                        .traits: [ UIFontDescriptor.TraitKey.weight: Weight(style.weight).rawValue ],
                     ]
                 ),
                 size: style.regularSize
