@@ -85,7 +85,7 @@ struct ProfileView: View, TestableView {
                     Button(action: logOut) {
                         HStack(alignment: .center) {
                             Text("Log out")
-                                .rythmicoFont(.body)
+                                .rythmicoTextStyle(.body)
                                 .foregroundColor(.rythmicoRed)
                                 .frame(maxWidth: .infinity)
                                 .multilineTextAlignment(.center)
@@ -109,7 +109,7 @@ struct ProfileView: View, TestableView {
 
     private func header(_ title: String) -> some View {
         Text(title)
-            .rythmicoFont(.subheadlineBold)
+            .rythmicoTextStyle(.subheadlineBold)
             .foregroundColor(.rythmicoForeground)
             .padding(.horizontal, Const.horizontalMargins)
             .padding(.bottom, .spacingUnit * 2)
@@ -131,7 +131,7 @@ struct ProfileView: View, TestableView {
     ) -> some View {
         let cellContent = HStack {
             Text(title)
-                .rythmicoFont(.body)
+                .rythmicoTextStyle(.body)
                 .frame(maxWidth: .infinity, alignment: .leading)
             content()
             if disclosure {

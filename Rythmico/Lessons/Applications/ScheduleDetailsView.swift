@@ -49,7 +49,7 @@ struct ScheduleDetailsView: View {
             "Start Date:"
             startDate.text.rythmicoFontWeight(.bodyBold)
         }
-        .rythmicoFont(.body)
+        .rythmicoTextStyle(.body)
     }
 
     private static let startTimeFormatter = Current.dateFormatter(format: .custom("h:mma"))
@@ -60,7 +60,7 @@ struct ScheduleDetailsView: View {
             "for".text.rythmicoFontWeight(.body)
             schedule.duration.title
         }
-        .rythmicoFont(.bodyBold)
+        .rythmicoTextStyle(.bodyBold)
     }
 
     private static let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
@@ -71,7 +71,7 @@ struct ScheduleDetailsView: View {
             "every \(frequencyDay)".text.rythmicoFontWeight(.bodyBold)
             "at the same time and for the same duration"
         }
-        .rythmicoFont(.body)
+        .rythmicoTextStyle(.body)
     }
 }
 

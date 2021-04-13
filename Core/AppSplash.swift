@@ -56,7 +56,7 @@ struct AppSplash: View {
 private extension Text {
     func appSplashTitle() -> some View {
         #if RYTHMICO
-        self.rythmicoFont(.largeTitle)
+        self.rythmicoTextStyle(.largeTitle)
             .foregroundColor(.rythmicoForeground)
         #elseif TUTOR
         self.font(.system(.largeTitle).bold())

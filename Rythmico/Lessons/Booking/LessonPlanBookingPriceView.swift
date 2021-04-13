@@ -9,19 +9,19 @@ struct LessonPlanBookingPriceView: View {
     var body: some View {
         VStack(spacing: .spacingSmall) {
             HStack(spacing: .spacingSmall) {
-                Text("Price per lesson").rythmicoFont(.bodyBold).frame(maxWidth: .infinity, alignment: .leading)
-                Text(Self.priceFormatter.string(for: price)).rythmicoFont(.bodyBold).multilineTextAlignment(.trailing)
+                Text("Price per lesson").rythmicoTextStyle(.bodyBold).frame(maxWidth: .infinity, alignment: .leading)
+                Text(Self.priceFormatter.string(for: price)).rythmicoTextStyle(.bodyBold).multilineTextAlignment(.trailing)
             }
             .foregroundColor(.rythmicoForeground)
 
             Group {
-                Text("Payment will be automatically taken on the day of each lesson.").rythmicoFont(.callout)
+                Text("Payment will be automatically taken on the day of each lesson.").rythmicoTextStyle(.callout)
                 Text {
                     "By confirming your booking you agree to our "
                     "terms of service and policies".text.underline()
                     "."
                 }
-                .rythmicoFont(.callout)
+                .rythmicoTextStyle(.callout)
                 .onTapGesture(perform: Current.urlOpener.openTermsAndConditionsURL)
             }
             .foregroundColor(.rythmicoGray90)

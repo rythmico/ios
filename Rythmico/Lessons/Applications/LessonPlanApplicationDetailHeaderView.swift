@@ -11,10 +11,10 @@ struct LessonPlanApplicationDetailHeaderView: View {
                 .withDBSCheck()
             VStack(alignment: .leading, spacing: .spacingUnit) {
                 Text(application.tutor.name)
-                    .rythmicoFont(.largeTitle)
+                    .rythmicoTextStyle(.largeTitle)
                     .foregroundColor(.rythmicoForeground)
                 Text(lessonPlan.instrument.assimilatedName + " Tutor")
-                    .rythmicoFont(.callout)
+                    .rythmicoTextStyle(.callout)
                     .foregroundColor(.rythmicoGray90)
             }
         }

@@ -64,12 +64,12 @@ struct OnboardingSlideshowView: View {
 
             VStack(spacing: .spacingUnit * 2) {
                 Text(step.title)
-                    .rythmicoFont(.headline)
+                    .rythmicoTextStyle(.headline)
                     .foregroundColor(.rythmicoForeground)
                     .transition(.opacity)
                     .id(step.title.hashValue)
                 Text(step.description)
-                    .rythmicoFont(.subheadline)
+                    .rythmicoTextStyle(.subheadline)
                     .foregroundColor(.rythmicoGray90)
                     .transition(.opacity)
                     .id(step.description.hashValue)

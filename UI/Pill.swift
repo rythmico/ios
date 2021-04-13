@@ -24,7 +24,7 @@ extension Pill where Content == AnyView {
             AnyView(
                 Text(title)
                     .foregroundColor(titleColor)
-                    .rythmicoFont(.bodyMedium)
+                    .rythmicoTextStyle(.bodyMedium)
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
             )

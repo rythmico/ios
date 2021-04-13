@@ -75,8 +75,8 @@ struct ReviewRequestView: View, TestableView {
                                     .alignmentGuide(.firstTextBaseline) { $0[.bottom] - 2.5 }
 
                                 VStack(alignment: .leading, spacing: .spacingMedium) {
-                                    Text(studentDetails).rythmicoFont(.body)
-                                    studentAbout?.rythmicoFont(.body)
+                                    Text(studentDetails).rythmicoTextStyle(.body)
+                                    studentAbout?.rythmicoTextStyle(.body)
                                 }.fixedSize(horizontal: false, vertical: true)
                             }
                             .foregroundColor(.rythmicoGray90)
@@ -110,7 +110,7 @@ struct ReviewRequestView: View, TestableView {
                                 accessory: editButton(performing: editPrivateNote)
                             ) {
                                 Text(privateNote)
-                                    .rythmicoFont(.body)
+                                    .rythmicoTextStyle(.body)
                                     .foregroundColor(.rythmicoGray90)
                                     .fixedSize(horizontal: false, vertical: true)
                             }
@@ -130,7 +130,7 @@ struct ReviewRequestView: View, TestableView {
 
     private func editButton(performing action: @escaping Action) -> some View {
         Button(action: action) {
-            Text("Edit").rythmicoFont(.bodyBold).foregroundColor(.rythmicoGray90)
+            Text("Edit").rythmicoTextStyle(.bodyBold).foregroundColor(.rythmicoGray90)
         }
     }
 

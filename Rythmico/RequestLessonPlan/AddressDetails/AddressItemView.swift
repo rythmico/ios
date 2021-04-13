@@ -6,7 +6,7 @@ struct AddressItemView: View {
 
     var body: some View {
         Text(title)
-            .rythmicoFont(textStyle)
+            .rythmicoTextStyle(textStyle)
             .foregroundColor(textColor)
             .minimumScaleFactor(0.9)
             .frame(maxWidth: .infinity, alignment: .leading)

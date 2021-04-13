@@ -16,7 +16,7 @@ struct LessonPlanConfirmationDetailsView: View {
                     relativeDate().parenthesized()
                 }
                 .foregroundColor(.rythmicoGray90)
-                .rythmicoFont(.body)
+                .rythmicoTextStyle(.body)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
             }
@@ -25,7 +25,7 @@ struct LessonPlanConfirmationDetailsView: View {
                     .fixedSize()
                 Text(tutor.name)
                     .foregroundColor(.rythmicoGray90)
-                    .rythmicoFont(.bodyBold)
+                    .rythmicoTextStyle(.bodyBold)
             }
         }
     }

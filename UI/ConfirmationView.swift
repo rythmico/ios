@@ -11,7 +11,7 @@ struct ConfirmationView: View {
                     .renderingMode(.template)
                     .foregroundColor(.rythmicoPurple)
                 Text(title)
-                    .rythmicoFont(.subheadlineBold)
+                    .rythmicoTextStyle(.subheadlineBold)
                     .foregroundColor(.rythmicoForeground)
             }
         }

@@ -26,7 +26,7 @@ struct PhoneNumberInputView: View {
             "parent/guardian".text.rythmicoFontWeight(.bodyBold)
             "of the student."
         }
-        .rythmicoFont(.body)
+        .rythmicoTextStyle(.body)
         .foregroundColor(.rythmicoGray90)
     }
 }

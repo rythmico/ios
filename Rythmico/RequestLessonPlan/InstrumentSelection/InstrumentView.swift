@@ -22,7 +22,7 @@ struct InstrumentView: View {
         Button(action: { viewData.action?() }) {
             HStack(spacing: .spacingUnit * 2) {
                 Text(viewData.name)
-                    .rythmicoFont(.subheadlineBold)
+                    .rythmicoTextStyle(.subheadlineBold)
                     .foregroundColor(.rythmicoForeground)
                     .padding([.vertical, .leading], .spacingMedium)
                     .frame(maxWidth: .infinity, alignment: .leading)

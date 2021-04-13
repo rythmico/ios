@@ -27,7 +27,7 @@ struct ActionList: View {
                     SwiftUI.Button(action: buttons[index].action) {
                         HStack(spacing: 0) {
                             Text(buttons[index].title)
-                                .rythmicoFont(textStyle)
+                                .rythmicoTextStyle(textStyle)
                                 .multilineTextAlignment(.leading)
                                 .frame(maxWidth: .infinity, alignment: .leading)
 

@@ -32,12 +32,12 @@ struct LessonSummaryCellMainContent: View {
             VStack(alignment: .leading, spacing: 0) {
                 Text(lesson.title)
                     .foregroundColor(lesson.status.isSkipped ? .rythmicoGray90 : .rythmicoForeground)
-                    .rythmicoFont(.subheadlineBold)
+                    .rythmicoTextStyle(.subheadlineBold)
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
                 VSpacing(.spacingUnit * 2)
                 Text(subtitle)
-                    .rythmicoFont(.body)
+                    .rythmicoTextStyle(.body)
                     .foregroundColor(.rythmicoGray90)
                 VSpacing(.spacingExtraSmall)
                 HStack(spacing: .spacingExtraSmall) {

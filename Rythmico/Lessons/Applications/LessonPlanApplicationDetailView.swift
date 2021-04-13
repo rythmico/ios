@@ -56,7 +56,7 @@ struct LessonPlanApplicationDetailView: View {
             "Lessons recurring"
             "every \(frequencyDayText)".text.rythmicoFontWeight(.calloutBold)
         }
-        .rythmicoFont(.callout)
+        .rythmicoTextStyle(.callout)
         .foregroundColor(.rythmicoGray90)
         .multilineTextAlignment(.center)
     }

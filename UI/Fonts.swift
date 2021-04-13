@@ -1,7 +1,7 @@
 import SwiftUI
 
 extension Text {
-    func rythmicoFont(_ style: Font.RythmicoTextStyle) -> some View {
+    func rythmicoTextStyle(_ style: Font.RythmicoTextStyle) -> some View {
         self.font(.rythmico(style))
             .tracking(style.tracking)
             .lineSpacing(style.lineSpacing)

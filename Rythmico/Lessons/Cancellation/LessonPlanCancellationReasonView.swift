@@ -37,7 +37,7 @@ extension LessonPlanCancellationView {
                     .padding(.horizontal, .spacingMedium)
 
                     SelectableList(data: Reason.allCases, id: \.self, selection: $selectedReason) {
-                        Text($0.title).rythmicoFont(.body).foregroundColor(.rythmicoGray90)
+                        Text($0.title).rythmicoTextStyle(.body).foregroundColor(.rythmicoGray90)
                     }
                 }
                 .frame(maxHeight: .infinity, alignment: .top)

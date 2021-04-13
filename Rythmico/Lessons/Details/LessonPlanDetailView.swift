@@ -45,14 +45,14 @@ struct LessonPlanDetailView: View, TestableView {
                             HStack(spacing: .spacingUnit * 2) {
                                 Image(decorative: Asset.iconInfo.name).renderingMode(.template)
                                 Text(startDateText)
-                                    .rythmicoFont(.body)
+                                    .rythmicoTextStyle(.body)
                                     .lineLimit(1)
                                     .minimumScaleFactor(0.7)
                             }
                             HStack(spacing: .spacingUnit * 2) {
                                 Image(decorative: Asset.iconTime.name).renderingMode(.template)
                                 Text(durationText)
-                                    .rythmicoFont(.body)
+                                    .rythmicoTextStyle(.body)
                                     .lineLimit(1)
                                     .minimumScaleFactor(0.7)
                             }
@@ -61,7 +61,7 @@ struct LessonPlanDetailView: View, TestableView {
                                     .renderingMode(.template)
                                     .offset(y: .spacingUnit / 2)
                                 Text(lessonPlan.address.condensedFormattedString)
-                                    .rythmicoFont(.body)
+                                    .rythmicoTextStyle(.body)
                             }
                             InlineContentAndTitleView(status: lessonPlan.status, summarized: false)
                             if lessonPlan.status.isPending {

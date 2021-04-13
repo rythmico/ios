@@ -81,7 +81,7 @@ struct AppUpdatePrompt: View {
 private extension Text {
     func appUpdatePromptDescription() -> some View {
         #if RYTHMICO
-        self.rythmicoFont(.body)
+        self.rythmicoTextStyle(.body)
             .foregroundColor(.rythmicoGray90)
         #elseif TUTOR
         self.font(.body)

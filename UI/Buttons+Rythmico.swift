@@ -14,7 +14,7 @@ struct RythmicoButton<Title: StringProtocol, Style: RythmicoButtonStyleProtocol>
 
     var body: some View {
         Button(action: action ?? {}) {
-            Text(title).rythmicoFont(Style.textStyle)
+            Text(title).rythmicoTextStyle(Style.textStyle)
         }
         .buttonStyle(style)
     }

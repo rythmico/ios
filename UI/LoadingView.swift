@@ -7,7 +7,7 @@ struct LoadingView: View {
         HStack(spacing: .spacingExtraSmall) {
             ActivityIndicator(color: .rythmicoGray90)
             Text(title)
-                .rythmicoFont(.subheadlineBold)
+                .rythmicoTextStyle(.subheadlineBold)
                 .foregroundColor(.rythmicoForeground)
         }
     }

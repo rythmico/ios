@@ -74,13 +74,13 @@ struct LessonPlanConfirmationView: View, TestableView {
                             VStack(spacing: .spacingSmall) {
                                 Text(title)
                                     .foregroundColor(.rythmicoForeground)
-                                    .rythmicoFont(.largeTitle)
+                                    .rythmicoTextStyle(.largeTitle)
                                     .multilineTextAlignment(.center)
                                     .minimumScaleFactor(0.8)
                                 if let subtitle = subtitle {
                                     Text(subtitle)
                                         .foregroundColor(.rythmicoGray90)
-                                        .rythmicoFont(.body)
+                                        .rythmicoTextStyle(.body)
                                         .multilineTextAlignment(.center)
                                 }
                             }

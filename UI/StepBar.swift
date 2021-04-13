@@ -14,7 +14,7 @@ struct StepBar: View {
             ProgressBar(progress: Double(currentStep) / Double(totalSteps))
                 .animation(.rythmicoSpring(duration: .durationMedium))
             Text("\(currentStep) / \(totalSteps)")
-                .rythmicoFont(.footnoteBold)
+                .rythmicoTextStyle(.footnoteBold)
                 .foregroundColor(.rythmicoGray90)
         }
         .accessibilityElement()

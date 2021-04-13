@@ -19,7 +19,7 @@ struct ExpandableText<Expander: View, Collapser: View>: View {
             VStack(alignment: .leading, spacing: paragraphSpacing) {
                 ForEach(0..<paragraphCount, id: \.self) { index in
                     Text(paragraphs[index])
-                        .rythmicoFont(style)
+                        .rythmicoTextStyle(style)
                         .transition(
                             .asymmetric(
                                 insertion: .move(edge: .bottom) + .opacity,

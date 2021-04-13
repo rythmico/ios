@@ -73,7 +73,7 @@ struct PortfolioView: View {
     @ViewBuilder
     private func header(_ title: String) -> some View {
         Text(title)
-            .rythmicoFont(.subheadlineBold)
+            .rythmicoTextStyle(.subheadlineBold)
             .foregroundColor(.rythmicoForeground)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -82,7 +82,7 @@ struct PortfolioView: View {
     private func bio(from portfolio: Portfolio, scrollingProxy: ScrollViewProxy) -> some View {
         if portfolio.bio.isBlank {
             Text("\(tutor.name.firstWord ?? "Tutor") did not add a bio.")
-                .rythmicoFont(.body)
+                .rythmicoTextStyle(.body)
                 .foregroundColor(.rythmicoGray30)
         } else {
             ExpandableText(
@@ -98,7 +98,7 @@ struct PortfolioView: View {
             "Age:"
             "\(portfolio.age)".text.rythmicoFontWeight(.bodyBold)
         }
-        .rythmicoFont(.body)
+        .rythmicoTextStyle(.body)
         .foregroundColor(.rythmicoGray90)
         .multilineTextAlignment(.trailing)
     }

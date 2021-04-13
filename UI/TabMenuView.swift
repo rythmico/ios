@@ -14,7 +14,7 @@ struct TabMenuView<Tab: RawRepresentable>: View where Tab.RawValue == String {
             HStack(spacing: 0) {
                 ForEach(tabs, id: \.rawValue) { tab in
                     Text(tab.rawValue.uppercased(with: Current.locale))
-                        .rythmicoFont(.calloutBold)
+                        .rythmicoTextStyle(.calloutBold)
                         .foregroundColor(selection == tab ? .rythmicoPurple : .rythmicoGray90)
                         .frame(maxWidth: .infinity, minHeight: .spacingUnit * 13, alignment: .center)
                         .background(

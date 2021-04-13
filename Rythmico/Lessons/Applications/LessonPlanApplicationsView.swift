@@ -57,7 +57,7 @@ struct LessonPlanApplicationCell: View {
                 .frame(width: Const.avatarSize, height: Const.avatarSize)
                 .withSmallDBSCheck()
             Text(application.tutor.name)
-                .rythmicoFont(.bodyBold)
+                .rythmicoTextStyle(.bodyBold)
                 .foregroundColor(.rythmicoForeground)
                 .lineLimit(1)
                 .minimumScaleFactor(0.6)
