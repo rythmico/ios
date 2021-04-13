@@ -47,12 +47,14 @@ struct LessonDetailView: View, TestableView {
                             HStack(spacing: .spacingUnit * 2) {
                                 Image(decorative: Asset.iconInfo.name).renderingMode(.template)
                                 Text(startDateText)
+                                    .rythmicoFont(.body)
                                     .lineLimit(1)
                                     .minimumScaleFactor(0.7)
                             }
                             HStack(spacing: .spacingUnit * 2) {
                                 Image(decorative: Asset.iconTime.name).renderingMode(.template)
                                 Text(durationText)
+                                    .rythmicoFont(.body)
                                     .lineLimit(1)
                                     .minimumScaleFactor(0.7)
                             }
@@ -61,11 +63,10 @@ struct LessonDetailView: View, TestableView {
                                     .renderingMode(.template)
                                     .offset(y: .spacingUnit / 2)
                                 Text(lesson.address.condensedFormattedString)
-                                    .lineSpacing(.spacingUnit)
+                                    .rythmicoFont(.body)
                             }
                             InlineContentAndTitleView(lesson: lesson, summarized: false)
                         }
-                        .rythmicoFont(.body)
                         .foregroundColor(.rythmicoGray90)
                     }
                 }
@@ -75,7 +76,6 @@ struct LessonDetailView: View, TestableView {
 
             ActionList(actions, showBottomSeparator: false)
                 .foregroundColor(.rythmicoGray90)
-                .rythmicoFont(.body)
         }
         .testable(self)
         .padding(.top, .spacingExtraSmall)

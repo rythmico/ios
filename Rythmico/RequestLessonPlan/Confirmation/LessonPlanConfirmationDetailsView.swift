@@ -12,7 +12,7 @@ struct LessonPlanConfirmationDetailsView: View {
                     .foregroundColor(.rythmicoGray90)
                 Text(separator: .whitespace) {
                     "First Lesson:"
-                    Self.dateFormatter.string(from: lessonPlan.schedule.startDate).text.rythmicoFont(.bodyBold)
+                    Self.dateFormatter.string(from: lessonPlan.schedule.startDate).text.rythmicoFontWeight(.bodyBold)
                     relativeDate().parenthesized()
                 }
                 .foregroundColor(.rythmicoGray90)

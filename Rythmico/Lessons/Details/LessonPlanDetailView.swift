@@ -45,12 +45,14 @@ struct LessonPlanDetailView: View, TestableView {
                             HStack(spacing: .spacingUnit * 2) {
                                 Image(decorative: Asset.iconInfo.name).renderingMode(.template)
                                 Text(startDateText)
+                                    .rythmicoFont(.body)
                                     .lineLimit(1)
                                     .minimumScaleFactor(0.7)
                             }
                             HStack(spacing: .spacingUnit * 2) {
                                 Image(decorative: Asset.iconTime.name).renderingMode(.template)
                                 Text(durationText)
+                                    .rythmicoFont(.body)
                                     .lineLimit(1)
                                     .minimumScaleFactor(0.7)
                             }
@@ -59,14 +61,13 @@ struct LessonPlanDetailView: View, TestableView {
                                     .renderingMode(.template)
                                     .offset(y: .spacingUnit / 2)
                                 Text(lessonPlan.address.condensedFormattedString)
-                                    .lineSpacing(.spacingUnit)
+                                    .rythmicoFont(.body)
                             }
                             InlineContentAndTitleView(status: lessonPlan.status, summarized: false)
                             if lessonPlan.status.isPending {
                                 InfoBanner(text: "Potential tutors have received your request and will submit applications for your consideration.")
                             }
                         }
-                        .rythmicoFont(.body)
                         .foregroundColor(.rythmicoGray90)
                     }
                 }
@@ -76,7 +77,6 @@ struct LessonPlanDetailView: View, TestableView {
 
             ActionList(actions, showBottomSeparator: false)
                 .foregroundColor(.rythmicoGray90)
-                .rythmicoFont(.body)
         }
         .testable(self)
         .padding(.top, .spacingExtraSmall)

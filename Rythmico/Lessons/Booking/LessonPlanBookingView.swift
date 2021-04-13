@@ -70,7 +70,7 @@ struct LessonPlanBookingView: View {
                                 }
 
                                 HDividerContainer {
-                                    Button("Add new card", action: addNewCard).quaternaryStyle()
+                                    RythmicoButton("Add new card", style: RythmicoLinkButtonStyle.quaternary(), action: addNewCard)
                                 }
 
                                 LessonPlanBookingPriceView(price: checkout.pricePerLesson)
@@ -82,7 +82,7 @@ struct LessonPlanBookingView: View {
                     }
                 }
                 FloatingView {
-                    Button("Confirm Booking", action: confirmAction).primaryStyle()
+                    RythmicoButton("Confirm Booking", style: RythmicoButtonStyle.primary(), action: confirmAction)
                 }
                 .disabled(!canConfirm)
             }
@@ -106,9 +106,9 @@ struct LessonPlanBookingView: View {
     @SpacedTextBuilder
     var subtitle: Text {
         "Review the"
-        "proposed lesson plan".text.rythmicoFont(.bodyBold)
+        "proposed lesson plan".text.rythmicoFontWeight(.bodyBold)
         "and"
-        "price per lesson".text.rythmicoFont(.bodyBold)
+        "price per lesson".text.rythmicoFontWeight(.bodyBold)
         "before booking"
     }
 

@@ -6,7 +6,6 @@ struct ReviewRequestView: View, TestableView {
 
     private enum Const {
         static let headerPadding = EdgeInsets(bottom: .spacingUnit * 2)
-        static let lineSpacing: CGFloat = .spacingUnit * 2
     }
 
     private let coordinator: Coordinator
@@ -76,11 +75,10 @@ struct ReviewRequestView: View, TestableView {
                                     .alignmentGuide(.firstTextBaseline) { $0[.bottom] - 2.5 }
 
                                 VStack(alignment: .leading, spacing: .spacingMedium) {
-                                    Text(studentDetails).lineSpacing(Const.lineSpacing)
-                                    studentAbout.lineSpacing(6)
+                                    Text(studentDetails).rythmicoFont(.body)
+                                    studentAbout?.rythmicoFont(.body)
                                 }.fixedSize(horizontal: false, vertical: true)
                             }
-                            .rythmicoFont(.body)
                             .foregroundColor(.rythmicoGray90)
                         }
 
@@ -111,9 +109,9 @@ struct ReviewRequestView: View, TestableView {
                                 padding: Const.headerPadding,
                                 accessory: editButton(performing: editPrivateNote)
                             ) {
-                                Text(privateNote).rythmicoFont(.body)
+                                Text(privateNote)
+                                    .rythmicoFont(.body)
                                     .foregroundColor(.rythmicoGray90)
-                                    .lineSpacing(Const.lineSpacing)
                                     .fixedSize(horizontal: false, vertical: true)
                             }
                         }
@@ -123,7 +121,7 @@ struct ReviewRequestView: View, TestableView {
                 }
 
                 FloatingView {
-                    Button("Confirm Details", action: submitRequest).primaryStyle()
+                    RythmicoButton("Confirm Details", style: RythmicoButtonStyle.primary(), action: submitRequest)
                 }
             }
         }
@@ -131,7 +129,9 @@ struct ReviewRequestView: View, TestableView {
     }
 
     private func editButton(performing action: @escaping Action) -> some View {
-        Button("Edit", action: action).rythmicoFont(.bodyBold).foregroundColor(.rythmicoGray90)
+        Button(action: action) {
+            Text("Edit").rythmicoFont(.bodyBold).foregroundColor(.rythmicoGray90)
+        }
     }
 
     private func editInstrument() { context.instrument = nil }
@@ -157,7 +157,7 @@ struct ReviewRequestView: View, TestableView {
     private var studentAbout: Text? {
         guard !student.about.isBlank else { return nil }
         return Text(separator: .newline) {
-            Text(["About", student.name.firstWord].compact().spaced() + .colon).rythmicoFont(.bodyBold)
+            Text(["About", student.name.firstWord].compact().spaced() + .colon).rythmicoFontWeight(.bodyBold)
             student.about
         }
     }
@@ -179,3 +179,4 @@ struct ReviewRequestView_Previews: PreviewProvider {
     }
 }
 #endif
+

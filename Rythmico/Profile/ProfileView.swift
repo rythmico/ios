@@ -130,7 +130,9 @@ struct ProfileView: View, TestableView {
         @ViewBuilder content: () -> Content
     ) -> some View {
         let cellContent = HStack {
-            Text(title).frame(maxWidth: .infinity, alignment: .leading)
+            Text(title)
+                .rythmicoFont(.body)
+                .frame(maxWidth: .infinity, alignment: .leading)
             content()
             if disclosure {
                 Image(decorative: Asset.iconDisclosure.name)
@@ -141,7 +143,6 @@ struct ProfileView: View, TestableView {
             ? AnyView(cellContent)
             : AnyView(Button(action: action!) { cellContent })
         return view
-            .rythmicoFont(.body)
             .foregroundColor(.rythmicoGray90)
             .padding(.horizontal, Const.horizontalMargins)
             .padding(.vertical, .spacingUnit * 2)

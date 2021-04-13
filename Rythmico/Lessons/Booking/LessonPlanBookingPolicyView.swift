@@ -17,7 +17,6 @@ struct LessonPlanBookingPolicyView: View {
                 Text(description)
                     .rythmicoFont(.callout)
                     .foregroundColor(.rythmicoGray90)
-                    .lineSpacing(.spacingUnit / 2)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }

@@ -26,18 +26,23 @@ extension SwiftUI.App {
                 $0.configureWithOpaqueBackground()
                 $0.largeTitleTextAttributes = [
                     .foregroundColor: UIColor.rythmicoForeground,
-                    .font: UIFont.rythmicoFont(.largeTitle)
+                    .font: UIFont.rythmicoFont(.largeTitle),
+                    .tracking: Font.RythmicoTextStyle.largeTitle.tracking,
                 ]
                 $0.titleTextAttributes = [
                     .foregroundColor: UIColor.rythmicoForeground,
-                    .font: UIFont.rythmicoFont(.subheadlineBold)
+                    .font: UIFont.rythmicoFont(.subheadlineBold),
+                    .tracking: Font.RythmicoTextStyle.subheadlineBold.tracking,
                 ]
                 $0.titlePositionAdjustment.vertical = 1
                 $0.shadowColor = nil
 
                 let backIndicatorImage = UIImage(systemSymbol: .chevronLeft).applyingSymbolConfiguration(.init(pointSize: 17, weight: .medium))
                 $0.setBackIndicatorImage(backIndicatorImage, transitionMaskImage: backIndicatorImage)
-                $0.backButtonAppearance.normal.titleTextAttributes = [.font: UIFont.rythmicoFont(.bodyMedium)]
+                $0.backButtonAppearance.normal.titleTextAttributes = [
+                    .font: UIFont.rythmicoFont(.bodyMedium),
+                    .tracking: Font.RythmicoTextStyle.bodyMedium.tracking,
+                ]
 
                 bar.standardAppearance = $0
                 bar.compactAppearance = $0
@@ -61,8 +66,9 @@ extension SwiftUI.App {
                 ].forEach {
                     $0.normal.iconColor = .rythmicoGray90
                     $0.normal.titleTextAttributes = [
+                        .foregroundColor: UIColor.rythmicoGray90,
                         .font: UIFont.rythmicoFont(.caption),
-                        .foregroundColor: UIColor.rythmicoGray90
+                        .tracking: Font.RythmicoTextStyle.caption.tracking,
                     ]
                 }
                 bar.standardAppearance = $0

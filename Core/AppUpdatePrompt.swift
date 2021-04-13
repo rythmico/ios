@@ -30,18 +30,16 @@ struct AppUpdatePrompt: View {
         NavigationView {
             VStack(spacing: .spacingSmall) {
                 Text("Please download the latest version of \(App.name) to be able to continue.")
-                    .modifier(AppUpdatePromptDescriptionModifier())
+                    .appUpdatePromptDescription()
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 if shouldShowUpdateButton {
-                    Button("Update \(App.name)") {
+                    RythmicoButton("Update \(App.name)", style: RythmicoButtonStyle.primary()) {
                         Current.urlOpener.open(method.url(forAppId: appId))
                     }
-                    .primaryStyle()
                 } else {
-                    Button("Download the TestFlight App") {
+                    RythmicoButton("Download the TestFlight App", style: RythmicoButtonStyle.secondary()) {
                         Current.urlOpener.open(App.DistributionMethod.appStore.url(forAppId: Const.testFlightAppId))
                     }
-                    .secondaryStyle()
                 }
             }
             .navigationTitle("Update Required")
@@ -49,7 +47,6 @@ struct AppUpdatePrompt: View {
             .padding([.horizontal, .bottom], inset)
             .padding(.top, .spacingUnit * 2)
             .multilineTextAlignment(.leading)
-            .lineSpacing(.spacingUnit * 1.5)
         }
         .onEvent(.appInForeground, perform: refreshTestFlightAppInstalledIfNeeded)
     }
@@ -81,20 +78,16 @@ struct AppUpdatePrompt: View {
     }
 }
 
-private struct AppUpdatePromptDescriptionModifier: ViewModifier {
-    #if RYTHMICO
-    func body(content: Content) -> some View {
-        content
-            .rythmicoFont(.body)
+private extension Text {
+    func appUpdatePromptDescription() -> some View {
+        #if RYTHMICO
+        self.rythmicoFont(.body)
             .foregroundColor(.rythmicoGray90)
-    }
-    #elseif TUTOR
-    func body(content: Content) -> some View {
-        content
-            .font(.body)
+        #elseif TUTOR
+        self.font(.body)
             .foregroundColor(.gray)
+        #endif
     }
-    #endif
 }
 
 #if DEBUG

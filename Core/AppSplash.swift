@@ -43,9 +43,8 @@ struct AppSplash: View {
                     .frame(width: 68)
                 if !titleHidden {
                     Text(title)
+                        .appSplashTitle()
                         .multilineTextAlignment(.center)
-                        .lineSpacing(.spacingUnit)
-                        .modifier(AppSplashTitleModifier())
                         .transition(.offset(y: -.spacingLarge) + .opacity)
                 }
             }
@@ -54,19 +53,15 @@ struct AppSplash: View {
     }
 }
 
-private struct AppSplashTitleModifier: ViewModifier {
-    #if RYTHMICO
-    func body(content: Content) -> some View {
-        content
-            .rythmicoFont(.largeTitle)
+private extension Text {
+    func appSplashTitle() -> some View {
+        #if RYTHMICO
+        self.rythmicoFont(.largeTitle)
             .foregroundColor(.rythmicoForeground)
+        #elseif TUTOR
+        self.font(.system(.largeTitle).bold())
+        #endif
     }
-    #elseif TUTOR
-    func body(content: Content) -> some View {
-        content
-            .font(.system(.largeTitle).bold())
-    }
-    #endif
 }
 
 #if DEBUG

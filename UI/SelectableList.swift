@@ -52,22 +52,6 @@ extension SelectableList where Data.Element: Identifiable, ID == Data.Element.ID
     }
 }
 
-extension SelectableList where ID == String, Content == AnyView {
-    init(
-        _ data: Data,
-        title: KeyPath<Data.Element, String>,
-        selection: Binding<Data.Element?>
-    ) {
-        self.init(data: data, id: title, selection: selection) { element in
-            AnyView(
-                Text(element[keyPath: title])
-                    .multilineTextAlignment(.leading)
-                    .foregroundColor(.rythmicoGray90)
-            )
-        }
-    }
-}
-
 #if DEBUG
 struct SelectableList_Previews: PreviewProvider {
     struct Preview: View {

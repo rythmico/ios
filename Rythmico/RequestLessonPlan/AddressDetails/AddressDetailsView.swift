@@ -40,12 +40,12 @@ struct AddressDetailsView: View, TestableView {
     var subtitle: Text {
         "Enter the address where"
         if let studentName = student.name.firstWord {
-            studentName.text.rythmicoFont(.bodyBold)
+            studentName.text.rythmicoFontWeight(.bodyBold)
         } else {
             "the student"
         }
         "will have the"
-        "\(instrument.assimilatedName) lessons".text.rythmicoFont(.bodyBold)
+        "\(instrument.assimilatedName) lessons".text.rythmicoFontWeight(.bodyBold)
     }
 
     var isLoading: Bool { coordinator.state.isLoading }
@@ -116,7 +116,7 @@ struct AddressDetailsView: View, TestableView {
 
                 nextButtonAction.map { action in
                     FloatingView {
-                        Button("Next", action: action).primaryStyle()
+                        RythmicoButton("Next", style: RythmicoButtonStyle.primary(), action: action)
                     }
                 }
             }

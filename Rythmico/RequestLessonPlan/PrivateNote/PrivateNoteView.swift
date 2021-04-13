@@ -38,7 +38,7 @@ struct PrivateNoteView: View, EditableView, TestableView {
     @SpacedTextBuilder
     private var privateNoteHeaderTitle: Text {
         "Private Note"
-        "(optional)".text.rythmicoFont(.body)
+        "(optional)".text.rythmicoFontWeight(.body)
     }
 
     var nextButtonAction: Action {
@@ -72,7 +72,7 @@ struct PrivateNoteView: View, EditableView, TestableView {
                 .padding(.leading, .spacingMedium)
 
                 FloatingView {
-                    Button("Next", action: nextButtonAction).primaryStyle()
+                    RythmicoButton("Next", style: RythmicoButtonStyle.primary(), action: nextButtonAction)
                 }
             }
         }

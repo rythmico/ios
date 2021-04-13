@@ -38,7 +38,7 @@ struct LessonSkippingView: View {
                     }
 
                     FloatingView {
-                        Button(submitButtonTitle, action: onSkipButtonPressed).secondaryStyle()
+                        RythmicoButton(submitButtonTitle, style: RythmicoButtonStyle.secondary(), action: onSkipButtonPressed)
                     }
                 }
                 .padding(.top, .spacingExtraSmall)

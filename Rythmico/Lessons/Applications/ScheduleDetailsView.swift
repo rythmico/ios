@@ -38,25 +38,26 @@ struct ScheduleDetailsView: View {
                 }
             }
         }
-        .lineSpacing(6)
         .frame(maxWidth: .infinity, alignment: .leading)
         .fixedSize(horizontal: false, vertical: true)
     }
 
     private static let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
     private var startDate: String { Self.startDateFormatter.string(from: schedule.startDate) }
-    @SpacedTextBuilder
-    private var startDateText: Text {
-        "Start Date:".text.rythmicoFont(.body)
-        startDate.text.rythmicoFont(.bodyBold)
+    private var startDateText: some View {
+        Text(separator: .whitespace) {
+            "Start Date:"
+            startDate.text.rythmicoFontWeight(.bodyBold)
+        }
+        .rythmicoFont(.body)
     }
 
     private static let startTimeFormatter = Current.dateFormatter(format: .custom("h:mma"))
     private var startTime: String { Self.startTimeFormatter.string(from: schedule.startDate) }
-    private var startTimeAndDurationText: Text {
+    private var startTimeAndDurationText: some View {
         Text(separator: .whitespace) {
             startTime
-            "for".text.rythmicoFont(.body)
+            "for".text.rythmicoFontWeight(.body)
             schedule.duration.title
         }
         .rythmicoFont(.bodyBold)
@@ -64,10 +65,10 @@ struct ScheduleDetailsView: View {
 
     private static let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
     private var frequencyDay: String { Self.frequencyDayFormatter.string(from: schedule.startDate) }
-    private var frequencyText: Text {
+    private var frequencyText: some View {
         Text(separator: .whitespace) {
             "Recurring"
-            "every \(frequencyDay)".text.rythmicoFont(.bodyBold)
+            "every \(frequencyDay)".text.rythmicoFontWeight(.bodyBold)
             "at the same time and for the same duration"
         }
         .rythmicoFont(.body)

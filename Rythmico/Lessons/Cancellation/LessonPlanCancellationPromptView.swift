@@ -17,8 +17,8 @@ extension LessonPlanCancellationView {
 
                 FloatingView {
                     HStack(spacing: .spacingSmall) {
-                        Button("No", action: noAction).secondaryStyle()
-                        Button("Yes", action: yesAction).tertiaryStyle()
+                        RythmicoButton("No", style: RythmicoButtonStyle.secondary(), action: noAction)
+                        RythmicoButton("Yes", style: RythmicoButtonStyle.tertiary(), action: yesAction)
                     }
                 }
             }
@@ -64,7 +64,6 @@ extension LessonPlanCancellationView {
             Text(string)
                 .foregroundColor(.rythmicoGray90)
                 .rythmicoFont(.body)
-                .lineSpacing(6)
         }
 
         private var isFree: Bool {

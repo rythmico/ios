@@ -9,17 +9,16 @@ struct LessonSkippingContentView: View {
         VStack(spacing: .spacingMedium) {
             if isFree {
                 Group {
-                    Text("This will cancel your payment for this lesson.")
+                    Text("This will cancel your payment for this lesson.").rythmicoFont(.body)
                     Text(separator: .whitespace) {
                         "Skip for"
-                        "FREE".text.foregroundColor(.rythmicoPurple).rythmicoFont(.bodyBold)
+                        "FREE".text.foregroundColor(.rythmicoPurple).rythmicoFontWeight(.bodyBold)
                         "within"
-                        remainingTimeString.text.rythmicoFont(.bodyBold) + String.period.text
+                        remainingTimeString.text.rythmicoFontWeight(.bodyBold) + String.period.text
                     }
+                    .rythmicoFont(.body)
                 }
                 .foregroundColor(.rythmicoGray90)
-                .rythmicoFont(.body)
-                .lineSpacing(6)
 
                 InfoBanner(text:
                     """
@@ -32,7 +31,6 @@ struct LessonSkippingContentView: View {
                 Text("You will still be charged the full amount for this lesson.")
                     .foregroundColor(.rythmicoGray90)
                     .rythmicoFont(.body)
-                    .lineSpacing(6)
 
                 InfoBanner(text:
                     """
