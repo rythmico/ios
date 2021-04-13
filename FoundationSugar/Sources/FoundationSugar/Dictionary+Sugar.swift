@@ -6,6 +6,12 @@ extension Dictionary {
     }
 }
 
+extension Dictionary where Value: OptionalProtocol {
+    public func compact() -> [Key: Value.Wrapped] {
+        compactMapValues(\.value)
+    }
+}
+
 @resultBuilder
 public struct DictionaryBuilder<Key: Hashable, Value> {
     public typealias Dictionary = Swift.Dictionary<Key, Value>
