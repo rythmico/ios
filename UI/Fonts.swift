@@ -1,4 +1,5 @@
 import SwiftUI
+import FoundationSugar
 
 extension Text {
     func rythmicoTextStyle(_ style: Font.RythmicoTextStyle) -> some View {
@@ -139,6 +140,15 @@ private extension Font.Weight {
 extension Font {
     static func rythmico(_ style: RythmicoTextStyle) -> Font {
         .custom(RythmicoTextStyle.FamilyName.notoSansJP, size: style.regularSize, relativeTo: .largeTitle).weight(style.weight)
+    }
+}
+
+extension Dictionary where Key == NSAttributedString.Key, Value == Any {
+    @DictionaryBuilder<Key, Value>
+    static func rythmicoTextAttributes(color: UIColor?, style: Font.RythmicoTextStyle) -> Self {
+        [.foregroundColor: color].compact()
+        [.font: UIFont.rythmicoFont(style)]
+        [.tracking: style.tracking]
     }
 }
 
