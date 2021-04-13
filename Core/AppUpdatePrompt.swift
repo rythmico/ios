@@ -32,6 +32,7 @@ struct AppUpdatePrompt: View {
                 Text("Please download the latest version of \(App.name) to be able to continue.")
                     .appUpdatePromptDescription()
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                #if RYTHMICO
                 if shouldShowUpdateButton {
                     RythmicoButton("Update \(App.name)", style: RythmicoButtonStyle.primary()) {
                         Current.urlOpener.open(method.url(forAppId: appId))
@@ -41,6 +42,17 @@ struct AppUpdatePrompt: View {
                         Current.urlOpener.open(App.DistributionMethod.appStore.url(forAppId: Const.testFlightAppId))
                     }
                 }
+                #elseif TUTOR
+                if shouldShowUpdateButton {
+                    Button("Update \(App.name)") {
+                        Current.urlOpener.open(method.url(forAppId: appId))
+                    }.primaryStyle()
+                } else {
+                    Button("Download the TestFlight App") {
+                        Current.urlOpener.open(App.DistributionMethod.appStore.url(forAppId: Const.testFlightAppId))
+                    }.secondaryStyle()
+                }
+                #endif
             }
             .navigationTitle("Update Required")
             .navigationBarTitleDisplayMode(.large)
