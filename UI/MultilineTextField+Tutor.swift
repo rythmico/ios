@@ -11,7 +11,7 @@ extension MultilineTextField {
         self.init(
             placeholder,
             text: text,
-            font: nil,
+            textStyle: nil,
             accentColor: nil,
             textColor: nil,
             placeholderColor: nil,
