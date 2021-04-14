@@ -12,11 +12,11 @@ struct LessonPlanConfirmationDetailsView: View {
                     .foregroundColor(.rythmicoGray90)
                 Text(separator: .whitespace) {
                     "First Lesson:"
-                    Self.dateFormatter.string(from: lessonPlan.schedule.startDate).text.rythmicoFont(.bodyBold)
+                    Self.dateFormatter.string(from: lessonPlan.schedule.startDate).text.rythmicoFontWeight(.bodyBold)
                     relativeDate().parenthesized()
                 }
                 .foregroundColor(.rythmicoGray90)
-                .rythmicoFont(.body)
+                .rythmicoTextStyle(.body)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
             }
@@ -25,7 +25,7 @@ struct LessonPlanConfirmationDetailsView: View {
                     .fixedSize()
                 Text(tutor.name)
                     .foregroundColor(.rythmicoGray90)
-                    .rythmicoFont(.bodyBold)
+                    .rythmicoTextStyle(.bodyBold)
             }
         }
     }

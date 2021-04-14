@@ -14,13 +14,11 @@ struct CardStackView: View {
                 HStack(spacing: .spacingSmall) {
                     Image(uiImage: card.brand.logo)
                     VStack(alignment: .leading, spacing: .spacingUnit / 2) {
-                        Text(card.brand.name)
-                            .rythmicoFont(.bodySemibold)
+                        Text(card.brand.name).rythmicoTextStyle(.bodySemibold)
                         HStack(spacing: .spacingSmall) {
-                            Text(formattedLastFourDigits(for: card))
-                            Text(formattedExpiryDate(for: card))
+                            Text(formattedLastFourDigits(for: card)).rythmicoTextStyle(.body)
+                            Text(formattedExpiryDate(for: card)).rythmicoTextStyle(.body)
                         }
-                        .rythmicoFont(.body)
                     }
                     .lineLimit(1)
                     .frame(maxWidth: .infinity, alignment: .leading)

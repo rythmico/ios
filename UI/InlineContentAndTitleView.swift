@@ -11,10 +11,10 @@ struct InlineContentAndTitleView<Content: View>: View {
             content
                 .fixedSize()
             Text(title)
+                .foregroundColor(.rythmicoGray90)
+                .rythmicoTextStyle(bold ? .bodySemibold : .body)
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
-                .rythmicoFont(bold ? .bodySemibold : .body)
-                .foregroundColor(.rythmicoGray90)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
     }

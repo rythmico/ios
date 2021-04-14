@@ -44,7 +44,7 @@ struct StudentDetailsView: View, EditableView, TestableView {
         editingFocus == .none
             ? Text(separator: .whitespace) {
                 "Enter the details of the student who will be learning"
-                instrument.standaloneName.text.rythmicoFont(.bodyBold)
+                instrument.standaloneName.text.rythmicoFontWeight(.bodyBold)
             }
             : nil
     }
@@ -141,7 +141,6 @@ struct StudentDetailsView: View, EditableView, TestableView {
                             ).modifier(RoundedThinOutlineContainer(padded: false))
                         }
                     }
-                    .rythmicoFont(.body)
                     .accentColor(.rythmicoPurple)
                     .padding([.trailing, .bottom], .spacingMedium)
                 }
@@ -149,7 +148,7 @@ struct StudentDetailsView: View, EditableView, TestableView {
 
                 if let action = nextButtonAction {
                     FloatingView {
-                        Button("Next", action: action).primaryStyle()
+                        RythmicoButton("Next", style: RythmicoButtonStyle.primary(), action: action)
                     }
                 }
             }

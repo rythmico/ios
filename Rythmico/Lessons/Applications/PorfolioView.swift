@@ -18,12 +18,10 @@ struct PortfolioView: View {
                 VStack(spacing: .spacingSmall) {
                     HStack(spacing: .spacingSmall) {
                         header("Bio")
-                        ageText(from: portfolio).multilineTextAlignment(.trailing)
+                        ageText(from: portfolio)
                     }
 
                     bio(from: portfolio, scrollingProxy: proxy)
-                        .rythmicoFont(.body)
-                        .lineSpacing(.spacingUnit * 2)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .frame(maxWidth: .spacingMax)
@@ -75,7 +73,7 @@ struct PortfolioView: View {
     @ViewBuilder
     private func header(_ title: String) -> some View {
         Text(title)
-            .rythmicoFont(.subheadlineBold)
+            .rythmicoTextStyle(.subheadlineBold)
             .foregroundColor(.rythmicoForeground)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -83,7 +81,9 @@ struct PortfolioView: View {
     @ViewBuilder
     private func bio(from portfolio: Portfolio, scrollingProxy: ScrollViewProxy) -> some View {
         if portfolio.bio.isBlank {
-            Text("\(tutor.name.firstWord ?? "Tutor") did not add a bio.").foregroundColor(.rythmicoGray30)
+            Text("\(tutor.name.firstWord ?? "Tutor") did not add a bio.")
+                .rythmicoTextStyle(.body)
+                .foregroundColor(.rythmicoGray30)
         } else {
             ExpandableText(
                 content: portfolio.bio,
@@ -93,11 +93,13 @@ struct PortfolioView: View {
         }
     }
 
-    private func ageText(from portfolio: Portfolio) -> Text {
+    private func ageText(from portfolio: Portfolio) -> some View {
         Text(separator: .whitespace) {
-            "Age:".text.rythmicoFont(.body)
-            "\(portfolio.age)".text.rythmicoFont(.bodyBold)
+            "Age:"
+            "\(portfolio.age)".text.rythmicoFontWeight(.bodyBold)
         }
+        .rythmicoTextStyle(.body)
         .foregroundColor(.rythmicoGray90)
+        .multilineTextAlignment(.trailing)
     }
 }

@@ -41,7 +41,7 @@ struct SchedulingView: View, EditableView, TestableView {
     @SpacedTextBuilder
     var subtitle: Text {
         "Enter when you want the"
-        "\(instrument.assimilatedName) lessons".text.rythmicoFont(.bodyBold)
+        "\(instrument.assimilatedName) lessons".text.rythmicoFontWeight(.bodyBold)
         "to commence and for how long"
     }
 
@@ -141,7 +141,7 @@ struct SchedulingView: View, EditableView, TestableView {
                 ZStack(alignment: .bottom) {
                     nextButtonAction.map { action in
                         FloatingView {
-                            Button("Next", action: action).primaryStyle()
+                            RythmicoButton("Next", style: RythmicoButtonStyle.primary(), action: action)
                         }
                         .zIndex(0)
                     }

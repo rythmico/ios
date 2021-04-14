@@ -15,13 +15,13 @@ struct PortfolioTrainingsView: View {
                         VStack(spacing: .spacingUnit) {
                             Text(training.title)
                                 .foregroundColor(.rythmicoGray90)
-                                .rythmicoFont(.bodyBold)
+                                .rythmicoTextStyle(.bodyBold)
                                 .frame(maxWidth: .infinity, alignment: .leading)
 
                             if !training.description.isBlank {
                                 Text(training.description)
                                     .foregroundColor(.rythmicoGray90)
-                                    .rythmicoFont(.callout)
+                                    .rythmicoTextStyle(.callout)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             }
                         }
@@ -29,7 +29,7 @@ struct PortfolioTrainingsView: View {
                         if let duration = training.duration?.description {
                             Text(duration)
                                 .foregroundColor(.rythmicoGray90)
-                                .rythmicoFont(.callout)
+                                .rythmicoTextStyle(.callout)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }

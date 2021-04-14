@@ -9,8 +9,7 @@ struct InfoBanner: View {
                 .renderingMode(.template)
                 .alignmentGuide(.firstTextBaseline) { $0[.bottom] - 3 }
             Text(text)
-                .rythmicoFont(.callout)
-                .lineSpacing(.spacingUnit)
+                .rythmicoTextStyle(.callout)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding(.spacingSmall)

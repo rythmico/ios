@@ -7,9 +7,7 @@ struct PhoneNumberInputView: View {
 
     var body: some View {
         VStack(spacing: .spacingSmall) {
-            contactNumberInstructions
-                .lineLimit(6)
-                .frame(maxWidth: .infinity, alignment: .leading)
+            contactNumberInstructions.frame(maxWidth: .infinity, alignment: .leading)
             VStack(spacing: .spacingExtraSmall) {
                 PhoneNumberField($phoneNumber, inputError: $phoneNumberInputError)
                     .padding(.horizontal, .spacingUnit * 2.5)
@@ -22,14 +20,14 @@ struct PhoneNumberInputView: View {
         .fixedSize(horizontal: false, vertical: true)
     }
 
-    var contactNumberInstructions: Text {
+    var contactNumberInstructions: some View {
         Text(separator: .whitespace) {
             "Enter a contact number of the"
-            "parent/guardian".text.rythmicoFont(.bodyBold)
+            "parent/guardian".text.rythmicoFontWeight(.bodyBold)
             "of the student."
         }
+        .rythmicoTextStyle(.body)
         .foregroundColor(.rythmicoGray90)
-        .rythmicoFont(.body)
     }
 }
 

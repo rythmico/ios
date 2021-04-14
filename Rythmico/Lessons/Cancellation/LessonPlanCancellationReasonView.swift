@@ -36,12 +36,14 @@ extension LessonPlanCancellationView {
                     )
                     .padding(.horizontal, .spacingMedium)
 
-                    SelectableList(Reason.allCases, title: \.title, selection: $selectedReason).rythmicoFont(.body)
+                    SelectableList(data: Reason.allCases, id: \.self, selection: $selectedReason) {
+                        Text($0.title).rythmicoTextStyle(.body).foregroundColor(.rythmicoGray90)
+                    }
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
 
                 FloatingView {
-                    Button("Cancel Lesson Plan", action: submitButtonAction ?? {}).secondaryStyle()
+                    RythmicoButton("Cancel Lesson Plan", style: RythmicoButtonStyle.secondary(), action: submitButtonAction ?? {})
                 }
                 .disabled(submitButtonAction == nil)
             }

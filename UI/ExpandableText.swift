@@ -6,6 +6,7 @@ struct ExpandableText<Expander: View, Collapser: View>: View {
     private var isExpanded = false
 
     var content: String
+    var style: Font.RythmicoTextStyle = .body
     @ViewBuilder
     var expander: Expander
     @ViewBuilder
@@ -18,7 +19,7 @@ struct ExpandableText<Expander: View, Collapser: View>: View {
             VStack(alignment: .leading, spacing: paragraphSpacing) {
                 ForEach(0..<paragraphCount, id: \.self) { index in
                     Text(paragraphs[index])
-                        .lineSpacing(lineSpacing)
+                        .rythmicoTextStyle(style)
                         .transition(
                             .asymmetric(
                                 insertion: .move(edge: .bottom) + .opacity,
@@ -37,8 +38,6 @@ struct ExpandableText<Expander: View, Collapser: View>: View {
     private let paragraphCountWhenCollapsed = 1
     private var paragraphCount: Int { isExpanded ? paragraphs.count : min(paragraphCountWhenCollapsed, paragraphs.count) }
     private var paragraphs: [String] { content.components(separatedBy: "\n\n") }
-
-    private let lineSpacing: CGFloat = .spacingUnit * 2
 
     @ViewBuilder
     private var toggleButton: some View {

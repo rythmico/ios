@@ -23,10 +23,10 @@ extension Pill where Content == AnyView {
         self.init(color: backgroundColor) {
             AnyView(
                 Text(title)
+                    .foregroundColor(titleColor)
+                    .rythmicoTextStyle(.bodyMedium)
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
-                    .rythmicoFont(.bodyMedium)
-                    .foregroundColor(titleColor)
             )
         }
     }

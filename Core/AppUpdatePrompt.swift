@@ -30,26 +30,35 @@ struct AppUpdatePrompt: View {
         NavigationView {
             VStack(spacing: .spacingSmall) {
                 Text("Please download the latest version of \(App.name) to be able to continue.")
-                    .modifier(AppUpdatePromptDescriptionModifier())
+                    .appUpdatePromptDescription()
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                #if RYTHMICO
+                if shouldShowUpdateButton {
+                    RythmicoButton("Update \(App.name)", style: RythmicoButtonStyle.primary()) {
+                        Current.urlOpener.open(method.url(forAppId: appId))
+                    }
+                } else {
+                    RythmicoButton("Download the TestFlight App", style: RythmicoButtonStyle.secondary()) {
+                        Current.urlOpener.open(App.DistributionMethod.appStore.url(forAppId: Const.testFlightAppId))
+                    }
+                }
+                #elseif TUTOR
                 if shouldShowUpdateButton {
                     Button("Update \(App.name)") {
                         Current.urlOpener.open(method.url(forAppId: appId))
-                    }
-                    .primaryStyle()
+                    }.primaryStyle()
                 } else {
                     Button("Download the TestFlight App") {
                         Current.urlOpener.open(App.DistributionMethod.appStore.url(forAppId: Const.testFlightAppId))
-                    }
-                    .secondaryStyle()
+                    }.secondaryStyle()
                 }
+                #endif
             }
             .navigationTitle("Update Required")
             .navigationBarTitleDisplayMode(.large)
             .padding([.horizontal, .bottom], inset)
             .padding(.top, .spacingUnit * 2)
             .multilineTextAlignment(.leading)
-            .lineSpacing(.spacingUnit * 1.5)
         }
         .onEvent(.appInForeground, perform: refreshTestFlightAppInstalledIfNeeded)
     }
@@ -81,20 +90,16 @@ struct AppUpdatePrompt: View {
     }
 }
 
-private struct AppUpdatePromptDescriptionModifier: ViewModifier {
-    #if RYTHMICO
-    func body(content: Content) -> some View {
-        content
-            .rythmicoFont(.body)
+private extension Text {
+    func appUpdatePromptDescription() -> some View {
+        #if RYTHMICO
+        self.rythmicoTextStyle(.body)
             .foregroundColor(.rythmicoGray90)
-    }
-    #elseif TUTOR
-    func body(content: Content) -> some View {
-        content
-            .font(.body)
+        #elseif TUTOR
+        self.font(.body)
             .foregroundColor(.gray)
+        #endif
     }
-    #endif
 }
 
 #if DEBUG

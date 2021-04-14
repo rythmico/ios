@@ -24,20 +24,14 @@ extension SwiftUI.App {
         UINavigationBar.appearance().do { bar in
             UINavigationBarAppearance().do {
                 $0.configureWithOpaqueBackground()
-                $0.largeTitleTextAttributes = [
-                    .foregroundColor: UIColor.rythmicoForeground,
-                    .font: UIFont.rythmicoFont(.largeTitle)
-                ]
-                $0.titleTextAttributes = [
-                    .foregroundColor: UIColor.rythmicoForeground,
-                    .font: UIFont.rythmicoFont(.subheadlineBold)
-                ]
+                $0.largeTitleTextAttributes = .rythmicoTextAttributes(color: .rythmicoForeground, style: .largeTitle)
+                $0.titleTextAttributes = .rythmicoTextAttributes(color: .rythmicoForeground, style: .subheadlineBold)
                 $0.titlePositionAdjustment.vertical = 1
                 $0.shadowColor = nil
 
                 let backIndicatorImage = UIImage(systemSymbol: .chevronLeft).applyingSymbolConfiguration(.init(pointSize: 17, weight: .medium))
                 $0.setBackIndicatorImage(backIndicatorImage, transitionMaskImage: backIndicatorImage)
-                $0.backButtonAppearance.normal.titleTextAttributes = [.font: UIFont.rythmicoFont(.bodyMedium)]
+                $0.backButtonAppearance.normal.titleTextAttributes = .rythmicoTextAttributes(color: nil, style: .bodyMedium)
 
                 bar.standardAppearance = $0
                 bar.compactAppearance = $0
@@ -60,10 +54,7 @@ extension SwiftUI.App {
                     $0.stackedLayoutAppearance
                 ].forEach {
                     $0.normal.iconColor = .rythmicoGray90
-                    $0.normal.titleTextAttributes = [
-                        .font: UIFont.rythmicoFont(.caption),
-                        .foregroundColor: UIColor.rythmicoGray90
-                    ]
+                    $0.normal.titleTextAttributes = .rythmicoTextAttributes(color: .rythmicoGray90, style: .caption)
                 }
                 bar.standardAppearance = $0
             }

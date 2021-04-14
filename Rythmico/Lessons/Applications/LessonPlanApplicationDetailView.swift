@@ -34,8 +34,8 @@ struct LessonPlanApplicationDetailView: View {
 
             FloatingView {
                 VStack(spacing: .spacingUnit * 2) {
-                    Button(bookButtonTitle, action: book).primaryStyle()
-                    frequencyText.lineSpacing(6).multilineTextAlignment(.center)
+                    RythmicoButton(bookButtonTitle, style: RythmicoButtonStyle.primary(), action: book)
+                    frequencyText
                 }
             }
         }
@@ -51,13 +51,14 @@ struct LessonPlanApplicationDetailView: View {
 
     private static let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
     private var frequencyDayText: String { Self.frequencyDayFormatter.string(from: lessonPlan.schedule.startDate) }
-    private var frequencyText: Text {
+    private var frequencyText: some View {
         Text(separator: .whitespace) {
             "Lessons recurring"
-            "every \(frequencyDayText)".text.rythmicoFont(.calloutBold)
+            "every \(frequencyDayText)".text.rythmicoFontWeight(.calloutBold)
         }
+        .rythmicoTextStyle(.callout)
         .foregroundColor(.rythmicoGray90)
-        .rythmicoFont(.callout)
+        .multilineTextAlignment(.center)
     }
 }
 

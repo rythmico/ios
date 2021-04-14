@@ -9,6 +9,7 @@ struct ActionList: View {
     }
 
     private var buttons: [Button]
+    private var textStyle: Font.RythmicoTextStyle = .body
     private var showBottomSeparator: Bool
 
     init(_ buttons: [Button], showBottomSeparator: Bool) {
@@ -26,6 +27,7 @@ struct ActionList: View {
                     SwiftUI.Button(action: buttons[index].action) {
                         HStack(spacing: 0) {
                             Text(buttons[index].title)
+                                .rythmicoTextStyle(textStyle)
                                 .multilineTextAlignment(.leading)
                                 .frame(maxWidth: .infinity, alignment: .leading)
 

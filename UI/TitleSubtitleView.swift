@@ -6,13 +6,14 @@ struct TitleSubtitleView: View {
 
     init(title: String, subtitle: Text? = nil) {
         self.title = title
-        self.subtitle = subtitle?.foregroundColor(.rythmicoGray90).rythmicoFont(.body)
+        self.subtitle = subtitle
     }
 
     var body: some View {
         TitleContentView(title: title) {
-            subtitle
-                .lineSpacing(6)
+            subtitle?
+                .rythmicoTextStyle(.body)
+                .foregroundColor(.rythmicoGray90)
                 .transition(.offset(y: -50) + .opacity)
         }
     }

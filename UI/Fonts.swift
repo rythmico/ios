@@ -1,14 +1,23 @@
 import SwiftUI
+import FoundationSugar
 
-extension View {
-    func rythmicoFont(_ style: Font.RythmicoTextStyle) -> some View {
-        font(.rythmico(style))
+extension Text {
+    func rythmicoTextStyle(_ style: Font.RythmicoTextStyle) -> some View {
+        self.font(.rythmico(style))
+            .tracking(style.tracking)
+            .lineSpacing(style.lineSpacing)
     }
 }
 
 extension Text {
-    func rythmicoFont(_ style: Font.RythmicoTextStyle) -> Text {
-        font(.rythmico(style))
+    func rythmicoFontWeight(_ style: Font.RythmicoTextStyle) -> Text {
+        self.fontWeight(style.weight)
+    }
+}
+
+extension Image {
+    func rythmicoFont(_ style: Font.RythmicoTextStyle) -> some View {
+        self.font(.rythmico(style))
     }
 }
 
@@ -18,9 +27,9 @@ extension Font {
             static let notoSansJP = "Noto Sans JP"
         }
 
-        case largeTitle         // 32px Bold
-        case headline           // 20px Bold
-        case subheadlineBold    // 18px Bold
+        case largeTitle         // 32px Black
+        case headline           // 20px Black
+        case subheadlineBold    // 18px Black
         case subheadline        // 18px Regular
         case bodyBold           // 16px Bold
         case bodySemibold       // 16px Semibold
@@ -53,9 +62,9 @@ extension Font {
 
         private var regularWeight: Font.Weight {
             switch self {
-            case .largeTitle: return .bold
-            case .headline: return .bold
-            case .subheadlineBold: return .bold
+            case .largeTitle: return .black
+            case .headline: return .black
+            case .subheadlineBold: return .black
             case .subheadline: return .regular
             case .bodyBold: return .bold
             case .bodySemibold: return .semibold
@@ -69,8 +78,46 @@ extension Font {
             }
         }
 
-        fileprivate var weight: Font.Weight {
+        var weight: Font.Weight {
             UIAccessibility.isBoldTextEnabled ? regularWeight.bolder : regularWeight
+        }
+
+        var tracking: CGFloat {
+            switch self {
+            case .largeTitle:
+                return -0.8
+            case .headline, .subheadlineBold, .subheadline:
+                return -0.2
+            case .bodyBold, .bodySemibold, .bodyMedium, .body:
+                return 0
+            case .calloutBold, .callout:
+                return 0
+            case .footnoteBold, .footnote:
+                return 0
+            case .caption:
+                return 0.4
+            }
+        }
+
+        var lineSpacing: CGFloat {
+            switch self {
+            case .largeTitle,
+                 .headline,
+                 .subheadlineBold,
+                 .subheadline,
+                 .bodyBold,
+                 .bodySemibold,
+                 .bodyMedium,
+                 .body:
+                return .spacingUnit
+            case .calloutBold,
+                 .callout:
+                return .spacingUnit / 2
+            case .footnoteBold,
+                 .footnote,
+                 .caption:
+                return .spacingUnit
+            }
         }
     }
 }
@@ -96,6 +143,19 @@ extension Font {
     }
 }
 
+extension Dictionary where Key == NSAttributedString.Key, Value == Any {
+    @DictionaryBuilder<Key, Value>
+    static func rythmicoTextAttributes(color: UIColor?, style: Font.RythmicoTextStyle) -> Self {
+        [.foregroundColor: color].compact()
+        [.font: UIFont.rythmicoFont(style)]
+        [.tracking: style.tracking]
+        [.paragraphStyle: NSMutableParagraphStyle().with {
+            $0.lineSpacing = style.lineSpacing
+            $0.paragraphSpacing = .spacingSmall
+        }]
+    }
+}
+
 extension UIFont {
     static func rythmicoFont(_ style: Font.RythmicoTextStyle) -> UIFont {
         UIFontMetrics(forTextStyle: .largeTitle).scaledFont(
@@ -103,7 +163,7 @@ extension UIFont {
                 descriptor: UIFontDescriptor(
                     fontAttributes: [
                         .family: Font.RythmicoTextStyle.FamilyName.notoSansJP,
-                        .traits: [ UIFontDescriptor.TraitKey.weight: Weight(style.weight).rawValue ]
+                        .traits: [ UIFontDescriptor.TraitKey.weight: Weight(style.weight).rawValue ],
                     ]
                 ),
                 size: style.regularSize

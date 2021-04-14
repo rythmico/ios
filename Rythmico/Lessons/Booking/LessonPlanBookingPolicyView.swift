@@ -12,12 +12,11 @@ struct LessonPlanBookingPolicyView: View {
                 .foregroundColor(.rythmicoPurple)
             VStack(alignment: .leading, spacing: .spacingUnit / 2) {
                 Text(title)
-                    .rythmicoFont(.calloutBold)
+                    .rythmicoTextStyle(.calloutBold)
                     .foregroundColor(.rythmicoForeground)
                 Text(description)
-                    .rythmicoFont(.callout)
+                    .rythmicoTextStyle(.callout)
                     .foregroundColor(.rythmicoGray90)
-                    .lineSpacing(.spacingUnit / 2)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }

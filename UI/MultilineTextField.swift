@@ -2,6 +2,14 @@ import SwiftUI
 import SFSafeSymbols
 import Then
 
+extension NSAttributedString {
+    typealias Attributes = [Key: Any]
+}
+
+extension NSAttributedString.Attributes {
+    var font: UIFont? { self[.font] as? UIFont }
+}
+
 private struct UITextViewWrapper: UIViewRepresentable {
     final class UITextViewPrimitive: UITextView {
         override func caretRect(for position: UITextPosition) -> CGRect {
@@ -12,10 +20,10 @@ private struct UITextViewWrapper: UIViewRepresentable {
     }
 
     var placeholder: String
-    @Binding var text: String
-    var font: UIFont?
+    @Binding
+    var text: String
+    var attributes: NSAttributedString.Attributes
     var accentColor: UIColor?
-    var textColor: UIColor
     var inputAccessory: CustomTextFieldInputAccessory?
     var minHeight: CGFloat
     @Binding var calculatedHeight: CGFloat
@@ -26,6 +34,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
         let textField = UITextViewPrimitive()
         textField.delegate = context.coordinator
 
+        textField.attributedText = NSAttributedString(string: text, attributes: attributes)
         textField.font = fontOrDefaultFont
         textField.isEditable = true
         textField.isSelectable = true
@@ -45,15 +54,14 @@ private struct UITextViewWrapper: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: UITextView, context: Context) {
-        if uiView.rythmicoText != text {
-            uiView.setRythmicoText(text, font: fontOrDefaultFont, color: textColor)
+        if uiView.attributedText.string != text {
+            uiView.attributedText = NSAttributedString(string: text, attributes: attributes)
         }
-        uiView.font = font ?? .preferredFont(forTextStyle: .body)
+        uiView.font = fontOrDefaultFont
         UITextViewWrapper.recalculateHeight(
             view: uiView,
             placeholder: placeholder,
-            font: fontOrDefaultFont,
-            textColor: textColor,
+            attributes: attributes,
             minHeight: minHeight,
             result: $calculatedHeight
         )
@@ -62,14 +70,13 @@ private struct UITextViewWrapper: UIViewRepresentable {
     private static func recalculateHeight(
         view: UITextView,
         placeholder: String,
-        font: UIFont,
-        textColor: UIColor,
+        attributes: NSAttributedString.Attributes,
         minHeight: CGFloat,
         result: Binding<CGFloat>
     ) {
         let oldText = view.text
-        if view.rythmicoText.isEmpty {
-            view.setRythmicoText(placeholder, font: font, color: textColor)
+        if view.attributedText.string.isEmpty {
+            view.attributedText = NSAttributedString(string: placeholder, attributes: attributes)
         }
         let newSize = view.sizeThatFits(CGSize(width: view.frame.size.width, height: CGFloat.greatestFiniteMagnitude))
         let newHeight = max(minHeight, newSize.height)
@@ -82,7 +89,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
     }
 
     private var fontOrDefaultFont: UIFont {
-        font ?? .preferredFont(forTextStyle: .body)
+        attributes.font ?? .preferredFont(forTextStyle: .body)
     }
 
     private var accentColorOrDefault: UIColor {
@@ -93,8 +100,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
         Coordinator(
             placeholder: placeholder,
             text: $text,
-            font: fontOrDefaultFont,
-            textColor: textColor,
+            attributes: attributes,
             minHeight: minHeight,
             height: $calculatedHeight,
             onEditingChanged: onEditingChanged
@@ -104,8 +110,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
     final class Coordinator: NSObject, UITextViewDelegate {
         var placeholder: String
         var text: Binding<String>
-        var font: UIFont
-        var textColor: UIColor
+        var attributes: NSAttributedString.Attributes
         var minHeight: CGFloat
         var calculatedHeight: Binding<CGFloat>
         var onEditingChanged: (Bool) -> Void
@@ -113,16 +118,14 @@ private struct UITextViewWrapper: UIViewRepresentable {
         init(
             placeholder: String,
             text: Binding<String>,
-            font: UIFont,
-            textColor: UIColor,
+            attributes: NSAttributedString.Attributes,
             minHeight: CGFloat,
             height: Binding<CGFloat>,
             onEditingChanged: @escaping (Bool) -> Void
         ) {
             self.placeholder = placeholder
             self.text = text
-            self.font = font
-            self.textColor = textColor
+            self.attributes = attributes
             self.minHeight = minHeight
             self.calculatedHeight = height
             self.onEditingChanged = onEditingChanged
@@ -133,8 +136,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
             UITextViewWrapper.recalculateHeight(
                 view: uiView,
                 placeholder: placeholder,
-                font: font,
-                textColor: textColor,
+                attributes: attributes,
                 minHeight: minHeight,
                 result: calculatedHeight
             )
@@ -153,9 +155,8 @@ private struct UITextViewWrapper: UIViewRepresentable {
 struct MultilineTextField: View {
     private var placeholder: String
     private var minHeight: CGFloat
-    private var font: UIFont?
+    private var attributes: NSAttributedString.Attributes
     private var accentColor: UIColor?
-    private var textColor: UIColor?
     private var placeholderColor: Color?
     private var inputAccessory: CustomTextFieldInputAccessory?
     private var padding: EdgeInsets
@@ -180,9 +181,8 @@ struct MultilineTextField: View {
     init(
         _ placeholder: String = "",
         text: Binding<String>,
-        font: UIFont?,
+        attributes: NSAttributedString.Attributes,
         accentColor: UIColor?,
-        textColor: UIColor?,
         placeholderColor: Color?,
         inputAccessory: CustomTextFieldInputAccessory?,
         minHeight: CGFloat? = nil,
@@ -191,9 +191,8 @@ struct MultilineTextField: View {
     ) {
         self.placeholder = placeholder
         self._text = text
-        self.font = font
+        self.attributes = attributes
         self.accentColor = accentColor
-        self.textColor = textColor
         self.placeholderColor = placeholderColor
         self.inputAccessory = inputAccessory
         self.minHeight = minHeight ?? 0
@@ -206,9 +205,8 @@ struct MultilineTextField: View {
         UITextViewWrapper(
             placeholder: placeholder,
             text: internalText,
-            font: font,
+            attributes: attributes,
             accentColor: accentColor,
-            textColor: textColor ?? .label,
             inputAccessory: inputAccessory,
             minHeight: minHeight,
             calculatedHeight: $dynamicHeight,
@@ -240,24 +238,6 @@ struct MultilineTextField: View {
     }
 
     private var fontOrDefaultFont: UIFont {
-        font ?? .preferredFont(forTextStyle: .body)
-    }
-}
-
-private extension UITextView {
-    var rythmicoText: String { attributedText.string }
-
-    func setRythmicoText(_ string: String, font: UIFont, color: UIColor) {
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.paragraphSpacing = .spacingSmall
-
-        attributedText = NSAttributedString(
-            string: string,
-            attributes: [
-                .paragraphStyle: paragraphStyle,
-                .font: font,
-                .foregroundColor: color,
-            ]
-        )
+        attributes.font ?? .preferredFont(forTextStyle: .body)
     }
 }

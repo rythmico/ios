@@ -30,11 +30,10 @@ struct AddNewCardView: View {
                         Spacer()
 
                         HStack(spacing: .spacingUnit * 2) {
-                            Image(systemSymbol: .lockFill)
-                            Text("Your payment info is stored securely.")
+                            Image(systemSymbol: .lockFill).rythmicoFont(.footnoteBold)
+                            Text("Your payment info is stored securely.").rythmicoTextStyle(.footnoteBold)
                         }
                         .foregroundColor(.rythmicoGray90)
-                        .rythmicoFont(.footnoteBold)
                     }
                     .padding([.horizontal, .bottom], .spacingMedium)
                 }
@@ -45,7 +44,7 @@ struct AddNewCardView: View {
                     coordinator: coordinator
                 ) { action in
                     FloatingView {
-                        Button("Save Card", action: action).primaryStyle()
+                        RythmicoButton("Save Card", style: RythmicoButtonStyle.primary(), action: action)
                     }
                 }
                 .disabled(!confirmButtonEnabled)
@@ -63,7 +62,7 @@ struct AddNewCardView: View {
     @SpacedTextBuilder
     var subtitle: Text {
         "Enter"
-        "credit/debit card".text.rythmicoFont(.bodyBold)
+        "credit/debit card".text.rythmicoFontWeight(.bodyBold)
         "details to setup payment for the lesson plan."
     }
 

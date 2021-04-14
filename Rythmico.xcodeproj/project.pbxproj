@@ -500,7 +500,6 @@
 		D5D9AE4425335B0400A0ABCC /* StripeCardDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE4325335B0400A0ABCC /* StripeCardDetails.swift */; };
 		D5D9AE4F253367A100A0ABCC /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE4E253367A100A0ABCC /* Divider.swift */; };
 		D5D9AE572533764D00A0ABCC /* AddNewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE562533764D00A0ABCC /* AddNewCardView.swift */; };
-		D5D9AE5C2533865D00A0ABCC /* Button+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE5B2533865D00A0ABCC /* Button+Sugar.swift */; };
 		D5D9AE632533866200A0ABCC /* Button+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE5B2533865D00A0ABCC /* Button+Sugar.swift */; };
 		D5D9AE682533ADA400A0ABCC /* Checkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE672533ADA400A0ABCC /* Checkout.swift */; };
 		D5D9AE712534CAF000A0ABCC /* CheckoutDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE702534CAF000A0ABCC /* CheckoutDoubles.swift */; };
@@ -2929,7 +2928,6 @@
 				035B1D14249E565200AABFEA /* TestableView.swift in Sources */,
 				D54317F423FDB0DD00CB1493 /* RequestLessonPlanContext.swift in Sources */,
 				D5AC9E26254D8AD7003A8197 /* AppDoubles.swift in Sources */,
-				D5D9AE5C2533865D00A0ABCC /* Button+Sugar.swift in Sources */,
 				D50158AF2538BFDD005E02FA /* CardSetupCredentialDoubles.swift in Sources */,
 				033D47D6247ABF6B0096C50F /* LessonPlanEndpoints.swift in Sources */,
 				D5F5068C24046B1400CA4094 /* Spacing.swift in Sources */,

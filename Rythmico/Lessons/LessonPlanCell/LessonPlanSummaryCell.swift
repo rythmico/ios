@@ -51,13 +51,13 @@ struct LessonPlanSummaryCellMainContent: View {
         Button(action: { Current.state.lessonsContext.viewingLessonPlan = lessonPlan }) {
             VStack(alignment: .leading, spacing: 0) {
                 Text(title)
+                    .rythmicoTextStyle(.subheadlineBold)
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
-                    .rythmicoFont(.subheadlineBold)
                     .foregroundColor(lessonPlan.status.isCancelled ? .rythmicoGray90 : .rythmicoForeground)
                 VSpacing(.spacingUnit * 2)
                 Text(subtitle)
-                    .rythmicoFont(.body)
+                    .rythmicoTextStyle(.body)
                     .foregroundColor(.rythmicoGray90)
                 VSpacing(.spacingExtraSmall)
                 HStack(spacing: .spacingExtraSmall) {
@@ -83,7 +83,7 @@ struct LessonPlanSummaryCellAccessory: View {
             Button(action: { Current.state.lessonsContext.reviewingLessonPlan = lessonPlan }) {
                 HStack(spacing: .spacingExtraSmall) {
                     Text("Review Tutors")
-                        .rythmicoFont(.body)
+                        .rythmicoTextStyle(.body)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Image(systemSymbol: .chevronRight)
                         .font(.system(size: 18, weight: .regular, design: .rounded))
