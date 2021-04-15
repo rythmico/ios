@@ -55,6 +55,7 @@ extension SwiftUI.App {
                 ].forEach {
                     $0.normal.iconColor = .rythmicoGray90
                     $0.normal.titleTextAttributes = .rythmicoTextAttributes(color: .rythmicoGray90, style: .caption)
+                    $0.selected.titleTextAttributes = .rythmicoTextAttributes(color: nil, style: .caption)
                 }
                 bar.standardAppearance = $0
             }
