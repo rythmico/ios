@@ -1,5 +1,4 @@
 import SwiftUI
-import TextBuilder
 
 struct BookingRequestApplyView: View {
     @Environment(\.presentationMode)
