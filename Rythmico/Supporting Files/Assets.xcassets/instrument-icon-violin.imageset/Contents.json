@@ -1,7 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "rythmico-violin-icon.svg",
+      "filename" : "Violin.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Violin-1.svg",
       "idiom" : "universal"
     }
   ],

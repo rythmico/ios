@@ -10,9 +10,8 @@ struct InstrumentViewData {
 struct InstrumentView: View {
     private let viewData: InstrumentViewData
 
-//    @ScaledMetric(relativeTo: .largeTitle)
-    private var iconWidth = .spacingUnit * 10 // TODO: remove
-//    private var iconWidth = .spacingUnit * 18
+    @ScaledMetric(relativeTo: .largeTitle)
+    private var iconWidth = .spacingUnit * 18
 
     init(viewData: InstrumentViewData) {
         self.viewData = viewData
@@ -28,16 +27,12 @@ struct InstrumentView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
 
                 Image(decorative: viewData.icon.name)
-                    .renderingMode(.template) // TODO: remove
-//                    .renderingMode(.original)
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fit)
+                    .renderingMode(.original)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: iconWidth, alignment: .center)
-                    .padding(.vertical, .spacingSmall) // TODO: remove
-//                    .padding(.vertical, .spacingUnit * 2)
-                    .padding(.trailing, .spacingSmall) // TODO: remove
-//                    .padding(.trailing, .spacingExtraSmall)
-                    .foregroundColor(.rythmicoForeground) // TODO: remove
+                    .padding(.vertical, .spacingUnit * 2)
+                    .padding(.trailing, .spacingExtraSmall)
             }
         }
         .frame(minHeight: 70)
