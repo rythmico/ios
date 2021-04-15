@@ -3761,8 +3761,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-nonempty";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.1;
 			};
 		};
 		D5F4D3DC24F031FA000E8580 /* XCRemoteSwiftPackageReference "swiftui-mapview" */ = {
