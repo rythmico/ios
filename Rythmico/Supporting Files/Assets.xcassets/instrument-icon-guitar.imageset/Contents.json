@@ -1,7 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "rythmico-guitar-icon.svg",
+      "filename" : "Guitar.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Guitar-white.svg",
       "idiom" : "universal"
     }
   ],

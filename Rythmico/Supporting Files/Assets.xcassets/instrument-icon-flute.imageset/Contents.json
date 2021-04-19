@@ -1,7 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "rythmico-flute-icon.svg",
+      "filename" : "Flute.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Flute-white.svg",
       "idiom" : "universal"
     }
   ],

@@ -1,7 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "rythmico-drums-icon.svg",
+      "filename" : "Drums.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Drums-white.svg",
       "idiom" : "universal"
     }
   ],

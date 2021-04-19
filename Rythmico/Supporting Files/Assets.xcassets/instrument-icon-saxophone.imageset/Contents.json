@@ -1,7 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "rythmico-saxophone-icon.svg",
+      "filename" : "Saxo.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Saxo-white.svg",
       "idiom" : "universal"
     }
   ],

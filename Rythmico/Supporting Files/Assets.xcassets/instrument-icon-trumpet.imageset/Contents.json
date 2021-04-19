@@ -1,7 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "rythmico-trumpet-icon.svg",
+      "filename" : "Trumpet.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Trumpet-white.svg",
       "idiom" : "universal"
     }
   ],
