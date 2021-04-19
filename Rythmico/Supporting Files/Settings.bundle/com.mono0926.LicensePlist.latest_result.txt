@@ -46,7 +46,7 @@ name: swiftui-mapview, nameSpecified: SwiftUIMapView, owner: sgade, version: 1.2
 
 name: SwiftUI-WebView, nameSpecified: WebView, owner: kylehickinson, version: 0.3.0
 
-name: TextBuilder, nameSpecified: TextBuilder, owner: davdroman, version: 1.0.0
+name: TextBuilder, nameSpecified: TextBuilder, owner: davdroman, version: 1.0.1
 
 name: Then, nameSpecified: Then, owner: devxoul, version: 2.7.0
 
