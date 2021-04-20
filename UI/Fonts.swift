@@ -46,11 +46,11 @@ extension Font {
             case .largeTitle:
                 return 32
             case .headline:
-                return 20
+                return 22
             case .subheadlineBold, .subheadline:
                 return 18
             case .bodyBold, .bodySemibold, .bodyMedium, .body:
-                return 16
+                return 17
             case .calloutBold, .callout:
                 return 14
             case .footnoteBold, .footnote:
@@ -85,11 +85,11 @@ extension Font {
         var tracking: CGFloat {
             switch self {
             case .largeTitle:
-                return -0.8
+                return -1
             case .headline, .subheadlineBold, .subheadline:
-                return -0.2
+                return -0.4
             case .bodyBold, .bodySemibold, .bodyMedium, .body:
-                return 0
+                return -0.4
             case .calloutBold, .callout:
                 return 0
             case .footnoteBold, .footnote:
