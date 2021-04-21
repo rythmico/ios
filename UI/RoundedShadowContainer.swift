@@ -11,6 +11,7 @@ struct RoundedShadowContainer: ViewModifier {
 
     func body(content: Content) -> some View {
         content
+            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
             .background(background)
             .opacity(isEnabled ? 1 : 0.75)
     }
