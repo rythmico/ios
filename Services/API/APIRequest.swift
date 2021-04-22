@@ -29,12 +29,10 @@ protocol RythmicoAPIRequest: AuthorizedAPIRequest, DecodableJSONRequest {}
 
 extension RythmicoAPIRequest {
     #if DEBUG
-    var host: String { "rythmico-dev.web.app" }
+    var baseURL: URL { "https://rythmico-dev.web.app/v1" }
     #else
-    var host: String { "rythmico-prod.web.app" }
+    var baseURL: URL { "https://rythmico-prod.web.app/v1" }
     #endif
-
-    var pathPrefix: String { "/v1" }
 
     var decoder: Decoder {
         JSONDecoder().with(\.dateDecodingStrategy, .secondsSince1970)
