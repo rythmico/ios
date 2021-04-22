@@ -29,3 +29,9 @@ extension URL {
         try URL(string: absoluteString.replacingOccurrences(of: "://", with: ":")) !! Error.schemeDoubleSlashRemovalFailed
     }
 }
+
+extension URL: ExpressibleByStringLiteral {
+    public init(stringLiteral value: String) {
+        self = URL(string: value) !! preconditionFailure("Invalid URL with string: '\(value)'")
+    }
+}
