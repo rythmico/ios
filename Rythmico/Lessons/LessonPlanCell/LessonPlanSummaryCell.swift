@@ -62,7 +62,7 @@ struct LessonPlanSummaryCellMainContent: View {
                 VSpacing(.spacingExtraSmall)
                 HStack(spacing: .spacingExtraSmall) {
                     InlineContentAndTitleView(status: lessonPlan.status, summarized: true)
-                    Pill.statusPillForLessonPlan(lessonPlan)
+                    Pill(lessonPlan: lessonPlan)
                 }
             }
             .padding(.spacingMedium)
@@ -82,15 +82,16 @@ struct LessonPlanSummaryCellAccessory: View {
 
             Button(action: { Current.state.lessonsContext.reviewingLessonPlan = lessonPlan }) {
                 HStack(spacing: .spacingExtraSmall) {
-                    Text("Review Tutors")
-                        .rythmicoTextStyle(.body)
+                    Text("Proceed to Booking")
+                        .rythmicoTextStyle(.bodySemibold)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Image(systemSymbol: .chevronRight)
-                        .font(.system(size: 18, weight: .regular, design: .rounded))
+                        .font(.system(size: 18, weight: .medium, design: .rounded))
                 }
                 .padding(.spacingMedium)
-                .foregroundColor(.rythmicoGray90)
+                .foregroundColor(.rythmicoPurple)
             }
+            .background(Color.rythmicoPurple.opacity(0.02))
         }
     }
 }
