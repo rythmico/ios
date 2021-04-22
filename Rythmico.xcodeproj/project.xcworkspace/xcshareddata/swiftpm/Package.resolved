@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/davdroman/APIKit",
         "state": {
           "branch": "davdroman-improvements",
-          "revision": "09366bb42dc79c3b42ae8fa35f143a794daf84e5",
+          "revision": "d966afca00887f729b63eaee5ed9fc5a621b2aa4",
           "version": null
         }
       },
@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/firebase/firebase-ios-sdk",
         "state": {
           "branch": null,
-          "revision": "e73fdb6b83b489d3b037085e04a8381f14d7f009",
-          "version": "7.10.0"
+          "revision": "c6328a01c4db4c5dfd5ce0159a48a129ef6f4505",
+          "version": "7.11.0"
         }
       },
       {
@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/google/GoogleAppMeasurement.git",
         "state": {
           "branch": null,
-          "revision": "184d93b7790caa8b8368794c030c3aeb10d42e25",
-          "version": "7.10.0"
+          "revision": "7a263c22915db6e421dbf84bd3b4367a870588d9",
+          "version": "7.11.0"
         }
       },
       {
@@ -105,8 +105,8 @@
         "repositoryURL": "https://github.com/mixpanel/mixpanel-swift",
         "state": {
           "branch": null,
-          "revision": "207a6dfefc4aa323ec920d8f47e9da8737206bc0",
-          "version": "2.9.2"
+          "revision": "5db72735f28b072defa54506280ab7a8751a66a2",
+          "version": "2.9.3"
         }
       },
       {
