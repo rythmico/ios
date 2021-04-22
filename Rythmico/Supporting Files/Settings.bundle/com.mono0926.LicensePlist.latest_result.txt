@@ -6,9 +6,9 @@ name: boringssl-SwiftPM, nameSpecified: BoringSSL-GRPC, owner: firebase, version
 
 name: EnumKit, nameSpecified: EnumKit, owner: gringoireDM, version: 1.1.3
 
-name: firebase-ios-sdk, nameSpecified: Firebase, owner: firebase, version: 7.10.0
+name: firebase-ios-sdk, nameSpecified: Firebase, owner: firebase, version: 7.11.0
 
-name: GoogleAppMeasurement, nameSpecified: GoogleAppMeasurement, owner: google, version: 7.10.0
+name: GoogleAppMeasurement, nameSpecified: GoogleAppMeasurement, owner: google, version: 7.11.0
 
 name: GoogleDataTransport, nameSpecified: GoogleDataTransport, owner: google, version: 8.4.0
 
@@ -20,7 +20,7 @@ name: gtm-session-fetcher, nameSpecified: GTMSessionFetcher, owner: google, vers
 
 name: leveldb, nameSpecified: leveldb, owner: firebase, version: 1.22.2
 
-name: mixpanel-swift, nameSpecified: Mixpanel, owner: mixpanel, version: 2.9.2
+name: mixpanel-swift, nameSpecified: Mixpanel, owner: mixpanel, version: 2.9.3
 
 name: MultiModal, nameSpecified: MultiModal, owner: davdroman, version: 2.0.1
 
@@ -58,4 +58,4 @@ name: youtube-ios-player-helper, nameSpecified: YouTubeiOSPlayerHelper, owner: i
 
 add-version-numbers: true
 
-LicensePlist Version: 3.0.5
+LicensePlist Version: 3.0.7
