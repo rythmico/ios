@@ -37,7 +37,7 @@ struct ReviewRequestView: View, TestableView {
                         SectionHeaderContentView(
                             title: "Instrument",
                             padding: Const.headerPadding,
-                            accessory: editButton(performing: editInstrument)
+                            accessory: editButton(performing: resetInstrument)
                         ) {
                             InstrumentView(
                                 viewData: .init(name: instrument.standaloneName, icon: instrument.icon, action: nil)
@@ -48,7 +48,7 @@ struct ReviewRequestView: View, TestableView {
                             title: "Student Details",
                             alignment: .leading,
                             padding: Const.headerPadding,
-                            accessory: editButton(performing: editStudentDetails)
+                            accessory: editButton(performing: resetStudentDetails)
                         ) {
                             HStack(alignment: .firstTextBaseline, spacing: .spacingExtraSmall) {
                                 Image(decorative: Asset.iconInfo.name)
@@ -67,7 +67,7 @@ struct ReviewRequestView: View, TestableView {
                         SectionHeaderContentView(
                             title: "Address Details",
                             padding: Const.headerPadding,
-                            accessory: editButton(performing: editAddressDetails)
+                            accessory: editButton(performing: resetAddressDetails)
                         ) {
                             AddressItemView(
                                 title: address.condensedFormattedString,
@@ -79,7 +79,7 @@ struct ReviewRequestView: View, TestableView {
                             title: "Lesson Schedule",
                             alignment: .leading,
                             padding: Const.headerPadding,
-                            accessory: editButton(performing: editSchedule)
+                            accessory: editButton(performing: resetSchedule)
                         ) {
                             ScheduleDetailsView(schedule, tutor: nil)
                         }
@@ -89,7 +89,7 @@ struct ReviewRequestView: View, TestableView {
                                 title: "Private Note",
                                 alignment: .leading,
                                 padding: Const.headerPadding,
-                                accessory: editButton(performing: editPrivateNote)
+                                accessory: editButton(performing: resetPrivateNote)
                             ) {
                                 Text(privateNote)
                                     .rythmicoTextStyle(.body)
@@ -116,11 +116,11 @@ struct ReviewRequestView: View, TestableView {
         }
     }
 
-    private func editInstrument() { flow.instrument = nil }
-    private func editStudentDetails() { flow.student = nil }
-    private func editAddressDetails() { flow.address = nil }
-    private func editSchedule() { flow.schedule = nil }
-    private func editPrivateNote() { flow.privateNote = nil }
+    private func resetInstrument() { flow.instrument = nil }
+    private func resetStudentDetails() { flow.student = nil }
+    private func resetAddressDetails() { flow.address = nil }
+    private func resetSchedule() { flow.schedule = nil }
+    private func resetPrivateNote() { flow.privateNote = nil }
 
     private var studentDetails: String {
         [
