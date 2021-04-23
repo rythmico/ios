@@ -2,39 +2,19 @@ import SwiftUI
 import Combine
 
 final class RootViewFlow: Flow {
-    enum Step: CaseIterable, Numbered, Countable {
+    enum Step: FlowStep, CaseIterable {
         case onboarding
         case mainView
     }
 
-    private let userCredentialProvider: UserCredentialProviderBase
-    private var cancellable: AnyCancellable?
+    @Published private(set) var step: Step
 
-    init(
-        userCredentialProvider: UserCredentialProviderBase = Current.userCredentialProvider
-    ) {
-        self.userCredentialProvider = userCredentialProvider
-
-        cancellable = userCredentialProvider.$userCredential
-            .map { $0 != nil }
-            .map(stepForState)
-            .removeDuplicates()
-            .scan((previousStep, currentStep), { ($0.1, $1) })
-            .sink { [self] previous, current in
-                previousStep = previous
-                currentStep = current
-            }
-    }
-
-    private func stepForState(isAuthenticated: Bool) -> Step {
-        switch (isAuthenticated) {
-        case false:
-            return .onboarding
-        case true:
-            return .mainView
+    init(userCredentialProvider provider: UserCredentialProviderBase = Current.userCredentialProvider) {
+        func step(for user: UserCredentialProtocol?) -> Step {
+            user == nil ? .onboarding : .mainView
         }
-    }
 
-    @Published private(set) var previousStep: Step?
-    @Published private(set) var currentStep: Step = .onboarding
+        self.step = step(for: provider.userCredential)
+        provider.$userCredential.map(step).assign(to: &$step)
+    }
 }
