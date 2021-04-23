@@ -67,12 +67,21 @@ extension RequestLessonPlanContext {
         return .reviewRequest(instrument, student, address, schedule, privateNote)
     }
 
-    func unwindLatestStep() {
-        if privateNote.nilifyIfSome() { return }
-        if schedule.nilifyIfSome() { return }
-        if address.nilifyIfSome() { return }
-        if student.nilifyIfSome() { return }
-        if instrument.nilifyIfSome() { return }
+    func back() {
+        switch step {
+        case .instrumentSelection:
+            break
+        case .studentDetails:
+            instrument = nil
+        case .addressDetails:
+            student = nil
+        case .scheduling:
+            address = nil
+        case .privateNote:
+            schedule = nil
+        case .reviewRequest:
+            privateNote = nil
+        }
     }
 }
 

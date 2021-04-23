@@ -30,7 +30,7 @@ struct RequestLessonPlanFormView: View, TestableView {
 
     func back() {
         Current.keyboardDismisser.dismissKeyboard()
-        context.unwindLatestStep()
+        context.back()
     }
 
     func dismiss() {
