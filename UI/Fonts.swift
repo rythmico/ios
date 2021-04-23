@@ -27,9 +27,9 @@ extension Font {
             static let dmSans = "DM Sans"
         }
 
-        case largeTitle         // 32px Black
-        case headline           // 20px Black
-        case subheadlineBold    // 18px Black
+        case largeTitle         // 32px Bold
+        case headline           // 20px Bold
+        case subheadlineBold    // 18px Bold
         case subheadline        // 18px Regular
         case bodyBold           // 16px Bold
         case bodySemibold       // 16px Semibold
@@ -46,11 +46,11 @@ extension Font {
             case .largeTitle:
                 return 32
             case .headline:
-                return 22
+                return 20
             case .subheadlineBold, .subheadline:
                 return 18
             case .bodyBold, .bodySemibold, .bodyMedium, .body:
-                return 17
+                return 16
             case .calloutBold, .callout:
                 return 14
             case .footnoteBold, .footnote:
@@ -62,9 +62,9 @@ extension Font {
 
         private var regularWeight: Font.Weight {
             switch self {
-            case .largeTitle: return .black
-            case .headline: return .black
-            case .subheadlineBold: return .black
+            case .largeTitle: return .bold
+            case .headline: return .bold
+            case .subheadlineBold: return .bold
             case .subheadline: return .regular
             case .bodyBold: return .bold
             case .bodySemibold: return .semibold
@@ -85,9 +85,11 @@ extension Font {
         var tracking: CGFloat {
             switch self {
             case .largeTitle:
-                return -1
-            case .headline, .subheadlineBold, .subheadline:
-                return -0.4
+                return -0.8
+            case .headline:
+                return -0.2
+            case .subheadlineBold, .subheadline:
+                return -0.2
             case .bodyBold, .bodySemibold, .bodyMedium, .body:
                 return -0.4
             case .calloutBold, .callout:
