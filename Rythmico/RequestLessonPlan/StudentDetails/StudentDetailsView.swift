@@ -27,8 +27,7 @@ struct StudentDetailsView: View, EditableView, TestableView {
     var instrument: Instrument
     @ObservedObject
     var state: ViewState
-    @Binding
-    var student: Student?
+    var setter: Binding<Student>.Setter
 
     // MARK: - Subtitle -
     var subtitle: Text? {
@@ -84,10 +83,12 @@ struct StudentDetailsView: View, EditableView, TestableView {
         }
 
         return {
-            student = Student(
-                name: name,
-                dateOfBirth: dateOfBirth,
-                about: sanitizedAbout
+            setter(
+                Student(
+                    name: name,
+                    dateOfBirth: dateOfBirth,
+                    about: sanitizedAbout
+                )
             )
         }
     }
@@ -173,7 +174,7 @@ struct StudentDetailsView_Preview: PreviewProvider {
         return StudentDetailsView(
             instrument: .piano,
             state: state,
-            student: .constant(nil)
+            setter: { _ in }
         ).previewDevices()
     }
 }

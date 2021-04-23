@@ -9,8 +9,7 @@ struct PrivateNoteView: View, EditableView, TestableView {
 
     @ObservedObject
     var state: ViewState
-    @Binding
-    var privateNote: String?
+    var setter: Binding<String>.Setter
 
     enum EditingFocus: EditingFocusEnum, CaseIterable {
         case privateNote
@@ -35,10 +34,12 @@ struct PrivateNoteView: View, EditableView, TestableView {
 
     var nextButtonAction: Action {
         {
-            privateNote = state.privateNote
-                .trimmingLineCharacters(in: .whitespacesAndNewlines)
-                .removingRepetitionOf(.whitespace)
-                .removingRepetitionOf(.newline)
+            setter(
+                state.privateNote
+                    .trimmingLineCharacters(in: .whitespacesAndNewlines)
+                    .removingRepetitionOf(.whitespace)
+                    .removingRepetitionOf(.newline)
+            )
         }
     }
 
@@ -84,7 +85,7 @@ struct PrivateNoteView_Previews: PreviewProvider {
 
         return PrivateNoteView(
             state: state,
-            privateNote: .constant(nil)
+            setter: { _ in }
         )
         .previewDevices()
     }

@@ -28,8 +28,7 @@ struct SchedulingView: View, EditableView, TestableView {
     @ObservedObject private(set)
     var state: ViewState
     var instrument: Instrument
-    @Binding
-    var schedule: Schedule?
+    var setter: Binding<Schedule>.Setter
 
     private let firstAvailableDate = Current.date() + (2, .day)
     private let defaultStartTime = Current.date() <- (0, [.minute, .second, .nanosecond])
@@ -69,7 +68,7 @@ struct SchedulingView: View, EditableView, TestableView {
 
     var nextButtonAction: Action? {
         unwrap(state.startDateAndTime, state.duration).map { startDate, duration in
-            { schedule = Schedule(startDate: startDate, duration: duration) }
+            { setter(Schedule(startDate: startDate, duration: duration)) }
         }
     }
 
@@ -174,7 +173,7 @@ struct SchedulingViewPreview: PreviewProvider {
         SchedulingView(
             state: SchedulingView.ViewState(),
             instrument: .guitar,
-            schedule: .constant(nil)
+            setter: { _ in }
         )
     }
 }

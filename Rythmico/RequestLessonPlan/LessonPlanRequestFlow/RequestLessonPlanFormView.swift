@@ -68,13 +68,13 @@ struct RequestLessonPlanFormView: View, TestableView {
         case .instrumentSelection:
             InstrumentSelectionView(
                 state: instrumentSelectionViewState,
-                instrument: $context.instrument
+                setter: $context.instrument.setter
             )
         case .studentDetails(let instrument):
             StudentDetailsView(
                 instrument: instrument,
                 state: studentDetailsViewState,
-                student: $context.student
+                setter: $context.student.setter
             )
         case .addressDetails(let instrument, let student):
             AddressDetailsView(
@@ -82,18 +82,18 @@ struct RequestLessonPlanFormView: View, TestableView {
                 instrument: instrument,
                 state: addressDetailsViewState,
                 coordinator: addressSearchCoordinator,
-                address: $context.address
+                setter: $context.address.setter
             )
         case .scheduling(let instrument):
             SchedulingView(
                 state: schedulingViewState,
                 instrument: instrument,
-                schedule: $context.schedule
+                setter: $context.schedule.setter
             )
         case .privateNote:
             PrivateNoteView(
                 state: privateNoteViewState,
-                privateNote: $context.privateNote
+                setter: $context.privateNote.setter
             )
         case .reviewRequest(let instrument, let student, let address, let schedule, let privateNote):
             ReviewRequestView(

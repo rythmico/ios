@@ -16,8 +16,7 @@ struct AddressDetailsView: View, TestableView {
     private(set) var state: ViewState
     @ObservedObject
     private(set) var coordinator: SearchCoordinator
-    @Binding
-    var address: Address?
+    var setter: Binding<Address>.Setter
 
     @SpacedTextBuilder
     var subtitle: Text {
@@ -41,7 +40,7 @@ struct AddressDetailsView: View, TestableView {
 
     var nextButtonAction: Action? {
         state.selectedAddress.map { address in
-            { self.address = address }
+            { setter(address) }
         }
     }
 
@@ -139,7 +138,7 @@ struct AddressDetailsViewPreview: PreviewProvider {
             instrument: .guitar,
             state: state,
             coordinator: Current.addressSearchCoordinator(),
-            address: .constant(nil)
+            setter: { _ in }
         )
     }
 }

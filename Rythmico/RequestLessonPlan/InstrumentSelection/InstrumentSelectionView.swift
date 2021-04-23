@@ -8,8 +8,7 @@ struct InstrumentSelectionView: View, TestableView {
 
     @ObservedObject
     var state: ViewState
-    @Binding
-    var instrument: Instrument?
+    var setter: Binding<Instrument>.Setter
 
     let inspection = SelfInspection()
     var body: some View {
@@ -29,7 +28,7 @@ struct InstrumentSelectionView: View, TestableView {
                     InstrumentViewData(
                         name: instrument.standaloneName,
                         icon: instrument.icon,
-                        action: { self.instrument = instrument }
+                        action: { setter(instrument) }
                     )
                 }
         }
