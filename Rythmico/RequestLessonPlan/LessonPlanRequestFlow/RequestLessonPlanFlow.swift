@@ -2,7 +2,7 @@ import Foundation
 import FoundationSugar
 import Then
 
-final class RequestLessonPlanContext: Flow {
+final class RequestLessonPlanFlow: Flow {
     @Published var instrument: Instrument?
     @Published var student: Student?
     @Published var address: Address?
@@ -10,9 +10,9 @@ final class RequestLessonPlanContext: Flow {
     @Published var privateNote: String?
 }
 
-extension RequestLessonPlanContext: Then {}
+extension RequestLessonPlanFlow: Then {}
 
-extension RequestLessonPlanContext {
+extension RequestLessonPlanFlow {
     enum Step: FlowStep {
         case instrumentSelection
         case studentDetails(Instrument)

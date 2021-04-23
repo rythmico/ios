@@ -1,7 +1,7 @@
 import SwiftUI
 import FoundationSugar
 
-struct RequestLessonPlanFormView: View, TestableView {
+struct RequestLessonPlanFlowView: View, TestableView {
     typealias RequestCoordinator = APIActivityCoordinator<CreateLessonPlanRequest>
 
     @StateObject
@@ -19,18 +19,18 @@ struct RequestLessonPlanFormView: View, TestableView {
     private var presentationMode
 
     @ObservedObject
-    var context: RequestLessonPlanContext
+    var flow: RequestLessonPlanFlow
     var requestCoordinator: RequestCoordinator
     @StateObject
     private var addressSearchCoordinator = Current.addressSearchCoordinator()
 
     var shouldShowBackButton: Bool {
-        context.step.index > 0
+        flow.step.index > 0
     }
 
     func back() {
         Current.keyboardDismisser.dismissKeyboard()
-        context.back()
+        flow.back()
     }
 
     func dismiss() {
@@ -54,27 +54,27 @@ struct RequestLessonPlanFormView: View, TestableView {
                 .padding(.horizontal, .spacingSmall)
                 .animation(.rythmicoSpring(duration: .durationShort), value: shouldShowBackButton)
 
-                StepBar(context.step.index + 1, of: type(of: context.step).count).padding(.horizontal, .spacingMedium)
+                StepBar(flow.step.index + 1, of: type(of: flow.step).count).padding(.horizontal, .spacingMedium)
             }
 
-            FlowView(flow: context, transition: .slide + .opacity, content: content).onEdgeSwipe(.left, perform: back)
+            FlowView(flow: flow, transition: .slide + .opacity, content: content).onEdgeSwipe(.left, perform: back)
         }
         .testable(self)
     }
 
     @ViewBuilder
-    func content(for step: RequestLessonPlanContext.Step) -> some View {
+    func content(for step: RequestLessonPlanFlow.Step) -> some View {
         switch step {
         case .instrumentSelection:
             InstrumentSelectionView(
                 state: instrumentSelectionViewState,
-                setter: $context.instrument.setter
+                setter: $flow.instrument.setter
             )
         case .studentDetails(let instrument):
             StudentDetailsView(
                 instrument: instrument,
                 state: studentDetailsViewState,
-                setter: $context.student.setter
+                setter: $flow.student.setter
             )
         case .addressDetails(let instrument, let student):
             AddressDetailsView(
@@ -82,23 +82,23 @@ struct RequestLessonPlanFormView: View, TestableView {
                 instrument: instrument,
                 state: addressDetailsViewState,
                 coordinator: addressSearchCoordinator,
-                setter: $context.address.setter
+                setter: $flow.address.setter
             )
         case .scheduling(let instrument):
             SchedulingView(
                 state: schedulingViewState,
                 instrument: instrument,
-                setter: $context.schedule.setter
+                setter: $flow.schedule.setter
             )
         case .privateNote:
             PrivateNoteView(
                 state: privateNoteViewState,
-                setter: $context.privateNote.setter
+                setter: $flow.privateNote.setter
             )
         case .reviewRequest(let instrument, let student, let address, let schedule, let privateNote):
             ReviewRequestView(
                 coordinator: requestCoordinator,
-                context: context,
+                flow: flow,
                 instrument: instrument,
                 student: student,
                 address: address,

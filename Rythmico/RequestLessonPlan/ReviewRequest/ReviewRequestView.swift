@@ -9,7 +9,7 @@ struct ReviewRequestView: View, TestableView {
     }
 
     var coordinator: Coordinator
-    var context: RequestLessonPlanContext
+    var flow: RequestLessonPlanFlow
     var instrument: Instrument
     var student: Student
     var address: Address
@@ -116,11 +116,11 @@ struct ReviewRequestView: View, TestableView {
         }
     }
 
-    private func editInstrument() { context.instrument = nil }
-    private func editStudentDetails() { context.student = nil }
-    private func editAddressDetails() { context.address = nil }
-    private func editSchedule() { context.schedule = nil }
-    private func editPrivateNote() { context.privateNote = nil }
+    private func editInstrument() { flow.instrument = nil }
+    private func editStudentDetails() { flow.student = nil }
+    private func editAddressDetails() { flow.address = nil }
+    private func editSchedule() { flow.schedule = nil }
+    private func editPrivateNote() { flow.privateNote = nil }
 
     private var studentDetails: String {
         [
@@ -150,7 +150,7 @@ struct ReviewRequestView_Previews: PreviewProvider {
     static var previews: some View {
         ReviewRequestView(
             coordinator: Current.lessonPlanRequestCoordinator(),
-            context: RequestLessonPlanContext(),
+            flow: RequestLessonPlanFlow(),
             instrument: .guitar,
             student: .davidStub,
             address: .stub,

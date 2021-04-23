@@ -48,7 +48,7 @@ struct MainView: View, TestableView {
         .onSuccess(lessonPlanFetchingCoordinator, perform: onLessonPlansFetched)
         .multiModal {
             $0.sheet(isPresented: $state.lessonsContext.isRequestingLessonPlan) {
-                RequestLessonPlanView(context: RequestLessonPlanContext())
+                RequestLessonPlanView(flow: RequestLessonPlanFlow())
             }
             $0.sheet(item: $state.lessonsContext.bookingValues) {
                 LessonPlanBookingEntryView(lessonPlan: $0.lessonPlan, application: $0.application)
