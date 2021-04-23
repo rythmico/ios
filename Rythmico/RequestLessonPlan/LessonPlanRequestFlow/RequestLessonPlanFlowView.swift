@@ -33,6 +33,14 @@ struct RequestLessonPlanFlowView: View, TestableView {
         flow.back()
     }
 
+    var stepNumber: Int {
+        flow.step.index + 1
+    }
+
+    var stepCount: Int {
+        type(of: flow.step).count
+    }
+
     func dismiss() {
         presentationMode.wrappedValue.dismiss()
     }
@@ -54,7 +62,7 @@ struct RequestLessonPlanFlowView: View, TestableView {
                 .padding(.horizontal, .spacingSmall)
                 .animation(.rythmicoSpring(duration: .durationShort), value: shouldShowBackButton)
 
-                StepBar(flow.step.index + 1, of: type(of: flow.step).count).padding(.horizontal, .spacingMedium)
+                StepBar(stepNumber, of: stepCount).padding(.horizontal, .spacingMedium)
             }
 
             FlowView(flow: flow, transition: .slide + .opacity, content: content).onEdgeSwipe(.left, perform: back)

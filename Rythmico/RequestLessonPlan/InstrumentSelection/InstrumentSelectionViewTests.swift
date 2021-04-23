@@ -6,13 +6,15 @@ import ViewInspector
 extension InstrumentSelectionView: Inspectable {}
 
 final class InstrumentSelectionViewTests: XCTestCase {
-    var instrumentSelectionView: (RequestLessonPlanContext, [Instrument], InstrumentSelectionView) {
-        let context = RequestLessonPlanContext()
+    var instrumentSelectionView: (RequestLessonPlanFlow, [Instrument], InstrumentSelectionView) {
+        let flow = RequestLessonPlanFlow()
         let instruments: [Instrument] = [.guitar, .singing]
         Current.instrumentSelectionListProvider = InstrumentSelectionListProviderStub(instruments: instruments)
-        let view = InstrumentSelectionView(state: .init(), context: context)
-
-        return (context, instruments, view)
+        let view = InstrumentSelectionView(
+            state: .init(),
+            setter: { flow.instrument = $0 }
+        )
+        return (flow, instruments, view)
     }
 
     func testInstrumentsProvidedAppear() {
@@ -30,16 +32,16 @@ final class InstrumentSelectionViewTests: XCTestCase {
     }
 
     func testInstrumentsSelectionSetsInstrumentInContext() {
-        let (context, instruments, view) = instrumentSelectionView
+        let (flow, instruments, view) = instrumentSelectionView
 
         XCTAssertView(view) { view in
-            XCTAssertNil(context.instrument)
+            XCTAssertNil(flow.instrument)
 
             view.state.instruments[0].action?()
-            XCTAssertEqual(context.instrument, instruments[0])
+            XCTAssertEqual(flow.instrument, instruments[0])
 
             view.state.instruments[1].action?()
-            XCTAssertEqual(context.instrument, instruments[1])
+            XCTAssertEqual(flow.instrument, instruments[1])
         }
     }
 }

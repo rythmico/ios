@@ -9,24 +9,24 @@ final class PrivateNoteViewTests: XCTestCase {
         Current = .dummy
     }
 
-    var privateNoteView: (RequestLessonPlanContext, PrivateNoteView.ViewState, PrivateNoteView) {
-        let context = RequestLessonPlanContext()
+    var privateNoteView: (RequestLessonPlanFlow, PrivateNoteView.ViewState, PrivateNoteView) {
+        let flow = RequestLessonPlanFlow()
         let state = PrivateNoteView.ViewState()
         return (
-            context,
+            flow,
             state,
             PrivateNoteView(
                 state: state,
-                context: context
+                setter: { flow.privateNote = $0 }
             )
         )
     }
 
     func testInitialValues() {
-        let (context, state, view) = privateNoteView
+        let (flow, state, view) = privateNoteView
 
         XCTAssertView(view) { view in
-            XCTAssertNil(context.privateNote)
+            XCTAssertNil(flow.privateNote)
             XCTAssertEqual(state.privateNote, "")
             XCTAssertEqual(view.editingFocus, .none)
         }
@@ -44,7 +44,7 @@ final class PrivateNoteViewTests: XCTestCase {
     }
 
     func testNextButtonSetsPrivateNoteInContext() {
-        let (context, state, view) = privateNoteView
+        let (flow, state, view) = privateNoteView
 
         XCTAssertView(view) { view in
             state.privateNote = """
@@ -60,7 +60,7 @@ final class PrivateNoteViewTests: XCTestCase {
             view.nextButtonAction()
 
             XCTAssertEqual(
-                context.privateNote,
+                flow.privateNote,
                 """
                 Whilst not a dealbreaker, I'd like someone with experience teaching younger kids with visual impairements.
                 Again, not a dealbreaker. But it would be very nice.

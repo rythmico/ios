@@ -10,25 +10,25 @@ final class SchedulingViewTests: XCTestCase {
         Current = .dummy
     }
 
-    var schedulingView: (RequestLessonPlanContext, SchedulingView.ViewState, SchedulingView) {
-        let context = RequestLessonPlanContext()
+    var schedulingView: (RequestLessonPlanFlow, SchedulingView.ViewState, SchedulingView) {
+        let flow = RequestLessonPlanFlow()
         let state = SchedulingView.ViewState()
         return (
-            context,
+            flow,
             state,
             SchedulingView(
                 state: state,
                 instrument: .guitar,
-                context: context
+                setter: { flow.schedule = $0 }
             )
         )
     }
 
     func testInitialValues() throws {
-        let (context, state, view) = schedulingView
+        let (flow, state, view) = schedulingView
 
         try XCTAssertView(view) { view in
-            XCTAssertNil(context.schedule)
+            XCTAssertNil(flow.schedule)
 
             try XCTAssertText(
                 XCTUnwrap(view.subtitle),
@@ -142,7 +142,7 @@ final class SchedulingViewTests: XCTestCase {
     }
 
     func testNextButtonSetsStudentDetailsInContext() {
-        let (context, state, view) = schedulingView
+        let (flow, state, view) = schedulingView
 
         XCTAssertView(view) { view in
             state.startDate = "2021-07-03T13:30:20Z"
@@ -152,7 +152,7 @@ final class SchedulingViewTests: XCTestCase {
             view.nextButtonAction?()
 
             XCTAssertEqual(
-                context.schedule,
+                flow.schedule,
                 Schedule(startDate: "2021-07-03T17:25:00Z", duration: .fortyFiveMinutes)
             )
         }

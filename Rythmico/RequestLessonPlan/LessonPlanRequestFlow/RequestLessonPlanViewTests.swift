@@ -12,9 +12,9 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 
     func testReadyState() throws {
-        let view = RequestLessonPlanView(context: RequestLessonPlanContext())
+        let view = RequestLessonPlanView(flow: RequestLessonPlanFlow())
         XCTAssertView(view) { view in
-            XCTAssertNotNil(view.formView)
+            XCTAssertNotNil(view.flowView)
             XCTAssertTrue(view.swipeDownToDismissEnabled)
             XCTAssertNil(view.errorMessage)
         }
@@ -23,11 +23,11 @@ final class RequestLessonPlanViewTests: XCTestCase {
     func testLoadingState() throws {
         Current.stubAPIEndpoint(for: \.lessonPlanRequestCoordinator, service: APIServiceDummy())
 
-        let view = RequestLessonPlanView(context: RequestLessonPlanContext())
+        let view = RequestLessonPlanView(flow: RequestLessonPlanFlow())
         XCTAssertView(view) { view in
             view.coordinator.run(with: .stub)
 
-            XCTAssertNil(view.formView)
+            XCTAssertNil(view.flowView)
             XCTAssertFalse(view.swipeDownToDismissEnabled)
         }
     }
@@ -35,11 +35,11 @@ final class RequestLessonPlanViewTests: XCTestCase {
     func testFailureState() throws {
         Current.stubAPIEndpoint(for: \.lessonPlanRequestCoordinator, result: .failure("Something 2"))
 
-        let view = RequestLessonPlanView(context: RequestLessonPlanContext())
+        let view = RequestLessonPlanView(flow: RequestLessonPlanFlow())
         XCTAssertView(view) { view in
             view.coordinator.run(with: .stub)
 
-            XCTAssertNotNil(view.formView)
+            XCTAssertNotNil(view.flowView)
             XCTAssertFalse(view.swipeDownToDismissEnabled)
             XCTAssertEqual(view.errorMessage, "Something 2")
 
@@ -51,11 +51,11 @@ final class RequestLessonPlanViewTests: XCTestCase {
     func testConfirmationState() throws {
         Current.stubAPIEndpoint(for: \.lessonPlanRequestCoordinator, result: .success(.pendingJackGuitarPlanStub))
 
-        let view = RequestLessonPlanView(context: RequestLessonPlanContext())
+        let view = RequestLessonPlanView(flow: RequestLessonPlanFlow())
         XCTAssertView(view) { view in
             view.coordinator.run(with: .stub)
 
-            XCTAssertNil(view.formView)
+            XCTAssertNil(view.flowView)
             XCTAssertFalse(view.swipeDownToDismissEnabled)
             XCTAssertNil(view.errorMessage)
         }

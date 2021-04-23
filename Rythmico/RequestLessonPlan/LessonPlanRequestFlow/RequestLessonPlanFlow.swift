@@ -13,7 +13,7 @@ final class RequestLessonPlanFlow: Flow {
 extension RequestLessonPlanFlow: Then {}
 
 extension RequestLessonPlanFlow {
-    enum Step: FlowStep {
+    enum Step: FlowStep, Equatable {
         case instrumentSelection
         case studentDetails(Instrument)
         case addressDetails(Instrument, Student)

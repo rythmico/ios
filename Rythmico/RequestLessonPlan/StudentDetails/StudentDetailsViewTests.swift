@@ -7,27 +7,27 @@ import ViewInspector
 extension StudentDetailsView: Inspectable {}
 
 final class StudentDetailsViewTests: XCTestCase {
-    var studentDetailsView: (RequestLessonPlanContext, KeyboardDismisserSpy, StudentDetailsView) {
+    var studentDetailsView: (RequestLessonPlanFlow, KeyboardDismisserSpy, StudentDetailsView) {
         let instrument = Instrument.singing
-        let context = RequestLessonPlanContext()
+        let flow = RequestLessonPlanFlow()
         let keyboardDismisser = KeyboardDismisserSpy()
         Current.keyboardDismisser = keyboardDismisser
         return (
-            context,
+            flow,
             keyboardDismisser,
             StudentDetailsView(
                 instrument: instrument,
                 state: .init(),
-                context: context
+                setter: { flow.student = $0 }
             )
         )
     }
 
     func testInitialValues() throws {
-        let (context, keyboardDismisser, view) = studentDetailsView
+        let (flow, keyboardDismisser, view) = studentDetailsView
 
         try XCTAssertView(view) { view in
-            XCTAssertNil(context.student)
+            XCTAssertNil(flow.student)
             XCTAssertEqual(keyboardDismisser.dismissKeyboardCount, 0)
 
             try XCTAssertText(
@@ -96,7 +96,7 @@ final class StudentDetailsViewTests: XCTestCase {
     }
 
     func testNextButtonSetsStudentDetailsInContext() throws {
-        let (context, _, view) = studentDetailsView
+        let (flow, _, view) = studentDetailsView
 
         XCTAssertView(view) { view in
             view.state.name = "  David    Roman  "
@@ -115,7 +115,7 @@ final class StudentDetailsViewTests: XCTestCase {
             view.nextButtonAction?()
 
             XCTAssertEqual(
-                context.student,
+                flow.student,
                 Student(
                     name: "David Roman",
                     dateOfBirth: .stub,
