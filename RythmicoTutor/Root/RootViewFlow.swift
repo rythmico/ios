@@ -2,48 +2,31 @@ import SwiftUI
 import Combine
 
 final class RootViewFlow: Flow {
-    enum Step: CaseIterable, Numbered, Countable {
+    enum Step: FlowStep, CaseIterable {
         case onboarding
         case tutorStatus
         case mainView
     }
 
-    private let userCredentialProvider: UserCredentialProviderBase
-    private let settings: UserDefaults
-    private var cancellable: AnyCancellable?
+    @Published private(set) var step: Step
 
     init(
-        userCredentialProvider: UserCredentialProviderBase = Current.userCredentialProvider,
+        userCredentialProvider provider: UserCredentialProviderBase = Current.userCredentialProvider,
         settings: UserDefaults = Current.settings
     ) {
-        self.userCredentialProvider = userCredentialProvider
-        self.settings = settings
-
-        cancellable = Publishers.CombineLatest(
-            userCredentialProvider.$userCredential,
-            settings.publisher(for: \.tutorVerified)
-        )
-        .map { (isAuthenticated: $0 != nil, isTutorVerified: $1) }
-        .map(stepForState)
-        .removeDuplicates()
-        .scan((previousStep, currentStep), { ($0.1, $1) })
-        .sink { [self] previous, current in
-            previousStep = previous
-            currentStep = current
+        func step(forUser user: UserCredentialProtocol?, isVerified: Bool) -> Step {
+            let isAuthenticated = user != nil
+            switch (isAuthenticated, isVerified) {
+            case (false, _):
+                return .onboarding
+            case (true, false):
+                return .tutorStatus
+            case (true, true):
+                return .mainView
+            }
         }
-    }
 
-    private func stepForState(isAuthenticated: Bool, isTutorVerified: Bool) -> Step {
-        switch (isAuthenticated, isTutorVerified) {
-        case (false, _):
-            return .onboarding
-        case (true, false):
-            return .tutorStatus
-        case (true, true):
-            return .mainView
-        }
+        self.step = step(forUser: provider.userCredential, isVerified: settings.tutorVerified)
+        Publishers.CombineLatest(provider.$userCredential, settings.publisher(for: \.tutorVerified)).map(step).assign(to: &$step)
     }
-
-    @Published private(set) var previousStep: Step?
-    @Published private(set) var currentStep: Step = .onboarding
 }

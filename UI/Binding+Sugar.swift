@@ -1,6 +1,19 @@
 import SwiftUI
 import FoundationSugar
 
+extension Binding {
+    typealias Getter = () -> Value
+    typealias Setter = (Value) -> Void
+
+    var getter: Getter {
+        { wrappedValue }
+    }
+
+    var setter: Setter {
+        { wrappedValue = $0 }
+    }
+}
+
 extension Binding where Value == Bool {
     init<Wrapped>(trueIfSome optional: Binding<Wrapped?>) {
         self.init(

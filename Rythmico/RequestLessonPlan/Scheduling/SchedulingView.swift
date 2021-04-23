@@ -3,10 +3,6 @@ import TextBuilder
 import Introspect
 import FoundationSugar
 
-protocol SchedulingContext {
-    func setSchedule(_ schedule: Schedule)
-}
-
 struct SchedulingView: View, EditableView, TestableView {
     final class ViewState: ObservableObject {
         @Published var startDate: Date?
@@ -32,7 +28,7 @@ struct SchedulingView: View, EditableView, TestableView {
     @ObservedObject private(set)
     var state: ViewState
     var instrument: Instrument
-    var context: SchedulingContext
+    var setter: Binding<Schedule>.Setter
 
     private let firstAvailableDate = Current.date() + (2, .day)
     private let defaultStartTime = Current.date() <- (0, [.minute, .second, .nanosecond])
@@ -72,7 +68,7 @@ struct SchedulingView: View, EditableView, TestableView {
 
     var nextButtonAction: Action? {
         unwrap(state.startDateAndTime, state.duration).map { startDate, duration in
-            { context.setSchedule(Schedule(startDate: startDate, duration: duration)) }
+            { setter(Schedule(startDate: startDate, duration: duration)) }
         }
     }
 
@@ -177,7 +173,7 @@ struct SchedulingViewPreview: PreviewProvider {
         SchedulingView(
             state: SchedulingView.ViewState(),
             instrument: .guitar,
-            context: RequestLessonPlanContext()
+            setter: { _ in }
         )
     }
 }

@@ -15,31 +15,31 @@ final class AddressDetailsViewTests: XCTestCase {
     func addressDetailsView(
         result: SimpleResult<AddressSearchRequest.Response>
     ) throws -> (
-        RequestLessonPlanContext,
+        RequestLessonPlanFlow,
         APIServiceSpy<AddressSearchRequest>,
         AddressDetailsView
     ) {
         let addressSearchService = APIServiceSpy<AddressSearchRequest>(result: result)
         Current.stubAPIEndpoint(for: \.addressSearchCoordinator, service: addressSearchService)
-        let context = RequestLessonPlanContext()
+        let flow = RequestLessonPlanFlow()
         return (
-            context,
+            flow,
             addressSearchService,
             AddressDetailsView(
                 student: .davidStub,
                 instrument: .guitar,
                 state: .init(),
                 coordinator: Current.addressSearchCoordinator(),
-                context: context
+                setter: { flow.address = $0 }
             )
         )
     }
 
     func testInitialValues() throws {
-        let (context, _, view) = try addressDetailsView(result: .success(.stub))
+        let (flow, _, view) = try addressDetailsView(result: .success(.stub))
 
         try XCTAssertView(view) { view in
-            XCTAssertNil(context.address)
+            XCTAssertNil(flow.address)
 
             try XCTAssertText(view.subtitle, "Enter the address where David will have the Guitar lessons")
             XCTAssertTrue(view.state.postcode.isEmpty)
@@ -113,13 +113,13 @@ final class AddressDetailsViewTests: XCTestCase {
     }
 
     func testNextButtonSetsAddressDetailsInContext() throws {
-        let (context, _, view) = try addressDetailsView(result: .success(.stub))
+        let (flow, _, view) = try addressDetailsView(result: .success(.stub))
 
         XCTAssertView(view) { view in
             view.searchAddresses()
             view.state.selectedAddress = .stub
             view.nextButtonAction?()
-            XCTAssertEqual(context.address, .stub)
+            XCTAssertEqual(flow.address, .stub)
         }
     }
 }

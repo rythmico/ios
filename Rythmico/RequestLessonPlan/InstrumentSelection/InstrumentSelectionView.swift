@@ -1,22 +1,14 @@
 import SwiftUI
 import FoundationSugar
 
-protocol InstrumentSelectionContext {
-    func setInstrument(_ instrument: Instrument)
-}
-
 struct InstrumentSelectionView: View, TestableView {
     final class ViewState: ObservableObject {
         @Published var instruments: [InstrumentViewData] = []
     }
 
-    @ObservedObject var state: ViewState
-    private let context: InstrumentSelectionContext
-
-    init(state: ViewState, context: InstrumentSelectionContext) {
-        self.state = state
-        self.context = context
-    }
+    @ObservedObject
+    var state: ViewState
+    var setter: Binding<Instrument>.Setter
 
     let inspection = SelfInspection()
     var body: some View {
@@ -36,7 +28,7 @@ struct InstrumentSelectionView: View, TestableView {
                     InstrumentViewData(
                         name: instrument.standaloneName,
                         icon: instrument.icon,
-                        action: { context.setInstrument(instrument) }
+                        action: { setter(instrument) }
                     )
                 }
         }

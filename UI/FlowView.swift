@@ -1,54 +1,55 @@
 import SwiftUI
 
-struct FlowView<FlowType: Flow, Content: View>: View {
-    typealias Step = FlowType.Step
-    typealias TransitionMap = (AnyTransition) -> AnyTransition
-    typealias ContentBuilder = (Step) -> Content
+typealias _Flow = Flow
 
-    @StateObject
-    var flow: FlowType
-    var transitionMap: TransitionMap = \.self
-    @ViewBuilder
-    var content: ContentBuilder
+struct FlowView<Flow: _Flow, Content: View>: View {
+    typealias Step = Flow.Step
+
+    @ObservedObject
+    var flow: Flow
+    var transition: FlowTransition
+    var animation: Animation
+    var content: (Step) -> Content
+
+    init(
+        flow: Flow,
+        transition: FlowTransition = .slide,
+        animation: Animation = .rythmicoSpring(duration: .durationMedium),
+        @ViewBuilder content: @escaping (Step) -> Content
+    ) {
+        self.flow = flow
+        self.transition = transition
+        self.animation = animation
+        self.content = content
+    }
 
     var body: some View {
         ZStack {
             ForEach(0..<Step.count) { index in
-                if index == flow.currentStep.index {
-                    content(flow.currentStep).transition(transition(forStepIndex: index))
+                if index == currentStep.index {
+                    content(currentStep).transition(transitionForCurrentDirection())
                 } else {
-                    EmptyView().transition(transition(forStepIndex: index))
+                    EmptyView().transition(transitionForCurrentDirection())
                 }
             }
         }
-        .animation(.rythmicoSpring(duration: .durationMedium), value: flow.currentStep.index)
+        .onReceive(flow.objectWillChange.map { [old = flow.step] _ in old }, perform: onFlowChanged)
+        .animation(animation, value: currentStep.index)
     }
 
-    private func transition(forStepIndex index: Int) -> AnyTransition {
-        transitionMap(
-            .move(
-                edge: index == flow.currentStep.index
-                    ? flow.direction == .forward ? .trailing : .leading
-                    : flow.direction == .forward ? .leading : .trailing
-            )
-        )
+    @State
+    private var previousStep: Step?
+    private var currentStep: Step { flow.step }
+    private var direction: FlowDirection? {
+        previousStep.flatMap { FlowDirection(from: $0, to: flow.step) }
     }
-}
 
-private enum Direction {
-    case forward, backward
-
-    init?<T: Comparable>(from: T, to: T) {
-        switch true {
-        case from < to: self = .forward
-        case from > to: self = .backward
-        default: return nil
-        }
+    private func transitionForCurrentDirection() -> AnyTransition {
+        direction.map(transition.map) ?? transition.map(.forward)
     }
-}
 
-private extension Flow {
-    var direction: Direction? {
-        previousStep.flatMap { Direction(from: $0, to: currentStep) }
+    private func onFlowChanged(previousStep: Step) {
+        guard self.previousStep?.index != previousStep.index else { return }
+        self.previousStep = previousStep
     }
 }

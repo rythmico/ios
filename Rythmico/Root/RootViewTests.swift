@@ -45,7 +45,7 @@ final class RootViewTests: XCTestCase {
         )
 
         XCTAssertView(view) { view in
-            XCTAssertEqual(view.flow.currentStep, .onboarding)
+            XCTAssertEqual(view.flow.step, .onboarding)
             XCTAssert(keychain.inMemoryStorage.isEmpty)
             XCTAssertEqual(deauthenticationService.deauthenticationCount, 0)
         }
@@ -59,7 +59,7 @@ final class RootViewTests: XCTestCase {
         )
 
         XCTAssertView(view) { view in
-            XCTAssertEqual(view.flow.currentStep, .mainView)
+            XCTAssertEqual(view.flow.step, .mainView)
             XCTAssertEqual(deauthenticationService.deauthenticationCount, 0)
         }
     }
@@ -72,7 +72,7 @@ final class RootViewTests: XCTestCase {
         )
 
         XCTAssertView(view, after: 0.5) { view in
-            XCTAssertEqual(view.flow.currentStep, .onboarding)
+            XCTAssertEqual(view.flow.step, .onboarding)
             XCTAssertNil(keychain.appleAuthorizationUserId)
             XCTAssertEqual(deauthenticationService.deauthenticationCount, 2)
         }
@@ -89,7 +89,7 @@ final class RootViewTests: XCTestCase {
 
         XCTAssertView(view) { view in
             Current.appleAuthorizationCredentialRevocationNotifier.revocationHandler?()
-            XCTAssertEqual(view.flow.currentStep, .onboarding)
+            XCTAssertEqual(view.flow.step, .onboarding)
             DispatchQueue.main.async {
                 XCTAssertNil(keychain.appleAuthorizationUserId)
                 expectation.fulfill()
@@ -111,7 +111,7 @@ final class RootViewTests: XCTestCase {
 
         XCTAssertView(view) { view in
             Current.userCredentialProvider.userCredential = nil
-            XCTAssertEqual(view.flow.currentStep, .onboarding)
+            XCTAssertEqual(view.flow.step, .onboarding)
             DispatchQueue.main.async {
                 XCTAssertNil(keychain.appleAuthorizationUserId)
                 expectation.fulfill()
@@ -133,7 +133,7 @@ final class RootViewTests: XCTestCase {
 
         XCTAssertView(view) { view in
             deauthenticationService.deauthenticate()
-            XCTAssertEqual(view.flow.currentStep, .onboarding)
+            XCTAssertEqual(view.flow.step, .onboarding)
             DispatchQueue.main.async {
                 XCTAssertNil(keychain.appleAuthorizationUserId)
                 expectation.fulfill()

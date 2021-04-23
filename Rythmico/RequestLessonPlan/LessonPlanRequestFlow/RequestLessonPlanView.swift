@@ -6,23 +6,23 @@ struct RequestLessonPlanView: View, TestableView {
     typealias Coordinator = APIActivityCoordinator<CreateLessonPlanRequest>
 
     @StateObject
-    var context: RequestLessonPlanContext
+    var flow: RequestLessonPlanFlow
     @StateObject
     var coordinator: Coordinator
     @State
-    private var _formView: RequestLessonPlanFormView
+    private var _flowView: RequestLessonPlanFlowView
 
-    init(context: RequestLessonPlanContext) {
-        self._context = .init(wrappedValue: context)
+    init(flow: RequestLessonPlanFlow) {
+        self._flow = .init(wrappedValue: flow)
         let coordinator = Current.lessonPlanRequestCoordinator()
         self._coordinator = .init(wrappedValue: coordinator)
-        self.__formView = .init(wrappedValue: RequestLessonPlanFormView(context: context, requestCoordinator: coordinator))
+        self.__flowView = .init(wrappedValue: RequestLessonPlanFlowView(flow: flow, requestCoordinator: coordinator))
     }
 
     let inspection = SelfInspection()
 
     var swipeDownToDismissEnabled: Bool {
-        coordinator.state.isReady && context.currentStep.index == 0
+        coordinator.state.isReady && flow.step.index == 0
     }
 
     var errorMessage: String? {
@@ -38,7 +38,7 @@ struct RequestLessonPlanView: View, TestableView {
             coordinator: coordinator,
             successContent: LessonPlanConfirmationView.init,
             loadingTitle: "Submitting proposal...",
-            inputContent: { formView.alertOnFailure(coordinator) }
+            inputContent: { flowView.alertOnFailure(coordinator) }
         )
         .testable(self)
         .onSuccess(coordinator, perform: Current.lessonPlanRepository.insertItem)
@@ -51,15 +51,15 @@ struct RequestLessonPlanView: View, TestableView {
 }
 
 extension RequestLessonPlanView {
-    var formView: RequestLessonPlanFormView? {
-        coordinator.state.isReady || coordinator.state.isFailure ? _formView : nil
+    var flowView: RequestLessonPlanFlowView? {
+        coordinator.state.isReady || coordinator.state.isFailure ? _flowView : nil
     }
 }
 
 #if DEBUG
 struct RequestLessonPlanView_Preview: PreviewProvider {
     static var previews: some View {
-        RequestLessonPlanView(context: RequestLessonPlanContext())
+        RequestLessonPlanView(flow: RequestLessonPlanFlow())
     }
 }
 #endif
