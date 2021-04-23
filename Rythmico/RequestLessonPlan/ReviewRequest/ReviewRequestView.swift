@@ -98,9 +98,10 @@ struct ReviewRequestView: View, TestableView {
                             }
                         }
                     }
-                    .padding(.horizontal, .spacingMedium)
+                    .padding(.trailing, .spacingMedium)
                     .padding(.bottom, .spacingExtraLarge)
                 }
+                .padding(.leading, .spacingMedium)
 
                 FloatingView {
                     RythmicoButton("Confirm Details", style: RythmicoButtonStyle.primary(), action: submitRequest)
