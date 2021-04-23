@@ -75,18 +75,13 @@ struct AddressDetailsView: View, TestableView {
                                 }
                             }
                         }
-                        .padding(.horizontal, .spacingMedium)
 
                         if let addresses = addresses {
-                            SectionHeaderContentView(
-                                title: "Select Address",
-                                padding: .init(horizontal: .spacingMedium)
-                            ) {
+                            SectionHeaderContentView(title: "Select Address") {
                                 AddressSelectionView(
                                     addresses: addresses,
                                     selection: $state.selectedAddress
                                 )
-                                .padding([.horizontal, .bottom], .spacingMedium)
                             }
                             .transition(.offset(y: 25) + .opacity)
                         } else {
@@ -94,7 +89,9 @@ struct AddressDetailsView: View, TestableView {
                         }
                     }
                     .accentColor(.rythmicoPurple)
+                    .padding([.trailing, .bottom], .spacingMedium)
                 }
+                .padding(.leading, .spacingMedium)
 
                 nextButtonAction.map { action in
                     FloatingView {
