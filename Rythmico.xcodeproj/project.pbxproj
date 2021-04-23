@@ -365,6 +365,12 @@
 		D56B253625322AE300BC3932 /* StripeSetupIntentLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B253525322AE300BC3932 /* StripeSetupIntentLink.swift */; };
 		D56B253B2532433E00BC3932 /* ErrorText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B253A2532433E00BC3932 /* ErrorText.swift */; };
 		D56B25432533331A00BC3932 /* PhoneNumberDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */; };
+		D572A4B2263240CE00E9E9E3 /* FlowStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572A4B1263240CE00E9E9E3 /* FlowStep.swift */; };
+		D572A4B3263240CE00E9E9E3 /* FlowStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572A4B1263240CE00E9E9E3 /* FlowStep.swift */; };
+		D572A4B526325FA300E9E9E3 /* FlowTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572A4B426325FA300E9E9E3 /* FlowTransition.swift */; };
+		D572A4B626325FA300E9E9E3 /* FlowTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572A4B426325FA300E9E9E3 /* FlowTransition.swift */; };
+		D572A4B82632604800E9E9E3 /* FlowDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572A4B72632604800E9E9E3 /* FlowDirection.swift */; };
+		D572A4B92632604800E9E9E3 /* FlowDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D572A4B72632604800E9E9E3 /* FlowDirection.swift */; };
 		D575C80F254DB13D001664AB /* RemoteConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C80E254DB13D001664AB /* RemoteConfigService.swift */; };
 		D575C814254DB602001664AB /* RemoteConfigServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C813254DB602001664AB /* RemoteConfigServiceDoubles.swift */; };
 		D575C819254DD6C8001664AB /* AppSplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C818254DD6C8001664AB /* AppSplash.swift */; };
@@ -895,6 +901,9 @@
 		D56B253525322AE300BC3932 /* StripeSetupIntentLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeSetupIntentLink.swift; sourceTree = "<group>"; };
 		D56B253A2532433E00BC3932 /* ErrorText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorText.swift; sourceTree = "<group>"; };
 		D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberDoubles.swift; sourceTree = "<group>"; };
+		D572A4B1263240CE00E9E9E3 /* FlowStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowStep.swift; sourceTree = "<group>"; };
+		D572A4B426325FA300E9E9E3 /* FlowTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTransition.swift; sourceTree = "<group>"; };
+		D572A4B72632604800E9E9E3 /* FlowDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowDirection.swift; sourceTree = "<group>"; };
 		D575C80E254DB13D001664AB /* RemoteConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigService.swift; sourceTree = "<group>"; };
 		D575C813254DB602001664AB /* RemoteConfigServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigServiceDoubles.swift; sourceTree = "<group>"; };
 		D575C818254DD6C8001664AB /* AppSplash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSplash.swift; sourceTree = "<group>"; };
@@ -1625,6 +1634,9 @@
 				D52C554324DDC53400C295C4 /* FloatingView+Rythmico.swift */,
 				D52C554624DDC60600C295C4 /* FloatingView+Tutor.swift */,
 				D58DE1C025C05FD90013AEE8 /* Flow.swift */,
+				D572A4B72632604800E9E9E3 /* FlowDirection.swift */,
+				D572A4B1263240CE00E9E9E3 /* FlowStep.swift */,
+				D572A4B426325FA300E9E9E3 /* FlowTransition.swift */,
 				D54EE3A025BDB89600C91FA6 /* FlowView.swift */,
 				D5E04B1823BED80700A161BB /* Fonts.swift */,
 				D5F4D3FA24F7120E000E8580 /* GroupedButton.swift */,
@@ -2687,6 +2699,7 @@
 				D53555C323E536AE005A20EB /* AppleAuthorizationCredentialStateProvider.swift in Sources */,
 				D56B253625322AE300BC3932 /* StripeSetupIntentLink.swift in Sources */,
 				D527B01624FEAA5F003E81A9 /* ImageLoadingService.swift in Sources */,
+				D572A4B526325FA300E9E9E3 /* FlowTransition.swift in Sources */,
 				035AF30524919FEF004A01B2 /* AppleAuthorizationCredentialDoubles.swift in Sources */,
 				D55C35F725A3A8090023E56B /* CalendarInfoDoubles.swift in Sources */,
 				D5D9AE3F25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift in Sources */,
@@ -2750,6 +2763,7 @@
 				03EDA6792476F2CB00FBE527 /* ProfileView.swift in Sources */,
 				03EDA67F24776CEC00FBE527 /* URLOpenerDoubles.swift in Sources */,
 				D55F013124CCCEDE00E5F13C /* Repository.swift in Sources */,
+				D572A4B2263240CE00E9E9E3 /* FlowStep.swift in Sources */,
 				D5883CE425A4179F000B545C /* Alert+View.swift in Sources */,
 				D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */,
 				D54CF08B25FA8696007D5050 /* AnalyticsServiceDoubles.swift in Sources */,
@@ -2786,6 +2800,7 @@
 				03FE8192244E204900C5C184 /* AddressItemView.swift in Sources */,
 				D55F012F24CCC4D300E5F13C /* ActivityCoordinator.swift in Sources */,
 				D5D9AE572533764D00A0ABCC /* AddNewCardView.swift in Sources */,
+				D572A4B82632604800E9E9E3 /* FlowDirection.swift in Sources */,
 				D5919F7124CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */,
 				03E88EAB24C1F5FE0077A420 /* AppContext.swift in Sources */,
 				D5015873253743C4005E02FA /* CardSetupServiceDoubles.swift in Sources */,
@@ -3001,6 +3016,7 @@
 				03E88E8F24BC9FAF0077A420 /* AppEnvironmentDoubles.swift in Sources */,
 				D5C76E9525F405E200739267 /* EKEventStore.swift in Sources */,
 				D5F4D3E024F04294000E8580 /* BookingApplication.swift in Sources */,
+				D572A4B92632604800E9E9E3 /* FlowDirection.swift in Sources */,
 				D55C35FE25A3AB510023E56B /* CalendarSyncer.swift in Sources */,
 				D5E987BD24EDE92E00E2E1AF /* Router.swift in Sources */,
 				D5E58F0E256AF1E500EB52ED /* BookingEndpoints.swift in Sources */,
@@ -3054,6 +3070,7 @@
 				035B1D54249E59BB00AABFEA /* PreviewDevices.swift in Sources */,
 				035B1D45249E577700AABFEA /* AppleAuthorizationResponseDoubles.swift in Sources */,
 				D5E987C224EDE9A100E2E1AF /* Routes+Tutor.swift in Sources */,
+				D572A4B626325FA300E9E9E3 /* FlowTransition.swift in Sources */,
 				035B1D60249E63CD00AABFEA /* DeviceTokenProvider.swift in Sources */,
 				D5D7E2FE256DB8920081F8F7 /* LessonStudentDetailView.swift in Sources */,
 				035B1D3D249E576900AABFEA /* UserCredentialEmitterDoubles.swift in Sources */,
@@ -3137,6 +3154,7 @@
 				035B1D48249E577700AABFEA /* AppleAuthorizationController.swift in Sources */,
 				D5883CE525A4179F000B545C /* Alert+View.swift in Sources */,
 				D54CF08525F91255007D5050 /* AppSecrets.swift in Sources */,
+				D572A4B3263240CE00E9E9E3 /* FlowStep.swift in Sources */,
 				D5F4D3F124F31E14000E8580 /* BookingApplicationGroupCell.swift in Sources */,
 				D505804A25D5A45C0028040F /* NavigationLink+Detail.swift in Sources */,
 				D5BF12B025068E2100B2931C /* PushNotificationEvent+Tutor.swift in Sources */,
