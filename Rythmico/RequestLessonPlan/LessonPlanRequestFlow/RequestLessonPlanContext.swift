@@ -2,40 +2,24 @@ import Foundation
 import FoundationSugar
 import Then
 
-final class RequestLessonPlanContext: ObservableObject {
-    @Published var instrument: Instrument? {
-        willSet { previousStep = currentStep }
-    }
-    @Published var student: Student? {
-        willSet { previousStep = currentStep }
-    }
-    @Published var address: Address? {
-        willSet { previousStep = currentStep }
-    }
-    @Published var schedule: Schedule? {
-        willSet { previousStep = currentStep }
-    }
-    @Published var privateNote: String? {
-        willSet { previousStep = currentStep }
-    }
-
-    private(set) var previousStep: Step?
+final class RequestLessonPlanContext: Flow {
+    @Published var instrument: Instrument?
+    @Published var student: Student?
+    @Published var address: Address?
+    @Published var schedule: Schedule?
+    @Published var privateNote: String?
 }
 
 extension RequestLessonPlanContext: Then {}
 
 extension RequestLessonPlanContext {
-    enum Step: Comparable {
+    enum Step: FlowStep {
         case instrumentSelection
         case studentDetails(Instrument)
         case addressDetails(Instrument, Student)
         case scheduling(Instrument)
         case privateNote
         case reviewRequest(Instrument, Student, Address, Schedule, String)
-
-        static func < (lhs: Self, rhs: Self) -> Bool {
-            lhs.index < rhs.index
-        }
 
         var index: Int {
             switch self {
@@ -59,11 +43,7 @@ extension RequestLessonPlanContext {
         }
     }
 
-    enum Direction {
-        case forward, backward
-    }
-
-    var currentStep: Step {
+    var step: Step {
         guard let instrument = instrument else {
             return .instrumentSelection
         }
@@ -85,13 +65,6 @@ extension RequestLessonPlanContext {
         }
 
         return .reviewRequest(instrument, student, address, schedule, privateNote)
-    }
-
-    var direction: Direction {
-        guard let previousStep = previousStep else {
-            return .forward
-        }
-        return currentStep > previousStep ? .forward : .backward
     }
 
     func unwindLatestStep() {

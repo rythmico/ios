@@ -22,7 +22,7 @@ struct RequestLessonPlanView: View, TestableView {
     let inspection = SelfInspection()
 
     var swipeDownToDismissEnabled: Bool {
-        coordinator.state.isReady && context.currentStep.index == 0
+        coordinator.state.isReady && context.step.index == 0
     }
 
     var errorMessage: String? {

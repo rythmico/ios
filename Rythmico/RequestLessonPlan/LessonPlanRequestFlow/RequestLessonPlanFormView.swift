@@ -25,7 +25,7 @@ struct RequestLessonPlanFormView: View, TestableView {
     private var addressSearchCoordinator = Current.addressSearchCoordinator()
 
     var shouldShowBackButton: Bool {
-        !context.currentStep.isInstrumentSelection
+        context.step.index > 0
     }
 
     func back() {
@@ -54,93 +54,56 @@ struct RequestLessonPlanFormView: View, TestableView {
                 .padding(.horizontal, .spacingSmall)
                 .animation(.rythmicoSpring(duration: .durationShort), value: shouldShowBackButton)
 
-                StepBar(currentStepNumber, of: stepCount).padding(.horizontal, .spacingMedium)
+                StepBar(context.step.index + 1, of: type(of: context.step).count).padding(.horizontal, .spacingMedium)
             }
 
-            ZStack {
-                instrumentSelectionView.transition(pageTransition(forStepIndex: 0))
-                studentDetailsView.transition(pageTransition(forStepIndex: 1))
-                addressDetailsView.transition(pageTransition(forStepIndex: 2))
-                schedulingView.transition(pageTransition(forStepIndex: 3))
-                privateNoteView.transition(pageTransition(forStepIndex: 4))
-                reviewRequestView.transition(pageTransition(forStepIndex: 5))
-            }
-            .animation(.rythmicoSpring(duration: .durationMedium), value: context.currentStep.index)
-            .onEdgeSwipe(.left, perform: back)
+            FlowView(flow: context, transition: .slide + .opacity, content: content).onEdgeSwipe(.left, perform: back)
         }
         .testable(self)
     }
 
-    private func pageTransition(forStepIndex index: Int) -> AnyTransition {
-        .opacity + .move(
-            edge: index == context.currentStep.index
-                ? context.direction == .forward ? .trailing : .leading
-                : context.direction == .forward ? .leading : .trailing
-        )
-    }
-}
-
-extension RequestLessonPlanFormView {
-    var currentStepNumber: Int { context.currentStep.index + 1 }
-    var stepCount: Int { RequestLessonPlanContext.Step.count }
-
-    var instrumentSelectionView: InstrumentSelectionView? {
-        context.currentStep.isInstrumentSelection
-            ? InstrumentSelectionView(state: instrumentSelectionViewState, context: context)
-            : nil
-    }
-
-    var studentDetailsView: StudentDetailsView? {
-        context.currentStep.studentDetailsValue.map {
+    @ViewBuilder
+    func content(for step: RequestLessonPlanContext.Step) -> some View {
+        switch step {
+        case .instrumentSelection:
+            InstrumentSelectionView(
+                state: instrumentSelectionViewState,
+                context: context
+            )
+        case .studentDetails(let instrument):
             StudentDetailsView(
-                instrument: $0,
+                instrument: instrument,
                 state: studentDetailsViewState,
                 context: context
             )
-        }
-    }
-
-    var addressDetailsView: AddressDetailsView? {
-        context.currentStep.addressDetailsValue.map {
+        case .addressDetails(let instrument, let student):
             AddressDetailsView(
-                student: $0.student,
-                instrument: $0.instrument,
+                student: student,
+                instrument: instrument,
                 state: addressDetailsViewState,
                 coordinator: addressSearchCoordinator,
                 context: context
             )
-        }
-    }
-
-    var schedulingView: SchedulingView? {
-        context.currentStep.schedulingValue.map {
+        case .scheduling(let instrument):
             SchedulingView(
                 state: schedulingViewState,
-                instrument: $0,
                 context: context
+                instrument: instrument,
             )
-        }
-    }
-
-    var privateNoteView: PrivateNoteView? {
-        context.currentStep.isPrivateNote
-            ? PrivateNoteView(
+        case .privateNote:
+            PrivateNoteView(
                 state: privateNoteViewState,
                 context: context
             )
-            : nil
-    }
-
-    var reviewRequestView: ReviewRequestView? {
-        context.currentStep.reviewRequestValue.map {
+        case .reviewRequest(let instrument, let student, let address, let schedule, let privateNote):
             ReviewRequestView(
                 coordinator: requestCoordinator,
                 context: context,
-                instrument: $0.instrument,
-                student: $0.student,
-                address: $0.address,
-                schedule: $0.schedule,
-                privateNote: $0.privateNote
+                instrument: instrument,
+                student: student,
+                address: address,
+                schedule: schedule,
+                privateNote: privateNote
             )
         }
     }
