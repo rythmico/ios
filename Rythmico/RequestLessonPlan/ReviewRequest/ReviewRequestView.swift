@@ -8,31 +8,13 @@ struct ReviewRequestView: View, TestableView {
         static let headerPadding = EdgeInsets(bottom: .spacingUnit * 2)
     }
 
-    private let coordinator: Coordinator
-    private let context: RequestLessonPlanContext
-    private let instrument: Instrument
-    private let student: Student
-    private let address: Address
-    private let schedule: Schedule
-    private let privateNote: String
-
-    init(
-        coordinator: Coordinator,
-        context: RequestLessonPlanContext,
-        instrument: Instrument,
-        student: Student,
-        address: Address,
-        schedule: Schedule,
-        privateNote: String
-    ) {
-        self.coordinator = coordinator
-        self.context = context
-        self.instrument = instrument
-        self.student = student
-        self.address = address
-        self.schedule = schedule
-        self.privateNote = privateNote
-    }
+    var coordinator: Coordinator
+    var context: RequestLessonPlanContext
+    var instrument: Instrument
+    var student: Student
+    var address: Address
+    var schedule: Schedule
+    var privateNote: String
 
     func submitRequest() {
         coordinator.run(
