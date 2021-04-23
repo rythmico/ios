@@ -84,23 +84,3 @@ extension RequestLessonPlanContext {
         }
     }
 }
-
-extension RequestLessonPlanContext: InstrumentSelectionContext {
-    func setInstrument(_ instrument: Instrument) { self.instrument = instrument }
-}
-
-extension RequestLessonPlanContext: StudentDetailsContext {
-    func setStudent(_ student: Student) { self.student = student }
-}
-
-extension RequestLessonPlanContext: AddressDetailsContext {
-    func setAddress(_ address: Address) { self.address = address }
-}
-
-extension RequestLessonPlanContext: SchedulingContext {
-    func setSchedule(_ schedule: Schedule) { self.schedule = schedule }
-}
-
-extension RequestLessonPlanContext: PrivateNoteContext {
-    func setPrivateNote(_ note: String) { self.privateNote = note }
-}

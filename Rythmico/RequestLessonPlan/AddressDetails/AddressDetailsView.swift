@@ -2,10 +2,6 @@ import SwiftUI
 import TextBuilder
 import FoundationSugar
 
-protocol AddressDetailsContext {
-    func setAddress(_ address: Address)
-}
-
 struct AddressDetailsView: View, TestableView {
     typealias SearchCoordinator = APIActivityCoordinator<AddressSearchRequest>
 
@@ -14,27 +10,14 @@ struct AddressDetailsView: View, TestableView {
         @Published var selectedAddress: Address?
     }
 
-    private let student: Student
-    private let instrument: Instrument
+    var student: Student
+    var instrument: Instrument
     @ObservedObject
     private(set) var state: ViewState
     @ObservedObject
     private(set) var coordinator: SearchCoordinator
-    private let context: AddressDetailsContext
-
-    init(
-        student: Student,
-        instrument: Instrument,
-        state: ViewState,
-        coordinator: SearchCoordinator,
-        context: AddressDetailsContext
-    ) {
-        self.student = student
-        self.instrument = instrument
-        self.state = state
-        self.coordinator = coordinator
-        self.context = context
-    }
+    @Binding
+    var address: Address?
 
     @SpacedTextBuilder
     var subtitle: Text {
@@ -58,7 +41,7 @@ struct AddressDetailsView: View, TestableView {
 
     var nextButtonAction: Action? {
         state.selectedAddress.map { address in
-            { context.setAddress(address) }
+            { self.address = address }
         }
     }
 
@@ -156,7 +139,7 @@ struct AddressDetailsViewPreview: PreviewProvider {
             instrument: .guitar,
             state: state,
             coordinator: Current.addressSearchCoordinator(),
-            context: RequestLessonPlanContext()
+            address: .constant(nil)
         )
     }
 }

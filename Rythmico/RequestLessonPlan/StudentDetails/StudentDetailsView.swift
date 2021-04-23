@@ -2,10 +2,6 @@ import SwiftUI
 import TextBuilder
 import FoundationSugar
 
-protocol StudentDetailsContext {
-    func setStudent(_ student: Student)
-}
-
 struct StudentDetailsView: View, EditableView, TestableView {
     private enum Const {
         static let averageStudentAge: (Int, Calendar.Component) = (10, .year)
@@ -16,8 +12,6 @@ struct StudentDetailsView: View, EditableView, TestableView {
         @Published var dateOfBirth: Date?
         @Published var about = String()
     }
-
-    @ObservedObject var state: ViewState
 
     enum EditingFocus: EditingFocusEnum, CaseIterable {
         case fullName
@@ -30,14 +24,11 @@ struct StudentDetailsView: View, EditableView, TestableView {
     @StateObject
     var editingCoordinator = EditingCoordinator()
 
-    private let instrument: Instrument
-    private let context: StudentDetailsContext
-
-    init(instrument: Instrument, state: ViewState, context: StudentDetailsContext) {
-        self.instrument = instrument
-        self.state = state
-        self.context = context
-    }
+    var instrument: Instrument
+    @ObservedObject
+    var state: ViewState
+    @Binding
+    var student: Student?
 
     // MARK: - Subtitle -
     var subtitle: Text? {
@@ -93,12 +84,10 @@ struct StudentDetailsView: View, EditableView, TestableView {
         }
 
         return {
-            context.setStudent(
-                Student(
-                    name: name,
-                    dateOfBirth: dateOfBirth,
-                    about: sanitizedAbout
-                )
+            student = Student(
+                name: name,
+                dateOfBirth: dateOfBirth,
+                about: sanitizedAbout
             )
         }
     }
@@ -184,7 +173,7 @@ struct StudentDetailsView_Preview: PreviewProvider {
         return StudentDetailsView(
             instrument: .piano,
             state: state,
-            context: RequestLessonPlanContext()
+            student: .constant(nil)
         ).previewDevices()
     }
 }

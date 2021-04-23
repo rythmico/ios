@@ -2,18 +2,15 @@ import SwiftUI
 import TextBuilder
 import FoundationSugar
 
-protocol PrivateNoteContext {
-    func setPrivateNote(_ note: String)
-}
-
 struct PrivateNoteView: View, EditableView, TestableView {
     final class ViewState: ObservableObject {
         @Published var privateNote: String = ""
     }
 
     @ObservedObject
-    private var state: ViewState
-    private let context: PrivateNoteContext
+    var state: ViewState
+    @Binding
+    var privateNote: String?
 
     enum EditingFocus: EditingFocusEnum, CaseIterable {
         case privateNote
@@ -23,11 +20,6 @@ struct PrivateNoteView: View, EditableView, TestableView {
 
     @StateObject
     var editingCoordinator = EditingCoordinator()
-
-    init(state: ViewState, context: PrivateNoteContext) {
-        self.state = state
-        self.context = context
-    }
 
     private var subtitle: Text? {
         editingFocus == .none
@@ -43,12 +35,10 @@ struct PrivateNoteView: View, EditableView, TestableView {
 
     var nextButtonAction: Action {
         {
-            context.setPrivateNote(
-                state.privateNote
-                    .trimmingLineCharacters(in: .whitespacesAndNewlines)
-                    .removingRepetitionOf(.whitespace)
-                    .removingRepetitionOf(.newline)
-            )
+            privateNote = state.privateNote
+                .trimmingLineCharacters(in: .whitespacesAndNewlines)
+                .removingRepetitionOf(.whitespace)
+                .removingRepetitionOf(.newline)
         }
     }
 
@@ -94,7 +84,7 @@ struct PrivateNoteView_Previews: PreviewProvider {
 
         return PrivateNoteView(
             state: state,
-            context: RequestLessonPlanContext()
+            privateNote: .constant(nil)
         )
         .previewDevices()
     }
