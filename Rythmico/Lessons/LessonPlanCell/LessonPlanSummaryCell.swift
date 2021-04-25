@@ -82,7 +82,7 @@ struct LessonPlanSummaryCellAccessory: View {
 
             Button(action: { Current.state.lessonsContext.reviewingLessonPlan = lessonPlan }) {
                 HStack(spacing: .spacingExtraSmall) {
-                    Text("Proceed to Booking")
+                    Text("Choose Tutor")
                         .rythmicoTextStyle(.bodySemibold)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Image(systemSymbol: .chevronRight)

@@ -32,8 +32,8 @@ private extension LessonPlan.Status {
         case .pending,
              .reviewing([]):
             return "Tutor TBC"
-        case .reviewing:
-            return "Tutors Available"
+        case .reviewing(let applicants):
+            return applicants.count == 1 ? "Tutors Available" : .empty
         case .scheduled(_, let tutor),
              .cancelled(_, let tutor?, _):
             return tutor.name
