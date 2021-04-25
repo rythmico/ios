@@ -387,6 +387,7 @@
 		D575C877254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C876254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift */; };
 		D575C878254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C876254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift */; };
 		D577EEA724E6F66400253EA1 /* BookingRequestApplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */; };
+		D580E4142635F8CC004B9AA7 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D580E4132635F8CC004B9AA7 /* NavigationBar.swift */; };
 		D58149E9251D262B0009BBB3 /* PageDotIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58149E8251D262B0009BBB3 /* PageDotIndicator.swift */; };
 		D58149ED251D262F0009BBB3 /* Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E824F09C43000E8580 /* Dot.swift */; };
 		D58149F5251D6F770009BBB3 /* InteractiveBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58149F4251D6F770009BBB3 /* InteractiveBackground.swift */; };
@@ -910,6 +911,7 @@
 		D575C86D254F2F82001664AB /* ActivityCoordinator+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityCoordinator+Sugar.swift"; sourceTree = "<group>"; };
 		D575C876254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationAuthorizationCoordinator+Sugar.swift"; sourceTree = "<group>"; };
 		D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestApplyView.swift; sourceTree = "<group>"; };
+		D580E4132635F8CC004B9AA7 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		D58149E8251D262B0009BBB3 /* PageDotIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageDotIndicator.swift; sourceTree = "<group>"; };
 		D58149F4251D6F770009BBB3 /* InteractiveBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveBackground.swift; sourceTree = "<group>"; };
 		D58149FF251D7FFC0009BBB3 /* App+SplitViewCustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+SplitViewCustomization.swift"; sourceTree = "<group>"; };
@@ -1650,6 +1652,7 @@
 				D5F5067A2400788400CA4094 /* MultilineTextField.swift */,
 				D5CAC9AB24E6D19900119DAA /* MultilineTextField+Rythmico.swift */,
 				D5CAC9AD24E6D67C00119DAA /* MultilineTextField+Tutor.swift */,
+				D580E4132635F8CC004B9AA7 /* NavigationBar.swift */,
 				D505804825D5A45C0028040F /* NavigationLink+Detail.swift */,
 				D5E58F45256DB0AC00EB52ED /* NavigationLink+Hidden.swift */,
 				D5882501251CBE0C000820F4 /* NavigationViewFixInteractiveDismissal.swift */,
@@ -2777,6 +2780,7 @@
 				D505803825D3253F0028040F /* EditableView.swift in Sources */,
 				D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */,
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
+				D580E4142635F8CC004B9AA7 /* NavigationBar.swift in Sources */,
 				D549218F25BB27E200251FD2 /* APIActivityErrorHandler.swift in Sources */,
 				D52D8A59259D714B00A6CBBF /* OnboardingSlideshowView.swift in Sources */,
 				D575C86E254F2F82001664AB /* ActivityCoordinator+Sugar.swift in Sources */,
