@@ -29,8 +29,7 @@ extension SwiftUI.App {
                 $0.titlePositionAdjustment.vertical = 1
                 $0.shadowColor = nil
 
-                let backIndicatorImage = UIImage(systemSymbol: .chevronLeft).applyingSymbolConfiguration(.init(pointSize: 17, weight: .medium))
-                $0.setBackIndicatorImage(backIndicatorImage, transitionMaskImage: backIndicatorImage)
+                $0.setBackIndicatorImage(BackButton.uiImage, transitionMaskImage: BackButton.uiImage)
                 $0.backButtonAppearance.normal.titleTextAttributes = .rythmicoTextAttributes(color: nil, style: .bodyMedium)
 
                 bar.standardAppearance = $0
