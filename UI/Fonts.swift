@@ -102,24 +102,7 @@ extension Font {
         }
 
         var lineSpacing: CGFloat {
-            switch self {
-            case .largeTitle,
-                 .headline,
-                 .subheadlineBold,
-                 .subheadline,
-                 .bodyBold,
-                 .bodySemibold,
-                 .bodyMedium,
-                 .body:
-                return .spacingUnit
-            case .calloutBold,
-                 .callout:
-                return .spacingUnit / 2
-            case .footnoteBold,
-                 .footnote,
-                 .caption:
-                return .spacingUnit
-            }
+            .spacingUnit
         }
     }
 }
