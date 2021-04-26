@@ -61,15 +61,8 @@ struct LessonPlanConfirmationView: View, TestableView {
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: .spacingUnit * 8) {
                         VStack(spacing: .spacingLarge) {
-                            Image(
-                                uiImage: lessonPlan.instrument.icon.image
-                                    // TODO: check if SVG still blurry without resize in SwiftUI 3.
-                                    .resized(to: .init(width: 48, height: 48))
-                            )
-                            .renderingMode(.template)
-                            .resizable()
-                            .frame(width: 48, height: 48)
-                            .foregroundColor(.rythmicoForeground)
+                            Image(uiImage: lessonPlan.instrument.icon.image)
+                                .foregroundColor(.rythmicoForeground)
 
                             VStack(spacing: .spacingSmall) {
                                 Text(title)
