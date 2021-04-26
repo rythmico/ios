@@ -24,7 +24,7 @@ extension Image {
 extension Font {
     enum RythmicoTextStyle {
         fileprivate enum FamilyName {
-            static let notoSansJP = "Noto Sans JP"
+            static let dmSans = "DM Sans"
         }
 
         case largeTitle         // 32px Black
@@ -139,7 +139,7 @@ private extension Font.Weight {
 
 extension Font {
     static func rythmico(_ style: RythmicoTextStyle) -> Font {
-        .custom(RythmicoTextStyle.FamilyName.notoSansJP, size: style.regularSize, relativeTo: .largeTitle).weight(style.weight)
+        .custom(RythmicoTextStyle.FamilyName.dmSans, size: style.regularSize, relativeTo: .largeTitle).weight(style.weight)
     }
 }
 
@@ -162,7 +162,7 @@ extension UIFont {
             for: UIFont(
                 descriptor: UIFontDescriptor(
                     fontAttributes: [
-                        .family: Font.RythmicoTextStyle.FamilyName.notoSansJP,
+                        .family: Font.RythmicoTextStyle.FamilyName.dmSans,
                         .traits: [ UIFontDescriptor.TraitKey.weight: Weight(style.weight).rawValue ],
                     ]
                 ),

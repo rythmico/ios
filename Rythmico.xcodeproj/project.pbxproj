@@ -283,6 +283,12 @@
 		D53555D023E536B5005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547023DF2A40005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift */; };
 		D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */; };
 		D53555E623E5383C005A20EB /* AppleAuthorizationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560E23CD384300BC8485 /* AppleAuthorizationServiceTests.swift */; };
+		D5363C572628933500C81466 /* DMSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5363C512628933400C81466 /* DMSans-Italic.ttf */; };
+		D5363C582628933500C81466 /* DMSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5363C522628933400C81466 /* DMSans-BoldItalic.ttf */; };
+		D5363C592628933500C81466 /* DMSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5363C532628933400C81466 /* DMSans-Bold.ttf */; };
+		D5363C5A2628933500C81466 /* DMSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5363C542628933400C81466 /* DMSans-Medium.ttf */; };
+		D5363C5B2628933500C81466 /* DMSans-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5363C552628933500C81466 /* DMSans-MediumItalic.ttf */; };
+		D5363C5C2628933500C81466 /* DMSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5363C562628933500C81466 /* DMSans-Regular.ttf */; };
 		D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = D53668FC255EEDEF00A9D97D /* Stripe */; };
 		D54317F423FDB0DD00CB1493 /* RequestLessonPlanFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54317F323FDB0DD00CB1493 /* RequestLessonPlanFlow.swift */; };
 		D54340ED261E3C03006898B0 /* AnalyticsUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340EC261E3C03006898B0 /* AnalyticsUserProfile.swift */; };
@@ -547,10 +553,6 @@
 		D5E987C224EDE9A100E2E1AF /* Routes+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C024EDE98900E2E1AF /* Routes+Tutor.swift */; };
 		D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */; };
 		D5E987C724EEFC7C00E2E1AF /* BookingApplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */; };
-		D5ED167C26149B5C001841ED /* NotoSansJP-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5ED167626149B5B001841ED /* NotoSansJP-Bold.otf */; };
-		D5ED167E26149B5C001841ED /* NotoSansJP-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5ED167826149B5B001841ED /* NotoSansJP-Medium.otf */; };
-		D5ED168026149B5C001841ED /* NotoSansJP-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5ED167A26149B5B001841ED /* NotoSansJP-Black.otf */; };
-		D5ED168126149B5C001841ED /* NotoSansJP-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D5ED167B26149B5C001841ED /* NotoSansJP-Regular.otf */; };
 		D5ED168B2614BB40001841ED /* StackSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED168A2614BB40001841ED /* StackSpacing.swift */; };
 		D5ED168C2614BB40001841ED /* StackSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED168A2614BB40001841ED /* StackSpacing.swift */; };
 		D5ED326126065FEC00821ABE /* NonEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED326026065FEC00821ABE /* NonEditableTextField.swift */; };
@@ -843,6 +845,12 @@
 		D535554623E20076005A20EB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		D54317F323FDB0DD00CB1493 /* RequestLessonPlanFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanFlow.swift; sourceTree = "<group>"; };
+		D5363C512628933400C81466 /* DMSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Italic.ttf"; sourceTree = "<group>"; };
+		D5363C522628933400C81466 /* DMSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		D5363C532628933400C81466 /* DMSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Bold.ttf"; sourceTree = "<group>"; };
+		D5363C542628933400C81466 /* DMSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Medium.ttf"; sourceTree = "<group>"; };
+		D5363C552628933500C81466 /* DMSans-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-MediumItalic.ttf"; sourceTree = "<group>"; };
+		D5363C562628933500C81466 /* DMSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Regular.ttf"; sourceTree = "<group>"; };
 		D54340EC261E3C03006898B0 /* AnalyticsUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsUserProfile.swift; sourceTree = "<group>"; };
 		D54340F2261E72F8006898B0 /* AccessibilitySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilitySettings.swift; sourceTree = "<group>"; };
 		D54340F6261E7314006898B0 /* AccessibilitySettingsDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilitySettingsDoubles.swift; sourceTree = "<group>"; };
@@ -1030,10 +1038,6 @@
 		D5E987C024EDE98900E2E1AF /* Routes+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Routes+Tutor.swift"; sourceTree = "<group>"; };
 		D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestsTabView.swift; sourceTree = "<group>"; };
 		D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationsView.swift; sourceTree = "<group>"; };
-		D5ED167626149B5B001841ED /* NotoSansJP-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Bold.otf"; sourceTree = "<group>"; };
-		D5ED167826149B5B001841ED /* NotoSansJP-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Medium.otf"; sourceTree = "<group>"; };
-		D5ED167A26149B5B001841ED /* NotoSansJP-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Black.otf"; sourceTree = "<group>"; };
-		D5ED167B26149B5C001841ED /* NotoSansJP-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Regular.otf"; sourceTree = "<group>"; };
 		D5ED168A2614BB40001841ED /* StackSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackSpacing.swift; sourceTree = "<group>"; };
 		D5ED326026065FEC00821ABE /* NonEditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonEditableTextField.swift; sourceTree = "<group>"; };
 		D5ED32622606600C00821ABE /* CustomEditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditableTextField.swift; sourceTree = "<group>"; };
@@ -2223,10 +2227,12 @@
 		D5ED167526149B42001841ED /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				D5ED167A26149B5B001841ED /* NotoSansJP-Black.otf */,
-				D5ED167626149B5B001841ED /* NotoSansJP-Bold.otf */,
-				D5ED167826149B5B001841ED /* NotoSansJP-Medium.otf */,
-				D5ED167B26149B5C001841ED /* NotoSansJP-Regular.otf */,
+				D5363C532628933400C81466 /* DMSans-Bold.ttf */,
+				D5363C522628933400C81466 /* DMSans-BoldItalic.ttf */,
+				D5363C512628933400C81466 /* DMSans-Italic.ttf */,
+				D5363C542628933400C81466 /* DMSans-Medium.ttf */,
+				D5363C552628933500C81466 /* DMSans-MediumItalic.ttf */,
+				D5363C562628933500C81466 /* DMSans-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -2461,17 +2467,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5ED168026149B5C001841ED /* NotoSansJP-Black.otf in Resources */,
+				D5363C582628933500C81466 /* DMSans-BoldItalic.ttf in Resources */,
 				D509898023B969B700C19300 /* GoogleService-Info-Release.plist in Resources */,
-				D5ED167E26149B5C001841ED /* NotoSansJP-Medium.otf in Resources */,
+				D5363C5C2628933500C81466 /* DMSans-Regular.ttf in Resources */,
 				03341B4B23ABB1E8009AE8A8 /* LaunchScreen.storyboard in Resources */,
-				D5ED168126149B5C001841ED /* NotoSansJP-Regular.otf in Resources */,
+				D5363C5A2628933500C81466 /* DMSans-Medium.ttf in Resources */,
+				D5363C592628933500C81466 /* DMSans-Bold.ttf in Resources */,
 				03341B4823ABB1E8009AE8A8 /* Preview Assets.xcassets in Resources */,
 				03341B4523ABB1E8009AE8A8 /* Assets.xcassets in Resources */,
 				D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */,
 				D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */,
 				D5622D5125C32FC200DF4732 /* Settings.bundle in Resources */,
-				D5ED167C26149B5C001841ED /* NotoSansJP-Bold.otf in Resources */,
+				D5363C5B2628933500C81466 /* DMSans-MediumItalic.ttf in Resources */,
+				D5363C572628933500C81466 /* DMSans-Italic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
