@@ -34,10 +34,12 @@
 	<string>We need access to your camera to auto-fill your card details.</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>NotoSansJP-Black.otf</string>
-		<string>NotoSansJP-Bold.otf</string>
-		<string>NotoSansJP-Medium.otf</string>
-		<string>NotoSansJP-Regular.otf</string>
+		<string>DMSans-Bold.ttf</string>
+		<string>DMSans-BoldItalic.ttf</string>
+		<string>DMSans-Italic.ttf</string>
+		<string>DMSans-Medium.ttf</string>
+		<string>DMSans-MediumItalic.ttf</string>
+		<string>DMSans-Regular.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
