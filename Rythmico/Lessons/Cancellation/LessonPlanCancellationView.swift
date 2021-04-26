@@ -25,7 +25,15 @@ struct LessonPlanCancellationView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        NavigationView {
+        VStack(spacing: 0) {
+            NavigationBar(
+                backButton: {
+                    if isUserInputRequired && isCancellationIntended {
+                        BackButton(action: back).transition(.opacity)
+                    }
+                },
+                trailingItem: { CloseButton(action: dismiss) }
+            )
             CoordinatorStateView(
                 coordinator: coordinator,
                 successTitle: "Plan cancelled successfully",
@@ -45,19 +53,6 @@ struct LessonPlanCancellationView: View, TestableView {
             }
             .onEdgeSwipe(.left, perform: back)
             .padding(.top, .spacingExtraSmall)
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(
-                leading: Group {
-                    if isUserInputRequired && isCancellationIntended {
-                        BackButton(action: back)
-                    }
-                },
-                trailing: Group {
-                    if isUserInputRequired {
-                        CloseButton(action: dismiss)
-                    }
-                }
-            )
         }
         .sheetInteractiveDismissal(!isCancellationIntended)
         .accentColor(.rythmicoGray90)

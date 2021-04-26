@@ -47,24 +47,22 @@ struct RequestLessonPlanFlowView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        VStack(spacing: .spacingSmall) {
-            VStack(spacing: 0) {
-                HStack {
+        VStack(spacing: 0) {
+            NavigationBar(
+                backButton: {
                     if shouldShowBackButton {
                         BackButton(action: back).transition(.opacity)
                     }
-                    Spacer()
-                    CloseButton(action: dismiss)
-                        .accessibility(hint: Text("Double tap to return to main screen"))
+                },
+                trailingItem: {
+                    CloseButton(action: dismiss).accessibility(hint: Text("Double tap to return to main screen"))
                 }
-                .accentColor(.rythmicoGray90)
-                .frame(minHeight: 64)
-                .padding(.horizontal, .spacingSmall)
-                .animation(.rythmicoSpring(duration: .durationShort), value: shouldShowBackButton)
+            )
+            .accentColor(.rythmicoGray90)
+            .animation(.rythmicoSpring(duration: .durationShort), value: shouldShowBackButton)
 
-                StepBar(stepNumber, of: stepCount).padding(.horizontal, .spacingMedium)
-            }
-
+            StepBar(stepNumber, of: stepCount).padding(.horizontal, .spacingMedium)
+            VSpacing(.spacingExtraSmall)
             FlowView(flow: flow, transition: .slide + .opacity, content: content).onEdgeSwipe(.left, perform: back)
         }
         .testable(self)
