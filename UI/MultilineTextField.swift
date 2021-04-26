@@ -14,7 +14,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
     final class UITextViewPrimitive: UITextView {
         override func caretRect(for position: UITextPosition) -> CGRect {
             super.caretRect(for: position).with {
-                $0.size.height = UIFontMetrics(forTextStyle: .largeTitle).scaledValue(for: 26)
+                $0.size.height = UIFontMetrics(forTextStyle: .largeTitle).scaledValue(for: 23)
             }
         }
     }
