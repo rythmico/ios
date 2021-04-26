@@ -56,7 +56,7 @@ struct AddressDetailsView: View, TestableView {
                                 InfoDisclaimerButton(
                                     title: "Why Postcode?",
                                     message: "We only show prospective tutors the postcode area, so they have a better idea of where they need to travel to."
-                                ).offset(y: 2)
+                                )
                             }) {
                                 ZStack {
                                     CustomTextField(
