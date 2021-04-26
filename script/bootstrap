@@ -5,15 +5,7 @@ set -e
 DIR=$(cd "$(dirname "$0")" && pwd)
 PRIVATE_KEY=$1
 
-# FIXME: install failing on Bitrise... doing manually for now.
-# brew bundle --no-lock
-
-# Edit .gitignore with new version when updating tools.
-unzip "$DIR/../tools/git-crypt-0.6.0.zip" -d "$DIR/../tools/git-crypt-0.6.0"
-ln -s "$DIR/../tools/git-crypt-0.6.0/bin/git-crypt" /usr/local/bin/git-crypt || true
-
-unzip "$DIR/../tools/swiftgen-6.4.0.zip" -d "$DIR/../tools/swiftgen-6.4.0"
-ln -s "$DIR/../tools/swiftgen-6.4.0/bin/swiftgen" /usr/local/bin/swiftgen || true
+brew bundle --no-lock --no-upgrade || true
 
 git-crypt unlock $PRIVATE_KEY
 
