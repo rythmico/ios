@@ -14,6 +14,7 @@ struct InfoDisclaimerButton: View {
                 .renderingMode(.template)
                 .foregroundColor(.rythmicoGray90)
         }
+        .offset(y: 0.5)
         .multiModal {
             $0.alert(isPresented: $showingDisclaimer) {
                 Alert(title: Text(title), message: Text(message))
