@@ -7,7 +7,7 @@ struct InfoBanner: View {
         HStack(alignment: .firstTextBaseline, spacing: .spacingExtraSmall) {
             Image(decorative: Asset.iconInfo.name)
                 .renderingMode(.template)
-                .alignmentGuide(.firstTextBaseline) { $0[.bottom] - 3 }
+                .alignmentGuide(.firstTextBaseline) { $0[.bottom] - .spacingUnit }
             Text(text)
                 .rythmicoTextStyle(.callout)
                 .frame(maxWidth: .infinity, alignment: .leading)
