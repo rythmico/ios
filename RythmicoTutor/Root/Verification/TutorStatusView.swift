@@ -27,7 +27,7 @@ struct TutorStatusView: View {
                 switch status {
                 case .registrationPending:
                     WebView(webView: webViewStore.webView).edgesIgnoringSafeArea(.bottom)
-                case .interviewPending, .interviewFailed, .dbsPending, .dbsFailed, .verified:
+                case .interviewPending, .interviewFailed, .dbsPending, .dbsProcessing, .dbsFailed, .verified:
                     TutorStatusBanner(status: status)
                 }
             }
@@ -56,7 +56,7 @@ struct TutorStatusView: View {
             return coordinator.state.isLoading
         case .registrationPending:
             return webViewStore.isLoading
-        case .interviewPending, .interviewFailed, .dbsPending, .dbsFailed, .verified:
+        case .interviewPending, .interviewFailed, .dbsPending, .dbsProcessing, .dbsFailed, .verified:
             return false
         }
     }
@@ -77,7 +77,7 @@ struct TutorStatusView: View {
         switch status {
         case .registrationPending(let formURL):
             webViewStore.webView.load(URLRequest(url: formURL))
-        case .interviewPending, .interviewFailed, .dbsPending, .dbsFailed, .verified:
+        case .interviewPending, .interviewFailed, .dbsPending, .dbsProcessing, .dbsFailed, .verified:
             pushNotificationAuthCoordinator.requestAuthorization()
         }
     }

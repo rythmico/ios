@@ -56,7 +56,7 @@ struct TutorStatusBanner: View {
         switch status {
         case .interviewPending, .dbsPending:
             return { Current.urlOpener.open("message://") }
-        case .registrationPending, .interviewFailed, .dbsFailed, .verified:
+        case .registrationPending, .interviewFailed, .dbsProcessing, .dbsFailed, .verified:
             return nil
         }
     }
@@ -75,7 +75,7 @@ private extension TutorStatus {
             return nil
         case .interviewPending:
             return Asset.graphicsVerificationInterview
-        case .dbsPending:
+        case .dbsPending, .dbsProcessing:
             return Asset.graphicsVerificationDbs
         case .interviewFailed, .dbsFailed:
             return Asset.graphicsVerificationFailure
@@ -92,6 +92,8 @@ private extension TutorStatus {
             return "Hi there!"
         case .dbsPending:
             return "DBS Check required"
+        case .dbsProcessing:
+            return "Your DBS Check is processing"
         case .interviewFailed:
             return "Your interview was unsuccessful"
         case .dbsFailed:
@@ -108,11 +110,13 @@ private extension TutorStatus {
         case .interviewPending:
             return "Thanks for signing up to Rythmico! Before we welcome you onto the platform, we’d love to get to know you better. Please follow the link sent to your inbox to book a quick online meeting."
         case .dbsPending:
-            return "Your mandatory DBS Check is awaiting. Please follow the link sent to your inbox to complete the DBS form provided by uCheck."
+            return "Your mandatory DBS Check is awaiting. Please follow the link sent to your inbox to complete the DBS form provided by Sterling."
+        case .dbsProcessing:
+            return "Thank you for submitting your DBS Check form. We're awaiting the check results from Sterling and will update you as soon as possible."
         case .interviewFailed:
             return "Unfortunately we don’t think you’re ready for our platform at the moment. Please don’t be disheartened, we really appreciate you taking the time to apply and hope that you will consider us again in the future."
         case .dbsFailed:
-            return "Unfortunately your DBS record did not match our requirements. If you think something is not right, please contact our DBS Check partner uCheck."
+            return "Unfortunately your DBS record did not match our requirements. If you think something is not right, please contact our DBS Check partner Sterling."
         case .verified:
             return "Your profile has been verified. Thank you for your patience. You can now start using Rythmico Tutor 🥳"
         }
@@ -126,6 +130,7 @@ struct TutorStatusBanner_Previews: PreviewProvider {
             TutorStatusBanner(status: .interviewPending)
             TutorStatusBanner(status: .interviewFailed)
             TutorStatusBanner(status: .dbsPending)
+            TutorStatusBanner(status: .dbsProcessing)
             TutorStatusBanner(status: .dbsFailed)
             TutorStatusBanner(status: .verified)
         }
