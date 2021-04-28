@@ -44,19 +44,19 @@ extension Font {
         fileprivate var regularSize: CGFloat {
             switch self {
             case .largeTitle:
-                return 32
+                return 34
             case .headline:
-                return 20
+                return 22
             case .subheadlineBold, .subheadline:
-                return 18
+                return 19
             case .bodyBold, .bodySemibold, .bodyMedium, .body:
-                return 18
+                return 17
             case .calloutBold, .callout:
-                return 14
+                return 15
             case .footnoteBold, .footnote:
-                return 12
+                return 13
             case .caption:
-                return 10
+                return 11
             }
         }
 
