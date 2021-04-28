@@ -50,7 +50,7 @@ extension Font {
             case .subheadlineBold, .subheadline:
                 return 18
             case .bodyBold, .bodySemibold, .bodyMedium, .body:
-                return 16
+                return 18
             case .calloutBold, .callout:
                 return 14
             case .footnoteBold, .footnote:
