@@ -24,12 +24,12 @@ extension Image {
 extension Font {
     enum RythmicoTextStyle {
         fileprivate enum FamilyName {
-            static let notoSansJP = "Noto Sans JP"
+            static let dmSans = "DM Sans"
         }
 
-        case largeTitle         // 32px Black
-        case headline           // 20px Black
-        case subheadlineBold    // 18px Black
+        case largeTitle         // 32px Bold
+        case headline           // 20px Bold
+        case subheadlineBold    // 18px Bold
         case subheadline        // 18px Regular
         case bodyBold           // 16px Bold
         case bodySemibold       // 16px Semibold
@@ -44,27 +44,27 @@ extension Font {
         fileprivate var regularSize: CGFloat {
             switch self {
             case .largeTitle:
-                return 32
+                return 34
             case .headline:
-                return 20
+                return 22
             case .subheadlineBold, .subheadline:
-                return 18
+                return 19
             case .bodyBold, .bodySemibold, .bodyMedium, .body:
-                return 16
+                return 17
             case .calloutBold, .callout:
-                return 14
+                return 15
             case .footnoteBold, .footnote:
-                return 12
+                return 13
             case .caption:
-                return 10
+                return 11
             }
         }
 
         private var regularWeight: Font.Weight {
             switch self {
-            case .largeTitle: return .black
-            case .headline: return .black
-            case .subheadlineBold: return .black
+            case .largeTitle: return .bold
+            case .headline: return .bold
+            case .subheadlineBold: return .bold
             case .subheadline: return .regular
             case .bodyBold: return .bold
             case .bodySemibold: return .semibold
@@ -86,10 +86,12 @@ extension Font {
             switch self {
             case .largeTitle:
                 return -0.8
-            case .headline, .subheadlineBold, .subheadline:
+            case .headline:
+                return -0.2
+            case .subheadlineBold, .subheadline:
                 return -0.2
             case .bodyBold, .bodySemibold, .bodyMedium, .body:
-                return 0
+                return -0.4
             case .calloutBold, .callout:
                 return 0
             case .footnoteBold, .footnote:
@@ -100,24 +102,7 @@ extension Font {
         }
 
         var lineSpacing: CGFloat {
-            switch self {
-            case .largeTitle,
-                 .headline,
-                 .subheadlineBold,
-                 .subheadline,
-                 .bodyBold,
-                 .bodySemibold,
-                 .bodyMedium,
-                 .body:
-                return .spacingUnit
-            case .calloutBold,
-                 .callout:
-                return .spacingUnit / 2
-            case .footnoteBold,
-                 .footnote,
-                 .caption:
-                return .spacingUnit
-            }
+            .spacingUnit
         }
     }
 }
@@ -139,7 +124,7 @@ private extension Font.Weight {
 
 extension Font {
     static func rythmico(_ style: RythmicoTextStyle) -> Font {
-        .custom(RythmicoTextStyle.FamilyName.notoSansJP, size: style.regularSize, relativeTo: .largeTitle).weight(style.weight)
+        .custom(RythmicoTextStyle.FamilyName.dmSans, size: style.regularSize, relativeTo: .largeTitle).weight(style.weight)
     }
 }
 
@@ -162,7 +147,7 @@ extension UIFont {
             for: UIFont(
                 descriptor: UIFontDescriptor(
                     fontAttributes: [
-                        .family: Font.RythmicoTextStyle.FamilyName.notoSansJP,
+                        .family: Font.RythmicoTextStyle.FamilyName.dmSans,
                         .traits: [ UIFontDescriptor.TraitKey.weight: Weight(style.weight).rawValue ],
                     ]
                 ),

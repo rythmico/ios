@@ -11,7 +11,7 @@ struct BackButton: View {
         Button(action: action) {
             HStack(spacing: .spacingUnit) {
                 Self.image
-                Text(title).rythmicoTextStyle(.bodyMedium).offset(y: -1)
+                Text(title).rythmicoTextStyle(.bodyMedium)
             }
             .padding([.vertical, .trailing], .spacingSmall)
         }
