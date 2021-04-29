@@ -7,6 +7,7 @@ enum TutorStatus: Decodable, Equatable {
     case interviewFailed
 
     case dbsPending
+    case dbsProcessing
     case dbsFailed
 
     case verified
@@ -24,6 +25,8 @@ enum TutorStatus: Decodable, Equatable {
             self = .interviewFailed
         case .dbsPending:
             self = .dbsPending
+        case .dbsProcessing:
+            self = .dbsProcessing
         case .dbsFailed:
             self = .dbsFailed
         case .verified:
@@ -41,6 +44,7 @@ enum TutorStatus: Decodable, Equatable {
         case interviewPending = "INTERVIEW_PENDING"
         case interviewFailed = "INTERVIEW_FAILED"
         case dbsPending = "DBS_PENDING"
+        case dbsProcessing = "DBS_PROCESSING"
         case dbsFailed = "DBS_FAILED"
         case verified = "VERIFIED"
     }
