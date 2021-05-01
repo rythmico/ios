@@ -40,36 +40,36 @@ struct LessonPlanDetailView: View, TestableView {
                 }
                 ScrollView {
                     VStack(alignment: .leading, spacing: .spacingMedium) {
-                        SectionHeaderView(title: "Lesson Details")
-                        Group {
-                            HStack(spacing: .spacingUnit * 2) {
-                                Image(decorative: Asset.iconInfo.name).renderingMode(.template)
-                                Text(startDateText)
-                                    .rythmicoTextStyle(.body)
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.7)
-                            }
-                            HStack(spacing: .spacingUnit * 2) {
-                                Image(decorative: Asset.iconTime.name).renderingMode(.template)
-                                Text(durationText)
-                                    .rythmicoTextStyle(.body)
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.7)
-                            }
-                            HStack(alignment: .firstTextBaseline, spacing: .spacingUnit * 2) {
-                                Image(decorative: Asset.iconLocation.name)
-                                    .renderingMode(.template)
-                                    .offset(y: .spacingUnit / 2)
-                                Text(lessonPlan.address.condensedFormattedString)
-                                    .rythmicoTextStyle(.body)
-                            }
-                            InlineContentAndTitleView(status: lessonPlan.status, summarized: false)
-                            if lessonPlan.status.isPending {
-                                InfoBanner(text: "Potential tutors have received your request and will submit applications for your consideration.")
-                            }
+                        SectionHeaderView(title: "Plan Details")
+                        HStack(spacing: .spacingUnit * 2) {
+                            Image(decorative: Asset.iconInfo.name).renderingMode(.template)
+                            Text(startDateText)
+                                .rythmicoTextStyle(.body)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.7)
                         }
-                        .foregroundColor(.rythmicoGray90)
+                        HStack(spacing: .spacingUnit * 2) {
+                            Image(decorative: Asset.iconTime.name).renderingMode(.template)
+                            Text(durationText)
+                                .rythmicoTextStyle(.body)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.7)
+                        }
+                        HStack(alignment: .firstTextBaseline, spacing: .spacingUnit * 2) {
+                            Image(decorative: Asset.iconLocation.name)
+                                .renderingMode(.template)
+                                .offset(y: .spacingUnit / 2)
+                            Text(lessonPlan.address.condensedFormattedString)
+                                .rythmicoTextStyle(.body)
+                        }
+
+                        SectionHeaderView(title: "Tutor")
+                        InlineContentAndTitleView(status: lessonPlan.status, summarized: false)
+                        if lessonPlan.status.isPending {
+                            InfoBanner(text: "Potential tutors have received your request and will submit applications for your consideration.")
+                        }
                     }
+                    .foregroundColor(.rythmicoGray90)
                 }
             }
             .frame(maxWidth: .spacingMax)
