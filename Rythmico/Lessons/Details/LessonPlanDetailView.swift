@@ -75,8 +75,9 @@ struct LessonPlanDetailView: View, TestableView {
             .frame(maxWidth: .spacingMax)
             .padding(.horizontal, .spacingMedium)
 
-            ActionList(actions, showBottomSeparator: false)
-                .foregroundColor(.rythmicoGray90)
+            FloatingView {
+                HStack(spacing: .spacingSmall, content: actionButtons)
+            }
         }
         .testable(self)
         .padding(.top, .spacingExtraSmall)
@@ -92,13 +93,17 @@ struct LessonPlanDetailView: View, TestableView {
     private var startDateText: String { Self.startDateFormatter.string(from: lessonPlan.schedule.startDate) }
     private var durationText: String { lessonPlan.schedule.duration.title }
 
-    @ArrayBuilder<ActionList.Button>
-    private var actions: [ActionList.Button] {
+    @ViewBuilder
+    private func actionButtons() -> some View {
         if let action = showRescheduleAlertAction {
-            .init(title: "Reschedule", action: action)
+            RythmicoButton("Reschedule", style: RythmicoButtonStyle.secondary(), action: action)
         }
         if let action = showCancelLessonPlanFormAction {
-            .init(title: "Cancel Lesson Plan", action: action)
+            Menu {
+                Button("Cancel Lesson Plan", action: action)
+            } label: {
+                RythmicoButton("More...", style: RythmicoButtonStyle.tertiary(), action: {})
+            }
         }
     }
 }
