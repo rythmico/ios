@@ -12,6 +12,10 @@ extension Binding {
     var setter: Setter {
         { wrappedValue = $0 }
     }
+
+    func setter(to value: Value) -> Action {
+        { setter(value) }
+    }
 }
 
 extension Binding where Value == Bool {
