@@ -41,20 +41,7 @@ struct LessonPlanDetailView: View, TestableView {
                 ScrollView {
                     VStack(alignment: .leading, spacing: .spacingMedium) {
                         SectionHeaderView(title: "Plan Details")
-                        HStack(spacing: .spacingUnit * 2) {
-                            Image(decorative: Asset.iconInfo.name).renderingMode(.template)
-                            Text(startDateText)
-                                .rythmicoTextStyle(.body)
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.7)
-                        }
-                        HStack(spacing: .spacingUnit * 2) {
-                            Image(decorative: Asset.iconTime.name).renderingMode(.template)
-                            Text(durationText)
-                                .rythmicoTextStyle(.body)
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.7)
-                        }
+                        LessonPlanScheduleView(lessonPlan: lessonPlan)
                         HStack(alignment: .firstTextBaseline, spacing: .spacingUnit * 2) {
                             Image(decorative: Asset.iconLocation.name)
                                 .renderingMode(.template)
@@ -87,11 +74,6 @@ struct LessonPlanDetailView: View, TestableView {
             $0.sheet(isPresented: $state.lessonsContext.isCancellingLessonPlan) { lessonPlanCancellationView }
         }
     }
-
-    private static let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM @ h:mma"))
-
-    private var startDateText: String { Self.startDateFormatter.string(from: lessonPlan.schedule.startDate) }
-    private var durationText: String { lessonPlan.schedule.duration.title }
 
     @ViewBuilder
     private func actionButtons() -> some View {
