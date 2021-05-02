@@ -44,7 +44,7 @@ struct LessonPlanBookingView: View {
                         VStack(spacing: .spacingLarge) {
                             Group {
                                 SectionHeaderContentView(title: "Lesson Schedule") {
-                                    ScheduleDetailsView(lessonPlan.schedule, tutor: application.tutor)
+                                    LessonPlanRequestedScheduleView(lessonPlan.schedule, tutor: application.tutor)
                                     HDivider()
                                     VStack(spacing: .spacingExtraSmall) {
                                         LessonPlanBookingPolicyView.skipLessons

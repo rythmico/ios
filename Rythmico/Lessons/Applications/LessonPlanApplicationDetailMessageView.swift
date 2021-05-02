@@ -41,7 +41,7 @@ struct LessonPlanApplicationDetailMessageView: View {
                         TutorAcceptedStatusPill()
                     }
 
-                    ScheduleDetailsView(lessonPlan.schedule, tutor: nil)
+                    LessonPlanRequestedScheduleView(lessonPlan.schedule, tutor: nil)
                 }
                 .frame(maxWidth: .spacingMax)
                 .padding(.horizontal, .spacingMedium)

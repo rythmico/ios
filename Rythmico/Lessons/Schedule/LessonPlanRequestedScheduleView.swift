@@ -1,7 +1,7 @@
 import SwiftUI
 import TextBuilder
 
-struct ScheduleDetailsView: View {
+struct LessonPlanRequestedScheduleView: View {
     var schedule: Schedule
     var tutor: Tutor?
 
@@ -79,8 +79,8 @@ struct ScheduleDetailsView: View {
 struct ScheduleDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ScheduleDetailsView(.stub, tutor: .none)
-            ScheduleDetailsView(.stub, tutor: .davidStub)
+            LessonPlanRequestedScheduleView(.stub, tutor: .none)
+            LessonPlanRequestedScheduleView(.stub, tutor: .davidStub)
         }
         .previewLayout(.sizeThatFits)
         .padding()
