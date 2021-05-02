@@ -301,6 +301,7 @@
 		D54340FB261E7AC6006898B0 /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340F9261E7AC6006898B0 /* AnalyticsEvent.swift */; };
 		D54340FD261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340FC261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift */; };
 		D54340FE261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340FC261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift */; };
+		D543B918263F5FA800D25CFD /* AddressLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543B917263F5FA800D25CFD /* AddressLabel.swift */; };
 		D543CA6E2608B77D00900975 /* ScrollView+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA6D2608B77D00900975 /* ScrollView+Sugar.swift */; };
 		D543CA702608F8B400900975 /* Binding+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA6F2608F8B400900975 /* Binding+Sugar.swift */; };
 		D543CA712608F8B400900975 /* Binding+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA6F2608F8B400900975 /* Binding+Sugar.swift */; };
@@ -859,6 +860,7 @@
 		D54340F6261E7314006898B0 /* AccessibilitySettingsDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilitySettingsDoubles.swift; sourceTree = "<group>"; };
 		D54340F9261E7AC6006898B0 /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
 		D54340FC261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironmentDoubles+Sugar.swift"; sourceTree = "<group>"; };
+		D543B917263F5FA800D25CFD /* AddressLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLabel.swift; sourceTree = "<group>"; };
 		D543CA6D2608B77D00900975 /* ScrollView+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Sugar.swift"; sourceTree = "<group>"; };
 		D543CA6F2608F8B400900975 /* Binding+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Sugar.swift"; sourceTree = "<group>"; };
 		D543CA722609227D00900975 /* CustomTextFieldInputMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldInputMode.swift; sourceTree = "<group>"; };
@@ -1235,6 +1237,7 @@
 				033D47D0247777100096C50F /* LessonsView.swift */,
 				D58824C3251A6D49000820F4 /* LessonsCollectionView.swift */,
 				03021C50248A799200C0C57E /* LessonsViewTests.swift */,
+				D543B917263F5FA800D25CFD /* AddressLabel.swift */,
 				D517FFC32554872E00A41639 /* LessonPlanCell */,
 				D517FFBF2554871F00A41639 /* LessonCell */,
 				D5D78DDB25250810007041BE /* Applications */,
@@ -2723,6 +2726,7 @@
 				D5AC9E4A254DA0E7003A8197 /* RemoteConfigCoordinator.swift in Sources */,
 				03080EED2466FE21008715EE /* LessonPlan.swift in Sources */,
 				D5989BC62516833E00BED8A6 /* PortfolioVideoCarouselView.swift in Sources */,
+				D543B918263F5FA800D25CFD /* AddressLabel.swift in Sources */,
 				D53555CF23E536AE005A20EB /* AppleAuthorizationCompletionDelegate.swift in Sources */,
 				D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */,
 				D53555C623E536AE005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,

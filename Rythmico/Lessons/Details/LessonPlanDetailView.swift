@@ -44,13 +44,7 @@ struct LessonPlanDetailView: View, TestableView {
                     VStack(alignment: .leading, spacing: .spacingMedium) {
                         SectionHeaderView(title: "Plan Details")
                         LessonPlanScheduleView(lessonPlan: lessonPlan)
-                        HStack(alignment: .firstTextBaseline, spacing: .spacingUnit * 2) {
-                            Image(decorative: Asset.iconLocation.name)
-                                .renderingMode(.template)
-                                .offset(y: .spacingUnit / 2)
-                            Text(lessonPlan.address.condensedFormattedString)
-                                .rythmicoTextStyle(.body)
-                        }
+                        AddressLabel(address: lessonPlan.address)
 
                         SectionHeaderView(title: "Tutor")
                         tutorContent()
