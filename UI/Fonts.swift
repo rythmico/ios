@@ -44,7 +44,7 @@ extension Font {
         fileprivate var regularSize: CGFloat {
             switch self {
             case .largeTitle:
-                return 34
+                return 32
             case .headline:
                 return 22
             case .subheadlineBold, .subheadline:
