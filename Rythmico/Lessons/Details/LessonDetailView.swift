@@ -43,32 +43,19 @@ struct LessonDetailView: View, TestableView {
                 ScrollView {
                     VStack(alignment: .leading, spacing: .spacingMedium) {
                         SectionHeaderView(title: "Lesson Details")
-                        Group {
-                            HStack(spacing: .spacingUnit * 2) {
-                                Image(decorative: Asset.iconInfo.name).renderingMode(.template)
-                                Text(startDateText)
-                                    .rythmicoTextStyle(.body)
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.7)
-                            }
-                            HStack(spacing: .spacingUnit * 2) {
-                                Image(decorative: Asset.iconTime.name).renderingMode(.template)
-                                Text(durationText)
-                                    .rythmicoTextStyle(.body)
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.7)
-                            }
-                            HStack(alignment: .firstTextBaseline, spacing: .spacingUnit * 2) {
-                                Image(decorative: Asset.iconLocation.name)
-                                    .renderingMode(.template)
-                                    .offset(y: .spacingUnit / 2)
-                                Text(lesson.address.condensedFormattedString)
-                                    .rythmicoTextStyle(.body)
-                            }
-                            InlineContentAndTitleView(lesson: lesson, summarized: false)
+                        LessonScheduleView(lesson: lesson)
+                        HStack(alignment: .firstTextBaseline, spacing: .spacingUnit * 2) {
+                            Image(decorative: Asset.iconLocation.name)
+                                .renderingMode(.template)
+                                .offset(y: .spacingUnit / 2)
+                            Text(lesson.address.condensedFormattedString)
+                                .rythmicoTextStyle(.body)
                         }
-                        .foregroundColor(.rythmicoGray90)
+
+                        SectionHeaderView(title: "Tutor")
+                        InlineContentAndTitleView(lesson: lesson, summarized: false)
                     }
+                    .foregroundColor(.rythmicoGray90)
                 }
             }
             .frame(maxWidth: .spacingMax)
@@ -86,11 +73,6 @@ struct LessonDetailView: View, TestableView {
             $0.sheet(isPresented: $state.lessonsContext.isCancellingLessonPlan) { lessonPlanCancellationView }
         }
     }
-
-    private static let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM @ h:mma"))
-
-    private var startDateText: String { Self.startDateFormatter.string(from: lesson.schedule.startDate) }
-    private var durationText: String { lesson.schedule.duration.title }
 
     @ArrayBuilder<ActionList.Button>
     private var actions: [ActionList.Button] {
