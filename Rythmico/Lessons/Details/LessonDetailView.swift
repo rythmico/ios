@@ -40,6 +40,8 @@ struct LessonDetailView: View, TestableView {
                 TitleContentView(title: lesson.title) {
                     Pill(status: lesson.status)
                 }
+                .padding(.horizontal, .spacingMedium)
+
                 ScrollView {
                     VStack(alignment: .leading, spacing: .spacingMedium) {
                         SectionHeaderView(title: "Lesson Details")
@@ -53,13 +55,13 @@ struct LessonDetailView: View, TestableView {
                         }
 
                         SectionHeaderView(title: "Tutor")
-                        InlineContentAndTitleView(lesson: lesson, summarized: false)
+                        TutorCell(tutor: lesson.tutor)
                     }
                     .foregroundColor(.rythmicoGray90)
+                    .padding(.horizontal, .spacingMedium)
                 }
             }
             .frame(maxWidth: .spacingMax)
-            .padding(.horizontal, .spacingMedium)
 
             ActionList(actions, showBottomSeparator: false)
                 .foregroundColor(.rythmicoGray90)

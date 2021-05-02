@@ -38,6 +38,8 @@ struct LessonPlanDetailView: View, TestableView {
                 TitleContentView(title: title) {
                     Pill(lessonPlan: lessonPlan)
                 }
+                .padding(.horizontal, .spacingMedium)
+
                 ScrollView {
                     VStack(alignment: .leading, spacing: .spacingMedium) {
                         SectionHeaderView(title: "Plan Details")
@@ -51,16 +53,13 @@ struct LessonPlanDetailView: View, TestableView {
                         }
 
                         SectionHeaderView(title: "Tutor")
-                        LessonPlanTutorStatusView(status: lessonPlan.status, summarized: false)
-                        if lessonPlan.status.isPending {
-                            InfoBanner(text: "Potential tutors have received your request and will submit applications for your consideration.")
-                        }
+                        tutorContent()
                     }
                     .foregroundColor(.rythmicoGray90)
+                    .padding(.horizontal, .spacingMedium)
                 }
             }
             .frame(maxWidth: .spacingMax)
-            .padding(.horizontal, .spacingMedium)
 
             FloatingView {
                 HStack(spacing: .spacingSmall, content: actionButtons)
@@ -72,6 +71,19 @@ struct LessonPlanDetailView: View, TestableView {
         .multiModal {
             $0.alert(isPresented: $isRescheduling) { .reschedulingView(lessonPlan: lessonPlan) }
             $0.sheet(isPresented: $state.lessonsContext.isCancellingLessonPlan) { lessonPlanCancellationView }
+        }
+    }
+
+    @ViewBuilder
+    private func tutorContent() -> some View {
+        switch lessonPlan.status {
+        case .pending, .reviewing, .cancelled(_, .none, _):
+            LessonPlanTutorStatusView(status: lessonPlan.status, summarized: false)
+            if lessonPlan.status.isPending {
+                InfoBanner(text: "Potential tutors have received your request and will submit applications for your consideration.")
+            }
+        case .scheduled(_, let tutor), .cancelled(_, let tutor?, _):
+            TutorCell(tutor: tutor)
         }
     }
 

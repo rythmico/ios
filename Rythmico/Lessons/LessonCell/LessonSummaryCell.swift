@@ -41,7 +41,7 @@ struct LessonSummaryCellMainContent: View {
                     .foregroundColor(.rythmicoGray90)
                 VSpacing(.spacingExtraSmall)
                 HStack(spacing: .spacingExtraSmall) {
-                    InlineContentAndTitleView(lesson: lesson, summarized: true)
+                    InlineContentAndTitleView(lesson: lesson)
                     Pill(status: lesson.status)
                 }
             }

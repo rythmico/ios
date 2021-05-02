@@ -603,6 +603,7 @@
 		D5F7A5132597B92100A9FF56 /* ImageOverlayModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F7A5122597B92100A9FF56 /* ImageOverlayModifier.swift */; };
 		D5F89392263F3E4100578970 /* LessonPlanScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F89391263F3E4100578970 /* LessonPlanScheduleView.swift */; };
 		D5F89394263F4B0500578970 /* LessonScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F89393263F4B0500578970 /* LessonScheduleView.swift */; };
+		D5F89396263F560D00578970 /* TutorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F89395263F560D00578970 /* TutorCell.swift */; };
 		D5FAE6742559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FAE6732559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift */; };
 		D5FAE6862559DF8300473A8B /* PhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FAE6852559DF8300473A8B /* PhoneNumberCell.swift */; };
 		D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */; };
@@ -1077,6 +1078,7 @@
 		D5F7A5122597B92100A9FF56 /* ImageOverlayModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOverlayModifier.swift; sourceTree = "<group>"; };
 		D5F89391263F3E4100578970 /* LessonPlanScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanScheduleView.swift; sourceTree = "<group>"; };
 		D5F89393263F4B0500578970 /* LessonScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonScheduleView.swift; sourceTree = "<group>"; };
+		D5F89395263F560D00578970 /* TutorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorCell.swift; sourceTree = "<group>"; };
 		D5FAE6732559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhoneNumberOpener+ActionSheet.swift"; sourceTree = "<group>"; };
 		D5FAE6852559DF8300473A8B /* PhoneNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCell.swift; sourceTree = "<group>"; };
 		D5FD6F15240AF535008C5AD4 /* StudentDetailsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailsViewTests.swift; sourceTree = "<group>"; };
@@ -1235,11 +1237,11 @@
 				03021C50248A799200C0C57E /* LessonsViewTests.swift */,
 				D517FFC32554872E00A41639 /* LessonPlanCell */,
 				D517FFBF2554871F00A41639 /* LessonCell */,
-				D527B02124FEC53D003E81A9 /* TutorAvatarView.swift */,
 				D5D78DDB25250810007041BE /* Applications */,
 				D5D78DE42525086E007041BE /* Booking */,
 				D518C2F6250EA84F00288A48 /* Details */,
 				D5F89390263F3D5900578970 /* Schedule */,
+				D5F89397263F563200578970 /* Tutor */,
 				D518C2F5250EA83000288A48 /* Cancellation */,
 			);
 			path = Lessons;
@@ -2269,6 +2271,15 @@
 			path = Schedule;
 			sourceTree = "<group>";
 		};
+		D5F89397263F563200578970 /* Tutor */ = {
+			isa = PBXGroup;
+			children = (
+				D527B02124FEC53D003E81A9 /* TutorAvatarView.swift */,
+				D5F89395263F560D00578970 /* TutorCell.swift */,
+			);
+			path = Tutor;
+			sourceTree = "<group>";
+		};
 		D5FAE6782559DDCB00473A8B /* PhoneNumberOpener */ = {
 			isa = PBXGroup;
 			children = (
@@ -2951,6 +2962,7 @@
 				D54EFF192513D690004F14D3 /* Portfolio.swift in Sources */,
 				D5BDD502253B406300255190 /* AppState.swift in Sources */,
 				031378C9249A7DFF005FC49C /* LessonPlanCancellationPromptView.swift in Sources */,
+				D5F89396263F560D00578970 /* TutorCell.swift in Sources */,
 				D551126025FFDB0F009F3FD9 /* MailOpener.swift in Sources */,
 				D55C35FD25A3AB510023E56B /* CalendarSyncer.swift in Sources */,
 				D5AAF7DB23FB347C00E410F2 /* CollectionView.swift in Sources */,
