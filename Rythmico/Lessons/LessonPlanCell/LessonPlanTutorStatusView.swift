@@ -46,7 +46,7 @@ private extension LessonPlan.Status {
         switch self {
         case .pending,
              .reviewing([]):
-            return "Pending tutor applications"
+            return "Pending tutor applications..."
         case .reviewing(let applications):
             let count = applications.count
             return "\(count) tutor\(count == 1 ? "" : "s") applied" // TODO: plurals
