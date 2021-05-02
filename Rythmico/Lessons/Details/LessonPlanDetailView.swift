@@ -51,7 +51,7 @@ struct LessonPlanDetailView: View, TestableView {
                         }
 
                         SectionHeaderView(title: "Tutor")
-                        InlineContentAndTitleView(status: lessonPlan.status, summarized: false)
+                        LessonPlanTutorStatusView(status: lessonPlan.status, summarized: false)
                         if lessonPlan.status.isPending {
                             InfoBanner(text: "Potential tutors have received your request and will submit applications for your consideration.")
                         }
