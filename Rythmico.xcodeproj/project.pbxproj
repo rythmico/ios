@@ -592,7 +592,6 @@
 		D5F506652400619600CA4094 /* UIApplication+KeyboardDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506642400619600CA4094 /* UIApplication+KeyboardDismisser.swift */; };
 		D5F5067B2400788400CA4094 /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5067A2400788400CA4094 /* MultilineTextField.swift */; };
 		D5F5068C24046B1400CA4094 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5068B24046B1400CA4094 /* Spacing.swift */; };
-		D5F5068E240473CB00CA4094 /* FloatingInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5068D240473CB00CA4094 /* FloatingInputView.swift */; };
 		D5F506B02405A6A900CA4094 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506AF2405A6A900CA4094 /* Duration.swift */; };
 		D5F506B42405ED9300CA4094 /* RoundedThickOutlineContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */; };
 		D5F506B62406360900CA4094 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B52406360900CA4094 /* Student.swift */; };
@@ -1069,7 +1068,6 @@
 		D5F506642400619600CA4094 /* UIApplication+KeyboardDismisser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+KeyboardDismisser.swift"; sourceTree = "<group>"; };
 		D5F5067A2400788400CA4094 /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
 		D5F5068B24046B1400CA4094 /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
-		D5F5068D240473CB00CA4094 /* FloatingInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingInputView.swift; sourceTree = "<group>"; };
 		D5F506AF2405A6A900CA4094 /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
 		D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedThickOutlineContainer.swift; sourceTree = "<group>"; };
 		D5F506B52406360900CA4094 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
@@ -1643,7 +1641,6 @@
 				D505803725D3253F0028040F /* EditableView.swift */,
 				D56B253A2532433E00BC3932 /* ErrorText.swift */,
 				D54EFF312514C847004F14D3 /* ExpandableText.swift */,
-				D5F5068D240473CB00CA4094 /* FloatingInputView.swift */,
 				D52C554324DDC53400C295C4 /* FloatingView+Rythmico.swift */,
 				D52C554624DDC60600C295C4 /* FloatingView+Tutor.swift */,
 				D58DE1C025C05FD90013AEE8 /* Flow.swift */,
@@ -2713,7 +2710,6 @@
 				D5AFED3C25056300003FFC68 /* NotificationCenter+Sugar.swift in Sources */,
 				D593C7022550C03B00C684FF /* AppUpdatePrompt.swift in Sources */,
 				D5D9AEA325367E9B00A0ABCC /* LessonPlanBookingEntryView.swift in Sources */,
-				D5F5068E240473CB00CA4094 /* FloatingInputView.swift in Sources */,
 				D501587825375AA9005E02FA /* PorfolioView.swift in Sources */,
 				D58DE1CD25C0F0100013AEE8 /* UIColor+Hex.swift in Sources */,
 				D575C819254DD6C8001664AB /* AppSplash.swift in Sources */,
