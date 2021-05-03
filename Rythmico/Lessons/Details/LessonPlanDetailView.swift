@@ -84,7 +84,7 @@ struct LessonPlanDetailView: View, TestableView {
     @ViewBuilder
     private func actionButtons() -> some View {
         if let action = showRescheduleAlertAction {
-            RythmicoButton("Reschedule", style: RythmicoButtonStyle.secondary(), action: action)
+            RythmicoButton("Reschedule", style: RythmicoButtonStyle.tertiary(), action: action)
         }
         if let action = showCancelLessonPlanFormAction {
             Menu {
