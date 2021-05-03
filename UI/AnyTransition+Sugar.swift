@@ -5,7 +5,7 @@ extension AnyTransition {
     static func move(edgeWithSafeArea edge: Edge) -> AnyTransition {
         move(edge: .bottom).combined(
             with: .offset(
-                UIApplication.shared.windows[0].safeAreaInsets.offset(for: edge)
+                UIApplication.shared.windows.first?.safeAreaInsets.offset(for: edge) ?? .zero
             )
         )
     }
