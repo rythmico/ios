@@ -6,7 +6,7 @@ struct LessonSkippingContentView: View {
     var freeSkipUntil: Date
 
     var body: some View {
-        VStack(spacing: .spacingMedium) {
+        VStack(alignment: .leading, spacing: .spacingMedium) {
             if isFree {
                 Group {
                     Text("This will cancel your payment for this lesson.").rythmicoTextStyle(.body)
