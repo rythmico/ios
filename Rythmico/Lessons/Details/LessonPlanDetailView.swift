@@ -61,7 +61,7 @@ struct LessonPlanDetailView: View, TestableView {
             }
             .frame(maxWidth: .spacingMax)
 
-            FloatingActionMenu(actionButtons)
+            FloatingActionMenu(buttons)
         }
         .testable(self)
         .padding(.top, .spacingExtraSmall)
@@ -86,7 +86,7 @@ struct LessonPlanDetailView: View, TestableView {
     }
 
     @ArrayBuilder<FloatingActionMenu.Button>
-    private var actionButtons: [FloatingActionMenu.Button] {
+    private var buttons: [FloatingActionMenu.Button] {
         if let action = chooseTutorAction {
             .init(title: "Choose Tutor", isPrimary: true, action: action)
         }
