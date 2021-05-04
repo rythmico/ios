@@ -15,12 +15,10 @@ extension LessonPlanCancellationView {
                     }
                 }
 
-                FloatingView {
-                    HStack(spacing: .spacingSmall) {
-                        RythmicoButton("No", style: RythmicoButtonStyle.secondary(), action: noAction)
-                        RythmicoButton("Yes", style: RythmicoButtonStyle.tertiary(), action: yesAction)
-                    }
-                }
+                FloatingActionMenu([
+                    .init(title: "No", isPrimary: true, action: noAction),
+                    .init(title: "Yes", action: yesAction),
+                ])
             }
         }
 
