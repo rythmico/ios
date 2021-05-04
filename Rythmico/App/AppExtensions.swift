@@ -23,7 +23,7 @@ extension SwiftUI.App {
     func configureAppearance() {
         UINavigationBar.appearance().do { bar in
             UINavigationBarAppearance().do {
-                $0.configureWithOpaqueBackground()
+                $0.configureWithTransparentBackground()
                 $0.largeTitleTextAttributes = .rythmicoTextAttributes(color: .rythmicoForeground, style: .largeTitle)
                 $0.titleTextAttributes = .rythmicoTextAttributes(color: .rythmicoForeground, style: .subheadlineBold)
                 $0.titlePositionAdjustment.vertical = 1
