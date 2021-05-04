@@ -17,6 +17,12 @@ struct LessonPlanDetailView: View, TestableView {
     var lessonPlanReschedulingView: LessonReschedulingView? { !lessonPlan.status.isCancelled ? .reschedulingView(lessonPlan: lessonPlan) : nil }
     var lessonPlanCancellationView: LessonPlanCancellationView? { LessonPlanCancellationView(lessonPlan: lessonPlan) }
 
+    var chooseTutorAction: Action? {
+        lessonPlan.status.isReviewing
+            ? { state.lessonsContext = .reviewingLessonPlan(lessonPlan, .none) }
+            : nil
+    }
+
     @State
     private var isRescheduling = false // TODO: move to AppState
     var showRescheduleAlertAction: Action? {
@@ -81,6 +87,9 @@ struct LessonPlanDetailView: View, TestableView {
 
     @ArrayBuilder<FloatingActionMenu.Button>
     private var actionButtons: [FloatingActionMenu.Button] {
+        if let action = chooseTutorAction {
+            .init(title: "Choose Tutor", isPrimary: true, action: action)
+        }
         if let action = showRescheduleAlertAction {
             .init(title: "Reschedule", action: action)
         }
