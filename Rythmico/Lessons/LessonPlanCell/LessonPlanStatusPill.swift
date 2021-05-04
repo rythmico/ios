@@ -18,7 +18,7 @@ private extension LessonPlan.Status {
         case .reviewing(let applications):
             return "\(applications.count) Applied"
         case .scheduled:
-            return "Scheduled"
+            return "Active"
         case .cancelled:
             return "Cancelled"
         }
@@ -31,7 +31,7 @@ private extension LessonPlan.Status {
         case .reviewing:
             return .rythmicoDarkBurgundy
         case .scheduled:
-            return .clear
+            return .rythmicoDarkGreen
         case .cancelled:
             return Color(lightModeVariantHex: 0x111619, darkModeVariantHex: 0x9fa1a3)
         }
@@ -44,7 +44,7 @@ private extension LessonPlan.Status {
         case .reviewing:
             return .rythmicoLightBurgundy
         case .scheduled:
-            return .clear
+            return .rythmicoLightGreen
         case .cancelled:
             return Color(lightModeVariantHex: 0xDDE1E6, darkModeVariantHex: 0x424345)
         }
