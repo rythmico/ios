@@ -55,9 +55,7 @@ struct LessonPlanDetailView: View, TestableView {
             }
             .frame(maxWidth: .spacingMax)
 
-            FloatingView {
-                HStack(spacing: .spacingSmall, content: actionButtons)
-            }
+            FloatingActionMenu(actionButtons)
         }
         .testable(self)
         .padding(.top, .spacingExtraSmall)
@@ -81,17 +79,13 @@ struct LessonPlanDetailView: View, TestableView {
         }
     }
 
-    @ViewBuilder
-    private func actionButtons() -> some View {
+    @ArrayBuilder<FloatingActionMenu.Button>
+    private var actionButtons: [FloatingActionMenu.Button] {
         if let action = showRescheduleAlertAction {
-            RythmicoButton("Reschedule", style: RythmicoButtonStyle.tertiary(), action: action)
+            .init(title: "Reschedule", action: action)
         }
         if let action = showCancelLessonPlanFormAction {
-            Menu {
-                Button("Cancel Lesson Plan", action: action)
-            } label: {
-                RythmicoButton("More...", style: RythmicoButtonStyle.tertiary(), action: {})
-            }
+            .init(title: "Cancel Plan", action: action)
         }
     }
 }
