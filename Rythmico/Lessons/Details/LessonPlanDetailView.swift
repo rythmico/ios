@@ -39,29 +39,41 @@ struct LessonPlanDetailView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        VStack(spacing: 0) {
-            VStack(spacing: .spacingExtraLarge) {
-                TitleContentView(title: title) {
-                    Pill(lessonPlan: lessonPlan)
-                }
-                .padding(.horizontal, .spacingMedium)
-
-                ScrollView {
-                    VStack(alignment: .leading, spacing: .spacingMedium) {
-                        SectionHeaderView(title: "Plan Details")
-                        LessonPlanScheduleView(lessonPlan: lessonPlan)
-                        AddressLabel(address: lessonPlan.address)
-
-                        SectionHeaderView(title: "Tutor")
-                        tutorContent()
-                    }
-                    .foregroundColor(.rythmicoGray90)
-                    .padding(.horizontal, .spacingMedium)
-                }
+        ZStack {
+            ZStack {
+                Image(uiImage: lessonPlan.instrument.icon.image.resized(width: 200))
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 200)
+                    .opacity(0.08)
             }
-            .frame(maxWidth: .spacingMax)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+            .offset(x: 40, y: -70)
 
-            FloatingActionMenu(buttons)
+            VStack(spacing: 0) {
+                VStack(spacing: .spacingExtraLarge) {
+                    TitleContentView(title: title) {
+                        Pill(lessonPlan: lessonPlan)
+                    }
+                    .padding(.horizontal, .spacingMedium)
+
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: .spacingMedium) {
+                            SectionHeaderView(title: "Plan Details")
+                            LessonPlanScheduleView(lessonPlan: lessonPlan)
+                            AddressLabel(address: lessonPlan.address)
+
+                            SectionHeaderView(title: "Tutor")
+                            tutorContent()
+                        }
+                        .foregroundColor(.rythmicoGray90)
+                        .padding(.horizontal, .spacingMedium)
+                    }
+                }
+                .frame(maxWidth: .spacingMax)
+
+                FloatingActionMenu(buttons)
+            }
         }
         .testable(self)
         .padding(.top, .spacingExtraSmall)
