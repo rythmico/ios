@@ -1,11 +1,5 @@
 import Foundation
 
-extension Array {
-    public subscript(safe index: Index) -> Element? {
-        dropFirst(index).first
-    }
-}
-
 @resultBuilder
 public struct ArrayBuilder<Element> {
     public typealias Array = Swift.Array<Element>
