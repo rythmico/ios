@@ -57,8 +57,7 @@ struct LessonDetailView: View, TestableView {
             }
             .frame(maxWidth: .spacingMax)
 
-            ActionList(actions, showBottomSeparator: false)
-                .foregroundColor(.rythmicoGray90)
+            FloatingActionMenu(buttons)
         }
         .testable(self)
         .padding(.top, .spacingExtraSmall)
@@ -70,10 +69,10 @@ struct LessonDetailView: View, TestableView {
         }
     }
 
-    @ArrayBuilder<ActionList.Button>
-    private var actions: [ActionList.Button] {
+    @ArrayBuilder<FloatingActionMenu.Button>
+    private var buttons: [FloatingActionMenu.Button] {
         if let action = showRescheduleAlertAction {
-            .init(title: "Reschedule", action: action)
+            .init(title: "Reschedule Lesson", action: action)
         }
         if let action = showSkipLessonFormAction {
             .init(title: "Skip Lesson", action: action)
