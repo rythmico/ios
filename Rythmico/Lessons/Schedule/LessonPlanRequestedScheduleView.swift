@@ -19,10 +19,10 @@ struct LessonPlanRequestedScheduleView: View {
                 }
                 HStack(spacing: .spacingExtraSmall) {
                     Image(decorative: Asset.iconTime.name).renderingMode(.template)
-                    startTimeAndDurationText
+                    timeText
                 }
                 HStack(spacing: .spacingExtraSmall) {
-                    Image(decorative: Asset.iconTime.name).hidden()
+                    Image(systemSymbol: .calendar).resizable().aspectRatio(contentMode: .fit).frame(width: 16)
                     frequencyText
                 }
             }
@@ -42,7 +42,7 @@ struct LessonPlanRequestedScheduleView: View {
         .fixedSize(horizontal: false, vertical: true)
     }
 
-    private static let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
+    private static let startDateFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
     private var startDate: String { Self.startDateFormatter.string(from: schedule.startDate) }
     private var startDateText: some View {
         Text(separator: .whitespace) {
@@ -52,15 +52,10 @@ struct LessonPlanRequestedScheduleView: View {
         .rythmicoTextStyle(.body)
     }
 
-    private static let startTimeFormatter = Current.dateFormatter(format: .custom("h:mma"))
-    private var startTime: String { Self.startTimeFormatter.string(from: schedule.startDate) }
-    private var startTimeAndDurationText: some View {
-        Text(separator: .whitespace) {
-            startTime
-            "for".text.rythmicoFontWeight(.body)
-            schedule.duration.title
-        }
-        .rythmicoTextStyle(.bodyBold)
+    private static let timeFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))
+    private var time: String { Self.timeFormatter.string(from: schedule.startDate, to: schedule.endDate) }
+    private var timeText: some View {
+        Text(time).rythmicoTextStyle(.bodyBold)
     }
 
     private static let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
@@ -68,8 +63,7 @@ struct LessonPlanRequestedScheduleView: View {
     private var frequencyText: some View {
         Text(separator: .whitespace) {
             "Recurring"
-            "every \(frequencyDay)".text.rythmicoFontWeight(.bodyBold)
-            "at the same time and for the same duration"
+            "weekly".text.rythmicoFontWeight(.bodyBold)
         }
         .rythmicoTextStyle(.body)
     }
