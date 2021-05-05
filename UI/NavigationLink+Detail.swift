@@ -27,4 +27,12 @@ extension View {
     ) -> some View {
         background(NavigationLink(destination: content, item: item, label: EmptyView.init))
     }
+
+    @ViewBuilder
+    func detail<Destination: View>(
+        isActive: Binding<Bool>,
+        @ViewBuilder content: () -> Destination
+    ) -> some View {
+        background(NavigationLink(destination: content(), isActive: isActive, label: EmptyView.init))
+    }
 }
