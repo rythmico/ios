@@ -3,10 +3,20 @@ import MultiModal
 import FoundationSugar
 
 struct LessonPlanDetailView: View, TestableView {
-    @ObservedObject
-    private var state = Current.state
-
     var lessonPlan: LessonPlan
+    private var context: AppState.LessonsContext {
+        get { contextBinding.wrappedValue }
+        nonmutating set { contextBinding.wrappedValue = newValue }
+    }
+    private var contextBinding: Binding<AppState.LessonsContext> { externalContext ?? $internalContext }
+    private var externalContext: Binding<AppState.LessonsContext>?
+    @State
+    private var internalContext: AppState.LessonsContext = .none
+
+    init(lessonPlan: LessonPlan, context: Binding<AppState.LessonsContext>?) {
+        self.lessonPlan = lessonPlan
+        self.externalContext = context
+    }
 
     var title: String {
         [lessonPlan.student.name.firstWord, "\(lessonPlan.instrument.assimilatedName) Lessons"]
@@ -19,7 +29,7 @@ struct LessonPlanDetailView: View, TestableView {
 
     var chooseTutorAction: Action? {
         lessonPlan.status.isReviewing
-            ? { state.lessonsContext = .reviewingLessonPlan(lessonPlan, .none) }
+            ? { context = .reviewingLessonPlan(lessonPlan, .none) }
             : nil
     }
 
@@ -33,7 +43,7 @@ struct LessonPlanDetailView: View, TestableView {
 
     var showCancelLessonPlanFormAction: Action? {
         lessonPlanCancellationView != nil
-            ? { state.lessonsContext.isCancellingLessonPlan = true }
+            ? { context = .viewingLessonPlan(lessonPlan, isCancelling: true) }
             : nil
     }
 
@@ -80,7 +90,7 @@ struct LessonPlanDetailView: View, TestableView {
         .navigationBarTitleDisplayMode(.inline)
         .multiModal {
             $0.alert(isPresented: $isRescheduling) { .reschedulingView(lessonPlan: lessonPlan) }
-            $0.sheet(isPresented: $state.lessonsContext.isCancellingLessonPlan) { lessonPlanCancellationView }
+            $0.sheet(isPresented: contextBinding.isCancellingLessonPlan) { lessonPlanCancellationView }
         }
     }
 
@@ -114,7 +124,7 @@ struct LessonPlanDetailView: View, TestableView {
 #if DEBUG
 struct LessonPlanDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlanDetailView(lessonPlan: .jesseDrumsPlanStub)
+        LessonPlanDetailView(lessonPlan: .jesseDrumsPlanStub, context: nil)
 //            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }
