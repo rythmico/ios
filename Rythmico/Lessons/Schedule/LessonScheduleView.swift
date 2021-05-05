@@ -11,10 +11,10 @@ struct LessonScheduleView: View {
     }
 
     @ViewBuilder
-    private func label(icon: ImageAsset, title: String) -> some View {
+    private func label(icon: ImageAsset, title: Text) -> some View {
         HStack(spacing: .spacingUnit * 2) {
             Image(decorative: icon.name).renderingMode(.template)
-            Text(title)
+            title
                 .rythmicoTextStyle(.body)
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
@@ -22,8 +22,12 @@ struct LessonScheduleView: View {
     }
 
     private var schedule: Schedule { lesson.schedule }
-    private var dateText: String { Self.dateFormatter.string(from: schedule.startDate) }
-    private var timeText: String { Self.timeFormatter.string(from: schedule.startDate, to: schedule.endDate) }
+    private var dateText: Text {
+        Self.dateFormatter.string(from: schedule.startDate).text.rythmicoFontWeight(.bodyBold)
+    }
+    private var timeText: Text {
+        Self.timeFormatter.string(from: schedule.startDate, to: schedule.endDate).text.rythmicoFontWeight(.bodyBold)
+    }
 
     private static let dateFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
     private static let timeFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))

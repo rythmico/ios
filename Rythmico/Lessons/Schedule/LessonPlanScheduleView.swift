@@ -1,4 +1,5 @@
 import SwiftUI
+import TextBuilder
 
 struct LessonPlanScheduleView: View {
     var lessonPlan: LessonPlan
@@ -11,10 +12,10 @@ struct LessonPlanScheduleView: View {
     }
 
     @ViewBuilder
-    private func label(icon: ImageAsset, title: String) -> some View {
+    private func label(icon: ImageAsset, title: Text) -> some View {
         HStack(spacing: .spacingUnit * 2) {
             Image(decorative: icon.name).renderingMode(.template)
-            Text(title)
+            title
                 .rythmicoTextStyle(.body)
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
@@ -22,8 +23,14 @@ struct LessonPlanScheduleView: View {
     }
 
     private var schedule: Schedule { lessonPlan.schedule }
-    private var dateText: String { "Every " + Self.dateFormatter.string(from: schedule.startDate) }
-    private var timeText: String { Self.timeFormatter.string(from: schedule.startDate, to: schedule.endDate) }
+    @SpacedTextBuilder
+    private var dateText: Text {
+        "Every"
+        Self.dateFormatter.string(from: schedule.startDate).text.rythmicoFontWeight(.bodyBold)
+    }
+    private var timeText: Text {
+        Self.timeFormatter.string(from: schedule.startDate, to: schedule.endDate).text.rythmicoFontWeight(.bodyBold)
+    }
 
     private static let dateFormatter = Current.dateFormatter(format: .custom("EEEE"))
     private static let timeFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))
