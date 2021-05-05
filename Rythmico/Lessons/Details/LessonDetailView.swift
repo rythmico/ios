@@ -9,9 +9,17 @@ struct LessonDetailView: View, TestableView {
     var lesson: Lesson
     var lessonPlan: LessonPlan? { Current.lessonPlanRepository.firstById(lesson.lessonPlanId) }
 
+    var lessonPlanDetailView: LessonPlanDetailView? { lessonPlan.flatMap { LessonPlanDetailView(lessonPlan: $0, context: nil) } }
     var lessonReschedulingView: LessonReschedulingView? { lessonPlan?.status.isCancelled == false ? .reschedulingView(lesson: lesson, lessonPlan: lessonPlan) : nil }
     var lessonSkippingView: LessonSkippingView? { LessonSkippingView(lesson: lesson) }
-    var lessonPlanCancellationView: LessonPlanCancellationView? { lessonPlan.flatMap(LessonPlanCancellationView.init) }
+
+    @State
+    private var isShowingPlanDetail = false
+    var showLessonPlanDetailAction: Action? {
+        lessonPlanDetailView != nil
+            ? { isShowingPlanDetail = true }
+            : nil
+    }
 
     @State
     private var isRescheduling = false // TODO: move to AppState
@@ -24,12 +32,6 @@ struct LessonDetailView: View, TestableView {
     var showSkipLessonFormAction: Action? {
         lessonSkippingView != nil
             ? { state.lessonsContext.isSkippingLesson = true }
-            : nil
-    }
-
-    var showCancelLessonPlanFormAction: Action? {
-        lessonPlanCancellationView != nil
-            ? { state.lessonsContext.isCancellingLessonPlan = true }
             : nil
     }
 
@@ -62,23 +64,23 @@ struct LessonDetailView: View, TestableView {
         .testable(self)
         .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
+        .detail(isActive: $isShowingPlanDetail) { lessonPlanDetailView }
         .multiModal {
             $0.alert(isPresented: $isRescheduling) { .reschedulingView(lesson: lesson, lessonPlan: lessonPlan) }
             $0.sheet(isPresented: $state.lessonsContext.isSkippingLesson) { lessonSkippingView }
-            $0.sheet(isPresented: $state.lessonsContext.isCancellingLessonPlan) { lessonPlanCancellationView }
         }
     }
 
     @ArrayBuilder<FloatingActionMenu.Button>
     private var buttons: [FloatingActionMenu.Button] {
+        if let action = showLessonPlanDetailAction {
+            .init(title: "View Plan", isPrimary: true, action: action)
+        }
         if let action = showRescheduleAlertAction {
             .init(title: "Reschedule Lesson", action: action)
         }
         if let action = showSkipLessonFormAction {
             .init(title: "Skip Lesson", action: action)
-        }
-        if let action = showCancelLessonPlanFormAction {
-            .init(title: "Cancel Lesson Plan", action: action)
         }
     }
 }
