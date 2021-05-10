@@ -6,7 +6,7 @@ struct LessonSummaryCell: View {
     @Binding var selection: Lesson?
 
     @ObservedObject
-    private var state = Current.state
+    private var navigation = Current.navigation
 
     var subtitle: String {
         switch lesson.status {

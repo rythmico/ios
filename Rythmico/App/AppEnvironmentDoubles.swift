@@ -29,7 +29,7 @@ extension AppEnvironment {
 extension AppEnvironment {
     static var dummy: AppEnvironment {
         AppEnvironment(
-            state: AppState(),
+            navigation: AppNavigation(),
 
             remoteConfig: RemoteConfigDummy(),
 

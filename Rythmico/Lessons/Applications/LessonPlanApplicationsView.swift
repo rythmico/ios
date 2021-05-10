@@ -4,7 +4,7 @@ struct LessonPlanApplicationsView: View {
     private var lessonPlan: LessonPlan
     private var applications: [LessonPlan.Application]
     @ObservedObject
-    private var state = Current.state
+    private var navigation = Current.navigation
 
     init?(_ lessonPlan: LessonPlan) {
         guard let applications = lessonPlan.status.reviewingValue else {

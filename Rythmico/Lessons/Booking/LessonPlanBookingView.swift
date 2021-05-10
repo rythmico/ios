@@ -141,7 +141,7 @@ struct LessonPlanBookingView: View {
 
     func checkoutSucceeded(_ lessonPlan: LessonPlan) {
         Current.lessonPlanRepository.replaceById(lessonPlan)
-        Current.state.lessonsContext = .bookedLessonPlan(lessonPlan, application)
+        Current.navigation.lessonsNavigation = .bookedLessonPlan(lessonPlan, application)
     }
 }
 

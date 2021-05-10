@@ -48,7 +48,7 @@ struct LessonPlanSummaryCellMainContent: View {
     }
 
     var body: some View {
-        Button(action: { Current.state.lessonsContext.viewingLessonPlan = lessonPlan }) {
+        Button(action: { Current.navigation.lessonsNavigation.viewingLessonPlan = lessonPlan }) {
             VStack(alignment: .leading, spacing: 0) {
                 Text(title)
                     .rythmicoTextStyle(.subheadlineBold)
@@ -80,7 +80,7 @@ struct LessonPlanSummaryCellAccessory: View {
         if lessonPlan.status.isReviewing {
             Divider().overlay(Color.rythmicoGray20)
 
-            Button(action: { Current.state.lessonsContext.reviewingLessonPlan = lessonPlan }) {
+            Button(action: { Current.navigation.lessonsNavigation.reviewingLessonPlan = lessonPlan }) {
                 HStack(spacing: .spacingExtraSmall) {
                     Text("Choose Tutor")
                         .rythmicoTextStyle(.bodySemibold)

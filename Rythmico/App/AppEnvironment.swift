@@ -5,7 +5,7 @@ import Firebase
 import Stripe
 
 struct AppEnvironment {
-    var state: AppState
+    var navigation: AppNavigation
 
     var remoteConfigCoordinator: RemoteConfigCoordinator
     var remoteConfig: RemoteConfigServiceProtocol
@@ -68,7 +68,7 @@ struct AppEnvironment {
     var cardSetupCoordinator: () -> CardSetupCoordinator
 
     init(
-        state: AppState,
+        navigation: AppNavigation,
 
         remoteConfig: RemoteConfigServiceProtocol,
 
@@ -129,7 +129,7 @@ struct AppEnvironment {
         cardSetupCredentialFetchingService: APIServiceBase<GetCardSetupCredentialRequest>,
         cardSetupService: CardSetupServiceProtocol
     ) {
-        self.state = state
+        self.navigation = navigation
 
         let remoteConfigCoordinator = RemoteConfigCoordinator(service: remoteConfig)
         self.remoteConfigCoordinator = remoteConfigCoordinator
@@ -221,7 +221,7 @@ struct AppEnvironment {
 
 extension AppEnvironment {
     static let live = AppEnvironment.initLive { .init(
-        state: AppState(),
+        navigation: AppNavigation(),
 
         remoteConfig: RemoteConfig(),
 

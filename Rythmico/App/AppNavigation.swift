@@ -3,45 +3,45 @@ import FoundationSugar
 import EnumKit
 import Then
 
-final class AppState: ObservableObject {
-    @Published var tab: MainView.Tab = .lessons
+final class AppNavigation: ObservableObject {
+    @Published var selectedTab: MainView.Tab = .lessons
     @Published var lessonsFilter: LessonsView.Filter = .upcoming
     // TODO: use optional when Binding allows chaining optional sub-bindings.
-    // e.g. $state.lessonsContext(?).reviewingValues(?).0
-    @Published var lessonsContext: LessonsContext = .none
+    // e.g. $navigation.lessonsNavigation(?).reviewingValues(?).0
+    @Published var lessonsNavigation: LessonsNavigation = .none
 
     func reset() {
-        tab = .lessons
+        selectedTab = .lessons
         lessonsFilter = .upcoming
-        lessonsContext = .none
+        lessonsNavigation = .none
     }
 }
 
-extension AppState {
-    enum LessonsContext: Equatable, CaseAccessible {
+extension AppNavigation {
+    enum LessonsNavigation: Equatable, CaseAccessible {
         case none
 
-        enum ReviewingLessonPlanContext: Equatable, CaseAccessible {
+        enum ReviewingLessonPlanNavigation: Equatable, CaseAccessible {
             case none
             case reviewingApplication(LessonPlan.Application, isBooking: Bool = false)
         }
 
         case requestingLessonPlan
         case viewingLessonPlan(LessonPlan, isCancelling: Bool = false)
-        case reviewingLessonPlan(LessonPlan, ReviewingLessonPlanContext = .none)
+        case reviewingLessonPlan(LessonPlan, ReviewingLessonPlanNavigation = .none)
         case bookedLessonPlan(LessonPlan, LessonPlan.Application)
 
-        enum ViewingLessonContext: Equatable, CaseAccessible {
+        enum ViewingLessonNavigation: Equatable, CaseAccessible {
             case none
             case skippingLesson
             case cancellingLessonPlan
         }
 
-        case viewingLesson(Lesson, ViewingLessonContext = .none)
+        case viewingLesson(Lesson, ViewingLessonNavigation = .none)
     }
 }
 
-extension AppState.LessonsContext {
+extension AppNavigation.LessonsNavigation {
     // TODO: enable when Swift allows this (put @dynamicMemberLookup above enum declaration)
 //    subscript<Value>(dynamicMember keyPath: KeyPath<Self.Type, (Value) -> Self>) -> Value? {
 //        self[case: Self.self[keyPath: keyPath]]
@@ -94,13 +94,13 @@ extension AppState.LessonsContext {
     }
 
     var reviewingApplication: LessonPlan.Application? {
-        get { self[case: Self.reviewingLessonPlan]?.1[case: ReviewingLessonPlanContext.reviewingApplication]?.0 }
+        get { self[case: Self.reviewingLessonPlan]?.1[case: ReviewingLessonPlanNavigation.reviewingApplication]?.0 }
         set { self[case: Self.reviewingLessonPlan]?.1 = newValue.map { .reviewingApplication($0) } ?? .none }
     }
 
     var isBookingLessonPlan: Bool {
-        get { self[case: Self.reviewingLessonPlan]?.1[case: ReviewingLessonPlanContext.reviewingApplication]?.1 == true }
-        set { self[case: Self.reviewingLessonPlan]?.1[case: ReviewingLessonPlanContext.reviewingApplication]?.1 = newValue }
+        get { self[case: Self.reviewingLessonPlan]?.1[case: ReviewingLessonPlanNavigation.reviewingApplication]?.1 == true }
+        set { self[case: Self.reviewingLessonPlan]?.1[case: ReviewingLessonPlanNavigation.reviewingApplication]?.1 = newValue }
     }
 
     var bookingValues: (lessonPlan: LessonPlan, application: LessonPlan.Application)? {

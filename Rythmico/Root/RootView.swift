@@ -48,7 +48,7 @@ struct RootView: View, TestableView {
             Current.keychain.appleAuthorizationUserId = nil
             DispatchQueue.main.asyncAfter(deadline: .now() + .durationMedium * 2) {
                 Current.lessonPlanRepository.reset()
-                Current.state.reset()
+                Current.navigation.reset()
             }
         }
     }

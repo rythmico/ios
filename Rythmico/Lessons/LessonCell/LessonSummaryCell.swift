@@ -28,7 +28,7 @@ struct LessonSummaryCellMainContent: View {
     }
 
     var body: some View {
-        Button(action: { Current.state.lessonsContext.viewingLesson = lesson }) {
+        Button(action: { Current.navigation.lessonsNavigation.viewingLesson = lesson }) {
             VStack(alignment: .leading, spacing: 0) {
                 Text(lesson.title)
                     .foregroundColor(lesson.status.isSkipped ? .rythmicoGray90 : .rythmicoForeground)

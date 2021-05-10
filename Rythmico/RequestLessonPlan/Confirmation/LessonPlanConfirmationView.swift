@@ -101,7 +101,7 @@ struct LessonPlanConfirmationView: View, TestableView {
 
     func doContinue() {
         Current.pushNotificationAuthorizationCoordinator.requestAuthorization()
-        Current.state.lessonsContext = .none
+        Current.navigation.lessonsNavigation = .none
     }
 }
 

@@ -7,11 +7,11 @@ struct BookingRequestsTabView: View {
     }
 
     @ObservedObject
-    private var state = Current.state
+    private var navigation = Current.navigation
 
     var body: some View {
         VStack(spacing: 0) {
-            Picker("", selection: $state.requestsTab) {
+            Picker("", selection: $navigation.requestsFilter) {
                 ForEach(Tab.allCases, id: \.self) {
                     Text($0.rawValue)
                 }
@@ -24,9 +24,9 @@ struct BookingRequestsTabView: View {
 
             Divider()
 
-            if state.requestsTab == .open {
+            if navigation.requestsFilter == .open {
                 BookingRequestsView()
-            } else if state.requestsTab == .applied {
+            } else if navigation.requestsFilter == .applied {
                 BookingApplicationsView()
             }
         }

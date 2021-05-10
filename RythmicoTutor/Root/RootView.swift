@@ -54,7 +54,7 @@ struct RootView: View, TestableView {
 //                Current.bookingsRepository.reset()
 //                Current.bookingRequestRepository.reset()
 //                Current.bookingApplicationRepository.reset()
-                Current.state.reset()
+                Current.navigation.reset()
             }
         }
     }

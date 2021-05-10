@@ -28,7 +28,7 @@ struct LessonPlanApplicationsGridLink: View {
     var application: LessonPlan.Application
 
     @ObservedObject
-    private var state = Current.state
+    private var navigation = Current.navigation
 
     var body: some View {
         NavigationLink(
@@ -37,7 +37,7 @@ struct LessonPlanApplicationsGridLink: View {
                 application: application
             ),
             tag: application,
-            selection: $state.lessonsContext.reviewingApplication
+            selection: $navigation.lessonsNavigation.reviewingApplication
         ) {
             LessonPlanApplicationCell(application)
         }

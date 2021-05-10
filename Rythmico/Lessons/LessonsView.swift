@@ -11,7 +11,7 @@ struct LessonsView: View, TestableView {
     @Environment(\.scenePhase)
     private var scenePhase
     @ObservedObject
-    private var state = Current.state
+    private var navigation = Current.navigation
     @ObservedObject
     private var coordinator = Current.lessonPlanFetchingCoordinator
     @ObservedObject
@@ -24,23 +24,23 @@ struct LessonsView: View, TestableView {
     let inspection = SelfInspection()
     var body: some View {
         VStack(spacing: 0) {
-            TabMenuView(tabs: Filter.allCases, selection: $state.lessonsFilter)
+            TabMenuView(tabs: Filter.allCases, selection: $navigation.lessonsFilter)
             LessonsCollectionView(
                 previousLessonPlans: repository.previousItems,
                 currentLessonPlans: repository.items,
-                filter: state.lessonsFilter
+                filter: navigation.lessonsFilter
             )
         }
         .accentColor(.rythmicoPurple)
         .testable(self)
-        .onReceive(coordinator.$state.zip(state.onLessonsTabRootPublisher).b, perform: fetch)
+        .onReceive(coordinator.$state.zip(navigation.onLessonsTabRootPublisher).b, perform: fetch)
         // FIXME: double HTTP request for some reason
 //        .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
-        .detail(item: $state.lessonsContext.viewingLesson, content: LessonDetailView.init)
-        .detail(item: $state.lessonsContext.viewingLessonPlan) { LessonPlanDetailView(lessonPlan: $0, context: $state.lessonsContext) }
-        .detail(item: $state.lessonsContext.reviewingLessonPlan, content: LessonPlanApplicationsView.init)
+        .detail(item: $navigation.lessonsNavigation.viewingLesson, content: LessonDetailView.init)
+        .detail(item: $navigation.lessonsNavigation.viewingLessonPlan) { LessonPlanDetailView(lessonPlan: $0, context: $navigation.lessonsNavigation) }
+        .detail(item: $navigation.lessonsNavigation.reviewingLessonPlan, content: LessonPlanApplicationsView.init)
     }
 
     private func fetch() {
@@ -49,9 +49,9 @@ struct LessonsView: View, TestableView {
     }
 }
 
-private extension AppState {
+private extension AppNavigation {
     var onLessonsTabRootPublisher: AnyPublisher<Void, Never> {
-        $tab.combineLatest($lessonsContext)
+        $selectedTab.combineLatest($lessonsNavigation)
             .filter { $0 == (.lessons, .none) }
             .map { _ in () }
             .eraseToAnyPublisher()

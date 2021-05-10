@@ -46,7 +46,7 @@ struct LessonPlanApplicationDetailView: View {
     }
 
     private func book() {
-        Current.state.lessonsContext.isBookingLessonPlan = true
+        Current.navigation.lessonsNavigation.isBookingLessonPlan = true
     }
 
     private static let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))

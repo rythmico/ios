@@ -5,8 +5,8 @@ struct LessonsCollectionView: View {
     @State private var selectedLesson: Lesson?
 
     @ObservedObject
-    private var state = Current.state
-    private var filter: BookingsTabView.Tab { state.scheduleTab }
+    private var navigation = Current.navigation
+    private var filter: BookingsTabView.Tab { navigation.scheduleFilter }
 
     var days: [Date] {
         let unsortedDays = Array(lessons.keys)

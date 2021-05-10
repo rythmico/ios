@@ -4,16 +4,16 @@ import FoundationSugar
 
 struct LessonPlanDetailView: View, TestableView {
     var lessonPlan: LessonPlan
-    private var context: AppState.LessonsContext {
+    private var context: AppNavigation.LessonsNavigation {
         get { contextBinding.wrappedValue }
         nonmutating set { contextBinding.wrappedValue = newValue }
     }
-    private var contextBinding: Binding<AppState.LessonsContext> { externalContext ?? $internalContext }
-    private var externalContext: Binding<AppState.LessonsContext>?
+    private var contextBinding: Binding<AppNavigation.LessonsNavigation> { externalContext ?? $internalContext }
+    private var externalContext: Binding<AppNavigation.LessonsNavigation>?
     @State
-    private var internalContext: AppState.LessonsContext = .none
+    private var internalContext: AppNavigation.LessonsNavigation = .none
 
-    init(lessonPlan: LessonPlan, context: Binding<AppState.LessonsContext>?) {
+    init(lessonPlan: LessonPlan, context: Binding<AppNavigation.LessonsNavigation>?) {
         self.lessonPlan = lessonPlan
         self.externalContext = context
     }
@@ -34,7 +34,7 @@ struct LessonPlanDetailView: View, TestableView {
     }
 
     @State
-    private var isRescheduling = false // TODO: move to AppState
+    private var isRescheduling = false // TODO: move to AppNavigation
     var showRescheduleAlertAction: Action? {
         lessonPlanReschedulingView != nil
             ? { isRescheduling = true }

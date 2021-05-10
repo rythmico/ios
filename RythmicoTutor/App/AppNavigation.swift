@@ -1,24 +1,24 @@
 import SwiftUI
 import Then
 
-final class AppState: ObservableObject {
-    @Published var tab: MainView.Tab = .schedule
-    @Published var scheduleTab: BookingsTabView.Tab = .upcoming
-    @Published var requestsTab: BookingRequestsTabView.Tab = .open
+final class AppNavigation: ObservableObject {
+    @Published var selectedTab: MainView.Tab = .schedule
+    @Published var scheduleFilter: BookingsTabView.Tab = .upcoming
+    @Published var requestsFilter: BookingRequestsTabView.Tab = .open
     // TODO: use optional when Binding allows chaining optional sub-bindings.
-    // e.g. $state.requestsContext(?).reviewingValues(?).0
-    @Published var requestsContext: RequestsContext = .none
+    // e.g. $navigation.requestsContext(?).reviewingValues(?).0
+    @Published var requestsNavigation: RequestsNavigation = .none
 
     func reset() {
-        tab = .schedule
-        scheduleTab = .upcoming
-        requestsTab = .open
-        requestsContext = .none
+        selectedTab = .schedule
+        scheduleFilter = .upcoming
+        requestsFilter = .open
+        requestsNavigation = .none
     }
 }
 
-extension AppState {
-    enum RequestsContext: Equatable {
+extension AppNavigation {
+    enum RequestsNavigation: Equatable {
         case none
         case viewingRequest(BookingRequest)
         case applyingToRequest(BookingRequest)
@@ -26,7 +26,7 @@ extension AppState {
     }
 }
 
-extension AppState.RequestsContext {
+extension AppNavigation.RequestsNavigation {
     var selectedRequest: BookingRequest? {
         get {
             switch self {

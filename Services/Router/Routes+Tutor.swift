@@ -9,25 +9,25 @@ enum Route {
 
 extension Router {
     func open(_ route: Route) {
-        let state = Current.state
+        let navigation = Current.navigation
 
         switch route {
         case .bookingRequests:
-            state.tab = .requests
-            state.requestsTab = .open
-            state.requestsContext = .none
+            navigation.selectedTab = .requests
+            navigation.requestsFilter = .open
+            navigation.requestsNavigation = .none
         case .bookingApplications:
-            state.tab = .requests
-            state.requestsTab = .applied
-            state.requestsContext = .none
+            navigation.selectedTab = .requests
+            navigation.requestsFilter = .applied
+            navigation.requestsNavigation = .none
         case .viewingRequest(let request):
-            state.tab = .requests
-            state.requestsTab = .open
-            state.requestsContext = .viewingRequest(request)
+            navigation.selectedTab = .requests
+            navigation.requestsFilter = .open
+            navigation.requestsNavigation = .viewingRequest(request)
         case .viewingApplication(let application):
-            state.tab = .requests
-            state.requestsTab = .applied
-            state.requestsContext = .viewingApplication(application)
+            navigation.selectedTab = .requests
+            navigation.requestsFilter = .applied
+            navigation.requestsNavigation = .viewingApplication(application)
         }
     }
 }

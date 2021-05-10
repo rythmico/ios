@@ -4,7 +4,7 @@ import FoundationSugar
 
 struct LessonDetailView: View, TestableView {
     @ObservedObject
-    private var state = Current.state
+    private var navigation = Current.navigation
 
     var lesson: Lesson
     var lessonPlan: LessonPlan? { Current.lessonPlanRepository.firstById(lesson.lessonPlanId) }
@@ -22,7 +22,7 @@ struct LessonDetailView: View, TestableView {
     }
 
     @State
-    private var isRescheduling = false // TODO: move to AppState
+    private var isRescheduling = false // TODO: move to AppNavigation
     var showRescheduleAlertAction: Action? {
         lessonReschedulingView != nil
             ? { isRescheduling = true }
@@ -31,7 +31,7 @@ struct LessonDetailView: View, TestableView {
 
     var showSkipLessonFormAction: Action? {
         lessonSkippingView != nil
-            ? { state.lessonsContext.isSkippingLesson = true }
+            ? { navigation.lessonsNavigation.isSkippingLesson = true }
             : nil
     }
 
@@ -68,7 +68,7 @@ struct LessonDetailView: View, TestableView {
         .detail(isActive: $isShowingPlanDetail) { lessonPlanDetailView }
         .multiModal {
             $0.alert(isPresented: $isRescheduling) { .reschedulingView(lesson: lesson, lessonPlan: lessonPlan) }
-            $0.sheet(isPresented: $state.lessonsContext.isSkippingLesson) { lessonSkippingView }
+            $0.sheet(isPresented: $navigation.lessonsNavigation.isSkippingLesson) { lessonSkippingView }
         }
     }
 

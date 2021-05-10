@@ -13,14 +13,14 @@ struct MainView: View, TestableView {
     }
 
     @ObservedObject
-    private var state = Current.state
+    private var navigation = Current.navigation
     @State
     private var hasFetchedLessonPlansAtLeastOnce = false
     @ObservedObject
     private var lessonPlanFetchingCoordinator = Current.lessonPlanFetchingCoordinator
 
     func presentRequestLessonFlow() {
-        state.lessonsContext = .requestingLessonPlan
+        navigation.lessonsNavigation = .requestingLessonPlan
     }
 
     func onLessonPlansFetched(_ lessonPlans: [LessonPlan]) {
@@ -36,7 +36,7 @@ struct MainView: View, TestableView {
     let inspection = SelfInspection()
     var body: some View {
         MainViewContent(
-            tabs: Tab.allCases, selection: $state.tab,
+            tabs: Tab.allCases, selection: $navigation.selectedTab,
             navigationTitle: \.title, leadingItem: leadingItem, trailingItem: trailingItem,
             content: content,
             tabTitle: \.uppercasedTitle, tabIcons: icon
@@ -47,10 +47,10 @@ struct MainView: View, TestableView {
         .onAppear(perform: Current.pushNotificationAuthorizationCoordinator.refreshAuthorizationStatus)
         .onSuccess(lessonPlanFetchingCoordinator, perform: onLessonPlansFetched)
         .multiModal {
-            $0.sheet(isPresented: $state.lessonsContext.isRequestingLessonPlan) {
+            $0.sheet(isPresented: $navigation.lessonsNavigation.isRequestingLessonPlan) {
                 RequestLessonPlanView(flow: RequestLessonPlanFlow())
             }
-            $0.sheet(item: $state.lessonsContext.bookingValues) {
+            $0.sheet(item: $navigation.lessonsNavigation.bookingValues) {
                 LessonPlanBookingEntryView(lessonPlan: $0.lessonPlan, application: $0.application)
             }
         }

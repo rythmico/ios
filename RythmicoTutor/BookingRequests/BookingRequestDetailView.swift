@@ -5,7 +5,7 @@ struct BookingRequestDetailView: View {
     @Environment(\.presentationMode)
     private var presentationMode
     @ObservedObject
-    private var state = Current.state
+    private var navigation = Current.navigation
 
     var bookingRequest: BookingRequest
 
@@ -24,7 +24,7 @@ struct BookingRequestDetailView: View {
     var privateNoteOpacity: Double { bookingRequest.privateNote.isEmpty ? 0.5 : 1 }
     var postcode: String { bookingRequest.postcode }
 
-    private func presentApplicationView() { state.requestsContext.isApplyingToRequest = true }
+    private func presentApplicationView() { navigation.requestsNavigation.isApplyingToRequest = true }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -72,16 +72,16 @@ struct BookingRequestDetailView: View {
             }
         }
         .navigationBarTitle(Text(title), displayMode: .inline)
-        .sheet(isPresented: $state.requestsContext.isApplyingToRequest) {
+        .sheet(isPresented: $navigation.requestsNavigation.isApplyingToRequest) {
             BookingRequestApplyView(booking: bookingRequest)
         }
-        .onReceive(state.$requestsContext, perform: requestsContextChanged)
+        .onReceive(navigation.$requestsNavigation, perform: requestsContextChanged)
     }
 
     // FIXME: this is a workaround for this View not dismissing on requestsContext = .none.
     // I suspect it's a SwiftUI bug where if the NavigationLink is specifically inside a List (BookingRequestsView's List),
     // programatic navigation does not work, so we're forced to dismiss through presentationMode by observing.
-    private func requestsContextChanged(_ context: AppState.RequestsContext) {
+    private func requestsContextChanged(_ context: AppNavigation.RequestsNavigation) {
         if context.selectedRequest == nil {
             presentationMode.wrappedValue.dismiss()
         }
