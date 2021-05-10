@@ -114,7 +114,6 @@
 		0365F6F02417E79000F452AC /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6EF2417E79000F452AC /* Address.swift */; };
 		0365F6F52417F1E900F452AC /* AddressLookupEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6F42417F1E900F452AC /* AddressLookupEndpoints.swift */; };
 		0372E35A249ABAB80048B402 /* SelectableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0372E359249ABAB80048B402 /* SelectableList.swift */; };
-		0372E35C249AC68A0048B402 /* ActionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0372E35B249AC68A0048B402 /* ActionList.swift */; };
 		0392A9D3244D184F001E97AE /* PrivateNoteViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0392A9D0244D181E001E97AE /* PrivateNoteViewTests.swift */; };
 		039C3EB52448A7CD0036959A /* AnyTransition+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039C3EB42448A7CD0036959A /* AnyTransition+Sugar.swift */; };
 		03A094622443D8E1008B4BD6 /* EditingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */; };
@@ -716,7 +715,6 @@
 		0365F6EF2417E79000F452AC /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		0365F6F42417F1E900F452AC /* AddressLookupEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupEndpoints.swift; sourceTree = "<group>"; };
 		0372E359249ABAB80048B402 /* SelectableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableList.swift; sourceTree = "<group>"; };
-		0372E35B249AC68A0048B402 /* ActionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionList.swift; sourceTree = "<group>"; };
 		0392A9D0244D181E001E97AE /* PrivateNoteViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateNoteViewTests.swift; sourceTree = "<group>"; };
 		039C3EB42448A7CD0036959A /* AnyTransition+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyTransition+Sugar.swift"; sourceTree = "<group>"; };
 		03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingCoordinator.swift; sourceTree = "<group>"; };
@@ -1610,7 +1608,6 @@
 		D50E4BDC23CA82E000B6FCB1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				0372E35B249AC68A0048B402 /* ActionList.swift */,
 				D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */,
 				03275AEA24908017009C3980 /* Alert+Error.swift */,
 				D5883CE325A4179F000B545C /* Alert+View.swift */,
@@ -2933,7 +2930,6 @@
 				035AF30D2491B7C3004A01B2 /* UNUserNotificationCenterProtocol.swift in Sources */,
 				D5B57A75241A018900BE9B4F /* SchedulingView.swift in Sources */,
 				D5C76E9925F4075200739267 /* CalendarSyncStatusProviderDoubles.swift in Sources */,
-				0372E35C249AC68A0048B402 /* ActionList.swift in Sources */,
 				D501587D25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift in Sources */,
 				D5883CEA25A4189D000B545C /* CalendarSyncCoordinator.swift in Sources */,
 				D5B056A225B21843000D0046 /* DirectURLVideoPlayerView.swift in Sources */,
