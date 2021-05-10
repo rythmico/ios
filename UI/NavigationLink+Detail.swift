@@ -1,23 +1,21 @@
 import SwiftUI
 
-extension NavigationLink where Destination == AnyView {
-    init<Value, Destination: View>(
+extension NavigationLink {
+    init?<Value>(
         @ViewBuilder destination: (Value) -> Destination,
         item: Binding<Value?>,
         @ViewBuilder label: () -> Label
     ) {
-        let destination = Group {
-            if let value = item.wrappedValue {
-                destination(value)
-            }
+        guard let value = item.wrappedValue else {
+            return nil
         }
 
         let isActive = Binding(
-            get: { item.wrappedValue != nil },
-            set: { if !$0 { item.wrappedValue = nil } }
+            get: { true },
+            set: { newValue in if !newValue { item.wrappedValue = nil } }
         )
 
-        self.init(destination: AnyView(destination), isActive: isActive, label: label)
+        self.init(destination: destination(value), isActive: isActive, label: label)
     }
 }
 
