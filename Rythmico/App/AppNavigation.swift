@@ -34,7 +34,6 @@ extension AppNavigation {
         enum ViewingLessonNavigation: Equatable, CaseAccessible {
             case none
             case skippingLesson
-            case cancellingLessonPlan
         }
 
         case viewingLesson(Lesson, ViewingLessonNavigation = .none)
@@ -76,16 +75,8 @@ extension AppNavigation.LessonsNavigation {
     }
 
     var isCancellingLessonPlan: Bool {
-        get {
-            self[case: Self.viewingLessonPlan]?.1 == true
-            ||
-            self[case: Self.viewingLesson]?.1.matches(case: .cancellingLessonPlan) == true
-        }
-        set {
-            (self[case: Self.viewingLessonPlan]?.1 = newValue)
-            ??
-            (self[case: Self.viewingLesson]?.1 = newValue ? .cancellingLessonPlan : .none)
-        }
+        get { self[case: Self.viewingLessonPlan]?.1 == true }
+        set { self[case: Self.viewingLessonPlan]?.1 = newValue }
     }
 
     var reviewingLessonPlan: LessonPlan? {
