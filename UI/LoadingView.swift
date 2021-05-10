@@ -4,11 +4,14 @@ struct LoadingView: View {
     var title: String
 
     var body: some View {
-        HStack(spacing: .spacingExtraSmall) {
-            ActivityIndicator(color: .rythmicoGray90)
-            Text(title)
-                .rythmicoTextStyle(.subheadlineBold)
-                .foregroundColor(.rythmicoForeground)
+        ZStack {
+            Color(.systemBackground)
+            HStack(spacing: .spacingExtraSmall) {
+                ActivityIndicator(color: .rythmicoGray90)
+                Text(title)
+                    .rythmicoTextStyle(.subheadlineBold)
+                    .foregroundColor(.rythmicoForeground)
+            }
         }
     }
 }
@@ -17,6 +20,7 @@ struct LoadingView: View {
 struct LoadingView_Previews: PreviewProvider {
     static var previews: some View {
         LoadingView(title: "Submitting proposal...")
+            .previewLayout(.sizeThatFits)
     }
 }
 #endif
