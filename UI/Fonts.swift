@@ -28,18 +28,18 @@ extension Font {
         }
 
         case largeTitle         // 32px Bold
-        case headline           // 20px Bold
-        case subheadlineBold    // 18px Bold
-        case subheadline        // 18px Regular
-        case bodyBold           // 16px Bold
-        case bodySemibold       // 16px Semibold
-        case bodyMedium         // 16px Medium
-        case body               // 16px Regular
-        case calloutBold        // 14px Bold
-        case callout            // 14px Regular
-        case footnoteBold       // 12px Bold
-        case footnote           // 12px Regular
-        case caption            // 10px Bold
+        case headline           // 22px Bold
+        case subheadlineBold    // 19px Bold
+        case subheadline        // 19px Regular
+        case bodyBold           // 17px Bold
+        case bodySemibold       // 17px Semibold
+        case bodyMedium         // 17px Medium
+        case body               // 17px Regular
+        case calloutBold        // 15px Bold
+        case callout            // 15px Regular
+        case footnoteBold       // 13px Bold
+        case footnote           // 13px Regular
+        case caption            // 11px Bold
 
         fileprivate var regularSize: CGFloat {
             switch self {
