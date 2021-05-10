@@ -52,7 +52,7 @@ extension AppState.LessonsContext {
     }
 
     var isRequestingLessonPlan: Bool {
-        get { self.matches(case: .requestingLessonPlan) }
+        get { self == .requestingLessonPlan }
         set { if newValue { self = .requestingLessonPlan } else if isRequestingLessonPlan { self = .none } } // not worth specializing `setIfSomeOrReset` for this one
     }
 
@@ -62,7 +62,7 @@ extension AppState.LessonsContext {
     }
 
     var isSkippingLesson: Bool {
-        get { self[case: Self.viewingLesson]?.1.matches(case: .skippingLesson) == true }
+        get { self[case: Self.viewingLesson]?.1 == .skippingLesson }
         set { self[case: Self.viewingLesson]?.1 = newValue ? .skippingLesson : .none }
     }
 
