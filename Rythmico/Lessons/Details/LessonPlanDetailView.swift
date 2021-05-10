@@ -82,12 +82,13 @@ struct LessonPlanDetailView: View, TestableView {
                 }
                 .frame(maxWidth: .spacingMax)
 
-                FloatingActionMenu(buttons)
+                floatingButton
             }
         }
         .testable(self)
         .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing: moreButton)
         .multiModal {
             $0.alert(isPresented: $isRescheduling) { .reschedulingView(lessonPlan: lessonPlan) }
             $0.sheet(isPresented: contextBinding.isCancellingLessonPlan) { lessonPlanCancellationView }
@@ -107,16 +108,27 @@ struct LessonPlanDetailView: View, TestableView {
         }
     }
 
-    @ArrayBuilder<FloatingActionMenu.Button>
-    private var buttons: [FloatingActionMenu.Button] {
-        if let action = chooseTutorAction {
-            .init(title: "Choose Tutor", isPrimary: true, action: action)
+    @ViewBuilder
+    private var moreButton: some View {
+        if let actions = actions.nilIfEmpty {
+            MoreButton(actions)
         }
+    }
+
+    @ArrayBuilder<MoreButton.Button>
+    private var actions: [MoreButton.Button] {
         if let action = showRescheduleAlertAction {
             .init(title: "Reschedule", action: action)
         }
         if let action = showCancelLessonPlanFormAction {
             .init(title: "Cancel Plan", action: action)
+        }
+    }
+
+    @ViewBuilder
+    private var floatingButton: some View {
+        if let action = chooseTutorAction {
+            FloatingActionMenu([.init(title: "Choose Tutor", isPrimary: true, action: action)])
         }
     }
 }
