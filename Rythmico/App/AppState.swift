@@ -47,13 +47,17 @@ extension AppState.LessonsContext {
 //        self[case: Self.self[keyPath: keyPath]]
 //    }
 
+    private mutating func setIfTrueOrReset(_ newValue: Bool, onCase pattern: Self) {
+        if newValue { self = pattern } else { self.do(onCase: pattern) { self = .none } }
+    }
+
     private mutating func setIfSomeOrReset<T, AssociatedValue>(_ newValue: T?, onCase pattern: (AssociatedValue) -> Self, _ caseMap: (T) -> Self) {
         newValue.map { self = caseMap($0) } ?? { self.do(onCase: pattern) { _ in self = .none } }()
     }
 
     var isRequestingLessonPlan: Bool {
         get { self == .requestingLessonPlan }
-        set { if newValue { self = .requestingLessonPlan } else if isRequestingLessonPlan { self = .none } } // not worth specializing `setIfSomeOrReset` for this one
+        set { setIfTrueOrReset(newValue, onCase: .requestingLessonPlan) }
     }
 
     var viewingLesson: Lesson? {
