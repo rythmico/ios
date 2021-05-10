@@ -59,11 +59,12 @@ struct LessonDetailView: View, TestableView {
             }
             .frame(maxWidth: .spacingMax)
 
-            FloatingActionMenu(buttons)
+            floatingButton
         }
         .testable(self)
         .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing: moreButton)
         .detail(isActive: $isShowingPlanDetail) { lessonPlanDetailView }
         .multiModal {
             $0.alert(isPresented: $isRescheduling) { .reschedulingView(lesson: lesson, lessonPlan: lessonPlan) }
@@ -71,16 +72,27 @@ struct LessonDetailView: View, TestableView {
         }
     }
 
-    @ArrayBuilder<FloatingActionMenu.Button>
-    private var buttons: [FloatingActionMenu.Button] {
-        if let action = showLessonPlanDetailAction {
-            .init(title: "View Plan", isPrimary: true, action: action)
+    @ViewBuilder
+    private var moreButton: some View {
+        if let actions = actions.nilIfEmpty {
+            MoreButton(actions)
         }
+    }
+
+    @ArrayBuilder<MoreButton.Button>
+    private var actions: [MoreButton.Button] {
         if let action = showRescheduleAlertAction {
             .init(title: "Reschedule Lesson", action: action)
         }
         if let action = showSkipLessonFormAction {
             .init(title: "Skip Lesson", action: action)
+        }
+    }
+
+    @ViewBuilder
+    private var floatingButton: some View {
+        if let action = showLessonPlanDetailAction {
+            FloatingActionMenu([.init(title: "View Lesson Plan", action: action)])
         }
     }
 }
