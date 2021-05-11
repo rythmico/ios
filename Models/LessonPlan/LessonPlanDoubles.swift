@@ -7,6 +7,8 @@ extension LessonPlan.ID {
     static func random() -> Self {
         Self(rawValue: UUID().uuidString)
     }
+
+    static let stub = random()
 }
 
 extension LessonPlan {
@@ -69,6 +71,7 @@ extension LessonPlan {
 
 extension LessonPlan {
     static let scheduledJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
+        $0.id = .stub
         $0.status = .scheduled(.stub, .jesseStub)
     }
 
