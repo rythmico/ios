@@ -16,10 +16,10 @@ struct LessonPlanApplicationsGridView: View {
                     LessonPlanApplicationsGridLink(lessonPlan: lessonPlan, application: $0)
                 }
             }
+            .frame(maxWidth: .spacingMax)
             .padding(.top, .spacingUnit * 2)
             .padding(.horizontal, .spacingMedium)
         }
-        .frame(maxWidth: .spacingMax)
     }
 }
 

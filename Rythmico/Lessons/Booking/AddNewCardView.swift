@@ -35,6 +35,7 @@ struct AddNewCardView: View {
                         }
                         .foregroundColor(.rythmicoGray90)
                     }
+                    .frame(maxWidth: .spacingMax)
                     .padding([.horizontal, .bottom], .spacingMedium)
                 }
 

@@ -26,6 +26,7 @@ struct LessonPlanBookingEntryView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing: CloseButton(action: dismiss))
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .accentColor(.rythmicoPurple)
         .onAppear(perform: fetch)
         .onDisappear(perform: coordinator.cancel)

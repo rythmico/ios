@@ -130,6 +130,7 @@ struct SchedulingView: View, EditableView, TestableView {
                             InfoBanner(text: scheduleInfoText)
                         }
                     }
+                    .frame(maxWidth: .spacingMax)
                     .padding([.trailing, .bottom], .spacingMedium)
                 }
                 .padding(.leading, .spacingMedium)

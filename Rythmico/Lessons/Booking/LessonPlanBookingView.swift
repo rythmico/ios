@@ -57,6 +57,7 @@ struct LessonPlanBookingView: View {
                                     PhoneNumberInputView(phoneNumber: $phoneNumber, phoneNumberInputError: $phoneNumberInputError)
                                 }
                             }
+                            .frame(maxWidth: .spacingMax)
                             .padding(.horizontal, .spacingMedium)
 
                             VStack(spacing: .spacingSmall) {
@@ -72,8 +73,10 @@ struct LessonPlanBookingView: View {
                                 HDividerContainer {
                                     RythmicoButton("Add new card", style: RythmicoLinkButtonStyle.quaternary(), action: addNewCard)
                                 }
+                                .frame(maxWidth: .spacingMax)
 
                                 LessonPlanBookingPriceView(price: checkout.pricePerLesson)
+                                    .frame(maxWidth: .spacingMax)
                                     .padding(.horizontal, .spacingSmall)
                             }
                         }

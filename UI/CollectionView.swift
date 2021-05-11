@@ -7,9 +7,10 @@ struct CollectionView<Content: View>: View {
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .center, spacing: .spacingSmall) {
-                content.padding(.horizontal, .spacingMedium)
+                content
             }
-            .padding(.vertical, .spacingMedium)
+            .frame(maxWidth: .spacingMax)
+            .padding(.all, .spacingMedium)
         }
     }
 }

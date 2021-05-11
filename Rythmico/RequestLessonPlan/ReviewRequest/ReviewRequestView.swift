@@ -98,6 +98,7 @@ struct ReviewRequestView: View, TestableView {
                             }
                         }
                     }
+                    .frame(maxWidth: .spacingMax)
                     .padding(.trailing, .spacingMedium)
                     .padding(.bottom, .spacingExtraLarge)
                 }
