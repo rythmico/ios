@@ -1,22 +1,30 @@
 import SwiftUI
+import ComposableNavigator
 import MultiModal
 import FoundationSugar
 
-struct LessonPlanDetailView: View, TestableView {
-    var lessonPlan: LessonPlan
-    private var context: AppNavigation.LessonsNavigation {
-        get { contextBinding.wrappedValue }
-        nonmutating set { contextBinding.wrappedValue = newValue }
-    }
-    private var contextBinding: Binding<AppNavigation.LessonsNavigation> { externalContext ?? $internalContext }
-    private var externalContext: Binding<AppNavigation.LessonsNavigation>?
-    @State
-    private var internalContext: AppNavigation.LessonsNavigation = .none
+struct LessonPlanDetailScreen: Screen {
+    let lessonPlan: LessonPlan
+    let presentationStyle: ScreenPresentationStyle = .push
 
-    init(lessonPlan: LessonPlan, context: Binding<AppNavigation.LessonsNavigation>?) {
-        self.lessonPlan = lessonPlan
-        self.externalContext = context
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                content: { (screen: LessonPlanDetailScreen) in
+                    LessonPlanDetailView(lessonPlan: screen.lessonPlan)
+                },
+                nesting: {
+                    LessonPlanCancellationScreen.Builder()
+                    LessonPlanApplicationsScreen.Builder()
+                }
+            )
+        }
     }
+}
+
+struct LessonPlanDetailView: View, TestableView {
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
 
     var title: String {
         [lessonPlan.student.name.firstWord, "\(lessonPlan.instrument.assimilatedName) Lessons"]
@@ -24,13 +32,13 @@ struct LessonPlanDetailView: View, TestableView {
             .joined(separator: " - ")
     }
 
+    var lessonPlan: LessonPlan
     var lessonPlanReschedulingView: LessonReschedulingView? { !lessonPlan.status.isCancelled ? .reschedulingView(lessonPlan: lessonPlan) : nil }
-    var lessonPlanCancellationView: LessonPlanCancellationView? { LessonPlanCancellationView(lessonPlan: lessonPlan) }
 
     var chooseTutorAction: Action? {
-        lessonPlan.status.isReviewing
-            ? { context = .reviewingLessonPlan(lessonPlan, .none) }
-            : nil
+        LessonPlanApplicationsScreen(lessonPlan: lessonPlan).map { screen in
+            { navigator.go(to: screen, on: currentScreen) }
+        }
     }
 
     @State
@@ -42,9 +50,9 @@ struct LessonPlanDetailView: View, TestableView {
     }
 
     var showCancelLessonPlanFormAction: Action? {
-        lessonPlanCancellationView != nil
-            ? { context = .viewingLessonPlan(lessonPlan, isCancelling: true) }
-            : nil
+        LessonPlanCancellationScreen(lessonPlan: lessonPlan).map { screen in
+            { navigator.go(to: screen, on: currentScreen) }
+        }
     }
 
     let inspection = SelfInspection()
@@ -90,7 +98,6 @@ struct LessonPlanDetailView: View, TestableView {
         .navigationBarItems(trailing: moreButton)
         .multiModal {
             $0.alert(isPresented: $isRescheduling) { .reschedulingView(lessonPlan: lessonPlan) }
-            $0.sheet(isPresented: contextBinding.isCancellingLessonPlan) { lessonPlanCancellationView }
         }
     }
 
@@ -135,7 +142,7 @@ struct LessonPlanDetailView: View, TestableView {
 #if DEBUG
 struct LessonPlanDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlanDetailView(lessonPlan: .jesseDrumsPlanStub, context: nil)
+        LessonPlanDetailView(lessonPlan: .jesseDrumsPlanStub)
 //            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }

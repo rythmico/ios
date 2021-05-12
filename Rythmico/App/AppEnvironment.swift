@@ -1,11 +1,13 @@
 import UIKit
+import ComposableNavigator
 import UserNotifications
 import EventKit
 import Firebase
 import Stripe
 
 struct AppEnvironment {
-    var navigation: AppNavigation
+    var tabSelection: TabSelection
+    let lessonsScreenDataSource = Navigator.Datasource(root: LessonsScreen())
 
     var remoteConfigCoordinator: RemoteConfigCoordinator
     var remoteConfig: RemoteConfigServiceProtocol
@@ -68,7 +70,7 @@ struct AppEnvironment {
     var cardSetupCoordinator: () -> CardSetupCoordinator
 
     init(
-        navigation: AppNavigation,
+        tabSelection: TabSelection,
 
         remoteConfig: RemoteConfigServiceProtocol,
 
@@ -129,7 +131,7 @@ struct AppEnvironment {
         cardSetupCredentialFetchingService: APIServiceBase<GetCardSetupCredentialRequest>,
         cardSetupService: CardSetupServiceProtocol
     ) {
-        self.navigation = navigation
+        self.tabSelection = tabSelection
 
         let remoteConfigCoordinator = RemoteConfigCoordinator(service: remoteConfig)
         self.remoteConfigCoordinator = remoteConfigCoordinator
@@ -221,7 +223,7 @@ struct AppEnvironment {
 
 extension AppEnvironment {
     static let live = AppEnvironment.initLive { .init(
-        navigation: AppNavigation(),
+        tabSelection: TabSelection(),
 
         remoteConfig: RemoteConfig(),
 

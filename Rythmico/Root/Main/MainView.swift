@@ -1,6 +1,6 @@
 import SwiftUI
+import ComposableNavigator
 import SFSafeSymbols
-import MultiModal
 import FoundationSugar
 
 struct MainView: View, TestableView {
@@ -13,46 +13,25 @@ struct MainView: View, TestableView {
     }
 
     @ObservedObject
-    private var navigation = Current.navigation
-    @State
-    private var hasFetchedLessonPlansAtLeastOnce = false
-    @ObservedObject
-    private var lessonPlanFetchingCoordinator = Current.lessonPlanFetchingCoordinator
-
-    func presentRequestLessonFlow() {
-        navigation.lessonsNavigation = .requestingLessonPlan
-    }
-
-    func onLessonPlansFetched(_ lessonPlans: [LessonPlan]) {
-        guard !hasFetchedLessonPlansAtLeastOnce else { return }
-        hasFetchedLessonPlansAtLeastOnce = true
-        if lessonPlans.isEmpty {
-            presentRequestLessonFlow()
-        } else {
-            Current.pushNotificationAuthorizationCoordinator.requestAuthorization()
-        }
-    }
+    private var tabSelection = Current.tabSelection
 
     let inspection = SelfInspection()
     var body: some View {
         MainViewContent(
-            tabs: Tab.allCases, selection: $navigation.selectedTab,
-            navigationTitle: \.title, leadingItem: leadingItem, trailingItem: trailingItem,
-            content: content,
-            tabTitle: \.uppercasedTitle, tabIcons: icon
+            tabs: Tab.allCases, selection: $tabSelection.mainTab,
+            content: content, tabTitle: \.uppercasedTitle, tabIcons: icon
         )
         .testable(self)
         .accentColor(.rythmicoPurple)
         .onAppear(perform: Current.deviceRegisterCoordinator.registerDevice)
         .onAppear(perform: Current.pushNotificationAuthorizationCoordinator.refreshAuthorizationStatus)
-        .onSuccess(lessonPlanFetchingCoordinator, perform: onLessonPlansFetched)
-        .multiModal {
-            $0.sheet(isPresented: $navigation.lessonsNavigation.isRequestingLessonPlan) {
-                RequestLessonPlanView(flow: RequestLessonPlanFlow())
-            }
-            $0.sheet(item: $navigation.lessonsNavigation.bookingValues) {
-                LessonPlanBookingEntryView(lessonPlan: $0.lessonPlan, application: $0.application)
-            }
+    }
+
+    @ViewBuilder
+    private func content(for tab: Tab) -> some View {
+        switch tab {
+        case .lessons: Root(dataSource: Current.lessonsScreenDataSource, pathBuilder: LessonsScreen.Builder())
+        case .profile: ProfileView()
         }
     }
 
@@ -61,41 +40,6 @@ struct MainView: View, TestableView {
         switch tab {
         case .lessons: Image(systemSymbol: .calendar).font(.system(size: 21, weight: .medium))
         case .profile: Image(systemSymbol: .person).font(.system(size: 21, weight: .semibold))
-        }
-    }
-
-    @ViewBuilder
-    private func content(for tab: Tab) -> some View {
-        switch tab {
-        case .lessons: LessonsView()
-        case .profile: ProfileView()
-        }
-    }
-
-    @ViewBuilder
-    private func leadingItem(for tab: Tab) -> some View {
-        switch tab {
-        case .lessons where lessonPlanFetchingCoordinator.state.isLoading:
-            ActivityIndicator(color: .rythmicoGray90)
-        default:
-            EmptyView()
-        }
-    }
-
-    @ViewBuilder
-    private func trailingItem(for tab: Tab) -> some View {
-        switch tab {
-        case .lessons:
-            Button(action: presentRequestLessonFlow) {
-                Image(decorative: Asset.buttonRequestLessons.name)
-                    .padding(.vertical, .spacingExtraSmall)
-                    .padding(.horizontal, .spacingExtraLarge)
-                    .offset(x: .spacingExtraLarge)
-            }
-            .accessibility(label: Text("Request lessons"))
-            .accessibility(hint: Text("Double tap to request a lesson plan"))
-        case .profile:
-            EmptyView()
         }
     }
 }

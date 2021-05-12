@@ -14,6 +14,9 @@ struct LessonSummaryCell: View {
 }
 
 struct LessonSummaryCellMainContent: View {
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
+
     var lesson: Lesson
 
     var subtitle: String {
@@ -28,7 +31,7 @@ struct LessonSummaryCellMainContent: View {
     }
 
     var body: some View {
-        Button(action: { Current.navigation.lessonsNavigation.viewingLesson = lesson }) {
+        Button(action: { navigator.go(to: LessonDetailScreen(lesson: lesson), on: currentScreen) }) {
             VStack(alignment: .leading, spacing: 0) {
                 Text(lesson.title)
                     .foregroundColor(lesson.status.isSkipped ? .rythmicoGray90 : .rythmicoForeground)

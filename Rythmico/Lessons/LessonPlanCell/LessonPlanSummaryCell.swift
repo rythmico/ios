@@ -25,6 +25,9 @@ struct LessonPlanSummaryCell: View {
 }
 
 struct LessonPlanSummaryCellMainContent: View {
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
+
     var lessonPlan: LessonPlan
 
     var title: String {
@@ -48,7 +51,7 @@ struct LessonPlanSummaryCellMainContent: View {
     }
 
     var body: some View {
-        Button(action: { Current.navigation.lessonsNavigation.viewingLessonPlan = lessonPlan }) {
+        Button(action: { navigator.go(to: LessonPlanDetailScreen(lessonPlan: lessonPlan), on: currentScreen) }) {
             VStack(alignment: .leading, spacing: 0) {
                 Text(title)
                     .rythmicoTextStyle(.subheadlineBold)
@@ -74,13 +77,21 @@ struct LessonPlanSummaryCellMainContent: View {
 }
 
 struct LessonPlanSummaryCellAccessory: View {
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
+
     var lessonPlan: LessonPlan
+    var chooseTutorAction: Action? {
+        LessonPlanApplicationsScreen(lessonPlan: lessonPlan).map { screen in
+            { navigator.go(to: screen, on: currentScreen) }
+        }
+    }
 
     var body: some View {
-        if lessonPlan.status.isReviewing {
+        if let chooseTutorAction = chooseTutorAction {
             Divider().overlay(Color.rythmicoGray20)
 
-            Button(action: { Current.navigation.lessonsNavigation.reviewingLessonPlan = lessonPlan }) {
+            Button(action: chooseTutorAction) {
                 HStack(spacing: .spacingExtraSmall) {
                     Text("Choose Tutor")
                         .rythmicoTextStyle(.bodySemibold)

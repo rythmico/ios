@@ -4,6 +4,8 @@ import FoundationSugar
 struct LessonPlanConfirmationView: View, TestableView {
     @ObservedObject
     private var calendarSyncCoordinator = Current.calendarSyncCoordinator
+    @Environment(\.navigator)
+    private var navigator
 
     var lessonPlan: LessonPlan
 
@@ -101,7 +103,7 @@ struct LessonPlanConfirmationView: View, TestableView {
 
     func doContinue() {
         Current.pushNotificationAuthorizationCoordinator.requestAuthorization()
-        Current.navigation.lessonsNavigation = .none
+        navigator.goBack(to: .root)
     }
 }
 

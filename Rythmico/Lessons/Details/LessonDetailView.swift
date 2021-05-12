@@ -1,24 +1,40 @@
 import SwiftUI
+import ComposableNavigator
 import MultiModal
 import FoundationSugar
 
+struct LessonDetailScreen: Screen {
+    let lesson: Lesson
+    let presentationStyle: ScreenPresentationStyle = .push
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                content: { (screen: LessonDetailScreen) in
+                    LessonDetailView(lesson: screen.lesson)
+                },
+                nesting: {
+                    LessonSkippingScreen.Builder()
+                    LessonPlanDetailScreen.Builder()
+                }
+            )
+        }
+    }
+}
+
 struct LessonDetailView: View, TestableView {
-    @ObservedObject
-    private var navigation = Current.navigation
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
 
     var lesson: Lesson
     var lessonPlan: LessonPlan? { Current.lessonPlanRepository.firstById(lesson.lessonPlanId) }
 
-    var lessonPlanDetailView: LessonPlanDetailView? { lessonPlan.flatMap { LessonPlanDetailView(lessonPlan: $0, context: nil) } }
     var lessonReschedulingView: LessonReschedulingView? { lessonPlan?.status.isCancelled == false ? .reschedulingView(lesson: lesson, lessonPlan: lessonPlan) : nil }
-    var lessonSkippingView: LessonSkippingView? { LessonSkippingView(lesson: lesson) }
 
-    @State
-    private var isShowingPlanDetail = false
     var showLessonPlanDetailAction: Action? {
-        lessonPlanDetailView != nil
-            ? { isShowingPlanDetail = true }
-            : nil
+        lessonPlan.map(LessonPlanDetailScreen.init).map { screen in
+            { navigator.go(to: screen, on: currentScreen) }
+        }
     }
 
     @State
@@ -30,9 +46,9 @@ struct LessonDetailView: View, TestableView {
     }
 
     var showSkipLessonFormAction: Action? {
-        lessonSkippingView != nil
-            ? { navigation.lessonsNavigation.isSkippingLesson = true }
-            : nil
+        LessonSkippingScreen(lesson: lesson).map { screen in
+            { navigator.go(to: screen, on: currentScreen) }
+        }
     }
 
     let inspection = SelfInspection()
@@ -64,10 +80,8 @@ struct LessonDetailView: View, TestableView {
         .testable(self)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: moreButton)
-        .detail(isActive: $isShowingPlanDetail) { lessonPlanDetailView }
         .multiModal {
             $0.alert(isPresented: $isRescheduling) { .reschedulingView(lesson: lesson, lessonPlan: lessonPlan) }
-            $0.sheet(isPresented: $navigation.lessonsNavigation.isSkippingLesson) { lessonSkippingView }
         }
     }
 

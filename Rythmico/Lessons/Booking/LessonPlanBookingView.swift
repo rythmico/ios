@@ -144,7 +144,6 @@ struct LessonPlanBookingView: View {
 
     func checkoutSucceeded(_ lessonPlan: LessonPlan) {
         Current.lessonPlanRepository.replaceById(lessonPlan)
-        Current.navigation.lessonsNavigation = .bookedLessonPlan(lessonPlan, application)
     }
 }
 

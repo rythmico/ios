@@ -24,21 +24,15 @@ struct LessonPlanApplicationsGridView: View {
 }
 
 struct LessonPlanApplicationsGridLink: View {
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
+
     var lessonPlan: LessonPlan
     var application: LessonPlan.Application
-
-    @ObservedObject
-    private var navigation = Current.navigation
+    var destination: LessonPlanApplicationDetailScreen { .init(lessonPlan: lessonPlan, application: application) }
 
     var body: some View {
-        NavigationLink(
-            destination: LessonPlanApplicationDetailView(
-                lessonPlan: lessonPlan,
-                application: application
-            ),
-            tag: application,
-            selection: $navigation.lessonsNavigation.reviewingApplication
-        ) {
+        Button(action: { navigator.go(to: destination, on: currentScreen) }) {
             LessonPlanApplicationCell(application)
         }
     }

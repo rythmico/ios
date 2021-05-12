@@ -1,4 +1,24 @@
 import SwiftUI
+import ComposableNavigator
+
+struct LessonPlanBookingEntryScreen: Screen {
+    let lessonPlan: LessonPlan
+    let application: LessonPlan.Application
+    let presentationStyle: ScreenPresentationStyle = .sheet(allowsPush: false)
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                content: { (screen: LessonPlanBookingEntryScreen) in
+                    LessonPlanBookingEntryView(
+                        lessonPlan: screen.lessonPlan,
+                        application: screen.application
+                    )
+                }
+            )
+        }
+    }
+}
 
 struct LessonPlanBookingEntryView: View {
     @Environment(\.presentationMode) private var presentationMode

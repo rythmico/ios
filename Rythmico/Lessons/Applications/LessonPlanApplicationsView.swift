@@ -1,10 +1,32 @@
 import SwiftUI
+import ComposableNavigator
+
+struct LessonPlanApplicationsScreen: Screen {
+    let lessonPlan: LessonPlan
+    let presentationStyle: ScreenPresentationStyle = .push
+
+    init?(lessonPlan: LessonPlan) {
+        guard lessonPlan.status.isReviewing else { return nil }
+        self.lessonPlan = lessonPlan
+    }
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                content: { (screen: LessonPlanApplicationsScreen) in
+                    LessonPlanApplicationsView(screen.lessonPlan)
+                },
+                nesting: {
+                    LessonPlanApplicationDetailScreen.Builder()
+                }
+            )
+        }
+    }
+}
 
 struct LessonPlanApplicationsView: View {
     private var lessonPlan: LessonPlan
     private var applications: [LessonPlan.Application]
-    @ObservedObject
-    private var navigation = Current.navigation
 
     init?(_ lessonPlan: LessonPlan) {
         guard let applications = lessonPlan.status.reviewingValue else {

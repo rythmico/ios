@@ -1,6 +1,32 @@
 import SwiftUI
+import ComposableNavigator
+
+struct LessonPlanApplicationDetailScreen: Screen {
+    let lessonPlan: LessonPlan
+    let application: LessonPlan.Application
+    let presentationStyle: ScreenPresentationStyle = .push
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                content: { (screen: LessonPlanApplicationDetailScreen) in
+                    LessonPlanApplicationDetailView(
+                        lessonPlan: screen.lessonPlan,
+                        application: screen.application
+                    )
+                },
+                nesting: {
+                    LessonPlanBookingEntryScreen.Builder()
+                }
+            )
+        }
+    }
+}
 
 struct LessonPlanApplicationDetailView: View {
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
+
     typealias HeaderView = LessonPlanApplicationDetailHeaderView
     typealias MessageView = LessonPlanApplicationDetailMessageView
     typealias AboutView = LessonPlanApplicationDetailAboutView
@@ -46,7 +72,7 @@ struct LessonPlanApplicationDetailView: View {
     }
 
     private func book() {
-        Current.navigation.lessonsNavigation.isBookingLessonPlan = true
+        navigator.go(to: LessonPlanBookingEntryScreen(lessonPlan: lessonPlan, application: application), on: currentScreen)
     }
 
     private static let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))

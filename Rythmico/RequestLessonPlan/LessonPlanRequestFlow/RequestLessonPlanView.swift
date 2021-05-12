@@ -1,6 +1,21 @@
 import SwiftUI
+import ComposableNavigator
 import MultiModal
 import FoundationSugar
+
+struct RequestLessonPlanScreen: Screen {
+    let presentationStyle: ScreenPresentationStyle = .sheet(allowsPush: false)
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                content: { (screen: RequestLessonPlanScreen) in
+                    RequestLessonPlanView(flow: RequestLessonPlanFlow())
+                }
+            )
+        }
+    }
+}
 
 struct RequestLessonPlanView: View, TestableView {
     typealias Coordinator = APIActivityCoordinator<CreateLessonPlanRequest>
