@@ -181,8 +181,6 @@
 		D50158AF2538BFDD005E02FA /* CardSetupCredentialDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50158AE2538BFDD005E02FA /* CardSetupCredentialDoubles.swift */; };
 		D50158B42538C029005E02FA /* CardDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50158B32538C029005E02FA /* CardDoubles.swift */; };
 		D505803825D3253F0028040F /* EditableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D505803725D3253F0028040F /* EditableView.swift */; };
-		D505804925D5A45C0028040F /* NavigationLink+Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D505804825D5A45C0028040F /* NavigationLink+Detail.swift */; };
-		D505804A25D5A45C0028040F /* NavigationLink+Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D505804825D5A45C0028040F /* NavigationLink+Detail.swift */; };
 		D5077D8B2587D80200F8595E /* LessonSkippingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5077D8A2587D80200F8595E /* LessonSkippingContentView.swift */; };
 		D50811E423FB72A3008103D8 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E323FB72A3008103D8 /* StepBar.swift */; };
 		D50811E623FB769D008103D8 /* RequestLessonPlanFlowViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E523FB769D008103D8 /* RequestLessonPlanFlowViewTests.swift */; };
@@ -775,7 +773,6 @@
 		D50158AE2538BFDD005E02FA /* CardSetupCredentialDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetupCredentialDoubles.swift; sourceTree = "<group>"; };
 		D50158B32538C029005E02FA /* CardDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDoubles.swift; sourceTree = "<group>"; };
 		D505803725D3253F0028040F /* EditableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableView.swift; sourceTree = "<group>"; };
-		D505804825D5A45C0028040F /* NavigationLink+Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Detail.swift"; sourceTree = "<group>"; };
 		D50668DA23B946330044E553 /* Rythmico.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rythmico.entitlements; sourceTree = "<group>"; };
 		D5077D8A2587D80200F8595E /* LessonSkippingContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonSkippingContentView.swift; sourceTree = "<group>"; };
 		D50811E323FB72A3008103D8 /* StepBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
@@ -1669,7 +1666,6 @@
 				D5CAC9AB24E6D19900119DAA /* MultilineTextField+Rythmico.swift */,
 				D5CAC9AD24E6D67C00119DAA /* MultilineTextField+Tutor.swift */,
 				D580E4132635F8CC004B9AA7 /* NavigationBar.swift */,
-				D505804825D5A45C0028040F /* NavigationLink+Detail.swift */,
 				D5E58F45256DB0AC00EB52ED /* NavigationLink+Hidden.swift */,
 				D5882501251CBE0C000820F4 /* NavigationViewFixInteractiveDismissal.swift */,
 				D5ED326026065FEC00821ABE /* NonEditableTextField.swift */,
@@ -2812,7 +2808,6 @@
 				03275AE5249071DB009C3980 /* DeviceTokenProvider.swift in Sources */,
 				D5E6A3F125FE9B4600F74880 /* FlowView.swift in Sources */,
 				D5A8C4BB25044A230006F5C5 /* UserDefaults.swift in Sources */,
-				D505804925D5A45C0028040F /* NavigationLink+Detail.swift in Sources */,
 				031378C3249A722F005FC49C /* LessonPlanCancellationView.swift in Sources */,
 				D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */,
 				D5D78DE025250864007041BE /* LessonPlanBookingView.swift in Sources */,
@@ -3198,7 +3193,6 @@
 				D54CF08525F91255007D5050 /* AppSecrets.swift in Sources */,
 				D572A4B3263240CE00E9E9E3 /* FlowStep.swift in Sources */,
 				D5F4D3F124F31E14000E8580 /* BookingApplicationGroupCell.swift in Sources */,
-				D505804A25D5A45C0028040F /* NavigationLink+Detail.swift in Sources */,
 				D5BF12B025068E2100B2931C /* PushNotificationEvent+Tutor.swift in Sources */,
 				D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */,
 				D55C35D825A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */,
