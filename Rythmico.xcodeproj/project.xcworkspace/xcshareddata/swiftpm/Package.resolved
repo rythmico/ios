@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/google/GoogleUtilities.git",
         "state": {
           "branch": null,
-          "revision": "66f5945ac3a4c4ac268bf94c31f226116b14e327",
-          "version": "7.4.0"
+          "revision": "58359415d4ea29ebdc8fa5b41ce96c434d76d901",
+          "version": "7.4.1"
         }
       },
       {
@@ -159,8 +159,8 @@
         "repositoryURL": "https://github.com/stripe/stripe-ios",
         "state": {
           "branch": null,
-          "revision": "591f54d11f6f60be609e294f7dd7570c0ad32b49",
-          "version": "21.4.0"
+          "revision": "d52a5d00f941f2f26c52ea7c1848bdc6ceace64f",
+          "version": "21.5.1"
         }
       },
       {
