@@ -8,14 +8,10 @@ struct InstrumentViewData {
 }
 
 struct InstrumentView: View {
-    private let viewData: InstrumentViewData
+    var viewData: InstrumentViewData
 
     @ScaledMetric(relativeTo: .largeTitle)
     private var iconWidth = .spacingUnit * 18
-
-    init(viewData: InstrumentViewData) {
-        self.viewData = viewData
-    }
 
     var body: some View {
         Button(action: { viewData.action?() }) {
