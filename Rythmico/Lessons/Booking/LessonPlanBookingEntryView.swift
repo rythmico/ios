@@ -40,13 +40,15 @@ struct LessonPlanBookingEntryView: View {
                     )
                     .transition(.opacity)
                 } else {
-                    ActivityIndicator(color: .rythmicoGray90).transition(.opacity)
+                    ActivityIndicator(color: .rythmicoGray90)
+                        .transition(.opacity)
+                        .navigationBarItems(trailing: CloseButton(action: dismiss))
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: CloseButton(action: dismiss))
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .sheetInteractiveDismissal(false)
         .accentColor(.rythmicoPurple)
         .onAppear(perform: fetch)
         .onDisappear(perform: coordinator.cancel)

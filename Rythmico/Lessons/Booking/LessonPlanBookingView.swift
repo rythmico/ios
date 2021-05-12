@@ -5,6 +5,9 @@ import NonEmpty
 import FoundationSugar
 
 struct LessonPlanBookingView: View {
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
+
     private var lessonPlan: LessonPlan
     private var application: LessonPlan.Application
     private var checkout: Checkout
@@ -94,8 +97,16 @@ struct LessonPlanBookingView: View {
                 AddNewCardEntryView(availableCards: $availableCards)
             }
         }
+        .navigationBarItems(trailing: closeButton)
         .onSuccess(coordinator, perform: checkoutSucceeded)
         .alertOnFailure(coordinator)
+    }
+
+    @ViewBuilder
+    private var closeButton: some View {
+        if !coordinator.state.isSuccess {
+            CloseButton { navigator.dismiss(screen: currentScreen) }
+        }
     }
 
     private func availableCardsChanged(_ cards: [Card]) {
