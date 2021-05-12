@@ -27,6 +27,7 @@ struct LessonPlanSummaryCell: View {
 struct LessonPlanSummaryCellMainContent: View {
     @Environment(\.navigator) private var navigator
     @Environment(\.currentScreen) private var currentScreen
+    @Environment(\.colorScheme) private var colorScheme
 
     var lessonPlan: LessonPlan
 
@@ -70,6 +71,11 @@ struct LessonPlanSummaryCellMainContent: View {
             }
             .padding(.spacingMedium)
         }
+        .watermark(
+            lessonPlan.instrument.icon.image,
+            offset: .init(width: 50, height: -20),
+            opacity: colorScheme == .dark ? 0.04 : nil
+        )
     }
 
     private static let startDateFormatter = Current.dateFormatter(format: .custom("d MMM"))

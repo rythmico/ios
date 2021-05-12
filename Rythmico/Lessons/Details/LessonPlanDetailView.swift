@@ -57,41 +57,30 @@ struct LessonPlanDetailView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        ZStack {
-            ZStack {
-                Image(uiImage: lessonPlan.instrument.icon.image.resized(width: 200))
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 200)
-                    .opacity(0.08)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-            .offset(x: 40, y: -64)
+        VStack(spacing: 0) {
+            TitleContentView(title: title) {
+                VStack(alignment: .leading, spacing: .spacingExtraLarge) {
+                    Pill(lessonPlan: lessonPlan)
+                        .padding(.horizontal, .spacingMedium)
 
-            VStack(spacing: 0) {
-                TitleContentView(title: title) {
-                    VStack(alignment: .leading, spacing: .spacingExtraLarge) {
-                        Pill(lessonPlan: lessonPlan)
-                            .padding(.horizontal, .spacingMedium)
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: .spacingMedium) {
+                            SectionHeaderView(title: "Plan Details")
+                            LessonPlanScheduleView(lessonPlan: lessonPlan)
+                            AddressLabel(address: lessonPlan.address)
 
-                        ScrollView {
-                            VStack(alignment: .leading, spacing: .spacingMedium) {
-                                SectionHeaderView(title: "Plan Details")
-                                LessonPlanScheduleView(lessonPlan: lessonPlan)
-                                AddressLabel(address: lessonPlan.address)
-
-                                SectionHeaderView(title: "Tutor")
-                                tutorContent()
-                            }
-                            .foregroundColor(.rythmicoGray90)
-                            .frame(maxWidth: .spacingMax)
-                            .padding(.horizontal, .spacingMedium)
+                            SectionHeaderView(title: "Tutor")
+                            tutorContent()
                         }
+                        .foregroundColor(.rythmicoGray90)
+                        .frame(maxWidth: .spacingMax)
+                        .padding(.horizontal, .spacingMedium)
                     }
                 }
-
-                floatingButton
             }
+            .watermark(lessonPlan.instrument.icon.image, offset: .init(width: 40, height: -64))
+
+            floatingButton
         }
         .testable(self)
         .navigationBarTitleDisplayMode(.inline)
