@@ -37,6 +37,7 @@ struct App: SwiftUI.App {
                     AppUpdatePrompt(appId: App.id, method: App.distributionMethod)
                 } else {
                     RootView()
+                        .animation(.none)
                         .onEvent(.sizeCategoryChanged, perform: refreshAppearance)
                         .onEvent(.appInBackground, perform: didEnterBackground)
                 }
