@@ -23,15 +23,18 @@ struct LessonsView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        VStack(spacing: 0) {
-            TabMenuView(tabs: Filter.allCases, selection: $navigation.lessonsFilter)
-            LessonsCollectionView(
-                previousLessonPlans: repository.previousItems,
-                currentLessonPlans: repository.items,
-                filter: navigation.lessonsFilter
-            )
+        TitleContentView(title: MainView.Tab.lessons.title, spacing: .spacingUnit) {
+            VStack(spacing: 0) {
+                TabMenuView(tabs: Filter.allCases, selection: $navigation.lessonsFilter)
+                LessonsCollectionView(
+                    previousLessonPlans: repository.previousItems,
+                    currentLessonPlans: repository.items,
+                    filter: navigation.lessonsFilter
+                )
+            }
         }
         .accentColor(.rythmicoPurple)
+        .navigationBarTitleDisplayMode(.inline)
         .testable(self)
         .onReceive(coordinator.$state.zip(navigation.onLessonsTabRootPublisher).b, perform: fetch)
         // FIXME: double HTTP request for some reason

@@ -58,35 +58,34 @@ struct LessonPlanDetailView: View, TestableView {
                     .opacity(0.08)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-            .offset(x: 40, y: -70)
+            .offset(x: 40, y: -64)
 
             VStack(spacing: 0) {
-                VStack(spacing: .spacingExtraLarge) {
-                    TitleContentView(title: title) {
+                TitleContentView(title: title) {
+                    VStack(alignment: .leading, spacing: .spacingExtraLarge) {
                         Pill(lessonPlan: lessonPlan)
-                    }
-                    .padding(.horizontal, .spacingMedium)
+                            .padding(.horizontal, .spacingMedium)
 
-                    ScrollView {
-                        VStack(alignment: .leading, spacing: .spacingMedium) {
-                            SectionHeaderView(title: "Plan Details")
-                            LessonPlanScheduleView(lessonPlan: lessonPlan)
-                            AddressLabel(address: lessonPlan.address)
+                        ScrollView {
+                            VStack(alignment: .leading, spacing: .spacingMedium) {
+                                SectionHeaderView(title: "Plan Details")
+                                LessonPlanScheduleView(lessonPlan: lessonPlan)
+                                AddressLabel(address: lessonPlan.address)
 
-                            SectionHeaderView(title: "Tutor")
-                            tutorContent()
+                                SectionHeaderView(title: "Tutor")
+                                tutorContent()
+                            }
+                            .foregroundColor(.rythmicoGray90)
+                            .frame(maxWidth: .spacingMax)
+                            .padding(.horizontal, .spacingMedium)
                         }
-                        .foregroundColor(.rythmicoGray90)
-                        .padding(.horizontal, .spacingMedium)
                     }
                 }
-                .frame(maxWidth: .spacingMax)
 
                 floatingButton
             }
         }
         .testable(self)
-        .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: moreButton)
         .multiModal {

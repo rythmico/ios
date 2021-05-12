@@ -23,19 +23,18 @@ struct LessonPlanApplicationsView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: .spacingSmall) {
-            TitleContentView(title: "Tutors Available") {
+        TitleContentView(title: "Tutors Available") {
+            VStack(alignment: .leading, spacing: .spacingSmall) {
                 InfoBanner(text: priceInfo)
-            }
-            .frame(maxWidth: .spacingMax)
-            .padding(.horizontal, .spacingMedium)
+                    .frame(maxWidth: .spacingMax)
+                    .padding(.horizontal, .spacingMedium)
 
-            LessonPlanApplicationsGridView(
-                lessonPlan: lessonPlan,
-                applications: applications
-            )
+                LessonPlanApplicationsGridView(
+                    lessonPlan: lessonPlan,
+                    applications: applications
+                )
+            }
         }
-        .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
     }
 }

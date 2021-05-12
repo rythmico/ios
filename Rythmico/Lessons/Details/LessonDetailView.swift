@@ -38,31 +38,30 @@ struct LessonDetailView: View, TestableView {
     let inspection = SelfInspection()
     var body: some View {
         VStack(spacing: 0) {
-            VStack(spacing: .spacingExtraLarge) {
-                TitleContentView(title: lesson.title) {
+            TitleContentView(title: lesson.title) {
+                VStack(alignment: .leading, spacing: .spacingExtraLarge) {
                     Pill(status: lesson.status)
-                }
-                .padding(.horizontal, .spacingMedium)
+                        .padding(.horizontal, .spacingMedium)
 
-                ScrollView {
-                    VStack(alignment: .leading, spacing: .spacingMedium) {
-                        SectionHeaderView(title: "Lesson Details")
-                        LessonScheduleView(lesson: lesson)
-                        AddressLabel(address: lesson.address)
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: .spacingMedium) {
+                            SectionHeaderView(title: "Lesson Details")
+                            LessonScheduleView(lesson: lesson)
+                            AddressLabel(address: lesson.address)
 
-                        SectionHeaderView(title: "Tutor")
-                        TutorCell(tutor: lesson.tutor)
+                            SectionHeaderView(title: "Tutor")
+                            TutorCell(tutor: lesson.tutor)
+                        }
+                        .foregroundColor(.rythmicoGray90)
+                        .frame(maxWidth: .spacingMax)
+                        .padding(.horizontal, .spacingMedium)
                     }
-                    .foregroundColor(.rythmicoGray90)
-                    .padding(.horizontal, .spacingMedium)
                 }
             }
-            .frame(maxWidth: .spacingMax)
 
             floatingButton
         }
         .testable(self)
-        .padding(.top, .spacingExtraSmall)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: moreButton)
         .detail(isActive: $isShowingPlanDetail) { lessonPlanDetailView }

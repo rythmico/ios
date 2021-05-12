@@ -27,12 +27,13 @@ struct LessonSkippingView: View {
         CoordinatorStateView(coordinator: coordinator, successTitle: "Lesson Skipped", loadingTitle: "Skipping Lesson...") {
             NavigationView {
                 VStack(spacing: 0) {
-                    TitleContentView(title: "Confirm Skip Lesson", titlePadding: .init(horizontal: .spacingMedium)) {
+                    TitleContentView(title: "Confirm Skip Lesson") {
                         ScrollView {
                             LessonSkippingContentView(
                                 isFree: isFree,
                                 freeSkipUntil: freeSkipUntil
                             )
+                            .frame(maxWidth: .spacingMax)
                             .padding(.horizontal, .spacingMedium)
                         }
                     }
@@ -41,7 +42,6 @@ struct LessonSkippingView: View {
                         RythmicoButton(submitButtonTitle, style: RythmicoButtonStyle.secondary(), action: onSkipButtonPressed)
                     }
                 }
-                .padding(.top, .spacingExtraSmall)
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarItems(trailing: CloseButton(action: dismiss))
             }

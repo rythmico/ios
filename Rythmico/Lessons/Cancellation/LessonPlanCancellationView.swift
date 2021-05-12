@@ -52,7 +52,6 @@ struct LessonPlanCancellationView: View, TestableView {
                 }
             }
             .onEdgeSwipe(.left, perform: back)
-            .padding(.top, .spacingExtraSmall)
         }
         .sheetInteractiveDismissal(!isCancellationIntended)
         .accentColor(.rythmicoGray90)

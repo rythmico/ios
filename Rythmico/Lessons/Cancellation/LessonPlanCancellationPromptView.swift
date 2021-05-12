@@ -9,7 +9,7 @@ extension LessonPlanCancellationView {
 
         var body: some View {
             VStack(spacing: 0) {
-                TitleContentView(title: title, titlePadding: .init(horizontal: .spacingMedium)) {
+                TitleContentView(title: title) {
                     ScrollView {
                         VStack(spacing: .spacingMedium, content: content).padding(.horizontal, .spacingMedium)
                     }
