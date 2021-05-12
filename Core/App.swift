@@ -43,7 +43,7 @@ struct App: SwiftUI.App {
                 }
             }
             .onAppear { remoteConfigCoordinator.fetch() }
-            .animation(Animation.easeInOut(duration: .durationShort).delay(Const.launchScreenFadeOutDelay), value: shouldShowSplash)
+            .animation(.easeInOut(duration: .durationShort).delay(Const.launchScreenFadeOutDelay), value: shouldShowSplash)
         }
     }
 
