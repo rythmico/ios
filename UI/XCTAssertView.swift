@@ -37,21 +37,4 @@ func XCTAssertView<TV: TestableView & Inspectable>(
     XCTWaiter().wait(for: [expectation], timeout: max(timeout, XCTAssertViewTimeoutDefault))
 }
 
-func XCTAssertView<TV: TestableView & Inspectable, P: Publisher>(
-    _ view: TV,
-    onReceive publisher: P,
-    message: String = "",
-    assertion: @escaping (TV) throws -> Void
-) rethrows where P.Failure == Never {
-    let expectation = XCTestExpectation(description: message)
-
-    view.inspection.inspect(onReceive: publisher) { view in
-        try assertion(view.actualView())
-        expectation.fulfill()
-    }
-
-    ViewHosting.host(view: view)
-    XCTWaiter().wait(for: [expectation], timeout: XCTAssertViewTimeoutDefault)
-}
-
 private let XCTAssertViewTimeoutDefault: TimeInterval = 0.25
