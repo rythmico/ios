@@ -7,7 +7,7 @@ import Stripe
 
 struct AppEnvironment {
     var tabSelection: TabSelection
-    let lessonsScreenDataSource = Navigator.Datasource(root: LessonsScreen())
+    let lessonsTabNavigation = Navigator.Datasource(root: LessonsScreen())
 
     var remoteConfigCoordinator: RemoteConfigCoordinator
     var remoteConfig: RemoteConfigServiceProtocol

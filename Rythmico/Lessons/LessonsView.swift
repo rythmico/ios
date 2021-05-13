@@ -37,7 +37,7 @@ struct LessonsView: View, TestableView {
     @Environment(\.currentScreen)
     private var currentScreen
     @ObservedObject
-    private var lessonsScreenDataSource = Current.lessonsScreenDataSource
+    private var lessonsTabNavigation = Current.lessonsTabNavigation
     @ObservedObject
     private var coordinator = Current.lessonPlanFetchingCoordinator
     @State
@@ -111,7 +111,7 @@ struct LessonsView: View, TestableView {
     }
 
     private func onLessonsTabRootPublisher() -> AnyPublisher<Void, Never> {
-        tabSelection.$mainTab.combineLatest(lessonsScreenDataSource.$path.map(\.current))
+        tabSelection.$mainTab.combineLatest(lessonsTabNavigation.$path.map(\.current))
             .filter { $0 == .lessons && $1.is(LessonsScreen()) }
             .map { _ in () }
             .eraseToAnyPublisher()
