@@ -1,23 +1,37 @@
 import SwiftUI
+import ComposableNavigator
 import MultiModal
 import class FirebaseAuth.Auth
 import FoundationSugar
 
+struct ProfileScreen: Screen {
+    let presentationStyle: ScreenPresentationStyle = .push
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                ProfileScreen.self,
+                content: { ProfileView() },
+                nesting: {
+                    ParentInfoAndSafetyScreen.Builder()
+                }
+            )
+        }
+    }
+}
+
 struct ProfileView: View, TestableView {
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
+
     private enum Const {
         static let horizontalMargins: CGFloat = 6
-    }
-
-    private enum Page {
-        case parentInfoAndSafety
     }
 
     @ObservedObject
     private var notificationAuthorizationCoordinator = Current.pushNotificationAuthorizationCoordinator
     @ObservedObject
     private var calendarSyncCoordinator = Current.calendarSyncCoordinator
-    @State
-    private var page: Page?
 
     var pushNotificationErrorMessage: String? {
         notificationAuthorizationCoordinator.status.failedValue?.localizedDescription
@@ -67,13 +81,10 @@ struct ProfileView: View, TestableView {
                         }
                     }
                     Section(header: header("Help & Support")) {
-                        cell("Parent Info & Safety", disclosure: true).hiddenNavigationLink(
-                            NavigationLink(
-                                destination: ParentInfoAndSafetyView(),
-                                tag: .parentInfoAndSafety,
-                                selection: $page,
-                                label: { EmptyView() }
-                            )
+                        cell(
+                            "Parent Info & Safety",
+                            disclosure: true,
+                            action: { navigator.go(to: ParentInfoAndSafetyScreen(), on: currentScreen) }
                         )
                         cell(
                             "Contact Us",

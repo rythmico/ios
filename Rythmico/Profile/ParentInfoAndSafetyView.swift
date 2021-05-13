@@ -1,4 +1,18 @@
 import SwiftUI
+import ComposableNavigator
+
+struct ParentInfoAndSafetyScreen: Screen {
+    let presentationStyle: ScreenPresentationStyle = .push
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                ParentInfoAndSafetyScreen.self,
+                content: { ParentInfoAndSafetyView() }
+            )
+        }
+    }
+}
 
 struct ParentInfoAndSafetyView: View {
     var body: some View {

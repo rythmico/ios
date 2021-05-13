@@ -31,7 +31,7 @@ struct MainView: View, TestableView {
     private func content(for tab: Tab) -> some View {
         switch tab {
         case .lessons: Root(dataSource: Current.lessonsTabNavigation, pathBuilder: LessonsScreen.Builder())
-        case .profile: NavigationView { ProfileView() }
+        case .profile: Root(dataSource: Current.profileTabNavigation, pathBuilder: ProfileScreen.Builder())
         }
     }
 
