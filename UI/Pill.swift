@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct Pill<Content: View>: View {
-    var color: Color
+    var backgroundColor: Color
+    var borderColor: Color
     @ViewBuilder
     var content: Content
 
@@ -10,7 +11,11 @@ struct Pill<Content: View>: View {
             .padding(.vertical, 1)
             .padding(.horizontal, .spacingUnit * 3.5)
             .frame(minWidth: 96)
-            .background(color.clipShape(Capsule()))
+            .background(
+                backgroundColor
+                    .clipShape(Capsule())
+                    .overlay(Capsule().stroke(borderColor, style: StrokeStyle(lineWidth: 2)))
+            )
     }
 }
 
@@ -18,9 +23,10 @@ extension Pill where Content == AnyView {
     init(
         title: String,
         titleColor: Color,
-        backgroundColor: Color
+        backgroundColor: Color,
+        borderColor: Color
     ) {
-        self.init(color: backgroundColor) {
+        self.init(backgroundColor: backgroundColor, borderColor: borderColor) {
             AnyView(
                 Text(title)
                     .foregroundColor(titleColor)

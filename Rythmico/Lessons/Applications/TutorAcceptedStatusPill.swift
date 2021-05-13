@@ -13,7 +13,8 @@ struct TutorAcceptedStatusPill: View {
         Pill(
             title: title,
             titleColor: .rythmicoDarkGreen,
-            backgroundColor: .rythmicoLightGreen
+            backgroundColor: .rythmicoLightGreen,
+            borderColor: .clear
         )
     }
 }

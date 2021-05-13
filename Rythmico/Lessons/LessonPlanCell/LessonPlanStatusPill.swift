@@ -1,11 +1,12 @@
 import SwiftUI
 
 extension Pill where Content == AnyView {
-    init(lessonPlan: LessonPlan) {
+    init(lessonPlan: LessonPlan, backgroundColor: Color) {
         self.init(
             title: lessonPlan.status.title,
             titleColor: lessonPlan.status.titleColor,
-            backgroundColor: lessonPlan.status.backgroundColor
+            backgroundColor: backgroundColor,
+            borderColor: lessonPlan.status.borderColor
         )
     }
 }
@@ -37,16 +38,16 @@ private extension LessonPlan.Status {
         }
     }
 
-    var backgroundColor: Color {
+    var borderColor: Color {
         switch self {
         case .pending:
-            return .rythmicoLightPurple
+            return .rythmicoDarkPurple
         case .reviewing:
-            return .rythmicoLightBurgundy
+            return .rythmicoDarkBurgundy
         case .scheduled:
-            return .rythmicoLightGreen
+            return .rythmicoDarkGreen
         case .cancelled:
-            return Color(lightModeVariantHex: 0xDDE1E6, darkModeVariantHex: 0x424345)
+            return Color(lightModeVariantHex: 0x111619, darkModeVariantHex: 0x9fa1a3)
         }
     }
 }

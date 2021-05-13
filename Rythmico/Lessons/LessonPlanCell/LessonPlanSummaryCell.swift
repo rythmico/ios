@@ -66,7 +66,7 @@ struct LessonPlanSummaryCellMainContent: View {
                 VSpacing(.spacingExtraSmall)
                 HStack(spacing: .spacingExtraSmall) {
                     LessonPlanTutorStatusView(status: lessonPlan.status, summarized: true)
-                    Pill(lessonPlan: lessonPlan)
+                    Pill(lessonPlan: lessonPlan, backgroundColor: .rythmicoBackground)
                 }
             }
             .padding(.spacingMedium)

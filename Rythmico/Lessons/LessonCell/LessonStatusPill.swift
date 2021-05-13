@@ -5,7 +5,8 @@ extension Pill where Content == AnyView {
         self.init(
             title: status.title,
             titleColor: status.titleColor,
-            backgroundColor: status.backgroundColor
+            backgroundColor: status.backgroundColor,
+            borderColor: .clear
         )
     }
 }
