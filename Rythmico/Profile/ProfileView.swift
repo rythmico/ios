@@ -45,60 +45,63 @@ struct ProfileView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        List {
-            Group {
-                Section(header: header("Notifications")) {
-                    cell("Push Notifications", disclosure: enablePushNotificationsAction == nil, action: goToPushNotificationsSettingsAction) {
-                        enablePushNotificationsAction.map {
-                            Toggle("", isOn: .constant(notificationAuthorizationCoordinator.status.isAuthorizing))
-                                .labelsHidden()
-                                .onTapGesture(perform: $0)
+        TitleContentView(title: "Profile") {
+            List {
+                Group {
+                    Section(header: header("Notifications")) {
+                        cell("Push Notifications", disclosure: enablePushNotificationsAction == nil, action: goToPushNotificationsSettingsAction) {
+                            enablePushNotificationsAction.map {
+                                Toggle("", isOn: .constant(notificationAuthorizationCoordinator.status.isAuthorizing))
+                                    .labelsHidden()
+                                    .onTapGesture(perform: $0)
+                            }
+                        }
+                        cell("Calendar Sync", disclosure: calendarSyncCoordinator.enableCalendarSyncAction == nil, action: calendarSyncCoordinator.goToCalendarAction) {
+                            if calendarSyncCoordinator.isSyncingCalendar {
+                                ActivityIndicator()
+                            } else if let action = calendarSyncCoordinator.enableCalendarSyncAction {
+                                Toggle("", isOn: .constant(calendarSyncCoordinator.isSyncingCalendar))
+                                    .labelsHidden()
+                                    .onTapGesture(perform: action)
+                            }
                         }
                     }
-                    cell("Calendar Sync", disclosure: calendarSyncCoordinator.enableCalendarSyncAction == nil, action: calendarSyncCoordinator.goToCalendarAction) {
-                        if calendarSyncCoordinator.isSyncingCalendar {
-                            ActivityIndicator()
-                        } else if let action = calendarSyncCoordinator.enableCalendarSyncAction {
-                            Toggle("", isOn: .constant(calendarSyncCoordinator.isSyncingCalendar))
-                                .labelsHidden()
-                                .onTapGesture(perform: action)
-                        }
-                    }
-                }
-                Section(header: header("Help & Support")) {
-                    cell("Parent Info & Safety", disclosure: true).hiddenNavigationLink(
-                        NavigationLink(
-                            destination: ParentInfoAndSafetyView(),
-                            tag: .parentInfoAndSafety,
-                            selection: $page,
-                            label: { EmptyView() }
+                    Section(header: header("Help & Support")) {
+                        cell("Parent Info & Safety", disclosure: true).hiddenNavigationLink(
+                            NavigationLink(
+                                destination: ParentInfoAndSafetyView(),
+                                tag: .parentInfoAndSafety,
+                                selection: $page,
+                                label: { EmptyView() }
+                            )
                         )
-                    )
-                    cell(
-                        "Contact Us",
-                        disclosure: true,
-                        action: { Current.urlOpener.open("mailto:info@rythmico.com") }
-                    )
-                }
-                #if DEBUG
-                Section {
-                    Button(action: logOut) {
-                        HStack(alignment: .center) {
-                            Text("Log out")
-                                .rythmicoTextStyle(.body)
-                                .foregroundColor(.rythmicoRed)
-                                .frame(maxWidth: .infinity)
-                                .multilineTextAlignment(.center)
-                        }
+                        cell(
+                            "Contact Us",
+                            disclosure: true,
+                            action: { Current.urlOpener.open("mailto:info@rythmico.com") }
+                        )
                     }
-                    .frame(minHeight: 35)
-                    .accessibility(hint: Text("Double tap to log out of your account"))
+                    #if DEBUG
+                    Section {
+                        Button(action: logOut) {
+                            HStack(alignment: .center) {
+                                Text("Log out")
+                                    .rythmicoTextStyle(.body)
+                                    .foregroundColor(.rythmicoRed)
+                                    .frame(maxWidth: .infinity)
+                                    .multilineTextAlignment(.center)
+                            }
+                        }
+                        .frame(minHeight: 35)
+                        .accessibility(hint: Text("Double tap to log out of your account"))
+                    }
+                    #endif
                 }
-                #endif
+                .textCase(nil)
             }
-            .textCase(nil)
+            .listStyle(GroupedListStyle())
         }
-        .listStyle(GroupedListStyle())
+        .navigationBarTitleDisplayMode(.inline)
         .multiModal {
             $0.alert(error: pushNotificationErrorMessage, dismiss: dismissPushNotificationError)
             $0.alert(error: calendarSyncCoordinator.error, dismiss: calendarSyncCoordinator.dismissError)
