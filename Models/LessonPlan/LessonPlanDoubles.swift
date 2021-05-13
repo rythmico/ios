@@ -13,7 +13,7 @@ extension LessonPlan.ID {
 
 extension LessonPlan {
     static let pendingJackGuitarPlanStub = Self(
-        id: .random(),
+        id: .stub,
         status: .pending,
         instrument: .guitar,
         student: .jackStub,
@@ -71,7 +71,6 @@ extension LessonPlan {
 
 extension LessonPlan {
     static let scheduledJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
-        $0.id = .stub
         $0.status = .scheduled(.stub, .jesseStub)
     }
 
