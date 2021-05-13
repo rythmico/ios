@@ -395,6 +395,14 @@
 		D575C877254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C876254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift */; };
 		D575C878254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C876254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift */; };
 		D577EEA724E6F66400253EA1 /* BookingRequestApplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */; };
+		D57DE179264DC26400C5E118 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DE178264DC26400C5E118 /* ProfileCell.swift */; };
+		D57DE17B264DC2AE00C5E118 /* ProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DE17A264DC2AE00C5E118 /* ProfileSection.swift */; };
+		D57DE17D264DC48400C5E118 /* UITableView+Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DE17C264DC48400C5E118 /* UITableView+Padding.swift */; };
+		D57DE17F264DCA6B00C5E118 /* ProfilePushNotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DE17E264DCA6B00C5E118 /* ProfilePushNotificationsCell.swift */; };
+		D57DE181264DCAC900C5E118 /* ProfileCalendarSyncCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DE180264DCAC900C5E118 /* ProfileCalendarSyncCell.swift */; };
+		D57DE183264DCE2800C5E118 /* ProfileParentInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DE182264DCE2800C5E118 /* ProfileParentInfoCell.swift */; };
+		D57DE185264DCEAD00C5E118 /* ProfileContactUsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DE184264DCEAD00C5E118 /* ProfileContactUsCell.swift */; };
+		D57DE187264DCF9A00C5E118 /* ProfileLogOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DE186264DCF9A00C5E118 /* ProfileLogOutCell.swift */; };
 		D580E4142635F8CC004B9AA7 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D580E4132635F8CC004B9AA7 /* NavigationBar.swift */; };
 		D58149E9251D262B0009BBB3 /* PageDotIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58149E8251D262B0009BBB3 /* PageDotIndicator.swift */; };
 		D58149ED251D262F0009BBB3 /* Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E824F09C43000E8580 /* Dot.swift */; };
@@ -926,6 +934,14 @@
 		D575C86D254F2F82001664AB /* ActivityCoordinator+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityCoordinator+Sugar.swift"; sourceTree = "<group>"; };
 		D575C876254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationAuthorizationCoordinator+Sugar.swift"; sourceTree = "<group>"; };
 		D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestApplyView.swift; sourceTree = "<group>"; };
+		D57DE178264DC26400C5E118 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		D57DE17A264DC2AE00C5E118 /* ProfileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSection.swift; sourceTree = "<group>"; };
+		D57DE17C264DC48400C5E118 /* UITableView+Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Padding.swift"; sourceTree = "<group>"; };
+		D57DE17E264DCA6B00C5E118 /* ProfilePushNotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePushNotificationsCell.swift; sourceTree = "<group>"; };
+		D57DE180264DCAC900C5E118 /* ProfileCalendarSyncCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCalendarSyncCell.swift; sourceTree = "<group>"; };
+		D57DE182264DCE2800C5E118 /* ProfileParentInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileParentInfoCell.swift; sourceTree = "<group>"; };
+		D57DE184264DCEAD00C5E118 /* ProfileContactUsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContactUsCell.swift; sourceTree = "<group>"; };
+		D57DE186264DCF9A00C5E118 /* ProfileLogOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLogOutCell.swift; sourceTree = "<group>"; };
 		D580E4132635F8CC004B9AA7 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		D58149E8251D262B0009BBB3 /* PageDotIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageDotIndicator.swift; sourceTree = "<group>"; };
 		D58149F4251D6F770009BBB3 /* InteractiveBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveBackground.swift; sourceTree = "<group>"; };
@@ -1581,9 +1597,16 @@
 		03EDA6772476F2BB00FBE527 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				D531295C255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift */,
+				D57DE180264DCAC900C5E118 /* ProfileCalendarSyncCell.swift */,
+				D57DE178264DC26400C5E118 /* ProfileCell.swift */,
+				D57DE184264DCEAD00C5E118 /* ProfileContactUsCell.swift */,
+				D57DE186264DCF9A00C5E118 /* ProfileLogOutCell.swift */,
+				D57DE182264DCE2800C5E118 /* ProfileParentInfoCell.swift */,
+				D57DE17E264DCA6B00C5E118 /* ProfilePushNotificationsCell.swift */,
+				D57DE17A264DC2AE00C5E118 /* ProfileSection.swift */,
 				03EDA6782476F2CB00FBE527 /* ProfileView.swift */,
 				03EDA67A2477695900FBE527 /* ProfileViewTests.swift */,
-				D531295C255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1706,6 +1729,7 @@
 				D5F506642400619600CA4094 /* UIApplication+KeyboardDismisser.swift */,
 				D58DE1CC25C0F0100013AEE8 /* UIColor+Hex.swift */,
 				D5CC5FE924FF1201007DFE84 /* UIImage+Sugar.swift */,
+				D57DE17C264DC48400C5E118 /* UITableView+Padding.swift */,
 				D53447C6264B7B2000A0FF16 /* View+Watermark.swift */,
 				D5EEF6AC261BDE470014E500 /* XCTAssertText.swift */,
 				D5147507240C8E69002EE20C /* XCTAssertView.swift */,
@@ -2783,6 +2807,7 @@
 				D56B253B2532433E00BC3932 /* ErrorText.swift in Sources */,
 				D5E6A3EF25FE99FE00F74880 /* RootViewFlow.swift in Sources */,
 				D50811E423FB72A3008103D8 /* StepBar.swift in Sources */,
+				D57DE17F264DCA6B00C5E118 /* ProfilePushNotificationsCell.swift in Sources */,
 				D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */,
 				D59E4E5625B2033200E8F94C /* YouTubeVideoPlayerView.swift in Sources */,
 				D5D78E0C25257800007041BE /* PhoneNumberField.swift in Sources */,
@@ -2838,6 +2863,7 @@
 				D5AFED3025047DFC003FFC68 /* Activity.swift in Sources */,
 				D5E987BC24EDE92E00E2E1AF /* Router.swift in Sources */,
 				D5C23A7C240FEF30007DED63 /* UIApplication+BackgroundTap.swift in Sources */,
+				D57DE17B264DC2AE00C5E118 /* ProfileSection.swift in Sources */,
 				D5F506652400619600CA4094 /* UIApplication+KeyboardDismisser.swift in Sources */,
 				D5AAF7D723F9E20C00E410F2 /* Instrument.swift in Sources */,
 				D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */,
@@ -2916,6 +2942,7 @@
 				D53555CD23E536AE005A20EB /* AppleAuthorizationController.swift in Sources */,
 				D5F5BF6F262466580049B7C2 /* Text+Sugar.swift in Sources */,
 				D55F012C24CCBE8700E5F13C /* APIService.swift in Sources */,
+				D57DE187264DCF9A00C5E118 /* ProfileLogOutCell.swift in Sources */,
 				D53555BA23E53699005A20EB /* UserCredential.swift in Sources */,
 				D527B01524FEAA5C003E81A9 /* ImageLoadingCoordinator.swift in Sources */,
 				D5D9AE4F253367A100A0ABCC /* Divider.swift in Sources */,
@@ -2923,6 +2950,7 @@
 				03275ADB249004C0009C3980 /* PushNotificationRegisterServiceDoubles.swift in Sources */,
 				D55C35D725A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */,
 				03275AD5248FDB38009C3980 /* AppEnvironment.swift in Sources */,
+				D57DE179264DC26400C5E118 /* ProfileCell.swift in Sources */,
 				D5814A00251D7FFC0009BBB3 /* App+SplitViewCustomization.swift in Sources */,
 				D5E987B924ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */,
 				D543CA6E2608B77D00900975 /* ScrollView+Sugar.swift in Sources */,
@@ -2943,6 +2971,7 @@
 				D5B056A225B21843000D0046 /* DirectURLVideoPlayerView.swift in Sources */,
 				03275AE724907462009C3980 /* DeviceTokenDeleter.swift in Sources */,
 				D535555023E4AB9A005A20EB /* ActivityIndicator.swift in Sources */,
+				D57DE183264DCE2800C5E118 /* ProfileParentInfoCell.swift in Sources */,
 				D5147511240C99A9002EE20C /* CustomTextField.swift in Sources */,
 				03E88EA724C1F4960077A420 /* App+LaunchScreenCache.swift in Sources */,
 				D5ED3268260668BE00821ABE /* Date+Sugar.swift in Sources */,
@@ -2974,6 +3003,7 @@
 				D55C35FD25A3AB510023E56B /* CalendarSyncer.swift in Sources */,
 				D543B91A26408FBF00D25CFD /* FloatingActionMenu.swift in Sources */,
 				D5AAF7DB23FB347C00E410F2 /* CollectionView.swift in Sources */,
+				D57DE185264DCEAD00C5E118 /* ProfileContactUsCell.swift in Sources */,
 				D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */,
 				D5E987BF24EDE94200E2E1AF /* Routes+Rythmico.swift in Sources */,
 				D517FF9F25547E3700A41639 /* LessonSummaryCell.swift in Sources */,
@@ -2992,6 +3022,7 @@
 				033D47D6247ABF6B0096C50F /* LessonPlanEndpoints.swift in Sources */,
 				D5F5068C24046B1400CA4094 /* Spacing.swift in Sources */,
 				D535547923DF3A7C005A20EB /* Keychain.swift in Sources */,
+				D57DE181264DCAC900C5E118 /* ProfileCalendarSyncCell.swift in Sources */,
 				D58824C4251A6D49000820F4 /* LessonsCollectionView.swift in Sources */,
 				D5B7948526004CF200DC6C77 /* LessonReschedulingView.swift in Sources */,
 				D551126225FFDB96009F3FD9 /* SettingsOpener.swift in Sources */,
@@ -3003,6 +3034,7 @@
 				03C39DD424967E5B00C76516 /* TitleContentView.swift in Sources */,
 				032B6FDB24B7890700299A09 /* ScheduleDuration+CasePickable.swift in Sources */,
 				03C34362249FC16E004907DF /* APIClientInfo.swift in Sources */,
+				D57DE17D264DC48400C5E118 /* UITableView+Padding.swift in Sources */,
 				D52D8A4E259D5FDD00A6CBBF /* PageView.swift in Sources */,
 				D518C2F8250EA89100288A48 /* LessonPlanApplicationsView.swift in Sources */,
 				D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */,
