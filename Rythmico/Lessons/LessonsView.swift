@@ -112,9 +112,7 @@ struct LessonsView: View, TestableView {
 
     private func onLessonsTabRootPublisher() -> AnyPublisher<Void, Never> {
         tabSelection.$mainTab.combineLatest(lessonsScreenDataSource.$path.map(\.current))
-            .filter { tab, tree in
-                tab == .lessons && tree.count == 1 && tree[0].content.is(LessonsScreen.self)
-            }
+            .filter { $0 == .lessons && $1.is(LessonsScreen()) }
             .map { _ in () }
             .eraseToAnyPublisher()
     }
