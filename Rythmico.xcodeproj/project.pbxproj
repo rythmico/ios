@@ -165,7 +165,6 @@
 		03E88EBA24C6232D0077A420 /* APIServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EB924C6232D0077A420 /* APIServiceDoubles.swift */; };
 		03E88EBC24C709A00077A420 /* ActivityCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88EBB24C709A00077A420 /* ActivityCoordinator.swift */; };
 		03EDA6792476F2CB00FBE527 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA6782476F2CB00FBE527 /* ProfileView.swift */; };
-		03EDA67B2477695900FBE527 /* ProfileViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67A2477695900FBE527 /* ProfileViewTests.swift */; };
 		03EDA67D24776C6C00FBE527 /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67C24776C6C00FBE527 /* URLOpener.swift */; };
 		03EDA67F24776CEC00FBE527 /* URLOpenerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67E24776CEC00FBE527 /* URLOpenerDoubles.swift */; };
 		03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE818F244E169200C5C184 /* ReviewRequestView.swift */; };
@@ -768,7 +767,6 @@
 		03E88EB924C6232D0077A420 /* APIServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceDoubles.swift; sourceTree = "<group>"; };
 		03E88EBB24C709A00077A420 /* ActivityCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCoordinator.swift; sourceTree = "<group>"; };
 		03EDA6782476F2CB00FBE527 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		03EDA67A2477695900FBE527 /* ProfileViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewTests.swift; sourceTree = "<group>"; };
 		03EDA67C24776C6C00FBE527 /* URLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
 		03EDA67E24776CEC00FBE527 /* URLOpenerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpenerDoubles.swift; sourceTree = "<group>"; };
 		03FE818F244E169200C5C184 /* ReviewRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestView.swift; sourceTree = "<group>"; };
@@ -1608,7 +1606,6 @@
 				D57DE17E264DCA6B00C5E118 /* ProfilePushNotificationsCell.swift */,
 				D57DE17A264DC2AE00C5E118 /* ProfileSection.swift */,
 				03EDA6782476F2CB00FBE527 /* ProfileView.swift */,
-				03EDA67A2477695900FBE527 /* ProfileViewTests.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -3299,7 +3296,6 @@
 				D5473C9F241AC3CB00D66775 /* AddressDetailsViewTests.swift in Sources */,
 				D535553623E105A5005A20EB /* OnboardingViewTests.swift in Sources */,
 				0392A9D3244D184F001E97AE /* PrivateNoteViewTests.swift in Sources */,
-				03EDA67B2477695900FBE527 /* ProfileViewTests.swift in Sources */,
 				D5EEF6AD261BDE470014E500 /* XCTAssertText.swift in Sources */,
 				D5FD6F16240AF535008C5AD4 /* StudentDetailsViewTests.swift in Sources */,
 				D50811E623FB769D008103D8 /* RequestLessonPlanFlowViewTests.swift in Sources */,
