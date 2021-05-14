@@ -2,7 +2,7 @@ import SwiftUI
 import TextBuilder
 import FoundationSugar
 
-struct LessonPlanBookingPriceView: View {
+struct LessonPlanPriceView: View {
     var price: Price
     var showTermsOfService: Bool
 
@@ -39,14 +39,14 @@ struct LessonPlanBookingPriceView: View {
 }
 
 #if DEBUG
-struct LessonPriceView_Previews: PreviewProvider {
+struct LessonPlanPriceView_Previews: PreviewProvider {
     static var stub: [(showTermsOfService: Bool, price: Price)] {
         Bool.allCases * [.nonDecimalStub, .exactDecimalStub, .inexactDecimalStub]
     }
 
     static var previews: some View {
         ForEach(0..<stub.count, id: \.self) { i in let stub = stub[i]
-            LessonPlanBookingPriceView(
+            LessonPlanPriceView(
                 price: stub.price,
                 showTermsOfService: stub.showTermsOfService
             )

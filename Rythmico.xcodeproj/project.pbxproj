@@ -528,7 +528,7 @@
 		D5D9AE7B2534CBC800A0ABCC /* PriceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE7A2534CBC800A0ABCC /* PriceDoubles.swift */; };
 		D5D9AE882534CD0200A0ABCC /* CheckoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE872534CD0200A0ABCC /* CheckoutTests.swift */; };
 		D5D9AEA325367E9B00A0ABCC /* LessonPlanBookingEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEA225367E9B00A0ABCC /* LessonPlanBookingEntryView.swift */; };
-		D5D9AEB425368AAA00A0ABCC /* LessonPlanBookingPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEB325368AAA00A0ABCC /* LessonPlanBookingPriceView.swift */; };
+		D5D9AEB425368AAA00A0ABCC /* LessonPlanPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEB325368AAA00A0ABCC /* LessonPlanPriceView.swift */; };
 		D5D9AEBE253694B400A0ABCC /* PhoneNumberInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEBD253694B400A0ABCC /* PhoneNumberInputView.swift */; };
 		D5D9AEC32537105400A0ABCC /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEC22537105400A0ABCC /* CardStackView.swift */; };
 		D5DDE85E2598E7B300CF565D /* LessonPlanBookingPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DDE85D2598E7B300CF565D /* LessonPlanBookingPolicyView.swift */; };
@@ -1036,7 +1036,7 @@
 		D5D9AE7A2534CBC800A0ABCC /* PriceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceDoubles.swift; sourceTree = "<group>"; };
 		D5D9AE872534CD0200A0ABCC /* CheckoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutTests.swift; sourceTree = "<group>"; };
 		D5D9AEA225367E9B00A0ABCC /* LessonPlanBookingEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanBookingEntryView.swift; sourceTree = "<group>"; };
-		D5D9AEB325368AAA00A0ABCC /* LessonPlanBookingPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanBookingPriceView.swift; sourceTree = "<group>"; };
+		D5D9AEB325368AAA00A0ABCC /* LessonPlanPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanPriceView.swift; sourceTree = "<group>"; };
 		D5D9AEBD253694B400A0ABCC /* PhoneNumberInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberInputView.swift; sourceTree = "<group>"; };
 		D5D9AEC22537105400A0ABCC /* CardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
 		D5DDE85D2598E7B300CF565D /* LessonPlanBookingPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanBookingPolicyView.swift; sourceTree = "<group>"; };
@@ -2172,7 +2172,7 @@
 				D5D9AEA225367E9B00A0ABCC /* LessonPlanBookingEntryView.swift */,
 				D5D78DDF25250864007041BE /* LessonPlanBookingView.swift */,
 				D5DDE85D2598E7B300CF565D /* LessonPlanBookingPolicyView.swift */,
-				D5D9AEB325368AAA00A0ABCC /* LessonPlanBookingPriceView.swift */,
+				D5D9AEB325368AAA00A0ABCC /* LessonPlanPriceView.swift */,
 				D5D9AEBD253694B400A0ABCC /* PhoneNumberInputView.swift */,
 				D5D9AEC22537105400A0ABCC /* CardStackView.swift */,
 				D52A4F1D2538C59300C65A91 /* AddNewCardEntryView.swift */,
@@ -2993,7 +2993,7 @@
 				D55F012D24CCBE8E00E5F13C /* APIServiceDoubles.swift in Sources */,
 				D59D0593251828EA0070D81B /* App+Playback.swift in Sources */,
 				D5989BD125168B0100BED8A6 /* PortfolioPhotoCarouselView.swift in Sources */,
-				D5D9AEB425368AAA00A0ABCC /* LessonPlanBookingPriceView.swift in Sources */,
+				D5D9AEB425368AAA00A0ABCC /* LessonPlanPriceView.swift in Sources */,
 				D5BF12BE2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift in Sources */,
 				D5F506BE2406E49A00CA4094 /* EdgeSwipeView.swift in Sources */,
 				D54EFF192513D690004F14D3 /* Portfolio.swift in Sources */,
