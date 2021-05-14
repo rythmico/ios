@@ -56,6 +56,7 @@ struct RequestLessonPlanView: View, TestableView {
             inputContent: { flowView.alertOnFailure(coordinator) }
         )
         .testable(self)
+        .backgroundColor(.rythmicoBackgroundSecondary)
         .sheetInteractiveDismissal(swipeDownToDismissEnabled)
         .onSuccess(coordinator, perform: Current.lessonPlanRepository.insertItem)
     }

@@ -38,6 +38,7 @@ struct ProfileView: View, TestableView {
             }
             .listStyle(GroupedListStyle())
         }
+        .backgroundColor(.rythmicoBackground)
         .navigationBarTitleDisplayMode(.inline)
         .testable(self)
     }

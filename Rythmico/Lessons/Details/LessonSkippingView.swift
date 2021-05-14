@@ -65,6 +65,7 @@ struct LessonSkippingView: View {
                     }
                 }
             }
+            .backgroundColor(.rythmicoBackgroundSecondary)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing: CloseButton(action: dismiss))
         }

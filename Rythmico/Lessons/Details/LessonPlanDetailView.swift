@@ -60,7 +60,7 @@ struct LessonPlanDetailView: View, TestableView {
         VStack(spacing: 0) {
             TitleContentView(title: title) {
                 VStack(alignment: .leading, spacing: .spacingExtraLarge) {
-                    Pill(lessonPlan: lessonPlan, backgroundColor: .rythmicoBackgroundSecondary)
+                    Pill(lessonPlan: lessonPlan, backgroundColor: .rythmicoBackground)
                         .padding(.horizontal, .spacingMedium)
 
                     ScrollView {
@@ -82,6 +82,7 @@ struct LessonPlanDetailView: View, TestableView {
 
             floatingButton
         }
+        .backgroundColor(.rythmicoBackground)
         .testable(self)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: moreButton)

@@ -36,6 +36,7 @@ struct AddNewCardEntryView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                Color.rythmicoBackgroundSecondary.edgesIgnoringSafeArea(.all)
                 if let credential = coordinator.state.successValue {
                     AddNewCardView(credential: credential, availableCards: $availableCards).transition(.opacity)
                 } else {

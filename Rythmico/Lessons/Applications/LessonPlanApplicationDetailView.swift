@@ -65,6 +65,7 @@ struct LessonPlanApplicationDetailView: View {
                 }
             }
         }
+        .backgroundColor(.rythmicoBackground)
     }
 
     private var bookButtonTitle: String {

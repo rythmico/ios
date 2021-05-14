@@ -69,6 +69,7 @@ struct LessonPlanCancellationView: View, TestableView {
             }
             .onEdgeSwipe(.left, perform: back)
         }
+        .backgroundColor(.rythmicoBackgroundSecondary)
         .sheetInteractiveDismissal(!isCancellationIntended)
         .accentColor(.rythmicoGray90)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isCancellationIntended)

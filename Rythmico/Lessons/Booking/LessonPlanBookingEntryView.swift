@@ -35,6 +35,7 @@ struct LessonPlanBookingEntryView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                Color.rythmicoBackgroundSecondary.edgesIgnoringSafeArea(.all)
                 if let checkout = coordinator.state.successValue {
                     LessonPlanBookingView(
                         lessonPlan: lessonPlan,

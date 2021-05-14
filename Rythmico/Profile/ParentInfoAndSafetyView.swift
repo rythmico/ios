@@ -25,6 +25,7 @@ struct ParentInfoAndSafetyView: View {
                     .padding(.horizontal, .spacingMedium)
             }
         }
+        .backgroundColor(.rythmicoBackground)
         .frame(maxHeight: .infinity, alignment: .top)
         .navigationBarTitleDisplayMode(.inline)
     }

@@ -5,7 +5,7 @@ struct LoadingView: View {
 
     var body: some View {
         ZStack {
-            Color(.systemBackground)
+            Color.clear
             HStack(spacing: .spacingExtraSmall) {
                 ActivityIndicator(color: .rythmicoGray90)
                 Text(title)

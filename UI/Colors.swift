@@ -28,6 +28,7 @@ extension Color {
 
     static let rythmicoForeground = Color(.rythmicoForeground)
 
+    static let rythmicoBackground = Color(.rythmicoBackground)
     static let rythmicoBackgroundSecondary = Color(.rythmicoBackgroundSecondary)
     static let rythmicoBackgroundTertiary = Color(.rythmicoBackgroundTertiary)
 }
@@ -60,8 +61,9 @@ extension UIColor {
 
     static let rythmicoForeground = UIColor(light: .rythmicoForegroundLightModeVariant, dark: .rythmicoForegroundDarkModeVariant)
 
-    static let rythmicoBackgroundSecondary = UIColor(light: .white, dark: 0x1C1C1E)
-    static let rythmicoBackgroundTertiary = UIColor(light: .white, dark: 0x232323)
+    static let rythmicoBackground = UIColor(light: .white, dark: .black)
+    static let rythmicoBackgroundSecondary = UIColor(light: .white, dark: 0x181818)
+    static let rythmicoBackgroundTertiary = UIColor(light: .white, dark: 0x1e1e1e)
 
     // Shared colors.
 
