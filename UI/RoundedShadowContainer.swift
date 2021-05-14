@@ -20,7 +20,7 @@ struct RoundedShadowContainer: ViewModifier {
     private var background: some View {
         let shape = RoundedRectangle(cornerRadius: Const.cornerRadius, style: Const.cornerStyle)
         if isEnabled {
-            let base = shape.fill(Color.rythmicoBackground)
+            let base = shape.fill(Color.rythmicoBackgroundTertiary)
             switch colorScheme {
             case .dark:
                 base.overlay(shape.stroke(Color.rythmicoGray20, lineWidth: 1))
