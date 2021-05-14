@@ -70,12 +70,12 @@ extension LessonPlan {
 }
 
 extension LessonPlan {
-    static let scheduledJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
-        $0.status = .scheduled(.stub, .jesseStub)
+    static let activeJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
+        $0.status = .active(.stub, .jesseStub)
     }
 
-    static let scheduledSkippedJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
-        $0.status = .scheduled(.stub, .jesseStub)
+    static let activeSkippedJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
+        $0.status = .active(.stub, .jesseStub)
     }
 }
 
@@ -106,7 +106,7 @@ extension Array where Element == LessonPlan {
     static let stub: Self = [
         .jesseDrumsPlanStub,
 //        .reviewingJackGuitarPlanStub,
-        .scheduledJackGuitarPlanStub,
+        .activeJackGuitarPlanStub,
         .cancelledCharlottePianoPlanStub,
     ]
 }

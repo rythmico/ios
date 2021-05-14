@@ -6,7 +6,7 @@ struct LessonPlanSummaryCell: View {
 
     init?(lessonPlan: LessonPlan) {
         switch lessonPlan.status {
-        case .scheduled, .cancelled:
+        case .active, .cancelled:
             return nil
         case .pending, .reviewing:
             break
@@ -44,7 +44,7 @@ struct LessonPlanSummaryCellMainContent: View {
             return "Pending tutor applications"
         case .reviewing:
             return "Pending selection of tutor"
-        case .scheduled:
+        case .active:
             return ""
         case .cancelled:
             return [startDateText, "Plan Cancelled"].joined(separator: " • ")
@@ -119,7 +119,7 @@ struct LessonPlanSummaryCell_Previews: PreviewProvider {
         Group {
             LessonPlanSummaryCell(lessonPlan: .pendingJackGuitarPlanStub)
             LessonPlanSummaryCell(lessonPlan: .reviewingJackGuitarPlanStub)
-            LessonPlanSummaryCell(lessonPlan: .scheduledJackGuitarPlanStub)
+            LessonPlanSummaryCell(lessonPlan: .activeJackGuitarPlanStub)
             LessonPlanSummaryCell(lessonPlan: .cancelledJackGuitarPlanStub)
         }
         .previewLayout(.sizeThatFits)

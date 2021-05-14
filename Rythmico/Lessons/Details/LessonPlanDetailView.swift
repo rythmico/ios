@@ -100,7 +100,7 @@ struct LessonPlanDetailView: View, TestableView {
             if lessonPlan.status.isPending {
                 InfoBanner(text: "Potential tutors have received your request and will submit applications for your consideration.")
             }
-        case .scheduled(_, let tutor), .cancelled(_, let tutor?, _):
+        case .active(_, let tutor), .cancelled(_, let tutor?, _):
             TutorCell(tutor: tutor)
         }
     }

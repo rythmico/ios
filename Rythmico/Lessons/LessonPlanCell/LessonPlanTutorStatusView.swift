@@ -24,7 +24,7 @@ private extension LessonPlan.Status {
             AvatarView(.placeholder)
         case .reviewing(let applications):
             AvatarStackView(data: applications.map(\.tutor), thumbnails: true)
-        case .scheduled(_, let tutor),
+        case .active(_, let tutor),
              .cancelled(_, let tutor?, _):
             TutorAvatarView(tutor, mode: .thumbnail)
         case .cancelled(_, nil, _):
@@ -39,7 +39,7 @@ private extension LessonPlan.Status {
             return "Tutor TBC"
         case .reviewing(let applicants):
             return applicants.count == 1 && !sizeCategory.isAccessibilityCategory ? "Tutors Available" : .empty
-        case .scheduled(_, let tutor),
+        case .active(_, let tutor),
              .cancelled(_, let tutor?, _):
             return tutor.name
         case .cancelled(_, nil, _):
@@ -55,7 +55,7 @@ private extension LessonPlan.Status {
         case .reviewing(let applications):
             let count = applications.count
             return "\(count) tutor\(count == 1 ? "" : "s") applied" // TODO: plurals
-        case .scheduled(_, let tutor),
+        case .active(_, let tutor),
              .cancelled(_, let tutor?, _):
             return tutor.name
         case .cancelled(_, nil, _):
@@ -74,7 +74,7 @@ struct LessonPlanTutorStatusView_Previews: PreviewProvider {
                 .previewDisplayName("Reviewing 0 Tutors")
             LessonPlanTutorStatusView(status: .reviewing(.stub), summarized: true)
                 .previewDisplayName("Reviewing 1+ Tutors")
-            LessonPlanTutorStatusView(status: .scheduled(.stub, .jesseStub), summarized: true)
+            LessonPlanTutorStatusView(status: .active(.stub, .jesseStub), summarized: true)
                 .previewDisplayName("Scheduled")
             LessonPlanTutorStatusView(status: .cancelled(.stub, nil, .stub), summarized: true)
                 .previewDisplayName("Cancelled no Tutor")
