@@ -77,7 +77,7 @@ struct LessonPlanBookingView: View {
                                 }
                                 .frame(maxWidth: .spacingMax)
 
-                                LessonPlanBookingPriceView(price: checkout.pricePerLesson)
+                                LessonPlanBookingPriceView(price: checkout.pricePerLesson, showTermsOfService: true)
                                     .frame(maxWidth: .spacingMax)
                                     .padding(.horizontal, .spacingSmall)
                             }
