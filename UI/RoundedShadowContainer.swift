@@ -35,6 +35,6 @@ struct RoundedShadowContainer: ViewModifier {
     }
 
     private var disabledBackgroundColor: Color {
-        Color(lightModeVariantHex: 0xF4F4F4, darkModeVariantHex: 0x242424)
+        Color(light: 0xF4F4F4, dark: 0x242424)
     }
 }
