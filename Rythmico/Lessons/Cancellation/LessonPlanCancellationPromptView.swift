@@ -11,7 +11,9 @@ extension LessonPlanCancellationView {
             VStack(spacing: 0) {
                 TitleContentView(title: title) {
                     ScrollView {
-                        VStack(spacing: .spacingMedium, content: content).padding(.horizontal, .spacingMedium)
+                        VStack(spacing: .spacingMedium, content: content)
+                            .frame(maxWidth: .spacingMax, alignment: .leading)
+                            .padding(.horizontal, .spacingMedium)
                     }
                 }
 

@@ -36,7 +36,7 @@ struct SectionHeaderContentView<Accessory: View, Content: View>: View {
     var body: some View {
         VStack(alignment: alignment, spacing: .spacingSmall) {
             SectionHeaderView(title: title, accessory: accessory).padding(padding)
-            content.frame(maxWidth: .spacingMax)
+            content.frame(maxWidth: .spacingMax, alignment: .leading)
         }
     }
 }
