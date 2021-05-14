@@ -144,17 +144,6 @@ extension UIColor {
 }
 
 extension Color {
-    static let systemTooltipGray = Color(.systemTooltipGray)
-}
-
-extension UIColor {
-    static let systemTooltipGray = UIColor(
-        lightModeVariant: .init(base256Red: 246, green: 246, blue: 246),
-        darkModeVariant: .init(base256Red: 40, green: 40, blue: 41)
-    )
-}
-
-extension Color {
     init(lightModeVariantHex: Int, darkModeVariantHex: Int) {
         self.init(
             UIColor(
