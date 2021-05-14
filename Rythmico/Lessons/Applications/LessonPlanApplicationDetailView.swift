@@ -16,6 +16,8 @@ struct LessonPlanApplicationDetailScreen: Screen {
                     )
                 },
                 nesting: {
+                    VideoCarouselPlayerScreen.Builder()
+                    PhotoCarouselDetailScreen.Builder()
                     LessonPlanBookingEntryScreen.Builder()
                 }
             )

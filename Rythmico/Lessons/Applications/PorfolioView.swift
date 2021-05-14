@@ -1,13 +1,7 @@
 import SwiftUI
-import MultiModal
 
 struct PortfolioView: View {
     private static let bioId = "bio"
-
-    @State
-    private var selectedVideo: Portfolio.Video?
-    @State
-    private var selectedPhoto: Portfolio.Photo?
 
     var tutor: Tutor
     var portfolio: Portfolio
@@ -47,26 +41,20 @@ struct PortfolioView: View {
                         header("Videos")
                             .frame(maxWidth: .spacingMax)
                             .padding(.horizontal, .spacingMedium)
-                        VideoCarouselView(videos: portfolio.videos, selectedVideo: $selectedVideo)
+                        VideoCarouselView(videos: portfolio.videos)
                     }
                 }
 
                 if !portfolio.photos.isEmpty {
                     VStack(spacing: .spacingSmall) {
                         header("Photos")
-                        PhotoCarouselView(photos: portfolio.photos, selectedPhoto: $selectedPhoto)
+                        PhotoCarouselView(photos: portfolio.photos)
                     }
                     .frame(maxWidth: .spacingMax)
                     .padding(.horizontal, .spacingMedium)
                 }
             }
             .padding(.vertical, .spacingMedium)
-        }
-        .multiModal {
-            $0.sheet(item: $selectedVideo, content: VideoCarouselPlayer.init)
-            $0.sheet(item: $selectedPhoto) { _ in
-                PhotoCarouselDetailView(photos: portfolio.photos, selection: $selectedPhoto)
-            }
         }
     }
 
