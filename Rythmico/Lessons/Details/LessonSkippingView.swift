@@ -41,7 +41,7 @@ struct LessonSkippingView: View {
         NavigationView {
             CoordinatorStateView(coordinator: coordinator, successTitle: "Lesson Skipped", loadingTitle: "Skipping Lesson...") {
                 VStack(spacing: 0) {
-                    TitleContentView(title: "Confirm Skip Lesson") {
+                    TitleContentView(title: title) {
                         ScrollView {
                             LessonSkippingContentView(
                                 isFree: isFree,
@@ -75,6 +75,8 @@ struct LessonSkippingView: View {
         .onSuccess(coordinator, perform: lessonSuccessfullySkipped)
         .alertOnFailure(coordinator)
     }
+
+    private var title: String { "Confirm Skip Lesson" }
 
     private var isFree: Bool {
         Current.date() < freeSkipUntil

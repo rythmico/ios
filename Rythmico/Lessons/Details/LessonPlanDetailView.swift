@@ -84,6 +84,7 @@ struct LessonPlanDetailView: View, TestableView {
         }
         .backgroundColor(.rythmicoBackground)
         .testable(self)
+        .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: moreButton)
         .multiModal {

@@ -51,7 +51,7 @@ struct LessonsView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        TitleContentView(title: MainView.Tab.lessons.title, spacing: .spacingUnit) {
+        TitleContentView(title: title, spacing: .spacingUnit) {
             VStack(spacing: 0) {
                 TabMenuView(tabs: Filter.allCases, selection: $tabSelection.lessonsTab)
                 LessonsCollectionView(
@@ -63,6 +63,7 @@ struct LessonsView: View, TestableView {
         }
         .backgroundColor(.rythmicoBackground)
         .accentColor(.rythmicoPurple)
+        .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(leading: leadingItem, trailing: trailingItem)
         .testable(self)
@@ -72,6 +73,8 @@ struct LessonsView: View, TestableView {
         .onSuccess(coordinator, perform: onLessonPlansFetched)
         .alertOnFailure(coordinator)
     }
+
+    private var title: String { MainView.Tab.lessons.title }
 
     @ViewBuilder
     private var leadingItem: some View {

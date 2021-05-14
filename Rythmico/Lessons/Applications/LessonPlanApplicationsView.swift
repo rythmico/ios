@@ -36,6 +36,8 @@ struct LessonPlanApplicationsView: View {
         self.applications = applications
     }
 
+    var title: String { "Tutors Available" }
+
     var priceInfo: String {
         "All \(instrument) tutors charge a standard rate of £\(lessonPlan.schedule.duration) per lesson"
     }
@@ -45,7 +47,7 @@ struct LessonPlanApplicationsView: View {
     }
 
     var body: some View {
-        TitleContentView(title: "Tutors Available") {
+        TitleContentView(title: title) {
             VStack(alignment: .leading, spacing: .spacingSmall) {
                 InfoBanner(text: priceInfo)
                     .frame(maxWidth: .spacingMax)
@@ -58,6 +60,7 @@ struct LessonPlanApplicationsView: View {
             }
         }
         .backgroundColor(.rythmicoBackground)
+        .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
     }
 }

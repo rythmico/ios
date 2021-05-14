@@ -15,7 +15,7 @@ struct AddNewCardView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            TitleSubtitleContentView(title: "Add New Card", subtitle: subtitle) {
+            TitleSubtitleContentView(title: title, subtitle: subtitle) {
                 VStack(spacing: .spacingMedium) {
                     HStack(spacing: .spacingMedium) {
                         StripePaymentCardTextField(cardDetails: $cardDetails, cardIsValid: $cardIsValid)
@@ -50,6 +50,7 @@ struct AddNewCardView: View {
             }
             .disabled(!confirmButtonEnabled)
         }
+        .navigationBarTitle(title)
         .navigationBarItems(trailing: CloseButton(action: dismiss))
         .accentColor(.rythmicoPurple)
         .sheetInteractiveDismissal(interactiveDismissalEnabled)
@@ -57,6 +58,8 @@ struct AddNewCardView: View {
         .onSuccess(coordinator, perform: coordinatorSucceeded)
         .alertOnFailure(coordinator)
     }
+
+    var title: String { "Add New Card" }
 
     @SpacedTextBuilder
     var subtitle: Text {

@@ -54,7 +54,7 @@ struct LessonDetailView: View, TestableView {
     let inspection = SelfInspection()
     var body: some View {
         VStack(spacing: 0) {
-            TitleContentView(title: lesson.title) {
+            TitleContentView(title: title) {
                 VStack(alignment: .leading, spacing: .spacingExtraLarge) {
                     Pill(status: lesson.status)
                         .padding(.horizontal, .spacingMedium)
@@ -78,12 +78,15 @@ struct LessonDetailView: View, TestableView {
             floatingButton
         }
         .testable(self)
+        .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: moreButton)
         .multiModal {
             $0.alert(isPresented: $isRescheduling) { .reschedulingView(lesson: lesson, lessonPlan: lessonPlan) }
         }
     }
+
+    private var title: String { lesson.title }
 
     @ViewBuilder
     private var moreButton: some View {

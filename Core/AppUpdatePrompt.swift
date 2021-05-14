@@ -54,7 +54,7 @@ struct AppUpdatePrompt: View {
                 }
                 #endif
             }
-            .navigationTitle("Update Required")
+            .navigationBarTitle("Update Required")
             .navigationBarTitleDisplayMode(.large)
             .padding([.horizontal, .bottom], inset)
             .padding(.top, .spacingUnit * 2)

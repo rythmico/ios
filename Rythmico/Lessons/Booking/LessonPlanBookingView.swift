@@ -93,6 +93,7 @@ struct LessonPlanBookingView: View {
             }
             .onChange(of: availableCards, perform: availableCardsChanged)
         }
+        .navigationBarTitle(title)
         .navigationBarItems(trailing: closeButton)
         .onSuccess(coordinator, perform: checkoutSucceeded)
         .alertOnFailure(coordinator)

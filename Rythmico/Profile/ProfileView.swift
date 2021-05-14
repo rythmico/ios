@@ -18,9 +18,11 @@ struct ProfileScreen: Screen {
 }
 
 struct ProfileView: View, TestableView {
+    var title: String { "Profile" }
+
     let inspection = SelfInspection()
     var body: some View {
-        TitleContentView(title: "Profile") {
+        TitleContentView(title: title) {
             List {
                 ProfileSection("Notifications") {
                     ProfilePushNotificationsCell()
@@ -39,6 +41,7 @@ struct ProfileView: View, TestableView {
             .listStyle(GroupedListStyle())
         }
         .backgroundColor(.rythmicoBackground)
+        .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
         .testable(self)
     }
