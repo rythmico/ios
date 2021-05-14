@@ -56,8 +56,8 @@ struct RequestLessonPlanView: View, TestableView {
             inputContent: { flowView.alertOnFailure(coordinator) }
         )
         .testable(self)
-        .onSuccess(coordinator, perform: Current.lessonPlanRepository.insertItem)
         .sheetInteractiveDismissal(swipeDownToDismissEnabled)
+        .onSuccess(coordinator, perform: Current.lessonPlanRepository.insertItem)
     }
 
     private func stateTransition(scale: CGFloat) -> AnyTransition {

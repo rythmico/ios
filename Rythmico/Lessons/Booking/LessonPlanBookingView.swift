@@ -33,7 +33,6 @@ struct LessonPlanBookingView: View {
 
     @State private var availableCards: [Card]
     @State private var selectedCard: Card?
-    @State private var addingNewCard = false
 
     var body: some View {
         CoordinatorStateView(
@@ -93,9 +92,6 @@ struct LessonPlanBookingView: View {
                 .disabled(!canConfirm)
             }
             .onChange(of: availableCards, perform: availableCardsChanged)
-            .sheet(isPresented: $addingNewCard) {
-                AddNewCardEntryView(availableCards: $availableCards)
-            }
         }
         .navigationBarItems(trailing: closeButton)
         .onSuccess(coordinator, perform: checkoutSucceeded)
@@ -150,7 +146,7 @@ struct LessonPlanBookingView: View {
 
     func addNewCard() {
         Current.keyboardDismisser.dismissKeyboard()
-        addingNewCard = true
+        navigator.go(to: AddNewCardEntryScreen(availableCards: $availableCards), on: currentScreen)
     }
 
     func checkoutSucceeded(_ lessonPlan: LessonPlan) {

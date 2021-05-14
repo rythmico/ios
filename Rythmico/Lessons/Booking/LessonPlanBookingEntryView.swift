@@ -14,6 +14,9 @@ struct LessonPlanBookingEntryScreen: Screen {
                         lessonPlan: screen.lessonPlan,
                         application: screen.application
                     )
+                },
+                nesting: {
+                    AddNewCardEntryScreen.Builder()
                 }
             )
         }

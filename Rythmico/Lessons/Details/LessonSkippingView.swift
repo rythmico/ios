@@ -38,8 +38,8 @@ struct LessonSkippingView: View {
     var showingConfirmationSheet = false
 
     var body: some View {
-        CoordinatorStateView(coordinator: coordinator, successTitle: "Lesson Skipped", loadingTitle: "Skipping Lesson...") {
-            NavigationView {
+        NavigationView {
+            CoordinatorStateView(coordinator: coordinator, successTitle: "Lesson Skipped", loadingTitle: "Skipping Lesson...") {
                 VStack(spacing: 0) {
                     TitleContentView(title: "Confirm Skip Lesson") {
                         ScrollView {
@@ -64,12 +64,13 @@ struct LessonSkippingView: View {
                             .disabled(showingConfirmationSheet)
                     }
                 }
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(trailing: CloseButton(action: dismiss))
             }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing: CloseButton(action: dismiss))
         }
         .sheetInteractiveDismissal(!coordinator.state.isLoading)
         .accentColor(.rythmicoGray90)
+        .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: lessonSuccessfullySkipped)
         .alertOnFailure(coordinator)
     }

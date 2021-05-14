@@ -1,20 +1,52 @@
 import SwiftUI
+import ComposableNavigator
+
+struct AddNewCardEntryScreen: Screen {
+    var availableCards: Binding<[Card]>
+    let presentationStyle: ScreenPresentationStyle = .sheet(allowsPush: false)
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(presentationStyle)
+    }
+
+    static func == (lhs: AddNewCardEntryScreen, rhs: AddNewCardEntryScreen) -> Bool {
+        lhs.hashValue == rhs.hashValue
+    }
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                content: { (screen: AddNewCardEntryScreen) in
+                    AddNewCardEntryView(availableCards: screen.availableCards)
+                }
+            )
+        }
+    }
+}
 
 struct AddNewCardEntryView: View {
-    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
+
     @Binding var availableCards: [Card]
 
     @StateObject
     private var coordinator = Current.cardSetupCredentialFetchingCoordinator()
 
     var body: some View {
-        ZStack {
-            if let credential = coordinator.state.successValue {
-                AddNewCardView(credential: credential, availableCards: $availableCards).transition(.opacity)
-            } else {
-                ActivityIndicator(color: .rythmicoGray90).transition(.opacity)
+        NavigationView {
+            ZStack {
+                if let credential = coordinator.state.successValue {
+                    AddNewCardView(credential: credential, availableCards: $availableCards).transition(.opacity)
+                } else {
+                    ActivityIndicator(color: .rythmicoGray90)
+                        .transition(.opacity)
+                        .navigationBarItems(trailing: CloseButton(action: dismiss))
+                }
             }
+            .navigationBarTitleDisplayMode(.inline)
         }
+        .accentColor(.rythmicoPurple)
         .onAppear(perform: coordinator.start)
         .onDisappear(perform: coordinator.cancel)
         .alertOnFailure(coordinator, onDismiss: dismiss)
@@ -22,7 +54,7 @@ struct AddNewCardEntryView: View {
     }
 
     func dismiss() {
-        presentationMode.wrappedValue.dismiss()
+        navigator.dismiss(screen: currentScreen)
     }
 }
 

@@ -2,7 +2,8 @@ import SwiftUI
 import TextBuilder
 
 struct AddNewCardView: View {
-    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
 
     var credential: CardSetupCredential
     @Binding var availableCards: [Card]
@@ -13,46 +14,43 @@ struct AddNewCardView: View {
     private var coordinator = Current.cardSetupCoordinator()
 
     var body: some View {
-        NavigationView {
-            VStack(spacing: 0) {
-                TitleSubtitleContentView(title: "Add New Card", subtitle: subtitle) {
-                    VStack(spacing: .spacingMedium) {
-                        HStack(spacing: .spacingMedium) {
-                            StripePaymentCardTextField(cardDetails: $cardDetails, cardIsValid: $cardIsValid)
-                                .padding(.vertical, .spacingUnit)
-                                .modifier(RoundedThinOutlineContainer(padded: false))
-                            if coordinator.state.isLoading {
-                                ActivityIndicator(color: .rythmicoGray90)
-                            }
+        VStack(spacing: 0) {
+            TitleSubtitleContentView(title: "Add New Card", subtitle: subtitle) {
+                VStack(spacing: .spacingMedium) {
+                    HStack(spacing: .spacingMedium) {
+                        StripePaymentCardTextField(cardDetails: $cardDetails, cardIsValid: $cardIsValid)
+                            .padding(.vertical, .spacingUnit)
+                            .modifier(RoundedThinOutlineContainer(padded: false))
+                        if coordinator.state.isLoading {
+                            ActivityIndicator(color: .rythmicoGray90)
                         }
-                        .animation(.rythmicoSpring(duration: .durationShort), value: coordinator.state.isLoading)
-
-                        Spacer()
-
-                        HStack(spacing: .spacingUnit * 2) {
-                            Image(systemSymbol: .lockFill).rythmicoFont(.footnoteBold)
-                            Text("Your payment info is stored securely.").rythmicoTextStyle(.footnoteBold)
-                        }
-                        .foregroundColor(.rythmicoGray90)
                     }
-                    .frame(maxWidth: .spacingMax)
-                    .padding([.horizontal, .bottom], .spacingMedium)
-                }
+                    .animation(.rythmicoSpring(duration: .durationShort), value: coordinator.state.isLoading)
 
-                StripeSetupIntentLink(
-                    credential: credential,
-                    cardDetails: cardDetails,
-                    coordinator: coordinator
-                ) { action in
-                    FloatingView {
-                        RythmicoButton("Save Card", style: RythmicoButtonStyle.primary(), action: action)
+                    Spacer()
+
+                    HStack(spacing: .spacingUnit * 2) {
+                        Image(systemSymbol: .lockFill).rythmicoFont(.footnoteBold)
+                        Text("Your payment info is stored securely.").rythmicoTextStyle(.footnoteBold)
                     }
+                    .foregroundColor(.rythmicoGray90)
                 }
-                .disabled(!confirmButtonEnabled)
+                .frame(maxWidth: .spacingMax)
+                .padding([.horizontal, .bottom], .spacingMedium)
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: CloseButton(action: dismiss))
+
+            StripeSetupIntentLink(
+                credential: credential,
+                cardDetails: cardDetails,
+                coordinator: coordinator
+            ) { action in
+                FloatingView {
+                    RythmicoButton("Save Card", style: RythmicoButtonStyle.primary(), action: action)
+                }
+            }
+            .disabled(!confirmButtonEnabled)
         }
+        .navigationBarItems(trailing: CloseButton(action: dismiss))
         .accentColor(.rythmicoPurple)
         .sheetInteractiveDismissal(interactiveDismissalEnabled)
         .disabled(coordinator.state.isLoading)
@@ -76,7 +74,7 @@ struct AddNewCardView: View {
     }
 
     func dismiss() {
-        presentationMode.wrappedValue.dismiss()
+        navigator.dismiss(screen: currentScreen)
     }
 
     func coordinatorSucceeded(_ newCard: Card) {
