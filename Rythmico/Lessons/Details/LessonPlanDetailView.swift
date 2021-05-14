@@ -67,10 +67,11 @@ struct LessonPlanDetailView: View, TestableView {
                         VStack(alignment: .leading, spacing: .spacingMedium) {
                             planDetailsSection
                             tutorSection
+                            paymentSection
                         }
                         .foregroundColor(.rythmicoGray90)
                         .frame(maxWidth: .spacingMax)
-                        .padding(.horizontal, .spacingMedium)
+                        .padding([.horizontal, .bottom], .spacingMedium)
                     }
                 }
             }
@@ -106,6 +107,20 @@ struct LessonPlanDetailView: View, TestableView {
             }
         case .active(_, let tutor), .cancelled(_, let tutor?, _):
             TutorCell(tutor: tutor)
+        }
+    }
+
+    @ViewBuilder
+    private var paymentSection: some View {
+        switch lessonPlan.status {
+        case .active:
+            SectionHeaderView(title: "Payment")
+            LessonPlanPriceView(
+                price: Price(amount: Decimal(lessonPlan.schedule.duration.rawValue), currency: .GBP),
+                showTermsOfService: false
+            )
+        case .pending, .reviewing, .cancelled:
+            EmptyView()
         }
     }
 
