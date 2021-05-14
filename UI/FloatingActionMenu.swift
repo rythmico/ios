@@ -65,12 +65,12 @@ struct FloatingActionMenu_Previews: PreviewProvider {
                 .init(title: "Yes", isPrimary: false, action: {}),
             ],
             [
-                .init(title: "Reschedule", isPrimary: false, action: {}),
+                .init(title: "Reschedule Plan", isPrimary: false, action: {}),
                 .init(title: "Cancel Plan", isPrimary: false, action: {}),
             ],
             [
                 .init(title: "View Plan", isPrimary: true, action: {}),
-                .init(title: "Reschedule", isPrimary: false, action: {}),
+                .init(title: "Reschedule Plan", isPrimary: false, action: {}),
                 .init(title: "Cancel Plan Request", isPrimary: false, action: {}),
             ],
         ]
