@@ -65,12 +65,8 @@ struct LessonPlanDetailView: View, TestableView {
 
                     ScrollView {
                         VStack(alignment: .leading, spacing: .spacingMedium) {
-                            SectionHeaderView(title: "Plan Details")
-                            LessonPlanScheduleView(lessonPlan: lessonPlan)
-                            AddressLabel(address: lessonPlan.address)
-
-                            SectionHeaderView(title: "Tutor")
-                            tutorContent()
+                            planDetailsSection
+                            tutorSection
                         }
                         .foregroundColor(.rythmicoGray90)
                         .frame(maxWidth: .spacingMax)
@@ -93,7 +89,15 @@ struct LessonPlanDetailView: View, TestableView {
     }
 
     @ViewBuilder
-    private func tutorContent() -> some View {
+    private var planDetailsSection: some View {
+        SectionHeaderView(title: "Plan Details")
+        LessonPlanScheduleView(lessonPlan: lessonPlan)
+        AddressLabel(address: lessonPlan.address)
+    }
+
+    @ViewBuilder
+    private var tutorSection: some View {
+        SectionHeaderView(title: "Tutor")
         switch lessonPlan.status {
         case .pending, .reviewing, .cancelled(_, .none, _):
             LessonPlanTutorStatusView(status: lessonPlan.status, summarized: false)
@@ -133,8 +137,11 @@ struct LessonPlanDetailView: View, TestableView {
 #if DEBUG
 struct LessonPlanDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlanDetailView(lessonPlan: .jesseDrumsPlanStub)
-//            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+        Group {
+            LessonPlanDetailView(lessonPlan: .pendingJackGuitarPlanStub)
+            LessonPlanDetailView(lessonPlan: .activeJackGuitarPlanStub)
+        }
+//        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }
 #endif
