@@ -49,7 +49,7 @@ struct LessonPlanApplicationDetailView: View {
     var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: .spacingSmall) {
-                HeaderView(lessonPlan: lessonPlan, application: application)
+                HeaderView(lessonPlan: lessonPlan, tutor: application.tutor)
                 TabMenuView(tabs: Tab.allCases, selection: $tab)
             }
 
