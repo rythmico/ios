@@ -42,7 +42,7 @@ name: swift-composable-navigator, nameSpecified: swift-composable-navigator, own
 
 name: swift-nonempty, nameSpecified: swift-nonempty, owner: pointfreeco, version: 0.3.1
 
-name: swift-protobuf, nameSpecified: SwiftProtobuf, owner: apple, version: 1.16.0
+name: swift-protobuf, nameSpecified: SwiftProtobuf, owner: apple, version: 1.17.0
 
 name: swift-tagged, nameSpecified: Tagged, owner: pointfreeco, version: 0.5.0
 
