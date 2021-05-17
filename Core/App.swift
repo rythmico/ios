@@ -37,12 +37,13 @@ struct App: SwiftUI.App {
                     AppUpdatePrompt(appId: App.id, method: App.distributionMethod)
                 } else {
                     RootView()
+                        .animation(.none)
                         .onEvent(.sizeCategoryChanged, perform: refreshAppearance)
                         .onEvent(.appInBackground, perform: didEnterBackground)
                 }
             }
             .onAppear { remoteConfigCoordinator.fetch() }
-            .animation(Animation.easeInOut(duration: .durationShort).delay(Const.launchScreenFadeOutDelay), value: shouldShowSplash)
+            .animation(.easeInOut(duration: .durationShort).delay(Const.launchScreenFadeOutDelay), value: shouldShowSplash)
         }
     }
 

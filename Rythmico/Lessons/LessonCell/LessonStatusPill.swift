@@ -5,7 +5,8 @@ extension Pill where Content == AnyView {
         self.init(
             title: status.title,
             titleColor: status.titleColor,
-            backgroundColor: status.backgroundColor
+            backgroundColor: status.backgroundColor,
+            borderColor: .clear
         )
     }
 }
@@ -27,7 +28,7 @@ private extension Lesson.Status {
         case .scheduled:
             return .rythmicoDarkBlue
         case .skipped:
-            return Color(lightModeVariantHex: 0x111619, darkModeVariantHex: 0x9fa1a3)
+            return Color(light: 0x111619, dark: 0x9fa1a3)
         case .completed:
             return .rythmicoDarkGreen
         }
@@ -38,7 +39,7 @@ private extension Lesson.Status {
         case .scheduled:
             return .rythmicoLightBlue
         case .skipped:
-            return Color(lightModeVariantHex: 0xDDE1E6, darkModeVariantHex: 0x424345)
+            return Color(light: 0xDDE1E6, dark: 0x424345)
         case .completed:
             return .rythmicoLightGreen
         }

@@ -5,7 +5,7 @@ struct BookingRequestsView: View {
     @Environment(\.scenePhase)
     private var scenePhase
     @ObservedObject
-    private var state = Current.state
+    private var navigation = Current.navigation
     @ObservedObject
     private var coordinator = Current.bookingRequestFetchingCoordinator
     @ObservedObject
@@ -40,7 +40,7 @@ struct BookingRequestsView: View {
         .listStyle(GroupedListStyle())
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
 
-        .onReceive(coordinator.$state.zip(state.onRequestsOpenTabRootPublisher).b, perform: fetch)
+        .onReceive(coordinator.$state.zip(navigation.onRequestsOpenTabRootPublisher).b, perform: fetch)
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
@@ -52,9 +52,9 @@ struct BookingRequestsView: View {
     }
 }
 
-private extension AppState {
+private extension AppNavigation {
     var onRequestsOpenTabRootPublisher: AnyPublisher<Void, Never> {
-        $tab.combineLatest($requestsTab, $requestsContext)
+        $selectedTab.combineLatest($requestsFilter, $requestsNavigation)
             .filter { $0 == (.requests, .open, .none) }
             .map { _ in () }
             .eraseToAnyPublisher()

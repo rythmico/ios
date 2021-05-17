@@ -5,7 +5,7 @@ struct ConfirmationView: View {
 
     var body: some View {
         ZStack {
-            Color(.systemBackground)
+            Color.clear
             HStack(spacing: .spacingExtraSmall) {
                 Image(decorative: Asset.iconCheckmark.name)
                     .renderingMode(.template)
@@ -17,3 +17,12 @@ struct ConfirmationView: View {
         }
     }
 }
+
+#if DEBUG
+struct ConfirmationView_Previews: PreviewProvider {
+    static var previews: some View {
+        ConfirmationView(title: "Plan cancelled successfully")
+            .previewLayout(.sizeThatFits)
+    }
+}
+#endif

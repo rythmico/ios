@@ -7,11 +7,13 @@ extension LessonPlan.ID {
     static func random() -> Self {
         Self(rawValue: UUID().uuidString)
     }
+
+    static let stub = random()
 }
 
 extension LessonPlan {
     static let pendingJackGuitarPlanStub = Self(
-        id: .random(),
+        id: .stub,
         status: .pending,
         instrument: .guitar,
         student: .jackStub,
@@ -68,12 +70,12 @@ extension LessonPlan {
 }
 
 extension LessonPlan {
-    static let scheduledJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
-        $0.status = .scheduled(.stub, .jesseStub)
+    static let activeJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
+        $0.status = .active(.stub, .jesseStub)
     }
 
-    static let scheduledSkippedJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
-        $0.status = .scheduled(.stub, .jesseStub)
+    static let activeSkippedJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
+        $0.status = .active(.stub, .jesseStub)
     }
 }
 
@@ -104,7 +106,7 @@ extension Array where Element == LessonPlan {
     static let stub: Self = [
         .jesseDrumsPlanStub,
 //        .reviewingJackGuitarPlanStub,
-        .scheduledJackGuitarPlanStub,
+        .activeJackGuitarPlanStub,
         .cancelledCharlottePianoPlanStub,
     ]
 }

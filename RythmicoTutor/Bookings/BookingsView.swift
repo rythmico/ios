@@ -6,7 +6,7 @@ struct BookingsView: View {
     @Environment(\.scenePhase)
     private var scenePhase
     @ObservedObject
-    private var state = Current.state
+    private var navigation = Current.navigation
     @ObservedObject
     private var coordinator = Current.bookingsFetchingCoordinator
     @ObservedObject
@@ -22,7 +22,7 @@ struct BookingsView: View {
         LessonsCollectionView(currentBookings: bookings)
             .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
 
-            .onReceive(coordinator.$state.zip(state.onScheduleUpcomingTabRootPublisher).b, perform: fetch)
+            .onReceive(coordinator.$state.zip(navigation.onScheduleUpcomingTabRootPublisher).b, perform: fetch)
             // FIXME: double HTTP request for some reason
             // .onDisappear(perform: coordinator.cancel)
             .onSuccess(coordinator, perform: repository.setItems)
@@ -46,9 +46,9 @@ struct BookingsView: View {
     }
 }
 
-private extension AppState {
+private extension AppNavigation {
     var onScheduleUpcomingTabRootPublisher: AnyPublisher<Void, Never> {
-        $tab//.combineLatest($requestsTab, $requestsContext)
+        $selectedTab//.combineLatest($requestsTab, $requestsContext)
             .filter { $0 == (.schedule) }
             .map { _ in () }
             .eraseToAnyPublisher()

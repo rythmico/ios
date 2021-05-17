@@ -4,12 +4,14 @@ import FoundationSugar
 struct LessonPlanConfirmationView: View, TestableView {
     @ObservedObject
     private var calendarSyncCoordinator = Current.calendarSyncCoordinator
+    @Environment(\.navigator)
+    private var navigator
 
     var lessonPlan: LessonPlan
 
     var title: String {
         switch lessonPlan.status {
-        case .scheduled:
+        case .active:
             return ["\(lessonPlan.instrument.assimilatedName) Lessons", "Confirmed!"].joined(separator: "\n")
         default:
             return ["\(lessonPlan.instrument.assimilatedName) Lessons", "Request Submitted!"].joined(separator: "\n")
@@ -18,7 +20,7 @@ struct LessonPlanConfirmationView: View, TestableView {
 
     var subtitle: String? {
         switch lessonPlan.status {
-        case .scheduled:
+        case .active:
             return nil
         default:
             return "Potential tutors have received your request and will submit applications for your consideration."
@@ -28,7 +30,7 @@ struct LessonPlanConfirmationView: View, TestableView {
     @ViewBuilder
     var additionalContent: some View {
         switch lessonPlan.status {
-        case .scheduled(_, let tutor):
+        case .active(_, let tutor):
             LessonPlanConfirmationDetailsView(lessonPlan: lessonPlan, tutor: tutor)
         default:
             EmptyView()
@@ -38,7 +40,7 @@ struct LessonPlanConfirmationView: View, TestableView {
     @ViewBuilder
     var addToCalendarButton: some View {
         switch lessonPlan.status {
-        case .scheduled:
+        case .active:
             if let action = calendarSyncCoordinator.enableCalendarSyncAction {
                 ZStack {
                     RythmicoButton("Add to Calendar", style: RythmicoButtonStyle.tertiary(expansive: false), action: action)
@@ -101,7 +103,7 @@ struct LessonPlanConfirmationView: View, TestableView {
 
     func doContinue() {
         Current.pushNotificationAuthorizationCoordinator.requestAuthorization()
-        Current.state.lessonsContext = .none
+        navigator.goBack(to: .root)
     }
 }
 
@@ -109,7 +111,7 @@ struct LessonPlanConfirmationView: View, TestableView {
 struct LessonPlanConfirmationView_Previews: PreviewProvider {
     static var previews: some View {
         LessonPlanConfirmationView(lessonPlan: .pendingJackGuitarPlanStub)
-//        LessonPlanConfirmationView(lessonPlan: .scheduledJackGuitarPlanStub)
+//        LessonPlanConfirmationView(lessonPlan: .activeJackGuitarPlanStub)
     }
 }
 #endif

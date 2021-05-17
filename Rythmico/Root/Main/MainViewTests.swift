@@ -24,21 +24,14 @@ final class MainViewTests: XCTestCase {
         }
     }
 
-    func testPresentRequestLessonFlow() throws {
-        let view = MainView()
-        XCTAssertView(view) { view in
-            XCTAssertEqual(Current.state.lessonsContext, .none)
-            view.presentRequestLessonFlow()
-            XCTAssertEqual(Current.state.lessonsContext, .requestingLessonPlan)
-        }
-    }
+    func testPresentRequestLessonFlow() throws {}
 
     func testAutoPresentRequestLessonFlow() throws {
         Current.stubAPIEndpoint(for: \.lessonPlanFetchingCoordinator, result: .success([]))
 
         let view = MainView()
         XCTAssertView(view) { view in
-            XCTAssertEqual(Current.state.lessonsContext, .requestingLessonPlan)
+            XCTAssertTrue(Current.lessonsTabNavigation.path.current.is(LessonsScreen(), RequestLessonPlanScreen()))
         }
     }
 }

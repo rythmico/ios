@@ -57,6 +57,7 @@ struct PrivateNoteView: View, EditableView, TestableView {
                             onEditingChanged: noteEditingChanged
                         ).modifier(RoundedThinOutlineContainer(padded: false))
                     }
+                    .frame(maxWidth: .spacingMax)
                     .padding([.trailing, .bottom], .spacingMedium)
                 }
                 .accentColor(.rythmicoPurple)

@@ -1,20 +1,45 @@
 import SwiftUI
+import ComposableNavigator
 import MultiModal
 import FoundationSugar
 
+struct LessonDetailScreen: Screen {
+    let lesson: Lesson
+    let presentationStyle: ScreenPresentationStyle = .push
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                content: { (screen: LessonDetailScreen) in
+                    LessonDetailView(lesson: screen.lesson)
+                },
+                nesting: {
+                    LessonSkippingScreen.Builder()
+                    LessonPlanTutorDetailScreen.Builder()
+                    LessonPlanDetailScreen.Builder()
+                }
+            )
+        }
+    }
+}
+
 struct LessonDetailView: View, TestableView {
-    @ObservedObject
-    private var state = Current.state
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
 
     var lesson: Lesson
     var lessonPlan: LessonPlan? { Current.lessonPlanRepository.firstById(lesson.lessonPlanId) }
 
     var lessonReschedulingView: LessonReschedulingView? { lessonPlan?.status.isCancelled == false ? .reschedulingView(lesson: lesson, lessonPlan: lessonPlan) : nil }
-    var lessonSkippingView: LessonSkippingView? { LessonSkippingView(lesson: lesson) }
-    var lessonPlanCancellationView: LessonPlanCancellationView? { lessonPlan.flatMap(LessonPlanCancellationView.init) }
+
+    var showLessonPlanDetailAction: Action? {
+        lessonPlan.map(LessonPlanDetailScreen.init).map { screen in
+            { navigator.go(to: screen, on: currentScreen) }
+        }
+    }
 
     @State
-    private var isRescheduling = false // TODO: move to AppState
+    private var isRescheduling = false // TODO: move to AppNavigation
     var showRescheduleAlertAction: Action? {
         lessonReschedulingView != nil
             ? { isRescheduling = true }
@@ -22,86 +47,76 @@ struct LessonDetailView: View, TestableView {
     }
 
     var showSkipLessonFormAction: Action? {
-        lessonSkippingView != nil
-            ? { state.lessonsContext.isSkippingLesson = true }
-            : nil
-    }
-
-    var showCancelLessonPlanFormAction: Action? {
-        lessonPlanCancellationView != nil
-            ? { state.lessonsContext.isCancellingLessonPlan = true }
-            : nil
+        LessonSkippingScreen(lesson: lesson).map { screen in
+            { navigator.go(to: screen, on: currentScreen) }
+        }
     }
 
     let inspection = SelfInspection()
     var body: some View {
         VStack(spacing: 0) {
-            VStack(spacing: .spacingExtraLarge) {
-                TitleContentView(title: lesson.title) {
+            TitleContentView(title: title) {
+                VStack(alignment: .leading, spacing: .spacingExtraLarge) {
                     Pill(status: lesson.status)
-                }
-                ScrollView {
-                    VStack(alignment: .leading, spacing: .spacingMedium) {
-                        SectionHeaderView(title: "Lesson Details")
-                        Group {
-                            HStack(spacing: .spacingUnit * 2) {
-                                Image(decorative: Asset.iconInfo.name).renderingMode(.template)
-                                Text(startDateText)
-                                    .rythmicoTextStyle(.body)
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.7)
-                            }
-                            HStack(spacing: .spacingUnit * 2) {
-                                Image(decorative: Asset.iconTime.name).renderingMode(.template)
-                                Text(durationText)
-                                    .rythmicoTextStyle(.body)
-                                    .lineLimit(1)
-                                    .minimumScaleFactor(0.7)
-                            }
-                            HStack(alignment: .firstTextBaseline, spacing: .spacingUnit * 2) {
-                                Image(decorative: Asset.iconLocation.name)
-                                    .renderingMode(.template)
-                                    .offset(y: .spacingUnit / 2)
-                                Text(lesson.address.condensedFormattedString)
-                                    .rythmicoTextStyle(.body)
-                            }
-                            InlineContentAndTitleView(lesson: lesson, summarized: false)
+                        .padding(.horizontal, .spacingMedium)
+
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: .spacingMedium) {
+                            SectionHeaderView(title: "Lesson Details")
+                            LessonScheduleView(lesson: lesson)
+                            AddressLabel(address: lesson.address)
+
+                            tutorSection
                         }
                         .foregroundColor(.rythmicoGray90)
+                        .frame(maxWidth: .spacingMax)
+                        .padding(.horizontal, .spacingMedium)
                     }
                 }
             }
-            .frame(maxWidth: .spacingMax)
-            .padding(.horizontal, .spacingMedium)
 
-            ActionList(actions, showBottomSeparator: false)
-                .foregroundColor(.rythmicoGray90)
+            floatingButton
         }
         .testable(self)
-        .padding(.top, .spacingExtraSmall)
+        .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing: moreButton)
         .multiModal {
             $0.alert(isPresented: $isRescheduling) { .reschedulingView(lesson: lesson, lessonPlan: lessonPlan) }
-            $0.sheet(isPresented: $state.lessonsContext.isSkippingLesson) { lessonSkippingView }
-            $0.sheet(isPresented: $state.lessonsContext.isCancellingLessonPlan) { lessonPlanCancellationView }
         }
     }
 
-    private static let startDateFormatter = Current.dateFormatter(format: .custom("d MMMM @ h:mma"))
+    private var title: String { lesson.title }
 
-    private var startDateText: String { Self.startDateFormatter.string(from: lesson.schedule.startDate) }
-    private var durationText: String { lesson.schedule.duration.title }
+    @ViewBuilder
+    private var tutorSection: some View {
+        if let lessonPlan = lessonPlan {
+            SectionHeaderView(title: "Tutor")
+            TutorCell(lessonPlan: lessonPlan, tutor: lesson.tutor)
+        }
+    }
 
-    @ArrayBuilder<ActionList.Button>
-    private var actions: [ActionList.Button] {
+    @ViewBuilder
+    private var moreButton: some View {
+        if let actions = actions.nilIfEmpty {
+            MoreButton(actions)
+        }
+    }
+
+    @ArrayBuilder<MoreButton.Button>
+    private var actions: [MoreButton.Button] {
         if let action = showRescheduleAlertAction {
-            .init(title: "Reschedule", action: action)
+            .init(title: "Reschedule Lesson", action: action)
         }
         if let action = showSkipLessonFormAction {
             .init(title: "Skip Lesson", action: action)
         }
-        if let action = showCancelLessonPlanFormAction {
-            .init(title: "Cancel Lesson Plan", action: action)
+    }
+
+    @ViewBuilder
+    private var floatingButton: some View {
+        if let action = showLessonPlanDetailAction {
+            FloatingActionMenu([.init(title: "View Lesson Plan", action: action)])
         }
     }
 }

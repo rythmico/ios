@@ -81,7 +81,7 @@ struct ReviewRequestView: View, TestableView {
                             padding: Const.headerPadding,
                             accessory: editButton(performing: resetSchedule)
                         ) {
-                            ScheduleDetailsView(schedule, tutor: nil)
+                            LessonPlanRequestedScheduleView(schedule, tutor: nil)
                         }
 
                         privateNote.nilIfEmpty.map { privateNote in
@@ -98,6 +98,7 @@ struct ReviewRequestView: View, TestableView {
                             }
                         }
                     }
+                    .frame(maxWidth: .spacingMax)
                     .padding(.trailing, .spacingMedium)
                     .padding(.bottom, .spacingExtraLarge)
                 }

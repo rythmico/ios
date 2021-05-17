@@ -3,20 +3,26 @@ import SwiftUI
 struct TitleSubtitleContentView<Content: View>: View {
     var title: String
     var subtitle: Text? = nil
+    var spacing: CGFloat = .spacingExtraLarge
     @ViewBuilder
     var content: Content
 
     var body: some View {
-        VStack(spacing: .spacingExtraLarge) {
-            TitleSubtitleView(title: title, subtitle: subtitle).padding(.horizontal, .spacingMedium)
+        VStack(spacing: spacing) {
+            TitleSubtitleView(title: title, subtitle: subtitle)
             content
         }
     }
 }
 
 extension TitleSubtitleContentView {
-    init(title: String, subtitle: String, @ViewBuilder content: () -> Content) {
-        self.init(title: title, subtitle: Text(subtitle), content: content)
+    init(
+        title: String,
+        subtitle: String,
+        spacing: CGFloat = .spacingExtraLarge,
+        @ViewBuilder content: () -> Content
+    ) {
+        self.init(title: title, subtitle: Text(subtitle), spacing: spacing, content: content)
     }
 }
 

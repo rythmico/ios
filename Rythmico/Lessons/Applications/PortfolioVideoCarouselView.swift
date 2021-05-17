@@ -1,23 +1,18 @@
 import SwiftUI
+import ComposableNavigator
 
 struct VideoCarouselView: View {
     var videos: [Portfolio.Video]
 
     let rows = [GridItem(.fixed(.spacingUnit * 33), alignment: .leading)]
 
-    @Binding
-    var selectedVideo: Portfolio.Video?
     @State
     private var scrollViewWidth: CGFloat = 0
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHGrid(rows: rows, spacing: .spacingExtraSmall) {
-                ForEach(videos, id: \.self) { video in
-                    VideoCarouselCell(video: video).onTapGesture {
-                        selectedVideo = video
-                    }
-                }
+                ForEach(videos, id: \.self, content: VideoCarouselCell.init)
             }
             .padding(.horizontal, scrollViewWidth < .spacingMax ? .spacingMedium : 0)
             .fixedSize(horizontal: false, vertical: true)
@@ -28,6 +23,9 @@ struct VideoCarouselView: View {
 }
 
 private struct VideoCarouselCell: View {
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
+
     var video: Portfolio.Video
 
     var body: some View {
@@ -62,6 +60,7 @@ private struct VideoCarouselCell: View {
         }
         .cornerRadius(.spacingUnit * 2, antialiased: true)
         .overlay(overlay)
+        .onTapGesture(perform: openPlayer)
     }
 
     @Environment(\.colorScheme) private var colorScheme
@@ -73,6 +72,25 @@ private struct VideoCarouselCell: View {
                 style: .continuous
             )
             .strokeBorder(Color.white.opacity(0.15), lineWidth: 1, antialiased: true)
+        }
+    }
+
+    private func openPlayer() {
+        navigator.go(to: VideoCarouselPlayerScreen(video: video), on: currentScreen)
+    }
+}
+
+struct VideoCarouselPlayerScreen: Screen {
+    var video: Portfolio.Video
+    let presentationStyle: ScreenPresentationStyle = .sheet(allowsPush: false)
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                content: { (screen: VideoCarouselPlayerScreen) in
+                    VideoCarouselPlayer(video: screen.video)
+                }
+            )
         }
     }
 }
@@ -92,8 +110,9 @@ struct VideoCarouselPlayer: View {
     }
 }
 
-struct DismissableContainer<Content: View>: View {
-    @Environment(\.presentationMode) private var presentationMode
+private struct DismissableContainer<Content: View>: View {
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
 
     var backgroundColor: Color = .black
     @ViewBuilder
@@ -113,6 +132,6 @@ struct DismissableContainer<Content: View>: View {
     }
 
     private func dismiss() {
-        presentationMode.wrappedValue.dismiss()
+        navigator.dismiss(screen: currentScreen)
     }
 }

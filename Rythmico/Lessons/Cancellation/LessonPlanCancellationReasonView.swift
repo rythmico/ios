@@ -34,7 +34,6 @@ extension LessonPlanCancellationView {
                         title: "Please tell us why",
                         subtitle: "Please tell us the reason why you decided to cancel your lesson plan:"
                     )
-                    .padding(.horizontal, .spacingMedium)
 
                     SelectableList(data: Reason.allCases, id: \.self, selection: $selectedReason) {
                         Text($0.title).rythmicoTextStyle(.body).foregroundColor(.rythmicoGray90)

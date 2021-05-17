@@ -3,13 +3,13 @@ import SwiftUI
 struct BookingRequestCell: View {
     var request: BookingRequest
     @ObservedObject
-    private var state = Current.state
+    private var navigation = Current.navigation
 
     var body: some View {
         NavigationLink(
             destination: BookingRequestDetailView(bookingRequest: request),
             tag: request,
-            selection: $state.requestsContext.selectedRequest
+            selection: $navigation.requestsNavigation.selectedRequest
         ) {
             HStack(spacing: .spacingMedium) {
                 VStack(alignment: .leading, spacing: .spacingUnit / 2) {

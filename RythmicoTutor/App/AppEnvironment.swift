@@ -4,7 +4,7 @@ import EventKit
 import Firebase
 
 struct AppEnvironment {
-    var state: AppState
+    var navigation: AppNavigation
 
     var remoteConfigCoordinator: RemoteConfigCoordinator
     var remoteConfig: RemoteConfigServiceProtocol
@@ -63,7 +63,7 @@ struct AppEnvironment {
     var bookingApplicationRetractionCoordinator: () -> APIActivityCoordinator<BookingApplicationsRetractRequest>
 
     init(
-        state: AppState,
+        navigation: AppNavigation,
 
         remoteConfig: RemoteConfigServiceProtocol,
 
@@ -120,7 +120,7 @@ struct AppEnvironment {
         bookingApplicationFetchingService: APIServiceBase<BookingApplicationsGetRequest>,
         bookingApplicationRetractionService: APIServiceBase<BookingApplicationsRetractRequest>
     ) {
-        self.state = state
+        self.navigation = navigation
 
         let remoteConfigCoordinator = RemoteConfigCoordinator(service: remoteConfig)
         self.remoteConfigCoordinator = remoteConfigCoordinator
@@ -208,7 +208,7 @@ struct AppEnvironment {
 
 extension AppEnvironment {
     static let live = AppEnvironment.initLive { .init(
-        state: AppState(),
+        navigation: AppNavigation(),
 
         remoteConfig: RemoteConfig(),
 

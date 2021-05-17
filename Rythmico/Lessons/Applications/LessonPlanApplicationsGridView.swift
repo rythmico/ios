@@ -16,29 +16,23 @@ struct LessonPlanApplicationsGridView: View {
                     LessonPlanApplicationsGridLink(lessonPlan: lessonPlan, application: $0)
                 }
             }
+            .frame(maxWidth: .spacingMax)
             .padding(.top, .spacingUnit * 2)
             .padding(.horizontal, .spacingMedium)
         }
-        .frame(maxWidth: .spacingMax)
     }
 }
 
 struct LessonPlanApplicationsGridLink: View {
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
+
     var lessonPlan: LessonPlan
     var application: LessonPlan.Application
-
-    @ObservedObject
-    private var state = Current.state
+    var destination: LessonPlanApplicationDetailScreen { .init(lessonPlan: lessonPlan, application: application) }
 
     var body: some View {
-        NavigationLink(
-            destination: LessonPlanApplicationDetailView(
-                lessonPlan: lessonPlan,
-                application: application
-            ),
-            tag: application,
-            selection: $state.lessonsContext.reviewingApplication
-        ) {
+        Button(action: { navigator.go(to: destination, on: currentScreen) }) {
             LessonPlanApplicationCell(application)
         }
     }

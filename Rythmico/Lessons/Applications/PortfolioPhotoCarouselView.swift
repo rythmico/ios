@@ -1,21 +1,24 @@
 import SwiftUI
+import ComposableNavigator
 
 struct PhotoCarouselView: View {
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
+
     var photos: [Portfolio.Photo]
 
     let columns = Array(repeating: GridItem(.flexible(), spacing: .spacingUnit * 2), count: 3)
 
-    @Binding
-    var selectedPhoto: Portfolio.Photo?
-
     var body: some View {
         LazyVGrid(columns: columns, spacing: .spacingUnit * 2) {
             ForEach(photos, id: \.self) { photo in
-                PhotoCarouselCell(photo: photo).onTapGesture {
-                    selectedPhoto = photo
-                }
+                PhotoCarouselCell(photo: photo).onTapGesture { openGallery(photo) }
             }
         }
+    }
+
+    private func openGallery(_ initialPhoto: Portfolio.Photo) {
+        navigator.go(to: PhotoCarouselDetailScreen(photos: photos, selection: initialPhoto), on: currentScreen)
     }
 }
 
@@ -44,23 +47,29 @@ private struct PhotoCarouselCell: View {
     }
 }
 
+struct PhotoCarouselDetailScreen: Screen {
+    var photos: [Portfolio.Photo]
+    var selection: Portfolio.Photo
+    let presentationStyle: ScreenPresentationStyle = .sheet(allowsPush: false)
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                content: { (screen: PhotoCarouselDetailScreen) in
+                    PhotoCarouselDetailView(photos: screen.photos, selection: screen.selection)
+                }
+            )
+        }
+    }
+}
+
 struct PhotoCarouselDetailView: View {
-    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
 
     var photos: [Portfolio.Photo]
-    @Binding
-    var selection: Portfolio.Photo?
     @State
-    private var latestSelection: Portfolio.Photo
-
-    init?(photos: [Portfolio.Photo], selection: Binding<Portfolio.Photo?>) {
-        guard let initialSelection = selection.wrappedValue else {
-            return nil
-        }
-        self.photos = photos
-        self._selection = selection
-        self._latestSelection = .init(wrappedValue: initialSelection)
-    }
+    var selection: Portfolio.Photo
 
     var body: some View {
         ZStack {
@@ -72,7 +81,7 @@ struct PhotoCarouselDetailView: View {
                     .padding(.top, .spacingMedium)
                     .accentColor(.rythmicoWhite)
 
-                PageView(data: photos, selection: Binding($selection) ?? $latestSelection, accentColor: .rythmicoWhite) { photo in
+                PageView(data: photos, selection: $selection, accentColor: .rythmicoWhite) { photo in
                     AsyncImage(content: .transitional(from: photo.thumbnailURL, to: photo.photoURL)) {
                         if let uiImage = $0 {
                             Image(uiImage: uiImage)
@@ -86,10 +95,9 @@ struct PhotoCarouselDetailView: View {
                 .padding(.bottom, .spacingMedium)
             }
         }
-        .onChange(of: selection) { $0.map { latestSelection = $0 } }
     }
 
     private func dismiss() {
-        presentationMode.wrappedValue.dismiss()
+        navigator.dismiss(screen: currentScreen)
     }
 }

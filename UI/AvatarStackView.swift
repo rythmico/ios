@@ -18,7 +18,7 @@ struct AvatarStackView<Data: RangeReplaceableCollection, ContentView: View>: Vie
                     .frame(width: AvatarView.Const.minSize, height: AvatarView.Const.minSize)
                     .overlay(
                         Circle()
-                            .stroke(Color.rythmicoBackground, lineWidth: Const.borderLineWidth)
+                            .stroke(Color.rythmicoBackgroundTertiary, lineWidth: Const.borderLineWidth)
                             .frame(width: Const.borderOutlineSize, height: Const.borderOutlineSize)
                     )
                     .zIndex(Double(-index))

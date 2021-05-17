@@ -5,6 +5,9 @@ import NonEmpty
 import FoundationSugar
 
 struct LessonPlanBookingView: View {
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
+
     private var lessonPlan: LessonPlan
     private var application: LessonPlan.Application
     private var checkout: Checkout
@@ -30,7 +33,6 @@ struct LessonPlanBookingView: View {
 
     @State private var availableCards: [Card]
     @State private var selectedCard: Card?
-    @State private var addingNewCard = false
 
     var body: some View {
         CoordinatorStateView(
@@ -44,7 +46,7 @@ struct LessonPlanBookingView: View {
                         VStack(spacing: .spacingLarge) {
                             Group {
                                 SectionHeaderContentView(title: "Lesson Schedule") {
-                                    ScheduleDetailsView(lessonPlan.schedule, tutor: application.tutor)
+                                    LessonPlanRequestedScheduleView(lessonPlan.schedule, tutor: application.tutor)
                                     HDivider()
                                     VStack(spacing: .spacingExtraSmall) {
                                         LessonPlanBookingPolicyView.skipLessons
@@ -57,6 +59,7 @@ struct LessonPlanBookingView: View {
                                     PhoneNumberInputView(phoneNumber: $phoneNumber, phoneNumberInputError: $phoneNumberInputError)
                                 }
                             }
+                            .frame(maxWidth: .spacingMax)
                             .padding(.horizontal, .spacingMedium)
 
                             VStack(spacing: .spacingSmall) {
@@ -72,8 +75,10 @@ struct LessonPlanBookingView: View {
                                 HDividerContainer {
                                     RythmicoButton("Add new card", style: RythmicoLinkButtonStyle.quaternary(), action: addNewCard)
                                 }
+                                .frame(maxWidth: .spacingMax)
 
-                                LessonPlanBookingPriceView(price: checkout.pricePerLesson)
+                                LessonPlanPriceView(price: checkout.pricePerLesson, showTermsOfService: true)
+                                    .frame(maxWidth: .spacingMax)
                                     .padding(.horizontal, .spacingSmall)
                             }
                         }
@@ -87,12 +92,18 @@ struct LessonPlanBookingView: View {
                 .disabled(!canConfirm)
             }
             .onChange(of: availableCards, perform: availableCardsChanged)
-            .sheet(isPresented: $addingNewCard) {
-                AddNewCardEntryView(availableCards: $availableCards)
-            }
         }
+        .navigationBarTitle(title)
+        .navigationBarItems(trailing: closeButton)
         .onSuccess(coordinator, perform: checkoutSucceeded)
         .alertOnFailure(coordinator)
+    }
+
+    @ViewBuilder
+    private var closeButton: some View {
+        if !coordinator.state.isSuccess {
+            CloseButton { navigator.dismiss(screen: currentScreen) }
+        }
     }
 
     private func availableCardsChanged(_ cards: [Card]) {
@@ -136,12 +147,11 @@ struct LessonPlanBookingView: View {
 
     func addNewCard() {
         Current.keyboardDismisser.dismissKeyboard()
-        addingNewCard = true
+        navigator.go(to: AddNewCardEntryScreen(availableCards: $availableCards), on: currentScreen)
     }
 
     func checkoutSucceeded(_ lessonPlan: LessonPlan) {
         Current.lessonPlanRepository.replaceById(lessonPlan)
-        Current.state.lessonsContext = .bookedLessonPlan(lessonPlan, application)
     }
 }
 

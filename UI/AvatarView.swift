@@ -39,6 +39,7 @@ struct AvatarView: View {
                 Text(initials)
                     .font(.system(size: g.size.width / 2, weight: .medium, design: .rounded))
                     .lineLimit(1)
+                    .minimumScaleFactor(0.4)
                     .foregroundColor(.rythmicoGray90)
                     .position(x: g.frame(in: .local).midX, y: g.frame(in: .local).midY)
             }

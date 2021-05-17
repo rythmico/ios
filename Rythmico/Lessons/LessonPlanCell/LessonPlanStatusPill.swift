@@ -1,11 +1,12 @@
 import SwiftUI
 
 extension Pill where Content == AnyView {
-    init(lessonPlan: LessonPlan) {
+    init(lessonPlan: LessonPlan, backgroundColor: Color) {
         self.init(
             title: lessonPlan.status.title,
             titleColor: lessonPlan.status.titleColor,
-            backgroundColor: lessonPlan.status.backgroundColor
+            backgroundColor: backgroundColor,
+            borderColor: lessonPlan.status.borderColor
         )
     }
 }
@@ -17,8 +18,8 @@ private extension LessonPlan.Status {
             return "Pending"
         case .reviewing(let applications):
             return "\(applications.count) Applied"
-        case .scheduled:
-            return "Scheduled"
+        case .active:
+            return "Active"
         case .cancelled:
             return "Cancelled"
         }
@@ -30,23 +31,23 @@ private extension LessonPlan.Status {
             return .rythmicoDarkPurple
         case .reviewing:
             return .rythmicoDarkBurgundy
-        case .scheduled:
-            return .clear
+        case .active:
+            return .rythmicoDarkGreen
         case .cancelled:
-            return Color(lightModeVariantHex: 0x111619, darkModeVariantHex: 0x9fa1a3)
+            return Color(light: 0x111619, dark: 0x9fa1a3)
         }
     }
 
-    var backgroundColor: Color {
+    var borderColor: Color {
         switch self {
         case .pending:
-            return .rythmicoLightPurple
+            return .rythmicoDarkPurple
         case .reviewing:
-            return .rythmicoLightBurgundy
-        case .scheduled:
-            return .clear
+            return .rythmicoDarkBurgundy
+        case .active:
+            return .rythmicoDarkGreen
         case .cancelled:
-            return Color(lightModeVariantHex: 0xDDE1E6, darkModeVariantHex: 0x424345)
+            return Color(light: 0x111619, dark: 0x9fa1a3)
         }
     }
 }

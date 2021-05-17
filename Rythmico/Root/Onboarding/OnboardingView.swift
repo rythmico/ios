@@ -28,6 +28,7 @@ struct OnboardingView: View, TestableView {
                 })
                 .padding([.horizontal, .bottom], .spacingLarge)
         }
+        .backgroundColor(.rythmicoBackground)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isLoading)
         .alert(error: errorMessage, dismiss: dismissError)
         .onDisappear {

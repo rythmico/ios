@@ -2,15 +2,15 @@ import SwiftUI
 
 struct LessonPlanApplicationDetailHeaderView: View {
     var lessonPlan: LessonPlan
-    var application: LessonPlan.Application
+    var tutor: Tutor
 
     var body: some View {
         HStack(spacing: .spacingSmall) {
-            TutorAvatarView(application.tutor, mode: .original)
+            TutorAvatarView(tutor, mode: .original)
                 .frame(width: .spacingUnit * 20, height: .spacingUnit * 20)
                 .withDBSCheck()
             VStack(alignment: .leading, spacing: .spacingUnit) {
-                Text(application.tutor.name)
+                Text(tutor.name)
                     .rythmicoTextStyle(.largeTitle)
                     .foregroundColor(.rythmicoForeground)
                 Text(lessonPlan.instrument.assimilatedName + " Tutor")
@@ -29,7 +29,7 @@ struct LessonPlanApplicationDetailHeaderView_Previews: PreviewProvider {
     static var previews: some View {
         LessonPlanApplicationDetailHeaderView(
             lessonPlan: .pendingJackGuitarPlanStub,
-            application: .davidStub
+            tutor: .davidStub
         )
         .previewLayout(.sizeThatFits)
         .padding()

@@ -1,14 +1,32 @@
 import SwiftUI
+import ComposableNavigator
+
+struct ParentInfoAndSafetyScreen: Screen {
+    let presentationStyle: ScreenPresentationStyle = .push
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                ParentInfoAndSafetyScreen.self,
+                content: { ParentInfoAndSafetyView() }
+            )
+        }
+    }
+}
 
 struct ParentInfoAndSafetyView: View {
     var body: some View {
-        TitleSubtitleView(
-            title: "Parent Info & Safety",
-            subtitle: "Music lessons with Rythmico may be relaxed, but we take our responsibility as teachers very seriously. All tutors are DBS checked with years of experience working with children, both in mainstream schools and those that cater for young people with specialist needs."
-        )
+        TitleContentView(title: "Parent Info & Safety") {
+            ScrollView {
+                Text("Music lessons with Rythmico may be relaxed, but we take our responsibility as teachers very seriously. All tutors are DBS checked with years of experience working with children, both in mainstream schools and those that cater for young people with specialist needs.")
+                    .foregroundColor(.rythmicoGray90)
+                    .rythmicoTextStyle(.body)
+                    .frame(maxWidth: .spacingMax, alignment: .leading)
+                    .padding(.horizontal, .spacingMedium)
+            }
+        }
+        .backgroundColor(.rythmicoBackground)
         .frame(maxHeight: .infinity, alignment: .top)
-        .padding(.top, .spacingExtraSmall)
-        .padding(.horizontal, .spacingMedium)
         .navigationBarTitleDisplayMode(.inline)
     }
 }

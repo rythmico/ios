@@ -9,6 +9,7 @@ struct FloatingView<Content: View>: View {
         VStack(spacing: 0) {
             Divider()
             content
+                .frame(maxWidth: .spacingMax, alignment: .center)
                 .padding(.vertical, .spacingExtraSmall)
                 .padding(.horizontal, .spacingMedium)
         }

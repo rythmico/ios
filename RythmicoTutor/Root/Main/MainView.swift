@@ -12,7 +12,7 @@ struct MainView: View, TestableView {
     }
 
     @ObservedObject
-    private var state = Current.state
+    private var navigation = Current.navigation
 
     @ObservedObject
     private var bookingFetchingCoordinator = Current.bookingsFetchingCoordinator
@@ -20,7 +20,7 @@ struct MainView: View, TestableView {
     let inspection = SelfInspection()
     var body: some View {
         MainViewContent(
-            tabs: Tab.allCases, selection: $state.tab,
+            tabs: Tab.allCases, selection: $navigation.selectedTab,
             navigationTitle: \.title, leadingItem: leadingItem, trailingItem: trailingItem,
             content: content,
             tabTitle: \.title, tabIcons: icon

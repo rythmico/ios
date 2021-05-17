@@ -6,6 +6,24 @@ extension Collection {
     }
 }
 
+extension RangeReplaceableCollection where Index == Int {
+    public subscript(safe index: Index) -> Element? {
+        dropFirst(index).first
+    }
+}
+
+extension RangeReplaceableCollection {
+    public static func * <RHS: RangeReplaceableCollection>(lhs: Self, rhs: RHS) -> [(Self.Element, RHS.Element)] {
+        var result: [(Self.Element, RHS.Element)] = []
+        for l in lhs {
+            for r in rhs {
+                result.append((l, r))
+            }
+        }
+        return result
+    }
+}
+
 extension RangeReplaceableCollection {
     public func appending(_ element: Element) -> Self {
         var _self = self

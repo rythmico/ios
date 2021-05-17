@@ -44,12 +44,7 @@ struct TutorStatusBanner: View {
     }
 
     var foregroundColor: Color {
-        Color(
-            UIColor(
-                lightModeVariant: .init(hex: 0x19212C),
-                darkModeVariant: .white
-            )
-        )
+        Color(light: 0x19212C, dark: .white)
     }
 
     var openInboxAction: Action? {

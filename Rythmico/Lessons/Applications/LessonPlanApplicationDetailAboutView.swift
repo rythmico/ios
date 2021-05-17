@@ -5,6 +5,7 @@ struct LessonPlanApplicationDetailAboutView: View {
     var coordinator: APIActivityCoordinator<GetPortfolioRequest>
 
     var tutor: Tutor
+    var topPadding: CGFloat = .spacingMedium
 
     var body: some View {
         ZStack {
@@ -23,7 +24,7 @@ struct LessonPlanApplicationDetailAboutView: View {
         case .loading:
             ActivityIndicator(color: .rythmicoGray90).frame(maxWidth: .infinity, maxHeight: .infinity)
         case .finished(.success(let portfolio)):
-            PortfolioView(tutor: tutor, portfolio: portfolio)
+            PortfolioView(tutor: tutor, portfolio: portfolio, topPadding: topPadding)
         }
     }
 

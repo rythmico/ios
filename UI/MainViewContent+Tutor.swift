@@ -1,10 +1,5 @@
 import SwiftUI
 
-// TODO: remove once SwiftUI implements `hidesBottomBarWhenPushed`.
-// For now, on iPhone we wrap TabView into a single NavigationView
-// to hide the tab bar when presenting detail views.
-// On iPad, height is enough not to interfere with user experience
-// so we go with the standard TabView into NavigationView approach.
 struct MainViewContent<Tab: Hashable>: View {
     var tabs: [Tab]
     @Binding

@@ -5,7 +5,7 @@ struct LessonPlan: Equatable, Identifiable, Hashable {
     enum Status: Equatable, Decodable, Hashable {
         case pending
         case reviewing([Application])
-        case scheduled([Lesson], Tutor)
+        case active([Lesson], Tutor)
         case cancelled([Lesson]?, Tutor?, CancellationInfo)
 
         init(from decoder: Decoder) throws {
@@ -18,7 +18,7 @@ struct LessonPlan: Equatable, Identifiable, Hashable {
             case (_, let lessons, let bookingInfo, let cancellationInfo?):
                 self = .cancelled(lessons, bookingInfo?.tutor, cancellationInfo)
             case (_, let lessons?, let bookingInfo?, _) where !lessons.isEmpty:
-                self = .scheduled(lessons, bookingInfo.tutor)
+                self = .active(lessons, bookingInfo.tutor)
             case (let applications?, _, _, _) where !applications.isEmpty:
                 self = .reviewing(applications)
             default:
@@ -91,7 +91,7 @@ extension LessonPlan: Decodable {
 extension LessonPlan {
     var lessons: [Lesson]? {
         switch status {
-        case .scheduled(let lessons, _):
+        case .active(let lessons, _):
             return lessons
         case .cancelled(let lessons, _, _):
             return lessons

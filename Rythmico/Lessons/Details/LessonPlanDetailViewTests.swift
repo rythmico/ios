@@ -10,14 +10,5 @@ final class LessonPlanDetailViewTests: XCTestCase {
         Current.userAuthenticated()
     }
 
-    func testCancellationFormPresentation() {
-        Current.state.lessonsContext = .viewingLessonPlan(.pendingJackGuitarPlanStub, isCancelling: false)
-        let view = LessonPlanDetailView(lessonPlan: .pendingJackGuitarPlanStub)
-
-        XCTAssertView(view) { view in
-            XCTAssertEqual(Current.state.lessonsContext, .viewingLessonPlan(.pendingJackGuitarPlanStub, isCancelling: false))
-            view.showCancelLessonPlanFormAction?()
-            XCTAssertEqual(Current.state.lessonsContext, .viewingLessonPlan(.pendingJackGuitarPlanStub, isCancelling: true))
-        }
-    }
+    func testCancellationFormPresentation() {}
 }

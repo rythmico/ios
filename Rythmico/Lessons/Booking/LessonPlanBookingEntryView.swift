@@ -1,4 +1,27 @@
 import SwiftUI
+import ComposableNavigator
+
+struct LessonPlanBookingEntryScreen: Screen {
+    let lessonPlan: LessonPlan
+    let application: LessonPlan.Application
+    let presentationStyle: ScreenPresentationStyle = .sheet(allowsPush: false)
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                content: { (screen: LessonPlanBookingEntryScreen) in
+                    LessonPlanBookingEntryView(
+                        lessonPlan: screen.lessonPlan,
+                        application: screen.application
+                    )
+                },
+                nesting: {
+                    AddNewCardEntryScreen.Builder()
+                }
+            )
+        }
+    }
+}
 
 struct LessonPlanBookingEntryView: View {
     @Environment(\.presentationMode) private var presentationMode
@@ -12,6 +35,7 @@ struct LessonPlanBookingEntryView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                Color.rythmicoBackgroundSecondary.edgesIgnoringSafeArea(.all)
                 if let checkout = coordinator.state.successValue {
                     LessonPlanBookingView(
                         lessonPlan: lessonPlan,
@@ -20,12 +44,15 @@ struct LessonPlanBookingEntryView: View {
                     )
                     .transition(.opacity)
                 } else {
-                    ActivityIndicator(color: .rythmicoGray90).transition(.opacity)
+                    ActivityIndicator(color: .rythmicoGray90)
+                        .transition(.opacity)
+                        .navigationBarItems(trailing: CloseButton(action: dismiss))
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: CloseButton(action: dismiss))
         }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .sheetInteractiveDismissal(false)
         .accentColor(.rythmicoPurple)
         .onAppear(perform: fetch)
         .onDisappear(perform: coordinator.cancel)

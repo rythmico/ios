@@ -1,10 +1,32 @@
 import SwiftUI
+import ComposableNavigator
+
+struct LessonPlanApplicationsScreen: Screen {
+    let lessonPlan: LessonPlan
+    let presentationStyle: ScreenPresentationStyle = .push
+
+    init?(lessonPlan: LessonPlan) {
+        guard lessonPlan.status.isReviewing else { return nil }
+        self.lessonPlan = lessonPlan
+    }
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                content: { (screen: LessonPlanApplicationsScreen) in
+                    LessonPlanApplicationsView(screen.lessonPlan)
+                },
+                nesting: {
+                    LessonPlanApplicationDetailScreen.Builder()
+                }
+            )
+        }
+    }
+}
 
 struct LessonPlanApplicationsView: View {
     private var lessonPlan: LessonPlan
     private var applications: [LessonPlan.Application]
-    @ObservedObject
-    private var state = Current.state
 
     init?(_ lessonPlan: LessonPlan) {
         guard let applications = lessonPlan.status.reviewingValue else {
@@ -13,6 +35,8 @@ struct LessonPlanApplicationsView: View {
         self.lessonPlan = lessonPlan
         self.applications = applications
     }
+
+    var title: String { "Tutors Available" }
 
     var priceInfo: String {
         "All \(instrument) tutors charge a standard rate of £\(lessonPlan.schedule.duration) per lesson"
@@ -23,19 +47,20 @@ struct LessonPlanApplicationsView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: .spacingSmall) {
-            TitleContentView(title: "Tutors Available") {
+        TitleContentView(title: title) {
+            VStack(alignment: .leading, spacing: .spacingSmall) {
                 InfoBanner(text: priceInfo)
-            }
-            .frame(maxWidth: .spacingMax)
-            .padding(.horizontal, .spacingMedium)
+                    .frame(maxWidth: .spacingMax)
+                    .padding(.horizontal, .spacingMedium)
 
-            LessonPlanApplicationsGridView(
-                lessonPlan: lessonPlan,
-                applications: applications
-            )
+                LessonPlanApplicationsGridView(
+                    lessonPlan: lessonPlan,
+                    applications: applications
+                )
+            }
         }
-        .padding(.top, .spacingExtraSmall)
+        .backgroundColor(.rythmicoBackground)
+        .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
     }
 }

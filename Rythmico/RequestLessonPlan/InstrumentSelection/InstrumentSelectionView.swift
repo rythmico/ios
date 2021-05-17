@@ -12,10 +12,12 @@ struct InstrumentSelectionView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        TitleSubtitleContentView(title: "Choose Instrument", subtitle: "Select one instrument") {
-            CollectionView(state.instruments, id: \.name) {
-                InstrumentView(viewData: $0)
-            }
+        TitleSubtitleContentView(
+            title: "Choose Instrument",
+            subtitle: "Select one instrument",
+            spacing: .spacingExtraSmall
+        ) {
+            CollectionView(state.instruments, id: \.name, content: InstrumentView.init)
         }
         .testable(self)
         .onAppear(perform: fetchInstruments)

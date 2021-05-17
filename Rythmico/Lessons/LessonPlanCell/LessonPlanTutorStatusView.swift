@@ -1,10 +1,15 @@
 import SwiftUI
 
-extension InlineContentAndTitleView where Content == AnyView {
-    init(status: LessonPlan.Status, summarized: Bool) {
-        self.init(
+struct LessonPlanTutorStatusView: View {
+    @Environment(\.sizeCategory) private var sizeCategory
+
+    var status: LessonPlan.Status
+    var summarized: Bool
+
+    var body: some View {
+        InlineContentAndTitleView(
             content: { AnyView(status.avatar) },
-            title: summarized ? status.summarizedTitle : status.title,
+            title: summarized ? status.summarizedTitle(sizeCategory: sizeCategory) : status.title,
             bold: !summarized
         )
     }
@@ -19,7 +24,7 @@ private extension LessonPlan.Status {
             AvatarView(.placeholder)
         case .reviewing(let applications):
             AvatarStackView(data: applications.map(\.tutor), thumbnails: true)
-        case .scheduled(_, let tutor),
+        case .active(_, let tutor),
              .cancelled(_, let tutor?, _):
             TutorAvatarView(tutor, mode: .thumbnail)
         case .cancelled(_, nil, _):
@@ -27,14 +32,14 @@ private extension LessonPlan.Status {
         }
     }
 
-    var summarizedTitle: String {
+    func summarizedTitle(sizeCategory: ContentSizeCategory) -> String {
         switch self {
         case .pending,
              .reviewing([]):
             return "Tutor TBC"
         case .reviewing(let applicants):
-            return applicants.count == 1 ? "Tutors Available" : .empty
-        case .scheduled(_, let tutor),
+            return applicants.count == 1 && !sizeCategory.isAccessibilityCategory ? "Tutors Available" : .empty
+        case .active(_, let tutor),
              .cancelled(_, let tutor?, _):
             return tutor.name
         case .cancelled(_, nil, _):
@@ -46,11 +51,11 @@ private extension LessonPlan.Status {
         switch self {
         case .pending,
              .reviewing([]):
-            return "Pending tutor applications"
+            return "Pending tutor applications..."
         case .reviewing(let applications):
             let count = applications.count
             return "\(count) tutor\(count == 1 ? "" : "s") applied" // TODO: plurals
-        case .scheduled(_, let tutor),
+        case .active(_, let tutor),
              .cancelled(_, let tutor?, _):
             return tutor.name
         case .cancelled(_, nil, _):
@@ -63,17 +68,17 @@ private extension LessonPlan.Status {
 struct LessonPlanTutorStatusView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            InlineContentAndTitleView(status: .pending, summarized: true)
+            LessonPlanTutorStatusView(status: .pending, summarized: true)
                 .previewDisplayName("Pending")
-            InlineContentAndTitleView(status: .reviewing([]), summarized: true)
+            LessonPlanTutorStatusView(status: .reviewing([]), summarized: true)
                 .previewDisplayName("Reviewing 0 Tutors")
-            InlineContentAndTitleView(status: .reviewing(.stub), summarized: true)
+            LessonPlanTutorStatusView(status: .reviewing(.stub), summarized: true)
                 .previewDisplayName("Reviewing 1+ Tutors")
-            InlineContentAndTitleView(status: .scheduled(.stub, .jesseStub), summarized: true)
+            LessonPlanTutorStatusView(status: .active(.stub, .jesseStub), summarized: true)
                 .previewDisplayName("Scheduled")
-            InlineContentAndTitleView(status: .cancelled(.stub, nil, .stub), summarized: true)
+            LessonPlanTutorStatusView(status: .cancelled(.stub, nil, .stub), summarized: true)
                 .previewDisplayName("Cancelled no Tutor")
-            InlineContentAndTitleView(status: .cancelled(.stub, .jesseStub, .stub), summarized: true)
+            LessonPlanTutorStatusView(status: .cancelled(.stub, .jesseStub, .stub), summarized: true)
                 .previewDisplayName("Cancelled w/ Tutor")
         }
         .previewLayout(.sizeThatFits)

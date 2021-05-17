@@ -9,18 +9,18 @@ extension LessonPlanCancellationView {
 
         var body: some View {
             VStack(spacing: 0) {
-                TitleContentView(title: title, titlePadding: .init(horizontal: .spacingMedium)) {
+                TitleContentView(title: title) {
                     ScrollView {
-                        VStack(spacing: .spacingMedium, content: content).padding(.horizontal, .spacingMedium)
+                        VStack(spacing: .spacingMedium, content: content)
+                            .frame(maxWidth: .spacingMax, alignment: .leading)
+                            .padding(.horizontal, .spacingMedium)
                     }
                 }
 
-                FloatingView {
-                    HStack(spacing: .spacingSmall) {
-                        RythmicoButton("No", style: RythmicoButtonStyle.secondary(), action: noAction)
-                        RythmicoButton("Yes", style: RythmicoButtonStyle.tertiary(), action: yesAction)
-                    }
-                }
+                FloatingActionMenu([
+                    .init(title: "No", isPrimary: true, action: noAction),
+                    .init(title: "Yes", action: yesAction),
+                ])
             }
         }
 
@@ -28,7 +28,7 @@ extension LessonPlanCancellationView {
             switch lessonPlan.status {
             case .pending, .reviewing:
                 return "Cancel Lesson Plan Request?"
-            case .scheduled:
+            case .active:
                 return "Cancel Lesson Plan?"
             case .cancelled:
                 preconditionFailure("Cannot cancel an already cancelled lesson plan.")
@@ -42,7 +42,7 @@ extension LessonPlanCancellationView {
                 descriptionText("This lesson plan request is currently pending. By cancelling it, tutors won't be able to view it.")
             case .reviewing:
                 descriptionText("This lesson plan request is currently in review. By cancelling it, tutors who have applied will be withdrawn.")
-            case .scheduled:
+            case .active:
                 descriptionText("This will cancel the whole lesson plan, including upcoming lessons. The recurring payment will also be cancelled.")
                 if !isFree {
                     descriptionText("You will still be charged the full amount for your upcoming lesson on this plan.")
@@ -82,7 +82,7 @@ struct LessonPlanCancellationPromptView_Previews: PreviewProvider {
     static var previews: some View {
         LessonPlanCancellationView.PromptView(
             lessonPlan: LessonPlan.pendingJackGuitarPlanStub.with {
-                $0.status = .scheduled(
+                $0.status = .active(
                     [
                         Lesson.scheduledStub.with(\.freeSkipUntil, Current.date() - (3, .second)),
                         Lesson.scheduledStub.with(\.freeSkipUntil, Current.date() - (2, .second)),

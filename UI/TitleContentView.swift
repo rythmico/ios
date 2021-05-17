@@ -2,21 +2,23 @@ import SwiftUI
 
 struct TitleContentView<Content: View>: View {
     var title: String
-    var titlePadding: EdgeInsets = .zero
+    var alignment: HorizontalAlignment = .center
+    var spacing: CGFloat = .spacingExtraSmall
     @ViewBuilder
     var content: Content
 
     var body: some View {
-        VStack(alignment: .leading, spacing: .spacingExtraSmall) {
+        VStack(alignment: alignment, spacing: spacing) {
             Text(title)
                 .foregroundColor(.rythmicoForeground)
                 .rythmicoTextStyle(.largeTitle)
-                .padding(titlePadding)
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(maxWidth: .spacingMax, alignment: .leading)
+                .padding(.horizontal, .spacingMedium)
                 .accessibility(addTraits: .isHeader)
             content
         }
+        .padding(.top, .spacingUnit)
     }
 }

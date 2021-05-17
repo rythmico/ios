@@ -7,11 +7,11 @@ struct BookingsTabView: View {
     }
 
     @ObservedObject
-    private var state = Current.state
+    private var navigation = Current.navigation
 
     var body: some View {
         VStack(spacing: 0) {
-            Picker("", selection: $state.scheduleTab) {
+            Picker("", selection: $navigation.scheduleFilter) {
                 ForEach(Tab.allCases, id: \.self) {
                     Text($0.rawValue)
                 }

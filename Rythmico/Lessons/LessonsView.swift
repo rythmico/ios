@@ -1,6 +1,26 @@
 import SwiftUI
 import Combine
+import ComposableNavigator
 import FoundationSugar
+
+struct LessonsScreen: Screen {
+    let presentationStyle: ScreenPresentationStyle = .push
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                LessonsScreen.self,
+                content: { LessonsView() },
+                nesting: {
+                    RequestLessonPlanScreen.Builder()
+                    LessonPlanDetailScreen.Builder()
+                    LessonPlanApplicationsScreen.Builder()
+                    LessonDetailScreen.Builder()
+                }
+            )
+        }
+    }
+}
 
 struct LessonsView: View, TestableView {
     enum Filter: String, CaseIterable {
@@ -11,9 +31,17 @@ struct LessonsView: View, TestableView {
     @Environment(\.scenePhase)
     private var scenePhase
     @ObservedObject
-    private var state = Current.state
+    private var tabSelection = Current.tabSelection
+    @Environment(\.navigator)
+    private var navigator
+    @Environment(\.currentScreen)
+    private var currentScreen
+    @ObservedObject
+    private var lessonsTabNavigation = Current.lessonsTabNavigation
     @ObservedObject
     private var coordinator = Current.lessonPlanFetchingCoordinator
+    @State
+    private var hasFetchedLessonPlansAtLeastOnce = false
     @ObservedObject
     private var repository = Current.lessonPlanRepository
 
@@ -23,38 +51,79 @@ struct LessonsView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        VStack(spacing: 0) {
-            TabMenuView(tabs: Filter.allCases, selection: $state.lessonsFilter)
-            LessonsCollectionView(
-                previousLessonPlans: repository.previousItems,
-                currentLessonPlans: repository.items,
-                filter: state.lessonsFilter
-            )
+        TitleContentView(title: title, spacing: .spacingUnit) {
+            VStack(spacing: 0) {
+                TabMenuView(tabs: Filter.allCases, selection: $tabSelection.lessonsTab)
+                LessonsCollectionView(
+                    previousLessonPlans: repository.previousItems,
+                    currentLessonPlans: repository.items,
+                    filter: tabSelection.lessonsTab
+                )
+            }
         }
+        .backgroundColor(.rythmicoBackground)
         .accentColor(.rythmicoPurple)
+        .navigationBarTitle(title)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(leading: leadingItem, trailing: trailingItem)
         .testable(self)
-        .onReceive(coordinator.$state.zip(state.onLessonsTabRootPublisher).b, perform: fetch)
+        .onReceive(shouldFetchPublisher(), perform: fetch)
         // FIXME: double HTTP request for some reason
 //        .onDisappear(perform: coordinator.cancel)
-        .onSuccess(coordinator, perform: repository.setItems)
+        .onSuccess(coordinator, perform: onLessonPlansFetched)
         .alertOnFailure(coordinator)
-        .detail(item: $state.lessonsContext.viewingLesson, content: LessonDetailView.init)
-        .detail(item: $state.lessonsContext.viewingLessonPlan, content: LessonPlanDetailView.init)
-        .detail(item: $state.lessonsContext.reviewingLessonPlan, content: LessonPlanApplicationsView.init)
+    }
+
+    private var title: String { MainView.Tab.lessons.title }
+
+    @ViewBuilder
+    private var leadingItem: some View {
+        if coordinator.state.isLoading {
+            ActivityIndicator(color: .rythmicoGray90)
+        }
+    }
+
+    @ViewBuilder
+    private var trailingItem: some View {
+        Button(action: presentRequestLessonFlow) {
+            Image(decorative: Asset.buttonRequestLessons.name)
+                .padding(.vertical, .spacingExtraSmall)
+                .padding(.horizontal, .spacingExtraLarge)
+                .offset(x: .spacingExtraLarge)
+        }
+        .accessibility(label: Text("Request lessons"))
+        .accessibility(hint: Text("Double tap to request a lesson plan"))
+    }
+
+    func presentRequestLessonFlow() {
+        navigator.go(to: RequestLessonPlanScreen(), on: currentScreen)
+    }
+
+    func onLessonPlansFetched(_ lessonPlans: [LessonPlan]) {
+        repository.setItems(lessonPlans)
+        guard !hasFetchedLessonPlansAtLeastOnce else { return }
+        hasFetchedLessonPlansAtLeastOnce = true
+        if lessonPlans.isEmpty {
+            presentRequestLessonFlow()
+        } else {
+            Current.pushNotificationAuthorizationCoordinator.requestAuthorization()
+        }
+    }
+
+    private func shouldFetchPublisher() -> AnyPublisher<Void, Never> {
+        coordinator.$state.zip(onLessonsTabRootPublisher()).b
+    }
+
+    private func onLessonsTabRootPublisher() -> AnyPublisher<Void, Never> {
+        tabSelection.$mainTab.combineLatest(lessonsTabNavigation.$path.map(\.current))
+            .filter { $0 == .lessons && $1.is(LessonsScreen()) }
+            .map { _ in () }
+            .eraseToAnyPublisher()
     }
 
     private func fetch() {
         guard Current.sceneState() == .active else { return }
         coordinator.startToIdle()
-    }
-}
-
-private extension AppState {
-    var onLessonsTabRootPublisher: AnyPublisher<Void, Never> {
-        $tab.combineLatest($lessonsContext)
-            .filter { $0 == (.lessons, .none) }
-            .map { _ in () }
-            .eraseToAnyPublisher()
     }
 }
 

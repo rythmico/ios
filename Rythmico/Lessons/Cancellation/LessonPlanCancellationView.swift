@@ -1,9 +1,30 @@
 import SwiftUI
+import ComposableNavigator
 import FoundationSugar
 
+struct LessonPlanCancellationScreen: Screen {
+    let lessonPlan: LessonPlan
+    let presentationStyle: ScreenPresentationStyle = .sheet(allowsPush: false)
+
+    init?(lessonPlan: LessonPlan) {
+        guard !lessonPlan.status.isCancelled else { return nil }
+        self.lessonPlan = lessonPlan
+    }
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                content: { (screen: LessonPlanCancellationScreen) in
+                    LessonPlanCancellationView(lessonPlan: screen.lessonPlan)
+                }
+            )
+        }
+    }
+}
+
 struct LessonPlanCancellationView: View, TestableView {
-    @Environment(\.presentationMode)
-    private var presentationMode
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
 
     @State
     private var isCancellationIntended = false
@@ -11,11 +32,6 @@ struct LessonPlanCancellationView: View, TestableView {
     private var coordinator = Current.lessonPlanCancellationCoordinator()
 
     var lessonPlan: LessonPlan
-
-    init?(lessonPlan: LessonPlan) {
-        guard !lessonPlan.status.isCancelled else { return nil }
-        self.lessonPlan = lessonPlan
-    }
 
     var error: Error? { coordinator.state.failureValue }
 
@@ -52,8 +68,8 @@ struct LessonPlanCancellationView: View, TestableView {
                 }
             }
             .onEdgeSwipe(.left, perform: back)
-            .padding(.top, .spacingExtraSmall)
         }
+        .backgroundColor(.rythmicoBackgroundSecondary)
         .sheetInteractiveDismissal(!isCancellationIntended)
         .accentColor(.rythmicoGray90)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isCancellationIntended)
@@ -70,12 +86,12 @@ struct LessonPlanCancellationView: View, TestableView {
     private func lessonPlanSuccessfullyCancelled(_ lessonPlan: LessonPlan) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             Current.lessonPlanRepository.replaceById(lessonPlan)
-            Current.state.lessonsContext = .none
+            navigator.goBack(to: .root)
         }
     }
 
     private func dismiss() {
-        presentationMode.wrappedValue.dismiss()
+        navigator.dismiss(screen: currentScreen)
     }
 
     private func showReasonView() {

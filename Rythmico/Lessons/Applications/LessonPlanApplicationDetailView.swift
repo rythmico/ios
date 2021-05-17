@@ -1,6 +1,34 @@
 import SwiftUI
+import ComposableNavigator
+
+struct LessonPlanApplicationDetailScreen: Screen {
+    let lessonPlan: LessonPlan
+    let application: LessonPlan.Application
+    let presentationStyle: ScreenPresentationStyle = .push
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                content: { (screen: LessonPlanApplicationDetailScreen) in
+                    LessonPlanApplicationDetailView(
+                        lessonPlan: screen.lessonPlan,
+                        application: screen.application
+                    )
+                },
+                nesting: {
+                    VideoCarouselPlayerScreen.Builder()
+                    PhotoCarouselDetailScreen.Builder()
+                    LessonPlanBookingEntryScreen.Builder()
+                }
+            )
+        }
+    }
+}
 
 struct LessonPlanApplicationDetailView: View {
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
+
     typealias HeaderView = LessonPlanApplicationDetailHeaderView
     typealias MessageView = LessonPlanApplicationDetailMessageView
     typealias AboutView = LessonPlanApplicationDetailAboutView
@@ -21,7 +49,7 @@ struct LessonPlanApplicationDetailView: View {
     var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: .spacingSmall) {
-                HeaderView(lessonPlan: lessonPlan, application: application)
+                HeaderView(lessonPlan: lessonPlan, tutor: application.tutor)
                 TabMenuView(tabs: Tab.allCases, selection: $tab)
             }
 
@@ -39,6 +67,7 @@ struct LessonPlanApplicationDetailView: View {
                 }
             }
         }
+        .backgroundColor(.rythmicoBackground)
     }
 
     private var bookButtonTitle: String {
@@ -46,7 +75,7 @@ struct LessonPlanApplicationDetailView: View {
     }
 
     private func book() {
-        Current.state.lessonsContext.isBookingLessonPlan = true
+        navigator.go(to: LessonPlanBookingEntryScreen(lessonPlan: lessonPlan, application: application), on: currentScreen)
     }
 
     private static let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))

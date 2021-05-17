@@ -6,7 +6,7 @@ struct LessonPlanSummaryCell: View {
 
     init?(lessonPlan: LessonPlan) {
         switch lessonPlan.status {
-        case .scheduled, .cancelled:
+        case .active, .cancelled:
             return nil
         case .pending, .reviewing:
             break
@@ -25,6 +25,10 @@ struct LessonPlanSummaryCell: View {
 }
 
 struct LessonPlanSummaryCellMainContent: View {
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
+    @Environment(\.colorScheme) private var colorScheme
+
     var lessonPlan: LessonPlan
 
     var title: String {
@@ -40,7 +44,7 @@ struct LessonPlanSummaryCellMainContent: View {
             return "Pending tutor applications"
         case .reviewing:
             return "Pending selection of tutor"
-        case .scheduled:
+        case .active:
             return ""
         case .cancelled:
             return [startDateText, "Plan Cancelled"].joined(separator: " • ")
@@ -48,7 +52,7 @@ struct LessonPlanSummaryCellMainContent: View {
     }
 
     var body: some View {
-        Button(action: { Current.state.lessonsContext.viewingLessonPlan = lessonPlan }) {
+        Button(action: { navigator.go(to: LessonPlanDetailScreen(lessonPlan: lessonPlan), on: currentScreen) }) {
             VStack(alignment: .leading, spacing: 0) {
                 Text(title)
                     .rythmicoTextStyle(.subheadlineBold)
@@ -61,12 +65,17 @@ struct LessonPlanSummaryCellMainContent: View {
                     .foregroundColor(.rythmicoGray90)
                 VSpacing(.spacingExtraSmall)
                 HStack(spacing: .spacingExtraSmall) {
-                    InlineContentAndTitleView(status: lessonPlan.status, summarized: true)
-                    Pill(lessonPlan: lessonPlan)
+                    LessonPlanTutorStatusView(status: lessonPlan.status, summarized: true)
+                    Pill(lessonPlan: lessonPlan, backgroundColor: .rythmicoBackgroundTertiary)
                 }
             }
             .padding(.spacingMedium)
         }
+        .watermark(
+            lessonPlan.instrument.icon.image,
+            offset: .init(width: 50, height: -20),
+            opacity: colorScheme == .dark ? 0.04 : nil
+        )
     }
 
     private static let startDateFormatter = Current.dateFormatter(format: .custom("d MMM"))
@@ -74,13 +83,21 @@ struct LessonPlanSummaryCellMainContent: View {
 }
 
 struct LessonPlanSummaryCellAccessory: View {
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
+
     var lessonPlan: LessonPlan
+    var chooseTutorAction: Action? {
+        LessonPlanApplicationsScreen(lessonPlan: lessonPlan).map { screen in
+            { navigator.go(to: screen, on: currentScreen) }
+        }
+    }
 
     var body: some View {
-        if lessonPlan.status.isReviewing {
+        if let chooseTutorAction = chooseTutorAction {
             Divider().overlay(Color.rythmicoGray20)
 
-            Button(action: { Current.state.lessonsContext.reviewingLessonPlan = lessonPlan }) {
+            Button(action: chooseTutorAction) {
                 HStack(spacing: .spacingExtraSmall) {
                     Text("Choose Tutor")
                         .rythmicoTextStyle(.bodySemibold)
@@ -102,7 +119,7 @@ struct LessonPlanSummaryCell_Previews: PreviewProvider {
         Group {
             LessonPlanSummaryCell(lessonPlan: .pendingJackGuitarPlanStub)
             LessonPlanSummaryCell(lessonPlan: .reviewingJackGuitarPlanStub)
-            LessonPlanSummaryCell(lessonPlan: .scheduledJackGuitarPlanStub)
+            LessonPlanSummaryCell(lessonPlan: .activeJackGuitarPlanStub)
             LessonPlanSummaryCell(lessonPlan: .cancelledJackGuitarPlanStub)
         }
         .previewLayout(.sizeThatFits)

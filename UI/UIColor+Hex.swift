@@ -1,36 +1,47 @@
-import UIKit
+import SwiftUI
+
+extension Color {
+    init(light: UIColor, dark: UIColor) {
+        self.init(UIColor(light: light, dark: dark))
+    }
+
+    init(light: UIColor, dark: Int) {
+        self.init(UIColor(light: light, dark: dark))
+    }
+
+    init(light: Int, dark: UIColor) {
+        self.init(UIColor(light: light, dark: dark))
+    }
+
+    init(light: Int, dark: Int) {
+        self.init(UIColor(light: light, dark: dark))
+    }
+}
 
 extension UIColor {
-    convenience init(lightModeVariant: UIColor, darkModeVariant: UIColor) {
-        self.init(dynamicProvider: {
-            if $0.userInterfaceStyle == .light {
-                return lightModeVariant
-            } else {
-                return darkModeVariant
-            }
-        })
+    convenience init(light: UIColor, dark: UIColor) {
+        self.init { $0.userInterfaceStyle == .light ? light : dark }
     }
 
-    convenience init(
-        base256Red red: Int,
-        green: Int,
-        blue: Int,
-        alpha: CGFloat = 1
-    ) {
-        self.init(
-            red: CGFloat(red) / 255,
-            green: CGFloat(green) / 255,
-            blue: CGFloat(blue) / 255,
-            alpha: alpha
-        )
+    convenience init(light: UIColor, dark: Int) {
+        self.init(light: light, dark: .init(hex: dark))
     }
 
+    convenience init(light: Int, dark: UIColor) {
+        self.init(light: .init(hex: light), dark: dark)
+    }
+
+    convenience init(light: Int, dark: Int) {
+        self.init(light: .init(hex: light), dark: .init(hex: dark))
+    }
+}
+
+extension UIColor {
     convenience init(hex: Int, alpha: CGFloat = 1) {
-        let (red, green, blue) = (
-            CGFloat((hex >> 16) & 0xff) / 255,
-            CGFloat((hex >> 08) & 0xff) / 255,
-            CGFloat((hex >> 00) & 0xff) / 255
-        )
+        let divisor = CGFloat(255)
+        let red     = CGFloat((hex & 0xFF0000) >> 16) / divisor
+        let green   = CGFloat((hex & 0x00FF00) >>  8) / divisor
+        let blue    = CGFloat( hex & 0x0000FF       ) / divisor
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
 }
