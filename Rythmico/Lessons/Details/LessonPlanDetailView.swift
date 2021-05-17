@@ -16,6 +16,7 @@ struct LessonPlanDetailScreen: Screen {
                 nesting: {
                     LessonPlanCancellationScreen.Builder()
                     LessonPlanApplicationsScreen.Builder()
+                    LessonPlanTutorDetailScreen.Builder()
                 }
             )
         }
@@ -106,7 +107,7 @@ struct LessonPlanDetailView: View, TestableView {
                 InfoBanner(text: "Potential tutors have received your request and will submit applications for your consideration.")
             }
         case .active(_, let tutor), .cancelled(_, let tutor?, _):
-            TutorCell(tutor: tutor)
+            TutorCell(lessonPlan: lessonPlan, tutor: tutor)
         }
     }
 

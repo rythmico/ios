@@ -15,6 +15,7 @@ struct LessonDetailScreen: Screen {
                 },
                 nesting: {
                     LessonSkippingScreen.Builder()
+                    LessonPlanTutorDetailScreen.Builder()
                     LessonPlanDetailScreen.Builder()
                 }
             )
@@ -65,8 +66,7 @@ struct LessonDetailView: View, TestableView {
                             LessonScheduleView(lesson: lesson)
                             AddressLabel(address: lesson.address)
 
-                            SectionHeaderView(title: "Tutor")
-                            TutorCell(tutor: lesson.tutor)
+                            tutorSection
                         }
                         .foregroundColor(.rythmicoGray90)
                         .frame(maxWidth: .spacingMax)
@@ -87,6 +87,14 @@ struct LessonDetailView: View, TestableView {
     }
 
     private var title: String { lesson.title }
+
+    @ViewBuilder
+    private var tutorSection: some View {
+        if let lessonPlan = lessonPlan {
+            SectionHeaderView(title: "Tutor")
+            TutorCell(lessonPlan: lessonPlan, tutor: lesson.tutor)
+        }
+    }
 
     @ViewBuilder
     private var moreButton: some View {
