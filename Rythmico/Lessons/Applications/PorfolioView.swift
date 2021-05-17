@@ -5,6 +5,7 @@ struct PortfolioView: View {
 
     var tutor: Tutor
     var portfolio: Portfolio
+    var topPadding: CGFloat
 
     var body: some View {
         ScrollView { proxy in
@@ -54,7 +55,8 @@ struct PortfolioView: View {
                     .padding(.horizontal, .spacingMedium)
                 }
             }
-            .padding(.vertical, .spacingMedium)
+            .padding(.top, topPadding)
+            .padding(.bottom, .spacingMedium)
         }
     }
 
