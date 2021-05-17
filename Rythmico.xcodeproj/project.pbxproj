@@ -393,6 +393,7 @@
 		D575C86F254F2F82001664AB /* ActivityCoordinator+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C86D254F2F82001664AB /* ActivityCoordinator+Sugar.swift */; };
 		D575C877254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C876254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift */; };
 		D575C878254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C876254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift */; };
+		D575FE0C2652CE0F00448471 /* LessonPlanTutorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575FE0B2652CE0F00448471 /* LessonPlanTutorDetailView.swift */; };
 		D577EEA724E6F66400253EA1 /* BookingRequestApplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */; };
 		D57DE179264DC26400C5E118 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DE178264DC26400C5E118 /* ProfileCell.swift */; };
 		D57DE17B264DC2AE00C5E118 /* ProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DE17A264DC2AE00C5E118 /* ProfileSection.swift */; };
@@ -932,6 +933,7 @@
 		D575C84D254F29BD001664AB /* Assets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.generated.swift; sourceTree = "<group>"; };
 		D575C86D254F2F82001664AB /* ActivityCoordinator+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityCoordinator+Sugar.swift"; sourceTree = "<group>"; };
 		D575C876254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationAuthorizationCoordinator+Sugar.swift"; sourceTree = "<group>"; };
+		D575FE0B2652CE0F00448471 /* LessonPlanTutorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanTutorDetailView.swift; sourceTree = "<group>"; };
 		D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestApplyView.swift; sourceTree = "<group>"; };
 		D57DE178264DC26400C5E118 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		D57DE17A264DC2AE00C5E118 /* ProfileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSection.swift; sourceTree = "<group>"; };
@@ -2305,6 +2307,7 @@
 		D5F89397263F563200578970 /* Tutor */ = {
 			isa = PBXGroup;
 			children = (
+				D575FE0B2652CE0F00448471 /* LessonPlanTutorDetailView.swift */,
 				D527B02124FEC53D003E81A9 /* TutorAvatarView.swift */,
 				D5F89395263F560D00578970 /* TutorCell.swift */,
 			);
@@ -2862,6 +2865,7 @@
 				D5E04B1D23BEE04E00A161BB /* OnboardingView.swift in Sources */,
 				D517FFA4255482EF00A41639 /* InlineContentAndTitleView.swift in Sources */,
 				D5AFED3025047DFC003FFC68 /* Activity.swift in Sources */,
+				D575FE0C2652CE0F00448471 /* LessonPlanTutorDetailView.swift in Sources */,
 				D5E987BC24EDE92E00E2E1AF /* Router.swift in Sources */,
 				D5C23A7C240FEF30007DED63 /* UIApplication+BackgroundTap.swift in Sources */,
 				D57DE17B264DC2AE00C5E118 /* ProfileSection.swift in Sources */,
