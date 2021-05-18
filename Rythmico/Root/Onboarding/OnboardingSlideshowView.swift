@@ -10,9 +10,9 @@ struct OnboardingSlideshowView: View {
 
         var asset: ImageAsset {
             switch self {
-            case .one: return Asset.graphicsOnboarding1
-            case .two: return Asset.graphicsOnboarding2
-            case .three: return Asset.graphicsOnboarding3
+            case .one: return Asset.Graphic.Onboarding.a
+            case .two: return Asset.Graphic.Onboarding.b
+            case .three: return Asset.Graphic.Onboarding.c
             }
         }
 

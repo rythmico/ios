@@ -51,7 +51,7 @@ struct ReviewRequestView: View, TestableView {
                             accessory: editButton(performing: resetStudentDetails)
                         ) {
                             HStack(alignment: .firstTextBaseline, spacing: .spacingExtraSmall) {
-                                Image(decorative: Asset.iconInfo.name)
+                                Image(decorative: Asset.Icon.Label.info.name)
                                     .renderingMode(.template)
                                     .foregroundColor(.rythmicoGray90)
                                     .alignmentGuide(.firstTextBaseline) { $0[.bottom] - 2.5 }

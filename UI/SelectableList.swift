@@ -19,7 +19,7 @@ struct SelectableList<Data: RandomAccessCollection, ID: Hashable, Content: View>
                                 .frame(maxWidth: .infinity, alignment: .leading)
 
                             if isSelected(element) {
-                                Image(decorative: Asset.iconCheckmark.name)
+                                Image(decorative: Asset.Icon.Misc.checkmark.name)
                                     .renderingMode(.template)
                                     .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
                             }

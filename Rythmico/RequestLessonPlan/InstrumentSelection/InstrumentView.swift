@@ -42,14 +42,14 @@ struct InstrumentView: View {
 struct InstrumentView_Preview: PreviewProvider {
     static var previews: some View {
         VStack {
-            InstrumentView(viewData: .init(name: "Guitar", icon: Asset.instrumentIconGuitar, action: {}))
-            InstrumentView(viewData: .init(name: "Drums", icon: Asset.instrumentIconDrums, action: {}))
-            InstrumentView(viewData: .init(name: "Piano", icon: Asset.instrumentIconPiano, action: {}))
-            InstrumentView(viewData: .init(name: "Singing", icon: Asset.instrumentIconSinging, action: {}))
-            InstrumentView(viewData: .init(name: "Saxophone", icon: Asset.instrumentIconSaxophone, action: {}))
-            InstrumentView(viewData: .init(name: "Trumpet", icon: Asset.instrumentIconTrumpet, action: {}))
-            InstrumentView(viewData: .init(name: "Flute", icon: Asset.instrumentIconFlute, action: {}))
-            InstrumentView(viewData: .init(name: "Violin", icon: Asset.instrumentIconViolin, action: {}))
+            InstrumentView(viewData: .init(name: "Guitar", icon: Asset.Graphic.Instrument.guitar, action: {}))
+            InstrumentView(viewData: .init(name: "Drums", icon: Asset.Graphic.Instrument.drums, action: {}))
+            InstrumentView(viewData: .init(name: "Piano", icon: Asset.Graphic.Instrument.piano, action: {}))
+            InstrumentView(viewData: .init(name: "Singing", icon: Asset.Graphic.Instrument.singing, action: {}))
+            InstrumentView(viewData: .init(name: "Saxophone", icon: Asset.Graphic.Instrument.saxophone, action: {}))
+            InstrumentView(viewData: .init(name: "Trumpet", icon: Asset.Graphic.Instrument.trumpet, action: {}))
+            InstrumentView(viewData: .init(name: "Flute", icon: Asset.Graphic.Instrument.flute, action: {}))
+            InstrumentView(viewData: .init(name: "Violin", icon: Asset.Graphic.Instrument.violin, action: {}))
         }.padding(.horizontal, 20)
     }
 }

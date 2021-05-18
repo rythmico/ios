@@ -4,7 +4,7 @@ import Then
 
 extension App {
     static let id = "1493135894"
-    static let logo = Asset.appLogo
+    static let logo = Asset.Logo.rythmico
     static let name = "Rythmico"
     static let slogan = "Turning kids into the festival headliners of tomorrow"
     static let distributionMethod = DistributionMethod.testFlight

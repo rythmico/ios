@@ -2,11 +2,11 @@ import SwiftUI
 
 extension View {
     func withSmallDBSCheck() -> some View {
-        self.modifier(ImageOverlayModifier(image: Asset.iconDbsSmall.image, alignment: .bottom))
+        self.modifier(ImageOverlayModifier(image: Asset.Icon.Dbs.small.image, alignment: .bottom))
     }
 
     func withDBSCheck() -> some View {
-        self.modifier(ImageOverlayModifier(image: Asset.iconDbs.image, alignment: .bottom))
+        self.modifier(ImageOverlayModifier(image: Asset.Icon.Dbs.medium.image, alignment: .bottom))
     }
 }
 
@@ -55,7 +55,7 @@ struct ImageOverlayModifier_Previews: PreviewProvider {
             Rectangle()
                 .fill(Color.red)
                 .frame(width: 100, height: 100)
-                .modifier(ImageOverlayModifier(image: Asset.iconDbsSmall.image, alignment: Alignment.allCases[$0]))
+                .modifier(ImageOverlayModifier(image: Asset.Icon.Dbs.small.image, alignment: Alignment.allCases[$0]))
         }
         .previewLayout(.sizeThatFits)
         .padding()

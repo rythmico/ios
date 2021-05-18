@@ -5,8 +5,8 @@ struct LessonScheduleView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: .spacingMedium) {
-            label(icon: Asset.iconInfo, title: dateText)
-            label(icon: Asset.iconTime, title: timeText)
+            label(icon: Asset.Icon.Label.info, title: dateText)
+            label(icon: Asset.Icon.Label.time, title: timeText)
         }
     }
 

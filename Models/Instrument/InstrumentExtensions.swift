@@ -4,21 +4,21 @@ extension Instrument {
     var icon: ImageAsset {
         switch self {
         case .guitar:
-            return Asset.instrumentIconGuitar
+            return Asset.Graphic.Instrument.guitar
         case .drums:
-            return Asset.instrumentIconDrums
+            return Asset.Graphic.Instrument.drums
         case .piano:
-            return Asset.instrumentIconPiano
+            return Asset.Graphic.Instrument.piano
         case .singing:
-            return Asset.instrumentIconSinging
+            return Asset.Graphic.Instrument.singing
         case .saxophone:
-            return Asset.instrumentIconSaxophone
+            return Asset.Graphic.Instrument.saxophone
         case .trumpet:
-            return Asset.instrumentIconTrumpet
+            return Asset.Graphic.Instrument.trumpet
         case .flute:
-            return Asset.instrumentIconFlute
+            return Asset.Graphic.Instrument.flute
         case .violin:
-            return Asset.instrumentIconViolin
+            return Asset.Graphic.Instrument.violin
         }
     }
 }

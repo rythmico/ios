@@ -7,7 +7,7 @@ struct ConfirmationView: View {
         ZStack {
             Color.clear
             HStack(spacing: .spacingExtraSmall) {
-                Image(decorative: Asset.iconCheckmark.name)
+                Image(decorative: Asset.Icon.Misc.checkmark.name)
                     .renderingMode(.template)
                     .foregroundColor(.rythmicoPurple)
                 Text(title)

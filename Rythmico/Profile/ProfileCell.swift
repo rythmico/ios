@@ -46,7 +46,7 @@ struct ProfileCell<Accessory: View>: View {
             accessory
 
             if disclosure {
-                Image(decorative: Asset.iconDisclosure.name).renderingMode(.template)
+                Image(decorative: Asset.Icon.Misc.disclosure.name).renderingMode(.template)
             }
         }
     }

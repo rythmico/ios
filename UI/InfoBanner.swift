@@ -5,7 +5,7 @@ struct InfoBanner: View {
 
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: .spacingExtraSmall) {
-            Image(decorative: Asset.iconInfo.name)
+            Image(decorative: Asset.Icon.Label.info.name)
                 .renderingMode(.template)
                 .alignmentGuide(.firstTextBaseline) { $0[.bottom] - .spacingUnit }
             Text(text)
