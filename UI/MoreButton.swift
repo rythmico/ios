@@ -4,6 +4,7 @@ import FoundationSugar
 struct MoreButton: View {
     struct Button {
         var title: String
+        var icon: ImageAsset
         var action: Action
     }
 
@@ -17,7 +18,9 @@ struct MoreButton: View {
         Menu {
             ForEach(0..<buttons.count, id: \.self) {
                 if let button = buttons[safe: $0] {
-                    SwiftUI.Button(button.title, action: button.action)
+                    SwiftUI.Button(action: button.action) {
+                        Label(button.title, image: button.icon.name)
+                    }
                 }
             }
         } label: {
@@ -44,8 +47,8 @@ struct ThreeDotButton: View {
 struct MoreButton_Previews: PreviewProvider {
     static var previews: some View {
         MoreButton([
-            .init(title: "Action A", action: {}),
-            .init(title: "Action B", action: {}),
+            .init(title: "Action A", icon: Asset.Icon.Action.reschedule, action: {}),
+            .init(title: "Action B", icon: Asset.Icon.Action.cancel, action: {}),
         ])
         .previewLayout(.sizeThatFits)
     }
