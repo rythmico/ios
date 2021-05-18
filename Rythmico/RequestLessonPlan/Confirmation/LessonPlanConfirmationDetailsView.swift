@@ -7,7 +7,7 @@ struct LessonPlanConfirmationDetailsView: View {
     var body: some View {
         VStack(spacing: .spacingSmall) {
             HStack(spacing: .spacingExtraSmall) {
-                Image(decorative: Asset.iconInfo.name)
+                Image(decorative: Asset.Icon.Label.info.name)
                     .renderingMode(.template)
                     .foregroundColor(.rythmicoGray90)
                 Text(separator: .whitespace) {

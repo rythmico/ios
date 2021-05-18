@@ -28,7 +28,7 @@ struct LessonPlanBookingPolicyView: View {
 extension LessonPlanBookingPolicyView {
     static var skipLessons: Self {
         Self(
-            asset: Asset.iconPolicySkipLessons,
+            asset: Asset.Icon.Policy.skipLessons,
             title: "Skip Lessons",
             description: "Skip lessons for free. Up until 3 hours before the scheduled start time."
         )
@@ -36,7 +36,7 @@ extension LessonPlanBookingPolicyView {
 
     static var cancelAnytime: Self {
         Self(
-            asset: Asset.iconPolicyCancelAnytime,
+            asset: Asset.Icon.Policy.cancelAnytime,
             title: "Cancel anytime",
             description: "Easy cancellation. Free up until 3 hours before an upcoming lesson starts."
         )
@@ -44,7 +44,7 @@ extension LessonPlanBookingPolicyView {
 
     static var trustedTutors: Self {
         Self(
-            asset: Asset.iconPolicyChildSafety,
+            asset: Asset.Icon.Policy.childSafety,
             title: "Trusted Tutors",
             description: "All tutors are DBS checked with years of experience working with children."
         )

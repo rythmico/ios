@@ -64,10 +64,10 @@ private extension Text {
     }
 }
 
-#if DEBUG
+#if RYTHMICO && DEBUG
 struct SplashView_Previews: PreviewProvider {
     static var previews: some View {
-        AppSplash(image: Asset.appLogo, title: "Rythmico")
+        AppSplash(image: Asset.Logo.rythmico, title: "Rythmico")
     }
 }
 #endif

@@ -86,7 +86,7 @@ struct LessonsView: View, TestableView {
     @ViewBuilder
     private var trailingItem: some View {
         Button(action: presentRequestLessonFlow) {
-            Image(decorative: Asset.buttonRequestLessons.name)
+            Image(decorative: Asset.Button.requestLessonPlan.name)
                 .padding(.vertical, .spacingExtraSmall)
                 .padding(.horizontal, .spacingExtraLarge)
                 .offset(x: .spacingExtraLarge)

@@ -52,7 +52,7 @@ private struct VideoCarouselCell: View {
                 startPoint: .top,
                 endPoint: .bottom
             )
-            Image(decorative: Asset.iconVideo.name)
+            Image(decorative: Asset.Icon.Misc.video.name)
                 .renderingMode(.template)
                 .foregroundColor(.rythmicoWhite)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)

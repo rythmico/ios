@@ -135,10 +135,10 @@ struct LessonPlanDetailView: View, TestableView {
     @ArrayBuilder<MoreButton.Button>
     private var actions: [MoreButton.Button] {
         if let action = showRescheduleAlertAction {
-            .init(title: "Reschedule Plan", action: action)
+            .init(title: "Reschedule Plan", icon: Asset.Icon.Action.reschedule, action: action)
         }
         if let action = showCancelLessonPlanFormAction {
-            .init(title: "Cancel Plan", action: action)
+            .init(title: "Cancel Plan", icon: Asset.Icon.Action.cancel, action: action)
         }
     }
 

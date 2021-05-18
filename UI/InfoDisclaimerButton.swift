@@ -10,7 +10,7 @@ struct InfoDisclaimerButton: View {
 
     var body: some View {
         Button(action: { showingDisclaimer = true }) {
-            Image(decorative: Asset.iconInfo.name)
+            Image(decorative: Asset.Icon.Label.info.name)
                 .renderingMode(.template)
                 .foregroundColor(.rythmicoGray90)
         }

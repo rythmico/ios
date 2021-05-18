@@ -2,5 +2,5 @@
 
 swiftgen run xcassets \
     "$SRCROOT/$TARGET_NAME/Supporting Files/Assets.xcassets" \
-    --templateName swift4 \
+    --templateName swift5 \
     --output "$SRCROOT/$TARGET_NAME/Supporting Files/Assets.generated.swift"

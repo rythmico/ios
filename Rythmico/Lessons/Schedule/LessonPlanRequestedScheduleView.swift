@@ -14,11 +14,11 @@ struct LessonPlanRequestedScheduleView: View {
         VStack(alignment: .leading, spacing: .spacingSmall) {
             Group {
                 HStack(spacing: .spacingExtraSmall) {
-                    Image(decorative: Asset.iconInfo.name).renderingMode(.template)
+                    Image(decorative: Asset.Icon.Label.info.name).renderingMode(.template)
                     startDateText
                 }
                 HStack(spacing: .spacingExtraSmall) {
-                    Image(decorative: Asset.iconTime.name).renderingMode(.template)
+                    Image(decorative: Asset.Icon.Label.time.name).renderingMode(.template)
                     timeText
                 }
                 HStack(spacing: .spacingExtraSmall) {
@@ -30,7 +30,7 @@ struct LessonPlanRequestedScheduleView: View {
 
             if let tutor = tutor {
                 HStack(spacing: .spacingExtraSmall) {
-                    Image(decorative: Asset.iconTime.name).hidden()
+                    Image(decorative: Asset.Icon.Label.time.name).hidden()
                     HStack(spacing: .spacingExtraSmall) {
                         TutorAvatarView(tutor, mode: .thumbnail).fixedSize()
                         TutorAcceptedStatusPill(tutor: tutor)
