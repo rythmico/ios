@@ -9,6 +9,7 @@ struct Lesson: Equatable, Decodable, Identifiable, Hashable {
         case scheduled = "SCHEDULED"
         case completed = "COMPLETED"
         case skipped = "SKIPPED"
+        case paused = "PAUSED"
     }
 
     var id: ID
