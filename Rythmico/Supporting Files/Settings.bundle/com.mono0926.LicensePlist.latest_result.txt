@@ -44,7 +44,7 @@ name: swift-nonempty, nameSpecified: swift-nonempty, owner: pointfreeco, version
 
 name: swift-protobuf, nameSpecified: SwiftProtobuf, owner: apple, version: 1.17.0
 
-name: swift-tagged, nameSpecified: Tagged, owner: pointfreeco, version: 0.5.0
+name: swift-tagged, nameSpecified: swift-tagged, owner: pointfreeco, version: 0.6.0
 
 name: SwiftUI-Introspect, nameSpecified: Introspect, owner: siteline, version: 0.1.3
 
