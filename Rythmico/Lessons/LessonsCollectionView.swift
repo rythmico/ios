@@ -6,20 +6,13 @@ struct LessonsCollectionView: View {
     var lessons: [Lesson]
 
     init(lessonPlans: [LessonPlan], filter: LessonsView.Filter) {
-        let allLessons = lessonPlans.compactMap(\.lessons).flatten()
         switch filter {
         case .upcoming:
-            self.lessonPlans = lessonPlans
-                .filter(\.status.includeInLessonsView)
-                .sorted(\.schedule.startDate, by: <)
-            self.lessons = allLessons
-                .filter { Current.date() < $0.schedule.endDate }
-                .sorted(\.schedule.startDate, by: <)
+            self.lessonPlans = lessonPlans.filterUpcoming()
+            self.lessons = lessonPlans.allLessons().filterUpcoming()
         case .past:
             self.lessonPlans = []
-            self.lessons = allLessons
-                .filter { Current.date() > $0.schedule.endDate }
-                .sorted(\.schedule.startDate, by: >)
+            self.lessons = lessonPlans.allLessons().filterPast()
         }
     }
 
@@ -39,8 +32,20 @@ struct LessonsCollectionView: View {
     }
 }
 
+private extension RangeReplaceableCollection where Element == LessonPlan {
+    func filterUpcoming() -> [LessonPlan] {
+        self.filter(\.status.showAmongstLessons)
+            .sorted(by: \.schedule.startDate, <)
+    }
+
+    func allLessons() -> [Lesson] {
+        self.compactMap(\.lessons)
+            .flatten()
+    }
+}
+
 private extension LessonPlan.Status {
-    var includeInLessonsView: Bool {
+    var showAmongstLessons: Bool {
         switch self {
         case .pending, .reviewing:
             return true

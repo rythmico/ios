@@ -27,14 +27,14 @@ extension Sequence where Element: Sequence {
 
 extension Sequence {
     public func sorted<T>(
-        _ value: KeyPath<Element, T>,
-        by areInIncreasingOrder: (T, T) throws -> Bool
+        by value: KeyPath<Element, T>,
+        _ areInIncreasingOrder: (T, T) throws -> Bool
     ) rethrows -> [Element] {
         try sorted(by: { try areInIncreasingOrder($0[keyPath: value], $1[keyPath: value]) })
     }
 
-    public func sorted<T>(_ value: KeyPath<Element, T>) -> [Element] where T: Comparable {
-        sorted(value, by: <)
+    public func sorted<T>(by value: KeyPath<Element, T>) -> [Element] where T: Comparable {
+        sorted(by: value, <)
     }
 }
 

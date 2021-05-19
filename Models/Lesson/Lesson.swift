@@ -58,3 +58,17 @@ extension Lesson {
         week.map { String($0 + 1) } ?? "(Extra)"
     }
 }
+
+extension RangeReplaceableCollection where Element == Lesson {
+    func filterUpcoming() -> [Lesson] {
+        self.lazy
+            .filter { Current.date() < $0.schedule.endDate }
+            .sorted(by: \.schedule.startDate, <)
+    }
+
+    func filterPast() -> [Lesson] {
+        self.lazy
+            .filter { Current.date() > $0.schedule.endDate }
+            .sorted(by: \.schedule.startDate, >)
+    }
+}
