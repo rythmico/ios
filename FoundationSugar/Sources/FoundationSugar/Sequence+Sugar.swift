@@ -37,3 +37,9 @@ extension Sequence {
         sorted(value, by: <)
     }
 }
+
+extension Sequence {
+    public func min<T>(by value: KeyPath<Element, T>) -> Element? where T: Comparable {
+        self.min(by: { $0[keyPath: value] < $1[keyPath: value] })
+    }
+}
