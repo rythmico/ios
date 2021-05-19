@@ -6,9 +6,9 @@ struct Lesson: Equatable, Decodable, Identifiable, Hashable {
     typealias ID = Tagged<Self, String>
 
     enum Status: String, Equatable, Decodable, Hashable {
-        case skipped = "SKIPPED"
-        case completed = "COMPLETED"
         case scheduled = "SCHEDULED"
+        case completed = "COMPLETED"
+        case skipped = "SKIPPED"
     }
 
     var id: ID
