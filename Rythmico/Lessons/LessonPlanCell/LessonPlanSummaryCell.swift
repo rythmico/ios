@@ -6,10 +6,8 @@ struct LessonPlanSummaryCell: View {
 
     init?(lessonPlan: LessonPlan) {
         switch lessonPlan.status {
-        case .active, .cancelled:
-            return nil
-        case .pending, .reviewing:
-            break
+        case .active, .paused, .cancelled: return nil
+        case .pending, .reviewing: break
         }
         self.lessonPlan = lessonPlan
     }
@@ -46,8 +44,10 @@ struct LessonPlanSummaryCellMainContent: View {
             return "Pending selection of tutor"
         case .active:
             return ""
+        case .paused:
+            return "Plan Paused"
         case .cancelled:
-            return [startDateText, "Plan Cancelled"].joined(separator: " • ")
+            return "Plan Cancelled"
         }
     }
 

@@ -25,6 +25,7 @@ private extension LessonPlan.Status {
         case .reviewing(let applications):
             AvatarStackView(data: applications.map(\.tutor), thumbnails: true)
         case .active(_, let tutor),
+             .paused(_, let tutor, _),
              .cancelled(_, let tutor?, _):
             TutorAvatarView(tutor, mode: .thumbnail)
         case .cancelled(_, nil, _):
@@ -40,6 +41,7 @@ private extension LessonPlan.Status {
         case .reviewing(let applicants):
             return applicants.count == 1 && !sizeCategory.isAccessibilityCategory ? "Tutors Available" : .empty
         case .active(_, let tutor),
+             .paused(_, let tutor, _),
              .cancelled(_, let tutor?, _):
             return tutor.name
         case .cancelled(_, nil, _):
@@ -56,6 +58,7 @@ private extension LessonPlan.Status {
             let count = applications.count
             return "\(count) tutor\(count == 1 ? "" : "s") applied" // TODO: plurals
         case .active(_, let tutor),
+             .paused(_, let tutor, _),
              .cancelled(_, let tutor?, _):
             return tutor.name
         case .cancelled(_, nil, _):

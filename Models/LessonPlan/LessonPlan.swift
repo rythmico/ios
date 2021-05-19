@@ -5,21 +5,26 @@ struct LessonPlan: Equatable, Identifiable, Hashable {
     enum Status: Equatable, Decodable, Hashable {
         case pending
         case reviewing([Application])
-        case active([Lesson], Tutor)
-        case cancelled([Lesson]?, Tutor?, CancellationInfo)
+        case active([Lesson], Tutor) // TODO: swap `Tutor` with `BookingInfo`
+        case paused([Lesson], Tutor, PauseInfo) // TODO: swap `Tutor` with `BookingInfo`
+        case cancelled([Lesson]?, Tutor?, CancellationInfo) // TODO: swap `Tutor` with `BookingInfo`
 
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             let applications = try container.decodeIfPresent([Application].self, forKey: .applications)
             let lessons = try container.decodeIfPresent([Lesson].self, forKey: .lessons)
             let bookingInfo = try container.decodeIfPresent(BookingInfo.self, forKey: .bookingInfo)
+            let pauseInfo = try container.decodeIfPresent(PauseInfo.self, forKey: .pauseInfo)
             let cancellationInfo = try container.decodeIfPresent(CancellationInfo.self, forKey: .cancellationInfo)
-            switch (applications, lessons, bookingInfo, cancellationInfo) {
-            case (_, let lessons, let bookingInfo, let cancellationInfo?):
+
+            switch (applications, lessons, bookingInfo, pauseInfo, cancellationInfo) {
+            case (_, let lessons, let bookingInfo, _, let cancellationInfo?):
                 self = .cancelled(lessons, bookingInfo?.tutor, cancellationInfo)
-            case (_, let lessons?, let bookingInfo?, _) where !lessons.isEmpty:
+            case (_, let lessons?, let bookingInfo?, let pauseInfo?, _):
+                self = .paused(lessons, bookingInfo.tutor, pauseInfo)
+            case (_, let lessons?, let bookingInfo?, _, _):
                 self = .active(lessons, bookingInfo.tutor)
-            case (let applications?, _, _, _) where !applications.isEmpty:
+            case (let applications?, _, _, _, _) where !applications.isEmpty:
                 self = .reviewing(applications)
             default:
                 self = .pending
@@ -35,6 +40,10 @@ struct LessonPlan: Equatable, Identifiable, Hashable {
     struct BookingInfo: Equatable, Decodable, Hashable {
         var date: Date
         var tutor: Tutor
+    }
+
+    struct PauseInfo: Equatable, Decodable, Hashable {
+        var date: Date
     }
 
     struct CancellationInfo: Equatable, Decodable, Hashable {
@@ -78,6 +87,7 @@ extension LessonPlan: Decodable {
         case id
         case applications // Status
         case bookingInfo // Status
+        case pauseInfo // Status
         case cancellationInfo // Status
         case lessons // Status
         case instrument
@@ -91,7 +101,7 @@ extension LessonPlan: Decodable {
 extension LessonPlan {
     var lessons: [Lesson]? {
         switch status {
-        case .active(let lessons, _):
+        case .active(let lessons, _), .paused(let lessons, _, _):
             return lessons
         case .cancelled(let lessons, _, _):
             return lessons

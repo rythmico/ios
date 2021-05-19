@@ -28,7 +28,7 @@ extension LessonPlanCancellationView {
             switch lessonPlan.status {
             case .pending, .reviewing:
                 return "Cancel Lesson Plan Request?"
-            case .active:
+            case .active, .paused:
                 return "Cancel Lesson Plan?"
             case .cancelled:
                 preconditionFailure("Cannot cancel an already cancelled lesson plan.")
@@ -42,8 +42,10 @@ extension LessonPlanCancellationView {
                 descriptionText("This lesson plan request is currently pending. By cancelling it, tutors won't be able to view it.")
             case .reviewing:
                 descriptionText("This lesson plan request is currently in review. By cancelling it, tutors who have applied will be withdrawn.")
+            case .paused:
+                descriptionText("This will cancel the entire lesson plan.")
             case .active:
-                descriptionText("This will cancel the whole lesson plan, including upcoming lessons. The recurring payment will also be cancelled.")
+                descriptionText("This will cancel the entire lesson plan, including upcoming lessons. The recurring payment will also be cancelled.")
                 if !isFree {
                     descriptionText("You will still be charged the full amount for your upcoming lesson on this plan.")
                     InfoBanner(text:

@@ -106,7 +106,7 @@ struct LessonPlanDetailView: View, TestableView {
             if lessonPlan.status.isPending {
                 InfoBanner(text: "Potential tutors have received your request and will submit applications for your consideration.")
             }
-        case .active(_, let tutor), .cancelled(_, let tutor?, _):
+        case .active(_, let tutor), .paused(_, let tutor, _), .cancelled(_, let tutor?, _):
             TutorCell(lessonPlan: lessonPlan, tutor: tutor)
         }
     }
@@ -114,13 +114,13 @@ struct LessonPlanDetailView: View, TestableView {
     @ViewBuilder
     private var paymentSection: some View {
         switch lessonPlan.status {
-        case .active:
+        case .active, .paused:
             SectionHeaderView(title: "Payment")
             LessonPlanPriceView(
-                price: Price(amount: Decimal(lessonPlan.schedule.duration.rawValue), currency: .GBP),
+                price: Price(amount: Decimal(lessonPlan.schedule.duration.rawValue), currency: .GBP), // TODO: consume `bookingInfo.pricePerLesson` property instead.
                 showTermsOfService: false
             )
-        case .pending, .reviewing, .cancelled:
+        case .pending, .reviewing, .cancelled: // TODO: consume `bookingInfo.pricePerLesson` property instead (for cancelled).
             EmptyView()
         }
     }
