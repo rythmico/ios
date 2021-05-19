@@ -54,11 +54,7 @@ struct LessonsView: View, TestableView {
         TitleContentView(title: title, spacing: .spacingUnit) {
             VStack(spacing: 0) {
                 TabMenuView(tabs: Filter.allCases, selection: $tabSelection.lessonsTab)
-                LessonsCollectionView(
-                    previousLessonPlans: repository.previousItems,
-                    currentLessonPlans: repository.items,
-                    filter: tabSelection.lessonsTab
-                )
+                LessonsCollectionView(lessonPlans: repository.items, filter: tabSelection.lessonsTab)
             }
         }
         .backgroundColor(.rythmicoBackground)

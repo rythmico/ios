@@ -1,30 +1,25 @@
 import SwiftUI
+import FoundationSugar
 
 struct LessonsCollectionView: View {
-    var previousLessonPlans: [LessonPlan]?
-    var currentLessonPlans: [LessonPlan]
-    var filter: LessonsView.Filter
+    var lessonPlans: [LessonPlan]
+    var lessons: [Lesson]
 
-    var lessonPlans: [LessonPlan] {
+    init(lessonPlans: [LessonPlan], filter: LessonsView.Filter) {
+        let allLessons = lessonPlans.compactMap(\.lessons).flatten()
         switch filter {
         case .upcoming:
-            return currentLessonPlans
-        case .past:
-            return []
-        }
-    }
-
-    var lessons: [Lesson] {
-        let allLessons = currentLessonPlans.compactMap(\.lessons).flatten()
-        switch filter {
-        case .upcoming:
-            return allLessons
+            self.lessonPlans = lessonPlans
+                .filter(\.status.includeInLessonsView)
+                .sorted(\.schedule.startDate, by: <)
+            self.lessons = allLessons
                 .filter { Current.date() < $0.schedule.endDate }
-                .sorted { $0.schedule.startDate < $1.schedule.startDate }
+                .sorted(\.schedule.startDate, by: <)
         case .past:
-            return allLessons
+            self.lessonPlans = []
+            self.lessons = allLessons
                 .filter { Current.date() > $0.schedule.endDate }
-                .sorted { $0.schedule.startDate > $1.schedule.startDate }
+                .sorted(\.schedule.startDate, by: >)
         }
     }
 
@@ -41,5 +36,16 @@ struct LessonsCollectionView: View {
 
     private var transition: AnyTransition {
         (.scale(scale: 0.75) + .opacity).animation(.rythmicoSpring(duration: .durationMedium))
+    }
+}
+
+private extension LessonPlan.Status {
+    var includeInLessonsView: Bool {
+        switch self {
+        case .pending, .reviewing:
+            return true
+        case .active, .paused, .cancelled:
+            return false
+        }
     }
 }

@@ -4,14 +4,6 @@ import FoundationSugar
 struct LessonPlanSummaryCell: View {
     var lessonPlan: LessonPlan
 
-    init?(lessonPlan: LessonPlan) {
-        switch lessonPlan.status {
-        case .active, .paused, .cancelled: return nil
-        case .pending, .reviewing: break
-        }
-        self.lessonPlan = lessonPlan
-    }
-
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             LessonPlanSummaryCellMainContent(lessonPlan: lessonPlan)
