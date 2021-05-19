@@ -60,6 +60,12 @@ extension Lesson {
 }
 
 extension RangeReplaceableCollection where Element == Lesson {
+    func nextLesson() -> Lesson? {
+        self.lazy
+            .filter { Current.date() < $0.schedule.endDate }
+            .min(by: \.schedule.startDate)
+    }
+
     func filterUpcoming() -> [Lesson] {
         self.lazy
             .filter { Current.date() < $0.schedule.endDate }

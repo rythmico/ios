@@ -1,4 +1,5 @@
 import SwiftUI
+import TextBuilder
 import FoundationSugar
 
 struct LessonPlanSummaryCell: View {
@@ -28,20 +29,27 @@ struct LessonPlanSummaryCellMainContent: View {
         ].compact().joined(separator: " - ")
     }
 
-    var subtitle: String {
+    @SpacedTextBuilder
+    var subtitle: Text {
         switch lessonPlan.status {
         case .pending:
-            return "Pending tutor applications"
+            "Pending tutor applications"
         case .reviewing:
-            return "Pending selection of tutor"
-        case .active:
-            return ""
+            "Pending selection of tutor"
+        case .active(let lessons, _):
+            if let nextLesson = lessons.nextLesson() {
+                "Next Lesson:"
+                startDateString(for: nextLesson).text.rythmicoFontWeight(.bodyMedium)
+            }
         case .paused:
-            return "Plan Paused"
+            "Plan Paused"
         case .cancelled:
-            return "Plan Cancelled"
+            "Plan Cancelled"
         }
     }
+
+    private static let startDateFormatter = Current.dateFormatter(format: .custom("d MMM"))
+    private func startDateString(for lesson: Lesson) -> String { Self.startDateFormatter.string(from: lesson.schedule.startDate) }
 
     var body: some View {
         Button(action: { navigator.go(to: LessonPlanDetailScreen(lessonPlan: lessonPlan), on: currentScreen) }) {
@@ -52,7 +60,7 @@ struct LessonPlanSummaryCellMainContent: View {
                     .minimumScaleFactor(0.7)
                     .foregroundColor(lessonPlan.status.isCancelled ? .rythmicoGray90 : .rythmicoForeground)
                 VSpacing(.spacingUnit * 2)
-                Text(subtitle)
+                subtitle
                     .rythmicoTextStyle(.body)
                     .foregroundColor(.rythmicoGray90)
                 VSpacing(.spacingExtraSmall)
@@ -69,9 +77,6 @@ struct LessonPlanSummaryCellMainContent: View {
             opacity: colorScheme == .dark ? 0.04 : nil
         )
     }
-
-    private static let startDateFormatter = Current.dateFormatter(format: .custom("d MMM"))
-    private var startDateText: String { Self.startDateFormatter.string(from: lessonPlan.schedule.startDate) }
 }
 
 struct LessonPlanSummaryCellAccessory: View {
