@@ -80,6 +80,12 @@ extension LessonPlan {
 }
 
 extension LessonPlan {
+    static let pausedJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
+        $0.status = .paused(.stub, .jesseStub, .stub)
+    }
+}
+
+extension LessonPlan {
     static let cancelledJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
         $0.status = .cancelled(nil, nil, .stub)
     }
@@ -93,6 +99,10 @@ extension LessonPlan.Application {
     static let jesseStub = Self(tutor: .jesseStub, privateNote: "I'll help!")
     static let davidStub = Self(tutor: .davidStub, privateNote: "Lorem ipsum!")
     static let charlotteStub =  Self(tutor: .charlotteStub, privateNote: "")
+}
+
+extension LessonPlan.PauseInfo {
+    static let stub = Self(date: .stub)
 }
 
 extension LessonPlan.CancellationInfo {
