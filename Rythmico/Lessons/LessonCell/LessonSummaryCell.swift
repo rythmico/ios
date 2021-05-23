@@ -9,7 +9,6 @@ struct LessonSummaryCell: View {
             LessonSummaryCellMainContent(lesson: lesson)
         }
         .modifier(RoundedShadowContainer())
-        .disabled(lesson.status.isSkipped)
     }
 }
 
@@ -38,21 +37,31 @@ struct LessonSummaryCellMainContent: View {
         Button(action: { navigator.go(to: LessonDetailScreen(lesson: lesson), on: currentScreen) }) {
             VStack(alignment: .leading, spacing: 0) {
                 Text(lesson.title)
-                    .foregroundColor(lesson.status.isSkipped ? .rythmicoGray90 : .rythmicoForeground)
+                    .foregroundColor(.rythmicoForeground)
                     .rythmicoTextStyle(.subheadlineBold)
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
+                    .opacity(opacity)
                 VSpacing(.spacingUnit * 2)
                 Text(subtitle)
                     .rythmicoTextStyle(.body)
                     .foregroundColor(.rythmicoGray90)
+                    .opacity(opacity)
                 VSpacing(.spacingExtraSmall)
                 HStack(spacing: .spacingExtraSmall) {
-                    InlineContentAndTitleView(lesson: lesson)
+                    InlineContentAndTitleView(lesson: lesson).opacity(opacity)
                     Pill(status: lesson.status)
                 }
             }
             .padding(.spacingMedium)
+        }
+    }
+
+    private var opacity: Double { isDimmed ? 0.5 : 1 }
+    private var isDimmed: Bool {
+        switch lesson.status {
+        case .scheduled, .completed: return false
+        case .skipped, .paused, .cancelled: return true
         }
     }
 
