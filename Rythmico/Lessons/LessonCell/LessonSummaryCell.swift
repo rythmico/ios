@@ -23,14 +23,14 @@ struct LessonSummaryCellMainContent: View {
         switch lesson.status {
         case .scheduled:
             return [startDateText, durationText].joined(separator: " • ")
-        case .paused:
-            return [startDateText, "Lesson Plan Paused"].joined(separator: " • ")
-        case .skipped:
-            return [startDateText, "Lesson Skipped"].joined(separator: " • ")
-        case .cancelled:
-            return [startDateText, "Lesson Plan Cancelled"].joined(separator: " • ")
         case .completed:
             return [startDateText, "Lesson Complete"].joined(separator: " • ")
+        case .skipped:
+            return [startDateText, "Lesson Skipped"].joined(separator: " • ")
+        case .paused:
+            return [startDateText, "Lesson Plan Paused"].joined(separator: " • ")
+        case .cancelled:
+            return [startDateText, "Lesson Plan Cancelled"].joined(separator: " • ")
         }
     }
 
