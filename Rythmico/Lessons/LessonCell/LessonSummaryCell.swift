@@ -68,8 +68,10 @@ struct LessonSummaryCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             LessonSummaryCell(lesson: .scheduledStub)
-            LessonSummaryCell(lesson: .skippedStub)
             LessonSummaryCell(lesson: .completedStub)
+            LessonSummaryCell(lesson: .skippedStub)
+            LessonSummaryCell(lesson: .pausedStub)
+            LessonSummaryCell(lesson: .cancelledStub)
         }
         .previewLayout(.sizeThatFits)
         .padding()

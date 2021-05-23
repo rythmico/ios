@@ -27,8 +27,10 @@ extension Array where Element == Lesson {
 
 extension Lesson {
     static let scheduledStub = stub(week: 0, status: .scheduled, startDate: .stub)
-    static let skippedStub = stub(week: 1, status: .skipped, startDate: .stub)
-    static let completedStub = stub(week: 2, status: .completed, startDate: .stub)
+    static let completedStub = stub(week: 1, status: .completed, startDate: .stub)
+    static let skippedStub = stub(week: 2, status: .skipped, startDate: .stub)
+    static let pausedStub = stub(week: 3, status: .paused, startDate: .stub)
+    static let cancelledStub = stub(week: 4, status: .cancelled, startDate: .stub)
 }
 
 private extension Lesson {
