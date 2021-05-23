@@ -16,6 +16,8 @@ struct LessonSummaryCell: View {
             return [durationText, "Skipped"].joined(separator: " • ")
         case .paused:
             return [durationText, "Plan Paused"].joined(separator: " • ")
+        case .cancelled:
+            return [durationText, "Plan Cancelled"].joined(separator: " • ")
         }
     }
 
