@@ -36,7 +36,7 @@ private extension LessonPlan.Status {
         case .active:
             return .rythmicoDarkGreen
         case .paused:
-            return Color(light: 0x111619, dark: 0x9fa1a3)
+            return .rythmicoDarkBlue
         case .cancelled:
             return Color(light: 0x111619, dark: 0x9fa1a3)
         }
@@ -51,7 +51,7 @@ private extension LessonPlan.Status {
         case .active:
             return .rythmicoDarkGreen
         case .paused:
-            return Color(light: 0x111619, dark: 0x9fa1a3)
+            return .rythmicoDarkBlue
         case .cancelled:
             return Color(light: 0x111619, dark: 0x9fa1a3)
         }

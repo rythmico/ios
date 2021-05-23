@@ -11,7 +11,6 @@ struct LessonPlanSummaryCell: View {
             LessonPlanSummaryCellAccessory(lessonPlan: lessonPlan)
         }
         .modifier(RoundedShadowContainer())
-        .disabled(lessonPlan.status.isCancelled)
     }
 }
 
@@ -58,14 +57,16 @@ struct LessonPlanSummaryCellMainContent: View {
                     .rythmicoTextStyle(.subheadlineBold)
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
-                    .foregroundColor(lessonPlan.status.isCancelled ? .rythmicoGray90 : .rythmicoForeground)
+                    .foregroundColor(.rythmicoForeground)
+                    .opacity(opacity)
                 VSpacing(.spacingUnit * 2)
                 subtitle
                     .rythmicoTextStyle(.body)
                     .foregroundColor(.rythmicoGray90)
+                    .opacity(opacity)
                 VSpacing(.spacingExtraSmall)
                 HStack(spacing: .spacingExtraSmall) {
-                    LessonPlanTutorStatusView(status: lessonPlan.status, summarized: true)
+                    LessonPlanTutorStatusView(status: lessonPlan.status, summarized: true).opacity(opacity)
                     Pill(lessonPlan: lessonPlan, backgroundColor: .rythmicoBackgroundTertiary)
                 }
             }
@@ -76,6 +77,14 @@ struct LessonPlanSummaryCellMainContent: View {
             offset: .init(width: 50, height: -20),
             opacity: colorScheme == .dark ? 0.04 : nil
         )
+    }
+
+    private var opacity: Double { isDimmed ? 0.5 : 1 }
+    private var isDimmed: Bool {
+        switch lessonPlan.status {
+        case .pending, .reviewing, .active: return false
+        case .paused, .cancelled: return true
+        }
     }
 }
 
@@ -117,6 +126,7 @@ struct LessonPlanSummaryCell_Previews: PreviewProvider {
             LessonPlanSummaryCell(lessonPlan: .pendingJackGuitarPlanStub)
             LessonPlanSummaryCell(lessonPlan: .reviewingJackGuitarPlanStub)
             LessonPlanSummaryCell(lessonPlan: .activeJackGuitarPlanStub)
+            LessonPlanSummaryCell(lessonPlan: .pausedJackGuitarPlanStub)
             LessonPlanSummaryCell(lessonPlan: .cancelledJackGuitarPlanStub)
         }
         .previewLayout(.sizeThatFits)
