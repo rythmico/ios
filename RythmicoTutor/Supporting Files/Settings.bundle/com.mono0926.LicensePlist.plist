@@ -254,7 +254,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/ViewInspector</string>
 			<key>Title</key>
-			<string>ViewInspector (0.7.5)</string>
+			<string>ViewInspector (0.7.7)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
