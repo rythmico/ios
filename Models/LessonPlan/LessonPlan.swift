@@ -125,6 +125,11 @@ extension LessonPlan.Status {
         return true
     }
 
+    var isPaused: Bool {
+        guard case .paused = self else { return false }
+        return true
+    }
+
     var isCancelled: Bool {
         guard case .cancelled = self else { return false }
         return true
