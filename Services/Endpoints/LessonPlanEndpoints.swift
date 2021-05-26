@@ -37,6 +37,19 @@ struct CreateLessonPlanRequest: RythmicoAPIRequest {
     typealias Error = RythmicoAPIError
 }
 
+struct PauseLessonPlanRequest: RythmicoAPIRequest {
+    typealias Properties = LessonPlan.ID
+
+    let accessToken: String
+    let properties: Properties
+
+    let method: HTTPMethod = .patch
+    var path: String { "/lesson-plans/\(self.properties)/pause" }
+
+    typealias Response = LessonPlan
+    typealias Error = RythmicoAPIError
+}
+
 struct CancelLessonPlanRequest: RythmicoAPIRequest {
     typealias Reason = LessonPlan.CancellationInfo.Reason
 

@@ -13,6 +13,7 @@ extension AppEnvironment {
 
             $0.fakeAPIEndpoint(for: \.lessonPlanFetchingCoordinator, result: .success(.stub))
             $0.fakeAPIEndpoint(for: \.lessonPlanRequestCoordinator, result: .success(.davidGuitarPlanStub))
+            $0.fakeAPIEndpoint(for: \.lessonPlanPausingCoordinator, result: .success(.pausedJackGuitarPlanStub))
             $0.fakeAPIEndpoint(for: \.lessonPlanCancellationCoordinator, result: .success(.cancelledJackGuitarPlanStub))
             $0.fakeAPIEndpoint(for: \.lessonPlanGetCheckoutCoordinator, result: .success(.stub))
             $0.fakeAPIEndpoint(for: \.lessonPlanCompleteCheckoutCoordinator, result: .success(.activeJackGuitarPlanStub))
@@ -78,6 +79,7 @@ extension AppEnvironment {
 
             lessonPlanFetchingService: APIServiceDummy(),
             lessonPlanRequestService: APIServiceDummy(),
+            lessonPlanPausingService: APIServiceDummy(),
             lessonPlanCancellationService: APIServiceDummy(),
             lessonPlanGetCheckoutService: APIServiceDummy(),
             lessonPlanCompleteCheckoutService: APIServiceDummy(),
