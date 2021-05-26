@@ -1,4 +1,5 @@
 import Foundation
+import FoundationSugar
 import Then
 
 extension LessonPlan: Then {}
@@ -72,6 +73,7 @@ extension LessonPlan {
 extension LessonPlan {
     static let activeJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
         $0.status = .active(.stub, .jesseStub)
+        $0.freePauseUntil = .stub - (3, .hour, .current)
     }
 
     static let activeSkippedJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
@@ -98,7 +100,7 @@ extension LessonPlan {
 extension LessonPlan.Application {
     static let jesseStub = Self(tutor: .jesseStub, privateNote: "I'll help!")
     static let davidStub = Self(tutor: .davidStub, privateNote: "Lorem ipsum!")
-    static let charlotteStub =  Self(tutor: .charlotteStub, privateNote: "")
+    static let charlotteStub = Self(tutor: .charlotteStub, privateNote: "")
 }
 
 extension LessonPlan.PauseInfo {

@@ -67,6 +67,7 @@ struct LessonPlan: Equatable, Identifiable, Hashable {
     var address: Address
     var schedule: Schedule
     var privateNote: String
+    var freePauseUntil: Date?
 }
 
 extension LessonPlan: Decodable {
@@ -79,7 +80,8 @@ extension LessonPlan: Decodable {
             student: container.decode(Student.self, forKey: .student),
             address: container.decode(Address.self, forKey: .address),
             schedule: container.decode(Schedule.self, forKey: .schedule),
-            privateNote: container.decode(String.self, forKey: .privateNote)
+            privateNote: container.decode(String.self, forKey: .privateNote),
+            freePauseUntil: container.decodeIfPresent(Date.self, forKey: .freePauseUntil)
         )
     }
 
@@ -95,6 +97,7 @@ extension LessonPlan: Decodable {
         case address
         case schedule
         case privateNote
+        case freePauseUntil
     }
 }
 
