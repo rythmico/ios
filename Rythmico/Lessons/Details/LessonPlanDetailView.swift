@@ -14,6 +14,7 @@ struct LessonPlanDetailScreen: Screen {
                     LessonPlanDetailView(lessonPlan: screen.lessonPlan)
                 },
                 nesting: {
+                    LessonPlanPausingScreen.Builder()
                     LessonPlanCancellationScreen.Builder()
                     LessonPlanApplicationsScreen.Builder()
                     LessonPlanTutorDetailScreen.Builder()
@@ -48,6 +49,12 @@ struct LessonPlanDetailView: View, TestableView {
         lessonPlanReschedulingView != nil
             ? { isRescheduling = true }
             : nil
+    }
+
+    var showPauseLessonPlanFormAction: Action? {
+        LessonPlanPausingScreen(lessonPlan: lessonPlan).map { screen in
+            { navigator.go(to: screen, on: currentScreen) }
+        }
     }
 
     var showCancelLessonPlanFormAction: Action? {
@@ -136,6 +143,9 @@ struct LessonPlanDetailView: View, TestableView {
     private var actions: [ContextMenuButton] {
         if let action = showRescheduleAlertAction {
             .init(title: "Reschedule Plan", icon: Asset.Icon.Action.reschedule, action: action)
+        }
+        if let action = showPauseLessonPlanFormAction {
+            .init(title: "Pause Plan", icon: Asset.Icon.Action.pause, action: action)
         }
         if let action = showCancelLessonPlanFormAction {
             .init(title: "Cancel Plan", icon: Asset.Icon.Action.cancel, action: action)
