@@ -15,6 +15,7 @@ struct LessonPlanDetailScreen: Screen {
                 },
                 nesting: {
                     LessonPlanPausingScreen.Builder()
+                    LessonPlanResumingScreen.Builder()
                     LessonPlanCancellationScreen.Builder()
                     LessonPlanApplicationsScreen.Builder()
                     LessonPlanTutorDetailScreen.Builder()
@@ -53,6 +54,12 @@ struct LessonPlanDetailView: View, TestableView {
 
     var showPauseLessonPlanFormAction: Action? {
         LessonPlanPausingScreen(lessonPlan: lessonPlan).map { screen in
+            { navigator.go(to: screen, on: currentScreen) }
+        }
+    }
+
+    var showResumeLessonPlanFormAction: Action? {
+        LessonPlanResumingScreen(lessonPlan: lessonPlan).map { screen in
             { navigator.go(to: screen, on: currentScreen) }
         }
     }
@@ -146,6 +153,9 @@ struct LessonPlanDetailView: View, TestableView {
         }
         if let action = showPauseLessonPlanFormAction {
             .init(title: "Pause Plan", icon: Asset.Icon.Action.pause, action: action)
+        }
+        if let action = showResumeLessonPlanFormAction {
+            .init(title: "Resume Plan", icon: Asset.Icon.Action.resume, action: action)
         }
         if let action = showCancelLessonPlanFormAction {
             .init(title: "Cancel Plan", icon: Asset.Icon.Action.cancel, action: action)

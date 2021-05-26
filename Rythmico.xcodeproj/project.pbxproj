@@ -188,6 +188,8 @@
 		D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898423B9B5C100C19300 /* GoogleService-Info.plist */; };
 		D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */; };
 		D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */; };
+		D509D836265EE55200B60DF0 /* LessonPlanResumingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509D835265EE55200B60DF0 /* LessonPlanResumingView.swift */; };
+		D509D838265EE56100B60DF0 /* LessonPlanResumingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509D837265EE56100B60DF0 /* LessonPlanResumingContentView.swift */; };
 		D510825F25E43123003C9467 /* FoundationSugar in Frameworks */ = {isa = PBXBuildFile; productRef = D510825E25E43123003C9467 /* FoundationSugar */; };
 		D510826125E43129003C9467 /* FoundationSugar in Frameworks */ = {isa = PBXBuildFile; productRef = D510826025E43129003C9467 /* FoundationSugar */; };
 		D514750F240C96F0002EE20C /* XCTAssertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147507240C8E69002EE20C /* XCTAssertView.swift */; };
@@ -795,6 +797,8 @@
 		D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
 		D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationAppleIDButton.swift; sourceTree = "<group>"; };
 		D509899023BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCompletionDelegate.swift; sourceTree = "<group>"; };
+		D509D835265EE55200B60DF0 /* LessonPlanResumingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanResumingView.swift; sourceTree = "<group>"; };
+		D509D837265EE56100B60DF0 /* LessonPlanResumingContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanResumingContentView.swift; sourceTree = "<group>"; };
 		D50E4BC123C69D0400B6FCB1 /* AppleAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationService.swift; sourceTree = "<group>"; };
 		D50E4BC423C7AAA900B6FCB1 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		D510825B25E43099003C9467 /* FoundationSugar */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FoundationSugar; sourceTree = "<group>"; };
@@ -1813,6 +1817,8 @@
 			children = (
 				D51EB483265E112D0082D72D /* LessonPlanPausingView.swift */,
 				D51EB485265EC0C60082D72D /* LessonPlanPausingContentView.swift */,
+				D509D835265EE55200B60DF0 /* LessonPlanResumingView.swift */,
+				D509D837265EE56100B60DF0 /* LessonPlanResumingContentView.swift */,
 			);
 			path = Pausing;
 			sourceTree = "<group>";
@@ -2826,6 +2832,7 @@
 				D53555C623E536AE005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,
 				03B1984124717AE8005529EB /* AddressDoubles.swift in Sources */,
 				D575C877254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift in Sources */,
+				D509D836265EE55200B60DF0 /* LessonPlanResumingView.swift in Sources */,
 				D53555BD23E53699005A20EB /* UserCredentialProviderDoubles.swift in Sources */,
 				D5B57A712419F79700BE9B4F /* SectionHeaderView.swift in Sources */,
 				D53555C323E536AE005A20EB /* AppleAuthorizationCredentialStateProvider.swift in Sources */,
@@ -2900,6 +2907,7 @@
 				D55F013124CCCEDE00E5F13C /* Repository.swift in Sources */,
 				D572A4B2263240CE00E9E9E3 /* FlowStep.swift in Sources */,
 				D5883CE425A4179F000B545C /* Alert+View.swift in Sources */,
+				D509D838265EE56100B60DF0 /* LessonPlanResumingContentView.swift in Sources */,
 				D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */,
 				D54CF08B25FA8696007D5050 /* AnalyticsServiceDoubles.swift in Sources */,
 				0336D62C241EAAF6006CFC1F /* APIRequest.swift in Sources */,
