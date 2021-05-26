@@ -3,10 +3,17 @@ import FoundationSugar
 
 struct LessonSummaryCell: View {
     var lesson: Lesson
+    var lessonDetailScreen: LessonDetailScreen
+
+    init?(lesson: Lesson) {
+        guard let lessonDetailScreen = LessonDetailScreen(lesson: lesson) else { return nil }
+        self.lesson = lesson
+        self.lessonDetailScreen = lessonDetailScreen
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            LessonSummaryCellMainContent(lesson: lesson)
+            LessonSummaryCellMainContent(lesson: lesson, lessonDetailScreen: lessonDetailScreen)
         }
         .modifier(RoundedShadowContainer())
     }
@@ -17,6 +24,7 @@ struct LessonSummaryCellMainContent: View {
     @Environment(\.currentScreen) private var currentScreen
 
     var lesson: Lesson
+    var lessonDetailScreen: LessonDetailScreen
 
     var subtitle: String {
         switch lesson.status {
@@ -27,14 +35,14 @@ struct LessonSummaryCellMainContent: View {
         case .skipped:
             return [startDateText, "Lesson Skipped"].joined(separator: " • ")
         case .paused:
-            return [startDateText, "Lesson Plan Paused"].joined(separator: " • ")
+            return [startDateText, "Plan Paused"].joined(separator: " • ")
         case .cancelled:
-            return [startDateText, "Lesson Plan Cancelled"].joined(separator: " • ")
+            return [startDateText, "Plan Cancelled"].joined(separator: " • ")
         }
     }
 
     var body: some View {
-        Button(action: { navigator.go(to: LessonDetailScreen(lesson: lesson), on: currentScreen) }) {
+        Button(action: { navigator.go(to: lessonDetailScreen, on: currentScreen) }) {
             VStack(alignment: .leading, spacing: 0) {
                 Text(lesson.title)
                     .foregroundColor(.rythmicoForeground)
