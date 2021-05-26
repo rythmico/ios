@@ -35,7 +35,7 @@ struct LessonPlanDetailView: View, TestableView {
     }
 
     var lessonPlan: LessonPlan
-    var lessonPlanReschedulingView: LessonReschedulingView? { !lessonPlan.status.isCancelled ? .reschedulingView(lessonPlan: lessonPlan) : nil }
+    var lessonPlanReschedulingView: LessonReschedulingView? { !lessonPlan.status.isCancelled && !lessonPlan.status.isPaused ? .reschedulingView(lessonPlan: lessonPlan) : nil }
 
     var chooseTutorAction: Action? {
         LessonPlanApplicationsScreen(lessonPlan: lessonPlan).map { screen in

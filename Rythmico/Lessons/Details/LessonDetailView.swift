@@ -37,7 +37,7 @@ struct LessonDetailView: View, TestableView {
     var lesson: Lesson
     var lessonPlan: LessonPlan
 
-    var lessonReschedulingView: LessonReschedulingView? { lessonPlan?.status.isCancelled == false ? .reschedulingView(lesson: lesson, lessonPlan: lessonPlan) : nil }
+    var lessonReschedulingView: LessonReschedulingView? { !lessonPlan.status.isCancelled && !lessonPlan.status.isPaused ? .reschedulingView(lesson: lesson, lessonPlan: lessonPlan) : nil }
 
     var showLessonPlanDetailAction: Action {
         { navigator.go(to: LessonPlanDetailScreen(lessonPlan: lessonPlan), on: currentScreen) }
