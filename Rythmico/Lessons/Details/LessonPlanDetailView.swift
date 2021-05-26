@@ -84,7 +84,7 @@ struct LessonPlanDetailView: View, TestableView {
         .testable(self)
         .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(trailing: moreButton)
+        .navigationBarItems(trailing: optionsButton)
         .multiModal {
             $0.alert(isPresented: $isRescheduling) { .reschedulingView(lessonPlan: lessonPlan) }
         }
@@ -126,14 +126,14 @@ struct LessonPlanDetailView: View, TestableView {
     }
 
     @ViewBuilder
-    private var moreButton: some View {
+    private var optionsButton: some View {
         if let actions = actions.nilIfEmpty {
-            MoreButton(actions)
+            OptionsButton(actions)
         }
     }
 
-    @ArrayBuilder<MoreButton.Button>
-    private var actions: [MoreButton.Button] {
+    @ArrayBuilder<ContextMenuButton>
+    private var actions: [ContextMenuButton] {
         if let action = showRescheduleAlertAction {
             .init(title: "Reschedule Plan", icon: Asset.Icon.Action.reschedule, action: action)
         }
