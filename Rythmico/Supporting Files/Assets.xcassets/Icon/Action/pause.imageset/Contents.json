@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Pause.svg",
+      "filename" : "pause-light.svg",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "Pause-1.svg",
+      "filename" : "pause-dark.svg",
       "idiom" : "universal"
     }
   ],

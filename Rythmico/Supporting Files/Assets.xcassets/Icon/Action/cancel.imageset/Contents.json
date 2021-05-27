@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Cancel.svg",
+      "filename" : "cancel-light.svg",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "Cancel-1.svg",
+      "filename" : "cancel-dark.svg",
       "idiom" : "universal"
     }
   ],
