@@ -92,6 +92,15 @@
         }
       },
       {
+        "package": "ISO8601PeriodDuration",
+        "repositoryURL": "https://github.com/treatwell/ISO8601PeriodDuration",
+        "state": {
+          "branch": null,
+          "revision": "e11fe46086bfcf28b0b7511a30c02304399ff70c",
+          "version": "3.0.0"
+        }
+      },
+      {
         "package": "leveldb",
         "repositoryURL": "https://github.com/firebase/leveldb.git",
         "state": {
