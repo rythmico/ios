@@ -2,7 +2,7 @@ import SwiftUI
 import FoundationSugar
 
 struct LessonPlanResumingContentView: View {
-    var lessonResumingCutoff: DateComponents
+    var option: LessonPlan.Options.Resume
 
     var body: some View {
         VStack(spacing: .spacingMedium) {
@@ -25,18 +25,14 @@ struct LessonPlanResumingContentView: View {
             .frame(maxWidth: .spacingMax, alignment: .leading)
     }
 
-    private static let cutoffFormatter = Current.dateComponentsFormatter(allowedUnits: [.day, .hour, .minute], style: .full)
-    private var cutoffString: String {
-        Self.cutoffFormatter.string(from: lessonResumingCutoff) !! preconditionFailure(
-            "cutoffFormatter returned nil for input 'from' \(lessonResumingCutoff)"
-        )
-    }
+    private static let formatter = Current.dateComponentsFormatter(allowedUnits: [.day, .hour, .minute], style: .full)
+    private var cutoffString: String { Self.formatter.string(from: option.allOutside) !! preconditionFailure("nil for input '\(option.allOutside)'") }
 }
 
 #if DEBUG
 struct LessonPlanResumingContentView_Preview: PreviewProvider {
     static var previews: some View {
-        LessonPlanResumingContentView(lessonResumingCutoff: .init(hour: 12))
+        LessonPlanResumingContentView(option: .stub)
             .padding(.spacingMedium)
     }
 }

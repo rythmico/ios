@@ -3,7 +3,7 @@ import FoundationSugar
 
 struct LessonPlanPausingContentView: View {
     var isFree: Bool
-    var freePauseUntil: Date
+    var option: LessonPlan.Options.Pause
 
     var body: some View {
         VStack(spacing: .spacingMedium) {
@@ -12,7 +12,7 @@ struct LessonPlanPausingContentView: View {
                 descriptionText("You will still be charged the full amount for your upcoming lesson on this plan.")
                 InfoBanner(text:
                     """
-                    When pausing a lesson plan, you will still be charged the full amount for an upcoming lesson if the plan is paused less than 3 hours before the lesson is scheduled to start.
+                    When pausing a lesson plan, you will still be charged the full amount for an upcoming lesson if the plan is paused less than \(cutoffString) before the lesson is scheduled to start.
 
                     We do this to protect Rythmico Tutors.
                     """
@@ -28,14 +28,17 @@ struct LessonPlanPausingContentView: View {
             .rythmicoTextStyle(.body)
             .frame(maxWidth: .spacingMax, alignment: .leading)
     }
+
+    private static let formatter = Current.dateComponentsFormatter(allowedUnits: [.day, .hour, .minute], style: .full)
+    private var cutoffString: String { Self.formatter.string(from: option.freeWithin) !! preconditionFailure("nil for input '\(option.freeWithin)'") }
 }
 
 #if DEBUG
 struct LessonPlanPausingContentView_Preview: PreviewProvider {
     static var previews: some View {
         Group {
-            LessonPlanPausingContentView(isFree: true, freePauseUntil: Current.date() - (24, .hour))
-            LessonPlanPausingContentView(isFree: false, freePauseUntil: Current.date() - (3, .hour))
+            LessonPlanPausingContentView(isFree: true, option: .stub)
+            LessonPlanPausingContentView(isFree: false, option: .stub)
         }
         .padding(.spacingMedium)
     }

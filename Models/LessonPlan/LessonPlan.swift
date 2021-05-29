@@ -58,6 +58,24 @@ struct LessonPlan: Identifiable, Hashable {
         var reason: Reason
     }
 
+    struct Options: Decodable, Hashable {
+        struct Pause: Decodable, Hashable {
+            var freeBefore: Date
+            var freeWithin: DateComponents
+        }
+        struct Resume: Decodable, Hashable {
+            var allOutside: DateComponents
+        }
+        struct Cancel: Decodable, Hashable {
+            var freeBefore: Date
+            var freeWithin: DateComponents
+        }
+
+        var pause: Pause?
+        var resume: Resume?
+        var cancel: Cancel?
+    }
+
     typealias ID = Tagged<Self, String>
 
     var id: ID
@@ -67,7 +85,7 @@ struct LessonPlan: Identifiable, Hashable {
     var address: Address
     var schedule: Schedule
     var privateNote: String
-    var freePauseUntil: Date?
+    var options: Options
 }
 
 extension LessonPlan: Decodable {
@@ -81,7 +99,7 @@ extension LessonPlan: Decodable {
             address: container.decode(Address.self, forKey: .address),
             schedule: container.decode(Schedule.self, forKey: .schedule),
             privateNote: container.decode(String.self, forKey: .privateNote),
-            freePauseUntil: container.decodeIfPresent(Date.self, forKey: .freePauseUntil)
+            options: container.decode(Options.self, forKey: .options)
         )
     }
 
@@ -97,7 +115,7 @@ extension LessonPlan: Decodable {
         case address
         case schedule
         case privateNote
-        case freePauseUntil
+        case options
     }
 }
 

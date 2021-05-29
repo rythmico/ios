@@ -4,20 +4,20 @@ import FoundationSugar
 
 struct LessonPlanResumingScreen: Screen {
     let lessonPlan: LessonPlan
-    let lessonResumingCutoff: DateComponents
+    let option: LessonPlan.Options.Resume
     let presentationStyle: ScreenPresentationStyle = .sheet(allowsPush: false)
 
     init?(lessonPlan: LessonPlan) {
-        guard lessonPlan.status.isPaused else { return nil }
+        guard let option = lessonPlan.options.resume else { return nil }
         self.lessonPlan = lessonPlan
-        self.lessonResumingCutoff = .init(hour: 12) // TODO: consume from LessonPlan instead
+        self.option = option
     }
 
     struct Builder: NavigationTree {
         var builder: some PathBuilder {
             Screen(
                 content: { (screen: LessonPlanResumingScreen) in
-                    LessonPlanResumingView(lessonPlan: screen.lessonPlan, lessonResumingCutoff: screen.lessonResumingCutoff)
+                    LessonPlanResumingView(lessonPlan: screen.lessonPlan, option: screen.option)
                 }
             )
         }
@@ -32,7 +32,7 @@ struct LessonPlanResumingView: View {
     private var coordinator = Current.lessonPlanResumingCoordinator()
 
     let lessonPlan: LessonPlan
-    let lessonResumingCutoff: DateComponents
+    let option: LessonPlan.Options.Resume
 
     var body: some View {
         NavigationView {
@@ -40,7 +40,7 @@ struct LessonPlanResumingView: View {
                 VStack(spacing: 0) {
                     TitleContentView(title: title) {
                         ScrollView {
-                            LessonPlanResumingContentView(lessonResumingCutoff: lessonResumingCutoff)
+                            LessonPlanResumingContentView(option: option)
                                 .frame(maxWidth: .spacingMax)
                                 .padding(.horizontal, .spacingMedium)
                         }
@@ -84,7 +84,7 @@ struct LessonPlanResumingView: View {
 #if DEBUG
 struct LessonPlanResumingView_Preview: PreviewProvider {
     static var previews: some View {
-        LessonPlanResumingView(lessonPlan: .activeJackGuitarPlanStub, lessonResumingCutoff: .init(hour: 12))
+        LessonPlanResumingView(lessonPlan: .activeJackGuitarPlanStub, option: .stub)
     }
 }
 #endif

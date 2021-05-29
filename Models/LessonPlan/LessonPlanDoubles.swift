@@ -20,7 +20,8 @@ extension LessonPlan {
         student: .jackStub,
         address: .stub,
         schedule: .stub,
-        privateNote: ""
+        privateNote: "",
+        options: .pendingStub
     )
 
     static let jesseDrumsPlanStub = Self(
@@ -30,7 +31,8 @@ extension LessonPlan {
         student: .jesseStub,
         address: .stub,
         schedule: .stub,
-        privateNote: ""
+        privateNote: "",
+        options: .pendingStub
     )
 
     static let charlottePianoPlanStub = Self(
@@ -40,7 +42,8 @@ extension LessonPlan {
         student: .charlotteStub,
         address: .stub,
         schedule: .stub,
-        privateNote: ""
+        privateNote: "",
+        options: .pendingStub
     )
 
     static let janeSingingPlanStub = Self(
@@ -50,7 +53,8 @@ extension LessonPlan {
         student: .janeStub,
         address: .stub,
         schedule: .stub,
-        privateNote: ""
+        privateNote: "",
+        options: .pendingStub
     )
 
     static let davidGuitarPlanStub = Self(
@@ -60,40 +64,46 @@ extension LessonPlan {
         student: .davidStub,
         address: .stub,
         schedule: .stub,
-        privateNote: ""
+        privateNote: "",
+        options: .pendingStub
     )
 }
 
 extension LessonPlan {
     static let reviewingJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
         $0.status = .reviewing(.stub)
+        $0.options = .reviewingStub
     }
 }
 
 extension LessonPlan {
     static let activeJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
         $0.status = .active(.stub, .jesseStub)
-        $0.freePauseUntil = .stub - (3, .hour, .current)
+        $0.options = .activeStub
     }
 
     static let activeSkippedJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
         $0.status = .active(.stub, .jesseStub)
+        $0.options = .activeStub
     }
 }
 
 extension LessonPlan {
     static let pausedJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
         $0.status = .paused(.stub, .jesseStub, .stub)
+        $0.options = .pausedStub
     }
 }
 
 extension LessonPlan {
     static let cancelledJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
         $0.status = .cancelled(nil, nil, .stub)
+        $0.options = .cancelledStub
     }
 
     static let cancelledCharlottePianoPlanStub = charlottePianoPlanStub.with {
         $0.status = .cancelled(.stub, .jesseStub, .stub)
+        $0.options = .cancelledStub
     }
 }
 
@@ -111,6 +121,58 @@ extension LessonPlan.CancellationInfo {
     static let stub = Self(
         date: .stub,
         reason: .rearrangementNeeded
+    )
+}
+
+extension LessonPlan.Options {
+    static let pendingStub = Self(
+        pause: nil,
+        resume: nil,
+        cancel: .stub
+    )
+
+    static let reviewingStub = Self(
+        pause: nil,
+        resume: nil,
+        cancel: .stub
+    )
+
+    static let activeStub = Self(
+        pause: .stub,
+        resume: nil,
+        cancel: .stub
+    )
+
+    static let pausedStub = Self(
+        pause: nil,
+        resume: .stub,
+        cancel: .stub
+    )
+
+    static let cancelledStub = Self(
+        pause: nil,
+        resume: nil,
+        cancel: nil
+    )
+}
+
+extension LessonPlan.Options.Pause {
+    static let stub = Self(
+        freeBefore: .stub - (24, .hour, .current),
+        freeWithin: .init(hour: 24)
+    )
+}
+
+extension LessonPlan.Options.Resume {
+    static let stub = Self(
+        allOutside: .init(hour: 24)
+    )
+}
+
+extension LessonPlan.Options.Cancel {
+    static let stub = Self(
+        freeBefore: .stub - (24, .hour, .current),
+        freeWithin: .init(hour: 24)
     )
 }
 

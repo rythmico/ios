@@ -4,20 +4,20 @@ import FoundationSugar
 
 struct LessonPlanPausingScreen: Screen {
     let lessonPlan: LessonPlan
-    let freePauseUntil: Date
+    let option: LessonPlan.Options.Pause
     let presentationStyle: ScreenPresentationStyle = .sheet(allowsPush: false)
 
     init?(lessonPlan: LessonPlan) {
-        guard let freePauseUntil = lessonPlan.freePauseUntil else { return nil }
+        guard let option = lessonPlan.options.pause else { return nil }
         self.lessonPlan = lessonPlan
-        self.freePauseUntil = freePauseUntil
+        self.option = option
     }
 
     struct Builder: NavigationTree {
         var builder: some PathBuilder {
             Screen(
                 content: { (screen: LessonPlanPausingScreen) in
-                    LessonPlanPausingView(lessonPlan: screen.lessonPlan, freePauseUntil: screen.freePauseUntil)
+                    LessonPlanPausingView(lessonPlan: screen.lessonPlan, option: screen.option)
                 }
             )
         }
@@ -32,7 +32,7 @@ struct LessonPlanPausingView: View {
     private var coordinator = Current.lessonPlanPausingCoordinator()
 
     let lessonPlan: LessonPlan
-    let freePauseUntil: Date
+    let option: LessonPlan.Options.Pause
 
     @State private
     var showingConfirmationSheet = false
@@ -43,12 +43,9 @@ struct LessonPlanPausingView: View {
                 VStack(spacing: 0) {
                     TitleContentView(title: title) {
                         ScrollView {
-                            LessonPlanPausingContentView(
-                                isFree: isFree,
-                                freePauseUntil: freePauseUntil
-                            )
-                            .frame(maxWidth: .spacingMax)
-                            .padding(.horizontal, .spacingMedium)
+                            LessonPlanPausingContentView(isFree: isFree, option: option)
+                                .frame(maxWidth: .spacingMax)
+                                .padding(.horizontal, .spacingMedium)
                         }
                     }
 
@@ -79,7 +76,7 @@ struct LessonPlanPausingView: View {
     private var title: String { "Confirm Pause Plan" }
 
     private var isFree: Bool {
-        Current.date() < freePauseUntil
+        Current.date() < option.freeBefore
     }
 
     private func dismiss() {
@@ -113,7 +110,7 @@ struct LessonPlanPausingView: View {
 #if DEBUG
 struct LessonPlanPausingView_Preview: PreviewProvider {
     static var previews: some View {
-        LessonPlanPausingView(lessonPlan: .activeJackGuitarPlanStub, freePauseUntil: LessonPlan.activeJackGuitarPlanStub.freePauseUntil!)
+        LessonPlanPausingView(lessonPlan: .activeJackGuitarPlanStub, option: .stub)
     }
 }
 #endif
