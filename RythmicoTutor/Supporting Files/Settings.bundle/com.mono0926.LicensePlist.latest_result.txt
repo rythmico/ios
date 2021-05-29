@@ -32,7 +32,7 @@ name: promises, nameSpecified: Promises, owner: google, version: 1.2.12
 
 name: SFSafeSymbols, nameSpecified: SFSafeSymbols, owner: piknotech, version: 2.1.3
 
-name: stripe-ios, nameSpecified: Stripe, owner: stripe, version: 21.5.1
+name: stripe-ios, nameSpecified: Stripe, owner: stripe, version: 21.6.0
 
 name: swift-case-paths, nameSpecified: swift-case-paths, owner: pointfreeco, version: 0.2.0
 
