@@ -73,7 +73,7 @@ struct LessonPlanBookingEntryView: View {
 struct LessonPlanBookingEntryView_Previews: PreviewProvider {
     static var previews: some View {
         LessonPlanBookingEntryView(
-            lessonPlan: .davidGuitarPlanStub,
+            lessonPlan: .pendingDavidGuitarPlanStub,
             application: .davidStub
         )
     }

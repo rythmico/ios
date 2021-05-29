@@ -24,7 +24,7 @@ extension LessonPlan {
         options: .pendingStub
     )
 
-    static let jesseDrumsPlanStub = Self(
+    static let pendingJesseDrumsPlanStub = Self(
         id: .random(),
         status: .pending,
         instrument: .drums,
@@ -35,7 +35,7 @@ extension LessonPlan {
         options: .pendingStub
     )
 
-    static let charlottePianoPlanStub = Self(
+    static let pendingCharlottePianoPlanStub = Self(
         id: .random(),
         status: .pending,
         instrument: .piano,
@@ -46,7 +46,7 @@ extension LessonPlan {
         options: .pendingStub
     )
 
-    static let janeSingingPlanStub = Self(
+    static let pendingJaneSingingPlanStub = Self(
         id: .random(),
         status: .pending,
         instrument: .singing,
@@ -57,7 +57,7 @@ extension LessonPlan {
         options: .pendingStub
     )
 
-    static let davidGuitarPlanStub = Self(
+    static let pendingDavidGuitarPlanStub = Self(
         id: .random(),
         status: .pending,
         instrument: .guitar,
@@ -101,7 +101,7 @@ extension LessonPlan {
         $0.options = .cancelledStub
     }
 
-    static let cancelledCharlottePianoPlanStub = charlottePianoPlanStub.with {
+    static let cancelledCharlottePianoPlanStub = pendingCharlottePianoPlanStub.with {
         $0.status = .cancelled(.stub, .jesseStub, .stub)
         $0.options = .cancelledStub
     }
@@ -178,7 +178,7 @@ extension LessonPlan.Options.Cancel {
 
 extension Array where Element == LessonPlan {
     static let stub: Self = [
-        .jesseDrumsPlanStub,
+        .pendingJesseDrumsPlanStub,
 //        .reviewingJackGuitarPlanStub,
         .activeJackGuitarPlanStub,
         .cancelledCharlottePianoPlanStub,

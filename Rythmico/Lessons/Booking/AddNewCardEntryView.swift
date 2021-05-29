@@ -63,7 +63,7 @@ struct AddNewCardEntryView: View {
 struct AddNewCardEntryView_Previews: PreviewProvider {
     static var previews: some View {
         LessonPlanBookingEntryView(
-            lessonPlan: .davidGuitarPlanStub,
+            lessonPlan: .pendingDavidGuitarPlanStub,
             application: .davidStub
         )
     }

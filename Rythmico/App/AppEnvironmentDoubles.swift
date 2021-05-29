@@ -12,7 +12,7 @@ extension AppEnvironment {
             $0.fakeAPIEndpoint(for: \.addressSearchCoordinator, result: .success(.stub))
 
             $0.fakeAPIEndpoint(for: \.lessonPlanFetchingCoordinator, result: .success(.stub))
-            $0.fakeAPIEndpoint(for: \.lessonPlanRequestCoordinator, result: .success(.davidGuitarPlanStub))
+            $0.fakeAPIEndpoint(for: \.lessonPlanRequestCoordinator, result: .success(.pendingDavidGuitarPlanStub))
             $0.fakeAPIEndpoint(for: \.lessonPlanPausingCoordinator, result: .success(.pausedJackGuitarPlanStub))
             $0.fakeAPIEndpoint(for: \.lessonPlanResumingCoordinator, result: .success(.activeJackGuitarPlanStub))
             $0.fakeAPIEndpoint(for: \.lessonPlanCancellationCoordinator, result: .success(.cancelledJackGuitarPlanStub))
