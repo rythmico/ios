@@ -1,8 +1,8 @@
 import Foundation
 import Tagged
 
-struct LessonPlan: Equatable, Identifiable, Hashable {
-    enum Status: Equatable, Decodable, Hashable {
+struct LessonPlan: Identifiable, Hashable {
+    enum Status: Decodable, Hashable {
         case pending
         case reviewing([Application])
         case active([Lesson], Tutor) // TODO: swap `Tutor` with `BookingInfo`
@@ -32,21 +32,21 @@ struct LessonPlan: Equatable, Identifiable, Hashable {
         }
     }
 
-    struct Application: Equatable, Decodable, Hashable {
+    struct Application: Decodable, Hashable {
         var tutor: Tutor
         var privateNote: String
     }
 
-    struct BookingInfo: Equatable, Decodable, Hashable {
+    struct BookingInfo: Decodable, Hashable {
         var date: Date
         var tutor: Tutor
     }
 
-    struct PauseInfo: Equatable, Decodable, Hashable {
+    struct PauseInfo: Decodable, Hashable {
         var date: Date
     }
 
-    struct CancellationInfo: Equatable, Decodable, Hashable {
+    struct CancellationInfo: Decodable, Hashable {
         enum Reason: String, Codable, Hashable, CaseIterable {
             case tooExpensive = "TOO_EXPENSIVE"
             case badTutor = "BAD_TUTOR"
