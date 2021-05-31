@@ -96,8 +96,8 @@
         "repositoryURL": "https://github.com/treatwell/ISO8601PeriodDuration",
         "state": {
           "branch": null,
-          "revision": "e11fe46086bfcf28b0b7511a30c02304399ff70c",
-          "version": "3.0.0"
+          "revision": "a2cfd57cae5e0dd713e5ab1a92253f86bb013049",
+          "version": "3.1.0"
         }
       },
       {
