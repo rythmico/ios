@@ -18,7 +18,7 @@ name: grpc-SwiftPM, nameSpecified: gRPC, owner: firebase, version: 1.28.4
 
 name: gtm-session-fetcher, nameSpecified: GTMSessionFetcher, owner: google, version: 1.5.0
 
-name: ISO8601PeriodDuration, nameSpecified: ISO8601PeriodDuration, owner: treatwell, version: 3.0.0
+name: ISO8601PeriodDuration, nameSpecified: ISO8601PeriodDuration, owner: treatwell, version: 3.1.0
 
 name: leveldb, nameSpecified: leveldb, owner: firebase, version: 1.22.2
 
@@ -68,4 +68,4 @@ name: youtube-ios-player-helper, nameSpecified: YouTubeiOSPlayerHelper, owner: i
 
 add-version-numbers: true
 
-LicensePlist Version: 3.0.7
+LicensePlist Version: 3.13.0

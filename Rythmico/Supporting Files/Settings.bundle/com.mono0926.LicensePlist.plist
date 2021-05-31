@@ -94,7 +94,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/ISO8601PeriodDuration</string>
 			<key>Title</key>
-			<string>ISO8601PeriodDuration (3.0.0)</string>
+			<string>ISO8601PeriodDuration (3.1.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
