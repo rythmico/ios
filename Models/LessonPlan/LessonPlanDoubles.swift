@@ -159,20 +159,20 @@ extension LessonPlan.Options {
 extension LessonPlan.Options.Pause {
     static let stub = Self(
         freeBefore: .stub - (24, .hour, .current),
-        freeWithin: .init(hour: 24)
+        freeWithin: .init(.init(hour: 24))
     )
 }
 
 extension LessonPlan.Options.Resume {
     static let stub = Self(
-        allOutside: .init(hour: 24)
+        allOutside: .init(.init(hour: 24))
     )
 }
 
 extension LessonPlan.Options.Cancel {
     static let stub = Self(
         freeBefore: .stub - (24, .hour, .current),
-        freeWithin: .init(hour: 24)
+        freeWithin: .init(.init(hour: 24))
     )
 }
 

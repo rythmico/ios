@@ -1,4 +1,5 @@
 import Foundation
+import ISO8601PeriodDuration
 import Tagged
 
 struct LessonPlan: Identifiable, Hashable {
@@ -61,14 +62,17 @@ struct LessonPlan: Identifiable, Hashable {
     struct Options: Decodable, Hashable {
         struct Pause: Decodable, Hashable {
             var freeBefore: Date
+            @ISO8601PeriodDuration
             var freeWithin: DateComponents
         }
         struct Resume: Decodable, Hashable {
+            @ISO8601PeriodDuration
             var allOutside: DateComponents
         }
         struct Cancel: Decodable, Hashable {
-            var freeBefore: Date
-            var freeWithin: DateComponents
+            var freeBefore: Date?
+            @OptionalISO8601PeriodDuration
+            var freeWithin: DateComponents?
         }
 
         var pause: Pause?
