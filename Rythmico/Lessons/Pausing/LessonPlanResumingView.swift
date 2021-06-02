@@ -40,7 +40,7 @@ struct LessonPlanResumingView: View {
                 VStack(spacing: 0) {
                     TitleContentView(title: title) {
                         ScrollView {
-                            LessonPlanResumingContentView(option: option)
+                            LessonPlanResumingContentView(policy: option.policy)
                                 .frame(maxWidth: .spacingMax)
                                 .padding(.horizontal, .spacingMedium)
                         }

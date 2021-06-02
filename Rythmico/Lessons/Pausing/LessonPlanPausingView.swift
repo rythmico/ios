@@ -43,7 +43,7 @@ struct LessonPlanPausingView: View {
                 VStack(spacing: 0) {
                     TitleContentView(title: title) {
                         ScrollView {
-                            LessonPlanPausingContentView(isFree: isFree, option: option)
+                            LessonPlanPausingContentView(isFree: isFree, policy: option.policy)
                                 .frame(maxWidth: .spacingMax)
                                 .padding(.horizontal, .spacingMedium)
                         }
@@ -76,7 +76,7 @@ struct LessonPlanPausingView: View {
     private var title: String { "Confirm Pause Plan" }
 
     private var isFree: Bool {
-        Current.date() < option.freeBefore
+        Current.date() < option.policy.freeBefore
     }
 
     private func dismiss() {

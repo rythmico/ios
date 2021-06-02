@@ -3,7 +3,7 @@ import FoundationSugar
 
 struct LessonPlanPausingContentView: View {
     var isFree: Bool
-    var option: LessonPlan.Options.Pause
+    var policy: LessonPlan.Options.Pause.Policy
 
     var body: some View {
         VStack(spacing: .spacingMedium) {
@@ -30,15 +30,15 @@ struct LessonPlanPausingContentView: View {
     }
 
     private static let formatter = Current.dateComponentsFormatter(allowedUnits: [.day, .hour, .minute], style: .full)
-    private var cutoffString: String { Self.formatter.string(from: option.freeWithin) !! preconditionFailure("nil for input '\(option.freeWithin)'") }
+    private var cutoffString: String { Self.formatter.string(from: policy.freeWithin) !! preconditionFailure("nil for input '\(policy.freeWithin)'") }
 }
 
 #if DEBUG
 struct LessonPlanPausingContentView_Preview: PreviewProvider {
     static var previews: some View {
         Group {
-            LessonPlanPausingContentView(isFree: true, option: .stub)
-            LessonPlanPausingContentView(isFree: false, option: .stub)
+            LessonPlanPausingContentView(isFree: true, policy: .stub)
+            LessonPlanPausingContentView(isFree: false, policy: .stub)
         }
         .padding(.spacingMedium)
     }

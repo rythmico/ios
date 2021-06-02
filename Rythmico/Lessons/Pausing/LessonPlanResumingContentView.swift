@@ -2,7 +2,7 @@ import SwiftUI
 import FoundationSugar
 
 struct LessonPlanResumingContentView: View {
-    var option: LessonPlan.Options.Resume
+    var policy: LessonPlan.Options.Resume.Policy
 
     var body: some View {
         VStack(spacing: .spacingMedium) {
@@ -26,13 +26,13 @@ struct LessonPlanResumingContentView: View {
     }
 
     private static let formatter = Current.dateComponentsFormatter(allowedUnits: [.day, .hour, .minute], style: .full)
-    private var cutoffString: String { Self.formatter.string(from: option.allOutside) !! preconditionFailure("nil for input '\(option.allOutside)'") }
+    private var cutoffString: String { Self.formatter.string(from: policy.allOutside) !! preconditionFailure("nil for input '\(policy.allOutside)'") }
 }
 
 #if DEBUG
 struct LessonPlanResumingContentView_Preview: PreviewProvider {
     static var previews: some View {
-        LessonPlanResumingContentView(option: .stub)
+        LessonPlanResumingContentView(policy: .stub)
             .padding(.spacingMedium)
     }
 }
