@@ -2,10 +2,10 @@ import Foundation
 import PhoneNumberKit
 import Tagged
 
-struct Lesson: Equatable, Decodable, Identifiable, Hashable {
+struct Lesson: Decodable, Identifiable, Hashable {
     typealias ID = Tagged<Self, String>
 
-    enum Status: String, Equatable, Decodable, Hashable {
+    enum Status: String, Decodable, Hashable {
         case scheduled = "SCHEDULED"
         case completed = "COMPLETED"
         case skipped = "SKIPPED"
