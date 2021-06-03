@@ -26,7 +26,7 @@ struct LessonPlanResumingContentView: View {
     }
 
     private static let formatter = Current.dateComponentsFormatter(allowedUnits: [.hour, .minute], style: .full)
-    private var cutoffString: String { Self.formatter.string(from: policy.allOutside) !! preconditionFailure("nil for input '\(policy.allOutside)'") }
+    private var cutoffString: String { Self.formatter.string(from: policy.allAfterPeriod) !! preconditionFailure("nil for input '\(policy.allAfterPeriod)'") }
 }
 
 #if DEBUG

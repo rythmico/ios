@@ -76,7 +76,7 @@ struct LessonPlanPausingView: View {
     private var title: String { "Confirm Pause Plan" }
 
     private var isFree: Bool {
-        Current.date() < option.policy.freeBefore
+        Current.date() < option.policy.freeBeforeDate
     }
 
     private func dismiss() {

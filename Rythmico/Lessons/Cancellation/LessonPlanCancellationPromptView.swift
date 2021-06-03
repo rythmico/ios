@@ -70,13 +70,13 @@ extension LessonPlanCancellationView {
         }
 
         private var isFree: Bool? {
-            guard let freeBefore = policy?.freeBefore else { return nil }
+            guard let freeBefore = policy?.freeBeforeDate else { return nil }
             return Current.date() < freeBefore
         }
 
         private static let formatter = Current.dateComponentsFormatter(allowedUnits: [.hour, .minute], style: .full)
         private var cutoffString: String? {
-            guard let freeWithin = policy?.freeWithin else { return nil }
+            guard let freeWithin = policy?.freeBeforePeriod else { return nil }
             return Self.formatter.string(from: freeWithin) !! preconditionFailure("nil for input '\(freeWithin)'")
         }
     }

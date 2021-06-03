@@ -30,7 +30,7 @@ struct LessonPlanPausingContentView: View {
     }
 
     private static let formatter = Current.dateComponentsFormatter(allowedUnits: [.hour, .minute], style: .full)
-    private var cutoffString: String { Self.formatter.string(from: policy.freeWithin) !! preconditionFailure("nil for input '\(policy.freeWithin)'") }
+    private var cutoffString: String { Self.formatter.string(from: policy.freeBeforePeriod) !! preconditionFailure("nil for input '\(policy.freeBeforePeriod)'") }
 }
 
 #if DEBUG

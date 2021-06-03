@@ -62,24 +62,24 @@ struct LessonPlan: Identifiable, Hashable {
     struct Options: Decodable, Hashable {
         struct Pause: Decodable, Hashable {
             struct Policy: Decodable, Hashable {
-                var freeBefore: Date
+                var freeBeforeDate: Date
                 @ISO8601PeriodDuration
-                var freeWithin: DateComponents
+                var freeBeforePeriod: DateComponents
             }
             var policy: Policy
         }
         struct Resume: Decodable, Hashable {
             struct Policy: Decodable, Hashable {
                 @ISO8601PeriodDuration
-                var allOutside: DateComponents
+                var allAfterPeriod: DateComponents
             }
             var policy: Policy
         }
         struct Cancel: Decodable, Hashable {
             struct Policy: Decodable, Hashable {
-                var freeBefore: Date
+                var freeBeforeDate: Date
                 @ISO8601PeriodDuration
-                var freeWithin: DateComponents
+                var freeBeforePeriod: DateComponents
             }
             var policy: Policy?
         }
