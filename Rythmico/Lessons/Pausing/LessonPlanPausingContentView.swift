@@ -29,7 +29,7 @@ struct LessonPlanPausingContentView: View {
             .frame(maxWidth: .spacingMax, alignment: .leading)
     }
 
-    private static let formatter = Current.dateComponentsFormatter(allowedUnits: [.day, .hour, .minute], style: .full)
+    private static let formatter = Current.dateComponentsFormatter(allowedUnits: [.hour, .minute], style: .full)
     private var cutoffString: String { Self.formatter.string(from: policy.freeWithin) !! preconditionFailure("nil for input '\(policy.freeWithin)'") }
 }
 
