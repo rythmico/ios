@@ -49,8 +49,8 @@ struct LessonPlanBookingView: View {
                                     LessonPlanRequestedScheduleView(lessonPlan.schedule, tutor: application.tutor)
                                     HDivider()
                                     VStack(spacing: .spacingExtraSmall) {
-                                        LessonPlanBookingPolicyView.skipLessons
-                                        LessonPlanBookingPolicyView.cancelAnytime
+                                        LessonPlanBookingPolicyView.skipLessons(freeBeforePeriod: checkout.policies.skipFreeBeforePeriod)
+                                        LessonPlanBookingPolicyView.cancelAnytime(freeBeforePeriod: checkout.policies.cancelFreeBeforePeriod)
                                         LessonPlanBookingPolicyView.trustedTutors
                                     }
                                 }
