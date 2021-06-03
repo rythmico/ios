@@ -4,18 +4,20 @@ import FoundationSugar
 
 struct LessonPlanCancellationScreen: Screen {
     let lessonPlan: LessonPlan
+    let option: LessonPlan.Options.Cancel
     let presentationStyle: ScreenPresentationStyle = .sheet(allowsPush: false)
 
     init?(lessonPlan: LessonPlan) {
-        guard !lessonPlan.status.isCancelled else { return nil }
+        guard let option = lessonPlan.options.cancel else { return nil }
         self.lessonPlan = lessonPlan
+        self.option = option
     }
 
     struct Builder: NavigationTree {
         var builder: some PathBuilder {
             Screen(
                 content: { (screen: LessonPlanCancellationScreen) in
-                    LessonPlanCancellationView(lessonPlan: screen.lessonPlan)
+                    LessonPlanCancellationView(lessonPlan: screen.lessonPlan, option: screen.option)
                 }
             )
         }
@@ -31,7 +33,8 @@ struct LessonPlanCancellationView: View, TestableView {
     @StateObject
     private var coordinator = Current.lessonPlanCancellationCoordinator()
 
-    var lessonPlan: LessonPlan
+    let lessonPlan: LessonPlan
+    let option: LessonPlan.Options.Cancel
 
     var error: Error? { coordinator.state.failureValue }
 
@@ -56,7 +59,7 @@ struct LessonPlanCancellationView: View, TestableView {
                 loadingTitle: "Cancelling plan..."
             ) {
                 if !isCancellationIntended {
-                    PromptView(lessonPlan: lessonPlan, noAction: dismiss, yesAction: showReasonView)
+                    PromptView(lessonPlan: lessonPlan, policy: option.policy, noAction: dismiss, yesAction: showReasonView)
                         .transition(
                             .asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing))
                         )
@@ -106,7 +109,7 @@ struct LessonPlanCancellationView: View, TestableView {
 #if DEBUG
 struct LessonPlanCancellationView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlanCancellationView(lessonPlan: .pendingJackGuitarPlanStub)
+        LessonPlanCancellationView(lessonPlan: .pendingJackGuitarPlanStub, option: .stub)
     }
 }
 #endif

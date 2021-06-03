@@ -3,9 +3,10 @@ import FoundationSugar
 
 extension LessonPlanCancellationView {
     struct PromptView: View {
-        var lessonPlan: LessonPlan
-        var noAction: Action
-        var yesAction: Action
+        let lessonPlan: LessonPlan
+        let policy: LessonPlan.Options.Cancel.Policy?
+        let noAction: Action
+        let yesAction: Action
 
         var body: some View {
             VStack(spacing: 0) {
@@ -46,11 +47,11 @@ extension LessonPlanCancellationView {
                 descriptionText("This will cancel the entire lesson plan.")
             case .active:
                 descriptionText("This will cancel the entire lesson plan, including upcoming lessons. The recurring payment will also be cancelled.")
-                if !isFree {
+                if isFree == false, let cutoffString = cutoffString {
                     descriptionText("You will still be charged the full amount for your upcoming lesson on this plan.")
                     InfoBanner(text:
                         """
-                        When cancelling a lesson plan, you will still be charged the full amount for an upcoming lesson if the plan is cancelled less than 3 hours before the lesson is scheduled to start.
+                        When cancelling a lesson plan, you will still be charged the full amount for an upcoming lesson if the plan is cancelled less than \(cutoffString) before the lesson is scheduled to start.
 
                         We do this to protect Rythmico Tutors.
                         """
@@ -68,13 +69,15 @@ extension LessonPlanCancellationView {
                 .rythmicoTextStyle(.body)
         }
 
-        private var isFree: Bool {
-            guard let freeSkipUntil = freeSkipUntil else { return true }
-            return Current.date() < freeSkipUntil
+        private var isFree: Bool? {
+            guard let freeBefore = policy?.freeBefore else { return nil }
+            return Current.date() < freeBefore
         }
 
-        private var freeSkipUntil: Date? {
-            lessonPlan.lessons?.lazy.compactMap(\.freeSkipUntil).sorted(by: >).first
+        private static let formatter = Current.dateComponentsFormatter(allowedUnits: [.hour, .minute], style: .full)
+        private var cutoffString: String? {
+            guard let freeWithin = policy?.freeWithin else { return nil }
+            return Self.formatter.string(from: freeWithin) !! preconditionFailure("nil for input '\(freeWithin)'")
         }
     }
 }
@@ -83,17 +86,8 @@ extension LessonPlanCancellationView {
 struct LessonPlanCancellationPromptView_Previews: PreviewProvider {
     static var previews: some View {
         LessonPlanCancellationView.PromptView(
-            lessonPlan: LessonPlan.pendingJackGuitarPlanStub.with {
-                $0.status = .active(
-                    [
-                        Lesson.scheduledStub.with(\.freeSkipUntil, Current.date() - (3, .second)),
-                        Lesson.scheduledStub.with(\.freeSkipUntil, Current.date() - (2, .second)),
-//                        Lesson.scheduledStub.with(\.freeSkipUntil, Current.date() + (2, .second)),
-                        Lesson.scheduledStub.with(\.freeSkipUntil, Current.date() - (1, .second)),
-                    ],
-                    .jesseStub
-                )
-            },
+            lessonPlan: LessonPlan.activeJackGuitarPlanStub,
+            policy: .stub,
             noAction: {},
             yesAction: {}
         )
