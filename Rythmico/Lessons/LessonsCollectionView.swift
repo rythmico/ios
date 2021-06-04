@@ -1,30 +1,18 @@
 import SwiftUI
+import FoundationSugar
 
 struct LessonsCollectionView: View {
-    var previousLessonPlans: [LessonPlan]?
-    var currentLessonPlans: [LessonPlan]
-    var filter: LessonsView.Filter
+    var lessonPlans: [LessonPlan]
+    var lessons: [Lesson]
 
-    var lessonPlans: [LessonPlan] {
+    init(lessonPlans: [LessonPlan], filter: LessonsView.Filter) {
         switch filter {
         case .upcoming:
-            return currentLessonPlans
+            self.lessonPlans = lessonPlans.filterPartials()
+            self.lessons = lessonPlans.allLessons().filterUpcoming()
         case .past:
-            return []
-        }
-    }
-
-    var lessons: [Lesson] {
-        let allLessons = currentLessonPlans.compactMap(\.lessons).flatten()
-        switch filter {
-        case .upcoming:
-            return allLessons
-                .filter { Current.date() < $0.schedule.endDate }
-                .sorted { $0.schedule.startDate < $1.schedule.startDate }
-        case .past:
-            return allLessons
-                .filter { Current.date() > $0.schedule.endDate }
-                .sorted { $0.schedule.startDate > $1.schedule.startDate }
+            self.lessonPlans = []
+            self.lessons = lessonPlans.allLessons().filterPast()
         }
     }
 
@@ -41,5 +29,28 @@ struct LessonsCollectionView: View {
 
     private var transition: AnyTransition {
         (.scale(scale: 0.75) + .opacity).animation(.rythmicoSpring(duration: .durationMedium))
+    }
+}
+
+private extension RangeReplaceableCollection where Element == LessonPlan {
+    func filterPartials() -> [LessonPlan] {
+        self.filter(\.status.isFinal.not)
+            .sorted(by: \.schedule.startDate, <)
+    }
+
+    func allLessons() -> [Lesson] {
+        self.compactMap(\.lessons)
+            .flatten()
+    }
+}
+
+private extension LessonPlan.Status {
+    var isFinal: Bool {
+        switch self {
+        case .pending, .reviewing:
+            return false
+        case .active, .paused, .cancelled:
+            return true
+        }
     }
 }

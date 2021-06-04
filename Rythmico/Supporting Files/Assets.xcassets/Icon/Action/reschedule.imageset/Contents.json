@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "reschedule.svg",
+      "filename" : "reschedule-light.svg",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "reschedule-1.svg",
+      "filename" : "reschedule-dark.svg",
       "idiom" : "universal"
     }
   ],

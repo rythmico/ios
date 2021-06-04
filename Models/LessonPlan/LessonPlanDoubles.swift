@@ -1,4 +1,5 @@
 import Foundation
+import FoundationSugar
 import Then
 
 extension LessonPlan: Then {}
@@ -19,80 +20,101 @@ extension LessonPlan {
         student: .jackStub,
         address: .stub,
         schedule: .stub,
-        privateNote: ""
+        privateNote: "",
+        options: .pendingStub
     )
 
-    static let jesseDrumsPlanStub = Self(
+    static let pendingJesseDrumsPlanStub = Self(
         id: .random(),
         status: .pending,
         instrument: .drums,
         student: .jesseStub,
         address: .stub,
         schedule: .stub,
-        privateNote: ""
+        privateNote: "",
+        options: .pendingStub
     )
 
-    static let charlottePianoPlanStub = Self(
+    static let pendingCharlottePianoPlanStub = Self(
         id: .random(),
         status: .pending,
         instrument: .piano,
         student: .charlotteStub,
         address: .stub,
         schedule: .stub,
-        privateNote: ""
+        privateNote: "",
+        options: .pendingStub
     )
 
-    static let janeSingingPlanStub = Self(
+    static let pendingJaneSingingPlanStub = Self(
         id: .random(),
         status: .pending,
         instrument: .singing,
         student: .janeStub,
         address: .stub,
         schedule: .stub,
-        privateNote: ""
+        privateNote: "",
+        options: .pendingStub
     )
 
-    static let davidGuitarPlanStub = Self(
+    static let pendingDavidGuitarPlanStub = Self(
         id: .random(),
         status: .pending,
         instrument: .guitar,
         student: .davidStub,
         address: .stub,
         schedule: .stub,
-        privateNote: ""
+        privateNote: "",
+        options: .pendingStub
     )
 }
 
 extension LessonPlan {
     static let reviewingJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
         $0.status = .reviewing(.stub)
+        $0.options = .reviewingStub
     }
 }
 
 extension LessonPlan {
     static let activeJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
         $0.status = .active(.stub, .jesseStub)
+        $0.options = .activeStub
     }
 
     static let activeSkippedJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
         $0.status = .active(.stub, .jesseStub)
+        $0.options = .activeStub
+    }
+}
+
+extension LessonPlan {
+    static let pausedJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
+        $0.status = .paused(.stub, .jesseStub, .stub)
+        $0.options = .pausedStub
     }
 }
 
 extension LessonPlan {
     static let cancelledJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
         $0.status = .cancelled(nil, nil, .stub)
+        $0.options = .cancelledStub
     }
 
-    static let cancelledCharlottePianoPlanStub = charlottePianoPlanStub.with {
+    static let cancelledCharlottePianoPlanStub = pendingCharlottePianoPlanStub.with {
         $0.status = .cancelled(.stub, .jesseStub, .stub)
+        $0.options = .cancelledStub
     }
 }
 
 extension LessonPlan.Application {
     static let jesseStub = Self(tutor: .jesseStub, privateNote: "I'll help!")
     static let davidStub = Self(tutor: .davidStub, privateNote: "Lorem ipsum!")
-    static let charlotteStub =  Self(tutor: .charlotteStub, privateNote: "")
+    static let charlotteStub = Self(tutor: .charlotteStub, privateNote: "")
+}
+
+extension LessonPlan.PauseInfo {
+    static let stub = Self(date: .stub)
 }
 
 extension LessonPlan.CancellationInfo {
@@ -102,9 +124,73 @@ extension LessonPlan.CancellationInfo {
     )
 }
 
+extension LessonPlan.Options {
+    static let pendingStub = Self(
+        pause: nil,
+        resume: nil,
+        cancel: .stub
+    )
+
+    static let reviewingStub = Self(
+        pause: nil,
+        resume: nil,
+        cancel: .stub
+    )
+
+    static let activeStub = Self(
+        pause: .stub,
+        resume: nil,
+        cancel: .stub
+    )
+
+    static let pausedStub = Self(
+        pause: nil,
+        resume: .stub,
+        cancel: .stub
+    )
+
+    static let cancelledStub = Self(
+        pause: nil,
+        resume: nil,
+        cancel: nil
+    )
+}
+
+extension LessonPlan.Options.Pause {
+    static let stub = Self(policy: .stub)
+}
+
+extension LessonPlan.Options.Pause.Policy {
+    static let stub = Self(
+        freeBeforeDate: .stub - (24, .hour, .current),
+        freeBeforePeriod: .init(.init(hour: 24))
+    )
+}
+
+extension LessonPlan.Options.Resume {
+    static let stub = Self(policy: .stub)
+}
+
+extension LessonPlan.Options.Resume.Policy {
+    static let stub = Self(
+        allAfterPeriod: .init(.init(hour: 24))
+    )
+}
+
+extension LessonPlan.Options.Cancel {
+    static let stub = Self(policy: .stub)
+}
+
+extension LessonPlan.Options.Cancel.Policy {
+    static let stub = Self(
+        freeBeforeDate: .stub - (24, .hour, .current),
+        freeBeforePeriod: .init(.init(hour: 24))
+    )
+}
+
 extension Array where Element == LessonPlan {
     static let stub: Self = [
-        .jesseDrumsPlanStub,
+        .pendingJesseDrumsPlanStub,
 //        .reviewingJackGuitarPlanStub,
         .activeJackGuitarPlanStub,
         .cancelledCharlottePianoPlanStub,

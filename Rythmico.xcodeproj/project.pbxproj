@@ -188,6 +188,8 @@
 		D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898423B9B5C100C19300 /* GoogleService-Info.plist */; };
 		D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */; };
 		D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */; };
+		D509D836265EE55200B60DF0 /* LessonPlanResumingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509D835265EE55200B60DF0 /* LessonPlanResumingView.swift */; };
+		D509D838265EE56100B60DF0 /* LessonPlanResumingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509D837265EE56100B60DF0 /* LessonPlanResumingContentView.swift */; };
 		D510825F25E43123003C9467 /* FoundationSugar in Frameworks */ = {isa = PBXBuildFile; productRef = D510825E25E43123003C9467 /* FoundationSugar */; };
 		D510826125E43129003C9467 /* FoundationSugar in Frameworks */ = {isa = PBXBuildFile; productRef = D510826025E43129003C9467 /* FoundationSugar */; };
 		D514750F240C96F0002EE20C /* XCTAssertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147507240C8E69002EE20C /* XCTAssertView.swift */; };
@@ -207,6 +209,8 @@
 		D517FFD02554A6E800A41639 /* LessonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517FFCF2554A6E800A41639 /* LessonDetailView.swift */; };
 		D518C2F8250EA89100288A48 /* LessonPlanApplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518C2F7250EA89100288A48 /* LessonPlanApplicationsView.swift */; };
 		D518C2FD250EDD3300288A48 /* InfoBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D518C2FC250EDD3300288A48 /* InfoBanner.swift */; };
+		D51EB484265E112D0082D72D /* LessonPlanPausingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51EB483265E112D0082D72D /* LessonPlanPausingView.swift */; };
+		D51EB486265EC0C60082D72D /* LessonPlanPausingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51EB485265EC0C60082D72D /* LessonPlanPausingContentView.swift */; };
 		D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */; };
 		D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */; };
 		D5217CEF24E2F8B400C89018 /* MapOpener+ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5217CEE24E2F8B400C89018 /* MapOpener+ActionSheet.swift */; };
@@ -429,6 +433,8 @@
 		D58DE1D625C0F1A20013AEE8 /* TutorStatusBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58DE1D525C0F1A20013AEE8 /* TutorStatusBanner.swift */; };
 		D5919F7124CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */; };
 		D5919F7224CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */; };
+		D591C5B626699AA400A95938 /* DateComponents+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591C5B526699AA400A95938 /* DateComponents+Sugar.swift */; };
+		D591C5B726699AA400A95938 /* DateComponents+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591C5B526699AA400A95938 /* DateComponents+Sugar.swift */; };
 		D593C7022550C03B00C684FF /* AppUpdatePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */; };
 		D593C7032550C03B00C684FF /* AppUpdatePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */; };
 		D5989BA7251533E300BED8A6 /* PortfolioTrainingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5989BA6251533E300BED8A6 /* PortfolioTrainingsView.swift */; };
@@ -439,6 +445,7 @@
 		D59D0594251828EA0070D81B /* App+Playback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59D0592251828EA0070D81B /* App+Playback.swift */; };
 		D59E4E5625B2033200E8F94C /* YouTubeVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59E4E5325B2033200E8F94C /* YouTubeVideoPlayerView.swift */; };
 		D59E4E6125B20ADA00E8F94C /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = D59E4E6025B20ADA00E8F94C /* YouTubeiOSPlayerHelper */; };
+		D5A6154826628CB200457BBC /* ISO8601PeriodDuration in Frameworks */ = {isa = PBXBuildFile; productRef = D5A6154726628CB200457BBC /* ISO8601PeriodDuration */; };
 		D5A8C4BB25044A230006F5C5 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BA25044A230006F5C5 /* UserDefaults.swift */; };
 		D5A8C4BC25044A230006F5C5 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BA25044A230006F5C5 /* UserDefaults.swift */; };
 		D5A8C4BE25044A370006F5C5 /* UserDefaultsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */; };
@@ -563,7 +570,7 @@
 		D5E987C224EDE9A100E2E1AF /* Routes+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C024EDE98900E2E1AF /* Routes+Tutor.swift */; };
 		D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */; };
 		D5E987C724EEFC7C00E2E1AF /* BookingApplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */; };
-		D5ECD2C126497D9700DE933E /* MoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ECD2C026497D9700DE933E /* MoreButton.swift */; };
+		D5ECD2C126497D9700DE933E /* ContextMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ECD2C026497D9700DE933E /* ContextMenuView.swift */; };
 		D5ED168B2614BB40001841ED /* StackSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED168A2614BB40001841ED /* StackSpacing.swift */; };
 		D5ED168C2614BB40001841ED /* StackSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED168A2614BB40001841ED /* StackSpacing.swift */; };
 		D5ED326126065FEC00821ABE /* NonEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED326026065FEC00821ABE /* NonEditableTextField.swift */; };
@@ -793,6 +800,8 @@
 		D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
 		D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationAppleIDButton.swift; sourceTree = "<group>"; };
 		D509899023BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCompletionDelegate.swift; sourceTree = "<group>"; };
+		D509D835265EE55200B60DF0 /* LessonPlanResumingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanResumingView.swift; sourceTree = "<group>"; };
+		D509D837265EE56100B60DF0 /* LessonPlanResumingContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanResumingContentView.swift; sourceTree = "<group>"; };
 		D50E4BC123C69D0400B6FCB1 /* AppleAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationService.swift; sourceTree = "<group>"; };
 		D50E4BC423C7AAA900B6FCB1 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		D510825B25E43099003C9467 /* FoundationSugar */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FoundationSugar; sourceTree = "<group>"; };
@@ -814,6 +823,8 @@
 		D517FFCF2554A6E800A41639 /* LessonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailView.swift; sourceTree = "<group>"; };
 		D518C2F7250EA89100288A48 /* LessonPlanApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationsView.swift; sourceTree = "<group>"; };
 		D518C2FC250EDD3300288A48 /* InfoBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBanner.swift; sourceTree = "<group>"; };
+		D51EB483265E112D0082D72D /* LessonPlanPausingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanPausingView.swift; sourceTree = "<group>"; };
+		D51EB485265EC0C60082D72D /* LessonPlanPausingContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanPausingContentView.swift; sourceTree = "<group>"; };
 		D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailsView.swift; sourceTree = "<group>"; };
 		D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleView.swift; sourceTree = "<group>"; };
 		D5217CEE24E2F8B400C89018 /* MapOpener+ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapOpener+ActionSheet.swift"; sourceTree = "<group>"; };
@@ -960,6 +971,7 @@
 		D58DE1CC25C0F0100013AEE8 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		D58DE1D525C0F1A20013AEE8 /* TutorStatusBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorStatusBanner.swift; sourceTree = "<group>"; };
 		D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sheet+Sugar.swift"; sourceTree = "<group>"; };
+		D591C5B526699AA400A95938 /* DateComponents+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateComponents+Sugar.swift"; sourceTree = "<group>"; };
 		D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdatePrompt.swift; sourceTree = "<group>"; };
 		D5989BA6251533E300BED8A6 /* PortfolioTrainingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioTrainingsView.swift; sourceTree = "<group>"; };
 		D5989BAE251662F400BED8A6 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
@@ -1063,7 +1075,7 @@
 		D5E987C024EDE98900E2E1AF /* Routes+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Routes+Tutor.swift"; sourceTree = "<group>"; };
 		D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestsTabView.swift; sourceTree = "<group>"; };
 		D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationsView.swift; sourceTree = "<group>"; };
-		D5ECD2C026497D9700DE933E /* MoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreButton.swift; sourceTree = "<group>"; };
+		D5ECD2C026497D9700DE933E /* ContextMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuView.swift; sourceTree = "<group>"; };
 		D5ED168A2614BB40001841ED /* StackSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackSpacing.swift; sourceTree = "<group>"; };
 		D5ED326026065FEC00821ABE /* NonEditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonEditableTextField.swift; sourceTree = "<group>"; };
 		D5ED32622606600C00821ABE /* CustomEditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditableTextField.swift; sourceTree = "<group>"; };
@@ -1119,6 +1131,7 @@
 				D535547723DF3A19005A20EB /* Valet in Frameworks */,
 				D56C6A98264AC80C00A2599E /* ComposableNavigator in Frameworks */,
 				D5AC9E3B254D9533003A8197 /* FirebaseRemoteConfig in Frameworks */,
+				D5A6154826628CB200457BBC /* ISO8601PeriodDuration in Frameworks */,
 				D585217624CF81CE005D783A /* Introspect in Frameworks */,
 				D5FC2D44254A7DE3005056D5 /* FirebaseAuth in Frameworks */,
 				D5FC2D42254A7DE3005056D5 /* FirebaseMessaging in Frameworks */,
@@ -1265,6 +1278,7 @@
 				D518C2F6250EA84F00288A48 /* Details */,
 				D5F89390263F3D5900578970 /* Schedule */,
 				D5F89397263F563200578970 /* Tutor */,
+				D51EB482265E10F20082D72D /* Pausing */,
 				D518C2F5250EA83000288A48 /* Cancellation */,
 			);
 			path = Lessons;
@@ -1535,6 +1549,7 @@
 				D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */,
 				03E88EB024C205C30077A420 /* Current.swift */,
 				D5ED3267260668BE00821ABE /* Date+Sugar.swift */,
+				D591C5B526699AA400A95938 /* DateComponents+Sugar.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1655,6 +1670,7 @@
 				D535554623E20076005A20EB /* Colors.swift */,
 				D53447C8264D74A000A0FF16 /* ComposableNavigator+Sugar.swift */,
 				D516A8FE253A1D6A002E6EDF /* ConfirmationView.swift */,
+				D5ECD2C026497D9700DE933E /* ContextMenuView.swift */,
 				D516A8F9253A1816002E6EDF /* CoordinatorStateView.swift */,
 				D5ED32622606600C00821ABE /* CustomEditableTextField.swift */,
 				D5147510240C99A9002EE20C /* CustomTextField.swift */,
@@ -1690,7 +1706,6 @@
 				03B1984424719105005529EB /* LoadingView.swift */,
 				D56C6A99264AE85500A2599E /* MainViewContent+Rythmico.swift */,
 				D5814A08251D957D0009BBB3 /* MainViewContent+Tutor.swift */,
-				D5ECD2C026497D9700DE933E /* MoreButton.swift */,
 				D5F5067A2400788400CA4094 /* MultilineTextField.swift */,
 				D5CAC9AB24E6D19900119DAA /* MultilineTextField+Rythmico.swift */,
 				D5CAC9AD24E6D67C00119DAA /* MultilineTextField+Tutor.swift */,
@@ -1801,6 +1816,17 @@
 				D5077D8A2587D80200F8595E /* LessonSkippingContentView.swift */,
 			);
 			path = Details;
+			sourceTree = "<group>";
+		};
+		D51EB482265E10F20082D72D /* Pausing */ = {
+			isa = PBXGroup;
+			children = (
+				D51EB483265E112D0082D72D /* LessonPlanPausingView.swift */,
+				D51EB485265EC0C60082D72D /* LessonPlanPausingContentView.swift */,
+				D509D835265EE55200B60DF0 /* LessonPlanResumingView.swift */,
+				D509D837265EE56100B60DF0 /* LessonPlanResumingContentView.swift */,
+			);
+			path = Pausing;
 			sourceTree = "<group>";
 		};
 		D5217CED24E2D81B00C89018 /* MapOpener */ = {
@@ -2338,6 +2364,7 @@
 				D55430C225C4335600499FF6 /* Set App Version in Settings */,
 				D509898123B9B2E400C19300 /* Select GoogleService-Info.plist */,
 				D53554B123E0FA4B005A20EB /* Embed Frameworks */,
+				D5DD19412656A1C8007E1948 /* Run Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -2364,6 +2391,7 @@
 				D5AC3F3125F6ADCE00321EDE /* Mixpanel */,
 				D5ED519526226DB700D1B53A /* TextBuilder */,
 				D56C6A97264AC80C00A2599E /* ComposableNavigator */,
+				D5A6154726628CB200457BBC /* ISO8601PeriodDuration */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -2381,6 +2409,7 @@
 				D55430BB25C42CCF00499FF6 /* Set App Version in Settings */,
 				035B1D5C249E5EA000AABFEA /* Select GoogleService-Info.plist */,
 				035B1D0E249D303400AABFEA /* Embed Frameworks */,
+				D5DD19422656A8A8007E1948 /* Run Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -2508,6 +2537,7 @@
 				D5AC3F3025F6ADCE00321EDE /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
 				D5ED519426226DB700D1B53A /* XCRemoteSwiftPackageReference "TextBuilder" */,
 				D56C6A96264AC80B00A2599E /* XCRemoteSwiftPackageReference "swift-composable-navigator" */,
+				D5A6154626628CB200457BBC /* XCRemoteSwiftPackageReference "ISO8601PeriodDuration" */,
 			);
 			productRefGroup = 03341B3C23ABB1E7009AE8A8 /* Products */;
 			projectDirPath = "";
@@ -2725,6 +2755,50 @@
 			shellPath = /bin/sh;
 			shellScript = "${SRCROOT}/script/build_phase_code_sanity_check\n";
 		};
+		D5DD19412656A1C8007E1948 /* Run Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Run Crashlytics";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5DD19422656A8A8007E1948 /* Run Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Run Crashlytics";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2737,6 +2811,7 @@
 				D5F89394263F4B0500578970 /* LessonScheduleView.swift in Sources */,
 				03341B3F23ABB1E7009AE8A8 /* AppExtensions.swift in Sources */,
 				D53555C023E53699005A20EB /* UserCredentialEmitterDoubles.swift in Sources */,
+				D51EB486265EC0C60082D72D /* LessonPlanPausingContentView.swift in Sources */,
 				D53447C7264B7B2000A0FF16 /* View+Watermark.swift in Sources */,
 				D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */,
 				D54340ED261E3C03006898B0 /* AnalyticsUserProfile.swift in Sources */,
@@ -2746,7 +2821,7 @@
 				D593C7022550C03B00C684FF /* AppUpdatePrompt.swift in Sources */,
 				D5D9AEA325367E9B00A0ABCC /* LessonPlanBookingEntryView.swift in Sources */,
 				D501587825375AA9005E02FA /* PorfolioView.swift in Sources */,
-				D5ECD2C126497D9700DE933E /* MoreButton.swift in Sources */,
+				D5ECD2C126497D9700DE933E /* ContextMenuView.swift in Sources */,
 				D58DE1CD25C0F0100013AEE8 /* UIColor+Hex.swift in Sources */,
 				D575C819254DD6C8001664AB /* AppSplash.swift in Sources */,
 				D54340F7261E7314006898B0 /* AccessibilitySettingsDoubles.swift in Sources */,
@@ -2765,6 +2840,7 @@
 				D53555C623E536AE005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,
 				03B1984124717AE8005529EB /* AddressDoubles.swift in Sources */,
 				D575C877254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift in Sources */,
+				D509D836265EE55200B60DF0 /* LessonPlanResumingView.swift in Sources */,
 				D53555BD23E53699005A20EB /* UserCredentialProviderDoubles.swift in Sources */,
 				D5B57A712419F79700BE9B4F /* SectionHeaderView.swift in Sources */,
 				D53555C323E536AE005A20EB /* AppleAuthorizationCredentialStateProvider.swift in Sources */,
@@ -2793,6 +2869,7 @@
 				D516A8FA253A1816002E6EDF /* CoordinatorStateView.swift in Sources */,
 				D5312968256427EA00CA6621 /* LessonSkippingView.swift in Sources */,
 				D5F506B42405ED9300CA4094 /* RoundedThickOutlineContainer.swift in Sources */,
+				D51EB484265E112D0082D72D /* LessonPlanPausingView.swift in Sources */,
 				D5ED3265260667E800821ABE /* DateDoubles.swift in Sources */,
 				031378C5249A7453005FC49C /* CloseButton.swift in Sources */,
 				D5077D8B2587D80200F8595E /* LessonSkippingContentView.swift in Sources */,
@@ -2838,6 +2915,7 @@
 				D55F013124CCCEDE00E5F13C /* Repository.swift in Sources */,
 				D572A4B2263240CE00E9E9E3 /* FlowStep.swift in Sources */,
 				D5883CE425A4179F000B545C /* Alert+View.swift in Sources */,
+				D509D838265EE56100B60DF0 /* LessonPlanResumingContentView.swift in Sources */,
 				D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */,
 				D54CF08B25FA8696007D5050 /* AnalyticsServiceDoubles.swift in Sources */,
 				0336D62C241EAAF6006CFC1F /* APIRequest.swift in Sources */,
@@ -2902,6 +2980,7 @@
 				03A91EF8249189E000DEAD5E /* PushNotificationAuthorizationCoordinatorDoubles.swift in Sources */,
 				D5D9AE7B2534CBC800A0ABCC /* PriceDoubles.swift in Sources */,
 				D50158B42538C029005E02FA /* CardDoubles.swift in Sources */,
+				D591C5B626699AA400A95938 /* DateComponents+Sugar.swift in Sources */,
 				D5D7E2F6256DB36D0081F8F7 /* NavigationLink+Hidden.swift in Sources */,
 				D54EFF2A2513DDDB004F14D3 /* PortfolioEndpoints.swift in Sources */,
 				0372E35A249ABAB80048B402 /* SelectableList.swift in Sources */,
@@ -3265,6 +3344,7 @@
 				D5CC5FEB24FF1201007DFE84 /* UIImage+Sugar.swift in Sources */,
 				D5C76E9A25F4075200739267 /* CalendarSyncStatusProviderDoubles.swift in Sources */,
 				D5919F7224CF3BDF009D6185 /* Sheet+Sugar.swift in Sources */,
+				D591C5B726699AA400A95938 /* DateComponents+Sugar.swift in Sources */,
 				D5ED3266260667E800821ABE /* DateDoubles.swift in Sources */,
 				D52C553D24DC74A200C295C4 /* TitleCell.swift in Sources */,
 				032B6FCD24B7879300299A09 /* Schedule.swift in Sources */,
@@ -3385,7 +3465,8 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 0;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -3406,10 +3487,6 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"$(OTHER_LDFLAGS)",
-					"-ObjC",
-				);
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -3470,10 +3547,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				OTHER_LDFLAGS = (
-					"$(OTHER_LDFLAGS)",
-					"-ObjC",
-				);
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -3807,6 +3880,14 @@
 				kind = branch;
 			};
 		};
+		D5A6154626628CB200457BBC /* XCRemoteSwiftPackageReference "ISO8601PeriodDuration" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/treatwell/ISO8601PeriodDuration";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
 		D5AC3F3025F6ADCE00321EDE /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mixpanel/mixpanel-swift";
@@ -3974,6 +4055,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D59E4E5F25B20ADA00E8F94C /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
 			productName = YouTubeiOSPlayerHelper;
+		};
+		D5A6154726628CB200457BBC /* ISO8601PeriodDuration */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5A6154626628CB200457BBC /* XCRemoteSwiftPackageReference "ISO8601PeriodDuration" */;
+			productName = ISO8601PeriodDuration;
 		};
 		D5AC3F3125F6ADCE00321EDE /* Mixpanel */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -14,12 +14,12 @@ final class LessonPlanCancellationViewTests: XCTestCase {
         let spy = APIServiceSpy<CancelLessonPlanRequest>()
         Current.stubAPIEndpoint(for: \.lessonPlanCancellationCoordinator, service: spy)
 
-        let view = try XCTUnwrap(LessonPlanCancellationView(lessonPlan: .davidGuitarPlanStub))
+        let view = try XCTUnwrap(LessonPlanCancellationView(lessonPlan: .pendingDavidGuitarPlanStub, option: .stub))
         XCTAssertView(view) { view in
             XCTAssertNil(spy.latestRequest?.lessonPlanId)
             XCTAssertNil(spy.latestRequest?.body.reason)
             view.submit(.badTutor)
-            XCTAssertEqual(spy.latestRequest?.lessonPlanId, LessonPlan.davidGuitarPlanStub.id)
+            XCTAssertEqual(spy.latestRequest?.lessonPlanId, LessonPlan.pendingDavidGuitarPlanStub.id)
             XCTAssertEqual(spy.latestRequest?.body.reason, .badTutor)
         }
     }

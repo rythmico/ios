@@ -20,6 +20,8 @@ private extension LessonPlan.Status {
             return "\(applications.count) Applied"
         case .active:
             return "Active"
+        case .paused:
+            return "Paused"
         case .cancelled:
             return "Cancelled"
         }
@@ -33,6 +35,8 @@ private extension LessonPlan.Status {
             return .rythmicoDarkBurgundy
         case .active:
             return .rythmicoDarkGreen
+        case .paused:
+            return .rythmicoDarkBlue
         case .cancelled:
             return Color(light: 0x111619, dark: 0x9fa1a3)
         }
@@ -46,6 +50,8 @@ private extension LessonPlan.Status {
             return .rythmicoDarkBurgundy
         case .active:
             return .rythmicoDarkGreen
+        case .paused:
+            return .rythmicoDarkBlue
         case .cancelled:
             return Color(light: 0x111619, dark: 0x9fa1a3)
         }

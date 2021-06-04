@@ -1,15 +1,34 @@
 import Foundation
+#if RYTHMICO
+import ISO8601PeriodDuration
+#endif
 import PhoneNumberKit
 import Tagged
 
-struct Lesson: Equatable, Decodable, Identifiable, Hashable {
+struct Lesson: Decodable, Identifiable, Hashable {
     typealias ID = Tagged<Self, String>
 
-    enum Status: String, Equatable, Decodable, Hashable {
-        case skipped = "SKIPPED"
-        case completed = "COMPLETED"
+    enum Status: String, Decodable, Hashable {
         case scheduled = "SCHEDULED"
+        case completed = "COMPLETED"
+        case skipped = "SKIPPED"
+        case paused = "PAUSED"
+        case cancelled = "CANCELLED"
     }
+
+    #if RYTHMICO
+    struct Options: Decodable, Hashable {
+        struct Skip: Decodable, Hashable {
+            struct Policy: Decodable, Hashable {
+                var freeBeforeDate: Date
+                @ISO8601PeriodDuration
+                var freeBeforePeriod: DateComponents
+            }
+            var policy: Policy
+        }
+        var skip: Skip?
+    }
+    #endif
 
     var id: ID
     #if RYTHMICO
@@ -29,7 +48,7 @@ struct Lesson: Equatable, Decodable, Identifiable, Hashable {
     var address: Address
     var schedule: Schedule
     #if RYTHMICO
-    var freeSkipUntil: Date?
+    var options: Options
     #elseif TUTOR
     @E164PhoneNumber
     var phoneNumber: PhoneNumber
@@ -55,5 +74,25 @@ extension Lesson {
 
     private var orderDescriptor: String {
         week.map { String($0 + 1) } ?? "(Extra)"
+    }
+}
+
+extension RangeReplaceableCollection where Element == Lesson {
+    func nextLesson() -> Lesson? {
+        self.lazy
+            .filter { Current.date() < $0.schedule.endDate }
+            .min(by: \.schedule.startDate)
+    }
+
+    func filterUpcoming() -> [Lesson] {
+        self.lazy
+            .filter { Current.date() < $0.schedule.endDate }
+            .sorted(by: \.schedule.startDate, <)
+    }
+
+    func filterPast() -> [Lesson] {
+        self.lazy
+            .filter { Current.date() > $0.schedule.endDate }
+            .sorted(by: \.schedule.startDate, >)
     }
 }

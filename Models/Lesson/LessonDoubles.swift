@@ -27,8 +27,10 @@ extension Array where Element == Lesson {
 
 extension Lesson {
     static let scheduledStub = stub(week: 0, status: .scheduled, startDate: .stub)
-    static let skippedStub = stub(week: 1, status: .skipped, startDate: .stub)
-    static let completedStub = stub(week: 2, status: .completed, startDate: .stub)
+    static let completedStub = stub(week: 1, status: .completed, startDate: .stub)
+    static let skippedStub = stub(week: 2, status: .skipped, startDate: .stub)
+    static let pausedStub = stub(week: 3, status: .paused, startDate: .stub)
+    static let cancelledStub = stub(week: 4, status: .cancelled, startDate: .stub)
 }
 
 private extension Lesson {
@@ -44,7 +46,7 @@ private extension Lesson {
             status: status,
             address: .stub,
             schedule: Schedule.stub.with(\.startDate, startDate),
-            freeSkipUntil: status == .scheduled ? startDate - (3, .hour, .current) : nil
+            options: status == .scheduled ? .scheduledStub : .skippedStub
         )
     }
     #elseif TUTOR
@@ -64,3 +66,25 @@ private extension Lesson {
     #endif
 }
 
+#if RYTHMICO
+extension Lesson.Options {
+    static let scheduledStub = Self(
+        skip: .stub
+    )
+
+    static let skippedStub = Self(
+        skip: nil
+    )
+}
+
+extension Lesson.Options.Skip {
+    static let stub = Self(policy: .stub)
+}
+
+extension Lesson.Options.Skip.Policy {
+    static let stub = Self(
+        freeBeforeDate: .stub - (24, .hour, .current),
+        freeBeforePeriod: .init(.init(hour: 24))
+    )
+}
+#endif

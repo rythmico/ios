@@ -18,6 +18,10 @@ private extension Lesson.Status {
             return "Scheduled"
         case .skipped:
             return "Skipped"
+        case .paused:
+            return "Paused"
+        case .cancelled:
+            return "Cancelled"
         case .completed:
             return "Completed"
         }
@@ -29,6 +33,10 @@ private extension Lesson.Status {
             return .rythmicoDarkBlue
         case .skipped:
             return Color(light: 0x111619, dark: 0x9fa1a3)
+        case .paused:
+            return Color(light: 0x111619, dark: 0x9fa1a3)
+        case .cancelled:
+            return Color(light: 0x111619, dark: 0x9fa1a3)
         case .completed:
             return .rythmicoDarkGreen
         }
@@ -39,6 +47,10 @@ private extension Lesson.Status {
         case .scheduled:
             return .rythmicoLightBlue
         case .skipped:
+            return Color(light: 0xDDE1E6, dark: 0x424345)
+        case .paused:
+            return Color(light: 0xDDE1E6, dark: 0x424345)
+        case .cancelled:
             return Color(light: 0xDDE1E6, dark: 0x424345)
         case .completed:
             return .rythmicoLightGreen

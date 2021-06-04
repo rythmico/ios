@@ -58,6 +58,8 @@ struct AppEnvironment {
 
     var lessonPlanFetchingCoordinator: APIActivityCoordinator<GetLessonPlansRequest>
     var lessonPlanRequestCoordinator: () -> APIActivityCoordinator<CreateLessonPlanRequest>
+    var lessonPlanPausingCoordinator: () -> APIActivityCoordinator<PauseLessonPlanRequest>
+    var lessonPlanResumingCoordinator: () -> APIActivityCoordinator<ResumeLessonPlanRequest>
     var lessonPlanCancellationCoordinator: () -> APIActivityCoordinator<CancelLessonPlanRequest>
     var lessonPlanGetCheckoutCoordinator: () -> APIActivityCoordinator<GetLessonPlanCheckoutRequest>
     var lessonPlanCompleteCheckoutCoordinator: () -> APIActivityCoordinator<CompleteLessonPlanCheckoutRequest>
@@ -120,6 +122,8 @@ struct AppEnvironment {
 
         lessonPlanFetchingService: APIServiceBase<GetLessonPlansRequest>,
         lessonPlanRequestService: APIServiceBase<CreateLessonPlanRequest>,
+        lessonPlanPausingService: APIServiceBase<PauseLessonPlanRequest>,
+        lessonPlanResumingService: APIServiceBase<ResumeLessonPlanRequest>,
         lessonPlanCancellationService: APIServiceBase<CancelLessonPlanRequest>,
         lessonPlanGetCheckoutService: APIServiceBase<GetLessonPlanCheckoutRequest>,
         lessonPlanCompleteCheckoutService: APIServiceBase<CompleteLessonPlanCheckoutRequest>,
@@ -208,6 +212,8 @@ struct AppEnvironment {
 
         self.lessonPlanFetchingCoordinator = coordinator(for: lessonPlanFetchingService)
         self.lessonPlanRequestCoordinator = { coordinator(for: lessonPlanRequestService) }
+        self.lessonPlanPausingCoordinator = { coordinator(for: lessonPlanPausingService) }
+        self.lessonPlanResumingCoordinator = { coordinator(for: lessonPlanResumingService) }
         self.lessonPlanCancellationCoordinator = { coordinator(for: lessonPlanCancellationService) }
         self.lessonPlanGetCheckoutCoordinator = { coordinator(for: lessonPlanGetCheckoutService) }
         self.lessonPlanCompleteCheckoutCoordinator = { coordinator(for: lessonPlanCompleteCheckoutService) }
@@ -281,6 +287,8 @@ extension AppEnvironment {
 
         lessonPlanFetchingService: APIService(),
         lessonPlanRequestService: APIService(),
+        lessonPlanPausingService: APIService(),
+        lessonPlanResumingService: APIService(),
         lessonPlanCancellationService: APIService(),
         lessonPlanGetCheckoutService: APIService(),
         lessonPlanCompleteCheckoutService: APIService(),

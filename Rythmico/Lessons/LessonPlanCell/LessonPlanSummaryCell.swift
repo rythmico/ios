@@ -1,18 +1,9 @@
 import SwiftUI
+import TextBuilder
 import FoundationSugar
 
 struct LessonPlanSummaryCell: View {
     var lessonPlan: LessonPlan
-
-    init?(lessonPlan: LessonPlan) {
-        switch lessonPlan.status {
-        case .active, .cancelled:
-            return nil
-        case .pending, .reviewing:
-            break
-        }
-        self.lessonPlan = lessonPlan
-    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -20,7 +11,6 @@ struct LessonPlanSummaryCell: View {
             LessonPlanSummaryCellAccessory(lessonPlan: lessonPlan)
         }
         .modifier(RoundedShadowContainer())
-        .disabled(lessonPlan.status.isCancelled)
     }
 }
 
@@ -38,18 +28,27 @@ struct LessonPlanSummaryCellMainContent: View {
         ].compact().joined(separator: " - ")
     }
 
-    var subtitle: String {
+    @SpacedTextBuilder
+    var subtitle: Text {
         switch lessonPlan.status {
         case .pending:
-            return "Pending tutor applications"
+            "Pending tutor applications"
         case .reviewing:
-            return "Pending selection of tutor"
-        case .active:
-            return ""
+            "Pending selection of tutor"
+        case .active(let lessons, _):
+            if let nextLesson = lessons.nextLesson() {
+                "Next Lesson:"
+                startDateString(for: nextLesson).text.rythmicoFontWeight(.bodyMedium)
+            }
+        case .paused:
+            "Plan Paused"
         case .cancelled:
-            return [startDateText, "Plan Cancelled"].joined(separator: " • ")
+            "Plan Cancelled"
         }
     }
+
+    private static let startDateFormatter = Current.dateFormatter(format: .custom("d MMM"))
+    private func startDateString(for lesson: Lesson) -> String { Self.startDateFormatter.string(from: lesson.schedule.startDate) }
 
     var body: some View {
         Button(action: { navigator.go(to: LessonPlanDetailScreen(lessonPlan: lessonPlan), on: currentScreen) }) {
@@ -58,14 +57,16 @@ struct LessonPlanSummaryCellMainContent: View {
                     .rythmicoTextStyle(.subheadlineBold)
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
-                    .foregroundColor(lessonPlan.status.isCancelled ? .rythmicoGray90 : .rythmicoForeground)
+                    .foregroundColor(.rythmicoForeground)
+                    .opacity(opacity)
                 VSpacing(.spacingUnit * 2)
-                Text(subtitle)
+                subtitle
                     .rythmicoTextStyle(.body)
                     .foregroundColor(.rythmicoGray90)
+                    .opacity(opacity)
                 VSpacing(.spacingExtraSmall)
                 HStack(spacing: .spacingExtraSmall) {
-                    LessonPlanTutorStatusView(status: lessonPlan.status, summarized: true)
+                    LessonPlanTutorStatusView(status: lessonPlan.status, summarized: true).opacity(opacity)
                     Pill(lessonPlan: lessonPlan, backgroundColor: .rythmicoBackgroundTertiary)
                 }
             }
@@ -78,8 +79,13 @@ struct LessonPlanSummaryCellMainContent: View {
         )
     }
 
-    private static let startDateFormatter = Current.dateFormatter(format: .custom("d MMM"))
-    private var startDateText: String { Self.startDateFormatter.string(from: lessonPlan.schedule.startDate) }
+    private var opacity: Double { isDimmed ? 0.5 : 1 }
+    private var isDimmed: Bool {
+        switch lessonPlan.status {
+        case .pending, .reviewing, .active: return false
+        case .paused, .cancelled: return true
+        }
+    }
 }
 
 struct LessonPlanSummaryCellAccessory: View {
@@ -120,6 +126,7 @@ struct LessonPlanSummaryCell_Previews: PreviewProvider {
             LessonPlanSummaryCell(lessonPlan: .pendingJackGuitarPlanStub)
             LessonPlanSummaryCell(lessonPlan: .reviewingJackGuitarPlanStub)
             LessonPlanSummaryCell(lessonPlan: .activeJackGuitarPlanStub)
+            LessonPlanSummaryCell(lessonPlan: .pausedJackGuitarPlanStub)
             LessonPlanSummaryCell(lessonPlan: .cancelledJackGuitarPlanStub)
         }
         .previewLayout(.sizeThatFits)

@@ -44,7 +44,7 @@ struct LessonPlanTutorDetailView: View {
 #if DEBUG
 struct LessonPlanTutorDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlanTutorDetailView(lessonPlan: .charlottePianoPlanStub, tutor: .charlotteStub)
+        LessonPlanTutorDetailView(lessonPlan: .pendingCharlottePianoPlanStub, tutor: .charlotteStub)
     }
 }
 #endif

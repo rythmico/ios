@@ -3,7 +3,7 @@ import FoundationSugar
 
 struct LessonSkippingContentView: View {
     var isFree: Bool
-    var freeSkipUntil: Date
+    var policy: Lesson.Options.Skip.Policy
 
     var body: some View {
         VStack(alignment: .leading, spacing: .spacingMedium) {
@@ -22,7 +22,7 @@ struct LessonSkippingContentView: View {
 
                 InfoBanner(text:
                     """
-                    If a lesson is skipped when there is less than 3 hours before it’s scheduled, then you will be charged fully.
+                    If a lesson is skipped less than \(cutoffString) before the start of the lesson, then you will be charged fully.
 
                     We do this to protect Rythmico Tutors.
                     """
@@ -34,7 +34,7 @@ struct LessonSkippingContentView: View {
 
                 InfoBanner(text:
                     """
-                    Skipping a lesson for free is only available more than 3 hours before a lesson is scheduled to start.
+                    As per our policy, lessons can only be skipped free of charge no less than \(cutoffString) before the lesson is scheduled to start.
 
                     We do this to protect Rythmico Tutors.
                     """
@@ -43,11 +43,14 @@ struct LessonSkippingContentView: View {
         }
     }
 
+    private static let cutoffFormatter = Current.dateComponentsFormatter(allowedUnits: [.hour, .minute], style: .full)
+    private var cutoffString: String { Self.cutoffFormatter.string(from: policy.freeBeforePeriod) !! preconditionFailure("nil for input '\(policy.freeBeforePeriod)'") }
+
     private static let remainingTimeFormatter = Current.dateComponentsFormatter(allowedUnits: [.day, .hour, .minute], style: .short)
     private var remainingTimeString: String {
         let now = Current.date()
-        return Self.remainingTimeFormatter.string(from: now, to: freeSkipUntil) !! preconditionFailure(
-            "remainingTimeFormatter returned nil for input 'from' \(now) 'to' \(freeSkipUntil)"
+        return Self.remainingTimeFormatter.string(from: now, to: policy.freeBeforeDate) !! preconditionFailure(
+            "remainingTimeFormatter returned nil for input 'from' \(now) 'to' \(policy.freeBeforeDate)"
         )
     }
 }
@@ -56,8 +59,8 @@ struct LessonSkippingContentView: View {
 struct LessonSkippingContentView_Preview: PreviewProvider {
     static var previews: some View {
         Group {
-            LessonSkippingContentView(isFree: true, freeSkipUntil: Current.date() - (24, .hour))
-            LessonSkippingContentView(isFree: false, freeSkipUntil: Current.date() - (3, .hour))
+            LessonSkippingContentView(isFree: true, policy: .stub)
+            LessonSkippingContentView(isFree: false, policy: .stub)
         }
         .padding(.spacingMedium)
     }

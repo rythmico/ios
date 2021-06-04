@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "cancel-light.svg",
+      "filename" : "resume-light.svg",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "cancel-dark.svg",
+      "filename" : "resume-dark.svg",
       "idiom" : "universal"
     }
   ],

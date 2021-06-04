@@ -24,3 +24,22 @@ extension Sequence where Element: Sequence {
         flatMap { $0 }
     }
 }
+
+extension Sequence {
+    public func sorted<T>(
+        by value: KeyPath<Element, T>,
+        _ areInIncreasingOrder: (T, T) throws -> Bool
+    ) rethrows -> [Element] {
+        try sorted(by: { try areInIncreasingOrder($0[keyPath: value], $1[keyPath: value]) })
+    }
+
+    public func sorted<T>(by value: KeyPath<Element, T>) -> [Element] where T: Comparable {
+        sorted(by: value, <)
+    }
+}
+
+extension Sequence {
+    public func min<T>(by value: KeyPath<Element, T>) -> Element? where T: Comparable {
+        self.min(by: { $0[keyPath: value] < $1[keyPath: value] })
+    }
+}

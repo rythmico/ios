@@ -14,6 +14,8 @@ struct LessonPlanDetailScreen: Screen {
                     LessonPlanDetailView(lessonPlan: screen.lessonPlan)
                 },
                 nesting: {
+                    LessonPlanPausingScreen.Builder()
+                    LessonPlanResumingScreen.Builder()
                     LessonPlanCancellationScreen.Builder()
                     LessonPlanApplicationsScreen.Builder()
                     LessonPlanTutorDetailScreen.Builder()
@@ -34,7 +36,7 @@ struct LessonPlanDetailView: View, TestableView {
     }
 
     var lessonPlan: LessonPlan
-    var lessonPlanReschedulingView: LessonReschedulingView? { !lessonPlan.status.isCancelled ? .reschedulingView(lessonPlan: lessonPlan) : nil }
+    var lessonPlanReschedulingView: LessonReschedulingView? { !lessonPlan.status.isCancelled && !lessonPlan.status.isPaused ? .reschedulingView(lessonPlan: lessonPlan) : nil }
 
     var chooseTutorAction: Action? {
         LessonPlanApplicationsScreen(lessonPlan: lessonPlan).map { screen in
@@ -48,6 +50,18 @@ struct LessonPlanDetailView: View, TestableView {
         lessonPlanReschedulingView != nil
             ? { isRescheduling = true }
             : nil
+    }
+
+    var showPauseLessonPlanFormAction: Action? {
+        LessonPlanPausingScreen(lessonPlan: lessonPlan).map { screen in
+            { navigator.go(to: screen, on: currentScreen) }
+        }
+    }
+
+    var showResumeLessonPlanFormAction: Action? {
+        LessonPlanResumingScreen(lessonPlan: lessonPlan).map { screen in
+            { navigator.go(to: screen, on: currentScreen) }
+        }
     }
 
     var showCancelLessonPlanFormAction: Action? {
@@ -84,7 +98,7 @@ struct LessonPlanDetailView: View, TestableView {
         .testable(self)
         .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(trailing: moreButton)
+        .navigationBarItems(trailing: optionsButton)
         .multiModal {
             $0.alert(isPresented: $isRescheduling) { .reschedulingView(lessonPlan: lessonPlan) }
         }
@@ -106,7 +120,7 @@ struct LessonPlanDetailView: View, TestableView {
             if lessonPlan.status.isPending {
                 InfoBanner(text: "Potential tutors have received your request and will submit applications for your consideration.")
             }
-        case .active(_, let tutor), .cancelled(_, let tutor?, _):
+        case .active(_, let tutor), .paused(_, let tutor, _), .cancelled(_, let tutor?, _):
             TutorCell(lessonPlan: lessonPlan, tutor: tutor)
         }
     }
@@ -114,28 +128,34 @@ struct LessonPlanDetailView: View, TestableView {
     @ViewBuilder
     private var paymentSection: some View {
         switch lessonPlan.status {
-        case .active:
+        case .active, .paused:
             SectionHeaderView(title: "Payment")
             LessonPlanPriceView(
-                price: Price(amount: Decimal(lessonPlan.schedule.duration.rawValue), currency: .GBP),
+                price: Price(amount: Decimal(lessonPlan.schedule.duration.rawValue), currency: .GBP), // TODO: consume `bookingInfo.pricePerLesson` property instead.
                 showTermsOfService: false
             )
-        case .pending, .reviewing, .cancelled:
+        case .pending, .reviewing, .cancelled: // TODO: consume `bookingInfo.pricePerLesson` property instead (for cancelled).
             EmptyView()
         }
     }
 
     @ViewBuilder
-    private var moreButton: some View {
+    private var optionsButton: some View {
         if let actions = actions.nilIfEmpty {
-            MoreButton(actions)
+            OptionsButton(actions)
         }
     }
 
-    @ArrayBuilder<MoreButton.Button>
-    private var actions: [MoreButton.Button] {
+    @ArrayBuilder<ContextMenuButton>
+    private var actions: [ContextMenuButton] {
         if let action = showRescheduleAlertAction {
             .init(title: "Reschedule Plan", icon: Asset.Icon.Action.reschedule, action: action)
+        }
+        if let action = showPauseLessonPlanFormAction {
+            .init(title: "Pause Plan", icon: Asset.Icon.Action.pause, action: action)
+        }
+        if let action = showResumeLessonPlanFormAction {
+            .init(title: "Resume Plan", icon: Asset.Icon.Action.resume, action: action)
         }
         if let action = showCancelLessonPlanFormAction {
             .init(title: "Cancel Plan", icon: Asset.Icon.Action.cancel, action: action)

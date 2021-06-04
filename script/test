@@ -6,6 +6,6 @@ set -o pipefail && \
     xcodebuild \
         -project Rythmico.xcodeproj \
         -scheme All \
-        -destination 'platform=iOS Simulator,name=iPhone 8,OS=14.4' \
+        -destination 'platform=iOS Simulator,name=iPhone 8,OS=14.5' \
         -configuration Debug \
         clean test | xcbeautify

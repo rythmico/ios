@@ -92,6 +92,15 @@
         }
       },
       {
+        "package": "ISO8601PeriodDuration",
+        "repositoryURL": "https://github.com/treatwell/ISO8601PeriodDuration",
+        "state": {
+          "branch": null,
+          "revision": "a2cfd57cae5e0dd713e5ab1a92253f86bb013049",
+          "version": "3.1.0"
+        }
+      },
+      {
         "package": "leveldb",
         "repositoryURL": "https://github.com/firebase/leveldb.git",
         "state": {
@@ -159,8 +168,8 @@
         "repositoryURL": "https://github.com/stripe/stripe-ios",
         "state": {
           "branch": null,
-          "revision": "d52a5d00f941f2f26c52ea7c1848bdc6ceace64f",
-          "version": "21.5.1"
+          "revision": "8ca9931984949fbce44c342d5cecdada03cda18f",
+          "version": "21.6.0"
         }
       },
       {
@@ -209,12 +218,12 @@
         }
       },
       {
-        "package": "Tagged",
+        "package": "swift-tagged",
         "repositoryURL": "https://github.com/pointfreeco/swift-tagged",
         "state": {
           "branch": null,
-          "revision": "592e1eb4255c571ebffc29955011e352217501b4",
-          "version": "0.5.0"
+          "revision": "6c36cf66f58553d0481a2628e3e27177f698a897",
+          "version": "0.6.0"
         }
       },
       {
@@ -276,8 +285,8 @@
         "repositoryURL": "https://github.com/nalexn/ViewInspector",
         "state": {
           "branch": null,
-          "revision": "0da31abb9fcc3ab347fdd79f8f0937732323891c",
-          "version": "0.7.5"
+          "revision": "c238f8b55ab2bb98f462398a2d429f38a519eb70",
+          "version": "0.7.7"
         }
       },
       {

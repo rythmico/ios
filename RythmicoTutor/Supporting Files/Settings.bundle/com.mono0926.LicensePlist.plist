@@ -92,6 +92,14 @@
 		</dict>
 		<dict>
 			<key>File</key>
+			<string>com.mono0926.LicensePlist/ISO8601PeriodDuration</string>
+			<key>Title</key>
+			<string>ISO8601PeriodDuration (3.1.0)</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
 			<string>com.mono0926.LicensePlist/leveldb</string>
 			<key>Title</key>
 			<string>leveldb (1.22.2)</string>
@@ -150,7 +158,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/stripe-ios</string>
 			<key>Title</key>
-			<string>Stripe (21.5.1)</string>
+			<string>Stripe (21.6.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -198,7 +206,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/swift-tagged</string>
 			<key>Title</key>
-			<string>Tagged (0.5.0)</string>
+			<string>swift-tagged (0.6.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -254,7 +262,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/ViewInspector</string>
 			<key>Title</key>
-			<string>ViewInspector (0.7.5)</string>
+			<string>ViewInspector (0.7.7)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>

@@ -39,7 +39,7 @@ struct LessonPlanScheduleView: View {
 #if DEBUG
 struct LessonPlanScheduleView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlanScheduleView(lessonPlan: .jesseDrumsPlanStub)
+        LessonPlanScheduleView(lessonPlan: .pendingJesseDrumsPlanStub)
             .previewLayout(.sizeThatFits)
             .padding()
     }

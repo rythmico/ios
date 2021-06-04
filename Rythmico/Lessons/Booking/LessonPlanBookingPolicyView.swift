@@ -1,4 +1,5 @@
 import SwiftUI
+import FoundationSugar
 
 struct LessonPlanBookingPolicyView: View {
     var asset: ImageAsset
@@ -26,19 +27,19 @@ struct LessonPlanBookingPolicyView: View {
 }
 
 extension LessonPlanBookingPolicyView {
-    static var skipLessons: Self {
+    static func skipLessons(freeBeforePeriod: DateComponents) -> Self {
         Self(
             asset: Asset.Icon.Policy.skipLessons,
             title: "Skip Lessons",
-            description: "Skip lessons for free. Up until 3 hours before the scheduled start time."
+            description: "Skip lessons for free. Up until \(freeBeforePeriod.formattedString()) before the scheduled start time."
         )
     }
 
-    static var cancelAnytime: Self {
+    static func cancelAnytime(freeBeforePeriod: DateComponents) -> Self {
         Self(
             asset: Asset.Icon.Policy.cancelAnytime,
             title: "Cancel anytime",
-            description: "Easy cancellation. Free up until 3 hours before an upcoming lesson starts."
+            description: "Easy cancellation. Free up until \(freeBeforePeriod.formattedString()) before an upcoming lesson starts."
         )
     }
 
@@ -55,8 +56,8 @@ extension LessonPlanBookingPolicyView {
 struct LessonPlanBookingPolicyView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LessonPlanBookingPolicyView.skipLessons
-            LessonPlanBookingPolicyView.cancelAnytime
+            LessonPlanBookingPolicyView.skipLessons(freeBeforePeriod: .init(hour: 24))
+            LessonPlanBookingPolicyView.cancelAnytime(freeBeforePeriod: .init(hour: 24))
             LessonPlanBookingPolicyView.trustedTutors
         }
         .previewLayout(.sizeThatFits)

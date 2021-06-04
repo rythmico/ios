@@ -5,13 +5,20 @@ import FoundationSugar
 
 struct LessonDetailScreen: Screen {
     let lesson: Lesson
+    let lessonPlan: LessonPlan
     let presentationStyle: ScreenPresentationStyle = .push
+
+    init?(lesson: Lesson) {
+        guard let lessonPlan = Current.lessonPlanRepository.firstById(lesson.lessonPlanId) else { return nil }
+        self.lesson = lesson
+        self.lessonPlan = lessonPlan
+    }
 
     struct Builder: NavigationTree {
         var builder: some PathBuilder {
             Screen(
                 content: { (screen: LessonDetailScreen) in
-                    LessonDetailView(lesson: screen.lesson)
+                    LessonDetailView(lesson: screen.lesson, lessonPlan: screen.lessonPlan)
                 },
                 nesting: {
                     LessonSkippingScreen.Builder()
@@ -28,14 +35,12 @@ struct LessonDetailView: View, TestableView {
     @Environment(\.currentScreen) private var currentScreen
 
     var lesson: Lesson
-    var lessonPlan: LessonPlan? { Current.lessonPlanRepository.firstById(lesson.lessonPlanId) }
+    var lessonPlan: LessonPlan
 
-    var lessonReschedulingView: LessonReschedulingView? { lessonPlan?.status.isCancelled == false ? .reschedulingView(lesson: lesson, lessonPlan: lessonPlan) : nil }
+    var lessonReschedulingView: LessonReschedulingView? { !lessonPlan.status.isCancelled && !lessonPlan.status.isPaused ? .reschedulingView(lesson: lesson, lessonPlan: lessonPlan) : nil }
 
-    var showLessonPlanDetailAction: Action? {
-        lessonPlan.map(LessonPlanDetailScreen.init).map { screen in
-            { navigator.go(to: screen, on: currentScreen) }
-        }
+    var showLessonPlanDetailAction: Action {
+        { navigator.go(to: LessonPlanDetailScreen(lessonPlan: lessonPlan), on: currentScreen) }
     }
 
     @State
@@ -80,7 +85,7 @@ struct LessonDetailView: View, TestableView {
         .testable(self)
         .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(trailing: moreButton)
+        .navigationBarItems(trailing: optionsButton)
         .multiModal {
             $0.alert(isPresented: $isRescheduling) { .reschedulingView(lesson: lesson, lessonPlan: lessonPlan) }
         }
@@ -90,21 +95,19 @@ struct LessonDetailView: View, TestableView {
 
     @ViewBuilder
     private var tutorSection: some View {
-        if let lessonPlan = lessonPlan {
-            SectionHeaderView(title: "Tutor")
-            TutorCell(lessonPlan: lessonPlan, tutor: lesson.tutor)
-        }
+        SectionHeaderView(title: "Tutor")
+        TutorCell(lessonPlan: lessonPlan, tutor: lesson.tutor)
     }
 
     @ViewBuilder
-    private var moreButton: some View {
+    private var optionsButton: some View {
         if let actions = actions.nilIfEmpty {
-            MoreButton(actions)
+            OptionsButton(actions)
         }
     }
 
-    @ArrayBuilder<MoreButton.Button>
-    private var actions: [MoreButton.Button] {
+    @ArrayBuilder<ContextMenuButton>
+    private var actions: [ContextMenuButton] {
         if let action = showRescheduleAlertAction {
             .init(title: "Reschedule Lesson", icon: Asset.Icon.Action.reschedule, action: action)
         }
@@ -115,16 +118,14 @@ struct LessonDetailView: View, TestableView {
 
     @ViewBuilder
     private var floatingButton: some View {
-        if let action = showLessonPlanDetailAction {
-            FloatingActionMenu([.init(title: "View Lesson Plan", action: action)])
-        }
+        FloatingActionMenu([.init(title: "View Lesson Plan", action: showLessonPlanDetailAction)])
     }
 }
 
 #if DEBUG
 struct LessonDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonDetailView(lesson: .scheduledStub)
+        LessonDetailView(lesson: .scheduledStub, lessonPlan: .activeJackGuitarPlanStub)
 //            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }
