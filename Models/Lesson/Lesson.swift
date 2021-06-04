@@ -1,5 +1,7 @@
 import Foundation
+#if RYTHMICO
 import ISO8601PeriodDuration
+#endif
 import PhoneNumberKit
 import Tagged
 
@@ -14,6 +16,7 @@ struct Lesson: Decodable, Identifiable, Hashable {
         case cancelled = "CANCELLED"
     }
 
+    #if RYTHMICO
     struct Options: Decodable, Hashable {
         struct Skip: Decodable, Hashable {
             struct Policy: Decodable, Hashable {
@@ -25,6 +28,7 @@ struct Lesson: Decodable, Identifiable, Hashable {
         }
         var skip: Skip?
     }
+    #endif
 
     var id: ID
     #if RYTHMICO
