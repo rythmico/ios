@@ -3885,7 +3885,7 @@
 			repositoryURL = "https://github.com/treatwell/ISO8601PeriodDuration";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
+				minimumVersion = 3.1.0;
 			};
 		};
 		D5AC3F3025F6ADCE00321EDE /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
