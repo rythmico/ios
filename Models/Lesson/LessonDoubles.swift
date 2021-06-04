@@ -46,7 +46,7 @@ private extension Lesson {
             status: status,
             address: .stub,
             schedule: Schedule.stub.with(\.startDate, startDate),
-            freeSkipUntil: status == .scheduled ? startDate - (3, .hour, .current) : nil
+            options: status == .scheduled ? .scheduledStub : .skippedStub
         )
     }
     #elseif TUTOR
@@ -66,3 +66,25 @@ private extension Lesson {
     #endif
 }
 
+#if RYTHMICO
+extension Lesson.Options {
+    static let scheduledStub = Self(
+        skip: .stub
+    )
+
+    static let skippedStub = Self(
+        skip: nil
+    )
+}
+
+extension Lesson.Options.Skip {
+    static let stub = Self(policy: .stub)
+}
+
+extension Lesson.Options.Skip.Policy {
+    static let stub = Self(
+        freeBeforeDate: .stub - (24, .hour, .current),
+        freeBeforePeriod: .init(.init(hour: 24))
+    )
+}
+#endif

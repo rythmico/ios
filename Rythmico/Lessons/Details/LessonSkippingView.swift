@@ -4,20 +4,20 @@ import FoundationSugar
 
 struct LessonSkippingScreen: Screen {
     let lesson: Lesson
-    let freeSkipUntil: Date
+    let option: Lesson.Options.Skip
     let presentationStyle: ScreenPresentationStyle = .sheet(allowsPush: false)
 
     init?(lesson: Lesson) {
-        guard let freeSkipUntil = lesson.freeSkipUntil else { return nil }
+        guard let option = lesson.options.skip else { return nil }
         self.lesson = lesson
-        self.freeSkipUntil = freeSkipUntil
+        self.option = option
     }
 
     struct Builder: NavigationTree {
         var builder: some PathBuilder {
             Screen(
                 content: { (screen: LessonSkippingScreen) in
-                    LessonSkippingView(lesson: screen.lesson, freeSkipUntil: screen.freeSkipUntil)
+                    LessonSkippingView(lesson: screen.lesson, option: screen.option)
                 }
             )
         }
@@ -32,7 +32,7 @@ struct LessonSkippingView: View {
     private var coordinator = Current.lessonSkippingCoordinator()
 
     let lesson: Lesson
-    let freeSkipUntil: Date
+    let option: Lesson.Options.Skip
 
     @State private
     var showingConfirmationSheet = false
@@ -43,12 +43,9 @@ struct LessonSkippingView: View {
                 VStack(spacing: 0) {
                     TitleContentView(title: title) {
                         ScrollView {
-                            LessonSkippingContentView(
-                                isFree: isFree,
-                                freeSkipUntil: freeSkipUntil
-                            )
-                            .frame(maxWidth: .spacingMax)
-                            .padding(.horizontal, .spacingMedium)
+                            LessonSkippingContentView(isFree: isFree, policy: option.policy)
+                                .frame(maxWidth: .spacingMax)
+                                .padding(.horizontal, .spacingMedium)
                         }
                     }
 
@@ -79,7 +76,7 @@ struct LessonSkippingView: View {
     private var title: String { "Confirm Skip Lesson" }
 
     private var isFree: Bool {
-        Current.date() < freeSkipUntil
+        Current.date() < option.policy.freeBeforeDate
     }
 
     private func dismiss() {
@@ -113,7 +110,7 @@ struct LessonSkippingView: View {
 #if DEBUG
 struct LessonSkippingView_Preview: PreviewProvider {
     static var previews: some View {
-        LessonSkippingView(lesson: .scheduledStub, freeSkipUntil: Lesson.scheduledStub.freeSkipUntil!)
+        LessonSkippingView(lesson: .scheduledStub, option: .stub)
     }
 }
 #endif

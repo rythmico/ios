@@ -1,4 +1,5 @@
 import Foundation
+import ISO8601PeriodDuration
 import PhoneNumberKit
 import Tagged
 
@@ -11,6 +12,18 @@ struct Lesson: Decodable, Identifiable, Hashable {
         case skipped = "SKIPPED"
         case paused = "PAUSED"
         case cancelled = "CANCELLED"
+    }
+
+    struct Options: Decodable, Hashable {
+        struct Skip: Decodable, Hashable {
+            struct Policy: Decodable, Hashable {
+                var freeBeforeDate: Date
+                @ISO8601PeriodDuration
+                var freeBeforePeriod: DateComponents
+            }
+            var policy: Policy
+        }
+        var skip: Skip?
     }
 
     var id: ID
@@ -31,7 +44,7 @@ struct Lesson: Decodable, Identifiable, Hashable {
     var address: Address
     var schedule: Schedule
     #if RYTHMICO
-    var freeSkipUntil: Date?
+    var options: Options
     #elseif TUTOR
     @E164PhoneNumber
     var phoneNumber: PhoneNumber
