@@ -1576,9 +1576,9 @@
 				03E88EB724C4B0F40077A420 /* Repository.swift */,
 				D5E987C324EEE20300E2E1AF /* Router */,
 				D54CFD2025BB208100C012F3 /* TutorStatusEndpoints.swift */,
-				035AF30B2491A553004A01B2 /* VoiceOver */,
 				033D47CB247774CE0096C50F /* URLOpener */,
 				D5A8C4C025044A3B0006F5C5 /* UserDefaults */,
+				035AF30B2491A553004A01B2 /* VoiceOver */,
 			);
 			path = Services;
 			sourceTree = "<group>";
