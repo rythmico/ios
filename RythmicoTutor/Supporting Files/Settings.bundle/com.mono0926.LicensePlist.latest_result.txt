@@ -22,7 +22,7 @@ name: ISO8601PeriodDuration, nameSpecified: ISO8601PeriodDuration, owner: treatw
 
 name: leveldb, nameSpecified: leveldb, owner: firebase, version: 1.22.2
 
-name: mixpanel-swift, nameSpecified: Mixpanel, owner: mixpanel, version: 2.9.3
+name: mixpanel-swift, nameSpecified: Mixpanel, owner: mixpanel, version: 2.10.0
 
 name: MultiModal, nameSpecified: MultiModal, owner: davdroman, version: 2.0.1
 

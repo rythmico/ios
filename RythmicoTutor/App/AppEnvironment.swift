@@ -31,6 +31,7 @@ struct AppEnvironment {
 
     var analytics: AnalyticsCoordinator
     var analyticsService: AnalyticsServiceProtocol
+    var errorLogger: ErrorLoggerProtocol
 
     var apiActivityErrorHandler: APIActivityErrorHandlerProtocol
 
@@ -88,6 +89,7 @@ struct AppEnvironment {
         userCredentialProvider: UserCredentialProviderBase,
 
         analyticsService: AnalyticsServiceProtocol,
+        errorLogger: (UserCredentialProviderBase) -> ErrorLoggerProtocol,
 
         deviceTokenProvider: DeviceTokenProvider,
         deviceRegisterService: APIServiceBase<AddDeviceRequest>,
@@ -153,6 +155,7 @@ struct AppEnvironment {
             notificationAuthCoordinator: pushNotificationAuthorizationCoordinator
         )
         self.analyticsService = analyticsService
+        self.errorLogger = errorLogger(userCredentialProvider)
 
         let apiActivityErrorHandler = APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator, settings: settings)
         self.apiActivityErrorHandler = apiActivityErrorHandler
@@ -238,6 +241,7 @@ extension AppEnvironment {
         userCredentialProvider: UserCredentialProvider(emitter: UserCredentialEmitter()),
 
         analyticsService: AnalyticsService(),
+        errorLogger: { ErrorLogger(crashlyticsLogger: .crashlytics(), userCredentialProvider: $0) },
 
         deviceTokenProvider: Messaging.messaging(),
         deviceRegisterService: APIService(),

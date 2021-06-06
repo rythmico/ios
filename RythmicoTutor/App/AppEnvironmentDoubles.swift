@@ -49,6 +49,7 @@ extension AppEnvironment {
             userCredentialProvider: UserCredentialProviderDummy(),
 
             analyticsService: AnalyticsServiceDummy(),
+            errorLogger: { _ in ErrorLoggerDummy() },
 
             deviceTokenProvider: DeviceTokenProviderDummy(),
             deviceRegisterService: APIServiceDummy(),

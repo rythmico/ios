@@ -98,6 +98,13 @@ extension ActivityCoordinator where Input == Void {
 
 // TODO: abstract Error to be able to identify error types and show different alerts.
 class FailableActivityCoordinator<Input, Success>: ActivityCoordinator<Input, Result<Success, Error>> {
+    override func finish(_ output: Result<Success, Error>) {
+        super.finish(output)
+        if case .failure(let error) = output {
+            Current.errorLogger.log(error)
+        }
+    }
+
     override func idle() {
         if case .finished(let result) = state, case .success = result {
             state = .idle
