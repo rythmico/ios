@@ -114,8 +114,8 @@
         "repositoryURL": "https://github.com/mixpanel/mixpanel-swift",
         "state": {
           "branch": null,
-          "revision": "5db72735f28b072defa54506280ab7a8751a66a2",
-          "version": "2.9.3"
+          "revision": "3b80e79beaf888d7510db6388a1c8dab68054d83",
+          "version": "2.10.0"
         }
       },
       {
