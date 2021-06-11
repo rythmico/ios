@@ -29,8 +29,6 @@ struct AppEnvironment {
     var deauthenticationService: DeauthenticationServiceProtocol
     var userCredentialProvider: UserCredentialProviderBase
 
-    var analytics: AnalyticsCoordinator
-    var analyticsService: AnalyticsServiceProtocol
     var errorLogger: ErrorLoggerProtocol
 
     var apiActivityErrorHandler: APIActivityErrorHandlerProtocol
@@ -88,7 +86,6 @@ struct AppEnvironment {
         deauthenticationService: DeauthenticationServiceProtocol,
         userCredentialProvider: UserCredentialProviderBase,
 
-        analyticsService: AnalyticsServiceProtocol,
         errorLogger: (UserCredentialProviderBase) -> ErrorLoggerProtocol,
 
         deviceTokenProvider: DeviceTokenProvider,
@@ -148,13 +145,6 @@ struct AppEnvironment {
         self.deauthenticationService = deauthenticationService
         self.userCredentialProvider = userCredentialProvider
 
-        self.analytics = AnalyticsCoordinator(
-            service: analyticsService,
-            userCredentialProvider: userCredentialProvider,
-            accessibilitySettings: accessibilitySettings,
-            notificationAuthCoordinator: pushNotificationAuthorizationCoordinator
-        )
-        self.analyticsService = analyticsService
         self.errorLogger = errorLogger(userCredentialProvider)
 
         let apiActivityErrorHandler = APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator, settings: settings)
@@ -240,7 +230,6 @@ extension AppEnvironment {
         deauthenticationService: DeauthenticationService(),
         userCredentialProvider: UserCredentialProvider(emitter: UserCredentialEmitter()),
 
-        analyticsService: AnalyticsService(),
         errorLogger: { ErrorLogger(crashlyticsLogger: .crashlytics(), userCredentialProvider: $0) },
 
         deviceTokenProvider: Messaging.messaging(),

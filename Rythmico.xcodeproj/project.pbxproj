@@ -293,13 +293,11 @@
 		D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = D53668FC255EEDEF00A9D97D /* Stripe */; };
 		D54317F423FDB0DD00CB1493 /* RequestLessonPlanFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54317F323FDB0DD00CB1493 /* RequestLessonPlanFlow.swift */; };
 		D54340ED261E3C03006898B0 /* AnalyticsUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340EC261E3C03006898B0 /* AnalyticsUserProfile.swift */; };
-		D54340EE261E3C03006898B0 /* AnalyticsUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340EC261E3C03006898B0 /* AnalyticsUserProfile.swift */; };
 		D54340F3261E72F8006898B0 /* AccessibilitySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340F2261E72F8006898B0 /* AccessibilitySettings.swift */; };
 		D54340F4261E72F8006898B0 /* AccessibilitySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340F2261E72F8006898B0 /* AccessibilitySettings.swift */; };
 		D54340F7261E7314006898B0 /* AccessibilitySettingsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340F6261E7314006898B0 /* AccessibilitySettingsDoubles.swift */; };
 		D54340F8261E7314006898B0 /* AccessibilitySettingsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340F6261E7314006898B0 /* AccessibilitySettingsDoubles.swift */; };
 		D54340FA261E7AC6006898B0 /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340F9261E7AC6006898B0 /* AnalyticsEvent.swift */; };
-		D54340FB261E7AC6006898B0 /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340F9261E7AC6006898B0 /* AnalyticsEvent.swift */; };
 		D54340FD261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340FC261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift */; };
 		D54340FE261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340FC261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift */; };
 		D543B918263F5FA800D25CFD /* AddressLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543B917263F5FA800D25CFD /* AddressLabel.swift */; };
@@ -324,11 +322,8 @@
 		D54921D025BB46F300251FD2 /* TutorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921CF25BB46F300251FD2 /* TutorStatusView.swift */; };
 		D54CF08525F91255007D5050 /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B2522252CF76300BC3932 /* AppSecrets.swift */; };
 		D54CF08725FA8624007D5050 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CF08625FA8624007D5050 /* AnalyticsService.swift */; };
-		D54CF08825FA8624007D5050 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CF08625FA8624007D5050 /* AnalyticsService.swift */; };
 		D54CF08B25FA8696007D5050 /* AnalyticsServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CF08A25FA8696007D5050 /* AnalyticsServiceDoubles.swift */; };
-		D54CF08C25FA8696007D5050 /* AnalyticsServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CF08A25FA8696007D5050 /* AnalyticsServiceDoubles.swift */; };
 		D54CF08E25FA8724007D5050 /* AnalyticsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CF08D25FA8724007D5050 /* AnalyticsCoordinator.swift */; };
-		D54CF08F25FA8724007D5050 /* AnalyticsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CF08D25FA8724007D5050 /* AnalyticsCoordinator.swift */; };
 		D54CFD1C25BB173000C012F3 /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = D54CFD1B25BB173000C012F3 /* WebView */; };
 		D54CFD2125BB208100C012F3 /* TutorStatusEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CFD2025BB208100C012F3 /* TutorStatusEndpoints.swift */; };
 		D54CFD2C25BB20A600C012F3 /* TutorStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CFD2B25BB20A600C012F3 /* TutorStatus.swift */; };
@@ -3197,8 +3192,6 @@
 				D5E58F0E256AF1E500EB52ED /* BookingEndpoints.swift in Sources */,
 				035B1D3B249E576900AABFEA /* UserCredentialProviderDoubles.swift in Sources */,
 				D5FAE6742559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift in Sources */,
-				D54340EE261E3C03006898B0 /* AnalyticsUserProfile.swift in Sources */,
-				D54CF08825FA8624007D5050 /* AnalyticsService.swift in Sources */,
 				D5F4AE7E2559D3F0001085D5 /* PhoneNumberDoubles.swift in Sources */,
 				035B1D34249E576900AABFEA /* AuthenticationService.swift in Sources */,
 				D5814A01251D7FFC0009BBB3 /* App+SplitViewCustomization.swift in Sources */,
@@ -3214,7 +3207,6 @@
 				D5F4D3E724F096A2000E8580 /* BookingApplicationDetailView.swift in Sources */,
 				D58DE1BC25BDF5C30013AEE8 /* RootViewFlow.swift in Sources */,
 				D54340F8261E7314006898B0 /* AccessibilitySettingsDoubles.swift in Sources */,
-				D54CF08F25FA8724007D5050 /* AnalyticsCoordinator.swift in Sources */,
 				035B1D42249E577700AABFEA /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
 				035B1D62249E63D800AABFEA /* DeviceEndpoints.swift in Sources */,
 				035B1D63249E63EC00AABFEA /* DeviceRegisterCoordinator.swift in Sources */,
@@ -3274,8 +3266,6 @@
 				035B1D30249E571B00AABFEA /* VoiceOverService.swift in Sources */,
 				D5AC9E27254D8AD7003A8197 /* AppDoubles.swift in Sources */,
 				D5F4D3F424F33C9E000E8580 /* Address.swift in Sources */,
-				D54340FB261E7AC6006898B0 /* AnalyticsEvent.swift in Sources */,
-				D54CF08C25FA8696007D5050 /* AnalyticsServiceDoubles.swift in Sources */,
 				D5E58F39256B034A00EB52ED /* BookingDoubles.swift in Sources */,
 				D5814A0A251D957D0009BBB3 /* MainViewContent+Tutor.swift in Sources */,
 				032B6FCC24B7877B00299A09 /* BookingRequest.swift in Sources */,
