@@ -48,7 +48,6 @@ extension AppEnvironment {
             deauthenticationService: DeauthenticationServiceDummy(),
             userCredentialProvider: UserCredentialProviderDummy(),
 
-            analyticsService: AnalyticsServiceDummy(),
             errorLogger: { _ in ErrorLoggerDummy() },
 
             deviceTokenProvider: DeviceTokenProviderDummy(),
