@@ -1,5 +1,7 @@
 name: abseil-cpp-SwiftPM, nameSpecified: abseil, owner: firebase, version: 0.20200225.3
 
+name: Amplitude-iOS, nameSpecified: Amplitude, owner: amplitude, version: 8.3.0
+
 name: APIKit, nameSpecified: APIKit, owner: davdroman, version: 
 
 name: boringssl-SwiftPM, nameSpecified: BoringSSL-GRPC, owner: firebase, version: 0.7.1
@@ -21,8 +23,6 @@ name: gtm-session-fetcher, nameSpecified: GTMSessionFetcher, owner: google, vers
 name: ISO8601PeriodDuration, nameSpecified: ISO8601PeriodDuration, owner: treatwell, version: 3.1.0
 
 name: leveldb, nameSpecified: leveldb, owner: firebase, version: 1.22.2
-
-name: mixpanel-swift, nameSpecified: Mixpanel, owner: mixpanel, version: 2.10.2
 
 name: MultiModal, nameSpecified: MultiModal, owner: davdroman, version: 2.0.1
 

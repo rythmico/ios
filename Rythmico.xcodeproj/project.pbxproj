@@ -459,8 +459,6 @@
 		D5AAF7DB23FB347C00E410F2 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7DA23FB347C00E410F2 /* CollectionView.swift */; };
 		D5AAF7DD23FB431E00E410F2 /* InstrumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7DC23FB431E00E410F2 /* InstrumentView.swift */; };
 		D5AAF7DF23FB444500E410F2 /* RoundedShadowContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */; };
-		D5AC3F3225F6ADCE00321EDE /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = D5AC3F3125F6ADCE00321EDE /* Mixpanel */; };
-		D5AC3F3725F6ADE800321EDE /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = D5AC3F3625F6ADE800321EDE /* Mixpanel */; };
 		D5AC9E26254D8AD7003A8197 /* AppDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E25254D8AD7003A8197 /* AppDoubles.swift */; };
 		D5AC9E27254D8AD7003A8197 /* AppDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E25254D8AD7003A8197 /* AppDoubles.swift */; };
 		D5AC9E2C254D8AE2003A8197 /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E2B254D8AE2003A8197 /* AppLauncher.swift */; };
@@ -515,6 +513,7 @@
 		D5CC5FF225029525007DFE84 /* ImageReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC5FF025029525007DFE84 /* ImageReference.swift */; };
 		D5CCC33225A4C66A00E25B62 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCC33125A4C66A00E25B62 /* ProfileView.swift */; };
 		D5CCC5532559D7F400FE8522 /* PhoneNumberOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCC5522559D7F400FE8522 /* PhoneNumberOpener.swift */; };
+		D5CFB3732675242D006DBCE0 /* Amplitude in Frameworks */ = {isa = PBXBuildFile; productRef = D5CFB3722675242D006DBCE0 /* Amplitude */; };
 		D5D32C5A25B9FB0E00F3ECD8 /* MultiModal in Frameworks */ = {isa = PBXBuildFile; productRef = D5D32C5925B9FB0E00F3ECD8 /* MultiModal */; };
 		D5D32C6525BA02E600F3ECD8 /* MultiModal in Frameworks */ = {isa = PBXBuildFile; productRef = D5D32C6425BA02E600F3ECD8 /* MultiModal */; };
 		D5D78DD7252502CE007041BE /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = D5D78DD6252502CE007041BE /* PhoneNumberKit */; };
@@ -1135,13 +1134,13 @@
 				D585217624CF81CE005D783A /* Introspect in Frameworks */,
 				D5FC2D44254A7DE3005056D5 /* FirebaseAuth in Frameworks */,
 				D5FC2D42254A7DE3005056D5 /* FirebaseMessaging in Frameworks */,
-				D5AC3F3225F6ADCE00321EDE /* Mixpanel in Frameworks */,
 				D5D32C5A25B9FB0E00F3ECD8 /* MultiModal in Frameworks */,
 				D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */,
 				D5ED519626226DB700D1B53A /* TextBuilder in Frameworks */,
 				D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */,
 				03B19837247053F5005529EB /* APIKit in Frameworks */,
 				D5F11566253735F20027D164 /* NonEmpty in Frameworks */,
+				D5CFB3732675242D006DBCE0 /* Amplitude in Frameworks */,
 				D59E4E6125B20ADA00E8F94C /* YouTubeiOSPlayerHelper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1160,7 +1159,6 @@
 				D510826125E43129003C9467 /* FoundationSugar in Frameworks */,
 				035B1CD5249CF7E200AABFEA /* Then in Frameworks */,
 				D5B880932547AFF600754197 /* Tagged in Frameworks */,
-				D5AC3F3725F6ADE800321EDE /* Mixpanel in Frameworks */,
 				D585217824CF81E8005D783A /* Introspect in Frameworks */,
 				D575C837254F10F0001664AB /* FirebaseRemoteConfig in Frameworks */,
 				D5D32C6525BA02E600F3ECD8 /* MultiModal in Frameworks */,
@@ -2397,10 +2395,10 @@
 				D59E4E6025B20ADA00E8F94C /* YouTubeiOSPlayerHelper */,
 				D5D32C5925B9FB0E00F3ECD8 /* MultiModal */,
 				D510825E25E43123003C9467 /* FoundationSugar */,
-				D5AC3F3125F6ADCE00321EDE /* Mixpanel */,
 				D5ED519526226DB700D1B53A /* TextBuilder */,
 				D56C6A97264AC80C00A2599E /* ComposableNavigator */,
 				D5A6154726628CB200457BBC /* ISO8601PeriodDuration */,
+				D5CFB3722675242D006DBCE0 /* Amplitude */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -2440,7 +2438,6 @@
 				D5D32C6425BA02E600F3ECD8 /* MultiModal */,
 				D54CFD1B25BB173000C012F3 /* WebView */,
 				D510826025E43129003C9467 /* FoundationSugar */,
-				D5AC3F3625F6ADE800321EDE /* Mixpanel */,
 			);
 			productName = RythmicoTutor;
 			productReference = 035B1CBC249CF2AA00AABFEA /* Tutor.app */;
@@ -2541,10 +2538,10 @@
 				D59E4E5F25B20ADA00E8F94C /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
 				D5D32C5825B9FB0E00F3ECD8 /* XCRemoteSwiftPackageReference "MultiModal" */,
 				D54CFD1A25BB173000C012F3 /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */,
-				D5AC3F3025F6ADCE00321EDE /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
 				D5ED519426226DB700D1B53A /* XCRemoteSwiftPackageReference "TextBuilder" */,
 				D56C6A96264AC80B00A2599E /* XCRemoteSwiftPackageReference "swift-composable-navigator" */,
 				D5A6154626628CB200457BBC /* XCRemoteSwiftPackageReference "ISO8601PeriodDuration" */,
+				D5CFB3712675242C006DBCE0 /* XCRemoteSwiftPackageReference "Amplitude-iOS" */,
 			);
 			productRefGroup = 03341B3C23ABB1E7009AE8A8 /* Products */;
 			projectDirPath = "";
@@ -3894,20 +3891,20 @@
 				minimumVersion = 3.1.0;
 			};
 		};
-		D5AC3F3025F6ADCE00321EDE /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mixpanel/mixpanel-swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.9.0;
-			};
-		};
 		D5BDD509253CCC4400255190 /* XCRemoteSwiftPackageReference "swift-tagged" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-tagged";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.5.0;
+			};
+		};
+		D5CFB3712675242C006DBCE0 /* XCRemoteSwiftPackageReference "Amplitude-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/amplitude/Amplitude-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.3.0;
 			};
 		};
 		D5D32C5825B9FB0E00F3ECD8 /* XCRemoteSwiftPackageReference "MultiModal" */ = {
@@ -4059,16 +4056,6 @@
 			package = D5A6154626628CB200457BBC /* XCRemoteSwiftPackageReference "ISO8601PeriodDuration" */;
 			productName = ISO8601PeriodDuration;
 		};
-		D5AC3F3125F6ADCE00321EDE /* Mixpanel */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5AC3F3025F6ADCE00321EDE /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
-			productName = Mixpanel;
-		};
-		D5AC3F3625F6ADE800321EDE /* Mixpanel */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5AC3F3025F6ADCE00321EDE /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
-			productName = Mixpanel;
-		};
 		D5AC9E3A254D9533003A8197 /* FirebaseRemoteConfig */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -4083,6 +4070,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5BDD509253CCC4400255190 /* XCRemoteSwiftPackageReference "swift-tagged" */;
 			productName = Tagged;
+		};
+		D5CFB3722675242D006DBCE0 /* Amplitude */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5CFB3712675242C006DBCE0 /* XCRemoteSwiftPackageReference "Amplitude-iOS" */;
+			productName = Amplitude;
 		};
 		D5D32C5925B9FB0E00F3ECD8 /* MultiModal */ = {
 			isa = XCSwiftPackageProductDependency;

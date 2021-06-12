@@ -1,6 +1,5 @@
 import Foundation
 import FoundationSugar
-import typealias Mixpanel.Properties
 
 struct AnalyticsEvent {
     var name: Name
@@ -16,7 +15,7 @@ extension AnalyticsEvent {
             self.rawValue = value
         }
     }
-    typealias Props = Mixpanel.Properties
+    typealias Props = [AnyHashable: Any]
     typealias PropsBuilder = DictionaryBuilder<Props.Key, Props.Value>
 }
 

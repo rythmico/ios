@@ -1,20 +1,21 @@
 import UIKit
 import Firebase
-import Mixpanel
+#if RYTHMICO
+import Amplitude
+#endif
 import Then
-
-extension MixpanelInstance: Then {}
 
 extension AppEnvironment {
     /// Simple wrapper to initialize AppEnvironment.live
     /// while ensuring all SDKs are configured as early as possible.
     static func initLive(_ build: () -> AppEnvironment) -> AppEnvironment {
-        FirebaseApp.configure()
-
-        Mixpanel.initialize(token: AppSecrets.mixpanelProjectToken).do {
-            $0.serverURL = "https://api-eu.mixpanel.com"
+        #if RYTHMICO
+        Amplitude.instance().do {
+            $0.trackingSessionEvents = true
+            $0.initializeApiKey(AppSecrets.amplitudeProjectToken)
         }
-
+        #endif
+        FirebaseApp.configure()
         return build()
     }
 

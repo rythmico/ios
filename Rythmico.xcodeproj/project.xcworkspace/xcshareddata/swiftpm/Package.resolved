@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "Amplitude",
+        "repositoryURL": "https://github.com/amplitude/Amplitude-iOS",
+        "state": {
+          "branch": null,
+          "revision": "68eea8100a84d26c3d81997851965ec3efbe61fc",
+          "version": "8.3.0"
+        }
+      },
+      {
         "package": "APIKit",
         "repositoryURL": "https://github.com/davdroman/APIKit",
         "state": {
@@ -107,15 +116,6 @@
           "branch": null,
           "revision": "0706abcc6b0bd9cedfbb015ba840e4a780b5159b",
           "version": "1.22.2"
-        }
-      },
-      {
-        "package": "Mixpanel",
-        "repositoryURL": "https://github.com/mixpanel/mixpanel-swift",
-        "state": {
-          "branch": null,
-          "revision": "9b0043b0ec467257d94b185aa177f2b7836b846d",
-          "version": "2.10.2"
         }
       },
       {

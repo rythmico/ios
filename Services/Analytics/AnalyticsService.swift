@@ -1,27 +1,26 @@
 import Foundation
 import FoundationSugar
-import Mixpanel
+import Amplitude
 
 protocol AnalyticsServiceProtocol {
     func identify(_ profile: AnalyticsUserProfile)
-    func time(_ eventName: AnalyticsEvent.Name)
     func track(_ event: AnalyticsEvent)
     func reset()
 }
 
-func AnalyticsService() -> AnalyticsServiceProtocol { Mixpanel.mainInstance() }
+func AnalyticsService() -> AnalyticsServiceProtocol { Amplitude.instance() }
 
-extension MixpanelInstance: AnalyticsServiceProtocol {
+extension Amplitude: AnalyticsServiceProtocol {
     func identify(_ profile: AnalyticsUserProfile) {
-        identify(distinctId: profile.id, usePeople: true)
-        people.set(properties: profile.rawAnalyticsValue)
-    }
-
-    func time(_ eventName: AnalyticsEvent.Name) {
-        time(event: eventName.rawValue)
+        setUserId(profile.id)
+        setUserProperties(profile.rawAnalyticsValue)
     }
 
     func track(_ event: AnalyticsEvent) {
-        track(event: event.name.rawValue, properties: event.props)
+        logEvent(event.name.rawValue, withEventProperties: event.props)
+    }
+
+    func reset() {
+        setUserId(nil)
     }
 }
