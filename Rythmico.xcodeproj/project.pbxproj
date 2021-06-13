@@ -591,7 +591,6 @@
 		D5F4AE822559D3F6001085D5 /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D974F325263FAF000AD074 /* PhoneNumber.swift */; };
 		D5F4AE862559D3FD001085D5 /* PhoneNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D974F825263FB9000AD074 /* PhoneNumberTests.swift */; };
 		D5F4AE8B2559D46A001085D5 /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = D5F4AE8A2559D46A001085D5 /* PhoneNumberKit */; };
-		D5F4D3DE24F031FA000E8580 /* SwiftUIMapView in Frameworks */ = {isa = PBXBuildFile; productRef = D5F4D3DD24F031FA000E8580 /* SwiftUIMapView */; };
 		D5F4D3E024F04294000E8580 /* BookingApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3DF24F04294000E8580 /* BookingApplication.swift */; };
 		D5F4D3E324F04479000E8580 /* BookingApplicationEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E224F04479000E8580 /* BookingApplicationEndpoints.swift */; };
 		D5F4D3E524F0475F000E8580 /* BookingApplicationDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E424F0475F000E8580 /* BookingApplicationDoubles.swift */; };
@@ -1158,7 +1157,6 @@
 			files = (
 				D54CFD1C25BB173000C012F3 /* WebView in Frameworks */,
 				D5FC2D53254A7E21005056D5 /* FirebaseMessaging in Frameworks */,
-				D5F4D3DE24F031FA000E8580 /* SwiftUIMapView in Frameworks */,
 				D5FC2D4F254A7E21005056D5 /* FirebaseAuth in Frameworks */,
 				035B1CD7249CF7EB00AABFEA /* Valet in Frameworks */,
 				035B1CD2249CF5D000AABFEA /* SFSafeSymbols in Frameworks */,
@@ -2438,7 +2436,6 @@
 				035B1CD6249CF7EB00AABFEA /* Valet */,
 				035B1D68249E645E00AABFEA /* APIKit */,
 				D585217724CF81E8005D783A /* Introspect */,
-				D5F4D3DD24F031FA000E8580 /* SwiftUIMapView */,
 				D5B880922547AFF600754197 /* Tagged */,
 				D5FC2D4E254A7E21005056D5 /* FirebaseAuth */,
 				D5FC2D50254A7E21005056D5 /* FirebaseCrashlytics */,
@@ -2541,7 +2538,6 @@
 				03B19835247053F5005529EB /* XCRemoteSwiftPackageReference "APIKit" */,
 				D56544D124CE4BA100281875 /* XCRemoteSwiftPackageReference "ViewInspector" */,
 				D585217424CF81CE005D783A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
-				D5F4D3DC24F031FA000E8580 /* XCRemoteSwiftPackageReference "swiftui-mapview" */,
 				D5D78DD5252502CE007041BE /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
 				D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */,
 				D5F11564253735F20027D164 /* XCRemoteSwiftPackageReference "swift-nonempty" */,
@@ -3964,14 +3960,6 @@
 				minimumVersion = 0.3.1;
 			};
 		};
-		D5F4D3DC24F031FA000E8580 /* XCRemoteSwiftPackageReference "swiftui-mapview" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sgade/swiftui-mapview";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.0;
-			};
-		};
 		D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -4135,11 +4123,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5D78DD5252502CE007041BE /* XCRemoteSwiftPackageReference "PhoneNumberKit" */;
 			productName = PhoneNumberKit;
-		};
-		D5F4D3DD24F031FA000E8580 /* SwiftUIMapView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5F4D3DC24F031FA000E8580 /* XCRemoteSwiftPackageReference "swiftui-mapview" */;
-			productName = SwiftUIMapView;
 		};
 		D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -236,15 +236,6 @@
         }
       },
       {
-        "package": "SwiftUIMapView",
-        "repositoryURL": "https://github.com/sgade/swiftui-mapview",
-        "state": {
-          "branch": null,
-          "revision": "6620434bae01602d76832d4180b0124db2343e3c",
-          "version": "1.2.1"
-        }
-      },
-      {
         "package": "WebView",
         "repositoryURL": "https://github.com/kylehickinson/SwiftUI-WebView",
         "state": {
