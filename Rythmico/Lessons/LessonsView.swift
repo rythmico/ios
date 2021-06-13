@@ -97,6 +97,7 @@ struct LessonsView: View, TestableView {
 
     func onLessonPlansFetched(_ lessonPlans: [LessonPlan]) {
         repository.setItems(lessonPlans)
+        Current.analytics.updateLessonPlanStats(lessonPlans)
         guard !hasFetchedLessonPlansAtLeastOnce else { return }
         hasFetchedLessonPlansAtLeastOnce = true
         if lessonPlans.isEmpty {
