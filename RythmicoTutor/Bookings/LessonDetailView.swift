@@ -1,5 +1,4 @@
 import SwiftUI
-import SwiftUIMapView
 
 struct LessonDetailView: View {
     var lesson: Lesson

@@ -1,5 +1,4 @@
 import SwiftUI
-import SwiftUIMapView
 import MapKit
 
 struct StaticMapView: View {
@@ -9,30 +8,28 @@ struct StaticMapView: View {
     var showsCoordinate: Bool
 
     var body: some View {
-        MapView(
-            region: .constant(
+        Map(
+            coordinateRegion: .constant(
                 MKCoordinateRegion(
                     center: coordinate,
                     latitudinalMeters: 150,
                     longitudinalMeters: 150
                 )
             ),
-            isZoomEnabled: false,
-            isScrollEnabled: false,
+            interactionModes: [],
             showsUserLocation: false,
-            annotations: showsCoordinate ? [MapAnnotation(coordinate: coordinate)] : []
+            userTrackingMode: nil,
+            annotationItems: showsCoordinate ? [IdentifiedCoordinate(coordinate)] : [],
+            annotationContent: { MapMarker(coordinate: $0.coordinate, tint: nil) }
         )
     }
 }
 
-private final class MapAnnotation: NSObject, MapViewAnnotation {
-    let clusteringIdentifier: String? = nil
-    let glyphImage: UIImage? = nil
-    let tintColor: UIColor? = nil
+private struct IdentifiedCoordinate: Identifiable {
+    let id = UUID()
+    let coordinate: CLLocationCoordinate2D
 
-    var coordinate: CLLocationCoordinate2D
-
-    init(coordinate: CLLocationCoordinate2D) {
+    init(_ coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
     }
 }

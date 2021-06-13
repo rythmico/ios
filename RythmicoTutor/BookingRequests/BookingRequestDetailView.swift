@@ -1,5 +1,4 @@
 import SwiftUI
-import SwiftUIMapView
 
 struct BookingRequestDetailView: View {
     @Environment(\.presentationMode)
