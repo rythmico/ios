@@ -34,7 +34,6 @@ struct AppEnvironment {
     var userCredentialProvider: UserCredentialProviderBase
 
     var analytics: AnalyticsCoordinator
-    var analyticsService: AnalyticsServiceProtocol
     var errorLogger: ErrorLoggerProtocol
 
     var apiActivityErrorHandler: APIActivityErrorHandlerProtocol
@@ -170,7 +169,6 @@ struct AppEnvironment {
             accessibilitySettings: accessibilitySettings,
             notificationAuthCoordinator: pushNotificationAuthorizationCoordinator
         )
-        self.analyticsService = analyticsService
         self.errorLogger = errorLogger(userCredentialProvider)
 
         let apiActivityErrorHandler = APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator)
