@@ -124,6 +124,22 @@ struct LessonsView: View, TestableView {
     }
 }
 
+extension AnalyticsCoordinator {
+    // TODO: optimize
+    func updateLessonPlanStats(_ lessonPlans: [LessonPlan]) {
+        updateUserProperties(.init {
+            ["Total Plans Pending": lessonPlans.count(where: \.status.isPending)]
+            ["Total Plans Reviewing": lessonPlans.count(where: \.status.isReviewing)]
+            ["Total Plans Active": lessonPlans.count(where: \.status.isActive)]
+            ["Total Plans Paused": lessonPlans.count(where: \.status.isPaused)]
+            ["Total Plans Cancelled": lessonPlans.count(where: \.status.isCancelled)]
+
+            ["Total Lessons Skipped": lessonPlans.allLessons().count(where: \.status.isSkipped)]
+            ["Total Lessons Completed": lessonPlans.allLessons().count(where: \.status.isCompleted)]
+        })
+    }
+}
+
 #if DEBUG
 struct LessonsView_Previews: PreviewProvider {
     static var previews: some View {
