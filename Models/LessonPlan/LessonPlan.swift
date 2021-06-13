@@ -176,3 +176,10 @@ extension LessonPlan.Status {
         return applications
     }
 }
+
+extension RangeReplaceableCollection where Element == LessonPlan {
+    func allLessons() -> [Lesson] {
+        self.compactMap(\.lessons)
+            .flatten()
+    }
+}
