@@ -7,7 +7,7 @@ struct AnalyticsEvent {
 }
 
 extension AnalyticsEvent {
-    struct Name: ExpressibleByStringLiteral {
+    struct Name: ExpressibleByStringInterpolation {
         typealias `Protocol` = AnalyticsEventNameProtocol
 
         let rawValue: String
