@@ -17,8 +17,8 @@ extension RequestLessonPlanFlow {
         case instrumentSelection
         case studentDetails(Instrument)
         case addressDetails(Instrument, Student)
-        case scheduling(Instrument)
-        case privateNote
+        case scheduling(Instrument, Student, Address)
+        case privateNote(Instrument, Student, Address, Schedule)
         case reviewRequest(Instrument, Student, Address, Schedule, String)
 
         var index: Int {
@@ -57,11 +57,11 @@ extension RequestLessonPlanFlow {
         }
 
         guard let schedule = schedule else {
-            return .scheduling(instrument)
+            return .scheduling(instrument, student, address)
         }
 
         guard let privateNote = privateNote else {
-            return .privateNote
+            return .privateNote(instrument, student, address, schedule)
         }
 
         return .reviewRequest(instrument, student, address, schedule, privateNote)

@@ -90,7 +90,7 @@ struct RequestLessonPlanFlowView: View, TestableView {
                 coordinator: addressSearchCoordinator,
                 setter: $flow.address.setter
             )
-        case .scheduling(let instrument):
+        case .scheduling(let instrument, _, _):
             SchedulingView(
                 state: schedulingViewState,
                 instrument: instrument,
