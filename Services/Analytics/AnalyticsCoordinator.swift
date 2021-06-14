@@ -50,4 +50,12 @@ final class AnalyticsCoordinator {
             service.reset()
         }
     }
+
+    func updateUserProperties(_ props: AnalyticsEvent.Props) {
+        service.update(props)
+    }
+
+    func track(_ event: AnalyticsEvent) {
+        service.track(event)
+    }
 }

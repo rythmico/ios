@@ -58,11 +58,12 @@ struct RequestLessonPlanView: View, TestableView {
         .testable(self)
         .backgroundColor(.rythmicoBackgroundSecondary)
         .sheetInteractiveDismissal(swipeDownToDismissEnabled)
-        .onSuccess(coordinator, perform: Current.lessonPlanRepository.insertItem)
+        .onSuccess(coordinator, perform: onLessonPlanRequested)
     }
 
-    private func stateTransition(scale: CGFloat) -> AnyTransition {
-        (.scale(scale: scale) + .opacity).animation(.rythmicoSpring(duration: .durationShort))
+    private func onLessonPlanRequested(_ lessonPlan: LessonPlan) {
+        Current.lessonPlanRepository.insertItem(lessonPlan)
+        Current.analytics.track(.lessonPlanRequested(lessonPlan, through: flow))
     }
 }
 

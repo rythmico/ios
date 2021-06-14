@@ -13,10 +13,10 @@ extension AnalyticsUserProfile {
     @AnalyticsEvent.PropsBuilder
     var rawAnalyticsValue: AnalyticsEvent.Props {
         if let name = name?.nilIfEmpty {
-            ["$name": name]
+            ["Name": name]
         }
         if let email = email?.nilIfEmpty {
-            ["$email": email]
+            ["Email": email]
         }
         [
             "iOS Voice Over Enabled": accessibilitySettings.isVoiceOverOn(),

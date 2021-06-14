@@ -156,6 +156,11 @@ extension LessonPlan.Status {
         return true
     }
 
+    var isActive: Bool {
+        guard case .active = self else { return false }
+        return true
+    }
+
     var isPaused: Bool {
         guard case .paused = self else { return false }
         return true
@@ -169,5 +174,12 @@ extension LessonPlan.Status {
     var reviewingValue: [LessonPlan.Application]? {
         guard case .reviewing(let applications) = self else { return nil }
         return applications
+    }
+}
+
+extension RangeReplaceableCollection where Element == LessonPlan {
+    func allLessons() -> [Lesson] {
+        self.compactMap(\.lessons)
+            .flatten()
     }
 }

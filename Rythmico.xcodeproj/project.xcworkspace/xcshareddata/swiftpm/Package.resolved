@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "Amplitude",
+        "repositoryURL": "https://github.com/amplitude/Amplitude-iOS",
+        "state": {
+          "branch": null,
+          "revision": "68eea8100a84d26c3d81997851965ec3efbe61fc",
+          "version": "8.3.0"
+        }
+      },
+      {
         "package": "APIKit",
         "repositoryURL": "https://github.com/davdroman/APIKit",
         "state": {
@@ -42,8 +51,8 @@
         "repositoryURL": "https://github.com/firebase/firebase-ios-sdk",
         "state": {
           "branch": null,
-          "revision": "22d785016bf9b9a5d425597bf4a0ddd4cb158e5f",
-          "version": "8.1.0"
+          "revision": "91cf599d0b6bcd4b2e92eecc6f8e57754ab16480",
+          "version": "8.1.1"
         }
       },
       {
@@ -51,8 +60,8 @@
         "repositoryURL": "https://github.com/google/GoogleAppMeasurement.git",
         "state": {
           "branch": null,
-          "revision": "48fcea0c0a74fc89131696aa995043eaa971ccb1",
-          "version": "8.0.0"
+          "revision": "8f2945122bef809c963a619a598c3ac390c2163a",
+          "version": "8.1.1"
         }
       },
       {
@@ -107,15 +116,6 @@
           "branch": null,
           "revision": "0706abcc6b0bd9cedfbb015ba840e4a780b5159b",
           "version": "1.22.2"
-        }
-      },
-      {
-        "package": "Mixpanel",
-        "repositoryURL": "https://github.com/mixpanel/mixpanel-swift",
-        "state": {
-          "branch": null,
-          "revision": "3b80e79beaf888d7510db6388a1c8dab68054d83",
-          "version": "2.10.0"
         }
       },
       {

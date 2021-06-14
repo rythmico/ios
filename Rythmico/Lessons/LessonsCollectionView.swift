@@ -37,11 +37,6 @@ private extension RangeReplaceableCollection where Element == LessonPlan {
         self.filter(\.status.isFinal.not)
             .sorted(by: \.schedule.startDate, <)
     }
-
-    func allLessons() -> [Lesson] {
-        self.compactMap(\.lessons)
-            .flatten()
-    }
 }
 
 private extension LessonPlan.Status {

@@ -1,4 +1,5 @@
 import SwiftUI
+import Combine
 import FoundationSugar
 
 struct RequestLessonPlanFlowView: View, TestableView {
@@ -66,6 +67,8 @@ struct RequestLessonPlanFlowView: View, TestableView {
             FlowView(flow: flow, transition: .slide + .opacity, content: content).onEdgeSwipe(.left, perform: back)
         }
         .testable(self)
+        .onAppear { trackScreenView(flow.step) }
+        .onReceive(onFlowStepChangePublisher(), perform: trackScreenView)
     }
 
     @ViewBuilder
@@ -90,7 +93,7 @@ struct RequestLessonPlanFlowView: View, TestableView {
                 coordinator: addressSearchCoordinator,
                 setter: $flow.address.setter
             )
-        case .scheduling(let instrument):
+        case .scheduling(let instrument, _, _):
             SchedulingView(
                 state: schedulingViewState,
                 instrument: instrument,
@@ -112,5 +115,17 @@ struct RequestLessonPlanFlowView: View, TestableView {
                 privateNote: privateNote
             )
         }
+    }
+
+    func onFlowStepChangePublisher() -> AnyPublisher<RequestLessonPlanFlow.Step, Never> {
+        flow.objectWillChange
+            .delay(for: 0, scheduler: DispatchQueue.main)
+            .map { flow.step }
+            .removeDuplicates()
+            .eraseToAnyPublisher()
+    }
+
+    func trackScreenView(_ step: RequestLessonPlanFlow.Step) {
+        Current.analytics.track(.screenView(step, in: flow))
     }
 }
