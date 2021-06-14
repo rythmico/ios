@@ -59,6 +59,7 @@ struct RequestLessonPlanView: View, TestableView {
         .backgroundColor(.rythmicoBackgroundSecondary)
         .sheetInteractiveDismissal(swipeDownToDismissEnabled)
         .onSuccess(coordinator, perform: Current.lessonPlanRepository.insertItem)
+        .onSuccess(coordinator, perform: { Current.analytics.track(.lessonPlanRequested($0)) })
     }
 
     private func stateTransition(scale: CGFloat) -> AnyTransition {
