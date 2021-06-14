@@ -2,7 +2,9 @@ import Foundation
 import FoundationSugar
 
 extension AnalyticsEvent {
+    @PropsBuilder
     static func lessonPlanProps(_ lessonPlan: LessonPlan) -> Props {
+        ["Lesson Plan ID": lessonPlan.id.rawValue]
         lessonPlanProps(
             lessonPlan.instrument,
             lessonPlan.student,
