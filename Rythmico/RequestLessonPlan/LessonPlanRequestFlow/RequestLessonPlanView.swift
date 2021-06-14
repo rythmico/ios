@@ -58,8 +58,12 @@ struct RequestLessonPlanView: View, TestableView {
         .testable(self)
         .backgroundColor(.rythmicoBackgroundSecondary)
         .sheetInteractiveDismissal(swipeDownToDismissEnabled)
-        .onSuccess(coordinator, perform: Current.lessonPlanRepository.insertItem)
-        .onSuccess(coordinator, perform: { Current.analytics.track(.lessonPlanRequested($0)) })
+        .onSuccess(coordinator, perform: onLessonPlanRequested)
+    }
+
+    private func onLessonPlanRequested(_ lessonPlan: LessonPlan) {
+        Current.lessonPlanRepository.insertItem(lessonPlan)
+        Current.analytics.track(.lessonPlanRequested(lessonPlan, through: flow))
     }
 }
 

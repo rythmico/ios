@@ -126,6 +126,6 @@ struct RequestLessonPlanFlowView: View, TestableView {
     }
 
     func trackScreenView(_ step: RequestLessonPlanFlow.Step) {
-        Current.analytics.track(.screenView(step))
+        Current.analytics.track(.screenView(step, in: flow))
     }
 }

@@ -3,8 +3,8 @@ import FoundationSugar
 import Then
 
 extension AnalyticsEvent {
-    static func screenView(_ step: RequestLessonPlanFlow.Step) -> Self {
-        Self(name: "[Screenview] \(screenName(step))", props: screenProps(step))
+    static func screenView(_ step: RequestLessonPlanFlow.Step, in flow: RequestLessonPlanFlow) -> Self {
+        Self(name: "[Screenview] \(screenName(step))", props: screenProps(step) + flowProps(flow))
     }
 
     private static func screenName(_ step: RequestLessonPlanFlow.Step) -> String {
@@ -44,5 +44,9 @@ extension AnalyticsEvent {
         case let .reviewRequest(instrument, student, address, schedule, _):
             return lessonPlanProps(instrument, student, address, schedule)
         }
+    }
+
+    static func flowProps(_ flow: RequestLessonPlanFlow) -> Props {
+        ["Flow ID": flow.id.uuidString]
     }
 }

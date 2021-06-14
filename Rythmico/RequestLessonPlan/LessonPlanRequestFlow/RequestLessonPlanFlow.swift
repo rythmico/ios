@@ -3,11 +3,17 @@ import FoundationSugar
 import Then
 
 final class RequestLessonPlanFlow: Flow {
-    @Published var instrument: Instrument?
-    @Published var student: Student?
-    @Published var address: Address?
-    @Published var schedule: Schedule?
-    @Published var privateNote: String?
+    let id = UUID()
+    @Published
+    var instrument: Instrument?
+    @Published
+    var student: Student?
+    @Published
+    var address: Address?
+    @Published
+    var schedule: Schedule?
+    @Published
+    var privateNote: String?
 }
 
 extension RequestLessonPlanFlow: Then {}
