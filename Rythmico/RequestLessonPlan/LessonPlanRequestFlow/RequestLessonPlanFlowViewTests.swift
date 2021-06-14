@@ -69,7 +69,7 @@ final class RequestLessonPlanFlowViewTests: XCTestCase {
             XCTAssertTrue(view.shouldShowBackButton)
             XCTAssertEqual(view.stepNumber, 4)
             XCTAssertEqual(view.stepCount, 6)
-            XCTAssertEqual(flow.step, .scheduling(.guitar))
+            XCTAssertEqual(flow.step, .scheduling(.guitar, .davidStub, .stub))
         }
     }
 
@@ -85,7 +85,7 @@ final class RequestLessonPlanFlowViewTests: XCTestCase {
             XCTAssertTrue(view.shouldShowBackButton)
             XCTAssertEqual(view.stepNumber, 5)
             XCTAssertEqual(view.stepCount, 6)
-            XCTAssertEqual(flow.step, .privateNote)
+            XCTAssertEqual(flow.step, .privateNote(.guitar, .davidStub, .stub, .stub))
         }
     }
 
