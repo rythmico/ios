@@ -537,6 +537,8 @@
 		D5D9AEB425368AAA00A0ABCC /* LessonPlanPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEB325368AAA00A0ABCC /* LessonPlanPriceView.swift */; };
 		D5D9AEBE253694B400A0ABCC /* PhoneNumberInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEBD253694B400A0ABCC /* PhoneNumberInputView.swift */; };
 		D5D9AEC32537105400A0ABCC /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AEC22537105400A0ABCC /* CardStackView.swift */; };
+		D5DAD2762677AB2A0014702F /* RequestLessonPlanFlow+Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DAD2752677AB2A0014702F /* RequestLessonPlanFlow+Analytics.swift */; };
+		D5DAD27A2677B51F0014702F /* LessonPlan+Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DAD2792677B51F0014702F /* LessonPlan+Analytics.swift */; };
 		D5DDE85E2598E7B300CF565D /* LessonPlanBookingPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DDE85D2598E7B300CF565D /* LessonPlanBookingPolicyView.swift */; };
 		D5DDE869259955C200CF565D /* RoundedGrayedDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DDE868259955C200CF565D /* RoundedGrayedDialog.swift */; };
 		D5DE2896260A6BC6002BAB43 /* CustomTextFieldInputAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DE2895260A6BC6002BAB43 /* CustomTextFieldInputAccessory.swift */; };
@@ -1052,6 +1054,8 @@
 		D5D9AEB325368AAA00A0ABCC /* LessonPlanPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanPriceView.swift; sourceTree = "<group>"; };
 		D5D9AEBD253694B400A0ABCC /* PhoneNumberInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberInputView.swift; sourceTree = "<group>"; };
 		D5D9AEC22537105400A0ABCC /* CardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
+		D5DAD2752677AB2A0014702F /* RequestLessonPlanFlow+Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RequestLessonPlanFlow+Analytics.swift"; sourceTree = "<group>"; };
+		D5DAD2792677B51F0014702F /* LessonPlan+Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonPlan+Analytics.swift"; sourceTree = "<group>"; };
 		D5DDE85D2598E7B300CF565D /* LessonPlanBookingPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanBookingPolicyView.swift; sourceTree = "<group>"; };
 		D5DDE868259955C200CF565D /* RoundedGrayedDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedGrayedDialog.swift; sourceTree = "<group>"; };
 		D5DE2895260A6BC6002BAB43 /* CustomTextFieldInputAccessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldInputAccessory.swift; sourceTree = "<group>"; };
@@ -1473,6 +1477,7 @@
 			isa = PBXGroup;
 			children = (
 				03080EEC2466FE21008715EE /* LessonPlan.swift */,
+				D5DAD2792677B51F0014702F /* LessonPlan+Analytics.swift */,
 				03B1983E24717A90005529EB /* LessonPlanDoubles.swift */,
 			);
 			path = LessonPlan;
@@ -1484,6 +1489,7 @@
 				D5AAF7C723ECC87000E410F2 /* RequestLessonPlanView.swift */,
 				03306F73247347570074AA98 /* RequestLessonPlanViewTests.swift */,
 				D54317F323FDB0DD00CB1493 /* RequestLessonPlanFlow.swift */,
+				D5DAD2752677AB2A0014702F /* RequestLessonPlanFlow+Analytics.swift */,
 				03B19842247181B3005529EB /* RequestLessonPlanFlowView.swift */,
 				D50811E523FB769D008103D8 /* RequestLessonPlanFlowViewTests.swift */,
 			);
@@ -2829,6 +2835,7 @@
 				D58DE1CD25C0F0100013AEE8 /* UIColor+Hex.swift in Sources */,
 				D575C819254DD6C8001664AB /* AppSplash.swift in Sources */,
 				D54340F7261E7314006898B0 /* AccessibilitySettingsDoubles.swift in Sources */,
+				D5DAD2762677AB2A0014702F /* RequestLessonPlanFlow+Analytics.swift in Sources */,
 				D517FF952553B60000A41639 /* LessonDoubles.swift in Sources */,
 				D5AAF7C823ECC87000E410F2 /* RequestLessonPlanView.swift in Sources */,
 				D56B25432533331A00BC3932 /* PhoneNumberDoubles.swift in Sources */,
@@ -2883,6 +2890,7 @@
 				D543CA702608F8B400900975 /* Binding+Sugar.swift in Sources */,
 				D5D9AE762534CBB700A0ABCC /* Price.swift in Sources */,
 				D5AAF7DF23FB444500E410F2 /* RoundedShadowContainer.swift in Sources */,
+				D5DAD27A2677B51F0014702F /* LessonPlan+Analytics.swift in Sources */,
 				D535554723E20076005A20EB /* Colors.swift in Sources */,
 				D527B00B24FD3297003E81A9 /* AvatarStackView.swift in Sources */,
 				D53555B923E53699005A20EB /* AuthenticationServiceDoubles.swift in Sources */,
