@@ -61,10 +61,6 @@ struct RequestLessonPlanView: View, TestableView {
         .onSuccess(coordinator, perform: Current.lessonPlanRepository.insertItem)
         .onSuccess(coordinator, perform: { Current.analytics.track(.lessonPlanRequested($0)) })
     }
-
-    private func stateTransition(scale: CGFloat) -> AnyTransition {
-        (.scale(scale: scale) + .opacity).animation(.rythmicoSpring(duration: .durationShort))
-    }
 }
 
 extension RequestLessonPlanView {
