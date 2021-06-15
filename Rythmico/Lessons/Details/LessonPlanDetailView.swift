@@ -40,7 +40,16 @@ struct LessonPlanDetailView: View, TestableView {
 
     var chooseTutorAction: Action? {
         LessonPlanApplicationsScreen(lessonPlan: lessonPlan).map { screen in
-            { navigator.go(to: screen, on: currentScreen) }
+            {
+                navigator.go(to: screen, on: currentScreen)
+                Current.analytics.track(
+                    .chooseTutorScreenView(
+                        lessonPlan: screen.lessonPlan,
+                        applications: screen.applications,
+                        origin: .lessonsTabDetail
+                    )
+                )
+            }
         }
     }
 

@@ -2201,6 +2201,7 @@
 			isa = PBXGroup;
 			children = (
 				D518C2F7250EA89100288A48 /* LessonPlanApplicationsView.swift */,
+				D5DAD27B2679339B0014702F /* LessonPlanApplicationsView+Analytics.swift */,
 				D58824BE251A6953000820F4 /* LessonPlanApplicationsGridView.swift */,
 				D585D5B02511299800B74091 /* LessonPlanApplicationDetailView.swift */,
 				D501587C25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift */,
@@ -2874,6 +2875,7 @@
 				D54CF08E25FA8724007D5050 /* AnalyticsCoordinator.swift in Sources */,
 				D53555B623E53699005A20EB /* AuthenticationService.swift in Sources */,
 				D531295D255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift in Sources */,
+				D5DAD27C2679339B0014702F /* LessonPlanApplicationsView+Analytics.swift in Sources */,
 				D543CA732609227D00900975 /* CustomTextFieldInputMode.swift in Sources */,
 				D54CF08725FA8624007D5050 /* AnalyticsService.swift in Sources */,
 				D55C35EA25A3A6490023E56B /* CalendarInfo.swift in Sources */,
