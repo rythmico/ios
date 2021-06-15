@@ -35,6 +35,7 @@ extension AppEnvironment {
 
             remoteConfig: RemoteConfigDummy(),
 
+            uuid: { .stub },
             date: { .stub },
             calendarType: { .gregorian },
             locale: Locale(identifier: "en_GB"),
