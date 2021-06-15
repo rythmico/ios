@@ -76,6 +76,7 @@ struct LessonPlanApplicationDetailView: View {
 
     private func book() {
         navigator.go(to: LessonPlanBookingEntryScreen(lessonPlan: lessonPlan, application: application), on: currentScreen)
+        Current.analytics.track(.bookTutorScreenView(lessonPlan: lessonPlan, application: application))
     }
 
     private static let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
