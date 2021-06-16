@@ -25,7 +25,7 @@ extension AnalyticsUserProfile {
             "iOS Bold Text Enabled": accessibilitySettings.isBoldTextOn(),
         ]
         [
-            "iOS Push Notifications Status": pushNotificationsAuthStatus.rawAnalyticsValue
+            "iOS Push Notifications Status": pushNotificationsAuthStatus.rawAnalyticsValue,
         ]
     }
 }
