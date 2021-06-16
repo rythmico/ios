@@ -30,16 +30,16 @@ struct LessonPlanApplicationDetailView: View {
     @Environment(\.currentScreen) private var currentScreen
 
     typealias HeaderView = LessonPlanApplicationDetailHeaderView
-    typealias MessageView = LessonPlanApplicationDetailMessageView
     typealias AboutView = LessonPlanApplicationDetailAboutView
+    typealias MessageView = LessonPlanApplicationDetailMessageView
 
     enum Tab: String, CaseIterable {
-        case message = "Message"
         case about = "About"
+        case message = "Message"
     }
 
     @State
-    private var tab: Tab = .message
+    private var tab: Tab = .about
     @StateObject
     private var coordinator = Current.portfolioFetchingCoordinator()
 
@@ -54,10 +54,10 @@ struct LessonPlanApplicationDetailView: View {
             }
 
             switch tab {
-            case .message:
-                MessageView(lessonPlan: lessonPlan, application: application)
             case .about:
                 AboutView(coordinator: coordinator, tutor: application.tutor)
+            case .message:
+                MessageView(lessonPlan: lessonPlan, application: application)
             }
 
             FloatingView {
@@ -76,6 +76,7 @@ struct LessonPlanApplicationDetailView: View {
 
     private func book() {
         navigator.go(to: LessonPlanBookingEntryScreen(lessonPlan: lessonPlan, application: application), on: currentScreen)
+        Current.analytics.track(.bookTutorScreenView(lessonPlan: lessonPlan, application: application))
     }
 
     private static let frequencyDayFormatter = Current.dateFormatter(format: .custom("EEEE"))

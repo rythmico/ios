@@ -1,4 +1,5 @@
 import SwiftUI
+import FoundationSugar
 
 struct LessonPlanApplicationsGridView: View {
     var lessonPlan: LessonPlan
@@ -29,10 +30,18 @@ struct LessonPlanApplicationsGridLink: View {
 
     var lessonPlan: LessonPlan
     var application: LessonPlan.Application
-    var destination: LessonPlanApplicationDetailScreen { .init(lessonPlan: lessonPlan, application: application) }
+    var action: Action {
+        {
+            navigator.go(
+                to: LessonPlanApplicationDetailScreen(lessonPlan: lessonPlan, application: application),
+                on: currentScreen
+            )
+            Current.analytics.track(.tutorApplicationScreenView(lessonPlan: lessonPlan, application: application))
+        }
+    }
 
     var body: some View {
-        Button(action: { navigator.go(to: destination, on: currentScreen) }) {
+        Button(action: action) {
             LessonPlanApplicationCell(application)
         }
     }

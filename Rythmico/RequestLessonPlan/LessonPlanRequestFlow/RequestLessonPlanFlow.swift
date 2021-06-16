@@ -3,7 +3,7 @@ import FoundationSugar
 import Then
 
 final class RequestLessonPlanFlow: Flow {
-    let id = UUID()
+    let id = Current.uuid()
     @Published
     var instrument: Instrument?
     @Published

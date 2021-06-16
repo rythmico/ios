@@ -13,6 +13,7 @@ struct AppEnvironment {
     var remoteConfigCoordinator: RemoteConfigCoordinator
     var remoteConfig: RemoteConfigServiceProtocol
 
+    var uuid: () -> UUID
     var date: () -> Date
     var calendarType: () -> Calendar.Identifier
     var locale: Locale
@@ -77,6 +78,7 @@ struct AppEnvironment {
 
         remoteConfig: RemoteConfigServiceProtocol,
 
+        uuid: @escaping () -> UUID,
         date: @escaping () -> Date,
         calendarType: @escaping () -> Calendar.Identifier,
         locale: Locale,
@@ -143,6 +145,7 @@ struct AppEnvironment {
         self.remoteConfigCoordinator = remoteConfigCoordinator
         self.remoteConfig = remoteConfig
 
+        self.uuid = uuid
         self.date = date
         self.calendarType = calendarType
         self.locale = locale
@@ -235,6 +238,7 @@ extension AppEnvironment {
 
         remoteConfig: RemoteConfig(),
 
+        uuid: UUID.init,
         date: Date.init,
         calendarType: { Calendar.current.identifier },
         locale: .autoupdatingCurrent,

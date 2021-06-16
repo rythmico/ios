@@ -152,6 +152,7 @@ struct LessonPlanBookingView: View {
 
     func checkoutSucceeded(_ lessonPlan: LessonPlan) {
         Current.lessonPlanRepository.replaceById(lessonPlan)
+        Current.analytics.track(.lessonPlanBooked(lessonPlan))
     }
 }
 
