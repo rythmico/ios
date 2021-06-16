@@ -6,7 +6,7 @@ extension AnalyticsEvent {
         Self(
             name: "[Screenview] Checkout Flow - Tutor Application",
             props: Props {
-                ["Flow ID": checkoutFlowID.uuidString]
+                ["Checkout Flow ID": checkoutFlowID.uuidString]
                 ["Has Private Note": application.privateNote.isBlank.not]
                 lessonPlanProps(lessonPlan)
             }

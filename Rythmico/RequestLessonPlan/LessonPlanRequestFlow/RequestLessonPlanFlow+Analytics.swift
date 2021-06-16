@@ -47,6 +47,6 @@ extension AnalyticsEvent {
     }
 
     static func flowProps(_ flow: RequestLessonPlanFlow) -> Props {
-        ["Flow ID": flow.id.uuidString]
+        ["Request Plan Flow ID": flow.id.uuidString]
     }
 }

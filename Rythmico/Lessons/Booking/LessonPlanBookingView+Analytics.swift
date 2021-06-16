@@ -7,7 +7,7 @@ extension AnalyticsEvent {
         Self(
             name: "[Action] Plan Booked",
             props: Props {
-                ["Flow ID": checkoutFlowID.uuidString]
+                ["Checkout Flow ID": checkoutFlowID.uuidString]
                 lessonPlanProps(lessonPlan)
             }
         )

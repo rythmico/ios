@@ -18,7 +18,7 @@ extension AnalyticsEvent {
         return Self(
             name: "[Screenview] Checkout Flow - Choose Tutor",
             props: Props {
-                ["Flow ID": checkoutFlowID.uuidString]
+                ["Checkout Flow ID": checkoutFlowID.uuidString]
                 ["Total Tutors": applications.count]
                 ["Origin": origin.rawValue]
                 lessonPlanProps(lessonPlan)
