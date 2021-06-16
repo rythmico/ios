@@ -48,6 +48,15 @@ final class CalendarSyncCoordinator: ObservableObject {
         enableCalendarSyncAction == nil ? { Current.urlOpener.open("calshow://") } : nil
     }
 
+    var isCalendarSyncEnabled: Bool {
+        switch calendarSyncStatusProvider.status {
+        case .notDetermined, .unauthorized, .notSynced:
+            return false
+        case .synced:
+            return true
+        }
+    }
+
     func dismissError() {
         error = nil
     }

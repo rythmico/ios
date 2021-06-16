@@ -6,44 +6,49 @@ final class AnalyticsCoordinator {
     private let userCredentialProvider: UserCredentialProviderBase
     private let accessibilitySettings: AccessibilitySettings
     private let notificationAuthCoordinator: PushNotificationAuthorizationCoordinator
+    private let calendarSyncCoordinator: CalendarSyncCoordinator
 
-    private var cancellable: AnyCancellable?
+    private var cancellables: [AnyCancellable] = []
 
     init(
         service: AnalyticsServiceProtocol,
         userCredentialProvider: UserCredentialProviderBase,
         accessibilitySettings: AccessibilitySettings,
-        notificationAuthCoordinator: PushNotificationAuthorizationCoordinator
+        notificationAuthCoordinator: PushNotificationAuthorizationCoordinator,
+        calendarSyncCoordinator: CalendarSyncCoordinator
     ) {
         self.service = service
         self.userCredentialProvider = userCredentialProvider
         self.accessibilitySettings = accessibilitySettings
         self.notificationAuthCoordinator = notificationAuthCoordinator
+        self.calendarSyncCoordinator = calendarSyncCoordinator
 
-        self.cancellable = Publishers.CombineLatest(
-            userCredentialProvider.$userCredential,
-            notificationAuthCoordinator.$status
-        )
-        .map { (credential: $0, notificationAuthStatus: $1) }
-        .removeDuplicates {
-            $0.credential === $1.credential &&
-            $0.notificationAuthStatus == $1.notificationAuthStatus
-        }
-        .sink { self.identifyOrResetUserProfile(credential: $0, notificationAuthStatus: $1) }
+        userCredentialProvider.$userCredential
+            .map { _ in }
+            .sink(receiveValue: updateOrResetUserProfile)
+            .store(in: &cancellables)
+
+        notificationAuthCoordinator.$status
+            .map { _ in }
+            .sink(receiveValue: updateOrResetUserProfile)
+            .store(in: &cancellables)
+
+        calendarSyncCoordinator.objectWillChange
+            .delay(for: 0, scheduler: DispatchQueue.main)
+            .sink(receiveValue: updateOrResetUserProfile)
+            .store(in: &cancellables)
     }
 
-    private func identifyOrResetUserProfile(
-        credential: UserCredentialProtocol?,
-        notificationAuthStatus: PushNotificationAuthorizationCoordinator.Status
-    ) {
-        if let credential = credential {
+    private func updateOrResetUserProfile() {
+        if let credential = userCredentialProvider.userCredential {
             service.identify(
                 AnalyticsUserProfile(
                     id: credential.userId,
                     name: credential.name,
                     email: credential.email,
                     accessibilitySettings: accessibilitySettings,
-                    pushNotificationsAuthStatus: notificationAuthStatus
+                    pushNotificationsAuthStatus: notificationAuthCoordinator.status,
+                    isCalendarSyncEnabled: calendarSyncCoordinator.isCalendarSyncEnabled
                 )
             )
         } else {

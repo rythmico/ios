@@ -34,7 +34,6 @@ struct AppEnvironment {
     var deauthenticationService: DeauthenticationServiceProtocol
     var userCredentialProvider: UserCredentialProviderBase
 
-    var analytics: AnalyticsCoordinator
     var errorLogger: ErrorLoggerProtocol
 
     var apiActivityErrorHandler: APIActivityErrorHandlerProtocol
@@ -46,6 +45,8 @@ struct AppEnvironment {
     var pushNotificationEventHandler: PushNotificationEventHandlerProtocol
 
     var calendarSyncCoordinator: CalendarSyncCoordinator
+
+    var analytics: AnalyticsCoordinator
 
     var sceneState: () -> UIApplication.State
     var keyboardDismisser: KeyboardDismisser
@@ -99,7 +100,6 @@ struct AppEnvironment {
         deauthenticationService: DeauthenticationServiceProtocol,
         userCredentialProvider: UserCredentialProviderBase,
 
-        analyticsService: AnalyticsServiceProtocol,
         errorLogger: (UserCredentialProviderBase) -> ErrorLoggerProtocol,
 
         deviceTokenProvider: DeviceTokenProvider,
@@ -111,6 +111,8 @@ struct AppEnvironment {
 
         calendarSyncStatusProvider: CalendarSyncStatusProviderBase,
         calendarInfoFetchingService: APIServiceBase<GetCalendarInfoRequest>,
+
+        analyticsService: AnalyticsServiceProtocol,
 
         sceneState: @escaping () -> UIApplication.State,
         keyboardDismisser: KeyboardDismisser,
@@ -166,12 +168,6 @@ struct AppEnvironment {
         self.deauthenticationService = deauthenticationService
         self.userCredentialProvider = userCredentialProvider
 
-        self.analytics = AnalyticsCoordinator(
-            service: analyticsService,
-            userCredentialProvider: userCredentialProvider,
-            accessibilitySettings: accessibilitySettings,
-            notificationAuthCoordinator: pushNotificationAuthorizationCoordinator
-        )
         self.errorLogger = errorLogger(userCredentialProvider)
 
         let apiActivityErrorHandler = APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator)
@@ -192,11 +188,20 @@ struct AppEnvironment {
         self.pushNotificationAuthorizationCoordinator = pushNotificationAuthorizationCoordinator
         self.pushNotificationEventHandler = pushNotificationEventHandler
 
-        self.calendarSyncCoordinator = CalendarSyncCoordinator(
+        let calendarSyncCoordinator = CalendarSyncCoordinator(
             calendarSyncStatusProvider: calendarSyncStatusProvider,
             calendarInfoFetchingCoordinator: coordinator(for: calendarInfoFetchingService),
             eventEmitter: eventEmitter,
             urlOpener: urlOpener
+        )
+        self.calendarSyncCoordinator = calendarSyncCoordinator
+
+        self.analytics = AnalyticsCoordinator(
+            service: analyticsService,
+            userCredentialProvider: userCredentialProvider,
+            accessibilitySettings: accessibilitySettings,
+            notificationAuthCoordinator: pushNotificationAuthorizationCoordinator,
+            calendarSyncCoordinator: calendarSyncCoordinator
         )
 
         self.sceneState = sceneState
@@ -264,7 +269,6 @@ extension AppEnvironment {
         deauthenticationService: DeauthenticationService(),
         userCredentialProvider: UserCredentialProvider(emitter: UserCredentialEmitter()),
 
-        analyticsService: AnalyticsService(),
         errorLogger: { ErrorLogger(crashlyticsLogger: .crashlytics(), userCredentialProvider: $0) },
 
         deviceTokenProvider: Messaging.messaging(),
@@ -279,6 +283,8 @@ extension AppEnvironment {
 
         calendarSyncStatusProvider: CalendarSyncStatusProvider(accessProvider: EKEventStore()),
         calendarInfoFetchingService: APIService(),
+
+        analyticsService: AnalyticsService(),
 
         sceneState: { UIApplication.shared.applicationState },
         keyboardDismisser: UIApplication.shared,
