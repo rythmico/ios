@@ -7,6 +7,7 @@ struct AnalyticsUserProfile {
     var email: String?
     var accessibilitySettings: AccessibilitySettings
     var pushNotificationsAuthStatus: PushNotificationAuthorizationCoordinator.Status
+    var isCalendarSyncEnabled: Bool
 }
 
 extension AnalyticsUserProfile {
@@ -26,6 +27,7 @@ extension AnalyticsUserProfile {
         ]
         [
             "iOS Push Notifications Status": pushNotificationsAuthStatus.rawAnalyticsValue,
+            "iOS Calendar Sync Enabled": isCalendarSyncEnabled,
         ]
     }
 }

@@ -56,7 +56,6 @@ extension AppEnvironment {
             deauthenticationService: DeauthenticationServiceDummy(),
             userCredentialProvider: UserCredentialProviderDummy(),
 
-            analyticsService: AnalyticsServiceDummy(),
             errorLogger: { _ in ErrorLoggerDummy() },
 
             deviceTokenProvider: DeviceTokenProviderDummy(),
@@ -68,6 +67,8 @@ extension AppEnvironment {
 
             calendarSyncStatusProvider: CalendarSyncStatusProviderDummy(),
             calendarInfoFetchingService: APIServiceDummy(),
+
+            analyticsService: AnalyticsServiceDummy(),
 
             sceneState: { .active },
             keyboardDismisser: KeyboardDismisserDummy(),
