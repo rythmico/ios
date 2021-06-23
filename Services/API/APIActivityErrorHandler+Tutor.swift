@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 final class APIActivityErrorHandler: APIActivityErrorHandlerProtocol {
     private let remoteConfigCoordinator: RemoteConfigCoordinator

@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 enum PushNotificationEvent: String {
     case bookingRequestsChanged = "BOOKING_REQUESTS_CHANGED"

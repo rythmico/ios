@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 extension UserDefaults {
     subscript(key: Key) -> Any? {

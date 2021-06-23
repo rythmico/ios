@@ -1,4 +1,3 @@
-import Foundation
 import FoundationSugar
 
 struct Price: Equatable, Decodable, Hashable {

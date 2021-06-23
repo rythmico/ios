@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 import class UIKit.UIImage
 
 final class ImageLoadingCoordinator: FailableActivityCoordinator<ImageReference, UIImage> {

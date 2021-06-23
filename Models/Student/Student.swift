@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 struct Student: Equatable, Codable, Hashable {
     var name: String

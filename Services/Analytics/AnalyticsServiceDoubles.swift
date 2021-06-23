@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 final class AnalyticsServiceDummy: AnalyticsServiceProtocol {
     func identify(_ profile: AnalyticsUserProfile) {}

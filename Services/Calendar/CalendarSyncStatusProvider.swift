@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 class CalendarSyncStatusProviderBase: ObservableObject {
     enum Status {

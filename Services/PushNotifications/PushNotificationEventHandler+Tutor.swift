@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 final class PushNotificationEventHandler: PushNotificationEventHandlerProtocol {
     func handle(_ event: PushNotificationEvent) {

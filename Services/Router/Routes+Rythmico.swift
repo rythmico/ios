@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 enum Route {
     case lessons

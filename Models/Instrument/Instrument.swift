@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 import struct SwiftUI.Image
 
 enum Instrument: String, Equatable, Codable, CaseIterable, Hashable {

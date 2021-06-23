@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 struct AppleAuthorizationResponseStub: AppleAuthorizationResponseProtocol {
     var userId: String

@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 import Combine
 
 final class AnalyticsCoordinator {

@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 extension URLOpener {
     func openTermsAndConditionsURL() {

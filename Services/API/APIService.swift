@@ -1,5 +1,4 @@
 import APIKit
-import Foundation
 import FoundationSugar
 
 class APIServiceBase<Request: AuthorizedAPIRequest> {

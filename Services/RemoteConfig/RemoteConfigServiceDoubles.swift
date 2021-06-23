@@ -1,4 +1,3 @@
-import Foundation
 import FoundationSugar
 
 struct RemoteConfigStub: RemoteConfigServiceProtocol {

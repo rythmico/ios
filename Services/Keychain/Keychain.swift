@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 import Valet
 
 protocol KeychainProtocol: AnyObject {

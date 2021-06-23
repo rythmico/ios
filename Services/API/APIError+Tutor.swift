@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 extension RythmicoAPIError {
     enum ErrorType: String {

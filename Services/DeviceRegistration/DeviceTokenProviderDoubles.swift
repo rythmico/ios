@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 final class DeviceTokenProviderStub: DeviceTokenProvider {
     var result: Result<String, Error>

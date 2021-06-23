@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 extension ImageAsset: Hashable, Equatable {
     func hash(into hasher: inout Hasher) {

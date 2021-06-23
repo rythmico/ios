@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 struct STPSetupIntentStub: STPSetupIntentProtocol {
     let paymentMethodID: String?
