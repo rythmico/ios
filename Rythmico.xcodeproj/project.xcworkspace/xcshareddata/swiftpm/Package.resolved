@@ -146,6 +146,15 @@
         }
       },
       {
+        "package": "PreciseDecimal",
+        "repositoryURL": "https://github.com/davdroman/PreciseDecimal",
+        "state": {
+          "branch": null,
+          "revision": "a15081386a21414f445a0d14ffcfebd8df3c6da3",
+          "version": "1.0.0"
+        }
+      },
+      {
         "package": "Promises",
         "repositoryURL": "https://github.com/google/promises.git",
         "state": {
