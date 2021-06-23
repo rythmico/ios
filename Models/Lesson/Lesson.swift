@@ -1,6 +1,5 @@
 import FoundationSugar
 import PhoneNumberKit
-import Tagged
 
 struct Lesson: Decodable, Identifiable, Hashable {
     typealias ID = Tagged<Self, String>

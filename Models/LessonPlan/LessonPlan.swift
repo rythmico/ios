@@ -1,5 +1,4 @@
 import FoundationSugar
-import Tagged
 
 struct LessonPlan: Identifiable, Hashable {
     enum Status: Decodable, Hashable {

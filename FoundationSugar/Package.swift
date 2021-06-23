@@ -18,6 +18,7 @@ let package = Package(
         .package(url: "https://github.com/treatwell/ISO8601PeriodDuration", from: "3.1.0"),
         .package(url: "https://github.com/pointfreeco/swift-nonempty", from: "0.3.1"),
         .package(url: "https://github.com/davdroman/PreciseDecimal", from: "1.0.0"),
+        .package(url: "https://github.com/pointfreeco/swift-tagged", from: "0.6.0"),
         .package(url: "https://github.com/devxoul/Then", from: "2.7.0"),
     ],
     targets: [
@@ -27,6 +28,7 @@ let package = Package(
                 "ISO8601PeriodDuration",
                 .product(name: "NonEmpty", package: "swift-nonempty"),
                 "PreciseDecimal",
+                .product(name: "Tagged", package: "swift-tagged"),
                 "Then",
             ]
         ),
