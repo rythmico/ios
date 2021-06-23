@@ -1,5 +1,3 @@
-import Swift
-
 public typealias Action = () -> Void
 public typealias Handler<T> = (T) -> Void
 

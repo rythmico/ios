@@ -1,6 +1,3 @@
-import Foundation
-import Then
-
 extension Then where Self: Any {
     public func with<T>(_ keyPath: WritableKeyPath<Self, T>, _ value: T) -> Self {
         with { $0[keyPath: keyPath] = value }

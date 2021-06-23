@@ -1,5 +1,3 @@
-import Foundation
-
 extension Result {
     public init?(value: Success?, error: Failure?) {
         switch (value, error) {

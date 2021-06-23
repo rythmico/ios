@@ -1,6 +1,3 @@
-import Foundation
-import Then
-
 extension URLComponents: Then {}
 
 extension URL {

@@ -1,5 +1,3 @@
-import Foundation
-
 extension Dictionary {
     public static func + (lhs: Self, rhs: Self) -> Self {
         lhs.merging(rhs, uniquingKeysWith: { old, new in new })
