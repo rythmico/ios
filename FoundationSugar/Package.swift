@@ -25,11 +25,11 @@ let package = Package(
         .target(
             name: "FoundationSugar",
             dependencies: [
-                "ISO8601PeriodDuration",
+                .product(name: "ISO8601PeriodDuration", package: "ISO8601PeriodDuration"),
                 .product(name: "NonEmpty", package: "swift-nonempty"),
-                "PreciseDecimal",
+                .product(name: "PreciseDecimal", package: "PreciseDecimal"),
                 .product(name: "Tagged", package: "swift-tagged"),
-                "Then",
+                .product(name: "Then", package: "Then"),
             ]
         ),
         .testTarget(
