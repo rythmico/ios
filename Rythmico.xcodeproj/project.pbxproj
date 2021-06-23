@@ -585,7 +585,6 @@
 		D5ED519626226DB700D1B53A /* TextBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = D5ED519526226DB700D1B53A /* TextBuilder */; };
 		D5EEF6AD261BDE470014E500 /* XCTAssertText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EEF6AC261BDE470014E500 /* XCTAssertText.swift */; };
 		D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF88B523FB706C0072BD03 /* ProgressBar.swift */; };
-		D5F11566253735F20027D164 /* NonEmpty in Frameworks */ = {isa = PBXBuildFile; productRef = D5F11565253735F20027D164 /* NonEmpty */; };
 		D5F4AE7E2559D3F0001085D5 /* PhoneNumberDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */; };
 		D5F4AE822559D3F6001085D5 /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D974F325263FAF000AD074 /* PhoneNumber.swift */; };
 		D5F4AE862559D3FD001085D5 /* PhoneNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D974F825263FB9000AD074 /* PhoneNumberTests.swift */; };
@@ -1150,7 +1149,6 @@
 				D5ED519626226DB700D1B53A /* TextBuilder in Frameworks */,
 				D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */,
 				03B19837247053F5005529EB /* APIKit in Frameworks */,
-				D5F11566253735F20027D164 /* NonEmpty in Frameworks */,
 				D5CFB3732675242D006DBCE0 /* Amplitude in Frameworks */,
 				D59E4E6125B20ADA00E8F94C /* YouTubeiOSPlayerHelper in Frameworks */,
 			);
@@ -2402,7 +2400,6 @@
 				03B19836247053F5005529EB /* APIKit */,
 				D585217524CF81CE005D783A /* Introspect */,
 				D5D78DD6252502CE007041BE /* PhoneNumberKit */,
-				D5F11565253735F20027D164 /* NonEmpty */,
 				D5BDD50A253CCC4400255190 /* Tagged */,
 				D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */,
 				D5FC2D41254A7DE3005056D5 /* FirebaseMessaging */,
@@ -2546,7 +2543,6 @@
 				D585217424CF81CE005D783A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				D5D78DD5252502CE007041BE /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
 				D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */,
-				D5F11564253735F20027D164 /* XCRemoteSwiftPackageReference "swift-nonempty" */,
 				D5BDD509253CCC4400255190 /* XCRemoteSwiftPackageReference "swift-tagged" */,
 				D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				D59E4E5F25B20ADA00E8F94C /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
@@ -3944,14 +3940,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		D5F11564253735F20027D164 /* XCRemoteSwiftPackageReference "swift-nonempty" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-nonempty";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.3.1;
-			};
-		};
 		D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -4085,11 +4073,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5ED519426226DB700D1B53A /* XCRemoteSwiftPackageReference "TextBuilder" */;
 			productName = TextBuilder;
-		};
-		D5F11565253735F20027D164 /* NonEmpty */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5F11564253735F20027D164 /* XCRemoteSwiftPackageReference "swift-nonempty" */;
-			productName = NonEmpty;
 		};
 		D5F4AE8A2559D46A001085D5 /* PhoneNumberKit */ = {
 			isa = XCSwiftPackageProductDependency;

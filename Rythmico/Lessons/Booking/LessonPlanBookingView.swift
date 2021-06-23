@@ -1,8 +1,7 @@
+import FoundationSugar
 import SwiftUI
 import TextBuilder
 import PhoneNumberKit
-import NonEmpty
-import FoundationSugar
 
 struct LessonPlanBookingView: View {
     @Environment(\.navigator) private var navigator
