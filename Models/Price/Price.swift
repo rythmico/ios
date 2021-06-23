@@ -7,13 +7,13 @@ struct Price: Equatable, Decodable, Hashable {
         case GBP
     }
 
-    var amount: Decimal
+    var amount: PreciseDecimal
     var currency: Currency
 }
 
 extension NumberFormatter {
-    func string(for price: Price) -> String {
+    func string(from price: Price) -> String {
         currencyCode = price.currency.rawValue
-        return string(for: price.amount) !! preconditionFailure("Price formatter failed to format Price: \(price)")
+        return string(from: price.amount.value)
     }
 }
