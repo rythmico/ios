@@ -1,9 +1,9 @@
+import FoundationSugar
 import UIKit
 import Firebase
 #if RYTHMICO
 import Amplitude
 #endif
-import Then
 
 extension AppEnvironment {
     /// Simple wrapper to initialize AppEnvironment.live

@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 extension TutorStatus {
     private enum Const {

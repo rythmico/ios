@@ -1,5 +1,4 @@
-import Foundation
-import Tagged
+import FoundationSugar
 
 struct Schedule: Equatable, Codable, Hashable {
     typealias Duration = Tagged<Self, Int>

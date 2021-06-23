@@ -1,6 +1,5 @@
-import Foundation
+import FoundationSugar
 import PhoneNumberKit
-import ISO8601PeriodDuration
 
 struct Checkout: Decodable, Hashable {
     struct Policies: Decodable, Hashable {

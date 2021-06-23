@@ -1,6 +1,5 @@
 import SwiftUI
 import FoundationSugar
-import Then
 
 extension View {
     func onEdgeSwipe(_ edge: EdgeSwipeView.Edge, perform action: @escaping () -> Void) -> some View {

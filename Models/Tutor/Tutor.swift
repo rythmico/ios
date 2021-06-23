@@ -1,6 +1,4 @@
-import Foundation
 import FoundationSugar
-import Tagged
 
 struct Tutor: Identifiable, Equatable, Decodable, Hashable {
     typealias ID = Tagged<Self, String>

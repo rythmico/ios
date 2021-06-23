@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 protocol Resumeable {
     func resume()

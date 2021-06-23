@@ -1,6 +1,4 @@
-import Foundation
-import ISO8601PeriodDuration
-import Tagged
+import FoundationSugar
 
 struct LessonPlan: Identifiable, Hashable {
     enum Status: Decodable, Hashable {

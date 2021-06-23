@@ -1,5 +1,3 @@
-import Foundation
-
 extension Character {
     public static var whitespace: Character { " " }
     public static var newline: Character { "\n" }

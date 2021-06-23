@@ -1,6 +1,5 @@
 import XCTest
 import FoundationSugar
-import Then
 
 final class Date_SugarTests: XCTestCase {
     func testReferenceDate() {

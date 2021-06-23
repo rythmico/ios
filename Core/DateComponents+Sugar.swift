@@ -1,4 +1,3 @@
-import Foundation
 import FoundationSugar
 
 extension DateComponents {
@@ -11,6 +10,6 @@ extension DateComponents {
             allowedUnits: allowedUnits,
             style: style,
             includesTimeRemainingPhrase: includesTimeRemainingPhrase
-        ).string(for: self) !! preconditionFailure("nil for input '\(self)'")
+        ).string(from: self) !! preconditionFailure("nil for input '\(self)'")
     }
 }

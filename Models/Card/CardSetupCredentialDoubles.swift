@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 extension CardSetupCredential {
     static let stub = Self(

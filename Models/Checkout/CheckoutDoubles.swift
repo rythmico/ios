@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 extension Checkout {
     static let stub = Self(

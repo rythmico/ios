@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 struct BookingRequest: Equatable, Decodable, Identifiable, Hashable {
     var id: String

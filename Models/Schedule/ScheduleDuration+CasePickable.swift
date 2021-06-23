@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 extension Schedule.Duration: CasePickable {
     static var pickableCases: [Self] {

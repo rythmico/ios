@@ -1,5 +1,3 @@
-import Foundation
-
 extension DateFormatter {
     public enum Format {
         case preset(date: Style = .none, time: Style = .none)

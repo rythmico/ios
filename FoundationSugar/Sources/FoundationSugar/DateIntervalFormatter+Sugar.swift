@@ -1,5 +1,3 @@
-import Foundation
-
 extension DateIntervalFormatter {
     public enum Format {
         case preset(time: Style, date: Style)

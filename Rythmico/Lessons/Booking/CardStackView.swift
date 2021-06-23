@@ -1,5 +1,5 @@
+import FoundationSugar
 import SwiftUI
-import NonEmpty
 
 struct CardStackView: View {
     var cards: NonEmpty<[Card]>

@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 import APIKit
 
 final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActivityCoordinator<Request.Properties, Request.Response> {

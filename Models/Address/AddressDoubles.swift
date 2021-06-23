@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 extension Address {
     static let stub = Self(

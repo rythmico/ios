@@ -1,5 +1,5 @@
+import FoundationSugar
 import SwiftUI
-import Then
 
 struct NavigationBar<BackButton: View, LeadingItem: View, Title: View, TrailingItem: View>: View {
     @ViewBuilder var backButton: BackButton

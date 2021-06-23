@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 extension AppleAuthorizationCredential {
     static let stub = AppleAuthorizationCredential(

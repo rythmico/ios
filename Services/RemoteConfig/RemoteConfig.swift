@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 enum RemoteConfigKey: String {
     case appUpdateRequired = "app_update_required"

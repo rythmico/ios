@@ -1,5 +1,3 @@
-import Foundation
-
 public protocol OptionalProtocol {
     associatedtype Wrapped
 

@@ -1,13 +1,13 @@
-import Foundation
+import FoundationSugar
 import FirebaseMessaging
 
 protocol DeviceTokenProvider {
-    typealias ResultHandler = (String?, Error?) -> Void
-    func deviceToken(handler: @escaping ResultHandler)
+    typealias _ResultHandler = (String?, Error?) -> Void
+    func deviceToken(handler: @escaping _ResultHandler)
 }
 
 extension Messaging: DeviceTokenProvider {
-    func deviceToken(handler: @escaping ResultHandler) {
+    func deviceToken(handler: @escaping _ResultHandler) {
         token(completion: handler)
     }
 }

@@ -1,9 +1,5 @@
-import Foundation
-#if RYTHMICO
-import ISO8601PeriodDuration
-#endif
+import FoundationSugar
 import PhoneNumberKit
-import Tagged
 
 struct Lesson: Decodable, Identifiable, Hashable {
     typealias ID = Tagged<Self, String>

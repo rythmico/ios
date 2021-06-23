@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 extension UserDefaults {
     enum Key: String {

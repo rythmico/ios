@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 extension PushNotificationAuthorizationCoordinator.Status {
     var isNotDetermined: Bool {

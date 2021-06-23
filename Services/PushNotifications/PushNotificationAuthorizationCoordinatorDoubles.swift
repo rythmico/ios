@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 extension PushNotificationAuthorizationCoordinator {
     static let dummy = PushNotificationAuthorizationCoordinator(

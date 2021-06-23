@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 extension Price {
     static let nonDecimalStub = Self(amount: 45, currency: .GBP)

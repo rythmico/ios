@@ -14,7 +14,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/abseil-cpp-SwiftPM</string>
 			<key>Title</key>
-			<string>abseil (0.20200225.3)</string>
+			<string>abseil (0.20200225.4)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -38,7 +38,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/boringssl-SwiftPM</string>
 			<key>Title</key>
-			<string>BoringSSL-GRPC (0.7.1)</string>
+			<string>BoringSSL-GRPC (0.7.2)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -78,7 +78,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/GoogleUtilities</string>
 			<key>Title</key>
-			<string>GoogleUtilities (7.4.1)</string>
+			<string>GoogleUtilities (7.4.2)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -182,7 +182,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/swift-composable-architecture</string>
 			<key>Title</key>
-			<string>swift-composable-architecture (0.18.0)</string>
+			<string>swift-composable-architecture (0.19.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -262,7 +262,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/ViewInspector</string>
 			<key>Title</key>
-			<string>ViewInspector (0.7.7)</string>
+			<string>ViewInspector (0.8.1)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>

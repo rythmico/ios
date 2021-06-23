@@ -1,5 +1,3 @@
-import Foundation
-
 extension NumberFormatter {
     public enum Format {
         case price

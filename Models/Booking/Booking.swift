@@ -1,6 +1,5 @@
-import Foundation
+import FoundationSugar
 import PhoneNumberKit
-import Tagged
 
 struct Booking: Equatable, Identifiable, Hashable {
     typealias ID = Tagged<Self, String>

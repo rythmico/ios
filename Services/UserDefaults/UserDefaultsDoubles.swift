@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 final class UserDefaultsFake: UserDefaults {
     private var inMemoryDefaults: [String: Any] = [:]

@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 import APIKit
 
 final class APIServiceStub<Request: AuthorizedAPIRequest>: APIServiceBase<Request> {

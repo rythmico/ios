@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 struct Portfolio: Equatable, Decodable, Hashable {
     struct Training: Equatable, Decodable, Hashable {

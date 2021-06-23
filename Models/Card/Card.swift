@@ -1,7 +1,6 @@
-import UIKit
 import FoundationSugar
+import UIKit
 import Stripe
-import Tagged
 
 struct Card: Equatable, Decodable, Identifiable, Hashable {
     typealias ID = Tagged<Self, String>

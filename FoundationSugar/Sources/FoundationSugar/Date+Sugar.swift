@@ -1,5 +1,3 @@
-import Foundation
-
 infix operator <- : AdditionPrecedence
 
 extension Date {

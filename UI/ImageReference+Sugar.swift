@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 extension ImageReference {
     static func asset(_ asset: ImageAsset) -> Self {

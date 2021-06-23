@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 typealias AuthenticationCommonError = AuthenticationError<AuthenticationErrorCommonReasonCode>
 typealias AuthenticationSignInError = AuthenticationError<AuthenticationErrorSignInReasonCode>

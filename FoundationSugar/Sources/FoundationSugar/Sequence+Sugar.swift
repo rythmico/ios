@@ -1,5 +1,3 @@
-import Foundation
-
 extension Sequence {
     @inlinable
     public func count(

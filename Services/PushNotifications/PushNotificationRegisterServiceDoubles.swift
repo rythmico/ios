@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 final class PushNotificationRegisterServiceSpy: PushNotificationRegisterServiceProtocol {
     var registerCount = 0

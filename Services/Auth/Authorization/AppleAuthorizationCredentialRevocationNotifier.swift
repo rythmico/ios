@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 import class AuthenticationServices.ASAuthorizationAppleIDProvider
 import FoundationSugar
 

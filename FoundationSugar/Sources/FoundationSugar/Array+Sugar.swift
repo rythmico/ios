@@ -1,5 +1,3 @@
-import Foundation
-
 @resultBuilder
 public struct ArrayBuilder<Element> {
     public typealias Array = Swift.Array<Element>

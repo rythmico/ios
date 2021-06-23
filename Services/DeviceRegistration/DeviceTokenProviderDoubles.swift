@@ -1,4 +1,4 @@
-import Foundation
+import FoundationSugar
 
 final class DeviceTokenProviderStub: DeviceTokenProvider {
     var result: Result<String, Error>
@@ -7,7 +7,7 @@ final class DeviceTokenProviderStub: DeviceTokenProvider {
         self.result = result
     }
 
-    func deviceToken(handler: @escaping ResultHandler) {
+    func deviceToken(handler: @escaping _ResultHandler) {
         switch result {
         case .success(let token):
             handler(token, nil)
@@ -18,5 +18,5 @@ final class DeviceTokenProviderStub: DeviceTokenProvider {
 }
 
 final class DeviceTokenProviderDummy: DeviceTokenProvider {
-    func deviceToken(handler: @escaping ResultHandler) {}
+    func deviceToken(handler: @escaping _ResultHandler) {}
 }
