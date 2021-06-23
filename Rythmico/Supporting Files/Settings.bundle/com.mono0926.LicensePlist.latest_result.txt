@@ -30,6 +30,8 @@ name: nanopb, nameSpecified: nanopb, owner: firebase, version: 2.30908.0
 
 name: PhoneNumberKit, nameSpecified: PhoneNumberKit, owner: marmelroy, version: 3.3.3
 
+name: PreciseDecimal, nameSpecified: PreciseDecimal, owner: davdroman, version: 1.0.0
+
 name: promises, nameSpecified: Promises, owner: google, version: 1.2.12
 
 name: SFSafeSymbols, nameSpecified: SFSafeSymbols, owner: piknotech, version: 2.1.3

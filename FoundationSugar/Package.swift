@@ -15,12 +15,16 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(url: "https://github.com/davdroman/PreciseDecimal", from: "1.0.0"),
         .package(url: "https://github.com/devxoul/Then", from: "2.7.0"),
     ],
     targets: [
         .target(
             name: "FoundationSugar",
-            dependencies: ["Then"]
+            dependencies: [
+                "PreciseDecimal",
+                "Then",
+            ]
         ),
         .testTarget(
             name: "FoundationSugarTests",

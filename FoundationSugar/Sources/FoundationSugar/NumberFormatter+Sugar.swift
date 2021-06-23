@@ -12,3 +12,12 @@ extension NumberFormatter {
         }
     }
 }
+
+extension NumberFormatter {
+    public func string(from decimal: Decimal) -> String {
+        guard let string = string(from: decimal as NSDecimalNumber) else {
+            preconditionFailure("Failed to format Decimal '\(decimal)'")
+        }
+        return string
+    }
+}

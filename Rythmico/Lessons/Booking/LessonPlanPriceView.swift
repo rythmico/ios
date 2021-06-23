@@ -12,7 +12,7 @@ struct LessonPlanPriceView: View {
         VStack(spacing: .spacingSmall) {
             HStack(spacing: .spacingSmall) {
                 Text("Price per lesson").rythmicoTextStyle(.bodyBold).frame(maxWidth: .infinity, alignment: .leading)
-                Text(Self.priceFormatter.string(for: price)).rythmicoTextStyle(.bodyBold).multilineTextAlignment(.trailing)
+                Text(Self.priceFormatter.string(from: price)).rythmicoTextStyle(.bodyBold).multilineTextAlignment(.trailing)
             }
             .foregroundColor(.rythmicoForeground)
 

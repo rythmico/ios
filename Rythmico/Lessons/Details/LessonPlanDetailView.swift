@@ -140,7 +140,11 @@ struct LessonPlanDetailView: View, TestableView {
         case .active, .paused:
             SectionHeaderView(title: "Payment")
             LessonPlanPriceView(
-                price: Price(amount: Decimal(lessonPlan.schedule.duration.rawValue), currency: .GBP), // TODO: consume `bookingInfo.pricePerLesson` property instead.
+                // TODO: consume `bookingInfo.pricePerLesson` property instead.
+                price: Price(
+                    amount: PreciseDecimal(lessonPlan.schedule.duration.rawValue),
+                    currency: .GBP
+                ),
                 showTermsOfService: false
             )
         case .pending, .reviewing, .cancelled: // TODO: consume `bookingInfo.pricePerLesson` property instead (for cancelled).
