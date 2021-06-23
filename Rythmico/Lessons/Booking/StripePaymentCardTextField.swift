@@ -1,6 +1,6 @@
+import FoundationSugar
 import SwiftUI
 import Stripe
-import Then
 
 struct StripePaymentCardTextField: UIViewRepresentable {
     @Binding var cardDetails: StripeCardDetails

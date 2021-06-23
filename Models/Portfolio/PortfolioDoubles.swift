@@ -1,5 +1,5 @@
 import UIKit
-import Then
+import FoundationSugar
 
 extension Portfolio: Then {}
 extension Portfolio.Training: Then {}

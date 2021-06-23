@@ -1,6 +1,6 @@
+import FoundationSugar
 import SwiftUI
 import SFSafeSymbols
-import Then
 
 extension NSAttributedString {
     typealias Attributes = [Key: Any]

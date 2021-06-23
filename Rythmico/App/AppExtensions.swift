@@ -1,6 +1,6 @@
+import FoundationSugar
 import SwiftUI
 import Stripe
-import Then
 
 extension App {
     static let id = "1493135894"

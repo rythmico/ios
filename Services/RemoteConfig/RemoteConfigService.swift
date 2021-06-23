@@ -1,6 +1,5 @@
 import FirebaseRemoteConfig
 import FoundationSugar
-import Then
 
 typealias FIRRemoteConfig = FirebaseRemoteConfig.RemoteConfig
 

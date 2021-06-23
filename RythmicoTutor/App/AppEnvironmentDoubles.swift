@@ -1,5 +1,5 @@
+import FoundationSugar
 import UIKit
-import Then
 
 extension AppEnvironment: Then {}
 

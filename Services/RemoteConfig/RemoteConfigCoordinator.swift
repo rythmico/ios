@@ -1,5 +1,4 @@
-import Foundation
-import Then
+import FoundationSugar
 
 final class RemoteConfigCoordinator: ObservableObject {
     private let service: RemoteConfigServiceProtocol

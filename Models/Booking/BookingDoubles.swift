@@ -1,5 +1,4 @@
-import Foundation
-import Then
+import FoundationSugar
 
 extension Booking: Then {}
 

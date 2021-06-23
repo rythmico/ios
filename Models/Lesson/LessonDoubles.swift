@@ -1,6 +1,4 @@
-import Foundation
 import FoundationSugar
-import Then
 
 extension Lesson: Then {}
 

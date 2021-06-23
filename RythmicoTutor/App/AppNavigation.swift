@@ -1,5 +1,5 @@
+import FoundationSugar
 import SwiftUI
-import Then
 
 final class AppNavigation: ObservableObject {
     @Published var selectedTab: MainView.Tab = .schedule
