@@ -1,5 +1,4 @@
-import Foundation
-import ISO8601PeriodDuration
+import FoundationSugar
 import Tagged
 
 struct LessonPlan: Identifiable, Hashable {

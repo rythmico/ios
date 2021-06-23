@@ -444,7 +444,6 @@
 		D59D0594251828EA0070D81B /* App+Playback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59D0592251828EA0070D81B /* App+Playback.swift */; };
 		D59E4E5625B2033200E8F94C /* YouTubeVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59E4E5325B2033200E8F94C /* YouTubeVideoPlayerView.swift */; };
 		D59E4E6125B20ADA00E8F94C /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = D59E4E6025B20ADA00E8F94C /* YouTubeiOSPlayerHelper */; };
-		D5A6154826628CB200457BBC /* ISO8601PeriodDuration in Frameworks */ = {isa = PBXBuildFile; productRef = D5A6154726628CB200457BBC /* ISO8601PeriodDuration */; };
 		D5A8C4BB25044A230006F5C5 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BA25044A230006F5C5 /* UserDefaults.swift */; };
 		D5A8C4BC25044A230006F5C5 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BA25044A230006F5C5 /* UserDefaults.swift */; };
 		D5A8C4BE25044A370006F5C5 /* UserDefaultsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */; };
@@ -1143,7 +1142,6 @@
 				D535547723DF3A19005A20EB /* Valet in Frameworks */,
 				D56C6A98264AC80C00A2599E /* ComposableNavigator in Frameworks */,
 				D5AC9E3B254D9533003A8197 /* FirebaseRemoteConfig in Frameworks */,
-				D5A6154826628CB200457BBC /* ISO8601PeriodDuration in Frameworks */,
 				D585217624CF81CE005D783A /* Introspect in Frameworks */,
 				D5FC2D44254A7DE3005056D5 /* FirebaseAuth in Frameworks */,
 				D5FC2D42254A7DE3005056D5 /* FirebaseMessaging in Frameworks */,
@@ -2416,7 +2414,6 @@
 				D510825E25E43123003C9467 /* FoundationSugar */,
 				D5ED519526226DB700D1B53A /* TextBuilder */,
 				D56C6A97264AC80C00A2599E /* ComposableNavigator */,
-				D5A6154726628CB200457BBC /* ISO8601PeriodDuration */,
 				D5CFB3722675242D006DBCE0 /* Amplitude */,
 			);
 			productName = Rythmico;
@@ -2557,7 +2554,6 @@
 				D54CFD1A25BB173000C012F3 /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */,
 				D5ED519426226DB700D1B53A /* XCRemoteSwiftPackageReference "TextBuilder" */,
 				D56C6A96264AC80B00A2599E /* XCRemoteSwiftPackageReference "swift-composable-navigator" */,
-				D5A6154626628CB200457BBC /* XCRemoteSwiftPackageReference "ISO8601PeriodDuration" */,
 				D5CFB3712675242C006DBCE0 /* XCRemoteSwiftPackageReference "Amplitude-iOS" */,
 			);
 			productRefGroup = 03341B3C23ABB1E7009AE8A8 /* Products */;
@@ -3900,14 +3896,6 @@
 				kind = branch;
 			};
 		};
-		D5A6154626628CB200457BBC /* XCRemoteSwiftPackageReference "ISO8601PeriodDuration" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/treatwell/ISO8601PeriodDuration";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.1.0;
-			};
-		};
 		D5BDD509253CCC4400255190 /* XCRemoteSwiftPackageReference "swift-tagged" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-tagged";
@@ -4057,11 +4045,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D59E4E5F25B20ADA00E8F94C /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
 			productName = YouTubeiOSPlayerHelper;
-		};
-		D5A6154726628CB200457BBC /* ISO8601PeriodDuration */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5A6154626628CB200457BBC /* XCRemoteSwiftPackageReference "ISO8601PeriodDuration" */;
-			productName = ISO8601PeriodDuration;
 		};
 		D5AC9E3A254D9533003A8197 /* FirebaseRemoteConfig */ = {
 			isa = XCSwiftPackageProductDependency;
