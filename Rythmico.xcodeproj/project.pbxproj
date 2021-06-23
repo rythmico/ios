@@ -50,7 +50,6 @@
 		035B1CC8249CF2AC00AABFEA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 035B1CC7249CF2AC00AABFEA /* Preview Assets.xcassets */; };
 		035B1CCB249CF2AC00AABFEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035B1CC9249CF2AC00AABFEA /* LaunchScreen.storyboard */; };
 		035B1CD2249CF5D000AABFEA /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1CD1249CF5D000AABFEA /* SFSafeSymbols */; };
-		035B1CD5249CF7E200AABFEA /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1CD4249CF7E200AABFEA /* Then */; };
 		035B1CD7249CF7EB00AABFEA /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1CD6249CF7EB00AABFEA /* Valet */; };
 		035B1CF1249CF9FA00AABFEA /* App+LaunchScreenCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CF0249CF9FA00AABFEA /* App+LaunchScreenCache.swift */; };
 		035B1CF6249CFA5700AABFEA /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506AF2405A6A900CA4094 /* Duration.swift */; };
@@ -257,7 +256,6 @@
 		D535553623E105A5005A20EB /* OnboardingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553523E105A5005A20EB /* OnboardingViewTests.swift */; };
 		D535553823E116C9005A20EB /* RootViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553723E116C9005A20EB /* RootViewTests.swift */; };
 		D535554723E20076005A20EB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554623E20076005A20EB /* Colors.swift */; };
-		D535554C23E23EA7005A20EB /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = D535554B23E23EA7005A20EB /* Then */; };
 		D535555023E4AB9A005A20EB /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */; };
 		D53555B523E53699005A20EB /* AuthenticationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561F23CE92AE00BC8485 /* AuthenticationError.swift */; };
 		D53555B623E53699005A20EB /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BC423C7AAA900B6FCB1 /* AuthenticationService.swift */; };
@@ -1140,7 +1138,6 @@
 			files = (
 				D510825F25E43123003C9467 /* FoundationSugar in Frameworks */,
 				D5BDD50B253CCC4400255190 /* Tagged in Frameworks */,
-				D535554C23E23EA7005A20EB /* Then in Frameworks */,
 				D535548123E0E7C1005A20EB /* SFSafeSymbols in Frameworks */,
 				D5D78DD7252502CE007041BE /* PhoneNumberKit in Frameworks */,
 				D535547723DF3A19005A20EB /* Valet in Frameworks */,
@@ -1173,7 +1170,6 @@
 				D5FC2D51254A7E21005056D5 /* FirebaseCrashlytics in Frameworks */,
 				D5F4AE8B2559D46A001085D5 /* PhoneNumberKit in Frameworks */,
 				D510826125E43129003C9467 /* FoundationSugar in Frameworks */,
-				035B1CD5249CF7E200AABFEA /* Then in Frameworks */,
 				D5B880932547AFF600754197 /* Tagged in Frameworks */,
 				D585217824CF81E8005D783A /* Introspect in Frameworks */,
 				D575C837254F10F0001664AB /* FirebaseRemoteConfig in Frameworks */,
@@ -2405,7 +2401,6 @@
 			packageProductDependencies = (
 				D535547623DF3A19005A20EB /* Valet */,
 				D535548023E0E7C1005A20EB /* SFSafeSymbols */,
-				D535554B23E23EA7005A20EB /* Then */,
 				03B19836247053F5005529EB /* APIKit */,
 				D585217524CF81CE005D783A /* Introspect */,
 				D5D78DD6252502CE007041BE /* PhoneNumberKit */,
@@ -2449,7 +2444,6 @@
 			name = RythmicoTutor;
 			packageProductDependencies = (
 				035B1CD1249CF5D000AABFEA /* SFSafeSymbols */,
-				035B1CD4249CF7E200AABFEA /* Then */,
 				035B1CD6249CF7EB00AABFEA /* Valet */,
 				035B1D68249E645E00AABFEA /* APIKit */,
 				D585217724CF81E8005D783A /* Introspect */,
@@ -2550,7 +2544,6 @@
 			packageReferences = (
 				D535547523DF3A19005A20EB /* XCRemoteSwiftPackageReference "Valet" */,
 				D535547F23E0E7C1005A20EB /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
-				D535554A23E23EA7005A20EB /* XCRemoteSwiftPackageReference "Then" */,
 				03B19835247053F5005529EB /* XCRemoteSwiftPackageReference "APIKit" */,
 				D56544D124CE4BA100281875 /* XCRemoteSwiftPackageReference "ViewInspector" */,
 				D585217424CF81CE005D783A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
@@ -3867,14 +3860,6 @@
 				minimumVersion = 2.1.2;
 			};
 		};
-		D535554A23E23EA7005A20EB /* XCRemoteSwiftPackageReference "Then" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/devxoul/Then";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.6.0;
-			};
-		};
 		D54CFD1A25BB173000C012F3 /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kylehickinson/SwiftUI-WebView";
@@ -3995,11 +3980,6 @@
 			package = D535547F23E0E7C1005A20EB /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
 			productName = SFSafeSymbols;
 		};
-		035B1CD4249CF7E200AABFEA /* Then */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D535554A23E23EA7005A20EB /* XCRemoteSwiftPackageReference "Then" */;
-			productName = Then;
-		};
 		035B1CD6249CF7EB00AABFEA /* Valet */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D535547523DF3A19005A20EB /* XCRemoteSwiftPackageReference "Valet" */;
@@ -4032,11 +4012,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D535547F23E0E7C1005A20EB /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
 			productName = SFSafeSymbols;
-		};
-		D535554B23E23EA7005A20EB /* Then */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D535554A23E23EA7005A20EB /* XCRemoteSwiftPackageReference "Then" */;
-			productName = Then;
 		};
 		D53668FC255EEDEF00A9D97D /* Stripe */ = {
 			isa = XCSwiftPackageProductDependency;
