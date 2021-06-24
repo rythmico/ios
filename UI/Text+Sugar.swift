@@ -1,6 +1,6 @@
 import SwiftUI
 
-// TODO: remove in Swift 5.5
+// TODO: remove in Swift 5.5, extend `StringProtocol` instead (`String+Sugar.swift:5`)
 // https://github.com/apple/swift-evolution/blob/main/proposals/0299-extend-generic-static-member-lookup.md
 
 @available(swift, obsoleted: 5.5)
