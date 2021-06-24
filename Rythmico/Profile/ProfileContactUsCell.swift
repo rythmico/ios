@@ -1,5 +1,4 @@
-import SwiftUI
-import FoundationSugar
+import SwiftUISugar
 
 struct ProfileContactUsCell: View {
     var body: some View {

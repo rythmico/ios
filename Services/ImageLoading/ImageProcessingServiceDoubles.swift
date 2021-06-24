@@ -1,6 +1,5 @@
 import FoundationSugar
 import class UIKit.UIImage
-import FoundationSugar
 
 final class ImageProcessingServiceStub: ImageProcessingServiceProtocol {
     var delay: TimeInterval?

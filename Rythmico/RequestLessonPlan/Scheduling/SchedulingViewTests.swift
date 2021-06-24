@@ -1,7 +1,7 @@
+import FoundationSugar
 import XCTest
 @testable import Rythmico
 import ViewInspector
-import FoundationSugar
 
 extension SchedulingView: Inspectable {}
 

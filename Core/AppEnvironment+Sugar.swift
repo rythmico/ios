@@ -1,5 +1,4 @@
-import FoundationSugar
-import UIKit
+import SwiftUISugar
 import Firebase
 #if RYTHMICO
 import Amplitude

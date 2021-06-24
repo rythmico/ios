@@ -1,6 +1,5 @@
-import SwiftUI
+import SwiftUISugar
 import ComposableNavigator
-import FoundationSugar
 
 struct LessonPlanCancellationScreen: Screen {
     let lessonPlan: LessonPlan

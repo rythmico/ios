@@ -1,5 +1,4 @@
-import SwiftUI
-import FoundationSugar
+import SwiftUISugar
 
 struct LessonPlanBookingPolicyView: View {
     var asset: ImageAsset

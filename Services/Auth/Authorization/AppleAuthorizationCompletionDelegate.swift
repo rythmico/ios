@@ -1,5 +1,5 @@
-import AuthenticationServices
 import FoundationSugar
+import AuthenticationServices
 
 /// Type-safe, closure-based `ASAuthorizationControllerDelegate` wrapper to be used only internally by `AppleAuthorizationService`.
 final class AppleAuthorizationCompletionDelegate: NSObject {

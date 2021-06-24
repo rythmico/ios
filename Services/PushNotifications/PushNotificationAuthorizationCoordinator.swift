@@ -1,6 +1,5 @@
-import UIKit
+import SwiftUISugar
 import Combine
-import FoundationSugar
 
 final class PushNotificationAuthorizationCoordinator: ObservableObject {
     enum Status {

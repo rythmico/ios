@@ -183,8 +183,6 @@
 		D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */; };
 		D509D836265EE55200B60DF0 /* LessonPlanResumingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509D835265EE55200B60DF0 /* LessonPlanResumingView.swift */; };
 		D509D838265EE56100B60DF0 /* LessonPlanResumingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509D837265EE56100B60DF0 /* LessonPlanResumingContentView.swift */; };
-		D510825F25E43123003C9467 /* FoundationSugar in Frameworks */ = {isa = PBXBuildFile; productRef = D510825E25E43123003C9467 /* FoundationSugar */; };
-		D510826125E43129003C9467 /* FoundationSugar in Frameworks */ = {isa = PBXBuildFile; productRef = D510826025E43129003C9467 /* FoundationSugar */; };
 		D514750F240C96F0002EE20C /* XCTAssertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147507240C8E69002EE20C /* XCTAssertView.swift */; };
 		D5147511240C99A9002EE20C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147510240C99A9002EE20C /* CustomTextField.swift */; };
 		D516A8FA253A1816002E6EDF /* CoordinatorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D516A8F9253A1816002E6EDF /* CoordinatorStateView.swift */; };
@@ -1118,7 +1116,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D510825F25E43123003C9467 /* FoundationSugar in Frameworks */,
 				D5D78DD7252502CE007041BE /* PhoneNumberKit in Frameworks */,
 				D535547723DF3A19005A20EB /* Valet in Frameworks */,
 				D56C6A98264AC80C00A2599E /* ComposableNavigator in Frameworks */,
@@ -1144,7 +1141,6 @@
 				D5FC2D51254A7E21005056D5 /* FirebaseCrashlytics in Frameworks */,
 				D5F4AE8B2559D46A001085D5 /* PhoneNumberKit in Frameworks */,
 				D5D5E8B026851A8800AACB8F /* SwiftUISugar in Frameworks */,
-				D510826125E43129003C9467 /* FoundationSugar in Frameworks */,
 				D575C837254F10F0001664AB /* FirebaseRemoteConfig in Frameworks */,
 				035B1D69249E645E00AABFEA /* APIKit in Frameworks */,
 			);
@@ -2386,7 +2382,6 @@
 				D5AC9E3A254D9533003A8197 /* FirebaseRemoteConfig */,
 				D53668FC255EEDEF00A9D97D /* Stripe */,
 				D59E4E6025B20ADA00E8F94C /* YouTubeiOSPlayerHelper */,
-				D510825E25E43123003C9467 /* FoundationSugar */,
 				D56C6A97264AC80C00A2599E /* ComposableNavigator */,
 				D5CFB3722675242D006DBCE0 /* Amplitude */,
 				D5D5E8AD26851A7800AACB8F /* SwiftUISugar */,
@@ -2422,7 +2417,6 @@
 				D5FC2D52254A7E21005056D5 /* FirebaseMessaging */,
 				D575C836254F10F0001664AB /* FirebaseRemoteConfig */,
 				D5F4AE8A2559D46A001085D5 /* PhoneNumberKit */,
-				D510826025E43129003C9467 /* FoundationSugar */,
 				D5D5E8AF26851A8800AACB8F /* SwiftUISugar */,
 			);
 			productName = RythmicoTutor;
@@ -3879,14 +3873,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 03B19835247053F5005529EB /* XCRemoteSwiftPackageReference "APIKit" */;
 			productName = APIKit;
-		};
-		D510825E25E43123003C9467 /* FoundationSugar */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FoundationSugar;
-		};
-		D510826025E43129003C9467 /* FoundationSugar */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FoundationSugar;
 		};
 		D535547623DF3A19005A20EB /* Valet */ = {
 			isa = XCSwiftPackageProductDependency;

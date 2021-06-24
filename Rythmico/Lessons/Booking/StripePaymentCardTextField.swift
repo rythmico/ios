@@ -1,5 +1,4 @@
-import FoundationSugar
-import SwiftUI
+import SwiftUISugar
 import Stripe
 
 struct StripePaymentCardTextField: UIViewRepresentable {

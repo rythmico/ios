@@ -1,5 +1,4 @@
-import UIKit
-import FoundationSugar
+import SwiftUISugar
 
 extension Portfolio: Then {}
 extension Portfolio.Training: Then {}

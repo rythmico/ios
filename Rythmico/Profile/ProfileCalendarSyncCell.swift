@@ -1,4 +1,3 @@
-import FoundationSugar
 import SwiftUISugar
 
 struct ProfileCalendarSyncCell: View {

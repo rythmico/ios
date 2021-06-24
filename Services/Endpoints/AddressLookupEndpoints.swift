@@ -1,5 +1,5 @@
-import APIKit
 import FoundationSugar
+import APIKit
 
 struct AddressSearchRequest: RythmicoAPIRequest {
     struct Properties {

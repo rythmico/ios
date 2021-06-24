@@ -1,5 +1,4 @@
-import FoundationSugar
-import UIKit
+import SwiftUISugar
 
 extension UIToolbar {
     static func dismissKeyboardTooltip(color: UIColor) -> UIToolbar {

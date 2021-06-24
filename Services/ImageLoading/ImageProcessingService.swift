@@ -1,5 +1,4 @@
-import UIKit
-import FoundationSugar
+import SwiftUISugar
 
 protocol ImageProcessingServiceProtocol {
     typealias CompletionHandler = Handler<UIImage>

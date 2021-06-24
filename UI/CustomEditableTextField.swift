@@ -1,5 +1,4 @@
-import SwiftUI
-import FoundationSugar
+import SwiftUISugar
 
 struct CustomEditableTextField<EditingView: View>: View {
     var placeholder: String

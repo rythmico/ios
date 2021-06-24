@@ -1,5 +1,4 @@
-import SwiftUI
-import FoundationSugar
+import SwiftUISugar
 
 struct RythmicoButton<Title: StringProtocol, Style: RythmicoButtonStyleProtocol>: View {
     var title: Title

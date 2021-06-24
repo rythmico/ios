@@ -1,5 +1,4 @@
-import SwiftUI
-import FoundationSugar
+import SwiftUISugar
 
 extension LessonPlanCancellationView {
     struct PromptView: View {

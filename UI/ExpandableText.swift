@@ -1,4 +1,3 @@
-import FoundationSugar
 import SwiftUISugar
 
 struct ExpandableText<Expander: View, Collapser: View>: View {

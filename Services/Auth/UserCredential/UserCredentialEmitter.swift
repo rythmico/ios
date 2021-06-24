@@ -1,6 +1,5 @@
 import FoundationSugar
 import FirebaseAuth
-import FoundationSugar
 
 protocol UserCredentialEmitterProtocol {
     typealias ListenerBlock = Handler<UserCredentialProtocol?>

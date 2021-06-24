@@ -1,5 +1,4 @@
-import SwiftUI
-import FoundationSugar
+import SwiftUISugar
 
 struct LessonPlanResumingContentView: View {
     var policy: LessonPlan.Options.Resume.Policy

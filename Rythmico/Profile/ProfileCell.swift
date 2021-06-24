@@ -1,5 +1,4 @@
-import SwiftUI
-import FoundationSugar
+import SwiftUISugar
 
 struct ProfileCell<Accessory: View>: View {
     var title: String

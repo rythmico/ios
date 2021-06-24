@@ -1,5 +1,4 @@
-import UIKit
-import FoundationSugar
+import SwiftUISugar
 
 struct AnalyticsUserProfile {
     var id: String

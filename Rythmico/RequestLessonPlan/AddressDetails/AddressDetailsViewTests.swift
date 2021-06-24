@@ -1,6 +1,5 @@
+import SwiftUISugar
 import XCTest
-import SwiftUI
-import FoundationSugar
 @testable import Rythmico
 import ViewInspector
 

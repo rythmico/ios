@@ -1,5 +1,4 @@
-import UIKit
-import FoundationSugar
+import SwiftUISugar
 
 protocol URLOpener {
     func open(_ url: URL)

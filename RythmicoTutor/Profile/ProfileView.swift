@@ -1,4 +1,3 @@
-import FoundationSugar
 import SwiftUISugar
 import class FirebaseAuth.Auth
 

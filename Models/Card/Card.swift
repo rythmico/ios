@@ -1,5 +1,4 @@
-import FoundationSugar
-import UIKit
+import SwiftUISugar
 import Stripe
 
 struct Card: Equatable, Decodable, Identifiable, Hashable {

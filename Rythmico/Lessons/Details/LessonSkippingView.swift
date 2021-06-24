@@ -1,6 +1,5 @@
-import SwiftUI
+import SwiftUISugar
 import ComposableNavigator
-import FoundationSugar
 
 struct LessonSkippingScreen: Screen {
     let lesson: Lesson
