@@ -1,7 +1,3 @@
-extension String: Identifiable {
-    public var id: String { self }
-}
-
 extension String {
     public static var empty: String { "" }
     public static var whitespace: String { " " }
