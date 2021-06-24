@@ -515,6 +515,8 @@
 		D5CFB3732675242D006DBCE0 /* Amplitude in Frameworks */ = {isa = PBXBuildFile; productRef = D5CFB3722675242D006DBCE0 /* Amplitude */; };
 		D5D32C5A25B9FB0E00F3ECD8 /* MultiModal in Frameworks */ = {isa = PBXBuildFile; productRef = D5D32C5925B9FB0E00F3ECD8 /* MultiModal */; };
 		D5D32C6525BA02E600F3ECD8 /* MultiModal in Frameworks */ = {isa = PBXBuildFile; productRef = D5D32C6425BA02E600F3ECD8 /* MultiModal */; };
+		D5D5E8AE26851A7800AACB8F /* SwiftUISugar in Frameworks */ = {isa = PBXBuildFile; productRef = D5D5E8AD26851A7800AACB8F /* SwiftUISugar */; };
+		D5D5E8B026851A8800AACB8F /* SwiftUISugar in Frameworks */ = {isa = PBXBuildFile; productRef = D5D5E8AF26851A8800AACB8F /* SwiftUISugar */; };
 		D5D78DD7252502CE007041BE /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = D5D78DD6252502CE007041BE /* PhoneNumberKit */; };
 		D5D78DE025250864007041BE /* LessonPlanBookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D78DDF25250864007041BE /* LessonPlanBookingView.swift */; };
 		D5D78E0C25257800007041BE /* PhoneNumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D78E0B25257800007041BE /* PhoneNumberField.swift */; };
@@ -1040,6 +1042,7 @@
 		D5CC5FF025029525007DFE84 /* ImageReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReference.swift; sourceTree = "<group>"; };
 		D5CCC33125A4C66A00E25B62 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		D5CCC5522559D7F400FE8522 /* PhoneNumberOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberOpener.swift; sourceTree = "<group>"; };
+		D5D5E8AB268518AB00AACB8F /* SwiftUISugar */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SwiftUISugar; sourceTree = "<group>"; };
 		D5D78DDF25250864007041BE /* LessonPlanBookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanBookingView.swift; sourceTree = "<group>"; };
 		D5D78E0B25257800007041BE /* PhoneNumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberField.swift; sourceTree = "<group>"; };
 		D5D7E2FD256DB8920081F8F7 /* LessonStudentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonStudentDetailView.swift; sourceTree = "<group>"; };
@@ -1146,6 +1149,7 @@
 				D5FC2D42254A7DE3005056D5 /* FirebaseMessaging in Frameworks */,
 				D5D32C5A25B9FB0E00F3ECD8 /* MultiModal in Frameworks */,
 				D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */,
+				D5D5E8AE26851A7800AACB8F /* SwiftUISugar in Frameworks */,
 				D5ED519626226DB700D1B53A /* TextBuilder in Frameworks */,
 				D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */,
 				03B19837247053F5005529EB /* APIKit in Frameworks */,
@@ -1165,6 +1169,7 @@
 				035B1CD2249CF5D000AABFEA /* SFSafeSymbols in Frameworks */,
 				D5FC2D51254A7E21005056D5 /* FirebaseCrashlytics in Frameworks */,
 				D5F4AE8B2559D46A001085D5 /* PhoneNumberKit in Frameworks */,
+				D5D5E8B026851A8800AACB8F /* SwiftUISugar in Frameworks */,
 				D510826125E43129003C9467 /* FoundationSugar in Frameworks */,
 				D585217824CF81E8005D783A /* Introspect in Frameworks */,
 				D575C837254F10F0001664AB /* FirebaseRemoteConfig in Frameworks */,
@@ -1221,6 +1226,7 @@
 				03EDA66A2476AE5500FBE527 /* Models */,
 				D5D5E8A92685143000AACB8F /* Packages */,
 				03341B3C23ABB1E7009AE8A8 /* Products */,
+				D5D5E8AC26851A7800AACB8F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2191,8 +2197,16 @@
 			isa = PBXGroup;
 			children = (
 				D510825B25E43099003C9467 /* FoundationSugar */,
+				D5D5E8AB268518AB00AACB8F /* SwiftUISugar */,
 			);
 			path = Packages;
+			sourceTree = "<group>";
+		};
+		D5D5E8AC26851A7800AACB8F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D5D78DDB25250810007041BE /* Applications */ = {
@@ -2411,6 +2425,7 @@
 				D5ED519526226DB700D1B53A /* TextBuilder */,
 				D56C6A97264AC80C00A2599E /* ComposableNavigator */,
 				D5CFB3722675242D006DBCE0 /* Amplitude */,
+				D5D5E8AD26851A7800AACB8F /* SwiftUISugar */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -2448,6 +2463,7 @@
 				D5D32C6425BA02E600F3ECD8 /* MultiModal */,
 				D54CFD1B25BB173000C012F3 /* WebView */,
 				D510826025E43129003C9467 /* FoundationSugar */,
+				D5D5E8AF26851A8800AACB8F /* SwiftUISugar */,
 			);
 			productName = RythmicoTutor;
 			productReference = 035B1CBC249CF2AA00AABFEA /* Tutor.app */;
@@ -4044,6 +4060,14 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5D32C5825B9FB0E00F3ECD8 /* XCRemoteSwiftPackageReference "MultiModal" */;
 			productName = MultiModal;
+		};
+		D5D5E8AD26851A7800AACB8F /* SwiftUISugar */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftUISugar;
+		};
+		D5D5E8AF26851A8800AACB8F /* SwiftUISugar */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftUISugar;
 		};
 		D5D78DD6252502CE007041BE /* PhoneNumberKit */ = {
 			isa = XCSwiftPackageProductDependency;
