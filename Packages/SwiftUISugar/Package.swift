@@ -18,6 +18,7 @@ let package = Package(
         .package(name: "Introspect", url: "https://github.com/siteline/SwiftUI-Introspect", from: "0.1.0"),
         .package(name: "MultiModal", url: "https://github.com/davdroman/MultiModal", from: "2.0.0"),
         .package(name: "SFSafeSymbols", url: "https://github.com/piknotech/SFSafeSymbols", from: "2.1.2"),
+        .package(name: "WebView", url: "https://github.com/kylehickinson/SwiftUI-WebView", from: "0.3.0"),
     ],
     targets: [
         .target(
@@ -26,6 +27,7 @@ let package = Package(
                 .product(name: "Introspect", package: "Introspect"),
                 .product(name: "MultiModal", package: "MultiModal"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
+                .product(name: "WebView", package: "WebView"),
             ]
         ),
         .testTarget(

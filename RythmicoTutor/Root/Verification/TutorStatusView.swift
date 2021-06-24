@@ -1,7 +1,6 @@
-import SwiftUI
-import WebView
-import WebKit
 import FoundationSugar
+import SwiftUISugar
+import WebKit
 
 extension WebViewStore: Then {}
 
