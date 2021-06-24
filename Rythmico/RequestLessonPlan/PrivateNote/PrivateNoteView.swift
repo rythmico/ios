@@ -1,6 +1,5 @@
-import SwiftUI
-import TextBuilder
 import FoundationSugar
+import SwiftUISugar
 
 struct PrivateNoteView: View, EditableView, TestableView {
     final class ViewState: ObservableObject {

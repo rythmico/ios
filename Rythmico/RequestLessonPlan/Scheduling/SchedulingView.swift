@@ -1,6 +1,5 @@
 import FoundationSugar
 import SwiftUISugar
-import TextBuilder
 
 struct SchedulingView: View, EditableView, TestableView {
     final class ViewState: ObservableObject {

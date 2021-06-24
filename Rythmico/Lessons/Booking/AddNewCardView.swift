@@ -1,5 +1,4 @@
-import SwiftUI
-import TextBuilder
+import SwiftUISugar
 
 struct AddNewCardView: View {
     @Environment(\.navigator) private var navigator

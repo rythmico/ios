@@ -1,6 +1,5 @@
-import SwiftUI
-import TextBuilder
 import FoundationSugar
+import SwiftUISugar
 
 struct StudentDetailsView: View, EditableView, TestableView {
     private enum Const {

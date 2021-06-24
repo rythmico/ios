@@ -1,6 +1,5 @@
-import SwiftUI
-import TextBuilder
 import FoundationSugar
+import SwiftUISugar
 
 struct LessonPlanSummaryCell: View {
     var lessonPlan: LessonPlan
