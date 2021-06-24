@@ -1,6 +1,5 @@
 import FoundationSugar
 import SwiftUISugar
-import MultiModal
 
 struct OnboardingView: View, TestableView {
     @State

@@ -501,8 +501,6 @@
 		D5CCC33225A4C66A00E25B62 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCC33125A4C66A00E25B62 /* ProfileView.swift */; };
 		D5CCC5532559D7F400FE8522 /* PhoneNumberOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCC5522559D7F400FE8522 /* PhoneNumberOpener.swift */; };
 		D5CFB3732675242D006DBCE0 /* Amplitude in Frameworks */ = {isa = PBXBuildFile; productRef = D5CFB3722675242D006DBCE0 /* Amplitude */; };
-		D5D32C5A25B9FB0E00F3ECD8 /* MultiModal in Frameworks */ = {isa = PBXBuildFile; productRef = D5D32C5925B9FB0E00F3ECD8 /* MultiModal */; };
-		D5D32C6525BA02E600F3ECD8 /* MultiModal in Frameworks */ = {isa = PBXBuildFile; productRef = D5D32C6425BA02E600F3ECD8 /* MultiModal */; };
 		D5D5E8AE26851A7800AACB8F /* SwiftUISugar in Frameworks */ = {isa = PBXBuildFile; productRef = D5D5E8AD26851A7800AACB8F /* SwiftUISugar */; };
 		D5D5E8B026851A8800AACB8F /* SwiftUISugar in Frameworks */ = {isa = PBXBuildFile; productRef = D5D5E8AF26851A8800AACB8F /* SwiftUISugar */; };
 		D5D78DD7252502CE007041BE /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = D5D78DD6252502CE007041BE /* PhoneNumberKit */; };
@@ -1129,7 +1127,6 @@
 				D5AC9E3B254D9533003A8197 /* FirebaseRemoteConfig in Frameworks */,
 				D5FC2D44254A7DE3005056D5 /* FirebaseAuth in Frameworks */,
 				D5FC2D42254A7DE3005056D5 /* FirebaseMessaging in Frameworks */,
-				D5D32C5A25B9FB0E00F3ECD8 /* MultiModal in Frameworks */,
 				D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */,
 				D5D5E8AE26851A7800AACB8F /* SwiftUISugar in Frameworks */,
 				D5ED519626226DB700D1B53A /* TextBuilder in Frameworks */,
@@ -1153,7 +1150,6 @@
 				D5D5E8B026851A8800AACB8F /* SwiftUISugar in Frameworks */,
 				D510826125E43129003C9467 /* FoundationSugar in Frameworks */,
 				D575C837254F10F0001664AB /* FirebaseRemoteConfig in Frameworks */,
-				D5D32C6525BA02E600F3ECD8 /* MultiModal in Frameworks */,
 				035B1D69249E645E00AABFEA /* APIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2394,7 +2390,6 @@
 				D5AC9E3A254D9533003A8197 /* FirebaseRemoteConfig */,
 				D53668FC255EEDEF00A9D97D /* Stripe */,
 				D59E4E6025B20ADA00E8F94C /* YouTubeiOSPlayerHelper */,
-				D5D32C5925B9FB0E00F3ECD8 /* MultiModal */,
 				D510825E25E43123003C9467 /* FoundationSugar */,
 				D5ED519526226DB700D1B53A /* TextBuilder */,
 				D56C6A97264AC80C00A2599E /* ComposableNavigator */,
@@ -2432,7 +2427,6 @@
 				D5FC2D52254A7E21005056D5 /* FirebaseMessaging */,
 				D575C836254F10F0001664AB /* FirebaseRemoteConfig */,
 				D5F4AE8A2559D46A001085D5 /* PhoneNumberKit */,
-				D5D32C6425BA02E600F3ECD8 /* MultiModal */,
 				D54CFD1B25BB173000C012F3 /* WebView */,
 				D510826025E43129003C9467 /* FoundationSugar */,
 				D5D5E8AF26851A8800AACB8F /* SwiftUISugar */,
@@ -2529,7 +2523,6 @@
 				D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */,
 				D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				D59E4E5F25B20ADA00E8F94C /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
-				D5D32C5825B9FB0E00F3ECD8 /* XCRemoteSwiftPackageReference "MultiModal" */,
 				D54CFD1A25BB173000C012F3 /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */,
 				D5ED519426226DB700D1B53A /* XCRemoteSwiftPackageReference "TextBuilder" */,
 				D56C6A96264AC80B00A2599E /* XCRemoteSwiftPackageReference "swift-composable-navigator" */,
@@ -3861,14 +3854,6 @@
 				minimumVersion = 8.3.0;
 			};
 		};
-		D5D32C5825B9FB0E00F3ECD8 /* XCRemoteSwiftPackageReference "MultiModal" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/davdroman/MultiModal";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 		D5D78DD5252502CE007041BE /* XCRemoteSwiftPackageReference "PhoneNumberKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marmelroy/PhoneNumberKit";
@@ -3976,16 +3961,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5CFB3712675242C006DBCE0 /* XCRemoteSwiftPackageReference "Amplitude-iOS" */;
 			productName = Amplitude;
-		};
-		D5D32C5925B9FB0E00F3ECD8 /* MultiModal */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5D32C5825B9FB0E00F3ECD8 /* XCRemoteSwiftPackageReference "MultiModal" */;
-			productName = MultiModal;
-		};
-		D5D32C6425BA02E600F3ECD8 /* MultiModal */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5D32C5825B9FB0E00F3ECD8 /* XCRemoteSwiftPackageReference "MultiModal" */;
-			productName = MultiModal;
 		};
 		D5D5E8AD26851A7800AACB8F /* SwiftUISugar */ = {
 			isa = XCSwiftPackageProductDependency;

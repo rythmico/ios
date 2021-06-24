@@ -1,7 +1,6 @@
-import SwiftUI
-import MultiModal
-import class FirebaseAuth.Auth
 import FoundationSugar
+import SwiftUISugar
+import class FirebaseAuth.Auth
 
 struct ProfileView: View, TestableView {
 //    private enum Const {

@@ -1,5 +1,4 @@
-import SwiftUI
-import MultiModal
+import SwiftUISugar
 import Combine
 
 struct BookingsView: View {

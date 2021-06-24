@@ -1,6 +1,5 @@
-import SwiftUI
-import MultiModal
 import FoundationSugar
+import SwiftUISugar
 
 extension LessonPlanCancellationView {
     struct ReasonView: View, TestableView {

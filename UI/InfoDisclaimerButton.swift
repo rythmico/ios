@@ -1,5 +1,4 @@
-import SwiftUI
-import MultiModal
+import SwiftUISugar
 
 struct InfoDisclaimerButton: View {
     var title: String
