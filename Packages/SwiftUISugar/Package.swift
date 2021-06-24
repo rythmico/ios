@@ -15,12 +15,14 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(name: "Introspect", url: "https://github.com/siteline/SwiftUI-Introspect", from: "0.1.0"),
         .package(url: "https://github.com/piknotech/SFSafeSymbols", from: "2.1.2"),
     ],
     targets: [
         .target(
             name: "SwiftUISugar",
             dependencies: [
+                .product(name: "Introspect", package: "Introspect"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
             ]
         ),

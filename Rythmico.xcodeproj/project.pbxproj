@@ -404,8 +404,6 @@
 		D5814A00251D7FFC0009BBB3 /* App+SplitViewCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58149FF251D7FFC0009BBB3 /* App+SplitViewCustomization.swift */; };
 		D5814A01251D7FFC0009BBB3 /* App+SplitViewCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58149FF251D7FFC0009BBB3 /* App+SplitViewCustomization.swift */; };
 		D5814A0A251D957D0009BBB3 /* MainViewContent+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5814A08251D957D0009BBB3 /* MainViewContent+Tutor.swift */; };
-		D585217624CF81CE005D783A /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = D585217524CF81CE005D783A /* Introspect */; };
-		D585217824CF81E8005D783A /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = D585217724CF81E8005D783A /* Introspect */; };
 		D585D5B12511299800B74091 /* LessonPlanApplicationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D585D5B02511299800B74091 /* LessonPlanApplicationDetailView.swift */; };
 		D58824BF251A6953000820F4 /* LessonPlanApplicationsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58824BE251A6953000820F4 /* LessonPlanApplicationsGridView.swift */; };
 		D58824C4251A6D49000820F4 /* LessonsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58824C3251A6D49000820F4 /* LessonsCollectionView.swift */; };
@@ -1129,7 +1127,6 @@
 				D535547723DF3A19005A20EB /* Valet in Frameworks */,
 				D56C6A98264AC80C00A2599E /* ComposableNavigator in Frameworks */,
 				D5AC9E3B254D9533003A8197 /* FirebaseRemoteConfig in Frameworks */,
-				D585217624CF81CE005D783A /* Introspect in Frameworks */,
 				D5FC2D44254A7DE3005056D5 /* FirebaseAuth in Frameworks */,
 				D5FC2D42254A7DE3005056D5 /* FirebaseMessaging in Frameworks */,
 				D5D32C5A25B9FB0E00F3ECD8 /* MultiModal in Frameworks */,
@@ -1155,7 +1152,6 @@
 				D5F4AE8B2559D46A001085D5 /* PhoneNumberKit in Frameworks */,
 				D5D5E8B026851A8800AACB8F /* SwiftUISugar in Frameworks */,
 				D510826125E43129003C9467 /* FoundationSugar in Frameworks */,
-				D585217824CF81E8005D783A /* Introspect in Frameworks */,
 				D575C837254F10F0001664AB /* FirebaseRemoteConfig in Frameworks */,
 				D5D32C6525BA02E600F3ECD8 /* MultiModal in Frameworks */,
 				035B1D69249E645E00AABFEA /* APIKit in Frameworks */,
@@ -2391,7 +2387,6 @@
 			packageProductDependencies = (
 				D535547623DF3A19005A20EB /* Valet */,
 				03B19836247053F5005529EB /* APIKit */,
-				D585217524CF81CE005D783A /* Introspect */,
 				D5D78DD6252502CE007041BE /* PhoneNumberKit */,
 				D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */,
 				D5FC2D41254A7DE3005056D5 /* FirebaseMessaging */,
@@ -2432,7 +2427,6 @@
 			packageProductDependencies = (
 				035B1CD6249CF7EB00AABFEA /* Valet */,
 				035B1D68249E645E00AABFEA /* APIKit */,
-				D585217724CF81E8005D783A /* Introspect */,
 				D5FC2D4E254A7E21005056D5 /* FirebaseAuth */,
 				D5FC2D50254A7E21005056D5 /* FirebaseCrashlytics */,
 				D5FC2D52254A7E21005056D5 /* FirebaseMessaging */,
@@ -2531,7 +2525,6 @@
 				D535547523DF3A19005A20EB /* XCRemoteSwiftPackageReference "Valet" */,
 				03B19835247053F5005529EB /* XCRemoteSwiftPackageReference "APIKit" */,
 				D56544D124CE4BA100281875 /* XCRemoteSwiftPackageReference "ViewInspector" */,
-				D585217424CF81CE005D783A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				D5D78DD5252502CE007041BE /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
 				D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */,
 				D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
@@ -3852,14 +3845,6 @@
 				minimumVersion = 0.2.0;
 			};
 		};
-		D585217424CF81CE005D783A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
-			};
-		};
 		D59E4E5F25B20ADA00E8F94C /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ivanlisovyi/youtube-ios-player-helper";
@@ -3976,16 +3961,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseRemoteConfig;
-		};
-		D585217524CF81CE005D783A /* Introspect */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D585217424CF81CE005D783A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
-			productName = Introspect;
-		};
-		D585217724CF81E8005D783A /* Introspect */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D585217424CF81CE005D783A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
-			productName = Introspect;
 		};
 		D59E4E6025B20ADA00E8F94C /* YouTubeiOSPlayerHelper */ = {
 			isa = XCSwiftPackageProductDependency;

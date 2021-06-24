@@ -1,5 +1,4 @@
-import SwiftUI
-import Introspect
+import SwiftUISugar
 
 extension View {
     func navigationViewFixInteractiveDismissal() -> some View {
