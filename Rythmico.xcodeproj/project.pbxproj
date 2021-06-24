@@ -48,7 +48,6 @@
 		035B1CC5249CF2AC00AABFEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 035B1CC4249CF2AC00AABFEA /* Assets.xcassets */; };
 		035B1CC8249CF2AC00AABFEA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 035B1CC7249CF2AC00AABFEA /* Preview Assets.xcassets */; };
 		035B1CCB249CF2AC00AABFEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035B1CC9249CF2AC00AABFEA /* LaunchScreen.storyboard */; };
-		035B1CD2249CF5D000AABFEA /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1CD1249CF5D000AABFEA /* SFSafeSymbols */; };
 		035B1CD7249CF7EB00AABFEA /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1CD6249CF7EB00AABFEA /* Valet */; };
 		035B1CF1249CF9FA00AABFEA /* App+LaunchScreenCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CF0249CF9FA00AABFEA /* App+LaunchScreenCache.swift */; };
 		035B1CF6249CFA5700AABFEA /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506AF2405A6A900CA4094 /* Duration.swift */; };
@@ -248,7 +247,6 @@
 		D535547723DF3A19005A20EB /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = D535547623DF3A19005A20EB /* Valet */; };
 		D535547923DF3A7C005A20EB /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547823DF3A7C005A20EB /* Keychain.swift */; };
 		D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547D23DF4F44005A20EB /* KeychainDoubles.swift */; };
-		D535548123E0E7C1005A20EB /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = D535548023E0E7C1005A20EB /* SFSafeSymbols */; };
 		D535553623E105A5005A20EB /* OnboardingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553523E105A5005A20EB /* OnboardingViewTests.swift */; };
 		D535553823E116C9005A20EB /* RootViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553723E116C9005A20EB /* RootViewTests.swift */; };
 		D535554723E20076005A20EB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554623E20076005A20EB /* Colors.swift */; };
@@ -1127,7 +1125,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D510825F25E43123003C9467 /* FoundationSugar in Frameworks */,
-				D535548123E0E7C1005A20EB /* SFSafeSymbols in Frameworks */,
 				D5D78DD7252502CE007041BE /* PhoneNumberKit in Frameworks */,
 				D535547723DF3A19005A20EB /* Valet in Frameworks */,
 				D56C6A98264AC80C00A2599E /* ComposableNavigator in Frameworks */,
@@ -1154,7 +1151,6 @@
 				D5FC2D53254A7E21005056D5 /* FirebaseMessaging in Frameworks */,
 				D5FC2D4F254A7E21005056D5 /* FirebaseAuth in Frameworks */,
 				035B1CD7249CF7EB00AABFEA /* Valet in Frameworks */,
-				035B1CD2249CF5D000AABFEA /* SFSafeSymbols in Frameworks */,
 				D5FC2D51254A7E21005056D5 /* FirebaseCrashlytics in Frameworks */,
 				D5F4AE8B2559D46A001085D5 /* PhoneNumberKit in Frameworks */,
 				D5D5E8B026851A8800AACB8F /* SwiftUISugar in Frameworks */,
@@ -2394,7 +2390,6 @@
 			name = Rythmico;
 			packageProductDependencies = (
 				D535547623DF3A19005A20EB /* Valet */,
-				D535548023E0E7C1005A20EB /* SFSafeSymbols */,
 				03B19836247053F5005529EB /* APIKit */,
 				D585217524CF81CE005D783A /* Introspect */,
 				D5D78DD6252502CE007041BE /* PhoneNumberKit */,
@@ -2435,7 +2430,6 @@
 			);
 			name = RythmicoTutor;
 			packageProductDependencies = (
-				035B1CD1249CF5D000AABFEA /* SFSafeSymbols */,
 				035B1CD6249CF7EB00AABFEA /* Valet */,
 				035B1D68249E645E00AABFEA /* APIKit */,
 				D585217724CF81E8005D783A /* Introspect */,
@@ -2535,7 +2529,6 @@
 			mainGroup = 03341B3223ABB1E7009AE8A8;
 			packageReferences = (
 				D535547523DF3A19005A20EB /* XCRemoteSwiftPackageReference "Valet" */,
-				D535547F23E0E7C1005A20EB /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				03B19835247053F5005529EB /* XCRemoteSwiftPackageReference "APIKit" */,
 				D56544D124CE4BA100281875 /* XCRemoteSwiftPackageReference "ViewInspector" */,
 				D585217424CF81CE005D783A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
@@ -3835,14 +3828,6 @@
 				minimumVersion = 4.1.1;
 			};
 		};
-		D535547F23E0E7C1005A20EB /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/piknotech/SFSafeSymbols";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.2;
-			};
-		};
 		D54CFD1A25BB173000C012F3 /* XCRemoteSwiftPackageReference "SwiftUI-WebView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kylehickinson/SwiftUI-WebView";
@@ -3934,11 +3919,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		035B1CD1249CF5D000AABFEA /* SFSafeSymbols */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D535547F23E0E7C1005A20EB /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
-			productName = SFSafeSymbols;
-		};
 		035B1CD6249CF7EB00AABFEA /* Valet */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D535547523DF3A19005A20EB /* XCRemoteSwiftPackageReference "Valet" */;
@@ -3966,11 +3946,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D535547523DF3A19005A20EB /* XCRemoteSwiftPackageReference "Valet" */;
 			productName = Valet;
-		};
-		D535548023E0E7C1005A20EB /* SFSafeSymbols */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D535547F23E0E7C1005A20EB /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
-			productName = SFSafeSymbols;
 		};
 		D53668FC255EEDEF00A9D97D /* Stripe */ = {
 			isa = XCSwiftPackageProductDependency;
