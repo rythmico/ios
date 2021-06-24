@@ -1,7 +1,8 @@
+#if canImport(AuthenticationServices)
 import SwiftUI
 import AuthenticationServices
 
-struct AuthorizationAppleIDButton: View {
+public struct AppleIDAuthButton: View {
     private enum Const {
         static let maxWidth: CGFloat = 320
         static let regularHeight: CGFloat = 44
@@ -12,10 +13,15 @@ struct AuthorizationAppleIDButton: View {
     @ScaledMetric(relativeTo: .largeTitle)
     private var height = Const.regularHeight
 
-    var type: SignInWithAppleButton.Label = .continue
-    var action: () -> Void
+    public var type: SignInWithAppleButton.Label
+    public var action: () -> Void
 
-    var body: some View {
+    public init(type: SignInWithAppleButton.Label = .continue, action: @escaping () -> Void) {
+        self.type = type
+        self.action = action
+    }
+
+    public var body: some View {
         Button(action: action) {
             SignInWithAppleButton(type, onRequest: { _ in }, onCompletion: { _ in })
                 .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
@@ -32,7 +38,7 @@ struct AuthorizationAppleIDButton_Preview: PreviewProvider {
         ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
             ZStack {
                 Color.blue
-                AuthorizationAppleIDButton {}
+                AppleIDAuthButton {}
                     .environment(\.colorScheme, colorScheme)
                     .environment(\.sizeCategory, .extraSmall)
 //                    .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
@@ -42,4 +48,5 @@ struct AuthorizationAppleIDButton_Preview: PreviewProvider {
         .previewLayout(.sizeThatFits)
     }
 }
+#endif
 #endif

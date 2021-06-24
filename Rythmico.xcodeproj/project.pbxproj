@@ -56,7 +56,6 @@
 		035B1D13249E563A00AABFEA /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D12249E563A00AABFEA /* OnboardingView.swift */; };
 		035B1D14249E565200AABFEA /* TestableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147506240C8E69002EE20C /* TestableView.swift */; };
 		035B1D15249E565200AABFEA /* TestableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147506240C8E69002EE20C /* TestableView.swift */; };
-		035B1D16249E565C00AABFEA /* AuthorizationAppleIDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */; };
 		035B1D17249E566800AABFEA /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */; };
 		035B1D1A249E568600AABFEA /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D19249E568600AABFEA /* AppEnvironment.swift */; };
 		035B1D30249E571B00AABFEA /* VoiceOverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF3072491A51D004A01B2 /* VoiceOverService.swift */; };
@@ -183,7 +182,6 @@
 		D509898023B969B700C19300 /* GoogleService-Info-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */; };
 		D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898423B9B5C100C19300 /* GoogleService-Info.plist */; };
 		D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */; };
-		D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */; };
 		D509D836265EE55200B60DF0 /* LessonPlanResumingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509D835265EE55200B60DF0 /* LessonPlanResumingView.swift */; };
 		D509D838265EE56100B60DF0 /* LessonPlanResumingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509D837265EE56100B60DF0 /* LessonPlanResumingContentView.swift */; };
 		D510825F25E43123003C9467 /* FoundationSugar in Frameworks */ = {isa = PBXBuildFile; productRef = D510825E25E43123003C9467 /* FoundationSugar */; };
@@ -793,7 +791,6 @@
 		D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Release.plist"; sourceTree = "<group>"; };
 		D509898423B9B5C100C19300 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
-		D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationAppleIDButton.swift; sourceTree = "<group>"; };
 		D509899023BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCompletionDelegate.swift; sourceTree = "<group>"; };
 		D509D835265EE55200B60DF0 /* LessonPlanResumingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanResumingView.swift; sourceTree = "<group>"; };
 		D509D837265EE56100B60DF0 /* LessonPlanResumingContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanResumingContentView.swift; sourceTree = "<group>"; };
@@ -1659,7 +1656,6 @@
 				D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */,
 				03A3F6ED2447DFF900F6391D /* Animation.swift */,
 				D5989BAE251662F400BED8A6 /* AsyncImage.swift */,
-				D509898E23BA79D600C19300 /* AuthorizationAppleIDButton.swift */,
 				D527B00A24FD3297003E81A9 /* AvatarStackView.swift */,
 				D527B00824FD2047003E81A9 /* AvatarView.swift */,
 				D5F5065C23FF16AA00CA4094 /* BackButton.swift */,
@@ -3002,7 +2998,6 @@
 				D5D7E2F6256DB36D0081F8F7 /* NavigationLink+Hidden.swift in Sources */,
 				D54EFF2A2513DDDB004F14D3 /* PortfolioEndpoints.swift in Sources */,
 				0372E35A249ABAB80048B402 /* SelectableList.swift in Sources */,
-				D509898F23BA79D600C19300 /* AuthorizationAppleIDButton.swift in Sources */,
 				D527CC1B260CB34400C480F5 /* URLOpener+Rythmico.swift in Sources */,
 				D54340FD261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift in Sources */,
 				D5F506B02405A6A900CA4094 /* Duration.swift in Sources */,
@@ -3342,7 +3337,6 @@
 				D588E882266D137400E14288 /* ErrorLoggerDoubles.swift in Sources */,
 				03E88EAF24C1F74D0077A420 /* AppExtensions.swift in Sources */,
 				D54F711125474E6F00D73E1E /* AppNavigation.swift in Sources */,
-				035B1D16249E565C00AABFEA /* AuthorizationAppleIDButton.swift in Sources */,
 				D5F4D3E324F04479000E8580 /* BookingApplicationEndpoints.swift in Sources */,
 				D54F71182547523100D73E1E /* DismissKeyboardTooltip.swift in Sources */,
 				D54EE3A825BDBB0B00C91FA6 /* FlowView.swift in Sources */,

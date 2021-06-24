@@ -1,6 +1,6 @@
-import SwiftUI
-import MultiModal
 import FoundationSugar
+import SwiftUISugar
+import MultiModal
 
 struct OnboardingView: View, TestableView {
     @State
@@ -22,7 +22,7 @@ struct OnboardingView: View, TestableView {
                     ActivityIndicator()
                         .frame(width: 44, height: 44)
                 } else {
-                    AuthorizationAppleIDButton(action: authenticateWithApple)
+                    AppleIDAuthButton(action: authenticateWithApple)
                         .accessibility(hint: Text("Double tap to sign in with your Apple ID"))
                         .disabled(!isAppleAuthorizationButtonEnabled)
                 }

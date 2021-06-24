@@ -1,5 +1,5 @@
-import SwiftUI
 import FoundationSugar
+import SwiftUISugar
 
 struct OnboardingView: View, TestableView {
     @State
@@ -17,7 +17,7 @@ struct OnboardingView: View, TestableView {
             Spacer(minLength: 0)
             OnboardingSlideshowView()
             Spacer(minLength: .grid(5))
-            AuthorizationAppleIDButton(action: authenticateWithApple)
+            AppleIDAuthButton(action: authenticateWithApple)
                 .accessibility(hint: Text("Double tap to sign in with your Apple ID"))
                 .disabled(!isAppleAuthorizationButtonEnabled)
                 .opacity(isAppleAuthorizationButtonEnabled ? 1 : 0)
