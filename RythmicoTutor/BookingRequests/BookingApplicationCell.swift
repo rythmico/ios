@@ -4,10 +4,10 @@ struct BookingApplicationCell: View {
     var application: BookingApplication
 
     var body: some View {
-        HStack(spacing: .spacingUnit * 2) {
+        HStack(spacing: .grid(2)) {
             Dot(color: application.statusInfo.status.color)
-            HStack(spacing: .spacingMedium) {
-                VStack(alignment: .leading, spacing: .spacingUnit / 2) {
+            HStack(spacing: .grid(5)) {
+                VStack(alignment: .leading, spacing: .grid(0.5)) {
                     Text(title)
                         .foregroundColor(.primary)
                         .font(.body)
@@ -22,7 +22,7 @@ struct BookingApplicationCell: View {
                     .font(.footnote)
             }
         }
-        .padding(.vertical, .spacingUnit)
+        .padding(.vertical, .grid(1))
     }
 
     private var title: String {
@@ -56,7 +56,7 @@ struct BookingApplicationCell_Previews: PreviewProvider {
         ForEach(BookingApplication.Status.allCases, id: \.self) { status in
             BookingApplicationCell(application: .stub(.stub(status)))
         }
-        .padding(.horizontal, .spacingExtraSmall)
+        .padding(.horizontal, .grid(3))
         .previewLayout(.sizeThatFits)
     }
 }

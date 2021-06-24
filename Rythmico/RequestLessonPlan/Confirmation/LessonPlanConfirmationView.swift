@@ -61,12 +61,12 @@ struct LessonPlanConfirmationView: View, TestableView {
         VStack(spacing: 0) {
             GeometryReader { geometry in
                 ScrollView(showsIndicators: false) {
-                    VStack(spacing: .spacingUnit * 8) {
-                        VStack(spacing: .spacingLarge) {
+                    VStack(spacing: .grid(8)) {
+                        VStack(spacing: .grid(6)) {
                             Image(uiImage: lessonPlan.instrument.icon.image)
                                 .foregroundColor(.rythmicoForeground)
 
-                            VStack(spacing: .spacingSmall) {
+                            VStack(spacing: .grid(4)) {
                                 Text(title)
                                     .foregroundColor(.rythmicoForeground)
                                     .rythmicoTextStyle(.largeTitle)
@@ -85,8 +85,8 @@ struct LessonPlanConfirmationView: View, TestableView {
 
                         addToCalendarButton
                     }
-                    .padding(.horizontal, .spacingMedium)
-                    .padding(.vertical, .spacingLarge)
+                    .padding(.horizontal, .grid(5))
+                    .padding(.vertical, .grid(6))
                     .frame(width: geometry.size.width)
                     .frame(minHeight: geometry.size.height)
                 }

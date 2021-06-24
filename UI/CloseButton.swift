@@ -7,8 +7,8 @@ struct CloseButton: View {
         Button(action: action) {
             HStack {
                 Image(systemSymbol: .xmark).font(.system(size: 21, weight: .semibold))
-                    .padding(.horizontal, .spacingExtraLarge)
-                    .offset(x: .spacingExtraLarge)
+                    .padding(.horizontal, .grid(7))
+                    .offset(x: .grid(7))
             }
         }
         .foregroundColor(.accentColor)

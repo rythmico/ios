@@ -9,7 +9,7 @@ struct Pill<Content: View>: View {
     var body: some View {
         content
             .padding(.vertical, 1)
-            .padding(.horizontal, .spacingUnit * 3.5)
+            .padding(.horizontal, .grid(3.5))
             .frame(minWidth: 96)
             .background(
                 backgroundColor

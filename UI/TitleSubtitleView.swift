@@ -14,8 +14,8 @@ struct TitleSubtitleView: View {
             subtitle?
                 .foregroundColor(.rythmicoGray90)
                 .rythmicoTextStyle(.body)
-                .frame(maxWidth: .spacingMax, alignment: .leading)
-                .padding(.horizontal, .spacingMedium)
+                .frame(maxWidth: .grid(.max), alignment: .leading)
+                .padding(.horizontal, .grid(5))
                 .transition(.offset(y: -50) + .opacity)
         }
     }

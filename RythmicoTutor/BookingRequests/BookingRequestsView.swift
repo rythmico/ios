@@ -27,7 +27,7 @@ struct BookingRequestsView: View {
     var body: some View {
         List {
             Section(
-                header: HStack(spacing: .spacingUnit * 2) {
+                header: HStack(spacing: .grid(2)) {
                     Text("UPCOMING")
                     if isLoading {
                         ActivityIndicator()

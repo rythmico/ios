@@ -5,7 +5,7 @@ struct LessonPlanResumingContentView: View {
     var policy: LessonPlan.Options.Resume.Policy
 
     var body: some View {
-        VStack(spacing: .spacingMedium) {
+        VStack(spacing: .grid(5)) {
             descriptionText("This will resume the lesson plan, including upcoming lessons. The recurring payment will also be resumed.")
             InfoBanner(text:
                 """
@@ -22,7 +22,7 @@ struct LessonPlanResumingContentView: View {
         Text(string)
             .foregroundColor(.rythmicoGray90)
             .rythmicoTextStyle(.body)
-            .frame(maxWidth: .spacingMax, alignment: .leading)
+            .frame(maxWidth: .grid(.max), alignment: .leading)
     }
 
     private static let formatter = Current.dateComponentsFormatter(allowedUnits: [.hour, .minute], style: .full)
@@ -33,7 +33,7 @@ struct LessonPlanResumingContentView: View {
 struct LessonPlanResumingContentView_Preview: PreviewProvider {
     static var previews: some View {
         LessonPlanResumingContentView(policy: .stub)
-            .padding(.spacingMedium)
+            .padding(.grid(5))
     }
 }
 #endif

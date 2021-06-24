@@ -6,20 +6,20 @@ struct LessonPlanApplicationsGridView: View {
     var applications: [LessonPlan.Application]
 
     var columns = Array(
-        repeating: GridItem(.flexible(), spacing: .spacingSmall),
+        repeating: GridItem(.flexible(), spacing: .grid(4)),
         count: 2
     )
 
     var body: some View {
         ScrollView(showsIndicators: false) {
-            LazyVGrid(columns: columns, alignment: .center, spacing: .spacingSmall) {
+            LazyVGrid(columns: columns, alignment: .center, spacing: .grid(4)) {
                 ForEach(applications, id: \.self) {
                     LessonPlanApplicationsGridLink(lessonPlan: lessonPlan, application: $0)
                 }
             }
-            .frame(maxWidth: .spacingMax)
-            .padding(.top, .spacingUnit * 2)
-            .padding(.horizontal, .spacingMedium)
+            .frame(maxWidth: .grid(.max))
+            .padding(.top, .grid(2))
+            .padding(.horizontal, .grid(5))
         }
     }
 }

@@ -6,8 +6,8 @@ struct LessonPlanApplicationDetailMessageView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: .spacingMedium) {
-                VStack(spacing: .spacingSmall) {
+            VStack(spacing: .grid(5)) {
+                VStack(spacing: .grid(4)) {
                     if let privateNote = privateNote {
                         Text(privateNoteHeader)
                             .rythmicoTextStyle(.subheadlineBold)
@@ -25,13 +25,13 @@ struct LessonPlanApplicationDetailMessageView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
-                .frame(maxWidth: .spacingMax)
-                .padding(.horizontal, .spacingMedium)
+                .frame(maxWidth: .grid(.max))
+                .padding(.horizontal, .grid(5))
 
                 Divider().overlay(Color.rythmicoGray20)
 
-                VStack(spacing: .spacingSmall) {
-                    HStack(spacing: .spacingSmall) {
+                VStack(spacing: .grid(4)) {
+                    HStack(spacing: .grid(4)) {
                         Text("Lesson Schedule")
                             .rythmicoTextStyle(.subheadlineBold)
                             .foregroundColor(.rythmicoForeground)
@@ -43,10 +43,10 @@ struct LessonPlanApplicationDetailMessageView: View {
 
                     LessonPlanRequestedScheduleView(lessonPlan.schedule, tutor: nil)
                 }
-                .frame(maxWidth: .spacingMax)
-                .padding(.horizontal, .spacingMedium)
+                .frame(maxWidth: .grid(.max))
+                .padding(.horizontal, .grid(5))
             }
-            .padding(.vertical, .spacingMedium)
+            .padding(.vertical, .grid(5))
         }
     }
 

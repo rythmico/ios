@@ -28,7 +28,7 @@ struct AppUpdatePrompt: View {
 
     var body: some View {
         NavigationView {
-            VStack(spacing: .spacingSmall) {
+            VStack(spacing: .grid(4)) {
                 Text("Please download the latest version of \(App.name) to be able to continue.")
                     .appUpdatePromptDescription()
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
@@ -57,7 +57,7 @@ struct AppUpdatePrompt: View {
             .navigationBarTitle("Update Required")
             .navigationBarTitleDisplayMode(.large)
             .padding([.horizontal, .bottom], inset)
-            .padding(.top, .spacingUnit * 2)
+            .padding(.top, .grid(2))
             .multilineTextAlignment(.leading)
         }
         .onEvent(.appInForeground, perform: refreshTestFlightAppInstalledIfNeeded)
@@ -83,7 +83,7 @@ struct AppUpdatePrompt: View {
 
     private var inset: CGFloat {
         #if RYTHMICO
-        return .spacingMedium
+        return .grid(5)
         #elseif TUTOR
         return 17
         #endif

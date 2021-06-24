@@ -1,15 +1,5 @@
 import SwiftUI
 
-extension CGFloat {
-    static let spacingUnit: CGFloat = 4
-    static let spacingExtraSmall: CGFloat = spacingUnit * 3
-    static let spacingSmall: CGFloat = spacingUnit * 4
-    static let spacingMedium: CGFloat = spacingUnit * 5
-    static let spacingLarge: CGFloat = spacingUnit * 6
-    static let spacingExtraLarge: CGFloat = spacingUnit * 7
-    static let spacingMax: CGFloat = spacingUnit * 125
-}
-
 extension EdgeInsets {
     init(top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) {
         self.init()

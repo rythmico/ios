@@ -70,7 +70,7 @@ struct ProfileView: View, TestableView {
 //            .font(.subheadline)
             .foregroundColor(.secondary)
 //            .padding(.horizontal, Const.horizontalMargins)
-//            .padding(.bottom, .spacingUnit * 2)
+//            .padding(.bottom, .grid(2))
     }
 
     private func cell(
@@ -104,7 +104,7 @@ struct ProfileView: View, TestableView {
             .font(.body)
             .foregroundColor(.primary)
 //            .padding(.horizontal, Const.horizontalMargins)
-//            .padding(.vertical, .spacingUnit * 2)
+//            .padding(.vertical, .grid(2))
             .frame(minHeight: 48)
     }
 }

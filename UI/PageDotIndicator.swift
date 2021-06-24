@@ -11,7 +11,7 @@ struct PageDotIndicator<Items: RandomAccessCollection>: View where Items.Element
     var accentColor: Color = .white
 
     var body: some View {
-        HStack(spacing: .spacingUnit * 2) {
+        HStack(spacing: .grid(2)) {
             ForEach(items, id: \.self) { item in
                 Dot(color: selection == item ? accentColor : foregroundColor)
             }

@@ -5,7 +5,7 @@ struct SectionHeaderView<Accessory: View>: View {
     var accessory: Accessory
 
     var body: some View {
-        HStack(alignment: .center, spacing: .spacingExtraSmall) {
+        HStack(alignment: .center, spacing: .grid(3)) {
             Text(title.localizedUppercase)
                 .rythmicoTextStyle(.footnoteBold)
                 .foregroundColor(.rythmicoGray90)
@@ -14,7 +14,7 @@ struct SectionHeaderView<Accessory: View>: View {
             HDivider()
             accessory
         }
-        .frame(maxWidth: .spacingMax)
+        .frame(maxWidth: .grid(.max))
     }
 }
 
@@ -34,9 +34,9 @@ struct SectionHeaderContentView<Accessory: View, Content: View>: View {
     var content: Content
 
     var body: some View {
-        VStack(alignment: alignment, spacing: .spacingSmall) {
+        VStack(alignment: alignment, spacing: .grid(4)) {
             SectionHeaderView(title: title, accessory: accessory).padding(padding)
-            content.frame(maxWidth: .spacingMax, alignment: .leading)
+            content.frame(maxWidth: .grid(.max), alignment: .leading)
         }
     }
 }

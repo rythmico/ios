@@ -11,17 +11,17 @@ struct LessonPlanRequestedScheduleView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: .spacingSmall) {
+        VStack(alignment: .leading, spacing: .grid(4)) {
             Group {
-                HStack(spacing: .spacingExtraSmall) {
+                HStack(spacing: .grid(3)) {
                     Image(decorative: Asset.Icon.Label.info.name).renderingMode(.template)
                     startDateText
                 }
-                HStack(spacing: .spacingExtraSmall) {
+                HStack(spacing: .grid(3)) {
                     Image(decorative: Asset.Icon.Label.time.name).renderingMode(.template)
                     timeText
                 }
-                HStack(spacing: .spacingExtraSmall) {
+                HStack(spacing: .grid(3)) {
                     Image(systemSymbol: .calendar).resizable().aspectRatio(contentMode: .fit).frame(width: 16)
                     frequencyText
                 }
@@ -29,9 +29,9 @@ struct LessonPlanRequestedScheduleView: View {
             .foregroundColor(.rythmicoGray90)
 
             if let tutor = tutor {
-                HStack(spacing: .spacingExtraSmall) {
+                HStack(spacing: .grid(3)) {
                     Image(decorative: Asset.Icon.Label.time.name).hidden()
-                    HStack(spacing: .spacingExtraSmall) {
+                    HStack(spacing: .grid(3)) {
                         TutorAvatarView(tutor, mode: .thumbnail).fixedSize()
                         TutorAcceptedStatusPill(tutor: tutor)
                     }

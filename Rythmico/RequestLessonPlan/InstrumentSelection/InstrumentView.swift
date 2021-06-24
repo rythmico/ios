@@ -11,15 +11,15 @@ struct InstrumentView: View {
     var viewData: InstrumentViewData
 
     @ScaledMetric(relativeTo: .largeTitle)
-    private var iconWidth = .spacingUnit * 18
+    private var iconWidth: CGFloat = .grid(18)
 
     var body: some View {
         Button(action: { viewData.action?() }) {
-            HStack(spacing: .spacingUnit * 2) {
+            HStack(spacing: .grid(2)) {
                 Text(viewData.name)
                     .rythmicoTextStyle(.subheadlineBold)
                     .foregroundColor(.rythmicoForeground)
-                    .padding([.vertical, .leading], .spacingMedium)
+                    .padding([.vertical, .leading], .grid(5))
                     .frame(maxWidth: .infinity, alignment: .leading)
 
                 Image(decorative: viewData.icon.name)
@@ -27,8 +27,8 @@ struct InstrumentView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: iconWidth, alignment: .center)
-                    .padding(.vertical, .spacingUnit * 2)
-                    .padding(.trailing, .spacingExtraSmall)
+                    .padding(.vertical, .grid(2))
+                    .padding(.trailing, .grid(3))
             }
         }
         .frame(minHeight: 70)

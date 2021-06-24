@@ -5,7 +5,7 @@ struct PageView<Data: RandomAccessCollection, Selection: Hashable, Content: View
     @Binding
     var selection: Selection
     var fixedHeight: CGFloat? = nil
-    var spacing: CGFloat = .spacingMedium
+    var spacing: CGFloat = .grid(5)
     var accentColor: Color
     @ViewBuilder
     var content: (Data.Element) -> Content

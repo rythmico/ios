@@ -6,7 +6,7 @@ struct LoadingView: View {
     var body: some View {
         ZStack {
             Color.clear
-            HStack(spacing: .spacingExtraSmall) {
+            HStack(spacing: .grid(3)) {
                 ActivityIndicator(color: .rythmicoGray90)
                 Text(title)
                     .rythmicoTextStyle(.subheadlineBold)

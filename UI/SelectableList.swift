@@ -24,7 +24,7 @@ struct SelectableList<Data: RandomAccessCollection, ID: Hashable, Content: View>
                                     .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
                             }
                         }
-                        .padding(.spacingMedium)
+                        .padding(.grid(5))
                     }
                     Divider().overlay(Color.rythmicoGray20)
                 }

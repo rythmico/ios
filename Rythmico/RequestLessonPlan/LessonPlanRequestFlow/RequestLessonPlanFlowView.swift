@@ -62,8 +62,8 @@ struct RequestLessonPlanFlowView: View, TestableView {
             .accentColor(.rythmicoGray90)
             .animation(.rythmicoSpring(duration: .durationShort), value: shouldShowBackButton)
 
-            StepBar(stepNumber, of: stepCount).padding(.horizontal, .spacingMedium)
-            VSpacing(.spacingExtraSmall)
+            StepBar(stepNumber, of: stepCount).padding(.horizontal, .grid(5))
+            VSpacing(.grid(3))
             FlowView(flow: flow, transition: .slide + .opacity, content: content).onEdgeSwipe(.left, perform: back)
         }
         .testable(self)

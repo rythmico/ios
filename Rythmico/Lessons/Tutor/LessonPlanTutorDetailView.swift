@@ -33,7 +33,7 @@ struct LessonPlanTutorDetailView: View {
     var tutor: Tutor
 
     var body: some View {
-        VStack(spacing: .spacingExtraLarge) {
+        VStack(spacing: .grid(7)) {
             HeaderView(lessonPlan: lessonPlan, tutor: tutor)
             PortfolioView(coordinator: coordinator, tutor: tutor, topPadding: 0)
         }

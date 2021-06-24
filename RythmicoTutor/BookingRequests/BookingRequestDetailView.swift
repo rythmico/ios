@@ -40,7 +40,7 @@ struct BookingRequestDetailView: View {
                     TitleCell(title: "Name", detail: name)
                     TitleCell(title: "Age", detail: age)
                     about.map { about in
-                        VStack(alignment: .leading, spacing: .spacingUnit) {
+                        VStack(alignment: .leading, spacing: .grid(1)) {
                             Text("About")
                                 .foregroundColor(.primary)
                                 .font(.body)
@@ -48,14 +48,14 @@ struct BookingRequestDetailView: View {
                                 .foregroundColor(.secondary)
                                 .font(.body)
                         }
-                        .padding(.vertical, .spacingUnit)
+                        .padding(.vertical, .grid(1))
                     }
                 }
                 Section(header: Text("PRIVATE NOTE")) {
                     Text(privateNote)
                         .foregroundColor(.secondary.opacity(privateNoteOpacity))
                         .font(.body)
-                        .padding(.vertical, .spacingUnit)
+                        .padding(.vertical, .grid(1))
                 }
                 Section(
                     header: Text("ADDRESS DETAILS"),

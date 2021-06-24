@@ -48,7 +48,7 @@ struct LessonPlanApplicationDetailView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            VStack(spacing: .spacingSmall) {
+            VStack(spacing: .grid(4)) {
                 HeaderView(lessonPlan: lessonPlan, tutor: application.tutor)
                 TabMenuView(tabs: Tab.allCases, selection: $tab)
             }
@@ -61,7 +61,7 @@ struct LessonPlanApplicationDetailView: View {
             }
 
             FloatingView {
-                VStack(spacing: .spacingUnit * 2) {
+                VStack(spacing: .grid(2)) {
                     RythmicoButton(bookButtonTitle, style: RythmicoButtonStyle.primary(), action: book)
                     frequencyText
                 }

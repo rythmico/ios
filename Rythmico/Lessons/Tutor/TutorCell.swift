@@ -5,7 +5,7 @@ struct TutorCell: View {
     @Environment(\.currentScreen) private var currentScreen
 
     private enum Const {
-        static let avatarSize = .spacingUnit * 14
+        static let avatarSize: CGFloat = .grid(14)
     }
 
     var lessonPlan: LessonPlan
@@ -13,7 +13,7 @@ struct TutorCell: View {
 
     var body: some View {
         Button(action: openTutorPorfolio) {
-            HStack(spacing: .spacingExtraSmall) {
+            HStack(spacing: .grid(3)) {
                 TutorAvatarView(tutor, mode: .original)
                     .frame(width: Const.avatarSize, height: Const.avatarSize)
                     .withSmallDBSCheck()
@@ -23,8 +23,8 @@ struct TutorCell: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.6)
             }
-            .padding(.spacingMedium)
-            .frame(maxWidth: .spacingMax, alignment: .leading)
+            .padding(.grid(5))
+            .frame(maxWidth: .grid(.max), alignment: .leading)
         }
         .modifier(RoundedShadowContainer())
     }

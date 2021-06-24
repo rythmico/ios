@@ -16,7 +16,7 @@ struct TabMenuView<Tab: RawRepresentable>: View where Tab.RawValue == String {
                     Text(tab.rawValue.uppercased(with: Current.locale))
                         .rythmicoTextStyle(.calloutBold)
                         .foregroundColor(selection == tab ? .rythmicoPurple : .rythmicoGray90)
-                        .frame(maxWidth: .infinity, minHeight: .spacingUnit * 13, alignment: .center)
+                        .frame(maxWidth: .infinity, minHeight: .grid(13), alignment: .center)
                         .background(
                             Group {
                                 if selection == tab {
@@ -33,8 +33,8 @@ struct TabMenuView<Tab: RawRepresentable>: View where Tab.RawValue == String {
                         .onTapGesture { selection = tab }
                 }
             }
-            .frame(maxWidth: .spacingMax)
-            .padding(.horizontal, .spacingMedium)
+            .frame(maxWidth: .grid(.max))
+            .padding(.horizontal, .grid(5))
 
             Divider().overlay(Color.rythmicoGray20)
         }

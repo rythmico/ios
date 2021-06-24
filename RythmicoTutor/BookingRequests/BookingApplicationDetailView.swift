@@ -42,9 +42,9 @@ struct BookingApplicationDetailView: View {
     var body: some View {
         List {
             Section(header: Text("STATUS")) {
-                HStack(spacing: .spacingUnit * 2) {
+                HStack(spacing: .grid(2)) {
                     Dot(color: statusColor)
-                    HStack(spacing: .spacingMedium) {
+                    HStack(spacing: .grid(5)) {
                         Text(status)
                             .foregroundColor(.primary)
                             .font(.body)
@@ -71,7 +71,7 @@ struct BookingApplicationDetailView: View {
                 TitleCell(title: "Name", detail: name)
                 TitleCell(title: "Age", detail: age)
                 about.map { about in
-                    VStack(alignment: .leading, spacing: .spacingUnit) {
+                    VStack(alignment: .leading, spacing: .grid(1)) {
                         Text("About")
                             .foregroundColor(.primary)
                             .font(.body)
@@ -79,14 +79,14 @@ struct BookingApplicationDetailView: View {
                             .foregroundColor(.secondary)
                             .font(.body)
                     }
-                    .padding(.vertical, .spacingUnit)
+                    .padding(.vertical, .grid(1))
                 }
             }
             Section(header: Text("PRIVATE NOTE")) {
                 Text(submitterPrivateNote)
                     .foregroundColor(.secondary.opacity(submitterPrivateNoteOpacity))
                     .font(.body)
-                    .padding(.vertical, .spacingUnit)
+                    .padding(.vertical, .grid(1))
             }
             Section(
                 header: Text("ADDRESS DETAILS"),

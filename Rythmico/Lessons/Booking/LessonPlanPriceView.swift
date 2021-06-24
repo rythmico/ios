@@ -9,8 +9,8 @@ struct LessonPlanPriceView: View {
     private static let priceFormatter = Current.numberFormatter(format: .price)
 
     var body: some View {
-        VStack(spacing: .spacingSmall) {
-            HStack(spacing: .spacingSmall) {
+        VStack(spacing: .grid(4)) {
+            HStack(spacing: .grid(4)) {
                 Text("Price per lesson").rythmicoTextStyle(.bodyBold).frame(maxWidth: .infinity, alignment: .leading)
                 Text(Self.priceFormatter.string(from: price)).rythmicoTextStyle(.bodyBold).multilineTextAlignment(.trailing)
             }
@@ -32,8 +32,8 @@ struct LessonPlanPriceView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .fixedSize(horizontal: false, vertical: true)
         }
-        .padding(.vertical, .spacingLarge)
-        .padding(.horizontal, .spacingSmall)
+        .padding(.vertical, .grid(6))
+        .padding(.horizontal, .grid(4))
         .modifier(RoundedGrayedDialog())
     }
 }

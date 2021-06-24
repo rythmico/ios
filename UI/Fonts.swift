@@ -102,7 +102,7 @@ extension Font {
         }
 
         var lineSpacing: CGFloat {
-            .spacingUnit
+            .grid(1)
         }
     }
 }
@@ -136,7 +136,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value == Any {
         [.tracking: style.tracking]
         [.paragraphStyle: NSMutableParagraphStyle().with {
             $0.lineSpacing = style.lineSpacing
-            $0.paragraphSpacing = .spacingSmall
+            $0.paragraphSpacing = .grid(4)
         }]
     }
 }

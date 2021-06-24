@@ -50,18 +50,18 @@ struct LessonSummaryCellMainContent: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
                     .opacity(opacity)
-                VSpacing(.spacingUnit * 2)
+                VSpacing(.grid(2))
                 Text(subtitle)
                     .rythmicoTextStyle(.body)
                     .foregroundColor(.rythmicoGray90)
                     .opacity(opacity)
-                VSpacing(.spacingExtraSmall)
-                HStack(spacing: .spacingExtraSmall) {
+                VSpacing(.grid(3))
+                HStack(spacing: .grid(3)) {
                     InlineContentAndTitleView(lesson: lesson).opacity(opacity)
                     Pill(status: lesson.status)
                 }
             }
-            .padding(.spacingMedium)
+            .padding(.grid(5))
         }
     }
 

@@ -61,12 +61,12 @@ struct LessonDetailView: View, TestableView {
     var body: some View {
         VStack(spacing: 0) {
             TitleContentView(title: title) {
-                VStack(alignment: .leading, spacing: .spacingExtraLarge) {
+                VStack(alignment: .leading, spacing: .grid(7)) {
                     Pill(status: lesson.status)
-                        .padding(.horizontal, .spacingMedium)
+                        .padding(.horizontal, .grid(5))
 
                     ScrollView {
-                        VStack(alignment: .leading, spacing: .spacingMedium) {
+                        VStack(alignment: .leading, spacing: .grid(5)) {
                             SectionHeaderView(title: "Lesson Details")
                             LessonScheduleView(lesson: lesson)
                             AddressLabel(address: lesson.address)
@@ -74,8 +74,8 @@ struct LessonDetailView: View, TestableView {
                             tutorSection
                         }
                         .foregroundColor(.rythmicoGray90)
-                        .frame(maxWidth: .spacingMax)
-                        .padding(.horizontal, .spacingMedium)
+                        .frame(maxWidth: .grid(.max))
+                        .padding(.horizontal, .grid(5))
                     }
                 }
             }

@@ -18,7 +18,7 @@ struct ProfileSection<Content: View>: View {
         Text(title)
             .rythmicoTextStyle(.subheadlineBold)
             .foregroundColor(.rythmicoForeground)
-            .padding(.horizontal, .spacingMedium - UITableViewCell.defaultHorizontalPadding)
-            .padding(.bottom, .spacingUnit * 2)
+            .padding(.horizontal, .grid(5) - UITableViewCell.defaultHorizontalPadding)
+            .padding(.bottom, .grid(2))
     }
 }

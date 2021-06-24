@@ -29,7 +29,7 @@ extension LessonPlanCancellationView {
         let inspection = SelfInspection()
         var body: some View {
             VStack(spacing: 0) {
-                VStack(spacing: .spacingUnit * 9) {
+                VStack(spacing: .grid(9)) {
                     TitleSubtitleView(
                         title: "Please tell us why",
                         subtitle: "Please tell us the reason why you decided to cancel your lesson plan:"

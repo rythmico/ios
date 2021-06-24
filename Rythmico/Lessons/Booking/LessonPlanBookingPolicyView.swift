@@ -7,11 +7,11 @@ struct LessonPlanBookingPolicyView: View {
     var description: String
 
     var body: some View {
-        HStack(spacing: .spacingExtraSmall) {
+        HStack(spacing: .grid(3)) {
             Image(decorative: asset.name)
                 .renderingMode(.template)
                 .foregroundColor(.rythmicoPurple)
-            VStack(alignment: .leading, spacing: .spacingUnit / 2) {
+            VStack(alignment: .leading, spacing: .grid(0.5)) {
                 Text(title)
                     .rythmicoTextStyle(.calloutBold)
                     .foregroundColor(.rythmicoForeground)
@@ -21,7 +21,7 @@ struct LessonPlanBookingPolicyView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .padding(.spacingExtraSmall)
+        .padding(.grid(3))
         .modifier(RoundedShadowContainer())
     }
 }

@@ -6,14 +6,14 @@ struct TutorStatusBanner: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            VStack(spacing: .spacingExtraLarge) {
+            VStack(spacing: .grid(7)) {
                 if let image = status.image {
                     Image(decorative: image.name)
                         .resizable()
                         .scaledToFit()
-                        .padding(.horizontal, .spacingUnit * 8)
+                        .padding(.horizontal, .grid(8))
                 }
-                VStack(spacing: .spacingMedium) {
+                VStack(spacing: .grid(5)) {
                     Text(status.title)
                         .font(.system(size: 19, weight: .bold))
                         .transition(.opacity)
@@ -24,16 +24,16 @@ struct TutorStatusBanner: View {
                 }
                 .foregroundColor(foregroundColor)
                 .multilineTextAlignment(.center)
-                .lineSpacing(.spacingUnit)
-                .frame(maxWidth: .spacingMax)
-                .padding(.horizontal, .spacingUnit * 10)
+                .lineSpacing(.grid(1))
+                .frame(maxWidth: .grid(.max))
+                .padding(.horizontal, .grid(10))
 
                 if let openInboxAction = openInboxAction {
                     Button("Open Inbox", action: openInboxAction)
                 }
             }
             .frame(maxHeight: .infinity)
-            .padding(.vertical, .spacingLarge)
+            .padding(.vertical, .grid(6))
 
             if let letsGoAction = letsGoAction {
                 FloatingView {

@@ -9,9 +9,9 @@ struct PortfolioView: View {
 
     var body: some View {
         ScrollView { proxy in
-            VStack(spacing: .spacingMedium) {
-                VStack(spacing: .spacingSmall) {
-                    HStack(spacing: .spacingSmall) {
+            VStack(spacing: .grid(5)) {
+                VStack(spacing: .grid(4)) {
+                    HStack(spacing: .grid(4)) {
                         header("Bio")
                         ageText(from: portfolio)
                     }
@@ -19,18 +19,18 @@ struct PortfolioView: View {
                     bio(from: portfolio, scrollingProxy: proxy)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .frame(maxWidth: .spacingMax)
-                .padding(.horizontal, .spacingMedium)
+                .frame(maxWidth: .grid(.max))
+                .padding(.horizontal, .grid(5))
                 .id(Self.bioId)
 
                 if !portfolio.training.isEmpty {
                     Divider().overlay(Color.rythmicoGray20)
-                    VStack(spacing: .spacingSmall) {
+                    VStack(spacing: .grid(4)) {
                         header("Training")
                         PortfolioTrainingsView(trainingList: portfolio.training)
                     }
-                    .frame(maxWidth: .spacingMax)
-                    .padding(.horizontal, .spacingMedium)
+                    .frame(maxWidth: .grid(.max))
+                    .padding(.horizontal, .grid(5))
                 }
 
                 if !portfolio.videos.isEmpty || !portfolio.photos.isEmpty {
@@ -38,25 +38,25 @@ struct PortfolioView: View {
                 }
 
                 if !portfolio.videos.isEmpty {
-                    VStack(spacing: .spacingSmall) {
+                    VStack(spacing: .grid(4)) {
                         header("Videos")
-                            .frame(maxWidth: .spacingMax)
-                            .padding(.horizontal, .spacingMedium)
+                            .frame(maxWidth: .grid(.max))
+                            .padding(.horizontal, .grid(5))
                         VideoCarouselView(videos: portfolio.videos)
                     }
                 }
 
                 if !portfolio.photos.isEmpty {
-                    VStack(spacing: .spacingSmall) {
+                    VStack(spacing: .grid(4)) {
                         header("Photos")
                         PhotoCarouselView(photos: portfolio.photos)
                     }
-                    .frame(maxWidth: .spacingMax)
-                    .padding(.horizontal, .spacingMedium)
+                    .frame(maxWidth: .grid(.max))
+                    .padding(.horizontal, .grid(5))
                 }
             }
             .padding(.top, topPadding)
-            .padding(.bottom, .spacingMedium)
+            .padding(.bottom, .grid(5))
         }
     }
 

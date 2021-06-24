@@ -33,7 +33,7 @@ struct ThreeDotButton: View {
 
     var body: some View {
         Button(action: action) {
-            Self.image.padding([.vertical, .leading], .spacingSmall)
+            Self.image.padding([.vertical, .leading], .grid(4))
         }
         .foregroundColor(.accentColor)
     }

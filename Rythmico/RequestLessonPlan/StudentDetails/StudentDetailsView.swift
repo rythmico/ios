@@ -99,7 +99,7 @@ struct StudentDetailsView: View, EditableView, TestableView {
         TitleSubtitleContentView(title: "Student Details", subtitle: subtitle) {
             VStack(spacing: 0) {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: .spacingLarge) {
+                    VStack(alignment: .leading, spacing: .grid(6)) {
                         HeaderContentView(title: "Full Name") {
                             CustomTextField(
                                 "Enter Name...",
@@ -132,10 +132,10 @@ struct StudentDetailsView: View, EditableView, TestableView {
                         }
                     }
                     .accentColor(.rythmicoPurple)
-                    .frame(maxWidth: .spacingMax)
-                    .padding([.trailing, .bottom], .spacingMedium)
+                    .frame(maxWidth: .grid(.max))
+                    .padding([.trailing, .bottom], .grid(5))
                 }
-                .padding(.leading, .spacingMedium)
+                .padding(.leading, .grid(5))
 
                 if let action = nextButtonAction {
                     FloatingView {

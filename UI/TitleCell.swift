@@ -7,7 +7,7 @@ struct TitleCell: View {
     var detailColor: Color = .secondary
 
     var body: some View {
-        HStack(spacing: .spacingSmall) {
+        HStack(spacing: .grid(4)) {
             Text(title)
                 .foregroundColor(titleColor)
                 .font(.body)

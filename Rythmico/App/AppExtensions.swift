@@ -35,8 +35,8 @@ extension SwiftUI.App {
                 bar.compactAppearance = $0
                 bar.scrollEdgeAppearance = $0
 
-                bar.layoutMargins.left = .spacingMedium
-                bar.layoutMargins.right = .spacingMedium
+                bar.layoutMargins.left = .grid(5)
+                bar.layoutMargins.right = .grid(5)
             }
         }
 

@@ -9,11 +9,11 @@ struct BackButton: View {
 
     var body: some View {
         Button(action: action) {
-            HStack(spacing: .spacingUnit) {
+            HStack(spacing: .grid(1)) {
                 Self.image
                 Text(title).rythmicoTextStyle(.bodyMedium)
             }
-            .padding([.vertical, .trailing], .spacingSmall)
+            .padding([.vertical, .trailing], .grid(4))
         }
         .foregroundColor(.accentColor)
     }

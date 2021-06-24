@@ -10,7 +10,7 @@ struct BookingApplicationGroupCell: View {
     }
 
     var body: some View {
-        HStack(spacing: .spacingMedium) {
+        HStack(spacing: .grid(5)) {
             Text(title)
                 .foregroundColor(.primary)
                 .font(.body)
@@ -35,7 +35,7 @@ struct BookingApplicationGroupCell: View {
 struct BookingApplicationGroupCell_Previews: PreviewProvider {
     static var previews: some View {
         BookingApplicationGroupCell(status: .selected, applications: .stub)
-            .padding(.horizontal, .spacingExtraSmall)
+            .padding(.horizontal, .grid(3))
             .previewLayout(.sizeThatFits)
     }
 }

@@ -59,18 +59,18 @@ struct LessonPlanSummaryCellMainContent: View {
                     .minimumScaleFactor(0.7)
                     .foregroundColor(.rythmicoForeground)
                     .opacity(opacity)
-                VSpacing(.spacingUnit * 2)
+                VSpacing(.grid(2))
                 subtitle
                     .rythmicoTextStyle(.body)
                     .foregroundColor(.rythmicoGray90)
                     .opacity(opacity)
-                VSpacing(.spacingExtraSmall)
-                HStack(spacing: .spacingExtraSmall) {
+                VSpacing(.grid(3))
+                HStack(spacing: .grid(3)) {
                     LessonPlanTutorStatusView(status: lessonPlan.status, summarized: true).opacity(opacity)
                     Pill(lessonPlan: lessonPlan, backgroundColor: .rythmicoBackgroundTertiary)
                 }
             }
-            .padding(.spacingMedium)
+            .padding(.grid(5))
         }
         .watermark(
             lessonPlan.instrument.icon.image,
@@ -113,14 +113,14 @@ struct LessonPlanSummaryCellAccessory: View {
             Divider().overlay(Color.rythmicoGray20)
 
             Button(action: chooseTutorAction) {
-                HStack(spacing: .spacingExtraSmall) {
+                HStack(spacing: .grid(3)) {
                     Text("Choose Tutor")
                         .rythmicoTextStyle(.bodySemibold)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Image(systemSymbol: .chevronRight)
                         .font(.system(size: 18, weight: .medium, design: .rounded))
                 }
-                .padding(.spacingMedium)
+                .padding(.grid(5))
                 .foregroundColor(.rythmicoPurple)
             }
             .background(Color.rythmicoPurple.opacity(0.02))

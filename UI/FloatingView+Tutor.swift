@@ -8,7 +8,7 @@ struct FloatingView<Content: View>: View {
     var body: some View {
         VStack(spacing: 0) {
             Divider()
-            content.padding(.spacingSmall)
+            content.padding(.grid(4))
         }
         .background(Color(.systemBackground).edgesIgnoringSafeArea(.bottom))
         .transition(.move(edgeWithSafeArea: .bottom))

@@ -83,19 +83,19 @@ struct LessonPlanDetailView: View, TestableView {
     var body: some View {
         VStack(spacing: 0) {
             TitleContentView(title: title) {
-                VStack(alignment: .leading, spacing: .spacingExtraLarge) {
+                VStack(alignment: .leading, spacing: .grid(7)) {
                     Pill(lessonPlan: lessonPlan, backgroundColor: .rythmicoBackground)
-                        .padding(.horizontal, .spacingMedium)
+                        .padding(.horizontal, .grid(5))
 
                     ScrollView {
-                        VStack(alignment: .leading, spacing: .spacingMedium) {
+                        VStack(alignment: .leading, spacing: .grid(5)) {
                             planDetailsSection
                             tutorSection
                             paymentSection
                         }
                         .foregroundColor(.rythmicoGray90)
-                        .frame(maxWidth: .spacingMax)
-                        .padding([.horizontal, .bottom], .spacingMedium)
+                        .frame(maxWidth: .grid(.max))
+                        .padding([.horizontal, .bottom], .grid(5))
                     }
                 }
             }

@@ -5,14 +5,14 @@ struct PortfolioTrainingsView: View {
 
     var body: some View {
         ForEach(0..<trainingList.count, id: \.self) { index in let training = trainingList[index]
-            HStack(alignment: .firstTextBaseline, spacing: .spacingExtraSmall) {
+            HStack(alignment: .firstTextBaseline, spacing: .grid(3)) {
                 Image(decorative: Asset.Icon.Label.training.name)
                     .renderingMode(.template)
                     .foregroundColor(.rythmicoGray90)
                     .alignmentGuide(.firstTextBaseline) { $0[.bottom] - 2 }
-                VStack(spacing: .spacingSmall) {
-                    VStack(spacing: .spacingUnit * 2) {
-                        VStack(spacing: .spacingUnit) {
+                VStack(spacing: .grid(4)) {
+                    VStack(spacing: .grid(2)) {
+                        VStack(spacing: .grid(1)) {
                             Text(training.title)
                                 .foregroundColor(.rythmicoGray90)
                                 .rythmicoTextStyle(.bodyBold)
@@ -52,7 +52,7 @@ private extension Portfolio.Training.Duration {
 #if DEBUG
 struct PortfolioTrainingsView_Previews: PreviewProvider {
     static var previews: some View {
-        VStack(spacing: .spacingMedium) {
+        VStack(spacing: .grid(5)) {
             PortfolioTrainingsView(trainingList: .stub)
         }
         .previewLayout(.sizeThatFits)

@@ -13,12 +13,12 @@ struct AddressMapCell: View {
 
     var body: some View {
         Group {
-            VStack(alignment: .leading, spacing: .spacingExtraSmall) {
+            VStack(alignment: .leading, spacing: .grid(3)) {
                 StaticMapView(coordinate: coordinate, showsCoordinate: isFullAddress)
                     .frame(height: 160)
-                    .clipShape(RoundedRectangle(cornerRadius: .spacingUnit * 2, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: .grid(2), style: .continuous))
                     .onTapGesture(perform: presentMapActionSheet)
-                VStack(alignment: .leading, spacing: .spacingUnit * 1.5) {
+                VStack(alignment: .leading, spacing: .grid(1.5)) {
                     if isFullAddress {
                         Text("Address")
                             .foregroundColor(.primary)
@@ -29,7 +29,7 @@ struct AddressMapCell: View {
                         .font(.body)
                 }
             }
-            .padding(.vertical, .spacingUnit * 2)
+            .padding(.vertical, .grid(2))
 
             if isFullAddress {
                 Button("Get Directions", action: presentMapActionSheet)

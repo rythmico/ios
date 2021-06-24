@@ -5,11 +5,11 @@ struct LessonPlanApplicationDetailHeaderView: View {
     var tutor: Tutor
 
     var body: some View {
-        HStack(spacing: .spacingSmall) {
+        HStack(spacing: .grid(4)) {
             TutorAvatarView(tutor, mode: .original)
-                .frame(width: .spacingUnit * 20, height: .spacingUnit * 20)
+                .frame(width: .grid(20), height: .grid(20))
                 .withDBSCheck()
-            VStack(alignment: .leading, spacing: .spacingUnit) {
+            VStack(alignment: .leading, spacing: .grid(1)) {
                 Text(tutor.name)
                     .rythmicoTextStyle(.largeTitle)
                     .foregroundColor(.rythmicoForeground)
@@ -20,7 +20,7 @@ struct LessonPlanApplicationDetailHeaderView: View {
         }
         .lineLimit(1)
         .minimumScaleFactor(0.5)
-        .padding(.horizontal, .spacingMedium)
+        .padding(.horizontal, .grid(5))
     }
 }
 

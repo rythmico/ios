@@ -5,8 +5,8 @@ struct LessonPlanConfirmationDetailsView: View {
     var tutor: Tutor
 
     var body: some View {
-        VStack(spacing: .spacingSmall) {
-            HStack(spacing: .spacingExtraSmall) {
+        VStack(spacing: .grid(4)) {
+            HStack(spacing: .grid(3)) {
                 Image(decorative: Asset.Icon.Label.info.name)
                     .renderingMode(.template)
                     .foregroundColor(.rythmicoGray90)
@@ -20,7 +20,7 @@ struct LessonPlanConfirmationDetailsView: View {
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
             }
-            HStack(spacing: .spacingExtraSmall) {
+            HStack(spacing: .grid(3)) {
                 TutorAvatarView(tutor, mode: .thumbnail)
                     .fixedSize()
                 Text(tutor.name)

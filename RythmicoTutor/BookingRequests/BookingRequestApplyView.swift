@@ -25,9 +25,9 @@ struct BookingRequestApplyView: View {
                             "Add a private note...",
                             text: $privateNote,
                             inputAccessory: .none,
-                            minHeight: .spacingUnit * 20
+                            minHeight: .grid(20)
                         )
-                        .padding(.vertical, .spacingUnit)
+                        .padding(.vertical, .grid(1))
                     }
                 }
                 .listStyle(GroupedListStyle())

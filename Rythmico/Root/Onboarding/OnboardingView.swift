@@ -16,7 +16,7 @@ struct OnboardingView: View, TestableView {
         VStack(spacing: 0) {
             Spacer(minLength: 0)
             OnboardingSlideshowView()
-            Spacer(minLength: .spacingMedium)
+            Spacer(minLength: .grid(5))
             AuthorizationAppleIDButton(action: authenticateWithApple)
                 .accessibility(hint: Text("Double tap to sign in with your Apple ID"))
                 .disabled(!isAppleAuthorizationButtonEnabled)
@@ -26,7 +26,7 @@ struct OnboardingView: View, TestableView {
                         ActivityIndicator(color: .rythmicoGray90)
                     }
                 })
-                .padding([.horizontal, .bottom], .spacingLarge)
+                .padding([.horizontal, .bottom], .grid(6))
         }
         .backgroundColor(.rythmicoBackground)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isLoading)

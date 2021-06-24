@@ -4,18 +4,18 @@ struct InfoBanner: View {
     var text: String
 
     var body: some View {
-        HStack(alignment: .firstTextBaseline, spacing: .spacingExtraSmall) {
+        HStack(alignment: .firstTextBaseline, spacing: .grid(3)) {
             Image(decorative: Asset.Icon.Label.info.name)
                 .renderingMode(.template)
-                .alignmentGuide(.firstTextBaseline) { $0[.bottom] - .spacingUnit }
+                .alignmentGuide(.firstTextBaseline) { $0[.bottom] - .grid(1) }
             Text(text)
                 .rythmicoTextStyle(.callout)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .padding(.spacingSmall)
+        .padding(.grid(4))
         .foregroundColor(.rythmicoForeground)
         .accentColor(.rythmicoForeground)
         .background(Color.rythmicoExtraLightBlue)
-        .clipShape(RoundedRectangle(cornerRadius: .spacingUnit, style: .continuous))
+        .clipShape(RoundedRectangle(cornerRadius: .grid(1), style: .continuous))
     }
 }

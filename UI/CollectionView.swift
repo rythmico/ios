@@ -6,11 +6,11 @@ struct CollectionView<Content: View>: View {
 
     var body: some View {
         ScrollView {
-            LazyVStack(alignment: .center, spacing: .spacingSmall) {
+            LazyVStack(alignment: .center, spacing: .grid(4)) {
                 content
             }
-            .frame(maxWidth: .spacingMax)
-            .padding(.all, .spacingMedium)
+            .frame(maxWidth: .grid(.max))
+            .padding(.all, .grid(5))
         }
     }
 }
