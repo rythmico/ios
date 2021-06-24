@@ -509,7 +509,6 @@
 		D5D9AE4425335B0400A0ABCC /* StripeCardDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE4325335B0400A0ABCC /* StripeCardDetails.swift */; };
 		D5D9AE4F253367A100A0ABCC /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE4E253367A100A0ABCC /* Divider.swift */; };
 		D5D9AE572533764D00A0ABCC /* AddNewCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE562533764D00A0ABCC /* AddNewCardView.swift */; };
-		D5D9AE632533866200A0ABCC /* Button+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE5B2533865D00A0ABCC /* Button+Sugar.swift */; };
 		D5D9AE682533ADA400A0ABCC /* Checkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE672533ADA400A0ABCC /* Checkout.swift */; };
 		D5D9AE712534CAF000A0ABCC /* CheckoutDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE702534CAF000A0ABCC /* CheckoutDoubles.swift */; };
 		D5D9AE762534CBB700A0ABCC /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE752534CBB700A0ABCC /* Price.swift */; };
@@ -1027,7 +1026,6 @@
 		D5D9AE4325335B0400A0ABCC /* StripeCardDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCardDetails.swift; sourceTree = "<group>"; };
 		D5D9AE4E253367A100A0ABCC /* Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
 		D5D9AE562533764D00A0ABCC /* AddNewCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCardView.swift; sourceTree = "<group>"; };
-		D5D9AE5B2533865D00A0ABCC /* Button+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Sugar.swift"; sourceTree = "<group>"; };
 		D5D9AE672533ADA400A0ABCC /* Checkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkout.swift; sourceTree = "<group>"; };
 		D5D9AE702534CAF000A0ABCC /* CheckoutDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutDoubles.swift; sourceTree = "<group>"; };
 		D5D9AE752534CBB700A0ABCC /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
@@ -1636,7 +1634,6 @@
 				D527B00A24FD3297003E81A9 /* AvatarStackView.swift */,
 				D527B00824FD2047003E81A9 /* AvatarView.swift */,
 				D5F5065C23FF16AA00CA4094 /* BackButton.swift */,
-				D5D9AE5B2533865D00A0ABCC /* Button+Sugar.swift */,
 				D5F506B9240637F400CA4094 /* Buttons+Rythmico.swift */,
 				D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */,
 				031378C4249A7453005FC49C /* CloseButton.swift */,
@@ -3115,7 +3112,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5D9AE632533866200A0ABCC /* Button+Sugar.swift in Sources */,
 				D58DE1C125C05FD90013AEE8 /* Flow.swift in Sources */,
 				03E88EB624C4AD820077A420 /* APIActivityCoordinator.swift in Sources */,
 				035B1D40249E577700AABFEA /* AppleAuthorizationCredentialStateProvider.swift in Sources */,
