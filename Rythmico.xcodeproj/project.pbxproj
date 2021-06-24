@@ -1221,7 +1221,6 @@
 				03EDA66A2476AE5500FBE527 /* Models */,
 				D5D5E8A92685143000AACB8F /* Packages */,
 				03341B3C23ABB1E7009AE8A8 /* Products */,
-				D5AC3F3525F6ADE800321EDE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2138,13 +2137,6 @@
 				D5A8C4BD25044A370006F5C5 /* UserDefaultsDoubles.swift */,
 			);
 			path = UserDefaults;
-			sourceTree = "<group>";
-		};
-		D5AC3F3525F6ADE800321EDE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D5AC9E4E254DA113003A8197 /* RemoteConfig */ = {
