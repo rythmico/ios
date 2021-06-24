@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 
 struct ErrorText: View {
     var error: Error

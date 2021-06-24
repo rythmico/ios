@@ -1,6 +1,6 @@
-import SwiftUI
-import TextBuilder
 import FoundationSugar
+import SwiftUISugar
+import TextBuilder
 
 struct AddressDetailsView: View, TestableView {
     typealias SearchCoordinator = APIActivityCoordinator<AddressSearchRequest>

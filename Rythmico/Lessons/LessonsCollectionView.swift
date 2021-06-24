@@ -1,5 +1,5 @@
-import SwiftUI
 import FoundationSugar
+import SwiftUISugar
 
 struct LessonsCollectionView: View {
     var lessonPlans: [LessonPlan]

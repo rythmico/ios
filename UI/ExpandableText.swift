@@ -1,5 +1,5 @@
-import SwiftUI
 import FoundationSugar
+import SwiftUISugar
 
 struct ExpandableText<Expander: View, Collapser: View>: View {
     @State

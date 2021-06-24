@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 
 struct TitleSubtitleView: View {
     var title: String

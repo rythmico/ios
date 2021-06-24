@@ -1,14 +1,12 @@
-import SwiftUI
-
 extension AnyTransition {
-    static func + (lhs: AnyTransition, rhs: AnyTransition) -> AnyTransition {
+    public static func + (lhs: AnyTransition, rhs: AnyTransition) -> AnyTransition {
         lhs.combined(with: rhs)
     }
 }
 
 // TODO: remove when AnyTransition.move(edge:) respects edgesIgnoringSafeArea.
 extension AnyTransition {
-    static func move(edgeWithSafeArea edge: Edge) -> AnyTransition {
+    public static func move(edgeWithSafeArea edge: Edge) -> AnyTransition {
         move(edge: .bottom).combined(
             with: .offset(
                 UIApplication.shared.windows.first?.safeAreaInsets.offset(for: edge) ?? .zero

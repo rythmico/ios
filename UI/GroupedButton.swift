@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 
 struct GroupedButton<Accessory: View>: View {
     @Environment(\.isEnabled) private var isEnabled: Bool
