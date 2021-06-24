@@ -2,6 +2,7 @@ import FoundationSugar
 
 struct LessonPlan: Identifiable, Hashable {
     enum Status: Decodable, Hashable {
+        // TODO: extract associated props into standalone structs to facilitate mocking
         case pending
         case reviewing([Application])
         case active([Lesson], Tutor) // TODO: swap `Tutor` with `BookingInfo`
