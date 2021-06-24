@@ -5,7 +5,7 @@ struct ReviewRequestView: View, TestableView {
     typealias Coordinator = APIActivityCoordinator<CreateLessonPlanRequest>
 
     private enum Const {
-        static let headerPadding = EdgeInsets(bottom: .spacingUnit * 2)
+        static let headerPadding = EdgeInsets(bottom: .grid(2))
     }
 
     var coordinator: Coordinator
@@ -33,7 +33,7 @@ struct ReviewRequestView: View, TestableView {
         TitleSubtitleContentView(title: "Review Proposal") {
             VStack(spacing: 0) {
                 ScrollView {
-                    VStack(spacing: .spacingUnit * 8) {
+                    VStack(spacing: .grid(8)) {
                         SectionHeaderContentView(
                             title: "Instrument",
                             padding: Const.headerPadding,
@@ -50,13 +50,13 @@ struct ReviewRequestView: View, TestableView {
                             padding: Const.headerPadding,
                             accessory: editButton(performing: resetStudentDetails)
                         ) {
-                            HStack(alignment: .firstTextBaseline, spacing: .spacingExtraSmall) {
+                            HStack(alignment: .firstTextBaseline, spacing: .grid(3)) {
                                 Image(decorative: Asset.Icon.Label.info.name)
                                     .renderingMode(.template)
                                     .foregroundColor(.rythmicoGray90)
                                     .alignmentGuide(.firstTextBaseline) { $0[.bottom] - 2.5 }
 
-                                VStack(alignment: .leading, spacing: .spacingMedium) {
+                                VStack(alignment: .leading, spacing: .grid(5)) {
                                     Text(studentDetails).rythmicoTextStyle(.body)
                                     studentAbout?.rythmicoTextStyle(.body)
                                 }.fixedSize(horizontal: false, vertical: true)
@@ -98,11 +98,11 @@ struct ReviewRequestView: View, TestableView {
                             }
                         }
                     }
-                    .frame(maxWidth: .spacingMax)
-                    .padding(.trailing, .spacingMedium)
-                    .padding(.bottom, .spacingExtraLarge)
+                    .frame(maxWidth: .grid(.max))
+                    .padding(.trailing, .grid(5))
+                    .padding(.bottom, .grid(7))
                 }
-                .padding(.leading, .spacingMedium)
+                .padding(.leading, .grid(5))
 
                 FloatingView {
                     RythmicoButton("Confirm Details", style: RythmicoButtonStyle.primary(), action: submitRequest)

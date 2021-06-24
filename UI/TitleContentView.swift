@@ -3,7 +3,7 @@ import SwiftUI
 struct TitleContentView<Content: View>: View {
     var title: String
     var alignment: HorizontalAlignment = .center
-    var spacing: CGFloat = .spacingExtraSmall
+    var spacing: CGFloat = .grid(3)
     @ViewBuilder
     var content: Content
 
@@ -14,11 +14,11 @@ struct TitleContentView<Content: View>: View {
                 .rythmicoTextStyle(.largeTitle)
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)
-                .frame(maxWidth: .spacingMax, alignment: .leading)
-                .padding(.horizontal, .spacingMedium)
+                .frame(maxWidth: .grid(.max), alignment: .leading)
+                .padding(.horizontal, .grid(5))
                 .accessibility(addTraits: .isHeader)
             content
         }
-        .padding(.top, .spacingUnit)
+        .padding(.top, .grid(1))
     }
 }

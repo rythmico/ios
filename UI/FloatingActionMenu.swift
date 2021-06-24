@@ -19,7 +19,7 @@ struct FloatingActionMenu: View {
 
     var body: some View {
         FloatingView {
-            HStack(spacing: .spacingSmall, content: actionButtons)
+            HStack(spacing: .grid(4), content: actionButtons)
         }
     }
 

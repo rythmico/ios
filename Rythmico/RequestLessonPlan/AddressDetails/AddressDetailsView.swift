@@ -49,7 +49,7 @@ struct AddressDetailsView: View, TestableView {
         TitleSubtitleContentView(title: "Address Details", subtitle: subtitle) {
             VStack(spacing: 0) {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: .spacingMedium) {
+                    VStack(alignment: .leading, spacing: .grid(5)) {
                         Group {
                             InfoBanner(text: "You can also arrange for online lessons. Just let your prospective tutor know about your preference in the final step.")
                             HeaderContentView(title: "Postcode", titleAccessory: {
@@ -70,7 +70,7 @@ struct AddressDetailsView: View, TestableView {
                                         if isLoading {
                                             ActivityIndicator(color: .rythmicoGray90)
                                         }
-                                        Spacer().frame(width: .spacingExtraSmall)
+                                        Spacer().frame(width: .grid(3))
                                     }
                                 }
                             }
@@ -89,10 +89,10 @@ struct AddressDetailsView: View, TestableView {
                         }
                     }
                     .accentColor(.rythmicoPurple)
-                    .frame(maxWidth: .spacingMax)
-                    .padding([.trailing, .bottom], .spacingMedium)
+                    .frame(maxWidth: .grid(.max))
+                    .padding([.trailing, .bottom], .grid(5))
                 }
-                .padding(.leading, .spacingMedium)
+                .padding(.leading, .grid(5))
 
                 nextButtonAction.map { action in
                     FloatingView {

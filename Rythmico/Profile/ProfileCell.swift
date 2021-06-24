@@ -22,8 +22,8 @@ struct ProfileCell<Accessory: View>: View {
     var body: some View {
         container
             .foregroundColor(.rythmicoGray90)
-            .padding(.horizontal, .spacingMedium - UITableViewCell.defaultHorizontalPadding)
-            .padding(.vertical, .spacingUnit * 2)
+            .padding(.horizontal, .grid(5) - UITableViewCell.defaultHorizontalPadding)
+            .padding(.vertical, .grid(2))
             .frame(minHeight: 51)
     }
 

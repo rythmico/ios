@@ -41,8 +41,8 @@ struct LessonPlanResumingView: View {
                     TitleContentView(title: title) {
                         ScrollView {
                             LessonPlanResumingContentView(policy: option.policy)
-                                .frame(maxWidth: .spacingMax)
-                                .padding(.horizontal, .spacingMedium)
+                                .frame(maxWidth: .grid(.max))
+                                .padding(.horizontal, .grid(5))
                         }
                     }
 

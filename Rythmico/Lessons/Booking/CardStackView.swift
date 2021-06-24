@@ -5,17 +5,17 @@ struct CardStackView: View {
     var cards: NonEmpty<[Card]>
     @Binding
     var selectedCard: Card
-    var horizontalInset: CGFloat = .spacingMedium
+    var horizontalInset: CGFloat = .grid(5)
 
     var body: some View {
         VStack(spacing: 0) {
             HDivider()
             ForEach(cards) { card in
-                HStack(spacing: .spacingSmall) {
+                HStack(spacing: .grid(4)) {
                     Image(uiImage: card.brand.logo)
-                    VStack(alignment: .leading, spacing: .spacingUnit / 2) {
+                    VStack(alignment: .leading, spacing: .grid(0.5)) {
                         Text(card.brand.name).rythmicoTextStyle(.bodySemibold)
-                        HStack(spacing: .spacingSmall) {
+                        HStack(spacing: .grid(4)) {
                             Text(formattedLastFourDigits(for: card)).rythmicoTextStyle(.body)
                             Text(formattedExpiryDate(for: card)).rythmicoTextStyle(.body)
                         }
@@ -25,7 +25,7 @@ struct CardStackView: View {
                     RadialSelectionIndicator(isSelected: selectedCard == card)
                 }
                 .padding(.horizontal, horizontalInset)
-                .padding(.vertical, .spacingExtraSmall)
+                .padding(.vertical, .grid(3))
                 .contentShape(Rectangle())
                 .onTapGesture { selectedCard = card }
                 HDivider()

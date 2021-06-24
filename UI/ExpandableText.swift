@@ -15,7 +15,7 @@ struct ExpandableText<Expander: View, Collapser: View>: View {
     var onCollapse: Action? = nil
 
     var body: some View {
-        VStack(alignment: .leading, spacing: .spacingSmall) {
+        VStack(alignment: .leading, spacing: .grid(4)) {
             VStack(alignment: .leading, spacing: paragraphSpacing) {
                 ForEach(0..<paragraphCount, id: \.self) { index in
                     Text(paragraphs[index])
@@ -34,7 +34,7 @@ struct ExpandableText<Expander: View, Collapser: View>: View {
         .animation(.rythmicoSpring(duration: .durationShort), value: isExpanded)
     }
 
-    private let paragraphSpacing: CGFloat = .spacingLarge
+    private let paragraphSpacing: CGFloat = .grid(6)
     private let paragraphCountWhenCollapsed = 1
     private var paragraphCount: Int { isExpanded ? paragraphs.count : min(paragraphCountWhenCollapsed, paragraphs.count) }
     private var paragraphs: [String] { content.components(separatedBy: "\n\n") }

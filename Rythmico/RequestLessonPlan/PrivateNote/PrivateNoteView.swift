@@ -57,11 +57,11 @@ struct PrivateNoteView: View, EditableView, TestableView {
                             onEditingChanged: noteEditingChanged
                         ).modifier(RoundedThinOutlineContainer(padded: false))
                     }
-                    .frame(maxWidth: .spacingMax)
-                    .padding([.trailing, .bottom], .spacingMedium)
+                    .frame(maxWidth: .grid(.max))
+                    .padding([.trailing, .bottom], .grid(5))
                 }
                 .accentColor(.rythmicoPurple)
-                .padding(.leading, .spacingMedium)
+                .padding(.leading, .grid(5))
 
                 FloatingView {
                     RythmicoButton("Next", style: RythmicoButtonStyle.primary(), action: nextButtonAction)

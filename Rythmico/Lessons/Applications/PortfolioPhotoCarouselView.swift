@@ -7,10 +7,10 @@ struct PhotoCarouselView: View {
 
     var photos: [Portfolio.Photo]
 
-    let columns = Array(repeating: GridItem(.flexible(), spacing: .spacingUnit * 2), count: 3)
+    let columns = Array(repeating: GridItem(.flexible(), spacing: .grid(2)), count: 3)
 
     var body: some View {
-        LazyVGrid(columns: columns, spacing: .spacingUnit * 2) {
+        LazyVGrid(columns: columns, spacing: .grid(2)) {
             ForEach(photos, id: \.self) { photo in
                 PhotoCarouselCell(photo: photo).onTapGesture { openGallery(photo) }
             }
@@ -43,7 +43,7 @@ private struct PhotoCarouselCell: View {
                     .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
             }
         }
-        .cornerRadius(.spacingUnit * 2, antialiased: true)
+        .cornerRadius(.grid(2), antialiased: true)
     }
 }
 
@@ -77,8 +77,8 @@ struct PhotoCarouselDetailView: View {
 
             VStack(alignment: .trailing, spacing: 0) {
                 CloseButton(action: dismiss)
-                    .padding([.trailing, .bottom], .spacingSmall)
-                    .padding(.top, .spacingMedium)
+                    .padding([.trailing, .bottom], .grid(4))
+                    .padding(.top, .grid(5))
                     .accentColor(.rythmicoWhite)
 
                 PageView(data: photos, selection: $selection, accentColor: .rythmicoWhite) { photo in
@@ -92,7 +92,7 @@ struct PhotoCarouselDetailView: View {
                         }
                     }
                 }
-                .padding(.bottom, .spacingMedium)
+                .padding(.bottom, .grid(5))
             }
         }
     }

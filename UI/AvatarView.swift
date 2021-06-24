@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AvatarView: View {
     enum Const {
-        static let minSize: CGFloat = .spacingUnit * 8
+        static let minSize: CGFloat = .grid(8)
         static let defaultBackgroundColor: Color = .rythmicoGray10
     }
 

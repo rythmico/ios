@@ -16,10 +16,10 @@ struct AddNewCardView: View {
     var body: some View {
         VStack(spacing: 0) {
             TitleSubtitleContentView(title: title, subtitle: subtitle) {
-                VStack(spacing: .spacingMedium) {
-                    HStack(spacing: .spacingMedium) {
+                VStack(spacing: .grid(5)) {
+                    HStack(spacing: .grid(5)) {
                         StripePaymentCardTextField(cardDetails: $cardDetails, cardIsValid: $cardIsValid)
-                            .padding(.vertical, .spacingUnit)
+                            .padding(.vertical, .grid(1))
                             .modifier(RoundedThinOutlineContainer(padded: false))
                         if coordinator.state.isLoading {
                             ActivityIndicator(color: .rythmicoGray90)
@@ -29,14 +29,14 @@ struct AddNewCardView: View {
 
                     Spacer()
 
-                    HStack(spacing: .spacingUnit * 2) {
+                    HStack(spacing: .grid(2)) {
                         Image(systemSymbol: .lockFill).rythmicoFont(.footnoteBold)
                         Text("Your payment info is stored securely.").rythmicoTextStyle(.footnoteBold)
                     }
                     .foregroundColor(.rythmicoGray90)
                 }
-                .frame(maxWidth: .spacingMax)
-                .padding([.horizontal, .bottom], .spacingMedium)
+                .frame(maxWidth: .grid(.max))
+                .padding([.horizontal, .bottom], .grid(5))
             }
 
             StripeSetupIntentLink(

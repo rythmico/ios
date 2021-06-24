@@ -94,9 +94,9 @@ struct CustomTextField: UIViewRepresentable {
 private final class CustomUITextField: UITextField {
     private let padding = UIEdgeInsets(
         top: 15,
-        left: .spacingSmall,
+        left: .grid(4),
         bottom: 15,
-        right: .spacingSmall
+        right: .grid(4)
     )
 
     override func textRect(forBounds bounds: CGRect) -> CGRect {

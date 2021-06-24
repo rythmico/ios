@@ -6,8 +6,8 @@ struct RoundedThickOutlineContainer: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .padding(.vertical, .spacingSmall)
-            .padding(.horizontal, .spacingSmall)
+            .padding(.vertical, .grid(4))
+            .padding(.horizontal, .grid(4))
             .frame(minHeight: 56)
             .background(
                 RoundedRectangle(cornerRadius: 8, style: .continuous)

@@ -5,7 +5,7 @@ struct LessonPlanApplicationDetailAboutView: View {
     var coordinator: APIActivityCoordinator<GetPortfolioRequest>
 
     var tutor: Tutor
-    var topPadding: CGFloat = .spacingMedium
+    var topPadding: CGFloat = .grid(5)
 
     var body: some View {
         ZStack {

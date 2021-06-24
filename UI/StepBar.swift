@@ -17,7 +17,7 @@ struct StepBar: View {
                 .rythmicoTextStyle(.footnoteBold)
                 .foregroundColor(.rythmicoGray90)
         }
-        .frame(maxWidth: .spacingMax)
+        .frame(maxWidth: .grid(.max))
         .accessibilityElement()
         .accessibility(label: Text("Step indicator"))
         .accessibility(value: Text("\(currentStep) out of \(totalSteps) steps completed"))

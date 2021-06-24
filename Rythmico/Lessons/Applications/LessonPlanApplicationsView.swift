@@ -44,10 +44,10 @@ struct LessonPlanApplicationsView: View {
 
     var body: some View {
         TitleContentView(title: title) {
-            VStack(alignment: .leading, spacing: .spacingSmall) {
+            VStack(alignment: .leading, spacing: .grid(4)) {
                 InfoBanner(text: priceInfo)
-                    .frame(maxWidth: .spacingMax)
-                    .padding(.horizontal, .spacingMedium)
+                    .frame(maxWidth: .grid(.max))
+                    .padding(.horizontal, .grid(5))
 
                 LessonPlanApplicationsGridView(
                     lessonPlan: lessonPlan,
@@ -63,7 +63,7 @@ struct LessonPlanApplicationsView: View {
 
 struct LessonPlanApplicationCell: View {
     private enum Const {
-        static let avatarSize = .spacingUnit * 14
+        static let avatarSize: CGFloat = .grid(14)
     }
 
     var application: LessonPlan.Application
@@ -73,7 +73,7 @@ struct LessonPlanApplicationCell: View {
     }
 
     var body: some View {
-        VStack(spacing: .spacingSmall) {
+        VStack(spacing: .grid(4)) {
             TutorAvatarView(application.tutor, mode: .thumbnail)
                 .frame(width: Const.avatarSize, height: Const.avatarSize)
                 .withSmallDBSCheck()
@@ -83,8 +83,8 @@ struct LessonPlanApplicationCell: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.6)
         }
-        .padding(.vertical, .spacingLarge)
-        .padding(.horizontal, .spacingSmall)
+        .padding(.vertical, .grid(6))
+        .padding(.horizontal, .grid(4))
         .frame(maxWidth: .infinity)
         .modifier(RoundedShadowContainer())
     }

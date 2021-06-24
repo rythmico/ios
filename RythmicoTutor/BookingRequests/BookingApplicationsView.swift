@@ -18,7 +18,7 @@ struct BookingApplicationsView: View {
     var applications: [BookingApplication] { repository.items }
 
     var body: some View {
-        VStack(spacing: .spacingMedium) {
+        VStack(spacing: .grid(5)) {
             List {
                 BookingApplicationSection(applications: applications, status: .pending) {
                     if isLoading {

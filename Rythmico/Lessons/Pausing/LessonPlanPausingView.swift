@@ -44,8 +44,8 @@ struct LessonPlanPausingView: View {
                     TitleContentView(title: title) {
                         ScrollView {
                             LessonPlanPausingContentView(isFree: isFree, policy: option.policy)
-                                .frame(maxWidth: .spacingMax)
-                                .padding(.horizontal, .spacingMedium)
+                                .frame(maxWidth: .grid(.max))
+                                .padding(.horizontal, .grid(5))
                         }
                     }
 

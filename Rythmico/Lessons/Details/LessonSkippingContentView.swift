@@ -6,7 +6,7 @@ struct LessonSkippingContentView: View {
     var policy: Lesson.Options.Skip.Policy
 
     var body: some View {
-        VStack(alignment: .leading, spacing: .spacingMedium) {
+        VStack(alignment: .leading, spacing: .grid(5)) {
             if isFree {
                 Group {
                     Text("This will cancel your payment for this lesson.").rythmicoTextStyle(.body)
@@ -62,7 +62,7 @@ struct LessonSkippingContentView_Preview: PreviewProvider {
             LessonSkippingContentView(isFree: true, policy: .stub)
             LessonSkippingContentView(isFree: false, policy: .stub)
         }
-        .padding(.spacingMedium)
+        .padding(.grid(5))
     }
 }
 #endif

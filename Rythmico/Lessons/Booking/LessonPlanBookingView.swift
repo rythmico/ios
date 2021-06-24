@@ -42,12 +42,12 @@ struct LessonPlanBookingView: View {
             VStack(spacing: 0) {
                 TitleSubtitleContentView(title: title, subtitle: subtitle) {
                     ScrollView {
-                        VStack(spacing: .spacingLarge) {
+                        VStack(spacing: .grid(6)) {
                             Group {
                                 SectionHeaderContentView(title: "Lesson Schedule") {
                                     LessonPlanRequestedScheduleView(lessonPlan.schedule, tutor: application.tutor)
                                     HDivider()
-                                    VStack(spacing: .spacingExtraSmall) {
+                                    VStack(spacing: .grid(3)) {
                                         LessonPlanBookingPolicyView.skipLessons(freeBeforePeriod: checkout.policies.skipFreeBeforePeriod)
                                         LessonPlanBookingPolicyView.cancelAnytime(freeBeforePeriod: checkout.policies.cancelFreeBeforePeriod)
                                         LessonPlanBookingPolicyView.trustedTutors
@@ -58,11 +58,11 @@ struct LessonPlanBookingView: View {
                                     PhoneNumberInputView(phoneNumber: $phoneNumber, phoneNumberInputError: $phoneNumberInputError)
                                 }
                             }
-                            .frame(maxWidth: .spacingMax)
-                            .padding(.horizontal, .spacingMedium)
+                            .frame(maxWidth: .grid(.max))
+                            .padding(.horizontal, .grid(5))
 
-                            VStack(spacing: .spacingSmall) {
-                                SectionHeaderContentView(title: "Payment Method", padding: EdgeInsets(horizontal: .spacingMedium)) {
+                            VStack(spacing: .grid(4)) {
+                                SectionHeaderContentView(title: "Payment Method", padding: EdgeInsets(horizontal: .grid(5))) {
                                     if
                                         let availableCards = NonEmpty(rawValue: availableCards),
                                         let selectedCardBinding = Binding($selectedCard)
@@ -74,14 +74,14 @@ struct LessonPlanBookingView: View {
                                 HDividerContainer {
                                     RythmicoButton("Add new card", style: RythmicoLinkButtonStyle.quaternary(), action: addNewCard)
                                 }
-                                .frame(maxWidth: .spacingMax)
+                                .frame(maxWidth: .grid(.max))
 
                                 LessonPlanPriceView(price: checkout.pricePerLesson, showTermsOfService: true)
-                                    .frame(maxWidth: .spacingMax)
-                                    .padding(.horizontal, .spacingSmall)
+                                    .frame(maxWidth: .grid(.max))
+                                    .padding(.horizontal, .grid(4))
                             }
                         }
-                        .padding(.bottom, .spacingMedium)
+                        .padding(.bottom, .grid(5))
                         .animation(.rythmicoSpring(duration: .durationShort), value: phoneNumberInputError != nil)
                     }
                 }

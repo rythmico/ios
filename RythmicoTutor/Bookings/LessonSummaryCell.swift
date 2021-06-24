@@ -39,8 +39,8 @@ struct LessonSummaryCell: View {
     }
 
     private var content: some View {
-        HStack(spacing: .spacingMedium) {
-            VStack(alignment: .leading, spacing: .spacingUnit / 2) {
+        HStack(spacing: .grid(5)) {
+            VStack(alignment: .leading, spacing: .grid(0.5)) {
                 Text(lesson.title)
                     .foregroundColor(.primary)
                     .font(.body)
@@ -55,7 +55,7 @@ struct LessonSummaryCell: View {
                     .foregroundColor(.accentColor)
             }
         }
-        .padding(.vertical, .spacingUnit)
+        .padding(.vertical, .grid(1))
         .opacity(lesson.status.isSkipped ? 0.3 : 1)
     }
 

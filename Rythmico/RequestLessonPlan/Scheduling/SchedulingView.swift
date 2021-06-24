@@ -77,7 +77,7 @@ struct SchedulingView: View, EditableView, TestableView {
         TitleSubtitleContentView(title: "Lesson Schedule", subtitle: subtitle) {
             VStack(spacing: 0) {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: .spacingMedium) {
+                    VStack(alignment: .leading, spacing: .grid(5)) {
                         HeaderContentView(title: "Start Date") {
                             CustomEditableTextField(
                                 placeholder: "Select a date...",
@@ -93,12 +93,12 @@ struct SchedulingView: View, EditableView, TestableView {
                                         displayedComponents: .date
                                     )
                                     .datePickerStyle(GraphicalDatePickerStyle())
-                                    .padding([.top, .horizontal], .spacingUnit * 2)
+                                    .padding([.top, .horizontal], .grid(2))
                                 }
                             }
                         }
 
-                        HStack(spacing: .spacingExtraSmall) {
+                        HStack(spacing: .grid(3)) {
                             HeaderContentView(title: "Time") {
                                 CustomTextField(
                                     "Time...",
@@ -130,10 +130,10 @@ struct SchedulingView: View, EditableView, TestableView {
                             InfoBanner(text: scheduleInfoText)
                         }
                     }
-                    .frame(maxWidth: .spacingMax)
-                    .padding([.trailing, .bottom], .spacingMedium)
+                    .frame(maxWidth: .grid(.max))
+                    .padding([.trailing, .bottom], .grid(5))
                 }
-                .padding(.leading, .spacingMedium)
+                .padding(.leading, .grid(5))
 
                 ZStack(alignment: .bottom) {
                     nextButtonAction.map { action in

@@ -6,11 +6,11 @@ struct PhoneNumberInputView: View {
     @Binding var phoneNumberInputError: Error?
 
     var body: some View {
-        VStack(spacing: .spacingSmall) {
+        VStack(spacing: .grid(4)) {
             contactNumberInstructions.frame(maxWidth: .infinity, alignment: .leading)
-            VStack(spacing: .spacingExtraSmall) {
+            VStack(spacing: .grid(3)) {
                 PhoneNumberField($phoneNumber, inputError: $phoneNumberInputError)
-                    .padding(.horizontal, .spacingUnit * 2.5)
+                    .padding(.horizontal, .grid(2.5))
                     .modifier(RoundedThinOutlineContainer(padded: false))
                 if let error = phoneNumberInputError {
                     ErrorText(error)

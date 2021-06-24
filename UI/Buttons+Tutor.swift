@@ -30,7 +30,7 @@ private struct RythmicoButtonStyle: ButtonStyle {
     typealias StateColors = (normal: Color, pressed: Color)
 
     var expansive: Bool
-    let buttonMaxWidth = .spacingUnit * 85
+    let buttonMaxWidth: CGFloat = .grid(85)
     var foregroundColor: StateColors
     var backgroundColor: StateColors
     var borderColor: StateColors
@@ -40,15 +40,15 @@ private struct RythmicoButtonStyle: ButtonStyle {
         configuration.label
             .lineLimit(1)
             .minimumScaleFactor(0.6)
-            .padding(.horizontal, .spacingMedium)
+            .padding(.horizontal, .grid(5))
             .font(.body.bold())
             .foregroundColor(color(from: foregroundColor, for: configuration))
             .frame(maxWidth: expansive ? buttonMaxWidth : nil, minHeight: 48)
             .background(
-                RoundedRectangle(cornerRadius: .spacingUnit * 2, style: .continuous)
+                RoundedRectangle(cornerRadius: .grid(2), style: .continuous)
                     .fill(color(from: backgroundColor, for: configuration))
                     .overlay(
-                        RoundedRectangle(cornerRadius: .spacingUnit * 2, style: .continuous)
+                        RoundedRectangle(cornerRadius: .grid(2), style: .continuous)
                             .stroke(color(from: borderColor, for: configuration), lineWidth: 2)
                     )
                     .contentShape(Rectangle())
@@ -76,13 +76,13 @@ private struct DiseableableButtonModifier: ViewModifier {
 struct Buttons_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            VStack(spacing: .spacingSmall) {
+            VStack(spacing: .grid(4)) {
                 Button("Next", action: {}).primaryStyle(expansive: false)
                 Button("Next", action: {}).primaryStyle()
                 Button("Next", action: {}).primaryStyle().disabled(true)
             }
 
-            VStack(spacing: .spacingSmall) {
+            VStack(spacing: .grid(4)) {
                 Button("Next", action: {}).secondaryStyle(expansive: false)
                 Button("Next", action: {}).secondaryStyle()
                 Button("Next", action: {}).secondaryStyle().disabled(true)

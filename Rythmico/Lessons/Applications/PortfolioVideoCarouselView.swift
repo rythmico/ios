@@ -4,21 +4,21 @@ import ComposableNavigator
 struct VideoCarouselView: View {
     var videos: [Portfolio.Video]
 
-    let rows = [GridItem(.fixed(.spacingUnit * 33), alignment: .leading)]
+    let rows = [GridItem(.fixed(.grid(33)), alignment: .leading)]
 
     @State
     private var scrollViewWidth: CGFloat = 0
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            LazyHGrid(rows: rows, spacing: .spacingExtraSmall) {
+            LazyHGrid(rows: rows, spacing: .grid(3)) {
                 ForEach(videos, id: \.self, content: VideoCarouselCell.init)
             }
-            .padding(.horizontal, scrollViewWidth < .spacingMax ? .spacingMedium : 0)
+            .padding(.horizontal, scrollViewWidth < .grid(.max) ? .grid(5) : 0)
             .fixedSize(horizontal: false, vertical: true)
         }
         .introspectScrollView { scrollViewWidth = $0.frame.width }
-        .frame(maxWidth: .spacingMax)
+        .frame(maxWidth: .grid(.max))
     }
 }
 
@@ -56,9 +56,9 @@ private struct VideoCarouselCell: View {
                 .renderingMode(.template)
                 .foregroundColor(.rythmicoWhite)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
-                .padding([.leading, .bottom], .spacingSmall)
+                .padding([.leading, .bottom], .grid(4))
         }
-        .cornerRadius(.spacingUnit * 2, antialiased: true)
+        .cornerRadius(.grid(2), antialiased: true)
         .overlay(overlay)
         .onTapGesture(perform: openPlayer)
     }
@@ -68,7 +68,7 @@ private struct VideoCarouselCell: View {
     private var overlay: some View {
         if colorScheme == .dark {
             RoundedRectangle(
-                cornerRadius: .spacingUnit * 2,
+                cornerRadius: .grid(2),
                 style: .continuous
             )
             .strokeBorder(Color.white.opacity(0.15), lineWidth: 1, antialiased: true)
@@ -123,8 +123,8 @@ private struct DismissableContainer<Content: View>: View {
             backgroundColor.edgesIgnoringSafeArea(.all)
             VStack(alignment: .trailing, spacing: 0) {
                 CloseButton(action: dismiss)
-                    .padding([.trailing, .bottom], .spacingSmall)
-                    .padding(.top, .spacingMedium)
+                    .padding([.trailing, .bottom], .grid(4))
+                    .padding(.top, .grid(5))
                     .accentColor(.rythmicoWhite)
                 content
             }

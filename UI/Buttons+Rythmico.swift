@@ -69,7 +69,7 @@ struct RythmicoButtonStyle: RythmicoButtonStyleProtocol {
     typealias StateColors = (normal: Color, pressed: Color)
 
     var expansive: Bool
-    let buttonMaxWidth = .spacingUnit * 85
+    let buttonMaxWidth: CGFloat = .grid(85)
     var foregroundColor: StateColors
     var backgroundColor: StateColors
     var borderColor: StateColors
@@ -78,7 +78,7 @@ struct RythmicoButtonStyle: RythmicoButtonStyleProtocol {
         configuration.label
             .lineLimit(1)
             .minimumScaleFactor(0.6)
-            .padding(.horizontal, .spacingMedium)
+            .padding(.horizontal, .grid(5))
             .foregroundColor(color(from: foregroundColor, for: configuration))
             .frame(maxWidth: expansive ? buttonMaxWidth : nil, minHeight: 48)
             .background(
@@ -102,7 +102,7 @@ struct RythmicoLinkButtonStyle: RythmicoButtonStyleProtocol {
     static var textStyle: Font.RythmicoTextStyle { .body }
 
     var expansive: Bool
-    let buttonMaxWidth = .spacingUnit * 85
+    let buttonMaxWidth: CGFloat = .grid(85)
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -128,26 +128,26 @@ private struct DiseableableButtonModifier: ViewModifier {
 struct Buttons_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            VStack(spacing: .spacingSmall) {
+            VStack(spacing: .grid(4)) {
                 RythmicoButton("Next", style: RythmicoButtonStyle.primary(expansive: false), action: {})
                 RythmicoButton("Next", style: RythmicoButtonStyle.primary(expansive: false), action: {})
                 RythmicoButton("Next", style: RythmicoButtonStyle.primary(), action: {})
                 RythmicoButton("Next", style: RythmicoButtonStyle.primary(), action: {}).disabled(true)
             }
 
-            VStack(spacing: .spacingSmall) {
+            VStack(spacing: .grid(4)) {
                 RythmicoButton("Next", style: RythmicoButtonStyle.secondary(expansive: false), action: {})
                 RythmicoButton("Next", style: RythmicoButtonStyle.secondary(), action: {})
                 RythmicoButton("Next", style: RythmicoButtonStyle.secondary(), action: {}).disabled(true)
             }
 
-            VStack(spacing: .spacingSmall) {
+            VStack(spacing: .grid(4)) {
                 RythmicoButton("Next", style: RythmicoButtonStyle.tertiary(expansive: false), action: {})
                 RythmicoButton("Next", style: RythmicoButtonStyle.tertiary(), action: {})
                 RythmicoButton("Next", style: RythmicoButtonStyle.tertiary(), action: {}).disabled(true)
             }
 
-            VStack(spacing: .spacingSmall) {
+            VStack(spacing: .grid(4)) {
                 RythmicoButton("Next", style: RythmicoLinkButtonStyle.quaternary(expansive: false), action: {})
                 RythmicoButton("Next", style: RythmicoLinkButtonStyle.quaternary(), action: {})
                 RythmicoButton("Next", style: RythmicoLinkButtonStyle.quaternary(), action: {}).disabled(true)

@@ -51,7 +51,7 @@ struct LessonsView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        TitleContentView(title: title, spacing: .spacingUnit) {
+        TitleContentView(title: title, spacing: .grid(1)) {
             VStack(spacing: 0) {
                 TabMenuView(tabs: Filter.allCases, selection: $tabSelection.lessonsTab)
                 LessonsCollectionView(lessonPlans: repository.items, filter: tabSelection.lessonsTab)
@@ -83,9 +83,9 @@ struct LessonsView: View, TestableView {
     private var trailingItem: some View {
         Button(action: presentRequestLessonFlow) {
             Image(decorative: Asset.Button.requestLessonPlan.name)
-                .padding(.vertical, .spacingExtraSmall)
-                .padding(.horizontal, .spacingExtraLarge)
-                .offset(x: .spacingExtraLarge)
+                .padding(.vertical, .grid(3))
+                .padding(.horizontal, .grid(7))
+                .offset(x: .grid(7))
         }
         .accessibility(label: Text("Request lessons"))
         .accessibility(hint: Text("Double tap to request a lesson plan"))

@@ -3,7 +3,7 @@ import SwiftUI
 struct TitleSubtitleContentView<Content: View>: View {
     var title: String
     var subtitle: Text? = nil
-    var spacing: CGFloat = .spacingExtraLarge
+    var spacing: CGFloat = .grid(7)
     @ViewBuilder
     var content: Content
 
@@ -19,7 +19,7 @@ extension TitleSubtitleContentView {
     init(
         title: String,
         subtitle: String,
-        spacing: CGFloat = .spacingExtraLarge,
+        spacing: CGFloat = .grid(7),
         @ViewBuilder content: () -> Content
     ) {
         self.init(title: title, subtitle: Text(subtitle), spacing: spacing, content: content)

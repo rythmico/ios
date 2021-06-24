@@ -59,10 +59,10 @@ struct OnboardingSlideshowView: View {
                 Image(decorative: $0.asset.name)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .padding(.horizontal, .spacingMedium)
+                    .padding(.horizontal, .grid(5))
             }
 
-            VStack(spacing: .spacingUnit * 2) {
+            VStack(spacing: .grid(2)) {
                 Text(step.title)
                     .rythmicoTextStyle(.headline)
                     .foregroundColor(.rythmicoForeground)
@@ -75,8 +75,8 @@ struct OnboardingSlideshowView: View {
                     .id(step.description.hashValue)
             }
             .multilineTextAlignment(.center)
-            .frame(maxWidth: .spacingMax)
-            .padding(.horizontal, .spacingLarge)
+            .frame(maxWidth: .grid(.max))
+            .padding(.horizontal, .grid(6))
         }
         .animation(.easeInOut(duration: .durationShort), value: step)
         .gesture(
@@ -96,10 +96,10 @@ struct OnboardingSlideshowView: View {
     }
 
     private var firstSpacing: CGFloat {
-        isCompact ? .spacingMedium : .spacingUnit * 10
+        isCompact ? .grid(5) : .grid(10)
     }
 
     private var secondSpacing: CGFloat {
-        isCompact ? .spacingSmall : .spacingExtraLarge
+        isCompact ? .grid(4) : .grid(7)
     }
 }

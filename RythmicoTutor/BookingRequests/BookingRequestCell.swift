@@ -11,8 +11,8 @@ struct BookingRequestCell: View {
             tag: request,
             selection: $navigation.requestsNavigation.selectedRequest
         ) {
-            HStack(spacing: .spacingMedium) {
-                VStack(alignment: .leading, spacing: .spacingUnit / 2) {
+            HStack(spacing: .grid(5)) {
+                VStack(alignment: .leading, spacing: .grid(0.5)) {
                     Text(title)
                         .foregroundColor(.primary)
                         .font(.body)
@@ -26,7 +26,7 @@ struct BookingRequestCell: View {
                     .foregroundColor(.secondary)
                     .font(.body)
             }
-            .padding(.vertical, .spacingUnit)
+            .padding(.vertical, .grid(1))
         }
     }
 
@@ -49,7 +49,7 @@ struct BookingRequestCell: View {
 struct BookingRequestCell_Previews: PreviewProvider {
     static var previews: some View {
         BookingRequestCell(request: .stub)
-            .padding(.horizontal, .spacingExtraSmall)
+            .padding(.horizontal, .grid(3))
             .previewLayout(.sizeThatFits)
     }
 }

@@ -21,8 +21,8 @@ struct ParentInfoAndSafetyView: View {
                 Text("Music lessons with Rythmico may be relaxed, but we take our responsibility as teachers very seriously. All tutors are DBS checked with years of experience working with children, both in mainstream schools and those that cater for young people with specialist needs.")
                     .foregroundColor(.rythmicoGray90)
                     .rythmicoTextStyle(.body)
-                    .frame(maxWidth: .spacingMax, alignment: .leading)
-                    .padding(.horizontal, .spacingMedium)
+                    .frame(maxWidth: .grid(.max), alignment: .leading)
+                    .padding(.horizontal, .grid(5))
             }
         }
         .backgroundColor(.rythmicoBackground)

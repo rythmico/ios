@@ -9,9 +9,9 @@ struct FloatingView<Content: View>: View {
         VStack(spacing: 0) {
             Divider()
             content
-                .frame(maxWidth: .spacingMax, alignment: .center)
-                .padding(.vertical, .spacingExtraSmall)
-                .padding(.horizontal, .spacingMedium)
+                .frame(maxWidth: .grid(.max), alignment: .center)
+                .padding(.vertical, .grid(3))
+                .padding(.horizontal, .grid(5))
         }
         .background(Color.rythmicoBackgroundSecondary.edgesIgnoringSafeArea(.bottom))
         .transition(.move(edgeWithSafeArea: .bottom))

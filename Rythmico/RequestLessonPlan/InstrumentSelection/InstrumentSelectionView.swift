@@ -15,7 +15,7 @@ struct InstrumentSelectionView: View, TestableView {
         TitleSubtitleContentView(
             title: "Choose Instrument",
             subtitle: "Select one instrument",
-            spacing: .spacingExtraSmall
+            spacing: .grid(3)
         ) {
             CollectionView(state.instruments, id: \.name, content: InstrumentView.init)
         }

@@ -6,7 +6,7 @@ struct LessonPlanPausingContentView: View {
     var policy: LessonPlan.Options.Pause.Policy
 
     var body: some View {
-        VStack(spacing: .spacingMedium) {
+        VStack(spacing: .grid(5)) {
             descriptionText("This will pause the entire lesson plan, including upcoming lessons. The recurring payment will also be paused.")
             if !isFree {
                 descriptionText("You will still be charged the full amount for your upcoming lesson on this plan.")
@@ -26,7 +26,7 @@ struct LessonPlanPausingContentView: View {
         Text(string)
             .foregroundColor(.rythmicoGray90)
             .rythmicoTextStyle(.body)
-            .frame(maxWidth: .spacingMax, alignment: .leading)
+            .frame(maxWidth: .grid(.max), alignment: .leading)
     }
 
     private static let formatter = Current.dateComponentsFormatter(allowedUnits: [.hour, .minute], style: .full)
@@ -40,7 +40,7 @@ struct LessonPlanPausingContentView_Preview: PreviewProvider {
             LessonPlanPausingContentView(isFree: true, policy: .stub)
             LessonPlanPausingContentView(isFree: false, policy: .stub)
         }
-        .padding(.spacingMedium)
+        .padding(.grid(5))
     }
 }
 #endif

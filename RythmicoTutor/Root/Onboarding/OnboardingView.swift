@@ -27,7 +27,7 @@ struct OnboardingView: View, TestableView {
                         .disabled(!isAppleAuthorizationButtonEnabled)
                 }
             }
-            .padding(.spacingLarge)
+            .padding(.grid(6))
             .animation(.rythmicoSpring(duration: .durationMedium), value: isLoading)
         }
         .onDisappear {

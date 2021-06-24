@@ -4,7 +4,7 @@ struct LessonScheduleView: View {
     var lesson: Lesson
 
     var body: some View {
-        VStack(alignment: .leading, spacing: .spacingMedium) {
+        VStack(alignment: .leading, spacing: .grid(5)) {
             label(icon: Asset.Icon.Label.info, title: dateText)
             label(icon: Asset.Icon.Label.time, title: timeText)
         }
@@ -12,7 +12,7 @@ struct LessonScheduleView: View {
 
     @ViewBuilder
     private func label(icon: ImageAsset, title: Text) -> some View {
-        HStack(spacing: .spacingUnit * 2) {
+        HStack(spacing: .grid(2)) {
             Image(decorative: icon.name).renderingMode(.template)
             title
                 .rythmicoTextStyle(.body)

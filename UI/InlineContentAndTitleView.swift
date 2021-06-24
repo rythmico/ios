@@ -7,7 +7,7 @@ struct InlineContentAndTitleView<Content: View>: View {
     var bold: Bool
 
     var body: some View {
-        HStack(spacing: .spacingExtraSmall) {
+        HStack(spacing: .grid(3)) {
             content
                 .fixedSize()
             Text(title)

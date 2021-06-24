@@ -36,7 +36,7 @@ struct AppSplash: View {
     var body: some View {
         ZStack {
             Color(.clear)
-            VStack(spacing: .spacingLarge) {
+            VStack(spacing: .grid(6)) {
                 Image(decorative: image.name)
                     .resizable()
                     .scaledToFit()
@@ -45,7 +45,7 @@ struct AppSplash: View {
                     Text(title)
                         .appSplashTitle()
                         .multilineTextAlignment(.center)
-                        .transition(.offset(y: -.spacingLarge) + .opacity)
+                        .transition(.offset(y: -.grid(6)) + .opacity)
                 }
             }
         }
