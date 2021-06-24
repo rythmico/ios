@@ -1,7 +1,13 @@
 import SwiftUI
 
 extension AnyTransition {
-    // TODO: remove when AnyTransition.move(edge:) respects edgesIgnoringSafeArea.
+    static func + (lhs: AnyTransition, rhs: AnyTransition) -> AnyTransition {
+        lhs.combined(with: rhs)
+    }
+}
+
+// TODO: remove when AnyTransition.move(edge:) respects edgesIgnoringSafeArea.
+extension AnyTransition {
     static func move(edgeWithSafeArea edge: Edge) -> AnyTransition {
         move(edge: .bottom).combined(
             with: .offset(
@@ -9,12 +15,7 @@ extension AnyTransition {
             )
         )
     }
-
-    static func + (lhs: AnyTransition, rhs: AnyTransition) -> AnyTransition {
-        lhs.combined(with: rhs)
-    }
 }
-
 private extension UIEdgeInsets {
     func offset(for edge: Edge) -> CGSize {
         switch edge {
