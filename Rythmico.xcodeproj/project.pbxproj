@@ -1219,7 +1219,7 @@
 				D50E4BDC23CA82E000B6FCB1 /* UI */,
 				03EDA6692476AD6800FBE527 /* Services */,
 				03EDA66A2476AE5500FBE527 /* Models */,
-				D510825B25E43099003C9467 /* FoundationSugar */,
+				D5D5E8A92685143000AACB8F /* Packages */,
 				03341B3C23ABB1E7009AE8A8 /* Products */,
 				D5AC3F3525F6ADE800321EDE /* Frameworks */,
 			);
@@ -2193,6 +2193,14 @@
 				D5CCC33125A4C66A00E25B62 /* ProfileView.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		D5D5E8A92685143000AACB8F /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				D510825B25E43099003C9467 /* FoundationSugar */,
+			);
+			path = Packages;
 			sourceTree = "<group>";
 		};
 		D5D78DDB25250810007041BE /* Applications */ = {

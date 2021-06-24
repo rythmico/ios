@@ -72,7 +72,7 @@
                BlueprintIdentifier = "FoundationSugarTests"
                BuildableName = "FoundationSugarTests"
                BlueprintName = "FoundationSugarTests"
-               ReferencedContainer = "container:FoundationSugar">
+               ReferencedContainer = "container:Modules/FoundationSugar">
             </BuildableReference>
          </TestableReference>
       </Testables>
