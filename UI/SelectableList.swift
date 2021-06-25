@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 
 struct SelectableList<Data: RandomAccessCollection, ID: Hashable, Content: View>: View {
     var data: Data
