@@ -1,11 +1,9 @@
-import SwiftUISugar
-
-protocol BackgroundTapActionCoordinator {
+public protocol BackgroundTapActionCoordinator {
     func onBackgroundTap(perform action: @escaping Action)
 }
 
 extension UIApplication: BackgroundTapActionCoordinator {
-    func onBackgroundTap(perform action: @escaping Action) {
+    public func onBackgroundTap(perform action: @escaping Action) {
         windows.first?.addGestureRecognizer(WindowTapGestureRecognizer(action: action))
     }
 }
