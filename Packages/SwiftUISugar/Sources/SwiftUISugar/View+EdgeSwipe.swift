@@ -1,15 +1,15 @@
-import SwiftUISugar
+public enum ViewSwipeEdge {
+    case left, right
+}
 
 extension View {
-    func onEdgeSwipe(_ edge: EdgeSwipeView.Edge, perform action: @escaping () -> Void) -> some View {
+    public func onEdgeSwipe(_ edge: ViewSwipeEdge, perform action: @escaping () -> Void) -> some View {
         background(EdgeSwipeView(edge: edge, action: action))
     }
 }
 
-struct EdgeSwipeView: UIViewRepresentable {
-    enum Edge {
-        case left, right
-    }
+private struct EdgeSwipeView: UIViewRepresentable {
+    typealias Edge = ViewSwipeEdge
 
     var edge: Edge
     var action: Action
