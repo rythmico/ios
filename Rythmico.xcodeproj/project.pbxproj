@@ -143,7 +143,6 @@
 		03E88E8424B8B9020077A420 /* BookingRequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E8324B8B9020077A420 /* BookingRequestsView.swift */; };
 		03E88E8D24BC8C1D0077A420 /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E8C24BC8C1D0077A420 /* AppContext.swift */; };
 		03E88E8F24BC9FAF0077A420 /* AppEnvironmentDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E8E24BC9FAF0077A420 /* AppEnvironmentDoubles.swift */; };
-		03E88E9124BCA4AA0077A420 /* TickingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E9024BCA4AA0077A420 /* TickingView.swift */; };
 		03E88EA724C1F4960077A420 /* App+LaunchScreenCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1CF0249CF9FA00AABFEA /* App+LaunchScreenCache.swift */; };
 		03E88EAA24C1F4FD0077A420 /* App+PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198532471BBE8005529EB /* App+PushNotifications.swift */; };
 		03E88EAB24C1F5FE0077A420 /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E88E8C24BC8C1D0077A420 /* AppContext.swift */; };
@@ -721,7 +720,6 @@
 		03E88E8324B8B9020077A420 /* BookingRequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestsView.swift; sourceTree = "<group>"; };
 		03E88E8C24BC8C1D0077A420 /* AppContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
 		03E88E8E24BC9FAF0077A420 /* AppEnvironmentDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironmentDoubles.swift; sourceTree = "<group>"; };
-		03E88E9024BCA4AA0077A420 /* TickingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickingView.swift; sourceTree = "<group>"; };
 		03E88EAE24C1F74D0077A420 /* AppExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExtensions.swift; sourceTree = "<group>"; };
 		03E88EB024C205C30077A420 /* Current.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Current.swift; sourceTree = "<group>"; };
 		03E88EB324C4AA4C0077A420 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -1656,7 +1654,6 @@
 				D50811E323FB72A3008103D8 /* StepBar.swift */,
 				D564F4632511722900EA13E9 /* TabMenuView.swift */,
 				D5147506240C8E69002EE20C /* TestableView.swift */,
-				03E88E9024BCA4AA0077A420 /* TickingView.swift */,
 				D52C553B24DC74A200C295C4 /* TitleCell.swift */,
 				03C39DD324967E5B00C76516 /* TitleContentView.swift */,
 				D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */,
@@ -3155,7 +3152,6 @@
 				D524D0C525046BAE00BC9AF7 /* PushNotificationRegisterServiceDoubles.swift in Sources */,
 				D524D0C425046BA900BC9AF7 /* PushNotificationRegisterService.swift in Sources */,
 				035B1D52249E57FD00AABFEA /* Grid.swift in Sources */,
-				03E88E9124BCA4AA0077A420 /* TickingView.swift in Sources */,
 				035B1D30249E571B00AABFEA /* VoiceOverService.swift in Sources */,
 				D5AC9E27254D8AD7003A8197 /* AppDoubles.swift in Sources */,
 				D5F4D3F424F33C9E000E8580 /* Address.swift in Sources */,
