@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 
 struct PortfolioView: View {
     private static let bioId = "bio"
