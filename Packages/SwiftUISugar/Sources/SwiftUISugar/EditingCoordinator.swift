@@ -1,6 +1,4 @@
-import SwiftUISugar
-
-protocol EditingFocusEnum: Equatable {
+public protocol EditingFocusEnum: Equatable {
     static var usingKeyboard: [Self] { get }
 }
 
@@ -10,8 +8,8 @@ extension EditingFocusEnum {
     }
 }
 
-final class EditingCoordinator<Focus: EditingFocusEnum>: ObservableObject {
-    @Published var focus: Focus? = .none {
+public final class EditingCoordinator<Focus: EditingFocusEnum>: ObservableObject {
+    @Published public var focus: Focus? = .none {
         willSet {
             let shouldDismissKeyboard: Bool
 
@@ -32,8 +30,8 @@ final class EditingCoordinator<Focus: EditingFocusEnum>: ObservableObject {
 
     private let keyboardDismisser: KeyboardDismisser
 
-    init(
-        keyboardDismisser: KeyboardDismisser = Current.keyboardDismisser,
+    public init(
+        keyboardDismisser: KeyboardDismisser,
         endEditingOnBackgroundTap: Bool = true
     ) {
         self.keyboardDismisser = keyboardDismisser
@@ -43,7 +41,7 @@ final class EditingCoordinator<Focus: EditingFocusEnum>: ObservableObject {
         }
     }
 
-    func endEditing() {
+    public func endEditing() {
         focus = .none
     }
 }

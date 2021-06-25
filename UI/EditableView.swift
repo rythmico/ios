@@ -1,4 +1,4 @@
-import UIKit
+import SwiftUISugar
 
 typealias _EditingCoordinator<Focus: EditingFocusEnum> = EditingCoordinator<Focus>
 

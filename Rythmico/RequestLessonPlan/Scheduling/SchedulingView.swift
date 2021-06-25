@@ -20,7 +20,7 @@ struct SchedulingView: View, EditableView, TestableView {
     }
 
     @StateObject
-    var editingCoordinator = EditingCoordinator(endEditingOnBackgroundTap: false)
+    var editingCoordinator = EditingCoordinator(keyboardDismisser: Current.keyboardDismisser, endEditingOnBackgroundTap: false)
 
     @ObservedObject private(set)
     var state: ViewState

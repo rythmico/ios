@@ -20,7 +20,7 @@ struct StudentDetailsView: View, EditableView, TestableView {
     }
 
     @StateObject
-    var editingCoordinator = EditingCoordinator()
+    var editingCoordinator = EditingCoordinator(keyboardDismisser: Current.keyboardDismisser)
 
     var instrument: Instrument
     @ObservedObject
