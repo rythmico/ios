@@ -91,7 +91,6 @@
 		035B1D51249E57F100AABFEA /* HashFunction+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */; };
 		035B1D52249E57FD00AABFEA /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5068B24046B1400CA4094 /* Grid.swift */; };
 		035B1D53249E582800AABFEA /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6ED2447DFF900F6391D /* Animation.swift */; };
-		035B1D54249E59BB00AABFEA /* PreviewDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6E42447B7BD00F6391D /* PreviewDevices.swift */; };
 		035B1D5B249E5E6E00AABFEA /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = 035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */; };
 		035B1D5E249E5EEC00AABFEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */; };
 		035B1D60249E63CD00AABFEA /* DeviceTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE4249071DB009C3980 /* DeviceTokenProvider.swift */; };
@@ -112,7 +111,6 @@
 		0372E35A249ABAB80048B402 /* SelectableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0372E359249ABAB80048B402 /* SelectableList.swift */; };
 		0392A9D3244D184F001E97AE /* PrivateNoteViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0392A9D0244D181E001E97AE /* PrivateNoteViewTests.swift */; };
 		03A094622443D8E1008B4BD6 /* EditingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */; };
-		03A3F6E52447B7BD00F6391D /* PreviewDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6E42447B7BD00F6391D /* PreviewDevices.swift */; };
 		03A3F6EE2447DFF900F6391D /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6ED2447DFF900F6391D /* Animation.swift */; };
 		03A8116E241D1DAF0091B9ED /* StudentDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */; };
 		03A91EF2249186EC00DEAD5E /* AppEnvironmentDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A91EF1249186EC00DEAD5E /* AppEnvironmentDoubles.swift */; };
@@ -701,7 +699,6 @@
 		0372E359249ABAB80048B402 /* SelectableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableList.swift; sourceTree = "<group>"; };
 		0392A9D0244D181E001E97AE /* PrivateNoteViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateNoteViewTests.swift; sourceTree = "<group>"; };
 		03A094612443D8E1008B4BD6 /* EditingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingCoordinator.swift; sourceTree = "<group>"; };
-		03A3F6E42447B7BD00F6391D /* PreviewDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDevices.swift; sourceTree = "<group>"; };
 		03A3F6ED2447DFF900F6391D /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDoubles.swift; sourceTree = "<group>"; };
 		03A91EF1249186EC00DEAD5E /* AppEnvironmentDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironmentDoubles.swift; sourceTree = "<group>"; };
@@ -1661,7 +1658,6 @@
 				D5D78E0B25257800007041BE /* PhoneNumberField.swift */,
 				03AAF66B2444FFCC002D8F5B /* Pickers.swift */,
 				03C39DD52496802500C76516 /* Pill.swift */,
-				03A3F6E42447B7BD00F6391D /* PreviewDevices.swift */,
 				D5EF88B523FB706C0072BD03 /* ProgressBar.swift */,
 				D5DDE868259955C200CF565D /* RoundedGrayedDialog.swift */,
 				D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */,
@@ -2822,7 +2818,6 @@
 				D535554723E20076005A20EB /* Colors.swift in Sources */,
 				D527B00B24FD3297003E81A9 /* AvatarStackView.swift in Sources */,
 				D53555B923E53699005A20EB /* AuthenticationServiceDoubles.swift in Sources */,
-				03A3F6E52447B7BD00F6391D /* PreviewDevices.swift in Sources */,
 				D5444FEC2602777D00369BA5 /* ImageProcessingService.swift in Sources */,
 				D5DDE869259955C200CF565D /* RoundedGrayedDialog.swift in Sources */,
 				D56B253B2532433E00BC3932 /* ErrorText.swift in Sources */,
@@ -3159,7 +3154,6 @@
 				D5DE2897260A6BC6002BAB43 /* CustomTextFieldInputAccessory.swift in Sources */,
 				D5FAE6862559DF8300473A8B /* PhoneNumberCell.swift in Sources */,
 				D575C869254F2F26001664AB /* ImageAsset+Sugar.swift in Sources */,
-				035B1D54249E59BB00AABFEA /* PreviewDevices.swift in Sources */,
 				035B1D45249E577700AABFEA /* AppleAuthorizationResponseDoubles.swift in Sources */,
 				D5E987C224EDE9A100E2E1AF /* Routes+Tutor.swift in Sources */,
 				035B1D60249E63CD00AABFEA /* DeviceTokenProvider.swift in Sources */,

@@ -1,7 +1,5 @@
-import SwiftUI
-
 extension PreviewDevice {
-    enum Name: String, CaseIterable {
+    public enum Name: String, CaseIterable {
         case iphoneSE = "iPhone SE"
         case iphoneSE2 = "iPhone SE (2nd generation)"
         case iphone11Pro = "iPhone 11 Pro"
@@ -9,11 +7,11 @@ extension PreviewDevice {
 }
 
 extension View {
-    func previewDevice(_ name: PreviewDevice.Name) -> some View {
+    public func previewDevice(_ name: PreviewDevice.Name) -> some View {
         previewDevice(PreviewDevice(rawValue: name.rawValue))
     }
 
-    func previewDevices(_ names: [PreviewDevice.Name] = PreviewDevice.Name.allCases) -> some View {
+    public func previewDevices(_ names: [PreviewDevice.Name] = PreviewDevice.Name.allCases) -> some View {
         ForEach(names, id: \.rawValue, content: previewDevice)
     }
 }
