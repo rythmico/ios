@@ -1,11 +1,9 @@
-import SwiftUI
-
-enum FlowDirection {
+public enum FlowDirection {
     case forward, backward
 }
 
 extension FlowDirection {
-    init?<Step: FlowStep>(from: Step, to: Step) {
+    public init?<Step: FlowStep>(from: Step, to: Step) {
         switch true {
         case to.index > from.index: self = .forward
         case to.index < from.index: self = .backward
@@ -15,7 +13,7 @@ extension FlowDirection {
 }
 
 extension FlowDirection {
-    func map<T>(
+    public func map<T>(
         forward: @autoclosure () -> T,
         backward: @autoclosure () -> T
     ) -> T {

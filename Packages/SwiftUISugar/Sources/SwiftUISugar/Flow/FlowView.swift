@@ -1,20 +1,18 @@
-import SwiftUI
+public typealias _Flow = Flow
 
-typealias _Flow = Flow
-
-struct FlowView<Flow: _Flow, Content: View>: View {
-    typealias Step = Flow.Step
+public struct FlowView<Flow: _Flow, Content: View>: View {
+    public typealias Step = Flow.Step
 
     @ObservedObject
-    var flow: Flow
-    var transition: FlowTransition
-    var animation: Animation
-    var content: (Step) -> Content
+    private var flow: Flow
+    private var transition: FlowTransition
+    private var animation: Animation
+    private var content: (Step) -> Content
 
-    init(
+    public init(
         flow: Flow,
         transition: FlowTransition = .slide,
-        animation: Animation = .rythmicoSpring(duration: .durationMedium),
+        animation: Animation,
         @ViewBuilder content: @escaping (Step) -> Content
     ) {
         self.flow = flow
@@ -23,7 +21,7 @@ struct FlowView<Flow: _Flow, Content: View>: View {
         self.content = content
     }
 
-    var body: some View {
+    public var body: some View {
         ZStack {
             ForEach(0..<Step.count) { index in
                 if index == currentStep.index {

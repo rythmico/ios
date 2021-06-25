@@ -1,6 +1,4 @@
-import SwiftUI
-
-protocol FlowStep {
+public protocol FlowStep {
     typealias Index = Int
     var index: Index { get }
 
@@ -8,7 +6,7 @@ protocol FlowStep {
 }
 
 extension FlowStep where Self: CaseIterable, AllCases.Element: Hashable, AllCases.Index == Index {
-    var index: Index {
+    public var index: Index {
         guard let index = Self.allCases.firstIndex(of: self) else {
             preconditionFailure("Case '\(type(of: self)).\(self)' not contained within 'CaseIterable.allCases'.")
         }
@@ -17,7 +15,7 @@ extension FlowStep where Self: CaseIterable, AllCases.Element: Hashable, AllCase
 }
 
 extension FlowStep where Self: CaseIterable {
-    static var count: Int {
+    public static var count: Int {
         allCases.count
     }
 }

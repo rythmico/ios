@@ -1,31 +1,29 @@
-import SwiftUI
+public struct FlowTransition {
+    public var map: (FlowDirection) -> AnyTransition
 
-struct FlowTransition {
-    var map: (FlowDirection) -> AnyTransition
-
-    init(_ map: @escaping (FlowDirection) -> AnyTransition) {
+    public init(_ map: @escaping (FlowDirection) -> AnyTransition) {
         self.map = map
     }
 
-    init(_ transition: AnyTransition) {
+    public init(_ transition: AnyTransition) {
         self.map = { _ in transition }
     }
 }
 
 extension FlowTransition {
-    static var identity = FlowTransition(.identity)
-    static var opacity = FlowTransition(.opacity)
-    static var scale = FlowTransition(.scale)
-    static var slide = move(.horizontal)
+    public static var identity = FlowTransition(.identity)
+    public static var opacity = FlowTransition(.opacity)
+    public static var scale = FlowTransition(.scale)
+    public static var slide = move(.horizontal)
 }
 
 extension FlowTransition {
-    enum Axis {
+    public enum Axis {
         case horizontal
         case vertical
     }
 
-    static func move(_ axis: Axis) -> Self {
+    public static func move(_ axis: Axis) -> Self {
         FlowTransition { direction in
             switch axis {
             case .horizontal:
@@ -44,13 +42,13 @@ extension FlowTransition {
 }
 
 extension FlowTransition {
-    func combine(with other: Self) -> Self {
+    public func combine(with other: Self) -> Self {
         FlowTransition {
             self.map($0).combined(with: other.map($0))
         }
     }
 
-    static func + (lhs: Self, rhs: Self) -> Self {
+    public static func + (lhs: Self, rhs: Self) -> Self {
         lhs.combine(with: rhs)
     }
 }
