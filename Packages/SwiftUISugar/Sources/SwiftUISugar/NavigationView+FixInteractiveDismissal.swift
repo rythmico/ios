@@ -1,7 +1,5 @@
-import SwiftUISugar
-
 extension View {
-    func navigationViewFixInteractiveDismissal() -> some View {
+    public func navigationViewFixInteractiveDismissal() -> some View {
         introspectNavigationController { navigationController in
             guard let gestureRecognizer = navigationController.interactivePopGestureRecognizer else {
                 return

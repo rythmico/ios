@@ -392,8 +392,6 @@
 		D585D5B12511299800B74091 /* LessonPlanApplicationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D585D5B02511299800B74091 /* LessonPlanApplicationDetailView.swift */; };
 		D58824BF251A6953000820F4 /* LessonPlanApplicationsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58824BE251A6953000820F4 /* LessonPlanApplicationsGridView.swift */; };
 		D58824C4251A6D49000820F4 /* LessonsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58824C3251A6D49000820F4 /* LessonsCollectionView.swift */; };
-		D5882502251CBE0C000820F4 /* NavigationViewFixInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5882501251CBE0C000820F4 /* NavigationViewFixInteractiveDismissal.swift */; };
-		D588250F251CCCF9000820F4 /* NavigationViewFixInteractiveDismissal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5882501251CBE0C000820F4 /* NavigationViewFixInteractiveDismissal.swift */; };
 		D5883CEA25A4189D000B545C /* CalendarSyncCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5883CE925A4189D000B545C /* CalendarSyncCoordinator.swift */; };
 		D5883CEB25A4189D000B545C /* CalendarSyncCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5883CE925A4189D000B545C /* CalendarSyncCoordinator.swift */; };
 		D588E87E266D135000E14288 /* ErrorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D588E87D266D135000E14288 /* ErrorLogger.swift */; };
@@ -926,7 +924,6 @@
 		D585D5B02511299800B74091 /* LessonPlanApplicationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationDetailView.swift; sourceTree = "<group>"; };
 		D58824BE251A6953000820F4 /* LessonPlanApplicationsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationsGridView.swift; sourceTree = "<group>"; };
 		D58824C3251A6D49000820F4 /* LessonsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsCollectionView.swift; sourceTree = "<group>"; };
-		D5882501251CBE0C000820F4 /* NavigationViewFixInteractiveDismissal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewFixInteractiveDismissal.swift; sourceTree = "<group>"; };
 		D5883CE925A4189D000B545C /* CalendarSyncCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSyncCoordinator.swift; sourceTree = "<group>"; };
 		D588E87D266D135000E14288 /* ErrorLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLogger.swift; sourceTree = "<group>"; };
 		D588E880266D137400E14288 /* ErrorLoggerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLoggerDoubles.swift; sourceTree = "<group>"; };
@@ -1658,7 +1655,6 @@
 				D5CAC9AD24E6D67C00119DAA /* MultilineTextField+Tutor.swift */,
 				D580E4132635F8CC004B9AA7 /* NavigationBar.swift */,
 				D5E58F45256DB0AC00EB52ED /* NavigationLink+Hidden.swift */,
-				D5882501251CBE0C000820F4 /* NavigationViewFixInteractiveDismissal.swift */,
 				D5ED326026065FEC00821ABE /* NonEditableTextField.swift */,
 				D58149E8251D262B0009BBB3 /* PageDotIndicator.swift */,
 				D52D8A4D259D5FDC00A6CBBF /* PageView.swift */,
@@ -2933,7 +2929,6 @@
 				D54340F3261E72F8006898B0 /* AccessibilitySettings.swift in Sources */,
 				D517FF8025536AB900A41639 /* Tutor.swift in Sources */,
 				D58824BF251A6953000820F4 /* LessonPlanApplicationsGridView.swift in Sources */,
-				D5882502251CBE0C000820F4 /* NavigationViewFixInteractiveDismissal.swift in Sources */,
 				D501586E25374048005E02FA /* CardSetupCoordinator.swift in Sources */,
 				03B198562471BD6C005529EB /* PushNotificationAuthorizationCoordinator.swift in Sources */,
 				D5F5067B2400788400CA4094 /* MultilineTextField.swift in Sources */,
@@ -3104,7 +3099,6 @@
 				035B1CBF249CF2AA00AABFEA /* App.swift in Sources */,
 				D54CFD3225BB20BD00C012F3 /* TutorStatusDoubles.swift in Sources */,
 				03E88E8424B8B9020077A420 /* BookingRequestsView.swift in Sources */,
-				D588250F251CCCF9000820F4 /* NavigationViewFixInteractiveDismissal.swift in Sources */,
 				D577EEA724E6F66400253EA1 /* BookingRequestApplyView.swift in Sources */,
 				D549219825BB28B100251FD2 /* APIActivityErrorHandler+Tutor.swift in Sources */,
 				D524D0C0250468CA00BC9AF7 /* PushNotificationAuthorizationCoordinator.swift in Sources */,
