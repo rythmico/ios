@@ -1,7 +1,5 @@
-import SwiftUISugar
-
 extension View {
-    func sheetInteractiveDismissal(_ enabled: Bool, onAttempt: (() -> Void)? = nil) -> some View {
+    public func sheetInteractiveDismissal(_ enabled: Bool, onAttempt: (() -> Void)? = nil) -> some View {
         introspectViewController {
             guard let presentationController = $0.presentationController else {
                 return
