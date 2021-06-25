@@ -58,7 +58,6 @@
 		035B1D17249E566800AABFEA /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */; };
 		035B1D1A249E568600AABFEA /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D19249E568600AABFEA /* AppEnvironment.swift */; };
 		035B1D30249E571B00AABFEA /* VoiceOverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF3072491A51D004A01B2 /* VoiceOverService.swift */; };
-		035B1D31249E572000AABFEA /* UIApplication+KeyboardDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506642400619600CA4094 /* UIApplication+KeyboardDismisser.swift */; };
 		035B1D32249E572900AABFEA /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67C24776C6C00FBE527 /* URLOpener.swift */; };
 		035B1D33249E576900AABFEA /* AuthenticationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561F23CE92AE00BC8485 /* AuthenticationError.swift */; };
 		035B1D34249E576900AABFEA /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BC423C7AAA900B6FCB1 /* AuthenticationService.swift */; };
@@ -565,7 +564,6 @@
 		D5F5065F240055E800CA4094 /* HeaderContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5065E240055E800CA4094 /* HeaderContentView.swift */; };
 		D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */; };
 		D5F50663240056FA00CA4094 /* RoundedThinOutlineContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F50662240056FA00CA4094 /* RoundedThinOutlineContainer.swift */; };
-		D5F506652400619600CA4094 /* UIApplication+KeyboardDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506642400619600CA4094 /* UIApplication+KeyboardDismisser.swift */; };
 		D5F5067B2400788400CA4094 /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5067A2400788400CA4094 /* MultilineTextField.swift */; };
 		D5F5068C24046B1400CA4094 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5068B24046B1400CA4094 /* Grid.swift */; };
 		D5F506B02405A6A900CA4094 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506AF2405A6A900CA4094 /* Duration.swift */; };
@@ -1047,7 +1045,6 @@
 		D5F5065E240055E800CA4094 /* HeaderContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderContentView.swift; sourceTree = "<group>"; };
 		D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleContentView.swift; sourceTree = "<group>"; };
 		D5F50662240056FA00CA4094 /* RoundedThinOutlineContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedThinOutlineContainer.swift; sourceTree = "<group>"; };
-		D5F506642400619600CA4094 /* UIApplication+KeyboardDismisser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+KeyboardDismisser.swift"; sourceTree = "<group>"; };
 		D5F5067A2400788400CA4094 /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
 		D5F5068B24046B1400CA4094 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		D5F506AF2405A6A900CA4094 /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
@@ -1656,7 +1653,6 @@
 				03C39DD324967E5B00C76516 /* TitleContentView.swift */,
 				D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */,
 				D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */,
-				D5F506642400619600CA4094 /* UIApplication+KeyboardDismisser.swift */,
 				D58DE1CC25C0F0100013AEE8 /* UIColor+Hex.swift */,
 				D5CC5FE924FF1201007DFE84 /* UIImage+Sugar.swift */,
 				D57DE17C264DC48400C5E118 /* UITableView+Padding.swift */,
@@ -2852,7 +2848,6 @@
 				D575FE0C2652CE0F00448471 /* LessonPlanTutorDetailView.swift in Sources */,
 				D5E987BC24EDE92E00E2E1AF /* Router.swift in Sources */,
 				D57DE17B264DC2AE00C5E118 /* ProfileSection.swift in Sources */,
-				D5F506652400619600CA4094 /* UIApplication+KeyboardDismisser.swift in Sources */,
 				D5AAF7D723F9E20C00E410F2 /* Instrument.swift in Sources */,
 				D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */,
 				03FE8192244E204900C5C184 /* AddressItemView.swift in Sources */,
@@ -3047,7 +3042,6 @@
 				035B1D10249E561C00AABFEA /* RootView.swift in Sources */,
 				035B1D64249E642800AABFEA /* DeviceTokenProviderDoubles.swift in Sources */,
 				D549219325BB27E700251FD2 /* APIActivityErrorHandler.swift in Sources */,
-				035B1D31249E572000AABFEA /* UIApplication+KeyboardDismisser.swift in Sources */,
 				03E88EB224C205C30077A420 /* Current.swift in Sources */,
 				D5BF12BC2506926900B2931C /* PushNotificationEventHandler.swift in Sources */,
 				D527B01424FEA2DE003E81A9 /* ImageLoadingCoordinator.swift in Sources */,

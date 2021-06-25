@@ -1,4 +1,4 @@
-import FoundationSugar
+import SwiftUISugar
 import XCTest
 @testable import Rythmico
 import ViewInspector

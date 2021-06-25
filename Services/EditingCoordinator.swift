@@ -1,4 +1,4 @@
-import UIKit
+import SwiftUISugar
 
 protocol EditingFocusEnum: Equatable {
     static var usingKeyboard: [Self] { get }
