@@ -1,8 +1,6 @@
-public typealias _EditingCoordinator<Focus: EditingFocusEnum> = EditingCoordinator<Focus>
-
 public protocol EditableView {
     associatedtype EditingFocus: EditingFocusEnum
-    typealias EditingCoordinator = _EditingCoordinator<EditingFocus>
+    typealias EditingCoordinator = SwiftUISugar.EditingCoordinator<EditingFocus>
     var editingCoordinator: EditingCoordinator { get }
 }
 
