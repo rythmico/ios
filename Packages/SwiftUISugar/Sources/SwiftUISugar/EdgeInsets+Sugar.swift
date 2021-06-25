@@ -1,7 +1,5 @@
-import SwiftUI
-
 extension EdgeInsets {
-    init(top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) {
+    public init(top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) {
         self.init()
         self.top = top
         self.leading = leading
@@ -9,7 +7,7 @@ extension EdgeInsets {
         self.trailing = trailing
     }
 
-    init(horizontal: CGFloat = 0, vertical: CGFloat = 0) {
+    public init(horizontal: CGFloat = 0, vertical: CGFloat = 0) {
         self.init()
         self.top = vertical
         self.leading = horizontal
@@ -17,7 +15,7 @@ extension EdgeInsets {
         self.trailing = horizontal
     }
 
-    init(_ all: CGFloat) {
+    public init(_ all: CGFloat) {
         self.init()
         self.top = all
         self.leading = all
@@ -25,5 +23,5 @@ extension EdgeInsets {
         self.trailing = all
     }
 
-    static var zero: EdgeInsets { .init() }
+    public static var zero: EdgeInsets { .init() }
 }
