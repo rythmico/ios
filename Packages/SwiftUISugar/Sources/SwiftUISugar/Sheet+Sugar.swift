@@ -1,7 +1,5 @@
-import SwiftUI
-
 extension View {
-    func sheet<Item, Content: View>(
+    public func sheet<Item, Content: View>(
         item: Binding<Item?>,
         onDismiss: (() -> Void)? = nil,
         @ViewBuilder content: @escaping (Item) -> Content
@@ -11,7 +9,7 @@ extension View {
         }
     }
 
-    func fullScreenCover<Item, Content: View>(
+    public func fullScreenCover<Item, Content: View>(
         item: Binding<Item?>,
         onDismiss: (() -> Void)? = nil,
         @ViewBuilder content: @escaping (Item) -> Content
