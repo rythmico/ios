@@ -227,7 +227,6 @@
 		D52C553D24DC74A200C295C4 /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C553B24DC74A200C295C4 /* TitleCell.swift */; };
 		D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554324DDC53400C295C4 /* FloatingView+Rythmico.swift */; };
 		D52C554824DDC60900C295C4 /* FloatingView+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554624DDC60600C295C4 /* FloatingView+Tutor.swift */; };
-		D52C554A24DDE1D300C295C4 /* StaticMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554924DDE1D300C295C4 /* StaticMapView.swift */; };
 		D52C554C24DDE5FF00C295C4 /* Buttons+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */; };
 		D52C555024E2ABFC00C295C4 /* MapOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554F24E2ABFC00C295C4 /* MapOpener.swift */; };
 		D52D8A4E259D5FDD00A6CBBF /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52D8A4D259D5FDC00A6CBBF /* PageView.swift */; };
@@ -801,7 +800,6 @@
 		D52C553B24DC74A200C295C4 /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
 		D52C554324DDC53400C295C4 /* FloatingView+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingView+Rythmico.swift"; sourceTree = "<group>"; };
 		D52C554624DDC60600C295C4 /* FloatingView+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingView+Tutor.swift"; sourceTree = "<group>"; };
-		D52C554924DDE1D300C295C4 /* StaticMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticMapView.swift; sourceTree = "<group>"; };
 		D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Buttons+Tutor.swift"; sourceTree = "<group>"; };
 		D52C554F24E2ABFC00C295C4 /* MapOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOpener.swift; sourceTree = "<group>"; };
 		D52D8A4D259D5FDC00A6CBBF /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
@@ -1662,7 +1660,6 @@
 				0372E359249ABAB80048B402 /* SelectableList.swift */,
 				D5919F7024CF3BDF009D6185 /* Sheet+Sugar.swift */,
 				D5ED168A2614BB40001841ED /* StackSpacing.swift */,
-				D52C554924DDE1D300C295C4 /* StaticMapView.swift */,
 				D50811E323FB72A3008103D8 /* StepBar.swift */,
 				D564F4632511722900EA13E9 /* TabMenuView.swift */,
 				D5147506240C8E69002EE20C /* TestableView.swift */,
@@ -3199,7 +3196,6 @@
 				D52C555024E2ABFC00C295C4 /* MapOpener.swift in Sources */,
 				D524D0C325046B9800BC9AF7 /* UNUserNotificationCenterDoubles.swift in Sources */,
 				035B1D1A249E568600AABFEA /* AppEnvironment.swift in Sources */,
-				D52C554A24DDE1D300C295C4 /* StaticMapView.swift in Sources */,
 				D5E987C724EEFC7C00E2E1AF /* BookingApplicationsView.swift in Sources */,
 				D5E58F20256AF31A00EB52ED /* Lesson.swift in Sources */,
 				03E88EAA24C1F4FD0077A420 /* App+PushNotifications.swift in Sources */,

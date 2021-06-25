@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 import MapKit
 
 // TODO: refactor with generics, to use in BookingRequestDetailView and LessonDetailView.
@@ -14,7 +14,7 @@ struct AddressMapCell: View {
     var body: some View {
         Group {
             VStack(alignment: .leading, spacing: .grid(3)) {
-                StaticMapView(coordinate: coordinate, showsCoordinate: isFullAddress)
+                NonInteractiveMap(coordinate: coordinate, showsPin: isFullAddress)
                     .frame(height: 160)
                     .clipShape(RoundedRectangle(cornerRadius: .grid(2), style: .continuous))
                     .onTapGesture(perform: presentMapActionSheet)
@@ -45,7 +45,7 @@ struct AddressMapCell: View {
     private var coordinate: CLLocationCoordinate2D {
         switch addressInfo {
         case .postcode:
-            return StaticMapView.defaultCoordinate
+            return NonInteractiveMap.defaultCoordinate
         case .address(let address):
             return CLLocationCoordinate2D(latitude: address.latitude, longitude: address.longitude)
         }

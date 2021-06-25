@@ -1,13 +1,22 @@
+#if canImport(MapKit)
 import SwiftUI
 import MapKit
 
-struct StaticMapView: View {
-    static let defaultCoordinate = CLLocationCoordinate2D(latitude: 51.5062, longitude: -0.1248)
+public struct NonInteractiveMap: View {
+    public static let defaultCoordinate = CLLocationCoordinate2D(latitude: 51.5062, longitude: -0.1248)
 
-    var coordinate = Self.defaultCoordinate
-    var showsCoordinate: Bool
+    private var coordinate: CLLocationCoordinate2D
+    private var showsPin: Bool
 
-    var body: some View {
+    public init(
+        coordinate: CLLocationCoordinate2D = Self.defaultCoordinate,
+        showsPin: Bool
+    ) {
+        self.coordinate = coordinate
+        self.showsPin = showsPin
+    }
+
+    public var body: some View {
         Map(
             coordinateRegion: .constant(
                 MKCoordinateRegion(
@@ -19,7 +28,7 @@ struct StaticMapView: View {
             interactionModes: [],
             showsUserLocation: false,
             userTrackingMode: nil,
-            annotationItems: showsCoordinate ? [IdentifiedCoordinate(coordinate)] : [],
+            annotationItems: showsPin ? [IdentifiedCoordinate(coordinate)] : [],
             annotationContent: { MapMarker(coordinate: $0.coordinate, tint: nil) }
         )
     }
@@ -33,3 +42,4 @@ private struct IdentifiedCoordinate: Identifiable {
         self.coordinate = coordinate
     }
 }
+#endif
