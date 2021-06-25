@@ -168,7 +168,6 @@
 		D50158AA2538BF63005E02FA /* CardSetupCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50158A92538BF63005E02FA /* CardSetupCredential.swift */; };
 		D50158AF2538BFDD005E02FA /* CardSetupCredentialDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50158AE2538BFDD005E02FA /* CardSetupCredentialDoubles.swift */; };
 		D50158B42538C029005E02FA /* CardDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50158B32538C029005E02FA /* CardDoubles.swift */; };
-		D505803825D3253F0028040F /* EditableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D505803725D3253F0028040F /* EditableView.swift */; };
 		D5077D8B2587D80200F8595E /* LessonSkippingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5077D8A2587D80200F8595E /* LessonSkippingContentView.swift */; };
 		D50811E423FB72A3008103D8 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E323FB72A3008103D8 /* StepBar.swift */; };
 		D50811E623FB769D008103D8 /* RequestLessonPlanFlowViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E523FB769D008103D8 /* RequestLessonPlanFlowViewTests.swift */; };
@@ -737,7 +736,6 @@
 		D50158A92538BF63005E02FA /* CardSetupCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetupCredential.swift; sourceTree = "<group>"; };
 		D50158AE2538BFDD005E02FA /* CardSetupCredentialDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetupCredentialDoubles.swift; sourceTree = "<group>"; };
 		D50158B32538C029005E02FA /* CardDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDoubles.swift; sourceTree = "<group>"; };
-		D505803725D3253F0028040F /* EditableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableView.swift; sourceTree = "<group>"; };
 		D50668DA23B946330044E553 /* Rythmico.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rythmico.entitlements; sourceTree = "<group>"; };
 		D5077D8A2587D80200F8595E /* LessonSkippingContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonSkippingContentView.swift; sourceTree = "<group>"; };
 		D50811E323FB72A3008103D8 /* StepBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
@@ -1604,7 +1602,6 @@
 				D5D9AE4E253367A100A0ABCC /* Divider.swift */,
 				D5F4D3E824F09C43000E8580 /* Dot.swift */,
 				D5F506AF2405A6A900CA4094 /* Duration.swift */,
-				D505803725D3253F0028040F /* EditableView.swift */,
 				D56B253A2532433E00BC3932 /* ErrorText.swift */,
 				D54EFF312514C847004F14D3 /* ExpandableText.swift */,
 				D543B91926408FBF00D25CFD /* FloatingActionMenu.swift */,
@@ -2825,7 +2822,6 @@
 				D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */,
 				D5D78DE025250864007041BE /* LessonPlanBookingView.swift in Sources */,
 				D5AFED4225057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */,
-				D505803825D3253F0028040F /* EditableView.swift in Sources */,
 				D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */,
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
 				D580E4142635F8CC004B9AA7 /* NavigationBar.swift in Sources */,

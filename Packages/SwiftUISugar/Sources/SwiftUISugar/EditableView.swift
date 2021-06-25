@@ -1,20 +1,18 @@
-import SwiftUISugar
+public typealias _EditingCoordinator<Focus: EditingFocusEnum> = EditingCoordinator<Focus>
 
-typealias _EditingCoordinator<Focus: EditingFocusEnum> = EditingCoordinator<Focus>
-
-protocol EditableView {
+public protocol EditableView {
     associatedtype EditingFocus: EditingFocusEnum
     typealias EditingCoordinator = _EditingCoordinator<EditingFocus>
     var editingCoordinator: EditingCoordinator { get }
 }
 
 extension EditableView {
-    var editingFocus: EditingFocus? {
+    public var editingFocus: EditingFocus? {
         get { editingCoordinator.focus }
         nonmutating set { editingCoordinator.focus = newValue }
     }
 
-    func endEditing() {
+    public func endEditing() {
         editingCoordinator.endEditing()
     }
 }
