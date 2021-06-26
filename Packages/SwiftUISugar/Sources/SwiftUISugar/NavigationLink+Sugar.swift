@@ -1,8 +1,6 @@
-import SwiftUI
-
 extension View {
     @ViewBuilder
-    func hiddenNavigationLink<Label: View, Destination: View>(_ link: NavigationLink<Label, Destination>) -> some View {
+    public func hiddenNavigationLink<Label: View, Destination: View>(_ link: NavigationLink<Label, Destination>) -> some View {
         self.modifier(HiddenNavigationLinkModifier(link: link))
     }
 }
