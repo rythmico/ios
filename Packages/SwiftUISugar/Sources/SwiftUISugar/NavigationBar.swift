@@ -1,12 +1,22 @@
-import SwiftUISugar
+public struct NavigationBar<BackButton: View, LeadingItem: View, Title: View, TrailingItem: View>: View {
+    private let backButton: BackButton
+    private let leadingItem: LeadingItem
+    private let title: Title
+    private let trailingItem: TrailingItem
 
-struct NavigationBar<BackButton: View, LeadingItem: View, Title: View, TrailingItem: View>: View {
-    @ViewBuilder var backButton: BackButton
-    @ViewBuilder var leadingItem: LeadingItem
-    @ViewBuilder var title: Title
-    @ViewBuilder var trailingItem: TrailingItem
+    public init(
+        @ViewBuilder backButton: () -> BackButton,
+        @ViewBuilder leadingItem: () -> LeadingItem,
+        @ViewBuilder title: () -> Title,
+        @ViewBuilder trailingItem: () -> TrailingItem
+    ) {
+        self.backButton = backButton()
+        self.leadingItem = leadingItem()
+        self.title = title()
+        self.trailingItem = trailingItem()
+    }
 
-    var body: some View {
+    public var body: some View {
         HStack(alignment: .center, spacing: spacing) {
             backButton
                 .offset(x: -7)
@@ -39,9 +49,9 @@ struct NavigationBar<BackButton: View, LeadingItem: View, Title: View, TrailingI
 }
 
 extension NavigationBar where LeadingItem == EmptyView, Title == EmptyView {
-    init(
-        @ViewBuilder backButton: @escaping () -> BackButton,
-        @ViewBuilder trailingItem: @escaping () -> TrailingItem
+    public init(
+        @ViewBuilder backButton: () -> BackButton,
+        @ViewBuilder trailingItem: () -> TrailingItem
     ) {
         self.init(
             backButton: backButton,
@@ -56,7 +66,7 @@ extension NavigationBar where LeadingItem == EmptyView, Title == EmptyView {
 struct NavigationBar_Previews: PreviewProvider {
     static var previews: some View {
         NavigationBar(
-            backButton: { BackButton(action: {}) },
+            backButton: { Button("Back", action: {}) },
             leadingItem: { EmptyView() },
             title: { EmptyView() },
             trailingItem: { Text("qwdwd") }

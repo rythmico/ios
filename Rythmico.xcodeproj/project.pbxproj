@@ -370,7 +370,6 @@
 		D57DE183264DCE2800C5E118 /* ProfileParentInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DE182264DCE2800C5E118 /* ProfileParentInfoCell.swift */; };
 		D57DE185264DCEAD00C5E118 /* ProfileContactUsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DE184264DCEAD00C5E118 /* ProfileContactUsCell.swift */; };
 		D57DE187264DCF9A00C5E118 /* ProfileLogOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DE186264DCF9A00C5E118 /* ProfileLogOutCell.swift */; };
-		D580E4142635F8CC004B9AA7 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D580E4132635F8CC004B9AA7 /* NavigationBar.swift */; };
 		D58149E9251D262B0009BBB3 /* PageDotIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58149E8251D262B0009BBB3 /* PageDotIndicator.swift */; };
 		D58149ED251D262F0009BBB3 /* Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E824F09C43000E8580 /* Dot.swift */; };
 		D5814A00251D7FFC0009BBB3 /* App+SplitViewCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58149FF251D7FFC0009BBB3 /* App+SplitViewCustomization.swift */; };
@@ -882,7 +881,6 @@
 		D57DE182264DCE2800C5E118 /* ProfileParentInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileParentInfoCell.swift; sourceTree = "<group>"; };
 		D57DE184264DCEAD00C5E118 /* ProfileContactUsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContactUsCell.swift; sourceTree = "<group>"; };
 		D57DE186264DCF9A00C5E118 /* ProfileLogOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLogOutCell.swift; sourceTree = "<group>"; };
-		D580E4132635F8CC004B9AA7 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		D58149E8251D262B0009BBB3 /* PageDotIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageDotIndicator.swift; sourceTree = "<group>"; };
 		D58149FF251D7FFC0009BBB3 /* App+SplitViewCustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+SplitViewCustomization.swift"; sourceTree = "<group>"; };
 		D5814A08251D957D0009BBB3 /* MainViewContent+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewContent+Tutor.swift"; sourceTree = "<group>"; };
@@ -1609,7 +1607,6 @@
 				D5F5067A2400788400CA4094 /* MultilineTextField.swift */,
 				D5CAC9AB24E6D19900119DAA /* MultilineTextField+Rythmico.swift */,
 				D5CAC9AD24E6D67C00119DAA /* MultilineTextField+Tutor.swift */,
-				D580E4132635F8CC004B9AA7 /* NavigationBar.swift */,
 				D5ED326026065FEC00821ABE /* NonEditableTextField.swift */,
 				D58149E8251D262B0009BBB3 /* PageDotIndicator.swift */,
 				D52D8A4D259D5FDC00A6CBBF /* PageView.swift */,
@@ -2800,7 +2797,6 @@
 				D5AFED4225057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */,
 				D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */,
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
-				D580E4142635F8CC004B9AA7 /* NavigationBar.swift in Sources */,
 				D549218F25BB27E200251FD2 /* APIActivityErrorHandler.swift in Sources */,
 				D52D8A59259D714B00A6CBBF /* OnboardingSlideshowView.swift in Sources */,
 				D575C86E254F2F82001664AB /* ActivityCoordinator+Sugar.swift in Sources */,
