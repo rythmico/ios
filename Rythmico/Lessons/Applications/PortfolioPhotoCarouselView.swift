@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 import ComposableNavigator
 
 struct PhotoCarouselView: View {
@@ -81,7 +81,7 @@ struct PhotoCarouselDetailView: View {
                     .padding(.top, .grid(5))
                     .accentColor(.rythmicoWhite)
 
-                PagingView(data: photos, selection: $selection, accentColor: .rythmicoWhite) { photo in
+                PagingView(data: photos, selection: $selection, spacing: .grid(5), accentColor: .rythmicoWhite) { photo in
                     AsyncImage(content: .transitional(from: photo.thumbnailURL, to: photo.photoURL)) {
                         if let uiImage = $0 {
                             Image(uiImage: uiImage)

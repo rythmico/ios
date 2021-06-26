@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 
 struct OnboardingSlideshowView: View {
     enum Step: Int, CaseIterable, Hashable {
