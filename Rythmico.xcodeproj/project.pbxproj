@@ -1118,7 +1118,6 @@
 				03EDA66A2476AE5500FBE527 /* Models */,
 				D5D5E8A92685143000AACB8F /* Packages */,
 				03341B3C23ABB1E7009AE8A8 /* Products */,
-				D5D5E8AC26851A7800AACB8F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2058,13 +2057,6 @@
 				D5D5E8AB268518AB00AACB8F /* SwiftUISugar */,
 			);
 			path = Packages;
-			sourceTree = "<group>";
-		};
-		D5D5E8AC26851A7800AACB8F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D5D78DDB25250810007041BE /* Applications */ = {
