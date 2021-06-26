@@ -1,10 +1,10 @@
 extension View {
-    public func sheetInteractiveDismissal(_ enabled: Bool, onAttempt: (() -> Void)? = nil) -> some View {
+    public func interactiveDismissDisabled(_ isDisabled: Bool = true, onAttempt: (() -> Void)? = nil) -> some View {
         introspectViewController {
             guard let presentationController = $0.presentationController else {
                 return
             }
-            let delegate = AdaptivePresentationControllerDelegate(shouldDismiss: enabled, didAttemptToDismiss: onAttempt)
+            let delegate = AdaptivePresentationControllerDelegate(shouldDismiss: !isDisabled, didAttemptToDismiss: onAttempt)
             controllerDelegateMap.setObject(delegate, forKey: presentationController)
             presentationController.delegate = delegate
         }
@@ -45,7 +45,7 @@ struct AdaptivePresentationView_Previews: PreviewProvider {
                         Text("Dismissable (attempted: \(attempts))")
                         Toggle("", isOn: $isDismissable).labelsHidden()
                     }
-                    .sheetInteractiveDismissal(isDismissable, onAttempt: { attempts += 1 })
+                    .interactiveDismissDisabled(!isDismissable, onAttempt: { attempts += 1 })
                 }
         }
     }

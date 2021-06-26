@@ -15,7 +15,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
         let view = RequestLessonPlanView(flow: RequestLessonPlanFlow())
         XCTAssertView(view) { view in
             XCTAssertNotNil(view.flowView)
-            XCTAssertTrue(view.swipeDownToDismissEnabled)
+            XCTAssertFalse(view.interactiveDismissDisabled)
             XCTAssertNil(view.errorMessage)
         }
     }
@@ -28,7 +28,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
             view.coordinator.run(with: .stub)
 
             XCTAssertNil(view.flowView)
-            XCTAssertFalse(view.swipeDownToDismissEnabled)
+            XCTAssertTrue(view.interactiveDismissDisabled)
         }
     }
 
@@ -40,7 +40,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
             view.coordinator.run(with: .stub)
 
             XCTAssertNotNil(view.flowView)
-            XCTAssertFalse(view.swipeDownToDismissEnabled)
+            XCTAssertTrue(view.interactiveDismissDisabled)
             XCTAssertEqual(view.errorMessage, "Something 2")
 
             view.dismissError()
@@ -56,7 +56,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
             view.coordinator.run(with: .stub)
 
             XCTAssertNil(view.flowView)
-            XCTAssertFalse(view.swipeDownToDismissEnabled)
+            XCTAssertTrue(view.interactiveDismissDisabled)
             XCTAssertNil(view.errorMessage)
         }
     }

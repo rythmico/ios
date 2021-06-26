@@ -39,7 +39,7 @@ struct BookingRequestApplyView: View {
             .navigationBarTitle(Text("Application"), displayMode: .inline)
             .navigationBarItems(trailing: trailingBarItem)
         }
-        .sheetInteractiveDismissal(interactiveDismissalEnabled)
+        .interactiveDismissDisabled(interactiveDismissDisabled)
         .disabled(coordinator.state.isLoading)
         .animation(.easeInOut(duration: .durationMedium), value: coordinator.state.isLoading)
         .alertOnFailure(coordinator)
@@ -63,8 +63,8 @@ struct BookingRequestApplyView: View {
         Text("Increase your chances of being selected by sending a private message detailing your experience and how you intend to teach.")
     }
 
-    private var interactiveDismissalEnabled: Bool {
-        privateNote.isEmpty && coordinator.state.isReady
+    private var interactiveDismissDisabled: Bool {
+        !privateNote.isEmpty || !coordinator.state.isReady
     }
 
     private func dismiss() {
