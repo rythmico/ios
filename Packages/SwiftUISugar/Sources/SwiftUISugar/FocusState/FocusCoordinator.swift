@@ -1,14 +1,14 @@
-public protocol EditingFocusEnum: Equatable {
+public protocol FocusEnum: Equatable {
     static var usingKeyboard: [Self] { get }
 }
 
-extension EditingFocusEnum {
+extension FocusEnum {
     var usesKeyboard: Bool {
         Self.usingKeyboard.contains(self)
     }
 }
 
-public final class EditingCoordinator<Focus: EditingFocusEnum>: ObservableObject {
+public final class FocusCoordinator<Focus: FocusEnum>: ObservableObject {
     @Published public var focus: Focus? = .none {
         willSet {
             let shouldDismissKeyboard: Bool

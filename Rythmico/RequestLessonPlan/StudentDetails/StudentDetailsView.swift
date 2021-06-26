@@ -1,6 +1,6 @@
 import SwiftUISugar
 
-struct StudentDetailsView: View, EditableView, TestableView {
+struct StudentDetailsView: View, FocusableView, TestableView {
     private enum Const {
         static let averageStudentAge: (Int, Calendar.Component) = (10, .year)
     }
@@ -11,7 +11,7 @@ struct StudentDetailsView: View, EditableView, TestableView {
         @Published var about = String()
     }
 
-    enum EditingFocus: EditingFocusEnum, CaseIterable {
+    enum Focus: FocusEnum, CaseIterable {
         case fullName
         case dateOfBirth
         case about
@@ -20,7 +20,7 @@ struct StudentDetailsView: View, EditableView, TestableView {
     }
 
     @StateObject
-    var editingCoordinator = EditingCoordinator(keyboardDismisser: Current.keyboardDismisser)
+    var focusCoordinator = FocusCoordinator(keyboardDismisser: Current.keyboardDismisser)
 
     var instrument: Instrument
     @ObservedObject
@@ -29,7 +29,7 @@ struct StudentDetailsView: View, EditableView, TestableView {
 
     // MARK: - Subtitle -
     var subtitle: Text? {
-        editingFocus == .none
+        focus == .none
             ? Text(separator: .whitespace) {
                 "Enter the details of the student who will be learning"
                 instrument.standaloneName.text.rythmicoFontWeight(.bodyBold)
@@ -143,22 +143,22 @@ struct StudentDetailsView: View, EditableView, TestableView {
             }
             .animation(.rythmicoSpring(duration: .durationShort), value: nextButtonAction != nil)
         }
-        .animation(.easeInOut(duration: .durationMedium), value: editingFocus)
+        .animation(.easeInOut(duration: .durationMedium), value: focus)
         .testable(self)
         .onDisappear(perform: endEditing)
     }
 
     func fullNameEditingChanged(_ isEditing: Bool) {
-        editingFocus = isEditing ? .fullName : .none
+        focus = isEditing ? .fullName : .none
     }
 
     func dateOfBirthEditingChanged(_ isEditing: Bool) {
         state.dateOfBirth ??= dateOfBirthPlaceholder
-        editingFocus = isEditing ? .dateOfBirth : .none
+        focus = isEditing ? .dateOfBirth : .none
     }
 
     func aboutEditingChanged(_ isEditing: Bool) {
-        editingFocus = isEditing ? .about : .none
+        focus = isEditing ? .about : .none
     }
 }
 
