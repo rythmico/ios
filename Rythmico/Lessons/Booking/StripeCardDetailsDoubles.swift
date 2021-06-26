@@ -1,6 +1,3 @@
-import Stripe
-import FoundationSugar
-
 extension StripeCardDetails {
     static let stub = StripeCardDetails().then {
         $0.number = "4000002500003155"

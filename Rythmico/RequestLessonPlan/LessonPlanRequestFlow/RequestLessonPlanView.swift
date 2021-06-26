@@ -1,7 +1,5 @@
-import SwiftUI
+import SwiftUISugar
 import ComposableNavigator
-import MultiModal
-import FoundationSugar
 
 struct RequestLessonPlanScreen: Screen {
     let presentationStyle: ScreenPresentationStyle = .sheet(allowsPush: false)
@@ -36,8 +34,8 @@ struct RequestLessonPlanView: View, TestableView {
 
     let inspection = SelfInspection()
 
-    var swipeDownToDismissEnabled: Bool {
-        coordinator.state.isReady && flow.step.index == 0
+    var interactiveDismissDisabled: Bool {
+        flow.step.index > 0 || !coordinator.state.isReady
     }
 
     var errorMessage: String? {
@@ -57,7 +55,7 @@ struct RequestLessonPlanView: View, TestableView {
         )
         .testable(self)
         .backgroundColor(.rythmicoBackgroundSecondary)
-        .sheetInteractiveDismissal(swipeDownToDismissEnabled)
+        .interactiveDismissDisabled(interactiveDismissDisabled)
         .onSuccess(coordinator, perform: onLessonPlanRequested)
     }
 

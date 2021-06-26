@@ -1,5 +1,4 @@
-import SwiftUI
-import FoundationSugar
+import SwiftUISugar
 
 struct FloatingView<Content: View>: View {
     @ViewBuilder

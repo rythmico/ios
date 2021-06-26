@@ -1,5 +1,4 @@
-import SwiftUI
-import FoundationSugar
+import SwiftUISugar
 
 extension Text {
     func rythmicoTextStyle(_ style: Font.RythmicoTextStyle) -> some View {

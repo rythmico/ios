@@ -1,5 +1,4 @@
-import SwiftUI
-import FoundationSugar
+import SwiftUISugar
 
 final class TabSelection: ObservableObject {
     @Published var mainTab: MainView.Tab = .lessons

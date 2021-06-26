@@ -1,5 +1,4 @@
-import SwiftUI
-import FoundationSugar
+import SwiftUISugar
 import PhoneNumberKit
 
 struct PhoneNumberField: UIViewRepresentable {

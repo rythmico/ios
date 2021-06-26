@@ -1,9 +1,17 @@
-import SwiftUI
-import TextBuilder
-import Introspect
-import FoundationSugar
+import SwiftUISugar
 
-struct SchedulingView: View, EditableView, TestableView {
+struct SchedulingView: View, FocusableView, TestableView {
+    enum Focus: FocusEnum {
+        case startDate
+        case startTime
+        case duration
+
+        static var usingKeyboard = [startTime, duration]
+    }
+
+    @StateObject
+    var focusCoordinator = FocusCoordinator(keyboardDismisser: Current.keyboardDismisser, endEditingOnBackgroundTap: false)
+
     final class ViewState: ObservableObject {
         @Published var startDate: Date?
         @Published var startTime: Date?
@@ -13,17 +21,6 @@ struct SchedulingView: View, EditableView, TestableView {
             unwrap(startDate, startTime).map { Date(date: $0, time: $1, calendar: Current.calendar()) }
         }
     }
-
-    enum EditingFocus: EditingFocusEnum {
-        case startDate
-        case startTime
-        case duration
-
-        static var usingKeyboard = [startTime, duration]
-    }
-
-    @StateObject
-    var editingCoordinator = EditingCoordinator(endEditingOnBackgroundTap: false)
 
     @ObservedObject private(set)
     var state: ViewState
@@ -82,7 +79,7 @@ struct SchedulingView: View, EditableView, TestableView {
                             CustomEditableTextField(
                                 placeholder: "Select a date...",
                                 text: startDateText,
-                                isEditing: editingFocus == .startDate,
+                                isEditing: focus == .startDate,
                                 editAction: beginEditingStartDate
                             ) {
                                 if let startDateBinding = Binding($state.startDate) {
@@ -147,15 +144,15 @@ struct SchedulingView: View, EditableView, TestableView {
         }
         .testable(self)
         .accentColor(.rythmicoPurple)
-        .onReceive(editingCoordinator.$focus, perform: onEditingFocusChanged)
-        .animation(.easeInOut(duration: .durationMedium), value: editingFocus)
+        .onReceive(focusCoordinator.$focus, perform: onFocusChanged)
+        .animation(.easeInOut(duration: .durationMedium), value: focus)
     }
 
-    func beginEditingStartDate() { editingFocus = .startDate }
-    func onEditingStartTimeChanged(_ isEditing: Bool) { editingFocus = isEditing ? .startTime : .none }
-    func onEditingDurationChanged(_ isEditing: Bool) { editingFocus = isEditing ? .duration : .none }
+    func beginEditingStartDate() { focus = .startDate }
+    func onEditingStartTimeChanged(_ isEditing: Bool) { focus = isEditing ? .startTime : .none }
+    func onEditingDurationChanged(_ isEditing: Bool) { focus = isEditing ? .duration : .none }
 
-    func onEditingFocusChanged(_ focus: EditingFocus?) {
+    func onFocusChanged(_ focus: Focus?) {
         guard let focus = focus else { return }
         switch focus {
         case .startDate:

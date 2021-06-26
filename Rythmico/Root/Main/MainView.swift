@@ -1,7 +1,5 @@
-import SwiftUI
+import SwiftUISugar
 import ComposableNavigator
-import SFSafeSymbols
-import FoundationSugar
 
 struct MainView: View, TestableView {
     enum Tab: String, Equatable, Hashable, CaseIterable {

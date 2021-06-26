@@ -1,6 +1,5 @@
-import SwiftUI
+import SwiftUISugar
 import Combine
-import FoundationSugar
 
 final class CalendarSyncCoordinator: ObservableObject {
     @Published

@@ -1,6 +1,5 @@
-import SwiftUI
+import SwiftUISugar
 import PhoneNumberKit
-import FoundationSugar
 
 struct BookingApplicationDetailView: View {
     @Environment(\.presentationMode)

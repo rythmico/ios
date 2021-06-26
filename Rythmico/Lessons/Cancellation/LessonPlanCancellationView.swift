@@ -1,6 +1,5 @@
-import SwiftUI
+import SwiftUISugar
 import ComposableNavigator
-import FoundationSugar
 
 struct LessonPlanCancellationScreen: Screen {
     let lessonPlan: LessonPlan
@@ -73,7 +72,7 @@ struct LessonPlanCancellationView: View, TestableView {
             .onEdgeSwipe(.left, perform: back)
         }
         .backgroundColor(.rythmicoBackgroundSecondary)
-        .sheetInteractiveDismissal(!isCancellationIntended)
+        .interactiveDismissDisabled(isCancellationIntended)
         .accentColor(.rythmicoGray90)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isCancellationIntended)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isUserInputRequired)

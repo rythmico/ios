@@ -1,6 +1,4 @@
-import SwiftUI
-import TextBuilder
-import FoundationSugar
+import SwiftUISugar
 
 struct LessonPlanPriceView: View {
     var price: Price

@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 
 extension View {
     func onReady<Input, Output>(
@@ -61,8 +61,6 @@ extension View {
         )
     }
 }
-
-import MultiModal
 
 extension View {
     func alertOnFailure<Input, Success>(

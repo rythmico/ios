@@ -1,5 +1,4 @@
-import SwiftUI
-import TextBuilder
+import SwiftUISugar
 
 struct LessonPlanScheduleView: View {
     var lessonPlan: LessonPlan

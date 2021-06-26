@@ -1,6 +1,5 @@
-import SwiftUI
+import SwiftUISugar
 import ComposableNavigator
-import FoundationSugar
 
 struct LessonSkippingScreen: Screen {
     let lesson: Lesson
@@ -66,7 +65,7 @@ struct LessonSkippingView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing: CloseButton(action: dismiss))
         }
-        .sheetInteractiveDismissal(!coordinator.state.isLoading)
+        .interactiveDismissDisabled(coordinator.state.isLoading)
         .accentColor(.rythmicoGray90)
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: lessonSuccessfullySkipped)

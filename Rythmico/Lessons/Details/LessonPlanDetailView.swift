@@ -1,7 +1,5 @@
-import SwiftUI
+import SwiftUISugar
 import ComposableNavigator
-import MultiModal
-import FoundationSugar
 
 struct LessonPlanDetailScreen: Screen {
     let lessonPlan: LessonPlan

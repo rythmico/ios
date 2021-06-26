@@ -1,5 +1,4 @@
-import SwiftUI
-import TextBuilder
+import SwiftUISugar
 
 struct AddNewCardView: View {
     @Environment(\.navigator) private var navigator
@@ -53,7 +52,7 @@ struct AddNewCardView: View {
         .navigationBarTitle(title)
         .navigationBarItems(trailing: CloseButton(action: dismiss))
         .accentColor(.rythmicoPurple)
-        .sheetInteractiveDismissal(interactiveDismissalEnabled)
+        .interactiveDismissDisabled(interactiveDismissDisabled)
         .disabled(coordinator.state.isLoading)
         .onSuccess(coordinator, perform: coordinatorSucceeded)
         .alertOnFailure(coordinator)
@@ -72,8 +71,8 @@ struct AddNewCardView: View {
         cardIsValid
     }
 
-    var interactiveDismissalEnabled: Bool {
-        cardDetails.isEmpty && !coordinator.state.isLoading
+    var interactiveDismissDisabled: Bool {
+        !cardDetails.isEmpty || coordinator.state.isLoading
     }
 
     func dismiss() {

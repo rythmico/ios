@@ -1,6 +1,4 @@
-import FoundationSugar
-import SwiftUI
-import TextBuilder
+import SwiftUISugar
 import PhoneNumberKit
 
 struct LessonPlanBookingView: View {

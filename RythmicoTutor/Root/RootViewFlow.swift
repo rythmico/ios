@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 import Combine
 
 final class RootViewFlow: Flow {

@@ -1,6 +1,4 @@
-import SwiftUI
-import SFSafeSymbols
-import FoundationSugar
+import SwiftUISugar
 
 struct MainView: View, TestableView {
     enum Tab: String, Equatable, Hashable, CaseIterable {

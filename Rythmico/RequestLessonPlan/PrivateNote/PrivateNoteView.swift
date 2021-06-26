@@ -1,27 +1,25 @@
-import SwiftUI
-import TextBuilder
-import FoundationSugar
+import SwiftUISugar
 
-struct PrivateNoteView: View, EditableView, TestableView {
-    final class ViewState: ObservableObject {
-        @Published var privateNote: String = ""
-    }
-
+struct PrivateNoteView: View, FocusableView, TestableView {
     @ObservedObject
     var state: ViewState
     var setter: Binding<String>.Setter
 
-    enum EditingFocus: EditingFocusEnum, CaseIterable {
+    enum Focus: FocusEnum, CaseIterable {
         case privateNote
 
         static var usingKeyboard = allCases
     }
 
     @StateObject
-    var editingCoordinator = EditingCoordinator()
+    var focusCoordinator = FocusCoordinator(keyboardDismisser: Current.keyboardDismisser)
+
+    final class ViewState: ObservableObject {
+        @Published var privateNote: String = ""
+    }
 
     private var subtitle: Text? {
-        editingFocus == .none
+        focus == .none
             ? Text("Enter details of what you're looking for to make it easier for prospective tutors")
             : nil
     }
@@ -68,13 +66,13 @@ struct PrivateNoteView: View, EditableView, TestableView {
                 }
             }
         }
-        .animation(.rythmicoSpring(duration: .durationMedium), value: editingFocus)
+        .animation(.rythmicoSpring(duration: .durationMedium), value: focus)
         .testable(self)
         .onDisappear(perform: endEditing)
     }
 
     func noteEditingChanged(_ isEditing: Bool) {
-        editingFocus = isEditing ? .privateNote : .none
+        focus = isEditing ? .privateNote : .none
     }
 }
 

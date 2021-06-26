@@ -1,7 +1,6 @@
-import SwiftUI
+import SwiftUISugar
 import Combine
 import ComposableNavigator
-import FoundationSugar
 
 struct LessonsScreen: Screen {
     let presentationStyle: ScreenPresentationStyle = .push

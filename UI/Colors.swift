@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 
 extension Color {
     static let rythmicoRed = Color(.rythmicoRed)

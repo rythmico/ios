@@ -1,6 +1,4 @@
-import SwiftUI
-import MultiModal
-import FoundationSugar
+import SwiftUISugar
 
 extension LessonPlanCancellationView {
     struct ReasonView: View, TestableView {
@@ -53,7 +51,7 @@ extension LessonPlanCancellationView {
             .multiModal {
                 $0.alert(isPresented: $isPresentingReschedulingAlert) { .reschedulingView(lessonPlan: lessonPlan) }
             }
-            .sheetInteractiveDismissal(false)
+            .interactiveDismissDisabled()
         }
 
         private func handleRearrangementNeededReason(_ reason: Reason?) {

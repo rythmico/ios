@@ -1,6 +1,5 @@
 import FoundationSugar
 import Combine
-import FoundationSugar
 
 class UserCredentialProviderBase: ObservableObject {
     @Published var userCredential: UserCredentialProtocol?

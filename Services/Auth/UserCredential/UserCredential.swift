@@ -1,6 +1,5 @@
 import FoundationSugar
 import FirebaseAuth
-import FoundationSugar
 
 protocol UserCredentialProtocol: AnyObject {
     var userId: String { get }

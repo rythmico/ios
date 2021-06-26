@@ -1,6 +1,4 @@
-import SwiftUI
-import MultiModal
-import FoundationSugar
+import SwiftUISugar
 
 struct ProfilePushNotificationsCell: View {
     @ObservedObject

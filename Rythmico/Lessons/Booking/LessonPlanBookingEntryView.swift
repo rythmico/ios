@@ -52,7 +52,7 @@ struct LessonPlanBookingEntryView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .sheetInteractiveDismissal(false)
+        .interactiveDismissDisabled()
         .accentColor(.rythmicoPurple)
         .onAppear(perform: fetch)
         .onDisappear(perform: coordinator.cancel)
