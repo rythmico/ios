@@ -49,7 +49,7 @@ struct OnboardingSlideshowView: View {
 
     var body: some View {
         VStack(spacing: secondSpacing) {
-            PageView(
+            PagingView(
                 data: Step.allCases,
                 selection: $step,
                 fixedHeight: fixedImageHeight,

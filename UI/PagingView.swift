@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct PageView<Data: RandomAccessCollection, Selection: Hashable, Content: View>: View where Data.Element == Selection {
+struct PagingView<Data: RandomAccessCollection, Selection: Hashable, Content: View>: View where Data.Element == Selection {
     var data: Data
     @Binding
     var selection: Selection
