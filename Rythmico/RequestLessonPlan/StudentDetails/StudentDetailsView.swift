@@ -5,12 +5,6 @@ struct StudentDetailsView: View, FocusableView, TestableView {
         static let averageStudentAge: (Int, Calendar.Component) = (10, .year)
     }
 
-    final class ViewState: ObservableObject {
-        @Published var name = String()
-        @Published var dateOfBirth: Date?
-        @Published var about = String()
-    }
-
     enum Focus: FocusEnum, CaseIterable {
         case fullName
         case dateOfBirth
@@ -21,6 +15,12 @@ struct StudentDetailsView: View, FocusableView, TestableView {
 
     @StateObject
     var focusCoordinator = FocusCoordinator(keyboardDismisser: Current.keyboardDismisser)
+
+    final class ViewState: ObservableObject {
+        @Published var name = String()
+        @Published var dateOfBirth: Date?
+        @Published var about = String()
+    }
 
     var instrument: Instrument
     @ObservedObject

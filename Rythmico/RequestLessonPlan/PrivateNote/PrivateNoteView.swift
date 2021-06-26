@@ -1,10 +1,6 @@
 import SwiftUISugar
 
 struct PrivateNoteView: View, FocusableView, TestableView {
-    final class ViewState: ObservableObject {
-        @Published var privateNote: String = ""
-    }
-
     @ObservedObject
     var state: ViewState
     var setter: Binding<String>.Setter
@@ -17,6 +13,10 @@ struct PrivateNoteView: View, FocusableView, TestableView {
 
     @StateObject
     var focusCoordinator = FocusCoordinator(keyboardDismisser: Current.keyboardDismisser)
+
+    final class ViewState: ObservableObject {
+        @Published var privateNote: String = ""
+    }
 
     private var subtitle: Text? {
         focus == .none

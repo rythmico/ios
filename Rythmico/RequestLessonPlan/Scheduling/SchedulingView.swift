@@ -1,16 +1,6 @@
 import SwiftUISugar
 
 struct SchedulingView: View, FocusableView, TestableView {
-    final class ViewState: ObservableObject {
-        @Published var startDate: Date?
-        @Published var startTime: Date?
-        @Published var duration: Schedule.Duration?
-
-        var startDateAndTime: Date? {
-            unwrap(startDate, startTime).map { Date(date: $0, time: $1, calendar: Current.calendar()) }
-        }
-    }
-
     enum Focus: FocusEnum {
         case startDate
         case startTime
@@ -21,6 +11,16 @@ struct SchedulingView: View, FocusableView, TestableView {
 
     @StateObject
     var focusCoordinator = FocusCoordinator(keyboardDismisser: Current.keyboardDismisser, endEditingOnBackgroundTap: false)
+
+    final class ViewState: ObservableObject {
+        @Published var startDate: Date?
+        @Published var startTime: Date?
+        @Published var duration: Schedule.Duration?
+
+        var startDateAndTime: Date? {
+            unwrap(startDate, startTime).map { Date(date: $0, time: $1, calendar: Current.calendar()) }
+        }
+    }
 
     @ObservedObject private(set)
     var state: ViewState
