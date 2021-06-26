@@ -1,7 +1,5 @@
-import SwiftUI
-
 extension View {
-    func watermark(_ uiImage: UIImage, offset: CGSize, opacity: Double? = nil) -> some View {
+    public func watermark(_ uiImage: UIImage, offset: CGSize, opacity: Double? = nil) -> some View {
         modifier(
             WatermarkModifier(
                 uiImage: uiImage,
