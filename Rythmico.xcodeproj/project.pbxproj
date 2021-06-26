@@ -460,8 +460,6 @@
 		D5CAC9A924E6C3A900119DAA /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5067A2400788400CA4094 /* MultilineTextField.swift */; };
 		D5CAC9AC24E6D19900119DAA /* MultilineTextField+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CAC9AB24E6D19900119DAA /* MultilineTextField+Rythmico.swift */; };
 		D5CAC9AE24E6D67C00119DAA /* MultilineTextField+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CAC9AD24E6D67C00119DAA /* MultilineTextField+Tutor.swift */; };
-		D5CC5FEA24FF1201007DFE84 /* UIImage+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC5FE924FF1201007DFE84 /* UIImage+Sugar.swift */; };
-		D5CC5FEB24FF1201007DFE84 /* UIImage+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC5FE924FF1201007DFE84 /* UIImage+Sugar.swift */; };
 		D5CC5FEF25027F74007DFE84 /* ImageReference+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC5FEC25027F64007DFE84 /* ImageReference+Sugar.swift */; };
 		D5CC5FF125029525007DFE84 /* ImageReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC5FF025029525007DFE84 /* ImageReference.swift */; };
 		D5CC5FF225029525007DFE84 /* ImageReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC5FF025029525007DFE84 /* ImageReference.swift */; };
@@ -959,7 +957,6 @@
 		D5C76E9825F4075200739267 /* CalendarSyncStatusProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSyncStatusProviderDoubles.swift; sourceTree = "<group>"; };
 		D5CAC9AB24E6D19900119DAA /* MultilineTextField+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultilineTextField+Rythmico.swift"; sourceTree = "<group>"; };
 		D5CAC9AD24E6D67C00119DAA /* MultilineTextField+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultilineTextField+Tutor.swift"; sourceTree = "<group>"; };
-		D5CC5FE924FF1201007DFE84 /* UIImage+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Sugar.swift"; sourceTree = "<group>"; };
 		D5CC5FEC25027F64007DFE84 /* ImageReference+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageReference+Sugar.swift"; sourceTree = "<group>"; };
 		D5CC5FF025029525007DFE84 /* ImageReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReference.swift; sourceTree = "<group>"; };
 		D5CCC33125A4C66A00E25B62 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -1640,7 +1637,6 @@
 				03C39DD324967E5B00C76516 /* TitleContentView.swift */,
 				D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */,
 				D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */,
-				D5CC5FE924FF1201007DFE84 /* UIImage+Sugar.swift */,
 				D57DE17C264DC48400C5E118 /* UITableView+Padding.swift */,
 				D57DE188264DF36E00C5E118 /* View+BackgroundColor.swift */,
 				D53447C6264B7B2000A0FF16 /* View+Watermark.swift */,
@@ -2922,7 +2918,6 @@
 				D56B2531252D1A8100BC3932 /* StripePaymentCardTextField.swift in Sources */,
 				D5C76E9425F405E200739267 /* EKEventStore.swift in Sources */,
 				D5BF12AE25068E1000B2931C /* PushNotificationEvent+Rythmico.swift in Sources */,
-				D5CC5FEA24FF1201007DFE84 /* UIImage+Sugar.swift in Sources */,
 				D5DDE85E2598E7B300CF565D /* LessonPlanBookingPolicyView.swift in Sources */,
 				035AF30D2491B7C3004A01B2 /* UNUserNotificationCenterProtocol.swift in Sources */,
 				D5B57A75241A018900BE9B4F /* SchedulingView.swift in Sources */,
@@ -3198,7 +3193,6 @@
 				D5ED3269260668BE00821ABE /* Date+Sugar.swift in Sources */,
 				D54340F4261E72F8006898B0 /* AccessibilitySettings.swift in Sources */,
 				D575C832254F10E1001664AB /* RemoteConfigServiceDoubles.swift in Sources */,
-				D5CC5FEB24FF1201007DFE84 /* UIImage+Sugar.swift in Sources */,
 				D5C76E9A25F4075200739267 /* CalendarSyncStatusProviderDoubles.swift in Sources */,
 				D591C5B726699AA400A95938 /* DateComponents+Sugar.swift in Sources */,
 				D5ED3266260667E800821ABE /* DateDoubles.swift in Sources */,
