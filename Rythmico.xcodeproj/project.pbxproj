@@ -371,7 +371,6 @@
 		D57DE183264DCE2800C5E118 /* ProfileParentInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DE182264DCE2800C5E118 /* ProfileParentInfoCell.swift */; };
 		D57DE185264DCEAD00C5E118 /* ProfileContactUsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DE184264DCEAD00C5E118 /* ProfileContactUsCell.swift */; };
 		D57DE187264DCF9A00C5E118 /* ProfileLogOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DE186264DCF9A00C5E118 /* ProfileLogOutCell.swift */; };
-		D57DE189264DF36E00C5E118 /* View+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DE188264DF36E00C5E118 /* View+BackgroundColor.swift */; };
 		D580E4142635F8CC004B9AA7 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D580E4132635F8CC004B9AA7 /* NavigationBar.swift */; };
 		D58149E9251D262B0009BBB3 /* PageDotIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58149E8251D262B0009BBB3 /* PageDotIndicator.swift */; };
 		D58149ED251D262F0009BBB3 /* Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E824F09C43000E8580 /* Dot.swift */; };
@@ -885,7 +884,6 @@
 		D57DE182264DCE2800C5E118 /* ProfileParentInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileParentInfoCell.swift; sourceTree = "<group>"; };
 		D57DE184264DCEAD00C5E118 /* ProfileContactUsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContactUsCell.swift; sourceTree = "<group>"; };
 		D57DE186264DCF9A00C5E118 /* ProfileLogOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLogOutCell.swift; sourceTree = "<group>"; };
-		D57DE188264DF36E00C5E118 /* View+BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+BackgroundColor.swift"; sourceTree = "<group>"; };
 		D580E4132635F8CC004B9AA7 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		D58149E8251D262B0009BBB3 /* PageDotIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageDotIndicator.swift; sourceTree = "<group>"; };
 		D58149FF251D7FFC0009BBB3 /* App+SplitViewCustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+SplitViewCustomization.swift"; sourceTree = "<group>"; };
@@ -1635,7 +1633,6 @@
 				03C39DD324967E5B00C76516 /* TitleContentView.swift */,
 				D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */,
 				D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */,
-				D57DE188264DF36E00C5E118 /* View+BackgroundColor.swift */,
 				D53447C6264B7B2000A0FF16 /* View+Watermark.swift */,
 				D5EEF6AC261BDE470014E500 /* XCTAssertText.swift */,
 				D5147507240C8E69002EE20C /* XCTAssertView.swift */,
@@ -2715,7 +2712,6 @@
 				D56B25432533331A00BC3932 /* PhoneNumberDoubles.swift in Sources */,
 				D5BA171223D7AB3B00954D50 /* MainView.swift in Sources */,
 				D54EFF322514C847004F14D3 /* ExpandableText.swift in Sources */,
-				D57DE189264DF36E00C5E118 /* View+BackgroundColor.swift in Sources */,
 				D5AC9E4A254DA0E7003A8197 /* RemoteConfigCoordinator.swift in Sources */,
 				03080EED2466FE21008715EE /* LessonPlan.swift in Sources */,
 				D5989BC62516833E00BED8A6 /* PortfolioVideoCarouselView.swift in Sources */,
