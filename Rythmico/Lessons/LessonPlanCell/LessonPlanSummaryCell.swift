@@ -33,8 +33,8 @@ struct LessonPlanSummaryCellMainContent: View {
             "Pending tutor applications"
         case .reviewing:
             "Pending selection of tutor"
-        case .active(let lessons, _):
-            if let nextLesson = lessons.nextLesson() {
+        case .active(let props):
+            if let nextLesson = props.lessons.nextLesson() {
                 "Next Lesson:"
                 startDateString(for: nextLesson).text.rythmicoFontWeight(.bodyMedium)
             }
@@ -64,7 +64,7 @@ struct LessonPlanSummaryCellMainContent: View {
                     .opacity(opacity)
                 VSpacing(.grid(3))
                 HStack(spacing: .grid(3)) {
-                    LessonPlanTutorStatusView(status: lessonPlan.status, summarized: true).opacity(opacity)
+                    LessonPlanTutorStatusView(lessonPlan: lessonPlan, summarized: true).opacity(opacity)
                     Pill(lessonPlan: lessonPlan, backgroundColor: .rythmicoBackgroundTertiary)
                 }
             }

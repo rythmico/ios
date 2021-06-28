@@ -10,7 +10,7 @@ extension AnalyticsEvent {
 
     static func chooseTutorScreenView(
         lessonPlan: LessonPlan,
-        applications: [LessonPlan.Application],
+        applications: LessonPlan.Applications,
         origin: ChooseTutorScreenViewOrigin
     ) -> Self {
         refreshCheckoutFlowID()

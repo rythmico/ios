@@ -3,11 +3,11 @@ import ComposableNavigator
 
 struct LessonPlanApplicationsScreen: Screen {
     let lessonPlan: LessonPlan
-    let applications: [LessonPlan.Application]
+    let applications: LessonPlan.Applications
     let presentationStyle: ScreenPresentationStyle = .push
 
     init?(lessonPlan: LessonPlan) {
-        guard let applications = lessonPlan.status.reviewingValue else {
+        guard let applications = lessonPlan.applications else {
             return nil
         }
         self.lessonPlan = lessonPlan
@@ -30,7 +30,7 @@ struct LessonPlanApplicationsScreen: Screen {
 
 struct LessonPlanApplicationsView: View {
     let lessonPlan: LessonPlan
-    let applications: [LessonPlan.Application]
+    let applications: LessonPlan.Applications
 
     var title: String { "Tutors Available" }
 

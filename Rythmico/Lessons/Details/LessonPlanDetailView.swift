@@ -121,14 +121,13 @@ struct LessonPlanDetailView: View, TestableView {
     @ViewBuilder
     private var tutorSection: some View {
         SectionHeaderView(title: "Tutor")
-        switch lessonPlan.status {
-        case .pending, .reviewing, .cancelled(_, .none, _):
-            LessonPlanTutorStatusView(status: lessonPlan.status, summarized: false)
+        if let tutor = lessonPlan.bookingInfo?.tutor {
+            TutorCell(lessonPlan: lessonPlan, tutor: tutor)
+        } else {
+            LessonPlanTutorStatusView(lessonPlan: lessonPlan, summarized: false)
             if lessonPlan.status.isPending {
                 InfoBanner(text: "Potential tutors have received your request and will submit applications for your consideration.")
             }
-        case .active(_, let tutor), .paused(_, let tutor, _), .cancelled(_, let tutor?, _):
-            TutorCell(lessonPlan: lessonPlan, tutor: tutor)
         }
     }
 
