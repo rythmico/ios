@@ -28,11 +28,8 @@ struct LessonPlanConfirmationView: View, TestableView {
 
     @ViewBuilder
     var additionalContent: some View {
-        switch lessonPlan.status {
-        case .active(_, let tutor):
+        if lessonPlan.status.isActive, let tutor = lessonPlan.bookingInfo?.tutor {
             LessonPlanConfirmationDetailsView(lessonPlan: lessonPlan, tutor: tutor)
-        default:
-            EmptyView()
         }
     }
 

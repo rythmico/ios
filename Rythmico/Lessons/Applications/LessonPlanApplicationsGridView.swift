@@ -2,7 +2,7 @@ import SwiftUISugar
 
 struct LessonPlanApplicationsGridView: View {
     var lessonPlan: LessonPlan
-    var applications: [LessonPlan.Application]
+    var applications: LessonPlan.Applications
 
     var columns = Array(
         repeating: GridItem(.flexible(), spacing: .grid(4)),

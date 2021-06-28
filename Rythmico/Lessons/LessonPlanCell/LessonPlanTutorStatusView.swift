@@ -3,65 +3,51 @@ import SwiftUI
 struct LessonPlanTutorStatusView: View {
     @Environment(\.sizeCategory) private var sizeCategory
 
-    var status: LessonPlan.Status
+    var lessonPlan: LessonPlan
     var summarized: Bool
 
     var body: some View {
         InlineContentAndTitleView(
-            content: { AnyView(status.avatar) },
-            title: summarized ? status.summarizedTitle(sizeCategory: sizeCategory) : status.title,
+            content: { lessonPlan.avatar },
+            title: summarized ? lessonPlan.summarizedTitle(sizeCategory: sizeCategory) : lessonPlan.title,
             bold: !summarized
         )
     }
 }
 
-private extension LessonPlan.Status {
+private extension LessonPlan {
     @ViewBuilder
     var avatar: some View {
-        switch self {
-        case .pending,
-             .reviewing([]):
-            AvatarView(.placeholder)
-        case .reviewing(let applications):
+        if let applications = applications {
             AvatarStackView(data: applications.map(\.tutor), thumbnails: true)
-        case .active(_, let tutor),
-             .paused(_, let tutor, _),
-             .cancelled(_, let tutor?, _):
+        } else if let tutor = bookingInfo?.tutor {
             TutorAvatarView(tutor, mode: .thumbnail)
-        case .cancelled(_, nil, _):
+        } else {
             AvatarView(.placeholder)
         }
     }
 
     func summarizedTitle(sizeCategory: ContentSizeCategory) -> String {
-        switch self {
-        case .pending,
-             .reviewing([]):
+        if status.isPending {
             return "Tutor TBC"
-        case .reviewing(let applicants):
-            return applicants.count == 1 && !sizeCategory.isAccessibilityCategory ? "Tutors Available" : .empty
-        case .active(_, let tutor),
-             .paused(_, let tutor, _),
-             .cancelled(_, let tutor?, _):
+        } else if let applications = applications {
+            return applications.count == 1 && !sizeCategory.isAccessibilityCategory ? "Tutors Available" : .empty
+        } else if let tutor = bookingInfo?.tutor {
             return tutor.name
-        case .cancelled(_, nil, _):
+        } else {
             return "No tutor"
         }
     }
 
     var title: String {
-        switch self {
-        case .pending,
-             .reviewing([]):
+        if status.isPending {
             return "Pending tutor applications..."
-        case .reviewing(let applications):
-            let count = applications.count
-            return "\(count) tutor\(count == 1 ? "" : "s") applied" // TODO: plurals
-        case .active(_, let tutor),
-             .paused(_, let tutor, _),
-             .cancelled(_, let tutor?, _):
+        } else if let applicationCount = applications?.count {
+            let suffix = applicationCount == 1 ? "" : "s" // TODO: proper plurals
+            return "\(applicationCount) tutor\(suffix) applied"
+        } else if let tutor = bookingInfo?.tutor {
             return tutor.name
-        case .cancelled(_, nil, _):
+        } else {
             return "No tutor was selected"
         }
     }
@@ -71,17 +57,15 @@ private extension LessonPlan.Status {
 struct LessonPlanTutorStatusView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LessonPlanTutorStatusView(status: .pending, summarized: true)
+            LessonPlanTutorStatusView(lessonPlan: .stub.with(\.status, .pending), summarized: true)
                 .previewDisplayName("Pending")
-            LessonPlanTutorStatusView(status: .reviewing([]), summarized: true)
-                .previewDisplayName("Reviewing 0 Tutors")
-            LessonPlanTutorStatusView(status: .reviewing(.stub), summarized: true)
-                .previewDisplayName("Reviewing 1+ Tutors")
-            LessonPlanTutorStatusView(status: .active(.stub, .jesseStub), summarized: true)
+            LessonPlanTutorStatusView(lessonPlan: .stub.with(\.status, .reviewing(.stub)), summarized: true)
+                .previewDisplayName("Reviewing Tutors")
+            LessonPlanTutorStatusView(lessonPlan: .stub.with(\.status, .active(.stub)), summarized: true)
                 .previewDisplayName("Scheduled")
-            LessonPlanTutorStatusView(status: .cancelled(.stub, nil, .stub), summarized: true)
+            LessonPlanTutorStatusView(lessonPlan: .stub.with(\.status, .cancelled(.noTutorStub)), summarized: true)
                 .previewDisplayName("Cancelled no Tutor")
-            LessonPlanTutorStatusView(status: .cancelled(.stub, .jesseStub, .stub), summarized: true)
+            LessonPlanTutorStatusView(lessonPlan: .stub.with(\.status, .cancelled(.stub)), summarized: true)
                 .previewDisplayName("Cancelled w/ Tutor")
         }
         .previewLayout(.sizeThatFits)
