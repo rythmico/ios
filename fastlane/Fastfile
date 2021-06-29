@@ -1,6 +1,8 @@
 ENV['FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT'] = '180'
 ENV['FASTLANE_XCODEBUILD_SETTINGS_RETRIES'] = '10'
 
+skip_docs
+
 desc 'Run All Tests'
 lane :test do
   run_tests(
