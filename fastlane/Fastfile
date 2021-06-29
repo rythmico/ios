@@ -1,0 +1,12 @@
+ENV['FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT'] = '180'
+ENV['FASTLANE_XCODEBUILD_SETTINGS_RETRIES'] = '10'
+
+desc 'Run All Tests'
+lane :test do
+  run_tests(
+    clean: true,
+    scheme: 'All',
+    device: 'iPhone 8',
+    configuration: 'Debug',
+  )
+end
