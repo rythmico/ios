@@ -4,6 +4,18 @@ before_all do |lane, options|
   xcversion(version: '~> 12.5')
 end
 
+desc 'Bootstrap'
+lane :bootstrap do
+  decrypt_repo
+  download_certs
+end
+
+desc 'Sync Provisioning Profiles'
+lane :download_certs do
+  sync_code_signing(readonly: true, type: 'development')
+  sync_code_signing(readonly: true, type: 'appstore')
+end
+
 desc 'Run All Tests'
 lane :test do
   run_tests(
