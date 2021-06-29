@@ -6,7 +6,6 @@ skip_docs
 desc 'Run All Tests'
 lane :test do
   run_tests(
-    clean: true,
     scheme: 'All',
     device: 'iPhone 8',
     configuration: 'Debug',
@@ -16,9 +15,14 @@ end
 desc 'Build For Release'
 lane :build_for_release do
   build_app(
-    clean: true,
     scheme: 'All',
     configuration: 'Release',
     skip_package_ipa: true,
   )
+end
+
+desc 'CI | Pull Request'
+lane :ci_pull_request do
+  test
+  build_for_release
 end
