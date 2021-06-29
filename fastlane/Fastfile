@@ -1,6 +1,3 @@
-ENV['FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT'] = '180'
-ENV['FASTLANE_XCODEBUILD_SETTINGS_RETRIES'] = '10'
-
 skip_docs
 
 before_all do |lane, options|
