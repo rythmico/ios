@@ -12,3 +12,13 @@ lane :test do
     configuration: 'Debug',
   )
 end
+
+desc 'Build For Release'
+lane :build_for_release do
+  build_app(
+    clean: true,
+    scheme: 'All',
+    configuration: 'Release',
+    skip_package_ipa: true,
+  )
+end
