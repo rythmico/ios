@@ -3,6 +3,10 @@ ENV['FASTLANE_XCODEBUILD_SETTINGS_RETRIES'] = '10'
 
 skip_docs
 
+before_all do |lane, options|
+  xcversion(version: '~> 12.5')
+end
+
 desc 'Run All Tests'
 lane :test do
   run_tests(
