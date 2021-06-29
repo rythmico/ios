@@ -25,8 +25,8 @@ lane :test do
   )
 end
 
-desc 'Build For Release'
-lane :build_for_release do
+desc 'Build Archive'
+lane :build_archive do
   build_app(
     scheme: 'All',
     configuration: 'Release',
@@ -37,5 +37,5 @@ end
 desc 'CI | Pull Request'
 lane :ci_pull_request do
   test
-  build_for_release
+  build_archive
 end
