@@ -40,6 +40,12 @@ lane :archive do
   )
 end
 
+desc 'Bump Build Number + Deploy Apps to TestFlight'
+lane :release do
+  bump_build
+  deploy_testflight
+end
+
 desc 'Bump Build Number'
 lane :bump_build do
   bitrise_build = ENV['BITRISE_BUILD_NUMBER']
