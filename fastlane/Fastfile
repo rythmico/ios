@@ -61,3 +61,12 @@ lane :bump_build do
   add_git_tag(tag: version_number + '/' + build_number)
   push_to_git_remote(tags: true)
 end
+
+desc 'Deploy Apps to TestFlight'
+lane :deploy_testflight do
+  build_app(configuration: 'Release', scheme: 'Rythmico')
+  upload_to_testflight(skip_submission: true, skip_waiting_for_build_processing: true)
+
+  build_app(configuration: 'Release', scheme: 'Tutor')
+  upload_to_testflight(skip_submission: true, skip_waiting_for_build_processing: true)
+end
