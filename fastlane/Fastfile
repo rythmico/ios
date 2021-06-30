@@ -16,6 +16,12 @@ lane :download_certs do
   sync_code_signing(readonly: true, type: 'appstore')
 end
 
+desc 'Run All Tests + Archive'
+lane :qa do
+  test
+  archive
+end
+
 desc 'Run All Tests'
 lane :test do
   run_tests(
@@ -25,17 +31,11 @@ lane :test do
   )
 end
 
-desc 'Build Archive'
-lane :build_archive do
+desc 'Archive'
+lane :archive do
   build_app(
     scheme: 'All',
     configuration: 'Release',
     skip_package_ipa: true,
   )
-end
-
-desc 'CI | Pull Request'
-lane :ci_pull_request do
-  test
-  build_archive
 end
