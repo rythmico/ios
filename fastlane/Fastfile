@@ -4,6 +4,10 @@ before_all do |lane, options|
   xcversion(version: '~> 12.5')
 end
 
+###################
+###### Setup ######
+###################
+
 desc 'Bootstrap'
 lane :bootstrap do
   decrypt_repo
@@ -15,6 +19,10 @@ lane :download_certs do
   sync_code_signing(readonly: true, type: 'development')
   sync_code_signing(readonly: true, type: 'appstore')
 end
+
+###################
+####### QA ########
+###################
 
 desc 'Run All Tests + Archive'
 lane :qa do
@@ -39,6 +47,10 @@ lane :archive do
     skip_package_ipa: true,
   )
 end
+
+###################
+##### Release #####
+###################
 
 desc 'Bump Build Number + Deploy Apps to TestFlight'
 lane :release do
