@@ -39,3 +39,25 @@ lane :archive do
     skip_package_ipa: true,
   )
 end
+
+desc 'Bump Build Number'
+lane :bump_build do
+  bitrise_build = ENV['BITRISE_BUILD_NUMBER']
+  bump_build_number(plist: 'Rythmico/Supporting Files/Info.plist', value: bitrise_build)
+  bump_build_number(plist: 'RythmicoTutor/Supporting Files/Info.plist', value: bitrise_build)
+
+  if ENV['BITRISE_GIT_BRANCH']
+    sh 'git config user.name bitrise-io' # swap with 'github' for github actions
+    sh 'git config user.email letsconnect@bitrise.io' # swap with '"<>"' for github actions
+    sh 'git checkout $BITRISE_GIT_BRANCH'
+  end
+
+  version_number = get_info_plist_value(path: 'Rythmico/Supporting Files/Info.plist', key: "CFBundleShortVersionString").to_s
+  UI.user_error! 'Version number not found' unless version_number
+  build_number = lane_context[:BUILD_NUMBER].to_s
+  UI.user_error! 'Build number not found' unless build_number
+
+  git_commit(path: '**/Info.plist', message: "Bump build number (#{build_number}) [skip ci]")
+  add_git_tag(tag: version_number + '/' + build_number)
+  push_to_git_remote(tags: true)
+end
