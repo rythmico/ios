@@ -1,0 +1,140 @@
+skip_docs
+
+before_all do |lane, options|
+  xcversion(version: '~> 12.5')
+end
+
+###################
+###### Setup ######
+###################
+
+desc 'Bootstrap'
+lane :bootstrap do
+  decrypt_repo
+  download_certs
+end
+
+desc 'Sync Provisioning Profiles'
+lane :download_certs do
+  sync_code_signing(readonly: true, type: 'development')
+  sync_code_signing(readonly: true, type: 'appstore')
+end
+
+###################
+####### QA ########
+###################
+
+desc 'Run All Tests + Archive'
+lane :qa do
+  test
+  archive
+end
+
+desc 'Run All Tests'
+lane :test do
+  run_tests(
+    scheme: 'All',
+    device: 'iPhone 8',
+    configuration: 'Debug',
+  )
+end
+
+desc 'Archive'
+lane :archive do
+  build_app(
+    scheme: 'All',
+    configuration: 'Release',
+    skip_package_ipa: true,
+  )
+end
+
+###################
+##### Release #####
+###################
+
+desc 'Bump Build Number + Deploy Apps to TestFlight'
+lane :release do
+  bump_build
+  deploy_testflight(scheme: 'Rythmico')
+  deploy_testflight(scheme: 'Tutor')
+  notify_slack if ENV['CI']
+end
+
+desc 'Bump Build Number'
+lane :bump_build do
+  bitrise_build = ENV['BITRISE_BUILD_NUMBER']
+  bump_build_number(plist: 'Rythmico/Supporting Files/Info.plist', value: bitrise_build)
+  bump_build_number(plist: 'RythmicoTutor/Supporting Files/Info.plist', value: bitrise_build)
+
+  if ENV['BITRISE_GIT_BRANCH']
+    sh 'git config user.name bitrise-io' # swap with 'github' for github actions
+    sh 'git config user.email letsconnect@bitrise.io' # swap with '"<>"' for github actions
+    sh 'git checkout $BITRISE_GIT_BRANCH'
+  end
+
+  version_number = get_version_number(target: 'Rythmico')
+  UI.user_error! 'Version number not found' unless version_number
+  build_number = lane_context[:BUILD_NUMBER].to_s
+  UI.user_error! 'Build number not found' unless build_number
+
+  git_commit(path: '**/Info.plist', message: "Bump build number (#{build_number}) [skip ci]")
+  add_git_tag(tag: version_number + '/' + build_number)
+  push_to_git_remote(tags: true)
+end
+
+desc 'Deploy Apps to TestFlight'
+lane :deploy_testflight do |options|
+  build_app(configuration: 'Release', scheme: options[:scheme])
+  upload_to_testflight(skip_submission: true, skip_waiting_for_build_processing: true)
+end
+
+###################
+###### dSYMs ######
+###################
+
+desc 'Sync dSYMs to Crashlytics'
+lane :dsyms do
+  sync_symbols(app_id: 'com.rythmico.student', gsp_path: 'Rythmico/Supporting Files/GoogleService-Info-Release.plist')
+  sync_symbols(app_id: 'com.rythmico.tutor', gsp_path: 'RythmicoTutor/Supporting Files/GoogleService-Info-Release.plist')
+  notify_slack if ENV['CI']
+end
+
+private_lane :sync_symbols do |options|
+  download_dsyms(app_identifier: options[:app_id], version: 'latest', wait_for_dsym_processing: true)
+  upload_symbols_to_crashlytics(gsp_path: options[:gsp_path], binary_path: 'fastlane/upload_crashlytics_symbols')
+end
+
+###################
+###### Slack ######
+###################
+
+private_lane :notify_slack do
+  case lane_context[:LANE_NAME]
+  when 'release' then notify_slack_release
+  when 'dsyms' then notify_slack_dsyms
+  else UI.important "Unknown source lane: #{lane_context[:LANE_NAME]}"
+  end
+end
+
+private_lane :notify_slack_release do
+  webhook = ENV['SLACK_RELEASE_WEBHOOK']
+  failed = lane_context[:LANE_FAILED]
+  version = lane_context[:VERSION_NUMBER]
+  build = lane_context[:BUILD_NUMBER]
+  message = "*Successfully deployed version #{version} (#{build}) to TestFlight! 🚀*" if !failed
+  message = "*Failed to deploy version #{version} (#{build}) to TestFlight!*" if failed
+  slack(slack_url: webhook, success: !failed, message: message, default_payloads: [:last_git_commit_hash])
+end
+
+private_lane :notify_slack_dsyms do
+  webhook = ENV['SLACK_DSYMS_WEBHOOK']
+  failed = lane_context[:LANE_FAILED]
+  message = "*Successfully uploaded latest dSYMs to Firebase! 🐛*" if !failed
+  message = "*Failed to upload dSYMs to Firebase!*" if failed
+  slack(slack_url: webhook, success: !failed, message: message, default_payloads: [:last_git_commit])
+end
+
+error do
+  lane_context[:LANE_FAILED] = true
+  notify_slack
+end
