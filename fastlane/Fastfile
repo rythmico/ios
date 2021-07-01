@@ -55,7 +55,8 @@ end
 desc 'Bump Build Number + Deploy Apps to TestFlight'
 lane :release do
   bump_build
-  deploy_testflight
+  deploy_testflight(scheme: 'Rythmico')
+  deploy_testflight(scheme: 'Tutor')
   notify_slack if ENV['CI']
 end
 
@@ -82,11 +83,8 @@ lane :bump_build do
 end
 
 desc 'Deploy Apps to TestFlight'
-lane :deploy_testflight do
-  build_app(configuration: 'Release', scheme: 'Rythmico')
-  upload_to_testflight(skip_submission: true, skip_waiting_for_build_processing: true)
-
-  build_app(configuration: 'Release', scheme: 'Tutor')
+lane :deploy_testflight do |options|
+  build_app(configuration: 'Release', scheme: options[:scheme])
   upload_to_testflight(skip_submission: true, skip_waiting_for_build_processing: true)
 end
 
