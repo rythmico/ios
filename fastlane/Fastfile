@@ -92,23 +92,24 @@ end
 ###### Slack ######
 ###################
 
-desc 'Notify Slack'
-private_lane :notify_slack do |options|
-  failed = options[:failed] || false
-  source_lane = lane_context[:LANE_NAME]
-  case source_lane
-  when 'release'
-    version = lane_context[:VERSION_NUMBER]
-    build = lane_context[:BUILD_NUMBER]
-    message = "*Successfully deployed version #{version} (#{build}) to TestFlight! 🚀*" if !failed
-    message = "*Failed to deploy version #{version} (#{build}) to TestFlight!*" if failed
-    webhook = ENV['SLACK_RELEASE_WEBHOOK']
-    slack(slack_url: webhook, message: message, default_payloads: [:last_git_commit_hash])
-  else
-    UI.important "Unknown source lane: #{source_lane}"
+private_lane :notify_slack do
+  case lane_context[:LANE_NAME]
+  when 'release' then notify_slack_release
+  else UI.important "Unknown source lane: #{lane_context[:LANE_NAME]}"
   end
 end
 
+private_lane :notify_slack_release do
+  webhook = ENV['SLACK_RELEASE_WEBHOOK']
+  failed = lane_context[:LANE_FAILED]
+  version = lane_context[:VERSION_NUMBER]
+  build = lane_context[:BUILD_NUMBER]
+  message = "*Successfully deployed version #{version} (#{build}) to TestFlight! 🚀*" if !failed
+  message = "*Failed to deploy version #{version} (#{build}) to TestFlight!*" if failed
+  slack(slack_url: webhook, success: !failed, message: message, default_payloads: [:last_git_commit_hash])
+end
+
 error do
-  notify_slack(failed: true)
+  lane_context[:LANE_FAILED] = true
+  notify_slack
 end
