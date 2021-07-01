@@ -89,12 +89,29 @@ lane :deploy_testflight do |options|
 end
 
 ###################
+###### dSYMs ######
+###################
+
+desc 'Sync dSYMs to Crashlytics'
+lane :dsyms do
+  sync_symbols(app_id: 'com.rythmico.student', gsp_path: 'Rythmico/Supporting Files/GoogleService-Info-Release.plist')
+  sync_symbols(app_id: 'com.rythmico.tutor', gsp_path: 'RythmicoTutor/Supporting Files/GoogleService-Info-Release.plist')
+  notify_slack if ENV['CI']
+end
+
+private_lane :sync_symbols do |options|
+  download_dsyms(app_identifier: options[:app_id], version: 'latest', wait_for_dsym_processing: true)
+  upload_symbols_to_crashlytics(gsp_path: options[:gsp_path], binary_path: 'fastlane/upload_crashlytics_symbols')
+end
+
+###################
 ###### Slack ######
 ###################
 
 private_lane :notify_slack do
   case lane_context[:LANE_NAME]
   when 'release' then notify_slack_release
+  when 'dsyms' then notify_slack_dsyms
   else UI.important "Unknown source lane: #{lane_context[:LANE_NAME]}"
   end
 end
@@ -107,6 +124,14 @@ private_lane :notify_slack_release do
   message = "*Successfully deployed version #{version} (#{build}) to TestFlight! 🚀*" if !failed
   message = "*Failed to deploy version #{version} (#{build}) to TestFlight!*" if failed
   slack(slack_url: webhook, success: !failed, message: message, default_payloads: [:last_git_commit_hash])
+end
+
+private_lane :notify_slack_dsyms do
+  webhook = ENV['SLACK_DSYMS_WEBHOOK']
+  failed = lane_context[:LANE_FAILED]
+  message = "*Successfully uploaded latest dSYMs to Firebase! 🐛*" if !failed
+  message = "*Failed to upload dSYMs to Firebase!*" if failed
+  slack(slack_url: webhook, success: !failed, message: message, default_payloads: [:last_git_commit])
 end
 
 error do
