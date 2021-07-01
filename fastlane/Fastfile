@@ -70,7 +70,7 @@ lane :bump_build do
     sh 'git checkout $BITRISE_GIT_BRANCH'
   end
 
-  version_number = get_info_plist_value(path: 'Rythmico/Supporting Files/Info.plist', key: "CFBundleShortVersionString").to_s
+  version_number = get_version_number(target: 'Rythmico')
   UI.user_error! 'Version number not found' unless version_number
   build_number = lane_context[:BUILD_NUMBER].to_s
   UI.user_error! 'Build number not found' unless build_number
