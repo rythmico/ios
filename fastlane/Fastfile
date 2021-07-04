@@ -1,7 +1,7 @@
 skip_docs
 
 before_all do |lane, options|
-  xcversion(version: '~> 12.5')
+  ensure_xcode_version(strict: false)
 end
 
 ###################
