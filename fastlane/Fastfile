@@ -1,7 +1,12 @@
 skip_docs
 
 before_all do |lane, options|
-  ensure_xcode_version(strict: false)
+  if ENV['CI']
+    puts 'Running on CI'
+    xcversion(version: '~> ' + File.read('../.xcode-version').strip)
+  else
+    ensure_xcode_version(strict: false)
+  end
 end
 
 ###################
