@@ -123,7 +123,7 @@ private_lane :notify_slack_release do
   build = lane_context[:BUILD_NUMBER]
   message = "*Successfully deployed version #{version} (#{build}) to TestFlight! 🚀*" if !failed
   message = "*Failed to deploy version #{version} (#{build}) to TestFlight!*" if failed
-  slack(slack_url: webhook, success: !failed, message: message, default_payloads: [:last_git_commit_hash])
+  slack(slack_url: webhook, success: !failed, message: message, default_payloads: [:last_git_commit_hash], fail_on_error: !failed)
 end
 
 private_lane :notify_slack_dsyms do
@@ -131,7 +131,7 @@ private_lane :notify_slack_dsyms do
   failed = lane_context[:LANE_FAILED]
   message = "*Successfully uploaded latest dSYMs to Firebase! 🐛*" if !failed
   message = "*Failed to upload dSYMs to Firebase!*" if failed
-  slack(slack_url: webhook, success: !failed, message: message, default_payloads: [:last_git_commit])
+  slack(slack_url: webhook, success: !failed, message: message, default_payloads: [:last_git_commit], fail_on_error: !failed)
 end
 
 error do
