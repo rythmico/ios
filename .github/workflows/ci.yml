@@ -8,7 +8,6 @@ concurrency:
 
 jobs:
   CI:
-    if: false # disabled cause of stuck builds...
     runs-on: macos-11
     env:
       GIT_CRYPT_KEY: ${{ secrets.GIT_CRYPT_KEY }}
