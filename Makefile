@@ -1,7 +1,11 @@
 .DEFAULT_GOAL := bootstrap
 
-install_tools:
+bootstrap:
 	brew bundle --no-lock --no-upgrade || true
-
-bootstrap: install_tools
 	fastlane bootstrap
+
+ci:
+	fastlane ci
+
+deploy:
+	fastlane deploy

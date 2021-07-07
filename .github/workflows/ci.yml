@@ -1,0 +1,26 @@
+name: CI
+
+on: [pull_request]
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  CI:
+    runs-on: macos-11
+    env:
+      GIT_CRYPT_KEY: ${{ secrets.GIT_CRYPT_KEY }}
+      MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: SSH Agent
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Bootstrap
+        run: make bootstrap
+      - name: Run CI
+        run: make ci

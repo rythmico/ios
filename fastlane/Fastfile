@@ -3,6 +3,7 @@ skip_docs
 before_all do |lane, options|
   if ENV['CI']
     puts 'Running on CI'
+    setup_ci
     xcversion(version: '~> ' + File.read('../.xcode-version').strip)
   else
     ensure_xcode_version(strict: false)
@@ -26,11 +27,11 @@ lane :download_certs do
 end
 
 ###################
-####### QA ########
+####### CI ########
 ###################
 
-desc 'Run All Tests + Archive'
-lane :qa do
+desc 'Continuous Integration (test + archive)'
+lane :ci do
   test
   archive
 end
@@ -54,11 +55,11 @@ lane :archive do
 end
 
 ###################
-##### Release #####
+##### Deploy ######
 ###################
 
-desc 'Bump Build Number + Deploy Apps to TestFlight'
-lane :release do
+desc 'Deploy (bump_build + deploy_testflight)'
+lane :deploy do
   bump_build
   deploy_testflight(scheme: 'Rythmico')
   deploy_testflight(scheme: 'Tutor')
@@ -67,14 +68,12 @@ end
 
 desc 'Bump Build Number'
 lane :bump_build do
-  bitrise_build = ENV['BITRISE_BUILD_NUMBER']
-  bump_build_number(plist: 'Rythmico/Supporting Files/Info.plist', value: bitrise_build)
-  bump_build_number(plist: 'RythmicoTutor/Supporting Files/Info.plist', value: bitrise_build)
+  bump_build_number(plist: 'Rythmico/Supporting Files/Info.plist')
+  bump_build_number(plist: 'RythmicoTutor/Supporting Files/Info.plist')
 
-  if ENV['BITRISE_GIT_BRANCH']
-    sh 'git config user.name bitrise-io' # swap with 'github' for github actions
-    sh 'git config user.email letsconnect@bitrise.io' # swap with '"<>"' for github actions
-    sh 'git checkout $BITRISE_GIT_BRANCH'
+  if ENV['GITHUB_ACTIONS']
+    sh 'git config user.name "GitHub Actions"'
+    sh 'git config user.email actions@github.com'
   end
 
   version_number = get_version_number(target: 'Rythmico')
@@ -82,7 +81,8 @@ lane :bump_build do
   build_number = lane_context[:BUILD_NUMBER].to_s
   UI.user_error! 'Build number not found' unless build_number
 
-  git_commit(path: '**/Info.plist', message: "Bump build number (#{build_number}) [skip ci]")
+  sh 'git add "../**/Info.plist"'
+  sh "git commit" + " --author '#{last_git_commit_author}'" + " -m 'Bump build number (#{build_number}) [skip ci]'"
   add_git_tag(tag: version_number + '/' + build_number)
   push_to_git_remote(tags: true)
 end
@@ -115,14 +115,14 @@ end
 
 private_lane :notify_slack do
   case lane_context[:LANE_NAME]
-  when 'release' then notify_slack_release
+  when 'deploy' then notify_slack_deploy
   when 'dsyms' then notify_slack_dsyms
   else UI.important "Unknown source lane: #{lane_context[:LANE_NAME]}"
   end
 end
 
-private_lane :notify_slack_release do
-  webhook = ENV['SLACK_RELEASE_WEBHOOK']
+private_lane :notify_slack_deploy do
+  webhook = ENV['SLACK_DEPLOY_WEBHOOK']
   failed = lane_context[:LANE_FAILED]
   version = lane_context[:VERSION_NUMBER]
   build = lane_context[:BUILD_NUMBER]
