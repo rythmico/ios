@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
       - name: SSH Agent
         uses: webfactory/ssh-agent@v0.5.3
         with:

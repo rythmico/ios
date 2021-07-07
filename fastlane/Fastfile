@@ -76,6 +76,9 @@ lane :bump_build do
     sh 'git config user.name bitrise-io' # swap with 'github' for github actions
     sh 'git config user.email letsconnect@bitrise.io' # swap with '"<>"' for github actions
     sh 'git checkout $BITRISE_GIT_BRANCH'
+  elsif ENV['GITHUB_ACTIONS']
+    sh 'git config user.name "GitHub Actions"'
+    sh 'git config user.email actions@github.com'
   end
 
   version_number = get_version_number(target: 'Rythmico')
@@ -83,7 +86,8 @@ lane :bump_build do
   build_number = lane_context[:BUILD_NUMBER].to_s
   UI.user_error! 'Build number not found' unless build_number
 
-  git_commit(path: '**/Info.plist', message: "Bump build number (#{build_number}) [skip ci]")
+  sh 'git add "../**/Info.plist"'
+  sh "git commit" + " --author '#{last_git_commit_author}'" + " -m 'Bump build number (#{build_number}) [skip ci]'"
   add_git_tag(tag: version_number + '/' + build_number)
   push_to_git_remote(tags: true)
 end
