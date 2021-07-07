@@ -30,4 +30,4 @@ jobs:
       - name: Bootstrap
         run: make bootstrap
       - name: CI
-        run: fastlane ci
+        run: bundle exec fastlane ci

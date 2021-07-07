@@ -1,3 +1,4 @@
+ensure_bundle_exec
 skip_docs
 
 before_all do |lane, options|

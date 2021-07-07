@@ -2,6 +2,7 @@
 
 install_tools:
 	brew bundle --no-lock --no-upgrade || true
+	bundle install
 
 bootstrap: install_tools
-	fastlane bootstrap
+	bundle exec fastlane bootstrap
