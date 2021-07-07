@@ -68,15 +68,10 @@ end
 
 desc 'Bump Build Number'
 lane :bump_build do
-  bitrise_build = ENV['BITRISE_BUILD_NUMBER']
-  bump_build_number(plist: 'Rythmico/Supporting Files/Info.plist', value: bitrise_build)
-  bump_build_number(plist: 'RythmicoTutor/Supporting Files/Info.plist', value: bitrise_build)
+  bump_build_number(plist: 'Rythmico/Supporting Files/Info.plist')
+  bump_build_number(plist: 'RythmicoTutor/Supporting Files/Info.plist')
 
-  if ENV['BITRISE_GIT_BRANCH']
-    sh 'git config user.name bitrise-io' # swap with 'github' for github actions
-    sh 'git config user.email letsconnect@bitrise.io' # swap with '"<>"' for github actions
-    sh 'git checkout $BITRISE_GIT_BRANCH'
-  elsif ENV['GITHUB_ACTIONS']
+  if ENV['GITHUB_ACTIONS']
     sh 'git config user.name "GitHub Actions"'
     sh 'git config user.email actions@github.com'
   end
