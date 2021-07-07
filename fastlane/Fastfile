@@ -26,11 +26,11 @@ lane :download_certs do
 end
 
 ###################
-####### QA ########
+####### CI ########
 ###################
 
-desc 'Run All Tests + Archive'
-lane :qa do
+desc 'Continuous Integration (test + archive)'
+lane :ci do
   test
   archive
 end
