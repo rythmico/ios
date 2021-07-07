@@ -8,6 +8,7 @@ concurrency:
 
 jobs:
   CI:
+    if: false # disabled cause of stuck builds...
     name: ${{ matrix.platform.name }}
     runs-on: macos-11
     env:
