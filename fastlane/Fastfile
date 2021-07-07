@@ -55,11 +55,11 @@ lane :archive do
 end
 
 ###################
-##### Release #####
+##### Deploy ######
 ###################
 
-desc 'Bump Build Number + Deploy Apps to TestFlight'
-lane :release do
+desc 'Deploy (bump_build + deploy_testflight)'
+lane :deploy do
   bump_build
   deploy_testflight(scheme: 'Rythmico')
   deploy_testflight(scheme: 'Tutor')
@@ -116,14 +116,14 @@ end
 
 private_lane :notify_slack do
   case lane_context[:LANE_NAME]
-  when 'release' then notify_slack_release
+  when 'deploy' then notify_slack_deploy
   when 'dsyms' then notify_slack_dsyms
   else UI.important "Unknown source lane: #{lane_context[:LANE_NAME]}"
   end
 end
 
-private_lane :notify_slack_release do
-  webhook = ENV['SLACK_RELEASE_WEBHOOK']
+private_lane :notify_slack_deploy do
+  webhook = ENV['SLACK_DEPLOY_WEBHOOK']
   failed = lane_context[:LANE_FAILED]
   version = lane_context[:VERSION_NUMBER]
   build = lane_context[:BUILD_NUMBER]
