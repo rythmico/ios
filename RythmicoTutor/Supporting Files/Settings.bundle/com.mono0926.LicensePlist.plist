@@ -54,7 +54,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/firebase-ios-sdk</string>
 			<key>Title</key>
-			<string>Firebase (8.2.0)</string>
+			<string>Firebase (8.3.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -62,7 +62,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/GoogleAppMeasurement</string>
 			<key>Title</key>
-			<string>GoogleAppMeasurement (8.1.1)</string>
+			<string>GoogleAppMeasurement (8.3.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -166,7 +166,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/stripe-ios</string>
 			<key>Title</key>
-			<string>Stripe (21.6.0)</string>
+			<string>Stripe (21.7.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -174,7 +174,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/swift-case-paths</string>
 			<key>Title</key>
-			<string>swift-case-paths (0.2.0)</string>
+			<string>swift-case-paths (0.4.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -182,7 +182,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/swift-composable-architecture</string>
 			<key>Title</key>
-			<string>swift-composable-architecture (0.19.0)</string>
+			<string>swift-composable-architecture (0.20.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
