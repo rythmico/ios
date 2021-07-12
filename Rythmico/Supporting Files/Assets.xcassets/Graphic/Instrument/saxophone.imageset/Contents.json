@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Saxo.svg",
+      "filename" : "Saxophone.svg",
       "idiom" : "universal"
     },
     {
@@ -11,7 +11,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "Saxo-white.svg",
+      "filename" : "Saxophone-1.svg",
       "idiom" : "universal"
     }
   ],
