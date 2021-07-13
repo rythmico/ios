@@ -10,7 +10,7 @@ struct InstrumentView: View {
     var viewData: InstrumentViewData
 
     @ScaledMetric(relativeTo: .largeTitle)
-    private var iconWidth: CGFloat = .grid(18)
+    private var iconWidth: CGFloat = .grid(12)
 
     var body: some View {
         Button(action: { viewData.action?() }) {
@@ -21,13 +21,13 @@ struct InstrumentView: View {
                     .padding([.vertical, .leading], .grid(5))
                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                Image(decorative: viewData.icon.name)
+                Image(uiImage: viewData.icon.image.resized(width: iconWidth))
                     .renderingMode(.original)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: iconWidth, alignment: .center)
-                    .padding(.vertical, .grid(2))
-                    .padding(.trailing, .grid(3))
+                    .padding(.vertical, .grid(3))
+                    .padding(.trailing, .grid(4))
             }
         }
         .frame(minHeight: 70)
