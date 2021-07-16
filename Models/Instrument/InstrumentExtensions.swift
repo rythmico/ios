@@ -11,6 +11,8 @@ extension Instrument {
             return Asset.Graphic.Instrument.piano
         case .singing:
             return Asset.Graphic.Instrument.singing
+        case .bassGuitar:
+            return Asset.Graphic.Instrument.bassGuitar
         case .saxophone:
             return Asset.Graphic.Instrument.saxophone
         case .trumpet:
@@ -19,6 +21,8 @@ extension Instrument {
             return Asset.Graphic.Instrument.flute
         case .violin:
             return Asset.Graphic.Instrument.violin
+        case .harp:
+            return Asset.Graphic.Instrument.harp
         }
     }
 }
