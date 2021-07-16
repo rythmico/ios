@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/firebase/firebase-ios-sdk",
         "state": {
           "branch": null,
-          "revision": "7f61fe1e2e88736a4fb21a1fb9f28472f8112448",
-          "version": "8.3.0"
+          "revision": "ed87539cda9cfb3a3de1be22354c6e74760db91b",
+          "version": "8.3.1"
         }
       },
       {
@@ -61,7 +61,7 @@
         "state": {
           "branch": null,
           "revision": "06e74ef7ee7326e1af724d462091eed1e5c6fb4a",
-          "version": "8.3.0"
+          "version": "8.3.1"
         }
       },
       {
@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/google/GoogleDataTransport.git",
         "state": {
           "branch": null,
-          "revision": "cad598c0338e8b203b94378dff0d4d819fa141cf",
-          "version": "9.0.1"
+          "revision": "9e79fd8deddbef5646fbb5dbb3eaf963e338f007",
+          "version": "9.1.0"
         }
       },
       {
@@ -78,8 +78,8 @@
         "repositoryURL": "https://github.com/google/GoogleUtilities.git",
         "state": {
           "branch": null,
-          "revision": "94f9ab80d39da19dd3a2492d5451e909333f0269",
-          "version": "7.4.3"
+          "revision": "beb713a16b50a4df3162b3f3ecdeffa16b74b773",
+          "version": "7.5.0"
         }
       },
       {
@@ -186,8 +186,17 @@
         "repositoryURL": "https://github.com/pointfreeco/swift-case-paths",
         "state": {
           "branch": null,
-          "revision": "ac1cf1c35b63d70bf05707ad368c9459f31513ff",
-          "version": "0.4.0"
+          "revision": "5904cc74af2890ec34c4bc00fe8d8956c52b1e88",
+          "version": "0.5.0"
+        }
+      },
+      {
+        "package": "swift-collections",
+        "repositoryURL": "https://github.com/apple/swift-collections",
+        "state": {
+          "branch": null,
+          "revision": "3426dba9ee5c9f8e4981b0fc9d39a818d36eec28",
+          "version": "0.0.4"
         }
       },
       {
@@ -195,8 +204,8 @@
         "repositoryURL": "https://github.com/pointfreeco/swift-composable-architecture",
         "state": {
           "branch": null,
-          "revision": "3ca8249bd3262e9837c6cb4d352cc58e370e33fc",
-          "version": "0.20.0"
+          "revision": "a2319ff82b07d12af1d5ce233e22c75e5615fd96",
+          "version": "0.22.0"
         }
       },
       {
@@ -206,6 +215,15 @@
           "branch": null,
           "revision": "2d139ba1a955f702ad3e63710ec64efab4073211",
           "version": "0.2.0"
+        }
+      },
+      {
+        "package": "swift-identified-collections",
+        "repositoryURL": "https://github.com/pointfreeco/swift-identified-collections",
+        "state": {
+          "branch": null,
+          "revision": "edececbdb56b07e9402f2f3f5b907d220a28b4ea",
+          "version": "0.1.1"
         }
       },
       {
@@ -258,8 +276,8 @@
         "repositoryURL": "https://github.com/davdroman/TextBuilder",
         "state": {
           "branch": null,
-          "revision": "ae27cede3d83f83425a1dbfac3701971ea76db5d",
-          "version": "1.0.1"
+          "revision": "b822b46f4d60a5e814dd01b3644b13b38df2d7ae",
+          "version": "1.1.0"
         }
       },
       {
@@ -294,8 +312,8 @@
         "repositoryURL": "https://github.com/pointfreeco/xctest-dynamic-overlay",
         "state": {
           "branch": null,
-          "revision": "603974e3909ad4b48ba04aad7e0ceee4f077a518",
-          "version": "0.1.0"
+          "revision": "152390e9e78ebbf0d767ee52971d41e7f44f39bc",
+          "version": "0.1.1"
         }
       },
       {
