@@ -42,7 +42,13 @@ extension Instrument {
     /// i.e. "Drum lessons", "Drum tutor".
     var assimilatedName: String {
         switch self {
-        case .guitar, .piano, .singing, .saxophone, .trumpet, .flute, .violin:
+        case .guitar,
+             .piano,
+             .singing,
+             .saxophone,
+             .trumpet,
+             .flute,
+             .violin:
             return standaloneName
         case .drums:
             return "Drum"
