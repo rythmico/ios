@@ -6,10 +6,12 @@ enum Instrument: String, Equatable, Codable, CaseIterable, Hashable {
     case drums = "DRUMS"
     case piano = "PIANO"
     case singing = "SINGING"
+    case bassGuitar = "BASS_GUITAR"
     case saxophone = "SAXOPHONE"
     case trumpet = "TRUMPET"
     case flute = "FLUTE"
     case violin = "VIOLIN"
+    case harp = "HARP"
 }
 
 extension Instrument: Identifiable {
@@ -27,6 +29,8 @@ extension Instrument {
             return "Piano"
         case .singing:
             return "Singing"
+        case .bassGuitar:
+            return "Bass Guitar"
         case .saxophone:
             return "Saxophone"
         case .trumpet:
@@ -35,6 +39,8 @@ extension Instrument {
             return "Flute"
         case .violin:
             return "Violin"
+        case .harp:
+            return "Harp"
         }
     }
 
@@ -42,7 +48,15 @@ extension Instrument {
     /// i.e. "Drum lessons", "Drum tutor".
     var assimilatedName: String {
         switch self {
-        case .guitar, .piano, .singing, .saxophone, .trumpet, .flute, .violin:
+        case .guitar,
+             .piano,
+             .singing,
+             .bassGuitar,
+             .saxophone,
+             .trumpet,
+             .flute,
+             .violin,
+             .harp:
             return standaloneName
         case .drums:
             return "Drum"

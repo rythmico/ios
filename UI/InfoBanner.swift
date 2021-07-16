@@ -11,6 +11,7 @@ struct InfoBanner: View {
             Text(text)
                 .rythmicoTextStyle(.callout)
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .fixedSize(horizontal: false, vertical: true)
         }
         .padding(.grid(4))
         .foregroundColor(.rythmicoForeground)

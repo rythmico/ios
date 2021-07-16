@@ -8,6 +8,9 @@ struct LessonPlanConfirmationView: View, TestableView {
 
     var lessonPlan: LessonPlan
 
+    @ScaledMetric(relativeTo: .largeTitle)
+    private var iconWidth: CGFloat = .grid(18)
+
     var title: String {
         switch lessonPlan.status {
         case .active:
@@ -59,7 +62,7 @@ struct LessonPlanConfirmationView: View, TestableView {
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: .grid(8)) {
                         VStack(spacing: .grid(6)) {
-                            Image(uiImage: lessonPlan.instrument.icon.image)
+                            Image(uiImage: lessonPlan.instrument.icon.image.resized(width: iconWidth))
                                 .foregroundColor(.rythmicoForeground)
 
                             VStack(spacing: .grid(4)) {
