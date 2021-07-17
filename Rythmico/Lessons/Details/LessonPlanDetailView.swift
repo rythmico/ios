@@ -114,7 +114,7 @@ struct LessonPlanDetailView: View, TestableView {
     @ViewBuilder
     private var planDetailsSection: some View {
         SectionHeaderView(title: "Plan Details")
-        LessonPlanScheduleView(lessonPlan: lessonPlan)
+        LessonPlanScheduleView(schedule: lessonPlan.schedule)
         AddressLabel(address: lessonPlan.address)
     }
 

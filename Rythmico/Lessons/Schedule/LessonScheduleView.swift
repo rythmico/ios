@@ -5,32 +5,22 @@ struct LessonScheduleView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: .grid(5)) {
-            label(icon: Asset.Icon.Label.info, title: dateText)
-            label(icon: Asset.Icon.Label.time, title: timeText)
-        }
-    }
-
-    @ViewBuilder
-    private func label(icon: ImageAsset, title: Text) -> some View {
-        HStack(spacing: .grid(2)) {
-            Image(decorative: icon.name).renderingMode(.template)
-            title
-                .rythmicoTextStyle(.body)
-                .lineLimit(1)
-                .minimumScaleFactor(0.7)
+            RythmicoLabel(icon: { Image.calendarIcon }, title: { dateText })
+            RythmicoLabel(asset: Asset.Icon.Label.time, title: { timeText })
         }
     }
 
     private var schedule: Schedule { lesson.schedule }
-    private var dateText: Text {
-        Self.dateFormatter.string(from: schedule.startDate).text.rythmicoFontWeight(.bodyBold)
-    }
-    private var timeText: Text {
-        Self.timeFormatter.string(from: schedule.startDate, to: schedule.endDate).text.rythmicoFontWeight(.bodyBold)
-    }
 
     private static let dateFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
+    private var dateText: some View {
+        Self.dateFormatter.string(from: schedule.startDate).text.rythmicoTextStyle(.bodyBold)
+    }
+
     private static let timeFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))
+    private var timeText: some View {
+        Self.timeFormatter.string(from: schedule.startDate, to: schedule.endDate).text.rythmicoTextStyle(.bodyBold)
+    }
 }
 
 #if DEBUG
