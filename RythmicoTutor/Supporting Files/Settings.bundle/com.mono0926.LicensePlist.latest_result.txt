@@ -38,6 +38,8 @@ name: SFSafeSymbols, nameSpecified: SFSafeSymbols, owner: piknotech, version: 2.
 
 name: stripe-ios, nameSpecified: Stripe, owner: stripe, version: 21.7.0
 
+name: swift-algorithms, nameSpecified: swift-algorithms, owner: apple, version: 0.2.1
+
 name: swift-case-paths, nameSpecified: swift-case-paths, owner: pointfreeco, version: 0.5.0
 
 name: swift-collections, nameSpecified: swift-collections, owner: apple, version: 0.0.4
@@ -49,6 +51,8 @@ name: swift-composable-navigator, nameSpecified: swift-composable-navigator, own
 name: swift-identified-collections, nameSpecified: swift-identified-collections, owner: pointfreeco, version: 0.1.1
 
 name: swift-nonempty, nameSpecified: swift-nonempty, owner: pointfreeco, version: 0.3.1
+
+name: swift-numerics, nameSpecified: swift-numerics, owner: apple, version: 0.1.0
 
 name: swift-protobuf, nameSpecified: SwiftProtobuf, owner: apple, version: 1.17.0
 
