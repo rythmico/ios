@@ -441,6 +441,7 @@
 		D5B57A6D2419DA5B00BE9B4F /* AddressSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A6C2419DA5B00BE9B4F /* AddressSelectionView.swift */; };
 		D5B57A712419F79700BE9B4F /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A702419F79700BE9B4F /* SectionHeaderView.swift */; };
 		D5B57A75241A018900BE9B4F /* SchedulingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A74241A018900BE9B4F /* SchedulingView.swift */; };
+		D5B5820326A37B1E0008D9DC /* RythmicoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B5820226A37B1E0008D9DC /* RythmicoLabel.swift */; };
 		D5B7948526004CF200DC6C77 /* LessonReschedulingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B7948426004CF200DC6C77 /* LessonReschedulingView.swift */; };
 		D5BA171023D7A18900954D50 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170F23D7A18900954D50 /* RootView.swift */; };
 		D5BA171223D7AB3B00954D50 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA171123D7AB3B00954D50 /* MainView.swift */; };
@@ -955,6 +956,7 @@
 		D5B57A6C2419DA5B00BE9B4F /* AddressSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSelectionView.swift; sourceTree = "<group>"; };
 		D5B57A702419F79700BE9B4F /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		D5B57A74241A018900BE9B4F /* SchedulingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulingView.swift; sourceTree = "<group>"; };
+		D5B5820226A37B1E0008D9DC /* RythmicoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RythmicoLabel.swift; sourceTree = "<group>"; };
 		D5B7948426004CF200DC6C77 /* LessonReschedulingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonReschedulingView.swift; sourceTree = "<group>"; };
 		D5BA170723D66AF500954D50 /* UserCredentialProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialProviderTests.swift; sourceTree = "<group>"; };
 		D5BA170923D671FD00954D50 /* UserCredentialEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialEmitter.swift; sourceTree = "<group>"; };
@@ -1658,6 +1660,7 @@
 				D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */,
 				D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */,
 				D5F50662240056FA00CA4094 /* RoundedThinOutlineContainer.swift */,
+				D5B5820226A37B1E0008D9DC /* RythmicoLabel.swift */,
 				D5B57A702419F79700BE9B4F /* SectionHeaderView.swift */,
 				0372E359249ABAB80048B402 /* SelectableList.swift */,
 				D5ED168A2614BB40001841ED /* StackSpacing.swift */,
@@ -2730,6 +2733,7 @@
 				03AAF66C2444FFCC002D8F5B /* Pickers.swift in Sources */,
 				D5AFED3C25056300003FFC68 /* NotificationCenter+Sugar.swift in Sources */,
 				D593C7022550C03B00C684FF /* AppUpdatePrompt.swift in Sources */,
+				D5B5820326A37B1E0008D9DC /* RythmicoLabel.swift in Sources */,
 				D5D9AEA325367E9B00A0ABCC /* LessonPlanBookingEntryView.swift in Sources */,
 				D501587825375AA9005E02FA /* PorfolioView.swift in Sources */,
 				D5ECD2C126497D9700DE933E /* ContextMenuView.swift in Sources */,
