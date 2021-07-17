@@ -8,6 +8,11 @@ extension Schedule {
         duration: .fortyFiveMinutes
     )
 
+    static let startedYesterdayStub = Self(
+        startDate: .stub - (1, .day, .current),
+        duration: .fortyFiveMinutes
+    )
+
     static let startingTomorrowStub = Self(
         startDate: .stub + (1, .day, .current),
         duration: .fortyFiveMinutes
