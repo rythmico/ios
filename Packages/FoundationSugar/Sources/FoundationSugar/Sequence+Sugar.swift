@@ -11,10 +11,6 @@ extension Sequence {
         }
         return count
     }
-
-    public func compact<T>() -> [T] where Element == Optional<T> {
-        compactMap { $0 }
-    }
 }
 
 extension Sequence where Element: Sequence {

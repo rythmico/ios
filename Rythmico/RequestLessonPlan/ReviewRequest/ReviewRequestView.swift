@@ -134,13 +134,13 @@ struct ReviewRequestView: View, TestableView {
     private func studentAge(from dateOfBirth: Date) -> String {
         let dateOfBirthString = Self.dateOfBirthFormatter.string(from: dateOfBirth)
         let age = Current.date() - (dateOfBirth, .year)
-        return [dateOfBirthString, "(\(age) years old)"].compact().spaced()
+        return [dateOfBirthString, "(\(age) years old)"].compacted().spaced()
     }
 
     private var studentAbout: Text? {
         guard !student.about.isBlank else { return nil }
         return Text(separator: .newline) {
-            Text(["About", student.name.firstWord].compact().spaced() + .colon).rythmicoFontWeight(.bodyBold)
+            Text(["About", student.name.firstWord].compacted().spaced() + .colon).rythmicoFontWeight(.bodyBold)
             student.about
         }
     }

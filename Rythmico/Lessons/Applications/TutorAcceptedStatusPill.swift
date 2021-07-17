@@ -5,7 +5,7 @@ struct TutorAcceptedStatusPill: View {
 
     private var title: String {
         ["Accepted", tutor?.name.firstWord.map { "by \($0)" }]
-            .compact()
+            .compacted()
             .spaced()
     }
 
