@@ -28,11 +28,11 @@ final class RemoteConfig: RemoteConfigServiceProtocol {
         config.configSettings.minimumFetchInterval = forced ? 0 : Const.minimumFetchInterval
         config.fetchAndActivate { [self] status, error in
             if let error = error {
-                assertionFailure(error.localizedDescription)
+                assertionFailure(error.legibleDescription)
             } else {
                 config.ensureInitialized { error in
                     if let error = error {
-                        assertionFailure(error.localizedDescription)
+                        assertionFailure(error.legibleDescription)
                     }
                 }
             }

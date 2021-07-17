@@ -108,6 +108,14 @@
 		</dict>
 		<dict>
 			<key>File</key>
+			<string>com.mono0926.LicensePlist/LegibleError</string>
+			<key>Title</key>
+			<string>LegibleError (1.0.5)</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
 			<string>com.mono0926.LicensePlist/leveldb</string>
 			<key>Title</key>
 			<string>leveldb (1.22.2)</string>
@@ -172,6 +180,14 @@
 		</dict>
 		<dict>
 			<key>File</key>
+			<string>com.mono0926.LicensePlist/swift-algorithms</string>
+			<key>Title</key>
+			<string>swift-algorithms (0.2.1)</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
 			<string>com.mono0926.LicensePlist/swift-case-paths</string>
 			<key>Title</key>
 			<string>swift-case-paths (0.5.0)</string>
@@ -215,6 +231,14 @@
 			<string>com.mono0926.LicensePlist/swift-nonempty</string>
 			<key>Title</key>
 			<string>swift-nonempty (0.3.1)</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
+			<string>com.mono0926.LicensePlist/swift-numerics</string>
+			<key>Title</key>
+			<string>swift-numerics (0.1.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>

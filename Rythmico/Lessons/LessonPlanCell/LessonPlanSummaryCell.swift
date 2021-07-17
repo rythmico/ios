@@ -23,7 +23,7 @@ struct LessonPlanSummaryCellMainContent: View {
         [
             lessonPlan.student.name.firstWord,
             "\(lessonPlan.instrument.assimilatedName) Lessons"
-        ].compact().joined(separator: " - ")
+        ].compacted().joined(separator: " - ")
     }
 
     @SpacedTextBuilder

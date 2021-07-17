@@ -21,8 +21,8 @@ extension FirebaseAuth.User: UserCredentialProtocol {
             switch (token, error) {
             case let (token?, _):
                 completionHandler(.success(token))
-            case let (_, (nsError as NSError)?):
-                completionHandler(.failure(.init(nsError: nsError)))
+            case let (_, error?):
+                completionHandler(.failure(.init(underlyingError: error)))
             case (nil, nil):
                 preconditionFailure("No token or error received from Firebase")
             }

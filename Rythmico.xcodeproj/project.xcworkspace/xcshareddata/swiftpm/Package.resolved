@@ -110,6 +110,15 @@
         }
       },
       {
+        "package": "LegibleError",
+        "repositoryURL": "https://github.com/mxcl/LegibleError",
+        "state": {
+          "branch": null,
+          "revision": "3aeb15455edc0cd6ea0e8d562079db4ab9a25afc",
+          "version": "1.0.5"
+        }
+      },
+      {
         "package": "leveldb",
         "repositoryURL": "https://github.com/firebase/leveldb.git",
         "state": {
@@ -182,6 +191,15 @@
         }
       },
       {
+        "package": "swift-algorithms",
+        "repositoryURL": "https://github.com/apple/swift-algorithms",
+        "state": {
+          "branch": null,
+          "revision": "2327673b0e9c7e90e6b1826376526ec3627210e4",
+          "version": "0.2.1"
+        }
+      },
+      {
         "package": "swift-case-paths",
         "repositoryURL": "https://github.com/pointfreeco/swift-case-paths",
         "state": {
@@ -233,6 +251,15 @@
           "branch": null,
           "revision": "a3dbd05f2b57cb0ea1b8138a720fc28a1629ca06",
           "version": "0.3.1"
+        }
+      },
+      {
+        "package": "swift-numerics",
+        "repositoryURL": "https://github.com/apple/swift-numerics",
+        "state": {
+          "branch": null,
+          "revision": "6583ac70c326c3ee080c1d42d9ca3361dca816cd",
+          "version": "0.1.0"
         }
       },
       {

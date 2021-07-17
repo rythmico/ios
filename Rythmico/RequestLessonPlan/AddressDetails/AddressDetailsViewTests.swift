@@ -61,7 +61,7 @@ final class AddressDetailsViewTests: XCTestCase {
             XCTAssertEqual(provider.sendCount, 1)
             XCTAssertEqual(provider.latestRequest?.postcode, "n7")
 
-            XCTAssertEqual(view.error?.localizedDescription, "Something")
+            XCTAssertEqual(view.error?.legibleLocalizedDescription, "Something")
             XCTAssertNil(view.addresses)
             XCTAssertNil(view.state.selectedAddress)
         }
@@ -78,7 +78,7 @@ final class AddressDetailsViewTests: XCTestCase {
             XCTAssertEqual(provider.sendCount, 0)
             XCTAssertNil(provider.latestRequest?.postcode)
 
-            XCTAssertEqual(view.error?.localizedDescription, "Postcode must not be empty")
+            XCTAssertEqual(view.error?.legibleLocalizedDescription, "Postcode must not be empty")
             XCTAssertNil(view.addresses)
             XCTAssertNil(view.state.selectedAddress)
         }

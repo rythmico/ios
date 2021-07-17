@@ -2,7 +2,7 @@ extension View {
     public func alert(error: Binding<Error?>) -> some View {
         alert(
             error: Binding(
-                get: { error.wrappedValue?.localizedDescription },
+                get: { error.wrappedValue?.legibleLocalizedDescription },
                 set: { if $0 == nil { error.wrappedValue = nil } }
             )
         )
@@ -20,7 +20,7 @@ extension View {
         error: @autoclosure @escaping () -> Error?,
         dismiss: @escaping () -> Void
     ) -> some View {
-        alert(error: error()?.localizedDescription, dismiss: dismiss)
+        alert(error: error()?.legibleLocalizedDescription, dismiss: dismiss)
     }
 
     public func alert(

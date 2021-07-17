@@ -38,9 +38,7 @@ final class OnboardingViewTests: XCTestCase {
 
     func testFailedAuthentication() {
         Current.appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
-        Current.authenticationService = AuthenticationServiceStub(
-            result: .failure(.init(reasonCode: .invalidCredential, localizedDescription: "Whooopsie"))
-        )
+        Current.authenticationService = AuthenticationServiceStub(result: .failure(.stub))
 
         let keychain = KeychainFake()
         Current.keychain = keychain
@@ -51,7 +49,7 @@ final class OnboardingViewTests: XCTestCase {
             view.authenticateWithApple()
 
             XCTAssertFalse(view.isLoading)
-            XCTAssertEqual(view.errorMessage, "Whooopsie (17004)")
+            XCTAssertEqual(view.errorMessage, "Invalid credential (17004)")
             XCTAssertEqual(keychain.inMemoryStorage.values.count, 1)
             XCTAssertEqual(keychain.inMemoryStorage.values.first, "USER_ID")
 

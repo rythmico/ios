@@ -64,7 +64,7 @@ extension Lesson {
             student.name.firstWord,
             [instrument.assimilatedName, "Lesson", orderDescriptor].spaced()
         ]
-        .compact()
+        .compacted()
         .spacedAndDashed()
     }
 

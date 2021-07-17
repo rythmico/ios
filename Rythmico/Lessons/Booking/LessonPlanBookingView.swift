@@ -108,7 +108,7 @@ struct LessonPlanBookingView: View {
     }
 
     var title: String {
-        ["Book", application.tutor.name.firstWord].compact().spaced()
+        ["Book", application.tutor.name.firstWord].compacted().spaced()
     }
 
     @SpacedTextBuilder

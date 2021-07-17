@@ -574,6 +574,10 @@
 		D5F89392263F3E4100578970 /* LessonPlanScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F89391263F3E4100578970 /* LessonPlanScheduleView.swift */; };
 		D5F89394263F4B0500578970 /* LessonScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F89393263F4B0500578970 /* LessonScheduleView.swift */; };
 		D5F89396263F560D00578970 /* TutorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F89395263F560D00578970 /* TutorCell.swift */; };
+		D5FA706526A3448A00E6FF30 /* AuthenticationErrorDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA706426A3448A00E6FF30 /* AuthenticationErrorDoubles.swift */; };
+		D5FA706626A3448A00E6FF30 /* AuthenticationErrorDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA706426A3448A00E6FF30 /* AuthenticationErrorDoubles.swift */; };
+		D5FA706826A34CDA00E6FF30 /* OnboardingViewCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA706726A34CDA00E6FF30 /* OnboardingViewCore.swift */; };
+		D5FA706926A34CDA00E6FF30 /* OnboardingViewCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA706726A34CDA00E6FF30 /* OnboardingViewCore.swift */; };
 		D5FAE6742559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FAE6732559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift */; };
 		D5FAE6862559DF8300473A8B /* PhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FAE6852559DF8300473A8B /* PhoneNumberCell.swift */; };
 		D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */; };
@@ -1058,6 +1062,8 @@
 		D5F89391263F3E4100578970 /* LessonPlanScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanScheduleView.swift; sourceTree = "<group>"; };
 		D5F89393263F4B0500578970 /* LessonScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonScheduleView.swift; sourceTree = "<group>"; };
 		D5F89395263F560D00578970 /* TutorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorCell.swift; sourceTree = "<group>"; };
+		D5FA706426A3448A00E6FF30 /* AuthenticationErrorDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrorDoubles.swift; sourceTree = "<group>"; };
+		D5FA706726A34CDA00E6FF30 /* OnboardingViewCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewCore.swift; sourceTree = "<group>"; };
 		D5FAE6732559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhoneNumberOpener+ActionSheet.swift"; sourceTree = "<group>"; };
 		D5FAE6852559DF8300473A8B /* PhoneNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCell.swift; sourceTree = "<group>"; };
 		D5FD6F15240AF535008C5AD4 /* StudentDetailsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailsViewTests.swift; sourceTree = "<group>"; };
@@ -1818,6 +1824,7 @@
 			isa = PBXGroup;
 			children = (
 				D54A561F23CE92AE00BC8485 /* AuthenticationError.swift */,
+				D5FA706426A3448A00E6FF30 /* AuthenticationErrorDoubles.swift */,
 				D50E4BC423C7AAA900B6FCB1 /* AuthenticationService.swift */,
 				D5B13B2D23D125E6006CBC46 /* AuthenticationServiceDoubles.swift */,
 				D535547B23DF4D30005A20EB /* DeauthenticationService.swift */,
@@ -1886,6 +1893,7 @@
 			isa = PBXGroup;
 			children = (
 				D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */,
+				D5FA706726A34CDA00E6FF30 /* OnboardingViewCore.swift */,
 				D535553523E105A5005A20EB /* OnboardingViewTests.swift */,
 				D52D8A58259D714B00A6CBBF /* OnboardingSlideshowView.swift */,
 			);
@@ -2738,6 +2746,7 @@
 				D52438F3268A517400E2D859 /* LessonPlanOptions.swift in Sources */,
 				03080EED2466FE21008715EE /* LessonPlan.swift in Sources */,
 				D5989BC62516833E00BED8A6 /* PortfolioVideoCarouselView.swift in Sources */,
+				D5FA706826A34CDA00E6FF30 /* OnboardingViewCore.swift in Sources */,
 				D543B918263F5FA800D25CFD /* AddressLabel.swift in Sources */,
 				D53555CF23E536AE005A20EB /* AppleAuthorizationCompletionDelegate.swift in Sources */,
 				D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */,
@@ -3003,6 +3012,7 @@
 				033D47D6247ABF6B0096C50F /* LessonPlanEndpoints.swift in Sources */,
 				D5F5068C24046B1400CA4094 /* Grid.swift in Sources */,
 				D535547923DF3A7C005A20EB /* Keychain.swift in Sources */,
+				D5FA706526A3448A00E6FF30 /* AuthenticationErrorDoubles.swift in Sources */,
 				D57DE181264DCAC900C5E118 /* ProfileCalendarSyncCell.swift in Sources */,
 				D5243907268A6EB300E2D859 /* LessonPlanPauseInfoDoubles.swift in Sources */,
 				D58824C4251A6D49000820F4 /* LessonsCollectionView.swift in Sources */,
@@ -3041,6 +3051,7 @@
 				D5E58F09256AF09800EB52ED /* BookingsView.swift in Sources */,
 				035B1D10249E561C00AABFEA /* RootView.swift in Sources */,
 				035B1D64249E642800AABFEA /* DeviceTokenProviderDoubles.swift in Sources */,
+				D5FA706926A34CDA00E6FF30 /* OnboardingViewCore.swift in Sources */,
 				D549219325BB27E700251FD2 /* APIActivityErrorHandler.swift in Sources */,
 				03E88EB224C205C30077A420 /* Current.swift in Sources */,
 				D5BF12BC2506926900B2931C /* PushNotificationEventHandler.swift in Sources */,
@@ -3073,6 +3084,7 @@
 				D55C35FE25A3AB510023E56B /* CalendarSyncer.swift in Sources */,
 				D5E987BD24EDE92E00E2E1AF /* Router.swift in Sources */,
 				D5E58F0E256AF1E500EB52ED /* BookingEndpoints.swift in Sources */,
+				D5FA706626A3448A00E6FF30 /* AuthenticationErrorDoubles.swift in Sources */,
 				035B1D3B249E576900AABFEA /* UserCredentialProviderDoubles.swift in Sources */,
 				D5FAE6742559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift in Sources */,
 				D5F4AE7E2559D3F0001085D5 /* PhoneNumberDoubles.swift in Sources */,
