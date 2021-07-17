@@ -42,7 +42,7 @@ struct SchedulingView: View, FocusableView, TestableView {
     private static let timeFormatter = Current.dateFormatter(format: .preset(date: .none, time: .short))
 
     private static let scheduleInfoDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
-    private static let scheduleInfoAfterDayFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
+    private static let scheduleInfoStartDayFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
     private static let scheduleInfoDurationFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))
 
     var startDateText: String? { state.startDate.map(Self.dateFormatter.string(from:)) }
@@ -59,8 +59,8 @@ struct SchedulingView: View, FocusableView, TestableView {
         }
         let day = Self.scheduleInfoDayFormatter.string(from: startDateAndTime)
         let time = Self.scheduleInfoDurationFormatter.string(from: startDateAndTime, to: endDateAndTime)
-        let afterDay = Self.scheduleInfoAfterDayFormatter.string(from: startDateAndTime)
-        return "Lessons will be scheduled every \(day) \(time) after \(afterDay)"
+        let startDay = Self.scheduleInfoStartDayFormatter.string(from: startDateAndTime)
+        return "Lessons will be scheduled every \(day) \(time) starting \(startDay)"
     }
 
     var nextButtonAction: Action? {
