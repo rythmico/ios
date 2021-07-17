@@ -8,7 +8,7 @@ struct ErrorText: View {
     }
 
     var body: some View {
-        Text(error.localizedDescription)
+        Text(error.legibleLocalizedDescription)
             .rythmicoTextStyle(.callout)
             .foregroundColor(.rythmicoRed)
             .frame(maxWidth: .infinity, alignment: .leading)

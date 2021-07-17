@@ -27,6 +27,8 @@ final class ErrorLogger: ErrorLoggerProtocol {
                 domain: nsError.domain,
                 code: nsError.code,
                 userInfo: nsError.userInfo + [
+                    "error-legibleDescription": error.legibleDescription,
+                    "error-legibleLocalizedDescription": error.legibleLocalizedDescription,
                     "nserror-localizedDescription": nsError.localizedDescription,
                     "nserror-debugDescription": nsError.debugDescription,
                 ]

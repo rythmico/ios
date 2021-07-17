@@ -53,7 +53,7 @@ final class LessonsViewTests: XCTestCase {
         XCTAssertView(view) { view in
             XCTAssertTrue(view.lessonPlans.isEmpty)
             XCTAssertFalse(view.isLoading)
-            XCTAssertEqual(view.error?.localizedDescription, "Something 1")
+            XCTAssertEqual(view.error?.legibleLocalizedDescription, "Something 1")
         }
     }
 }

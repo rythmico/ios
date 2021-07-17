@@ -39,7 +39,7 @@ struct RequestLessonPlanView: View, TestableView {
     }
 
     var errorMessage: String? {
-        coordinator.state.failureValue?.localizedDescription
+        coordinator.state.failureValue?.legibleLocalizedDescription
     }
 
     func dismissError() {

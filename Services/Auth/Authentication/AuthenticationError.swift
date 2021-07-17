@@ -4,16 +4,8 @@ typealias AuthenticationCommonError = AuthenticationError<AuthenticationErrorCom
 typealias AuthenticationSignInError = AuthenticationError<AuthenticationErrorSignInReasonCode>
 
 struct AuthenticationError<ReasonCode: AuthenticationErrorCommonReasonCodeProtocol>: Error {
-    var reasonCode: ReasonCode
-    var localizedDescription: String
-}
-
-extension AuthenticationError {
-    init(nsError: NSError) {
-        let reasonCode = ReasonCode(rawValue: nsError.code) ?? .unknown
-        let localizedDescription = nsError.localizedDescription
-        self.init(reasonCode: reasonCode, localizedDescription: localizedDescription)
-    }
+    let underlyingError: Error
+    var reasonCode: ReasonCode { .init(rawValue: (underlyingError as NSError).code) ?? .unknown }
 }
 
 protocol AuthenticationErrorCommonReasonCodeProtocol: RawRepresentable where RawValue == Int {

@@ -1,4 +1,4 @@
-import UIKit
+import SwiftUISugar
 
 extension AppEnvironment {
     mutating func setUpFake() {
@@ -90,7 +90,7 @@ extension AppEnvironment {
 
     mutating func shouldFailAuthentication() {
         authenticationService = AuthenticationServiceStub(
-            result: .failure(Self.fakeAuthenticationError),
+            result: .failure(.stub),
             delay: Self.fakeAPIEndpointDelay
         )
     }
@@ -169,8 +169,4 @@ extension AppEnvironment {
     private static var fakeUserCredential: UserCredentialProtocol {
         UserCredentialStub(result: .success("ACCESS_TOKEN"))
     }
-    private static let fakeAuthenticationError = AuthenticationServiceStub.Error(
-        reasonCode: .invalidCredential,
-        localizedDescription: "Invalid credential"
-    )
 }
