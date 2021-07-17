@@ -9,7 +9,7 @@ extension NSError {
         localizedDescription: String
     ) {
         self.init(
-            domain: .empty,
+            domain: domain ?? .empty,
             code: code,
             userInfo: [NSLocalizedDescriptionKey: localizedDescription]
         )
