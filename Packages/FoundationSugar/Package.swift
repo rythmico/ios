@@ -16,6 +16,7 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "ISO8601PeriodDuration", url: "https://github.com/treatwell/ISO8601PeriodDuration", from: "3.1.0"),
+        .package(name: "LegibleError", url: "https://github.com/mxcl/LegibleError", from: "1.0.5"),
         .package(name: "PreciseDecimal", url: "https://github.com/davdroman/PreciseDecimal", from: "1.0.0"),
         .package(name: "swift-algorithms", url: "https://github.com/apple/swift-algorithms", from: "0.2.1"),
         .package(name: "swift-nonempty", url: "https://github.com/pointfreeco/swift-nonempty", from: "0.3.1"),
@@ -27,6 +28,7 @@ let package = Package(
             name: "FoundationSugar",
             dependencies: [
                 .product(name: "Algorithms", package: "swift-algorithms"),
+                .product(name: "LegibleError", package: "LegibleError"),
                 .product(name: "ISO8601PeriodDuration", package: "ISO8601PeriodDuration"),
                 .product(name: "NonEmpty", package: "swift-nonempty"),
                 .product(name: "PreciseDecimal", package: "PreciseDecimal"),

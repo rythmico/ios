@@ -110,6 +110,15 @@
         }
       },
       {
+        "package": "LegibleError",
+        "repositoryURL": "https://github.com/mxcl/LegibleError",
+        "state": {
+          "branch": null,
+          "revision": "3aeb15455edc0cd6ea0e8d562079db4ab9a25afc",
+          "version": "1.0.5"
+        }
+      },
+      {
         "package": "leveldb",
         "repositoryURL": "https://github.com/firebase/leveldb.git",
         "state": {
