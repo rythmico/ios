@@ -1,46 +1,49 @@
 import SwiftUISugar
 
 struct LessonPlanScheduleView: View {
-    var lessonPlan: LessonPlan
+    let schedule: Schedule
 
     var body: some View {
         VStack(alignment: .leading, spacing: .grid(5)) {
-            label(icon: Asset.Icon.Label.info, title: dateText)
-            label(icon: Asset.Icon.Label.time, title: timeText)
+            RythmicoLabel(icon: { Image.calendarIcon }, title: { dateText })
+            RythmicoLabel(asset: Asset.Icon.Label.time, title: { timeText })
         }
     }
 
-    @ViewBuilder
-    private func label(icon: ImageAsset, title: Text) -> some View {
-        HStack(spacing: .grid(2)) {
-            Image(decorative: icon.name).renderingMode(.template)
-            title
-                .rythmicoTextStyle(.body)
-                .lineLimit(1)
-                .minimumScaleFactor(0.7)
+    private var isFuture: Bool { Current.date() < schedule.startDate }
+
+    private static let dayOfWeekFormatter = Current.dateFormatter(format: .custom("EEEE"))
+    private static let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
+    private var dayOfWeek: String { Self.dayOfWeekFormatter.string(from: schedule.startDate) }
+    private var date: String { Self.dateFormatter.string(from: schedule.startDate) }
+    private var dateText: some View {
+        Text {
+            "Every "
+            dayOfWeek.text.rythmicoFontWeight(.bodyBold)
+            if isFuture {
+                ", starting "
+                date.text.rythmicoFontWeight(.bodyBold)
+            }
         }
+        .rythmicoTextStyle(.body)
     }
 
-    private var schedule: Schedule { lessonPlan.schedule }
-    @SpacedTextBuilder
-    private var dateText: Text {
-        "Every"
-        Self.dateFormatter.string(from: schedule.startDate).text.rythmicoFontWeight(.bodyBold)
-    }
-    private var timeText: Text {
-        Self.timeFormatter.string(from: schedule.startDate, to: schedule.endDate).text.rythmicoFontWeight(.bodyBold)
-    }
-
-    private static let dateFormatter = Current.dateFormatter(format: .custom("EEEE"))
     private static let timeFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))
+    private var time: String { Self.timeFormatter.string(from: schedule.startDate, to: schedule.endDate) }
+    private var timeText: some View {
+        Text(time).rythmicoTextStyle(.bodyBold)
+    }
 }
 
 #if DEBUG
 struct LessonPlanScheduleView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlanScheduleView(lessonPlan: .pendingJesseDrumsPlanStub)
-            .previewLayout(.sizeThatFits)
-            .padding()
+        Group {
+            LessonPlanScheduleView(schedule: .startedYesterdayStub)
+            LessonPlanScheduleView(schedule: .startingIn3DaysStub)
+        }
+        .previewLayout(.sizeThatFits)
+        .padding()
     }
 }
 #endif
