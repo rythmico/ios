@@ -83,17 +83,23 @@ struct ReviewRequestView: View, TestableView {
                             LessonPlanRequestedScheduleView(schedule, tutor: nil)
                         }
 
-                        privateNote.nilIfEmpty.map { privateNote in
-                            SectionHeaderContentView(
-                                title: "Private Note",
-                                alignment: .leading,
-                                padding: Const.headerPadding,
-                                accessory: editButton(performing: resetPrivateNote)
-                            ) {
+                        SectionHeaderContentView(
+                            title: "Private Note",
+                            alignment: .leading,
+                            padding: Const.headerPadding,
+                            accessory: editButton(performing: resetPrivateNote)
+                        ) {
+                            if let privateNote = privateNote.nilIfBlank {
                                 Text(privateNote)
                                     .rythmicoTextStyle(.body)
                                     .foregroundColor(.rythmicoGray90)
                                     .fixedSize(horizontal: false, vertical: true)
+                            } else {
+                                Text("No private note.")
+                                    .rythmicoTextStyle(.body)
+                                    .foregroundColor(.rythmicoGray30)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .onTapGesture(perform: resetPrivateNote)
                             }
                         }
                     }
