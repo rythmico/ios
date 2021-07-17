@@ -401,6 +401,7 @@
 		D591C5B726699AA400A95938 /* DateComponents+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591C5B526699AA400A95938 /* DateComponents+Sugar.swift */; };
 		D593C7022550C03B00C684FF /* AppUpdatePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */; };
 		D593C7032550C03B00C684FF /* AppUpdatePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */; };
+		D5947C9826A39E9600355857 /* ComposableNavigator in Frameworks */ = {isa = PBXBuildFile; productRef = D5947C9726A39E9600355857 /* ComposableNavigator */; };
 		D5989BA7251533E300BED8A6 /* PortfolioTrainingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5989BA6251533E300BED8A6 /* PortfolioTrainingsView.swift */; };
 		D5989BAF251662F400BED8A6 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5989BAE251662F400BED8A6 /* AsyncImage.swift */; };
 		D5989BC62516833E00BED8A6 /* PortfolioVideoCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5989BC52516833E00BED8A6 /* PortfolioVideoCarouselView.swift */; };
@@ -1098,6 +1099,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5FC2D53254A7E21005056D5 /* FirebaseMessaging in Frameworks */,
+				D5947C9826A39E9600355857 /* ComposableNavigator in Frameworks */,
 				D5FC2D4F254A7E21005056D5 /* FirebaseAuth in Frameworks */,
 				035B1CD7249CF7EB00AABFEA /* Valet in Frameworks */,
 				D5FC2D51254A7E21005056D5 /* FirebaseCrashlytics in Frameworks */,
@@ -1156,6 +1158,7 @@
 				03EDA66A2476AE5500FBE527 /* Models */,
 				D5D5E8A92685143000AACB8F /* Packages */,
 				03341B3C23ABB1E7009AE8A8 /* Products */,
+				D5947C9626A39E9600355857 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2047,6 +2050,13 @@
 			path = Verification;
 			sourceTree = "<group>";
 		};
+		D5947C9626A39E9600355857 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D5A8C4C025044A3B0006F5C5 /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
@@ -2360,6 +2370,7 @@
 				D575C836254F10F0001664AB /* FirebaseRemoteConfig */,
 				D5F4AE8A2559D46A001085D5 /* PhoneNumberKit */,
 				D5D5E8AF26851A8800AACB8F /* SwiftUISugar */,
+				D5947C9726A39E9600355857 /* ComposableNavigator */,
 			);
 			productName = RythmicoTutor;
 			productReference = 035B1CBC249CF2AA00AABFEA /* Tutor.app */;
@@ -3819,6 +3830,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseRemoteConfig;
+		};
+		D5947C9726A39E9600355857 /* ComposableNavigator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D56C6A96264AC80B00A2599E /* XCRemoteSwiftPackageReference "swift-composable-navigator" */;
+			productName = ComposableNavigator;
 		};
 		D59E4E6025B20ADA00E8F94C /* YouTubeiOSPlayerHelper */ = {
 			isa = XCSwiftPackageProductDependency;
