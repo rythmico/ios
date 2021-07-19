@@ -13,19 +13,10 @@ struct BookingRequestsView: View {
     private var coordinator = Current.bookingRequestFetchingCoordinator
     @ObservedObject
     private var repository = Current.bookingRequestRepository
-    @ObservedObject
-    private var applicationRepository = Current.bookingApplicationRepository
 
     var isLoading: Bool { coordinator.state.isLoading }
     var error: Error? { coordinator.state.failureValue }
-    var requests: [BookingRequest] {
-        // Optimization to remove already-applied requests before fetch.
-        repository.items.filter { request in
-            !applicationRepository.items.contains {
-                $0.statusInfo.status == .pending && $0.bookingRequestId == request.id
-            }
-        }
-    }
+    var requests: [BookingRequest] { repository.items }
 
     var body: some View {
         List {

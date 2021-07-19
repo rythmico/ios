@@ -93,6 +93,12 @@ struct BookingRequestApplyView: View {
         Current.bookingApplicationRepository.insertItem(application)
         Current.tabSelection.requestsTab = .applied
         navigator.goBack(to: .root)
+
+        // Optimization to remove already-applied requests before next fetch.
+        // Dispatched in the next run loop to avoid mysterious runtime crash.
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            Current.bookingRequestRepository.items.removeAll(where: { $0.id == application.bookingRequestId })
+        }
     }
 }
 
