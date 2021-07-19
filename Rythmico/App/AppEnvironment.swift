@@ -51,7 +51,6 @@ struct AppEnvironment {
     var sceneState: () -> UIApplication.State
     var keyboardDismisser: KeyboardDismisser
     var urlOpener: URLOpener
-    var router: RouterProtocol
 
     var imageLoadingCoordinator: () -> ImageLoadingCoordinator
 
@@ -117,7 +116,6 @@ struct AppEnvironment {
         sceneState: @escaping () -> UIApplication.State,
         keyboardDismisser: KeyboardDismisser,
         urlOpener: URLOpener,
-        router: RouterProtocol,
 
         imageLoadingService: ImageLoadingServiceProtocol,
         imageProcessingService: ImageProcessingServiceProtocol,
@@ -207,7 +205,6 @@ struct AppEnvironment {
         self.sceneState = sceneState
         self.keyboardDismisser = keyboardDismisser
         self.urlOpener = urlOpener
-        self.router = router
 
         self.imageLoadingCoordinator = {
             ImageLoadingCoordinator(
@@ -289,7 +286,6 @@ extension AppEnvironment {
         sceneState: { UIApplication.shared.applicationState },
         keyboardDismisser: UIApplication.shared,
         urlOpener: UIApplication.shared,
-        router: Router(),
 
         imageLoadingService: ImageLoadingService(),
         imageProcessingService: ImageProcessingService(),

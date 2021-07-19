@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct BookingApplicationGroupCell: View {
+    @Environment(\.isEnabled) private var isEnabled
+
     private let status: BookingApplication.Status
     private let applicationCount: Int
 
@@ -10,7 +12,7 @@ struct BookingApplicationGroupCell: View {
     }
 
     var body: some View {
-        HStack(spacing: .grid(5)) {
+        HStack(spacing: .grid(4)) {
             Text(title)
                 .foregroundColor(.primary)
                 .font(.body)
@@ -20,6 +22,8 @@ struct BookingApplicationGroupCell: View {
                 .foregroundColor(.secondary)
                 .font(.body)
         }
+        .cellAccessory(.disclosure)
+        .opacity(isEnabled ? 1 : 0.3)
     }
 
     private var title: String {
@@ -34,7 +38,7 @@ struct BookingApplicationGroupCell: View {
 #if DEBUG
 struct BookingApplicationGroupCell_Previews: PreviewProvider {
     static var previews: some View {
-        BookingApplicationGroupCell(status: .selected, applications: .stub)
+        BookingApplicationGroupCell(status: .selected, applications: [])
             .padding(.horizontal, .grid(3))
             .previewLayout(.sizeThatFits)
     }

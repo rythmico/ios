@@ -53,7 +53,7 @@ struct RootView: View, TestableView {
 //                Current.bookingsRepository.reset()
 //                Current.bookingRequestRepository.reset()
 //                Current.bookingApplicationRepository.reset()
-                Current.navigation.reset()
+                Current.tabSelection.reset()
             }
         }
     }

@@ -5,7 +5,7 @@ struct BookingsView: View {
     @Environment(\.scenePhase)
     private var scenePhase
     @ObservedObject
-    private var navigation = Current.navigation
+    private var tabSelection = Current.tabSelection
     @ObservedObject
     private var coordinator = Current.bookingsFetchingCoordinator
     @ObservedObject
@@ -21,7 +21,7 @@ struct BookingsView: View {
         LessonsCollectionView(currentBookings: bookings)
             .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
 
-            .onReceive(coordinator.$state.zip(navigation.onScheduleUpcomingTabRootPublisher).b, perform: fetch)
+            .onReceive(shouldFetchPublisher(), perform: fetch)
             // FIXME: double HTTP request for some reason
             // .onDisappear(perform: coordinator.cancel)
             .onSuccess(coordinator, perform: repository.setItems)
@@ -39,18 +39,20 @@ struct BookingsView: View {
         pushNotificationAuthCoordinator.requestAuthorization()
     }
 
-    private func fetch() {
-        guard Current.sceneState() == .active else { return }
-        coordinator.startToIdle()
+    private func shouldFetchPublisher() -> AnyPublisher<Void, Never> {
+        coordinator.$state.zip(onScheduleUpcomingTabRootPublisher()).b
     }
-}
 
-private extension AppNavigation {
-    var onScheduleUpcomingTabRootPublisher: AnyPublisher<Void, Never> {
-        $selectedTab//.combineLatest($requestsTab, $requestsContext)
+    private func onScheduleUpcomingTabRootPublisher() -> AnyPublisher<Void, Never> {
+        tabSelection.$mainTab//.combineLatest($requestsTab, $requestsContext)
             .filter { $0 == (.schedule) }
             .map { _ in () }
             .eraseToAnyPublisher()
+    }
+
+    private func fetch() {
+        guard Current.sceneState() == .active else { return }
+        coordinator.startToIdle()
     }
 }
 

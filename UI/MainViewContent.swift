@@ -1,5 +1,4 @@
-import SwiftUI
-import ComposableNavigator
+import SwiftUISugar
 
 struct MainViewContent<Tab: Hashable>: View {
     var tabs: [Tab]
@@ -27,6 +26,7 @@ struct MainViewContent<Tab: Hashable>: View {
         TabView(selection: $selection) {
             ForEach(tabs, id: \.self) { tab in
                 contents[tab]
+                    .navigationViewFixInteractiveDismissal()
                     .tag(tab)
                     .tabItem {
                         tabIcons[tab]

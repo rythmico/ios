@@ -22,6 +22,7 @@ struct BookingApplicationCell: View {
                     .font(.footnote)
             }
         }
+        .cellAccessory(.disclosure)
         .padding(.vertical, .grid(1))
     }
 

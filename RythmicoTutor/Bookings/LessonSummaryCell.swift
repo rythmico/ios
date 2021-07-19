@@ -1,11 +1,12 @@
 import SwiftUISugar
 
 struct LessonSummaryCell: View {
-    var lesson: Lesson
-    @Binding var selection: Lesson?
+    let lesson: Lesson
 
-    @ObservedObject
-    private var navigation = Current.navigation
+    @Environment(\.navigator)
+    private var navigator
+    @Environment(\.currentScreen)
+    private var currentScreen
 
     var subtitle: String {
         switch lesson.status {
@@ -22,12 +23,7 @@ struct LessonSummaryCell: View {
 
     var body: some View {
         if hasDetail {
-            NavigationLink(
-                destination: LessonDetailView(lesson: lesson),
-                tag: lesson,
-                selection: $selection,
-                label: { content }
-            )
+            Button(action: goToDetail) { content }
         } else {
             content
         }
@@ -35,6 +31,10 @@ struct LessonSummaryCell: View {
 
     private var hasDetail: Bool {
         lesson.status.isScheduled
+    }
+
+    private func goToDetail() {
+        navigator.go(to: LessonDetailScreen(lesson: lesson), on: currentScreen)
     }
 
     private var content: some View {
@@ -54,6 +54,7 @@ struct LessonSummaryCell: View {
                     .foregroundColor(.accentColor)
             }
         }
+        .cellAccessory(hasDetail ? .disclosure : .none)
         .padding(.vertical, .grid(1))
         .opacity(lesson.status.isSkipped ? 0.3 : 1)
     }
@@ -66,9 +67,9 @@ struct LessonSummaryCell: View {
 struct LessonSummaryCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LessonSummaryCell(lesson: .scheduledStub, selection: .constant(nil))
-            LessonSummaryCell(lesson: .skippedStub, selection: .constant(nil))
-            LessonSummaryCell(lesson: .completedStub, selection: .constant(nil))
+            LessonSummaryCell(lesson: .scheduledStub)
+            LessonSummaryCell(lesson: .skippedStub)
+            LessonSummaryCell(lesson: .completedStub)
         }
         .previewLayout(.sizeThatFits)
         .padding()

@@ -1,10 +1,13 @@
 import SwiftUISugar
+import ComposableNavigator
 import UserNotifications
 import EventKit
 import Firebase
 
 struct AppEnvironment {
-    var navigation: AppNavigation
+    var tabSelection: TabSelection
+    let bookingsTabNavigation = Navigator.Datasource(root: BookingsTabScreen())
+    let bookingRequestsTabNavigation = Navigator.Datasource(root: BookingRequestsTabScreen())
 
     var remoteConfigCoordinator: RemoteConfigCoordinator
     var remoteConfig: RemoteConfigServiceProtocol
@@ -44,7 +47,6 @@ struct AppEnvironment {
     var sceneState: () -> UIApplication.State
     var keyboardDismisser: KeyboardDismisser
     var urlOpener: URLOpener
-    var router: RouterProtocol
 
     var imageLoadingCoordinator: () -> ImageLoadingCoordinator
 
@@ -62,7 +64,7 @@ struct AppEnvironment {
     var bookingApplicationRetractionCoordinator: () -> APIActivityCoordinator<BookingApplicationsRetractRequest>
 
     init(
-        navigation: AppNavigation,
+        tabSelection: TabSelection,
 
         remoteConfig: RemoteConfigServiceProtocol,
 
@@ -101,7 +103,6 @@ struct AppEnvironment {
         sceneState: @escaping () -> UIApplication.State,
         keyboardDismisser: KeyboardDismisser,
         urlOpener: URLOpener,
-        router: RouterProtocol,
 
         imageLoadingService: ImageLoadingServiceProtocol,
         imageProcessingService: ImageProcessingServiceProtocol,
@@ -119,7 +120,7 @@ struct AppEnvironment {
         bookingApplicationFetchingService: APIServiceBase<BookingApplicationsGetRequest>,
         bookingApplicationRetractionService: APIServiceBase<BookingApplicationsRetractRequest>
     ) {
-        self.navigation = navigation
+        self.tabSelection = tabSelection
 
         let remoteConfigCoordinator = RemoteConfigCoordinator(service: remoteConfig)
         self.remoteConfigCoordinator = remoteConfigCoordinator
@@ -175,7 +176,6 @@ struct AppEnvironment {
         self.sceneState = sceneState
         self.keyboardDismisser = keyboardDismisser
         self.urlOpener = urlOpener
-        self.router = router
 
         self.imageLoadingCoordinator = {
             ImageLoadingCoordinator(
@@ -201,7 +201,7 @@ struct AppEnvironment {
 
 extension AppEnvironment {
     static let live = AppEnvironment.initLive { .init(
-        navigation: AppNavigation(),
+        tabSelection: TabSelection(),
 
         remoteConfig: RemoteConfig(),
 
@@ -248,7 +248,6 @@ extension AppEnvironment {
         sceneState: { UIApplication.shared.applicationState },
         keyboardDismisser: UIApplication.shared,
         urlOpener: UIApplication.shared,
-        router: Router(),
 
         imageLoadingService: ImageLoadingService(),
         imageProcessingService: ImageProcessingService(),

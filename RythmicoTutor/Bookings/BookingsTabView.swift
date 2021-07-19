@@ -1,4 +1,21 @@
-import SwiftUI
+import SwiftUISugar
+import ComposableNavigator
+
+struct BookingsTabScreen: Screen {
+    let presentationStyle: ScreenPresentationStyle = .push
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                BookingsTabScreen.self,
+                content: { BookingsTabView() },
+                nesting: {
+                    LessonDetailScreen.Builder()
+                }
+            )
+        }
+    }
+}
 
 struct BookingsTabView: View {
     enum Tab: String, Equatable, Hashable, CaseIterable {
@@ -7,11 +24,13 @@ struct BookingsTabView: View {
     }
 
     @ObservedObject
-    private var navigation = Current.navigation
+    private var tabSelection = Current.tabSelection
+    @ObservedObject
+    private var coordinator = Current.bookingsFetchingCoordinator
 
     var body: some View {
         VStack(spacing: 0) {
-            Picker("", selection: $navigation.scheduleFilter) {
+            Picker("", selection: $tabSelection.scheduleTab) {
                 ForEach(Tab.allCases, id: \.self) {
                     Text($0.rawValue)
                 }
@@ -26,6 +45,12 @@ struct BookingsTabView: View {
 
             BookingsView()
         }
+        .navigationBarTitle(MainView.Tab.schedule.title, displayMode: .large)
+        .navigationBarItems(leading: ZStack {
+            if coordinator.state.isLoading {
+                ActivityIndicator()
+            }
+        })
     }
 }
 

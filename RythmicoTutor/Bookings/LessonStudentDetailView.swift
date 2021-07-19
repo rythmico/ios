@@ -1,7 +1,23 @@
-import SwiftUI
+import SwiftUISugar
+import ComposableNavigator
+
+struct LessonStudentDetailScreen: Screen {
+    let lesson: Lesson
+    let presentationStyle: ScreenPresentationStyle = .push
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                content: { (screen: LessonStudentDetailScreen) in
+                    LessonStudentDetailView(lesson: screen.lesson)
+                }
+            )
+        }
+    }
+}
 
 struct LessonStudentDetailView: View {
-    var lesson: Lesson
+    let lesson: Lesson
 
     var name: String { lesson.student.name }
     var age: String { "\(lesson.student.age)" }

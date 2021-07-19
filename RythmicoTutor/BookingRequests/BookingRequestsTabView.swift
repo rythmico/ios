@@ -1,4 +1,25 @@
-import SwiftUI
+import SwiftUISugar
+import ComposableNavigator
+
+struct BookingRequestsTabScreen: Screen {
+    let presentationStyle: ScreenPresentationStyle = .push
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                BookingRequestsTabScreen.self,
+                content: {
+                    BookingRequestsTabView()
+                },
+                nesting: {
+                    BookingRequestDetailScreen.Builder()
+                    BookingApplicationDetailScreen.Builder()
+                    BookingApplicationGroupScreen.Builder()
+                }
+            )
+        }
+    }
+}
 
 struct BookingRequestsTabView: View {
     enum Tab: String, Equatable, Hashable, CaseIterable {
@@ -7,11 +28,11 @@ struct BookingRequestsTabView: View {
     }
 
     @ObservedObject
-    private var navigation = Current.navigation
+    private var tabSelection = Current.tabSelection
 
     var body: some View {
         VStack(spacing: 0) {
-            Picker("", selection: $navigation.requestsFilter) {
+            Picker("", selection: $tabSelection.requestsTab) {
                 ForEach(Tab.allCases, id: \.self) {
                     Text($0.rawValue)
                 }
@@ -24,12 +45,14 @@ struct BookingRequestsTabView: View {
 
             Divider()
 
-            if navigation.requestsFilter == .open {
+            switch tabSelection.requestsTab {
+            case .open:
                 BookingRequestsView()
-            } else if navigation.requestsFilter == .applied {
+            case .applied:
                 BookingApplicationsView()
             }
         }
+        .navigationBarTitle(MainView.Tab.requests.title, displayMode: .large)
     }
 }
 

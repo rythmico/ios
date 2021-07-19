@@ -43,7 +43,6 @@ extension AppEnvironment {
         sceneState = { .active }
         keyboardDismisser = UIApplication.shared
         urlOpener = UIApplication.shared
-        router = Router()
 
         imageLoadingCoordinator = {
             ImageLoadingCoordinator(

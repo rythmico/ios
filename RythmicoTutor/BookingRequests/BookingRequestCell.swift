@@ -1,16 +1,15 @@
 import SwiftUI
 
 struct BookingRequestCell: View {
+    @Environment(\.navigator)
+    private var navigator
+    @Environment(\.currentScreen)
+    private var currentScreen
+
     var request: BookingRequest
-    @ObservedObject
-    private var navigation = Current.navigation
 
     var body: some View {
-        NavigationLink(
-            destination: BookingRequestDetailView(bookingRequest: request),
-            tag: request,
-            selection: $navigation.requestsNavigation.selectedRequest
-        ) {
+        Button(action: goToDetail) {
             HStack(spacing: .grid(5)) {
                 VStack(alignment: .leading, spacing: .grid(0.5)) {
                     Text(title)
@@ -26,6 +25,7 @@ struct BookingRequestCell: View {
                     .foregroundColor(.secondary)
                     .font(.body)
             }
+            .cellAccessory(.disclosure)
             .padding(.vertical, .grid(1))
         }
     }
@@ -34,6 +34,7 @@ struct BookingRequestCell: View {
         "\(request.student.name) - \(request.instrument.standaloneName)"
     }
 
+    private static let scheduleFormatter = Current.dateFormatter(format: .custom("d MMM '@' HH:mm"))
     private var subtitle: String {
         Self.scheduleFormatter.string(from: request.schedule.startDate)
     }
@@ -42,7 +43,9 @@ struct BookingRequestCell: View {
         request.postcode
     }
 
-    private static let scheduleFormatter = Current.dateFormatter(format: .custom("d MMM '@' HH:mm"))
+    private func goToDetail() {
+        navigator.go(to: BookingRequestDetailScreen(bookingRequest: request), on: currentScreen)
+    }
 }
 
 #if DEBUG
