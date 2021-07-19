@@ -54,7 +54,7 @@ struct LessonSummaryCell: View {
                     .foregroundColor(.accentColor)
             }
         }
-        .cellAccessory(.disclosure)
+        .cellAccessory(hasDetail ? .disclosure : .none)
         .padding(.vertical, .grid(1))
         .opacity(lesson.status.isSkipped ? 0.3 : 1)
     }
