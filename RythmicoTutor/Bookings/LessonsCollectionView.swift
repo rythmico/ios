@@ -2,17 +2,16 @@ import SwiftUI
 
 struct LessonsCollectionView: View {
     var currentBookings: [Booking]
-    @State private var selectedLesson: Lesson?
 
     @ObservedObject
-    private var navigation = Current.navigation
-    private var filter: BookingsTabView.Tab { navigation.scheduleFilter }
+    private var tabSelection = Current.tabSelection
+    private var filter: BookingsTabView.Tab { tabSelection.scheduleTab }
 
     var days: [Date] {
         let unsortedDays = Array(lessons.keys)
         switch filter {
-        case .upcoming: return unsortedDays.sorted { $0 < $1 }
-        case .past: return unsortedDays.sorted { $0 > $1 }
+        case .upcoming: return unsortedDays.sorted(by: <)
+        case .past: return unsortedDays.sorted(by: >)
         }
     }
 
@@ -37,7 +36,7 @@ struct LessonsCollectionView: View {
                 if let lessons = lessons[date] {
                     Section(header: Text(dayString(from: date))) {
                         ForEach(lessons) { lesson in
-                            LessonSummaryCell(lesson: lesson, selection: $selectedLesson)
+                            LessonSummaryCell(lesson: lesson)
                         }
                     }
                 }

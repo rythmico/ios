@@ -1,8 +1,26 @@
-import SwiftUI
+import SwiftUISugar
+import ComposableNavigator
+
+struct BookingRequestApplyScreen: Screen {
+    let booking: BookingRequest
+    let presentationStyle: ScreenPresentationStyle = .sheet(allowsPush: false)
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                content: { (screen: BookingRequestApplyScreen) in
+                    BookingRequestApplyView(booking: screen.booking)
+                }
+            )
+        }
+    }
+}
 
 struct BookingRequestApplyView: View {
-    @Environment(\.presentationMode)
-    private var presentationMode
+    @Environment(\.navigator)
+    private var navigator
+    @Environment(\.currentScreen)
+    private var currentScreen
     @StateObject
     private var coordinator = Current.bookingRequestApplyingCoordinator()
 
@@ -68,15 +86,13 @@ struct BookingRequestApplyView: View {
     }
 
     private func dismiss() {
-        presentationMode.wrappedValue.dismiss()
+        navigator.dismiss(screen: currentScreen)
     }
 
     private func finalize(_ application: BookingApplication) {
-        Current.router.open(.bookingApplications)
-        // FIXME: workaround for crash. Investigate.
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            Current.bookingApplicationRepository.insertItem(application)
-        }
+        Current.bookingApplicationRepository.insertItem(application)
+        Current.tabSelection.requestsTab = .applied
+        navigator.goBack(to: .root)
     }
 }
 

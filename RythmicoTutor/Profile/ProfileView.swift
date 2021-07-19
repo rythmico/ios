@@ -61,6 +61,7 @@ struct ProfileView: View, TestableView {
             $0.alert(item: $calendarSyncCoordinator.permissionsNeededAlert)
         }
         .testable(self)
+        .navigationBarTitle(MainView.Tab.profile.title, displayMode: .large)
     }
 
     private func header(_ title: String) -> some View {
@@ -89,10 +90,7 @@ struct ProfileView: View, TestableView {
             Text(title).frame(maxWidth: .infinity, alignment: .leading)
             content()
             if disclosure {
-                Image(systemSymbol: .chevronRight)
-                    .renderingMode(.template)
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundColor(.secondary.opacity(0.5))
+                Image.disclosureIcon
             }
         }
         let view = action == nil

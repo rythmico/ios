@@ -1,7 +1,31 @@
-import SwiftUI
+import SwiftUISugar
+import ComposableNavigator
+
+struct LessonDetailScreen: Screen {
+    let lesson: Lesson
+    let presentationStyle: ScreenPresentationStyle = .push
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                content: { (screen: LessonDetailScreen) in
+                    LessonDetailView(lesson: screen.lesson)
+                },
+                nesting: {
+                    LessonStudentDetailScreen.Builder()
+                }
+            )
+        }
+    }
+}
 
 struct LessonDetailView: View {
-    var lesson: Lesson
+    @Environment(\.navigator)
+    private var navigator
+    @Environment(\.currentScreen)
+    private var currentScreen
+
+    let lesson: Lesson
 
     private static let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
     private static let timeFormatter = Current.dateFormatter(format: .preset(time: .short))
@@ -11,9 +35,9 @@ struct LessonDetailView: View {
     var time: String { Self.timeFormatter.string(from: lesson.schedule.startDate) }
     var duration: String { lesson.schedule.duration.title }
 
-    @State
-    private var isStudentDetailsPresented = false
-    private func presentStudentDetails() { isStudentDetailsPresented = true }
+    private func presentStudentDetails() {
+        navigator.go(to: LessonStudentDetailScreen(lesson: lesson), on: currentScreen)
+    }
 
     @State
     private var isContactSheetPresented = false
@@ -33,13 +57,7 @@ struct LessonDetailView: View {
                 AddressMapCell(addressInfo: .address(lesson.address))
             }
             Section {
-                GroupedButton(title: "View Student Details", action: presentStudentDetails).hiddenNavigationLink(
-                    NavigationLink(
-                        destination: LessonStudentDetailView(lesson: lesson),
-                        isActive: $isStudentDetailsPresented,
-                        label: { EmptyView() }
-                    )
-                )
+                GroupedButton(title: "View Student Details", action: presentStudentDetails)
                 GroupedButton(title: "Contact", action: presentContactSheet)
             }
         }

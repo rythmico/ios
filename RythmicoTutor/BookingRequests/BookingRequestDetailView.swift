@@ -1,10 +1,29 @@
-import SwiftUI
+import SwiftUISugar
+import ComposableNavigator
+
+struct BookingRequestDetailScreen: Screen {
+    let bookingRequest: BookingRequest
+    let presentationStyle: ScreenPresentationStyle = .push
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                content: { (screen: BookingRequestDetailScreen) in
+                    BookingRequestDetailView(bookingRequest: screen.bookingRequest)
+                },
+                nesting: {
+                    BookingRequestApplyScreen.Builder()
+                }
+            )
+        }
+    }
+}
 
 struct BookingRequestDetailView: View {
-    @Environment(\.presentationMode)
-    private var presentationMode
-    @ObservedObject
-    private var navigation = Current.navigation
+    @Environment(\.navigator)
+    private var navigator
+    @Environment(\.currentScreen)
+    private var currentScreen
 
     var bookingRequest: BookingRequest
 
@@ -23,7 +42,9 @@ struct BookingRequestDetailView: View {
     var privateNoteOpacity: Double { bookingRequest.privateNote.isEmpty ? 0.5 : 1 }
     var postcode: String { bookingRequest.postcode }
 
-    private func presentApplicationView() { navigation.requestsNavigation.isApplyingToRequest = true }
+    private func presentApplicationView() {
+        navigator.go(to: BookingRequestApplyScreen(booking: bookingRequest), on: currentScreen)
+    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -71,19 +92,6 @@ struct BookingRequestDetailView: View {
             }
         }
         .navigationBarTitle(Text(title), displayMode: .inline)
-        .sheet(isPresented: $navigation.requestsNavigation.isApplyingToRequest) {
-            BookingRequestApplyView(booking: bookingRequest)
-        }
-        .onReceive(navigation.$requestsNavigation, perform: requestsContextChanged)
-    }
-
-    // FIXME: this is a workaround for this View not dismissing on requestsContext = .none.
-    // I suspect it's a SwiftUI bug where if the NavigationLink is specifically inside a List (BookingRequestsView's List),
-    // programatic navigation does not work, so we're forced to dismiss through presentationMode by observing.
-    private func requestsContextChanged(_ context: AppNavigation.RequestsNavigation) {
-        if context.selectedRequest == nil {
-            presentationMode.wrappedValue.dismiss()
-        }
     }
 }
 

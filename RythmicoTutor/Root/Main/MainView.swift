@@ -1,4 +1,5 @@
 import SwiftUISugar
+import ComposableNavigator
 
 struct MainView: View, TestableView {
     enum Tab: String, Equatable, Hashable, CaseIterable {
@@ -10,21 +11,25 @@ struct MainView: View, TestableView {
     }
 
     @ObservedObject
-    private var navigation = Current.navigation
-
-    @ObservedObject
-    private var bookingFetchingCoordinator = Current.bookingsFetchingCoordinator
+    private var tabSelection = Current.tabSelection
 
     let inspection = SelfInspection()
     var body: some View {
         MainViewContent(
-            tabs: Tab.allCases, selection: $navigation.selectedTab,
-            navigationTitle: \.title, leadingItem: leadingItem, trailingItem: trailingItem,
-            content: content,
-            tabTitle: \.title, tabIcons: icon
+            tabs: Tab.allCases, selection: $tabSelection.mainTab,
+            content: content, tabTitle: \.title, tabIcons: icon
         )
         .testable(self)
         .onAppear(perform: Current.deviceRegisterCoordinator.registerDevice)
+    }
+
+    @ViewBuilder
+    private func content(for tab: Tab) -> some View {
+        switch tab {
+        case .schedule: Root(dataSource: Current.bookingsTabNavigation, pathBuilder: BookingsTabScreen.Builder())
+        case .requests: Root(dataSource: Current.bookingRequestsTabNavigation, pathBuilder: BookingRequestsTabScreen.Builder())
+        case .profile: NavigationView { ProfileView() }
+        }
     }
 
     @ViewBuilder
@@ -34,30 +39,6 @@ struct MainView: View, TestableView {
         case .requests: Image(systemSymbol: .musicNoteList).font(.system(size: 21, weight: .bold))
         case .profile: Image(systemSymbol: .personFill).font(.system(size: 21, weight: .semibold))
         }
-    }
-
-    @ViewBuilder
-    private func content(for tab: Tab) -> some View {
-        switch tab {
-        case .schedule: BookingsTabView()
-        case .requests: BookingRequestsTabView()
-        case .profile: ProfileView()
-        }
-    }
-
-    @ViewBuilder
-    private func leadingItem(for tab: Tab) -> some View {
-        switch tab {
-        case .schedule where bookingFetchingCoordinator.state.isLoading:
-            ActivityIndicator()
-        default:
-            EmptyView()
-        }
-    }
-
-    @ViewBuilder
-    private func trailingItem(for tab: Tab) -> some View {
-        EmptyView()
     }
 }
 

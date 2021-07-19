@@ -1,11 +1,27 @@
 import SwiftUISugar
 import PhoneNumberKit
+import ComposableNavigator
+
+struct BookingApplicationDetailScreen: Screen {
+    let bookingApplication: BookingApplication
+    let presentationStyle: ScreenPresentationStyle = .push
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                content: { (screen: BookingApplicationDetailScreen) in
+                    BookingApplicationDetailView(bookingApplication: screen.bookingApplication)
+                }
+            )
+        }
+    }
+}
 
 struct BookingApplicationDetailView: View {
-    @Environment(\.presentationMode)
-    private var presentationMode
-    @ObservedObject
-    private var navigation = Current.navigation
+    @Environment(\.navigator)
+    private var navigator
+    @Environment(\.currentScreen)
+    private var currentScreen
 
     private static let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
     private static let timeFormatter = Current.dateFormatter(format: .preset(time: .short))
@@ -16,7 +32,7 @@ struct BookingApplicationDetailView: View {
     @StateObject
     private var retractionCoordinator = Current.bookingApplicationRetractionCoordinator()
 
-    var bookingApplication: BookingApplication
+    let bookingApplication: BookingApplication
 
     var status: String { bookingApplication.statusInfo.status.summary }
     var statusColor: Color { bookingApplication.statusInfo.status.color }
@@ -116,16 +132,6 @@ struct BookingApplicationDetailView: View {
         .disabled(retractionCoordinator.state.isLoading)
         .alertOnFailure(retractionCoordinator)
         .onSuccess(retractionCoordinator, perform: didRetractBookingApplication)
-        .onReceive(navigation.$requestsNavigation, perform: requestsContextChanged)
-    }
-
-    // FIXME: this is a workaround for this View not dismissing on requestsContext = .none.
-    // I suspect it's a SwiftUI bug where if the NavigationLink is specifically inside a List (BookingApplicationsView's List),
-    // programatic navigation does not work, so we're forced to dismiss through presentationMode by observing.
-    private func requestsContextChanged(_ context: AppNavigation.RequestsNavigation) {
-        if context.selectedApplication == nil {
-            presentationMode.wrappedValue.dismiss()
-        }
     }
 
     private func promptForRetraction() {
@@ -134,8 +140,7 @@ struct BookingApplicationDetailView: View {
 
     private func didRetractBookingApplication(_ retractedApplication: BookingApplication) {
         Current.bookingApplicationRepository.replaceById(retractedApplication)
-        Current.router.open(.bookingApplications) // Does not work.
-        presentationMode.wrappedValue.dismiss() // FIXME: workaround for the above. Investigate.
+        navigator.goBack(to: .root)
     }
 }
 

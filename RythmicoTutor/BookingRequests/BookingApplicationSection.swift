@@ -1,12 +1,14 @@
-import SwiftUI
+import SwiftUISugar
 
 struct BookingApplicationSection<HeaderAccessory: View>: View {
     private let applications: [BookingApplication]
     private let status: BookingApplication.Status
     private let headerAccessory: HeaderAccessory
 
-    @ObservedObject
-    private var navigation = Current.navigation
+    @Environment(\.navigator)
+    private var navigator
+    @Environment(\.currentScreen)
+    private var currentScreen
 
     init(
         applications: [BookingApplication],
@@ -44,12 +46,9 @@ struct BookingApplicationSection<HeaderAccessory: View>: View {
     @ViewBuilder
     private func applicationCell(_ application: BookingApplication) -> some View {
         if canNavigate {
-            NavigationLink(
-                destination: BookingApplicationDetailView(bookingApplication: application),
-                tag: application,
-                selection: $navigation.requestsNavigation.selectedApplication,
-                label: { BookingApplicationCell(application: application) }
-            )
+            Button(action: { goToDetail(application) }) {
+                BookingApplicationCell(application: application)
+            }
         } else {
             BookingApplicationCell(application: application)
         }
@@ -62,6 +61,10 @@ struct BookingApplicationSection<HeaderAccessory: View>: View {
         case .notSelected, .cancelled, .retracted:
             return false
         }
+    }
+
+    private func goToDetail(_ application: BookingApplication) {
+        navigator.go(to: BookingApplicationDetailScreen(bookingApplication: application), on: currentScreen)
     }
 
     private var footer: String {

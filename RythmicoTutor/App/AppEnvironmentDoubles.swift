@@ -23,7 +23,7 @@ extension AppEnvironment {
 extension AppEnvironment {
     static var dummy: AppEnvironment {
         AppEnvironment(
-            navigation: AppNavigation(),
+            tabSelection: TabSelection(),
 
             remoteConfig: RemoteConfigDummy(),
 
@@ -62,7 +62,6 @@ extension AppEnvironment {
             sceneState: { .active },
             keyboardDismisser: KeyboardDismisserDummy(),
             urlOpener: URLOpenerDummy(),
-            router: RouterDummy(),
 
             imageLoadingService: ImageLoadingServiceDummy(),
             imageProcessingService: ImageProcessingServiceDummy(),

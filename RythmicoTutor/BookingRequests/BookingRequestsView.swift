@@ -1,11 +1,14 @@
-import SwiftUI
+import SwiftUISugar
 import Combine
+import ComposableNavigator
 
 struct BookingRequestsView: View {
     @Environment(\.scenePhase)
     private var scenePhase
     @ObservedObject
-    private var navigation = Current.navigation
+    private var tabSelection = Current.tabSelection
+    @ObservedObject
+    private var bookingRequestsTabNavigation = Current.bookingRequestsTabNavigation
     @ObservedObject
     private var coordinator = Current.bookingRequestFetchingCoordinator
     @ObservedObject
@@ -40,24 +43,26 @@ struct BookingRequestsView: View {
         .listStyle(GroupedListStyle())
         .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
 
-        .onReceive(coordinator.$state.zip(navigation.onRequestsOpenTabRootPublisher).b, perform: fetch)
+        .onReceive(shouldFetchPublisher(), perform: fetch)
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
     }
 
+    private func shouldFetchPublisher() -> AnyPublisher<Void, Never> {
+        coordinator.$state.zip(onRequestsOpenTabRootPublisher()).b
+    }
+
+    private func onRequestsOpenTabRootPublisher() -> AnyPublisher<Void, Never> {
+        tabSelection.$mainTab.combineLatest(tabSelection.$requestsTab, bookingRequestsTabNavigation.$path.map(\.current))
+            .filter { $0 == .requests && $1 == .open && $2.is(BookingRequestsTabScreen()) }
+            .map { _ in () }
+            .eraseToAnyPublisher()
+    }
+
     private func fetch() {
         guard Current.sceneState() == .active else { return }
         coordinator.startToIdle()
-    }
-}
-
-private extension AppNavigation {
-    var onRequestsOpenTabRootPublisher: AnyPublisher<Void, Never> {
-        $selectedTab.combineLatest($requestsFilter, $requestsNavigation)
-            .filter { $0 == (.requests, .open, .none) }
-            .map { _ in () }
-            .eraseToAnyPublisher()
     }
 }
 

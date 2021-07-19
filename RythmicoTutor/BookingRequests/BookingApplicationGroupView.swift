@@ -1,4 +1,24 @@
-import SwiftUI
+import SwiftUISugar
+import ComposableNavigator
+
+struct BookingApplicationGroupScreen: Screen {
+    let applications: [BookingApplication]
+    let status: BookingApplication.Status
+    let presentationStyle: ScreenPresentationStyle = .push
+
+    struct Builder: NavigationTree {
+        var builder: some PathBuilder {
+            Screen(
+                content: { (screen: BookingApplicationGroupScreen) in
+                    BookingApplicationGroupView(applications: screen.applications, status: screen.status)
+                },
+                nesting: {
+                    BookingApplicationDetailScreen.Builder()
+                }
+            )
+        }
+    }
+}
 
 struct BookingApplicationGroupView: View {
     let applications: [BookingApplication]
