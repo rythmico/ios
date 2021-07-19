@@ -72,7 +72,6 @@ extension AppEnvironment {
             sceneState: { .active },
             keyboardDismisser: KeyboardDismisserDummy(),
             urlOpener: URLOpenerDummy(),
-            router: RouterDummy(),
 
             imageLoadingService: ImageLoadingServiceDummy(),
             imageProcessingService: ImageProcessingServiceDummy(),
