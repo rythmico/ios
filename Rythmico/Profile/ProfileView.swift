@@ -38,7 +38,7 @@ struct ProfileView: View, TestableView {
                 }
                 #endif
             }
-            .listStyle(GroupedListStyle())
+            .listStyle(InsetGroupedListStyle())
         }
         .backgroundColor(.rythmicoBackground)
         .navigationBarTitle(title)
