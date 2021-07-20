@@ -589,6 +589,7 @@
 		D5FD6F16240AF535008C5AD4 /* StudentDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD6F15240AF535008C5AD4 /* StudentDetailsViewTests.swift */; };
 		D5FE1A6026A6E96800567F48 /* LessonPlansView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FE1A5F26A6E96800567F48 /* LessonPlansView.swift */; };
 		D5FE1A6226A70B3D00567F48 /* LessonPlansCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FE1A6126A70B3D00567F48 /* LessonPlansCollectionView.swift */; };
+		D5FE1A6426A70D0100567F48 /* ProfileLessonPlansCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FE1A6326A70D0100567F48 /* ProfileLessonPlansCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1070,6 +1071,7 @@
 		D5FD6F15240AF535008C5AD4 /* StudentDetailsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailsViewTests.swift; sourceTree = "<group>"; };
 		D5FE1A5F26A6E96800567F48 /* LessonPlansView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlansView.swift; sourceTree = "<group>"; };
 		D5FE1A6126A70B3D00567F48 /* LessonPlansCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlansCollectionView.swift; sourceTree = "<group>"; };
+		D5FE1A6326A70D0100567F48 /* ProfileLessonPlansCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLessonPlansCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1575,6 +1577,7 @@
 				D57DE180264DCAC900C5E118 /* ProfileCalendarSyncCell.swift */,
 				D57DE178264DC26400C5E118 /* ProfileCell.swift */,
 				D57DE184264DCEAD00C5E118 /* ProfileContactUsCell.swift */,
+				D5FE1A6326A70D0100567F48 /* ProfileLessonPlansCell.swift */,
 				D57DE186264DCF9A00C5E118 /* ProfileLogOutCell.swift */,
 				D57DE182264DCE2800C5E118 /* ProfileParentInfoCell.swift */,
 				D57DE17E264DCA6B00C5E118 /* ProfilePushNotificationsCell.swift */,
@@ -2793,6 +2796,7 @@
 				D51EB484265E112D0082D72D /* LessonPlanPausingView.swift in Sources */,
 				D5ED3265260667E800821ABE /* DateDoubles.swift in Sources */,
 				031378C5249A7453005FC49C /* CloseButton.swift in Sources */,
+				D5FE1A6426A70D0100567F48 /* ProfileLessonPlansCell.swift in Sources */,
 				D5077D8B2587D80200F8595E /* LessonSkippingContentView.swift in Sources */,
 				035AF3082491A51D004A01B2 /* VoiceOverService.swift in Sources */,
 				D52A4F192538C41400C65A91 /* CardSetupEndpoints.swift in Sources */,
