@@ -10,6 +10,7 @@ struct ProfileScreen: Screen {
                 ProfileScreen.self,
                 content: { ProfileView() },
                 nesting: {
+                    LessonPlansScreen.Builder()
                     ParentInfoAndSafetyScreen.Builder()
                 }
             )
@@ -22,8 +23,9 @@ struct ProfileView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        TitleContentView(title: title) {
+        TitleContentView(title: title, spacing: .grid(0)) {
             List {
+                ProfileLessonPlansCell()
                 ProfileSection("Notifications") {
                     ProfilePushNotificationsCell()
                     ProfileCalendarSyncCell()

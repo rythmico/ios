@@ -1,8 +1,8 @@
 import SwiftUISugar
 
 struct LessonsCollectionView: View {
-    var lessonPlans: [LessonPlan]
-    var lessons: [Lesson]
+    let lessonPlans: [LessonPlan]
+    let lessons: [Lesson]
 
     init(lessonPlans: [LessonPlan], filter: LessonsView.Filter) {
         switch filter {

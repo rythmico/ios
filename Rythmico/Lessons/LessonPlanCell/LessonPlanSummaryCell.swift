@@ -87,6 +87,8 @@ struct LessonPlanSummaryCellMainContent: View {
 }
 
 struct LessonPlanSummaryCellAccessory: View {
+    typealias TitleAndAction = (title: String, action: Action)
+
     @Environment(\.navigator) private var navigator
     @Environment(\.currentScreen) private var currentScreen
 
@@ -105,14 +107,28 @@ struct LessonPlanSummaryCellAccessory: View {
             }
         }
     }
+    var resumePlanAction: Action? {
+        LessonPlanResumingScreen(lessonPlan: lessonPlan).map { screen in
+            { navigator.go(to: screen, on: currentScreen) }
+        }
+    }
+    var titleAndAction: TitleAndAction? {
+        if let action = chooseTutorAction {
+            return (title: "Choose Tutor", action: action)
+        } else if let action = resumePlanAction {
+            return (title: "Resume Plan", action: action)
+        } else {
+            return nil
+        }
+    }
 
     var body: some View {
-        if let chooseTutorAction = chooseTutorAction {
+        if let titleAndAction = titleAndAction {
             Divider().overlay(Color.rythmicoGray20)
 
-            Button(action: chooseTutorAction) {
+            Button(action: titleAndAction.action) {
                 HStack(spacing: .grid(3)) {
-                    Text("Choose Tutor")
+                    Text(titleAndAction.title)
                         .rythmicoTextStyle(.bodySemibold)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Image(systemSymbol: .chevronRight)

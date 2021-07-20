@@ -75,7 +75,9 @@ struct LessonPlanResumingView: View {
     private func lessonPlanSuccessfullyResumed(_ lessonPlan: LessonPlan) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             Current.lessonPlanRepository.replaceById(lessonPlan)
-            navigator.goBack(to: .root)
+            // Either, depending on which tab we're on.
+            navigator.goBack(to: LessonPlansScreen())
+            navigator.goBack(to: LessonsScreen())
         }
     }
 }
