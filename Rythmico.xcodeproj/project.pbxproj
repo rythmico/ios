@@ -587,6 +587,7 @@
 		D5FC2D51254A7E21005056D5 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D50254A7E21005056D5 /* FirebaseCrashlytics */; };
 		D5FC2D53254A7E21005056D5 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D52254A7E21005056D5 /* FirebaseMessaging */; };
 		D5FD6F16240AF535008C5AD4 /* StudentDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD6F15240AF535008C5AD4 /* StudentDetailsViewTests.swift */; };
+		D5FE1A6226A70B3D00567F48 /* LessonPlansCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FE1A6126A70B3D00567F48 /* LessonPlansCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1066,6 +1067,7 @@
 		D5FAE6732559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhoneNumberOpener+ActionSheet.swift"; sourceTree = "<group>"; };
 		D5FAE6852559DF8300473A8B /* PhoneNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCell.swift; sourceTree = "<group>"; };
 		D5FD6F15240AF535008C5AD4 /* StudentDetailsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailsViewTests.swift; sourceTree = "<group>"; };
+		D5FE1A6126A70B3D00567F48 /* LessonPlansCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlansCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1205,6 +1207,7 @@
 				033D47D0247777100096C50F /* LessonsView.swift */,
 				D58824C3251A6D49000820F4 /* LessonsCollectionView.swift */,
 				03021C50248A799200C0C57E /* LessonsViewTests.swift */,
+				D5FE1A6126A70B3D00567F48 /* LessonPlansCollectionView.swift */,
 				D543B917263F5FA800D25CFD /* AddressLabel.swift */,
 				D517FFC32554872E00A41639 /* LessonPlanCell */,
 				D517FFBF2554871F00A41639 /* LessonCell */,
@@ -2812,6 +2815,7 @@
 				D5BF12B325068E7000B2931C /* PushNotificationEvent.swift in Sources */,
 				D527B00924FD2047003E81A9 /* AvatarView.swift in Sources */,
 				03021C4F248A769200C0C57E /* LessonPlanSummaryCell.swift in Sources */,
+				D5FE1A6226A70B3D00567F48 /* LessonPlansCollectionView.swift in Sources */,
 				D5D9AEC32537105400A0ABCC /* CardStackView.swift in Sources */,
 				D518C2FD250EDD3300288A48 /* InfoBanner.swift in Sources */,
 				D5BDD8A72511989500706EC1 /* TutorAcceptedStatusPill.swift in Sources */,
