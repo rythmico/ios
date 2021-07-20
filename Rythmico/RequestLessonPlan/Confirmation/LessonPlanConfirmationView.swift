@@ -102,7 +102,9 @@ struct LessonPlanConfirmationView: View, TestableView {
 
     func doContinue() {
         Current.pushNotificationAuthorizationCoordinator.requestAuthorization()
-        navigator.goBack(to: .root)
+        // Either, depending on which tab we're on.
+        navigator.goBack(to: LessonPlansScreen())
+        navigator.goBack(to: LessonsScreen())
     }
 }
 
