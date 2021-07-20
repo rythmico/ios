@@ -13,6 +13,7 @@ struct LessonPlansScreen: Screen {
                 nesting: {
                     LessonPlanDetailScreen.Builder()
                     LessonPlanApplicationsScreen.Builder()
+                    LessonPlanResumingScreen.Builder()
                 }
             )
         }
