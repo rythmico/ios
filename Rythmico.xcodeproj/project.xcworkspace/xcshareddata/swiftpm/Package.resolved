@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/firebase/firebase-ios-sdk",
         "state": {
           "branch": null,
-          "revision": "ed87539cda9cfb3a3de1be22354c6e74760db91b",
-          "version": "8.3.1"
+          "revision": "7e08e6e2948461493261049cefb6e77728cb3743",
+          "version": "8.4.0"
         }
       },
       {
@@ -168,8 +168,8 @@
         "repositoryURL": "https://github.com/google/promises.git",
         "state": {
           "branch": null,
-          "revision": "afa9a1ace74e116848d4f743599ab83e584ff8cb",
-          "version": "1.2.12"
+          "revision": "611337c330350c9c1823ad6d671e7f936af5ee13",
+          "version": "2.0.0"
         }
       },
       {
@@ -204,8 +204,8 @@
         "repositoryURL": "https://github.com/pointfreeco/swift-case-paths",
         "state": {
           "branch": null,
-          "revision": "5904cc74af2890ec34c4bc00fe8d8956c52b1e88",
-          "version": "0.5.0"
+          "revision": "40072a9f7600ea453fafde88d08f16481f6712a0",
+          "version": "0.6.2"
         }
       },
       {
@@ -222,8 +222,8 @@
         "repositoryURL": "https://github.com/pointfreeco/swift-composable-architecture",
         "state": {
           "branch": null,
-          "revision": "a2319ff82b07d12af1d5ce233e22c75e5615fd96",
-          "version": "0.22.0"
+          "revision": "4223ffbf97cfe030617b95b713bb5d6b6503567d",
+          "version": "0.23.0"
         }
       },
       {
