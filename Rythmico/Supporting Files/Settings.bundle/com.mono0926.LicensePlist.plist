@@ -54,7 +54,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/firebase-ios-sdk</string>
 			<key>Title</key>
-			<string>Firebase (8.3.1)</string>
+			<string>Firebase (8.4.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -158,7 +158,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/promises</string>
 			<key>Title</key>
-			<string>Promises (1.2.12)</string>
+			<string>Promises (2.0.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -190,7 +190,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/swift-case-paths</string>
 			<key>Title</key>
-			<string>swift-case-paths (0.5.0)</string>
+			<string>swift-case-paths (0.6.2)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -206,7 +206,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/swift-composable-architecture</string>
 			<key>Title</key>
-			<string>swift-composable-architecture (0.22.0)</string>
+			<string>swift-composable-architecture (0.23.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
