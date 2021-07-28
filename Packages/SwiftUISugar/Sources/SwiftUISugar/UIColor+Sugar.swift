@@ -3,15 +3,15 @@ extension Color {
         self.init(UIColor(light: light, dark: dark))
     }
 
-    public init(light: UIColor, dark: Int) {
+    public init(light: UIColor, dark: UInt) {
         self.init(UIColor(light: light, dark: dark))
     }
 
-    public init(light: Int, dark: UIColor) {
+    public init(light: UInt, dark: UIColor) {
         self.init(UIColor(light: light, dark: dark))
     }
 
-    public init(light: Int, dark: Int) {
+    public init(light: UInt, dark: UInt) {
         self.init(UIColor(light: light, dark: dark))
     }
 }
@@ -21,21 +21,21 @@ extension UIColor {
         self.init { $0.userInterfaceStyle == .light ? light : dark }
     }
 
-    public convenience init(light: UIColor, dark: Int) {
+    public convenience init(light: UIColor, dark: UInt) {
         self.init(light: light, dark: .init(hex: dark))
     }
 
-    public convenience init(light: Int, dark: UIColor) {
+    public convenience init(light: UInt, dark: UIColor) {
         self.init(light: .init(hex: light), dark: dark)
     }
 
-    public convenience init(light: Int, dark: Int) {
+    public convenience init(light: UInt, dark: UInt) {
         self.init(light: .init(hex: light), dark: .init(hex: dark))
     }
 }
 
 extension UIColor {
-    public convenience init(hex: Int, alpha: CGFloat = 1) {
+    public convenience init(hex: UInt, alpha: CGFloat = 1) {
         let divisor = CGFloat(255)
         let red     = CGFloat((hex & 0xFF0000) >> 16) / divisor
         let green   = CGFloat((hex & 0x00FF00) >>  8) / divisor
