@@ -16,6 +16,17 @@ extension Color {
     }
 }
 
+extension Color {
+    public static func hex(_ hex: UInt, alpha: Double = 1) -> Self {
+        Self(
+            red: Double((hex & 0xFF0000) >> 16) / 255,
+            green: Double((hex & 0x00FF00) >> 8) / 255,
+            blue: Double(hex & 0x0000FF) / 255,
+            opacity: alpha
+        )
+    }
+}
+
 extension UIColor {
     public convenience init(light: UIColor, dark: UIColor) {
         self.init { $0.userInterfaceStyle == .light ? light : dark }
