@@ -12,3 +12,31 @@ extension Then where Self: AnyObject {
         then { $0[keyPath: keyPath] = value }
     }
 }
+
+extension Then {
+    @discardableResult
+    public func assign<T>(to subject: inout T, _ keyPath: WritableKeyPath<T, Self>) -> Self {
+        subject[keyPath: keyPath] = self
+        return self
+    }
+
+    @discardableResult
+    public func assign<T>(to subject: inout T, _ keyPath: WritableKeyPath<T, Self?>) -> Self {
+        subject[keyPath: keyPath] = self
+        return self
+    }
+}
+
+extension Then {
+    @discardableResult
+    public func assign<T>(to subject: T, _ keyPath: ReferenceWritableKeyPath<T, Self>) -> Self {
+        subject[keyPath: keyPath] = self
+        return self
+    }
+
+    @discardableResult
+    public func assign<T>(to subject: T, _ keyPath: ReferenceWritableKeyPath<T, Self?>) -> Self {
+        subject[keyPath: keyPath] = self
+        return self
+    }
+}
