@@ -1,3 +1,6 @@
+extension JSONDecoder: Then {}
+extension URLRequest: Then {}
+
 extension Then where Self: Any {
     public func with<T>(_ keyPath: WritableKeyPath<Self, T>, _ value: T) -> Self {
         with { $0[keyPath: keyPath] = value }
@@ -9,6 +12,3 @@ extension Then where Self: AnyObject {
         then { $0[keyPath: keyPath] = value }
     }
 }
-
-extension JSONDecoder: Then {}
-extension URLRequest: Then {}
