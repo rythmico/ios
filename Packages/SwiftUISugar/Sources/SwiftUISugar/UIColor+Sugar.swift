@@ -22,6 +22,8 @@ extension UIColorProtocol {
     }
 }
 
+extension UIColor: UIColorProtocol {}
+
 extension Color: UIColorProtocol {
     public init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         self.init(red: Double(red), green: Double(green), blue: Double(blue), opacity: Double(alpha))
@@ -31,5 +33,3 @@ extension Color: UIColorProtocol {
         self.init(UIColor(dynamicProvider: dynamicProvider))
     }
 }
-
-extension UIColor: UIColorProtocol {}
