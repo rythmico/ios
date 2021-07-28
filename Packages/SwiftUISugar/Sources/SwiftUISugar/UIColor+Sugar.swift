@@ -4,10 +4,12 @@ public protocol UIColorProtocol {
 }
 
 extension UIColorProtocol {
+    public init(light: UIColor, dark: UIColor) {
+        self.init { $0.userInterfaceStyle == .dark ? dark : light }
+    }
+
     public init(light: UInt, dark: UInt) {
-        self.init {
-            $0.userInterfaceStyle == .dark ? .init(hex: dark) : .init(hex: light)
-        }
+        self.init(light: .init(hex: light), dark: .init(hex: dark))
     }
 
     public init(hex: UInt, alpha: CGFloat = 1) {
