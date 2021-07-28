@@ -143,7 +143,7 @@ struct SchedulingView: View, FocusableView, TestableView {
             }
         }
         .testable(self)
-        .accentColor(.rythmicoPurple)
+        .accentColor(.rythmico.purple)
         .onReceive(focusCoordinator.$focus, perform: onFocusChanged)
         .animation(.easeInOut(duration: .durationMedium), value: focus)
     }

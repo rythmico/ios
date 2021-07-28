@@ -17,7 +17,7 @@ struct InstrumentView: View {
             HStack(spacing: .grid(2)) {
                 Text(viewData.name)
                     .rythmicoTextStyle(.subheadlineBold)
-                    .foregroundColor(.rythmicoForeground)
+                    .foregroundColor(.rythmico.foreground)
                     .padding([.vertical, .leading], .grid(5))
                     .frame(maxWidth: .infinity, alignment: .leading)
 

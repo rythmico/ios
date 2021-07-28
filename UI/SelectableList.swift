@@ -10,7 +10,7 @@ struct SelectableList<Data: RandomAccessCollection, ID: Hashable, Content: View>
 
     var body: some View {
         VStack(spacing: 0) {
-            Divider().overlay(Color.rythmicoGray20)
+            Divider().overlay(Color.rythmico.gray20)
             ForEach(data, id: id) { element in
                 VStack(spacing: 0) {
                     Button(action: { selection = element }) {
@@ -26,7 +26,7 @@ struct SelectableList<Data: RandomAccessCollection, ID: Hashable, Content: View>
                         }
                         .padding(.grid(5))
                     }
-                    Divider().overlay(Color.rythmicoGray20)
+                    Divider().overlay(Color.rythmico.gray20)
                 }
                 .background(InteractiveBackground())
             }

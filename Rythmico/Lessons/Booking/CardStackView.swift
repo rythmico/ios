@@ -30,7 +30,7 @@ struct CardStackView: View {
                 HDivider()
             }
         }
-        .foregroundColor(.rythmicoGray90)
+        .foregroundColor(.rythmico.gray90)
     }
 
     private func formattedLastFourDigits(for card: Card) -> String {
@@ -68,7 +68,7 @@ struct RadialSelectionIndicator: View {
     }
 
     var color: Color {
-        isEnabled ? .rythmicoPurple : .rythmicoGray20
+        isEnabled ? .rythmico.purple : .rythmico.gray20
     }
 }
 

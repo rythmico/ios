@@ -94,7 +94,7 @@ private extension Text {
     func appUpdatePromptDescription() -> some View {
         #if RYTHMICO
         self.rythmicoTextStyle(.body)
-            .foregroundColor(.rythmicoGray90)
+            .foregroundColor(.rythmico.gray90)
         #elseif TUTOR
         self.font(.body)
             .foregroundColor(.gray)

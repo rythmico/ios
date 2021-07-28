@@ -22,12 +22,12 @@ struct OnboardingView: View, TestableView {
                 .opacity(isAppleAuthorizationButtonEnabled ? 1 : 0)
                 .overlay(Group {
                     if isLoading {
-                        ActivityIndicator(color: .rythmicoGray90)
+                        ActivityIndicator(color: .rythmico.gray90)
                     }
                 })
                 .padding([.horizontal, .bottom], .grid(6))
         }
-        .backgroundColor(.rythmicoBackground)
+        .backgroundColor(.rythmico.background)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isLoading)
         .alert(error: errorMessage, dismiss: dismissError)
         .onDisappear {

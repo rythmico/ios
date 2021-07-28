@@ -12,7 +12,7 @@ struct FloatingView<Content: View>: View {
                 .padding(.vertical, .grid(3))
                 .padding(.horizontal, .grid(5))
         }
-        .background(Color.rythmicoBackgroundSecondary.edgesIgnoringSafeArea(.bottom))
+        .background(Color.rythmico.backgroundSecondary.edgesIgnoringSafeArea(.bottom))
         .transition(.move(edgeWithSafeArea: .bottom))
     }
 }

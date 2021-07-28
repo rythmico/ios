@@ -58,7 +58,7 @@ struct RequestLessonPlanFlowView: View, TestableView {
                     CloseButton(action: dismiss).accessibility(hint: Text("Double tap to return to main screen"))
                 }
             )
-            .accentColor(.rythmicoGray90)
+            .accentColor(.rythmico.gray90)
             .animation(.rythmicoSpring(duration: .durationShort), value: shouldShowBackButton)
 
             StepBar(stepNumber, of: stepCount).padding(.horizontal, .grid(5))

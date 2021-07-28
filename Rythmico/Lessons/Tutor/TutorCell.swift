@@ -19,7 +19,7 @@ struct TutorCell: View {
                     .withSmallDBSCheck()
                 Text(tutor.name)
                     .rythmicoTextStyle(.subheadlineBold)
-                    .foregroundColor(.rythmicoForeground)
+                    .foregroundColor(.rythmico.foreground)
                     .lineLimit(1)
                     .minimumScaleFactor(0.6)
             }

@@ -61,12 +61,12 @@ struct LessonSkippingView: View {
                     }
                 }
             }
-            .backgroundColor(.rythmicoBackgroundSecondary)
+            .backgroundColor(.rythmico.backgroundSecondary)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing: CloseButton(action: dismiss))
         }
         .interactiveDismissDisabled(coordinator.state.isLoading)
-        .accentColor(.rythmicoGray90)
+        .accentColor(.rythmico.gray90)
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: lessonSuccessfullySkipped)
         .alertOnFailure(coordinator)

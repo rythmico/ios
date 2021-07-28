@@ -29,8 +29,8 @@ extension RythmicoButtonStyle {
     static func primary(expansive: Bool = true) -> RythmicoButtonStyle {
         RythmicoButtonStyle(
             expansive: expansive,
-            foregroundColor: (normal: .rythmicoWhite, pressed: .rythmicoWhite),
-            backgroundColor: (normal: .rythmicoPurple, pressed: .rythmicoHighlightPurple),
+            foregroundColor: (normal: .rythmico.white, pressed: .rythmico.white),
+            backgroundColor: (normal: .rythmico.purple, pressed: .rythmico.highlightPurple),
             borderColor: (normal: .clear, pressed: .clear)
         )
     }
@@ -38,18 +38,18 @@ extension RythmicoButtonStyle {
     static func secondary(expansive: Bool = true) -> RythmicoButtonStyle {
         RythmicoButtonStyle(
             expansive: expansive,
-            foregroundColor: (normal: .rythmicoPurple, pressed: .rythmicoWhite),
-            backgroundColor: (normal: .clear, pressed: .rythmicoPurple),
-            borderColor: (normal: .rythmicoPurple, pressed: .rythmicoPurple)
+            foregroundColor: (normal: .rythmico.purple, pressed: .rythmico.white),
+            backgroundColor: (normal: .clear, pressed: .rythmico.purple),
+            borderColor: (normal: .rythmico.purple, pressed: .rythmico.purple)
         )
     }
 
     static func tertiary(expansive: Bool = true) -> RythmicoButtonStyle {
         RythmicoButtonStyle(
             expansive: expansive,
-            foregroundColor: (normal: .rythmicoGray90, pressed: .rythmicoWhite),
-            backgroundColor: (normal: .clear, pressed: .rythmicoGray30),
-            borderColor: (normal: .rythmicoGray30, pressed: .rythmicoGray30)
+            foregroundColor: (normal: .rythmico.gray90, pressed: .rythmico.white),
+            backgroundColor: (normal: .clear, pressed: .rythmico.gray30),
+            borderColor: (normal: .rythmico.gray30, pressed: .rythmico.gray30)
         )
     }
 }
@@ -105,7 +105,7 @@ struct RythmicoLinkButtonStyle: RythmicoButtonStyleProtocol {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .foregroundColor(.rythmicoGray90)
+            .foregroundColor(.rythmico.gray90)
             .opacity(configuration.isPressed ? 0.3 : 1)
             .frame(maxWidth: expansive ? buttonMaxWidth : nil, minHeight: 48)
             .modifier(DiseableableButtonModifier())

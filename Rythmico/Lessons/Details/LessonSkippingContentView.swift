@@ -11,13 +11,13 @@ struct LessonSkippingContentView: View {
                     Text("This will cancel your payment for this lesson.").rythmicoTextStyle(.body)
                     Text(separator: .whitespace) {
                         "Skip for"
-                        "FREE".text.foregroundColor(.rythmicoPurple).rythmicoFontWeight(.bodyBold)
+                        "FREE".text.foregroundColor(.rythmico.purple).rythmicoFontWeight(.bodyBold)
                         "within"
                         remainingTimeString.text.rythmicoFontWeight(.bodyBold) + String.period.text
                     }
                     .rythmicoTextStyle(.body)
                 }
-                .foregroundColor(.rythmicoGray90)
+                .foregroundColor(.rythmico.gray90)
 
                 InfoBanner(text:
                     """
@@ -28,7 +28,7 @@ struct LessonSkippingContentView: View {
                 )
             } else {
                 Text("You will still be charged the full amount for this lesson.")
-                    .foregroundColor(.rythmicoGray90)
+                    .foregroundColor(.rythmico.gray90)
                     .rythmicoTextStyle(.body)
 
                 InfoBanner(text:

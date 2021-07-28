@@ -15,13 +15,13 @@ struct TabMenuView<Tab: RawRepresentable>: View where Tab.RawValue == String {
                 ForEach(tabs, id: \.rawValue) { tab in
                     Text(tab.rawValue.uppercased(with: Current.locale))
                         .rythmicoTextStyle(.calloutBold)
-                        .foregroundColor(selection == tab ? .rythmicoPurple : .rythmicoGray90)
+                        .foregroundColor(selection == tab ? .rythmico.purple : .rythmico.gray90)
                         .frame(maxWidth: .infinity, minHeight: .grid(13), alignment: .center)
                         .background(
                             Group {
                                 if selection == tab {
                                     Capsule(style: .circular)
-                                        .fill(Color.rythmicoPurple)
+                                        .fill(Color.rythmico.purple)
                                         .frame(height: selectedTabHeight)
                                         .matchedGeometryEffect(id: "selection", in: selectionAnimation)
                                 }
@@ -36,7 +36,7 @@ struct TabMenuView<Tab: RawRepresentable>: View where Tab.RawValue == String {
             .frame(maxWidth: .grid(.max))
             .padding(.horizontal, .grid(5))
 
-            Divider().overlay(Color.rythmicoGray20)
+            Divider().overlay(Color.rythmico.gray20)
         }
     }
 }

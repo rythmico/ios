@@ -12,7 +12,7 @@ struct LessonPlanRequestedScheduleView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: .grid(4)) {
             LessonPlanScheduleView(schedule: schedule)
-                .foregroundColor(.rythmicoGray90)
+                .foregroundColor(.rythmico.gray90)
 
             if let tutor = tutor {
                 HStack(spacing: .grid(3)) {

@@ -11,7 +11,7 @@ struct RoundedThinOutlineContainer: ViewModifier {
             .padding(.horizontal, padded ? .grid(4) : 0)
             .background(
                 RoundedRectangle(cornerRadius: 4, style: .continuous)
-                    .strokeBorder(Color.rythmicoGray90, lineWidth: 1)
+                    .strokeBorder(Color.rythmico.gray90, lineWidth: 1)
             )
             .opacity(isEnabled ? 1 : 0.3)
     }

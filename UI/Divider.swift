@@ -2,7 +2,7 @@ import SwiftUI
 
 struct HDivider: View {
     var body: some View {
-        Color.rythmicoGray20.opacity(0.75)
+        Color.rythmico.gray20.opacity(0.75)
             .frame(maxWidth: .infinity, maxHeight: 1)
             .fixedSize(horizontal: false, vertical: true)
     }

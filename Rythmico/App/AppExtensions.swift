@@ -50,8 +50,8 @@ extension SwiftUI.App {
                     $0.inlineLayoutAppearance,
                     $0.stackedLayoutAppearance
                 ].forEach {
-                    $0.normal.iconColor = .rythmicoGray90
-                    $0.normal.titleTextAttributes = .rythmicoTextAttributes(color: .rythmicoGray90, style: .caption)
+                    $0.normal.iconColor = .rythmico.gray90
+                    $0.normal.titleTextAttributes = .rythmicoTextAttributes(color: .rythmico.gray90, style: .caption)
                     $0.selected.titleTextAttributes = .rythmicoTextAttributes(color: nil, style: .caption)
                 }
                 bar.standardAppearance = $0
@@ -59,7 +59,7 @@ extension SwiftUI.App {
         }
 
         UISwitch.appearance().do {
-            $0.onTintColor = .rythmicoPurple
+            $0.onTintColor = .rythmico.purple
         }
     }
 }

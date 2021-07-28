@@ -36,18 +36,18 @@ struct AddNewCardEntryView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.rythmicoBackgroundSecondary.edgesIgnoringSafeArea(.all)
+                Color.rythmico.backgroundSecondary.edgesIgnoringSafeArea(.all)
                 if let credential = coordinator.state.successValue {
                     AddNewCardView(credential: credential, availableCards: $availableCards).transition(.opacity)
                 } else {
-                    ActivityIndicator(color: .rythmicoGray90)
+                    ActivityIndicator(color: .rythmico.gray90)
                         .transition(.opacity)
                         .navigationBarItems(trailing: CloseButton(action: dismiss))
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
         }
-        .accentColor(.rythmicoPurple)
+        .accentColor(.rythmico.purple)
         .onAppear(perform: coordinator.start)
         .onDisappear(perform: coordinator.cancel)
         .alertOnFailure(coordinator, onDismiss: dismiss)

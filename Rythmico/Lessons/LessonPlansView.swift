@@ -30,8 +30,8 @@ struct LessonPlansView: View {
         TitleContentView(title: title) {
             LessonPlansCollectionView(lessonPlans: repository.items)
         }
-        .backgroundColor(.rythmicoBackground)
-        .accentColor(.rythmicoPurple)
+        .backgroundColor(.rythmico.background)
+        .accentColor(.rythmico.purple)
         .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(leading: leadingItem)
@@ -45,7 +45,7 @@ struct LessonPlansView: View {
     @ViewBuilder
     private var leadingItem: some View {
         if coordinator.state.isLoading {
-            ActivityIndicator(color: .rythmicoGray90)
+            ActivityIndicator(color: .rythmico.gray90)
         }
     }
 }

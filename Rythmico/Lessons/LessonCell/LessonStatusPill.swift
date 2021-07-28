@@ -30,7 +30,7 @@ private extension Lesson.Status {
     var titleColor: Color {
         switch self {
         case .scheduled:
-            return .rythmicoDarkBlue
+            return .rythmico.darkBlue
         case .skipped:
             return Color(light: 0x111619, dark: 0x9fa1a3)
         case .paused:
@@ -38,14 +38,14 @@ private extension Lesson.Status {
         case .cancelled:
             return Color(light: 0x111619, dark: 0x9fa1a3)
         case .completed:
-            return .rythmicoDarkGreen
+            return .rythmico.darkGreen
         }
     }
 
     var backgroundColor: Color {
         switch self {
         case .scheduled:
-            return .rythmicoLightBlue
+            return .rythmico.lightBlue
         case .skipped:
             return Color(light: 0xDDE1E6, dark: 0x424345)
         case .paused:
@@ -53,7 +53,7 @@ private extension Lesson.Status {
         case .cancelled:
             return Color(light: 0xDDE1E6, dark: 0x424345)
         case .completed:
-            return .rythmicoLightGreen
+            return .rythmico.lightGreen
         }
     }
 }

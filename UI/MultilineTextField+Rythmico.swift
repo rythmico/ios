@@ -11,9 +11,9 @@ extension MultilineTextField {
         self.init(
             placeholder,
             text: text,
-            attributes: .rythmicoTextAttributes(color: .rythmicoForeground, style: .body),
-            accentColor: .rythmicoPurple,
-            placeholderColor: .rythmicoGray30,
+            attributes: .rythmicoTextAttributes(color: .rythmico.foreground, style: .body),
+            accentColor: .rythmico.purple,
+            placeholderColor: .rythmico.gray30,
             inputAccessory: inputAccessory,
             minHeight: minHeight,
             padding: EdgeInsets(horizontal: .grid(4), vertical: 15),

@@ -9,14 +9,14 @@ struct LessonPlanBookingPolicyView: View {
         HStack(spacing: .grid(3)) {
             Image(decorative: asset.name)
                 .renderingMode(.template)
-                .foregroundColor(.rythmicoPurple)
+                .foregroundColor(.rythmico.purple)
             VStack(alignment: .leading, spacing: .grid(0.5)) {
                 Text(title)
                     .rythmicoTextStyle(.calloutBold)
-                    .foregroundColor(.rythmicoForeground)
+                    .foregroundColor(.rythmico.foreground)
                 Text(description)
                     .rythmicoTextStyle(.callout)
-                    .foregroundColor(.rythmicoGray90)
+                    .foregroundColor(.rythmico.gray90)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
         }

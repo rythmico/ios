@@ -34,7 +34,7 @@ extension LessonPlanCancellationView {
                     )
 
                     SelectableList(data: Reason.allCases, id: \.self, selection: $selectedReason) {
-                        Text($0.title).rythmicoTextStyle(.body).foregroundColor(.rythmicoGray90)
+                        Text($0.title).rythmicoTextStyle(.body).foregroundColor(.rythmico.gray90)
                     }
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
@@ -44,7 +44,7 @@ extension LessonPlanCancellationView {
                 }
                 .disabled(submitButtonAction == nil)
             }
-            .accentColor(.rythmicoPurple)
+            .accentColor(.rythmico.purple)
             .testable(self)
             .animation(.rythmicoSpring(duration: .durationShort), value: submitButtonAction != nil)
             .onChange(of: selectedReason, perform: handleRearrangementNeededReason)

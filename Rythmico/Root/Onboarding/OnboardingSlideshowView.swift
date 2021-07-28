@@ -54,7 +54,7 @@ struct OnboardingSlideshowView: View {
                 selection: $step,
                 fixedHeight: fixedImageHeight,
                 spacing: firstSpacing,
-                accentColor: .rythmicoForeground
+                accentColor: .rythmico.foreground
             ) {
                 Image(decorative: $0.asset.name)
                     .resizable()
@@ -65,12 +65,12 @@ struct OnboardingSlideshowView: View {
             VStack(spacing: .grid(2)) {
                 Text(step.title)
                     .rythmicoTextStyle(.headline)
-                    .foregroundColor(.rythmicoForeground)
+                    .foregroundColor(.rythmico.foreground)
                     .transition(.opacity)
                     .id(step.title.hashValue)
                 Text(step.description)
                     .rythmicoTextStyle(.subheadline)
-                    .foregroundColor(.rythmicoGray90)
+                    .foregroundColor(.rythmico.gray90)
                     .transition(.opacity)
                     .id(step.description.hashValue)
             }

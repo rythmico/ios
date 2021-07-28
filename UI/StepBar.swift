@@ -15,7 +15,7 @@ struct StepBar: View {
                 .animation(.rythmicoSpring(duration: .durationMedium))
             Text("\(currentStep) / \(totalSteps)")
                 .rythmicoTextStyle(.footnoteBold)
-                .foregroundColor(.rythmicoGray90)
+                .foregroundColor(.rythmico.gray90)
         }
         .frame(maxWidth: .grid(.max))
         .accessibilityElement()

@@ -55,7 +55,7 @@ struct LessonPlanApplicationsView: View {
                 )
             }
         }
-        .backgroundColor(.rythmicoBackground)
+        .backgroundColor(.rythmico.background)
         .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -79,7 +79,7 @@ struct LessonPlanApplicationCell: View {
                 .withSmallDBSCheck()
             Text(application.tutor.name)
                 .rythmicoTextStyle(.bodyBold)
-                .foregroundColor(.rythmicoForeground)
+                .foregroundColor(.rythmico.foreground)
                 .lineLimit(1)
                 .minimumScaleFactor(0.6)
         }

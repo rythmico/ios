@@ -30,13 +30,13 @@ private extension LessonPlan.Status {
     var titleColor: Color {
         switch self {
         case .pending:
-            return .rythmicoDarkPurple
+            return .rythmico.darkPurple
         case .reviewing:
-            return .rythmicoDarkBurgundy
+            return .rythmico.darkBurgundy
         case .active:
-            return .rythmicoDarkGreen
+            return .rythmico.darkGreen
         case .paused:
-            return .rythmicoDarkBlue
+            return .rythmico.darkBlue
         case .cancelled:
             return Color(light: 0x111619, dark: 0x9fa1a3)
         }
@@ -45,13 +45,13 @@ private extension LessonPlan.Status {
     var borderColor: Color {
         switch self {
         case .pending:
-            return .rythmicoDarkPurple
+            return .rythmico.darkPurple
         case .reviewing:
-            return .rythmicoDarkBurgundy
+            return .rythmico.darkBurgundy
         case .active:
-            return .rythmicoDarkGreen
+            return .rythmico.darkGreen
         case .paused:
-            return .rythmicoDarkBlue
+            return .rythmico.darkBlue
         case .cancelled:
             return Color(light: 0x111619, dark: 0x9fa1a3)
         }

@@ -12,7 +12,7 @@ struct TitleSubtitleView: View {
     var body: some View {
         TitleContentView(title: title) {
             subtitle?
-                .foregroundColor(.rythmicoGray90)
+                .foregroundColor(.rythmico.gray90)
                 .rythmicoTextStyle(.body)
                 .frame(maxWidth: .grid(.max), alignment: .leading)
                 .padding(.horizontal, .grid(5))

@@ -20,7 +20,7 @@ struct HeaderContentView<TitleAccessory: View, Content: View>: View {
     var body: some View {
         VStack(alignment: .leading, spacing: .grid(3)) {
             HStack(alignment: .center, spacing: .grid(2)) {
-                title.foregroundColor(.rythmicoForeground).rythmicoTextStyle(.bodyBold)
+                title.foregroundColor(.rythmico.foreground).rythmicoTextStyle(.bodyBold)
                 titleAccessory
             }
             content

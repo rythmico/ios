@@ -65,12 +65,12 @@ struct CustomTextField: UIViewRepresentable {
         let textField = CustomUITextField(frame: .zero)
         textField.attributedPlaceholder = NSAttributedString(
             string: placeholder,
-            attributes: .rythmicoTextAttributes(color: .rythmicoGray30, style: .body)
+            attributes: .rythmicoTextAttributes(color: .rythmico.gray30, style: .body)
         )
         textField.font = .rythmicoFont(.body)
         textField.isUserInteractionEnabled = isEditable
         textField.inputView = inputMode.view(for: textField)
-        textField.inputAccessoryView = inputAccessory?.view(accentColor: .rythmicoPurple)
+        textField.inputAccessoryView = inputAccessory?.view(accentColor: .rythmico.purple)
         textField.delegate = context.coordinator
         textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         textField.setContentHuggingPriority(.defaultHigh, for: .vertical)
@@ -84,7 +84,7 @@ struct CustomTextField: UIViewRepresentable {
     func updateUIView(_ uiView: UITextField, context: Context) {
         uiView.attributedPlaceholder = NSAttributedString(
             string: placeholder,
-            attributes: .rythmicoTextAttributes(color: .rythmicoGray30, style: .body)
+            attributes: .rythmicoTextAttributes(color: .rythmico.gray30, style: .body)
         )
         uiView.text = text
         uiView.font = .rythmicoFont(.body)

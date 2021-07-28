@@ -12,7 +12,7 @@ struct LessonPlanPriceView: View {
                 Text("Price per lesson").rythmicoTextStyle(.bodyBold).frame(maxWidth: .infinity, alignment: .leading)
                 Text(Self.priceFormatter.string(from: price)).rythmicoTextStyle(.bodyBold).multilineTextAlignment(.trailing)
             }
-            .foregroundColor(.rythmicoForeground)
+            .foregroundColor(.rythmico.foreground)
 
             Group {
                 Text("Payment will be automatically taken on the day of each lesson.").rythmicoTextStyle(.callout)
@@ -26,7 +26,7 @@ struct LessonPlanPriceView: View {
                     .onTapGesture(perform: Current.urlOpener.openTermsAndConditionsURL)
                 }
             }
-            .foregroundColor(.rythmicoGray90)
+            .foregroundColor(.rythmico.gray90)
             .frame(maxWidth: .infinity, alignment: .leading)
             .fixedSize(horizontal: false, vertical: true)
         }

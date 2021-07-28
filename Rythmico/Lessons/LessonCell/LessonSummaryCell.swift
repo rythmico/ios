@@ -44,7 +44,7 @@ struct LessonSummaryCellMainContent: View {
         Button(action: { navigator.go(to: lessonDetailScreen, on: currentScreen) }) {
             VStack(alignment: .leading, spacing: 0) {
                 Text(lesson.title)
-                    .foregroundColor(.rythmicoForeground)
+                    .foregroundColor(.rythmico.foreground)
                     .rythmicoTextStyle(.subheadlineBold)
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
@@ -52,7 +52,7 @@ struct LessonSummaryCellMainContent: View {
                 VSpacing(.grid(2))
                 Text(subtitle)
                     .rythmicoTextStyle(.body)
-                    .foregroundColor(.rythmicoGray90)
+                    .foregroundColor(.rythmico.gray90)
                     .opacity(opacity)
                 VSpacing(.grid(3))
                 HStack(spacing: .grid(3)) {

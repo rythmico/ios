@@ -71,9 +71,9 @@ struct LessonPlanCancellationView: View, TestableView {
             }
             .onEdgeSwipe(.left, perform: back)
         }
-        .backgroundColor(.rythmicoBackgroundSecondary)
+        .backgroundColor(.rythmico.backgroundSecondary)
         .interactiveDismissDisabled(isCancellationIntended)
-        .accentColor(.rythmicoGray90)
+        .accentColor(.rythmico.gray90)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isCancellationIntended)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isUserInputRequired)
         .testable(self)

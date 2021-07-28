@@ -63,17 +63,17 @@ struct LessonPlanConfirmationView: View, TestableView {
                     VStack(spacing: .grid(8)) {
                         VStack(spacing: .grid(6)) {
                             Image(uiImage: lessonPlan.instrument.icon.image.resized(width: iconWidth))
-                                .foregroundColor(.rythmicoForeground)
+                                .foregroundColor(.rythmico.foreground)
 
                             VStack(spacing: .grid(4)) {
                                 Text(title)
-                                    .foregroundColor(.rythmicoForeground)
+                                    .foregroundColor(.rythmico.foreground)
                                     .rythmicoTextStyle(.largeTitle)
                                     .multilineTextAlignment(.center)
                                     .minimumScaleFactor(0.8)
                                 if let subtitle = subtitle {
                                     Text(subtitle)
-                                        .foregroundColor(.rythmicoGray90)
+                                        .foregroundColor(.rythmico.gray90)
                                         .rythmicoTextStyle(.body)
                                         .multilineTextAlignment(.center)
                                 }

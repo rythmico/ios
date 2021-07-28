@@ -58,7 +58,7 @@ struct PrivateNoteView: View, FocusableView, TestableView {
                     .frame(maxWidth: .grid(.max))
                     .padding([.trailing, .bottom], .grid(5))
                 }
-                .accentColor(.rythmicoPurple)
+                .accentColor(.rythmico.purple)
                 .padding(.leading, .grid(5))
 
                 FloatingView {

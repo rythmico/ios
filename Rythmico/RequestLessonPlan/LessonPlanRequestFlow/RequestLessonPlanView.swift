@@ -54,7 +54,7 @@ struct RequestLessonPlanView: View, TestableView {
             inputContent: { flowView.alertOnFailure(coordinator) }
         )
         .testable(self)
-        .backgroundColor(.rythmicoBackgroundSecondary)
+        .backgroundColor(.rythmico.backgroundSecondary)
         .interactiveDismissDisabled(interactiveDismissDisabled)
         .onSuccess(coordinator, perform: onLessonPlanRequested)
     }

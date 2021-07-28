@@ -10,7 +10,7 @@ struct TitleContentView<Content: View>: View {
     var body: some View {
         VStack(alignment: alignment, spacing: spacing) {
             Text(title)
-                .foregroundColor(.rythmicoForeground)
+                .foregroundColor(.rythmico.foreground)
                 .rythmicoTextStyle(.largeTitle)
                 .lineLimit(1)
                 .minimumScaleFactor(0.4)

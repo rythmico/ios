@@ -35,7 +35,7 @@ struct LessonPlanBookingEntryView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.rythmicoBackgroundSecondary.edgesIgnoringSafeArea(.all)
+                Color.rythmico.backgroundSecondary.edgesIgnoringSafeArea(.all)
                 if let checkout = coordinator.state.successValue {
                     LessonPlanBookingView(
                         lessonPlan: lessonPlan,
@@ -44,7 +44,7 @@ struct LessonPlanBookingEntryView: View {
                     )
                     .transition(.opacity)
                 } else {
-                    ActivityIndicator(color: .rythmicoGray90)
+                    ActivityIndicator(color: .rythmico.gray90)
                         .transition(.opacity)
                         .navigationBarItems(trailing: CloseButton(action: dismiss))
                 }
@@ -53,7 +53,7 @@ struct LessonPlanBookingEntryView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .interactiveDismissDisabled()
-        .accentColor(.rythmicoPurple)
+        .accentColor(.rythmico.purple)
         .onAppear(perform: fetch)
         .onDisappear(perform: coordinator.cancel)
         .alertOnFailure(coordinator)

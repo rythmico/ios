@@ -11,30 +11,30 @@ struct LessonPlanApplicationDetailMessageView: View {
                     if let privateNote = privateNote {
                         Text(privateNoteHeader)
                             .rythmicoTextStyle(.subheadlineBold)
-                            .foregroundColor(.rythmicoForeground)
+                            .foregroundColor(.rythmico.foreground)
                             .frame(maxWidth: .infinity, alignment: .leading)
 
                         Text(privateNote)
                             .rythmicoTextStyle(.body)
-                            .foregroundColor(.rythmicoGray90)
+                            .foregroundColor(.rythmico.gray90)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     } else {
                         Text("No private message from \(application.tutor.name).")
                             .rythmicoTextStyle(.body)
-                            .foregroundColor(.rythmicoGray30)
+                            .foregroundColor(.rythmico.gray30)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
                 .frame(maxWidth: .grid(.max))
                 .padding(.horizontal, .grid(5))
 
-                Divider().overlay(Color.rythmicoGray20)
+                Divider().overlay(Color.rythmico.gray20)
 
                 VStack(spacing: .grid(4)) {
                     HStack(spacing: .grid(4)) {
                         Text("Lesson Schedule")
                             .rythmicoTextStyle(.subheadlineBold)
-                            .foregroundColor(.rythmicoForeground)
+                            .foregroundColor(.rythmico.foreground)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .fixedSize(horizontal: false, vertical: true)
 

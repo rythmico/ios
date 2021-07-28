@@ -52,7 +52,7 @@ struct ReviewRequestView: View, TestableView {
                             HStack(alignment: .firstTextBaseline, spacing: .grid(3)) {
                                 Image(decorative: Asset.Icon.Label.info.name)
                                     .renderingMode(.template)
-                                    .foregroundColor(.rythmicoGray90)
+                                    .foregroundColor(.rythmico.gray90)
                                     .alignmentGuide(.firstTextBaseline) { $0[.bottom] - 2.5 }
 
                                 VStack(alignment: .leading, spacing: .grid(5)) {
@@ -60,7 +60,7 @@ struct ReviewRequestView: View, TestableView {
                                     studentAbout?.rythmicoTextStyle(.body)
                                 }.fixedSize(horizontal: false, vertical: true)
                             }
-                            .foregroundColor(.rythmicoGray90)
+                            .foregroundColor(.rythmico.gray90)
                         }
 
                         SectionHeaderContentView(
@@ -92,12 +92,12 @@ struct ReviewRequestView: View, TestableView {
                             if let privateNote = privateNote.nilIfBlank {
                                 Text(privateNote)
                                     .rythmicoTextStyle(.body)
-                                    .foregroundColor(.rythmicoGray90)
+                                    .foregroundColor(.rythmico.gray90)
                                     .fixedSize(horizontal: false, vertical: true)
                             } else {
                                 Text("No private note.")
                                     .rythmicoTextStyle(.body)
-                                    .foregroundColor(.rythmicoGray30)
+                                    .foregroundColor(.rythmico.gray30)
                                     .fixedSize(horizontal: false, vertical: true)
                                     .onTapGesture(perform: resetPrivateNote)
                             }
@@ -119,7 +119,7 @@ struct ReviewRequestView: View, TestableView {
 
     private func editButton(performing action: @escaping Action) -> some View {
         Button(action: action) {
-            Text("Edit").rythmicoTextStyle(.bodyBold).foregroundColor(.rythmicoGray90)
+            Text("Edit").rythmicoTextStyle(.bodyBold).foregroundColor(.rythmico.gray90)
         }
     }
 

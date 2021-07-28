@@ -13,6 +13,6 @@ struct RoundedGrayedDialog: ViewModifier {
     @ViewBuilder
     private var background: some View {
         let shape = RoundedRectangle(cornerRadius: Const.cornerRadius, style: Const.cornerStyle)
-        shape.fill(Color.rythmicoGray5).overlay(shape.stroke(Color.rythmicoGray20, lineWidth: 1))
+        shape.fill(Color.rythmico.gray5).overlay(shape.stroke(Color.rythmico.gray20, lineWidth: 1))
     }
 }

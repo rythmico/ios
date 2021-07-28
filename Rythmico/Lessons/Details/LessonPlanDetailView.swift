@@ -82,7 +82,7 @@ struct LessonPlanDetailView: View, TestableView {
         VStack(spacing: 0) {
             TitleContentView(title: title) {
                 VStack(alignment: .leading, spacing: .grid(7)) {
-                    Pill(lessonPlan: lessonPlan, backgroundColor: .rythmicoBackground)
+                    Pill(lessonPlan: lessonPlan, backgroundColor: .rythmico.background)
                         .padding(.horizontal, .grid(5))
 
                     ScrollView {
@@ -91,7 +91,7 @@ struct LessonPlanDetailView: View, TestableView {
                             tutorSection
                             paymentSection
                         }
-                        .foregroundColor(.rythmicoGray90)
+                        .foregroundColor(.rythmico.gray90)
                         .frame(maxWidth: .grid(.max))
                         .padding([.horizontal, .bottom], .grid(5))
                     }
@@ -101,7 +101,7 @@ struct LessonPlanDetailView: View, TestableView {
 
             floatingButton
         }
-        .backgroundColor(.rythmicoBackground)
+        .backgroundColor(.rythmico.background)
         .testable(self)
         .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)

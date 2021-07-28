@@ -37,7 +37,7 @@ struct LessonPlanTutorDetailView: View {
             HeaderView(lessonPlan: lessonPlan, tutor: tutor)
             PortfolioView(coordinator: coordinator, tutor: tutor, topPadding: 0)
         }
-        .backgroundColor(.rythmicoBackground)
+        .backgroundColor(.rythmico.background)
     }
 }
 

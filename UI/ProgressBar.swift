@@ -14,8 +14,8 @@ struct ProgressBar: View {
     var body: some View {
         GeometryReader { metrics in
             ZStack(alignment: .leading) {
-                Color.rythmicoGray10.cornerRadius(.greatestFiniteMagnitude, antialiased: true)
-                Color.rythmicoPurple
+                Color.rythmico.gray10.cornerRadius(.greatestFiniteMagnitude, antialiased: true)
+                Color.rythmico.purple
                     .cornerRadius(.greatestFiniteMagnitude, antialiased: true)
                     .frame(width: metrics.size.width * CGFloat(progress))
             }

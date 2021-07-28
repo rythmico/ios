@@ -71,7 +71,7 @@ struct LessonDetailView: View, TestableView {
 
                             tutorSection
                         }
-                        .foregroundColor(.rythmicoGray90)
+                        .foregroundColor(.rythmico.gray90)
                         .frame(maxWidth: .grid(.max))
                         .padding(.horizontal, .grid(5))
                     }

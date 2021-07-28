@@ -27,7 +27,7 @@ struct PhoneNumberInputView: View {
             "of the student."
         }
         .rythmicoTextStyle(.body)
-        .foregroundColor(.rythmicoGray90)
+        .foregroundColor(.rythmico.gray90)
     }
 }
 

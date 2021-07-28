@@ -55,17 +55,17 @@ struct LessonPlanSummaryCellMainContent: View {
                     .rythmicoTextStyle(.subheadlineBold)
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
-                    .foregroundColor(.rythmicoForeground)
+                    .foregroundColor(.rythmico.foreground)
                     .opacity(opacity)
                 VSpacing(.grid(2))
                 subtitle
                     .rythmicoTextStyle(.body)
-                    .foregroundColor(.rythmicoGray90)
+                    .foregroundColor(.rythmico.gray90)
                     .opacity(opacity)
                 VSpacing(.grid(3))
                 HStack(spacing: .grid(3)) {
                     LessonPlanTutorStatusView(lessonPlan: lessonPlan, summarized: true).opacity(opacity)
-                    Pill(lessonPlan: lessonPlan, backgroundColor: .rythmicoBackgroundTertiary)
+                    Pill(lessonPlan: lessonPlan, backgroundColor: .rythmico.backgroundTertiary)
                 }
             }
             .padding(.grid(5))
@@ -124,7 +124,7 @@ struct LessonPlanSummaryCellAccessory: View {
 
     var body: some View {
         if let titleAndAction = titleAndAction {
-            Divider().overlay(Color.rythmicoGray20)
+            Divider().overlay(Color.rythmico.gray20)
 
             Button(action: titleAndAction.action) {
                 HStack(spacing: .grid(3)) {
@@ -135,9 +135,9 @@ struct LessonPlanSummaryCellAccessory: View {
                         .font(.system(size: 18, weight: .medium, design: .rounded))
                 }
                 .padding(.grid(5))
-                .foregroundColor(.rythmicoPurple)
+                .foregroundColor(.rythmico.purple)
             }
-            .background(Color.rythmicoPurple.opacity(0.02))
+            .background(Color.rythmico.purple.opacity(0.02))
         }
     }
 }

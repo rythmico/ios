@@ -42,7 +42,7 @@ private struct VideoCarouselCell: View {
                     .aspectRatio(1, contentMode: .fit)
                     .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
                 } else {
-                    Color.rythmicoGray20
+                    Color.rythmico.gray20
                         .scaledToFill()
                         .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
                 }
@@ -54,7 +54,7 @@ private struct VideoCarouselCell: View {
             )
             Image(decorative: Asset.Icon.Misc.video.name)
                 .renderingMode(.template)
-                .foregroundColor(.rythmicoWhite)
+                .foregroundColor(.rythmico.white)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
                 .padding([.leading, .bottom], .grid(4))
         }
@@ -125,7 +125,7 @@ private struct DismissableContainer<Content: View>: View {
                 CloseButton(action: dismiss)
                     .padding([.trailing, .bottom], .grid(4))
                     .padding(.top, .grid(5))
-                    .accentColor(.rythmicoWhite)
+                    .accentColor(.rythmico.white)
                 content
             }
         }

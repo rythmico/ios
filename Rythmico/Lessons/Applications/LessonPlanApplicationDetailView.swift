@@ -67,7 +67,7 @@ struct LessonPlanApplicationDetailView: View {
                 }
             }
         }
-        .backgroundColor(.rythmicoBackground)
+        .backgroundColor(.rythmico.background)
     }
 
     private var bookButtonTitle: String {
@@ -87,7 +87,7 @@ struct LessonPlanApplicationDetailView: View {
             "every \(frequencyDayText)".text.rythmicoFontWeight(.calloutBold)
         }
         .rythmicoTextStyle(.callout)
-        .foregroundColor(.rythmicoGray90)
+        .foregroundColor(.rythmico.gray90)
         .multilineTextAlignment(.center)
     }
 }

@@ -21,7 +21,7 @@ struct AddNewCardView: View {
                             .padding(.vertical, .grid(1))
                             .modifier(RoundedThinOutlineContainer(padded: false))
                         if coordinator.state.isLoading {
-                            ActivityIndicator(color: .rythmicoGray90)
+                            ActivityIndicator(color: .rythmico.gray90)
                         }
                     }
                     .animation(.rythmicoSpring(duration: .durationShort), value: coordinator.state.isLoading)
@@ -32,7 +32,7 @@ struct AddNewCardView: View {
                         Image(systemSymbol: .lockFill).rythmicoFont(.footnoteBold)
                         Text("Your payment info is stored securely.").rythmicoTextStyle(.footnoteBold)
                     }
-                    .foregroundColor(.rythmicoGray90)
+                    .foregroundColor(.rythmico.gray90)
                 }
                 .frame(maxWidth: .grid(.max))
                 .padding([.horizontal, .bottom], .grid(5))
@@ -51,7 +51,7 @@ struct AddNewCardView: View {
         }
         .navigationBarTitle(title)
         .navigationBarItems(trailing: CloseButton(action: dismiss))
-        .accentColor(.rythmicoPurple)
+        .accentColor(.rythmico.purple)
         .interactiveDismissDisabled(interactiveDismissDisabled)
         .disabled(coordinator.state.isLoading)
         .onSuccess(coordinator, perform: coordinatorSucceeded)

@@ -24,7 +24,7 @@ struct PortfolioView: View {
                 .id(Self.bioId)
 
                 if !portfolio.training.isEmpty {
-                    Divider().overlay(Color.rythmicoGray20)
+                    Divider().overlay(Color.rythmico.gray20)
                     VStack(spacing: .grid(4)) {
                         header("Training")
                         PortfolioTrainingsView(trainingList: portfolio.training)
@@ -34,7 +34,7 @@ struct PortfolioView: View {
                 }
 
                 if !portfolio.videos.isEmpty || !portfolio.photos.isEmpty {
-                    Divider().overlay(Color.rythmicoGray20)
+                    Divider().overlay(Color.rythmico.gray20)
                 }
 
                 if !portfolio.videos.isEmpty {
@@ -64,7 +64,7 @@ struct PortfolioView: View {
     private func header(_ title: String) -> some View {
         Text(title)
             .rythmicoTextStyle(.subheadlineBold)
-            .foregroundColor(.rythmicoForeground)
+            .foregroundColor(.rythmico.foreground)
             .frame(maxWidth: .infinity, alignment: .leading)
     }
 
@@ -73,13 +73,13 @@ struct PortfolioView: View {
         if portfolio.bio.isBlank {
             Text("\(tutor.name.firstWord ?? "Tutor") did not add a bio.")
                 .rythmicoTextStyle(.body)
-                .foregroundColor(.rythmicoGray30)
+                .foregroundColor(.rythmico.gray30)
         } else {
             ExpandableText(
                 content: portfolio.bio,
                 onCollapse: { scrollingProxy.scrollTo(Self.bioId, anchor: .bottom) }
             )
-            .foregroundColor(.rythmicoGray90)
+            .foregroundColor(.rythmico.gray90)
         }
     }
 
@@ -89,7 +89,7 @@ struct PortfolioView: View {
             "\(portfolio.age)".text.rythmicoFontWeight(.bodyBold)
         }
         .rythmicoTextStyle(.body)
-        .foregroundColor(.rythmicoGray90)
+        .foregroundColor(.rythmico.gray90)
         .multilineTextAlignment(.trailing)
     }
 }

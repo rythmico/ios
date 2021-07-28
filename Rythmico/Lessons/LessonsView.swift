@@ -56,8 +56,8 @@ struct LessonsView: View, TestableView {
                 LessonsCollectionView(lessonPlans: repository.items, filter: tabSelection.lessonsTab)
             }
         }
-        .backgroundColor(.rythmicoBackground)
-        .accentColor(.rythmicoPurple)
+        .backgroundColor(.rythmico.background)
+        .accentColor(.rythmico.purple)
         .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(leading: leadingItem, trailing: trailingItem)
@@ -74,7 +74,7 @@ struct LessonsView: View, TestableView {
     @ViewBuilder
     private var leadingItem: some View {
         if coordinator.state.isLoading {
-            ActivityIndicator(color: .rythmicoGray90)
+            ActivityIndicator(color: .rythmico.gray90)
         }
     }
 
