@@ -2,7 +2,7 @@ import SwiftUI
 
 struct RoundedThickOutlineContainer: ViewModifier {
     var backgroundColor: Color = .clear
-    var borderColor: Color = .rythmico.gray20
+    var borderColor: Color = .rythmico.outline
 
     func body(content: Content) -> some View {
         content

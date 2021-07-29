@@ -68,7 +68,7 @@ struct RadialSelectionIndicator: View {
     }
 
     var color: Color {
-        isEnabled ? .rythmico.purple : .rythmico.gray20
+        isEnabled ? .rythmico.picoteeBlue : .rythmico.outline
     }
 }
 

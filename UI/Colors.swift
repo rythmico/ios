@@ -29,8 +29,8 @@ struct ColorSet<Color: UIColorProtocol> {
     let white = Color(light: 0xFFFFFF, dark: foregroundDarkModeHex)
 
     let gray5 = Color(light: 0xFAFAFA, dark: 0x191919)
+    let outline = Color(light: 0xE7E7E7, dark: 0x2B2B2B)
     let gray10 = Color(light: 0xF0F4F7, dark: 0x363637)
-    let gray20 = Color(light: 0xD5D6D7, dark: 0x4A4B4B)
     let gray30 = Color(light: 0x9AA3AA, dark: 0x4D5155)
     let gray90 = Color(light: 0x4B5C6B, dark: 0xA5ADB5)
 

@@ -42,7 +42,7 @@ private struct VideoCarouselCell: View {
                     .aspectRatio(1, contentMode: .fit)
                     .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
                 } else {
-                    Color.rythmico.gray20
+                    Color.rythmico.outline
                         .scaledToFill()
                         .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
                 }

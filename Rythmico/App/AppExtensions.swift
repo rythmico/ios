@@ -42,7 +42,7 @@ extension SwiftUI.App {
         UITabBar.appearance().do {
             UITabBarAppearance().with {
                 $0.configureWithOpaqueBackground()
-                $0.shadowImage = .dynamic(color: .rythmico.gray20)
+                $0.shadowImage = .dynamic(color: .rythmico.outline)
                 $0.backgroundColor = .rythmico.background
                 [
                     $0.compactInlineLayoutAppearance,
