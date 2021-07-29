@@ -74,10 +74,10 @@ struct AvatarView_Previews: PreviewProvider {
             }
 
             Group {
-                AvatarView(.photo(UIImage(.red))).fixedSize()
-                AvatarView(.photo(UIImage(.purple))).frame(width: 100, height: 100)
-                AvatarView(.photo(UIImage(.purple))).frame(width: 300, height: 300)
-                AvatarView(.photo(UIImage(.purple))).frame(width: 600, height: 600)
+                AvatarView(.photo(UIImage(color: .red))).fixedSize()
+                AvatarView(.photo(UIImage(color: .purple))).frame(width: 100, height: 100)
+                AvatarView(.photo(UIImage(color: .purple))).frame(width: 300, height: 300)
+                AvatarView(.photo(UIImage(color: .purple))).frame(width: 600, height: 600)
             }
 
             Group {

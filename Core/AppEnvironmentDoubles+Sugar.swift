@@ -47,7 +47,7 @@ extension AppEnvironment {
         imageLoadingCoordinator = {
             ImageLoadingCoordinator(
                 loadingService: ImageLoadingServiceStub(
-                    result: .success(UIImage(.red)),
+                    result: .success(UIImage(color: .red)),
                     delay: Self.fakeAPIEndpointDelay
                 ),
                 processingService: ImageProcessingServiceStub()

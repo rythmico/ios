@@ -37,7 +37,7 @@ extension AvatarStackView where Data.Element == AvatarView.Content, ContentView 
 struct AvatarStackView_PreviewsWrapper: View {
     @State var content: [AvatarView.Content] = [
         .initials("DR"),
-        .photo(UIImage(.purple)),
+        .photo(UIImage(color: .purple)),
         .initials("DR"),
     ]
 
@@ -46,9 +46,9 @@ struct AvatarStackView_PreviewsWrapper: View {
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     content = [
-                        .photo(UIImage(.red)),
-                        .photo(UIImage(.blue)),
-                        .photo(UIImage(.green)),
+                        .photo(UIImage(color: .red)),
+                        .photo(UIImage(color: .blue)),
+                        .photo(UIImage(color: .green)),
                     ]
                 }
             }
