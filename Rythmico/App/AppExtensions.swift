@@ -21,7 +21,7 @@ extension SwiftUI.App {
     // TODO: hopefully to be deleted someday if SwiftUI allows for better customization.
     func configureAppearance() {
         UINavigationBar.appearance().do { bar in
-            UINavigationBarAppearance().do {
+            UINavigationBarAppearance().with {
                 $0.configureWithTransparentBackground()
                 $0.largeTitleTextAttributes = .rythmicoTextAttributes(color: .clear, style: .largeTitle)
                 $0.titleTextAttributes = .rythmicoTextAttributes(color: .clear, style: .subheadlineBold)
@@ -29,14 +29,13 @@ extension SwiftUI.App {
 
                 $0.setBackIndicatorImage(BackButton.uiImage, transitionMaskImage: BackButton.uiImage)
                 $0.backButtonAppearance.normal.titleTextAttributes = .rythmicoTextAttributes(color: nil, style: .bodyMedium)
-
-                bar.standardAppearance = $0
-                bar.compactAppearance = $0
-                bar.scrollEdgeAppearance = $0
-
-                bar.layoutMargins.left = .grid(5)
-                bar.layoutMargins.right = .grid(5)
             }
+            .assign(to: bar, \.standardAppearance)
+            .assign(to: bar, \.compactAppearance)
+            .assign(to: bar, \.scrollEdgeAppearance)
+
+            bar.layoutMargins.left = .grid(5)
+            bar.layoutMargins.right = .grid(5)
         }
 
         UITableView.appearance().do {
@@ -44,7 +43,7 @@ extension SwiftUI.App {
         }
 
         UITabBar.appearance().do { bar in
-            UITabBarAppearance().do {
+            UITabBarAppearance().with {
                 [
                     $0.compactInlineLayoutAppearance,
                     $0.inlineLayoutAppearance,
@@ -54,8 +53,8 @@ extension SwiftUI.App {
                     $0.normal.titleTextAttributes = .rythmicoTextAttributes(color: .rythmico.gray90, style: .caption)
                     $0.selected.titleTextAttributes = .rythmicoTextAttributes(color: nil, style: .caption)
                 }
-                bar.standardAppearance = $0
             }
+            .assign(to: bar, \.standardAppearance)
         }
 
         UISwitch.appearance().do {
