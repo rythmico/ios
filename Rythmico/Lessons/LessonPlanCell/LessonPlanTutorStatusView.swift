@@ -29,7 +29,7 @@ private extension LessonPlan {
 
     func summarizedTitle(sizeCategory: ContentSizeCategory) -> String {
         if status.isPending {
-            return "Tutor TBC"
+            return ""
         } else if let applications = applications {
             return applications.count == 1 && !sizeCategory.isAccessibilityCategory ? "Tutors Available" : .empty
         } else if let tutor = bookingInfo?.tutor {
