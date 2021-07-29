@@ -82,7 +82,7 @@ struct LessonPlanDetailView: View, TestableView {
         VStack(spacing: 0) {
             TitleContentView(title: title) {
                 VStack(alignment: .leading, spacing: .grid(7)) {
-                    Pill(lessonPlan: lessonPlan, backgroundColor: .rythmico.background)
+                    Pill(lessonPlan: lessonPlan)
                         .padding(.horizontal, .grid(5))
 
                     ScrollView {

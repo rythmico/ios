@@ -12,8 +12,8 @@ struct TutorAcceptedStatusPill: View {
     var body: some View {
         Pill(
             title: title,
-            titleColor: .rythmico.darkGreen,
-            backgroundColor: .rythmico.lightGreen,
+            titleColor: .rythmico.tagTextGreen,
+            backgroundColor: .rythmico.tagGreen,
             borderColor: .clear
         )
     }
