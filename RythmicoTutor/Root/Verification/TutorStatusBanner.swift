@@ -43,7 +43,7 @@ struct TutorStatusBanner: View {
     }
 
     var foregroundColor: Color {
-        Color(light: 0x19212C, dark: .white)
+        Color(light: 0x19212C, dark: 0xFFFFFF)
     }
 
     var openInboxAction: Action? {
