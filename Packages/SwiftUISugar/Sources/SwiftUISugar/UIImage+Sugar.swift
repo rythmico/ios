@@ -1,4 +1,3 @@
-// TODO: check if SVG still blurry without resize in SwiftUI 3.
 extension UIImage {
     public convenience init(_ solidColor: UIColor, size: CGSize = .init(width: 1, height: 1)) {
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
@@ -15,6 +14,7 @@ extension UIImage {
         }
     }
 
+    // TODO: check if SVG still blurry without resize in SwiftUI 3.
     public func resized(width: CGFloat? = nil, height: CGFloat? = nil) -> UIImage {
         guard let size = size(width: width, height: height) else {
             return self
