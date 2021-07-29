@@ -17,7 +17,7 @@ struct LessonSkippingContentView: View {
                     }
                     .rythmicoTextStyle(.body)
                 }
-                .foregroundColor(.rythmico.gray90)
+                .foregroundColor(.rythmico.foreground)
 
                 InfoBanner(text:
                     """
@@ -28,7 +28,7 @@ struct LessonSkippingContentView: View {
                 )
             } else {
                 Text("You will still be charged the full amount for this lesson.")
-                    .foregroundColor(.rythmico.gray90)
+                    .foregroundColor(.rythmico.foreground)
                     .rythmicoTextStyle(.body)
 
                 InfoBanner(text:

@@ -16,7 +16,7 @@ struct LessonPlanApplicationDetailMessageView: View {
 
                         Text(privateNote)
                             .rythmicoTextStyle(.body)
-                            .foregroundColor(.rythmico.gray90)
+                            .foregroundColor(.rythmico.foreground)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     } else {
                         Text("No private message from \(application.tutor.name).")

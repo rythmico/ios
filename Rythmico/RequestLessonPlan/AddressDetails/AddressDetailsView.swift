@@ -66,7 +66,7 @@ struct AddressDetailsView: View, TestableView {
                                     HStack {
                                         Spacer()
                                         if isLoading {
-                                            ActivityIndicator(color: .rythmico.gray90)
+                                            ActivityIndicator(color: .rythmico.foreground)
                                         }
                                         Spacer().frame(width: .grid(3))
                                     }

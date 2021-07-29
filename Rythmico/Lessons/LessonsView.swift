@@ -74,7 +74,7 @@ struct LessonsView: View, TestableView {
     @ViewBuilder
     private var leadingItem: some View {
         if coordinator.state.isLoading {
-            ActivityIndicator(color: .rythmico.gray90)
+            ActivityIndicator(color: .rythmico.foreground)
         }
     }
 

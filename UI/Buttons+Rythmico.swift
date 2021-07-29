@@ -47,7 +47,7 @@ extension RythmicoButtonStyle {
     static func tertiary(layout: RythmicoButtonStyleLayout = .expansive) -> RythmicoButtonStyle {
         RythmicoButtonStyle(
             layout: layout,
-            foregroundColor: (normal: .rythmico.gray90, pressed: .rythmico.white),
+            foregroundColor: (normal: .rythmico.foreground, pressed: .rythmico.white),
             backgroundColor: (normal: .clear, pressed: .rythmico.gray30),
             borderColor: (normal: .rythmico.gray30, pressed: .rythmico.gray30)
         )
@@ -127,7 +127,7 @@ struct RythmicoLinkButtonStyle: RythmicoButtonStyleProtocol {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .foregroundColor(.rythmico.gray90)
+            .foregroundColor(.rythmico.foreground)
             .opacity(configuration.isPressed ? 0.3 : 1)
             .frame(maxWidth: expansive ? buttonMaxWidth : nil, minHeight: 48)
             .modifier(DiseableableButtonModifier())

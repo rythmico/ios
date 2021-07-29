@@ -64,7 +64,7 @@ extension LessonPlanCancellationView {
         @ViewBuilder
         private func descriptionText(_ string: String) -> some View {
             Text(string)
-                .foregroundColor(.rythmico.gray90)
+                .foregroundColor(.rythmico.foreground)
                 .rythmicoTextStyle(.body)
         }
 

@@ -15,7 +15,7 @@ struct TabMenuView<Tab: RawRepresentable>: View where Tab.RawValue == String {
                 ForEach(tabs, id: \.rawValue) { tab in
                     Text(tab.rawValue.uppercased(with: Current.locale))
                         .rythmicoTextStyle(.calloutBold)
-                        .foregroundColor(selection == tab ? .rythmico.purple : .rythmico.gray90)
+                        .foregroundColor(selection == tab ? .rythmico.picoteeBlue : .rythmico.foreground)
                         .frame(maxWidth: .infinity, minHeight: .grid(13), alignment: .center)
                         .background(
                             Group {

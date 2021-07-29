@@ -21,7 +21,7 @@ struct AddNewCardView: View {
                             .padding(.vertical, .grid(1))
                             .modifier(RoundedThinOutlineContainer(padded: false))
                         if coordinator.state.isLoading {
-                            ActivityIndicator(color: .rythmico.gray90)
+                            ActivityIndicator(color: .rythmico.foreground)
                         }
                     }
                     .animation(.rythmicoSpring(duration: .durationShort), value: coordinator.state.isLoading)
@@ -32,7 +32,7 @@ struct AddNewCardView: View {
                         Image(systemSymbol: .lockFill).rythmicoFont(.footnoteBold)
                         Text("Your payment info is stored securely.").rythmicoTextStyle(.footnoteBold)
                     }
-                    .foregroundColor(.rythmico.gray90)
+                    .foregroundColor(.rythmico.foreground)
                 }
                 .frame(maxWidth: .grid(.max))
                 .padding([.horizontal, .bottom], .grid(5))

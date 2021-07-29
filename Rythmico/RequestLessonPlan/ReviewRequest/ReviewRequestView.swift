@@ -52,7 +52,7 @@ struct ReviewRequestView: View, TestableView {
                             HStack(alignment: .firstTextBaseline, spacing: .grid(3)) {
                                 Image(decorative: Asset.Icon.Label.info.name)
                                     .renderingMode(.template)
-                                    .foregroundColor(.rythmico.gray90)
+                                    .foregroundColor(.rythmico.foreground)
                                     .alignmentGuide(.firstTextBaseline) { $0[.bottom] - 2.5 }
 
                                 VStack(alignment: .leading, spacing: .grid(5)) {
@@ -60,7 +60,7 @@ struct ReviewRequestView: View, TestableView {
                                     studentAbout?.rythmicoTextStyle(.body)
                                 }.fixedSize(horizontal: false, vertical: true)
                             }
-                            .foregroundColor(.rythmico.gray90)
+                            .foregroundColor(.rythmico.foreground)
                         }
 
                         SectionHeaderContentView(
@@ -92,7 +92,7 @@ struct ReviewRequestView: View, TestableView {
                             if let privateNote = privateNote.nilIfBlank {
                                 Text(privateNote)
                                     .rythmicoTextStyle(.body)
-                                    .foregroundColor(.rythmico.gray90)
+                                    .foregroundColor(.rythmico.foreground)
                                     .fixedSize(horizontal: false, vertical: true)
                             } else {
                                 Text("No private note.")
@@ -119,7 +119,7 @@ struct ReviewRequestView: View, TestableView {
 
     private func editButton(performing action: @escaping Action) -> some View {
         Button(action: action) {
-            Text("Edit").rythmicoTextStyle(.bodyBold).foregroundColor(.rythmico.gray90)
+            Text("Edit").rythmicoTextStyle(.bodyBold).foregroundColor(.rythmico.foreground)
         }
     }
 

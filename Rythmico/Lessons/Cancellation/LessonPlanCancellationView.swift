@@ -73,7 +73,7 @@ struct LessonPlanCancellationView: View, TestableView {
         }
         .backgroundColor(.rythmico.backgroundSecondary)
         .interactiveDismissDisabled(isCancellationIntended)
-        .accentColor(.rythmico.gray90)
+        .accentColor(.rythmico.foreground)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isCancellationIntended)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isUserInputRequired)
         .testable(self)

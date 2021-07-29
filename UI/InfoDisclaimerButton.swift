@@ -11,7 +11,7 @@ struct InfoDisclaimerButton: View {
         Button(action: { showingDisclaimer = true }) {
             Image(decorative: Asset.Icon.Label.info.name)
                 .renderingMode(.template)
-                .foregroundColor(.rythmico.gray90)
+                .foregroundColor(.rythmico.foreground)
         }
         .offset(y: 0.5)
         .multiModal {

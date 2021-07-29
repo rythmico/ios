@@ -87,7 +87,7 @@ struct LessonPlanApplicationDetailView: View {
             "every \(frequencyDayText)".text.rythmicoFontWeight(.calloutBold)
         }
         .rythmicoTextStyle(.callout)
-        .foregroundColor(.rythmico.gray90)
+        .foregroundColor(.rythmico.foreground)
         .multilineTextAlignment(.center)
     }
 }

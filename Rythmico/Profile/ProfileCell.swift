@@ -20,7 +20,7 @@ struct ProfileCell<Accessory: View>: View {
 
     var body: some View {
         container
-            .foregroundColor(.rythmico.gray90)
+            .foregroundColor(.rythmico.foreground)
             .padding(.horizontal, .grid(5) - UITableViewCell.defaultHorizontalPadding)
             .padding(.vertical, .grid(2))
             .frame(minHeight: 51)

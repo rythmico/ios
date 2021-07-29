@@ -15,7 +15,7 @@ struct LessonPlanApplicationDetailHeaderView: View {
                     .foregroundColor(.rythmico.foreground)
                 Text(lessonPlan.instrument.assimilatedName + " Tutor")
                     .rythmicoTextStyle(.callout)
-                    .foregroundColor(.rythmico.gray90)
+                    .foregroundColor(.rythmico.foreground)
             }
         }
         .lineLimit(1)

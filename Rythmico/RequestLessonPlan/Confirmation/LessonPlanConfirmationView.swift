@@ -74,7 +74,7 @@ struct LessonPlanConfirmationView: View, TestableView {
                                     .minimumScaleFactor(0.8)
                                 if let subtitle = subtitle {
                                     Text(subtitle)
-                                        .foregroundColor(.rythmico.gray90)
+                                        .foregroundColor(.rythmico.foreground)
                                         .rythmicoTextStyle(.body)
                                         .multilineTextAlignment(.center)
                                 }

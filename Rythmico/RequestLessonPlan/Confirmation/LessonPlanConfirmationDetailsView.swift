@@ -9,13 +9,13 @@ struct LessonPlanConfirmationDetailsView: View {
             HStack(spacing: .grid(3)) {
                 Image(decorative: Asset.Icon.Label.info.name)
                     .renderingMode(.template)
-                    .foregroundColor(.rythmico.gray90)
+                    .foregroundColor(.rythmico.foreground)
                 Text(separator: .whitespace) {
                     "First Lesson:"
                     Self.dateFormatter.string(from: lessonPlan.schedule.startDate).text.rythmicoFontWeight(.bodyBold)
                     relativeDate().parenthesized()
                 }
-                .foregroundColor(.rythmico.gray90)
+                .foregroundColor(.rythmico.foreground)
                 .rythmicoTextStyle(.body)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
@@ -24,7 +24,7 @@ struct LessonPlanConfirmationDetailsView: View {
                 TutorAvatarView(tutor, mode: .thumbnail)
                     .fixedSize()
                 Text(tutor.name)
-                    .foregroundColor(.rythmico.gray90)
+                    .foregroundColor(.rythmico.foreground)
                     .rythmicoTextStyle(.bodyBold)
             }
         }

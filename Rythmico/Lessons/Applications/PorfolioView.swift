@@ -79,7 +79,7 @@ struct PortfolioView: View {
                 content: portfolio.bio,
                 onCollapse: { scrollingProxy.scrollTo(Self.bioId, anchor: .bottom) }
             )
-            .foregroundColor(.rythmico.gray90)
+            .foregroundColor(.rythmico.foreground)
         }
     }
 
@@ -89,7 +89,7 @@ struct PortfolioView: View {
             "\(portfolio.age)".text.rythmicoFontWeight(.bodyBold)
         }
         .rythmicoTextStyle(.body)
-        .foregroundColor(.rythmico.gray90)
+        .foregroundColor(.rythmico.foreground)
         .multilineTextAlignment(.trailing)
     }
 }

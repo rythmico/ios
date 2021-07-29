@@ -8,19 +8,19 @@ struct PortfolioTrainingsView: View {
             HStack(alignment: .firstTextBaseline, spacing: .grid(3)) {
                 Image(decorative: Asset.Icon.Label.training.name)
                     .renderingMode(.template)
-                    .foregroundColor(.rythmico.gray90)
+                    .foregroundColor(.rythmico.foreground)
                     .alignmentGuide(.firstTextBaseline) { $0[.bottom] - 2 }
                 VStack(spacing: .grid(4)) {
                     VStack(spacing: .grid(2)) {
                         VStack(spacing: .grid(1)) {
                             Text(training.title)
-                                .foregroundColor(.rythmico.gray90)
+                                .foregroundColor(.rythmico.foreground)
                                 .rythmicoTextStyle(.bodyBold)
                                 .frame(maxWidth: .infinity, alignment: .leading)
 
                             if !training.description.isBlank {
                                 Text(training.description)
-                                    .foregroundColor(.rythmico.gray90)
+                                    .foregroundColor(.rythmico.foreground)
                                     .rythmicoTextStyle(.callout)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             }
@@ -28,7 +28,7 @@ struct PortfolioTrainingsView: View {
 
                         if let duration = training.duration?.description {
                             Text(duration)
-                                .foregroundColor(.rythmico.gray90)
+                                .foregroundColor(.rythmico.foreground)
                                 .rythmicoTextStyle(.callout)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }

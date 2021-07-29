@@ -53,7 +53,7 @@ struct LessonSummaryCellMainContent: View {
                 VSpacing(.grid(2))
                 Text(subtitle)
                     .rythmicoTextStyle(.body)
-                    .foregroundColor(.rythmico.gray90)
+                    .foregroundColor(.rythmico.foreground)
                     .opacity(opacity)
                 VSpacing(.grid(3))
                 HStack(spacing: .grid(3)) {

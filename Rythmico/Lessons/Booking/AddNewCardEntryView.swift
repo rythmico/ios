@@ -40,7 +40,7 @@ struct AddNewCardEntryView: View {
                 if let credential = coordinator.state.successValue {
                     AddNewCardView(credential: credential, availableCards: $availableCards).transition(.opacity)
                 } else {
-                    ActivityIndicator(color: .rythmico.gray90)
+                    ActivityIndicator(color: .rythmico.foreground)
                         .transition(.opacity)
                         .navigationBarItems(trailing: CloseButton(action: dismiss))
                 }

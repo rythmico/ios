@@ -30,7 +30,7 @@ struct CardStackView: View {
                 HDivider()
             }
         }
-        .foregroundColor(.rythmico.gray90)
+        .foregroundColor(.rythmico.foreground)
     }
 
     private func formattedLastFourDigits(for card: Card) -> String {

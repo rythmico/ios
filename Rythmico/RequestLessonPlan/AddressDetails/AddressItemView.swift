@@ -16,7 +16,7 @@ struct AddressItemView: View {
     }
 
     private var textColor: Color {
-        isSelected ? .accentColor : .rythmico.gray90
+        isSelected ? .accentColor : .rythmico.foreground
     }
 
     private var textStyle: Font.RythmicoTextStyle {

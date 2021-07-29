@@ -26,7 +26,7 @@ struct LessonPlanPriceView: View {
                     .onTapGesture(perform: Current.urlOpener.openTermsAndConditionsURL)
                 }
             }
-            .foregroundColor(.rythmico.gray90)
+            .foregroundColor(.rythmico.foreground)
             .frame(maxWidth: .infinity, alignment: .leading)
             .fixedSize(horizontal: false, vertical: true)
         }

@@ -16,7 +16,6 @@ struct LessonPlanSummaryCell: View {
 struct LessonPlanSummaryCellMainContent: View {
     @Environment(\.navigator) private var navigator
     @Environment(\.currentScreen) private var currentScreen
-    @Environment(\.colorScheme) private var colorScheme
 
     var lessonPlan: LessonPlan
 
@@ -61,7 +60,7 @@ struct LessonPlanSummaryCellMainContent: View {
                 VSpacing(.grid(2))
                 subtitle
                     .rythmicoTextStyle(.body)
-                    .foregroundColor(.rythmico.gray90)
+                    .foregroundColor(.rythmico.foreground)
                     .opacity(opacity)
                 VSpacing(.grid(3))
                 HStack(spacing: .grid(3)) {

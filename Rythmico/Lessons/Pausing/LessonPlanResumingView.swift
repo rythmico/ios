@@ -55,7 +55,7 @@ struct LessonPlanResumingView: View {
             .navigationBarItems(trailing: CloseButton(action: dismiss))
         }
         .interactiveDismissDisabled(coordinator.state.isLoading)
-        .accentColor(.rythmico.gray90)
+        .accentColor(.rythmico.foreground)
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: lessonPlanSuccessfullyResumed)
         .alertOnFailure(coordinator)

@@ -44,7 +44,7 @@ struct LessonPlanBookingEntryView: View {
                     )
                     .transition(.opacity)
                 } else {
-                    ActivityIndicator(color: .rythmico.gray90)
+                    ActivityIndicator(color: .rythmico.foreground)
                         .transition(.opacity)
                         .navigationBarItems(trailing: CloseButton(action: dismiss))
                 }

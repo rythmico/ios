@@ -70,7 +70,7 @@ struct OnboardingSlideshowView: View {
                     .id(step.title.hashValue)
                 Text(step.description)
                     .rythmicoTextStyle(.subheadline)
-                    .foregroundColor(.rythmico.gray90)
+                    .foregroundColor(.rythmico.foreground)
                     .transition(.opacity)
                     .id(step.description.hashValue)
             }

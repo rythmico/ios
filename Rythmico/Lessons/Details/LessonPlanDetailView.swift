@@ -91,7 +91,7 @@ struct LessonPlanDetailView: View, TestableView {
                             tutorSection
                             paymentSection
                         }
-                        .foregroundColor(.rythmico.gray90)
+                        .foregroundColor(.rythmico.foreground)
                         .frame(maxWidth: .grid(.max))
                         .padding([.horizontal, .bottom], .grid(5))
                     }

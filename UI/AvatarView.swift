@@ -40,7 +40,7 @@ struct AvatarView: View {
                     .font(.system(size: g.size.width / 2, weight: .medium, design: .rounded))
                     .lineLimit(1)
                     .minimumScaleFactor(0.4)
-                    .foregroundColor(.rythmico.gray90)
+                    .foregroundColor(.rythmico.foreground)
                     .position(x: g.frame(in: .local).midX, y: g.frame(in: .local).midY)
             }
             .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
@@ -54,7 +54,7 @@ struct AvatarView: View {
                 Image(systemSymbol: .person)
                     .font(.system(size: g.size.width / 1.75, weight: .medium, design: .rounded))
                     .offset(y: -g.size.height * 0.025)
-                    .foregroundColor(.rythmico.gray90)
+                    .foregroundColor(.rythmico.foreground)
                     .position(x: g.frame(in: .local).midX, y: g.frame(in: .local).midY)
             }
             .transition(.opacity.animation(.easeInOut(duration: .durationShort)))

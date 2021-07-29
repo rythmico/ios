@@ -11,6 +11,7 @@ extension UIColor {
 struct ColorSet<Color: UIColorProtocol> {
     let red = Color(light: 0xB00020, dark: 0x9E001C)
 
+    let picoteeBlue = Color(light: 0x392396, dark: 0x432AB2)
 
     let extraLightBlue = Color(light: 0xE8F1FF, dark: 0x17386A)
 
@@ -21,6 +22,7 @@ struct ColorSet<Color: UIColorProtocol> {
     let darkPurple = Color(light: 0x6929C4, dark: 0x783ec9)
 
     let white = Color(light: 0xFFFFFF, dark: foregroundDarkModeHex)
+    let foreground = Color(light: 0x150F2F, dark: 0xE8E8E8)
 
     let gray5 = Color(light: 0xFAFAFA, dark: 0x191919)
     let outline = Color(light: 0xE7E7E7, dark: 0x2B2B2B)
@@ -42,9 +44,6 @@ struct ColorSet<Color: UIColorProtocol> {
 
     let gray10 = Color(light: 0xF0F4F7, dark: 0x363637)
     let gray30 = Color(light: 0x9AA3AA, dark: 0x4D5155)
-    let gray90 = Color(light: 0x4B5C6B, dark: 0xA5ADB5)
-
-    let foreground = Color(light: foregroundLightModeHex, dark: foregroundDarkModeHex)
 
     let background = Color(light: 0xFFFFFF, dark: 0x000000)
     let backgroundSecondary = Color(light: 0xFFFFFF, dark: 0x181818)
