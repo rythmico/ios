@@ -97,7 +97,7 @@ extension Portfolio.Video {
         .init(
             source: .youtube(videoId: "FnW2OWH8Tac"),
 //            source: .directURL(URL(string: "https://bit.ly/swswift")!),
-            thumbnailURL: .image(UIImage(color: color))
+            thumbnailURL: .image(UIImage(solidColor: color))
         )
     }
 }
@@ -105,8 +105,8 @@ extension Portfolio.Video {
 extension Portfolio.Photo {
     static func stub(_ color: UIColor) -> Self {
         .init(
-            photoURL: .image(UIImage(color: color)),
-            thumbnailURL: .image(UIImage(color: color))
+            photoURL: .image(UIImage(solidColor: color)),
+            thumbnailURL: .image(UIImage(solidColor: color))
         )
     }
 }

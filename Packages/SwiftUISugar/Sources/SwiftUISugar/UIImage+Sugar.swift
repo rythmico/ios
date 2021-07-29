@@ -1,7 +1,7 @@
 extension CGContext: Then {}
 
 extension UIImage {
-    public convenience init(color: UIColor, size: CGSize = .init(width: 1, height: 1)) {
+    public convenience init(solidColor color: UIColor, size: CGSize = .init(width: 1, height: 1)) {
         let rect = CGRect(origin: .zero, size: size)
         UIGraphicsBeginImageContext(rect.size)
         UIGraphicsGetCurrentContext()?.do {
@@ -20,7 +20,8 @@ extension UIImage {
                 fatalError("Impossible: no CGImage *nor* CIImage found")
             }
         } else {
-            preconditionFailure("No UIImage was generated")
+            assertionFailure("No UIImage was generated")
+            self.init()
         }
     }
 }
