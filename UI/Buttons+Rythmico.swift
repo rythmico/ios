@@ -26,27 +26,27 @@ protocol RythmicoButtonStyleProtocol: ButtonStyle {
 // TODO: uncomment in Swift 5.5
 //extension RythmicoButtonStyleProtocol where Self == RythmicoButtonStyle {
 extension RythmicoButtonStyle {
-    static func primary(expansive: Bool = true) -> RythmicoButtonStyle {
+    static func primary(layout: RythmicoButtonStyleLayout = .expansive) -> RythmicoButtonStyle {
         RythmicoButtonStyle(
-            expansive: expansive,
+            layout: layout,
             foregroundColor: (normal: .rythmico.white, pressed: .rythmico.white),
             backgroundColor: (normal: .rythmico.purple, pressed: .rythmico.highlightPurple),
             borderColor: (normal: .clear, pressed: .clear)
         )
     }
 
-    static func secondary(expansive: Bool = true) -> RythmicoButtonStyle {
+    static func secondary(layout: RythmicoButtonStyleLayout = .expansive) -> RythmicoButtonStyle {
         RythmicoButtonStyle(
-            expansive: expansive,
+            layout: layout,
             foregroundColor: (normal: .rythmico.purple, pressed: .rythmico.white),
             backgroundColor: (normal: .clear, pressed: .rythmico.purple),
             borderColor: (normal: .rythmico.purple, pressed: .rythmico.purple)
         )
     }
 
-    static func tertiary(expansive: Bool = true) -> RythmicoButtonStyle {
+    static func tertiary(layout: RythmicoButtonStyleLayout = .expansive) -> RythmicoButtonStyle {
         RythmicoButtonStyle(
-            expansive: expansive,
+            layout: layout,
             foregroundColor: (normal: .rythmico.gray90, pressed: .rythmico.white),
             backgroundColor: (normal: .clear, pressed: .rythmico.gray30),
             borderColor: (normal: .rythmico.gray30, pressed: .rythmico.gray30)
@@ -62,12 +62,21 @@ extension RythmicoLinkButtonStyle {
     }
 }
 
+enum RythmicoButtonStyleLayout: Equatable {
+    enum ConstrainedSize: Equatable {
+        case small
+        case medium
+    }
+    case expansive
+    case contrained(ConstrainedSize)
+}
+
 struct RythmicoButtonStyle: RythmicoButtonStyleProtocol {
     static var textStyle: Font.RythmicoTextStyle { .bodyBold }
 
     typealias StateColors = (normal: Color, pressed: Color)
 
-    var expansive: Bool
+    var layout: RythmicoButtonStyleLayout
     let buttonMaxWidth: CGFloat = .grid(85)
     var foregroundColor: StateColors
     var backgroundColor: StateColors
@@ -79,7 +88,7 @@ struct RythmicoButtonStyle: RythmicoButtonStyleProtocol {
             .minimumScaleFactor(0.6)
             .padding(.horizontal, .grid(5))
             .foregroundColor(color(from: foregroundColor, for: configuration))
-            .frame(maxWidth: expansive ? buttonMaxWidth : nil, minHeight: 48)
+            .frame(maxWidth: maxWidth, minHeight: minHeight)
             .background(
                 RoundedRectangle(cornerRadius: 4, style: .continuous)
                     .fill(color(from: backgroundColor, for: configuration))
@@ -90,6 +99,19 @@ struct RythmicoButtonStyle: RythmicoButtonStyleProtocol {
                     .contentShape(Rectangle())
             )
             .modifier(DiseableableButtonModifier())
+    }
+
+    var maxWidth: CGFloat? {
+        layout == .expansive ? buttonMaxWidth : nil
+    }
+
+    var minHeight: CGFloat {
+        switch layout {
+        case .expansive, .contrained(.medium):
+            return 48
+        case .contrained(.small):
+            return 38
+        }
     }
 
     func color(from colors: StateColors, for configuration: Configuration) -> Color {
@@ -128,20 +150,22 @@ struct Buttons_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             VStack(spacing: .grid(4)) {
-                RythmicoButton("Next", style: RythmicoButtonStyle.primary(expansive: false), action: {})
-                RythmicoButton("Next", style: RythmicoButtonStyle.primary(expansive: false), action: {})
+                RythmicoButton("Next", style: RythmicoButtonStyle.primary(layout: .contrained(.small)), action: {})
+                RythmicoButton("Next", style: RythmicoButtonStyle.primary(layout: .contrained(.medium)), action: {})
                 RythmicoButton("Next", style: RythmicoButtonStyle.primary(), action: {})
                 RythmicoButton("Next", style: RythmicoButtonStyle.primary(), action: {}).disabled(true)
             }
 
             VStack(spacing: .grid(4)) {
-                RythmicoButton("Next", style: RythmicoButtonStyle.secondary(expansive: false), action: {})
+                RythmicoButton("Next", style: RythmicoButtonStyle.secondary(layout: .contrained(.small)), action: {})
+                RythmicoButton("Next", style: RythmicoButtonStyle.secondary(layout: .contrained(.medium)), action: {})
                 RythmicoButton("Next", style: RythmicoButtonStyle.secondary(), action: {})
                 RythmicoButton("Next", style: RythmicoButtonStyle.secondary(), action: {}).disabled(true)
             }
 
             VStack(spacing: .grid(4)) {
-                RythmicoButton("Next", style: RythmicoButtonStyle.tertiary(expansive: false), action: {})
+                RythmicoButton("Next", style: RythmicoButtonStyle.tertiary(layout: .contrained(.small)), action: {})
+                RythmicoButton("Next", style: RythmicoButtonStyle.tertiary(layout: .contrained(.medium)), action: {})
                 RythmicoButton("Next", style: RythmicoButtonStyle.tertiary(), action: {})
                 RythmicoButton("Next", style: RythmicoButtonStyle.tertiary(), action: {}).disabled(true)
             }
