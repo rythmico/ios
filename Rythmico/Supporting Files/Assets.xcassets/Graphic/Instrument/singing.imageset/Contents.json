@@ -3,16 +3,6 @@
     {
       "filename" : "Singing.svg",
       "idiom" : "universal"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "filename" : "Singing-1.svg",
-      "idiom" : "universal"
     }
   ],
   "info" : {

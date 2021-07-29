@@ -3,16 +3,6 @@
     {
       "filename" : "Violin.svg",
       "idiom" : "universal"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "filename" : "Violin-1.svg",
-      "idiom" : "universal"
     }
   ],
   "info" : {

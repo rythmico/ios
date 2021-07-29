@@ -73,6 +73,7 @@ struct LessonPlanSummaryCellMainContent: View {
         .watermark(
             lessonPlan.instrument.icon.image,
             offset: .init(width: 50, height: -20),
+            color: .rythmico.foreground,
             opacity: colorScheme == .dark ? 0.04 : nil
         )
     }

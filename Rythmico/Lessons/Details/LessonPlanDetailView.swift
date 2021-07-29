@@ -97,7 +97,11 @@ struct LessonPlanDetailView: View, TestableView {
                     }
                 }
             }
-            .watermark(lessonPlan.instrument.icon.image, offset: .init(width: 40, height: -64))
+            .watermark(
+                lessonPlan.instrument.icon.image,
+                offset: .init(width: 40, height: -64),
+                color: .rythmico.foreground
+            )
 
             floatingButton
         }

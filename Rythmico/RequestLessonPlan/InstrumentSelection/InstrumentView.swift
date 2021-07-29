@@ -17,18 +17,18 @@ struct InstrumentView: View {
             HStack(spacing: .grid(2)) {
                 Text(viewData.name)
                     .rythmicoTextStyle(.subheadlineBold)
-                    .foregroundColor(.rythmico.foreground)
                     .padding([.vertical, .leading], .grid(5))
                     .frame(maxWidth: .infinity, alignment: .leading)
 
                 Image(uiImage: viewData.icon.image.resized(width: iconWidth))
-                    .renderingMode(.original)
+                    .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: iconWidth, alignment: .center)
                     .padding(.vertical, .grid(3))
                     .padding(.trailing, .grid(4))
             }
+            .foregroundColor(.rythmico.foreground)
         }
         .frame(minHeight: 70)
         .modifier(RoundedShadowContainer())
