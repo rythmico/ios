@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 
 struct TutorCell: View {
     @Environment(\.navigator) private var navigator
@@ -12,21 +12,22 @@ struct TutorCell: View {
     var tutor: Tutor
 
     var body: some View {
-        Button(action: openTutorPorfolio) {
-            HStack(spacing: .grid(3)) {
-                TutorAvatarView(tutor, mode: .original)
-                    .frame(width: Const.avatarSize, height: Const.avatarSize)
-                    .withSmallDBSCheck()
-                Text(tutor.name)
-                    .rythmicoTextStyle(.subheadlineBold)
-                    .foregroundColor(.rythmico.foreground)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.6)
+        Container(style: .outline()) {
+            Button(action: openTutorPorfolio) {
+                HStack(spacing: .grid(3)) {
+                    TutorAvatarView(tutor, mode: .original)
+                        .frame(width: Const.avatarSize, height: Const.avatarSize)
+                        .withSmallDBSCheck()
+                    Text(tutor.name)
+                        .rythmicoTextStyle(.subheadlineBold)
+                        .foregroundColor(.rythmico.foreground)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.6)
+                }
+                .padding(.grid(5))
+                .frame(maxWidth: .grid(.max), alignment: .leading)
             }
-            .padding(.grid(5))
-            .frame(maxWidth: .grid(.max), alignment: .leading)
         }
-        .modifier(RoundedShadowContainer())
     }
 
     private func openTutorPorfolio() {

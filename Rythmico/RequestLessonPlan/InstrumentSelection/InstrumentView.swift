@@ -13,25 +13,26 @@ struct InstrumentView: View {
     private var iconWidth: CGFloat = .grid(12)
 
     var body: some View {
-        Button(action: { viewData.action?() }) {
-            HStack(spacing: .grid(2)) {
-                Text(viewData.name)
-                    .rythmicoTextStyle(.subheadlineBold)
-                    .padding([.vertical, .leading], .grid(5))
-                    .frame(maxWidth: .infinity, alignment: .leading)
+        Container(style: .outline()) {
+            Button(action: { viewData.action?() }) {
+                HStack(spacing: .grid(2)) {
+                    Text(viewData.name)
+                        .rythmicoTextStyle(.subheadlineBold)
+                        .padding([.vertical, .leading], .grid(5))
+                        .frame(maxWidth: .infinity, alignment: .leading)
 
-                Image(uiImage: viewData.icon.image.resized(width: iconWidth))
-                    .renderingMode(.template)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: iconWidth, alignment: .center)
-                    .padding(.vertical, .grid(3))
-                    .padding(.trailing, .grid(4))
+                    Image(uiImage: viewData.icon.image.resized(width: iconWidth))
+                        .renderingMode(.template)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: iconWidth, alignment: .center)
+                        .padding(.vertical, .grid(3))
+                        .padding(.trailing, .grid(4))
+                }
+                .foregroundColor(.rythmico.foreground)
             }
-            .foregroundColor(.rythmico.foreground)
         }
         .frame(minHeight: 70)
-        .modifier(RoundedShadowContainer())
         .disabled(viewData.action == nil)
         .accessibility(hint: Text(viewData.action != nil ? "Double tap to select this instrument" : .empty))
     }

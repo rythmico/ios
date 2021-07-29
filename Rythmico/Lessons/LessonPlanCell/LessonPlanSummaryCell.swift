@@ -4,11 +4,12 @@ struct LessonPlanSummaryCell: View {
     var lessonPlan: LessonPlan
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            LessonPlanSummaryCellMainContent(lessonPlan: lessonPlan)
-            LessonPlanSummaryCellAccessory(lessonPlan: lessonPlan)
+        Container(style: .outline(radius: .large)) {
+            VStack(alignment: .leading, spacing: 0) {
+                LessonPlanSummaryCellMainContent(lessonPlan: lessonPlan)
+                LessonPlanSummaryCellAccessory(lessonPlan: lessonPlan)
+            }
         }
-        .modifier(RoundedShadowContainer())
     }
 }
 

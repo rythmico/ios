@@ -312,6 +312,7 @@
 		D54921AF25BB35BC00251FD2 /* UserDefaults+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921AE25BB35BC00251FD2 /* UserDefaults+Tutor.swift */; };
 		D54921C225BB3F9400251FD2 /* UserDefaults+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921C125BB3F9400251FD2 /* UserDefaults+Rythmico.swift */; };
 		D54921D025BB46F300251FD2 /* TutorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921CF25BB46F300251FD2 /* TutorStatusView.swift */; };
+		D549B2D526B2FD8900CD419A /* Container+Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = D549B2D426B2FD8900CD419A /* Container+Student.swift */; };
 		D54CF08525F91255007D5050 /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B2522252CF76300BC3932 /* AppSecrets.swift */; };
 		D54CF08725FA8624007D5050 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CF08625FA8624007D5050 /* AnalyticsService.swift */; };
 		D54CF08B25FA8696007D5050 /* AnalyticsServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CF08A25FA8696007D5050 /* AnalyticsServiceDoubles.swift */; };
@@ -426,7 +427,6 @@
 		D5AAF7D923F9EB1200E410F2 /* InstrumentSelectionListProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7D823F9EB1200E410F2 /* InstrumentSelectionListProviderDoubles.swift */; };
 		D5AAF7DB23FB347C00E410F2 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7DA23FB347C00E410F2 /* CollectionView.swift */; };
 		D5AAF7DD23FB431E00E410F2 /* InstrumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7DC23FB431E00E410F2 /* InstrumentView.swift */; };
-		D5AAF7DF23FB444500E410F2 /* RoundedShadowContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */; };
 		D5AC9E26254D8AD7003A8197 /* AppDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E25254D8AD7003A8197 /* AppDoubles.swift */; };
 		D5AC9E27254D8AD7003A8197 /* AppDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E25254D8AD7003A8197 /* AppDoubles.swift */; };
 		D5AC9E2C254D8AE2003A8197 /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E2B254D8AE2003A8197 /* AppLauncher.swift */; };
@@ -859,6 +859,7 @@
 		D54921AE25BB35BC00251FD2 /* UserDefaults+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Tutor.swift"; sourceTree = "<group>"; };
 		D54921C125BB3F9400251FD2 /* UserDefaults+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Rythmico.swift"; sourceTree = "<group>"; };
 		D54921CF25BB46F300251FD2 /* TutorStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorStatusView.swift; sourceTree = "<group>"; };
+		D549B2D426B2FD8900CD419A /* Container+Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Student.swift"; sourceTree = "<group>"; };
 		D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationServiceDoubles.swift; sourceTree = "<group>"; };
 		D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HashFunction+Helpers.swift"; sourceTree = "<group>"; };
 		D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationController.swift; sourceTree = "<group>"; };
@@ -943,7 +944,6 @@
 		D5AAF7D823F9EB1200E410F2 /* InstrumentSelectionListProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionListProviderDoubles.swift; sourceTree = "<group>"; };
 		D5AAF7DA23FB347C00E410F2 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		D5AAF7DC23FB431E00E410F2 /* InstrumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentView.swift; sourceTree = "<group>"; };
-		D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowContainer.swift; sourceTree = "<group>"; };
 		D5AC9E25254D8AD7003A8197 /* AppDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDoubles.swift; sourceTree = "<group>"; };
 		D5AC9E2B254D8AE2003A8197 /* AppLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLauncher.swift; sourceTree = "<group>"; };
 		D5AC9E3E254D957D003A8197 /* RemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfig.swift; sourceTree = "<group>"; };
@@ -1626,6 +1626,7 @@
 				D535554623E20076005A20EB /* Colors.swift */,
 				D53447C8264D74A000A0FF16 /* ComposableNavigator+Sugar.swift */,
 				D516A8FE253A1D6A002E6EDF /* ConfirmationView.swift */,
+				D549B2D426B2FD8900CD419A /* Container+Student.swift */,
 				D5ECD2C026497D9700DE933E /* ContextMenuView.swift */,
 				D516A8F9253A1816002E6EDF /* CoordinatorStateView.swift */,
 				D5ED32622606600C00821ABE /* CustomEditableTextField.swift */,
@@ -1665,7 +1666,6 @@
 				03C39DD52496802500C76516 /* Pill.swift */,
 				D5EF88B523FB706C0072BD03 /* ProgressBar.swift */,
 				D5DDE868259955C200CF565D /* RoundedGrayedDialog.swift */,
-				D5AAF7DE23FB444500E410F2 /* RoundedShadowContainer.swift */,
 				D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */,
 				D5F50662240056FA00CA4094 /* RoundedThinOutlineContainer.swift */,
 				D5B5820226A37B1E0008D9DC /* RythmicoLabel.swift */,
@@ -2782,6 +2782,7 @@
 				D54CF08725FA8624007D5050 /* AnalyticsService.swift in Sources */,
 				D55C35EA25A3A6490023E56B /* CalendarInfo.swift in Sources */,
 				D53555BB23E53699005A20EB /* UserCredentialDoubles.swift in Sources */,
+				D549B2D526B2FD8900CD419A /* Container+Student.swift in Sources */,
 				D53555C223E536AE005A20EB /* AppleAuthorizationCredential.swift in Sources */,
 				D5DE2896260A6BC6002BAB43 /* CustomTextFieldInputAccessory.swift in Sources */,
 				03C39DD82496CA2A00C76516 /* LessonPlanStatusPill.swift in Sources */,
@@ -2803,7 +2804,6 @@
 				D5DAD2782677B2D20014702F /* RequestLessonPlanView+Analytics.swift in Sources */,
 				D5D974F425263FAF000AD074 /* PhoneNumber.swift in Sources */,
 				D5D9AE762534CBB700A0ABCC /* Price.swift in Sources */,
-				D5AAF7DF23FB444500E410F2 /* RoundedShadowContainer.swift in Sources */,
 				D5DAD27A2677B51F0014702F /* LessonPlan+Analytics.swift in Sources */,
 				D535554723E20076005A20EB /* Colors.swift in Sources */,
 				D527B00B24FD3297003E81A9 /* AvatarStackView.swift in Sources */,

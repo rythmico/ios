@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 import ComposableNavigator
 
 struct LessonPlanApplicationsScreen: Screen {
@@ -73,20 +73,21 @@ struct LessonPlanApplicationCell: View {
     }
 
     var body: some View {
-        VStack(spacing: .grid(4)) {
-            TutorAvatarView(application.tutor, mode: .thumbnail)
-                .frame(width: Const.avatarSize, height: Const.avatarSize)
-                .withSmallDBSCheck()
-            Text(application.tutor.name)
-                .rythmicoTextStyle(.bodyBold)
-                .foregroundColor(.rythmico.foreground)
-                .lineLimit(1)
-                .minimumScaleFactor(0.6)
+        Container(style: .outline()) {
+            VStack(spacing: .grid(4)) {
+                TutorAvatarView(application.tutor, mode: .thumbnail)
+                    .frame(width: Const.avatarSize, height: Const.avatarSize)
+                    .withSmallDBSCheck()
+                Text(application.tutor.name)
+                    .rythmicoTextStyle(.bodyBold)
+                    .foregroundColor(.rythmico.foreground)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.6)
+            }
+            .padding(.vertical, .grid(6))
+            .padding(.horizontal, .grid(4))
         }
-        .padding(.vertical, .grid(6))
-        .padding(.horizontal, .grid(4))
         .frame(maxWidth: .infinity)
-        .modifier(RoundedShadowContainer())
     }
 }
 

@@ -6,22 +6,23 @@ struct LessonPlanBookingPolicyView: View {
     var description: String
 
     var body: some View {
-        HStack(spacing: .grid(3)) {
-            Image(decorative: asset.name)
-                .renderingMode(.template)
-                .foregroundColor(.rythmico.purple)
-            VStack(alignment: .leading, spacing: .grid(0.5)) {
-                Text(title)
-                    .rythmicoTextStyle(.calloutBold)
-                    .foregroundColor(.rythmico.foreground)
-                Text(description)
-                    .rythmicoTextStyle(.callout)
-                    .foregroundColor(.rythmico.gray90)
+        Container(style: .outline()) {
+            HStack(spacing: .grid(3)) {
+                Image(decorative: asset.name)
+                    .renderingMode(.template)
+                    .foregroundColor(.rythmico.picoteeBlue)
+                VStack(alignment: .leading, spacing: .grid(0.5)) {
+                    Text(title)
+                        .rythmicoTextStyle(.calloutBold)
+                        .foregroundColor(.rythmico.foreground)
+                    Text(description)
+                        .rythmicoTextStyle(.callout)
+                        .foregroundColor(.rythmico.foreground)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.grid(3))
         }
-        .padding(.grid(3))
-        .modifier(RoundedShadowContainer())
     }
 }
 

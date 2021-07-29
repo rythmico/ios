@@ -11,10 +11,11 @@ struct LessonSummaryCell: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            LessonSummaryCellMainContent(lesson: lesson, lessonDetailScreen: lessonDetailScreen)
+        Container(style: .outline(radius: .large)) {
+            VStack(alignment: .leading, spacing: 0) {
+                LessonSummaryCellMainContent(lesson: lesson, lessonDetailScreen: lessonDetailScreen)
+            }
         }
-        .modifier(RoundedShadowContainer())
     }
 }
 
