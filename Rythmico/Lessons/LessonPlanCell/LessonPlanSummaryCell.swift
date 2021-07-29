@@ -116,9 +116,9 @@ struct LessonPlanSummaryCellAccessory: View {
     }
     var titleAndAction: TitleAndAction? {
         if let action = chooseTutorAction {
-            return (title: "Choose Tutor", action: action)
+            return (title: "Choose tutor", action: action)
         } else if let action = resumePlanAction {
-            return (title: "Resume Plan", action: action)
+            return (title: "Resume plan", action: action)
         } else {
             return nil
         }
@@ -126,20 +126,14 @@ struct LessonPlanSummaryCellAccessory: View {
 
     var body: some View {
         if let titleAndAction = titleAndAction {
-            Divider().overlay(Color.rythmico.gray20)
-
-            Button(action: titleAndAction.action) {
-                HStack(spacing: .grid(3)) {
-                    Text(titleAndAction.title)
-                        .rythmicoTextStyle(.bodySemibold)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Image(systemSymbol: .chevronRight)
-                        .font(.system(size: 18, weight: .medium, design: .rounded))
-                }
-                .padding(.grid(5))
-                .foregroundColor(.rythmico.purple)
+            ZStack {
+                RythmicoButton(
+                    titleAndAction.title,
+                    style: RythmicoButtonStyle.primary(layout: .contrained(.small)),
+                    action: titleAndAction.action
+                )
             }
-            .background(Color.rythmico.purple.opacity(0.02))
+            .padding([.horizontal, .bottom], .grid(5))
         }
     }
 }
