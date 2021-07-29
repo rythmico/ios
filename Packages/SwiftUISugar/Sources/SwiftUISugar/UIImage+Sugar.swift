@@ -1,6 +1,20 @@
 extension CGContext: Then {}
 
 extension UIImage {
+    public static func dynamic(color: UIColor, size: CGSize = .init(width: 1, height: 1)) -> UIImage {
+        let baseModeColor = color.resolvedColor(with: .init(userInterfaceStyle: .unspecified))
+        let darkModeColor = color.resolvedColor(with: .init(userInterfaceStyle: .dark))
+
+        guard baseModeColor != darkModeColor else {
+            return UIImage(solidColor: baseModeColor, size: size)
+        }
+
+        let baseModeImage = UIImage(solidColor: baseModeColor, size: size)
+        let darkModeImage = UIImage(solidColor: darkModeColor, size: size)
+        baseModeImage.imageAsset?.register(darkModeImage, with: .init(userInterfaceStyle: .dark))
+        return baseModeImage
+    }
+
     public convenience init(solidColor color: UIColor, size: CGSize = .init(width: 1, height: 1)) {
         let rect = CGRect(origin: .zero, size: size)
         UIGraphicsBeginImageContext(rect.size)
