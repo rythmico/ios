@@ -23,7 +23,9 @@ extension UIImage {
             preconditionFailure("No UIImage was generated")
         }
     }
+}
 
+extension UIImage {
     // TODO: check if SVG still blurry without resize in SwiftUI 3.
     public func resized(width: CGFloat? = nil, height: CGFloat? = nil) -> UIImage {
         guard let size = size(width: width, height: height) else {
