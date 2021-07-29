@@ -1,12 +1,11 @@
 extension View {
-    public func watermark(_ uiImage: UIImage, offset: CGSize, color: Color? = nil, opacity: Double? = nil) -> some View {
+    public func watermark(_ uiImage: UIImage, offset: CGSize, color: Color? = nil) -> some View {
         modifier(
             WatermarkModifier(
                 uiImage: uiImage,
                 offsetX: offset.width,
                 offsetY: offset.height,
-                color: color,
-                opacity: opacity ?? 0.08
+                color: color
             )
         )
     }
@@ -20,8 +19,9 @@ private struct WatermarkModifier: ViewModifier {
     var offsetX: CGFloat = 0
     @ScaledMetric(relativeTo: .largeTitle)
     var offsetY: CGFloat = 0
+    @Environment(\.colorScheme)
+    var colorScheme
     let color: Color?
-    let opacity: Double
 
     func body(content: Content) -> some View {
         content.background(
@@ -32,7 +32,7 @@ private struct WatermarkModifier: ViewModifier {
                 .frame(width: width)
                 .fixedSize()
                 .foregroundColor(color)
-                .opacity(opacity)
+                .opacity(colorScheme == .dark ? 0.17 : 0.05)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
                 .offset(x: offsetX, y: offsetY)
         )
