@@ -28,7 +28,7 @@ struct LessonPlanApplicationDetailMessageView: View {
                 .frame(maxWidth: .grid(.max))
                 .padding(.horizontal, .grid(5))
 
-                Divider().overlay(Color.rythmico.gray20)
+                HDivider()
 
                 VStack(spacing: .grid(4)) {
                     HStack(spacing: .grid(4)) {

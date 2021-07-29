@@ -24,7 +24,7 @@ struct PortfolioView: View {
                 .id(Self.bioId)
 
                 if !portfolio.training.isEmpty {
-                    Divider().overlay(Color.rythmico.gray20)
+                    HDivider()
                     VStack(spacing: .grid(4)) {
                         header("Training")
                         PortfolioTrainingsView(trainingList: portfolio.training)
@@ -34,7 +34,7 @@ struct PortfolioView: View {
                 }
 
                 if !portfolio.videos.isEmpty || !portfolio.photos.isEmpty {
-                    Divider().overlay(Color.rythmico.gray20)
+                    HDivider()
                 }
 
                 if !portfolio.videos.isEmpty {

@@ -36,7 +36,7 @@ struct TabMenuView<Tab: RawRepresentable>: View where Tab.RawValue == String {
             .frame(maxWidth: .grid(.max))
             .padding(.horizontal, .grid(5))
 
-            Divider().overlay(Color.rythmico.gray20)
+            HDivider()
         }
     }
 }

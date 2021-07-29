@@ -6,7 +6,7 @@ struct FloatingView<Content: View>: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            Divider()
+            HDivider()
             content
                 .frame(maxWidth: .grid(.max), alignment: .center)
                 .padding(.vertical, .grid(3))
