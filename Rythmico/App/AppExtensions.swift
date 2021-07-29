@@ -20,7 +20,7 @@ extension App {
 extension SwiftUI.App {
     // TODO: hopefully to be deleted someday if SwiftUI allows for better customization.
     func configureAppearance() {
-        UINavigationBar.appearance().do { bar in
+        UINavigationBar.appearance().do {
             UINavigationBarAppearance().with {
                 $0.configureWithTransparentBackground()
                 $0.largeTitleTextAttributes = .rythmicoTextAttributes(color: .clear, style: .largeTitle)
@@ -30,16 +30,16 @@ extension SwiftUI.App {
                 $0.setBackIndicatorImage(BackButton.uiImage, transitionMaskImage: BackButton.uiImage)
                 $0.backButtonAppearance.normal.titleTextAttributes = .rythmicoTextAttributes(color: nil, style: .bodyMedium)
             }
-            .assign(to: bar, \.standardAppearance)
-            .assign(to: bar, \.compactAppearance)
-            .assign(to: bar, \.scrollEdgeAppearance)
+            .assign(to: $0, \.standardAppearance)
+            .assign(to: $0, \.compactAppearance)
+            .assign(to: $0, \.scrollEdgeAppearance)
         }
 
         UITableView.appearance().do {
             $0.backgroundColor = .clear
         }
 
-        UITabBar.appearance().do { bar in
+        UITabBar.appearance().do {
             UITabBarAppearance().with {
                 $0.configureWithOpaqueBackground()
                 $0.shadowImage = .dynamic(color: .rythmico.gray20)
@@ -54,7 +54,7 @@ extension SwiftUI.App {
                     $0.selected.titleTextAttributes = .rythmicoTextAttributes(color: nil, style: .caption)
                 }
             }
-            .assign(to: bar, \.standardAppearance)
+            .assign(to: $0, \.standardAppearance)
         }
 
         UISwitch.appearance().do {
