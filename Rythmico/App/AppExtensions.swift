@@ -33,9 +33,6 @@ extension SwiftUI.App {
             .assign(to: bar, \.standardAppearance)
             .assign(to: bar, \.compactAppearance)
             .assign(to: bar, \.scrollEdgeAppearance)
-
-            bar.layoutMargins.left = .grid(5)
-            bar.layoutMargins.right = .grid(5)
         }
 
         UITableView.appearance().do {
