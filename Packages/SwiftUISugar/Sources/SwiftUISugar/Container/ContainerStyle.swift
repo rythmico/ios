@@ -17,6 +17,7 @@ extension ContainerStyle {
         case rectangle
         case roundedRectangle(radius: CGFloat, style: RoundedCornerStyle)
         case capsule(style: RoundedCornerStyle)
+        case circle
     }
 }
 

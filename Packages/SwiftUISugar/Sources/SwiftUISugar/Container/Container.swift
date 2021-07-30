@@ -15,6 +15,8 @@ public struct Container<Content: View>: View {
             body(for: RoundedRectangle(cornerRadius: radius, style: style))
         case .capsule(let style):
             body(for: Capsule(style: style))
+        case .circle:
+            body(for: Circle())
         }
     }
 
