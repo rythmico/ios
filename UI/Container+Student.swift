@@ -12,7 +12,7 @@ extension ContainerStyle.CornerStyle {
 extension ContainerStyle {
     static func outline(radius: CornerStyle.OutlineRadius = .medium) -> Self {
         Self(
-            background: .clear,
+            fill: .clear,
             corner: .init(rounding: .continuous, radius: .value(radius.rawValue)),
             border: .init(color: .rythmico.outline, width: 1.5)
         )
@@ -23,7 +23,7 @@ extension ContainerStyle {
 
 extension ContainerStyle {
     static let box = Self(
-        background: .rythmico.gray2,
+        fill: .rythmico.gray2,
         corner: .init(rounding: .continuous, radius: 8),
         border: .none
     )
@@ -33,7 +33,7 @@ extension ContainerStyle {
 
 extension ContainerStyle {
     static let field = Self(
-        background: .clear,
+        fill: .clear,
         corner: .init(rounding: .continuous, radius: 4),
         border: .init(color: .rythmico.outline, width: 1)
     )

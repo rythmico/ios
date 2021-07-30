@@ -1,10 +1,10 @@
 public struct ContainerStyle: Hashable {
-    public let background: Color
+    public let fill: Color
     public let corner: CornerStyle?
     public let border: BorderStyle?
 
-    public init(background: Color, corner: ContainerStyle.CornerStyle?, border: ContainerStyle.BorderStyle?) {
-        self.background = background
+    public init(fill: Color, corner: ContainerStyle.CornerStyle?, border: ContainerStyle.BorderStyle?) {
+        self.fill = fill
         self.corner = corner
         self.border = border
     }

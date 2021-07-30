@@ -24,7 +24,7 @@ public struct Container<Content: View>: View {
     private func body<S: InsettableShape>(for shape: S) -> some View {
         content
             .clipShape(shape.inset(by: clipShapeInset))
-            .background(shape.fill(style.background))
+            .background(shape.fill(style.fill))
             .overlay(outlineOverlay(for: shape))
     }
 

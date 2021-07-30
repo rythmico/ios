@@ -73,7 +73,7 @@ struct RythmicoButtonStyle: ButtonStyle {
 
     func style(for configuration: Configuration) -> ContainerStyle {
         ContainerStyle(
-            background: backgroundColor(for: configuration, isEnabled: isEnabled),
+            fill: backgroundColor(for: configuration, isEnabled: isEnabled),
             corner: cornerStyle,
             border: .init(color: borderColor(for: configuration, isEnabled: isEnabled), width: 2)
         )
