@@ -41,6 +41,9 @@ struct ColorSet<Color: UIColorProtocol> {
     let tagGreen = Color(light: 0xA7F0BB, dark: 0x96d8a8)
     let tagTextGreen = Color(light: 0x0F6027, dark: 0x0d5623)
 
+    // MARK: --
+
+    let gray2 = Color(light: 0xF8F8F8, dark: 0x191919)
     let gray10 = Color(light: 0xF0F4F7, dark: 0x363637)
     let gray30 = Color(light: 0x9AA3AA, dark: 0x4D5155)
 
