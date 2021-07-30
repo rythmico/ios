@@ -3,7 +3,7 @@ import SwiftUI
 struct AvatarView: View {
     enum Const {
         static let minSize: CGFloat = .grid(8)
-        static let defaultBackgroundColor: Color = .rythmico.gray10
+        static let defaultBackgroundColor: Color = .rythmico.gray1
     }
 
     enum Content {
