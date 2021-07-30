@@ -7,32 +7,33 @@ struct LessonPlanPriceView: View {
     private static let priceFormatter = Current.numberFormatter(format: .price)
 
     var body: some View {
-        VStack(spacing: .grid(4)) {
-            HStack(spacing: .grid(4)) {
-                Text("Price per lesson").rythmicoTextStyle(.bodyBold).frame(maxWidth: .infinity, alignment: .leading)
-                Text(Self.priceFormatter.string(from: price)).rythmicoTextStyle(.bodyBold).multilineTextAlignment(.trailing)
-            }
-            .foregroundColor(.rythmico.foreground)
-
-            Group {
-                Text("Payment will be automatically taken on the day of each lesson.").rythmicoTextStyle(.callout)
-                if showTermsOfService {
-                    Text {
-                        "By confirming your booking you agree to our "
-                        "terms of service and policies".text.underline()
-                        "."
-                    }
-                    .rythmicoTextStyle(.callout)
-                    .onTapGesture(perform: Current.urlOpener.openTermsAndConditionsURL)
+        Container(style: .box) {
+            VStack(spacing: .grid(4)) {
+                HStack(spacing: .grid(4)) {
+                    Text("Price per lesson").rythmicoTextStyle(.bodyBold).frame(maxWidth: .infinity, alignment: .leading)
+                    Text(Self.priceFormatter.string(from: price)).rythmicoTextStyle(.bodyBold).multilineTextAlignment(.trailing)
                 }
+                .foregroundColor(.rythmico.foreground)
+
+                Group {
+                    Text("Payment will be automatically taken on the day of each lesson.").rythmicoTextStyle(.callout)
+                    if showTermsOfService {
+                        Text {
+                            "By confirming your booking you agree to our "
+                            "terms of service and policies".text.underline()
+                            "."
+                        }
+                        .rythmicoTextStyle(.callout)
+                        .onTapGesture(perform: Current.urlOpener.openTermsAndConditionsURL)
+                    }
+                }
+                .foregroundColor(.rythmico.foreground)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .fixedSize(horizontal: false, vertical: true)
             }
-            .foregroundColor(.rythmico.foreground)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .fixedSize(horizontal: false, vertical: true)
+            .padding(.vertical, .grid(6))
+            .padding(.horizontal, .grid(4))
         }
-        .padding(.vertical, .grid(6))
-        .padding(.horizontal, .grid(4))
-        .modifier(RoundedGrayedDialog())
     }
 }
 

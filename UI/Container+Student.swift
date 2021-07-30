@@ -1,5 +1,7 @@
 import SwiftUISugar
 
+// MARK: Outline
+
 extension ContainerStyle.CornerStyle {
     enum OutlineRadius: CGFloat {
         case medium = 8
@@ -15,4 +17,14 @@ extension ContainerStyle {
             border: .init(color: .rythmico.outline, width: 1.5)
         )
     }
+}
+
+// MARK: - Box
+
+extension ContainerStyle {
+    static let box = Self(
+        background: .rythmico.gray2,
+        corner: .init(rounding: .continuous, radius: 8),
+        border: .none
+    )
 }

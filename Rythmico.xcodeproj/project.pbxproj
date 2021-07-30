@@ -508,7 +508,6 @@
 		D5DAD27E26793B970014702F /* LessonPlanApplicationDetailView+Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DAD27D26793B970014702F /* LessonPlanApplicationDetailView+Analytics.swift */; };
 		D5DAD28026793F240014702F /* UUIDDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DAD27F26793F240014702F /* UUIDDoubles.swift */; };
 		D5DDE85E2598E7B300CF565D /* LessonPlanBookingPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DDE85D2598E7B300CF565D /* LessonPlanBookingPolicyView.swift */; };
-		D5DDE869259955C200CF565D /* RoundedGrayedDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DDE868259955C200CF565D /* RoundedGrayedDialog.swift */; };
 		D5DE2896260A6BC6002BAB43 /* CustomTextFieldInputAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DE2895260A6BC6002BAB43 /* CustomTextFieldInputAccessory.swift */; };
 		D5DE2897260A6BC6002BAB43 /* CustomTextFieldInputAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DE2895260A6BC6002BAB43 /* CustomTextFieldInputAccessory.swift */; };
 		D5E04B1923BED80700A161BB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E04B1823BED80700A161BB /* Fonts.swift */; };
@@ -1013,7 +1012,6 @@
 		D5DAD27D26793B970014702F /* LessonPlanApplicationDetailView+Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonPlanApplicationDetailView+Analytics.swift"; sourceTree = "<group>"; };
 		D5DAD27F26793F240014702F /* UUIDDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUIDDoubles.swift; sourceTree = "<group>"; };
 		D5DDE85D2598E7B300CF565D /* LessonPlanBookingPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanBookingPolicyView.swift; sourceTree = "<group>"; };
-		D5DDE868259955C200CF565D /* RoundedGrayedDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedGrayedDialog.swift; sourceTree = "<group>"; };
 		D5DE2895260A6BC6002BAB43 /* CustomTextFieldInputAccessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldInputAccessory.swift; sourceTree = "<group>"; };
 		D5E04B1823BED80700A161BB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -1665,7 +1663,6 @@
 				03AAF66B2444FFCC002D8F5B /* Pickers.swift */,
 				03C39DD52496802500C76516 /* Pill.swift */,
 				D5EF88B523FB706C0072BD03 /* ProgressBar.swift */,
-				D5DDE868259955C200CF565D /* RoundedGrayedDialog.swift */,
 				D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */,
 				D5F50662240056FA00CA4094 /* RoundedThinOutlineContainer.swift */,
 				D5B5820226A37B1E0008D9DC /* RythmicoLabel.swift */,
@@ -2810,7 +2807,6 @@
 				D52438FF268A6D3C00E2D859 /* LessonPlanApplicationDoubles.swift in Sources */,
 				D53555B923E53699005A20EB /* AuthenticationServiceDoubles.swift in Sources */,
 				D5444FEC2602777D00369BA5 /* ImageProcessingService.swift in Sources */,
-				D5DDE869259955C200CF565D /* RoundedGrayedDialog.swift in Sources */,
 				D56B253B2532433E00BC3932 /* ErrorText.swift in Sources */,
 				D5E6A3EF25FE99FE00F74880 /* RootViewFlow.swift in Sources */,
 				D50811E423FB72A3008103D8 /* StepBar.swift in Sources */,
