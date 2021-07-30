@@ -28,3 +28,25 @@ extension ContainerStyle {
         border: .none
     )
 }
+
+#if DEBUG
+struct Container_Previews: PreviewProvider {
+    static let styles: [(String, ContainerStyle)] = [
+        ("Outline (Medium Radius)", .outline(radius: .medium)),
+        ("Outline (Large Radius)", .outline(radius: .large)),
+        ("Box", .box),
+    ]
+
+    static var previews: some View {
+        ForEach(styles, id: \.self.1) { style in
+            Container(style: style.1) {
+                Text("Hello World")
+                    .padding()
+                    .previewDisplayName(style.0)
+            }
+        }
+        .previewLayout(.sizeThatFits)
+        .padding()
+    }
+}
+#endif
