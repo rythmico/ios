@@ -3,5 +3,5 @@ extension Bool {
 }
 
 extension Bool: CaseIterable {
-    public static var allCases: [Bool] { [true, false] }
+    public static var allCases: [Bool] { [false, true] }
 }
