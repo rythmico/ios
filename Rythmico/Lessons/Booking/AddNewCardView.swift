@@ -51,7 +51,7 @@ struct AddNewCardView: View {
         }
         .navigationBarTitle(title)
         .navigationBarItems(trailing: CloseButton(action: dismiss))
-        .accentColor(.rythmico.purple)
+        .accentColor(.rythmico.picoteeBlue)
         .interactiveDismissDisabled(interactiveDismissDisabled)
         .disabled(coordinator.state.isLoading)
         .onSuccess(coordinator, perform: coordinatorSucceeded)

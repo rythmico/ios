@@ -58,7 +58,7 @@ extension SwiftUI.App {
         }
 
         UISwitch.appearance().do {
-            $0.onTintColor = .rythmico.purple
+            $0.onTintColor = .rythmico.picoteeBlue
         }
     }
 }

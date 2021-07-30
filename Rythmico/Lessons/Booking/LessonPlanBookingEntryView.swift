@@ -53,7 +53,7 @@ struct LessonPlanBookingEntryView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .interactiveDismissDisabled()
-        .accentColor(.rythmico.purple)
+        .accentColor(.rythmico.picoteeBlue)
         .onAppear(perform: fetch)
         .onDisappear(perform: coordinator.cancel)
         .alertOnFailure(coordinator)

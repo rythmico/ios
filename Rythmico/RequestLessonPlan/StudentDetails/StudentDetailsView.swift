@@ -58,7 +58,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
     var aboutHeaderTitle: Text {
         "About"
         if let firstName = sanitizedName?.firstWord {
-            firstName.text.foregroundColor(.rythmico.purple)
+            firstName.text.foregroundColor(.rythmico.picoteeBlue)
         } else {
             "Student"
         }
@@ -129,7 +129,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
                             ).modifier(RoundedThinOutlineContainer(padded: false))
                         }
                     }
-                    .accentColor(.rythmico.purple)
+                    .accentColor(.rythmico.picoteeBlue)
                     .frame(maxWidth: .grid(.max))
                     .padding([.trailing, .bottom], .grid(5))
                 }

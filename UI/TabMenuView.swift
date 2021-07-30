@@ -21,7 +21,7 @@ struct TabMenuView<Tab: RawRepresentable>: View where Tab.RawValue == String {
                             Group {
                                 if selection == tab {
                                     Capsule(style: .circular)
-                                        .fill(Color.rythmico.purple)
+                                        .fill(Color.rythmico.picoteeBlue)
                                         .frame(height: selectedTabHeight)
                                         .matchedGeometryEffect(id: "selection", in: selectionAnimation)
                                 }

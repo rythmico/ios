@@ -9,7 +9,7 @@ struct ConfirmationView: View {
             HStack(spacing: .grid(3)) {
                 Image(decorative: Asset.Icon.Misc.checkmark.name)
                     .renderingMode(.template)
-                    .foregroundColor(.rythmico.purple)
+                    .foregroundColor(.rythmico.picoteeBlue)
                 Text(title)
                     .rythmicoTextStyle(.subheadlineBold)
                     .foregroundColor(.rythmico.foreground)

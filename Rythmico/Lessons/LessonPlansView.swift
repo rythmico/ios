@@ -31,7 +31,7 @@ struct LessonPlansView: View {
             LessonPlansCollectionView(lessonPlans: repository.items)
         }
         .backgroundColor(.rythmico.background)
-        .accentColor(.rythmico.purple)
+        .accentColor(.rythmico.picoteeBlue)
         .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(leading: leadingItem)

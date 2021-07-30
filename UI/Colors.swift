@@ -12,13 +12,12 @@ struct ColorSet<Color: UIColorProtocol> {
     let red = Color(light: 0xB00020, dark: 0x9E001C)
 
     let picoteeBlue = Color(light: 0x392396, dark: 0x432AB2)
+    let darkPurple = Color(light: 0x150F2F, dark: 0x726F82)
 
     let extraLightBlue = Color(light: 0xE8F1FF, dark: 0x17386A)
 
 
     let lightPurple = Color(light: 0xE8DAFF, dark: 0xD6BDFF)
-    let purple = Color(light: 0x6558F5, dark: 0x6558F5)
-    let highlightPurple = Color(light: 0x4B3EE5, dark: 0x766CED)
     let darkPurple = Color(light: 0x6929C4, dark: 0x783ec9)
 
     let white = Color(light: 0xFFFFFF, dark: foregroundDarkModeHex)

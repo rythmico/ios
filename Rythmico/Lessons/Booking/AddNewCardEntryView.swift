@@ -47,7 +47,7 @@ struct AddNewCardEntryView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
         }
-        .accentColor(.rythmico.purple)
+        .accentColor(.rythmico.picoteeBlue)
         .onAppear(perform: coordinator.start)
         .onDisappear(perform: coordinator.cancel)
         .alertOnFailure(coordinator, onDismiss: dismiss)

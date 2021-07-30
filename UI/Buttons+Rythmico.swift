@@ -30,7 +30,7 @@ extension RythmicoButtonStyle {
         RythmicoButtonStyle(
             layout: layout,
             foregroundColor: (normal: .rythmico.white, pressed: .rythmico.white),
-            backgroundColor: (normal: .rythmico.purple, pressed: .rythmico.highlightPurple),
+            backgroundColor: (normal: .rythmico.picoteeBlue, pressed: .rythmico.darkPurple),
             borderColor: (normal: .clear, pressed: .clear)
         )
     }
@@ -38,9 +38,9 @@ extension RythmicoButtonStyle {
     static func secondary(layout: RythmicoButtonStyleLayout = .expansive) -> RythmicoButtonStyle {
         RythmicoButtonStyle(
             layout: layout,
-            foregroundColor: (normal: .rythmico.purple, pressed: .rythmico.white),
-            backgroundColor: (normal: .clear, pressed: .rythmico.purple),
-            borderColor: (normal: .rythmico.purple, pressed: .rythmico.purple)
+            foregroundColor: (normal: .rythmico.picoteeBlue, pressed: .rythmico.white),
+            backgroundColor: (normal: .clear, pressed: .rythmico.picoteeBlue),
+            borderColor: (normal: .rythmico.picoteeBlue, pressed: .rythmico.picoteeBlue)
         )
     }
 

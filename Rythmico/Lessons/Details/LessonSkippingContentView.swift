@@ -11,7 +11,7 @@ struct LessonSkippingContentView: View {
                     Text("This will cancel your payment for this lesson.").rythmicoTextStyle(.body)
                     Text(separator: .whitespace) {
                         "Skip for"
-                        "FREE".text.foregroundColor(.rythmico.purple).rythmicoFontWeight(.bodyBold)
+                        "FREE".text.foregroundColor(.rythmico.picoteeBlue).rythmicoFontWeight(.bodyBold)
                         "within"
                         remainingTimeString.text.rythmicoFontWeight(.bodyBold) + String.period.text
                     }

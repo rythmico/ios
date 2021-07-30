@@ -86,7 +86,7 @@ struct AddressDetailsView: View, TestableView {
                             Spacer()
                         }
                     }
-                    .accentColor(.rythmico.purple)
+                    .accentColor(.rythmico.picoteeBlue)
                     .frame(maxWidth: .grid(.max))
                     .padding([.trailing, .bottom], .grid(5))
                 }

@@ -44,7 +44,7 @@ extension LessonPlanCancellationView {
                 }
                 .disabled(submitButtonAction == nil)
             }
-            .accentColor(.rythmico.purple)
+            .accentColor(.rythmico.picoteeBlue)
             .testable(self)
             .animation(.rythmicoSpring(duration: .durationShort), value: submitButtonAction != nil)
             .onChange(of: selectedReason, perform: handleRearrangementNeededReason)

@@ -40,7 +40,7 @@ struct PhoneNumberField: UIViewRepresentable {
         uiView._defaultRegion = env.locale.regionCode
         let font = UIFont.rythmicoFont(.body)
         uiView.font = font
-        uiView.inputAccessoryView = UIToolbar.dismissKeyboardTooltip(color: .rythmico.purple)
+        uiView.inputAccessoryView = UIToolbar.dismissKeyboardTooltip(color: .rythmico.picoteeBlue)
         uiView.updateFlag()
         uiView.updatePlaceholder()
     }

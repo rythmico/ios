@@ -70,7 +70,7 @@ struct CustomTextField: UIViewRepresentable {
         textField.font = .rythmicoFont(.body)
         textField.isUserInteractionEnabled = isEditable
         textField.inputView = inputMode.view(for: textField)
-        textField.inputAccessoryView = inputAccessory?.view(accentColor: .rythmico.purple)
+        textField.inputAccessoryView = inputAccessory?.view(accentColor: .rythmico.picoteeBlue)
         textField.delegate = context.coordinator
         textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         textField.setContentHuggingPriority(.defaultHigh, for: .vertical)

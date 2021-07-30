@@ -1,7 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "New Request.svg",
+      "filename" : "Instrument.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Instrument-1.svg",
       "idiom" : "universal"
     }
   ],

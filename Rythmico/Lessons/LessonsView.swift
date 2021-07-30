@@ -57,7 +57,7 @@ struct LessonsView: View, TestableView {
             }
         }
         .backgroundColor(.rythmico.background)
-        .accentColor(.rythmico.purple)
+        .accentColor(.rythmico.picoteeBlue)
         .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(leading: leadingItem, trailing: trailingItem)
