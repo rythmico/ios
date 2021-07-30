@@ -8,4 +8,10 @@ extension Image {
             .aspectRatio(contentMode: .fit)
             .frame(width: 16)
     }
+
+    static func checkmarkIcon(color: Color) -> some View {
+        Image(decorative: Asset.Icon.Misc.checkmark.name)
+            .renderingMode(.template)
+            .foregroundColor(color)
+    }
 }
