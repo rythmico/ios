@@ -20,3 +20,13 @@ struct InfoBanner: View {
         .clipShape(RoundedRectangle(cornerRadius: .grid(1), style: .continuous))
     }
 }
+
+#if DEBUG
+struct InfoBanner_Previews: PreviewProvider {
+    static var previews: some View {
+        InfoBanner(text: "Hello World")
+            .previewLayout(.sizeThatFits)
+            .padding()
+    }
+}
+#endif
