@@ -11,7 +11,7 @@ public struct Container<Content: View>: View {
         switch style.shape {
         case .rectangle:
             body(for: Rectangle())
-        case .roundedRectangle(let radius, let style):
+        case .squircle(let radius, let style):
             body(for: RoundedRectangle(cornerRadius: radius, style: style))
         case .capsule(let style):
             body(for: Capsule(style: style))

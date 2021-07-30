@@ -15,7 +15,7 @@ struct AddressMapCell: View {
         Group {
             VStack(alignment: .leading, spacing: .grid(3)) {
                 Container(
-                    style: .init(fill: .gray, shape: .roundedRectangle(radius: .grid(2), style: .continuous), border: .none),
+                    style: .init(fill: .gray, shape: .squircle(radius: .grid(2), style: .continuous), border: .none),
                     content: { NonInteractiveMap(coordinate: coordinate, showsPin: isFullAddress) }
                 )
                 .frame(height: 160)

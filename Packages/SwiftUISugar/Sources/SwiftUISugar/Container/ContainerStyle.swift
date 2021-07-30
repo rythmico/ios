@@ -15,7 +15,7 @@ public struct ContainerStyle: Hashable {
 extension ContainerStyle {
     public enum Shape: Hashable {
         case rectangle
-        case roundedRectangle(radius: CGFloat, style: RoundedCornerStyle)
+        case squircle(radius: CGFloat, style: RoundedCornerStyle)
         case capsule(style: RoundedCornerStyle)
         case circle
     }

@@ -7,7 +7,7 @@ struct InfoBanner: View {
         Container(
             style: .init(
                 fill: .rythmico.azureBlue,
-                shape: .roundedRectangle(radius: 4, style: .continuous),
+                shape: .squircle(radius: 4, style: .continuous),
                 border: .none
             )
         ) {

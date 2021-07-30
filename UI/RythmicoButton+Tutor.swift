@@ -10,7 +10,7 @@ extension RythmicoButtonStyle {
         opacity: StateOpacity = .init(normal: 1)
     ) {
         self.init(
-            shape: .roundedRectangle(radius: 8, style: .continuous),
+            shape: .squircle(radius: 8, style: .continuous),
             layout: layout,
             mapTitle: { AnyView($0.font(font)) },
             foregroundColor: foregroundColor,

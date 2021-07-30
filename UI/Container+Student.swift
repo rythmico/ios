@@ -13,7 +13,7 @@ extension ContainerStyle {
     static func outline(radius: Shape.OutlineRadius = .medium) -> Self {
         Self(
             fill: .clear,
-            shape: .roundedRectangle(radius: radius.rawValue, style: .continuous),
+            shape: .squircle(radius: radius.rawValue, style: .continuous),
             border: .init(color: .rythmico.outline, width: 1.5)
         )
     }
@@ -24,7 +24,7 @@ extension ContainerStyle {
 extension ContainerStyle {
     static let box = Self(
         fill: .rythmico.gray2,
-        shape: .roundedRectangle(radius: 8, style: .continuous),
+        shape: .squircle(radius: 8, style: .continuous),
         border: .none
     )
 }
@@ -34,7 +34,7 @@ extension ContainerStyle {
 extension ContainerStyle {
     static let field = Self(
         fill: .clear,
-        shape: .roundedRectangle(radius: 4, style: .continuous),
+        shape: .squircle(radius: 4, style: .continuous),
         border: .init(color: .rythmico.outline, width: 1)
     )
 }
