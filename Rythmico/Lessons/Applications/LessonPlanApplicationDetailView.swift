@@ -62,7 +62,7 @@ struct LessonPlanApplicationDetailView: View {
 
             FloatingView {
                 VStack(spacing: .grid(2)) {
-                    RythmicoButton(bookButtonTitle, style: RythmicoButtonStyle.primary(), action: book)
+                    RythmicoButton(bookButtonTitle, style: .primary(), action: book)
                     frequencyText
                 }
             }

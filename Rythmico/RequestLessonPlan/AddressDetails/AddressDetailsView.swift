@@ -96,7 +96,7 @@ struct AddressDetailsView: View, TestableView {
 
                 nextButtonAction.map { action in
                     FloatingView {
-                        RythmicoButton("Next", style: RythmicoButtonStyle.primary(), action: action)
+                        RythmicoButton("Next", style: .primary(), action: action)
                     }
                 }
             }

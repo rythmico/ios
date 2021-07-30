@@ -110,7 +110,7 @@ struct ReviewRequestView: View, TestableView {
                 .padding(.leading, .grid(5))
 
                 FloatingView {
-                    RythmicoButton("Confirm Details", style: RythmicoButtonStyle.primary(), action: submitRequest)
+                    RythmicoButton("Confirm Details", style: .primary(), action: submitRequest)
                 }
             }
         }

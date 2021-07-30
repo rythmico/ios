@@ -143,7 +143,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
 
                 if let action = nextButtonAction {
                     FloatingView {
-                        RythmicoButton("Next", style: RythmicoButtonStyle.primary(), action: action)
+                        RythmicoButton("Next", style: .primary(), action: action)
                     }
                 }
             }

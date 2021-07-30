@@ -40,7 +40,7 @@ extension LessonPlanCancellationView {
                 .frame(maxHeight: .infinity, alignment: .top)
 
                 FloatingView {
-                    RythmicoButton("Cancel Lesson Plan", style: RythmicoButtonStyle.secondary(), action: submitButtonAction ?? {})
+                    RythmicoButton("Cancel Lesson Plan", style: .secondary(), action: submitButtonAction ?? {})
                 }
                 .disabled(submitButtonAction == nil)
             }

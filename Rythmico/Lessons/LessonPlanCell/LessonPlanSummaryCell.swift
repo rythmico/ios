@@ -127,7 +127,7 @@ struct LessonPlanSummaryCellAccessory: View {
             ZStack {
                 RythmicoButton(
                     titleAndAction.title,
-                    style: RythmicoButtonStyle.primary(layout: .contrained(.small)),
+                    style: .primary(layout: .contrained(.small)),
                     action: titleAndAction.action
                 )
             }

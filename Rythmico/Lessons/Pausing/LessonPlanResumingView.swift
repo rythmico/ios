@@ -46,7 +46,7 @@ struct LessonPlanResumingView: View {
                     }
 
                     FloatingView {
-                        RythmicoButton(submitButtonTitle, style: RythmicoButtonStyle.secondary(), action: submit)
+                        RythmicoButton(submitButtonTitle, style: .secondary(), action: submit)
                     }
                 }
             }

@@ -49,7 +49,7 @@ struct LessonSkippingView: View {
                     }
 
                     FloatingView {
-                        RythmicoButton(submitButtonTitle, style: RythmicoButtonStyle.secondary(), action: onSkipButtonPressed)
+                        RythmicoButton(submitButtonTitle, style: .secondary(), action: onSkipButtonPressed)
                             .actionSheet(isPresented: $showingConfirmationSheet) {
                                 ActionSheet(
                                     title: Text("Are you sure?"),

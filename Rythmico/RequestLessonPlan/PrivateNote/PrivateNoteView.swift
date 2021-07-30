@@ -64,7 +64,7 @@ struct PrivateNoteView: View, FocusableView, TestableView {
                 .padding(.leading, .grid(5))
 
                 FloatingView {
-                    RythmicoButton("Next", style: RythmicoButtonStyle.primary(), action: nextButtonAction)
+                    RythmicoButton("Next", style: .primary(), action: nextButtonAction)
                 }
             }
         }

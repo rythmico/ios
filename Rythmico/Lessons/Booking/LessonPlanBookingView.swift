@@ -70,7 +70,7 @@ struct LessonPlanBookingView: View {
                                 }
 
                                 HDividerContainer {
-                                    RythmicoButton("Add new card", style: RythmicoLinkButtonStyle.quaternary(), action: addNewCard)
+                                    RythmicoButton("Add new card", style: .quaternary(), action: addNewCard)
                                 }
                                 .frame(maxWidth: .grid(.max))
 
@@ -84,7 +84,7 @@ struct LessonPlanBookingView: View {
                     }
                 }
                 FloatingView {
-                    RythmicoButton("Confirm Booking", style: RythmicoButtonStyle.primary(), action: confirmAction)
+                    RythmicoButton("Confirm Booking", style: .primary(), action: confirmAction)
                 }
                 .disabled(!canConfirm)
             }

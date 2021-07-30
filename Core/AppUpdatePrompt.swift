@@ -34,11 +34,11 @@ struct AppUpdatePrompt: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 #if RYTHMICO
                 if shouldShowUpdateButton {
-                    RythmicoButton("Update \(App.name)", style: RythmicoButtonStyle.primary()) {
+                    RythmicoButton("Update \(App.name)", style: .primary()) {
                         Current.urlOpener.open(method.url(forAppId: appId))
                     }
                 } else {
-                    RythmicoButton("Download the TestFlight App", style: RythmicoButtonStyle.secondary()) {
+                    RythmicoButton("Download the TestFlight App", style: .secondary()) {
                         Current.urlOpener.open(App.DistributionMethod.appStore.url(forAppId: Const.testFlightAppId))
                     }
                 }

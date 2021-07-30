@@ -45,7 +45,7 @@ struct AddNewCardView: View {
                 coordinator: coordinator
             ) { action in
                 FloatingView {
-                    RythmicoButton("Save Card", style: RythmicoButtonStyle.primary(), action: action)
+                    RythmicoButton("Save Card", style: .primary(), action: action)
                 }
             }
             .disabled(!confirmButtonEnabled)

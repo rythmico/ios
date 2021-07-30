@@ -139,7 +139,7 @@ struct SchedulingView: View, FocusableView, TestableView {
                 ZStack(alignment: .bottom) {
                     nextButtonAction.map { action in
                         FloatingView {
-                            RythmicoButton("Next", style: RythmicoButtonStyle.primary(), action: action)
+                            RythmicoButton("Next", style: .primary(), action: action)
                         }
                         .zIndex(0)
                     }
