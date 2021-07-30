@@ -67,35 +67,28 @@ struct Button_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             VStack(spacing: .grid(4)) {
-                RythmicoButton("Next", style: .primary(layout: .contrained(.small)), action: {})
-                RythmicoButton("Next", style: .primary(layout: .contrained(.medium)), action: {})
-                RythmicoButton("Next", style: .primary(), action: {})
-                RythmicoButton("Next", style: .primary(), action: {}).disabled(true)
+                allVariants(for: RythmicoButtonStyle.primary)
             }
-
             VStack(spacing: .grid(4)) {
-                RythmicoButton("Next", style: .secondary(layout: .contrained(.small)), action: {})
-                RythmicoButton("Next", style: .secondary(layout: .contrained(.medium)), action: {})
-                RythmicoButton("Next", style: .secondary(), action: {})
-                RythmicoButton("Next", style: .secondary(), action: {}).disabled(true)
+                allVariants(for: RythmicoButtonStyle.secondary)
             }
-
             VStack(spacing: .grid(4)) {
-                RythmicoButton("Next", style: .tertiary(layout: .contrained(.small)), action: {})
-                RythmicoButton("Next", style: .tertiary(layout: .contrained(.medium)), action: {})
-                RythmicoButton("Next", style: .tertiary(), action: {})
-                RythmicoButton("Next", style: .tertiary(), action: {}).disabled(true)
+                allVariants(for: RythmicoButtonStyle.tertiary)
             }
-
             VStack(spacing: .grid(4)) {
-                RythmicoButton("Next", style: .quaternary(layout: .contrained(.small)), action: {})
-                RythmicoButton("Next", style: .quaternary(layout: .contrained(.medium)), action: {})
-                RythmicoButton("Next", style: .quaternary(), action: {})
-                RythmicoButton("Next", style: .quaternary(), action: {}).disabled(true)
+                allVariants(for: RythmicoButtonStyle.quaternary)
             }
         }
         .previewLayout(.sizeThatFits)
         .padding()
+    }
+
+    @ViewBuilder
+    static func allVariants(for styleFromLayout: (RythmicoButtonStyle.Layout) -> RythmicoButtonStyle) -> some View {
+        RythmicoButton("Next", style: styleFromLayout(.contrained(.small)), action: {})
+        RythmicoButton("Next", style: styleFromLayout(.contrained(.medium)), action: {})
+        RythmicoButton("Next", style: styleFromLayout(.expansive), action: {})
+        RythmicoButton("Next", style: styleFromLayout(.expansive), action: {}).disabled(true)
     }
 }
 #endif
