@@ -46,11 +46,7 @@ struct RythmicoButtonStyle {
     let foregroundColor: StateColor
     let backgroundColor: StateColor
     let borderColor: StateColor
-    var opacity: StateOpacity = .default
-}
-
-extension RythmicoButtonStyle.StateOpacity {
-    static let `default` = Self(normal: 1, disabled: 0.5)
+    var opacity: StateOpacity = .init(normal: 1)
 }
 
 extension RythmicoButtonStyle {
@@ -76,7 +72,7 @@ extension RythmicoButtonStyle {
                     .frame(maxWidth: maxWidth, minHeight: minHeight)
             }
             .contentShape(Rectangle())
-            .opacity(opacity(for: configuration, isEnabled: isEnabled))
+            .opacity(opacity(for: configuration, isEnabled: isEnabled, fallbackValues: [\.disabled: 0.5]))
         })
     }
 
@@ -106,10 +102,16 @@ extension RythmicoButtonStyle.StateValue: Hashable where T: Hashable {}
 extension RythmicoButtonStyle.StateValue: Equatable where T: Equatable {}
 
 extension RythmicoButtonStyle.StateValue {
-    func callAsFunction(for configuration: ButtonStyleConfiguration, isEnabled: Bool) -> T {
+    typealias FallbackValues = [KeyPath<Self, T?>: T]
+
+    func callAsFunction(
+        for configuration: ButtonStyleConfiguration,
+        isEnabled: Bool,
+        fallbackValues: FallbackValues = [:]
+    ) -> T {
         switch (configuration.isPressed, isEnabled) {
-        case (_, false): return disabled ?? normal
-        case (true, _): return pressed ?? normal
+        case (_, false): return disabled ?? fallbackValues[\.disabled] ?? normal
+        case (true, _): return pressed ?? fallbackValues[\.pressed] ?? normal
         case (false, _): return normal
         }
     }

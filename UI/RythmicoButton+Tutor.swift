@@ -7,7 +7,7 @@ extension RythmicoButtonStyle {
         foregroundColor: StateColor,
         backgroundColor: StateColor,
         borderColor: StateColor,
-        opacity: StateOpacity = .default
+        opacity: StateOpacity = .init(normal: 1)
     ) {
         self.init(
             shape: .roundedRectangle(radius: 8, style: .continuous),
