@@ -29,12 +29,23 @@ extension ContainerStyle {
     )
 }
 
+// MARK: - Field
+
+extension ContainerStyle {
+    static let field = Self(
+        background: .clear,
+        corner: .init(rounding: .continuous, radius: 4),
+        border: .init(color: .rythmico.outline, width: 1)
+    )
+}
+
 #if DEBUG
 struct Container_Previews: PreviewProvider {
     static let styles: [(String, ContainerStyle)] = [
         ("Outline (Medium Radius)", .outline(radius: .medium)),
         ("Outline (Large Radius)", .outline(radius: .large)),
         ("Box", .box),
+        ("Field", .field),
     ]
 
     static var previews: some View {

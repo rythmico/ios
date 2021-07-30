@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 import PhoneNumberKit
 
 struct PhoneNumberInputView: View {
@@ -9,9 +9,10 @@ struct PhoneNumberInputView: View {
         VStack(spacing: .grid(4)) {
             contactNumberInstructions.frame(maxWidth: .infinity, alignment: .leading)
             VStack(spacing: .grid(3)) {
-                PhoneNumberField($phoneNumber, inputError: $phoneNumberInputError)
-                    .padding(.horizontal, .grid(2.5))
-                    .modifier(RoundedThinOutlineContainer(padded: false))
+                Container(style: .field) {
+                    PhoneNumberField($phoneNumber, inputError: $phoneNumberInputError)
+                        .padding(.horizontal, .grid(2.5))
+                }
                 if let error = phoneNumberInputError {
                     ErrorText(error)
                 }

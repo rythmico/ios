@@ -99,12 +99,14 @@ struct StudentDetailsView: View, FocusableView, TestableView {
                 ScrollView {
                     VStack(alignment: .leading, spacing: .grid(6)) {
                         HeaderContentView(title: "Full Name") {
-                            CustomTextField(
-                                "Enter Name...",
-                                text: $state.name,
-                                inputMode: KeyboardInputMode(contentType: .name, autocapitalization: .words),
-                                onEditingChanged: fullNameEditingChanged
-                            ).modifier(RoundedThinOutlineContainer(padded: false))
+                            Container(style: .field) {
+                                CustomTextField(
+                                    "Enter Name...",
+                                    text: $state.name,
+                                    inputMode: KeyboardInputMode(contentType: .name, autocapitalization: .words),
+                                    onEditingChanged: fullNameEditingChanged
+                                )
+                            }
                         }
                         HeaderContentView(title: "Date of Birth", titleAccessory: {
                             InfoDisclaimerButton(
@@ -112,21 +114,25 @@ struct StudentDetailsView: View, FocusableView, TestableView {
                                 message: "This gives tutors a better understanding of the learning requirements for each student, and will help to plan their lessons accordingly."
                             )
                         }) {
-                            CustomTextField(
-                                dateOfBirthPlaceholderText,
-                                text: .constant(dateOfBirthText ?? .empty),
-                                inputMode: DatePickerInputMode(selection: $state.dateOfBirth.or(dateOfBirthPlaceholder), mode: .date),
-                                inputAccessory: .doneButton,
-                                onEditingChanged: dateOfBirthEditingChanged
-                            ).modifier(RoundedThinOutlineContainer(padded: false))
+                            Container(style: .field) {
+                                CustomTextField(
+                                    dateOfBirthPlaceholderText,
+                                    text: .constant(dateOfBirthText ?? .empty),
+                                    inputMode: DatePickerInputMode(selection: $state.dateOfBirth.or(dateOfBirthPlaceholder), mode: .date),
+                                    inputAccessory: .doneButton,
+                                    onEditingChanged: dateOfBirthEditingChanged
+                                )
+                            }
                         }
                         HeaderContentView(title: aboutHeaderTitle) {
-                            MultilineTextField(
-                                "Existing instrument prowess etc.",
-                                text: $state.about,
-                                inputAccessory: .none,
-                                onEditingChanged: aboutEditingChanged
-                            ).modifier(RoundedThinOutlineContainer(padded: false))
+                            Container(style: .field) {
+                                MultilineTextField(
+                                    "Existing instrument prowess etc.",
+                                    text: $state.about,
+                                    inputAccessory: .none,
+                                    onEditingChanged: aboutEditingChanged
+                                )
+                            }
                         }
                     }
                     .accentColor(.rythmico.picoteeBlue)

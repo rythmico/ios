@@ -97,29 +97,33 @@ struct SchedulingView: View, FocusableView, TestableView {
 
                         HStack(spacing: .grid(3)) {
                             HeaderContentView(title: "Time") {
-                                CustomTextField(
-                                    "Time...",
-                                    text: .constant(startTimeText ?? .empty),
-                                    inputMode: DatePickerInputMode(
-                                        selection: $state.startTime.or(defaultStartTime),
-                                        mode: .time
-                                    ),
-                                    inputAccessory: .doneButton,
-                                    onEditingChanged: onEditingStartTimeChanged
-                                ).modifier(RoundedThinOutlineContainer(padded: false))
+                                Container(style: .field) {
+                                    CustomTextField(
+                                        "Time...",
+                                        text: .constant(startTimeText ?? .empty),
+                                        inputMode: DatePickerInputMode(
+                                            selection: $state.startTime.or(defaultStartTime),
+                                            mode: .time
+                                        ),
+                                        inputAccessory: .doneButton,
+                                        onEditingChanged: onEditingStartTimeChanged
+                                    )
+                                }
                             }
 
                             HeaderContentView(title: "Duration") {
-                                CustomTextField(
-                                    "Duration...",
-                                    text: .constant(durationText ?? .empty),
-                                    inputMode: PickerInputMode(
-                                        selection: $state.duration.or(defaultDuration),
-                                        formatter: \.title
-                                    ),
-                                    inputAccessory: .doneButton,
-                                    onEditingChanged: onEditingDurationChanged
-                                ).modifier(RoundedThinOutlineContainer(padded: false))
+                                Container(style: .field) {
+                                    CustomTextField(
+                                        "Duration...",
+                                        text: .constant(durationText ?? .empty),
+                                        inputMode: PickerInputMode(
+                                            selection: $state.duration.or(defaultDuration),
+                                            formatter: \.title
+                                        ),
+                                        inputAccessory: .doneButton,
+                                        onEditingChanged: onEditingDurationChanged
+                                    )
+                                }
                             }
                         }
 

@@ -47,13 +47,15 @@ struct PrivateNoteView: View, FocusableView, TestableView {
             VStack(spacing: 0) {
                 ScrollView {
                     HeaderContentView(title: privateNoteHeaderTitle) {
-                        MultilineTextField(
-                            "Message prospective tutors...",
-                            text: $state.privateNote,
-                            inputAccessory: .none,
-                            minHeight: 120,
-                            onEditingChanged: noteEditingChanged
-                        ).modifier(RoundedThinOutlineContainer(padded: false))
+                        Container(style: .field) {
+                            MultilineTextField(
+                                "Message prospective tutors...",
+                                text: $state.privateNote,
+                                inputAccessory: .none,
+                                minHeight: 120,
+                                onEditingChanged: noteEditingChanged
+                            )
+                        }
                     }
                     .frame(maxWidth: .grid(.max))
                     .padding([.trailing, .bottom], .grid(5))

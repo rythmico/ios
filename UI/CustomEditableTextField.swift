@@ -12,7 +12,7 @@ struct CustomEditableTextField<EditingView: View>: View {
     private var animation
 
     var body: some View {
-        ZStack {
+        Container(style: .field) {
             switch isEditing {
             case false:
                 textField.matchedGeometryEffect(id: animation, in: animation, properties: .size)
@@ -20,7 +20,6 @@ struct CustomEditableTextField<EditingView: View>: View {
                 editingView.matchedGeometryEffect(id: animation, in: animation, properties: .size)
             }
         }
-        .modifier(RoundedThinOutlineContainer(padded: false))
     }
 
     private var textField: some View {

@@ -17,9 +17,10 @@ struct AddNewCardView: View {
             TitleSubtitleContentView(title: title, subtitle: subtitle) {
                 VStack(spacing: .grid(5)) {
                     HStack(spacing: .grid(5)) {
-                        StripePaymentCardTextField(cardDetails: $cardDetails, cardIsValid: $cardIsValid)
-                            .padding(.vertical, .grid(1))
-                            .modifier(RoundedThinOutlineContainer(padded: false))
+                        Container(style: .field) {
+                            StripePaymentCardTextField(cardDetails: $cardDetails, cardIsValid: $cardIsValid)
+                                .padding(.vertical, .grid(1))
+                        }
                         if coordinator.state.isLoading {
                             ActivityIndicator(color: .rythmico.foreground)
                         }

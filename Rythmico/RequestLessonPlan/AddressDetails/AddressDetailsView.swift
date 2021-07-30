@@ -57,12 +57,14 @@ struct AddressDetailsView: View, TestableView {
                                 )
                             }) {
                                 ZStack {
-                                    CustomTextField(
-                                        "NW1 7FB",
-                                        text: $state.postcode,
-                                        inputMode: KeyboardInputMode(contentType: .postalCode, autocapitalization: .allCharacters, returnKey: .search),
-                                        onCommit: searchAddresses
-                                    ).modifier(RoundedThinOutlineContainer(padded: false))
+                                    Container(style: .field) {
+                                        CustomTextField(
+                                            "NW1 7FB",
+                                            text: $state.postcode,
+                                            inputMode: KeyboardInputMode(contentType: .postalCode, autocapitalization: .allCharacters, returnKey: .search),
+                                            onCommit: searchAddresses
+                                        )
+                                    }
                                     HStack {
                                         Spacer()
                                         if isLoading {
