@@ -73,6 +73,6 @@ extension LessonPlan {
 extension RangeReplaceableCollection where Element == LessonPlan {
     func allLessons() -> [Lesson] {
         self.compactMap(\.lessons)
-            .flatten()
+            .flattened()
     }
 }

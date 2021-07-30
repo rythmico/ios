@@ -14,7 +14,7 @@ extension Sequence {
 }
 
 extension Sequence where Element: Sequence {
-    public func flatten() -> [Element.Element] {
+    public func flattened() -> [Element.Element] {
         flatMap { $0 }
     }
 }
