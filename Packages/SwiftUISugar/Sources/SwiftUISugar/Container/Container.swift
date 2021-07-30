@@ -1,10 +1,10 @@
 public struct Container<Content: View>: View {
     private var style: ContainerStyle
-    private var content: Content
+    private var content: () -> Content
 
-    public init(style: ContainerStyle, @ViewBuilder content: () -> Content) {
+    public init(style: ContainerStyle, @ViewBuilder content: @escaping () -> Content) {
         self.style = style
-        self.content = content()
+        self.content = content
     }
 
     public var body: some View {
@@ -22,7 +22,7 @@ public struct Container<Content: View>: View {
 
     @ViewBuilder
     private func body<S: InsettableShape>(for shape: S) -> some View {
-        content
+        ZStack(content: content)
             .clipShape(shape.inset(by: clipShapeInset))
             .background(shape.fill(style.fill))
             .overlay(outlineOverlay(for: shape))
