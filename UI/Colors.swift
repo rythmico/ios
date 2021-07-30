@@ -20,8 +20,8 @@ struct ColorSet<Color: UIColorProtocol> {
     let lightPurple = Color(light: 0xE8DAFF, dark: 0xD6BDFF)
     let darkPurple = Color(light: 0x6929C4, dark: 0x783ec9)
 
-    let white = Color(light: 0xFFFFFF, dark: foregroundDarkModeHex)
     let foreground = Color(light: 0x150F2F, dark: 0xE8E8E8)
+    let white = Color(light: 0xFFFFFF, dark: 0xE8E8E8)
 
     let gray5 = Color(light: 0xFAFAFA, dark: 0x191919)
     let outline = Color(light: 0xE7E7E7, dark: 0x2B2B2B)
@@ -48,8 +48,3 @@ struct ColorSet<Color: UIColorProtocol> {
     let backgroundSecondary = Color(light: 0xFFFFFF, dark: 0x181818)
     let backgroundTertiary = Color(light: 0xFFFFFF, dark: 0x1e1e1e)
 }
-
-// Shared colors.
-
-private let foregroundLightModeHex: UInt = 0x1B1D22
-private let foregroundDarkModeHex: UInt = 0xe8e8e8
