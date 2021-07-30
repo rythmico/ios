@@ -23,3 +23,16 @@ struct StepBar: View {
         .accessibility(value: Text("\(currentStep) out of \(totalSteps) steps completed"))
     }
 }
+
+#if DEBUG
+struct StepBar_Previews: PreviewProvider {
+    static var previews: some View {
+        let steps = 0...4
+        ForEach(steps, id: \.self) { step in
+            StepBar(step, of: steps.upperBound)
+        }
+        .previewLayout(.sizeThatFits)
+        .padding()
+    }
+}
+#endif
