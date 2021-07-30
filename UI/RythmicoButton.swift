@@ -55,7 +55,7 @@ struct RythmicoButtonStyle: ButtonStyle {
     let foregroundColor: StateColor
     let backgroundColor: StateColor
     let borderColor: StateColor
-    var opacity: StateOpacity = .init(normal: 1)
+    var opacity: StateOpacity = .default
 
     func makeBody(configuration: Configuration) -> some View {
         Container(style: style(for: configuration)) {
@@ -64,10 +64,10 @@ struct RythmicoButtonStyle: ButtonStyle {
                 .minimumScaleFactor(0.6)
                 .padding(.horizontal, .grid(3))
                 .foregroundColor(foregroundColor(for: configuration, isEnabled: isEnabled))
-                .opacity(opacity(for: configuration, isEnabled: isEnabled))
                 .frame(maxWidth: maxWidth, minHeight: minHeight)
         }
         .contentShape(Rectangle())
+        .opacity(opacity(for: configuration, isEnabled: isEnabled))
     }
 
     func style(for configuration: Configuration) -> ContainerStyle {
@@ -90,4 +90,8 @@ struct RythmicoButtonStyle: ButtonStyle {
             return 38
         }
     }
+}
+
+extension RythmicoButtonStyle.StateOpacity {
+    static let `default` = Self(normal: 1, disabled: 0.5)
 }
