@@ -14,10 +14,13 @@ struct AddressMapCell: View {
     var body: some View {
         Group {
             VStack(alignment: .leading, spacing: .grid(3)) {
-                NonInteractiveMap(coordinate: coordinate, showsPin: isFullAddress)
-                    .frame(height: 160)
-                    .clipShape(RoundedRectangle(cornerRadius: .grid(2), style: .continuous))
-                    .onTapGesture(perform: presentMapActionSheet)
+                Container(
+                    style: .init(fill: .gray, shape: .roundedRectangle(radius: .grid(2), style: .continuous), border: .none),
+                    content: { NonInteractiveMap(coordinate: coordinate, showsPin: isFullAddress) }
+                )
+                .frame(height: 160)
+                .onTapGesture(perform: presentMapActionSheet)
+
                 VStack(alignment: .leading, spacing: .grid(1.5)) {
                     if isFullAddress {
                         Text("Address")
