@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 
 struct AddressSelectionView: View {
     var addresses: [Address]
@@ -7,8 +7,8 @@ struct AddressSelectionView: View {
     var body: some View {
         LazyVStack(alignment: .leading, spacing: .grid(3)) {
             ForEach(_addresses, id: \.hashValue) { address in
-                AddressItemView(
-                    title: address.condensedFormattedString,
+                SelectableContainer(
+                    address.condensedFormattedString,
                     isSelected: selection == address
                 )
                 .onTapGesture { selection = address }

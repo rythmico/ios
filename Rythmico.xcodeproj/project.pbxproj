@@ -157,7 +157,7 @@
 		03EDA67D24776C6C00FBE527 /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67C24776C6C00FBE527 /* URLOpener.swift */; };
 		03EDA67F24776CEC00FBE527 /* URLOpenerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67E24776CEC00FBE527 /* URLOpenerDoubles.swift */; };
 		03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE818F244E169200C5C184 /* ReviewRequestView.swift */; };
-		03FE8192244E204900C5C184 /* AddressItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE8191244E204900C5C184 /* AddressItemView.swift */; };
+		03FE8192244E204900C5C184 /* SelectableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE8191244E204900C5C184 /* SelectableContainer.swift */; };
 		D501585C25373D5A005E02FA /* CardSetupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501585B25373D5A005E02FA /* CardSetupService.swift */; };
 		D501586E25374048005E02FA /* CardSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501586D25374048005E02FA /* CardSetupCoordinator.swift */; };
 		D5015873253743C4005E02FA /* CardSetupServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5015872253743C4005E02FA /* CardSetupServiceDoubles.swift */; };
@@ -733,7 +733,7 @@
 		03EDA67C24776C6C00FBE527 /* URLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
 		03EDA67E24776CEC00FBE527 /* URLOpenerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpenerDoubles.swift; sourceTree = "<group>"; };
 		03FE818F244E169200C5C184 /* ReviewRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestView.swift; sourceTree = "<group>"; };
-		03FE8191244E204900C5C184 /* AddressItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressItemView.swift; sourceTree = "<group>"; };
+		03FE8191244E204900C5C184 /* SelectableContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableContainer.swift; sourceTree = "<group>"; };
 		D501585B25373D5A005E02FA /* CardSetupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetupService.swift; sourceTree = "<group>"; };
 		D501586D25374048005E02FA /* CardSetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetupCoordinator.swift; sourceTree = "<group>"; };
 		D5015872253743C4005E02FA /* CardSetupServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetupServiceDoubles.swift; sourceTree = "<group>"; };
@@ -1320,7 +1320,6 @@
 			children = (
 				D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */,
 				D5473C9D241AC3B800D66775 /* AddressDetailsViewTests.swift */,
-				03FE8191244E204900C5C184 /* AddressItemView.swift */,
 				D5B57A6C2419DA5B00BE9B4F /* AddressSelectionView.swift */,
 			);
 			path = AddressDetails;
@@ -1668,6 +1667,7 @@
 				D52C554B24DDE5FF00C295C4 /* RythmicoButton+Tutor.swift */,
 				D5B5820226A37B1E0008D9DC /* RythmicoLabel.swift */,
 				D5B57A702419F79700BE9B4F /* SectionHeaderView.swift */,
+				03FE8191244E204900C5C184 /* SelectableContainer.swift */,
 				0372E359249ABAB80048B402 /* SelectableList.swift */,
 				D5ED168A2614BB40001841ED /* StackSpacing.swift */,
 				D50811E323FB72A3008103D8 /* StepBar.swift */,
@@ -2867,7 +2867,7 @@
 				D5AAF7D723F9E20C00E410F2 /* Instrument.swift in Sources */,
 				D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */,
 				D5B68CFC26B3B1D0006DA45F /* RythmicoButton.swift in Sources */,
-				03FE8192244E204900C5C184 /* AddressItemView.swift in Sources */,
+				03FE8192244E204900C5C184 /* SelectableContainer.swift in Sources */,
 				D55F012F24CCC4D300E5F13C /* ActivityCoordinator.swift in Sources */,
 				D5D9AE572533764D00A0ABCC /* AddNewCardView.swift in Sources */,
 				03E88EAB24C1F5FE0077A420 /* AppContext.swift in Sources */,

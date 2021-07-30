@@ -68,8 +68,8 @@ struct ReviewRequestView: View, TestableView {
                             padding: Const.headerPadding,
                             accessory: editButton(performing: resetAddressDetails)
                         ) {
-                            AddressItemView(
-                                title: address.condensedFormattedString,
+                            SelectableContainer(
+                                address.condensedFormattedString,
                                 isSelected: false
                             )
                         }
