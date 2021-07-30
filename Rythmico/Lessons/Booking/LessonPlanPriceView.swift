@@ -40,7 +40,7 @@ struct LessonPlanPriceView: View {
 #if DEBUG
 struct LessonPlanPriceView_Previews: PreviewProvider {
     static var stub: [(showTermsOfService: Bool, price: Price)] {
-        Bool.allCases * [.nonDecimalStub, .exactDecimalStub, .inexactDecimalStub]
+        Array(Bool.allCases * [.nonDecimalStub, .exactDecimalStub, .inexactDecimalStub])
     }
 
     static var previews: some View {
