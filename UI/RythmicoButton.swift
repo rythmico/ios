@@ -15,7 +15,7 @@ struct RythmicoButton<Title: StringProtocol>: View {
 
     var body: some View {
         Button(action: action ?? {}) {
-            Text(title).rythmicoTextStyle(style.textStyle)
+            style.mapTitle(Text(title))
         }
         .buttonStyle(style)
     }
@@ -51,7 +51,8 @@ struct RythmicoButtonStyle: ButtonStyle {
     typealias StateOpacity = StateValue<Double>
 
     let layout: Layout
-    let textStyle: Font.RythmicoTextStyle
+    let mapTitle: (Text) -> AnyView
+    let cornerStyle: ContainerStyle.CornerStyle
     let foregroundColor: StateColor
     let backgroundColor: StateColor
     let borderColor: StateColor
@@ -62,8 +63,8 @@ struct RythmicoButtonStyle: ButtonStyle {
             configuration.label
                 .lineLimit(1)
                 .minimumScaleFactor(0.6)
-                .padding(.horizontal, .grid(3))
                 .foregroundColor(foregroundColor(for: configuration, isEnabled: isEnabled))
+                .padding(.horizontal, .grid(3))
                 .frame(maxWidth: maxWidth, minHeight: minHeight)
         }
         .contentShape(Rectangle())
@@ -73,7 +74,7 @@ struct RythmicoButtonStyle: ButtonStyle {
     func style(for configuration: Configuration) -> ContainerStyle {
         ContainerStyle(
             background: backgroundColor(for: configuration, isEnabled: isEnabled),
-            corner: .init(rounding: .continuous, radius: 4),
+            corner: cornerStyle,
             border: .init(color: borderColor(for: configuration, isEnabled: isEnabled), width: 2)
         )
     }

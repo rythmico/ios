@@ -237,7 +237,7 @@
 		D52C553D24DC74A200C295C4 /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C553B24DC74A200C295C4 /* TitleCell.swift */; };
 		D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554324DDC53400C295C4 /* FloatingView+Rythmico.swift */; };
 		D52C554824DDC60900C295C4 /* FloatingView+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554624DDC60600C295C4 /* FloatingView+Tutor.swift */; };
-		D52C554C24DDE5FF00C295C4 /* Buttons+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */; };
+		D52C554C24DDE5FF00C295C4 /* RythmicoButton+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554B24DDE5FF00C295C4 /* RythmicoButton+Tutor.swift */; };
 		D52C555024E2ABFC00C295C4 /* MapOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554F24E2ABFC00C295C4 /* MapOpener.swift */; };
 		D52D8A59259D714B00A6CBBF /* OnboardingSlideshowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52D8A58259D714B00A6CBBF /* OnboardingSlideshowView.swift */; };
 		D530059D2679613D00F41B61 /* LessonPlanBookingEntryView+Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D530059C2679613D00F41B61 /* LessonPlanBookingEntryView+Analytics.swift */; };
@@ -448,6 +448,7 @@
 		D5B5820326A37B1E0008D9DC /* RythmicoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B5820226A37B1E0008D9DC /* RythmicoLabel.swift */; };
 		D5B5820626A37BE80008D9DC /* Images+Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B5820526A37BE80008D9DC /* Images+Student.swift */; };
 		D5B68CFC26B3B1D0006DA45F /* RythmicoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B68CFB26B3B1D0006DA45F /* RythmicoButton.swift */; };
+		D5B68CFD26B3B423006DA45F /* RythmicoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B68CFB26B3B1D0006DA45F /* RythmicoButton.swift */; };
 		D5B7948526004CF200DC6C77 /* LessonReschedulingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B7948426004CF200DC6C77 /* LessonReschedulingView.swift */; };
 		D5BA171023D7A18900954D50 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170F23D7A18900954D50 /* RootView.swift */; };
 		D5BA171223D7AB3B00954D50 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA171123D7AB3B00954D50 /* MainView.swift */; };
@@ -808,7 +809,7 @@
 		D52C553B24DC74A200C295C4 /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
 		D52C554324DDC53400C295C4 /* FloatingView+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingView+Rythmico.swift"; sourceTree = "<group>"; };
 		D52C554624DDC60600C295C4 /* FloatingView+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingView+Tutor.swift"; sourceTree = "<group>"; };
-		D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Buttons+Tutor.swift"; sourceTree = "<group>"; };
+		D52C554B24DDE5FF00C295C4 /* RythmicoButton+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RythmicoButton+Tutor.swift"; sourceTree = "<group>"; };
 		D52C554F24E2ABFC00C295C4 /* MapOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOpener.swift; sourceTree = "<group>"; };
 		D52D8A58259D714B00A6CBBF /* OnboardingSlideshowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlideshowView.swift; sourceTree = "<group>"; };
 		D530059C2679613D00F41B61 /* LessonPlanBookingEntryView+Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonPlanBookingEntryView+Analytics.swift"; sourceTree = "<group>"; };
@@ -1615,7 +1616,6 @@
 				D527B00A24FD3297003E81A9 /* AvatarStackView.swift */,
 				D527B00824FD2047003E81A9 /* AvatarView.swift */,
 				D5F5065C23FF16AA00CA4094 /* BackButton.swift */,
-				D52C554B24DDE5FF00C295C4 /* Buttons+Tutor.swift */,
 				D5D5E8B426878CCC00AACB8F /* CasePickable.swift */,
 				D5947C9F26A5E44400355857 /* CellAccessory.swift */,
 				031378C4249A7453005FC49C /* CloseButton.swift */,
@@ -1665,6 +1665,7 @@
 				D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */,
 				D5B68CFB26B3B1D0006DA45F /* RythmicoButton.swift */,
 				D5F506B9240637F400CA4094 /* RythmicoButton+Student.swift */,
+				D52C554B24DDE5FF00C295C4 /* RythmicoButton+Tutor.swift */,
 				D5B5820226A37B1E0008D9DC /* RythmicoLabel.swift */,
 				D5B57A702419F79700BE9B4F /* SectionHeaderView.swift */,
 				0372E359249ABAB80048B402 /* SelectableList.swift */,
@@ -3175,7 +3176,7 @@
 				035B1D43249E577700AABFEA /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,
 				D5883CEB25A4189D000B545C /* CalendarSyncCoordinator.swift in Sources */,
 				035B1CC3249CF2AA00AABFEA /* MainView.swift in Sources */,
-				D52C554C24DDE5FF00C295C4 /* Buttons+Tutor.swift in Sources */,
+				D52C554C24DDE5FF00C295C4 /* RythmicoButton+Tutor.swift in Sources */,
 				D5F4D3EF24F31CF1000E8580 /* BookingApplicationGroupView.swift in Sources */,
 				035B1D41249E577700AABFEA /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
 				035B1CF6249CFA5700AABFEA /* Duration.swift in Sources */,
@@ -3201,6 +3202,7 @@
 				032B6FD224B787D700299A09 /* Instrument.swift in Sources */,
 				035B1D46249E577700AABFEA /* AppleAuthorizationService.swift in Sources */,
 				035B1D33249E576900AABFEA /* AuthenticationError.swift in Sources */,
+				D5B68CFD26B3B423006DA45F /* RythmicoButton.swift in Sources */,
 				035B1D4F249E57DC00AABFEA /* VoiceOverServiceDoubles.swift in Sources */,
 				035B1D49249E577700AABFEA /* AppleAuthorizationControllerDoubles.swift in Sources */,
 				D54340FE261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift in Sources */,

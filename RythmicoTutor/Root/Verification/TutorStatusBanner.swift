@@ -36,7 +36,7 @@ struct TutorStatusBanner: View {
 
             if let letsGoAction = letsGoAction {
                 FloatingView {
-                    Button("Let's Go", action: letsGoAction).primaryStyle()
+                    RythmicoButton("Let's Go", style: .primary(), action: letsGoAction)
                 }
             }
         }

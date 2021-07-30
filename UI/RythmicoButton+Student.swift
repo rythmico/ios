@@ -1,6 +1,25 @@
 import SwiftUISugar
 
 extension RythmicoButtonStyle {
+    init(
+        layout: Layout,
+        textStyle: Font.RythmicoTextStyle,
+        foregroundColor: StateColor,
+        backgroundColor: StateColor,
+        borderColor: StateColor,
+        opacity: StateOpacity = .default
+    ) {
+        self.init(
+            layout: layout,
+            mapTitle: { AnyView($0.rythmicoTextStyle(textStyle)) },
+            cornerStyle: .init(rounding: .continuous, radius: 4),
+            foregroundColor: foregroundColor,
+            backgroundColor: backgroundColor,
+            borderColor: borderColor,
+            opacity: opacity
+        )
+    }
+
     static func primary(layout: Layout = .expansive) -> RythmicoButtonStyle {
         RythmicoButtonStyle(
             layout: layout,
