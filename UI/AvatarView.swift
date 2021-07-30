@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 
 struct AvatarView: View {
     enum Const {
@@ -22,17 +22,17 @@ struct AvatarView: View {
 
     var body: some View {
         GeometryReader { g in
-            contentView
-                .frame(width: g.size.width, height: g.size.height)
-                .background(backgroundColor)
-                .clipShape(Circle())
+            Container(
+                style: .init(fill: backgroundColor, shape: .circle, border: .none),
+                content: contentView
+            ).frame(width: g.size.width, height: g.size.height)
         }
         .frame(minWidth: Const.minSize, minHeight: Const.minSize)
         .scaledToFit()
     }
 
     @ViewBuilder
-    private var contentView: some View {
+    private func contentView() -> some View {
         switch content {
         case .initials(let initials):
             GeometryReader { g in
