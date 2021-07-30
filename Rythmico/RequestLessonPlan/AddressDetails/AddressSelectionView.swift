@@ -9,8 +9,9 @@ struct AddressSelectionView: View {
             ForEach(_addresses, id: \.hashValue) { address in
                 SelectableContainer(
                     address.condensedFormattedString,
-                    isSelected: selection == address
+                    isSelected: isSelected(address)
                 )
+                .animation(.rythmicoSpring(duration: .durationMedium), value: isSelected(address))
                 .onTapGesture { selection = address }
             }
         }
@@ -21,5 +22,9 @@ struct AddressSelectionView: View {
             selection = nil
         }
         return addresses
+    }
+
+    private func isSelected(_ address: Address) -> Bool {
+        selection == address
     }
 }
