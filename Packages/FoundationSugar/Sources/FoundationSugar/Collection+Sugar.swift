@@ -4,8 +4,8 @@ extension Collection {
     }
 }
 
-extension RangeReplaceableCollection where Index == Int {
-    public subscript(safe index: Index) -> Element? {
+extension Collection {
+    public subscript(safe index: Int) -> Element? {
         dropFirst(index).first
     }
 }
