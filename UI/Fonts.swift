@@ -29,6 +29,7 @@ extension Font {
         case largeTitle         // 32px Bold
         case headline           // 22px Bold
         case subheadlineBold    // 19px Bold
+        case subheadlineMedium  // 19px Medium
         case subheadline        // 19px Regular
         case bodyBold           // 17px Bold
         case bodySemibold       // 17px Semibold
@@ -46,7 +47,7 @@ extension Font {
                 return 32
             case .headline:
                 return 22
-            case .subheadlineBold, .subheadline:
+            case .subheadlineBold, .subheadlineMedium, .subheadline:
                 return 19
             case .bodyBold, .bodySemibold, .bodyMedium, .body:
                 return 17
@@ -64,6 +65,7 @@ extension Font {
             case .largeTitle: return .bold
             case .headline: return .bold
             case .subheadlineBold: return .bold
+            case .subheadlineMedium: return .medium
             case .subheadline: return .regular
             case .bodyBold: return .bold
             case .bodySemibold: return .semibold
@@ -87,7 +89,7 @@ extension Font {
                 return -0.8
             case .headline:
                 return -0.2
-            case .subheadlineBold, .subheadline:
+            case .subheadlineBold, .subheadlineMedium, .subheadline:
                 return -0.2
             case .bodyBold, .bodySemibold, .bodyMedium, .body:
                 return -0.4
