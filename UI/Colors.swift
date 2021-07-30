@@ -51,3 +51,14 @@ struct ColorSet<Color: UIColorProtocol> {
     let backgroundSecondary = Color(light: 0xFFFFFF, dark: 0x181818)
     let backgroundTertiary = Color(light: 0xFFFFFF, dark: 0x1e1e1e)
 }
+
+extension ColorSet {
+    func inverted(_ keyPath: KeyPath<ColorSet<UIColor>, UIColor>) -> Color {
+        let uiColorSet = ColorSet<UIColor>()
+        let uiColor = uiColorSet[keyPath: keyPath]
+        return Color(
+            light: uiColor.resolvedColor(with: .init(userInterfaceStyle: .dark)),
+            dark: uiColor.resolvedColor(with: .init(userInterfaceStyle: .light))
+        )
+    }
+}

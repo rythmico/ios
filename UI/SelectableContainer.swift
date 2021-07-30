@@ -48,7 +48,7 @@ struct SelectableContainer<Content: View>: View {
         case (.dark, false):
             return .rythmico.foreground
         case (.dark, true):
-            return Color(UIColor.rythmico.foreground.resolvedColor(with: .init(userInterfaceStyle: .light)))
+            return .rythmico.inverted(\.foreground)
         }
     }
 
