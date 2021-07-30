@@ -1,7 +1,4 @@
 public struct Container<Content: View>: View {
-    @Environment(\.isEnabled)
-    private var isEnabled
-
     private var style: ContainerStyle
     private var content: Content
 
@@ -29,8 +26,6 @@ public struct Container<Content: View>: View {
             .clipShape(shape.inset(by: clipShapeInset))
             .background(shape.fill(style.background))
             .overlay(outlineOverlay(for: shape))
-            .opacity(isEnabled ? 1 : 0.5)
-
     }
 
     private var clipShapeInset: CGFloat {
