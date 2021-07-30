@@ -8,15 +8,13 @@ public struct Container<Content: View>: View {
     }
 
     public var body: some View {
-        if let corner = style.corner {
-            switch corner.radius {
-            case .value(let radius):
-                body(for: RoundedRectangle(cornerRadius: radius, style: corner.rounding))
-            case .capsule:
-                body(for: Capsule(style: corner.rounding))
-            }
-        } else {
+        switch style.shape {
+        case .rectangle:
             body(for: Rectangle())
+        case .roundedRectangle(let radius, let style):
+            body(for: RoundedRectangle(cornerRadius: radius, style: style))
+        case .capsule(let style):
+            body(for: Capsule(style: style))
         }
     }
 

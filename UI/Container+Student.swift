@@ -2,7 +2,7 @@ import SwiftUISugar
 
 // MARK: Outline
 
-extension ContainerStyle.CornerStyle {
+extension ContainerStyle.Shape {
     enum OutlineRadius: CGFloat {
         case medium = 8
         case large = 12
@@ -10,10 +10,10 @@ extension ContainerStyle.CornerStyle {
 }
 
 extension ContainerStyle {
-    static func outline(radius: CornerStyle.OutlineRadius = .medium) -> Self {
+    static func outline(radius: Shape.OutlineRadius = .medium) -> Self {
         Self(
             fill: .clear,
-            corner: .init(rounding: .continuous, radius: .value(radius.rawValue)),
+            shape: .roundedRectangle(radius: radius.rawValue, style: .continuous),
             border: .init(color: .rythmico.outline, width: 1.5)
         )
     }
@@ -24,7 +24,7 @@ extension ContainerStyle {
 extension ContainerStyle {
     static let box = Self(
         fill: .rythmico.gray2,
-        corner: .init(rounding: .continuous, radius: 8),
+        shape: .roundedRectangle(radius: 8, style: .continuous),
         border: .none
     )
 }
@@ -34,7 +34,7 @@ extension ContainerStyle {
 extension ContainerStyle {
     static let field = Self(
         fill: .clear,
-        corner: .init(rounding: .continuous, radius: 4),
+        shape: .roundedRectangle(radius: 4, style: .continuous),
         border: .init(color: .rythmico.outline, width: 1)
     )
 }

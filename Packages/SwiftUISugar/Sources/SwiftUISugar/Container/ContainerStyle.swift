@@ -1,41 +1,27 @@
+import SwiftUI
+
 public struct ContainerStyle: Hashable {
     public let fill: Color
-    public let corner: CornerStyle?
-    public let border: BorderStyle?
+    public let shape: Shape
+    public let border: Border?
 
-    public init(fill: Color, corner: ContainerStyle.CornerStyle?, border: ContainerStyle.BorderStyle?) {
+    public init(fill: Color, shape: Shape, border: Border?) {
         self.fill = fill
-        self.corner = corner
+        self.shape = shape
         self.border = border
     }
 }
 
 extension ContainerStyle {
-    public struct CornerStyle: Hashable {
-        public let rounding: RoundedCornerStyle
-        public let radius: Radius
-
-        public init(rounding: RoundedCornerStyle, radius: ContainerStyle.CornerStyle.Radius) {
-            self.rounding = rounding
-            self.radius = radius
-        }
+    public enum Shape: Hashable {
+        case rectangle
+        case roundedRectangle(radius: CGFloat, style: RoundedCornerStyle)
+        case capsule(style: RoundedCornerStyle)
     }
-}
-
-extension ContainerStyle.CornerStyle {
-    public enum Radius: Hashable {
-        case value(CGFloat)
-        case capsule
-    }
-}
-
-extension ContainerStyle.CornerStyle.Radius: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
-    public init(floatLiteral value: FloatLiteralType) { self = .value(CGFloat(value)) }
-    public init(integerLiteral value: IntegerLiteralType) { self = .value(CGFloat(value)) }
 }
 
 extension ContainerStyle {
-    public struct BorderStyle: Hashable {
+    public struct Border: Hashable {
         public let color: Color
         public let width: CGFloat
 

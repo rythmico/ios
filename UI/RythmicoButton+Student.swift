@@ -10,9 +10,9 @@ extension RythmicoButtonStyle {
         opacity: StateOpacity = .default
     ) {
         self.init(
+            shape: .roundedRectangle(radius: 4, style: .continuous),
             layout: layout,
             mapTitle: { AnyView($0.rythmicoTextStyle(textStyle)) },
-            cornerStyle: .init(rounding: .continuous, radius: 4),
             foregroundColor: foregroundColor,
             backgroundColor: backgroundColor,
             borderColor: borderColor,

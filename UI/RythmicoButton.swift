@@ -50,9 +50,9 @@ struct RythmicoButtonStyle: ButtonStyle {
     typealias StateColor = StateValue<Color>
     typealias StateOpacity = StateValue<Double>
 
+    let shape: ContainerStyle.Shape
     let layout: Layout
     let mapTitle: (Text) -> AnyView
-    let cornerStyle: ContainerStyle.CornerStyle
     let foregroundColor: StateColor
     let backgroundColor: StateColor
     let borderColor: StateColor
@@ -74,7 +74,7 @@ struct RythmicoButtonStyle: ButtonStyle {
     func style(for configuration: Configuration) -> ContainerStyle {
         ContainerStyle(
             fill: backgroundColor(for: configuration, isEnabled: isEnabled),
-            corner: cornerStyle,
+            shape: shape,
             border: .init(color: borderColor(for: configuration, isEnabled: isEnabled), width: 2)
         )
     }
