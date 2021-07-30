@@ -16,7 +16,7 @@ struct InfoBanner: View {
         .padding(.grid(4))
         .foregroundColor(.rythmico.foreground)
         .accentColor(.rythmico.foreground)
-        .background(Color.rythmico.extraLightBlue)
+        .background(Color.rythmico.azureBlue)
         .clipShape(RoundedRectangle(cornerRadius: .grid(1), style: .continuous))
     }
 }

@@ -11,10 +11,10 @@ extension UIColor {
 struct ColorSet<Color: UIColorProtocol> {
     let red = Color(light: 0xB00020, dark: 0x9E001C)
 
+    let azureBlue = Color(light: 0xE3F6F5, dark: 0xB2CFCD)
     let picoteeBlue = Color(light: 0x392396, dark: 0x432AB2)
     let darkPurple = Color(light: 0x150F2F, dark: 0x726F82)
 
-    let extraLightBlue = Color(light: 0xE8F1FF, dark: 0x17386A)
 
 
     let lightPurple = Color(light: 0xE8DAFF, dark: 0xD6BDFF)
