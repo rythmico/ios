@@ -22,7 +22,6 @@ struct InfoBanner: View {
             }
             .padding(.grid(4))
             .foregroundColor(.rythmico.foreground)
-            .accentColor(.rythmico.foreground)
         }
     }
 }
