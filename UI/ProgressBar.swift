@@ -14,8 +14,8 @@ struct ProgressBar: View {
     var body: some View {
         GeometryReader { metrics in
             ZStack(alignment: .leading) {
-                Capsule(style: .circular).fill(Color.rythmico.picoteeBlue)
-                Capsule(style: .circular).fill(Color.rythmico.azureBlue)
+                Capsule(style: .circular).fill(barColor)
+                Capsule(style: .circular).fill(progressColor)
                     .frame(maxWidth: barWidth(metrics), maxHeight: barHeight(metrics))
                     .padding(.horizontal, barHorizontalPadding(metrics))
             }
@@ -33,6 +33,14 @@ struct ProgressBar: View {
 
     private func barHorizontalPadding(_ metrics: GeometryProxy) -> CGFloat {
         (Const.height - barHeight(metrics)) / 2
+    }
+
+    private var barColor: Color {
+        .rythmico.picoteeBlue
+    }
+
+    private var progressColor: Color {
+        .rythmico.white
     }
 }
 
