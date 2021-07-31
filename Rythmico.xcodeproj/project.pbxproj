@@ -565,7 +565,6 @@
 		D5F5067B2400788400CA4094 /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5067A2400788400CA4094 /* MultilineTextField.swift */; };
 		D5F5068C24046B1400CA4094 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5068B24046B1400CA4094 /* Grid.swift */; };
 		D5F506B02405A6A900CA4094 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506AF2405A6A900CA4094 /* Duration.swift */; };
-		D5F506B42405ED9300CA4094 /* RoundedThickOutlineContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */; };
 		D5F506B62406360900CA4094 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B52406360900CA4094 /* Student.swift */; };
 		D5F506BA240637F400CA4094 /* RythmicoButton+Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B9240637F400CA4094 /* RythmicoButton+Student.swift */; };
 		D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */; };
@@ -1053,7 +1052,6 @@
 		D5F5067A2400788400CA4094 /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
 		D5F5068B24046B1400CA4094 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		D5F506AF2405A6A900CA4094 /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
-		D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedThickOutlineContainer.swift; sourceTree = "<group>"; };
 		D5F506B52406360900CA4094 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		D5F506B9240637F400CA4094 /* RythmicoButton+Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RythmicoButton+Student.swift"; sourceTree = "<group>"; };
 		D5F506BB2406C6A200CA4094 /* AddressDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetailsView.swift; sourceTree = "<group>"; };
@@ -1658,7 +1656,6 @@
 				03AAF66B2444FFCC002D8F5B /* Pickers.swift */,
 				03C39DD52496802500C76516 /* Pill.swift */,
 				D5EF88B523FB706C0072BD03 /* ProgressBar.swift */,
-				D5F506B32405ED9300CA4094 /* RoundedThickOutlineContainer.swift */,
 				D5B68CFB26B3B1D0006DA45F /* RythmicoButton.swift */,
 				D5F506B9240637F400CA4094 /* RythmicoButton+Student.swift */,
 				D52C554B24DDE5FF00C295C4 /* RythmicoButton+Tutor.swift */,
@@ -2786,7 +2783,6 @@
 				D53555B723E53699005A20EB /* DeauthenticationService.swift in Sources */,
 				D516A8FA253A1816002E6EDF /* CoordinatorStateView.swift in Sources */,
 				D5312968256427EA00CA6621 /* LessonSkippingView.swift in Sources */,
-				D5F506B42405ED9300CA4094 /* RoundedThickOutlineContainer.swift in Sources */,
 				D5243901268A6DD400E2D859 /* LessonPlanBookingInfo.swift in Sources */,
 				D51EB484265E112D0082D72D /* LessonPlanPausingView.swift in Sources */,
 				D5ED3265260667E800821ABE /* DateDoubles.swift in Sources */,
