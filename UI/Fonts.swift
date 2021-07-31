@@ -21,7 +21,7 @@ extension Image {
 }
 
 extension Font {
-    enum RythmicoTextStyle {
+    enum RythmicoTextStyle: CaseIterable, Hashable {
         fileprivate enum FamilyName {
             static let dmSans = "DM Sans"
         }
@@ -175,3 +175,17 @@ private extension UIFont.Weight {
         }
     }
 }
+
+#if DEBUG
+struct Font_Previews: PreviewProvider {
+    static var previews: some View {
+        ForEach(Font.RythmicoTextStyle.allCases, id: \.self) { style in
+            Text("Hello World")
+                .rythmicoTextStyle(style)
+                .previewDisplayName("\(style)")
+        }
+        .previewLayout(.sizeThatFits)
+        .padding()
+    }
+}
+#endif
