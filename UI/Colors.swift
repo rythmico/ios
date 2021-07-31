@@ -54,11 +54,14 @@ struct ColorSet<Color: UIColorProtocol> {
 
 extension ColorSet {
     func inverted(_ keyPath: KeyPath<ColorSet<UIColor>, UIColor>) -> Color {
-        let uiColorSet = ColorSet<UIColor>()
-        let uiColor = uiColorSet[keyPath: keyPath]
-        return Color(
-            light: uiColor.resolvedColor(with: .init(userInterfaceStyle: .dark)),
-            dark: uiColor.resolvedColor(with: .init(userInterfaceStyle: .light))
-        )
+        Color(light: resolved(keyPath, mode: .dark), dark: resolved(keyPath, mode: .light))
+    }
+
+    func resolved(_ keyPath: KeyPath<ColorSet<UIColor>, UIColor>, mode: UIUserInterfaceStyle) -> Color {
+        Color(cgColor: resolved(keyPath, mode: mode).cgColor)
+    }
+
+    private func resolved(_ keyPath: KeyPath<ColorSet<UIColor>, UIColor>, mode: UIUserInterfaceStyle) -> UIColor {
+        ColorSet<UIColor>()[keyPath: keyPath].resolvedColor(with: .init(userInterfaceStyle: mode))
     }
 }

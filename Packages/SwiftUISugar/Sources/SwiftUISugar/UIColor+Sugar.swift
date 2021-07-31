@@ -1,6 +1,7 @@
 public protocol UIColorProtocol {
     init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
     init(dynamicProvider: @escaping (UITraitCollection) -> UIColor)
+    init(cgColor: CGColor)
 }
 
 extension UIColorProtocol {
@@ -31,5 +32,9 @@ extension Color: UIColorProtocol {
 
     public init(dynamicProvider: @escaping (UITraitCollection) -> UIColor) {
         self.init(UIColor(dynamicProvider: dynamicProvider))
+    }
+
+    public init(cgColor: CGColor) {
+        self.init(UIColor(cgColor: cgColor))
     }
 }
