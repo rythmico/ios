@@ -78,9 +78,11 @@ struct AddressDetailsView: View, TestableView {
 
                         if let addresses = addresses {
                             SectionHeaderContentView(title: "Select Address") {
-                                AddressSelectionView(
-                                    addresses: addresses,
-                                    selection: $state.selectedAddress
+                                SelectableList(
+                                    data: addresses,
+                                    id: \.self,
+                                    selection: $state.selectedAddress,
+                                    content: \.condensedFormattedString
                                 )
                             }
                             .transition(.offset(y: 25) + .opacity)
