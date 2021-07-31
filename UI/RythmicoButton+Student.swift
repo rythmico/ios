@@ -24,7 +24,7 @@ extension RythmicoButtonStyle {
         RythmicoButtonStyle(
             layout: layout,
             textStyle: layout == .contrained(.small) ? .bodyBold : .subheadlineBold,
-            foregroundColor: .init(normal: .rythmico.white),
+            foregroundColor: .init(normal: .rythmico.white, pressed: .rythmico.inverted(\.foreground)),
             backgroundColor: .init(normal: .rythmico.picoteeBlue, pressed: .rythmico.darkPurple),
             borderColor: .init(normal: .clear)
         )
