@@ -15,6 +15,7 @@ extension Image {
             .foregroundColor(color)
     }
 
+    // TODO: refactor RythmicoButton to allow for building this button.
     static var requestLessonPlanIcon: some View {
         Container(
             style: .init(
