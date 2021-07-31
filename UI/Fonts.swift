@@ -86,19 +86,19 @@ extension Font {
         var tracking: CGFloat {
             switch self {
             case .largeTitle:
-                return -0.8
+                return -1
             case .headline:
-                return -0.2
+                return -0.7
             case .subheadlineBold, .subheadlineMedium, .subheadline:
-                return -0.2
+                return -0.6
             case .bodyBold, .bodySemibold, .bodyMedium, .body:
                 return -0.4
             case .calloutBold, .callout:
-                return 0
+                return -0.2
             case .footnoteBold, .footnote:
                 return 0
             case .caption:
-                return 0.4
+                return 0.2
             }
         }
 
