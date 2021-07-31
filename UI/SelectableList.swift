@@ -1,39 +1,26 @@
 import SwiftUISugar
 
-struct SelectableList<Data: RandomAccessCollection, ID: Hashable, Content: View>: View {
-    var data: Data
-    var id: KeyPath<Data.Element, ID>
+// TODO: make generic over content
+struct SelectableList<Data: RandomAccessCollection, ID: Hashable>: View {
+    typealias Element = Data.Element
+
+    let data: Data
+    let id: KeyPath<Element, ID>
     @Binding
-    var selection: Data.Element?
-    @ViewBuilder
-    var content: (Data.Element) -> Content
+    var selection: Element?
+    let content: (Element) -> String
 
     var body: some View {
-        VStack(spacing: 0) {
-            HDivider()
+        LazyVStack(spacing: .grid(3)) {
             ForEach(data, id: id) { element in
-                VStack(spacing: 0) {
-                    Button(action: { selection = element }) {
-                        HStack(spacing: 0) {
-                            content(element)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-
-                            if isSelected(element) {
-                                Image(decorative: Asset.Icon.Misc.checkmark.name)
-                                    .renderingMode(.template)
-                                    .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
-                            }
-                        }
-                        .padding(.grid(5))
-                    }
-                    HDivider()
-                }
-                .background(InteractiveBackground())
+                SelectableContainer(content(element), isSelected: isSelected(element))
+                    .animation(.rythmicoSpring(duration: .durationMedium), value: isSelected(element))
+                    .onTapGesture { selection = element }
             }
         }
     }
 
-    private func isSelected(_ element: Data.Element) -> Bool {
+    private func isSelected(_ element: Element) -> Bool {
         guard let selectedElementId = selection?[keyPath: id] else {
             return false
         }
@@ -42,30 +29,24 @@ struct SelectableList<Data: RandomAccessCollection, ID: Hashable, Content: View>
     }
 }
 
-extension SelectableList where Data.Element: Identifiable, ID == Data.Element.ID {
-    init(
-        _ data: Data,
-        selection: Binding<Data.Element?>,
-        @ViewBuilder content: @escaping (Data.Element) -> Content
-    ) {
-        self.init(data: data, id: \.id, selection: selection, content: content)
-    }
-}
-
 #if DEBUG
 struct SelectableList_Previews: PreviewProvider {
+    // TODO: abstract away into `StatefulPreview<T>` helper view
+    // that passes a Binding<T> through to a closure.
     struct Preview: View {
         @State var selection: Int?
 
         var body: some View {
-            SelectableList(data: [1, 2, 3, 4, 5], id: \.self, selection: $selection) { number in
-                Text("Cell \(number)")
+            SelectableList(data: [1, 2, 3, 4, 5], id: \.self, selection: $selection) {
+                "Option \($0)"
             }
         }
     }
 
     static var previews: some View {
         Preview()
+            .previewLayout(.sizeThatFits)
+            .padding()
     }
 }
 #endif
