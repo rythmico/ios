@@ -17,7 +17,7 @@ private extension LessonPlan.Status {
         case .pending:
             return "Pending"
         case .reviewing(let props):
-            return "\(props.applications.count) Applied"
+            return "\(props.applications.count) applied"
         case .active:
             return "Active"
         case .paused:
