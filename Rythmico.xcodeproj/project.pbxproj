@@ -198,6 +198,7 @@
 		D51EB486265EC0C60082D72D /* LessonPlanPausingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51EB485265EC0C60082D72D /* LessonPlanPausingContentView.swift */; };
 		D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */; };
 		D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */; };
+		D5204F4926B62FB50085F8D0 /* Buttons+Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5204F4826B62FB50085F8D0 /* Buttons+Student.swift */; };
 		D5217CEF24E2F8B400C89018 /* MapOpener+ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5217CEE24E2F8B400C89018 /* MapOpener+ActionSheet.swift */; };
 		D52438F1268A4B8C00E2D859 /* LessonPlanStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52438F0268A4B8C00E2D859 /* LessonPlanStatus.swift */; };
 		D52438F3268A517400E2D859 /* LessonPlanOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52438F2268A517400E2D859 /* LessonPlanOptions.swift */; };
@@ -778,6 +779,7 @@
 		D51EB485265EC0C60082D72D /* LessonPlanPausingContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanPausingContentView.swift; sourceTree = "<group>"; };
 		D5200E3823FDCEFD007168E0 /* StudentDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailsView.swift; sourceTree = "<group>"; };
 		D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleView.swift; sourceTree = "<group>"; };
+		D5204F4826B62FB50085F8D0 /* Buttons+Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Buttons+Student.swift"; sourceTree = "<group>"; };
 		D5217CEE24E2F8B400C89018 /* MapOpener+ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapOpener+ActionSheet.swift"; sourceTree = "<group>"; };
 		D52438F0268A4B8C00E2D859 /* LessonPlanStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanStatus.swift; sourceTree = "<group>"; };
 		D52438F2268A517400E2D859 /* LessonPlanOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanOptions.swift; sourceTree = "<group>"; };
@@ -1610,6 +1612,7 @@
 				D527B00A24FD3297003E81A9 /* AvatarStackView.swift */,
 				D527B00824FD2047003E81A9 /* AvatarView.swift */,
 				D5F5065C23FF16AA00CA4094 /* BackButton.swift */,
+				D5204F4826B62FB50085F8D0 /* Buttons+Student.swift */,
 				D5D5E8B426878CCC00AACB8F /* CasePickable.swift */,
 				D5947C9F26A5E44400355857 /* CellAccessory.swift */,
 				031378C4249A7453005FC49C /* CloseButton.swift */,
@@ -2914,6 +2917,7 @@
 				D501589A2538BE7C005E02FA /* Card.swift in Sources */,
 				D5F5065F240055E800CA4094 /* HeaderContentView.swift in Sources */,
 				D588E87E266D135000E14288 /* ErrorLogger.swift in Sources */,
+				D5204F4926B62FB50085F8D0 /* Buttons+Student.swift in Sources */,
 				D549218A25BB27AE00251FD2 /* APIActivityErrorHandler+Rythmico.swift in Sources */,
 				03AB22F3244CB13200DAC7DF /* PrivateNoteView.swift in Sources */,
 				03BB5C912472D85A00B44692 /* DeviceRegisterCoordinator.swift in Sources */,

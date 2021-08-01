@@ -80,14 +80,12 @@ struct LessonsView: View, TestableView {
 
     @ViewBuilder
     private var trailingItem: some View {
-        Button(action: presentRequestLessonFlow) {
-            Image.requestLessonPlanIcon
-                .padding(.vertical, .grid(3))
-                .padding(.horizontal, .grid(7))
-                .offset(x: .grid(7))
-        }
-        .accessibility(label: Text("Request lessons"))
-        .accessibility(hint: Text("Double tap to request a lesson plan"))
+        Button.requestLessonPlan(action: presentRequestLessonFlow)
+            .padding(.vertical, .grid(3))
+            .padding(.horizontal, .grid(7))
+            .offset(x: .grid(7))
+            .accessibility(label: Text("Request lessons"))
+            .accessibility(hint: Text("Double tap to request a lesson plan"))
     }
 
     func presentRequestLessonFlow() {

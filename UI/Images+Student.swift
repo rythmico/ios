@@ -14,22 +14,4 @@ extension Image {
             .renderingMode(.template)
             .foregroundColor(color)
     }
-
-    // TODO: refactor RythmicoButton to allow for building this button.
-    static var requestLessonPlanIcon: some View {
-        Container(
-            style: .init(
-                fill: .rythmico.picoteeBlue,
-                shape: .circle,
-                border: .none
-            )
-        ) {
-            Image(decorative: Asset.Icon.Misc.plusMusicNote.name)
-                .renderingMode(.template)
-                .foregroundColor(.rythmico.white)
-                .offset(x: -0.5, y: 1.5)
-                .frame(width: 32, height: 32)
-        }
-        .shadow(color: .rythmico.resolved(\.foreground, mode: .light).opacity(0.15), radius: 2, x: 0, y: 2)
-    }
 }
