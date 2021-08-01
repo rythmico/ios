@@ -106,20 +106,20 @@ extension RythmicoButtonStyle.StateValue {
 
 extension RythmicoButtonStyle.Layout {
     func map<T>(
-        expansive: T,
-        constrainedM: T? = nil,
-        constrainedS: T? = nil,
-        constrainedXS: T? = nil
+        expansive: @autoclosure () -> T,
+        constrainedM: @autoclosure () -> T? = nil,
+        constrainedS: @autoclosure () -> T? = nil,
+        constrainedXS: @autoclosure () -> T? = nil
     ) -> T {
         switch self {
         case .expansive:
-            return expansive
+            return expansive()
         case .constrained(.m):
-            return constrainedM ?? expansive
+            return constrainedM() ?? expansive()
         case .constrained(.s):
-            return constrainedS ?? constrainedM ?? expansive
+            return constrainedS() ?? constrainedM() ?? expansive()
         case .constrained(.xs):
-            return constrainedXS ?? constrainedS ?? constrainedM ?? expansive
+            return constrainedXS() ?? constrainedS() ?? constrainedM() ?? expansive()
         }
     }
 }
