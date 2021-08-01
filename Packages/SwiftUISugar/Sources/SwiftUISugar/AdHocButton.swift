@@ -1,23 +1,25 @@
+import SwiftUI
+
 public struct AdHocButton<Content: View>: View {
-    public typealias MakeBody = AdHocButtonStyleMakeBody<Content>
+    public typealias MakeContent = (_ state: AdHocButtonState) -> Content
 
     private let action: Action
-    private let makeBody: MakeBody
+    private let content: MakeContent
 
-    public init(action: @escaping Action, @ViewBuilder makeBody: @escaping MakeBody) {
+    public init(action: @escaping Action, @ViewBuilder content: @escaping MakeContent) {
         self.action = action
-        self.makeBody = makeBody
+        self.content = content
     }
 
     public var body: some View {
-        Button(action: action, label: EmptyView.init).buttonStyle(AdHocButtonStyle(makeBody: makeBody))
+        Button(action: action, label: EmptyView.init).buttonStyle(AdHocButtonStyle { _, state in content(state) })
     }
 }
 
 public struct AdHocButtonStyle<Body: View>: ButtonStyle {
     @Environment(\.isEnabled) private var isEnabled
 
-    public typealias MakeBody = AdHocButtonStyleMakeBody<Body>
+    public typealias MakeBody = (_ label: ButtonStyleConfiguration.Label, _ state: AdHocButtonState) -> Body
 
     private let makeBody: MakeBody
 
@@ -26,8 +28,10 @@ public struct AdHocButtonStyle<Body: View>: ButtonStyle {
     }
 
     public func makeBody(configuration: Configuration) -> some View {
-        makeBody(configuration, isEnabled).contentShape(Rectangle())
+        makeBody(
+            configuration.label,
+            AdHocButtonState(isPressed: configuration.isPressed, isEnabled: isEnabled)
+        )
+        .contentShape(Rectangle())
     }
 }
-
-public typealias AdHocButtonStyleMakeBody<Body> = (_ configuration: ButtonStyleConfiguration, _ isEnabled: Bool) -> Body

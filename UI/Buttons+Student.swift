@@ -3,17 +3,17 @@ import SwiftUISugar
 extension Button where Label == EmptyView {
     // TODO: refactor RythmicoButton to allow for building this button.
     static func requestLessonPlan(action: @escaping Action) -> some View {
-        AdHocButton(action: action) { configuration, _ in
+        AdHocButton(action: action) { state in
             Container(
                 style: .init(
-                    fill: configuration.isPressed ? .rythmico.darkPurple : .rythmico.picoteeBlue,
+                    fill: state.map(normal: .rythmico.picoteeBlue, pressed: .rythmico.darkPurple),
                     shape: .circle,
                     border: .none
                 )
             ) {
                 Image(decorative: Asset.Icon.Misc.plusMusicNote.name)
                     .renderingMode(.template)
-                    .foregroundColor(configuration.isPressed ? .rythmico.inverted(\.foreground) : .rythmico.white)
+                    .foregroundColor(state.map(normal: .rythmico.white, pressed: .rythmico.inverted(\.foreground)))
                     .offset(x: -0.5, y: 1.5)
                     .frame(width: 32, height: 32)
             }

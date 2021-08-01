@@ -52,24 +52,24 @@ struct RythmicoButtonStyle {
 
 extension RythmicoButtonStyle {
     fileprivate var swiftUIButtonStyle: some ButtonStyle {
-        AdHocButtonStyle { configuration, isEnabled in
-            Container(style: style(for: configuration, isEnabled: isEnabled)) {
-                configuration.label
+        AdHocButtonStyle { label, state in
+            Container(style: style(for: state)) {
+                label
                     .lineLimit(1)
                     .minimumScaleFactor(0.6)
-                    .foregroundColor(foregroundColor(for: configuration, isEnabled: isEnabled))
+                    .foregroundColor(foregroundColor(for: state))
                     .padding(.horizontal, .grid(3))
                     .frame(maxWidth: maxWidth, minHeight: minHeight)
             }
-            .opacity(opacity(for: configuration, isEnabled: isEnabled, fallbackValues: [\.disabled: 0.5]))
+            .opacity(opacity(for: state, fallbackValues: [\.disabled: 0.5]))
         }
     }
 
-    private func style(for configuration: ButtonStyleConfiguration, isEnabled: Bool) -> ContainerStyle {
+    private func style(for state: AdHocButtonState) -> ContainerStyle {
         ContainerStyle(
-            fill: backgroundColor(for: configuration, isEnabled: isEnabled),
+            fill: backgroundColor(for: state),
             shape: shape,
-            border: .init(color: borderColor(for: configuration, isEnabled: isEnabled), width: 2)
+            border: .init(color: borderColor(for: state), width: 2)
         )
     }
 
@@ -95,16 +95,12 @@ extension RythmicoButtonStyle.StateValue: Equatable where T: Equatable {}
 extension RythmicoButtonStyle.StateValue {
     typealias FallbackValues = [KeyPath<Self, T?>: T]
 
-    func callAsFunction(
-        for configuration: ButtonStyleConfiguration,
-        isEnabled: Bool,
-        fallbackValues: FallbackValues = [:]
-    ) -> T {
-        switch (configuration.isPressed, isEnabled) {
-        case (_, false): return disabled ?? fallbackValues[\.disabled] ?? normal
-        case (true, _): return pressed ?? fallbackValues[\.pressed] ?? normal
-        case (false, _): return normal
-        }
+    func callAsFunction(for state: AdHocButtonState, fallbackValues: FallbackValues = [:]) -> T {
+        state.map(
+            normal: normal,
+            pressed: pressed ?? fallbackValues[\.pressed],
+            disabled: disabled ?? fallbackValues[\.disabled]
+        )
     }
 }
 
