@@ -1,8 +1,9 @@
 extension View {
-    public func watermark(_ uiImage: UIImage, offset: CGSize, color: Color? = nil) -> some View {
+    public func watermark(_ uiImage: UIImage, width: CGFloat = 200, offset: CGSize, color: Color? = nil) -> some View {
         modifier(
             WatermarkModifier(
                 uiImage: uiImage,
+                width: width,
                 offsetX: offset.width,
                 offsetY: offset.height,
                 color: color
@@ -25,16 +26,15 @@ private struct WatermarkModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content.background(
-            Image(uiImage: uiImage.resized(width: width))
-                .renderingMode(color != nil ? .template : .original)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: width)
-                .fixedSize()
-                .foregroundColor(color)
-                .opacity(colorScheme == .dark ? 0.17 : 0.05)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-                .offset(x: offsetX, y: offsetY)
+            ZStack {
+                Image(uiImage: uiImage.resized(width: width))
+                    .renderingMode(color != nil ? .template : .original)
+                    .frame(width: width)
+                    .foregroundColor(color)
+                    .opacity(colorScheme == .dark ? 0.125 : 0.05)
+                    .offset(x: offsetX, y: offsetY)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
         )
     }
 }

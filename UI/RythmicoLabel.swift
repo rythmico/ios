@@ -7,7 +7,7 @@ struct RythmicoLabel<Icon: View, Title: View>: View {
     let title: Title
 
     var body: some View {
-        HStack(spacing: .grid(2)) {
+        HStack(spacing: .grid(3)) {
             icon
             title.lineLimit(1).minimumScaleFactor(0.7)
         }

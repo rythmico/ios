@@ -4,7 +4,7 @@ struct LessonPlanScheduleView: View {
     let schedule: Schedule
 
     var body: some View {
-        VStack(alignment: .leading, spacing: .grid(5)) {
+        VStack(alignment: .leading, spacing: .grid(2)) {
             RythmicoLabel(icon: { Image.calendarIcon }, title: { dateText })
             RythmicoLabel(asset: Asset.Icon.Label.time, title: { timeText })
         }
@@ -19,10 +19,10 @@ struct LessonPlanScheduleView: View {
     private var dateText: some View {
         Text {
             "Every "
-            dayOfWeek.text.rythmicoFontWeight(.bodyBold)
+            dayOfWeek.text.rythmicoFontWeight(.bodyMedium)
             if isFuture {
                 ", starting "
-                date.text.rythmicoFontWeight(.bodyBold)
+                date.text.rythmicoFontWeight(.bodyMedium)
             }
         }
         .rythmicoTextStyle(.body)
@@ -31,7 +31,7 @@ struct LessonPlanScheduleView: View {
     private static let timeFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))
     private var time: String { Self.timeFormatter.string(from: schedule.startDate, to: schedule.endDate) }
     private var timeText: some View {
-        Text(time).rythmicoTextStyle(.bodyBold)
+        Text(time).rythmicoTextStyle(.bodyMedium)
     }
 }
 

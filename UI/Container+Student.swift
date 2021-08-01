@@ -10,9 +10,9 @@ extension ContainerStyle.Shape {
 }
 
 extension ContainerStyle {
-    static func outline(radius: Shape.OutlineRadius = .medium) -> Self {
+    static func outline(fill: Color = .clear, radius: Shape.OutlineRadius = .medium) -> Self {
         Self(
-            fill: .clear,
+            fill: fill,
             shape: .squircle(radius: radius.rawValue, style: .continuous),
             border: .init(color: .rythmico.outline, width: 1.5)
         )

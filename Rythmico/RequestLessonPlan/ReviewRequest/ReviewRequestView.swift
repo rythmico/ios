@@ -28,15 +28,13 @@ struct ReviewRequestView: View, TestableView {
         TitleSubtitleContentView(title: "Review Proposal") {
             VStack(spacing: 0) {
                 ScrollView {
-                    VStack(spacing: .grid(8)) {
+                    VStack(spacing: .grid(4)) {
                         SectionHeaderContentView(
-                            "Instrument",
+                            "Selected Instrument",
                             style: .box,
                             accessory: { editButton(action: resetInstrument) }
                         ) {
-                            InstrumentView(
-                                viewData: .init(name: instrument.standaloneName, icon: instrument.icon, action: nil)
-                            )
+                            InstrumentView(instrument: instrument)
                         }
 
                         SectionHeaderContentView(
@@ -63,10 +61,9 @@ struct ReviewRequestView: View, TestableView {
                             style: .box,
                             accessory: { editButton(action: resetAddressDetails) }
                         ) {
-                            SelectableContainer(
-                                address.condensedFormattedString,
-                                isSelected: false
-                            )
+                            Text(address.condensedFormattedString)
+                                .rythmicoTextStyle(.body)
+                                .foregroundColor(.rythmico.foreground)
                         }
 
                         SectionHeaderContentView(
@@ -97,10 +94,10 @@ struct ReviewRequestView: View, TestableView {
                         }
                     }
                     .frame(maxWidth: .grid(.max))
-                    .padding(.trailing, .grid(5))
+                    .padding(.trailing, .grid(4))
                     .padding(.bottom, .grid(7))
                 }
-                .padding(.leading, .grid(5))
+                .padding(.leading, .grid(4))
 
                 FloatingView {
                     RythmicoButton("Confirm Details", style: .primary(), action: submitRequest)
@@ -110,10 +107,12 @@ struct ReviewRequestView: View, TestableView {
         .testable(self)
     }
 
-    private func editButton(performing action: @escaping Action) -> some View {
-        Button(action: action) {
-            Text("Edit").rythmicoTextStyle(.bodyBold).foregroundColor(.rythmico.foreground)
-        }
+    private func editButton(action: @escaping Action) -> some View {
+        RythmicoButton(
+            "EDIT",
+            style: .tertiary(layout: .constrained(.xs)),
+            action: action
+        )
     }
 
     private func resetInstrument() { flow.instrument = nil }
@@ -139,7 +138,7 @@ struct ReviewRequestView: View, TestableView {
     private var studentAbout: Text? {
         guard !student.about.isBlank else { return nil }
         return Text(separator: .newline) {
-            Text(["About", student.name.firstWord].compacted().spaced() + .colon).rythmicoFontWeight(.bodyBold)
+            Text(["About", student.name.firstWord].compacted().spaced() + .colon).rythmicoFontWeight(.bodyMedium)
             student.about
         }
     }
