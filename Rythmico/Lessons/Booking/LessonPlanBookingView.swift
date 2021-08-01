@@ -42,7 +42,7 @@ struct LessonPlanBookingView: View {
                     ScrollView {
                         VStack(spacing: .grid(6)) {
                             Group {
-                                SectionHeaderContentView(title: "Lesson Schedule") {
+                                SectionHeaderContentView("Plan Details", style: .box) {
                                     LessonPlanRequestedScheduleView(lessonPlan.schedule, tutor: application.tutor)
                                     HDivider()
                                     VStack(spacing: .grid(3)) {
@@ -52,7 +52,7 @@ struct LessonPlanBookingView: View {
                                     }
                                 }
 
-                                SectionHeaderContentView(title: "Contact Number") {
+                                SectionHeaderContentView("Contact Number", style: .plain) {
                                     PhoneNumberInputView(phoneNumber: $phoneNumber, phoneNumberInputError: $phoneNumberInputError)
                                 }
                             }
@@ -60,7 +60,7 @@ struct LessonPlanBookingView: View {
                             .padding(.horizontal, .grid(5))
 
                             VStack(spacing: .grid(4)) {
-                                SectionHeaderContentView(title: "Payment Method", padding: EdgeInsets(horizontal: .grid(5))) {
+                                SectionHeaderContentView("Payment Method", style: .plain) {
                                     if
                                         let availableCards = NonEmpty(rawValue: availableCards),
                                         let selectedCardBinding = Binding($selectedCard)

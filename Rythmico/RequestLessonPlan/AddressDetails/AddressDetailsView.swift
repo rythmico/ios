@@ -44,7 +44,7 @@ struct AddressDetailsView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        TitleSubtitleContentView(title: "Address Details", subtitle: subtitle) {
+        TitleSubtitleContentView(title: "Address Details", subtitle: subtitle, spacing: .grid(4)) {
             VStack(spacing: 0) {
                 ScrollView {
                     VStack(alignment: .leading, spacing: .grid(5)) {
@@ -77,7 +77,7 @@ struct AddressDetailsView: View, TestableView {
                         }
 
                         if let addresses = addresses {
-                            SectionHeaderContentView(title: "Select Address") {
+                            SectionHeaderContentView("Select Address", style: .plain) {
                                 SelectableList(
                                     data: addresses,
                                     id: \.self,

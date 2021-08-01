@@ -59,17 +59,17 @@ struct LessonDetailView: View, TestableView {
     var body: some View {
         VStack(spacing: 0) {
             TitleContentView(title: title) {
-                VStack(alignment: .leading, spacing: .grid(7)) {
-                    Pill(status: lesson.status)
-                        .padding(.horizontal, .grid(5))
-
+                VStack(alignment: .leading, spacing: .grid(5)) {
+                    Pill(status: lesson.status).padding(.horizontal, .grid(5))
                     ScrollView {
-                        VStack(alignment: .leading, spacing: .grid(5)) {
-                            SectionHeaderView(title: "Lesson Details")
-                            LessonScheduleView(lesson: lesson)
-                            AddressLabel(address: lesson.address)
-
-                            tutorSection
+                        VStack(alignment: .leading, spacing: .grid(4)) {
+                            SectionHeaderContentView("Lesson Details", style: .box) {
+                                LessonScheduleView(lesson: lesson)
+                                AddressLabel(address: lesson.address)
+                            }
+                            SectionHeaderContentView("Tutor", style: .box) {
+                                TutorCell(lessonPlan: lessonPlan, tutor: lesson.tutor)
+                            }
                         }
                         .foregroundColor(.rythmico.foreground)
                         .frame(maxWidth: .grid(.max))
@@ -90,12 +90,6 @@ struct LessonDetailView: View, TestableView {
     }
 
     private var title: String { lesson.title }
-
-    @ViewBuilder
-    private var tutorSection: some View {
-        SectionHeaderView(title: "Tutor")
-        TutorCell(lessonPlan: lessonPlan, tutor: lesson.tutor)
-    }
 
     @ViewBuilder
     private var optionsButton: some View {

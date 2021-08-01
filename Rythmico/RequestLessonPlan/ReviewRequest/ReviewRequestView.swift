@@ -3,10 +3,6 @@ import SwiftUISugar
 struct ReviewRequestView: View, TestableView {
     typealias Coordinator = APIActivityCoordinator<CreateLessonPlanRequest>
 
-    private enum Const {
-        static let headerPadding = EdgeInsets(bottom: .grid(2))
-    }
-
     var coordinator: Coordinator
     var flow: RequestLessonPlanFlow
     var instrument: Instrument
@@ -34,9 +30,9 @@ struct ReviewRequestView: View, TestableView {
                 ScrollView {
                     VStack(spacing: .grid(8)) {
                         SectionHeaderContentView(
-                            title: "Instrument",
-                            padding: Const.headerPadding,
-                            accessory: editButton(performing: resetInstrument)
+                            "Instrument",
+                            style: .box,
+                            accessory: { editButton(action: resetInstrument) }
                         ) {
                             InstrumentView(
                                 viewData: .init(name: instrument.standaloneName, icon: instrument.icon, action: nil)
@@ -44,10 +40,9 @@ struct ReviewRequestView: View, TestableView {
                         }
 
                         SectionHeaderContentView(
-                            title: "Student Details",
-                            alignment: .leading,
-                            padding: Const.headerPadding,
-                            accessory: editButton(performing: resetStudentDetails)
+                            "Student Details",
+                            style: .box,
+                            accessory: { editButton(action: resetStudentDetails) }
                         ) {
                             HStack(alignment: .firstTextBaseline, spacing: .grid(3)) {
                                 Image(decorative: Asset.Icon.Label.info.name)
@@ -64,9 +59,9 @@ struct ReviewRequestView: View, TestableView {
                         }
 
                         SectionHeaderContentView(
-                            title: "Address Details",
-                            padding: Const.headerPadding,
-                            accessory: editButton(performing: resetAddressDetails)
+                            "Address Details",
+                            style: .box,
+                            accessory: { editButton(action: resetAddressDetails) }
                         ) {
                             SelectableContainer(
                                 address.condensedFormattedString,
@@ -75,19 +70,17 @@ struct ReviewRequestView: View, TestableView {
                         }
 
                         SectionHeaderContentView(
-                            title: "Lesson Schedule",
-                            alignment: .leading,
-                            padding: Const.headerPadding,
-                            accessory: editButton(performing: resetSchedule)
+                            "Lesson Schedule",
+                            style: .box,
+                            accessory: { editButton(action: resetSchedule) }
                         ) {
                             LessonPlanRequestedScheduleView(schedule, tutor: nil)
                         }
 
                         SectionHeaderContentView(
-                            title: "Private Note",
-                            alignment: .leading,
-                            padding: Const.headerPadding,
-                            accessory: editButton(performing: resetPrivateNote)
+                            "Private Note",
+                            style: .box,
+                            accessory: { editButton(action: resetPrivateNote) }
                         ) {
                             if let privateNote = privateNote.nilIfBlank {
                                 Text(privateNote)

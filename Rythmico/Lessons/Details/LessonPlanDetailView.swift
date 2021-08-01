@@ -81,14 +81,24 @@ struct LessonPlanDetailView: View, TestableView {
     var body: some View {
         VStack(spacing: 0) {
             TitleContentView(title: title) {
-                VStack(alignment: .leading, spacing: .grid(7)) {
-                    Pill(lessonPlan: lessonPlan)
-                        .padding(.horizontal, .grid(5))
-
+                VStack(alignment: .leading, spacing: .grid(5)) {
+                    Pill(lessonPlan: lessonPlan).padding(.horizontal, .grid(5))
                     ScrollView {
-                        VStack(alignment: .leading, spacing: .grid(5)) {
-                            planDetailsSection
-                            tutorSection
+                        VStack(alignment: .leading, spacing: .grid(4)) {
+                            SectionHeaderContentView("Plan Details", style: .box) {
+                                LessonPlanScheduleView(schedule: lessonPlan.schedule)
+                                AddressLabel(address: lessonPlan.address)
+                            }
+                            SectionHeaderContentView("Tutor", style: .box) {
+                                if let tutor = lessonPlan.bookingInfo?.tutor {
+                                    TutorCell(lessonPlan: lessonPlan, tutor: tutor)
+                                } else {
+                                    LessonPlanTutorStatusView(lessonPlan: lessonPlan, summarized: false)
+                                    if lessonPlan.status.isPending {
+                                        InfoBanner(text: "Potential tutors have received your request and will submit applications for your consideration.")
+                                    }
+                                }
+                            }
                             paymentSection
                         }
                         .foregroundColor(.rythmico.foreground)
@@ -116,30 +126,9 @@ struct LessonPlanDetailView: View, TestableView {
     }
 
     @ViewBuilder
-    private var planDetailsSection: some View {
-        SectionHeaderView(title: "Plan Details")
-        LessonPlanScheduleView(schedule: lessonPlan.schedule)
-        AddressLabel(address: lessonPlan.address)
-    }
-
-    @ViewBuilder
-    private var tutorSection: some View {
-        SectionHeaderView(title: "Tutor")
-        if let tutor = lessonPlan.bookingInfo?.tutor {
-            TutorCell(lessonPlan: lessonPlan, tutor: tutor)
-        } else {
-            LessonPlanTutorStatusView(lessonPlan: lessonPlan, summarized: false)
-            if lessonPlan.status.isPending {
-                InfoBanner(text: "Potential tutors have received your request and will submit applications for your consideration.")
-            }
-        }
-    }
-
-    @ViewBuilder
     private var paymentSection: some View {
         switch lessonPlan.status {
         case .active, .paused:
-            SectionHeaderView(title: "Payment")
             LessonPlanPriceView(
                 // TODO: consume `bookingInfo.pricePerLesson` property instead.
                 price: Price(

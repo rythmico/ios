@@ -32,3 +32,7 @@ extension ContainerStyle {
         }
     }
 }
+
+extension ContainerStyle {
+    public static let plain = Self(fill: .clear, shape: .rectangle, border: .none)
+}

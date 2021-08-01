@@ -31,8 +31,8 @@ struct LessonPlanPriceView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .fixedSize(horizontal: false, vertical: true)
             }
-            .padding(.vertical, .grid(6))
-            .padding(.horizontal, .grid(4))
+            .padding(.top, .grid(6))
+            .padding([.horizontal, .bottom], .grid(4))
         }
     }
 }
