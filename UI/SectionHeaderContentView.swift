@@ -99,8 +99,7 @@ struct SectionHeaderContentView_Previews: PreviewProvider {
             SectionHeaderContentView("Hello World", style: .box, accessory: { Text("Edit") }) {
                 Text("Foo bar baz")
             }
-            SectionHeaderContentView("Hello World", style: .box, accessory: { Text("Edit").frame(maxWidth: .infinity,
-                                                                                                  alignment: .leading) }) {
+            SectionHeaderContentView("Hello World", style: .box, accessory: { Text("Edit").frame(maxWidth: .infinity, alignment: .leading) }) {
                 Text("Foo bar baz")
             }
         }
