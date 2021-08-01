@@ -58,8 +58,8 @@ struct Button_Previews: PreviewProvider {
 
     @ViewBuilder
     static func allVariants(for styleFromLayout: (RythmicoButtonStyle.Layout) -> RythmicoButtonStyle) -> some View {
-        RythmicoButton("Next", style: styleFromLayout(.contrained(.small)), action: {})
-        RythmicoButton("Next", style: styleFromLayout(.contrained(.medium)), action: {})
+        RythmicoButton("Next", style: styleFromLayout(.constrained(.s)), action: {})
+        RythmicoButton("Next", style: styleFromLayout(.constrained(.m)), action: {})
         RythmicoButton("Next", style: styleFromLayout(.expansive), action: {})
         RythmicoButton("Next", style: styleFromLayout(.expansive), action: {}).disabled(true)
     }

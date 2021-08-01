@@ -24,12 +24,12 @@ struct RythmicoButton<Title: StringProtocol>: View {
 struct RythmicoButtonStyle {
     enum Layout: Equatable {
         enum ConstrainedSize: Equatable {
-            case medium
-            case small
-            case extraSmall
+            case m
+            case s
+            case xs
         }
         case expansive
-        case contrained(ConstrainedSize)
+        case constrained(ConstrainedSize)
     }
 
     struct StateValue<T> {
@@ -80,11 +80,11 @@ extension RythmicoButtonStyle {
 
     private var minHeight: CGFloat {
         switch layout {
-        case .expansive, .contrained(.medium):
+        case .expansive, .constrained(.m):
             return 48
-        case .contrained(.small):
+        case .constrained(.s):
             return 38
-        case .contrained(.extraSmall):
+        case .constrained(.xs):
             return 32
         }
     }
@@ -119,11 +119,11 @@ extension RythmicoButtonStyle.Layout {
         switch self {
         case .expansive:
             return expansive
-        case .contrained(.medium):
+        case .constrained(.m):
             return constrainedM ?? expansive
-        case .contrained(.small):
+        case .constrained(.s):
             return constrainedS ?? constrainedM ?? expansive
-        case .contrained(.extraSmall):
+        case .constrained(.xs):
             return constrainedXS ?? constrainedS ?? constrainedM ?? expansive
         }
     }
