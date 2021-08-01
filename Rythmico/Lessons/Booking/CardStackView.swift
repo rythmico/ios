@@ -74,19 +74,11 @@ struct RadialSelectionIndicator: View {
 
 #if DEBUG
 struct CardStackView_Previews: PreviewProvider {
-    struct Content: View {
-        @State var cards = NonEmpty<[Card]>(.mastercardStub, .visaStub)
-        @State var selectedCard: Card = .mastercardStub
-
-        var body: some View {
-            CardStackView(cards: cards, selectedCard: $selectedCard)
-        }
-    }
-
     static var previews: some View {
-        Group {
-            Content()
-            Content().disabled(true)
+        ForEach(Bool.allCases, id: \.self) { bool in
+            StatefulPreview(NonEmptyArray<Card>(.mastercardStub, .visaStub), Card.mastercardStub) { cards, selectedCard in
+                CardStackView(cards: cards.wrappedValue, selectedCard: selectedCard)
+            }
         }
         .previewLayout(.sizeThatFits)
         .padding(.vertical)

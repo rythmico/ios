@@ -31,22 +31,14 @@ struct SelectableList<Data: RandomAccessCollection, ID: Hashable>: View {
 
 #if DEBUG
 struct SelectableList_Previews: PreviewProvider {
-    // TODO: abstract away into `StatefulPreview<T>` helper view
-    // that passes a Binding<T> through to a closure.
-    struct Preview: View {
-        @State var selection: Int?
-
-        var body: some View {
-            SelectableList(data: [1, 2, 3, 4, 5], id: \.self, selection: $selection) {
+    static var previews: some View {
+        StatefulPreview(Int?.none) { selection in
+            SelectableList(data: [1, 2, 3, 4, 5], id: \.self, selection: selection) {
                 "Option \($0)"
             }
-        }
-    }
-
-    static var previews: some View {
-        Preview()
             .previewLayout(.sizeThatFits)
             .padding()
+        }
     }
 }
 #endif

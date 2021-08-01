@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 
 // TODO: implement as Picker with custom PickerStyle, maybe someday when API is open.
 struct TabMenuView<Tab: RawRepresentable>: View where Tab.RawValue == String {
@@ -42,24 +42,17 @@ struct TabMenuView<Tab: RawRepresentable>: View where Tab.RawValue == String {
 }
 
 #if DEBUG
-struct TabMenuViewPreviewContent: View {
+struct TabMenuView_Previews: PreviewProvider {
     enum Tab: String, CaseIterable {
         case x, y, z
     }
 
-    @State
-    private var selectedTab: Tab = .x
-
-    var body: some View {
-        TabMenuView(tabs: Tab.allCases, selection: $selectedTab)
-    }
-}
-
-struct TabMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        TabMenuViewPreviewContent()
-            .previewLayout(.sizeThatFits)
-            .padding()
+        StatefulPreview(Tab.x) { selectedTab in
+            TabMenuView(tabs: Tab.allCases, selection: selectedTab)
+        }
+        .previewLayout(.sizeThatFits)
+        .padding()
     }
 }
 #endif

@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 
 struct ProgressBar: View {
     private enum Const {
@@ -45,24 +45,17 @@ struct ProgressBar: View {
 }
 
 #if DEBUG
-struct ProgressBar_PreviewContainer: View {
-    @State var progress: Double = 0
-
-    var body: some View {
-        ProgressBar(progress: progress)
-            .onAppear {
-                withAnimation(.default.speed(0.01)) {
-                    progress = 1
-                }
-            }
-    }
-}
-
 struct ProgressBar_Previews: PreviewProvider {
     static var previews: some View {
-        ProgressBar_PreviewContainer()
-            .previewLayout(.sizeThatFits)
-            .padding()
+        StatefulPreview(Double(0)) { progress in
+            ProgressBar(progress: progress.wrappedValue).onAppear {
+                withAnimation(.easeInOut.speed(0.25).delay(1)) {
+                    progress.wrappedValue = 1
+                }
+            }
+        }
+        .previewLayout(.sizeThatFits)
+        .padding()
     }
 }
 #endif
