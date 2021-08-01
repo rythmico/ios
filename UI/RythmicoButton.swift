@@ -24,8 +24,9 @@ struct RythmicoButton<Title: StringProtocol>: View {
 struct RythmicoButtonStyle {
     enum Layout: Equatable {
         enum ConstrainedSize: Equatable {
-            case small
             case medium
+            case small
+            case extraSmall
         }
         case expansive
         case contrained(ConstrainedSize)
@@ -83,6 +84,8 @@ extension RythmicoButtonStyle {
             return 48
         case .contrained(.small):
             return 38
+        case .contrained(.extraSmall):
+            return 32
         }
     }
 }
@@ -102,6 +105,26 @@ extension RythmicoButtonStyle.StateValue {
         case (_, false): return disabled ?? fallbackValues[\.disabled] ?? normal
         case (true, _): return pressed ?? fallbackValues[\.pressed] ?? normal
         case (false, _): return normal
+        }
+    }
+}
+
+extension RythmicoButtonStyle.Layout {
+    func map<T>(
+        expansive: T,
+        constrainedM: T? = nil,
+        constrainedS: T? = nil,
+        constrainedXS: T? = nil
+    ) -> T {
+        switch self {
+        case .expansive:
+            return expansive
+        case .contrained(.medium):
+            return constrainedM ?? expansive
+        case .contrained(.small):
+            return constrainedS ?? constrainedM ?? expansive
+        case .contrained(.extraSmall):
+            return constrainedXS ?? constrainedS ?? constrainedM ?? expansive
         }
     }
 }
