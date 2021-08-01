@@ -25,8 +25,8 @@ public struct AdHocButtonStyle<Body: View>: ButtonStyle {
         self.makeBody = makeBody
     }
 
-    public func makeBody(configuration: Configuration) -> Body {
-        makeBody(configuration, isEnabled)
+    public func makeBody(configuration: Configuration) -> some View {
+        makeBody(configuration, isEnabled).contentShape(Rectangle())
     }
 }
 
