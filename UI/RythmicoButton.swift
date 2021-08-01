@@ -50,19 +50,8 @@ struct RythmicoButtonStyle {
 }
 
 extension RythmicoButtonStyle {
-    private struct SwiftUIButtonStyle<Body: View>: ButtonStyle {
-        @Environment(\.isEnabled) private var isEnabled
-
-        @ViewBuilder
-        let makeBody: (_ configuration: Configuration, _ isEnabled: Bool) -> Body
-
-        func makeBody(configuration: Configuration) -> Body {
-            makeBody(configuration, isEnabled)
-        }
-    }
-
     fileprivate var swiftUIButtonStyle: some ButtonStyle {
-        SwiftUIButtonStyle(makeBody: { configuration, isEnabled in
+        AdHocButtonStyle { configuration, isEnabled in
             Container(style: style(for: configuration, isEnabled: isEnabled)) {
                 configuration.label
                     .lineLimit(1)
@@ -73,7 +62,7 @@ extension RythmicoButtonStyle {
             }
             .contentShape(Rectangle())
             .opacity(opacity(for: configuration, isEnabled: isEnabled, fallbackValues: [\.disabled: 0.5]))
-        })
+        }
     }
 
     private func style(for configuration: ButtonStyleConfiguration, isEnabled: Bool) -> ContainerStyle {
