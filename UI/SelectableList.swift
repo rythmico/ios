@@ -14,7 +14,7 @@ struct SelectableList<Data: RandomAccessCollection, ID: Hashable>: View {
         LazyVStack(spacing: .grid(3)) {
             ForEach(data, id: id) { element in
                 SelectableContainer(content(element), isSelected: isSelected(element))
-                    .animation(.rythmicoSpring(duration: .durationMedium), value: isSelected(element))
+                    .animation(.rythmicoSpring(duration: .durationShort), value: isSelected(element))
                     .onTapGesture { selection = element }
             }
         }
