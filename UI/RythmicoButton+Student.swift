@@ -23,7 +23,7 @@ extension RythmicoButtonStyle {
     static func primary(layout: Layout = .expansive) -> RythmicoButtonStyle {
         RythmicoButtonStyle(
             layout: layout,
-            textStyle: layout.map(expansive: .subheadlineBold, constrainedS: .bodyBold, constrainedXS: .calloutBold),
+            textStyle: layout.map(expansive: .subheadlineBold, constrainedS: .bodyBold, constrainedXS: .calloutBoldWide),
             foregroundColor: .init(normal: .rythmico.white, pressed: .rythmico.inverted(\.foreground)),
             backgroundColor: .init(normal: .rythmico.picoteeBlue, pressed: .rythmico.darkPurple),
             borderColor: .init(normal: .clear)
@@ -33,7 +33,7 @@ extension RythmicoButtonStyle {
     static func secondary(layout: Layout = .expansive) -> RythmicoButtonStyle {
         RythmicoButtonStyle(
             layout: layout,
-            textStyle: layout.map(expansive: .subheadlineMedium, constrainedS: .bodyMedium, constrainedXS: .calloutBold),
+            textStyle: layout.map(expansive: .subheadlineMedium, constrainedS: .bodyMedium, constrainedXS: .calloutBoldWide),
             foregroundColor: .init(normal: .rythmico.picoteeBlue, pressed: .rythmico.white),
             backgroundColor: .init(normal: .clear, pressed: .rythmico.picoteeBlue),
             borderColor: .init(normal: .rythmico.picoteeBlue)
@@ -43,7 +43,7 @@ extension RythmicoButtonStyle {
     static func tertiary(layout: Layout = .expansive) -> RythmicoButtonStyle {
         RythmicoButtonStyle(
             layout: layout,
-            textStyle: layout.map(expansive: .subheadlineMedium, constrainedS: .bodyMedium, constrainedXS: .calloutBold),
+            textStyle: layout.map(expansive: .subheadlineMedium, constrainedS: .bodyMedium, constrainedXS: .calloutBoldWide),
             foregroundColor: .init(normal: .rythmico.picoteeBlue),
             backgroundColor: .init(normal: .clear, pressed: .rythmico.outline),
             borderColor: .init(normal: .rythmico.outline)

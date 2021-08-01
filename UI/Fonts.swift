@@ -35,6 +35,7 @@ extension Font {
         case bodySemibold       // 17px Semibold
         case bodyMedium         // 17px Medium
         case body               // 17px Regular
+        case calloutBoldWide    // 15px Bold
         case calloutBold        // 15px Bold
         case callout            // 15px Regular
         case footnoteBold       // 13px Bold
@@ -51,7 +52,7 @@ extension Font {
                 return 19
             case .bodyBold, .bodySemibold, .bodyMedium, .body:
                 return 17
-            case .calloutBold, .callout:
+            case .calloutBoldWide, .calloutBold, .callout:
                 return 15
             case .footnoteBold, .footnote:
                 return 13
@@ -71,6 +72,7 @@ extension Font {
             case .bodySemibold: return .semibold
             case .bodyMedium: return .medium
             case .body: return .regular
+            case .calloutBoldWide: return .bold
             case .calloutBold: return .bold
             case .callout: return .regular
             case .footnoteBold: return .bold
@@ -93,6 +95,8 @@ extension Font {
                 return -0.6
             case .bodyBold, .bodySemibold, .bodyMedium, .body:
                 return -0.4
+            case .calloutBoldWide:
+                return 0.8
             case .calloutBold, .callout:
                 return -0.2
             case .footnoteBold, .footnote:
