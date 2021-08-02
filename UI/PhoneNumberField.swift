@@ -23,8 +23,8 @@ struct PhoneNumberField: UIViewRepresentable {
             $0.withFlag = true
             $0.withPrefix = true // allow explicit + prefixes
             $0.placeholder = PhoneNumberKit().getFormattedExampleNumber(forCountry: regionCode, withFormat: .national, withPrefix: false)
-            $0.countryCodePlaceholderColor = .rythmico.gray30
-            $0.numberPlaceholderColor = .rythmico.gray30
+            $0.countryCodePlaceholderColor = .rythmico.textPlaceholder
+            $0.numberPlaceholderColor = .rythmico.textPlaceholder
             $0.textColor = .rythmico.foreground
             $0.addTarget(context.coordinator, action: #selector(Coordinator.onTextUpdate), for: .editingChanged)
             $0.setContentHuggingPriority(.required, for: .vertical)

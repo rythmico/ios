@@ -12,7 +12,7 @@ struct StripePaymentCardTextField: UIViewRepresentable {
             view.delegate = context.coordinator
             view.textColor = .rythmico.foreground
             view.textErrorColor = .rythmico.red
-            view.placeholderColor = .rythmico.gray30
+            view.placeholderColor = .rythmico.textPlaceholder
             view.setContentHuggingPriority(.required, for: .vertical)
 
             view.cardParams = cardDetails

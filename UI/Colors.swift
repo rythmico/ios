@@ -43,9 +43,9 @@ struct ColorSet<Color: UIColorProtocol> {
 
     // MARK: --
 
+    var textPlaceholder: Color { foreground.opacity(0.5) }
     let gray1 = Color(light: 0xEBEBEC, dark: 0x363637)
     let gray2 = Color(light: 0xF8F8F8, dark: 0x191919)
-    let gray30 = Color(light: 0x9AA3AA, dark: 0x4D5155)
 
     let background = Color(light: 0xFFFFFF, dark: 0x000000)
     let backgroundSecondary = Color(light: 0xFFFFFF, dark: 0x181818)

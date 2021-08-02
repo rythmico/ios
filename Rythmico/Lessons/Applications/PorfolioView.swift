@@ -73,7 +73,7 @@ struct PortfolioView: View {
         if portfolio.bio.isBlank {
             Text("\(tutor.name.firstWord ?? "Tutor") did not add a bio.")
                 .rythmicoTextStyle(.body)
-                .foregroundColor(.rythmico.gray30)
+                .foregroundColor(.rythmico.textPlaceholder)
         } else {
             ExpandableText(
                 content: portfolio.bio,

@@ -1,7 +1,9 @@
 public protocol UIColorProtocol {
+    associatedtype ColorType where ColorType == Self
     init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
     init(dynamicProvider: @escaping (UITraitCollection) -> UIColor)
     init(cgColor: CGColor)
+    func opacity(_ opacity: Double) -> ColorType
 }
 
 extension UIColorProtocol {
@@ -23,7 +25,11 @@ extension UIColorProtocol {
     }
 }
 
-extension UIColor: UIColorProtocol {}
+extension UIColor: UIColorProtocol {
+    public func opacity(_ opacity: Double) -> UIColor {
+        self.withAlphaComponent(CGFloat(opacity))
+    }
+}
 
 extension Color: UIColorProtocol {
     public init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {

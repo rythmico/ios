@@ -13,7 +13,7 @@ extension MultilineTextField {
             text: text,
             attributes: .rythmicoTextAttributes(color: .rythmico.foreground, style: .body),
             accentColor: .rythmico.picoteeBlue,
-            placeholderColor: .rythmico.gray30,
+            placeholderColor: .rythmico.textPlaceholder,
             inputAccessory: inputAccessory,
             minHeight: minHeight,
             padding: EdgeInsets(horizontal: .grid(4), vertical: 15),

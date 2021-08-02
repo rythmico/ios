@@ -65,7 +65,7 @@ struct CustomTextField: UIViewRepresentable {
         let textField = CustomUITextField(frame: .zero)
         textField.attributedPlaceholder = NSAttributedString(
             string: placeholder,
-            attributes: .rythmicoTextAttributes(color: .rythmico.gray30, style: .body)
+            attributes: .rythmicoTextAttributes(color: .rythmico.textPlaceholder, style: .body)
         )
         textField.font = .rythmicoFont(.body)
         textField.isUserInteractionEnabled = isEditable
@@ -84,7 +84,7 @@ struct CustomTextField: UIViewRepresentable {
     func updateUIView(_ uiView: UITextField, context: Context) {
         uiView.attributedPlaceholder = NSAttributedString(
             string: placeholder,
-            attributes: .rythmicoTextAttributes(color: .rythmico.gray30, style: .body)
+            attributes: .rythmicoTextAttributes(color: .rythmico.textPlaceholder, style: .body)
         )
         uiView.text = text
         uiView.font = .rythmicoFont(.body)

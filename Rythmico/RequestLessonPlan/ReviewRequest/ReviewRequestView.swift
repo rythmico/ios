@@ -87,7 +87,7 @@ struct ReviewRequestView: View, TestableView {
                             } else {
                                 Text("No private note.")
                                     .rythmicoTextStyle(.body)
-                                    .foregroundColor(.rythmico.gray30)
+                                    .foregroundColor(.rythmico.textPlaceholder)
                                     .fixedSize(horizontal: false, vertical: true)
                                     .onTapGesture(perform: resetPrivateNote)
                             }

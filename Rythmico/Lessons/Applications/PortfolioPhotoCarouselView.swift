@@ -38,7 +38,7 @@ private struct PhotoCarouselCell: View {
                 .aspectRatio(1, contentMode: .fit)
                 .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
             } else {
-                Color.rythmico.gray30
+                Color.rythmico.gray1
                     .scaledToFill()
                     .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
             }
