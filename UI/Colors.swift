@@ -14,7 +14,7 @@ struct ColorSet<Color: UIColorProtocol> {
 
     let azureBlue = Color(light: 0xE3F6F5, dark: 0x103230)
     let picoteeBlue = Color(light: 0x392396, dark: 0x394AD0)
-    let darkPurple = Color(light: 0x150F2F, dark: 0xEBE8F8)
+    let darkPurple = Color(light: 0x150F2F, dark: 0xC2C1E1)
 
     let red = Color(light: 0xB00020, dark: 0x9E001C)
 
