@@ -30,7 +30,7 @@ struct ReviewRequestView: View, TestableView {
                 ScrollView {
                     VStack(spacing: .grid(4)) {
                         SectionHeaderContentView(
-                            "Selected Instrument",
+                            "Chosen Instrument",
                             style: .box,
                             accessory: { editButton(action: resetInstrument) }
                         ) {
