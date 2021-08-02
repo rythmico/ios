@@ -62,10 +62,12 @@ struct LessonDetailView: View, TestableView {
                 VStack(alignment: .leading, spacing: .grid(5)) {
                     Pill(status: lesson.status).padding(.horizontal, .grid(5))
                     ScrollView {
-                        VStack(alignment: .leading, spacing: .grid(4)) {
+                        VStack(spacing: .grid(4)) {
                             SectionHeaderContentView("Lesson Details", style: .box) {
-                                LessonScheduleView(lesson: lesson)
-                                AddressLabel(address: lesson.address)
+                                VStack(alignment: .leading, spacing: .grid(2)) {
+                                    LessonScheduleView(lesson: lesson)
+                                    AddressLabel(address: lesson.address)
+                                }
                             }
                             SectionHeaderContentView("Tutor", style: .box) {
                                 LessonDetailTutorStatusView(lesson: lesson)

@@ -84,10 +84,12 @@ struct LessonPlanDetailView: View, TestableView {
                 VStack(alignment: .leading, spacing: .grid(5)) {
                     Pill(lessonPlan: lessonPlan).padding(.horizontal, .grid(5))
                     ScrollView {
-                        VStack(alignment: .leading, spacing: .grid(4)) {
+                        VStack(spacing: .grid(4)) {
                             SectionHeaderContentView("Plan Details", style: .box) {
-                                LessonPlanScheduleView(schedule: lessonPlan.schedule)
-                                AddressLabel(address: lessonPlan.address)
+                                VStack(alignment: .leading, spacing: .grid(2)) {
+                                    LessonPlanScheduleView(schedule: lessonPlan.schedule)
+                                    AddressLabel(address: lessonPlan.address)
+                                }
                             }
                             SectionHeaderContentView("Tutor", style: .box) {
                                 LessonPlanDetailTutorStatusView(lessonPlan: lessonPlan)

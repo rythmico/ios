@@ -4,7 +4,7 @@ struct LessonScheduleView: View {
     var lesson: Lesson
 
     var body: some View {
-        VStack(alignment: .leading, spacing: .grid(5)) {
+        VStack(alignment: .leading, spacing: .grid(2)) {
             RythmicoLabel(icon: { Image.calendarIcon }, title: { dateText })
             RythmicoLabel(asset: Asset.Icon.Label.time, title: { timeText })
         }
