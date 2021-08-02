@@ -15,11 +15,17 @@ struct LessonPlanSummaryCell: View {
             ) { state in
                 VStack(alignment: .leading, spacing: 0) {
                     LessonPlanSummaryCellMainContent(lessonPlan: lessonPlan, backgroundColor: state.backgroundColor)
-                    LessonPlanSummaryCellAccessory(lessonPlan: lessonPlan)
+                    LessonPlanSummaryCellAccessory(lessonPlan: lessonPlan).hidden()
                 }
                 .padding(.grid(5))
             }
         }
+        // Bit of a dirty hack to allow for two buttons in the same container,
+        // Unfortunately this is the only way I've found to work so far...
+        .overlay(
+            LessonPlanSummaryCellAccessory(lessonPlan: lessonPlan).padding(.grid(5)),
+            alignment: .bottomLeading
+        )
     }
 
     var onTapAction: Action {
