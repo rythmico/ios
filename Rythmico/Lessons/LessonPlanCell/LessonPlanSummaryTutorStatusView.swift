@@ -11,14 +11,7 @@ struct LessonPlanSummaryTutorStatusView: View {
     var status: LessonPlan.Status { lessonPlan.status }
 
     var body: some View {
-        HStack(spacing: .grid(3)) {
-            avatar.fixedSize()
-            Text(title)
-                .rythmicoTextStyle(.body)
-                .lineLimit(1)
-                .minimumScaleFactor(0.5)
-                .frame(maxWidth: .infinity, alignment: .leading)
-        }
+        InlineContentTitleView(content: { avatar.fixedSize() }, title: title)
     }
 
     @ViewBuilder

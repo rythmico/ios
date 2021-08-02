@@ -14,22 +14,11 @@ struct LessonDetailTutorStatusView: View {
                 fill: .rythmico.background,
                 isSelected: state == .pressed
             ) { state in
-                HStack(spacing: .grid(3)) {
-                    avatar(backgroundColor: state.backgroundColor)
-                    VStack(alignment: .leading, spacing: .grid(1)) {
-                        Text(title)
-                            .rythmicoTextStyle(.bodyMedium)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.5)
-                        if let subtitle = subtitle {
-                            Text(subtitle)
-                                .rythmicoTextStyle(.footnote)
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.5)
-                        }
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                }
+                InlineContentTitleSubtitleView(
+                    content: { avatar(backgroundColor: state.backgroundColor) },
+                    title: title,
+                    subtitle: subtitle
+                )
                 .padding(.grid(5))
             }
         }
