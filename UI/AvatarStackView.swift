@@ -1,8 +1,6 @@
 import SwiftUI
 
 private enum Const {
-    static let borderLineWidth: CGFloat = 2
-    static let borderOutlineSize: CGFloat = AvatarView.Const.minSize + borderLineWidth / 1.5
     static let spacing: CGFloat = -AvatarView.Const.minSize * 0.42
 }
 
@@ -16,10 +14,10 @@ struct AvatarStackView<Data: RangeReplaceableCollection, ContentView: View>: Vie
             ForEach(0..<data.count, id: \.self) { index in
                 content(data[index])
                     .frame(width: AvatarView.Const.minSize, height: AvatarView.Const.minSize)
-                    .overlay(
+                    .background(
                         Circle()
-                            .stroke(Color.rythmico.backgroundTertiary, lineWidth: Const.borderLineWidth)
-                            .frame(width: Const.borderOutlineSize, height: Const.borderOutlineSize)
+                            .inset(by: -2)
+                            .fill(Color.rythmico.background)
                     )
                     .zIndex(Double(-index))
             }
@@ -58,7 +56,7 @@ struct AvatarStackView_PreviewsWrapper: View {
 struct AvatarStackView_Previews: PreviewProvider {
     static var previews: some View {
         AvatarStackView_PreviewsWrapper()
-            .environment(\.colorScheme, .dark)
+//            .environment(\.colorScheme, .dark)
             .previewLayout(.sizeThatFits)
             .padding()
     }
