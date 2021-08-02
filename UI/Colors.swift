@@ -49,7 +49,6 @@ struct ColorSet<Color: UIColorProtocol> {
 
     let background = Color(light: 0xFFFFFF, dark: 0x000000)
     let backgroundSecondary = Color(light: 0xFFFFFF, dark: 0x181818)
-    let backgroundTertiary = Color(light: 0xFFFFFF, dark: 0x1e1e1e)
 }
 
 extension ColorSet {
