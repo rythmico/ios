@@ -156,7 +156,8 @@ struct ReviewRequestView_Previews: PreviewProvider {
             schedule: .stub,
             privateNote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta odio dolor, eget sodales turpis mollis semper."
         )
-        .previewDevices()
+        .background(Color.rythmico.backgroundSecondary.edgesIgnoringSafeArea(.all))
+//        .environment(\.colorScheme, .dark)
     }
 }
 #endif
