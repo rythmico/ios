@@ -9,22 +9,16 @@ extension UIColor {
 }
 
 struct ColorSet<Color: UIColorProtocol> {
-    let red = Color(light: 0xB00020, dark: 0x9E001C)
-
-    let azureBlue = Color(light: 0xE3F6F5, dark: 0xB2CFCD)
-    let picoteeBlue = Color(light: 0x392396, dark: 0x432AB2)
-    let darkPurple = Color(light: 0x150F2F, dark: 0x726F82)
-
-
-
-    let lightPurple = Color(light: 0xE8DAFF, dark: 0xD6BDFF)
-    let darkPurple = Color(light: 0x6929C4, dark: 0x783ec9)
-
     let foreground = Color(light: 0x150F2F, dark: 0xE8E8E8)
     let white = Color(light: 0xFFFFFF, dark: 0xE8E8E8)
 
-    let gray5 = Color(light: 0xFAFAFA, dark: 0x191919)
-    let outline = Color(light: 0xE7E7E7, dark: 0x2B2B2B)
+    let azureBlue = Color(light: 0xE3F6F5, dark: 0x103230)
+    let picoteeBlue = Color(light: 0x392396, dark: 0x394AD0)
+    let darkPurple = Color(light: 0x150F2F, dark: 0xEBE8F8)
+
+    let red = Color(light: 0xB00020, dark: 0x9E001C)
+
+    // MARK: --
 
     let tagPurple = Color(light: 0xE8DAFF, dark: 0xD6BDFF)
     let tagTextPurple = Color(light: 0x6929C4, dark: 0x5E24B0)
@@ -44,10 +38,11 @@ struct ColorSet<Color: UIColorProtocol> {
     // MARK: --
 
     var textPlaceholder: Color { foreground.opacity(0.5) }
+    let outline = Color(light: 0xE7E7E7, dark: 0x2B2B2B)
     let gray1 = Color(light: 0xEBEBEC, dark: 0x363637)
-    let gray2 = Color(light: 0xF8F8F8, dark: 0x191919)
+    let gray2 = Color(light: 0xF8F8F8, dark: 0x0F0F0F)
 
-    let background = Color(light: 0xFFFFFF, dark: 0x000000)
+    let background = Color(light: 0xFFFFFF, dark: 0x080808)
     let backgroundSecondary = Color(light: 0xFFFFFF, dark: 0x181818)
 }
 
