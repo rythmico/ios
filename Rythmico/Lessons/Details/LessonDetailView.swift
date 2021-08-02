@@ -67,9 +67,8 @@ struct LessonDetailView: View, TestableView {
                                 LessonScheduleView(lesson: lesson)
                                 AddressLabel(address: lesson.address)
                             }
-                            // TODO: replace
                             SectionHeaderContentView("Tutor", style: .box) {
-                                TutorCell(lessonPlan: lessonPlan, tutor: lesson.tutor)
+                                LessonDetailTutorStatusView(lesson: lesson)
                             }
                         }
                         .foregroundColor(.rythmico.foreground)

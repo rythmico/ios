@@ -89,16 +89,8 @@ struct LessonPlanDetailView: View, TestableView {
                                 LessonPlanScheduleView(schedule: lessonPlan.schedule)
                                 AddressLabel(address: lessonPlan.address)
                             }
-                            // TODO: replace
                             SectionHeaderContentView("Tutor", style: .box) {
-                                if let tutor = lessonPlan.bookingInfo?.tutor {
-                                    TutorCell(lessonPlan: lessonPlan, tutor: tutor)
-                                } else {
-                                    LessonPlanSummaryTutorStatusView(lessonPlan: lessonPlan, backgroundColor: .rythmico.background)
-                                    if lessonPlan.status.isPending {
-                                        InfoBanner(text: "Potential tutors have received your request and will submit applications for your consideration.")
-                                    }
-                                }
+                                LessonPlanDetailTutorStatusView(lessonPlan: lessonPlan)
                             }
                             paymentSection
                         }
