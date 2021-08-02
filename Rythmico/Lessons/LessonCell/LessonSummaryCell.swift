@@ -1,19 +1,12 @@
 import SwiftUISugar
 
 struct LessonSummaryCell: View {
-    var lesson: Lesson
-    var lessonDetailScreen: LessonDetailScreen
-
-    init?(lesson: Lesson) {
-        guard let lessonDetailScreen = LessonDetailScreen(lesson: lesson) else { return nil }
-        self.lesson = lesson
-        self.lessonDetailScreen = lessonDetailScreen
-    }
+    let lesson: Lesson
 
     var body: some View {
         Container(style: .outline(radius: .large)) {
             VStack(alignment: .leading, spacing: 0) {
-                LessonSummaryCellMainContent(lesson: lesson, lessonDetailScreen: lessonDetailScreen)
+                LessonSummaryCellMainContent(lesson: lesson)
             }
         }
     }
@@ -23,8 +16,7 @@ struct LessonSummaryCellMainContent: View {
     @Environment(\.navigator) private var navigator
     @Environment(\.currentScreen) private var currentScreen
 
-    var lesson: Lesson
-    var lessonDetailScreen: LessonDetailScreen
+    let lesson: Lesson
 
     var subtitle: String {
         switch lesson.status {
@@ -42,7 +34,7 @@ struct LessonSummaryCellMainContent: View {
     }
 
     var body: some View {
-        Button(action: { navigator.go(to: lessonDetailScreen, on: currentScreen) }) {
+        Button(action: onTapAction ?? {}) {
             VStack(alignment: .leading, spacing: 0) {
                 Text(lesson.title)
                     .foregroundColor(.rythmico.foreground)
@@ -62,6 +54,12 @@ struct LessonSummaryCellMainContent: View {
                 }
             }
             .padding(.grid(5))
+        }
+    }
+
+    private var onTapAction: Action? {
+        LessonDetailScreen(lesson: lesson).map { lessonDetailScreen in
+            { navigator.go(to: lessonDetailScreen, on: currentScreen) }
         }
     }
 
