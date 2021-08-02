@@ -17,7 +17,6 @@ struct SelectableContainer<Content: View>: View {
         Container(style: style) {
             content(state).foregroundColor(foregroundColor)
         }
-        .contentShape(Rectangle())
     }
 
     private var style: ContainerStyle {

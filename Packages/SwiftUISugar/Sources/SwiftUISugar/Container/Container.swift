@@ -26,6 +26,7 @@ public struct Container<Content: View>: View {
             .clipShape(shape.inset(by: clipShapeInset))
             .background(shape.fill(style.fill))
             .overlay(outlineOverlay(for: shape))
+            .contentShape(Rectangle())
     }
 
     private var clipShapeInset: CGFloat {
