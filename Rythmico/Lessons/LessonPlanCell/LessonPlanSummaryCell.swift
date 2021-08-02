@@ -1,23 +1,35 @@
 import SwiftUISugar
 
 struct LessonPlanSummaryCell: View {
-    var lessonPlan: LessonPlan
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
+
+    let lessonPlan: LessonPlan
 
     var body: some View {
-        Container(style: .outline(radius: .large)) {
-            VStack(alignment: .leading, spacing: 0) {
-                LessonPlanSummaryCellMainContent(lessonPlan: lessonPlan)
-                LessonPlanSummaryCellAccessory(lessonPlan: lessonPlan)
+        AdHocButton(action: onTapAction) { state in
+            SelectableContainer(
+                fill: .rythmico.background,
+                radius: .large,
+                isSelected: state == .pressed
+            ) { state in
+                VStack(alignment: .leading, spacing: 0) {
+                    LessonPlanSummaryCellMainContent(lessonPlan: lessonPlan, backgroundColor: state.backgroundColor)
+                    LessonPlanSummaryCellAccessory(lessonPlan: lessonPlan)
+                }
+                .padding(.grid(5))
             }
         }
+    }
+
+    var onTapAction: Action {
+        { navigator.go(to: LessonPlanDetailScreen(lessonPlan: lessonPlan), on: currentScreen) }
     }
 }
 
 struct LessonPlanSummaryCellMainContent: View {
-    @Environment(\.navigator) private var navigator
-    @Environment(\.currentScreen) private var currentScreen
-
-    var lessonPlan: LessonPlan
+    let lessonPlan: LessonPlan
+    let backgroundColor: Color
 
     var title: String {
         [
@@ -49,26 +61,21 @@ struct LessonPlanSummaryCellMainContent: View {
     private func startDateString(for lesson: Lesson) -> String { Self.startDateFormatter.string(from: lesson.schedule.startDate) }
 
     var body: some View {
-        Button(action: { navigator.go(to: LessonPlanDetailScreen(lessonPlan: lessonPlan), on: currentScreen) }) {
-            VStack(alignment: .leading, spacing: 0) {
-                Text(title)
-                    .rythmicoTextStyle(.subheadlineBold)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
-                    .foregroundColor(.rythmico.foreground)
-                    .opacity(opacity)
-                VSpacing(.grid(2))
-                subtitle
-                    .rythmicoTextStyle(.body)
-                    .foregroundColor(.rythmico.foreground)
-                    .opacity(opacity)
-                VSpacing(.grid(3))
-                HStack(spacing: .grid(3)) {
-                    LessonPlanTutorStatusView(lessonPlan: lessonPlan, summarized: true).opacity(opacity)
-                    Pill(lessonPlan: lessonPlan)
-                }
+        VStack(alignment: .leading, spacing: 0) {
+            Text(title)
+                .rythmicoTextStyle(.subheadlineBold)
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
+                .opacity(opacity)
+            VSpacing(.grid(2))
+            subtitle
+                .rythmicoTextStyle(.body)
+                .opacity(opacity)
+            VSpacing(.grid(4))
+            HStack(spacing: .grid(3)) {
+                LessonPlanTutorStatusView(lessonPlan: lessonPlan, summarized: true, backgroundColor: backgroundColor).opacity(opacity)
+                Pill(lessonPlan: lessonPlan)
             }
-            .padding(.grid(5))
         }
         .watermark(
             lessonPlan.instrument.icon.image,
@@ -131,7 +138,7 @@ struct LessonPlanSummaryCellAccessory: View {
                     action: titleAndAction.action
                 )
             }
-            .padding([.horizontal, .bottom], .grid(5))
+            .padding(.top, .grid(4))
         }
     }
 }

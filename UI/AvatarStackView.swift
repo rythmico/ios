@@ -5,9 +5,10 @@ private enum Const {
 }
 
 struct AvatarStackView<Data: RangeReplaceableCollection, ContentView: View>: View where Data.Index == Int {
-    var data: Data
+    let data: Data
+    let backgroundColor: Color
     @ViewBuilder
-    var content: (Data.Element) -> ContentView
+    let content: (Data.Element) -> ContentView
 
     var body: some View {
         HStack(spacing: Const.spacing) {
@@ -17,7 +18,7 @@ struct AvatarStackView<Data: RangeReplaceableCollection, ContentView: View>: Vie
                     .background(
                         Circle()
                             .inset(by: -2)
-                            .fill(Color.rythmico.background)
+                            .fill(backgroundColor)
                     )
                     .zIndex(Double(-index))
             }
@@ -26,8 +27,8 @@ struct AvatarStackView<Data: RangeReplaceableCollection, ContentView: View>: Vie
 }
 
 extension AvatarStackView where Data.Element == AvatarView.Content, ContentView == AvatarView {
-    init(_ data: Data) {
-        self.init(data: data) { AvatarView($0) }
+    init(_ data: Data, backgroundColor: Color) {
+        self.init(data: data, backgroundColor: backgroundColor) { AvatarView($0) }
     }
 }
 
@@ -40,7 +41,7 @@ struct AvatarStackView_PreviewsWrapper: View {
     ]
 
     var body: some View {
-        AvatarStackView(content)
+        AvatarStackView(content, backgroundColor: .rythmico.background)
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     content = [

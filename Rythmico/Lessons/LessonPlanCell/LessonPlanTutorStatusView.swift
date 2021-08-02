@@ -3,23 +3,26 @@ import SwiftUI
 struct LessonPlanTutorStatusView: View {
     @Environment(\.sizeCategory) private var sizeCategory
 
-    var lessonPlan: LessonPlan
-    var summarized: Bool
+    let lessonPlan: LessonPlan
+    let summarized: Bool
+    let backgroundColor: Color
+
+    var status: LessonPlan.Status { lessonPlan.status }
+    var applications: LessonPlan.Applications? { lessonPlan.applications }
+    var bookingInfo: LessonPlan.BookingInfo? { lessonPlan.bookingInfo }
 
     var body: some View {
         InlineContentAndTitleView(
-            content: { lessonPlan.avatar },
-            title: summarized ? lessonPlan.summarizedTitle(sizeCategory: sizeCategory) : lessonPlan.title,
+            content: { avatar },
+            title: summarized ? summarizedTitle : title,
             bold: !summarized
         )
     }
-}
 
-private extension LessonPlan {
     @ViewBuilder
     var avatar: some View {
         if let applications = applications {
-            AvatarStackView(data: applications.map(\.tutor), thumbnails: true)
+            AvatarStackView(data: applications.map(\.tutor), thumbnails: true, backgroundColor: backgroundColor)
         } else if let tutor = bookingInfo?.tutor {
             TutorAvatarView(tutor, mode: .thumbnail)
         } else {
@@ -27,7 +30,7 @@ private extension LessonPlan {
         }
     }
 
-    func summarizedTitle(sizeCategory: ContentSizeCategory) -> String {
+    var summarizedTitle: String {
         if status.isPending {
             return ""
         } else if let applications = applications {
@@ -55,18 +58,24 @@ private extension LessonPlan {
 
 #if DEBUG
 struct LessonPlanTutorStatusView_Previews: PreviewProvider {
+    static let combos: [(String, LessonPlan.Status)] = [
+        ("Pending", .pending),
+        ("Reviewing Tutors", .reviewing(.stub)),
+        ("Scheduled", .active(.stub)),
+        ("Cancelled no Tutor", .cancelled(.noTutorStub)),
+        ("Cancelled w/ Tutor", .cancelled(.stub)),
+    ]
+
     static var previews: some View {
         Group {
-            LessonPlanTutorStatusView(lessonPlan: .stub.with(\.status, .pending), summarized: true)
-                .previewDisplayName("Pending")
-            LessonPlanTutorStatusView(lessonPlan: .stub.with(\.status, .reviewing(.stub)), summarized: true)
-                .previewDisplayName("Reviewing Tutors")
-            LessonPlanTutorStatusView(lessonPlan: .stub.with(\.status, .active(.stub)), summarized: true)
-                .previewDisplayName("Scheduled")
-            LessonPlanTutorStatusView(lessonPlan: .stub.with(\.status, .cancelled(.noTutorStub)), summarized: true)
-                .previewDisplayName("Cancelled no Tutor")
-            LessonPlanTutorStatusView(lessonPlan: .stub.with(\.status, .cancelled(.stub)), summarized: true)
-                .previewDisplayName("Cancelled w/ Tutor")
+            ForEach(combos, id: \.self.0) { combo in
+                LessonPlanTutorStatusView(
+                    lessonPlan: .stub.with(\.status, combo.1),
+                    summarized: true,
+                    backgroundColor: .rythmico.background
+                )
+                .previewDisplayName(combo.0)
+            }
         }
         .previewLayout(.sizeThatFits)
         .padding()

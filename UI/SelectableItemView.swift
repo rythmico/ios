@@ -6,12 +6,12 @@ struct SelectableItemView<Content: View>: View {
     let content: Content
 
     var body: some View {
-        SelectableContainer(isSelected: isSelected) { foregroundColor in
+        SelectableContainer(isSelected: isSelected) { state in
             HStack(spacing: inset) {
                 content.frame(maxWidth: .infinity, alignment: .leading)
                 SelectableItemCheckmarkView(
                     isSelected: isSelected,
-                    foregroundColor: foregroundColor
+                    foregroundColor: state.foregroundColor
                 )
             }
             .padding(inset)

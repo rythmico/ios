@@ -3,14 +3,19 @@ import SwiftUISugar
 struct SelectableContainer<Content: View>: View {
     @Environment(\.colorScheme) private var colorScheme
 
-    let radius: ContainerStyle.OutlineRadius = .medium
+    struct State {
+        let backgroundColor: Color
+        let foregroundColor: Color
+    }
+
+    var fill: Color = .clear
+    var radius: ContainerStyle.OutlineRadius = .medium
     let isSelected: Bool
-    @ViewBuilder
-    let content: (_ foregroundColor: Color) -> Content
+    let content: (State) -> Content
 
     var body: some View {
         Container(style: style) {
-            content(foregroundColor).foregroundColor(foregroundColor)
+            content(state).foregroundColor(foregroundColor)
         }
         .contentShape(Rectangle())
     }
@@ -20,7 +25,7 @@ struct SelectableContainer<Content: View>: View {
     }
 
     private var unselectedStyle: ContainerStyle {
-        .outline()
+        .outline(fill: fill, radius: radius)
     }
 
     private var selectedStyle: ContainerStyle {
@@ -42,5 +47,9 @@ struct SelectableContainer<Content: View>: View {
         case (.dark, true):
             return .rythmico.inverted(\.foreground)
         }
+    }
+
+    private var state: State {
+        .init(backgroundColor: style.fill, foregroundColor: foregroundColor)
     }
 }
