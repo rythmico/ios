@@ -1,21 +1,31 @@
 import SwiftUISugar
 
 struct LessonSummaryCell: View {
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
+
     let lesson: Lesson
 
     var body: some View {
-        Container(style: .outline(radius: .large)) {
-            VStack(alignment: .leading, spacing: 0) {
-                LessonSummaryCellMainContent(lesson: lesson)
+        AdHocButton(action: onTapAction ?? {}) { state in
+            SelectableContainer(
+                fill: .rythmico.background,
+                radius: .large,
+                isSelected: state == .pressed
+            ) { _ in
+                LessonSummaryCellMainContent(lesson: lesson).padding(.grid(5))
             }
+        }
+    }
+
+    private var onTapAction: Action? {
+        LessonDetailScreen(lesson: lesson).map { lessonDetailScreen in
+            { navigator.go(to: lessonDetailScreen, on: currentScreen) }
         }
     }
 }
 
 struct LessonSummaryCellMainContent: View {
-    @Environment(\.navigator) private var navigator
-    @Environment(\.currentScreen) private var currentScreen
-
     let lesson: Lesson
 
     var subtitle: String {
@@ -34,32 +44,21 @@ struct LessonSummaryCellMainContent: View {
     }
 
     var body: some View {
-        Button(action: onTapAction ?? {}) {
-            VStack(alignment: .leading, spacing: 0) {
-                Text(lesson.title)
-                    .foregroundColor(.rythmico.foreground)
-                    .rythmicoTextStyle(.subheadlineBold)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
-                    .opacity(opacity)
-                VSpacing(.grid(2))
-                Text(subtitle)
-                    .rythmicoTextStyle(.body)
-                    .foregroundColor(.rythmico.foreground)
-                    .opacity(opacity)
-                VSpacing(.grid(3))
-                HStack(spacing: .grid(3)) {
-                    InlineContentAndTitleView(lesson: lesson).opacity(opacity)
-                    Pill(status: lesson.status)
-                }
+        VStack(alignment: .leading, spacing: 0) {
+            Text(lesson.title)
+                .rythmicoTextStyle(.subheadlineBold)
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
+                .opacity(opacity)
+            VSpacing(.grid(2))
+            Text(subtitle)
+                .rythmicoTextStyle(.body)
+                .opacity(opacity)
+            VSpacing(.grid(4))
+            HStack(spacing: .grid(3)) {
+                InlineContentAndTitleView(lesson: lesson).opacity(opacity)
+                Pill(status: lesson.status)
             }
-            .padding(.grid(5))
-        }
-    }
-
-    private var onTapAction: Action? {
-        LessonDetailScreen(lesson: lesson).map { lessonDetailScreen in
-            { navigator.go(to: lessonDetailScreen, on: currentScreen) }
         }
     }
 
