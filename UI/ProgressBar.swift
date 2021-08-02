@@ -40,7 +40,7 @@ struct ProgressBar: View {
     }
 
     private var progressColor: Color {
-        .rythmico.white
+        .rythmico.resolved(\.darkPurple, mode: .dark)
     }
 }
 
