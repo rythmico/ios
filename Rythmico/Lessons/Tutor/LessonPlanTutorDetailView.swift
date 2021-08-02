@@ -21,6 +21,7 @@ struct LessonPlanTutorDetailScreen: Screen {
     }
 }
 
+// TODO: unmarry from 'LessonPlan' model (see below).
 struct LessonPlanTutorDetailView: View {
     typealias HeaderView = LessonPlanApplicationDetailHeaderView
     typealias PortfolioView = LessonPlanApplicationDetailAboutView
