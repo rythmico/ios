@@ -2,15 +2,13 @@ import SwiftUISugar
 
 // MARK: Outline
 
-extension ContainerStyle.Shape {
+extension ContainerStyle {
     enum OutlineRadius: CGFloat {
         case medium = 8
         case large = 12
     }
-}
 
-extension ContainerStyle {
-    static func outline(fill: Color = .clear, radius: Shape.OutlineRadius = .medium) -> Self {
+    static func outline(fill: Color = .clear, radius: OutlineRadius = .medium) -> Self {
         Self(
             fill: fill,
             shape: .squircle(radius: radius.rawValue, style: .continuous),

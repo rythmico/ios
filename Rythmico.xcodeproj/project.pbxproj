@@ -200,6 +200,7 @@
 		D5200E4223FDF091007168E0 /* TitleSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */; };
 		D5204F4926B62FB50085F8D0 /* Buttons+Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5204F4826B62FB50085F8D0 /* Buttons+Student.swift */; };
 		D5204F4B26B67B080085F8D0 /* InstrumentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5204F4A26B67B080085F8D0 /* InstrumentButton.swift */; };
+		D5204F4D26B787C90085F8D0 /* SelectableItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5204F4C26B787C90085F8D0 /* SelectableItemView.swift */; };
 		D5217CEF24E2F8B400C89018 /* MapOpener+ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5217CEE24E2F8B400C89018 /* MapOpener+ActionSheet.swift */; };
 		D52438F1268A4B8C00E2D859 /* LessonPlanStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52438F0268A4B8C00E2D859 /* LessonPlanStatus.swift */; };
 		D52438F3268A517400E2D859 /* LessonPlanOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52438F2268A517400E2D859 /* LessonPlanOptions.swift */; };
@@ -782,6 +783,7 @@
 		D5200E4123FDF091007168E0 /* TitleSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleView.swift; sourceTree = "<group>"; };
 		D5204F4826B62FB50085F8D0 /* Buttons+Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Buttons+Student.swift"; sourceTree = "<group>"; };
 		D5204F4A26B67B080085F8D0 /* InstrumentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentButton.swift; sourceTree = "<group>"; };
+		D5204F4C26B787C90085F8D0 /* SelectableItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableItemView.swift; sourceTree = "<group>"; };
 		D5217CEE24E2F8B400C89018 /* MapOpener+ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapOpener+ActionSheet.swift"; sourceTree = "<group>"; };
 		D52438F0268A4B8C00E2D859 /* LessonPlanStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanStatus.swift; sourceTree = "<group>"; };
 		D52438F2268A517400E2D859 /* LessonPlanOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanOptions.swift; sourceTree = "<group>"; };
@@ -1667,6 +1669,7 @@
 				D5B5820226A37B1E0008D9DC /* RythmicoLabel.swift */,
 				D5B57A702419F79700BE9B4F /* SectionHeaderContentView.swift */,
 				03FE8191244E204900C5C184 /* SelectableContainer.swift */,
+				D5204F4C26B787C90085F8D0 /* SelectableItemView.swift */,
 				0372E359249ABAB80048B402 /* SelectableList.swift */,
 				D5ED168A2614BB40001841ED /* StackSpacing.swift */,
 				D50811E323FB72A3008103D8 /* StepBar.swift */,
@@ -3037,6 +3040,7 @@
 				03C34362249FC16E004907DF /* APIClientInfo.swift in Sources */,
 				D518C2F8250EA89100288A48 /* LessonPlanApplicationsView.swift in Sources */,
 				D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */,
+				D5204F4D26B787C90085F8D0 /* SelectableItemView.swift in Sources */,
 				D5F506B62406360900CA4094 /* Student.swift in Sources */,
 				D549219D25BB28F700251FD2 /* APIError+Rythmico.swift in Sources */,
 				D54340FA261E7AC6006898B0 /* AnalyticsEvent.swift in Sources */,
