@@ -11,7 +11,6 @@ struct InlineContentAndTitleView<Content: View>: View {
             content
                 .fixedSize()
             Text(title)
-                .foregroundColor(.rythmico.foreground)
                 .rythmicoTextStyle(bold ? .bodySemibold : .body)
                 .lineLimit(1)
                 .minimumScaleFactor(0.5)
