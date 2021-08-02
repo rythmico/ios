@@ -11,7 +11,7 @@ struct InstrumentButton: View {
 
     var body: some View {
         AdHocButton(action: action) { state in
-            Container(style: state.map(normal: .outline(), pressed: selectedContainerStyle)) {
+            SelectableContainer(isSelected: state == .pressed) { _ in
                 VStack(spacing: .grid(3)) {
                     Image(uiImage: instrument.icon.image.resized(width: iconWidth))
                         .renderingMode(.template)
@@ -20,24 +20,11 @@ struct InstrumentButton: View {
                         .lineLimit(1)
                         .minimumScaleFactor(0.5)
                 }
-                .foregroundColor(
-                    colorScheme == .dark
-                        ? state.map(normal: .rythmico.white, pressed: .rythmico.inverted(\.foreground))
-                        : state.map(normal: .rythmico.foreground, pressed: .rythmico.white)
-                )
                 .padding(.top, .grid(5))
                 .padding([.horizontal, .bottom], .grid(4))
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
-    }
-
-    var selectedContainerStyle: ContainerStyle {
-        .init(
-            fill: .rythmico.darkPurple,
-            shape: .squircle(radius: .grid(2), style: .continuous),
-            border: .none
-        )
     }
 }
 
