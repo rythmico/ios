@@ -11,6 +11,7 @@ struct SelectableContainer<Content: View>: View {
     var fill: Color = .clear
     var radius: ContainerStyle.OutlineRadius = .medium
     let isSelected: Bool
+    @ViewBuilder
     let content: (State) -> Content
 
     var body: some View {
