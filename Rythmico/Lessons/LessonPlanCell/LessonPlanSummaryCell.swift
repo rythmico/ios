@@ -85,7 +85,7 @@ struct LessonPlanSummaryCellMainContent: View {
         }
         .watermark(
             lessonPlan.instrument.icon.image,
-            offset: .init(width: 50, height: -20),
+            offset: .init(width: 75, height: -25),
             color: .rythmico.picoteeBlue
         )
     }
