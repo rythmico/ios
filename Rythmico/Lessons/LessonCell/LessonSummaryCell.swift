@@ -56,7 +56,7 @@ struct LessonSummaryCellMainContent: View {
                 .opacity(opacity)
             VSpacing(.grid(4))
             HStack(spacing: .grid(3)) {
-                InlineContentAndTitleView(lesson: lesson).opacity(opacity)
+                LessonSummaryTutorStatusView(lesson: lesson).opacity(opacity)
                 Pill(status: lesson.status)
             }
         }

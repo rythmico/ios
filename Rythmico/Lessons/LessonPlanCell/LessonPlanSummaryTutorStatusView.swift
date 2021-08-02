@@ -1,22 +1,24 @@
 import SwiftUI
 
-struct LessonPlanTutorStatusView: View {
+struct LessonPlanSummaryTutorStatusView: View {
     @Environment(\.sizeCategory) private var sizeCategory
 
     let lessonPlan: LessonPlan
-    let summarized: Bool
     let backgroundColor: Color
 
-    var status: LessonPlan.Status { lessonPlan.status }
     var applications: LessonPlan.Applications? { lessonPlan.applications }
     var bookingInfo: LessonPlan.BookingInfo? { lessonPlan.bookingInfo }
+    var status: LessonPlan.Status { lessonPlan.status }
 
     var body: some View {
-        InlineContentAndTitleView(
-            content: { avatar },
-            title: summarized ? summarizedTitle : title,
-            bold: !summarized
-        )
+        HStack(spacing: .grid(3)) {
+            avatar.fixedSize()
+            Text(title)
+                .rythmicoTextStyle(.body)
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
     }
 
     @ViewBuilder
@@ -30,7 +32,7 @@ struct LessonPlanTutorStatusView: View {
         }
     }
 
-    var summarizedTitle: String {
+    var title: String {
         if status.isPending {
             return ""
         } else if let applications = applications {
@@ -39,19 +41,6 @@ struct LessonPlanTutorStatusView: View {
             return tutor.name
         } else {
             return "No tutor"
-        }
-    }
-
-    var title: String {
-        if status.isPending {
-            return "Pending tutor applications..."
-        } else if let applicationCount = applications?.count {
-            let suffix = applicationCount == 1 ? "" : "s" // TODO: proper plurals
-            return "\(applicationCount) tutor\(suffix) applied"
-        } else if let tutor = bookingInfo?.tutor {
-            return tutor.name
-        } else {
-            return "No tutor was selected"
         }
     }
 }
@@ -69,9 +58,8 @@ struct LessonPlanTutorStatusView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             ForEach(combos, id: \.self.0) { combo in
-                LessonPlanTutorStatusView(
+                LessonPlanSummaryTutorStatusView(
                     lessonPlan: .stub.with(\.status, combo.1),
-                    summarized: true,
                     backgroundColor: .rythmico.background
                 )
                 .previewDisplayName(combo.0)

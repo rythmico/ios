@@ -79,7 +79,7 @@ struct LessonPlanSummaryCellMainContent: View {
                 .opacity(opacity)
             VSpacing(.grid(4))
             HStack(spacing: .grid(3)) {
-                LessonPlanTutorStatusView(lessonPlan: lessonPlan, summarized: true, backgroundColor: backgroundColor).opacity(opacity)
+                LessonPlanSummaryTutorStatusView(lessonPlan: lessonPlan, backgroundColor: backgroundColor).opacity(opacity)
                 Pill(lessonPlan: lessonPlan)
             }
         }
