@@ -1,45 +1,50 @@
-import SwiftUI
+import SwiftUISugar
 
 struct PortfolioTrainingsView: View {
     var trainingList: [Portfolio.Training]
 
     var body: some View {
-        ForEach(0..<trainingList.count, id: \.self) { index in let training = trainingList[index]
-            HStack(alignment: .firstTextBaseline, spacing: .grid(3)) {
-                Image(decorative: Asset.Icon.Label.training.name)
-                    .renderingMode(.template)
-                    .foregroundColor(.rythmico.foreground)
-                    .alignmentGuide(.firstTextBaseline) { $0[.bottom] - 2 }
-                VStack(spacing: .grid(4)) {
-                    VStack(spacing: .grid(2)) {
-                        VStack(spacing: .grid(1)) {
-                            Text(training.title)
-                                .foregroundColor(.rythmico.foreground)
-                                .rythmicoTextStyle(.bodyBold)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-
-                            if !training.description.isBlank {
-                                Text(training.description)
-                                    .foregroundColor(.rythmico.foreground)
-                                    .rythmicoTextStyle(.callout)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+        VStack(spacing: 0) {
+            ForEach(trainingList, id: \.self) { training in
+                VStack(spacing: 0) {
+                    RythmicoLabel(
+                        asset: Asset.Icon.Label.training,
+                        title: Text(training.title).rythmicoFontWeight(.subheadlineBold),
+                        titleStyle: .subheadlineBold,
+                        titleLineLimit: 1,
+                        alignedContentSpacing: alignedContentSpacing(for: training)
+                    ) {
+                        VStack(alignment: .leading, spacing: .grid(2)) {
+                            if let description = training.description.nilIfBlank {
+                                Text(description).rythmicoTextStyle(.callout)
+                            }
+                            if let duration = training.duration?.description {
+                                Text(duration).rythmicoTextStyle(.callout)
                             }
                         }
-
-                        if let duration = training.duration?.description {
-                            Text(duration)
-                                .foregroundColor(.rythmico.foreground)
-                                .rythmicoTextStyle(.callout)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .fixedSize(horizontal: false, vertical: true)
                     }
+                    .padding(.vertical, .grid(3))
 
-                    if index < trainingList.endIndex - 1 {
+                    if shouldShowDivider(for: training) {
                         HDivider()
                     }
                 }
             }
         }
+        .foregroundColor(.rythmico.foreground)
+    }
+
+    func shouldShowDivider(for training: Portfolio.Training) -> Bool {
+        guard let index = trainingList.firstIndex(of: training) else { return false }
+        return index < trainingList.endIndex - 1
+    }
+
+    func alignedContentSpacing(for training: Portfolio.Training) -> CGFloat {
+        training.description.nilIfBlank != nil || training.duration?.description != nil
+            ? .grid(1)
+            : .grid(0)
     }
 }
 
@@ -52,11 +57,13 @@ private extension Portfolio.Training.Duration {
 #if DEBUG
 struct PortfolioTrainingsView_Previews: PreviewProvider {
     static var previews: some View {
-        VStack(spacing: .grid(5)) {
+        Group {
             PortfolioTrainingsView(trainingList: .stub)
+            PortfolioTrainingsView(trainingList: .stub).background(Color.red).padding(.vertical, .grid(6))
         }
         .previewLayout(.sizeThatFits)
-        .padding()
+        .padding(.leading, .grid(6))
+//        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }
 #endif

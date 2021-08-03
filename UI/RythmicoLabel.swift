@@ -5,18 +5,24 @@ struct RythmicoLabel<AlignedContent: View>: View {
 
     let asset: ImageAsset
     let title: Text
+    var titleStyle: Font.RythmicoTextStyle = .body
+    var titleLineLimit: Int? = nil
+    var alignedContentSpacing: CGFloat = .grid(2)
     @ViewBuilder
     let alignedContent: AlignedContent
 
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: .grid(3)) {
             Image(uiImage: asset.image.resized(width: iconWidth)).renderingMode(.template).offset(y: iconYOffset + 0.25)
-            VStack(spacing: .grid(2)) {
-                title.rythmicoTextStyle(titleStyle).frame(maxWidth: .infinity, alignment: .leading)
-                alignedContent.frame(maxWidth: .infinity, alignment: .leading)
+            VStack(alignment: .leading, spacing: alignedContentSpacing) {
+                title
+                    .rythmicoTextStyle(titleStyle)
+                    .lineLimit(titleLineLimit)
+                    .minimumScaleFactor(titleLineLimit == nil ? 1 : 0.5)
+                alignedContent
             }
-            .minimumScaleFactor(0.5)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private var iconWidth: CGFloat {
@@ -31,10 +37,6 @@ struct RythmicoLabel<AlignedContent: View>: View {
         -(titleCapHeight - iconWidth) / 2
     }
 
-    private var titleStyle: Font.RythmicoTextStyle {
-        .body
-    }
-
     private var titleCapHeight: CGFloat {
         UIFont.rythmicoFont(
             titleStyle,
@@ -44,8 +46,19 @@ struct RythmicoLabel<AlignedContent: View>: View {
 }
 
 extension RythmicoLabel where AlignedContent == EmptyView {
-    init(asset: ImageAsset, title: Text) {
-        self.init(asset: asset, title: title, alignedContent: EmptyView.init)
+    init(
+        asset: ImageAsset,
+        title: Text,
+        titleStyle: Font.RythmicoTextStyle = .body,
+        titleLineLimit: Int? = nil
+    ) {
+        self.init(
+            asset: asset,
+            title: title,
+            titleStyle: titleStyle,
+            titleLineLimit: titleLineLimit,
+            alignedContent: EmptyView.init
+        )
     }
 }
 

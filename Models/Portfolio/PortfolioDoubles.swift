@@ -84,9 +84,9 @@ extension Portfolio.Training {
 
 extension Array where Element == Portfolio.Training {
     static let stub: Self = [
-        .shortStub,
         .mediumStubA,
         .mediumStubB,
+        .shortStub,
         .longStubA,
         .longStubB,
     ]
