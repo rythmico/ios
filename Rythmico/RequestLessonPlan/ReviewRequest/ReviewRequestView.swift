@@ -42,18 +42,9 @@ struct ReviewRequestView: View, TestableView {
                             style: .box,
                             accessory: { editButton(action: resetStudentDetails) }
                         ) {
-                            HStack(alignment: .firstTextBaseline, spacing: .grid(3)) {
-                                Image(decorative: Asset.Icon.Label.info.name)
-                                    .renderingMode(.template)
-                                    .foregroundColor(.rythmico.foreground)
-                                    .alignmentGuide(.firstTextBaseline) { $0[.bottom] - 2.5 }
-
-                                VStack(alignment: .leading, spacing: .grid(5)) {
-                                    Text(studentDetails).rythmicoTextStyle(.body)
-                                    studentAbout?.rythmicoTextStyle(.body)
-                                }.fixedSize(horizontal: false, vertical: true)
+                            RythmicoLabel(asset: Asset.Icon.Label.info, title: Text(studentDetails)) {
+                                studentAbout.padding(.top, .grid(2))
                             }
-                            .foregroundColor(.rythmico.foreground)
                         }
 
                         SectionHeaderContentView(
@@ -135,11 +126,15 @@ struct ReviewRequestView: View, TestableView {
         return [dateOfBirthString, "(\(age) years old)"].compacted().spaced()
     }
 
-    private var studentAbout: Text? {
-        guard !student.about.isBlank else { return nil }
-        return Text(separator: .newline) {
-            Text(["About", student.name.firstWord].compacted().spaced() + .colon).rythmicoFontWeight(.bodyMedium)
-            student.about
+    @ViewBuilder
+    private var studentAbout: some View {
+        if let about = student.about.nilIfBlank {
+            Text(separator: .newline) {
+                Text(["About", student.name.firstWord].compacted().spaced() + .colon)
+                    .rythmicoFontWeight(.bodyMedium)
+                about
+            }
+            .rythmicoTextStyle(.body)
         }
     }
 }
