@@ -61,7 +61,7 @@ extension RythmicoButtonStyle {
                     .padding(.horizontal, .grid(3))
                     .frame(maxWidth: maxWidth, minHeight: minHeight)
             }
-            .opacity(opacity(for: state, fallbackValues: [\.disabled: 0.5]))
+            .opacity(opacity(for: state, fallbackValues: [\.disabled: 0.3]))
         }
     }
 
