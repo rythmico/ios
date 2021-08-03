@@ -13,7 +13,9 @@ struct RythmicoLabel<AlignedContent: View>: View {
 
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: .grid(3)) {
-            Image(uiImage: asset.image.resized(width: iconWidth)).renderingMode(.template).offset(y: iconYOffset + 0.25)
+            Image(uiImage: asset.image.resized(width: iconWidth))
+                .renderingMode(.template)
+                .alignmentGuide(.firstTextBaseline) { $0[.bottom] - iconYOffset - 0.25 }
             VStack(alignment: .leading, spacing: alignedContentSpacing) {
                 title
                     .rythmicoTextStyle(titleStyle)
@@ -21,6 +23,7 @@ struct RythmicoLabel<AlignedContent: View>: View {
                     .minimumScaleFactor(titleLineLimit == nil ? 1 : 0.5)
                 alignedContent
             }
+            .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -72,6 +75,8 @@ struct RythmicoLabel_Previews: PreviewProvider {
             Text("Additional content")
                 .rythmicoFontWeight(.body)
                 .background(Color.gray)
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
         }
 //        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
         .previewLayout(.sizeThatFits)

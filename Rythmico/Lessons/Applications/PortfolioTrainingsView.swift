@@ -25,7 +25,6 @@ struct PortfolioTrainingsView: View {
                             }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .fixedSize(horizontal: false, vertical: true)
                     }
                     .padding(.trailing, idealHorizontalInsets.trailing)
                     .padding(.vertical, .grid(3))
