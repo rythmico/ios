@@ -27,22 +27,21 @@ extension LessonPlanCancellationView {
         let inspection = SelfInspection()
         var body: some View {
             VStack(spacing: 0) {
-                VStack(spacing: .grid(9)) {
-                    TitleSubtitleContentView(
-                        "Please tell us why",
-                        "Please tell us the reason why you decided to cancel your lesson plan:"
-                    ) { padding in
-                        ScrollView {
-                            ChoiceList(
-                                data: Reason.allCases,
-                                id: \.self,
-                                selection: $selectedReason,
-                                content: \.title
-                            )
-                            .padding(.trailing, padding.trailing)
-                        }
-                        .padding(.leading, padding.leading)
+                TitleSubtitleContentView(
+                    "Please tell us why",
+                    "Please tell us the reason why you decided to cancel your lesson plan:",
+                    spacing: .grid(8)
+                ) { padding in
+                    ScrollView {
+                        ChoiceList(
+                            data: Reason.allCases,
+                            id: \.self,
+                            selection: $selectedReason,
+                            content: \.title
+                        )
+                        .padding(.trailing, padding.trailing)
                     }
+                    .padding(.leading, padding.leading)
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
 
