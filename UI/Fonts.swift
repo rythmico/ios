@@ -147,7 +147,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value == Any {
 }
 
 extension UIFont {
-    static func rythmicoFont(_ style: Font.RythmicoTextStyle) -> UIFont {
+    static func rythmicoFont(_ style: Font.RythmicoTextStyle, overrideSizeCategory: UIContentSizeCategory? = nil) -> UIFont {
         UIFontMetrics(forTextStyle: .largeTitle).scaledFont(
             for: UIFont(
                 descriptor: UIFontDescriptor(
@@ -158,7 +158,8 @@ extension UIFont {
                 ),
                 size: style.regularSize
             ),
-            maximumPointSize: 40
+            maximumPointSize: 40,
+            compatibleWith: overrideSizeCategory.map(UITraitCollection.init)
         )
     }
 }
