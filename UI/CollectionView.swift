@@ -10,7 +10,7 @@ struct CollectionView<Content: View>: View {
                 content
             }
             .frame(maxWidth: .grid(.max))
-            .padding(.all, .grid(5))
+            .padding(.all, .grid(4))
         }
     }
 }
