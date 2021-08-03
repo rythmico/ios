@@ -9,6 +9,9 @@ struct InstrumentSelectionView: View, TestableView {
     var state: ViewState
     var setter: Binding<Instrument>.Setter
 
+    @ScaledMetric(relativeTo: .largeTitle)
+    private var instrumentIconsWidth: CGFloat = .grid(12)
+
     let inspection = SelfInspection()
     var body: some View {
         TitleSubtitleContentView(
@@ -17,20 +20,12 @@ struct InstrumentSelectionView: View, TestableView {
             spacing: .grid(6)
         ) {
             ScrollView {
-                LazyVGrid(
-                    columns: Array(
-                        repeating: GridItem(.flexible(minimum: 0, maximum: 200), spacing: .grid(3)),
-                        count: 2
-                    ),
-                    spacing: .grid(3)
-                ) {
-                    ForEach(state.instruments, id: \.self) { instrument in
-                        InstrumentButton(instrument: instrument) {
-                            setter(instrument)
-                        }
-                    }
-                }
-                .padding([.horizontal, .bottom], .grid(5))
+                SelectableLazyVGrid(
+                    data: state.instruments,
+                    id: \.self,
+                    action: setter,
+                    content: InstrumentSelectionItemView.init
+                )
             }
         }
         .testable(self)
