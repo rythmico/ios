@@ -34,7 +34,7 @@ struct SchedulingView: View, FocusableView, TestableView {
     @SpacedTextBuilder
     var subtitle: Text {
         "Enter when you want the"
-        "\(instrument.assimilatedName) lessons".text.rythmicoFontWeight(.bodyBold)
+        "\(instrument.assimilatedName) lessons".text.rythmicoFontWeight(.subheadlineMedium)
         "to commence and for how long"
     }
 

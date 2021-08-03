@@ -25,7 +25,7 @@ struct ReviewRequestView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        TitleSubtitleContentView("Review Proposal") { _ in
+        TitleContentView("Review Proposal", spacing: .grid(5)) { _ in
             VStack(spacing: 0) {
                 ScrollView {
                     VStack(spacing: .grid(4)) {
@@ -95,7 +95,7 @@ struct ReviewRequestView: View, TestableView {
                     }
                     .frame(maxWidth: .grid(.max))
                     .padding(.trailing, .grid(4))
-                    .padding(.bottom, .grid(7))
+                    .padding(.bottom, .grid(5))
                 }
                 .padding(.leading, .grid(4))
 

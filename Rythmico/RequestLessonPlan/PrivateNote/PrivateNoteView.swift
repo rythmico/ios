@@ -24,12 +24,6 @@ struct PrivateNoteView: View, FocusableView, TestableView {
             : nil
     }
 
-    @SpacedTextBuilder
-    private var privateNoteHeaderTitle: Text {
-        "Private Note"
-        "(optional)".text.rythmicoFontWeight(.body)
-    }
-
     var nextButtonAction: Action {
         {
             setter(
@@ -46,7 +40,7 @@ struct PrivateNoteView: View, FocusableView, TestableView {
         TitleSubtitleContentView("Private Note", subtitle) { padding in
             VStack(spacing: 0) {
                 ScrollView {
-                    TextFieldHeader(privateNoteHeaderTitle) {
+                    TextFieldHeader("Private Note (optional)") {
                         Container(style: .field) {
                             MultilineTextField(
                                 "Message prospective tutors...",

@@ -10,7 +10,7 @@ struct TitleSubtitleContentView<Content: View>: View {
     init(
         _ title: String,
         _ subtitle: Text? = nil,
-        spacing: CGFloat = .grid(6),
+        spacing: CGFloat = .grid(5),
         @ViewBuilder content: @escaping (_ padding: HorizontalInsets) -> Content
     ) {
         self.title = title
@@ -20,8 +20,8 @@ struct TitleSubtitleContentView<Content: View>: View {
     }
 
     var body: some View {
-        VStack(spacing: .grid(1)) {
-            TitleContentView(title, spacing: spacing) { padding in
+        TitleContentView(title, spacing: .grid(1.5)) { padding in
+            VStack(spacing: spacing) {
                 subtitle?
                     .foregroundColor(.rythmico.foreground)
                     .rythmicoTextStyle(.subheadline)
@@ -38,7 +38,7 @@ extension TitleSubtitleContentView {
     init(
         _ title: String,
         _ subtitle: String,
-        spacing: CGFloat = .grid(6),
+        spacing: CGFloat = .grid(5),
         @ViewBuilder content: @escaping (_ padding: HorizontalInsets) -> Content
     ) {
         self.init(title, Text(subtitle), spacing: spacing, content: content)

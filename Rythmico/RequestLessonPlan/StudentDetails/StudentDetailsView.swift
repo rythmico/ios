@@ -32,7 +32,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
         focus == .none
             ? Text(separator: .whitespace) {
                 "Enter the details of the student who will be learning"
-                instrument.standaloneName.text.rythmicoFontWeight(.bodyBold)
+                instrument.standaloneName.text.rythmicoFontWeight(.subheadlineMedium)
             }
             : nil
     }
@@ -97,7 +97,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
         TitleSubtitleContentView("Student Details", subtitle) { padding in
             VStack(spacing: 0) {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: .grid(6)) {
+                    VStack(alignment: .leading, spacing: .grid(5)) {
                         TextFieldHeader("Full Name") {
                             Container(style: .field) {
                                 CustomTextField(

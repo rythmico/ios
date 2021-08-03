@@ -14,7 +14,7 @@ struct InstrumentSelectionView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        TitleSubtitleContentView("Choose Instrument", "Select one instrument", spacing: .grid(6)) { _ in
+        TitleSubtitleContentView("Choose Instrument", "Select one instrument") { _ in
             ScrollView {
                 SelectableLazyVGrid(
                     data: state.instruments,

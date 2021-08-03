@@ -20,12 +20,12 @@ struct AddressDetailsView: View, TestableView {
     var subtitle: Text {
         "Enter the address where"
         if let studentName = student.name.firstWord {
-            studentName.text.rythmicoFontWeight(.bodyBold)
+            studentName.text.rythmicoFontWeight(.subheadlineMedium)
         } else {
             "the student"
         }
         "will have the"
-        "\(instrument.assimilatedName) lessons".text.rythmicoFontWeight(.bodyBold)
+        "\(instrument.assimilatedName) lessons".text.rythmicoFontWeight(.subheadlineMedium)
     }
 
     var isLoading: Bool { coordinator.state.isLoading }
@@ -44,7 +44,7 @@ struct AddressDetailsView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        TitleSubtitleContentView("Address Details", subtitle, spacing: .grid(4)) { padding in
+        TitleSubtitleContentView("Address Details", subtitle) { padding in
             VStack(spacing: 0) {
                 ScrollView {
                     VStack(alignment: .leading, spacing: .grid(5)) {
