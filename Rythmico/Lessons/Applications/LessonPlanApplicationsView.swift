@@ -47,7 +47,7 @@ struct LessonPlanApplicationsView: View {
 
     var body: some View {
         TitleContentView(title) { padding in
-            VStack(alignment: .leading, spacing: .grid(4)) {
+            VStack(alignment: .leading, spacing: padding.leading) {
                 InfoBanner(text: priceInfo)
                     .frame(maxWidth: .grid(.max))
                     .padding(padding)
