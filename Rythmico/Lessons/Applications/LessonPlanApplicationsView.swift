@@ -29,6 +29,9 @@ struct LessonPlanApplicationsScreen: Screen {
 }
 
 struct LessonPlanApplicationsView: View {
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
+
     let lessonPlan: LessonPlan
     let applications: LessonPlan.Applications
 
@@ -49,15 +52,27 @@ struct LessonPlanApplicationsView: View {
                     .frame(maxWidth: .grid(.max))
                     .padding(.horizontal, .grid(5))
 
-                LessonPlanApplicationsGridView(
-                    lessonPlan: lessonPlan,
-                    applications: applications
-                )
+                ScrollView {
+                    SelectableLazyVGrid(
+                        data: applications,
+                        id: \.self,
+                        action: go,
+                        content: LessonPlanApplicationCell.init
+                    )
+                }
             }
         }
         .backgroundColor(.rythmico.background)
         .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    func go(to application: LessonPlan.Application) {
+        navigator.go(
+            to: LessonPlanApplicationDetailScreen(lessonPlan: lessonPlan, application: application),
+            on: currentScreen
+        )
+        Current.analytics.track(.tutorApplicationScreenView(lessonPlan: lessonPlan, application: application))
     }
 }
 
@@ -66,28 +81,19 @@ struct LessonPlanApplicationCell: View {
         static let avatarSize: CGFloat = .grid(14)
     }
 
-    var application: LessonPlan.Application
-
-    init(_ application: LessonPlan.Application) {
-        self.application = application
-    }
+    let application: LessonPlan.Application
 
     var body: some View {
-        Container(style: .outline()) {
-            VStack(spacing: .grid(4)) {
-                TutorAvatarView(application.tutor, mode: .thumbnail)
-                    .frame(width: Const.avatarSize, height: Const.avatarSize)
-                    .withSmallDBSCheck()
-                Text(application.tutor.name)
-                    .rythmicoTextStyle(.bodyBold)
-                    .foregroundColor(.rythmico.foreground)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.6)
-            }
-            .padding(.vertical, .grid(6))
-            .padding(.horizontal, .grid(4))
+        VStack(spacing: .grid(4)) {
+            TutorAvatarView(application.tutor, mode: .thumbnail)
+                .frame(width: Const.avatarSize, height: Const.avatarSize)
+                .withSmallDBSCheck()
+            Text(application.tutor.name)
+                .rythmicoTextStyle(.subheadlineBold)
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
+                .multilineTextAlignment(.center)
         }
-        .frame(maxWidth: .infinity)
     }
 }
 

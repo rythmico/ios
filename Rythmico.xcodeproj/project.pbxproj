@@ -387,7 +387,6 @@
 		D5814A00251D7FFC0009BBB3 /* App+SplitViewCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58149FF251D7FFC0009BBB3 /* App+SplitViewCustomization.swift */; };
 		D5814A01251D7FFC0009BBB3 /* App+SplitViewCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58149FF251D7FFC0009BBB3 /* App+SplitViewCustomization.swift */; };
 		D585D5B12511299800B74091 /* LessonPlanApplicationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D585D5B02511299800B74091 /* LessonPlanApplicationDetailView.swift */; };
-		D58824BF251A6953000820F4 /* LessonPlanApplicationsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58824BE251A6953000820F4 /* LessonPlanApplicationsGridView.swift */; };
 		D58824C4251A6D49000820F4 /* LessonsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58824C3251A6D49000820F4 /* LessonsCollectionView.swift */; };
 		D5883CEA25A4189D000B545C /* CalendarSyncCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5883CE925A4189D000B545C /* CalendarSyncCoordinator.swift */; };
 		D5883CEB25A4189D000B545C /* CalendarSyncCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5883CE925A4189D000B545C /* CalendarSyncCoordinator.swift */; };
@@ -920,7 +919,6 @@
 		D57DE186264DCF9A00C5E118 /* ProfileLogOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLogOutCell.swift; sourceTree = "<group>"; };
 		D58149FF251D7FFC0009BBB3 /* App+SplitViewCustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+SplitViewCustomization.swift"; sourceTree = "<group>"; };
 		D585D5B02511299800B74091 /* LessonPlanApplicationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationDetailView.swift; sourceTree = "<group>"; };
-		D58824BE251A6953000820F4 /* LessonPlanApplicationsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationsGridView.swift; sourceTree = "<group>"; };
 		D58824C3251A6D49000820F4 /* LessonsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsCollectionView.swift; sourceTree = "<group>"; };
 		D5883CE925A4189D000B545C /* CalendarSyncCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSyncCoordinator.swift; sourceTree = "<group>"; };
 		D588E87D266D135000E14288 /* ErrorLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLogger.swift; sourceTree = "<group>"; };
@@ -2147,7 +2145,6 @@
 			children = (
 				D518C2F7250EA89100288A48 /* LessonPlanApplicationsView.swift */,
 				D5DAD27B2679339B0014702F /* LessonPlanApplicationsView+Analytics.swift */,
-				D58824BE251A6953000820F4 /* LessonPlanApplicationsGridView.swift */,
 				D585D5B02511299800B74091 /* LessonPlanApplicationDetailView.swift */,
 				D5DAD27D26793B970014702F /* LessonPlanApplicationDetailView+Analytics.swift */,
 				D501587C25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift */,
@@ -2923,7 +2920,6 @@
 				0365F6F52417F1E900F452AC /* AddressLookupEndpoints.swift in Sources */,
 				D54340F3261E72F8006898B0 /* AccessibilitySettings.swift in Sources */,
 				D517FF8025536AB900A41639 /* Tutor.swift in Sources */,
-				D58824BF251A6953000820F4 /* LessonPlanApplicationsGridView.swift in Sources */,
 				D501586E25374048005E02FA /* CardSetupCoordinator.swift in Sources */,
 				03B198562471BD6C005529EB /* PushNotificationAuthorizationCoordinator.swift in Sources */,
 				D52438F5268A51B300E2D859 /* LessonPlanID.swift in Sources */,
