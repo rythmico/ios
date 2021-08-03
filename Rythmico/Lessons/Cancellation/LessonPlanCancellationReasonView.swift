@@ -28,20 +28,21 @@ extension LessonPlanCancellationView {
         var body: some View {
             VStack(spacing: 0) {
                 VStack(spacing: .grid(9)) {
-                    TitleSubtitleView(
-                        title: "Please tell us why",
-                        subtitle: "Please tell us the reason why you decided to cancel your lesson plan:"
-                    )
-                    ScrollView {
-                        ChoiceList(
-                            data: Reason.allCases,
-                            id: \.self,
-                            selection: $selectedReason,
-                            content: \.title
-                        )
-                        .padding(.trailing, .grid(5))
+                    TitleSubtitleContentView(
+                        "Please tell us why",
+                        "Please tell us the reason why you decided to cancel your lesson plan:"
+                    ) { padding in
+                        ScrollView {
+                            ChoiceList(
+                                data: Reason.allCases,
+                                id: \.self,
+                                selection: $selectedReason,
+                                content: \.title
+                            )
+                            .padding(.trailing, padding.trailing)
+                        }
+                        .padding(.leading, padding.leading)
                     }
-                    .padding(.leading, .grid(5))
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
 

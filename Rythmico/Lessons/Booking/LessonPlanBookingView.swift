@@ -38,7 +38,7 @@ struct LessonPlanBookingView: View {
             loadingTitle: "Processing booking..."
         ) {
             VStack(spacing: 0) {
-                TitleSubtitleContentView(title: title, subtitle: subtitle) {
+                TitleSubtitleContentView(title, subtitle) { padding in
                     ScrollView {
                         VStack(spacing: .grid(6)) {
                             Group {
@@ -57,7 +57,7 @@ struct LessonPlanBookingView: View {
                                 }
                             }
                             .frame(maxWidth: .grid(.max))
-                            .padding(.horizontal, .grid(5))
+                            .padding(padding)
 
                             VStack(spacing: .grid(4)) {
                                 SectionHeaderContentView("Payment Method", style: .plain) {
@@ -76,10 +76,10 @@ struct LessonPlanBookingView: View {
 
                                 LessonPlanPriceView(price: checkout.pricePerLesson, showTermsOfService: true)
                                     .frame(maxWidth: .grid(.max))
-                                    .padding(.horizontal, .grid(4))
+                                    .padding(padding)
                             }
                         }
-                        .padding(.bottom, .grid(5))
+                        .padding(.bottom, padding.trailing)
                         .animation(.rythmicoSpring(duration: .durationShort), value: phoneNumberInputError != nil)
                     }
                 }

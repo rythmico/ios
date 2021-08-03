@@ -44,7 +44,7 @@ struct AddressDetailsView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        TitleSubtitleContentView(title: "Address Details", subtitle: subtitle, spacing: .grid(4)) {
+        TitleSubtitleContentView("Address Details", subtitle, spacing: .grid(4)) { padding in
             VStack(spacing: 0) {
                 ScrollView {
                     VStack(alignment: .leading, spacing: .grid(5)) {
@@ -92,9 +92,9 @@ struct AddressDetailsView: View, TestableView {
                     }
                     .accentColor(.rythmico.picoteeBlue)
                     .frame(maxWidth: .grid(.max))
-                    .padding([.trailing, .bottom], .grid(5))
+                    .padding([.trailing, .bottom], padding.trailing)
                 }
-                .padding(.leading, .grid(5))
+                .padding(.leading, padding.leading)
 
                 nextButtonAction.map { action in
                     FloatingView {

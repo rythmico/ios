@@ -16,13 +16,13 @@ struct ParentInfoAndSafetyScreen: Screen {
 
 struct ParentInfoAndSafetyView: View {
     var body: some View {
-        TitleContentView(title: "Parent Info & Safety") {
+        TitleContentView("Parent Info & Safety") { padding in
             ScrollView {
                 Text("Music lessons with Rythmico may be relaxed, but we take our responsibility as teachers very seriously. All tutors are DBS checked with years of experience working with children, both in mainstream schools and those that cater for young people with specialist needs.")
                     .foregroundColor(.rythmico.foreground)
                     .rythmicoTextStyle(.body)
                     .frame(maxWidth: .grid(.max), alignment: .leading)
-                    .padding(.horizontal, .grid(5))
+                    .padding(padding)
             }
         }
         .backgroundColor(.rythmico.background)

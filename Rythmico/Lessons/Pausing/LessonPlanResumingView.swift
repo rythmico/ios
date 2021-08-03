@@ -37,11 +37,11 @@ struct LessonPlanResumingView: View {
         NavigationView {
             CoordinatorStateView(coordinator: coordinator, successTitle: "Plan Resumed", loadingTitle: "Resuming Plan...") {
                 VStack(spacing: 0) {
-                    TitleContentView(title: title) {
+                    TitleContentView(title) { padding in
                         ScrollView {
                             LessonPlanResumingContentView(policy: option.policy)
                                 .frame(maxWidth: .grid(.max))
-                                .padding(.horizontal, .grid(5))
+                                .padding(padding)
                         }
                     }
 

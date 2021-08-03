@@ -80,9 +80,9 @@ struct LessonPlanDetailView: View, TestableView {
     let inspection = SelfInspection()
     var body: some View {
         VStack(spacing: 0) {
-            TitleContentView(title: title) {
+            TitleContentView(title) { padding in
                 VStack(alignment: .leading, spacing: .grid(5)) {
-                    Pill(lessonPlan: lessonPlan).padding(.horizontal, .grid(5))
+                    Pill(lessonPlan: lessonPlan).padding(padding)
                     ScrollView {
                         VStack(spacing: .grid(4)) {
                             SectionHeaderContentView("Plan Details", style: .box) {
@@ -98,7 +98,7 @@ struct LessonPlanDetailView: View, TestableView {
                         }
                         .foregroundColor(.rythmico.foreground)
                         .frame(maxWidth: .grid(.max))
-                        .padding([.horizontal, .bottom], .grid(5))
+                        .padding([.horizontal, .bottom], .grid(4))
                     }
                 }
             }

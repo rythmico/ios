@@ -1,6 +1,8 @@
 import SwiftUISugar
 
 struct ProfileCell<Accessory: View>: View {
+    @Environment(\.idealHorizontalInsets) private var idealHorizontalInsets
+
     var title: String
     var disclosure: Bool
     var action: Action?
@@ -21,7 +23,8 @@ struct ProfileCell<Accessory: View>: View {
     var body: some View {
         container
             .foregroundColor(.rythmico.foreground)
-            .padding(.horizontal, .grid(5) - UITableViewCell.defaultHorizontalPadding)
+            .padding(.leading, idealHorizontalInsets.leading - UITableViewCell.defaultHorizontalPadding)
+            .padding(.trailing, idealHorizontalInsets.trailing - UITableViewCell.defaultHorizontalPadding)
             .padding(.vertical, .grid(2))
             .frame(minHeight: 51)
     }

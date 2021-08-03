@@ -27,7 +27,7 @@ struct LessonPlansView: View {
     private var repository = Current.lessonPlanRepository
 
     var body: some View {
-        TitleContentView(title: title) {
+        TitleContentView(title) { _ in
             LessonPlansCollectionView(lessonPlans: repository.items)
         }
         .backgroundColor(.rythmico.background)

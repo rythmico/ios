@@ -40,11 +40,11 @@ struct LessonPlanPausingView: View {
         NavigationView {
             CoordinatorStateView(coordinator: coordinator, successTitle: "Plan Paused", loadingTitle: "Pausing Plan...") {
                 VStack(spacing: 0) {
-                    TitleContentView(title: title) {
+                    TitleContentView(title) { padding in
                         ScrollView {
                             LessonPlanPausingContentView(isFree: isFree, policy: option.policy)
                                 .frame(maxWidth: .grid(.max))
-                                .padding(.horizontal, .grid(5))
+                                .padding(padding)
                         }
                     }
 

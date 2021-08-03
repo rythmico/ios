@@ -46,11 +46,11 @@ struct LessonPlanApplicationsView: View {
     }
 
     var body: some View {
-        TitleContentView(title: title) {
+        TitleContentView(title) { padding in
             VStack(alignment: .leading, spacing: .grid(4)) {
                 InfoBanner(text: priceInfo)
                     .frame(maxWidth: .grid(.max))
-                    .padding(.horizontal, .grid(5))
+                    .padding(padding)
 
                 ScrollView {
                     SelectableLazyVGrid(

@@ -43,7 +43,7 @@ struct PrivateNoteView: View, FocusableView, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        TitleSubtitleContentView(title: "Private Note", subtitle: subtitle) {
+        TitleSubtitleContentView("Private Note", subtitle) { padding in
             VStack(spacing: 0) {
                 ScrollView {
                     TextFieldHeader(privateNoteHeaderTitle) {
@@ -58,10 +58,10 @@ struct PrivateNoteView: View, FocusableView, TestableView {
                         }
                     }
                     .frame(maxWidth: .grid(.max))
-                    .padding([.trailing, .bottom], .grid(5))
+                    .padding([.trailing, .bottom], padding.trailing)
                 }
                 .accentColor(.rythmico.picoteeBlue)
-                .padding(.leading, .grid(5))
+                .padding(.leading, padding.leading)
 
                 FloatingView {
                     RythmicoButton("Next", style: .primary(), action: nextButtonAction)

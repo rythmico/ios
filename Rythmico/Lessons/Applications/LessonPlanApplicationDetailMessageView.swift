@@ -7,44 +7,23 @@ struct LessonPlanApplicationDetailMessageView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: .grid(5)) {
-                VStack(spacing: .grid(4)) {
-                    if let privateNote = privateNote {
-                        Text(privateNoteHeader)
-                            .rythmicoTextStyle(.subheadlineBold)
-                            .foregroundColor(.rythmico.foreground)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                HeadlineContentView(privateNoteHeader) { padding in
+                    Text(privateNote ?? privateNotePlaceholder)
+                        .rythmicoTextStyle(.body)
+                        .foregroundColor(privateNoteForegroundColor)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(padding)
+                }
+                .frame(maxWidth: .grid(.max))
 
-                        Text(privateNote)
-                            .rythmicoTextStyle(.body)
-                            .foregroundColor(.rythmico.foreground)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    } else {
-                        Text("No private message from \(application.tutor.name).")
-                            .rythmicoTextStyle(.body)
-                            .foregroundColor(.rythmico.textPlaceholder)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                SectionHeaderContentView("Plan Details", style: .box, accessory: TutorAcceptedStatusPill.init) {
+                    VStack(alignment: .leading, spacing: .grid(2)) {
+                        LessonPlanRequestedScheduleView(lessonPlan.schedule, tutor: nil)
+                        AddressLabel(address: lessonPlan.address)
                     }
                 }
                 .frame(maxWidth: .grid(.max))
-                .padding(.horizontal, .grid(5))
-
-                HDivider()
-
-                VStack(spacing: .grid(4)) {
-                    HStack(spacing: .grid(4)) {
-                        Text("Lesson Schedule")
-                            .rythmicoTextStyle(.subheadlineBold)
-                            .foregroundColor(.rythmico.foreground)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .fixedSize(horizontal: false, vertical: true)
-
-                        TutorAcceptedStatusPill()
-                    }
-
-                    LessonPlanRequestedScheduleView(lessonPlan.schedule, tutor: nil)
-                }
-                .frame(maxWidth: .grid(.max))
-                .padding(.horizontal, .grid(5))
+                .padding(.horizontal, .grid(4))
             }
             .padding(.vertical, .grid(5))
         }
@@ -56,5 +35,13 @@ struct LessonPlanApplicationDetailMessageView: View {
 
     private var privateNote: String? {
         application.privateNote.nilIfEmpty.map { $0.smartQuoted() }
+    }
+
+    private var privateNotePlaceholder: String {
+        "No private message from \(application.tutor.name)."
+    }
+
+    private var privateNoteForegroundColor: Color {
+        privateNote != nil ? .rythmico.foreground : .rythmico.textPlaceholder
     }
 }

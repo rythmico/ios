@@ -1,7 +1,7 @@
 import SwiftUISugar
 
 struct PortfolioView: View {
-    private static let bioId = "bio"
+    private struct BioId: Hashable {}
 
     var tutor: Tutor
     var portfolio: Portfolio
@@ -10,62 +10,49 @@ struct PortfolioView: View {
     var body: some View {
         ScrollView { proxy in
             VStack(spacing: .grid(5)) {
-                VStack(spacing: .grid(4)) {
-                    HStack(spacing: .grid(4)) {
-                        header("Bio")
-                        ageText(from: portfolio)
-                    }
-
+                HeadlineContentView("Bio", accessory: ageText(from: portfolio)) { padding in
                     bio(from: portfolio, scrollingProxy: proxy)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(padding)
                 }
                 .frame(maxWidth: .grid(.max))
-                .padding(.horizontal, .grid(5))
-                .id(Self.bioId)
+                .id(BioId())
 
                 if !portfolio.training.isEmpty {
                     HDivider()
-                    VStack(spacing: .grid(4)) {
-                        header("Training")
-                        PortfolioTrainingsView(trainingList: portfolio.training)
-                    }
-                    .frame(maxWidth: .grid(.max))
-                    .padding(.horizontal, .grid(5))
                 }
 
-                if !portfolio.videos.isEmpty || !portfolio.photos.isEmpty {
-                    HDivider()
+                VStack(spacing: 0) {
+                    if !portfolio.training.isEmpty {
+                        HeadlineContentView("Training") { padding in
+                            PortfolioTrainingsView(trainingList: portfolio.training)
+                                .padding(.leading, padding.leading)
+                        }
+                        .frame(maxWidth: .grid(.max))
+                    }
+
+                    if !portfolio.videos.isEmpty || !portfolio.photos.isEmpty {
+                        HDivider()
+                    }
                 }
 
                 if !portfolio.videos.isEmpty {
-                    VStack(spacing: .grid(4)) {
-                        header("Videos")
-                            .frame(maxWidth: .grid(.max))
-                            .padding(.horizontal, .grid(5))
+                    HeadlineContentView("Videos", spacing: .grid(4)) { _ in
                         VideoCarouselView(videos: portfolio.videos)
                     }
+                    .frame(maxWidth: .grid(.max))
                 }
 
                 if !portfolio.photos.isEmpty {
-                    VStack(spacing: .grid(4)) {
-                        header("Photos")
-                        PhotoCarouselView(photos: portfolio.photos)
+                    HeadlineContentView("Photos", spacing: .grid(4)) { padding in
+                        PhotoCarouselView(photos: portfolio.photos).padding(padding)
                     }
                     .frame(maxWidth: .grid(.max))
-                    .padding(.horizontal, .grid(5))
                 }
             }
             .padding(.top, topPadding)
             .padding(.bottom, .grid(5))
         }
-    }
-
-    @ViewBuilder
-    private func header(_ title: String) -> some View {
-        Text(title)
-            .rythmicoTextStyle(.subheadlineBold)
-            .foregroundColor(.rythmico.foreground)
-            .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     @ViewBuilder
@@ -77,7 +64,7 @@ struct PortfolioView: View {
         } else {
             ExpandableText(
                 content: portfolio.bio,
-                onCollapse: { scrollingProxy.scrollTo(Self.bioId, anchor: .bottom) }
+                onCollapse: { scrollingProxy.scrollTo(BioId(), anchor: .bottom) }
             )
             .foregroundColor(.rythmico.foreground)
         }

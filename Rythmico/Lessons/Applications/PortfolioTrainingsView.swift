@@ -1,6 +1,8 @@
 import SwiftUISugar
 
 struct PortfolioTrainingsView: View {
+    @Environment(\.idealHorizontalInsets) private var idealHorizontalInsets
+
     var trainingList: [Portfolio.Training]
 
     var body: some View {
@@ -25,6 +27,7 @@ struct PortfolioTrainingsView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .fixedSize(horizontal: false, vertical: true)
                     }
+                    .padding(.trailing, idealHorizontalInsets.trailing)
                     .padding(.vertical, .grid(3))
 
                     if shouldShowDivider(for: training) {

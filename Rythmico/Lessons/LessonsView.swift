@@ -50,7 +50,7 @@ struct LessonsView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        TitleContentView(title: title, spacing: .grid(1)) {
+        TitleContentView(title, spacing: .grid(1)) { _ in
             VStack(spacing: 0) {
                 TabMenuView(tabs: Filter.allCases, selection: $tabSelection.lessonsTab)
                 LessonsCollectionView(lessonPlans: repository.items, filter: tabSelection.lessonsTab)

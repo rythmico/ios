@@ -94,7 +94,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
     // MARK: - Body -
     let inspection = SelfInspection()
     var body: some View {
-        TitleSubtitleContentView(title: "Student Details", subtitle: subtitle) {
+        TitleSubtitleContentView("Student Details", subtitle) { padding in
             VStack(spacing: 0) {
                 ScrollView {
                     VStack(alignment: .leading, spacing: .grid(6)) {
@@ -137,9 +137,9 @@ struct StudentDetailsView: View, FocusableView, TestableView {
                     }
                     .accentColor(.rythmico.picoteeBlue)
                     .frame(maxWidth: .grid(.max))
-                    .padding([.trailing, .bottom], .grid(5))
+                    .padding([.trailing, .bottom], padding.trailing)
                 }
-                .padding(.leading, .grid(5))
+                .padding(.leading, padding.leading)
 
                 if let action = nextButtonAction {
                     FloatingView {

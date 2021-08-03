@@ -23,7 +23,7 @@ struct ProfileView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        TitleContentView(title: title, spacing: .grid(0)) {
+        TitleContentView(title, spacing: .grid(0)) { _ in
             List {
                 ProfileLessonPlansCell()
                 ProfileSection("Notifications") {

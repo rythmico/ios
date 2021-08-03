@@ -1,35 +1,54 @@
-import SwiftUI
+import SwiftUISugar
 
 struct TitleSubtitleContentView<Content: View>: View {
-    var title: String
-    var subtitle: Text? = nil
-    var spacing: CGFloat = .grid(6)
+    let title: String
+    let subtitle: Text?
+    let spacing: CGFloat
     @ViewBuilder
-    var content: Content
+    var content: (_ padding: HorizontalInsets) -> Content
+
+    init(
+        _ title: String,
+        _ subtitle: Text? = nil,
+        spacing: CGFloat = .grid(6),
+        @ViewBuilder content: @escaping (_ padding: HorizontalInsets) -> Content
+    ) {
+        self.title = title
+        self.subtitle = subtitle
+        self.spacing = spacing
+        self.content = content
+    }
 
     var body: some View {
         VStack(spacing: spacing) {
-            TitleSubtitleView(title: title, subtitle: subtitle)
-            content
+            TitleContentView(title) { padding in
+                subtitle?
+                    .foregroundColor(.rythmico.foreground)
+                    .rythmicoTextStyle(.body) // TODO: change to .subheadlineBold
+                    .frame(maxWidth: .grid(.max), alignment: .leading)
+                    .padding(padding)
+                    .transition(.offset(y: -50) + .opacity)
+                content(padding)
+            }
         }
     }
 }
 
 extension TitleSubtitleContentView {
     init(
-        title: String,
-        subtitle: String,
+        _ title: String,
+        _ subtitle: String,
         spacing: CGFloat = .grid(6),
-        @ViewBuilder content: () -> Content
+        @ViewBuilder content: @escaping (_ padding: HorizontalInsets) -> Content
     ) {
-        self.init(title: title, subtitle: Text(subtitle), spacing: spacing, content: content)
+        self.init(title, Text(subtitle), spacing: spacing, content: content)
     }
 }
 
 #if DEBUG
 struct TitleSubtitleContentView_Previews: PreviewProvider {
     static var previews: some View {
-        TitleSubtitleContentView(title: "Title", subtitle: "Subtitle") {
+        TitleSubtitleContentView("Title", "Subtitle") { _ in
             Color.red
         }
     }

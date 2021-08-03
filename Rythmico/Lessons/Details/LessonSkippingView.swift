@@ -40,11 +40,11 @@ struct LessonSkippingView: View {
         NavigationView {
             CoordinatorStateView(coordinator: coordinator, successTitle: "Lesson Skipped", loadingTitle: "Skipping Lesson...") {
                 VStack(spacing: 0) {
-                    TitleContentView(title: title) {
+                    TitleContentView(title) { padding in
                         ScrollView {
                             LessonSkippingContentView(isFree: isFree, policy: option.policy)
                                 .frame(maxWidth: .grid(.max))
-                                .padding(.horizontal, .grid(5))
+                                .padding(padding)
                         }
                     }
 

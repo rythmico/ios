@@ -14,7 +14,7 @@ struct AddNewCardView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            TitleSubtitleContentView(title: title, subtitle: subtitle) {
+            TitleSubtitleContentView(title, subtitle) { padding in
                 VStack(spacing: .grid(5)) {
                     HStack(spacing: .grid(5)) {
                         Container(style: .field) {
@@ -36,7 +36,8 @@ struct AddNewCardView: View {
                     .foregroundColor(.rythmico.foreground)
                 }
                 .frame(maxWidth: .grid(.max))
-                .padding([.horizontal, .bottom], .grid(5))
+                .padding(.leading, padding.leading)
+                .padding([.trailing, .bottom], padding.trailing)
             }
 
             StripeSetupIntentLink(
