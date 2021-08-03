@@ -50,7 +50,7 @@ struct AddressDetailsView: View, TestableView {
                     VStack(alignment: .leading, spacing: .grid(5)) {
                         Group {
                             InfoBanner(text: "You can also arrange for online lessons. Just let your prospective tutor know about your preference in the final step.")
-                            HeaderContentView(title: "Postcode", titleAccessory: {
+                            TextFieldHeader("Postcode", accessory: {
                                 InfoDisclaimerButton(
                                     title: "Why Postcode?",
                                     message: "We only show prospective tutors the postcode area, so they have a better idea of where they need to travel to."

@@ -98,7 +98,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
             VStack(spacing: 0) {
                 ScrollView {
                     VStack(alignment: .leading, spacing: .grid(6)) {
-                        HeaderContentView(title: "Full Name") {
+                        TextFieldHeader("Full Name") {
                             Container(style: .field) {
                                 CustomTextField(
                                     "Enter Name...",
@@ -108,7 +108,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
                                 )
                             }
                         }
-                        HeaderContentView(title: "Date of Birth", titleAccessory: {
+                        TextFieldHeader("Date of Birth", accessory: {
                             InfoDisclaimerButton(
                                 title: "Why Date of Birth?",
                                 message: "This gives tutors a better understanding of the learning requirements for each student, and will help to plan their lessons accordingly."
@@ -124,7 +124,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
                                 )
                             }
                         }
-                        HeaderContentView(title: aboutHeaderTitle) {
+                        TextFieldHeader(aboutHeaderTitle) {
                             Container(style: .field) {
                                 MultilineTextField(
                                     "Existing instrument prowess etc.",

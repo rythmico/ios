@@ -75,7 +75,7 @@ struct SchedulingView: View, FocusableView, TestableView {
             VStack(spacing: 0) {
                 ScrollView {
                     VStack(alignment: .leading, spacing: .grid(5)) {
-                        HeaderContentView(title: "Start Date") {
+                        TextFieldHeader("Start Date") {
                             CustomEditableTextField(
                                 placeholder: "Select a date...",
                                 text: startDateText,
@@ -96,7 +96,7 @@ struct SchedulingView: View, FocusableView, TestableView {
                         }
 
                         HStack(spacing: .grid(3)) {
-                            HeaderContentView(title: "Time") {
+                            TextFieldHeader("Time") {
                                 Container(style: .field) {
                                     CustomTextField(
                                         "Time...",
@@ -111,7 +111,7 @@ struct SchedulingView: View, FocusableView, TestableView {
                                 }
                             }
 
-                            HeaderContentView(title: "Duration") {
+                            TextFieldHeader("Duration") {
                                 Container(style: .field) {
                                     CustomTextField(
                                         "Duration...",
