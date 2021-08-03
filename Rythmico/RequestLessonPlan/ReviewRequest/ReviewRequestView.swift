@@ -70,18 +70,7 @@ struct ReviewRequestView: View, TestableView {
                             style: .box,
                             accessory: { editButton(action: resetPrivateNote) }
                         ) {
-                            if let privateNote = privateNote.nilIfBlank {
-                                Text(privateNote)
-                                    .rythmicoTextStyle(.body)
-                                    .foregroundColor(.rythmico.foreground)
-                                    .fixedSize(horizontal: false, vertical: true)
-                            } else {
-                                Text("No private note.")
-                                    .rythmicoTextStyle(.body)
-                                    .foregroundColor(.rythmico.textPlaceholder)
-                                    .fixedSize(horizontal: false, vertical: true)
-                                    .onTapGesture(perform: resetPrivateNote)
-                            }
+                            privateNoteView
                         }
                     }
                     .frame(maxWidth: .grid(.max))
@@ -135,6 +124,22 @@ struct ReviewRequestView: View, TestableView {
                 about
             }
             .rythmicoTextStyle(.body)
+        }
+    }
+
+    @ViewBuilder
+    private var privateNoteView: some View {
+        if let privateNote = privateNote.nilIfBlank {
+            Text(privateNote)
+                .rythmicoTextStyle(.body)
+                .foregroundColor(.rythmico.foreground)
+                .fixedSize(horizontal: false, vertical: true)
+        } else {
+            Text("No private note.")
+                .rythmicoTextStyle(.body)
+                .foregroundColor(.rythmico.textPlaceholder)
+                .fixedSize(horizontal: false, vertical: true)
+                .onTapGesture(perform: resetPrivateNote)
         }
     }
 }
