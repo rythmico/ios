@@ -40,7 +40,7 @@ struct ColorSet<Color: UIColorProtocol> {
     var textPlaceholder: Color { foreground.opacity(0.5) }
     let outline = Color(light: 0xE7E7E7, dark: 0x2B2B2B)
     let gray1 = Color(light: 0xEBEBEC, dark: 0x363637)
-    let gray2 = Color(light: 0xF8F8F8, dark: 0x0F0F0F)
+    let gray2 = Color(light: 0xF8F8F8, dark: 0x121212)
 
     let background = Color(light: 0xFFFFFF, dark: 0x080808)
     let backgroundSecondary = Color(light: 0xFFFFFF, dark: 0x181818)
