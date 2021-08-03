@@ -42,7 +42,19 @@ extension UIImage {
 
 extension UIImage {
     // TODO: check if SVG still blurry without resize in iOS 15.
-    public func resized(width: CGFloat? = nil, height: CGFloat? = nil) -> UIImage {
+    public func resized(width: CGFloat, height: CGFloat) -> UIImage {
+        resized(width: Optional(width), height: Optional(height))
+    }
+
+    public func resized(width: CGFloat) -> UIImage {
+        resized(width: width, height: nil)
+    }
+
+    public func resized(height: CGFloat) -> UIImage {
+        resized(width: nil, height: height)
+    }
+
+    private func resized(width: CGFloat?, height: CGFloat?) -> UIImage {
         guard let size = size(width: width, height: height) else {
             return self
         }
