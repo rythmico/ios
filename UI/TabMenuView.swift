@@ -34,7 +34,7 @@ struct TabMenuView<Tab: RawRepresentable>: View where Tab.RawValue == String {
                 }
             }
             .frame(maxWidth: .grid(.max))
-            .padding(.horizontal, .grid(5))
+            .padding(TitleContentViewHorizontalPadding)
 
             HDivider()
         }
