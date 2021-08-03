@@ -13,12 +13,14 @@ struct PortfolioTrainingsView: View {
                         asset: Asset.Icon.Label.training,
                         title: Text(training.title).rythmicoFontWeight(.subheadlineBold),
                         titleStyle: .subheadlineBold,
-                        titleLineLimit: 1,
+                        titleLineLimit: 2,
                         alignedContentSpacing: alignedContentSpacing(for: training)
                     ) {
                         VStack(alignment: .leading, spacing: .grid(2)) {
                             if let description = training.description.nilIfBlank {
                                 Text(description).rythmicoTextStyle(.callout)
+                                    .lineLimit(1)
+                                    .minimumScaleFactor(0.5)
                             }
                             if let duration = training.duration?.description {
                                 Text(duration).rythmicoTextStyle(.callout)
