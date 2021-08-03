@@ -4,8 +4,6 @@ extension LessonPlanCancellationView {
     struct ReasonView: View, TestableView {
         typealias Reason = LessonPlan.CancellationInfo.Reason
 
-        private static let invalidReasons: [Reason] = [.rearrangementNeeded]
-
         var lessonPlan: LessonPlan
         var submitHandler: Handler<Reason>
 
@@ -15,13 +13,13 @@ extension LessonPlanCancellationView {
         private var isPresentingReschedulingAlert = false
 
         var submitButtonAction: Action? {
-            guard
-                let reason = selectedReason,
-                Self.invalidReasons.contains(reason).not
-            else {
-                return nil
+            guard let reason = selectedReason else { return nil }
+            switch reason {
+            case .rearrangementNeeded:
+                return { isPresentingReschedulingAlert = true }
+            case .badTutor, .other, .tooExpensive:
+                return { submitHandler(reason) }
             }
-            return { submitHandler(reason) }
         }
 
         let inspection = SelfInspection()
@@ -48,7 +46,10 @@ extension LessonPlanCancellationView {
                 FloatingView {
                     RythmicoButton("Cancel Lesson Plan", style: .secondary(), action: submitButtonAction ?? {})
                 }
-                .disabled(submitButtonAction == nil)
+                .disabled(submitButtonDisabled)
+                .onTapGesture {
+                    if submitButtonDisabled { submitButtonAction?() }
+                }
             }
             .accentColor(.rythmico.picoteeBlue)
             .testable(self)
@@ -62,9 +63,13 @@ extension LessonPlanCancellationView {
 
         private func handleRearrangementNeededReason(_ reason: Reason?) {
             guard reason == .rearrangementNeeded else { return }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                 isPresentingReschedulingAlert = true
             }
+        }
+
+        private var submitButtonDisabled: Bool {
+            selectedReason == .rearrangementNeeded
         }
     }
 }
