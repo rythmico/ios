@@ -1,7 +1,7 @@
 import SwiftUISugar
 
 // TODO: make generic over content
-struct SelectableList<Data: RandomAccessCollection, ID: Hashable>: View {
+struct ChoiceList<Data: RandomAccessCollection, ID: Hashable>: View {
     typealias Element = Data.Element
 
     let data: Data
@@ -13,7 +13,7 @@ struct SelectableList<Data: RandomAccessCollection, ID: Hashable>: View {
     var body: some View {
         LazyVStack(spacing: .grid(3)) {
             ForEach(data, id: id) { element in
-                SelectableItemView(content(element), isSelected: isSelected(element))
+                ChoiceItemView(content(element), isSelected: isSelected(element))
                     .animation(.rythmicoSpring(duration: .durationShort), value: isSelected(element))
                     .onTapGesture { selection = element }
             }
@@ -33,7 +33,7 @@ struct SelectableList<Data: RandomAccessCollection, ID: Hashable>: View {
 struct SelectableList_Previews: PreviewProvider {
     static var previews: some View {
         StatefulPreview(Int?.none) { selection in
-            SelectableList(data: [1, 2, 3, 4, 5], id: \.self, selection: selection) {
+            ChoiceList(data: [1, 2, 3, 4, 5], id: \.self, selection: selection) {
                 "Option \($0)"
             }
             .previewLayout(.sizeThatFits)

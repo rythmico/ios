@@ -78,7 +78,7 @@ struct AddressDetailsView: View, TestableView {
 
                         if let addresses = addresses {
                             SectionHeaderContentView("Select Address", style: .plain) {
-                                SelectableList(
+                                ChoiceList(
                                     data: addresses,
                                     id: \.self,
                                     selection: $state.selectedAddress,

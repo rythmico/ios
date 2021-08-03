@@ -33,7 +33,7 @@ extension LessonPlanCancellationView {
                         subtitle: "Please tell us the reason why you decided to cancel your lesson plan:"
                     )
                     ScrollView {
-                        SelectableList(
+                        ChoiceList(
                             data: Reason.allCases,
                             id: \.self,
                             selection: $selectedReason,

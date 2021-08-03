@@ -1,6 +1,6 @@
 import SwiftUISugar
 
-struct SelectableItemView<Content: View>: View {
+struct ChoiceItemView<Content: View>: View {
     let isSelected: Bool
     @ViewBuilder
     let content: Content
@@ -21,7 +21,7 @@ struct SelectableItemView<Content: View>: View {
     private let inset: CGFloat = .grid(4)
 }
 
-extension SelectableItemView where Content == AnyView {
+extension ChoiceItemView where Content == AnyView {
     init<Title: StringProtocol>(_ title: Title, isSelected: Bool) {
         self.init(isSelected: isSelected) {
             AnyView(
@@ -65,7 +65,7 @@ struct SelectableItemView_Previews: PreviewProvider {
     static var previews: some View {
         let combos = Array(ColorScheme.allCases * Bool.allCases)
         ForEach(0..<combos.count, id: \.self) { index in let combo = combos[index]
-            SelectableItemView(
+            ChoiceItemView(
                 """
                 House No. 2,  Lorem ipsum dolor,
                 London, E2 2FA
