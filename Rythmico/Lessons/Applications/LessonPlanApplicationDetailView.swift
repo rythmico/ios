@@ -89,6 +89,8 @@ struct LessonPlanApplicationDetailView: View {
         .rythmicoTextStyle(.callout)
         .foregroundColor(.rythmico.foreground)
         .multilineTextAlignment(.center)
+        .lineLimit(1)
+        .minimumScaleFactor(0.5)
     }
 }
 
