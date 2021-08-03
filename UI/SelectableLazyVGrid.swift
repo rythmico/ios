@@ -7,6 +7,7 @@ struct SelectableLazyVGrid<Data: RandomAccessCollection, ID: Hashable, Content: 
     let id: KeyPath<Element, ID>
     var columns: Int = 2
     let action: (Element) -> Void
+    @ViewBuilder
     let content: (Element) -> Content
 
     var body: some View {
@@ -24,5 +25,16 @@ struct SelectableLazyVGrid<Data: RandomAccessCollection, ID: Hashable, Content: 
             }
         }
         .padding([.horizontal, .bottom], .grid(5))
+    }
+}
+
+extension SelectableLazyVGrid where Data.Element: Identifiable, ID == Data.Element.ID {
+    init(
+        data: Data,
+        columns: Int = 2,
+        action: @escaping (Element) -> Void,
+        @ViewBuilder content: @escaping (Element) -> Content
+    ) {
+        self.init(data: data, id: \.id, columns: columns, action: action, content: content)
     }
 }

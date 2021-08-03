@@ -22,7 +22,6 @@ struct InstrumentSelectionView: View, TestableView {
             ScrollView {
                 SelectableLazyVGrid(
                     data: state.instruments,
-                    id: \.self,
                     action: setter,
                     content: InstrumentSelectionItemView.init
                 )
