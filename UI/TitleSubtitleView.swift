@@ -13,7 +13,7 @@ struct TitleSubtitleView: View {
         TitleContentView(title: title) {
             subtitle?
                 .foregroundColor(.rythmico.foreground)
-                .rythmicoTextStyle(.body)
+                .rythmicoTextStyle(.body) // TODO: change to .subheadlineBold
                 .frame(maxWidth: .grid(.max), alignment: .leading)
                 .padding(.horizontal, .grid(5))
                 .transition(.offset(y: -50) + .opacity)
