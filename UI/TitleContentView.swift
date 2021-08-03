@@ -1,5 +1,9 @@
 import SwiftUISugar
 
+// TODO: potentially define in a more semantically generic way...
+// (e.g. as a HorizontalInsets static member)
+let TitleContentViewHorizontalPadding = HorizontalInsets(.grid(5))
+
 struct TitleContentView<Accessory: View, Content: View>: View {
     let title: String
     let style: Font.RythmicoTextStyle
@@ -33,15 +37,14 @@ struct TitleContentView<Accessory: View, Content: View>: View {
                     .accessibility(addTraits: .isHeader)
                 accessory
             }
-            .padding(horizontalPadding)
+            .padding(TitleContentViewHorizontalPadding)
 
-            content(horizontalPadding).environment(\.idealHorizontalInsets, horizontalPadding)
+            content(TitleContentViewHorizontalPadding)
+                .environment(\.idealHorizontalInsets, TitleContentViewHorizontalPadding)
         }
         .foregroundColor(.rythmico.foreground)
         .padding(.top, style == .largeTitle ? .grid(1) : 0)
     }
-
-    let horizontalPadding = HorizontalInsets(.grid(5))
 }
 
 extension TitleContentView where Accessory == EmptyView {
