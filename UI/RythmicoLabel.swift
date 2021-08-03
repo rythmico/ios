@@ -9,7 +9,7 @@ struct RythmicoLabel: View {
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: .grid(3)) {
             Image(uiImage: asset.image.resized(width: iconWidth)).renderingMode(.template).offset(y: iconYOffset + 0.25)
-            title.rythmicoTextStyle(textStyle).minimumScaleFactor(0.5)
+            title.rythmicoTextStyle(titleStyle).minimumScaleFactor(0.5)
         }
     }
 
@@ -21,19 +21,19 @@ struct RythmicoLabel: View {
             )
     }
 
-    private var textStyle: Font.RythmicoTextStyle {
+    private var iconYOffset: CGFloat {
+        -(titleCapHeight - iconWidth) / 2
+    }
+
+    private var titleStyle: Font.RythmicoTextStyle {
         .body
     }
 
     private var titleCapHeight: CGFloat {
         UIFont.rythmicoFont(
-            textStyle,
+            titleStyle,
             overrideSizeCategory: UIContentSizeCategory(sizeCategory)
         ).capHeight
-    }
-
-    private var iconYOffset: CGFloat {
-        -(titleCapHeight - iconWidth) / 2
     }
 }
 
