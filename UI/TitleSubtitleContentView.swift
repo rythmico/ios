@@ -20,11 +20,11 @@ struct TitleSubtitleContentView<Content: View>: View {
     }
 
     var body: some View {
-        VStack(spacing: spacing) {
-            TitleContentView(title) { padding in
+        VStack(spacing: .grid(1)) {
+            TitleContentView(title, spacing: spacing) { padding in
                 subtitle?
                     .foregroundColor(.rythmico.foreground)
-                    .rythmicoTextStyle(.body) // TODO: change to .subheadlineBold
+                    .rythmicoTextStyle(.subheadline)
                     .frame(maxWidth: .grid(.max), alignment: .leading)
                     .padding(padding)
                     .transition(.offset(y: -50) + .opacity)
