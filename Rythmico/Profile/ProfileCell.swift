@@ -47,9 +47,7 @@ struct ProfileCell<Accessory: View>: View {
 
             accessory
 
-            if disclosure {
-                Image(decorative: Asset.Icon.Misc.disclosure.name).renderingMode(.template)
-            }
+            if disclosure { Image.chevronRight }
         }
     }
 }

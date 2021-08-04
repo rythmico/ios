@@ -27,7 +27,7 @@ extension SwiftUI.App {
                 $0.titleTextAttributes = .rythmicoTextAttributes(color: .clear, style: .subheadlineBold)
                 $0.shadowColor = nil
 
-                $0.setBackIndicatorImage(BackButton.uiImage, transitionMaskImage: BackButton.uiImage)
+                $0.setBackIndicatorImage(UIImage.chevronLeft, transitionMaskImage: UIImage.chevronLeft)
                 $0.backButtonAppearance.normal.titleTextAttributes = .rythmicoTextAttributes(color: nil, style: .bodyMedium)
             }
             .assign(to: $0, \.standardAppearance)
