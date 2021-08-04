@@ -1,8 +1,14 @@
 import SwiftUISugar
 
+enum RythmicoLabelLayout: Hashable {
+    case iconAndTitle
+    case titleAndIcon
+}
+
 struct RythmicoLabel<AlignedContent: View>: View {
     @Environment(\.sizeCategory) private var sizeCategory
 
+    var layout: RythmicoLabelLayout = .iconAndTitle
     let asset: ImageAsset
     let title: Text
     var titleStyle: Font.RythmicoTextStyle = .body
@@ -13,9 +19,7 @@ struct RythmicoLabel<AlignedContent: View>: View {
 
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: .grid(3)) {
-            Image(uiImage: asset.image.resized(width: iconWidth))
-                .renderingMode(.template)
-                .alignmentGuide(.firstTextBaseline) { $0[.bottom] - iconYOffset - 0.25 }
+            if layout == .iconAndTitle { icon }
             VStack(alignment: .leading, spacing: alignedContentSpacing) {
                 title
                     .rythmicoTextStyle(titleStyle)
@@ -24,8 +28,16 @@ struct RythmicoLabel<AlignedContent: View>: View {
                 alignedContent
             }
             .fixedSize(horizontal: false, vertical: true)
+            if layout == .titleAndIcon { icon }
         }
         .foregroundColor(.rythmico.foreground)
+    }
+
+    @ViewBuilder
+    private var icon: some View {
+        Image(uiImage: asset.image.resized(width: iconWidth))
+            .renderingMode(.template)
+            .alignmentGuide(.firstTextBaseline) { $0[.bottom] - iconYOffset - 0.25 }
     }
 
     private var iconWidth: CGFloat {
@@ -50,12 +62,14 @@ struct RythmicoLabel<AlignedContent: View>: View {
 
 extension RythmicoLabel where AlignedContent == EmptyView {
     init(
+        layout: RythmicoLabelLayout = .iconAndTitle,
         asset: ImageAsset,
         title: Text,
         titleStyle: Font.RythmicoTextStyle = .body,
         titleLineLimit: Int? = nil
     ) {
         self.init(
+            layout: layout,
             asset: asset,
             title: title,
             titleStyle: titleStyle,
