@@ -63,12 +63,7 @@ struct LessonDetailView: View, TestableView {
                     Pill(status: lesson.status).padding(padding)
                     ScrollView {
                         VStack(spacing: .grid(4)) {
-                            SectionHeaderContentView("Lesson Details", style: .box) {
-                                VStack(alignment: .leading, spacing: .grid(2)) {
-                                    LessonScheduleView(lesson: lesson)
-                                    AddressLabel(address: lesson.address)
-                                }
-                            }
+                            LessonDetailBoxView(lesson: lesson, lessonPlan: lessonPlan)
                             LessonDetailTutorBoxView(lesson: lesson)
                         }
                         .foregroundColor(.rythmico.foreground)
@@ -117,8 +112,11 @@ struct LessonDetailView: View, TestableView {
 #if DEBUG
 struct LessonDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonDetailView(lesson: .scheduledStub, lessonPlan: .activeJackGuitarPlanStub)
-//            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+        Group {
+            LessonDetailView(lesson: .scheduledStub, lessonPlan: .activeJackGuitarPlanStub)
+            LessonDetailView(lesson: .pausedStub, lessonPlan: .pausedJackGuitarPlanStub)
+        }
+//        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }
 #endif
