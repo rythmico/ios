@@ -19,10 +19,14 @@ struct TextFieldHeader<Accessory: View, Content: View>: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: .grid(2)) {
-            HStack(alignment: .center, spacing: .grid(2)) {
-                title.foregroundColor(.rythmico.foreground).rythmicoTextStyle(.bodyBold)
-                accessory
-            }
+            RythmicoLabel(
+                layout: .titleAndIcon,
+                icon: accessory,
+                title: title,
+                titleStyle: .bodyBold,
+                titleSpacing: .grid(2),
+                titleLineLimit: 1
+            )
             content
         }
     }

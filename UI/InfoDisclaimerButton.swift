@@ -9,9 +9,7 @@ struct InfoDisclaimerButton: View {
 
     var body: some View {
         Button(action: { showingDisclaimer = true }) {
-            Image(decorative: Asset.Icon.Label.info.name)
-                .renderingMode(.template)
-                .foregroundColor(.rythmico.foreground)
+            DynamicImage(asset: Asset.Icon.Label.info).foregroundColor(.rythmico.foreground)
         }
         .offset(y: 0.5)
         .multiModal {

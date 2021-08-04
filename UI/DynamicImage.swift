@@ -4,9 +4,10 @@ struct DynamicImage: View {
     @Environment(\.sizeCategory) private var sizeCategory
 
     let asset: ImageAsset
+    var renderingMode: Image.TemplateRenderingMode = .template
 
     var body: some View {
-        Image(uiImage: asset.image.resized(width: iconWidth)).renderingMode(.template)
+        Image(uiImage: asset.image.resized(width: iconWidth)).renderingMode(renderingMode)
     }
 
     private var iconWidth: CGFloat {
