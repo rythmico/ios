@@ -17,5 +17,5 @@ extension App {
 }
 
 extension SwiftUI.App {
-    func configureAppearance() {}
+    static func configureAppearance(for window: UIWindow) {}
 }
