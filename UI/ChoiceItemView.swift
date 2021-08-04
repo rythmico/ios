@@ -3,12 +3,12 @@ import SwiftUISugar
 struct ChoiceItemView<Content: View>: View {
     let isSelected: Bool
     @ViewBuilder
-    let content: Content
+    let content: (SelectableContainerState) -> Content
 
     var body: some View {
         SelectableContainer(isSelected: isSelected) { state in
             HStack(spacing: inset) {
-                content.frame(maxWidth: .infinity, alignment: .leading)
+                content(state).frame(maxWidth: .infinity, alignment: .leading)
                 ChoiceItemCheckmarkView(
                     isSelected: isSelected,
                     foregroundColor: state.foregroundColor
@@ -19,18 +19,6 @@ struct ChoiceItemView<Content: View>: View {
     }
 
     private let inset: CGFloat = .grid(4)
-}
-
-extension ChoiceItemView where Content == AnyView {
-    init<Title: StringProtocol>(_ title: Title, isSelected: Bool) {
-        self.init(isSelected: isSelected) {
-            AnyView(
-                Text(title)
-                    .rythmicoTextStyle(isSelected ? .bodyBold : .bodyMedium)
-                    .minimumScaleFactor(0.7)
-            )
-        }
-    }
 }
 
 struct ChoiceItemCheckmarkView: View {
@@ -65,13 +53,15 @@ struct SelectableItemView_Previews: PreviewProvider {
     static var previews: some View {
         let combos = Array(ColorScheme.allCases * Bool.allCases)
         ForEach(0..<combos.count, id: \.self) { index in let combo = combos[index]
-            ChoiceItemView(
-                """
-                House No. 2,  Lorem ipsum dolor,
-                London, E2 2FA
-                """,
-                isSelected: combo.1
-            )
+            ChoiceItemView(isSelected: combo.1) { state in
+                Text(
+                    """
+                    House No. 2,  Lorem ipsum dolor,
+                    London, E2 2FA
+                    """
+                )
+                .rythmicoTextStyle(state.isSelected ? .bodyBold : .bodyMedium)
+            }
             .padding()
             .background(combo.0 == .dark ? Color(.systemGray6) : .white)
             .environment(\.colorScheme, combo.0)

@@ -1,12 +1,15 @@
 import SwiftUISugar
 
+struct SelectableContainerState {
+    let isSelected: Bool
+    let backgroundColor: Color
+    let foregroundColor: Color
+}
+
 struct SelectableContainer<Content: View>: View {
     @Environment(\.colorScheme) private var colorScheme
 
-    struct State {
-        let backgroundColor: Color
-        let foregroundColor: Color
-    }
+    typealias State = SelectableContainerState
 
     var fill: Color = .clear
     var radius: ContainerStyle.OutlineRadius = .medium
@@ -50,6 +53,10 @@ struct SelectableContainer<Content: View>: View {
     }
 
     private var state: State {
-        .init(backgroundColor: style.fill, foregroundColor: foregroundColor)
+        .init(
+            isSelected: isSelected,
+            backgroundColor: style.fill,
+            foregroundColor: foregroundColor
+        )
     }
 }
