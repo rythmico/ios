@@ -51,9 +51,8 @@ struct AvatarView: View {
                 .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
         case .placeholder:
             GeometryReader { g in
-                Image(systemSymbol: .person)
-                    .font(.system(size: g.size.width / 1.75, weight: .medium, design: .rounded))
-                    .offset(y: -g.size.height * 0.025)
+                Image(uiImage: Asset.Icon.Misc.avatarPlaceholder.image.resized(height: g.size.height * 0.62))
+                    .renderingMode(.template)
                     .foregroundColor(.rythmico.foreground)
                     .position(x: g.frame(in: .local).midX, y: g.frame(in: .local).midY)
             }
@@ -87,7 +86,7 @@ struct AvatarView_Previews: PreviewProvider {
                 AvatarView(.placeholder).frame(width: 600, height: 600)
             }
         }
-        .environment(\.colorScheme, .dark)
+//        .environment(\.colorScheme, .dark)
         .previewLayout(.sizeThatFits)
         .padding()
     }
