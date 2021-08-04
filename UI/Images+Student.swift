@@ -10,7 +10,7 @@ extension Image {
 
 // MARK: Symbol-based
 
-private let symbolSize: CGFloat = 14
+private let symbolSize: CGFloat = 15
 private let symbolWeight: (Font.Weight, UIImage.SymbolWeight) = (.medium, .medium)
 private let symbolScale: (Image.Scale, UIImage.SymbolScale) = (.large, .large)
 
