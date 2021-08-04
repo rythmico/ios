@@ -8,34 +8,34 @@ extension Image {
     }
 }
 
-// MARK: Chevrons
+// MARK: Symbol-based
 
-let chevronSymbolSize:                     CGFloat = 14
-let chevronSymbolWeight:               Font.Weight = .medium
-let chevronSymbolWeightUIKit: UIImage.SymbolWeight = .medium
-let chevronSymbolScale:                Image.Scale = .large
-let chevronSymbolScaleUIKit:   UIImage.SymbolScale = .large
+private let symbolSize: CGFloat = 14
+private let symbolWeight: (Font.Weight, UIImage.SymbolWeight) = (.medium, .medium)
+private let symbolScale: (Image.Scale, UIImage.SymbolScale) = (.large, .large)
 
 extension Image {
-    static var chevronLeft: some View { chevronSymbolImage(.chevronLeft) }
-    static var chevronRight: some View { chevronSymbolImage(.chevronRight) }
+    static let chevronLeft: some View = symbolImage(.chevronLeft)
+    static let chevronRight: some View = symbolImage(.chevronRight)
+    static let x: some View = symbolImage(.xmark)
 
-    private static func chevronSymbolImage(_ symbol: SFSymbol) -> some View {
+    private static func symbolImage(_ symbol: SFSymbol) -> some View {
         Image(systemSymbol: symbol)
             .renderingMode(.template)
-            .font(.system(size: chevronSymbolSize, weight: chevronSymbolWeight)).imageScale(chevronSymbolScale)
+            .font(.system(size: symbolSize, weight: symbolWeight.0)).imageScale(symbolScale.0)
     }
 }
 
 extension UIImage {
-    static var chevronLeft: UIImage { chevronSymbolImage(.chevronLeft) }
-    static var chevronRight: UIImage { chevronSymbolImage(.chevronRight) }
+    static let chevronLeft = symbolImage(.chevronLeft)
+    static let chevronRight = symbolImage(.chevronRight)
+    static let x = symbolImage(.xmark)
 
-    private static func chevronSymbolImage(_ symbol: SFSymbol) -> UIImage {
+    private static func symbolImage(_ symbol: SFSymbol) -> UIImage {
         UIImage(systemSymbol: symbol)
             .withRenderingMode(.alwaysTemplate)
             .applyingSymbolConfiguration(
-                .init(pointSize: chevronSymbolSize, weight: chevronSymbolWeightUIKit, scale: chevronSymbolScaleUIKit)
+                .init(pointSize: symbolSize, weight: symbolWeight.1, scale: symbolScale.1)
             )!
     }
 }
