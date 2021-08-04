@@ -1,6 +1,6 @@
 import SwiftUISugar
 
-struct SelectableContainerState {
+struct SelectableContainerState: Hashable {
     let isSelected: Bool
     let backgroundColor: Color
     let foregroundColor: Color

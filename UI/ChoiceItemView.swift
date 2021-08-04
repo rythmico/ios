@@ -10,7 +10,7 @@ struct ChoiceItemView<Content: View>: View {
             HStack(spacing: inset) {
                 content(state).frame(maxWidth: .infinity, alignment: .leading)
                 ChoiceItemCheckmarkView(
-                    isSelected: isSelected,
+                    isSelected: state.isSelected,
                     foregroundColor: state.foregroundColor
                 )
             }
