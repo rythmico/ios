@@ -11,7 +11,9 @@ struct ChoiceList<Data: RandomAccessCollection, ID: Hashable, Content: View>: Vi
     let content: (Element, SelectableContainerState) -> Content
 
     var body: some View {
-        LazyVStack(spacing: .grid(3)) {
+        // FIXME: should be LazyVStack, but performance is horrible
+        // in LessonPlanBookingView (card stack).
+        VStack(spacing: .grid(3)) {
             ForEach(data, id: id) { element in
                 let isSelected = element[keyPath: id] == selection?[keyPath: id]
                 ChoiceItemView(isSelected: isSelected) { state in
