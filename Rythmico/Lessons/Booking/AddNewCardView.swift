@@ -29,8 +29,8 @@ struct AddNewCardView: View {
 
                     Spacer()
 
-                    HStack(spacing: .grid(2)) {
-                        Image(systemSymbol: .lockFill).rythmicoFont(.footnoteBold)
+                    HStack(spacing: .grid(1)) {
+                        Image(decorative: Asset.Icon.Label.secure.name).renderingMode(.template)
                         Text("Your payment info is stored securely.").rythmicoTextStyle(.footnoteBold)
                     }
                     .foregroundColor(.rythmico.foreground)

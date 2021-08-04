@@ -40,44 +40,47 @@ struct LessonPlanBookingView: View {
             VStack(spacing: 0) {
                 TitleSubtitleContentView(title, subtitle) { padding in
                     ScrollView {
-                        VStack(spacing: .grid(6)) {
-                            Group {
-                                SectionHeaderContentView("Plan Details", style: .box) {
-                                    LessonPlanRequestedScheduleView(lessonPlan.schedule, tutor: application.tutor)
-                                    HDivider()
-                                    VStack(spacing: .grid(3)) {
-                                        LessonPlanBookingPolicyView.skipLessons(freeBeforePeriod: checkout.policies.skipFreeBeforePeriod)
-                                        LessonPlanBookingPolicyView.cancelAnytime(freeBeforePeriod: checkout.policies.cancelFreeBeforePeriod)
-                                        LessonPlanBookingPolicyView.trustedTutors
-                                    }
-                                }
-
-                                SectionHeaderContentView("Contact Number", style: .plain) {
-                                    PhoneNumberInputView(phoneNumber: $phoneNumber, phoneNumberInputError: $phoneNumberInputError)
-                                }
+                        VStack(spacing: .grid(5)) {
+                            SectionHeaderContentView("Plan Details", style: .box) {
+                                LessonPlanRequestedScheduleView(lessonPlan.schedule, tutor: application.tutor)
                             }
                             .frame(maxWidth: .grid(.max))
+                            .padding(.horizontal, .grid(4))
+
+                            VStack(spacing: .grid(3)) {
+                                LessonPlanBookingPolicyView.trustedTutors
+                                LessonPlanBookingPolicyView.skipLessons(freeBeforePeriod: checkout.policies.skipFreeBeforePeriod)
+                                LessonPlanBookingPolicyView.pauseLessonPlans
+                                LessonPlanBookingPolicyView.cancelAnytime(freeBeforePeriod: checkout.policies.cancelFreeBeforePeriod)
+                            }
                             .padding(padding)
 
-                            VStack(spacing: .grid(4)) {
-                                SectionHeaderContentView("Payment Method", style: .plain) {
+                            HeadlineContentView("Contact Number") { padding in
+                                PhoneNumberInputView(phoneNumber: $phoneNumber, phoneNumberInputError: $phoneNumberInputError)
+                                    .padding(padding)
+                            }
+                            .frame(maxWidth: .grid(.max))
+
+                            VStack(spacing: .grid(3)) {
+                                HeadlineContentView("Payment Method", spacing: .grid(3)) { padding in
                                     if
                                         let availableCards = NonEmpty(rawValue: availableCards),
                                         let selectedCardBinding = Binding($selectedCard)
                                     {
-                                        CardStackView(cards: availableCards, selectedCard: selectedCardBinding)
+                                        PaymentMethodChoiceList(cards: availableCards, selectedCard: selectedCardBinding)
+                                            .padding(padding)
                                     }
                                 }
 
                                 HDividerContainer {
-                                    RythmicoButton("Add new card", style: .quaternary(), action: addNewCard)
+                                    RythmicoButton("Add payment method", style: .quaternary(), action: addNewCard)
                                 }
                                 .frame(maxWidth: .grid(.max))
-
-                                LessonPlanPriceView(price: checkout.pricePerLesson, showTermsOfService: true)
-                                    .frame(maxWidth: .grid(.max))
-                                    .padding(padding)
                             }
+
+                            LessonPlanPriceView(price: checkout.pricePerLesson, showTermsOfService: true)
+                                .frame(maxWidth: .grid(.max))
+                                .padding(.horizontal, .grid(4))
                         }
                         .padding(.bottom, padding.trailing)
                         .animation(.rythmicoSpring(duration: .durationShort), value: phoneNumberInputError != nil)
@@ -114,9 +117,9 @@ struct LessonPlanBookingView: View {
     @SpacedTextBuilder
     var subtitle: Text {
         "Review the"
-        "proposed lesson plan".text.rythmicoFontWeight(.bodyBold)
+        "proposed lesson plan".text.rythmicoFontWeight(.subheadlineMedium)
         "and"
-        "price per lesson".text.rythmicoFontWeight(.bodyBold)
+        "price per lesson".text.rythmicoFontWeight(.subheadlineMedium)
         "before booking"
     }
 

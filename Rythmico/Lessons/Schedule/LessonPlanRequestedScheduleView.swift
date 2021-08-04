@@ -12,20 +12,14 @@ struct LessonPlanRequestedScheduleView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: .grid(4)) {
             LessonPlanScheduleView(schedule: schedule)
-                .foregroundColor(.rythmico.foreground)
-
             if let tutor = tutor {
                 HStack(spacing: .grid(3)) {
-                    Image(decorative: Asset.Icon.Label.time.name).hidden()
-                    HStack(spacing: .grid(3)) {
-                        TutorAvatarView(tutor, mode: .thumbnail).fixedSize()
-                        TutorAcceptedStatusPill(tutor: tutor)
-                    }
+                    TutorAvatarView(tutor, mode: .thumbnail).fixedSize()
+                    TutorAcceptedStatusPill(tutor: tutor)
                 }
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .fixedSize(horizontal: false, vertical: true)
+        .foregroundColor(.rythmico.foreground)
     }
 }
 

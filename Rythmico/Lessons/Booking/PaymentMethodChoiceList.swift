@@ -17,6 +17,7 @@ struct PaymentMethodChoiceList: View {
                     }
                 }
                 .lineLimit(1)
+                .minimumScaleFactor(0.5)
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
         }

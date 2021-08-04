@@ -42,7 +42,7 @@ struct LessonPlanConfirmationView: View, TestableView {
         case .active:
             if let action = calendarSyncCoordinator.enableCalendarSyncAction {
                 ZStack {
-                    RythmicoButton("Add to Calendar", style: .tertiary(layout: .constrained(.m)), action: action)
+                    RythmicoButton("Add to Calendar", style: .tertiary(layout: .constrained(.s)), action: action)
                         .opacity(calendarSyncCoordinator.isSyncingCalendar ? 0 : 1)
                     if calendarSyncCoordinator.isSyncingCalendar {
                         ActivityIndicator()

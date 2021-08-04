@@ -26,7 +26,6 @@ struct RythmicoLabel<AlignedContent: View>: View {
             .fixedSize(horizontal: false, vertical: true)
         }
         .foregroundColor(.rythmico.foreground)
-        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private var iconWidth: CGFloat {

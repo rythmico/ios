@@ -9,9 +9,15 @@ struct LessonPlanPriceView: View {
     var body: some View {
         Container(style: .box) {
             VStack(spacing: .grid(4)) {
-                HStack(spacing: .grid(4)) {
-                    Text("Price per lesson").rythmicoTextStyle(.bodyBold).frame(maxWidth: .infinity, alignment: .leading)
-                    Text(Self.priceFormatter.string(from: price)).rythmicoTextStyle(.bodyBold).multilineTextAlignment(.trailing)
+                HStack(spacing: .grid(5)) {
+                    Text("Price per lesson")
+                        .rythmicoTextStyle(.bodyBold)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text(Self.priceFormatter.string(from: price))
+                        .rythmicoTextStyle(.bodyBold)
+                        .multilineTextAlignment(.trailing)
                 }
                 .foregroundColor(.rythmico.foreground)
 
