@@ -12,7 +12,10 @@ struct App: SwiftUI.App {
     private var remoteConfigCoordinator = Current.remoteConfigCoordinator
 
     init() {
-        configureAppearance()
+        // Waits for main window to come into existence.
+        DispatchQueue.main.async {
+            App.refreshAppearance()
+        }
     }
 
     final class Delegate: NSObject, UIApplicationDelegate {
@@ -38,7 +41,7 @@ struct App: SwiftUI.App {
                 } else {
                     RootView()
                         .animation(.none)
-                        .onEvent(.sizeCategoryChanged, perform: refreshAppearance)
+                        .onEvent(.sizeCategoryChanged, perform: App.refreshAppearance)
                         .onEvent(.appInBackground, perform: didEnterBackground)
                 }
             }
@@ -51,20 +54,22 @@ struct App: SwiftUI.App {
         !remoteConfigCoordinator.wasFetched
     }
 
-    private func refreshAppearance() {
-        configureAppearance()
+    private static func refreshAppearance() {
+        if let mainWindow = UIApplication.shared.windows.first {
+            App.configureAppearance(for: mainWindow)
 
-        for window in UIApplication.shared.windows {
-            // Whenever a system keyboard is shown, a special internal window is created in application
-            // window list of type UITextEffectsWindow. This kind of window cannot be safely removed without
-            // having an adverse effect on keyboard behavior. For example, an input accessory view is
-            // disconnected from the keyboard. Therefore, a check for this class is needed. In case this class
-            // that is indernal is removed from the iOS SDK in future, there is a "fallback" class check on
-            // NSString class that always fails.
-            if !window.isKind(of: NSClassFromString("UITextEffectsWindow") ?? NSString.classForCoder()) {
-                window.subviews.forEach {
-                    $0.removeFromSuperview()
-                    window.addSubview($0)
+            for window in UIApplication.shared.windows {
+                // Whenever a system keyboard is shown, a special internal window is created in application
+                // window list of type UITextEffectsWindow. This kind of window cannot be safely removed without
+                // having an adverse effect on keyboard behavior. For example, an input accessory view is
+                // disconnected from the keyboard. Therefore, a check for this class is needed. In case this class
+                // that is indernal is removed from the iOS SDK in future, there is a "fallback" class check on
+                // NSString class that always fails.
+                if !window.isKind(of: NSClassFromString("UITextEffectsWindow") ?? NSString.classForCoder()) {
+                    window.subviews.forEach {
+                        $0.removeFromSuperview()
+                        window.addSubview($0)
+                    }
                 }
             }
         }

@@ -18,8 +18,8 @@ extension App {
 }
 
 extension SwiftUI.App {
-    // TODO: hopefully to be deleted someday if SwiftUI allows for better customization.
-    func configureAppearance() {
+    // TODO: hopefully to be deleted someday if SwiftUI allows for this customization.
+    static func configureAppearance(for window: UIWindow) {
         UINavigationBar.appearance().do {
             UINavigationBarAppearance().with {
                 $0.configureWithTransparentBackground()
@@ -49,9 +49,16 @@ extension SwiftUI.App {
                     $0.inlineLayoutAppearance,
                     $0.stackedLayoutAppearance
                 ].forEach {
-                    $0.normal.iconColor = .rythmico.foreground
-                    $0.normal.titleTextAttributes = .rythmicoTextAttributes(color: .rythmico.foreground, style: .caption)
-                    $0.selected.titleTextAttributes = .rythmicoTextAttributes(color: nil, style: .caption)
+                    let hasBottomSafeArea = window.safeAreaInsets.bottom > 0
+                    let barItemTitleVerticalOffset: CGFloat = hasBottomSafeArea ? -2 : -4
+
+                    $0.normal.iconColor = .rythmico.textPlaceholder
+                    $0.normal.titleTextAttributes = .rythmicoTextAttributes(color: .rythmico.textPlaceholder, style: .caption)
+                    $0.normal.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: barItemTitleVerticalOffset)
+
+                    $0.selected.iconColor = .rythmico.picoteeBlue
+                    $0.selected.titleTextAttributes = .rythmicoTextAttributes(color: .rythmico.picoteeBlue, style: .caption)
+                    $0.selected.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: barItemTitleVerticalOffset)
                 }
             }
             .assign(to: $0, \.standardAppearance)

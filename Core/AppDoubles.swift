@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AppFake: SwiftUI.App {
     init() {
-        configureAppearance()
+        App.configureAppearance(for: UIWindow())
     }
 
     var body: some Scene {
