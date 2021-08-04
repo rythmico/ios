@@ -14,7 +14,8 @@ struct InfoBanner: View {
             RythmicoLabel(
                 asset: Asset.Icon.Label.info,
                 title: Text(text),
-                titleStyle: .callout
+                titleStyle: .callout,
+                titleSpacing: .grid(2)
             )
             .padding(.grid(4))
             .frame(maxWidth: .infinity, alignment: .leading)
