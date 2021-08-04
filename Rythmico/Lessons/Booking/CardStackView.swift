@@ -4,33 +4,22 @@ struct CardStackView: View {
     var cards: NonEmpty<[Card]>
     @Binding
     var selectedCard: Card
-    var horizontalInset: CGFloat = .grid(5)
 
     var body: some View {
-        VStack(spacing: 0) {
-            HDivider()
-            ForEach(cards) { card in
-                HStack(spacing: .grid(4)) {
-                    Image(uiImage: card.brand.logo)
-                    VStack(alignment: .leading, spacing: .grid(0.5)) {
-                        Text(card.brand.name).rythmicoTextStyle(.bodySemibold)
-                        HStack(spacing: .grid(4)) {
-                            Text(formattedLastFourDigits(for: card)).rythmicoTextStyle(.body)
-                            Text(formattedExpiryDate(for: card)).rythmicoTextStyle(.body)
-                        }
+        ChoiceList(data: cards, id: \.id, selection: Binding($selectedCard)) { card, state in
+            HStack(spacing: .grid(4)) {
+                Image(uiImage: card.brand.logo)
+                VStack(alignment: .leading, spacing: .grid(0.5)) {
+                    Text(card.brand.name).rythmicoTextStyle(state.isSelected ? .bodyBold : .bodyMedium)
+                    HStack(spacing: .grid(4)) {
+                        Text(formattedLastFourDigits(for: card)).rythmicoTextStyle(state.isSelected ? .bodyMedium : .body)
+                        Text(formattedExpiryDate(for: card)).rythmicoTextStyle(state.isSelected ? .bodyMedium : .body)
                     }
-                    .lineLimit(1)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    RadialSelectionIndicator(isSelected: selectedCard == card)
                 }
-                .padding(.horizontal, horizontalInset)
-                .padding(.vertical, .grid(3))
-                .contentShape(Rectangle())
-                .onTapGesture { selectedCard = card }
-                HDivider()
+                .lineLimit(1)
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
-        .foregroundColor(.rythmico.foreground)
     }
 
     private func formattedLastFourDigits(for card: Card) -> String {
@@ -44,44 +33,14 @@ struct CardStackView: View {
     }
 }
 
-struct RadialSelectionIndicator: View {
-    @Environment(\.isEnabled) private var isEnabled
-
-    var isSelected: Bool
-
-    var body: some View {
-        ZStack {
-            if isSelected {
-                Circle()
-                    .fill(color)
-                    .transition(
-                        (.scale + .opacity).animation(.easeOut(duration: .durationMedium))
-                    )
-            }
-            Circle()
-                .strokeBorder(Color(.systemBackground), lineWidth: 2.5)
-            Circle()
-                .strokeBorder(color, lineWidth: 1)
-        }
-        .frame(width: 16, height: 16)
-        .animation(.rythmicoSpring(duration: .durationShort))
-    }
-
-    var color: Color {
-        isEnabled ? .rythmico.picoteeBlue : .rythmico.outline
-    }
-}
-
 #if DEBUG
 struct CardStackView_Previews: PreviewProvider {
     static var previews: some View {
-        ForEach(Bool.allCases, id: \.self) { bool in
-            StatefulPreview(NonEmptyArray<Card>(.mastercardStub, .visaStub), Card.mastercardStub) { cards, selectedCard in
-                CardStackView(cards: cards.wrappedValue, selectedCard: selectedCard)
-            }
+        StatefulPreview(NonEmptyArray<Card>(.mastercardStub, .visaStub), Card.mastercardStub) { cards, selectedCard in
+            CardStackView(cards: cards.wrappedValue, selectedCard: selectedCard)
         }
         .previewLayout(.sizeThatFits)
-        .padding(.vertical)
+        .padding()
     }
 }
 #endif
