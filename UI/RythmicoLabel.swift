@@ -5,11 +5,11 @@ enum RythmicoLabelLayout: Hashable {
     case titleAndIcon
 }
 
-struct RythmicoLabel<AlignedContent: View>: View {
+struct RythmicoLabel<Icon: View, AlignedContent: View>: View {
     @Environment(\.sizeCategory) private var sizeCategory
 
     var layout: RythmicoLabelLayout = .iconAndTitle
-    let asset: ImageAsset
+    let icon: Icon
     let title: Text
     var titleStyle: Font.RythmicoTextStyle = .body
     var titleLineLimit: Int? = nil
@@ -19,7 +19,7 @@ struct RythmicoLabel<AlignedContent: View>: View {
 
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: .grid(3)) {
-            if layout == .iconAndTitle { icon }
+            if layout == .iconAndTitle { iconView }
             VStack(alignment: .leading, spacing: alignedContentSpacing) {
                 title
                     .rythmicoTextStyle(titleStyle)
@@ -28,28 +28,22 @@ struct RythmicoLabel<AlignedContent: View>: View {
                 alignedContent
             }
             .fixedSize(horizontal: false, vertical: true)
-            if layout == .titleAndIcon { icon }
+            if layout == .titleAndIcon { iconView }
         }
         .foregroundColor(.rythmico.foreground)
     }
 
-    @ViewBuilder
-    private var icon: some View {
-        Image(uiImage: asset.image.resized(width: iconWidth))
-            .renderingMode(.template)
-            .alignmentGuide(.firstTextBaseline) { $0[.bottom] - iconYOffset - 0.25 }
-    }
+    @State
+    private var iconHeight: CGFloat = 0
 
-    private var iconWidth: CGFloat {
-        UIFontMetrics(forTextStyle: .largeTitle)
-            .scaledValue(
-                for: asset.image.size.width,
-                compatibleWith: .init(preferredContentSizeCategory: UIContentSizeCategory(sizeCategory))
-            )
+    @ViewBuilder
+    private var iconView: some View {
+        icon.onSizeChange { iconHeight = $0.height }
+            .alignmentGuide(.firstTextBaseline) { $0[.bottom] - iconYOffset }
     }
 
     private var iconYOffset: CGFloat {
-        -(titleCapHeight - iconWidth) / 2
+        -(titleCapHeight - iconHeight) / 2
     }
 
     private var titleCapHeight: CGFloat {
@@ -60,13 +54,57 @@ struct RythmicoLabel<AlignedContent: View>: View {
     }
 }
 
-extension RythmicoLabel where AlignedContent == EmptyView {
+extension RythmicoLabel where Icon == DynamicImage {
     init(
         layout: RythmicoLabelLayout = .iconAndTitle,
         asset: ImageAsset,
         title: Text,
         titleStyle: Font.RythmicoTextStyle = .body,
-        titleLineLimit: Int? = nil
+        titleLineLimit: Int? = nil,
+        alignedContentSpacing: CGFloat = .grid(2),
+        @ViewBuilder alignedContent: () -> AlignedContent
+    ) {
+        self.init(
+            layout: layout,
+            icon: DynamicImage(asset: asset),
+            title: title,
+            titleStyle: titleStyle,
+            titleLineLimit: titleLineLimit,
+            alignedContentSpacing: alignedContentSpacing,
+            alignedContent: alignedContent
+        )
+    }
+}
+
+extension RythmicoLabel where AlignedContent == EmptyView {
+    init(
+        layout: RythmicoLabelLayout = .iconAndTitle,
+        icon: Icon,
+        title: Text,
+        titleStyle: Font.RythmicoTextStyle = .body,
+        titleLineLimit: Int? = nil,
+        alignedContentSpacing: CGFloat = .grid(2)
+    ) {
+        self.init(
+            layout: layout,
+            icon: icon,
+            title: title,
+            titleStyle: titleStyle,
+            titleLineLimit: titleLineLimit,
+            alignedContentSpacing: alignedContentSpacing,
+            alignedContent: EmptyView.init
+        )
+    }
+}
+
+extension RythmicoLabel where Icon == DynamicImage, AlignedContent == EmptyView {
+    init(
+        layout: RythmicoLabelLayout = .iconAndTitle,
+        asset: ImageAsset,
+        title: Text,
+        titleStyle: Font.RythmicoTextStyle = .body,
+        titleLineLimit: Int? = nil,
+        alignedContentSpacing: CGFloat = .grid(2)
     ) {
         self.init(
             layout: layout,
@@ -74,6 +112,7 @@ extension RythmicoLabel where AlignedContent == EmptyView {
             title: title,
             titleStyle: titleStyle,
             titleLineLimit: titleLineLimit,
+            alignedContentSpacing: alignedContentSpacing,
             alignedContent: EmptyView.init
         )
     }

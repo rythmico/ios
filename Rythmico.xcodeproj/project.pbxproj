@@ -456,6 +456,7 @@
 		D5B8E08126B95F9200A46705 /* SelectableItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B8E08026B95F9200A46705 /* SelectableItemView.swift */; };
 		D5B8E08326B961F000A46705 /* InstrumentSelectionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B8E08226B961F000A46705 /* InstrumentSelectionItemView.swift */; };
 		D5B8E08526B9C76800A46705 /* HeadlineContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B8E08426B9C76800A46705 /* HeadlineContentView.swift */; };
+		D5B8E08926BACA0E00A46705 /* DynamicImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B8E08826BACA0E00A46705 /* DynamicImage.swift */; };
 		D5BA171023D7A18900954D50 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170F23D7A18900954D50 /* RootView.swift */; };
 		D5BA171223D7AB3B00954D50 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA171123D7AB3B00954D50 /* MainView.swift */; };
 		D5BDD502253B406300255190 /* TabSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD501253B406300255190 /* TabSelection.swift */; };
@@ -973,6 +974,7 @@
 		D5B8E08026B95F9200A46705 /* SelectableItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableItemView.swift; sourceTree = "<group>"; };
 		D5B8E08226B961F000A46705 /* InstrumentSelectionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionItemView.swift; sourceTree = "<group>"; };
 		D5B8E08426B9C76800A46705 /* HeadlineContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineContentView.swift; sourceTree = "<group>"; };
+		D5B8E08826BACA0E00A46705 /* DynamicImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicImage.swift; sourceTree = "<group>"; };
 		D5BA170723D66AF500954D50 /* UserCredentialProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialProviderTests.swift; sourceTree = "<group>"; };
 		D5BA170923D671FD00954D50 /* UserCredentialEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialEmitter.swift; sourceTree = "<group>"; };
 		D5BA170B23D6725B00954D50 /* UserCredentialEmitterDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialEmitterDoubles.swift; sourceTree = "<group>"; };
@@ -1643,6 +1645,7 @@
 				D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */,
 				D5D9AE4E253367A100A0ABCC /* Divider.swift */,
 				D5F506AF2405A6A900CA4094 /* Duration.swift */,
+				D5B8E08826BACA0E00A46705 /* DynamicImage.swift */,
 				D56B253A2532433E00BC3932 /* ErrorText.swift */,
 				D54EFF312514C847004F14D3 /* ExpandableText.swift */,
 				D543B91926408FBF00D25CFD /* FloatingActionMenu.swift */,
@@ -2861,6 +2864,7 @@
 				D5AFED4225057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */,
 				D5D5E8B526878CCC00AACB8F /* CasePickable.swift in Sources */,
 				D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */,
+				D5B8E08926BACA0E00A46705 /* DynamicImage.swift in Sources */,
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
 				D549218F25BB27E200251FD2 /* APIActivityErrorHandler.swift in Sources */,
 				D52D8A59259D714B00A6CBBF /* OnboardingSlideshowView.swift in Sources */,
