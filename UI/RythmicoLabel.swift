@@ -12,13 +12,14 @@ struct RythmicoLabel<Icon: View, AlignedContent: View>: View {
     let icon: Icon
     let title: Text
     var titleStyle: Font.RythmicoTextStyle = .body
+    var titleSpacing: CGFloat = .grid(3)
     var titleLineLimit: Int? = nil
     var alignedContentSpacing: CGFloat = .grid(2)
     @ViewBuilder
     let alignedContent: AlignedContent
 
     var body: some View {
-        HStack(alignment: .firstTextBaseline, spacing: .grid(3)) {
+        HStack(alignment: .firstTextBaseline, spacing: titleSpacing) {
             if layout == .iconAndTitle { iconView }
             VStack(alignment: .leading, spacing: alignedContentSpacing) {
                 title
@@ -60,6 +61,7 @@ extension RythmicoLabel where Icon == DynamicImage {
         asset: ImageAsset,
         title: Text,
         titleStyle: Font.RythmicoTextStyle = .body,
+        titleSpacing: CGFloat = .grid(3),
         titleLineLimit: Int? = nil,
         alignedContentSpacing: CGFloat = .grid(2),
         @ViewBuilder alignedContent: () -> AlignedContent
@@ -69,6 +71,7 @@ extension RythmicoLabel where Icon == DynamicImage {
             icon: DynamicImage(asset: asset),
             title: title,
             titleStyle: titleStyle,
+            titleSpacing: titleSpacing,
             titleLineLimit: titleLineLimit,
             alignedContentSpacing: alignedContentSpacing,
             alignedContent: alignedContent
@@ -82,6 +85,7 @@ extension RythmicoLabel where AlignedContent == EmptyView {
         icon: Icon,
         title: Text,
         titleStyle: Font.RythmicoTextStyle = .body,
+        titleSpacing: CGFloat = .grid(3),
         titleLineLimit: Int? = nil,
         alignedContentSpacing: CGFloat = .grid(2)
     ) {
@@ -90,6 +94,7 @@ extension RythmicoLabel where AlignedContent == EmptyView {
             icon: icon,
             title: title,
             titleStyle: titleStyle,
+            titleSpacing: titleSpacing,
             titleLineLimit: titleLineLimit,
             alignedContentSpacing: alignedContentSpacing,
             alignedContent: EmptyView.init
@@ -103,6 +108,7 @@ extension RythmicoLabel where Icon == DynamicImage, AlignedContent == EmptyView 
         asset: ImageAsset,
         title: Text,
         titleStyle: Font.RythmicoTextStyle = .body,
+        titleSpacing: CGFloat = .grid(3),
         titleLineLimit: Int? = nil,
         alignedContentSpacing: CGFloat = .grid(2)
     ) {
@@ -111,6 +117,7 @@ extension RythmicoLabel where Icon == DynamicImage, AlignedContent == EmptyView 
             asset: asset,
             title: title,
             titleStyle: titleStyle,
+            titleSpacing: titleSpacing,
             titleLineLimit: titleLineLimit,
             alignedContentSpacing: alignedContentSpacing,
             alignedContent: EmptyView.init
