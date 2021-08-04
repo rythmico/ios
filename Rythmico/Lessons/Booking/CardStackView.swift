@@ -6,10 +6,10 @@ struct CardStackView: View {
     var selectedCard: Card
 
     var body: some View {
-        ChoiceList(data: cards, id: \.id, selection: Binding($selectedCard)) { card, state in
+        ChoiceList(data: cards, id: \.id, selection: Binding($selectedCard), padding: padding) { card, state in
             HStack(spacing: .grid(4)) {
                 Image(uiImage: card.brand.logo)
-                VStack(alignment: .leading, spacing: .grid(0.5)) {
+                VStack(alignment: .leading, spacing: 0) {
                     Text(card.brand.name).rythmicoTextStyle(state.isSelected ? .bodyBold : .bodyMedium)
                     HStack(spacing: .grid(4)) {
                         Text(formattedLastFourDigits(for: card)).rythmicoTextStyle(state.isSelected ? .bodyMedium : .body)
@@ -21,6 +21,8 @@ struct CardStackView: View {
             }
         }
     }
+
+    private let padding = ChoiceItemViewDefaultPadding.with(\.vertical, .init(.grid(2.5)))
 
     private func formattedLastFourDigits(for card: Card) -> String {
         "• • • • " + card.lastFourDigits
