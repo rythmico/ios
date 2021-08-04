@@ -69,9 +69,7 @@ struct LessonDetailView: View, TestableView {
                                     AddressLabel(address: lesson.address)
                                 }
                             }
-                            SectionHeaderContentView("Tutor", style: .box) {
-                                LessonDetailTutorStatusView(lesson: lesson)
-                            }
+                            LessonDetailTutorBoxView(lesson: lesson)
                         }
                         .foregroundColor(.rythmico.foreground)
                         .frame(maxWidth: .grid(.max))

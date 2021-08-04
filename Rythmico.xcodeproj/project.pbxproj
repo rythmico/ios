@@ -449,7 +449,7 @@
 		D5B68CFD26B3B423006DA45F /* RythmicoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B68CFB26B3B1D0006DA45F /* RythmicoButton.swift */; };
 		D5B7948526004CF200DC6C77 /* LessonReschedulingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B7948426004CF200DC6C77 /* LessonReschedulingView.swift */; };
 		D5B8E07726B83E4300A46705 /* LessonPlanDetailTutorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B8E07626B83E4300A46705 /* LessonPlanDetailTutorStatusView.swift */; };
-		D5B8E07926B8514A00A46705 /* LessonDetailTutorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B8E07826B8514A00A46705 /* LessonDetailTutorStatusView.swift */; };
+		D5B8E07926B8514A00A46705 /* LessonDetailTutorBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B8E07826B8514A00A46705 /* LessonDetailTutorBoxView.swift */; };
 		D5B8E07B26B8547800A46705 /* InlineContentTitleSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B8E07A26B8547800A46705 /* InlineContentTitleSubtitleView.swift */; };
 		D5B8E07D26B8548500A46705 /* InlineContentTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B8E07C26B8548500A46705 /* InlineContentTitleView.swift */; };
 		D5B8E07F26B9588700A46705 /* SelectableLazyVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B8E07E26B9588700A46705 /* SelectableLazyVGrid.swift */; };
@@ -967,7 +967,7 @@
 		D5B68CFB26B3B1D0006DA45F /* RythmicoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RythmicoButton.swift; sourceTree = "<group>"; };
 		D5B7948426004CF200DC6C77 /* LessonReschedulingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonReschedulingView.swift; sourceTree = "<group>"; };
 		D5B8E07626B83E4300A46705 /* LessonPlanDetailTutorStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanDetailTutorStatusView.swift; sourceTree = "<group>"; };
-		D5B8E07826B8514A00A46705 /* LessonDetailTutorStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailTutorStatusView.swift; sourceTree = "<group>"; };
+		D5B8E07826B8514A00A46705 /* LessonDetailTutorBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailTutorBoxView.swift; sourceTree = "<group>"; };
 		D5B8E07A26B8547800A46705 /* InlineContentTitleSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineContentTitleSubtitleView.swift; sourceTree = "<group>"; };
 		D5B8E07C26B8548500A46705 /* InlineContentTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineContentTitleView.swift; sourceTree = "<group>"; };
 		D5B8E07E26B9588700A46705 /* SelectableLazyVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableLazyVGrid.swift; sourceTree = "<group>"; };
@@ -1755,7 +1755,7 @@
 				03D932F1249C096B003416DC /* LessonPlanDetailViewTests.swift */,
 				D5B8E07626B83E4300A46705 /* LessonPlanDetailTutorStatusView.swift */,
 				D517FFCF2554A6E800A41639 /* LessonDetailView.swift */,
-				D5B8E07826B8514A00A46705 /* LessonDetailTutorStatusView.swift */,
+				D5B8E07826B8514A00A46705 /* LessonDetailTutorBoxView.swift */,
 				D5B7948426004CF200DC6C77 /* LessonReschedulingView.swift */,
 				D5312967256427EA00CA6621 /* LessonSkippingView.swift */,
 				D5077D8A2587D80200F8595E /* LessonSkippingContentView.swift */,
@@ -2920,7 +2920,7 @@
 				D5B8E07D26B8548500A46705 /* InlineContentTitleView.swift in Sources */,
 				D50158AA2538BF63005E02FA /* CardSetupCredential.swift in Sources */,
 				D5FE1A6026A6E96800567F48 /* LessonPlansView.swift in Sources */,
-				D5B8E07926B8514A00A46705 /* LessonDetailTutorStatusView.swift in Sources */,
+				D5B8E07926B8514A00A46705 /* LessonDetailTutorBoxView.swift in Sources */,
 				0365F6F52417F1E900F452AC /* AddressLookupEndpoints.swift in Sources */,
 				D54340F3261E72F8006898B0 /* AccessibilitySettings.swift in Sources */,
 				D517FF8025536AB900A41639 /* Tutor.swift in Sources */,

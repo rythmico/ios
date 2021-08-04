@@ -1,6 +1,6 @@
 import SwiftUISugar
 
-struct LessonDetailTutorStatusView: View {
+struct LessonDetailTutorBoxView: View {
     @Environment(\.navigator) private var navigator
     @Environment(\.currentScreen) private var currentScreen
 
@@ -9,20 +9,22 @@ struct LessonDetailTutorStatusView: View {
     var tutor: Tutor { lesson.tutor }
 
     var body: some View {
-        AdHocButton(action: action ?? {}) { state in
-            SelectableContainer(
-                fill: .rythmico.background,
-                isSelected: state == .pressed
-            ) { state in
-                InlineContentTitleSubtitleView(
-                    content: { avatar(backgroundColor: state.backgroundColor) },
-                    title: title,
-                    subtitle: subtitle
-                )
-                .padding(.grid(5))
+        SectionHeaderContentView("Tutor", style: .box) {
+            AdHocButton(action: action ?? {}) { state in
+                SelectableContainer(
+                    fill: .rythmico.background,
+                    isSelected: state == .pressed
+                ) { state in
+                    InlineContentTitleSubtitleView(
+                        content: { avatar(backgroundColor: state.backgroundColor) },
+                        title: title,
+                        subtitle: subtitle
+                    )
+                    .padding(.grid(5))
+                }
             }
+            .disabled(action == nil)
         }
-        .disabled(action == nil)
     }
 
     @ViewBuilder
@@ -56,7 +58,7 @@ struct LessonDetailTutorStatusView: View {
 #if DEBUG
 struct LessonDetailTutorStatusView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonDetailTutorStatusView(lesson: .scheduledStub)
+        LessonDetailTutorBoxView(lesson: .scheduledStub)
             .previewLayout(.sizeThatFits)
             .padding()
     }
