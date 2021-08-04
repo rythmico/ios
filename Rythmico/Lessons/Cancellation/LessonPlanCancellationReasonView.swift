@@ -68,7 +68,7 @@ extension LessonPlanCancellationView {
             }
         }
 
-        private var submitButtonDisabled: Bool {
+        var submitButtonDisabled: Bool {
             selectedReason == .rearrangementNeeded
         }
     }

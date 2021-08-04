@@ -35,8 +35,10 @@ final class LessonPlanCancellationReasonViewTests: XCTestCase {
         XCTAssertView(view) { view in
             XCTAssertNil(view.selectedReason)
             XCTAssertNil(view.submitButtonAction)
+            XCTAssertFalse(view.submitButtonDisabled)
             view.selectedReason = .rearrangementNeeded
-            XCTAssertNil(view.submitButtonAction)
+            XCTAssertNotNil(view.submitButtonAction)
+            XCTAssertTrue(view.submitButtonDisabled)
         }
     }
 }
