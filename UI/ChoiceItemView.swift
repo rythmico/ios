@@ -9,7 +9,7 @@ struct ChoiceItemView<Content: View>: View {
         SelectableContainer(isSelected: isSelected) { state in
             HStack(spacing: inset) {
                 content.frame(maxWidth: .infinity, alignment: .leading)
-                SelectableItemCheckmarkView(
+                ChoiceItemCheckmarkView(
                     isSelected: isSelected,
                     foregroundColor: state.foregroundColor
                 )
@@ -33,7 +33,7 @@ extension ChoiceItemView where Content == AnyView {
     }
 }
 
-struct SelectableItemCheckmarkView: View {
+struct ChoiceItemCheckmarkView: View {
     @Environment(\.colorScheme) private var colorScheme
 
     let isSelected: Bool
