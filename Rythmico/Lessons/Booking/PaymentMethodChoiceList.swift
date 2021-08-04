@@ -1,6 +1,6 @@
 import SwiftUISugar
 
-struct CardStackView: View {
+struct PaymentMethodChoiceList: View {
     var cards: NonEmpty<[Card]>
     @Binding
     var selectedCard: Card
@@ -36,10 +36,10 @@ struct CardStackView: View {
 }
 
 #if DEBUG
-struct CardStackView_Previews: PreviewProvider {
+struct PaymentMethodChoiceList_Previews: PreviewProvider {
     static var previews: some View {
         StatefulPreview(NonEmptyArray<Card>(.mastercardStub, .visaStub), Card.mastercardStub) { cards, selectedCard in
-            CardStackView(cards: cards.wrappedValue, selectedCard: selectedCard)
+            PaymentMethodChoiceList(cards: cards.wrappedValue, selectedCard: selectedCard)
         }
         .previewLayout(.sizeThatFits)
         .padding()
