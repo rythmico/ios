@@ -7,6 +7,7 @@ struct ChoiceList<Data: RandomAccessCollection, ID: Hashable, Content: View>: Vi
     let id: KeyPath<Element, ID>
     @Binding
     var selection: Element?
+    var padding: EdgeInsets = ChoiceItemViewDefaultPadding
     @ViewBuilder
     let content: (Element, SelectableContainerState) -> Content
 
@@ -16,7 +17,7 @@ struct ChoiceList<Data: RandomAccessCollection, ID: Hashable, Content: View>: Vi
         VStack(spacing: .grid(3)) {
             ForEach(data, id: id) { element in
                 let isSelected = element[keyPath: id] == selection?[keyPath: id]
-                ChoiceItemView(isSelected: isSelected) { state in
+                ChoiceItemView(isSelected: isSelected, padding: padding) { state in
                     content(element, state)
                 }
                 .animation(.rythmicoSpring(duration: .durationShort), value: isSelected)
@@ -31,9 +32,10 @@ extension ChoiceList where Content == AnyView {
         data: Data,
         id: KeyPath<Element, ID>,
         selection: Binding<Element?>,
+        padding: EdgeInsets = ChoiceItemViewDefaultPadding,
         content: @escaping (Element) -> String
     ) {
-        self.init(data: data, id: id, selection: selection) { element, state in
+        self.init(data: data, id: id, selection: selection, padding: padding) { element, state in
             AnyView(
                 Text(content(element))
                     .rythmicoTextStyle(state.isSelected ? .bodyBold : .bodyMedium)

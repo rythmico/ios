@@ -1,24 +1,27 @@
 import SwiftUISugar
 
+// TODO: potentially define in a more semantically generic way...
+// (e.g. as a EdgeInsets static member)
+let ChoiceItemViewDefaultPadding = EdgeInsets(.grid(4))
+
 struct ChoiceItemView<Content: View>: View {
     let isSelected: Bool
+    var padding: EdgeInsets = ChoiceItemViewDefaultPadding
     @ViewBuilder
     let content: (SelectableContainerState) -> Content
 
     var body: some View {
         SelectableContainer(isSelected: isSelected) { state in
-            HStack(spacing: inset) {
+            HStack(spacing: padding.trailing) {
                 content(state).frame(maxWidth: .infinity, alignment: .leading)
                 ChoiceItemCheckmarkView(
                     isSelected: state.isSelected,
                     foregroundColor: state.foregroundColor
                 )
             }
-            .padding(inset)
+            .padding(padding)
         }
     }
-
-    private let inset: CGFloat = .grid(4)
 }
 
 struct ChoiceItemCheckmarkView: View {
