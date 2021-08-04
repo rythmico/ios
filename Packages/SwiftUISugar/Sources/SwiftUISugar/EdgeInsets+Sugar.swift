@@ -67,4 +67,28 @@ extension EdgeInsets {
     }
 
     public static var zero: EdgeInsets { .init() }
+
+    public var horizontal: HorizontalInsets {
+        get {
+            .init(leading: leading, trailing: trailing)
+        }
+        set {
+            self.leading = newValue.leading
+            self.trailing = newValue.trailing
+        }
+    }
+
+    public var vertical: VerticalInsets {
+        get {
+            .init(top: top, bottom: bottom)
+        }
+        set {
+            self.top = newValue.top
+            self.bottom = newValue.bottom
+        }
+    }
 }
+
+extension HorizontalInsets: Then {}
+extension VerticalInsets: Then {}
+extension EdgeInsets: Then {}
