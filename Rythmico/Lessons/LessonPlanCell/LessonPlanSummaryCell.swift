@@ -35,7 +35,7 @@ struct LessonPlanSummaryCell: View {
 
 struct LessonPlanSummaryCellMainContent: View {
     let lessonPlan: LessonPlan
-    let backgroundColor: Color
+    let backgroundColor: Color?
 
     var title: String {
         [

@@ -4,7 +4,7 @@ struct LessonPlanSummaryTutorStatusView: View {
     @Environment(\.sizeCategory) private var sizeCategory
 
     let lessonPlan: LessonPlan
-    let backgroundColor: Color
+    let backgroundColor: Color?
 
     var applications: LessonPlan.Applications? { lessonPlan.applications }
     var bookingInfo: LessonPlan.BookingInfo? { lessonPlan.bookingInfo }

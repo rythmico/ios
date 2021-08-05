@@ -6,7 +6,7 @@ private enum Const {
 
 struct AvatarStackView<Data: RangeReplaceableCollection, ContentView: View>: View where Data.Index == Int {
     let data: Data
-    let backgroundColor: Color
+    let backgroundColor: Color?
     @ViewBuilder
     let content: (Data.Element) -> ContentView
 
@@ -18,7 +18,7 @@ struct AvatarStackView<Data: RangeReplaceableCollection, ContentView: View>: Vie
                     .background(
                         Circle()
                             .inset(by: -2)
-                            .fill(backgroundColor)
+                            .fill(backgroundColor ?? .rythmico.background)
                     )
                     .zIndex(Double(-index))
             }
@@ -27,7 +27,7 @@ struct AvatarStackView<Data: RangeReplaceableCollection, ContentView: View>: Vie
 }
 
 extension AvatarStackView where Data.Element == AvatarView.Content, ContentView == AvatarView {
-    init(_ data: Data, backgroundColor: Color) {
+    init(_ data: Data, backgroundColor: Color?) {
         self.init(data: data, backgroundColor: backgroundColor) { AvatarView($0) }
     }
 }

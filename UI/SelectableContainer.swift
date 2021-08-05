@@ -2,7 +2,7 @@ import SwiftUISugar
 
 struct SelectableContainerState: Hashable {
     let isSelected: Bool
-    let backgroundColor: Color
+    let backgroundColor: Color?
     let foregroundColor: Color
 }
 
@@ -55,7 +55,7 @@ struct SelectableContainer<Content: View>: View {
     private var state: State {
         .init(
             isSelected: isSelected,
-            backgroundColor: style.fill,
+            backgroundColor: style.fill.color,
             foregroundColor: foregroundColor
         )
     }

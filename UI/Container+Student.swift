@@ -47,7 +47,7 @@ struct Container_Previews: PreviewProvider {
     ]
 
     static var previews: some View {
-        ForEach(styles, id: \.self.1) { style in
+        ForEach(styles, id: \.self.0) { style in
             Container(style: style.1) {
                 Text("Hello World")
                     .padding()

@@ -28,7 +28,7 @@ struct LessonPlanDetailTutorStatusView: View {
     }
 
     @ViewBuilder
-    func avatar(backgroundColor: Color) -> some View {
+    func avatar(backgroundColor: Color?) -> some View {
         if let applications = applications {
             AvatarStackView(
                 data: applications.map(\.tutor),
