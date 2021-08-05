@@ -12,10 +12,10 @@ struct LessonPlanApplicationDetailHeaderView: View {
             VStack(alignment: .leading, spacing: .grid(1)) {
                 Text(tutor.name)
                     .rythmicoTextStyle(.largeTitle)
-                    .foregroundColor(.rythmicoForeground)
+                    .foregroundColor(.rythmico.foreground)
                 Text(lessonPlan.instrument.assimilatedName + " Tutor")
                     .rythmicoTextStyle(.callout)
-                    .foregroundColor(.rythmicoGray90)
+                    .foregroundColor(.rythmico.foreground)
             }
         }
         .lineLimit(1)

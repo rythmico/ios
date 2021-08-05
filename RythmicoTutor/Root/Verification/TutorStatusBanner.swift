@@ -36,14 +36,14 @@ struct TutorStatusBanner: View {
 
             if let letsGoAction = letsGoAction {
                 FloatingView {
-                    Button("Let's Go", action: letsGoAction).primaryStyle()
+                    RythmicoButton("Let's Go", style: .primary(), action: letsGoAction)
                 }
             }
         }
     }
 
     var foregroundColor: Color {
-        Color(light: 0x19212C, dark: .white)
+        Color(light: 0x19212C, dark: 0xFFFFFF)
     }
 
     var openInboxAction: Action? {

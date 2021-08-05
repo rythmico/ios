@@ -24,12 +24,6 @@ struct PrivateNoteView: View, FocusableView, TestableView {
             : nil
     }
 
-    @SpacedTextBuilder
-    private var privateNoteHeaderTitle: Text {
-        "Private Note"
-        "(optional)".text.rythmicoFontWeight(.body)
-    }
-
     var nextButtonAction: Action {
         {
             setter(
@@ -43,26 +37,28 @@ struct PrivateNoteView: View, FocusableView, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        TitleSubtitleContentView(title: "Private Note", subtitle: subtitle) {
+        TitleSubtitleContentView("Private Note", subtitle) { padding in
             VStack(spacing: 0) {
                 ScrollView {
-                    HeaderContentView(title: privateNoteHeaderTitle) {
-                        MultilineTextField(
-                            "Message prospective tutors...",
-                            text: $state.privateNote,
-                            inputAccessory: .none,
-                            minHeight: 120,
-                            onEditingChanged: noteEditingChanged
-                        ).modifier(RoundedThinOutlineContainer(padded: false))
+                    TextFieldHeader("Private Note (optional)") {
+                        Container(style: .field) {
+                            MultilineTextField(
+                                "Message prospective tutors...",
+                                text: $state.privateNote,
+                                inputAccessory: .none,
+                                minHeight: 120,
+                                onEditingChanged: noteEditingChanged
+                            )
+                        }
                     }
                     .frame(maxWidth: .grid(.max))
-                    .padding([.trailing, .bottom], .grid(5))
+                    .padding([.trailing, .bottom], padding.trailing)
                 }
-                .accentColor(.rythmicoPurple)
-                .padding(.leading, .grid(5))
+                .accentColor(.rythmico.picoteeBlue)
+                .padding(.leading, padding.leading)
 
                 FloatingView {
-                    RythmicoButton("Next", style: RythmicoButtonStyle.primary(), action: nextButtonAction)
+                    RythmicoButton("Next", style: .primary(), action: nextButtonAction)
                 }
             }
         }

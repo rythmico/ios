@@ -58,22 +58,17 @@ struct LessonDetailView: View, TestableView {
     let inspection = SelfInspection()
     var body: some View {
         VStack(spacing: 0) {
-            TitleContentView(title: title) {
-                VStack(alignment: .leading, spacing: .grid(7)) {
-                    Pill(status: lesson.status)
-                        .padding(.horizontal, .grid(5))
-
+            TitleContentView(title) { padding in
+                VStack(alignment: .leading, spacing: .grid(5)) {
+                    Pill(status: lesson.status).padding(padding)
                     ScrollView {
-                        VStack(alignment: .leading, spacing: .grid(5)) {
-                            SectionHeaderView(title: "Lesson Details")
-                            LessonScheduleView(lesson: lesson)
-                            AddressLabel(address: lesson.address)
-
-                            tutorSection
+                        VStack(spacing: .grid(4)) {
+                            LessonDetailBoxView(lesson: lesson, lessonPlan: lessonPlan)
+                            LessonDetailTutorBoxView(lesson: lesson)
                         }
-                        .foregroundColor(.rythmicoGray90)
+                        .foregroundColor(.rythmico.foreground)
                         .frame(maxWidth: .grid(.max))
-                        .padding(.horizontal, .grid(5))
+                        .padding(.horizontal, .grid(4))
                     }
                 }
             }
@@ -90,12 +85,6 @@ struct LessonDetailView: View, TestableView {
     }
 
     private var title: String { lesson.title }
-
-    @ViewBuilder
-    private var tutorSection: some View {
-        SectionHeaderView(title: "Tutor")
-        TutorCell(lessonPlan: lessonPlan, tutor: lesson.tutor)
-    }
 
     @ViewBuilder
     private var optionsButton: some View {
@@ -123,8 +112,11 @@ struct LessonDetailView: View, TestableView {
 #if DEBUG
 struct LessonDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonDetailView(lesson: .scheduledStub, lessonPlan: .activeJackGuitarPlanStub)
-//            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+        Group {
+            LessonDetailView(lesson: .scheduledStub, lessonPlan: .activeJackGuitarPlanStub)
+            LessonDetailView(lesson: .pausedStub, lessonPlan: .pausedJackGuitarPlanStub)
+        }
+//        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }
 #endif

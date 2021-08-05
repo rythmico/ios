@@ -20,12 +20,12 @@ struct AddressDetailsView: View, TestableView {
     var subtitle: Text {
         "Enter the address where"
         if let studentName = student.name.firstWord {
-            studentName.text.rythmicoFontWeight(.bodyBold)
+            studentName.text.rythmicoFontWeight(.subheadlineMedium)
         } else {
             "the student"
         }
         "will have the"
-        "\(instrument.assimilatedName) lessons".text.rythmicoFontWeight(.bodyBold)
+        "\(instrument.assimilatedName) lessons".text.rythmicoFontWeight(.subheadlineMedium)
     }
 
     var isLoading: Bool { coordinator.state.isLoading }
@@ -44,29 +44,31 @@ struct AddressDetailsView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        TitleSubtitleContentView(title: "Address Details", subtitle: subtitle) {
+        TitleSubtitleContentView("Address Details", subtitle) { padding in
             VStack(spacing: 0) {
                 ScrollView {
                     VStack(alignment: .leading, spacing: .grid(5)) {
                         Group {
                             InfoBanner(text: "You can also arrange for online lessons. Just let your prospective tutor know about your preference in the final step.")
-                            HeaderContentView(title: "Postcode", titleAccessory: {
+                            TextFieldHeader("Postcode", accessory: {
                                 InfoDisclaimerButton(
                                     title: "Why Postcode?",
                                     message: "We only show prospective tutors the postcode area, so they have a better idea of where they need to travel to."
                                 )
                             }) {
                                 ZStack {
-                                    CustomTextField(
-                                        "NW1 7FB",
-                                        text: $state.postcode,
-                                        inputMode: KeyboardInputMode(contentType: .postalCode, autocapitalization: .allCharacters, returnKey: .search),
-                                        onCommit: searchAddresses
-                                    ).modifier(RoundedThinOutlineContainer(padded: false))
+                                    Container(style: .field) {
+                                        CustomTextField(
+                                            "NW1 7FB",
+                                            text: $state.postcode,
+                                            inputMode: KeyboardInputMode(contentType: .postalCode, autocapitalization: .allCharacters, returnKey: .search),
+                                            onCommit: searchAddresses
+                                        )
+                                    }
                                     HStack {
                                         Spacer()
                                         if isLoading {
-                                            ActivityIndicator(color: .rythmicoGray90)
+                                            ActivityIndicator(color: .rythmico.foreground)
                                         }
                                         Spacer().frame(width: .grid(3))
                                     }
@@ -75,10 +77,12 @@ struct AddressDetailsView: View, TestableView {
                         }
 
                         if let addresses = addresses {
-                            SectionHeaderContentView(title: "Select Address") {
-                                AddressSelectionView(
-                                    addresses: addresses,
-                                    selection: $state.selectedAddress
+                            SectionHeaderContentView("Select Address", style: .plain) {
+                                ChoiceList(
+                                    data: addresses,
+                                    id: \.self,
+                                    selection: $state.selectedAddress,
+                                    content: \.condensedFormattedString
                                 )
                             }
                             .transition(.offset(y: 25) + .opacity)
@@ -86,15 +90,15 @@ struct AddressDetailsView: View, TestableView {
                             Spacer()
                         }
                     }
-                    .accentColor(.rythmicoPurple)
+                    .accentColor(.rythmico.picoteeBlue)
                     .frame(maxWidth: .grid(.max))
-                    .padding([.trailing, .bottom], .grid(5))
+                    .padding([.trailing, .bottom], padding.trailing)
                 }
-                .padding(.leading, .grid(5))
+                .padding(.leading, padding.leading)
 
                 nextButtonAction.map { action in
                     FloatingView {
-                        RythmicoButton("Next", style: RythmicoButtonStyle.primary(), action: action)
+                        RythmicoButton("Next", style: .primary(), action: action)
                     }
                 }
             }

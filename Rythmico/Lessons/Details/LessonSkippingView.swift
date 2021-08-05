@@ -40,16 +40,16 @@ struct LessonSkippingView: View {
         NavigationView {
             CoordinatorStateView(coordinator: coordinator, successTitle: "Lesson Skipped", loadingTitle: "Skipping Lesson...") {
                 VStack(spacing: 0) {
-                    TitleContentView(title: title) {
+                    TitleContentView(title) { padding in
                         ScrollView {
                             LessonSkippingContentView(isFree: isFree, policy: option.policy)
                                 .frame(maxWidth: .grid(.max))
-                                .padding(.horizontal, .grid(5))
+                                .padding(padding)
                         }
                     }
 
                     FloatingView {
-                        RythmicoButton(submitButtonTitle, style: RythmicoButtonStyle.secondary(), action: onSkipButtonPressed)
+                        RythmicoButton(submitButtonTitle, style: .secondary(), action: onSkipButtonPressed)
                             .actionSheet(isPresented: $showingConfirmationSheet) {
                                 ActionSheet(
                                     title: Text("Are you sure?"),
@@ -61,12 +61,12 @@ struct LessonSkippingView: View {
                     }
                 }
             }
-            .backgroundColor(.rythmicoBackgroundSecondary)
+            .backgroundColor(.rythmico.backgroundSecondary)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing: CloseButton(action: dismiss))
         }
         .interactiveDismissDisabled(coordinator.state.isLoading)
-        .accentColor(.rythmicoGray90)
+        .accentColor(.rythmico.foreground)
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: lessonSuccessfullySkipped)
         .alertOnFailure(coordinator)

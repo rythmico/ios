@@ -7,12 +7,10 @@ struct ConfirmationView: View {
         ZStack {
             Color.clear
             HStack(spacing: .grid(3)) {
-                Image(decorative: Asset.Icon.Misc.checkmark.name)
-                    .renderingMode(.template)
-                    .foregroundColor(.rythmicoPurple)
+                Image.checkmarkIcon(color: .rythmico.picoteeBlue)
                 Text(title)
                     .rythmicoTextStyle(.subheadlineBold)
-                    .foregroundColor(.rythmicoForeground)
+                    .foregroundColor(.rythmico.foreground)
             }
         }
     }

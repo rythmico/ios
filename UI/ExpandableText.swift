@@ -14,10 +14,10 @@ struct ExpandableText<Expander: View, Collapser: View>: View {
     var onCollapse: Action? = nil
 
     var body: some View {
-        VStack(alignment: .leading, spacing: .grid(4)) {
+        VStack(alignment: .leading, spacing: .grid(3)) {
             VStack(alignment: .leading, spacing: paragraphSpacing) {
                 ForEach(0..<paragraphCount, id: \.self) { index in
-                    Text(paragraphs[index])
+                    Text(addEllipsisIfNeeded(paragraphs[index]))
                         .rythmicoTextStyle(style)
                         .transition(
                             .asymmetric(
@@ -33,7 +33,7 @@ struct ExpandableText<Expander: View, Collapser: View>: View {
         .animation(.rythmicoSpring(duration: .durationShort), value: isExpanded)
     }
 
-    private let paragraphSpacing: CGFloat = .grid(6)
+    private let paragraphSpacing: CGFloat = .grid(5)
     private let paragraphCountWhenCollapsed = 1
     private var paragraphCount: Int { isExpanded ? paragraphs.count : min(paragraphCountWhenCollapsed, paragraphs.count) }
     private var paragraphs: [String] { content.components(separatedBy: "\n\n") }
@@ -54,20 +54,41 @@ struct ExpandableText<Expander: View, Collapser: View>: View {
         (isExpanded ? onCollapse : onExpand)?()
         isExpanded.toggle()
     }
+
+    private func addEllipsisIfNeeded(_ paragraph: String) -> String {
+        guard !isExpanded else { return paragraph }
+        switch true {
+        case paragraph.hasSuffix("..."):
+            return paragraph
+        case paragraph.hasSuffix(".."):
+            return paragraph + "."
+        case paragraph.hasSuffix("."):
+            return paragraph + ".."
+        default:
+            return paragraph + "..."
+        }
+    }
 }
 
-extension ExpandableText where Expander == Text, Collapser == Text {
+extension ExpandableText where Expander == AnyView, Collapser == AnyView {
     init(
         content: String,
-        expander: String = "Read More",
-        collapser: String = "Read Less",
+        expander: String = "Read more",
+        collapser: String = "Read less",
         onExpand: Action? = nil,
         onCollapse: Action? = nil
     ) {
+        let text: (String) -> AnyView = {
+            AnyView(
+                Text($0)
+                    .foregroundColor(.rythmico.picoteeBlue)
+                    .rythmicoTextStyle(.bodyBold)
+            )
+        }
         self.init(
             content: content,
-            expander: { Text(expander).fontWeight(.bold) },
-            collapser: { Text(collapser).fontWeight(.bold) },
+            expander: { text(expander) },
+            collapser: { text(collapser) },
             onExpand: onExpand,
             onCollapse: onCollapse
         )

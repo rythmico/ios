@@ -6,7 +6,7 @@ struct ProfileLogOutCell: View {
             HStack(alignment: .center) {
                 Text("Log out")
                     .rythmicoTextStyle(.body)
-                    .foregroundColor(.rythmicoRed)
+                    .foregroundColor(.rythmico.red)
                     .frame(maxWidth: .infinity)
                     .multilineTextAlignment(.center)
             }

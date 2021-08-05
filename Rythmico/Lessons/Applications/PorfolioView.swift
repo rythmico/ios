@@ -1,7 +1,7 @@
 import SwiftUISugar
 
 struct PortfolioView: View {
-    private static let bioId = "bio"
+    private struct BioId: Hashable {}
 
     var tutor: Tutor
     var portfolio: Portfolio
@@ -10,49 +10,44 @@ struct PortfolioView: View {
     var body: some View {
         ScrollView { proxy in
             VStack(spacing: .grid(5)) {
-                VStack(spacing: .grid(4)) {
-                    HStack(spacing: .grid(4)) {
-                        header("Bio")
-                        ageText(from: portfolio)
-                    }
-
+                HeadlineContentView("Bio", accessory: ageText(from: portfolio)) { padding in
                     bio(from: portfolio, scrollingProxy: proxy)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(padding)
                 }
                 .frame(maxWidth: .grid(.max))
-                .padding(.horizontal, .grid(5))
-                .id(Self.bioId)
+                .id(BioId())
 
                 if !portfolio.training.isEmpty {
-                    Divider().overlay(Color.rythmicoGray20)
-                    VStack(spacing: .grid(4)) {
-                        header("Training")
-                        PortfolioTrainingsView(trainingList: portfolio.training)
-                    }
-                    .frame(maxWidth: .grid(.max))
-                    .padding(.horizontal, .grid(5))
+                    HDivider()
                 }
 
-                if !portfolio.videos.isEmpty || !portfolio.photos.isEmpty {
-                    Divider().overlay(Color.rythmicoGray20)
+                VStack(spacing: 0) {
+                    if !portfolio.training.isEmpty {
+                        HeadlineContentView("Training") { padding in
+                            PortfolioTrainingsView(trainingList: portfolio.training)
+                                .padding(.leading, padding.leading)
+                        }
+                        .frame(maxWidth: .grid(.max))
+                    }
+
+                    if !portfolio.videos.isEmpty || !portfolio.photos.isEmpty {
+                        HDivider()
+                    }
                 }
 
                 if !portfolio.videos.isEmpty {
-                    VStack(spacing: .grid(4)) {
-                        header("Videos")
-                            .frame(maxWidth: .grid(.max))
-                            .padding(.horizontal, .grid(5))
+                    HeadlineContentView("Videos", spacing: .grid(4)) { _ in
                         VideoCarouselView(videos: portfolio.videos)
                     }
+                    .frame(maxWidth: .grid(.max))
                 }
 
                 if !portfolio.photos.isEmpty {
-                    VStack(spacing: .grid(4)) {
-                        header("Photos")
-                        PhotoCarouselView(photos: portfolio.photos)
+                    HeadlineContentView("Photos", spacing: .grid(4)) { padding in
+                        PhotoCarouselView(photos: portfolio.photos).padding(padding)
                     }
                     .frame(maxWidth: .grid(.max))
-                    .padding(.horizontal, .grid(5))
                 }
             }
             .padding(.top, topPadding)
@@ -61,25 +56,17 @@ struct PortfolioView: View {
     }
 
     @ViewBuilder
-    private func header(_ title: String) -> some View {
-        Text(title)
-            .rythmicoTextStyle(.subheadlineBold)
-            .foregroundColor(.rythmicoForeground)
-            .frame(maxWidth: .infinity, alignment: .leading)
-    }
-
-    @ViewBuilder
     private func bio(from portfolio: Portfolio, scrollingProxy: ScrollViewProxy) -> some View {
         if portfolio.bio.isBlank {
             Text("\(tutor.name.firstWord ?? "Tutor") did not add a bio.")
                 .rythmicoTextStyle(.body)
-                .foregroundColor(.rythmicoGray30)
+                .foregroundColor(.rythmico.textPlaceholder)
         } else {
             ExpandableText(
                 content: portfolio.bio,
-                onCollapse: { scrollingProxy.scrollTo(Self.bioId, anchor: .bottom) }
+                onCollapse: { scrollingProxy.scrollTo(BioId(), anchor: .bottom) }
             )
-            .foregroundColor(.rythmicoGray90)
+            .foregroundColor(.rythmico.foreground)
         }
     }
 
@@ -89,7 +76,7 @@ struct PortfolioView: View {
             "\(portfolio.age)".text.rythmicoFontWeight(.bodyBold)
         }
         .rythmicoTextStyle(.body)
-        .foregroundColor(.rythmicoGray90)
+        .foregroundColor(.rythmico.foreground)
         .multilineTextAlignment(.trailing)
     }
 }

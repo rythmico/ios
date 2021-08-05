@@ -18,48 +18,54 @@ extension App {
 }
 
 extension SwiftUI.App {
-    // TODO: hopefully to be deleted someday if SwiftUI allows for better customization.
-    func configureAppearance() {
-        UINavigationBar.appearance().do { bar in
-            UINavigationBarAppearance().do {
+    // TODO: hopefully to be deleted someday if SwiftUI allows for this customization.
+    static func configureAppearance(for window: UIWindow) {
+        UINavigationBar.appearance().do {
+            UINavigationBarAppearance().with {
                 $0.configureWithTransparentBackground()
                 $0.largeTitleTextAttributes = .rythmicoTextAttributes(color: .clear, style: .largeTitle)
                 $0.titleTextAttributes = .rythmicoTextAttributes(color: .clear, style: .subheadlineBold)
                 $0.shadowColor = nil
 
-                $0.setBackIndicatorImage(BackButton.uiImage, transitionMaskImage: BackButton.uiImage)
+                $0.setBackIndicatorImage(UIImage.chevronLeft, transitionMaskImage: UIImage.chevronLeft)
                 $0.backButtonAppearance.normal.titleTextAttributes = .rythmicoTextAttributes(color: nil, style: .bodyMedium)
-
-                bar.standardAppearance = $0
-                bar.compactAppearance = $0
-                bar.scrollEdgeAppearance = $0
-
-                bar.layoutMargins.left = .grid(5)
-                bar.layoutMargins.right = .grid(5)
             }
+            .assign(to: $0, \.standardAppearance)
+            .assign(to: $0, \.compactAppearance)
+            .assign(to: $0, \.scrollEdgeAppearance)
         }
 
         UITableView.appearance().do {
             $0.backgroundColor = .clear
         }
 
-        UITabBar.appearance().do { bar in
-            UITabBarAppearance().do {
+        UITabBar.appearance().do {
+            UITabBarAppearance().with {
+                $0.configureWithOpaqueBackground()
+                $0.shadowImage = .dynamic(color: .rythmico.outline)
+                $0.backgroundColor = .rythmico.background
                 [
                     $0.compactInlineLayoutAppearance,
                     $0.inlineLayoutAppearance,
                     $0.stackedLayoutAppearance
                 ].forEach {
-                    $0.normal.iconColor = .rythmicoGray90
-                    $0.normal.titleTextAttributes = .rythmicoTextAttributes(color: .rythmicoGray90, style: .caption)
-                    $0.selected.titleTextAttributes = .rythmicoTextAttributes(color: nil, style: .caption)
+                    let hasBottomSafeArea = window.safeAreaInsets.bottom > 0
+                    let barItemTitleVerticalOffset: CGFloat = hasBottomSafeArea ? -2 : -4
+
+                    $0.normal.iconColor = .rythmico.textPlaceholder
+                    $0.normal.titleTextAttributes = .rythmicoTextAttributes(color: .rythmico.textPlaceholder, style: .caption)
+                    $0.normal.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: barItemTitleVerticalOffset)
+
+                    $0.selected.iconColor = .rythmico.picoteeBlue
+                    $0.selected.titleTextAttributes = .rythmicoTextAttributes(color: .rythmico.picoteeBlue, style: .caption)
+                    $0.selected.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: barItemTitleVerticalOffset)
                 }
-                bar.standardAppearance = $0
             }
+            .assign(to: $0, \.standardAppearance)
         }
 
         UISwitch.appearance().do {
-            $0.onTintColor = .rythmicoPurple
+            $0.onTintColor = .rythmico.picoteeBlue
         }
     }
 }

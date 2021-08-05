@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct CollectionView<Content: View>: View {
+    var topPadding: CGFloat = .grid(4)
     @ViewBuilder
     var content: Content
 
@@ -10,7 +11,8 @@ struct CollectionView<Content: View>: View {
                 content
             }
             .frame(maxWidth: .grid(.max))
-            .padding(.all, .grid(5))
+            .padding(.top, topPadding)
+            .padding([.horizontal, .bottom], .grid(4))
         }
     }
 }

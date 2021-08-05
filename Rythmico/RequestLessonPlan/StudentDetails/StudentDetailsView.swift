@@ -32,7 +32,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
         focus == .none
             ? Text(separator: .whitespace) {
                 "Enter the details of the student who will be learning"
-                instrument.standaloneName.text.rythmicoFontWeight(.bodyBold)
+                instrument.standaloneName.text.rythmicoFontWeight(.subheadlineMedium)
             }
             : nil
     }
@@ -58,7 +58,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
     var aboutHeaderTitle: Text {
         "About"
         if let firstName = sanitizedName?.firstWord {
-            firstName.text.foregroundColor(.rythmicoPurple)
+            firstName.text.foregroundColor(.rythmico.picoteeBlue)
         } else {
             "Student"
         }
@@ -94,50 +94,56 @@ struct StudentDetailsView: View, FocusableView, TestableView {
     // MARK: - Body -
     let inspection = SelfInspection()
     var body: some View {
-        TitleSubtitleContentView(title: "Student Details", subtitle: subtitle) {
+        TitleSubtitleContentView("Student Details", subtitle) { padding in
             VStack(spacing: 0) {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: .grid(6)) {
-                        HeaderContentView(title: "Full Name") {
-                            CustomTextField(
-                                "Enter Name...",
-                                text: $state.name,
-                                inputMode: KeyboardInputMode(contentType: .name, autocapitalization: .words),
-                                onEditingChanged: fullNameEditingChanged
-                            ).modifier(RoundedThinOutlineContainer(padded: false))
+                    VStack(alignment: .leading, spacing: .grid(5)) {
+                        TextFieldHeader("Full Name") {
+                            Container(style: .field) {
+                                CustomTextField(
+                                    "Enter Name...",
+                                    text: $state.name,
+                                    inputMode: KeyboardInputMode(contentType: .name, autocapitalization: .words),
+                                    onEditingChanged: fullNameEditingChanged
+                                )
+                            }
                         }
-                        HeaderContentView(title: "Date of Birth", titleAccessory: {
+                        TextFieldHeader("Date of Birth", accessory: {
                             InfoDisclaimerButton(
                                 title: "Why Date of Birth?",
                                 message: "This gives tutors a better understanding of the learning requirements for each student, and will help to plan their lessons accordingly."
                             )
                         }) {
-                            CustomTextField(
-                                dateOfBirthPlaceholderText,
-                                text: .constant(dateOfBirthText ?? .empty),
-                                inputMode: DatePickerInputMode(selection: $state.dateOfBirth.or(dateOfBirthPlaceholder), mode: .date),
-                                inputAccessory: .doneButton,
-                                onEditingChanged: dateOfBirthEditingChanged
-                            ).modifier(RoundedThinOutlineContainer(padded: false))
+                            Container(style: .field) {
+                                CustomTextField(
+                                    dateOfBirthPlaceholderText,
+                                    text: .constant(dateOfBirthText ?? .empty),
+                                    inputMode: DatePickerInputMode(selection: $state.dateOfBirth.or(dateOfBirthPlaceholder), mode: .date),
+                                    inputAccessory: .doneButton,
+                                    onEditingChanged: dateOfBirthEditingChanged
+                                )
+                            }
                         }
-                        HeaderContentView(title: aboutHeaderTitle) {
-                            MultilineTextField(
-                                "Existing instrument prowess etc.",
-                                text: $state.about,
-                                inputAccessory: .none,
-                                onEditingChanged: aboutEditingChanged
-                            ).modifier(RoundedThinOutlineContainer(padded: false))
+                        TextFieldHeader(aboutHeaderTitle) {
+                            Container(style: .field) {
+                                MultilineTextField(
+                                    "Existing instrument prowess etc.",
+                                    text: $state.about,
+                                    inputAccessory: .none,
+                                    onEditingChanged: aboutEditingChanged
+                                )
+                            }
                         }
                     }
-                    .accentColor(.rythmicoPurple)
+                    .accentColor(.rythmico.picoteeBlue)
                     .frame(maxWidth: .grid(.max))
-                    .padding([.trailing, .bottom], .grid(5))
+                    .padding([.trailing, .bottom], padding.trailing)
                 }
-                .padding(.leading, .grid(5))
+                .padding(.leading, padding.leading)
 
                 if let action = nextButtonAction {
                     FloatingView {
-                        RythmicoButton("Next", style: RythmicoButtonStyle.primary(), action: action)
+                        RythmicoButton("Next", style: .primary(), action: action)
                     }
                 }
             }

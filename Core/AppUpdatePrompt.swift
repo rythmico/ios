@@ -34,23 +34,23 @@ struct AppUpdatePrompt: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 #if RYTHMICO
                 if shouldShowUpdateButton {
-                    RythmicoButton("Update \(App.name)", style: RythmicoButtonStyle.primary()) {
+                    RythmicoButton("Update \(App.name)", style: .primary()) {
                         Current.urlOpener.open(method.url(forAppId: appId))
                     }
                 } else {
-                    RythmicoButton("Download the TestFlight App", style: RythmicoButtonStyle.secondary()) {
+                    RythmicoButton("Download the TestFlight App", style: .secondary()) {
                         Current.urlOpener.open(App.DistributionMethod.appStore.url(forAppId: Const.testFlightAppId))
                     }
                 }
                 #elseif TUTOR
                 if shouldShowUpdateButton {
-                    Button("Update \(App.name)") {
+                    RythmicoButton("Update \(App.name)", style: .primary()) {
                         Current.urlOpener.open(method.url(forAppId: appId))
-                    }.primaryStyle()
+                    }
                 } else {
-                    Button("Download the TestFlight App") {
+                    RythmicoButton("Download the TestFlight App", style: .secondary()) {
                         Current.urlOpener.open(App.DistributionMethod.appStore.url(forAppId: Const.testFlightAppId))
-                    }.secondaryStyle()
+                    }
                 }
                 #endif
             }
@@ -94,7 +94,7 @@ private extension Text {
     func appUpdatePromptDescription() -> some View {
         #if RYTHMICO
         self.rythmicoTextStyle(.body)
-            .foregroundColor(.rythmicoGray90)
+            .foregroundColor(.rythmico.foreground)
         #elseif TUTOR
         self.font(.body)
             .foregroundColor(.gray)

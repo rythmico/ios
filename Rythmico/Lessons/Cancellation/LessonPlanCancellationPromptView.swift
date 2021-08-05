@@ -9,11 +9,11 @@ extension LessonPlanCancellationView {
 
         var body: some View {
             VStack(spacing: 0) {
-                TitleContentView(title: title) {
+                TitleContentView(title) { padding in
                     ScrollView {
                         VStack(alignment: .leading, spacing: .grid(5), content: content)
                             .frame(maxWidth: .grid(.max), alignment: .leading)
-                            .padding(.horizontal, .grid(5))
+                            .padding(padding)
                     }
                 }
 
@@ -64,7 +64,7 @@ extension LessonPlanCancellationView {
         @ViewBuilder
         private func descriptionText(_ string: String) -> some View {
             Text(string)
-                .foregroundColor(.rythmicoGray90)
+                .foregroundColor(.rythmico.foreground)
                 .rythmicoTextStyle(.body)
         }
 

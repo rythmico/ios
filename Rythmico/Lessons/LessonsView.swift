@@ -50,14 +50,14 @@ struct LessonsView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        TitleContentView(title: title, spacing: .grid(1)) {
+        TitleContentView(title, spacing: .grid(1)) { _ in
             VStack(spacing: 0) {
                 TabMenuView(tabs: Filter.allCases, selection: $tabSelection.lessonsTab)
                 LessonsCollectionView(lessonPlans: repository.items, filter: tabSelection.lessonsTab)
             }
         }
-        .backgroundColor(.rythmicoBackground)
-        .accentColor(.rythmicoPurple)
+        .backgroundColor(.rythmico.background)
+        .accentColor(.rythmico.picoteeBlue)
         .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(leading: leadingItem, trailing: trailingItem)
@@ -74,20 +74,18 @@ struct LessonsView: View, TestableView {
     @ViewBuilder
     private var leadingItem: some View {
         if coordinator.state.isLoading {
-            ActivityIndicator(color: .rythmicoGray90)
+            ActivityIndicator(color: .rythmico.foreground)
         }
     }
 
     @ViewBuilder
     private var trailingItem: some View {
-        Button(action: presentRequestLessonFlow) {
-            Image(decorative: Asset.Button.requestLessonPlan.name)
-                .padding(.vertical, .grid(3))
-                .padding(.horizontal, .grid(7))
-                .offset(x: .grid(7))
-        }
-        .accessibility(label: Text("Request lessons"))
-        .accessibility(hint: Text("Double tap to request a lesson plan"))
+        Button.requestLessonPlan(action: presentRequestLessonFlow)
+            .padding(.vertical, .grid(3))
+            .padding(.horizontal, .grid(7))
+            .offset(x: .grid(7))
+            .accessibility(label: Text("Request lessons"))
+            .accessibility(hint: Text("Double tap to request a lesson plan"))
     }
 
     func presentRequestLessonFlow() {

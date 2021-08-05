@@ -34,7 +34,7 @@ struct SchedulingView: View, FocusableView, TestableView {
     @SpacedTextBuilder
     var subtitle: Text {
         "Enter when you want the"
-        "\(instrument.assimilatedName) lessons".text.rythmicoFontWeight(.bodyBold)
+        "\(instrument.assimilatedName) lessons".text.rythmicoFontWeight(.subheadlineMedium)
         "to commence and for how long"
     }
 
@@ -71,11 +71,11 @@ struct SchedulingView: View, FocusableView, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        TitleSubtitleContentView(title: "Lesson Schedule", subtitle: subtitle) {
+        TitleSubtitleContentView("Lesson Schedule", subtitle) { padding in
             VStack(spacing: 0) {
                 ScrollView {
                     VStack(alignment: .leading, spacing: .grid(5)) {
-                        HeaderContentView(title: "Start Date") {
+                        TextFieldHeader("Start Date") {
                             CustomEditableTextField(
                                 placeholder: "Select a date...",
                                 text: startDateText,
@@ -96,30 +96,34 @@ struct SchedulingView: View, FocusableView, TestableView {
                         }
 
                         HStack(spacing: .grid(3)) {
-                            HeaderContentView(title: "Time") {
-                                CustomTextField(
-                                    "Time...",
-                                    text: .constant(startTimeText ?? .empty),
-                                    inputMode: DatePickerInputMode(
-                                        selection: $state.startTime.or(defaultStartTime),
-                                        mode: .time
-                                    ),
-                                    inputAccessory: .doneButton,
-                                    onEditingChanged: onEditingStartTimeChanged
-                                ).modifier(RoundedThinOutlineContainer(padded: false))
+                            TextFieldHeader("Time") {
+                                Container(style: .field) {
+                                    CustomTextField(
+                                        "Time...",
+                                        text: .constant(startTimeText ?? .empty),
+                                        inputMode: DatePickerInputMode(
+                                            selection: $state.startTime.or(defaultStartTime),
+                                            mode: .time
+                                        ),
+                                        inputAccessory: .doneButton,
+                                        onEditingChanged: onEditingStartTimeChanged
+                                    )
+                                }
                             }
 
-                            HeaderContentView(title: "Duration") {
-                                CustomTextField(
-                                    "Duration...",
-                                    text: .constant(durationText ?? .empty),
-                                    inputMode: PickerInputMode(
-                                        selection: $state.duration.or(defaultDuration),
-                                        formatter: \.title
-                                    ),
-                                    inputAccessory: .doneButton,
-                                    onEditingChanged: onEditingDurationChanged
-                                ).modifier(RoundedThinOutlineContainer(padded: false))
+                            TextFieldHeader("Duration") {
+                                Container(style: .field) {
+                                    CustomTextField(
+                                        "Duration...",
+                                        text: .constant(durationText ?? .empty),
+                                        inputMode: PickerInputMode(
+                                            selection: $state.duration.or(defaultDuration),
+                                            formatter: \.title
+                                        ),
+                                        inputAccessory: .doneButton,
+                                        onEditingChanged: onEditingDurationChanged
+                                    )
+                                }
                             }
                         }
 
@@ -128,14 +132,14 @@ struct SchedulingView: View, FocusableView, TestableView {
                         }
                     }
                     .frame(maxWidth: .grid(.max))
-                    .padding([.trailing, .bottom], .grid(5))
+                    .padding([.trailing, .bottom], padding.trailing)
                 }
-                .padding(.leading, .grid(5))
+                .padding(.leading, padding.leading)
 
                 ZStack(alignment: .bottom) {
                     nextButtonAction.map { action in
                         FloatingView {
-                            RythmicoButton("Next", style: RythmicoButtonStyle.primary(), action: action)
+                            RythmicoButton("Next", style: .primary(), action: action)
                         }
                         .zIndex(0)
                     }
@@ -143,7 +147,7 @@ struct SchedulingView: View, FocusableView, TestableView {
             }
         }
         .testable(self)
-        .accentColor(.rythmicoPurple)
+        .accentColor(.rythmico.picoteeBlue)
         .onReceive(focusCoordinator.$focus, perform: onFocusChanged)
         .animation(.easeInOut(duration: .durationMedium), value: focus)
     }

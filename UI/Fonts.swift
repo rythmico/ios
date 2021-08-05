@@ -21,7 +21,7 @@ extension Image {
 }
 
 extension Font {
-    enum RythmicoTextStyle {
+    enum RythmicoTextStyle: CaseIterable, Hashable {
         fileprivate enum FamilyName {
             static let dmSans = "DM Sans"
         }
@@ -29,11 +29,13 @@ extension Font {
         case largeTitle         // 32px Bold
         case headline           // 22px Bold
         case subheadlineBold    // 19px Bold
+        case subheadlineMedium  // 19px Medium
         case subheadline        // 19px Regular
         case bodyBold           // 17px Bold
         case bodySemibold       // 17px Semibold
         case bodyMedium         // 17px Medium
         case body               // 17px Regular
+        case calloutBoldWide    // 15px Bold
         case calloutBold        // 15px Bold
         case callout            // 15px Regular
         case footnoteBold       // 13px Bold
@@ -46,11 +48,11 @@ extension Font {
                 return 32
             case .headline:
                 return 22
-            case .subheadlineBold, .subheadline:
+            case .subheadlineBold, .subheadlineMedium, .subheadline:
                 return 19
             case .bodyBold, .bodySemibold, .bodyMedium, .body:
                 return 17
-            case .calloutBold, .callout:
+            case .calloutBoldWide, .calloutBold, .callout:
                 return 15
             case .footnoteBold, .footnote:
                 return 13
@@ -64,11 +66,13 @@ extension Font {
             case .largeTitle: return .bold
             case .headline: return .bold
             case .subheadlineBold: return .bold
+            case .subheadlineMedium: return .medium
             case .subheadline: return .regular
             case .bodyBold: return .bold
             case .bodySemibold: return .semibold
             case .bodyMedium: return .medium
             case .body: return .regular
+            case .calloutBoldWide: return .bold
             case .calloutBold: return .bold
             case .callout: return .regular
             case .footnoteBold: return .bold
@@ -84,19 +88,21 @@ extension Font {
         var tracking: CGFloat {
             switch self {
             case .largeTitle:
-                return -0.8
+                return -1
             case .headline:
-                return -0.2
-            case .subheadlineBold, .subheadline:
-                return -0.2
+                return -0.7
+            case .subheadlineBold, .subheadlineMedium, .subheadline:
+                return -0.6
             case .bodyBold, .bodySemibold, .bodyMedium, .body:
                 return -0.4
+            case .calloutBoldWide:
+                return 0.8
             case .calloutBold, .callout:
-                return 0
+                return -0.2
             case .footnoteBold, .footnote:
                 return 0
             case .caption:
-                return 0.4
+                return 0.2
             }
         }
 
@@ -141,7 +147,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value == Any {
 }
 
 extension UIFont {
-    static func rythmicoFont(_ style: Font.RythmicoTextStyle) -> UIFont {
+    static func rythmicoFont(_ style: Font.RythmicoTextStyle, overrideSizeCategory: UIContentSizeCategory? = nil) -> UIFont {
         UIFontMetrics(forTextStyle: .largeTitle).scaledFont(
             for: UIFont(
                 descriptor: UIFontDescriptor(
@@ -152,7 +158,8 @@ extension UIFont {
                 ),
                 size: style.regularSize
             ),
-            maximumPointSize: 40
+            maximumPointSize: 40,
+            compatibleWith: overrideSizeCategory.map(UITraitCollection.init)
         )
     }
 }
@@ -173,3 +180,17 @@ private extension UIFont.Weight {
         }
     }
 }
+
+#if DEBUG
+struct Font_Previews: PreviewProvider {
+    static var previews: some View {
+        ForEach(Font.RythmicoTextStyle.allCases, id: \.self) { style in
+            Text("Hello World")
+                .rythmicoTextStyle(style)
+                .previewDisplayName("\(style)")
+        }
+        .previewLayout(.sizeThatFits)
+        .padding()
+    }
+}
+#endif

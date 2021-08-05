@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 
 struct Pill<Content: View>: View {
     var backgroundColor: Color
@@ -7,15 +7,18 @@ struct Pill<Content: View>: View {
     var content: Content
 
     var body: some View {
-        content
-            .padding(.vertical, 1)
-            .padding(.horizontal, .grid(3.5))
-            .frame(minWidth: 96)
-            .background(
-                backgroundColor
-                    .clipShape(Capsule())
-                    .overlay(Capsule().stroke(borderColor, style: StrokeStyle(lineWidth: 2)))
+        Container(
+            style: .init(
+                fill: backgroundColor,
+                shape: .capsule(style: .continuous),
+                border: .init(color: borderColor, width: 2)
             )
+        ) {
+            content
+                .padding(.vertical, 1)
+                .padding(.horizontal, .grid(3.5))
+                .frame(minWidth: 96)
+        }
     }
 }
 

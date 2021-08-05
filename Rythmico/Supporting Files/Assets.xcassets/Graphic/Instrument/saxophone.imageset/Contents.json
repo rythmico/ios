@@ -3,16 +3,6 @@
     {
       "filename" : "Saxophone.svg",
       "idiom" : "universal"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "filename" : "Saxophone-1.svg",
-      "idiom" : "universal"
     }
   ],
   "info" : {

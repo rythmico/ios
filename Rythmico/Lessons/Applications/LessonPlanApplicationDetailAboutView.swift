@@ -22,7 +22,7 @@ struct LessonPlanApplicationDetailAboutView: View {
         case .ready, .suspended, .finished(.failure), .idle:
             Color.clear
         case .loading:
-            ActivityIndicator(color: .rythmicoGray90).frame(maxWidth: .infinity, maxHeight: .infinity)
+            ActivityIndicator(color: .rythmico.foreground).frame(maxWidth: .infinity, maxHeight: .infinity)
         case .finished(.success(let portfolio)):
             PortfolioView(tutor: tutor, portfolio: portfolio, topPadding: topPadding)
         }

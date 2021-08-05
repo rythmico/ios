@@ -7,10 +7,10 @@ struct LoadingView: View {
         ZStack {
             Color.clear
             HStack(spacing: .grid(3)) {
-                ActivityIndicator(color: .rythmicoGray90)
+                ActivityIndicator(color: .rythmico.foreground)
                 Text(title)
                     .rythmicoTextStyle(.subheadlineBold)
-                    .foregroundColor(.rythmicoForeground)
+                    .foregroundColor(.rythmico.foreground)
             }
         }
     }

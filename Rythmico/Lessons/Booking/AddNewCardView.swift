@@ -14,28 +14,30 @@ struct AddNewCardView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            TitleSubtitleContentView(title: title, subtitle: subtitle) {
+            TitleSubtitleContentView(title, subtitle) { padding in
                 VStack(spacing: .grid(5)) {
                     HStack(spacing: .grid(5)) {
-                        StripePaymentCardTextField(cardDetails: $cardDetails, cardIsValid: $cardIsValid)
-                            .padding(.vertical, .grid(1))
-                            .modifier(RoundedThinOutlineContainer(padded: false))
+                        Container(style: .field) {
+                            StripePaymentCardTextField(cardDetails: $cardDetails, cardIsValid: $cardIsValid)
+                                .padding(.vertical, .grid(1))
+                        }
                         if coordinator.state.isLoading {
-                            ActivityIndicator(color: .rythmicoGray90)
+                            ActivityIndicator(color: .rythmico.foreground)
                         }
                     }
                     .animation(.rythmicoSpring(duration: .durationShort), value: coordinator.state.isLoading)
 
                     Spacer()
 
-                    HStack(spacing: .grid(2)) {
-                        Image(systemSymbol: .lockFill).rythmicoFont(.footnoteBold)
+                    HStack(spacing: .grid(1)) {
+                        Image(decorative: Asset.Icon.Label.secure.name).renderingMode(.template)
                         Text("Your payment info is stored securely.").rythmicoTextStyle(.footnoteBold)
                     }
-                    .foregroundColor(.rythmicoGray90)
+                    .foregroundColor(.rythmico.foreground)
                 }
                 .frame(maxWidth: .grid(.max))
-                .padding([.horizontal, .bottom], .grid(5))
+                .padding(.leading, padding.leading)
+                .padding([.trailing, .bottom], padding.trailing)
             }
 
             StripeSetupIntentLink(
@@ -44,14 +46,14 @@ struct AddNewCardView: View {
                 coordinator: coordinator
             ) { action in
                 FloatingView {
-                    RythmicoButton("Save Card", style: RythmicoButtonStyle.primary(), action: action)
+                    RythmicoButton("Save Card", style: .primary(), action: action)
                 }
             }
             .disabled(!confirmButtonEnabled)
         }
         .navigationBarTitle(title)
         .navigationBarItems(trailing: CloseButton(action: dismiss))
-        .accentColor(.rythmicoPurple)
+        .accentColor(.rythmico.picoteeBlue)
         .interactiveDismissDisabled(interactiveDismissDisabled)
         .disabled(coordinator.state.isLoading)
         .onSuccess(coordinator, perform: coordinatorSucceeded)

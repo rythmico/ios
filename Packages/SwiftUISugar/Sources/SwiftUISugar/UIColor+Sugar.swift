@@ -1,45 +1,46 @@
-extension Color {
-    public init(light: UIColor, dark: UIColor) {
-        self.init(UIColor(light: light, dark: dark))
-    }
-
-    public init(light: UIColor, dark: Int) {
-        self.init(UIColor(light: light, dark: dark))
-    }
-
-    public init(light: Int, dark: UIColor) {
-        self.init(UIColor(light: light, dark: dark))
-    }
-
-    public init(light: Int, dark: Int) {
-        self.init(UIColor(light: light, dark: dark))
-    }
+public protocol UIColorProtocol {
+    associatedtype ColorType where ColorType == Self
+    init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
+    init(dynamicProvider: @escaping (UITraitCollection) -> UIColor)
+    init(cgColor: CGColor)
+    func opacity(_ opacity: Double) -> ColorType
 }
 
-extension UIColor {
-    public convenience init(light: UIColor, dark: UIColor) {
-        self.init { $0.userInterfaceStyle == .light ? light : dark }
+extension UIColorProtocol {
+    public init(light: UIColor, dark: UIColor) {
+        self.init { $0.userInterfaceStyle == .dark ? dark : light }
     }
 
-    public convenience init(light: UIColor, dark: Int) {
-        self.init(light: light, dark: .init(hex: dark))
-    }
-
-    public convenience init(light: Int, dark: UIColor) {
-        self.init(light: .init(hex: light), dark: dark)
-    }
-
-    public convenience init(light: Int, dark: Int) {
+    public init(light: UInt, dark: UInt) {
         self.init(light: .init(hex: light), dark: .init(hex: dark))
     }
+
+    public init(hex: UInt, alpha: CGFloat = 1) {
+        self.init(
+            red: CGFloat((hex & 0xFF0000) >> 16) / 255,
+            green: CGFloat((hex & 0x00FF00) >> 8) / 255,
+            blue: CGFloat(hex & 0x0000FF) / 255,
+            alpha: alpha
+        )
+    }
 }
 
-extension UIColor {
-    public convenience init(hex: Int, alpha: CGFloat = 1) {
-        let divisor = CGFloat(255)
-        let red     = CGFloat((hex & 0xFF0000) >> 16) / divisor
-        let green   = CGFloat((hex & 0x00FF00) >>  8) / divisor
-        let blue    = CGFloat( hex & 0x0000FF       ) / divisor
-        self.init(red: red, green: green, blue: blue, alpha: alpha)
+extension UIColor: UIColorProtocol {
+    public func opacity(_ opacity: Double) -> UIColor {
+        self.withAlphaComponent(CGFloat(opacity))
+    }
+}
+
+extension Color: UIColorProtocol {
+    public init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        self.init(red: Double(red), green: Double(green), blue: Double(blue), opacity: Double(alpha))
+    }
+
+    public init(dynamicProvider: @escaping (UITraitCollection) -> UIColor) {
+        self.init(UIColor(dynamicProvider: dynamicProvider))
+    }
+
+    public init(cgColor: CGColor) {
+        self.init(UIColor(cgColor: cgColor))
     }
 }

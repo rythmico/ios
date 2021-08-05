@@ -1,6 +1,8 @@
 import SwiftUISugar
 
 struct ProfileCell<Accessory: View>: View {
+    @Environment(\.idealHorizontalInsets) private var idealHorizontalInsets
+
     var title: String
     var disclosure: Bool
     var action: Action?
@@ -20,8 +22,9 @@ struct ProfileCell<Accessory: View>: View {
 
     var body: some View {
         container
-            .foregroundColor(.rythmicoGray90)
-            .padding(.horizontal, .grid(5) - UITableViewCell.defaultHorizontalPadding)
+            .foregroundColor(.rythmico.foreground)
+            .padding(.leading, idealHorizontalInsets.leading - UITableViewCell.defaultHorizontalPadding)
+            .padding(.trailing, idealHorizontalInsets.trailing - UITableViewCell.defaultHorizontalPadding)
             .padding(.vertical, .grid(2))
             .frame(minHeight: 51)
     }
@@ -44,9 +47,7 @@ struct ProfileCell<Accessory: View>: View {
 
             accessory
 
-            if disclosure {
-                Image(decorative: Asset.Icon.Misc.disclosure.name).renderingMode(.template)
-            }
+            if disclosure { Image.chevronRight }
         }
     }
 }

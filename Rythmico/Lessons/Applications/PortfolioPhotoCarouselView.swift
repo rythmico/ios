@@ -38,7 +38,7 @@ private struct PhotoCarouselCell: View {
                 .aspectRatio(1, contentMode: .fit)
                 .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
             } else {
-                Color.rythmicoGray30
+                Color.rythmico.gray1
                     .scaledToFill()
                     .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
             }
@@ -79,9 +79,9 @@ struct PhotoCarouselDetailView: View {
                 CloseButton(action: dismiss)
                     .padding([.trailing, .bottom], .grid(4))
                     .padding(.top, .grid(5))
-                    .accentColor(.rythmicoWhite)
+                    .accentColor(.rythmico.white)
 
-                PagingView(data: photos, selection: $selection, spacing: .grid(5), accentColor: .rythmicoWhite) { photo in
+                PagingView(data: photos, selection: $selection, spacing: .grid(5), accentColor: .rythmico.white) { photo in
                     AsyncImage(content: .transitional(from: photo.thumbnailURL, to: photo.photoURL)) {
                         if let uiImage = $0 {
                             Image(uiImage: uiImage)

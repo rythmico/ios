@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 
 // TODO: implement as Picker with custom PickerStyle, maybe someday when API is open.
 struct TabMenuView<Tab: RawRepresentable>: View where Tab.RawValue == String {
@@ -14,14 +14,14 @@ struct TabMenuView<Tab: RawRepresentable>: View where Tab.RawValue == String {
             HStack(spacing: 0) {
                 ForEach(tabs, id: \.rawValue) { tab in
                     Text(tab.rawValue.uppercased(with: Current.locale))
-                        .rythmicoTextStyle(.calloutBold)
-                        .foregroundColor(selection == tab ? .rythmicoPurple : .rythmicoGray90)
+                        .rythmicoTextStyle(.calloutBoldWide)
+                        .foregroundColor(selection == tab ? .rythmico.picoteeBlue : .rythmico.foreground)
                         .frame(maxWidth: .infinity, minHeight: .grid(13), alignment: .center)
                         .background(
                             Group {
                                 if selection == tab {
                                     Capsule(style: .circular)
-                                        .fill(Color.rythmicoPurple)
+                                        .fill(Color.rythmico.picoteeBlue)
                                         .frame(height: selectedTabHeight)
                                         .matchedGeometryEffect(id: "selection", in: selectionAnimation)
                                 }
@@ -34,32 +34,25 @@ struct TabMenuView<Tab: RawRepresentable>: View where Tab.RawValue == String {
                 }
             }
             .frame(maxWidth: .grid(.max))
-            .padding(.horizontal, .grid(5))
+            .padding(TitleContentViewHorizontalPadding)
 
-            Divider().overlay(Color.rythmicoGray20)
+            HDivider()
         }
     }
 }
 
 #if DEBUG
-struct TabMenuViewPreviewContent: View {
+struct TabMenuView_Previews: PreviewProvider {
     enum Tab: String, CaseIterable {
         case x, y, z
     }
 
-    @State
-    private var selectedTab: Tab = .x
-
-    var body: some View {
-        TabMenuView(tabs: Tab.allCases, selection: $selectedTab)
-    }
-}
-
-struct TabMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        TabMenuViewPreviewContent()
-            .previewLayout(.sizeThatFits)
-            .padding()
+        StatefulPreview(Tab.x) { selectedTab in
+            TabMenuView(tabs: Tab.allCases, selection: selectedTab)
+        }
+        .previewLayout(.sizeThatFits)
+        .padding()
     }
 }
 #endif

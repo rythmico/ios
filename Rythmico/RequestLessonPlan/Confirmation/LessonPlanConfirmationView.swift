@@ -42,7 +42,7 @@ struct LessonPlanConfirmationView: View, TestableView {
         case .active:
             if let action = calendarSyncCoordinator.enableCalendarSyncAction {
                 ZStack {
-                    RythmicoButton("Add to Calendar", style: RythmicoButtonStyle.tertiary(expansive: false), action: action)
+                    RythmicoButton("Add to Calendar", style: .tertiary(layout: .constrained(.s)), action: action)
                         .opacity(calendarSyncCoordinator.isSyncingCalendar ? 0 : 1)
                     if calendarSyncCoordinator.isSyncingCalendar {
                         ActivityIndicator()
@@ -63,17 +63,18 @@ struct LessonPlanConfirmationView: View, TestableView {
                     VStack(spacing: .grid(8)) {
                         VStack(spacing: .grid(6)) {
                             Image(uiImage: lessonPlan.instrument.icon.image.resized(width: iconWidth))
-                                .foregroundColor(.rythmicoForeground)
+                                .renderingMode(.template)
+                                .foregroundColor(.rythmico.foreground)
 
                             VStack(spacing: .grid(4)) {
                                 Text(title)
-                                    .foregroundColor(.rythmicoForeground)
+                                    .foregroundColor(.rythmico.foreground)
                                     .rythmicoTextStyle(.largeTitle)
                                     .multilineTextAlignment(.center)
                                     .minimumScaleFactor(0.8)
                                 if let subtitle = subtitle {
                                     Text(subtitle)
-                                        .foregroundColor(.rythmicoGray90)
+                                        .foregroundColor(.rythmico.foreground)
                                         .rythmicoTextStyle(.body)
                                         .multilineTextAlignment(.center)
                                 }
@@ -92,7 +93,7 @@ struct LessonPlanConfirmationView: View, TestableView {
             }
 
             FloatingView {
-                RythmicoButton("Continue", style: RythmicoButtonStyle.primary(), action: doContinue)
+                RythmicoButton("Continue", style: .primary(), action: doContinue)
                     .disabled(calendarSyncCoordinator.isSyncingCalendar)
             }
         }

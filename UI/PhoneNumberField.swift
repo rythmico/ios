@@ -23,9 +23,9 @@ struct PhoneNumberField: UIViewRepresentable {
             $0.withFlag = true
             $0.withPrefix = true // allow explicit + prefixes
             $0.placeholder = PhoneNumberKit().getFormattedExampleNumber(forCountry: regionCode, withFormat: .national, withPrefix: false)
-            $0.countryCodePlaceholderColor = .rythmicoGray30
-            $0.numberPlaceholderColor = .rythmicoGray30
-            $0.textColor = .rythmicoForeground
+            $0.countryCodePlaceholderColor = .rythmico.textPlaceholder
+            $0.numberPlaceholderColor = .rythmico.textPlaceholder
+            $0.textColor = .rythmico.foreground
             $0.addTarget(context.coordinator, action: #selector(Coordinator.onTextUpdate), for: .editingChanged)
             $0.setContentHuggingPriority(.required, for: .vertical)
 
@@ -40,7 +40,7 @@ struct PhoneNumberField: UIViewRepresentable {
         uiView._defaultRegion = env.locale.regionCode
         let font = UIFont.rythmicoFont(.body)
         uiView.font = font
-        uiView.inputAccessoryView = UIToolbar.dismissKeyboardTooltip(color: .rythmicoPurple)
+        uiView.inputAccessoryView = UIToolbar.dismissKeyboardTooltip(color: .rythmico.picoteeBlue)
         uiView.updateFlag()
         uiView.updatePlaceholder()
     }

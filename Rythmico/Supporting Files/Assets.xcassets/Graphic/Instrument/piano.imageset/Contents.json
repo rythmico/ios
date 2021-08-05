@@ -3,16 +3,6 @@
     {
       "filename" : "Piano.svg",
       "idiom" : "universal"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "filename" : "Piano-1.svg",
-      "idiom" : "universal"
     }
   ],
   "info" : {

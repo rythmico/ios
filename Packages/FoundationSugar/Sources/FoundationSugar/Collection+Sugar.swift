@@ -4,21 +4,9 @@ extension Collection {
     }
 }
 
-extension RangeReplaceableCollection where Index == Int {
-    public subscript(safe index: Index) -> Element? {
+extension Collection {
+    public subscript(safe index: Int) -> Element? {
         dropFirst(index).first
-    }
-}
-
-extension RangeReplaceableCollection {
-    public static func * <RHS: RangeReplaceableCollection>(lhs: Self, rhs: RHS) -> [(Self.Element, RHS.Element)] {
-        var result: [(Self.Element, RHS.Element)] = []
-        for l in lhs {
-            for r in rhs {
-                result.append((l, r))
-            }
-        }
-        return result
     }
 }
 
@@ -48,4 +36,11 @@ extension RangeReplaceableCollection where Element: Equatable {
     public func firstIndex<T: Equatable>(of element: Element, by value: (Element) -> T) -> Index? {
         firstIndex(where: { value($0) == value(element) })
     }
+}
+
+public func * <Base1: Sequence, Base2: Collection>(
+    lhs: Base1,
+    rhs: Base2
+) -> Product2<Base1, Base2> {
+    product(lhs, rhs)
 }

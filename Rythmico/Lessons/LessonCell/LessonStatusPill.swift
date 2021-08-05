@@ -30,30 +30,30 @@ private extension Lesson.Status {
     var titleColor: Color {
         switch self {
         case .scheduled:
-            return .rythmicoDarkBlue
+            return .rythmico.tagTextBlue
         case .skipped:
-            return Color(light: 0x111619, dark: 0x9fa1a3)
+            return .rythmico.tagTextGray
         case .paused:
-            return Color(light: 0x111619, dark: 0x9fa1a3)
+            return .rythmico.tagTextGray
         case .cancelled:
-            return Color(light: 0x111619, dark: 0x9fa1a3)
+            return .rythmico.tagTextGray
         case .completed:
-            return .rythmicoDarkGreen
+            return .rythmico.tagTextGreen
         }
     }
 
     var backgroundColor: Color {
         switch self {
         case .scheduled:
-            return .rythmicoLightBlue
+            return .rythmico.tagBlue
         case .skipped:
-            return Color(light: 0xDDE1E6, dark: 0x424345)
+            return .rythmico.tagGray
         case .paused:
-            return Color(light: 0xDDE1E6, dark: 0x424345)
+            return .rythmico.tagGray
         case .cancelled:
-            return Color(light: 0xDDE1E6, dark: 0x424345)
+            return .rythmico.tagGray
         case .completed:
-            return .rythmicoLightGreen
+            return .rythmico.tagGreen
         }
     }
 }

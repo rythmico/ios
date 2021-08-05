@@ -1,23 +1,70 @@
 import SwiftUISugar
 
 struct LessonPlanSummaryCell: View {
-    var lessonPlan: LessonPlan
+    @Environment(\.navigator) private var navigator
+    @Environment(\.currentScreen) private var currentScreen
+
+    let lessonPlan: LessonPlan
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            LessonPlanSummaryCellMainContent(lessonPlan: lessonPlan)
-            LessonPlanSummaryCellAccessory(lessonPlan: lessonPlan)
+        AdHocButton(action: onTapAction) { state in
+            SelectableContainer(
+                fill: fill,
+                radius: .large,
+                borderColor: borderColor,
+                isSelected: state == .pressed
+            ) { state in
+                VStack(alignment: .leading, spacing: 0) {
+                    LessonPlanSummaryCellMainContent(lessonPlan: lessonPlan, backgroundColor: state.backgroundColor)
+                    LessonPlanSummaryCellAccessory(lessonPlan: lessonPlan).hidden()
+                }
+                .padding(.grid(5))
+            }
         }
-        .modifier(RoundedShadowContainer())
+        // Bit of a dirty hack to allow for two buttons in the same container,
+        // Unfortunately this is the only way I've found to work so far...
+        .overlay(
+            LessonPlanSummaryCellAccessory(lessonPlan: lessonPlan).padding(.grid(5)),
+            alignment: .bottomLeading
+        )
+    }
+
+    var fill: ContainerStyle.Fill {
+        switch lessonPlan.status {
+        case .pending, .reviewing, .active:
+            return .color(.rythmico.background)
+        case .paused:
+            return .linearGradient(
+                LinearGradient(
+                    gradient: Gradient(colors: [pausedColor.opacity(0.1), pausedColor.opacity(0.4)]),
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
+        case .cancelled:
+            return .color(.rythmico.gray2)
+        }
+    }
+
+    var borderColor: Color {
+        switch lessonPlan.status {
+        case .pending, .reviewing, .active, .cancelled:
+            return ContainerStyle.outlineBorderColor
+        case .paused:
+            return pausedColor
+        }
+    }
+
+    let pausedColor = Color(light: 0xD0E2FF, dark: 0x103570)
+
+    var onTapAction: Action {
+        { navigator.go(to: LessonPlanDetailScreen(lessonPlan: lessonPlan), on: currentScreen) }
     }
 }
 
 struct LessonPlanSummaryCellMainContent: View {
-    @Environment(\.navigator) private var navigator
-    @Environment(\.currentScreen) private var currentScreen
-    @Environment(\.colorScheme) private var colorScheme
-
-    var lessonPlan: LessonPlan
+    let lessonPlan: LessonPlan
+    let backgroundColor: Color?
 
     var title: String {
         [
@@ -49,39 +96,34 @@ struct LessonPlanSummaryCellMainContent: View {
     private func startDateString(for lesson: Lesson) -> String { Self.startDateFormatter.string(from: lesson.schedule.startDate) }
 
     var body: some View {
-        Button(action: { navigator.go(to: LessonPlanDetailScreen(lessonPlan: lessonPlan), on: currentScreen) }) {
-            VStack(alignment: .leading, spacing: 0) {
-                Text(title)
-                    .rythmicoTextStyle(.subheadlineBold)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
-                    .foregroundColor(.rythmicoForeground)
-                    .opacity(opacity)
-                VSpacing(.grid(2))
-                subtitle
-                    .rythmicoTextStyle(.body)
-                    .foregroundColor(.rythmicoGray90)
-                    .opacity(opacity)
-                VSpacing(.grid(3))
-                HStack(spacing: .grid(3)) {
-                    LessonPlanTutorStatusView(lessonPlan: lessonPlan, summarized: true).opacity(opacity)
-                    Pill(lessonPlan: lessonPlan, backgroundColor: .rythmicoBackgroundTertiary)
-                }
+        VStack(alignment: .leading, spacing: 0) {
+            Text(title)
+                .rythmicoTextStyle(.subheadlineBold)
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
+                .opacity(opacity)
+            VSpacing(.grid(2))
+            subtitle
+                .rythmicoTextStyle(.body)
+                .opacity(opacity)
+            VSpacing(.grid(4))
+            HStack(spacing: .grid(3)) {
+                LessonPlanSummaryTutorStatusView(lessonPlan: lessonPlan, backgroundColor: backgroundColor).opacity(opacity)
+                Pill(lessonPlan: lessonPlan)
             }
-            .padding(.grid(5))
         }
         .watermark(
             lessonPlan.instrument.icon.image,
-            offset: .init(width: 50, height: -20),
-            opacity: colorScheme == .dark ? 0.04 : nil
+            offset: .init(width: 75, height: -25),
+            color: .rythmico.picoteeBlue
         )
     }
 
-    private var opacity: Double { isDimmed ? 0.5 : 1 }
+    private var opacity: Double { isDimmed ? 0.56 : 1 }
     private var isDimmed: Bool {
         switch lessonPlan.status {
-        case .pending, .reviewing, .active: return false
-        case .paused, .cancelled: return true
+        case .pending, .reviewing, .active, .paused: return false
+        case .cancelled: return true
         }
     }
 }
@@ -114,9 +156,9 @@ struct LessonPlanSummaryCellAccessory: View {
     }
     var titleAndAction: TitleAndAction? {
         if let action = chooseTutorAction {
-            return (title: "Choose Tutor", action: action)
+            return (title: "Choose tutor", action: action)
         } else if let action = resumePlanAction {
-            return (title: "Resume Plan", action: action)
+            return (title: "Resume plan", action: action)
         } else {
             return nil
         }
@@ -124,20 +166,14 @@ struct LessonPlanSummaryCellAccessory: View {
 
     var body: some View {
         if let titleAndAction = titleAndAction {
-            Divider().overlay(Color.rythmicoGray20)
-
-            Button(action: titleAndAction.action) {
-                HStack(spacing: .grid(3)) {
-                    Text(titleAndAction.title)
-                        .rythmicoTextStyle(.bodySemibold)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Image(systemSymbol: .chevronRight)
-                        .font(.system(size: 18, weight: .medium, design: .rounded))
-                }
-                .padding(.grid(5))
-                .foregroundColor(.rythmicoPurple)
+            ZStack {
+                RythmicoButton(
+                    titleAndAction.title,
+                    style: .primary(layout: .constrained(.s)),
+                    action: titleAndAction.action
+                )
             }
-            .background(Color.rythmicoPurple.opacity(0.02))
+            .padding(.top, .grid(4))
         }
     }
 }
@@ -154,6 +190,8 @@ struct LessonPlanSummaryCell_Previews: PreviewProvider {
         }
         .previewLayout(.sizeThatFits)
         .padding()
+        .backgroundColor(.rythmico.background)
+//        .environment(\.colorScheme, .dark)
     }
 }
 #endif

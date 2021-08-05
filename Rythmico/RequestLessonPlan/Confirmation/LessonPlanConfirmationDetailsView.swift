@@ -6,28 +6,23 @@ struct LessonPlanConfirmationDetailsView: View {
 
     var body: some View {
         VStack(spacing: .grid(4)) {
-            HStack(spacing: .grid(3)) {
-                Image(decorative: Asset.Icon.Label.info.name)
-                    .renderingMode(.template)
-                    .foregroundColor(.rythmicoGray90)
-                Text(separator: .whitespace) {
+            RythmicoLabel(
+                asset: Asset.Icon.Label.info,
+                title: Text(separator: .whitespace) {
                     "First Lesson:"
-                    Self.dateFormatter.string(from: lessonPlan.schedule.startDate).text.rythmicoFontWeight(.bodyBold)
+                    Self.dateFormatter.string(from: lessonPlan.schedule.startDate).text.rythmicoFontWeight(.bodyMedium)
                     relativeDate().parenthesized()
                 }
-                .foregroundColor(.rythmicoGray90)
-                .rythmicoTextStyle(.body)
-                .multilineTextAlignment(.center)
-                .fixedSize(horizontal: false, vertical: true)
-            }
+            )
             HStack(spacing: .grid(3)) {
                 TutorAvatarView(tutor, mode: .thumbnail)
                     .fixedSize()
                 Text(tutor.name)
-                    .foregroundColor(.rythmicoGray90)
+                    .foregroundColor(.rythmico.foreground)
                     .rythmicoTextStyle(.bodyBold)
             }
         }
+        .foregroundColor(.rythmico.foreground)
     }
 
     private static let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))

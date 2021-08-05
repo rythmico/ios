@@ -4,8 +4,6 @@ extension LessonPlanCancellationView {
     struct ReasonView: View, TestableView {
         typealias Reason = LessonPlan.CancellationInfo.Reason
 
-        private static let invalidReasons: [Reason] = [.rearrangementNeeded]
-
         var lessonPlan: LessonPlan
         var submitHandler: Handler<Reason>
 
@@ -15,36 +13,45 @@ extension LessonPlanCancellationView {
         private var isPresentingReschedulingAlert = false
 
         var submitButtonAction: Action? {
-            guard
-                let reason = selectedReason,
-                Self.invalidReasons.contains(reason).not
-            else {
-                return nil
+            guard let reason = selectedReason else { return nil }
+            switch reason {
+            case .rearrangementNeeded:
+                return { isPresentingReschedulingAlert = true }
+            case .badTutor, .other, .tooExpensive:
+                return { submitHandler(reason) }
             }
-            return { submitHandler(reason) }
         }
 
         let inspection = SelfInspection()
         var body: some View {
             VStack(spacing: 0) {
-                VStack(spacing: .grid(9)) {
-                    TitleSubtitleView(
-                        title: "Please tell us why",
-                        subtitle: "Please tell us the reason why you decided to cancel your lesson plan:"
-                    )
-
-                    SelectableList(data: Reason.allCases, id: \.self, selection: $selectedReason) {
-                        Text($0.title).rythmicoTextStyle(.body).foregroundColor(.rythmicoGray90)
+                TitleSubtitleContentView(
+                    "Please tell us why",
+                    "Please tell us the reason why you decided to cancel your lesson plan:",
+                    spacing: .grid(8)
+                ) { padding in
+                    ScrollView {
+                        ChoiceList(
+                            data: Reason.allCases,
+                            id: \.self,
+                            selection: $selectedReason,
+                            content: \.title
+                        )
+                        .padding(.trailing, padding.trailing)
                     }
+                    .padding(.leading, padding.leading)
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
 
                 FloatingView {
-                    RythmicoButton("Cancel Lesson Plan", style: RythmicoButtonStyle.secondary(), action: submitButtonAction ?? {})
+                    RythmicoButton("Cancel Lesson Plan", style: .secondary(), action: submitButtonAction ?? {})
                 }
-                .disabled(submitButtonAction == nil)
+                .disabled(submitButtonDisabled)
+                .onTapGesture {
+                    if submitButtonDisabled { submitButtonAction?() }
+                }
             }
-            .accentColor(.rythmicoPurple)
+            .accentColor(.rythmico.picoteeBlue)
             .testable(self)
             .animation(.rythmicoSpring(duration: .durationShort), value: submitButtonAction != nil)
             .onChange(of: selectedReason, perform: handleRearrangementNeededReason)
@@ -56,9 +63,13 @@ extension LessonPlanCancellationView {
 
         private func handleRearrangementNeededReason(_ reason: Reason?) {
             guard reason == .rearrangementNeeded else { return }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                 isPresentingReschedulingAlert = true
             }
+        }
+
+        var submitButtonDisabled: Bool {
+            selectedReason == .rearrangementNeeded
         }
     }
 }

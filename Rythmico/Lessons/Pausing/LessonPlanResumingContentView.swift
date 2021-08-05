@@ -19,7 +19,7 @@ struct LessonPlanResumingContentView: View {
     @ViewBuilder
     private func descriptionText(_ string: String) -> some View {
         Text(string)
-            .foregroundColor(.rythmicoGray90)
+            .foregroundColor(.rythmico.foreground)
             .rythmicoTextStyle(.body)
             .frame(maxWidth: .grid(.max), alignment: .leading)
     }

@@ -20,7 +20,7 @@ struct MainView: View, TestableView {
             content: content, tabTitle: \.uppercasedTitle, tabIcons: icon
         )
         .testable(self)
-        .accentColor(.rythmicoPurple)
+        .accentColor(.rythmico.picoteeBlue)
         .onAppear(perform: Current.deviceRegisterCoordinator.registerDevice)
         .onAppear(perform: Current.pushNotificationAuthorizationCoordinator.refreshAuthorizationStatus)
     }
@@ -36,8 +36,8 @@ struct MainView: View, TestableView {
     @ViewBuilder
     private func icon(for tab: Tab) -> some View {
         switch tab {
-        case .lessons: Image(systemSymbol: .calendar).font(.system(size: 21, weight: .medium))
-        case .profile: Image(systemSymbol: .person).font(.system(size: 21, weight: .semibold))
+        case .lessons: Image(decorative: Asset.Icon.Tab.lessons.name).renderingMode(.template)
+        case .profile: Image(decorative: Asset.Icon.Tab.profile.name).renderingMode(.template)
         }
     }
 }

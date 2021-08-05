@@ -8,13 +8,13 @@ struct NonEditableTextField: View {
 
     var body: some View {
         if outlined {
-            content.modifier(RoundedThinOutlineContainer(padded: false))
+            Container(style: .field, content: content)
         } else {
-            content
+            content()
         }
     }
 
-    private var content: some View {
+    private func content() -> some View {
         CustomTextField(
             placeholder,
             text: .constant(text ?? .empty),

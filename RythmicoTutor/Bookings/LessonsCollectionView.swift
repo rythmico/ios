@@ -16,7 +16,7 @@ struct LessonsCollectionView: View {
     }
 
     var lessons: [Date: [Lesson]] {
-        let allLessons = currentBookings.map(\.lessons).flatten()
+        let allLessons = currentBookings.map(\.lessons).flattened()
         let ungroupedLessons: [Lesson]
         switch filter {
         case .upcoming: ungroupedLessons = allLessons.filter { Current.date() < $0.schedule.endDate }

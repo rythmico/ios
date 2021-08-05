@@ -24,6 +24,7 @@ struct MoreButton: View {
     }
 }
 
+// TODO: formalize.
 struct ThreeDotButton: View {
     static let uiImage = UIImage(systemSymbol: .ellipsisCircleFill).applyingSymbolConfiguration(.init(pointSize: 18, weight: .medium, scale: .large))!
     static let image: some View = Image(systemSymbol: .ellipsisCircleFill).font(.system(size: 18, weight: .medium)).imageScale(.large)

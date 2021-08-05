@@ -1,22 +1,34 @@
-import SwiftUI
+import SwiftUISugar
 
 struct InfoBanner: View {
-    var text: String
+    let text: String
 
     var body: some View {
-        HStack(alignment: .firstTextBaseline, spacing: .grid(3)) {
-            Image(decorative: Asset.Icon.Label.info.name)
-                .renderingMode(.template)
-                .alignmentGuide(.firstTextBaseline) { $0[.bottom] - .grid(1) }
-            Text(text)
-                .rythmicoTextStyle(.callout)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .fixedSize(horizontal: false, vertical: true)
+        Container(
+            style: .init(
+                fill: .rythmico.azureBlue,
+                shape: .squircle(radius: 4, style: .continuous),
+                border: .none
+            )
+        ) {
+            RythmicoLabel(
+                asset: Asset.Icon.Label.info,
+                title: Text(text),
+                titleStyle: .callout,
+                titleSpacing: .grid(2)
+            )
+            .padding(.grid(4))
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .padding(.grid(4))
-        .foregroundColor(.rythmicoForeground)
-        .accentColor(.rythmicoForeground)
-        .background(Color.rythmicoExtraLightBlue)
-        .clipShape(RoundedRectangle(cornerRadius: .grid(1), style: .continuous))
     }
 }
+
+#if DEBUG
+struct InfoBanner_Previews: PreviewProvider {
+    static var previews: some View {
+        InfoBanner(text: "Hello World")
+            .previewLayout(.sizeThatFits)
+            .padding()
+    }
+}
+#endif

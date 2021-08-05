@@ -1,9 +1,9 @@
-import SwiftUI
+import SwiftUISugar
 
 struct AvatarView: View {
     enum Const {
         static let minSize: CGFloat = .grid(8)
-        static let defaultBackgroundColor: Color = .rythmicoGray10
+        static let defaultBackgroundColor: Color = .rythmico.gray1
     }
 
     enum Content {
@@ -22,17 +22,17 @@ struct AvatarView: View {
 
     var body: some View {
         GeometryReader { g in
-            contentView
-                .frame(width: g.size.width, height: g.size.height)
-                .background(backgroundColor)
-                .clipShape(Circle())
+            Container(
+                style: .init(fill: backgroundColor, shape: .circle, border: .none),
+                content: contentView
+            ).frame(width: g.size.width, height: g.size.height)
         }
         .frame(minWidth: Const.minSize, minHeight: Const.minSize)
         .scaledToFit()
     }
 
     @ViewBuilder
-    private var contentView: some View {
+    private func contentView() -> some View {
         switch content {
         case .initials(let initials):
             GeometryReader { g in
@@ -40,7 +40,7 @@ struct AvatarView: View {
                     .font(.system(size: g.size.width / 2, weight: .medium, design: .rounded))
                     .lineLimit(1)
                     .minimumScaleFactor(0.4)
-                    .foregroundColor(.rythmicoGray90)
+                    .foregroundColor(.rythmico.foreground)
                     .position(x: g.frame(in: .local).midX, y: g.frame(in: .local).midY)
             }
             .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
@@ -51,10 +51,9 @@ struct AvatarView: View {
                 .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
         case .placeholder:
             GeometryReader { g in
-                Image(systemSymbol: .person)
-                    .font(.system(size: g.size.width / 1.75, weight: .medium, design: .rounded))
-                    .offset(y: -g.size.height * 0.025)
-                    .foregroundColor(.rythmicoGray90)
+                Image(uiImage: Asset.Icon.Misc.avatarPlaceholder.image.resized(height: g.size.height * 0.62))
+                    .renderingMode(.template)
+                    .foregroundColor(.rythmico.foreground)
                     .position(x: g.frame(in: .local).midX, y: g.frame(in: .local).midY)
             }
             .transition(.opacity.animation(.easeInOut(duration: .durationShort)))
@@ -74,10 +73,10 @@ struct AvatarView_Previews: PreviewProvider {
             }
 
             Group {
-                AvatarView(.photo(UIImage(.red))).fixedSize()
-                AvatarView(.photo(UIImage(.purple))).frame(width: 100, height: 100)
-                AvatarView(.photo(UIImage(.purple))).frame(width: 300, height: 300)
-                AvatarView(.photo(UIImage(.purple))).frame(width: 600, height: 600)
+                AvatarView(.photo(UIImage(solidColor: .red))).fixedSize()
+                AvatarView(.photo(UIImage(solidColor: .purple))).frame(width: 100, height: 100)
+                AvatarView(.photo(UIImage(solidColor: .purple))).frame(width: 300, height: 300)
+                AvatarView(.photo(UIImage(solidColor: .purple))).frame(width: 600, height: 600)
             }
 
             Group {
@@ -87,7 +86,7 @@ struct AvatarView_Previews: PreviewProvider {
                 AvatarView(.placeholder).frame(width: 600, height: 600)
             }
         }
-        .environment(\.colorScheme, .dark)
+//        .environment(\.colorScheme, .dark)
         .previewLayout(.sizeThatFits)
         .padding()
     }

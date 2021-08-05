@@ -62,12 +62,12 @@ struct LessonPlanApplicationDetailView: View {
 
             FloatingView {
                 VStack(spacing: .grid(2)) {
-                    RythmicoButton(bookButtonTitle, style: RythmicoButtonStyle.primary(), action: book)
+                    RythmicoButton(bookButtonTitle, style: .primary(), action: book)
                     frequencyText
                 }
             }
         }
-        .backgroundColor(.rythmicoBackground)
+        .backgroundColor(.rythmico.background)
     }
 
     private var bookButtonTitle: String {
@@ -87,8 +87,10 @@ struct LessonPlanApplicationDetailView: View {
             "every \(frequencyDayText)".text.rythmicoFontWeight(.calloutBold)
         }
         .rythmicoTextStyle(.callout)
-        .foregroundColor(.rythmicoGray90)
+        .foregroundColor(.rythmico.foreground)
         .multilineTextAlignment(.center)
+        .lineLimit(1)
+        .minimumScaleFactor(0.5)
     }
 }
 

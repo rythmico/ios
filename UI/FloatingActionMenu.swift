@@ -36,7 +36,7 @@ struct FloatingActionMenu: View {
                     }
                 }
             } label: {
-                RythmicoButton("More...", style: RythmicoButtonStyle.tertiary(), action: {})
+                RythmicoButton("More...", style: .tertiary(), action: {})
             }
         }
     }
@@ -45,7 +45,7 @@ struct FloatingActionMenu: View {
 private extension FloatingActionMenu.Button {
     @ViewBuilder
     func view() -> some View {
-        RythmicoButton(title, style: isPrimary ? RythmicoButtonStyle.secondary() : .tertiary(), action: action)
+        RythmicoButton(title, style: isPrimary ? .secondary() : .tertiary(), action: action)
     }
 }
 

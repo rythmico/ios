@@ -4,10 +4,11 @@ struct LessonPlanScheduleView: View {
     let schedule: Schedule
 
     var body: some View {
-        VStack(alignment: .leading, spacing: .grid(5)) {
-            RythmicoLabel(icon: { Image.calendarIcon }, title: { dateText })
-            RythmicoLabel(asset: Asset.Icon.Label.time, title: { timeText })
+        VStack(alignment: .leading, spacing: .grid(2)) {
+            RythmicoLabel(asset: Asset.Icon.Label.info, title: dateText)
+            RythmicoLabel(asset: Asset.Icon.Label.time, title: timeText)
         }
+        .lineLimit(1)
     }
 
     private var isFuture: Bool { Current.date() < schedule.startDate }
@@ -16,22 +17,21 @@ struct LessonPlanScheduleView: View {
     private static let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
     private var dayOfWeek: String { Self.dayOfWeekFormatter.string(from: schedule.startDate) }
     private var date: String { Self.dateFormatter.string(from: schedule.startDate) }
-    private var dateText: some View {
-        Text {
-            "Every "
-            dayOfWeek.text.rythmicoFontWeight(.bodyBold)
-            if isFuture {
-                ", starting "
-                date.text.rythmicoFontWeight(.bodyBold)
-            }
+    @BasicTextBuilder
+    private var dateText: Text {
+        "Every "
+        dayOfWeek.text.rythmicoFontWeight(.bodyMedium)
+        if isFuture {
+            ", starting "
+            date.text.rythmicoFontWeight(.bodyMedium)
         }
-        .rythmicoTextStyle(.body)
     }
 
     private static let timeFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))
     private var time: String { Self.timeFormatter.string(from: schedule.startDate, to: schedule.endDate) }
-    private var timeText: some View {
-        Text(time).rythmicoTextStyle(.bodyBold)
+    @BasicTextBuilder
+    private var timeText: Text {
+        Text(time).rythmicoFontWeight(.bodyMedium)
     }
 }
 

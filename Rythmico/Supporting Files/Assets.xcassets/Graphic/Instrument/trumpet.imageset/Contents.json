@@ -3,16 +3,6 @@
     {
       "filename" : "Trumpet.svg",
       "idiom" : "universal"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "filename" : "Trumpet-1.svg",
-      "idiom" : "universal"
     }
   ],
   "info" : {

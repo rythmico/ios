@@ -54,7 +54,7 @@ struct TutorAvatarView: View {
 }
 
 extension AvatarStackView where Data.Element == Tutor, ContentView == TutorAvatarView {
-    init(data: Data, thumbnails: Bool) {
-        self.init(data: data) { TutorAvatarView($0, mode: .thumbnail) }
+    init(data: Data, thumbnails: Bool, backgroundColor: Color?) {
+        self.init(data: data, backgroundColor: backgroundColor) { TutorAvatarView($0, mode: .thumbnail) }
     }
 }

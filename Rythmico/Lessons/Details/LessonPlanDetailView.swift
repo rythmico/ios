@@ -80,28 +80,37 @@ struct LessonPlanDetailView: View, TestableView {
     let inspection = SelfInspection()
     var body: some View {
         VStack(spacing: 0) {
-            TitleContentView(title: title) {
-                VStack(alignment: .leading, spacing: .grid(7)) {
-                    Pill(lessonPlan: lessonPlan, backgroundColor: .rythmicoBackground)
-                        .padding(.horizontal, .grid(5))
-
+            TitleContentView(title) { padding in
+                VStack(alignment: .leading, spacing: .grid(5)) {
+                    Pill(lessonPlan: lessonPlan).padding(padding)
                     ScrollView {
-                        VStack(alignment: .leading, spacing: .grid(5)) {
-                            planDetailsSection
-                            tutorSection
+                        VStack(spacing: .grid(4)) {
+                            SectionHeaderContentView("Plan Details", style: .box) {
+                                VStack(alignment: .leading, spacing: .grid(2)) {
+                                    LessonPlanScheduleView(schedule: lessonPlan.schedule)
+                                    AddressLabel(address: lessonPlan.address)
+                                }
+                            }
+                            SectionHeaderContentView("Tutor", style: .box) {
+                                LessonPlanDetailTutorStatusView(lessonPlan: lessonPlan)
+                            }
                             paymentSection
                         }
-                        .foregroundColor(.rythmicoGray90)
+                        .foregroundColor(.rythmico.foreground)
                         .frame(maxWidth: .grid(.max))
-                        .padding([.horizontal, .bottom], .grid(5))
+                        .padding([.horizontal, .bottom], .grid(4))
                     }
                 }
             }
-            .watermark(lessonPlan.instrument.icon.image, offset: .init(width: 40, height: -64))
+            .watermark(
+                lessonPlan.instrument.icon.image,
+                offset: .init(width: 40, height: -64),
+                color: .rythmico.picoteeBlue
+            )
 
             floatingButton
         }
-        .backgroundColor(.rythmicoBackground)
+        .backgroundColor(.rythmico.background)
         .testable(self)
         .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
@@ -112,30 +121,9 @@ struct LessonPlanDetailView: View, TestableView {
     }
 
     @ViewBuilder
-    private var planDetailsSection: some View {
-        SectionHeaderView(title: "Plan Details")
-        LessonPlanScheduleView(schedule: lessonPlan.schedule)
-        AddressLabel(address: lessonPlan.address)
-    }
-
-    @ViewBuilder
-    private var tutorSection: some View {
-        SectionHeaderView(title: "Tutor")
-        if let tutor = lessonPlan.bookingInfo?.tutor {
-            TutorCell(lessonPlan: lessonPlan, tutor: tutor)
-        } else {
-            LessonPlanTutorStatusView(lessonPlan: lessonPlan, summarized: false)
-            if lessonPlan.status.isPending {
-                InfoBanner(text: "Potential tutors have received your request and will submit applications for your consideration.")
-            }
-        }
-    }
-
-    @ViewBuilder
     private var paymentSection: some View {
         switch lessonPlan.status {
         case .active, .paused:
-            SectionHeaderView(title: "Payment")
             LessonPlanPriceView(
                 // TODO: consume `bookingInfo.pricePerLesson` property instead.
                 price: Price(

@@ -51,7 +51,7 @@ struct BookingRequestApplyView: View {
                 .listStyle(GroupedListStyle())
 
                 FloatingView {
-                    Button("Submit Application", action: submit).primaryStyle()
+                    RythmicoButton("Submit Application", style: .primary(), action: submit)
                 }
             }
             .navigationBarTitle(Text("Application"), displayMode: .inline)

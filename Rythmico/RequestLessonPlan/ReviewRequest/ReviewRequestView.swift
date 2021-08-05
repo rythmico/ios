@@ -3,10 +3,6 @@ import SwiftUISugar
 struct ReviewRequestView: View, TestableView {
     typealias Coordinator = APIActivityCoordinator<CreateLessonPlanRequest>
 
-    private enum Const {
-        static let headerPadding = EdgeInsets(bottom: .grid(2))
-    }
-
     var coordinator: Coordinator
     var flow: RequestLessonPlanFlow
     var instrument: Instrument
@@ -29,98 +25,74 @@ struct ReviewRequestView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        TitleSubtitleContentView(title: "Review Proposal") {
+        TitleContentView("Review Proposal", spacing: .grid(5)) { _ in
             VStack(spacing: 0) {
                 ScrollView {
-                    VStack(spacing: .grid(8)) {
+                    VStack(spacing: .grid(4)) {
                         SectionHeaderContentView(
-                            title: "Instrument",
-                            padding: Const.headerPadding,
-                            accessory: editButton(performing: resetInstrument)
+                            "Chosen Instrument",
+                            style: .box,
+                            accessory: { editButton(action: resetInstrument) }
                         ) {
-                            InstrumentView(
-                                viewData: .init(name: instrument.standaloneName, icon: instrument.icon, action: nil)
-                            )
+                            InstrumentView(instrument: instrument)
                         }
 
                         SectionHeaderContentView(
-                            title: "Student Details",
-                            alignment: .leading,
-                            padding: Const.headerPadding,
-                            accessory: editButton(performing: resetStudentDetails)
+                            "Student Details",
+                            style: .box,
+                            accessory: { editButton(action: resetStudentDetails) }
                         ) {
-                            HStack(alignment: .firstTextBaseline, spacing: .grid(3)) {
-                                Image(decorative: Asset.Icon.Label.info.name)
-                                    .renderingMode(.template)
-                                    .foregroundColor(.rythmicoGray90)
-                                    .alignmentGuide(.firstTextBaseline) { $0[.bottom] - 2.5 }
-
-                                VStack(alignment: .leading, spacing: .grid(5)) {
-                                    Text(studentDetails).rythmicoTextStyle(.body)
-                                    studentAbout?.rythmicoTextStyle(.body)
-                                }.fixedSize(horizontal: false, vertical: true)
+                            RythmicoLabel(asset: Asset.Icon.Label.info, title: Text(studentDetails)) {
+                                studentAbout.padding(.top, .grid(2))
                             }
-                            .foregroundColor(.rythmicoGray90)
                         }
 
                         SectionHeaderContentView(
-                            title: "Address Details",
-                            padding: Const.headerPadding,
-                            accessory: editButton(performing: resetAddressDetails)
+                            "Address Details",
+                            style: .box,
+                            accessory: { editButton(action: resetAddressDetails) }
                         ) {
-                            AddressItemView(
-                                title: address.condensedFormattedString,
-                                isSelected: false
-                            )
+                            Text(address.condensedFormattedString)
+                                .rythmicoTextStyle(.body)
+                                .foregroundColor(.rythmico.foreground)
                         }
 
                         SectionHeaderContentView(
-                            title: "Lesson Schedule",
-                            alignment: .leading,
-                            padding: Const.headerPadding,
-                            accessory: editButton(performing: resetSchedule)
+                            "Lesson Schedule",
+                            style: .box,
+                            accessory: { editButton(action: resetSchedule) }
                         ) {
                             LessonPlanRequestedScheduleView(schedule, tutor: nil)
                         }
 
                         SectionHeaderContentView(
-                            title: "Private Note",
-                            alignment: .leading,
-                            padding: Const.headerPadding,
-                            accessory: editButton(performing: resetPrivateNote)
+                            "Private Note",
+                            style: .box,
+                            accessory: { editButton(action: resetPrivateNote) }
                         ) {
-                            if let privateNote = privateNote.nilIfBlank {
-                                Text(privateNote)
-                                    .rythmicoTextStyle(.body)
-                                    .foregroundColor(.rythmicoGray90)
-                                    .fixedSize(horizontal: false, vertical: true)
-                            } else {
-                                Text("No private note.")
-                                    .rythmicoTextStyle(.body)
-                                    .foregroundColor(.rythmicoGray30)
-                                    .fixedSize(horizontal: false, vertical: true)
-                                    .onTapGesture(perform: resetPrivateNote)
-                            }
+                            privateNoteView
                         }
                     }
                     .frame(maxWidth: .grid(.max))
-                    .padding(.trailing, .grid(5))
-                    .padding(.bottom, .grid(7))
+                    .padding(.trailing, .grid(4))
+                    .padding(.bottom, .grid(5))
                 }
-                .padding(.leading, .grid(5))
+                .padding(.leading, .grid(4))
 
                 FloatingView {
-                    RythmicoButton("Confirm Details", style: RythmicoButtonStyle.primary(), action: submitRequest)
+                    RythmicoButton("Confirm Details", style: .primary(), action: submitRequest)
                 }
             }
         }
         .testable(self)
     }
 
-    private func editButton(performing action: @escaping Action) -> some View {
-        Button(action: action) {
-            Text("Edit").rythmicoTextStyle(.bodyBold).foregroundColor(.rythmicoGray90)
-        }
+    private func editButton(action: @escaping Action) -> some View {
+        RythmicoButton(
+            "EDIT",
+            style: .tertiary(layout: .constrained(.xs)),
+            action: action
+        )
     }
 
     private func resetInstrument() { flow.instrument = nil }
@@ -143,11 +115,31 @@ struct ReviewRequestView: View, TestableView {
         return [dateOfBirthString, "(\(age) years old)"].compacted().spaced()
     }
 
-    private var studentAbout: Text? {
-        guard !student.about.isBlank else { return nil }
-        return Text(separator: .newline) {
-            Text(["About", student.name.firstWord].compacted().spaced() + .colon).rythmicoFontWeight(.bodyBold)
-            student.about
+    @ViewBuilder
+    private var studentAbout: some View {
+        if let about = student.about.nilIfBlank {
+            Text(separator: .newline) {
+                Text(["About", student.name.firstWord].compacted().spaced() + .colon)
+                    .rythmicoFontWeight(.bodyMedium)
+                about
+            }
+            .rythmicoTextStyle(.body)
+        }
+    }
+
+    @ViewBuilder
+    private var privateNoteView: some View {
+        if let privateNote = privateNote.nilIfBlank {
+            Text(privateNote)
+                .rythmicoTextStyle(.body)
+                .foregroundColor(.rythmico.foreground)
+                .fixedSize(horizontal: false, vertical: true)
+        } else {
+            Text("No private note.")
+                .rythmicoTextStyle(.body)
+                .foregroundColor(.rythmico.textPlaceholder)
+                .fixedSize(horizontal: false, vertical: true)
+                .onTapGesture(perform: resetPrivateNote)
         }
     }
 }
@@ -164,8 +156,8 @@ struct ReviewRequestView_Previews: PreviewProvider {
             schedule: .stub,
             privateNote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porta odio dolor, eget sodales turpis mollis semper."
         )
-        .previewDevices()
+        .background(Color.rythmico.backgroundSecondary.edgesIgnoringSafeArea(.all))
+//        .environment(\.colorScheme, .dark)
     }
 }
 #endif
-

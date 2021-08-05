@@ -21,6 +21,7 @@ struct LessonPlanTutorDetailScreen: Screen {
     }
 }
 
+// TODO: unmarry from 'LessonPlan' model (see below).
 struct LessonPlanTutorDetailView: View {
     typealias HeaderView = LessonPlanApplicationDetailHeaderView
     typealias PortfolioView = LessonPlanApplicationDetailAboutView
@@ -33,11 +34,14 @@ struct LessonPlanTutorDetailView: View {
     var tutor: Tutor
 
     var body: some View {
-        VStack(spacing: .grid(7)) {
+        VStack(spacing: .grid(8)) {
             HeaderView(lessonPlan: lessonPlan, tutor: tutor)
-            PortfolioView(coordinator: coordinator, tutor: tutor, topPadding: 0)
+            VStack(spacing: .grid(5)) {
+                HDivider()
+                PortfolioView(coordinator: coordinator, tutor: tutor, topPadding: 0)
+            }
         }
-        .backgroundColor(.rythmicoBackground)
+        .backgroundColor(.rythmico.background)
     }
 }
 
