@@ -31,7 +31,7 @@ struct LessonPlanSummaryCell: View {
 
     var fill: ContainerStyle.Fill {
         switch lessonPlan.status {
-        case .pending, .reviewing, .active, .cancelled:
+        case .pending, .reviewing, .active:
             return .color(.rythmico.background)
         case .paused:
             return .linearGradient(
@@ -41,6 +41,8 @@ struct LessonPlanSummaryCell: View {
                     endPoint: .bottom
                 )
             )
+        case .cancelled:
+            return .color(.rythmico.gray2)
         }
     }
 
@@ -117,7 +119,7 @@ struct LessonPlanSummaryCellMainContent: View {
         )
     }
 
-    private var opacity: Double { isDimmed ? 0.5 : 1 }
+    private var opacity: Double { isDimmed ? 0.56 : 1 }
     private var isDimmed: Bool {
         switch lessonPlan.status {
         case .pending, .reviewing, .active, .paused: return false
