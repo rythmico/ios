@@ -32,6 +32,7 @@ struct LessonPlansCollectionView: View {
                 .padding(.horizontal, .grid(3))
                 .padding(.vertical, .grid(2))
         }
+        .accessibility(addTraits: .isHeader)
     }
 
     private var pendingPlans: [LessonPlan] {
