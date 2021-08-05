@@ -6,14 +6,25 @@ extension ContainerStyle {
     enum OutlineRadius: CGFloat {
         case medium = 8
         case large = 12
+        static let `default` = medium
     }
 
-    static func outline(fill: Color = .clear, radius: OutlineRadius = .medium) -> Self {
+    static let outlineBorderColor: Color = .rythmico.outline
+
+    static func outline(fill: Fill = .color(.clear), radius: OutlineRadius = .default, borderColor: Color = outlineBorderColor) -> Self {
         Self(
             fill: fill,
             shape: .squircle(radius: radius.rawValue, style: .continuous),
-            border: .init(color: .rythmico.outline, width: 1.5)
+            border: .init(color: borderColor, width: 1.5)
         )
+    }
+
+    static func outline(fill: Color, radius: OutlineRadius = .default, borderColor: Color = outlineBorderColor) -> Self {
+        outline(fill: .color(fill), radius: radius, borderColor: borderColor)
+    }
+
+    static func outline(fill: LinearGradient, radius: OutlineRadius = .default, borderColor: Color = outlineBorderColor) -> Self {
+        outline(fill: .linearGradient(fill), radius: radius, borderColor: borderColor)
     }
 }
 
