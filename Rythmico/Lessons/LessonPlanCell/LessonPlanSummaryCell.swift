@@ -9,8 +9,9 @@ struct LessonPlanSummaryCell: View {
     var body: some View {
         AdHocButton(action: onTapAction) { state in
             SelectableContainer(
-                fill: .rythmico.background,
+                fill: fill,
                 radius: .large,
+                borderColor: borderColor,
                 isSelected: state == .pressed
             ) { state in
                 VStack(alignment: .leading, spacing: 0) {
@@ -27,6 +28,32 @@ struct LessonPlanSummaryCell: View {
             alignment: .bottomLeading
         )
     }
+
+    var fill: ContainerStyle.Fill {
+        switch lessonPlan.status {
+        case .pending, .reviewing, .active, .cancelled:
+            return .color(.rythmico.background)
+        case .paused:
+            return .linearGradient(
+                LinearGradient(
+                    gradient: Gradient(colors: [pausedColor.opacity(0.1), pausedColor.opacity(0.4)]),
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
+        }
+    }
+
+    var borderColor: Color {
+        switch lessonPlan.status {
+        case .pending, .reviewing, .active, .cancelled:
+            return ContainerStyle.outlineBorderColor
+        case .paused:
+            return pausedColor
+        }
+    }
+
+    let pausedColor = Color(light: 0xD0E2FF, dark: 0x103570)
 
     var onTapAction: Action {
         { navigator.go(to: LessonPlanDetailScreen(lessonPlan: lessonPlan), on: currentScreen) }
@@ -93,8 +120,8 @@ struct LessonPlanSummaryCellMainContent: View {
     private var opacity: Double { isDimmed ? 0.5 : 1 }
     private var isDimmed: Bool {
         switch lessonPlan.status {
-        case .pending, .reviewing, .active: return false
-        case .paused, .cancelled: return true
+        case .pending, .reviewing, .active, .paused: return false
+        case .cancelled: return true
         }
     }
 }
@@ -161,6 +188,8 @@ struct LessonPlanSummaryCell_Previews: PreviewProvider {
         }
         .previewLayout(.sizeThatFits)
         .padding()
+        .backgroundColor(.rythmico.background)
+//        .environment(\.colorScheme, .dark)
     }
 }
 #endif
