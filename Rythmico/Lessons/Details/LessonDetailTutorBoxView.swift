@@ -16,7 +16,7 @@ struct LessonDetailTutorBoxView: View {
                     isSelected: state == .pressed
                 ) { state in
                     InlineContentTitleSubtitleView(
-                        content: { avatar(backgroundColor: state.backgroundColor) },
+                        content: avatar,
                         title: title,
                         subtitle: subtitle
                     )
@@ -28,7 +28,7 @@ struct LessonDetailTutorBoxView: View {
     }
 
     @ViewBuilder
-    func avatar(backgroundColor: Color) -> some View {
+    func avatar() -> some View {
         TutorAvatarView(tutor, mode: .original)
             .frame(maxWidth: .grid(14), maxHeight: .grid(14))
             .withSmallDBSCheck()
