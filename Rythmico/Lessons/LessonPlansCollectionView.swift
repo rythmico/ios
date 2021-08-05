@@ -4,7 +4,7 @@ struct LessonPlansCollectionView: View {
     let lessonPlans: [LessonPlan]
 
     var body: some View {
-        CollectionView {
+        CollectionView(topPadding: 0) {
             section("Pending", content: pendingPlans)
             section("Reviewing", content: reviewingPlans)
             section("Active", content: activePlans)
