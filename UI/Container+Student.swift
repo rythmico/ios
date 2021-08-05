@@ -31,11 +31,19 @@ extension ContainerStyle {
 // MARK: - Box
 
 extension ContainerStyle {
-    static let box = Self(
-        fill: .rythmico.gray2,
-        shape: .squircle(radius: 8, style: .continuous),
-        border: .none
-    )
+    enum BoxRadius: CGFloat {
+        case small = 4
+        case medium = 8
+        static let `default` = medium
+    }
+
+    static func box(radius: BoxRadius = .default) -> Self {
+        Self(
+            fill: .rythmico.gray2,
+            shape: .squircle(radius: radius.rawValue, style: .continuous),
+            border: .none
+        )
+    }
 }
 
 // MARK: - Field
@@ -53,7 +61,8 @@ struct Container_Previews: PreviewProvider {
     static let styles: [(String, ContainerStyle)] = [
         ("Outline (Medium Radius)", .outline(radius: .medium)),
         ("Outline (Large Radius)", .outline(radius: .large)),
-        ("Box", .box),
+        ("Box (Small Radius)", .box(radius: .small)),
+        ("Box (Medium Radius)", .box(radius: .medium)),
         ("Field", .field),
     ]
 

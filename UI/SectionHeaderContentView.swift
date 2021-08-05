@@ -72,7 +72,7 @@ extension SectionHeaderContentView {
         var containerStyle: ContainerStyle {
             switch self {
             case .plain: return .plain
-            case .box: return .box
+            case .box: return .box()
             }
         }
 

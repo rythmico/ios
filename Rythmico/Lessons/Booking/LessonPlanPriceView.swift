@@ -7,7 +7,7 @@ struct LessonPlanPriceView: View {
     private static let priceFormatter = Current.numberFormatter(format: .price)
 
     var body: some View {
-        Container(style: .box) {
+        Container(style: .box()) {
             VStack(spacing: .grid(4)) {
                 HStack(spacing: .grid(5)) {
                     Text("Price per lesson")
