@@ -16,6 +16,12 @@ struct LessonSummaryCell: View {
                 LessonSummaryCellMainContent(lesson: lesson).padding(.grid(5))
             }
         }
+        // Bit of a dirty hack to allow for multiple buttons in the same container,
+        // Unfortunately this is the only way I've found to work so far...
+        .overlay(
+            OptionsButton(size: .small, padding: .grid(5), []), // TODO: actions
+            alignment: .topTrailing
+        )
     }
 
     private var onTapAction: Action? {
@@ -45,11 +51,15 @@ struct LessonSummaryCellMainContent: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(lesson.title)
-                .rythmicoTextStyle(.subheadlineBold)
-                .lineLimit(1)
-                .minimumScaleFactor(0.7)
-                .opacity(opacity)
+            HStack(spacing: .grid(2)) {
+                Text(lesson.title)
+                    .rythmicoTextStyle(.subheadlineBold)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+                    .opacity(opacity)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                OptionsButton(size: .small, []).hidden()
+            }
             VSpacing(.grid(2))
             Text(subtitle)
                 .rythmicoTextStyle(.body)

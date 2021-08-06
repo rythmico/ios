@@ -7,20 +7,25 @@ struct OptionsButton: View {
     }
 
     let size: Size
+    let padding: CGFloat
     let buttons: [ContextMenuButton]
 
-    init(size: Size, _ buttons: [ContextMenuButton]) {
+    init(size: Size, padding: CGFloat = 0, _ buttons: [ContextMenuButton]) {
         self.size = size
+        self.padding = padding
         self.buttons = buttons
     }
 
     var body: some View {
-        ContextMenuView(buttons) { ThreeDotButton(size: size, action: {}) }
+        ContextMenuView(buttons) {
+            ThreeDotButton(size: size, padding: padding, action: {})
+        }
     }
 }
 
 private struct ThreeDotButton: View {
     let size: OptionsButton.Size
+    let padding: CGFloat
     let action: () -> Void
 
     var body: some View {
@@ -36,6 +41,7 @@ private struct ThreeDotButton: View {
                 }
                 .frame(width: width, height: width)
             }
+            .padding(padding) // hackish way to allow for a larger tap area... haven't found any other solution so far.
         }
     }
 
@@ -58,8 +64,8 @@ private struct ThreeDotButton: View {
 struct ThreeDotButton_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ThreeDotButton(size: .small, action: {})
-            ThreeDotButton(size: .medium, action: {})
+            ThreeDotButton(size: .small, padding: 0, action: {})
+            ThreeDotButton(size: .medium, padding: 0, action: {})
         }
         .previewLayout(.sizeThatFits)
         .padding()
