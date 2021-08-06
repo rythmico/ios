@@ -30,16 +30,16 @@ struct LessonPlanApplicationDetailView: View {
     @Environment(\.currentScreen) private var currentScreen
 
     typealias HeaderView = LessonPlanApplicationDetailHeaderView
-    typealias AboutView = LessonPlanApplicationDetailAboutView
+    typealias ProfileView = LessonPlanApplicationDetailProfileView
     typealias MessageView = LessonPlanApplicationDetailMessageView
 
     enum Tab: String, CaseIterable {
-        case about = "About"
+        case profile = "Profile"
         case message = "Message"
     }
 
     @State
-    private var tab: Tab = .about
+    private var tab: Tab = .profile
     @StateObject
     private var coordinator = Current.portfolioFetchingCoordinator()
 
@@ -54,8 +54,8 @@ struct LessonPlanApplicationDetailView: View {
             }
 
             switch tab {
-            case .about:
-                AboutView(coordinator: coordinator, tutor: application.tutor)
+            case .profile:
+                ProfileView(coordinator: coordinator, tutor: application.tutor)
             case .message:
                 MessageView(lessonPlan: lessonPlan, application: application)
             }

@@ -24,7 +24,7 @@ struct LessonPlanTutorDetailScreen: Screen {
 // TODO: unmarry from 'LessonPlan' model (see below).
 struct LessonPlanTutorDetailView: View {
     typealias HeaderView = LessonPlanApplicationDetailHeaderView
-    typealias PortfolioView = LessonPlanApplicationDetailAboutView
+    typealias ProfileView = LessonPlanApplicationDetailProfileView
 
     @StateObject
     private var coordinator = Current.portfolioFetchingCoordinator()
@@ -38,7 +38,7 @@ struct LessonPlanTutorDetailView: View {
             HeaderView(lessonPlan: lessonPlan, tutor: tutor)
             VStack(spacing: .grid(5)) {
                 HDivider()
-                PortfolioView(coordinator: coordinator, tutor: tutor, topPadding: 0)
+                ProfileView(coordinator: coordinator, tutor: tutor, topPadding: 0)
             }
         }
         .backgroundColor(.rythmico.background)
