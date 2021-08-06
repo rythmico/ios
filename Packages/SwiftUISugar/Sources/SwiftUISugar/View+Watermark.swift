@@ -13,7 +13,7 @@ extension View {
 }
 
 private struct WatermarkModifier: ViewModifier {
-    static let defaultWidth: CGFloat = 170
+    static let defaultWidth: CGFloat = 130
 
     let uiImage: UIImage
     let color: Color?
