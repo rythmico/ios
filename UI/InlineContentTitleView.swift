@@ -6,6 +6,6 @@ struct InlineContentTitleView<Content: View>: View {
     let title: String
 
     var body: some View {
-        InlineContentTitleSubtitleView(content: { content }, title: title, subtitle: nil)
+        InlineContentTitleSubtitleView(content: { content }, title: title, titleStyle: .body, subtitle: nil)
     }
 }
