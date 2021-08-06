@@ -140,7 +140,7 @@ struct LessonPlanDetailView: View, TestableView {
     @ViewBuilder
     private var optionsButton: some View {
         if let actions = actions.nilIfEmpty {
-            OptionsButton(actions)
+            OptionsButton(size: .medium, actions)
         }
     }
 

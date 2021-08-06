@@ -487,6 +487,7 @@
 		D5CCC33225A4C66A00E25B62 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCC33125A4C66A00E25B62 /* ProfileView.swift */; };
 		D5CCC5532559D7F400FE8522 /* PhoneNumberOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCC5522559D7F400FE8522 /* PhoneNumberOpener.swift */; };
 		D5CFB3732675242D006DBCE0 /* Amplitude in Frameworks */ = {isa = PBXBuildFile; productRef = D5CFB3722675242D006DBCE0 /* Amplitude */; };
+		D5D5B2D426BD9598002B40F8 /* OptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5B2D326BD9598002B40F8 /* OptionsButton.swift */; };
 		D5D5E8AE26851A7800AACB8F /* SwiftUISugar in Frameworks */ = {isa = PBXBuildFile; productRef = D5D5E8AD26851A7800AACB8F /* SwiftUISugar */; };
 		D5D5E8B026851A8800AACB8F /* SwiftUISugar in Frameworks */ = {isa = PBXBuildFile; productRef = D5D5E8AF26851A8800AACB8F /* SwiftUISugar */; };
 		D5D5E8B22685586800AACB8F /* FlowView+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5E8B12685586800AACB8F /* FlowView+Sugar.swift */; };
@@ -1000,6 +1001,7 @@
 		D5CC5FF025029525007DFE84 /* ImageReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReference.swift; sourceTree = "<group>"; };
 		D5CCC33125A4C66A00E25B62 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		D5CCC5522559D7F400FE8522 /* PhoneNumberOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberOpener.swift; sourceTree = "<group>"; };
+		D5D5B2D326BD9598002B40F8 /* OptionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsButton.swift; sourceTree = "<group>"; };
 		D5D5E8AB268518AB00AACB8F /* SwiftUISugar */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SwiftUISugar; sourceTree = "<group>"; };
 		D5D5E8B12685586800AACB8F /* FlowView+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FlowView+Sugar.swift"; sourceTree = "<group>"; };
 		D5D5E8B426878CCC00AACB8F /* CasePickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasePickable.swift; sourceTree = "<group>"; };
@@ -1673,6 +1675,7 @@
 				D5CAC9AB24E6D19900119DAA /* MultilineTextField+Rythmico.swift */,
 				D5CAC9AD24E6D67C00119DAA /* MultilineTextField+Tutor.swift */,
 				D5ED326026065FEC00821ABE /* NonEditableTextField.swift */,
+				D5D5B2D326BD9598002B40F8 /* OptionsButton.swift */,
 				D5D78E0B25257800007041BE /* PhoneNumberField.swift */,
 				03AAF66B2444FFCC002D8F5B /* Pickers.swift */,
 				03C39DD52496802500C76516 /* Pill.swift */,
@@ -3026,6 +3029,7 @@
 				D52438FB268A6AFE00E2D859 /* LessonPlanOptionsDoubles.swift in Sources */,
 				D57DE185264DCEAD00C5E118 /* ProfileContactUsCell.swift in Sources */,
 				D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */,
+				D5D5B2D426BD9598002B40F8 /* OptionsButton.swift in Sources */,
 				D5243903268A6DF700E2D859 /* LessonPlanBookingInfoDoubles.swift in Sources */,
 				D517FF9F25547E3700A41639 /* LessonSummaryCell.swift in Sources */,
 				03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */,
