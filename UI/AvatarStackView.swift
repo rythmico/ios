@@ -1,7 +1,7 @@
 import SwiftUI
 
 private enum Const {
-    static let spacing: CGFloat = -AvatarView.Const.minSize * 0.42
+    static let spacing: CGFloat = -AvatarView.Const.minSize * 0.375
 }
 
 struct AvatarStackView<Data: RangeReplaceableCollection, ContentView: View>: View where Data.Index == Int {
