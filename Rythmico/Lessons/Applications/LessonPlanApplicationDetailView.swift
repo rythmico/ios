@@ -29,8 +29,8 @@ struct LessonPlanApplicationDetailView: View {
     @Environment(\.navigator) private var navigator
     @Environment(\.currentScreen) private var currentScreen
 
-    typealias HeaderView = LessonPlanApplicationDetailHeaderView
-    typealias ProfileView = LessonPlanApplicationDetailProfileView
+    typealias HeaderView = TutorProfileHeaderView
+    typealias ProfileView = TutorProfileDetailsView
     typealias MessageView = LessonPlanApplicationDetailMessageView
 
     enum Tab: String, CaseIterable {
@@ -49,7 +49,7 @@ struct LessonPlanApplicationDetailView: View {
     var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: .grid(4)) {
-                HeaderView(lessonPlan: lessonPlan, tutor: application.tutor)
+                HeaderView(tutor: application.tutor)
                 TabMenuView(tabs: Tab.allCases, selection: $tab)
             }
 

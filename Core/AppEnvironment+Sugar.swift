@@ -63,6 +63,12 @@ extension AppEnvironment {
         }
     }
 
+    func listFormatter() -> ListFormatter {
+        ListFormatter().then {
+            $0.locale = locale
+        }
+    }
+
     func relativeDateTimeFormatter(
         context: Formatter.Context,
         style: RelativeDateTimeFormatter.UnitsStyle,

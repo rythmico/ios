@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct LessonPlanApplicationDetailProfileView: View {
+struct TutorProfileDetailsView: View {
     @ObservedObject
     var coordinator: APIActivityCoordinator<GetPortfolioRequest>
 
@@ -34,9 +34,9 @@ struct LessonPlanApplicationDetailProfileView: View {
 }
 
 #if DEBUG
-struct LessonPlanApplicationDetailAboutView_Previews: PreviewProvider {
+struct TutorProfileDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlanApplicationDetailProfileView(
+        TutorProfileDetailsView(
             coordinator: Current.portfolioFetchingCoordinator(),
             tutor: .charlotteStub
         )

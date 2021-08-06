@@ -161,8 +161,8 @@
 		D501585C25373D5A005E02FA /* CardSetupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501585B25373D5A005E02FA /* CardSetupService.swift */; };
 		D501586E25374048005E02FA /* CardSetupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501586D25374048005E02FA /* CardSetupCoordinator.swift */; };
 		D5015873253743C4005E02FA /* CardSetupServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5015872253743C4005E02FA /* CardSetupServiceDoubles.swift */; };
-		D501587825375AA9005E02FA /* PorfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501587725375AA9005E02FA /* PorfolioView.swift */; };
-		D501587D25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501587C25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift */; };
+		D501587825375AA9005E02FA /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501587725375AA9005E02FA /* PortfolioView.swift */; };
+		D501587D25375F3B005E02FA /* TutorProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501587C25375F3B005E02FA /* TutorProfileHeaderView.swift */; };
 		D501588525376EC0005E02FA /* DismissKeyboardTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */; };
 		D501589A2538BE7C005E02FA /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50158992538BE7C005E02FA /* Card.swift */; };
 		D50158AA2538BF63005E02FA /* CardSetupCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50158A92538BF63005E02FA /* CardSetupCredential.swift */; };
@@ -321,7 +321,7 @@
 		D54CFD2C25BB20A600C012F3 /* TutorStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CFD2B25BB20A600C012F3 /* TutorStatus.swift */; };
 		D54CFD3225BB20BD00C012F3 /* TutorStatusDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CFD3125BB20BD00C012F3 /* TutorStatusDoubles.swift */; };
 		D54EFF0C2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF0B2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift */; };
-		D54EFF142513D5BF004F14D3 /* LessonPlanApplicationDetailProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF132513D5BE004F14D3 /* LessonPlanApplicationDetailProfileView.swift */; };
+		D54EFF142513D5BF004F14D3 /* TutorProfileDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF132513D5BE004F14D3 /* TutorProfileDetailsView.swift */; };
 		D54EFF192513D690004F14D3 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF182513D690004F14D3 /* Portfolio.swift */; };
 		D54EFF1E2513D69A004F14D3 /* PortfolioDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF1D2513D69A004F14D3 /* PortfolioDoubles.swift */; };
 		D54EFF2A2513DDDB004F14D3 /* PortfolioEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54EFF292513DDDB004F14D3 /* PortfolioEndpoints.swift */; };
@@ -744,8 +744,8 @@
 		D501585B25373D5A005E02FA /* CardSetupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetupService.swift; sourceTree = "<group>"; };
 		D501586D25374048005E02FA /* CardSetupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetupCoordinator.swift; sourceTree = "<group>"; };
 		D5015872253743C4005E02FA /* CardSetupServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetupServiceDoubles.swift; sourceTree = "<group>"; };
-		D501587725375AA9005E02FA /* PorfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorfolioView.swift; sourceTree = "<group>"; };
-		D501587C25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationDetailHeaderView.swift; sourceTree = "<group>"; };
+		D501587725375AA9005E02FA /* PortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
+		D501587C25375F3B005E02FA /* TutorProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorProfileHeaderView.swift; sourceTree = "<group>"; };
 		D501588425376EC0005E02FA /* DismissKeyboardTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardTooltip.swift; sourceTree = "<group>"; };
 		D50158992538BE7C005E02FA /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		D50158A92538BF63005E02FA /* CardSetupCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetupCredential.swift; sourceTree = "<group>"; };
@@ -882,7 +882,7 @@
 		D54CFD2B25BB20A600C012F3 /* TutorStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorStatus.swift; sourceTree = "<group>"; };
 		D54CFD3125BB20BD00C012F3 /* TutorStatusDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorStatusDoubles.swift; sourceTree = "<group>"; };
 		D54EFF0B2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationDetailMessageView.swift; sourceTree = "<group>"; };
-		D54EFF132513D5BE004F14D3 /* LessonPlanApplicationDetailProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationDetailProfileView.swift; sourceTree = "<group>"; };
+		D54EFF132513D5BE004F14D3 /* TutorProfileDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorProfileDetailsView.swift; sourceTree = "<group>"; };
 		D54EFF182513D690004F14D3 /* Portfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
 		D54EFF1D2513D69A004F14D3 /* PortfolioDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDoubles.swift; sourceTree = "<group>"; };
 		D54EFF292513DDDB004F14D3 /* PortfolioEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioEndpoints.swift; sourceTree = "<group>"; };
@@ -2156,10 +2156,10 @@
 				D5DAD27B2679339B0014702F /* LessonPlanApplicationsView+Analytics.swift */,
 				D585D5B02511299800B74091 /* LessonPlanApplicationDetailView.swift */,
 				D5DAD27D26793B970014702F /* LessonPlanApplicationDetailView+Analytics.swift */,
-				D501587C25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift */,
-				D54EFF132513D5BE004F14D3 /* LessonPlanApplicationDetailProfileView.swift */,
+				D501587C25375F3B005E02FA /* TutorProfileHeaderView.swift */,
+				D54EFF132513D5BE004F14D3 /* TutorProfileDetailsView.swift */,
 				D54EFF0B2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift */,
-				D501587725375AA9005E02FA /* PorfolioView.swift */,
+				D501587725375AA9005E02FA /* PortfolioView.swift */,
 				D5989BA6251533E300BED8A6 /* PortfolioTrainingsView.swift */,
 				D5989BC52516833E00BED8A6 /* PortfolioVideoCarouselView.swift */,
 				D5989BD025168B0100BED8A6 /* PortfolioPhotoCarouselView.swift */,
@@ -2759,7 +2759,7 @@
 				D593C7022550C03B00C684FF /* AppUpdatePrompt.swift in Sources */,
 				D5B5820326A37B1E0008D9DC /* RythmicoLabel.swift in Sources */,
 				D5D9AEA325367E9B00A0ABCC /* LessonPlanBookingEntryView.swift in Sources */,
-				D501587825375AA9005E02FA /* PorfolioView.swift in Sources */,
+				D501587825375AA9005E02FA /* PortfolioView.swift in Sources */,
 				D5ECD2C126497D9700DE933E /* ContextMenuView.swift in Sources */,
 				D5B8E07F26B9588700A46705 /* SelectableLazyVGrid.swift in Sources */,
 				D575C819254DD6C8001664AB /* AppSplash.swift in Sources */,
@@ -2988,7 +2988,7 @@
 				035AF30D2491B7C3004A01B2 /* UNUserNotificationCenterProtocol.swift in Sources */,
 				D5B57A75241A018900BE9B4F /* SchedulingView.swift in Sources */,
 				D5C76E9925F4075200739267 /* CalendarSyncStatusProviderDoubles.swift in Sources */,
-				D501587D25375F3B005E02FA /* LessonPlanApplicationDetailHeaderView.swift in Sources */,
+				D501587D25375F3B005E02FA /* TutorProfileHeaderView.swift in Sources */,
 				D5883CEA25A4189D000B545C /* CalendarSyncCoordinator.swift in Sources */,
 				D5B056A225B21843000D0046 /* DirectURLVideoPlayerView.swift in Sources */,
 				03275AE724907462009C3980 /* DeviceTokenDeleter.swift in Sources */,
@@ -3037,7 +3037,7 @@
 				03275AD924900422009C3980 /* PushNotificationRegisterService.swift in Sources */,
 				D54EFF1E2513D69A004F14D3 /* PortfolioDoubles.swift in Sources */,
 				D5F7A5132597B92100A9FF56 /* ImageOverlayModifier.swift in Sources */,
-				D54EFF142513D5BF004F14D3 /* LessonPlanApplicationDetailProfileView.swift in Sources */,
+				D54EFF142513D5BF004F14D3 /* TutorProfileDetailsView.swift in Sources */,
 				03B19843247181B3005529EB /* RequestLessonPlanFlowView.swift in Sources */,
 				D56C6A9A264AE85500A2599E /* MainViewContent.swift in Sources */,
 				035B1D14249E565200AABFEA /* TestableView.swift in Sources */,
