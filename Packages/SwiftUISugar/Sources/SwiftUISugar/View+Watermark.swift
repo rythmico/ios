@@ -33,7 +33,7 @@ private struct WatermarkModifier: ViewModifier {
                     .renderingMode(color != nil ? .template : .original)
                     .frame(width: width)
                     .foregroundColor(color)
-                    .opacity(colorScheme == .dark ? 0.125 : 0.05)
+                    .opacity(colorScheme == .dark ? 0.15 : 0.04)
                     .offset(x: offsetX, y: offsetY)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
