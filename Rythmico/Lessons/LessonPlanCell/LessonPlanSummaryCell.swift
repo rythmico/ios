@@ -82,13 +82,15 @@ struct LessonPlanSummaryCellMainContent: View {
             "Pending selection of tutor"
         case .active(let props):
             if let nextLesson = props.lessons.nextLesson() {
-                "Next Lesson:"
+                "Next lesson:"
                 startDateString(for: nextLesson).text.rythmicoFontWeight(.bodyMedium)
             }
         case .paused:
-            "Plan Paused"
+            "Lesson plan"
+            "paused".text.rythmicoFontWeight(.bodyMedium)
         case .cancelled:
-            "Plan Cancelled"
+            "Lesson plan"
+            "cancelled".text.rythmicoFontWeight(.bodyMedium)
         }
     }
 
