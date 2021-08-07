@@ -68,6 +68,15 @@ extension LessonPlan {
         case .cancelled(let p): return p.lessons
         }
     }
+
+    var isRequest: Bool {
+        switch status {
+        case .pending, .reviewing:
+            return true
+        case .active, .paused, .cancelled:
+            return false
+        }
+    }
 }
 
 extension RangeReplaceableCollection where Element == LessonPlan {
