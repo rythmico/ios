@@ -492,6 +492,7 @@
 		D5D5B2D226BD609E002B40F8 /* Tutor_ScreenshotDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5B2D126BD609E002B40F8 /* Tutor_ScreenshotDoubles.swift */; };
 		D5D5B2D426BD9598002B40F8 /* OptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5B2D326BD9598002B40F8 /* OptionsButton.swift */; };
 		D5D5B2D626BEB1F5002B40F8 /* LessonPlanOptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5B2D526BEB1F5002B40F8 /* LessonPlanOptionsButton.swift */; };
+		D5D5B2D826BF2783002B40F8 /* LessonOptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5B2D726BF2783002B40F8 /* LessonOptionsButton.swift */; };
 		D5D5E8AE26851A7800AACB8F /* SwiftUISugar in Frameworks */ = {isa = PBXBuildFile; productRef = D5D5E8AD26851A7800AACB8F /* SwiftUISugar */; };
 		D5D5E8B026851A8800AACB8F /* SwiftUISugar in Frameworks */ = {isa = PBXBuildFile; productRef = D5D5E8AF26851A8800AACB8F /* SwiftUISugar */; };
 		D5D5E8B22685586800AACB8F /* FlowView+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5E8B12685586800AACB8F /* FlowView+Sugar.swift */; };
@@ -1010,6 +1011,7 @@
 		D5D5B2D126BD609E002B40F8 /* Tutor_ScreenshotDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutor_ScreenshotDoubles.swift; sourceTree = "<group>"; };
 		D5D5B2D326BD9598002B40F8 /* OptionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsButton.swift; sourceTree = "<group>"; };
 		D5D5B2D526BEB1F5002B40F8 /* LessonPlanOptionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanOptionsButton.swift; sourceTree = "<group>"; };
+		D5D5B2D726BF2783002B40F8 /* LessonOptionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonOptionsButton.swift; sourceTree = "<group>"; };
 		D5D5E8AB268518AB00AACB8F /* SwiftUISugar */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SwiftUISugar; sourceTree = "<group>"; };
 		D5D5E8B12685586800AACB8F /* FlowView+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FlowView+Sugar.swift"; sourceTree = "<group>"; };
 		D5D5E8B426878CCC00AACB8F /* CasePickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasePickable.swift; sourceTree = "<group>"; };
@@ -1735,6 +1737,7 @@
 			children = (
 				D517FF9E25547E3700A41639 /* LessonSummaryCell.swift */,
 				D517FFAB2554849200A41639 /* LessonSummaryTutorStatusView.swift */,
+				D5D5B2D726BF2783002B40F8 /* LessonOptionsButton.swift */,
 				D517FF9925547CAA00A41639 /* LessonStatusPill.swift */,
 			);
 			path = LessonCell;
@@ -2893,6 +2896,7 @@
 				D5D5E8B526878CCC00AACB8F /* CasePickable.swift in Sources */,
 				D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */,
 				D5B8E08926BACA0E00A46705 /* DynamicImage.swift in Sources */,
+				D5D5B2D826BF2783002B40F8 /* LessonOptionsButton.swift in Sources */,
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
 				D549218F25BB27E200251FD2 /* APIActivityErrorHandler.swift in Sources */,
 				D52D8A59259D714B00A6CBBF /* OnboardingSlideshowView.swift in Sources */,
