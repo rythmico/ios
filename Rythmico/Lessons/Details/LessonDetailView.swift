@@ -35,7 +35,7 @@ struct LessonDetailView: View, TestableView {
     var lesson: Lesson
     var lessonPlan: LessonPlan
 
-    var lessonReschedulingView: LessonReschedulingView? { !lessonPlan.status.isCancelled && !lessonPlan.status.isPaused ? .reschedulingView(lesson: lesson, lessonPlan: lessonPlan) : nil }
+    var lessonReschedulingView: LessonReschedulingView? { !lessonPlan.status.isCancelled && !lessonPlan.status.isPaused ? .reschedulingView(lesson: lesson) : nil }
 
     var showLessonPlanDetailAction: Action {
         { navigator.go(to: LessonPlanDetailScreen(lessonPlan: lessonPlan), on: currentScreen) }
@@ -80,7 +80,7 @@ struct LessonDetailView: View, TestableView {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: optionsButton)
         .multiModal {
-            $0.alert(isPresented: $isRescheduling) { .reschedulingView(lesson: lesson, lessonPlan: lessonPlan) }
+            $0.alert(isPresented: $isRescheduling) { .reschedulingView(lesson: lesson) }
         }
     }
 
