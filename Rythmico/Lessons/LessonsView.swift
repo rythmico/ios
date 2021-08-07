@@ -21,6 +21,8 @@ struct LessonsScreen: Screen {
                     LessonPlanCancellationScreen.Builder()
 
                     LessonPlanApplicationsScreen.Builder()
+
+                    LessonSkippingScreen.Builder()
                 }
             )
         }

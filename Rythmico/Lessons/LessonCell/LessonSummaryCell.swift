@@ -19,7 +19,7 @@ struct LessonSummaryCell: View {
         // Bit of a dirty hack to allow for multiple buttons in the same container,
         // Unfortunately this is the only way I've found to work so far...
         .overlay(
-            OptionsButton(size: .small, padding: .grid(5), []), // TODO: actions
+            LessonOptionsButton(lesson: lesson, size: .small, padding: .grid(5)),
             alignment: .topTrailing
         )
     }
