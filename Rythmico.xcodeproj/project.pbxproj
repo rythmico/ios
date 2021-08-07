@@ -491,6 +491,7 @@
 		D5D5B2D026BD6079002B40F8 /* Lesson_ScreenshotDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5B2CF26BD6079002B40F8 /* Lesson_ScreenshotDoubles.swift */; };
 		D5D5B2D226BD609E002B40F8 /* Tutor_ScreenshotDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5B2D126BD609E002B40F8 /* Tutor_ScreenshotDoubles.swift */; };
 		D5D5B2D426BD9598002B40F8 /* OptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5B2D326BD9598002B40F8 /* OptionsButton.swift */; };
+		D5D5B2D626BEB1F5002B40F8 /* LessonPlanOptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5B2D526BEB1F5002B40F8 /* LessonPlanOptionsButton.swift */; };
 		D5D5E8AE26851A7800AACB8F /* SwiftUISugar in Frameworks */ = {isa = PBXBuildFile; productRef = D5D5E8AD26851A7800AACB8F /* SwiftUISugar */; };
 		D5D5E8B026851A8800AACB8F /* SwiftUISugar in Frameworks */ = {isa = PBXBuildFile; productRef = D5D5E8AF26851A8800AACB8F /* SwiftUISugar */; };
 		D5D5E8B22685586800AACB8F /* FlowView+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5E8B12685586800AACB8F /* FlowView+Sugar.swift */; };
@@ -1008,6 +1009,7 @@
 		D5D5B2CF26BD6079002B40F8 /* Lesson_ScreenshotDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson_ScreenshotDoubles.swift; sourceTree = "<group>"; };
 		D5D5B2D126BD609E002B40F8 /* Tutor_ScreenshotDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutor_ScreenshotDoubles.swift; sourceTree = "<group>"; };
 		D5D5B2D326BD9598002B40F8 /* OptionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsButton.swift; sourceTree = "<group>"; };
+		D5D5B2D526BEB1F5002B40F8 /* LessonPlanOptionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanOptionsButton.swift; sourceTree = "<group>"; };
 		D5D5E8AB268518AB00AACB8F /* SwiftUISugar */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SwiftUISugar; sourceTree = "<group>"; };
 		D5D5E8B12685586800AACB8F /* FlowView+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FlowView+Sugar.swift"; sourceTree = "<group>"; };
 		D5D5E8B426878CCC00AACB8F /* CasePickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasePickable.swift; sourceTree = "<group>"; };
@@ -1743,6 +1745,7 @@
 			children = (
 				03021C4E248A769200C0C57E /* LessonPlanSummaryCell.swift */,
 				032215562497034A009D48A8 /* LessonPlanSummaryTutorStatusView.swift */,
+				D5D5B2D526BEB1F5002B40F8 /* LessonPlanOptionsButton.swift */,
 				03C39DD72496CA2A00C76516 /* LessonPlanStatusPill.swift */,
 			);
 			path = LessonPlanCell;
@@ -3077,6 +3080,7 @@
 				03C39DDA2496DBC700C76516 /* LessonPlanDetailView.swift in Sources */,
 				D517FF702553693200A41639 /* Lesson.swift in Sources */,
 				D5AC9E3F254D957D003A8197 /* RemoteConfig.swift in Sources */,
+				D5D5B2D626BEB1F5002B40F8 /* LessonPlanOptionsButton.swift in Sources */,
 				D56B2523252CF76300BC3932 /* AppSecrets.swift in Sources */,
 				03C39DD424967E5B00C76516 /* TitleContentView.swift in Sources */,
 				032B6FDB24B7890700299A09 /* ScheduleDuration+CasePickable.swift in Sources */,
