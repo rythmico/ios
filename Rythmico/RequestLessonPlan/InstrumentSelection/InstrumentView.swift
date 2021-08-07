@@ -14,9 +14,9 @@ struct InstrumentView: View {
             }
             .watermark(
                 instrument.icon.image,
-                width: 125,
-                offset: .init(width: 15, height: -8),
-                color: .rythmico.picoteeBlue
+                color: .rythmico.picoteeBlue,
+                width: 100,
+                offset: .init(width: 5, height: -8)
             )
         }
         .frame(minHeight: 70)

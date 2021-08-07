@@ -10,7 +10,7 @@ struct LessonDetailTutorBoxView: View {
 
     var body: some View {
         SectionHeaderContentView("Tutor", style: .box) {
-            AdHocButton(action: action ?? {}) { state in
+            AdHocButton(action: action) { state in
                 SelectableContainer(
                     fill: .rythmico.background,
                     isSelected: state == .pressed
@@ -23,7 +23,6 @@ struct LessonDetailTutorBoxView: View {
                     .padding(.grid(5))
                 }
             }
-            .disabled(action == nil)
         }
     }
 
@@ -42,16 +41,8 @@ struct LessonDetailTutorBoxView: View {
         nil
     }
 
-    var action: Action? {
-        guard let lessonPlan = Current.lessonPlanRepository.firstById(lesson.lessonPlanId) else {
-            return nil
-        }
-        return {
-            navigator.go(
-                to: LessonPlanTutorDetailScreen(lessonPlan: lessonPlan, tutor: tutor),
-                on: currentScreen
-            )
-        }
+    var action: Action {
+        { navigator.go(to: LessonPlanTutorDetailScreen(tutor: tutor), on: currentScreen) }
     }
 }
 

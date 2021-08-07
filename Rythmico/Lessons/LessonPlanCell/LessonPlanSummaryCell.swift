@@ -21,11 +21,15 @@ struct LessonPlanSummaryCell: View {
                 .padding(.grid(5))
             }
         }
-        // Bit of a dirty hack to allow for two buttons in the same container,
+        // Bit of a dirty hack to allow for multiple buttons in the same container,
         // Unfortunately this is the only way I've found to work so far...
         .overlay(
             LessonPlanSummaryCellAccessory(lessonPlan: lessonPlan).padding(.grid(5)),
             alignment: .bottomLeading
+        )
+        .overlay(
+            OptionsButton(size: .small, padding: .grid(5), []), // TODO: actions
+            alignment: .topTrailing
         )
     }
 
@@ -82,13 +86,15 @@ struct LessonPlanSummaryCellMainContent: View {
             "Pending selection of tutor"
         case .active(let props):
             if let nextLesson = props.lessons.nextLesson() {
-                "Next Lesson:"
+                "Next lesson:"
                 startDateString(for: nextLesson).text.rythmicoFontWeight(.bodyMedium)
             }
         case .paused:
-            "Plan Paused"
+            "Lesson plan"
+            "paused".text.rythmicoFontWeight(.bodyMedium)
         case .cancelled:
-            "Plan Cancelled"
+            "Lesson plan"
+            "cancelled".text.rythmicoFontWeight(.bodyMedium)
         }
     }
 
@@ -97,11 +103,15 @@ struct LessonPlanSummaryCellMainContent: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(title)
-                .rythmicoTextStyle(.subheadlineBold)
-                .lineLimit(1)
-                .minimumScaleFactor(0.7)
-                .opacity(opacity)
+            HStack(spacing: .grid(2)) {
+                Text(title)
+                    .rythmicoTextStyle(.subheadlineBold)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                    .opacity(opacity)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                OptionsButton(size: .small, []).hidden()
+            }
             VSpacing(.grid(2))
             subtitle
                 .rythmicoTextStyle(.body)
@@ -114,8 +124,8 @@ struct LessonPlanSummaryCellMainContent: View {
         }
         .watermark(
             lessonPlan.instrument.icon.image,
-            offset: .init(width: 75, height: -25),
-            color: .rythmico.picoteeBlue
+            color: .rythmico.picoteeBlue,
+            offset: .init(width: 25, height: -20)
         )
     }
 

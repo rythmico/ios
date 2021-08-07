@@ -29,17 +29,17 @@ struct LessonPlanApplicationDetailView: View {
     @Environment(\.navigator) private var navigator
     @Environment(\.currentScreen) private var currentScreen
 
-    typealias HeaderView = LessonPlanApplicationDetailHeaderView
-    typealias AboutView = LessonPlanApplicationDetailAboutView
+    typealias HeaderView = TutorProfileHeaderView
+    typealias ProfileView = TutorProfileDetailsView
     typealias MessageView = LessonPlanApplicationDetailMessageView
 
     enum Tab: String, CaseIterable {
-        case about = "About"
+        case profile = "Profile"
         case message = "Message"
     }
 
     @State
-    private var tab: Tab = .about
+    private var tab: Tab = .profile
     @StateObject
     private var coordinator = Current.portfolioFetchingCoordinator()
 
@@ -49,13 +49,13 @@ struct LessonPlanApplicationDetailView: View {
     var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: .grid(4)) {
-                HeaderView(lessonPlan: lessonPlan, tutor: application.tutor)
+                HeaderView(tutor: application.tutor)
                 TabMenuView(tabs: Tab.allCases, selection: $tab)
             }
 
             switch tab {
-            case .about:
-                AboutView(coordinator: coordinator, tutor: application.tutor)
+            case .profile:
+                ProfileView(coordinator: coordinator, tutor: application.tutor)
             case .message:
                 MessageView(lessonPlan: lessonPlan, application: application)
             }

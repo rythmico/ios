@@ -1,28 +1,30 @@
 extension View {
-    public func watermark(_ uiImage: UIImage, width: CGFloat = 200, offset: CGSize, color: Color? = nil) -> some View {
+    public func watermark(_ uiImage: UIImage, color: Color? = nil, width: CGFloat? = nil, offset: CGSize) -> some View {
         modifier(
             WatermarkModifier(
                 uiImage: uiImage,
-                width: width,
+                color: color,
+                width: width ?? WatermarkModifier.defaultWidth,
                 offsetX: offset.width,
-                offsetY: offset.height,
-                color: color
+                offsetY: offset.height
             )
         )
     }
 }
 
 private struct WatermarkModifier: ViewModifier {
+    static let defaultWidth: CGFloat = 130
+
     let uiImage: UIImage
+    let color: Color?
     @ScaledMetric(relativeTo: .largeTitle)
-    var width: CGFloat = 200
+    var width: CGFloat = WatermarkModifier.defaultWidth
     @ScaledMetric(relativeTo: .title3)
     var offsetX: CGFloat = 0
     @ScaledMetric(relativeTo: .largeTitle)
     var offsetY: CGFloat = 0
     @Environment(\.colorScheme)
     var colorScheme
-    let color: Color?
 
     func body(content: Content) -> some View {
         content.background(
@@ -31,7 +33,7 @@ private struct WatermarkModifier: ViewModifier {
                     .renderingMode(color != nil ? .template : .original)
                     .frame(width: width)
                     .foregroundColor(color)
-                    .opacity(colorScheme == .dark ? 0.125 : 0.05)
+                    .opacity(colorScheme == .dark ? 0.15 : 0.04)
                     .offset(x: offsetX, y: offsetY)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)

@@ -2,15 +2,14 @@ import SwiftUI
 import ComposableNavigator
 
 struct LessonPlanTutorDetailScreen: Screen {
-    var lessonPlan: LessonPlan
-    var tutor: Tutor
+    let tutor: Tutor
     let presentationStyle: ScreenPresentationStyle = .push
 
     struct Builder: NavigationTree {
         var builder: some PathBuilder {
             Screen(
                 content: { (screen: LessonPlanTutorDetailScreen) in
-                    LessonPlanTutorDetailView(lessonPlan: screen.lessonPlan, tutor: screen.tutor)
+                    LessonPlanTutorDetailView(tutor: screen.tutor)
                 },
                 nesting: {
                     VideoCarouselPlayerScreen.Builder()
@@ -21,24 +20,21 @@ struct LessonPlanTutorDetailScreen: Screen {
     }
 }
 
-// TODO: unmarry from 'LessonPlan' model (see below).
 struct LessonPlanTutorDetailView: View {
-    typealias HeaderView = LessonPlanApplicationDetailHeaderView
-    typealias PortfolioView = LessonPlanApplicationDetailAboutView
+    typealias HeaderView = TutorProfileHeaderView
+    typealias ProfileView = TutorProfileDetailsView
 
     @StateObject
     private var coordinator = Current.portfolioFetchingCoordinator()
 
-    // TODO: consume 'tutor.instruments' to remove this property.
-    var lessonPlan: LessonPlan
-    var tutor: Tutor
+    let tutor: Tutor
 
     var body: some View {
         VStack(spacing: .grid(8)) {
-            HeaderView(lessonPlan: lessonPlan, tutor: tutor)
+            HeaderView(tutor: tutor)
             VStack(spacing: .grid(5)) {
                 HDivider()
-                PortfolioView(coordinator: coordinator, tutor: tutor, topPadding: 0)
+                ProfileView(coordinator: coordinator, tutor: tutor, topPadding: 0)
             }
         }
         .backgroundColor(.rythmico.background)
@@ -48,7 +44,7 @@ struct LessonPlanTutorDetailView: View {
 #if DEBUG
 struct LessonPlanTutorDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlanTutorDetailView(lessonPlan: .pendingCharlottePianoPlanStub, tutor: .charlotteStub)
+        LessonPlanTutorDetailView(tutor: .charlotteStub)
     }
 }
 #endif

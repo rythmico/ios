@@ -7,6 +7,7 @@ struct Tutor: Identifiable, Equatable, Decodable, Hashable {
     var name: String
     var photoURL: ImageReference?
     var thumbnailURL: ImageReference?
+    var instruments: [Instrument]
 }
 
 extension Tutor {

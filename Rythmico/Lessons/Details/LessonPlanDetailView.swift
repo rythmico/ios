@@ -104,8 +104,8 @@ struct LessonPlanDetailView: View, TestableView {
             }
             .watermark(
                 lessonPlan.instrument.icon.image,
-                offset: .init(width: 40, height: -64),
-                color: .rythmico.picoteeBlue
+                color: .rythmico.picoteeBlue,
+                offset: .init(width: -8, height: -45)
             )
 
             floatingButton
@@ -140,7 +140,7 @@ struct LessonPlanDetailView: View, TestableView {
     @ViewBuilder
     private var optionsButton: some View {
         if let actions = actions.nilIfEmpty {
-            OptionsButton(actions)
+            OptionsButton(size: .medium, actions)
         }
     }
 
@@ -172,8 +172,12 @@ struct LessonPlanDetailView: View, TestableView {
 struct LessonPlanDetailView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LessonPlanDetailView(lessonPlan: .pendingJackGuitarPlanStub)
-            LessonPlanDetailView(lessonPlan: .activeJackGuitarPlanStub)
+            NavigationView {
+                LessonPlanDetailView(lessonPlan: .pendingJesseDrumsPlanStub)
+            }
+            NavigationView {
+                LessonPlanDetailView(lessonPlan: .activeJackGuitarPlanStub)
+            }
         }
 //        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }

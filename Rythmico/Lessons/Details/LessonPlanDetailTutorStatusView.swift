@@ -70,16 +70,9 @@ struct LessonPlanDetailTutorStatusView: View {
 
     var action: Action? {
         if let tutor = lessonPlan.bookingInfo?.tutor {
-            return {
-                navigator.go(
-                    to: LessonPlanTutorDetailScreen(lessonPlan: lessonPlan, tutor: tutor),
-                    on: currentScreen
-                )
-            }
+            return { navigator.go(to: LessonPlanTutorDetailScreen(tutor: tutor), on: currentScreen) }
         } else if let applicationsScreen = LessonPlanApplicationsScreen(lessonPlan: lessonPlan) {
-            return {
-                navigator.go(to: applicationsScreen, on: currentScreen)
-            }
+            return { navigator.go(to: applicationsScreen, on: currentScreen) }
         } else {
             return nil
         }
