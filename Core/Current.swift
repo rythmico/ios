@@ -7,6 +7,8 @@ private extension AppContext {
         case .preview:
             return .fake
         case .run:
+//            return .appStoreScreenshots(.twoThreeAndFour)
+//            return .appStoreScreenshots(.five)
 //            return .fake
             return .live
         case .release:

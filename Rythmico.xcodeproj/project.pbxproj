@@ -487,6 +487,9 @@
 		D5CCC33225A4C66A00E25B62 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCC33125A4C66A00E25B62 /* ProfileView.swift */; };
 		D5CCC5532559D7F400FE8522 /* PhoneNumberOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCC5522559D7F400FE8522 /* PhoneNumberOpener.swift */; };
 		D5CFB3732675242D006DBCE0 /* Amplitude in Frameworks */ = {isa = PBXBuildFile; productRef = D5CFB3722675242D006DBCE0 /* Amplitude */; };
+		D5D5B2CE26BD5EA7002B40F8 /* AppEnvironment_ScreenshotDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5B2CD26BD5EA7002B40F8 /* AppEnvironment_ScreenshotDoubles.swift */; };
+		D5D5B2D026BD6079002B40F8 /* Lesson_ScreenshotDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5B2CF26BD6079002B40F8 /* Lesson_ScreenshotDoubles.swift */; };
+		D5D5B2D226BD609E002B40F8 /* Tutor_ScreenshotDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5B2D126BD609E002B40F8 /* Tutor_ScreenshotDoubles.swift */; };
 		D5D5B2D426BD9598002B40F8 /* OptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5B2D326BD9598002B40F8 /* OptionsButton.swift */; };
 		D5D5E8AE26851A7800AACB8F /* SwiftUISugar in Frameworks */ = {isa = PBXBuildFile; productRef = D5D5E8AD26851A7800AACB8F /* SwiftUISugar */; };
 		D5D5E8B026851A8800AACB8F /* SwiftUISugar in Frameworks */ = {isa = PBXBuildFile; productRef = D5D5E8AF26851A8800AACB8F /* SwiftUISugar */; };
@@ -1001,6 +1004,9 @@
 		D5CC5FF025029525007DFE84 /* ImageReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReference.swift; sourceTree = "<group>"; };
 		D5CCC33125A4C66A00E25B62 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		D5CCC5522559D7F400FE8522 /* PhoneNumberOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberOpener.swift; sourceTree = "<group>"; };
+		D5D5B2CD26BD5EA7002B40F8 /* AppEnvironment_ScreenshotDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment_ScreenshotDoubles.swift; sourceTree = "<group>"; };
+		D5D5B2CF26BD6079002B40F8 /* Lesson_ScreenshotDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson_ScreenshotDoubles.swift; sourceTree = "<group>"; };
+		D5D5B2D126BD609E002B40F8 /* Tutor_ScreenshotDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutor_ScreenshotDoubles.swift; sourceTree = "<group>"; };
 		D5D5B2D326BD9598002B40F8 /* OptionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsButton.swift; sourceTree = "<group>"; };
 		D5D5E8AB268518AB00AACB8F /* SwiftUISugar */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SwiftUISugar; sourceTree = "<group>"; };
 		D5D5E8B12685586800AACB8F /* FlowView+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FlowView+Sugar.swift"; sourceTree = "<group>"; };
@@ -1194,6 +1200,7 @@
 				033D47CF247777040096C50F /* Lessons */,
 				03EDA6772476F2BB00FBE527 /* Profile */,
 				D54317ED23FDB00700CB1493 /* RequestLessonPlan */,
+				D5D5B2CA26BD5E5F002B40F8 /* AppStoreScreenshots */,
 				D52677CB241019B60074FDEF /* Supporting Files */,
 				03341B4623ABB1E8009AE8A8 /* Preview Content */,
 			);
@@ -2140,6 +2147,16 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		D5D5B2CA26BD5E5F002B40F8 /* AppStoreScreenshots */ = {
+			isa = PBXGroup;
+			children = (
+				D5D5B2CD26BD5EA7002B40F8 /* AppEnvironment_ScreenshotDoubles.swift */,
+				D5D5B2CF26BD6079002B40F8 /* Lesson_ScreenshotDoubles.swift */,
+				D5D5B2D126BD609E002B40F8 /* Tutor_ScreenshotDoubles.swift */,
+			);
+			path = AppStoreScreenshots;
+			sourceTree = "<group>";
+		};
 		D5D5E8A92685143000AACB8F /* Packages */ = {
 			isa = PBXGroup;
 			children = (
@@ -2749,6 +2766,7 @@
 				D5F89394263F4B0500578970 /* LessonScheduleView.swift in Sources */,
 				03341B3F23ABB1E7009AE8A8 /* AppExtensions.swift in Sources */,
 				D53555C023E53699005A20EB /* UserCredentialEmitterDoubles.swift in Sources */,
+				D5D5B2D026BD6079002B40F8 /* Lesson_ScreenshotDoubles.swift in Sources */,
 				D5243905268A6E9A00E2D859 /* LessonPlanPauseInfo.swift in Sources */,
 				D51EB486265EC0C60082D72D /* LessonPlanPausingContentView.swift in Sources */,
 				D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */,
@@ -2923,6 +2941,7 @@
 				D527CC1B260CB34400C480F5 /* URLOpener+Rythmico.swift in Sources */,
 				D54340FD261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift in Sources */,
 				D5F506B02405A6A900CA4094 /* Duration.swift in Sources */,
+				D5D5B2CE26BD5EA7002B40F8 /* AppEnvironment_ScreenshotDoubles.swift in Sources */,
 				D5AAF7D923F9EB1200E410F2 /* InstrumentSelectionListProviderDoubles.swift in Sources */,
 				D5B8E07D26B8548500A46705 /* InlineContentTitleView.swift in Sources */,
 				D50158AA2538BF63005E02FA /* CardSetupCredential.swift in Sources */,
@@ -3064,6 +3083,7 @@
 				03C34362249FC16E004907DF /* APIClientInfo.swift in Sources */,
 				D518C2F8250EA89100288A48 /* LessonPlanApplicationsView.swift in Sources */,
 				D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */,
+				D5D5B2D226BD609E002B40F8 /* Tutor_ScreenshotDoubles.swift in Sources */,
 				D5204F4D26B787C90085F8D0 /* ChoiceItemView.swift in Sources */,
 				D5F506B62406360900CA4094 /* Student.swift in Sources */,
 				D549219D25BB28F700251FD2 /* APIError+Rythmico.swift in Sources */,
