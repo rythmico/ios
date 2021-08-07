@@ -18,7 +18,7 @@ extension LessonPlanReschedulingView {
 
 typealias LessonReschedulingView = Alert
 extension LessonReschedulingView {
-    static func reschedulingView(lesson: Lesson, lessonPlan: LessonPlan?) -> LessonReschedulingView {
+    static func reschedulingView(lesson: Lesson) -> LessonReschedulingView {
         Alert(
             title: Text("Rescheduling"),
             message: Text(
@@ -30,7 +30,7 @@ extension LessonReschedulingView {
                 If you wish to do either, please contact us and we'll do it for you.
                 """
             ),
-            primaryButton: .default(Text("Contact Us")) { Current.urlOpener.openMailToRescheduleLesson(lesson, plan: lessonPlan) },
+            primaryButton: .default(Text("Contact Us")) { Current.urlOpener.openMailToRescheduleLesson(lesson) },
             secondaryButton: .cancel()
         )
     }
@@ -42,48 +42,32 @@ private extension URLOpener {
             .mail(
                 to: ["info@rythmico.com"],
                 subject: "Rescheduling request",
-                body: """
-                Rescheduling form 📝
-
-                - New start date for lessons:
-                - New time for lessons:
-
-                Thank you!
-
-                ------------
-
-                Useful info for our support team:
-
-                Plan ID: \(plan.id.rawValue)
-                UID: \(Current.userCredentialProvider.userCredential?.userId ?? "<none>")
-                """
+                body: plan.isRequest
+                    ? "I'm requesting to reschedule my lesson plan (ID number \(plan.shortId.rawValue)) to the following start date and time:"
+                    : "I’m requesting to reschedule my lesson plan (ID number \(plan.shortId.rawValue)) to the following day of the week and time:"
             )
         )
     }
 
-    func openMailToRescheduleLesson(_ lesson: Lesson, plan: LessonPlan?) {
+    func openMailToRescheduleLesson(_ lesson: Lesson) {
         try? open(
             .mail(
                 to: ["info@rythmico.com"],
                 subject: "Rescheduling request",
-                body: """
-                Rescheduling form 📝
-
-                - New day for lesson:
-                - New time for lesson:
-                - Apply to all future lessons? (Yes/No):
-
-                Thank you!
-
-                ------------
-
-                Useful info for our support team:
-
-                Lesson ID: \(lesson.id)
-                Plan ID: \(plan?.id.rawValue ?? "<none>")
-                UID: \(Current.userCredentialProvider.userCredential?.userId ?? "<none>")
-                """
+                body: "I'm requesting to reschedule my lesson (ID number \(lesson.shortId.rawValue)) to the following date and time:"
             )
         )
+    }
+}
+
+private extension LessonPlan {
+    var shortId: LessonPlan.ID {
+        .init(rawValue: String(id.rawValue.prefix(6)))
+    }
+}
+
+private extension Lesson {
+    var shortId: Lesson.ID {
+        .init(rawValue: String(id.rawValue.prefix(6)))
     }
 }

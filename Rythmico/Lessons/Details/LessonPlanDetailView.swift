@@ -15,6 +15,7 @@ struct LessonPlanDetailScreen: Screen {
                     LessonPlanPausingScreen.Builder()
                     LessonPlanResumingScreen.Builder()
                     LessonPlanCancellationScreen.Builder()
+
                     LessonPlanApplicationsScreen.Builder()
                     LessonPlanTutorDetailScreen.Builder()
                 }
@@ -33,49 +34,7 @@ struct LessonPlanDetailView: View, TestableView {
             .joined(separator: " - ")
     }
 
-    var lessonPlan: LessonPlan
-    var lessonPlanReschedulingView: LessonReschedulingView? { !lessonPlan.status.isCancelled && !lessonPlan.status.isPaused ? .reschedulingView(lessonPlan: lessonPlan) : nil }
-
-    var chooseTutorAction: Action? {
-        LessonPlanApplicationsScreen(lessonPlan: lessonPlan).map { screen in
-            {
-                navigator.go(to: screen, on: currentScreen)
-                Current.analytics.track(
-                    .chooseTutorScreenView(
-                        lessonPlan: screen.lessonPlan,
-                        applications: screen.applications,
-                        origin: .lessonsTabDetail
-                    )
-                )
-            }
-        }
-    }
-
-    @State
-    private var isRescheduling = false // TODO: move to AppNavigation
-    var showRescheduleAlertAction: Action? {
-        lessonPlanReschedulingView != nil
-            ? { isRescheduling = true }
-            : nil
-    }
-
-    var showPauseLessonPlanFormAction: Action? {
-        LessonPlanPausingScreen(lessonPlan: lessonPlan).map { screen in
-            { navigator.go(to: screen, on: currentScreen) }
-        }
-    }
-
-    var showResumeLessonPlanFormAction: Action? {
-        LessonPlanResumingScreen(lessonPlan: lessonPlan).map { screen in
-            { navigator.go(to: screen, on: currentScreen) }
-        }
-    }
-
-    var showCancelLessonPlanFormAction: Action? {
-        LessonPlanCancellationScreen(lessonPlan: lessonPlan).map { screen in
-            { navigator.go(to: screen, on: currentScreen) }
-        }
-    }
+    let lessonPlan: LessonPlan
 
     let inspection = SelfInspection()
     var body: some View {
@@ -114,10 +73,7 @@ struct LessonPlanDetailView: View, TestableView {
         .testable(self)
         .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(trailing: optionsButton)
-        .multiModal {
-            $0.alert(isPresented: $isRescheduling) { .reschedulingView(lessonPlan: lessonPlan) }
-        }
+        .navigationBarItems(trailing: LessonPlanOptionsButton(lessonPlan: lessonPlan, size: .medium))
     }
 
     @ViewBuilder
@@ -138,32 +94,24 @@ struct LessonPlanDetailView: View, TestableView {
     }
 
     @ViewBuilder
-    private var optionsButton: some View {
-        if let actions = actions.nilIfEmpty {
-            OptionsButton(size: .medium, actions)
-        }
-    }
-
-    @ArrayBuilder<ContextMenuButton>
-    private var actions: [ContextMenuButton] {
-        if let action = showRescheduleAlertAction {
-            .init(title: "Reschedule Plan", icon: Asset.Icon.Action.reschedule, action: action)
-        }
-        if let action = showPauseLessonPlanFormAction {
-            .init(title: "Pause Plan", icon: Asset.Icon.Action.pause, action: action)
-        }
-        if let action = showResumeLessonPlanFormAction {
-            .init(title: "Resume Plan", icon: Asset.Icon.Action.resume, action: action)
-        }
-        if let action = showCancelLessonPlanFormAction {
-            .init(title: "Cancel Plan", icon: Asset.Icon.Action.cancel, action: action)
-        }
-    }
-
-    @ViewBuilder
     private var floatingButton: some View {
         if let action = chooseTutorAction {
             FloatingActionMenu([.init(title: "Choose Tutor", isPrimary: true, action: action)])
+        }
+    }
+
+    var chooseTutorAction: Action? {
+        LessonPlanApplicationsScreen(lessonPlan: lessonPlan).map { screen in
+            {
+                navigator.go(to: screen, on: currentScreen)
+                Current.analytics.track(
+                    .chooseTutorScreenView(
+                        lessonPlan: screen.lessonPlan,
+                        applications: screen.applications,
+                        origin: .lessonsTabDetail
+                    )
+                )
+            }
         }
     }
 }

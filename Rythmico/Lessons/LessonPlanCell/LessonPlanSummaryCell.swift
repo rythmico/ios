@@ -28,7 +28,7 @@ struct LessonPlanSummaryCell: View {
             alignment: .bottomLeading
         )
         .overlay(
-            OptionsButton(size: .small, padding: .grid(5), []), // TODO: actions
+            LessonPlanOptionsButton(lessonPlan: lessonPlan, size: .small, padding: .grid(5)),
             alignment: .topTrailing
         )
     }

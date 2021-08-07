@@ -7,7 +7,7 @@ struct LessonsCollectionView: View {
     init(lessonPlans: [LessonPlan], filter: LessonsView.Filter) {
         switch filter {
         case .upcoming:
-            self.lessonPlans = lessonPlans.filterPartials()
+            self.lessonPlans = lessonPlans.filterRequests()
             self.lessons = lessonPlans.allLessons().filterUpcoming()
         case .past:
             self.lessonPlans = []
@@ -32,19 +32,8 @@ struct LessonsCollectionView: View {
 }
 
 private extension RangeReplaceableCollection where Element == LessonPlan {
-    func filterPartials() -> [LessonPlan] {
-        self.filter(\.status.isFinal.not)
+    func filterRequests() -> [LessonPlan] {
+        self.filter(\.isRequest)
             .sorted(by: \.schedule.startDate, <)
-    }
-}
-
-private extension LessonPlan.Status {
-    var isFinal: Bool {
-        switch self {
-        case .pending, .reviewing:
-            return false
-        case .active, .paused, .cancelled:
-            return true
-        }
     }
 }
