@@ -15,6 +15,7 @@ struct LessonPlanDetailScreen: Screen {
                     LessonPlanPausingScreen.Builder()
                     LessonPlanResumingScreen.Builder()
                     LessonPlanCancellationScreen.Builder()
+
                     LessonPlanApplicationsScreen.Builder()
                     LessonPlanTutorDetailScreen.Builder()
                 }

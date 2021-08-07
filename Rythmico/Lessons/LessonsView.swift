@@ -12,9 +12,11 @@ struct LessonsScreen: Screen {
                 content: { LessonsView() },
                 nesting: {
                     RequestLessonPlanScreen.Builder()
+
                     LessonPlanDetailScreen.Builder()
-                    LessonPlanApplicationsScreen.Builder()
                     LessonDetailScreen.Builder()
+
+                    LessonPlanApplicationsScreen.Builder()
                 }
             )
         }
