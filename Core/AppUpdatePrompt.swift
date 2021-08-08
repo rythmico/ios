@@ -5,6 +5,7 @@ struct AppUpdatePrompt: View {
         static let testFlightAppURLScheme = URL(string: "itms-beta://")!
         static let testFlightAppId: App.ID = "899247664"
     }
+
     var appId: App.ID
     var appName: String
     var origin: App.Origin { Current.appOrigin() }
