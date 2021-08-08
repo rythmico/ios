@@ -10,8 +10,6 @@ extension AppEnvironment {
         dummy.with {
             $0.setUpFake()
 
-            $0.timeZone = TimeZone(secondsFromGMT: 0)!
-
             $0.imageLoadingCoordinator = {
                 ImageLoadingCoordinator(
                     loadingService: ImageLoadingService(),

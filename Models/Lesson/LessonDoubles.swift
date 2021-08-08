@@ -17,7 +17,7 @@ extension Array where Element == Lesson {
             .stub(
                 week: lessonCount-$0-1,
                 status: .random() ? .skipped : .completed,
-                startDate: .stub - ($0, .weekOfMonth, .current)
+                startDate: .stub - ($0, .weekOfYear)
             )
         }
     }
@@ -81,7 +81,7 @@ extension Lesson.Options.Skip {
 
 extension Lesson.Options.Skip.Policy {
     static let stub = Self(
-        freeBeforeDate: .stub - (24, .hour, .current),
+        freeBeforeDate: .stub - (24, .hour),
         freeBeforePeriod: .init(.init(hour: 24))
     )
 }

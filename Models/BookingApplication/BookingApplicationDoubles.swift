@@ -51,7 +51,7 @@ extension BookingApplication {
     static let longStub = Self(
         id: UUID().uuidString,
         bookingRequestId: UUID().uuidString,
-        createdAt: .stub - (1, .weekOfMonth),
+        createdAt: .stub - (1, .weekOfYear),
         statusInfo: .stub(.pending),
         instrument: .piano,
         submitterName: "David R",

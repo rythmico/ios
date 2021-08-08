@@ -18,7 +18,7 @@ struct SchedulingView: View, FocusableView, TestableView {
         @Published var duration: Schedule.Duration?
 
         var startDateAndTime: Date? {
-            unwrap(startDate, startTime).map { Date(date: $0, time: $1, calendar: Current.calendar()) }
+            unwrap(startDate, startTime).map(Date.init(date:time:))
         }
     }
 

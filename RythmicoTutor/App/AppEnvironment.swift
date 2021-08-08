@@ -12,6 +12,8 @@ struct AppEnvironment {
     var remoteConfigCoordinator: RemoteConfigCoordinator
     var remoteConfig: RemoteConfigServiceProtocol
 
+    var appOrigin: AppOriginClient
+
     var date: () -> Date
     var calendarType: () -> Calendar.Identifier
     var locale: Locale
@@ -67,6 +69,8 @@ struct AppEnvironment {
         tabSelection: TabSelection,
 
         remoteConfig: RemoteConfigServiceProtocol,
+
+        appOrigin: AppOriginClient,
 
         date: @escaping () -> Date,
         calendarType: @escaping () -> Calendar.Identifier,
@@ -125,6 +129,8 @@ struct AppEnvironment {
         let remoteConfigCoordinator = RemoteConfigCoordinator(service: remoteConfig)
         self.remoteConfigCoordinator = remoteConfigCoordinator
         self.remoteConfig = remoteConfig
+
+        self.appOrigin = appOrigin
 
         self.date = date
         self.calendarType = calendarType
@@ -204,6 +210,8 @@ extension AppEnvironment {
         tabSelection: TabSelection(),
 
         remoteConfig: RemoteConfig(),
+
+        appOrigin: .live,
 
         date: Date.init,
         calendarType: { Calendar.current.identifier },

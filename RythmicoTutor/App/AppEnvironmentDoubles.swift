@@ -7,7 +7,7 @@ extension AppEnvironment {
         dummy.with {
             $0.setUpFake()
 
-            $0.fakeAPIEndpoint(for: \.tutorStatusFetchingCoordinator, result: .success(.registrationPendingStub))
+            $0.fakeAPIEndpoint(for: \.tutorStatusFetchingCoordinator, result: .success(.verified))
 
             $0.fakeAPIEndpoint(for: \.bookingsFetchingCoordinator, result: .success(.stub))
 
@@ -27,10 +27,12 @@ extension AppEnvironment {
 
             remoteConfig: RemoteConfigDummy(),
 
+            appOrigin: .testFlight,
+
             date: { .stub },
             calendarType: { .gregorian },
-            locale: Locale(identifier: "en_GB"),
-            timeZone: TimeZone(identifier: "Europe/London")!,
+            locale: .neutral,
+            timeZone: .neutral,
 
             eventEmitter: NotificationCenter(),
 
