@@ -17,7 +17,7 @@ extension LessonPlanCancellationView {
             switch reason {
             case .rearrangementNeeded:
                 return { isPresentingReschedulingAlert = true }
-            case .badTutor, .other, .tooExpensive:
+            case .noApplicants, .badApplicants, .tooExpensive, .badTutor, .other:
                 return { submitHandler(reason) }
             }
         }
@@ -32,7 +32,7 @@ extension LessonPlanCancellationView {
                 ) { padding in
                     ScrollView {
                         ChoiceList(
-                            data: Reason.allCases,
+                            data: reasons,
                             id: \.self,
                             selection: $selectedReason,
                             content: \.title
@@ -61,6 +61,24 @@ extension LessonPlanCancellationView {
             .interactiveDismissDisabled()
         }
 
+        private var reasons: [Reason] {
+            if lessonPlan.isRequest {
+                return [
+                    .noApplicants,
+                    .badApplicants,
+                    .rearrangementNeeded,
+                    .other
+                ]
+            } else {
+                return [
+                    .tooExpensive,
+                    .badTutor,
+                    .rearrangementNeeded,
+                    .other
+                ]
+            }
+        }
+
         private func handleRearrangementNeededReason(_ reason: Reason?) {
             guard reason == .rearrangementNeeded else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
@@ -77,12 +95,16 @@ extension LessonPlanCancellationView {
 private extension LessonPlan.CancellationInfo.Reason {
     var title: String {
         switch self {
+        case .noApplicants:
+            return "Waited too long for applications"
+        case .badApplicants:
+            return "Didn't like tutors who applied"
         case .tooExpensive:
             return "Price"
         case .badTutor:
-            return "Tutor wasn’t the right fit"
+            return "Tutor wasn't the right fit"
         case .rearrangementNeeded:
-            return "I want to rearrange the plan"
+            return "I want to reschedule the plan"
         case .other:
             return "Other"
         }
@@ -93,6 +115,10 @@ private extension LessonPlan.CancellationInfo.Reason {
 struct LessonPlanCancellationReasonView_Previews: PreviewProvider {
     static var previews: some View {
         LessonPlanCancellationView.ReasonView(lessonPlan: .pendingJackGuitarPlanStub) { _ in }
+        LessonPlanCancellationView.ReasonView(lessonPlan: .reviewingJackGuitarPlanStub) { _ in }
+        LessonPlanCancellationView.ReasonView(lessonPlan: .activeJackGuitarPlanStub) { _ in }
+        LessonPlanCancellationView.ReasonView(lessonPlan: .pausedJackGuitarPlanStub) { _ in }
+        LessonPlanCancellationView.ReasonView(lessonPlan: .cancelledJackGuitarPlanStub) { _ in }
     }
 }
 #endif
