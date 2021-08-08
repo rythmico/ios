@@ -2,7 +2,8 @@ import SwiftUISugar
 import WebKit
 
 struct RythmicoWebView: View {
-    private let delegate = RythmicoWebViewDelegate()
+    // Bit of a hack, needed cause WKWebViewDelegate/publisher is not reliable for URL changes.
+    private let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
 
     let backgroundColor: UIColor
     @ObservedObject
@@ -27,21 +28,12 @@ struct RythmicoWebView: View {
     }
 
     var body: some View {
-        WebView(webView: store.webView).onAppear(perform: setUpDelegate)
+        WebView(webView: store.webView).onReceive(timer) { _ in attemptOnDone() }
     }
 
-    func setUpDelegate() {
-        delegate.onBlankPage = onDone
-        store.webView.navigationDelegate = delegate
-    }
-}
-
-private final class RythmicoWebViewDelegate: NSObject, WKNavigationDelegate {
-    var onBlankPage: Action?
-
-    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        guard webView.url?.absoluteString.hasSuffix("/blank") == true else { return }
-        onBlankPage?()
+    private func attemptOnDone() {
+        guard store.url?.absoluteString.hasSuffix("/blank") == true else { return }
+        onDone()
     }
 }
 
