@@ -23,6 +23,8 @@ extension AppEnvironment {
             $0.fakeAPIEndpoint(for: \.portfolioFetchingCoordinator, result: .success(.longStub))
 
             $0.fakeAPIEndpoint(for: \.cardSetupCredentialFetchingCoordinator, result: .success(.stub))
+
+            $0.fakeAPIEndpoint(for: \.customerPortalURLFetchingCoordinator, result: .success(.stub))
         }
     }
 }
@@ -95,7 +97,9 @@ extension AppEnvironment {
             portfolioFetchingService: APIServiceDummy(),
 
             cardSetupCredentialFetchingService: APIServiceDummy(),
-            cardSetupService: CardSetupServiceDummy()
+            cardSetupService: CardSetupServiceDummy(),
+
+            customerPortalURLFetchingService: APIServiceDummy()
         )
     }
 }

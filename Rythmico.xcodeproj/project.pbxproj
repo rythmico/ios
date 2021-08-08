@@ -335,6 +335,8 @@
 		D55354EB26C08DF700E77CC4 /* CustomerPortalEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55354EA26C08DF700E77CC4 /* CustomerPortalEndpoints.swift */; };
 		D55354EE26C08F2D00E77CC4 /* StripeCustomerPortal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55354ED26C08F2D00E77CC4 /* StripeCustomerPortal.swift */; };
 		D55354F026C08F5200E77CC4 /* StripeCustomerPortalDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55354EF26C08F5200E77CC4 /* StripeCustomerPortalDoubles.swift */; };
+		D55354F326C08FE700E77CC4 /* ProfilePaymentMethodsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55354F226C08FE700E77CC4 /* ProfilePaymentMethodsCell.swift */; };
+		D55354F526C08FFD00E77CC4 /* PaymentMethodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55354F426C08FFD00E77CC4 /* PaymentMethodsView.swift */; };
 		D55C35D725A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */; };
 		D55C35D825A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */; };
 		D55C35EA25A3A6490023E56B /* CalendarInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35E925A3A6490023E56B /* CalendarInfo.swift */; };
@@ -907,6 +909,8 @@
 		D55354EA26C08DF700E77CC4 /* CustomerPortalEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerPortalEndpoints.swift; sourceTree = "<group>"; };
 		D55354ED26C08F2D00E77CC4 /* StripeCustomerPortal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCustomerPortal.swift; sourceTree = "<group>"; };
 		D55354EF26C08F5200E77CC4 /* StripeCustomerPortalDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCustomerPortalDoubles.swift; sourceTree = "<group>"; };
+		D55354F226C08FE700E77CC4 /* ProfilePaymentMethodsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePaymentMethodsCell.swift; sourceTree = "<group>"; };
+		D55354F426C08FFD00E77CC4 /* PaymentMethodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodsView.swift; sourceTree = "<group>"; };
 		D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEndpoints.swift; sourceTree = "<group>"; };
 		D55C35E925A3A6490023E56B /* CalendarInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInfo.swift; sourceTree = "<group>"; };
 		D55C35F625A3A8090023E56B /* CalendarInfoDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInfoDoubles.swift; sourceTree = "<group>"; };
@@ -1614,12 +1618,14 @@
 			isa = PBXGroup;
 			children = (
 				D531295C255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift */,
+				D55354F426C08FFD00E77CC4 /* PaymentMethodsView.swift */,
 				D57DE180264DCAC900C5E118 /* ProfileCalendarSyncCell.swift */,
 				D57DE178264DC26400C5E118 /* ProfileCell.swift */,
 				D57DE184264DCEAD00C5E118 /* ProfileContactUsCell.swift */,
 				D5FE1A6326A70D0100567F48 /* ProfileLessonPlansCell.swift */,
 				D57DE186264DCF9A00C5E118 /* ProfileLogOutCell.swift */,
 				D57DE182264DCE2800C5E118 /* ProfileParentInfoCell.swift */,
+				D55354F226C08FE700E77CC4 /* ProfilePaymentMethodsCell.swift */,
 				D57DE17E264DCA6B00C5E118 /* ProfilePushNotificationsCell.swift */,
 				D57DE17A264DC2AE00C5E118 /* ProfileSection.swift */,
 				03EDA6782476F2CB00FBE527 /* ProfileView.swift */,
@@ -2927,6 +2933,7 @@
 				D5D78DE025250864007041BE /* LessonPlanBookingView.swift in Sources */,
 				D5AFED4225057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */,
 				D5D5E8B526878CCC00AACB8F /* CasePickable.swift in Sources */,
+				D55354F526C08FFD00E77CC4 /* PaymentMethodsView.swift in Sources */,
 				D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */,
 				D5B8E08926BACA0E00A46705 /* DynamicImage.swift in Sources */,
 				D5D5B2D826BF2783002B40F8 /* LessonOptionsButton.swift in Sources */,
@@ -3063,6 +3070,7 @@
 				D5ED32632606600C00821ABE /* CustomEditableTextField.swift in Sources */,
 				D53555B523E53699005A20EB /* AuthenticationError.swift in Sources */,
 				D53555CA23E536AE005A20EB /* AppleAuthorizationService.swift in Sources */,
+				D55354F326C08FE700E77CC4 /* ProfilePaymentMethodsCell.swift in Sources */,
 				D527B01724FEAA62003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */,
 				D5BF12BB2506926900B2931C /* PushNotificationEventHandler.swift in Sources */,
 				0365F6F02417E79000F452AC /* Address.swift in Sources */,
