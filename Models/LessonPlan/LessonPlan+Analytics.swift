@@ -29,8 +29,8 @@ extension AnalyticsEvent {
             ["Address District": postcodeDistrict]
         }
         if let schedule = schedule {
-            if let weekday = unlocalizedWeekday(for: schedule.startDate) {
-                ["Lesson Day": weekday]
+            if let dayOfWeek = dayOfWeek(for: schedule.startDate) {
+                ["Lesson Day": dayOfWeek]
             }
             if let time = time(for: schedule.startDate) {
                 ["Lesson Time": time]
@@ -39,7 +39,7 @@ extension AnalyticsEvent {
         }
     }
 
-    private enum UnlocalizedWeekday: String, CaseIterable {
+    private enum DayOfWeek: String, CaseIterable {
         case sunday = "SUNDAY"
         case monday = "MONDAY"
         case tuesday = "TUESDAY"
@@ -49,15 +49,16 @@ extension AnalyticsEvent {
         case saturday = "SATURDAY"
     }
 
-    private static func unlocalizedWeekday(for date: Date) -> String? {
+    private static func dayOfWeek(for date: Date) -> String? {
         let calendar = Calendar(identifier: .gregorian).with(\.timeZone, Current.timeZone)
         let weekday = calendar.component(.weekday, from: date)
         let index = weekday - 1
-        return UnlocalizedWeekday.allCases[safe: index]?.rawValue
+        return DayOfWeek.allCases[safe: index]?.rawValue
     }
 
     private static func time(for date: Date) -> String? {
         DateFormatter()
+            .with(\.locale, .neutral)
             .with(\.timeZone, Current.timeZone)
             .with(\.dateFormat, "HH:mm")
             .string(from: date)
