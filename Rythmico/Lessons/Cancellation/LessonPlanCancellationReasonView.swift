@@ -62,14 +62,22 @@ extension LessonPlanCancellationView {
         }
 
         private var reasons: [Reason] {
-            if lessonPlan.isRequest {
+            switch lessonPlan.status {
+            case .pending:
                 return [
                     .noApplicants,
                     .badApplicants,
                     .rearrangementNeeded,
                     .other
                 ]
-            } else {
+            case .reviewing:
+                return [
+                    .tooExpensive,
+                    .badApplicants,
+                    .rearrangementNeeded,
+                    .other
+                ]
+            case .active, .paused, .cancelled:
                 return [
                     .tooExpensive,
                     .badTutor,
@@ -113,12 +121,14 @@ private extension LessonPlan.CancellationInfo.Reason {
 
 #if DEBUG
 struct LessonPlanCancellationReasonView_Previews: PreviewProvider {
+    typealias ReasonView = LessonPlanCancellationView.ReasonView
+
     static var previews: some View {
-        LessonPlanCancellationView.ReasonView(lessonPlan: .pendingJackGuitarPlanStub) { _ in }
-        LessonPlanCancellationView.ReasonView(lessonPlan: .reviewingJackGuitarPlanStub) { _ in }
-        LessonPlanCancellationView.ReasonView(lessonPlan: .activeJackGuitarPlanStub) { _ in }
-        LessonPlanCancellationView.ReasonView(lessonPlan: .pausedJackGuitarPlanStub) { _ in }
-        LessonPlanCancellationView.ReasonView(lessonPlan: .cancelledJackGuitarPlanStub) { _ in }
+        ReasonView(lessonPlan: .pendingJackGuitarPlanStub, submitHandler: { _ in }).previewDisplayName("Pending")
+        ReasonView(lessonPlan: .reviewingJackGuitarPlanStub, submitHandler: { _ in }).previewDisplayName("Reviewing")
+        ReasonView(lessonPlan: .activeJackGuitarPlanStub, submitHandler: { _ in }).previewDisplayName("Active")
+        ReasonView(lessonPlan: .pausedJackGuitarPlanStub, submitHandler: { _ in }).previewDisplayName("Paused")
+        ReasonView(lessonPlan: .cancelledJackGuitarPlanStub, submitHandler: { _ in }).previewDisplayName("Cancelled")
     }
 }
 #endif
