@@ -2,7 +2,9 @@ import SwiftUISugar
 import Stripe
 
 extension App {
-    static let id = "1493135894"
+    typealias ID = Tagged<Self, String>
+    
+    static let id: ID = "1493135894"
     static let logo = Asset.Logo.rythmico
     static let name = "Rythmico"
     static let slogan = "Turning kids into the festival headliners of tomorrow"

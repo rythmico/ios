@@ -37,7 +37,7 @@ struct App: SwiftUI.App {
                 if shouldShowSplash {
                     AnimatedAppSplash(image: App.logo, title: App.name)
                 } else if Current.remoteConfig.appUpdateRequired {
-                    AppUpdatePrompt(appId: App.id)
+                    AppUpdatePrompt(appId: App.id, appName: App.name)
                 } else {
                     RootView()
                         .animation(.none)

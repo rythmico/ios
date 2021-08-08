@@ -3,9 +3,10 @@ import SwiftUI
 struct AppUpdatePrompt: View {
     private enum Const {
         static let testFlightAppURLScheme = URL(string: "itms-beta://")!
-        static let testFlightAppId = "899247664"
+        static let testFlightAppId: App.ID = "899247664"
     }
-    var appId: String
+    var appId: App.ID
+    var appName: String
     var origin: App.Origin { Current.appOrigin() }
 
     @State private var isTestFlightAppInstalled = Current.urlOpener.canOpenURL(Const.testFlightAppURLScheme)
@@ -13,12 +14,12 @@ struct AppUpdatePrompt: View {
     var body: some View {
         NavigationView {
             VStack(spacing: .grid(4)) {
-                Text("Please download the latest version of \(App.name) to be able to continue.")
+                Text("Please download the latest version of \(appName) to be able to continue.")
                     .appUpdatePromptDescription()
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 #if RYTHMICO
                 if shouldShowUpdateButton {
-                    RythmicoButton("Update \(App.name)", style: .primary()) {
+                    RythmicoButton("Update \(appName)", style: .primary()) {
                         Current.urlOpener.open(origin.url(forAppId: appId))
                     }
                 } else {
@@ -28,7 +29,7 @@ struct AppUpdatePrompt: View {
                 }
                 #elseif TUTOR
                 if shouldShowUpdateButton {
-                    RythmicoButton("Update \(App.name)", style: .primary()) {
+                    RythmicoButton("Update \(appName)", style: .primary()) {
                         Current.urlOpener.open(origin.url(forAppId: appId))
                     }
                 } else {
@@ -90,7 +91,7 @@ private extension Text {
 struct AppUpdatePrompt_Previews: PreviewProvider {
     static var previews: some View {
         Current.urlOpener = URLOpenerSpy(canOpenURLs: false)
-        return AppUpdatePrompt(appId: App.id)
+        return AppUpdatePrompt(appId: App.id, appName: App.name)
 //            .environment(\.colorScheme, .dark)
     }
 }

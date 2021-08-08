@@ -1,7 +1,9 @@
-import SwiftUI
+import SwiftUISugar
 
 extension App {
-    static let id = "1519469319"
+    typealias ID = Tagged<Self, String>
+
+    static let id: ID = "1519469319"
     static let logo = Asset.appLogo
     static let name = "Rythmico Tutor"
     static let slogan = "Turning kids into the festival headliners of tomorrow"
