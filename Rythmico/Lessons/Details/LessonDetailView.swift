@@ -55,6 +55,7 @@ struct LessonDetailView: View, TestableView {
 
             floatingButton
         }
+        .backgroundColor(.rythmico.background)
         .testable(self)
         .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
