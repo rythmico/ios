@@ -31,8 +31,8 @@ extension AppEnvironment {
 
             date: { .stub },
             calendarType: { .gregorian },
-            locale: Locale(identifier: "en_GB"),
-            timeZone: TimeZone(identifier: "Europe/London")!,
+            locale: .neutral,
+            timeZone: .neutral,
 
             eventEmitter: NotificationCenter(),
 
