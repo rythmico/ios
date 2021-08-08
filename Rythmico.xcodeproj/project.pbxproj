@@ -332,6 +332,9 @@
 		D551126325FFDB96009F3FD9 /* SettingsOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D551126125FFDB96009F3FD9 /* SettingsOpener.swift */; };
 		D55354E826C082C300E77CC4 /* RythmicoWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55354E726C082C300E77CC4 /* RythmicoWebView.swift */; };
 		D55354E926C082C300E77CC4 /* RythmicoWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55354E726C082C300E77CC4 /* RythmicoWebView.swift */; };
+		D55354EB26C08DF700E77CC4 /* CustomerPortalEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55354EA26C08DF700E77CC4 /* CustomerPortalEndpoints.swift */; };
+		D55354EE26C08F2D00E77CC4 /* StripeCustomerPortal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55354ED26C08F2D00E77CC4 /* StripeCustomerPortal.swift */; };
+		D55354F026C08F5200E77CC4 /* StripeCustomerPortalDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55354EF26C08F5200E77CC4 /* StripeCustomerPortalDoubles.swift */; };
 		D55C35D725A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */; };
 		D55C35D825A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */; };
 		D55C35EA25A3A6490023E56B /* CalendarInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35E925A3A6490023E56B /* CalendarInfo.swift */; };
@@ -901,6 +904,9 @@
 		D551125F25FFDB0F009F3FD9 /* MailOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailOpener.swift; sourceTree = "<group>"; };
 		D551126125FFDB96009F3FD9 /* SettingsOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOpener.swift; sourceTree = "<group>"; };
 		D55354E726C082C300E77CC4 /* RythmicoWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RythmicoWebView.swift; sourceTree = "<group>"; };
+		D55354EA26C08DF700E77CC4 /* CustomerPortalEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerPortalEndpoints.swift; sourceTree = "<group>"; };
+		D55354ED26C08F2D00E77CC4 /* StripeCustomerPortal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCustomerPortal.swift; sourceTree = "<group>"; };
+		D55354EF26C08F5200E77CC4 /* StripeCustomerPortalDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCustomerPortalDoubles.swift; sourceTree = "<group>"; };
 		D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEndpoints.swift; sourceTree = "<group>"; };
 		D55C35E925A3A6490023E56B /* CalendarInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInfo.swift; sourceTree = "<group>"; };
 		D55C35F625A3A8090023E56B /* CalendarInfoDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInfoDoubles.swift; sourceTree = "<group>"; };
@@ -1595,6 +1601,7 @@
 				D5D9AE7F2534CC0100A0ABCC /* Price */,
 				D5BF12B125068E2500B2931C /* PushNotificationEvent */,
 				03AAF6742445E123002D8F5B /* Schedule */,
+				D55354F126C08F6900E77CC4 /* StripeCustomerPortal */,
 				03B71326241D84F300DED025 /* Student */,
 				D517FF8825536ADB00A41639 /* Tutor */,
 				D54CFD3025BB20AC00C012F3 /* TutorStatus */,
@@ -1870,6 +1877,7 @@
 				D5E58F0D256AF1E500EB52ED /* BookingEndpoints.swift */,
 				032B6FDC24B78A5200299A09 /* BookingRequestEndpoints.swift */,
 				D52A4F182538C41400C65A91 /* CardSetupEndpoints.swift */,
+				D55354EA26C08DF700E77CC4 /* CustomerPortalEndpoints.swift */,
 				033D47D5247ABF6B0096C50F /* LessonPlanEndpoints.swift */,
 				D54EFF292513DDDB004F14D3 /* PortfolioEndpoints.swift */,
 				D54CFD2025BB208100C012F3 /* TutorStatusEndpoints.swift */,
@@ -2056,6 +2064,15 @@
 				D551126125FFDB96009F3FD9 /* SettingsOpener.swift */,
 			);
 			path = SettingsOpener;
+			sourceTree = "<group>";
+		};
+		D55354F126C08F6900E77CC4 /* StripeCustomerPortal */ = {
+			isa = PBXGroup;
+			children = (
+				D55354ED26C08F2D00E77CC4 /* StripeCustomerPortal.swift */,
+				D55354EF26C08F5200E77CC4 /* StripeCustomerPortalDoubles.swift */,
+			);
+			path = StripeCustomerPortal;
 			sourceTree = "<group>";
 		};
 		D55C35DC25A3A5C10023E56B /* Calendar */ = {
@@ -2787,6 +2804,7 @@
 				D5D5B2D026BD6079002B40F8 /* Lesson_ScreenshotDoubles.swift in Sources */,
 				D5243905268A6E9A00E2D859 /* LessonPlanPauseInfo.swift in Sources */,
 				D51EB486265EC0C60082D72D /* LessonPlanPausingContentView.swift in Sources */,
+				D55354F026C08F5200E77CC4 /* StripeCustomerPortalDoubles.swift in Sources */,
 				D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */,
 				D54340ED261E3C03006898B0 /* AnalyticsUserProfile.swift in Sources */,
 				03E88EB124C205C30077A420 /* Current.swift in Sources */,
@@ -2820,6 +2838,7 @@
 				D53555C623E536AE005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,
 				03B1984124717AE8005529EB /* AddressDoubles.swift in Sources */,
 				D575C877254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift in Sources */,
+				D55354EB26C08DF700E77CC4 /* CustomerPortalEndpoints.swift in Sources */,
 				D509D836265EE55200B60DF0 /* LessonPlanResumingView.swift in Sources */,
 				D53555BD23E53699005A20EB /* UserCredentialProviderDoubles.swift in Sources */,
 				D5B57A712419F79700BE9B4F /* SectionHeaderContentView.swift in Sources */,
@@ -2926,6 +2945,7 @@
 				D5AFED3025047DFC003FFC68 /* Activity.swift in Sources */,
 				D575FE0C2652CE0F00448471 /* LessonPlanTutorDetailView.swift in Sources */,
 				D57DE17B264DC2AE00C5E118 /* ProfileSection.swift in Sources */,
+				D55354EE26C08F2D00E77CC4 /* StripeCustomerPortal.swift in Sources */,
 				D5AAF7D723F9E20C00E410F2 /* Instrument.swift in Sources */,
 				D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */,
 				D5B68CFC26B3B1D0006DA45F /* RythmicoButton.swift in Sources */,
