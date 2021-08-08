@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUISugar
 
 struct AppUpdatePrompt: View {
     private enum Const {
@@ -13,12 +13,9 @@ struct AppUpdatePrompt: View {
     @State private var isTestFlightAppInstalled = Current.urlOpener.canOpenURL(Const.testFlightAppURLScheme)
 
     var body: some View {
-        NavigationView {
-            VStack(spacing: .grid(4)) {
-                Text("Please download the latest version of \(appName) to be able to continue.")
-                    .appUpdatePromptDescription()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                #if RYTHMICO
+        titleSubtitleAndContent("Update Required", "Please download the latest version of \(appName) to be able to continue.") { padding in
+            VStack(spacing: 0) {
+                Spacer()
                 if shouldShowUpdateButton {
                     RythmicoButton("Update \(appName)", style: .primary()) {
                         Current.urlOpener.open(origin.url(forAppId: appId))
@@ -28,25 +25,38 @@ struct AppUpdatePrompt: View {
                         Current.urlOpener.open(App.Origin.appStore.url(forAppId: Const.testFlightAppId))
                     }
                 }
-                #elseif TUTOR
-                if shouldShowUpdateButton {
-                    RythmicoButton("Update \(appName)", style: .primary()) {
-                        Current.urlOpener.open(origin.url(forAppId: appId))
-                    }
-                } else {
-                    RythmicoButton("Download the TestFlight App", style: .secondary()) {
-                        Current.urlOpener.open(App.Origin.appStore.url(forAppId: Const.testFlightAppId))
-                    }
-                }
-                #endif
             }
-            .navigationBarTitle("Update Required")
-            .navigationBarTitleDisplayMode(.large)
-            .padding([.horizontal, .bottom], inset)
-            .padding(.top, .grid(2))
             .multilineTextAlignment(.leading)
         }
         .onEvent(.appInForeground, perform: refreshTestFlightAppInstalledIfNeeded)
+    }
+
+    @ViewBuilder
+    private func titleSubtitleAndContent<Content: View>(
+        _ title: String,
+        _ subtitle: String,
+        content: @escaping (HorizontalInsets) -> Content
+    ) -> some View {
+        NavigationView {
+            #if RYTHMICO
+            TitleSubtitleContentView(title, subtitle) { padding in
+                content(padding).padding([.horizontal, .bottom], padding.leading)
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            #elseif TUTOR
+            VStack(spacing: .grid(4)) {
+                Text(subtitle)
+                    .font(.body)
+                    .foregroundColor(.gray)
+                    .lineSpacing(.grid(1))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                content(.zero)
+            }
+            .padding([.horizontal, .bottom], 17)
+            .navigationBarTitle(title)
+            .navigationBarTitleDisplayMode(.large)
+            #endif
+        }
     }
 
     private var shouldShowUpdateButton: Bool {
@@ -65,26 +75,6 @@ struct AppUpdatePrompt: View {
         case .appStore:
             break
         }
-    }
-
-    private var inset: CGFloat {
-        #if RYTHMICO
-        return .grid(5)
-        #elseif TUTOR
-        return 17
-        #endif
-    }
-}
-
-private extension Text {
-    func appUpdatePromptDescription() -> some View {
-        #if RYTHMICO
-        self.rythmicoTextStyle(.body)
-            .foregroundColor(.rythmico.foreground)
-        #elseif TUTOR
-        self.font(.body)
-            .foregroundColor(.gray)
-        #endif
     }
 }
 
