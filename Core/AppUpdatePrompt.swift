@@ -1,28 +1,12 @@
 import SwiftUI
 
-extension App {
-    enum DistributionMethod: Equatable, Hashable {
-        case testFlight
-        case appStore
-
-        func url(forAppId appId: String) -> URL {
-            switch self {
-            case .testFlight:
-                return URL(string: "itms-beta://beta.itunes.apple.com/v1/app/\(appId)")!
-            case .appStore:
-                return URL(string: "https://apps.apple.com/app/id\(appId)")!
-            }
-        }
-    }
-}
-
 struct AppUpdatePrompt: View {
     private enum Const {
         static let testFlightAppURLScheme = URL(string: "itms-beta://")!
         static let testFlightAppId = "899247664"
     }
     var appId: String
-    var method: App.DistributionMethod
+    var origin: App.Origin { Current.appOrigin() }
 
     @State private var isTestFlightAppInstalled = Current.urlOpener.canOpenURL(Const.testFlightAppURLScheme)
 
@@ -35,21 +19,21 @@ struct AppUpdatePrompt: View {
                 #if RYTHMICO
                 if shouldShowUpdateButton {
                     RythmicoButton("Update \(App.name)", style: .primary()) {
-                        Current.urlOpener.open(method.url(forAppId: appId))
+                        Current.urlOpener.open(origin.url(forAppId: appId))
                     }
                 } else {
                     RythmicoButton("Download the TestFlight App", style: .secondary()) {
-                        Current.urlOpener.open(App.DistributionMethod.appStore.url(forAppId: Const.testFlightAppId))
+                        Current.urlOpener.open(App.Origin.appStore.url(forAppId: Const.testFlightAppId))
                     }
                 }
                 #elseif TUTOR
                 if shouldShowUpdateButton {
                     RythmicoButton("Update \(App.name)", style: .primary()) {
-                        Current.urlOpener.open(method.url(forAppId: appId))
+                        Current.urlOpener.open(origin.url(forAppId: appId))
                     }
                 } else {
                     RythmicoButton("Download the TestFlight App", style: .secondary()) {
-                        Current.urlOpener.open(App.DistributionMethod.appStore.url(forAppId: Const.testFlightAppId))
+                        Current.urlOpener.open(App.Origin.appStore.url(forAppId: Const.testFlightAppId))
                     }
                 }
                 #endif
@@ -64,7 +48,7 @@ struct AppUpdatePrompt: View {
     }
 
     private var shouldShowUpdateButton: Bool {
-        switch method {
+        switch origin {
         case .testFlight:
             return isTestFlightAppInstalled
         case .appStore:
@@ -73,7 +57,7 @@ struct AppUpdatePrompt: View {
     }
 
     private func refreshTestFlightAppInstalledIfNeeded() {
-        switch method {
+        switch origin {
         case .testFlight:
             isTestFlightAppInstalled = Current.urlOpener.canOpenURL(Const.testFlightAppURLScheme)
         case .appStore:
@@ -106,7 +90,7 @@ private extension Text {
 struct AppUpdatePrompt_Previews: PreviewProvider {
     static var previews: some View {
         Current.urlOpener = URLOpenerSpy(canOpenURLs: false)
-        return AppUpdatePrompt(appId: App.id, method: App.distributionMethod)
+        return AppUpdatePrompt(appId: App.id)
 //            .environment(\.colorScheme, .dark)
     }
 }

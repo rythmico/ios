@@ -34,6 +34,8 @@ extension AppEnvironment {
 
             remoteConfig: RemoteConfigDummy(),
 
+            appOrigin: .testFlight,
+
             uuid: { .stub },
             date: { .stub },
             calendarType: { .gregorian },

@@ -1,16 +1,18 @@
 import FoundationSugar
 
 struct AppOriginClient {
-    var isTestFlightApp: () -> Bool
+    var get: () -> App.Origin
+
+    func callAsFunction() -> App.Origin { get() }
 }
 
 extension AppOriginClient {
     static let live = Self(
-        isTestFlightApp: {
+        get: {
             guard let receiptURL = Bundle.main.appStoreReceiptURL else {
-                return false
+                return .appStore
             }
-            return receiptURL.absoluteString.contains("sandboxReceipt")
+            return receiptURL.absoluteString.contains("sandboxReceipt") ? .testFlight : .appStore
         }
     )
 }

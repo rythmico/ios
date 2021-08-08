@@ -27,6 +27,8 @@ extension AppEnvironment {
 
             remoteConfig: RemoteConfigDummy(),
 
+            appOrigin: .testFlight,
+
             date: { .stub },
             calendarType: { .gregorian },
             locale: Locale(identifier: "en_GB"),

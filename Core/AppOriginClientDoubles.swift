@@ -1,6 +1,6 @@
 import FoundationSugar
 
 extension AppOriginClient {
-    static let appStore = Self(isTestFlightApp: { false })
-    static let testFlight = Self(isTestFlightApp: { true })
+    static let appStore = Self(get: { .appStore })
+    static let testFlight = Self(get: { .testFlight })
 }
