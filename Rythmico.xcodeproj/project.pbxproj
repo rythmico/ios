@@ -330,6 +330,13 @@
 		D551126025FFDB0F009F3FD9 /* MailOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D551125F25FFDB0F009F3FD9 /* MailOpener.swift */; };
 		D551126225FFDB96009F3FD9 /* SettingsOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D551126125FFDB96009F3FD9 /* SettingsOpener.swift */; };
 		D551126325FFDB96009F3FD9 /* SettingsOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D551126125FFDB96009F3FD9 /* SettingsOpener.swift */; };
+		D55354E826C082C300E77CC4 /* RythmicoWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55354E726C082C300E77CC4 /* RythmicoWebView.swift */; };
+		D55354E926C082C300E77CC4 /* RythmicoWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55354E726C082C300E77CC4 /* RythmicoWebView.swift */; };
+		D55354EB26C08DF700E77CC4 /* CustomerPortalEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55354EA26C08DF700E77CC4 /* CustomerPortalEndpoints.swift */; };
+		D55354EE26C08F2D00E77CC4 /* StripeCustomerPortal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55354ED26C08F2D00E77CC4 /* StripeCustomerPortal.swift */; };
+		D55354F026C08F5200E77CC4 /* StripeCustomerPortalDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55354EF26C08F5200E77CC4 /* StripeCustomerPortalDoubles.swift */; };
+		D55354F326C08FE700E77CC4 /* ProfilePaymentMethodsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55354F226C08FE700E77CC4 /* ProfilePaymentMethodsCell.swift */; };
+		D55354F526C08FFD00E77CC4 /* PaymentMethodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55354F426C08FFD00E77CC4 /* PaymentMethodsView.swift */; };
 		D55C35D725A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */; };
 		D55C35D825A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */; };
 		D55C35EA25A3A6490023E56B /* CalendarInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C35E925A3A6490023E56B /* CalendarInfo.swift */; };
@@ -898,6 +905,12 @@
 		D54EFF312514C847004F14D3 /* ExpandableText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableText.swift; sourceTree = "<group>"; };
 		D551125F25FFDB0F009F3FD9 /* MailOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailOpener.swift; sourceTree = "<group>"; };
 		D551126125FFDB96009F3FD9 /* SettingsOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsOpener.swift; sourceTree = "<group>"; };
+		D55354E726C082C300E77CC4 /* RythmicoWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RythmicoWebView.swift; sourceTree = "<group>"; };
+		D55354EA26C08DF700E77CC4 /* CustomerPortalEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerPortalEndpoints.swift; sourceTree = "<group>"; };
+		D55354ED26C08F2D00E77CC4 /* StripeCustomerPortal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCustomerPortal.swift; sourceTree = "<group>"; };
+		D55354EF26C08F5200E77CC4 /* StripeCustomerPortalDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCustomerPortalDoubles.swift; sourceTree = "<group>"; };
+		D55354F226C08FE700E77CC4 /* ProfilePaymentMethodsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePaymentMethodsCell.swift; sourceTree = "<group>"; };
+		D55354F426C08FFD00E77CC4 /* PaymentMethodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodsView.swift; sourceTree = "<group>"; };
 		D55C35D625A3A5BC0023E56B /* CalendarEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEndpoints.swift; sourceTree = "<group>"; };
 		D55C35E925A3A6490023E56B /* CalendarInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInfo.swift; sourceTree = "<group>"; };
 		D55C35F625A3A8090023E56B /* CalendarInfoDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInfoDoubles.swift; sourceTree = "<group>"; };
@@ -1592,6 +1605,7 @@
 				D5D9AE7F2534CC0100A0ABCC /* Price */,
 				D5BF12B125068E2500B2931C /* PushNotificationEvent */,
 				03AAF6742445E123002D8F5B /* Schedule */,
+				D55354F126C08F6900E77CC4 /* StripeCustomerPortal */,
 				03B71326241D84F300DED025 /* Student */,
 				D517FF8825536ADB00A41639 /* Tutor */,
 				D54CFD3025BB20AC00C012F3 /* TutorStatus */,
@@ -1604,12 +1618,14 @@
 			isa = PBXGroup;
 			children = (
 				D531295C255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift */,
+				D55354F426C08FFD00E77CC4 /* PaymentMethodsView.swift */,
 				D57DE180264DCAC900C5E118 /* ProfileCalendarSyncCell.swift */,
 				D57DE178264DC26400C5E118 /* ProfileCell.swift */,
 				D57DE184264DCEAD00C5E118 /* ProfileContactUsCell.swift */,
 				D5FE1A6326A70D0100567F48 /* ProfileLessonPlansCell.swift */,
 				D57DE186264DCF9A00C5E118 /* ProfileLogOutCell.swift */,
 				D57DE182264DCE2800C5E118 /* ProfileParentInfoCell.swift */,
+				D55354F226C08FE700E77CC4 /* ProfilePaymentMethodsCell.swift */,
 				D57DE17E264DCA6B00C5E118 /* ProfilePushNotificationsCell.swift */,
 				D57DE17A264DC2AE00C5E118 /* ProfileSection.swift */,
 				03EDA6782476F2CB00FBE527 /* ProfileView.swift */,
@@ -1703,6 +1719,7 @@
 				D5F506B9240637F400CA4094 /* RythmicoButton+Student.swift */,
 				D52C554B24DDE5FF00C295C4 /* RythmicoButton+Tutor.swift */,
 				D5B5820226A37B1E0008D9DC /* RythmicoLabel.swift */,
+				D55354E726C082C300E77CC4 /* RythmicoWebView.swift */,
 				D5B57A702419F79700BE9B4F /* SectionHeaderContentView.swift */,
 				03FE8191244E204900C5C184 /* SelectableContainer.swift */,
 				D5B8E08026B95F9200A46705 /* SelectableItemView.swift */,
@@ -1866,6 +1883,7 @@
 				D5E58F0D256AF1E500EB52ED /* BookingEndpoints.swift */,
 				032B6FDC24B78A5200299A09 /* BookingRequestEndpoints.swift */,
 				D52A4F182538C41400C65A91 /* CardSetupEndpoints.swift */,
+				D55354EA26C08DF700E77CC4 /* CustomerPortalEndpoints.swift */,
 				033D47D5247ABF6B0096C50F /* LessonPlanEndpoints.swift */,
 				D54EFF292513DDDB004F14D3 /* PortfolioEndpoints.swift */,
 				D54CFD2025BB208100C012F3 /* TutorStatusEndpoints.swift */,
@@ -2052,6 +2070,15 @@
 				D551126125FFDB96009F3FD9 /* SettingsOpener.swift */,
 			);
 			path = SettingsOpener;
+			sourceTree = "<group>";
+		};
+		D55354F126C08F6900E77CC4 /* StripeCustomerPortal */ = {
+			isa = PBXGroup;
+			children = (
+				D55354ED26C08F2D00E77CC4 /* StripeCustomerPortal.swift */,
+				D55354EF26C08F5200E77CC4 /* StripeCustomerPortalDoubles.swift */,
+			);
+			path = StripeCustomerPortal;
 			sourceTree = "<group>";
 		};
 		D55C35DC25A3A5C10023E56B /* Calendar */ = {
@@ -2783,6 +2810,7 @@
 				D5D5B2D026BD6079002B40F8 /* Lesson_ScreenshotDoubles.swift in Sources */,
 				D5243905268A6E9A00E2D859 /* LessonPlanPauseInfo.swift in Sources */,
 				D51EB486265EC0C60082D72D /* LessonPlanPausingContentView.swift in Sources */,
+				D55354F026C08F5200E77CC4 /* StripeCustomerPortalDoubles.swift in Sources */,
 				D5200E3923FDCEFD007168E0 /* StudentDetailsView.swift in Sources */,
 				D54340ED261E3C03006898B0 /* AnalyticsUserProfile.swift in Sources */,
 				03E88EB124C205C30077A420 /* Current.swift in Sources */,
@@ -2809,12 +2837,14 @@
 				03080EED2466FE21008715EE /* LessonPlan.swift in Sources */,
 				D5989BC62516833E00BED8A6 /* PortfolioVideoCarouselView.swift in Sources */,
 				D5FA706826A34CDA00E6FF30 /* OnboardingViewCore.swift in Sources */,
+				D55354E826C082C300E77CC4 /* RythmicoWebView.swift in Sources */,
 				D543B918263F5FA800D25CFD /* AddressLabel.swift in Sources */,
 				D53555CF23E536AE005A20EB /* AppleAuthorizationCompletionDelegate.swift in Sources */,
 				D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */,
 				D53555C623E536AE005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,
 				03B1984124717AE8005529EB /* AddressDoubles.swift in Sources */,
 				D575C877254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift in Sources */,
+				D55354EB26C08DF700E77CC4 /* CustomerPortalEndpoints.swift in Sources */,
 				D509D836265EE55200B60DF0 /* LessonPlanResumingView.swift in Sources */,
 				D53555BD23E53699005A20EB /* UserCredentialProviderDoubles.swift in Sources */,
 				D5B57A712419F79700BE9B4F /* SectionHeaderContentView.swift in Sources */,
@@ -2903,6 +2933,7 @@
 				D5D78DE025250864007041BE /* LessonPlanBookingView.swift in Sources */,
 				D5AFED4225057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */,
 				D5D5E8B526878CCC00AACB8F /* CasePickable.swift in Sources */,
+				D55354F526C08FFD00E77CC4 /* PaymentMethodsView.swift in Sources */,
 				D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */,
 				D5B8E08926BACA0E00A46705 /* DynamicImage.swift in Sources */,
 				D5D5B2D826BF2783002B40F8 /* LessonOptionsButton.swift in Sources */,
@@ -2921,6 +2952,7 @@
 				D5AFED3025047DFC003FFC68 /* Activity.swift in Sources */,
 				D575FE0C2652CE0F00448471 /* LessonPlanTutorDetailView.swift in Sources */,
 				D57DE17B264DC2AE00C5E118 /* ProfileSection.swift in Sources */,
+				D55354EE26C08F2D00E77CC4 /* StripeCustomerPortal.swift in Sources */,
 				D5AAF7D723F9E20C00E410F2 /* Instrument.swift in Sources */,
 				D5F5065D23FF16AA00CA4094 /* BackButton.swift in Sources */,
 				D5B68CFC26B3B1D0006DA45F /* RythmicoButton.swift in Sources */,
@@ -3038,6 +3070,7 @@
 				D5ED32632606600C00821ABE /* CustomEditableTextField.swift in Sources */,
 				D53555B523E53699005A20EB /* AuthenticationError.swift in Sources */,
 				D53555CA23E536AE005A20EB /* AppleAuthorizationService.swift in Sources */,
+				D55354F326C08FE700E77CC4 /* ProfilePaymentMethodsCell.swift in Sources */,
 				D527B01724FEAA62003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */,
 				D5BF12BB2506926900B2931C /* PushNotificationEventHandler.swift in Sources */,
 				0365F6F02417E79000F452AC /* Address.swift in Sources */,
@@ -3156,6 +3189,7 @@
 				D5F4AE822559D3F6001085D5 /* PhoneNumber.swift in Sources */,
 				D52C553A24DC71B800C295C4 /* BookingRequestDetailView.swift in Sources */,
 				03E88E8F24BC9FAF0077A420 /* AppEnvironmentDoubles.swift in Sources */,
+				D55354E926C082C300E77CC4 /* RythmicoWebView.swift in Sources */,
 				D5C76E9525F405E200739267 /* EKEventStore.swift in Sources */,
 				D5F4D3E024F04294000E8580 /* BookingApplication.swift in Sources */,
 				D55C35FE25A3AB510023E56B /* CalendarSyncer.swift in Sources */,

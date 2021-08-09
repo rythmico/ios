@@ -75,6 +75,8 @@ struct AppEnvironment {
     var cardSetupCredentialFetchingCoordinator: () -> APIActivityCoordinator<GetCardSetupCredentialRequest>
     var cardSetupCoordinator: () -> CardSetupCoordinator
 
+    var customerPortalURLFetchingCoordinator: () -> APIActivityCoordinator<GetCustomerPortalURLRequest>
+
     init(
         tabSelection: TabSelection,
 
@@ -141,7 +143,9 @@ struct AppEnvironment {
         portfolioFetchingService: APIServiceBase<GetPortfolioRequest>,
 
         cardSetupCredentialFetchingService: APIServiceBase<GetCardSetupCredentialRequest>,
-        cardSetupService: CardSetupServiceProtocol
+        cardSetupService: CardSetupServiceProtocol,
+
+        customerPortalURLFetchingService: APIServiceBase<GetCustomerPortalURLRequest>
     ) {
         self.tabSelection = tabSelection
 
@@ -237,6 +241,8 @@ struct AppEnvironment {
 
         self.cardSetupCredentialFetchingCoordinator = { coordinator(for: cardSetupCredentialFetchingService) }
         self.cardSetupCoordinator = { CardSetupCoordinator(service: cardSetupService) }
+
+        self.customerPortalURLFetchingCoordinator = { coordinator(for: customerPortalURLFetchingService) }
     }
 }
 
@@ -315,6 +321,8 @@ extension AppEnvironment {
         portfolioFetchingService: APIService(),
 
         cardSetupCredentialFetchingService: APIService(),
-        cardSetupService: STPPaymentHandler.shared()
+        cardSetupService: STPPaymentHandler.shared(),
+
+        customerPortalURLFetchingService: APIService()
     )}
 }

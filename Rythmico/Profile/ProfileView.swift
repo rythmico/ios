@@ -11,6 +11,7 @@ struct ProfileScreen: Screen {
                 content: { ProfileView() },
                 nesting: {
                     LessonPlansScreen.Builder()
+                    PaymentMethodsScreen.Builder()
                     ParentInfoAndSafetyScreen.Builder()
                 }
             )
@@ -25,7 +26,10 @@ struct ProfileView: View, TestableView {
     var body: some View {
         TitleContentView(title, spacing: .grid(0)) { _ in
             List {
-                ProfileLessonPlansCell()
+                ProfileSection("Account") {
+                    ProfileLessonPlansCell()
+                    ProfilePaymentMethodsCell()
+                }
                 ProfileSection("Notifications") {
                     ProfilePushNotificationsCell()
                     ProfileCalendarSyncCell()
