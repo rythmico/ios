@@ -14,17 +14,12 @@ struct TutorStatusView: View {
             if let status = currentStatus {
                 switch status {
                 case .registrationPending:
-                    RythmicoWebView(
-                        backgroundColor: .white,
-                        store: webViewStore,
-                        onDone: coordinator.run
-                    )
-                    .edgesIgnoringSafeArea(.bottom)
+                    RythmicoWebView(store: webViewStore, ignoreBottomSafeArea: true, onDone: coordinator.run)
                 case .interviewPending, .interviewFailed, .dbsPending, .dbsProcessing, .dbsFailed, .verified:
                     TutorStatusBanner(status: status)
                 }
             }
-            if isLoading {
+            if isFetchingStatus {
                 ActivityIndicator(color: .gray)
             }
         }
@@ -42,15 +37,8 @@ struct TutorStatusView: View {
         .animation(.rythmicoSpring(duration: .durationShort), value: coordinator.state.successValue)
     }
 
-    var isLoading: Bool {
-        switch currentStatus {
-        case .none:
-            return coordinator.state.isLoading
-        case .registrationPending:
-            return webViewStore.isLoading
-        case .interviewPending, .interviewFailed, .dbsPending, .dbsProcessing, .dbsFailed, .verified:
-            return false
-        }
+    var isFetchingStatus: Bool {
+        currentStatus == .none && coordinator.state.isLoading
     }
 
     func tutorStatusFetched(_ newStatus: TutorStatus) {
@@ -63,7 +51,7 @@ struct TutorStatusView: View {
     func handleTutorStatus(_ status: TutorStatus) {
         switch status {
         case .registrationPending(let formURL):
-            webViewStore.webView.load(formURL)
+            webViewStore.load(formURL)
         case .interviewPending, .interviewFailed, .dbsPending, .dbsProcessing, .dbsFailed, .verified:
             pushNotificationAuthCoordinator.requestAuthorization()
         }

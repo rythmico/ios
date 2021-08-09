@@ -28,7 +28,7 @@ struct PaymentMethodsView: View {
             if isFetching {
                 ActivityIndicator()
             } else {
-                RythmicoWebView(backgroundColor: .rythmico.background, store: webViewStore, onDone: back)
+                RythmicoWebView(store: webViewStore, onDone: back)
             }
         }
         .backgroundColor(.rythmico.background)
@@ -48,7 +48,7 @@ struct PaymentMethodsView: View {
     }
 
     private func onCustomerPortalURLFetched(_ customerPortal: StripeCustomerPortal) {
-        webViewStore.webView.load(customerPortal.url)
+        webViewStore.load(customerPortal.url)
     }
 
     private func back() {
