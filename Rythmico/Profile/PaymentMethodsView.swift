@@ -44,7 +44,7 @@ struct PaymentMethodsView: View {
     }
 
     private func fetchCustomerPortalURL() {
-        coordinator.runToIdle()
+        coordinator.startToIdle()
     }
 
     private func onCustomerPortalURLFetched(_ customerPortal: StripeCustomerPortal) {
