@@ -25,7 +25,7 @@ struct PaymentMethodsView: View {
 
     var body: some View {
         ZStack {
-            if isLoading {
+            if isFetching {
                 ActivityIndicator()
             } else {
                 RythmicoWebView(backgroundColor: .rythmico.background, store: webViewStore, onDone: back)
@@ -36,11 +36,11 @@ struct PaymentMethodsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: fetchCustomerPortalURL)
         .onSuccess(coordinator, perform: onCustomerPortalURLFetched)
-        .animation(.rythmicoSpring(duration: .durationShort), value: isLoading)
+        .animation(.rythmicoSpring(duration: .durationShort), value: isFetching)
     }
 
-    private var isLoading: Bool {
-        coordinator.state.isLoading || webViewStore.isLoading
+    private var isFetching: Bool {
+        coordinator.state.isLoading
     }
 
     private func fetchCustomerPortalURL() {

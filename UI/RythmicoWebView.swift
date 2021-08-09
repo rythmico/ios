@@ -3,7 +3,7 @@ import WebKit
 
 struct RythmicoWebView: View {
     // Bit of a hack, needed cause WKWebViewDelegate/publisher is not reliable for URL changes.
-    private let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
+    private let timer = Timer.publish(every: 0.25, on: .main, in: .common).autoconnect()
 
     let backgroundColor: UIColor
     @ObservedObject
@@ -28,12 +28,27 @@ struct RythmicoWebView: View {
     }
 
     var body: some View {
-        WebView(webView: store.webView).onReceive(timer) { _ in attemptOnDone() }
+        ZStack {
+            WebView(webView: store.webView).transition(.opacity)
+            if isLoading {
+                ActivityIndicator(color: Color(.darkGray))
+            }
+        }
+        .opacity(isDone ? 0 : 1)
+        .animation(.easeInOut(duration: .durationShort), value: isDone)
+        .onReceive(timer) { _ in attemptOnDone() }
+    }
+
+    private var isLoading: Bool {
+        !isDone && store.isLoading
+    }
+
+    private var isDone: Bool {
+        store.url?.absoluteString.hasSuffix("/blank") == true
     }
 
     private func attemptOnDone() {
-        guard store.url?.absoluteString.hasSuffix("/blank") == true else { return }
-        onDone()
+        if isDone { onDone() }
     }
 }
 
