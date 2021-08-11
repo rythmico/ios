@@ -186,8 +186,8 @@
         "repositoryURL": "https://github.com/stripe/stripe-ios",
         "state": {
           "branch": null,
-          "revision": "68c36e67ec510ea0dd99510fce375249b0918183",
-          "version": "21.7.0"
+          "revision": "fabd7ebe14052d505466ffe824b49eeab3778501",
+          "version": "21.8.1"
         }
       },
       {
@@ -249,8 +249,8 @@
         "repositoryURL": "https://github.com/pointfreeco/swift-nonempty",
         "state": {
           "branch": null,
-          "revision": "a3dbd05f2b57cb0ea1b8138a720fc28a1629ca06",
-          "version": "0.3.1"
+          "revision": "8074e5f2e4a6de5a42476e545cc33438021aa2a4",
+          "version": "0.4.0"
         }
       },
       {
@@ -339,8 +339,8 @@
         "repositoryURL": "https://github.com/pointfreeco/xctest-dynamic-overlay",
         "state": {
           "branch": null,
-          "revision": "152390e9e78ebbf0d767ee52971d41e7f44f39bc",
-          "version": "0.1.1"
+          "revision": "b9eeb1a7ea3fd6fea54ce57dee2f5794b667c8df",
+          "version": "0.2.0"
         }
       },
       {
