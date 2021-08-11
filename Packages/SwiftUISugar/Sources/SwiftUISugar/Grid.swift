@@ -1,16 +1,14 @@
-import SwiftUI
-
 // TODO: use implicit CGFloat <-> Double conversion in Swift 5.5
 
-struct Grid {
+public struct Grid {
     fileprivate static let baseUnit: CGFloat = 4
 
-    enum Value: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
+    public enum Value: ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral {
         case max
         case other(CGFloat)
 
-        init(integerLiteral value: IntegerLiteralType) { self = .other(CGFloat(value)) }
-        init(floatLiteral value: FloatLiteralType) { self = .other(CGFloat(value)) }
+        public init(integerLiteral value: IntegerLiteralType) { self = .other(CGFloat(value)) }
+        public init(floatLiteral value: FloatLiteralType) { self = .other(CGFloat(value)) }
 
         fileprivate var value: CGFloat {
             switch self {
@@ -24,5 +22,5 @@ struct Grid {
 }
 
 extension CGFloat {
-    static func grid(_ n: Grid.Value) -> Self { Grid.baseUnit * n.value }
+    public static func grid(_ n: Grid.Value) -> Self { Grid.baseUnit * n.value }
 }
