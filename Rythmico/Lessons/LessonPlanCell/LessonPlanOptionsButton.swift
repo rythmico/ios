@@ -1,4 +1,5 @@
 import SwiftUISugar
+import ComposableNavigator
 
 struct LessonPlanOptionsButton: View {
     @Environment(\.navigator) private var navigator
@@ -42,20 +43,18 @@ struct LessonPlanOptionsButton: View {
     }
 
     private var showPauseLessonPlanFormAction: Action? {
-        LessonPlanPausingScreen(lessonPlan: lessonPlan).map { screen in
-            { navigator.go(to: screen, on: currentScreen) }
-        }
+        LessonPlanPausingScreen(lessonPlan: lessonPlan).mapAction(go)
     }
 
     private var showResumeLessonPlanFormAction: Action? {
-        LessonPlanResumingScreen(lessonPlan: lessonPlan).map { screen in
-            { navigator.go(to: screen, on: currentScreen) }
-        }
+        LessonPlanResumingScreen(lessonPlan: lessonPlan).mapAction(go)
     }
 
     private var showCancelLessonPlanFormAction: Action? {
-        LessonPlanCancellationScreen(lessonPlan: lessonPlan).map { screen in
-            { navigator.go(to: screen, on: currentScreen) }
-        }
+        LessonPlanCancellationScreen(lessonPlan: lessonPlan).mapAction(go)
+    }
+
+    private func go<S: Screen>(to screen: S) {
+        navigator.go(to: screen, on: currentScreen)
     }
 }

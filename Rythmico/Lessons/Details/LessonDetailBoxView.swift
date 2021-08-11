@@ -44,10 +44,7 @@ struct LessonDetailBoxView: View {
     }
 
     private var resumeAction: Action? {
-        guard let resumeScreen = LessonPlanResumingScreen(lessonPlan: lessonPlan) else {
-            return nil
-        }
-        return {
+        LessonPlanResumingScreen(lessonPlan: lessonPlan).mapAction { resumeScreen in
             navigator.go(
                 to: [
                     AnyScreen(LessonPlanDetailScreen(lessonPlan: lessonPlan)),

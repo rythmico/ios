@@ -124,13 +124,7 @@ struct LessonPlanBookingView: View {
     }
 
     var confirmAction: Action? {
-        guard
-            let phoneNumber = phoneNumber,
-            let selectedCard = selectedCard
-        else {
-            return nil
-        }
-        return {
+        unwrap(phoneNumber, selectedCard).mapAction { phoneNumber, selectedCard in
             coordinator.run(
                 with: .init(
                     lessonPlanId: lessonPlan.id,
