@@ -174,7 +174,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/stripe-ios</string>
 			<key>Title</key>
-			<string>Stripe (21.7.0)</string>
+			<string>Stripe (21.8.1)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -230,7 +230,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/swift-nonempty</string>
 			<key>Title</key>
-			<string>swift-nonempty (0.3.1)</string>
+			<string>swift-nonempty (0.4.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -310,7 +310,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/xctest-dynamic-overlay</string>
 			<key>Title</key>
-			<string>xctest-dynamic-overlay (0.1.1)</string>
+			<string>xctest-dynamic-overlay (0.2.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
