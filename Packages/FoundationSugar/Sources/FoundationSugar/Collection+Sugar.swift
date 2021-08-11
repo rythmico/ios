@@ -6,7 +6,8 @@ extension Collection {
 
 extension Collection {
     public subscript(safe index: Int) -> Element? {
-        dropFirst(index).first
+        guard index >= 0 else { return nil }
+        return dropFirst(index).first
     }
 }
 
