@@ -30,7 +30,7 @@ extension Tutor {
 
     static let screenshotCallumStub = Self(
         id: .random(),
-        name: "Callum",
+        name: "Callum S",
         photoURL: .url(callumPhotoURL),
         thumbnailURL: .url(callumPhotoURL),
         instruments: []
@@ -40,7 +40,7 @@ extension Tutor {
 
     static let screenshotMarshaStub = Self(
         id: .random(),
-        name: "Marsha",
+        name: "Marsha F",
         photoURL: .url(marshaPhotoURL),
         thumbnailURL: .url(marshaPhotoURL),
         instruments: []
@@ -50,7 +50,7 @@ extension Tutor {
 
     static let screenshotStephStub = Self(
         id: .random(),
-        name: "Steph",
+        name: "Steph F",
         photoURL: .url(stephPhotoURL),
         thumbnailURL: .url(stephPhotoURL),
         instruments: []
