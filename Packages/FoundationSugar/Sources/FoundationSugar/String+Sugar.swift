@@ -79,6 +79,11 @@ extension StringProtocol {
             .compactMap { $0.first?.uppercased() }
             .joined()
     }
+
+    public var words: [String] {
+        self.components(separatedBy: .whitespacesAndNewlines)
+            .filter(\.isBlank.not)
+    }
 }
 
 extension Collection where Element: StringProtocol {
