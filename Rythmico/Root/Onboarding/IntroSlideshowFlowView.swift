@@ -1,65 +1,107 @@
 import SwiftUISugar
 
+extension ContentSizeCategory: Comparable {}
+
+struct OnAppearTransitionModifier: ViewModifier {
+    let transition: AnyTransition
+    let animation: Animation?
+
+    @State private var appeared = false
+
+    func body(content: Content) -> some View {
+        ZStack {
+            if appeared {
+                content.transition(transition)
+            }
+        }
+        .animation(animation, value: appeared)
+        .onAppear { appeared = true }
+    }
+}
+
+extension View {
+    func onAppearTransition(_ transition: AnyTransition, animation: Animation? = .none) -> some View {
+        self.modifier(OnAppearTransitionModifier(transition: transition, animation: animation))
+    }
+}
+
 struct IntroSlideshowFlowView<EndButton: View>: View {
+    @Environment(\.sizeCategory) private var sizeCategory
+
     @ViewBuilder
     var endButton: () -> EndButton
 
     var body: some View {
-        SlideshowFlowView(Step.self, content: \.content, endButton: endButton)
-    }
-}
+        VStack(spacing: spacing) {
+            VStack(spacing: spacing) {
+                Image(decorative: Asset.Logo.rythmico.name).resizable().aspectRatio(contentMode: .fit).frame(width: 40)
+                    .modifier(onAppearOffsetTransitionModifier(delay: 2))
+                Text("Welcome to Rythmico")
+                    .rythmicoTextStyle(.headline)
+                    .lineLimit(1)
+                    .modifier(onAppearOffsetTransitionModifier(delay: 3))
+                Text("Rythmico is a first-class music tutoring marketplace.")
+                    .rythmicoTextStyle(.subheadline)
+                    .modifier(onAppearOffsetTransitionModifier(delay: 4))
 
-extension IntroSlideshowFlowView {
-    enum Step: SlideshowFlowStep {
-        case one
-        case two
-        case three
-
-        var asset: ImageAsset {
-            switch self {
-            case .one: return Asset.Graphic.Onboarding.a
-            case .two: return Asset.Graphic.Onboarding.b
-            case .three: return Asset.Graphic.Onboarding.c
-            }
-        }
-
-        var title: String {
-            switch self {
-            case .one: return "1:1 Personal Tuition"
-            case .two: return "Verified DBS-checked Tutors"
-            case .three: return "The Complete Musician"
-            }
-        }
-
-        var description: String {
-            switch self {
-            case .one:
-                return "An exciting and creative experience where kids can explore their talents and hone their skills."
-            case .two:
-                return "All tutors are DBS checked with years of experience working with children, helping them dream big."
-            case .three:
-                return "Lessons that will support you through your music grades, but feel like band practice."
-            }
-        }
-
-        @ViewBuilder
-        var content: some View {
-            VStack(spacing: .grid(6)) {
-                Image(decorative: asset.name)
-                VStack(spacing: .grid(2)) {
-                    Text(title)
-                        .rythmicoTextStyle(.headline)
-                        .lineLimit(1)
-                    Text(description)
-                        .rythmicoTextStyle(.subheadline)
-                        .lineLimit(3)
+                HDivider().frame(width: 80).modifier(onAppearOpacityTransitionModifier(delay: 4.5))
+                Text {
+                    "The booking process is "
+                    "simple".text.rythmicoFontWeight(.subheadlineBold)
+                    " and "
+                    "convenient".text.rythmicoFontWeight(.subheadlineBold)
+                    "."
                 }
-                .minimumScaleFactor(0.5)
-                .foregroundColor(.rythmico.foreground)
-                .multilineTextAlignment(.center)
+                .rythmicoTextStyle(.subheadline)
+                .modifier(onAppearOffsetTransitionModifier(delay: 6))
+
+                Text {
+                    "Instead of having to look through dozens of tutor profiles, simply "
+                    "specify your requirements".text.rythmicoFontWeight(.subheadlineBold)
+                    " for a "
+                    "weekly lesson plan".text.rythmicoFontWeight(.subheadlineBold)
+                    " and have our top-tier tutors apply for your consideration."
+                }
+                .rythmicoTextStyle(.subheadline)
+                .modifier(onAppearOffsetTransitionModifier(delay: 9))
             }
+            .frame(maxHeight: .infinity)
             .padding(.horizontal, .grid(6))
+
+            endButton().padding(.horizontal, .grid(5)).modifier(onAppearOpacityTransitionModifier(delay: 13.5))
         }
+        .backgroundColor(.rythmico.background)
+        .minimumScaleFactor(0.5)
+        .foregroundColor(.rythmico.foreground)
+        .multilineTextAlignment(.center)
+        .padding(.vertical, spacing)
+        .environment(\.sizeCategory, min(sizeCategory, maxSizeCategory))
+    }
+
+    private var spacing: CGFloat {
+        isCompact ? .grid(4) : .grid(5)
+    }
+
+    private var maxSizeCategory: ContentSizeCategory {
+        isCompact ? .extraExtraLarge : .extraExtraExtraLarge
+    }
+
+    private var isCompact: Bool {
+        UIScreen.main.bounds.height <= 568 // iPhone 5/SE size.
+    }
+
+    private func onAppearOffsetTransitionModifier(delay: Double = 0) -> some ViewModifier {
+        OnAppearTransitionModifier(
+            transition: .offset(y: 70) + .opacity,
+            animation: .rythmicoSpring(duration: .durationMedium).delay(delay)
+        )
+    }
+
+    private func onAppearOpacityTransitionModifier(delay: Double = 0) -> some ViewModifier {
+        OnAppearTransitionModifier(
+            transition: .opacity,
+            animation: .rythmicoSpring(duration: .durationMedium).delay(delay)
+        )
     }
 }
 
