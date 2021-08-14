@@ -2,6 +2,10 @@ import SwiftUISugar
 
 extension ContentSizeCategory: Comparable {}
 
+// TODO: implement in a less hardcoded way
+// Avg reading speed (words per second): 200/60
+// Use String.words from FoundationSugar to calculate animation delay between paragraphs
+
 struct OnAppearTransitionModifier: ViewModifier {
     let transition: AnyTransition
     let animation: Animation?
