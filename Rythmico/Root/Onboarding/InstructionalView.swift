@@ -5,10 +5,13 @@ extension ContentSizeCategory: Comparable {}
 struct InstructionalView<EndButton: View>: View {
     @Environment(\.sizeCategory) private var sizeCategory
 
-    private let teleprompter = Teleprompter(mode: .animated(initialDelay: 2))
+    private let teleprompter: Teleprompter
+    private let endButton: EndButton
 
-    @ViewBuilder
-    var endButton: () -> EndButton
+    init(animated: Bool, @ViewBuilder endButton: () -> EndButton) {
+        self.teleprompter = Teleprompter(mode: animated ? .animated(initialDelay: 2) : .static)
+        self.endButton = endButton()
+    }
 
     var body: some View {
         VStack(spacing: spacing) {
@@ -44,7 +47,7 @@ struct InstructionalView<EndButton: View>: View {
             .padding(.horizontal, .grid(6))
 
             teleprompter.view(transition: .opacity, importance: .prominent) {
-                endButton().padding(.horizontal, .grid(5))
+                endButton.padding(.horizontal, .grid(5))
             }
         }
         .backgroundColor(.rythmico.background)
@@ -71,7 +74,7 @@ struct InstructionalView<EndButton: View>: View {
 #if DEBUG
 struct InstructionalView_Preview: PreviewProvider {
     static var previews: some View {
-        InstructionalView {
+        InstructionalView(animated: false) {
             RythmicoButton("Done", style: .secondary(), action: nil)
         }
 //        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
