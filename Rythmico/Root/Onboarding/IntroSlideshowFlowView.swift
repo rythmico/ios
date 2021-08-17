@@ -5,7 +5,7 @@ extension ContentSizeCategory: Comparable {}
 struct IntroSlideshowFlowView<EndButton: View>: View {
     @Environment(\.sizeCategory) private var sizeCategory
 
-    private let teleprompter = TeleprompterCoordinator(mode: .animated(initialDelay: 2))
+    private let teleprompter = Teleprompter(mode: .animated(initialDelay: 2))
 
     @ViewBuilder
     var endButton: () -> EndButton

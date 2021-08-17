@@ -1,6 +1,6 @@
 import SwiftUISugar
 
-final class TeleprompterCoordinator {
+final class Teleprompter {
     enum Mode {
         case `static`
         case animated(initialDelay: Double)
@@ -112,13 +112,13 @@ final class TeleprompterCoordinator {
     }
 }
 
-extension TeleprompterCoordinator.TextElement: ExpressibleByStringLiteral {
+extension Teleprompter.TextElement: ExpressibleByStringLiteral {
     init(stringLiteral value: String) {
         self.init(style: .none, string: value)
     }
 }
 
-func <- (lhs: String, rhs: Font.RythmicoTextStyle) -> TeleprompterCoordinator.TextElement {
+func <- (lhs: String, rhs: Font.RythmicoTextStyle) -> Teleprompter.TextElement {
     .init(style: rhs, string: lhs)
 }
 
