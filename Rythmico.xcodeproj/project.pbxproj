@@ -448,6 +448,7 @@
 		D5AFED4325057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */; };
 		D5B056A225B21843000D0046 /* DirectURLVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B056A125B21843000D0046 /* DirectURLVideoPlayerView.swift */; };
 		D5B23EC526CC1F06006CD660 /* LoadableCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B23EC426CC1F06006CD660 /* LoadableCollectionView.swift */; };
+		D5B23EC726CC2497006CD660 /* WhatIsRythmicoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B23EC626CC2497006CD660 /* WhatIsRythmicoView.swift */; };
 		D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A64241479F300BE9B4F /* Assets.generated.swift */; };
 		D5B57A712419F79700BE9B4F /* SectionHeaderContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A702419F79700BE9B4F /* SectionHeaderContentView.swift */; };
 		D5B57A75241A018900BE9B4F /* SchedulingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A74241A018900BE9B4F /* SchedulingView.swift */; };
@@ -986,6 +987,7 @@
 		D5B13B2D23D125E6006CBC46 /* AuthenticationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceDoubles.swift; sourceTree = "<group>"; };
 		D5B13B2F23D1265F006CBC46 /* UserCredentialDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialDoubles.swift; sourceTree = "<group>"; };
 		D5B23EC426CC1F06006CD660 /* LoadableCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableCollectionView.swift; sourceTree = "<group>"; };
+		D5B23EC626CC2497006CD660 /* WhatIsRythmicoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatIsRythmicoView.swift; sourceTree = "<group>"; };
 		D5B57A64241479F300BE9B4F /* Assets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.generated.swift; sourceTree = "<group>"; };
 		D5B57A702419F79700BE9B4F /* SectionHeaderContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderContentView.swift; sourceTree = "<group>"; };
 		D5B57A74241A018900BE9B4F /* SchedulingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulingView.swift; sourceTree = "<group>"; };
@@ -1632,6 +1634,7 @@
 				D57DE17E264DCA6B00C5E118 /* ProfilePushNotificationsCell.swift */,
 				D57DE17A264DC2AE00C5E118 /* ProfileSection.swift */,
 				03EDA6782476F2CB00FBE527 /* ProfileView.swift */,
+				D5B23EC626CC2497006CD660 /* WhatIsRythmicoView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -2894,6 +2897,7 @@
 				D5DAD27A2677B51F0014702F /* LessonPlan+Analytics.swift in Sources */,
 				D535554723E20076005A20EB /* Colors.swift in Sources */,
 				D527B00B24FD3297003E81A9 /* AvatarStackView.swift in Sources */,
+				D5B23EC726CC2497006CD660 /* WhatIsRythmicoView.swift in Sources */,
 				D52438FF268A6D3C00E2D859 /* LessonPlanApplicationDoubles.swift in Sources */,
 				D53555B923E53699005A20EB /* AuthenticationServiceDoubles.swift in Sources */,
 				D5444FEC2602777D00369BA5 /* ImageProcessingService.swift in Sources */,
