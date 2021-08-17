@@ -285,6 +285,7 @@
 		D5363C5B2628933500C81466 /* DMSans-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5363C552628933500C81466 /* DMSans-MediumItalic.ttf */; };
 		D5363C5C2628933500C81466 /* DMSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5363C562628933500C81466 /* DMSans-Regular.ttf */; };
 		D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = D53668FC255EEDEF00A9D97D /* Stripe */; };
+		D53E5E4226CBF72900116D62 /* TeleprompterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53E5E4126CBF72900116D62 /* TeleprompterCoordinator.swift */; };
 		D54317F423FDB0DD00CB1493 /* RequestLessonPlanFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54317F323FDB0DD00CB1493 /* RequestLessonPlanFlow.swift */; };
 		D54340ED261E3C03006898B0 /* AnalyticsUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340EC261E3C03006898B0 /* AnalyticsUserProfile.swift */; };
 		D54340F3261E72F8006898B0 /* AccessibilitySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340F2261E72F8006898B0 /* AccessibilitySettings.swift */; };
@@ -861,6 +862,7 @@
 		D5363C542628933400C81466 /* DMSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Medium.ttf"; sourceTree = "<group>"; };
 		D5363C552628933500C81466 /* DMSans-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-MediumItalic.ttf"; sourceTree = "<group>"; };
 		D5363C562628933500C81466 /* DMSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Regular.ttf"; sourceTree = "<group>"; };
+		D53E5E4126CBF72900116D62 /* TeleprompterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleprompterCoordinator.swift; sourceTree = "<group>"; };
 		D54317F323FDB0DD00CB1493 /* RequestLessonPlanFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanFlow.swift; sourceTree = "<group>"; };
 		D54340EC261E3C03006898B0 /* AnalyticsUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsUserProfile.swift; sourceTree = "<group>"; };
 		D54340F2261E72F8006898B0 /* AccessibilitySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilitySettings.swift; sourceTree = "<group>"; };
@@ -1725,6 +1727,7 @@
 				D5ED168A2614BB40001841ED /* StackSpacing.swift */,
 				D50811E323FB72A3008103D8 /* StepBar.swift */,
 				D564F4632511722900EA13E9 /* TabMenuView.swift */,
+				D53E5E4126CBF72900116D62 /* TeleprompterCoordinator.swift */,
 				D5147506240C8E69002EE20C /* TestableView.swift */,
 				D5F5065E240055E800CA4094 /* TextFieldHeader.swift */,
 				D52C553B24DC74A200C295C4 /* TitleCell.swift */,
@@ -2932,6 +2935,7 @@
 				D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */,
 				D5D78DE025250864007041BE /* LessonPlanBookingView.swift in Sources */,
 				D5AFED4225057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */,
+				D53E5E4226CBF72900116D62 /* TeleprompterCoordinator.swift in Sources */,
 				D5D5E8B526878CCC00AACB8F /* CasePickable.swift in Sources */,
 				D55354F526C08FFD00E77CC4 /* PaymentMethodsView.swift in Sources */,
 				D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */,
