@@ -1,7 +1,5 @@
 import SwiftUISugar
 
-extension ContentSizeCategory: Comparable {}
-
 struct InstructionalView<EndButton: View>: View {
     @Environment(\.sizeCategory) private var sizeCategory
 
