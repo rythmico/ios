@@ -61,14 +61,18 @@ struct LessonsView: View, TestableView {
         TitleContentView(title, spacing: .grid(1)) { _ in
             VStack(spacing: 0) {
                 TabMenuView(tabs: Filter.allCases, selection: $tabSelection.lessonsTab)
-                LessonsCollectionView(lessonPlans: repository.items, filter: tabSelection.lessonsTab)
+                LessonsCollectionView(
+                    isLoading: coordinator.state.isLoading,
+                    lessonPlans: repository.items,
+                    filter: tabSelection.lessonsTab
+                )
             }
         }
         .backgroundColor(.rythmico.background)
         .accentColor(.rythmico.picoteeBlue)
         .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(leading: leadingItem, trailing: trailingItem)
+        .navigationBarItems(trailing: trailingItem)
         .testable(self)
         .onReceive(shouldFetchPublisher(), perform: fetch)
         // FIXME: double HTTP request for some reason
@@ -78,13 +82,6 @@ struct LessonsView: View, TestableView {
     }
 
     private var title: String { MainView.Tab.lessons.title }
-
-    @ViewBuilder
-    private var leadingItem: some View {
-        if coordinator.state.isLoading {
-            ActivityIndicator(color: .rythmico.foreground)
-        }
-    }
 
     @ViewBuilder
     private var trailingItem: some View {

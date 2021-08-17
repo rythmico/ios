@@ -1,10 +1,11 @@
 import SwiftUISugar
 
 struct LessonPlansCollectionView: View {
+    let isLoading: Bool
     let lessonPlans: [LessonPlan]
 
     var body: some View {
-        CollectionView(topPadding: 0) {
+        LoadableCollectionView(isLoading: isLoading, topPadding: false) {
             section("Pending", content: pendingPlans)
             section("Reviewing", content: reviewingPlans)
             section("Active", content: activePlans)
@@ -63,7 +64,7 @@ struct LessonPlansCollectionView: View {
 #if DEBUG
 struct LessonPlansCollectionView_Previews: PreviewProvider {
     static var previews: some View {
-        LessonPlansCollectionView(lessonPlans: .stub)
+        LessonPlansCollectionView(isLoading: false, lessonPlans: .stub)
     }
 }
 #endif
