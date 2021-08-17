@@ -1,6 +1,16 @@
 import SwiftUISugar
 
 final class TeleprompterCoordinator {
+    enum Mode {
+        case `static`
+        case animated(initialDelay: Double)
+
+        var initialDelay: Double {
+            guard case .animated(let initialDelay) = self else { return 0 }
+            return initialDelay
+        }
+    }
+
     enum Importance: Equatable {
         case transient
         case prominent
@@ -27,12 +37,12 @@ final class TeleprompterCoordinator {
         let string: String
     }
 
-    init(initialDelay: Double = 0) {
-        self.initialDelay = initialDelay
-        self._compoundedDelay = .init(currentValue: initialDelay)
+    init(mode: Mode) {
+        self.mode = mode
+        self._compoundedDelay = .init(currentValue: mode.initialDelay)
     }
 
-    private let initialDelay: Double
+    private let mode: Mode
     @RetainOldValue
     private var compoundedDelay: Double
 
@@ -80,20 +90,25 @@ final class TeleprompterCoordinator {
     }
 
     private func transitionModifier(_ transition: Transition, importance: Importance?, compoundingDelay delay: Double) -> some ViewModifier {
-        let deferred: Action
-        if importance == .transient {
-            let oldCompoundedDelay = compoundedDelay
-            let newCompoundedDelay = ($compoundedDelay ?? initialDelay) + delay
-            compoundedDelay = newCompoundedDelay
-            deferred = { self.compoundedDelay = oldCompoundedDelay + delay }
-        } else {
-            deferred = { self.compoundedDelay += delay }
+        switch mode {
+        case .animated(let initialDelay):
+            let deferred: Action
+            if importance == .transient {
+                let oldCompoundedDelay = compoundedDelay
+                let newCompoundedDelay = ($compoundedDelay ?? initialDelay) + delay
+                compoundedDelay = newCompoundedDelay
+                deferred = { self.compoundedDelay = oldCompoundedDelay + delay }
+            } else {
+                deferred = { self.compoundedDelay += delay }
+            }
+            defer { deferred() }
+            return OnAppearTransitionModifier(
+                transition: transition.anyTransition,
+                animation: .rythmicoSpring(duration: .durationMedium).delay(compoundedDelay)
+            )
+        case .static:
+            return OnAppearTransitionModifier(transition: .identity, animation: .none)
         }
-        defer { deferred() }
-        return OnAppearTransitionModifier(
-            transition: transition.anyTransition,
-            animation: .rythmicoSpring(duration: .durationMedium).delay(compoundedDelay)
-        )
     }
 }
 
