@@ -56,8 +56,8 @@ struct InstructionalView<EndButton: View>: View {
             }
         }
         .backgroundColor(.rythmico.background)
-        .minimumScaleFactor(0.5)
         .foregroundColor(.rythmico.foreground)
+        .minimumScaleFactor(0.5)
         .multilineTextAlignment(.center)
         .padding(.vertical, spacing)
         .environment(\.sizeCategory, min(sizeCategory, maxSizeCategory))
