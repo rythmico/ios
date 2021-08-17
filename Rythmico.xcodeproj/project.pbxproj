@@ -88,7 +88,6 @@
 		035B1D4F249E57DC00AABFEA /* VoiceOverServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF3092491A54E004A01B2 /* VoiceOverServiceDoubles.swift */; };
 		035B1D50249E57E200AABFEA /* URLOpenerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67E24776CEC00FBE527 /* URLOpenerDoubles.swift */; };
 		035B1D51249E57F100AABFEA /* HashFunction+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */; };
-		035B1D52249E57FD00AABFEA /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5068B24046B1400CA4094 /* Grid.swift */; };
 		035B1D53249E582800AABFEA /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6ED2447DFF900F6391D /* Animation.swift */; };
 		035B1D5B249E5E6E00AABFEA /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = 035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */; };
 		035B1D5E249E5EEC00AABFEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */; };
@@ -239,7 +238,7 @@
 		D52C554824DDC60900C295C4 /* FloatingView+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554624DDC60600C295C4 /* FloatingView+Tutor.swift */; };
 		D52C554C24DDE5FF00C295C4 /* RythmicoButton+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554B24DDE5FF00C295C4 /* RythmicoButton+Tutor.swift */; };
 		D52C555024E2ABFC00C295C4 /* MapOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52C554F24E2ABFC00C295C4 /* MapOpener.swift */; };
-		D52D8A59259D714B00A6CBBF /* OnboardingSlideshowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52D8A58259D714B00A6CBBF /* OnboardingSlideshowView.swift */; };
+		D52D8A59259D714B00A6CBBF /* SlideshowFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52D8A58259D714B00A6CBBF /* SlideshowFlowView.swift */; };
 		D530059D2679613D00F41B61 /* LessonPlanBookingEntryView+Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D530059C2679613D00F41B61 /* LessonPlanBookingEntryView+Analytics.swift */; };
 		D530059F2679623600F41B61 /* LessonPlanBookingView+Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D530059E2679623600F41B61 /* LessonPlanBookingView+Analytics.swift */; };
 		D531295D255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D531295C255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift */; };
@@ -286,6 +285,7 @@
 		D5363C5B2628933500C81466 /* DMSans-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5363C552628933500C81466 /* DMSans-MediumItalic.ttf */; };
 		D5363C5C2628933500C81466 /* DMSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5363C562628933500C81466 /* DMSans-Regular.ttf */; };
 		D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = D53668FC255EEDEF00A9D97D /* Stripe */; };
+		D53E5E4226CBF72900116D62 /* Teleprompter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53E5E4126CBF72900116D62 /* Teleprompter.swift */; };
 		D54317F423FDB0DD00CB1493 /* RequestLessonPlanFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54317F323FDB0DD00CB1493 /* RequestLessonPlanFlow.swift */; };
 		D54340ED261E3C03006898B0 /* AnalyticsUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340EC261E3C03006898B0 /* AnalyticsUserProfile.swift */; };
 		D54340F3261E72F8006898B0 /* AccessibilitySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340F2261E72F8006898B0 /* AccessibilitySettings.swift */; };
@@ -447,6 +447,8 @@
 		D5AFED4225057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */; };
 		D5AFED4325057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */; };
 		D5B056A225B21843000D0046 /* DirectURLVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B056A125B21843000D0046 /* DirectURLVideoPlayerView.swift */; };
+		D5B23EC526CC1F06006CD660 /* LoadableCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B23EC426CC1F06006CD660 /* LoadableCollectionView.swift */; };
+		D5B23EC726CC2497006CD660 /* WhatIsRythmicoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B23EC626CC2497006CD660 /* WhatIsRythmicoView.swift */; };
 		D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A64241479F300BE9B4F /* Assets.generated.swift */; };
 		D5B57A712419F79700BE9B4F /* SectionHeaderContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A702419F79700BE9B4F /* SectionHeaderContentView.swift */; };
 		D5B57A75241A018900BE9B4F /* SchedulingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A74241A018900BE9B4F /* SchedulingView.swift */; };
@@ -493,6 +495,7 @@
 		D5CC5FF225029525007DFE84 /* ImageReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CC5FF025029525007DFE84 /* ImageReference.swift */; };
 		D5CCC33225A4C66A00E25B62 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCC33125A4C66A00E25B62 /* ProfileView.swift */; };
 		D5CCC5532559D7F400FE8522 /* PhoneNumberOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CCC5522559D7F400FE8522 /* PhoneNumberOpener.swift */; };
+		D5CDF25C26C42E540039DECC /* InstructionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CDF25B26C42E540039DECC /* InstructionalView.swift */; };
 		D5CFB3732675242D006DBCE0 /* Amplitude in Frameworks */ = {isa = PBXBuildFile; productRef = D5CFB3722675242D006DBCE0 /* Amplitude */; };
 		D5D5B2CE26BD5EA7002B40F8 /* AppEnvironment_ScreenshotDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5B2CD26BD5EA7002B40F8 /* AppEnvironment_ScreenshotDoubles.swift */; };
 		D5D5B2D026BD6079002B40F8 /* Lesson_ScreenshotDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5B2CF26BD6079002B40F8 /* Lesson_ScreenshotDoubles.swift */; };
@@ -589,7 +592,6 @@
 		D5F5065F240055E800CA4094 /* TextFieldHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5065E240055E800CA4094 /* TextFieldHeader.swift */; };
 		D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */; };
 		D5F5067B2400788400CA4094 /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5067A2400788400CA4094 /* MultilineTextField.swift */; };
-		D5F5068C24046B1400CA4094 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5068B24046B1400CA4094 /* Grid.swift */; };
 		D5F506B02405A6A900CA4094 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506AF2405A6A900CA4094 /* Duration.swift */; };
 		D5F506B62406360900CA4094 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B52406360900CA4094 /* Student.swift */; };
 		D5F506BA240637F400CA4094 /* RythmicoButton+Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F506B9240637F400CA4094 /* RythmicoButton+Student.swift */; };
@@ -834,7 +836,7 @@
 		D52C554624DDC60600C295C4 /* FloatingView+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FloatingView+Tutor.swift"; sourceTree = "<group>"; };
 		D52C554B24DDE5FF00C295C4 /* RythmicoButton+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RythmicoButton+Tutor.swift"; sourceTree = "<group>"; };
 		D52C554F24E2ABFC00C295C4 /* MapOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOpener.swift; sourceTree = "<group>"; };
-		D52D8A58259D714B00A6CBBF /* OnboardingSlideshowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlideshowView.swift; sourceTree = "<group>"; };
+		D52D8A58259D714B00A6CBBF /* SlideshowFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideshowFlowView.swift; sourceTree = "<group>"; };
 		D530059C2679613D00F41B61 /* LessonPlanBookingEntryView+Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonPlanBookingEntryView+Analytics.swift"; sourceTree = "<group>"; };
 		D530059E2679623600F41B61 /* LessonPlanBookingView+Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonPlanBookingView+Analytics.swift"; sourceTree = "<group>"; };
 		D531295C255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentInfoAndSafetyView.swift; sourceTree = "<group>"; };
@@ -862,6 +864,7 @@
 		D5363C542628933400C81466 /* DMSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Medium.ttf"; sourceTree = "<group>"; };
 		D5363C552628933500C81466 /* DMSans-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-MediumItalic.ttf"; sourceTree = "<group>"; };
 		D5363C562628933500C81466 /* DMSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Regular.ttf"; sourceTree = "<group>"; };
+		D53E5E4126CBF72900116D62 /* Teleprompter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teleprompter.swift; sourceTree = "<group>"; };
 		D54317F323FDB0DD00CB1493 /* RequestLessonPlanFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanFlow.swift; sourceTree = "<group>"; };
 		D54340EC261E3C03006898B0 /* AnalyticsUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsUserProfile.swift; sourceTree = "<group>"; };
 		D54340F2261E72F8006898B0 /* AccessibilitySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilitySettings.swift; sourceTree = "<group>"; };
@@ -983,6 +986,8 @@
 		D5B13B2B23D12520006CBC46 /* UserCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredential.swift; sourceTree = "<group>"; };
 		D5B13B2D23D125E6006CBC46 /* AuthenticationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceDoubles.swift; sourceTree = "<group>"; };
 		D5B13B2F23D1265F006CBC46 /* UserCredentialDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialDoubles.swift; sourceTree = "<group>"; };
+		D5B23EC426CC1F06006CD660 /* LoadableCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableCollectionView.swift; sourceTree = "<group>"; };
+		D5B23EC626CC2497006CD660 /* WhatIsRythmicoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatIsRythmicoView.swift; sourceTree = "<group>"; };
 		D5B57A64241479F300BE9B4F /* Assets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.generated.swift; sourceTree = "<group>"; };
 		D5B57A702419F79700BE9B4F /* SectionHeaderContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderContentView.swift; sourceTree = "<group>"; };
 		D5B57A74241A018900BE9B4F /* SchedulingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulingView.swift; sourceTree = "<group>"; };
@@ -1023,6 +1028,7 @@
 		D5CC5FF025029525007DFE84 /* ImageReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReference.swift; sourceTree = "<group>"; };
 		D5CCC33125A4C66A00E25B62 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		D5CCC5522559D7F400FE8522 /* PhoneNumberOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberOpener.swift; sourceTree = "<group>"; };
+		D5CDF25B26C42E540039DECC /* InstructionalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionalView.swift; sourceTree = "<group>"; };
 		D5D5B2CD26BD5EA7002B40F8 /* AppEnvironment_ScreenshotDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment_ScreenshotDoubles.swift; sourceTree = "<group>"; };
 		D5D5B2CF26BD6079002B40F8 /* Lesson_ScreenshotDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson_ScreenshotDoubles.swift; sourceTree = "<group>"; };
 		D5D5B2D126BD609E002B40F8 /* Tutor_ScreenshotDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutor_ScreenshotDoubles.swift; sourceTree = "<group>"; };
@@ -1098,7 +1104,6 @@
 		D5F5065E240055E800CA4094 /* TextFieldHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldHeader.swift; sourceTree = "<group>"; };
 		D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleContentView.swift; sourceTree = "<group>"; };
 		D5F5067A2400788400CA4094 /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
-		D5F5068B24046B1400CA4094 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		D5F506AF2405A6A900CA4094 /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
 		D5F506B52406360900CA4094 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		D5F506B9240637F400CA4094 /* RythmicoButton+Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RythmicoButton+Student.swift"; sourceTree = "<group>"; };
@@ -1629,6 +1634,7 @@
 				D57DE17E264DCA6B00C5E118 /* ProfilePushNotificationsCell.swift */,
 				D57DE17A264DC2AE00C5E118 /* ProfileSection.swift */,
 				03EDA6782476F2CB00FBE527 /* ProfileView.swift */,
+				D5B23EC626CC2497006CD660 /* WhatIsRythmicoView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1692,7 +1698,6 @@
 				D52C554624DDC60600C295C4 /* FloatingView+Tutor.swift */,
 				D5D5E8B12685586800AACB8F /* FlowView+Sugar.swift */,
 				D5E04B1823BED80700A161BB /* Fonts.swift */,
-				D5F5068B24046B1400CA4094 /* Grid.swift */,
 				D5F4D3FA24F7120E000E8580 /* GroupedButton.swift */,
 				D5B8E08426B9C76800A46705 /* HeadlineContentView.swift */,
 				D516A928253A554F002E6EDF /* ImageAsset+Sugar.swift */,
@@ -1704,6 +1709,7 @@
 				D5E8AC8725CB298000F663D3 /* InfoDisclaimerButton.swift */,
 				D5B8E07A26B8547800A46705 /* InlineContentTitleSubtitleView.swift */,
 				D5B8E07C26B8548500A46705 /* InlineContentTitleView.swift */,
+				D5B23EC426CC1F06006CD660 /* LoadableCollectionView.swift */,
 				03B1984424719105005529EB /* LoadingView.swift */,
 				D56C6A99264AE85500A2599E /* MainViewContent.swift */,
 				D5F5067A2400788400CA4094 /* MultilineTextField.swift */,
@@ -1727,6 +1733,7 @@
 				D5ED168A2614BB40001841ED /* StackSpacing.swift */,
 				D50811E323FB72A3008103D8 /* StepBar.swift */,
 				D564F4632511722900EA13E9 /* TabMenuView.swift */,
+				D53E5E4126CBF72900116D62 /* Teleprompter.swift */,
 				D5147506240C8E69002EE20C /* TestableView.swift */,
 				D5F5065E240055E800CA4094 /* TextFieldHeader.swift */,
 				D52C553B24DC74A200C295C4 /* TitleCell.swift */,
@@ -1967,7 +1974,8 @@
 				D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */,
 				D5FA706726A34CDA00E6FF30 /* OnboardingViewCore.swift */,
 				D535553523E105A5005A20EB /* OnboardingViewTests.swift */,
-				D52D8A58259D714B00A6CBBF /* OnboardingSlideshowView.swift */,
+				D5CDF25B26C42E540039DECC /* InstructionalView.swift */,
+				D52D8A58259D714B00A6CBBF /* SlideshowFlowView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -2889,6 +2897,7 @@
 				D5DAD27A2677B51F0014702F /* LessonPlan+Analytics.swift in Sources */,
 				D535554723E20076005A20EB /* Colors.swift in Sources */,
 				D527B00B24FD3297003E81A9 /* AvatarStackView.swift in Sources */,
+				D5B23EC726CC2497006CD660 /* WhatIsRythmicoView.swift in Sources */,
 				D52438FF268A6D3C00E2D859 /* LessonPlanApplicationDoubles.swift in Sources */,
 				D53555B923E53699005A20EB /* AuthenticationServiceDoubles.swift in Sources */,
 				D5444FEC2602777D00369BA5 /* ImageProcessingService.swift in Sources */,
@@ -2921,6 +2930,7 @@
 				03EDA6792476F2CB00FBE527 /* ProfileView.swift in Sources */,
 				03EDA67F24776CEC00FBE527 /* URLOpenerDoubles.swift in Sources */,
 				D5243909268A6F2600E2D859 /* LessonPlanCancellationInfo.swift in Sources */,
+				D5CDF25C26C42E540039DECC /* InstructionalView.swift in Sources */,
 				D55F013124CCCEDE00E5F13C /* Repository.swift in Sources */,
 				D509D838265EE56100B60DF0 /* LessonPlanResumingContentView.swift in Sources */,
 				D5B8E08B26BADC7500A46705 /* LessonDetailBoxView.swift in Sources */,
@@ -2932,6 +2942,7 @@
 				D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */,
 				D5D78DE025250864007041BE /* LessonPlanBookingView.swift in Sources */,
 				D5AFED4225057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */,
+				D53E5E4226CBF72900116D62 /* Teleprompter.swift in Sources */,
 				D5D5E8B526878CCC00AACB8F /* CasePickable.swift in Sources */,
 				D55354F526C08FFD00E77CC4 /* PaymentMethodsView.swift in Sources */,
 				D52C554424DDC53400C295C4 /* FloatingView+Rythmico.swift in Sources */,
@@ -2939,7 +2950,7 @@
 				D5D5B2D826BF2783002B40F8 /* LessonOptionsButton.swift in Sources */,
 				D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */,
 				D549218F25BB27E200251FD2 /* APIActivityErrorHandler.swift in Sources */,
-				D52D8A59259D714B00A6CBBF /* OnboardingSlideshowView.swift in Sources */,
+				D52D8A59259D714B00A6CBBF /* SlideshowFlowView.swift in Sources */,
 				D575C86E254F2F82001664AB /* ActivityCoordinator+Sugar.swift in Sources */,
 				D5D9AE682533ADA400A0ABCC /* Checkout.swift in Sources */,
 				D501588525376EC0005E02FA /* DismissKeyboardTooltip.swift in Sources */,
@@ -3107,13 +3118,13 @@
 				D5F7A5132597B92100A9FF56 /* ImageOverlayModifier.swift in Sources */,
 				D54EFF142513D5BF004F14D3 /* TutorProfileDetailsView.swift in Sources */,
 				03B19843247181B3005529EB /* RequestLessonPlanFlowView.swift in Sources */,
+				D5B23EC526CC1F06006CD660 /* LoadableCollectionView.swift in Sources */,
 				D56C6A9A264AE85500A2599E /* MainViewContent.swift in Sources */,
 				035B1D14249E565200AABFEA /* TestableView.swift in Sources */,
 				D54317F423FDB0DD00CB1493 /* RequestLessonPlanFlow.swift in Sources */,
 				D5AC9E26254D8AD7003A8197 /* AppDoubles.swift in Sources */,
 				D50158AF2538BFDD005E02FA /* CardSetupCredentialDoubles.swift in Sources */,
 				033D47D6247ABF6B0096C50F /* LessonPlanEndpoints.swift in Sources */,
-				D5F5068C24046B1400CA4094 /* Grid.swift in Sources */,
 				D535547923DF3A7C005A20EB /* Keychain.swift in Sources */,
 				D5FA706526A3448A00E6FF30 /* AuthenticationErrorDoubles.swift in Sources */,
 				D57DE181264DCAC900C5E118 /* ProfileCalendarSyncCell.swift in Sources */,
@@ -3261,7 +3272,6 @@
 				D5E58F18256AF2BA00EB52ED /* Student.swift in Sources */,
 				D524D0C525046BAE00BC9AF7 /* PushNotificationRegisterServiceDoubles.swift in Sources */,
 				D524D0C425046BA900BC9AF7 /* PushNotificationRegisterService.swift in Sources */,
-				035B1D52249E57FD00AABFEA /* Grid.swift in Sources */,
 				035B1D30249E571B00AABFEA /* VoiceOverService.swift in Sources */,
 				D5AC9E27254D8AD7003A8197 /* AppDoubles.swift in Sources */,
 				D5F4D3F424F33C9E000E8580 /* Address.swift in Sources */,

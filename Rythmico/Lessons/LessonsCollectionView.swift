@@ -1,10 +1,12 @@
 import SwiftUISugar
 
 struct LessonsCollectionView: View {
+    let isLoading: Bool
     let lessonPlans: [LessonPlan]
     let lessons: [Lesson]
 
-    init(lessonPlans: [LessonPlan], filter: LessonsView.Filter) {
+    init(isLoading: Bool, lessonPlans: [LessonPlan], filter: LessonsView.Filter) {
+        self.isLoading = isLoading
         switch filter {
         case .upcoming:
             self.lessonPlans = lessonPlans.filterRequests()
@@ -16,7 +18,7 @@ struct LessonsCollectionView: View {
     }
 
     var body: some View {
-        CollectionView {
+        LoadableCollectionView(isLoading: isLoading, topPadding: true) {
             ForEach(lessonPlans) { lessonPlan in
                 LessonPlanSummaryCell(lessonPlan: lessonPlan).transition(transition)
             }

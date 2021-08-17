@@ -12,10 +12,7 @@ struct OnboardingView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        VStack(spacing: 0) {
-            Spacer(minLength: 0)
-            OnboardingSlideshowView()
-            Spacer(minLength: .grid(5))
+        InstructionalView(headline: "Welcome to Rythmico", animated: true) {
             AppleIDAuthButton(action: authenticateWithApple)
                 .accessibility(hint: Text("Double tap to sign in with your Apple ID"))
                 .disabled(!isAppleAuthorizationButtonEnabled)
@@ -25,9 +22,9 @@ struct OnboardingView: View, TestableView {
                         ActivityIndicator(color: .rythmico.foreground)
                     }
                 })
-                .padding([.horizontal, .bottom], .grid(6))
         }
         .backgroundColor(.rythmico.background)
+        .allowsHitTesting(!isLoading)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isLoading)
         .alert(error: errorMessage, dismiss: dismissError)
         .onDisappear {

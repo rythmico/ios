@@ -5,7 +5,7 @@ extension Dictionary {
 }
 
 extension Dictionary where Value: OptionalProtocol {
-    public func compact() -> [Key: Value.Wrapped] {
+    public func compacted() -> [Key: Value.Wrapped] {
         compactMapValues(\.value)
     }
 }

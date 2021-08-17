@@ -36,8 +36,6 @@ struct LessonOptionsButton: View {
     }
 
     private var showSkipLessonFormAction: Action? {
-        LessonSkippingScreen(lesson: lesson).map { screen in
-            { navigator.go(to: screen, on: currentScreen) }
-        }
+        LessonSkippingScreen(lesson: lesson).mapAction { navigator.go(to: $0, on: currentScreen) }
     }
 }

@@ -73,22 +73,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
 
     // MARK: - Next Button -
     var nextButtonAction: Action? {
-        guard
-            let name = sanitizedName,
-            let dateOfBirth = state.dateOfBirth
-        else {
-            return nil
-        }
-
-        return {
-            setter(
-                Student(
-                    name: name,
-                    dateOfBirth: dateOfBirth,
-                    about: sanitizedAbout
-                )
-            )
-        }
+        unwrap(sanitizedName, state.dateOfBirth, sanitizedAbout).map(Student.init).mapAction(setter)
     }
 
     // MARK: - Body -

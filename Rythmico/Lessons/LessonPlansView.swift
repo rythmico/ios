@@ -32,26 +32,18 @@ struct LessonPlansView: View {
 
     var body: some View {
         TitleContentView(title) { _ in
-            LessonPlansCollectionView(lessonPlans: repository.items)
+            LessonPlansCollectionView(isLoading: coordinator.state.isLoading, lessonPlans: repository.items)
         }
         .backgroundColor(.rythmico.background)
         .accentColor(.rythmico.picoteeBlue)
         .navigationBarTitle(title)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(leading: leadingItem)
         .onAppear(perform: coordinator.startToIdle)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
     }
 
     private var title: String { "Lesson Plans" }
-
-    @ViewBuilder
-    private var leadingItem: some View {
-        if coordinator.state.isLoading {
-            ActivityIndicator(color: .rythmico.foreground)
-        }
-    }
 }
 
 #if DEBUG

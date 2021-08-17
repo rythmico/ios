@@ -4,13 +4,14 @@ import AuthenticationServices
 
 public struct AppleIDAuthButton: View {
     private enum Const {
-        static let maxWidth: CGFloat = 320
-        static let regularHeight: CGFloat = 44
+        static let maxWidth: CGFloat = .grid(.max)
+        static let regularHeight: CGFloat = 48
     }
 
     @Environment(\.colorScheme)
     private var colorScheme
-    @ScaledMetric(relativeTo: .largeTitle)
+    // TODO: make `RythmicoButton` heights adaptable
+//    @ScaledMetric(relativeTo: .largeTitle)
     private var height = Const.regularHeight
 
     public var type: SignInWithAppleButton.Label
@@ -25,6 +26,7 @@ public struct AppleIDAuthButton: View {
         Button(action: action) {
             SignInWithAppleButton(type, onRequest: { _ in }, onCompletion: { _ in })
                 .signInWithAppleButtonStyle(colorScheme == .dark ? .white : .black)
+                .cornerRadius(4)
                 .allowsHitTesting(false)
         }
         .frame(maxWidth: Const.maxWidth)

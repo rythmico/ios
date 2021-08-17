@@ -136,7 +136,7 @@ extension Font {
 extension Dictionary where Key == NSAttributedString.Key, Value == Any {
     @DictionaryBuilder<Key, Value>
     static func rythmicoTextAttributes(color: UIColor?, style: Font.RythmicoTextStyle) -> Self {
-        [.foregroundColor: color].compact()
+        [.foregroundColor: color].compacted()
         [.font: UIFont.rythmicoFont(style)]
         [.tracking: style.tracking]
         [.paragraphStyle: NSMutableParagraphStyle().with {

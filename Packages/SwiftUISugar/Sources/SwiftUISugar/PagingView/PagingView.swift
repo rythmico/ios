@@ -5,6 +5,7 @@ public struct PagingView<Data: RandomAccessCollection, Selection: Hashable, Cont
     private let fixedHeight: CGFloat?
     private let spacing: CGFloat
     private let accentColor: Color
+    private let showsIndicator: Bool
     private let content: (Data.Element) -> Content
 
     public init(
@@ -13,6 +14,7 @@ public struct PagingView<Data: RandomAccessCollection, Selection: Hashable, Cont
         fixedHeight: CGFloat? = nil,
         spacing: CGFloat,
         accentColor: Color,
+        showsIndicator: Bool = true,
         @ViewBuilder content: @escaping (Data.Element) -> Content
     ) {
         self.data = data
@@ -20,6 +22,7 @@ public struct PagingView<Data: RandomAccessCollection, Selection: Hashable, Cont
         self.fixedHeight = fixedHeight
         self.spacing = spacing
         self.accentColor = accentColor
+        self.showsIndicator = showsIndicator
         self.content = content
     }
 
@@ -32,12 +35,14 @@ public struct PagingView<Data: RandomAccessCollection, Selection: Hashable, Cont
             .frame(idealHeight: fixedHeight)
             .fixedSize(horizontal: false, vertical: fixedHeight != nil)
 
-            PagingIndicator(
-                selection: $selection,
-                items: data,
-                foregroundColor: accentColor.opacity(0.25),
-                accentColor: accentColor
-            )
+            if showsIndicator {
+                PagingIndicator(
+                    selection: $selection,
+                    items: data,
+                    foregroundColor: accentColor.opacity(0.25),
+                    accentColor: accentColor
+                )
+            }
         }
     }
 }
