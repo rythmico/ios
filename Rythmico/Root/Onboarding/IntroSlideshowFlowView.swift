@@ -30,9 +30,12 @@ final class TeleprompterCoordinator {
     }
 
     init(initialDelay: Double = 0) {
-        self.compoundedDelay = initialDelay
+        self.initialDelay = initialDelay
+        self._compoundedDelay = .init(currentValue: initialDelay)
     }
 
+    private let initialDelay: Double
+    @RetainOldValue
     private var compoundedDelay: Double
 
     @ViewBuilder
@@ -65,9 +68,9 @@ final class TeleprompterCoordinator {
     private func transitionModifier(_ transition: Transition, importance: Importance) -> some ViewModifier {
         switch importance {
         case .transient:
-            return transitionModifier(transition, compoundingDelay: 0.5)
+            return transitionModifier(transition, importance: importance, compoundingDelay: 0.5)
         case .prominent:
-            return transitionModifier(transition, compoundingDelay: 1)
+            return transitionModifier(transition, importance: importance, compoundingDelay: 1)
         }
     }
 
@@ -75,11 +78,20 @@ final class TeleprompterCoordinator {
         let wordCount = Double(elements.map(\.string).joined().words.count)
         let avgReadingSpeed: Double = 200/60 // avg words per minute / 60 seconds = avg words per second
         let delay = wordCount / avgReadingSpeed
-        return transitionModifier(transition, compoundingDelay: delay)
+        return transitionModifier(transition, importance: nil, compoundingDelay: delay)
     }
 
-    private func transitionModifier(_ transition: Transition, compoundingDelay delay: Double) -> some ViewModifier {
-        defer { compoundedDelay += delay }
+    private func transitionModifier(_ transition: Transition, importance: Importance?, compoundingDelay delay: Double) -> some ViewModifier {
+        let deferred: Action
+        if importance == .transient {
+            let oldCompoundedDelay = compoundedDelay
+            let newCompoundedDelay = ($compoundedDelay ?? initialDelay) + delay
+            compoundedDelay = newCompoundedDelay
+            deferred = { self.compoundedDelay = oldCompoundedDelay + delay }
+        } else {
+            deferred = { self.compoundedDelay += delay }
+        }
+        defer { deferred() }
         return OnAppearTransitionModifier(
             transition: transition.anyTransition,
             animation: .rythmicoSpring(duration: .durationMedium).delay(compoundedDelay)
@@ -95,6 +107,22 @@ extension TeleprompterCoordinator.TextElement: ExpressibleByStringLiteral {
 
 func <- (lhs: String, rhs: Font.RythmicoTextStyle) -> TeleprompterCoordinator.TextElement {
     .init(style: rhs, string: lhs)
+}
+
+@propertyWrapper
+private struct RetainOldValue<T> {
+    /// Old value
+    private(set) var projectedValue: T? = nil
+    /// Current value
+    var wrappedValue: T {
+        willSet {
+            projectedValue = wrappedValue
+        }
+    }
+
+    init(currentValue: T) {
+        self.wrappedValue = currentValue
+    }
 }
 
 private struct OnAppearTransitionModifier: ViewModifier {
