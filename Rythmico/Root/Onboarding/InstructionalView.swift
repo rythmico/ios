@@ -2,7 +2,7 @@ import SwiftUISugar
 
 extension ContentSizeCategory: Comparable {}
 
-struct IntroSlideshowFlowView<EndButton: View>: View {
+struct InstructionalView<EndButton: View>: View {
     @Environment(\.sizeCategory) private var sizeCategory
 
     private let teleprompter = Teleprompter(mode: .animated(initialDelay: 2))
@@ -69,9 +69,9 @@ struct IntroSlideshowFlowView<EndButton: View>: View {
 }
 
 #if DEBUG
-struct IntroSlideshowFlowView_Preview: PreviewProvider {
+struct InstructionalView_Preview: PreviewProvider {
     static var previews: some View {
-        IntroSlideshowFlowView {
+        InstructionalView {
             RythmicoButton("Done", style: .secondary(), action: nil)
         }
 //        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)

@@ -12,7 +12,7 @@ struct OnboardingView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        IntroSlideshowFlowView {
+        InstructionalView {
             AppleIDAuthButton(action: authenticateWithApple)
                 .accessibility(hint: Text("Double tap to sign in with your Apple ID"))
                 .disabled(!isAppleAuthorizationButtonEnabled)
