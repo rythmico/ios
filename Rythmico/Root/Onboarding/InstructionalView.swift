@@ -5,10 +5,12 @@ extension ContentSizeCategory: Comparable {}
 struct InstructionalView<EndButton: View>: View {
     @Environment(\.sizeCategory) private var sizeCategory
 
+    private let headline: String?
     private let teleprompter: Teleprompter
     private let endButton: EndButton
 
-    init(animated: Bool, @ViewBuilder endButton: () -> EndButton) {
+    init(headline: String?, animated: Bool, @ViewBuilder endButton: () -> EndButton) {
+        self.headline = headline
         self.teleprompter = Teleprompter(mode: animated ? .animated(initialDelay: 2) : .static)
         self.endButton = endButton()
     }
@@ -19,8 +21,10 @@ struct InstructionalView<EndButton: View>: View {
                 teleprompter.view(importance: .prominent) {
                     Image(decorative: Asset.Logo.rythmico.name).resizable().aspectRatio(contentMode: .fit).frame(width: 40)
                 }
-                teleprompter.text(style: .headline, lineLimit: 1) {
-                    "Welcome to Rythmico"
+                if let headline = headline {
+                    teleprompter.text(style: .headline, lineLimit: 1) {
+                        .init(string: headline)
+                    }
                 }
                 teleprompter.text(style: .subheadline) {
                     "Rythmico is a first-class music tutoring marketplace."
@@ -74,7 +78,7 @@ struct InstructionalView<EndButton: View>: View {
 #if DEBUG
 struct InstructionalView_Preview: PreviewProvider {
     static var previews: some View {
-        InstructionalView(animated: false) {
+        InstructionalView(headline: "What is Rythmico?", animated: false) {
             RythmicoButton("Done", style: .secondary(), action: nil)
         }
 //        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)

@@ -12,7 +12,7 @@ struct OnboardingView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        InstructionalView(animated: true) {
+        InstructionalView(headline: "Welcome to Rythmico", animated: true) {
             AppleIDAuthButton(action: authenticateWithApple)
                 .accessibility(hint: Text("Double tap to sign in with your Apple ID"))
                 .disabled(!isAppleAuthorizationButtonEnabled)
