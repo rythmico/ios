@@ -22,9 +22,10 @@ struct InstructionalView<EndButton: View>: View {
                     Image(decorative: Asset.Logo.rythmico.name).resizable().aspectRatio(contentMode: .fit).frame(width: 40)
                 }
                 if let headline = headline {
-                    teleprompter.text(style: .headline, lineLimit: 1) {
+                    teleprompter.text(style: .headline) {
                         .init(string: headline)
                     }
+                    .lineLimit(1)
                 }
                 teleprompter.text(style: .subheadline) {
                     "Rythmico is a first-class music tutoring marketplace."

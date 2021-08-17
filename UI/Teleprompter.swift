@@ -60,7 +60,6 @@ final class Teleprompter {
         transition: Transition = .default,
         separator: String = .empty,
         style: Font.RythmicoTextStyle,
-        lineLimit: Int? = nil,
         @ArrayBuilder<TextElement> _ elements: () -> [TextElement]
     ) -> some View {
         let elements = elements()
@@ -68,8 +67,6 @@ final class Teleprompter {
             .map { Text($0.string).rythmicoFontWeight($0.style ?? style) }
             .joined(separator: Text(separator))
             .rythmicoTextStyle(style)
-            .lineLimit(lineLimit)
-            .minimumScaleFactor(lineLimit == nil ? 1 : 0.5)
             .modifier(transitionModifier(transition, for: elements))
     }
 
