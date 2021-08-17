@@ -447,6 +447,7 @@
 		D5AFED4225057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */; };
 		D5AFED4325057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */; };
 		D5B056A225B21843000D0046 /* DirectURLVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B056A125B21843000D0046 /* DirectURLVideoPlayerView.swift */; };
+		D5B23EC526CC1F06006CD660 /* LoadableCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B23EC426CC1F06006CD660 /* LoadableCollectionView.swift */; };
 		D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A64241479F300BE9B4F /* Assets.generated.swift */; };
 		D5B57A712419F79700BE9B4F /* SectionHeaderContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A702419F79700BE9B4F /* SectionHeaderContentView.swift */; };
 		D5B57A75241A018900BE9B4F /* SchedulingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A74241A018900BE9B4F /* SchedulingView.swift */; };
@@ -984,6 +985,7 @@
 		D5B13B2B23D12520006CBC46 /* UserCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredential.swift; sourceTree = "<group>"; };
 		D5B13B2D23D125E6006CBC46 /* AuthenticationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceDoubles.swift; sourceTree = "<group>"; };
 		D5B13B2F23D1265F006CBC46 /* UserCredentialDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialDoubles.swift; sourceTree = "<group>"; };
+		D5B23EC426CC1F06006CD660 /* LoadableCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableCollectionView.swift; sourceTree = "<group>"; };
 		D5B57A64241479F300BE9B4F /* Assets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.generated.swift; sourceTree = "<group>"; };
 		D5B57A702419F79700BE9B4F /* SectionHeaderContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderContentView.swift; sourceTree = "<group>"; };
 		D5B57A74241A018900BE9B4F /* SchedulingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulingView.swift; sourceTree = "<group>"; };
@@ -1704,6 +1706,7 @@
 				D5E8AC8725CB298000F663D3 /* InfoDisclaimerButton.swift */,
 				D5B8E07A26B8547800A46705 /* InlineContentTitleSubtitleView.swift */,
 				D5B8E07C26B8548500A46705 /* InlineContentTitleView.swift */,
+				D5B23EC426CC1F06006CD660 /* LoadableCollectionView.swift */,
 				03B1984424719105005529EB /* LoadingView.swift */,
 				D56C6A99264AE85500A2599E /* MainViewContent.swift */,
 				D5F5067A2400788400CA4094 /* MultilineTextField.swift */,
@@ -3111,6 +3114,7 @@
 				D5F7A5132597B92100A9FF56 /* ImageOverlayModifier.swift in Sources */,
 				D54EFF142513D5BF004F14D3 /* TutorProfileDetailsView.swift in Sources */,
 				03B19843247181B3005529EB /* RequestLessonPlanFlowView.swift in Sources */,
+				D5B23EC526CC1F06006CD660 /* LoadableCollectionView.swift in Sources */,
 				D56C6A9A264AE85500A2599E /* MainViewContent.swift in Sources */,
 				035B1D14249E565200AABFEA /* TestableView.swift in Sources */,
 				D54317F423FDB0DD00CB1493 /* RequestLessonPlanFlow.swift in Sources */,
