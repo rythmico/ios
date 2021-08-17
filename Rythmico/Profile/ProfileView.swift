@@ -20,8 +20,6 @@ struct ProfileScreen: Screen {
 }
 
 struct ProfileView: View, TestableView {
-    var title: String { "Profile" }
-
     let inspection = SelfInspection()
     var body: some View {
         TitleContentView(title, spacing: .grid(0)) { _ in
@@ -51,6 +49,8 @@ struct ProfileView: View, TestableView {
         .navigationBarTitleDisplayMode(.inline)
         .testable(self)
     }
+
+    private var title: String { "Profile" }
 }
 
 #if DEBUG
