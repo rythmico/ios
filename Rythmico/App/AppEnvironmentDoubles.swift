@@ -92,6 +92,8 @@ extension AppEnvironment {
             lessonPlanCompleteCheckoutService: APIServiceDummy(),
             lessonPlanRepository: Repository(),
 
+            appStoreReviewPrompt: .dummy,
+
             lessonSkippingService: APIServiceDummy(),
 
             portfolioFetchingService: APIServiceDummy(),

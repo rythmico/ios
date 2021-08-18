@@ -68,6 +68,8 @@ struct AppEnvironment {
     var lessonPlanCompleteCheckoutCoordinator: () -> APIActivityCoordinator<CompleteLessonPlanCheckoutRequest>
     var lessonPlanRepository: Repository<LessonPlan>
 
+    var appStoreReviewPrompt: AppStoreReviewPrompt
+
     var lessonSkippingCoordinator: () -> APIActivityCoordinator<SkipLessonRequest>
 
     var portfolioFetchingCoordinator: () -> APIActivityCoordinator<GetPortfolioRequest>
@@ -137,6 +139,8 @@ struct AppEnvironment {
         lessonPlanGetCheckoutService: APIServiceBase<GetLessonPlanCheckoutRequest>,
         lessonPlanCompleteCheckoutService: APIServiceBase<CompleteLessonPlanCheckoutRequest>,
         lessonPlanRepository: Repository<LessonPlan>,
+
+        appStoreReviewPrompt: AppStoreReviewPrompt,
 
         lessonSkippingService: APIServiceBase<SkipLessonRequest>,
 
@@ -235,6 +239,8 @@ struct AppEnvironment {
         self.lessonPlanCompleteCheckoutCoordinator = { coordinator(for: lessonPlanCompleteCheckoutService) }
         self.lessonPlanRepository = lessonPlanRepository
 
+        self.appStoreReviewPrompt = appStoreReviewPrompt
+
         self.lessonSkippingCoordinator = { coordinator(for: lessonSkippingService) }
 
         self.portfolioFetchingCoordinator = { coordinator(for: portfolioFetchingService) }
@@ -315,6 +321,8 @@ extension AppEnvironment {
         lessonPlanGetCheckoutService: APIService(),
         lessonPlanCompleteCheckoutService: APIService(),
         lessonPlanRepository: Repository(),
+
+        appStoreReviewPrompt: .live,
 
         lessonSkippingService: APIService(),
 
