@@ -41,6 +41,7 @@ struct ProfileView: View, TestableView {
                     ProfileParentInfoCell()
                     ProfileTermsAndPoliciesCell()
                 }
+                ProfileRateUsOnAppStoreCell()
                 #if DEBUG
                 Section {
                     ProfileLogOutCell()

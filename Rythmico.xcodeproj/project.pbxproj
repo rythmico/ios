@@ -451,6 +451,7 @@
 		D5B23EC726CC2497006CD660 /* WhatIsRythmicoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B23EC626CC2497006CD660 /* WhatIsRythmicoView.swift */; };
 		D5B4A1F626CD55D7006EAD18 /* AppStoreReviewPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4A1F526CD55D7006EAD18 /* AppStoreReviewPrompt.swift */; };
 		D5B4A1F826CD5686006EAD18 /* AppStoreReviewPromptDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4A1F726CD5686006EAD18 /* AppStoreReviewPromptDoubles.swift */; };
+		D5B4A1FB26CD5B3F006EAD18 /* ProfileRateUsOnAppStoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4A1FA26CD5B3F006EAD18 /* ProfileRateUsOnAppStoreCell.swift */; };
 		D5B4A1FD26CD5E1B006EAD18 /* ProfileTermsAndPoliciesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4A1FC26CD5E1B006EAD18 /* ProfileTermsAndPoliciesCell.swift */; };
 		D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A64241479F300BE9B4F /* Assets.generated.swift */; };
 		D5B57A712419F79700BE9B4F /* SectionHeaderContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A702419F79700BE9B4F /* SectionHeaderContentView.swift */; };
@@ -993,6 +994,7 @@
 		D5B23EC626CC2497006CD660 /* WhatIsRythmicoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatIsRythmicoView.swift; sourceTree = "<group>"; };
 		D5B4A1F526CD55D7006EAD18 /* AppStoreReviewPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReviewPrompt.swift; sourceTree = "<group>"; };
 		D5B4A1F726CD5686006EAD18 /* AppStoreReviewPromptDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReviewPromptDoubles.swift; sourceTree = "<group>"; };
+		D5B4A1FA26CD5B3F006EAD18 /* ProfileRateUsOnAppStoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRateUsOnAppStoreCell.swift; sourceTree = "<group>"; };
 		D5B4A1FC26CD5E1B006EAD18 /* ProfileTermsAndPoliciesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTermsAndPoliciesCell.swift; sourceTree = "<group>"; };
 		D5B57A64241479F300BE9B4F /* Assets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.generated.swift; sourceTree = "<group>"; };
 		D5B57A702419F79700BE9B4F /* SectionHeaderContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderContentView.swift; sourceTree = "<group>"; };
@@ -1641,6 +1643,7 @@
 				D57DE17E264DCA6B00C5E118 /* ProfilePushNotificationsCell.swift */,
 				D57DE17A264DC2AE00C5E118 /* ProfileSection.swift */,
 				03EDA6782476F2CB00FBE527 /* ProfileView.swift */,
+				D5B4A1FA26CD5B3F006EAD18 /* ProfileRateUsOnAppStoreCell.swift */,
 				D5B4A1FC26CD5E1B006EAD18 /* ProfileTermsAndPoliciesCell.swift */,
 				D5B23EC626CC2497006CD660 /* WhatIsRythmicoView.swift */,
 			);
@@ -3021,6 +3024,7 @@
 				D54340FD261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift in Sources */,
 				D5F506B02405A6A900CA4094 /* Duration.swift in Sources */,
 				D5D5B2CE26BD5EA7002B40F8 /* AppEnvironment_ScreenshotDoubles.swift in Sources */,
+				D5B4A1FB26CD5B3F006EAD18 /* ProfileRateUsOnAppStoreCell.swift in Sources */,
 				D5AAF7D923F9EB1200E410F2 /* InstrumentSelectionListProviderDoubles.swift in Sources */,
 				D5B8E07D26B8548500A46705 /* InlineContentTitleView.swift in Sources */,
 				D50158AA2538BF63005E02FA /* CardSetupCredential.swift in Sources */,
