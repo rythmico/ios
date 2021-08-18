@@ -37,9 +37,11 @@ struct ProfileView: View, TestableView {
                     ProfileCalendarSyncCell()
                 }
                 ProfileSection("Help & Support") {
-                    ProfileParentInfoCell()
                     ProfileContactUsCell()
+                    ProfileParentInfoCell()
+                    ProfileTermsAndPoliciesCell()
                 }
+                ProfileRateUsOnAppStoreCell()
                 #if DEBUG
                 Section {
                     ProfileLogOutCell()

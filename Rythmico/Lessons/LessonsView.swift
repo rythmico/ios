@@ -48,7 +48,9 @@ struct LessonsView: View, TestableView {
     @ObservedObject
     private var coordinator = Current.lessonPlanFetchingCoordinator
     @State
-    private var hasFetchedLessonPlansAtLeastOnce = false
+    private var hasAutoPresentedRequestFlow = false
+    @State
+    private var hasRequestedAppStoreReview = false
     @ObservedObject
     private var repository = Current.lessonPlanRepository
 
@@ -100,11 +102,16 @@ struct LessonsView: View, TestableView {
     func onLessonPlansFetched(_ lessonPlans: [LessonPlan]) {
         repository.setItems(lessonPlans)
         Current.analytics.updateLessonPlanStats(lessonPlans)
-        guard !hasFetchedLessonPlansAtLeastOnce else { return }
-        hasFetchedLessonPlansAtLeastOnce = true
         if lessonPlans.isEmpty {
-            presentRequestLessonFlow()
+            if !hasAutoPresentedRequestFlow {
+                hasAutoPresentedRequestFlow = true
+                presentRequestLessonFlow()
+            }
         } else {
+            if !hasRequestedAppStoreReview {
+                hasRequestedAppStoreReview = true
+                Current.appStoreReviewPrompt.requestReview()
+            }
             Current.pushNotificationAuthorizationCoordinator.requestAuthorization()
         }
     }
