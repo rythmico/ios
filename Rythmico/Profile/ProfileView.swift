@@ -37,8 +37,8 @@ struct ProfileView: View, TestableView {
                     ProfileCalendarSyncCell()
                 }
                 ProfileSection("Help & Support") {
-                    ProfileParentInfoCell()
                     ProfileContactUsCell()
+                    ProfileParentInfoCell()
                     ProfileTermsAndPoliciesCell()
                 }
                 #if DEBUG
