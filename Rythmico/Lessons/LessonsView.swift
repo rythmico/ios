@@ -49,6 +49,8 @@ struct LessonsView: View, TestableView {
     private var coordinator = Current.lessonPlanFetchingCoordinator
     @State
     private var hasAutoPresentedRequestFlow = false
+    @State
+    private var hasRequestedAppStoreReview = false
     @ObservedObject
     private var repository = Current.lessonPlanRepository
 
@@ -106,6 +108,10 @@ struct LessonsView: View, TestableView {
                 presentRequestLessonFlow()
             }
         } else {
+            if !hasRequestedAppStoreReview {
+                hasRequestedAppStoreReview = true
+                Current.appStoreReviewPrompt.requestReview()
+            }
             Current.pushNotificationAuthorizationCoordinator.requestAuthorization()
         }
     }
