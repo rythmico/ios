@@ -39,6 +39,7 @@ struct ProfileView: View, TestableView {
                 ProfileSection("Help & Support") {
                     ProfileParentInfoCell()
                     ProfileContactUsCell()
+                    ProfileTermsAndPoliciesCell()
                 }
                 #if DEBUG
                 Section {

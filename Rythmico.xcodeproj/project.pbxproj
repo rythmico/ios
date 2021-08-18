@@ -451,6 +451,7 @@
 		D5B23EC726CC2497006CD660 /* WhatIsRythmicoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B23EC626CC2497006CD660 /* WhatIsRythmicoView.swift */; };
 		D5B4A1F626CD55D7006EAD18 /* AppStoreReviewPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4A1F526CD55D7006EAD18 /* AppStoreReviewPrompt.swift */; };
 		D5B4A1F826CD5686006EAD18 /* AppStoreReviewPromptDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4A1F726CD5686006EAD18 /* AppStoreReviewPromptDoubles.swift */; };
+		D5B4A1FD26CD5E1B006EAD18 /* ProfileTermsAndPoliciesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4A1FC26CD5E1B006EAD18 /* ProfileTermsAndPoliciesCell.swift */; };
 		D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A64241479F300BE9B4F /* Assets.generated.swift */; };
 		D5B57A712419F79700BE9B4F /* SectionHeaderContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A702419F79700BE9B4F /* SectionHeaderContentView.swift */; };
 		D5B57A75241A018900BE9B4F /* SchedulingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A74241A018900BE9B4F /* SchedulingView.swift */; };
@@ -992,6 +993,7 @@
 		D5B23EC626CC2497006CD660 /* WhatIsRythmicoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatIsRythmicoView.swift; sourceTree = "<group>"; };
 		D5B4A1F526CD55D7006EAD18 /* AppStoreReviewPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReviewPrompt.swift; sourceTree = "<group>"; };
 		D5B4A1F726CD5686006EAD18 /* AppStoreReviewPromptDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReviewPromptDoubles.swift; sourceTree = "<group>"; };
+		D5B4A1FC26CD5E1B006EAD18 /* ProfileTermsAndPoliciesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTermsAndPoliciesCell.swift; sourceTree = "<group>"; };
 		D5B57A64241479F300BE9B4F /* Assets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.generated.swift; sourceTree = "<group>"; };
 		D5B57A702419F79700BE9B4F /* SectionHeaderContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderContentView.swift; sourceTree = "<group>"; };
 		D5B57A74241A018900BE9B4F /* SchedulingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulingView.swift; sourceTree = "<group>"; };
@@ -1639,6 +1641,7 @@
 				D57DE17E264DCA6B00C5E118 /* ProfilePushNotificationsCell.swift */,
 				D57DE17A264DC2AE00C5E118 /* ProfileSection.swift */,
 				03EDA6782476F2CB00FBE527 /* ProfileView.swift */,
+				D5B4A1FC26CD5E1B006EAD18 /* ProfileTermsAndPoliciesCell.swift */,
 				D5B23EC626CC2497006CD660 /* WhatIsRythmicoView.swift */,
 			);
 			path = Profile;
@@ -3004,6 +3007,7 @@
 				03B198582471BD82005529EB /* LessonPlanConfirmationView.swift in Sources */,
 				D5E04B1923BED80700A161BB /* Fonts.swift in Sources */,
 				03C39DD62496802500C76516 /* Pill.swift in Sources */,
+				D5B4A1FD26CD5E1B006EAD18 /* ProfileTermsAndPoliciesCell.swift in Sources */,
 				D54EFF0C2513CEF8004F14D3 /* LessonPlanApplicationDetailMessageView.swift in Sources */,
 				03EDA67D24776C6C00FBE527 /* URLOpener.swift in Sources */,
 				03A91EF8249189E000DEAD5E /* PushNotificationAuthorizationCoordinatorDoubles.swift in Sources */,
