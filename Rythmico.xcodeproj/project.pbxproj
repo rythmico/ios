@@ -449,6 +449,8 @@
 		D5B056A225B21843000D0046 /* DirectURLVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B056A125B21843000D0046 /* DirectURLVideoPlayerView.swift */; };
 		D5B23EC526CC1F06006CD660 /* LoadableCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B23EC426CC1F06006CD660 /* LoadableCollectionView.swift */; };
 		D5B23EC726CC2497006CD660 /* WhatIsRythmicoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B23EC626CC2497006CD660 /* WhatIsRythmicoView.swift */; };
+		D5B4A1F626CD55D7006EAD18 /* AppStoreReviewPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4A1F526CD55D7006EAD18 /* AppStoreReviewPrompt.swift */; };
+		D5B4A1F826CD5686006EAD18 /* AppStoreReviewPromptDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4A1F726CD5686006EAD18 /* AppStoreReviewPromptDoubles.swift */; };
 		D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A64241479F300BE9B4F /* Assets.generated.swift */; };
 		D5B57A712419F79700BE9B4F /* SectionHeaderContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A702419F79700BE9B4F /* SectionHeaderContentView.swift */; };
 		D5B57A75241A018900BE9B4F /* SchedulingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A74241A018900BE9B4F /* SchedulingView.swift */; };
@@ -988,6 +990,8 @@
 		D5B13B2F23D1265F006CBC46 /* UserCredentialDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialDoubles.swift; sourceTree = "<group>"; };
 		D5B23EC426CC1F06006CD660 /* LoadableCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableCollectionView.swift; sourceTree = "<group>"; };
 		D5B23EC626CC2497006CD660 /* WhatIsRythmicoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatIsRythmicoView.swift; sourceTree = "<group>"; };
+		D5B4A1F526CD55D7006EAD18 /* AppStoreReviewPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReviewPrompt.swift; sourceTree = "<group>"; };
+		D5B4A1F726CD5686006EAD18 /* AppStoreReviewPromptDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReviewPromptDoubles.swift; sourceTree = "<group>"; };
 		D5B57A64241479F300BE9B4F /* Assets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.generated.swift; sourceTree = "<group>"; };
 		D5B57A702419F79700BE9B4F /* SectionHeaderContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderContentView.swift; sourceTree = "<group>"; };
 		D5B57A74241A018900BE9B4F /* SchedulingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulingView.swift; sourceTree = "<group>"; };
@@ -1565,6 +1569,7 @@
 		03EDA6692476AD6800FBE527 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D5B4A1F926CD56CF006EAD18 /* AppStoreReviewPrompt */,
 				D54340F5261E7303006898B0 /* AccessibilitySettings */,
 				D5AFED4425057CB0003FFC68 /* ActivityCoordinator */,
 				D54CF08925FA8627007D5050 /* Analytics */,
@@ -2176,6 +2181,15 @@
 				D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */,
 			);
 			path = ActivityCoordinator;
+			sourceTree = "<group>";
+		};
+		D5B4A1F926CD56CF006EAD18 /* AppStoreReviewPrompt */ = {
+			isa = PBXGroup;
+			children = (
+				D5B4A1F526CD55D7006EAD18 /* AppStoreReviewPrompt.swift */,
+				D5B4A1F726CD5686006EAD18 /* AppStoreReviewPromptDoubles.swift */,
+			);
+			path = AppStoreReviewPrompt;
 			sourceTree = "<group>";
 		};
 		D5BF12B125068E2500B2931C /* PushNotificationEvent */ = {
@@ -2905,6 +2919,7 @@
 				D5E6A3EF25FE99FE00F74880 /* RootViewFlow.swift in Sources */,
 				D50811E423FB72A3008103D8 /* StepBar.swift in Sources */,
 				D57DE17F264DCA6B00C5E118 /* ProfilePushNotificationsCell.swift in Sources */,
+				D5B4A1F826CD5686006EAD18 /* AppStoreReviewPromptDoubles.swift in Sources */,
 				D5F506612400560000CA4094 /* TitleSubtitleContentView.swift in Sources */,
 				D59E4E5625B2033200E8F94C /* YouTubeVideoPlayerView.swift in Sources */,
 				D5D78E0C25257800007041BE /* PhoneNumberField.swift in Sources */,
@@ -2973,6 +2988,7 @@
 				03E88EAB24C1F5FE0077A420 /* AppContext.swift in Sources */,
 				D5015873253743C4005E02FA /* CardSetupServiceDoubles.swift in Sources */,
 				035AF30A2491A54E004A01B2 /* VoiceOverServiceDoubles.swift in Sources */,
+				D5B4A1F626CD55D7006EAD18 /* AppStoreReviewPrompt.swift in Sources */,
 				D54921C225BB3F9400251FD2 /* UserDefaults+Rythmico.swift in Sources */,
 				03AAF6712445E0FB002D8F5B /* Schedule.swift in Sources */,
 				03275AE3249070D5009C3980 /* DeviceEndpoints.swift in Sources */,
