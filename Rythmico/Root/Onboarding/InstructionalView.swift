@@ -53,7 +53,6 @@ struct InstructionalView<EndButton: View>: View {
                 endButton.padding(.horizontal, .grid(5))
             }
         }
-        .backgroundColor(.rythmico.background)
         .foregroundColor(.rythmico.foreground)
         .minimumScaleFactor(0.5)
         .multilineTextAlignment(.center)

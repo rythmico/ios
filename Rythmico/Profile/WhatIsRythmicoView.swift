@@ -22,6 +22,7 @@ struct WhatIsRythmicoView: View {
         InstructionalView(headline: "What is Rythmico?", animated: false) {
             RythmicoButton("OK", style: .primary(), action: dismiss)
         }
+        .backgroundColor(.rythmico.backgroundSecondary)
     }
 
     private func dismiss() {
