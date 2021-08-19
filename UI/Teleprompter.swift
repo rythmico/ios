@@ -32,6 +32,8 @@ final class Teleprompter {
         }
     }
 
+    private typealias TransitionModifier = OnAppearTransitionModifier
+
     // TODO: replace with AttributedString in iOS 15
     struct TextElement: Equatable {
         var style: Font.RythmicoTextStyle? = nil
@@ -49,16 +51,16 @@ final class Teleprompter {
 
     @ViewBuilder
     func view<Content: View>(
-        transition: Transition = .default,
+        transition: Transition? = .default,
         prominence: Prominence,
         @ViewBuilder content: () -> Content
     ) -> some View {
-        content().modifier(transitionModifier(transition, prominence: prominence))
+        content().ifLet(transitionModifier(transition, prominence: prominence)) { $0.modifier($1) }
     }
 
     @ViewBuilder
     func text(
-        transition: Transition = .default,
+        transition: Transition? = .default,
         separator: String = .empty,
         style: Font.RythmicoTextStyle,
         @ArrayBuilder<TextElement> _ elements: () -> [TextElement]
@@ -69,10 +71,10 @@ final class Teleprompter {
             .map { Text($0.string).rythmicoFontWeight($0.style ?? style) }
             .joined(separator: Text(separator))
             .rythmicoTextStyle(style)
-            .modifier(transitionModifier(transition, prominence: .text(string)))
+            .ifLet(transitionModifier(transition, prominence: .text(string))) { $0.modifier($1) }
     }
 
-    private func transitionModifier(_ transition: Transition, prominence: Prominence) -> some ViewModifier {
+    private func transitionModifier(_ transition: Transition?, prominence: Prominence) -> TransitionModifier? {
         switch prominence {
         case .low:
             return transitionModifier(transition, prominence: prominence, compoundingDelay: 0.5)
@@ -86,25 +88,32 @@ final class Teleprompter {
         }
     }
 
-    private func transitionModifier(_ transition: Transition, prominence: Prominence?, compoundingDelay delay: Double) -> some ViewModifier {
-        switch mode {
-        case .animated(let initialDelay):
-            let deferred: Action
-            if prominence == .low {
-                let oldCompoundedDelay = compoundedDelay
-                let newCompoundedDelay = ($compoundedDelay ?? initialDelay) + delay
-                compoundedDelay = newCompoundedDelay
-                deferred = { self.compoundedDelay = oldCompoundedDelay + delay }
-            } else {
-                deferred = { self.compoundedDelay += delay }
-            }
-            defer { deferred() }
+    private func transitionModifier(_ transition: Transition?, prominence: Prominence?, compoundingDelay delay: Double) -> TransitionModifier? {
+        let deferred: Action?
+        defer { deferred?() }
+
+        // Add to compounded delay
+        switch (mode, prominence) {
+        case (.animated(let initialDelay), .low):
+            let oldCompoundedDelay = compoundedDelay
+            let newCompoundedDelay = ($compoundedDelay ?? initialDelay) + delay
+            compoundedDelay = newCompoundedDelay
+            deferred = { self.compoundedDelay = oldCompoundedDelay + delay }
+        case (.animated, _):
+            deferred = { self.compoundedDelay += delay }
+        case (.static, _):
+            deferred = nil
+        }
+
+        // Return appropriate modifier
+        switch (mode, transition) {
+        case (.animated, let transition?):
             return OnAppearTransitionModifier(
                 transition: transition.anyTransition,
                 animation: .rythmicoSpring(duration: .durationMedium).delay(compoundedDelay)
             )
-        case .static:
-            return OnAppearTransitionModifier(transition: .identity, animation: .none)
+        case (.animated, .none), (.static, _):
+            return nil
         }
     }
 }
