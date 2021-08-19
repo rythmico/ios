@@ -28,7 +28,7 @@ struct InstructionalView<EndButton: View>: View {
                 teleprompter.text(style: .subheadline) {
                     "Rythmico is a first-class music tutoring marketplace."
                 }
-                teleprompter.view(importance: .transient) {
+                teleprompter.view(prominence: .low) {
                     HDivider().frame(width: 80)
                 }
                 teleprompter.text(style: .subheadline) {
@@ -49,7 +49,7 @@ struct InstructionalView<EndButton: View>: View {
             .frame(maxHeight: .infinity)
             .padding(.horizontal, .grid(6))
 
-            teleprompter.view(transition: .opacity, importance: .prominent) {
+            teleprompter.view(transition: .opacity, prominence: .normal) {
                 endButton.padding(.horizontal, .grid(5))
             }
         }

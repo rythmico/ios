@@ -11,9 +11,10 @@ final class Teleprompter {
         }
     }
 
-    enum Importance: Equatable {
-        case transient
-        case prominent
+    enum Prominence: Equatable {
+        case low
+        case normal
+        case text(String)
     }
 
     enum Transition: Equatable {
@@ -49,10 +50,10 @@ final class Teleprompter {
     @ViewBuilder
     func view<Content: View>(
         transition: Transition = .default,
-        importance: Importance,
+        prominence: Prominence,
         @ViewBuilder content: () -> Content
     ) -> some View {
-        content().modifier(transitionModifier(transition, importance: importance))
+        content().modifier(transitionModifier(transition, prominence: prominence))
     }
 
     @ViewBuilder
@@ -63,34 +64,33 @@ final class Teleprompter {
         @ArrayBuilder<TextElement> _ elements: () -> [TextElement]
     ) -> some View {
         let elements = elements()
+        let string = elements.map(\.string).joined()
         elements
             .map { Text($0.string).rythmicoFontWeight($0.style ?? style) }
             .joined(separator: Text(separator))
             .rythmicoTextStyle(style)
-            .modifier(transitionModifier(transition, for: elements))
+            .modifier(transitionModifier(transition, prominence: .text(string)))
     }
 
-    private func transitionModifier(_ transition: Transition, importance: Importance) -> some ViewModifier {
-        switch importance {
-        case .transient:
-            return transitionModifier(transition, importance: importance, compoundingDelay: 0.5)
-        case .prominent:
-            return transitionModifier(transition, importance: importance, compoundingDelay: 1)
+    private func transitionModifier(_ transition: Transition, prominence: Prominence) -> some ViewModifier {
+        switch prominence {
+        case .low:
+            return transitionModifier(transition, prominence: prominence, compoundingDelay: 0.5)
+        case .normal:
+            return transitionModifier(transition, prominence: prominence, compoundingDelay: 1)
+        case .text(let string):
+            let wordCount = Double(string.words.count)
+            let avgReadingSpeed: Double = 200/60 // avg words per minute / 60 seconds = avg words per second
+            let delay = wordCount / avgReadingSpeed
+            return transitionModifier(transition, prominence: nil, compoundingDelay: delay)
         }
     }
 
-    private func transitionModifier(_ transition: Transition, for elements: [TextElement]) -> some ViewModifier {
-        let wordCount = Double(elements.map(\.string).joined().words.count)
-        let avgReadingSpeed: Double = 200/60 // avg words per minute / 60 seconds = avg words per second
-        let delay = wordCount / avgReadingSpeed
-        return transitionModifier(transition, importance: nil, compoundingDelay: delay)
-    }
-
-    private func transitionModifier(_ transition: Transition, importance: Importance?, compoundingDelay delay: Double) -> some ViewModifier {
+    private func transitionModifier(_ transition: Transition, prominence: Prominence?, compoundingDelay delay: Double) -> some ViewModifier {
         switch mode {
         case .animated(let initialDelay):
             let deferred: Action
-            if importance == .transient {
+            if prominence == .low {
                 let oldCompoundedDelay = compoundedDelay
                 let newCompoundedDelay = ($compoundedDelay ?? initialDelay) + delay
                 compoundedDelay = newCompoundedDelay
