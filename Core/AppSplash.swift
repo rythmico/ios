@@ -39,7 +39,7 @@ struct AppSplash: View {
             VStack(spacing: .grid(6)) {
                 Image(decorative: image.name)
                     .resizable()
-                    .scaledToFit()
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: 68)
                 if !titleHidden {
                     Text(title)
