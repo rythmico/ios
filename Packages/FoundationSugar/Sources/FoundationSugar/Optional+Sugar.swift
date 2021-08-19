@@ -26,7 +26,7 @@ extension Optional where Wrapped: NSNumber {
 }
 
 extension Optional {
-    public func mapAction(_ transform: @escaping (Wrapped) -> Void) -> Action? {
+    public func mapToAction(_ transform: @escaping (Wrapped) -> Void) -> Action? {
         self.map { value in
             { transform(value) }
         }
