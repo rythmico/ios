@@ -27,7 +27,7 @@ final class CalendarSyncCoordinator: ObservableObject {
 
         self.calendarSyncStatusProvider.objectWillChange.receive(on: DispatchQueue.main).sink(receiveValue: objectWillChange.send).store(in: &cancellables)
         self.calendarInfoFetchingCoordinator.objectWillChange.receive(on: DispatchQueue.main).sink(receiveValue: objectWillChange.send).store(in: &cancellables)
-        self.eventEmitter.publisher(for: .EKEventStoreChanged).map { _ in () }.sink(receiveValue: eventStoreChanged).store(in: &cancellables)
+        self.eventEmitter.publisher(for: .EKEventStoreChanged).mapToVoid().sink(receiveValue: eventStoreChanged).store(in: &cancellables)
     }
 
     var isSyncingCalendar: Bool {
@@ -63,7 +63,7 @@ final class CalendarSyncCoordinator: ObservableObject {
     private func requestCalendarAccess() {
         calendarSyncStatusProvider.$status
             .filter(\.isNotSynced)
-            .map { _ in () }
+            .mapToVoid()
             .sink(receiveValue: fetchCalendarInfo)
             .store(in: &cancellables)
         calendarSyncStatusProvider.requestAccess()

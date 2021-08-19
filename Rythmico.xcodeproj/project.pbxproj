@@ -453,6 +453,8 @@
 		D5B4A1F826CD5686006EAD18 /* AppStoreReviewPromptDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4A1F726CD5686006EAD18 /* AppStoreReviewPromptDoubles.swift */; };
 		D5B4A1FB26CD5B3F006EAD18 /* ProfileRateUsOnAppStoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4A1FA26CD5B3F006EAD18 /* ProfileRateUsOnAppStoreCell.swift */; };
 		D5B4A1FD26CD5E1B006EAD18 /* ProfileTermsAndPoliciesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4A1FC26CD5E1B006EAD18 /* ProfileTermsAndPoliciesCell.swift */; };
+		D5B4A20226CEB983006EAD18 /* Publisher+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4A20126CEB983006EAD18 /* Publisher+Sugar.swift */; };
+		D5B4A20326CEB983006EAD18 /* Publisher+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4A20126CEB983006EAD18 /* Publisher+Sugar.swift */; };
 		D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A64241479F300BE9B4F /* Assets.generated.swift */; };
 		D5B57A712419F79700BE9B4F /* SectionHeaderContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A702419F79700BE9B4F /* SectionHeaderContentView.swift */; };
 		D5B57A75241A018900BE9B4F /* SchedulingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A74241A018900BE9B4F /* SchedulingView.swift */; };
@@ -996,6 +998,7 @@
 		D5B4A1F726CD5686006EAD18 /* AppStoreReviewPromptDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReviewPromptDoubles.swift; sourceTree = "<group>"; };
 		D5B4A1FA26CD5B3F006EAD18 /* ProfileRateUsOnAppStoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRateUsOnAppStoreCell.swift; sourceTree = "<group>"; };
 		D5B4A1FC26CD5E1B006EAD18 /* ProfileTermsAndPoliciesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTermsAndPoliciesCell.swift; sourceTree = "<group>"; };
+		D5B4A20126CEB983006EAD18 /* Publisher+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Sugar.swift"; sourceTree = "<group>"; };
 		D5B57A64241479F300BE9B4F /* Assets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.generated.swift; sourceTree = "<group>"; };
 		D5B57A702419F79700BE9B4F /* SectionHeaderContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderContentView.swift; sourceTree = "<group>"; };
 		D5B57A74241A018900BE9B4F /* SchedulingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulingView.swift; sourceTree = "<group>"; };
@@ -1566,6 +1569,7 @@
 				D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */,
 				03E88EB024C205C30077A420 /* Current.swift */,
 				D591C5B526699AA400A95938 /* DateComponents+Sugar.swift */,
+				D5B4A20126CEB983006EAD18 /* Publisher+Sugar.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -2888,6 +2892,7 @@
 				D54CF08E25FA8724007D5050 /* AnalyticsCoordinator.swift in Sources */,
 				D53555B623E53699005A20EB /* AuthenticationService.swift in Sources */,
 				D531295D255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift in Sources */,
+				D5B4A20226CEB983006EAD18 /* Publisher+Sugar.swift in Sources */,
 				D5DAD27C2679339B0014702F /* LessonPlanApplicationsView+Analytics.swift in Sources */,
 				D543CA732609227D00900975 /* CustomTextFieldInputMode.swift in Sources */,
 				D54CF08725FA8624007D5050 /* AnalyticsService.swift in Sources */,
@@ -3197,6 +3202,7 @@
 				D549219325BB27E700251FD2 /* APIActivityErrorHandler.swift in Sources */,
 				03E88EB224C205C30077A420 /* Current.swift in Sources */,
 				D5BF12BC2506926900B2931C /* PushNotificationEventHandler.swift in Sources */,
+				D5B4A20326CEB983006EAD18 /* Publisher+Sugar.swift in Sources */,
 				D527B01424FEA2DE003E81A9 /* ImageLoadingCoordinator.swift in Sources */,
 				D5444FF02602815000369BA5 /* ImageProcessingServiceDoubles.swift in Sources */,
 				03E88EB424C4AA4C0077A420 /* APIService.swift in Sources */,

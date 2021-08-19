@@ -47,7 +47,7 @@ struct BookingRequestsView: View {
     private func onRequestsOpenTabRootPublisher() -> AnyPublisher<Void, Never> {
         tabSelection.$mainTab.combineLatest(tabSelection.$requestsTab, bookingRequestsTabNavigation.$path.map(\.current))
             .filter { $0 == .requests && $1 == .open && $2.is(BookingRequestsTabScreen()) }
-            .map { _ in () }
+            .mapToVoid()
             .eraseToAnyPublisher()
     }
 

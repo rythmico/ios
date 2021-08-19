@@ -46,7 +46,7 @@ struct BookingsView: View {
     private func onScheduleUpcomingTabRootPublisher() -> AnyPublisher<Void, Never> {
         tabSelection.$mainTab//.combineLatest($requestsTab, $requestsContext)
             .filter { $0 == (.schedule) }
-            .map { _ in () }
+            .mapToVoid()
             .eraseToAnyPublisher()
     }
 

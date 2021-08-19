@@ -24,12 +24,12 @@ final class AnalyticsCoordinator {
         self.calendarSyncCoordinator = calendarSyncCoordinator
 
         userCredentialProvider.$userCredential
-            .map { _ in }
+            .mapToVoid()
             .sink(receiveValue: updateOrResetUserProfile)
             .store(in: &cancellables)
 
         notificationAuthCoordinator.$status
-            .map { _ in }
+            .mapToVoid()
             .sink(receiveValue: updateOrResetUserProfile)
             .store(in: &cancellables)
 
