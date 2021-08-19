@@ -1,13 +1,19 @@
 import SwiftUISugar
 
 struct InstructionalView<EndButton: View>: View {
+    @Environment(\.appSplashNamespace) private var appSplashNamespace
     @Environment(\.sizeCategory) private var sizeCategory
 
-    private let headline: String?
+    enum Headline {
+        case welcome
+        case whatIsRythmico
+    }
+
+    private let headline: Headline
     private let teleprompter: Teleprompter
     private let endButton: EndButton
 
-    init(headline: String?, animated: Bool, @ViewBuilder endButton: () -> EndButton) {
+    init(headline: Headline, animated: Bool, @ViewBuilder endButton: () -> EndButton) {
         self.headline = headline
         self.teleprompter = Teleprompter(mode: animated ? .animated(initialDelay: 2) : .static)
         self.endButton = endButton()
@@ -16,14 +22,17 @@ struct InstructionalView<EndButton: View>: View {
     var body: some View {
         VStack(spacing: spacing) {
             VStack(spacing: spacing) {
-                teleprompter.view(importance: .prominent) {
-                    Image(decorative: Asset.Logo.rythmico.name).resizable().aspectRatio(contentMode: .fit).frame(width: 40)
+                teleprompter.view(transition: .none, prominence: .normal) {
+                    Image.rythmicoLogo(width: 40, namespace: appSplashNamespace)
                 }
+
                 if let headline = headline {
-                    teleprompter.text(style: .headline) {
-                        .init(string: headline)
+                    teleprompter.view(transition: .none, prominence: .text(headline.string)) {
+                        Text(headline.string)
+                            .rythmicoTextStyle(.headline)
+                            .lineLimit(1)
+                            .ifLet(appSplashNamespace) { $0.matchedGeometryEffect(id: AppSplash.NamespaceTitleId(), in: $1) }
                     }
-                    .lineLimit(1)
                 }
                 teleprompter.text(style: .subheadline) {
                     "Rythmico is a first-class music tutoring marketplace."
@@ -73,10 +82,30 @@ struct InstructionalView<EndButton: View>: View {
     }
 }
 
+private extension InstructionalView.Headline {
+    var stringFragment: String? {
+        switch self {
+        case .welcome:
+            return "Rythmico"
+        case .whatIsRythmico:
+            return nil
+        }
+    }
+
+    var string: String {
+        switch self {
+        case .welcome:
+            return "Welcome to Rythmico"
+        case .whatIsRythmico:
+            return "What is Rythmico?"
+        }
+    }
+}
+
 #if DEBUG
 struct InstructionalView_Preview: PreviewProvider {
     static var previews: some View {
-        InstructionalView(headline: "What is Rythmico?", animated: false) {
+        InstructionalView(headline: .whatIsRythmico, animated: false) {
             RythmicoButton("Done", style: .secondary(), action: nil)
         }
 //        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
