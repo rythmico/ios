@@ -459,6 +459,7 @@
 		D5B4A20326CEB983006EAD18 /* Publisher+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4A20126CEB983006EAD18 /* Publisher+Sugar.swift */; };
 		D5B4A20526CED857006EAD18 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4A20426CED857006EAD18 /* AppView.swift */; };
 		D5B4A20626CED857006EAD18 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4A20426CED857006EAD18 /* AppView.swift */; };
+		D5B4A20826CEDC82006EAD18 /* TwoSidedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4A20726CEDC82006EAD18 /* TwoSidedText.swift */; };
 		D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A64241479F300BE9B4F /* Assets.generated.swift */; };
 		D5B57A712419F79700BE9B4F /* SectionHeaderContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A702419F79700BE9B4F /* SectionHeaderContentView.swift */; };
 		D5B57A75241A018900BE9B4F /* SchedulingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A74241A018900BE9B4F /* SchedulingView.swift */; };
@@ -1005,6 +1006,7 @@
 		D5B4A1FE26CEACE5006EAD18 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		D5B4A20126CEB983006EAD18 /* Publisher+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Sugar.swift"; sourceTree = "<group>"; };
 		D5B4A20426CED857006EAD18 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		D5B4A20726CEDC82006EAD18 /* TwoSidedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoSidedText.swift; sourceTree = "<group>"; };
 		D5B57A64241479F300BE9B4F /* Assets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.generated.swift; sourceTree = "<group>"; };
 		D5B57A702419F79700BE9B4F /* SectionHeaderContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderContentView.swift; sourceTree = "<group>"; };
 		D5B57A74241A018900BE9B4F /* SchedulingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulingView.swift; sourceTree = "<group>"; };
@@ -1762,6 +1764,7 @@
 				D52C553B24DC74A200C295C4 /* TitleCell.swift */,
 				03C39DD324967E5B00C76516 /* TitleContentView.swift */,
 				D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */,
+				D5B4A20726CEDC82006EAD18 /* TwoSidedText.swift */,
 				D5EEF6AC261BDE470014E500 /* XCTAssertText.swift */,
 				D5147507240C8E69002EE20C /* XCTAssertView.swift */,
 				D59E4E5325B2033200E8F94C /* YouTubeVideoPlayerView.swift */,
@@ -3122,6 +3125,7 @@
 				D53555CA23E536AE005A20EB /* AppleAuthorizationService.swift in Sources */,
 				D55354F326C08FE700E77CC4 /* ProfilePaymentMethodsCell.swift in Sources */,
 				D527B01724FEAA62003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */,
+				D5B4A20826CEDC82006EAD18 /* TwoSidedText.swift in Sources */,
 				D5BF12BB2506926900B2931C /* PushNotificationEventHandler.swift in Sources */,
 				0365F6F02417E79000F452AC /* Address.swift in Sources */,
 				D5ED326126065FEC00821ABE /* NonEditableTextField.swift in Sources */,
