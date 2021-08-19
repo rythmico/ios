@@ -27,9 +27,6 @@ struct OnboardingView: View, TestableView {
         .allowsHitTesting(!isLoading)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isLoading)
         .alert(error: errorMessage, dismiss: dismissError)
-        .onDisappear {
-            Current.voiceOver.announce("Welcome")
-        }
         .testable(self)
         .onAppear(perform: Current.deviceUnregisterCoordinator.unregisterDevice)
     }
