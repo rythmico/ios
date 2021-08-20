@@ -1,5 +1,5 @@
 extension View {
-    public func debugModifier<T: View>(_ modifier: (Self) -> T) -> some View {
+    public func debugModifier<T: View>(@ViewBuilder _ modifier: (Self) -> T) -> some View {
         #if DEBUG
         return modifier(self)
         #else
