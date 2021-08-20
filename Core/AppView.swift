@@ -1,8 +1,14 @@
 import SwiftUISugar
 
 struct AppView: View {
-    private enum Const {
-        static let splashFadeOutDelay: Double = 0.5
+    enum Const {
+        static let defaultFadeOutAnimationDelay: Double = 0.5
+        static let defaultFadeOutAnimationDuration: Double = .durationShort
+        static let defaultFadeOutAnimationElapseTime: Double = defaultFadeOutAnimationDelay + defaultFadeOutAnimationDuration
+
+        static let splashToOnboardingAnimationDelay: Double = 1
+        static let splashToOnboardingAnimationDuration: Double = .durationMedium
+        static let splashToOnboardingAnimationElapseTime: Double = splashToOnboardingAnimationDelay + splashToOnboardingAnimationDuration
     }
 
     enum Screen {
@@ -61,12 +67,12 @@ struct AppView: View {
         }
     }
 
-    private var splashToOnboardingAnimation: Animation {
-        .rythmicoSpring(duration: .durationMedium).delay(Const.splashFadeOutDelay * 2)
+    private var defaultFadeOutAnimation: Animation {
+        .rythmicoSpring(duration: Const.defaultFadeOutAnimationDuration).delay(Const.defaultFadeOutAnimationDelay)
     }
 
-    private var defaultFadeOutAnimation: Animation {
-        .rythmicoSpring(duration: .durationShort).delay(Const.splashFadeOutDelay)
+    private var splashToOnboardingAnimation: Animation {
+        .rythmicoSpring(duration: Const.splashToOnboardingAnimationDuration).delay(Const.splashToOnboardingAnimationDelay)
     }
 
     private static func refreshAppearance() {
