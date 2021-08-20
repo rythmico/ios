@@ -82,7 +82,7 @@ final class Teleprompter {
             return transitionModifier(transition, prominence: prominence, compoundingDelay: 1)
         case .text(let string):
             let wordCount = Double(string.words.count)
-            let avgReadingSpeed: Double = 200/60 // avg words per minute / 60 seconds = avg words per second
+            let avgReadingSpeed: Double = 250/60 // avg words per minute / 60 seconds = avg words per second
             let delay = wordCount / avgReadingSpeed
             return transitionModifier(transition, prominence: nil, compoundingDelay: delay)
         }
