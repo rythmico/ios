@@ -1,6 +1,7 @@
 import SwiftUISugar
+import Combine
 
-final class Teleprompter {
+final class Teleprompter: ObservableObject {
     enum Mode {
         case `static`
         case animated(initialDelay: Double)
@@ -40,9 +41,23 @@ final class Teleprompter {
         let string: String
     }
 
+    // TODO: improve this logic determining finished animations...
+    // currently it's time based, which is not the most reliable.
+    // AFAIK, SwiftUI lacks a mechanism to watch state `Transaction`s.
+    @Published
+    private(set) var isFinished = false
+    private let start = Date()
+    private let timer = Timer.publish(every: 0.5, on: .main, in: .default).autoconnect()
+
     init(mode: Mode) {
         self.mode = mode
         self._compoundedDelay = .init(currentValue: mode.initialDelay)
+        switch mode {
+        case .animated:
+            timer.map { $0.timeIntervalSince(self.start) >= self.compoundedDelay }.filter(\.isTrue).prefix(1).assign(to: &$isFinished)
+        case .static:
+            isFinished = true
+        }
     }
 
     private let mode: Mode

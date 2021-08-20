@@ -10,14 +10,15 @@ struct InstructionalView<EndButton: View>: View {
     }
 
     private let headline: Headline
-    private let teleprompter: Teleprompter
+    @StateObject
+    private var teleprompter: Teleprompter
     private let initialDelay: Double?
     private let endButton: EndButton
 
     init(headline: Headline, animated: Bool, @ViewBuilder endButton: () -> EndButton) {
         self.headline = headline
         let initialDelay = animated ? AppView.Const.splashToOnboardingAnimationElapseTime : nil
-        self.teleprompter = Teleprompter(mode: initialDelay.map(Teleprompter.Mode.animated) ?? .static)
+        self._teleprompter = .init(wrappedValue: Teleprompter(mode: initialDelay.map(Teleprompter.Mode.animated) ?? .static))
         self.initialDelay = initialDelay
         self.endButton = endButton()
     }
@@ -59,6 +60,7 @@ struct InstructionalView<EndButton: View>: View {
                 endButton.padding(.horizontal, .grid(5))
             }
         }
+        .disabled(!teleprompter.isFinished)
         .foregroundColor(.rythmico.foreground)
         .minimumScaleFactor(0.5)
         .multilineTextAlignment(.center)
