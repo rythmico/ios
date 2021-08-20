@@ -7,7 +7,7 @@ struct AppView: View {
         static let defaultFadeOutAnimationElapseTime: Double = defaultFadeOutAnimationDelay + defaultFadeOutAnimationDuration
 
         static let splashToOnboardingAnimationDelay: Double = 1
-        static let splashToOnboardingAnimationDuration: Double = .durationMedium
+        static let splashToOnboardingAnimationDuration: Double = .durationLong
         static let splashToOnboardingAnimationElapseTime: Double = splashToOnboardingAnimationDelay + splashToOnboardingAnimationDuration
     }
 
