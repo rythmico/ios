@@ -11,11 +11,14 @@ struct InstructionalView<EndButton: View>: View {
 
     private let headline: Headline
     private let teleprompter: Teleprompter
+    private let initialDelay: Double?
     private let endButton: EndButton
 
     init(headline: Headline, animated: Bool, @ViewBuilder endButton: () -> EndButton) {
         self.headline = headline
-        self.teleprompter = Teleprompter(mode: animated ? .animated(initialDelay: 2) : .static)
+        let initialDelay = animated ? AppView.Const.splashToOnboardingAnimationElapseTime : nil
+        self.teleprompter = Teleprompter(mode: initialDelay.map(Teleprompter.Mode.animated) ?? .static)
+        self.initialDelay = initialDelay
         self.endButton = endButton()
     }
 
@@ -25,14 +28,8 @@ struct InstructionalView<EndButton: View>: View {
                 teleprompter.view(transition: .none, prominence: .normal) {
                     Image.rythmicoLogo(width: 40, namespace: appSplashNamespace)
                 }
-
-                if let headline = headline {
-                    teleprompter.view(transition: .none, prominence: .text(headline.string)) {
-                        Text(headline.string)
-                            .rythmicoTextStyle(.headline)
-                            .lineLimit(1)
-                            .ifLet(appSplashNamespace) { $0.matchedGeometryEffect(id: AppSplash.NamespaceTitleId(), in: $1) }
-                    }
+                teleprompter.view(transition: .none, prominence: .text(headline.string)) {
+                    headlineView.lineLimit(1)
                 }
                 teleprompter.text(style: .subheadline) {
                     "Rythmico is a first-class music tutoring marketplace."
@@ -69,6 +66,34 @@ struct InstructionalView<EndButton: View>: View {
         .environment(\.sizeCategory, min(sizeCategory, maxSizeCategory))
     }
 
+    @ViewBuilder
+    private var headlineView: some View {
+        switch headline {
+        case .welcome:
+            TransientContentView(
+                delay: initialDelay,
+                from: { regularHeadlineView(headline.fragments.1) },
+                to: { animatedHeadlineView(headline.fragments) }
+            )
+        case .whatIsRythmico:
+            regularHeadlineView(headline.string)
+        }
+    }
+
+    @ViewBuilder
+    private func regularHeadlineView(_ string: String) -> some View {
+        Text(string)
+            .rythmicoTextStyle(.headline)
+            .ifLet(appSplashNamespace) { $0.matchedGeometryEffect(id: AppSplash.NamespaceTitleId(), in: $1) }
+    }
+
+    @ViewBuilder
+    private func animatedHeadlineView(_ fragments: (String, String)) -> some View {
+        TransientStateView(delay: .durationMedium, from: .right, to: .none) { (anchor: TwoSidedText.Anchor?) in
+            TwoSidedText(headline.fragments.0, headline.fragments.1, style: .headline, anchor: anchor)
+        }
+    }
+
     private var spacing: CGFloat {
         isCompact ? .grid(4) : .grid(5)
     }
@@ -83,21 +108,13 @@ struct InstructionalView<EndButton: View>: View {
 }
 
 private extension InstructionalView.Headline {
-    var stringFragment: String? {
+    var string: String { fragments.0 + fragments.1 }
+    var fragments: (String, String) {
         switch self {
         case .welcome:
-            return "Rythmico"
+            return ("Welcome to ", "Rythmico")
         case .whatIsRythmico:
-            return nil
-        }
-    }
-
-    var string: String {
-        switch self {
-        case .welcome:
-            return "Welcome to Rythmico"
-        case .whatIsRythmico:
-            return "What is Rythmico?"
+            return ("What is Rythmico?", .empty)
         }
     }
 }
