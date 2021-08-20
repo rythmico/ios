@@ -20,7 +20,6 @@ struct MainView: View, TestableView {
             content: content, tabTitle: \.uppercasedTitle, tabIcons: icon
         )
         .testable(self)
-        .animation(.none)
         .accentColor(.rythmico.picoteeBlue)
         .onAppear(perform: Current.deviceRegisterCoordinator.registerDevice)
         .onAppear(perform: Current.pushNotificationAuthorizationCoordinator.refreshAuthorizationStatus)
