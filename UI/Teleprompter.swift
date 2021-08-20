@@ -32,7 +32,7 @@ final class Teleprompter {
         }
     }
 
-    private typealias TransitionModifier = OnAppearTransitionModifier
+    private typealias TransitionModifier = TransitionOnAppearModifier
 
     // TODO: replace with AttributedString in iOS 15
     struct TextElement: Equatable {
@@ -108,7 +108,7 @@ final class Teleprompter {
         // Return appropriate modifier
         switch (mode, transition) {
         case (.animated, let transition?):
-            return OnAppearTransitionModifier(
+            return TransitionOnAppearModifier(
                 transition: transition.anyTransition,
                 animation: .rythmicoSpring(duration: .durationMedium).delay(compoundedDelay)
             )
@@ -144,19 +144,18 @@ private struct RetainOldValue<T> {
     }
 }
 
-private struct OnAppearTransitionModifier: ViewModifier {
+private struct TransitionOnAppearModifier: ViewModifier {
     let transition: AnyTransition
     let animation: Animation?
 
-    @State private var appeared = false
-
     func body(content: Content) -> some View {
-        ZStack {
-            if appeared {
-                content.transition(transition)
+        TransientStateView(from: false, to: true) { appeared in
+            ZStack {
+                if appeared {
+                    content.transition(transition)
+                }
             }
+            .animation(animation, value: appeared)
         }
-        .animation(animation, value: appeared)
-        .onAppear { appeared = true }
     }
 }
