@@ -34,7 +34,7 @@ final class RootViewTests: XCTestCase {
         Current.deauthenticationService = deauthenticationService
         Current.stubAPIEndpoint(for: \.bookingsFetchingCoordinator, service: APIServiceDummy())
 
-        return (keychain, deauthenticationService, RootView())
+        return (keychain, deauthenticationService, RootView(flow: RootViewFlow()))
     }
 
     func testInitialState() {
