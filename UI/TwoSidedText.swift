@@ -48,7 +48,7 @@ struct TwoSidedText: View {
             )
         }
         .lineLimit(1)
-        .animation(.rythmicoSpring(duration: .durationShort))
+        .animation(.rythmicoSpring(duration: .durationMedium))
     }
 
     private var rawFullText: some View {
