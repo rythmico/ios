@@ -40,6 +40,8 @@ struct AppSplash: View {
             Image.rythmicoLogo(width: 68, namespace: appSplashNamespace)
             titleView
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .backgroundColor(backgroundColor)
         .edgesIgnoringSafeArea(.all)
     }
 
@@ -62,6 +64,14 @@ struct AppSplash: View {
             .ifLet(appSplashNamespace) { $0.matchedGeometryEffect(id: NamespaceTitleId(), in: $1) }
             .transition(.offset(y: -.grid(6)) + .opacity)
         }
+    }
+
+    private var backgroundColor: Color {
+        #if RYTHMICO
+        return .rythmico.background
+        #elseif TUTOR
+        return Color(.systemBackground)
+        #endif
     }
 }
 
