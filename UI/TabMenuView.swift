@@ -48,7 +48,7 @@ struct TabMenuView_Previews: PreviewProvider {
     }
 
     static var previews: some View {
-        StatefulPreview(Tab.x) { selectedTab in
+        StatefulView(Tab.x) { selectedTab in
             TabMenuView(tabs: Tab.allCases, selection: selectedTab)
         }
         .previewLayout(.sizeThatFits)

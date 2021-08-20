@@ -96,7 +96,7 @@ struct TwoSidedText_Previews: PreviewProvider {
 
     @ViewBuilder
     static var previews: some View {
-        StatefulPreview(Optional(fixedAnchor)) { anchor in
+        StatefulView(Optional(fixedAnchor)) { anchor in
             VStack(spacing: 0) {
                 Text(left + right)
                     .rythmicoTextStyle(.headline)
