@@ -65,7 +65,7 @@ struct BookingApplicationsView: View {
     private func onRequestsAppliedTabRootPublisher() -> AnyPublisher<Void, Never> {
         tabSelection.$mainTab.combineLatest(tabSelection.$requestsTab, bookingRequestsTabNavigation.$path.map(\.current))
             .filter { $0 == .requests && $1 == .applied && $2.is(BookingRequestsTabScreen()) }
-            .map { _ in () }
+            .mapToVoid()
             .eraseToAnyPublisher()
     }
 

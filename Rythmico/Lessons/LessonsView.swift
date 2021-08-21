@@ -123,7 +123,7 @@ struct LessonsView: View, TestableView {
     private func onLessonsTabRootPublisher() -> AnyPublisher<Void, Never> {
         tabSelection.$mainTab.combineLatest(lessonsTabNavigation.$path.map(\.current))
             .filter { $0 == .lessons && $1.is(LessonsScreen()) }
-            .map { _ in () }
+            .mapToVoid()
             .eraseToAnyPublisher()
     }
 

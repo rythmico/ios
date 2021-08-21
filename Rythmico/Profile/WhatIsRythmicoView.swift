@@ -19,7 +19,7 @@ struct WhatIsRythmicoView: View {
     @Environment(\.currentScreen) private var currentScreen
 
     var body: some View {
-        InstructionalView(headline: "What is Rythmico?", animated: false) {
+        InstructionalView(headline: .whatIsRythmico, animated: false) {
             RythmicoButton("OK", style: .primary(), action: dismiss)
         }
         .backgroundColor(.rythmico.backgroundSecondary)

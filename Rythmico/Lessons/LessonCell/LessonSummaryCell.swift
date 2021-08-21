@@ -25,7 +25,7 @@ struct LessonSummaryCell: View {
     }
 
     private var onTapAction: Action? {
-        LessonDetailScreen(lesson: lesson).mapAction { navigator.go(to: $0, on: currentScreen) }
+        LessonDetailScreen(lesson: lesson).mapToAction { navigator.go(to: $0, on: currentScreen) }
     }
 }
 

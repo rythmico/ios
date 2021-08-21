@@ -73,7 +73,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
 
     // MARK: - Next Button -
     var nextButtonAction: Action? {
-        unwrap(sanitizedName, state.dateOfBirth, sanitizedAbout).map(Student.init).mapAction(setter)
+        unwrap(sanitizedName, state.dateOfBirth, sanitizedAbout).map(Student.init).mapToAction(setter)
     }
 
     // MARK: - Body -

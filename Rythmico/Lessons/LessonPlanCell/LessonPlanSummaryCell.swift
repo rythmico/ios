@@ -146,7 +146,7 @@ struct LessonPlanSummaryCellAccessory: View {
 
     var lessonPlan: LessonPlan
     var chooseTutorAction: Action? {
-        LessonPlanApplicationsScreen(lessonPlan: lessonPlan).mapAction { screen in
+        LessonPlanApplicationsScreen(lessonPlan: lessonPlan).mapToAction { screen in
             navigator.go(to: screen, on: currentScreen)
             Current.analytics.track(
                 .chooseTutorScreenView(
@@ -158,7 +158,7 @@ struct LessonPlanSummaryCellAccessory: View {
         }
     }
     var resumePlanAction: Action? {
-        LessonPlanResumingScreen(lessonPlan: lessonPlan).mapAction { screen in
+        LessonPlanResumingScreen(lessonPlan: lessonPlan).mapToAction { screen in
             navigator.go(to: screen, on: currentScreen)
         }
     }

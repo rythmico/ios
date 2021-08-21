@@ -4,7 +4,7 @@ struct RootView: View, TestableView {
     @ObservedObject
     var userCredentialProvider = Current.userCredentialProvider
     @StateObject
-    var flow = RootViewFlow()
+    var flow: RootViewFlow
 
     let inspection = SelfInspection()
     var body: some View {
@@ -62,7 +62,7 @@ struct RootView: View, TestableView {
 #if DEBUG
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
-        RootView().previewDevices()
+        RootView(flow: RootViewFlow()).previewDevices()
     }
 }
 #endif

@@ -1,4 +1,4 @@
-public struct StatefulPreview<A, B, C, Content: View>: View {
+public struct StatefulView<A, B, C, Content: View>: View {
     @State
     private var a: A
     @State
@@ -13,13 +13,13 @@ public struct StatefulPreview<A, B, C, Content: View>: View {
     }
 }
 
-extension StatefulPreview {
+extension StatefulView {
     public typealias AToContent = (Binding<A>) -> Content
     public typealias ABToContent = (Binding<A>, Binding<B>) -> Content
     public typealias ABCToContent = (Binding<A>, Binding<B>, Binding<C>) -> Content
 }
 
-extension StatefulPreview where B == Void, C == Void {
+extension StatefulView where B == Void, C == Void {
     public init(
         _ a: A,
         @ViewBuilder content: @escaping AToContent
@@ -31,7 +31,7 @@ extension StatefulPreview where B == Void, C == Void {
     }
 }
 
-extension StatefulPreview where C == Void {
+extension StatefulView where C == Void {
     public init(
         _ a: A,
         _ b: B,
@@ -44,7 +44,7 @@ extension StatefulPreview where C == Void {
     }
 }
 
-extension StatefulPreview {
+extension StatefulView {
     public init(
         _ a: A,
         _ b: B,

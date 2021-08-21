@@ -79,8 +79,8 @@ struct SlideshowFlowView<Step: SlideshowFlowStep, Content: View, EndButton: View
         }
     }
 
-    private var back: Action? { step.previous.mapAction(go) }
-    private var next: Action? { step.next.mapAction(go) }
+    private var back: Action? { step.previous.mapToAction(go) }
+    private var next: Action? { step.next.mapToAction(go) }
 
     private func go(to step: Step) {
         guard self.step != step else { return }

@@ -43,15 +43,15 @@ struct LessonPlanOptionsButton: View {
     }
 
     private var showPauseLessonPlanFormAction: Action? {
-        LessonPlanPausingScreen(lessonPlan: lessonPlan).mapAction(go)
+        LessonPlanPausingScreen(lessonPlan: lessonPlan).mapToAction(go)
     }
 
     private var showResumeLessonPlanFormAction: Action? {
-        LessonPlanResumingScreen(lessonPlan: lessonPlan).mapAction(go)
+        LessonPlanResumingScreen(lessonPlan: lessonPlan).mapToAction(go)
     }
 
     private var showCancelLessonPlanFormAction: Action? {
-        LessonPlanCancellationScreen(lessonPlan: lessonPlan).mapAction(go)
+        LessonPlanCancellationScreen(lessonPlan: lessonPlan).mapToAction(go)
     }
 
     private func go<S: Screen>(to screen: S) {

@@ -48,7 +48,7 @@ extension ChoiceList where Content == AnyView {
 #if DEBUG
 struct ChoiceList_Previews: PreviewProvider {
     static var previews: some View {
-        StatefulPreview(Int?.none) { selection in
+        StatefulView(Int?.none) { selection in
             ChoiceList(data: [1, 2, 3, 4, 5], id: \.self, selection: selection) {
                 "Option \($0)"
             }

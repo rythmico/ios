@@ -37,7 +37,7 @@ struct AddressDetailsView: View, TestableView {
     }
 
     var nextButtonAction: Action? {
-        state.selectedAddress.mapAction(setter)
+        state.selectedAddress.mapToAction(setter)
     }
 
     let inspection = SelfInspection()

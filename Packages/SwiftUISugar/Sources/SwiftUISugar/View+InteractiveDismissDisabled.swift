@@ -34,7 +34,7 @@ private var controllerDelegateMap = NSMapTable<UIPresentationController, Adaptiv
 #if DEBUG
 struct AdaptivePresentationView_Previews: PreviewProvider {
     static var previews: some View {
-        StatefulPreview(false, false, 0) { isPresenting, isDismissable, attempts in
+        StatefulView(false, false, 0) { isPresenting, isDismissable, attempts in
             Button("Present") { isPresenting.wrappedValue.toggle() }
                 .sheet(isPresented: isPresenting) {
                     HStack {

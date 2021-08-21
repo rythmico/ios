@@ -1,6 +1,7 @@
 import SwiftUISugar
+import Combine
 
-final class Teleprompter {
+final class Teleprompter: ObservableObject {
     enum Mode {
         case `static`
         case animated(initialDelay: Double)
@@ -11,9 +12,10 @@ final class Teleprompter {
         }
     }
 
-    enum Importance: Equatable {
-        case transient
-        case prominent
+    enum Prominence: Equatable {
+        case low
+        case normal
+        case text(String)
     }
 
     enum Transition: Equatable {
@@ -31,15 +33,31 @@ final class Teleprompter {
         }
     }
 
+    private typealias TransitionModifier = TransitionOnAppearModifier
+
     // TODO: replace with AttributedString in iOS 15
     struct TextElement: Equatable {
         var style: Font.RythmicoTextStyle? = nil
         let string: String
     }
 
+    // TODO: improve this logic determining finished animations...
+    // currently it's time based, which is not the most reliable.
+    // AFAIK, SwiftUI lacks a mechanism to watch state `Transaction`s.
+    @Published
+    private(set) var isFinished = false
+    private let start = Date()
+    private let timer = Timer.publish(every: 0.5, on: .main, in: .default).autoconnect()
+
     init(mode: Mode) {
         self.mode = mode
         self._compoundedDelay = .init(currentValue: mode.initialDelay)
+        switch mode {
+        case .animated:
+            timer.map { $0.timeIntervalSince(self.start) >= self.compoundedDelay }.filter(\.isTrue).prefix(1).assign(to: &$isFinished)
+        case .static:
+            isFinished = true
+        }
     }
 
     private let mode: Mode
@@ -48,63 +66,69 @@ final class Teleprompter {
 
     @ViewBuilder
     func view<Content: View>(
-        transition: Transition = .default,
-        importance: Importance,
+        transition: Transition? = .default,
+        prominence: Prominence,
         @ViewBuilder content: () -> Content
     ) -> some View {
-        content().modifier(transitionModifier(transition, importance: importance))
+        content().ifLet(transitionModifier(transition, prominence: prominence)) { $0.modifier($1) }
     }
 
     @ViewBuilder
     func text(
-        transition: Transition = .default,
+        transition: Transition? = .default,
         separator: String = .empty,
         style: Font.RythmicoTextStyle,
         @ArrayBuilder<TextElement> _ elements: () -> [TextElement]
     ) -> some View {
         let elements = elements()
+        let string = elements.map(\.string).joined()
         elements
             .map { Text($0.string).rythmicoFontWeight($0.style ?? style) }
             .joined(separator: Text(separator))
             .rythmicoTextStyle(style)
-            .modifier(transitionModifier(transition, for: elements))
+            .ifLet(transitionModifier(transition, prominence: .text(string))) { $0.modifier($1) }
     }
 
-    private func transitionModifier(_ transition: Transition, importance: Importance) -> some ViewModifier {
-        switch importance {
-        case .transient:
-            return transitionModifier(transition, importance: importance, compoundingDelay: 0.5)
-        case .prominent:
-            return transitionModifier(transition, importance: importance, compoundingDelay: 1)
+    private func transitionModifier(_ transition: Transition?, prominence: Prominence) -> TransitionModifier? {
+        switch prominence {
+        case .low:
+            return transitionModifier(transition, prominence: prominence, compoundingDelay: 0.5)
+        case .normal:
+            return transitionModifier(transition, prominence: prominence, compoundingDelay: 1)
+        case .text(let string):
+            let wordCount = Double(string.words.count)
+            let avgReadingSpeed: Double = 250/60 // avg words per minute / 60 seconds = avg words per second
+            let delay = wordCount / avgReadingSpeed
+            return transitionModifier(transition, prominence: nil, compoundingDelay: delay)
         }
     }
 
-    private func transitionModifier(_ transition: Transition, for elements: [TextElement]) -> some ViewModifier {
-        let wordCount = Double(elements.map(\.string).joined().words.count)
-        let avgReadingSpeed: Double = 200/60 // avg words per minute / 60 seconds = avg words per second
-        let delay = wordCount / avgReadingSpeed
-        return transitionModifier(transition, importance: nil, compoundingDelay: delay)
-    }
+    private func transitionModifier(_ transition: Transition?, prominence: Prominence?, compoundingDelay delay: Double) -> TransitionModifier? {
+        let deferred: Action?
+        defer { deferred?() }
 
-    private func transitionModifier(_ transition: Transition, importance: Importance?, compoundingDelay delay: Double) -> some ViewModifier {
-        switch mode {
-        case .animated(let initialDelay):
-            let deferred: Action
-            if importance == .transient {
-                let oldCompoundedDelay = compoundedDelay
-                let newCompoundedDelay = ($compoundedDelay ?? initialDelay) + delay
-                compoundedDelay = newCompoundedDelay
-                deferred = { self.compoundedDelay = oldCompoundedDelay + delay }
-            } else {
-                deferred = { self.compoundedDelay += delay }
-            }
-            defer { deferred() }
-            return OnAppearTransitionModifier(
+        // Add to compounded delay
+        switch (mode, prominence) {
+        case (.animated(let initialDelay), .low):
+            let oldCompoundedDelay = compoundedDelay
+            let newCompoundedDelay = ($compoundedDelay ?? initialDelay) + delay
+            compoundedDelay = newCompoundedDelay
+            deferred = { self.compoundedDelay = oldCompoundedDelay + delay }
+        case (.animated, _):
+            deferred = { self.compoundedDelay += delay }
+        case (.static, _):
+            deferred = nil
+        }
+
+        // Return appropriate modifier
+        switch (mode, transition) {
+        case (.animated, let transition?):
+            return TransitionOnAppearModifier(
                 transition: transition.anyTransition,
                 animation: .rythmicoSpring(duration: .durationMedium).delay(compoundedDelay)
             )
-        case .static:
-            return OnAppearTransitionModifier(transition: .identity, animation: .none)
+        case (.animated, .none), (.static, _):
+            return nil
         }
     }
 }
@@ -135,19 +159,18 @@ private struct RetainOldValue<T> {
     }
 }
 
-private struct OnAppearTransitionModifier: ViewModifier {
+private struct TransitionOnAppearModifier: ViewModifier {
     let transition: AnyTransition
     let animation: Animation?
 
-    @State private var appeared = false
-
     func body(content: Content) -> some View {
-        ZStack {
-            if appeared {
-                content.transition(transition)
+        TransientStateView(from: false, to: true) { appeared in
+            ZStack {
+                if appeared {
+                    content.transition(transition)
+                }
             }
+            .animation(animation, value: appeared)
         }
-        .animation(animation, value: appeared)
-        .onAppear { appeared = true }
     }
 }

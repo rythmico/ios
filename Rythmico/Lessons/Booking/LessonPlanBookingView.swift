@@ -124,7 +124,7 @@ struct LessonPlanBookingView: View {
     }
 
     var confirmAction: Action? {
-        unwrap(phoneNumber, selectedCard).mapAction { phoneNumber, selectedCard in
+        unwrap(phoneNumber, selectedCard).mapToAction { phoneNumber, selectedCard in
             coordinator.run(
                 with: .init(
                     lessonPlanId: lessonPlan.id,

@@ -50,7 +50,7 @@ struct ProgressBar: View {
 #if DEBUG
 struct ProgressBar_Previews: PreviewProvider {
     static var previews: some View {
-        StatefulPreview(Double(0)) { progress in
+        StatefulView(Double(0)) { progress in
             ProgressBar(progress: progress.wrappedValue).onAppear {
                 withAnimation(.easeInOut.speed(0.25).delay(1)) {
                     progress.wrappedValue = 1

@@ -101,7 +101,7 @@ struct LessonPlanDetailView: View, TestableView {
     }
 
     var chooseTutorAction: Action? {
-        LessonPlanApplicationsScreen(lessonPlan: lessonPlan).mapAction { screen in
+        LessonPlanApplicationsScreen(lessonPlan: lessonPlan).mapToAction { screen in
             navigator.go(to: screen, on: currentScreen)
             Current.analytics.track(
                 .chooseTutorScreenView(

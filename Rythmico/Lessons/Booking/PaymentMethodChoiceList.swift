@@ -39,7 +39,7 @@ struct PaymentMethodChoiceList: View {
 #if DEBUG
 struct PaymentMethodChoiceList_Previews: PreviewProvider {
     static var previews: some View {
-        StatefulPreview(NonEmptyArray<Card>(.mastercardStub, .visaStub), Card.mastercardStub) { cards, selectedCard in
+        StatefulView(NonEmptyArray<Card>(.mastercardStub, .visaStub), Card.mastercardStub) { cards, selectedCard in
             PaymentMethodChoiceList(cards: cards.wrappedValue, selectedCard: selectedCard)
         }
         .previewLayout(.sizeThatFits)

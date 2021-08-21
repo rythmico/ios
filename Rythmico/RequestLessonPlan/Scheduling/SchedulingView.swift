@@ -64,7 +64,7 @@ struct SchedulingView: View, FocusableView, TestableView {
     }
 
     var nextButtonAction: Action? {
-        unwrap(state.startDateAndTime, state.duration).map(Schedule.init).mapAction(setter)
+        unwrap(state.startDateAndTime, state.duration).map(Schedule.init).mapToAction(setter)
     }
 
     let inspection = SelfInspection()
