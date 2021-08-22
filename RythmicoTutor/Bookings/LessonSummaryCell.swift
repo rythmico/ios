@@ -56,7 +56,16 @@ struct LessonSummaryCell: View {
         }
         .cellAccessory(hasDetail ? .disclosure : .none)
         .padding(.vertical, .grid(1))
-        .opacity(lesson.status.isSkipped ? 0.3 : 1)
+        .opacity(opacity)
+    }
+
+    private var opacity: Double {
+        switch lesson.status {
+        case .scheduled, .completed:
+            return 1
+        case .skipped, .paused, .cancelled:
+            return 0.4
+        }
     }
 
     private static let durationFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))
@@ -69,7 +78,9 @@ struct LessonSummaryCell_Previews: PreviewProvider {
         Group {
             LessonSummaryCell(lesson: .scheduledStub)
             LessonSummaryCell(lesson: .skippedStub)
+            LessonSummaryCell(lesson: .pausedStub)
             LessonSummaryCell(lesson: .completedStub)
+            LessonSummaryCell(lesson: .cancelledStub)
         }
         .previewLayout(.sizeThatFits)
         .padding()
