@@ -258,7 +258,7 @@ extension AppEnvironment {
 
         remoteConfig: RemoteConfig(),
 
-        appOrigin: .live,
+        appOrigin: .init(get: { .appStore }), // TODO: swap back to `live`
 
         uuid: UUID.init,
         date: Date.init,
