@@ -74,7 +74,6 @@ lane :deploy_staging do
   bump_build
   deploy_to_firebase(scheme: 'Rythmico')
   deploy_to_testflight(scheme: 'RythmicoTutor')
-  notify_slack
 end
 
 private_lane :deploy_to_firebase do |options|
@@ -99,7 +98,6 @@ lane :deploy_live do
   bump_build
   deploy_to_testflight(scheme: 'Rythmico')
   deploy_to_testflight(scheme: 'Tutor')
-  notify_slack
 end
 
 desc 'Bump Build Number'
@@ -140,7 +138,6 @@ desc 'Sync dSYMs to Crashlytics'
 lane :dsyms do
   sync_symbols(app_id: 'com.rythmico.student', gsp_path: 'Rythmico/Supporting Files/GoogleService-Info-Release.plist')
   sync_symbols(app_id: 'com.rythmico.tutor', gsp_path: 'RythmicoTutor/Supporting Files/GoogleService-Info-Release.plist')
-  notify_slack
 end
 
 private_lane :sync_symbols do |options|
@@ -151,6 +148,10 @@ end
 ###################
 ###### Slack ######
 ###################
+
+after_all do
+  notify_slack
+end
 
 error do
   lane_context[:LANE_FAILED] = true
