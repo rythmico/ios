@@ -1,4 +1,5 @@
 import XCTest
+import FoundationSugar
 @testable import Tutor
 
 final class APIClientInfoTutorTests: XCTestCase {
@@ -6,7 +7,7 @@ final class APIClientInfoTutorTests: XCTestCase {
         let info = APIClientInfo.current
         XCTAssertEqual(info.keys.count, 3)
         XCTAssertEqual(info["Client-Id"], "com.rythmico.tutor")
-        XCTAssertEqual(info["Client-Version"], "1.0.0")
+        XCTAssertNotNil(info["Client-Version"].flatMap(Version.init))
         XCTAssertNotNil(info["Client-Build"].flatMap(Int.init))
     }
 }

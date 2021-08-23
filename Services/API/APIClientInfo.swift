@@ -1,22 +1,10 @@
-import SwiftUISugar
+import FoundationSugar
 
 enum APIClientInfo {
     static let current = [
-        "Client-Id": Bundle.main.id,
-        "Client-Version": Bundle.main.version,
-        "Client-Build": Bundle.main.build,
+        "Client-Id": Bundle.main.id?.rawValue,
+        "Client-Version": Bundle.main.version.map(String.init),
+        "Client-Build": Bundle.main.build.map(\.rawValue).map(String.init),
     ]
-}
-
-private extension Bundle {
-    var id: String { infoValue(for: kCFBundleIdentifierKey) }
-    var version: String { infoValue(for: "CFBundleShortVersionString" as CFString) }
-    var build: String { infoValue(for: kCFBundleVersionKey) }
-
-    private func infoValue(for key: CFString) -> String {
-        let key = key as String
-        let info = Bundle.main.infoDictionary !! fatalError("infoDictionary is nil for bundle: \(self)")
-        let value = info[key] as? String !! fatalError("\(key) is nil for bundle: \(self)")
-        return value
-    }
+    .compacted()
 }
