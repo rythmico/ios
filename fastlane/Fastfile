@@ -157,29 +157,43 @@ error do
   notify_slack
 end
 
-private_lane :notify_slack do
+private_lane :notify_slack do |lane, options|
   next unless ENV['CI']
-  case lane_context[:LANE_NAME]
-    when 'deploy' then notify_slack_deploy
-    when 'dsyms' then notify_slack_dsyms
-    else UI.important "Unknown source lane: #{lane_context[:LANE_NAME]}"
+  case lane
+    when :deploy_live then notify_slack_deploy_live
+    when :dsyms then notify_slack_dsyms
+    else UI.important "Unknown source lane #{lane}" if lane_context[:LANE_FAILED]
   end
 end
 
-private_lane :notify_slack_deploy do
-  webhook = ENV['SLACK_WEBHOOK']
-  failed = lane_context[:LANE_FAILED]
+private_lane :notify_slack_deploy_live do
   version = lane_context[:VERSION_NUMBER]
   build = lane_context[:BUILD_NUMBER]
-  message = "*Successfully deployed version #{version} (#{build}) to TestFlight! 🚀*" if !failed
-  message = "*Failed to deploy version #{version} (#{build}) to TestFlight!*" if failed
-  slack(slack_url: webhook, success: !failed, message: message, default_payloads: [:last_git_commit_hash], fail_on_error: !failed)
+  send_slack_message(
+    success: "*Successfully deployed version #{version} (#{build}) to TestFlight! 🚀*",
+    failure: "*Failed to deploy version #{version} (#{build}) to TestFlight!*",
+    info: [:last_git_commit_hash],
+  )
 end
 
 private_lane :notify_slack_dsyms do
+  send_slack_message(
+    success: "*Successfully uploaded latest dSYMs to Firebase! 🐛*",
+    failure: "*Failed to upload dSYMs to Firebase!*",
+    info: [:last_git_commit],
+  )
+end
+
+private_lane :send_slack_message do |options|
   webhook = ENV['SLACK_WEBHOOK']
-  failed = lane_context[:LANE_FAILED]
-  message = "*Successfully uploaded latest dSYMs to Firebase! 🐛*" if !failed
-  message = "*Failed to upload dSYMs to Firebase!*" if failed
-  slack(slack_url: webhook, success: !failed, message: message, default_payloads: [:last_git_commit], fail_on_error: !failed)
+  is_lane_failed = lane_context[:LANE_FAILED]
+  message = is_lane_failed ? options[:failure] : options[:success]
+  info = options[:info]
+  slack(
+    slack_url: webhook,
+    success: !is_lane_failed,
+    message: message,
+    default_payloads: info || [],
+    fail_on_error: !is_lane_failed,
+  )
 end
