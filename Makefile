@@ -2,10 +2,11 @@
 
 bootstrap:
 	brew bundle --no-lock --no-upgrade || true
-	fastlane bootstrap
+	bundle install
+	bundle exec fastlane bootstrap
 
 ci:
-	fastlane ci
+	bundle exec fastlane ci
 
 deploy:
-	fastlane deploy
+	bundle exec fastlane deploy
