@@ -158,7 +158,7 @@ error do
 end
 
 private_lane :notify_slack do
-  return unless ENV['CI']
+  next unless ENV['CI']
   case lane_context[:LANE_NAME]
   when 'deploy' then notify_slack_deploy
   when 'dsyms' then notify_slack_dsyms
