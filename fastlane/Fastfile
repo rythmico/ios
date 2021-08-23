@@ -100,6 +100,15 @@ lane :deploy_live do
   deploy_to_testflight(scheme: 'Tutor')
 end
 
+private_lane :deploy_to_testflight do |options|
+  build_for_deploy(scheme: options[:scheme])
+  upload_to_testflight(skip_submission: true, skip_waiting_for_build_processing: true)
+end
+
+###################
+# Deploy - Shared #
+###################
+
 desc 'Bump Build Number'
 lane :bump_build do
   bump_build_number(plist: 'Rythmico/Supporting Files/Info.plist')
@@ -119,11 +128,6 @@ lane :bump_build do
   sh "git commit" + " --author '#{last_git_commit_author}'" + " -m 'Bump build number (#{build_number}) [skip ci]'"
   add_git_tag(tag: version_number + '/' + build_number)
   push_to_git_remote(tags: true)
-end
-
-private_lane :deploy_to_testflight do |options|
-  build_for_deploy(scheme: options[:scheme])
-  upload_to_testflight(skip_submission: true, skip_waiting_for_build_processing: true)
 end
 
 private_lane :build_for_deploy do |options|
