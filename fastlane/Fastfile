@@ -26,8 +26,9 @@ end
 
 desc 'Install required dev tools'
 lane :install_tools do
-  sh 'brew bundle --no-lock --no-upgrade || true'
-  sh 'bundle install'
+  Dir.chdir('..') do
+    sh 'brew bundle --no-lock --no-upgrade || true'
+  end
 end
 
 desc 'Sync Provisioning Profiles'

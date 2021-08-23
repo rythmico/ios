@@ -21,6 +21,6 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Bootstrap
-        run: bundle exec fastlane bootstrap
+        run: make bootstrap
       - name: Run CI
         run: bundle exec fastlane ci
