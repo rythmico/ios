@@ -11,7 +11,6 @@ jobs:
     runs-on: macos-11
     env:
       GIT_CRYPT_KEY: ${{ secrets.GIT_CRYPT_KEY }}
-      MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
 
     steps:
       - name: Checkout
