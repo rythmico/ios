@@ -7,3 +7,4 @@
 @_exported import PreciseDecimal
 @_exported import Tagged
 @_exported import Then
+@_exported import Version
