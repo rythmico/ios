@@ -65,14 +65,40 @@ lane :archive do
 end
 
 ###################
-##### Deploy ######
+##### Staging #####
 ###################
 
-desc 'Deploy (bump_build + deploy_testflight)'
-lane :deploy do
+desc 'Deploy student to Firebase & tutor to ASC'
+lane :deploy_staging do
   bump_build
-  deploy_testflight(scheme: 'Rythmico')
-  deploy_testflight(scheme: 'Tutor')
+  deploy_to_firebase(scheme: 'Rythmico')
+  deploy_to_testflight(scheme: 'RythmicoTutor')
+  notify_slack
+end
+
+private_lane :deploy_to_firebase do |options|
+  changelog = changelog_from_git_commits(
+    commits_count: 20,
+    pretty: '- %s (%h)', # - Commit message (abcd1234)
+    match_lightweight_tag: false, # Match only tags, not branches
+    merge_commit_filtering: 'exclude_merges' # Exclude merge commits
+  )
+  build_for_deploy(scheme: options[:scheme])
+  firebase_app_distribution(
+    googleservice_info_plist_path: 'GoogleService-Info.plist',
+    release_notes: changelog,
+  )
+end
+
+###################
+#### App Store ####
+###################
+
+desc 'Deploy to App Store Connect'
+lane :deploy_live do
+  bump_build
+  deploy_to_testflight(scheme: 'Rythmico')
+  deploy_to_testflight(scheme: 'Tutor')
   notify_slack
 end
 
@@ -97,10 +123,13 @@ lane :bump_build do
   push_to_git_remote(tags: true)
 end
 
-desc 'Deploy Apps to TestFlight'
-lane :deploy_testflight do |options|
-  build_app(configuration: 'Release', scheme: options[:scheme])
+private_lane :deploy_to_testflight do |options|
+  build_for_deploy(scheme: options[:scheme])
   upload_to_testflight(skip_submission: true, skip_waiting_for_build_processing: true)
+end
+
+private_lane :build_for_deploy do |options|
+  build_app(configuration: 'Release', scheme: options[:scheme])
 end
 
 ###################
