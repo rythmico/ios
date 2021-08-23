@@ -1,12 +1,14 @@
+public let kCFBundleShortVersionKey = "CFBundleShortVersionString" as CFString
+
 extension Bundle {
     public typealias ID = Tagged<Bundle, String>
     public typealias Build = Tagged<Bundle, Int>
 
-    public var id: ID? { infoStringValue(for: kCFBundleIdentifierKey).flatMap(ID.init) }
-    public var version: Version? { infoStringValue(for: "CFBundleShortVersionString" as CFString).flatMap(Version.init) }
-    public var build: Build? { infoStringValue(for: kCFBundleVersionKey).flatMap(Int.init).flatMap(Build.init) }
+    public var id: ID? { infoValue(ID.self, for: kCFBundleIdentifierKey) }
+    public var version: Version? { infoValue(Version.self, for: kCFBundleShortVersionKey) }
+    public var build: Build? { infoValue(Build.self, for: kCFBundleVersionKey) }
 
-    private func infoStringValue(for key: CFString) -> String? {
-        object(forInfoDictionaryKey: key as String) as? String
+    private func infoValue<Value: LosslessStringConvertible>(_ type: Value.Type, for key: CFString) -> Value? {
+        object(forInfoDictionaryKey: key as String).flatMap { $0 as? String }.flatMap(Value.init)
     }
 }
