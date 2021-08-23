@@ -18,6 +18,18 @@ private_lane :deploy_to_firebase do |options|
   )
 end
 
+desc 'Bump app version numbers'
+lane :bump_version do
+  ['Rythmico', 'RythmicoTutor'].each do |target|
+    current_version = get_version_number(target: target)
+    UI.user_error! 'Version number not found' unless current_version
+    prompt_version = ask("New #{target.downcase} app version (#{current_version}):")
+    new_version = prompt_version.empty? ? current_version : prompt_version
+    set_info_plist_value(path: "#{target}/Supporting Files/Info.plist", key: 'CFBundleShortVersionString', value: new_version)
+    git_commit(path: "#{target}/Supporting Files/Info.plist", message: "Bump #{target} app version (#{new_version})", allow_nothing_to_commit: true)
+  end
+end
+
 desc 'Deploy to App Store Connect'
 lane :deploy_live do
   bump_build
