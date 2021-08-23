@@ -78,16 +78,15 @@ lane :deploy_staging do
 end
 
 private_lane :deploy_to_firebase do |options|
-  changelog = changelog_from_git_commits(
-    commits_count: 20,
-    pretty: '- %s (%h)', # - Commit message (abcd1234)
-    match_lightweight_tag: false, # Match only tags, not branches
-    merge_commit_filtering: 'exclude_merges' # Exclude merge commits
-  )
   build_for_deploy(scheme: options[:scheme])
   firebase_app_distribution(
     googleservice_info_plist_path: 'GoogleService-Info.plist',
-    release_notes: changelog,
+    release_notes: changelog_from_git_commits(
+      commits_count: 20,
+      pretty: '- %s (%h)', # - Commit message (abcd1234)
+      match_lightweight_tag: false, # Match only tags, not branches
+      merge_commit_filtering: 'exclude_merges', # Exclude merge commits
+    ),
   )
 end
 
@@ -153,6 +152,11 @@ end
 ###### Slack ######
 ###################
 
+error do
+  lane_context[:LANE_FAILED] = true
+  notify_slack
+end
+
 private_lane :notify_slack do
   return unless ENV['CI']
   case lane_context[:LANE_NAME]
@@ -178,9 +182,4 @@ private_lane :notify_slack_dsyms do
   message = "*Successfully uploaded latest dSYMs to Firebase! 🐛*" if !failed
   message = "*Failed to upload dSYMs to Firebase!*" if failed
   slack(slack_url: webhook, success: !failed, message: message, default_payloads: [:last_git_commit], fail_on_error: !failed)
-end
-
-error do
-  lane_context[:LANE_FAILED] = true
-  notify_slack
 end
