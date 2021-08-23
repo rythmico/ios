@@ -1,0 +1,60 @@
+desc 'Deploy student to Firebase & tutor to ASC'
+lane :deploy_staging do
+  bump_build
+  deploy_to_firebase(scheme: 'Rythmico')
+  deploy_to_testflight(scheme: 'RythmicoTutor')
+end
+
+private_lane :deploy_to_firebase do |options|
+  build_for_deploy(scheme: options[:scheme])
+  firebase_app_distribution(
+    googleservice_info_plist_path: 'GoogleService-Info.plist',
+    release_notes: changelog_from_git_commits(
+      commits_count: 20,
+      pretty: '- %s (%h)', # - Commit message (abcd1234)
+      match_lightweight_tag: false, # Match only tags, not branches
+      merge_commit_filtering: 'exclude_merges', # Exclude merge commits
+    ),
+  )
+end
+
+desc 'Deploy to App Store Connect'
+lane :deploy_live do
+  bump_build
+  deploy_to_testflight(scheme: 'Rythmico')
+  deploy_to_testflight(scheme: 'Tutor')
+end
+
+private_lane :deploy_to_testflight do |options|
+  build_for_deploy(scheme: options[:scheme])
+  upload_to_testflight(skip_submission: true, skip_waiting_for_build_processing: true)
+end
+
+################
+#### Shared ####
+################
+
+desc 'Bump Build Number'
+lane :bump_build do
+  bump_build_number(plist: 'Rythmico/Supporting Files/Info.plist')
+  bump_build_number(plist: 'RythmicoTutor/Supporting Files/Info.plist')
+
+  if ENV['GITHUB_ACTIONS']
+    sh 'git config user.name "GitHub Actions"'
+    sh 'git config user.email actions@github.com'
+  end
+
+  version_number = get_version_number(target: 'Rythmico')
+  UI.user_error! 'Version number not found' unless version_number
+  build_number = lane_context[:BUILD_NUMBER].to_s
+  UI.user_error! 'Build number not found' unless build_number
+
+  sh 'git add "../**/Info.plist"'
+  sh "git commit" + " --author '#{last_git_commit_author}'" + " -m 'Bump build number (#{build_number}) [skip ci]'"
+  add_git_tag(tag: version_number + '/' + build_number)
+  push_to_git_remote(tags: true)
+end
+
+private_lane :build_for_deploy do |options|
+  build_app(configuration: 'Release', scheme: options[:scheme])
+end

@@ -1,0 +1,19 @@
+desc 'Bootstrap'
+lane :bootstrap do
+  install_tools
+  decrypt_repo and Dotenv.overload '.env.secret'
+  download_certs
+end
+
+desc 'Install required dev tools'
+lane :install_tools do
+  Dir.chdir('..') do
+    sh 'brew bundle --no-lock --no-upgrade || true'
+  end
+end
+
+desc 'Sync Provisioning Profiles'
+lane :download_certs do
+  sync_code_signing(readonly: true, type: 'development')
+  sync_code_signing(readonly: true, type: 'appstore')
+end
