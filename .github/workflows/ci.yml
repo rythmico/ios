@@ -7,7 +7,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  CI:
+  ci:
+    name: CI
     runs-on: macos-11
     env:
       GIT_CRYPT_KEY: ${{ secrets.GIT_CRYPT_KEY }}
