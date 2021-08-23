@@ -133,7 +133,7 @@ private_lane :notify_slack do
 end
 
 private_lane :notify_slack_deploy do
-  webhook = ENV['SLACK_DEPLOY_WEBHOOK']
+  webhook = ENV['SLACK_WEBHOOK']
   failed = lane_context[:LANE_FAILED]
   version = lane_context[:VERSION_NUMBER]
   build = lane_context[:BUILD_NUMBER]
@@ -143,7 +143,7 @@ private_lane :notify_slack_deploy do
 end
 
 private_lane :notify_slack_dsyms do
-  webhook = ENV['SLACK_DSYMS_WEBHOOK']
+  webhook = ENV['SLACK_WEBHOOK']
   failed = lane_context[:LANE_FAILED]
   message = "*Successfully uploaded latest dSYMs to Firebase! 🐛*" if !failed
   message = "*Failed to upload dSYMs to Firebase!*" if failed
