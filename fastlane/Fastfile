@@ -2,6 +2,8 @@ ensure_bundle_exec
 skip_docs
 
 before_all do |lane, options|
+  Dotenv.overload '.env.secret' unless lane === :bootstrap
+
   if ENV['CI']
     puts 'Running on CI'
     setup_ci
@@ -17,7 +19,7 @@ end
 
 desc 'Bootstrap'
 lane :bootstrap do
-  decrypt_repo
+  decrypt_repo and Dotenv.overload '.env.secret'
   download_certs
 end
 
