@@ -1,0 +1,58 @@
+after_all do
+  notify_slack
+end
+
+error do
+  lane_context[:LANE_FAILED] = true
+  notify_slack
+end
+
+private_lane :notify_slack do |lane, options|
+  next unless ENV['CI']
+  case lane
+    when :deploy_staging then notify_slack_deploy_staging
+    when :deploy_live then notify_slack_deploy_live
+    when :dsyms then notify_slack_dsyms
+    else UI.important "Unknown source lane #{lane}" if lane_context[:LANE_FAILED]
+  end
+end
+
+private_lane :notify_slack_deploy_staging do
+  build = lane_context[:BUILD_NUMBER]
+  send_slack_message(
+    success: "*Successfully deployed build #{build} to Firebase! 🔥*",
+    failure: "*Failed to deploy build #{build} to Firebase!*",
+    info: [:last_git_commit_hash],
+  )
+end
+
+private_lane :notify_slack_deploy_live do
+  build = lane_context[:BUILD_NUMBER]
+  send_slack_message(
+    success: "*Successfully deployed build #{build} to TestFlight! 🚀*",
+    failure: "*Failed to deploy build #{build} to TestFlight!*",
+    info: [:last_git_commit_hash],
+  )
+end
+
+private_lane :notify_slack_dsyms do
+  send_slack_message(
+    success: "*Successfully uploaded latest dSYMs to Firebase! 🐛*",
+    failure: "*Failed to upload dSYMs to Firebase!*",
+    info: [:last_git_commit],
+  )
+end
+
+private_lane :send_slack_message do |options|
+  webhook = ENV['SLACK_WEBHOOK']
+  is_lane_failed = lane_context[:LANE_FAILED]
+  message = is_lane_failed ? options[:failure] : options[:success]
+  info = options[:info]
+  slack(
+    slack_url: webhook,
+    success: !is_lane_failed,
+    message: message,
+    default_payloads: info || [],
+    fail_on_error: !is_lane_failed,
+  )
+end

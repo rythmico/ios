@@ -1,14 +1,18 @@
-name: CI
+name: Deploy - Live
 
-on: [pull_request]
+on:
+  push:
+    branches:
+      - release
+      - release/**
 
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  ci:
-    name: CI
+  deploy:
+    name: Deploy - Live
     runs-on: macos-11
     env:
       GIT_CRYPT_KEY: ${{ secrets.GIT_CRYPT_KEY }}
@@ -16,11 +20,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
       - name: SSH Agent
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Bootstrap
         run: make bootstrap
-      - name: Run CI
-        run: bundle exec fastlane ci
+      - name: Deploy
+        run: bundle exec fastlane deploy_live

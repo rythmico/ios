@@ -1,0 +1,23 @@
+desc 'Continuous Integration (test + archive)'
+lane :ci do
+  test
+  archive
+end
+
+desc 'Run All Tests'
+lane :test do
+  run_tests(
+    scheme: 'All',
+    device: 'iPhone 8',
+    configuration: 'Debug',
+  )
+end
+
+desc 'Archive'
+lane :archive do
+  build_app(
+    scheme: 'All',
+    configuration: 'Release',
+    skip_package_ipa: true,
+  )
+end
