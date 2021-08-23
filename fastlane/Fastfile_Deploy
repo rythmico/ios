@@ -34,8 +34,7 @@ end
 #### Shared ####
 ################
 
-desc 'Bump Build Number'
-lane :bump_build do
+private_lane :bump_build do
   bump_build_number(plist: 'Rythmico/Supporting Files/Info.plist')
   bump_build_number(plist: 'RythmicoTutor/Supporting Files/Info.plist')
 
