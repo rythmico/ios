@@ -10,8 +10,8 @@ final class Date_SugarTests: XCTestCase {
         assert(.referenceDate <- (5, .day), "2001-01-05T00:00:00Z")
         assert(.referenceDate <- (1, .hour), "2001-01-01T01:00:00Z")
         assert(.referenceDate <- (1, [.hour, .minute, .second]), "2001-01-01T01:01:01Z")
-        // FIXME
-//         assert(.referenceDate <- (1, [.hour, .minute, .second]) <- (5, .day), "2001-01-05T01:01:01Z")
+        assert(.referenceDate <- (5, .day) <- (1, [.hour, .minute, .second]), "2001-01-05T01:01:01Z")
+        assert(.referenceDate <- (5, [.hour, .minute, .second]) <- (5, .day), "2001-01-05T05:05:05Z")
     }
 
     func testSum() {
