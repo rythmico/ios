@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 import AuthenticationServices
 
 /// Type-safe, closure-based `ASAuthorizationControllerDelegate` wrapper to be used only internally by `AppleAuthorizationService`.

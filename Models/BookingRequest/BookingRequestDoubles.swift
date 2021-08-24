@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 extension BookingRequest {
     static let stub = Self(

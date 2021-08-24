@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 private enum Const {
     #if DEBUG

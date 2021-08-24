@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 final class CardSetupCoordinator: FailableActivityCoordinator<CardSetupParams, Card> {
     private let service: CardSetupServiceProtocol

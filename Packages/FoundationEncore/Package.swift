@@ -4,14 +4,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "FoundationSugar",
+    name: "FoundationEncore",
     platforms: [
         .iOS(.v13)
     ],
     products: [
         .library(
-            name: "FoundationSugar",
-            targets: ["FoundationSugar"]
+            name: "FoundationEncore",
+            targets: ["FoundationEncore"]
         ),
     ],
     dependencies: [
@@ -26,7 +26,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "FoundationSugar",
+            name: "FoundationEncore",
             dependencies: [
                 .product(name: "Algorithms", package: "swift-algorithms"),
                 .product(name: "LegibleError", package: "LegibleError"),
@@ -39,8 +39,8 @@ let package = Package(
             ]
         ),
         .testTarget(
-            name: "FoundationSugarTests",
-            dependencies: ["FoundationSugar"]
+            name: "FoundationEncoreTests",
+            dependencies: ["FoundationEncore"]
         ),
     ]
 )

@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 final class AuthenticationServiceStub: AuthenticationServiceProtocol {
     var result: AuthenticationResult

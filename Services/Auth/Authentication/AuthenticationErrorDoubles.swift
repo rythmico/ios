@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 extension AuthenticationError where ReasonCode == AuthenticationErrorSignInReasonCode {
     static let stub = Self(

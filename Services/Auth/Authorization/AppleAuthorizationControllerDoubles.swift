@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 final class AppleAuthorizationControllerSpy: AppleAuthorizationControllerProtocol {
     static var didInit: Handler<AppleAuthorizationControllerSpy>?

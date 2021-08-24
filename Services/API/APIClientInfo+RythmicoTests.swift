@@ -1,5 +1,5 @@
 import XCTest
-import FoundationSugar
+import FoundationEncore
 @testable import Rythmico
 
 final class APIClientInfoRythmicoTests: XCTestCase {

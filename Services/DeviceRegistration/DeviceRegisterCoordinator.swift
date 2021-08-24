@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 final class DeviceRegisterCoordinator {
     typealias APICoordinator = APIActivityCoordinator<AddDeviceRequest>

@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 final class ActivitySpy: Activity {
     private(set) var resumeCount = 0

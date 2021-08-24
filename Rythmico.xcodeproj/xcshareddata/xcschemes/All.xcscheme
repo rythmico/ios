@@ -69,10 +69,10 @@
             testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FoundationSugarTests"
-               BuildableName = "FoundationSugarTests"
-               BlueprintName = "FoundationSugarTests"
-               ReferencedContainer = "container:Modules/FoundationSugar">
+               BlueprintIdentifier = "FoundationEncoreTests"
+               BuildableName = "FoundationEncoreTests"
+               BlueprintName = "FoundationEncoreTests"
+               ReferencedContainer = "container:Packages/FoundationEncore">
             </BuildableReference>
          </TestableReference>
       </Testables>

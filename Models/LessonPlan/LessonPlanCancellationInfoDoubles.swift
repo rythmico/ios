@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 extension LessonPlan.CancellationInfo {
     static let stub = Self(

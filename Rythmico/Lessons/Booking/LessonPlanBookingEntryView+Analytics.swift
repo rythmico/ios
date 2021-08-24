@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 extension AnalyticsEvent {
     static func bookTutorScreenView(lessonPlan: LessonPlan, application: LessonPlan.Application) -> Self {

@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 import UserNotifications
 
 final class UNUserNotificationCenterStub: UNUserNotificationCenterProtocol {

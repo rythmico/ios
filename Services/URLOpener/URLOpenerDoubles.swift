@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 final class URLOpenerSpy: URLOpener {
     private(set) var openCount = 0

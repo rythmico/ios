@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 struct LessonPlan: Identifiable, Hashable {
     var id: ID

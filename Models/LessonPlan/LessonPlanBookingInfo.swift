@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 extension LessonPlan {
     struct BookingInfo: Decodable, Hashable {

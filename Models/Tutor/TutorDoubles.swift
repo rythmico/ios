@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 extension Tutor.ID {
     static func random() -> Self {

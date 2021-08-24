@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 import EventKit
 
 struct EKCalendarFake: EKCalendarProtocol {

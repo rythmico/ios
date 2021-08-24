@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 import PhoneNumberKit
 
 struct Booking: Equatable, Identifiable, Hashable {

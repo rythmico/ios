@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 import class UIKit.UIImage
 
 enum ImageReference: Equatable, Decodable, Hashable {

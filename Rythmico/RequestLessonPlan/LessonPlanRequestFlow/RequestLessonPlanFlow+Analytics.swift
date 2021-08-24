@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 extension AnalyticsEvent {
     static func screenView(_ step: RequestLessonPlanFlow.Step, in flow: RequestLessonPlanFlow) -> Self {

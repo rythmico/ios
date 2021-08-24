@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 enum APIClientInfo {
     static let current = [

@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 final class RemoteConfigCoordinator: ObservableObject {
     private let service: RemoteConfigServiceProtocol

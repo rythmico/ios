@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 extension AnalyticsEvent {
     static private(set) var checkoutFlowID = Current.uuid()

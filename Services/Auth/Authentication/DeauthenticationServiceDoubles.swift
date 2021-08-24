@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 final class DeauthenticationServiceFake: DeauthenticationServiceProtocol {
     func deauthenticate() {

@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 import enum Valet.KeychainError
 
 final class KeychainFake: KeychainProtocol {

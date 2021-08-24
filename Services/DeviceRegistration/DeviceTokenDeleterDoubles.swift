@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 final class DeviceTokenDeleterSpy: DeviceTokenDeleter {
     var unregisterCount = 0

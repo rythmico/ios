@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 extension LessonPlan.BookingInfo {
     static let jesseStub = Self(date: .stub, tutor: .jesseStub)

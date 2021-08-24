@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 struct Student: Equatable, Codable, Hashable {
     var name: String

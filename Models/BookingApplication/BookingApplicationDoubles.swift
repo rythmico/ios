@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 extension BookingApplication {
     static func stub(_ statusInfo: StatusInfo) -> Self {

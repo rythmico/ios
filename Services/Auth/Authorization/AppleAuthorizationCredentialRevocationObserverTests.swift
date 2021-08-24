@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 import XCTest
 @testable import Rythmico
 import class AuthenticationServices.ASAuthorizationAppleIDProvider

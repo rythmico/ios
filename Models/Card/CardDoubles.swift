@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 extension Card.ID {
     static func random() -> Self {
