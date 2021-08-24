@@ -1,10 +1,16 @@
-public protocol OptionalProtocol {
+public protocol OptionalProtocol: ExpressibleByNilLiteral {
     associatedtype Wrapped
 
     var value: Wrapped? { get }
 
     static func some(_ wrapped: Wrapped) -> Self
     static var none: Self { get }
+}
+
+extension OptionalProtocol {
+    public init(nilLiteral: ()) {
+        self = .none
+    }
 }
 
 extension Optional: OptionalProtocol {
