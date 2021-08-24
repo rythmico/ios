@@ -21,14 +21,14 @@ extension Result {
     }
 }
 
-public protocol AnyResult {
+public protocol ResultProtocol {
     associatedtype Success
     associatedtype Failure
 
     func get() throws -> Success
 }
 
-extension AnyResult {
+extension ResultProtocol {
     public var successValue: Success? {
         try? get()
     }
@@ -51,4 +51,4 @@ extension AnyResult {
     }
 }
 
-extension Result: AnyResult {}
+extension Result: ResultProtocol {}

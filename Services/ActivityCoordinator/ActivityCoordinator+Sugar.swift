@@ -31,7 +31,7 @@ extension ActivityCoordinator.State {
     }
 }
 
-extension ActivityCoordinator.State where Output: AnyResult {
+extension ActivityCoordinator.State where Output: ResultProtocol {
     var successValue: Output.Success? {
         finishedValue?.successValue
     }
