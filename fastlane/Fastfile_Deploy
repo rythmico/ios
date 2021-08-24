@@ -2,7 +2,7 @@ desc 'Deploy student to Firebase & tutor to ASC'
 lane :deploy_staging do
   bump_build
   deploy_to_firebase(scheme: 'Rythmico')
-  deploy_to_firebase(scheme: 'RythmicoTutor')
+  deploy_to_firebase(scheme: 'Tutor')
 end
 
 private_lane :deploy_to_firebase do |options|
