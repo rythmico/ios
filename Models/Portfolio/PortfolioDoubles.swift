@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 extension Portfolio: Then {}
 extension Portfolio.Training: Then {}

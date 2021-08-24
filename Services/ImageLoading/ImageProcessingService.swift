@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 protocol ImageProcessingServiceProtocol {
     typealias CompletionHandler = Handler<UIImage>

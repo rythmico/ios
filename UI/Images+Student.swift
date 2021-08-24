@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 extension Image {
     static func checkmarkIcon(color: Color) -> some View {

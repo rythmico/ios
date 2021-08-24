@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct LessonSummaryCell: View {
     let lesson: Lesson

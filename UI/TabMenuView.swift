@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 // TODO: implement as Picker with custom PickerStyle, maybe someday when API is open.
 struct TabMenuView<Tab: RawRepresentable>: View where Tab.RawValue == String {

@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct LessonPlanSummaryCell: View {
     @Environment(\.navigator) private var navigator

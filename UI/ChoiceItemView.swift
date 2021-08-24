@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 // TODO: potentially define in a more semantically generic way...
 // (e.g. as a EdgeInsets static member)

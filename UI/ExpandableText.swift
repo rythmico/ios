@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct ExpandableText<Expander: View, Collapser: View>: View {
     @State

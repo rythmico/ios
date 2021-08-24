@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct RootView: View, TestableView {
     @ObservedObject

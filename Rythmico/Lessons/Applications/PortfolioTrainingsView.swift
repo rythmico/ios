@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct PortfolioTrainingsView: View {
     @Environment(\.idealHorizontalInsets) private var idealHorizontalInsets

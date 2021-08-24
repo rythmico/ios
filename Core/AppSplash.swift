@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct AnimatedAppSplash: View {
     enum Const {

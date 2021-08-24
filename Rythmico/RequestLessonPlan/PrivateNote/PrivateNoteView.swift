@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct PrivateNoteView: View, FocusableView, TestableView {
     @ObservedObject

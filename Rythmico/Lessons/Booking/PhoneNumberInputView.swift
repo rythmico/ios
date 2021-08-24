@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 import PhoneNumberKit
 
 struct PhoneNumberInputView: View {

@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct InlineContentTitleSubtitleView<Content: View>: View {
     @ViewBuilder

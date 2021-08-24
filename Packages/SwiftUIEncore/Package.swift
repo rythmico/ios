@@ -4,14 +4,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "SwiftUISugar",
+    name: "SwiftUIEncore",
     platforms: [
         .iOS(.v14)
     ],
     products: [
         .library(
-            name: "SwiftUISugar",
-            targets: ["SwiftUISugar"]
+            name: "SwiftUIEncore",
+            targets: ["SwiftUIEncore"]
         ),
     ],
     dependencies: [
@@ -24,7 +24,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "SwiftUISugar",
+            name: "SwiftUIEncore",
             dependencies: [
                 .product(name: "FoundationEncore", package: "FoundationEncore"),
                 .product(name: "Introspect", package: "Introspect"),
@@ -35,8 +35,8 @@ let package = Package(
             ]
         ),
         .testTarget(
-            name: "SwiftUISugarTests",
-            dependencies: ["SwiftUISugar"]
+            name: "SwiftUIEncoreTests",
+            dependencies: ["SwiftUIEncore"]
         ),
     ]
 )

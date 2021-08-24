@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 // TODO: maybe build on top of Flow module?
 

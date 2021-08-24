@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct PaymentMethodChoiceList: View {
     var cards: NonEmpty<[Card]>

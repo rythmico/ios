@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct CoordinatorStateView<Input, Success, InputContent: View, LoadingContent: View, SuccessContent: View>: View {
     typealias Coordinator = FailableActivityCoordinator<Input, Success>

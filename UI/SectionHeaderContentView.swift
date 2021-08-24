@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct SectionHeaderContentView<Accessory: View, Content: View>: View {
     let title: Text

@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct TutorStatusBanner: View {
     var status: TutorStatus

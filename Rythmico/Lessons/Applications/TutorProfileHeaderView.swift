@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct TutorProfileHeaderView: View {
     let tutor: Tutor

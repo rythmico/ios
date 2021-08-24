@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 extension Text {
     func rythmicoTextStyle(_ style: Font.RythmicoTextStyle) -> some View {

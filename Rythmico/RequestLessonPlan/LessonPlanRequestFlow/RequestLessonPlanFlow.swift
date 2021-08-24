@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 final class RequestLessonPlanFlow: Flow {
     let id = Current.uuid()

@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct LoadableCollectionView<Content: View>: View {
     let isLoading: Bool

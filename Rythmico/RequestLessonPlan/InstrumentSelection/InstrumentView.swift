@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct InstrumentView: View {
     let instrument: Instrument

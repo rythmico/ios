@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct SchedulingView: View, FocusableView, TestableView {
     enum Focus: FocusEnum {

@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct LessonOptionsButton: View {
     @Environment(\.navigator) private var navigator

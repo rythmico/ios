@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct BookingApplicationCell: View {
     var application: BookingApplication

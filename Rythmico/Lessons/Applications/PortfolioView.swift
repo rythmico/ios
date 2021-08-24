@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct PortfolioView: View {
     private struct BioId: Hashable {}

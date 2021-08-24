@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct TwoSidedText: View {
     enum Anchor {

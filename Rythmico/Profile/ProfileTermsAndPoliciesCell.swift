@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct ProfileTermsAndPoliciesCell: View {
     var body: some View {

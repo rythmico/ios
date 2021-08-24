@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct TutorStatusView: View {
     private var pushNotificationAuthCoordinator = Current.pushNotificationAuthorizationCoordinator

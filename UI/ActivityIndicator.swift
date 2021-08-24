@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct ActivityIndicator: View {
     private typealias Style = CircularProgressViewStyle

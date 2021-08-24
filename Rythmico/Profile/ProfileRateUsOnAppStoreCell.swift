@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct ProfileRateUsOnAppStoreCell: View {
     var body: some View {

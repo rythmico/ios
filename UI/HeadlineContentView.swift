@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct HeadlineContentView<Accessory: View, Content: View>: View {
     let title: String
