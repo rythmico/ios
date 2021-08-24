@@ -86,6 +86,17 @@
                ReferencedContainer = "container:Packages/FoundationEncore">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BuildersTests"
+               BuildableName = "BuildersTests"
+               BlueprintName = "BuildersTests"
+               ReferencedContainer = "container:Packages/FoundationEncore">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -105,6 +116,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "03341B3A23ABB1E7009AE8A8"
+            BuildableName = "Rythmico.app"
+            BlueprintName = "Rythmico"
+            ReferencedContainer = "container:Rythmico.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

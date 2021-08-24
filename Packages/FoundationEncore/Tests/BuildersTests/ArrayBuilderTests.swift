@@ -1,7 +1,7 @@
 import XCTest
-import FoundationEncore
+import Builders
 
-final class Array_SugarTests: XCTestCase {
+final class ArrayBuilderTests: XCTestCase {
     func testBuilder() {
         let sut: [Any] = Array(build: {
             if true {
@@ -84,7 +84,7 @@ final class Array_SugarTests: XCTestCase {
     }
 }
 
-private extension Array_SugarTests {
+private extension ArrayBuilderTests {
     // Used to avoid triggering compiler warnings due to
     // obviously inaccessible codepaths.
     var `false`: Bool { false }

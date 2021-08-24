@@ -1,7 +1,7 @@
 import XCTest
-import FoundationEncore
+import Builders
 
-final class Dictionary_SugarTests: XCTestCase {
+final class DictionaryBuilderTests: XCTestCase {
     func testBuilder() {
         let sut: [String: Any] = Dictionary {
             if true {
@@ -34,7 +34,7 @@ final class Dictionary_SugarTests: XCTestCase {
     }
 }
 
-private extension Dictionary_SugarTests {
+private extension DictionaryBuilderTests {
     // Used to avoid triggering compiler warnings due to
     // obviously inaccessible codepaths.
     var `false`: Bool { false }
