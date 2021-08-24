@@ -34,9 +34,5 @@ let package = Package(
                 .product(name: "WebView", package: "WebView"),
             ]
         ),
-        .testTarget(
-            name: "SwiftUIEncoreTests",
-            dependencies: ["SwiftUIEncore"]
-        ),
     ]
 )
