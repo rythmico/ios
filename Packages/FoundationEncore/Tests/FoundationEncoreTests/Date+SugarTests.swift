@@ -31,7 +31,7 @@ final class Date_SugarTests: XCTestCase {
 private extension Date_SugarTests {
     var formatter: ISO8601DateFormatter { .init().with(\.timeZone, .neutral) }
 
-    func assert(_ date: Date, _ string: String, file: StaticString = #file, line: UInt = #line) {
+    func assert(_ date: Date, _ string: String, file: StaticString = #filePath, line: UInt = #line) {
         XCTAssertEqual(formatter.string(from: date), string, file: file, line: line)
     }
 }
