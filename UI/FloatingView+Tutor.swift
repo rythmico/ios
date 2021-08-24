@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct FloatingView<Content: View>: View {
     @ViewBuilder

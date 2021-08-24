@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 extension NSAttributedString {
     typealias Attributes = [Key: Any]

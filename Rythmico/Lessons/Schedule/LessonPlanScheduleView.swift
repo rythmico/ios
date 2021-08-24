@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct LessonPlanScheduleView: View {
     let schedule: Schedule

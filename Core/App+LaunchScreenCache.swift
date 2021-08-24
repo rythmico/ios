@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 extension App.Delegate {
     func clearLaunchScreenCache(_ shouldClear: Bool) {

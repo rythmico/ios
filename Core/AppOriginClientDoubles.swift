@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 extension AppOriginClient {
     static let appStore = Self(get: { .appStore })

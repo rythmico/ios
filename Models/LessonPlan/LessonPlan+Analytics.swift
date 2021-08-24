@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 extension AnalyticsEvent {
     @PropsBuilder

@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 import MapKit
 
 // TODO: refactor with generics, to use in BookingRequestDetailView and LessonDetailView.

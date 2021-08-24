@@ -1,6 +1,6 @@
 public protocol FocusableView {
     associatedtype Focus: FocusEnum
-    typealias FocusCoordinator = SwiftUISugar.FocusCoordinator<Focus>
+    typealias FocusCoordinator = SwiftUIEncore.FocusCoordinator<Focus>
     var focusCoordinator: FocusCoordinator { get }
 }
 

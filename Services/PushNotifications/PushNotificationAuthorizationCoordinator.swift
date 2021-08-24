@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 import Combine
 
 final class PushNotificationAuthorizationCoordinator: ObservableObject {

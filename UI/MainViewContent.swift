@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct MainViewContent<Tab: Hashable>: View {
     var tabs: [Tab]

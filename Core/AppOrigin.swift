@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 extension App {
     enum Origin: Equatable, Hashable {

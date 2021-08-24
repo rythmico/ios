@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct CustomEditableTextField<EditingView: View>: View {
     var placeholder: String

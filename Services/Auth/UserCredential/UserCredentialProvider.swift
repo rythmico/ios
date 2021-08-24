@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 import Combine
 
 class UserCredentialProviderBase: ObservableObject {

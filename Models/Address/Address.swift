@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 struct Address: Hashable, Equatable, Codable {
     var latitude: Double

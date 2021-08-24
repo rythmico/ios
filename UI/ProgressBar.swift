@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct ProgressBar: View {
     private enum Const {

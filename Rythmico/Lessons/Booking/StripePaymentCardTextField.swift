@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 import Stripe
 
 struct StripePaymentCardTextField: UIViewRepresentable {

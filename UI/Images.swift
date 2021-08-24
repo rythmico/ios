@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 extension Image {
     static func rythmicoLogo(width: CGFloat, namespace: Namespace.ID? = .none) -> some View {

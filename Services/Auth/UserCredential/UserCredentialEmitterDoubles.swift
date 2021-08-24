@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 final class UserCredentialEmitterSpy: UserCredentialEmitterProtocol {
     var userCredential: UserCredentialProtocol?

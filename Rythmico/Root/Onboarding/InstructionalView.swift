@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct InstructionalView<EndButton: View>: View {
     @Environment(\.appSplashNamespace) private var appSplashNamespace

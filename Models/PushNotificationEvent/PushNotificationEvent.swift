@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 extension PushNotificationEvent {
     init?(userInfo: [AnyHashable: Any]) {

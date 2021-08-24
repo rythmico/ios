@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 final class InstrumentSelectionListProviderStub: InstrumentSelectionListProviderProtocol {
     var instruments: [Instrument]

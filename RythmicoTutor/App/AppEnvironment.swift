@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 import ComposableNavigator
 import UserNotifications
 import EventKit

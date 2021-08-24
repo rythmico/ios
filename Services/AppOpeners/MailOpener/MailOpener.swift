@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 extension URLOpener {
     func open(_ link: MailLink) throws {

@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct LessonSkippingContentView: View {
     var isFree: Bool

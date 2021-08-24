@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct LessonPlanResumingContentView: View {
     var policy: LessonPlan.Options.Resume.Policy

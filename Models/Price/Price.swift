@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 struct Price: Equatable, Decodable, Hashable {
     enum Currency: String, Equatable, Decodable, Hashable {

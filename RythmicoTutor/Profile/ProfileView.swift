@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 import class FirebaseAuth.Auth
 
 struct ProfileView: View, TestableView {

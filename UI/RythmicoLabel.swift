@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 enum RythmicoLabelLayout: Hashable {
     case iconAndTitle

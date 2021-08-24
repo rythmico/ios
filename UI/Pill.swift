@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct Pill<Content: View>: View {
     var backgroundColor: Color

@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 import APIKit
 
 struct AddressSearchRequest: RythmicoAPIRequest {

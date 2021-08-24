@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct ProfileCell<Accessory: View>: View {
     @Environment(\.idealHorizontalInsets) private var idealHorizontalInsets

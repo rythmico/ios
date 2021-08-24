@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct InstrumentSelectionView: View, TestableView {
     final class ViewState: ObservableObject {

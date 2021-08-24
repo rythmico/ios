@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 extension RythmicoButtonStyle {
     init(

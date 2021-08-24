@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct BookingApplicationSection<HeaderAccessory: View>: View {
     private let applications: [BookingApplication]

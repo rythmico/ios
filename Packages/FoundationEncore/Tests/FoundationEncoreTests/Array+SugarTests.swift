@@ -1,5 +1,5 @@
 import XCTest
-import FoundationSugar
+import FoundationEncore
 
 final class Array_SugarTests: XCTestCase {
     func testBuilder() {

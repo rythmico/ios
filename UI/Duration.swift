@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 extension Double {
     static let durationShort: Double = 0.15

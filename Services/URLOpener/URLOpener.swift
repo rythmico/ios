@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 protocol URLOpener {
     func open(_ url: URL)

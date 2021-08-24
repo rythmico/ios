@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 final class CalendarSyncStatusProviderStub: CalendarSyncStatusProviderBase {
     private(set) var initialStatus: Status

@@ -4,18 +4,18 @@
 import PackageDescription
 
 let package = Package(
-    name: "SwiftUISugar",
+    name: "SwiftUIEncore",
     platforms: [
         .iOS(.v14)
     ],
     products: [
         .library(
-            name: "SwiftUISugar",
-            targets: ["SwiftUISugar"]
+            name: "SwiftUIEncore",
+            targets: ["SwiftUIEncore"]
         ),
     ],
     dependencies: [
-        .package(path: "FoundationSugar"),
+        .package(path: "FoundationEncore"),
         .package(name: "Introspect", url: "https://github.com/siteline/SwiftUI-Introspect", from: "0.1.0"),
         .package(name: "MultiModal", url: "https://github.com/davdroman/MultiModal", from: "2.0.0"),
         .package(name: "SFSafeSymbols", url: "https://github.com/piknotech/SFSafeSymbols", from: "2.1.2"),
@@ -24,9 +24,9 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "SwiftUISugar",
+            name: "SwiftUIEncore",
             dependencies: [
-                .product(name: "FoundationSugar", package: "FoundationSugar"),
+                .product(name: "FoundationEncore", package: "FoundationEncore"),
                 .product(name: "Introspect", package: "Introspect"),
                 .product(name: "MultiModal", package: "MultiModal"),
                 .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
@@ -35,8 +35,8 @@ let package = Package(
             ]
         ),
         .testTarget(
-            name: "SwiftUISugarTests",
-            dependencies: ["SwiftUISugar"]
+            name: "SwiftUIEncoreTests",
+            dependencies: ["SwiftUIEncore"]
         ),
     ]
 )

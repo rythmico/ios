@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct InfoDisclaimerButton: View {
     var title: String

@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 extension UIToolbar {
     static func dismissKeyboardTooltip(color: UIColor) -> UIToolbar {

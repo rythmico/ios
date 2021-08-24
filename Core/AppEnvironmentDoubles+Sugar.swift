@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 extension AppEnvironment {
     mutating func setUpFake() {

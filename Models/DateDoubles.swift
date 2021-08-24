@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 extension Date: ExpressibleByStringLiteral {
     public init(stringLiteral value: StringLiteralType) {

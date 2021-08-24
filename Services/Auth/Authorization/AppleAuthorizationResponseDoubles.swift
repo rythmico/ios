@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 struct AppleAuthorizationResponseStub: AppleAuthorizationResponseProtocol {
     var userId: String

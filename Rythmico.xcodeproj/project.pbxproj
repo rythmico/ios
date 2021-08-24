@@ -294,6 +294,8 @@
 		D54340FA261E7AC6006898B0 /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340F9261E7AC6006898B0 /* AnalyticsEvent.swift */; };
 		D54340FD261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340FC261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift */; };
 		D54340FE261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54340FC261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift */; };
+		D5439DDA26D5278300D69CE8 /* SwiftUIEncore in Frameworks */ = {isa = PBXBuildFile; productRef = D5439DD926D5278300D69CE8 /* SwiftUIEncore */; };
+		D5439DDC26D5278B00D69CE8 /* SwiftUIEncore in Frameworks */ = {isa = PBXBuildFile; productRef = D5439DDB26D5278B00D69CE8 /* SwiftUIEncore */; };
 		D543B918263F5FA800D25CFD /* AddressLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543B917263F5FA800D25CFD /* AddressLabel.swift */; };
 		D543B91A26408FBF00D25CFD /* FloatingActionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543B91926408FBF00D25CFD /* FloatingActionMenu.swift */; };
 		D543CA732609227D00900975 /* CustomTextFieldInputMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543CA722609227D00900975 /* CustomTextFieldInputMode.swift */; };
@@ -513,8 +515,6 @@
 		D5D5B2D426BD9598002B40F8 /* OptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5B2D326BD9598002B40F8 /* OptionsButton.swift */; };
 		D5D5B2D626BEB1F5002B40F8 /* LessonPlanOptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5B2D526BEB1F5002B40F8 /* LessonPlanOptionsButton.swift */; };
 		D5D5B2D826BF2783002B40F8 /* LessonOptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5B2D726BF2783002B40F8 /* LessonOptionsButton.swift */; };
-		D5D5E8AE26851A7800AACB8F /* SwiftUISugar in Frameworks */ = {isa = PBXBuildFile; productRef = D5D5E8AD26851A7800AACB8F /* SwiftUISugar */; };
-		D5D5E8B026851A8800AACB8F /* SwiftUISugar in Frameworks */ = {isa = PBXBuildFile; productRef = D5D5E8AF26851A8800AACB8F /* SwiftUISugar */; };
 		D5D5E8B22685586800AACB8F /* FlowView+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5E8B12685586800AACB8F /* FlowView+Sugar.swift */; };
 		D5D5E8B3268559BC00AACB8F /* FlowView+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5E8B12685586800AACB8F /* FlowView+Sugar.swift */; };
 		D5D5E8B526878CCC00AACB8F /* CasePickable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5E8B426878CCC00AACB8F /* CasePickable.swift */; };
@@ -791,7 +791,7 @@
 		D509D837265EE56100B60DF0 /* LessonPlanResumingContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanResumingContentView.swift; sourceTree = "<group>"; };
 		D50E4BC123C69D0400B6FCB1 /* AppleAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationService.swift; sourceTree = "<group>"; };
 		D50E4BC423C7AAA900B6FCB1 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
-		D510825B25E43099003C9467 /* FoundationSugar */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FoundationSugar; sourceTree = "<group>"; };
+		D510825B25E43099003C9467 /* FoundationEncore */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FoundationEncore; sourceTree = "<group>"; };
 		D5147506240C8E69002EE20C /* TestableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestableView.swift; sourceTree = "<group>"; };
 		D5147507240C8E69002EE20C /* XCTAssertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTAssertView.swift; sourceTree = "<group>"; };
 		D5147510240C99A9002EE20C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -1052,7 +1052,7 @@
 		D5D5B2D326BD9598002B40F8 /* OptionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsButton.swift; sourceTree = "<group>"; };
 		D5D5B2D526BEB1F5002B40F8 /* LessonPlanOptionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanOptionsButton.swift; sourceTree = "<group>"; };
 		D5D5B2D726BF2783002B40F8 /* LessonOptionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonOptionsButton.swift; sourceTree = "<group>"; };
-		D5D5E8AB268518AB00AACB8F /* SwiftUISugar */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SwiftUISugar; sourceTree = "<group>"; };
+		D5D5E8AB268518AB00AACB8F /* SwiftUIEncore */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SwiftUIEncore; sourceTree = "<group>"; };
 		D5D5E8B12685586800AACB8F /* FlowView+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FlowView+Sugar.swift"; sourceTree = "<group>"; };
 		D5D5E8B426878CCC00AACB8F /* CasePickable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasePickable.swift; sourceTree = "<group>"; };
 		D5D78DDF25250864007041BE /* LessonPlanBookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanBookingView.swift; sourceTree = "<group>"; };
@@ -1143,6 +1143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5439DDA26D5278300D69CE8 /* SwiftUIEncore in Frameworks */,
 				D5D78DD7252502CE007041BE /* PhoneNumberKit in Frameworks */,
 				D535547723DF3A19005A20EB /* Valet in Frameworks */,
 				D56C6A98264AC80C00A2599E /* ComposableNavigator in Frameworks */,
@@ -1150,7 +1151,6 @@
 				D5FC2D44254A7DE3005056D5 /* FirebaseAuth in Frameworks */,
 				D5FC2D42254A7DE3005056D5 /* FirebaseMessaging in Frameworks */,
 				D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */,
-				D5D5E8AE26851A7800AACB8F /* SwiftUISugar in Frameworks */,
 				D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */,
 				03B19837247053F5005529EB /* APIKit in Frameworks */,
 				D5CFB3732675242D006DBCE0 /* Amplitude in Frameworks */,
@@ -1165,10 +1165,10 @@
 				D5FC2D53254A7E21005056D5 /* FirebaseMessaging in Frameworks */,
 				D5947C9826A39E9600355857 /* ComposableNavigator in Frameworks */,
 				D5FC2D4F254A7E21005056D5 /* FirebaseAuth in Frameworks */,
+				D5439DDC26D5278B00D69CE8 /* SwiftUIEncore in Frameworks */,
 				035B1CD7249CF7EB00AABFEA /* Valet in Frameworks */,
 				D5FC2D51254A7E21005056D5 /* FirebaseCrashlytics in Frameworks */,
 				D5F4AE8B2559D46A001085D5 /* PhoneNumberKit in Frameworks */,
-				D5D5E8B026851A8800AACB8F /* SwiftUISugar in Frameworks */,
 				D575C837254F10F0001664AB /* FirebaseRemoteConfig in Frameworks */,
 				035B1D69249E645E00AABFEA /* APIKit in Frameworks */,
 			);
@@ -2241,8 +2241,8 @@
 		D5D5E8A92685143000AACB8F /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				D510825B25E43099003C9467 /* FoundationSugar */,
-				D5D5E8AB268518AB00AACB8F /* SwiftUISugar */,
+				D510825B25E43099003C9467 /* FoundationEncore */,
+				D5D5E8AB268518AB00AACB8F /* SwiftUIEncore */,
 			);
 			path = Packages;
 			sourceTree = "<group>";
@@ -2445,7 +2445,7 @@
 				D59E4E6025B20ADA00E8F94C /* YouTubeiOSPlayerHelper */,
 				D56C6A97264AC80C00A2599E /* ComposableNavigator */,
 				D5CFB3722675242D006DBCE0 /* Amplitude */,
-				D5D5E8AD26851A7800AACB8F /* SwiftUISugar */,
+				D5439DD926D5278300D69CE8 /* SwiftUIEncore */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -2478,8 +2478,8 @@
 				D5FC2D52254A7E21005056D5 /* FirebaseMessaging */,
 				D575C836254F10F0001664AB /* FirebaseRemoteConfig */,
 				D5F4AE8A2559D46A001085D5 /* PhoneNumberKit */,
-				D5D5E8AF26851A8800AACB8F /* SwiftUISugar */,
 				D5947C9726A39E9600355857 /* ComposableNavigator */,
+				D5439DDB26D5278B00D69CE8 /* SwiftUIEncore */,
 			);
 			productName = RythmicoTutor;
 			productReference = 035B1CBC249CF2AA00AABFEA /* Tutor.app */;
@@ -3947,6 +3947,14 @@
 			package = D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */;
 			productName = Stripe;
 		};
+		D5439DD926D5278300D69CE8 /* SwiftUIEncore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftUIEncore;
+		};
+		D5439DDB26D5278B00D69CE8 /* SwiftUIEncore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftUIEncore;
+		};
 		D56544D224CE4BA100281875 /* ViewInspector */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D56544D124CE4BA100281875 /* XCRemoteSwiftPackageReference "ViewInspector" */;
@@ -3986,14 +3994,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5CFB3712675242C006DBCE0 /* XCRemoteSwiftPackageReference "Amplitude-iOS" */;
 			productName = Amplitude;
-		};
-		D5D5E8AD26851A7800AACB8F /* SwiftUISugar */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SwiftUISugar;
-		};
-		D5D5E8AF26851A8800AACB8F /* SwiftUISugar */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SwiftUISugar;
 		};
 		D5D78DD6252502CE007041BE /* PhoneNumberKit */ = {
 			isa = XCSwiftPackageProductDependency;

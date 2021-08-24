@@ -1,5 +1,5 @@
     import XCTest
-    @testable import SwiftUISugar
+    @testable import SwiftUIEncore
 
     final class SwiftUISugarTests: XCTestCase {
         func testExample() {

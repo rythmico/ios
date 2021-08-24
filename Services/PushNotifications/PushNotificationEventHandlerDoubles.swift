@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 final class PushNotificationEventHandlerSpy: PushNotificationEventHandlerProtocol {
     private(set) var latestEvent: PushNotificationEvent?

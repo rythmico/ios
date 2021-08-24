@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct SelectableContainerState: Hashable {
     let isSelected: Bool

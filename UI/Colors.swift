@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 extension Color {
     static let rythmico = ColorSet<Color>()

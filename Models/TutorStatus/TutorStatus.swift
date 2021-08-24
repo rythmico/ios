@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 enum TutorStatus: Decodable, Equatable {
     case registrationPending(formURL: URL)

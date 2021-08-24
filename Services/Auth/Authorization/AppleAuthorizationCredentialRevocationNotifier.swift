@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 import class AuthenticationServices.ASAuthorizationAppleIDProvider
 
 protocol AppleAuthorizationCredentialRevocationNotifying: AnyObject {

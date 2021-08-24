@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct StudentDetailsView: View, FocusableView, TestableView {
     private enum Const {

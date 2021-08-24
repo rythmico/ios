@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct RythmicoButton<Title: StringProtocol>: View {
     typealias Style = RythmicoButtonStyle

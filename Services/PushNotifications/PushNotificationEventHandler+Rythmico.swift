@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 // TODO: make usage per-view instead of singleton. Potentially use Publishers.
 final class PushNotificationEventHandler: PushNotificationEventHandlerProtocol {

@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 final class TabSelection: ObservableObject {
     @Published var mainTab: MainView.Tab = .lessons

@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 final class UserCredentialStub: UserCredentialProtocol {
     let userId: String = "USER_ID"

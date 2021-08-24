@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 final class DeviceTokenProviderStub: DeviceTokenProvider {
     var result: Result<String, Error>

@@ -1,4 +1,4 @@
-import FoundationSugar
+import FoundationEncore
 
 struct AppOriginClient {
     var get: () -> App.Origin

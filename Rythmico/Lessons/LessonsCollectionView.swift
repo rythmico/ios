@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct LessonsCollectionView: View {
     let isLoading: Bool

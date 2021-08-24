@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 import Firebase
 #if RYTHMICO
 import Amplitude

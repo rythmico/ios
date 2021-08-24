@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct ChoiceList<Data: RandomAccessCollection, ID: Hashable, Content: View>: View {
     typealias Element = Data.Element

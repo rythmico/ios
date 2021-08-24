@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 // TODO: refactor RythmicoButton to allow for building these buttons.
 extension Button where Label == EmptyView {

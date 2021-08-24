@@ -1,4 +1,4 @@
-import SwiftUISugar
+import SwiftUIEncore
 
 struct DynamicImage: View {
     @Environment(\.sizeCategory) private var sizeCategory

@@ -1,5 +1,5 @@
 import XCTest
-import FoundationSugar
+import FoundationEncore
 
 final class Bool_SugarTests: XCTestCase {
     func testNot() {
