@@ -9,10 +9,8 @@ let package = Package(
         .iOS(.v13)
     ],
     products: [
-        .library(
-            name: "FoundationEncore",
-            targets: ["FoundationEncore"]
-        ),
+        .library(name: "FoundationEncore", targets: ["FoundationEncore"]),
+        .library(name: "AnyEquatable", targets: ["AnyEquatable"]),
     ],
     dependencies: [
         .package(name: "ISO8601PeriodDuration", url: "https://github.com/treatwell/ISO8601PeriodDuration", from: "3.1.0"),
@@ -29,6 +27,7 @@ let package = Package(
             name: "FoundationEncore",
             dependencies: [
                 .product(name: "Algorithms", package: "swift-algorithms"),
+                .target(name: "AnyEquatable"),
                 .product(name: "LegibleError", package: "LegibleError"),
                 .product(name: "ISO8601PeriodDuration", package: "ISO8601PeriodDuration"),
                 .product(name: "NonEmpty", package: "swift-nonempty"),
@@ -38,9 +37,9 @@ let package = Package(
                 .product(name: "Version", package: "Version"),
             ]
         ),
-        .testTarget(
-            name: "FoundationEncoreTests",
-            dependencies: ["FoundationEncore"]
-        ),
+        .testTarget(name: "FoundationEncoreTests", dependencies: ["FoundationEncore"]),
+
+        .target(name: "AnyEquatable"),
+        .testTarget(name: "AnyEquatableTests", dependencies: ["AnyEquatable"]),
     ]
 )
