@@ -61,9 +61,9 @@ public func ${operator} <Subject, Value>(subject: ${subject_type}, mutation: Mut
 }
 % end
 
-// MARK: - Assign -
+// MARK: - Assign (Value Types) -
 
-public typealias Assignment<Pointee, Subject> = (
+public typealias AssignmentToValue<Pointee, Subject> = (
     assignTo: UnsafeMutablePointer<Pointee>,
     WritableKeyPath<Pointee, Subject>
 )
@@ -74,7 +74,7 @@ public typealias Assignment<Pointee, Subject> = (
 
 @discardableResult
 @inlinable
-public func ${operator} <Subject, Pointee>(subject: ${subject_type}, assignment: Assignment<Pointee, ${keypath_value_type}>) -> ${subject_type} {
+public func ${operator} <Subject, Pointee>(subject: ${subject_type}, assignment: AssignmentToValue<Pointee, ${keypath_value_type}>) -> ${subject_type} {
 % if subject_type == 'Subject?':
     guard let subject = subject else { return nil }
 % end
@@ -87,3 +87,25 @@ prefix operator /&
 public prefix func /& <Value>(_ value: inout Value) -> UnsafeMutablePointer<Value> {
     withUnsafeMutablePointer(to: &value) { $0 }
 }
+
+// MARK: - Assign (Reference Types) -
+
+public typealias AssignmentToReference<Pointee: AnyObject, Subject> = (
+    assignTo: Pointee,
+    ReferenceWritableKeyPath<Pointee, Subject>
+)
+% for pair in [('=>', 'Subject'), ('?=>', 'Subject?')]:
+% operator = pair[0]
+% subject_type = pair[1]
+% for keypath_value_type in ['Subject', 'Subject?']:
+
+@discardableResult
+@inlinable
+public func ${operator} <Subject, Pointee: AnyObject>(subject: ${subject_type}, assignment: AssignmentToReference<Pointee, ${keypath_value_type}>) -> ${subject_type} {
+% if subject_type == 'Subject?':
+    guard let subject = subject else { return nil }
+% end
+    return subject => { assignment.assignTo[keyPath: assignment.1] = $0 }
+}
+% end
+% end

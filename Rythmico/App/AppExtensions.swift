@@ -31,9 +31,9 @@ extension SwiftUI.App {
                 $0.setBackIndicatorImage(UIImage.chevronLeft, transitionMaskImage: UIImage.chevronLeft)
                 $0.backButtonAppearance.normal.titleTextAttributes = .rythmicoTextAttributes(color: nil, style: .bodyMedium)
             }
-            => (assignTo: /&$0, \.standardAppearance)
-            => (assignTo: /&$0, \.compactAppearance)
-            => (assignTo: /&$0, \.scrollEdgeAppearance)
+            => (assignTo: $0, \.standardAppearance)
+            => (assignTo: $0, \.compactAppearance)
+            => (assignTo: $0, \.scrollEdgeAppearance)
         }
 
         UITableView.appearance() => {
@@ -62,7 +62,7 @@ extension SwiftUI.App {
                     $0.selected.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: barItemTitleVerticalOffset)
                 }
             }
-            => (assignTo: /&$0, \.standardAppearance)
+            => (assignTo: $0, \.standardAppearance)
         }
 
         UISwitch.appearance() => {

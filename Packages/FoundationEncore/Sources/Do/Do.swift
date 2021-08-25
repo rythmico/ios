@@ -65,35 +65,35 @@ public func ?=> <Subject, Value>(subject: Subject?, mutation: Mutation<Subject, 
     return subject => { $0[keyPath: mutation.set] = mutation.to }
 }
 
-// MARK: - Assign -
+// MARK: - Assign (Value Types) -
 
-public typealias Assignment<Pointee, Subject> = (
+public typealias AssignmentToValue<Pointee, Subject> = (
     assignTo: UnsafeMutablePointer<Pointee>,
     WritableKeyPath<Pointee, Subject>
 )
 
 @discardableResult
 @inlinable
-public func => <Subject, Pointee>(subject: Subject, assignment: Assignment<Pointee, Subject>) -> Subject {
+public func => <Subject, Pointee>(subject: Subject, assignment: AssignmentToValue<Pointee, Subject>) -> Subject {
     return subject => { assignment.assignTo.pointee[keyPath: assignment.1] = $0 }
 }
 
 @discardableResult
 @inlinable
-public func => <Subject, Pointee>(subject: Subject, assignment: Assignment<Pointee, Subject?>) -> Subject {
+public func => <Subject, Pointee>(subject: Subject, assignment: AssignmentToValue<Pointee, Subject?>) -> Subject {
     return subject => { assignment.assignTo.pointee[keyPath: assignment.1] = $0 }
 }
 
 @discardableResult
 @inlinable
-public func ?=> <Subject, Pointee>(subject: Subject?, assignment: Assignment<Pointee, Subject>) -> Subject? {
+public func ?=> <Subject, Pointee>(subject: Subject?, assignment: AssignmentToValue<Pointee, Subject>) -> Subject? {
     guard let subject = subject else { return nil }
     return subject => { assignment.assignTo.pointee[keyPath: assignment.1] = $0 }
 }
 
 @discardableResult
 @inlinable
-public func ?=> <Subject, Pointee>(subject: Subject?, assignment: Assignment<Pointee, Subject?>) -> Subject? {
+public func ?=> <Subject, Pointee>(subject: Subject?, assignment: AssignmentToValue<Pointee, Subject?>) -> Subject? {
     guard let subject = subject else { return nil }
     return subject => { assignment.assignTo.pointee[keyPath: assignment.1] = $0 }
 }
@@ -101,4 +101,37 @@ public func ?=> <Subject, Pointee>(subject: Subject?, assignment: Assignment<Poi
 prefix operator /&
 public prefix func /& <Value>(_ value: inout Value) -> UnsafeMutablePointer<Value> {
     withUnsafeMutablePointer(to: &value) { $0 }
+}
+
+// MARK: - Assign (Reference Types) -
+
+public typealias AssignmentToReference<Pointee: AnyObject, Subject> = (
+    assignTo: Pointee,
+    ReferenceWritableKeyPath<Pointee, Subject>
+)
+
+@discardableResult
+@inlinable
+public func => <Subject, Pointee: AnyObject>(subject: Subject, assignment: AssignmentToReference<Pointee, Subject>) -> Subject {
+    return subject => { assignment.assignTo[keyPath: assignment.1] = $0 }
+}
+
+@discardableResult
+@inlinable
+public func => <Subject, Pointee: AnyObject>(subject: Subject, assignment: AssignmentToReference<Pointee, Subject?>) -> Subject {
+    return subject => { assignment.assignTo[keyPath: assignment.1] = $0 }
+}
+
+@discardableResult
+@inlinable
+public func ?=> <Subject, Pointee: AnyObject>(subject: Subject?, assignment: AssignmentToReference<Pointee, Subject>) -> Subject? {
+    guard let subject = subject else { return nil }
+    return subject => { assignment.assignTo[keyPath: assignment.1] = $0 }
+}
+
+@discardableResult
+@inlinable
+public func ?=> <Subject, Pointee: AnyObject>(subject: Subject?, assignment: AssignmentToReference<Pointee, Subject?>) -> Subject? {
+    guard let subject = subject else { return nil }
+    return subject => { assignment.assignTo[keyPath: assignment.1] = $0 }
 }
