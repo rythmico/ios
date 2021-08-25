@@ -12,10 +12,7 @@ infix operator ?=> : DoPrecedence
 @_disfavoredOverload
 @discardableResult
 @inlinable
-public func => <Subject>(
-    subject: Subject,
-    do: (inout Subject) throws -> Void
-) rethrows -> Subject {
+public func => <Subject>(subject: Subject, do: (inout Subject) throws -> Void) rethrows -> Subject {
     var copy = subject
     try `do`(&copy)
     return copy
@@ -24,10 +21,7 @@ public func => <Subject>(
 @_disfavoredOverload
 @discardableResult
 @inlinable
-public func ?=> <Subject>(
-    subject: Subject?,
-    do: (inout Subject) throws -> Void
-) rethrows -> Subject? {
+public func ?=> <Subject>(subject: Subject?, do: (inout Subject) throws -> Void) rethrows -> Subject? {
     guard let subject = subject else { return nil }
     var copy = subject
     try `do`(&copy)
@@ -38,20 +32,14 @@ public func ?=> <Subject>(
 
 @discardableResult
 @inlinable
-public func => <Subject: AnyObject>(
-    subject: Subject,
-    do: (Subject) throws -> Void
-) rethrows -> Subject {
+public func => <Subject: AnyObject>(subject: Subject, do: (Subject) throws -> Void) rethrows -> Subject {
     try `do`(subject)
     return subject
 }
 
 @discardableResult
 @inlinable
-public func ?=> <Subject: AnyObject>(
-    subject: Subject?,
-    do: (Subject) throws -> Void
-) rethrows -> Subject? {
+public func ?=> <Subject: AnyObject>(subject: Subject?, do: (Subject) throws -> Void) rethrows -> Subject? {
     guard let subject = subject else { return nil }
     try `do`(subject)
     return subject
@@ -59,61 +47,53 @@ public func ?=> <Subject: AnyObject>(
 
 // MARK: - Mutate -
 
+public typealias Mutation<Subject, Value> = (
+    set: WritableKeyPath<Subject, Value>,
+    to: Value
+)
+
 @discardableResult
 @inlinable
-public func => <Subject, Value>(
-    subject: Subject,
-    mutation: (set: WritableKeyPath<Subject, Value>, to: Value)
-) -> Subject {
+public func => <Subject, Value>(subject: Subject, mutation: Mutation<Subject, Value>) -> Subject {
     return subject => { $0[keyPath: mutation.set] = mutation.to }
 }
 
 @discardableResult
 @inlinable
-public func ?=> <Subject, Value>(
-    subject: Subject?,
-    mutation: (set: WritableKeyPath<Subject, Value>, to: Value)
-) -> Subject? {
+public func ?=> <Subject, Value>(subject: Subject?, mutation: Mutation<Subject, Value>) -> Subject? {
     guard let subject = subject else { return nil }
     return subject => { $0[keyPath: mutation.set] = mutation.to }
 }
 
-// MARK: - Assign (Value Types) -
+// MARK: - Assign -
+
+public typealias Assignment<Pointee, Subject> = (
+    assignTo: WritableKeyPath<Pointee, Subject>,
+    on: UnsafeMutablePointer<Pointee>
+)
 
 @discardableResult
 @inlinable
-public func => <Subject, Pointee>(
-    subject: Subject,
-    assignment: (assignTo: WritableKeyPath<Pointee, Subject>, on: UnsafeMutablePointer<Pointee>)
-) -> Subject {
+public func => <Subject, Pointee>(subject: Subject, assignment: Assignment<Pointee, Subject>) -> Subject {
     return subject => { assignment.on.pointee[keyPath: assignment.assignTo] = $0 }
 }
 
 @discardableResult
 @inlinable
-public func => <Subject, Pointee>(
-    subject: Subject,
-    assignment: (assignTo: WritableKeyPath<Pointee, Subject?>, on: UnsafeMutablePointer<Pointee>)
-) -> Subject {
+public func => <Subject, Pointee>(subject: Subject, assignment: Assignment<Pointee, Subject?>) -> Subject {
     return subject => { assignment.on.pointee[keyPath: assignment.assignTo] = $0 }
 }
 
 @discardableResult
 @inlinable
-public func ?=> <Subject, Pointee>(
-    subject: Subject?,
-    assignment: (assignTo: WritableKeyPath<Pointee, Subject>, on: UnsafeMutablePointer<Pointee>)
-) -> Subject? {
+public func ?=> <Subject, Pointee>(subject: Subject?, assignment: Assignment<Pointee, Subject>) -> Subject? {
     guard let subject = subject else { return nil }
     return subject => { assignment.on.pointee[keyPath: assignment.assignTo] = $0 }
 }
 
 @discardableResult
 @inlinable
-public func ?=> <Subject, Pointee>(
-    subject: Subject?,
-    assignment: (assignTo: WritableKeyPath<Pointee, Subject?>, on: UnsafeMutablePointer<Pointee>)
-) -> Subject? {
+public func ?=> <Subject, Pointee>(subject: Subject?, assignment: Assignment<Pointee, Subject?>) -> Subject? {
     guard let subject = subject else { return nil }
     return subject => { assignment.on.pointee[keyPath: assignment.assignTo] = $0 }
 }

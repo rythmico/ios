@@ -15,10 +15,7 @@ infix operator ?=> : DoPrecedence
 @_disfavoredOverload
 @discardableResult
 @inlinable
-public func ${operator} <Subject>(
-    subject: ${subject_type},
-    do: (inout Subject) throws -> Void
-) rethrows -> ${subject_type} {
+public func ${operator} <Subject>(subject: ${subject_type}, do: (inout Subject) throws -> Void) rethrows -> ${subject_type} {
 % if subject_type == 'Subject?':
     guard let subject = subject else { return nil }
 % end
@@ -35,10 +32,7 @@ public func ${operator} <Subject>(
 
 @discardableResult
 @inlinable
-public func ${operator} <Subject: AnyObject>(
-    subject: ${subject_type},
-    do: (Subject) throws -> Void
-) rethrows -> ${subject_type} {
+public func ${operator} <Subject: AnyObject>(subject: ${subject_type}, do: (Subject) throws -> Void) rethrows -> ${subject_type} {
 % if subject_type == 'Subject?':
     guard let subject = subject else { return nil }
 % end
@@ -48,16 +42,18 @@ public func ${operator} <Subject: AnyObject>(
 % end
 
 // MARK: - Mutate -
+
+public typealias Mutation<Subject, Value> = (
+    set: WritableKeyPath<Subject, Value>,
+    to: Value
+)
 % for pair in [('=>', 'Subject'), ('?=>', 'Subject?')]:
 % operator = pair[0]
 % subject_type = pair[1]
 
 @discardableResult
 @inlinable
-public func ${operator} <Subject, Value>(
-    subject: ${subject_type},
-    mutation: (set: WritableKeyPath<Subject, Value>, to: Value)
-) -> ${subject_type} {
+public func ${operator} <Subject, Value>(subject: ${subject_type}, mutation: Mutation<Subject, Value>) -> ${subject_type} {
 % if subject_type == 'Subject?':
     guard let subject = subject else { return nil }
 % end
@@ -65,7 +61,12 @@ public func ${operator} <Subject, Value>(
 }
 % end
 
-// MARK: - Assign (Value Types) -
+// MARK: - Assign -
+
+public typealias Assignment<Pointee, Subject> = (
+    assignTo: WritableKeyPath<Pointee, Subject>,
+    on: UnsafeMutablePointer<Pointee>
+)
 % for pair in [('=>', 'Subject'), ('?=>', 'Subject?')]:
 % operator = pair[0]
 % subject_type = pair[1]
@@ -73,10 +74,7 @@ public func ${operator} <Subject, Value>(
 
 @discardableResult
 @inlinable
-public func ${operator} <Subject, Pointee>(
-    subject: ${subject_type},
-    assignment: (assignTo: WritableKeyPath<Pointee, ${keypath_value_type}>, on: UnsafeMutablePointer<Pointee>)
-) -> ${subject_type} {
+public func ${operator} <Subject, Pointee>(subject: ${subject_type}, assignment: Assignment<Pointee, ${keypath_value_type}>) -> ${subject_type} {
 % if subject_type == 'Subject?':
     guard let subject = subject else { return nil }
 % end
