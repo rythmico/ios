@@ -64,8 +64,8 @@ public func ${operator} <Subject, Value>(subject: ${subject_type}, mutation: Mut
 // MARK: - Assign -
 
 public typealias Assignment<Pointee, Subject> = (
-    assignTo: WritableKeyPath<Pointee, Subject>,
-    on: UnsafeMutablePointer<Pointee>
+    assignTo: UnsafeMutablePointer<Pointee>,
+    WritableKeyPath<Pointee, Subject>
 )
 % for pair in [('=>', 'Subject'), ('?=>', 'Subject?')]:
 % operator = pair[0]
@@ -78,7 +78,7 @@ public func ${operator} <Subject, Pointee>(subject: ${subject_type}, assignment:
 % if subject_type == 'Subject?':
     guard let subject = subject else { return nil }
 % end
-    return subject => { assignment.on.pointee[keyPath: assignment.assignTo] = $0 }
+    return subject => { assignment.assignTo.pointee[keyPath: assignment.1] = $0 }
 }
 % end
 % end

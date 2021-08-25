@@ -68,34 +68,34 @@ public func ?=> <Subject, Value>(subject: Subject?, mutation: Mutation<Subject, 
 // MARK: - Assign -
 
 public typealias Assignment<Pointee, Subject> = (
-    assignTo: WritableKeyPath<Pointee, Subject>,
-    on: UnsafeMutablePointer<Pointee>
+    assignTo: UnsafeMutablePointer<Pointee>,
+    WritableKeyPath<Pointee, Subject>
 )
 
 @discardableResult
 @inlinable
 public func => <Subject, Pointee>(subject: Subject, assignment: Assignment<Pointee, Subject>) -> Subject {
-    return subject => { assignment.on.pointee[keyPath: assignment.assignTo] = $0 }
+    return subject => { assignment.assignTo.pointee[keyPath: assignment.1] = $0 }
 }
 
 @discardableResult
 @inlinable
 public func => <Subject, Pointee>(subject: Subject, assignment: Assignment<Pointee, Subject?>) -> Subject {
-    return subject => { assignment.on.pointee[keyPath: assignment.assignTo] = $0 }
+    return subject => { assignment.assignTo.pointee[keyPath: assignment.1] = $0 }
 }
 
 @discardableResult
 @inlinable
 public func ?=> <Subject, Pointee>(subject: Subject?, assignment: Assignment<Pointee, Subject>) -> Subject? {
     guard let subject = subject else { return nil }
-    return subject => { assignment.on.pointee[keyPath: assignment.assignTo] = $0 }
+    return subject => { assignment.assignTo.pointee[keyPath: assignment.1] = $0 }
 }
 
 @discardableResult
 @inlinable
 public func ?=> <Subject, Pointee>(subject: Subject?, assignment: Assignment<Pointee, Subject?>) -> Subject? {
     guard let subject = subject else { return nil }
-    return subject => { assignment.on.pointee[keyPath: assignment.assignTo] = $0 }
+    return subject => { assignment.assignTo.pointee[keyPath: assignment.1] = $0 }
 }
 
 prefix operator /&

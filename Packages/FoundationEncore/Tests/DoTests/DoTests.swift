@@ -130,8 +130,8 @@ class DoTests: XCTestCase {
             var email: String = "deadbeef@gmail.com"
         }
         var user = User()
-        "foobar" => (assignTo: \.name, on: /&user)
-        "foobar@gmail.com" => (assignTo: \.email, on: /&user)
+        "foobar" => (assignTo: /&user, \.name)
+        "foobar@gmail.com" => (assignTo: /&user, \.email)
         XCTAssertEqual(user.name, "foobar")
         XCTAssertEqual(user.email, "foobar@gmail.com")
     }
@@ -142,24 +142,24 @@ class DoTests: XCTestCase {
             var email: String = "deadbeef@gmail.com"
         }
         var user = User()
-        Optional("foobar") ?=> (assignTo: \.name, on: /&user)
-        Optional("foobar@gmail.com") ?=> (assignTo: \.email, on: /&user)
+        Optional("foobar") ?=> (assignTo: /&user, \.name)
+        Optional("foobar@gmail.com") ?=> (assignTo: /&user, \.email)
         XCTAssertEqual(user.name, "foobar")
         XCTAssertEqual(user.email, "foobar@gmail.com")
     }
 
     func testAssignToClass() {
         var queue = OperationQueue()
-        ("awe" + "some") => (assignTo: \.name, on: /&queue)
-        (2 * 2) => (assignTo: \.maxConcurrentOperationCount, on: /&queue)
+        ("awe" + "some") => (assignTo: /&queue, \.name)
+        (2 * 2) => (assignTo: /&queue, \.maxConcurrentOperationCount)
         XCTAssertEqual(queue.name, "awesome")
         XCTAssertEqual(queue.maxConcurrentOperationCount, 4)
     }
 
     func testAssignOptionalToClass() {
         var queue = OperationQueue()
-        Optional("awesome") ?=> (assignTo: \.name, on: /&queue)
-        Optional(5) ?=> (assignTo: \.maxConcurrentOperationCount, on: /&queue)
+        Optional("awesome") ?=> (assignTo: /&queue, \.name)
+        Optional(5) ?=> (assignTo: /&queue, \.maxConcurrentOperationCount)
         XCTAssertEqual(queue.name, "awesome")
         XCTAssertEqual(queue.maxConcurrentOperationCount, 5)
     }
