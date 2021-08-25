@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -e
+
+if ! which gyb > /dev/null; then
+    HOMEBREW_NO_AUTO_UPDATE=1 \
+    brew install nshipster/formulae/gyb
+fi
+
+DIR=$(cd "$(dirname "$0")" && pwd)
+
+find . -name '*.gyb' | while read file; do gyb --line-directive '' -o "${file%.gyb}" "$file"; done
