@@ -7,11 +7,11 @@ final class Date_SugarTests: XCTestCase {
     }
 
     func testSet() {
-        assert(.referenceDate <- (5, .day), "2001-01-05T00:00:00Z")
-        assert(.referenceDate <- (1, .hour), "2001-01-01T01:00:00Z")
-        assert(.referenceDate <- (1, [.hour, .minute, .second]), "2001-01-01T01:01:01Z")
-        assert(.referenceDate <- (5, .day) <- (1, [.hour, .minute, .second]), "2001-01-05T01:01:01Z")
-        assert(.referenceDate <- (5, [.hour, .minute, .second]) <- (5, .day), "2001-01-05T05:05:05Z")
+        assert(.referenceDate => (.day, 5), "2001-01-05T00:00:00Z")
+        assert(.referenceDate => (.hour, 1), "2001-01-01T01:00:00Z")
+        assert(.referenceDate => ([.hour, .minute, .second], 1), "2001-01-01T01:01:01Z")
+        assert(.referenceDate => (.day, 5) => ([.hour, .minute, .second], 1), "2001-01-05T01:01:01Z")
+        assert(.referenceDate => ([.hour, .minute, .second], 5) => (.day, 5), "2001-01-05T05:05:05Z")
     }
 
     func testSum() {
@@ -22,8 +22,8 @@ final class Date_SugarTests: XCTestCase {
     }
 
     func testInitDateTime() {
-        let date = .referenceDate <- (2021, .year) <- (7, .month) <- (3, .day)
-        let time = .referenceDate <- (17, .hour) <- (25, .minute) <- (30, .second)
+        let date = .referenceDate => (.year, 2021) => (.month, 7) => (.day, 3)
+        let time = .referenceDate => (.hour, 17) => (.minute, 25) => (.second, 30)
         assert(.init(date: date, time: time), "2021-07-03T17:25:30Z")
     }
 }

@@ -139,6 +139,8 @@ extension Teleprompter.TextElement: ExpressibleByStringLiteral {
     }
 }
 
+infix operator <- : AdditionPrecedence
+
 func <- (lhs: String, rhs: Font.RythmicoTextStyle) -> Teleprompter.TextElement {
     .init(style: rhs, string: lhs)
 }
