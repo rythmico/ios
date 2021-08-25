@@ -88,7 +88,3 @@ extension EdgeInsets {
         }
     }
 }
-
-extension HorizontalInsets: Then {}
-extension VerticalInsets: Then {}
-extension EdgeInsets: Then {}

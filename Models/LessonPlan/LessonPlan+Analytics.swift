@@ -50,17 +50,18 @@ extension AnalyticsEvent {
     }
 
     private static func dayOfWeek(for date: Date) -> String? {
-        let calendar = Calendar(identifier: .gregorian).with(\.timeZone, Current.timeZone)
+        let calendar = Calendar(identifier: .gregorian) => (\.timeZone, Current.timeZone)
         let weekday = calendar.component(.weekday, from: date)
         let index = weekday - 1
         return DayOfWeek.allCases[safe: index]?.rawValue
     }
 
     private static func time(for date: Date) -> String? {
-        DateFormatter()
-            .with(\.locale, .neutral)
-            .with(\.timeZone, Current.timeZone)
-            .with(\.dateFormat, "HH:mm")
-            .string(from: date)
+        (DateFormatter() => {
+            $0.locale = .neutral
+            $0.timeZone = Current.timeZone
+            $0.dateFormat = "HH:mm"
+        })
+        .string(from: date)
     }
 }

@@ -34,7 +34,7 @@ extension RythmicoAPIRequest {
     #endif
 
     var decoder: Decoder {
-        JSONDecoder().with(\.dateDecodingStrategy, .secondsSince1970)
+        JSONDecoder() => (\.dateDecodingStrategy, .secondsSince1970)
     }
 }
 

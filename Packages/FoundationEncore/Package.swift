@@ -25,7 +25,6 @@ let package = Package(
             .product(name: "NonEmpty", package: "swift-nonempty"),
             .product(name: "PreciseDecimal", package: "PreciseDecimal"),
             .product(name: "Tagged", package: "swift-tagged"),
-            .product(name: "Then", package: "Then"),
             .product(name: "Version", package: "Version"),
         ]),
         .testTarget(name: "FoundationEncoreTests", dependencies: ["FoundationEncore"]),
@@ -48,6 +47,5 @@ package.dependencies = [
     .package(name: "swift-algorithms", url: "https://github.com/apple/swift-algorithms", from: "0.2.1"),
     .package(name: "swift-nonempty", url: "https://github.com/pointfreeco/swift-nonempty", from: "0.3.1"),
     .package(name: "swift-tagged", url: "https://github.com/pointfreeco/swift-tagged", from: "0.6.0"),
-    .package(name: "Then", url: "https://github.com/devxoul/Then", from: "2.7.0"),
     .package(name: "Version", url: "https://github.com/mxcl/Version", from: "2.0.1"),
 ]

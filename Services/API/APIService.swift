@@ -11,7 +11,7 @@ class APIServiceBase<Request: AuthorizedAPIRequest> {
 }
 
 final class APIService<Request: AuthorizedAPIRequest>: APIServiceBase<Request> {
-    private let sessionConfiguration = URLSessionConfiguration.ephemeral.then {
+    private let sessionConfiguration = URLSessionConfiguration.ephemeral => {
         $0.waitsForConnectivity = true
         $0.timeoutIntervalForResource = 150
     }

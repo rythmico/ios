@@ -1,8 +1,5 @@
 import SwiftUIEncore
 
-extension Portfolio: Then {}
-extension Portfolio.Training: Then {}
-
 extension Portfolio {
     static let minimalStub = Self(
         age: 29,
@@ -63,20 +60,20 @@ extension Portfolio.Training {
         duration: nil
     )
 
-    static let mediumStubA = shortStub.with {
+    static let mediumStubA = shortStub => {
         $0.description = "Master of Music Scholarship"
     }
 
-    static let mediumStubB = shortStub.with {
+    static let mediumStubB = shortStub => {
         $0.duration = Duration(fromYear: 2014, toYear: nil)
     }
 
-    static let longStubA = shortStub.with {
+    static let longStubA = shortStub => {
         $0.description = "Master of Music Scholarship"
         $0.duration = Duration(fromYear: 2014, toYear: 2016)
     }
 
-    static let longStubB = shortStub.with {
+    static let longStubB = shortStub => {
         $0.description = "Undergraduate Music Scholarship"
         $0.duration = Duration(fromYear: 2011, toYear: 2014)
     }

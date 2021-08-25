@@ -1,7 +1,5 @@
 import FoundationEncore
 
-extension Schedule: Then {}
-
 extension Schedule {
     static let stub = Self(
         startDate: .stub + (6, .hour),

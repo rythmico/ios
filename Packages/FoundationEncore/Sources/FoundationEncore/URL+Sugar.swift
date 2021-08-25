@@ -1,5 +1,3 @@
-extension URLComponents: Then {}
-
 extension URL {
     public enum Error: Swift.Error {
         case invalidURLComponents
@@ -13,12 +11,13 @@ extension URL {
         path: String = "",
         queryItems: [URLQueryItem]? = nil
     ) throws {
-        let url = try URLComponents()
-            .with(\.scheme, scheme)
-            .with(\.host, host)
-            .with(\.path, path)
-            .with(\.queryItems, queryItems)
-            .url !! Error.invalidURLComponents
+        let url = try (URLComponents() => {
+            $0.scheme = scheme
+            $0.host = host
+            $0.path = path
+            $0.queryItems = queryItems
+        })
+        .url !! Error.invalidURLComponents
         self = doubleSlash ? url : try url.removingSchemeDoubleSlash()
     }
 

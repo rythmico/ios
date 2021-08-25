@@ -19,7 +19,7 @@ struct PhoneNumberField: UIViewRepresentable {
             If happening on device, a Locale other than Locale.current must be being used.
             """
         )
-        return RythmicoPhoneNumberTextField(defaultRegion: regionCode).then {
+        return RythmicoPhoneNumberTextField(defaultRegion: regionCode) => {
             $0.withFlag = true
             $0.withPrefix = true // allow explicit + prefixes
             $0.placeholder = PhoneNumberKit().getFormattedExampleNumber(forCountry: regionCode, withFormat: .national, withPrefix: false)

@@ -1,7 +1,5 @@
 import FoundationEncore
 
-extension LessonPlan: Then {}
-
 extension LessonPlan {
     static var stub: Self { pendingJackGuitarPlanStub }
 
@@ -62,38 +60,38 @@ extension LessonPlan {
 }
 
 extension LessonPlan {
-    static let reviewingJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
+    static let reviewingJackGuitarPlanStub = pendingJackGuitarPlanStub => {
         $0.status = .reviewing(.stub)
         $0.options = .reviewingStub
     }
 }
 
 extension LessonPlan {
-    static let activeJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
+    static let activeJackGuitarPlanStub = pendingJackGuitarPlanStub => {
         $0.status = .active(.stub)
         $0.options = .activeStub
     }
 
-    static let activeSkippedJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
+    static let activeSkippedJackGuitarPlanStub = pendingJackGuitarPlanStub => {
         $0.status = .active(.stub)
         $0.options = .activeStub
     }
 }
 
 extension LessonPlan {
-    static let pausedJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
+    static let pausedJackGuitarPlanStub = pendingJackGuitarPlanStub => {
         $0.status = .paused(.stub)
         $0.options = .pausedStub
     }
 }
 
 extension LessonPlan {
-    static let cancelledJackGuitarPlanStub = pendingJackGuitarPlanStub.with {
+    static let cancelledJackGuitarPlanStub = pendingJackGuitarPlanStub => {
         $0.status = .cancelled(.stub)
         $0.options = .cancelledStub
     }
 
-    static let cancelledCharlottePianoPlanStub = pendingCharlottePianoPlanStub.with {
+    static let cancelledCharlottePianoPlanStub = pendingCharlottePianoPlanStub => {
         $0.status = .cancelled(.stub)
         $0.options = .cancelledStub
     }

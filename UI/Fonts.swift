@@ -139,7 +139,7 @@ extension Dictionary where Key == NSAttributedString.Key, Value == Any {
         [.foregroundColor: color].compacted()
         [.font: UIFont.rythmicoFont(style)]
         [.tracking: style.tracking]
-        [.paragraphStyle: NSMutableParagraphStyle().with {
+        [.paragraphStyle: NSMutableParagraphStyle() => {
             $0.lineSpacing = style.lineSpacing
             $0.paragraphSpacing = .grid(4)
         }]

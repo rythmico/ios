@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUIEncore
 
 struct LessonPlanSummaryTutorStatusView: View {
     @Environment(\.sizeCategory) private var sizeCategory
@@ -52,7 +52,7 @@ struct LessonPlanTutorStatusView_Previews: PreviewProvider {
         Group {
             ForEach(combos, id: \.self.0) { combo in
                 LessonPlanSummaryTutorStatusView(
-                    lessonPlan: .stub.with(\.status, combo.1),
+                    lessonPlan: .stub => (\.status, combo.1),
                     backgroundColor: .rythmico.background
                 )
                 .previewDisplayName(combo.0)

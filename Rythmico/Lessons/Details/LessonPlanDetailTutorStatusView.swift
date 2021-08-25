@@ -93,7 +93,7 @@ struct LessonPlanDetailTutorStatusView_Previews: PreviewProvider {
         Group {
             ForEach(combos, id: \.self.0) { combo in
                 LessonPlanDetailTutorStatusView(
-                    lessonPlan: .stub.with(\.status, combo.1)
+                    lessonPlan: .stub => (\.status, combo.1)
                 )
                 .previewDisplayName(combo.0)
             }

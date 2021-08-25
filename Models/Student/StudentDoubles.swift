@@ -1,7 +1,5 @@
 import FoundationEncore
 
-extension Student: Then {}
-
 extension Student {
     #if RYTHMICO
     static let baseStub = Self(
@@ -17,18 +15,18 @@ extension Student {
     )
     #endif
 
-    static let jackStub = baseStub.with(\.name, "Jack Doe")
-    static let jesseStub = baseStub.with(\.name, "Jesse Doe")
+    static let jackStub = baseStub => (\.name, "Jack Doe")
+    static let jesseStub = baseStub => (\.name, "Jesse Doe")
 
-    static let charlotteStub = baseStub.with {
+    static let charlotteStub = baseStub => {
         $0.name = "Charlotte Doe"
     }
 
-    static let janeStub = baseStub.with {
+    static let janeStub = baseStub => {
         $0.name = "Jane Doe"
     }
 
-    static let davidStub = baseStub.with {
+    static let davidStub = baseStub => {
         $0.name = "David Roman"
         $0.about = """
         Something qwdsqw sqw qwdsqwsq
@@ -36,9 +34,9 @@ extension Student {
         """
     }
 
-    static let davidStubNoAbout = baseStub.with(\.name, "David Roman")
+    static let davidStubNoAbout = baseStub => (\.name, "David Roman")
 
-    static let unnamedStub = baseStub.with {
+    static let unnamedStub = baseStub => {
         $0.name = ""
         $0.about = """
         Something qwdsqw sqw qwdsqwsq

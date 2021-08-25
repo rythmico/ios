@@ -14,8 +14,6 @@ final class RequestLessonPlanFlow: Flow {
     var privateNote: String?
 }
 
-extension RequestLessonPlanFlow: Then {}
-
 extension RequestLessonPlanFlow {
     enum Step: FlowStep, Equatable {
         case instrumentSelection

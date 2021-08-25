@@ -2,7 +2,7 @@ import SwiftUIEncore
 
 extension UIToolbar {
     static func dismissKeyboardTooltip(color: UIColor) -> UIToolbar {
-        UIToolbar().then {
+        UIToolbar() => {
             $0.sizeToFit()
             $0.items = [
                 UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
@@ -10,7 +10,7 @@ extension UIToolbar {
                     systemItem: .done,
                     primaryAction: UIAction { _ in Current.keyboardDismisser.dismissKeyboard() },
                     menu: nil
-                ).then {
+                ) => {
                     $0.tintColor = color
                 }
             ]

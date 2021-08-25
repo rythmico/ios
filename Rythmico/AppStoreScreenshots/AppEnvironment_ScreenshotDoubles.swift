@@ -7,7 +7,7 @@ extension AppEnvironment {
     }
 
     static func appStoreScreenshots(_ screenshotNumbers: AppStoreScreenshotNumbers) -> AppEnvironment {
-        dummy.with {
+        dummy => {
             $0.setUpFake()
 
             $0.imageLoadingCoordinator = {
@@ -34,11 +34,11 @@ extension AppEnvironment {
         case .five:
             lessonPlans = [
                 .screenshotJackGuitarPlanStub,
-                .screenshotCharlottePianoPlanStub.with {
+                .screenshotCharlottePianoPlanStub => {
                     $0.status = .screenshotCharlottePianoPlanPaused
                     $0.options = .pausedStub
                 },
-                .screenshotJackDrumsPlanStub.with(\.status, .screenshotJackDrumsPlanCancelled),
+                .screenshotJackDrumsPlanStub => (\.status, .screenshotJackDrumsPlanCancelled),
             ]
         }
         fakeAPIEndpoint(for: \.lessonPlanFetchingCoordinator, result: .success(lessonPlans), delay: nil)

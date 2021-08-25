@@ -33,7 +33,7 @@ private final class EdgeSwipeUIView: UIView, UIGestureRecognizerDelegate {
         self.isUserInteractionEnabled = true
 
         addGestureRecognizer(
-            UIPanGestureRecognizer().then {
+            UIPanGestureRecognizer() => {
                 $0.addTarget(self, action: #selector(didRecognizeEdgeSwipe))
                 $0.cancelsTouchesInView = false
                 $0.delegate = self

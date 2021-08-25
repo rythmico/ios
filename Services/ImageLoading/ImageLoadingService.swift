@@ -12,7 +12,7 @@ final class ImageLoadingService: ImageLoadingServiceProtocol {
         case imageDecodingFailed
     }
 
-    private let sessionConfiguration = URLSessionConfiguration.default.then {
+    private let sessionConfiguration = URLSessionConfiguration.default => {
         $0.waitsForConnectivity = true
         $0.timeoutIntervalForResource = 150
         $0.requestCachePolicy = .returnCacheDataElseLoad
@@ -32,7 +32,7 @@ final class ImageLoadingService: ImageLoadingServiceProtocol {
             DispatchQueue.main.nowOrAsync {
                 handler(imageResult)
             }
-        }.then { $0.resume() }
+        } => { $0.resume() }
     }
 }
 
