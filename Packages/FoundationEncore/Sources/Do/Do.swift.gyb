@@ -1,0 +1,111 @@
+precedencegroup DoPrecedence {
+    assignment: true
+    associativity: left
+    higherThan: AssignmentPrecedence
+}
+
+infix operator => : DoPrecedence
+infix operator ?=> : DoPrecedence
+
+// MARK: - Do (Value Types) -
+% for pair in [('=>', 'Subject'), ('?=>', 'Subject?')]:
+% operator = pair[0]
+% subject_type = pair[1]
+
+@_disfavoredOverload
+@discardableResult
+@inlinable
+public func ${operator} <Subject>(
+    subject: ${subject_type},
+    do: (inout Subject) throws -> Void
+) rethrows -> ${subject_type} {
+% if subject_type == 'Subject?':
+    guard let subject = subject else { return nil }
+% end
+    var copy = subject
+    try `do`(&copy)
+    return copy
+}
+% end
+
+// MARK: - Do (Reference Types) -
+% for pair in [('=>', 'Subject'), ('?=>', 'Subject?')]:
+% operator = pair[0]
+% subject_type = pair[1]
+
+@discardableResult
+@inlinable
+public func ${operator} <Subject: AnyObject>(
+    subject: ${subject_type},
+    do: (Subject) throws -> Void
+) rethrows -> ${subject_type} {
+% if subject_type == 'Subject?':
+    guard let subject = subject else { return nil }
+% end
+    try `do`(subject)
+    return subject
+}
+% end
+
+// MARK: - Mutate -
+% for pair in [('=>', 'Subject'), ('?=>', 'Subject?')]:
+% operator = pair[0]
+% subject_type = pair[1]
+
+@discardableResult
+@inlinable
+public func ${operator} <Subject, Value>(
+    subject: ${subject_type},
+    mutation: (set: WritableKeyPath<Subject, Value>, to: Value)
+) -> ${subject_type} {
+% if subject_type == 'Subject?':
+    guard let subject = subject else { return nil }
+% end
+    return subject => { $0[keyPath: mutation.set] = mutation.to }
+}
+% end
+
+// MARK: - Assign (Value Types) -
+% for pair in [('=>', 'Subject'), ('?=>', 'Subject?')]:
+% operator = pair[0]
+% subject_type = pair[1]
+% for keypath_value_type in ['Subject', 'Subject?']:
+
+@discardableResult
+@inlinable
+public func ${operator} <Subject, Pointee>(
+    subject: ${subject_type},
+    assignment: (assignTo: WritableKeyPath<Pointee, ${keypath_value_type}>, on: UnsafeMutablePointer<Pointee>)
+) -> ${subject_type} {
+% if subject_type == 'Subject?':
+    guard let subject = subject else { return nil }
+% end
+    return subject => { assignment.on.pointee[keyPath: assignment.assignTo] = $0 }
+}
+% end
+% end
+
+prefix operator /&
+public prefix func /& <Value>(_ value: inout Value) -> UnsafeMutablePointer<Value> {
+    withUnsafeMutablePointer(to: &value) { $0 }
+}
+
+// MARK: - Assign (Reference Types) -
+% for pair in [('=>', 'Subject'), ('?=>', 'Subject?')]:
+% operator = pair[0]
+% subject_type = pair[1]
+% for keypath_value_type in ['Subject', 'Subject?']:
+
+@discardableResult
+@inlinable
+public func ${operator} <Subject, Pointee: AnyObject>(
+    subject: ${subject_type},
+    assignment: (assignTo: ReferenceWritableKeyPath<Pointee, ${keypath_value_type}>, on: Pointee)
+) -> ${subject_type} {
+% if subject_type == 'Subject?':
+    guard let subject = subject else { return nil }
+% end
+    return subject => { assignment.on[keyPath: assignment.assignTo] = $0 }
+}
+% end
+% end

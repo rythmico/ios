@@ -12,12 +12,14 @@ let package = Package(
         .library(name: "FoundationEncore", targets: ["FoundationEncore"]),
         .library(name: "AnyEquatable", targets: ["AnyEquatable"]),
         .library(name: "Builders", targets: ["Builders"]),
+        .library(name: "Do", targets: ["Do"]),
     ],
     targets: [
         .target(name: "FoundationEncore", dependencies: [
             .product(name: "Algorithms", package: "swift-algorithms"),
             .target(name: "AnyEquatable"),
             .target(name: "Builders"),
+            .target(name: "Do"),
             .product(name: "ISO8601PeriodDuration", package: "ISO8601PeriodDuration"),
             .product(name: "LegibleError", package: "LegibleError"),
             .product(name: "NonEmpty", package: "swift-nonempty"),
@@ -33,6 +35,9 @@ let package = Package(
 
         .target(name: "Builders"),
         .testTarget(name: "BuildersTests", dependencies: ["Builders"]),
+
+        .target(name: "Do", exclude: ["Do.swift.gyb"]),
+        .testTarget(name: "DoTests", dependencies: ["Do"]),
     ]
 )
 
