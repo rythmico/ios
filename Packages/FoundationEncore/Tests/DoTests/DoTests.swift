@@ -149,17 +149,17 @@ class DoTests: XCTestCase {
     }
 
     func testAssignToClass() {
-        let queue = OperationQueue()
-        ("awe" + "some") => (assignTo: \.name, on: queue)
-        (2 * 2) => (assignTo: \.maxConcurrentOperationCount, on: queue)
+        var queue = OperationQueue()
+        ("awe" + "some") => (assignTo: \.name, on: /&queue)
+        (2 * 2) => (assignTo: \.maxConcurrentOperationCount, on: /&queue)
         XCTAssertEqual(queue.name, "awesome")
         XCTAssertEqual(queue.maxConcurrentOperationCount, 4)
     }
 
     func testAssignOptionalToClass() {
-        let queue = OperationQueue()
-        Optional("awesome") ?=> (assignTo: \.name, on: queue)
-        Optional(5) ?=> (assignTo: \.maxConcurrentOperationCount, on: queue)
+        var queue = OperationQueue()
+        Optional("awesome") ?=> (assignTo: \.name, on: /&queue)
+        Optional(5) ?=> (assignTo: \.maxConcurrentOperationCount, on: /&queue)
         XCTAssertEqual(queue.name, "awesome")
         XCTAssertEqual(queue.maxConcurrentOperationCount, 5)
     }

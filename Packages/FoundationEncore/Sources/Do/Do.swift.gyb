@@ -89,23 +89,3 @@ prefix operator /&
 public prefix func /& <Value>(_ value: inout Value) -> UnsafeMutablePointer<Value> {
     withUnsafeMutablePointer(to: &value) { $0 }
 }
-
-// MARK: - Assign (Reference Types) -
-% for pair in [('=>', 'Subject'), ('?=>', 'Subject?')]:
-% operator = pair[0]
-% subject_type = pair[1]
-% for keypath_value_type in ['Subject', 'Subject?']:
-
-@discardableResult
-@inlinable
-public func ${operator} <Subject, Pointee: AnyObject>(
-    subject: ${subject_type},
-    assignment: (assignTo: ReferenceWritableKeyPath<Pointee, ${keypath_value_type}>, on: Pointee)
-) -> ${subject_type} {
-% if subject_type == 'Subject?':
-    guard let subject = subject else { return nil }
-% end
-    return subject => { assignment.on[keyPath: assignment.assignTo] = $0 }
-}
-% end
-% end
