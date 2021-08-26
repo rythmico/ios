@@ -56,7 +56,7 @@ let package = Package(
 
         .target(name: "ResultProtocol"),
 
-        .target(name: "UnwrapTuple"),
+        .target(name: "UnwrapTuple", exclude: ["UnwrapTuple.swift.gyb"]),
     ]
 )
 
