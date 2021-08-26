@@ -13,4 +13,5 @@
 @_exported import PreciseDecimal
 @_exported import ResultProtocol
 @_exported import Tagged
+@_exported import UnwrapTuple
 @_exported import Version

@@ -17,6 +17,7 @@ let package = Package(
         .library(name: "NilAssertingOperator", targets: ["NilAssertingOperator"]),
         .library(name: "OptionalProtocol", targets: ["OptionalProtocol"]),
         .library(name: "ResultProtocol", targets: ["ResultProtocol"]),
+        .library(name: "UnwrapTuple", targets: ["UnwrapTuple"]),
     ],
     targets: [
         .target(name: "FoundationEncore", dependencies: [
@@ -33,6 +34,7 @@ let package = Package(
             .product(name: "PreciseDecimal", package: "PreciseDecimal"),
             .target(name: "ResultProtocol"),
             .product(name: "Tagged", package: "swift-tagged"),
+            .target(name: "UnwrapTuple"),
             .product(name: "Version", package: "Version"),
         ]),
         .testTarget(name: "FoundationEncoreTests", dependencies: ["FoundationEncore"]),
@@ -53,6 +55,8 @@ let package = Package(
         .target(name: "OptionalProtocol"),
 
         .target(name: "ResultProtocol"),
+
+        .target(name: "UnwrapTuple"),
     ]
 )
 
