@@ -16,6 +16,7 @@ let package = Package(
         .library(name: "EnumTag", targets: ["EnumTag"]),
         .library(name: "NilAssertingOperator", targets: ["NilAssertingOperator"]),
         .library(name: "OptionalProtocol", targets: ["OptionalProtocol"]),
+        .library(name: "ResultProtocol", targets: ["ResultProtocol"]),
     ],
     targets: [
         .target(name: "FoundationEncore", dependencies: [
@@ -30,6 +31,7 @@ let package = Package(
             .product(name: "NonEmpty", package: "swift-nonempty"),
             .target(name: "OptionalProtocol"),
             .product(name: "PreciseDecimal", package: "PreciseDecimal"),
+            .target(name: "ResultProtocol"),
             .product(name: "Tagged", package: "swift-tagged"),
             .product(name: "Version", package: "Version"),
         ]),
@@ -49,6 +51,8 @@ let package = Package(
         .target(name: "NilAssertingOperator"),
 
         .target(name: "OptionalProtocol"),
+
+        .target(name: "ResultProtocol"),
     ]
 )
 
