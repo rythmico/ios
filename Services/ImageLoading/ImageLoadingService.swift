@@ -2,7 +2,7 @@ import FoundationEncore
 import class UIKit.UIImage
 
 protocol ImageLoadingServiceProtocol {
-    typealias CompletionHandler = SimpleResultHandler<UIImage>
+    typealias CompletionHandler = ResultHandler<UIImage, Error>
 
     func load(_ url: URL, handler: @escaping CompletionHandler) -> Activity
 }

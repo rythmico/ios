@@ -12,7 +12,7 @@ final class AddressDetailsViewTests: XCTestCase {
     }
 
     func addressDetailsView(
-        result: SimpleResult<AddressSearchRequest.Response>
+        result: Result<AddressSearchRequest.Response, Error>
     ) throws -> (
         RequestLessonPlanFlow,
         APIServiceSpy<AddressSearchRequest>,
