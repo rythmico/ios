@@ -22,9 +22,9 @@ final class Date_SugarTests: XCTestCase {
     }
 
     func testInitDateTime() {
-        let date = .referenceDate => (.year, 2021) => (.month, 7) => (.day, 3)
-        let time = .referenceDate => (.hour, 17) => (.minute, 25) => (.second, 30)
-        assert(.init(date: date, time: time), "2021-07-03T17:25:30Z")
+        let date: Date = "2021-07-03T19:32:13Z"
+        let time: Date = "2005-02-28T17:25:30Z"
+        assert(Date(date: date, time: time), "2021-07-03T17:25:30Z")
     }
 }
 
