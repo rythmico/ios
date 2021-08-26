@@ -14,6 +14,7 @@ let package = Package(
         .library(name: "Builders", targets: ["Builders"]),
         .library(name: "Do", targets: ["Do"]),
         .library(name: "EnumTag", targets: ["EnumTag"]),
+        .library(name: "NilAssertingOperator", targets: ["NilAssertingOperator"]),
     ],
     targets: [
         .target(name: "FoundationEncore", dependencies: [
@@ -24,6 +25,7 @@ let package = Package(
             .target(name: "EnumTag"),
             .product(name: "ISO8601PeriodDuration", package: "ISO8601PeriodDuration"),
             .product(name: "LegibleError", package: "LegibleError"),
+            .target(name: "NilAssertingOperator"),
             .product(name: "NonEmpty", package: "swift-nonempty"),
             .product(name: "PreciseDecimal", package: "PreciseDecimal"),
             .product(name: "Tagged", package: "swift-tagged"),
@@ -41,6 +43,8 @@ let package = Package(
         .testTarget(name: "DoTests", dependencies: ["Do"]),
 
         .target(name: "EnumTag"),
+
+        .target(name: "NilAssertingOperator"),
     ]
 )
 
