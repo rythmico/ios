@@ -1,20 +1,28 @@
 extension Date {
-    public static func => (lhs: Date, rhs: (set: Set<Calendar.Component>, to: Int)) -> Date {
-        let units = rhs.set
-        let amount = rhs.to
+    public static func => (lhs: Date, rhs: (set: Set<Calendar.Component>, to: Int, for: TimeZone)) -> Date {
+        let (units, amount, timeZone) = rhs
         return lhs.setting(
-            rhs.set.reduce(into: DateComponents()) { $0.setValue(rhs.to, for: $1) }
+            rhs.set.reduce(into: DateComponents()) { $0.setValue(rhs.to, for: $1) },
+            for: timeZone
         ) !! preconditionFailure(
-            "Date mutation failed with 'date' \(lhs) 'amount' \(amount) 'units' \(units)"
+            "Date mutation failed with 'date' \(lhs) 'units' \(units) 'amount' \(amount) 'timeZone' \(timeZone)"
         )
     }
 
-    public static func => (lhs: Date, rhs: (set: Calendar.Component, to: Int)) -> Date {
-        lhs => (set: [rhs.set], to: rhs.to)
+    public static func => (lhs: Date, rhs: (set: Set<Calendar.Component>, to: Int)) -> Date {
+        lhs => (set: rhs.set, to: rhs.to, for: .neutral)
     }
 
-    private func setting(_ components: DateComponents) -> Date? {
-        let calendar = Calendar.neutral
+    public static func => (lhs: Date, rhs: (set: Calendar.Component, to: Int, for: TimeZone)) -> Date {
+        lhs => (set: [rhs.set], to: rhs.to, for: rhs.for)
+    }
+
+    public static func => (lhs: Date, rhs: (set: Calendar.Component, to: Int)) -> Date {
+        lhs => (set: rhs.set, to: rhs.to, for: .neutral)
+    }
+
+    private func setting(_ components: DateComponents, for timeZone: TimeZone) -> Date? {
+        let calendar = Calendar.neutral => (\.timeZone, timeZone)
         let allUnits: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]
         let originalComponents = calendar.dateComponents(allUnits, from: self)
         let newComponents = allUnits.reduce(into: originalComponents) { acc, unit in
@@ -54,7 +62,7 @@ extension Date {
 extension Date {
     public init(date: Date, time: Date) {
         let timeComponents = Calendar.neutral.dateComponents([.hour, .minute, .second], from: time)
-        self = date.setting(timeComponents) !! preconditionFailure(
+        self = date.setting(timeComponents, for: .neutral) !! preconditionFailure(
             "Date merging failed with 'date' \(date) 'time' \(time)"
         )
     }

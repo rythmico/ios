@@ -7,11 +7,23 @@ final class Date_SugarTests: XCTestCase {
     }
 
     func testSet() {
+        assert(.referenceDate => ([], 0), "2001-01-01T00:00:00Z")
         assert(.referenceDate => (.day, 5), "2001-01-05T00:00:00Z")
         assert(.referenceDate => (.hour, 1), "2001-01-01T01:00:00Z")
         assert(.referenceDate => ([.hour, .minute, .second], 1), "2001-01-01T01:01:01Z")
         assert(.referenceDate => (.day, 5) => ([.hour, .minute, .second], 1), "2001-01-05T01:01:01Z")
         assert(.referenceDate => ([.hour, .minute, .second], 5) => (.day, 5), "2001-01-05T05:05:05Z")
+    }
+
+    func testSetWithTimeZone() {
+        let timeZone = TimeZone(abbreviation: "BST")!
+        let date: Date = "2021-08-26T03:25:50Z"
+        assert(date => ([], 0, timeZone), "2021-08-26T03:25:50Z")
+        assert(date => (.day, 5, timeZone), "2021-08-05T03:25:50Z")
+        assert(date => (.hour, 1, timeZone), "2021-08-26T00:25:50Z")
+        assert(date => ([.hour, .minute, .second], 1, timeZone), "2021-08-26T00:01:01Z")
+        assert(date => (.day, 5, timeZone) => ([.hour, .minute, .second], 1, timeZone), "2021-08-05T00:01:01Z")
+        assert(date => ([.hour, .minute, .second], 5, timeZone) => (.day, 5, timeZone), "2021-08-05T04:05:05Z")
     }
 
     func testSum() {
