@@ -30,7 +30,7 @@ extension Binding where Value: OptionalProtocol {
     public func or(_ value: Wrapped) -> Binding<Wrapped> {
         Binding<Wrapped>(
             get: { wrappedValue.value ?? value },
-            set: { wrappedValue = .some($0) }
+            set: { wrappedValue.value = $0 }
         )
     }
 }
