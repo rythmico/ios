@@ -13,6 +13,7 @@ let package = Package(
         .library(name: "AnyEquatable", targets: ["AnyEquatable"]),
         .library(name: "Builders", targets: ["Builders"]),
         .library(name: "Do", targets: ["Do"]),
+        .library(name: "EnumTag", targets: ["EnumTag"]),
     ],
     targets: [
         .target(name: "FoundationEncore", dependencies: [
@@ -20,6 +21,7 @@ let package = Package(
             .target(name: "AnyEquatable"),
             .target(name: "Builders"),
             .target(name: "Do"),
+            .target(name: "EnumTag"),
             .product(name: "ISO8601PeriodDuration", package: "ISO8601PeriodDuration"),
             .product(name: "LegibleError", package: "LegibleError"),
             .product(name: "NonEmpty", package: "swift-nonempty"),
@@ -37,6 +39,8 @@ let package = Package(
 
         .target(name: "Do", exclude: ["Do.swift.gyb"]),
         .testTarget(name: "DoTests", dependencies: ["Do"]),
+
+        .target(name: "EnumTag"),
     ]
 )
 

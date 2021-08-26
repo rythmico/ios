@@ -4,6 +4,7 @@
 @_exported import AnyEquatable
 @_exported import Builders
 @_exported import Do
+@_exported import EnumTag
 @_exported import ISO8601PeriodDuration
 @_exported import LegibleError
 @_exported import NonEmpty
