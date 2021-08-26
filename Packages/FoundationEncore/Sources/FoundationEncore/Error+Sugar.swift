@@ -1,6 +1,8 @@
+#if DEBUG
 extension String: LocalizedError {
     public var errorDescription: String? { self }
 }
+#endif
 
 extension NSError {
     public convenience init(

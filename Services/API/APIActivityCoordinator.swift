@@ -1,8 +1,20 @@
 import FoundationEncore
 import APIKit
 
+enum APIActivityCoordinatorError: LocalizedError {
+    case userCredentialsMissing
+
+    var errorDescription: String? {
+        switch self {
+        case .userCredentialsMissing:
+            return "User credentials missing"
+        }
+    }
+}
+
 final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActivityCoordinator<Request.Properties, Request.Response> {
     typealias Service = APIServiceBase<Request>
+    typealias Error = APIActivityCoordinatorError
 
     private let userCredentialProvider: UserCredentialProviderBase
     private let deauthenticationService: DeauthenticationServiceProtocol
@@ -44,7 +56,7 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
 
     private func handleUserCredentialMissing() {
         deauthenticationService.deauthenticate()
-        finish(.failure("User credentials missing"))
+        finish(.failure(Error.userCredentialsMissing))
     }
 
     private func handleRequestResult(_ result: Service.Result) {
@@ -56,7 +68,7 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
         }
     }
 
-    private func handleRequestError(_ error: Error) {
+    private func handleRequestError(_ error: Swift.Error) {
         switch error {
         case let error as SessionTaskError where error.isCancelledError:
             cancel()
