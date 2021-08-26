@@ -20,6 +20,13 @@ extension Optional {
 
 infix operator =?? : AssignmentPrecedence
 
-public func =?? <T>(optional: inout T?, value: @autoclosure () -> T) {
-    optional = optional ?? value()
+/// Assigns a default value to variable, if such variable is nil.
+///
+/// ```
+/// var foo: Int? = nil
+/// foo =?? 5 // Equivalent to `foo = foo ?? 5`
+/// print(foo) // Optional(5)
+/// ```
+public func =?? <T>(optional: inout T?, defaultValue: @autoclosure () -> T) {
+    optional = optional ?? defaultValue()
 }
