@@ -1,7 +1,7 @@
 import XCTest
 import FoundationEncore
 
-final class Date_SugarTests: XCTestCase {
+final class DateEncoreTests: XCTestCase {
     func testReferenceDate() {
         assert(.referenceDate, "2001-01-01T00:00:00Z")
     }
@@ -40,7 +40,7 @@ final class Date_SugarTests: XCTestCase {
     }
 }
 
-private extension Date_SugarTests {
+private extension DateEncoreTests {
     func assert(_ date: Date, _ string: String, file: StaticString = #filePath, line: UInt = #line) {
         XCTAssertEqual(ISO8601DateFormatter.neutral.string(from: date), string, file: file, line: line)
     }

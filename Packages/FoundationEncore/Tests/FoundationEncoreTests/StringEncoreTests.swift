@@ -1,7 +1,7 @@
 import XCTest
 import FoundationEncore
 
-final class String_SugarTests: XCTestCase {
+final class StringEncoreTests: XCTestCase {
     func testInitials() {
         XCTAssertEqual("".initials, "")
         XCTAssertEqual("   ".initials, "")
