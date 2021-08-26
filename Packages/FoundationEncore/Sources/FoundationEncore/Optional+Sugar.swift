@@ -1,12 +1,15 @@
-extension Optional where Wrapped: Collection {
-    public var isNilOrEmpty: Bool {
-        self?.isEmpty != false
-    }
-}
+infix operator =?? : AssignmentPrecedence
 
-extension Optional where Wrapped: NSNumber {
-    public var isNilOrZero: Bool {
-        self.map { $0.intValue == 0 } ?? true
+extension Optional {
+    /// Assigns a default value to variable, if such variable is nil.
+    ///
+    /// ```
+    /// var foo: Int? = nil
+    /// foo =?? 5 // Equivalent to `foo = foo ?? 5`
+    /// print(foo) // Optional(5)
+    /// ```
+    public static func =?? (optional: inout Self, defaultValue: @autoclosure () -> Wrapped) {
+        optional = optional ?? defaultValue()
     }
 }
 
@@ -18,15 +21,14 @@ extension Optional {
     }
 }
 
-infix operator =?? : AssignmentPrecedence
+extension Optional where Wrapped: Collection {
+    public var isNilOrEmpty: Bool {
+        self?.isEmpty != false
+    }
+}
 
-/// Assigns a default value to variable, if such variable is nil.
-///
-/// ```
-/// var foo: Int? = nil
-/// foo =?? 5 // Equivalent to `foo = foo ?? 5`
-/// print(foo) // Optional(5)
-/// ```
-public func =?? <T>(optional: inout T?, defaultValue: @autoclosure () -> T) {
-    optional = optional ?? defaultValue()
+extension Optional where Wrapped: NSNumber {
+    public var isNilOrZero: Bool {
+        self.map { $0.intValue == 0 } ?? true
+    }
 }
