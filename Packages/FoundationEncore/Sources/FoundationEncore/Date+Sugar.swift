@@ -65,3 +65,13 @@ extension Date {
         Date(timeIntervalSinceReferenceDate: .zero)
     }
 }
+
+#if DEBUG
+extension Date: ExpressibleByStringLiteral {
+    public init(stringLiteral value: StringLiteralType) {
+        self = ISO8601DateFormatter.neutral.date(from: value) !! preconditionFailure(
+            "Could not parse string literal '\(value)' into ISO 8601 date"
+        )
+    }
+}
+#endif
