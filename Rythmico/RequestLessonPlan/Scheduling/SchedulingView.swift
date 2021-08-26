@@ -158,11 +158,11 @@ struct SchedulingView: View, FocusableView, TestableView {
         guard let focus = focus else { return }
         switch focus {
         case .startDate:
-            state.startDate ??= firstAvailableDate
+            state.startDate =?? firstAvailableDate
         case .startTime:
-            state.startTime ??= defaultStartTime
+            state.startTime =?? defaultStartTime
         case .duration:
-            state.duration ??= defaultDuration
+            state.duration =?? defaultDuration
         }
     }
 }

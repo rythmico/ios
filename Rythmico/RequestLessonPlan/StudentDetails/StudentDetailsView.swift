@@ -144,7 +144,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
     }
 
     func dateOfBirthEditingChanged(_ isEditing: Bool) {
-        state.dateOfBirth ??= dateOfBirthPlaceholder
+        state.dateOfBirth =?? dateOfBirthPlaceholder
         focus = isEditing ? .dateOfBirth : .none
     }
 

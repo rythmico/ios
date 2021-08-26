@@ -18,8 +18,8 @@ extension Optional {
     }
 }
 
-infix operator ??= : AssignmentPrecedence
+infix operator =?? : AssignmentPrecedence
 
-public func ??= <T>(optional: inout T?, value: @autoclosure () -> T) {
+public func =?? <T>(optional: inout T?, value: @autoclosure () -> T) {
     optional = optional ?? value()
 }
