@@ -1,10 +1,10 @@
 import SwiftUIEncore
 
 extension Image {
-    static func rythmicoLogo(width: CGFloat, namespace: Namespace.ID? = .none) -> some View {
+    static func rythmicoLogo(width: CGFloat, namespace: Namespace.ID) -> some View {
         Image(decorative: App.logo.name)
             .resizable()
-            .ifLet(namespace) { $0.matchedGeometryEffect(id: AppSplash.NamespaceLogoId(), in: $1) }
+            .matchedGeometryEffect(id: AppSplash.NamespaceLogoId(), in: namespace)
             .aspectRatio(contentMode: .fit)
             .frame(width: width)
     }

@@ -38,7 +38,7 @@ struct AppView: View {
                 RootView(flow: flow)
             }
         }
-        .environment(\.appSplashNamespace, splashNamespace)
+        .environment(\.appSplashNamespace, .some(splashNamespace))
         .onAppear { remoteConfigCoordinator.fetch() }
         .onEvent(.sizeCategoryChanged, perform: Self.refreshAppearance)
         .animation(animation, value: screen)
