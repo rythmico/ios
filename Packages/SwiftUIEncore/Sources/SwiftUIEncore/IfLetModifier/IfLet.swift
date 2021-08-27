@@ -1,4 +1,5 @@
 extension View {
+    /// - Important: This modifier is only meant to be used with non-`@State` values within a `View`.
     @ViewBuilder
     public func ifLet<V, Transform: View>(
         _ value: V?,
