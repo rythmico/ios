@@ -27,8 +27,14 @@ extension Optional where Wrapped: Collection {
     }
 }
 
+extension Optional where Wrapped: Numeric {
+    public var isNilOrZero: Bool {
+        self.map { $0 == 0 } ?? true
+    }
+}
+
 extension Optional where Wrapped: NSNumber {
     public var isNilOrZero: Bool {
-        self.map { $0.intValue == 0 } ?? true
+        (self?.doubleValue).isNilOrZero
     }
 }
