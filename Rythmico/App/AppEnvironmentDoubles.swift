@@ -36,7 +36,7 @@ extension AppEnvironment {
 
             appOrigin: .testFlight,
 
-            uuid: { .stub },
+            uuid: { .zero },
             date: { .stub },
             calendarType: { .gregorian },
             locale: .neutral,

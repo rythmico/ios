@@ -9,7 +9,7 @@ struct STPSetupIntentStub: STPSetupIntentProtocol {
 }
 
 struct STPSetupIntentFake: STPSetupIntentProtocol {
-    let paymentMethodID: String? = UUID.stub.uuidString
+    let paymentMethodID: String? = UUID.zero.uuidString
 }
 
 final class CardSetupServiceStub: CardSetupServiceProtocol {
