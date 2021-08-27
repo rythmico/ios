@@ -73,10 +73,11 @@ extension StringProtocol {
         word(at: 0)
     }
 
-    public var initials: String {
+    public func initials(_ count: Int = .max) -> String {
         self.split(separator: .whitespace)
             .filter { !$0.trimmingCharacters(in: .whitespaces).isEmpty }
             .compactMap { $0.first?.uppercased() }
+            .prefix(count)
             .joined()
     }
 
