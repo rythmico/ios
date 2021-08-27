@@ -579,8 +579,6 @@
 		D5ED32632606600C00821ABE /* CustomEditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED32622606600C00821ABE /* CustomEditableTextField.swift */; };
 		D5ED3265260667E800821ABE /* DateDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED3264260667E800821ABE /* DateDoubles.swift */; };
 		D5ED3266260667E800821ABE /* DateDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ED3264260667E800821ABE /* DateDoubles.swift */; };
-		D5EEC02426D87571000CEBAE /* ImplicitlyUnwrappedOptional.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EEC02326D87571000CEBAE /* ImplicitlyUnwrappedOptional.swift */; };
-		D5EEC02526D87571000CEBAE /* ImplicitlyUnwrappedOptional.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EEC02326D87571000CEBAE /* ImplicitlyUnwrappedOptional.swift */; };
 		D5EEF6AD261BDE470014E500 /* XCTAssertText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EEF6AC261BDE470014E500 /* XCTAssertText.swift */; };
 		D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF88B523FB706C0072BD03 /* ProgressBar.swift */; };
 		D5F4AE7E2559D3F0001085D5 /* PhoneNumberDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */; };
@@ -1106,7 +1104,6 @@
 		D5ED326026065FEC00821ABE /* NonEditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonEditableTextField.swift; sourceTree = "<group>"; };
 		D5ED32622606600C00821ABE /* CustomEditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditableTextField.swift; sourceTree = "<group>"; };
 		D5ED3264260667E800821ABE /* DateDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDoubles.swift; sourceTree = "<group>"; };
-		D5EEC02326D87571000CEBAE /* ImplicitlyUnwrappedOptional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplicitlyUnwrappedOptional.swift; sourceTree = "<group>"; };
 		D5EEF6AC261BDE470014E500 /* XCTAssertText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTAssertText.swift; sourceTree = "<group>"; };
 		D5EF88B523FB706C0072BD03 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D5F4D3DF24F04294000E8580 /* BookingApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplication.swift; sourceTree = "<group>"; };
@@ -1579,7 +1576,6 @@
 				D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */,
 				03E88EB024C205C30077A420 /* Current.swift */,
 				D591C5B526699AA400A95938 /* DateComponents+Sugar.swift */,
-				D5EEC02326D87571000CEBAE /* ImplicitlyUnwrappedOptional.swift */,
 				D5B4A20126CEB983006EAD18 /* Publisher+Sugar.swift */,
 			);
 			path = Core;
@@ -3106,7 +3102,6 @@
 				D5DDE85E2598E7B300CF565D /* LessonPlanBookingPolicyView.swift in Sources */,
 				D5B5820626A37BE80008D9DC /* Images+Student.swift in Sources */,
 				035AF30D2491B7C3004A01B2 /* UNUserNotificationCenterProtocol.swift in Sources */,
-				D5EEC02426D87571000CEBAE /* ImplicitlyUnwrappedOptional.swift in Sources */,
 				D5B57A75241A018900BE9B4F /* SchedulingView.swift in Sources */,
 				D5C76E9925F4075200739267 /* CalendarSyncStatusProviderDoubles.swift in Sources */,
 				D501587D25375F3B005E02FA /* TutorProfileHeaderView.swift in Sources */,
@@ -3359,7 +3354,6 @@
 				D5F4D3F524F33CA4000E8580 /* AddressDoubles.swift in Sources */,
 				D59D0594251828EA0070D81B /* App+Playback.swift in Sources */,
 				035B1D36249E576900AABFEA /* DeauthenticationServiceDoubles.swift in Sources */,
-				D5EEC02526D87571000CEBAE /* ImplicitlyUnwrappedOptional.swift in Sources */,
 				032B6FD224B787D700299A09 /* Instrument.swift in Sources */,
 				035B1D46249E577700AABFEA /* AppleAuthorizationService.swift in Sources */,
 				035B1D33249E576900AABFEA /* AuthenticationError.swift in Sources */,

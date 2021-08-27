@@ -19,8 +19,6 @@ struct AppView: View {
 
     @StateObject
     private var remoteConfigCoordinator = Current.remoteConfigCoordinator
-    @Namespace
-    private var splashNamespace
 
     init() {
         // Waits for main window to come into existence.
@@ -38,7 +36,6 @@ struct AppView: View {
                 RootView(flow: flow)
             }
         }
-        .environment(\.appSplashNamespace, .some(splashNamespace))
         .onAppear { remoteConfigCoordinator.fetch() }
         .onEvent(.sizeCategoryChanged, perform: Self.refreshAppearance)
         .animation(animation, value: screen)

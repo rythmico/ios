@@ -27,7 +27,7 @@ struct InstructionalView<EndButton: View>: View {
         VStack(spacing: spacing) {
             VStack(spacing: spacing) {
                 teleprompter.view(transition: .none, prominence: .normal) {
-                    Image.rythmicoLogo(width: 40, namespace: appSplashNamespace())
+                    Image.rythmicoLogo(width: 40, namespace: appSplashNamespace)
                 }
                 teleprompter.view(transition: .none, prominence: .text(headline.string)) {
                     headlineView.lineLimit(1)
@@ -86,7 +86,7 @@ struct InstructionalView<EndButton: View>: View {
     private func regularHeadlineView(_ string: String) -> some View {
         Text(string)
             .rythmicoTextStyle(.headline)
-            .matchedGeometryEffect(id: AppSplash.NamespaceTitleId(), in: appSplashNamespace())
+            .matchedGeometryEffect(id: AppSplash.NamespaceTitleId(), in: appSplashNamespace)
     }
 
     @ViewBuilder
