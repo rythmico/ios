@@ -42,7 +42,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
         state.name
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .removingRepetitionOf(.whitespace)
-            .removingAll(.newline)
+            .removingAll(of: .newline)
             .nilIfEmpty
     }
 

@@ -37,3 +37,10 @@ extension Sequence {
         self.min(by: { $0[keyPath: value] < $1[keyPath: value] })
     }
 }
+
+public func * <Base1: Sequence, Base2: Collection>(
+    lhs: Base1,
+    rhs: Base2
+) -> Product2<Base1, Base2> {
+    product(lhs, rhs)
+}
