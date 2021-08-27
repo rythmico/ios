@@ -33,8 +33,41 @@ extension Sequence {
 }
 
 extension Sequence {
+    public func min<T>(
+        by value: KeyPath<Element, T>,
+        _ areInIncreasingOrder: (T, T) throws -> Bool
+    ) rethrows -> Element? {
+        try self.min(by: { try areInIncreasingOrder($0[keyPath: value], $1[keyPath: value]) })
+    }
+
     public func min<T>(by value: KeyPath<Element, T>) -> Element? where T: Comparable {
-        self.min(by: { $0[keyPath: value] < $1[keyPath: value] })
+        min(by: value, <)
+    }
+}
+
+extension Sequence {
+    public func max<T>(
+        by value: KeyPath<Element, T>,
+        _ areInIncreasingOrder: (T, T) throws -> Bool
+    ) rethrows -> Element? {
+        try self.max(by: { try areInIncreasingOrder($0[keyPath: value], $1[keyPath: value]) })
+    }
+
+    public func max<T>(by value: KeyPath<Element, T>) -> Element? where T: Comparable {
+        max(by: value, <)
+    }
+}
+
+extension Sequence {
+    public func minAndMax<T>(
+        by value: KeyPath<Element, T>,
+        _ areInIncreasingOrder: (T, T) throws -> Bool
+    ) rethrows -> (min: Element, max: Element)? {
+        try self.minAndMax(by: { try areInIncreasingOrder($0[keyPath: value], $1[keyPath: value]) })
+    }
+
+    public func minAndMax<T>(by value: KeyPath<Element, T>) -> (Element, Element)? where T: Comparable {
+        minAndMax(by: value, <)
     }
 }
 

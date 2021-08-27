@@ -23,7 +23,7 @@ final class SequenceEncoreTests: XCTestCase {
         XCTAssertEqual([a, b, c, d].sorted(by: \.age, >), [c, a, b, d])
     }
 
-    func testMinByKeyPath() {
+    func testMinAndMaxByKeyPath() throws {
         struct Person: Equatable {
             var age: Int
         }
@@ -32,5 +32,15 @@ final class SequenceEncoreTests: XCTestCase {
         let c = Person(age: 8)
         let d = Person(age: 1)
         XCTAssertEqual([a, b, c, d].min(by: \.age), d)
+        XCTAssertEqual([a, b, c, d].min(by: \.age, <), d)
+        XCTAssertEqual([a, b, c, d].min(by: \.age, >), c)
+
+        XCTAssertEqual([a, b, c, d].max(by: \.age), c)
+        XCTAssertEqual([a, b, c, d].max(by: \.age, <), c)
+        XCTAssertEqual([a, b, c, d].max(by: \.age, >), d)
+
+        XCTAssert(try XCTUnwrap([a, b, c, d].minAndMax(by: \.age)) == (d, c))
+        XCTAssert(try XCTUnwrap([a, b, c, d].minAndMax(by: \.age, <)) == (d, c))
+        XCTAssert(try XCTUnwrap([a, b, c, d].minAndMax(by: \.age, >)) == (c, d))
     }
 }
