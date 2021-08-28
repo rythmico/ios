@@ -38,14 +38,14 @@ extension StringProtocol {
         String(repeating: String(self), count: count)
     }
 
-    public func repeating(_ character: Character, count: Int) -> String {
-        self.split(separator: character)
-            .filter(\.isEmpty.not)
-            .joined(separator: character.repeated(count))
-    }
-
-    public func removingRepetitionOf(_ character: Character) -> String {
-        repeating(character, count: 1)
+    public func removingRepetition(of character: Character) -> String {
+        self.reduce(.empty) { acc, current in
+            if acc.last == character, current == character {
+                return acc
+            } else {
+                return acc + current
+            }
+        }
     }
 
     public func trimmingLineCharacters(in set: CharacterSet) -> String {
@@ -53,20 +53,18 @@ extension StringProtocol {
             .map { $0.trimmingCharacters(in: set) }
             .joined(separator: .newline)
     }
-
-    public func replacingCharacters(in set: CharacterSet, with replacement: String) -> String {
-        components(separatedBy: set).joined(separator: replacement)
-    }
 }
 
 extension StringProtocol {
+    public var words: [String] {
+        self.components(separatedBy: .whitespacesAndNewlines)
+            .filter(\.isBlank.not)
+    }
+
     public func word(at index: Int) -> String? {
-        self.trimmingCharacters(in: .whitespacesAndNewlines)
+        self.components(separatedBy: .whitespacesAndNewlines)
             .lazy
-            .split(separator: .whitespace)
-            .dropFirst(index)
-            .first
-            .map(String.init)
+            .filter(\.isBlank.not)[safe: index]
     }
 
     public var firstWord: String? {
@@ -79,11 +77,6 @@ extension StringProtocol {
             .compactMap { $0.first?.uppercased() }
             .prefix(count)
             .joined()
-    }
-
-    public var words: [String] {
-        self.components(separatedBy: .whitespacesAndNewlines)
-            .filter(\.isBlank.not)
     }
 }
 

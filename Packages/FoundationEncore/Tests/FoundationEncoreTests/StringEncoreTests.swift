@@ -2,6 +2,131 @@ import XCTest
 import FoundationEncore
 
 final class StringEncoreTests: XCTestCase {
+    func testIsBlank() {
+        XCTAssertEqual("".isBlank, true)
+        XCTAssertEqual(" ".isBlank, true)
+        XCTAssertEqual("\n".isBlank, true)
+        XCTAssertEqual("          ".isBlank, true)
+        XCTAssertEqual("     \n     ".isBlank, true)
+        XCTAssertEqual("     \n          \n ".isBlank, true)
+        XCTAssertEqual("     \n          \r ".isBlank, true)
+        XCTAssertEqual("     a           ".isBlank, false)
+        XCTAssertEqual("     a      \n     ".isBlank, false)
+    }
+
+    func testNilIfBlank() {
+        XCTAssertEqual("".nilIfBlank, nil)
+        XCTAssertEqual(" ".nilIfBlank, nil)
+        XCTAssertEqual("\n".nilIfBlank, nil)
+        XCTAssertEqual("          ".nilIfBlank, nil)
+        XCTAssertEqual("     \n     ".nilIfBlank, nil)
+        XCTAssertEqual("     \n          \n ".nilIfBlank, nil)
+        XCTAssertEqual("     \n          \r ".nilIfBlank, nil)
+        XCTAssertEqual("     a           ".nilIfBlank, "     a           ")
+        XCTAssertEqual("     a      \n     ".nilIfBlank, "     a      \n     ")
+    }
+
+    func testQuoted() {
+        XCTAssertEqual("".quoted(), #""""#)
+        XCTAssertEqual("      ".quoted(), #""      ""#)
+        XCTAssertEqual("\n".quoted(), "\"\n\"")
+        XCTAssertEqual("David Roman".quoted(), #""David Roman""#)
+    }
+
+    func testSmartQuoted() {
+        XCTAssertEqual("".smartQuoted(), "“”")
+        XCTAssertEqual("      ".smartQuoted(), "“      ”")
+        XCTAssertEqual("\n".smartQuoted(), "“\n”")
+        XCTAssertEqual("David Roman".smartQuoted(), "“David Roman”")
+    }
+
+    func testParenthesized() {
+        XCTAssertEqual("".parenthesized(), "()")
+        XCTAssertEqual("      ".parenthesized(), "(      )")
+        XCTAssertEqual("\n".parenthesized(), "(\n)")
+        XCTAssertEqual("David Roman".parenthesized(), "(David Roman)")
+    }
+
+    func testRepeated() {
+        let sut: String = "a"
+        XCTAssertEqual(sut.repeated(), "aa")
+        XCTAssertEqual(sut.repeated(1), "a")
+        XCTAssertEqual(sut.repeated(2), "aa")
+        XCTAssertEqual(sut.repeated(3), "aaa")
+        XCTAssertEqual(sut.repeated(4), "aaaa")
+        XCTAssertEqual(sut.repeated(5), "aaaaa")
+    }
+
+    func testRepeatedEmoji() {
+        let sut: String = "🔥"
+        XCTAssertEqual(sut.repeated(), "🔥🔥")
+        XCTAssertEqual(sut.repeated(1), "🔥")
+        XCTAssertEqual(sut.repeated(2), "🔥🔥")
+        XCTAssertEqual(sut.repeated(3), "🔥🔥🔥")
+        XCTAssertEqual(sut.repeated(4), "🔥🔥🔥🔥")
+        XCTAssertEqual(sut.repeated(5), "🔥🔥🔥🔥🔥")
+    }
+
+    func testRemovingRepetition() {
+        XCTAssertEqual("".removingRepetition(of: "a"), "")
+        XCTAssertEqual("a".removingRepetition(of: "a"), "a")
+        XCTAssertEqual("bca".removingRepetition(of: "a"), "bca")
+        XCTAssertEqual("aaaaa bca xc".removingRepetition(of: "a"), "a bca xc")
+        XCTAssertEqual("bca aa xc".removingRepetition(of: "a"), "bca a xc")
+        XCTAssertEqual("bcaaa xc".removingRepetition(of: "a"), "bca xc")
+    }
+
+    func testTrimmingLineCharacters() {
+        XCTAssertEqual(
+            """
+                 tempora
+              et
+            id
+                 porro
+                    illum
+            """.trimmingLineCharacters(in: .whitespacesAndNewlines),
+            """
+            tempora
+            et
+            id
+            porro
+            illum
+            """
+        )
+    }
+
+    func testWords() {
+        XCTAssertEqual("".words, [])
+        XCTAssertEqual("   ".words, [])
+
+        XCTAssertEqual("  David     ".words, ["David"])
+        XCTAssertEqual("David   Roman".words, ["David", "Roman"])
+        XCTAssertEqual("  David    Roman ".words, ["David", "Roman"])
+        XCTAssertEqual(" \n David  \n\n  Roman ".words, ["David", "Roman"])
+        XCTAssertEqual(" \n David  \n\n  Roman ".words, ["David", "Roman"])
+
+        XCTAssertEqual("David Roman Aguirre Gonzalez".words, ["David", "Roman", "Aguirre", "Gonzalez"])
+    }
+
+    func testWordAtIndex() {
+        XCTAssertEqual("".word(at: 0), nil)
+        XCTAssertEqual("   ".word(at: 0), nil)
+
+        XCTAssertEqual("  David     ".word(at: 0), "David")
+        XCTAssertEqual("David   Roman".word(at: 0), "David")
+        XCTAssertEqual("  David    Roman ".word(at: 0), "David")
+        XCTAssertEqual(" \n David  \n\n  Roman ".word(at: 0), "David")
+        XCTAssertEqual(" \n David  \n\n  Roman ".word(at: 1), "Roman")
+
+        XCTAssertEqual("David Roman Aguirre Gonzalez".word(at: -1), nil)
+        XCTAssertEqual("David Roman Aguirre Gonzalez".word(at: 0), "David")
+        XCTAssertEqual("David Roman Aguirre Gonzalez".word(at: 1), "Roman")
+        XCTAssertEqual("David Roman Aguirre Gonzalez".word(at: 2), "Aguirre")
+        XCTAssertEqual("David Roman Aguirre Gonzalez".word(at: 3), "Gonzalez")
+        XCTAssertEqual("David Roman Aguirre Gonzalez".word(at: 4), nil)
+        XCTAssertEqual("David Roman Aguirre Gonzalez".word(at: 5), nil)
+    }
+
     func testInitials() {
         XCTAssertEqual("".initials(), "")
         XCTAssertEqual("   ".initials(), "")
@@ -70,5 +195,21 @@ final class StringEncoreTests: XCTestCase {
         XCTAssertEqual("David Roman".initials(), "DR")
         XCTAssertEqual("David Roman Aguirre".initials(), "DRA")
         XCTAssertEqual("David Roman Aguirre Gonzalez".initials(), "DRAG")
+    }
+
+    func testSpaced() {
+        XCTAssertEqual(["David"].spaced(), "David")
+        XCTAssertEqual(["David", "Roman"].spaced(), "David Roman")
+        XCTAssertEqual(["David", "Roman", "Aguirre"].spaced(), "David Roman Aguirre")
+        XCTAssertEqual(["", "David", "Roman", "",  "Aguirre"].spaced(), " David Roman  Aguirre")
+        XCTAssertEqual(["David", "Roman", "Aguirre", "Gonzalez"].spaced(), "David Roman Aguirre Gonzalez")
+    }
+
+    func testSpacedAndDashed() {
+        XCTAssertEqual(["David"].spacedAndDashed(), "David")
+        XCTAssertEqual(["David", "Roman"].spacedAndDashed(), "David - Roman")
+        XCTAssertEqual(["David", "Roman", "Aguirre"].spacedAndDashed(), "David - Roman - Aguirre")
+        XCTAssertEqual(["", "David", "Roman", "",  "Aguirre"].spacedAndDashed(), " - David - Roman -  - Aguirre")
+        XCTAssertEqual(["David", "Roman", "Aguirre", "Gonzalez"].spacedAndDashed(), "David - Roman - Aguirre - Gonzalez")
     }
 }

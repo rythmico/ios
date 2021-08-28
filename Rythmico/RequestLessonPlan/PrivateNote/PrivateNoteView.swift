@@ -29,8 +29,8 @@ struct PrivateNoteView: View, FocusableView, TestableView {
             setter(
                 state.privateNote
                     .trimmingLineCharacters(in: .whitespacesAndNewlines)
-                    .removingRepetitionOf(.whitespace)
-                    .removingRepetitionOf(.newline)
+                    .removingRepetition(of: .whitespace)
+                    .removingRepetition(of: .newline)
             )
         }
     }

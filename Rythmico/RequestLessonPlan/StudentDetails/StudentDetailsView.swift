@@ -41,7 +41,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
     private var sanitizedName: String? {
         state.name
             .trimmingCharacters(in: .whitespacesAndNewlines)
-            .removingRepetitionOf(.whitespace)
+            .removingRepetition(of: .whitespace)
             .removingAll(of: .newline)
             .nilIfEmpty
     }
@@ -67,8 +67,8 @@ struct StudentDetailsView: View, FocusableView, TestableView {
     private var sanitizedAbout: String {
         state.about
             .trimmingLineCharacters(in: .whitespacesAndNewlines)
-            .removingRepetitionOf(.whitespace)
-            .removingRepetitionOf(.newline)
+            .removingRepetition(of: .whitespace)
+            .removingRepetition(of: .newline)
     }
 
     // MARK: - Next Button -
