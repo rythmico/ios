@@ -11,7 +11,7 @@ struct LessonPlanDetailTutorStatusView: View {
     var status: LessonPlan.Status { lessonPlan.status }
 
     var body: some View {
-        AdHocButton(action: action ?? {}) { state in
+        CustomButton(action: action ?? {}) { state in
             SelectableContainer(
                 fill: .rythmico.background,
                 isSelected: state == .pressed

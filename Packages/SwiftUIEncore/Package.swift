@@ -11,6 +11,7 @@ let package = Package(
     products: [
         .library(name: "SwiftUIEncore", targets: ["SwiftUIEncore"]),
         .library(name: "Container", targets: ["Container"]),
+        .library(name: "CustomButton", targets: ["CustomButton"]),
         .library(name: "DebugModifiers", targets: ["DebugModifiers"]),
         .library(name: "Flow", targets: ["Flow"]),
         .library(name: "FocusState", targets: ["FocusState"]),
@@ -19,6 +20,7 @@ let package = Package(
     targets: [
         .target(name: "SwiftUIEncore", dependencies: [
             .target(name: "Container"),
+            .target(name: "CustomButton"),
             .target(name: "DebugModifiers"),
             .target(name: "Flow"),
             .target(name: "FocusState"),
@@ -32,6 +34,8 @@ let package = Package(
         ]),
 
         .target(name: "Container"),
+
+        .target(name: "CustomButton"),
 
         .target(name: "DebugModifiers"),
 

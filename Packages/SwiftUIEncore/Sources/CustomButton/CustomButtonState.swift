@@ -1,4 +1,4 @@
-public enum AdHocButtonState: Equatable {
+public enum CustomButtonState: Equatable {
     case normal
     case pressed
     case disabled

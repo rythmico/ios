@@ -29,7 +29,7 @@ private struct ThreeDotButton: View {
     let action: () -> Void
 
     var body: some View {
-        AdHocButton(action: action) { state in
+        CustomButton(action: action) { state in
             Container(style: style(for: state)) {
                 ZStack {
                     Image(systemSymbol: .ellipsis)
@@ -47,7 +47,7 @@ private struct ThreeDotButton: View {
 
     private var width: CGFloat { size.rawValue }
 
-    private func style(for state: AdHocButtonState) -> ContainerStyle {
+    private func style(for state: CustomButtonState) -> ContainerStyle {
         .init(
             fill: state.map(normal: .rythmico.picoteeBlue, pressed: .rythmico.darkPurple),
             shape: .circle,
@@ -55,7 +55,7 @@ private struct ThreeDotButton: View {
         )
     }
 
-    private func foregroundColor(for state: AdHocButtonState) -> Color {
+    private func foregroundColor(for state: CustomButtonState) -> Color {
         state.map(normal: .rythmico.white, pressed: .rythmico.inverted(\.foreground))
     }
 }

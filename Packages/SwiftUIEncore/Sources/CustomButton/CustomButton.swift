@@ -1,7 +1,6 @@
-import SwiftUI
-
-public struct AdHocButton<Content: View>: View {
-    public typealias MakeContent = (_ state: AdHocButtonState) -> Content
+public struct CustomButton<Content: View>: View {
+    public typealias Action = () -> Void
+    public typealias MakeContent = (_ state: CustomButtonState) -> Content
 
     private let action: Action
     private let content: MakeContent
@@ -12,14 +11,14 @@ public struct AdHocButton<Content: View>: View {
     }
 
     public var body: some View {
-        Button(action: action, label: EmptyView.init).buttonStyle(AdHocButtonStyle { _, state in content(state) })
+        Button(action: action, label: EmptyView.init).buttonStyle(CustomButtonStyle { _, state in content(state) })
     }
 }
 
-public struct AdHocButtonStyle<Body: View>: ButtonStyle {
+public struct CustomButtonStyle<Body: View>: ButtonStyle {
     @Environment(\.isEnabled) private var isEnabled
 
-    public typealias MakeBody = (_ label: ButtonStyleConfiguration.Label, _ state: AdHocButtonState) -> Body
+    public typealias MakeBody = (_ label: ButtonStyleConfiguration.Label, _ state: CustomButtonState) -> Body
 
     private let makeBody: MakeBody
 
@@ -30,7 +29,7 @@ public struct AdHocButtonStyle<Body: View>: ButtonStyle {
     public func makeBody(configuration: Configuration) -> some View {
         makeBody(
             configuration.label,
-            AdHocButtonState(isPressed: configuration.isPressed, isEnabled: isEnabled)
+            CustomButtonState(isPressed: configuration.isPressed, isEnabled: isEnabled)
         )
         .contentShape(Rectangle())
     }

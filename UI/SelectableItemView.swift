@@ -6,7 +6,7 @@ struct SelectableItemView<Content: View>: View {
     let content: Content
 
     var body: some View {
-        AdHocButton(action: action) { state in
+        CustomButton(action: action) { state in
             SelectableContainer(isSelected: state == .pressed) { _ in
                 content
                     .padding(.top, .grid(5))

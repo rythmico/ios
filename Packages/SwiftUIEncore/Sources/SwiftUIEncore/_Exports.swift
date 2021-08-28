@@ -2,6 +2,7 @@
 @_exported import FoundationEncore
 
 @_exported import Container
+@_exported import CustomButton
 @_exported import DebugModifiers
 @_exported import Flow
 @_exported import FocusState

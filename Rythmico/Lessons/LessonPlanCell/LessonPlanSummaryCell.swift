@@ -7,7 +7,7 @@ struct LessonPlanSummaryCell: View {
     let lessonPlan: LessonPlan
 
     var body: some View {
-        AdHocButton(action: onTapAction) { state in
+        CustomButton(action: onTapAction) { state in
             SelectableContainer(
                 fill: fill,
                 radius: .large,
