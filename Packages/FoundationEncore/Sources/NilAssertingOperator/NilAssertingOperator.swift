@@ -4,6 +4,7 @@ precedencegroup NilAssertingPrecedence {
 }
 
 infix operator !! : NilAssertingPrecedence
+infix operator ?! : NilAssertingPrecedence
 
 public func !! <T>(optional: T?, exitClosure: @autoclosure () -> Never) -> T {
     guard let value = optional else {
@@ -18,8 +19,6 @@ public func !! <T>(optional: T?, errorClosure: @autoclosure () -> Error) throws 
     }
     return value
 }
-
-infix operator ?! : NilAssertingPrecedence
 
 public func ?! <T>(optional: T?, actionClosure: @autoclosure () -> Void) -> T? {
     guard let value = optional else {
