@@ -22,9 +22,19 @@ public struct PagingIndicator<Items: RandomAccessCollection>: View where Items.E
     public var body: some View {
         HStack(spacing: 8) {
             ForEach(items, id: \.self) { item in
-                Dot(color: selection == item ? accentColor : foregroundColor)
+                PagingIndicatorDot(color: selection == item ? accentColor : foregroundColor)
             }
         }
+    }
+}
+
+private struct PagingIndicatorDot: View {
+    var color: Color
+
+    var body: some View {
+        Circle()
+            .fill(color)
+            .frame(width: 8, height: 8)
     }
 }
 
