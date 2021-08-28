@@ -1,5 +1,3 @@
-import SwiftUI
-
 public struct ContainerStyle {
     public let fill: Fill
     public let shape: Shape

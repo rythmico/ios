@@ -10,9 +10,11 @@ let package = Package(
     ],
     products: [
         .library(name: "SwiftUIEncore", targets: ["SwiftUIEncore"]),
+        .library(name: "Container", targets: ["Container"]),
     ],
     targets: [
         .target(name: "SwiftUIEncore", dependencies: [
+            .target(name: "Container"),
             .product(name: "FoundationEncore", package: "FoundationEncore"),
             .product(name: "Introspect", package: "Introspect"),
             .product(name: "MultiModal", package: "MultiModal"),
@@ -20,6 +22,8 @@ let package = Package(
             .product(name: "TextBuilder", package: "TextBuilder"),
             .product(name: "WebView", package: "WebView"),
         ]),
+
+        .target(name: "Container"),
     ]
 )
 
