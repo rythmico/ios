@@ -2,6 +2,7 @@
 @_exported import FoundationEncore
 
 @_exported import Container
+@_exported import DebugModifiers
 @_exported import Introspect
 @_exported import MultiModal
 @_exported import SFSafeSymbols
