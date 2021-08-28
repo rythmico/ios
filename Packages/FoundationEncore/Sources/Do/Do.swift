@@ -5,7 +5,6 @@ precedencegroup DoPrecedence {
 }
 
 infix operator => : DoPrecedence
-infix operator ?=> : DoPrecedence
 
 // MARK: - Do (Value Types) -
 
@@ -13,16 +12,6 @@ infix operator ?=> : DoPrecedence
 @discardableResult
 @inlinable
 public func => <Subject>(subject: Subject, do: (inout Subject) throws -> Void) rethrows -> Subject {
-    var copy = subject
-    try `do`(&copy)
-    return copy
-}
-
-@_disfavoredOverload
-@discardableResult
-@inlinable
-public func ?=> <Subject>(subject: Subject?, do: (inout Subject) throws -> Void) rethrows -> Subject? {
-    guard let subject = subject else { return nil }
     var copy = subject
     try `do`(&copy)
     return copy
@@ -37,14 +26,6 @@ public func => <Subject: AnyObject>(subject: Subject, do: (Subject) throws -> Vo
     return subject
 }
 
-@discardableResult
-@inlinable
-public func ?=> <Subject: AnyObject>(subject: Subject?, do: (Subject) throws -> Void) rethrows -> Subject? {
-    guard let subject = subject else { return nil }
-    try `do`(subject)
-    return subject
-}
-
 // MARK: - Mutate -
 
 public typealias Mutation<Subject, Value> = (
@@ -55,14 +36,7 @@ public typealias Mutation<Subject, Value> = (
 @discardableResult
 @inlinable
 public func => <Subject, Value>(subject: Subject, mutation: Mutation<Subject, Value>) -> Subject {
-    return subject => { $0[keyPath: mutation.set] = mutation.to }
-}
-
-@discardableResult
-@inlinable
-public func ?=> <Subject, Value>(subject: Subject?, mutation: Mutation<Subject, Value>) -> Subject? {
-    guard let subject = subject else { return nil }
-    return subject => { $0[keyPath: mutation.set] = mutation.to }
+    subject => { $0[keyPath: mutation.set] = mutation.to }
 }
 
 // MARK: - Assign (Value Types) -
@@ -75,27 +49,13 @@ public typealias AssignmentToValue<Pointee, Subject> = (
 @discardableResult
 @inlinable
 public func => <Subject, Pointee>(subject: Subject, assignment: AssignmentToValue<Pointee, Subject>) -> Subject {
-    return subject => { assignment.assignTo.pointee[keyPath: assignment.1] = $0 }
+    subject => { assignment.assignTo.pointee[keyPath: assignment.1] = $0 }
 }
 
 @discardableResult
 @inlinable
 public func => <Subject, Pointee>(subject: Subject, assignment: AssignmentToValue<Pointee, Subject?>) -> Subject {
-    return subject => { assignment.assignTo.pointee[keyPath: assignment.1] = $0 }
-}
-
-@discardableResult
-@inlinable
-public func ?=> <Subject, Pointee>(subject: Subject?, assignment: AssignmentToValue<Pointee, Subject>) -> Subject? {
-    guard let subject = subject else { return nil }
-    return subject => { assignment.assignTo.pointee[keyPath: assignment.1] = $0 }
-}
-
-@discardableResult
-@inlinable
-public func ?=> <Subject, Pointee>(subject: Subject?, assignment: AssignmentToValue<Pointee, Subject?>) -> Subject? {
-    guard let subject = subject else { return nil }
-    return subject => { assignment.assignTo.pointee[keyPath: assignment.1] = $0 }
+    subject => { assignment.assignTo.pointee[keyPath: assignment.1] = $0 }
 }
 
 prefix operator /&
@@ -113,25 +73,11 @@ public typealias AssignmentToReference<Pointee: AnyObject, Subject> = (
 @discardableResult
 @inlinable
 public func => <Subject, Pointee: AnyObject>(subject: Subject, assignment: AssignmentToReference<Pointee, Subject>) -> Subject {
-    return subject => { assignment.assignTo[keyPath: assignment.1] = $0 }
+    subject => { assignment.assignTo[keyPath: assignment.1] = $0 }
 }
 
 @discardableResult
 @inlinable
 public func => <Subject, Pointee: AnyObject>(subject: Subject, assignment: AssignmentToReference<Pointee, Subject?>) -> Subject {
-    return subject => { assignment.assignTo[keyPath: assignment.1] = $0 }
-}
-
-@discardableResult
-@inlinable
-public func ?=> <Subject, Pointee: AnyObject>(subject: Subject?, assignment: AssignmentToReference<Pointee, Subject>) -> Subject? {
-    guard let subject = subject else { return nil }
-    return subject => { assignment.assignTo[keyPath: assignment.1] = $0 }
-}
-
-@discardableResult
-@inlinable
-public func ?=> <Subject, Pointee: AnyObject>(subject: Subject?, assignment: AssignmentToReference<Pointee, Subject?>) -> Subject? {
-    guard let subject = subject else { return nil }
-    return subject => { assignment.assignTo[keyPath: assignment.1] = $0 }
+    subject => { assignment.assignTo[keyPath: assignment.1] = $0 }
 }

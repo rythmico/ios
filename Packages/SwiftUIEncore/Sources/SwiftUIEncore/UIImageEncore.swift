@@ -16,7 +16,7 @@ extension UIImage {
     public convenience init(solidColor color: UIColor, size: CGSize = .init(width: 1, height: 1)) {
         let rect = CGRect(origin: .zero, size: size)
         UIGraphicsBeginImageContext(rect.size)
-        UIGraphicsGetCurrentContext() ?=> {
+        UIGraphicsGetCurrentContext()? => {
             $0.setFillColor(color.cgColor)
             $0.fill(rect)
         }

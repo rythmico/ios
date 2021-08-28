@@ -11,7 +11,7 @@ class DoTests: XCTestCase {
     }
 
     func testOptionalDo() {
-        Optional(UserDefaults.standard) ?=> {
+        Optional(UserDefaults.standard)? => {
             $0.removeObject(forKey: "username")
             $0.set("foobar", forKey: "username")
         }
@@ -28,7 +28,7 @@ class DoTests: XCTestCase {
 
     func testThrowingOptionalDo() {
         XCTAssertThrowsError(
-            try Optional(NSObject()) ?=> { _ in
+            try Optional(NSObject())? => { _ in
                 throw NSError(domain: "", code: 0)
             }
         )
@@ -52,12 +52,13 @@ class DoTests: XCTestCase {
         struct User {
             var name: String?
             var email: String?
+            init?() {}
         }
-        var user = Optional(User()) ?=> {
+        var user = User()? => {
             $0.name = "foobar"
             $0.email = "deadbeef@gmail.com"
         }
-        user = user ?=> (\.email, "foobar@gmail.com")
+        user = user? => (\.email, "foobar@gmail.com")
         XCTAssertEqual(user?.name, "foobar")
         XCTAssertEqual(user?.email, "foobar@gmail.com")
     }
@@ -70,7 +71,7 @@ class DoTests: XCTestCase {
     }
 
     func testMutateOptionalArray() {
-        let array = Optional([1, 2, 3]) ?=> {
+        let array = Optional([1, 2, 3])? => {
             $0.append(4)
         }
         XCTAssertEqual(array, [1, 2, 3, 4])
@@ -84,7 +85,7 @@ class DoTests: XCTestCase {
     }
 
     func testMutateOptionalDictionary() {
-        let dict = Optional(["Korea": "Seoul", "Japan": "Tokyo"]) ?=> {
+        let dict = Optional(["Korea": "Seoul", "Japan": "Tokyo"])? => {
             $0["China"] = "Beijing"
         }
         XCTAssertEqual(dict, ["Korea": "Seoul", "Japan": "Tokyo", "China": "Beijing"])
@@ -98,7 +99,7 @@ class DoTests: XCTestCase {
     }
 
     func testMutateOptionalSet() {
-        let set = Optional(Set(["A", "B", "C"])) ?=> {
+        let set = Optional(Set(["A", "B", "C"]))? => {
             $0.insert("D")
         }
         XCTAssertEqual(set, Set(["A", "B", "C", "D"]))
@@ -115,11 +116,11 @@ class DoTests: XCTestCase {
     }
 
     func testMutateOptionalClass() {
-        let queue = Optional(OperationQueue()) ?=> {
+        let queue = Optional(OperationQueue())? => {
             $0.name = "awesome"
             $0.maxConcurrentOperationCount = 2
         }
-        queue ?=> (\.maxConcurrentOperationCount, 5)
+        queue? => (\.maxConcurrentOperationCount, 5)
         XCTAssertEqual(queue?.name, "awesome")
         XCTAssertEqual(queue?.maxConcurrentOperationCount, 5)
     }
@@ -142,8 +143,8 @@ class DoTests: XCTestCase {
             var email: String = "deadbeef@gmail.com"
         }
         var user = User()
-        Optional("foobar") ?=> (assignTo: /&user, \.name)
-        Optional("foobar@gmail.com") ?=> (assignTo: /&user, \.email)
+        Optional("foobar")? => (assignTo: /&user, \.name)
+        Optional("foobar@gmail.com")? => (assignTo: /&user, \.email)
         XCTAssertEqual(user.name, "foobar")
         XCTAssertEqual(user.email, "foobar@gmail.com")
     }
@@ -158,8 +159,8 @@ class DoTests: XCTestCase {
 
     func testAssignOptionalToClass() {
         let queue = OperationQueue()
-        Optional("awesome") ?=> (assignTo: queue, \.name)
-        Optional(5) ?=> (assignTo: queue, \.maxConcurrentOperationCount)
+        Optional("awesome")? => (assignTo: queue, \.name)
+        Optional(5)? => (assignTo: queue, \.maxConcurrentOperationCount)
         XCTAssertEqual(queue.name, "awesome")
         XCTAssertEqual(queue.maxConcurrentOperationCount, 5)
     }
