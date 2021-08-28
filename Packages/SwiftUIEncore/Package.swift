@@ -16,6 +16,7 @@ let package = Package(
         .library(name: "Flow", targets: ["Flow"]),
         .library(name: "FocusState", targets: ["FocusState"]),
         .library(name: "PagingView", targets: ["PagingView"]),
+        .library(name: "StatefulView", targets: ["StatefulView"]),
     ],
     targets: [
         .target(name: "SwiftUIEncore", dependencies: [
@@ -29,6 +30,7 @@ let package = Package(
             .product(name: "MultiModal", package: "MultiModal"),
             .target(name: "PagingView"),
             .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
+            .target(name: "StatefulView"),
             .product(name: "TextBuilder", package: "TextBuilder"),
             .product(name: "WebView", package: "WebView"),
         ]),
@@ -44,6 +46,8 @@ let package = Package(
         .target(name: "FocusState"),
 
         .target(name: "PagingView"),
+
+        .target(name: "StatefulView"),
     ]
 )
 

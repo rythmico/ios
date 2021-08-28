@@ -10,5 +10,6 @@
 @_exported import MultiModal
 @_exported import PagingView
 @_exported import SFSafeSymbols
+@_exported import StatefulView
 @_exported import TextBuilder
 @_exported import WebView
