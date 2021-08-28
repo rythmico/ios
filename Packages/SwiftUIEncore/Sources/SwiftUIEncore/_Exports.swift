@@ -4,6 +4,7 @@
 @_exported import Container
 @_exported import DebugModifiers
 @_exported import Flow
+@_exported import FocusState
 @_exported import Introspect
 @_exported import MultiModal
 @_exported import SFSafeSymbols

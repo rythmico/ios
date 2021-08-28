@@ -13,12 +13,14 @@ let package = Package(
         .library(name: "Container", targets: ["Container"]),
         .library(name: "DebugModifiers", targets: ["DebugModifiers"]),
         .library(name: "Flow", targets: ["Flow"]),
+        .library(name: "FocusState", targets: ["FocusState"]),
     ],
     targets: [
         .target(name: "SwiftUIEncore", dependencies: [
             .target(name: "Container"),
             .target(name: "DebugModifiers"),
             .target(name: "Flow"),
+            .target(name: "FocusState"),
             .product(name: "FoundationEncore", package: "FoundationEncore"),
             .product(name: "Introspect", package: "Introspect"),
             .product(name: "MultiModal", package: "MultiModal"),
@@ -32,6 +34,8 @@ let package = Package(
         .target(name: "DebugModifiers"),
 
         .target(name: "Flow"),
+
+        .target(name: "FocusState"),
     ]
 )
 
