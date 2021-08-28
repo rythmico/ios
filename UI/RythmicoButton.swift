@@ -52,7 +52,7 @@ struct RythmicoButtonStyle {
 
 extension RythmicoButtonStyle {
     fileprivate var swiftUIButtonStyle: some ButtonStyle {
-        AdHocButtonStyle { label, state in
+        CustomButtonStyle { label, state in
             Container(style: style(for: state)) {
                 label
                     .lineLimit(1)
@@ -65,7 +65,7 @@ extension RythmicoButtonStyle {
         }
     }
 
-    private func style(for state: AdHocButtonState) -> ContainerStyle {
+    private func style(for state: CustomButtonState) -> ContainerStyle {
         ContainerStyle(
             fill: backgroundColor(for: state),
             shape: shape,
@@ -95,7 +95,7 @@ extension RythmicoButtonStyle.StateValue: Equatable where T: Equatable {}
 extension RythmicoButtonStyle.StateValue {
     typealias FallbackValues = [KeyPath<Self, T?>: T]
 
-    func callAsFunction(for state: AdHocButtonState, fallbackValues: FallbackValues = [:]) -> T {
+    func callAsFunction(for state: CustomButtonState, fallbackValues: FallbackValues = [:]) -> T {
         state.map(
             normal: normal,
             pressed: pressed ?? fallbackValues[\.pressed],

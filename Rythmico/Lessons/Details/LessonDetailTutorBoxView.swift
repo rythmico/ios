@@ -10,7 +10,7 @@ struct LessonDetailTutorBoxView: View {
 
     var body: some View {
         SectionHeaderContentView("Tutor", style: .box) {
-            AdHocButton(action: action) { state in
+            CustomButton(action: action) { state in
                 SelectableContainer(
                     fill: .rythmico.background,
                     isSelected: state == .pressed

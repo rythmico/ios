@@ -1,7 +1,5 @@
 import FoundationEncore
 
-extension Lesson: Then {}
-
 extension Lesson.ID {
     static func random() -> Self {
         Self(rawValue: UUID().uuidString)
@@ -43,7 +41,7 @@ private extension Lesson {
             tutor: .jesseStub,
             status: status,
             address: .stub,
-            schedule: Schedule.stub.with(\.startDate, startDate),
+            schedule: Schedule.stub => (\.startDate, startDate),
             options: status == .scheduled ? .scheduledStub : .skippedStub
         )
     }
@@ -56,7 +54,7 @@ private extension Lesson {
             week: week,
             status: status,
             address: .stub,
-            schedule: Schedule.stub.with(\.startDate, startDate),
+            schedule: Schedule.stub => (\.startDate, startDate),
             phoneNumber: .stub,
             privateNote: ""
         )

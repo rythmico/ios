@@ -542,7 +542,6 @@
 		D5DAD27A2677B51F0014702F /* LessonPlan+Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DAD2792677B51F0014702F /* LessonPlan+Analytics.swift */; };
 		D5DAD27C2679339B0014702F /* LessonPlanApplicationsView+Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DAD27B2679339B0014702F /* LessonPlanApplicationsView+Analytics.swift */; };
 		D5DAD27E26793B970014702F /* LessonPlanApplicationDetailView+Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DAD27D26793B970014702F /* LessonPlanApplicationDetailView+Analytics.swift */; };
-		D5DAD28026793F240014702F /* UUIDDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DAD27F26793F240014702F /* UUIDDoubles.swift */; };
 		D5DDE85E2598E7B300CF565D /* LessonPlanBookingPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DDE85D2598E7B300CF565D /* LessonPlanBookingPolicyView.swift */; };
 		D5DE2896260A6BC6002BAB43 /* CustomTextFieldInputAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DE2895260A6BC6002BAB43 /* CustomTextFieldInputAccessory.swift */; };
 		D5DE2897260A6BC6002BAB43 /* CustomTextFieldInputAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DE2895260A6BC6002BAB43 /* CustomTextFieldInputAccessory.swift */; };
@@ -1078,7 +1077,6 @@
 		D5DAD2792677B51F0014702F /* LessonPlan+Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonPlan+Analytics.swift"; sourceTree = "<group>"; };
 		D5DAD27B2679339B0014702F /* LessonPlanApplicationsView+Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonPlanApplicationsView+Analytics.swift"; sourceTree = "<group>"; };
 		D5DAD27D26793B970014702F /* LessonPlanApplicationDetailView+Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonPlanApplicationDetailView+Analytics.swift"; sourceTree = "<group>"; };
-		D5DAD27F26793F240014702F /* UUIDDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUIDDoubles.swift; sourceTree = "<group>"; };
 		D5DDE85D2598E7B300CF565D /* LessonPlanBookingPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanBookingPolicyView.swift; sourceTree = "<group>"; };
 		D5DE2895260A6BC6002BAB43 /* CustomTextFieldInputAccessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldInputAccessory.swift; sourceTree = "<group>"; };
 		D5E04B1823BED80700A161BB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -1634,7 +1632,6 @@
 				03B71326241D84F300DED025 /* Student */,
 				D517FF8825536ADB00A41639 /* Tutor */,
 				D54CFD3025BB20AC00C012F3 /* TutorStatus */,
-				D5DAD27F26793F240014702F /* UUIDDoubles.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3093,7 +3090,6 @@
 				D5E987B924ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */,
 				D5AAF7DD23FB431E00E410F2 /* InstrumentView.swift in Sources */,
 				D53555BC23E53699005A20EB /* UserCredentialProvider.swift in Sources */,
-				D5DAD28026793F240014702F /* UUIDDoubles.swift in Sources */,
 				03A91EF62491887A00DEAD5E /* DeviceTokenProviderDoubles.swift in Sources */,
 				D56B2531252D1A8100BC3932 /* StripePaymentCardTextField.swift in Sources */,
 				D5C76E9425F405E200739267 /* EKEventStore.swift in Sources */,

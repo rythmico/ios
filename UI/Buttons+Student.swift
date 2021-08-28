@@ -3,7 +3,7 @@ import SwiftUIEncore
 // TODO: refactor RythmicoButton to allow for building these buttons.
 extension Button where Label == EmptyView {
     static func requestLessonPlan(action: @escaping Action) -> some View {
-        AdHocButton(action: action) { state in
+        CustomButton(action: action) { state in
             Container(
                 style: .init(
                     fill: state.map(normal: .rythmico.picoteeBlue, pressed: .rythmico.darkPurple),
@@ -22,7 +22,7 @@ extension Button where Label == EmptyView {
     }
 
     static func help(action: @escaping Action) -> some View {
-        AdHocButton(action: action) { state in
+        CustomButton(action: action) { state in
             Container(
                 style: .init(
                     fill: state.map(normal: .rythmico.picoteeBlue, pressed: .rythmico.darkPurple),

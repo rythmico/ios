@@ -11,7 +11,7 @@ extension NSAttributedString.Attributes {
 private struct UITextViewWrapper: UIViewRepresentable {
     final class UITextViewPrimitive: UITextView {
         override func caretRect(for position: UITextPosition) -> CGRect {
-            super.caretRect(for: position).with {
+            super.caretRect(for: position) => {
                 $0.size.height = UIFontMetrics(forTextStyle: .largeTitle).scaledValue(for: 23)
             }
         }

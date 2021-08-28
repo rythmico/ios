@@ -9,7 +9,7 @@ extension AppEnvironment {
     /// while ensuring all SDKs are configured as early as possible.
     static func initLive(_ build: () -> AppEnvironment) -> AppEnvironment {
         #if RYTHMICO
-        Amplitude.instance().do {
+        Amplitude.instance() => {
             $0.trackingSessionEvents = true
             $0.initializeApiKey(AppSecrets.amplitudeProjectToken)
         }
@@ -19,21 +19,21 @@ extension AppEnvironment {
     }
 
     func calendar() -> Calendar {
-        Calendar(identifier: calendarType()).with {
+        Calendar(identifier: calendarType()) => {
             $0.locale = locale
             $0.timeZone = timeZone
         }
     }
 
     func numberFormatter(format: NumberFormatter.Format) -> NumberFormatter {
-        NumberFormatter().then {
+        NumberFormatter() => {
             $0.locale = locale
             $0.setFormat(format)
         }
     }
 
     func dateFormatter(format: DateFormatter.Format) -> DateFormatter {
-        DateFormatter().then {
+        DateFormatter() => {
             $0.calendar = calendar()
             $0.locale = locale
             $0.timeZone = timeZone
@@ -42,7 +42,7 @@ extension AppEnvironment {
     }
 
     func dateIntervalFormatter(format: DateIntervalFormatter.Format) -> DateIntervalFormatter {
-        DateIntervalFormatter().then {
+        DateIntervalFormatter() => {
             $0.calendar = calendar()
             $0.locale = locale
             $0.timeZone = timeZone
@@ -55,7 +55,7 @@ extension AppEnvironment {
         style: DateComponentsFormatter.UnitsStyle,
         includesTimeRemainingPhrase: Bool = false
     ) -> DateComponentsFormatter {
-        DateComponentsFormatter().then {
+        DateComponentsFormatter() => {
             $0.calendar = calendar()
             $0.allowedUnits = allowedUnits
             $0.unitsStyle = style
@@ -64,7 +64,7 @@ extension AppEnvironment {
     }
 
     func listFormatter() -> ListFormatter {
-        ListFormatter().then {
+        ListFormatter() => {
             $0.locale = locale
         }
     }
@@ -74,7 +74,7 @@ extension AppEnvironment {
         style: RelativeDateTimeFormatter.UnitsStyle,
         precise: Bool
     ) -> RelativeDateTimeFormatter {
-        RelativeDateTimeFormatter().then {
+        RelativeDateTimeFormatter() => {
             $0.calendar = calendar()
             $0.locale = locale
             $0.formattingContext = context

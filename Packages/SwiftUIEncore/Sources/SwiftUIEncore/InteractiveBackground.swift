@@ -2,14 +2,8 @@ public struct InteractiveBackground: View {
     private let color: Color
 
     public init(color: Color = .clear) {
-        self.color = color
+        self.color = color == .clear ? Color.black.opacity(0.0001) : color
     }
 
-    public var body: some View {
-        if color == .clear {
-            Color.black.opacity(0.0001)
-        } else {
-            color
-        }
-    }
+    public var body: some View { color }
 }

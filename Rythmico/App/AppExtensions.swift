@@ -21,8 +21,8 @@ extension App {
 extension SwiftUI.App {
     // TODO: hopefully to be deleted someday if SwiftUI allows for this customization.
     static func configureAppearance(for window: UIWindow) {
-        UINavigationBar.appearance().do {
-            UINavigationBarAppearance().with {
+        UINavigationBar.appearance() => {
+            UINavigationBarAppearance() => {
                 $0.configureWithTransparentBackground()
                 $0.largeTitleTextAttributes = .rythmicoTextAttributes(color: .clear, style: .largeTitle)
                 $0.titleTextAttributes = .rythmicoTextAttributes(color: .clear, style: .subheadlineBold)
@@ -31,17 +31,17 @@ extension SwiftUI.App {
                 $0.setBackIndicatorImage(UIImage.chevronLeft, transitionMaskImage: UIImage.chevronLeft)
                 $0.backButtonAppearance.normal.titleTextAttributes = .rythmicoTextAttributes(color: nil, style: .bodyMedium)
             }
-            .assign(to: $0, \.standardAppearance)
-            .assign(to: $0, \.compactAppearance)
-            .assign(to: $0, \.scrollEdgeAppearance)
+            => (assignTo: $0, \.standardAppearance)
+            => (assignTo: $0, \.compactAppearance)
+            => (assignTo: $0, \.scrollEdgeAppearance)
         }
 
-        UITableView.appearance().do {
+        UITableView.appearance() => {
             $0.backgroundColor = .clear
         }
 
-        UITabBar.appearance().do {
-            UITabBarAppearance().with {
+        UITabBar.appearance() => {
+            UITabBarAppearance() => {
                 $0.configureWithOpaqueBackground()
                 $0.shadowImage = .dynamic(color: .rythmico.outline)
                 $0.backgroundColor = .rythmico.background
@@ -62,10 +62,10 @@ extension SwiftUI.App {
                     $0.selected.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: barItemTitleVerticalOffset)
                 }
             }
-            .assign(to: $0, \.standardAppearance)
+            => (assignTo: $0, \.standardAppearance)
         }
 
-        UISwitch.appearance().do {
+        UISwitch.appearance() => {
             $0.onTintColor = .rythmico.picoteeBlue
         }
     }

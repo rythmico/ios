@@ -31,7 +31,7 @@ struct TutorAvatarView: View {
     @ViewBuilder
     private func avatarView(with uiImage: UIImage?) -> some View {
         AvatarView(
-            uiImage.map(AvatarView.Content.photo) ?? .initials(tutor.name.initials),
+            uiImage.map(AvatarView.Content.photo) ?? .initials(tutor.name.initials(2)),
             backgroundColor: backgroundColor
         )
     }

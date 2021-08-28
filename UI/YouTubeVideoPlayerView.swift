@@ -1,11 +1,11 @@
-import SwiftUI
+import SwiftUIEncore
 import YouTubeiOSPlayerHelper
 
 struct YouTubeVideoPlayerView: UIViewRepresentable {
     var videoId: String
 
     func makeUIView(context: Context) -> YTPlayerView {
-        YTPlayerView().then {
+        YTPlayerView() => {
             $0.isHidden = true
             $0.delegate = context.coordinator
             $0.load(

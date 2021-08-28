@@ -11,7 +11,7 @@ extension MultilineTextField {
         self.init(
             placeholder,
             text: text,
-            attributes: [.paragraphStyle: NSMutableParagraphStyle().with(\.paragraphSpacing, .grid(4))],
+            attributes: [.paragraphStyle: NSMutableParagraphStyle() => (\.paragraphSpacing, .grid(4))],
             accentColor: nil,
             placeholderColor: nil,
             inputAccessory: inputAccessory,

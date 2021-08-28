@@ -11,7 +11,7 @@ struct LessonPlanDetailTutorStatusView: View {
     var status: LessonPlan.Status { lessonPlan.status }
 
     var body: some View {
-        AdHocButton(action: action ?? {}) { state in
+        CustomButton(action: action ?? {}) { state in
             SelectableContainer(
                 fill: .rythmico.background,
                 isSelected: state == .pressed
@@ -93,7 +93,7 @@ struct LessonPlanDetailTutorStatusView_Previews: PreviewProvider {
         Group {
             ForEach(combos, id: \.self.0) { combo in
                 LessonPlanDetailTutorStatusView(
-                    lessonPlan: .stub.with(\.status, combo.1)
+                    lessonPlan: .stub => (\.status, combo.1)
                 )
                 .previewDisplayName(combo.0)
             }

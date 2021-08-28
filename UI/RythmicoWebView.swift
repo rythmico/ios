@@ -12,7 +12,7 @@ struct RythmicoWebView: View {
 
     init(store: WebViewStore, ignoreBottomSafeArea: Bool = false, onDone: @escaping Action) {
         self._store = .init(
-            wrappedValue: store.then {
+            wrappedValue: store => {
                 $0.webView.scrollView.contentInsetAdjustmentBehavior = .never
                 $0.webView.backgroundColor = .clear
                 $0.webView.allowsBackForwardNavigationGestures = false
@@ -47,8 +47,6 @@ struct RythmicoWebView: View {
         if isDone { onDone() }
     }
 }
-
-extension WebViewStore: Then {}
 
 extension WebViewStore {
     func load(_ url: URL) {

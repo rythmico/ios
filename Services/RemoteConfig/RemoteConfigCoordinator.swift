@@ -15,5 +15,3 @@ final class RemoteConfigCoordinator: ObservableObject {
         }
     }
 }
-
-extension RemoteConfigCoordinator: Then {}

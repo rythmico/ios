@@ -70,7 +70,11 @@ final class Teleprompter: ObservableObject {
         prominence: Prominence,
         @ViewBuilder content: () -> Content
     ) -> some View {
-        content().ifLet(transitionModifier(transition, prominence: prominence)) { $0.modifier($1) }
+        if let modifier = transitionModifier(transition, prominence: prominence) {
+            content().modifier(modifier)
+        } else {
+            content()
+        }
     }
 
     @ViewBuilder
@@ -82,11 +86,15 @@ final class Teleprompter: ObservableObject {
     ) -> some View {
         let elements = elements()
         let string = elements.map(\.string).joined()
-        elements
+        let view = elements
             .map { Text($0.string).rythmicoFontWeight($0.style ?? style) }
             .joined(separator: Text(separator))
             .rythmicoTextStyle(style)
-            .ifLet(transitionModifier(transition, prominence: .text(string))) { $0.modifier($1) }
+        if let modifier = transitionModifier(transition, prominence: .text(string)) {
+            view.modifier(modifier)
+        } else {
+            view
+        }
     }
 
     private func transitionModifier(_ transition: Transition?, prominence: Prominence) -> TransitionModifier? {
@@ -138,6 +146,8 @@ extension Teleprompter.TextElement: ExpressibleByStringLiteral {
         self.init(style: .none, string: value)
     }
 }
+
+infix operator <- : AdditionPrecedence
 
 func <- (lhs: String, rhs: Font.RythmicoTextStyle) -> Teleprompter.TextElement {
     .init(style: rhs, string: lhs)

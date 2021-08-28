@@ -6,7 +6,7 @@ struct StripePaymentCardTextField: UIViewRepresentable {
     @Binding var cardIsValid: Bool
 
     func makeUIView(context: Context) -> STPPaymentCardTextField {
-        STPPaymentCardTextField().then { view in
+        STPPaymentCardTextField() => { view in
             view.borderWidth = 0
             view.postalCodeEntryEnabled = false
             view.delegate = context.coordinator

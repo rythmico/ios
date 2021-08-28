@@ -86,7 +86,7 @@ struct InstructionalView<EndButton: View>: View {
     private func regularHeadlineView(_ string: String) -> some View {
         Text(string)
             .rythmicoTextStyle(.headline)
-            .ifLet(appSplashNamespace) { $0.matchedGeometryEffect(id: AppSplash.NamespaceTitleId(), in: $1) }
+            .matchedGeometryEffect(id: AppSplash.NamespaceTitleId(), in: appSplashNamespace)
     }
 
     @ViewBuilder

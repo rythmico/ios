@@ -61,7 +61,7 @@ struct AppSplash: View {
             .multilineTextAlignment(.center)
             .lineLimit(1)
             .minimumScaleFactor(0.5)
-            .ifLet(appSplashNamespace) { $0.matchedGeometryEffect(id: NamespaceTitleId(), in: $1) }
+            .matchedGeometryEffect(id: NamespaceTitleId(), in: appSplashNamespace)
             .transition(.offset(y: -.grid(6)) + .opacity)
         }
     }
@@ -82,10 +82,10 @@ extension AppSplash {
 
 extension EnvironmentValues {
     private struct AppSplashNamespaceKey: EnvironmentKey {
-        static let defaultValue: Namespace.ID? = nil
+        static let defaultValue: Namespace.ID = Namespace().wrappedValue
     }
 
-    var appSplashNamespace: Namespace.ID? {
+    var appSplashNamespace: Namespace.ID {
         get { self[AppSplashNamespaceKey.self] }
         set { self[AppSplashNamespaceKey.self] = newValue }
     }

@@ -41,8 +41,8 @@ struct StudentDetailsView: View, FocusableView, TestableView {
     private var sanitizedName: String? {
         state.name
             .trimmingCharacters(in: .whitespacesAndNewlines)
-            .removingRepetitionOf(.whitespace)
-            .removingAll(.newline)
+            .removingRepetition(of: .whitespace)
+            .removingAll(of: .newline)
             .nilIfEmpty
     }
 
@@ -67,8 +67,8 @@ struct StudentDetailsView: View, FocusableView, TestableView {
     private var sanitizedAbout: String {
         state.about
             .trimmingLineCharacters(in: .whitespacesAndNewlines)
-            .removingRepetitionOf(.whitespace)
-            .removingRepetitionOf(.newline)
+            .removingRepetition(of: .whitespace)
+            .removingRepetition(of: .newline)
     }
 
     // MARK: - Next Button -
@@ -144,7 +144,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
     }
 
     func dateOfBirthEditingChanged(_ isEditing: Bool) {
-        state.dateOfBirth ??= dateOfBirthPlaceholder
+        state.dateOfBirth =?? dateOfBirthPlaceholder
         focus = isEditing ? .dateOfBirth : .none
     }
 

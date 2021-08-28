@@ -17,7 +17,7 @@ protocol CardSetupServiceProtocol {
 extension STPPaymentHandler: CardSetupServiceProtocol {
     func send(_ input: Input, completion: @escaping Completion) {
         confirmSetupIntent(
-            STPSetupIntentConfirmParams(clientSecret: input.credential.stripeClientSecret).then {
+            STPSetupIntentConfirmParams(clientSecret: input.credential.stripeClientSecret) => {
                 $0.paymentMethodParams = STPPaymentMethodParams(
                     card: input.cardDetails,
                     billingDetails: nil,

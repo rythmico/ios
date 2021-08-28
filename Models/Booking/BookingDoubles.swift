@@ -1,7 +1,5 @@
 import FoundationEncore
 
-extension Booking: Then {}
-
 extension Booking.ID {
     static func random() -> Self {
         Self(rawValue: UUID().uuidString)

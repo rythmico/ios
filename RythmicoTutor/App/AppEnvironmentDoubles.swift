@@ -1,10 +1,8 @@
 import SwiftUIEncore
 
-extension AppEnvironment: Then {}
-
 extension AppEnvironment {
     static var fake: AppEnvironment {
-        dummy.with {
+        dummy => {
             $0.setUpFake()
 
             $0.fakeAPIEndpoint(for: \.tutorStatusFetchingCoordinator, result: .success(.verified))

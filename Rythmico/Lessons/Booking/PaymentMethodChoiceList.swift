@@ -23,7 +23,7 @@ struct PaymentMethodChoiceList: View {
         }
     }
 
-    private let padding = ChoiceItemViewDefaultPadding.with(\.vertical, .init(.grid(2.5)))
+    private let padding = ChoiceItemViewDefaultPadding => (\.vertical, .init(.grid(2.5)))
 
     private func formattedLastFourDigits(for card: Card) -> String {
         "• • • • " + card.lastFourDigits

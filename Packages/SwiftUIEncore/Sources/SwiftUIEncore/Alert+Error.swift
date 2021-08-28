@@ -1,3 +1,6 @@
+// TODO: replace with extension of `AlertState` from TCA, move to higher up package.
+// Namely, `AlertState.rythmicoErrorAlert(...)` in `RythmicoUI` package.
+
 extension View {
     public func alert(error: Binding<Error?>) -> some View {
         alert(

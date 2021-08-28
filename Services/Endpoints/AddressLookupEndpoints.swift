@@ -24,7 +24,7 @@ struct AddressSearchRequest: RythmicoAPIRequest {
     var path: String { "/address-lookup/" + self.postcode }
 
     func intercept(urlRequest: URLRequest) throws -> URLRequest {
-        urlRequest.with(\.cachePolicy, .returnCacheDataElseLoad)
+        urlRequest => (\.cachePolicy, .returnCacheDataElseLoad)
     }
 }
 
