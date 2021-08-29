@@ -22,7 +22,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/Amplitude-iOS</string>
 			<key>Title</key>
-			<string>Amplitude (8.3.0)</string>
+			<string>Amplitude (8.3.1)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -46,7 +46,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/combine-schedulers</string>
 			<key>Title</key>
-			<string>combine-schedulers (0.5.1)</string>
+			<string>combine-schedulers (0.5.2)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -54,7 +54,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/firebase-ios-sdk</string>
 			<key>Title</key>
-			<string>Firebase (8.6.0)</string>
+			<string>Firebase (8.6.1)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -78,7 +78,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/GoogleUtilities</string>
 			<key>Title</key>
-			<string>GoogleUtilities (7.5.0)</string>
+			<string>GoogleUtilities (7.5.1)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -198,7 +198,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/swift-collections</string>
 			<key>Title</key>
-			<string>swift-collections (0.0.5)</string>
+			<string>swift-collections (0.0.7)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -206,7 +206,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/swift-composable-architecture</string>
 			<key>Title</key>
-			<string>swift-composable-architecture (0.24.0)</string>
+			<string>swift-composable-architecture (0.25.1)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -220,9 +220,17 @@
 		</dict>
 		<dict>
 			<key>File</key>
+			<string>com.mono0926.LicensePlist/swift-custom-dump</string>
+			<key>Title</key>
+			<string>swift-custom-dump (0.1.2)</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
 			<string>com.mono0926.LicensePlist/swift-identified-collections</string>
 			<key>Title</key>
-			<string>swift-identified-collections (0.1.1)</string>
+			<string>swift-identified-collections (0.2.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -278,15 +286,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/TextBuilder</string>
 			<key>Title</key>
-			<string>TextBuilder (1.1.0)</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
-			<string>com.mono0926.LicensePlist/Then</string>
-			<key>Title</key>
-			<string>Then (2.7.0)</string>
+			<string>TextBuilder (1.2.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -295,6 +295,14 @@
 			<string>com.mono0926.LicensePlist/Valet</string>
 			<key>Title</key>
 			<string>Valet (4.1.2)</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
+			<string>com.mono0926.LicensePlist/Version</string>
+			<key>Title</key>
+			<string>Version (2.0.1)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -310,7 +318,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/xctest-dynamic-overlay</string>
 			<key>Title</key>
-			<string>xctest-dynamic-overlay (0.2.0)</string>
+			<string>xctest-dynamic-overlay (0.2.1)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>

@@ -1,20 +1,20 @@
 name: abseil-cpp-SwiftPM, nameSpecified: abseil, owner: firebase, version: 0.20200225.4
 
-name: Amplitude-iOS, nameSpecified: Amplitude, owner: amplitude, version: 8.3.0
+name: Amplitude-iOS, nameSpecified: Amplitude, owner: amplitude, version: 8.3.1
 
 name: APIKit, nameSpecified: APIKit, owner: davdroman, version: 
 
 name: boringssl-SwiftPM, nameSpecified: BoringSSL-GRPC, owner: firebase, version: 0.7.2
 
-name: combine-schedulers, nameSpecified: combine-schedulers, owner: pointfreeco, version: 0.5.1
+name: combine-schedulers, nameSpecified: combine-schedulers, owner: pointfreeco, version: 0.5.2
 
-name: firebase-ios-sdk, nameSpecified: Firebase, owner: firebase, version: 8.6.0
+name: firebase-ios-sdk, nameSpecified: Firebase, owner: firebase, version: 8.6.1
 
 name: GoogleAppMeasurement, nameSpecified: GoogleAppMeasurement, owner: google, version: 8.3.1
 
 name: GoogleDataTransport, nameSpecified: GoogleDataTransport, owner: google, version: 9.1.0
 
-name: GoogleUtilities, nameSpecified: GoogleUtilities, owner: google, version: 7.5.0
+name: GoogleUtilities, nameSpecified: GoogleUtilities, owner: google, version: 7.5.1
 
 name: grpc-SwiftPM, nameSpecified: gRPC, owner: firebase, version: 1.28.4
 
@@ -44,13 +44,15 @@ name: swift-algorithms, nameSpecified: swift-algorithms, owner: apple, version: 
 
 name: swift-case-paths, nameSpecified: swift-case-paths, owner: pointfreeco, version: 0.7.0
 
-name: swift-collections, nameSpecified: swift-collections, owner: apple, version: 0.0.5
+name: swift-collections, nameSpecified: swift-collections, owner: apple, version: 0.0.7
 
-name: swift-composable-architecture, nameSpecified: swift-composable-architecture, owner: pointfreeco, version: 0.24.0
+name: swift-composable-architecture, nameSpecified: swift-composable-architecture, owner: pointfreeco, version: 0.25.1
 
 name: swift-composable-navigator, nameSpecified: swift-composable-navigator, owner: Bahn-X, version: 0.2.0
 
-name: swift-identified-collections, nameSpecified: swift-identified-collections, owner: pointfreeco, version: 0.1.1
+name: swift-custom-dump, nameSpecified: swift-custom-dump, owner: pointfreeco, version: 0.1.2
+
+name: swift-identified-collections, nameSpecified: swift-identified-collections, owner: pointfreeco, version: 0.2.0
 
 name: swift-nonempty, nameSpecified: swift-nonempty, owner: pointfreeco, version: 0.4.0
 
@@ -64,15 +66,15 @@ name: SwiftUI-Introspect, nameSpecified: Introspect, owner: siteline, version: 0
 
 name: SwiftUI-WebView, nameSpecified: WebView, owner: kylehickinson, version: 0.3.0
 
-name: TextBuilder, nameSpecified: TextBuilder, owner: davdroman, version: 1.1.0
-
-name: Then, nameSpecified: Then, owner: devxoul, version: 2.7.0
+name: TextBuilder, nameSpecified: TextBuilder, owner: davdroman, version: 1.2.0
 
 name: Valet, nameSpecified: Valet, owner: Square, version: 4.1.2
 
+name: Version, nameSpecified: Version, owner: mxcl, version: 2.0.1
+
 name: ViewInspector, nameSpecified: ViewInspector, owner: nalexn, version: 0.8.1
 
-name: xctest-dynamic-overlay, nameSpecified: xctest-dynamic-overlay, owner: pointfreeco, version: 0.2.0
+name: xctest-dynamic-overlay, nameSpecified: xctest-dynamic-overlay, owner: pointfreeco, version: 0.2.1
 
 name: youtube-ios-player-helper, nameSpecified: YouTubeiOSPlayerHelper, owner: ivanlisovyi, version: 
 
