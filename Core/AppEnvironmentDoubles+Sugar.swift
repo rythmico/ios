@@ -12,7 +12,7 @@ extension AppEnvironment {
 
         eventEmitter = .default
 
-        settings = UserDefaultsFake()
+        settings = .fake
         keychain = KeychainFake()
 
         appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))

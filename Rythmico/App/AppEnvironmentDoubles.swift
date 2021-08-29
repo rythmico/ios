@@ -44,7 +44,7 @@ extension AppEnvironment {
 
             eventEmitter: NotificationCenter(),
 
-            settings: UserDefaultsDummy(),
+            settings: .noop,
             keychain: KeychainDummy(),
 
             accessibilitySettings: .dummy,
