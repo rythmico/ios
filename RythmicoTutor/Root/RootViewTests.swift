@@ -65,7 +65,7 @@ final class RootViewTests: XCTestCase {
     }
 
     func testAuthenticatedOpening_withVerifiedStatus_showsMainView() {
-        let settings = UserDefaultsFake()
+        let settings = UserDefaults.fake
         settings.tutorVerified = true
         Current.settings = settings
 
