@@ -59,8 +59,8 @@
         "package": "FoundationEncore",
         "repositoryURL": "https://github.com/rythmico/FoundationEncore",
         "state": {
-          "branch": "main",
-          "revision": "5834c2695b0241924640a6a8d1ce1ebf1bb27552",
+          "branch": "swift-5-5",
+          "revision": "414cf374137a99025219ef57289113b0b285dff3",
           "version": null
         }
       },
