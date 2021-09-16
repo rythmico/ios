@@ -34,6 +34,8 @@ extension OnboardingView {
             errorMessage = error.legibleLocalizedDescription
         case .canceled:
             break
+        case .notInteractive:
+            break
         @unknown default:
             break
         }

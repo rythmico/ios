@@ -1,6 +1,8 @@
+public typealias _FocusCoordinator<Focus: FocusEnum> = FocusCoordinator<Focus>
+
 public protocol FocusableView {
     associatedtype Focus: FocusEnum
-    typealias FocusCoordinator = FocusState.FocusCoordinator<Focus>
+    typealias FocusCoordinator = _FocusCoordinator<Focus>
     var focusCoordinator: FocusCoordinator { get }
 }
 
