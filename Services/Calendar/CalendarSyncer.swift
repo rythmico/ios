@@ -1,10 +1,10 @@
 import FoundationEncore
 
 private enum Const {
-    #if DEBUG
-    static let host = "rythmico-dev.web.app"
-    #else
+    #if LIVE
     static let host = "rythmico-prod.web.app"
+    #else
+    static let host = "rythmico-dev.web.app"
     #endif
 }
 

@@ -15,5 +15,6 @@ end
 desc 'Sync Provisioning Profiles'
 lane :download_certs do
   sync_code_signing(readonly: true, type: 'development')
+  sync_code_signing(readonly: true, type: 'adhoc')
   sync_code_signing(readonly: true, type: 'appstore')
 end

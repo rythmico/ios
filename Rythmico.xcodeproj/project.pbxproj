@@ -416,6 +416,8 @@
 		D5989BAF251662F400BED8A6 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5989BAE251662F400BED8A6 /* AsyncImage.swift */; };
 		D5989BC62516833E00BED8A6 /* PortfolioVideoCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5989BC52516833E00BED8A6 /* PortfolioVideoCarouselView.swift */; };
 		D5989BD125168B0100BED8A6 /* PortfolioPhotoCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5989BD025168B0100BED8A6 /* PortfolioPhotoCarouselView.swift */; };
+		D59A6C3826F41C810067CCFD /* GoogleService-Info-Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = D59A6C3726F41C810067CCFD /* GoogleService-Info-Staging.plist */; };
+		D59A6C3A26F41C880067CCFD /* GoogleService-Info-Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = D59A6C3926F41C870067CCFD /* GoogleService-Info-Staging.plist */; };
 		D59D0593251828EA0070D81B /* App+Playback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59D0592251828EA0070D81B /* App+Playback.swift */; };
 		D59D0594251828EA0070D81B /* App+Playback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59D0592251828EA0070D81B /* App+Playback.swift */; };
 		D59E4E5625B2033200E8F94C /* YouTubeVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59E4E5325B2033200E8F94C /* YouTubeVideoPlayerView.swift */; };
@@ -962,6 +964,8 @@
 		D5989BAE251662F400BED8A6 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		D5989BC52516833E00BED8A6 /* PortfolioVideoCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioVideoCarouselView.swift; sourceTree = "<group>"; };
 		D5989BD025168B0100BED8A6 /* PortfolioPhotoCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioPhotoCarouselView.swift; sourceTree = "<group>"; };
+		D59A6C3726F41C810067CCFD /* GoogleService-Info-Staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Staging.plist"; sourceTree = "<group>"; };
+		D59A6C3926F41C870067CCFD /* GoogleService-Info-Staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Staging.plist"; sourceTree = "<group>"; };
 		D59D0592251828EA0070D81B /* App+Playback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+Playback.swift"; sourceTree = "<group>"; };
 		D59E4E5325B2033200E8F94C /* YouTubeVideoPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubeVideoPlayerView.swift; sourceTree = "<group>"; };
 		D5A32DBC23D139C000F3903C /* UserCredentialProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialProvider.swift; sourceTree = "<group>"; };
@@ -1318,6 +1322,7 @@
 				D575C84D254F29BD001664AB /* Assets.generated.swift */,
 				035B1CC4249CF2AC00AABFEA /* Assets.xcassets */,
 				035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */,
+				D59A6C3726F41C810067CCFD /* GoogleService-Info-Staging.plist */,
 				035B1D6C249E674000AABFEA /* GoogleService-Info-Release.plist */,
 				035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */,
 				035B1CCC249CF2AC00AABFEA /* Info.plist */,
@@ -1853,6 +1858,7 @@
 				03341B4423ABB1E8009AE8A8 /* Assets.xcassets */,
 				D5ED167526149B42001841ED /* Fonts */,
 				D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */,
+				D59A6C3926F41C870067CCFD /* GoogleService-Info-Staging.plist */,
 				D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */,
 				D509898423B9B5C100C19300 /* GoogleService-Info.plist */,
 				03341B4C23ABB1E8009AE8A8 /* Info.plist */,
@@ -2585,6 +2591,7 @@
 				03341B4823ABB1E8009AE8A8 /* Preview Assets.xcassets in Resources */,
 				03341B4523ABB1E8009AE8A8 /* Assets.xcassets in Resources */,
 				D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */,
+				D59A6C3A26F41C880067CCFD /* GoogleService-Info-Staging.plist in Resources */,
 				D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */,
 				D5622D5125C32FC200DF4732 /* Settings.bundle in Resources */,
 				D5363C5B2628933500C81466 /* DMSans-MediumItalic.ttf in Resources */,
@@ -2602,6 +2609,7 @@
 				035B1CC5249CF2AC00AABFEA /* Assets.xcassets in Resources */,
 				035B1D6D249E674000AABFEA /* GoogleService-Info-Release.plist in Resources */,
 				035B1D5B249E5E6E00AABFEA /* GoogleService-Info-Debug.plist in Resources */,
+				D59A6C3826F41C810067CCFD /* GoogleService-Info-Staging.plist in Resources */,
 				D5622D4925C32C0100DF4732 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2639,7 +2647,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/script/build_phase_select_google_info_plist\n";
+			shellScript = "${SRCROOT}/scripts/build_phase_select_google_info_plist\n";
 		};
 		D509898123B9B2E400C19300 /* Select GoogleService-Info.plist */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2657,7 +2665,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/script/build_phase_select_google_info_plist\n";
+			shellScript = "${SRCROOT}/scripts/build_phase_select_google_info_plist\n";
 		};
 		D55430BB25C42CCF00499FF6 /* Set App Version in Settings */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2676,7 +2684,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/script/build_phase_set_app_version_in_settings\n";
+			shellScript = "${SRCROOT}/scripts/build_phase_set_app_version_in_settings\n";
 		};
 		D55430C225C4335600499FF6 /* Set App Version in Settings */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2695,7 +2703,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/script/build_phase_set_app_version_in_settings\n";
+			shellScript = "${SRCROOT}/scripts/build_phase_set_app_version_in_settings\n";
 		};
 		D575C852254F2A3D001664AB /* Generate Asset Symbols */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2716,7 +2724,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/script/build_phase_generate_asset_symbols\n";
+			shellScript = "${SRCROOT}/scripts/build_phase_generate_asset_symbols\n";
 		};
 		D5B57A612414516700BE9B4F /* Generate Asset Symbols */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2737,7 +2745,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/script/build_phase_generate_asset_symbols\n";
+			shellScript = "${SRCROOT}/scripts/build_phase_generate_asset_symbols\n";
 		};
 		D5CC5FF725040F9A007DFE84 /* Sanity Check Sources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2755,7 +2763,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/script/build_phase_code_sanity_check\n";
+			shellScript = "${SRCROOT}/scripts/build_phase_code_sanity_check\n";
 		};
 		D5CC5FF825041262007DFE84 /* Sanity Check Sources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2773,7 +2781,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/script/build_phase_code_sanity_check\n";
+			shellScript = "${SRCROOT}/scripts/build_phase_code_sanity_check\n";
 		};
 		D5DD19412656A1C8007E1948 /* Run Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3555,6 +3563,7 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "LIVE=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -3564,7 +3573,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "-DLIVE";
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = LIVE;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -3774,6 +3785,165 @@
 			};
 			name = Release;
 		};
+		D59A6C3226F41ACF0067CCFD /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 0;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					"*Doubles.swift",
+					"*Doubles+Sugar.swift",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Staging;
+		};
+		D59A6C3326F41ACF0067CCFD /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Rythmico/Supporting Files/Rythmico.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_ASSET_PATHS = "\"Rythmico/Preview Content\"";
+				DEVELOPMENT_TEAM = 72N659HYBR;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Rythmico/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.student;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.rythmico.student";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = RYTHMICO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Staging;
+		};
+		D59A6C3426F41ACF0067CCFD /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 72N659HYBR;
+				INFOPLIST_FILE = "Rythmico/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.RythmicoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rythmico.app/Rythmico";
+			};
+			name = Staging;
+		};
+		D59A6C3526F41ACF0067CCFD /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "RythmicoTutor/Supporting Files/Tutor.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 0;
+				DEVELOPMENT_ASSET_PATHS = "\"RythmicoTutor/Preview Content\"";
+				DEVELOPMENT_TEAM = 72N659HYBR;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "RythmicoTutor/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.tutor;
+				PRODUCT_NAME = Tutor;
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.rythmico.tutor";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = TUTOR;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Staging;
+		};
+		D59A6C3626F41ACF0067CCFD /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 72N659HYBR;
+				INFOPLIST_FILE = "RythmicoTutor/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.RythmicoTutorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tutor.app/Tutor";
+			};
+			name = Staging;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3781,6 +3951,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				03341B4D23ABB1E8009AE8A8 /* Debug */,
+				D59A6C3226F41ACF0067CCFD /* Staging */,
 				03341B4E23ABB1E8009AE8A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -3790,6 +3961,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				03341B5023ABB1E8009AE8A8 /* Debug */,
+				D59A6C3326F41ACF0067CCFD /* Staging */,
 				03341B5123ABB1E8009AE8A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -3799,6 +3971,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				035B1CCE249CF2AC00AABFEA /* Debug */,
+				D59A6C3526F41ACF0067CCFD /* Staging */,
 				035B1CCF249CF2AC00AABFEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -3808,6 +3981,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				035B1D03249D109B00AABFEA /* Debug */,
+				D59A6C3626F41ACF0067CCFD /* Staging */,
 				035B1D04249D109B00AABFEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -3817,6 +3991,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D535553323E10557005A20EB /* Debug */,
+				D59A6C3426F41ACF0067CCFD /* Staging */,
 				D535553423E10557005A20EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
