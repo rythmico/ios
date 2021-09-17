@@ -1,0 +1,37 @@
+desc 'Renew APNS Certificates'
+lane :renew_apns_certs do
+  UI.important "IMPORTANT NOTICE"
+  UI.important "Remove existing APNS certs before running this."
+  UI.important "Make sure you're running this first before renew_certs so the"
+  UI.important "APNS certs are bundled into the distribution profiles."
+
+  ['com.rythmico.student', 'com.rythmico.tutor'].each do |app_id|
+    pem(app_identifier: app_id, development: true, output_path: '/tmp')
+    pem(app_identifier: app_id, development: false, output_path: '/tmp')
+  end
+end
+
+desc 'Renew Provisioning Profiles'
+lane :renew_certs do
+  UI.important "IMPORTANT NOTICE"
+  UI.important "Run this after renew_apns_certs"
+  UI.important "if APNS certs need to be renewed too."
+  UI.important ""
+
+  type = UI.select('Select the type of certificate to renew', ['development', 'adhoc', 'appstore', 'all'])
+
+  case type
+  when 'development'
+    match(type: 'development', force: true)
+  when 'adhoc'
+    match(type: 'adhoc', force_for_new_devices: true)
+  when 'appstore'
+    match(type: 'appstore', force: true)
+  when 'all'
+    match(type: 'development', force: true)
+    match(type: 'adhoc', force_for_new_devices: true)
+    match(type: 'appstore', force: true)
+  else
+    puts 'No certificates matched'
+  end
+end

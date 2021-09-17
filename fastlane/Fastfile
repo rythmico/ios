@@ -18,6 +18,7 @@ def import_fastfile(suffix)
 end
 
 import_fastfile 'Bootstrap'
+import_fastfile 'Certs'
 import_fastfile 'CI'
 import_fastfile 'Deploy'
 import_fastfile 'dSYMs'
