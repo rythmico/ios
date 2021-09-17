@@ -61,14 +61,19 @@ extension Card.Brand: Decodable {
 private extension STPCardBrandUtilities {
     // Mirrors STPPaymentMethodCard.brand(from:) internal function.
     class func brand(from string: String) -> STPCardBrand {
-        let object = STPPaymentMethodCard.decodedObject(fromAPIResponse: ["brand": string]) ?! assertionFailure(
-            "Invalid internal parsing of raw brand name \(string)"
-        )
-        return object?.brand ?? .unknown
+        guard let object = STPPaymentMethodCard.decodedObject(fromAPIResponse: ["brand": string]) else {
+            assertionFailure("Invalid internal parsing of raw brand name \(string)")
+            return .unknown
+        }
+        return object.brand
     }
 
     // Corrects silly optional return value of STPCardBrandUtilities.stringFrom(_:) public function.
     class func name(from brand: STPCardBrand) -> String {
-        STPCardBrandUtilities.stringFrom(brand) ?! assertionFailure("Invalid internal parsing of brand enum case \(brand)") ?? .empty
+        guard let name = STPCardBrandUtilities.stringFrom(brand) else {
+            assertionFailure("Invalid internal parsing of brand enum case \(brand)")
+            return .empty
+        }
+        return name
     }
 }

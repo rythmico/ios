@@ -9,7 +9,7 @@ enum ImageReference: Equatable, Decodable, Hashable {
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         let value = try container.decode(String.self)
-        let url = try URL(string: value) !! DecodingError.dataCorruptedError(
+        let url = try URL(string: value) ?! DecodingError.dataCorruptedError(
             in: container,
             debugDescription: "Expected valid image URL, got '\(value)' instead"
         )
