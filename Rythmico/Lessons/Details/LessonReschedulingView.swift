@@ -40,7 +40,7 @@ private extension URLOpener {
     func openMailToRescheduleLessonPlan(_ plan: LessonPlan) {
         try? open(
             .mail(
-                to: ["info@rythmico.com"],
+                to: ["reschedule@rythmico.com"],
                 subject: "Rescheduling request",
                 body: plan.isRequest
                     ? "I'm requesting to reschedule my lesson plan (ID number \(plan.shortId.rawValue)) to the following start date and time:"
@@ -52,7 +52,7 @@ private extension URLOpener {
     func openMailToRescheduleLesson(_ lesson: Lesson) {
         try? open(
             .mail(
-                to: ["info@rythmico.com"],
+                to: ["reschedule@rythmico.com"],
                 subject: "Rescheduling request",
                 body: "I'm requesting to reschedule my lesson (ID number \(lesson.shortId.rawValue)) to the following date and time:"
             )
