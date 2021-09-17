@@ -27,10 +27,10 @@ extension AuthorizedAPIRequest {
 protocol RythmicoAPIRequest: AuthorizedAPIRequest, DecodableJSONRequest {}
 
 extension RythmicoAPIRequest {
-    #if DEBUG
-    var baseURL: URL { "https://rythmico-dev.web.app/v1" }
-    #else
+    #if LIVE
     var baseURL: URL { "https://rythmico-prod.web.app/v1" }
+    #else
+    var baseURL: URL { "https://rythmico-dev.web.app/v1" }
     #endif
 
     var decoder: Decoder {
