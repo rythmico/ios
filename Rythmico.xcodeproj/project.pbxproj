@@ -3863,7 +3863,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.student;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.rythmico.student";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.rythmico.student";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = RYTHMICO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -3913,7 +3913,7 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rythmico.tutor;
 				PRODUCT_NAME = Tutor;
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.rythmico.tutor";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.rythmico.tutor";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = TUTOR;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
