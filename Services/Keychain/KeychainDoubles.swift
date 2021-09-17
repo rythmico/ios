@@ -9,7 +9,7 @@ final class KeychainFake: KeychainProtocol {
     }
 
     func string(forKey key: String) throws -> String {
-        try inMemoryStorage[key] !! KeychainError.itemNotFound
+        try inMemoryStorage[key] ?! KeychainError.itemNotFound
     }
 
     func removeObject(forKey key: String) throws {

@@ -14,7 +14,7 @@ struct AddressSearchRequest: RythmicoAPIRequest {
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .replacingOccurrences(of: String.whitespace, with: String.empty)
             .lowercased()
-            .nilIfBlank !! Error(message: "Postcode must not be empty")
+            .nilIfBlank ?! Error(message: "Postcode must not be empty")
 
         self.accessToken = accessToken
         self.properties = .init(postcode: postcode)
