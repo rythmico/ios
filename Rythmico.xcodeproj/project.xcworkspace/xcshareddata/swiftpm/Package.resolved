@@ -182,6 +182,15 @@
         }
       },
       {
+        "package": "RythmicoDTO",
+        "repositoryURL": "https://github.com/rythmico/RythmicoDTO",
+        "state": {
+          "branch": "main",
+          "revision": "7014467a12f927e1239078871b653a8010ffdc25",
+          "version": null
+        }
+      },
+      {
         "package": "SFSafeSymbols",
         "repositoryURL": "https://github.com/piknotech/SFSafeSymbols",
         "state": {
