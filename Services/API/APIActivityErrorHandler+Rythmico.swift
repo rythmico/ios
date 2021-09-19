@@ -8,10 +8,10 @@ final class APIActivityErrorHandler: APIActivityErrorHandlerProtocol {
     }
 
     func handle(_ error: RythmicoAPIError) {
-        switch error.errorType {
+        switch error.reason {
         case .unknown, .none:
             break
-        case .appOutdated:
+        case .clientOutdated:
             remoteConfigCoordinator.fetch(forced: true)
         }
     }
