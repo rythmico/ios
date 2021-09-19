@@ -2,3 +2,4 @@
 asc_api_key.json filter=git-crypt diff=git-crypt
 AppSecrets.swift filter=git-crypt diff=git-crypt
 GoogleService-Info-*.plist filter=git-crypt diff=git-crypt
+staging-testers.txt filter=git-crypt diff=git-crypt
