@@ -186,7 +186,7 @@
         "repositoryURL": "https://github.com/rythmico/RythmicoDTO",
         "state": {
           "branch": "main",
-          "revision": "7014467a12f927e1239078871b653a8010ffdc25",
+          "revision": "d378de5056a04c1fc5d18c1d695b38265abb88c6",
           "version": null
         }
       },
@@ -357,8 +357,8 @@
         "repositoryURL": "https://github.com/nalexn/ViewInspector",
         "state": {
           "branch": null,
-          "revision": "a9b0d2af51b8afbbcb6a3e1005aabf8726852a77",
-          "version": "0.8.1"
+          "revision": "0d546878902bdde8c4682141f848a9dc44e04ba6",
+          "version": "0.9.0"
         }
       },
       {
