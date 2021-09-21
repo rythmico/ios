@@ -60,7 +60,7 @@
         "repositoryURL": "https://github.com/rythmico/FoundationEncore",
         "state": {
           "branch": "main",
-          "revision": "04dbb24959ef881e9dff6898583477da7e8194ec",
+          "revision": "f62365056808c1a4b7ccd6afb11060b87e1011e2",
           "version": null
         }
       },
@@ -186,7 +186,7 @@
         "repositoryURL": "https://github.com/rythmico/RythmicoDTO",
         "state": {
           "branch": "main",
-          "revision": "0e1f57510cf34d7cecdba4ec55a8047431c1333c",
+          "revision": "a2dd032af138c1029313bbf4d30d3c260ee5b30e",
           "version": null
         }
       },
@@ -231,8 +231,8 @@
         "repositoryURL": "https://github.com/apple/swift-collections",
         "state": {
           "branch": null,
-          "revision": "07e47b1e93e5a1e0ef0c50fcb2d6739fb6be4003",
-          "version": "1.0.0"
+          "revision": "2d33a0ea89c961dcb2b3da2157963d9c0370347e",
+          "version": "1.0.1"
         }
       },
       {
@@ -240,8 +240,8 @@
         "repositoryURL": "https://github.com/pointfreeco/swift-composable-architecture",
         "state": {
           "branch": null,
-          "revision": "a1aac6cfd654051d0ab5e626462afff36c399219",
-          "version": "0.27.1"
+          "revision": "0a39f4c7a33eb71baef936fb5d6e249c49961eb8",
+          "version": "0.28.0"
         }
       },
       {
