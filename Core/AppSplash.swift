@@ -41,7 +41,11 @@ struct AppSplash: View {
             titleView
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .backgroundColor(backgroundColor)
+        #if RYTHMICO
+        .backgroundColor(.rythmico.background)
+        #elseif TUTOR
+        .backgroundColor(Color(.systemBackground))
+        #endif
         .edgesIgnoringSafeArea(.all)
     }
 
@@ -49,14 +53,13 @@ struct AppSplash: View {
     private var titleView: some View {
         if !titleHidden {
             Group {
-                #if RYTHMICO
                 Text(title)
+                    #if RYTHMICO
                     .rythmicoTextStyle(.largeTitle)
                     .foregroundColor(.rythmico.foreground)
-                #elseif TUTOR
-                Text(title)
+                    #elseif TUTOR
                     .font(.system(.largeTitle).bold())
-                #endif
+                    #endif
             }
             .multilineTextAlignment(.center)
             .lineLimit(1)
@@ -64,14 +67,6 @@ struct AppSplash: View {
             .matchedGeometryEffect(id: NamespaceTitleId(), in: appSplashNamespace)
             .transition(.offset(y: -.grid(6)) + .opacity)
         }
-    }
-
-    private var backgroundColor: Color {
-        #if RYTHMICO
-        return .rythmico.background
-        #elseif TUTOR
-        return Color(.systemBackground)
-        #endif
     }
 }
 

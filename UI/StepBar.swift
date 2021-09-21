@@ -39,11 +39,11 @@ struct StepBar_Previews: PreviewProvider {
     static var cancellables: [AnyCancellable] = []
 
     static var previews: some View {
-        StatefulView(0) { currentStep in
-            StepBar(currentStep.wrappedValue, of: 7)
+        StatefulView(0) { $currentStep in
+            StepBar(currentStep, of: 7)
                 .onAppear {
                     DispatchQueue.main.schedule(after: .init(.now() + 2), interval: 1) {
-                        currentStep.wrappedValue += 1
+                        currentStep += 1
                     }.store(in: &cancellables)
                 }
         }

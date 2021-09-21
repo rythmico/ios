@@ -71,7 +71,7 @@ extension AppEnvironment {
     }
 
     mutating func userAuthenticated() {
-        userCredentialProvider = UserCredentialProviderStub(userCredential: UserCredentialStub.success)
+        userCredentialProvider = UserCredentialProviderStub(userCredential: .success)
     }
 
     mutating func userUnauthenticated() {
@@ -80,7 +80,7 @@ extension AppEnvironment {
 
     mutating func shouldSucceedAuthentication() {
         authenticationService = AuthenticationServiceStub(
-            result: .success(UserCredentialStub.success),
+            result: .success(.success),
             delay: Self.fakeAPIEndpointDelay
         )
     }

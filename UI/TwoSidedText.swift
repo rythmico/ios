@@ -96,20 +96,20 @@ struct TwoSidedText_Previews: PreviewProvider {
 
     @ViewBuilder
     static var previews: some View {
-        StatefulView(Optional(fixedAnchor)) { anchor in
+        StatefulView(Optional(fixedAnchor)) { $anchor in
             VStack(spacing: 0) {
                 Text(left + right)
                     .rythmicoTextStyle(.headline)
                     .backgroundColor(.red)
                     .lineLimit(1)
-                TwoSidedText(left, right, style: .headline, anchor: anchor.wrappedValue)
+                TwoSidedText(left, right, style: .headline, anchor: anchor)
                     .backgroundColor(.red)
             }
             .minimumScaleFactor(0.5)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .backgroundColor(.clear)
             .onTapGesture {
-                anchor.wrappedValue = anchor.wrappedValue == nil ? fixedAnchor : nil
+                anchor = anchor == nil ? fixedAnchor : nil
             }
         }
 //        .environment(\.sizeCategory, .extraExtraExtraLarge)

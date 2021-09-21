@@ -34,14 +34,14 @@ private var controllerDelegateMap = NSMapTable<UIPresentationController, Adaptiv
 #if DEBUG
 struct AdaptivePresentationView_Previews: PreviewProvider {
     static var previews: some View {
-        StatefulView(false, false, 0) { isPresenting, isDismissable, attempts in
-            Button("Present") { isPresenting.wrappedValue.toggle() }
-                .sheet(isPresented: isPresenting) {
+        StatefulView(false, false, 0) { $isPresenting, $isDismissable, $attempts in
+            Button("Present") { isPresenting.toggle() }
+                .sheet(isPresented: $isPresenting) {
                     HStack {
-                        Text("Dismissable (attempted: \(attempts.wrappedValue))")
-                        Toggle("", isOn: isDismissable).labelsHidden()
+                        Text("Dismissable (attempted: \(attempts))")
+                        Toggle("", isOn: $isDismissable).labelsHidden()
                     }
-                    .interactiveDismissDisabled(!isDismissable.wrappedValue, onAttempt: { attempts.wrappedValue += 1 })
+                    .interactiveDismissDisabled(!isDismissable, onAttempt: { attempts += 1 })
                 }
         }
     }
