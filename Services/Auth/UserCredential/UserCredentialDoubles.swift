@@ -15,9 +15,8 @@ final class UserCredentialStub: UserCredentialProtocol {
     }
 }
 
-// TODO: `extension UserCredentialProtocol where Self == UserCredentialStub` in Swift 5.5
-extension UserCredentialStub {
-    static let success = UserCredentialStub(result: .success("ACCESS_TOKEN"))
+extension UserCredentialProtocol where Self == UserCredentialStub {
+    static var success: Self { UserCredentialStub(result: .success("ACCESS_TOKEN")) }
 }
 
 final class UserCredentialDummy: UserCredentialProtocol {
