@@ -6,7 +6,6 @@ extension AuthenticationError where ReasonCode == AuthenticationErrorSignInReaso
     )
 }
 
-// Use <ReasonCode: AuthenticationErrorSignInReasonCodeProtocol> with a protocol extension in Swift 5.5.
 private extension NSError {
     convenience init(
         code: AuthenticationErrorSignInReasonCode,
