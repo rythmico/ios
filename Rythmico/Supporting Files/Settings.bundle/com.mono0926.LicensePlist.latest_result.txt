@@ -48,9 +48,9 @@ name: swift-algorithms, nameSpecified: swift-algorithms, owner: apple, version: 
 
 name: swift-case-paths, nameSpecified: swift-case-paths, owner: pointfreeco, version: 0.7.0
 
-name: swift-collections, nameSpecified: swift-collections, owner: apple, version: 1.0.0
+name: swift-collections, nameSpecified: swift-collections, owner: apple, version: 1.0.1
 
-name: swift-composable-architecture, nameSpecified: swift-composable-architecture, owner: pointfreeco, version: 0.27.1
+name: swift-composable-architecture, nameSpecified: swift-composable-architecture, owner: pointfreeco, version: 0.28.0
 
 name: swift-composable-navigator, nameSpecified: swift-composable-navigator, owner: Bahn-X, version: 0.2.0
 
