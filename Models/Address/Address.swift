@@ -16,6 +16,9 @@ extension Address: Identifiable {
     var id: Int { hashValue }
 }
 
+// TODO: use iOS 15's custom FormatStyles
+// https://emptytheory.com/2021/08/14/creating-custom-parseable-format-styles-in-ios-15/
+
 extension Address {
     var multipleLineFormattedString: String {
         [
