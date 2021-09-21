@@ -1,4 +1,4 @@
-// TODO: use implicit CGFloat <-> Double conversion in Swift 5.5
+// TODO: use implicit CGFloat <-> Double conversion when it supports Optionals
 
 public struct Grid {
     fileprivate static let baseUnit: CGFloat = 4
