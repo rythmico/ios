@@ -17,14 +17,14 @@ public struct TransientStateView<Value, Content: View>: View {
     }
 
     public var body: some View {
-        StatefulView(from) { value in
-            content(value.wrappedValue).onAppear {
+        StatefulView(from) { $value in
+            content(value).onAppear {
                 if let delay = delay {
                     DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-                        value.wrappedValue = to
+                        value = to
                     }
                 } else {
-                    value.wrappedValue = to
+                    value = to
                 }
             }
         }

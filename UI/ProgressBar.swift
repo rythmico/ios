@@ -50,10 +50,10 @@ struct ProgressBar: View {
 #if DEBUG
 struct ProgressBar_Previews: PreviewProvider {
     static var previews: some View {
-        StatefulView(Double(0)) { progress in
-            ProgressBar(progress: progress.wrappedValue).onAppear {
+        StatefulView(Double(0)) { $progress in
+            ProgressBar(progress: progress).onAppear {
                 withAnimation(.easeInOut.speed(0.25).delay(1)) {
-                    progress.wrappedValue = 1
+                    progress = 1
                 }
             }
         }

@@ -48,8 +48,8 @@ struct TabMenuView_Previews: PreviewProvider {
     }
 
     static var previews: some View {
-        StatefulView(Tab.x) { selectedTab in
-            TabMenuView(tabs: Tab.allCases, selection: selectedTab)
+        StatefulView(Tab.x) { $selectedTab in
+            TabMenuView(tabs: Tab.allCases, selection: $selectedTab)
         }
         .previewLayout(.sizeThatFits)
         .padding()
