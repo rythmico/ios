@@ -40,9 +40,11 @@ struct ProfileCell<Accessory: View>: View {
 
     @ViewBuilder
     private var content: some View {
-        HStack {
+        HStack(spacing: .grid(3)) {
             Text(title)
                 .rythmicoTextStyle(.body)
+                .minimumScaleFactor(0.5)
+                .lineLimit(1)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
             accessory
