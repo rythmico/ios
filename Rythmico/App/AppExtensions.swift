@@ -71,23 +71,3 @@ extension SwiftUI.App {
         }
     }
 }
-
-// TODO: remove when targeting iOS 15 only.
-private extension UITabBar {
-    var scrollEdgeAppearance_iOS15: UITabBarAppearance? {
-        get {
-            if #available(iOS 15, *) {
-                return scrollEdgeAppearance
-            } else {
-                return nil
-            }
-        }
-        set {
-            if #available(iOS 15, *) {
-                scrollEdgeAppearance = newValue
-            } else {
-                // NOOP
-            }
-        }
-    }
-}
