@@ -32,6 +32,7 @@ extension Button where Label == EmptyView {
             ) {
                 Image(systemSymbol: .questionmark)
                     .font(.system(size: 18, weight: .bold, design: .rounded))
+                    .imageScale(.medium)
                     .foregroundColor(state.map(normal: .rythmico.white, pressed: .rythmico.inverted(\.foreground)))
                     .offset(x: 0.5)
                     .frame(width: 32, height: 32)
