@@ -34,6 +34,7 @@ extension SwiftUI.App {
             => (assignTo: $0, \.standardAppearance)
             => (assignTo: $0, \.compactAppearance)
             => (assignTo: $0, \.scrollEdgeAppearance)
+            => (assignTo: $0, \.compactScrollEdgeAppearance_iOS15)
         }
 
         UITableView.appearance() => {
