@@ -38,8 +38,7 @@ struct BookingsTabView: View {
             .labelsHidden()
             .pickerStyle(SegmentedPickerStyle())
             .frame(maxWidth: 250)
-            .padding(.top, .grid(1))
-            .padding(.bottom, .grid(4))
+            .padding(.vertical, .grid(3))
 
             Divider()
 
