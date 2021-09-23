@@ -14,7 +14,7 @@ struct TutorStatusBanner: View {
                 }
                 VStack(spacing: .grid(5)) {
                     Text(status.title)
-                        .font(.system(size: 19, weight: .bold))
+                        .font(.title3.bold())
                         .transition(.opacity)
                         .id(status.title.hashValue)
                     Text(status.description)
@@ -40,6 +40,7 @@ struct TutorStatusBanner: View {
                 }
             }
         }
+        .minimumScaleFactor(.leastNonzeroMagnitude)
     }
 
     var foregroundColor: Color {
@@ -128,6 +129,7 @@ struct TutorStatusBanner_Previews: PreviewProvider {
             TutorStatusBanner(status: .dbsFailed)
             TutorStatusBanner(status: .verified)
         }
+        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }
 #endif
