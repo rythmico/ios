@@ -383,6 +383,8 @@
 		D575C878254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C876254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift */; };
 		D575FE0C2652CE0F00448471 /* LessonPlanTutorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575FE0B2652CE0F00448471 /* LessonPlanTutorDetailView.swift */; };
 		D577EEA724E6F66400253EA1 /* BookingRequestApplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */; };
+		D57B16E626FB8EF700C9F76F /* iOS15Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57B16E526FB8EF700C9F76F /* iOS15Support.swift */; };
+		D57B16E726FB8EF700C9F76F /* iOS15Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57B16E526FB8EF700C9F76F /* iOS15Support.swift */; };
 		D57DE179264DC26400C5E118 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DE178264DC26400C5E118 /* ProfileCell.swift */; };
 		D57DE17B264DC2AE00C5E118 /* ProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DE17A264DC2AE00C5E118 /* ProfileSection.swift */; };
 		D57DE17F264DCA6B00C5E118 /* ProfilePushNotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57DE17E264DCA6B00C5E118 /* ProfilePushNotificationsCell.swift */; };
@@ -942,6 +944,7 @@
 		D575C876254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationAuthorizationCoordinator+Sugar.swift"; sourceTree = "<group>"; };
 		D575FE0B2652CE0F00448471 /* LessonPlanTutorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanTutorDetailView.swift; sourceTree = "<group>"; };
 		D577EEA624E6F66400253EA1 /* BookingRequestApplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestApplyView.swift; sourceTree = "<group>"; };
+		D57B16E526FB8EF700C9F76F /* iOS15Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS15Support.swift; sourceTree = "<group>"; };
 		D57DE178264DC26400C5E118 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		D57DE17A264DC2AE00C5E118 /* ProfileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSection.swift; sourceTree = "<group>"; };
 		D57DE17E264DCA6B00C5E118 /* ProfilePushNotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePushNotificationsCell.swift; sourceTree = "<group>"; };
@@ -1760,6 +1763,7 @@
 				03C39DD324967E5B00C76516 /* TitleContentView.swift */,
 				D5F506602400560000CA4094 /* TitleSubtitleContentView.swift */,
 				D5B4A20726CEDC82006EAD18 /* TwoSidedText.swift */,
+				D57B16E526FB8EF700C9F76F /* iOS15Support.swift */,
 				D5EEF6AC261BDE470014E500 /* XCTAssertText.swift */,
 				D5147507240C8E69002EE20C /* XCTAssertView.swift */,
 				D59E4E5325B2033200E8F94C /* YouTubeVideoPlayerView.swift */,
@@ -3112,6 +3116,7 @@
 				D53555B823E53699005A20EB /* DeauthenticationServiceDoubles.swift in Sources */,
 				D5D9AE4425335B0400A0ABCC /* StripeCardDetails.swift in Sources */,
 				D5ED32632606600C00821ABE /* CustomEditableTextField.swift in Sources */,
+				D57B16E626FB8EF700C9F76F /* iOS15Support.swift in Sources */,
 				D53555B523E53699005A20EB /* AuthenticationError.swift in Sources */,
 				D53555CA23E536AE005A20EB /* AppleAuthorizationService.swift in Sources */,
 				D55354F326C08FE700E77CC4 /* ProfilePaymentMethodsCell.swift in Sources */,
@@ -3228,6 +3233,7 @@
 				D5947C9C26A5C8DC00355857 /* ComposableNavigator+Sugar.swift in Sources */,
 				D549219825BB28B100251FD2 /* APIActivityErrorHandler+Tutor.swift in Sources */,
 				D524D0C0250468CA00BC9AF7 /* PushNotificationAuthorizationCoordinator.swift in Sources */,
+				D57B16E726FB8EF700C9F76F /* iOS15Support.swift in Sources */,
 				D5AFED3D25056300003FFC68 /* NotificationCenter+Sugar.swift in Sources */,
 				D55C360D25A3E2B20023E56B /* EKEventStoreDoubles.swift in Sources */,
 				D5B4A20626CED857006EAD18 /* AppView.swift in Sources */,

@@ -1,3 +1,3 @@
 extension UITableViewCell {
-    public static let defaultHorizontalPadding = UITableViewCell(frame: .zero).separatorInset.left
+    public static let defaultHorizontalPadding: CGFloat = 15
 }
