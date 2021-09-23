@@ -7,7 +7,8 @@ before_all do |lane, options|
   if ENV['CI']
     puts 'Running on CI'
     setup_ci
-    xcversion(version: '~> ' + File.read('../.xcode-version').strip)
+    # xcversion(version: '~> ' + File.read('../.xcode-version').strip)
+    xcode_select('/Applications/Xcode_13.0.app') # temporary workaround for Xcode 13 on GitHub Actions
   else
     ensure_xcode_version(strict: false)
   end
