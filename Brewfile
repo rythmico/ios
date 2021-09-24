@@ -1,4 +1,4 @@
 tap "homebrew/core"
 
 brew "git-crypt"
-brew "swiftgen"
+brew "swiftgen", args: ["build-from-source"]
