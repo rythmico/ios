@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/amplitude/Amplitude-iOS",
         "state": {
           "branch": null,
-          "revision": "e23443447b2f7748fe9ef1d7d7a7ebc56d6be7a7",
-          "version": "8.3.1"
+          "revision": "fa2af27371ef3eaf54e839b84ee7238a8b95344c",
+          "version": "8.4.0"
         }
       },
       {
@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/pointfreeco/combine-schedulers",
         "state": {
           "branch": null,
-          "revision": "6bde3b0063ba8e7537b43744948535ca7e9e0dad",
-          "version": "0.5.2"
+          "revision": "4cf088c29a20f52be0f2ca54992b492c54e0076b",
+          "version": "0.5.3"
         }
       },
       {
@@ -60,7 +60,7 @@
         "repositoryURL": "https://github.com/rythmico/FoundationEncore",
         "state": {
           "branch": "main",
-          "revision": "f62365056808c1a4b7ccd6afb11060b87e1011e2",
+          "revision": "cf6cbb83db30523610f1dde67e4c9cae48f2d38c",
           "version": null
         }
       },
@@ -110,15 +110,6 @@
         }
       },
       {
-        "package": "ISO8601PeriodDuration",
-        "repositoryURL": "https://github.com/treatwell/ISO8601PeriodDuration",
-        "state": {
-          "branch": null,
-          "revision": "a2cfd57cae5e0dd713e5ab1a92253f86bb013049",
-          "version": "3.1.0"
-        }
-      },
-      {
         "package": "LegibleError",
         "repositoryURL": "https://github.com/mxcl/LegibleError",
         "state": {
@@ -155,6 +146,15 @@
         }
       },
       {
+        "package": "PeriodDuration",
+        "repositoryURL": "https://github.com/davdroman/PeriodDuration",
+        "state": {
+          "branch": null,
+          "revision": "fe191134e3710db2c6af410e3bc5247cec5938b5",
+          "version": "0.2.0"
+        }
+      },
+      {
         "package": "PhoneNumberKit",
         "repositoryURL": "https://github.com/marmelroy/PhoneNumberKit",
         "state": {
@@ -186,7 +186,7 @@
         "repositoryURL": "https://github.com/rythmico/RythmicoDTO",
         "state": {
           "branch": "main",
-          "revision": "a2dd032af138c1029313bbf4d30d3c260ee5b30e",
+          "revision": "5ba5cd46dd5f25eb3d2a4002bb1a1db91a2c96be",
           "version": null
         }
       },
@@ -240,8 +240,8 @@
         "repositoryURL": "https://github.com/pointfreeco/swift-composable-architecture",
         "state": {
           "branch": null,
-          "revision": "0a39f4c7a33eb71baef936fb5d6e249c49961eb8",
-          "version": "0.28.0"
+          "revision": "599a2398adaaa7a4e3f5420cde7728c39e33677e",
+          "version": "0.28.1"
         }
       },
       {
@@ -258,8 +258,8 @@
         "repositoryURL": "https://github.com/pointfreeco/swift-custom-dump",
         "state": {
           "branch": null,
-          "revision": "1a2947d25d43e295c6f5e83f54696d590620b364",
-          "version": "0.1.3"
+          "revision": "c2dd2c64b753dda592f5619303e02f741cd3e862",
+          "version": "0.2.0"
         }
       },
       {
