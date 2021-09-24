@@ -22,7 +22,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/Amplitude-iOS</string>
 			<key>Title</key>
-			<string>Amplitude (8.3.1)</string>
+			<string>Amplitude (8.4.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -46,7 +46,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/combine-schedulers</string>
 			<key>Title</key>
-			<string>combine-schedulers (0.5.2)</string>
+			<string>combine-schedulers (0.5.3)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -108,14 +108,6 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/ISO8601PeriodDuration</string>
-			<key>Title</key>
-			<string>ISO8601PeriodDuration (3.1.0)</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
 			<string>com.mono0926.LicensePlist/LegibleError</string>
 			<key>Title</key>
 			<string>LegibleError (1.0.5)</string>
@@ -143,6 +135,14 @@
 			<string>com.mono0926.LicensePlist/nanopb</string>
 			<key>Title</key>
 			<string>nanopb (2.30908.0)</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
+			<string>com.mono0926.LicensePlist/PeriodDuration</string>
+			<key>Title</key>
+			<string>PeriodDuration (0.2.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -222,7 +222,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/swift-composable-architecture</string>
 			<key>Title</key>
-			<string>swift-composable-architecture (0.28.0)</string>
+			<string>swift-composable-architecture (0.28.1)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -238,7 +238,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/swift-custom-dump</string>
 			<key>Title</key>
-			<string>swift-custom-dump (0.1.3)</string>
+			<string>swift-custom-dump (0.2.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
