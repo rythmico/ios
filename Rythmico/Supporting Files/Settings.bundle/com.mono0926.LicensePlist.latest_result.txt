@@ -30,7 +30,7 @@ name: MultiModal, nameSpecified: MultiModal, owner: davdroman, version: 2.0.1
 
 name: nanopb, nameSpecified: nanopb, owner: firebase, version: 2.30908.0
 
-name: PeriodDuration, nameSpecified: PeriodDuration, owner: davdroman, version: 0.2.0
+name: PeriodDuration, nameSpecified: PeriodDuration, owner: davdroman, version: 0.3.0
 
 name: PhoneNumberKit, nameSpecified: PhoneNumberKit, owner: marmelroy, version: 3.3.3
 
