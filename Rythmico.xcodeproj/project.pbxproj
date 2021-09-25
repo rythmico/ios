@@ -313,6 +313,8 @@
 		D54921AF25BB35BC00251FD2 /* UserDefaults+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921AE25BB35BC00251FD2 /* UserDefaults+Tutor.swift */; };
 		D54921D025BB46F300251FD2 /* TutorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54921CF25BB46F300251FD2 /* TutorStatusView.swift */; };
 		D549B2D526B2FD8900CD419A /* Container+Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = D549B2D426B2FD8900CD419A /* Container+Student.swift */; };
+		D549F8B926FFA3350087A20C /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D549F8B826FFA3350087A20C /* APIError.swift */; };
+		D549F8BA26FFA3350087A20C /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D549F8B826FFA3350087A20C /* APIError.swift */; };
 		D54CF08525F91255007D5050 /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B2522252CF76300BC3932 /* AppSecrets.swift */; };
 		D54CF08725FA8624007D5050 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CF08625FA8624007D5050 /* AnalyticsService.swift */; };
 		D54CF08B25FA8696007D5050 /* AnalyticsServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54CF08A25FA8696007D5050 /* AnalyticsServiceDoubles.swift */; };
@@ -893,6 +895,7 @@
 		D54921AE25BB35BC00251FD2 /* UserDefaults+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Tutor.swift"; sourceTree = "<group>"; };
 		D54921CF25BB46F300251FD2 /* TutorStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorStatusView.swift; sourceTree = "<group>"; };
 		D549B2D426B2FD8900CD419A /* Container+Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Student.swift"; sourceTree = "<group>"; };
+		D549F8B826FFA3350087A20C /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationServiceDoubles.swift; sourceTree = "<group>"; };
 		D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HashFunction+Helpers.swift"; sourceTree = "<group>"; };
 		D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationController.swift; sourceTree = "<group>"; };
@@ -1898,6 +1901,7 @@
 				03C34361249FC16E004907DF /* APIClientInfo.swift */,
 				D5A8C4C125044F4C0006F5C5 /* APIClientInfo+RythmicoTests.swift */,
 				D5A8C4C325044F580006F5C5 /* APIClientInfo+TutorTests.swift */,
+				D549F8B826FFA3350087A20C /* APIError.swift */,
 				D549219C25BB28F700251FD2 /* APIError+Rythmico.swift */,
 				D54921A125BB290C00251FD2 /* APIError+Tutor.swift */,
 				0336D62B241EAAF6006CFC1F /* APIRequest.swift */,
@@ -2961,6 +2965,7 @@
 				03A3F6EE2447DFF900F6391D /* Animation.swift in Sources */,
 				D52438F1268A4B8C00E2D859 /* LessonPlanStatus.swift in Sources */,
 				D5CC5FEF25027F74007DFE84 /* ImageReference+Sugar.swift in Sources */,
+				D549F8B926FFA3350087A20C /* APIError.swift in Sources */,
 				03B1984524719105005529EB /* LoadingView.swift in Sources */,
 				D5BA171023D7A18900954D50 /* RootView.swift in Sources */,
 				03EDA6792476F2CB00FBE527 /* ProfileView.swift in Sources */,
@@ -3315,6 +3320,7 @@
 				D524D0C525046BAE00BC9AF7 /* PushNotificationRegisterServiceDoubles.swift in Sources */,
 				D524D0C425046BA900BC9AF7 /* PushNotificationRegisterService.swift in Sources */,
 				035B1D30249E571B00AABFEA /* VoiceOverService.swift in Sources */,
+				D549F8BA26FFA3350087A20C /* APIError.swift in Sources */,
 				D5AC9E27254D8AD7003A8197 /* AppDoubles.swift in Sources */,
 				D5F4D3F424F33C9E000E8580 /* Address.swift in Sources */,
 				D5E58F39256B034A00EB52ED /* BookingDoubles.swift in Sources */,
