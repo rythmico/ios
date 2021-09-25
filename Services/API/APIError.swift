@@ -1,6 +1,6 @@
 import CoreDTO
 import Foundation
 
-extension CoreDTO.APIError: LocalizedError {
+extension CoreDTO.APIErrorOf: LocalizedError {
     public var errorDescription: String? { description }
 }
