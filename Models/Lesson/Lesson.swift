@@ -17,8 +17,7 @@ struct Lesson: Decodable, Identifiable, Hashable {
         struct Skip: Decodable, Hashable {
             struct Policy: Decodable, Hashable {
                 var freeBeforeDate: Date
-                @ISO8601PeriodDuration
-                var freeBeforePeriod: DateComponents
+                var freeBeforePeriod: PeriodDuration
             }
             var policy: Policy
         }

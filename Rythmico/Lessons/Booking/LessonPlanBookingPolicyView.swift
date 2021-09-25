@@ -35,7 +35,7 @@ extension LessonPlanBookingPolicyView {
         )
     }
 
-    static func skipLessons(freeBeforePeriod: DateComponents) -> Self {
+    static func skipLessons(freeBeforePeriod: PeriodDuration) -> Self {
         Self(
             asset: Asset.Icon.Policy.skipLessons,
             title: "Skip lessons",
@@ -51,7 +51,7 @@ extension LessonPlanBookingPolicyView {
         )
     }
 
-    static func cancelAnytime(freeBeforePeriod: DateComponents) -> Self {
+    static func cancelAnytime(freeBeforePeriod: PeriodDuration) -> Self {
         Self(
             asset: Asset.Icon.Policy.cancelAnytime,
             title: "Cancel anytime",
@@ -64,8 +64,8 @@ extension LessonPlanBookingPolicyView {
 struct LessonPlanBookingPolicyView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LessonPlanBookingPolicyView.skipLessons(freeBeforePeriod: .init(hour: 24))
-            LessonPlanBookingPolicyView.cancelAnytime(freeBeforePeriod: .init(hour: 24))
+            LessonPlanBookingPolicyView.skipLessons(freeBeforePeriod: .init(hours: 24))
+            LessonPlanBookingPolicyView.cancelAnytime(freeBeforePeriod: .init(hours: 24))
             LessonPlanBookingPolicyView.trustedTutors
         }
         .previewLayout(.sizeThatFits)

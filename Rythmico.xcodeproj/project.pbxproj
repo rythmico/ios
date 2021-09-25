@@ -406,8 +406,8 @@
 		D588E882266D137400E14288 /* ErrorLoggerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D588E880266D137400E14288 /* ErrorLoggerDoubles.swift */; };
 		D58DE1BC25BDF5C30013AEE8 /* RootViewFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58DE1BB25BDF5C30013AEE8 /* RootViewFlow.swift */; };
 		D58DE1D625C0F1A20013AEE8 /* TutorStatusBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58DE1D525C0F1A20013AEE8 /* TutorStatusBanner.swift */; };
-		D591C5B626699AA400A95938 /* DateComponents+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591C5B526699AA400A95938 /* DateComponents+Sugar.swift */; };
-		D591C5B726699AA400A95938 /* DateComponents+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591C5B526699AA400A95938 /* DateComponents+Sugar.swift */; };
+		D591C5B626699AA400A95938 /* PeriodDuration+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591C5B526699AA400A95938 /* PeriodDuration+Sugar.swift */; };
+		D591C5B726699AA400A95938 /* PeriodDuration+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591C5B526699AA400A95938 /* PeriodDuration+Sugar.swift */; };
 		D593C7022550C03B00C684FF /* AppUpdatePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */; };
 		D593C7032550C03B00C684FF /* AppUpdatePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */; };
 		D5947C9826A39E9600355857 /* ComposableNavigator in Frameworks */ = {isa = PBXBuildFile; productRef = D5947C9726A39E9600355857 /* ComposableNavigator */; };
@@ -963,7 +963,7 @@
 		D588E880266D137400E14288 /* ErrorLoggerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLoggerDoubles.swift; sourceTree = "<group>"; };
 		D58DE1BB25BDF5C30013AEE8 /* RootViewFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewFlow.swift; sourceTree = "<group>"; };
 		D58DE1D525C0F1A20013AEE8 /* TutorStatusBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorStatusBanner.swift; sourceTree = "<group>"; };
-		D591C5B526699AA400A95938 /* DateComponents+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateComponents+Sugar.swift"; sourceTree = "<group>"; };
+		D591C5B526699AA400A95938 /* PeriodDuration+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PeriodDuration+Sugar.swift"; sourceTree = "<group>"; };
 		D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdatePrompt.swift; sourceTree = "<group>"; };
 		D5947C9926A3A1CD00355857 /* TabSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelection.swift; sourceTree = "<group>"; };
 		D5947C9D26A5E1AD00355857 /* Images+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Images+Tutor.swift"; sourceTree = "<group>"; };
@@ -1579,7 +1579,7 @@
 				D575C818254DD6C8001664AB /* AppSplash.swift */,
 				D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */,
 				03E88EB024C205C30077A420 /* Current.swift */,
-				D591C5B526699AA400A95938 /* DateComponents+Sugar.swift */,
+				D591C5B526699AA400A95938 /* PeriodDuration+Sugar.swift */,
 				D5B4A20126CEB983006EAD18 /* Publisher+Sugar.swift */,
 			);
 			path = Core;
@@ -3036,7 +3036,7 @@
 				D5D9AE7B2534CBC800A0ABCC /* PriceDoubles.swift in Sources */,
 				D50158B42538C029005E02FA /* CardDoubles.swift in Sources */,
 				D5DAD27E26793B970014702F /* LessonPlanApplicationDetailView+Analytics.swift in Sources */,
-				D591C5B626699AA400A95938 /* DateComponents+Sugar.swift in Sources */,
+				D591C5B626699AA400A95938 /* PeriodDuration+Sugar.swift in Sources */,
 				D54EFF2A2513DDDB004F14D3 /* PortfolioEndpoints.swift in Sources */,
 				0372E35A249ABAB80048B402 /* ChoiceList.swift in Sources */,
 				D527CC1B260CB34400C480F5 /* URLOpener+Rythmico.swift in Sources */,
@@ -3396,7 +3396,7 @@
 				D54340F4261E72F8006898B0 /* AccessibilitySettings.swift in Sources */,
 				D575C832254F10E1001664AB /* RemoteConfigServiceDoubles.swift in Sources */,
 				D5C76E9A25F4075200739267 /* CalendarSyncStatusProviderDoubles.swift in Sources */,
-				D591C5B726699AA400A95938 /* DateComponents+Sugar.swift in Sources */,
+				D591C5B726699AA400A95938 /* PeriodDuration+Sugar.swift in Sources */,
 				D5ED3266260667E800821ABE /* DateDoubles.swift in Sources */,
 				D52C553D24DC74A200C295C4 /* TitleCell.swift in Sources */,
 				032B6FCD24B7879300299A09 /* Schedule.swift in Sources */,

@@ -5,23 +5,20 @@ extension LessonPlan {
         struct Pause: Decodable, Hashable {
             struct Policy: Decodable, Hashable {
                 var freeBeforeDate: Date
-                @ISO8601PeriodDuration
-                var freeBeforePeriod: DateComponents
+                var freeBeforePeriod: PeriodDuration
             }
             var policy: Policy
         }
         struct Resume: Decodable, Hashable {
             struct Policy: Decodable, Hashable {
-                @ISO8601PeriodDuration
-                var allAfterPeriod: DateComponents
+                var allAfterPeriod: PeriodDuration
             }
             var policy: Policy
         }
         struct Cancel: Decodable, Hashable {
             struct Policy: Decodable, Hashable {
                 var freeBeforeDate: Date
-                @ISO8601PeriodDuration
-                var freeBeforePeriod: DateComponents
+                var freeBeforePeriod: PeriodDuration
             }
             var policy: Policy?
         }

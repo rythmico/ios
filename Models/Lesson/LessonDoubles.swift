@@ -80,7 +80,7 @@ extension Lesson.Options.Skip {
 extension Lesson.Options.Skip.Policy {
     static let stub = Self(
         freeBeforeDate: .stub - (24, .hour),
-        freeBeforePeriod: .init(.init(hour: 24))
+        freeBeforePeriod: .init(hours: 24)
     )
 }
 #endif

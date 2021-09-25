@@ -11,8 +11,8 @@ extension Checkout {
 
 extension Checkout.Policies {
     static let stub = Self(
-        skipFreeBeforePeriod: .init(.init(hour: 24)),
-        pauseFreeBeforePeriod: .init(.init(hour: 24)),
-        cancelFreeBeforePeriod: .init(.init(hour: 24))
+        skipFreeBeforePeriod: .init(hours: 24),
+        pauseFreeBeforePeriod: .init(hours: 24),
+        cancelFreeBeforePeriod: .init(hours: 24)
     )
 }

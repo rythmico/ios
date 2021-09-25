@@ -3,9 +3,9 @@ import PhoneNumberKit
 
 struct Checkout: Decodable, Hashable {
     struct Policies: Decodable, Hashable {
-        @ISO8601PeriodDuration var skipFreeBeforePeriod: DateComponents
-        @ISO8601PeriodDuration var pauseFreeBeforePeriod: DateComponents
-        @ISO8601PeriodDuration var cancelFreeBeforePeriod: DateComponents
+        var skipFreeBeforePeriod: PeriodDuration
+        var pauseFreeBeforePeriod: PeriodDuration
+        var cancelFreeBeforePeriod: PeriodDuration
     }
 
     @E164PhoneNumberOptional
