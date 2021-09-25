@@ -1,5 +1,5 @@
-import FoundationEncore
 import APIKit
+import FoundationEncore
 
 @dynamicMemberLookup
 protocol AuthorizedAPIRequest: Request {
