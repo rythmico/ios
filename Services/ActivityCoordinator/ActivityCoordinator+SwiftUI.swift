@@ -33,14 +33,14 @@ extension View {
         _ coordinator: FailableActivityCoordinator<Input, Success>,
         perform action: @escaping (Success) -> Void
     ) -> some View {
-        onCoordinatorState(coordinator, \.successValue, perform: action)
+        onCoordinatorState(coordinator, { $0.successValue() }, perform: action)
     }
 
     func onFailure<Input, Success>(
         _ coordinator: FailableActivityCoordinator<Input, Success>,
         perform action: @escaping (Error) -> Void
     ) -> some View {
-        onCoordinatorState(coordinator, \.failureValue, perform: action)
+        onCoordinatorState(coordinator, { $0.failureValue() }, perform: action)
     }
 
     func onIdle<Input, Output>(
@@ -69,7 +69,7 @@ extension View {
     ) -> some View {
         multiModal {
             $0.alert(
-                error: coordinator.state.failureValue,
+                error: coordinator.state.failureValue(),
                 dismiss: {
                     coordinator.dismissFailure()
                     onDismiss?()

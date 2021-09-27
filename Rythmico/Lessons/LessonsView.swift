@@ -55,7 +55,7 @@ struct LessonsView: View, TestableView {
     private var repository = Current.lessonPlanRepository
 
     var isLoading: Bool { coordinator.state.isLoading }
-    var error: Error? { coordinator.state.failureValue }
+    var error: Error? { coordinator.state.failureValue() }
     var lessonPlans: [LessonPlan] { repository.items }
 
     let inspection = SelfInspection()

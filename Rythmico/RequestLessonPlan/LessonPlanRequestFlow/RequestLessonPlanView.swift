@@ -39,7 +39,7 @@ struct RequestLessonPlanView: View, TestableView {
     }
 
     var errorMessage: String? {
-        coordinator.state.failureValue?.legibleLocalizedDescription
+        coordinator.state.failureValue()?.legibleLocalizedDescription
     }
 
     func dismissError() {
@@ -67,7 +67,7 @@ struct RequestLessonPlanView: View, TestableView {
 
 extension RequestLessonPlanView {
     var flowView: RequestLessonPlanFlowView? {
-        coordinator.state.isReady || coordinator.state.isFailure ? _flowView : nil
+        coordinator.state.isReady || coordinator.state.isFailure() ? _flowView : nil
     }
 }
 
