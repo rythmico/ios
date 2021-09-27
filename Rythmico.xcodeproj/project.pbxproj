@@ -404,6 +404,8 @@
 		D588E87F266D135000E14288 /* ErrorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D588E87D266D135000E14288 /* ErrorLogger.swift */; };
 		D588E881266D137400E14288 /* ErrorLoggerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D588E880266D137400E14288 /* ErrorLoggerDoubles.swift */; };
 		D588E882266D137400E14288 /* ErrorLoggerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D588E880266D137400E14288 /* ErrorLoggerDoubles.swift */; };
+		D58BC99B2702312F00120A45 /* StudentDTOEncore in Frameworks */ = {isa = PBXBuildFile; productRef = D58BC99A2702312F00120A45 /* StudentDTOEncore */; };
+		D58BC99D2702313300120A45 /* TutorDTOEncore in Frameworks */ = {isa = PBXBuildFile; productRef = D58BC99C2702313300120A45 /* TutorDTOEncore */; };
 		D58DE1BC25BDF5C30013AEE8 /* RootViewFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58DE1BB25BDF5C30013AEE8 /* RootViewFlow.swift */; };
 		D58DE1D625C0F1A20013AEE8 /* TutorStatusBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58DE1D525C0F1A20013AEE8 /* TutorStatusBanner.swift */; };
 		D591C5B626699AA400A95938 /* PeriodDuration+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591C5B526699AA400A95938 /* PeriodDuration+Sugar.swift */; };
@@ -615,8 +617,6 @@
 		D5FA706926A34CDA00E6FF30 /* OnboardingViewCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA706726A34CDA00E6FF30 /* OnboardingViewCore.swift */; };
 		D5FAE6742559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FAE6732559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift */; };
 		D5FAE6862559DF8300473A8B /* PhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FAE6852559DF8300473A8B /* PhoneNumberCell.swift */; };
-		D5FBF9CC26F4493E006ABA04 /* StudentDTO in Frameworks */ = {isa = PBXBuildFile; productRef = D5FBF9CB26F4493E006ABA04 /* StudentDTO */; };
-		D5FBF9CE26F4493E006ABA04 /* TutorDTO in Frameworks */ = {isa = PBXBuildFile; productRef = D5FBF9CD26F4493E006ABA04 /* TutorDTO */; };
 		D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */; };
 		D5FC2D42254A7DE3005056D5 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D41254A7DE3005056D5 /* FirebaseMessaging */; };
 		D5FC2D44254A7DE3005056D5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D43254A7DE3005056D5 /* FirebaseAuth */; };
@@ -830,6 +830,7 @@
 		D5243908268A6F2600E2D859 /* LessonPlanCancellationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanCancellationInfo.swift; sourceTree = "<group>"; };
 		D524390A268A6F2D00E2D859 /* LessonPlanCancellationInfoDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanCancellationInfoDoubles.swift; sourceTree = "<group>"; };
 		D524390C268A6FF400E2D859 /* LessonPlanStatusDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanStatusDoubles.swift; sourceTree = "<group>"; };
+		D527380927022B3700A28952 /* RythmicoDTOEncore */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RythmicoDTOEncore; sourceTree = "<group>"; };
 		D527B00824FD2047003E81A9 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		D527B00A24FD3297003E81A9 /* AvatarStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarStackView.swift; sourceTree = "<group>"; };
 		D527B00C24FDC7AF003E81A9 /* ImageLoadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadingService.swift; sourceTree = "<group>"; };
@@ -1151,10 +1152,10 @@
 				D5AC9E3B254D9533003A8197 /* FirebaseRemoteConfig in Frameworks */,
 				D5FC2D44254A7DE3005056D5 /* FirebaseAuth in Frameworks */,
 				D5FC2D42254A7DE3005056D5 /* FirebaseMessaging in Frameworks */,
+				D58BC99B2702312F00120A45 /* StudentDTOEncore in Frameworks */,
 				D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */,
 				D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */,
 				03B19837247053F5005529EB /* APIKit in Frameworks */,
-				D5FBF9CC26F4493E006ABA04 /* StudentDTO in Frameworks */,
 				D5CFB3732675242D006DBCE0 /* Amplitude in Frameworks */,
 				D59E4E6125B20ADA00E8F94C /* YouTubeiOSPlayerHelper in Frameworks */,
 			);
@@ -1165,11 +1166,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5FC2D53254A7E21005056D5 /* FirebaseMessaging in Frameworks */,
-				D5FBF9CE26F4493E006ABA04 /* TutorDTO in Frameworks */,
 				D5947C9826A39E9600355857 /* ComposableNavigator in Frameworks */,
 				D5FC2D4F254A7E21005056D5 /* FirebaseAuth in Frameworks */,
 				D5439DDC26D5278B00D69CE8 /* SwiftUIEncore in Frameworks */,
 				035B1CD7249CF7EB00AABFEA /* Valet in Frameworks */,
+				D58BC99D2702313300120A45 /* TutorDTOEncore in Frameworks */,
 				D5FC2D51254A7E21005056D5 /* FirebaseCrashlytics in Frameworks */,
 				D5F4AE8B2559D46A001085D5 /* PhoneNumberKit in Frameworks */,
 				D575C837254F10F0001664AB /* FirebaseRemoteConfig in Frameworks */,
@@ -2244,6 +2245,7 @@
 		D5D5E8A92685143000AACB8F /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				D527380927022B3700A28952 /* RythmicoDTOEncore */,
 				D5D5E8AB268518AB00AACB8F /* SwiftUIEncore */,
 			);
 			path = Packages;
@@ -2448,7 +2450,7 @@
 				D56C6A97264AC80C00A2599E /* ComposableNavigator */,
 				D5CFB3722675242D006DBCE0 /* Amplitude */,
 				D5439DD926D5278300D69CE8 /* SwiftUIEncore */,
-				D5FBF9CB26F4493E006ABA04 /* StudentDTO */,
+				D58BC99A2702312F00120A45 /* StudentDTOEncore */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -2483,7 +2485,7 @@
 				D5F4AE8A2559D46A001085D5 /* PhoneNumberKit */,
 				D5947C9726A39E9600355857 /* ComposableNavigator */,
 				D5439DDB26D5278B00D69CE8 /* SwiftUIEncore */,
-				D5FBF9CD26F4493E006ABA04 /* TutorDTO */,
+				D58BC99C2702313300120A45 /* TutorDTOEncore */,
 			);
 			productName = RythmicoTutor;
 			productReference = 035B1CBC249CF2AA00AABFEA /* Tutor.app */;
@@ -2579,7 +2581,6 @@
 				D59E4E5F25B20ADA00E8F94C /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
 				D56C6A96264AC80B00A2599E /* XCRemoteSwiftPackageReference "swift-composable-navigator" */,
 				D5CFB3712675242C006DBCE0 /* XCRemoteSwiftPackageReference "Amplitude-iOS" */,
-				D5FBF9CA26F4493E006ABA04 /* XCRemoteSwiftPackageReference "RythmicoDTO" */,
 			);
 			productRefGroup = 03341B3C23ABB1E7009AE8A8 /* Products */;
 			projectDirPath = "";
@@ -4083,14 +4084,6 @@
 				minimumVersion = 21.3.0;
 			};
 		};
-		D5FBF9CA26F4493E006ABA04 /* XCRemoteSwiftPackageReference "RythmicoDTO" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/rythmico/RythmicoDTO";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -4155,6 +4148,14 @@
 			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseRemoteConfig;
 		};
+		D58BC99A2702312F00120A45 /* StudentDTOEncore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StudentDTOEncore;
+		};
+		D58BC99C2702313300120A45 /* TutorDTOEncore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TutorDTOEncore;
+		};
 		D5947C9726A39E9600355857 /* ComposableNavigator */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D56C6A96264AC80B00A2599E /* XCRemoteSwiftPackageReference "swift-composable-navigator" */;
@@ -4184,16 +4185,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5D78DD5252502CE007041BE /* XCRemoteSwiftPackageReference "PhoneNumberKit" */;
 			productName = PhoneNumberKit;
-		};
-		D5FBF9CB26F4493E006ABA04 /* StudentDTO */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5FBF9CA26F4493E006ABA04 /* XCRemoteSwiftPackageReference "RythmicoDTO" */;
-			productName = StudentDTO;
-		};
-		D5FBF9CD26F4493E006ABA04 /* TutorDTO */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5FBF9CA26F4493E006ABA04 /* XCRemoteSwiftPackageReference "RythmicoDTO" */;
-			productName = TutorDTO;
 		};
 		D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
