@@ -14,7 +14,7 @@ extension View {
 
         func button(for link: MapLink) -> ActionSheet.Button {
             .default(Text(link.appName)) {
-                error.wrappedValue = Result { try urlOpener.open(link) }.failureValue
+                error.wrappedValue = Result { try urlOpener.open(link) }.error
             }
         }
 

@@ -32,20 +32,20 @@ extension ActivityCoordinator.State {
     }
 }
 
-extension ActivityCoordinator.State where Output: ResultProtocol {
-    var successValue: Output.Success? {
-        finishedValue?.successValue
+extension ActivityCoordinator.State {
+    func successValue<Success, Failure: Error>() -> Success? where Output == Result<Success, Failure> {
+        finishedValue?.value
     }
 
-    var failureValue: Output.Failure? {
-        finishedValue?.failureValue
+    func failureValue<Success, Failure: Error>() -> Failure? where Output == Result<Success, Failure> {
+        finishedValue?.error
     }
 
-    var isSuccess: Bool {
-        successValue != nil
+    func isSuccess<Success, Failure: Error>() -> Bool where Output == Result<Success, Failure> {
+        finishedValue?.isSuccess == true
     }
 
-    var isFailure: Bool {
-        failureValue != nil
+    func isFailure<Success, Failure: Error>() -> Bool where Output == Result<Success, Failure> {
+        finishedValue?.isFailure == true
     }
 }

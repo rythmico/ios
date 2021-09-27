@@ -16,7 +16,7 @@ extension View {
 
         func button(for link: PhoneNumberLink) -> ActionSheet.Button {
             .default(Text(link.actionName)) {
-                error.wrappedValue = Result { try urlOpener.open(link) }.failureValue
+                error.wrappedValue = Result { try urlOpener.open(link) }.error
             }
         }
 

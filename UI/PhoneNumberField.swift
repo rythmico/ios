@@ -69,7 +69,7 @@ private extension PhoneNumberTextField {
     }
 
     var validationError: Error? {
-        Result { try text.map { try phoneNumberKit.parse($0) } }.failureValue
+        Result { try text.map { try phoneNumberKit.parse($0) } }.error
     }
 }
 
