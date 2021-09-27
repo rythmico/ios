@@ -24,13 +24,11 @@ extension Binding where Value == Bool {
     }
 }
 
-extension Binding where Value: OptionalProtocol {
-    public typealias Wrapped = Value.Wrapped
-
-    public func or(_ value: Wrapped) -> Binding<Wrapped> {
+extension Binding {
+    public func or<Wrapped>(_ otherValue: Wrapped) -> Binding<Wrapped> where Value == Wrapped? {
         Binding<Wrapped>(
-            get: { wrappedValue.value ?? value },
-            set: { wrappedValue.value = $0 }
+            get: { wrappedValue ?? otherValue },
+            set: { wrappedValue = $0 }
         )
     }
 }
