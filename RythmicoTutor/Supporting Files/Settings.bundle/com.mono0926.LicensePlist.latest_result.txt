@@ -62,7 +62,7 @@ name: swift-nonempty, nameSpecified: swift-nonempty, owner: pointfreeco, version
 
 name: swift-numerics, nameSpecified: swift-numerics, owner: apple, version: 0.1.0
 
-name: swift-protobuf, nameSpecified: SwiftProtobuf, owner: apple, version: 1.17.0
+name: swift-protobuf, nameSpecified: SwiftProtobuf, owner: apple, version: 1.18.0
 
 name: swift-tagged, nameSpecified: swift-tagged, owner: pointfreeco, version: 0.6.0
 
