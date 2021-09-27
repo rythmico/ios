@@ -4,7 +4,7 @@ extension View {
         onDismiss: (() -> Void)? = nil,
         @ViewBuilder content: @escaping (Item) -> Content
     ) -> some View {
-        sheet(isPresented: Binding(trueIfSome: item), onDismiss: onDismiss) {
+        sheet(isPresented: item.isPresent(), onDismiss: onDismiss) {
             item.wrappedValue.map(content)
         }
     }
@@ -14,7 +14,7 @@ extension View {
         onDismiss: (() -> Void)? = nil,
         @ViewBuilder content: @escaping (Item) -> Content
     ) -> some View {
-        fullScreenCover(isPresented: Binding(trueIfSome: item), onDismiss: onDismiss) {
+        fullScreenCover(isPresented: item.isPresent(), onDismiss: onDismiss) {
             item.wrappedValue.map(content)
         }
     }
