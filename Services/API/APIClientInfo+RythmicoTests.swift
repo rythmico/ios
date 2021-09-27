@@ -1,15 +1,11 @@
 import XCTest
-import FoundationEncore
-@testable import Rythmico
+import CoreDTOEncore
 
 final class APIClientInfoRythmicoTests: XCTestCase {
-    func test() throws {
-        let info = APIClientInfo.current
-        XCTAssertEqual(info.keys.count, 3)
-        XCTAssertEqual(info["Client-Id"], "com.rythmico.student")
-        let version = try XCTUnwrap(info["Client-Version"].flatMap(Version.init))
-        XCTAssert(version > .null)
-        let build = try XCTUnwrap(info["Client-Build"].flatMap(Int.init))
-        XCTAssert(build > 0)
+    func testBundleClientInfo() throws {
+        let info = try XCTUnwrap(Bundle.main.clientInfo)
+        XCTAssertEqual(info.id, "com.rythmico.student")
+        XCTAssert(info.version > .null)
+        XCTAssert(info.build > 0)
     }
 }

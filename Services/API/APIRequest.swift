@@ -1,5 +1,5 @@
 import APIKit
-import FoundationEncore
+import CoreDTOEncore
 
 @dynamicMemberLookup
 protocol AuthorizedAPIRequest: Request {
@@ -13,10 +13,9 @@ protocol AuthorizedAPIRequest: Request {
 
 extension AuthorizedAPIRequest {
     var headerFields: [String: String] {
-        APIClientInfo.current + [
-            "Authorization": "Bearer " + accessToken,
-            "Accept-Encoding": "",
-        ]
+        let clientInfo = Bundle.main.clientInfo !! preconditionFailure("Required client info is unavailable")
+        let clientInfoHeaders = clientInfo.encodeAsHTTPHeaders()
+        return clientInfoHeaders + ["Authorization": "Bearer " + accessToken]
     }
 
     subscript<T>(dynamicMember keyPath: KeyPath<Properties, T>) -> T {

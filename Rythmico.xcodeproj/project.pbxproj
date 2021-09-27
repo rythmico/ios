@@ -127,8 +127,6 @@
 		03B198582471BD82005529EB /* LessonPlanConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198572471BD82005529EB /* LessonPlanConfirmationView.swift */; };
 		03BB5C912472D85A00B44692 /* DeviceRegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C902472D85A00B44692 /* DeviceRegisterCoordinator.swift */; };
 		03BB5C962473070C00B44692 /* ReviewRequestViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C952473070C00B44692 /* ReviewRequestViewTests.swift */; };
-		03C34362249FC16E004907DF /* APIClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C34361249FC16E004907DF /* APIClientInfo.swift */; };
-		03C34363249FC16E004907DF /* APIClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C34361249FC16E004907DF /* APIClientInfo.swift */; };
 		03C39DD424967E5B00C76516 /* TitleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DD324967E5B00C76516 /* TitleContentView.swift */; };
 		03C39DD62496802500C76516 /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DD52496802500C76516 /* Pill.swift */; };
 		03C39DD82496CA2A00C76516 /* LessonPlanStatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DD72496CA2A00C76516 /* LessonPlanStatusPill.swift */; };
@@ -747,7 +745,6 @@
 		03B198572471BD82005529EB /* LessonPlanConfirmationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonPlanConfirmationView.swift; sourceTree = "<group>"; };
 		03BB5C902472D85A00B44692 /* DeviceRegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterCoordinator.swift; sourceTree = "<group>"; };
 		03BB5C952473070C00B44692 /* ReviewRequestViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestViewTests.swift; sourceTree = "<group>"; };
-		03C34361249FC16E004907DF /* APIClientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientInfo.swift; sourceTree = "<group>"; };
 		03C39DD324967E5B00C76516 /* TitleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleContentView.swift; sourceTree = "<group>"; };
 		03C39DD52496802500C76516 /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
 		03C39DD72496CA2A00C76516 /* LessonPlanStatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanStatusPill.swift; sourceTree = "<group>"; };
@@ -1899,7 +1896,6 @@
 				D549218E25BB27E200251FD2 /* APIActivityErrorHandler.swift */,
 				D549218925BB27AE00251FD2 /* APIActivityErrorHandler+Rythmico.swift */,
 				D549219725BB28B100251FD2 /* APIActivityErrorHandler+Tutor.swift */,
-				03C34361249FC16E004907DF /* APIClientInfo.swift */,
 				D5A8C4C125044F4C0006F5C5 /* APIClientInfo+RythmicoTests.swift */,
 				D5A8C4C325044F580006F5C5 /* APIClientInfo+TutorTests.swift */,
 				D549F8B826FFA3350087A20C /* APIError.swift */,
@@ -3186,7 +3182,6 @@
 				D56B2523252CF76300BC3932 /* AppSecrets.swift in Sources */,
 				03C39DD424967E5B00C76516 /* TitleContentView.swift in Sources */,
 				032B6FDB24B7890700299A09 /* ScheduleDuration+CasePickable.swift in Sources */,
-				03C34362249FC16E004907DF /* APIClientInfo.swift in Sources */,
 				D518C2F8250EA89100288A48 /* LessonPlanApplicationsView.swift in Sources */,
 				D5E9FC8026C00E5F00625DAE /* AppOriginClient.swift in Sources */,
 				D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */,
@@ -3276,7 +3271,6 @@
 				035B1D62249E63D800AABFEA /* DeviceEndpoints.swift in Sources */,
 				035B1D63249E63EC00AABFEA /* DeviceRegisterCoordinator.swift in Sources */,
 				035B1D4E249E57D100AABFEA /* KeychainDoubles.swift in Sources */,
-				03C34363249FC16E004907DF /* APIClientInfo.swift in Sources */,
 				035B1D51249E57F100AABFEA /* HashFunction+Helpers.swift in Sources */,
 				D55C360425A3DBB30023E56B /* CalendarSyncStatusProvider.swift in Sources */,
 				035B1D53249E582800AABFEA /* Animation.swift in Sources */,
