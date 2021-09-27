@@ -17,7 +17,8 @@ extension ActivityCoordinator.State {
     }
 
     var isFinished: Bool {
-        finishedValue != nil
+        guard case .finished = self else { return false }
+        return true
     }
 
     var finishedValue: Output? {
