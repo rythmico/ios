@@ -101,7 +101,7 @@ struct LessonPlanBookingView: View {
 
     @ViewBuilder
     private var closeButton: some View {
-        if !coordinator.state.isSuccess() {
+        if !coordinator.isSucceeded() {
             CloseButton { navigator.dismiss(screen: currentScreen) }
         }
     }

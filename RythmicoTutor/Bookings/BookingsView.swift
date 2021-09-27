@@ -14,7 +14,7 @@ struct BookingsView: View {
     private var pushNotificationAuthCoordinator = Current.pushNotificationAuthorizationCoordinator
 
     var isLoading: Bool { coordinator.state.isLoading }
-    var error: Error? { coordinator.state.failureValue() }
+    var error: Error? { coordinator.output?.error }
     var bookings: [Booking] { repository.items }
 
     var body: some View {

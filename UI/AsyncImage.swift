@@ -27,7 +27,7 @@ struct AsyncImage<Label: View>: View {
     }
 
     private var uiImage: UIImage? {
-        secondaryCoordinator.state.successValue() ?? primaryCoordinator.state.successValue()
+        secondaryCoordinator.output?.value ?? primaryCoordinator.output?.value
     }
 
     private func load() {

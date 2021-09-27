@@ -37,7 +37,7 @@ struct AddNewCardEntryView: View {
         NavigationView {
             ZStack {
                 Color.rythmico.backgroundSecondary.edgesIgnoringSafeArea(.all)
-                if let credential = coordinator.state.successValue() {
+                if let credential = coordinator.output?.value {
                     AddNewCardView(credential: credential, availableCards: $availableCards).transition(.opacity)
                 } else {
                     ActivityIndicator(color: .rythmico.foreground)
@@ -51,7 +51,7 @@ struct AddNewCardEntryView: View {
         .onAppear(perform: coordinator.start)
         .onDisappear(perform: coordinator.cancel)
         .alertOnFailure(coordinator, onDismiss: dismiss)
-        .animation(.rythmicoSpring(duration: .durationMedium), value: coordinator.state.successValue())
+        .animation(.rythmicoSpring(duration: .durationMedium), value: coordinator.output?.value)
     }
 
     func dismiss() {

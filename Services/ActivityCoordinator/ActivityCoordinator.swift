@@ -1,5 +1,6 @@
 import Combine
 
+@dynamicMemberLookup
 class ActivityCoordinator<Input, Output>: ObservableObject {
     enum State {
         case ready
@@ -12,17 +13,21 @@ class ActivityCoordinator<Input, Output>: ObservableObject {
     @Published
     fileprivate(set) var state: State = .ready
 
+    subscript<T>(dynamicMember keyPath: KeyPath<State, T>) -> T {
+        state[keyPath: keyPath]
+    }
+
     /*protected*/ var activity: Activity?
     private var idleOnFinished = false
 
     func start(with input: Input) {
-        guard state.isReady else { return }
+        guard self.isReady else { return }
         idleOnFinished = false
         performTask(with: input)
     }
 
     func startToIdle(with input: Input) {
-        guard state.isReady else { return }
+        guard self.isReady else { return }
         idleOnFinished = true
         performTask(with: input)
     }

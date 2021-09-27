@@ -35,11 +35,11 @@ struct RequestLessonPlanView: View, TestableView {
     let inspection = SelfInspection()
 
     var interactiveDismissDisabled: Bool {
-        flow.step.index > 0 || !coordinator.state.isReady
+        flow.step.index > 0 || !coordinator.isReady
     }
 
     var errorMessage: String? {
-        coordinator.state.failureValue()?.legibleLocalizedDescription
+        coordinator.output?.error?.legibleLocalizedDescription
     }
 
     func dismissError() {
@@ -67,7 +67,7 @@ struct RequestLessonPlanView: View, TestableView {
 
 extension RequestLessonPlanView {
     var flowView: RequestLessonPlanFlowView? {
-        coordinator.state.isReady || coordinator.state.isFailure() ? _flowView : nil
+        coordinator.isReady || coordinator.isFailed() ? _flowView : nil
     }
 }
 

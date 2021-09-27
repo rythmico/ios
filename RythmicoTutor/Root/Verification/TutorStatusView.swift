@@ -34,7 +34,7 @@ struct TutorStatusView: View {
                 dismiss: pushNotificationAuthCoordinator.dismissFailure
             )
         }
-        .animation(.rythmicoSpring(duration: .durationShort), value: coordinator.state.successValue())
+        .animation(.rythmicoSpring(duration: .durationShort), value: coordinator.output?.value)
     }
 
     var isFetchingStatus: Bool {
