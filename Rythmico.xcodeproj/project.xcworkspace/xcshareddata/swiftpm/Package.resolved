@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/firebase/firebase-ios-sdk",
         "state": {
           "branch": null,
-          "revision": "2f972249c520cbf87ac8856f176ebc994cb1c9a6",
-          "version": "8.7.0"
+          "revision": "bb8965c3ce61634ad15ab82cb36e4ad3a9962d77",
+          "version": "8.8.0"
         }
       },
       {
@@ -60,7 +60,7 @@
         "repositoryURL": "https://github.com/rythmico/FoundationEncore",
         "state": {
           "branch": "main",
-          "revision": "d252fa494f8bab137b6278a9d45271eb3b1b28c7",
+          "revision": "cc420bf28787afcada4cdf582faf02c7dc4e14f3",
           "version": null
         }
       },
@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/google/GoogleAppMeasurement.git",
         "state": {
           "branch": null,
-          "revision": "4901bde146b0269da35470d261f741f0e910d8df",
-          "version": "8.7.0"
+          "revision": "06add56b27b88ae5180e92d4ee21a1199ee888a1",
+          "version": "8.8.0"
         }
       },
       {
@@ -132,8 +132,8 @@
         "repositoryURL": "https://github.com/davdroman/MultiModal",
         "state": {
           "branch": null,
-          "revision": "e6f76c7851dcef105e1f52b8213ddbd50705e6ff",
-          "version": "2.0.1"
+          "revision": "1f9f5331ed0b374e5f9273162c8782a1884dfaa5",
+          "version": "2.1.0"
         }
       },
       {
@@ -150,8 +150,8 @@
         "repositoryURL": "https://github.com/davdroman/PeriodDuration",
         "state": {
           "branch": null,
-          "revision": "8c6d88e00ec2be7c80de97caf7104f76c1eab410",
-          "version": "0.3.0"
+          "revision": "aea7a11d0fc773854fcde8b48ed6803bcb3270d6",
+          "version": "0.4.0"
         }
       },
       {
@@ -186,7 +186,7 @@
         "repositoryURL": "https://github.com/rythmico/RythmicoDTO",
         "state": {
           "branch": "main",
-          "revision": "63616464ab64f9511c2d12f6d44a87b243b12043",
+          "revision": "3eca4caa1a22913f59f53596d5d0811e5a8c5c07",
           "version": null
         }
       },
@@ -330,8 +330,8 @@
         "repositoryURL": "https://github.com/davdroman/TextBuilder",
         "state": {
           "branch": null,
-          "revision": "63f7b6c2a8cd677f6664e7130922eb0c49b8ae11",
-          "version": "1.2.0"
+          "revision": "dc589a9a17ffde3946c4512dca4827a374d4b4f7",
+          "version": "1.4.0"
         }
       },
       {
