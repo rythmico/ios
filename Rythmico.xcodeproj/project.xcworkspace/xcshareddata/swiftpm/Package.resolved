@@ -60,7 +60,7 @@
         "repositoryURL": "https://github.com/rythmico/FoundationEncore",
         "state": {
           "branch": "main",
-          "revision": "cc420bf28787afcada4cdf582faf02c7dc4e14f3",
+          "revision": "ece7114fbc77be77318368f20d1ac3766fb9bc5c",
           "version": null
         }
       },
@@ -186,7 +186,7 @@
         "repositoryURL": "https://github.com/rythmico/RythmicoDTO",
         "state": {
           "branch": "main",
-          "revision": "4a78c7a47c26f8ff46634f95c40b6c4b55089a49",
+          "revision": "99ede0960d51be3c0e2621861b6cda9dc350db88",
           "version": null
         }
       },

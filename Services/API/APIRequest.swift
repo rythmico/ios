@@ -13,7 +13,7 @@ protocol AuthorizedAPIRequest: Request {
 
 extension AuthorizedAPIRequest {
     var headerFields: [String: String] {
-        let clientInfo = Bundle.main.clientInfo !! preconditionFailure("Required client info is unavailable")
+        let clientInfo = APIClientInfo.current !! preconditionFailure("Required client info is unavailable")
         let clientInfoHeaders = clientInfo.encodeAsHTTPHeaders()
         return clientInfoHeaders + ["Authorization": "Bearer " + accessToken]
     }

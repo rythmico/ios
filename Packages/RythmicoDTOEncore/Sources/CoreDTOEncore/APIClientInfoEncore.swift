@@ -1,16 +1,24 @@
-extension BundleProtocol {
-    public var clientInfo: APIClientInfo? {
+import class UIKit.UIDevice
+
+extension APIClientInfo {
+    public init?(bundle: BundleProtocol, device: UIDeviceProtocol) {
         guard
-            let id = (id?.rawValue).flatMap(APIClientInfo.ID.init),
-            let version = version,
-            let build = build
+            let id = (bundle.id?.rawValue).flatMap(APIClientInfo.ID.init),
+            let version = bundle.version,
+            let build = bundle.build
         else {
             return nil
         }
-        return APIClientInfo(
+        self.init(
             id: id,
             version: version,
-            build: build.rawValue
+            build: build.rawValue,
+            device: device.modelIdentifier,
+            os: device.systemNameAndVersion
         )
+    }
+
+    public static var current: APIClientInfo? {
+        APIClientInfo(bundle: Bundle.main, device: UIDevice.current)
     }
 }
