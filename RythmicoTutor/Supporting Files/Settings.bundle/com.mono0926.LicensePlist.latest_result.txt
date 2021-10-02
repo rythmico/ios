@@ -8,7 +8,7 @@ name: boringssl-SwiftPM, nameSpecified: BoringSSL-GRPC, owner: firebase, version
 
 name: combine-schedulers, nameSpecified: combine-schedulers, owner: pointfreeco, version: 0.5.3
 
-name: firebase-ios-sdk, nameSpecified: Firebase, owner: firebase, version: 8.8.0
+name: firebase-ios-sdk, nameSpecified: Firebase, owner: firebase, version: 8.8.1
 
 name: FoundationEncore, nameSpecified: FoundationEncore, owner: rythmico, version: 
 
