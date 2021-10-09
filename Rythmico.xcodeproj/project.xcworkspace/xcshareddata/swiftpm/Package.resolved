@@ -267,8 +267,8 @@
         "repositoryURL": "https://github.com/pointfreeco/swift-identified-collections",
         "state": {
           "branch": null,
-          "revision": "c8e6a40209650ab619853cd4ce89a0aa51792754",
-          "version": "0.3.0"
+          "revision": "f76e7d3fe4265ee09216044ec3780d74f546ca82",
+          "version": "0.3.1"
         }
       },
       {
