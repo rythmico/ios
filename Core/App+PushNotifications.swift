@@ -1,5 +1,10 @@
 import UIKit
 import FirebaseMessaging
+#if RYTHMICO
+import StudentDTO
+#elseif TUTOR
+import TutorDTO
+#endif
 
 extension App.Delegate: MessagingDelegate, UNUserNotificationCenterDelegate {
     func configurePushNotifications(application: UIApplication) {
@@ -32,7 +37,7 @@ extension App.Delegate: MessagingDelegate, UNUserNotificationCenterDelegate {
             break
         }
 
-        PushNotificationEvent(userInfo: userInfo).map(Current.pushNotificationEventHandler.handle)
+        APIEvent(userInfo: userInfo).map(Current.pushNotificationEventHandler.handle)
     }
 
     // Show notifications in-app (without sound/vibration or badge).
