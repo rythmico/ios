@@ -54,9 +54,9 @@ name: swift-composable-architecture, nameSpecified: swift-composable-architectur
 
 name: swift-composable-navigator, nameSpecified: swift-composable-navigator, owner: Bahn-X, version: 0.2.0
 
-name: swift-custom-dump, nameSpecified: swift-custom-dump, owner: pointfreeco, version: 0.2.0
+name: swift-custom-dump, nameSpecified: swift-custom-dump, owner: pointfreeco, version: 0.2.1
 
-name: swift-identified-collections, nameSpecified: swift-identified-collections, owner: pointfreeco, version: 0.3.0
+name: swift-identified-collections, nameSpecified: swift-identified-collections, owner: pointfreeco, version: 0.3.1
 
 name: swift-nonempty, nameSpecified: swift-nonempty, owner: pointfreeco, version: 0.4.0
 
