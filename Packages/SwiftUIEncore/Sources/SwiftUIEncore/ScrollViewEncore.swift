@@ -6,7 +6,7 @@ extension ScrollView where Content == ScrollViewReader<AnyView> {
     ) {
         self.init(axes, showsIndicators: showsIndicators) {
             ScrollViewReader { proxy in
-                AnyView(content(proxy))
+                content(proxy).eraseToAnyView()
             }
         }
     }

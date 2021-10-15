@@ -17,9 +17,9 @@ struct MainViewContent<Tab: Hashable>: View {
     ) {
         self.tabs = tabs
         self._selection = selection
-        self.contents = tabs.reduce(into: [:]) { result, tab in result[tab] = AnyView(content(tab)) }
+        self.contents = tabs.reduce(into: [:]) { result, tab in result[tab] = content(tab).eraseToAnyView() }
         self.tabTitle = tabTitle
-        self.tabIcons = tabs.reduce(into: [:]) { result, tab in result[tab] = AnyView(tabIcons(tab)) }
+        self.tabIcons = tabs.reduce(into: [:]) { result, tab in result[tab] = tabIcons(tab).eraseToAnyView() }
     }
 
     var body: some View {

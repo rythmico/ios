@@ -36,11 +36,10 @@ extension ChoiceList where Content == AnyView {
         content: @escaping (Element) -> String
     ) {
         self.init(data: data, id: id, selection: selection, padding: padding) { element, state in
-            AnyView(
-                Text(content(element))
-                    .rythmicoTextStyle(state.isSelected ? .bodyBold : .bodyMedium)
-                    .minimumScaleFactor(0.7)
-            )
+            Text(content(element))
+                .rythmicoTextStyle(state.isSelected ? .bodyBold : .bodyMedium)
+                .minimumScaleFactor(0.7)
+                .eraseToAnyView()
         }
     }
 }

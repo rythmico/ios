@@ -94,8 +94,8 @@ struct ProfileView: View, TestableView {
             }
         }
         let view = action == nil
-            ? AnyView(cellContent)
-            : AnyView(Button(action: action!) { cellContent })
+            ? cellContent.eraseToAnyView()
+            : Button(action: action!) { cellContent }.eraseToAnyView()
         return view
             .font(.body)
             .foregroundColor(.primary)

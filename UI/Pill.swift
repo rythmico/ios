@@ -30,13 +30,12 @@ extension Pill where Content == AnyView {
         borderColor: Color
     ) {
         self.init(backgroundColor: backgroundColor, borderColor: borderColor) {
-            AnyView(
-                Text(title)
-                    .foregroundColor(titleColor)
-                    .rythmicoTextStyle(.bodyMedium)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
-            )
+            Text(title)
+                .foregroundColor(titleColor)
+                .rythmicoTextStyle(.bodyMedium)
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
+                .eraseToAnyView()
         }
     }
 }

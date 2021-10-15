@@ -1,4 +1,4 @@
-import SwiftUI
+import SwiftUIEncore
 
 struct CollectionView<Content: View>: View {
     var topPadding: CGFloat = .grid(4)
@@ -24,7 +24,7 @@ extension CollectionView where Content == AnyView {
         @ViewBuilder content: @escaping (Data.Element) -> Subcontent
     ) {
         self.init {
-            AnyView(ForEach(data, id: id, content: content))
+            ForEach(data, id: id, content: content).eraseToAnyView()
         }
     }
 
@@ -33,7 +33,7 @@ extension CollectionView where Content == AnyView {
         @ViewBuilder content: @escaping (Data.Element) -> Subcontent
     ) where Data.Element: Identifiable, ID == Data.Element.ID {
         self.init {
-            AnyView(ForEach(data, id: \.id, content: content))
+            ForEach(data, id: \.id, content: content).eraseToAnyView()
         }
     }
 }
