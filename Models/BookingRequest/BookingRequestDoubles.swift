@@ -3,7 +3,7 @@ import FoundationEncore
 extension BookingRequest {
     static let stub = Self(
         id: UUID().uuidString,
-        createdAt: .stub - (32, .second),
+        createdAt: .stub - (32, .second, .neutral),
         instrument: .piano,
         submitterName: "David R",
         student: .jackStub,
@@ -14,7 +14,7 @@ extension BookingRequest {
 
     static let stubWithAbout = Self(
         id: UUID().uuidString,
-        createdAt: .stub - (32, .second),
+        createdAt: .stub - (32, .second, .neutral),
         instrument: .guitar,
         submitterName: "David R",
         student: .janeStub,
@@ -25,7 +25,7 @@ extension BookingRequest {
 
     static let longStub = Self(
         id: UUID().uuidString,
-        createdAt: .stub - (1, .weekOfYear),
+        createdAt: .stub - (1, .weekOfYear, .neutral),
         instrument: .piano,
         submitterName: "David R",
         student: .davidStubNoAbout,

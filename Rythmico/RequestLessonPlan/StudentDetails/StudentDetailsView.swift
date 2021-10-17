@@ -2,7 +2,7 @@ import SwiftUIEncore
 
 struct StudentDetailsView: View, FocusableView, TestableView {
     private enum Const {
-        static let averageStudentAge: (Int, Calendar.Component) = (10, .year)
+        static let averageStudentAge: (Int, Calendar.Component, TimeZone) = (10, .year, Current.timeZone)
     }
 
     enum Focus: FocusEnum, CaseIterable {
@@ -158,7 +158,7 @@ struct StudentDetailsView_Preview: PreviewProvider {
     static var previews: some View {
         let state = StudentDetailsView.ViewState()
         state.name = "David"
-        state.dateOfBirth = .stub - (10, .year)
+        state.dateOfBirth = .stub - (10, .year, .neutral)
         state.about = "Something"
 
         return StudentDetailsView(
