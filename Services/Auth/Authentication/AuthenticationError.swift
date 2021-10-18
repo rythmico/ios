@@ -30,14 +30,14 @@ protocol AuthenticationErrorSignInReasonCodeProtocol: AuthenticationErrorCommonR
 
 enum AuthenticationErrorCommonReasonCode: Int, AuthenticationErrorCommonReasonCodeProtocol {
     // Common
-    case unknown = -1, networkError = 17020, tooManyRequests = 17010
+    case unknown = -1, networkError = 17020, tooManyRequests = 17010, userTokenExpired = 17021
     // Fatal!
     case invalidAPIKey = 17023, appNotAuthorized = 17028, internalError = 17999, operationNotAllowed = 17006
 }
 
 enum AuthenticationErrorSignInReasonCode: Int, AuthenticationErrorSignInReasonCodeProtocol {
     // Common
-    case unknown = -1, networkError = 17020, tooManyRequests = 17010
+    case unknown = -1, networkError = 17020, tooManyRequests = 17010, userTokenExpired = 17021
     // Fatal!
     case invalidAPIKey = 17023, appNotAuthorized = 17028, internalError = 17999, operationNotAllowed = 17006
     // Sign in with Apple
