@@ -17,7 +17,7 @@ extension FirebaseAuth.User: UserCredentialProtocol {
     var name: String? { displayName }
 
     func getAccessToken(completionHandler: @escaping Handler<AccessTokenResult>) {
-        getIDToken { token, error in
+        getIDTokenForcingRefresh(true) { token, error in
             switch (token, error) {
             case let (token?, _):
                 completionHandler(.success(token))
