@@ -35,7 +35,7 @@ struct LessonPlanCancellationView: View, TestableView {
     let lessonPlan: LessonPlan
     let option: LessonPlan.Options.Cancel
 
-    var error: Error? { coordinator.state.failureValue }
+    var error: Error? { coordinator.state.failureValue() }
 
     func submit(_ reason: LessonPlan.CancellationInfo.Reason) {
         coordinator.run(with: (lessonPlanId: lessonPlan.id, body: .init(reason: reason)))
@@ -82,7 +82,7 @@ struct LessonPlanCancellationView: View, TestableView {
     }
 
     private var isUserInputRequired: Bool {
-        coordinator.state.isReady || coordinator.state.isFailure
+        coordinator.state.isReady || coordinator.state.isFailure()
     }
 
     private func lessonPlanSuccessfullyCancelled(_ lessonPlan: LessonPlan) {

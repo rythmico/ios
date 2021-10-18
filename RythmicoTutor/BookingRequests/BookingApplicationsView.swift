@@ -19,7 +19,7 @@ struct BookingApplicationsView: View {
     private var repository = Current.bookingApplicationRepository
 
     var isLoading: Bool { coordinator.state.isLoading }
-    var error: Error? { coordinator.state.failureValue }
+    var error: Error? { coordinator.state.failureValue() }
     var applications: [BookingApplication] { repository.items }
 
     var body: some View {

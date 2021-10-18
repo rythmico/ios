@@ -29,8 +29,8 @@ struct AddressDetailsView: View, TestableView {
     }
 
     var isLoading: Bool { coordinator.state.isLoading }
-    var error: Error? { coordinator.state.failureValue }
-    var addresses: [Address]? { coordinator.state.successValue.map([Address].init) }
+    var error: Error? { coordinator.state.failureValue() }
+    var addresses: [Address]? { coordinator.state.successValue().map([Address].init) }
 
     func searchAddresses() {
         coordinator.run(with: .init(postcode: state.postcode))

@@ -18,7 +18,9 @@ struct SchedulingView: View, FocusableView, TestableView {
         @Published var duration: Schedule.Duration?
 
         var startDateAndTime: Date? {
-            unwrap(startDate, startTime).map(Date.init(date:time:))
+            unwrap(startDate, startTime).map {
+                Date(date: $0, time: $1, timeZone: Current.timeZone)
+            }
         }
     }
 
@@ -27,8 +29,8 @@ struct SchedulingView: View, FocusableView, TestableView {
     var instrument: Instrument
     var setter: Binding<Schedule>.Setter
 
-    private let firstAvailableDate = Current.date() + (2, .day)
-    private let defaultStartTime = Current.date() => ([.minute, .second, .nanosecond], 0)
+    private let firstAvailableDate = Current.date() + (2, .day, Current.timeZone)
+    private let defaultStartTime = Current.date() => ([.minute, .second, .nanosecond], 0, Current.timeZone)
     private let defaultDuration: Schedule.Duration = .oneHour
 
     @SpacedTextBuilder

@@ -80,7 +80,7 @@ final class CalendarSyncCoordinator: ObservableObject {
 
     private func fetchCalendarInfo() {
         calendarInfoFetchingCoordinator.$state
-            .compactMap(\.successValue)
+            .compactMap { $0.successValue() }
             .sink(receiveValue: subscribeToCalendar)
             .store(in: &cancellables)
         calendarInfoFetchingCoordinator.runToIdle()

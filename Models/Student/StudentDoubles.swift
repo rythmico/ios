@@ -4,7 +4,7 @@ extension Student {
     #if RYTHMICO
     static let baseStub = Self(
         name: "",
-        dateOfBirth: .stub - (9, .year),
+        dateOfBirth: .stub - (9, .year, .neutral),
         about: ""
     )
     #elseif TUTOR
