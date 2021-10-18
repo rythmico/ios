@@ -54,7 +54,8 @@ extension OnboardingView {
              .invalidCredential,
              .userDisabled,
              .invalidEmail,
-             .missingOrInvalidNonce:
+             .missingOrInvalidNonce,
+             .userTokenExpired:
             errorMessage = "\(error.underlyingError.legibleLocalizedDescription) (\(error.reasonCode.rawValue))"
         }
     }

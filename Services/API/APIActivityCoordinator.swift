@@ -86,9 +86,9 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
 
     private func handleAuthenticationError(_ error: AuthenticationCommonError) {
         switch error.reasonCode {
-        case .appNotAuthorized, .invalidAPIKey, .operationNotAllowed:
+        case .invalidAPIKey, .appNotAuthorized, .operationNotAllowed, .userTokenExpired:
             deauthenticationService.deauthenticate()
-        default:
+        case .unknown, .internalError, .networkError, .tooManyRequests:
             break
         }
         finish(.failure(error))
