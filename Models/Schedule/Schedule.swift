@@ -8,7 +8,7 @@ struct Schedule: Equatable, Codable, Hashable {
 }
 
 extension Schedule {
-    var endDate: Date { startDate + (duration.rawValue, .minute, Current.timeZone) }
+    var endDate: Date { try! startDate + (duration.rawValue, .minute, Current.timeZone) }
 }
 
 extension Schedule.Duration {

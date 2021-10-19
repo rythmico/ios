@@ -111,7 +111,7 @@ struct ReviewRequestView: View, TestableView {
     private static let dateOfBirthFormatter = Current.dateFormatter(format: .custom("dd-MM-yyyy"))
     private func studentAge(from dateOfBirth: Date) -> String {
         let dateOfBirthString = Self.dateOfBirthFormatter.string(from: dateOfBirth)
-        let age = Current.date() - (dateOfBirth, .year, Current.timeZone)
+        let age = try! Current.date() - (dateOfBirth, .year, Current.timeZone)
         return [dateOfBirthString, "(\(age) years old)"].compacted().spaced()
     }
 

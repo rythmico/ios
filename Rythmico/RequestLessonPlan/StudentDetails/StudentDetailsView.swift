@@ -51,7 +51,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
     var dateOfBirthPlaceholderText: String { Self.dateFormatter.string(from: dateOfBirthPlaceholder) }
 
     private static let dateFormatter = Current.dateFormatter(format: .preset(date: .long))
-    private let dateOfBirthPlaceholder = Current.date() - Const.averageStudentAge
+    private let dateOfBirthPlaceholder = try! Current.date() - Const.averageStudentAge
 
     // MARK: - About -
     @SpacedTextBuilder
@@ -158,7 +158,7 @@ struct StudentDetailsView_Preview: PreviewProvider {
     static var previews: some View {
         let state = StudentDetailsView.ViewState()
         state.name = "David"
-        state.dateOfBirth = .stub - (10, .year, .neutral)
+        state.dateOfBirth = try! .stub - (10, .year, .neutral)
         state.about = "Something"
 
         return StudentDetailsView(

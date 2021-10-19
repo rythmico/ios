@@ -29,8 +29,8 @@ struct SchedulingView: View, FocusableView, TestableView {
     var instrument: Instrument
     var setter: Binding<Schedule>.Setter
 
-    private let firstAvailableDate = Current.date() + (2, .day, Current.timeZone)
-    private let defaultStartTime = Current.date() => ([.minute, .second, .nanosecond], 0, Current.timeZone)
+    private let firstAvailableDate = try! Current.date() + (2, .day, Current.timeZone)
+    private let defaultStartTime = try! Current.date() => ([.minute, .second, .nanosecond], 0, Current.timeZone)
     private let defaultDuration: Schedule.Duration = .oneHour
 
     @SpacedTextBuilder

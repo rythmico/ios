@@ -23,7 +23,7 @@ extension AnalyticsEvent {
             ["Instrument": instrument.rawValue]
         }
         if let student = student {
-            ["Student Age": Current.date() - (student.dateOfBirth, .year, .neutral)]
+            ["Student Age": try! Current.date() - (student.dateOfBirth, .year, .neutral)]
         }
         if let postcodeDistrict = address?.postcode.firstWord {
             ["Address District": postcodeDistrict]
