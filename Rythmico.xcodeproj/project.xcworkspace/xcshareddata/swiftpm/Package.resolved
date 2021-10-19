@@ -60,7 +60,7 @@
         "repositoryURL": "https://github.com/rythmico/FoundationEncore",
         "state": {
           "branch": "main",
-          "revision": "70ec269c4ceab6bc85c1dad2fa61c554830a3c55",
+          "revision": "c8daaa5e0f3f7b5c1f48200f2105feb75c01ab06",
           "version": null
         }
       },
@@ -78,8 +78,8 @@
         "repositoryURL": "https://github.com/google/GoogleDataTransport.git",
         "state": {
           "branch": null,
-          "revision": "7fb27ea49414b9c5483503cd06baa821c8654d1e",
-          "version": "9.1.1"
+          "revision": "15ccdfd25ac55b9239b82809531ff26605e7556e",
+          "version": "9.1.2"
         }
       },
       {
@@ -186,7 +186,7 @@
         "repositoryURL": "https://github.com/rythmico/RythmicoDTO",
         "state": {
           "branch": "main",
-          "revision": "1a6787915e2a3e67696b79c83e4184536cdc370e",
+          "revision": "90a2a9f5fc3a14177842432581f6f540ff3b84e3",
           "version": null
         }
       },
@@ -204,8 +204,8 @@
         "repositoryURL": "https://github.com/stripe/stripe-ios",
         "state": {
           "branch": null,
-          "revision": "fabd7ebe14052d505466ffe824b49eeab3778501",
-          "version": "21.8.1"
+          "revision": "00fe1bc3b6abedd7b3a08776ac121d07289cd560",
+          "version": "21.9.0"
         }
       },
       {
