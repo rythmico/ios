@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/amplitude/Amplitude-iOS",
         "state": {
           "branch": null,
-          "revision": "fa2af27371ef3eaf54e839b84ee7238a8b95344c",
-          "version": "8.4.0"
+          "revision": "b3411935d96c3b154753771ab32e1df501fec478",
+          "version": "8.5.0"
         }
       },
       {
@@ -60,7 +60,7 @@
         "repositoryURL": "https://github.com/rythmico/FoundationEncore",
         "state": {
           "branch": "main",
-          "revision": "c8daaa5e0f3f7b5c1f48200f2105feb75c01ab06",
+          "revision": "57c9ee1cfbce3090e34ea58370ad1f90974b9463",
           "version": null
         }
       },
@@ -87,8 +87,8 @@
         "repositoryURL": "https://github.com/google/GoogleUtilities.git",
         "state": {
           "branch": null,
-          "revision": "616fac2626b6b2d1424d79a6f786b4e2ed1cfb49",
-          "version": "7.5.2"
+          "revision": "797005ad8a1f0614063933e2fa010a5d13cb09d0",
+          "version": "7.6.0"
         }
       },
       {
@@ -186,7 +186,7 @@
         "repositoryURL": "https://github.com/rythmico/RythmicoDTO",
         "state": {
           "branch": "main",
-          "revision": "90a2a9f5fc3a14177842432581f6f540ff3b84e3",
+          "revision": "2bd30e221a1d0bcb7351adfa12c8d5248874001f",
           "version": null
         }
       },
@@ -267,8 +267,8 @@
         "repositoryURL": "https://github.com/pointfreeco/swift-identified-collections",
         "state": {
           "branch": null,
-          "revision": "f76e7d3fe4265ee09216044ec3780d74f546ca82",
-          "version": "0.3.1"
+          "revision": "680bf440178a78a627b1c2c64c0855f6523ad5b9",
+          "version": "0.3.2"
         }
       },
       {
