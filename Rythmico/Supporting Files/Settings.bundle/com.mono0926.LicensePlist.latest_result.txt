@@ -1,6 +1,6 @@
 name: abseil-cpp-SwiftPM, nameSpecified: abseil, owner: firebase, version: 0.20200225.4
 
-name: Amplitude-iOS, nameSpecified: Amplitude, owner: amplitude, version: 8.4.0
+name: Amplitude-iOS, nameSpecified: Amplitude, owner: amplitude, version: 8.5.0
 
 name: APIKit, nameSpecified: APIKit, owner: davdroman, version: 
 
@@ -16,7 +16,7 @@ name: GoogleAppMeasurement, nameSpecified: GoogleAppMeasurement, owner: google, 
 
 name: GoogleDataTransport, nameSpecified: GoogleDataTransport, owner: google, version: 9.1.2
 
-name: GoogleUtilities, nameSpecified: GoogleUtilities, owner: google, version: 7.5.2
+name: GoogleUtilities, nameSpecified: GoogleUtilities, owner: google, version: 7.6.0
 
 name: grpc-SwiftPM, nameSpecified: gRPC, owner: firebase, version: 1.28.4
 
@@ -56,7 +56,7 @@ name: swift-composable-navigator, nameSpecified: swift-composable-navigator, own
 
 name: swift-custom-dump, nameSpecified: swift-custom-dump, owner: pointfreeco, version: 0.2.1
 
-name: swift-identified-collections, nameSpecified: swift-identified-collections, owner: pointfreeco, version: 0.3.1
+name: swift-identified-collections, nameSpecified: swift-identified-collections, owner: pointfreeco, version: 0.3.2
 
 name: swift-nonempty, nameSpecified: swift-nonempty, owner: pointfreeco, version: 0.4.0
 
