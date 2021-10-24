@@ -6,6 +6,7 @@ struct SIWARequest: RythmicoAPIRequest {
 
     let method: HTTPMethod = .post
     var path: String { "/auth/siwa" }
+    var authRequired: Bool = false
     var headerFields: [String: String] = [:]
 
     var bodyParameters: BodyParameters? {
