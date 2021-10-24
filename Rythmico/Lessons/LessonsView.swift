@@ -76,7 +76,8 @@ struct LessonsView: View, TestableView {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: trailingItem)
         .testable(self)
-        .onReceive(shouldFetchPublisher(), perform: fetch)
+        // TODO: reintroduce on API migration
+//        .onReceive(shouldFetchPublisher(), perform: fetch)
         // FIXME: double HTTP request for some reason
 //        .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: onLessonPlansFetched)
