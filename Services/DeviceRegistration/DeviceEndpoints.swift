@@ -1,24 +1,18 @@
 import APIKit
 
 struct AddDeviceRequest: RythmicoAPIRequest {
-    struct Properties {
-        struct Body: Encodable {
-            var token: String
-        }
-
-        let body: Body
-    }
-
-    let accessToken: String
-    let properties: Properties
+    var token: String
 
     let method: HTTPMethod = .post
     let path: String = "/devices"
+    var headerFields: [String: String] = [:]
 
     var bodyParameters: BodyParameters? {
-        JSONEncodableBodyParameters(object: properties.body)
+        struct Body: Encodable {
+            var token: String
+        }
+        return JSONEncodableBodyParameters(object: Body(token: token))
     }
 
     typealias Response = Void
-    typealias Error = RythmicoAPIError
 }

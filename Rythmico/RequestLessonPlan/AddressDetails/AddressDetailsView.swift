@@ -29,11 +29,18 @@ struct AddressDetailsView: View, TestableView {
     }
 
     var isLoading: Bool { coordinator.state.isLoading }
-    var error: Error? { coordinator.output?.error }
+    var error: Error? { postcodeError ?? coordinator.output?.error }
     var addresses: [Address]? { coordinator.output?.value.map([Address].init) }
 
+    @State
+    private(set) var postcodeError: Error?
+
     func searchAddresses() {
-        coordinator.run(with: .init(postcode: state.postcode))
+        do {
+            try coordinator.run(with: .init(postcode: state.postcode))
+        } catch {
+            self.postcodeError = error
+        }
     }
 
     var nextButtonAction: Action? {

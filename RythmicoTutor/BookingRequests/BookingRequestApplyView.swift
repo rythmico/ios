@@ -31,7 +31,7 @@ struct BookingRequestApplyView: View {
 
     func submit() {
         Current.keyboardDismisser.dismissKeyboard()
-        coordinator.run(with: (bookingRequestId: booking.id, body: .init(privateNote: privateNote)))
+        coordinator.run(with: .init(bookingRequestID: booking.id, privateNote: privateNote))
     }
 
     var body: some View {

@@ -83,7 +83,7 @@ struct LessonPlanPausingView: View {
     }
 
     private func submit() {
-        coordinator.run(with: lessonPlan.id)
+        coordinator.run(with: .init(lessonPlanID: lessonPlan.id))
     }
 
     private var submitButtonTitle: String {

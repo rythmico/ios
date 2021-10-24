@@ -33,7 +33,7 @@ final class ReviewRequestViewTests: XCTestCase {
 
         XCTAssertView(view) { view in
             XCTAssertEqual(serviceSpy.sendCount, 0)
-            XCTAssertNil(serviceSpy.latestRequest?.properties)
+            XCTAssertNil(serviceSpy.latestRequest)
             view.submitRequest()
             XCTAssertEqual(serviceSpy.sendCount, 1)
             XCTAssertEqual(serviceSpy.latestRequest?.instrument, .drums)

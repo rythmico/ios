@@ -1,33 +1,27 @@
 import APIKit
 
-struct BookingRequestsGetRequest: RythmicoAPIRequest {
-    let accessToken: String
-    let properties: Void
-
+struct BookingRequestsGetRequest: RythmicoAPIRequest, EmptyInitProtocol {
     let method: HTTPMethod = .get
     let path: String = "/booking-requests"
+    var headerFields: [String: String] = [:]
 
     typealias Response = [BookingRequest]
-    typealias Error = RythmicoAPIError
 }
 
 struct BookingRequestApplyRequest: RythmicoAPIRequest {
-    typealias Properties = (bookingRequestId: String, body: Body)
-
-    struct Body: Encodable {
-        var privateNote: String
-    }
-
-    let accessToken: String
-    let properties: Properties
+    var bookingRequestID: String
+    var privateNote: String
 
     let method: HTTPMethod = .post
-    var path: String { "/booking-requests/\(self.bookingRequestId)/apply" }
+    var path: String { "/booking-requests/\(bookingRequestID)/apply" }
+    var headerFields: [String: String] = [:]
 
     var bodyParameters: BodyParameters? {
-        JSONEncodableBodyParameters(object: self.body)
+        struct Body: Encodable {
+            var privateNote: String
+        }
+        return JSONEncodableBodyParameters(object: Body(privateNote: privateNote))
     }
 
     typealias Response = BookingApplication
-    typealias Error = RythmicoAPIError
 }

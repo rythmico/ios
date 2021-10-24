@@ -1,12 +1,9 @@
 import APIKit
 
-struct BookingsGetRequest: RythmicoAPIRequest {
-    let accessToken: String
-    let properties: Void
-
+struct BookingsGetRequest: RythmicoAPIRequest, EmptyInitProtocol {
     let method: HTTPMethod = .get
     let path: String = "/bookings"
+    var headerFields: [String: String] = [:]
 
     typealias Response = [Booking]
-    typealias Error = RythmicoAPIError
 }

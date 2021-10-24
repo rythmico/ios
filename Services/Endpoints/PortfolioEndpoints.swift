@@ -1,16 +1,11 @@
 import APIKit
 
 struct GetPortfolioRequest: RythmicoAPIRequest {
-    struct Body: Encodable {
-        var tutorId: Tutor.ID
-    }
-
-    let accessToken: String
-    let properties: Body
+    var tutorId: Tutor.ID
 
     let method: HTTPMethod = .get
-    var path: String { "/portfolios/\(self.tutorId)" }
+    var path: String { "/portfolios/\(tutorId)" }
+    var headerFields: [String: String] = [:]
 
     typealias Response = Portfolio
-    typealias Error = RythmicoAPIError
 }

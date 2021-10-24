@@ -105,7 +105,7 @@ extension AppEnvironment {
         )
     }
 
-    func coordinator<Request: AuthorizedAPIRequest>(for service: APIServiceBase<Request>) -> APIActivityCoordinator<Request> {
+    func coordinator<Request: RythmicoAPIRequest>(for service: APIServiceBase<Request>) -> APIActivityCoordinator<Request> {
         APIActivityCoordinator(
             userCredentialProvider: userCredentialProvider,
             deauthenticationService: deauthenticationService,
@@ -114,14 +114,14 @@ extension AppEnvironment {
         )
     }
 
-    mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
+    mutating func stubAPIEndpoint<R: RythmicoAPIRequest>(
         for coordinatorKeyPath: WritableKeyPath<Self, APIActivityCoordinator<R>>,
         service: APIServiceBase<R>
     ) {
         self[keyPath: coordinatorKeyPath] = coordinator(for: service)
     }
 
-    mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
+    mutating func stubAPIEndpoint<R: RythmicoAPIRequest>(
         for coordinatorKeyPath: WritableKeyPath<Self, APIActivityCoordinator<R>>,
         result: Result<R.Response, Error>,
         delay: TimeInterval? = nil
@@ -129,7 +129,7 @@ extension AppEnvironment {
         stubAPIEndpoint(for: coordinatorKeyPath, service: APIServiceStub(result: result, delay: delay))
     }
 
-    mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
+    mutating func stubAPIEndpoint<R: RythmicoAPIRequest>(
         for coordinatorKeyPath: WritableKeyPath<Self, () -> APIActivityCoordinator<R>>,
         service: APIServiceBase<R>
     ) {
@@ -137,7 +137,7 @@ extension AppEnvironment {
         self[keyPath: coordinatorKeyPath] = { coordinator }
     }
 
-    mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
+    mutating func stubAPIEndpoint<R: RythmicoAPIRequest>(
         for coordinatorKeyPath: WritableKeyPath<Self, () -> APIActivityCoordinator<R>>,
         result: Result<R.Response, Error>,
         delay: TimeInterval? = nil
@@ -145,7 +145,7 @@ extension AppEnvironment {
         stubAPIEndpoint(for: coordinatorKeyPath, service: APIServiceStub(result: result, delay: delay))
     }
 
-    mutating func fakeAPIEndpoint<R: AuthorizedAPIRequest>(
+    mutating func fakeAPIEndpoint<R: RythmicoAPIRequest>(
         for coordinatorKeyPath: WritableKeyPath<Self, APIActivityCoordinator<R>>,
         result: Result<R.Response, Error>,
         delay: TimeInterval? = Self.fakeAPIEndpointDelay
@@ -153,7 +153,7 @@ extension AppEnvironment {
         stubAPIEndpoint(for: coordinatorKeyPath, result: result, delay: delay)
     }
 
-    mutating func fakeAPIEndpoint<R: AuthorizedAPIRequest>(
+    mutating func fakeAPIEndpoint<R: RythmicoAPIRequest>(
         for coordinatorKeyPath: WritableKeyPath<Self, () -> APIActivityCoordinator<R>>,
         result: Result<R.Response, Error>,
         delay: TimeInterval? = Self.fakeAPIEndpointDelay

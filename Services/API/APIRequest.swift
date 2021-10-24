@@ -1,29 +1,16 @@
 import APIKit
-import CoreDTOEncore
+import FoundationEncore
 
-@dynamicMemberLookup
-protocol AuthorizedAPIRequest: Request {
-    associatedtype Properties
-
-    var accessToken: String { get }
-    var properties: Properties { get }
-
-    init(accessToken: String, properties: Properties) throws
+/// An affordance to be able to use parameterless `coordinator.run()`
+///
+/// TODO: remove when moving to `APIClient`.
+protocol EmptyInitProtocol {
+    init()
 }
 
-extension AuthorizedAPIRequest {
-    var headerFields: [String: String] {
-        let clientInfo = APIClientInfo.current !! preconditionFailure("Required client info is unavailable")
-        let clientInfoHeaders = clientInfo.encodeAsHTTPHeaders()
-        return clientInfoHeaders + ["Authorization": "Bearer " + accessToken]
-    }
-
-    subscript<T>(dynamicMember keyPath: KeyPath<Properties, T>) -> T {
-        properties[keyPath: keyPath]
-    }
+protocol RythmicoAPIRequest: DecodableJSONRequest where Error == RythmicoAPIError {
+    var headerFields: [String: String] { get set }
 }
-
-protocol RythmicoAPIRequest: AuthorizedAPIRequest, DecodableJSONRequest {}
 
 extension RythmicoAPIRequest {
     #if LIVE

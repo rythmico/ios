@@ -127,9 +127,10 @@ struct LessonPlanBookingView: View {
         unwrap(phoneNumber, selectedCard).mapToAction { phoneNumber, selectedCard in
             coordinator.run(
                 with: .init(
-                    lessonPlanId: lessonPlan.id,
-                    applicationId: application.tutor.id,
-                    body: .init(phoneNumber: phoneNumber, cardId: selectedCard.id)
+                    lessonPlanID: lessonPlan.id,
+                    applicationID: application.tutor.id,
+                    phoneNumber: phoneNumber,
+                    cardID: selectedCard.id
                 )
             )
         }

@@ -1,27 +1,19 @@
 import APIKit
 
-struct BookingApplicationsGetRequest: RythmicoAPIRequest {
-    let accessToken: String
-    let properties: Void
-
+struct BookingApplicationsGetRequest: RythmicoAPIRequest, EmptyInitProtocol {
     let method: HTTPMethod = .get
     let path: String = "/booking-applications"
+    var headerFields: [String: String] = [:]
 
     typealias Response = [BookingApplication]
-    typealias Error = RythmicoAPIError
 }
 
 struct BookingApplicationsRetractRequest: RythmicoAPIRequest {
-    struct Properties {
-        var bookingApplicationId: String
-    }
-
-    let accessToken: String
-    let properties: Properties
+    var bookingApplicationId: String
 
     let method: HTTPMethod = .patch
-    var path: String { "/booking-applications/\(self.bookingApplicationId)/retract" }
+    var path: String { "/booking-applications/\(bookingApplicationId)/retract" }
+    var headerFields: [String: String] = [:]
 
     typealias Response = BookingApplication
-    typealias Error = RythmicoAPIError
 }

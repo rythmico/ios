@@ -1,12 +1,9 @@
 import APIKit
 
-struct GetTutorStatusRequest: RythmicoAPIRequest {
-    let accessToken: String
-    let properties: Void
-
+struct GetTutorStatusRequest: RythmicoAPIRequest, EmptyInitProtocol {
     let method: HTTPMethod = .get
     let path: String = "/tutor-status"
+    var headerFields: [String: String] = [:]
 
     typealias Response = TutorStatus
-    typealias Error = RythmicoAPIError
 }

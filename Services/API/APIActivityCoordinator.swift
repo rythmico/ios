@@ -1,5 +1,6 @@
-import FoundationEncore
 import APIKit
+import CoreDTOEncore
+import FoundationEncore
 
 enum APIActivityCoordinatorError: LocalizedError {
     case userCredentialsMissing
@@ -12,7 +13,7 @@ enum APIActivityCoordinatorError: LocalizedError {
     }
 }
 
-final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActivityCoordinator<Request.Properties, Request.Response> {
+final class APIActivityCoordinator<Request: RythmicoAPIRequest>: FailableActivityCoordinator<Request, Request.Response> {
     typealias Service = APIServiceBase<Request>
     typealias Error = APIActivityCoordinatorError
 
@@ -33,7 +34,7 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
         self.service = service
     }
 
-    override func performTask(with input: Request.Properties) {
+    override func performTask(with input: Request) {
         super.performTask(with: input)
         guard let userCredential = userCredentialProvider.userCredential else {
             handleUserCredentialMissing()
@@ -42,12 +43,13 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
         userCredential.getAccessToken { [self] result in
             switch result {
             case .success(let accessToken):
-                do {
-                    let request = try Request(accessToken: accessToken, properties: input)
-                    activity = service.send(request, completion: handleRequestResult)
-                } catch {
-                    handleRequestError(error)
+                let clientInfo = APIClientInfo.current !! {
+                    preconditionFailure("Required client info is unavailable")
                 }
+                var request = input
+                request.headerFields = request.headerFields + clientInfo.encodeAsHTTPHeaders()
+                request.headerFields["Authorization"] = "Bearer " + accessToken
+                activity = service.send(request, completion: handleRequestResult)
             case .failure(let error):
                 handleAuthenticationError(error)
             }

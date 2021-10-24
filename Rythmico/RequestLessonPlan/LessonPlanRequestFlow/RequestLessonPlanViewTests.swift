@@ -62,8 +62,8 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 }
 
-private extension CreateLessonPlanRequest.Body {
-    static let stub = CreateLessonPlanRequest.Body(
+private extension CreateLessonPlanRequest {
+    static let stub = CreateLessonPlanRequest(
         instrument: .guitar,
         student: .davidStub,
         address: .stub,

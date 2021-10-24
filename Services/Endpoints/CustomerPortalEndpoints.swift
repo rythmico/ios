@@ -1,12 +1,9 @@
 import APIKit
 
-struct GetCustomerPortalURLRequest: RythmicoAPIRequest {
-    let accessToken: String
-    let properties: Void
-
+struct GetCustomerPortalURLRequest: RythmicoAPIRequest, EmptyInitProtocol {
     let method: HTTPMethod = .get
     let path: String = "/customer-portal-url"
+    var headerFields: [String: String] = [:]
 
     typealias Response = StripeCustomerPortal
-    typealias Error = RythmicoAPIError
 }

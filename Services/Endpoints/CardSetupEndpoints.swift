@@ -1,12 +1,9 @@
 import APIKit
 
-struct GetCardSetupCredentialRequest: RythmicoAPIRequest {
-    let accessToken: String
-    let properties: Void
-
+struct GetCardSetupCredentialRequest: RythmicoAPIRequest, EmptyInitProtocol {
     let method: HTTPMethod = .get
     let path: String = "/card-setup"
+    var headerFields: [String: String] = [:]
 
     typealias Response = CardSetupCredential
-    typealias Error = RythmicoAPIError
 }

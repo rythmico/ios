@@ -2,26 +2,25 @@ import FoundationEncore
 import APIKit
 
 struct AddressSearchRequest: RythmicoAPIRequest {
-    struct Properties {
-        var postcode: String
+    struct BlankPostcodeError: LocalizedError {
+        let errorDescription: String? = "Postcode must not be empty"
     }
 
-    let accessToken: String
-    let properties: Properties
+    var postcode: String
 
-    init(accessToken: String, properties: Properties) throws {
-        let postcode = try properties.postcode
+    init(postcode: String) throws {
+        let postcode = try postcode
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .replacingOccurrences(of: String.whitespace, with: String.empty)
             .lowercased()
-            .nilIfBlank ?! Error(message: "Postcode must not be empty")
+            .nilIfBlank ?! BlankPostcodeError()
 
-        self.accessToken = accessToken
-        self.properties = .init(postcode: postcode)
+        self.postcode = postcode
     }
 
     let method: HTTPMethod = .get
-    var path: String { "/address-lookup/" + self.postcode }
+    var path: String { "/address-lookup/" + postcode }
+    var headerFields: [String: String] = [:]
 
     func intercept(urlRequest: URLRequest) throws -> URLRequest {
         urlRequest => (\.cachePolicy, .returnCacheDataElseLoad)
@@ -47,15 +46,6 @@ extension AddressSearchRequest {
         var latitude: Double
         var longitude: Double
         var addresses: [Address]
-    }
-
-    struct Error: LocalizedError, Decodable {
-        var message: String
-        var errorDescription: String? { message }
-
-        private enum CodingKeys: String, CodingKey {
-            case message = "Message"
-        }
     }
 }
 

@@ -93,12 +93,12 @@ class ActivityCoordinator<Input, Output>: ObservableObject {
     }
 }
 
-extension ActivityCoordinator where Input == Void {
-    func start() { start(with: ()) }
-    func startToIdle() { startToIdle(with: ()) }
+extension ActivityCoordinator where Input: EmptyInitProtocol {
+    func start() { start(with: .init()) }
+    func startToIdle() { startToIdle(with: .init()) }
 
-    func run() { run(with: ()) }
-    func runToIdle() { runToIdle(with: ()) }
+    func run() { run(with: .init()) }
+    func runToIdle() { runToIdle(with: .init()) }
 }
 
 // TODO: abstract Error to be able to identify error types and show different alerts.

@@ -38,7 +38,7 @@ struct LessonPlanCancellationView: View, TestableView {
     var error: Error? { coordinator.output?.error }
 
     func submit(_ reason: LessonPlan.CancellationInfo.Reason) {
-        coordinator.run(with: (lessonPlanId: lessonPlan.id, body: .init(reason: reason)))
+        coordinator.run(with: .init(lessonPlanID: lessonPlan.id, reason: reason))
     }
 
     let inspection = SelfInspection()

@@ -157,7 +157,7 @@ struct AppEnvironment {
         let apiActivityErrorHandler = APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator, settings: settings)
         self.apiActivityErrorHandler = apiActivityErrorHandler
 
-        func coordinator<R: AuthorizedAPIRequest>(for service: APIServiceBase<R>) -> APIActivityCoordinator<R> {
+        func coordinator<R: RythmicoAPIRequest>(for service: APIServiceBase<R>) -> APIActivityCoordinator<R> {
             APIActivityCoordinator(
                 userCredentialProvider: userCredentialProvider,
                 deauthenticationService: deauthenticationService,
