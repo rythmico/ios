@@ -7,6 +7,6 @@ import TutorDTO
 // TODO: use existentials in Swift 5.6
 // https://github.com/apple/swift-evolution/blob/main/proposals/0309-unlock-existential-types-for-all-protocols.md
 
-protocol PushNotificationEventHandlerProtocol {
+protocol APIEventHandlerProtocol {
     func handle(_ event: APIEvent)
 }

@@ -20,7 +20,6 @@ struct MainView: View, TestableView {
             content: content, tabTitle: \.title, tabIcons: icon
         )
         .testable(self)
-        .onAppear(perform: Current.deviceRegisterCoordinator.registerDevice)
     }
 
     @ViewBuilder

@@ -14,14 +14,9 @@ final class PushNotificationAuthorizationCoordinator: ObservableObject {
     private(set) var status: Status = .notDetermined
 
     private let center: UNUserNotificationCenterProtocol
-    private let registerService: PushNotificationRegisterServiceProtocol
 
-    init(
-        center: UNUserNotificationCenterProtocol,
-        registerService: PushNotificationRegisterServiceProtocol
-    ) {
+    init(center: UNUserNotificationCenterProtocol) {
         self.center = center
-        self.registerService = registerService
         refreshAuthorizationStatus()
     }
 
@@ -54,7 +49,6 @@ final class PushNotificationAuthorizationCoordinator: ObservableObject {
                 } else {
                     if granted {
                         status = .authorized
-                        registerService.registerForRemoteNotifications()
                     } else {
                         status = .denied
                     }

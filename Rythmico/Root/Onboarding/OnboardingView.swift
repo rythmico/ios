@@ -39,7 +39,6 @@ struct OnboardingView: View, TestableView {
         .allowsHitTesting(!isLoading)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isLoading)
         .testable(self)
-        .onAppear(perform: Current.deviceUnregisterCoordinator.unregisterDevice)
         .onSuccess(coordinator, perform: handleAuthenticationSuccess)
         .multiModal {
             $0.alertOnFailure(coordinator, onDismiss: coordinator.dismissFailure)

@@ -17,12 +17,9 @@
 		032215572497034A009D48A8 /* LessonPlanSummaryTutorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032215562497034A009D48A8 /* LessonPlanSummaryTutorStatusView.swift */; };
 		03275AD5248FDB38009C3980 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AD4248FDB38009C3980 /* AppEnvironment.swift */; };
 		03275AD7249001E9009C3980 /* UNUserNotificationCenterDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AD6249001E9009C3980 /* UNUserNotificationCenterDoubles.swift */; };
-		03275AD924900422009C3980 /* PushNotificationRegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AD824900422009C3980 /* PushNotificationRegisterService.swift */; };
-		03275ADB249004C0009C3980 /* PushNotificationRegisterServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275ADA249004C0009C3980 /* PushNotificationRegisterServiceDoubles.swift */; };
-		03275AE3249070D5009C3980 /* DeviceEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE2249070D5009C3980 /* DeviceEndpoints.swift */; };
-		03275AE5249071DB009C3980 /* DeviceTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE4249071DB009C3980 /* DeviceTokenProvider.swift */; };
-		03275AE724907462009C3980 /* DeviceTokenDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE624907462009C3980 /* DeviceTokenDeleter.swift */; };
-		03275AE92490769E009C3980 /* DeviceTokenDeleterDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE82490769E009C3980 /* DeviceTokenDeleterDoubles.swift */; };
+		03275AD924900422009C3980 /* APNSRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AD824900422009C3980 /* APNSRegistrationService.swift */; };
+		03275ADB249004C0009C3980 /* APNSRegistrationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275ADA249004C0009C3980 /* APNSRegistrationServiceDoubles.swift */; };
+		03275AE3249070D5009C3980 /* APNSTokenEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE2249070D5009C3980 /* APNSTokenEndpoints.swift */; };
 		032B6FCB24B7877600299A09 /* BookingRequestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FC924B7875300299A09 /* BookingRequestDoubles.swift */; };
 		032B6FCC24B7877B00299A09 /* BookingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032B6FC524B783C000299A09 /* BookingRequest.swift */; };
 		032B6FCD24B7879300299A09 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF6702445E0FB002D8F5B /* Schedule.swift */; };
@@ -83,12 +80,7 @@
 		035B1D53249E582800AABFEA /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6ED2447DFF900F6391D /* Animation.swift */; };
 		035B1D5B249E5E6E00AABFEA /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = 035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */; };
 		035B1D5E249E5EEC00AABFEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */; };
-		035B1D60249E63CD00AABFEA /* DeviceTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE4249071DB009C3980 /* DeviceTokenProvider.swift */; };
-		035B1D61249E63D400AABFEA /* DeviceTokenDeleter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE624907462009C3980 /* DeviceTokenDeleter.swift */; };
-		035B1D62249E63D800AABFEA /* DeviceEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE2249070D5009C3980 /* DeviceEndpoints.swift */; };
-		035B1D63249E63EC00AABFEA /* DeviceRegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C902472D85A00B44692 /* DeviceRegisterCoordinator.swift */; };
-		035B1D64249E642800AABFEA /* DeviceTokenProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A91EF52491887A00DEAD5E /* DeviceTokenProviderDoubles.swift */; };
-		035B1D66249E643400AABFEA /* DeviceTokenDeleterDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE82490769E009C3980 /* DeviceTokenDeleterDoubles.swift */; };
+		035B1D62249E63D800AABFEA /* APNSTokenEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE2249070D5009C3980 /* APNSTokenEndpoints.swift */; };
 		035B1D67249E644C00AABFEA /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336D62B241EAAF6006CFC1F /* APIRequest.swift */; };
 		035B1D69249E645E00AABFEA /* APIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1D68249E645E00AABFEA /* APIKit */; };
 		035B1D6D249E674000AABFEA /* GoogleService-Info-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = 035B1D6C249E674000AABFEA /* GoogleService-Info-Release.plist */; };
@@ -101,7 +93,6 @@
 		03A3F6EE2447DFF900F6391D /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6ED2447DFF900F6391D /* Animation.swift */; };
 		03A8116E241D1DAF0091B9ED /* StudentDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */; };
 		03A91EF2249186EC00DEAD5E /* AppEnvironmentDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A91EF1249186EC00DEAD5E /* AppEnvironmentDoubles.swift */; };
-		03A91EF62491887A00DEAD5E /* DeviceTokenProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A91EF52491887A00DEAD5E /* DeviceTokenProviderDoubles.swift */; };
 		03A91EF8249189E000DEAD5E /* PushNotificationAuthorizationCoordinatorDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A91EF7249189E000DEAD5E /* PushNotificationAuthorizationCoordinatorDoubles.swift */; };
 		03AAF66C2444FFCC002D8F5B /* Pickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF66B2444FFCC002D8F5B /* Pickers.swift */; };
 		03AAF6712445E0FB002D8F5B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AAF6702445E0FB002D8F5B /* Schedule.swift */; };
@@ -116,7 +107,6 @@
 		03B198542471BBE8005529EB /* App+PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198532471BBE8005529EB /* App+PushNotifications.swift */; };
 		03B198562471BD6C005529EB /* PushNotificationAuthorizationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198552471BD6C005529EB /* PushNotificationAuthorizationCoordinator.swift */; };
 		03B198582471BD82005529EB /* LessonPlanConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B198572471BD82005529EB /* LessonPlanConfirmationView.swift */; };
-		03BB5C912472D85A00B44692 /* DeviceRegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C902472D85A00B44692 /* DeviceRegisterCoordinator.swift */; };
 		03BB5C962473070C00B44692 /* ReviewRequestViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BB5C952473070C00B44692 /* ReviewRequestViewTests.swift */; };
 		03C39DD424967E5B00C76516 /* TitleContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DD324967E5B00C76516 /* TitleContentView.swift */; };
 		03C39DD62496802500C76516 /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C39DD52496802500C76516 /* Pill.swift */; };
@@ -204,8 +194,8 @@
 		D524D0C1250468D200BC9AF7 /* PushNotificationAuthorizationCoordinatorDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A91EF7249189E000DEAD5E /* PushNotificationAuthorizationCoordinatorDoubles.swift */; };
 		D524D0C225046B9100BC9AF7 /* UNUserNotificationCenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF30C2491B7C3004A01B2 /* UNUserNotificationCenterProtocol.swift */; };
 		D524D0C325046B9800BC9AF7 /* UNUserNotificationCenterDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AD6249001E9009C3980 /* UNUserNotificationCenterDoubles.swift */; };
-		D524D0C425046BA900BC9AF7 /* PushNotificationRegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AD824900422009C3980 /* PushNotificationRegisterService.swift */; };
-		D524D0C525046BAE00BC9AF7 /* PushNotificationRegisterServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275ADA249004C0009C3980 /* PushNotificationRegisterServiceDoubles.swift */; };
+		D524D0C425046BA900BC9AF7 /* APNSRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AD824900422009C3980 /* APNSRegistrationService.swift */; };
+		D524D0C525046BAE00BC9AF7 /* APNSRegistrationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275ADA249004C0009C3980 /* APNSRegistrationServiceDoubles.swift */; };
 		D527B00924FD2047003E81A9 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B00824FD2047003E81A9 /* AvatarView.swift */; };
 		D527B00B24FD3297003E81A9 /* AvatarStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B00A24FD3297003E81A9 /* AvatarStackView.swift */; };
 		D527B00E24FE75C1003E81A9 /* ImageLoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527B00C24FDC7AF003E81A9 /* ImageLoadingService.swift */; };
@@ -468,12 +458,12 @@
 		D5BDD8A72511989500706EC1 /* TutorAcceptedStatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD8A62511989500706EC1 /* TutorAcceptedStatusPill.swift */; };
 		D5BF12B325068E7000B2931C /* PushNotificationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12B225068E7000B2931C /* PushNotificationEvent.swift */; };
 		D5BF12B425068E7000B2931C /* PushNotificationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12B225068E7000B2931C /* PushNotificationEvent.swift */; };
-		D5BF12B92506924300B2931C /* PushNotificationEventHandler+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12B82506924300B2931C /* PushNotificationEventHandler+Rythmico.swift */; };
-		D5BF12BB2506926900B2931C /* PushNotificationEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12BA2506926900B2931C /* PushNotificationEventHandler.swift */; };
-		D5BF12BC2506926900B2931C /* PushNotificationEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12BA2506926900B2931C /* PushNotificationEventHandler.swift */; };
-		D5BF12BE2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12BD2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift */; };
-		D5BF12BF2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12BD2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift */; };
-		D5BF12C1250693C500B2931C /* PushNotificationEventHandler+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12C0250693C500B2931C /* PushNotificationEventHandler+Tutor.swift */; };
+		D5BF12B92506924300B2931C /* APIEventHandler+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12B82506924300B2931C /* APIEventHandler+Rythmico.swift */; };
+		D5BF12BB2506926900B2931C /* APIEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12BA2506926900B2931C /* APIEventHandler.swift */; };
+		D5BF12BC2506926900B2931C /* APIEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12BA2506926900B2931C /* APIEventHandler.swift */; };
+		D5BF12BE2506932C00B2931C /* APIEventHandlerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12BD2506932C00B2931C /* APIEventHandlerDoubles.swift */; };
+		D5BF12BF2506932C00B2931C /* APIEventHandlerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12BD2506932C00B2931C /* APIEventHandlerDoubles.swift */; };
+		D5BF12C1250693C500B2931C /* APIEventHandler+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12C0250693C500B2931C /* APIEventHandler+Tutor.swift */; };
 		D5C23A74240EFDCB007DED63 /* MainViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03341B4223ABB1E7009AE8A8 /* MainViewTests.swift */; };
 		D5C76E9425F405E200739267 /* EKEventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C76E9325F405E200739267 /* EKEventStore.swift */; };
 		D5C76E9525F405E200739267 /* EKEventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C76E9325F405E200739267 /* EKEventStore.swift */; };
@@ -597,9 +587,7 @@
 		D5FAE6742559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FAE6732559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift */; };
 		D5FAE6862559DF8300473A8B /* PhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FAE6852559DF8300473A8B /* PhoneNumberCell.swift */; };
 		D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */; };
-		D5FC2D42254A7DE3005056D5 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D41254A7DE3005056D5 /* FirebaseMessaging */; };
 		D5FC2D51254A7E21005056D5 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D50254A7E21005056D5 /* FirebaseCrashlytics */; };
-		D5FC2D53254A7E21005056D5 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D52254A7E21005056D5 /* FirebaseMessaging */; };
 		D5FD6F16240AF535008C5AD4 /* StudentDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD6F15240AF535008C5AD4 /* StudentDetailsViewTests.swift */; };
 		D5FE1A6026A6E96800567F48 /* LessonPlansView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FE1A5F26A6E96800567F48 /* LessonPlansView.swift */; };
 		D5FE1A6226A70B3D00567F48 /* LessonPlansCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FE1A6126A70B3D00567F48 /* LessonPlansCollectionView.swift */; };
@@ -657,12 +645,9 @@
 		032215562497034A009D48A8 /* LessonPlanSummaryTutorStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanSummaryTutorStatusView.swift; sourceTree = "<group>"; };
 		03275AD4248FDB38009C3980 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		03275AD6249001E9009C3980 /* UNUserNotificationCenterDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNUserNotificationCenterDoubles.swift; sourceTree = "<group>"; };
-		03275AD824900422009C3980 /* PushNotificationRegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationRegisterService.swift; sourceTree = "<group>"; };
-		03275ADA249004C0009C3980 /* PushNotificationRegisterServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationRegisterServiceDoubles.swift; sourceTree = "<group>"; };
-		03275AE2249070D5009C3980 /* DeviceEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceEndpoints.swift; sourceTree = "<group>"; };
-		03275AE4249071DB009C3980 /* DeviceTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTokenProvider.swift; sourceTree = "<group>"; };
-		03275AE624907462009C3980 /* DeviceTokenDeleter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTokenDeleter.swift; sourceTree = "<group>"; };
-		03275AE82490769E009C3980 /* DeviceTokenDeleterDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTokenDeleterDoubles.swift; sourceTree = "<group>"; };
+		03275AD824900422009C3980 /* APNSRegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APNSRegistrationService.swift; sourceTree = "<group>"; };
+		03275ADA249004C0009C3980 /* APNSRegistrationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APNSRegistrationServiceDoubles.swift; sourceTree = "<group>"; };
+		03275AE2249070D5009C3980 /* APNSTokenEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APNSTokenEndpoints.swift; sourceTree = "<group>"; };
 		032B6FC524B783C000299A09 /* BookingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequest.swift; sourceTree = "<group>"; };
 		032B6FC924B7875300299A09 /* BookingRequestDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestDoubles.swift; sourceTree = "<group>"; };
 		032B6FD324B7881C00299A09 /* InstrumentExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentExtensions.swift; sourceTree = "<group>"; };
@@ -706,7 +691,6 @@
 		03A3F6ED2447DFF900F6391D /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		03A8116D241D1DAF0091B9ED /* StudentDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDoubles.swift; sourceTree = "<group>"; };
 		03A91EF1249186EC00DEAD5E /* AppEnvironmentDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironmentDoubles.swift; sourceTree = "<group>"; };
-		03A91EF52491887A00DEAD5E /* DeviceTokenProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTokenProviderDoubles.swift; sourceTree = "<group>"; };
 		03A91EF7249189E000DEAD5E /* PushNotificationAuthorizationCoordinatorDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationAuthorizationCoordinatorDoubles.swift; sourceTree = "<group>"; };
 		03AAF66B2444FFCC002D8F5B /* Pickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pickers.swift; sourceTree = "<group>"; };
 		03AAF66D2445E03B002D8F5B /* SchedulingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulingViewTests.swift; sourceTree = "<group>"; };
@@ -720,7 +704,6 @@
 		03B198532471BBE8005529EB /* App+PushNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "App+PushNotifications.swift"; sourceTree = "<group>"; };
 		03B198552471BD6C005529EB /* PushNotificationAuthorizationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationAuthorizationCoordinator.swift; sourceTree = "<group>"; };
 		03B198572471BD82005529EB /* LessonPlanConfirmationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonPlanConfirmationView.swift; sourceTree = "<group>"; };
-		03BB5C902472D85A00B44692 /* DeviceRegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRegisterCoordinator.swift; sourceTree = "<group>"; };
 		03BB5C952473070C00B44692 /* ReviewRequestViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestViewTests.swift; sourceTree = "<group>"; };
 		03C39DD324967E5B00C76516 /* TitleContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleContentView.swift; sourceTree = "<group>"; };
 		03C39DD52496802500C76516 /* Pill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
@@ -998,10 +981,10 @@
 		D5BDD88625117E5300706EC1 /* LessonPlanRequestedScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanRequestedScheduleView.swift; sourceTree = "<group>"; };
 		D5BDD8A62511989500706EC1 /* TutorAcceptedStatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorAcceptedStatusPill.swift; sourceTree = "<group>"; };
 		D5BF12B225068E7000B2931C /* PushNotificationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationEvent.swift; sourceTree = "<group>"; };
-		D5BF12B82506924300B2931C /* PushNotificationEventHandler+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationEventHandler+Rythmico.swift"; sourceTree = "<group>"; };
-		D5BF12BA2506926900B2931C /* PushNotificationEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationEventHandler.swift; sourceTree = "<group>"; };
-		D5BF12BD2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationEventHandlerDoubles.swift; sourceTree = "<group>"; };
-		D5BF12C0250693C500B2931C /* PushNotificationEventHandler+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationEventHandler+Tutor.swift"; sourceTree = "<group>"; };
+		D5BF12B82506924300B2931C /* APIEventHandler+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIEventHandler+Rythmico.swift"; sourceTree = "<group>"; };
+		D5BF12BA2506926900B2931C /* APIEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEventHandler.swift; sourceTree = "<group>"; };
+		D5BF12BD2506932C00B2931C /* APIEventHandlerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEventHandlerDoubles.swift; sourceTree = "<group>"; };
+		D5BF12C0250693C500B2931C /* APIEventHandler+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIEventHandler+Tutor.swift"; sourceTree = "<group>"; };
 		D5C76E9325F405E200739267 /* EKEventStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKEventStore.swift; sourceTree = "<group>"; };
 		D5C76E9825F4075200739267 /* CalendarSyncStatusProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSyncStatusProviderDoubles.swift; sourceTree = "<group>"; };
 		D5CAC9AB24E6D19900119DAA /* MultilineTextField+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultilineTextField+Rythmico.swift"; sourceTree = "<group>"; };
@@ -1113,7 +1096,6 @@
 				D535547723DF3A19005A20EB /* Valet in Frameworks */,
 				D56C6A98264AC80C00A2599E /* ComposableNavigator in Frameworks */,
 				D5AC9E3B254D9533003A8197 /* FirebaseRemoteConfig in Frameworks */,
-				D5FC2D42254A7DE3005056D5 /* FirebaseMessaging in Frameworks */,
 				D58BC99B2702312F00120A45 /* StudentDTOEncore in Frameworks */,
 				D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */,
 				D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */,
@@ -1127,7 +1109,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5FC2D53254A7E21005056D5 /* FirebaseMessaging in Frameworks */,
 				D5947C9826A39E9600355857 /* ComposableNavigator in Frameworks */,
 				D5439DDC26D5278B00D69CE8 /* SwiftUIEncore in Frameworks */,
 				035B1CD7249CF7EB00AABFEA /* Valet in Frameworks */,
@@ -1363,19 +1344,6 @@
 			path = PrivateNote;
 			sourceTree = "<group>";
 		};
-		03A91EF924918A4700DEAD5E /* DeviceRegistration */ = {
-			isa = PBXGroup;
-			children = (
-				03275AE2249070D5009C3980 /* DeviceEndpoints.swift */,
-				03BB5C902472D85A00B44692 /* DeviceRegisterCoordinator.swift */,
-				03275AE624907462009C3980 /* DeviceTokenDeleter.swift */,
-				03275AE82490769E009C3980 /* DeviceTokenDeleterDoubles.swift */,
-				03275AE4249071DB009C3980 /* DeviceTokenProvider.swift */,
-				03A91EF52491887A00DEAD5E /* DeviceTokenProviderDoubles.swift */,
-			);
-			path = DeviceRegistration;
-			sourceTree = "<group>";
-		};
 		03A91EFA24918AEC00DEAD5E /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -1483,17 +1451,13 @@
 		03BB5CA02473467500B44692 /* PushNotifications */ = {
 			isa = PBXGroup;
 			children = (
-				035AF30C2491B7C3004A01B2 /* UNUserNotificationCenterProtocol.swift */,
-				03275AD6249001E9009C3980 /* UNUserNotificationCenterDoubles.swift */,
-				03275AD824900422009C3980 /* PushNotificationRegisterService.swift */,
-				03275ADA249004C0009C3980 /* PushNotificationRegisterServiceDoubles.swift */,
+				03275AD824900422009C3980 /* APNSRegistrationService.swift */,
+				03275ADA249004C0009C3980 /* APNSRegistrationServiceDoubles.swift */,
 				03B198552471BD6C005529EB /* PushNotificationAuthorizationCoordinator.swift */,
-				03A91EF7249189E000DEAD5E /* PushNotificationAuthorizationCoordinatorDoubles.swift */,
 				D575C876254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift */,
-				D5BF12BA2506926900B2931C /* PushNotificationEventHandler.swift */,
-				D5BF12BD2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift */,
-				D5BF12B82506924300B2931C /* PushNotificationEventHandler+Rythmico.swift */,
-				D5BF12C0250693C500B2931C /* PushNotificationEventHandler+Tutor.swift */,
+				03A91EF7249189E000DEAD5E /* PushNotificationAuthorizationCoordinatorDoubles.swift */,
+				03275AD6249001E9009C3980 /* UNUserNotificationCenterDoubles.swift */,
+				035AF30C2491B7C3004A01B2 /* UNUserNotificationCenterProtocol.swift */,
 			);
 			path = PushNotifications;
 			sourceTree = "<group>";
@@ -1557,7 +1521,6 @@
 				D535549823E0FA4A005A20EB /* Auth */,
 				D55C35DC25A3A5C10023E56B /* Calendar */,
 				D501586625373D8B005E02FA /* Card */,
-				03A91EF924918A4700DEAD5E /* DeviceRegistration */,
 				D527B01B24FEAD1A003E81A9 /* Endpoints */,
 				D588E883266D137600E14288 /* ErrorLogger */,
 				D527B01924FEAC97003E81A9 /* ImageLoading */,
@@ -1863,6 +1826,10 @@
 				D549F8B826FFA3350087A20C /* APIError.swift */,
 				D549219C25BB28F700251FD2 /* APIError+Rythmico.swift */,
 				D54921A125BB290C00251FD2 /* APIError+Tutor.swift */,
+				D5BF12BA2506926900B2931C /* APIEventHandler.swift */,
+				D5BF12B82506924300B2931C /* APIEventHandler+Rythmico.swift */,
+				D5BF12C0250693C500B2931C /* APIEventHandler+Tutor.swift */,
+				D5BF12BD2506932C00B2931C /* APIEventHandlerDoubles.swift */,
 				0336D62B241EAAF6006CFC1F /* APIRequest.swift */,
 				03E88EB324C4AA4C0077A420 /* APIService.swift */,
 				03E88EB924C6232D0077A420 /* APIServiceDoubles.swift */,
@@ -1876,6 +1843,7 @@
 				0365F6F42417F1E900F452AC /* AddressLookupEndpoints.swift */,
 				D5F4D3E224F04479000E8580 /* BookingApplicationEndpoints.swift */,
 				D5E58F0D256AF1E500EB52ED /* BookingEndpoints.swift */,
+				03275AE2249070D5009C3980 /* APNSTokenEndpoints.swift */,
 				032B6FDC24B78A5200299A09 /* BookingRequestEndpoints.swift */,
 				D52A4F182538C41400C65A91 /* CardSetupEndpoints.swift */,
 				D55354EA26C08DF700E77CC4 /* CustomerPortalEndpoints.swift */,
@@ -2381,7 +2349,6 @@
 				03B19836247053F5005529EB /* APIKit */,
 				D5D78DD6252502CE007041BE /* PhoneNumberKit */,
 				D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */,
-				D5FC2D41254A7DE3005056D5 /* FirebaseMessaging */,
 				D5AC9E3A254D9533003A8197 /* FirebaseRemoteConfig */,
 				D53668FC255EEDEF00A9D97D /* Stripe */,
 				D59E4E6025B20ADA00E8F94C /* YouTubeiOSPlayerHelper */,
@@ -2417,7 +2384,6 @@
 				035B1CD6249CF7EB00AABFEA /* Valet */,
 				035B1D68249E645E00AABFEA /* APIKit */,
 				D5FC2D50254A7E21005056D5 /* FirebaseCrashlytics */,
-				D5FC2D52254A7E21005056D5 /* FirebaseMessaging */,
 				D575C836254F10F0001664AB /* FirebaseRemoteConfig */,
 				D5F4AE8A2559D46A001085D5 /* PhoneNumberKit */,
 				D5947C9726A39E9600355857 /* ComposableNavigator */,
@@ -2787,7 +2753,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5BF12B92506924300B2931C /* PushNotificationEventHandler+Rythmico.swift in Sources */,
+				D5BF12B92506924300B2931C /* APIEventHandler+Rythmico.swift in Sources */,
 				D5F89394263F4B0500578970 /* LessonScheduleView.swift in Sources */,
 				03341B3F23ABB1E7009AE8A8 /* AppExtensions.swift in Sources */,
 				D5B4A20526CED857006EAD18 /* AppView.swift in Sources */,
@@ -2912,7 +2878,6 @@
 				D5B8E08B26BADC7500A46705 /* LessonDetailBoxView.swift in Sources */,
 				D54CF08B25FA8696007D5050 /* AnalyticsServiceDoubles.swift in Sources */,
 				0336D62C241EAAF6006CFC1F /* APIRequest.swift in Sources */,
-				03275AE5249071DB009C3980 /* DeviceTokenProvider.swift in Sources */,
 				031378C3249A722F005FC49C /* LessonPlanCancellationView.swift in Sources */,
 				D5F506BC2406C6A200CA4094 /* AddressDetailsView.swift in Sources */,
 				D5D78DE025250864007041BE /* LessonPlanBookingView.swift in Sources */,
@@ -2951,7 +2916,7 @@
 				035AF30A2491A54E004A01B2 /* VoiceOverServiceDoubles.swift in Sources */,
 				D5B4A1F626CD55D7006EAD18 /* AppStoreReviewPrompt.swift in Sources */,
 				03AAF6712445E0FB002D8F5B /* Schedule.swift in Sources */,
-				03275AE3249070D5009C3980 /* DeviceEndpoints.swift in Sources */,
+				03275AE3249070D5009C3980 /* APNSTokenEndpoints.swift in Sources */,
 				D527B01824FEABEB003E81A9 /* ActivityDoubles.swift in Sources */,
 				D5E8AC8825CB298000F663D3 /* InfoDisclaimerButton.swift in Sources */,
 				D5D9AEBE253694B400A0ABCC /* PhoneNumberInputView.swift in Sources */,
@@ -3005,14 +2970,12 @@
 				D5204F4926B62FB50085F8D0 /* Buttons+Student.swift in Sources */,
 				D549218A25BB27AE00251FD2 /* APIActivityErrorHandler+Student.swift in Sources */,
 				03AB22F3244CB13200DAC7DF /* PrivateNoteView.swift in Sources */,
-				03BB5C912472D85A00B44692 /* DeviceRegisterCoordinator.swift in Sources */,
 				D52A4F1E2538C59300C65A91 /* AddNewCardEntryView.swift in Sources */,
 				D517FFD02554A6E800A41639 /* LessonDetailView.swift in Sources */,
 				D516A92F253A6337002E6EDF /* LessonPlanConfirmationDetailsView.swift in Sources */,
 				D517FFAC2554849200A41639 /* LessonSummaryTutorStatusView.swift in Sources */,
 				03E88EAD24C1F6050077A420 /* App.swift in Sources */,
 				03B1983F24717A90005529EB /* LessonPlanDoubles.swift in Sources */,
-				03275AE92490769E009C3980 /* DeviceTokenDeleterDoubles.swift in Sources */,
 				D5CC5FF125029525007DFE84 /* ImageReference.swift in Sources */,
 				D55C360325A3DBB30023E56B /* CalendarSyncStatusProvider.swift in Sources */,
 				D564F4642511722900EA13E9 /* TabMenuView.swift in Sources */,
@@ -3024,7 +2987,7 @@
 				D527B01524FEAA5C003E81A9 /* ImageLoadingCoordinator.swift in Sources */,
 				D5D9AE4F253367A100A0ABCC /* Divider.swift in Sources */,
 				D5F89392263F3E4100578970 /* LessonPlanScheduleView.swift in Sources */,
-				03275ADB249004C0009C3980 /* PushNotificationRegisterServiceDoubles.swift in Sources */,
+				03275ADB249004C0009C3980 /* APNSRegistrationServiceDoubles.swift in Sources */,
 				D55C35D725A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */,
 				03275AD5248FDB38009C3980 /* AppEnvironment.swift in Sources */,
 				D57DE179264DC26400C5E118 /* ProfileCell.swift in Sources */,
@@ -3033,7 +2996,6 @@
 				D5E987B924ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */,
 				D5AAF7DD23FB431E00E410F2 /* InstrumentView.swift in Sources */,
 				D53555BC23E53699005A20EB /* UserCredentialProvider.swift in Sources */,
-				03A91EF62491887A00DEAD5E /* DeviceTokenProviderDoubles.swift in Sources */,
 				D56B2531252D1A8100BC3932 /* StripePaymentCardTextField.swift in Sources */,
 				D5C76E9425F405E200739267 /* EKEventStore.swift in Sources */,
 				D52438F9268A522A00E2D859 /* LessonPlanIDDoubles.swift in Sources */,
@@ -3045,7 +3007,6 @@
 				D501587D25375F3B005E02FA /* TutorProfileHeaderView.swift in Sources */,
 				D5883CEA25A4189D000B545C /* CalendarSyncCoordinator.swift in Sources */,
 				D5B056A225B21843000D0046 /* DirectURLVideoPlayerView.swift in Sources */,
-				03275AE724907462009C3980 /* DeviceTokenDeleter.swift in Sources */,
 				D535555023E4AB9A005A20EB /* ActivityIndicator.swift in Sources */,
 				D57DE183264DCE2800C5E118 /* ProfileParentInfoCell.swift in Sources */,
 				D5B8E08126B95F9200A46705 /* SelectableItemView.swift in Sources */,
@@ -3060,7 +3021,7 @@
 				D527B01724FEAA62003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */,
 				D5B4A20826CEDC82006EAD18 /* TwoSidedText.swift in Sources */,
 				D5E8F67F2724F48600895D45 /* SIWAEndpoints.swift in Sources */,
-				D5BF12BB2506926900B2931C /* PushNotificationEventHandler.swift in Sources */,
+				D5BF12BB2506926900B2931C /* APIEventHandler.swift in Sources */,
 				0365F6F02417E79000F452AC /* Address.swift in Sources */,
 				D5ED326126065FEC00821ABE /* NonEditableTextField.swift in Sources */,
 				D527B02224FEC53D003E81A9 /* TutorAvatarView.swift in Sources */,
@@ -3072,7 +3033,7 @@
 				D59D0593251828EA0070D81B /* App+Playback.swift in Sources */,
 				D5989BD125168B0100BED8A6 /* PortfolioPhotoCarouselView.swift in Sources */,
 				D5D9AEB425368AAA00A0ABCC /* LessonPlanPriceView.swift in Sources */,
-				D5BF12BE2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift in Sources */,
+				D5BF12BE2506932C00B2931C /* APIEventHandlerDoubles.swift in Sources */,
 				D588E881266D137400E14288 /* ErrorLoggerDoubles.swift in Sources */,
 				D54EFF192513D690004F14D3 /* Portfolio.swift in Sources */,
 				D5BDD502253B406300255190 /* TabSelection.swift in Sources */,
@@ -3090,7 +3051,7 @@
 				D517FF9F25547E3700A41639 /* LessonSummaryCell.swift in Sources */,
 				03FE8190244E169200C5C184 /* ReviewRequestView.swift in Sources */,
 				D5CAC9AC24E6D19900119DAA /* MultilineTextField+Rythmico.swift in Sources */,
-				03275AD924900422009C3980 /* PushNotificationRegisterService.swift in Sources */,
+				03275AD924900422009C3980 /* APNSRegistrationService.swift in Sources */,
 				D54EFF1E2513D69A004F14D3 /* PortfolioDoubles.swift in Sources */,
 				D5F7A5132597B92100A9FF56 /* ImageOverlayModifier.swift in Sources */,
 				D54EFF142513D5BF004F14D3 /* TutorProfileDetailsView.swift in Sources */,
@@ -3142,11 +3103,10 @@
 				03E88E8D24BC8C1D0077A420 /* AppContext.swift in Sources */,
 				D5E58F09256AF09800EB52ED /* BookingsView.swift in Sources */,
 				035B1D10249E561C00AABFEA /* RootView.swift in Sources */,
-				035B1D64249E642800AABFEA /* DeviceTokenProviderDoubles.swift in Sources */,
 				D5FA706926A34CDA00E6FF30 /* OnboardingViewCore.swift in Sources */,
 				D549219325BB27E700251FD2 /* APIActivityErrorHandler.swift in Sources */,
 				03E88EB224C205C30077A420 /* Current.swift in Sources */,
-				D5BF12BC2506926900B2931C /* PushNotificationEventHandler.swift in Sources */,
+				D5BF12BC2506926900B2931C /* APIEventHandler.swift in Sources */,
 				D5B4A20326CEB983006EAD18 /* Publisher+Sugar.swift in Sources */,
 				D527B01424FEA2DE003E81A9 /* ImageLoadingCoordinator.swift in Sources */,
 				D5444FF02602815000369BA5 /* ImageProcessingServiceDoubles.swift in Sources */,
@@ -3202,8 +3162,7 @@
 				035B1D42249E577700AABFEA /* SIWACredentialRevocationNotifier.swift in Sources */,
 				D5B4A20026CEACE5006EAD18 /* Images.swift in Sources */,
 				D5947C9A26A3A1CD00355857 /* TabSelection.swift in Sources */,
-				035B1D62249E63D800AABFEA /* DeviceEndpoints.swift in Sources */,
-				035B1D63249E63EC00AABFEA /* DeviceRegisterCoordinator.swift in Sources */,
+				035B1D62249E63D800AABFEA /* APNSTokenEndpoints.swift in Sources */,
 				035B1D4E249E57D100AABFEA /* KeychainDoubles.swift in Sources */,
 				035B1D51249E57F100AABFEA /* HashFunction+Helpers.swift in Sources */,
 				D55C360425A3DBB30023E56B /* CalendarSyncStatusProvider.swift in Sources */,
@@ -3223,14 +3182,12 @@
 				D5E9FC8426C0101200625DAE /* AppOriginClientDoubles.swift in Sources */,
 				D527B00E24FE75C1003E81A9 /* ImageLoadingService.swift in Sources */,
 				D5CCC33225A4C66A00E25B62 /* ProfileView.swift in Sources */,
-				D5BF12C1250693C500B2931C /* PushNotificationEventHandler+Tutor.swift in Sources */,
+				D5BF12C1250693C500B2931C /* APIEventHandler+Tutor.swift in Sources */,
 				D5DE2897260A6BC6002BAB43 /* CustomTextFieldInputAccessory.swift in Sources */,
 				D5FAE6862559DF8300473A8B /* PhoneNumberCell.swift in Sources */,
 				D575C869254F2F26001664AB /* ImageAsset+Sugar.swift in Sources */,
 				035B1D45249E577700AABFEA /* SIWAAuthorizationResponseDoubles.swift in Sources */,
-				035B1D60249E63CD00AABFEA /* DeviceTokenProvider.swift in Sources */,
 				D5D7E2FE256DB8920081F8F7 /* LessonStudentDetailView.swift in Sources */,
-				035B1D61249E63D400AABFEA /* DeviceTokenDeleter.swift in Sources */,
 				D5E58F2E256B023E00EB52ED /* LessonSummaryCell.swift in Sources */,
 				D575C84E254F29BD001664AB /* Assets.generated.swift in Sources */,
 				03E88EB824C4B0F40077A420 /* Repository.swift in Sources */,
@@ -3240,11 +3197,10 @@
 				D5AC9E2D254D8AE2003A8197 /* AppLauncher.swift in Sources */,
 				035B1D13249E563A00AABFEA /* OnboardingView.swift in Sources */,
 				035B1D3F249E577700AABFEA /* SIWACredentialDoubles.swift in Sources */,
-				035B1D66249E643400AABFEA /* DeviceTokenDeleterDoubles.swift in Sources */,
 				D575C831254F10E1001664AB /* RemoteConfigService.swift in Sources */,
 				D5E58F18256AF2BA00EB52ED /* Student.swift in Sources */,
-				D524D0C525046BAE00BC9AF7 /* PushNotificationRegisterServiceDoubles.swift in Sources */,
-				D524D0C425046BA900BC9AF7 /* PushNotificationRegisterService.swift in Sources */,
+				D524D0C525046BAE00BC9AF7 /* APNSRegistrationServiceDoubles.swift in Sources */,
+				D524D0C425046BA900BC9AF7 /* APNSRegistrationService.swift in Sources */,
 				035B1D30249E571B00AABFEA /* VoiceOverService.swift in Sources */,
 				D549F8BA26FFA3350087A20C /* APIError.swift in Sources */,
 				D5AC9E27254D8AD7003A8197 /* AppDoubles.swift in Sources */,
@@ -3293,7 +3249,7 @@
 				D575C82F254F10E1001664AB /* RemoteConfigCoordinator.swift in Sources */,
 				D5F4D3F324F32EBE000E8580 /* BookingApplicationSection.swift in Sources */,
 				035B1D47249E577700AABFEA /* SIWAAuthorizationServiceDoubles.swift in Sources */,
-				D5BF12BF2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift in Sources */,
+				D5BF12BF2506932C00B2931C /* APIEventHandlerDoubles.swift in Sources */,
 				035B1D48249E577700AABFEA /* SIWAAuthorizationController.swift in Sources */,
 				D54CF08525F91255007D5050 /* AppSecrets.swift in Sources */,
 				D5F4D3F124F31E14000E8580 /* BookingApplicationGroupCell.swift in Sources */,
@@ -4107,20 +4063,10 @@
 			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
 		};
-		D5FC2D41254A7DE3005056D5 /* FirebaseMessaging */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseMessaging;
-		};
 		D5FC2D50254A7E21005056D5 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
-		};
-		D5FC2D52254A7E21005056D5 /* FirebaseMessaging */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseMessaging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

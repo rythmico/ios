@@ -2,7 +2,6 @@ import SwiftUIEncore
 import ComposableNavigator
 import UserNotifications
 import EventKit
-import Firebase
 
 struct AppEnvironment {
     var tabSelection: TabSelection
@@ -37,11 +36,10 @@ struct AppEnvironment {
 
     var apiActivityErrorHandler: APIActivityErrorHandlerProtocol
 
-    var deviceRegisterCoordinator: DeviceRegisterCoordinator
-    var deviceUnregisterCoordinator: DeviceUnregisterCoordinator
-
+    var apnsRegistrationService: APNSRegistrationServiceProtocol
+    var registerAPNSTokenCoordinator: APIActivityCoordinator<RegisterAPNSTokenRequest>
     var pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator
-    var pushNotificationEventHandler: PushNotificationEventHandlerProtocol
+    var apiEventHandler: APIEventHandlerProtocol
 
     var calendarSyncCoordinator: CalendarSyncCoordinator
 
@@ -92,12 +90,10 @@ struct AppEnvironment {
 
         errorLogger: (UserCredentialProviderBase) -> ErrorLoggerProtocol,
 
-        deviceTokenProvider: DeviceTokenProvider,
-        deviceRegisterService: APIServiceBase<AddDeviceRequest>,
-        deviceTokenDeleter: DeviceTokenDeleter,
-
+        apnsRegistrationService: APNSRegistrationServiceProtocol,
+        registerAPNSTokenService: APIServiceBase<RegisterAPNSTokenRequest>,
         pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator,
-        pushNotificationEventHandler: PushNotificationEventHandlerProtocol,
+        apiEventHandler: APIEventHandlerProtocol,
 
         calendarSyncStatusProvider: CalendarSyncStatusProviderBase,
         calendarInfoFetchingService: APIServiceBase<GetCalendarInfoRequest>,
@@ -167,12 +163,11 @@ struct AppEnvironment {
         self.siwaCoordinator = { coordinator(for: siwaService) }
         self.userCredentialProvider = userCredentialProvider
 
-        self.deviceRegisterCoordinator = DeviceRegisterCoordinator(deviceTokenProvider: deviceTokenProvider, apiCoordinator: coordinator(for: deviceRegisterService))
-        self.deviceUnregisterCoordinator = DeviceUnregisterCoordinator(deviceTokenDeleter: deviceTokenDeleter)
-
+        self.apnsRegistrationService = apnsRegistrationService
+        self.registerAPNSTokenCoordinator = coordinator(for: registerAPNSTokenService)
         self.pushNotificationAuthorizationCoordinator = pushNotificationAuthorizationCoordinator
-        self.pushNotificationEventHandler = pushNotificationEventHandler
-
+        self.apiEventHandler = apiEventHandler
+        
         self.calendarSyncCoordinator = CalendarSyncCoordinator(
             calendarSyncStatusProvider: calendarSyncStatusProvider,
             calendarInfoFetchingCoordinator: coordinator(for: calendarInfoFetchingService),
@@ -240,15 +235,12 @@ extension AppEnvironment {
 
         errorLogger: { ErrorLogger(crashlyticsLogger: .crashlytics(), userCredentialProvider: $0) },
 
-        deviceTokenProvider: Messaging.messaging(),
-        deviceRegisterService: APIService(),
-        deviceTokenDeleter: Messaging.messaging(),
-
+        apnsRegistrationService: UIApplication.shared,
+        registerAPNSTokenService: APIService(),
         pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator(
-            center: UNUserNotificationCenter.current(),
-            registerService: UIApplication.shared
+            center: UNUserNotificationCenter.current()
         ),
-        pushNotificationEventHandler: PushNotificationEventHandler(),
+        apiEventHandler: APIEventHandler(),
 
         calendarSyncStatusProvider: CalendarSyncStatusProvider(accessProvider: EKEventStore()),
         calendarInfoFetchingService: APIService(),

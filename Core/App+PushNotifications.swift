@@ -1,23 +1,21 @@
 import UIKit
-import FirebaseMessaging
 #if RYTHMICO
 import StudentDTO
 #elseif TUTOR
 import TutorDTO
 #endif
 
-extension App.Delegate: MessagingDelegate, UNUserNotificationCenterDelegate {
+extension App.Delegate: UNUserNotificationCenterDelegate {
     func configurePushNotifications(application: UIApplication) {
-        Messaging.messaging().delegate = self
         UNUserNotificationCenter.current().delegate = self
-        application.registerForRemoteNotifications()
     }
 
     func application(
         _ application: UIApplication,
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
     ) {
-        Messaging.messaging().apnsToken = deviceToken
+        let deviceToken = deviceToken.map { String(format: "%02x", $0) }.joined()
+        Current.registerAPNSTokenCoordinator.runToIdle(with: .init(deviceToken: deviceToken))
     }
 
     // Handle silent notifications ("events"). This function catches all notification types.
@@ -37,19 +35,16 @@ extension App.Delegate: MessagingDelegate, UNUserNotificationCenterDelegate {
             break
         }
 
-        APIEvent(userInfo: userInfo).map(Current.pushNotificationEventHandler.handle)
+        APIEvent(userInfo: userInfo).map(Current.apiEventHandler.handle)
     }
 
-    // Show notifications in-app (without sound/vibration or badge).
+    // Show notifications in-app (without badge).
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         willPresent notification: UNNotification,
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
     ) {
-        defer { completionHandler([.list, .banner]) }
-
-        let userInfo = notification.request.content.userInfo
-        Messaging.messaging().appDidReceiveMessage(userInfo)
+        completionHandler([.banner, .list, .sound])
     }
 
     // Handle foreground/background notification taps.
@@ -60,9 +55,7 @@ extension App.Delegate: MessagingDelegate, UNUserNotificationCenterDelegate {
     ) {
         defer { completionHandler() }
 
-        let userInfo = response.notification.request.content.userInfo
-        Messaging.messaging().appDidReceiveMessage(userInfo)
-
         // TODO: parse and handle userInfo ~> Route
+        // let userInfo = response.notification.request.content.userInfo
     }
 }

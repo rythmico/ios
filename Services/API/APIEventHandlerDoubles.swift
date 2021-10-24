@@ -5,7 +5,7 @@ import StudentDTO
 import TutorDTO
 #endif
 
-final class PushNotificationEventHandlerSpy: PushNotificationEventHandlerProtocol {
+final class APIEventHandlerSpy: APIEventHandlerProtocol {
     private(set) var latestEvent: APIEvent?
 
     func handle(_ event: APIEvent) {
@@ -13,6 +13,6 @@ final class PushNotificationEventHandlerSpy: PushNotificationEventHandlerProtoco
     }
 }
 
-final class PushNotificationEventHandlerDummy: PushNotificationEventHandlerProtocol {
+final class APIEventHandlerDummy: APIEventHandlerProtocol {
     func handle(_ event: APIEvent) {}
 }

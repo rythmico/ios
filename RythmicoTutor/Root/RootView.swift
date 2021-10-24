@@ -32,6 +32,9 @@ struct RootView: View, TestableView {
 //                Current.bookingApplicationRepository.reset()
                 Current.tabSelection.reset()
             }
+            Current.apnsRegistrationService.unregisterForRemoteNotifications()
+        } else {
+            Current.apnsRegistrationService.registerForRemoteNotifications()
         }
     }
 }

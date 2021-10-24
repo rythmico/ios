@@ -21,7 +21,6 @@ struct MainView: View, TestableView {
         )
         .testable(self)
         .accentColor(.rythmico.picoteeBlue)
-        .onAppear(perform: Current.deviceRegisterCoordinator.registerDevice)
         .onAppear(perform: Current.pushNotificationAuthorizationCoordinator.refreshAuthorizationStatus)
     }
 

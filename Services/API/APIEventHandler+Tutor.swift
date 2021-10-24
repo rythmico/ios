@@ -1,6 +1,6 @@
 import TutorDTO
 
-final class PushNotificationEventHandler: PushNotificationEventHandlerProtocol {
+final class APIEventHandler: APIEventHandlerProtocol {
     func handle(_ event: APIEvent) {
         switch event {
         case .unknown:

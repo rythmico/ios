@@ -27,6 +27,9 @@ struct RootView: View, TestableView {
                 Current.lessonPlanRepository.reset()
                 Current.tabSelection.reset()
             }
+            Current.apnsRegistrationService.unregisterForRemoteNotifications()
+        } else {
+            Current.apnsRegistrationService.registerForRemoteNotifications()
         }
     }
 }

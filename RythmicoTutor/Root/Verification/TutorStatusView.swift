@@ -23,7 +23,6 @@ struct TutorStatusView: View {
                 ActivityIndicator(color: .gray)
             }
         }
-        .onAppear(perform: Current.deviceRegisterCoordinator.registerDevice)
         .onAppear(perform: coordinator.run)
         .onEvent(.appInForeground, perform: coordinator.run)
         .onSuccess(coordinator, perform: tutorStatusFetched)

@@ -105,8 +105,7 @@ extension AppEnvironment {
             center: UNUserNotificationCenterStub(
                 authorizationStatus: initialStatus,
                 authorizationRequestResult: requestResult
-            ),
-            registerService: PushNotificationRegisterServiceDummy()
+            )
         )
     }
 

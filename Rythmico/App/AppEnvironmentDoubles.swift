@@ -58,12 +58,10 @@ extension AppEnvironment {
 
             errorLogger: { _ in ErrorLoggerDummy() },
 
-            deviceTokenProvider: DeviceTokenProviderDummy(),
-            deviceRegisterService: APIServiceDummy(),
-            deviceTokenDeleter: DeviceTokenDeleterDummy(),
-
+            apnsRegistrationService: APNSRegistrationServiceDummy(),
+            registerAPNSTokenService: APIServiceDummy(),
             pushNotificationAuthorizationCoordinator: .dummy,
-            pushNotificationEventHandler: PushNotificationEventHandlerDummy(),
+            apiEventHandler: APIEventHandlerDummy(),
 
             calendarSyncStatusProvider: CalendarSyncStatusProviderDummy(),
             calendarInfoFetchingService: APIServiceDummy(),

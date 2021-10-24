@@ -31,7 +31,6 @@ struct OnboardingView: View, TestableView {
             Current.voiceOver.announce("Welcome")
         }
         .testable(self)
-        .onAppear(perform: Current.deviceUnregisterCoordinator.unregisterDevice)
         .onSuccess(coordinator, perform: handleAuthenticationSuccess)
         .multiModal {
             $0.alertOnFailure(coordinator, onDismiss: coordinator.dismissFailure)
