@@ -1,5 +1,6 @@
-import FoundationEncore
 import APIKit
+import CoreDTO
+import FoundationEncore
 
 struct AddressSearchRequest: RythmicoAPIRequest {
     struct BlankPostcodeError: LocalizedError {
@@ -25,50 +26,6 @@ struct AddressSearchRequest: RythmicoAPIRequest {
     func intercept(urlRequest: URLRequest) throws -> URLRequest {
         urlRequest => (\.cachePolicy, .returnCacheDataElseLoad)
     }
-}
 
-extension AddressSearchRequest {
-    struct Response: Decodable {
-        struct Address: Decodable {
-            var line1, line2, line3, line4: String
-            var city: String
-            var country: String
-
-            private enum CodingKeys: String, CodingKey {
-                case line1 = "line_1", line2 = "line_2"
-                case line3 = "line_3", line4 = "line_4"
-                case city = "town_or_city"
-                case country
-            }
-        }
-
-        var postcode: String
-        var latitude: Double
-        var longitude: Double
-        var addresses: [Address]
-    }
-}
-
-extension AddressSearchRequest.Response {
-    static var stub: Self {
-        .init(
-            postcode: "TA3 0XS",
-            latitude: 0,
-            longitude: 0,
-            addresses: [.stub]
-        )
-    }
-}
-
-extension AddressSearchRequest.Response.Address {
-    static var stub: Self {
-        .init(
-            line1: "Apartment 30",
-            line2: "85 Shore Street",
-            line3: "",
-            line4: "",
-            city: "Stoke St Mary",
-            country: "England"
-        )
-    }
+    typealias Response = AddressLookupResponse
 }

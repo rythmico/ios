@@ -1,3 +1,4 @@
+import CoreDTO
 import FoundationEncore
 
 extension AnalyticsEvent {
@@ -16,7 +17,7 @@ extension AnalyticsEvent {
     static func lessonPlanProps(
         _ instrument: Instrument?,
         _ student: Student?,
-        _ address: Address?,
+        _ address: AddressProtocol?,
         _ schedule: Schedule?
     ) -> Props {
         if let instrument = instrument {

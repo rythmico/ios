@@ -1,3 +1,4 @@
+import CoreDTO
 import SwiftUIEncore
 
 struct ReviewRequestView: View, TestableView {
@@ -7,7 +8,7 @@ struct ReviewRequestView: View, TestableView {
     var flow: RequestLessonPlanFlow
     var instrument: Instrument
     var student: Student
-    var address: Address
+    var address: AddressLookupItem
     var schedule: Schedule
     var privateNote: String
 

@@ -535,6 +535,7 @@
 		D5E8F6802724F48600895D45 /* SIWAEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E8F67E2724F48600895D45 /* SIWAEndpoints.swift */; };
 		D5E8F6822724FE8800895D45 /* RootViewCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E8F6812724FE8800895D45 /* RootViewCore.swift */; };
 		D5E8F6832724FE8800895D45 /* RootViewCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E8F6812724FE8800895D45 /* RootViewCore.swift */; };
+		D5E8F6862725DC4000895D45 /* AddressLookupItemDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E8F6852725DC4000895D45 /* AddressLookupItemDoubles.swift */; };
 		D5E987B924ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
 		D5E987BA24ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
 		D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */; };
@@ -1042,6 +1043,7 @@
 		D5E8AC8725CB298000F663D3 /* InfoDisclaimerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDisclaimerButton.swift; sourceTree = "<group>"; };
 		D5E8F67E2724F48600895D45 /* SIWAEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIWAEndpoints.swift; sourceTree = "<group>"; };
 		D5E8F6812724FE8800895D45 /* RootViewCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewCore.swift; sourceTree = "<group>"; };
+		D5E8F6852725DC4000895D45 /* AddressLookupItemDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupItemDoubles.swift; sourceTree = "<group>"; };
 		D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Sugar.swift"; sourceTree = "<group>"; };
 		D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestsTabView.swift; sourceTree = "<group>"; };
 		D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationsView.swift; sourceTree = "<group>"; };
@@ -1541,6 +1543,7 @@
 			children = (
 				D5AFED3225047E17003FFC68 /* Activity */,
 				03B71325241D84B400DED025 /* Address */,
+				D5E8F6842725DC2A00895D45 /* AddressLookupItem */,
 				D5E58F12256AF20E00EB52ED /* Booking */,
 				D5F4D3E124F0429A000E8580 /* BookingApplication */,
 				032B6FC824B783D300299A09 /* BookingRequest */,
@@ -2263,6 +2266,14 @@
 			path = UserCredential;
 			sourceTree = "<group>";
 		};
+		D5E8F6842725DC2A00895D45 /* AddressLookupItem */ = {
+			isa = PBXGroup;
+			children = (
+				D5E8F6852725DC4000895D45 /* AddressLookupItemDoubles.swift */,
+			);
+			path = AddressLookupItem;
+			sourceTree = "<group>";
+		};
 		D5ED167526149B42001841ED /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -2854,6 +2865,7 @@
 				D527B00924FD2047003E81A9 /* AvatarView.swift in Sources */,
 				03021C4F248A769200C0C57E /* LessonPlanSummaryCell.swift in Sources */,
 				D5FE1A6226A70B3D00567F48 /* LessonPlansCollectionView.swift in Sources */,
+				D5E8F6862725DC4000895D45 /* AddressLookupItemDoubles.swift in Sources */,
 				D5D9AEC32537105400A0ABCC /* PaymentMethodChoiceList.swift in Sources */,
 				D518C2FD250EDD3300288A48 /* InfoBanner.swift in Sources */,
 				D5BDD8A72511989500706EC1 /* TutorAcceptedStatusPill.swift in Sources */,

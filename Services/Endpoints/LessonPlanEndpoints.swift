@@ -1,4 +1,5 @@
 import APIKit
+import CoreDTO
 import PhoneNumberKit
 
 struct GetLessonPlansRequest: RythmicoAPIRequest, EmptyInitProtocol {
@@ -12,7 +13,7 @@ struct GetLessonPlansRequest: RythmicoAPIRequest, EmptyInitProtocol {
 struct CreateLessonPlanRequest: RythmicoAPIRequest {
     var instrument: Instrument
     var student: Student
-    var address: Address
+    var address: AddressLookupItem
     var schedule: Schedule
     var privateNote: String
 
@@ -24,7 +25,7 @@ struct CreateLessonPlanRequest: RythmicoAPIRequest {
         struct Body: Encodable {
             var instrument: Instrument
             var student: Student
-            var address: Address
+            var address: AddressLookupItem
             var schedule: Schedule
             var privateNote: String
         }

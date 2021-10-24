@@ -1,3 +1,4 @@
+import CoreDTO
 import SwiftUIEncore
 
 struct AddressDetailsView: View, TestableView {
@@ -5,7 +6,7 @@ struct AddressDetailsView: View, TestableView {
 
     final class ViewState: ObservableObject {
         @Published var postcode = String()
-        @Published var selectedAddress: Address?
+        @Published var selectedAddress: AddressLookupItem?
     }
 
     var student: Student
@@ -14,7 +15,7 @@ struct AddressDetailsView: View, TestableView {
     private(set) var state: ViewState
     @ObservedObject
     private(set) var coordinator: SearchCoordinator
-    var setter: Binding<Address>.Setter
+    var setter: Binding<AddressLookupItem>.Setter
 
     @SpacedTextBuilder
     var subtitle: Text {
@@ -30,7 +31,7 @@ struct AddressDetailsView: View, TestableView {
 
     var isLoading: Bool { coordinator.state.isLoading }
     var error: Error? { postcodeError ?? coordinator.output?.error }
-    var addresses: [Address]? { coordinator.output?.value.map([Address].init) }
+    var addresses: [AddressLookupItem]? { coordinator.output?.value }
 
     @State
     private(set) var postcodeError: Error?
@@ -113,22 +114,6 @@ struct AddressDetailsView: View, TestableView {
         .alertOnFailure(coordinator)
         .testable(self)
         .onDisappear(perform: Current.keyboardDismisser.dismissKeyboard)
-    }
-}
-
-private extension Array where Element == Address {
-    init(_ response: AddressSearchRequest.Response) {
-        self = response.addresses.map {
-            Address(
-                latitude: response.latitude,
-                longitude: response.longitude,
-                line1: $0.line1, line2: $0.line2,
-                line3: $0.line3, line4: $0.line4,
-                city: $0.city,
-                postcode: response.postcode,
-                country: $0.country
-            )
-        }
     }
 }
 

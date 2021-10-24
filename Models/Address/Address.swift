@@ -1,6 +1,7 @@
+import CoreDTO
 import FoundationEncore
 
-struct Address: Hashable, Equatable, Codable {
+struct Address: AddressProtocol, Hashable, Equatable, Codable {
     var latitude: Double
     var longitude: Double
     var line1: String
@@ -19,7 +20,7 @@ extension Address: Identifiable {
 // TODO: use iOS 15's custom FormatStyles
 // https://emptytheory.com/2021/08/14/creating-custom-parseable-format-styles-in-ios-15/
 
-extension Address {
+extension AddressProtocol {
     var multipleLineFormattedString: String {
         [
             line1,
