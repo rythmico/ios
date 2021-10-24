@@ -76,7 +76,7 @@ struct LessonsView: View, TestableView {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing: trailingItem)
         .testable(self)
-        // TODO: reintroduce on API migration
+        // TODO: reintroduce on API migration. Re-enable LessonsViewTests.swift & MainViewTests.swift.
 //        .onReceive(shouldFetchPublisher(), perform: fetch)
         // FIXME: double HTTP request for some reason
 //        .onDisappear(perform: coordinator.cancel)
