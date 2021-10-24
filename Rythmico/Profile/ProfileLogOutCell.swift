@@ -16,6 +16,6 @@ struct ProfileLogOutCell: View {
     }
 
     func logOut() {
-        Current.deauthenticationService.deauthenticate()
+        Current.userCredentialProvider.userCredential = nil
     }
 }

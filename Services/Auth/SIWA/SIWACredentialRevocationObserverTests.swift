@@ -3,12 +3,12 @@ import XCTest
 @testable import Rythmico
 import class AuthenticationServices.ASAuthorizationAppleIDProvider
 
-final class AppleAuthorizationCredentialRevocationNotifierTests: XCTestCase {
+final class SIWACredentialRevocationNotifierTests: XCTestCase {
     func testRevocationHandlerNotificationCenterProperlySetUpAndHandled() {
         let expectation = self.expectation(description: "Revocation handler called")
 
         let center = NotificationCenterSpy(returnedToken: 1)
-        let observer = AppleAuthorizationCredentialRevocationNotifier(notificationCenter: center)
+        let observer = SIWACredentialRevocationNotifier(notificationCenter: center)
 
         XCTAssertNil(center.notificationName)
         XCTAssertNil(center.observerBlock)
@@ -30,7 +30,7 @@ final class AppleAuthorizationCredentialRevocationNotifierTests: XCTestCase {
         let expectationB = self.expectation(description: "Revocation handler called once")
 
         let center = NotificationCenterSpy(returnedToken: 1)
-        let observer = AppleAuthorizationCredentialRevocationNotifier(notificationCenter: center)
+        let observer = SIWACredentialRevocationNotifier(notificationCenter: center)
 
         observer.revocationHandler = {
             expectationA.fulfill()

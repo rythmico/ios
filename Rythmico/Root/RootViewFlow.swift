@@ -10,7 +10,7 @@ final class RootViewFlow: Flow {
     @Published private(set) var step: Step
 
     init(userCredentialProvider provider: UserCredentialProviderBase = Current.userCredentialProvider) {
-        func step(for user: UserCredentialProtocol?) -> Step {
+        func step(for user: UserCredential?) -> Step {
             user == nil ? .onboarding : .mainView
         }
 

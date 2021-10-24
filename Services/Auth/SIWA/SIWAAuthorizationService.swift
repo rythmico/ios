@@ -2,25 +2,25 @@ import FoundationEncore
 import AuthenticationServices
 import CryptoKit
 
-protocol AppleAuthorizationServiceProtocol {
-    typealias Credential = AppleAuthorizationCredential
+protocol SIWAAuthorizationServiceProtocol {
+    typealias Credential = SIWACredential
     typealias Error = ASAuthorizationError
     typealias AuthorizationResult = Result<Credential, Error>
 
     func requestAuthorization(nonce: String, completionHandler: @escaping Handler<AuthorizationResult>)
 }
 
-extension AppleAuthorizationServiceProtocol {
+extension SIWAAuthorizationServiceProtocol {
     func requestAuthorization(completionHandler: @escaping Handler<AuthorizationResult>) {
         requestAuthorization(nonce: UUID().uuidString, completionHandler: completionHandler)
     }
 }
 
-final class AppleAuthorizationService: AppleAuthorizationServiceProtocol {
-    private var delegate: AppleAuthorizationCompletionDelegate!
-    private let controllerType: AppleAuthorizationControllerProtocol.Type
+final class SIWAAuthorizationService: SIWAAuthorizationServiceProtocol {
+    private var delegate: SIWAAuthorizationCompletionDelegate!
+    private let controllerType: SIWAAuthorizationControllerProtocol.Type
 
-    init(controllerType: AppleAuthorizationControllerProtocol.Type) {
+    init(controllerType: SIWAAuthorizationControllerProtocol.Type) {
         self.controllerType = controllerType
     }
 
@@ -30,18 +30,26 @@ final class AppleAuthorizationService: AppleAuthorizationServiceProtocol {
         request.nonce = SHA256.hashString(utf8String: nonce)
 
         let controller = controllerType.init(authorizationRequests: [request])
-        delegate = AppleAuthorizationCompletionDelegate { result in
+        delegate = SIWAAuthorizationCompletionDelegate { result in
             switch result {
             case .success(let response):
                 guard let identityToken = response.identityToken else {
-                    let error = ASAuthorizationError(.invalidResponse, userInfo: ["details": "Credential of type ASAuthorizationAppleIDCredential returned unexpected nil value for identityToken property."])
+                    let error = ASAuthorizationError(
+                        _nsError: NSError(
+                            domain: ASAuthorizationErrorDomain,
+                            code: ASAuthorizationError.invalidResponse.rawValue,
+                            localizedDescription: "ASAuthorizationAppleIDCredential.identityToken is unexpectedly nil."
+                        )
+                    )
                     completionHandler(.failure(error))
                     return
                 }
                 let credential = Credential(
-                    userId: response.userId,
-                    fullName: response.fullName.map(PersonNameComponentsFormatter().string(from:)),
-                    email: response.email,
+                    userInfo: Credential.UserInfo(
+                        userID: response.userID,
+                        name: response.fullName.map(PersonNameComponentsFormatter().string(from:)),
+                        email: response.email
+                    ),
                     identityToken: String(decoding: identityToken, as: UTF8.self),
                     nonce: nonce
                 )

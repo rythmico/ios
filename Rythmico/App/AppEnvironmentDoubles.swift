@@ -50,12 +50,11 @@ extension AppEnvironment {
             accessibilitySettings: .dummy,
             voiceOver: VoiceOverServiceDummy.self,
 
-            appleAuthorizationService: AppleAuthorizationServiceDummy(),
-            appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcherDummy(),
-            appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifierDummy(),
-            authenticationService: AuthenticationServiceDummy(),
-            deauthenticationService: DeauthenticationServiceDummy(),
-            userCredentialProvider: UserCredentialProviderDummy(),
+            siwaAuthorizationService: SIWAAuthorizationServiceDummy(),
+            siwaService: APIServiceDummy(),
+            userCredentialProvider: { _ in UserCredentialProviderDummy() },
+            siwaCredentialStateProvider: SIWACredentialStateFetcherDummy(),
+            siwaCredentialRevocationNotifier: SIWACredentialRevocationNotifierDummy(),
 
             errorLogger: { _ in ErrorLoggerDummy() },
 

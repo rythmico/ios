@@ -29,12 +29,11 @@ struct AppEnvironment {
     var accessibilitySettings: AccessibilitySettings
     var voiceOver: VoiceOverServiceProtocol.Type
 
-    var appleAuthorizationService: AppleAuthorizationServiceProtocol
-    var appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider
-    var appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifying
-    var authenticationService: AuthenticationServiceProtocol
-    var deauthenticationService: DeauthenticationServiceProtocol
+    var siwaAuthorizationService: SIWAAuthorizationServiceProtocol
+    var siwaCoordinator: () -> APIActivityCoordinator<SIWARequest>
     var userCredentialProvider: UserCredentialProviderBase
+    var siwaCredentialStateProvider: SIWACredentialStateProvider
+    var siwaCredentialRevocationNotifier: SIWACredentialRevocationNotifying
 
     var errorLogger: ErrorLoggerProtocol
 
@@ -100,12 +99,11 @@ struct AppEnvironment {
         accessibilitySettings: AccessibilitySettings,
         voiceOver: VoiceOverServiceProtocol.Type,
 
-        appleAuthorizationService: AppleAuthorizationServiceProtocol,
-        appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider,
-        appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifying,
-        authenticationService: AuthenticationServiceProtocol,
-        deauthenticationService: DeauthenticationServiceProtocol,
-        userCredentialProvider: UserCredentialProviderBase,
+        siwaAuthorizationService: SIWAAuthorizationServiceProtocol,
+        siwaService: APIServiceBase<SIWARequest>,
+        userCredentialProvider: (KeychainProtocol) -> UserCredentialProviderBase,
+        siwaCredentialStateProvider: SIWACredentialStateProvider,
+        siwaCredentialRevocationNotifier: SIWACredentialRevocationNotifying,
 
         errorLogger: (UserCredentialProviderBase) -> ErrorLoggerProtocol,
 
@@ -173,26 +171,28 @@ struct AppEnvironment {
         self.accessibilitySettings = accessibilitySettings
         self.voiceOver = voiceOver
 
-        self.appleAuthorizationService = appleAuthorizationService
-        self.appleAuthorizationCredentialStateProvider = appleAuthorizationCredentialStateProvider
-        self.appleAuthorizationCredentialRevocationNotifier = appleAuthorizationCredentialRevocationNotifier
-        self.authenticationService = authenticationService
-        self.deauthenticationService = deauthenticationService
-        self.userCredentialProvider = userCredentialProvider
-
+        let userCredentialProvider = userCredentialProvider(keychain)
         self.errorLogger = errorLogger(userCredentialProvider)
 
-        let apiActivityErrorHandler = APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator)
+        let apiActivityErrorHandler = APIActivityErrorHandler(
+            userCredentialProvider: userCredentialProvider,
+            remoteConfigCoordinator: remoteConfigCoordinator
+        )
         self.apiActivityErrorHandler = apiActivityErrorHandler
 
         func coordinator<R: RythmicoAPIRequest>(for service: APIServiceBase<R>) -> APIActivityCoordinator<R> {
             APIActivityCoordinator(
                 userCredentialProvider: userCredentialProvider,
-                deauthenticationService: deauthenticationService,
                 errorHandler: apiActivityErrorHandler,
                 service: service
             )
         }
+
+        self.siwaAuthorizationService = siwaAuthorizationService
+        self.siwaCredentialStateProvider = siwaCredentialStateProvider
+        self.siwaCredentialRevocationNotifier = siwaCredentialRevocationNotifier
+        self.siwaCoordinator = { coordinator(for: siwaService) }
+        self.userCredentialProvider = userCredentialProvider
 
         self.deviceRegisterCoordinator = DeviceRegisterCoordinator(deviceTokenProvider: deviceTokenProvider, apiCoordinator: coordinator(for: deviceRegisterService))
         self.deviceUnregisterCoordinator = DeviceUnregisterCoordinator(deviceTokenDeleter: deviceTokenDeleter)
@@ -279,12 +279,11 @@ extension AppEnvironment {
         ),
         voiceOver: UIAccessibility.self,
 
-        appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
-        appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
-        appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifier(notificationCenter: .default),
-        authenticationService: AuthenticationService(),
-        deauthenticationService: DeauthenticationService(),
-        userCredentialProvider: UserCredentialProvider(emitter: UserCredentialEmitter()),
+        siwaAuthorizationService: SIWAAuthorizationService(controllerType: SIWAAuthorizationController.self),
+        siwaService: APIService(),
+        userCredentialProvider: UserCredentialProvider.init,
+        siwaCredentialStateProvider: SIWACredentialStateFetcher(),
+        siwaCredentialRevocationNotifier: SIWACredentialRevocationNotifier(notificationCenter: .default),
 
         errorLogger: { ErrorLogger(crashlyticsLogger: .crashlytics(), userCredentialProvider: $0) },
 

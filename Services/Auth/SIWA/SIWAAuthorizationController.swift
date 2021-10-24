@@ -1,8 +1,8 @@
 import AuthenticationServices
 
-typealias AppleAuthorizationController = ASAuthorizationController
+typealias SIWAAuthorizationController = ASAuthorizationController
 
-protocol AppleAuthorizationControllerProtocol: AnyObject {
+protocol SIWAAuthorizationControllerProtocol: AnyObject {
     typealias Request = ASAuthorizationRequest
     typealias Delegate = ASAuthorizationControllerDelegate
 
@@ -14,4 +14,4 @@ protocol AppleAuthorizationControllerProtocol: AnyObject {
     func performRequests()
 }
 
-extension AppleAuthorizationController: AppleAuthorizationControllerProtocol {}
+extension SIWAAuthorizationController: SIWAAuthorizationControllerProtocol {}

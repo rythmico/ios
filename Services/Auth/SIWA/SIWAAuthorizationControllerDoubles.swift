@@ -1,7 +1,7 @@
 import FoundationEncore
 
-final class AppleAuthorizationControllerSpy: AppleAuthorizationControllerProtocol {
-    static var didInit: Handler<AppleAuthorizationControllerSpy>?
+final class SIWAAuthorizationControllerSpy: SIWAAuthorizationControllerProtocol {
+    static var didInit: Handler<SIWAAuthorizationControllerSpy>?
 
     let authorizationRequests: [Request]
     var didSetDelegate: Handler<Delegate>?

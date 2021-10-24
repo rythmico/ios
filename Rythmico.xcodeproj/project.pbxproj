@@ -38,7 +38,7 @@
 		0336D62C241EAAF6006CFC1F /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336D62B241EAAF6006CFC1F /* APIRequest.swift */; };
 		033D47D1247777100096C50F /* LessonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033D47D0247777100096C50F /* LessonsView.swift */; };
 		033D47D6247ABF6B0096C50F /* LessonPlanEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033D47D5247ABF6B0096C50F /* LessonPlanEndpoints.swift */; };
-		035AF30524919FEF004A01B2 /* AppleAuthorizationCredentialDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF30424919FEF004A01B2 /* AppleAuthorizationCredentialDoubles.swift */; };
+		035AF30524919FEF004A01B2 /* SIWACredentialDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF30424919FEF004A01B2 /* SIWACredentialDoubles.swift */; };
 		035AF3082491A51D004A01B2 /* VoiceOverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF3072491A51D004A01B2 /* VoiceOverService.swift */; };
 		035AF30A2491A54E004A01B2 /* VoiceOverServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF3092491A54E004A01B2 /* VoiceOverServiceDoubles.swift */; };
 		035AF30D2491B7C3004A01B2 /* UNUserNotificationCenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF30C2491B7C3004A01B2 /* UNUserNotificationCenterProtocol.swift */; };
@@ -58,30 +58,23 @@
 		035B1D1A249E568600AABFEA /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D19249E568600AABFEA /* AppEnvironment.swift */; };
 		035B1D30249E571B00AABFEA /* VoiceOverService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF3072491A51D004A01B2 /* VoiceOverService.swift */; };
 		035B1D32249E572900AABFEA /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67C24776C6C00FBE527 /* URLOpener.swift */; };
-		035B1D33249E576900AABFEA /* AuthenticationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561F23CE92AE00BC8485 /* AuthenticationError.swift */; };
-		035B1D34249E576900AABFEA /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BC423C7AAA900B6FCB1 /* AuthenticationService.swift */; };
-		035B1D35249E576900AABFEA /* DeauthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547B23DF4D30005A20EB /* DeauthenticationService.swift */; };
-		035B1D36249E576900AABFEA /* DeauthenticationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554223E1DFEC005A20EB /* DeauthenticationServiceDoubles.swift */; };
-		035B1D37249E576900AABFEA /* AuthenticationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B13B2D23D125E6006CBC46 /* AuthenticationServiceDoubles.swift */; };
 		035B1D38249E576900AABFEA /* UserCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B13B2B23D12520006CBC46 /* UserCredential.swift */; };
 		035B1D39249E576900AABFEA /* UserCredentialDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B13B2F23D1265F006CBC46 /* UserCredentialDoubles.swift */; };
 		035B1D3A249E576900AABFEA /* UserCredentialProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A32DBC23D139C000F3903C /* UserCredentialProvider.swift */; };
 		035B1D3B249E576900AABFEA /* UserCredentialProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554023E1DF8B005A20EB /* UserCredentialProviderDoubles.swift */; };
-		035B1D3C249E576900AABFEA /* UserCredentialEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170923D671FD00954D50 /* UserCredentialEmitter.swift */; };
-		035B1D3D249E576900AABFEA /* UserCredentialEmitterDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170B23D6725B00954D50 /* UserCredentialEmitterDoubles.swift */; };
-		035B1D3E249E577700AABFEA /* AppleAuthorizationCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561223CD4B2C00BC8485 /* AppleAuthorizationCredential.swift */; };
-		035B1D3F249E577700AABFEA /* AppleAuthorizationCredentialDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF30424919FEF004A01B2 /* AppleAuthorizationCredentialDoubles.swift */; };
-		035B1D40249E577700AABFEA /* AppleAuthorizationCredentialStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546A23DCB65A005A20EB /* AppleAuthorizationCredentialStateProvider.swift */; };
-		035B1D41249E577700AABFEA /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553A23E1DD1A005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift */; };
-		035B1D42249E577700AABFEA /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546C23DF212C005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift */; };
-		035B1D43249E577700AABFEA /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553C23E1DE15005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift */; };
-		035B1D44249E577700AABFEA /* AppleAuthorizationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561023CD457800BC8485 /* AppleAuthorizationResponse.swift */; };
-		035B1D45249E577700AABFEA /* AppleAuthorizationResponseDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546823DCB03E005A20EB /* AppleAuthorizationResponseDoubles.swift */; };
-		035B1D46249E577700AABFEA /* AppleAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BC123C69D0400B6FCB1 /* AppleAuthorizationService.swift */; };
-		035B1D47249E577700AABFEA /* AppleAuthorizationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */; };
-		035B1D48249E577700AABFEA /* AppleAuthorizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */; };
-		035B1D49249E577700AABFEA /* AppleAuthorizationControllerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560B23CD342E00BC8485 /* AppleAuthorizationControllerDoubles.swift */; };
-		035B1D4A249E577700AABFEA /* AppleAuthorizationCompletionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509899023BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift */; };
+		035B1D3E249E577700AABFEA /* SIWACredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561223CD4B2C00BC8485 /* SIWACredential.swift */; };
+		035B1D3F249E577700AABFEA /* SIWACredentialDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF30424919FEF004A01B2 /* SIWACredentialDoubles.swift */; };
+		035B1D40249E577700AABFEA /* SIWACredentialStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546A23DCB65A005A20EB /* SIWACredentialStateProvider.swift */; };
+		035B1D41249E577700AABFEA /* SIWACredentialStateProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553A23E1DD1A005A20EB /* SIWACredentialStateProviderDoubles.swift */; };
+		035B1D42249E577700AABFEA /* SIWACredentialRevocationNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546C23DF212C005A20EB /* SIWACredentialRevocationNotifier.swift */; };
+		035B1D43249E577700AABFEA /* SIWACredentialRevocationObserverDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553C23E1DE15005A20EB /* SIWACredentialRevocationObserverDoubles.swift */; };
+		035B1D44249E577700AABFEA /* SIWAAuthorizationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561023CD457800BC8485 /* SIWAAuthorizationResponse.swift */; };
+		035B1D45249E577700AABFEA /* SIWAAuthorizationResponseDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546823DCB03E005A20EB /* SIWAAuthorizationResponseDoubles.swift */; };
+		035B1D46249E577700AABFEA /* SIWAAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BC123C69D0400B6FCB1 /* SIWAAuthorizationService.swift */; };
+		035B1D47249E577700AABFEA /* SIWAAuthorizationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560523CA937800BC8485 /* SIWAAuthorizationServiceDoubles.swift */; };
+		035B1D48249E577700AABFEA /* SIWAAuthorizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560923CD27A800BC8485 /* SIWAAuthorizationController.swift */; };
+		035B1D49249E577700AABFEA /* SIWAAuthorizationControllerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560B23CD342E00BC8485 /* SIWAAuthorizationControllerDoubles.swift */; };
+		035B1D4A249E577700AABFEA /* SIWAAuthorizationCompletionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509899023BA7CE200C19300 /* SIWAAuthorizationCompletionDelegate.swift */; };
 		035B1D4B249E578D00AABFEA /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547823DF3A7C005A20EB /* Keychain.swift */; };
 		035B1D4E249E57D100AABFEA /* KeychainDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547D23DF4F44005A20EB /* KeychainDoubles.swift */; };
 		035B1D4F249E57DC00AABFEA /* VoiceOverServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035AF3092491A54E004A01B2 /* VoiceOverServiceDoubles.swift */; };
@@ -101,8 +94,6 @@
 		035B1D6D249E674000AABFEA /* GoogleService-Info-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = 035B1D6C249E674000AABFEA /* GoogleService-Info-Release.plist */; };
 		035B1D73249E6AEB00AABFEA /* MainViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D08249D115B00AABFEA /* MainViewTests.swift */; };
 		035B1D74249E6B2D00AABFEA /* XCTAssertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147507240C8E69002EE20C /* XCTAssertView.swift */; };
-		035B1D76249E6D0100AABFEA /* OnboardingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D75249E6D0100AABFEA /* OnboardingViewTests.swift */; };
-		035B1D78249E6D3B00AABFEA /* RootViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D77249E6D3B00AABFEA /* RootViewTests.swift */; };
 		0365F6F02417E79000F452AC /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6EF2417E79000F452AC /* Address.swift */; };
 		0365F6F52417F1E900F452AC /* AddressLookupEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6F42417F1E900F452AC /* AddressLookupEndpoints.swift */; };
 		0372E35A249ABAB80048B402 /* ChoiceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0372E359249ABAB80048B402 /* ChoiceList.swift */; };
@@ -244,37 +235,27 @@
 		D535547723DF3A19005A20EB /* Valet in Frameworks */ = {isa = PBXBuildFile; productRef = D535547623DF3A19005A20EB /* Valet */; };
 		D535547923DF3A7C005A20EB /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547823DF3A7C005A20EB /* Keychain.swift */; };
 		D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547D23DF4F44005A20EB /* KeychainDoubles.swift */; };
-		D535553623E105A5005A20EB /* OnboardingViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553523E105A5005A20EB /* OnboardingViewTests.swift */; };
-		D535553823E116C9005A20EB /* RootViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553723E116C9005A20EB /* RootViewTests.swift */; };
 		D535554723E20076005A20EB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554623E20076005A20EB /* Colors.swift */; };
 		D535555023E4AB9A005A20EB /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */; };
-		D53555B523E53699005A20EB /* AuthenticationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561F23CE92AE00BC8485 /* AuthenticationError.swift */; };
-		D53555B623E53699005A20EB /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BC423C7AAA900B6FCB1 /* AuthenticationService.swift */; };
-		D53555B723E53699005A20EB /* DeauthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547B23DF4D30005A20EB /* DeauthenticationService.swift */; };
-		D53555B823E53699005A20EB /* DeauthenticationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554223E1DFEC005A20EB /* DeauthenticationServiceDoubles.swift */; };
-		D53555B923E53699005A20EB /* AuthenticationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B13B2D23D125E6006CBC46 /* AuthenticationServiceDoubles.swift */; };
 		D53555BA23E53699005A20EB /* UserCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B13B2B23D12520006CBC46 /* UserCredential.swift */; };
 		D53555BB23E53699005A20EB /* UserCredentialDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B13B2F23D1265F006CBC46 /* UserCredentialDoubles.swift */; };
 		D53555BC23E53699005A20EB /* UserCredentialProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A32DBC23D139C000F3903C /* UserCredentialProvider.swift */; };
 		D53555BD23E53699005A20EB /* UserCredentialProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535554023E1DF8B005A20EB /* UserCredentialProviderDoubles.swift */; };
-		D53555BF23E53699005A20EB /* UserCredentialEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170923D671FD00954D50 /* UserCredentialEmitter.swift */; };
-		D53555C023E53699005A20EB /* UserCredentialEmitterDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170B23D6725B00954D50 /* UserCredentialEmitterDoubles.swift */; };
-		D53555C123E536A6005A20EB /* UserCredentialProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BA170723D66AF500954D50 /* UserCredentialProviderTests.swift */; };
-		D53555C223E536AE005A20EB /* AppleAuthorizationCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561223CD4B2C00BC8485 /* AppleAuthorizationCredential.swift */; };
-		D53555C323E536AE005A20EB /* AppleAuthorizationCredentialStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546A23DCB65A005A20EB /* AppleAuthorizationCredentialStateProvider.swift */; };
-		D53555C423E536AE005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553A23E1DD1A005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift */; };
-		D53555C523E536AE005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546C23DF212C005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift */; };
-		D53555C623E536AE005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553C23E1DE15005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift */; };
-		D53555C823E536AE005A20EB /* AppleAuthorizationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561023CD457800BC8485 /* AppleAuthorizationResponse.swift */; };
-		D53555C923E536AE005A20EB /* AppleAuthorizationResponseDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546823DCB03E005A20EB /* AppleAuthorizationResponseDoubles.swift */; };
-		D53555CA23E536AE005A20EB /* AppleAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BC123C69D0400B6FCB1 /* AppleAuthorizationService.swift */; };
-		D53555CC23E536AE005A20EB /* AppleAuthorizationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */; };
-		D53555CD23E536AE005A20EB /* AppleAuthorizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */; };
-		D53555CE23E536AE005A20EB /* AppleAuthorizationControllerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560B23CD342E00BC8485 /* AppleAuthorizationControllerDoubles.swift */; };
-		D53555CF23E536AE005A20EB /* AppleAuthorizationCompletionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509899023BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift */; };
-		D53555D023E536B5005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547023DF2A40005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift */; };
+		D53555C223E536AE005A20EB /* SIWACredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561223CD4B2C00BC8485 /* SIWACredential.swift */; };
+		D53555C323E536AE005A20EB /* SIWACredentialStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546A23DCB65A005A20EB /* SIWACredentialStateProvider.swift */; };
+		D53555C423E536AE005A20EB /* SIWACredentialStateProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553A23E1DD1A005A20EB /* SIWACredentialStateProviderDoubles.swift */; };
+		D53555C523E536AE005A20EB /* SIWACredentialRevocationNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546C23DF212C005A20EB /* SIWACredentialRevocationNotifier.swift */; };
+		D53555C623E536AE005A20EB /* SIWACredentialRevocationObserverDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535553C23E1DE15005A20EB /* SIWACredentialRevocationObserverDoubles.swift */; };
+		D53555C823E536AE005A20EB /* SIWAAuthorizationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A561023CD457800BC8485 /* SIWAAuthorizationResponse.swift */; };
+		D53555C923E536AE005A20EB /* SIWAAuthorizationResponseDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535546823DCB03E005A20EB /* SIWAAuthorizationResponseDoubles.swift */; };
+		D53555CA23E536AE005A20EB /* SIWAAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50E4BC123C69D0400B6FCB1 /* SIWAAuthorizationService.swift */; };
+		D53555CC23E536AE005A20EB /* SIWAAuthorizationServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560523CA937800BC8485 /* SIWAAuthorizationServiceDoubles.swift */; };
+		D53555CD23E536AE005A20EB /* SIWAAuthorizationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560923CD27A800BC8485 /* SIWAAuthorizationController.swift */; };
+		D53555CE23E536AE005A20EB /* SIWAAuthorizationControllerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560B23CD342E00BC8485 /* SIWAAuthorizationControllerDoubles.swift */; };
+		D53555CF23E536AE005A20EB /* SIWAAuthorizationCompletionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509899023BA7CE200C19300 /* SIWAAuthorizationCompletionDelegate.swift */; };
+		D53555D023E536B5005A20EB /* SIWACredentialRevocationObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D535547023DF2A40005A20EB /* SIWACredentialRevocationObserverTests.swift */; };
 		D53555D123E536B7005A20EB /* HashFunction+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */; };
-		D53555E623E5383C005A20EB /* AppleAuthorizationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560E23CD384300BC8485 /* AppleAuthorizationServiceTests.swift */; };
+		D53555E623E5383C005A20EB /* SIWAAuthorizationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560E23CD384300BC8485 /* SIWAAuthorizationServiceTests.swift */; };
 		D5363C572628933500C81466 /* DMSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5363C512628933400C81466 /* DMSans-Italic.ttf */; };
 		D5363C582628933500C81466 /* DMSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5363C522628933400C81466 /* DMSans-BoldItalic.ttf */; };
 		D5363C592628933500C81466 /* DMSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5363C532628933400C81466 /* DMSans-Bold.ttf */; };
@@ -302,7 +283,7 @@
 		D5444FEF2602815000369BA5 /* ImageProcessingServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5444FEE2602815000369BA5 /* ImageProcessingServiceDoubles.swift */; };
 		D5444FF02602815000369BA5 /* ImageProcessingServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5444FEE2602815000369BA5 /* ImageProcessingServiceDoubles.swift */; };
 		D5473C9F241AC3CB00D66775 /* AddressDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5473C9D241AC3B800D66775 /* AddressDetailsViewTests.swift */; };
-		D549218A25BB27AE00251FD2 /* APIActivityErrorHandler+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D549218925BB27AE00251FD2 /* APIActivityErrorHandler+Rythmico.swift */; };
+		D549218A25BB27AE00251FD2 /* APIActivityErrorHandler+Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = D549218925BB27AE00251FD2 /* APIActivityErrorHandler+Student.swift */; };
 		D549218F25BB27E200251FD2 /* APIActivityErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D549218E25BB27E200251FD2 /* APIActivityErrorHandler.swift */; };
 		D549219325BB27E700251FD2 /* APIActivityErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D549218E25BB27E200251FD2 /* APIActivityErrorHandler.swift */; };
 		D549219825BB28B100251FD2 /* APIActivityErrorHandler+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D549219725BB28B100251FD2 /* APIActivityErrorHandler+Tutor.swift */; };
@@ -560,6 +541,10 @@
 		D5E58F3E256D9E4A00EB52ED /* LessonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E58F3D256D9E4A00EB52ED /* LessonDetailView.swift */; };
 		D5E6A3EF25FE99FE00F74880 /* RootViewFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E6A3EE25FE99FE00F74880 /* RootViewFlow.swift */; };
 		D5E8AC8825CB298000F663D3 /* InfoDisclaimerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E8AC8725CB298000F663D3 /* InfoDisclaimerButton.swift */; };
+		D5E8F67F2724F48600895D45 /* SIWAEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E8F67E2724F48600895D45 /* SIWAEndpoints.swift */; };
+		D5E8F6802724F48600895D45 /* SIWAEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E8F67E2724F48600895D45 /* SIWAEndpoints.swift */; };
+		D5E8F6822724FE8800895D45 /* RootViewCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E8F6812724FE8800895D45 /* RootViewCore.swift */; };
+		D5E8F6832724FE8800895D45 /* RootViewCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E8F6812724FE8800895D45 /* RootViewCore.swift */; };
 		D5E987B924ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
 		D5E987BA24ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
 		D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */; };
@@ -607,16 +592,12 @@
 		D5F7A5132597B92100A9FF56 /* ImageOverlayModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F7A5122597B92100A9FF56 /* ImageOverlayModifier.swift */; };
 		D5F89392263F3E4100578970 /* LessonPlanScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F89391263F3E4100578970 /* LessonPlanScheduleView.swift */; };
 		D5F89394263F4B0500578970 /* LessonScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F89393263F4B0500578970 /* LessonScheduleView.swift */; };
-		D5FA706526A3448A00E6FF30 /* AuthenticationErrorDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA706426A3448A00E6FF30 /* AuthenticationErrorDoubles.swift */; };
-		D5FA706626A3448A00E6FF30 /* AuthenticationErrorDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA706426A3448A00E6FF30 /* AuthenticationErrorDoubles.swift */; };
 		D5FA706826A34CDA00E6FF30 /* OnboardingViewCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA706726A34CDA00E6FF30 /* OnboardingViewCore.swift */; };
 		D5FA706926A34CDA00E6FF30 /* OnboardingViewCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA706726A34CDA00E6FF30 /* OnboardingViewCore.swift */; };
 		D5FAE6742559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FAE6732559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift */; };
 		D5FAE6862559DF8300473A8B /* PhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FAE6852559DF8300473A8B /* PhoneNumberCell.swift */; };
 		D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */; };
 		D5FC2D42254A7DE3005056D5 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D41254A7DE3005056D5 /* FirebaseMessaging */; };
-		D5FC2D44254A7DE3005056D5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D43254A7DE3005056D5 /* FirebaseAuth */; };
-		D5FC2D4F254A7E21005056D5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D4E254A7E21005056D5 /* FirebaseAuth */; };
 		D5FC2D51254A7E21005056D5 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D50254A7E21005056D5 /* FirebaseCrashlytics */; };
 		D5FC2D53254A7E21005056D5 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D52254A7E21005056D5 /* FirebaseMessaging */; };
 		D5FD6F16240AF535008C5AD4 /* StudentDetailsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD6F15240AF535008C5AD4 /* StudentDetailsViewTests.swift */; };
@@ -697,7 +678,7 @@
 		0336D62B241EAAF6006CFC1F /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		033D47D0247777100096C50F /* LessonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsView.swift; sourceTree = "<group>"; };
 		033D47D5247ABF6B0096C50F /* LessonPlanEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanEndpoints.swift; sourceTree = "<group>"; };
-		035AF30424919FEF004A01B2 /* AppleAuthorizationCredentialDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialDoubles.swift; sourceTree = "<group>"; };
+		035AF30424919FEF004A01B2 /* SIWACredentialDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIWACredentialDoubles.swift; sourceTree = "<group>"; };
 		035AF3072491A51D004A01B2 /* VoiceOverService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceOverService.swift; sourceTree = "<group>"; };
 		035AF3092491A54E004A01B2 /* VoiceOverServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceOverServiceDoubles.swift; sourceTree = "<group>"; };
 		035AF30C2491B7C3004A01B2 /* UNUserNotificationCenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNUserNotificationCenterProtocol.swift; sourceTree = "<group>"; };
@@ -718,8 +699,6 @@
 		035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		035B1D5F249E608E00AABFEA /* Tutor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tutor.entitlements; sourceTree = "<group>"; };
 		035B1D6C249E674000AABFEA /* GoogleService-Info-Release.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Release.plist"; sourceTree = "<group>"; };
-		035B1D75249E6D0100AABFEA /* OnboardingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewTests.swift; sourceTree = "<group>"; };
-		035B1D77249E6D3B00AABFEA /* RootViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewTests.swift; sourceTree = "<group>"; };
 		0365F6EF2417E79000F452AC /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		0365F6F42417F1E900F452AC /* AddressLookupEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupEndpoints.swift; sourceTree = "<group>"; };
 		0372E359249ABAB80048B402 /* ChoiceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceList.swift; sourceTree = "<group>"; };
@@ -783,11 +762,10 @@
 		D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Release.plist"; sourceTree = "<group>"; };
 		D509898423B9B5C100C19300 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
-		D509899023BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCompletionDelegate.swift; sourceTree = "<group>"; };
+		D509899023BA7CE200C19300 /* SIWAAuthorizationCompletionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIWAAuthorizationCompletionDelegate.swift; sourceTree = "<group>"; };
 		D509D835265EE55200B60DF0 /* LessonPlanResumingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanResumingView.swift; sourceTree = "<group>"; };
 		D509D837265EE56100B60DF0 /* LessonPlanResumingContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanResumingContentView.swift; sourceTree = "<group>"; };
-		D50E4BC123C69D0400B6FCB1 /* AppleAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationService.swift; sourceTree = "<group>"; };
-		D50E4BC423C7AAA900B6FCB1 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		D50E4BC123C69D0400B6FCB1 /* SIWAAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIWAAuthorizationService.swift; sourceTree = "<group>"; };
 		D5147506240C8E69002EE20C /* TestableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestableView.swift; sourceTree = "<group>"; };
 		D5147507240C8E69002EE20C /* XCTAssertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTAssertView.swift; sourceTree = "<group>"; };
 		D5147510240C99A9002EE20C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -848,20 +826,16 @@
 		D531295C255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentInfoAndSafetyView.swift; sourceTree = "<group>"; };
 		D5312967256427EA00CA6621 /* LessonSkippingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonSkippingView.swift; sourceTree = "<group>"; };
 		D53447C8264D74A000A0FF16 /* ComposableNavigator+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ComposableNavigator+Sugar.swift"; sourceTree = "<group>"; };
-		D535546823DCB03E005A20EB /* AppleAuthorizationResponseDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationResponseDoubles.swift; sourceTree = "<group>"; };
-		D535546A23DCB65A005A20EB /* AppleAuthorizationCredentialStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialStateProvider.swift; sourceTree = "<group>"; };
-		D535546C23DF212C005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialRevocationNotifier.swift; sourceTree = "<group>"; };
-		D535547023DF2A40005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialRevocationObserverTests.swift; sourceTree = "<group>"; };
+		D535546823DCB03E005A20EB /* SIWAAuthorizationResponseDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIWAAuthorizationResponseDoubles.swift; sourceTree = "<group>"; };
+		D535546A23DCB65A005A20EB /* SIWACredentialStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIWACredentialStateProvider.swift; sourceTree = "<group>"; };
+		D535546C23DF212C005A20EB /* SIWACredentialRevocationNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIWACredentialRevocationNotifier.swift; sourceTree = "<group>"; };
+		D535547023DF2A40005A20EB /* SIWACredentialRevocationObserverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIWACredentialRevocationObserverTests.swift; sourceTree = "<group>"; };
 		D535547823DF3A7C005A20EB /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
-		D535547B23DF4D30005A20EB /* DeauthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeauthenticationService.swift; sourceTree = "<group>"; };
 		D535547D23DF4F44005A20EB /* KeychainDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainDoubles.swift; sourceTree = "<group>"; };
 		D535552B23E10557005A20EB /* RythmicoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RythmicoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D535553523E105A5005A20EB /* OnboardingViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewTests.swift; sourceTree = "<group>"; };
-		D535553723E116C9005A20EB /* RootViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewTests.swift; sourceTree = "<group>"; };
-		D535553A23E1DD1A005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialStateProviderDoubles.swift; sourceTree = "<group>"; };
-		D535553C23E1DE15005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredentialRevocationObserverDoubles.swift; sourceTree = "<group>"; };
+		D535553A23E1DD1A005A20EB /* SIWACredentialStateProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIWACredentialStateProviderDoubles.swift; sourceTree = "<group>"; };
+		D535553C23E1DE15005A20EB /* SIWACredentialRevocationObserverDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIWACredentialRevocationObserverDoubles.swift; sourceTree = "<group>"; };
 		D535554023E1DF8B005A20EB /* UserCredentialProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialProviderDoubles.swift; sourceTree = "<group>"; };
-		D535554223E1DFEC005A20EB /* DeauthenticationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeauthenticationServiceDoubles.swift; sourceTree = "<group>"; };
 		D535554623E20076005A20EB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D535554F23E4AB9A005A20EB /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		D5363C512628933400C81466 /* DMSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Italic.ttf"; sourceTree = "<group>"; };
@@ -883,7 +857,7 @@
 		D5444FEB2602777D00369BA5 /* ImageProcessingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessingService.swift; sourceTree = "<group>"; };
 		D5444FEE2602815000369BA5 /* ImageProcessingServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessingServiceDoubles.swift; sourceTree = "<group>"; };
 		D5473C9D241AC3B800D66775 /* AddressDetailsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressDetailsViewTests.swift; sourceTree = "<group>"; };
-		D549218925BB27AE00251FD2 /* APIActivityErrorHandler+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIActivityErrorHandler+Rythmico.swift"; sourceTree = "<group>"; };
+		D549218925BB27AE00251FD2 /* APIActivityErrorHandler+Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIActivityErrorHandler+Student.swift"; sourceTree = "<group>"; };
 		D549218E25BB27E200251FD2 /* APIActivityErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIActivityErrorHandler.swift; sourceTree = "<group>"; };
 		D549219725BB28B100251FD2 /* APIActivityErrorHandler+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIActivityErrorHandler+Tutor.swift"; sourceTree = "<group>"; };
 		D549219C25BB28F700251FD2 /* APIError+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIError+Rythmico.swift"; sourceTree = "<group>"; };
@@ -892,14 +866,13 @@
 		D54921CF25BB46F300251FD2 /* TutorStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorStatusView.swift; sourceTree = "<group>"; };
 		D549B2D426B2FD8900CD419A /* Container+Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Student.swift"; sourceTree = "<group>"; };
 		D549F8B826FFA3350087A20C /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
-		D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationServiceDoubles.swift; sourceTree = "<group>"; };
+		D54A560523CA937800BC8485 /* SIWAAuthorizationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIWAAuthorizationServiceDoubles.swift; sourceTree = "<group>"; };
 		D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HashFunction+Helpers.swift"; sourceTree = "<group>"; };
-		D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationController.swift; sourceTree = "<group>"; };
-		D54A560B23CD342E00BC8485 /* AppleAuthorizationControllerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationControllerDoubles.swift; sourceTree = "<group>"; };
-		D54A560E23CD384300BC8485 /* AppleAuthorizationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationServiceTests.swift; sourceTree = "<group>"; };
-		D54A561023CD457800BC8485 /* AppleAuthorizationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationResponse.swift; sourceTree = "<group>"; };
-		D54A561223CD4B2C00BC8485 /* AppleAuthorizationCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthorizationCredential.swift; sourceTree = "<group>"; };
-		D54A561F23CE92AE00BC8485 /* AuthenticationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationError.swift; sourceTree = "<group>"; };
+		D54A560923CD27A800BC8485 /* SIWAAuthorizationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIWAAuthorizationController.swift; sourceTree = "<group>"; };
+		D54A560B23CD342E00BC8485 /* SIWAAuthorizationControllerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIWAAuthorizationControllerDoubles.swift; sourceTree = "<group>"; };
+		D54A560E23CD384300BC8485 /* SIWAAuthorizationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIWAAuthorizationServiceTests.swift; sourceTree = "<group>"; };
+		D54A561023CD457800BC8485 /* SIWAAuthorizationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIWAAuthorizationResponse.swift; sourceTree = "<group>"; };
+		D54A561223CD4B2C00BC8485 /* SIWACredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIWACredential.swift; sourceTree = "<group>"; };
 		D54CF08625FA8624007D5050 /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		D54CF08A25FA8696007D5050 /* AnalyticsServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsServiceDoubles.swift; sourceTree = "<group>"; };
 		D54CF08D25FA8724007D5050 /* AnalyticsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsCoordinator.swift; sourceTree = "<group>"; };
@@ -991,7 +964,6 @@
 		D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityCoordinator+SwiftUI.swift"; sourceTree = "<group>"; };
 		D5B056A125B21843000D0046 /* DirectURLVideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectURLVideoPlayerView.swift; sourceTree = "<group>"; };
 		D5B13B2B23D12520006CBC46 /* UserCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredential.swift; sourceTree = "<group>"; };
-		D5B13B2D23D125E6006CBC46 /* AuthenticationServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceDoubles.swift; sourceTree = "<group>"; };
 		D5B13B2F23D1265F006CBC46 /* UserCredentialDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialDoubles.swift; sourceTree = "<group>"; };
 		D5B23EC426CC1F06006CD660 /* LoadableCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableCollectionView.swift; sourceTree = "<group>"; };
 		D5B23EC626CC2497006CD660 /* WhatIsRythmicoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatIsRythmicoView.swift; sourceTree = "<group>"; };
@@ -1020,9 +992,6 @@
 		D5B8E08426B9C76800A46705 /* HeadlineContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadlineContentView.swift; sourceTree = "<group>"; };
 		D5B8E08826BACA0E00A46705 /* DynamicImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicImage.swift; sourceTree = "<group>"; };
 		D5B8E08A26BADC7500A46705 /* LessonDetailBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailBoxView.swift; sourceTree = "<group>"; };
-		D5BA170723D66AF500954D50 /* UserCredentialProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialProviderTests.swift; sourceTree = "<group>"; };
-		D5BA170923D671FD00954D50 /* UserCredentialEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialEmitter.swift; sourceTree = "<group>"; };
-		D5BA170B23D6725B00954D50 /* UserCredentialEmitterDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialEmitterDoubles.swift; sourceTree = "<group>"; };
 		D5BA170F23D7A18900954D50 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		D5BA171123D7AB3B00954D50 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D5BDD501253B406300255190 /* TabSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelection.swift; sourceTree = "<group>"; };
@@ -1088,6 +1057,8 @@
 		D5E58F3D256D9E4A00EB52ED /* LessonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailView.swift; sourceTree = "<group>"; };
 		D5E6A3EE25FE99FE00F74880 /* RootViewFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewFlow.swift; sourceTree = "<group>"; };
 		D5E8AC8725CB298000F663D3 /* InfoDisclaimerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDisclaimerButton.swift; sourceTree = "<group>"; };
+		D5E8F67E2724F48600895D45 /* SIWAEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIWAEndpoints.swift; sourceTree = "<group>"; };
+		D5E8F6812724FE8800895D45 /* RootViewCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewCore.swift; sourceTree = "<group>"; };
 		D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Sugar.swift"; sourceTree = "<group>"; };
 		D5E987C424EEED8200E2E1AF /* BookingRequestsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingRequestsTabView.swift; sourceTree = "<group>"; };
 		D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationsView.swift; sourceTree = "<group>"; };
@@ -1123,7 +1094,6 @@
 		D5F7A5122597B92100A9FF56 /* ImageOverlayModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOverlayModifier.swift; sourceTree = "<group>"; };
 		D5F89391263F3E4100578970 /* LessonPlanScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanScheduleView.swift; sourceTree = "<group>"; };
 		D5F89393263F4B0500578970 /* LessonScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonScheduleView.swift; sourceTree = "<group>"; };
-		D5FA706426A3448A00E6FF30 /* AuthenticationErrorDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrorDoubles.swift; sourceTree = "<group>"; };
 		D5FA706726A34CDA00E6FF30 /* OnboardingViewCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewCore.swift; sourceTree = "<group>"; };
 		D5FAE6732559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhoneNumberOpener+ActionSheet.swift"; sourceTree = "<group>"; };
 		D5FAE6852559DF8300473A8B /* PhoneNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCell.swift; sourceTree = "<group>"; };
@@ -1143,7 +1113,6 @@
 				D535547723DF3A19005A20EB /* Valet in Frameworks */,
 				D56C6A98264AC80C00A2599E /* ComposableNavigator in Frameworks */,
 				D5AC9E3B254D9533003A8197 /* FirebaseRemoteConfig in Frameworks */,
-				D5FC2D44254A7DE3005056D5 /* FirebaseAuth in Frameworks */,
 				D5FC2D42254A7DE3005056D5 /* FirebaseMessaging in Frameworks */,
 				D58BC99B2702312F00120A45 /* StudentDTOEncore in Frameworks */,
 				D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */,
@@ -1160,7 +1129,6 @@
 			files = (
 				D5FC2D53254A7E21005056D5 /* FirebaseMessaging in Frameworks */,
 				D5947C9826A39E9600355857 /* ComposableNavigator in Frameworks */,
-				D5FC2D4F254A7E21005056D5 /* FirebaseAuth in Frameworks */,
 				D5439DDC26D5278B00D69CE8 /* SwiftUIEncore in Frameworks */,
 				035B1CD7249CF7EB00AABFEA /* Valet in Frameworks */,
 				D58BC99D2702313300120A45 /* TutorDTOEncore in Frameworks */,
@@ -1342,7 +1310,6 @@
 			children = (
 				035B1D0F249E561C00AABFEA /* RootView.swift */,
 				D58DE1BB25BDF5C30013AEE8 /* RootViewFlow.swift */,
-				035B1D77249E6D3B00AABFEA /* RootViewTests.swift */,
 				035B1D56249E5A5000AABFEA /* Onboarding */,
 				D58DE1DA25C0F1B00013AEE8 /* Verification */,
 				035B1D57249E5A5700AABFEA /* Main */,
@@ -1365,7 +1332,6 @@
 			isa = PBXGroup;
 			children = (
 				035B1D12249E563A00AABFEA /* OnboardingView.swift */,
-				035B1D75249E6D0100AABFEA /* OnboardingViewTests.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1890,7 +1856,7 @@
 			children = (
 				03E88EB524C4AD820077A420 /* APIActivityCoordinator.swift */,
 				D549218E25BB27E200251FD2 /* APIActivityErrorHandler.swift */,
-				D549218925BB27AE00251FD2 /* APIActivityErrorHandler+Rythmico.swift */,
+				D549218925BB27AE00251FD2 /* APIActivityErrorHandler+Student.swift */,
 				D549219725BB28B100251FD2 /* APIActivityErrorHandler+Tutor.swift */,
 				D5A8C4C125044F4C0006F5C5 /* APIClientInfo+RythmicoTests.swift */,
 				D5A8C4C325044F580006F5C5 /* APIClientInfo+TutorTests.swift */,
@@ -1915,22 +1881,10 @@
 				D55354EA26C08DF700E77CC4 /* CustomerPortalEndpoints.swift */,
 				033D47D5247ABF6B0096C50F /* LessonPlanEndpoints.swift */,
 				D54EFF292513DDDB004F14D3 /* PortfolioEndpoints.swift */,
+				D5E8F67E2724F48600895D45 /* SIWAEndpoints.swift */,
 				D54CFD2025BB208100C012F3 /* TutorStatusEndpoints.swift */,
 			);
 			path = Endpoints;
-			sourceTree = "<group>";
-		};
-		D535547423DF33AA005A20EB /* Authentication */ = {
-			isa = PBXGroup;
-			children = (
-				D54A561F23CE92AE00BC8485 /* AuthenticationError.swift */,
-				D5FA706426A3448A00E6FF30 /* AuthenticationErrorDoubles.swift */,
-				D50E4BC423C7AAA900B6FCB1 /* AuthenticationService.swift */,
-				D5B13B2D23D125E6006CBC46 /* AuthenticationServiceDoubles.swift */,
-				D535547B23DF4D30005A20EB /* DeauthenticationService.swift */,
-				D535554223E1DFEC005A20EB /* DeauthenticationServiceDoubles.swift */,
-			);
-			path = Authentication;
 			sourceTree = "<group>";
 		};
 		D535547A23DF3E81005A20EB /* Keychain */ = {
@@ -1945,8 +1899,7 @@
 		D535549823E0FA4A005A20EB /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				D535547423DF33AA005A20EB /* Authentication */,
-				D54A560D23CD36C500BC8485 /* Authorization */,
+				D54A560D23CD36C500BC8485 /* SIWA */,
 				D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */,
 				D5E6A3ED25FE65A300F74880 /* UserCredential */,
 			);
@@ -1995,7 +1948,6 @@
 			children = (
 				D5E04B1C23BEE04E00A161BB /* OnboardingView.swift */,
 				D5FA706726A34CDA00E6FF30 /* OnboardingViewCore.swift */,
-				D535553523E105A5005A20EB /* OnboardingViewTests.swift */,
 				D5CDF25B26C42E540039DECC /* InstructionalView.swift */,
 				D52D8A58259D714B00A6CBBF /* SlideshowFlowView.swift */,
 			);
@@ -2006,8 +1958,8 @@
 			isa = PBXGroup;
 			children = (
 				D5BA170F23D7A18900954D50 /* RootView.swift */,
+				D5E8F6812724FE8800895D45 /* RootViewCore.swift */,
 				D5E6A3EE25FE99FE00F74880 /* RootViewFlow.swift */,
-				D535553723E116C9005A20EB /* RootViewTests.swift */,
 				D54317F123FDB03F00CB1493 /* Onboarding */,
 				D54317F023FDB03300CB1493 /* Main */,
 			);
@@ -2023,26 +1975,26 @@
 			path = AccessibilitySettings;
 			sourceTree = "<group>";
 		};
-		D54A560D23CD36C500BC8485 /* Authorization */ = {
+		D54A560D23CD36C500BC8485 /* SIWA */ = {
 			isa = PBXGroup;
 			children = (
-				D54A561223CD4B2C00BC8485 /* AppleAuthorizationCredential.swift */,
-				035AF30424919FEF004A01B2 /* AppleAuthorizationCredentialDoubles.swift */,
-				D535546A23DCB65A005A20EB /* AppleAuthorizationCredentialStateProvider.swift */,
-				D535553A23E1DD1A005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift */,
-				D535546C23DF212C005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift */,
-				D535553C23E1DE15005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift */,
-				D535547023DF2A40005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift */,
-				D54A561023CD457800BC8485 /* AppleAuthorizationResponse.swift */,
-				D535546823DCB03E005A20EB /* AppleAuthorizationResponseDoubles.swift */,
-				D50E4BC123C69D0400B6FCB1 /* AppleAuthorizationService.swift */,
-				D54A560E23CD384300BC8485 /* AppleAuthorizationServiceTests.swift */,
-				D54A560523CA937800BC8485 /* AppleAuthorizationServiceDoubles.swift */,
-				D54A560923CD27A800BC8485 /* AppleAuthorizationController.swift */,
-				D54A560B23CD342E00BC8485 /* AppleAuthorizationControllerDoubles.swift */,
-				D509899023BA7CE200C19300 /* AppleAuthorizationCompletionDelegate.swift */,
+				D509899023BA7CE200C19300 /* SIWAAuthorizationCompletionDelegate.swift */,
+				D54A560923CD27A800BC8485 /* SIWAAuthorizationController.swift */,
+				D54A560B23CD342E00BC8485 /* SIWAAuthorizationControllerDoubles.swift */,
+				D54A561023CD457800BC8485 /* SIWAAuthorizationResponse.swift */,
+				D535546823DCB03E005A20EB /* SIWAAuthorizationResponseDoubles.swift */,
+				D50E4BC123C69D0400B6FCB1 /* SIWAAuthorizationService.swift */,
+				D54A560523CA937800BC8485 /* SIWAAuthorizationServiceDoubles.swift */,
+				D54A560E23CD384300BC8485 /* SIWAAuthorizationServiceTests.swift */,
+				D54A561223CD4B2C00BC8485 /* SIWACredential.swift */,
+				035AF30424919FEF004A01B2 /* SIWACredentialDoubles.swift */,
+				D535546C23DF212C005A20EB /* SIWACredentialRevocationNotifier.swift */,
+				D535553C23E1DE15005A20EB /* SIWACredentialRevocationObserverDoubles.swift */,
+				D535547023DF2A40005A20EB /* SIWACredentialRevocationObserverTests.swift */,
+				D535546A23DCB65A005A20EB /* SIWACredentialStateProvider.swift */,
+				D535553A23E1DD1A005A20EB /* SIWACredentialStateProviderDoubles.swift */,
 			);
-			path = Authorization;
+			path = SIWA;
 			sourceTree = "<group>";
 		};
 		D54CF08925FA8627007D5050 /* Analytics */ = {
@@ -2337,11 +2289,8 @@
 			children = (
 				D5B13B2B23D12520006CBC46 /* UserCredential.swift */,
 				D5B13B2F23D1265F006CBC46 /* UserCredentialDoubles.swift */,
-				D5BA170923D671FD00954D50 /* UserCredentialEmitter.swift */,
-				D5BA170B23D6725B00954D50 /* UserCredentialEmitterDoubles.swift */,
 				D5A32DBC23D139C000F3903C /* UserCredentialProvider.swift */,
 				D535554023E1DF8B005A20EB /* UserCredentialProviderDoubles.swift */,
-				D5BA170723D66AF500954D50 /* UserCredentialProviderTests.swift */,
 			);
 			path = UserCredential;
 			sourceTree = "<group>";
@@ -2433,7 +2382,6 @@
 				D5D78DD6252502CE007041BE /* PhoneNumberKit */,
 				D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */,
 				D5FC2D41254A7DE3005056D5 /* FirebaseMessaging */,
-				D5FC2D43254A7DE3005056D5 /* FirebaseAuth */,
 				D5AC9E3A254D9533003A8197 /* FirebaseRemoteConfig */,
 				D53668FC255EEDEF00A9D97D /* Stripe */,
 				D59E4E6025B20ADA00E8F94C /* YouTubeiOSPlayerHelper */,
@@ -2468,7 +2416,6 @@
 			packageProductDependencies = (
 				035B1CD6249CF7EB00AABFEA /* Valet */,
 				035B1D68249E645E00AABFEA /* APIKit */,
-				D5FC2D4E254A7E21005056D5 /* FirebaseAuth */,
 				D5FC2D50254A7E21005056D5 /* FirebaseCrashlytics */,
 				D5FC2D52254A7E21005056D5 /* FirebaseMessaging */,
 				D575C836254F10F0001664AB /* FirebaseRemoteConfig */,
@@ -2843,7 +2790,6 @@
 				D5BF12B92506924300B2931C /* PushNotificationEventHandler+Rythmico.swift in Sources */,
 				D5F89394263F4B0500578970 /* LessonScheduleView.swift in Sources */,
 				03341B3F23ABB1E7009AE8A8 /* AppExtensions.swift in Sources */,
-				D53555C023E53699005A20EB /* UserCredentialEmitterDoubles.swift in Sources */,
 				D5B4A20526CED857006EAD18 /* AppView.swift in Sources */,
 				D5D5B2D026BD6079002B40F8 /* Lesson_ScreenshotDoubles.swift in Sources */,
 				D5243905268A6E9A00E2D859 /* LessonPlanPauseInfo.swift in Sources */,
@@ -2877,26 +2823,25 @@
 				D5FA706826A34CDA00E6FF30 /* OnboardingViewCore.swift in Sources */,
 				D55354E826C082C300E77CC4 /* RythmicoWebView.swift in Sources */,
 				D543B918263F5FA800D25CFD /* AddressLabel.swift in Sources */,
-				D53555CF23E536AE005A20EB /* AppleAuthorizationCompletionDelegate.swift in Sources */,
+				D53555CF23E536AE005A20EB /* SIWAAuthorizationCompletionDelegate.swift in Sources */,
 				D535547E23DF4F44005A20EB /* KeychainDoubles.swift in Sources */,
-				D53555C623E536AE005A20EB /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,
+				D53555C623E536AE005A20EB /* SIWACredentialRevocationObserverDoubles.swift in Sources */,
 				03B1984124717AE8005529EB /* AddressDoubles.swift in Sources */,
 				D575C877254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift in Sources */,
 				D55354EB26C08DF700E77CC4 /* CustomerPortalEndpoints.swift in Sources */,
 				D509D836265EE55200B60DF0 /* LessonPlanResumingView.swift in Sources */,
 				D53555BD23E53699005A20EB /* UserCredentialProviderDoubles.swift in Sources */,
 				D5B57A712419F79700BE9B4F /* SectionHeaderContentView.swift in Sources */,
-				D53555C323E536AE005A20EB /* AppleAuthorizationCredentialStateProvider.swift in Sources */,
+				D53555C323E536AE005A20EB /* SIWACredentialStateProvider.swift in Sources */,
 				D56B253625322AE300BC3932 /* StripeSetupIntentLink.swift in Sources */,
 				D527B01624FEAA5F003E81A9 /* ImageLoadingService.swift in Sources */,
-				035AF30524919FEF004A01B2 /* AppleAuthorizationCredentialDoubles.swift in Sources */,
+				035AF30524919FEF004A01B2 /* SIWACredentialDoubles.swift in Sources */,
 				D55C35F725A3A8090023E56B /* CalendarInfoDoubles.swift in Sources */,
 				D5D9AE3F25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift in Sources */,
 				D516A929253A554F002E6EDF /* ImageAsset+Sugar.swift in Sources */,
 				D5AAF7D123F9ACFA00E410F2 /* InstrumentSelectionView.swift in Sources */,
 				D5B8E08526B9C76800A46705 /* HeadlineContentView.swift in Sources */,
 				D54CF08E25FA8724007D5050 /* AnalyticsCoordinator.swift in Sources */,
-				D53555B623E53699005A20EB /* AuthenticationService.swift in Sources */,
 				D531295D255F2F2A00CA6621 /* ParentInfoAndSafetyView.swift in Sources */,
 				D5B4A20226CEB983006EAD18 /* Publisher+Sugar.swift in Sources */,
 				D5DAD27C2679339B0014702F /* LessonPlanApplicationsView+Analytics.swift in Sources */,
@@ -2905,13 +2850,12 @@
 				D55C35EA25A3A6490023E56B /* CalendarInfo.swift in Sources */,
 				D53555BB23E53699005A20EB /* UserCredentialDoubles.swift in Sources */,
 				D549B2D526B2FD8900CD419A /* Container+Student.swift in Sources */,
-				D53555C223E536AE005A20EB /* AppleAuthorizationCredential.swift in Sources */,
+				D53555C223E536AE005A20EB /* SIWACredential.swift in Sources */,
 				D5DE2896260A6BC6002BAB43 /* CustomTextFieldInputAccessory.swift in Sources */,
 				03C39DD82496CA2A00C76516 /* LessonPlanStatusPill.swift in Sources */,
-				D53555C923E536AE005A20EB /* AppleAuthorizationResponseDoubles.swift in Sources */,
+				D53555C923E536AE005A20EB /* SIWAAuthorizationResponseDoubles.swift in Sources */,
 				D517FF9A25547CAA00A41639 /* LessonStatusPill.swift in Sources */,
 				D5989BA7251533E300BED8A6 /* PortfolioTrainingsView.swift in Sources */,
-				D53555B723E53699005A20EB /* DeauthenticationService.swift in Sources */,
 				D516A8FA253A1816002E6EDF /* CoordinatorStateView.swift in Sources */,
 				D5312968256427EA00CA6621 /* LessonSkippingView.swift in Sources */,
 				D5243901268A6DD400E2D859 /* LessonPlanBookingInfo.swift in Sources */,
@@ -2930,7 +2874,6 @@
 				D527B00B24FD3297003E81A9 /* AvatarStackView.swift in Sources */,
 				D5B23EC726CC2497006CD660 /* WhatIsRythmicoView.swift in Sources */,
 				D52438FF268A6D3C00E2D859 /* LessonPlanApplicationDoubles.swift in Sources */,
-				D53555B923E53699005A20EB /* AuthenticationServiceDoubles.swift in Sources */,
 				D5444FEC2602777D00369BA5 /* ImageProcessingService.swift in Sources */,
 				D56B253B2532433E00BC3932 /* ErrorText.swift in Sources */,
 				D5E6A3EF25FE99FE00F74880 /* RootViewFlow.swift in Sources */,
@@ -2951,6 +2894,7 @@
 				D53447C9264D74A000A0FF16 /* ComposableNavigator+Sugar.swift in Sources */,
 				D5B8E07B26B8547800A46705 /* InlineContentTitleSubtitleView.swift in Sources */,
 				D5AAF7D523F9E1F900E410F2 /* InstrumentSelectionListProvider.swift in Sources */,
+				D5E8F6822724FE8800895D45 /* RootViewCore.swift in Sources */,
 				03A91EF2249186EC00DEAD5E /* AppEnvironmentDoubles.swift in Sources */,
 				D517FF8D25536AF900A41639 /* TutorDoubles.swift in Sources */,
 				03A3F6EE2447DFF900F6391D /* Animation.swift in Sources */,
@@ -2986,7 +2930,7 @@
 				D5D9AE682533ADA400A0ABCC /* Checkout.swift in Sources */,
 				D501588525376EC0005E02FA /* DismissKeyboardTooltip.swift in Sources */,
 				D501585C25373D5A005E02FA /* CardSetupService.swift in Sources */,
-				D53555CE23E536AE005A20EB /* AppleAuthorizationControllerDoubles.swift in Sources */,
+				D53555CE23E536AE005A20EB /* SIWAAuthorizationControllerDoubles.swift in Sources */,
 				03B198542471BBE8005529EB /* App+PushNotifications.swift in Sources */,
 				D5B4A1FF26CEACE5006EAD18 /* Images.swift in Sources */,
 				D5AC9E2C254D8AE2003A8197 /* AppLauncher.swift in Sources */,
@@ -3013,8 +2957,8 @@
 				D5D9AEBE253694B400A0ABCC /* PhoneNumberInputView.swift in Sources */,
 				032B6FD424B7881C00299A09 /* InstrumentExtensions.swift in Sources */,
 				031378C7249A7ADE005FC49C /* LessonPlanCancellationReasonView.swift in Sources */,
-				D53555C523E536AE005A20EB /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
-				D53555C823E536AE005A20EB /* AppleAuthorizationResponse.swift in Sources */,
+				D53555C523E536AE005A20EB /* SIWACredentialRevocationNotifier.swift in Sources */,
+				D53555C823E536AE005A20EB /* SIWAAuthorizationResponse.swift in Sources */,
 				032215572497034A009D48A8 /* LessonPlanSummaryTutorStatusView.swift in Sources */,
 				D55C360C25A3E2B20023E56B /* EKEventStoreDoubles.swift in Sources */,
 				03B198582471BD82005529EB /* LessonPlanConfirmationView.swift in Sources */,
@@ -3059,7 +3003,7 @@
 				D5F5065F240055E800CA4094 /* TextFieldHeader.swift in Sources */,
 				D588E87E266D135000E14288 /* ErrorLogger.swift in Sources */,
 				D5204F4926B62FB50085F8D0 /* Buttons+Student.swift in Sources */,
-				D549218A25BB27AE00251FD2 /* APIActivityErrorHandler+Rythmico.swift in Sources */,
+				D549218A25BB27AE00251FD2 /* APIActivityErrorHandler+Student.swift in Sources */,
 				03AB22F3244CB13200DAC7DF /* PrivateNoteView.swift in Sources */,
 				03BB5C912472D85A00B44692 /* DeviceRegisterCoordinator.swift in Sources */,
 				D52A4F1E2538C59300C65A91 /* AddNewCardEntryView.swift in Sources */,
@@ -3072,8 +3016,8 @@
 				D5CC5FF125029525007DFE84 /* ImageReference.swift in Sources */,
 				D55C360325A3DBB30023E56B /* CalendarSyncStatusProvider.swift in Sources */,
 				D564F4642511722900EA13E9 /* TabMenuView.swift in Sources */,
-				D53555C423E536AE005A20EB /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
-				D53555CD23E536AE005A20EB /* AppleAuthorizationController.swift in Sources */,
+				D53555C423E536AE005A20EB /* SIWACredentialStateProviderDoubles.swift in Sources */,
+				D53555CD23E536AE005A20EB /* SIWAAuthorizationController.swift in Sources */,
 				D55F012C24CCBE8700E5F13C /* APIService.swift in Sources */,
 				D57DE187264DCF9A00C5E118 /* ProfileLogOutCell.swift in Sources */,
 				D53555BA23E53699005A20EB /* UserCredential.swift in Sources */,
@@ -3108,15 +3052,14 @@
 				D5E9FC8326C0101200625DAE /* AppOriginClientDoubles.swift in Sources */,
 				D5147511240C99A9002EE20C /* CustomTextField.swift in Sources */,
 				03E88EA724C1F4960077A420 /* App+LaunchScreenCache.swift in Sources */,
-				D53555B823E53699005A20EB /* DeauthenticationServiceDoubles.swift in Sources */,
 				D5D9AE4425335B0400A0ABCC /* StripeCardDetails.swift in Sources */,
 				D5ED32632606600C00821ABE /* CustomEditableTextField.swift in Sources */,
 				D57B16E626FB8EF700C9F76F /* iOS15Support.swift in Sources */,
-				D53555B523E53699005A20EB /* AuthenticationError.swift in Sources */,
-				D53555CA23E536AE005A20EB /* AppleAuthorizationService.swift in Sources */,
+				D53555CA23E536AE005A20EB /* SIWAAuthorizationService.swift in Sources */,
 				D55354F326C08FE700E77CC4 /* ProfilePaymentMethodsCell.swift in Sources */,
 				D527B01724FEAA62003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */,
 				D5B4A20826CEDC82006EAD18 /* TwoSidedText.swift in Sources */,
+				D5E8F67F2724F48600895D45 /* SIWAEndpoints.swift in Sources */,
 				D5BF12BB2506926900B2931C /* PushNotificationEventHandler.swift in Sources */,
 				0365F6F02417E79000F452AC /* Address.swift in Sources */,
 				D5ED326126065FEC00821ABE /* NonEditableTextField.swift in Sources */,
@@ -3124,7 +3067,7 @@
 				D5F506BA240637F400CA4094 /* RythmicoButton+Student.swift in Sources */,
 				D5BDD88725117E5300706EC1 /* LessonPlanRequestedScheduleView.swift in Sources */,
 				D5444FEF2602815000369BA5 /* ImageProcessingServiceDoubles.swift in Sources */,
-				D53555CC23E536AE005A20EB /* AppleAuthorizationServiceDoubles.swift in Sources */,
+				D53555CC23E536AE005A20EB /* SIWAAuthorizationServiceDoubles.swift in Sources */,
 				D55F012D24CCBE8E00E5F13C /* APIServiceDoubles.swift in Sources */,
 				D59D0593251828EA0070D81B /* App+Playback.swift in Sources */,
 				D5989BD125168B0100BED8A6 /* PortfolioPhotoCarouselView.swift in Sources */,
@@ -3160,7 +3103,6 @@
 				D50158AF2538BFDD005E02FA /* CardSetupCredentialDoubles.swift in Sources */,
 				033D47D6247ABF6B0096C50F /* LessonPlanEndpoints.swift in Sources */,
 				D535547923DF3A7C005A20EB /* Keychain.swift in Sources */,
-				D5FA706526A3448A00E6FF30 /* AuthenticationErrorDoubles.swift in Sources */,
 				D57DE181264DCAC900C5E118 /* ProfileCalendarSyncCell.swift in Sources */,
 				D5243907268A6EB300E2D859 /* LessonPlanPauseInfoDoubles.swift in Sources */,
 				D58824C4251A6D49000820F4 /* LessonsCollectionView.swift in Sources */,
@@ -3186,7 +3128,6 @@
 				D516A8FF253A1D6A002E6EDF /* ConfirmationView.swift in Sources */,
 				D575C814254DB602001664AB /* RemoteConfigServiceDoubles.swift in Sources */,
 				D530059F2679623600F41B61 /* LessonPlanBookingView+Analytics.swift in Sources */,
-				D53555BF23E53699005A20EB /* UserCredentialEmitter.swift in Sources */,
 				03A8116E241D1DAF0091B9ED /* StudentDoubles.swift in Sources */,
 				03275AD7249001E9009C3980 /* UNUserNotificationCenterDoubles.swift in Sources */,
 			);
@@ -3197,7 +3138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03E88EB624C4AD820077A420 /* APIActivityCoordinator.swift in Sources */,
-				035B1D40249E577700AABFEA /* AppleAuthorizationCredentialStateProvider.swift in Sources */,
+				035B1D40249E577700AABFEA /* SIWACredentialStateProvider.swift in Sources */,
 				03E88E8D24BC8C1D0077A420 /* AppContext.swift in Sources */,
 				D5E58F09256AF09800EB52ED /* BookingsView.swift in Sources */,
 				035B1D10249E561C00AABFEA /* RootView.swift in Sources */,
@@ -3240,11 +3181,9 @@
 				D5F4D3E024F04294000E8580 /* BookingApplication.swift in Sources */,
 				D55C35FE25A3AB510023E56B /* CalendarSyncer.swift in Sources */,
 				D5E58F0E256AF1E500EB52ED /* BookingEndpoints.swift in Sources */,
-				D5FA706626A3448A00E6FF30 /* AuthenticationErrorDoubles.swift in Sources */,
 				035B1D3B249E576900AABFEA /* UserCredentialProviderDoubles.swift in Sources */,
 				D5FAE6742559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift in Sources */,
 				D5F4AE7E2559D3F0001085D5 /* PhoneNumberDoubles.swift in Sources */,
-				035B1D34249E576900AABFEA /* AuthenticationService.swift in Sources */,
 				D5814A01251D7FFC0009BBB3 /* App+SplitViewCustomization.swift in Sources */,
 				D5D5E8B3268559BC00AACB8F /* FlowView+Sugar.swift in Sources */,
 				D575C856254F2B2F001664AB /* AppSplash.swift in Sources */,
@@ -3252,13 +3191,15 @@
 				D5F4D3E524F0475F000E8580 /* BookingApplicationDoubles.swift in Sources */,
 				D54921D025BB46F300251FD2 /* TutorStatusView.swift in Sources */,
 				035B1D39249E576900AABFEA /* UserCredentialDoubles.swift in Sources */,
+				D5E8F6802724F48600895D45 /* SIWAEndpoints.swift in Sources */,
 				D52C554824DDC60900C295C4 /* FloatingView+Tutor.swift in Sources */,
 				D575C830254F10E1001664AB /* RemoteConfig.swift in Sources */,
 				D588E87F266D135000E14288 /* ErrorLogger.swift in Sources */,
 				D5F4D3E724F096A2000E8580 /* BookingApplicationDetailView.swift in Sources */,
 				D58DE1BC25BDF5C30013AEE8 /* RootViewFlow.swift in Sources */,
 				D54340F8261E7314006898B0 /* AccessibilitySettingsDoubles.swift in Sources */,
-				035B1D42249E577700AABFEA /* AppleAuthorizationCredentialRevocationNotifier.swift in Sources */,
+				D5E8F6832724FE8800895D45 /* RootViewCore.swift in Sources */,
+				035B1D42249E577700AABFEA /* SIWACredentialRevocationNotifier.swift in Sources */,
 				D5B4A20026CEACE5006EAD18 /* Images.swift in Sources */,
 				D5947C9A26A3A1CD00355857 /* TabSelection.swift in Sources */,
 				035B1D62249E63D800AABFEA /* DeviceEndpoints.swift in Sources */,
@@ -3267,9 +3208,8 @@
 				035B1D51249E57F100AABFEA /* HashFunction+Helpers.swift in Sources */,
 				D55C360425A3DBB30023E56B /* CalendarSyncStatusProvider.swift in Sources */,
 				035B1D53249E582800AABFEA /* Animation.swift in Sources */,
-				035B1D35249E576900AABFEA /* DeauthenticationService.swift in Sources */,
 				D5E58F24256AF43900EB52ED /* LessonDoubles.swift in Sources */,
-				035B1D3E249E577700AABFEA /* AppleAuthorizationCredential.swift in Sources */,
+				035B1D3E249E577700AABFEA /* SIWACredential.swift in Sources */,
 				D5AFED3125047DFC003FFC68 /* Activity.swift in Sources */,
 				032B6FD724B788B200299A09 /* ScheduleDoubles.swift in Sources */,
 				D5CAC9A924E6C3A900119DAA /* MultilineTextField.swift in Sources */,
@@ -3287,21 +3227,19 @@
 				D5DE2897260A6BC6002BAB43 /* CustomTextFieldInputAccessory.swift in Sources */,
 				D5FAE6862559DF8300473A8B /* PhoneNumberCell.swift in Sources */,
 				D575C869254F2F26001664AB /* ImageAsset+Sugar.swift in Sources */,
-				035B1D45249E577700AABFEA /* AppleAuthorizationResponseDoubles.swift in Sources */,
+				035B1D45249E577700AABFEA /* SIWAAuthorizationResponseDoubles.swift in Sources */,
 				035B1D60249E63CD00AABFEA /* DeviceTokenProvider.swift in Sources */,
 				D5D7E2FE256DB8920081F8F7 /* LessonStudentDetailView.swift in Sources */,
-				035B1D3D249E576900AABFEA /* UserCredentialEmitterDoubles.swift in Sources */,
 				035B1D61249E63D400AABFEA /* DeviceTokenDeleter.swift in Sources */,
 				D5E58F2E256B023E00EB52ED /* LessonSummaryCell.swift in Sources */,
 				D575C84E254F29BD001664AB /* Assets.generated.swift in Sources */,
 				03E88EB824C4B0F40077A420 /* Repository.swift in Sources */,
 				D527B01224FE92DA003E81A9 /* ActivityDoubles.swift in Sources */,
 				D54921AF25BB35BC00251FD2 /* UserDefaults+Tutor.swift in Sources */,
-				035B1D4A249E577700AABFEA /* AppleAuthorizationCompletionDelegate.swift in Sources */,
-				035B1D37249E576900AABFEA /* AuthenticationServiceDoubles.swift in Sources */,
+				035B1D4A249E577700AABFEA /* SIWAAuthorizationCompletionDelegate.swift in Sources */,
 				D5AC9E2D254D8AE2003A8197 /* AppLauncher.swift in Sources */,
 				035B1D13249E563A00AABFEA /* OnboardingView.swift in Sources */,
-				035B1D3F249E577700AABFEA /* AppleAuthorizationCredentialDoubles.swift in Sources */,
+				035B1D3F249E577700AABFEA /* SIWACredentialDoubles.swift in Sources */,
 				035B1D66249E643400AABFEA /* DeviceTokenDeleterDoubles.swift in Sources */,
 				D575C831254F10E1001664AB /* RemoteConfigService.swift in Sources */,
 				D5E58F18256AF2BA00EB52ED /* Student.swift in Sources */,
@@ -3319,14 +3257,14 @@
 				035B1D32249E572900AABFEA /* URLOpener.swift in Sources */,
 				035B1D17249E566800AABFEA /* ActivityIndicator.swift in Sources */,
 				D5E58F3E256D9E4A00EB52ED /* LessonDetailView.swift in Sources */,
-				035B1D44249E577700AABFEA /* AppleAuthorizationResponse.swift in Sources */,
+				035B1D44249E577700AABFEA /* SIWAAuthorizationResponse.swift in Sources */,
 				D524D0C225046B9100BC9AF7 /* UNUserNotificationCenterProtocol.swift in Sources */,
-				035B1D43249E577700AABFEA /* AppleAuthorizationCredentialRevocationObserverDoubles.swift in Sources */,
+				035B1D43249E577700AABFEA /* SIWACredentialRevocationObserverDoubles.swift in Sources */,
 				D5883CEB25A4189D000B545C /* CalendarSyncCoordinator.swift in Sources */,
 				035B1CC3249CF2AA00AABFEA /* MainView.swift in Sources */,
 				D52C554C24DDE5FF00C295C4 /* RythmicoButton+Tutor.swift in Sources */,
 				D5F4D3EF24F31CF1000E8580 /* BookingApplicationGroupView.swift in Sources */,
-				035B1D41249E577700AABFEA /* AppleAuthorizationCredentialStateProviderDoubles.swift in Sources */,
+				035B1D41249E577700AABFEA /* SIWACredentialStateProviderDoubles.swift in Sources */,
 				035B1CF6249CFA5700AABFEA /* Duration.swift in Sources */,
 				D5AFED4325057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */,
 				035B1D38249E576900AABFEA /* UserCredential.swift in Sources */,
@@ -3346,20 +3284,17 @@
 				D54921A225BB290C00251FD2 /* APIError+Tutor.swift in Sources */,
 				D5F4D3F524F33CA4000E8580 /* AddressDoubles.swift in Sources */,
 				D59D0594251828EA0070D81B /* App+Playback.swift in Sources */,
-				035B1D36249E576900AABFEA /* DeauthenticationServiceDoubles.swift in Sources */,
 				032B6FD224B787D700299A09 /* Instrument.swift in Sources */,
-				035B1D46249E577700AABFEA /* AppleAuthorizationService.swift in Sources */,
-				035B1D33249E576900AABFEA /* AuthenticationError.swift in Sources */,
+				035B1D46249E577700AABFEA /* SIWAAuthorizationService.swift in Sources */,
 				D5B68CFD26B3B423006DA45F /* RythmicoButton.swift in Sources */,
 				035B1D4F249E57DC00AABFEA /* VoiceOverServiceDoubles.swift in Sources */,
-				035B1D49249E577700AABFEA /* AppleAuthorizationControllerDoubles.swift in Sources */,
+				035B1D49249E577700AABFEA /* SIWAAuthorizationControllerDoubles.swift in Sources */,
 				D54340FE261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift in Sources */,
-				035B1D3C249E576900AABFEA /* UserCredentialEmitter.swift in Sources */,
 				D575C82F254F10E1001664AB /* RemoteConfigCoordinator.swift in Sources */,
 				D5F4D3F324F32EBE000E8580 /* BookingApplicationSection.swift in Sources */,
-				035B1D47249E577700AABFEA /* AppleAuthorizationServiceDoubles.swift in Sources */,
+				035B1D47249E577700AABFEA /* SIWAAuthorizationServiceDoubles.swift in Sources */,
 				D5BF12BF2506932C00B2931C /* PushNotificationEventHandlerDoubles.swift in Sources */,
-				035B1D48249E577700AABFEA /* AppleAuthorizationController.swift in Sources */,
+				035B1D48249E577700AABFEA /* SIWAAuthorizationController.swift in Sources */,
 				D54CF08525F91255007D5050 /* AppSecrets.swift in Sources */,
 				D5F4D3F124F31E14000E8580 /* BookingApplicationGroupCell.swift in Sources */,
 				D5E987C524EEED8200E2E1AF /* BookingRequestsTabView.swift in Sources */,
@@ -3396,10 +3331,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5A8C4C425044F580006F5C5 /* APIClientInfo+TutorTests.swift in Sources */,
-				035B1D78249E6D3B00AABFEA /* RootViewTests.swift in Sources */,
 				035B1D74249E6B2D00AABFEA /* XCTAssertView.swift in Sources */,
 				D5F4AE862559D3FD001085D5 /* PhoneNumberTests.swift in Sources */,
-				035B1D76249E6D0100AABFEA /* OnboardingViewTests.swift in Sources */,
 				035B1D73249E6AEB00AABFEA /* MainViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3409,15 +3342,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				03D932F6249C0C56003416DC /* LessonPlanCancellationReasonViewTests.swift in Sources */,
-				D535553823E116C9005A20EB /* RootViewTests.swift in Sources */,
 				D5C23A74240EFDCB007DED63 /* MainViewTests.swift in Sources */,
 				03306F74247347570074AA98 /* RequestLessonPlanViewTests.swift in Sources */,
 				03BB5C962473070C00B44692 /* ReviewRequestViewTests.swift in Sources */,
-				D53555E623E5383C005A20EB /* AppleAuthorizationServiceTests.swift in Sources */,
+				D53555E623E5383C005A20EB /* SIWAAuthorizationServiceTests.swift in Sources */,
 				D514750F240C96F0002EE20C /* XCTAssertView.swift in Sources */,
 				03021C51248A799200C0C57E /* LessonsViewTests.swift in Sources */,
 				D5473C9F241AC3CB00D66775 /* AddressDetailsViewTests.swift in Sources */,
-				D535553623E105A5005A20EB /* OnboardingViewTests.swift in Sources */,
 				0392A9D3244D184F001E97AE /* PrivateNoteViewTests.swift in Sources */,
 				D5EEF6AD261BDE470014E500 /* XCTAssertText.swift in Sources */,
 				D5FD6F16240AF535008C5AD4 /* StudentDetailsViewTests.swift in Sources */,
@@ -3426,8 +3357,7 @@
 				D5A8C4C225044F4C0006F5C5 /* APIClientInfo+RythmicoTests.swift in Sources */,
 				D5D974F925263FB9000AD074 /* PhoneNumberTests.swift in Sources */,
 				03D932F2249C096B003416DC /* LessonPlanDetailViewTests.swift in Sources */,
-				D53555C123E536A6005A20EB /* UserCredentialProviderTests.swift in Sources */,
-				D53555D023E536B5005A20EB /* AppleAuthorizationCredentialRevocationObserverTests.swift in Sources */,
+				D53555D023E536B5005A20EB /* SIWACredentialRevocationObserverTests.swift in Sources */,
 				03D932F4249C0A71003416DC /* LessonPlanCancellationViewTests.swift in Sources */,
 				D50811EA23FD75ED008103D8 /* InstrumentSelectionViewTests.swift in Sources */,
 				D5D9AE882534CD0200A0ABCC /* CheckoutTests.swift in Sources */,
@@ -4181,16 +4111,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
-		};
-		D5FC2D43254A7DE3005056D5 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		D5FC2D4E254A7E21005056D5 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
 		};
 		D5FC2D50254A7E21005056D5 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;

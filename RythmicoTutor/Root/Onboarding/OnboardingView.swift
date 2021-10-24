@@ -1,14 +1,13 @@
 import SwiftUIEncore
 
 struct OnboardingView: View, TestableView {
-    @State
-    var isLoading: Bool = false
-    var isAppleAuthorizationButtonEnabled: Bool { !isLoading }
+    @StateObject
+    var coordinator = Current.siwaCoordinator()
+    var isLoading: Bool { coordinator.isLoading }
+    var isSIWAButtonEnabled: Bool { !isLoading }
 
     @State
-    var errorMessage: String?
-
-    func dismissError() { errorMessage = nil }
+    var authorizationErrorMessage: String?
 
     let inspection = SelfInspection()
     var body: some View {
@@ -22,7 +21,7 @@ struct OnboardingView: View, TestableView {
                 } else {
                     AppleIDAuthButton(action: authenticateWithApple)
                         .accessibility(hint: Text("Double tap to sign in with your Apple ID"))
-                        .disabled(!isAppleAuthorizationButtonEnabled)
+                        .disabled(!isSIWAButtonEnabled)
                 }
             }
             .padding(.grid(6))
@@ -33,8 +32,10 @@ struct OnboardingView: View, TestableView {
         }
         .testable(self)
         .onAppear(perform: Current.deviceUnregisterCoordinator.unregisterDevice)
+        .onSuccess(coordinator, perform: handleAuthenticationSuccess)
         .multiModal {
-            $0.alert(error: errorMessage, dismiss: dismissError)
+            $0.alertOnFailure(coordinator, onDismiss: coordinator.dismissFailure)
+            $0.alert(error: $authorizationErrorMessage)
         }
     }
 }

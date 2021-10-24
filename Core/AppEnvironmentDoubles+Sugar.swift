@@ -15,9 +15,8 @@ extension AppEnvironment {
         settings = .fake
         keychain = KeychainFake()
 
-        appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
+        siwaAuthorizationService = SIWAAuthorizationServiceStub(result: .success(.stub))
         shouldSucceedAuthentication()
-        deauthenticationService = DeauthenticationServiceFake()
         userAuthenticated()
 
         pushNotificationAuthorization(
@@ -71,7 +70,7 @@ extension AppEnvironment {
     }
 
     mutating func userAuthenticated() {
-        userCredentialProvider = UserCredentialProviderStub(userCredential: .success)
+        userCredentialProvider = UserCredentialProviderStub(userCredential: .stub)
     }
 
     mutating func userUnauthenticated() {
@@ -79,16 +78,22 @@ extension AppEnvironment {
     }
 
     mutating func shouldSucceedAuthentication() {
-        authenticationService = AuthenticationServiceStub(
-            result: .success(.success),
-            delay: Self.fakeAPIEndpointDelay
+        stubAPIEndpoint(
+            for: \.siwaCoordinator,
+            service: APIServiceStub(
+                result: .success(.init(userID: "USER_ID", accessToken: "ACCESS_TOKEN")),
+                delay: Self.fakeAPIEndpointDelay
+            )
         )
     }
 
     mutating func shouldFailAuthentication() {
-        authenticationService = AuthenticationServiceStub(
-            result: .failure(.stub),
-            delay: Self.fakeAPIEndpointDelay
+        stubAPIEndpoint(
+            for: \.siwaCoordinator,
+            service: APIServiceStub(
+                result: .failure("Bruh"),
+                delay: Self.fakeAPIEndpointDelay
+            )
         )
     }
 
@@ -108,7 +113,6 @@ extension AppEnvironment {
     func coordinator<Request: RythmicoAPIRequest>(for service: APIServiceBase<Request>) -> APIActivityCoordinator<Request> {
         APIActivityCoordinator(
             userCredentialProvider: userCredentialProvider,
-            deauthenticationService: deauthenticationService,
             errorHandler: apiActivityErrorHandler,
             service: service
         )

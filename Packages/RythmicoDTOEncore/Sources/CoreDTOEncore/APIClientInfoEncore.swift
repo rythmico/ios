@@ -18,7 +18,5 @@ extension APIClientInfo {
         )
     }
 
-    public static var current: APIClientInfo? {
-        APIClientInfo(bundle: Bundle.main, device: UIDevice.current)
-    }
+    public static let current = APIClientInfo(bundle: Bundle.main, device: UIDevice.current)
 }

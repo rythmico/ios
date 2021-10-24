@@ -1,27 +1,8 @@
 import FoundationEncore
 
-final class UserCredentialStub: UserCredentialProtocol {
-    let userId: String = "USER_ID"
-    let name: String? = "David Roman"
-    let email: String? = "david@rythmico.com"
-    var result: AccessTokenResult
-
-    init(result: AccessTokenResult) {
-        self.result = result
-    }
-
-    func getAccessToken(completionHandler: @escaping Handler<AccessTokenResult>) {
-        completionHandler(result)
-    }
-}
-
-extension UserCredentialProtocol where Self == UserCredentialStub {
-    static var success: Self { UserCredentialStub(result: .success("ACCESS_TOKEN")) }
-}
-
-final class UserCredentialDummy: UserCredentialProtocol {
-    let userId: String = "USER_ID"
-    let name: String? = nil
-    let email: String? = nil
-    func getAccessToken(completionHandler: @escaping Handler<AccessTokenResult>) {}
+extension UserCredential {
+    static let stub = Self(
+        userID: "USER_ID",
+        accessToken: "ACCESS_TOKEN"
+    )
 }

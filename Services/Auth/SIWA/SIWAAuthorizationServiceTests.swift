@@ -3,14 +3,14 @@ import XCTest
 import class AuthenticationServices.ASAuthorizationAppleIDRequest
 import struct CryptoKit.SHA256
 
-final class AppleAuthorizationServiceTests: XCTestCase {
+final class SIWAAuthorizationServiceTests: XCTestCase {
     func testRequestAuthorization_createsControllerAndRequestWithCorrectScopesAndHashedNonce() throws {
-        let expectationA = self.expectation(description: "AppleAuthorizationController is initialized")
+        let expectationA = self.expectation(description: "SIWAController is initialized")
 
         let nonce = "NONCE123"
         let hashedNonce = SHA256.hashString(utf8String: nonce)
 
-        AppleAuthorizationControllerSpy.didInit = { controller in
+        SIWAAuthorizationControllerSpy.didInit = { controller in
             expectationA.fulfill()
 
             XCTAssertEqual(controller.authorizationRequests.count, 1)
@@ -24,7 +24,7 @@ final class AppleAuthorizationServiceTests: XCTestCase {
             XCTAssertEqual(request.nonce, hashedNonce)
         }
 
-        let service = AppleAuthorizationService(controllerType: AppleAuthorizationControllerSpy.self)
+        let service = SIWAAuthorizationService(controllerType: SIWAAuthorizationControllerSpy.self)
         service.requestAuthorization(nonce: nonce) { _ in }
 
         waitForExpectations(timeout: 1, handler: nil)
@@ -34,7 +34,7 @@ final class AppleAuthorizationServiceTests: XCTestCase {
         let expectationA = self.expectation(description: "Delegate is set")
         let expectationB = self.expectation(description: "Request is performed")
 
-        AppleAuthorizationControllerSpy.didInit = { controller in
+        SIWAAuthorizationControllerSpy.didInit = { controller in
             controller.didSetDelegate = { delegate in
                 expectationA.fulfill()
             }
@@ -44,7 +44,7 @@ final class AppleAuthorizationServiceTests: XCTestCase {
             }
         }
 
-        let service = AppleAuthorizationService(controllerType: AppleAuthorizationControllerSpy.self)
+        let service = SIWAAuthorizationService(controllerType: SIWAAuthorizationControllerSpy.self)
         service.requestAuthorization { _ in }
 
         wait(for: [expectationA, expectationB], timeout: 1, enforceOrder: true)
@@ -53,34 +53,36 @@ final class AppleAuthorizationServiceTests: XCTestCase {
     func testRequestAuthorization_completionHandlerIsSuccess_forControllerDelegateSuccessCallback() throws {
         let expectation = self.expectation(description: "Request completes successfully")
 
-        let userId = "USER_ID"
+        let userID = "USER_ID"
         var fullName = PersonNameComponents()
         fullName.givenName = "David"
-        fullName.familyName = "Roman Aguirre"
+        fullName.familyName = "Roman"
         let email = "d@vidroman.dev"
         let identityToken = "IDTOKEN123"
         let nonce = "NONCE123"
 
-        AppleAuthorizationControllerSpy.didInit = { controller in
+        SIWAAuthorizationControllerSpy.didInit = { controller in
             controller.didSetDelegate = { delegate in
-                guard let delegate = delegate as? AppleAuthorizationCompletionDelegate else {
-                    XCTFail("Delegate is not of expected type AppleAuthorizationCompletionDelegate")
+                guard let delegate = delegate as? SIWAAuthorizationCompletionDelegate else {
+                    XCTFail("Delegate is not of expected type SIWACompletionDelegate")
                     return
                 }
-                let credential = AppleAuthorizationResponseStub(userId: userId, fullName: fullName, email: email, identityToken: identityToken)
-                delegate.authorizationCompletionHandler(.success(credential))
+                let credential = SIWAAuthorizationResponseStub(userID: userID, fullName: fullName, email: email, identityToken: identityToken)
+                delegate.handler(.success(credential))
             }
         }
 
-        let service = AppleAuthorizationService(controllerType: AppleAuthorizationControllerSpy.self)
+        let service = SIWAAuthorizationService(controllerType: SIWAAuthorizationControllerSpy.self)
         service.requestAuthorization(nonce: nonce) { result in
             switch result {
             case .success(let credential):
                 expectation.fulfill()
-                let expectedCredential = AppleAuthorizationService.Credential(
-                    userId: userId,
-                    fullName: "David Roman Aguirre",
-                    email: "d@vidroman.dev",
+                let expectedCredential = SIWAAuthorizationService.Credential(
+                    userInfo: .init(
+                        userID: userID,
+                        name: "David Roman",
+                        email: "d@vidroman.dev"
+                    ),
                     identityToken: identityToken,
                     nonce: nonce
                 )
@@ -96,17 +98,17 @@ final class AppleAuthorizationServiceTests: XCTestCase {
     func testRequestAuthorization_completionHandlerIsFailure_forControllerDelegateFailureCallback() throws {
         let expectation = self.expectation(description: "Request completes unsuccessfully")
 
-        AppleAuthorizationControllerSpy.didInit = { controller in
+        SIWAAuthorizationControllerSpy.didInit = { controller in
             controller.didSetDelegate = { delegate in
-                guard let delegate = delegate as? AppleAuthorizationCompletionDelegate else {
-                    XCTFail("Delegate is not of expected type AppleAuthorizationCompletionDelegate")
+                guard let delegate = delegate as? SIWAAuthorizationCompletionDelegate else {
+                    XCTFail("Delegate is not of expected type SIWACompletionDelegate")
                     return
                 }
-                delegate.authorizationCompletionHandler(.failure(.init(.unknown)))
+                delegate.handler(.failure(.init(.unknown)))
             }
         }
 
-        let service = AppleAuthorizationService(controllerType: AppleAuthorizationControllerSpy.self)
+        let service = SIWAAuthorizationService(controllerType: SIWAAuthorizationControllerSpy.self)
         service.requestAuthorization { result in
             switch result {
             case .success(let response):
@@ -123,17 +125,17 @@ final class AppleAuthorizationServiceTests: XCTestCase {
     func testRequestAuthorization_completionHandlerIsFailure_forControllerDelegateSuccessCallback_withNilIdentityTokenCredential() throws {
         let expectation = self.expectation(description: "Request completes unsuccessfully")
 
-        AppleAuthorizationControllerSpy.didInit = { controller in
+        SIWAAuthorizationControllerSpy.didInit = { controller in
             controller.didSetDelegate = { delegate in
-                guard let delegate = delegate as? AppleAuthorizationCompletionDelegate else {
-                    XCTFail("Delegate is not of expected type AppleAuthorizationCompletionDelegate")
+                guard let delegate = delegate as? SIWAAuthorizationCompletionDelegate else {
+                    XCTFail("Delegate is not of expected type SIWACompletionDelegate")
                     return
                 }
-                delegate.authorizationCompletionHandler(.success(AppleAuthorizationResponseDummy()))
+                delegate.handler(.success(SIWAAuthorizationResponseDummy()))
             }
         }
 
-        let service = AppleAuthorizationService(controllerType: AppleAuthorizationControllerSpy.self)
+        let service = SIWAAuthorizationService(controllerType: SIWAAuthorizationControllerSpy.self)
         service.requestAuthorization { result in
             switch result {
             case .success(let response):

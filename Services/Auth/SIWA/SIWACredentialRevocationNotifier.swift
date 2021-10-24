@@ -1,11 +1,11 @@
 import FoundationEncore
 import class AuthenticationServices.ASAuthorizationAppleIDProvider
 
-protocol AppleAuthorizationCredentialRevocationNotifying: AnyObject {
+protocol SIWACredentialRevocationNotifying: AnyObject {
     var revocationHandler: Action? { get set }
 }
 
-final class AppleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifying {
+final class SIWACredentialRevocationNotifier: SIWACredentialRevocationNotifying {
     private let notificationCenter: NotificationCenter
     private var token: NSObjectProtocol?
 

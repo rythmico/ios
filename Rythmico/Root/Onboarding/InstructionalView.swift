@@ -1,22 +1,25 @@
 import SwiftUIEncore
 
+enum InstructionalViewContent {
+    case welcome
+    case loggedOut
+    case whatIsRythmico
+}
+
 struct InstructionalView<EndButton: View>: View {
     @Environment(\.appSplashNamespace) private var appSplashNamespace
     @Environment(\.sizeCategory) private var sizeCategory
 
-    enum Headline {
-        case welcome
-        case whatIsRythmico
-    }
+    typealias Content = InstructionalViewContent
 
-    private let headline: Headline
+    private let content: Content
     @StateObject
     private var teleprompter: Teleprompter
     private let initialDelay: Double?
     private let endButton: EndButton
 
-    init(headline: Headline, animated: Bool, @ViewBuilder endButton: () -> EndButton) {
-        self.headline = headline
+    init(_ content: Content, animated: Bool, @ViewBuilder endButton: () -> EndButton) {
+        self.content = content
         let initialDelay = animated ? AppView.Const.splashToOnboardingAnimationElapseTime : nil
         self._teleprompter = .init(wrappedValue: Teleprompter(mode: initialDelay.map(Teleprompter.Mode.animated) ?? .static))
         self.initialDelay = initialDelay
@@ -29,28 +32,33 @@ struct InstructionalView<EndButton: View>: View {
                 teleprompter.view(transition: .none, prominence: .normal) {
                     Image.rythmicoLogo(width: 40, namespace: appSplashNamespace)
                 }
-                teleprompter.view(transition: .none, prominence: .text(headline.string)) {
+                teleprompter.view(transition: .none, prominence: .text(content.headlineString)) {
                     headlineView.lineLimit(1)
                 }
-                teleprompter.text(style: .subheadline) {
-                    "Rythmico is a first-class music tutoring marketplace."
-                }
-                teleprompter.view(prominence: .low) {
-                    HDivider().frame(width: 80)
-                }
-                teleprompter.text(style: .subheadline) {
-                    "The booking process is "
-                    "simple" <- .subheadlineBold
-                    " and "
-                    "convenient" <- .subheadlineBold
-                    "."
-                }
-                teleprompter.text(style: .subheadline) {
-                    "Instead of having to look through dozens of tutor profiles, simply "
-                    "specify your requirements" <- .subheadlineBold
-                    " for a "
-                    "weekly lesson plan" <- .subheadlineBold
-                    " and have our top-tier tutors apply for your consideration."
+                switch content {
+                case .welcome, .whatIsRythmico:
+                    teleprompter.text(style: .subheadline) {
+                        "Rythmico is a first-class music tutoring marketplace."
+                    }
+                    teleprompter.view(prominence: .low) {
+                        HDivider().frame(width: 80)
+                    }
+                    teleprompter.text(style: .subheadline) {
+                        "The booking process is "
+                        "simple" <- .subheadlineBold
+                        " and "
+                        "convenient" <- .subheadlineBold
+                        "."
+                    }
+                    teleprompter.text(style: .subheadline) {
+                        "Instead of having to look through dozens of tutor profiles, simply "
+                        "specify your requirements" <- .subheadlineBold
+                        " for a "
+                        "weekly lesson plan" <- .subheadlineBold
+                        " and have our top-tier tutors apply for your consideration."
+                    }
+                case .loggedOut:
+                    EmptyView()
                 }
             }
             .frame(maxHeight: .infinity)
@@ -70,15 +78,16 @@ struct InstructionalView<EndButton: View>: View {
 
     @ViewBuilder
     private var headlineView: some View {
-        switch headline {
+        switch content {
         case .welcome:
             TransientContentView(
                 delay: initialDelay,
-                from: { regularHeadlineView(headline.fragments.1) },
-                to: { animatedHeadlineView(headline.fragments) }
+                from: { regularHeadlineView(content.headlineFragments.1) },
+                to: { animatedHeadlineView(content.headlineFragments) }
             )
-        case .whatIsRythmico:
-            regularHeadlineView(headline.string)
+        case .loggedOut,
+             .whatIsRythmico:
+            regularHeadlineView(content.headlineString)
         }
     }
 
@@ -92,7 +101,7 @@ struct InstructionalView<EndButton: View>: View {
     @ViewBuilder
     private func animatedHeadlineView(_ fragments: (String, String)) -> some View {
         TransientStateView(delay: .durationMedium, from: .right, to: .none) { (anchor: TwoSidedText.Anchor?) in
-            TwoSidedText(headline.fragments.0, headline.fragments.1, style: .headline, anchor: anchor)
+            TwoSidedText(content.headlineFragments.0, content.headlineFragments.1, style: .headline, anchor: anchor)
         }
     }
 
@@ -109,12 +118,14 @@ struct InstructionalView<EndButton: View>: View {
     }
 }
 
-private extension InstructionalView.Headline {
-    var string: String { fragments.0 + fragments.1 }
-    var fragments: (String, String) {
+private extension InstructionalViewContent {
+    var headlineString: String { headlineFragments.0 + headlineFragments.1 }
+    var headlineFragments: (String, String) {
         switch self {
         case .welcome:
             return ("Welcome to ", "Rythmico")
+        case .loggedOut:
+            return ("Welcome", .empty)
         case .whatIsRythmico:
             return ("What is Rythmico?", .empty)
         }
@@ -124,7 +135,7 @@ private extension InstructionalView.Headline {
 #if DEBUG
 struct InstructionalView_Preview: PreviewProvider {
     static var previews: some View {
-        InstructionalView(headline: .whatIsRythmico, animated: false) {
+        InstructionalView(.whatIsRythmico, animated: false) {
             RythmicoButton("Done", style: .secondary(), action: nil)
         }
 //        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)

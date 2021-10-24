@@ -1,22 +1,34 @@
 import SwiftUIEncore
 
 struct OnboardingView: View, TestableView {
-    @State
-    var isLoading: Bool = false
-    var isAppleAuthorizationButtonEnabled: Bool { !isLoading }
+    @StateObject
+    var coordinator = Current.siwaCoordinator()
+    var isLoading: Bool { coordinator.isLoading }
+    var isSIWAButtonEnabled: Bool { !isLoading }
 
     @State
-    var errorMessage: String?
+    var authorizationErrorMessage: String?
 
-    func dismissError() { errorMessage = nil }
+    var instructionalViewContent: (content: InstructionalViewContent, animated: Bool) {
+        let legacySIWAUserID = Current.keychain.legacySIWAAuthorizationUserID
+        let newSIWAUserInfo = Current.keychain.siwaUserInfo
+        switch (legacySIWAUserID, newSIWAUserInfo) {
+        case (.none, .none):
+            return (content: .welcome, animated: true)
+        case (.none, .some),
+             (.some, .none),
+             (.some, .some):
+            return (content: .loggedOut, animated: false)
+        }
+    }
 
     let inspection = SelfInspection()
     var body: some View {
-        InstructionalView(headline: .welcome, animated: true) {
+        InstructionalView(instructionalViewContent.content, animated: instructionalViewContent.animated) {
             AppleIDAuthButton(action: authenticateWithApple)
                 .accessibility(hint: Text("Double tap to sign in with your Apple ID"))
-                .disabled(!isAppleAuthorizationButtonEnabled)
-                .opacity(isAppleAuthorizationButtonEnabled ? 1 : 0)
+                .disabled(!isSIWAButtonEnabled)
+                .opacity(isSIWAButtonEnabled ? 1 : 0)
                 .overlay(Group {
                     if isLoading {
                         ActivityIndicator(color: .rythmico.foreground)
@@ -26,9 +38,13 @@ struct OnboardingView: View, TestableView {
         .backgroundColor(.rythmico.background)
         .allowsHitTesting(!isLoading)
         .animation(.rythmicoSpring(duration: .durationMedium), value: isLoading)
-        .alert(error: errorMessage, dismiss: dismissError)
         .testable(self)
         .onAppear(perform: Current.deviceUnregisterCoordinator.unregisterDevice)
+        .onSuccess(coordinator, perform: handleAuthenticationSuccess)
+        .multiModal {
+            $0.alertOnFailure(coordinator, onDismiss: coordinator.dismissFailure)
+            $0.alert(error: $authorizationErrorMessage)
+        }
     }
 }
 

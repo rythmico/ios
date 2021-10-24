@@ -2,27 +2,23 @@ import FoundationEncore
 import Combine
 
 class UserCredentialProviderBase: ObservableObject {
-    @Published var userCredential: UserCredentialProtocol?
+    @Published var userCredential: UserCredential?
 }
 
 final class UserCredentialProvider: UserCredentialProviderBase {
-    private let emitter: UserCredentialEmitterProtocol
-    private var token: UserCredentialEmitterProtocol.ListenerToken?
+    private let keychain: KeychainProtocol
 
-    init(emitter: UserCredentialEmitterProtocol) {
-        self.emitter = emitter
+    init(keychain: KeychainProtocol) {
+        self.keychain = keychain
         super.init()
-        self.userCredential = emitter.userCredential
-        subscribeToEmitter()
+        self.userCredential = keychain.userCredential
     }
 
-    private func subscribeToEmitter() {
-        token = emitter.addStateDidChangeListener { [self] credential in
-            userCredential = credential
+    override var userCredential: UserCredential? {
+        willSet {
+            if userCredential != newValue {
+                keychain.userCredential = newValue
+            }
         }
-    }
-
-    deinit {
-        token.map(emitter.removeStateDidChangeListener)
     }
 }

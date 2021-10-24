@@ -17,7 +17,7 @@ final class ErrorLogger: ErrorLoggerProtocol {
     ) {
         self.crashlyticsLogger = crashlyticsLogger
         self.userCredentialProvider = userCredentialProvider
-        self.cancellable = userCredentialProvider.$userCredential.compactMap { $0?.userId }.sink(receiveValue: crashlyticsLogger.setUserID)
+        self.cancellable = userCredentialProvider.$userCredential.compactMap { $0?.userID }.sink(receiveValue: crashlyticsLogger.setUserID)
     }
 
     func log(_ error: Error) {

@@ -1,6 +1,6 @@
 import FoundationEncore
 
-final class AppleAuthorizationServiceStub: AppleAuthorizationServiceProtocol {
+final class SIWAAuthorizationServiceStub: SIWAAuthorizationServiceProtocol {
     var result: AuthorizationResult
 
     init(result: AuthorizationResult) {
@@ -12,6 +12,6 @@ final class AppleAuthorizationServiceStub: AppleAuthorizationServiceProtocol {
     }
 }
 
-final class AppleAuthorizationServiceDummy: AppleAuthorizationServiceProtocol {
+final class SIWAAuthorizationServiceDummy: SIWAAuthorizationServiceProtocol {
     func requestAuthorization(nonce: String, completionHandler: @escaping Handler<AuthorizationResult>) {}
 }

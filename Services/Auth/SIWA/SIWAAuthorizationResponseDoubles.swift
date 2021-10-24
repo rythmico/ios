@@ -1,21 +1,21 @@
 import FoundationEncore
 
-struct AppleAuthorizationResponseStub: AppleAuthorizationResponseProtocol {
-    var userId: String
+struct SIWAAuthorizationResponseStub: SIWAAuthorizationResponseProtocol {
+    var userID: String
     var fullName: PersonNameComponents?
     var email: String?
     var identityToken: Data?
 
-    init(userId: String, fullName: PersonNameComponents?, email: String?, identityToken: String?) {
-        self.userId = userId
+    init(userID: String, fullName: PersonNameComponents?, email: String?, identityToken: String?) {
+        self.userID = userID
         self.fullName = fullName
         self.email = email
         self.identityToken = (identityToken?.utf8).map(Data.init(_:))
     }
 }
 
-struct AppleAuthorizationResponseDummy: AppleAuthorizationResponseProtocol {
-    var userId = String()
+struct SIWAAuthorizationResponseDummy: SIWAAuthorizationResponseProtocol {
+    var userID: String = .empty
     var fullName: PersonNameComponents?
     var email: String?
     var identityToken: Data?

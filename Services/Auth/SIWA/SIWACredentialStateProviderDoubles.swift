@@ -1,4 +1,4 @@
-final class AppleAuthorizationCredentialStateFetcherStub: AppleAuthorizationCredentialStateProvider {
+final class SIWACredentialStateFetcherStub: SIWACredentialStateProvider {
     var expectedState: State
 
     init(expectedState: State) {
@@ -10,6 +10,6 @@ final class AppleAuthorizationCredentialStateFetcherStub: AppleAuthorizationCred
     }
 }
 
-final class AppleAuthorizationCredentialStateFetcherDummy: AppleAuthorizationCredentialStateProvider {
+final class SIWACredentialStateFetcherDummy: SIWACredentialStateProvider {
     func getCredentialState(forUserID userID: String, completion: @escaping StateHandler) {}
 }

@@ -1,5 +1,4 @@
 import SwiftUIEncore
-import class FirebaseAuth.Auth
 
 struct ProfileView: View, TestableView {
 //    private enum Const {
@@ -12,7 +11,7 @@ struct ProfileView: View, TestableView {
     private var calendarSyncCoordinator = Current.calendarSyncCoordinator
 
     func logOut() {
-        Current.deauthenticationService.deauthenticate()
+        Current.userCredentialProvider.userCredential = nil
     }
 
     let inspection = SelfInspection()

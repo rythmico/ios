@@ -1,7 +1,7 @@
 import Combine
 
 final class UserCredentialProviderStub: UserCredentialProviderBase {
-    init(userCredential: UserCredentialProtocol?) {
+    init(userCredential: UserCredential?) {
         super.init()
         self.userCredential = userCredential
     }

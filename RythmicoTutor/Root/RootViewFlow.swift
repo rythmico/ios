@@ -14,7 +14,7 @@ final class RootViewFlow: Flow {
         userCredentialProvider provider: UserCredentialProviderBase = Current.userCredentialProvider,
         settings: UserDefaults = Current.settings
     ) {
-        func step(forUser user: UserCredentialProtocol?, isVerified: Bool) -> Step {
+        func step(forUser user: UserCredential?, isVerified: Bool) -> Step {
             let isAuthenticated = user != nil
             switch (isAuthenticated, isVerified) {
             case (false, _):
