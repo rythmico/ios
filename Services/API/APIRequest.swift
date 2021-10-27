@@ -17,17 +17,27 @@ protocol RythmicoAPIRequest: JSONDataRequest {
     var body: Body { get }
 }
 
+// MARK: Base URL
+
 extension RythmicoAPIRequest {
     #if LIVE
     var baseURL: URL { "https://rythmico-prod.web.app/v1" }
     #else
     var baseURL: URL { "https://rythmico-api-stage.herokuapp.com" }
     #endif
+}
 
+// MARK: Auth
+
+extension RythmicoAPIRequest {
     var authRequired: Bool {
         true
     }
+}
 
+// MARK: Query Items
+
+extension RythmicoAPIRequest {
     var queryItems: [URLQueryItem] {
         []
     }
@@ -44,7 +54,25 @@ extension RythmicoAPIRequest {
             }
         )
     }
+}
 
+// MARK: Body
+
+extension RythmicoAPIRequest where Body: Encodable {
+    var bodyParameters: BodyParameters? {
+        JSONEncodableBodyParameters(object: body, dateEncodingStrategy: .iso8601)
+    }
+}
+
+extension RythmicoAPIRequest where Body == Void {
+    var bodyParameters: BodyParameters? {
+        nil
+    }
+}
+
+// MARK: Parse Errors
+
+extension RythmicoAPIRequest {
     func intercept(object: Data, urlResponse: HTTPURLResponse) throws -> Data {
         guard 200..<300 ~= urlResponse.statusCode else {
             let parsedError = try? JSONDecoder().decode(RythmicoAPIError.self, from: object)
@@ -64,17 +92,7 @@ extension RythmicoAPIRequest {
     }
 }
 
-extension RythmicoAPIRequest where Body: Encodable {
-    var bodyParameters: BodyParameters? {
-        JSONEncodableBodyParameters(object: body, dateEncodingStrategy: .iso8601)
-    }
-}
-
-extension RythmicoAPIRequest where Body == Void {
-    var bodyParameters: BodyParameters? {
-        nil
-    }
-}
+// MARK: Parse Responses
 
 extension RythmicoAPIRequest where Response: Decodable {
     func response(from object: DataParser.Parsed, urlResponse: HTTPURLResponse) throws -> Response {
