@@ -1,7 +1,7 @@
 import APIKit
 import CoreDTO
 
-struct RegisterAPNSTokenRequest: RythmicoAPIRequest {
+struct RegisterAPNSTokenRequest: APIRequest {
     var deviceToken: String
 
     let method: HTTPMethod = .post

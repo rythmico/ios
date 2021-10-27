@@ -8,7 +8,8 @@ protocol EmptyInitProtocol {
     init()
 }
 
-protocol RythmicoAPIRequest: JSONDataRequest {
+/// Defines a Rythmico API request.
+protocol APIRequest: JSONDataRequest {
     associatedtype Body
 
     var authRequired: Bool { get }
@@ -19,7 +20,7 @@ protocol RythmicoAPIRequest: JSONDataRequest {
 
 // MARK: Base URL
 
-extension RythmicoAPIRequest {
+extension APIRequest {
     #if LIVE
     var baseURL: URL { "https://rythmico-prod.web.app/v1" }
     #else
@@ -29,7 +30,7 @@ extension RythmicoAPIRequest {
 
 // MARK: Auth
 
-extension RythmicoAPIRequest {
+extension APIRequest {
     var authRequired: Bool {
         true
     }
@@ -37,7 +38,7 @@ extension RythmicoAPIRequest {
 
 // MARK: Query Items
 
-extension RythmicoAPIRequest {
+extension APIRequest {
     var queryItems: [URLQueryItem] {
         []
     }
@@ -58,13 +59,13 @@ extension RythmicoAPIRequest {
 
 // MARK: Body
 
-extension RythmicoAPIRequest where Body: Encodable {
+extension APIRequest where Body: Encodable {
     var bodyParameters: BodyParameters? {
         JSONEncodableBodyParameters(object: body, dateEncodingStrategy: .iso8601)
     }
 }
 
-extension RythmicoAPIRequest where Body == Void {
+extension APIRequest where Body == Void {
     var bodyParameters: BodyParameters? {
         nil
     }
@@ -72,7 +73,7 @@ extension RythmicoAPIRequest where Body == Void {
 
 // MARK: Parse Errors
 
-extension RythmicoAPIRequest {
+extension APIRequest {
     func intercept(object: Data, urlResponse: HTTPURLResponse) throws -> Data {
         guard 200..<300 ~= urlResponse.statusCode else {
             let parsedError = try? JSONDecoder().decode(RythmicoAPIError.self, from: object)
@@ -94,14 +95,14 @@ extension RythmicoAPIRequest {
 
 // MARK: Parse Responses
 
-extension RythmicoAPIRequest where Response: Decodable {
+extension APIRequest where Response: Decodable {
     func response(from object: DataParser.Parsed, urlResponse: HTTPURLResponse) throws -> Response {
         let decoder = JSONDecoder() => (\.dateDecodingStrategy, .iso8601)
         return try decoder.decode(Response.self, from: object)
     }
 }
 
-extension RythmicoAPIRequest where Response == Void {
+extension APIRequest where Response == Void {
     func response(from object: DataParser.Parsed, urlResponse: HTTPURLResponse) throws -> Response {
         ()
     }

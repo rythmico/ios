@@ -2,7 +2,7 @@ import APIKit
 import CoreDTOEncore
 import FoundationEncore
 
-final class APIActivityCoordinator<Request: RythmicoAPIRequest>: FailableActivityCoordinator<Request, Request.Response> {
+final class APIActivityCoordinator<Request: APIRequest>: FailableActivityCoordinator<Request, Request.Response> {
     typealias Service = APIServiceBase<Request>
 
     private let userCredentialProvider: UserCredentialProviderBase

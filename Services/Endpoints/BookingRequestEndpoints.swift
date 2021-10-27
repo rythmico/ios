@@ -1,6 +1,6 @@
 import APIKit
 
-struct BookingRequestsGetRequest: RythmicoAPIRequest, EmptyInitProtocol {
+struct BookingRequestsGetRequest: APIRequest, EmptyInitProtocol {
     let method: HTTPMethod = .get
     let path: String = "/booking-requests"
     var headerFields: [String: String] = [:]
@@ -9,7 +9,7 @@ struct BookingRequestsGetRequest: RythmicoAPIRequest, EmptyInitProtocol {
     typealias Response = [BookingRequest]
 }
 
-struct BookingRequestApplyRequest: RythmicoAPIRequest {
+struct BookingRequestApplyRequest: APIRequest {
     var bookingRequestID: String
     var privateNote: String
 

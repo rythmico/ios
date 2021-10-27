@@ -1,7 +1,7 @@
 import FoundationEncore
 import APIKit
 
-final class APIServiceStub<Request: RythmicoAPIRequest>: APIServiceBase<Request> {
+final class APIServiceStub<Request: APIRequest>: APIServiceBase<Request> {
     var result: Swift.Result<Response, Swift.Error>
     var delay: TimeInterval?
 
@@ -22,7 +22,7 @@ final class APIServiceStub<Request: RythmicoAPIRequest>: APIServiceBase<Request>
     }
 }
 
-final class APIServiceSpy<Request: RythmicoAPIRequest>: APIServiceBase<Request> {
+final class APIServiceSpy<Request: APIRequest>: APIServiceBase<Request> {
     private(set) var sendCount = 0
     private(set) var latestRequest: Request?
 
@@ -40,4 +40,4 @@ final class APIServiceSpy<Request: RythmicoAPIRequest>: APIServiceBase<Request> 
     }
 }
 
-typealias APIServiceDummy<Request: RythmicoAPIRequest> = APIServiceBase<Request>
+typealias APIServiceDummy<Request: APIRequest> = APIServiceBase<Request>

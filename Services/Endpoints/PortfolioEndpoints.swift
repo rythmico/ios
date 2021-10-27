@@ -1,6 +1,6 @@
 import APIKit
 
-struct GetPortfolioRequest: RythmicoAPIRequest {
+struct GetPortfolioRequest: APIRequest {
     var tutorId: Tutor.ID
 
     let method: HTTPMethod = .get

@@ -2,7 +2,7 @@ import APIKit
 import CoreDTO
 import PhoneNumberKit
 
-struct GetLessonPlansRequest: RythmicoAPIRequest, EmptyInitProtocol {
+struct GetLessonPlansRequest: APIRequest, EmptyInitProtocol {
     let method: HTTPMethod = .get
     let path: String = "/lesson-plans"
     var headerFields: [String: String] = [:]
@@ -11,7 +11,7 @@ struct GetLessonPlansRequest: RythmicoAPIRequest, EmptyInitProtocol {
     typealias Response = [LessonPlan]
 }
 
-struct CreateLessonPlanRequest: RythmicoAPIRequest {
+struct CreateLessonPlanRequest: APIRequest {
     var instrument: Instrument
     var student: Student
     var address: AddressLookupItem
@@ -41,7 +41,7 @@ struct CreateLessonPlanRequest: RythmicoAPIRequest {
     typealias Response = LessonPlan
 }
 
-struct PauseLessonPlanRequest: RythmicoAPIRequest {
+struct PauseLessonPlanRequest: APIRequest {
     var lessonPlanID: LessonPlan.ID
 
     let method: HTTPMethod = .patch
@@ -52,7 +52,7 @@ struct PauseLessonPlanRequest: RythmicoAPIRequest {
     typealias Response = LessonPlan
 }
 
-struct ResumeLessonPlanRequest: RythmicoAPIRequest {
+struct ResumeLessonPlanRequest: APIRequest {
     let lessonPlanID: LessonPlan.ID
 
     let method: HTTPMethod = .patch
@@ -63,7 +63,7 @@ struct ResumeLessonPlanRequest: RythmicoAPIRequest {
     typealias Response = LessonPlan
 }
 
-struct CancelLessonPlanRequest: RythmicoAPIRequest {
+struct CancelLessonPlanRequest: APIRequest {
     typealias Reason = LessonPlan.CancellationInfo.Reason
 
     var lessonPlanID: LessonPlan.ID
@@ -82,7 +82,7 @@ struct CancelLessonPlanRequest: RythmicoAPIRequest {
     typealias Response = LessonPlan
 }
 
-struct SkipLessonRequest: RythmicoAPIRequest {
+struct SkipLessonRequest: APIRequest {
     var lesson: Lesson
 
     let method: HTTPMethod = .patch
@@ -93,7 +93,7 @@ struct SkipLessonRequest: RythmicoAPIRequest {
     typealias Response = LessonPlan
 }
 
-struct GetLessonPlanCheckoutRequest: RythmicoAPIRequest {
+struct GetLessonPlanCheckoutRequest: APIRequest {
     var lessonPlanID: LessonPlan.ID
     var applicationID: Tutor.ID
 
@@ -105,7 +105,7 @@ struct GetLessonPlanCheckoutRequest: RythmicoAPIRequest {
     typealias Response = Checkout
 }
 
-struct CompleteLessonPlanCheckoutRequest: RythmicoAPIRequest {
+struct CompleteLessonPlanCheckoutRequest: APIRequest {
     var lessonPlanID: LessonPlan.ID
     var applicationID: Tutor.ID
     var phoneNumber: PhoneNumber

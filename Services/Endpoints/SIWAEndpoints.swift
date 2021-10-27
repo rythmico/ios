@@ -1,7 +1,7 @@
 import APIKit
 import CoreDTO
 
-struct SIWARequest: RythmicoAPIRequest {
+struct SIWARequest: APIRequest {
     let method: HTTPMethod = .post
     let path: String = "/auth/siwa"
     let authRequired: Bool = false

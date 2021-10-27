@@ -149,7 +149,7 @@ struct AppEnvironment {
         )
         self.apiActivityErrorHandler = apiActivityErrorHandler
 
-        func coordinator<R: RythmicoAPIRequest>(for service: APIServiceBase<R>) -> APIActivityCoordinator<R> {
+        func coordinator<R: APIRequest>(for service: APIServiceBase<R>) -> APIActivityCoordinator<R> {
             APIActivityCoordinator(
                 userCredentialProvider: userCredentialProvider,
                 errorHandler: apiActivityErrorHandler,

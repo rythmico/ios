@@ -2,7 +2,7 @@ import APIKit
 import CoreDTO
 import FoundationEncore
 
-struct AddressSearchRequest: RythmicoAPIRequest {
+struct AddressSearchRequest: APIRequest {
     struct BlankPostcodeError: LocalizedError {
         let errorDescription: String? = "Postcode must not be empty"
     }

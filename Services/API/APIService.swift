@@ -1,7 +1,7 @@
 import FoundationEncore
 import APIKit
 
-class APIServiceBase<Request: RythmicoAPIRequest> {
+class APIServiceBase<Request: APIRequest> {
     typealias Response = Request.Response
     typealias Error = SessionTaskError
     typealias Result = Swift.Result<Response, Error>
@@ -10,7 +10,7 @@ class APIServiceBase<Request: RythmicoAPIRequest> {
     func send(_ request: Request, completion: @escaping CompletionHandler) -> Activity? { nil }
 }
 
-final class APIService<Request: RythmicoAPIRequest>: APIServiceBase<Request> {
+final class APIService<Request: APIRequest>: APIServiceBase<Request> {
     private let sessionConfiguration = URLSessionConfiguration.ephemeral => {
         $0.waitsForConnectivity = true
         $0.timeoutIntervalForResource = 150
