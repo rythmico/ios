@@ -4,6 +4,7 @@ struct BookingRequestsGetRequest: RythmicoAPIRequest, EmptyInitProtocol {
     let method: HTTPMethod = .get
     let path: String = "/booking-requests"
     var headerFields: [String: String] = [:]
+    let body: Void = ()
 
     typealias Response = [BookingRequest]
 }
@@ -15,12 +16,11 @@ struct BookingRequestApplyRequest: RythmicoAPIRequest {
     let method: HTTPMethod = .post
     var path: String { "/booking-requests/\(bookingRequestID)/apply" }
     var headerFields: [String: String] = [:]
-
-    var bodyParameters: BodyParameters? {
+    var body: some Encodable {
         struct Body: Encodable {
             var privateNote: String
         }
-        return JSONEncodableBodyParameters(object: Body(privateNote: privateNote))
+        return Body(privateNote: privateNote)
     }
 
     typealias Response = BookingApplication

@@ -7,10 +7,7 @@ struct RegisterAPNSTokenRequest: RythmicoAPIRequest {
     let method: HTTPMethod = .post
     let path: String = "/apns-tokens"
     var headerFields: [String: String] = [:]
-
-    var bodyParameters: BodyParameters? {
-        JSONEncodableBodyParameters(object: RegisterAPNSTokenBody(deviceToken: deviceToken))
-    }
+    var body: RegisterAPNSTokenBody { .init(deviceToken: deviceToken) }
 
     typealias Response = Void
 }

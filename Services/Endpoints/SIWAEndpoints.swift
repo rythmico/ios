@@ -2,16 +2,11 @@ import APIKit
 import CoreDTO
 
 struct SIWARequest: RythmicoAPIRequest {
-    var body: SIWABody
-
     let method: HTTPMethod = .post
-    var path: String { "/auth/siwa" }
-    var authRequired: Bool = false
+    let path: String = "/auth/siwa"
+    let authRequired: Bool = false
     var headerFields: [String: String] = [:]
-
-    var bodyParameters: BodyParameters? {
-        JSONEncodableBodyParameters(object: body)
-    }
+    let body: SIWABody
 
     typealias Response = SIWAResponse
 }

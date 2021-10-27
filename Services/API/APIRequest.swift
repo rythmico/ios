@@ -8,9 +8,12 @@ protocol EmptyInitProtocol {
     init()
 }
 
-protocol RythmicoAPIRequest: DecodableJSONRequest where Error == RythmicoAPIError {
+protocol RythmicoAPIRequest: JSONDataRequest {
+    associatedtype Body
+
     var authRequired: Bool { get }
     var headerFields: [String: String] { get set }
+    var body: Body { get }
 }
 
 extension RythmicoAPIRequest {
@@ -24,20 +27,16 @@ extension RythmicoAPIRequest {
         true
     }
 
-    var decoder: Decoder {
-        JSONDecoder() => (\.dateDecodingStrategy, .iso8601)
-    }
-
     func intercept(object: Data, urlResponse: HTTPURLResponse) throws -> Data {
         guard 200..<300 ~= urlResponse.statusCode else {
-            let parsedError = try? decoder.decode(Error.self, from: object)
+            let parsedError = try? JSONDecoder().decode(RythmicoAPIError.self, from: object)
             let error: Swift.Error = parsedError ?? NSError(
                 domain: "",
                 code: -1,
                 userInfo: [NSLocalizedDescriptionKey: HTTPURLResponse.localizedString(forStatusCode: urlResponse.statusCode).capitalized(with: .current)]
             )
             // If user is not authorized...
-            // TODO: do this server side, in a custom AuthMiddleware, so this whole func can be removed.
+            // TODO: do this server side, in a custom AuthMiddleware.
             if urlResponse.statusCode == 401 {
                 throw RythmicoAPIError(description: error.legibleDescription, reason: .unauthorized)
             }
@@ -47,8 +46,27 @@ extension RythmicoAPIRequest {
     }
 }
 
-extension JSONEncodableBodyParameters {
-    init(object: E) {
-        self.init(object: object, dateEncodingStrategy: .iso8601)
+extension RythmicoAPIRequest where Body: Encodable {
+    var bodyParameters: BodyParameters? {
+        JSONEncodableBodyParameters(object: body, dateEncodingStrategy: .iso8601)
+    }
+}
+
+extension RythmicoAPIRequest where Body == Void {
+    var bodyParameters: BodyParameters? {
+        nil
+    }
+}
+
+extension RythmicoAPIRequest where Response: Decodable {
+    func response(from object: DataParser.Parsed, urlResponse: HTTPURLResponse) throws -> Response {
+        let decoder = JSONDecoder() => (\.dateDecodingStrategy, .iso8601)
+        return try decoder.decode(Response.self, from: object)
+    }
+}
+
+extension RythmicoAPIRequest where Response == Void {
+    func response(from object: DataParser.Parsed, urlResponse: HTTPURLResponse) throws -> Response {
+        ()
     }
 }

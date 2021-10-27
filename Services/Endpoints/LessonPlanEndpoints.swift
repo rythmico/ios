@@ -6,6 +6,7 @@ struct GetLessonPlansRequest: RythmicoAPIRequest, EmptyInitProtocol {
     let method: HTTPMethod = .get
     let path: String = "/lesson-plans"
     var headerFields: [String: String] = [:]
+    let body: Void = ()
 
     typealias Response = [LessonPlan]
 }
@@ -20,8 +21,7 @@ struct CreateLessonPlanRequest: RythmicoAPIRequest {
     let method: HTTPMethod = .post
     let path: String = "/lesson-plans"
     var headerFields: [String: String] = [:]
-
-    var bodyParameters: BodyParameters? {
+    var body: some Encodable {
         struct Body: Encodable {
             var instrument: Instrument
             var student: Student
@@ -29,14 +29,12 @@ struct CreateLessonPlanRequest: RythmicoAPIRequest {
             var schedule: Schedule
             var privateNote: String
         }
-        return JSONEncodableBodyParameters(
-            object: Body(
-                instrument: instrument,
-                student: student,
-                address: address,
-                schedule: schedule,
-                privateNote: privateNote
-            )
+        return Body(
+            instrument: instrument,
+            student: student,
+            address: address,
+            schedule: schedule,
+            privateNote: privateNote
         )
     }
 
@@ -49,6 +47,7 @@ struct PauseLessonPlanRequest: RythmicoAPIRequest {
     let method: HTTPMethod = .patch
     var path: String { "/lesson-plans/\(lessonPlanID)/pause" }
     var headerFields: [String: String] = [:]
+    let body: Void = ()
 
     typealias Response = LessonPlan
 }
@@ -59,6 +58,7 @@ struct ResumeLessonPlanRequest: RythmicoAPIRequest {
     let method: HTTPMethod = .patch
     var path: String { "/lesson-plans/\(lessonPlanID)/resume" }
     var headerFields: [String: String] = [:]
+    let body: Void = ()
 
     typealias Response = LessonPlan
 }
@@ -72,12 +72,11 @@ struct CancelLessonPlanRequest: RythmicoAPIRequest {
     let method: HTTPMethod = .patch
     var path: String { "/lesson-plans/\(lessonPlanID)/cancel" }
     var headerFields: [String: String] = [:]
-
-    var bodyParameters: BodyParameters? {
+    var body: some Encodable {
         struct Body: Encodable {
             var reason: Reason
         }
-        return JSONEncodableBodyParameters(object: Body(reason: reason))
+        return Body(reason: reason)
     }
 
     typealias Response = LessonPlan
@@ -89,6 +88,7 @@ struct SkipLessonRequest: RythmicoAPIRequest {
     let method: HTTPMethod = .patch
     var path: String { "/lesson-plans/\(lesson.lessonPlanId)/lessons/\(lesson.id)/skip" }
     var headerFields: [String: String] = [:]
+    let body: Void = ()
 
     typealias Response = LessonPlan
 }
@@ -100,6 +100,7 @@ struct GetLessonPlanCheckoutRequest: RythmicoAPIRequest {
     let method: HTTPMethod = .get
     var path: String { "/lesson-plans/\(lessonPlanID)/applications/\(applicationID)/checkout" }
     var headerFields: [String: String] = [:]
+    let body: Void = ()
 
     typealias Response = Checkout
 }
@@ -113,14 +114,13 @@ struct CompleteLessonPlanCheckoutRequest: RythmicoAPIRequest {
     let method: HTTPMethod = .post
     var path: String { "/lesson-plans/\(lessonPlanID)/applications/\(applicationID)/book" }
     var headerFields: [String: String] = [:]
-
-    var bodyParameters: BodyParameters? {
+    var body: some Encodable {
         struct Body: Encodable {
             @E164PhoneNumber
             var phoneNumber: PhoneNumber
             var cardID: Card.ID
         }
-        return JSONEncodableBodyParameters(object: Body(phoneNumber: phoneNumber, cardID: cardID))
+        return Body(phoneNumber: phoneNumber, cardID: cardID)
     }
 
     typealias Response = LessonPlan

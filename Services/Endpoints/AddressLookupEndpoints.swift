@@ -22,6 +22,7 @@ struct AddressSearchRequest: RythmicoAPIRequest {
     let method: HTTPMethod = .get
     var path: String { "/address-lookup/" + postcode }
     var headerFields: [String: String] = [:]
+    let body: Void = ()
 
     func intercept(urlRequest: URLRequest) throws -> URLRequest {
         urlRequest => (\.cachePolicy, .returnCacheDataElseLoad)
