@@ -13,6 +13,7 @@ protocol RythmicoAPIRequest: JSONDataRequest {
 
     var authRequired: Bool { get }
     var headerFields: [String: String] { get set }
+    var queryItems: [URLQueryItem] { get }
     var body: Body { get }
 }
 
@@ -25,6 +26,23 @@ extension RythmicoAPIRequest {
 
     var authRequired: Bool {
         true
+    }
+
+    var queryItems: [URLQueryItem] {
+        []
+    }
+
+    var queryParameters: QueryParameters? {
+        guard !queryItems.isEmpty else {
+            return nil
+        }
+        return URLEncodedQueryParameters(
+            parameters: queryItems.reduce(into: [String: String]()) { params, item in
+                if let itemValue = item.value {
+                    params[item.name] = itemValue
+                }
+            }
+        )
     }
 
     func intercept(object: Data, urlResponse: HTTPURLResponse) throws -> Data {
