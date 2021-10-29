@@ -1,4 +1,5 @@
 import CoreDTO
+import StudentDTO
 import SwiftUIEncore
 
 final class RequestLessonPlanFlow: Flow {

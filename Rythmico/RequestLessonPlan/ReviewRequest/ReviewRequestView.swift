@@ -1,4 +1,5 @@
 import CoreDTO
+import StudentDTO
 import SwiftUIEncore
 
 struct ReviewRequestView: View, TestableView {
@@ -109,10 +110,9 @@ struct ReviewRequestView: View, TestableView {
         ].filter(\.isEmpty.not).joined(separator: .newline)
     }
 
-    private static let dateOfBirthFormatter = Current.dateFormatter(format: .custom("dd-MM-yyyy"))
-    private func studentAge(from dateOfBirth: Date) -> String {
-        let dateOfBirthString = Self.dateOfBirthFormatter.string(from: dateOfBirth)
-        let age = try! Current.date() - (dateOfBirth, .year, Current.timeZone)
+    private func studentAge(from dateOfBirth: DateOnly) -> String {
+        let dateOfBirthString = dateOfBirth.formatted(style: .short, locale: Current.locale())
+        let age = try! Current.dateOnly() - (dateOfBirth, .year)
         return [dateOfBirthString, "(\(age) years old)"].compacted().spaced()
     }
 

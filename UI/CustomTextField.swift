@@ -47,7 +47,7 @@ struct CustomTextField: UIViewRepresentable {
         _ placeholder: String,
         text: Binding<String>,
         isEditable: Bool = true,
-        inputMode: CustomTextFieldInputMode = KeyboardInputMode(),
+        inputMode: CustomTextFieldInputMode = .keyboard(),
         inputAccessory: CustomTextFieldInputAccessory? = .none,
         onEditingChanged: @escaping (Bool) -> Void = { _ in },
         onCommit: @escaping () -> Void = {}

@@ -1,4 +1,4 @@
-import CoreDTO
+import StudentDTO
 import SwiftUIEncore
 
 struct AddressDetailsView: View, TestableView {

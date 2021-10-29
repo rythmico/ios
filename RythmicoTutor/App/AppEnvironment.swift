@@ -14,9 +14,11 @@ struct AppEnvironment {
     var appOrigin: AppOriginClient
 
     var date: () -> Date
+    var dateOnly: () -> DateOnly
+    var timeOnly: () -> TimeOnly
     var calendarType: () -> Calendar.Identifier
-    var locale: Locale
-    var timeZone: TimeZone
+    var locale: () -> Locale
+    var timeZone: () -> TimeZone
 
     var eventEmitter: NotificationCenter
 
@@ -71,8 +73,8 @@ struct AppEnvironment {
 
         date: @escaping () -> Date,
         calendarType: @escaping () -> Calendar.Identifier,
-        locale: Locale,
-        timeZone: TimeZone,
+        locale: @escaping () -> Locale,
+        timeZone: @escaping () -> TimeZone,
 
         eventEmitter: NotificationCenter,
 
@@ -127,6 +129,8 @@ struct AppEnvironment {
         self.appOrigin = appOrigin
 
         self.date = date
+        self.dateOnly = { .init(date(), timeZone: timeZone()) }
+        self.timeOnly = { .init(date(), timeZone: timeZone()) }
         self.calendarType = calendarType
         self.locale = locale
         self.timeZone = timeZone
@@ -211,8 +215,8 @@ extension AppEnvironment {
 
         date: Date.init,
         calendarType: { Calendar.current.identifier },
-        locale: .autoupdatingCurrent,
-        timeZone: .autoupdatingCurrent,
+        locale: { .autoupdatingCurrent },
+        timeZone: { .autoupdatingCurrent },
 
         eventEmitter: .default,
 

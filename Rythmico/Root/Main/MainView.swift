@@ -7,7 +7,7 @@ struct MainView: View, TestableView {
         case profile = "Profile"
 
         var title: String { rawValue }
-        var uppercasedTitle: String { title.uppercased(with: Current.locale) }
+        var uppercasedTitle: String { title.uppercased(with: Current.locale()) }
     }
 
     @ObservedObject

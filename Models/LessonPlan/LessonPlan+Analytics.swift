@@ -1,5 +1,5 @@
-import CoreDTO
 import FoundationEncore
+import StudentDTO
 
 extension AnalyticsEvent {
     @PropsBuilder
@@ -24,7 +24,7 @@ extension AnalyticsEvent {
             ["Instrument": instrument.rawValue]
         }
         if let student = student {
-            ["Student Age": try! Current.date() - (student.dateOfBirth, .year, .neutral)]
+            ["Student Age": try! Current.dateOnly() - (student.dateOfBirth, .year)]
         }
         if let postcodeDistrict = address?.postcode.firstWord {
             ["Address District": postcodeDistrict]
@@ -51,7 +51,7 @@ extension AnalyticsEvent {
     }
 
     private static func dayOfWeek(for date: Date) -> String? {
-        let calendar = Calendar(identifier: .gregorian) => (\.timeZone, Current.timeZone)
+        let calendar = Calendar(identifier: .gregorian) => (\.timeZone, Current.timeZone())
         let weekday = calendar.component(.weekday, from: date)
         let index = weekday - 1
         return DayOfWeek.allCases[safe: index]?.rawValue
@@ -60,7 +60,7 @@ extension AnalyticsEvent {
     private static func time(for date: Date) -> String? {
         (DateFormatter() => {
             $0.locale = .neutral
-            $0.timeZone = Current.timeZone
+            $0.timeZone = Current.timeZone()
             $0.dateFormat = "HH:mm"
         })
         .string(from: date)

@@ -13,13 +13,14 @@ struct SchedulingView: View, FocusableView, TestableView {
     var focusCoordinator = FocusCoordinator(keyboardDismisser: Current.keyboardDismisser, endEditingOnBackgroundTap: false)
 
     final class ViewState: ObservableObject {
-        @Published var startDate: Date?
-        @Published var startTime: Date?
+        @Published var startDate: DateOnly?
+        @Published var startTime: TimeOnly?
         @Published var duration: Schedule.Duration?
 
+        // TODO: remove, have separate date and time props in Schedule
         var startDateAndTime: Date? {
             unwrap(startDate, startTime).map {
-                Date(date: $0, time: $1, timeZone: Current.timeZone)
+                Date(date: $0, time: $1, timeZone: Current.timeZone())
             }
         }
     }
@@ -29,8 +30,8 @@ struct SchedulingView: View, FocusableView, TestableView {
     var instrument: Instrument
     var setter: Binding<Schedule>.Setter
 
-    private let firstAvailableDate = try! Current.date() + (2, .day, Current.timeZone)
-    private let defaultStartTime = try! Current.date() => ([.minute, .second, .nanosecond], 0, Current.timeZone)
+    private let firstAvailableDate = try! Current.date() + (2, .day, .neutral)
+    private let defaultStartTime = try! TimeOnly(hour: 18, minute: 00)
     private let defaultDuration: Schedule.Duration = .oneHour
 
     @SpacedTextBuilder
@@ -40,28 +41,22 @@ struct SchedulingView: View, FocusableView, TestableView {
         "to commence and for how long"
     }
 
-    private static let dateFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
-    private static let timeFormatter = Current.dateFormatter(format: .preset(date: .none, time: .short))
-
-    private static let scheduleInfoDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
-    private static let scheduleInfoStartDayFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
-    private static let scheduleInfoDurationFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))
-
-    var startDateText: String? { state.startDate.map(Self.dateFormatter.string(from:)) }
-    var startTimeText: String? { state.startTime.map(Self.timeFormatter.string(from:)) }
+    var startDateText: String? { state.startDate?.formatted(custom: "EEEE d MMMM", locale: Current.locale()) }
+    var startTimeText: String? { state.startTime?.formatted(style: .short, locale: Current.locale()) }
     var durationText: String? { state.duration?.title }
 
     var scheduleInfoText: String? {
         guard
-            let startDateAndTime = state.startDateAndTime,
+            let startDate = state.startDate,
+            let startTime = state.startTime,
             let duration = state.duration,
-            let endDateAndTime = Current.calendar().date(byAdding: .minute, value: duration.rawValue, to: startDateAndTime)
+            let endTime = try? startTime + (duration.rawValue, .minute)
         else {
             return nil
         }
-        let day = Self.scheduleInfoDayFormatter.string(from: startDateAndTime)
-        let time = Self.scheduleInfoDurationFormatter.string(from: startDateAndTime, to: endDateAndTime)
-        let startDay = Self.scheduleInfoStartDayFormatter.string(from: startDateAndTime)
+        let day = startDate.formatted(custom: "EEEE", locale: Current.locale())
+        let time = TimeOnlyInterval(start: startTime, end: endTime).formatted(style: .short, locale: Current.locale())
+        let startDay = startDate.formatted(custom: "EEEE d MMMM", locale: Current.locale())
         return "Lessons will be scheduled every \(day) \(time) starting \(startDay)"
     }
 
@@ -82,14 +77,16 @@ struct SchedulingView: View, FocusableView, TestableView {
                                 isEditing: focus == .startDate,
                                 editAction: beginEditingStartDate
                             ) {
-                                if let startDateBinding = Binding($state.startDate) {
-                                    DatePicker(
-                                        "",
-                                        selection: startDateBinding,
-                                        in: firstAvailableDate...,
-                                        displayedComponents: .date
-                                    )
-                                    .datePickerStyle(GraphicalDatePickerStyle())
+                                if let $startDate = Binding($state.startDate) {
+                                    DateOnlyPicker(selection: $startDate) { $selection in
+                                        DatePicker(
+                                            "",
+                                            selection: $selection,
+                                            in: firstAvailableDate...,
+                                            displayedComponents: .date
+                                        )
+                                        .datePickerStyle(GraphicalDatePickerStyle())
+                                    }
                                     .padding([.top, .horizontal], .grid(2))
                                 }
                             }
@@ -101,9 +98,8 @@ struct SchedulingView: View, FocusableView, TestableView {
                                     CustomTextField(
                                         "Time...",
                                         text: .constant(startTimeText ?? .empty),
-                                        inputMode: DatePickerInputMode(
-                                            selection: $state.startTime.or(defaultStartTime),
-                                            mode: .time
+                                        inputMode: TimeOnlyPickerInputMode(
+                                            selection: $state.startTime.or(defaultStartTime)
                                         ),
                                         inputAccessory: .doneButton,
                                         onEditingChanged: onEditingStartTimeChanged
@@ -160,7 +156,7 @@ struct SchedulingView: View, FocusableView, TestableView {
         guard let focus = focus else { return }
         switch focus {
         case .startDate:
-            state.startDate =?? firstAvailableDate
+            state.startDate =?? DateOnly(firstAvailableDate, timeZone: .neutral)
         case .startTime:
             state.startTime =?? defaultStartTime
         case .duration:

@@ -41,7 +41,7 @@ struct PhoneNumberInputView_Previews: PreviewProvider {
             PhoneNumberInputView(phoneNumber: .constant(.stub), phoneNumberInputError: .constant(nil))
             PhoneNumberInputView(phoneNumber: .constant(.stub), phoneNumberInputError: .constant(.some("Some error")))
         }
-        .environment(\.locale, Current.locale)
+        .environment(\.locale, Current.locale())
         .previewLayout(.sizeThatFits)
         .padding()
     }

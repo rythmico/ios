@@ -1,8 +1,8 @@
-import SwiftUIEncore
-import Firebase
 #if RYTHMICO
 import Amplitude
 #endif
+import Firebase
+import SwiftUIEncore
 
 extension AppEnvironment {
     /// Simple wrapper to initialize AppEnvironment.live
@@ -20,14 +20,14 @@ extension AppEnvironment {
 
     func calendar() -> Calendar {
         Calendar(identifier: calendarType()) => {
-            $0.locale = locale
-            $0.timeZone = timeZone
+            $0.locale = locale()
+            $0.timeZone = timeZone()
         }
     }
 
     func numberFormatter(format: NumberFormatter.Format) -> NumberFormatter {
         NumberFormatter() => {
-            $0.locale = locale
+            $0.locale = locale()
             $0.setFormat(format)
         }
     }
@@ -35,8 +35,8 @@ extension AppEnvironment {
     func dateFormatter(format: DateFormatter.Format) -> DateFormatter {
         DateFormatter() => {
             $0.calendar = calendar()
-            $0.locale = locale
-            $0.timeZone = timeZone
+            $0.locale = locale()
+            $0.timeZone = timeZone()
             $0.setFormat(format)
         }
     }
@@ -44,8 +44,8 @@ extension AppEnvironment {
     func dateIntervalFormatter(format: DateIntervalFormatter.Format) -> DateIntervalFormatter {
         DateIntervalFormatter() => {
             $0.calendar = calendar()
-            $0.locale = locale
-            $0.timeZone = timeZone
+            $0.locale = locale()
+            $0.timeZone = timeZone()
             $0.setFormat(format)
         }
     }
@@ -65,7 +65,7 @@ extension AppEnvironment {
 
     func listFormatter() -> ListFormatter {
         ListFormatter() => {
-            $0.locale = locale
+            $0.locale = locale()
         }
     }
 
@@ -76,7 +76,7 @@ extension AppEnvironment {
     ) -> RelativeDateTimeFormatter {
         RelativeDateTimeFormatter() => {
             $0.calendar = calendar()
-            $0.locale = locale
+            $0.locale = locale()
             $0.formattingContext = context
             $0.unitsStyle = style
             $0.dateTimeStyle = precise ? .numeric : .named

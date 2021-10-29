@@ -1,8 +1,9 @@
+import StudentDTO
 import SwiftUIEncore
 
 struct StudentDetailsView: View, FocusableView, TestableView {
     private enum Const {
-        static let averageStudentAge: (Int, Calendar.Component, TimeZone) = (10, .year, Current.timeZone)
+        static let averageStudentAge: (Int, Calendar.Component) = (10, .year)
     }
 
     enum Focus: FocusEnum, CaseIterable {
@@ -18,7 +19,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
 
     final class ViewState: ObservableObject {
         @Published var name = String()
-        @Published var dateOfBirth: Date?
+        @Published var dateOfBirth: DateOnly?
         @Published var about = String()
     }
 
@@ -47,11 +48,10 @@ struct StudentDetailsView: View, FocusableView, TestableView {
     }
 
     // MARK: - Date of Birth -
-    var dateOfBirthText: String? { state.dateOfBirth.map(Self.dateFormatter.string(from:)) }
-    var dateOfBirthPlaceholderText: String { Self.dateFormatter.string(from: dateOfBirthPlaceholder) }
+    var dateOfBirthText: String? { state.dateOfBirth?.formatted(style: .long, locale: Current.locale()) }
+    var dateOfBirthPlaceholderText: String { dateOfBirthPlaceholder.formatted(style: .long, locale: Current.locale()) }
 
-    private static let dateFormatter = Current.dateFormatter(format: .preset(date: .long))
-    private let dateOfBirthPlaceholder = try! Current.date() - Const.averageStudentAge
+    private let dateOfBirthPlaceholder = try! Current.dateOnly() - Const.averageStudentAge
 
     // MARK: - About -
     @SpacedTextBuilder
@@ -103,7 +103,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
                                 CustomTextField(
                                     dateOfBirthPlaceholderText,
                                     text: .constant(dateOfBirthText ?? .empty),
-                                    inputMode: DatePickerInputMode(selection: $state.dateOfBirth.or(dateOfBirthPlaceholder), mode: .date),
+                                    inputMode: DateOnlyPickerInputMode(selection: $state.dateOfBirth.or(dateOfBirthPlaceholder)),
                                     inputAccessory: .doneButton,
                                     onEditingChanged: dateOfBirthEditingChanged
                                 )
@@ -158,7 +158,7 @@ struct StudentDetailsView_Preview: PreviewProvider {
     static var previews: some View {
         let state = StudentDetailsView.ViewState()
         state.name = "David"
-        state.dateOfBirth = try! .stub - (10, .year, .neutral)
+        state.dateOfBirth = try! .stub - (10, .year)
         state.about = "Something"
 
         return StudentDetailsView(

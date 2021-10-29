@@ -1,4 +1,5 @@
 import Foundation
+import StudentDTO
 
 extension Student {
     static let screenshotJackStub = Self(name: "Jack", dateOfBirth: .stub, about: "")

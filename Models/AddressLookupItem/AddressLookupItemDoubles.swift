@@ -16,7 +16,9 @@ extension AddressLookupItem {
             line2: "85 Shore Street",
             line3: "",
             line4: "",
+            district: "",
             city: "Stoke St Mary",
+            state: "",
             postcode: "TA3 0XS",
             country: "England"
         )

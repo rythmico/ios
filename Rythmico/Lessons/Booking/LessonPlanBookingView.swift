@@ -160,7 +160,7 @@ struct LessonPlanBookingView_Previews: PreviewProvider {
             checkout: .stub
         )
 //        .environment(\.colorScheme, .dark)
-//        .environment(\.locale, Current.locale)
+//        .environment(\.locale, Current.locale())
 //        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
 //        .environment(\.legibilityWeight, .bold)
     }

@@ -29,8 +29,8 @@ extension AppEnvironment {
 
             date: { .stub },
             calendarType: { .gregorian },
-            locale: .neutral,
-            timeZone: .neutral,
+            locale: { .neutral },
+            timeZone: { .neutral },
 
             eventEmitter: NotificationCenter(),
 

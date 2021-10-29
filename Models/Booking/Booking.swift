@@ -1,5 +1,6 @@
 import FoundationEncore
 import PhoneNumberKit
+import TutorDTO
 
 struct Booking: Equatable, Identifiable, Hashable {
     typealias ID = Tagged<Self, String>

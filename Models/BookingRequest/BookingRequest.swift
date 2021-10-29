@@ -1,4 +1,5 @@
 import FoundationEncore
+import TutorDTO
 
 struct BookingRequest: Equatable, Decodable, Identifiable, Hashable {
     var id: String

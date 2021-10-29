@@ -1,5 +1,6 @@
 import FoundationEncore
 import PhoneNumberKit
+import TutorDTO
 import struct SwiftUI.Color
 
 struct BookingApplication: Equatable, Identifiable, Hashable {

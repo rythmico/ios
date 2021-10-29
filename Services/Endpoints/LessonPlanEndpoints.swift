@@ -1,6 +1,6 @@
 import APIKit
-import CoreDTO
 import PhoneNumberKit
+import StudentDTO
 
 struct GetLessonPlansRequest: APIRequest, EmptyInitProtocol {
     let method: HTTPMethod = .get

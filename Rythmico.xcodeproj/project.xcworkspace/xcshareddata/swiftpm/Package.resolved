@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/firebase/firebase-ios-sdk",
         "state": {
           "branch": null,
-          "revision": "81b568348ab4e113dd8bcef5a83c5dd431741ae4",
-          "version": "8.8.1"
+          "revision": "2064534407804195d62f48531155ef41ddf1ce22",
+          "version": "8.9.0"
         }
       },
       {
@@ -60,7 +60,7 @@
         "repositoryURL": "https://github.com/rythmico/FoundationEncore",
         "state": {
           "branch": "main",
-          "revision": "57c9ee1cfbce3090e34ea58370ad1f90974b9463",
+          "revision": "a41185b4920a82cae636348dac04295ce1289b94",
           "version": null
         }
       },
@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/google/GoogleAppMeasurement.git",
         "state": {
           "branch": null,
-          "revision": "06add56b27b88ae5180e92d4ee21a1199ee888a1",
-          "version": "8.8.0"
+          "revision": "1f13198b27eb2ac844953dad267bc25639128c41",
+          "version": "8.9.0"
         }
       },
       {
@@ -186,7 +186,7 @@
         "repositoryURL": "https://github.com/rythmico/RythmicoDTO",
         "state": {
           "branch": "main",
-          "revision": "204d8923ac2513039e3fe21cdf626bdfa8104e47",
+          "revision": "e527f6b9f1cd895a56974a5ac177b3b06016dc6f",
           "version": null
         }
       },

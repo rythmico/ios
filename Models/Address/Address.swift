@@ -8,7 +8,9 @@ struct Address: AddressProtocol, Hashable, Equatable, Codable {
     var line2: String
     var line3: String
     var line4: String
+    var district: String
     var city: String
+    var state: String
     var postcode: String
     var country: String
 }

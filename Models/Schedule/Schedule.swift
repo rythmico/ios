@@ -8,9 +8,10 @@ struct Schedule: Equatable, Codable, Hashable {
 }
 
 extension Schedule {
-    var endDate: Date { try! startDate + (duration.rawValue, .minute, Current.timeZone) }
+    var endDate: Date { try! startDate + (duration.rawValue, .minute, Current.timeZone()) }
 }
 
+// TODO: replace with `FoundationEncore.Duration`
 extension Schedule.Duration {
     static let fortyFiveMinutes = Self(rawValue: 45)
     static let oneHour = Self(rawValue: 60)

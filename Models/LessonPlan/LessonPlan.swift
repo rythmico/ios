@@ -1,4 +1,5 @@
 import FoundationEncore
+import StudentDTO
 
 struct LessonPlan: Identifiable, Hashable {
     var id: ID

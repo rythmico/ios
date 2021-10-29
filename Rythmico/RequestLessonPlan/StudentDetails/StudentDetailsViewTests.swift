@@ -1,7 +1,8 @@
-import SwiftUIEncore
-import XCTest
 @testable import Rythmico
+import StudentDTO
+import SwiftUIEncore
 import ViewInspector
+import XCTest
 
 extension StudentDetailsView: Inspectable {}
 
