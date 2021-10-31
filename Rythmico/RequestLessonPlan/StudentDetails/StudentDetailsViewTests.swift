@@ -8,7 +8,7 @@ extension StudentDetailsView: Inspectable {}
 
 final class StudentDetailsViewTests: XCTestCase {
     var studentDetailsView: (RequestLessonPlanFlow, KeyboardDismisserSpy, StudentDetailsView) {
-        let instrument = Instrument.singing
+        let instrument = Instrument.stub(.singing)
         let flow = RequestLessonPlanFlow()
         let keyboardDismisser = KeyboardDismisserSpy()
         Current.keyboardDismisser = keyboardDismisser

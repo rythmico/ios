@@ -19,7 +19,7 @@ final class SchedulingViewTests: XCTestCase {
             state,
             SchedulingView(
                 state: state,
-                instrument: .guitar,
+                instrument: .stub(.guitar),
                 setter: { flow.schedule = $0 }
             )
         )

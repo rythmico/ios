@@ -10,15 +10,27 @@ extension Image {
 
 // MARK: Symbol-based
 
+extension Image {
+    static let genericInstrument: some View = symbolImage(.musicNote)
+    static let chevronLeft: some View = symbolImage(.chevronLeft)
+    static let chevronRight: some View = symbolImage(.chevronRight)
+    static let x: some View = symbolImage(.xmark)
+}
+
+extension UIImage {
+    static let genericInstrument = symbolImage(.musicNote)
+    static let chevronLeft = symbolImage(.chevronLeft)
+    static let chevronRight = symbolImage(.chevronRight)
+    static let x = symbolImage(.xmark)
+}
+
+// MARK: Symbol-based (implementation details)
+
 private let symbolSize: CGFloat = 15
 private let symbolWeight: (Font.Weight, UIImage.SymbolWeight) = (.medium, .medium)
 private let symbolScale: (Image.Scale, UIImage.SymbolScale) = (.large, .large)
 
 extension Image {
-    static let chevronLeft: some View = symbolImage(.chevronLeft)
-    static let chevronRight: some View = symbolImage(.chevronRight)
-    static let x: some View = symbolImage(.xmark)
-
     private static func symbolImage(_ symbol: SFSymbol) -> some View {
         Image(systemSymbol: symbol)
             .renderingMode(.template)
@@ -27,10 +39,6 @@ extension Image {
 }
 
 extension UIImage {
-    static let chevronLeft = symbolImage(.chevronLeft)
-    static let chevronRight = symbolImage(.chevronRight)
-    static let x = symbolImage(.xmark)
-
     private static func symbolImage(_ symbol: SFSymbol) -> UIImage {
         UIImage(systemSymbol: symbol)
             .withRenderingMode(.alwaysTemplate)

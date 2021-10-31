@@ -6,7 +6,7 @@ extension LessonPlan {
     static let pendingJackGuitarPlanStub = Self(
         id: .stub,
         status: .pending,
-        instrument: .guitar,
+        instrument: .stub(.guitar),
         student: .jackStub,
         address: .stub,
         schedule: .stub,
@@ -17,7 +17,7 @@ extension LessonPlan {
     static let pendingJesseDrumsPlanStub = Self(
         id: .random(),
         status: .pending,
-        instrument: .drums,
+        instrument: .stub(.drums),
         student: .jesseStub,
         address: .stub,
         schedule: .stub,
@@ -28,7 +28,7 @@ extension LessonPlan {
     static let pendingCharlottePianoPlanStub = Self(
         id: .random(),
         status: .pending,
-        instrument: .piano,
+        instrument: .stub(.piano),
         student: .charlotteStub,
         address: .stub,
         schedule: .stub,
@@ -39,7 +39,7 @@ extension LessonPlan {
     static let pendingJaneSingingPlanStub = Self(
         id: .random(),
         status: .pending,
-        instrument: .singing,
+        instrument: .stub(.singing),
         student: .janeStub,
         address: .stub,
         schedule: .stub,
@@ -50,7 +50,7 @@ extension LessonPlan {
     static let pendingDavidGuitarPlanStub = Self(
         id: .random(),
         status: .pending,
-        instrument: .guitar,
+        instrument: .stub(.guitar),
         student: .davidStub,
         address: .stub,
         schedule: .stub,

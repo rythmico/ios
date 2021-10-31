@@ -19,7 +19,7 @@ final class ReviewRequestViewTests: XCTestCase {
             ReviewRequestView(
                 coordinator: Current.lessonPlanRequestCoordinator(),
                 flow: flow,
-                instrument: .drums,
+                instrument: .stub(.drums),
                 student: .davidStub,
                 address: .stub,
                 schedule: .stub,
@@ -36,7 +36,7 @@ final class ReviewRequestViewTests: XCTestCase {
             XCTAssertNil(serviceSpy.latestRequest)
             view.submitRequest()
             XCTAssertEqual(serviceSpy.sendCount, 1)
-            XCTAssertEqual(serviceSpy.latestRequest?.instrument, .drums)
+            XCTAssertEqual(serviceSpy.latestRequest?.instrument, .stub(.drums))
             XCTAssertEqual(serviceSpy.latestRequest?.student, .davidStub)
             XCTAssertEqual(serviceSpy.latestRequest?.address, .stub)
             XCTAssertEqual(serviceSpy.latestRequest?.schedule, .stub)

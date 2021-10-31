@@ -5,7 +5,7 @@ extension AppEnvironment {
         dummy => {
             $0.setUpFake()
 
-            $0.instrumentSelectionListProvider = InstrumentSelectionListProviderStub(instruments: Instrument.allCases)
+            $0.fakeAPIEndpoint(for: \.availableInstrumentsFetchingCoordinator, result: .success(.stub))
             $0.fakeAPIEndpoint(for: \.addressSearchCoordinator, result: .success(.stub))
 
             $0.fakeAPIEndpoint(for: \.lessonPlanFetchingCoordinator, result: .success(.stub))
@@ -75,7 +75,7 @@ extension AppEnvironment {
             imageLoadingService: ImageLoadingServiceDummy(),
             imageProcessingService: ImageProcessingServiceDummy(),
 
-            instrumentSelectionListProvider: InstrumentSelectionListProviderDummy(),
+            availableInstrumentsFetchingService: APIServiceDummy(),
             addressSearchService: APIServiceDummy(),
 
             lessonPlanFetchingService: APIServiceDummy(),

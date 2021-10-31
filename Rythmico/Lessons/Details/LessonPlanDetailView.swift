@@ -62,7 +62,7 @@ struct LessonPlanDetailView: View, TestableView {
                 }
             }
             .watermark(
-                lessonPlan.instrument.icon.image,
+                lessonPlan.instrument.icon,
                 color: .rythmico.picoteeBlue,
                 offset: .init(width: -8, height: -45)
             )

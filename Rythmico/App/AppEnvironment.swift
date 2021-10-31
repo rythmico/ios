@@ -56,7 +56,7 @@ struct AppEnvironment {
 
     var imageLoadingCoordinator: () -> ImageLoadingCoordinator
 
-    var instrumentSelectionListProvider: InstrumentSelectionListProviderProtocol
+    var availableInstrumentsFetchingCoordinator: () -> APIActivityCoordinator<GetAvailableInstrumentsRequest>
     var addressSearchCoordinator: () -> APIActivityCoordinator<AddressSearchRequest>
 
     var lessonPlanFetchingCoordinator: APIActivityCoordinator<GetLessonPlansRequest>
@@ -125,7 +125,7 @@ struct AppEnvironment {
         imageLoadingService: ImageLoadingServiceProtocol,
         imageProcessingService: ImageProcessingServiceProtocol,
 
-        instrumentSelectionListProvider: InstrumentSelectionListProviderProtocol,
+        availableInstrumentsFetchingService: APIServiceBase<GetAvailableInstrumentsRequest>,
         addressSearchService: APIServiceBase<AddressSearchRequest>,
 
         lessonPlanFetchingService: APIServiceBase<GetLessonPlansRequest>,
@@ -227,7 +227,7 @@ struct AppEnvironment {
             )
         }
 
-        self.instrumentSelectionListProvider = instrumentSelectionListProvider
+        self.availableInstrumentsFetchingCoordinator = { coordinator(for: availableInstrumentsFetchingService) }
         self.addressSearchCoordinator = { coordinator(for: addressSearchService) }
 
         self.lessonPlanFetchingCoordinator = coordinator(for: lessonPlanFetchingService)
@@ -306,7 +306,7 @@ extension AppEnvironment {
         imageLoadingService: ImageLoadingService(),
         imageProcessingService: ImageProcessingService(),
 
-        instrumentSelectionListProvider: InstrumentSelectionListProvider(),
+        availableInstrumentsFetchingService: APIService(),
         addressSearchService: APIService(),
 
         lessonPlanFetchingService: APIService(),

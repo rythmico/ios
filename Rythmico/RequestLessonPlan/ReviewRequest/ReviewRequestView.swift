@@ -151,7 +151,7 @@ struct ReviewRequestView_Previews: PreviewProvider {
         ReviewRequestView(
             coordinator: Current.lessonPlanRequestCoordinator(),
             flow: RequestLessonPlanFlow(),
-            instrument: .guitar,
+            instrument: .stub(.guitar),
             student: .davidStub,
             address: .stub,
             schedule: .stub,

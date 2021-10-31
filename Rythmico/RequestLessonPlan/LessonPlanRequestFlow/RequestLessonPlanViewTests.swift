@@ -64,7 +64,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
 
 private extension CreateLessonPlanRequest {
     static let stub = CreateLessonPlanRequest(
-        instrument: .guitar,
+        instrument: .stub(.guitar),
         student: .davidStub,
         address: .stub,
         schedule: .stub,

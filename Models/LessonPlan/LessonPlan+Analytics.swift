@@ -21,7 +21,7 @@ extension AnalyticsEvent {
         _ schedule: Schedule?
     ) -> Props {
         if let instrument = instrument {
-            ["Instrument": instrument.rawValue]
+            ["Instrument": instrument.id.rawValue]
         }
         if let student = student {
             ["Student Age": try! Current.dateOnly() - (student.dateOfBirth, .year)]

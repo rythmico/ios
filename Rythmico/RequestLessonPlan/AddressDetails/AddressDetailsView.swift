@@ -125,7 +125,7 @@ struct AddressDetailsViewPreview: PreviewProvider {
 
         return AddressDetailsView(
             student: .davidStub,
-            instrument: .guitar,
+            instrument: .stub(.guitar),
             state: state,
             coordinator: Current.addressSearchCoordinator(),
             setter: { _ in }

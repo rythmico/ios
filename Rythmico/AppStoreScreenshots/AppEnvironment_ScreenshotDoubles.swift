@@ -1,3 +1,4 @@
+import CoreDTO
 import SwiftUIEncore
 
 extension AppEnvironment {
@@ -17,12 +18,12 @@ extension AppEnvironment {
                 )
             }
 
-            $0.instrumentSelectionListProvider = InstrumentSelectionListProviderStub(instruments: Instrument.allCases)
-            $0.fakeLessonPlans(for: screenshotNumbers)
+            $0.stubAPIEndpoint(for: \.availableInstrumentsFetchingCoordinator, result: .success(.stub))
+            $0.stubLessonPlans(for: screenshotNumbers)
         }
     }
 
-    private mutating func fakeLessonPlans(for screenshotNumbers: AppStoreScreenshotNumbers) {
+    private mutating func stubLessonPlans(for screenshotNumbers: AppStoreScreenshotNumbers) {
         let lessonPlans: [LessonPlan]
         switch screenshotNumbers {
         case .twoThreeAndFour:
@@ -41,6 +42,6 @@ extension AppEnvironment {
                 .screenshotJackDrumsPlanStub => (\.status, .screenshotJackDrumsPlanCancelled),
             ]
         }
-        fakeAPIEndpoint(for: \.lessonPlanFetchingCoordinator, result: .success(lessonPlans), delay: nil)
+        stubAPIEndpoint(for: \.lessonPlanFetchingCoordinator, result: .success(lessonPlans))
     }
 }

@@ -1,3 +1,4 @@
+import CoreDTO
 import SwiftUIEncore
 
 struct InstrumentSelectionView: View, TestableView {
@@ -5,6 +6,8 @@ struct InstrumentSelectionView: View, TestableView {
         @Published var instruments: [Instrument] = []
     }
 
+    @StateObject
+    var coordinator = Current.availableInstrumentsFetchingCoordinator()
     @ObservedObject
     var state: ViewState
     var setter: Binding<Instrument>.Setter
@@ -14,31 +17,34 @@ struct InstrumentSelectionView: View, TestableView {
 
     let inspection = SelfInspection()
     var body: some View {
-        TitleSubtitleContentView("Choose Instrument", "Select one instrument") { _ in
-            ScrollView {
-                SelectableLazyVGrid(
-                    data: state.instruments,
-                    action: setter,
-                    content: InstrumentSelectionItemView.init
-                )
+        ZStack {
+            if coordinator.isLoading {
+                ActivityIndicator(color: .rythmico.foreground).frame(maxHeight: .infinity)
+            } else {
+                TitleSubtitleContentView("Choose Instrument", "Select one instrument") { _ in
+                    ScrollView {
+                        SelectableLazyVGrid(
+                            data: state.instruments,
+                            action: setter,
+                            content: InstrumentSelectionItemView.init
+                        )
+                    }
+                }
+                .transition(.opacity.animation(.rythmicoSpring(duration: .durationShort)))
             }
         }
         .testable(self)
-        .onAppear(perform: fetchInstruments)
-    }
-
-    private func fetchInstruments() {
-        Current.instrumentSelectionListProvider.instruments { state.instruments = $0 }
+        .onAppear(perform: coordinator.runToIdle)
+        .onSuccess(coordinator) { state.instruments = $0 }
+        .alertOnFailure(coordinator, onDismiss: coordinator.dismissFailure)
     }
 }
 
 #if DEBUG
 struct InstrumentSelectionView_Preview: PreviewProvider {
     static var previews: some View {
-        let state = InstrumentSelectionView.ViewState()
-        state.instruments = Instrument.allCases
-        return InstrumentSelectionView(state: state, setter: { _ in })
-            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+        InstrumentSelectionView(state: .init(), setter: { _ in })
+//            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }
 }
 #endif

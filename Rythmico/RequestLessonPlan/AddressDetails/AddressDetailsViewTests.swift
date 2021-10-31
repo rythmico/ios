@@ -26,7 +26,7 @@ final class AddressDetailsViewTests: XCTestCase {
             addressSearchService,
             AddressDetailsView(
                 student: .davidStub,
-                instrument: .guitar,
+                instrument: .stub(.guitar),
                 state: .init(),
                 coordinator: Current.addressSearchCoordinator(),
                 setter: { flow.address = $0 }

@@ -4,7 +4,7 @@ extension BookingRequest {
     static let stub = Self(
         id: UUID().uuidString,
         createdAt: try! .stub - (32, .second, .neutral),
-        instrument: .piano,
+        instrument: .stub(.piano),
         submitterName: "David R",
         student: .jackStub,
         postcode: "N8",
@@ -15,7 +15,7 @@ extension BookingRequest {
     static let stubWithAbout = Self(
         id: UUID().uuidString,
         createdAt: try! .stub - (32, .second, .neutral),
-        instrument: .guitar,
+        instrument: .stub(.guitar),
         submitterName: "David R",
         student: .janeStub,
         postcode: "N8",
@@ -26,7 +26,7 @@ extension BookingRequest {
     static let longStub = Self(
         id: UUID().uuidString,
         createdAt: try! .stub - (1, .weekOfYear, .neutral),
-        instrument: .piano,
+        instrument: .stub(.piano),
         submitterName: "David R",
         student: .davidStubNoAbout,
         postcode: "NW5",

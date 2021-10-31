@@ -1,3 +1,4 @@
+import CoreDTO
 import FoundationEncore
 
 extension Lesson.ID {
@@ -36,7 +37,7 @@ private extension Lesson {
             id: .random(),
             lessonPlanId: .stub,
             student: .jackStub,
-            instrument: .guitar,
+            instrument: .stub(.guitar),
             week: week,
             tutor: .jesseStub,
             status: status,
@@ -50,7 +51,7 @@ private extension Lesson {
         Self(
             id: .random(),
             student: .jackStub,
-            instrument: .guitar,
+            instrument: .stub(.guitar),
             week: week,
             status: status,
             address: .stub,

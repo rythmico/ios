@@ -1,4 +1,5 @@
-import Foundation
+import CoreDTO
+import FoundationEncore
 
 extension LessonPlan.Application {
     static let screenshotRebekahStub = Self(
@@ -23,7 +24,7 @@ extension Tutor {
         name: "Rebekah F",
         photoURL: .url(rebekahPhotoURL),
         thumbnailURL: .url(rebekahPhotoURL),
-        instruments: [.flute, .piano, .singing]
+        instruments: [.flute, .piano, .singing].map(Instrument.stub)
     )
 
     private static let callumPhotoURL = URL(string: "https://dl.airtable.com/.attachmentThumbnails/01875077ec1f599fbf0c3092b7ce5bde/7a9b03da")!

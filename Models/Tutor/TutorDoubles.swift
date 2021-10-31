@@ -1,3 +1,4 @@
+import CoreDTO
 import FoundationEncore
 
 extension Tutor.ID {
@@ -12,7 +13,7 @@ extension Tutor {
         name: "Jesse Bildner",
         photoURL: nil,
         thumbnailURL: nil,
-        instruments: [.guitar, .piano, .singing, .flute]
+        instruments: [.guitar, .piano, .singing, .flute].map(Instrument.stub)
     )
 
     static let davidStub = Self(
@@ -20,7 +21,7 @@ extension Tutor {
         name: "David Roman",
         photoURL: nil,
         thumbnailURL: nil,
-        instruments: [.guitar, .piano, .singing, .flute]
+        instruments: [.guitar, .piano, .singing, .flute].map(Instrument.stub)
     )
 
     static let charlotteStub = Self(
@@ -28,6 +29,6 @@ extension Tutor {
         name: "Charlotte",
         photoURL: nil,
         thumbnailURL: nil,
-        instruments: [.guitar, .piano, .singing, .flute]
+        instruments: [.guitar, .piano, .singing, .flute].map(Instrument.stub)
     )
 }

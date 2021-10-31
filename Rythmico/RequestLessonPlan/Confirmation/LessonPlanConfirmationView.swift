@@ -62,7 +62,7 @@ struct LessonPlanConfirmationView: View, TestableView {
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: .grid(8)) {
                         VStack(spacing: .grid(6)) {
-                            Image(uiImage: lessonPlan.instrument.icon.image.resized(width: iconWidth))
+                            Image(uiImage: lessonPlan.instrument.icon.resized(width: iconWidth))
                                 .renderingMode(.template)
                                 .foregroundColor(.rythmico.foreground)
 

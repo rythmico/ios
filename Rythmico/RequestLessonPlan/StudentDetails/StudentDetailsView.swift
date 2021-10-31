@@ -162,7 +162,7 @@ struct StudentDetailsView_Preview: PreviewProvider {
         state.about = "Something"
 
         return StudentDetailsView(
-            instrument: .piano,
+            instrument: .stub(.piano),
             state: state,
             setter: { _ in }
         ).previewDevices()

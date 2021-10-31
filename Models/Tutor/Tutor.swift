@@ -1,3 +1,4 @@
+import CoreDTO
 import FoundationEncore
 
 struct Tutor: Identifiable, Equatable, Decodable, Hashable {

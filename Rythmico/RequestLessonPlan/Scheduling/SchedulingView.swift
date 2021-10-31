@@ -1,3 +1,4 @@
+import CoreDTO
 import SwiftUIEncore
 
 struct SchedulingView: View, FocusableView, TestableView {
@@ -170,7 +171,7 @@ struct SchedulingViewPreview: PreviewProvider {
     static var previews: some View {
         SchedulingView(
             state: SchedulingView.ViewState(),
-            instrument: .guitar,
+            instrument: .stub(.guitar),
             setter: { _ in }
         )
     }
