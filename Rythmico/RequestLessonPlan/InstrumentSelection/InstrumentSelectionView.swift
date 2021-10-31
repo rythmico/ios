@@ -34,9 +34,14 @@ struct InstrumentSelectionView: View, TestableView {
             }
         }
         .testable(self)
-        .onAppear(perform: coordinator.runToIdle)
+        .onAppear(perform: fetchInstrumentsIfNeeded)
         .onSuccess(coordinator) { state.instruments = $0 }
         .alertOnFailure(coordinator, onDismiss: coordinator.dismissFailure)
+    }
+
+    func fetchInstrumentsIfNeeded() {
+        guard state.instruments.isEmpty else { return }
+        coordinator.runToIdle()
     }
 }
 
