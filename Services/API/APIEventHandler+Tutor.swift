@@ -5,9 +5,9 @@ final class APIEventHandler: APIEventHandlerProtocol {
         switch event {
         case .unknown:
             break
-        case .bookingRequestsChanged:
+        case .known(.bookingRequestsChanged):
             Current.bookingRequestFetchingCoordinator.reset()
-        case .bookingApplicationsChanged:
+        case .known(.bookingApplicationsChanged):
             Current.bookingApplicationFetchingCoordinator.reset()
         }
     }

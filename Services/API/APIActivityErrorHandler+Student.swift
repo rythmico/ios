@@ -16,9 +16,9 @@ final class APIActivityErrorHandler: APIActivityErrorHandlerProtocol {
         switch error.reason {
         case .unknown, .none:
             break
-        case .unauthorized:
+        case .known(.unauthorized):
             userCredentialProvider.userCredential = nil
-        case .clientOutdated:
+        case .known(.clientOutdated):
             remoteConfigCoordinator.fetch(forced: true)
         }
     }

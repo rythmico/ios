@@ -85,7 +85,7 @@ extension APIRequest {
             // If user is not authorized...
             // TODO: do this server side, in a custom AuthMiddleware.
             if urlResponse.statusCode == 401 {
-                throw RythmicoAPIError(description: error.legibleDescription, reason: .unauthorized)
+                throw RythmicoAPIError(description: error.legibleDescription, reason: .known(.unauthorized))
             }
             throw error
         }

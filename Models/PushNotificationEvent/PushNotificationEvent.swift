@@ -9,6 +9,6 @@ extension APIEvent {
         guard let eventRawValue = userInfo["event"] as? String else {
             return nil
         }
-        self.init(rawValueOrUnknown: eventRawValue)
+        self.init(rawValue: eventRawValue)
     }
 }

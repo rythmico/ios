@@ -60,7 +60,7 @@
         "repositoryURL": "https://github.com/rythmico/FoundationEncore",
         "state": {
           "branch": "main",
-          "revision": "19375462eaac9aff6645118acdbc5354eb287c14",
+          "revision": "344fd70a7852d2541377c534f2d20980b70f2b97",
           "version": null
         }
       },
@@ -111,11 +111,11 @@
       },
       {
         "package": "LegibleError",
-        "repositoryURL": "https://github.com/davdroman/LegibleError",
+        "repositoryURL": "https://github.com/mxcl/LegibleError",
         "state": {
-          "branch": "master",
-          "revision": "4a0173be5ce2b67927e451b530022b200da736d3",
-          "version": null
+          "branch": null,
+          "revision": "bc596702d7ff618c3f90ba480eeb48b3e83a2fbe",
+          "version": "1.0.6"
         }
       },
       {
@@ -186,7 +186,7 @@
         "repositoryURL": "https://github.com/rythmico/RythmicoDTO",
         "state": {
           "branch": "main",
-          "revision": "7b7ed2556c628740764684ff90ccc3e670c72c1d",
+          "revision": "05e663849487c59cdab6ddd9b77cac985a658e5c",
           "version": null
         }
       },
