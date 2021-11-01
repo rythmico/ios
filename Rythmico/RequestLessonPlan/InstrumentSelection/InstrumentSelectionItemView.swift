@@ -5,11 +5,11 @@ struct InstrumentSelectionItemView: View {
     let instrument: Instrument
 
     @ScaledMetric(relativeTo: .largeTitle)
-    private var iconWidth: CGFloat = .grid(12)
+    private var iconSize: CGFloat = .grid(12)
 
     var body: some View {
         VStack(spacing: .grid(3)) {
-            Image(uiImage: instrument.icon.resized(width: iconWidth))
+            Image(uiImage: instrument.icon.resized(height: iconSize))
                 .renderingMode(.template)
             Text(instrument.standaloneName)
                 .rythmicoTextStyle(.subheadlineBold)
