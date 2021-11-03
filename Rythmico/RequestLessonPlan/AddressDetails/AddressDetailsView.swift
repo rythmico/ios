@@ -67,7 +67,7 @@ struct AddressDetailsView: View, TestableView {
                                         CustomTextField(
                                             "NW1 7FB",
                                             text: $state.postcode,
-                                            inputMode: KeyboardInputMode(contentType: .postalCode, autocapitalization: .allCharacters, returnKey: .search),
+                                            inputMode: .keyboard(contentType: .postalCode, autocapitalization: .allCharacters, returnKey: .search),
                                             onCommit: searchAddresses
                                         )
                                     }

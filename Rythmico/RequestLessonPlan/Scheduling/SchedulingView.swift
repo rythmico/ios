@@ -99,9 +99,7 @@ struct SchedulingView: View, FocusableView, TestableView {
                                     CustomTextField(
                                         "Time...",
                                         text: .constant(startTimeText ?? .empty),
-                                        inputMode: TimeOnlyPickerInputMode(
-                                            selection: $state.startTime.or(defaultStartTime)
-                                        ),
+                                        inputMode: .timeOnlyPicker(selection: $state.startTime.or(defaultStartTime)),
                                         inputAccessory: .doneButton,
                                         onEditingChanged: onEditingStartTimeChanged
                                     )

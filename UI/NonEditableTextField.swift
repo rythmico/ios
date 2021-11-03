@@ -18,7 +18,8 @@ struct NonEditableTextField: View {
         CustomTextField(
             placeholder,
             text: .constant(text ?? .empty),
-            isEditable: false
+            isEditable: false,
+            inputMode: .keyboard()
         )
         .onTapGesture(perform: tapAction)
     }

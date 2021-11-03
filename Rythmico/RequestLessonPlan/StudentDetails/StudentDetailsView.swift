@@ -88,7 +88,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
                                 CustomTextField(
                                     "Enter Name...",
                                     text: $state.name,
-                                    inputMode: KeyboardInputMode(contentType: .name, autocapitalization: .words),
+                                    inputMode: .keyboard(contentType: .name, autocapitalization: .words),
                                     onEditingChanged: fullNameEditingChanged
                                 )
                             }
@@ -103,7 +103,7 @@ struct StudentDetailsView: View, FocusableView, TestableView {
                                 CustomTextField(
                                     dateOfBirthPlaceholderText,
                                     text: .constant(dateOfBirthText ?? .empty),
-                                    inputMode: DateOnlyPickerInputMode(selection: $state.dateOfBirth.or(dateOfBirthPlaceholder)),
+                                    inputMode: .dateOnlyPicker(selection: $state.dateOfBirth.or(dateOfBirthPlaceholder)),
                                     inputAccessory: .doneButton,
                                     onEditingChanged: dateOfBirthEditingChanged
                                 )
