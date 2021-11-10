@@ -54,8 +54,9 @@ final class APIActivityCoordinator<Request: APIRequest>: FailableActivityCoordin
     }
 
     private func handleRythmicoAPIError(_ error: RythmicoAPIError) {
-        errorHandler.handle(error)
-        finish(.failure(error))
+        errorHandler.handle(error) {
+            finish(.failure(error))
+        }
     }
 }
 

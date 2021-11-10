@@ -1,26 +1,26 @@
 import FoundationEncore
 
 final class APIActivityErrorHandler: APIActivityErrorHandlerProtocol {
+    private let appStatusProvider: AppStatusProvider
     private let userCredentialProvider: UserCredentialProviderBase
-    private let remoteConfigCoordinator: RemoteConfigCoordinator
     private let settings: UserDefaults
 
     init(
+        appStatusProvider: AppStatusProvider,
         userCredentialProvider: UserCredentialProviderBase,
-        remoteConfigCoordinator: RemoteConfigCoordinator,
         settings: UserDefaults
     ) {
+        self.appStatusProvider = appStatusProvider
         self.userCredentialProvider = userCredentialProvider
-        self.remoteConfigCoordinator = remoteConfigCoordinator
         self.settings = settings
     }
 
-    func handle(_ error: RythmicoAPIError) {
+    func handle(_ error: RythmicoAPIError, complete: Action) {
         switch error.reason {
         case .unknown, .none:
-            break
+            complete()
         case .known(.clientOutdated):
-            remoteConfigCoordinator.fetch(forced: true)
+            appStatusProvider.isAppOutdated = true
         case .known(.unauthorized):
             userCredentialProvider.userCredential = nil
         case .known(.tutorNotVerified):

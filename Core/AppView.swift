@@ -18,7 +18,7 @@ struct AppView: View {
     }
 
     @StateObject
-    private var remoteConfigCoordinator = Current.remoteConfigCoordinator
+    private var appStatus = Current.appStatus
 
     init() {
         // Waits for main window to come into existence.
@@ -36,15 +36,12 @@ struct AppView: View {
                 RootView(flow: flow)
             }
         }
-        .onAppear { remoteConfigCoordinator.fetch() }
         .onEvent(.sizeCategoryChanged, perform: Self.refreshAppearance)
         .animation(animation, value: screen)
     }
 
     private var screen: Screen {
-        if !remoteConfigCoordinator.wasFetched {
-            return .splash
-        } else if Current.remoteConfig.appUpdateRequired {
+        if appStatus.isAppOutdated {
             return .update
         } else {
             return .root(RootViewFlow())

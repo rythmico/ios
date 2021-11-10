@@ -335,14 +335,7 @@
 		D56B25432533331A00BC3932 /* PhoneNumberDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */; };
 		D56C6A98264AC80C00A2599E /* ComposableNavigator in Frameworks */ = {isa = PBXBuildFile; productRef = D56C6A97264AC80C00A2599E /* ComposableNavigator */; };
 		D56C6A9A264AE85500A2599E /* MainViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56C6A99264AE85500A2599E /* MainViewContent.swift */; };
-		D575C80F254DB13D001664AB /* RemoteConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C80E254DB13D001664AB /* RemoteConfigService.swift */; };
-		D575C814254DB602001664AB /* RemoteConfigServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C813254DB602001664AB /* RemoteConfigServiceDoubles.swift */; };
 		D575C819254DD6C8001664AB /* AppSplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C818254DD6C8001664AB /* AppSplash.swift */; };
-		D575C82F254F10E1001664AB /* RemoteConfigCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E49254DA0E7003A8197 /* RemoteConfigCoordinator.swift */; };
-		D575C830254F10E1001664AB /* RemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E3E254D957D003A8197 /* RemoteConfig.swift */; };
-		D575C831254F10E1001664AB /* RemoteConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C80E254DB13D001664AB /* RemoteConfigService.swift */; };
-		D575C832254F10E1001664AB /* RemoteConfigServiceDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C813254DB602001664AB /* RemoteConfigServiceDoubles.swift */; };
-		D575C837254F10F0001664AB /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = D575C836254F10F0001664AB /* FirebaseRemoteConfig */; };
 		D575C84E254F29BD001664AB /* Assets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C84D254F29BD001664AB /* Assets.generated.swift */; };
 		D575C856254F2B2F001664AB /* AppSplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D575C818254DD6C8001664AB /* AppSplash.swift */; };
 		D575C869254F2F26001664AB /* ImageAsset+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D516A928253A554F002E6EDF /* ImageAsset+Sugar.swift */; };
@@ -373,8 +366,6 @@
 		D588E882266D137400E14288 /* ErrorLoggerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D588E880266D137400E14288 /* ErrorLoggerDoubles.swift */; };
 		D58DE1BC25BDF5C30013AEE8 /* RootViewFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58DE1BB25BDF5C30013AEE8 /* RootViewFlow.swift */; };
 		D58DE1D625C0F1A20013AEE8 /* TutorStatusBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58DE1D525C0F1A20013AEE8 /* TutorStatusBanner.swift */; };
-		D591C5B626699AA400A95938 /* PeriodDuration+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591C5B526699AA400A95938 /* PeriodDuration+Sugar.swift */; };
-		D591C5B726699AA400A95938 /* PeriodDuration+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D591C5B526699AA400A95938 /* PeriodDuration+Sugar.swift */; };
 		D593C7022550C03B00C684FF /* AppUpdatePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */; };
 		D593C7032550C03B00C684FF /* AppUpdatePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */; };
 		D5947C9826A39E9600355857 /* ComposableNavigator in Frameworks */ = {isa = PBXBuildFile; productRef = D5947C9726A39E9600355857 /* ComposableNavigator */; };
@@ -403,9 +394,6 @@
 		D5AC9E27254D8AD7003A8197 /* AppDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E25254D8AD7003A8197 /* AppDoubles.swift */; };
 		D5AC9E2C254D8AE2003A8197 /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E2B254D8AE2003A8197 /* AppLauncher.swift */; };
 		D5AC9E2D254D8AE2003A8197 /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E2B254D8AE2003A8197 /* AppLauncher.swift */; };
-		D5AC9E3B254D9533003A8197 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = D5AC9E3A254D9533003A8197 /* FirebaseRemoteConfig */; };
-		D5AC9E3F254D957D003A8197 /* RemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E3E254D957D003A8197 /* RemoteConfig.swift */; };
-		D5AC9E4A254DA0E7003A8197 /* RemoteConfigCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC9E49254DA0E7003A8197 /* RemoteConfigCoordinator.swift */; };
 		D5AFED3025047DFC003FFC68 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED2F25047DFC003FFC68 /* Activity.swift */; };
 		D5AFED3125047DFC003FFC68 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED2F25047DFC003FFC68 /* Activity.swift */; };
 		D5AFED3C25056300003FFC68 /* NotificationCenter+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AFED3B25056300003FFC68 /* NotificationCenter+Sugar.swift */; };
@@ -439,6 +427,8 @@
 		D5B4D3DF273C37620048E4E1 /* LessonPlanRequestStatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4D3DE273C37620048E4E1 /* LessonPlanRequestStatusPill.swift */; };
 		D5B4D3E3273C39BA0048E4E1 /* LessonPlanRequestSummaryTutorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4D3E2273C39BA0048E4E1 /* LessonPlanRequestSummaryTutorStatusView.swift */; };
 		D5B4D3E5273C3B1C0048E4E1 /* LessonPlanRequestOptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4D3E4273C3B1C0048E4E1 /* LessonPlanRequestOptionsButton.swift */; };
+		D5B4D3E7273C47820048E4E1 /* AppStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4D3E6273C47820048E4E1 /* AppStatusProvider.swift */; };
+		D5B4D3E8273C47820048E4E1 /* AppStatusProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4D3E6273C47820048E4E1 /* AppStatusProvider.swift */; };
 		D5B57A65241479F300BE9B4F /* Assets.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A64241479F300BE9B4F /* Assets.generated.swift */; };
 		D5B57A712419F79700BE9B4F /* SectionHeaderContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A702419F79700BE9B4F /* SectionHeaderContentView.swift */; };
 		D5B57A75241A018900BE9B4F /* SchedulingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B57A74241A018900BE9B4F /* SchedulingView.swift */; };
@@ -904,8 +894,6 @@
 		D56B253A2532433E00BC3932 /* ErrorText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorText.swift; sourceTree = "<group>"; };
 		D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberDoubles.swift; sourceTree = "<group>"; };
 		D56C6A99264AE85500A2599E /* MainViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewContent.swift; sourceTree = "<group>"; };
-		D575C80E254DB13D001664AB /* RemoteConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigService.swift; sourceTree = "<group>"; };
-		D575C813254DB602001664AB /* RemoteConfigServiceDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigServiceDoubles.swift; sourceTree = "<group>"; };
 		D575C818254DD6C8001664AB /* AppSplash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSplash.swift; sourceTree = "<group>"; };
 		D575C84D254F29BD001664AB /* Assets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.generated.swift; sourceTree = "<group>"; };
 		D575C86D254F2F82001664AB /* ActivityCoordinator+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityCoordinator+Sugar.swift"; sourceTree = "<group>"; };
@@ -928,7 +916,6 @@
 		D588E880266D137400E14288 /* ErrorLoggerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLoggerDoubles.swift; sourceTree = "<group>"; };
 		D58DE1BB25BDF5C30013AEE8 /* RootViewFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewFlow.swift; sourceTree = "<group>"; };
 		D58DE1D525C0F1A20013AEE8 /* TutorStatusBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorStatusBanner.swift; sourceTree = "<group>"; };
-		D591C5B526699AA400A95938 /* PeriodDuration+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PeriodDuration+Sugar.swift"; sourceTree = "<group>"; };
 		D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdatePrompt.swift; sourceTree = "<group>"; };
 		D5947C9926A3A1CD00355857 /* TabSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelection.swift; sourceTree = "<group>"; };
 		D5947C9D26A5E1AD00355857 /* Images+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Images+Tutor.swift"; sourceTree = "<group>"; };
@@ -950,8 +937,6 @@
 		D5AAF7DC23FB431E00E410F2 /* InstrumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentView.swift; sourceTree = "<group>"; };
 		D5AC9E25254D8AD7003A8197 /* AppDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDoubles.swift; sourceTree = "<group>"; };
 		D5AC9E2B254D8AE2003A8197 /* AppLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLauncher.swift; sourceTree = "<group>"; };
-		D5AC9E3E254D957D003A8197 /* RemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfig.swift; sourceTree = "<group>"; };
-		D5AC9E49254DA0E7003A8197 /* RemoteConfigCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigCoordinator.swift; sourceTree = "<group>"; };
 		D5AFED2F25047DFC003FFC68 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		D5AFED3B25056300003FFC68 /* NotificationCenter+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Sugar.swift"; sourceTree = "<group>"; };
 		D5AFED4125057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityCoordinator+SwiftUI.swift"; sourceTree = "<group>"; };
@@ -980,6 +965,7 @@
 		D5B4D3DE273C37620048E4E1 /* LessonPlanRequestStatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanRequestStatusPill.swift; sourceTree = "<group>"; };
 		D5B4D3E2273C39BA0048E4E1 /* LessonPlanRequestSummaryTutorStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanRequestSummaryTutorStatusView.swift; sourceTree = "<group>"; };
 		D5B4D3E4273C3B1C0048E4E1 /* LessonPlanRequestOptionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanRequestOptionsButton.swift; sourceTree = "<group>"; };
+		D5B4D3E6273C47820048E4E1 /* AppStatusProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStatusProvider.swift; sourceTree = "<group>"; };
 		D5B57A64241479F300BE9B4F /* Assets.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.generated.swift; sourceTree = "<group>"; };
 		D5B57A702419F79700BE9B4F /* SectionHeaderContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderContentView.swift; sourceTree = "<group>"; };
 		D5B57A74241A018900BE9B4F /* SchedulingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulingView.swift; sourceTree = "<group>"; };
@@ -1124,7 +1110,6 @@
 				D5D78DD7252502CE007041BE /* PhoneNumberKit in Frameworks */,
 				D535547723DF3A19005A20EB /* Valet in Frameworks */,
 				D56C6A98264AC80C00A2599E /* ComposableNavigator in Frameworks */,
-				D5AC9E3B254D9533003A8197 /* FirebaseRemoteConfig in Frameworks */,
 				D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */,
 				D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */,
 				03B19837247053F5005529EB /* APIKit in Frameworks */,
@@ -1144,7 +1129,6 @@
 				035B1CD7249CF7EB00AABFEA /* Valet in Frameworks */,
 				D5FC2D51254A7E21005056D5 /* FirebaseCrashlytics in Frameworks */,
 				D5F4AE8B2559D46A001085D5 /* PhoneNumberKit in Frameworks */,
-				D575C837254F10F0001664AB /* FirebaseRemoteConfig in Frameworks */,
 				035B1D69249E645E00AABFEA /* APIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1519,7 +1503,6 @@
 			isa = PBXGroup;
 			children = (
 				035B1CBE249CF2AA00AABFEA /* App.swift */,
-				D5B4A20426CED857006EAD18 /* AppView.swift */,
 				035B1CF0249CF9FA00AABFEA /* App+LaunchScreenCache.swift */,
 				D59D0592251828EA0070D81B /* App+Playback.swift */,
 				03B198532471BBE8005529EB /* App+PushNotifications.swift */,
@@ -1534,9 +1517,10 @@
 				D5E9FC8226C0101200625DAE /* AppOriginClientDoubles.swift */,
 				D56B2522252CF76300BC3932 /* AppSecrets.swift */,
 				D575C818254DD6C8001664AB /* AppSplash.swift */,
+				D5B4D3E6273C47820048E4E1 /* AppStatusProvider.swift */,
 				D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */,
+				D5B4A20426CED857006EAD18 /* AppView.swift */,
 				03E88EB024C205C30077A420 /* Current.swift */,
-				D591C5B526699AA400A95938 /* PeriodDuration+Sugar.swift */,
 				D5B4A20126CEB983006EAD18 /* Publisher+Sugar.swift */,
 			);
 			path = Core;
@@ -1561,7 +1545,6 @@
 				D5AFED3B25056300003FFC68 /* NotificationCenter+Sugar.swift */,
 				03BB5CA02473467500B44692 /* PushNotifications */,
 				03E88EB724C4B0F40077A420 /* Repository.swift */,
-				D5AC9E4E254DA113003A8197 /* RemoteConfig */,
 				033D47CB247774CE0096C50F /* URLOpener */,
 				D5A8C4C025044A3B0006F5C5 /* UserDefaults */,
 				035AF30B2491A553004A01B2 /* VoiceOver */,
@@ -2124,17 +2107,6 @@
 			path = UserDefaults;
 			sourceTree = "<group>";
 		};
-		D5AC9E4E254DA113003A8197 /* RemoteConfig */ = {
-			isa = PBXGroup;
-			children = (
-				D5AC9E3E254D957D003A8197 /* RemoteConfig.swift */,
-				D575C80E254DB13D001664AB /* RemoteConfigService.swift */,
-				D575C813254DB602001664AB /* RemoteConfigServiceDoubles.swift */,
-				D5AC9E49254DA0E7003A8197 /* RemoteConfigCoordinator.swift */,
-			);
-			path = RemoteConfig;
-			sourceTree = "<group>";
-		};
 		D5AFED3225047E17003FFC68 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
@@ -2416,7 +2388,6 @@
 				03B19836247053F5005529EB /* APIKit */,
 				D5D78DD6252502CE007041BE /* PhoneNumberKit */,
 				D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */,
-				D5AC9E3A254D9533003A8197 /* FirebaseRemoteConfig */,
 				D53668FC255EEDEF00A9D97D /* Stripe */,
 				D59E4E6025B20ADA00E8F94C /* YouTubeiOSPlayerHelper */,
 				D56C6A97264AC80C00A2599E /* ComposableNavigator */,
@@ -2451,7 +2422,6 @@
 				035B1CD6249CF7EB00AABFEA /* Valet */,
 				035B1D68249E645E00AABFEA /* APIKit */,
 				D5FC2D50254A7E21005056D5 /* FirebaseCrashlytics */,
-				D575C836254F10F0001664AB /* FirebaseRemoteConfig */,
 				D5F4AE8A2559D46A001085D5 /* PhoneNumberKit */,
 				D5947C9726A39E9600355857 /* ComposableNavigator */,
 				D5439DDB26D5278B00D69CE8 /* SwiftUIEncore */,
@@ -2851,7 +2821,6 @@
 				D5BA171223D7AB3B00954D50 /* MainView.swift in Sources */,
 				D5E9FC8626C010C600625DAE /* AppOrigin.swift in Sources */,
 				D54EFF322514C847004F14D3 /* ExpandableText.swift in Sources */,
-				D5AC9E4A254DA0E7003A8197 /* RemoteConfigCoordinator.swift in Sources */,
 				D52438F3268A517400E2D859 /* LessonPlanOptions.swift in Sources */,
 				03080EED2466FE21008715EE /* LessonPlan.swift in Sources */,
 				D5B4D3D2273ADD3A0048E4E1 /* LessonPlanRequestIDDoubles.swift in Sources */,
@@ -3009,7 +2978,6 @@
 				D5FC6B40272C1CAA000BCCA2 /* CustomTextField+TimeOnlyPicker.swift in Sources */,
 				D50158B42538C029005E02FA /* CardDoubles.swift in Sources */,
 				D5DAD27E26793B970014702F /* LessonPlanApplicationDetailView+Analytics.swift in Sources */,
-				D591C5B626699AA400A95938 /* PeriodDuration+Sugar.swift in Sources */,
 				D54EFF2A2513DDDB004F14D3 /* PortfolioEndpoints.swift in Sources */,
 				0372E35A249ABAB80048B402 /* ChoiceList.swift in Sources */,
 				D527CC1B260CB34400C480F5 /* URLOpener+Rythmico.swift in Sources */,
@@ -3036,7 +3004,7 @@
 				D585D5B12511299800B74091 /* LessonPlanApplicationDetailView.swift in Sources */,
 				D52438FD268A6D1400E2D859 /* LessonPlanApplication.swift in Sources */,
 				03AAF6732445E11A002D8F5B /* ScheduleDoubles.swift in Sources */,
-				D575C80F254DB13D001664AB /* RemoteConfigService.swift in Sources */,
+				D5B4D3E7273C47820048E4E1 /* AppStatusProvider.swift in Sources */,
 				D501589A2538BE7C005E02FA /* Card.swift in Sources */,
 				D5F5065F240055E800CA4094 /* TextFieldHeader.swift in Sources */,
 				D588E87E266D135000E14288 /* ErrorLogger.swift in Sources */,
@@ -3155,7 +3123,6 @@
 				D5D9AE712534CAF000A0ABCC /* CheckoutDoubles.swift in Sources */,
 				03C39DDA2496DBC700C76516 /* LessonPlanDetailView.swift in Sources */,
 				D517FF702553693200A41639 /* Lesson.swift in Sources */,
-				D5AC9E3F254D957D003A8197 /* RemoteConfig.swift in Sources */,
 				D5D5B2D626BEB1F5002B40F8 /* LessonPlanOptionsButton.swift in Sources */,
 				D56B2523252CF76300BC3932 /* AppSecrets.swift in Sources */,
 				03C39DD424967E5B00C76516 /* TitleContentView.swift in Sources */,
@@ -3168,7 +3135,6 @@
 				D5B4D3D0273ADC9A0048E4E1 /* LessonPlanRequestDoubles.swift in Sources */,
 				D54340FA261E7AC6006898B0 /* AnalyticsEvent.swift in Sources */,
 				D516A8FF253A1D6A002E6EDF /* ConfirmationView.swift in Sources */,
-				D575C814254DB602001664AB /* RemoteConfigServiceDoubles.swift in Sources */,
 				D530059F2679623600F41B61 /* LessonPlanBookingView+Analytics.swift in Sources */,
 				03A8116E241D1DAF0091B9ED /* StudentDoubles.swift in Sources */,
 				03275AD7249001E9009C3980 /* UNUserNotificationCenterDoubles.swift in Sources */,
@@ -3198,6 +3164,7 @@
 				D551126325FFDB96009F3FD9 /* SettingsOpener.swift in Sources */,
 				032B6FDD24B78A5200299A09 /* BookingRequestEndpoints.swift in Sources */,
 				D58DE1D625C0F1A20013AEE8 /* TutorStatusBanner.swift in Sources */,
+				D5B4D3E8273C47820048E4E1 /* AppStatusProvider.swift in Sources */,
 				D5444FED2602777D00369BA5 /* ImageProcessingService.swift in Sources */,
 				D5ED168C2614BB40001841ED /* StackSpacing.swift in Sources */,
 				D5E9FC8126C00E5F00625DAE /* AppOriginClient.swift in Sources */,
@@ -3234,7 +3201,6 @@
 				035B1D39249E576900AABFEA /* UserCredentialDoubles.swift in Sources */,
 				D5E8F6802724F48600895D45 /* SIWAEndpoints.swift in Sources */,
 				D52C554824DDC60900C295C4 /* FloatingView+Tutor.swift in Sources */,
-				D575C830254F10E1001664AB /* RemoteConfig.swift in Sources */,
 				D588E87F266D135000E14288 /* ErrorLogger.swift in Sources */,
 				D5F4D3E724F096A2000E8580 /* BookingApplicationDetailView.swift in Sources */,
 				D58DE1BC25BDF5C30013AEE8 /* RootViewFlow.swift in Sources */,
@@ -3279,7 +3245,6 @@
 				035B1D13249E563A00AABFEA /* OnboardingView.swift in Sources */,
 				D5FC6B4B272C2F67000BCCA2 /* TimeOnlyDoubles.swift in Sources */,
 				035B1D3F249E577700AABFEA /* SIWACredentialDoubles.swift in Sources */,
-				D575C831254F10E1001664AB /* RemoteConfigService.swift in Sources */,
 				D524D0C525046BAE00BC9AF7 /* APNSRegistrationServiceDoubles.swift in Sources */,
 				D524D0C425046BA900BC9AF7 /* APNSRegistrationService.swift in Sources */,
 				035B1D30249E571B00AABFEA /* VoiceOverService.swift in Sources */,
@@ -3327,7 +3292,6 @@
 				035B1D4F249E57DC00AABFEA /* VoiceOverServiceDoubles.swift in Sources */,
 				035B1D49249E577700AABFEA /* SIWAAuthorizationControllerDoubles.swift in Sources */,
 				D54340FE261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift in Sources */,
-				D575C82F254F10E1001664AB /* RemoteConfigCoordinator.swift in Sources */,
 				D5F4D3F324F32EBE000E8580 /* BookingApplicationSection.swift in Sources */,
 				035B1D47249E577700AABFEA /* SIWAAuthorizationServiceDoubles.swift in Sources */,
 				D5BF12BF2506932C00B2931C /* APIEventHandlerDoubles.swift in Sources */,
@@ -3354,9 +3318,7 @@
 				035B1D4B249E578D00AABFEA /* Keychain.swift in Sources */,
 				D54340F4261E72F8006898B0 /* AccessibilitySettings.swift in Sources */,
 				D5FC6B48272C2E88000BCCA2 /* CustomTextFieldInputAccessory.swift in Sources */,
-				D575C832254F10E1001664AB /* RemoteConfigServiceDoubles.swift in Sources */,
 				D5C76E9A25F4075200739267 /* CalendarSyncStatusProviderDoubles.swift in Sources */,
-				D591C5B726699AA400A95938 /* PeriodDuration+Sugar.swift in Sources */,
 				D5ED3266260667E800821ABE /* DateDoubles.swift in Sources */,
 				D52C553D24DC74A200C295C4 /* TitleCell.swift in Sources */,
 				032B6FCD24B7879300299A09 /* Schedule.swift in Sources */,
@@ -4097,11 +4059,6 @@
 			package = D56C6A96264AC80B00A2599E /* XCRemoteSwiftPackageReference "swift-composable-navigator" */;
 			productName = ComposableNavigator;
 		};
-		D575C836254F10F0001664AB /* FirebaseRemoteConfig */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseRemoteConfig;
-		};
 		D5947C9726A39E9600355857 /* ComposableNavigator */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D56C6A96264AC80B00A2599E /* XCRemoteSwiftPackageReference "swift-composable-navigator" */;
@@ -4111,11 +4068,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D59E4E5F25B20ADA00E8F94C /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
 			productName = YouTubeiOSPlayerHelper;
-		};
-		D5AC9E3A254D9533003A8197 /* FirebaseRemoteConfig */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseRemoteConfig;
 		};
 		D5B4D3D4273B46790048E4E1 /* TutorDO */ = {
 			isa = XCSwiftPackageProductDependency;

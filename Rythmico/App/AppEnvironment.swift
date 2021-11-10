@@ -11,9 +11,7 @@ struct AppEnvironment {
     let lessonsTabNavigation = Navigator.Datasource(root: LessonsScreen())
     let profileTabNavigation = Navigator.Datasource(root: ProfileScreen())
 
-    var remoteConfigCoordinator: RemoteConfigCoordinator
-    var remoteConfig: RemoteConfigServiceProtocol
-
+    var appStatus: AppStatusProvider
     var appOrigin: AppOriginClient
 
     var uuid: () -> UUID
@@ -86,8 +84,7 @@ struct AppEnvironment {
     init(
         tabSelection: TabSelection,
 
-        remoteConfig: RemoteConfigServiceProtocol,
-
+        appStatus: AppStatusProvider,
         appOrigin: AppOriginClient,
 
         uuid: @escaping () -> UUID,
@@ -157,10 +154,7 @@ struct AppEnvironment {
     ) {
         self.tabSelection = tabSelection
 
-        let remoteConfigCoordinator = RemoteConfigCoordinator(service: remoteConfig)
-        self.remoteConfigCoordinator = remoteConfigCoordinator
-        self.remoteConfig = remoteConfig
-
+        self.appStatus = appStatus
         self.appOrigin = appOrigin
 
         self.uuid = uuid
@@ -183,8 +177,8 @@ struct AppEnvironment {
         self.errorLogger = errorLogger(userCredentialProvider)
 
         let apiActivityErrorHandler = APIActivityErrorHandler(
-            userCredentialProvider: userCredentialProvider,
-            remoteConfigCoordinator: remoteConfigCoordinator
+            appStatusProvider: appStatus,
+            userCredentialProvider: userCredentialProvider
         )
         self.apiActivityErrorHandler = apiActivityErrorHandler
 
@@ -266,8 +260,7 @@ extension AppEnvironment {
     static let live = AppEnvironment.initLive { .init(
         tabSelection: TabSelection(),
 
-        remoteConfig: RemoteConfig(),
-
+        appStatus: .init(),
         appOrigin: .init(get: { .appStore }), // TODO: swap back to `live`
 
         uuid: UUID.init,

@@ -2,11 +2,7 @@ import SwiftUIEncore
 
 extension AppEnvironment {
     mutating func setUpFake() {
-        remoteConfig = RemoteConfigStub(
-            fetchingDelay: Self.fakeAPIEndpointDelay,
-            appUpdateRequired: false
-        )
-        remoteConfigCoordinator = RemoteConfigCoordinator(service: remoteConfig)
+        appStatus = .init() => (\.isAppOutdated, false)
 
         useFakeDate()
 

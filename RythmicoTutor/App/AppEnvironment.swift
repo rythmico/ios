@@ -8,9 +8,7 @@ struct AppEnvironment {
     let bookingsTabNavigation = Navigator.Datasource(root: BookingsTabScreen())
     let bookingRequestsTabNavigation = Navigator.Datasource(root: BookingRequestsTabScreen())
 
-    var remoteConfigCoordinator: RemoteConfigCoordinator
-    var remoteConfig: RemoteConfigServiceProtocol
-
+    var appStatus: AppStatusProvider
     var appOrigin: AppOriginClient
 
     var date: () -> Date
@@ -67,8 +65,7 @@ struct AppEnvironment {
     init(
         tabSelection: TabSelection,
 
-        remoteConfig: RemoteConfigServiceProtocol,
-
+        appStatus: AppStatusProvider,
         appOrigin: AppOriginClient,
 
         date: @escaping () -> Date,
@@ -122,10 +119,7 @@ struct AppEnvironment {
     ) {
         self.tabSelection = tabSelection
 
-        let remoteConfigCoordinator = RemoteConfigCoordinator(service: remoteConfig)
-        self.remoteConfigCoordinator = remoteConfigCoordinator
-        self.remoteConfig = remoteConfig
-
+        self.appStatus = appStatus
         self.appOrigin = appOrigin
 
         self.date = date
@@ -147,8 +141,8 @@ struct AppEnvironment {
         self.errorLogger = errorLogger(userCredentialProvider)
 
         let apiActivityErrorHandler = APIActivityErrorHandler(
+            appStatusProvider: appStatus,
             userCredentialProvider: userCredentialProvider,
-            remoteConfigCoordinator: remoteConfigCoordinator,
             settings: settings
         )
         self.apiActivityErrorHandler = apiActivityErrorHandler
@@ -208,9 +202,8 @@ struct AppEnvironment {
 extension AppEnvironment {
     static let live = AppEnvironment.initLive { .init(
         tabSelection: TabSelection(),
-
-        remoteConfig: RemoteConfig(),
-
+        
+        appStatus: .init(),
         appOrigin: .live,
 
         date: Date.init,

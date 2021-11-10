@@ -32,8 +32,7 @@ extension AppEnvironment {
         AppEnvironment(
             tabSelection: TabSelection(),
 
-            remoteConfig: RemoteConfigDummy(),
-
+            appStatus: .init(),
             appOrigin: .testFlight,
 
             uuid: { .zero },
