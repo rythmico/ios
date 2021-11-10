@@ -1,17 +1,13 @@
+import StudentDTO
 import SwiftUIEncore
 
-struct LessonPlanRequestedScheduleView: View {
-    var schedule: Schedule
+struct LessonPlanRequestedScheduleAndTutorView: View {
+    var schedule: LessonPlanRequestSchedule
     var tutor: Tutor?
-
-    init(_ schedule: Schedule, tutor: Tutor?) {
-        self.schedule = schedule
-        self.tutor = tutor
-    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: .grid(4)) {
-            LessonPlanScheduleView(schedule: schedule)
+            LessonPlanRequestScheduleView(schedule: schedule)
             if let tutor = tutor {
                 HStack(spacing: .grid(3)) {
                     TutorAvatarView(tutor, mode: .thumbnail).fixedSize()
@@ -24,11 +20,11 @@ struct LessonPlanRequestedScheduleView: View {
 }
 
 #if DEBUG
-struct ScheduleDetailsView_Previews: PreviewProvider {
+struct LessonPlanRequestedScheduleAndTutorView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LessonPlanRequestedScheduleView(.startedYesterdayStub, tutor: .none)
-            LessonPlanRequestedScheduleView(.startingTomorrowStub, tutor: .davidStub)
+            LessonPlanRequestedScheduleAndTutorView(schedule: .startedYesterdayStub, tutor: .none)
+            LessonPlanRequestedScheduleAndTutorView(schedule: .startingTomorrowStub, tutor: .davidStub)
         }
         .previewLayout(.sizeThatFits)
         .padding()

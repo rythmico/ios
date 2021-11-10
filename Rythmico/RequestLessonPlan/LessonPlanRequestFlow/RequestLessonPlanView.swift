@@ -1,5 +1,6 @@
-import SwiftUIEncore
 import ComposableNavigator
+import StudentDTO
+import SwiftUIEncore
 
 struct RequestLessonPlanScreen: Screen {
     let presentationStyle: ScreenPresentationStyle = .sheet(allowsPush: false)
@@ -16,7 +17,7 @@ struct RequestLessonPlanScreen: Screen {
 }
 
 struct RequestLessonPlanView: View, TestableView {
-    typealias Coordinator = APIActivityCoordinator<CreateLessonPlanRequest>
+    typealias Coordinator = APIActivityCoordinator<CreateLessonPlanRequestRequest>
 
     @StateObject
     var flow: RequestLessonPlanFlow
@@ -49,19 +50,20 @@ struct RequestLessonPlanView: View, TestableView {
     var body: some View {
         CoordinatorStateView(
             coordinator: coordinator,
-            successContent: LessonPlanConfirmationView.init,
+            successContent: LessonPlanRequestConfirmationView.init,
             loadingTitle: "Submitting proposal...",
             inputContent: { flowView.alertOnFailure(coordinator) }
         )
         .testable(self)
         .backgroundColor(.rythmico.backgroundSecondary)
         .interactiveDismissDisabled(interactiveDismissDisabled)
-        .onSuccess(coordinator, perform: onLessonPlanRequested)
+        .onSuccess(coordinator, perform: onLessonPlanRequestCreated)
     }
 
-    private func onLessonPlanRequested(_ lessonPlan: LessonPlan) {
-        Current.lessonPlanRepository.insertItem(lessonPlan)
-        Current.analytics.track(.lessonPlanRequested(lessonPlan, through: flow))
+    private func onLessonPlanRequestCreated(_ lessonPlanRequest: LessonPlanRequest) {
+        // TODO: next
+//        Current.lessonPlanRepository.insertItem(lessonPlan)
+        Current.analytics.track(.lessonPlanRequestCreated(lessonPlanRequest, through: flow))
     }
 }
 

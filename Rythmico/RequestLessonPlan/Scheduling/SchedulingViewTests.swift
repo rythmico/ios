@@ -137,7 +137,7 @@ final class SchedulingViewTests: XCTestCase {
         XCTAssertView(view) { view in
             state.startDate = .stub
             state.startTime = .stub
-            state.duration = .fortyFiveMinutes
+            state.duration = "PT45M"
             XCTAssertNotNil(view.nextButtonAction)
         }
     }
@@ -146,15 +146,15 @@ final class SchedulingViewTests: XCTestCase {
         let (flow, state, view) = schedulingView
 
         try XCTAssertView(view) { view in
-            state.startDate = try DateOnly(year: 2021, month: 07, day: 03)
-            state.startTime = try TimeOnly(hour: 17, minute: 25)
-            state.duration = .fortyFiveMinutes
+            state.startDate = "2021-07-03"
+            state.startTime = "17:25"
+            state.duration = "PT45M"
 
             view.nextButtonAction?()
 
             XCTAssertEqual(
                 flow.schedule,
-                Schedule(startDate: "2021-07-03T17:25:00Z", duration: .fortyFiveMinutes)
+                LessonPlanRequestSchedule(start: "2021-07-03", time: "17:25", duration: "PT45M")
             )
         }
     }

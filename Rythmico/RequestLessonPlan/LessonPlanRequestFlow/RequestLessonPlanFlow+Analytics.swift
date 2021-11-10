@@ -25,22 +25,22 @@ extension AnalyticsEvent {
     private static func screenProps(_ step: RequestLessonPlanFlow.Step) -> Props {
         switch step {
         case .instrumentSelection:
-            return lessonPlanProps(nil, nil, nil, nil)
+            return lessonPlanRequestProps(nil, nil, nil, nil)
 
         case let .studentDetails(instrument):
-            return lessonPlanProps(instrument, nil, nil, nil)
+            return lessonPlanRequestProps(instrument, nil, nil, nil)
 
         case let .addressDetails(instrument, student):
-            return lessonPlanProps(instrument, student, nil, nil)
+            return lessonPlanRequestProps(instrument, student, nil, nil)
 
         case let .scheduling(instrument, student, address):
-            return lessonPlanProps(instrument, student, address, nil)
+            return lessonPlanRequestProps(instrument, student, address, nil)
 
         case let .privateNote(instrument, student, address, schedule):
-            return lessonPlanProps(instrument, student, address, schedule)
+            return lessonPlanRequestProps(instrument, student, address, schedule)
 
         case let .reviewRequest(instrument, student, address, schedule, _):
-            return lessonPlanProps(instrument, student, address, schedule)
+            return lessonPlanRequestProps(instrument, student, address, schedule)
         }
     }
 

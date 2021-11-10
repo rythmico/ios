@@ -49,7 +49,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 
     func testConfirmationState() throws {
-        Current.stubAPIEndpoint(for: \.lessonPlanRequestCoordinator, result: .success(.pendingJackGuitarPlanStub))
+        Current.stubAPIEndpoint(for: \.lessonPlanRequestCoordinator, result: .success(.stub))
 
         let view = RequestLessonPlanView(flow: RequestLessonPlanFlow())
         XCTAssertView(view) { view in
@@ -62,12 +62,14 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 }
 
-private extension CreateLessonPlanRequest {
-    static let stub = CreateLessonPlanRequest(
-        instrument: .stub(.guitar),
-        student: .davidStub,
-        address: .stub,
-        schedule: .stub,
-        privateNote: "Note"
+private extension CreateLessonPlanRequestRequest {
+    static let stub = CreateLessonPlanRequestRequest(
+        body: .init(
+            instrument: .known(.guitar),
+            student: .davidStub,
+            address: .stub,
+            schedule: .stub,
+            privateNote: "Note"
+        )
     )
 }

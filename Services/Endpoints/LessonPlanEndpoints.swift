@@ -11,34 +11,13 @@ struct GetLessonPlansRequest: APIRequest, EmptyInitProtocol {
     typealias Response = [LessonPlan]
 }
 
-struct CreateLessonPlanRequest: APIRequest {
-    var instrument: Instrument
-    var student: Student
-    var address: AddressLookupItem
-    var schedule: Schedule
-    var privateNote: String
-
+struct CreateLessonPlanRequestRequest: APIRequest {
     let method: HTTPMethod = .post
-    let path: String = "/lesson-plans"
+    let path: String = "/student/lesson-plan-requests"
     var headerFields: [String: String] = [:]
-    var body: some Encodable {
-        struct Body: Encodable {
-            var instrument: Instrument
-            var student: Student
-            var address: AddressLookupItem
-            var schedule: Schedule
-            var privateNote: String
-        }
-        return Body(
-            instrument: instrument,
-            student: student,
-            address: address,
-            schedule: schedule,
-            privateNote: privateNote
-        )
-    }
+    let body: CreateLessonPlanRequestBody
 
-    typealias Response = LessonPlan
+    typealias Response = LessonPlanRequest
 }
 
 struct PauseLessonPlanRequest: APIRequest {

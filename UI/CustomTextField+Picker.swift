@@ -2,35 +2,41 @@ import SwiftUIEncore
 
 // MARK: - Picker -
 
-struct PickerInputMode<Element: CasePickable & Hashable>: CustomTextFieldInputMode where
-    Element.PickableCases.Index == Int
+struct PickerInputMode<Data: RandomAccessCollection>: CustomTextFieldInputMode where
+    Data.Index == Int, Data.Element: Hashable
 {
-    var selection: Binding<Element>
-    var formatter: (Element) -> String
+    typealias Element = Data.Element
+
+    let data: Data
+    let selection: Binding<Element>
+    let formatter: (Element) -> String
 
     func view(for textField: UITextField) -> UIView? {
-        PickerAsUIView(selection: selection, formatter: formatter)
+        PickerAsUIView(data: data, selection: selection, formatter: formatter)
     }
 }
 
-// TODO: uncomment when parameterized extensions are available
-//extension <Element> CustomTextFieldInputMode where Self == PickerInputMode<Element> where Element: CasePickable & Hashable {
-//    static func picker(
-//        selection: Binding<Element>,
-//        formatter: (Element) -> String
-//    ) -> Self {
-//        PickerInputMode(selection: selection, formatter: formatter)
-//    }
-//}
+extension CustomTextFieldInputMode {
+    static func picker<Data: RandomAccessCollection>(
+        data: Data,
+        selection: Binding<Data.Element>,
+        formatter: @escaping (Data.Element) -> String
+    ) -> Self where Self == PickerInputMode<Data>, Data.Index == Int, Data.Element: Hashable {
+        PickerInputMode(data: data, selection: selection, formatter: formatter)
+    }
+}
 
-private final class PickerAsUIView<Element: CasePickable & Hashable>: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate where
-    Element.PickableCases.Index == Int
+private final class PickerAsUIView<Data: RandomAccessCollection>: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate where
+    Data.Index == Int, Data.Element: Hashable
 {
-    private var data: Element.PickableCases { Element.pickableCases }
+    typealias Element = Data.Element
+
+    private let data: Data
     private let selection: Binding<Element>
     private let formatter: (Element) -> String
 
-    init(selection: Binding<Element>, formatter: @escaping (Element) -> String) {
+    init(data: Data, selection: Binding<Element>, formatter: @escaping (Element) -> String) {
+        self.data = data
         self.selection = selection
         self.formatter = formatter
         super.init(frame: .zero)

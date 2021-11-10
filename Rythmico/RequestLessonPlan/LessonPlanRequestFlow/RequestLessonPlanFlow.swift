@@ -1,4 +1,3 @@
-import CoreDTO
 import StudentDTO
 import SwiftUIEncore
 
@@ -19,6 +18,10 @@ final class RequestLessonPlanFlow: Flow {
     var schedule: Schedule?
     @Published
     var privateNote: String?
+}
+
+extension RequestLessonPlanFlow {
+    typealias Schedule = LessonPlanRequestSchedule
 }
 
 extension RequestLessonPlanFlow {

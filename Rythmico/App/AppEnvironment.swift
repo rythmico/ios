@@ -60,7 +60,7 @@ struct AppEnvironment {
     var addressSearchCoordinator: () -> APIActivityCoordinator<AddressSearchRequest>
 
     var lessonPlanFetchingCoordinator: APIActivityCoordinator<GetLessonPlansRequest>
-    var lessonPlanRequestCoordinator: () -> APIActivityCoordinator<CreateLessonPlanRequest>
+    var lessonPlanRequestCoordinator: () -> APIActivityCoordinator<CreateLessonPlanRequestRequest>
     var lessonPlanPausingCoordinator: () -> APIActivityCoordinator<PauseLessonPlanRequest>
     var lessonPlanResumingCoordinator: () -> APIActivityCoordinator<ResumeLessonPlanRequest>
     var lessonPlanCancellationCoordinator: () -> APIActivityCoordinator<CancelLessonPlanRequest>
@@ -129,7 +129,7 @@ struct AppEnvironment {
         addressSearchService: APIServiceBase<AddressSearchRequest>,
 
         lessonPlanFetchingService: APIServiceBase<GetLessonPlansRequest>,
-        lessonPlanRequestService: APIServiceBase<CreateLessonPlanRequest>,
+        lessonPlanRequestService: APIServiceBase<CreateLessonPlanRequestRequest>,
         lessonPlanPausingService: APIServiceBase<PauseLessonPlanRequest>,
         lessonPlanResumingService: APIServiceBase<ResumeLessonPlanRequest>,
         lessonPlanCancellationService: APIServiceBase<CancelLessonPlanRequest>,

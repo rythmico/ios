@@ -3,24 +3,26 @@ import StudentDTO
 import SwiftUIEncore
 
 struct ReviewRequestView: View, TestableView {
-    typealias Coordinator = APIActivityCoordinator<CreateLessonPlanRequest>
+    typealias Coordinator = APIActivityCoordinator<CreateLessonPlanRequestRequest>
 
     var coordinator: Coordinator
     var flow: RequestLessonPlanFlow
     var instrument: Instrument
     var student: Student
     var address: AddressLookupItem
-    var schedule: Schedule
+    var schedule: LessonPlanRequestSchedule
     var privateNote: String
 
     func submitRequest() {
         coordinator.run(
             with: .init(
-                instrument: instrument,
-                student: student,
-                address: address,
-                schedule: schedule,
-                privateNote: privateNote
+                body: .init(
+                    instrument: instrument.id,
+                    student: student,
+                    address: address,
+                    schedule: schedule,
+                    privateNote: privateNote
+                )
             )
         )
     }
@@ -64,7 +66,7 @@ struct ReviewRequestView: View, TestableView {
                             style: .box,
                             accessory: { editButton(action: resetSchedule) }
                         ) {
-                            LessonPlanRequestedScheduleView(schedule, tutor: nil)
+                            LessonPlanRequestedScheduleAndTutorView(schedule: schedule, tutor: nil)
                         }
 
                         SectionHeaderContentView(

@@ -42,7 +42,8 @@ struct LessonPlanBookingView: View {
                     ScrollView {
                         VStack(spacing: .grid(5)) {
                             SectionHeaderContentView("Plan Details", style: .box) {
-                                LessonPlanRequestedScheduleView(lessonPlan.schedule, tutor: application.tutor)
+                                // TODO: upcoming
+//                                LessonPlanRequestedScheduleAndTutorView(schedule: lessonPlan.schedule, tutor: application.tutor)
                             }
                             .frame(maxWidth: .grid(.max))
                             .padding(.horizontal, .grid(4))

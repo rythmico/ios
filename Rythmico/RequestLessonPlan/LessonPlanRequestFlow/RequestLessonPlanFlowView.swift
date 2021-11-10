@@ -2,7 +2,7 @@ import SwiftUIEncore
 import Combine
 
 struct RequestLessonPlanFlowView: View, TestableView {
-    typealias RequestCoordinator = APIActivityCoordinator<CreateLessonPlanRequest>
+    typealias RequestCoordinator = APIActivityCoordinator<CreateLessonPlanRequestRequest>
 
     @StateObject
     fileprivate var instrumentSelectionViewState = InstrumentSelectionView.ViewState()

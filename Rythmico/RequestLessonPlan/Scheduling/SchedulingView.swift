@@ -1,4 +1,4 @@
-import CoreDTO
+import StudentDTO
 import SwiftUIEncore
 
 struct SchedulingView: View, FocusableView, TestableView {
@@ -16,24 +16,17 @@ struct SchedulingView: View, FocusableView, TestableView {
     final class ViewState: ObservableObject {
         @Published var startDate: DateOnly?
         @Published var startTime: TimeOnly?
-        @Published var duration: Schedule.Duration?
-
-        // TODO: remove, have separate date and time props in Schedule
-        var startDateAndTime: Date? {
-            unwrap(startDate, startTime).map {
-                Date(date: $0, time: $1, timeZone: Current.timeZone())
-            }
-        }
+        @Published var duration: Duration?
     }
 
     @ObservedObject private(set)
     var state: ViewState
     var instrument: Instrument
-    var setter: Binding<Schedule>.Setter
+    var setter: Binding<LessonPlanRequestSchedule>.Setter
 
     private let firstAvailableDate = try! Current.date() + (2, .day, .neutral)
     private let defaultStartTime = try! TimeOnly(hour: 18, minute: 00)
-    private let defaultDuration: Schedule.Duration = .oneHour
+    private let defaultDuration: Duration = LessonPlanRequestSchedule.ValidDuration.sixtyMinutes
 
     @SpacedTextBuilder
     var subtitle: Text {
@@ -44,14 +37,14 @@ struct SchedulingView: View, FocusableView, TestableView {
 
     var startDateText: String? { state.startDate?.formatted(custom: "EEEE d MMMM", locale: Current.locale()) }
     var startTimeText: String? { state.startTime?.formatted(style: .short, locale: Current.locale()) }
-    var durationText: String? { state.duration?.title }
+    var durationText: String? { state.duration?.formatted(style: .full, locale: Current.locale()) }
 
     var scheduleInfoText: String? {
         guard
             let startDate = state.startDate,
             let startTime = state.startTime,
             let duration = state.duration,
-            let endTime = try? startTime + (duration.rawValue, .minute)
+            let endTime = try? startTime + duration
         else {
             return nil
         }
@@ -62,7 +55,7 @@ struct SchedulingView: View, FocusableView, TestableView {
     }
 
     var nextButtonAction: Action? {
-        unwrap(state.startDateAndTime, state.duration).map(Schedule.init).mapToAction(setter)
+        unwrap(state.startDate, state.startTime, state.duration).map(LessonPlanRequestSchedule.init).mapToAction(setter)
     }
 
     let inspection = SelfInspection()
@@ -111,9 +104,10 @@ struct SchedulingView: View, FocusableView, TestableView {
                                     CustomTextField(
                                         "Duration...",
                                         text: .constant(durationText ?? .empty),
-                                        inputMode: PickerInputMode(
+                                        inputMode: .picker(
+                                            data: LessonPlanRequestSchedule.ValidDuration.all,
                                             selection: $state.duration.or(defaultDuration),
-                                            formatter: \.title
+                                            formatter: { $0.formatted(style: .full, locale: Current.locale()) }
                                         ),
                                         inputAccessory: .doneButton,
                                         onEditingChanged: onEditingDurationChanged

@@ -10,8 +10,8 @@ final class ReviewRequestViewTests: XCTestCase {
         Current.userAuthenticated()
     }
 
-    func reviewRequestView() throws -> (APIServiceSpy<CreateLessonPlanRequest>, ReviewRequestView) {
-        let serviceSpy = APIServiceSpy<CreateLessonPlanRequest>()
+    func reviewRequestView() throws -> (APIServiceSpy<CreateLessonPlanRequestRequest>, ReviewRequestView) {
+        let serviceSpy = APIServiceSpy<CreateLessonPlanRequestRequest>()
         Current.stubAPIEndpoint(for: \.lessonPlanRequestCoordinator, service: serviceSpy)
         let flow = RequestLessonPlanFlow()
         return (
@@ -36,11 +36,11 @@ final class ReviewRequestViewTests: XCTestCase {
             XCTAssertNil(serviceSpy.latestRequest)
             view.submitRequest()
             XCTAssertEqual(serviceSpy.sendCount, 1)
-            XCTAssertEqual(serviceSpy.latestRequest?.instrument, .stub(.drums))
-            XCTAssertEqual(serviceSpy.latestRequest?.student, .davidStub)
-            XCTAssertEqual(serviceSpy.latestRequest?.address, .stub)
-            XCTAssertEqual(serviceSpy.latestRequest?.schedule, .stub)
-            XCTAssertEqual(serviceSpy.latestRequest?.privateNote, "")
+            XCTAssertEqual(serviceSpy.latestRequest?.body.instrument, .known(.drums))
+            XCTAssertEqual(serviceSpy.latestRequest?.body.student, .davidStub)
+            XCTAssertEqual(serviceSpy.latestRequest?.body.address, .stub)
+            XCTAssertEqual(serviceSpy.latestRequest?.body.schedule, .stub)
+            XCTAssertEqual(serviceSpy.latestRequest?.body.privateNote, "")
         }
     }
 }
