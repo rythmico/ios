@@ -1,26 +1,29 @@
+import StudentDO
 import SwiftUIEncore
 
 struct LessonsCollectionView: View {
     let isLoading: Bool
-    let lessonPlans: [LessonPlan]
+    let lessonPlanRequests: [LessonPlanRequest]
     let lessons: [Lesson]
 
-    init(isLoading: Bool, lessonPlans: [LessonPlan], filter: LessonsView.Filter) {
+    init(isLoading: Bool, lessonPlanRequests: [LessonPlanRequest], filter: LessonsView.Filter) {
         self.isLoading = isLoading
         switch filter {
         case .upcoming:
-            self.lessonPlans = lessonPlans.filterRequests()
-            self.lessons = lessonPlans.allLessons().filterUpcoming()
+            self.lessonPlanRequests = lessonPlanRequests.filterOpen()
+            // TODO: upcoming
+            self.lessons = []// lessonPlans.allLessons().filterUpcoming()
         case .past:
-            self.lessonPlans = []
-            self.lessons = lessonPlans.allLessons().filterPast()
+            self.lessonPlanRequests = []
+            // TODO: upcoming
+            self.lessons = []//lessonPlans.allLessons().filterPast()
         }
     }
 
     var body: some View {
         LoadableCollectionView(isLoading: isLoading, topPadding: true) {
-            ForEach(lessonPlans) { lessonPlan in
-                LessonPlanSummaryCell(lessonPlan: lessonPlan).transition(transition)
+            ForEach(lessonPlanRequests) { lessonPlanRequest in
+                LessonPlanRequestSummaryCell(lessonPlanRequest: lessonPlanRequest).transition(transition)
             }
             ForEach(lessons) { lesson in
                 LessonSummaryCell(lesson: lesson).transition(transition)

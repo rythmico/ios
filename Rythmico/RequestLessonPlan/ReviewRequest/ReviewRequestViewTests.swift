@@ -12,12 +12,12 @@ final class ReviewRequestViewTests: XCTestCase {
 
     func reviewRequestView() throws -> (APIServiceSpy<CreateLessonPlanRequestRequest>, ReviewRequestView) {
         let serviceSpy = APIServiceSpy<CreateLessonPlanRequestRequest>()
-        Current.stubAPIEndpoint(for: \.lessonPlanRequestCoordinator, service: serviceSpy)
+        Current.stubAPIEndpoint(for: \.lessonPlanRequestCreationCoordinator, service: serviceSpy)
         let flow = RequestLessonPlanFlow()
         return (
             serviceSpy,
             ReviewRequestView(
-                coordinator: Current.lessonPlanRequestCoordinator(),
+                coordinator: Current.lessonPlanRequestCreationCoordinator(),
                 flow: flow,
                 instrument: .stub(.drums),
                 student: .davidStub,

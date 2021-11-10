@@ -21,7 +21,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 
     func testLoadingState() throws {
-        Current.stubAPIEndpoint(for: \.lessonPlanRequestCoordinator, service: APIServiceDummy())
+        Current.stubAPIEndpoint(for: \.lessonPlanRequestCreationCoordinator, service: APIServiceDummy())
 
         let view = RequestLessonPlanView(flow: RequestLessonPlanFlow())
         XCTAssertView(view) { view in
@@ -33,7 +33,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 
     func testFailureState() throws {
-        Current.stubAPIEndpoint(for: \.lessonPlanRequestCoordinator, result: .failure("Something 2"))
+        Current.stubAPIEndpoint(for: \.lessonPlanRequestCreationCoordinator, result: .failure("Something 2"))
 
         let view = RequestLessonPlanView(flow: RequestLessonPlanFlow())
         XCTAssertView(view) { view in
@@ -49,7 +49,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 
     func testConfirmationState() throws {
-        Current.stubAPIEndpoint(for: \.lessonPlanRequestCoordinator, result: .success(.stub))
+        Current.stubAPIEndpoint(for: \.lessonPlanRequestCreationCoordinator, result: .success(.stub))
 
         let view = RequestLessonPlanView(flow: RequestLessonPlanFlow())
         XCTAssertView(view) { view in

@@ -15,7 +15,7 @@ final class RequestLessonPlanFlowViewTests: XCTestCase {
         let flow = RequestLessonPlanFlow()
         let view = RequestLessonPlanFlowView(
             flow: flow,
-            requestCoordinator: Current.lessonPlanRequestCoordinator()
+            requestCoordinator: Current.lessonPlanRequestCreationCoordinator()
         )
         return (flow, view)
     }

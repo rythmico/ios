@@ -28,7 +28,7 @@ struct RequestLessonPlanView: View, TestableView {
 
     init(flow: RequestLessonPlanFlow) {
         self._flow = .init(wrappedValue: flow)
-        let coordinator = Current.lessonPlanRequestCoordinator()
+        let coordinator = Current.lessonPlanRequestCreationCoordinator()
         self._coordinator = .init(wrappedValue: coordinator)
         self.__flowView = .init(wrappedValue: RequestLessonPlanFlowView(flow: flow, requestCoordinator: coordinator))
     }
@@ -61,8 +61,7 @@ struct RequestLessonPlanView: View, TestableView {
     }
 
     private func onLessonPlanRequestCreated(_ lessonPlanRequest: LessonPlanRequest) {
-        // TODO: next
-//        Current.lessonPlanRepository.insertItem(lessonPlan)
+        Current.lessonPlanRequestRepository.insertItem(lessonPlanRequest)
         Current.analytics.track(.lessonPlanRequestCreated(lessonPlanRequest, through: flow))
     }
 }

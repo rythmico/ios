@@ -52,14 +52,6 @@
                BlueprintName = "RythmicoTests"
                ReferencedContainer = "container:Rythmico.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "LessonsViewTests">
-               </Test>
-               <Test
-                  Identifier = "MainViewTests">
-               </Test>
-            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO"

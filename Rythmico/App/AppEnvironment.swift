@@ -1,9 +1,10 @@
-import SwiftUIEncore
 import ComposableNavigator
-import UserNotifications
 import EventKit
 import Stripe
+import StudentDO
+import SwiftUIEncore
 import UIKit
+import UserNotifications
 
 struct AppEnvironment {
     var tabSelection: TabSelection
@@ -59,8 +60,11 @@ struct AppEnvironment {
     var availableInstrumentsFetchingCoordinator: () -> APIActivityCoordinator<GetAvailableInstrumentsRequest>
     var addressSearchCoordinator: () -> APIActivityCoordinator<AddressSearchRequest>
 
+    var lessonPlanRequestFetchingCoordinator: APIActivityCoordinator<GetLessonPlanRequestsRequest>
+    var lessonPlanRequestCreationCoordinator: () -> APIActivityCoordinator<CreateLessonPlanRequestRequest>
+    var lessonPlanRequestRepository: Repository<LessonPlanRequest>
+
     var lessonPlanFetchingCoordinator: APIActivityCoordinator<GetLessonPlansRequest>
-    var lessonPlanRequestCoordinator: () -> APIActivityCoordinator<CreateLessonPlanRequestRequest>
     var lessonPlanPausingCoordinator: () -> APIActivityCoordinator<PauseLessonPlanRequest>
     var lessonPlanResumingCoordinator: () -> APIActivityCoordinator<ResumeLessonPlanRequest>
     var lessonPlanCancellationCoordinator: () -> APIActivityCoordinator<CancelLessonPlanRequest>
@@ -128,8 +132,11 @@ struct AppEnvironment {
         availableInstrumentsFetchingService: APIServiceBase<GetAvailableInstrumentsRequest>,
         addressSearchService: APIServiceBase<AddressSearchRequest>,
 
+        lessonPlanRequestFetchingService: APIServiceBase<GetLessonPlanRequestsRequest>,
+        lessonPlanRequestCreationService: APIServiceBase<CreateLessonPlanRequestRequest>,
+        lessonPlanRequestRepository: Repository<LessonPlanRequest>,
+
         lessonPlanFetchingService: APIServiceBase<GetLessonPlansRequest>,
-        lessonPlanRequestService: APIServiceBase<CreateLessonPlanRequestRequest>,
         lessonPlanPausingService: APIServiceBase<PauseLessonPlanRequest>,
         lessonPlanResumingService: APIServiceBase<ResumeLessonPlanRequest>,
         lessonPlanCancellationService: APIServiceBase<CancelLessonPlanRequest>,
@@ -230,8 +237,11 @@ struct AppEnvironment {
         self.availableInstrumentsFetchingCoordinator = { coordinator(for: availableInstrumentsFetchingService) }
         self.addressSearchCoordinator = { coordinator(for: addressSearchService) }
 
+        self.lessonPlanRequestFetchingCoordinator = coordinator(for: lessonPlanRequestFetchingService)
+        self.lessonPlanRequestCreationCoordinator = { coordinator(for: lessonPlanRequestCreationService) }
+        self.lessonPlanRequestRepository = lessonPlanRequestRepository
+
         self.lessonPlanFetchingCoordinator = coordinator(for: lessonPlanFetchingService)
-        self.lessonPlanRequestCoordinator = { coordinator(for: lessonPlanRequestService) }
         self.lessonPlanPausingCoordinator = { coordinator(for: lessonPlanPausingService) }
         self.lessonPlanResumingCoordinator = { coordinator(for: lessonPlanResumingService) }
         self.lessonPlanCancellationCoordinator = { coordinator(for: lessonPlanCancellationService) }
@@ -309,8 +319,11 @@ extension AppEnvironment {
         availableInstrumentsFetchingService: APIService(),
         addressSearchService: APIService(),
 
+        lessonPlanRequestFetchingService: APIService(),
+        lessonPlanRequestCreationService: APIService(),
+        lessonPlanRequestRepository: Repository(),
+
         lessonPlanFetchingService: APIService(),
-        lessonPlanRequestService: APIService(),
         lessonPlanPausingService: APIService(),
         lessonPlanResumingService: APIService(),
         lessonPlanCancellationService: APIService(),

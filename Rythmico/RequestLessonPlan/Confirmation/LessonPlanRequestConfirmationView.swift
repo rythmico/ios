@@ -2,6 +2,8 @@ import StudentDTO
 import SwiftUIEncore
 
 struct LessonPlanRequestConfirmationView: View, TestableView {
+    @ObservedObject
+    private var notificationsCoordinator = Current.pushNotificationAuthorizationCoordinator
     @Environment(\.navigator)
     private var navigator
 
