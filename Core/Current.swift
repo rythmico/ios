@@ -1,3 +1,5 @@
+import FoundationEncore
+
 private extension AppContext {
     var environment: AppEnvironment {
         #if DEBUG
@@ -10,7 +12,13 @@ private extension AppContext {
 //            return .appStoreScreenshots(.twoThreeAndFour)
 //            return .appStoreScreenshots(.five)
 //            return .fake
-            return .live
+            return .live => {
+                #if RYTHMICO
+                $0.appStoreReviewPrompt = .dummy
+                #elseif TUTOR
+                _ = $0
+                #endif
+            }
         case .release:
             return .live
         }
