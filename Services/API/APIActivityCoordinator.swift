@@ -1,6 +1,5 @@
 import APIKit
-import CoreDTOEncore
-import FoundationEncore
+import CoreDO
 
 final class APIActivityCoordinator<Request: APIRequest>: FailableActivityCoordinator<Request, Request.Response> {
     typealias Service = APIServiceBase<Request>

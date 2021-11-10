@@ -47,21 +47,21 @@
         }
       },
       {
+        "package": "DTO",
+        "repositoryURL": "https://github.com/rythmico/dto-swift",
+        "state": {
+          "branch": "main",
+          "revision": "fde164c1ac146a79fa0b936258f525b8d903a12f",
+          "version": null
+        }
+      },
+      {
         "package": "Firebase",
         "repositoryURL": "https://github.com/firebase/firebase-ios-sdk",
         "state": {
           "branch": null,
           "revision": "839cc6b0cd80b0b8bf81fe9bd82b743b25dc6446",
           "version": "8.9.1"
-        }
-      },
-      {
-        "package": "FoundationEncore",
-        "repositoryURL": "https://github.com/rythmico/FoundationEncore",
-        "state": {
-          "branch": "main",
-          "revision": "344fd70a7852d2541377c534f2d20980b70f2b97",
-          "version": null
         }
       },
       {
@@ -150,8 +150,8 @@
         "repositoryURL": "https://github.com/davdroman/PeriodDuration",
         "state": {
           "branch": null,
-          "revision": "aea7a11d0fc773854fcde8b48ed6803bcb3270d6",
-          "version": "0.4.0"
+          "revision": "5d11c1c375cd4e12d4dd9a08fc0dbe271f41026e",
+          "version": "0.9.0"
         }
       },
       {
@@ -179,15 +179,6 @@
           "branch": null,
           "revision": "611337c330350c9c1823ad6d671e7f936af5ee13",
           "version": "2.0.0"
-        }
-      },
-      {
-        "package": "RythmicoDTO",
-        "repositoryURL": "https://github.com/rythmico/RythmicoDTO",
-        "state": {
-          "branch": "main",
-          "revision": "05e663849487c59cdab6ddd9b77cac985a658e5c",
-          "version": null
         }
       },
       {
@@ -260,6 +251,15 @@
           "branch": null,
           "revision": "21f8fdbb3226e5e28a1a2fffac3e0f3deec34bf0",
           "version": "0.2.1"
+        }
+      },
+      {
+        "package": "FoundationEncore",
+        "repositoryURL": "https://github.com/rythmico/swift-foundation-encore",
+        "state": {
+          "branch": "main",
+          "revision": "b15c132e0a8c0a6d025425659f5482cce1d76693",
+          "version": null
         }
       },
       {

@@ -1,4 +1,4 @@
-import CoreDTOEncore
+import CoreDO
 import XCTest
 
 final class APIClientInfoTests: XCTestCase {

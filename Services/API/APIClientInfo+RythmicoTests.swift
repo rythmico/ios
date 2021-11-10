@@ -1,5 +1,5 @@
+import CoreDO
 import XCTest
-import CoreDTOEncore
 
 final class APIClientInfoRythmicoTests: XCTestCase {
     func testStudentClientInfo() throws {

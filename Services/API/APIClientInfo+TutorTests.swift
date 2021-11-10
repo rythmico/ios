@@ -1,5 +1,5 @@
+import CoreDO
 import XCTest
-import CoreDTOEncore
 
 final class APIClientInfoTutorTests: XCTestCase {
     func testTutorClientInfo() throws {
