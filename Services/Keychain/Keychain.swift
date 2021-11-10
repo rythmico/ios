@@ -7,6 +7,7 @@ protocol KeychainProtocol: AnyObject {
     func setObject<T: Encodable>(_ object: T, forKey key: String) throws
     func object<T: Decodable>(_ type: T.Type, forKey key: String) throws -> T
     func removeObject(forKey key: String) throws
+    func removeAllObjects() throws
 }
 
 extension KeychainProtocol {

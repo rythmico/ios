@@ -17,5 +17,6 @@ struct ProfileLogOutCell: View {
 
     func logOut() {
         Current.userCredentialProvider.userCredential = nil
+        try! Current.keychain.removeAllObjects()
     }
 }

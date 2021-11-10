@@ -23,6 +23,10 @@ final class KeychainFake: KeychainProtocol {
     func removeObject(forKey key: String) throws {
         inMemoryStorage[key] = nil
     }
+
+    func removeAllObjects() throws {
+        inMemoryStorage = [:]
+    }
 }
 
 final class KeychainDummy: KeychainProtocol {
@@ -31,4 +35,5 @@ final class KeychainDummy: KeychainProtocol {
     func setObject<T>(_ object: T, forKey key: String) throws where T : Encodable {}
     func object<T>(_ type: T.Type, forKey key: String) throws -> T where T : Decodable { throw KeychainError.itemNotFound }
     func removeObject(forKey key: String) throws {}
+    func removeAllObjects() throws {}
 }
