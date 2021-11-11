@@ -37,7 +37,7 @@ struct SchedulingView: View, FocusableView, TestableView {
 
     var startDateText: String? { state.startDate?.formatted(custom: "EEEE d MMMM", locale: Current.locale()) }
     var startTimeText: String? { state.startTime?.formatted(style: .short, locale: Current.locale()) }
-    var durationText: String? { state.duration?.formatted(style: .full, locale: Current.locale()) }
+    var durationText: String? { state.duration?.formatted(style: .full, allowedUnits: .minute, locale: Current.locale()) }
 
     var scheduleInfoText: String? {
         guard
@@ -107,7 +107,7 @@ struct SchedulingView: View, FocusableView, TestableView {
                                         inputMode: .picker(
                                             data: LessonPlanRequestSchedule.ValidDuration.all,
                                             selection: $state.duration.or(defaultDuration),
-                                            formatter: { $0.formatted(style: .full, locale: Current.locale()) }
+                                            formatter: { $0.formatted(style: .full, allowedUnits: .minute, locale: Current.locale()) }
                                         ),
                                         inputAccessory: .doneButton,
                                         onEditingChanged: onEditingDurationChanged
