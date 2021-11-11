@@ -6,8 +6,8 @@ final class APIEventHandler: APIEventHandlerProtocol {
         switch event {
         case .unknown:
             break
-        case .known(.lessonPlansChanged):
-            Current.lessonPlanFetchingCoordinator.reset()
+        case .known(.lessonPlanRequestsChanged):
+            Current.lessonPlanRequestFetchingCoordinator.reset()
         }
     }
 }
