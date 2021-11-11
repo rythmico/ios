@@ -145,7 +145,7 @@ final class SchedulingViewTests: XCTestCase {
     func testNextButtonSetsStudentDetailsInContext() throws {
         let (flow, state, view) = schedulingView
 
-        try XCTAssertView(view) { view in
+        XCTAssertView(view) { view in
             state.startDate = "2021-07-03"
             state.startTime = "17:25"
             state.duration = "PT45M"
