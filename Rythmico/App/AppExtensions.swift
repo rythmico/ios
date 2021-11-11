@@ -14,7 +14,8 @@ extension App {
     }
 
     func didEnterBackground() {
-        Current.lessonPlanFetchingCoordinator.reset()
+        Current.lessonPlanRequestFetchingCoordinator.reset()
+        // TODO: upcoming - reset lesson fetching coordinator
     }
 }
 

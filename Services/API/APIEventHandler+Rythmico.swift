@@ -8,6 +8,7 @@ final class APIEventHandler: APIEventHandlerProtocol {
             break
         case .known(.lessonPlanRequestsChanged):
             Current.lessonPlanRequestFetchingCoordinator.reset()
+        // TODO: upcoming - handle lessonsChanged
         }
     }
 }
