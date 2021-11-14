@@ -16,6 +16,7 @@ extension Address {
     )
 }
 
+#if RYTHMICO
 import StudentDTO
 
 extension StudentDTO.Address.ID {
@@ -42,3 +43,4 @@ extension StudentDTO.Address {
         country: "England"
     )
 }
+#endif
