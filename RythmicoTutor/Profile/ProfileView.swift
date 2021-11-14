@@ -12,6 +12,8 @@ struct ProfileView: View, TestableView {
 
     func logOut() {
         Current.userCredentialProvider.userCredential = nil
+        Current.settings.tutorVerified = false
+        try! Current.keychain.removeAllObjects()
     }
 
     let inspection = SelfInspection()
