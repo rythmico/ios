@@ -5,7 +5,7 @@ extension AppEnvironment {
         dummy => {
             $0.setUpFake()
 
-            $0.fakeAPIEndpoint(for: \.tutorStatusFetchingCoordinator, result: .success(.verified))
+            $0.fakeAPIEndpoint(for: \.tutorProfileStatusFetchingCoordinator, result: .success(.verified))
 
             $0.fakeAPIEndpoint(for: \.bookingsFetchingCoordinator, result: .success(.stub))
 
@@ -62,7 +62,7 @@ extension AppEnvironment {
             imageLoadingService: ImageLoadingServiceDummy(),
             imageProcessingService: ImageProcessingServiceDummy(),
 
-            tutorStatusFetchingService: APIServiceDummy(),
+            tutorProfileStatusFetchingService: APIServiceDummy(),
 
             bookingsRepository: Repository(),
             bookingsFetchingService: APIServiceDummy(),

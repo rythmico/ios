@@ -4,7 +4,7 @@ import Combine
 final class RootViewFlow: Flow {
     enum Step: FlowStep, CaseIterable {
         case onboarding
-        case tutorStatus
+        case registration
         case mainView
     }
 
@@ -20,7 +20,7 @@ final class RootViewFlow: Flow {
             case (false, _):
                 return .onboarding
             case (true, false):
-                return .tutorStatus
+                return .registration
             case (true, true):
                 return .mainView
             }

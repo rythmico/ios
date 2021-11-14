@@ -47,7 +47,7 @@ struct LessonDetailTutorBoxView: View {
 }
 
 #if DEBUG
-struct LessonDetailTutorStatusView_Previews: PreviewProvider {
+struct LessonDetailTutorBoxView_Previews: PreviewProvider {
     static var previews: some View {
         LessonDetailTutorBoxView(lesson: .scheduledStub)
             .previewLayout(.sizeThatFits)

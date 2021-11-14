@@ -12,8 +12,8 @@ struct RootView: View, TestableView {
             switch $0 {
             case .onboarding:
                 OnboardingView()
-            case .tutorStatus:
-                TutorStatusView()
+            case .registration:
+                TutorProfileStatusView()
             case .mainView:
                 MainView()
             }

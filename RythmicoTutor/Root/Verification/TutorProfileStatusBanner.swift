@@ -1,7 +1,7 @@
 import TutorDO
 import SwiftUIEncore
 
-struct TutorStatusBanner: View {
+struct TutorProfileStatusBanner: View {
     var status: TutorDTO.ProfileStatus
 
     var body: some View {
@@ -106,12 +106,12 @@ private extension TutorDTO.ProfileStatus {
 }
 
 #if DEBUG
-struct TutorStatusBanner_Previews: PreviewProvider {
+struct TutorProfileStatusBanner_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            TutorStatusBanner(status: .interviewPending)
-            TutorStatusBanner(status: .interviewFailed)
-            TutorStatusBanner(status: .verified)
+            TutorProfileStatusBanner(status: .interviewPending)
+            TutorProfileStatusBanner(status: .interviewFailed)
+            TutorProfileStatusBanner(status: .verified)
         }
         .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
     }

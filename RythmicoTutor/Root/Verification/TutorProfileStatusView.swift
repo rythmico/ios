@@ -1,10 +1,10 @@
 import TutorDO
 import SwiftUIEncore
 
-struct TutorStatusView: View {
+struct TutorProfileStatusView: View {
     private var pushNotificationAuthCoordinator = Current.pushNotificationAuthorizationCoordinator
     @ObservedObject
-    private var coordinator = Current.tutorStatusFetchingCoordinator
+    private var coordinator = Current.tutorProfileStatusFetchingCoordinator
     @State
     private var currentStatus: TutorDTO.ProfileStatus?
     @StateObject
@@ -17,7 +17,7 @@ struct TutorStatusView: View {
                 case .registrationPending:
                     RythmicoWebView(store: webViewStore, ignoreBottomSafeArea: true, onDone: coordinator.run)
                 case .interviewPending, .interviewFailed, .verified:
-                    TutorStatusBanner(status: status)
+                    TutorProfileStatusBanner(status: status)
                 }
             }
             if isFetchingStatus {
@@ -26,7 +26,7 @@ struct TutorStatusView: View {
         }
         .onAppear(perform: coordinator.run)
         .onEvent(.appInForeground, perform: coordinator.run)
-        .onSuccess(coordinator, perform: tutorStatusFetched)
+        .onSuccess(coordinator, perform: tutorProfileStatusFetched)
         .alertOnFailure(coordinator)
         .multiModal {
             $0.alert(
@@ -41,14 +41,14 @@ struct TutorStatusView: View {
         currentStatus == .none && coordinator.state.isLoading
     }
 
-    func tutorStatusFetched(_ newStatus: TutorDTO.ProfileStatus) {
+    func tutorProfileStatusFetched(_ newStatus: TutorDTO.ProfileStatus) {
         if newStatus != currentStatus {
             currentStatus = newStatus
-            handleTutorStatus(newStatus)
+            handleTutorProfileStatus(newStatus)
         }
     }
 
-    func handleTutorStatus(_ status: TutorDTO.ProfileStatus) {
+    func handleTutorProfileStatus(_ status: TutorDTO.ProfileStatus) {
         switch status {
         case .registrationPending(let formURL):
             webViewStore.load(formURL)
@@ -59,9 +59,9 @@ struct TutorStatusView: View {
 }
 
 #if DEBUG
-struct TutorStatusView_Previews: PreviewProvider {
+struct TutorProfileStatusView_Previews: PreviewProvider {
     static var previews: some View {
-        TutorStatusView()
+        TutorProfileStatusView()
     }
 }
 #endif
