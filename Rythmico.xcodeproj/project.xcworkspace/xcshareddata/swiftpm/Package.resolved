@@ -51,7 +51,7 @@
         "repositoryURL": "https://github.com/rythmico/dto-swift",
         "state": {
           "branch": "main",
-          "revision": "212ae31424202f40f5e2d9f208a312860842c4d3",
+          "revision": "433e5af1a6c626b0402c8088c5a947cc40dee4a3",
           "version": null
         }
       },
@@ -204,8 +204,8 @@
         "repositoryURL": "https://github.com/apple/swift-algorithms",
         "state": {
           "branch": null,
-          "revision": "2327673b0e9c7e90e6b1826376526ec3627210e4",
-          "version": "0.2.1"
+          "revision": "b14b7f4c528c942f121c8b860b9410b2bf57825e",
+          "version": "1.0.0"
         }
       },
       {
@@ -258,7 +258,7 @@
         "repositoryURL": "https://github.com/rythmico/swift-foundation-encore",
         "state": {
           "branch": "main",
-          "revision": "b1a4ad76bd59e1372355a3c3572ff9f14a00fce6",
+          "revision": "6b68475c6ff674ee3a6df930b6abe08e5bbd20f9",
           "version": null
         }
       },
@@ -285,8 +285,8 @@
         "repositoryURL": "https://github.com/apple/swift-numerics",
         "state": {
           "branch": null,
-          "revision": "6583ac70c326c3ee080c1d42d9ca3361dca816cd",
-          "version": "0.1.0"
+          "revision": "0a23770641f65a4de61daf5425a37ae32a3fd00d",
+          "version": "1.0.1"
         }
       },
       {

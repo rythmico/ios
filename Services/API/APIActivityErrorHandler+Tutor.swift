@@ -23,7 +23,7 @@ final class APIActivityErrorHandler: APIActivityErrorHandlerProtocol {
             appStatusProvider.isAppOutdated = true
         case .known(.unauthorized):
             userCredentialProvider.userCredential = nil
-        case .known(.tutorNotVerified):
+        case .known(.tutorProfileNotCreated):
             settings.tutorVerified = false
         }
     }

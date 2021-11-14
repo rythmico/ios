@@ -1,3 +1,4 @@
+import TutorDO
 import SwiftUIEncore
 
 struct TutorStatusView: View {
@@ -5,7 +6,7 @@ struct TutorStatusView: View {
     @ObservedObject
     private var coordinator = Current.tutorStatusFetchingCoordinator
     @State
-    private var currentStatus: TutorStatus?
+    private var currentStatus: TutorDTO.ProfileStatus?
     @StateObject
     private var webViewStore = WebViewStore()
 
@@ -15,7 +16,7 @@ struct TutorStatusView: View {
                 switch status {
                 case .registrationPending:
                     RythmicoWebView(store: webViewStore, ignoreBottomSafeArea: true, onDone: coordinator.run)
-                case .interviewPending, .interviewFailed, .dbsPending, .dbsProcessing, .dbsFailed, .verified:
+                case .interviewPending, .interviewFailed, .verified:
                     TutorStatusBanner(status: status)
                 }
             }
@@ -40,18 +41,18 @@ struct TutorStatusView: View {
         currentStatus == .none && coordinator.state.isLoading
     }
 
-    func tutorStatusFetched(_ newStatus: TutorStatus) {
+    func tutorStatusFetched(_ newStatus: TutorDTO.ProfileStatus) {
         if newStatus != currentStatus {
             currentStatus = newStatus
             handleTutorStatus(newStatus)
         }
     }
 
-    func handleTutorStatus(_ status: TutorStatus) {
+    func handleTutorStatus(_ status: TutorDTO.ProfileStatus) {
         switch status {
         case .registrationPending(let formURL):
             webViewStore.load(formURL)
-        case .interviewPending, .interviewFailed, .dbsPending, .dbsProcessing, .dbsFailed, .verified:
+        case .interviewPending, .interviewFailed, .verified:
             pushNotificationAuthCoordinator.requestAuthorization()
         }
     }

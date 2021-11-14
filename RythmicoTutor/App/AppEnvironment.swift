@@ -49,7 +49,7 @@ struct AppEnvironment {
 
     var imageLoadingCoordinator: () -> ImageLoadingCoordinator
 
-    var tutorStatusFetchingCoordinator: APIActivityCoordinator<GetTutorStatusRequest>
+    var tutorStatusFetchingCoordinator: APIActivityCoordinator<GetTutorProfileStatusRequest>
 
     var bookingsRepository: Repository<Booking>
     var bookingsFetchingCoordinator: APIActivityCoordinator<BookingsGetRequest>
@@ -104,7 +104,7 @@ struct AppEnvironment {
         imageLoadingService: ImageLoadingServiceProtocol,
         imageProcessingService: ImageProcessingServiceProtocol,
 
-        tutorStatusFetchingService: APIServiceBase<GetTutorStatusRequest>,
+        tutorStatusFetchingService: APIServiceBase<GetTutorProfileStatusRequest>,
 
         bookingsRepository: Repository<Booking>,
         bookingsFetchingService: APIServiceBase<BookingsGetRequest>,
