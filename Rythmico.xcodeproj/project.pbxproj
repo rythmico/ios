@@ -482,12 +482,9 @@
 		D5D5B2D826BF2783002B40F8 /* LessonOptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5B2D726BF2783002B40F8 /* LessonOptionsButton.swift */; };
 		D5D5E8B22685586800AACB8F /* FlowView+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5E8B12685586800AACB8F /* FlowView+Sugar.swift */; };
 		D5D5E8B3268559BC00AACB8F /* FlowView+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D5E8B12685586800AACB8F /* FlowView+Sugar.swift */; };
-		D5D78DD7252502CE007041BE /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = D5D78DD6252502CE007041BE /* PhoneNumberKit */; };
 		D5D78DE025250864007041BE /* LessonPlanBookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D78DDF25250864007041BE /* LessonPlanBookingView.swift */; };
 		D5D78E0C25257800007041BE /* PhoneNumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D78E0B25257800007041BE /* PhoneNumberField.swift */; };
 		D5D7E2FE256DB8920081F8F7 /* LessonStudentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D7E2FD256DB8920081F8F7 /* LessonStudentDetailView.swift */; };
-		D5D974F425263FAF000AD074 /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D974F325263FAF000AD074 /* PhoneNumber.swift */; };
-		D5D974F925263FB9000AD074 /* PhoneNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D974F825263FB9000AD074 /* PhoneNumberTests.swift */; };
 		D5D9AE3F25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE3E25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift */; };
 		D5D9AE4425335B0400A0ABCC /* StripeCardDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE4325335B0400A0ABCC /* StripeCardDetails.swift */; };
 		D5D9AE4F253367A100A0ABCC /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D9AE4E253367A100A0ABCC /* Divider.swift */; };
@@ -550,9 +547,6 @@
 		D5EEF6AD261BDE470014E500 /* XCTAssertText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EEF6AC261BDE470014E500 /* XCTAssertText.swift */; };
 		D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF88B523FB706C0072BD03 /* ProgressBar.swift */; };
 		D5F4AE7E2559D3F0001085D5 /* PhoneNumberDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */; };
-		D5F4AE822559D3F6001085D5 /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D974F325263FAF000AD074 /* PhoneNumber.swift */; };
-		D5F4AE862559D3FD001085D5 /* PhoneNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D974F825263FB9000AD074 /* PhoneNumberTests.swift */; };
-		D5F4AE8B2559D46A001085D5 /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = D5F4AE8A2559D46A001085D5 /* PhoneNumberKit */; };
 		D5F4D3E024F04294000E8580 /* BookingApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3DF24F04294000E8580 /* BookingApplication.swift */; };
 		D5F4D3E324F04479000E8580 /* BookingApplicationEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E224F04479000E8580 /* BookingApplicationEndpoints.swift */; };
 		D5F4D3E524F0475F000E8580 /* BookingApplicationDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E424F0475F000E8580 /* BookingApplicationDoubles.swift */; };
@@ -1011,8 +1005,6 @@
 		D5D78DDF25250864007041BE /* LessonPlanBookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanBookingView.swift; sourceTree = "<group>"; };
 		D5D78E0B25257800007041BE /* PhoneNumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberField.swift; sourceTree = "<group>"; };
 		D5D7E2FD256DB8920081F8F7 /* LessonStudentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonStudentDetailView.swift; sourceTree = "<group>"; };
-		D5D974F325263FAF000AD074 /* PhoneNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumber.swift; sourceTree = "<group>"; };
-		D5D974F825263FB9000AD074 /* PhoneNumberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTests.swift; sourceTree = "<group>"; };
 		D5D9AE3E25335AAA00A0ABCC /* StripeCardDetailsDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCardDetailsDoubles.swift; sourceTree = "<group>"; };
 		D5D9AE4325335B0400A0ABCC /* StripeCardDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCardDetails.swift; sourceTree = "<group>"; };
 		D5D9AE4E253367A100A0ABCC /* Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
@@ -1105,7 +1097,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5439DDA26D5278300D69CE8 /* SwiftUIEncore in Frameworks */,
-				D5D78DD7252502CE007041BE /* PhoneNumberKit in Frameworks */,
 				D535547723DF3A19005A20EB /* Valet in Frameworks */,
 				D56C6A98264AC80C00A2599E /* ComposableNavigator in Frameworks */,
 				D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */,
@@ -1126,7 +1117,6 @@
 				D5439DDC26D5278B00D69CE8 /* SwiftUIEncore in Frameworks */,
 				035B1CD7249CF7EB00AABFEA /* Valet in Frameworks */,
 				D5FC2D51254A7E21005056D5 /* FirebaseCrashlytics in Frameworks */,
-				D5F4AE8B2559D46A001085D5 /* PhoneNumberKit in Frameworks */,
 				035B1D69249E645E00AABFEA /* APIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2221,9 +2211,7 @@
 		D5D974FD25263FBC000AD074 /* PhoneNumber */ = {
 			isa = PBXGroup;
 			children = (
-				D5D974F325263FAF000AD074 /* PhoneNumber.swift */,
 				D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */,
-				D5D974F825263FB9000AD074 /* PhoneNumberTests.swift */,
 			);
 			path = PhoneNumber;
 			sourceTree = "<group>";
@@ -2383,7 +2371,6 @@
 			packageProductDependencies = (
 				D535547623DF3A19005A20EB /* Valet */,
 				03B19836247053F5005529EB /* APIKit */,
-				D5D78DD6252502CE007041BE /* PhoneNumberKit */,
 				D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */,
 				D53668FC255EEDEF00A9D97D /* Stripe */,
 				D59E4E6025B20ADA00E8F94C /* YouTubeiOSPlayerHelper */,
@@ -2419,7 +2406,6 @@
 				035B1CD6249CF7EB00AABFEA /* Valet */,
 				035B1D68249E645E00AABFEA /* APIKit */,
 				D5FC2D50254A7E21005056D5 /* FirebaseCrashlytics */,
-				D5F4AE8A2559D46A001085D5 /* PhoneNumberKit */,
 				D5947C9726A39E9600355857 /* ComposableNavigator */,
 				D5439DDB26D5278B00D69CE8 /* SwiftUIEncore */,
 				D5B4D3D4273B46790048E4E1 /* TutorDO */,
@@ -2870,7 +2856,6 @@
 				035AF3082491A51D004A01B2 /* VoiceOverService.swift in Sources */,
 				D52A4F192538C41400C65A91 /* CardSetupEndpoints.swift in Sources */,
 				D5DAD2782677B2D20014702F /* RequestLessonPlanView+Analytics.swift in Sources */,
-				D5D974F425263FAF000AD074 /* PhoneNumber.swift in Sources */,
 				D5D9AE762534CBB700A0ABCC /* Price.swift in Sources */,
 				D5DAD27A2677B51F0014702F /* LessonPlan+Analytics.swift in Sources */,
 				D535554723E20076005A20EB /* Colors.swift in Sources */,
@@ -3178,7 +3163,6 @@
 				D55C360D25A3E2B20023E56B /* EKEventStoreDoubles.swift in Sources */,
 				D5B4A20626CED857006EAD18 /* AppView.swift in Sources */,
 				D524D0C1250468D200BC9AF7 /* PushNotificationAuthorizationCoordinatorDoubles.swift in Sources */,
-				D5F4AE822559D3F6001085D5 /* PhoneNumber.swift in Sources */,
 				D52C553A24DC71B800C295C4 /* BookingRequestDetailView.swift in Sources */,
 				03E88E8F24BC9FAF0077A420 /* AppEnvironmentDoubles.swift in Sources */,
 				D55354E926C082C300E77CC4 /* RythmicoWebView.swift in Sources */,
@@ -3328,7 +3312,6 @@
 			files = (
 				D5A8C4C425044F580006F5C5 /* APIClientInfo+TutorTests.swift in Sources */,
 				035B1D74249E6B2D00AABFEA /* XCTAssertView.swift in Sources */,
-				D5F4AE862559D3FD001085D5 /* PhoneNumberTests.swift in Sources */,
 				035B1D73249E6AEB00AABFEA /* MainViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3351,7 +3334,6 @@
 				D50811E623FB769D008103D8 /* RequestLessonPlanFlowViewTests.swift in Sources */,
 				03AAF6752445E16A002D8F5B /* SchedulingViewTests.swift in Sources */,
 				D5A8C4C225044F4C0006F5C5 /* APIClientInfo+RythmicoTests.swift in Sources */,
-				D5D974F925263FB9000AD074 /* PhoneNumberTests.swift in Sources */,
 				03D932F2249C096B003416DC /* LessonPlanDetailViewTests.swift in Sources */,
 				D53555D023E536B5005A20EB /* SIWACredentialRevocationObserverTests.swift in Sources */,
 				03D932F4249C0A71003416DC /* LessonPlanCancellationViewTests.swift in Sources */,
@@ -4077,16 +4059,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5CFB3712675242C006DBCE0 /* XCRemoteSwiftPackageReference "Amplitude-iOS" */;
 			productName = Amplitude;
-		};
-		D5D78DD6252502CE007041BE /* PhoneNumberKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5D78DD5252502CE007041BE /* XCRemoteSwiftPackageReference "PhoneNumberKit" */;
-			productName = PhoneNumberKit;
-		};
-		D5F4AE8A2559D46A001085D5 /* PhoneNumberKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5D78DD5252502CE007041BE /* XCRemoteSwiftPackageReference "PhoneNumberKit" */;
-			productName = PhoneNumberKit;
 		};
 		D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;

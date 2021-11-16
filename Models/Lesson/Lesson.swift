@@ -50,7 +50,6 @@ struct Lesson: Decodable, Identifiable, Hashable {
     #if RYTHMICO
     var options: Options
     #elseif TUTOR
-    @E164PhoneNumber
     var phoneNumber: PhoneNumber
     var privateNote: String
     #endif

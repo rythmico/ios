@@ -123,8 +123,8 @@ struct AppEnvironment {
         self.appOrigin = appOrigin
 
         self.date = date
-        self.dateOnly = { .init(date(), timeZone: timeZone()) }
-        self.timeOnly = { .init(date(), timeZone: timeZone()) }
+        self.dateOnly = { .init(date(), in: timeZone()) }
+        self.timeOnly = { .init(date(), in: timeZone()) }
         self.calendarType = calendarType
         self.locale = locale
         self.timeZone = timeZone

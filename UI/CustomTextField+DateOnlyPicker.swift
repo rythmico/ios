@@ -29,7 +29,7 @@ private final class DateOnlyPickerAsUIView: UIDatePicker {
         self.calendar = Current.calendar()
         self.locale = Current.locale()
         self.timeZone = .neutral
-        self.date = Date(selection.wrappedValue, timeZone: .neutral)
+        self.date = Date(selection.wrappedValue, in: .neutral)
         self.datePickerMode = .date
         self.preferredDatePickerStyle = style
         self.addTarget(self, action: #selector(onDateChanged), for: .valueChanged)
@@ -42,6 +42,6 @@ private final class DateOnlyPickerAsUIView: UIDatePicker {
 
     @objc
     private func onDateChanged() {
-        selection.wrappedValue = DateOnly(date, timeZone: .neutral)
+        selection.wrappedValue = DateOnly(date, in: .neutral)
     }
 }

@@ -10,7 +10,6 @@ struct Booking: Equatable, Identifiable, Hashable {
     var student: Student
     var address: Address
     var schedule: Schedule
-    @E164PhoneNumber
     var phoneNumber: PhoneNumber
     var privateNote: String
     var lessons: [Lesson]

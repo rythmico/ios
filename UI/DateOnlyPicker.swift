@@ -7,8 +7,8 @@ struct DateOnlyPicker<Picker: View>: View {
     var body: some View {
         picker(
             Binding(
-                get: { Date(selection.wrappedValue, timeZone: .neutral) },
-                set: { selection.wrappedValue = DateOnly($0, timeZone: .neutral) }
+                get: { Date(selection.wrappedValue, in: .neutral) },
+                set: { selection.wrappedValue = DateOnly($0, in: .neutral) }
             )
         )
         .environment(\.timeZone, .neutral)

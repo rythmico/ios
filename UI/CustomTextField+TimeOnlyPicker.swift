@@ -35,7 +35,7 @@ private final class TimeOnlyPickerAsUIView: UIDatePicker {
         self.calendar = Current.calendar()
         self.locale = Current.locale()
         self.timeZone = .neutral
-        self.date = Date(selection.wrappedValue, timeZone: .neutral)
+        self.date = Date(selection.wrappedValue, in: .neutral)
         self.datePickerMode = .time
         self.preferredDatePickerStyle = style
         self.minuteInterval = minuteInterval
@@ -49,6 +49,6 @@ private final class TimeOnlyPickerAsUIView: UIDatePicker {
 
     @objc
     private func onDateChanged() {
-        selection.wrappedValue = TimeOnly(date, timeZone: .neutral)
+        selection.wrappedValue = TimeOnly(date, in: .neutral)
     }
 }

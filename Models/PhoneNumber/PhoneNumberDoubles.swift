@@ -1,5 +1,5 @@
-import PhoneNumberKit
+import FoundationEncore
 
 extension PhoneNumber {
-    static let stub = try! E164PhoneNumber(e164Value: "+447402421160").wrappedValue
+    static let stub = try! PhoneNumberKit().parse("+441632960208", ignoreType: true)
 }

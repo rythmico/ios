@@ -86,7 +86,6 @@ struct CompleteLessonPlanCheckoutRequest: APIRequest {
     var headerFields: [String: String] = [:]
     var body: some Encodable {
         struct Body: Encodable {
-            @E164PhoneNumber
             var phoneNumber: PhoneNumber
             var cardID: Card.ID
         }

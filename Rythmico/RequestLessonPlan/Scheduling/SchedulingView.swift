@@ -149,7 +149,7 @@ struct SchedulingView: View, FocusableView, TestableView {
         guard let focus = focus else { return }
         switch focus {
         case .startDate:
-            state.startDate =?? DateOnly(firstAvailableDate, timeZone: .neutral)
+            state.startDate =?? DateOnly(firstAvailableDate, in: .neutral)
         case .startTime:
             state.startTime =?? defaultStartTime
         case .duration:

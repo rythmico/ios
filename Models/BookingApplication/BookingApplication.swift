@@ -48,7 +48,6 @@ struct BookingApplication: Equatable, Identifiable, Hashable {
     var instrument: Instrument
     var submitterName: String
     var submitterPrivateNote: String
-    @E164PhoneNumberOptional
     var phoneNumber: PhoneNumber?
     var student: Student
     var addressInfo: AddressInfo
@@ -67,7 +66,7 @@ extension BookingApplication: Decodable {
             instrument: container.decode(Instrument.self, forKey: .instrument),
             submitterName: container.decode(String.self, forKey: .submitterName),
             submitterPrivateNote: container.decode(String.self, forKey: .submitterPrivateNote),
-            phoneNumber: container.decode(E164PhoneNumberOptional.self, forKey: .phoneNumber).wrappedValue,
+            phoneNumber: container.decodeIfPresent(PhoneNumber.self, forKey: .phoneNumber),
             student: container.decode(Student.self, forKey: .student),
             addressInfo: AddressInfo(from: decoder),
             schedule: container.decode(Schedule.self, forKey: .schedule),
