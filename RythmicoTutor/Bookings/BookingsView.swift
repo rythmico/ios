@@ -24,7 +24,8 @@ struct BookingsView: View {
             .onReceive(shouldFetchPublisher(), perform: fetch)
             // FIXME: double HTTP request for some reason
             // .onDisappear(perform: coordinator.cancel)
-            .onSuccess(coordinator, perform: repository.setItems)
+            // TODO: upcoming
+//            .onSuccess(coordinator, perform: repository.setItems)
             .onSuccess(coordinator, perform: requestPushNotificationAuth)
             .multiModal {
                 $0.alertOnFailure(coordinator)
