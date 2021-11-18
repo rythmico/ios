@@ -2498,7 +2498,6 @@
 				D535547523DF3A19005A20EB /* XCRemoteSwiftPackageReference "Valet" */,
 				03B19835247053F5005529EB /* XCRemoteSwiftPackageReference "APIKit" */,
 				D56544D124CE4BA100281875 /* XCRemoteSwiftPackageReference "ViewInspector" */,
-				D5D78DD5252502CE007041BE /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
 				D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */,
 				D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				D59E4E5F25B20ADA00E8F94C /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
@@ -3960,14 +3959,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 8.3.0;
-			};
-		};
-		D5D78DD5252502CE007041BE /* XCRemoteSwiftPackageReference "PhoneNumberKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/marmelroy/PhoneNumberKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.3.1;
 			};
 		};
 		D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */ = {

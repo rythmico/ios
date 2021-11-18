@@ -51,7 +51,7 @@
         "repositoryURL": "https://github.com/rythmico/dto-swift",
         "state": {
           "branch": "main",
-          "revision": "cc3699300b18aed9b358e1a06c5b67ed17fed75e",
+          "revision": "2e2327234e6848177ea2dcc70b8d0364feb2f90a",
           "version": null
         }
       },
@@ -155,6 +155,15 @@
         }
       },
       {
+        "package": "PhoneNumberKit",
+        "repositoryURL": "https://github.com/davdroman/PhoneNumberKit",
+        "state": {
+          "branch": "davdroman-improvements",
+          "revision": "d9f14aa3f61a4f9bf3d6ce1f01e2d57dd71bb948",
+          "version": null
+        }
+      },
+      {
         "package": "PreciseDecimal",
         "repositoryURL": "https://github.com/davdroman/PreciseDecimal",
         "state": {
@@ -249,7 +258,7 @@
         "repositoryURL": "https://github.com/rythmico/swift-foundation-encore",
         "state": {
           "branch": "main",
-          "revision": "cfbe072e5cec1437ae7e8e6e370a82833c1c002c",
+          "revision": "894e7a7a36651d506a9bd86b1d09aa40ac48fdde",
           "version": null
         }
       },
@@ -276,8 +285,8 @@
         "repositoryURL": "https://github.com/apple/swift-numerics",
         "state": {
           "branch": null,
-          "revision": "0a23770641f65a4de61daf5425a37ae32a3fd00d",
-          "version": "1.0.1"
+          "revision": "0a5bc04095a675662cf24757cc0640aa2204253b",
+          "version": "1.0.2"
         }
       },
       {
