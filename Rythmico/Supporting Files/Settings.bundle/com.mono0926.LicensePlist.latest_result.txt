@@ -1,54 +1,34 @@
-name: abseil-cpp-SwiftPM, nameSpecified: abseil, owner: firebase, version: 0.20200225.4
-
 name: Amplitude-iOS, nameSpecified: Amplitude, owner: amplitude, version: 8.5.0
 
 name: APIKit, nameSpecified: APIKit, owner: davdroman, version: 
 
-name: boringssl-SwiftPM, nameSpecified: BoringSSL-GRPC, owner: firebase, version: 0.7.2
+name: appcenter-sdk-apple, nameSpecified: AppCenter, owner: microsoft, version: 4.3.0
 
 name: combine-schedulers, nameSpecified: combine-schedulers, owner: pointfreeco, version: 0.5.3
 
-name: firebase-ios-sdk, nameSpecified: Firebase, owner: firebase, version: 8.8.1
+name: dto-swift, nameSpecified: DTO, owner: rythmico, version: 
 
-name: FoundationEncore, nameSpecified: FoundationEncore, owner: rythmico, version: 
-
-name: GoogleAppMeasurement, nameSpecified: GoogleAppMeasurement, owner: google, version: 8.8.0
-
-name: GoogleDataTransport, nameSpecified: GoogleDataTransport, owner: google, version: 9.1.2
-
-name: GoogleUtilities, nameSpecified: GoogleUtilities, owner: google, version: 7.6.0
-
-name: grpc-SwiftPM, nameSpecified: gRPC, owner: firebase, version: 1.28.4
-
-name: gtm-session-fetcher, nameSpecified: GTMSessionFetcher, owner: google, version: 1.7.0
-
-name: LegibleError, nameSpecified: LegibleError, owner: mxcl, version: 1.0.5
-
-name: leveldb, nameSpecified: leveldb, owner: firebase, version: 1.22.2
+name: LegibleError, nameSpecified: LegibleError, owner: mxcl, version: 1.0.6
 
 name: MultiModal, nameSpecified: MultiModal, owner: davdroman, version: 2.1.0
 
-name: nanopb, nameSpecified: nanopb, owner: firebase, version: 2.30908.0
+name: PeriodDuration, nameSpecified: PeriodDuration, owner: davdroman, version: 0.10.0
 
-name: PeriodDuration, nameSpecified: PeriodDuration, owner: davdroman, version: 0.4.0
+name: PhoneNumberKit, nameSpecified: PhoneNumberKit, owner: davdroman, version: 
 
-name: PhoneNumberKit, nameSpecified: PhoneNumberKit, owner: marmelroy, version: 3.3.3
+name: PLCrashReporter, nameSpecified: PLCrashReporter, owner: microsoft, version: 1.10.0
 
 name: PreciseDecimal, nameSpecified: PreciseDecimal, owner: davdroman, version: 1.0.0
-
-name: promises, nameSpecified: Promises, owner: google, version: 2.0.0
-
-name: RythmicoDTO, nameSpecified: RythmicoDTO, owner: rythmico, version: 
 
 name: SFSafeSymbols, nameSpecified: SFSafeSymbols, owner: piknotech, version: 2.1.3
 
 name: stripe-ios, nameSpecified: Stripe, owner: stripe, version: 21.9.0
 
-name: swift-algorithms, nameSpecified: swift-algorithms, owner: apple, version: 0.2.1
+name: swift-algorithms, nameSpecified: swift-algorithms, owner: apple, version: 1.0.0
 
 name: swift-case-paths, nameSpecified: swift-case-paths, owner: pointfreeco, version: 0.7.0
 
-name: swift-collections, nameSpecified: swift-collections, owner: apple, version: 1.0.1
+name: swift-collections, nameSpecified: swift-collections, owner: apple, version: 1.0.2
 
 name: swift-composable-architecture, nameSpecified: swift-composable-architecture, owner: pointfreeco, version: 0.28.1
 
@@ -56,13 +36,13 @@ name: swift-composable-navigator, nameSpecified: swift-composable-navigator, own
 
 name: swift-custom-dump, nameSpecified: swift-custom-dump, owner: pointfreeco, version: 0.2.1
 
+name: swift-foundation-encore, nameSpecified: FoundationEncore, owner: rythmico, version: 
+
 name: swift-identified-collections, nameSpecified: swift-identified-collections, owner: pointfreeco, version: 0.3.2
 
 name: swift-nonempty, nameSpecified: swift-nonempty, owner: pointfreeco, version: 0.4.0
 
-name: swift-numerics, nameSpecified: swift-numerics, owner: apple, version: 0.1.0
-
-name: swift-protobuf, nameSpecified: SwiftProtobuf, owner: apple, version: 1.18.0
+name: swift-numerics, nameSpecified: swift-numerics, owner: apple, version: 1.0.2
 
 name: swift-tagged, nameSpecified: swift-tagged, owner: pointfreeco, version: 0.6.0
 
