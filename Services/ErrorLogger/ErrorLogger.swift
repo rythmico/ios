@@ -1,37 +1,23 @@
-import FoundationEncore
+import AppCenter
+import AppCenterCrashes
 import Combine
+import FoundationEncore
 
 protocol ErrorLoggerProtocol {
     func log(_ error: Error)
 }
 
 final class ErrorLogger: ErrorLoggerProtocol {
-//    private let crashlyticsLogger: Crashlytics
-    private let userCredentialProvider: UserCredentialProviderBase
-//    private var cancellable: AnyCancellable?
-
-    init(
-//        crashlyticsLogger: Crashlytics,
-        userCredentialProvider: UserCredentialProviderBase
-    ) {
-//        self.crashlyticsLogger = crashlyticsLogger
-        self.userCredentialProvider = userCredentialProvider
-//        self.cancellable = userCredentialProvider.$userCredential.compactMap { $0?.userID }.sink(receiveValue: crashlyticsLogger.setUserID)
-    }
+    init() {}
 
     func log(_ error: Error) {
-//        let nsError = error as NSError
-//        crashlyticsLogger.record(
-//            error: NSError(
-//                domain: nsError.domain,
-//                code: nsError.code,
-//                userInfo: nsError.userInfo + [
-//                    "error-legibleDescription": error.legibleDescription,
-//                    "error-legibleLocalizedDescription": error.legibleLocalizedDescription,
-//                    "nserror-localizedDescription": nsError.localizedDescription,
-//                    "nserror-debugDescription": nsError.debugDescription,
-//                ]
-//            )
-//        )
+        let nsError = error as NSError
+        let properties = nsError.userInfo.compactMapValues { $0 as? String } + [
+            "error-legibleDescription": error.legibleDescription,
+            "error-legibleLocalizedDescription": error.legibleLocalizedDescription,
+            "nserror-localizedDescription": nsError.localizedDescription,
+            "nserror-debugDescription": nsError.debugDescription,
+        ]
+        Crashes.trackError(error, properties: properties, attachments: nil)
     }
 }
