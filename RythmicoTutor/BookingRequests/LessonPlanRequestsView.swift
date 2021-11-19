@@ -1,22 +1,23 @@
-import SwiftUIEncore
 import Combine
 import ComposableNavigator
+import TutorDO
+import SwiftUIEncore
 
-struct BookingRequestsView: View {
+struct LessonPlanRequestsView: View {
     @Environment(\.scenePhase)
     private var scenePhase
     @ObservedObject
     private var tabSelection = Current.tabSelection
     @ObservedObject
-    private var bookingRequestsTabNavigation = Current.bookingRequestsTabNavigation
+    private var lessonPlanRequestsTabNavigation = Current.lessonPlanRequestsTabNavigation
     @ObservedObject
-    private var coordinator = Current.bookingRequestFetchingCoordinator
+    private var coordinator = Current.lessonPlanRequestFetchingCoordinator
     @ObservedObject
-    private var repository = Current.bookingRequestRepository
+    private var repository = Current.lessonPlanRequestRepository
 
     var isLoading: Bool { coordinator.state.isLoading }
     var error: Error? { coordinator.output?.error }
-    var requests: [BookingRequest] { repository.items }
+    var requests: [LessonPlanRequest] { repository.items }
 
     var body: some View {
         List {
@@ -28,7 +29,7 @@ struct BookingRequestsView: View {
                     }
                 }
             ) {
-                ForEach(requests, content: BookingRequestCell.init)
+                ForEach(requests, content: LessonPlanRequestCell.init)
             }
         }
         .listStyle(GroupedListStyle())
@@ -45,8 +46,8 @@ struct BookingRequestsView: View {
     }
 
     private func onRequestsOpenTabRootPublisher() -> AnyPublisher<Void, Never> {
-        tabSelection.$mainTab.combineLatest(tabSelection.$requestsTab, bookingRequestsTabNavigation.$path.map(\.current))
-            .filter { $0 == .requests && $1 == .open && $2.is(BookingRequestsTabScreen()) }
+        tabSelection.$mainTab.combineLatest(tabSelection.$requestsTab, lessonPlanRequestsTabNavigation.$path.map(\.current))
+            .filter { $0 == .requests && $1 == .open && $2.is(LessonPlanRequestsTabScreen()) }
             .mapToVoid()
             .eraseToAnyPublisher()
     }
@@ -58,9 +59,9 @@ struct BookingRequestsView: View {
 }
 
 #if DEBUG
-struct BookingRequestsView_Previews: PreviewProvider {
+struct LessonPlanRequestsView_Previews: PreviewProvider {
     static var previews: some View {
-        BookingRequestsView()
+        LessonPlanRequestsView()
     }
 }
 #endif

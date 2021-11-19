@@ -1,37 +1,38 @@
-import SwiftUIEncore
 import ComposableNavigator
+import TutorDO
+import SwiftUIEncore
 
-struct BookingRequestApplyScreen: Screen {
-    let booking: BookingRequest
+struct LessonPlanRequestApplyScreen: Screen {
+    let lessonPlanRequest: LessonPlanRequest
     let presentationStyle: ScreenPresentationStyle = .sheet(allowsPush: false)
 
     struct Builder: NavigationTree {
         var builder: some PathBuilder {
             Screen(
-                content: { (screen: BookingRequestApplyScreen) in
-                    BookingRequestApplyView(booking: screen.booking)
+                content: { (screen: LessonPlanRequestApplyScreen) in
+                    LessonPlanRequestApplyView(lessonPlanRequest: screen.lessonPlanRequest)
                 }
             )
         }
     }
 }
 
-struct BookingRequestApplyView: View {
+struct LessonPlanRequestApplyView: View {
     @Environment(\.navigator)
     private var navigator
     @Environment(\.currentScreen)
     private var currentScreen
     @StateObject
-    private var coordinator = Current.bookingRequestApplyingCoordinator()
+    private var coordinator = Current.lessonPlanRequestApplyingCoordinator()
 
-    var booking: BookingRequest
+    var lessonPlanRequest: LessonPlanRequest
 
     @State
     var privateNote = ""
 
     func submit() {
         Current.keyboardDismisser.dismissKeyboard()
-        coordinator.run(with: .init(bookingRequestID: booking.id, privateNote: privateNote))
+        coordinator.run(with: .init(lessonPlanRequestID: lessonPlanRequest.id, privateNote: privateNote))
     }
 
     var body: some View {
@@ -97,7 +98,7 @@ struct BookingRequestApplyView: View {
         // Optimization to remove already-applied requests before next fetch.
         // Dispatched in the next run loop to avoid mysterious runtime crash.
         DispatchQueue.main.asyncAfter(deadline: .now()) {
-            Current.bookingRequestRepository.items.removeAll(where: { $0.id == application.bookingRequestId })
+            Current.lessonPlanRequestRepository.items.removeAll(where: { $0.id.rawValue == application.lessonPlanRequestId })
         }
     }
 }
@@ -105,7 +106,7 @@ struct BookingRequestApplyView: View {
 #if DEBUG
 struct BookingApplicationView_Previews: PreviewProvider {
     static var previews: some View {
-        BookingRequestApplyView(booking: .stub)
+        LessonPlanRequestApplyView(lessonPlanRequest: .stub)
             .environment(\.colorScheme, .dark)
     }
 }

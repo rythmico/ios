@@ -1,20 +1,21 @@
 import APIKit
+import TutorDO
 
-struct BookingRequestsGetRequest: APIRequest, EmptyInitProtocol {
+struct GetLessonPlanRequestsRequest: APIRequest, EmptyInitProtocol {
     let method: HTTPMethod = .get
-    let path: String = "/booking-requests"
+    let path: String = "/tutor/lesson-plan-requests"
     var headerFields: [String: String] = [:]
     let body: Void = ()
 
-    typealias Response = [BookingRequest]
+    typealias Response = [LessonPlanRequest]
 }
 
-struct BookingRequestApplyRequest: APIRequest {
-    var bookingRequestID: String
+struct LessonPlanRequestApplyRequest: APIRequest {
+    var lessonPlanRequestID: LessonPlanRequest.ID
     var privateNote: String
 
     let method: HTTPMethod = .post
-    var path: String { "/booking-requests/\(bookingRequestID)/apply" }
+    var path: String { "/booking-requests/\(lessonPlanRequestID)/apply" }
     var headerFields: [String: String] = [:]
     var body: some Encodable {
         struct Body: Encodable {

@@ -28,7 +28,7 @@ struct RootView: View, TestableView {
             DispatchQueue.main.asyncAfter(deadline: .now() + .durationMedium * 2) {
                 // FIXME: this crashes
 //                Current.bookingsRepository.reset()
-//                Current.bookingRequestRepository.reset()
+//                Current.lessonPlanRequestRepository.reset()
 //                Current.bookingApplicationRepository.reset()
                 Current.tabSelection.reset()
             }

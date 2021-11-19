@@ -1,12 +1,13 @@
+import TutorDO
 import SwiftUI
 
-struct BookingRequestCell: View {
+struct LessonPlanRequestCell: View {
     @Environment(\.navigator)
     private var navigator
     @Environment(\.currentScreen)
     private var currentScreen
 
-    var request: BookingRequest
+    var request: LessonPlanRequest
 
     var body: some View {
         Button(action: goToDetail) {
@@ -31,27 +32,33 @@ struct BookingRequestCell: View {
     }
 
     private var title: String {
-        "\(request.student.name) - \(request.instrument.standaloneName)"
+        "\(request.student.firstName) - \(request.instrument.standaloneName)"
     }
 
     private static let scheduleFormatter = Current.dateFormatter(format: .custom("d MMM '@' HH:mm"))
     private var subtitle: String {
-        Self.scheduleFormatter.string(from: request.schedule.startDate)
+        Self.scheduleFormatter.string(
+            from: Date(
+                date: request.schedule.start,
+                time: request.schedule.time,
+                in: Current.timeZone()
+            )
+        )
     }
 
     private var accessory: String {
-        request.postcode
+        request.address.formatted(style: .singleLine)
     }
 
     private func goToDetail() {
-        navigator.go(to: BookingRequestDetailScreen(bookingRequest: request), on: currentScreen)
+        navigator.go(to: LessonPlanRequestDetailScreen(lessonPlanRequest: request), on: currentScreen)
     }
 }
 
 #if DEBUG
-struct BookingRequestCell_Previews: PreviewProvider {
+struct LessonPlanRequestCell_Previews: PreviewProvider {
     static var previews: some View {
-        BookingRequestCell(request: .stub)
+        LessonPlanRequestCell(request: .stub)
             .padding(.horizontal, .grid(3))
             .previewLayout(.sizeThatFits)
     }

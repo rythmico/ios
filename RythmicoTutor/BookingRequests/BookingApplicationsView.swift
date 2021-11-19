@@ -12,7 +12,7 @@ struct BookingApplicationsView: View {
     @ObservedObject
     private var tabSelection = Current.tabSelection
     @ObservedObject
-    private var bookingRequestsTabNavigation = Current.bookingRequestsTabNavigation
+    private var lessonPlanRequestsTabNavigation = Current.lessonPlanRequestsTabNavigation
     @ObservedObject
     private var coordinator = Current.bookingApplicationFetchingCoordinator
     @ObservedObject
@@ -63,8 +63,8 @@ struct BookingApplicationsView: View {
     }
 
     private func onRequestsAppliedTabRootPublisher() -> AnyPublisher<Void, Never> {
-        tabSelection.$mainTab.combineLatest(tabSelection.$requestsTab, bookingRequestsTabNavigation.$path.map(\.current))
-            .filter { $0 == .requests && $1 == .applied && $2.is(BookingRequestsTabScreen()) }
+        tabSelection.$mainTab.combineLatest(tabSelection.$requestsTab, lessonPlanRequestsTabNavigation.$path.map(\.current))
+            .filter { $0 == .requests && $1 == .applied && $2.is(LessonPlanRequestsTabScreen()) }
             .mapToVoid()
             .eraseToAnyPublisher()
     }

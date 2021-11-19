@@ -107,7 +107,8 @@ struct BookingApplicationDetailView: View {
                 header: Text("ADDRESS DETAILS"),
                 footer: Text("Exact location and address will be provided if you're selected.")
             ) {
-                AddressMapCell(addressInfo: bookingApplication.addressInfo)
+                // TODO: upcoming
+//                AddressMapCell(addressInfo: bookingApplication.addressInfo)
             }
             retractAction.map { retractAction in
                 GroupedButton(title: "Retract Application", action: promptForRetraction) {

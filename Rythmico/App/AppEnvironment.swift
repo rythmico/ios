@@ -3,7 +3,6 @@ import EventKit
 import Stripe
 import StudentDO
 import SwiftUIEncore
-import UIKit
 import UserNotifications
 
 struct AppEnvironment {

@@ -6,7 +6,7 @@ final class APIEventHandler: APIEventHandlerProtocol {
         case .unknown:
             break
         case .known(.bookingRequestsChanged):
-            Current.bookingRequestFetchingCoordinator.reset()
+            Current.lessonPlanRequestFetchingCoordinator.reset()
         case .known(.bookingApplicationsChanged):
             Current.bookingApplicationFetchingCoordinator.reset()
         }

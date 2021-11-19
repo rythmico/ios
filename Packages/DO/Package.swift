@@ -23,6 +23,7 @@ let package = Package(
             .target(name: "CoreDO"),
             .product(name: "TutorDTO", package: "DTO"),
         ]),
+        .testTarget(name: "TutorDOTests", dependencies: ["TutorDO"]),
 
         .target(name: "CoreDO", dependencies: [
             .product(name: "CoreDTO", package: "DTO"),

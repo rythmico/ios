@@ -1,18 +1,18 @@
 import SwiftUIEncore
 import ComposableNavigator
 
-struct BookingRequestsTabScreen: Screen {
+struct LessonPlanRequestsTabScreen: Screen {
     let presentationStyle: ScreenPresentationStyle = .push
 
     struct Builder: NavigationTree {
         var builder: some PathBuilder {
             Screen(
-                BookingRequestsTabScreen.self,
+                LessonPlanRequestsTabScreen.self,
                 content: {
-                    BookingRequestsTabView()
+                    LessonPlanRequestsTabView()
                 },
                 nesting: {
-                    BookingRequestDetailScreen.Builder()
+                    LessonPlanRequestDetailScreen.Builder()
                     BookingApplicationDetailScreen.Builder()
                     BookingApplicationGroupScreen.Builder()
                 }
@@ -21,7 +21,7 @@ struct BookingRequestsTabScreen: Screen {
     }
 }
 
-struct BookingRequestsTabView: View {
+struct LessonPlanRequestsTabView: View {
     enum Tab: String, Equatable, Hashable, CaseIterable {
         case open = "Open"
         case applied = "Applied"
@@ -46,7 +46,7 @@ struct BookingRequestsTabView: View {
 
             switch tabSelection.requestsTab {
             case .open:
-                BookingRequestsView()
+                LessonPlanRequestsView()
             case .applied:
                 BookingApplicationsView()
             }
@@ -56,9 +56,9 @@ struct BookingRequestsTabView: View {
 }
 
 #if DEBUG
-struct BookingRequestsTabView_Previews: PreviewProvider {
+struct LessonPlanRequestsTabView_Previews: PreviewProvider {
     static var previews: some View {
-        BookingRequestsTabView()
+        LessonPlanRequestsTabView()
     }
 }
 #endif

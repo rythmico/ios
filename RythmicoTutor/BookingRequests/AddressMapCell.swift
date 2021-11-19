@@ -1,7 +1,7 @@
-import SwiftUIEncore
 import MapKit
+import TutorDO
+import SwiftUIEncore
 
-// TODO: refactor with generics, to use in BookingRequestDetailView and LessonDetailView.
 struct AddressMapCell: View {
     @State
     private var isMapOpeningSheetPresented = false
@@ -9,14 +9,25 @@ struct AddressMapCell: View {
     @State
     private var mapOpeningError: Error?
 
-    var addressInfo: BookingApplication.AddressInfo
+    enum Source {
+        case partialAddress(LessonPlanRequest.PartialAddress)
+        case fullAddress(Address)
+    }
+
+    let source: Source
 
     var body: some View {
         Group {
             VStack(alignment: .leading, spacing: .grid(3)) {
                 Container(
                     style: .init(fill: .clear, shape: .squircle(radius: .grid(2), style: .continuous), border: .none),
-                    content: { NonInteractiveMap(coordinate: coordinate, showsPin: isFullAddress) }
+                    content: {
+                        NonInteractiveMap(
+                            coordinate: coordinate,
+                            regionMeters: regionMeters,
+                            showsPin: isFullAddress
+                        )
+                    }
                 )
                 .frame(height: 160)
                 .onTapGesture(perform: presentMapActionSheet)
@@ -46,37 +57,46 @@ struct AddressMapCell: View {
     }
 
     private var coordinate: CLLocationCoordinate2D {
-        switch addressInfo {
-        case .postcode:
-            return NonInteractiveMap.defaultCoordinate
-        case .address(let address):
+        switch source {
+        case .partialAddress(let partialAddress):
+            return CLLocationCoordinate2D(latitude: partialAddress.latitude, longitude: partialAddress.longitude)
+        case .fullAddress(let address):
             return CLLocationCoordinate2D(latitude: address.latitude, longitude: address.longitude)
         }
     }
 
+    private var regionMeters: CLLocationDistance {
+        switch source {
+        case .partialAddress:
+            return 500
+        case .fullAddress:
+            return 150
+        }
+    }
+
     private var address: String {
-        switch addressInfo {
-        case .postcode(let postcode):
-            return postcode
-        case .address(let address):
+        switch source {
+        case .partialAddress(let partialAddress):
+            return partialAddress.districtCode
+        case .fullAddress(let address):
             return address.condensedFormattedString
         }
     }
 
     private var isFullAddress: Bool {
-        switch addressInfo {
-        case .postcode:
+        switch source {
+        case .partialAddress:
             return false
-        case .address:
+        case .fullAddress:
             return true
         }
     }
 
     private var searchQuery: String {
-        switch addressInfo {
-        case .postcode(let postcode):
-            return postcode
-        case .address(let address):
+        switch source {
+        case .partialAddress(let partialAddress):
+            return partialAddress.districtCode
+        case .fullAddress(let address):
             return address.searchQueryString
         }
     }
@@ -102,12 +122,12 @@ struct AddressMapCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             List {
-                AddressMapCell(addressInfo: .postcode("N8"))
+                AddressMapCell(source: .partialAddress(.stub))
             }
             .listStyle(GroupedListStyle())
 
             List {
-                AddressMapCell(addressInfo: .address(.stub))
+                AddressMapCell(source: .fullAddress(.stub))
             }
             .listStyle(GroupedListStyle())
         }

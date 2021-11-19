@@ -1,12 +1,13 @@
-import SwiftUIEncore
 import ComposableNavigator
-import UserNotifications
 import EventKit
+import UserNotifications
+import TutorDO
+import SwiftUIEncore
 
 struct AppEnvironment {
     var tabSelection: TabSelection
     let bookingsTabNavigation = Navigator.Datasource(root: BookingsTabScreen())
-    let bookingRequestsTabNavigation = Navigator.Datasource(root: BookingRequestsTabScreen())
+    let lessonPlanRequestsTabNavigation = Navigator.Datasource(root: LessonPlanRequestsTabScreen())
 
     var appStatus: AppStatusProvider
     var appOrigin: AppOriginClient
@@ -54,9 +55,9 @@ struct AppEnvironment {
     var bookingsRepository: Repository<Booking>
     var bookingsFetchingCoordinator: APIActivityCoordinator<BookingsGetRequest>
 
-    var bookingRequestRepository: Repository<BookingRequest>
-    var bookingRequestFetchingCoordinator: APIActivityCoordinator<BookingRequestsGetRequest>
-    var bookingRequestApplyingCoordinator: () -> APIActivityCoordinator<BookingRequestApplyRequest>
+    var lessonPlanRequestRepository: Repository<LessonPlanRequest>
+    var lessonPlanRequestFetchingCoordinator: APIActivityCoordinator<GetLessonPlanRequestsRequest>
+    var lessonPlanRequestApplyingCoordinator: () -> APIActivityCoordinator<LessonPlanRequestApplyRequest>
 
     var bookingApplicationRepository: Repository<BookingApplication>
     var bookingApplicationFetchingCoordinator: APIActivityCoordinator<BookingApplicationsGetRequest>
@@ -109,9 +110,9 @@ struct AppEnvironment {
         bookingsRepository: Repository<Booking>,
         bookingsFetchingService: APIServiceBase<BookingsGetRequest>,
 
-        bookingRequestRepository: Repository<BookingRequest>,
-        bookingRequestFetchingService: APIServiceBase<BookingRequestsGetRequest>,
-        bookingRequestApplyingService: APIServiceBase<BookingRequestApplyRequest>,
+        lessonPlanRequestRepository: Repository<LessonPlanRequest>,
+        lessonPlanRequestFetchingService: APIServiceBase<GetLessonPlanRequestsRequest>,
+        lessonPlanRequestApplyingService: APIServiceBase<LessonPlanRequestApplyRequest>,
 
         bookingApplicationRepository: Repository<BookingApplication>,
         bookingApplicationFetchingService: APIServiceBase<BookingApplicationsGetRequest>,
@@ -189,9 +190,9 @@ struct AppEnvironment {
         self.bookingsRepository = bookingsRepository
         self.bookingsFetchingCoordinator = coordinator(for: bookingsFetchingService)
 
-        self.bookingRequestRepository = bookingRequestRepository
-        self.bookingRequestFetchingCoordinator = coordinator(for: bookingRequestFetchingService)
-        self.bookingRequestApplyingCoordinator = { coordinator(for: bookingRequestApplyingService) }
+        self.lessonPlanRequestRepository = lessonPlanRequestRepository
+        self.lessonPlanRequestFetchingCoordinator = coordinator(for: lessonPlanRequestFetchingService)
+        self.lessonPlanRequestApplyingCoordinator = { coordinator(for: lessonPlanRequestApplyingService) }
 
         self.bookingApplicationRepository = bookingApplicationRepository
         self.bookingApplicationFetchingCoordinator = coordinator(for: bookingApplicationFetchingService)
@@ -254,9 +255,9 @@ extension AppEnvironment {
         bookingsRepository: Repository(),
         bookingsFetchingService: APIService(),
 
-        bookingRequestRepository: Repository(),
-        bookingRequestFetchingService: APIService(),
-        bookingRequestApplyingService: APIService(),
+        lessonPlanRequestRepository: Repository(),
+        lessonPlanRequestFetchingService: APIService(),
+        lessonPlanRequestApplyingService: APIService(),
 
         bookingApplicationRepository: Repository(),
         bookingApplicationFetchingService: APIService(),

@@ -1,49 +1,47 @@
-import SwiftUIEncore
 import ComposableNavigator
+import TutorDO
+import SwiftUIEncore
 
-struct BookingRequestDetailScreen: Screen {
-    let bookingRequest: BookingRequest
+struct LessonPlanRequestDetailScreen: Screen {
+    let lessonPlanRequest: LessonPlanRequest
     let presentationStyle: ScreenPresentationStyle = .push
 
     struct Builder: NavigationTree {
         var builder: some PathBuilder {
             Screen(
-                content: { (screen: BookingRequestDetailScreen) in
-                    BookingRequestDetailView(bookingRequest: screen.bookingRequest)
+                content: { (screen: LessonPlanRequestDetailScreen) in
+                    LessonPlanRequestDetailView(lessonPlanRequest: screen.lessonPlanRequest)
                 },
                 nesting: {
-                    BookingRequestApplyScreen.Builder()
+                    LessonPlanRequestApplyScreen.Builder()
                 }
             )
         }
     }
 }
 
-struct BookingRequestDetailView: View {
+struct LessonPlanRequestDetailView: View {
     @Environment(\.navigator)
     private var navigator
     @Environment(\.currentScreen)
     private var currentScreen
 
-    var bookingRequest: BookingRequest
+    var lessonPlanRequest: LessonPlanRequest
 
-    private static let dateFormatter = Current.dateFormatter(format: .custom("d MMMM"))
-    private static let timeFormatter = Current.dateFormatter(format: .preset(time: .short))
-
-    var title: String { "\(bookingRequest.student.name) - \(bookingRequest.instrument.assimilatedName) Request" }
-    var submittedBy: String { bookingRequest.submitterName }
-    var startDate: String { Self.dateFormatter.string(from: bookingRequest.schedule.startDate) }
-    var time: String { Self.timeFormatter.string(from: bookingRequest.schedule.startDate) }
-    var duration: String { bookingRequest.schedule.duration.title }
-    var name: String { bookingRequest.student.name }
-    var age: String { "\(bookingRequest.student.age)" }
-    var about: String? { bookingRequest.student.about.isEmpty ? nil : bookingRequest.student.about }
-    var privateNote: String { bookingRequest.privateNote.isEmpty ? "None" : bookingRequest.privateNote }
-    var privateNoteOpacity: Double { bookingRequest.privateNote.isEmpty ? 0.5 : 1 }
-    var postcode: String { bookingRequest.postcode }
+    var title: String { "\(lessonPlanRequest.student.firstName) - \(lessonPlanRequest.instrument.assimilatedName) Request" }
+    var submittedBy: String { lessonPlanRequest.submitterName }
+    var startDate: String { lessonPlanRequest.schedule.start.formatted(custom: "d MMMM", locale: Current.locale()) }
+    var time: String { lessonPlanRequest.schedule.time.formatted(style: .short, locale: Current.locale()) }
+    var duration: String { lessonPlanRequest.schedule.duration.formatted(locale: Current.locale()) }
+    var name: String { lessonPlanRequest.student.firstName }
+    var age: String { "\(lessonPlanRequest.student.age)" }
+    var about: String? { lessonPlanRequest.student.about.isEmpty ? nil : lessonPlanRequest.student.about }
+    var privateNote: String { lessonPlanRequest.privateNote.isEmpty ? "None" : lessonPlanRequest.privateNote }
+    var privateNoteOpacity: Double { lessonPlanRequest.privateNote.isEmpty ? 0.5 : 1 }
+    var postcode: String { lessonPlanRequest.address.formatted(style: .multiline) }
 
     private func presentApplicationView() {
-        navigator.go(to: BookingRequestApplyScreen(booking: bookingRequest), on: currentScreen)
+        navigator.go(to: LessonPlanRequestApplyScreen(lessonPlanRequest: lessonPlanRequest), on: currentScreen)
     }
 
     var body: some View {
@@ -82,7 +80,7 @@ struct BookingRequestDetailView: View {
                     header: Text("ADDRESS DETAILS"),
                     footer: Text("Exact location and address will be provided if you're selected.")
                 ) {
-                    AddressMapCell(addressInfo: .postcode(bookingRequest.postcode))
+                    AddressMapCell(source: .partialAddress(lessonPlanRequest.address))
                 }
             }
             .listStyle(GroupedListStyle())
@@ -96,9 +94,9 @@ struct BookingRequestDetailView: View {
 }
 
 #if DEBUG
-struct BookingRequestDetailView_Previews: PreviewProvider {
+struct LessonPlanRequestDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        BookingRequestDetailView(bookingRequest: .stub)
+        LessonPlanRequestDetailView(lessonPlanRequest: .stub)
     }
 }
 #endif

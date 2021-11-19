@@ -3,16 +3,17 @@ import SwiftUI
 import MapKit
 
 public struct NonInteractiveMap: View {
-    public static let defaultCoordinate = CLLocationCoordinate2D(latitude: 51.5062, longitude: -0.1248)
-
-    private var coordinate: CLLocationCoordinate2D
-    private var showsPin: Bool
+    let coordinate: CLLocationCoordinate2D
+    let regionMeters: CLLocationDistance
+    let showsPin: Bool
 
     public init(
-        coordinate: CLLocationCoordinate2D = Self.defaultCoordinate,
+        coordinate: CLLocationCoordinate2D,
+        regionMeters: CLLocationDistance,
         showsPin: Bool
     ) {
         self.coordinate = coordinate
+        self.regionMeters = regionMeters
         self.showsPin = showsPin
     }
 
@@ -21,8 +22,8 @@ public struct NonInteractiveMap: View {
             coordinateRegion: .constant(
                 MKCoordinateRegion(
                     center: coordinate,
-                    latitudinalMeters: 150,
-                    longitudinalMeters: 150
+                    latitudinalMeters: regionMeters,
+                    longitudinalMeters: regionMeters
                 )
             ),
             interactionModes: [],

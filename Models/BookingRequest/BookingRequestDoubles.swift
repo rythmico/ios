@@ -1,35 +1,39 @@
 import FoundationEncore
+import TutorDO
 
-extension BookingRequest {
-    static let stub = Self(
-        id: UUID().uuidString,
-        createdAt: try! .stub - (32, .second, .neutral),
-        instrument: .stub(.piano),
+extension LessonPlanRequest.ID {
+    static func random() -> Self {
+        .init(rawValue: UUID().uuidString)
+    }
+}
+
+extension LessonPlanRequest {
+    static let stub = Self.init(
+        id: .random(),
         submitterName: "David R",
+        instrument: .stub(.piano),
         student: .jackStub,
-        postcode: "N8",
+        address: .stub,
         schedule: .startingTomorrowStub,
         privateNote: ""
     )
 
     static let stubWithAbout = Self(
-        id: UUID().uuidString,
-        createdAt: try! .stub - (32, .second, .neutral),
-        instrument: .stub(.guitar),
+        id: .random(),
         submitterName: "David R",
+        instrument: .stub(.guitar),
         student: .janeStub,
-        postcode: "N8",
+        address: .stub => (\.districtCode, "N8"),
         schedule: .startingTomorrowStub,
         privateNote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     )
 
     static let longStub = Self(
-        id: UUID().uuidString,
-        createdAt: try! .stub - (1, .weekOfYear, .neutral),
-        instrument: .stub(.piano),
+        id: .random(),
         submitterName: "David R",
+        instrument: .stub(.piano),
         student: .davidStubNoAbout,
-        postcode: "NW5",
+        address: .stub => (\.districtCode, "NW5"),
         schedule: .startingIn1WeekStub,
         privateNote: ""
     )

@@ -12,7 +12,7 @@ extension App {
 
     func didEnterBackground() {
         Current.bookingsFetchingCoordinator.reset()
-        Current.bookingRequestFetchingCoordinator.reset()
+        Current.lessonPlanRequestFetchingCoordinator.reset()
         Current.bookingApplicationFetchingCoordinator.reset()
     }
 }

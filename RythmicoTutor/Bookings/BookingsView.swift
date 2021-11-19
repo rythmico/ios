@@ -21,11 +21,11 @@ struct BookingsView: View {
         LessonsCollectionView(currentBookings: bookings)
             .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
 
-            .onReceive(shouldFetchPublisher(), perform: fetch)
+            // TODO: upcoming
+//            .onReceive(shouldFetchPublisher(), perform: fetch)
             // FIXME: double HTTP request for some reason
             // .onDisappear(perform: coordinator.cancel)
-            // TODO: upcoming
-//            .onSuccess(coordinator, perform: repository.setItems)
+            .onSuccess(coordinator, perform: repository.setItems)
             .onSuccess(coordinator, perform: requestPushNotificationAuth)
             .multiModal {
                 $0.alertOnFailure(coordinator)

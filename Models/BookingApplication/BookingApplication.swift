@@ -42,7 +42,7 @@ struct BookingApplication: Equatable, Identifiable, Hashable {
     }
 
     var id: String
-    var bookingRequestId: String
+    var lessonPlanRequestId: String
     var createdAt: Date
     var statusInfo: StatusInfo
     var instrument: Instrument
@@ -60,7 +60,7 @@ extension BookingApplication: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(
             id: container.decode(String.self, forKey: .id),
-            bookingRequestId: container.decode(String.self, forKey: .bookingRequestId),
+            lessonPlanRequestId: container.decode(String.self, forKey: .lessonPlanRequestId),
             createdAt: container.decode(Date.self, forKey: .createdAt),
             statusInfo: container.decode(StatusInfo.self, forKey: .statusInfo),
             instrument: container.decode(Instrument.self, forKey: .instrument),
@@ -76,7 +76,7 @@ extension BookingApplication: Decodable {
 
     private enum CodingKeys: String, CodingKey {
         case id
-        case bookingRequestId
+        case lessonPlanRequestId
         case createdAt
         case statusInfo
         case instrument

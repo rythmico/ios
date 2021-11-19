@@ -4,7 +4,7 @@ extension BookingApplication {
     static func stub(_ statusInfo: StatusInfo) -> Self {
         .init(
             id: UUID().uuidString,
-            bookingRequestId: UUID().uuidString,
+            lessonPlanRequestId: UUID().uuidString,
             createdAt: try! .stub - (32, .second, .neutral),
             statusInfo: statusInfo,
             instrument: .stub(.piano),
@@ -20,7 +20,7 @@ extension BookingApplication {
 
     static let stub = Self(
         id: UUID().uuidString,
-        bookingRequestId: UUID().uuidString,
+        lessonPlanRequestId: UUID().uuidString,
         createdAt: try! .stub - (32, .second, .neutral),
         statusInfo: .stub(.pending),
         instrument: .stub(.piano),
@@ -35,7 +35,7 @@ extension BookingApplication {
 
     static let stubWithAbout = Self(
         id: UUID().uuidString,
-        bookingRequestId: UUID().uuidString,
+        lessonPlanRequestId: UUID().uuidString,
         createdAt: try! .stub - (32, .second, .neutral),
         statusInfo: .stub(.pending),
         instrument: .stub(.guitar),
@@ -50,7 +50,7 @@ extension BookingApplication {
 
     static let longStub = Self(
         id: UUID().uuidString,
-        bookingRequestId: UUID().uuidString,
+        lessonPlanRequestId: UUID().uuidString,
         createdAt: try! .stub - (1, .weekOfYear, .neutral),
         statusInfo: .stub(.pending),
         instrument: .stub(.piano),
