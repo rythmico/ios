@@ -76,12 +76,9 @@
 		035B1D50249E57E200AABFEA /* URLOpenerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EDA67E24776CEC00FBE527 /* URLOpenerDoubles.swift */; };
 		035B1D51249E57F100AABFEA /* HashFunction+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A560723CD02CE00BC8485 /* HashFunction+Helpers.swift */; };
 		035B1D53249E582800AABFEA /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F6ED2447DFF900F6391D /* Animation.swift */; };
-		035B1D5B249E5E6E00AABFEA /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = 035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */; };
-		035B1D5E249E5EEC00AABFEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */; };
 		035B1D62249E63D800AABFEA /* APNSTokenEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03275AE2249070D5009C3980 /* APNSTokenEndpoints.swift */; };
 		035B1D67249E644C00AABFEA /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0336D62B241EAAF6006CFC1F /* APIRequest.swift */; };
 		035B1D69249E645E00AABFEA /* APIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 035B1D68249E645E00AABFEA /* APIKit */; };
-		035B1D6D249E674000AABFEA /* GoogleService-Info-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = 035B1D6C249E674000AABFEA /* GoogleService-Info-Release.plist */; };
 		035B1D73249E6AEB00AABFEA /* MainViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035B1D08249D115B00AABFEA /* MainViewTests.swift */; };
 		035B1D74249E6B2D00AABFEA /* XCTAssertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147507240C8E69002EE20C /* XCTAssertView.swift */; };
 		0365F6F02417E79000F452AC /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6EF2417E79000F452AC /* Address.swift */; };
@@ -147,9 +144,6 @@
 		D50811E423FB72A3008103D8 /* StepBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E323FB72A3008103D8 /* StepBar.swift */; };
 		D50811E623FB769D008103D8 /* RequestLessonPlanFlowViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E523FB769D008103D8 /* RequestLessonPlanFlowViewTests.swift */; };
 		D50811EA23FD75ED008103D8 /* InstrumentSelectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50811E923FD75ED008103D8 /* InstrumentSelectionViewTests.swift */; };
-		D509898023B969B700C19300 /* GoogleService-Info-Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */; };
-		D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898423B9B5C100C19300 /* GoogleService-Info.plist */; };
-		D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */; };
 		D509D836265EE55200B60DF0 /* LessonPlanResumingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509D835265EE55200B60DF0 /* LessonPlanResumingView.swift */; };
 		D509D838265EE56100B60DF0 /* LessonPlanResumingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D509D837265EE56100B60DF0 /* LessonPlanResumingContentView.swift */; };
 		D514750F240C96F0002EE20C /* XCTAssertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5147507240C8E69002EE20C /* XCTAssertView.swift */; };
@@ -377,8 +371,6 @@
 		D5989BAF251662F400BED8A6 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5989BAE251662F400BED8A6 /* AsyncImage.swift */; };
 		D5989BC62516833E00BED8A6 /* PortfolioVideoCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5989BC52516833E00BED8A6 /* PortfolioVideoCarouselView.swift */; };
 		D5989BD125168B0100BED8A6 /* PortfolioPhotoCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5989BD025168B0100BED8A6 /* PortfolioPhotoCarouselView.swift */; };
-		D59A6C3826F41C810067CCFD /* GoogleService-Info-Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = D59A6C3726F41C810067CCFD /* GoogleService-Info-Staging.plist */; };
-		D59A6C3A26F41C880067CCFD /* GoogleService-Info-Staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = D59A6C3926F41C870067CCFD /* GoogleService-Info-Staging.plist */; };
 		D59D0593251828EA0070D81B /* App+Playback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59D0592251828EA0070D81B /* App+Playback.swift */; };
 		D59D0594251828EA0070D81B /* App+Playback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59D0592251828EA0070D81B /* App+Playback.swift */; };
 		D59E4E5625B2033200E8F94C /* YouTubeVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59E4E5325B2033200E8F94C /* YouTubeVideoPlayerView.swift */; };
@@ -574,8 +566,6 @@
 		D5FA706926A34CDA00E6FF30 /* OnboardingViewCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA706726A34CDA00E6FF30 /* OnboardingViewCore.swift */; };
 		D5FAE6742559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FAE6732559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift */; };
 		D5FAE6862559DF8300473A8B /* PhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FAE6852559DF8300473A8B /* PhoneNumberCell.swift */; };
-		D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */; };
-		D5FC2D51254A7E21005056D5 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D5FC2D50254A7E21005056D5 /* FirebaseCrashlytics */; };
 		D5FC6B39272B70B2000BCCA2 /* DateOnlyDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6B38272B70B2000BCCA2 /* DateOnlyDoubles.swift */; };
 		D5FC6B3A272B70B2000BCCA2 /* DateOnlyDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6B38272B70B2000BCCA2 /* DateOnlyDoubles.swift */; };
 		D5FC6B3D272C1C6C000BCCA2 /* CustomTextField+DateOnlyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6B3C272C1C6C000BCCA2 /* CustomTextField+DateOnlyPicker.swift */; };
@@ -677,10 +667,7 @@
 		035B1D0F249E561C00AABFEA /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		035B1D12249E563A00AABFEA /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		035B1D19249E568600AABFEA /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
-		035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
-		035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		035B1D5F249E608E00AABFEA /* Tutor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tutor.entitlements; sourceTree = "<group>"; };
-		035B1D6C249E674000AABFEA /* GoogleService-Info-Release.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Release.plist"; sourceTree = "<group>"; };
 		0365F6EF2417E79000F452AC /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		0365F6F42417F1E900F452AC /* AddressLookupEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupEndpoints.swift; sourceTree = "<group>"; };
 		0372E359249ABAB80048B402 /* ChoiceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceList.swift; sourceTree = "<group>"; };
@@ -739,9 +726,6 @@
 		D50811E323FB72A3008103D8 /* StepBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBar.swift; sourceTree = "<group>"; };
 		D50811E523FB769D008103D8 /* RequestLessonPlanFlowViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLessonPlanFlowViewTests.swift; sourceTree = "<group>"; };
 		D50811E923FD75ED008103D8 /* InstrumentSelectionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSelectionViewTests.swift; sourceTree = "<group>"; };
-		D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Release.plist"; sourceTree = "<group>"; };
-		D509898423B9B5C100C19300 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
 		D509899023BA7CE200C19300 /* SIWAAuthorizationCompletionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIWAAuthorizationCompletionDelegate.swift; sourceTree = "<group>"; };
 		D509D835265EE55200B60DF0 /* LessonPlanResumingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanResumingView.swift; sourceTree = "<group>"; };
 		D509D837265EE56100B60DF0 /* LessonPlanResumingContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanResumingContentView.swift; sourceTree = "<group>"; };
@@ -916,8 +900,6 @@
 		D5989BAE251662F400BED8A6 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		D5989BC52516833E00BED8A6 /* PortfolioVideoCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioVideoCarouselView.swift; sourceTree = "<group>"; };
 		D5989BD025168B0100BED8A6 /* PortfolioPhotoCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioPhotoCarouselView.swift; sourceTree = "<group>"; };
-		D59A6C3726F41C810067CCFD /* GoogleService-Info-Staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Staging.plist"; sourceTree = "<group>"; };
-		D59A6C3926F41C870067CCFD /* GoogleService-Info-Staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Staging.plist"; sourceTree = "<group>"; };
 		D59D0592251828EA0070D81B /* App+Playback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "App+Playback.swift"; sourceTree = "<group>"; };
 		D59E4E5325B2033200E8F94C /* YouTubeVideoPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubeVideoPlayerView.swift; sourceTree = "<group>"; };
 		D5A32DBC23D139C000F3903C /* UserCredentialProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialProvider.swift; sourceTree = "<group>"; };
@@ -1099,7 +1081,6 @@
 				D5439DDA26D5278300D69CE8 /* SwiftUIEncore in Frameworks */,
 				D535547723DF3A19005A20EB /* Valet in Frameworks */,
 				D56C6A98264AC80C00A2599E /* ComposableNavigator in Frameworks */,
-				D5FC2D40254A7DE3005056D5 /* FirebaseCrashlytics in Frameworks */,
 				D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */,
 				03B19837247053F5005529EB /* APIKit in Frameworks */,
 				D5CFB3732675242D006DBCE0 /* Amplitude in Frameworks */,
@@ -1116,7 +1097,6 @@
 				D5947C9826A39E9600355857 /* ComposableNavigator in Frameworks */,
 				D5439DDC26D5278B00D69CE8 /* SwiftUIEncore in Frameworks */,
 				035B1CD7249CF7EB00AABFEA /* Valet in Frameworks */,
-				D5FC2D51254A7E21005056D5 /* FirebaseCrashlytics in Frameworks */,
 				035B1D69249E645E00AABFEA /* APIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1276,10 +1256,6 @@
 			children = (
 				D575C84D254F29BD001664AB /* Assets.generated.swift */,
 				035B1CC4249CF2AC00AABFEA /* Assets.xcassets */,
-				035B1D5A249E5E6E00AABFEA /* GoogleService-Info-Debug.plist */,
-				D59A6C3726F41C810067CCFD /* GoogleService-Info-Staging.plist */,
-				035B1D6C249E674000AABFEA /* GoogleService-Info-Release.plist */,
-				035B1D5D249E5EEC00AABFEA /* GoogleService-Info.plist */,
 				035B1CCC249CF2AC00AABFEA /* Info.plist */,
 				035B1CC9249CF2AC00AABFEA /* LaunchScreen.storyboard */,
 				D5622D4825C32C0100DF4732 /* Settings.bundle */,
@@ -1799,10 +1775,6 @@
 				D5B57A64241479F300BE9B4F /* Assets.generated.swift */,
 				03341B4423ABB1E8009AE8A8 /* Assets.xcassets */,
 				D5ED167526149B42001841ED /* Fonts */,
-				D509898823BA6B4600C19300 /* GoogleService-Info-Debug.plist */,
-				D59A6C3926F41C870067CCFD /* GoogleService-Info-Staging.plist */,
-				D509897F23B969B700C19300 /* GoogleService-Info-Release.plist */,
-				D509898423B9B5C100C19300 /* GoogleService-Info.plist */,
 				03341B4C23ABB1E8009AE8A8 /* Info.plist */,
 				D50668DA23B946330044E553 /* Rythmico.entitlements */,
 				D5622D5025C32FC200DF4732 /* Settings.bundle */,
@@ -2359,9 +2331,7 @@
 				03341B3823ABB1E7009AE8A8 /* Frameworks */,
 				03341B3923ABB1E7009AE8A8 /* Resources */,
 				D55430C225C4335600499FF6 /* Set App Version in Settings */,
-				D509898123B9B2E400C19300 /* Select GoogleService-Info.plist */,
 				D53554B123E0FA4B005A20EB /* Embed Frameworks */,
-				D5DD19412656A1C8007E1948 /* Run Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -2371,7 +2341,6 @@
 			packageProductDependencies = (
 				D535547623DF3A19005A20EB /* Valet */,
 				03B19836247053F5005529EB /* APIKit */,
-				D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */,
 				D53668FC255EEDEF00A9D97D /* Stripe */,
 				D59E4E6025B20ADA00E8F94C /* YouTubeiOSPlayerHelper */,
 				D56C6A97264AC80C00A2599E /* ComposableNavigator */,
@@ -2393,9 +2362,7 @@
 				035B1CB9249CF2AA00AABFEA /* Frameworks */,
 				035B1CBA249CF2AA00AABFEA /* Resources */,
 				D55430BB25C42CCF00499FF6 /* Set App Version in Settings */,
-				035B1D5C249E5EA000AABFEA /* Select GoogleService-Info.plist */,
 				035B1D0E249D303400AABFEA /* Embed Frameworks */,
-				D5DD19422656A8A8007E1948 /* Run Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -2405,7 +2372,6 @@
 			packageProductDependencies = (
 				035B1CD6249CF7EB00AABFEA /* Valet */,
 				035B1D68249E645E00AABFEA /* APIKit */,
-				D5FC2D50254A7E21005056D5 /* FirebaseCrashlytics */,
 				D5947C9726A39E9600355857 /* ComposableNavigator */,
 				D5439DDB26D5278B00D69CE8 /* SwiftUIEncore */,
 				D5B4D3D4273B46790048E4E1 /* TutorDO */,
@@ -2499,7 +2465,6 @@
 				03B19835247053F5005529EB /* XCRemoteSwiftPackageReference "APIKit" */,
 				D56544D124CE4BA100281875 /* XCRemoteSwiftPackageReference "ViewInspector" */,
 				D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */,
-				D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				D59E4E5F25B20ADA00E8F94C /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
 				D56C6A96264AC80B00A2599E /* XCRemoteSwiftPackageReference "swift-composable-navigator" */,
 				D5CFB3712675242C006DBCE0 /* XCRemoteSwiftPackageReference "Amplitude-iOS" */,
@@ -2522,15 +2487,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5363C582628933500C81466 /* DMSans-BoldItalic.ttf in Resources */,
-				D509898023B969B700C19300 /* GoogleService-Info-Release.plist in Resources */,
 				D5363C5C2628933500C81466 /* DMSans-Regular.ttf in Resources */,
 				D5363C5A2628933500C81466 /* DMSans-Medium.ttf in Resources */,
 				D5363C592628933500C81466 /* DMSans-Bold.ttf in Resources */,
 				03341B4823ABB1E8009AE8A8 /* Preview Assets.xcassets in Resources */,
 				03341B4523ABB1E8009AE8A8 /* Assets.xcassets in Resources */,
-				D509898523B9B5C100C19300 /* GoogleService-Info.plist in Resources */,
-				D59A6C3A26F41C880067CCFD /* GoogleService-Info-Staging.plist in Resources */,
-				D509898923BA6B4600C19300 /* GoogleService-Info-Debug.plist in Resources */,
 				D5622D5125C32FC200DF4732 /* Settings.bundle in Resources */,
 				D5363C5B2628933500C81466 /* DMSans-MediumItalic.ttf in Resources */,
 				D5363C572628933500C81466 /* DMSans-Italic.ttf in Resources */,
@@ -2543,11 +2504,7 @@
 			files = (
 				035B1CCB249CF2AC00AABFEA /* LaunchScreen.storyboard in Resources */,
 				035B1CC8249CF2AC00AABFEA /* Preview Assets.xcassets in Resources */,
-				035B1D5E249E5EEC00AABFEA /* GoogleService-Info.plist in Resources */,
 				035B1CC5249CF2AC00AABFEA /* Assets.xcassets in Resources */,
-				035B1D6D249E674000AABFEA /* GoogleService-Info-Release.plist in Resources */,
-				035B1D5B249E5E6E00AABFEA /* GoogleService-Info-Debug.plist in Resources */,
-				D59A6C3826F41C810067CCFD /* GoogleService-Info-Staging.plist in Resources */,
 				D5622D4925C32C0100DF4732 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2569,42 +2526,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		035B1D5C249E5EA000AABFEA /* Select GoogleService-Info.plist */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Select GoogleService-Info.plist";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/scripts/build_phase_select_google_info_plist\n";
-		};
-		D509898123B9B2E400C19300 /* Select GoogleService-Info.plist */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Select GoogleService-Info.plist";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/scripts/build_phase_select_google_info_plist\n";
-		};
 		D55430BB25C42CCF00499FF6 /* Set App Version in Settings */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -2720,50 +2641,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "${SRCROOT}/scripts/build_phase_code_sanity_check\n";
-		};
-		D5DD19412656A1C8007E1948 /* Run Crashlytics */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
-				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
-			name = "Run Crashlytics";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${BUILD_DIR%Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D5DD19422656A8A8007E1948 /* Run Crashlytics */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
-				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
-			name = "Run Crashlytics";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${BUILD_DIR%Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -3969,14 +3846,6 @@
 				minimumVersion = 21.3.0;
 			};
 		};
-		D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 8.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -4050,16 +3919,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5CFB3712675242C006DBCE0 /* XCRemoteSwiftPackageReference "Amplitude-iOS" */;
 			productName = Amplitude;
-		};
-		D5FC2D3F254A7DE3005056D5 /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
-		};
-		D5FC2D50254A7E21005056D5 /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5FC2D3C254A7DE3005056D5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

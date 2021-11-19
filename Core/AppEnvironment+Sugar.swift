@@ -1,7 +1,6 @@
 #if RYTHMICO
 import Amplitude
 #endif
-import Firebase
 import SwiftUIEncore
 
 extension AppEnvironment {
@@ -14,7 +13,6 @@ extension AppEnvironment {
             $0.initializeApiKey(AppSecrets.amplitudeProjectToken)
         }
         #endif
-        FirebaseApp.configure()
         return build()
     }
 

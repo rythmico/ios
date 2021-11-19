@@ -230,7 +230,7 @@ extension AppEnvironment {
         siwaCredentialStateProvider: SIWACredentialStateFetcher(),
         siwaCredentialRevocationNotifier: SIWACredentialRevocationNotifier(notificationCenter: .default),
 
-        errorLogger: { ErrorLogger(crashlyticsLogger: .crashlytics(), userCredentialProvider: $0) },
+        errorLogger: { ErrorLogger(userCredentialProvider: $0) },
 
         apnsRegistrationService: UIApplication.shared,
         registerAPNSTokenService: APIService(),

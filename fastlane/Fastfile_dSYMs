@@ -1,10 +1,10 @@
-desc 'Sync dSYMs to Crashlytics'
-lane :dsyms do
-  sync_symbols(app_id: 'com.rythmico.student', gsp_path: 'Rythmico/Supporting Files/GoogleService-Info-Release.plist')
-  sync_symbols(app_id: 'com.rythmico.tutor', gsp_path: 'RythmicoTutor/Supporting Files/GoogleService-Info-Release.plist')
-end
+# desc 'Sync dSYMs to Crashlytics'
+# lane :dsyms do
+#   sync_symbols(app_id: 'com.rythmico.student', gsp_path: 'Rythmico/Supporting Files/GoogleService-Info-Release.plist')
+#   sync_symbols(app_id: 'com.rythmico.tutor', gsp_path: 'RythmicoTutor/Supporting Files/GoogleService-Info-Release.plist')
+# end
 
-private_lane :sync_symbols do |options|
-  download_dsyms(app_identifier: options[:app_id], version: 'latest', wait_for_dsym_processing: true)
-  upload_symbols_to_crashlytics(gsp_path: options[:gsp_path], binary_path: 'fastlane/upload_crashlytics_symbols')
-end
+# private_lane :sync_symbols do |options|
+#   download_dsyms(app_identifier: options[:app_id], version: 'latest', wait_for_dsym_processing: true)
+#   upload_symbols_to_crashlytics(gsp_path: options[:gsp_path], binary_path: 'fastlane/upload_crashlytics_symbols')
+# end
