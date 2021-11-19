@@ -10,6 +10,7 @@ final class MainViewTests: XCTestCase {
         Current.userAuthenticated()
     }
 
+    // TODO: upcoming - re-enable
     func testPushNotificationPromptOnAppear() throws {
         Current.stubAPIEndpoint(for: \.bookingsFetchingCoordinator, result: .success(.stub))
         Current.pushNotificationAuthorization(
