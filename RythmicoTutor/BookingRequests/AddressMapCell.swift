@@ -79,7 +79,7 @@ struct AddressMapCell: View {
         case .partialAddress(let partialAddress):
             return partialAddress.districtCode
         case .fullAddress(let address):
-            return address.condensedFormattedString
+            return address.formatted(style: .multilineCompact)
         }
     }
 
@@ -113,7 +113,8 @@ private extension Address {
             postcode,
             country,
         ]
-        .filter(\.isEmpty.not).joined(separator: ", ")
+        .filter(\.isEmpty.not)
+        .joined(separator: .comma + .whitespace)
     }
 }
 

@@ -88,7 +88,7 @@ struct AddressDetailsView: View, TestableView {
                                     data: addresses,
                                     id: \.self,
                                     selection: $state.selectedAddress,
-                                    content: \.condensedFormattedString
+                                    content: { $0.formatted(style: .multilineCompact) }
                                 )
                             }
                             .transition(.offset(y: 25) + .opacity)

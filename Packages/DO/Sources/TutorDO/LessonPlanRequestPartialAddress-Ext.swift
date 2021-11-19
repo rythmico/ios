@@ -1,5 +1,3 @@
-import TutorDTO
-
 extension LessonPlanRequest.PartialAddress {
     public enum FormatStyle {
         case singleLine

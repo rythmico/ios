@@ -1,3 +1,4 @@
+import StudentDO
 import SwiftUI
 
 struct AddressLabel: View {
@@ -6,7 +7,7 @@ struct AddressLabel: View {
     var body: some View {
         RythmicoLabel(
             asset: Asset.Icon.Label.location,
-            title: Text(address.condensedFormattedString).rythmicoFontWeight(.body)
+            title: Text(address.formatted(style: .multilineCompact)).rythmicoFontWeight(.body)
         )
     }
 }

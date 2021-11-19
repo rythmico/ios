@@ -1,5 +1,4 @@
-import CoreDTO
-import StudentDTO
+import StudentDO
 import SwiftUIEncore
 
 struct ReviewRequestView: View, TestableView {
@@ -56,7 +55,7 @@ struct ReviewRequestView: View, TestableView {
                             style: .box,
                             accessory: { editButton(action: resetAddressDetails) }
                         ) {
-                            Text(address.condensedFormattedString)
+                            Text(address.formatted(style: .multilineCompact))
                                 .rythmicoTextStyle(.body)
                                 .foregroundColor(.rythmico.foreground)
                         }
