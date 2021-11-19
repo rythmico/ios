@@ -107,7 +107,7 @@ struct AppEnvironment {
         siwaCredentialStateProvider: SIWACredentialStateProvider,
         siwaCredentialRevocationNotifier: SIWACredentialRevocationNotifying,
 
-        errorLogger: (UserCredentialProviderBase) -> ErrorLoggerProtocol,
+        errorLogger: ErrorLoggerProtocol,
 
         apnsRegistrationService: APNSRegistrationServiceProtocol,
         registerAPNSTokenService: APIServiceBase<RegisterAPNSTokenRequest>,
@@ -174,7 +174,7 @@ struct AppEnvironment {
         self.voiceOver = voiceOver
 
         let userCredentialProvider = userCredentialProvider(keychain)
-        self.errorLogger = errorLogger(userCredentialProvider)
+        self.errorLogger = errorLogger
 
         let apiActivityErrorHandler = APIActivityErrorHandler(
             appStatusProvider: appStatus,
@@ -288,7 +288,7 @@ extension AppEnvironment {
         siwaCredentialStateProvider: SIWACredentialStateFetcher(),
         siwaCredentialRevocationNotifier: SIWACredentialRevocationNotifier(notificationCenter: .default),
 
-        errorLogger: { ErrorLogger(userCredentialProvider: $0) },
+        errorLogger: ErrorLogger(),
 
         apnsRegistrationService: UIApplication.shared,
         registerAPNSTokenService: APIService(),
