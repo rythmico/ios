@@ -42,7 +42,7 @@
         "repositoryURL": "https://github.com/rythmico/dto-swift",
         "state": {
           "branch": "main",
-          "revision": "b7fc8ce7a8b7d118463e2dac837c179914c3984e",
+          "revision": "51045b3e39021c9fff37aa0ff32bd40bdc591ee7",
           "version": null
         }
       },
@@ -53,6 +53,15 @@
           "branch": null,
           "revision": "bc596702d7ff618c3f90ba480eeb48b3e83a2fbe",
           "version": "1.0.6"
+        }
+      },
+      {
+        "package": "MobileProvision",
+        "repositoryURL": "https://github.com/CrazyFanFan/MobileProvision",
+        "state": {
+          "branch": "master",
+          "revision": "a08a91c3c4346fa465c520728429d73147bdcf0a",
+          "version": null
         }
       },
       {
@@ -177,7 +186,7 @@
         "repositoryURL": "https://github.com/rythmico/swift-foundation-encore",
         "state": {
           "branch": "main",
-          "revision": "894e7a7a36651d506a9bd86b1d09aa40ac48fdde",
+          "revision": "6bc179949cd4f4024d57dc9e38c60b079605c484",
           "version": null
         }
       },

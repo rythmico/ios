@@ -14,8 +14,14 @@ extension App.Delegate: UNUserNotificationCenterDelegate {
         _ application: UIApplication,
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
     ) {
+        guard let environment = RegisterAPNSTokenBody.Environment(from: .read()) else {
+            print("[APNS] No embedded.mobileprovision file found, so APS environment could not be determined.")
+            return
+        }
         let deviceToken = deviceToken.map { String(format: "%02x", $0) }.joined()
-        Current.registerAPNSTokenCoordinator.runToIdle(with: .init(deviceToken: deviceToken))
+        Current.registerAPNSTokenCoordinator.runToIdle(
+            with: .init(body: .init(deviceToken: deviceToken, environment: environment))
+        )
     }
 
     // Handle silent notifications ("events"). This function catches all notification types.
