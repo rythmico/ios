@@ -20,12 +20,14 @@ protocol APIRequest: JSONDataRequest {
 
 // MARK: Base URL
 
+#if LIVE
+let apiBaseURLComponents = URLComponents(string: "https://rythmico-prod.web.app/v1")!
+#else
+let apiBaseURLComponents = URLComponents(string: "https://rythmico-api-stage.herokuapp.com")!
+#endif
+
 extension APIRequest {
-    #if LIVE
-    var baseURL: URL { "https://rythmico-prod.web.app/v1" }
-    #else
-    var baseURL: URL { "https://rythmico-api-stage.herokuapp.com" }
-    #endif
+    var baseURL: URL { apiBaseURLComponents.url! }
 }
 
 // MARK: Auth

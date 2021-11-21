@@ -40,7 +40,7 @@ struct AppEnvironment {
     var apnsRegistrationService: APNSRegistrationServiceProtocol
     var registerAPNSTokenCoordinator: APIActivityCoordinator<RegisterAPNSTokenRequest>
     var pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator
-    var apiEventHandler: APIEventHandlerProtocol
+    var apiEventListener: APIEventListenerBase<TutorDTO.KnownAPIEvent>
 
     var calendarSyncCoordinator: CalendarSyncCoordinator
 
@@ -93,7 +93,7 @@ struct AppEnvironment {
         apnsRegistrationService: APNSRegistrationServiceProtocol,
         registerAPNSTokenService: APIServiceBase<RegisterAPNSTokenRequest>,
         pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator,
-        apiEventHandler: APIEventHandlerProtocol,
+        apiEventListener: (UserCredentialProviderBase) -> APIEventListenerBase<TutorDTO.KnownAPIEvent>,
 
         calendarSyncStatusProvider: CalendarSyncStatusProviderBase,
         calendarInfoFetchingService: APIServiceBase<GetCalendarInfoRequest>,
@@ -165,7 +165,7 @@ struct AppEnvironment {
         self.apnsRegistrationService = apnsRegistrationService
         self.registerAPNSTokenCoordinator = coordinator(for: registerAPNSTokenService)
         self.pushNotificationAuthorizationCoordinator = pushNotificationAuthorizationCoordinator
-        self.apiEventHandler = apiEventHandler
+        self.apiEventListener = apiEventListener(userCredentialProvider)
         
         self.calendarSyncCoordinator = CalendarSyncCoordinator(
             calendarSyncStatusProvider: calendarSyncStatusProvider,
@@ -238,7 +238,7 @@ extension AppEnvironment {
         pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator(
             center: UNUserNotificationCenter.current()
         ),
-        apiEventHandler: APIEventHandler(),
+        apiEventListener: APIEventListener.init,
 
         calendarSyncStatusProvider: CalendarSyncStatusProvider(accessProvider: EKEventStore()),
         calendarInfoFetchingService: APIService(),

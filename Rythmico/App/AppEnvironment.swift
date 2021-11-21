@@ -42,7 +42,7 @@ struct AppEnvironment {
     var apnsRegistrationService: APNSRegistrationServiceProtocol
     var registerAPNSTokenCoordinator: APIActivityCoordinator<RegisterAPNSTokenRequest>
     var pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator
-    var apiEventHandler: APIEventHandlerProtocol
+    var apiEventListener: APIEventListenerBase<StudentDTO.KnownAPIEvent>
 
     var calendarSyncCoordinator: CalendarSyncCoordinator
 
@@ -111,7 +111,7 @@ struct AppEnvironment {
         apnsRegistrationService: APNSRegistrationServiceProtocol,
         registerAPNSTokenService: APIServiceBase<RegisterAPNSTokenRequest>,
         pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator,
-        apiEventHandler: APIEventHandlerProtocol,
+        apiEventListener: (UserCredentialProviderBase) -> APIEventListenerBase<StudentDTO.KnownAPIEvent>,
 
         calendarSyncStatusProvider: CalendarSyncStatusProviderBase,
         calendarInfoFetchingService: APIServiceBase<GetCalendarInfoRequest>,
@@ -198,7 +198,7 @@ struct AppEnvironment {
         self.apnsRegistrationService = apnsRegistrationService
         self.registerAPNSTokenCoordinator = coordinator(for: registerAPNSTokenService)
         self.pushNotificationAuthorizationCoordinator = pushNotificationAuthorizationCoordinator
-        self.apiEventHandler = apiEventHandler
+        self.apiEventListener = apiEventListener(userCredentialProvider)
 
         let calendarSyncCoordinator = CalendarSyncCoordinator(
             calendarSyncStatusProvider: calendarSyncStatusProvider,
@@ -294,7 +294,7 @@ extension AppEnvironment {
         pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator(
             center: UNUserNotificationCenter.current()
         ),
-        apiEventHandler: APIEventHandler(),
+        apiEventListener: APIEventListener.init,
 
         calendarSyncStatusProvider: CalendarSyncStatusProvider(accessProvider: EKEventStore()),
         calendarInfoFetchingService: APIService(),

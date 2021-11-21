@@ -442,14 +442,6 @@
 		D5BDD502253B406300255190 /* TabSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD501253B406300255190 /* TabSelection.swift */; };
 		D5BDD88725117E5300706EC1 /* LessonPlanRequestedScheduleAndTutorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD88625117E5300706EC1 /* LessonPlanRequestedScheduleAndTutorView.swift */; };
 		D5BDD8A72511989500706EC1 /* TutorAcceptedStatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD8A62511989500706EC1 /* TutorAcceptedStatusPill.swift */; };
-		D5BF12B325068E7000B2931C /* PushNotificationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12B225068E7000B2931C /* PushNotificationEvent.swift */; };
-		D5BF12B425068E7000B2931C /* PushNotificationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12B225068E7000B2931C /* PushNotificationEvent.swift */; };
-		D5BF12B92506924300B2931C /* APIEventHandler+Rythmico.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12B82506924300B2931C /* APIEventHandler+Rythmico.swift */; };
-		D5BF12BB2506926900B2931C /* APIEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12BA2506926900B2931C /* APIEventHandler.swift */; };
-		D5BF12BC2506926900B2931C /* APIEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12BA2506926900B2931C /* APIEventHandler.swift */; };
-		D5BF12BE2506932C00B2931C /* APIEventHandlerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12BD2506932C00B2931C /* APIEventHandlerDoubles.swift */; };
-		D5BF12BF2506932C00B2931C /* APIEventHandlerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12BD2506932C00B2931C /* APIEventHandlerDoubles.swift */; };
-		D5BF12C1250693C500B2931C /* APIEventHandler+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF12C0250693C500B2931C /* APIEventHandler+Tutor.swift */; };
 		D5C10897274728D000C6BBB1 /* AppCenterCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = D5C10896274728D000C6BBB1 /* AppCenterCrashes */; };
 		D5C10899274728DD00C6BBB1 /* AppCenterCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = D5C10898274728DD00C6BBB1 /* AppCenterCrashes */; };
 		D5C1089B27477F0C00C6BBB1 /* PartialStudentDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C1089A27477F0C00C6BBB1 /* PartialStudentDoubles.swift */; };
@@ -570,6 +562,12 @@
 		D5FA706926A34CDA00E6FF30 /* OnboardingViewCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FA706726A34CDA00E6FF30 /* OnboardingViewCore.swift */; };
 		D5FAE6742559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FAE6732559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift */; };
 		D5FAE6862559DF8300473A8B /* PhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FAE6852559DF8300473A8B /* PhoneNumberCell.swift */; };
+		D5FBCA88274A605D0057BD23 /* APIEventListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FBCA87274A605D0057BD23 /* APIEventListener.swift */; };
+		D5FBCA89274A605D0057BD23 /* APIEventListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FBCA87274A605D0057BD23 /* APIEventListener.swift */; };
+		D5FBCA8B274ABCEA0057BD23 /* APIEventListenerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FBCA8A274ABCEA0057BD23 /* APIEventListenerDoubles.swift */; };
+		D5FBCA8C274ABCEA0057BD23 /* APIEventListenerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FBCA8A274ABCEA0057BD23 /* APIEventListenerDoubles.swift */; };
+		D5FBCA8F274AC2940057BD23 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = D5FBCA8E274AC2940057BD23 /* Starscream */; };
+		D5FBCA91274AC2A00057BD23 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = D5FBCA90274AC2A00057BD23 /* Starscream */; };
 		D5FC6B39272B70B2000BCCA2 /* DateOnlyDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6B38272B70B2000BCCA2 /* DateOnlyDoubles.swift */; };
 		D5FC6B3A272B70B2000BCCA2 /* DateOnlyDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6B38272B70B2000BCCA2 /* DateOnlyDoubles.swift */; };
 		D5FC6B3D272C1C6C000BCCA2 /* CustomTextField+DateOnlyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6B3C272C1C6C000BCCA2 /* CustomTextField+DateOnlyPicker.swift */; };
@@ -965,11 +963,6 @@
 		D5BDD501253B406300255190 /* TabSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelection.swift; sourceTree = "<group>"; };
 		D5BDD88625117E5300706EC1 /* LessonPlanRequestedScheduleAndTutorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanRequestedScheduleAndTutorView.swift; sourceTree = "<group>"; };
 		D5BDD8A62511989500706EC1 /* TutorAcceptedStatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorAcceptedStatusPill.swift; sourceTree = "<group>"; };
-		D5BF12B225068E7000B2931C /* PushNotificationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationEvent.swift; sourceTree = "<group>"; };
-		D5BF12B82506924300B2931C /* APIEventHandler+Rythmico.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIEventHandler+Rythmico.swift"; sourceTree = "<group>"; };
-		D5BF12BA2506926900B2931C /* APIEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEventHandler.swift; sourceTree = "<group>"; };
-		D5BF12BD2506932C00B2931C /* APIEventHandlerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEventHandlerDoubles.swift; sourceTree = "<group>"; };
-		D5BF12C0250693C500B2931C /* APIEventHandler+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIEventHandler+Tutor.swift"; sourceTree = "<group>"; };
 		D5C1089A27477F0C00C6BBB1 /* PartialStudentDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialStudentDoubles.swift; sourceTree = "<group>"; };
 		D5C1089C27477F6A00C6BBB1 /* PartialAddressDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialAddressDoubles.swift; sourceTree = "<group>"; };
 		D5C76E9325F405E200739267 /* EKEventStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKEventStore.swift; sourceTree = "<group>"; };
@@ -1065,6 +1058,8 @@
 		D5FA706726A34CDA00E6FF30 /* OnboardingViewCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewCore.swift; sourceTree = "<group>"; };
 		D5FAE6732559DDC900473A8B /* PhoneNumberOpener+ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhoneNumberOpener+ActionSheet.swift"; sourceTree = "<group>"; };
 		D5FAE6852559DF8300473A8B /* PhoneNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCell.swift; sourceTree = "<group>"; };
+		D5FBCA87274A605D0057BD23 /* APIEventListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEventListener.swift; sourceTree = "<group>"; };
+		D5FBCA8A274ABCEA0057BD23 /* APIEventListenerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEventListenerDoubles.swift; sourceTree = "<group>"; };
 		D5FC6B38272B70B2000BCCA2 /* DateOnlyDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOnlyDoubles.swift; sourceTree = "<group>"; };
 		D5FC6B3C272C1C6C000BCCA2 /* CustomTextField+DateOnlyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomTextField+DateOnlyPicker.swift"; sourceTree = "<group>"; };
 		D5FC6B3F272C1CAA000BCCA2 /* CustomTextField+TimeOnlyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomTextField+TimeOnlyPicker.swift"; sourceTree = "<group>"; };
@@ -1086,6 +1081,7 @@
 				D5439DDA26D5278300D69CE8 /* SwiftUIEncore in Frameworks */,
 				D5C10897274728D000C6BBB1 /* AppCenterCrashes in Frameworks */,
 				D535547723DF3A19005A20EB /* Valet in Frameworks */,
+				D5FBCA91274AC2A00057BD23 /* Starscream in Frameworks */,
 				D56C6A98264AC80C00A2599E /* ComposableNavigator in Frameworks */,
 				D53668FD255EEDEF00A9D97D /* Stripe in Frameworks */,
 				03B19837247053F5005529EB /* APIKit in Frameworks */,
@@ -1099,6 +1095,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5FBCA8F274AC2940057BD23 /* Starscream in Frameworks */,
 				D5B4D3D5273B46790048E4E1 /* TutorDO in Frameworks */,
 				D5C10899274728DD00C6BBB1 /* AppCenterCrashes in Frameworks */,
 				D5947C9826A39E9600355857 /* ComposableNavigator in Frameworks */,
@@ -1544,7 +1541,6 @@
 				D5D974FD25263FBC000AD074 /* PhoneNumber */,
 				D54EFF222513D69D004F14D3 /* Portfolio */,
 				D5D9AE7F2534CC0100A0ABCC /* Price */,
-				D5BF12B125068E2500B2931C /* PushNotificationEvent */,
 				03AAF6742445E123002D8F5B /* Schedule */,
 				D55354F126C08F6900E77CC4 /* StripeCustomerPortal */,
 				03B71326241D84F300DED025 /* Student */,
@@ -1814,10 +1810,8 @@
 				D549F8B826FFA3350087A20C /* APIError.swift */,
 				D549219C25BB28F700251FD2 /* APIError+Rythmico.swift */,
 				D54921A125BB290C00251FD2 /* APIError+Tutor.swift */,
-				D5BF12BA2506926900B2931C /* APIEventHandler.swift */,
-				D5BF12B82506924300B2931C /* APIEventHandler+Rythmico.swift */,
-				D5BF12C0250693C500B2931C /* APIEventHandler+Tutor.swift */,
-				D5BF12BD2506932C00B2931C /* APIEventHandlerDoubles.swift */,
+				D5FBCA87274A605D0057BD23 /* APIEventListener.swift */,
+				D5FBCA8A274ABCEA0057BD23 /* APIEventListenerDoubles.swift */,
 				0336D62B241EAAF6006CFC1F /* APIRequest.swift */,
 				03E88EB324C4AA4C0077A420 /* APIService.swift */,
 				03E88EB924C6232D0077A420 /* APIServiceDoubles.swift */,
@@ -2113,14 +2107,6 @@
 			path = LessonPlanRequestCell;
 			sourceTree = "<group>";
 		};
-		D5BF12B125068E2500B2931C /* PushNotificationEvent */ = {
-			isa = PBXGroup;
-			children = (
-				D5BF12B225068E7000B2931C /* PushNotificationEvent.swift */,
-			);
-			path = PushNotificationEvent;
-			sourceTree = "<group>";
-		};
 		D5CCC33625A4C66D00E25B62 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -2356,6 +2342,7 @@
 				D5439DD926D5278300D69CE8 /* SwiftUIEncore */,
 				D5B4D3D6273B468C0048E4E1 /* StudentDO */,
 				D5C10896274728D000C6BBB1 /* AppCenterCrashes */,
+				D5FBCA90274AC2A00057BD23 /* Starscream */,
 			);
 			productName = Rythmico;
 			productReference = 03341B3B23ABB1E7009AE8A8 /* Rythmico.app */;
@@ -2385,6 +2372,7 @@
 				D5439DDB26D5278B00D69CE8 /* SwiftUIEncore */,
 				D5B4D3D4273B46790048E4E1 /* TutorDO */,
 				D5C10898274728DD00C6BBB1 /* AppCenterCrashes */,
+				D5FBCA8E274AC2940057BD23 /* Starscream */,
 			);
 			productName = RythmicoTutor;
 			productReference = 035B1CBC249CF2AA00AABFEA /* Tutor.app */;
@@ -2479,6 +2467,7 @@
 				D56C6A96264AC80B00A2599E /* XCRemoteSwiftPackageReference "swift-composable-navigator" */,
 				D5CFB3712675242C006DBCE0 /* XCRemoteSwiftPackageReference "Amplitude-iOS" */,
 				D5C10895274728D000C6BBB1 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */,
+				D5FBCA8D274AC2940057BD23 /* XCRemoteSwiftPackageReference "Starscream" */,
 			);
 			productRefGroup = 03341B3C23ABB1E7009AE8A8 /* Products */;
 			projectDirPath = "";
@@ -2660,7 +2649,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5BF12B92506924300B2931C /* APIEventHandler+Rythmico.swift in Sources */,
 				D5F89394263F4B0500578970 /* LessonScheduleView.swift in Sources */,
 				03341B3F23ABB1E7009AE8A8 /* AppExtensions.swift in Sources */,
 				D5B4A20526CED857006EAD18 /* AppView.swift in Sources */,
@@ -2726,6 +2714,7 @@
 				D55C35EA25A3A6490023E56B /* CalendarInfo.swift in Sources */,
 				D53555BB23E53699005A20EB /* UserCredentialDoubles.swift in Sources */,
 				D549B2D526B2FD8900CD419A /* Container+Student.swift in Sources */,
+				D5FBCA88274A605D0057BD23 /* APIEventListener.swift in Sources */,
 				D53555C223E536AE005A20EB /* SIWACredential.swift in Sources */,
 				03C39DD82496CA2A00C76516 /* LessonPlanStatusPill.swift in Sources */,
 				D53555C923E536AE005A20EB /* SIWAAuthorizationResponseDoubles.swift in Sources */,
@@ -2747,6 +2736,7 @@
 				D5DAD27A2677B51F0014702F /* LessonPlan+Analytics.swift in Sources */,
 				D535554723E20076005A20EB /* Colors.swift in Sources */,
 				D527B00B24FD3297003E81A9 /* AvatarStackView.swift in Sources */,
+				D5FBCA8B274ABCEA0057BD23 /* APIEventListenerDoubles.swift in Sources */,
 				D5B23EC726CC2497006CD660 /* WhatIsRythmicoView.swift in Sources */,
 				D52438FF268A6D3C00E2D859 /* LessonPlanApplicationDoubles.swift in Sources */,
 				D5444FEC2602777D00369BA5 /* ImageProcessingService.swift in Sources */,
@@ -2760,7 +2750,6 @@
 				D59E4E5625B2033200E8F94C /* YouTubeVideoPlayerView.swift in Sources */,
 				D5D78E0C25257800007041BE /* PhoneNumberField.swift in Sources */,
 				D5ED168B2614BB40001841ED /* StackSpacing.swift in Sources */,
-				D5BF12B325068E7000B2931C /* PushNotificationEvent.swift in Sources */,
 				D527B00924FD2047003E81A9 /* AvatarView.swift in Sources */,
 				03021C4F248A769200C0C57E /* LessonPlanSummaryCell.swift in Sources */,
 				D5FE1A6226A70B3D00567F48 /* LessonPlansCollectionView.swift in Sources */,
@@ -2935,7 +2924,6 @@
 				D527B01724FEAA62003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */,
 				D5B4A20826CEDC82006EAD18 /* TwoSidedText.swift in Sources */,
 				D5E8F67F2724F48600895D45 /* SIWAEndpoints.swift in Sources */,
-				D5BF12BB2506926900B2931C /* APIEventHandler.swift in Sources */,
 				0365F6F02417E79000F452AC /* Address.swift in Sources */,
 				D5ED326126065FEC00821ABE /* NonEditableTextField.swift in Sources */,
 				D527B02224FEC53D003E81A9 /* TutorAvatarView.swift in Sources */,
@@ -2948,7 +2936,6 @@
 				D5989BD125168B0100BED8A6 /* PortfolioPhotoCarouselView.swift in Sources */,
 				D5B4D3DF273C37620048E4E1 /* LessonPlanRequestStatusPill.swift in Sources */,
 				D5D9AEB425368AAA00A0ABCC /* LessonPlanPriceView.swift in Sources */,
-				D5BF12BE2506932C00B2931C /* APIEventHandlerDoubles.swift in Sources */,
 				D5B4D3E3273C39BA0048E4E1 /* LessonPlanRequestSummaryTutorStatusView.swift in Sources */,
 				D588E881266D137400E14288 /* ErrorLoggerDoubles.swift in Sources */,
 				D54EFF192513D690004F14D3 /* Portfolio.swift in Sources */,
@@ -3022,7 +3009,6 @@
 				D5FA706926A34CDA00E6FF30 /* OnboardingViewCore.swift in Sources */,
 				D549219325BB27E700251FD2 /* APIActivityErrorHandler.swift in Sources */,
 				03E88EB224C205C30077A420 /* Current.swift in Sources */,
-				D5BF12BC2506926900B2931C /* APIEventHandler.swift in Sources */,
 				D5B4A20326CEB983006EAD18 /* Publisher+Sugar.swift in Sources */,
 				D527B01424FEA2DE003E81A9 /* ImageLoadingCoordinator.swift in Sources */,
 				D5444FF02602815000369BA5 /* ImageProcessingServiceDoubles.swift in Sources */,
@@ -3093,14 +3079,12 @@
 				D5E80161272F124D007AFEFF /* InstrumentDoubles.swift in Sources */,
 				D5E58F01256AF06700EB52ED /* BookingsTabView.swift in Sources */,
 				D5E987BA24ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */,
-				D5BF12B425068E7000B2931C /* PushNotificationEvent.swift in Sources */,
 				03E88EBA24C6232D0077A420 /* APIServiceDoubles.swift in Sources */,
 				D5CCC5532559D7F400FE8522 /* PhoneNumberOpener.swift in Sources */,
 				035B1D50249E57E200AABFEA /* URLOpenerDoubles.swift in Sources */,
 				D5E9FC8426C0101200625DAE /* AppOriginClientDoubles.swift in Sources */,
 				D527B00E24FE75C1003E81A9 /* ImageLoadingService.swift in Sources */,
 				D5CCC33225A4C66A00E25B62 /* ProfileView.swift in Sources */,
-				D5BF12C1250693C500B2931C /* APIEventHandler+Tutor.swift in Sources */,
 				D5FAE6862559DF8300473A8B /* PhoneNumberCell.swift in Sources */,
 				D575C869254F2F26001664AB /* ImageAsset+Sugar.swift in Sources */,
 				035B1D45249E577700AABFEA /* SIWAAuthorizationResponseDoubles.swift in Sources */,
@@ -3148,6 +3132,7 @@
 				D52C555024E2ABFC00C295C4 /* MapOpener.swift in Sources */,
 				D524D0C325046B9800BC9AF7 /* UNUserNotificationCenterDoubles.swift in Sources */,
 				035B1D1A249E568600AABFEA /* AppEnvironment.swift in Sources */,
+				D5FBCA89274A605D0057BD23 /* APIEventListener.swift in Sources */,
 				D5E987C724EEFC7C00E2E1AF /* BookingApplicationsView.swift in Sources */,
 				D5E58F20256AF31A00EB52ED /* Lesson.swift in Sources */,
 				03E88EAA24C1F4FD0077A420 /* App+PushNotifications.swift in Sources */,
@@ -3163,7 +3148,6 @@
 				D54340FE261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift in Sources */,
 				D5F4D3F324F32EBE000E8580 /* BookingApplicationSection.swift in Sources */,
 				035B1D47249E577700AABFEA /* SIWAAuthorizationServiceDoubles.swift in Sources */,
-				D5BF12BF2506932C00B2931C /* APIEventHandlerDoubles.swift in Sources */,
 				035B1D48249E577700AABFEA /* SIWAAuthorizationController.swift in Sources */,
 				D54CF08525F91255007D5050 /* AppSecrets.swift in Sources */,
 				D5F4D3F124F31E14000E8580 /* BookingApplicationGroupCell.swift in Sources */,
@@ -3190,6 +3174,7 @@
 				D5C76E9A25F4075200739267 /* CalendarSyncStatusProviderDoubles.swift in Sources */,
 				D5ED3266260667E800821ABE /* DateDoubles.swift in Sources */,
 				D52C553D24DC74A200C295C4 /* TitleCell.swift in Sources */,
+				D5FBCA8C274ABCEA0057BD23 /* APIEventListenerDoubles.swift in Sources */,
 				032B6FCD24B7879300299A09 /* Schedule.swift in Sources */,
 				D527B01024FE7811003E81A9 /* ImageLoadingServiceDoubles.swift in Sources */,
 			);
@@ -3867,6 +3852,14 @@
 				minimumVersion = 21.3.0;
 			};
 		};
+		D5FBCA8D274AC2940057BD23 /* XCRemoteSwiftPackageReference "Starscream" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/daltoniam/Starscream";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -3950,6 +3943,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D5CFB3712675242C006DBCE0 /* XCRemoteSwiftPackageReference "Amplitude-iOS" */;
 			productName = Amplitude;
+		};
+		D5FBCA8E274AC2940057BD23 /* Starscream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5FBCA8D274AC2940057BD23 /* XCRemoteSwiftPackageReference "Starscream" */;
+			productName = Starscream;
+		};
+		D5FBCA90274AC2A00057BD23 /* Starscream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5FBCA8D274AC2940057BD23 /* XCRemoteSwiftPackageReference "Starscream" */;
+			productName = Starscream;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -51,7 +51,7 @@ extension AppEnvironment {
             apnsRegistrationService: APNSRegistrationServiceDummy(),
             registerAPNSTokenService: APIServiceDummy(),
             pushNotificationAuthorizationCoordinator: .dummy,
-            apiEventHandler: APIEventHandlerDummy(),
+            apiEventListener: { _ in APIEventListenerDummy() },
 
             calendarSyncStatusProvider: CalendarSyncStatusProviderDummy(),
             calendarInfoFetchingService: APIServiceDummy(),
