@@ -16,9 +16,9 @@ class APIEventListenerBase<APIEvent: APIEventProtocol> {
     }
 }
 
-final class APIEventListener<APIEvent: APIEventProtocol>: APIEventListenerBase<APIEvent> where APIEvent: Hashable {
+final class APIEventListener<APIEvent: APIEventProtocol>: APIEventListenerBase<APIEvent> {
     private let session = URLSession(configuration: .default)
-    private var listeners: [APIEvent: PassthroughSubject<Void, Never>] = [:]
+    private let subject = PassthroughSubject<APIEvent, Never>()
     private var task: AnyCancellable? = nil
     private var cancellable: AnyCancellable? = nil
 
@@ -46,9 +46,7 @@ final class APIEventListener<APIEvent: APIEventProtocol>: APIEventListenerBase<A
                 case .binary(let data):
                     do {
                         let event = try JSONDecoder().decode(APIEvent.self, from: data)
-                        if let listener = self.listeners[event] {
-                            listener.send()
-                        }
+                        self.subject.send(event)
                     } catch {
                         print("[WebSocket] Message decoding error: \(error)")
                     }
@@ -65,13 +63,7 @@ final class APIEventListener<APIEvent: APIEventProtocol>: APIEventListenerBase<A
     }
 
     override func on(_ event: APIEvent) -> AnyPublisher<Void, Never> {
-        if let existingListener = listeners[event] {
-            return existingListener.eraseToAnyPublisher()
-        } else {
-            let subject = PassthroughSubject<Void, Never>()
-            listeners[event] = subject
-            return subject.eraseToAnyPublisher()
-        }
+        subject.filter { $0 == event }.mapToVoid().eraseToAnyPublisher()
     }
 
     deinit {
