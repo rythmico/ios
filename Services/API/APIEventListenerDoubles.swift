@@ -8,7 +8,7 @@ final class APIEventListenerDummy<APIEvent: APIEventProtocol>: APIEventListenerB
     }
 
     override func on(_ event: APIEvent) -> AnyPublisher<Void, Never> {
-        Just(()).eraseToAnyPublisher()
+        PassthroughSubject<Void, Never>().eraseToAnyPublisher()
     }
 }
 
