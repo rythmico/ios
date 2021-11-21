@@ -568,6 +568,8 @@
 		D5FBCA8C274ABCEA0057BD23 /* APIEventListenerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FBCA8A274ABCEA0057BD23 /* APIEventListenerDoubles.swift */; };
 		D5FBCA8F274AC2940057BD23 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = D5FBCA8E274AC2940057BD23 /* Starscream */; };
 		D5FBCA91274AC2A00057BD23 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = D5FBCA90274AC2A00057BD23 /* Starscream */; };
+		D5FBCA93274AFF980057BD23 /* APIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FBCA92274AFF980057BD23 /* APIUtils.swift */; };
+		D5FBCA94274AFF980057BD23 /* APIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FBCA92274AFF980057BD23 /* APIUtils.swift */; };
 		D5FC6B39272B70B2000BCCA2 /* DateOnlyDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6B38272B70B2000BCCA2 /* DateOnlyDoubles.swift */; };
 		D5FC6B3A272B70B2000BCCA2 /* DateOnlyDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6B38272B70B2000BCCA2 /* DateOnlyDoubles.swift */; };
 		D5FC6B3D272C1C6C000BCCA2 /* CustomTextField+DateOnlyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6B3C272C1C6C000BCCA2 /* CustomTextField+DateOnlyPicker.swift */; };
@@ -1060,6 +1062,7 @@
 		D5FAE6852559DF8300473A8B /* PhoneNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCell.swift; sourceTree = "<group>"; };
 		D5FBCA87274A605D0057BD23 /* APIEventListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEventListener.swift; sourceTree = "<group>"; };
 		D5FBCA8A274ABCEA0057BD23 /* APIEventListenerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEventListenerDoubles.swift; sourceTree = "<group>"; };
+		D5FBCA92274AFF980057BD23 /* APIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUtils.swift; sourceTree = "<group>"; };
 		D5FC6B38272B70B2000BCCA2 /* DateOnlyDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOnlyDoubles.swift; sourceTree = "<group>"; };
 		D5FC6B3C272C1C6C000BCCA2 /* CustomTextField+DateOnlyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomTextField+DateOnlyPicker.swift"; sourceTree = "<group>"; };
 		D5FC6B3F272C1CAA000BCCA2 /* CustomTextField+TimeOnlyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomTextField+TimeOnlyPicker.swift"; sourceTree = "<group>"; };
@@ -1813,6 +1816,7 @@
 				D5FBCA87274A605D0057BD23 /* APIEventListener.swift */,
 				D5FBCA8A274ABCEA0057BD23 /* APIEventListenerDoubles.swift */,
 				0336D62B241EAAF6006CFC1F /* APIRequest.swift */,
+				D5FBCA92274AFF980057BD23 /* APIUtils.swift */,
 				03E88EB324C4AA4C0077A420 /* APIService.swift */,
 				03E88EB924C6232D0077A420 /* APIServiceDoubles.swift */,
 			);
@@ -2691,6 +2695,7 @@
 				D53555C623E536AE005A20EB /* SIWACredentialRevocationObserverDoubles.swift in Sources */,
 				03B1984124717AE8005529EB /* AddressDoubles.swift in Sources */,
 				D575C877254F2FC8001664AB /* PushNotificationAuthorizationCoordinator+Sugar.swift in Sources */,
+				D5FBCA93274AFF980057BD23 /* APIUtils.swift in Sources */,
 				D55354EB26C08DF700E77CC4 /* CustomerPortalEndpoints.swift in Sources */,
 				D509D836265EE55200B60DF0 /* LessonPlanResumingView.swift in Sources */,
 				D5B4D3DB273C2B510048E4E1 /* LessonPlanRequestEndpoints.swift in Sources */,
@@ -3151,6 +3156,7 @@
 				035B1D48249E577700AABFEA /* SIWAAuthorizationController.swift in Sources */,
 				D54CF08525F91255007D5050 /* AppSecrets.swift in Sources */,
 				D5F4D3F124F31E14000E8580 /* BookingApplicationGroupCell.swift in Sources */,
+				D5FBCA94274AFF980057BD23 /* APIUtils.swift in Sources */,
 				D5E987C524EEED8200E2E1AF /* LessonPlanRequestsTabView.swift in Sources */,
 				D55C35D825A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */,
 				D5CAC9AE24E6D67C00119DAA /* MultilineTextField+Tutor.swift in Sources */,

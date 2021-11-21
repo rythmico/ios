@@ -20,15 +20,11 @@ final class APIActivityCoordinator<Request: APIRequest>: FailableActivityCoordin
 
     override func performTask(with input: Request) {
         super.performTask(with: input)
-        let clientInfo = APIClientInfo.current !! {
-            preconditionFailure("Required client info is unavailable")
-        }
-        var request = input
-        request.headerFields = request.headerFields + .init {
-            if request.authRequired, let accessToken = userCredentialProvider.userCredential?.accessToken {
-                ["Authorization": "Bearer " + accessToken]
-            }
-            clientInfo.encodeAsHTTPHeaders()
+        let request = input => {
+            $0.headerFields = APIUtils.headers(
+                bearer: $0.authRequired ? userCredentialProvider.userCredential : nil,
+                clientInfo: .current
+            )
         }
         activity = service.send(request, completion: handleRequestResult)
     }

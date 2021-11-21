@@ -35,22 +35,9 @@ final class APIEventListener<APIEvent: APIEventProtocol>: APIEventListenerBase<A
     }
 
     override func connectToWebSocket(with userCredential: UserCredential) -> AnyCancellable {
-        let clientInfo = APIClientInfo.current !! {
-            preconditionFailure("Required client info is unavailable")
-        }
-        let urlComponents = apiBaseURLComponents => {
-            $0.scheme = "wss"
-            $0.path = $0.path + "/events"
-        }
-        let url = urlComponents.url !! {
-            preconditionFailure("Could not create WebSocket URL from components: \(urlComponents)")
-        }
-        let request = URLRequest(url: url) => { request in
-            request.allHTTPHeaderFields = Dictionary<String, String> {
-                request.allHTTPHeaderFields ?? [:]
-                ["Authorization": "Bearer " + userCredential.accessToken]
-                clientInfo.encodeAsHTTPHeaders()
-            }
+        let url = APIUtils.url(scheme: "wss", path: "/events")
+        let request = URLRequest(url: url) => {
+            $0.allHTTPHeaderFields = APIUtils.headers(bearer: userCredential, clientInfo: .current)
         }
         let ws = WebSocket(request: request) => { ws in
             ws.onEvent = { [weak self] message in

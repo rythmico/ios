@@ -18,5 +18,9 @@ extension APIClientInfo {
         )
     }
 
-    public static let current = APIClientInfo(bundle: Bundle.main, device: UIDevice.current)
+    public static var current: APIClientInfo {
+        APIClientInfo(bundle: Bundle.main, device: UIDevice.current) !! {
+            preconditionFailure("No client info available")
+        }
+    }
 }
