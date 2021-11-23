@@ -44,13 +44,13 @@ final class APIEventListener<APIEvent: APIEventProtocol>: APIEventListenerBase<A
                 guard let self = self else { return }
                 switch message {
                 case .binary(let data):
+                    print("[WebSocket] Received data: \(String(decoding: data, as: UTF8.self))")
                     do {
                         let event = try JSONDecoder().decode(APIEvent.self, from: data)
                         self.subject.send(event)
                     } catch {
                         print("[WebSocket] Message decoding error: \(error)")
                     }
-                    print("[WebSocket] Received data: \(String(decoding: data, as: UTF8.self))")
                 case .cancelled, .reconnectSuggested(true):
                     print("[WebSocket] Connection dropped. Reconnecting...")
                     ws.connect()
