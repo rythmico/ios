@@ -51,6 +51,9 @@ final class APIEventListener<APIEvent: APIEventProtocol>: APIEventListenerBase<A
                         print("[WebSocket] Message decoding error: \(error)")
                     }
                     print("[WebSocket] Received data: \(String(decoding: data, as: UTF8.self))")
+                case .cancelled, .reconnectSuggested(true):
+                    print("[WebSocket] Connection dropped. Reconnecting...")
+                    ws.connect()
                 default:
                     print("[WebSocket] Received message: \(message)")
                 }
