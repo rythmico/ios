@@ -41,7 +41,8 @@ struct BookingApplicationsView: View {
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
-        .onReceive(Current.apiEventListener.on(.bookingApplicationsChanged), perform: coordinator.reset)
+        .onAPIEvent(.bookingApplicationsChanged, perform: coordinator.reset)
+        .onAppEvent(.didEnterBackground, perform: coordinator.reset)
     }
 
     private func applicationGroupCell(for status: BookingApplication.Status) -> some View {

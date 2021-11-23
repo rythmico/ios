@@ -23,7 +23,7 @@ struct App: SwiftUI.App {
 
     var body: some Scene {
         WindowGroup {
-            AppView().onEvent(.appInBackground, perform: didEnterBackground)
+            AppView()
         }
     }
 }

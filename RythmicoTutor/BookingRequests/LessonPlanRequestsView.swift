@@ -39,7 +39,8 @@ struct LessonPlanRequestsView: View {
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
-        .onReceive(Current.apiEventListener.on(.lessonPlanRequestsChanged), perform: coordinator.reset)
+        .onAPIEvent(.lessonPlanRequestsChanged, perform: coordinator.reset)
+        .onAppEvent(.didEnterBackground, perform: coordinator.reset)
     }
 
     private func shouldFetchPublisher() -> AnyPublisher<Void, Never> {

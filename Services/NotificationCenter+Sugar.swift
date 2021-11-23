@@ -3,15 +3,15 @@ import Combine
 
 extension NotificationCenter {
     enum EventType {
-        case appInForeground
-        case appInBackground
+        case willEnterForeground
+        case didEnterBackground
         case sizeCategoryChanged
 
         var notificationName: Notification.Name {
             switch self {
-            case .appInForeground:
+            case .willEnterForeground:
                 return UIApplication.willEnterForegroundNotification
-            case .appInBackground:
+            case .didEnterBackground:
                 return UIApplication.didEnterBackgroundNotification
             case .sizeCategoryChanged:
                 return UIContentSizeCategory.didChangeNotification
@@ -27,7 +27,7 @@ extension NotificationCenter {
 import SwiftUI
 
 extension View {
-    func onEvent(
+    func onAppEvent(
         _ eventType: NotificationCenter.EventType,
         emitter: NotificationCenter = Current.eventEmitter,
         perform action: @escaping () -> Void

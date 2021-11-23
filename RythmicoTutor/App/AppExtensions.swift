@@ -9,12 +9,6 @@ extension App {
     static let slogan = "Turning kids into the festival headliners of tomorrow"
 
     static func didFinishLaunching() {}
-
-    func didEnterBackground() {
-        Current.bookingsFetchingCoordinator.reset()
-        Current.lessonPlanRequestFetchingCoordinator.reset()
-        Current.bookingApplicationFetchingCoordinator.reset()
-    }
 }
 
 extension SwiftUI.App {

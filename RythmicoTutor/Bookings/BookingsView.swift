@@ -34,6 +34,7 @@ struct BookingsView: View {
                     dismiss: pushNotificationAuthCoordinator.dismissFailure
                 )
             }
+            .onAppEvent(.didEnterBackground, perform: coordinator.reset)
     }
 
     func requestPushNotificationAuth(_: Any) {

@@ -570,6 +570,8 @@
 		D5FBCA91274AC2A00057BD23 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = D5FBCA90274AC2A00057BD23 /* Starscream */; };
 		D5FBCA93274AFF980057BD23 /* APIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FBCA92274AFF980057BD23 /* APIUtils.swift */; };
 		D5FBCA94274AFF980057BD23 /* APIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FBCA92274AFF980057BD23 /* APIUtils.swift */; };
+		D5FBCA96274D699C0057BD23 /* APIEventListener+Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FBCA95274D699C0057BD23 /* APIEventListener+Student.swift */; };
+		D5FBCA99274D6A5C0057BD23 /* APIEventListener+Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FBCA98274D6A5C0057BD23 /* APIEventListener+Tutor.swift */; };
 		D5FC6B39272B70B2000BCCA2 /* DateOnlyDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6B38272B70B2000BCCA2 /* DateOnlyDoubles.swift */; };
 		D5FC6B3A272B70B2000BCCA2 /* DateOnlyDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6B38272B70B2000BCCA2 /* DateOnlyDoubles.swift */; };
 		D5FC6B3D272C1C6C000BCCA2 /* CustomTextField+DateOnlyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FC6B3C272C1C6C000BCCA2 /* CustomTextField+DateOnlyPicker.swift */; };
@@ -1063,6 +1065,8 @@
 		D5FBCA87274A605D0057BD23 /* APIEventListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEventListener.swift; sourceTree = "<group>"; };
 		D5FBCA8A274ABCEA0057BD23 /* APIEventListenerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEventListenerDoubles.swift; sourceTree = "<group>"; };
 		D5FBCA92274AFF980057BD23 /* APIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUtils.swift; sourceTree = "<group>"; };
+		D5FBCA95274D699C0057BD23 /* APIEventListener+Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIEventListener+Student.swift"; sourceTree = "<group>"; };
+		D5FBCA98274D6A5C0057BD23 /* APIEventListener+Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIEventListener+Tutor.swift"; sourceTree = "<group>"; };
 		D5FC6B38272B70B2000BCCA2 /* DateOnlyDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOnlyDoubles.swift; sourceTree = "<group>"; };
 		D5FC6B3C272C1C6C000BCCA2 /* CustomTextField+DateOnlyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomTextField+DateOnlyPicker.swift"; sourceTree = "<group>"; };
 		D5FC6B3F272C1CAA000BCCA2 /* CustomTextField+TimeOnlyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomTextField+TimeOnlyPicker.swift"; sourceTree = "<group>"; };
@@ -1814,6 +1818,8 @@
 				D549219C25BB28F700251FD2 /* APIError+Rythmico.swift */,
 				D54921A125BB290C00251FD2 /* APIError+Tutor.swift */,
 				D5FBCA87274A605D0057BD23 /* APIEventListener.swift */,
+				D5FBCA95274D699C0057BD23 /* APIEventListener+Student.swift */,
+				D5FBCA98274D6A5C0057BD23 /* APIEventListener+Tutor.swift */,
 				D5FBCA8A274ABCEA0057BD23 /* APIEventListenerDoubles.swift */,
 				0336D62B241EAAF6006CFC1F /* APIRequest.swift */,
 				D5FBCA92274AFF980057BD23 /* APIUtils.swift */,
@@ -2666,6 +2672,7 @@
 				03AAF66C2444FFCC002D8F5B /* DateOnlyPicker.swift in Sources */,
 				D5AFED3C25056300003FFC68 /* NotificationCenter+Sugar.swift in Sources */,
 				D593C7022550C03B00C684FF /* AppUpdatePrompt.swift in Sources */,
+				D5FBCA96274D699C0057BD23 /* APIEventListener+Student.swift in Sources */,
 				D5B5820326A37B1E0008D9DC /* RythmicoLabel.swift in Sources */,
 				D5D9AEA325367E9B00A0ABCC /* LessonPlanBookingEntryView.swift in Sources */,
 				D5FC6B3D272C1C6C000BCCA2 /* CustomTextField+DateOnlyPicker.swift in Sources */,
@@ -3046,6 +3053,7 @@
 				03E88E8F24BC9FAF0077A420 /* AppEnvironmentDoubles.swift in Sources */,
 				D55354E926C082C300E77CC4 /* RythmicoWebView.swift in Sources */,
 				D5C76E9525F405E200739267 /* EKEventStore.swift in Sources */,
+				D5FBCA99274D6A5C0057BD23 /* APIEventListener+Tutor.swift in Sources */,
 				D5F4D3E024F04294000E8580 /* BookingApplication.swift in Sources */,
 				D55C35FE25A3AB510023E56B /* CalendarSyncer.swift in Sources */,
 				D5E58F0E256AF1E500EB52ED /* BookingEndpoints.swift in Sources */,

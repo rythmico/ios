@@ -36,7 +36,7 @@ struct AppView: View {
                 RootView(flow: flow)
             }
         }
-        .onEvent(.sizeCategoryChanged, perform: Self.refreshAppearance)
+        .onAppEvent(.sizeCategoryChanged, perform: Self.refreshAppearance)
         .animation(animation, value: screen)
     }
 

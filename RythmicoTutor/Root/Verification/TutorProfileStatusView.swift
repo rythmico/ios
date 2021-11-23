@@ -25,7 +25,7 @@ struct TutorProfileStatusView: View {
             }
         }
         .onAppear(perform: coordinator.run)
-        .onEvent(.appInForeground, perform: coordinator.run)
+        .onAppEvent(.willEnterForeground, perform: coordinator.run)
         .onSuccess(coordinator, perform: tutorProfileStatusFetched)
         .alertOnFailure(coordinator)
         .multiModal {

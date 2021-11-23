@@ -12,11 +12,6 @@ extension App {
     static func didFinishLaunching() {
         StripeAPI.defaultPublishableKey = AppSecrets.stripePublishableKey
     }
-
-    func didEnterBackground() {
-        Current.lessonPlanRequestFetchingCoordinator.reset()
-        // TODO: upcoming - reset lesson fetching coordinator
-    }
 }
 
 extension SwiftUI.App {

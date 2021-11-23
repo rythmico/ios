@@ -82,7 +82,8 @@ struct LessonsView: View, TestableView {
 //        .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: onLessonPlanRequestsFetched)
         .alertOnFailure(coordinator)
-        .onReceive(Current.apiEventListener.on(.lessonPlanRequestsChanged), perform: coordinator.reset)
+        .onAPIEvent(.lessonPlanRequestsChanged, perform: coordinator.reset)
+        .onAppEvent(.didEnterBackground, perform: coordinator.reset)
     }
 
     private var title: String { MainView.Tab.lessons.title }
