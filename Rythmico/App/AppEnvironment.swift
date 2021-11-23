@@ -57,11 +57,11 @@ struct AppEnvironment {
     var availableInstrumentsFetchingCoordinator: () -> APIActivityCoordinator<GetAvailableInstrumentsRequest>
     var addressSearchCoordinator: () -> APIActivityCoordinator<AddressSearchRequest>
 
-    var lessonPlanRequestFetchingCoordinator: APIActivityCoordinator<GetLessonPlanRequestsRequest>
+    var lessonPlanRequestFetchingCoordinator: () -> APIActivityCoordinator<GetLessonPlanRequestsRequest>
     var lessonPlanRequestCreationCoordinator: () -> APIActivityCoordinator<CreateLessonPlanRequestRequest>
     var lessonPlanRequestRepository: Repository<LessonPlanRequest>
 
-    var lessonPlanFetchingCoordinator: APIActivityCoordinator<GetLessonPlansRequest>
+    var lessonPlanFetchingCoordinator: () -> APIActivityCoordinator<GetLessonPlansRequest>
     var lessonPlanPausingCoordinator: () -> APIActivityCoordinator<PauseLessonPlanRequest>
     var lessonPlanResumingCoordinator: () -> APIActivityCoordinator<ResumeLessonPlanRequest>
     var lessonPlanCancellationCoordinator: () -> APIActivityCoordinator<CancelLessonPlanRequest>
@@ -230,11 +230,11 @@ struct AppEnvironment {
         self.availableInstrumentsFetchingCoordinator = { coordinator(for: availableInstrumentsFetchingService) }
         self.addressSearchCoordinator = { coordinator(for: addressSearchService) }
 
-        self.lessonPlanRequestFetchingCoordinator = coordinator(for: lessonPlanRequestFetchingService)
+        self.lessonPlanRequestFetchingCoordinator = { coordinator(for: lessonPlanRequestFetchingService) }
         self.lessonPlanRequestCreationCoordinator = { coordinator(for: lessonPlanRequestCreationService) }
         self.lessonPlanRequestRepository = lessonPlanRequestRepository
 
-        self.lessonPlanFetchingCoordinator = coordinator(for: lessonPlanFetchingService)
+        self.lessonPlanFetchingCoordinator = { coordinator(for: lessonPlanFetchingService) }
         self.lessonPlanPausingCoordinator = { coordinator(for: lessonPlanPausingService) }
         self.lessonPlanResumingCoordinator = { coordinator(for: lessonPlanResumingService) }
         self.lessonPlanCancellationCoordinator = { coordinator(for: lessonPlanCancellationService) }

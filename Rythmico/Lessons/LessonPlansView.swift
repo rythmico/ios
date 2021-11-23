@@ -25,8 +25,8 @@ struct LessonPlansScreen: Screen {
 }
 
 struct LessonPlansView: View {
-    @ObservedObject
-    private var coordinator = Current.lessonPlanFetchingCoordinator
+    @StateObject
+    private var coordinator = Current.lessonPlanFetchingCoordinator()
     @ObservedObject
     private var repository = Current.lessonPlanRepository
 

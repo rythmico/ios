@@ -47,8 +47,8 @@ struct LessonsView: View, TestableView {
     private var currentScreen
     @ObservedObject
     private var lessonsTabNavigation = Current.lessonsTabNavigation
-    @ObservedObject
-    private var coordinator = Current.lessonPlanRequestFetchingCoordinator
+    @StateObject
+    private var coordinator = Current.lessonPlanRequestFetchingCoordinator()
     @State
     private var hasAutoPresentedRequestFlow = false
     @State

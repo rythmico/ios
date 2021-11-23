@@ -6,8 +6,8 @@ struct BookingsView: View {
     private var scenePhase
     @ObservedObject
     private var tabSelection = Current.tabSelection
-    @ObservedObject
-    private var coordinator = Current.bookingsFetchingCoordinator
+    @StateObject
+    private var coordinator = Current.bookingsFetchingCoordinator()
     @ObservedObject
     private var repository = Current.bookingsRepository
     @ObservedObject

@@ -10,8 +10,8 @@ struct LessonPlanRequestsView: View {
     private var tabSelection = Current.tabSelection
     @ObservedObject
     private var lessonPlanRequestsTabNavigation = Current.lessonPlanRequestsTabNavigation
-    @ObservedObject
-    private var coordinator = Current.lessonPlanRequestFetchingCoordinator
+    @StateObject
+    private var coordinator = Current.lessonPlanRequestFetchingCoordinator()
     @ObservedObject
     private var repository = Current.lessonPlanRequestRepository
 

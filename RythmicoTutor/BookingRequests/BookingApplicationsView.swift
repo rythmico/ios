@@ -13,8 +13,8 @@ struct BookingApplicationsView: View {
     private var tabSelection = Current.tabSelection
     @ObservedObject
     private var lessonPlanRequestsTabNavigation = Current.lessonPlanRequestsTabNavigation
-    @ObservedObject
-    private var coordinator = Current.bookingApplicationFetchingCoordinator
+    @StateObject
+    private var coordinator = Current.bookingApplicationFetchingCoordinator()
     @ObservedObject
     private var repository = Current.bookingApplicationRepository
 

@@ -25,8 +25,8 @@ struct BookingsTabView: View {
 
     @ObservedObject
     private var tabSelection = Current.tabSelection
-    @ObservedObject
-    private var coordinator = Current.bookingsFetchingCoordinator
+    @StateObject
+    private var coordinator = Current.bookingsFetchingCoordinator()
 
     var body: some View {
         VStack(spacing: 0) {

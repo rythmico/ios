@@ -53,14 +53,14 @@ struct AppEnvironment {
     var tutorProfileStatusFetchingCoordinator: APIActivityCoordinator<GetTutorProfileStatusRequest>
 
     var bookingsRepository: Repository<Booking>
-    var bookingsFetchingCoordinator: APIActivityCoordinator<BookingsGetRequest>
+    var bookingsFetchingCoordinator: () -> APIActivityCoordinator<BookingsGetRequest>
 
     var lessonPlanRequestRepository: Repository<LessonPlanRequest>
-    var lessonPlanRequestFetchingCoordinator: APIActivityCoordinator<GetLessonPlanRequestsRequest>
+    var lessonPlanRequestFetchingCoordinator: () -> APIActivityCoordinator<GetLessonPlanRequestsRequest>
     var lessonPlanRequestApplyingCoordinator: () -> APIActivityCoordinator<LessonPlanRequestApplyRequest>
 
     var bookingApplicationRepository: Repository<BookingApplication>
-    var bookingApplicationFetchingCoordinator: APIActivityCoordinator<BookingApplicationsGetRequest>
+    var bookingApplicationFetchingCoordinator: () -> APIActivityCoordinator<BookingApplicationsGetRequest>
     var bookingApplicationRetractionCoordinator: () -> APIActivityCoordinator<BookingApplicationsRetractRequest>
 
     init(
@@ -188,14 +188,14 @@ struct AppEnvironment {
         self.tutorProfileStatusFetchingCoordinator = coordinator(for: tutorProfileStatusFetchingService)
 
         self.bookingsRepository = bookingsRepository
-        self.bookingsFetchingCoordinator = coordinator(for: bookingsFetchingService)
+        self.bookingsFetchingCoordinator = { coordinator(for: bookingsFetchingService) }
 
         self.lessonPlanRequestRepository = lessonPlanRequestRepository
-        self.lessonPlanRequestFetchingCoordinator = coordinator(for: lessonPlanRequestFetchingService)
+        self.lessonPlanRequestFetchingCoordinator = { coordinator(for: lessonPlanRequestFetchingService) }
         self.lessonPlanRequestApplyingCoordinator = { coordinator(for: lessonPlanRequestApplyingService) }
 
         self.bookingApplicationRepository = bookingApplicationRepository
-        self.bookingApplicationFetchingCoordinator = coordinator(for: bookingApplicationFetchingService)
+        self.bookingApplicationFetchingCoordinator = { coordinator(for: bookingApplicationFetchingService) }
         self.bookingApplicationRetractionCoordinator = { coordinator(for: bookingApplicationRetractionService) }
     }
 }
