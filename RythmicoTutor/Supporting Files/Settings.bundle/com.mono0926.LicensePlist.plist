@@ -62,7 +62,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/MobileProvision</string>
 			<key>Title</key>
-			<string>MobileProvision</string>
+			<string>MobileProvision (0.0.2)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>

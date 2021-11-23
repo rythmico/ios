@@ -10,7 +10,7 @@ name: dto-swift, nameSpecified: DTO, owner: rythmico, version:
 
 name: LegibleError, nameSpecified: LegibleError, owner: mxcl, version: 1.0.6
 
-name: MobileProvision, nameSpecified: MobileProvision, owner: CrazyFanFan, version: 
+name: MobileProvision, nameSpecified: MobileProvision, owner: CrazyFanFan, version: 0.0.2
 
 name: MultiModal, nameSpecified: MultiModal, owner: davdroman, version: 2.1.0
 
