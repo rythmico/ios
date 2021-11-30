@@ -83,7 +83,7 @@ struct LessonPlanDetailView: View, TestableView {
             LessonPlanPriceView(
                 // TODO: consume `bookingInfo.pricePerLesson` property instead.
                 price: Price(
-                    amount: PreciseDecimal(lessonPlan.schedule.duration.rawValue),
+                    amount: PreciseDecimal(string: String(lessonPlan.schedule.duration.rawValue))!,
                     currency: .GBP
                 ),
                 showTermsOfService: false

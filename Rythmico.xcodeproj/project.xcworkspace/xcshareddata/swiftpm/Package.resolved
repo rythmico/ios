@@ -29,6 +29,15 @@
         }
       },
       {
+        "package": "CollectionConcurrencyKit",
+        "repositoryURL": "https://github.com/davdroman/CollectionConcurrencyKit",
+        "state": {
+          "branch": "main",
+          "revision": "45c4ac8362c2028549fdb3ef5529107909383d4f",
+          "version": null
+        }
+      },
+      {
         "package": "combine-schedulers",
         "repositoryURL": "https://github.com/pointfreeco/combine-schedulers",
         "state": {
@@ -104,9 +113,9 @@
         "package": "PreciseDecimal",
         "repositoryURL": "https://github.com/davdroman/PreciseDecimal",
         "state": {
-          "branch": null,
-          "revision": "a15081386a21414f445a0d14ffcfebd8df3c6da3",
-          "version": "1.0.0"
+          "branch": "main",
+          "revision": "2ab57fc9a2262204c2bde46d133d2b9dd72e74a0",
+          "version": null
         }
       },
       {
@@ -195,7 +204,7 @@
         "repositoryURL": "https://github.com/rythmico/swift-foundation-encore",
         "state": {
           "branch": "main",
-          "revision": "442d8070cb8d478e4c5a45b56f40de999d87d8ee",
+          "revision": "2a465f5cc081fd1e50fba69d3eb10800f59b9591",
           "version": null
         }
       },
