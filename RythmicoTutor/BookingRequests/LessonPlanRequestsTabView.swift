@@ -13,8 +13,8 @@ struct LessonPlanRequestsTabScreen: Screen {
                 },
                 nesting: {
                     LessonPlanRequestDetailScreen.Builder()
-                    BookingApplicationDetailScreen.Builder()
-                    BookingApplicationGroupScreen.Builder()
+                    LessonPlanApplicationDetailScreen.Builder()
+                    LessonPlanApplicationGroupScreen.Builder()
                 }
             )
         }
@@ -48,7 +48,7 @@ struct LessonPlanRequestsTabView: View {
             case .open:
                 LessonPlanRequestsView()
             case .applied:
-                BookingApplicationsView()
+                LessonPlanApplicationsView()
             }
         }
         .navigationBarTitle(MainView.Tab.requests.title, displayMode: .large)

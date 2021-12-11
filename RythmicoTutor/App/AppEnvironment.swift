@@ -57,11 +57,11 @@ struct AppEnvironment {
 
     var lessonPlanRequestRepository: Repository<LessonPlanRequest>
     var lessonPlanRequestFetchingCoordinator: () -> APIActivityCoordinator<GetLessonPlanRequestsRequest>
-    var lessonPlanRequestApplyingCoordinator: () -> APIActivityCoordinator<LessonPlanRequestApplyRequest>
 
-    var bookingApplicationRepository: Repository<BookingApplication>
-    var bookingApplicationFetchingCoordinator: () -> APIActivityCoordinator<BookingApplicationsGetRequest>
-    var bookingApplicationRetractionCoordinator: () -> APIActivityCoordinator<BookingApplicationsRetractRequest>
+    var lessonPlanApplicationRepository: Repository<LessonPlanApplication>
+    var lessonPlanApplicationCreationCoordinator: () -> APIActivityCoordinator<CreateLessonPlanApplicationRequest>
+    var lessonPlanApplicationFetchingCoordinator: () -> APIActivityCoordinator<GetLessonPlanApplicationsRequest>
+    var lessonPlanApplicationRetractionCoordinator: () -> APIActivityCoordinator<RetractLessonPlanApplicationsRequest>
 
     init(
         tabSelection: TabSelection,
@@ -112,11 +112,11 @@ struct AppEnvironment {
 
         lessonPlanRequestRepository: Repository<LessonPlanRequest>,
         lessonPlanRequestFetchingService: APIServiceBase<GetLessonPlanRequestsRequest>,
-        lessonPlanRequestApplyingService: APIServiceBase<LessonPlanRequestApplyRequest>,
 
-        bookingApplicationRepository: Repository<BookingApplication>,
-        bookingApplicationFetchingService: APIServiceBase<BookingApplicationsGetRequest>,
-        bookingApplicationRetractionService: APIServiceBase<BookingApplicationsRetractRequest>
+        lessonPlanApplicationRepository: Repository<LessonPlanApplication>,
+        lessonPlanApplicationCreationService: APIServiceBase<CreateLessonPlanApplicationRequest>,
+        lessonPlanApplicationFetchingService: APIServiceBase<GetLessonPlanApplicationsRequest>,
+        lessonPlanApplicationRetractionService: APIServiceBase<RetractLessonPlanApplicationsRequest>
     ) {
         self.tabSelection = tabSelection
 
@@ -192,11 +192,11 @@ struct AppEnvironment {
 
         self.lessonPlanRequestRepository = lessonPlanRequestRepository
         self.lessonPlanRequestFetchingCoordinator = { coordinator(for: lessonPlanRequestFetchingService) }
-        self.lessonPlanRequestApplyingCoordinator = { coordinator(for: lessonPlanRequestApplyingService) }
 
-        self.bookingApplicationRepository = bookingApplicationRepository
-        self.bookingApplicationFetchingCoordinator = { coordinator(for: bookingApplicationFetchingService) }
-        self.bookingApplicationRetractionCoordinator = { coordinator(for: bookingApplicationRetractionService) }
+        self.lessonPlanApplicationRepository = lessonPlanApplicationRepository
+        self.lessonPlanApplicationCreationCoordinator = { coordinator(for: lessonPlanApplicationCreationService) }
+        self.lessonPlanApplicationFetchingCoordinator = { coordinator(for: lessonPlanApplicationFetchingService) }
+        self.lessonPlanApplicationRetractionCoordinator = { coordinator(for: lessonPlanApplicationRetractionService) }
     }
 }
 
@@ -257,10 +257,10 @@ extension AppEnvironment {
 
         lessonPlanRequestRepository: Repository(),
         lessonPlanRequestFetchingService: APIService(),
-        lessonPlanRequestApplyingService: APIService(),
 
-        bookingApplicationRepository: Repository(),
-        bookingApplicationFetchingService: APIService(),
-        bookingApplicationRetractionService: APIService()
+        lessonPlanApplicationRepository: Repository(),
+        lessonPlanApplicationCreationService: APIService(),
+        lessonPlanApplicationFetchingService: APIService(),
+        lessonPlanApplicationRetractionService: APIService()
     )}
 }

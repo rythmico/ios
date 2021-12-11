@@ -10,19 +10,11 @@ struct GetLessonPlanRequestsRequest: APIRequest, EmptyInitProtocol {
     typealias Response = [LessonPlanRequest]
 }
 
-struct LessonPlanRequestApplyRequest: APIRequest {
-    var lessonPlanRequestID: LessonPlanRequest.ID
-    var privateNote: String
-
+struct CreateLessonPlanApplicationRequest: APIRequest {
     let method: HTTPMethod = .post
-    var path: String { "/booking-requests/\(lessonPlanRequestID)/apply" }
-    var headerFields: [String: String] = [:]
-    var body: some Encodable {
-        struct Body: Encodable {
-            var privateNote: String
-        }
-        return Body(privateNote: privateNote)
-    }
+    let path: String = "/tutor/lesson-plan-applications"
+    var headerFields: [String : String] = [:]
+    let body: CreateLessonPlanApplicationBody
 
-    typealias Response = BookingApplication
+    typealias Response = LessonPlanApplication
 }

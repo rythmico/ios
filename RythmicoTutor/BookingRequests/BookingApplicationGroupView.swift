@@ -1,32 +1,33 @@
-import SwiftUIEncore
 import ComposableNavigator
+import SwiftUIEncore
+import TutorDTO
 
-struct BookingApplicationGroupScreen: Screen {
-    let applications: [BookingApplication]
-    let status: BookingApplication.Status
+struct LessonPlanApplicationGroupScreen: Screen {
+    let applications: [LessonPlanApplication]
+    let status: LessonPlanApplication.Status
     let presentationStyle: ScreenPresentationStyle = .push
 
     struct Builder: NavigationTree {
         var builder: some PathBuilder {
             Screen(
-                content: { (screen: BookingApplicationGroupScreen) in
-                    BookingApplicationGroupView(applications: screen.applications, status: screen.status)
+                content: { (screen: LessonPlanApplicationGroupScreen) in
+                    LessonPlanApplicationGroupView(applications: screen.applications, status: screen.status)
                 },
                 nesting: {
-                    BookingApplicationDetailScreen.Builder()
+                    LessonPlanApplicationDetailScreen.Builder()
                 }
             )
         }
     }
 }
 
-struct BookingApplicationGroupView: View {
-    let applications: [BookingApplication]
-    let status: BookingApplication.Status
+struct LessonPlanApplicationGroupView: View {
+    let applications: [LessonPlanApplication]
+    let status: LessonPlanApplication.Status
 
     var body: some View {
         List {
-            BookingApplicationSection(applications: applications, status: status)
+            LessonPlanApplicationSection(applications: applications, status: status)
         }
         .listStyle(GroupedListStyle())
         .navigationBarTitle(Text(title), displayMode: .inline)
@@ -38,12 +39,16 @@ struct BookingApplicationGroupView: View {
 }
 
 #if DEBUG
-struct BookingApplicationGroupView_Previews: PreviewProvider {
+struct LessonPlanApplicationGroupView_Previews: PreviewProvider {
+    static var pendingStatus: LessonPlanApplication.Status { .pending }
+    static var retractedStatus: LessonPlanApplication.Status { .retracted(try! Current.date() - (10, .second, .neutral)) }
+
     static var previews: some View {
-        ForEach(BookingApplication.Status.allCases, id: \.self) {
-            BookingApplicationGroupView(applications: .stub, status: $0)
-                .previewLayout(.fixed(width: 370, height: 170))
+        Group {
+            LessonPlanApplicationGroupView(applications: [.stub(pendingStatus)], status: pendingStatus)
+            LessonPlanApplicationGroupView(applications: [.stub(retractedStatus)], status: retractedStatus)
         }
+        .previewLayout(.fixed(width: 370, height: 170))
     }
 }
 #endif

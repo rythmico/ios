@@ -1,14 +1,15 @@
-import SwiftUI
+import SwiftUIEncore
+import TutorDTO
 
-struct BookingApplicationGroupCell: View {
+struct LessonPlanApplicationGroupCell: View {
     @Environment(\.isEnabled) private var isEnabled
 
-    private let status: BookingApplication.Status
+    private let status: LessonPlanApplication.Status
     private let applicationCount: Int
 
-    init(status: BookingApplication.Status, applications: [BookingApplication]) {
+    init(status: LessonPlanApplication.Status, applications: [LessonPlanApplication]) {
         self.status = status
-        self.applicationCount = applications.filter { $0.statusInfo.status == status }.count
+        self.applicationCount = applications.filter { $0.status == status }.count
     }
 
     var body: some View {
@@ -36,11 +37,13 @@ struct BookingApplicationGroupCell: View {
 }
 
 #if DEBUG
-struct BookingApplicationGroupCell_Previews: PreviewProvider {
+struct LessonPlanApplicationGroupCell_Previews: PreviewProvider {
     static var previews: some View {
-        BookingApplicationGroupCell(status: .selected, applications: [])
-            .padding(.horizontal, .grid(3))
-            .previewLayout(.sizeThatFits)
+        EmptyView()
+        // TODO: upcoming
+//        LessonPlanApplicationGroupCell(status: .selected, applications: [])
+//            .padding(.horizontal, .grid(3))
+//            .previewLayout(.sizeThatFits)
     }
 }
 #endif

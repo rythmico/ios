@@ -9,7 +9,7 @@ struct AddressMapCell: View {
     @State
     private var mapOpeningError: Error?
 
-    enum Source {
+    enum Source: Hashable {
         case partialAddress(LessonPlanRequest.PartialAddress)
         case fullAddress(Address)
     }

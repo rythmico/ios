@@ -11,10 +11,10 @@ extension AppEnvironment {
             $0.fakeAPIEndpoint(for: \.bookingsFetchingCoordinator, result: .success(.stub))
 
             $0.fakeAPIEndpoint(for: \.lessonPlanRequestFetchingCoordinator, result: .success([.stub, .longStub]))
-            $0.fakeAPIEndpoint(for: \.lessonPlanRequestApplyingCoordinator, result: .success(.stub))
 
-            $0.fakeAPIEndpoint(for: \.bookingApplicationFetchingCoordinator, result: .success([.longStub, .stubWithAbout] + .stub))
-            $0.fakeAPIEndpoint(for: \.bookingApplicationRetractionCoordinator, result: .success(.stub))
+            $0.fakeAPIEndpoint(for: \.lessonPlanApplicationFetchingCoordinator, result: .success([.longStub, .stubWithAbout] + .stub))
+            $0.fakeAPIEndpoint(for: \.lessonPlanApplicationCreationCoordinator, result: .success(.stub))
+            $0.fakeAPIEndpoint(for: \.lessonPlanApplicationRetractionCoordinator, result: .success(.stub))
         }
     }
 }
@@ -70,11 +70,11 @@ extension AppEnvironment {
 
             lessonPlanRequestRepository: Repository(),
             lessonPlanRequestFetchingService: APIServiceDummy(),
-            lessonPlanRequestApplyingService: APIServiceDummy(),
 
-            bookingApplicationRepository: Repository(),
-            bookingApplicationFetchingService: APIServiceDummy(),
-            bookingApplicationRetractionService: APIServiceDummy()
+            lessonPlanApplicationRepository: Repository(),
+            lessonPlanApplicationCreationService: APIServiceDummy(),
+            lessonPlanApplicationFetchingService: APIServiceDummy(),
+            lessonPlanApplicationRetractionService: APIServiceDummy()
         )
     }
 }

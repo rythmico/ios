@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/amplitude/Amplitude-iOS",
         "state": {
           "branch": null,
-          "revision": "b3411935d96c3b154753771ab32e1df501fec478",
-          "version": "8.5.0"
+          "revision": "ad9d48a81cb1adf056a515f05724e57b98341ce4",
+          "version": "8.6.0"
         }
       },
       {
@@ -51,7 +51,7 @@
         "repositoryURL": "https://github.com/rythmico/dto-swift",
         "state": {
           "branch": "main",
-          "revision": "80c3b6221ebcd137dbba60113350a87cb85912c9",
+          "revision": "632c5256e66a8e64641e27664aaa4355dd404f37",
           "version": null
         }
       },
@@ -105,8 +105,8 @@
         "repositoryURL": "https://github.com/microsoft/PLCrashReporter.git",
         "state": {
           "branch": null,
-          "revision": "59513acde6194d93617afcf7b2c81c88638a6af2",
-          "version": "1.10.0"
+          "revision": "6b27393cad517c067dceea85fadf050e70c4ceaa",
+          "version": "1.10.1"
         }
       },
       {
@@ -195,8 +195,8 @@
         "repositoryURL": "https://github.com/pointfreeco/swift-custom-dump",
         "state": {
           "branch": null,
-          "revision": "21f8fdbb3226e5e28a1a2fffac3e0f3deec34bf0",
-          "version": "0.2.1"
+          "revision": "51698ece74ecf31959d3fa81733f0a5363ef1b4e",
+          "version": "0.3.0"
         }
       },
       {
@@ -204,7 +204,7 @@
         "repositoryURL": "https://github.com/rythmico/swift-foundation-encore",
         "state": {
           "branch": "main",
-          "revision": "2a465f5cc081fd1e50fba69d3eb10800f59b9591",
+          "revision": "d5ef026824d6bc5351be59673b154d952b533396",
           "version": null
         }
       },

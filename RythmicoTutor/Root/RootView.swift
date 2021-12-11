@@ -29,7 +29,7 @@ struct RootView: View, TestableView {
                 // FIXME: this crashes
 //                Current.bookingsRepository.reset()
 //                Current.lessonPlanRequestRepository.reset()
-//                Current.bookingApplicationRepository.reset()
+//                Current.lessonPlanApplicationRepository.reset()
                 Current.tabSelection.reset()
             }
             Current.apnsRegistrationService.unregisterForRemoteNotifications()

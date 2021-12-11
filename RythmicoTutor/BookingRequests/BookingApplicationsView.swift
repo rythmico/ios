@@ -1,8 +1,9 @@
-import SwiftUIEncore
 import Combine
 import ComposableNavigator
+import SwiftUIEncore
+import TutorDTO
 
-struct BookingApplicationsView: View {
+struct LessonPlanApplicationsView: View {
     @Environment(\.scenePhase)
     private var scenePhase
     @Environment(\.navigator)
@@ -14,24 +15,25 @@ struct BookingApplicationsView: View {
     @ObservedObject
     private var lessonPlanRequestsTabNavigation = Current.lessonPlanRequestsTabNavigation
     @StateObject
-    private var coordinator = Current.bookingApplicationFetchingCoordinator()
+    private var coordinator = Current.lessonPlanApplicationFetchingCoordinator()
     @ObservedObject
-    private var repository = Current.bookingApplicationRepository
+    private var repository = Current.lessonPlanApplicationRepository
 
     var isLoading: Bool { coordinator.state.isLoading }
     var error: Error? { coordinator.output?.error }
-    var applications: [BookingApplication] { repository.items }
+    var applications: [LessonPlanApplication] { repository.items }
 
     var body: some View {
         VStack(spacing: .grid(5)) {
             List {
-                BookingApplicationSection(applications: applications, status: .pending) {
+                LessonPlanApplicationSection(applications: applications, status: .pending) {
                     if isLoading {
                         ActivityIndicator()
                     }
                 }
                 Section(header: Text("OTHER STATUS")) {
-                    ForEach([.selected, .notSelected, .cancelled], id: \.self, content: applicationGroupCell)
+                    // TODO: upcoming
+//                    ForEach([.selected, .notSelected, .cancelled], id: \.self, content: applicationGroupCell)
                 }
             }
             .listStyle(GroupedListStyle())
@@ -41,23 +43,23 @@ struct BookingApplicationsView: View {
         .onDisappear(perform: coordinator.cancel)
         .onSuccess(coordinator, perform: repository.setItems)
         .alertOnFailure(coordinator)
-        .onAPIEvent(.bookingApplicationsChanged, perform: coordinator.reset)
+        .onAPIEvent(.lessonPlanApplicationsChanged, perform: coordinator.reset)
         .onAppEvent(.didEnterBackground, perform: coordinator.reset)
     }
 
-    private func applicationGroupCell(for status: BookingApplication.Status) -> some View {
+    private func applicationGroupCell(for status: LessonPlanApplication.Status) -> some View {
         Button(action: { goToGroup(for: status) }) {
-            BookingApplicationGroupCell(status: status, applications: applications)
+            LessonPlanApplicationGroupCell(status: status, applications: applications)
         }
         .disabled(numberOfApplications(withStatus: status) == 0)
     }
 
-    private func goToGroup(for status: BookingApplication.Status) {
-        navigator.go(to: BookingApplicationGroupScreen(applications: applications, status: status), on: currentScreen)
+    private func goToGroup(for status: LessonPlanApplication.Status) {
+        navigator.go(to: LessonPlanApplicationGroupScreen(applications: applications, status: status), on: currentScreen)
     }
 
-    private func numberOfApplications(withStatus status: BookingApplication.Status) -> Int {
-        applications.count { $0.statusInfo.status == status }
+    private func numberOfApplications(withStatus status: LessonPlanApplication.Status) -> Int {
+        applications.count { $0.status == status }
     }
 
     private func shouldFetchPublisher() -> AnyPublisher<Void, Never> {
@@ -78,9 +80,9 @@ struct BookingApplicationsView: View {
 }
 
 #if DEBUG
-struct BookingApplicationsView_Previews: PreviewProvider {
+struct LessonPlanApplicationsView_Previews: PreviewProvider {
     static var previews: some View {
-        BookingApplicationsView()
+        LessonPlanApplicationsView()
     }
 }
 #endif

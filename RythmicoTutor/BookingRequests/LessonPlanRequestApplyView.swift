@@ -1,6 +1,6 @@
 import ComposableNavigator
-import TutorDO
 import SwiftUIEncore
+import TutorDO
 
 struct LessonPlanRequestApplyScreen: Screen {
     let lessonPlanRequest: LessonPlanRequest
@@ -23,7 +23,7 @@ struct LessonPlanRequestApplyView: View {
     @Environment(\.currentScreen)
     private var currentScreen
     @StateObject
-    private var coordinator = Current.lessonPlanRequestApplyingCoordinator()
+    private var coordinator = Current.lessonPlanApplicationCreationCoordinator()
 
     var lessonPlanRequest: LessonPlanRequest
 
@@ -32,7 +32,7 @@ struct LessonPlanRequestApplyView: View {
 
     func submit() {
         Current.keyboardDismisser.dismissKeyboard()
-        coordinator.run(with: .init(lessonPlanRequestID: lessonPlanRequest.id, privateNote: privateNote))
+        coordinator.run(with: .init(body: .init(requestID: lessonPlanRequest.id, privateNote: privateNote)))
     }
 
     var body: some View {
@@ -90,21 +90,15 @@ struct LessonPlanRequestApplyView: View {
         navigator.dismiss(screen: currentScreen)
     }
 
-    private func finalize(_ application: BookingApplication) {
-        Current.bookingApplicationRepository.insertItem(application)
+    private func finalize(_ application: LessonPlanApplication) {
+        Current.lessonPlanApplicationRepository.insertItem(application)
         Current.tabSelection.requestsTab = .applied
         navigator.goBack(to: .root)
-
-        // Optimization to remove already-applied requests before next fetch.
-        // Dispatched in the next run loop to avoid mysterious runtime crash.
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            Current.lessonPlanRequestRepository.items.removeAll(where: { $0.id.rawValue == application.lessonPlanRequestId })
-        }
     }
 }
 
 #if DEBUG
-struct BookingApplicationView_Previews: PreviewProvider {
+struct LessonPlanApplicationView_Previews: PreviewProvider {
     static var previews: some View {
         LessonPlanRequestApplyView(lessonPlanRequest: .stub)
             .environment(\.colorScheme, .dark)
