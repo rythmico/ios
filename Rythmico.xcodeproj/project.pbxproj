@@ -518,7 +518,7 @@
 		D5E987B924ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
 		D5E987BA24ED88FF00E2E1AF /* AppEnvironment+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */; };
 		D5E987C524EEED8200E2E1AF /* LessonPlanRequestsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C424EEED8200E2E1AF /* LessonPlanRequestsTabView.swift */; };
-		D5E987C724EEFC7C00E2E1AF /* BookingApplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */; };
+		D5E987C724EEFC7C00E2E1AF /* LessonPlanApplicationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E987C624EEFC7C00E2E1AF /* LessonPlanApplicationsView.swift */; };
 		D5E9FC8026C00E5F00625DAE /* AppOriginClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E9FC7F26C00E5F00625DAE /* AppOriginClient.swift */; };
 		D5E9FC8126C00E5F00625DAE /* AppOriginClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E9FC7F26C00E5F00625DAE /* AppOriginClient.swift */; };
 		D5E9FC8326C0101200625DAE /* AppOriginClientDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E9FC8226C0101200625DAE /* AppOriginClientDoubles.swift */; };
@@ -535,14 +535,14 @@
 		D5EEF6AD261BDE470014E500 /* XCTAssertText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EEF6AC261BDE470014E500 /* XCTAssertText.swift */; };
 		D5EF88B623FB706C0072BD03 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EF88B523FB706C0072BD03 /* ProgressBar.swift */; };
 		D5F4AE7E2559D3F0001085D5 /* PhoneNumberDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56B25422533331A00BC3932 /* PhoneNumberDoubles.swift */; };
-		D5F4D3E324F04479000E8580 /* BookingApplicationEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E224F04479000E8580 /* BookingApplicationEndpoints.swift */; };
+		D5F4D3E324F04479000E8580 /* LessonPlanApplicationEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E224F04479000E8580 /* LessonPlanApplicationEndpoints.swift */; };
 		D5F4D3E524F0475F000E8580 /* LessonPlanApplicationDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E424F0475F000E8580 /* LessonPlanApplicationDoubles.swift */; };
-		D5F4D3E724F096A2000E8580 /* BookingApplicationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E624F096A2000E8580 /* BookingApplicationDetailView.swift */; };
-		D5F4D3EB24F315AB000E8580 /* BookingApplicationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3EA24F315AB000E8580 /* BookingApplicationCell.swift */; };
+		D5F4D3E724F096A2000E8580 /* LessonPlanApplicationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3E624F096A2000E8580 /* LessonPlanApplicationDetailView.swift */; };
+		D5F4D3EB24F315AB000E8580 /* LessonPlanApplicationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3EA24F315AB000E8580 /* LessonPlanApplicationCell.swift */; };
 		D5F4D3ED24F317C0000E8580 /* LessonPlanRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3EC24F317C0000E8580 /* LessonPlanRequestCell.swift */; };
-		D5F4D3EF24F31CF1000E8580 /* BookingApplicationGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3EE24F31CF1000E8580 /* BookingApplicationGroupView.swift */; };
-		D5F4D3F124F31E14000E8580 /* BookingApplicationGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3F024F31E14000E8580 /* BookingApplicationGroupCell.swift */; };
-		D5F4D3F324F32EBE000E8580 /* BookingApplicationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3F224F32EBE000E8580 /* BookingApplicationSection.swift */; };
+		D5F4D3EF24F31CF1000E8580 /* LessonPlanApplicationGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3EE24F31CF1000E8580 /* LessonPlanApplicationGroupView.swift */; };
+		D5F4D3F124F31E14000E8580 /* LessonPlanApplicationGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3F024F31E14000E8580 /* LessonPlanApplicationGroupCell.swift */; };
+		D5F4D3F324F32EBE000E8580 /* LessonPlanApplicationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3F224F32EBE000E8580 /* LessonPlanApplicationSection.swift */; };
 		D5F4D3F424F33C9E000E8580 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0365F6EF2417E79000F452AC /* Address.swift */; };
 		D5F4D3F524F33CA4000E8580 /* AddressDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B1984024717AE8005529EB /* AddressDoubles.swift */; };
 		D5F4D3F724F3476F000E8580 /* AddressMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F4D3F624F3476E000E8580 /* AddressMapCell.swift */; };
@@ -1026,7 +1026,7 @@
 		D5E8F6852725DC4000895D45 /* AddressLookupItemDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupItemDoubles.swift; sourceTree = "<group>"; };
 		D5E987B824ED88FF00E2E1AF /* AppEnvironment+Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppEnvironment+Sugar.swift"; sourceTree = "<group>"; };
 		D5E987C424EEED8200E2E1AF /* LessonPlanRequestsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanRequestsTabView.swift; sourceTree = "<group>"; };
-		D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationsView.swift; sourceTree = "<group>"; };
+		D5E987C624EEFC7C00E2E1AF /* LessonPlanApplicationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationsView.swift; sourceTree = "<group>"; };
 		D5E9FC7F26C00E5F00625DAE /* AppOriginClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOriginClient.swift; sourceTree = "<group>"; };
 		D5E9FC8226C0101200625DAE /* AppOriginClientDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOriginClientDoubles.swift; sourceTree = "<group>"; };
 		D5E9FC8526C010C600625DAE /* AppOrigin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOrigin.swift; sourceTree = "<group>"; };
@@ -1037,14 +1037,14 @@
 		D5ED3264260667E800821ABE /* DateDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDoubles.swift; sourceTree = "<group>"; };
 		D5EEF6AC261BDE470014E500 /* XCTAssertText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTAssertText.swift; sourceTree = "<group>"; };
 		D5EF88B523FB706C0072BD03 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
-		D5F4D3E224F04479000E8580 /* BookingApplicationEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationEndpoints.swift; sourceTree = "<group>"; };
+		D5F4D3E224F04479000E8580 /* LessonPlanApplicationEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationEndpoints.swift; sourceTree = "<group>"; };
 		D5F4D3E424F0475F000E8580 /* LessonPlanApplicationDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationDoubles.swift; sourceTree = "<group>"; };
-		D5F4D3E624F096A2000E8580 /* BookingApplicationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationDetailView.swift; sourceTree = "<group>"; };
-		D5F4D3EA24F315AB000E8580 /* BookingApplicationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationCell.swift; sourceTree = "<group>"; };
+		D5F4D3E624F096A2000E8580 /* LessonPlanApplicationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationDetailView.swift; sourceTree = "<group>"; };
+		D5F4D3EA24F315AB000E8580 /* LessonPlanApplicationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationCell.swift; sourceTree = "<group>"; };
 		D5F4D3EC24F317C0000E8580 /* LessonPlanRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanRequestCell.swift; sourceTree = "<group>"; };
-		D5F4D3EE24F31CF1000E8580 /* BookingApplicationGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationGroupView.swift; sourceTree = "<group>"; };
-		D5F4D3F024F31E14000E8580 /* BookingApplicationGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationGroupCell.swift; sourceTree = "<group>"; };
-		D5F4D3F224F32EBE000E8580 /* BookingApplicationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingApplicationSection.swift; sourceTree = "<group>"; };
+		D5F4D3EE24F31CF1000E8580 /* LessonPlanApplicationGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationGroupView.swift; sourceTree = "<group>"; };
+		D5F4D3F024F31E14000E8580 /* LessonPlanApplicationGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationGroupCell.swift; sourceTree = "<group>"; };
+		D5F4D3F224F32EBE000E8580 /* LessonPlanApplicationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationSection.swift; sourceTree = "<group>"; };
 		D5F4D3F624F3476E000E8580 /* AddressMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressMapCell.swift; sourceTree = "<group>"; };
 		D5F4D3FA24F7120E000E8580 /* GroupedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedButton.swift; sourceTree = "<group>"; };
 		D5F5065C23FF16AA00CA4094 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
@@ -1243,7 +1243,7 @@
 				035B1D18249E567700AABFEA /* App */,
 				035B1D11249E562700AABFEA /* Root */,
 				D5E58EFF256AF05600EB52ED /* Bookings */,
-				03E88E8524B8B9100077A420 /* BookingRequests */,
+				03E88E8524B8B9100077A420 /* Requests */,
 				D5CCC33625A4C66D00E25B62 /* Profile */,
 				035B1CD0249CF3E300AABFEA /* Supporting Files */,
 				035B1CC6249CF2AC00AABFEA /* Preview Content */,
@@ -1453,7 +1453,7 @@
 			path = PushNotifications;
 			sourceTree = "<group>";
 		};
-		03E88E8524B8B9100077A420 /* BookingRequests */ = {
+		03E88E8524B8B9100077A420 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
 				D5E987C424EEED8200E2E1AF /* LessonPlanRequestsTabView.swift */,
@@ -1461,16 +1461,16 @@
 				D5F4D3EC24F317C0000E8580 /* LessonPlanRequestCell.swift */,
 				D52C553924DC71B800C295C4 /* LessonPlanRequestDetailView.swift */,
 				D577EEA624E6F66400253EA1 /* LessonPlanRequestApplyView.swift */,
-				D5E987C624EEFC7C00E2E1AF /* BookingApplicationsView.swift */,
-				D5F4D3F224F32EBE000E8580 /* BookingApplicationSection.swift */,
-				D5F4D3EA24F315AB000E8580 /* BookingApplicationCell.swift */,
-				D5F4D3F024F31E14000E8580 /* BookingApplicationGroupCell.swift */,
-				D5F4D3EE24F31CF1000E8580 /* BookingApplicationGroupView.swift */,
-				D5F4D3E624F096A2000E8580 /* BookingApplicationDetailView.swift */,
+				D5E987C624EEFC7C00E2E1AF /* LessonPlanApplicationsView.swift */,
+				D5F4D3F224F32EBE000E8580 /* LessonPlanApplicationSection.swift */,
+				D5F4D3EA24F315AB000E8580 /* LessonPlanApplicationCell.swift */,
+				D5F4D3F024F31E14000E8580 /* LessonPlanApplicationGroupCell.swift */,
+				D5F4D3EE24F31CF1000E8580 /* LessonPlanApplicationGroupView.swift */,
+				D5F4D3E624F096A2000E8580 /* LessonPlanApplicationDetailView.swift */,
 				D5FAE6852559DF8300473A8B /* PhoneNumberCell.swift */,
 				D5F4D3F624F3476E000E8580 /* AddressMapCell.swift */,
 			);
-			path = BookingRequests;
+			path = Requests;
 			sourceTree = "<group>";
 		};
 		03E88EA124C1F1980077A420 /* Core */ = {
@@ -1832,7 +1832,7 @@
 			children = (
 				0365F6F42417F1E900F452AC /* AddressLookupEndpoints.swift */,
 				03275AE2249070D5009C3980 /* APNSTokenEndpoints.swift */,
-				D5F4D3E224F04479000E8580 /* BookingApplicationEndpoints.swift */,
+				D5F4D3E224F04479000E8580 /* LessonPlanApplicationEndpoints.swift */,
 				D5E58F0D256AF1E500EB52ED /* BookingEndpoints.swift */,
 				D52A4F182538C41400C65A91 /* CardSetupEndpoints.swift */,
 				D55354EA26C08DF700E77CC4 /* CustomerPortalEndpoints.swift */,
@@ -3067,7 +3067,7 @@
 				D5E8F6802724F48600895D45 /* SIWAEndpoints.swift in Sources */,
 				D52C554824DDC60900C295C4 /* FloatingView+Tutor.swift in Sources */,
 				D588E87F266D135000E14288 /* ErrorLogger.swift in Sources */,
-				D5F4D3E724F096A2000E8580 /* BookingApplicationDetailView.swift in Sources */,
+				D5F4D3E724F096A2000E8580 /* LessonPlanApplicationDetailView.swift in Sources */,
 				D58DE1BC25BDF5C30013AEE8 /* RootViewFlow.swift in Sources */,
 				D54340F8261E7314006898B0 /* AccessibilitySettingsDoubles.swift in Sources */,
 				D5E8F6832724FE8800895D45 /* RootViewCore.swift in Sources */,
@@ -3118,7 +3118,7 @@
 				D5FC6B3A272B70B2000BCCA2 /* DateOnlyDoubles.swift in Sources */,
 				032B6FCB24B7877600299A09 /* LessonPlanRequestDoubles.swift in Sources */,
 				D5E9FC8726C010C600625DAE /* AppOrigin.swift in Sources */,
-				D5F4D3EB24F315AB000E8580 /* BookingApplicationCell.swift in Sources */,
+				D5F4D3EB24F315AB000E8580 /* LessonPlanApplicationCell.swift in Sources */,
 				035B1D32249E572900AABFEA /* URLOpener.swift in Sources */,
 				035B1D17249E566800AABFEA /* ActivityIndicator.swift in Sources */,
 				D5E58F3E256D9E4A00EB52ED /* LessonDetailView.swift in Sources */,
@@ -3128,7 +3128,7 @@
 				D5883CEB25A4189D000B545C /* CalendarSyncCoordinator.swift in Sources */,
 				035B1CC3249CF2AA00AABFEA /* MainView.swift in Sources */,
 				D52C554C24DDE5FF00C295C4 /* RythmicoButton+Tutor.swift in Sources */,
-				D5F4D3EF24F31CF1000E8580 /* BookingApplicationGroupView.swift in Sources */,
+				D5F4D3EF24F31CF1000E8580 /* LessonPlanApplicationGroupView.swift in Sources */,
 				035B1D41249E577700AABFEA /* SIWACredentialStateProviderDoubles.swift in Sources */,
 				035B1CF6249CFA5700AABFEA /* Duration.swift in Sources */,
 				D5AFED4325057C9E003FFC68 /* ActivityCoordinator+SwiftUI.swift in Sources */,
@@ -3142,7 +3142,7 @@
 				D524D0C325046B9800BC9AF7 /* UNUserNotificationCenterDoubles.swift in Sources */,
 				035B1D1A249E568600AABFEA /* AppEnvironment.swift in Sources */,
 				D5FBCA89274A605D0057BD23 /* APIEventListener.swift in Sources */,
-				D5E987C724EEFC7C00E2E1AF /* BookingApplicationsView.swift in Sources */,
+				D5E987C724EEFC7C00E2E1AF /* LessonPlanApplicationsView.swift in Sources */,
 				D5E58F20256AF31A00EB52ED /* Lesson.swift in Sources */,
 				03E88EAA24C1F4FD0077A420 /* App+PushNotifications.swift in Sources */,
 				D5217CEF24E2F8B400C89018 /* MapOpener+ActionSheet.swift in Sources */,
@@ -3155,11 +3155,11 @@
 				035B1D4F249E57DC00AABFEA /* VoiceOverServiceDoubles.swift in Sources */,
 				035B1D49249E577700AABFEA /* SIWAAuthorizationControllerDoubles.swift in Sources */,
 				D54340FE261F6269006898B0 /* AppEnvironmentDoubles+Sugar.swift in Sources */,
-				D5F4D3F324F32EBE000E8580 /* BookingApplicationSection.swift in Sources */,
+				D5F4D3F324F32EBE000E8580 /* LessonPlanApplicationSection.swift in Sources */,
 				035B1D47249E577700AABFEA /* SIWAAuthorizationServiceDoubles.swift in Sources */,
 				035B1D48249E577700AABFEA /* SIWAAuthorizationController.swift in Sources */,
 				D54CF08525F91255007D5050 /* AppSecrets.swift in Sources */,
-				D5F4D3F124F31E14000E8580 /* BookingApplicationGroupCell.swift in Sources */,
+				D5F4D3F124F31E14000E8580 /* LessonPlanApplicationGroupCell.swift in Sources */,
 				D5FBCA94274AFF980057BD23 /* APIUtils.swift in Sources */,
 				D5E987C524EEED8200E2E1AF /* LessonPlanRequestsTabView.swift in Sources */,
 				D55C35D825A3A5BC0023E56B /* CalendarEndpoints.swift in Sources */,
@@ -3169,7 +3169,7 @@
 				D5947CA026A5E44400355857 /* CellAccessory.swift in Sources */,
 				D588E882266D137400E14288 /* ErrorLoggerDoubles.swift in Sources */,
 				03E88EAF24C1F74D0077A420 /* AppExtensions.swift in Sources */,
-				D5F4D3E324F04479000E8580 /* BookingApplicationEndpoints.swift in Sources */,
+				D5F4D3E324F04479000E8580 /* LessonPlanApplicationEndpoints.swift in Sources */,
 				D54F71182547523100D73E1E /* DismissKeyboardTooltip.swift in Sources */,
 				D5CC5FF225029525007DFE84 /* ImageReference.swift in Sources */,
 				D55C35F825A3A8090023E56B /* CalendarInfoDoubles.swift in Sources */,
