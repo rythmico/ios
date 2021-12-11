@@ -309,11 +309,11 @@
       },
       {
         "package": "YouTubeiOSPlayerHelper",
-        "repositoryURL": "https://github.com/ivanlisovyi/youtube-ios-player-helper",
+        "repositoryURL": "https://github.com/youtube/youtube-ios-player-helper",
         "state": {
-          "branch": "master",
-          "revision": "b02a8c88e8724f605f30de907dfcd29daeaeb3b1",
-          "version": null
+          "branch": null,
+          "revision": "f57129cd4380ec0a74dd3a59da3270a1d653d59b",
+          "version": "1.0.4"
         }
       }
     ]
