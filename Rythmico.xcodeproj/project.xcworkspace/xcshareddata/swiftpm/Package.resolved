@@ -51,7 +51,7 @@
         "repositoryURL": "https://github.com/rythmico/dto-swift",
         "state": {
           "branch": "main",
-          "revision": "798ae871a231e1199be83c2bcab00f14d5c07792",
+          "revision": "aecc77b3633251de201602b4245d1948137dfd9a",
           "version": null
         }
       },
@@ -213,7 +213,7 @@
         "repositoryURL": "https://github.com/rythmico/swift-foundation-encore",
         "state": {
           "branch": "main",
-          "revision": "eda01d0681c4bf8811ad4e4b6c6171dee0f4c708",
+          "revision": "d6378c92341ede7e8bba7a40642fb0ab6f29cdb0",
           "version": null
         }
       },
