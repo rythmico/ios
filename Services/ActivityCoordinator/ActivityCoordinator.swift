@@ -105,9 +105,6 @@ extension ActivityCoordinator where Input: EmptyInitProtocol {
 class FailableActivityCoordinator<Input, Success>: ActivityCoordinator<Input, Result<Success, Error>> {
     override func finish(_ output: Result<Success, Error>) {
         super.finish(output)
-        if case .failure(let error) = output {
-            Current.errorLogger.log(error)
-        }
     }
 
     override func idle() {

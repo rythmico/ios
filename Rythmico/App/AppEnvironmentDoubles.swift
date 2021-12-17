@@ -55,8 +55,6 @@ extension AppEnvironment {
             siwaCredentialStateProvider: SIWACredentialStateFetcherDummy(),
             siwaCredentialRevocationNotifier: SIWACredentialRevocationNotifierDummy(),
 
-            errorLogger: ErrorLoggerDummy(),
-
             apnsRegistrationService: APNSRegistrationServiceDummy(),
             registerAPNSTokenService: APIServiceDummy(),
             pushNotificationAuthorizationCoordinator: .dummy,

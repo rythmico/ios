@@ -1,8 +1,6 @@
 #if RYTHMICO
 import Amplitude
 #endif
-import AppCenter
-import AppCenterCrashes
 import SwiftUIEncore
 
 extension AppEnvironment {
@@ -15,10 +13,6 @@ extension AppEnvironment {
             $0.initializeApiKey(AppSecrets.amplitudeProjectToken)
         }
         #endif
-        AppCenter.start(
-            withAppSecret: AppSecrets.appCenterSecret,
-            services: [Crashes.self]
-        )
         return build()
     }
 

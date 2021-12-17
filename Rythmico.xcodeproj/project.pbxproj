@@ -352,10 +352,6 @@
 		D58824C4251A6D49000820F4 /* LessonsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58824C3251A6D49000820F4 /* LessonsCollectionView.swift */; };
 		D5883CEA25A4189D000B545C /* CalendarSyncCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5883CE925A4189D000B545C /* CalendarSyncCoordinator.swift */; };
 		D5883CEB25A4189D000B545C /* CalendarSyncCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5883CE925A4189D000B545C /* CalendarSyncCoordinator.swift */; };
-		D588E87E266D135000E14288 /* ErrorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D588E87D266D135000E14288 /* ErrorLogger.swift */; };
-		D588E87F266D135000E14288 /* ErrorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D588E87D266D135000E14288 /* ErrorLogger.swift */; };
-		D588E881266D137400E14288 /* ErrorLoggerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D588E880266D137400E14288 /* ErrorLoggerDoubles.swift */; };
-		D588E882266D137400E14288 /* ErrorLoggerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D588E880266D137400E14288 /* ErrorLoggerDoubles.swift */; };
 		D58DE1BC25BDF5C30013AEE8 /* RootViewFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58DE1BB25BDF5C30013AEE8 /* RootViewFlow.swift */; };
 		D58DE1D625C0F1A20013AEE8 /* TutorProfileStatusBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58DE1D525C0F1A20013AEE8 /* TutorProfileStatusBanner.swift */; };
 		D593C7022550C03B00C684FF /* AppUpdatePrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */; };
@@ -441,8 +437,6 @@
 		D5BDD502253B406300255190 /* TabSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD501253B406300255190 /* TabSelection.swift */; };
 		D5BDD88725117E5300706EC1 /* LessonPlanRequestedScheduleAndTutorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD88625117E5300706EC1 /* LessonPlanRequestedScheduleAndTutorView.swift */; };
 		D5BDD8A72511989500706EC1 /* TutorAcceptedStatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BDD8A62511989500706EC1 /* TutorAcceptedStatusPill.swift */; };
-		D5C10897274728D000C6BBB1 /* AppCenterCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = D5C10896274728D000C6BBB1 /* AppCenterCrashes */; };
-		D5C10899274728DD00C6BBB1 /* AppCenterCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = D5C10898274728DD00C6BBB1 /* AppCenterCrashes */; };
 		D5C1089B27477F0C00C6BBB1 /* PartialStudentDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C1089A27477F0C00C6BBB1 /* PartialStudentDoubles.swift */; };
 		D5C1089D27477F6A00C6BBB1 /* PartialAddressDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C1089C27477F6A00C6BBB1 /* PartialAddressDoubles.swift */; };
 		D5C1089E2747803900C6BBB1 /* LessonPlanRequestScheduleDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B4D3C92739AA430048E4E1 /* LessonPlanRequestScheduleDoubles.swift */; };
@@ -892,8 +886,6 @@
 		D585D5B02511299800B74091 /* LessonPlanApplicationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonPlanApplicationDetailView.swift; sourceTree = "<group>"; };
 		D58824C3251A6D49000820F4 /* LessonsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsCollectionView.swift; sourceTree = "<group>"; };
 		D5883CE925A4189D000B545C /* CalendarSyncCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSyncCoordinator.swift; sourceTree = "<group>"; };
-		D588E87D266D135000E14288 /* ErrorLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLogger.swift; sourceTree = "<group>"; };
-		D588E880266D137400E14288 /* ErrorLoggerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLoggerDoubles.swift; sourceTree = "<group>"; };
 		D58DE1BB25BDF5C30013AEE8 /* RootViewFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewFlow.swift; sourceTree = "<group>"; };
 		D58DE1D525C0F1A20013AEE8 /* TutorProfileStatusBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorProfileStatusBanner.swift; sourceTree = "<group>"; };
 		D593C7012550C03B00C684FF /* AppUpdatePrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdatePrompt.swift; sourceTree = "<group>"; };
@@ -1084,7 +1076,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5439DDA26D5278300D69CE8 /* SwiftUIEncore in Frameworks */,
-				D5C10897274728D000C6BBB1 /* AppCenterCrashes in Frameworks */,
 				D535547723DF3A19005A20EB /* Valet in Frameworks */,
 				D5FBCA91274AC2A00057BD23 /* Starscream in Frameworks */,
 				D56C6A98264AC80C00A2599E /* ComposableNavigator in Frameworks */,
@@ -1102,7 +1093,6 @@
 			files = (
 				D5FBCA8F274AC2940057BD23 /* Starscream in Frameworks */,
 				D5B4D3D5273B46790048E4E1 /* TutorDO in Frameworks */,
-				D5C10899274728DD00C6BBB1 /* AppCenterCrashes in Frameworks */,
 				D5947C9826A39E9600355857 /* ComposableNavigator in Frameworks */,
 				D5439DDC26D5278B00D69CE8 /* SwiftUIEncore in Frameworks */,
 				035B1CD7249CF7EB00AABFEA /* Valet in Frameworks */,
@@ -1513,7 +1503,6 @@
 				D55C35DC25A3A5C10023E56B /* Calendar */,
 				D501586625373D8B005E02FA /* Card */,
 				D527B01B24FEAD1A003E81A9 /* Endpoints */,
-				D588E883266D137600E14288 /* ErrorLogger */,
 				D527B01924FEAC97003E81A9 /* ImageLoading */,
 				D535547A23DF3E81005A20EB /* Keychain */,
 				D5AFED3B25056300003FFC68 /* NotificationCenter+Sugar.swift */,
@@ -2043,15 +2032,6 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
-		D588E883266D137600E14288 /* ErrorLogger */ = {
-			isa = PBXGroup;
-			children = (
-				D588E87D266D135000E14288 /* ErrorLogger.swift */,
-				D588E880266D137400E14288 /* ErrorLoggerDoubles.swift */,
-			);
-			path = ErrorLogger;
-			sourceTree = "<group>";
-		};
 		D58DE1DA25C0F1B00013AEE8 /* Verification */ = {
 			isa = PBXGroup;
 			children = (
@@ -2347,7 +2327,6 @@
 				D5CFB3722675242D006DBCE0 /* Amplitude */,
 				D5439DD926D5278300D69CE8 /* SwiftUIEncore */,
 				D5B4D3D6273B468C0048E4E1 /* StudentDO */,
-				D5C10896274728D000C6BBB1 /* AppCenterCrashes */,
 				D5FBCA90274AC2A00057BD23 /* Starscream */,
 				D5DEF8632764277700CDFFB9 /* YouTubeiOSPlayerHelper */,
 			);
@@ -2378,7 +2357,6 @@
 				D5947C9726A39E9600355857 /* ComposableNavigator */,
 				D5439DDB26D5278B00D69CE8 /* SwiftUIEncore */,
 				D5B4D3D4273B46790048E4E1 /* TutorDO */,
-				D5C10898274728DD00C6BBB1 /* AppCenterCrashes */,
 				D5FBCA8E274AC2940057BD23 /* Starscream */,
 			);
 			productName = RythmicoTutor;
@@ -2472,7 +2450,6 @@
 				D5D97512252B9EB6000AD074 /* XCRemoteSwiftPackageReference "stripe-ios" */,
 				D56C6A96264AC80B00A2599E /* XCRemoteSwiftPackageReference "swift-composable-navigator" */,
 				D5CFB3712675242C006DBCE0 /* XCRemoteSwiftPackageReference "Amplitude-iOS" */,
-				D5C10895274728D000C6BBB1 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */,
 				D5FBCA8D274AC2940057BD23 /* XCRemoteSwiftPackageReference "Starscream" */,
 				D5DEF8622764277700CDFFB9 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
 			);
@@ -2874,7 +2851,6 @@
 				D5B4D3E7273C47820048E4E1 /* AppStatusProvider.swift in Sources */,
 				D501589A2538BE7C005E02FA /* Card.swift in Sources */,
 				D5F5065F240055E800CA4094 /* TextFieldHeader.swift in Sources */,
-				D588E87E266D135000E14288 /* ErrorLogger.swift in Sources */,
 				D5204F4926B62FB50085F8D0 /* Buttons+Student.swift in Sources */,
 				D549218A25BB27AE00251FD2 /* APIActivityErrorHandler+Student.swift in Sources */,
 				03AB22F3244CB13200DAC7DF /* PrivateNoteView.swift in Sources */,
@@ -2946,7 +2922,6 @@
 				D5B4D3DF273C37620048E4E1 /* LessonPlanRequestStatusPill.swift in Sources */,
 				D5D9AEB425368AAA00A0ABCC /* LessonPlanPriceView.swift in Sources */,
 				D5B4D3E3273C39BA0048E4E1 /* LessonPlanRequestSummaryTutorStatusView.swift in Sources */,
-				D588E881266D137400E14288 /* ErrorLoggerDoubles.swift in Sources */,
 				D54EFF192513D690004F14D3 /* Portfolio.swift in Sources */,
 				D5E80160272F10E4007AFEFF /* InstrumentDoubles.swift in Sources */,
 				D5B4D3CC273AD7F70048E4E1 /* LessonPlanRequestConfirmationView.swift in Sources */,
@@ -3066,7 +3041,6 @@
 				035B1D39249E576900AABFEA /* UserCredentialDoubles.swift in Sources */,
 				D5E8F6802724F48600895D45 /* SIWAEndpoints.swift in Sources */,
 				D52C554824DDC60900C295C4 /* FloatingView+Tutor.swift in Sources */,
-				D588E87F266D135000E14288 /* ErrorLogger.swift in Sources */,
 				D5F4D3E724F096A2000E8580 /* LessonPlanApplicationDetailView.swift in Sources */,
 				D58DE1BC25BDF5C30013AEE8 /* RootViewFlow.swift in Sources */,
 				D54340F8261E7314006898B0 /* AccessibilitySettingsDoubles.swift in Sources */,
@@ -3167,7 +3141,6 @@
 				D575C86F254F2F82001664AB /* ActivityCoordinator+Sugar.swift in Sources */,
 				035B1D15249E565200AABFEA /* TestableView.swift in Sources */,
 				D5947CA026A5E44400355857 /* CellAccessory.swift in Sources */,
-				D588E882266D137400E14288 /* ErrorLoggerDoubles.swift in Sources */,
 				03E88EAF24C1F74D0077A420 /* AppExtensions.swift in Sources */,
 				D5F4D3E324F04479000E8580 /* LessonPlanApplicationEndpoints.swift in Sources */,
 				D54F71182547523100D73E1E /* DismissKeyboardTooltip.swift in Sources */,
@@ -3830,14 +3803,6 @@
 				minimumVersion = 0.2.0;
 			};
 		};
-		D5C10895274728D000C6BBB1 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/microsoft/appcenter-sdk-apple";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
 		D5CFB3712675242C006DBCE0 /* XCRemoteSwiftPackageReference "Amplitude-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/amplitude/Amplitude-iOS";
@@ -3933,16 +3898,6 @@
 		D5B4D3D6273B468C0048E4E1 /* StudentDO */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = StudentDO;
-		};
-		D5C10896274728D000C6BBB1 /* AppCenterCrashes */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5C10895274728D000C6BBB1 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
-			productName = AppCenterCrashes;
-		};
-		D5C10898274728DD00C6BBB1 /* AppCenterCrashes */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5C10895274728D000C6BBB1 /* XCRemoteSwiftPackageReference "appcenter-sdk-apple" */;
-			productName = AppCenterCrashes;
 		};
 		D5CFB3722675242D006DBCE0 /* Amplitude */ = {
 			isa = XCSwiftPackageProductDependency;
