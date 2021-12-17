@@ -1,6 +1,7 @@
-import XCTest
+import FoundationEncore
 @testable import Rythmico
 import ViewInspector
+import XCTest
 
 extension LessonsView: Inspectable {}
 
@@ -46,7 +47,7 @@ final class LessonsViewTests: XCTestCase {
     }
 
     func testLessonPlansFetchingFailure() throws {
-        Current.stubAPIEndpoint(for: \.lessonPlanRequestFetchingCoordinator, result: .failure("Something 1"))
+        Current.stubAPIEndpoint(for: \.lessonPlanRequestFetchingCoordinator, result: .failure(RuntimeError("Something 1")))
 
         let view = LessonsView()
 

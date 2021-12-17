@@ -1,7 +1,8 @@
-import XCTest
+import FoundationEncore
 @testable import Rythmico
 import struct SwiftUI.Image
 import ViewInspector
+import XCTest
 
 extension RequestLessonPlanView: Inspectable {}
 
@@ -33,7 +34,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 
     func testFailureState() throws {
-        Current.stubAPIEndpoint(for: \.lessonPlanRequestCreationCoordinator, result: .failure("Something 2"))
+        Current.stubAPIEndpoint(for: \.lessonPlanRequestCreationCoordinator, result: .failure(RuntimeError("Something 2")))
 
         let view = RequestLessonPlanView(flow: RequestLessonPlanFlow())
         XCTAssertView(view) { view in

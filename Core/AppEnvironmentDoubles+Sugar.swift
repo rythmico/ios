@@ -87,7 +87,7 @@ extension AppEnvironment {
         stubAPIEndpoint(
             for: \.siwaCoordinator,
             service: APIServiceStub(
-                result: .failure("Bruh"),
+                result: .failure(RuntimeError("Some error")),
                 delay: Self.fakeAPIEndpointDelay
             )
         )
