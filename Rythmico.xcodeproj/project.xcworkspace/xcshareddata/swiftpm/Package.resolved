@@ -21,11 +21,11 @@
       },
       {
         "package": "CollectionConcurrencyKit",
-        "repositoryURL": "https://github.com/davdroman/CollectionConcurrencyKit",
+        "repositoryURL": "https://github.com/JohnSundell/CollectionConcurrencyKit",
         "state": {
-          "branch": "main",
-          "revision": "45c4ac8362c2028549fdb3ef5529107909383d4f",
-          "version": null
+          "branch": null,
+          "revision": "b4f23e24b5a1bff301efc5e70871083ca029ff95",
+          "version": "0.2.0"
         }
       },
       {
@@ -42,7 +42,7 @@
         "repositoryURL": "https://github.com/rythmico/dto-swift",
         "state": {
           "branch": "main",
-          "revision": "aecc77b3633251de201602b4245d1948137dfd9a",
+          "revision": "ff1c05c50a74ac493418fa9eaee4f9ca7b73ddea",
           "version": null
         }
       },
@@ -186,7 +186,7 @@
         "repositoryURL": "https://github.com/rythmico/swift-encore",
         "state": {
           "branch": "main",
-          "revision": "153008e3b697da5cb04e61da26d87a93b2dca242",
+          "revision": "1b7484b07ffbd4e9cedebec56e451defd0892999",
           "version": null
         }
       },
@@ -195,7 +195,7 @@
         "repositoryURL": "https://github.com/rythmico/swift-foundation-encore",
         "state": {
           "branch": "main",
-          "revision": "d6378c92341ede7e8bba7a40642fb0ab6f29cdb0",
+          "revision": "9260f2ff4ae459d7e7ee21a458bc0add0998f9ea",
           "version": null
         }
       },
