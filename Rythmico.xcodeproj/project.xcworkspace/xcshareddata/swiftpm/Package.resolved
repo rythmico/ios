@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/microsoft/appcenter-sdk-apple",
         "state": {
           "branch": null,
-          "revision": "25f64229373de97ff3920941cd52203193e5d8be",
-          "version": "4.3.0"
+          "revision": "16d6ed7c3550870ac42f95a0fdccc7235450b863",
+          "version": "4.4.0"
         }
       },
       {
@@ -51,7 +51,7 @@
         "repositoryURL": "https://github.com/rythmico/dto-swift",
         "state": {
           "branch": "main",
-          "revision": "632c5256e66a8e64641e27664aaa4355dd404f37",
+          "revision": "798ae871a231e1199be83c2bcab00f14d5c07792",
           "version": null
         }
       },
@@ -141,8 +141,8 @@
         "repositoryURL": "https://github.com/stripe/stripe-ios",
         "state": {
           "branch": null,
-          "revision": "d9b1d736488056d69e7c7d19da6536ecc6ecb860",
-          "version": "21.9.1"
+          "revision": "67f49e842d23e1c9e73255c8c2b19bf0976ac274",
+          "version": "21.10.0"
         }
       },
       {
@@ -200,11 +200,20 @@
         }
       },
       {
+        "package": "SwiftEncore",
+        "repositoryURL": "https://github.com/rythmico/swift-encore",
+        "state": {
+          "branch": "main",
+          "revision": "153008e3b697da5cb04e61da26d87a93b2dca242",
+          "version": null
+        }
+      },
+      {
         "package": "FoundationEncore",
         "repositoryURL": "https://github.com/rythmico/swift-foundation-encore",
         "state": {
           "branch": "main",
-          "revision": "d5ef026824d6bc5351be59673b154d952b533396",
+          "revision": "eda01d0681c4bf8811ad4e4b6c6171dee0f4c708",
           "version": null
         }
       },
