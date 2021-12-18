@@ -7,7 +7,7 @@ before_all do |lane, options|
   if ENV['CI']
     puts 'Running on CI'
     setup_ci
-    xcversion(version: '~> ' + File.read('../.xcode-version').strip)
+    xcversion
   else
     ensure_xcode_version(strict: false)
   end
