@@ -1,5 +1,5 @@
 import FoundationEncore
 
 protocol APIActivityErrorHandlerProtocol {
-    func handle(_ error: RythmicoAPIError)
+    func handle(_ error: RythmicoAPIError, complete: Action)
 }

@@ -18,7 +18,8 @@ struct LessonPlanApplicationDetailMessageView: View {
 
                 SectionHeaderContentView("Plan Details", style: .box, accessory: TutorAcceptedStatusPill.init) {
                     VStack(alignment: .leading, spacing: .grid(2)) {
-                        LessonPlanRequestedScheduleView(lessonPlan.schedule, tutor: nil)
+                        // TODO: upcoming
+//                        LessonPlanRequestedScheduleAndTutorView(schedule: lessonPlan.schedule, tutor: nil)
                         AddressLabel(address: lessonPlan.address)
                     }
                 }

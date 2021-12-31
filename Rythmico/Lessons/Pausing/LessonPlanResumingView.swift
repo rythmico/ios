@@ -69,7 +69,7 @@ struct LessonPlanResumingView: View {
 
     private var submitButtonTitle: String { "Resume Plan" }
     private func submit() {
-        coordinator.run(with: lessonPlan.id)
+        coordinator.run(with: .init(lessonPlanID: lessonPlan.id))
     }
 
     private func lessonPlanSuccessfullyResumed(_ lessonPlan: LessonPlan) {

@@ -42,7 +42,8 @@ struct LessonPlanBookingView: View {
                     ScrollView {
                         VStack(spacing: .grid(5)) {
                             SectionHeaderContentView("Plan Details", style: .box) {
-                                LessonPlanRequestedScheduleView(lessonPlan.schedule, tutor: application.tutor)
+                                // TODO: upcoming
+//                                LessonPlanRequestedScheduleAndTutorView(schedule: lessonPlan.schedule, tutor: application.tutor)
                             }
                             .frame(maxWidth: .grid(.max))
                             .padding(.horizontal, .grid(4))
@@ -101,7 +102,7 @@ struct LessonPlanBookingView: View {
 
     @ViewBuilder
     private var closeButton: some View {
-        if !coordinator.state.isSuccess() {
+        if !coordinator.isSucceeded() {
             CloseButton { navigator.dismiss(screen: currentScreen) }
         }
     }
@@ -127,9 +128,10 @@ struct LessonPlanBookingView: View {
         unwrap(phoneNumber, selectedCard).mapToAction { phoneNumber, selectedCard in
             coordinator.run(
                 with: .init(
-                    lessonPlanId: lessonPlan.id,
-                    applicationId: application.tutor.id,
-                    body: .init(phoneNumber: phoneNumber, cardId: selectedCard.id)
+                    lessonPlanID: lessonPlan.id,
+                    applicationID: application.tutor.id,
+                    phoneNumber: phoneNumber,
+                    cardID: selectedCard.id
                 )
             )
         }
@@ -159,7 +161,7 @@ struct LessonPlanBookingView_Previews: PreviewProvider {
             checkout: .stub
         )
 //        .environment(\.colorScheme, .dark)
-//        .environment(\.locale, Current.locale)
+//        .environment(\.locale, Current.locale())
 //        .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
 //        .environment(\.legibilityWeight, .bold)
     }

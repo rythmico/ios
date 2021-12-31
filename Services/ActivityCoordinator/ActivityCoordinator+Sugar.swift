@@ -17,10 +17,11 @@ extension ActivityCoordinator.State {
     }
 
     var isFinished: Bool {
-        finishedValue != nil
+        guard case .finished = self else { return false }
+        return true
     }
 
-    var finishedValue: Output? {
+    var output: Output? {
         guard case .finished(let output) = self else { return nil }
         return output
     }
@@ -31,20 +32,25 @@ extension ActivityCoordinator.State {
     }
 }
 
+// TODO: use parameterized extensions when available
+// https://forums.swift.org/t/parameterized-extensions/25563
+
 extension ActivityCoordinator.State {
-    func successValue<Success, Failure: Error>() -> Success? where Output == Result<Success, Failure> {
-        finishedValue?.value
+    func isSucceeded<Success, Failure: Error>() -> Bool where Output == Result<Success, Failure> {
+        output?.isSuccess == true
     }
 
-    func failureValue<Success, Failure: Error>() -> Failure? where Output == Result<Success, Failure> {
-        finishedValue?.error
+    func isFailed<Success, Failure: Error>() -> Bool where Output == Result<Success, Failure> {
+        output?.isFailure == true
+    }
+}
+
+extension ActivityCoordinator {
+    func isSucceeded<Success, Failure: Error>() -> Bool where Output == Result<Success, Failure> {
+        self.output?.isSuccess == true
     }
 
-    func isSuccess<Success, Failure: Error>() -> Bool where Output == Result<Success, Failure> {
-        finishedValue?.isSuccess == true
-    }
-
-    func isFailure<Success, Failure: Error>() -> Bool where Output == Result<Success, Failure> {
-        finishedValue?.isFailure == true
+    func isFailed<Success, Failure: Error>() -> Bool where Output == Result<Success, Failure> {
+        self.output?.isFailure == true
     }
 }

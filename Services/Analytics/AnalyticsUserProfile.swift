@@ -2,8 +2,6 @@ import SwiftUIEncore
 
 struct AnalyticsUserProfile {
     var id: String
-    var name: String?
-    var email: String?
     var accessibilitySettings: AccessibilitySettings
     var pushNotificationsAuthStatus: PushNotificationAuthorizationCoordinator.Status
     var isCalendarSyncEnabled: Bool
@@ -12,12 +10,6 @@ struct AnalyticsUserProfile {
 extension AnalyticsUserProfile {
     @AnalyticsEvent.PropsBuilder
     var rawAnalyticsValue: AnalyticsEvent.Props {
-        if let name = name?.nilIfEmpty {
-            ["Name": name]
-        }
-        if let email = email?.nilIfEmpty {
-            ["Email": email]
-        }
         [
             "iOS Voice Over Enabled": accessibilitySettings.isVoiceOverOn(),
             "iOS Interface Style": accessibilitySettings.interfaceStyle().rawAnalyticsValue,

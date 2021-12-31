@@ -1,62 +1,32 @@
-import FoundationEncore
 import APIKit
+import CoreDO
 
-enum APIActivityCoordinatorError: LocalizedError {
-    case userCredentialsMissing
-
-    var errorDescription: String? {
-        switch self {
-        case .userCredentialsMissing:
-            return "User credentials missing"
-        }
-    }
-}
-
-final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActivityCoordinator<Request.Properties, Request.Response> {
+final class APIActivityCoordinator<Request: APIRequest>: FailableActivityCoordinator<Request, Request.Response> {
     typealias Service = APIServiceBase<Request>
-    typealias Error = APIActivityCoordinatorError
 
     private let userCredentialProvider: UserCredentialProviderBase
-    private let deauthenticationService: DeauthenticationServiceProtocol
     private let errorHandler: APIActivityErrorHandlerProtocol
     private let service: Service
 
     init(
         userCredentialProvider: UserCredentialProviderBase,
-        deauthenticationService: DeauthenticationServiceProtocol,
         errorHandler: APIActivityErrorHandlerProtocol,
         service: Service
     ) {
         self.userCredentialProvider = userCredentialProvider
-        self.deauthenticationService = deauthenticationService
         self.errorHandler = errorHandler
         self.service = service
     }
 
-    override func performTask(with input: Request.Properties) {
+    override func performTask(with input: Request) {
         super.performTask(with: input)
-        guard let userCredential = userCredentialProvider.userCredential else {
-            handleUserCredentialMissing()
-            return
+        let request = input => {
+            $0.headerFields = APIUtils.headers(
+                bearer: $0.authRequired ? userCredentialProvider.userCredential : nil,
+                clientInfo: .current
+            )
         }
-        userCredential.getAccessToken { [self] result in
-            switch result {
-            case .success(let accessToken):
-                do {
-                    let request = try Request(accessToken: accessToken, properties: input)
-                    activity = service.send(request, completion: handleRequestResult)
-                } catch {
-                    handleRequestError(error)
-                }
-            case .failure(let error):
-                handleAuthenticationError(error)
-            }
-        }
-    }
-
-    private func handleUserCredentialMissing() {
-        deauthenticationService.deauthenticate()
-        finish(.failure(Error.userCredentialsMissing))
+        activity = service.send(request, completion: handleRequestResult)
     }
 
     private func handleRequestResult(_ result: Service.Result) {
@@ -68,7 +38,7 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
         }
     }
 
-    private func handleRequestError(_ error: Swift.Error) {
+    private func handleRequestError(_ error: Error) {
         switch error {
         case let error as SessionTaskError where error.isCancelledError:
             cancel()
@@ -80,18 +50,9 @@ final class APIActivityCoordinator<Request: AuthorizedAPIRequest>: FailableActiv
     }
 
     private func handleRythmicoAPIError(_ error: RythmicoAPIError) {
-        errorHandler.handle(error)
-        finish(.failure(error))
-    }
-
-    private func handleAuthenticationError(_ error: AuthenticationCommonError) {
-        switch error.reasonCode {
-        case .invalidAPIKey, .appNotAuthorized, .operationNotAllowed, .userTokenExpired:
-            deauthenticationService.deauthenticate()
-        case .unknown, .internalError, .networkError, .tooManyRequests:
-            break
+        errorHandler.handle(error) {
+            finish(.failure(error))
         }
-        finish(.failure(error))
     }
 }
 

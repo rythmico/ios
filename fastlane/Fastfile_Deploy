@@ -1,21 +1,21 @@
-desc 'Deploy student to Firebase & tutor to ASC'
-lane :deploy_staging do
-  bump_build
-  deploy_to_firebase(scheme: 'Rythmico')
-  deploy_to_firebase(scheme: 'Tutor')
+desc 'Deploy to App Center'
+lane :deploy_stage do
+  deploy_to_appcenter(scheme: 'Rythmico', app_name: 'Rythmico-Student')
+  deploy_to_appcenter(scheme: 'Tutor', app_name: 'Rythmico-Tutor')
 end
 
-private_lane :deploy_to_firebase do |options|
+private_lane :deploy_to_appcenter do |options|
   build_app(configuration: 'Staging', scheme: options[:scheme], export_method: 'ad-hoc')
-  firebase_app_distribution(
-    googleservice_info_plist_path: 'GoogleService-Info.plist',
-    testers_file: 'fastlane/staging-testers.txt',
+  appcenter_upload(
+    app_name: options[:app_name],
+    upload_build_only: true,
     release_notes: changelog_from_git_commits(
       commits_count: 20,
       pretty: '- %b (%h)', # - PR title (abcd1234)
       match_lightweight_tag: false, # Match only tags, not branches
       merge_commit_filtering: 'only_include_merges', # Include only merge commits so we can extract PR title from commit body (%b)
     ),
+    should_clip: false
   )
 end
 
@@ -31,23 +31,7 @@ lane :bump_version do
   end
 end
 
-desc 'Deploy to App Store Connect'
-lane :deploy_live do
-  bump_build
-  deploy_to_asc(scheme: 'Rythmico')
-  deploy_to_asc(scheme: 'Tutor')
-end
-
-private_lane :deploy_to_asc do |options|
-  build_app(configuration: 'Release', scheme: options[:scheme], export_method: 'app-store')
-  upload_to_testflight(skip_submission: true, skip_waiting_for_build_processing: true)
-end
-
-################
-#### Shared ####
-################
-
-private_lane :bump_build do
+lane :bump_build do
   bump_build_number(plist: 'Rythmico/Supporting Files/Info.plist')
   bump_build_number(plist: 'RythmicoTutor/Supporting Files/Info.plist')
 
@@ -65,4 +49,16 @@ private_lane :bump_build do
   sh "git commit" + " --author '#{last_git_commit_author}'" + " -m 'Bump build number (#{build_number}) [skip ci]'"
   add_git_tag(tag: version_number + '/' + build_number)
   push_to_git_remote(tags: true)
+end
+
+desc 'Deploy to App Store Connect'
+lane :deploy_live do
+  bump_build
+  deploy_to_asc(scheme: 'Rythmico')
+  deploy_to_asc(scheme: 'Tutor')
+end
+
+private_lane :deploy_to_asc do |options|
+  build_app(configuration: 'Release', scheme: options[:scheme], export_method: 'app-store')
+  upload_to_testflight(skip_submission: true, skip_waiting_for_build_processing: true)
 end

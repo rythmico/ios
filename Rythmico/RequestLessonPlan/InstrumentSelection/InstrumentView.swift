@@ -1,3 +1,4 @@
+import CoreDTO
 import SwiftUIEncore
 
 struct InstrumentView: View {
@@ -13,7 +14,7 @@ struct InstrumentView: View {
                     .foregroundColor(.rythmico.foreground)
             }
             .watermark(
-                instrument.icon.image,
+                instrument.icon,
                 color: .rythmico.picoteeBlue,
                 width: 100,
                 offset: .init(width: 5, height: -8)
@@ -27,7 +28,7 @@ struct InstrumentView: View {
 #if DEBUG
 struct InstrumentView_Preview: PreviewProvider {
     static var previews: some View {
-        ForEach(Instrument.allCases, id: \.self, content: InstrumentView.init)
+        ForEach([Instrument].stub, content: InstrumentView.init)
             .previewLayout(.sizeThatFits)
             .padding()
     }

@@ -2,11 +2,7 @@ import SwiftUIEncore
 
 extension AppEnvironment {
     mutating func setUpFake() {
-        remoteConfig = RemoteConfigStub(
-            fetchingDelay: Self.fakeAPIEndpointDelay,
-            appUpdateRequired: false
-        )
-        remoteConfigCoordinator = RemoteConfigCoordinator(service: remoteConfig)
+        appStatus = .init() => (\.isAppOutdated, false)
 
         useFakeDate()
 
@@ -15,9 +11,8 @@ extension AppEnvironment {
         settings = .fake
         keychain = KeychainFake()
 
-        appleAuthorizationService = AppleAuthorizationServiceStub(result: .success(.stub))
+        siwaAuthorizationService = SIWAAuthorizationServiceStub(result: .success(.stub))
         shouldSucceedAuthentication()
-        deauthenticationService = DeauthenticationServiceFake()
         userAuthenticated()
 
         pushNotificationAuthorization(
@@ -71,7 +66,7 @@ extension AppEnvironment {
     }
 
     mutating func userAuthenticated() {
-        userCredentialProvider = UserCredentialProviderStub(userCredential: .success)
+        userCredentialProvider = UserCredentialProviderStub(userCredential: .stub)
     }
 
     mutating func userUnauthenticated() {
@@ -79,16 +74,22 @@ extension AppEnvironment {
     }
 
     mutating func shouldSucceedAuthentication() {
-        authenticationService = AuthenticationServiceStub(
-            result: .success(.success),
-            delay: Self.fakeAPIEndpointDelay
+        stubAPIEndpoint(
+            for: \.siwaCoordinator,
+            service: APIServiceStub(
+                result: .success(.init(userID: "USER_ID", accessToken: "ACCESS_TOKEN")),
+                delay: Self.fakeAPIEndpointDelay
+            )
         )
     }
 
     mutating func shouldFailAuthentication() {
-        authenticationService = AuthenticationServiceStub(
-            result: .failure(.stub),
-            delay: Self.fakeAPIEndpointDelay
+        stubAPIEndpoint(
+            for: \.siwaCoordinator,
+            service: APIServiceStub(
+                result: .failure(RuntimeError("Some error")),
+                delay: Self.fakeAPIEndpointDelay
+            )
         )
     }
 
@@ -100,28 +101,26 @@ extension AppEnvironment {
             center: UNUserNotificationCenterStub(
                 authorizationStatus: initialStatus,
                 authorizationRequestResult: requestResult
-            ),
-            registerService: PushNotificationRegisterServiceDummy()
+            )
         )
     }
 
-    func coordinator<Request: AuthorizedAPIRequest>(for service: APIServiceBase<Request>) -> APIActivityCoordinator<Request> {
+    func coordinator<Request: APIRequest>(for service: APIServiceBase<Request>) -> APIActivityCoordinator<Request> {
         APIActivityCoordinator(
             userCredentialProvider: userCredentialProvider,
-            deauthenticationService: deauthenticationService,
             errorHandler: apiActivityErrorHandler,
             service: service
         )
     }
 
-    mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
+    mutating func stubAPIEndpoint<R: APIRequest>(
         for coordinatorKeyPath: WritableKeyPath<Self, APIActivityCoordinator<R>>,
         service: APIServiceBase<R>
     ) {
         self[keyPath: coordinatorKeyPath] = coordinator(for: service)
     }
 
-    mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
+    mutating func stubAPIEndpoint<R: APIRequest>(
         for coordinatorKeyPath: WritableKeyPath<Self, APIActivityCoordinator<R>>,
         result: Result<R.Response, Error>,
         delay: TimeInterval? = nil
@@ -129,7 +128,7 @@ extension AppEnvironment {
         stubAPIEndpoint(for: coordinatorKeyPath, service: APIServiceStub(result: result, delay: delay))
     }
 
-    mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
+    mutating func stubAPIEndpoint<R: APIRequest>(
         for coordinatorKeyPath: WritableKeyPath<Self, () -> APIActivityCoordinator<R>>,
         service: APIServiceBase<R>
     ) {
@@ -137,7 +136,7 @@ extension AppEnvironment {
         self[keyPath: coordinatorKeyPath] = { coordinator }
     }
 
-    mutating func stubAPIEndpoint<R: AuthorizedAPIRequest>(
+    mutating func stubAPIEndpoint<R: APIRequest>(
         for coordinatorKeyPath: WritableKeyPath<Self, () -> APIActivityCoordinator<R>>,
         result: Result<R.Response, Error>,
         delay: TimeInterval? = nil
@@ -145,7 +144,7 @@ extension AppEnvironment {
         stubAPIEndpoint(for: coordinatorKeyPath, service: APIServiceStub(result: result, delay: delay))
     }
 
-    mutating func fakeAPIEndpoint<R: AuthorizedAPIRequest>(
+    mutating func fakeAPIEndpoint<R: APIRequest>(
         for coordinatorKeyPath: WritableKeyPath<Self, APIActivityCoordinator<R>>,
         result: Result<R.Response, Error>,
         delay: TimeInterval? = Self.fakeAPIEndpointDelay
@@ -153,7 +152,7 @@ extension AppEnvironment {
         stubAPIEndpoint(for: coordinatorKeyPath, result: result, delay: delay)
     }
 
-    mutating func fakeAPIEndpoint<R: AuthorizedAPIRequest>(
+    mutating func fakeAPIEndpoint<R: APIRequest>(
         for coordinatorKeyPath: WritableKeyPath<Self, () -> APIActivityCoordinator<R>>,
         result: Result<R.Response, Error>,
         delay: TimeInterval? = Self.fakeAPIEndpointDelay

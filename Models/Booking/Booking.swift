@@ -1,5 +1,6 @@
 import FoundationEncore
 import PhoneNumberKit
+import TutorDTO
 
 struct Booking: Equatable, Identifiable, Hashable {
     typealias ID = Tagged<Self, String>
@@ -9,7 +10,6 @@ struct Booking: Equatable, Identifiable, Hashable {
     var student: Student
     var address: Address
     var schedule: Schedule
-    @E164PhoneNumber
     var phoneNumber: PhoneNumber
     var privateNote: String
     var lessons: [Lesson]

@@ -1,7 +1,8 @@
-import XCTest
+import FoundationEncore
 @testable import Rythmico
 import struct SwiftUI.Image
 import ViewInspector
+import XCTest
 
 extension RequestLessonPlanView: Inspectable {}
 
@@ -21,7 +22,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 
     func testLoadingState() throws {
-        Current.stubAPIEndpoint(for: \.lessonPlanRequestCoordinator, service: APIServiceDummy())
+        Current.stubAPIEndpoint(for: \.lessonPlanRequestCreationCoordinator, service: APIServiceDummy())
 
         let view = RequestLessonPlanView(flow: RequestLessonPlanFlow())
         XCTAssertView(view) { view in
@@ -33,7 +34,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 
     func testFailureState() throws {
-        Current.stubAPIEndpoint(for: \.lessonPlanRequestCoordinator, result: .failure("Something 2"))
+        Current.stubAPIEndpoint(for: \.lessonPlanRequestCreationCoordinator, result: .failure(RuntimeError("Something 2")))
 
         let view = RequestLessonPlanView(flow: RequestLessonPlanFlow())
         XCTAssertView(view) { view in
@@ -49,7 +50,7 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 
     func testConfirmationState() throws {
-        Current.stubAPIEndpoint(for: \.lessonPlanRequestCoordinator, result: .success(.pendingJackGuitarPlanStub))
+        Current.stubAPIEndpoint(for: \.lessonPlanRequestCreationCoordinator, result: .success(.stub))
 
         let view = RequestLessonPlanView(flow: RequestLessonPlanFlow())
         XCTAssertView(view) { view in
@@ -62,12 +63,14 @@ final class RequestLessonPlanViewTests: XCTestCase {
     }
 }
 
-private extension CreateLessonPlanRequest.Body {
-    static let stub = CreateLessonPlanRequest.Body(
-        instrument: .guitar,
-        student: .davidStub,
-        address: .stub,
-        schedule: .stub,
-        privateNote: "Note"
+private extension CreateLessonPlanRequestRequest {
+    static let stub = CreateLessonPlanRequestRequest(
+        body: .init(
+            instrument: .known(.guitar),
+            student: .davidStub,
+            address: .stub,
+            schedule: .stub,
+            privateNote: "Note"
+        )
     )
 }

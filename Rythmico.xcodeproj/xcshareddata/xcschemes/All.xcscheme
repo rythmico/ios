@@ -63,6 +63,33 @@
                BlueprintName = "RythmicoTutorTests"
                ReferencedContainer = "container:Rythmico.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "MainViewTests/testPushNotificationPromptOnAppear()">
+               </Test>
+            </SkippedTests>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CoreDOTests"
+               BuildableName = "CoreDOTests"
+               BlueprintName = "CoreDOTests"
+               ReferencedContainer = "container:Packages/DO">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "TutorDOTests"
+               BuildableName = "TutorDOTests"
+               BlueprintName = "TutorDOTests"
+               ReferencedContainer = "container:Packages/DO">
+            </BuildableReference>
          </TestableReference>
       </Testables>
    </TestAction>

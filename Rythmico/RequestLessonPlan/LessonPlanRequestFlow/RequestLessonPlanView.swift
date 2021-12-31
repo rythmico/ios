@@ -1,5 +1,6 @@
-import SwiftUIEncore
 import ComposableNavigator
+import StudentDTO
+import SwiftUIEncore
 
 struct RequestLessonPlanScreen: Screen {
     let presentationStyle: ScreenPresentationStyle = .sheet(allowsPush: false)
@@ -16,7 +17,7 @@ struct RequestLessonPlanScreen: Screen {
 }
 
 struct RequestLessonPlanView: View, TestableView {
-    typealias Coordinator = APIActivityCoordinator<CreateLessonPlanRequest>
+    typealias Coordinator = APIActivityCoordinator<CreateLessonPlanRequestRequest>
 
     @StateObject
     var flow: RequestLessonPlanFlow
@@ -27,7 +28,7 @@ struct RequestLessonPlanView: View, TestableView {
 
     init(flow: RequestLessonPlanFlow) {
         self._flow = .init(wrappedValue: flow)
-        let coordinator = Current.lessonPlanRequestCoordinator()
+        let coordinator = Current.lessonPlanRequestCreationCoordinator()
         self._coordinator = .init(wrappedValue: coordinator)
         self.__flowView = .init(wrappedValue: RequestLessonPlanFlowView(flow: flow, requestCoordinator: coordinator))
     }
@@ -35,11 +36,11 @@ struct RequestLessonPlanView: View, TestableView {
     let inspection = SelfInspection()
 
     var interactiveDismissDisabled: Bool {
-        flow.step.index > 0 || !coordinator.state.isReady
+        flow.step.index > 0 || !coordinator.isReady
     }
 
     var errorMessage: String? {
-        coordinator.state.failureValue()?.legibleLocalizedDescription
+        coordinator.output?.error?.legibleLocalizedDescription
     }
 
     func dismissError() {
@@ -49,25 +50,25 @@ struct RequestLessonPlanView: View, TestableView {
     var body: some View {
         CoordinatorStateView(
             coordinator: coordinator,
-            successContent: LessonPlanConfirmationView.init,
+            successContent: LessonPlanRequestConfirmationView.init,
             loadingTitle: "Submitting proposal...",
             inputContent: { flowView.alertOnFailure(coordinator) }
         )
         .testable(self)
         .backgroundColor(.rythmico.backgroundSecondary)
         .interactiveDismissDisabled(interactiveDismissDisabled)
-        .onSuccess(coordinator, perform: onLessonPlanRequested)
+        .onSuccess(coordinator, perform: onLessonPlanRequestCreated)
     }
 
-    private func onLessonPlanRequested(_ lessonPlan: LessonPlan) {
-        Current.lessonPlanRepository.insertItem(lessonPlan)
-        Current.analytics.track(.lessonPlanRequested(lessonPlan, through: flow))
+    private func onLessonPlanRequestCreated(_ lessonPlanRequest: LessonPlanRequest) {
+        Current.lessonPlanRequestRepository.insertItem(lessonPlanRequest)
+        Current.analytics.track(.lessonPlanRequestCreated(lessonPlanRequest, through: flow))
     }
 }
 
 extension RequestLessonPlanView {
     var flowView: RequestLessonPlanFlowView? {
-        coordinator.state.isReady || coordinator.state.isFailure() ? _flowView : nil
+        coordinator.isReady || coordinator.isFailed() ? _flowView : nil
     }
 }
 

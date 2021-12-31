@@ -10,16 +10,16 @@ final class ReviewRequestViewTests: XCTestCase {
         Current.userAuthenticated()
     }
 
-    func reviewRequestView() throws -> (APIServiceSpy<CreateLessonPlanRequest>, ReviewRequestView) {
-        let serviceSpy = APIServiceSpy<CreateLessonPlanRequest>()
-        Current.stubAPIEndpoint(for: \.lessonPlanRequestCoordinator, service: serviceSpy)
+    func reviewRequestView() throws -> (APIServiceSpy<CreateLessonPlanRequestRequest>, ReviewRequestView) {
+        let serviceSpy = APIServiceSpy<CreateLessonPlanRequestRequest>()
+        Current.stubAPIEndpoint(for: \.lessonPlanRequestCreationCoordinator, service: serviceSpy)
         let flow = RequestLessonPlanFlow()
         return (
             serviceSpy,
             ReviewRequestView(
-                coordinator: Current.lessonPlanRequestCoordinator(),
+                coordinator: Current.lessonPlanRequestCreationCoordinator(),
                 flow: flow,
-                instrument: .drums,
+                instrument: .stub(.drums),
                 student: .davidStub,
                 address: .stub,
                 schedule: .stub,
@@ -33,14 +33,14 @@ final class ReviewRequestViewTests: XCTestCase {
 
         XCTAssertView(view) { view in
             XCTAssertEqual(serviceSpy.sendCount, 0)
-            XCTAssertNil(serviceSpy.latestRequest?.properties)
+            XCTAssertNil(serviceSpy.latestRequest)
             view.submitRequest()
             XCTAssertEqual(serviceSpy.sendCount, 1)
-            XCTAssertEqual(serviceSpy.latestRequest?.instrument, .drums)
-            XCTAssertEqual(serviceSpy.latestRequest?.student, .davidStub)
-            XCTAssertEqual(serviceSpy.latestRequest?.address, .stub)
-            XCTAssertEqual(serviceSpy.latestRequest?.schedule, .stub)
-            XCTAssertEqual(serviceSpy.latestRequest?.privateNote, "")
+            XCTAssertEqual(serviceSpy.latestRequest?.body.instrument, .known(.drums))
+            XCTAssertEqual(serviceSpy.latestRequest?.body.student, .davidStub)
+            XCTAssertEqual(serviceSpy.latestRequest?.body.address, .stub)
+            XCTAssertEqual(serviceSpy.latestRequest?.body.schedule, .stub)
+            XCTAssertEqual(serviceSpy.latestRequest?.body.privateNote, "")
         }
     }
 }

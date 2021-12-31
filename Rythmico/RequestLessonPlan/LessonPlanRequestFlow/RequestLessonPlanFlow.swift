@@ -1,3 +1,4 @@
+import StudentDTO
 import SwiftUIEncore
 
 final class RequestLessonPlanFlow: Flow {
@@ -6,8 +7,13 @@ final class RequestLessonPlanFlow: Flow {
     var instrument: Instrument?
     @Published
     var student: Student?
+    // TODO: evolve into Address enum for upcoming "find tutor" flow
+    // enum Address {
+    //   case savedAddress(Address.ID)
+    //   case addressLookupItem(AddressLookupItem)
+    // }
     @Published
-    var address: Address?
+    var address: AddressLookupItem?
     @Published
     var schedule: Schedule?
     @Published
@@ -15,13 +21,17 @@ final class RequestLessonPlanFlow: Flow {
 }
 
 extension RequestLessonPlanFlow {
+    typealias Schedule = LessonPlanRequestSchedule
+}
+
+extension RequestLessonPlanFlow {
     enum Step: FlowStep, Equatable {
         case instrumentSelection
         case studentDetails(Instrument)
         case addressDetails(Instrument, Student)
-        case scheduling(Instrument, Student, Address)
-        case privateNote(Instrument, Student, Address, Schedule)
-        case reviewRequest(Instrument, Student, Address, Schedule, String)
+        case scheduling(Instrument, Student, AddressLookupItem)
+        case privateNote(Instrument, Student, AddressLookupItem, Schedule)
+        case reviewRequest(Instrument, Student, AddressLookupItem, Schedule, String)
 
         var index: Int {
             switch self {

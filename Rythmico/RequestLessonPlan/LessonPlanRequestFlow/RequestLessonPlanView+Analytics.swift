@@ -1,7 +1,14 @@
 import FoundationEncore
+import StudentDTO
 
 extension AnalyticsEvent {
-    static func lessonPlanRequested(_ lessonPlan: LessonPlan, through flow: RequestLessonPlanFlow) -> Self {
-        Self(name: "[Action] Plan Requested", props: lessonPlanProps(lessonPlan) + flowProps(flow))
+    static func lessonPlanRequestCreated(
+        _ lessonPlanRequest: LessonPlanRequest,
+        through flow: RequestLessonPlanFlow
+    ) -> Self {
+        Self(
+            name: "[Action] Plan Requested",
+            props: lessonPlanRequestProps(lessonPlanRequest) + flowProps(flow)
+        )
     }
 }

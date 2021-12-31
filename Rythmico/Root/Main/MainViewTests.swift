@@ -8,26 +8,11 @@ final class MainViewTests: XCTestCase {
     override func setUp() {
         Current = .dummy
         Current.userAuthenticated()
-        Current.stubAPIEndpoint(for: \.lessonPlanFetchingCoordinator, result: .success([.pendingJackGuitarPlanStub]))
+        Current.stubAPIEndpoint(for: \.lessonPlanRequestFetchingCoordinator, result: .success([.stub]))
     }
-
-    func testDeviceRegistrationOnAppear() throws {
-        let spy = APIServiceSpy<AddDeviceRequest>()
-        Current.deviceRegisterCoordinator = DeviceRegisterCoordinator(
-            deviceTokenProvider: DeviceTokenProviderStub(result: .success("TOKEN")),
-            apiCoordinator: Current.coordinator(for: spy)
-        )
-
-        let view = MainView()
-        XCTAssertView(view) { view in
-            XCTAssertEqual(spy.sendCount, 1)
-        }
-    }
-
-    func testPresentRequestLessonFlow() throws {}
 
     func testAutoPresentRequestLessonFlow() throws {
-        Current.stubAPIEndpoint(for: \.lessonPlanFetchingCoordinator, result: .success([]))
+        Current.stubAPIEndpoint(for: \.lessonPlanRequestFetchingCoordinator, result: .success([]))
 
         let view = MainView()
         XCTAssertView(view) { view in

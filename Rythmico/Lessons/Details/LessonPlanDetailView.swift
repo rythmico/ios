@@ -62,7 +62,7 @@ struct LessonPlanDetailView: View, TestableView {
                 }
             }
             .watermark(
-                lessonPlan.instrument.icon.image,
+                lessonPlan.instrument.icon,
                 color: .rythmico.picoteeBlue,
                 offset: .init(width: -8, height: -45)
             )
@@ -83,7 +83,7 @@ struct LessonPlanDetailView: View, TestableView {
             LessonPlanPriceView(
                 // TODO: consume `bookingInfo.pricePerLesson` property instead.
                 price: Price(
-                    amount: PreciseDecimal(lessonPlan.schedule.duration.rawValue),
+                    amount: PreciseDecimal(string: String(lessonPlan.schedule.duration.rawValue))!,
                     currency: .GBP
                 ),
                 showTermsOfService: false

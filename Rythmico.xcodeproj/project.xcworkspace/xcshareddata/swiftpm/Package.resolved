@@ -2,21 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "abseil",
-        "repositoryURL": "https://github.com/firebase/abseil-cpp-SwiftPM.git",
-        "state": {
-          "branch": null,
-          "revision": "fffc3c2729be5747390ad02d5100291a0d9ad26a",
-          "version": "0.20200225.4"
-        }
-      },
-      {
         "package": "Amplitude",
         "repositoryURL": "https://github.com/amplitude/Amplitude-iOS",
         "state": {
           "branch": null,
-          "revision": "fa2af27371ef3eaf54e839b84ee7238a8b95344c",
-          "version": "8.4.0"
+          "revision": "b8a0d51fd414db206050ac83806795a8fab6f447",
+          "version": "8.7.1"
         }
       },
       {
@@ -24,17 +15,17 @@
         "repositoryURL": "https://github.com/davdroman/APIKit",
         "state": {
           "branch": "davdroman-improvements",
-          "revision": "15cf0b3e45447d773ebd43d79dc4220454218913",
+          "revision": "398ffbc92adffc1fd1f6bd0fe0dd09caecf18d2b",
           "version": null
         }
       },
       {
-        "package": "BoringSSL-GRPC",
-        "repositoryURL": "https://github.com/firebase/boringssl-SwiftPM.git",
+        "package": "CollectionConcurrencyKit",
+        "repositoryURL": "https://github.com/JohnSundell/CollectionConcurrencyKit",
         "state": {
           "branch": null,
-          "revision": "734a8247442fde37df4364c21f6a0085b6a36728",
-          "version": "0.7.2"
+          "revision": "b4f23e24b5a1bff301efc5e70871083ca029ff95",
+          "version": "0.2.0"
         }
       },
       {
@@ -47,66 +38,12 @@
         }
       },
       {
-        "package": "Firebase",
-        "repositoryURL": "https://github.com/firebase/firebase-ios-sdk",
-        "state": {
-          "branch": null,
-          "revision": "2f972249c520cbf87ac8856f176ebc994cb1c9a6",
-          "version": "8.7.0"
-        }
-      },
-      {
-        "package": "FoundationEncore",
-        "repositoryURL": "https://github.com/rythmico/FoundationEncore",
+        "package": "DTO",
+        "repositoryURL": "https://github.com/rythmico/dto-swift",
         "state": {
           "branch": "main",
-          "revision": "70ec269c4ceab6bc85c1dad2fa61c554830a3c55",
+          "revision": "ff1c05c50a74ac493418fa9eaee4f9ca7b73ddea",
           "version": null
-        }
-      },
-      {
-        "package": "GoogleAppMeasurement",
-        "repositoryURL": "https://github.com/google/GoogleAppMeasurement.git",
-        "state": {
-          "branch": null,
-          "revision": "4901bde146b0269da35470d261f741f0e910d8df",
-          "version": "8.7.0"
-        }
-      },
-      {
-        "package": "GoogleDataTransport",
-        "repositoryURL": "https://github.com/google/GoogleDataTransport.git",
-        "state": {
-          "branch": null,
-          "revision": "7fb27ea49414b9c5483503cd06baa821c8654d1e",
-          "version": "9.1.1"
-        }
-      },
-      {
-        "package": "GoogleUtilities",
-        "repositoryURL": "https://github.com/google/GoogleUtilities.git",
-        "state": {
-          "branch": null,
-          "revision": "616fac2626b6b2d1424d79a6f786b4e2ed1cfb49",
-          "version": "7.5.2"
-        }
-      },
-      {
-        "package": "gRPC",
-        "repositoryURL": "https://github.com/firebase/grpc-SwiftPM.git",
-        "state": {
-          "branch": null,
-          "revision": "fb405dd2c7901485f7e158b24e3a0a47e4efd8b5",
-          "version": "1.28.4"
-        }
-      },
-      {
-        "package": "GTMSessionFetcher",
-        "repositoryURL": "https://github.com/google/gtm-session-fetcher.git",
-        "state": {
-          "branch": null,
-          "revision": "bc6a19702ac76ac4e488b68148710eb815f9bc56",
-          "version": "1.7.0"
         }
       },
       {
@@ -114,17 +51,17 @@
         "repositoryURL": "https://github.com/mxcl/LegibleError",
         "state": {
           "branch": null,
-          "revision": "3aeb15455edc0cd6ea0e8d562079db4ab9a25afc",
-          "version": "1.0.5"
+          "revision": "bc596702d7ff618c3f90ba480eeb48b3e83a2fbe",
+          "version": "1.0.6"
         }
       },
       {
-        "package": "leveldb",
-        "repositoryURL": "https://github.com/firebase/leveldb.git",
+        "package": "MobileProvision",
+        "repositoryURL": "https://github.com/CrazyFanFan/MobileProvision",
         "state": {
           "branch": null,
-          "revision": "0706abcc6b0bd9cedfbb015ba840e4a780b5159b",
-          "version": "1.22.2"
+          "revision": "4a1169e50976b17b510467a81ed254642879d4fa",
+          "version": "0.0.2"
         }
       },
       {
@@ -132,17 +69,8 @@
         "repositoryURL": "https://github.com/davdroman/MultiModal",
         "state": {
           "branch": null,
-          "revision": "e6f76c7851dcef105e1f52b8213ddbd50705e6ff",
-          "version": "2.0.1"
-        }
-      },
-      {
-        "package": "nanopb",
-        "repositoryURL": "https://github.com/firebase/nanopb.git",
-        "state": {
-          "branch": null,
-          "revision": "7ee9ef9f627d85cbe1b8c4f49a3ed26eed216c77",
-          "version": "2.30908.0"
+          "revision": "1f9f5331ed0b374e5f9273162c8782a1884dfaa5",
+          "version": "2.1.0"
         }
       },
       {
@@ -150,43 +78,25 @@
         "repositoryURL": "https://github.com/davdroman/PeriodDuration",
         "state": {
           "branch": null,
-          "revision": "8c6d88e00ec2be7c80de97caf7104f76c1eab410",
-          "version": "0.3.0"
+          "revision": "d6689e32ec22f77cd45c4967ed0d103d81c1abb9",
+          "version": "0.10.0"
         }
       },
       {
         "package": "PhoneNumberKit",
-        "repositoryURL": "https://github.com/marmelroy/PhoneNumberKit",
+        "repositoryURL": "https://github.com/davdroman/PhoneNumberKit",
         "state": {
-          "branch": null,
-          "revision": "1ef0431b971f69c48ca5eb4cdba07f2c5da54c35",
-          "version": "3.3.3"
+          "branch": "davdroman-improvements",
+          "revision": "d9f14aa3f61a4f9bf3d6ce1f01e2d57dd71bb948",
+          "version": null
         }
       },
       {
         "package": "PreciseDecimal",
         "repositoryURL": "https://github.com/davdroman/PreciseDecimal",
         "state": {
-          "branch": null,
-          "revision": "a15081386a21414f445a0d14ffcfebd8df3c6da3",
-          "version": "1.0.0"
-        }
-      },
-      {
-        "package": "Promises",
-        "repositoryURL": "https://github.com/google/promises.git",
-        "state": {
-          "branch": null,
-          "revision": "611337c330350c9c1823ad6d671e7f936af5ee13",
-          "version": "2.0.0"
-        }
-      },
-      {
-        "package": "RythmicoDTO",
-        "repositoryURL": "https://github.com/rythmico/RythmicoDTO",
-        "state": {
           "branch": "main",
-          "revision": "1a6787915e2a3e67696b79c83e4184536cdc370e",
+          "revision": "2ab57fc9a2262204c2bde46d133d2b9dd72e74a0",
           "version": null
         }
       },
@@ -200,12 +110,21 @@
         }
       },
       {
+        "package": "Starscream",
+        "repositoryURL": "https://github.com/daltoniam/Starscream",
+        "state": {
+          "branch": null,
+          "revision": "df8d82047f6654d8e4b655d1b1525c64e1059d21",
+          "version": "4.0.4"
+        }
+      },
+      {
         "package": "Stripe",
         "repositoryURL": "https://github.com/stripe/stripe-ios",
         "state": {
           "branch": null,
-          "revision": "fabd7ebe14052d505466ffe824b49eeab3778501",
-          "version": "21.8.1"
+          "revision": "67f49e842d23e1c9e73255c8c2b19bf0976ac274",
+          "version": "21.10.0"
         }
       },
       {
@@ -213,8 +132,8 @@
         "repositoryURL": "https://github.com/apple/swift-algorithms",
         "state": {
           "branch": null,
-          "revision": "2327673b0e9c7e90e6b1826376526ec3627210e4",
-          "version": "0.2.1"
+          "revision": "b14b7f4c528c942f121c8b860b9410b2bf57825e",
+          "version": "1.0.0"
         }
       },
       {
@@ -231,8 +150,8 @@
         "repositoryURL": "https://github.com/apple/swift-collections",
         "state": {
           "branch": null,
-          "revision": "2d33a0ea89c961dcb2b3da2157963d9c0370347e",
-          "version": "1.0.1"
+          "revision": "48254824bb4248676bf7ce56014ff57b142b77eb",
+          "version": "1.0.2"
         }
       },
       {
@@ -240,8 +159,8 @@
         "repositoryURL": "https://github.com/pointfreeco/swift-composable-architecture",
         "state": {
           "branch": null,
-          "revision": "599a2398adaaa7a4e3f5420cde7728c39e33677e",
-          "version": "0.28.1"
+          "revision": "9c162f485bbd4cc09b86163d3c2901aeab6e6288",
+          "version": "0.31.0"
         }
       },
       {
@@ -258,8 +177,26 @@
         "repositoryURL": "https://github.com/pointfreeco/swift-custom-dump",
         "state": {
           "branch": null,
-          "revision": "c2dd2c64b753dda592f5619303e02f741cd3e862",
-          "version": "0.2.0"
+          "revision": "51698ece74ecf31959d3fa81733f0a5363ef1b4e",
+          "version": "0.3.0"
+        }
+      },
+      {
+        "package": "SwiftEncore",
+        "repositoryURL": "https://github.com/rythmico/swift-encore",
+        "state": {
+          "branch": "main",
+          "revision": "1b7484b07ffbd4e9cedebec56e451defd0892999",
+          "version": null
+        }
+      },
+      {
+        "package": "FoundationEncore",
+        "repositoryURL": "https://github.com/rythmico/swift-foundation-encore",
+        "state": {
+          "branch": "main",
+          "revision": "9260f2ff4ae459d7e7ee21a458bc0add0998f9ea",
+          "version": null
         }
       },
       {
@@ -267,8 +204,8 @@
         "repositoryURL": "https://github.com/pointfreeco/swift-identified-collections",
         "state": {
           "branch": null,
-          "revision": "c8e6a40209650ab619853cd4ce89a0aa51792754",
-          "version": "0.3.0"
+          "revision": "680bf440178a78a627b1c2c64c0855f6523ad5b9",
+          "version": "0.3.2"
         }
       },
       {
@@ -285,17 +222,8 @@
         "repositoryURL": "https://github.com/apple/swift-numerics",
         "state": {
           "branch": null,
-          "revision": "6583ac70c326c3ee080c1d42d9ca3361dca816cd",
-          "version": "0.1.0"
-        }
-      },
-      {
-        "package": "SwiftProtobuf",
-        "repositoryURL": "https://github.com/apple/swift-protobuf.git",
-        "state": {
-          "branch": null,
-          "revision": "1f62db409f2c9b0223a3f68567b4a01333aae778",
-          "version": "1.17.0"
+          "revision": "0a5bc04095a675662cf24757cc0640aa2204253b",
+          "version": "1.0.2"
         }
       },
       {
@@ -330,8 +258,8 @@
         "repositoryURL": "https://github.com/davdroman/TextBuilder",
         "state": {
           "branch": null,
-          "revision": "63f7b6c2a8cd677f6664e7130922eb0c49b8ae11",
-          "version": "1.2.0"
+          "revision": "dc589a9a17ffde3946c4512dca4827a374d4b4f7",
+          "version": "1.4.0"
         }
       },
       {
@@ -372,11 +300,11 @@
       },
       {
         "package": "YouTubeiOSPlayerHelper",
-        "repositoryURL": "https://github.com/ivanlisovyi/youtube-ios-player-helper",
+        "repositoryURL": "https://github.com/youtube/youtube-ios-player-helper",
         "state": {
-          "branch": "master",
-          "revision": "b02a8c88e8724f605f30de907dfcd29daeaeb3b1",
-          "version": null
+          "branch": null,
+          "revision": "f57129cd4380ec0a74dd3a59da3270a1d653d59b",
+          "version": "1.0.4"
         }
       }
     ]

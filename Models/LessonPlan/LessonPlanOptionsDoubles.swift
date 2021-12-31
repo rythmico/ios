@@ -40,7 +40,7 @@ extension LessonPlan.Options.Pause {
 
 extension LessonPlan.Options.Pause.Policy {
     static let stub = Self(
-        freeBeforeDate: .stub - (24, .hour, .neutral),
+        freeBeforeDate: try! .stub - (24, .hour, .neutral),
         freeBeforePeriod: .init(hours: 24)
     )
 }
@@ -65,7 +65,7 @@ extension LessonPlan.Options.Cancel {
 
 extension LessonPlan.Options.Cancel.Policy {
     static let stub = Self(
-        freeBeforeDate: .stub - (24, .hour, .neutral),
+        freeBeforeDate: try! .stub - (24, .hour, .neutral),
         freeBeforePeriod: .init(hours: 24)
     )
 }

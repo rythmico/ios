@@ -15,7 +15,7 @@ final class RequestLessonPlanFlowViewTests: XCTestCase {
         let flow = RequestLessonPlanFlow()
         let view = RequestLessonPlanFlowView(
             flow: flow,
-            requestCoordinator: Current.lessonPlanRequestCoordinator()
+            requestCoordinator: Current.lessonPlanRequestCreationCoordinator()
         )
         return (flow, view)
     }
@@ -35,12 +35,12 @@ final class RequestLessonPlanFlowViewTests: XCTestCase {
         let (flow, view) = flowView()
 
         XCTAssertView(view) { view in
-            flow.instrument = .guitar
+            flow.instrument = .stub(.guitar)
 
             XCTAssertTrue(view.shouldShowBackButton)
             XCTAssertEqual(view.stepNumber, 2)
             XCTAssertEqual(view.stepCount, 6)
-            XCTAssertEqual(flow.step, .studentDetails(.guitar))
+            XCTAssertEqual(flow.step, .studentDetails(.stub(.guitar)))
         }
     }
 
@@ -48,13 +48,13 @@ final class RequestLessonPlanFlowViewTests: XCTestCase {
         let (flow, view) = flowView()
 
         XCTAssertView(view) { view in
-            flow.instrument = .guitar
+            flow.instrument = .stub(.guitar)
             flow.student = .davidStub
 
             XCTAssertTrue(view.shouldShowBackButton)
             XCTAssertEqual(view.stepNumber, 3)
             XCTAssertEqual(view.stepCount, 6)
-            XCTAssertEqual(flow.step, .addressDetails(.guitar, .davidStub))
+            XCTAssertEqual(flow.step, .addressDetails(.stub(.guitar), .davidStub))
         }
     }
 
@@ -62,14 +62,14 @@ final class RequestLessonPlanFlowViewTests: XCTestCase {
         let (flow, view) = flowView()
 
         XCTAssertView(view) { view in
-            flow.instrument = .guitar
+            flow.instrument = .stub(.guitar)
             flow.student = .davidStub
             flow.address = .stub
 
             XCTAssertTrue(view.shouldShowBackButton)
             XCTAssertEqual(view.stepNumber, 4)
             XCTAssertEqual(view.stepCount, 6)
-            XCTAssertEqual(flow.step, .scheduling(.guitar, .davidStub, .stub))
+            XCTAssertEqual(flow.step, .scheduling(.stub(.guitar), .davidStub, .stub))
         }
     }
 
@@ -77,7 +77,7 @@ final class RequestLessonPlanFlowViewTests: XCTestCase {
         let (flow, view) = flowView()
 
         XCTAssertView(view) { view in
-            flow.instrument = .guitar
+            flow.instrument = .stub(.guitar)
             flow.student = .davidStub
             flow.address = .stub
             flow.schedule = .stub
@@ -85,7 +85,7 @@ final class RequestLessonPlanFlowViewTests: XCTestCase {
             XCTAssertTrue(view.shouldShowBackButton)
             XCTAssertEqual(view.stepNumber, 5)
             XCTAssertEqual(view.stepCount, 6)
-            XCTAssertEqual(flow.step, .privateNote(.guitar, .davidStub, .stub, .stub))
+            XCTAssertEqual(flow.step, .privateNote(.stub(.guitar), .davidStub, .stub, .stub))
         }
     }
 
@@ -93,7 +93,7 @@ final class RequestLessonPlanFlowViewTests: XCTestCase {
         let (flow, view) = flowView()
 
         XCTAssertView(view) { view in
-            flow.instrument = .guitar
+            flow.instrument = .stub(.guitar)
             flow.student = .davidStub
             flow.address = .stub
             flow.schedule = .stub
@@ -102,7 +102,7 @@ final class RequestLessonPlanFlowViewTests: XCTestCase {
             XCTAssertTrue(view.shouldShowBackButton)
             XCTAssertEqual(view.stepNumber, 6)
             XCTAssertEqual(view.stepCount, 6)
-            XCTAssertEqual(flow.step, .reviewRequest(.guitar, .davidStub, .stub, .stub, "Note"))
+            XCTAssertEqual(flow.step, .reviewRequest(.stub(.guitar), .davidStub, .stub, .stub, "Note"))
         }
     }
 }

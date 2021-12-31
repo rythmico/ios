@@ -1,6 +1,8 @@
+import StudentDO
 import SwiftUIEncore
 import Combine
 import ComposableNavigator
+import SwiftUI
 
 struct LessonsScreen: Screen {
     let presentationStyle: ScreenPresentationStyle = .push
@@ -45,18 +47,17 @@ struct LessonsView: View, TestableView {
     private var currentScreen
     @ObservedObject
     private var lessonsTabNavigation = Current.lessonsTabNavigation
-    @ObservedObject
-    private var coordinator = Current.lessonPlanFetchingCoordinator
+    @StateObject
+    private var coordinator = Current.lessonPlanRequestFetchingCoordinator()
     @State
     private var hasAutoPresentedRequestFlow = false
     @State
     private var hasRequestedAppStoreReview = false
     @ObservedObject
-    private var repository = Current.lessonPlanRepository
+    private(set) var repository = Current.lessonPlanRequestRepository
 
     var isLoading: Bool { coordinator.state.isLoading }
-    var error: Error? { coordinator.state.failureValue() }
-    var lessonPlans: [LessonPlan] { repository.items }
+    var error: Error? { coordinator.output?.error }
 
     let inspection = SelfInspection()
     var body: some View {
@@ -65,7 +66,7 @@ struct LessonsView: View, TestableView {
                 TabMenuView(tabs: Filter.allCases, selection: $tabSelection.lessonsTab)
                 LessonsCollectionView(
                     isLoading: coordinator.state.isLoading,
-                    lessonPlans: repository.items,
+                    lessonPlanRequests: repository.items,
                     filter: tabSelection.lessonsTab
                 )
             }
@@ -79,8 +80,10 @@ struct LessonsView: View, TestableView {
         .onReceive(shouldFetchPublisher(), perform: fetch)
         // FIXME: double HTTP request for some reason
 //        .onDisappear(perform: coordinator.cancel)
-        .onSuccess(coordinator, perform: onLessonPlansFetched)
+        .onSuccess(coordinator, perform: onLessonPlanRequestsFetched)
         .alertOnFailure(coordinator)
+        .onAPIEvent(.lessonPlanRequestsChanged, perform: coordinator.reset)
+        .onAppEvent(.didEnterBackground, perform: coordinator.reset)
     }
 
     private var title: String { MainView.Tab.lessons.title }
@@ -99,20 +102,20 @@ struct LessonsView: View, TestableView {
         navigator.go(to: RequestLessonPlanScreen(), on: currentScreen)
     }
 
-    func onLessonPlansFetched(_ lessonPlans: [LessonPlan]) {
-        repository.setItems(lessonPlans)
-        Current.analytics.updateLessonPlanStats(lessonPlans)
-        if lessonPlans.isEmpty {
+    func onLessonPlanRequestsFetched(_ lessonPlanRequests: [LessonPlanRequest]) {
+        repository.setItems(lessonPlanRequests)
+        if lessonPlanRequests.isEmpty {
             if !hasAutoPresentedRequestFlow {
                 hasAutoPresentedRequestFlow = true
                 presentRequestLessonFlow()
             }
         } else {
-            if !hasRequestedAppStoreReview {
+            if Current.pushNotificationAuthorizationCoordinator.status.isNotDetermined {
+                Current.pushNotificationAuthorizationCoordinator.requestAuthorization()
+            } else if !hasRequestedAppStoreReview {
                 hasRequestedAppStoreReview = true
                 Current.appStoreReviewPrompt.requestReview()
             }
-            Current.pushNotificationAuthorizationCoordinator.requestAuthorization()
         }
     }
 
@@ -130,22 +133,6 @@ struct LessonsView: View, TestableView {
     private func fetch() {
         guard Current.sceneState() == .active else { return }
         coordinator.startToIdle()
-    }
-}
-
-extension AnalyticsCoordinator {
-    // TODO: optimize
-    func updateLessonPlanStats(_ lessonPlans: [LessonPlan]) {
-        updateUserProperties(.init {
-            ["Total Plans Pending": lessonPlans.count(where: \.status.isPending)]
-            ["Total Plans Reviewing": lessonPlans.count(where: \.status.isReviewing)]
-            ["Total Plans Active": lessonPlans.count(where: \.status.isActive)]
-            ["Total Plans Paused": lessonPlans.count(where: \.status.isPaused)]
-            ["Total Plans Cancelled": lessonPlans.count(where: \.status.isCancelled)]
-
-            ["Total Lessons Skipped": lessonPlans.allLessons().count(where: \.status.isSkipped)]
-            ["Total Lessons Completed": lessonPlans.allLessons().count(where: \.status.isCompleted)]
-        })
     }
 }
 

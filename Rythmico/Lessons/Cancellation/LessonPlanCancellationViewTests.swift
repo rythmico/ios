@@ -16,11 +16,11 @@ final class LessonPlanCancellationViewTests: XCTestCase {
 
         let view = try XCTUnwrap(LessonPlanCancellationView(lessonPlan: .pendingDavidGuitarPlanStub, option: .stub))
         XCTAssertView(view) { view in
-            XCTAssertNil(spy.latestRequest?.lessonPlanId)
-            XCTAssertNil(spy.latestRequest?.body.reason)
+            XCTAssertNil(spy.latestRequest?.lessonPlanID)
+            XCTAssertNil(spy.latestRequest?.reason)
             view.submit(.badTutor)
-            XCTAssertEqual(spy.latestRequest?.lessonPlanId, LessonPlan.pendingDavidGuitarPlanStub.id)
-            XCTAssertEqual(spy.latestRequest?.body.reason, .badTutor)
+            XCTAssertEqual(spy.latestRequest?.lessonPlanID, LessonPlan.pendingDavidGuitarPlanStub.id)
+            XCTAssertEqual(spy.latestRequest?.reason, .badTutor)
         }
     }
 }

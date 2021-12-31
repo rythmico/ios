@@ -9,7 +9,7 @@ extension Booking.ID {
 extension Booking {
     static let jackGuitarBookingStub = Self(
         id: .random(),
-        instrument: .guitar,
+        instrument: .stub(.guitar),
         student: .jackStub,
         address: .stub,
         schedule: .stub,

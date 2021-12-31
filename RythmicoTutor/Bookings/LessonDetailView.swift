@@ -54,7 +54,8 @@ struct LessonDetailView: View {
                 TitleCell(title: "Duration", detail: duration)
             }
             Section(header: Text("ADDRESS DETAILS")) {
-                AddressMapCell(addressInfo: .address(lesson.address))
+                // TODO: upcoming
+//                AddressMapCell(addressInfo: .address(lesson.address))
             }
             Section {
                 GroupedButton(title: "View Student Details", action: presentStudentDetails)

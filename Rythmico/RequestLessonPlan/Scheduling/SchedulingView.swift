@@ -1,3 +1,4 @@
+import StudentDTO
 import SwiftUIEncore
 
 struct SchedulingView: View, FocusableView, TestableView {
@@ -13,25 +14,19 @@ struct SchedulingView: View, FocusableView, TestableView {
     var focusCoordinator = FocusCoordinator(keyboardDismisser: Current.keyboardDismisser, endEditingOnBackgroundTap: false)
 
     final class ViewState: ObservableObject {
-        @Published var startDate: Date?
-        @Published var startTime: Date?
-        @Published var duration: Schedule.Duration?
-
-        var startDateAndTime: Date? {
-            unwrap(startDate, startTime).map {
-                Date(date: $0, time: $1, timeZone: Current.timeZone)
-            }
-        }
+        @Published var startDate: DateOnly?
+        @Published var startTime: TimeOnly?
+        @Published var duration: Duration?
     }
 
     @ObservedObject private(set)
     var state: ViewState
     var instrument: Instrument
-    var setter: Binding<Schedule>.Setter
+    var setter: Binding<LessonPlanRequestSchedule>.Setter
 
-    private let firstAvailableDate = Current.date() + (2, .day, Current.timeZone)
-    private let defaultStartTime = Current.date() => ([.minute, .second, .nanosecond], 0, Current.timeZone)
-    private let defaultDuration: Schedule.Duration = .oneHour
+    private let firstAvailableDate = try! Current.date() + (2, .day, .neutral)
+    private let defaultStartTime = try! TimeOnly(hour: 18, minute: 00)
+    private let defaultDuration: Duration = LessonPlanRequestSchedule.ValidDuration.sixtyMinutes
 
     @SpacedTextBuilder
     var subtitle: Text {
@@ -40,33 +35,27 @@ struct SchedulingView: View, FocusableView, TestableView {
         "to commence and for how long"
     }
 
-    private static let dateFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
-    private static let timeFormatter = Current.dateFormatter(format: .preset(date: .none, time: .short))
-
-    private static let scheduleInfoDayFormatter = Current.dateFormatter(format: .custom("EEEE"))
-    private static let scheduleInfoStartDayFormatter = Current.dateFormatter(format: .custom("EEEE d MMMM"))
-    private static let scheduleInfoDurationFormatter = Current.dateIntervalFormatter(format: .preset(time: .short, date: .none))
-
-    var startDateText: String? { state.startDate.map(Self.dateFormatter.string(from:)) }
-    var startTimeText: String? { state.startTime.map(Self.timeFormatter.string(from:)) }
-    var durationText: String? { state.duration?.title }
+    var startDateText: String? { state.startDate?.formatted(custom: "EEEE d MMMM", locale: Current.locale()) }
+    var startTimeText: String? { state.startTime?.formatted(style: .short, locale: Current.locale()) }
+    var durationText: String? { state.duration?.formatted(style: .full, allowedUnits: .minute, locale: Current.locale()) }
 
     var scheduleInfoText: String? {
         guard
-            let startDateAndTime = state.startDateAndTime,
+            let startDate = state.startDate,
+            let startTime = state.startTime,
             let duration = state.duration,
-            let endDateAndTime = Current.calendar().date(byAdding: .minute, value: duration.rawValue, to: startDateAndTime)
+            let endTime = try? startTime + duration
         else {
             return nil
         }
-        let day = Self.scheduleInfoDayFormatter.string(from: startDateAndTime)
-        let time = Self.scheduleInfoDurationFormatter.string(from: startDateAndTime, to: endDateAndTime)
-        let startDay = Self.scheduleInfoStartDayFormatter.string(from: startDateAndTime)
+        let day = startDate.formatted(custom: "EEEE", locale: Current.locale())
+        let time = TimeOnlyInterval(start: startTime, end: endTime).formatted(style: .short, locale: Current.locale())
+        let startDay = startDate.formatted(custom: "EEEE d MMMM", locale: Current.locale())
         return "Lessons will be scheduled every \(day) \(time) starting \(startDay)"
     }
 
     var nextButtonAction: Action? {
-        unwrap(state.startDateAndTime, state.duration).map(Schedule.init).mapToAction(setter)
+        unwrap(state.startDate, state.startTime, state.duration).map(LessonPlanRequestSchedule.init).mapToAction(setter)
     }
 
     let inspection = SelfInspection()
@@ -82,14 +71,16 @@ struct SchedulingView: View, FocusableView, TestableView {
                                 isEditing: focus == .startDate,
                                 editAction: beginEditingStartDate
                             ) {
-                                if let startDateBinding = Binding($state.startDate) {
-                                    DatePicker(
-                                        "",
-                                        selection: startDateBinding,
-                                        in: firstAvailableDate...,
-                                        displayedComponents: .date
-                                    )
-                                    .datePickerStyle(GraphicalDatePickerStyle())
+                                if let $startDate = Binding($state.startDate) {
+                                    DateOnlyPicker(selection: $startDate) { $selection in
+                                        DatePicker(
+                                            "",
+                                            selection: $selection,
+                                            in: firstAvailableDate...,
+                                            displayedComponents: .date
+                                        )
+                                        .datePickerStyle(GraphicalDatePickerStyle())
+                                    }
                                     .padding([.top, .horizontal], .grid(2))
                                 }
                             }
@@ -101,10 +92,7 @@ struct SchedulingView: View, FocusableView, TestableView {
                                     CustomTextField(
                                         "Time...",
                                         text: .constant(startTimeText ?? .empty),
-                                        inputMode: DatePickerInputMode(
-                                            selection: $state.startTime.or(defaultStartTime),
-                                            mode: .time
-                                        ),
+                                        inputMode: .timeOnlyPicker(selection: $state.startTime.or(defaultStartTime)),
                                         inputAccessory: .doneButton,
                                         onEditingChanged: onEditingStartTimeChanged
                                     )
@@ -116,9 +104,10 @@ struct SchedulingView: View, FocusableView, TestableView {
                                     CustomTextField(
                                         "Duration...",
                                         text: .constant(durationText ?? .empty),
-                                        inputMode: PickerInputMode(
+                                        inputMode: .picker(
+                                            data: LessonPlanRequestSchedule.ValidDuration.all,
                                             selection: $state.duration.or(defaultDuration),
-                                            formatter: \.title
+                                            formatter: { $0.formatted(style: .full, allowedUnits: .minute, locale: Current.locale()) }
                                         ),
                                         inputAccessory: .doneButton,
                                         onEditingChanged: onEditingDurationChanged
@@ -160,7 +149,7 @@ struct SchedulingView: View, FocusableView, TestableView {
         guard let focus = focus else { return }
         switch focus {
         case .startDate:
-            state.startDate =?? firstAvailableDate
+            state.startDate =?? DateOnly(firstAvailableDate, in: .neutral)
         case .startTime:
             state.startTime =?? defaultStartTime
         case .duration:
@@ -174,7 +163,7 @@ struct SchedulingViewPreview: PreviewProvider {
     static var previews: some View {
         SchedulingView(
             state: SchedulingView.ViewState(),
-            instrument: .guitar,
+            instrument: .stub(.guitar),
             setter: { _ in }
         )
     }

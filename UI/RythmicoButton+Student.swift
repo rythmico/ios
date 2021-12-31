@@ -12,7 +12,7 @@ extension RythmicoButtonStyle {
         self.init(
             shape: .squircle(radius: 4, style: .continuous),
             layout: layout,
-            mapTitle: { AnyView($0.rythmicoTextStyle(textStyle)) },
+            mapTitle: { $0.rythmicoTextStyle(textStyle).eraseToAnyView() },
             foregroundColor: foregroundColor,
             backgroundColor: backgroundColor,
             borderColor: borderColor,

@@ -83,7 +83,7 @@ struct LessonSkippingView: View {
     }
 
     private func submit() {
-        coordinator.run(with: lesson)
+        coordinator.run(with: .init(lesson: lesson))
     }
 
     private var submitButtonTitle: String {

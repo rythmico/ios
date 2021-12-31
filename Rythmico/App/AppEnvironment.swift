@@ -1,25 +1,25 @@
-import SwiftUIEncore
 import ComposableNavigator
-import UserNotifications
 import EventKit
-import Firebase
 import Stripe
+import StudentDO
+import SwiftUIEncore
+import UserNotifications
 
 struct AppEnvironment {
     var tabSelection: TabSelection
     let lessonsTabNavigation = Navigator.Datasource(root: LessonsScreen())
     let profileTabNavigation = Navigator.Datasource(root: ProfileScreen())
 
-    var remoteConfigCoordinator: RemoteConfigCoordinator
-    var remoteConfig: RemoteConfigServiceProtocol
-
+    var appStatus: AppStatusProvider
     var appOrigin: AppOriginClient
 
     var uuid: () -> UUID
     var date: () -> Date
+    var dateOnly: () -> DateOnly
+    var timeOnly: () -> TimeOnly
     var calendarType: () -> Calendar.Identifier
-    var locale: Locale
-    var timeZone: TimeZone
+    var locale: () -> Locale
+    var timeZone: () -> TimeZone
 
     var eventEmitter: NotificationCenter
 
@@ -29,22 +29,18 @@ struct AppEnvironment {
     var accessibilitySettings: AccessibilitySettings
     var voiceOver: VoiceOverServiceProtocol.Type
 
-    var appleAuthorizationService: AppleAuthorizationServiceProtocol
-    var appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider
-    var appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifying
-    var authenticationService: AuthenticationServiceProtocol
-    var deauthenticationService: DeauthenticationServiceProtocol
+    var siwaAuthorizationService: SIWAAuthorizationServiceProtocol
+    var siwaCoordinator: () -> APIActivityCoordinator<SIWARequest>
     var userCredentialProvider: UserCredentialProviderBase
-
-    var errorLogger: ErrorLoggerProtocol
+    var siwaCredentialStateProvider: SIWACredentialStateProvider
+    var siwaCredentialRevocationNotifier: SIWACredentialRevocationNotifying
 
     var apiActivityErrorHandler: APIActivityErrorHandlerProtocol
 
-    var deviceRegisterCoordinator: DeviceRegisterCoordinator
-    var deviceUnregisterCoordinator: DeviceUnregisterCoordinator
-
+    var apnsRegistrationService: APNSRegistrationServiceProtocol
+    var registerAPNSTokenCoordinator: APIActivityCoordinator<RegisterAPNSTokenRequest>
     var pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator
-    var pushNotificationEventHandler: PushNotificationEventHandlerProtocol
+    var apiEventListener: APIEventListenerBase<StudentDTO.KnownAPIEvent>
 
     var calendarSyncCoordinator: CalendarSyncCoordinator
 
@@ -56,11 +52,14 @@ struct AppEnvironment {
 
     var imageLoadingCoordinator: () -> ImageLoadingCoordinator
 
-    var instrumentSelectionListProvider: InstrumentSelectionListProviderProtocol
+    var availableInstrumentsFetchingCoordinator: () -> APIActivityCoordinator<GetAvailableInstrumentsRequest>
     var addressSearchCoordinator: () -> APIActivityCoordinator<AddressSearchRequest>
 
-    var lessonPlanFetchingCoordinator: APIActivityCoordinator<GetLessonPlansRequest>
-    var lessonPlanRequestCoordinator: () -> APIActivityCoordinator<CreateLessonPlanRequest>
+    var lessonPlanRequestFetchingCoordinator: () -> APIActivityCoordinator<GetLessonPlanRequestsRequest>
+    var lessonPlanRequestCreationCoordinator: () -> APIActivityCoordinator<CreateLessonPlanRequestRequest>
+    var lessonPlanRequestRepository: Repository<LessonPlanRequest>
+
+    var lessonPlanFetchingCoordinator: () -> APIActivityCoordinator<GetLessonPlansRequest>
     var lessonPlanPausingCoordinator: () -> APIActivityCoordinator<PauseLessonPlanRequest>
     var lessonPlanResumingCoordinator: () -> APIActivityCoordinator<ResumeLessonPlanRequest>
     var lessonPlanCancellationCoordinator: () -> APIActivityCoordinator<CancelLessonPlanRequest>
@@ -82,15 +81,14 @@ struct AppEnvironment {
     init(
         tabSelection: TabSelection,
 
-        remoteConfig: RemoteConfigServiceProtocol,
-
+        appStatus: AppStatusProvider,
         appOrigin: AppOriginClient,
 
         uuid: @escaping () -> UUID,
         date: @escaping () -> Date,
         calendarType: @escaping () -> Calendar.Identifier,
-        locale: Locale,
-        timeZone: TimeZone,
+        locale: @escaping () -> Locale,
+        timeZone: @escaping () -> TimeZone,
 
         eventEmitter: NotificationCenter,
 
@@ -100,21 +98,16 @@ struct AppEnvironment {
         accessibilitySettings: AccessibilitySettings,
         voiceOver: VoiceOverServiceProtocol.Type,
 
-        appleAuthorizationService: AppleAuthorizationServiceProtocol,
-        appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateProvider,
-        appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifying,
-        authenticationService: AuthenticationServiceProtocol,
-        deauthenticationService: DeauthenticationServiceProtocol,
-        userCredentialProvider: UserCredentialProviderBase,
+        siwaAuthorizationService: SIWAAuthorizationServiceProtocol,
+        siwaService: APIServiceBase<SIWARequest>,
+        userCredentialProvider: (KeychainProtocol) -> UserCredentialProviderBase,
+        siwaCredentialStateProvider: SIWACredentialStateProvider,
+        siwaCredentialRevocationNotifier: SIWACredentialRevocationNotifying,
 
-        errorLogger: (UserCredentialProviderBase) -> ErrorLoggerProtocol,
-
-        deviceTokenProvider: DeviceTokenProvider,
-        deviceRegisterService: APIServiceBase<AddDeviceRequest>,
-        deviceTokenDeleter: DeviceTokenDeleter,
-
+        apnsRegistrationService: APNSRegistrationServiceProtocol,
+        registerAPNSTokenService: APIServiceBase<RegisterAPNSTokenRequest>,
         pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator,
-        pushNotificationEventHandler: PushNotificationEventHandlerProtocol,
+        apiEventListener: (UserCredentialProviderBase) -> APIEventListenerBase<StudentDTO.KnownAPIEvent>,
 
         calendarSyncStatusProvider: CalendarSyncStatusProviderBase,
         calendarInfoFetchingService: APIServiceBase<GetCalendarInfoRequest>,
@@ -128,11 +121,14 @@ struct AppEnvironment {
         imageLoadingService: ImageLoadingServiceProtocol,
         imageProcessingService: ImageProcessingServiceProtocol,
 
-        instrumentSelectionListProvider: InstrumentSelectionListProviderProtocol,
+        availableInstrumentsFetchingService: APIServiceBase<GetAvailableInstrumentsRequest>,
         addressSearchService: APIServiceBase<AddressSearchRequest>,
 
+        lessonPlanRequestFetchingService: APIServiceBase<GetLessonPlanRequestsRequest>,
+        lessonPlanRequestCreationService: APIServiceBase<CreateLessonPlanRequestRequest>,
+        lessonPlanRequestRepository: Repository<LessonPlanRequest>,
+
         lessonPlanFetchingService: APIServiceBase<GetLessonPlansRequest>,
-        lessonPlanRequestService: APIServiceBase<CreateLessonPlanRequest>,
         lessonPlanPausingService: APIServiceBase<PauseLessonPlanRequest>,
         lessonPlanResumingService: APIServiceBase<ResumeLessonPlanRequest>,
         lessonPlanCancellationService: APIServiceBase<CancelLessonPlanRequest>,
@@ -153,14 +149,13 @@ struct AppEnvironment {
     ) {
         self.tabSelection = tabSelection
 
-        let remoteConfigCoordinator = RemoteConfigCoordinator(service: remoteConfig)
-        self.remoteConfigCoordinator = remoteConfigCoordinator
-        self.remoteConfig = remoteConfig
-
+        self.appStatus = appStatus
         self.appOrigin = appOrigin
 
         self.uuid = uuid
         self.date = date
+        self.dateOnly = { .init(date(), in: timeZone()) }
+        self.timeOnly = { .init(date(), in: timeZone()) }
         self.calendarType = calendarType
         self.locale = locale
         self.timeZone = timeZone
@@ -173,32 +168,32 @@ struct AppEnvironment {
         self.accessibilitySettings = accessibilitySettings
         self.voiceOver = voiceOver
 
-        self.appleAuthorizationService = appleAuthorizationService
-        self.appleAuthorizationCredentialStateProvider = appleAuthorizationCredentialStateProvider
-        self.appleAuthorizationCredentialRevocationNotifier = appleAuthorizationCredentialRevocationNotifier
-        self.authenticationService = authenticationService
-        self.deauthenticationService = deauthenticationService
-        self.userCredentialProvider = userCredentialProvider
+        let userCredentialProvider = userCredentialProvider(keychain)
 
-        self.errorLogger = errorLogger(userCredentialProvider)
-
-        let apiActivityErrorHandler = APIActivityErrorHandler(remoteConfigCoordinator: remoteConfigCoordinator)
+        let apiActivityErrorHandler = APIActivityErrorHandler(
+            appStatusProvider: appStatus,
+            userCredentialProvider: userCredentialProvider
+        )
         self.apiActivityErrorHandler = apiActivityErrorHandler
 
-        func coordinator<R: AuthorizedAPIRequest>(for service: APIServiceBase<R>) -> APIActivityCoordinator<R> {
+        func coordinator<R: APIRequest>(for service: APIServiceBase<R>) -> APIActivityCoordinator<R> {
             APIActivityCoordinator(
                 userCredentialProvider: userCredentialProvider,
-                deauthenticationService: deauthenticationService,
                 errorHandler: apiActivityErrorHandler,
                 service: service
             )
         }
 
-        self.deviceRegisterCoordinator = DeviceRegisterCoordinator(deviceTokenProvider: deviceTokenProvider, apiCoordinator: coordinator(for: deviceRegisterService))
-        self.deviceUnregisterCoordinator = DeviceUnregisterCoordinator(deviceTokenDeleter: deviceTokenDeleter)
+        self.siwaAuthorizationService = siwaAuthorizationService
+        self.siwaCredentialStateProvider = siwaCredentialStateProvider
+        self.siwaCredentialRevocationNotifier = siwaCredentialRevocationNotifier
+        self.siwaCoordinator = { coordinator(for: siwaService) }
+        self.userCredentialProvider = userCredentialProvider
 
+        self.apnsRegistrationService = apnsRegistrationService
+        self.registerAPNSTokenCoordinator = coordinator(for: registerAPNSTokenService)
         self.pushNotificationAuthorizationCoordinator = pushNotificationAuthorizationCoordinator
-        self.pushNotificationEventHandler = pushNotificationEventHandler
+        self.apiEventListener = apiEventListener(userCredentialProvider)
 
         let calendarSyncCoordinator = CalendarSyncCoordinator(
             calendarSyncStatusProvider: calendarSyncStatusProvider,
@@ -227,11 +222,14 @@ struct AppEnvironment {
             )
         }
 
-        self.instrumentSelectionListProvider = instrumentSelectionListProvider
+        self.availableInstrumentsFetchingCoordinator = { coordinator(for: availableInstrumentsFetchingService) }
         self.addressSearchCoordinator = { coordinator(for: addressSearchService) }
 
-        self.lessonPlanFetchingCoordinator = coordinator(for: lessonPlanFetchingService)
-        self.lessonPlanRequestCoordinator = { coordinator(for: lessonPlanRequestService) }
+        self.lessonPlanRequestFetchingCoordinator = { coordinator(for: lessonPlanRequestFetchingService) }
+        self.lessonPlanRequestCreationCoordinator = { coordinator(for: lessonPlanRequestCreationService) }
+        self.lessonPlanRequestRepository = lessonPlanRequestRepository
+
+        self.lessonPlanFetchingCoordinator = { coordinator(for: lessonPlanFetchingService) }
         self.lessonPlanPausingCoordinator = { coordinator(for: lessonPlanPausingService) }
         self.lessonPlanResumingCoordinator = { coordinator(for: lessonPlanResumingService) }
         self.lessonPlanCancellationCoordinator = { coordinator(for: lessonPlanCancellationService) }
@@ -256,15 +254,14 @@ extension AppEnvironment {
     static let live = AppEnvironment.initLive { .init(
         tabSelection: TabSelection(),
 
-        remoteConfig: RemoteConfig(),
-
+        appStatus: .init(),
         appOrigin: .init(get: { .appStore }), // TODO: swap back to `live`
 
         uuid: UUID.init,
         date: Date.init,
         calendarType: { Calendar.current.identifier },
-        locale: .autoupdatingCurrent,
-        timeZone: .autoupdatingCurrent,
+        locale: { .autoupdatingCurrent },
+        timeZone: { .autoupdatingCurrent },
 
         eventEmitter: .default,
 
@@ -279,24 +276,18 @@ extension AppEnvironment {
         ),
         voiceOver: UIAccessibility.self,
 
-        appleAuthorizationService: AppleAuthorizationService(controllerType: AppleAuthorizationController.self),
-        appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcher(),
-        appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifier(notificationCenter: .default),
-        authenticationService: AuthenticationService(),
-        deauthenticationService: DeauthenticationService(),
-        userCredentialProvider: UserCredentialProvider(emitter: UserCredentialEmitter()),
+        siwaAuthorizationService: SIWAAuthorizationService(controllerType: SIWAAuthorizationController.self),
+        siwaService: APIService(),
+        userCredentialProvider: UserCredentialProvider.init,
+        siwaCredentialStateProvider: SIWACredentialStateFetcher(),
+        siwaCredentialRevocationNotifier: SIWACredentialRevocationNotifier(notificationCenter: .default),
 
-        errorLogger: { ErrorLogger(crashlyticsLogger: .crashlytics(), userCredentialProvider: $0) },
-
-        deviceTokenProvider: Messaging.messaging(),
-        deviceRegisterService: APIService(),
-        deviceTokenDeleter: Messaging.messaging(),
-
+        apnsRegistrationService: UIApplication.shared,
+        registerAPNSTokenService: APIService(),
         pushNotificationAuthorizationCoordinator: PushNotificationAuthorizationCoordinator(
-            center: UNUserNotificationCenter.current(),
-            registerService: UIApplication.shared
+            center: UNUserNotificationCenter.current()
         ),
-        pushNotificationEventHandler: PushNotificationEventHandler(),
+        apiEventListener: APIEventListener.init,
 
         calendarSyncStatusProvider: CalendarSyncStatusProvider(accessProvider: EKEventStore()),
         calendarInfoFetchingService: APIService(),
@@ -310,11 +301,14 @@ extension AppEnvironment {
         imageLoadingService: ImageLoadingService(),
         imageProcessingService: ImageProcessingService(),
 
-        instrumentSelectionListProvider: InstrumentSelectionListProvider(),
+        availableInstrumentsFetchingService: APIService(),
         addressSearchService: APIService(),
 
+        lessonPlanRequestFetchingService: APIService(),
+        lessonPlanRequestCreationService: APIService(),
+        lessonPlanRequestRepository: Repository(),
+
         lessonPlanFetchingService: APIService(),
-        lessonPlanRequestService: APIService(),
         lessonPlanPausingService: APIService(),
         lessonPlanResumingService: APIService(),
         lessonPlanCancellationService: APIService(),

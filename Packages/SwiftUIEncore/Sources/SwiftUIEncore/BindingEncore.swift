@@ -15,16 +15,20 @@ extension Binding {
     }
 }
 
-extension Binding where Value == Bool {
-    public init<Wrapped>(trueIfSome optional: Binding<Wrapped?>) {
-        self.init(
-            get: { optional.wrappedValue != nil },
-            set: { if !$0 { optional.wrappedValue = nil } }
+extension Binding {
+    public func isPresent<Wrapped>() -> Binding<Bool> where Value == Wrapped? {
+        Binding<Bool>(
+            get: {
+                wrappedValue != nil
+            },
+            set: { isPresent in
+                if !isPresent {
+                    wrappedValue = nil
+                }
+            }
         )
     }
-}
 
-extension Binding {
     public func or<Wrapped>(_ otherValue: Wrapped) -> Binding<Wrapped> where Value == Wrapped? {
         Binding<Wrapped>(
             get: { wrappedValue ?? otherValue },

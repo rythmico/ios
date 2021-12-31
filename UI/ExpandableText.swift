@@ -79,11 +79,10 @@ extension ExpandableText where Expander == AnyView, Collapser == AnyView {
         onCollapse: Action? = nil
     ) {
         let text: (String) -> AnyView = {
-            AnyView(
-                Text($0)
-                    .foregroundColor(.rythmico.picoteeBlue)
-                    .rythmicoTextStyle(.bodyBold)
-            )
+            Text($0)
+                .foregroundColor(.rythmico.picoteeBlue)
+                .rythmicoTextStyle(.bodyBold)
+                .eraseToAnyView()
         }
         self.init(
             content: content,

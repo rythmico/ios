@@ -1,5 +1,10 @@
 import FoundationEncore
 import PhoneNumberKit
+#if RYTHMICO
+import StudentDTO
+#elseif TUTOR
+import TutorDTO
+#endif
 
 struct Lesson: Decodable, Identifiable, Hashable {
     typealias ID = Tagged<Self, String>
@@ -45,7 +50,6 @@ struct Lesson: Decodable, Identifiable, Hashable {
     #if RYTHMICO
     var options: Options
     #elseif TUTOR
-    @E164PhoneNumber
     var phoneNumber: PhoneNumber
     var privateNote: String
     #endif

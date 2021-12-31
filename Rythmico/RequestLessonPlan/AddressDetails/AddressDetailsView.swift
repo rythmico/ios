@@ -1,3 +1,4 @@
+import StudentDTO
 import SwiftUIEncore
 
 struct AddressDetailsView: View, TestableView {
@@ -5,7 +6,7 @@ struct AddressDetailsView: View, TestableView {
 
     final class ViewState: ObservableObject {
         @Published var postcode = String()
-        @Published var selectedAddress: Address?
+        @Published var selectedAddress: AddressLookupItem?
     }
 
     var student: Student
@@ -14,7 +15,7 @@ struct AddressDetailsView: View, TestableView {
     private(set) var state: ViewState
     @ObservedObject
     private(set) var coordinator: SearchCoordinator
-    var setter: Binding<Address>.Setter
+    var setter: Binding<AddressLookupItem>.Setter
 
     @SpacedTextBuilder
     var subtitle: Text {
@@ -29,11 +30,18 @@ struct AddressDetailsView: View, TestableView {
     }
 
     var isLoading: Bool { coordinator.state.isLoading }
-    var error: Error? { coordinator.state.failureValue() }
-    var addresses: [Address]? { coordinator.state.successValue().map([Address].init) }
+    var error: Error? { postcodeError ?? coordinator.output?.error }
+    var addresses: [AddressLookupItem]? { coordinator.output?.value }
+
+    @State
+    private(set) var postcodeError: Error?
 
     func searchAddresses() {
-        coordinator.run(with: .init(postcode: state.postcode))
+        do {
+            try coordinator.run(with: .init(postcode: state.postcode))
+        } catch {
+            self.postcodeError = error
+        }
     }
 
     var nextButtonAction: Action? {
@@ -59,7 +67,7 @@ struct AddressDetailsView: View, TestableView {
                                         CustomTextField(
                                             "NW1 7FB",
                                             text: $state.postcode,
-                                            inputMode: KeyboardInputMode(contentType: .postalCode, autocapitalization: .allCharacters, returnKey: .search),
+                                            inputMode: .keyboard(contentType: .postalCode, autocapitalization: .allCharacters, returnKey: .search),
                                             onCommit: searchAddresses
                                         )
                                     }
@@ -80,7 +88,7 @@ struct AddressDetailsView: View, TestableView {
                                     data: addresses,
                                     id: \.self,
                                     selection: $state.selectedAddress,
-                                    content: \.condensedFormattedString
+                                    content: { $0.formatted(style: .multilineCompact) }
                                 )
                             }
                             .transition(.offset(y: 25) + .opacity)
@@ -109,22 +117,6 @@ struct AddressDetailsView: View, TestableView {
     }
 }
 
-private extension Array where Element == Address {
-    init(_ response: AddressSearchRequest.Response) {
-        self = response.addresses.map {
-            Address(
-                latitude: response.latitude,
-                longitude: response.longitude,
-                line1: $0.line1, line2: $0.line2,
-                line3: $0.line3, line4: $0.line4,
-                city: $0.city,
-                postcode: response.postcode,
-                country: $0.country
-            )
-        }
-    }
-}
-
 #if DEBUG
 struct AddressDetailsViewPreview: PreviewProvider {
     static var previews: some View {
@@ -133,7 +125,7 @@ struct AddressDetailsViewPreview: PreviewProvider {
 
         return AddressDetailsView(
             student: .davidStub,
-            instrument: .guitar,
+            instrument: .stub(.guitar),
             state: state,
             coordinator: Current.addressSearchCoordinator(),
             setter: { _ in }

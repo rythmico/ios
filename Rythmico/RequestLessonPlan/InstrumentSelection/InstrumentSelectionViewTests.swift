@@ -1,15 +1,16 @@
-import XCTest
+import CoreDTO
 @testable import Rythmico
 import struct SwiftUI.Image
 import ViewInspector
+import XCTest
 
 extension InstrumentSelectionView: Inspectable {}
 
 final class InstrumentSelectionViewTests: XCTestCase {
     var instrumentSelectionView: (RequestLessonPlanFlow, [Instrument], InstrumentSelectionView) {
         let flow = RequestLessonPlanFlow()
-        let instruments: [Instrument] = [.guitar, .singing]
-        Current.instrumentSelectionListProvider = InstrumentSelectionListProviderStub(instruments: instruments)
+        let instruments = [.guitar, .singing].map(Instrument.stub)
+        Current.stubAPIEndpoint(for: \.availableInstrumentsFetchingCoordinator, result: .success(instruments))
         let view = InstrumentSelectionView(
             state: .init(),
             setter: { flow.instrument = $0 }

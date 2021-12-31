@@ -5,11 +5,11 @@ extension AppEnvironment {
         dummy => {
             $0.setUpFake()
 
-            $0.instrumentSelectionListProvider = InstrumentSelectionListProviderStub(instruments: Instrument.allCases)
+            $0.fakeAPIEndpoint(for: \.availableInstrumentsFetchingCoordinator, result: .success(.stub))
             $0.fakeAPIEndpoint(for: \.addressSearchCoordinator, result: .success(.stub))
 
             $0.fakeAPIEndpoint(for: \.lessonPlanFetchingCoordinator, result: .success(.stub))
-            $0.fakeAPIEndpoint(for: \.lessonPlanRequestCoordinator, result: .success(.pendingDavidGuitarPlanStub))
+            $0.fakeAPIEndpoint(for: \.lessonPlanRequestCreationCoordinator, result: .success(.stub))
             $0.fakeAPIEndpoint(for: \.lessonPlanPausingCoordinator, result: .success(.pausedJackGuitarPlanStub))
             $0.fakeAPIEndpoint(for: \.lessonPlanResumingCoordinator, result: .success(.activeJackGuitarPlanStub))
             $0.fakeAPIEndpoint(for: \.lessonPlanCancellationCoordinator, result: .success(.cancelledJackGuitarPlanStub))
@@ -32,15 +32,14 @@ extension AppEnvironment {
         AppEnvironment(
             tabSelection: TabSelection(),
 
-            remoteConfig: RemoteConfigDummy(),
-
+            appStatus: .init(),
             appOrigin: .testFlight,
 
             uuid: { .zero },
             date: { .stub },
             calendarType: { .gregorian },
-            locale: .neutral,
-            timeZone: .neutral,
+            locale: { .neutral },
+            timeZone: { .neutral },
 
             eventEmitter: NotificationCenter(),
 
@@ -50,21 +49,16 @@ extension AppEnvironment {
             accessibilitySettings: .dummy,
             voiceOver: VoiceOverServiceDummy.self,
 
-            appleAuthorizationService: AppleAuthorizationServiceDummy(),
-            appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcherDummy(),
-            appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifierDummy(),
-            authenticationService: AuthenticationServiceDummy(),
-            deauthenticationService: DeauthenticationServiceDummy(),
-            userCredentialProvider: UserCredentialProviderDummy(),
+            siwaAuthorizationService: SIWAAuthorizationServiceDummy(),
+            siwaService: APIServiceDummy(),
+            userCredentialProvider: { _ in UserCredentialProviderDummy() },
+            siwaCredentialStateProvider: SIWACredentialStateFetcherDummy(),
+            siwaCredentialRevocationNotifier: SIWACredentialRevocationNotifierDummy(),
 
-            errorLogger: { _ in ErrorLoggerDummy() },
-
-            deviceTokenProvider: DeviceTokenProviderDummy(),
-            deviceRegisterService: APIServiceDummy(),
-            deviceTokenDeleter: DeviceTokenDeleterDummy(),
-
+            apnsRegistrationService: APNSRegistrationServiceDummy(),
+            registerAPNSTokenService: APIServiceDummy(),
             pushNotificationAuthorizationCoordinator: .dummy,
-            pushNotificationEventHandler: PushNotificationEventHandlerDummy(),
+            apiEventListener: { _ in APIEventListenerDummy() },
 
             calendarSyncStatusProvider: CalendarSyncStatusProviderDummy(),
             calendarInfoFetchingService: APIServiceDummy(),
@@ -78,11 +72,14 @@ extension AppEnvironment {
             imageLoadingService: ImageLoadingServiceDummy(),
             imageProcessingService: ImageProcessingServiceDummy(),
 
-            instrumentSelectionListProvider: InstrumentSelectionListProviderDummy(),
+            availableInstrumentsFetchingService: APIServiceDummy(),
             addressSearchService: APIServiceDummy(),
 
+            lessonPlanRequestFetchingService: APIServiceDummy(),
+            lessonPlanRequestCreationService: APIServiceDummy(),
+            lessonPlanRequestRepository: Repository(),
+
             lessonPlanFetchingService: APIServiceDummy(),
-            lessonPlanRequestService: APIServiceDummy(),
             lessonPlanPausingService: APIServiceDummy(),
             lessonPlanResumingService: APIServiceDummy(),
             lessonPlanCancellationService: APIServiceDummy(),

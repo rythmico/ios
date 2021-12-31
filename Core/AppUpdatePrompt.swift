@@ -28,7 +28,7 @@ struct AppUpdatePrompt: View {
             }
             .multilineTextAlignment(.leading)
         }
-        .onEvent(.appInForeground, perform: refreshTestFlightAppInstalledIfNeeded)
+        .onAppEvent(.willEnterForeground, perform: refreshTestFlightAppInstalledIfNeeded)
     }
 
     @ViewBuilder

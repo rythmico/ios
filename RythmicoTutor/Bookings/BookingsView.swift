@@ -6,22 +6,23 @@ struct BookingsView: View {
     private var scenePhase
     @ObservedObject
     private var tabSelection = Current.tabSelection
-    @ObservedObject
-    private var coordinator = Current.bookingsFetchingCoordinator
+    @StateObject
+    private var coordinator = Current.bookingsFetchingCoordinator()
     @ObservedObject
     private var repository = Current.bookingsRepository
     @ObservedObject
     private var pushNotificationAuthCoordinator = Current.pushNotificationAuthorizationCoordinator
 
     var isLoading: Bool { coordinator.state.isLoading }
-    var error: Error? { coordinator.state.failureValue() }
+    var error: Error? { coordinator.output?.error }
     var bookings: [Booking] { repository.items }
 
     var body: some View {
         LessonsCollectionView(currentBookings: bookings)
             .animation(.rythmicoSpring(duration: .durationShort, type: .damping), value: isLoading)
 
-            .onReceive(shouldFetchPublisher(), perform: fetch)
+            // TODO: upcoming
+//            .onReceive(shouldFetchPublisher(), perform: fetch)
             // FIXME: double HTTP request for some reason
             // .onDisappear(perform: coordinator.cancel)
             .onSuccess(coordinator, perform: repository.setItems)
@@ -33,6 +34,7 @@ struct BookingsView: View {
                     dismiss: pushNotificationAuthCoordinator.dismissFailure
                 )
             }
+            .onAppEvent(.didEnterBackground, perform: coordinator.reset)
     }
 
     func requestPushNotificationAuth(_: Any) {

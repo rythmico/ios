@@ -28,7 +28,7 @@ fileprivate extension PhoneNumberLink {
     var host: String {
         switch self {
         case .phone(let phoneNumber), .messages(let phoneNumber):
-            return PhoneNumberKit().format(phoneNumber, toType: .e164)
+            return String(phoneNumber)
         case .whatsapp:
             return "wa.me"
         }
@@ -39,7 +39,7 @@ fileprivate extension PhoneNumberLink {
         case .phone, .messages:
             return .empty
         case .whatsapp(let phoneNumber):
-            return "/" + PhoneNumberKit().format(phoneNumber, toType: .e164)
+            return "/" + String(phoneNumber)
         }
     }
 

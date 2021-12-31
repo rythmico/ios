@@ -36,7 +36,7 @@ struct LessonPlanBookingEntryView: View {
         NavigationView {
             ZStack {
                 Color.rythmico.backgroundSecondary.edgesIgnoringSafeArea(.all)
-                if let checkout = coordinator.state.successValue() {
+                if let checkout = coordinator.output?.value {
                     LessonPlanBookingView(
                         lessonPlan: lessonPlan,
                         application: application,
@@ -57,11 +57,11 @@ struct LessonPlanBookingEntryView: View {
         .onAppear(perform: fetch)
         .onDisappear(perform: coordinator.cancel)
         .alertOnFailure(coordinator)
-        .animation(.rythmicoSpring(duration: .durationMedium), value: coordinator.state.successValue())
+        .animation(.rythmicoSpring(duration: .durationMedium), value: coordinator.output?.value)
     }
 
     private func fetch() {
-        coordinator.start(with: .init(lessonPlanId: lessonPlan.id, applicationId: application.tutor.id))
+        coordinator.start(with: .init(lessonPlanID: lessonPlan.id, applicationID: application.tutor.id))
     }
 
     func dismiss() {

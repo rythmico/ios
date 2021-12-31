@@ -1,7 +1,8 @@
-import FoundationEncore
-import XCTest
 @testable import Rythmico
+import FoundationEncore
+import StudentDTO
 import ViewInspector
+import XCTest
 
 extension SchedulingView: Inspectable {}
 
@@ -18,7 +19,7 @@ final class SchedulingViewTests: XCTestCase {
             state,
             SchedulingView(
                 state: state,
-                instrument: .guitar,
+                instrument: .stub(.guitar),
                 setter: { flow.schedule = $0 }
             )
         )
@@ -136,24 +137,24 @@ final class SchedulingViewTests: XCTestCase {
         XCTAssertView(view) { view in
             state.startDate = .stub
             state.startTime = .stub
-            state.duration = .fortyFiveMinutes
+            state.duration = "PT45M"
             XCTAssertNotNil(view.nextButtonAction)
         }
     }
 
-    func testNextButtonSetsStudentDetailsInContext() {
+    func testNextButtonSetsStudentDetailsInContext() throws {
         let (flow, state, view) = schedulingView
 
         XCTAssertView(view) { view in
-            state.startDate = "2021-07-03T13:30:20Z"
-            state.startTime = "2021-07-03T17:25:00Z"
-            state.duration = .fortyFiveMinutes
+            state.startDate = "2021-07-03"
+            state.startTime = "17:25"
+            state.duration = "PT45M"
 
             view.nextButtonAction?()
 
             XCTAssertEqual(
                 flow.schedule,
-                Schedule(startDate: "2021-07-03T17:25:00Z", duration: .fortyFiveMinutes)
+                LessonPlanRequestSchedule(start: "2021-07-03", time: "17:25", duration: "PT45M")
             )
         }
     }

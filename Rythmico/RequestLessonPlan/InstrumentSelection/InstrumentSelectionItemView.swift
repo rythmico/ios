@@ -1,14 +1,15 @@
+import CoreDTO
 import SwiftUIEncore
 
 struct InstrumentSelectionItemView: View {
     let instrument: Instrument
 
     @ScaledMetric(relativeTo: .largeTitle)
-    private var iconWidth: CGFloat = .grid(12)
+    private var iconSize: CGFloat = .grid(12)
 
     var body: some View {
         VStack(spacing: .grid(3)) {
-            Image(uiImage: instrument.icon.image.resized(width: iconWidth))
+            Image(uiImage: instrument.icon.resized(height: iconSize))
                 .renderingMode(.template)
             Text(instrument.standaloneName)
                 .rythmicoTextStyle(.subheadlineBold)
@@ -21,14 +22,10 @@ struct InstrumentSelectionItemView: View {
 #if DEBUG
 struct InstrumentSelectionItemView_Preview: PreviewProvider {
     static var previews: some View {
-        ForEach(
-            Instrument.allCases,
-            id: \.self,
-            content: InstrumentSelectionItemView.init
-        )
-        .frame(width: 150, height: 150)
-        .previewLayout(.sizeThatFits)
-        .padding()
+        ForEach([Instrument].stub, content: InstrumentSelectionItemView.init)
+            .frame(width: 150, height: 150)
+            .previewLayout(.sizeThatFits)
+            .padding()
     }
 }
 #endif

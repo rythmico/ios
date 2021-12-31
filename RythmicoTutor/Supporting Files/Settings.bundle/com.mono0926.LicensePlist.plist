@@ -12,17 +12,9 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/abseil-cpp-SwiftPM</string>
-			<key>Title</key>
-			<string>abseil (0.20200225.4)</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
 			<string>com.mono0926.LicensePlist/Amplitude-iOS</string>
 			<key>Title</key>
-			<string>Amplitude (8.4.0)</string>
+			<string>Amplitude (8.5.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -36,9 +28,9 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/boringssl-SwiftPM</string>
+			<string>com.mono0926.LicensePlist/appcenter-sdk-apple</string>
 			<key>Title</key>
-			<string>BoringSSL-GRPC (0.7.2)</string>
+			<string>AppCenter (4.3.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -52,57 +44,9 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/firebase-ios-sdk</string>
+			<string>com.mono0926.LicensePlist/dto-swift</string>
 			<key>Title</key>
-			<string>Firebase (8.7.0)</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
-			<string>com.mono0926.LicensePlist/FoundationEncore</string>
-			<key>Title</key>
-			<string>FoundationEncore</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
-			<string>com.mono0926.LicensePlist/GoogleAppMeasurement</string>
-			<key>Title</key>
-			<string>GoogleAppMeasurement (8.7.0)</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
-			<string>com.mono0926.LicensePlist/GoogleDataTransport</string>
-			<key>Title</key>
-			<string>GoogleDataTransport (9.1.1)</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
-			<string>com.mono0926.LicensePlist/GoogleUtilities</string>
-			<key>Title</key>
-			<string>GoogleUtilities (7.5.2)</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
-			<string>com.mono0926.LicensePlist/grpc-SwiftPM</string>
-			<key>Title</key>
-			<string>gRPC (1.28.4)</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
-			<string>com.mono0926.LicensePlist/gtm-session-fetcher</string>
-			<key>Title</key>
-			<string>GTMSessionFetcher (1.7.0)</string>
+			<string>DTO</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -110,15 +54,15 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/LegibleError</string>
 			<key>Title</key>
-			<string>LegibleError (1.0.5)</string>
+			<string>LegibleError (1.0.6)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/leveldb</string>
+			<string>com.mono0926.LicensePlist/MobileProvision</string>
 			<key>Title</key>
-			<string>leveldb (1.22.2)</string>
+			<string>MobileProvision (0.0.2)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -126,15 +70,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/MultiModal</string>
 			<key>Title</key>
-			<string>MultiModal (2.0.1)</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
-			<string>com.mono0926.LicensePlist/nanopb</string>
-			<key>Title</key>
-			<string>nanopb (2.30908.0)</string>
+			<string>MultiModal (2.1.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -142,7 +78,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/PeriodDuration</string>
 			<key>Title</key>
-			<string>PeriodDuration (0.3.0)</string>
+			<string>PeriodDuration (0.10.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -150,7 +86,15 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/PhoneNumberKit</string>
 			<key>Title</key>
-			<string>PhoneNumberKit (3.3.3)</string>
+			<string>PhoneNumberKit</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
+			<string>com.mono0926.LicensePlist/PLCrashReporter</string>
+			<key>Title</key>
+			<string>PLCrashReporter (1.10.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -164,22 +108,6 @@
 		</dict>
 		<dict>
 			<key>File</key>
-			<string>com.mono0926.LicensePlist/promises</string>
-			<key>Title</key>
-			<string>Promises (2.0.0)</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
-			<string>com.mono0926.LicensePlist/RythmicoDTO</string>
-			<key>Title</key>
-			<string>RythmicoDTO</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
 			<string>com.mono0926.LicensePlist/SFSafeSymbols</string>
 			<key>Title</key>
 			<string>SFSafeSymbols (2.1.3)</string>
@@ -188,9 +116,17 @@
 		</dict>
 		<dict>
 			<key>File</key>
+			<string>com.mono0926.LicensePlist/Starscream</string>
+			<key>Title</key>
+			<string>Starscream (4.0.4)</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
 			<string>com.mono0926.LicensePlist/stripe-ios</string>
 			<key>Title</key>
-			<string>Stripe (21.8.1)</string>
+			<string>Stripe (21.9.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -198,7 +134,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/swift-algorithms</string>
 			<key>Title</key>
-			<string>swift-algorithms (0.2.1)</string>
+			<string>swift-algorithms (1.0.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -214,7 +150,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/swift-collections</string>
 			<key>Title</key>
-			<string>swift-collections (1.0.1)</string>
+			<string>swift-collections (1.0.2)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -238,7 +174,15 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/swift-custom-dump</string>
 			<key>Title</key>
-			<string>swift-custom-dump (0.2.0)</string>
+			<string>swift-custom-dump (0.2.1)</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
+			<string>com.mono0926.LicensePlist/swift-foundation-encore</string>
+			<key>Title</key>
+			<string>FoundationEncore</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -246,7 +190,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/swift-identified-collections</string>
 			<key>Title</key>
-			<string>swift-identified-collections (0.3.0)</string>
+			<string>swift-identified-collections (0.3.2)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -262,15 +206,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/swift-numerics</string>
 			<key>Title</key>
-			<string>swift-numerics (0.1.0)</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
-		<dict>
-			<key>File</key>
-			<string>com.mono0926.LicensePlist/swift-protobuf</string>
-			<key>Title</key>
-			<string>SwiftProtobuf (1.17.0)</string>
+			<string>swift-numerics (1.0.2)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -302,7 +238,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/TextBuilder</string>
 			<key>Title</key>
-			<string>TextBuilder (1.2.0)</string>
+			<string>TextBuilder (1.4.0)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>

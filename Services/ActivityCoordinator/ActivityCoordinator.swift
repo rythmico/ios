@@ -1,5 +1,6 @@
 import Combine
 
+@dynamicMemberLookup
 class ActivityCoordinator<Input, Output>: ObservableObject {
     enum State {
         case ready
@@ -12,17 +13,21 @@ class ActivityCoordinator<Input, Output>: ObservableObject {
     @Published
     fileprivate(set) var state: State = .ready
 
+    subscript<T>(dynamicMember keyPath: KeyPath<State, T>) -> T {
+        state[keyPath: keyPath]
+    }
+
     /*protected*/ var activity: Activity?
     private var idleOnFinished = false
 
     func start(with input: Input) {
-        guard state.isReady else { return }
+        guard self.isReady else { return }
         idleOnFinished = false
         performTask(with: input)
     }
 
     func startToIdle(with input: Input) {
-        guard state.isReady else { return }
+        guard self.isReady else { return }
         idleOnFinished = true
         performTask(with: input)
     }
@@ -88,21 +93,18 @@ class ActivityCoordinator<Input, Output>: ObservableObject {
     }
 }
 
-extension ActivityCoordinator where Input == Void {
-    func start() { start(with: ()) }
-    func startToIdle() { startToIdle(with: ()) }
+extension ActivityCoordinator where Input: EmptyInitProtocol {
+    func start() { start(with: .init()) }
+    func startToIdle() { startToIdle(with: .init()) }
 
-    func run() { run(with: ()) }
-    func runToIdle() { runToIdle(with: ()) }
+    func run() { run(with: .init()) }
+    func runToIdle() { runToIdle(with: .init()) }
 }
 
 // TODO: abstract Error to be able to identify error types and show different alerts.
 class FailableActivityCoordinator<Input, Success>: ActivityCoordinator<Input, Result<Success, Error>> {
     override func finish(_ output: Result<Success, Error>) {
         super.finish(output)
-        if case .failure(let error) = output {
-            Current.errorLogger.log(error)
-        }
     }
 
     override func idle() {

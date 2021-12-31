@@ -20,14 +20,13 @@ struct MainView: View, TestableView {
             content: content, tabTitle: \.title, tabIcons: icon
         )
         .testable(self)
-        .onAppear(perform: Current.deviceRegisterCoordinator.registerDevice)
     }
 
     @ViewBuilder
     private func content(for tab: Tab) -> some View {
         switch tab {
         case .schedule: Root(dataSource: Current.bookingsTabNavigation, pathBuilder: BookingsTabScreen.Builder())
-        case .requests: Root(dataSource: Current.bookingRequestsTabNavigation, pathBuilder: BookingRequestsTabScreen.Builder())
+        case .requests: Root(dataSource: Current.lessonPlanRequestsTabNavigation, pathBuilder: LessonPlanRequestsTabScreen.Builder())
         case .profile: NavigationView { ProfileView() }
         }
     }

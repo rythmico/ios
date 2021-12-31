@@ -39,7 +39,7 @@ extension LessonPlanBookingPolicyView {
         Self(
             asset: Asset.Icon.Policy.skipLessons,
             title: "Skip lessons",
-            description: "Skip lessons for free. Up until \(freeBeforePeriod.formattedString()) before the lesson start time."
+            description: "Skip lessons for free. Up until \(freeBeforePeriod.formatted(style: .full, locale: Current.locale())) before the lesson start time."
         )
     }
 
@@ -55,7 +55,7 @@ extension LessonPlanBookingPolicyView {
         Self(
             asset: Asset.Icon.Policy.cancelAnytime,
             title: "Cancel anytime",
-            description: "Easy cancellation. Free up until \(freeBeforePeriod.formattedString()) before an upcoming lesson."
+            description: "Easy cancellation. Free up until \(freeBeforePeriod.formatted(style: .full, locale: Current.locale())) before an upcoming lesson."
         )
     }
 }

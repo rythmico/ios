@@ -1,4 +1,5 @@
 import Foundation
+import StudentDTO
 
 extension Student {
     static let screenshotJackStub = Self(name: "Jack", dateOfBirth: .stub, about: "")
@@ -12,7 +13,7 @@ extension LessonPlan {
     static let screenshotJackDrumsPlanStub = Self(
         id: screenshotJackDrumsPlanStubId,
         status: .reviewing(.init(applications: .init(.screenshotCallumStub, .screenshotMarshaStub, .screenshotRebekahStub, .screenshotStephStub))),
-        instrument: .drums,
+        instrument: .stub(.drums),
         student: .screenshotJackStub,
         address: .stub,
         schedule: .screenshotJackDrumsScheduleStub,
@@ -39,7 +40,7 @@ extension LessonPlan {
     static let screenshotJackGuitarPlanStub = Self(
         id: screenshotJackGuitarPlanStubId,
         status: .active(.init(lessons: [.screenshotJackGuitarLesson3], bookingInfo: .init(date: .stub, tutor: .screenshotCallumStub))),
-        instrument: .guitar,
+        instrument: .stub(.guitar),
         student: .screenshotJackStub,
         address: .stub,
         schedule: .screenshotJackGuitarScheduleStub,
@@ -57,7 +58,7 @@ fileprivate extension Lesson {
         id: .random(),
         lessonPlanId: LessonPlan.screenshotJackGuitarPlanStubId,
         student: .screenshotJackStub,
-        instrument: .guitar,
+        instrument: .stub(.guitar),
         week: 2,
         tutor: .screenshotCallumStub,
         status: .scheduled,
@@ -79,7 +80,7 @@ extension LessonPlan {
     static let screenshotCharlottePianoPlanStub = Self(
         id: screenshotCharlottePianoPlanStubId,
         status: .active(.init(lessons: [.screenshotCharlottePianoLesson3], bookingInfo: .init(date: .stub, tutor: .screenshotStephStub))),
-        instrument: .piano,
+        instrument: .stub(.piano),
         student: .screenshotCharlotteStub,
         address: .stub,
         schedule: .screenshotCharlottePianoScheduleStub,
@@ -97,7 +98,7 @@ fileprivate extension Lesson {
         id: .random(),
         lessonPlanId: LessonPlan.screenshotCharlottePianoPlanStubId,
         student: .screenshotCharlotteStub,
-        instrument: .piano,
+        instrument: .stub(.piano),
         week: 5,
         tutor: .screenshotCallumStub,
         status: .scheduled,

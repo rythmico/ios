@@ -1,45 +1,110 @@
 import APIKit
 import FoundationEncore
 
-@dynamicMemberLookup
-protocol AuthorizedAPIRequest: Request {
-    associatedtype Properties
-
-    var accessToken: String { get }
-    var properties: Properties { get }
-
-    init(accessToken: String, properties: Properties) throws
+/// An affordance to be able to use parameterless `coordinator.run()`
+///
+/// TODO: remove when moving to `APIClient`.
+protocol EmptyInitProtocol {
+    init()
 }
 
-extension AuthorizedAPIRequest {
-    var headerFields: [String: String] {
-        APIClientInfo.current + [
-            "Authorization": "Bearer " + accessToken,
-            "Accept-Encoding": "",
-        ]
-    }
+/// Defines a Rythmico API request.
+protocol APIRequest: JSONDataRequest {
+    associatedtype Body
 
-    subscript<T>(dynamicMember keyPath: KeyPath<Properties, T>) -> T {
-        properties[keyPath: keyPath]
-    }
+    var authRequired: Bool { get }
+    var headerFields: [String: String] { get set }
+    var queryItems: [URLQueryItem] { get }
+    var body: Body { get }
 }
 
-protocol RythmicoAPIRequest: AuthorizedAPIRequest, DecodableJSONRequest {}
+// MARK: Base URL
 
-extension RythmicoAPIRequest {
-    #if LIVE
-    var baseURL: URL { "https://rythmico-prod.web.app/v1" }
-    #else
-    var baseURL: URL { "https://rythmico-dev.web.app/v1" }
-    #endif
+extension APIRequest {
+    var baseURL: URL { APIUtils.url(path: "") }
+}
 
-    var decoder: Decoder {
-        JSONDecoder() => (\.dateDecodingStrategy, .secondsSince1970)
+// MARK: Auth
+
+extension APIRequest {
+    var authRequired: Bool {
+        true
     }
 }
 
-extension JSONEncodableBodyParameters {
-    init(object: E) {
-        self.init(object: object, dateEncodingStrategy: .secondsSince1970)
+// MARK: Query Items
+
+extension APIRequest {
+    var queryItems: [URLQueryItem] {
+        []
+    }
+
+    var queryParameters: QueryParameters? {
+        guard !queryItems.isEmpty else {
+            return nil
+        }
+        return URLEncodedQueryParameters(
+            parameters: queryItems.reduce(into: [String: String]()) { params, item in
+                if let itemValue = item.value {
+                    params[item.name] = itemValue
+                }
+            }
+        )
+    }
+}
+
+// MARK: Body
+
+extension APIRequest where Body: Encodable {
+    var bodyParameters: BodyParameters? {
+        let encoder = JSONEncoder() => {
+            $0.dateEncodingStrategy = .iso8601
+        }
+        return JSONEncodableBodyParameters(object: body, encoder: encoder)
+    }
+}
+
+extension APIRequest where Body == Void {
+    var bodyParameters: BodyParameters? {
+        nil
+    }
+}
+
+// MARK: Parse Errors
+
+extension APIRequest {
+    func intercept(object: Data, urlResponse: HTTPURLResponse) throws -> Data {
+        guard 200..<300 ~= urlResponse.statusCode else {
+            let parsedError = try? JSONDecoder().decode(RythmicoAPIError.self, from: object)
+            let error: Swift.Error = parsedError ?? NSError(
+                domain: "",
+                code: -1,
+                userInfo: [NSLocalizedDescriptionKey: HTTPURLResponse.localizedString(forStatusCode: urlResponse.statusCode).capitalized(with: .current)]
+            )
+            // If user is not authorized...
+            // TODO: do this server side, in a custom AuthMiddleware.
+            if urlResponse.statusCode == 401 {
+                throw RythmicoAPIError(description: error.legibleDescription, reason: .known(.unauthorized))
+            }
+            throw error
+        }
+        return object
+    }
+}
+
+// MARK: Parse Responses
+
+extension APIRequest where Response: Decodable {
+    func response(from object: DataParser.Parsed, urlResponse: HTTPURLResponse) throws -> Response {
+        let decoder = JSONDecoder() => {
+            $0.dateDecodingStrategy = .iso8601
+        }
+        return try decoder.decode(Response.self, from: object)
+    }
+}
+
+extension APIRequest where Response == Void {
+    func response(from object: DataParser.Parsed, urlResponse: HTTPURLResponse) throws -> Response {
+        ()
     }
 }

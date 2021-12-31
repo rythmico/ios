@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+PATH=${PATH}:/opt/homebrew/bin
+
 swiftgen run xcassets \
     "$SRCROOT/$TARGET_NAME/Supporting Files/Assets.xcassets" \
     --templateName swift5 \

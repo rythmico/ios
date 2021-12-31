@@ -1,24 +1,27 @@
+import StudentDO
 import SwiftUIEncore
 
 struct ReviewRequestView: View, TestableView {
-    typealias Coordinator = APIActivityCoordinator<CreateLessonPlanRequest>
+    typealias Coordinator = APIActivityCoordinator<CreateLessonPlanRequestRequest>
 
     var coordinator: Coordinator
     var flow: RequestLessonPlanFlow
     var instrument: Instrument
     var student: Student
-    var address: Address
-    var schedule: Schedule
+    var address: AddressLookupItem
+    var schedule: LessonPlanRequestSchedule
     var privateNote: String
 
     func submitRequest() {
         coordinator.run(
             with: .init(
-                instrument: instrument,
-                student: student,
-                address: address,
-                schedule: schedule,
-                privateNote: privateNote
+                body: .init(
+                    instrument: instrument.id,
+                    student: student,
+                    address: address,
+                    schedule: schedule,
+                    privateNote: privateNote
+                )
             )
         )
     }
@@ -52,7 +55,7 @@ struct ReviewRequestView: View, TestableView {
                             style: .box,
                             accessory: { editButton(action: resetAddressDetails) }
                         ) {
-                            Text(address.condensedFormattedString)
+                            Text(address.formatted(style: .multilineCompact))
                                 .rythmicoTextStyle(.body)
                                 .foregroundColor(.rythmico.foreground)
                         }
@@ -62,7 +65,7 @@ struct ReviewRequestView: View, TestableView {
                             style: .box,
                             accessory: { editButton(action: resetSchedule) }
                         ) {
-                            LessonPlanRequestedScheduleView(schedule, tutor: nil)
+                            LessonPlanRequestedScheduleAndTutorView(schedule: schedule, tutor: nil)
                         }
 
                         SectionHeaderContentView(
@@ -108,10 +111,9 @@ struct ReviewRequestView: View, TestableView {
         ].filter(\.isEmpty.not).joined(separator: .newline)
     }
 
-    private static let dateOfBirthFormatter = Current.dateFormatter(format: .custom("dd-MM-yyyy"))
-    private func studentAge(from dateOfBirth: Date) -> String {
-        let dateOfBirthString = Self.dateOfBirthFormatter.string(from: dateOfBirth)
-        let age = Current.date() - (dateOfBirth, .year, Current.timeZone)
+    private func studentAge(from dateOfBirth: DateOnly) -> String {
+        let dateOfBirthString = dateOfBirth.formatted(style: .short, locale: Current.locale())
+        let age = try! Current.dateOnly() - (dateOfBirth, .year)
         return [dateOfBirthString, "(\(age) years old)"].compacted().spaced()
     }
 
@@ -148,9 +150,9 @@ struct ReviewRequestView: View, TestableView {
 struct ReviewRequestView_Previews: PreviewProvider {
     static var previews: some View {
         ReviewRequestView(
-            coordinator: Current.lessonPlanRequestCoordinator(),
+            coordinator: Current.lessonPlanRequestCreationCoordinator(),
             flow: RequestLessonPlanFlow(),
-            instrument: .guitar,
+            instrument: .stub(.guitar),
             student: .davidStub,
             address: .stub,
             schedule: .stub,

@@ -1,7 +1,7 @@
-import SwiftUIEncore
-import XCTest
 @testable import Rythmico
+import SwiftUIEncore
 import ViewInspector
+import XCTest
 
 extension AddressDetailsView: Inspectable {}
 
@@ -26,7 +26,7 @@ final class AddressDetailsViewTests: XCTestCase {
             addressSearchService,
             AddressDetailsView(
                 student: .davidStub,
-                instrument: .guitar,
+                instrument: .stub(.guitar),
                 state: .init(),
                 coordinator: Current.addressSearchCoordinator(),
                 setter: { flow.address = $0 }
@@ -52,7 +52,7 @@ final class AddressDetailsViewTests: XCTestCase {
     }
 
     func testSearchAddresses_failure() throws {
-        let (_, provider, view) = try addressDetailsView(result: .failure("Something"))
+        let (_, provider, view) = try addressDetailsView(result: .failure(RuntimeError("Something")))
 
         XCTAssertView(view) { view in
             view.state.postcode = "N7"
@@ -68,7 +68,7 @@ final class AddressDetailsViewTests: XCTestCase {
     }
 
     func testSearchAddressesWithEmptyPostcode_failure() throws {
-        let (_, provider, view) = try addressDetailsView(result: .failure("Something"))
+        let (_, provider, view) = try addressDetailsView(result: .failure(RuntimeError("Something")))
 
         XCTAssertView(view) { view in
             view.state.postcode = "N7"

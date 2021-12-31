@@ -4,7 +4,7 @@ import Combine
 final class RootViewFlow: Flow {
     enum Step: FlowStep, CaseIterable {
         case onboarding
-        case tutorStatus
+        case registration
         case mainView
     }
 
@@ -14,13 +14,13 @@ final class RootViewFlow: Flow {
         userCredentialProvider provider: UserCredentialProviderBase = Current.userCredentialProvider,
         settings: UserDefaults = Current.settings
     ) {
-        func step(forUser user: UserCredentialProtocol?, isVerified: Bool) -> Step {
+        func step(forUser user: UserCredential?, isVerified: Bool) -> Step {
             let isAuthenticated = user != nil
             switch (isAuthenticated, isVerified) {
             case (false, _):
                 return .onboarding
             case (true, false):
-                return .tutorStatus
+                return .registration
             case (true, true):
                 return .mainView
             }

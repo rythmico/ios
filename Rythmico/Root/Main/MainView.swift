@@ -7,7 +7,7 @@ struct MainView: View, TestableView {
         case profile = "Profile"
 
         var title: String { rawValue }
-        var uppercasedTitle: String { title.uppercased(with: Current.locale) }
+        var uppercasedTitle: String { title.uppercased(with: Current.locale()) }
     }
 
     @ObservedObject
@@ -21,7 +21,6 @@ struct MainView: View, TestableView {
         )
         .testable(self)
         .accentColor(.rythmico.picoteeBlue)
-        .onAppear(perform: Current.deviceRegisterCoordinator.registerDevice)
         .onAppear(perform: Current.pushNotificationAuthorizationCoordinator.refreshAuthorizationStatus)
     }
 

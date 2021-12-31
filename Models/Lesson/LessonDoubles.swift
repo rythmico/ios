@@ -1,3 +1,4 @@
+import CoreDTO
 import FoundationEncore
 
 extension Lesson.ID {
@@ -15,7 +16,7 @@ extension Array where Element == Lesson {
             .stub(
                 week: lessonCount-$0-1,
                 status: .random() ? .skipped : .completed,
-                startDate: .stub - ($0, .weekOfYear, .neutral)
+                startDate: try! .stub - ($0, .weekOfYear, .neutral)
             )
         }
     }
@@ -36,7 +37,7 @@ private extension Lesson {
             id: .random(),
             lessonPlanId: .stub,
             student: .jackStub,
-            instrument: .guitar,
+            instrument: .stub(.guitar),
             week: week,
             tutor: .jesseStub,
             status: status,
@@ -50,7 +51,7 @@ private extension Lesson {
         Self(
             id: .random(),
             student: .jackStub,
-            instrument: .guitar,
+            instrument: .stub(.guitar),
             week: week,
             status: status,
             address: .stub,
@@ -79,7 +80,7 @@ extension Lesson.Options.Skip {
 
 extension Lesson.Options.Skip.Policy {
     static let stub = Self(
-        freeBeforeDate: .stub - (24, .hour, .neutral),
+        freeBeforeDate: try! .stub - (24, .hour, .neutral),
         freeBeforePeriod: .init(hours: 24)
     )
 }

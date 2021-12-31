@@ -43,9 +43,7 @@ final class AnalyticsCoordinator {
         if let credential = userCredentialProvider.userCredential {
             service.identify(
                 AnalyticsUserProfile(
-                    id: credential.userId,
-                    name: credential.name,
-                    email: credential.email,
+                    id: credential.userID,
                     accessibilitySettings: accessibilitySettings,
                     pushNotificationsAuthStatus: notificationAuthCoordinator.status,
                     isCalendarSyncEnabled: calendarSyncCoordinator.isCalendarSyncEnabled

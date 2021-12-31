@@ -16,17 +16,17 @@ struct CoordinatorStateView<Input, Success, InputContent: View, LoadingContent: 
         ZStack {
             switch coordinator.state {
             case .finished(.success(let successValue)):
-                successContent(successValue).transition(stateTransition(scale: 0.7))
+                successContent(successValue).transition(stateTransition)
             case .loading:
-                loadingContent.transition(stateTransition(scale: 0.7))
+                loadingContent.transition(stateTransition)
             default:
-                inputContent.transition(stateTransition(scale: 0.9))
+                inputContent.transition(stateTransition)
             }
         }
     }
 
-    private func stateTransition(scale: CGFloat) -> AnyTransition {
-        (.scale(scale: scale) + .opacity).animation(.rythmicoSpring(duration: .durationShort))
+    private var stateTransition: AnyTransition {
+        (.scale(scale: 0.9) + .opacity).animation(.rythmicoSpring(duration: .durationShort))
     }
 }
 

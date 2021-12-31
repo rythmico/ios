@@ -8,7 +8,6 @@ struct Checkout: Decodable, Hashable {
         var cancelFreeBeforePeriod: PeriodDuration
     }
 
-    @E164PhoneNumberOptional
     var phoneNumber: PhoneNumber?
     var pricePerLesson: Price
     var availableCards: [Card]

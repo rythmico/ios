@@ -1,3 +1,4 @@
+import TutorDO
 import SwiftUIEncore
 
 extension AppEnvironment {
@@ -5,15 +6,15 @@ extension AppEnvironment {
         dummy => {
             $0.setUpFake()
 
-            $0.fakeAPIEndpoint(for: \.tutorStatusFetchingCoordinator, result: .success(.verified))
+            $0.fakeAPIEndpoint(for: \.tutorProfileStatusFetchingCoordinator, result: .success(.verified))
 
             $0.fakeAPIEndpoint(for: \.bookingsFetchingCoordinator, result: .success(.stub))
 
-            $0.fakeAPIEndpoint(for: \.bookingRequestFetchingCoordinator, result: .success([.stub, .longStub]))
-            $0.fakeAPIEndpoint(for: \.bookingRequestApplyingCoordinator, result: .success(.stub))
+            $0.fakeAPIEndpoint(for: \.lessonPlanRequestFetchingCoordinator, result: .success([.stub, .longStub]))
 
-            $0.fakeAPIEndpoint(for: \.bookingApplicationFetchingCoordinator, result: .success([.longStub, .stubWithAbout] + .stub))
-            $0.fakeAPIEndpoint(for: \.bookingApplicationRetractionCoordinator, result: .success(.stub))
+            $0.fakeAPIEndpoint(for: \.lessonPlanApplicationFetchingCoordinator, result: .success([.longStub, .stubWithAbout] + .stub))
+            $0.fakeAPIEndpoint(for: \.lessonPlanApplicationCreationCoordinator, result: .success(.stub))
+            $0.fakeAPIEndpoint(for: \.lessonPlanApplicationRetractionCoordinator, result: .success(.stub))
         }
     }
 }
@@ -23,14 +24,13 @@ extension AppEnvironment {
         AppEnvironment(
             tabSelection: TabSelection(),
 
-            remoteConfig: RemoteConfigDummy(),
-
+            appStatus: .init(),
             appOrigin: .testFlight,
 
             date: { .stub },
             calendarType: { .gregorian },
-            locale: .neutral,
-            timeZone: .neutral,
+            locale: { .neutral },
+            timeZone: { .neutral },
 
             eventEmitter: NotificationCenter(),
 
@@ -40,21 +40,16 @@ extension AppEnvironment {
             accessibilitySettings: .dummy,
             voiceOver: VoiceOverServiceDummy.self,
 
-            appleAuthorizationService: AppleAuthorizationServiceDummy(),
-            appleAuthorizationCredentialStateProvider: AppleAuthorizationCredentialStateFetcherDummy(),
-            appleAuthorizationCredentialRevocationNotifier: AppleAuthorizationCredentialRevocationNotifierDummy(),
-            authenticationService: AuthenticationServiceDummy(),
-            deauthenticationService: DeauthenticationServiceDummy(),
-            userCredentialProvider: UserCredentialProviderDummy(),
+            siwaAuthorizationService: SIWAAuthorizationServiceDummy(),
+            siwaService: APIServiceDummy(),
+            userCredentialProvider: { _ in UserCredentialProviderDummy() },
+            siwaCredentialStateProvider: SIWACredentialStateFetcherDummy(),
+            siwaCredentialRevocationNotifier: SIWACredentialRevocationNotifierDummy(),
 
-            errorLogger: { _ in ErrorLoggerDummy() },
-
-            deviceTokenProvider: DeviceTokenProviderDummy(),
-            deviceRegisterService: APIServiceDummy(),
-            deviceTokenDeleter: DeviceTokenDeleterDummy(),
-
+            apnsRegistrationService: APNSRegistrationServiceDummy(),
+            registerAPNSTokenService: APIServiceDummy(),
             pushNotificationAuthorizationCoordinator: .dummy,
-            pushNotificationEventHandler: PushNotificationEventHandlerDummy(),
+            apiEventListener: { _ in APIEventListenerDummy() },
 
             calendarSyncStatusProvider: CalendarSyncStatusProviderDummy(),
             calendarInfoFetchingService: APIServiceDummy(),
@@ -66,18 +61,18 @@ extension AppEnvironment {
             imageLoadingService: ImageLoadingServiceDummy(),
             imageProcessingService: ImageProcessingServiceDummy(),
 
-            tutorStatusFetchingService: APIServiceDummy(),
+            tutorProfileStatusFetchingService: APIServiceDummy(),
 
             bookingsRepository: Repository(),
             bookingsFetchingService: APIServiceDummy(),
 
-            bookingRequestRepository: Repository(),
-            bookingRequestFetchingService: APIServiceDummy(),
-            bookingRequestApplyingService: APIServiceDummy(),
+            lessonPlanRequestRepository: Repository(),
+            lessonPlanRequestFetchingService: APIServiceDummy(),
 
-            bookingApplicationRepository: Repository(),
-            bookingApplicationFetchingService: APIServiceDummy(),
-            bookingApplicationRetractionService: APIServiceDummy()
+            lessonPlanApplicationRepository: Repository(),
+            lessonPlanApplicationCreationService: APIServiceDummy(),
+            lessonPlanApplicationFetchingService: APIServiceDummy(),
+            lessonPlanApplicationRetractionService: APIServiceDummy()
         )
     }
 }

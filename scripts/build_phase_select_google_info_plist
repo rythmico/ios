@@ -1,5 +1,0 @@
-#!/bin/bash
-
-PRODUCT_DIR=$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.app
-cp -Rf $PRODUCT_DIR/GoogleService-Info-$CONFIGURATION.plist $PRODUCT_DIR/GoogleService-Info.plist
-rm -rf $PRODUCT_DIR/GoogleService-Info-*.plist

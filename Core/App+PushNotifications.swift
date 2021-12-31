@@ -1,53 +1,35 @@
+import CoreDTO
 import UIKit
-import FirebaseMessaging
 
-extension App.Delegate: MessagingDelegate, UNUserNotificationCenterDelegate {
+extension App.Delegate: UNUserNotificationCenterDelegate {
     func configurePushNotifications(application: UIApplication) {
-        Messaging.messaging().delegate = self
         UNUserNotificationCenter.current().delegate = self
-        application.registerForRemoteNotifications()
     }
 
     func application(
         _ application: UIApplication,
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
     ) {
-        Messaging.messaging().apnsToken = deviceToken
-    }
-
-    // Handle silent notifications ("events"). This function catches all notification types.
-    func application(
-        _ application: UIApplication,
-        didReceiveRemoteNotification userInfo: [AnyHashable : Any],
-        fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void
-    ) {
-        defer { completionHandler(.noData) }
-
-        switch application.applicationState {
-        case .background:
+        guard let environment = RegisterAPNSTokenBody.Environment(from: .read()) else {
+            print("[APNS] No embedded.mobileprovision file found, so APS environment could not be determined.")
             return
-        case .active, .inactive:
-            break
-        @unknown default:
-            break
         }
-
-        PushNotificationEvent(userInfo: userInfo).map(Current.pushNotificationEventHandler.handle)
+        let deviceToken = deviceToken.map { String(format: "%02x", $0) }.joined()
+        Current.registerAPNSTokenCoordinator.runToIdle(
+            with: .init(body: .init(deviceToken: deviceToken, environment: environment))
+        )
     }
 
-    // Show notifications in-app (without sound/vibration or badge).
+    // Show notifications in-app (without badge).
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         willPresent notification: UNNotification,
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
     ) {
-        defer { completionHandler([.list, .banner]) }
-
-        let userInfo = notification.request.content.userInfo
-        Messaging.messaging().appDidReceiveMessage(userInfo)
+        completionHandler([.banner, .list, .sound])
     }
 
-    // Handle foreground/background notification taps.
+    // Handle notification taps.
     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse,
@@ -55,9 +37,7 @@ extension App.Delegate: MessagingDelegate, UNUserNotificationCenterDelegate {
     ) {
         defer { completionHandler() }
 
-        let userInfo = response.notification.request.content.userInfo
-        Messaging.messaging().appDidReceiveMessage(userInfo)
-
         // TODO: parse and handle userInfo ~> Route
+        // let userInfo = response.notification.request.content.userInfo
     }
 }

@@ -37,11 +37,11 @@ struct PhoneNumberInputView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             PhoneNumberInputView(phoneNumber: .constant(nil), phoneNumberInputError: .constant(nil))
-            PhoneNumberInputView(phoneNumber: .constant(nil), phoneNumberInputError: .constant(.some("Some error")))
+            PhoneNumberInputView(phoneNumber: .constant(nil), phoneNumberInputError: .constant(.some(RuntimeError("Some error"))))
             PhoneNumberInputView(phoneNumber: .constant(.stub), phoneNumberInputError: .constant(nil))
-            PhoneNumberInputView(phoneNumber: .constant(.stub), phoneNumberInputError: .constant(.some("Some error")))
+            PhoneNumberInputView(phoneNumber: .constant(.stub), phoneNumberInputError: .constant(.some(RuntimeError("Some error"))))
         }
-        .environment(\.locale, Current.locale)
+        .environment(\.locale, Current.locale())
         .previewLayout(.sizeThatFits)
         .padding()
     }
