@@ -29,4 +29,4 @@ jobs:
       - name: Bootstrap
         run: make bootstrap
       - name: Deploy
-        run: bundle exec fastlane deploy_staging
+        run: bundle exec fastlane deploy_stage
