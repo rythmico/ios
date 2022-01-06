@@ -141,8 +141,8 @@
         "repositoryURL": "https://github.com/pointfreeco/swift-case-paths",
         "state": {
           "branch": null,
-          "revision": "d226d167bd4a68b51e352af5655c92bce8ee0463",
-          "version": "0.7.0"
+          "revision": "241301b67d8551c26d8f09bd2c0e52cc49f18007",
+          "version": "0.8.0"
         }
       },
       {
@@ -159,8 +159,8 @@
         "repositoryURL": "https://github.com/pointfreeco/swift-composable-architecture",
         "state": {
           "branch": null,
-          "revision": "9c162f485bbd4cc09b86163d3c2901aeab6e6288",
-          "version": "0.31.0"
+          "revision": "313dd217dcd1d0478118ec5d15225fd473c1564a",
+          "version": "0.32.0"
         }
       },
       {
@@ -285,8 +285,8 @@
         "repositoryURL": "https://github.com/nalexn/ViewInspector",
         "state": {
           "branch": null,
-          "revision": "0d546878902bdde8c4682141f848a9dc44e04ba6",
-          "version": "0.9.0"
+          "revision": "6b88c4ec1fa20cf38f2138052e63c8e79df5d76e",
+          "version": "0.9.1"
         }
       },
       {
