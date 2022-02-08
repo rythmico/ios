@@ -6,7 +6,7 @@ extension Button where Label == EmptyView {
         CustomButton(action: action) { state in
             Container(
                 style: .init(
-                    fill: state.map(normal: .rythmico.picoteeBlue, pressed: .rythmico.darkPurple),
+                    fill: state.map(normal: .rythmico.picoteeBlue, pressed: .rythmico.darkPurple) as Color,
                     shape: .circle,
                     border: .none
                 )
@@ -25,7 +25,7 @@ extension Button where Label == EmptyView {
         CustomButton(action: action) { state in
             Container(
                 style: .init(
-                    fill: state.map(normal: .rythmico.picoteeBlue, pressed: .rythmico.darkPurple),
+                    fill: state.map(normal: .rythmico.picoteeBlue, pressed: .rythmico.darkPurple) as Color,
                     shape: .circle,
                     border: .none
                 )

@@ -5,7 +5,7 @@ struct InstrumentView: View {
     let instrument: Instrument
 
     var body: some View {
-        Container(style: .outline(fill: .rythmico.background)) {
+        Container(style: .outline(fill: Color.rythmico.background)) {
             ZStack {
                 Text(instrument.standaloneName)
                     .rythmicoTextStyle(.subheadlineBold)

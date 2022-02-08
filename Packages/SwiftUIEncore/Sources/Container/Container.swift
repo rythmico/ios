@@ -24,7 +24,7 @@ public struct Container<Content: View>: View {
     private func body<S: InsettableShape>(for shape: S) -> some View {
         ZStack(content: content)
             .clipShape(shape.inset(by: clipShapeInset))
-            .background(style.fill.fillShape(shape))
+            .background(shape.fill(style.fill))
             .overlay(outlineOverlay(for: shape))
             .contentShape(Rectangle())
     }

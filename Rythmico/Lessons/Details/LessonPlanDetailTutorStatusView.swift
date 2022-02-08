@@ -13,7 +13,7 @@ struct LessonPlanDetailTutorStatusView: View {
     var body: some View {
         CustomButton(action: action ?? {}) { state in
             SelectableContainer(
-                fill: .rythmico.background,
+                fill: Color.rythmico.background,
                 isSelected: state == .pressed
             ) { state in
                 InlineContentTitleSubtitleView(

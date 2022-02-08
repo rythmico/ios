@@ -12,7 +12,7 @@ struct LessonDetailTutorBoxView: View {
         SectionHeaderContentView("Tutor", style: .box) {
             CustomButton(action: action) { state in
                 SelectableContainer(
-                    fill: .rythmico.background,
+                    fill: Color.rythmico.background,
                     isSelected: state == .pressed
                 ) { state in
                     InlineContentTitleSubtitleView(

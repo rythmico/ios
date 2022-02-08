@@ -34,10 +34,10 @@ struct LessonPlanRequestSummaryCell: View {
         )
     }
 
-    var fill: ContainerStyle.Fill {
+    var fill: Color {
         switch lessonPlanRequest.status {
         case .pending:
-            return .color(.rythmico.background)
+            return .rythmico.background
         }
     }
 

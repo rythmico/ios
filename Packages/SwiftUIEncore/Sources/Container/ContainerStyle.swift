@@ -1,5 +1,9 @@
 public struct ContainerStyle {
+    // TODO: consider `any SwiftUI.ShapeStyle` when existentials are introduced.
+    public typealias Fill = AnyShapeStyle
+
     public let fill: Fill
+    // TODO: consider `any SwiftUI.Shape` when existentials are introduced.
     public let shape: Shape
     public let border: Border?
 
@@ -11,40 +15,10 @@ public struct ContainerStyle {
 }
 
 extension ContainerStyle {
-    public init(fill: Color, shape: Shape, border: Border?) {
-        self.init(fill: .color(fill), shape: shape, border: border)
-    }
-
-    public init(fill: LinearGradient, shape: Shape, border: Border?) {
-        self.init(fill: .linearGradient(fill), shape: shape, border: border)
-    }
-}
-
-extension ContainerStyle {
-    // TODO: replace with AnyShapeStyle in iOS 15.
-    public enum Fill {
-        case color(Color)
-        case linearGradient(LinearGradient)
-
-        public var color: Color? {
-            guard case .color(let color) = self else { return nil }
-            return color
-        }
-
-        public var linearGradient: LinearGradient? {
-            guard case .linearGradient(let linearGradient) = self else { return nil }
-            return linearGradient
-        }
-
-        @ViewBuilder
-        func fillShape<S: SwiftUI.Shape>(_ shape: S) -> some View {
-            switch self {
-            case .color(let color):
-                shape.fill(color)
-            case .linearGradient(let gradient):
-                shape.fill(gradient)
-            }
-        }
+    // TODO: use `fill: some ShapeStyle` when Opaque Parameter Declarations are introduced.
+    // https://github.com/apple/swift-evolution/blob/main/proposals/0341-opaque-parameters.md
+    public init<SomeFill: ShapeStyle>(fill: SomeFill, shape: Shape, border: Border?) {
+        self.init(fill: AnyShapeStyle(fill), shape: shape, border: border)
     }
 }
 

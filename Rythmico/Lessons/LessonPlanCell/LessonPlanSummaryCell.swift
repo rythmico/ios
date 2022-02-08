@@ -36,9 +36,9 @@ struct LessonPlanSummaryCell: View {
     var fill: ContainerStyle.Fill {
         switch lessonPlan.status {
         case .pending, .reviewing, .active:
-            return .color(.rythmico.background)
+            return .init(Color.rythmico.background)
         case .paused:
-            return .linearGradient(
+            return .init(
                 LinearGradient(
                     gradient: Gradient(colors: [pausedColor.opacity(0.1), pausedColor.opacity(0.4)]),
                     startPoint: .top,
@@ -46,7 +46,7 @@ struct LessonPlanSummaryCell: View {
                 )
             )
         case .cancelled:
-            return .color(.rythmico.gray2)
+            return .init(Color.rythmico.gray2)
         }
     }
 

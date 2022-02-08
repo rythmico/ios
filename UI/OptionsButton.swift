@@ -49,7 +49,7 @@ private struct ThreeDotButton: View {
 
     private func style(for state: CustomButtonState) -> ContainerStyle {
         .init(
-            fill: state.map(normal: .rythmico.picoteeBlue, pressed: .rythmico.darkPurple),
+            fill: state.map(normal: .rythmico.picoteeBlue, pressed: .rythmico.darkPurple) as Color,
             shape: .circle,
             border: .none
         )

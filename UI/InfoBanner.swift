@@ -6,7 +6,7 @@ struct InfoBanner: View {
     var body: some View {
         Container(
             style: .init(
-                fill: .rythmico.azureBlue,
+                fill: Color.rythmico.azureBlue,
                 shape: .squircle(radius: 4, style: .continuous),
                 border: .none
             )

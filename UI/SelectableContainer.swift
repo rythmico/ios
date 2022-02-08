@@ -10,23 +10,27 @@ struct SelectableContainer<Content: View>: View {
     @Environment(\.colorScheme) private var colorScheme
 
     typealias Fill = ContainerStyle.Fill
+    typealias Radius = ContainerStyle.OutlineRadius
     typealias State = SelectableContainerState
 
     var fill: Fill
-    var radius: ContainerStyle.OutlineRadius
+    var radius: Radius
     var borderColor: Color
     let isSelected: Bool
     @ViewBuilder
     let content: (State) -> Content
 
-    init(
-        fill: Fill = .color(.clear),
-        radius: ContainerStyle.OutlineRadius = .default,
+    private var fillColor: Color?
+
+    init<SomeFill: ShapeStyle>(
+        fill: SomeFill,
+        radius: Radius = .default,
         borderColor: Color = ContainerStyle.outlineBorderColor,
         isSelected: Bool,
         @ViewBuilder content: @escaping (State) -> Content
     ) {
-        self.fill = fill
+        self.fill = AnyShapeStyle(fill)
+        self.fillColor = fill as? Color
         self.radius = radius
         self.borderColor = borderColor
         self.isSelected = isSelected
@@ -34,23 +38,12 @@ struct SelectableContainer<Content: View>: View {
     }
 
     init(
-        fill: Color,
-        radius: ContainerStyle.OutlineRadius = .default,
+        radius: Radius = .default,
         borderColor: Color = ContainerStyle.outlineBorderColor,
         isSelected: Bool,
         @ViewBuilder content: @escaping (State) -> Content
     ) {
-        self.init(fill: .color(fill), radius: radius, borderColor: borderColor, isSelected: isSelected, content: content)
-    }
-
-    init(
-        fill: LinearGradient,
-        radius: ContainerStyle.OutlineRadius = .default,
-        borderColor: Color = ContainerStyle.outlineBorderColor,
-        isSelected: Bool,
-        @ViewBuilder content: @escaping (State) -> Content
-    ) {
-        self.init(fill: .linearGradient(fill), radius: radius, borderColor: borderColor, isSelected: isSelected, content: content)
+        self.init(fill: .clear, radius: radius, borderColor: borderColor, isSelected: isSelected, content: content)
     }
 
     var body: some View {
@@ -69,7 +62,7 @@ struct SelectableContainer<Content: View>: View {
 
     private var selectedStyle: ContainerStyle {
         .init(
-            fill: .rythmico.darkPurple,
+            fill: Color.rythmico.darkPurple,
             shape: .squircle(radius: radius.rawValue, style: .continuous),
             border: .none
         )
@@ -91,7 +84,7 @@ struct SelectableContainer<Content: View>: View {
     private var state: State {
         .init(
             isSelected: isSelected,
-            backgroundColor: style.fill.color,
+            backgroundColor: fillColor,
             foregroundColor: foregroundColor
         )
     }

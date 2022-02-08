@@ -9,7 +9,7 @@ struct LessonSummaryCell: View {
     var body: some View {
         CustomButton(action: onTapAction ?? {}) { state in
             SelectableContainer(
-                fill: .rythmico.background,
+                fill: Color.rythmico.background,
                 radius: .large,
                 isSelected: state == .pressed
             ) { _ in

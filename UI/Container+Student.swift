@@ -11,7 +11,9 @@ extension ContainerStyle {
 
     static let outlineBorderColor: Color = .rythmico.outline
 
-    static func outline(fill: Fill = .color(.clear), radius: OutlineRadius = .default, borderColor: Color = outlineBorderColor) -> Self {
+    // TODO: use `fill: some ShapeStyle` when Opaque Parameter Declarations are introduced.
+    // https://github.com/apple/swift-evolution/blob/main/proposals/0341-opaque-parameters.md
+    static func outline<SomeFill: ShapeStyle>(fill: SomeFill, radius: OutlineRadius = .default, borderColor: Color = outlineBorderColor) -> Self {
         Self(
             fill: fill,
             shape: .squircle(radius: radius.rawValue, style: .continuous),
@@ -19,12 +21,8 @@ extension ContainerStyle {
         )
     }
 
-    static func outline(fill: Color, radius: OutlineRadius = .default, borderColor: Color = outlineBorderColor) -> Self {
-        outline(fill: .color(fill), radius: radius, borderColor: borderColor)
-    }
-
-    static func outline(fill: LinearGradient, radius: OutlineRadius = .default, borderColor: Color = outlineBorderColor) -> Self {
-        outline(fill: .linearGradient(fill), radius: radius, borderColor: borderColor)
+    static func outline(radius: OutlineRadius = .default, borderColor: Color = outlineBorderColor) -> Self {
+        outline(fill: .clear, radius: radius, borderColor: borderColor)
     }
 }
 
@@ -39,7 +37,7 @@ extension ContainerStyle {
 
     static func box(radius: BoxRadius = .default) -> Self {
         Self(
-            fill: .rythmico.gray2,
+            fill: Color.rythmico.gray2,
             shape: .squircle(radius: radius.rawValue, style: .continuous),
             border: .none
         )
