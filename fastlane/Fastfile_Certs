@@ -24,12 +24,12 @@ lane :renew_certs do
   when 'development'
     match(type: 'development', force: true)
   when 'adhoc'
-    match(type: 'adhoc', force_for_new_devices: true)
+    match(type: 'adhoc', force: true)
   when 'appstore'
     match(type: 'appstore', force: true)
   when 'all'
     match(type: 'development', force: true)
-    match(type: 'adhoc', force_for_new_devices: true)
+    match(type: 'adhoc', force: true)
     match(type: 'appstore', force: true)
   else
     puts 'No certificates matched'
