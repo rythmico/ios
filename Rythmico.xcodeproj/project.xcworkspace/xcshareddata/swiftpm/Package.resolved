@@ -1,313 +1,320 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "Amplitude",
-        "repositoryURL": "https://github.com/amplitude/Amplitude-iOS",
-        "state": {
-          "branch": null,
-          "revision": "b8a0d51fd414db206050ac83806795a8fab6f447",
-          "version": "8.7.1"
-        }
-      },
-      {
-        "package": "APIKit",
-        "repositoryURL": "https://github.com/davdroman/APIKit",
-        "state": {
-          "branch": "davdroman-improvements",
-          "revision": "398ffbc92adffc1fd1f6bd0fe0dd09caecf18d2b",
-          "version": null
-        }
-      },
-      {
-        "package": "CollectionConcurrencyKit",
-        "repositoryURL": "https://github.com/JohnSundell/CollectionConcurrencyKit",
-        "state": {
-          "branch": null,
-          "revision": "b4f23e24b5a1bff301efc5e70871083ca029ff95",
-          "version": "0.2.0"
-        }
-      },
-      {
-        "package": "combine-schedulers",
-        "repositoryURL": "https://github.com/pointfreeco/combine-schedulers",
-        "state": {
-          "branch": null,
-          "revision": "4cf088c29a20f52be0f2ca54992b492c54e0076b",
-          "version": "0.5.3"
-        }
-      },
-      {
-        "package": "DTO",
-        "repositoryURL": "https://github.com/rythmico/dto-swift",
-        "state": {
-          "branch": "main",
-          "revision": "ff1c05c50a74ac493418fa9eaee4f9ca7b73ddea",
-          "version": null
-        }
-      },
-      {
-        "package": "LegibleError",
-        "repositoryURL": "https://github.com/mxcl/LegibleError",
-        "state": {
-          "branch": null,
-          "revision": "bc596702d7ff618c3f90ba480eeb48b3e83a2fbe",
-          "version": "1.0.6"
-        }
-      },
-      {
-        "package": "MobileProvision",
-        "repositoryURL": "https://github.com/CrazyFanFan/MobileProvision",
-        "state": {
-          "branch": null,
-          "revision": "4a1169e50976b17b510467a81ed254642879d4fa",
-          "version": "0.0.2"
-        }
-      },
-      {
-        "package": "MultiModal",
-        "repositoryURL": "https://github.com/davdroman/MultiModal",
-        "state": {
-          "branch": null,
-          "revision": "1f9f5331ed0b374e5f9273162c8782a1884dfaa5",
-          "version": "2.1.0"
-        }
-      },
-      {
-        "package": "PeriodDuration",
-        "repositoryURL": "https://github.com/davdroman/PeriodDuration",
-        "state": {
-          "branch": null,
-          "revision": "d6689e32ec22f77cd45c4967ed0d103d81c1abb9",
-          "version": "0.10.0"
-        }
-      },
-      {
-        "package": "PhoneNumberKit",
-        "repositoryURL": "https://github.com/davdroman/PhoneNumberKit",
-        "state": {
-          "branch": "davdroman-improvements",
-          "revision": "d9f14aa3f61a4f9bf3d6ce1f01e2d57dd71bb948",
-          "version": null
-        }
-      },
-      {
-        "package": "PreciseDecimal",
-        "repositoryURL": "https://github.com/davdroman/PreciseDecimal",
-        "state": {
-          "branch": "main",
-          "revision": "2ab57fc9a2262204c2bde46d133d2b9dd72e74a0",
-          "version": null
-        }
-      },
-      {
-        "package": "SFSafeSymbols",
-        "repositoryURL": "https://github.com/piknotech/SFSafeSymbols",
-        "state": {
-          "branch": null,
-          "revision": "c61de7a6e9eb1520d32316b06d5932accd974e70",
-          "version": "2.1.3"
-        }
-      },
-      {
-        "package": "Starscream",
-        "repositoryURL": "https://github.com/daltoniam/Starscream",
-        "state": {
-          "branch": null,
-          "revision": "df8d82047f6654d8e4b655d1b1525c64e1059d21",
-          "version": "4.0.4"
-        }
-      },
-      {
-        "package": "Stripe",
-        "repositoryURL": "https://github.com/stripe/stripe-ios",
-        "state": {
-          "branch": null,
-          "revision": "5eb0a694e951d6d896b1e5db79f9e65ca726db41",
-          "version": "21.12.0"
-        }
-      },
-      {
-        "package": "swift-algorithms",
-        "repositoryURL": "https://github.com/apple/swift-algorithms",
-        "state": {
-          "branch": null,
-          "revision": "b14b7f4c528c942f121c8b860b9410b2bf57825e",
-          "version": "1.0.0"
-        }
-      },
-      {
-        "package": "swift-case-paths",
-        "repositoryURL": "https://github.com/pointfreeco/swift-case-paths",
-        "state": {
-          "branch": null,
-          "revision": "241301b67d8551c26d8f09bd2c0e52cc49f18007",
-          "version": "0.8.0"
-        }
-      },
-      {
-        "package": "swift-collections",
-        "repositoryURL": "https://github.com/apple/swift-collections",
-        "state": {
-          "branch": null,
-          "revision": "48254824bb4248676bf7ce56014ff57b142b77eb",
-          "version": "1.0.2"
-        }
-      },
-      {
-        "package": "swift-composable-architecture",
-        "repositoryURL": "https://github.com/pointfreeco/swift-composable-architecture",
-        "state": {
-          "branch": null,
-          "revision": "313dd217dcd1d0478118ec5d15225fd473c1564a",
-          "version": "0.32.0"
-        }
-      },
-      {
-        "package": "swift-composable-navigator",
-        "repositoryURL": "https://github.com/Bahn-X/swift-composable-navigator",
-        "state": {
-          "branch": null,
-          "revision": "2d139ba1a955f702ad3e63710ec64efab4073211",
-          "version": "0.2.0"
-        }
-      },
-      {
-        "package": "swift-custom-dump",
-        "repositoryURL": "https://github.com/pointfreeco/swift-custom-dump",
-        "state": {
-          "branch": null,
-          "revision": "51698ece74ecf31959d3fa81733f0a5363ef1b4e",
-          "version": "0.3.0"
-        }
-      },
-      {
-        "package": "SwiftEncore",
-        "repositoryURL": "https://github.com/rythmico/swift-encore",
-        "state": {
-          "branch": "main",
-          "revision": "1b7484b07ffbd4e9cedebec56e451defd0892999",
-          "version": null
-        }
-      },
-      {
-        "package": "FoundationEncore",
-        "repositoryURL": "https://github.com/rythmico/swift-foundation-encore",
-        "state": {
-          "branch": "main",
-          "revision": "9260f2ff4ae459d7e7ee21a458bc0add0998f9ea",
-          "version": null
-        }
-      },
-      {
-        "package": "swift-identified-collections",
-        "repositoryURL": "https://github.com/pointfreeco/swift-identified-collections",
-        "state": {
-          "branch": null,
-          "revision": "680bf440178a78a627b1c2c64c0855f6523ad5b9",
-          "version": "0.3.2"
-        }
-      },
-      {
-        "package": "swift-nonempty",
-        "repositoryURL": "https://github.com/pointfreeco/swift-nonempty",
-        "state": {
-          "branch": null,
-          "revision": "8074e5f2e4a6de5a42476e545cc33438021aa2a4",
-          "version": "0.4.0"
-        }
-      },
-      {
-        "package": "swift-numerics",
-        "repositoryURL": "https://github.com/apple/swift-numerics",
-        "state": {
-          "branch": null,
-          "revision": "0a5bc04095a675662cf24757cc0640aa2204253b",
-          "version": "1.0.2"
-        }
-      },
-      {
-        "package": "swift-tagged",
-        "repositoryURL": "https://github.com/pointfreeco/swift-tagged",
-        "state": {
-          "branch": null,
-          "revision": "6c36cf66f58553d0481a2628e3e27177f698a897",
-          "version": "0.6.0"
-        }
-      },
-      {
-        "package": "Introspect",
-        "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect",
-        "state": {
-          "branch": null,
-          "revision": "2e09be8af614401bc9f87d40093ec19ce56ccaf2",
-          "version": "0.1.3"
-        }
-      },
-      {
-        "package": "WebView",
-        "repositoryURL": "https://github.com/kylehickinson/SwiftUI-WebView",
-        "state": {
-          "branch": null,
-          "revision": "a67dcaff2377573a51f75761bb6e768b78931909",
-          "version": "0.3.0"
-        }
-      },
-      {
-        "package": "TextBuilder",
-        "repositoryURL": "https://github.com/davdroman/TextBuilder",
-        "state": {
-          "branch": null,
-          "revision": "dc589a9a17ffde3946c4512dca4827a374d4b4f7",
-          "version": "1.4.0"
-        }
-      },
-      {
-        "package": "Valet",
-        "repositoryURL": "https://github.com/Square/Valet",
-        "state": {
-          "branch": null,
-          "revision": "2bf3329055f5d71d42a12801dd69d1d770fafa5e",
-          "version": "4.1.2"
-        }
-      },
-      {
-        "package": "Version",
-        "repositoryURL": "https://github.com/mxcl/Version",
-        "state": {
-          "branch": null,
-          "revision": "1fe824b80d89201652e7eca7c9252269a1d85e25",
-          "version": "2.0.1"
-        }
-      },
-      {
-        "package": "ViewInspector",
-        "repositoryURL": "https://github.com/nalexn/ViewInspector",
-        "state": {
-          "branch": null,
-          "revision": "6b88c4ec1fa20cf38f2138052e63c8e79df5d76e",
-          "version": "0.9.1"
-        }
-      },
-      {
-        "package": "xctest-dynamic-overlay",
-        "repositoryURL": "https://github.com/pointfreeco/xctest-dynamic-overlay",
-        "state": {
-          "branch": null,
-          "revision": "50a70a9d3583fe228ce672e8923010c8df2deddd",
-          "version": "0.2.1"
-        }
-      },
-      {
-        "package": "YouTubeiOSPlayerHelper",
-        "repositoryURL": "https://github.com/youtube/youtube-ios-player-helper",
-        "state": {
-          "branch": null,
-          "revision": "f57129cd4380ec0a74dd3a59da3270a1d653d59b",
-          "version": "1.0.4"
-        }
+  "pins" : [
+    {
+      "identity" : "amplitude-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/amplitude/Amplitude-iOS",
+      "state" : {
+        "revision" : "e402b0bc1305158b41a9a296defa77031e718de4",
+        "version" : "8.8.0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "analytics-connector-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/amplitude/analytics-connector-ios.git",
+      "state" : {
+        "revision" : "b44981119e2efc0edd1d2e26831c3c4c0e0264e6",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "apikit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/davdroman/APIKit",
+      "state" : {
+        "branch" : "davdroman-improvements",
+        "revision" : "398ffbc92adffc1fd1f6bd0fe0dd09caecf18d2b"
+      }
+    },
+    {
+      "identity" : "collectionconcurrencykit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JohnSundell/CollectionConcurrencyKit",
+      "state" : {
+        "revision" : "b4f23e24b5a1bff301efc5e70871083ca029ff95",
+        "version" : "0.2.0"
+      }
+    },
+    {
+      "identity" : "combine-schedulers",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/combine-schedulers",
+      "state" : {
+        "revision" : "4cf088c29a20f52be0f2ca54992b492c54e0076b",
+        "version" : "0.5.3"
+      }
+    },
+    {
+      "identity" : "dto-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rythmico/dto-swift",
+      "state" : {
+        "branch" : "main",
+        "revision" : "61ae2f3a9ba689f7cc39d0512ee3787a1f0c8f20"
+      }
+    },
+    {
+      "identity" : "legibleerror",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mxcl/LegibleError",
+      "state" : {
+        "revision" : "bc596702d7ff618c3f90ba480eeb48b3e83a2fbe",
+        "version" : "1.0.6"
+      }
+    },
+    {
+      "identity" : "mobileprovision",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/CrazyFanFan/MobileProvision",
+      "state" : {
+        "revision" : "4a1169e50976b17b510467a81ed254642879d4fa",
+        "version" : "0.0.2"
+      }
+    },
+    {
+      "identity" : "multimodal",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/davdroman/MultiModal",
+      "state" : {
+        "revision" : "1f9f5331ed0b374e5f9273162c8782a1884dfaa5",
+        "version" : "2.1.0"
+      }
+    },
+    {
+      "identity" : "periodduration",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/davdroman/PeriodDuration",
+      "state" : {
+        "revision" : "d6689e32ec22f77cd45c4967ed0d103d81c1abb9",
+        "version" : "0.10.0"
+      }
+    },
+    {
+      "identity" : "phonenumberkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/davdroman/PhoneNumberKit",
+      "state" : {
+        "branch" : "davdroman-improvements",
+        "revision" : "d9f14aa3f61a4f9bf3d6ce1f01e2d57dd71bb948"
+      }
+    },
+    {
+      "identity" : "precisedecimal",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/davdroman/PreciseDecimal",
+      "state" : {
+        "branch" : "main",
+        "revision" : "2ab57fc9a2262204c2bde46d133d2b9dd72e74a0"
+      }
+    },
+    {
+      "identity" : "sfsafesymbols",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/piknotech/SFSafeSymbols",
+      "state" : {
+        "revision" : "c61de7a6e9eb1520d32316b06d5932accd974e70",
+        "version" : "2.1.3"
+      }
+    },
+    {
+      "identity" : "starscream",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/daltoniam/Starscream",
+      "state" : {
+        "revision" : "df8d82047f6654d8e4b655d1b1525c64e1059d21",
+        "version" : "4.0.4"
+      }
+    },
+    {
+      "identity" : "stripe-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/stripe/stripe-ios",
+      "state" : {
+        "revision" : "5eb0a694e951d6d896b1e5db79f9e65ca726db41",
+        "version" : "21.12.0"
+      }
+    },
+    {
+      "identity" : "swift-algorithms",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-algorithms",
+      "state" : {
+        "revision" : "b14b7f4c528c942f121c8b860b9410b2bf57825e",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "swift-case-paths",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-case-paths",
+      "state" : {
+        "revision" : "241301b67d8551c26d8f09bd2c0e52cc49f18007",
+        "version" : "0.8.0"
+      }
+    },
+    {
+      "identity" : "swift-collections",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-collections",
+      "state" : {
+        "revision" : "48254824bb4248676bf7ce56014ff57b142b77eb",
+        "version" : "1.0.2"
+      }
+    },
+    {
+      "identity" : "swift-composable-architecture",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-composable-architecture",
+      "state" : {
+        "revision" : "ba9c626ab1b2b6af8cf684eebb2ab472fa5b6753",
+        "version" : "0.33.1"
+      }
+    },
+    {
+      "identity" : "swift-composable-navigator",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Bahn-X/swift-composable-navigator",
+      "state" : {
+        "revision" : "2d139ba1a955f702ad3e63710ec64efab4073211",
+        "version" : "0.2.0"
+      }
+    },
+    {
+      "identity" : "swift-custom-dump",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-custom-dump",
+      "state" : {
+        "revision" : "51698ece74ecf31959d3fa81733f0a5363ef1b4e",
+        "version" : "0.3.0"
+      }
+    },
+    {
+      "identity" : "swift-encore",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rythmico/swift-encore",
+      "state" : {
+        "branch" : "main",
+        "revision" : "77b4c6d02f77a729daa81f9924d75aa40520eff3"
+      }
+    },
+    {
+      "identity" : "swift-foundation-encore",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rythmico/swift-foundation-encore",
+      "state" : {
+        "branch" : "main",
+        "revision" : "d14e2c93b59b02983e63dbd6be0289964ce7eae3"
+      }
+    },
+    {
+      "identity" : "swift-identified-collections",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-identified-collections",
+      "state" : {
+        "revision" : "680bf440178a78a627b1c2c64c0855f6523ad5b9",
+        "version" : "0.3.2"
+      }
+    },
+    {
+      "identity" : "swift-nonempty",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-nonempty",
+      "state" : {
+        "revision" : "8074e5f2e4a6de5a42476e545cc33438021aa2a4",
+        "version" : "0.4.0"
+      }
+    },
+    {
+      "identity" : "swift-numerics",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-numerics",
+      "state" : {
+        "revision" : "0a5bc04095a675662cf24757cc0640aa2204253b",
+        "version" : "1.0.2"
+      }
+    },
+    {
+      "identity" : "swift-tagged",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-tagged",
+      "state" : {
+        "revision" : "f3f773a5e13f3c8f0ab1ce2ae6378058acefa87d",
+        "version" : "0.7.0"
+      }
+    },
+    {
+      "identity" : "swiftui-introspect",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/siteline/SwiftUI-Introspect",
+      "state" : {
+        "revision" : "f2616860a41f9d9932da412a8978fec79c06fe24",
+        "version" : "0.1.4"
+      }
+    },
+    {
+      "identity" : "swiftui-webview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kylehickinson/SwiftUI-WebView",
+      "state" : {
+        "revision" : "a67dcaff2377573a51f75761bb6e768b78931909",
+        "version" : "0.3.0"
+      }
+    },
+    {
+      "identity" : "textbuilder",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/davdroman/TextBuilder",
+      "state" : {
+        "revision" : "dc589a9a17ffde3946c4512dca4827a374d4b4f7",
+        "version" : "1.4.0"
+      }
+    },
+    {
+      "identity" : "valet",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Square/Valet",
+      "state" : {
+        "revision" : "2bf3329055f5d71d42a12801dd69d1d770fafa5e",
+        "version" : "4.1.2"
+      }
+    },
+    {
+      "identity" : "version",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mxcl/Version",
+      "state" : {
+        "revision" : "1fe824b80d89201652e7eca7c9252269a1d85e25",
+        "version" : "2.0.1"
+      }
+    },
+    {
+      "identity" : "viewinspector",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nalexn/ViewInspector",
+      "state" : {
+        "revision" : "6b88c4ec1fa20cf38f2138052e63c8e79df5d76e",
+        "version" : "0.9.1"
+      }
+    },
+    {
+      "identity" : "xctest-dynamic-overlay",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/xctest-dynamic-overlay",
+      "state" : {
+        "revision" : "50a70a9d3583fe228ce672e8923010c8df2deddd",
+        "version" : "0.2.1"
+      }
+    },
+    {
+      "identity" : "youtube-ios-player-helper",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/youtube/youtube-ios-player-helper",
+      "state" : {
+        "revision" : "f57129cd4380ec0a74dd3a59da3270a1d653d59b",
+        "version" : "1.0.4"
+      }
+    }
+  ],
+  "version" : 2
 }
