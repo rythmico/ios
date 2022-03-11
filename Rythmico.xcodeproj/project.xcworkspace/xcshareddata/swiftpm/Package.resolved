@@ -123,8 +123,8 @@
         "repositoryURL": "https://github.com/stripe/stripe-ios",
         "state": {
           "branch": null,
-          "revision": "67f49e842d23e1c9e73255c8c2b19bf0976ac274",
-          "version": "21.10.0"
+          "revision": "5eb0a694e951d6d896b1e5db79f9e65ca726db41",
+          "version": "21.12.0"
         }
       },
       {

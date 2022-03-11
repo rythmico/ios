@@ -3816,7 +3816,7 @@
 			repositoryURL = "https://github.com/stripe/stripe-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 21.3.0;
+				minimumVersion = 21.12.0;
 			};
 		};
 		D5DEF8622764277700CDFFB9 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */ = {
