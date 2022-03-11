@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.6
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -25,14 +25,14 @@ let package = Package(
             .target(name: "DebugModifiers"),
             .target(name: "Flow"),
             .target(name: "FocusState"),
-            .product(name: "FoundationEncore", package: "FoundationEncore"),
-            .product(name: "Introspect", package: "Introspect"),
+            .product(name: "FoundationEncore", package: "swift-foundation-encore"),
+            .product(name: "Introspect", package: "SwiftUI-Introspect"),
             .product(name: "MultiModal", package: "MultiModal"),
             .target(name: "PagingView"),
             .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
             .target(name: "StatefulView"),
             .product(name: "TextBuilder", package: "TextBuilder"),
-            .product(name: "WebView", package: "WebView"),
+            .product(name: "WebView", package: "SwiftUI-WebView"),
         ]),
 
         .target(name: "Container"),
@@ -52,10 +52,10 @@ let package = Package(
 )
 
 package.dependencies = [
-    .package(name: "FoundationEncore", url: "https://github.com/rythmico/swift-foundation-encore", .branch("main")),
-    .package(name: "Introspect", url: "https://github.com/siteline/SwiftUI-Introspect", from: "0.1.0"),
-    .package(name: "MultiModal", url: "https://github.com/davdroman/MultiModal", from: "2.0.0"),
-    .package(name: "SFSafeSymbols", url: "https://github.com/piknotech/SFSafeSymbols", from: "2.1.2"),
-    .package(name: "TextBuilder", url: "https://github.com/davdroman/TextBuilder", from: "1.0.0"),
-    .package(name: "WebView", url: "https://github.com/kylehickinson/SwiftUI-WebView", from: "0.3.0"),
+    .package(url: "https://github.com/rythmico/swift-foundation-encore", branch: "main"),
+    .package(url: "https://github.com/siteline/SwiftUI-Introspect", from: "0.1.0"),
+    .package(url: "https://github.com/davdroman/MultiModal", from: "2.0.0"),
+    .package(url: "https://github.com/piknotech/SFSafeSymbols", from: "2.1.2"),
+    .package(url: "https://github.com/davdroman/TextBuilder", from: "1.0.0"),
+    .package(url: "https://github.com/kylehickinson/SwiftUI-WebView", from: "0.3.0"),
 ]

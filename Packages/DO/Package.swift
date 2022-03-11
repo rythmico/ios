@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.6
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -16,22 +16,22 @@ let package = Package(
     targets: [
         .target(name: "StudentDO", dependencies: [
             .target(name: "CoreDO"),
-            .product(name: "StudentDTO", package: "DTO"),
+            .product(name: "StudentDTO", package: "dto-swift"),
         ]),
 
         .target(name: "TutorDO", dependencies: [
             .target(name: "CoreDO"),
-            .product(name: "TutorDTO", package: "DTO"),
+            .product(name: "TutorDTO", package: "dto-swift"),
         ]),
         .testTarget(name: "TutorDOTests", dependencies: ["TutorDO"]),
 
         .target(name: "CoreDO", dependencies: [
-            .product(name: "CoreDTO", package: "DTO"),
+            .product(name: "CoreDTO", package: "dto-swift"),
         ]),
         .testTarget(name: "CoreDOTests", dependencies: ["CoreDO"]),
     ]
 )
 
 package.dependencies = [
-    .package(name: "DTO", url: "https://github.com/rythmico/dto-swift", .branch("main")),
+    .package(url: "https://github.com/rythmico/dto-swift", branch: "main"),
 ]
