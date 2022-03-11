@@ -8,7 +8,7 @@ struct AppStoreReviewPrompt {
 extension AppStoreReviewPrompt {
     static let live = Self(
         requestReview: {
-            if let windowScene = UIApplication.shared.windows.first?.windowScene {
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                 SKStoreReviewController.requestReview(in: windowScene)
             }
         }

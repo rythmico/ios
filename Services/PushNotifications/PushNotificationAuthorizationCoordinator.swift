@@ -21,8 +21,8 @@ final class PushNotificationAuthorizationCoordinator: ObservableObject {
     }
 
     func refreshAuthorizationStatus() {
-        center.getNotificationSettings { [self] settings in
-            DispatchQueue.main.nowOrAsync {
+        center.getNotificationSettings { settings in
+            DispatchQueue.main.nowOrAsync { [self] in
                 switch settings.authorizationStatus {
                 case .notDetermined:
                     status = .notDetermined
@@ -42,8 +42,8 @@ final class PushNotificationAuthorizationCoordinator: ObservableObject {
             return
         }
         status = .authorizing
-        center.requestAuthorization(options: [.alert, .sound, .badge]) { [self] granted, error in
-            DispatchQueue.main.nowOrAsync {
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            DispatchQueue.main.nowOrAsync { [self] in
                 if let error = error {
                     status = .failed(error)
                 } else {

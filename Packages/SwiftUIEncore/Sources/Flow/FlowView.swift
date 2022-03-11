@@ -23,7 +23,7 @@ public struct FlowView<Flow: _Flow, Content: View>: View {
 
     public var body: some View {
         ZStack {
-            ForEach(0..<Step.count) { index in
+            ForEach(0..<Step.count, id: \.self) { index in
                 if index == currentStep.index {
                     content(currentStep).transition(transitionForCurrentDirection())
                 } else {
