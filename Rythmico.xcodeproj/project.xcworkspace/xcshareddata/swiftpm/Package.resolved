@@ -51,7 +51,7 @@
       "location" : "https://github.com/rythmico/dto-swift",
       "state" : {
         "branch" : "main",
-        "revision" : "61ae2f3a9ba689f7cc39d0512ee3787a1f0c8f20"
+        "revision" : "d7267f270f3a188196e14006add07b45f45fca7f"
       }
     },
     {
@@ -86,8 +86,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/davdroman/PeriodDuration",
       "state" : {
-        "revision" : "d6689e32ec22f77cd45c4967ed0d103d81c1abb9",
-        "version" : "0.10.0"
+        "revision" : "eb45faed4ac6162aa004898694c5843fcd492049",
+        "version" : "0.11.0"
       }
     },
     {
@@ -95,8 +95,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/davdroman/PhoneNumberKit",
       "state" : {
-        "branch" : "davdroman-improvements",
-        "revision" : "d9f14aa3f61a4f9bf3d6ce1f01e2d57dd71bb948"
+        "branch" : "master",
+        "revision" : "ed68a8971fd4a55af375eb5ed353d7bc8b583c6b"
       }
     },
     {
@@ -105,7 +105,7 @@
       "location" : "https://github.com/davdroman/PreciseDecimal",
       "state" : {
         "branch" : "main",
-        "revision" : "2ab57fc9a2262204c2bde46d133d2b9dd72e74a0"
+        "revision" : "bdf761284b5699b57198b234042d09eaeb0d2975"
       }
     },
     {
@@ -131,8 +131,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/stripe/stripe-ios",
       "state" : {
-        "revision" : "5eb0a694e951d6d896b1e5db79f9e65ca726db41",
-        "version" : "21.12.0"
+        "revision" : "84654fea190b992399d22603a370fc5e3f911486",
+        "version" : "21.13.0"
       }
     },
     {
@@ -167,8 +167,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-composable-architecture",
       "state" : {
-        "revision" : "ba9c626ab1b2b6af8cf684eebb2ab472fa5b6753",
-        "version" : "0.33.1"
+        "revision" : "2828dc44f6e3f81d84bcaba72c1ab1c0121d66f6",
+        "version" : "0.34.0"
       }
     },
     {
@@ -195,7 +195,7 @@
       "location" : "https://github.com/rythmico/swift-encore",
       "state" : {
         "branch" : "main",
-        "revision" : "77b4c6d02f77a729daa81f9924d75aa40520eff3"
+        "revision" : "f3a8a1d77f88b12be6804aee9f2f6665907e3ca2"
       }
     },
     {
@@ -204,7 +204,7 @@
       "location" : "https://github.com/rythmico/swift-foundation-encore",
       "state" : {
         "branch" : "main",
-        "revision" : "d14e2c93b59b02983e63dbd6be0289964ce7eae3"
+        "revision" : "a02cf2504e75ef3fce66c9d1862fb5c193c53d8a"
       }
     },
     {
