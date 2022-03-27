@@ -1,5 +1,5 @@
+import CoreDO
 import FoundationEncore
-import TutorDO
 import XCTest
 
 final class AddressTests: XCTestCase {
