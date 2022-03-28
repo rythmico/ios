@@ -60,6 +60,7 @@ extension APIRequest where Body: Encodable {
         let encoder = JSONEncoder() => {
             $0.dateEncodingStrategy = .iso8601
             $0.phoneNumberEncodingStrategy = .e164
+            $0.phoneNumberKit = { .shared }
         }
         return JSONEncodableBodyParameters(object: body, encoder: encoder)
     }
@@ -100,6 +101,7 @@ extension APIRequest where Response: Decodable {
         let decoder = JSONDecoder() => {
             $0.dateDecodingStrategy = .iso8601
             $0.phoneNumberDecodingStrategy = .e164
+            $0.phoneNumberKit = { .shared }
         }
         return try decoder.decode(Response.self, from: object)
     }
