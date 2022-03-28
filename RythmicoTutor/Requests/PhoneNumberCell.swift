@@ -1,5 +1,5 @@
-import SwiftUI
 import PhoneNumberKit
+import SwiftUIEncore
 
 struct PhoneNumberCell: View {
     @State
@@ -13,7 +13,7 @@ struct PhoneNumberCell: View {
     var body: some View {
         TitleCell(
             title: "Contact Number",
-            detail: PhoneNumberKit().format(phoneNumber, toType: .international),
+            detail: phoneNumber.formatted(.international),
             detailColor: .accentColor
         )
         .onTapGesture(perform: presentActionSheet)

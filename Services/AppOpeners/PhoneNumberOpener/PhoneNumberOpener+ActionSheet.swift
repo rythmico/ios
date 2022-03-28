@@ -22,7 +22,7 @@ extension View {
 
         return actionSheet(isPresented: isPresented) {
             ActionSheet(
-                title: Text(PhoneNumberKit().format(phoneNumber, toType: .international)),
+                title: Text(phoneNumber.formatted(.international)),
                 buttons: links.map(button) + .cancel()
             )
         }
