@@ -51,7 +51,7 @@
       "location" : "https://github.com/rythmico/dto-swift",
       "state" : {
         "branch" : "main",
-        "revision" : "d7267f270f3a188196e14006add07b45f45fca7f"
+        "revision" : "5f1bd7de47626046c9928029c9b17ac8b6cc6b15"
       }
     },
     {
@@ -96,7 +96,7 @@
       "location" : "https://github.com/davdroman/PhoneNumberKit",
       "state" : {
         "branch" : "master",
-        "revision" : "ed68a8971fd4a55af375eb5ed353d7bc8b583c6b"
+        "revision" : "e81874f7e25458f66dc38ca00517eafed330f482"
       }
     },
     {
@@ -204,7 +204,7 @@
       "location" : "https://github.com/rythmico/swift-foundation-encore",
       "state" : {
         "branch" : "main",
-        "revision" : "a02cf2504e75ef3fce66c9d1862fb5c193c53d8a"
+        "revision" : "3ad4ba51b2fa9e30aac8604362940d7e0502be90"
       }
     },
     {
