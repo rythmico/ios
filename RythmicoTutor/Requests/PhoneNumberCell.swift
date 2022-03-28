@@ -1,4 +1,3 @@
-import PhoneNumberKit
 import SwiftUIEncore
 
 struct PhoneNumberCell: View {

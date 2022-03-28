@@ -1,5 +1,4 @@
 import APIKit
-import PhoneNumberKit
 import StudentDTO
 
 struct GetLessonPlansRequest: APIRequest, EmptyInitProtocol {

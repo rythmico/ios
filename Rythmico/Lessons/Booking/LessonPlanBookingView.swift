@@ -1,5 +1,4 @@
 import SwiftUIEncore
-import PhoneNumberKit
 
 struct LessonPlanBookingView: View {
     @Environment(\.navigator) private var navigator

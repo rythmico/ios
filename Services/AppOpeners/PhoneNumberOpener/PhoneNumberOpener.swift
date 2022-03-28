@@ -1,5 +1,4 @@
 import FoundationEncore
-import PhoneNumberKit
 
 extension URLOpener {
     func open(_ link: PhoneNumberLink) throws {

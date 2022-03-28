@@ -1,5 +1,4 @@
 import SwiftUIEncore
-import PhoneNumberKit
 
 struct PhoneNumberInputView: View {
     @Binding var phoneNumber: PhoneNumber?

@@ -1,5 +1,4 @@
 import FoundationEncore
-import PhoneNumberKit
 
 struct Checkout: Decodable, Hashable {
     struct Policies: Decodable, Hashable {

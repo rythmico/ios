@@ -1,5 +1,4 @@
 import SwiftUIEncore
-import PhoneNumberKit
 
 extension View {
     func phoneNumberOpeningSheet(
