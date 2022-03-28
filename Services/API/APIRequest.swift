@@ -59,6 +59,7 @@ extension APIRequest where Body: Encodable {
     var bodyParameters: BodyParameters? {
         let encoder = JSONEncoder() => {
             $0.dateEncodingStrategy = .iso8601
+            $0.phoneNumberEncodingStrategy = .e164
         }
         return JSONEncodableBodyParameters(object: body, encoder: encoder)
     }
@@ -98,6 +99,7 @@ extension APIRequest where Response: Decodable {
     func response(from object: DataParser.Parsed, urlResponse: HTTPURLResponse) throws -> Response {
         let decoder = JSONDecoder() => {
             $0.dateDecodingStrategy = .iso8601
+            $0.phoneNumberDecodingStrategy = .e164
         }
         return try decoder.decode(Response.self, from: object)
     }
