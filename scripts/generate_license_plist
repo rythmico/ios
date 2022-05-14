@@ -2,12 +2,12 @@
 
 set -e
 
+cd "$(dirname "$0")/.."
+
 if ! which license-plist > /dev/null; then
     HOMEBREW_NO_AUTO_UPDATE=1 \
     brew install mono0926/license-plist/license-plist
 fi
 
-DIR=$(cd "$(dirname "$0")" && pwd)
-
-license-plist --output-path "$DIR/../Rythmico/Supporting Files/Settings.bundle" --add-version-numbers
-license-plist --output-path "$DIR/../RythmicoTutor/Supporting Files/Settings.bundle" --add-version-numbers
+license-plist --output-path "Rythmico/Supporting Files/Settings.bundle" --add-version-numbers
+license-plist --output-path "RythmicoTutor/Supporting Files/Settings.bundle" --add-version-numbers
